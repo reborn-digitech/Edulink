@@ -347,6 +347,8 @@ src/lib/                  All business logic. Pages are thin.
   fees-payments.ts        ★ Fees, the receiving side: counter, receipts under a row lock, reversal, refund, the school's gateway, UPI claims. Append-only.
   fees-reports.ts         Fees, the reading side: overview, dues, CSV exports, the reminder and reconcile jobs, year-end carry-forward.
   gateway.ts              ★ The school's OWN gateway, four allowed calls and no more — the platform never touches the money.
+  messaging.ts            ★ Texts to families: who, which channel, whether allowed; every outcome recorded, skips with reasons.
+  message-templates.ts    Every sentence a text may carry, in en/hi/mr — DLT and WhatsApp forms via npm run messages:templates.
   secret-box.ts           AES-GCM under FEES_SECRET_KEY for the gateway secrets at rest.
   report-cards.ts         ★ A DOCUMENT, not a query. Publishing freezes it. Read the header.
   insights.ts             ★ The principal's figures. Flags children against a threshold, never ranks them.
@@ -2208,6 +2210,40 @@ One line each, with the default rejected.
   All three fixed, the audit reads the shape now, and the poster's Print
   button prints the POSTER — `.print-isolate` blanks the rest of the class
   page, which previously came along for the ride.
+
+### Texts to families — SMS and WhatsApp for the parents without the app
+
+Added 18 September 2026. `src/lib/messaging.ts` decides who gets a text,
+on which channel, whether the school and the person allow it, and records
+every outcome including the ones that did not happen (`OutboundMessage`,
+status SKIPPED with a reason), so the office can see the family it did not
+reach. The sentences are the fixed templates in `message-templates.ts` in
+all three languages — an Indian SMS must match a DLT-registered template
+word for word and a first WhatsApp message must be an approved content
+template — printed for the registration forms by `npm run
+messages:templates`, their ids carried in `MESSAGE_TEMPLATE_IDS`. Both
+channels go through Twilio's one endpoint with the same devbox transport as
+the sign-in codes; delivery comes back to
+`/api/webhooks/twilio/status/<schoolId>`, signature-checked. `notify()`
+gained an optional `text`, and the absence alert, the fee reminders and
+every receipt carry one. The office sends its own notices from
+`/admin/messaging/new` to every guardian, a class, a grade or the families
+with fees overdue, previews the reach first, and reads a per-person report;
+a notice to more than a hundred families is drained by `messages:send`
+every minute. Schools switch each channel and each event on themselves and
+set a monthly cap; a guardian switches SMS or WhatsApp off in their own
+settings. `docs/runbooks/messaging.md` is the operator's setup.
+
+Verified: `tests/messaging.test.ts` (templates in three languages and their
+forms, segment counting, each routing refusal by name, WhatsApp before SMS,
+the notify hook, audience resolution, preview, a notice queued and drained,
+the status callback and its signature, the resend, the overview) and
+`tests/api-v1-messaging.test.ts` (the eight routes and the webhook).
+
+Not built: WhatsApp inbound (a reply from a parent goes nowhere), Meta's
+Cloud API directly (Twilio only), per-school sender ids (one platform
+entity sends for every school), and texting a number with no account
+behind it.
 
 ### Fees — a school asks, a family pays the school, the platform holds nothing
 

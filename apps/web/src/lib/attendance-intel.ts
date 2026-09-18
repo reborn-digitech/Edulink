@@ -185,6 +185,7 @@ export async function sendAbsenceAlert(
         bodyVars: { name: childName },
         url: "/parent/attendance",
         meta: { flag: `absence:${membership.id}` },
+        text: { templateKey: "absence", vars: { child: childName }, purpose: "absence" },
       }),
     ),
   );

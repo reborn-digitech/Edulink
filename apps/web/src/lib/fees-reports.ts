@@ -268,6 +268,7 @@ async function remindDemand(schoolId: string, d: { id: string; studentMembership
     bodyVars: { amount: rupees(d.netPaise - d.paidPaise), date: dueKey, label: d.label },
     url: "/parent/fees",
     meta: { demandId: d.id, bucket: bucket.key },
+    text: { templateKey: bucket.key === "D-7" || bucket.key === "D0" ? "feeDueSoon" : "feeOverdue", vars: { child: childName, amount: rupees(d.netPaise - d.paidPaise), date: dueKey }, purpose: bucket.key === "D-7" || bucket.key === "D0" ? "fees:dueSoon" : "fees:overdue" },
   }));
   await db.feeDemand.update({ where: { id: d.id }, data: { lastReminderKey: `${bucket.key}:${stamp}` } });
 }

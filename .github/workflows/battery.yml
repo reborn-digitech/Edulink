@@ -33,10 +33,11 @@ env:
   NEXT_PUBLIC_DEFAULT_COUNTRY_CODE: "+91"
   STORAGE_DIR: ./storage
   # The floor the i18n audit asserts. Lowering it is a deliberate change here.
-  # 159 since the fees feature: the two new job NAMES in src/lib/jobs.ts
-  # ("fees:remind", "fees:reconcile") count as strings, as the five before them
-  # already did — identifiers, not prose. Every fee sentence is keyed.
-  I18N_FLOOR: "159"
+  # 160: the job NAMES in src/lib/jobs.ts count as strings ("fees:remind",
+  # "fees:reconcile", "messages:send" joined the five before them) —
+  # identifiers, not prose. Every fee and messaging sentence is keyed; the
+  # text-message registry is a trilingual table the audit skips by design.
+  I18N_FLOOR: "160"
 
 jobs:
   battery:

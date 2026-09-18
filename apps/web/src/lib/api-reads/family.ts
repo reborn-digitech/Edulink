@@ -629,7 +629,7 @@ export async function familySettings(ctx: ActiveContext) {
  */
 export async function saveFamilySettings(
   ctx: ActiveContext,
-  input: { channels: { push: boolean; email: boolean }; quietHours: { start: string; end: string } | null },
+  input: { channels: { push: boolean; email: boolean; sms?: boolean; whatsapp?: boolean }; quietHours: { start: string; end: string } | null },
 ): Promise<{ ok: true } | { ok: false; issues: FieldIssues }> {
   if (input.quietHours && input.quietHours.start === input.quietHours.end) {
     return { ok: false, issues: { "quietHours.end": "account.quietSameTime" } };

@@ -115,6 +115,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
+    { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
@@ -137,6 +138,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.attendance", icon: "checks", group: "daily", screen: "/(app)/attendance" },
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
+    { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
@@ -214,6 +216,9 @@ export const HIDDEN_SCREENS = [
   "fees-dues",
   "fee-pupil",
   "fee-claims",
+  "messaging",
+  "messaging-new",
+  "messaging-broadcast",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

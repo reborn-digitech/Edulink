@@ -98,6 +98,17 @@ model School {
   /// bank transfer — the account name, number and IFSC, in the school's words.
   feeBankNote      String?
 
+  /// Texts to families. Off until the office switches each channel on; the
+  /// server also needs a transport (SMS_TRANSPORT / WHATSAPP_TRANSPORT), and a
+  /// message goes only to a guardian who has a number and has not opted out.
+  msgSmsEnabled      Boolean @default(false)
+  msgWhatsappEnabled Boolean @default(false)
+  /// Messages per calendar month, both channels together; the school's
+  /// spending brake. A text past the cap is recorded SKIPPED, not lost silently.
+  msgMonthlyCap      Int     @default(2000)
+  /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
+  msgEventsJson      String  @default("{}")
+
   verifiedAt DateTime?
 
   /// REMOVED, NOT DELETED. Set when the operator takes the school off the
@@ -182,6 +193,8 @@ model School {
   feeRefunds          FeeRefund[]
   feeGatewayAccount   FeeGatewayAccount?
   gatewayEvents       GatewayEvent[]
+  outboundMessages    OutboundMessage[]
+  broadcasts          Broadcast[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -297,6 +310,8 @@ model User {
   feePaymentsReversed  FeePayment[]              @relation("FeeReverser")
   feeConcessionsGiven  FeeConcession[]           @relation("FeeConcessionGranter")
   feeRefundsRequested  FeeRefund[]               @relation("FeeRefundRequester")
+  outboundMessages     OutboundMessage[]         @relation("MessageRecipient")
+  broadcastsSent       Broadcast[]               @relation("BroadcastAuthor")
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -3373,4 +3388,89 @@ model GatewayEvent {
 
   @@unique([schoolId, provider, eventId])
   @@index([schoolId, receivedAt])
+}
+
+// ---------------------------------------------------------------------------
+// Texts to families: SMS and WhatsApp
+//
+// A row per message the platform tried to send a person, whatever happened
+// to it — QUEUED, SENT, DELIVERED, FAILED, UNDELIVERED, or SKIPPED with the
+// reason (no number, opted out, channel off, cap reached). The skipped rows
+// are the point: a family that was not reached must be visible, not absent.
+// ---------------------------------------------------------------------------
+
+model OutboundMessage {
+  id             String  @id @default(cuid())
+  schoolId       String
+  /// The recipient's account. Every number this release texts belongs to one.
+  userId         String?
+  /// E.164.
+  to             String
+  /// SMS | WHATSAPP
+  channel        String
+  /// A key in src/lib/message-templates.ts; the rendered text is `body`.
+  templateKey    String
+  locale         String  @default("en")
+  varsJson       String  @default("{}")
+  body           String
+  /// QUEUED | SENT | DELIVERED | FAILED | UNDELIVERED | SKIPPED
+  status         String  @default("QUEUED")
+  /// For SKIPPED: no-phone | opted-out | channel-off | event-off | cap-monthly | cap-daily | no-transport
+  skipReason     String?
+  /// The provider's message id, once accepted; the status webhook finds the row by it.
+  providerSid    String? @unique
+  providerStatus String?
+  error          String?
+  /// SMS segments the provider billed, for the cap and the report. 1 until told otherwise.
+  segments       Int     @default(1)
+  broadcastId    String?
+  /// What sent it: absence | fees:dueSoon | fees:overdue | fees:received | circular | broadcast | test
+  purpose        String
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  sentAt      DateTime?
+  deliveredAt DateTime?
+
+  school    School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  user      User?      @relation("MessageRecipient", fields: [userId], references: [id], onDelete: SetNull)
+  broadcast Broadcast? @relation(fields: [broadcastId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, createdAt])
+  @@index([schoolId, status])
+  @@index([broadcastId])
+  @@index([userId, createdAt])
+}
+
+/// One notice the office sent to many families at once, and how it went.
+model Broadcast {
+  id           String @id @default(cuid())
+  schoolId     String
+  authorUserId String
+  /// The office's own label for the report page.
+  title        String
+  /// The notice as sent, at most 300 characters — one template, one variable.
+  body         String
+  /// JSON string[] of channels tried, in order: "WHATSAPP", "SMS", "PUSH".
+  channelsJson String @default("[]")
+  /// JSON { kind: ALL_PARENTS | CLASS | GRADE | OVERDUE_FEES | PEOPLE, classId?, gradeLevel?, userIds? }
+  audienceJson String
+  recipients   Int    @default(0)
+  queued       Int    @default(0)
+  sent         Int    @default(0)
+  delivered    Int    @default(0)
+  failed       Int    @default(0)
+  skipped      Int    @default(0)
+  /// SENDING | DONE
+  status       String @default("SENDING")
+
+  createdAt DateTime  @default(now())
+  doneAt    DateTime?
+
+  school   School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  author   User              @relation("BroadcastAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
+  messages OutboundMessage[]
+
+  @@index([schoolId, createdAt])
+  @@index([authorUserId])
 }

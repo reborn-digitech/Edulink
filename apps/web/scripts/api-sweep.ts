@@ -69,6 +69,7 @@ async function fixture(): Promise<SweepFixture> {
     feeStructureId: await first(db.feeStructure.findFirst({ where: { schoolId: s, publishedAt: { not: null } }, select: { id: true } })),
     feePaymentId: await first(db.feePayment.findFirst({ where: { schoolId: s, status: "PAID" }, select: { id: true } })),
     feeReceiptId: await first(db.feeReceipt.findFirst({ where: { schoolId: s }, select: { id: true } })),
+    broadcastId: await first(db.broadcast.findFirst({ where: { schoolId: s }, select: { id: true } })),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }

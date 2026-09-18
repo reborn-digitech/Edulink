@@ -36,7 +36,7 @@ export const accountOverviewSchema = z.object({
     contrast: z.enum(["normal", "high"]),
     font: z.enum(["default", "dyslexic"]),
     motion: z.enum(["full", "reduced"]),
-    channels: z.object({ push: z.boolean(), email: z.boolean() }),
+    channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),
     quietHours: z.object({ start: z.string(), end: z.string() }).nullable(),
   }),
   /** Whether there is a school record to open (the web's /record). */
@@ -49,7 +49,7 @@ export type AccountOverview = z.infer<typeof accountOverviewSchema>;
  * the caller shows it. What is left out is left as it was.
  */
 export const accountPrefsSchema = z.object({
-  channels: z.object({ push: z.boolean(), email: z.boolean() }),
+  channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),
   quietHours: z.object({ start: hhmm, end: hhmm }).nullable(),
   theme: accountThemeSchema.optional(),
   contrast: z.enum(["normal", "high"]).optional(),

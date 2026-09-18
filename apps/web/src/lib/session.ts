@@ -38,7 +38,7 @@ export type UserPrefs = {
   font: "default" | "dyslexic";
   motion: "full" | "reduced";
   locale: string;
-  channels: { push: boolean; email: boolean };
+  channels: { push: boolean; email: boolean; sms?: boolean; whatsapp?: boolean };
   quietHours: { start: string; end: string } | null;
 };
 
@@ -48,7 +48,7 @@ export const DEFAULT_PREFS: UserPrefs = {
   font: "default",
   motion: "full",
   locale: "en",
-  channels: { push: true, email: true },
+  channels: { push: true, email: true, sms: true, whatsapp: true },
   quietHours: null,
 };
 

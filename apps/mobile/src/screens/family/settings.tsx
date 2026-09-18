@@ -47,7 +47,7 @@ export function ParentSettings() {
           <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => router.push("/(app)/link-child" as never)} />} />
         ) : (
           <>
-            <NotificationsForm key={`${d.channels.push}:${d.channels.email}:${d.quietHours?.start ?? ""}:${d.quietHours?.end ?? ""}`} initial={d} />
+            <NotificationsForm key={`${d.channels.push}:${d.channels.email}:${d.channels.sms ?? true}:${d.channels.whatsapp ?? true}:${d.quietHours?.start ?? ""}:${d.quietHours?.end ?? ""}`} initial={d} />
             <Card title={t("parent.whoYouHearAbout")} action={<Button label={t("parent.linkAnotherShort")} variant="secondary" onPress={() => router.push("/(app)/link-child" as never)} />}>
               <Text variant="xs" tone="muted">
                 {d.children.length === 1 ? t("parent.oneChildLinked") : t("parent.childrenLinked", { count: d.children.length })}
@@ -71,13 +71,15 @@ export function ParentSettings() {
   );
 }
 
-/** The web's AppearanceForm, notifications section: two channels, quiet hours, one save. Remounted (by key) when the server's copy changes. */
+/** The web's AppearanceForm, notifications section: four channels (push, email, and the texts — SMS and WhatsApp — the school may send, on unless the guardian says otherwise), quiet hours, one save. Remounted (by key) when the server's copy changes. */
 function NotificationsForm({ initial }: { initial: Settings }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
   const [push, setPush] = useState(initial.channels.push);
   const [email, setEmail] = useState(initial.channels.email);
+  const [sms, setSms] = useState(initial.channels.sms ?? true);
+  const [whatsapp, setWhatsapp] = useState(initial.channels.whatsapp ?? true);
   const [quiet, setQuiet] = useState(initial.quietHours !== null);
   const [start, setStart] = useState(initial.quietHours?.start ?? "21:00");
   const [end, setEnd] = useState(initial.quietHours?.end ?? "07:00");
@@ -87,7 +89,7 @@ function NotificationsForm({ initial }: { initial: Settings }) {
   const endBad = quiet && !HHMM.test(end.trim());
   const save = useMutation({
     mutationFn: async () => {
-      const result = await api().post("/api/v1/family/settings", { channels: { push, email }, quietHours: quiet ? { start: start.trim(), end: end.trim() } : null });
+      const result = await api().post("/api/v1/family/settings", { channels: { push, email, sms, whatsapp }, quietHours: quiet ? { start: start.trim(), end: end.trim() } : null });
       if (!result.ok) throw new Error(errorText(result, t("prefs.notSaved")));
       return okSchema.parse(result.data);
     },
@@ -117,6 +119,8 @@ function NotificationsForm({ initial }: { initial: Settings }) {
       ) : null}
       {toggle(t("prefs.push"), t("prefs.pushHint"), push, (next) => { setPush(next); setSaved(false); })}
       {toggle(t("prefs.email"), t("prefs.emailHint"), email, (next) => { setEmail(next); setSaved(false); })}
+      {toggle(t("prefs.sms"), t("prefs.smsHint"), sms, (next) => { setSms(next); setSaved(false); })}
+      {toggle(t("prefs.whatsapp"), t("prefs.whatsappHint"), whatsapp, (next) => { setWhatsapp(next); setSaved(false); })}
       <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
         <Text variant="base" bold>
           {t("prefs.quietHours")}

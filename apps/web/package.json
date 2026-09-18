@@ -23,6 +23,7 @@
     "vapid": "tsx scripts/gen-vapid.ts",
     "email:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-email.ts",
     "sms:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-sms.ts",
+    "messages:templates": "tsx --tsconfig scripts/tsconfig.json scripts/message-templates.ts",
     "push:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-push.ts",
     "sso:check": "tsx --tsconfig scripts/tsconfig.json scripts/sso-check.ts",
     "files:check": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts",

@@ -463,14 +463,14 @@ const quietHoursSchema = z
 
 /** GET /api/v1/family/settings — the channels a guardian is reached on, and the children they hear about. */
 export const familySettingsSchema = z.object({
-  channels: z.object({ push: z.boolean(), email: z.boolean() }),
+  channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),
   quietHours: quietHoursSchema,
   children: z.array(familyChildSchema),
 });
 
 /** POST /api/v1/family/settings — the notifications section of the preferences. */
 export const familySettingsSaveSchema = z.object({
-  channels: z.object({ push: z.boolean(), email: z.boolean() }),
+  channels: z.object({ push: z.boolean(), email: z.boolean(), sms: z.boolean().optional(), whatsapp: z.boolean().optional() }),
   quietHours: quietHoursSchema,
 });
 

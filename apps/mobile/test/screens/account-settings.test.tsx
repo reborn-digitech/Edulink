@@ -118,6 +118,9 @@ describe("the account", () => {
     const save = () => screen.getByRole("button", { name: "Save notification settings" });
     expect(save()).toBeDisabled();
     await fireEvent.press(screen.getByRole("switch", { name: "Email" }));
+    // The school's texts: on unless the guardian says otherwise (the server's copy carries no answer yet).
+    expect(screen.getByRole("switch", { name: "Text messages (SMS)" })).toBeChecked();
+    await fireEvent.press(screen.getByRole("switch", { name: "WhatsApp" }));
     await fireEvent.press(screen.getByRole("switch", { name: "Use quiet hours" }));
     await fireEvent.changeText(screen.getByLabelText("Until"), "7am");
     await fireEvent.press(save());
@@ -129,7 +132,7 @@ describe("the account", () => {
     await fireEvent.changeText(screen.getByLabelText("Until"), "06:30");
     await fireEvent.press(save());
     expect(await screen.findByText("Saved")).toBeTruthy();
-    expect(calls().filter((c) => c.line === "POST /api/v1/account/prefs").map((c) => c.body).at(-1)).toEqual({ channels: { push: true, email: true }, quietHours: { start: "21:00", end: "06:30" } });
+    expect(calls().filter((c) => c.line === "POST /api/v1/account/prefs").map((c) => c.body).at(-1)).toEqual({ channels: { push: true, email: true, sms: true, whatsapp: false }, quietHours: { start: "21:00", end: "06:30" } });
   });
 
   it("the language chosen here is saved to the account, which the web and Practice read", async () => {

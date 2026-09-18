@@ -9,6 +9,7 @@ import { translator, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
 import { readVapidConfig } from "./env";
 import type { NotificationKind } from "./constants";
+import type { MessageTemplateKey } from "./message-templates";
 
 /**
  * Notification delivery: in-app row + Web Push, honouring per-user channel
@@ -60,6 +61,12 @@ export type NotifyInput = NotifyTitle & {
   meta?: Record<string, unknown>;
   /** Bypasses quiet hours. Reserved for safeguarding-critical messages. */
   urgent?: boolean;
+  /**
+   * Also as a TEXT — SMS or WhatsApp, whichever the school and the person
+   * allow (messaging.ts decides and records the outcome). Only for the
+   * events that must reach a family without the app; needs `schoolId`.
+   */
+  text?: { templateKey: MessageTemplateKey; vars: Record<string, string | number>; purpose: string };
 };
 
 export async function notify(input: NotifyInput): Promise<void> {
@@ -96,6 +103,14 @@ export async function notify(input: NotifyInput): Promise<void> {
   });
 
   publish([channel.user(input.userId)], { type: "notification", userId: input.userId });
+
+  // The text does not wait for quiet hours or the push preference: it is
+  // the channel for the family WITHOUT the app, and the router has its own
+  // switches. A failure there is a FAILED row, never a thrown notify().
+  if (input.text && input.schoolId) {
+    const { deliverToUser } = await import("./messaging");
+    await deliverToUser({ schoolId: input.schoolId, userId: input.userId, templateKey: input.text.templateKey, vars: input.text.vars, purpose: input.text.purpose }).catch((error) => console.error("[notify] text", error instanceof Error ? error.message : error));
+  }
 
   if (!prefs.channels?.push) return;
   // Quiet hours are the person's evening, not the server's. The school's

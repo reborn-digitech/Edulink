@@ -234,7 +234,15 @@ function scan(): Finding[] {
       // locale. They were counted only because the server-action rule reads
       // the same `message:` key; the release's kill-switch variables added
       // three more and made the accident visible.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts"),
+      //
+      // …and the text-message registry. message-templates.ts holds every
+      // sentence a family can be sent BY SMS OR WHATSAPP, in English, Hindi
+      // and Marathi side by side, and its English is the English variant of
+      // a trilingual table — the very thing this counter exists to produce,
+      // not a string waiting to be moved into it. Its labels go through the
+      // dictionary (labelKey); its texts are registered with carriers as
+      // written, which is why they cannot live in the dictionary's fold.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/message-templates.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

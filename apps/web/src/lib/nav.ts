@@ -63,6 +63,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // Fees: what the school asked its families for and what arrived. The
     // office writes; the principal reads the same pages (see fees.ts officeOrHead).
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
+    // Texts to families: the office switches channels and sends notices; the
+    // principal reads the same page and the delivery reports (messaging.ts officeOrHead).
+    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
@@ -93,6 +96,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Read-only for the head: the overview, the dues and the structures.
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
+    // Read-only for the head: the counts, the notices sent and their reports.
+    { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },

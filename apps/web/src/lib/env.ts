@@ -387,6 +387,48 @@ export function readFeesGatewayTransport(): FeesGatewayTransport {
   return isDeployed() ? "off" : "devbox";
 }
 
+/**
+ * WhatsApp to families, through the same Twilio account the SMS transport
+ * uses. "devbox" (the default) files the message in /dev/mailbox beside the
+ * texts and emails; "twilio" sends it from TWILIO_WHATSAPP_FROM, a
+ * WhatsApp-enabled sender ("whatsapp:+14155238886" for the sandbox, a
+ * business number once approved). Templated sends (a first message in a
+ * 24-hour window) use the content SIDs in MESSAGE_TEMPLATE_IDS.
+ */
+export type WhatsappTransport = "devbox" | "twilio";
+export function readWhatsappTransport(): WhatsappTransport {
+  return process.env.WHATSAPP_TRANSPORT === "twilio" ? "twilio" : "devbox";
+}
+export function readWhatsappFrom(): { ok: true; from: string } | { ok: false; problem: string } {
+  const raw = process.env.TWILIO_WHATSAPP_FROM?.trim() ?? "";
+  if (!raw) return { ok: false, problem: 'TWILIO_WHATSAPP_FROM is not set — the WhatsApp sender, "whatsapp:+14155238886" for the sandbox or the school-platform business number once approved.' };
+  const value = raw.startsWith("whatsapp:") ? raw : `whatsapp:${raw}`;
+  if (!/^whatsapp:\+[1-9]\d{6,14}$/.test(value)) return { ok: false, problem: `TWILIO_WHATSAPP_FROM is "${raw}" — expected "whatsapp:+<E.164 number>".` };
+  return { ok: true, from: value };
+}
+
+/**
+ * The registered ids behind each message template, per channel and language:
+ * the DLT template id a carrier matches an Indian SMS against, and the Twilio
+ * content SID a WhatsApp templated send names. JSON, optional, read once per
+ * send: `{ "absence": { "sms": { "en": "1107…" }, "whatsapp": { "en": "HX…" } } }`.
+ * A template with no WhatsApp content SID is sent as a plain body, which only
+ * works inside a 24-hour window the family opened; a template with no DLT id
+ * is sent anyway and the carrier decides — see docs/runbooks/messaging.md.
+ */
+export type MessageTemplateIds = Record<string, { sms?: Partial<Record<string, string>>; whatsapp?: Partial<Record<string, string>> }>;
+export function readMessageTemplateIds(): { ids: MessageTemplateIds; problem: string | null } {
+  const raw = process.env.MESSAGE_TEMPLATE_IDS?.trim();
+  if (!raw) return { ids: {}, problem: null };
+  try {
+    const parsed = JSON.parse(raw) as unknown;
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { ids: {}, problem: "MESSAGE_TEMPLATE_IDS is not a JSON object." };
+    return { ids: parsed as MessageTemplateIds, problem: null };
+  } catch {
+    return { ids: {}, problem: "MESSAGE_TEMPLATE_IDS is not valid JSON." };
+  }
+}
+
 export const STORAGE_BUCKET_VARS = ["STORAGE_BUCKET", "STORAGE_S3_ENDPOINT", "STORAGE_S3_REGION", "STORAGE_S3_ACCESS_KEY_ID", "STORAGE_S3_SECRET_ACCESS_KEY"] as const;
 
 export type StorageConfig = {
@@ -522,6 +564,18 @@ export function checkEnv(): EnvProblem[] {
       fatal: true,
     });
   }
+
+  // WhatsApp: saying "twilio" is a promise, like SMS. Never fatal on its
+  // own — a school that never switches WhatsApp on is not affected — but
+  // loud, because a switched-on channel with no sender skips every message.
+  if (readWhatsappTransport() === "twilio") {
+    const twilio = readTwilioConfig();
+    if (!twilio.ok) for (const problem of twilio.problems) problems.push({ key: problem.key, message: `WHATSAPP_TRANSPORT=twilio: ${problem.message}`, fatal: false });
+    const from = readWhatsappFrom();
+    if (!from.ok) problems.push({ key: "TWILIO_WHATSAPP_FROM", message: from.problem, fatal: false });
+  }
+  const templateIds = readMessageTemplateIds();
+  if (templateIds.problem) problems.push({ key: "MESSAGE_TEMPLATE_IDS", message: templateIds.problem, fatal: false });
 
   // Fees: a key that is set must be a key. Nothing else is required — a
   // school on UPI id or the counter alone never touches a gateway, and a

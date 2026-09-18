@@ -16,6 +16,7 @@ import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
 import { readJson } from "@/lib/json";
+import { formatPhone } from "@/lib/phone";
 import { relativeTime } from "@/lib/dates";
 import { HANDLE_DOMAIN, toDisplayLoginName } from "@/lib/login-name";
 import { hasRecord } from "@/lib/student-record";
@@ -279,7 +280,7 @@ export default async function AccountPage({
           />
           <CardBody className="space-y-4">
             <PushToggle />
-            <AppearanceForm prefs={prefs} section="notifications" />
+            <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} />
           </CardBody>
           <CardHeader
             icon={<TranslateIcon weight="duotone" className="size-5" />}

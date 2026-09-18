@@ -447,7 +447,7 @@ describe("the guardian's pages", () => {
   it("settings: the defaults, a refused pair of quiet hours, a saved pair, appearance untouched", async () => {
     const res = await settingsGet();
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ channels: { push: true, email: true }, quietHours: null, children: [expect.objectContaining({ studentMembershipId: pupilMembershipId })] });
+    expect(await res.json()).toEqual({ channels: { push: true, email: true, sms: true, whatsapp: true }, quietHours: null, children: [expect.objectContaining({ studentMembershipId: pupilMembershipId })] });
 
     expect((await settingsPost(json("/api/v1/family/settings", {}))).status).toBe(422);
     const same = await settingsPost(json("/api/v1/family/settings", { channels: { push: true, email: false }, quietHours: { start: "22:00", end: "22:00" } }));

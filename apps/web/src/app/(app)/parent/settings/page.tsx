@@ -5,6 +5,7 @@ import { requireParent } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
 import { readJson } from "@/lib/json";
+import { formatPhone } from "@/lib/phone";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -39,7 +40,7 @@ export default async function ParentSettingsPage() {
   const [user, contexts] = await Promise.all([
     db.user.findUniqueOrThrow({
       where: { id: session.user.id },
-      select: { prefs: true },
+      select: { prefs: true, phone: true },
     }),
     listContexts(session.user.id),
   ]);
@@ -60,7 +61,7 @@ export default async function ParentSettingsPage() {
         />
         <CardBody className="space-y-4">
           <PushToggle />
-          <AppearanceForm prefs={prefs} section="notifications" />
+          <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} />
         </CardBody>
       </Card>
 

@@ -17386,6 +17386,12 @@
                         },
                         "email": {
                           "type": "boolean"
+                        },
+                        "sms": {
+                          "type": "boolean"
+                        },
+                        "whatsapp": {
+                          "type": "boolean"
                         }
                       },
                       "required": [
@@ -17600,6 +17606,12 @@
                         "type": "boolean"
                       },
                       "email": {
+                        "type": "boolean"
+                      },
+                      "sms": {
+                        "type": "boolean"
+                      },
+                      "whatsapp": {
                         "type": "boolean"
                       }
                     },
@@ -33429,6 +33441,12 @@
                             },
                             "email": {
                               "type": "boolean"
+                            },
+                            "sms": {
+                              "type": "boolean"
+                            },
+                            "whatsapp": {
+                              "type": "boolean"
                             }
                           },
                           "required": [
@@ -33619,6 +33637,12 @@
                         "type": "boolean"
                       },
                       "email": {
+                        "type": "boolean"
+                      },
+                      "sms": {
+                        "type": "boolean"
+                      },
+                      "whatsapp": {
                         "type": "boolean"
                       }
                     },
@@ -43077,6 +43101,1889 @@
         "parameters": [
           {
             "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/messaging/overview": {
+      "get": {
+        "summary": "Channels, this month's counts and cap, template readiness, recent notices and automatic texts",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "smsEnabled": {
+                          "type": "boolean"
+                        },
+                        "whatsappEnabled": {
+                          "type": "boolean"
+                        },
+                        "monthlyCap": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "events": {
+                          "type": "object",
+                          "properties": {
+                            "absence": {
+                              "type": "boolean"
+                            },
+                            "feeReminders": {
+                              "type": "boolean"
+                            },
+                            "feeReceipts": {
+                              "type": "boolean"
+                            },
+                            "circulars": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "absence",
+                            "feeReminders",
+                            "feeReceipts",
+                            "circulars"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "smsEnabled",
+                        "whatsappEnabled",
+                        "monthlyCap",
+                        "events"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "transports": {
+                      "type": "object",
+                      "properties": {
+                        "sms": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "twilio",
+                            "off"
+                          ]
+                        },
+                        "whatsapp": {
+                          "$ref": "#/properties/transports/properties/sms"
+                        },
+                        "problems": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "sms",
+                        "whatsapp",
+                        "problems"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "month": {
+                      "type": "object",
+                      "properties": {
+                        "sent": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        },
+                        "delivered": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        },
+                        "failed": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        },
+                        "skipped": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        },
+                        "segments": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        },
+                        "cap": {
+                          "$ref": "#/properties/settings/properties/monthlyCap"
+                        }
+                      },
+                      "required": [
+                        "sent",
+                        "delivered",
+                        "failed",
+                        "skipped",
+                        "segments",
+                        "cap"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "skippedByReason": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/properties/settings/properties/monthlyCap"
+                      }
+                    },
+                    "templates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "event": {
+                            "type": "string",
+                            "enum": [
+                              "absence",
+                              "feeReminders",
+                              "feeReceipts",
+                              "circulars"
+                            ],
+                            "nullable": true
+                          },
+                          "smsIds": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            }
+                          },
+                          "whatsappIds": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            }
+                          },
+                          "text": {
+                            "type": "object",
+                            "properties": {
+                              "en": {
+                                "type": "string"
+                              },
+                              "hi": {
+                                "type": "string"
+                              },
+                              "mr": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "label",
+                          "event",
+                          "smsIds",
+                          "whatsappIds",
+                          "text"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "channels": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "audience": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ALL_PARENTS"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "kind"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "CLASS"
+                                    ]
+                                  },
+                                  "classId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 64
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "classId"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "GRADE"
+                                    ]
+                                  },
+                                  "gradeLevel": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 12
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "gradeLevel"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "OVERDUE_FEES"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "kind"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "PEOPLE"
+                                    ]
+                                  },
+                                  "userIds": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/properties/recent/items/properties/audience/anyOf/1/properties/classId"
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 500
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "userIds"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "recipients": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "queued": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "sent": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "delivered": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "failed": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "skipped": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "doneAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/recent/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "author": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "body",
+                          "channels",
+                          "audience",
+                          "recipients",
+                          "queued",
+                          "sent",
+                          "delivered",
+                          "failed",
+                          "skipped",
+                          "status",
+                          "createdAt",
+                          "doneAt",
+                          "author"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "recentMessages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "userId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "to": {
+                            "type": "string"
+                          },
+                          "channel": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "skipReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "error": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "segments": {
+                            "$ref": "#/properties/settings/properties/monthlyCap"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/recent/items/properties/createdAt"
+                          },
+                          "sentAt": {
+                            "$ref": "#/properties/recent/items/properties/doneAt"
+                          },
+                          "deliveredAt": {
+                            "$ref": "#/properties/recent/items/properties/doneAt"
+                          },
+                          "templateKey": {
+                            "type": "string"
+                          },
+                          "purpose": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "userId",
+                          "name",
+                          "to",
+                          "channel",
+                          "status",
+                          "skipReason",
+                          "error",
+                          "segments",
+                          "createdAt",
+                          "sentAt",
+                          "deliveredAt",
+                          "templateKey",
+                          "purpose"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "parentsWithPhone": {
+                      "$ref": "#/properties/settings/properties/monthlyCap"
+                    },
+                    "parentsTotal": {
+                      "$ref": "#/properties/settings/properties/monthlyCap"
+                    },
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "gradeLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "grades": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "settings",
+                    "transports",
+                    "month",
+                    "skippedByReason",
+                    "templates",
+                    "recent",
+                    "recentMessages",
+                    "parentsWithPhone",
+                    "parentsTotal",
+                    "classes",
+                    "grades"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/messaging/settings": {
+      "post": {
+        "summary": "Switch SMS and WhatsApp on or off, set the monthly cap, choose which events may text",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "smsEnabled": {
+                    "type": "boolean"
+                  },
+                  "whatsappEnabled": {
+                    "type": "boolean"
+                  },
+                  "monthlyCap": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  },
+                  "events": {
+                    "type": "object",
+                    "properties": {
+                      "absence": {
+                        "type": "boolean"
+                      },
+                      "feeReminders": {
+                        "type": "boolean"
+                      },
+                      "feeReceipts": {
+                        "type": "boolean"
+                      },
+                      "circulars": {
+                        "type": "boolean"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/messaging/test": {
+      "post": {
+        "summary": "Text the office's own number, past the caps, to prove the wiring",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "channel": {
+                      "type": "string",
+                      "enum": [
+                        "SMS",
+                        "WHATSAPP"
+                      ],
+                      "nullable": true
+                    },
+                    "skipReason": {
+                      "type": "string",
+                      "enum": [
+                        "no-phone",
+                        "opted-out",
+                        "channel-off",
+                        "event-off",
+                        "cap-monthly",
+                        "cap-daily",
+                        "no-transport",
+                        "disabled"
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "status",
+                    "channel",
+                    "skipReason"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/messaging/broadcasts": {
+      "get": {
+        "summary": "Every notice the office sent to many families, with its counts",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcasts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "channels": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "audience": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ALL_PARENTS"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "kind"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "CLASS"
+                                    ]
+                                  },
+                                  "classId": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 64
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "classId"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "GRADE"
+                                    ]
+                                  },
+                                  "gradeLevel": {
+                                    "type": "string",
+                                    "minLength": 1,
+                                    "maxLength": 12
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "gradeLevel"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "OVERDUE_FEES"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "kind"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "kind": {
+                                    "type": "string",
+                                    "enum": [
+                                      "PEOPLE"
+                                    ]
+                                  },
+                                  "userIds": {
+                                    "type": "array",
+                                    "items": {
+                                      "$ref": "#/properties/broadcasts/items/properties/audience/anyOf/1/properties/classId"
+                                    },
+                                    "minItems": 1,
+                                    "maxItems": 500
+                                  }
+                                },
+                                "required": [
+                                  "kind",
+                                  "userIds"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          },
+                          "recipients": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "queued": {
+                            "$ref": "#/properties/broadcasts/items/properties/recipients"
+                          },
+                          "sent": {
+                            "$ref": "#/properties/broadcasts/items/properties/recipients"
+                          },
+                          "delivered": {
+                            "$ref": "#/properties/broadcasts/items/properties/recipients"
+                          },
+                          "failed": {
+                            "$ref": "#/properties/broadcasts/items/properties/recipients"
+                          },
+                          "skipped": {
+                            "$ref": "#/properties/broadcasts/items/properties/recipients"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "doneAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/broadcasts/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "author": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "body",
+                          "channels",
+                          "audience",
+                          "recipients",
+                          "queued",
+                          "sent",
+                          "delivered",
+                          "failed",
+                          "skipped",
+                          "status",
+                          "createdAt",
+                          "doneAt",
+                          "author"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "broadcasts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Send a notice to an audience by text and/or app notification",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcastId": {
+                      "type": "string"
+                    },
+                    "recipients": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "queued": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "skipped": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "pushed": {
+                      "$ref": "#/properties/recipients"
+                    }
+                  },
+                  "required": [
+                    "broadcastId",
+                    "recipients",
+                    "queued",
+                    "skipped",
+                    "pushed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 80
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 5,
+                    "maxLength": 300
+                  },
+                  "audience": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "ALL_PARENTS"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "CLASS"
+                            ]
+                          },
+                          "classId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "classId"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE"
+                            ]
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 12
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "gradeLevel"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "OVERDUE_FEES"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "PEOPLE"
+                            ]
+                          },
+                          "userIds": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/audience/anyOf/1/properties/classId"
+                            },
+                            "minItems": 1,
+                            "maxItems": 500
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "userIds"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "channels": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "TEXT",
+                        "PUSH"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 2
+                  }
+                },
+                "required": [
+                  "title",
+                  "body",
+                  "audience",
+                  "channels"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/messaging/broadcasts/preview": {
+      "post": {
+        "summary": "Who a notice would reach, on which channel, and roughly how many segments (writes nothing)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recipients": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "withPhone": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "whatsapp": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "sms": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "unreachable": {
+                      "$ref": "#/properties/recipients"
+                    },
+                    "estimatedSegments": {
+                      "$ref": "#/properties/recipients"
+                    }
+                  },
+                  "required": [
+                    "recipients",
+                    "withPhone",
+                    "whatsapp",
+                    "sms",
+                    "unreachable",
+                    "estimatedSegments"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audience": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "ALL_PARENTS"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "CLASS"
+                            ]
+                          },
+                          "classId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "classId"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "GRADE"
+                            ]
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 12
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "gradeLevel"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "OVERDUE_FEES"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "kind"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "PEOPLE"
+                            ]
+                          },
+                          "userIds": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/audience/anyOf/1/properties/classId"
+                            },
+                            "minItems": 1,
+                            "maxItems": 500
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "userIds"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ]
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "audience",
+                  "body"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/messaging/broadcasts/{broadcastId}": {
+      "get": {
+        "summary": "One notice's delivery report, person by person",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "broadcast": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "body": {
+                          "type": "string"
+                        },
+                        "channels": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "audience": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ALL_PARENTS"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "CLASS"
+                                  ]
+                                },
+                                "classId": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 64
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "classId"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "GRADE"
+                                  ]
+                                },
+                                "gradeLevel": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 12
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "gradeLevel"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "OVERDUE_FEES"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "PEOPLE"
+                                  ]
+                                },
+                                "userIds": {
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "#/properties/broadcast/properties/audience/anyOf/1/properties/classId"
+                                  },
+                                  "minItems": 1,
+                                  "maxItems": 500
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "userIds"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "recipients": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "queued": {
+                          "$ref": "#/properties/broadcast/properties/recipients"
+                        },
+                        "sent": {
+                          "$ref": "#/properties/broadcast/properties/recipients"
+                        },
+                        "delivered": {
+                          "$ref": "#/properties/broadcast/properties/recipients"
+                        },
+                        "failed": {
+                          "$ref": "#/properties/broadcast/properties/recipients"
+                        },
+                        "skipped": {
+                          "$ref": "#/properties/broadcast/properties/recipients"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "doneAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/broadcast/properties/createdAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "author": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "body",
+                        "channels",
+                        "audience",
+                        "recipients",
+                        "queued",
+                        "sent",
+                        "delivered",
+                        "failed",
+                        "skipped",
+                        "status",
+                        "createdAt",
+                        "doneAt",
+                        "author"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "userId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "name": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "to": {
+                            "type": "string"
+                          },
+                          "channel": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "skipReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "error": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "segments": {
+                            "$ref": "#/properties/broadcast/properties/recipients"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/broadcast/properties/createdAt"
+                          },
+                          "sentAt": {
+                            "$ref": "#/properties/broadcast/properties/doneAt"
+                          },
+                          "deliveredAt": {
+                            "$ref": "#/properties/broadcast/properties/doneAt"
+                          },
+                          "templateKey": {
+                            "type": "string"
+                          },
+                          "purpose": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "userId",
+                          "name",
+                          "to",
+                          "channel",
+                          "status",
+                          "skipReason",
+                          "error",
+                          "segments",
+                          "createdAt",
+                          "sentAt",
+                          "deliveredAt",
+                          "templateKey",
+                          "purpose"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "broadcast",
+                    "messages"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "broadcastId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/messaging/broadcasts/{broadcastId}/resend": {
+      "post": {
+        "summary": "Queue a notice's failed messages again",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "requeued": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "requeued"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "broadcastId",
             "in": "path",
             "required": true,
             "schema": {

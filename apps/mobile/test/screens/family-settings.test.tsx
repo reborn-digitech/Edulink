@@ -18,14 +18,24 @@ describe("a guardian's settings", () => {
     expect(screen.getByText("Linked")).toBeTruthy();
     expect(screen.getByRole("switch", { name: "Push notifications" })).toBeChecked();
     expect(screen.getByRole("switch", { name: "Email" })).not.toBeChecked();
+    // The school's texts are on unless the guardian has said otherwise: the server's copy carries no answer yet.
+    expect(screen.getByRole("switch", { name: "Text messages (SMS)" })).toBeChecked();
+    expect(screen.getByRole("switch", { name: "WhatsApp" })).toBeChecked();
     await fireEvent.press(screen.getByRole("switch", { name: "Email" }));
+    await fireEvent.press(screen.getByRole("switch", { name: "WhatsApp" }));
     await fireEvent.press(screen.getByRole("switch", { name: "Use quiet hours" }));
     expect(screen.getByLabelText("From").props.value).toBe("21:00");
     await fireEvent.changeText(screen.getByLabelText("Until"), "06:30");
     await press(screen.getByRole("button", { name: "Save notification settings" }));
     await waitFor(() => expect(calls(fetch, PATH).filter((c) => c.init?.method === "POST")).toHaveLength(1));
-    expect(bodyOf(calls(fetch, PATH).find((c) => c.init?.method === "POST")!)).toEqual({ channels: { push: true, email: true }, quietHours: { start: "21:00", end: "06:30" } });
+    expect(bodyOf(calls(fetch, PATH).find((c) => c.init?.method === "POST")!)).toEqual({ channels: { push: true, email: true, sms: true, whatsapp: false }, quietHours: { start: "21:00", end: "06:30" } });
     expect(await screen.findByText("Saved")).toBeTruthy();
+  });
+
+  it("a guardian who switched WhatsApp off sees it off", async () => {
+    await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => ({ ...SETTINGS, channels: { ...SETTINGS.channels, sms: true, whatsapp: false } }) });
+    expect(await screen.findByRole("switch", { name: "WhatsApp" })).not.toBeChecked();
+    expect(screen.getByRole("switch", { name: "Text messages (SMS)" })).toBeChecked();
   });
 
   it("a quiet hour that is not a time is refused before it is sent", async () => {

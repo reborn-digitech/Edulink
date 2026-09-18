@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
@@ -26,9 +27,17 @@ const STORAGE_KEY = "edulink.appearance";
 export function AppearanceForm({
   prefs,
   section,
+  phone,
 }: {
   prefs: UserPrefs;
   section: "appearance" | "notifications";
+  /**
+   * The mobile number texts go to, formatted for reading, or null when the
+   * account has none — so the SMS and WhatsApp switches below say plainly
+   * whether switching them on can reach anyone. Undefined when the caller
+   * does not know, and then nothing is said.
+   */
+  phone?: string | null;
 }) {
   const router = useRouter();
   const t = useT();
@@ -123,6 +132,29 @@ export function AppearanceForm({
             checked={draft.channels.email}
             onChange={(e) => update({ channels: { ...draft.channels, email: e.target.checked } })}
           />
+          {/* The texts the school sends (messaging.ts reads these two). An
+              older prefs row has neither key, and the router treats a missing
+              one as on, so the box reads on unless it was switched off. */}
+          <CheckboxField
+            label={t("prefs.sms")}
+            description={t("prefs.smsHint")}
+            checked={draft.channels.sms !== false}
+            onChange={(e) => update({ channels: { ...draft.channels, sms: e.target.checked } })}
+          />
+          <CheckboxField
+            label={t("prefs.whatsapp")}
+            description={t("prefs.whatsappHint")}
+            checked={draft.channels.whatsapp !== false}
+            onChange={(e) => update({ channels: { ...draft.channels, whatsapp: e.target.checked } })}
+          />
+          {phone !== undefined && (
+            <p className={cn("px-1 text-xs leading-relaxed", phone ? "text-fg-muted" : "text-warn")}>
+              {phone ? t("messaging.phoneOn", { phone }) : t("messaging.phoneOff")}{" "}
+              <Link href="/account" className="font-medium text-accent-strong underline decoration-accent-strong/40 hover:decoration-accent-strong">
+                {t("messaging.phoneManage")}
+              </Link>
+            </p>
+          )}
         </div>
 
         <fieldset className="rounded-[--radius-md] border border-border p-4">

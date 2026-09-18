@@ -66,6 +66,7 @@ import { ArrowSquareOutIcon } from "phosphor-react-native/src/icons/ArrowSquareO
 import { UserPlusIcon } from "phosphor-react-native/src/icons/UserPlus";
 import { ImageIcon } from "phosphor-react-native/src/icons/Image";
 import { ReceiptIcon } from "phosphor-react-native/src/icons/Receipt";
+import { ChatsCircleIcon } from "phosphor-react-native/src/icons/ChatsCircle";
 
 /**
  * The web's nav icon names (lib/nav.ts) in Phosphor — the same family the web
@@ -116,6 +117,7 @@ const MAP = {
   userPlus: UserPlusIcon,
   image: ImageIcon,
   receipt: ReceiptIcon,
+  chats: ChatsCircleIcon,
   circle: CircleIcon,
 } as const;
 

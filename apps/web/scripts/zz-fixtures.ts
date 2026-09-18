@@ -527,8 +527,46 @@ async function buildFees(school: { id: string }, adminUserId: string) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* timetable                                                                   */
+/* texts to families                                                           */
 /* -------------------------------------------------------------------------- */
+
+/**
+ * Every Northgate guardian gets a mobile number (+91 98765 00001 upwards —
+ * a reserved-looking range, never dialled), the school switches both
+ * channels on, and one notice with its per-person rows exists so the API
+ * sweep can read a broadcast. The rows are written as SENT under the devbox
+ * transport's own sid shape; nothing is actually sent by the fixture.
+ */
+async function buildMessaging(school: { id: string; name: string }, adminUserId: string) {
+  const guardians = await db.guardianship.findMany({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true }, distinct: ["parentUserId"] });
+  let n = 0;
+  for (const g of guardians) {
+    n += 1;
+    const phone = `+919876400${String(n).padStart(3, "0")}`;
+    const taken = await db.user.findUnique({ where: { phone }, select: { id: true } });
+    if (taken && taken.id !== g.parentUserId) continue;
+    await db.user.update({ where: { id: g.parentUserId }, data: { phone, phoneVerifiedAt: new Date() } });
+  }
+  await db.school.update({ where: { id: school.id }, data: { msgSmsEnabled: true, msgWhatsappEnabled: true } });
+  let broadcast = await db.broadcast.findFirst({ where: { schoolId: school.id, title: "ZZ Sports day" }, select: { id: true } });
+  if (!broadcast) {
+    broadcast = await db.broadcast.create({
+      data: { schoolId: school.id, authorUserId: adminUserId, title: "ZZ Sports day", body: "Sports day is on Friday. Pupils come in house colours; the gates open at 8.", channelsJson: JSON.stringify(["TEXT"]), audienceJson: JSON.stringify({ kind: "ALL_PARENTS" }), recipients: guardians.length, status: "DONE", doneAt: new Date() },
+      select: { id: true },
+    });
+    const users = await db.user.findMany({ where: { id: { in: guardians.map((g) => g.parentUserId) } }, select: { id: true, phone: true } });
+    for (const u of users) {
+      if (!u.phone) continue;
+      await db.outboundMessage.create({
+        data: { schoolId: school.id, userId: u.id, to: u.phone, channel: "WHATSAPP", templateKey: "circular", locale: "en", varsJson: JSON.stringify({ notice: "Sports day is on Friday." }), body: `Notice from ${school.name}: Sports day is on Friday. Pupils come in house colours; the gates open at 8. - EduLink`, status: "SENT", providerSid: `devbox_fixture_${broadcast.id}_${u.id}`, providerStatus: "sent", broadcastId: broadcast.id, purpose: "broadcast", sentAt: new Date() },
+      });
+    }
+    await db.broadcast.update({ where: { id: broadcast.id }, data: { sent: users.filter((u) => u.phone).length } });
+  }
+  return { numbered: n, broadcastId: broadcast.id };
+}
+
+
 
 /** Weekday is 0=Sunday…6=Saturday, matching `Date.getUTCDay()`. Mon–Fri. */
 const SCHOOL_DAYS = [1, 2, 3, 4, 5];
@@ -991,6 +1029,7 @@ async function main() {
 
   const northgate = await buildNorthgate(ctx);
   const fees = await buildFees(northgate.school, northgate.admin.id);
+  const texts = await buildMessaging(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1027,6 +1066,7 @@ async function main() {
      guardians   ${guardianCount} link(s) — zz.parentNN@${DOMAIN} matches zz.pupilNN
      fees        year ${fees.year.name}; "${fees.structure.name}" published, ${fees.pupils} grade-3 pupils on it,
                  ${fees.receipts} receipt (zz.pupil01's Term 1, cash) — /admin/fees, /parent/fees
+     texts       ${texts.numbered} guardians numbered +91 98764 00001…, SMS and WhatsApp on, one notice sent — /admin/messaging
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

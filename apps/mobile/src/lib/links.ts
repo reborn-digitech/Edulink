@@ -92,6 +92,9 @@ const FLAT: Record<string, string> = {
   "/admin/fees": "/(app)/fees",
   "/admin/fees/claims": "/(app)/fee-claims",
   "/admin/fees/dues": "/(app)/fees-dues",
+  // Texts & WhatsApp (September 2026): the office's overview; a notice's report needs its id (BY_ID).
+  "/admin/messaging": "/(app)/messaging",
+  "/admin/messaging/new": "/(app)/messaging-new",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */
@@ -103,6 +106,7 @@ const BY_ID: { prefix: string; pathname: string; param: string; not?: string[] }
   { prefix: "/expert/bookings/", pathname: "/(app)/booking", param: "bookingId" },
   { prefix: "/bulletin/", pathname: "/(app)/post", param: "postId", not: ["new", "global", "celebrations"] },
   { prefix: "/root/", pathname: "/(app)/operator-school", param: "schoolId", not: ["new", "experts", "audit", "jobs", "content-team"] },
+  { prefix: "/admin/messaging/", pathname: "/(app)/messaging-broadcast", param: "broadcastId", not: ["new"] },
 ];
 
 export function screenFor(url: string): ScreenTarget | null {

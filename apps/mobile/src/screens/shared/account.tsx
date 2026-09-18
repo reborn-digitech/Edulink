@@ -339,7 +339,7 @@ function MobileSection({ overview }: { overview: AccountOverview }) {
 /** The shared on/off row (components/switch-row.tsx); exported here as before for this screen's callers. */
 export { SwitchRow };
 
-/** Notifications (push, email, quiet hours) and the language — the web's preferences tab without appearance, which the phone takes from the phone. */
+/** Notifications (push, email, the school's texts by SMS and WhatsApp, quiet hours) and the language — the web's preferences tab without appearance, which the phone takes from the phone. */
 function PrefsTab({ overview }: { overview: AccountOverview }) {
   const t = useT();
   const th = useTheme();
@@ -348,13 +348,15 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
   const server = overview.prefs;
   const [push, setPush] = useState(server.channels.push);
   const [email, setEmail] = useState(server.channels.email);
+  const [sms, setSms] = useState(server.channels.sms ?? true);
+  const [whatsapp, setWhatsapp] = useState(server.channels.whatsapp ?? true);
   const [quiet, setQuiet] = useState(server.quietHours !== null);
   const [start, setStart] = useState(server.quietHours?.start ?? "21:00");
   const [end, setEnd] = useState(server.quietHours?.end ?? "07:00");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const dirty = push !== server.channels.push || email !== server.channels.email || quiet !== (server.quietHours !== null) || (quiet && (start !== server.quietHours?.start || end !== server.quietHours?.end));
+  const dirty = push !== server.channels.push || email !== server.channels.email || sms !== (server.channels.sms ?? true) || whatsapp !== (server.channels.whatsapp ?? true) || quiet !== (server.quietHours !== null) || (quiet && (start !== server.quietHours?.start || end !== server.quietHours?.end));
   const save = useMutation({
-    mutationFn: async (body: { channels: { push: boolean; email: boolean }; quietHours: { start: string; end: string } | null }) => api().post("/api/v1/account/prefs", body),
+    mutationFn: async (body: { channels: { push: boolean; email: boolean; sms: boolean; whatsapp: boolean }; quietHours: { start: string; end: string } | null }) => api().post("/api/v1/account/prefs", body),
     onSuccess: (result) => {
       if (!result.ok) {
         const issues = result.issues ?? {};
@@ -377,7 +379,7 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
     if (quiet && !HHMM.test(end.trim())) next.end = t("refusal.useHHMM");
     setErrors(next);
     if (Object.keys(next).length > 0) return;
-    save.mutate({ channels: { push, email }, quietHours: quiet ? { start: start.trim(), end: end.trim() } : null });
+    save.mutate({ channels: { push, email, sms, whatsapp }, quietHours: quiet ? { start: start.trim(), end: end.trim() } : null });
   };
   return (
     <>
@@ -387,6 +389,8 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
         </Text>
         <SwitchRow label={t("prefs.push")} hint={t("prefs.pushHint")} value={push} onChange={setPush} />
         <SwitchRow label={t("prefs.email")} hint={t("prefs.emailHint")} value={email} onChange={setEmail} />
+        <SwitchRow label={t("prefs.sms")} hint={t("prefs.smsHint")} value={sms} onChange={setSms} />
+        <SwitchRow label={t("prefs.whatsapp")} hint={t("prefs.whatsappHint")} value={whatsapp} onChange={setWhatsapp} />
         <View style={{ height: 1, backgroundColor: th.border }} />
         <Text variant="base" bold>
           {t("prefs.quietHours")}

@@ -8,6 +8,7 @@ import { runDueDepartures } from "./school-record";
 import { sendOperatorHealthDigest } from "./job-health";
 import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
+import { drainQueue } from "./messaging";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -33,7 +34,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -151,6 +152,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { checked, settled, expired, perSchool } = await reconcileOnlinePayments();
       return { summary: { checked, settled, expired }, perSchool };
+    },
+  },
+  "messages:send": {
+    name: "messages:send",
+    // Every minute: a broadcast to a thousand families is queued in the
+    // request and drained here, three hundred a run.
+    schedule: "* * * * *",
+    describeKey: "root.jobDescMessages",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: 15 * 60_000,
+    run: async () => {
+      const { sent, failed, perSchool } = await drainQueue();
+      return { summary: { sent, failed }, perSchool };
     },
   },
 };

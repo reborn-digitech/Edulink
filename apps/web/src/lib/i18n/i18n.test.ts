@@ -53,6 +53,14 @@ const SHARED_WITH_ENGLISH = new Set([
    */
   "fees.methodUpi",
   "fees.claimColUtr",
+  // "SMS" and "WhatsApp" are what the phone itself shows — an acronym and a
+  // brand name, never written in Devanagari on any handset; the words
+  // around them are translated.
+  "prefs.whatsapp",
+  "messaging.transportSms",
+  "messaging.transportWhatsapp",
+  "messaging.channelSms",
+  "messaging.channelWhatsapp",
   // A degree abbreviation — "M.Sc., B.Ed." is how an Indian staff file writes
   // it in any language; the label beside it is translated.
   "staff.qualificationPlaceholder",

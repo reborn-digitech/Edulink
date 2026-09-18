@@ -24,6 +24,7 @@ dies in the release step rather than serving.
 | `APP_COMMIT` | set by the build (`--build-arg APP_COMMIT=$(git rev-parse --short HEAD)`); `/api/health` reports it |
 | `SSO_*` | per provider; `npm run sso:check` before the first sign-in |
 | `FEES_SECRET_KEY` | `openssl rand -base64 32`; seals each school's gateway secrets at rest. Without it no school can save gateway keys (UPI-id and counter payments still work). Never rotate casually: every school re-enters its keys |
+| `WHATSAPP_TRANSPORT=twilio` + `TWILIO_WHATSAPP_FROM` | WhatsApp to families through the same Twilio account; the sandbox number while testing. `MESSAGE_TEMPLATE_IDS` carries the DLT ids and WhatsApp content SIDs per template and language — `docs/runbooks/messaging.md` |
 | `FEES_GATEWAY_TRANSPORT=razorpay` | real orders at each school's *own* Razorpay account; `devbox` (the default) is refused when deployed. There is no platform gateway key — see decision 0003 |
 
 ## Release
@@ -115,6 +116,14 @@ it reads a byte; a redelivery answers "already". Two jobs join the registry:
 `fees:remind` at 09:00 `TZ` and `fees:reconcile` hourly, the second asking
 each school's gateway about orders the webhook never reported and closing
 day-old ones nobody paid. `/root/jobs` shows both.
+
+## Texts to families
+
+`docs/runbooks/messaging.md`. Two things to remember here: the Twilio
+status callback is signed against `NEXT_PUBLIC_APP_URL`, so that must be
+the public origin; and `messages:send` runs every minute from the same
+registry as the other jobs, so the jobs process must be up for a notice to
+more than a hundred families to go out.
 
 ## Open items before the first real school
 

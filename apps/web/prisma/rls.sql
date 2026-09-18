@@ -1143,6 +1143,24 @@ CREATE POLICY "GatewayEvent_tenant_isolation" ON "GatewayEvent"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- OutboundMessage
+ALTER TABLE "OutboundMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "OutboundMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "OutboundMessage_tenant_isolation" ON "OutboundMessage";
+DROP POLICY IF EXISTS "OutboundMessage_readable" ON "OutboundMessage";
+CREATE POLICY "OutboundMessage_tenant_isolation" ON "OutboundMessage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- Broadcast
+ALTER TABLE "Broadcast" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Broadcast" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Broadcast_tenant_isolation" ON "Broadcast";
+DROP POLICY IF EXISTS "Broadcast_readable" ON "Broadcast";
+CREATE POLICY "Broadcast_tenant_isolation" ON "Broadcast"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

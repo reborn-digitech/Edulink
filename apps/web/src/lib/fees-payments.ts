@@ -240,6 +240,7 @@ async function tellFamilyReceived(schoolId: string, studentMembershipId: string,
     bodyVars: { amount: rupees(amountPaise), serial },
     url: `/fees/receipts/${receiptId}`,
     meta: { paymentId, receiptId },
+    text: { templateKey: "feeReceived", vars: { child: childName, amount: rupees(amountPaise), serial }, purpose: "fees:received" },
   }));
 }
 

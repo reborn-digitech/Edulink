@@ -29,6 +29,9 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/admin/invites/new")).toEqual({ pathname: "/(app)/invites" });
     expect(screenFor("/admin/classes/new")).toEqual({ pathname: "/(app)/class-new" });
     expect(screenFor("/admin/intake")).toEqual({ pathname: "/(app)/intake" });
+    expect(screenFor("/admin/messaging")).toEqual({ pathname: "/(app)/messaging" });
+    expect(screenFor("/admin/messaging/new")).toEqual({ pathname: "/(app)/messaging-new" });
+    expect(screenFor("/admin/messaging/b1")).toEqual({ pathname: "/(app)/messaging-broadcast", params: { broadcastId: "b1" } });
     expect(screenFor("/admin/directory")).toEqual({ pathname: "/(app)/directory-profile" });
     expect(screenFor("/account")).toEqual({ pathname: "/(app)/account" });
     expect(screenFor("/parent/link")).toEqual({ pathname: "/(app)/link-child" });

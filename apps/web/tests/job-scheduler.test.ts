@@ -65,13 +65,18 @@ describe("startJobScheduler", () => {
     const at = local(2026, 9, 15, 3, 30); // notifications:tidy is "30 3 * * *"
     const handle = startJobScheduler({ run: async (name) => { ran.push(name); return { status: "done" }; }, now: () => at, log });
     expect(handle).not.toBeNull();
+    // messages:send is "* * * * *" and fires every minute by design; the
+    // lists below look past it so the once-per-minute rule is read on a
+    // job with a real schedule.
+    const daily = (jobs: string[]) => jobs.filter((j) => j !== "messages:send");
     try {
-      expect(await handle!.tick(at)).toEqual(["notifications:tidy"]);
-      expect(await handle!.tick(at)).toEqual([]); // same minute: not again
-      expect(await handle!.tick(local(2026, 9, 15, 3, 31))).toEqual([]);
-      expect(await handle!.tick(local(2026, 9, 16, 3, 30))).toEqual(["notifications:tidy"]); // next day: again
+      expect(daily(await handle!.tick(at))).toEqual(["notifications:tidy"]);
+      expect(await handle!.tick(at)).toEqual([]); // same minute: not again, messages:send included
+      expect(daily(await handle!.tick(local(2026, 9, 15, 3, 31)))).toEqual([]);
+      expect(daily(await handle!.tick(local(2026, 9, 16, 3, 30)))).toEqual(["notifications:tidy"]); // next day: again
       await new Promise((r) => setTimeout(r, 0));
-      expect(ran).toEqual(["notifications:tidy", "notifications:tidy"]);
+      expect(daily(ran)).toEqual(["notifications:tidy", "notifications:tidy"]);
+      expect(ran.filter((j) => j === "messages:send")).toHaveLength(3); // three distinct minutes
       const lines = log.mock.calls.map(([l]) => JSON.parse(l as string));
       expect(lines[0]).toMatchObject({ scheduler: "in-process", started: true });
       expect(lines.filter((l) => l.job === "notifications:tidy" && l.outcome)).toHaveLength(2);
@@ -84,9 +89,9 @@ describe("startJobScheduler", () => {
     process.env.JOBS_RUNNER = "1";
     const log = vi.fn();
     const at = local(2026, 9, 18, 16, 0); // digest:weekly is "0 16 * * 5" (Friday)
-    const handle = startJobScheduler({ run: async () => { throw new Error("mail is down"); }, now: () => at, log });
+    const handle = startJobScheduler({ run: async (name) => { if (name === "digest:weekly") throw new Error("mail is down"); return { status: "done" }; }, now: () => at, log });
     try {
-      expect(await handle!.tick(at)).toEqual(["digest:weekly"]);
+      expect((await handle!.tick(at)).filter((j) => j !== "messages:send")).toEqual(["digest:weekly"]);
       await new Promise((r) => setTimeout(r, 0));
       const errors = log.mock.calls.map(([l]) => JSON.parse(l as string)).filter((l) => l.level === "error");
       expect(errors).toHaveLength(1);

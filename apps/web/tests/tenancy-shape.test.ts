@@ -129,6 +129,11 @@ const DIRECT = [
   "FeeRefund",
   "FeeGatewayAccount",
   "GatewayEvent",
+  // Texts to families: a message and a broadcast are the school's rows about
+  // its own guardians; the status webhook writes under forSchool with the
+  // school in its URL, like the gateway's.
+  "OutboundMessage",
+  "Broadcast",
   "RemarkMessage",
   "Conversation",
   "ConversationParticipant",
@@ -199,7 +204,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(91);
+    ).toBe(93);
   });
 });
 

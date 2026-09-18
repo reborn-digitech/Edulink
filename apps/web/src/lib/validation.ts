@@ -356,8 +356,8 @@ export const prefsSchema = z.object({
   motion: z.enum(["full", "reduced"]).default("full"),
   locale: z.string().trim().min(2).max(10).default("en"),
   channels: z
-    .object({ push: z.boolean().default(true), email: z.boolean().default(true) })
-    .default({ push: true, email: true }),
+    .object({ push: z.boolean().default(true), email: z.boolean().default(true), sms: z.boolean().default(true), whatsapp: z.boolean().default(true) })
+    .default({ push: true, email: true, sms: true, whatsapp: true }),
   quietHours: z
     .object({
       start: z.string().regex(/^\d{1,2}:\d{2}$/, "refusal.useHHMM"),
