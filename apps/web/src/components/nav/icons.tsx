@@ -2,6 +2,7 @@
 
 import {
   BellIcon,
+  BooksIcon,
   BrainIcon,
   BuildingsIcon,
   StarIcon,
@@ -38,6 +39,7 @@ import {
  */
 const ICONS: Record<string, Icon> = {
   house: HouseIcon,
+  books: BooksIcon,
   archive: ArchiveIcon,
   users: UsersThreeIcon,
   chalkboard: ChalkboardTeacherIcon,

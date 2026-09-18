@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeftIcon,
+  BooksIcon,
   CalendarCheckIcon,
   ChatCircleDotsIcon,
   FileTextIcon,
@@ -235,6 +236,9 @@ export default async function ClassDetailPage({
         </Button>
         <Button asChild variant="secondary">
           <Link href={`/teacher/exams?classId=${klass.id}`}>{t("exams.enterMarks")}</Link>
+        </Button>
+        <Button asChild variant="secondary" icon={<BooksIcon weight="bold" />}>
+          <Link href={`/teacher/classes/${klass.id}/syllabus`}>{t("syllabus.openSyllabus")}</Link>
         </Button>
       </div>
 

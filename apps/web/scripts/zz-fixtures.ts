@@ -706,6 +706,41 @@ async function buildStaffAttendance(school: { id: string }, adminUserId: string)
   return { marked: n, staff: staff.length };
 }
 
+/**
+ * The syllabus for ZZ Northgate's grade 3: Mathematics and English lists,
+ * the grade-3 class two chapters into each with one in progress, and two
+ * lessons (one taught, one planned), so the head's coverage has rows and
+ * the sweep has a unit and a lesson to move. Re-run safe.
+ */
+async function buildSyllabus(school: { id: string }) {
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, select: { id: true, gradeLevel: true, teachers: { where: { role: "LEAD" }, select: { teacherMembershipId: true }, take: 1 } }, orderBy: { name: "asc" } });
+  if (!klass || !klass.teachers[0]) return { units: 0 };
+  const lists: Record<string, string[]> = {
+    Mathematics: ["Numbers to 10,000", "Addition and subtraction", "Multiplication tables", "Division", "Fractions", "Shapes and patterns", "Measurement", "Time and money", "Data handling"],
+    English: ["The sentence", "Nouns and pronouns", "Reading: The clever crow", "Verbs and tenses", "Writing a paragraph", "Reading: Rain in the village", "Adjectives", "Letters and notices"],
+  };
+  let n = 0;
+  for (const [subject, titles] of Object.entries(lists)) {
+    const existing = await db.syllabusUnit.findMany({ where: { schoolId: school.id, gradeLevel: "3", subject }, orderBy: { position: "asc" }, select: { id: true } });
+    const ids: string[] = [];
+    for (const [i, title] of titles.entries()) {
+      const id = existing[i]?.id;
+      const row = id ? await db.syllabusUnit.update({ where: { id }, data: { position: i + 1, title }, select: { id: true } }) : await db.syllabusUnit.create({ data: { schoolId: school.id, gradeLevel: "3", subject, position: i + 1, title, periodsPlanned: 6 + (i % 3) * 2 }, select: { id: true } });
+      ids.push(row.id);
+      n += 1;
+    }
+    const states = ["DONE", "DONE", "IN_PROGRESS"] as const;
+    for (const [i, status] of states.entries()) {
+      await db.syllabusProgress.upsert({ where: { classId_unitId: { classId: klass.id, unitId: ids[i]! } }, create: { schoolId: school.id, classId: klass.id, unitId: ids[i]!, status, doneOn: status === "DONE" ? new Date(Date.now() - (30 - i * 10) * 86_400_000).toISOString().slice(0, 10) : null, byMembershipId: klass.teachers[0]!.teacherMembershipId }, update: { status } });
+    }
+    if (!(await db.lessonPlan.findFirst({ where: { classId: klass.id, subject, topic: `ZZ ${subject}: revision of chapter two` }, select: { id: true } }))) {
+      await db.lessonPlan.create({ data: { schoolId: school.id, classId: klass.id, teacherMembershipId: klass.teachers[0]!.teacherMembershipId, subject, unitId: ids[1], dateKey: new Date(Date.now() - 2 * 86_400_000).toISOString().slice(0, 10), topic: `ZZ ${subject}: revision of chapter two`, notes: "Worked examples on the board; the back row needs another go.", homework: "Exercise 2.4, questions 1 to 8.", status: "TAUGHT" } });
+      await db.lessonPlan.create({ data: { schoolId: school.id, classId: klass.id, teacherMembershipId: klass.teachers[0]!.teacherMembershipId, subject, unitId: ids[2], dateKey: new Date(Date.now() + 86_400_000).toISOString().slice(0, 10), topic: `ZZ ${subject}: chapter three, first lesson`, status: "PLANNED" } });
+    }
+  }
+  return { units: n };
+}
+
 async function buildTimetable(
   schoolId: string,
   classes: { id: string; grade: string }[],
@@ -1139,6 +1174,7 @@ async function main() {
   const incidents = await buildIncidents(northgate.school, northgate.admin.id);
   const circular = await buildCircular(northgate.school, northgate.admin.id);
   const staffAtt = await buildStaffAttendance(northgate.school, northgate.admin.id);
+  const syllabus = await buildSyllabus(northgate.school);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1180,6 +1216,7 @@ async function main() {
      incidents   ${incidents.incidents} incidents (a closed grazed knee, an open sick-room visit) — /admin/incidents, /parent/incidents
      circular    one notice asking for an acknowledgement, told to every guardian, opened by two, acknowledged by one — /admin/circulars, /bulletin/${circular.postId}
      staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
+     syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

@@ -57,6 +57,39 @@ describe("the principal's dashboard", () => {
     expect(await screen.findByText("No classes yet")).toBeTruthy();
   });
 
+  it("the syllabus card reads the coverage report when the overview does not carry the figures, and opens it", async () => {
+    const { calls } = await mountStaff(<PrincipalHome />, "PRINCIPAL", {
+      "GET /api/v1/staff/principal/overview": () => json(OVERVIEW),
+      "GET /api/v1/office/syllabus/coverage": () => json({ yearName: "2026-27", yearElapsedPercent: 40, overallPercent: 35, classesBehind: 2, rows: [] }),
+    });
+    await screen.findByText("ZZ Class A");
+    const card = await screen.findByRole("button", { name: "Syllabus coverage, 2 classes behind · 40% of the year gone" });
+    expect(screen.getByText("35%")).toBeTruthy();
+    expect(calls().some((c) => c.line === "GET /api/v1/office/syllabus/coverage")).toBe(true);
+    await fireEvent.press(card);
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/syllabus-coverage");
+  });
+
+  it("the syllabus card takes the overview's own figures when it carries them, and asks for nothing more", async () => {
+    const { calls } = await mountStaff(<PrincipalHome />, "PRINCIPAL", {
+      "GET /api/v1/staff/principal/overview": () => json({ ...OVERVIEW, syllabus: { overallPercent: 60, classesBehind: 0, yearElapsedPercent: 55 } }),
+      "GET /api/v1/office/syllabus/coverage": () => json({ yearName: "2026-27", yearElapsedPercent: 40, overallPercent: 35, classesBehind: 2, rows: [] }),
+    });
+    await screen.findByText("ZZ Class A");
+    expect(await screen.findByRole("button", { name: "Syllabus coverage, Nobody is behind · 55% of the year gone" })).toBeTruthy();
+    expect(screen.getByText("60%")).toBeTruthy();
+    expect(screen.queryByText("35%")).toBeNull();
+    expect(calls().some((c) => c.line === "GET /api/v1/office/syllabus/coverage")).toBe(false);
+  });
+
+  it("the syllabus card says there is no syllabus yet when the overview carries null, and still opens the report", async () => {
+    const { calls } = await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json({ ...OVERVIEW, syllabus: null }) });
+    await screen.findByText("ZZ Class A");
+    await fireEvent.press(await screen.findByRole("button", { name: "Syllabus coverage, No syllabus yet" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/syllabus-coverage");
+    expect(calls().some((c) => c.line === "GET /api/v1/office/syllabus/coverage")).toBe(false);
+  });
+
   it("a refusal is an alert with a retry; a dropped connection too", async () => {
     let failures = 0;
     const { calls } = await mountStaff(<PrincipalHome />, "PRINCIPAL", {

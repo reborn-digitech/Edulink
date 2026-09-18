@@ -2126,6 +2126,61 @@ async function main() {
     await check(null, "/teacher/attendance/me", 307, "signed-out own attendance redirects to login");
   }
 
+  /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
+  // ZZ Northgate carries Mathematics and English lists for grade 3 and its
+  // grade-3 class is two chapters in; the actors are that school's office,
+  // the class's lead teacher, a teacher with no class of that grade, and a
+  // guardian, minted for the length of this block.
+  const syllabusClass = northgate
+    ? await db.class.findFirst({
+        where: { schoolId: northgate.id, gradeLevel: "3", archivedAt: null },
+        select: { id: true, teachers: { where: { role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } }, take: 1 } },
+        orderBy: { name: "asc" },
+      })
+    : null;
+  const syllabusUnits = northgate ? await db.syllabusUnit.count({ where: { schoolId: northgate.id, gradeLevel: "3" } }) : 0;
+  if (northgate && syllabusClass && syllabusUnits > 0) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-office");
+    await check(zzOffice, "/admin/syllabus", 200, "the office reads the syllabus lists");
+    await check(zzOffice, "/admin/syllabus?gradeLevel=3&subject=Mathematics", 200, "…and opens grade 3 Mathematics to edit");
+    await check(zzOffice, "/admin/syllabus?gradeLevel=3&subject=Nothing%20Yet", 200, "…and a pair with no list yet, to start one");
+    await check(zzOffice, "/admin/syllabus/coverage", 200, "…and the coverage table");
+    await check(zzOffice, `/teacher/classes/${syllabusClass.id}/syllabus?subject=Mathematics`, 200, "…and a class's page from the table");
+    const leadEmail = syllabusClass.teachers[0]?.teacher.user.email;
+    if (leadEmail) {
+      const lead = await mint(leadEmail, "TEACHER", northgate.id, "zz-lead-teacher");
+      await check(lead, `/teacher/classes/${syllabusClass.id}/syllabus`, 200, "the class's teacher reads its syllabus");
+      await check(lead, `/teacher/classes/${syllabusClass.id}/syllabus?subject=English`, 200, "…and the English tab");
+      await check(lead, `/teacher/classes/${syllabusClass.id}`, 200, "…and the class page carrying the syllabus button");
+      await check(lead, "/admin/syllabus", 307, "⚠ …but not the office's lists");
+      await check(lead, "/admin/syllabus/coverage", 307, "⚠ …nor the coverage table");
+      // A teacher of the school with no class of grade 3 at all, not merely another class.
+      const stranger = await db.membership.findFirst({
+        where: { schoolId: northgate.id, role: "TEACHER", status: "ACTIVE", user: { email: { not: leadEmail } }, classTeachers: { none: { classId: syllabusClass.id } } },
+        select: { user: { select: { email: true } } },
+      });
+      if (stranger?.user.email) {
+        const other = await mint(stranger.user.email, "TEACHER", northgate.id, "zz-other-teacher");
+        await check(other, `/teacher/classes/${syllabusClass.id}/syllabus`, 404, "⚠ a teacher who does not teach the class must NOT find its syllabus");
+      } else {
+        skip("syllabus stranger", "no second teacher at ZZ Northgate");
+      }
+    } else {
+      skip("syllabus teacher", "the ZZ grade-3 class has no lead teacher");
+    }
+    const syllabusGuardian = await db.guardianship.findFirst({ where: { studentSchoolId: northgate.id, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (syllabusGuardian?.parent.email) {
+      const zzParent = await mint(syllabusGuardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/teacher/classes/${syllabusClass.id}/syllabus`, 307, "⚠ a guardian has no class syllabus page");
+      await check(zzParent, "/admin/syllabus", 307, "⚠ …nor the office's lists");
+    }
+    await check(null, "/admin/syllabus", 307, "signed-out syllabus redirects to login");
+    await check(null, "/admin/syllabus/coverage", 307, "signed-out coverage redirects to login");
+    await check(null, `/teacher/classes/${syllabusClass.id}/syllabus`, 307, "signed-out class syllabus redirects to login");
+  } else {
+    skip("syllabus", "no ZZ fixtures with a grade-3 syllabus (run zz:fixtures)");
+  }
+
   /* ---- negative: cross-tenant and cross-role ---- */
   if (klass) await check(otherAdmin, `/teacher/classes/${klass.id}`, 404, "other school's class must NOT be found");
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");

@@ -117,6 +117,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
+    { labelKey: "nav.syllabus", icon: "books", group: "daily", screen: "/(app)/syllabus-coverage" },
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
@@ -142,6 +143,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
+    { labelKey: "nav.syllabus", icon: "books", group: "daily", screen: "/(app)/syllabus-coverage" },
     { labelKey: "nav.attendance", icon: "checks", group: "daily", screen: "/(app)/attendance" },
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
@@ -239,6 +241,8 @@ export const HIDDEN_SCREENS = [
   "circular-reach",
   "staff-attendance",
   "my-attendance",
+  "syllabus",
+  "syllabus-coverage",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

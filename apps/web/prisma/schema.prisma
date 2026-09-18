@@ -206,6 +206,9 @@ model School {
   incidents           Incident[]
   incidentNotes       IncidentNote[]
   staffAttendance     StaffAttendance[]
+  syllabusUnits       SyllabusUnit[]
+  syllabusProgress    SyllabusProgress[]
+  lessonPlans         LessonPlan[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -384,6 +387,8 @@ model Membership {
   incidents              Incident[]           @relation("IncidentStudent")
   incidentsReported      Incident[]           @relation("IncidentReporter")
   staffAttendance        StaffAttendance[]
+  syllabusProgress       SyllabusProgress[]   @relation("SyllabusProgressBy")
+  lessonPlans            LessonPlan[]         @relation("LessonPlanTeacher")
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
@@ -492,6 +497,8 @@ model Class {
   assignments         Assignment[]
   posts               Post[]
   gradeCategories     GradeCategory[]
+  syllabusProgress    SyllabusProgress[]
+  lessonPlans         LessonPlan[]
 
   @@index([schoolId, archivedAt])
 }
@@ -3658,4 +3665,76 @@ model StaffAttendance {
 
   @@unique([membershipId, dateKey])
   @@index([schoolId, dateKey])
+}
+
+/// A chapter of the syllabus for one grade and subject, in teaching order.
+/// The office writes the list (or pastes it from the board's syllabus);
+/// each class of that grade ticks its way through it.
+model SyllabusUnit {
+  id             String   @id @default(cuid())
+  schoolId       String
+  gradeLevel     String
+  subject        String
+  position       Int
+  title          String
+  /// Periods the plan allows; informational.
+  periodsPlanned Int?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  school   School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  progress SyllabusProgress[]
+  lessons  LessonPlan[]
+
+  @@index([schoolId, gradeLevel, subject, position])
+}
+
+/// Where one class stands on one unit: not started, in progress, done, with
+/// when and by whom. A class's coverage of a subject is done units over all.
+model SyllabusProgress {
+  id             String   @id @default(cuid())
+  schoolId       String
+  classId        String
+  unitId         String
+  /// NOT_STARTED | IN_PROGRESS | DONE
+  status         String   @default("NOT_STARTED")
+  doneOn         String?
+  byMembershipId String?
+  updatedAt      DateTime @updatedAt
+
+  school School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class  Class        @relation(fields: [classId], references: [id], onDelete: Cascade)
+  unit   SyllabusUnit @relation(fields: [unitId], references: [id], onDelete: Cascade)
+  by     Membership?  @relation("SyllabusProgressBy", fields: [byMembershipId], references: [id], onDelete: SetNull)
+
+  @@unique([classId, unitId])
+  @@index([schoolId, classId])
+}
+
+/// One lesson as planned and then as taught: a class, a subject, a day, the
+/// topic, and optionally the unit it belongs to. Marking it taught moves the
+/// unit to in progress if nothing has yet.
+model LessonPlan {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  classId             String
+  teacherMembershipId String
+  subject             String
+  unitId              String?
+  dateKey             String
+  topic               String
+  notes               String   @default("")
+  homework            String   @default("")
+  /// PLANNED | TAUGHT | SKIPPED
+  status              String   @default("PLANNED")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  school  School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class   Class         @relation(fields: [classId], references: [id], onDelete: Cascade)
+  teacher Membership    @relation("LessonPlanTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  unit    SyllabusUnit? @relation(fields: [unitId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, classId, subject, dateKey])
+  @@index([teacherMembershipId, dateKey])
 }

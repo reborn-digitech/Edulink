@@ -45,6 +45,7 @@ import { listBookings, listMarketplace } from "@/lib/experts";
 import { EXPERT_OFFERING_META } from "@/lib/constants";
 import { ATTENDANCE_CONCERN_PERCENT, classInsights, parseSpan, schoolSummary, windowFor } from "@/lib/insights";
 import { currentTerms } from "@/lib/terms";
+import { syllabusCoverage } from "@/lib/syllabus";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -708,11 +709,12 @@ export async function staffExperts(ctx: Staff, query: { q?: string; offering?: s
 export async function principalOverview(ctx: Staff, days?: string): Promise<PrincipalOverview> {
   const span = parseSpan(days);
   const window = await windowFor(ctx.schoolId, span);
-  const [insights, reviews, school, academicYear] = await Promise.all([
+  const [insights, reviews, school, academicYear, coverage] = await Promise.all([
     classInsights(ctx, window),
     schoolReviewDashboard(ctx),
     schoolZone(ctx.schoolId),
     currentAcademicYear(ctx.schoolId),
+    syllabusCoverage(ctx).catch(() => null),
   ]);
   const [summary, terms] = await Promise.all([schoolSummary(ctx, insights), academicYear ? currentTerms(ctx.schoolId, school.timezone) : Promise.resolve([])]);
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
@@ -721,6 +723,7 @@ export async function principalOverview(ctx: Staff, days?: string): Promise<Prin
     window,
     summary,
     academicYear: academicYear ? { id: academicYear.id, name: academicYear.name } : null,
+    syllabus: coverage ? { overallPercent: coverage.overallPercent, classesBehind: coverage.classesBehind, yearElapsedPercent: coverage.yearElapsedPercent } : null,
     runningTerm: runningTerm ? { id: runningTerm.id, name: runningTerm.name, endDateKey: runningTerm.endDateKey } : null,
     concerns: insights.filter((k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT),
     classes: insights,

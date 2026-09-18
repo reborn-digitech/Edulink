@@ -2,13 +2,14 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { principalOverviewSchema, type PrincipalOverview } from "@edulink/contracts";
+import { principalOverviewSchema, syllabusCoverageSchema, type PrincipalOverview } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
+import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 
 /**
  * The head's dashboard: what can still be fixed today first — attendance
@@ -69,6 +70,7 @@ function Overview({ d }: { d: PrincipalOverview }) {
           onPress={() => router.push("/(app)/leave" as never)}
         />
       </Card>
+      <SyllabusCard d={d} />
       {d.classes.length === 0 ? (
         <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : (
@@ -105,5 +107,46 @@ function Overview({ d }: { d: PrincipalOverview }) {
         </Card>
       ) : null}
     </>
+  );
+}
+
+/** The overview may carry the syllabus figures itself; an older server does not, and the card reads the coverage report instead. */
+type SyllabusSummary = { overallPercent: number | null; classesBehind: number; yearElapsedPercent: number } | null;
+
+/**
+ * Syllabus coverage in one line — the overall percent against how far the
+ * year has gone, and how many classes are behind — opening the full report.
+ */
+function SyllabusCard({ d }: { d: PrincipalOverview }) {
+  const t = useT();
+  const router = useRouter();
+  const carried = (d as PrincipalOverview & { syllabus?: SyllabusSummary }).syllabus;
+  const fetched = useQuery({
+    queryKey: COVERAGE_KEY,
+    queryFn: async () => syllabusCoverageSchema.parse(unwrap(await api().get(COVERAGE_PATH))),
+    enabled: carried === undefined,
+  });
+  const s: SyllabusSummary | undefined = carried !== undefined ? carried : fetched.data ? { overallPercent: fetched.data.overallPercent, classesBehind: fetched.data.classesBehind, yearElapsedPercent: fetched.data.yearElapsedPercent } : undefined;
+  const open = () => router.push("/(app)/syllabus-coverage" as never);
+  if (carried === undefined && fetched.isError) {
+    return (
+      <Card title={t("syllabus.coverageTitle")}>
+        <Failed message={fetched.error.message} onRetry={() => void fetched.refetch()} />
+      </Card>
+    );
+  }
+  return (
+    <Card>
+      <Row
+        title={t("syllabus.coverageTitle")}
+        caption={s ? [s.classesBehind === 0 ? t("syllabus.noneBehind") : t("syllabus.classesBehind", { count: s.classesBehind }), t("syllabus.yearElapsed", { percent: s.yearElapsedPercent })].join(" · ") : s === null ? t("syllabus.noLists") : undefined}
+        right={
+          <Text variant="lg" bold tone={s?.overallPercent == null ? "muted" : s.classesBehind > 0 ? "warn" : "accent"}>
+            {s?.overallPercent == null ? "—" : `${s.overallPercent}%`}
+          </Text>
+        }
+        onPress={open}
+      />
+    </Card>
   );
 }

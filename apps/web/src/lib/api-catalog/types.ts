@@ -76,6 +76,8 @@ export type SweepFixture = {
   broadcastId: string | null;
   incidentId: string | null;
   circularId: string | null;
+  syllabusUnitId: string | null;
+  lessonPlanId: string | null;
   todayKey: string;
 };
 

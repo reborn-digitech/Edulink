@@ -1215,6 +1215,33 @@ CREATE POLICY "StaffAttendance_tenant_isolation" ON "StaffAttendance"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SyllabusUnit
+ALTER TABLE "SyllabusUnit" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SyllabusUnit" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SyllabusUnit_tenant_isolation" ON "SyllabusUnit";
+DROP POLICY IF EXISTS "SyllabusUnit_readable" ON "SyllabusUnit";
+CREATE POLICY "SyllabusUnit_tenant_isolation" ON "SyllabusUnit"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SyllabusProgress
+ALTER TABLE "SyllabusProgress" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SyllabusProgress" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SyllabusProgress_tenant_isolation" ON "SyllabusProgress";
+DROP POLICY IF EXISTS "SyllabusProgress_readable" ON "SyllabusProgress";
+CREATE POLICY "SyllabusProgress_tenant_isolation" ON "SyllabusProgress"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- LessonPlan
+ALTER TABLE "LessonPlan" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LessonPlan" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "LessonPlan_tenant_isolation" ON "LessonPlan";
+DROP POLICY IF EXISTS "LessonPlan_readable" ON "LessonPlan";
+CREATE POLICY "LessonPlan_tenant_isolation" ON "LessonPlan"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

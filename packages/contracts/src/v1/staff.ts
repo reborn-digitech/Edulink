@@ -700,6 +700,8 @@ export const principalOverviewSchema = z.object({
       delta: z.number().nullable(),
     }),
   ),
+  /** Syllabus coverage across the school, when any list exists: done chapters over all, and classes two or more chapters behind the year. */
+  syllabus: z.object({ overallPercent: z.number().int().nullable(), classesBehind: z.number().int(), yearElapsedPercent: z.number().int() }).nullable().optional(),
 });
 export type PrincipalOverview = z.infer<typeof principalOverviewSchema>;
 

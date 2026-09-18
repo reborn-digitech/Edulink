@@ -69,6 +69,7 @@ export function TeacherClassDetail() {
           <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
             <Button label={t("teacher.reportCards")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report-cards", params: { classId } } as never)} style={{ flexGrow: 1 }} />
             <Button label={t("exams.enterMarks")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/marks", params: { classId } } as never)} style={{ flexGrow: 1 }} />
+            <Button label={t("syllabus.openSyllabus")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/syllabus", params: { classId } } as never)} style={{ flexGrow: 1 }} />
           </View>
 
           <Card title={t("teacher.classJoinCode")} action={<Button label={t("mobile.share")} variant="ghost" icon={<Icon name="share" size={18} color={th.accentStrong} weight="bold" />} onPress={() => shareCode(data)} />}>

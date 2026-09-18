@@ -13448,6 +13448,28 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "syllabus": {
+                      "type": "object",
+                      "properties": {
+                        "overallPercent": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "classesBehind": {
+                          "type": "integer"
+                        },
+                        "yearElapsedPercent": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "overallPercent",
+                        "classesBehind",
+                        "yearElapsedPercent"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -49398,6 +49420,1102 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/office/syllabus": {
+      "get": {
+        "summary": "The chapter lists per grade and subject, and one list in full (?gradeLevel=&subject=)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lists": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "gradeLevel": {
+                            "type": "string"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "units": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        },
+                        "required": [
+                          "gradeLevel",
+                          "subject",
+                          "units"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "grades": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "gradeLevel": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "subject": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "units": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "position": {
+                            "$ref": "#/properties/lists/items/properties/units"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "periodsPlanned": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/lists/items/properties/units"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "position",
+                          "title",
+                          "periodsPlanned"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "lists",
+                    "grades",
+                    "subjects",
+                    "gradeLevel",
+                    "subject",
+                    "units"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gradeLevel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20
+                  },
+                  "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Replace one grade and subject's list in order; a unit sent with its id keeps its progress",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "units": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "removed": {
+                      "$ref": "#/properties/units"
+                    }
+                  },
+                  "required": [
+                    "units",
+                    "removed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gradeLevel": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20
+                  },
+                  "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "units": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^c[a-z0-9]{20,}$"
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 160
+                        },
+                        "periodsPlanned": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 999,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "title"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 200
+                  }
+                },
+                "required": [
+                  "gradeLevel",
+                  "subject",
+                  "units"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/syllabus/coverage": {
+      "get": {
+        "summary": "Coverage per class and subject against the year, and how many classes are behind",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "yearName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "yearElapsedPercent": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "overallPercent": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/yearElapsedPercent"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "classesBehind": {
+                      "$ref": "#/properties/yearElapsedPercent"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "classId": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string"
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "units": {
+                            "$ref": "#/properties/yearElapsedPercent"
+                          },
+                          "done": {
+                            "$ref": "#/properties/yearElapsedPercent"
+                          },
+                          "inProgress": {
+                            "$ref": "#/properties/yearElapsedPercent"
+                          },
+                          "percent": {
+                            "$ref": "#/properties/yearElapsedPercent"
+                          },
+                          "expected": {
+                            "$ref": "#/properties/yearElapsedPercent"
+                          },
+                          "behind": {
+                            "type": "boolean"
+                          },
+                          "lastTaughtOn": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "classId",
+                          "className",
+                          "gradeLevel",
+                          "subject",
+                          "units",
+                          "done",
+                          "inProgress",
+                          "percent",
+                          "expected",
+                          "behind",
+                          "lastTaughtOn"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "yearName",
+                    "yearElapsedPercent",
+                    "overallPercent",
+                    "classesBehind",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/syllabus": {
+      "get": {
+        "summary": "One class's units with progress and its lessons (?classId=&subject=)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "classId": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string"
+                    },
+                    "gradeLevel": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "subject": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "units": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "position": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "periodsPlanned": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/units/items/properties/position"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "NOT_STARTED",
+                              "IN_PROGRESS",
+                              "DONE"
+                            ]
+                          },
+                          "doneOn": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "nullable": true
+                          },
+                          "byName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "lessons": {
+                            "$ref": "#/properties/units/items/properties/position"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "position",
+                          "title",
+                          "periodsPlanned",
+                          "status",
+                          "doneOn",
+                          "byName",
+                          "lessons"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "percent": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/units/items/properties/position"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "lessons": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "unitId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "unitTitle": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "dateKey": {
+                            "$ref": "#/properties/units/items/properties/doneOn"
+                          },
+                          "topic": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "homework": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PLANNED",
+                              "TAUGHT",
+                              "SKIPPED"
+                            ]
+                          },
+                          "teacherName": {
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "subject",
+                          "unitId",
+                          "unitTitle",
+                          "dateKey",
+                          "topic",
+                          "notes",
+                          "homework",
+                          "status",
+                          "teacherName",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "classId",
+                    "className",
+                    "gradeLevel",
+                    "subjects",
+                    "subject",
+                    "units",
+                    "percent",
+                    "lessons",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  }
+                },
+                "required": [
+                  "classId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/syllabus/progress": {
+      "post": {
+        "summary": "Move a unit to not started, in progress or done for a class",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "unitId": {
+                    "$ref": "#/properties/classId"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "NOT_STARTED",
+                      "IN_PROGRESS",
+                      "DONE"
+                    ]
+                  },
+                  "doneOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "required": [
+                  "classId",
+                  "unitId",
+                  "status"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/lessons": {
+      "post": {
+        "summary": "Plan or log a lesson for a class; taught with a unit moves the unit along",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "subject": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "unitId": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/classId"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "dateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "topic": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "default": ""
+                  },
+                  "homework": {
+                    "type": "string",
+                    "maxLength": 1000,
+                    "default": ""
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PLANNED",
+                      "TAUGHT",
+                      "SKIPPED"
+                    ],
+                    "default": "PLANNED"
+                  }
+                },
+                "required": [
+                  "classId",
+                  "subject",
+                  "dateKey",
+                  "topic"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/lessons/{lessonId}/status": {
+      "post": {
+        "summary": "Mark a lesson planned, taught or skipped",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PLANNED",
+                      "TAUGHT",
+                      "SKIPPED"
+                    ]
+                  }
+                },
+                "required": [
+                  "status"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "lessonId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   }

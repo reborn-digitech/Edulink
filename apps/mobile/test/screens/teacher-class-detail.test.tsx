@@ -58,7 +58,7 @@ describe("one class", () => {
     expect(screen.getByText("Draft · 0 of 2 marked")).toBeTruthy();
   });
 
-  it("the register, the marks grid, the report cards, setting work, a piece of work and a pupil's family each open on the phone", async () => {
+  it("the register, the marks grid, the report cards, the syllabus, setting work, a piece of work and a pupil's family each open on the phone", async () => {
     fakeApi({ [PATH]: () => json(DETAIL) });
     await renderTeacher(page());
     await tap(await screen.findByRole("button", { name: "Mark the attendance" }));
@@ -67,6 +67,8 @@ describe("one class", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/marks", params: { classId: ID.class1 } });
     await tap(screen.getByRole("button", { name: "Report cards" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/report-cards", params: { classId: ID.class1 } });
+    await tap(screen.getByRole("button", { name: "Syllabus" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/syllabus", params: { classId: ID.class1 } });
     await tap(screen.getByRole("button", { name: "Set work" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignments", params: { classId: ID.class1, compose: "1" } });
     await tap(screen.getByRole("button", { name: /^ZZ Fractions sheet/ }));

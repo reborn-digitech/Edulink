@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import {
+  BooksIcon,
   CalendarCheckIcon,
   CaretRightIcon,
   ChalkboardTeacherIcon,
@@ -23,6 +24,7 @@ import { schoolReviewDashboard } from "@/lib/reviews";
 import { ReviewDashboard } from "@/components/reviews/review-dashboard";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { currentTerms } from "@/lib/terms";
+import { syllabusCoverage } from "@/lib/syllabus";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
@@ -75,6 +77,16 @@ export default async function PrincipalDashboard({
     academicYear ? currentTerms(ctx.schoolId, school.timezone) : Promise.resolve([]),
   ]);
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
+  // How far the chapters have got against how far the year has: one number
+  // and the count of classes behind it. A school with no lists yet shows
+  // nothing here rather than a card promising a figure.
+  let syllabus: { overallPercent: number | null; classesBehind: number; yearElapsedPercent: number } | null = null;
+  try {
+    const coverage = await syllabusCoverage(ctx);
+    if (coverage.overallPercent !== null) syllabus = { overallPercent: coverage.overallPercent, classesBehind: coverage.classesBehind, yearElapsedPercent: coverage.yearElapsedPercent };
+  } catch (error) {
+    console.error("[principal syllabus]", error);
+  }
   const concerns = insights.filter(
     (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
   );
@@ -177,6 +189,36 @@ export default async function PrincipalDashboard({
             </span>
             <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
           </Link>
+        </Card>
+      )}
+
+      {/* ---------------- syllabus coverage ---------------- */}
+      {syllabus && (
+        <Card>
+          <CardHeader
+            icon={<BooksIcon weight="duotone" className="size-5" />}
+            title={t("syllabus.coverageTitle")}
+            description={t("syllabus.coverageIntro")}
+            action={
+              <Link href="/admin/syllabus/coverage" className="text-sm font-semibold text-accent-strong hover:underline">
+                {t("syllabus.coverageTitle")}
+              </Link>
+            }
+          />
+          <CardBody className="grid gap-3 sm:grid-cols-2">
+            <StatTile
+              label={t("syllabus.overall")}
+              value={syllabus.overallPercent === null ? "—" : `${syllabus.overallPercent}%`}
+              tone={syllabus.overallPercent !== null && syllabus.overallPercent + 10 < syllabus.yearElapsedPercent ? "warn" : "ok"}
+              hint={t("syllabus.yearElapsed", { percent: syllabus.yearElapsedPercent })}
+            />
+            <StatTile
+              label={t("syllabus.behind")}
+              value={String(syllabus.classesBehind)}
+              tone={syllabus.classesBehind > 0 ? "warn" : "ok"}
+              hint={syllabus.classesBehind > 0 ? t("syllabus.classesBehind", { count: syllabus.classesBehind }) : t("syllabus.noneBehind")}
+            />
+          </CardBody>
         </Card>
       )}
 

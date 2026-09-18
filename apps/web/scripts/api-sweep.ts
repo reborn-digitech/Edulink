@@ -73,6 +73,8 @@ async function fixture(): Promise<SweepFixture> {
     // An OPEN one, so the sweep's note and close both have a door; zz:fixtures leaves one open on every run.
     incidentId: await first(db.incident.findFirst({ where: { schoolId: s, status: "OPEN" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     circularId: await first(db.post.findFirst({ where: { schoolId: s, requiresAck: true, status: "APPROVED" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
+    syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
+    lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }

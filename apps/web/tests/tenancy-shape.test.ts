@@ -55,6 +55,10 @@ const DIRECT = [
   "PostRead",
   /** The staff register: a staff member's day, the school's row. */
   "StaffAttendance",
+  /** The syllabus: the school's chapter list per grade and subject, a class's progress on each, and the lessons planned and taught. */
+  "SyllabusUnit",
+  "SyllabusProgress",
+  "LessonPlan",
   "AcademicYear",
   "Term",
   "StaffRecord",
@@ -214,7 +218,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(99);
+    ).toBe(102);
   });
 });
 
