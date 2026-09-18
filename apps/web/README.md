@@ -348,6 +348,7 @@ src/lib/                  All business logic. Pages are thin.
   fees-reports.ts         Fees, the reading side: overview, dues, CSV exports, the reminder and reconcile jobs, year-end carry-forward.
   health.ts               The pupil's health and emergency card and the school's check-ups; who reads (office, head, the child's teachers, guardians) and who writes.
   incidents.ts            The sick-room and incident log: recorded once, never edited, follow-up in notes, the family told at once, closed by the office.
+  circulars.ts            Circular reach: a notice asking for an acknowledgement tells its audience, records told / opened / acknowledged per family, and chases the rest once a day.
   gateway.ts              ★ The school's OWN gateway, four allowed calls and no more — the platform never touches the money.
   messaging.ts            ★ Texts to families: who, which channel, whether allowed; every outcome recorded, skips with reasons.
   message-templates.ts    Every sentence a text may carry, in en/hi/mr — DLT and WhatsApp forms via npm run messages:templates.

@@ -168,6 +168,7 @@ model School {
   schoolRecords        SchoolRecord[]
   operatorAccess       OperatorAccess[]
   postAcks             PostAck[]
+  postReads            PostRead[]
   examSeries           ExamSeries[]
   examSlots            ExamSlot[]
   meetingSlots         MeetingSlot[]
@@ -307,6 +308,7 @@ model User {
   enquiries            Enquiry[]                 @relation("EnquiryOpener")
   enquiryMessages      EnquiryMessage[]          @relation("EnquiryMessageAuthor")
   postAcks             PostAck[]
+  postReads            PostRead[]
   meetingBookings      MeetingBooking[]
   feePaymentsMade      FeePayment[]              @relation("FeePayer")
   feePaymentsTaken     FeePayment[]              @relation("FeeCollector")
@@ -1292,13 +1294,20 @@ model Post {
   /// out for people it does not concern. Making it secrecy would mean a policy
   /// per audience, and "Grade 5 parents must not know sports day moved" is not
   /// a secret any school keeps.
-  audience      String  @default("ALL") // ALL | PARENTS | TEACHERS | STUDENTS
+  audience         String    @default("ALL") // ALL | PARENTS | TEACHERS | STUDENTS
   /// Narrows a SCHOOL post to one grade's pupils and their families. Free text
   /// matching Class.gradeLevel, like every grade in this schema.
-  audienceGrade String?
+  audienceGrade    String?
   /// The author wants a "seen and understood" tap from each reader. What makes
   /// a notice a circular: the school can finally answer "did this reach anyone".
-  requiresAck   Boolean @default(false)
+  requiresAck      Boolean   @default(false)
+  /// A circular's delivery: queued at publish, done when every reader in its
+  /// audience has been told (push, and a text where the school allows), and
+  /// the last time the outstanding families were chased. Null on a plain post.
+  deliveryQueuedAt DateTime?
+  deliveredAt      DateTime?
+  remindedAt       DateTime?
+  remindCount      Int       @default(0)
 
   /// The publishing school's NAME, copied here when a post goes global.
   ///
@@ -1333,6 +1342,7 @@ model Post {
   globalHides GlobalPostHide[]
   reactions   Reaction[]
   acks        PostAck[]
+  reads       PostRead[]
 
   @@index([schoolId, status, createdAt])
   @@index([scope, status, createdAt])
@@ -1421,6 +1431,27 @@ model PostAck {
   @@unique([postId, userId])
   @@index([schoolId])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([userId])
+}
+
+/// A reader opened the circular: "seen", between "told" and "acknowledged".
+/// One row per reader per post, written when the post is read on the web or
+/// the phone; keyed by user for the same reason PostAck is. What it answers
+/// is the office's question — did the notice reach the family at all — not
+/// how long anyone spent on it.
+model PostRead {
+  id        String   @id @default(cuid())
+  postId    String
+  schoolId  String
+  userId    String
+  createdAt DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId])
+  @@index([schoolId])
   @@index([userId])
 }
 

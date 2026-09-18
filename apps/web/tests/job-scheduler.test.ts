@@ -68,7 +68,7 @@ describe("startJobScheduler", () => {
     // messages:send is "* * * * *" and fires every minute by design; the
     // lists below look past it so the once-per-minute rule is read on a
     // job with a real schedule.
-    const daily = (jobs: string[]) => jobs.filter((j) => j !== "messages:send");
+    const daily = (jobs: string[]) => jobs.filter((j) => j !== "messages:send" && j !== "circulars:deliver");
     try {
       expect(daily(await handle!.tick(at))).toEqual(["notifications:tidy"]);
       expect(await handle!.tick(at)).toEqual([]); // same minute: not again, messages:send included
@@ -91,7 +91,7 @@ describe("startJobScheduler", () => {
     const at = local(2026, 9, 18, 16, 0); // digest:weekly is "0 16 * * 5" (Friday)
     const handle = startJobScheduler({ run: async (name) => { if (name === "digest:weekly") throw new Error("mail is down"); return { status: "done" }; }, now: () => at, log });
     try {
-      expect((await handle!.tick(at)).filter((j) => j !== "messages:send")).toEqual(["digest:weekly"]);
+      expect((await handle!.tick(at)).filter((j) => j !== "messages:send" && j !== "circulars:deliver")).toEqual(["digest:weekly"]);
       await new Promise((r) => setTimeout(r, 0));
       const errors = log.mock.calls.map(([l]) => JSON.parse(l as string)).filter((l) => l.level === "error");
       expect(errors).toHaveLength(1);

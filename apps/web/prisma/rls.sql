@@ -499,6 +499,15 @@ CREATE POLICY "PostAck_tenant_isolation" ON "PostAck"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- PostRead
+ALTER TABLE "PostRead" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PostRead" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PostRead_tenant_isolation" ON "PostRead";
+DROP POLICY IF EXISTS "PostRead_readable" ON "PostRead";
+CREATE POLICY "PostRead_tenant_isolation" ON "PostRead"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Report
 ALTER TABLE "Report" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Report" FORCE ROW LEVEL SECURITY;

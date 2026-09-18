@@ -75,6 +75,7 @@ export type SweepFixture = {
   feeReceiptId: string | null;
   broadcastId: string | null;
   incidentId: string | null;
+  circularId: string | null;
   todayKey: string;
 };
 

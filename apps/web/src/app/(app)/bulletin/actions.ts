@@ -14,6 +14,7 @@ import {
   toggleReaction,
   togglePin,
 } from "@/lib/bulletin";
+import { remindCircular } from "@/lib/circulars";
 import { postSchema, reactionSchema, reportSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
 import type { MediaItem } from "@/lib/json";
@@ -268,5 +269,23 @@ export async function report(input: unknown): Promise<{ ok: boolean; error?: str
       ok: false,
       error: (await getT())("bulletin.reportFailed"),
     };
+  }
+}
+
+/** The office chases the families still waiting on a circular: a push again and a text where the school has them on. Once a day. */
+export async function remind(postId: string): Promise<{ ok: boolean; reminded?: number; texted?: number; error?: string }> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+
+  try {
+    const result = await remindCircular(session, postId);
+    revalidatePath(`/bulletin/${postId}`);
+    revalidatePath("/admin/circulars");
+    return { ok: true, reminded: result.reminded, texted: result.texted };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[remind]", error);
+    return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

@@ -29,7 +29,8 @@ WORKDIR /repo
 COPY . .
 ARG APP_COMMIT=unknown
 ENV NEXT_TELEMETRY_DISABLED=1 APP_COMMIT=$APP_COMMIT
-RUN cd apps/web && npx prisma generate && npx next build
+# The type check inside `next build` needs more than Node's default heap on an 8 GB box (~1.7 GB for tsc alone); 4 GB is what a 16 GB runner gives by default.
+RUN cd apps/web && npx prisma generate && NODE_OPTIONS=--max-old-space-size=4096 npx next build
 
 FROM node:20-bookworm-slim AS runtime
 WORKDIR /app

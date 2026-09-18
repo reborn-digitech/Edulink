@@ -9,6 +9,7 @@ import { sendOperatorHealthDigest } from "./job-health";
 import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
+import { deliverQueuedCirculars } from "./circulars";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -34,7 +35,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -152,6 +153,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { checked, settled, expired, perSchool } = await reconcileOnlinePayments();
       return { summary: { checked, settled, expired }, perSchool };
+    },
+  },
+  "circulars:deliver": {
+    name: "circulars:deliver",
+    // Every minute, like messages:send: a circular to a whole school is
+    // queued at publish and told here, so the office's click never waits.
+    schedule: "* * * * *",
+    describeKey: "root.jobDescCirculars",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: 15 * 60_000,
+    run: async () => {
+      const { delivered, recipients, perSchool } = await deliverQueuedCirculars();
+      return { summary: { delivered, recipients }, perSchool };
     },
   },
   "messages:send": {

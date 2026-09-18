@@ -1,4 +1,5 @@
 import "server-only";
+import { queueCircularDelivery, recordPostRead } from "./circulars";
 import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { readJsonArray, writeJson, type MediaItem } from "./json";
@@ -468,6 +469,9 @@ export async function getPost(session: ActiveContext, postId: string) {
   // memberships at the post's school are looked up once here — one query,
   // not one per comment — and a commenter with none (a parent, a leaver,
   // a reader from another school on a global post) simply gets no link.
+  // Opening a circular is "seen" on its reach report; a plain post records nothing.
+  await recordPostRead(session, post);
+
   const authorIds = [...new Set([post.author.id, ...post.comments.map((c) => c.author.id)])];
   // Profiles open only within the READER's own school: a global post's
   // authors at another school are names, not doors.
@@ -618,6 +622,9 @@ export async function createPost(
       [channel.school(schoolId), ...(input.classId ? [channel.class(input.classId)] : [])],
       { type: "post.status", postId: post.id, status },
     );
+    // A circular tells its audience the moment it is live (circulars.ts):
+    // a small audience in this request, a large one by the job within the minute.
+    if (requiresAck) await queueCircularDelivery(post.id);
   }
 
   return { postId: post.id, status };

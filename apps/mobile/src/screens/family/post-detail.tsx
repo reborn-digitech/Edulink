@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
-import { bulletinCommentResultSchema, bulletinPostDetailSchema, bulletinReactResultSchema, type bulletinReactionKindSchema } from "@edulink/contracts";
+import { bulletinCommentResultSchema, bulletinPostDetailSchema, bulletinReactResultSchema, okSchema, type bulletinReactionKindSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { Avatar } from "@/components/avatar";
@@ -51,6 +51,30 @@ export function PostDetail() {
   const d = query.data;
   const refreshAll = () => qc.invalidateQueries({ queryKey: ["bulletin"] });
   const staff = role === "TEACHER" || role === "ADMIN";
+  // The head reads a circular's reach beside the office and the teachers, though the review of a pupil's post stays with the two roles that publish.
+  const reachStaff = staff || role === "PRINCIPAL";
+  const queryKey = ["bulletin", "post", postId];
+
+  // The one tap a circular asks for. The card flips at once and the server
+  // is told; a refusal puts it back and says why.
+  const ack = useMutation({
+    mutationFn: async () => {
+      const result = await api().post(`/api/v1/shared/bulletin/${id}/ack`, {});
+      if (!result.ok) throw new Error(errorText(result, t("bulletin.couldNotDo")));
+      return okSchema.parse(result.data);
+    },
+    onMutate: () => {
+      const before = qc.getQueryData<Detail>(queryKey);
+      if (before) qc.setQueryData<Detail>(queryKey, { ...before, acked: true, ackCount: before.ackCount + 1 });
+      return { before };
+    },
+    // The feeds show the same tick; the post itself already says so and is left as set.
+    onSuccess: () => void qc.invalidateQueries({ queryKey: ["bulletin"], predicate: (q) => q.queryKey[1] !== "post" }),
+    onError: (e, _vars, ctx) => {
+      if (ctx?.before) qc.setQueryData(queryKey, ctx.before);
+      toast.show(e.message, "danger");
+    },
+  });
 
   const react = useMutation({
     mutationFn: async (kind: Reaction) => {
@@ -162,6 +186,16 @@ export function PostDetail() {
             {d.body ? <Text variant="base">{d.body}</Text> : null}
             <Media media={d.media} headers={headers} />
             <Tags tags={d.tags} />
+            {d.requiresAck && d.status === "APPROVED" ? (
+              d.acked ? (
+                <Text variant="sm" bold tone="ok">
+                  {t("bulletin.ackDone")}
+                </Text>
+              ) : d.canAck ? (
+                <Button label={t("bulletin.ackButton")} busy={ack.isPending} onPress={() => ack.mutate()} />
+              ) : null
+            ) : null}
+            {d.requiresAck && reachStaff ? <Button label={t("circulars.openReport")} variant="ghost" onPress={() => router.push({ pathname: "/(app)/circular-reach", params: { postId } } as never)} /> : null}
             {d.status === "REJECTED" && mine && d.rejectionReason ? (
               <Note tone="danger">
                 <Text variant="xs" bold tone="danger">

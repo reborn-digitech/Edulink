@@ -648,6 +648,35 @@ async function buildIncidents(school: { id: string }, adminUserId: string) {
   return { incidents: await db.incident.count({ where: { schoolId: school.id } }) };
 }
 
+/**
+ * One circular for ZZ Northgate: a school-wide notice to families that
+ * asks for an acknowledgement, already told (deliveredAt set, a push row
+ * per guardian and a devbox text per guardian with a number), opened by two
+ * guardians and acknowledged by one, so the reach report has every state to
+ * show and the sweep has a circular id. Re-run safe.
+ */
+async function buildCircular(school: { id: string; name: string }, adminUserId: string) {
+  let post = await db.post.findFirst({ where: { schoolId: school.id, title: "ZZ Annual day: consent and costumes" }, select: { id: true } });
+  if (!post) {
+    post = await db.post.create({
+      data: { schoolId: school.id, authorUserId: adminUserId, scope: "SCHOOL", category: "EVENTS", title: "ZZ Annual day: consent and costumes", body: "Annual day is on the 30th. Every pupil needs a signed consent slip and a white kurta by the 25th. Please acknowledge so the class teacher knows you have seen this.", audience: "PARENTS", requiresAck: true, status: "APPROVED", reviewedAt: new Date(), deliveryQueuedAt: new Date(Date.now() - 86_400_000), deliveredAt: new Date(Date.now() - 86_400_000 + 60_000) },
+      select: { id: true },
+    });
+    const guardians = await db.guardianship.findMany({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true, parent: { select: { phone: true } } }, distinct: ["parentUserId"] });
+    for (const g of guardians) {
+      await db.notification.create({ data: { userId: g.parentUserId, schoolId: school.id, kind: "POST", title: `A notice from ${school.name} asks for your acknowledgement`, body: "ZZ Annual day: consent and costumes", url: `/bulletin/${post.id}`, createdAt: new Date(Date.now() - 86_400_000 + 60_000) } });
+      if (g.parent.phone) {
+        await db.outboundMessage.create({ data: { schoolId: school.id, userId: g.parentUserId, to: g.parent.phone, channel: "WHATSAPP", templateKey: "circular", locale: "en", varsJson: JSON.stringify({ notice: "ZZ Annual day: consent and costumes" }), body: `Notice from ${school.name}: ZZ Annual day: consent and costumes - EduLink`, status: "SENT", providerSid: `devbox_fixture_circular_${post.id}_${g.parentUserId}`, providerStatus: "sent", purpose: `circular:${post.id}`, sentAt: new Date() } });
+      }
+    }
+    const [g1, g2] = guardians;
+    if (g1) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId } });
+    if (g1) await db.postAck.create({ data: { postId: post.id, schoolId: school.id, userId: g1.parentUserId } });
+    if (g2) await db.postRead.create({ data: { postId: post.id, schoolId: school.id, userId: g2.parentUserId } });
+  }
+  return { postId: post.id };
+}
+
 async function buildTimetable(
   schoolId: string,
   classes: { id: string; grade: string }[],
@@ -1079,6 +1108,7 @@ async function main() {
   const texts = await buildMessaging(northgate.school, northgate.admin.id);
   const health = await buildHealth(northgate.school, northgate.admin.id);
   const incidents = await buildIncidents(northgate.school, northgate.admin.id);
+  const circular = await buildCircular(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1118,6 +1148,7 @@ async function main() {
      texts       ${texts.numbered} guardians numbered +91 98764 00001…, SMS and WhatsApp on, one notice sent — /admin/messaging
      health      ${health.cards} health cards on the first three pupils (peanut allergy, asthma, a check-up) — /parent/health, /people/<id>
      incidents   ${incidents.incidents} incidents (a closed grazed knee, an open sick-room visit) — /admin/incidents, /parent/incidents
+     circular    one notice asking for an acknowledgement, told to every guardian, opened by two, acknowledged by one — /admin/circulars, /bulletin/${circular.postId}
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

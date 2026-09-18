@@ -66,6 +66,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // Texts to families: the office switches channels and sends notices; the
     // principal reads the same page and the delivery reports (messaging.ts officeOrHead).
     { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
+    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     // The leave queue is genuinely an admin's to work — a school whose
@@ -100,6 +101,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
     // Read-only for the head: the counts, the notices sent and their reports.
     { href: "/admin/messaging", labelKey: "nav.messaging", icon: "chatsCircle", prefix: true, group: "running" },
+    { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },

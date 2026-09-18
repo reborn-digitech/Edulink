@@ -2068,6 +2068,44 @@ async function main() {
   await check(admin, "/incidents/cnope00000000000000000000", 404, "an invented incident id");
   await check(admin, "/incidents/new", 404, "recording with no pupil named");
 
+  /* ---- circular reach: the notice, its report, the print sheet and the waiting list ---- */
+  // The fixtures' circular is ZZ Northgate's (annual-day consent, audience
+  // PARENTS, told a day ago), so the actors are that school's office, a
+  // teacher with a class and a guardian, minted for the length of this block.
+  const circular = northgate
+    ? await db.post.findFirst({ where: { schoolId: northgate.id, requiresAck: true, status: "APPROVED" }, select: { id: true } })
+    : null;
+  if (northgate && circular) {
+    const zzAdmin = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzAdmin, "/admin/circulars", 200, "the office reads the school's circulars");
+    await check(zzAdmin, `/bulletin/${circular.id}`, 200, "…and opens a circular with its reach report");
+    await check(zzAdmin, `/bulletin/${circular.id}/print`, 200, "…and the print sheet for the notice board");
+    await check(zzAdmin, `/bulletin/${circular.id}/outstanding`, 200, "…and downloads the waiting list");
+    await check(zzAdmin, `/bulletin/${circular.id}/outstanding?format=xlsx`, 200, "…and as a workbook");
+    await check(admin, `/bulletin/${circular.id}/print`, 404, "⚠ another school's office cannot print it");
+    await check(admin, `/bulletin/${circular.id}/outstanding`, 404, "⚠ …nor download its waiting list");
+    await check(null, `/bulletin/${circular.id}/print`, 307, "signed-out print sheet redirects to login");
+    await check(null, "/admin/circulars", 307, "signed-out circulars list redirects to login");
+    const zzTeaching = await db.classTeacher.findFirst({
+      where: { class: { schoolId: northgate.id, archivedAt: null }, teacher: { status: "ACTIVE" } },
+      select: { teacher: { select: { user: { select: { email: true } } } } },
+    });
+    if (zzTeaching?.teacher.user.email) {
+      const zzTeacher = await mint(zzTeaching.teacher.user.email, "TEACHER", northgate.id, "zz-teacher");
+      await check(zzTeacher, `/bulletin/${circular.id}`, 200, "a teacher reads the circular and their classes' reach");
+      await check(zzTeacher, "/admin/circulars", 307, "⚠ …but not the office's list");
+    }
+    const zzGuardian = await db.guardianship.findFirst({ where: { studentSchoolId: northgate.id, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (zzGuardian?.parent.email) {
+      const zzParent = await mint(zzGuardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/bulletin/${circular.id}`, 200, "a guardian reads the circular");
+      await check(zzParent, "/admin/circulars", 307, "⚠ …but not the office's list");
+      await check(zzParent, `/bulletin/${circular.id}/outstanding`, 404, "⚠ …nor the waiting list");
+    }
+  } else {
+    skip("circular reach", "no ZZ fixtures with a circular (run zz:fixtures)");
+  }
+
   /* ---- negative: cross-tenant and cross-role ---- */
   if (klass) await check(otherAdmin, `/teacher/classes/${klass.id}`, 404, "other school's class must NOT be found");
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");

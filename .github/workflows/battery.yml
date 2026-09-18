@@ -37,7 +37,7 @@ env:
   # "fees:reconcile", "messages:send" joined the five before them) —
   # identifiers, not prose. Every fee and messaging sentence is keyed; the
   # text-message registry is a trilingual table the audit skips by design.
-  I18N_FLOOR: "160"
+  I18N_FLOOR: "161"
 
 jobs:
   battery:
@@ -144,7 +144,7 @@ jobs:
         run: pnpm audit --prod --audit-level high
       - name: Production build
         working-directory: apps/web
-        run: npx next build
+        run: NODE_OPTIONS=--max-old-space-size=4096 npx next build
 
   sweep:
     name: route sweep · axe gate · viewport matrix · production server
@@ -196,7 +196,7 @@ jobs:
       - name: Build and start
         working-directory: apps/web
         run: |
-          npx next build
+          NODE_OPTIONS=--max-old-space-size=4096 npx next build
           # The phone's web target is served on :8081 below; the API admits that origin.
           API_CORS_ORIGINS=http://localhost:8081 nohup npx next start -p 3000 > server.log 2>&1 &
           for i in $(seq 1 60); do

@@ -119,6 +119,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
+    { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
@@ -143,6 +144,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
+    { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
@@ -230,6 +232,8 @@ export const HIDDEN_SCREENS = [
   "incident",
   "incident-new",
   "family-incidents",
+  "circulars",
+  "circular-reach",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

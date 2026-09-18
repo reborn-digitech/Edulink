@@ -130,6 +130,42 @@ describe("a post", () => {
     expect(screen.queryByRole("button", { name: "Hide at our school" })).toBeNull();
   });
 
+  it("a circular's reader taps seen and understood: the server is told and the card says so", async () => {
+    const circular = { ...DETAIL, requiresAck: true, canAck: true, acked: false, comments: [] };
+    const { calls } = await mount("PARENT", { [`GET ${PATH}`]: () => json(circular), [`POST ${PATH}/ack`]: () => json({ ok: true }) });
+    expect(await screen.findByRole("header", { name: "ZZ Sports day" })).toBeTruthy();
+    expect(screen.queryByText("You’ve acknowledged this")).toBeNull();
+    // A family reads the notice; the reach report is staff's.
+    expect(screen.queryByRole("button", { name: "Reach report" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Seen and understood" }));
+    expect(await screen.findByText("You’ve acknowledged this")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Seen and understood" })).toBeNull();
+    await waitFor(() => expect(calls().some((c) => c.line === `POST ${PATH}/ack`)).toBe(true));
+  });
+
+  it("a refused acknowledgement puts the button back and says why", async () => {
+    const circular = { ...DETAIL, requiresAck: true, canAck: true, acked: false, comments: [] };
+    await mount("PARENT", { [`GET ${PATH}`]: () => json(circular), [`POST ${PATH}/ack`]: refused("ZZ Not for you", 403) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Seen and understood" }));
+    expect(await screen.findByText("ZZ Not for you")).toBeTruthy();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Seen and understood" })).toBeTruthy());
+    expect(screen.queryByText("You’ve acknowledged this")).toBeNull();
+  });
+
+  it("staff see the door to a circular's reach report, and an ordinary post has none", async () => {
+    await mount("PRINCIPAL", { [`GET ${PATH}`]: () => json({ ...DETAIL, requiresAck: true, canAck: false, acked: false, ackCount: 12, comments: [] }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Reach report" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/circular-reach", params: { postId: "p1" } });
+    expect(screen.queryByRole("button", { name: "Seen and understood" })).toBeNull();
+  });
+
+  it("an ordinary post asks nobody to acknowledge and offers no report", async () => {
+    await mount("ADMIN", { [`GET ${PATH}`]: () => json(DETAIL) });
+    expect(await screen.findByRole("header", { name: "ZZ Sports day" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Reach report" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Seen and understood" })).toBeNull();
+  });
+
   it("with no post named, says so, and the door is the bulletin", async () => {
     mockRouter.params = {};
     await mount("PARENT", {});

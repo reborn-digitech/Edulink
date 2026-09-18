@@ -3,8 +3,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, ClockIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
-import { getPost, ackReport, type AckGroup } from "@/lib/bulletin";
+import { getPost } from "@/lib/bulletin";
+import { circularReach } from "@/lib/circulars";
+import type { CircularReach } from "@edulink/contracts";
+import { db } from "@/lib/db";
 import { AckButton } from "./ack-button";
+import { ReachReport } from "./reach-report";
 import { readJsonArray, type MediaItem } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
@@ -63,13 +67,19 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
   // hint text, so it must tell the same truth.
   const willBeHeld = session.role === "STUDENT" && post.scope !== "GLOBAL";
 
-  // The delivery checklist, for the people who can chase it up.
-  let ackGroups: AckGroup[] = [];
-  if (isStaff && post.requiresAck && post.status === "APPROVED") {
+  // The reach report, for the people who chase it up: the office, the head
+  // and the class teachers of the post's own school. A teacher of no class,
+  // or of no class the circular is for, simply gets no report.
+  let reach: CircularReach | null = null;
+  let timezone = "UTC";
+  const readsReach = (session.role === "ADMIN" || session.role === "PRINCIPAL" || session.role === "TEACHER") && session.schoolId === post.schoolId;
+  if (readsReach && post.requiresAck && post.status === "APPROVED" && post.schoolId) {
     try {
-      ackGroups = await ackReport(session, post.id);
-    } catch {
-      // A teacher with no classes simply gets no breakdown.
+      reach = await circularReach(session, post.id);
+      const school = await db.school.findUnique({ where: { id: post.schoolId }, select: { timezone: true } });
+      timezone = school?.timezone ?? "UTC";
+    } catch (error) {
+      if (!(error instanceof AccessError)) throw error;
     }
   }
 
@@ -181,35 +191,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
       </article>
 
       {/* ---- who this circular has reached, class by class ---- */}
-      {ackGroups.length > 0 && (
-        <section
-          aria-labelledby="ack-report"
-          className="rounded-[--radius-lg] border border-border bg-surface p-5"
-        >
-          <h2 id="ack-report" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-            {t("bulletin.ackOutstandingTitle")}
-          </h2>
-          <ul className="mt-3 space-y-3">
-            {ackGroups.map((group) => (
-              <li key={group.classId ?? "staff"}>
-                <p className="flex items-baseline justify-between text-sm">
-                  <span className="font-semibold text-fg">
-                    {group.className || t("bulletin.audienceTeachers")}
-                  </span>
-                  <span className="text-fg-muted">
-                    {t("bulletin.ackReached", { reached: group.reached, total: group.total })}
-                  </span>
-                </p>
-                {group.outstanding.length > 0 && (
-                  <p className="mt-1 text-xs leading-relaxed text-fg-muted">
-                    {t("bulletin.ackStillWaiting")} {group.outstanding.join(", ")}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {reach && <ReachReport reach={reach} office={session.role === "ADMIN" || session.role === "PRINCIPAL"} timezone={timezone} />}
 
       <section aria-labelledby="comments">
         <h2 id="comments" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
