@@ -103,7 +103,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                   <EmptyState className="border-0 bg-transparent py-6" title={t("fees.parentNothingDue")} />
                 </div>
               ) : (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto" tabIndex={0}>
                   <table className="w-full text-sm" data-testid="fees-demands">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">

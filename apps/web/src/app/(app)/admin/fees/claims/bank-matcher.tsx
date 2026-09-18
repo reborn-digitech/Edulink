@@ -88,7 +88,7 @@ export function BankMatcher() {
 
       {matches && (
         <div className="space-y-3">
-          <div className="overflow-x-auto rounded-[--radius-md] border border-border">
+          <div className="overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>

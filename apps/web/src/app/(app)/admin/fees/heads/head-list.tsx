@@ -78,7 +78,7 @@ export function HeadList({ heads }: { heads: HeadRow[] }) {
       {heads.length === 0 ? (
         <p className="text-sm text-fg-muted">{t("fees.headsEmpty")}</p>
       ) : (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto" tabIndex={0}>
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>

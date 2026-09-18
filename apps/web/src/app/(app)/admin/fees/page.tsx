@@ -153,7 +153,7 @@ export default async function FeesOverviewPage() {
             {o.byGrade.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("fees.noStructures")}</p>
             ) : (
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto" tabIndex={0}>
                 <table className="w-full text-sm">
                   <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                     <tr>
@@ -246,7 +246,7 @@ export default async function FeesOverviewPage() {
                         {p.receiptId && p.serial && (
                           <>
                             {" · "}
-                            <Link href={receiptHref(p.receiptId)} className="text-accent-strong hover:underline">
+                            <Link href={receiptHref(p.receiptId)} className="text-accent-strong underline decoration-accent-strong/40 hover:decoration-accent-strong">
                               {p.serial}
                             </Link>
                           </>

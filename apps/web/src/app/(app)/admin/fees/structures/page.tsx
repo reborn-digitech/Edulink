@@ -71,7 +71,7 @@ export default async function FeeStructuresPage({ searchParams }: { searchParams
       {structures.length === 0 ? (
         <EmptyState icon={<StackIcon weight="duotone" className="size-8" />} title={t("fees.structuresEmpty")} description={office && heads > 0 ? t("fees.setUpStructuresHint") : undefined} />
       ) : (
-        <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+        <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>
