@@ -182,6 +182,7 @@ export default async function AdminTimetablePage({
                     classId={selected.id}
                     className={selected.name}
                     periods={grid.periods}
+                    days={grid.days.map((day) => day.weekday)}
                     slots={grid.slots}
                     staff={staffOptions}
                     busy={busy}

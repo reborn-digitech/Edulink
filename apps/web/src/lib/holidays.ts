@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
-import { isDateKey, dateKeyRange, isTeachingDay } from "./dates";
+import { isDateKey, dateKeyRange, isTeachingDay, parseTeachingDays, DEFAULT_TEACHING_DAYS } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -123,8 +123,8 @@ export function closedDayKeys(spans: HolidaySpan[]): Set<string> {
  * school teaches Monday to Saturday, so a Saturday is an ordinary school day
  * and a Saturday holiday is a real one that has to be declared like any other.
  */
-export function isSchoolClosed(spans: HolidaySpan[], dateKey: string): boolean {
-  if (!isTeachingDay(dateKey)) return true;
+export function isSchoolClosed(spans: HolidaySpan[], dateKey: string, teachingDays: readonly number[] = DEFAULT_TEACHING_DAYS): boolean {
+  if (!isTeachingDay(dateKey, teachingDays)) return true;
   return closedDayKeys(spans).has(dateKey);
 }
 
@@ -150,6 +150,7 @@ export function schoolDaysBetween(
   fromKey: string,
   toKey: string,
   spans: HolidaySpan[],
+  teachingDays: readonly number[] = DEFAULT_TEACHING_DAYS,
 ): number {
   const length = spanLengthDays({ startDateKey: fromKey, endDateKey: toKey, kind: "HOLIDAY" });
   if (length < 1) return 0;
@@ -163,7 +164,7 @@ export function schoolDaysBetween(
   const closed = closedDayKeys(spans);
   let days = 0;
   for (const key of dateKeyRange(fromKey, toKey, MAX_HOLIDAY_SPAN_DAYS)) {
-    if (!isTeachingDay(key)) continue;
+    if (!isTeachingDay(key, teachingDays)) continue;
     if (closed.has(key)) continue;
     days++;
   }
@@ -219,21 +220,28 @@ export async function listHolidays(
 export async function closedOn(
   schoolId: string,
   dateKey: string,
-): Promise<{ closed: boolean; entries: { name: string; kind: string }[] }> {
-  if (!isDateKey(dateKey)) return { closed: false, entries: [] };
+): Promise<{ closed: boolean; entries: { name: string; kind: string }[]; teachingDay: boolean }> {
+  if (!isDateKey(dateKey)) return { closed: false, entries: [], teachingDay: false };
 
-  const rows = await db.holiday.findMany({
-    where: {
-      schoolId,
-      startDateKey: { lte: dateKey },
-      endDateKey: { gte: dateKey },
-    },
-    select: { name: true, kind: true },
-  });
+  const [rows, school] = await Promise.all([
+    db.holiday.findMany({
+      where: {
+        schoolId,
+        startDateKey: { lte: dateKey },
+        endDateKey: { gte: dateKey },
+      },
+      select: { name: true, kind: true },
+    }),
+    db.school.findUnique({ where: { id: schoolId }, select: { teachingDays: true } }),
+  ]);
 
   return {
+    // `closed` is the calendar's word alone; `teachingDay` is the school's
+    // week. A Sunday is not "closed" by a holiday, it is simply not a
+    // teaching day, and the two read differently on a page.
     closed: rows.some((row) => HOLIDAY_KIND_META[row.kind as HolidayKind]?.closesSchool),
     entries: rows,
+    teachingDay: isTeachingDay(dateKey, parseTeachingDays(school?.teachingDays)),
   };
 }
 

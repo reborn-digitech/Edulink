@@ -11,7 +11,7 @@ import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/l
 import { getRegister } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
-import { addDaysToKey, formatDateKey, todayKey, isDateKey, isTeachingDay } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, todayKey, isDateKey } from "@/lib/dates";
 import { Register } from "./register";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
@@ -110,7 +110,7 @@ export default async function AttendancePage({
         calendar={calendar}
         locale={locale}
         dateKey={dateKey}
-        sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
+        sundayNote={calendar.teachingDay ? null : t("teacher.sundayRegister")}
         openDayNote={(date) => t("teacher.openDayNote", { date })}
         closedDayTitle={(date) => t("teacher.closedDayTitle", { date })}
         closedDayBody={t("teacher.closedDayBody")}
@@ -200,7 +200,7 @@ export default async function AttendancePage({
         calendar={calendar}
         locale={locale}
         dateKey={dateKey}
-        sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
+        sundayNote={calendar.teachingDay ? null : t("teacher.sundayRegister")}
         openDayNote={(date) => t("teacher.openDayNote", { date })}
         closedDayTitle={(date) => t("teacher.closedDayTitle", { date })}
         closedDayBody={t("teacher.closedDayBody")}

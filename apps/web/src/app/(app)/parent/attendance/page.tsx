@@ -5,7 +5,8 @@ import { ArrowLeftIcon, CalendarCheckIcon, CaretLeftIcon, CaretRightIcon } from 
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { getAttendanceSummary } from "@/lib/attendance";
-import { formatDateKey, isTeachingDay, todayKey } from "@/lib/dates";
+import { formatDateKey, isTeachingDay, parseTeachingDays, todayKey } from "@/lib/dates";
+import { db } from "@/lib/db";
 import { MONTH_KEY, shiftMonth } from "@/lib/attendance-history";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -40,6 +41,7 @@ export default async function ParentAttendancePage({
   const link = await assertGuardianAccess(session.user.id, selectedId);
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
+  const teachingDays = parseTeachingDays((await db.school.findUnique({ where: { id: student.schoolId }, select: { teachingDays: true } }))?.teachingDays);
 
   // ONE MONTH AT A TIME, any month. A rolling "last 60 days" answered "how
   // is it going" and nothing else; a parent asked in March about January
@@ -180,7 +182,7 @@ export default async function ParentAttendancePage({
                         day was unusual — noise on the six-sevenths of the week
                         that are perfectly normal.
                       */
-                      !isTeachingDay(day.dateKey) && (
+                      !isTeachingDay(day.dateKey, teachingDays) && (
                         <p className="text-xs text-fg-subtle">{t("parent.sundaySession")}</p>
                       )
                     )}

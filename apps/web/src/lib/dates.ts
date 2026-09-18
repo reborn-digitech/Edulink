@@ -139,8 +139,40 @@ export function isWeekend(dateKey: string): boolean {
  * `School`, rather than a hunt through every place `day === 0 || day === 6` was
  * inlined — which is exactly the hunt that produced this function.
  */
-export function isTeachingDay(dateKey: string): boolean {
-  return weekdayOfKey(dateKey) !== 0;
+export function isTeachingDay(dateKey: string, days: readonly number[] = DEFAULT_TEACHING_DAYS): boolean {
+  return days.includes(weekdayOfKey(dateKey));
+}
+
+/**
+ * The teaching week when a school has not said otherwise: Monday to Saturday,
+ * the Indian norm. A school's own list lives on `School.teachingDays` as
+ * "1,2,3,4,5,6" and is read through `parseTeachingDays`; every caller that
+ * has the school passes its list, and the default stands only for callers
+ * that have no school in hand.
+ */
+export const DEFAULT_TEACHING_DAYS: readonly number[] = [1, 2, 3, 4, 5, 6];
+
+/**
+ * "1,2,3,4,5" → [1, 2, 3, 4, 5]. Unknown numbers are dropped, duplicates
+ * collapsed, the order Monday-first with Sunday last, and an empty or
+ * unreadable value falls back to the default rather than to a week with no
+ * school in it, which would close every day at once.
+ */
+export function parseTeachingDays(raw: string | null | undefined): number[] {
+  const seen = new Set<number>();
+  for (const part of (raw ?? "").split(",")) {
+    const text = part.trim();
+    if (text === "") continue; // Number("") is 0, which would make a blank column a Sunday-only school.
+    const n = Number(text);
+    if (Number.isInteger(n) && n >= 0 && n <= 6) seen.add(n);
+  }
+  if (seen.size === 0) return [...DEFAULT_TEACHING_DAYS];
+  return [...seen].sort((a, b) => ((a + 6) % 7) - ((b + 6) % 7));
+}
+
+/** The reverse: a list back to the column's text, in the same Monday-first order. */
+export function formatTeachingDays(days: readonly number[]): string {
+  return parseTeachingDays(days.join(",")).join(",");
 }
 
 /* -------------------------------------------------------------------------- */

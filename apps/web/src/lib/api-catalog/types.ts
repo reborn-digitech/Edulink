@@ -78,6 +78,9 @@ export type SweepFixture = {
   circularId: string | null;
   syllabusUnitId: string | null;
   lessonPlanId: string | null;
+  /** A slot today whose teacher is away today, and a colleague who is in and free for it; null on a day with no board. */
+  substitutionSlotId: string | null;
+  substituteMembershipId: string | null;
   todayKey: string;
 };
 

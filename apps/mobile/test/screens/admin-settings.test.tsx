@@ -50,6 +50,18 @@ const SAVED = {
   brandPrimary: "",
   about: "ZZ about us.",
 };
+/** The teaching week the settings screen also asks for: Monday to Saturday unless a test says otherwise, and a save is remembered. */
+const WEEK = "/api/v1/office/school-week";
+function week(orphaned = 0): Answers {
+  let days = [1, 2, 3, 4, 5, 6];
+  return {
+    [`GET ${WEEK}`]: () => json({ days }),
+    [`POST ${WEEK}`]: async ({ init }) => {
+      days = (JSON.parse(String(init.body)) as { days: number[] }).days;
+      return json({ days, orphanedSlots: orphaned });
+    },
+  };
+}
 const withToasts = (answers: Answers) =>
   mountStaff(
     <ToastProvider>
@@ -67,10 +79,11 @@ beforeEach(() => {
 describe("school settings", () => {
   it("loads, then shows the details, the directory state and the housekeeping numbers", async () => {
     const gate = gated();
-    await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": gate.answer });
+    await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
     gate.open(() => json(DATA));
     await screen.findByDisplayValue("ZZ School");
+    await screen.findByRole("switch", { name: "Monday" });
     expect(screen.getByText("School code ZZSCH — this cannot be changed.")).toBeTruthy();
     expect(screen.getByDisplayValue("Asia/Kolkata")).toBeTruthy();
     expect(screen.getByText("In the directory")).toBeTruthy();
@@ -82,8 +95,9 @@ describe("school settings", () => {
   });
 
   it("a change enables Save, which posts the whole form and says so", async () => {
-    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/admin/settings": () => json({ ok: true }) });
+    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/admin/settings": () => json({ ok: true }) });
     await fireEvent.changeText(await screen.findByLabelText("School name"), "ZZ Renamed School");
+    await screen.findByRole("switch", { name: "Monday" });
     await fireEvent.press(screen.getByRole("radio", { name: "Teal" }));
     expect(screen.getByText("Unsaved changes")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
@@ -94,8 +108,9 @@ describe("school settings", () => {
   });
 
   it("a bad email is caught before anything is sent", async () => {
-    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": () => json(DATA) });
+    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": () => json(DATA) });
     await fireEvent.changeText(await screen.findByLabelText("Contact email"), "not-an-email");
+    await screen.findByRole("switch", { name: "Monday" });
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
     expect(await screen.findByText("Enter a valid contact email.")).toBeTruthy();
     expect(screen.getByText("Not saved: Check the highlighted fields.")).toBeTruthy();
@@ -103,16 +118,18 @@ describe("school settings", () => {
   });
 
   it("a refused save is said, not swallowed", async () => {
-    await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/admin/settings": refused("That timezone is not known.", 422) });
+    await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/admin/settings": refused("That timezone is not known.", 422) });
     await fireEvent.changeText(await screen.findByLabelText("Timezone"), "Mars/Olympus");
+    await screen.findByRole("switch", { name: "Monday" });
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
     expect(await screen.findByText("Not saved: That timezone is not known.")).toBeTruthy();
   });
 
   it("a logo is picked from the phone's files and made the school's; closing the picker sends nothing", async () => {
-    const { calls } = await withToasts({ "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/office/logo": () => json({ logoPath: "f1.png" }) });
+    const { calls } = await withToasts({ ...week(), "GET /api/v1/admin/settings": () => json(DATA), "POST /api/v1/office/logo": () => json({ logoPath: "f1.png" }) });
     mockPick.mockResolvedValueOnce(null);
     await fireEvent.press(await screen.findByRole("button", { name: "Choose an image" }));
+    await screen.findByRole("switch", { name: "Monday" });
     await waitFor(() => expect(mockPick).toHaveBeenCalledWith("image", "Could not save that."));
     expect(calls().some((c) => c.line === "POST /api/v1/office/logo")).toBe(false);
     mockPick.mockResolvedValueOnce({ fileId: "f1.png", mime: "image/png", size: 2048, name: "logo.png" });
@@ -122,15 +139,17 @@ describe("school settings", () => {
   });
 
   it("a refused upload is the picker's sentence", async () => {
-    await withToasts({ "GET /api/v1/admin/settings": () => json(DATA) });
+    await withToasts({ ...week(), "GET /api/v1/admin/settings": () => json(DATA) });
     mockPick.mockRejectedValueOnce(new Error("That file is too big."));
     await fireEvent.press(await screen.findByRole("button", { name: "Choose an image" }));
+    await screen.findByRole("switch", { name: "Monday" });
     expect(await screen.findByText("That file is too big.")).toBeTruthy();
   });
 
   it("taking the logo off asks first", async () => {
-    const { calls } = await withToasts({ "GET /api/v1/admin/settings": () => json(WITH_LOGO), "POST /api/v1/office/logo": () => json({ logoPath: null }) });
+    const { calls } = await withToasts({ ...week(), "GET /api/v1/admin/settings": () => json(WITH_LOGO), "POST /api/v1/office/logo": () => json({ logoPath: null }) });
     expect(await screen.findByText("Current logo")).toBeTruthy();
+    await screen.findByRole("switch", { name: "Monday" });
     expect(screen.getByRole("button", { name: "Choose another" })).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Remove Logo" }));
     expect(calls().some((c) => c.line === "POST /api/v1/office/logo")).toBe(false);
@@ -140,18 +159,21 @@ describe("school settings", () => {
   });
 
   it("the directory profile is its own screen", async () => {
-    await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": () => json(DATA) });
+    await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": () => json(DATA) });
     await fireEvent.press(await screen.findByRole("button", { name: "Edit the directory profile" }));
+    await screen.findByRole("switch", { name: "Monday" });
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/directory-profile");
   });
 
   it("housekeeping saves whole days (blank is the platform's number); anything else is caught; a range refusal is the server's", async () => {
     let answered = 0;
     const { calls } = await withToasts({
+      ...week(),
       "GET /api/v1/admin/settings": () => json(DATA),
       "POST /api/v1/office/notifications/housekeeping": () => (answered++ === 0 ? json({ ok: true }) : json({ error: "Auto-read must be between 7 and 365 days.", code: "BAD_REQUEST" }, 422)),
     });
     await fireEvent.changeText(await screen.findByLabelText("Mark unread as read after (days)"), "3.5");
+    await screen.findByRole("switch", { name: "Monday" });
     await fireEvent.press(screen.getByRole("button", { name: "Save: Notification housekeeping" }));
     expect(screen.getByText("Days must be whole numbers.")).toBeTruthy();
     expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
@@ -165,8 +187,37 @@ describe("school settings", () => {
     expect(await screen.findByText("Auto-read must be between 7 and 365 days.")).toBeTruthy();
   });
 
+  it("the teaching week shows Monday to Sunday as switches; a change enables the save, which posts the days and says so", async () => {
+    const { calls } = await withToasts({ ...week(), "GET /api/v1/admin/settings": () => json(DATA) });
+    await screen.findByRole("switch", { name: "Monday" });
+    expect(screen.getAllByRole("switch").map((s) => s.props.accessibilityLabel)).toEqual(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]);
+    expect(screen.getByRole("switch", { name: "Saturday" })).toBeChecked();
+    expect(screen.getByRole("switch", { name: "Sunday" })).not.toBeChecked();
+    expect(screen.getByRole("button", { name: "Save the week" })).toBeDisabled();
+    await fireEvent.press(screen.getByRole("switch", { name: "Saturday" }));
+    expect(screen.getByRole("switch", { name: "Saturday" })).not.toBeChecked();
+    await fireEvent.press(screen.getByRole("button", { name: "Save the week" }));
+    expect(await screen.findByText("Teaching week saved.")).toBeTruthy();
+    expect(calls().find((c) => c.line === `POST ${WEEK}`)?.body).toEqual({ days: [1, 2, 3, 4, 5] });
+    // Reread and settled: nothing left to save.
+    await waitFor(() => expect(screen.getByRole("button", { name: "Save the week" })).toBeDisabled());
+  });
+
+  it("a day dropped with lessons on it is counted in the toast, and a week with no days is refused before anything is sent", async () => {
+    const { calls } = await withToasts({ ...week(2), "GET /api/v1/admin/settings": () => json(DATA) });
+    await screen.findByRole("switch", { name: "Monday" });
+    await fireEvent.press(screen.getByRole("switch", { name: "Saturday" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Save the week" }));
+    expect(await screen.findByText("Teaching week saved. 2 timetable lessons now sit on a day the school does not teach; move them on the timetable.")).toBeTruthy();
+    await waitFor(() => expect(screen.getByRole("button", { name: "Save the week" })).toBeDisabled());
+    for (const day of ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]) await fireEvent.press(screen.getByRole("switch", { name: day }));
+    await fireEvent.press(screen.getByRole("button", { name: "Save the week" }));
+    expect(await screen.findByText("Pick at least one day.")).toBeTruthy();
+    expect(calls().filter((c) => c.line === `POST ${WEEK}`)).toHaveLength(1);
+  });
+
   it("a refusal is an alert with a retry", async () => {
-    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { "GET /api/v1/admin/settings": refused("Not now.") });
+    const { calls } = await mountStaff(<AdminSettings />, "ADMIN", { ...week(), "GET /api/v1/admin/settings": refused("Not now.") });
     expect(await screen.findByRole("alert")).toHaveTextContent("Not now.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/settings").length).toBe(2));

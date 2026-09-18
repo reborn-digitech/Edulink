@@ -12,7 +12,7 @@ import { currentAcademicYear, listAcademicYears } from "@/lib/academic-year";
 import { currentTerms, termsOfYear } from "@/lib/terms";
 import { unstaffedLessons, listPeriods, timetableClasses, classWeek, schoolBusyMap, teachingLoad } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
-import { todayKey, addDaysToKey } from "@/lib/dates";
+import { todayKey, addDaysToKey, parseTeachingDays } from "@/lib/dates";
 import { schoolJobStory } from "@/lib/job-health";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { readJsonArray } from "@/lib/json";
@@ -609,6 +609,7 @@ export async function adminSettings(ctx: Scoped) {
         gradeLow: true,
         gradeHigh: true,
         timezone: true,
+        teachingDays: true,
       },
     }),
     readOwnProfileSettings(ctx),
@@ -622,7 +623,7 @@ export async function adminSettings(ctx: Scoped) {
       ? [{ membershipId: directory.admissionsContactMembershipId, name: directory.contactName, role: "" }, ...freshCandidates]
       : freshCandidates;
   return {
-    school,
+    school: { ...school, teachingDays: parseTeachingDays(school.teachingDays) },
     directory,
     contactCandidates,
     notifDefaults: { autoReadDays: AUTO_READ_AFTER_DAYS, expireDays: EXPIRE_READ_AFTER_DAYS },

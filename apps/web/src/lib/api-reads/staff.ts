@@ -23,7 +23,8 @@ import { db } from "@/lib/db";
 import type { ActiveContext } from "@/lib/session";
 import type { Role } from "@/lib/constants";
 import { AccessError, assertClassAccess, teacherClassIds } from "@/lib/tenancy";
-import { addDaysToKey, isTeachingDay, todayKey, weekdayOfKey } from "@/lib/dates";
+import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
+import { myCovers } from "@/lib/substitutions";
 import { closedOn } from "@/lib/holidays";
 import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getAttendanceSummary, getRegister } from "@/lib/attendance";
@@ -117,7 +118,8 @@ export async function staffToday(ctx: Staff): Promise<StaffToday> {
     classesTaughtThisWeek: new Set(week.slots.map((slot) => slot.classId)).size,
   };
 
-  const base = { dateKey, schoolName: school.name, marksTodo: marksTodo.map((row) => ({ ...row })), lessons: lessonsBlock };
+  const covers = (await myCovers(ctx, dateKey)).items.map((c) => ({ slotId: c.slotId, periodName: c.periodName, startMinute: c.startMinute, endMinute: c.endMinute, subject: c.subject, classId: c.classId, className: c.className, room: c.room, absentName: c.absentName, note: c.note }));
+  const base = { dateKey, schoolName: school.name, marksTodo: marksTodo.map((row) => ({ ...row })), lessons: lessonsBlock, covers };
   if (classIds.length === 0) return { ...base, formClasses: null };
 
   const [classes, sessionsToday, dueSoon, ungraded] = await Promise.all([
@@ -153,7 +155,7 @@ export async function staffToday(ctx: Staff): Promise<StaffToday> {
 
 async function calendarNotice(schoolId: string, dateKey: string) {
   const calendar = await closedOn(schoolId, dateKey);
-  return { closed: calendar.closed, entries: calendar.entries, nonTeachingDay: !isTeachingDay(dateKey) };
+  return { closed: calendar.closed, entries: calendar.entries, nonTeachingDay: !calendar.teachingDay };
 }
 
 export async function attendanceClasses(ctx: Staff, date?: string): Promise<AttendanceClasses> {

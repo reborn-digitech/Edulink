@@ -6,7 +6,7 @@ import { audit } from "./audit";
 import { approvedLeaveBetween } from "./leave";
 import { closedOn } from "./holidays";
 import { STAFF_ROLES } from "./staff-records";
-import { isDateKey, isTeachingDay, todayKey } from "./dates";
+import { isDateKey, isTeachingDay, parseTeachingDays, todayKey } from "./dates";
 import { MONTH_KEY, shiftMonth } from "./attendance-history";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -49,7 +49,7 @@ export function minuteOfDayIn(timeZone: string, now = new Date()): number {
 }
 
 async function schoolOf(schoolId: string) {
-  return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true, staffCheckInMinute: true, staffLateGraceMinutes: true } });
+  return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true, staffCheckInMinute: true, staffLateGraceMinutes: true, teachingDays: true } });
 }
 
 async function staffMembers(schoolId: string) {
@@ -117,8 +117,8 @@ export async function staffRegister(ctx: ActiveContext, dateKey?: string): Promi
   return {
     dateKey: day,
     today,
-    closed: !isTeachingDay(day) || closure.closed,
-    closedName: closure.closed ? (closure.entries[0]?.name ?? null) : !isTeachingDay(day) ? "" : null,
+    closed: !closure.teachingDay || closure.closed,
+    closedName: closure.closed ? (closure.entries[0]?.name ?? null) : !closure.teachingDay ? "" : null,
     checkInMinute: school.staffCheckInMinute,
     lateGraceMinutes: school.staffLateGraceMinutes,
     rows: out,
@@ -165,7 +165,7 @@ export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttend
   const school = await schoolOf(caller.schoolId);
   const today = todayKey(school.timezone);
   const closure = await closedOn(caller.schoolId, today);
-  if (!isTeachingDay(today) || closure.closed) throw new AccessError("staffAttendance.refuseClosed");
+  if (!closure.teachingDay || closure.closed) throw new AccessError("staffAttendance.refuseClosed");
   const existing = await db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: caller.membershipId, dateKey: today } } });
   // A second tap in the day, or a check-in after the office already marked
   // the person, changes nothing and says what stands: not a refusal.
@@ -180,10 +180,10 @@ export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttend
 
 type Tally = { present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number; percent: number | null };
 
-function tally(days: string[], closedDays: Set<string>, rows: Map<string, StaffAttendanceStatus>, leave: (d: string) => boolean, upTo: string): Tally {
+function tally(days: string[], closedDays: Set<string>, rows: Map<string, StaffAttendanceStatus>, leave: (d: string) => boolean, upTo: string, week: readonly number[]): Tally {
   const t = { present: 0, late: 0, halfDay: 0, absent: 0, onLeave: 0, unmarked: 0, workingDays: 0 };
   for (const d of days) {
-    if (!isTeachingDay(d) || closedDays.has(d)) continue;
+    if (!isTeachingDay(d, week) || closedDays.has(d)) continue;
     t.workingDays += 1;
     if (d > upTo) continue;
     const s = rows.get(d) ?? (leave(d) ? "ON_LEAVE" : null);
@@ -198,9 +198,9 @@ function tally(days: string[], closedDays: Set<string>, rows: Map<string, StaffA
   return { ...t, percent: marked === 0 ? null : Math.round(((t.present + t.late + t.halfDay * 0.5) / marked) * 100) };
 }
 
-async function closedDaysIn(schoolId: string, days: string[]): Promise<Set<string>> {
+async function closedDaysIn(schoolId: string, days: string[], week: readonly number[]): Promise<Set<string>> {
   const out = new Set<string>();
-  for (const d of days) if (isTeachingDay(d) && (await closedOn(schoolId, d)).closed) out.add(d);
+  for (const d of days) if (isTeachingDay(d, week) && (await closedOn(schoolId, d)).closed) out.add(d);
   return out;
 }
 
@@ -212,22 +212,23 @@ export async function staffMonth(ctx: ActiveContext, month?: string): Promise<St
   const thisMonth = today.slice(0, 7);
   const m = month && MONTH_KEY.test(month) && month <= thisMonth ? month : thisMonth;
   const days = daysOf(m);
+  const week = parseTeachingDays(school.teachingDays);
   const [members, rows, closedDays, leave] = await Promise.all([
     staffMembers(caller.schoolId),
     db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: { gte: days[0]!, lte: days[days.length - 1]! } }, select: { membershipId: true, dateKey: true, status: true } }),
-    closedDaysIn(caller.schoolId, days),
+    closedDaysIn(caller.schoolId, days, week),
     leaveDays(caller, days[0]!, days[days.length - 1]!),
   ]);
   const byMember = new Map<string, Map<string, StaffAttendanceStatus>>();
   for (const r of rows) (byMember.get(r.membershipId) ?? byMember.set(r.membershipId, new Map()).get(r.membershipId)!).set(r.dateKey, r.status as StaffAttendanceStatus);
   const next = shiftMonth(m, 1);
-  const workingDays = days.filter((d) => isTeachingDay(d) && !closedDays.has(d)).length;
+  const workingDays = days.filter((d) => isTeachingDay(d, week) && !closedDays.has(d)).length;
   return {
     month: m,
     previousMonth: shiftMonth(m, -1),
     nextMonth: next <= thisMonth ? next : null,
     workingDays,
-    rows: members.map((mem) => ({ membershipId: mem.id, name: mem.user.preferredName ?? mem.user.name, role: mem.role, ...tally(days, closedDays, byMember.get(mem.id) ?? new Map(), (d) => leave.get(d)?.has(mem.id) ?? false, today) })),
+    rows: members.map((mem) => ({ membershipId: mem.id, name: mem.user.preferredName ?? mem.user.name, role: mem.role, ...tally(days, closedDays, byMember.get(mem.id) ?? new Map(), (d) => leave.get(d)?.has(mem.id) ?? false, today, week) })),
   };
 }
 
@@ -239,9 +240,10 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
   const thisMonth = today.slice(0, 7);
   const m = month && MONTH_KEY.test(month) && month <= thisMonth ? month : thisMonth;
   const days = daysOf(m);
+  const week = parseTeachingDays(school.teachingDays);
   const [rows, closedDays, leave, todayRow, todayClosure] = await Promise.all([
     db.staffAttendance.findMany({ where: { membershipId: caller.membershipId, dateKey: { gte: days[0]!, lte: days[days.length - 1]! } } }),
-    closedDaysIn(caller.schoolId, days),
+    closedDaysIn(caller.schoolId, days, week),
     leaveDays(caller, days[0]!, days[days.length - 1]!),
     db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: caller.membershipId, dateKey: today } }, select: { status: true } }),
     closedOn(caller.schoolId, today),
@@ -257,10 +259,10 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
     nextMonth: next <= thisMonth ? next : null,
     today,
     todayStatus,
-    canCheckIn: !todayRow && isTeachingDay(today) && !todayClosure.closed,
+    canCheckIn: !todayRow && todayClosure.teachingDay && !todayClosure.closed,
     checkInMinute: school.staffCheckInMinute,
     lateGraceMinutes: school.staffLateGraceMinutes,
-    summary: tally(days, closedDays, statuses, leaveOn, today),
+    summary: tally(days, closedDays, statuses, leaveOn, today, week),
     days: days
       .filter((d) => d <= today)
       .reverse()
@@ -272,7 +274,7 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
           source: row ? (row.source as "OFFICE" | "SELF") : leaveOn(d) ? ("LEAVE" as const) : null,
           checkedInAt: row?.checkedInAt?.toISOString() ?? null,
           note: row?.note ?? null,
-          closed: !isTeachingDay(d) || closedDays.has(d),
+          closed: !isTeachingDay(d, week) || closedDays.has(d),
         };
       }),
   };
@@ -282,7 +284,8 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
 export async function staffMonthCsvRows(ctx: ActiveContext, month?: string): Promise<{ month: string; headers: string[]; rows: Record<string, string | number>[] }> {
   const caller = office(ctx);
   const view = await staffMonth(ctx, month);
-  const days = daysOf(view.month).filter((d) => isTeachingDay(d));
+  const school = await schoolOf(caller.schoolId);
+  const days = daysOf(view.month).filter((d) => isTeachingDay(d, parseTeachingDays(school.teachingDays)));
   const marks = await db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: { in: days } }, select: { membershipId: true, dateKey: true, status: true } });
   const leave = await leaveDays(caller, days[0]!, days[days.length - 1]!);
   const byKey = new Map(marks.map((r) => [`${r.membershipId}:${r.dateKey}`, r.status]));

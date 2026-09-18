@@ -115,6 +115,23 @@ export const staffTodaySchema = z.object({
     coveringToday: z.number().int(),
     classesTaughtThisWeek: z.number().int(),
   }),
+  /** Lessons the office has asked me to cover today, from the substitution board; absent on older servers. */
+  covers: z
+    .array(
+      z.object({
+        slotId: z.string(),
+        periodName: z.string().nullable(),
+        startMinute: z.number().int().nullable(),
+        endMinute: z.number().int().nullable(),
+        subject: z.string(),
+        classId: z.string(),
+        className: z.string(),
+        room: z.string().nullable(),
+        absentName: z.string(),
+        note: z.string().nullable(),
+      }),
+    )
+    .optional(),
   /** Present only for a form teacher — the register list and the marking pile. */
   formClasses: z
     .object({

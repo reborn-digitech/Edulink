@@ -59,6 +59,8 @@ const DIRECT = [
   "SyllabusUnit",
   "SyllabusProgress",
   "LessonPlan",
+  /** A lesson covered on a day: the school's row on its own timetable slot. */
+  "Substitution",
   "AcademicYear",
   "Term",
   "StaffRecord",
@@ -218,7 +220,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(102);
+    ).toBe(103);
   });
 });
 

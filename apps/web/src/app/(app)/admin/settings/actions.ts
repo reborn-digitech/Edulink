@@ -11,6 +11,7 @@ import { audit } from "@/lib/audit";
 import { normaliseLocation } from "@/lib/places";
 import { setNotifThresholds, AUTO_READ_RANGE, EXPIRE_RANGE } from "@/lib/notification-housekeeping";
 import { LOGO_MAX_BYTES, removeSchoolLogo, setSchoolLogo } from "@/lib/school-logo";
+import { setSchoolWeek } from "@/lib/substitutions";
 
 export type SettingsState = { ok: boolean; errors: FieldErrors };
 
@@ -165,5 +166,29 @@ export async function removeLogo(): Promise<LogoState> {
       return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[removeLogo]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
+  }
+}
+
+/**
+ * The days the school teaches on. The library keeps the rule — at least one
+ * day, Monday first — and counts the timetable lessons left on a day the
+ * school no longer teaches, so the form can say how many to move.
+ */
+export async function saveTeachingWeek(days: number[]): Promise<{ ok: boolean; error?: string; orphanedSlots?: number }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const wanted = Array.isArray(days) ? days.filter((d) => Number.isInteger(d) && d >= 0 && d <= 6) : [];
+    if (wanted.length === 0) return { ok: false, error: (await getT())("substitutions.weekAtLeastOne") };
+    const { orphanedSlots } = await setSchoolWeek(ctx, { days: wanted });
+    revalidatePath("/admin/settings");
+    revalidatePath("/admin/timetable");
+    revalidatePath("/admin/substitutions");
+    revalidatePath("/admin/staff-attendance");
+    revalidatePath("/admin/calendar");
+    return { ok: true, orphanedSlots };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[saveTeachingWeek]", error);
+    return { ok: false, error: (await getT())("common.tryAgain") };
   }
 }

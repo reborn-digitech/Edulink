@@ -10,8 +10,10 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { LogoPicker } from "./logo-picker";
 import { DetailsForm } from "./details-form";
 import { NotifTidyForm } from "./notif-tidy-form";
+import { TeachingWeekForm } from "./teaching-week-form";
+import { parseTeachingDays } from "@/lib/dates";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
-import { BroomIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -48,6 +50,7 @@ export default async function SettingsPage() {
       gradeLow: true,
       gradeHigh: true,
       timezone: true,
+      teachingDays: true,
     },
     }),
     readOwnProfileSettings(ctx),
@@ -87,6 +90,17 @@ export default async function SettingsPage() {
         />
         <CardBody>
           <LogoPicker schoolName={school.name} logoPath={school.logoPath} />
+        </CardBody>
+      </Card>
+
+      <Card id="teaching-week">
+        <CardHeader
+          icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
+          title={t("substitutions.weekTitle")}
+          description={t("substitutions.weekIntro")}
+        />
+        <CardBody>
+          <TeachingWeekForm initialDays={parseTeachingDays(school.teachingDays)} />
         </CardBody>
       </Card>
 

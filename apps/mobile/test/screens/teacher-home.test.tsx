@@ -63,6 +63,36 @@ describe("the teacher's Today", () => {
     expect(screen.getByText("ZZ 5A · 3 of 24 marked")).toBeTruthy();
     expect(screen.getByText(/ZZ 5A · Due in 2 days/)).toBeTruthy();
     expect(screen.getByText("ZZ 5B")).toBeTruthy();
+    // Nothing to cover today: no card for it.
+    expect(screen.queryByText("Covering today")).toBeNull();
+  });
+
+  it("a teacher with no class and no lesson of their own still sees the cover the office gave them", async () => {
+    const covers = [{ slotId: "s9", periodName: "Period 1", startMinute: 480, endMinute: 525, subject: "English", classId: "k9", className: "9A", room: "R901", absentName: "Rekha", note: null }];
+    fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, formClasses: null, marksTodo: [], lessons: { ...TODAY.lessons, items: [] }, covers }) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("Covering today");
+    expect(screen.getByText("English · 9A")).toBeTruthy();
+    expect(screen.queryByText("No classes assigned yet")).toBeNull();
+  });
+
+  it("with lessons to cover, a 'Covering today' card lists them and opens the covers screen", async () => {
+    const covers = [
+      { slotId: "sl2", periodName: "Period 3", startMinute: 660, endMinute: 700, subject: "English", classId: ID.class2, className: "ZZ 5B", room: "Room 5", absentName: "ZZ Anita", note: null },
+      { slotId: "sl3", periodName: null, startMinute: null, endMinute: null, subject: "Science", classId: ID.class2, className: "ZZ 6A", room: null, absentName: "ZZ Bala", note: "Lab safety sheet" },
+    ];
+    fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, covers }) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("Covering today");
+    expect(screen.getByText("English · ZZ 5B")).toBeTruthy();
+    expect(screen.getByText("Period 3 · 11:00–11:40 · Room 5 · For ZZ Anita")).toBeTruthy();
+    expect(screen.getByText("Science · ZZ 6A")).toBeTruthy();
+    expect(screen.getByText("Period · For ZZ Bala")).toBeTruthy();
+    await tap(screen.getByRole("button", { name: /^English · ZZ 5B/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-covers");
+    mockRouter.push.mockReset();
+    await tap(screen.getByRole("button", { name: "See all: Covering today" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-covers");
   });
 
   it("a class row opens the register for that class; a paper opens the marks grid", async () => {

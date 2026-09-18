@@ -34,6 +34,18 @@ async function mint(userId: string, role: Role, schoolId: string | null): Promis
 }
 
 /** Ids from ZZ Northgate for endpoints with a parameter; null where the fixture lacks the thing. */
+/**
+ * A lesson today whose teacher is away today, and someone in who is free
+ * for it. zz:fixtures marks one ZZ teacher absent today and covers one of
+ * their lessons; the sweep's assign then repeats that cover (a no-op) and
+ * its clear takes it off, which the fixture restore puts back.
+ */
+async function substitutionFixture(s: string): Promise<{ substitutionSlotId: string | null; substituteMembershipId: string | null }> {
+  const today = new Date().toISOString().slice(0, 10);
+  const cover = await db.substitution.findFirst({ where: { schoolId: s, dateKey: today }, select: { slotId: true, substituteMembershipId: true }, orderBy: { createdAt: "asc" } });
+  return { substitutionSlotId: cover?.slotId ?? null, substituteMembershipId: cover?.substituteMembershipId ?? null };
+}
+
 async function fixture(): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   const s = school.id;
@@ -75,6 +87,7 @@ async function fixture(): Promise<SweepFixture> {
     circularId: await first(db.post.findFirst({ where: { schoolId: s, requiresAck: true, status: "APPROVED" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
     lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
+    ...(await substitutionFixture(s)),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }

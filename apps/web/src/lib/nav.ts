@@ -61,6 +61,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
+    // Who covers the lessons of staff who are away: the board the staff register feeds.
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Fees: what the school asked its families for and what arrived. The
     // office writes; the principal reads the same pages (see fees.ts officeOrHead).
@@ -100,6 +102,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
+    // Who covers the lessons of staff who are away: the board the staff register feeds.
+    { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Read-only for the head: the overview, the dues and the structures.
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },

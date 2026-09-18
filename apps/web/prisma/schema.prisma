@@ -111,6 +111,10 @@ model School {
   /// late. 540 is 09:00.
   staffCheckInMinute    Int     @default(540)
   staffLateGraceMinutes Int     @default(15)
+  /// The school's teaching week as weekday numbers (0 = Sunday … 6 = Saturday),
+  /// comma-separated in order. Monday to Saturday by default, the Indian norm;
+  /// a five-day school drops the 6. Read through school-week.ts.
+  teachingDays          String  @default("1,2,3,4,5,6")
   /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
   msgEventsJson         String  @default("{}")
 
@@ -209,6 +213,7 @@ model School {
   syllabusUnits       SyllabusUnit[]
   syllabusProgress    SyllabusProgress[]
   lessonPlans         LessonPlan[]
+  substitutions       Substitution[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -389,6 +394,8 @@ model Membership {
   staffAttendance        StaffAttendance[]
   syllabusProgress       SyllabusProgress[]   @relation("SyllabusProgressBy")
   lessonPlans            LessonPlan[]         @relation("LessonPlanTeacher")
+  substitutionsAbsent    Substitution[]       @relation("SubstitutionAbsent")
+  substitutionsCovering  Substitution[]       @relation("SubstitutionCovering")
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
@@ -899,10 +906,11 @@ model TimetableSlot {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  class   Class           @relation(fields: [classId], references: [id], onDelete: Cascade)
-  period  TimetablePeriod @relation(fields: [periodId], references: [id], onDelete: Cascade)
-  teacher Membership?     @relation("TimetableTeacher", fields: [teacherMembershipId], references: [id], onDelete: SetNull)
+  school        School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  class         Class           @relation(fields: [classId], references: [id], onDelete: Cascade)
+  period        TimetablePeriod @relation(fields: [periodId], references: [id], onDelete: Cascade)
+  teacher       Membership?     @relation("TimetableTeacher", fields: [teacherMembershipId], references: [id], onDelete: SetNull)
+  substitutions Substitution[]
 
   @@unique([classId, weekday, periodId])
   @@unique([schoolId, weekday, periodId, teacherMembershipId])
@@ -3737,4 +3745,30 @@ model LessonPlan {
 
   @@index([schoolId, classId, subject, dateKey])
   @@index([teacherMembershipId, dateKey])
+}
+
+/// One lesson covered on one day: the timetable's slot, who was away, who
+/// took it. The board for a day is every lesson of an absent teacher and
+/// the row here that says who is standing in; a row cleared is a lesson
+/// uncovered again. The substitute is told when the row is written.
+model Substitution {
+  id                     String   @id @default(cuid())
+  schoolId               String
+  dateKey                String
+  slotId                 String
+  absentMembershipId     String
+  substituteMembershipId String
+  note                   String?
+  createdByUserId        String?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  school     School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slot       TimetableSlot @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  absent     Membership    @relation("SubstitutionAbsent", fields: [absentMembershipId], references: [id], onDelete: Cascade)
+  substitute Membership    @relation("SubstitutionCovering", fields: [substituteMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([slotId, dateKey])
+  @@index([schoolId, dateKey])
+  @@index([substituteMembershipId, dateKey])
 }

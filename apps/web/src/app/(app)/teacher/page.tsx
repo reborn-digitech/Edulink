@@ -14,6 +14,7 @@ import { formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates
 import { marksTodoFor } from "@/lib/exams";
 import { EXAM_KIND_KEY } from "@/lib/constants";
 import { teacherWeek } from "@/lib/timetable";
+import { myCovers } from "@/lib/substitutions";
 import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -80,6 +81,45 @@ export default async function TeacherHome() {
         </Card>
   );
 
+
+  /* The lessons the office has asked this teacher to take today, from the
+     substitution board. Absent when there are none: a card saying "nothing
+     to cover" every morning is noise, and the timetable above already
+     flags a borrowed lesson. */
+  const covers = (await myCovers(ctx, dateKey)).items;
+  const coversCard = covers.length > 0 && (
+    <Card>
+      <CardHeader
+        icon={<UserSwitchIcon weight="duotone" className="size-5" />}
+        title={t("substitutions.myCoversTitle")}
+        description={t("substitutions.myCoversIntro")}
+      />
+      <CardBody>
+        <ul className="divide-y divide-border">
+          {covers.map((cover) => (
+            <li key={cover.slotId} className="flex items-center gap-3 py-2.5">
+              <span className="w-28 shrink-0">
+                <span className="block text-sm font-medium text-fg">{cover.periodName}</span>
+                <span className="block text-xs tabular-nums text-fg-muted">
+                  {cover.startMinute !== null && cover.endMinute !== null ? formatTimeRange(cover.startMinute, cover.endMinute) : null}
+                </span>
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate text-sm font-semibold text-fg">
+                  {cover.subject} · {cover.className}
+                  {cover.room ? ` · ${cover.room}` : ""}
+                </span>
+                <span className="block truncate text-xs text-fg-muted">
+                  {t("substitutions.coveringFor", { name: cover.absentName })}
+                  {cover.note ? ` · ${cover.note}` : ""}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </CardBody>
+    </Card>
+  );
 
   const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
 
@@ -175,13 +215,19 @@ export default async function TeacherHome() {
    * class AND no timetabled lesson, where it is finally true.
    */
   if (classIds.length === 0) {
+    // A teacher with no class and no lesson of their own may still be
+    // covering one today: the cover card stands above the empty state, so
+    // the very person the office reached for is not told they have no day.
     if (week.slots.length === 0) {
       return (
-        <EmptyState
-          icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-          title={t("teacher.noClassesYet")}
-          description={t("teacher.noClassesBody")}
-        />
+        <div className="space-y-6">
+          {coversCard}
+          <EmptyState
+            icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
+            title={t("teacher.noClassesYet")}
+            description={t("teacher.noClassesBody")}
+          />
+        </div>
       );
     }
 
@@ -191,6 +237,8 @@ export default async function TeacherHome() {
             {school.name}</>} />
 
         {marksCard}
+
+        {coversCard}
 
         <div className="grid gap-3 sm:grid-cols-3">
           <StatTile
@@ -260,6 +308,8 @@ export default async function TeacherHome() {
           {school.name}</>} />
 
       {marksCard}
+
+      {coversCard}
 
       {lessonsCard}
 

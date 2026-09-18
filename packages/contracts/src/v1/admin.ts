@@ -720,6 +720,8 @@ export const adminSettingsSchema = z.object({
     country: z.string().nullable(),
     gradeLow: z.string().nullable(),
     gradeHigh: z.string().nullable(),
+    /** The weekday numbers the school teaches on, Monday first; absent on older servers. */
+    teachingDays: z.array(z.number().int().min(0).max(6)).optional(),
     timezone: z.string(),
     notifAutoReadDays: z.number().int().nullable(),
     notifExpireDays: z.number().int().nullable(),

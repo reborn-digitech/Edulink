@@ -30,7 +30,7 @@ import {
   childPracticeProgress,
 } from "@/lib/practice-insights";
 import { MONTH_KEY, shiftMonth } from "@/lib/attendance-history";
-import { addDaysToKey, isDateKey, isTeachingDay, isWithin, todayKey, weekdayOfKey } from "@/lib/dates";
+import { addDaysToKey, isDateKey, isTeachingDay, isWithin, parseTeachingDays, todayKey, weekdayOfKey } from "@/lib/dates";
 import { readJson, writeJson } from "@/lib/json";
 import { audit } from "@/lib/audit";
 import { notify } from "@/lib/notify";
@@ -606,6 +606,7 @@ export async function parentAttendance(ctx: ActiveContext, childId?: string | nu
   const thisMonth = today.slice(0, 7);
   const month = requestedMonth && MONTH_KEY.test(requestedMonth) && requestedMonth <= thisMonth ? requestedMonth : thisMonth;
   const summary = await getAttendanceSummary(student.schoolId, selectedId, `${month}-01`, `${month}-31`);
+  const week = parseTeachingDays((await db.school.findUnique({ where: { id: student.schoolId }, select: { teachingDays: true } }))?.teachingDays);
   const next = shiftMonth(month, 1);
   return {
     children: childRows(children),
@@ -618,7 +619,7 @@ export async function parentAttendance(ctx: ActiveContext, childId?: string | nu
     // Only days that have a record, newest first.
     days: [...summary.recent]
       .sort((a, b) => (a.dateKey < b.dateKey ? 1 : -1))
-      .map((day) => ({ ...day, teachingDay: isTeachingDay(day.dateKey) })),
+      .map((day) => ({ ...day, teachingDay: isTeachingDay(day.dateKey, week) })),
   };
 }
 

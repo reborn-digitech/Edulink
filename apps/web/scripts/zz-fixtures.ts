@@ -707,6 +707,33 @@ async function buildStaffAttendance(school: { id: string }, adminUserId: string)
 }
 
 /**
+ * The substitution board for today: one subject teacher (timetable only, so
+ * never the sweep's form teacher, whom the sweep marks present) is absent
+ * today and their first lesson of the day is covered by a free colleague.
+ * Nothing on a day the ZZ timetable has no lessons. Re-run safe: today's
+ * rows are rebuilt.
+ */
+async function buildSubstitutions(school: { id: string }, adminUserId: string, absent: { membership: { id: string } } | undefined) {
+  const today = new Date().toISOString().slice(0, 10);
+  await db.substitution.deleteMany({ where: { schoolId: school.id, dateKey: today } });
+  if (!absent) return { covered: 0 };
+  const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
+  const slot = await db.timetableSlot.findFirst({ where: { schoolId: school.id, weekday, teacherMembershipId: absent.membership.id, class: { archivedAt: null } }, orderBy: { period: { position: "asc" } }, select: { id: true, periodId: true } });
+  if (!slot) return { covered: 0 };
+  await db.staffAttendance.upsert({
+    where: { membershipId_dateKey: { membershipId: absent.membership.id, dateKey: today } },
+    create: { schoolId: school.id, membershipId: absent.membership.id, dateKey: today, status: "ABSENT", source: "OFFICE", markedByUserId: adminUserId, note: "Rang in unwell." },
+    update: { status: "ABSENT", source: "OFFICE", checkedInAt: null },
+  });
+  const busy = (await db.timetableSlot.findMany({ where: { schoolId: school.id, weekday, periodId: slot.periodId, teacherMembershipId: { not: null } }, select: { teacherMembershipId: true } })).map((s) => s.teacherMembershipId!);
+  const away = (await db.staffAttendance.findMany({ where: { schoolId: school.id, dateKey: today, status: { in: ["ABSENT", "ON_LEAVE"] } }, select: { membershipId: true } })).map((r) => r.membershipId);
+  const sub = await db.membership.findFirst({ where: { schoolId: school.id, role: "TEACHER", status: "ACTIVE", leftAt: null, id: { notIn: [...busy, ...away, absent.membership.id] } }, orderBy: { id: "asc" }, select: { id: true } });
+  if (!sub) return { covered: 0 };
+  await db.substitution.create({ data: { schoolId: school.id, dateKey: today, slotId: slot.id, absentMembershipId: absent.membership.id, substituteMembershipId: sub.id, note: "Worksheet is on the desk.", createdByUserId: adminUserId } });
+  return { covered: 1 };
+}
+
+/**
  * The syllabus for ZZ Northgate's grade 3: Mathematics and English lists,
  * the grade-3 class two chapters into each with one in progress, and two
  * lessons (one taught, one planned), so the head's coverage has rows and
@@ -1175,6 +1202,7 @@ async function main() {
   const circular = await buildCircular(northgate.school, northgate.admin.id);
   const staffAtt = await buildStaffAttendance(northgate.school, northgate.admin.id);
   const syllabus = await buildSyllabus(northgate.school);
+  const subs = await buildSubstitutions(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1217,6 +1245,7 @@ async function main() {
      circular    one notice asking for an acknowledgement, told to every guardian, opened by two, acknowledged by one — /admin/circulars, /bulletin/${circular.postId}
      staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
+     substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

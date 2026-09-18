@@ -3,7 +3,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { dateKeyRange, isDateKey, isTeachingDay, todayKey } from "./dates";
+import { dateKeyRange, isDateKey, isTeachingDay, parseTeachingDays, todayKey, DEFAULT_TEACHING_DAYS } from "./dates";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 import { closedDayKeys, listHolidays } from "./holidays";
@@ -157,8 +157,14 @@ export async function setStaffRecord(
  * nothing and Friday-to-Monday drew two where the school would count three.
  * `closed` — the days the calendar shuts the school — are not leave either.
  */
-export function leaveDays(fromDateKey: string, toDateKey: string, closed: ReadonlySet<string> = new Set()): number {
-  return dateKeyRange(fromDateKey, toDateKey, 400).filter((k) => isTeachingDay(k) && !closed.has(k)).length;
+export function leaveDays(fromDateKey: string, toDateKey: string, closed: ReadonlySet<string> = new Set(), teachingDays: readonly number[] = DEFAULT_TEACHING_DAYS): number {
+  return dateKeyRange(fromDateKey, toDateKey, 400).filter((k) => isTeachingDay(k, teachingDays) && !closed.has(k)).length;
+}
+
+/** The school's teaching week, for the counters below. */
+async function teachingWeekOf(schoolId: string): Promise<number[]> {
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { teachingDays: true } });
+  return parseTeachingDays(school?.teachingDays);
 }
 
 /**
@@ -175,8 +181,8 @@ export async function leaveDaysFor(
   const from = within && within.from > fromDateKey ? within.from : fromDateKey;
   const to = within && within.to < toDateKey ? within.to : toDateKey;
   if (from > to) return 0;
-  const spans = await listHolidays(schoolId, { fromKey: from, toKey: to });
-  return leaveDays(from, to, closedDayKeys(spans));
+  const [spans, week] = await Promise.all([listHolidays(schoolId, { fromKey: from, toKey: to }), teachingWeekOf(schoolId)]);
+  return leaveDays(from, to, closedDayKeys(spans), week);
 }
 
 /** The balance for one member of staff, against the current academic year. */
@@ -193,12 +199,12 @@ export async function leaveBalanceFor(schoolId: string, membershipId: string): P
     where: { schoolId, teacherMembershipId: membershipId, kind: { in: COUNTED_KINDS }, status: { in: ["APPROVED", "PENDING"] }, fromDateKey: { lte: to }, toDateKey: { gte: from } },
     select: { status: true, fromDateKey: true, toDateKey: true },
   });
-  const spans = await listHolidays(schoolId, { fromKey: from, toKey: to });
+  const [spans, week] = await Promise.all([listHolidays(schoolId, { fromKey: from, toKey: to }), teachingWeekOf(schoolId)]);
   const closed = closedDayKeys(spans);
   let used = 0;
   let pending = 0;
   for (const r of requests) {
-    const n = leaveDays(r.fromDateKey > from ? r.fromDateKey : from, r.toDateKey < to ? r.toDateKey : to, closed);
+    const n = leaveDays(r.fromDateKey > from ? r.fromDateKey : from, r.toDateKey < to ? r.toDateKey : to, closed, week);
     if (r.status === "APPROVED") used += n;
     else pending += n;
   }

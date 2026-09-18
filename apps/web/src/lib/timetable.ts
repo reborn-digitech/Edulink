@@ -3,7 +3,7 @@ import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
-import { isDateKey, addDaysToKey, weekdayOfKey } from "./dates";
+import { isDateKey, addDaysToKey, weekdayOfKey, parseTeachingDays } from "./dates";
 import { listHolidays, closedDayKeys } from "./holidays";
 import {
   PERIOD_KINDS,
@@ -403,7 +403,7 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
   assertAdmin(ctx);
 
   if (!isWeekdayNumber(input.weekday)) return { ok: false, errorKey: "timetable.notAWeekday" };
-  if (!(WEEK_DAYS as readonly number[]).includes(input.weekday)) {
+  if (!(await schoolWeek(ctx.schoolId)).includes(input.weekday)) {
     return { ok: false, errorKey: "timetable.mondayToSaturday" };
   }
 
@@ -571,10 +571,8 @@ export async function copyDay(
 ): Promise<Result & { copied?: number; unstaffed?: number }> {
   assertAdmin(ctx);
   if (fromWeekday === toWeekday) return { ok: false, errorKey: "timetable.sameDay" };
-  if (
-    !(WEEK_DAYS as readonly number[]).includes(fromWeekday) ||
-    !(WEEK_DAYS as readonly number[]).includes(toWeekday)
-  ) {
+  const week = await schoolWeek(ctx.schoolId);
+  if (!week.includes(fromWeekday) || !week.includes(toWeekday)) {
     return { ok: false, errorKey: "timetable.mondayToSaturday" };
   }
 
@@ -796,11 +794,26 @@ export function weekStartKey(dateKey: string): string {
   return addDaysToKey(dateKey, backTo);
 }
 
-/** The date key each weekday column falls on, for a week starting Monday. */
-function dayKeysFrom(mondayKey: string): Map<number, string> {
+/**
+ * The school's teaching week as weekday numbers, Monday first. `WEEK_DAYS`
+ * in school-day.ts is the default a school starts with; this is the one the
+ * office has set, and every grid, check and column below reads it.
+ */
+export async function schoolWeek(schoolId: string | null | undefined): Promise<number[]> {
+  if (!schoolId) return [...WEEK_DAYS];
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { teachingDays: true } });
+  return parseTeachingDays(school?.teachingDays);
+}
+
+/**
+ * The date key each weekday column falls on, for a week starting Monday. A
+ * Sunday, when the school teaches on one, is the last column: six days on
+ * from the Monday, not the day before it.
+ */
+function dayKeysFrom(mondayKey: string, week: readonly number[]): Map<number, string> {
   const keys = new Map<number, string>();
-  for (const [index, weekday] of WEEK_DAYS.entries()) {
-    keys.set(weekday, addDaysToKey(mondayKey, index));
+  for (const weekday of week) {
+    keys.set(weekday, addDaysToKey(mondayKey, (weekday + 6) % 7));
   }
   return keys;
 }
@@ -946,9 +959,10 @@ async function buildDays(
   schoolId: string,
   dayKeys: Map<number, string> | null,
   todayDateKey: string | null,
+  week: readonly number[],
 ): Promise<DayColumn[]> {
   if (!dayKeys) {
-    return WEEK_DAYS.map((weekday) => ({
+    return week.map((weekday) => ({
       weekday,
       dateKey: null,
       closed: false,
@@ -971,7 +985,7 @@ async function buildDays(
     return hit?.name ?? null;
   };
 
-  return WEEK_DAYS.map((weekday) => {
+  return week.map((weekday) => {
     const dateKey = dayKeys.get(weekday) ?? null;
     return {
       weekday,
@@ -1009,7 +1023,8 @@ export async function classWeek(
   });
   if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
 
-  const dayKeys = opts.weekOf ? dayKeysFrom(weekStartKey(opts.weekOf)) : null;
+  const week = await schoolWeek(ctx.schoolId);
+  const dayKeys = opts.weekOf ? dayKeysFrom(weekStartKey(opts.weekOf), week) : null;
 
   const [periods, rows, days] = await Promise.all([
     listPeriods(ctx.schoolId),
@@ -1017,7 +1032,7 @@ export async function classWeek(
       where: { schoolId: ctx.schoolId, classId },
       select: SLOT_SELECT,
     }),
-    buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null),
+    buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null, week),
   ]);
 
   const slots = dayKeys
@@ -1065,7 +1080,8 @@ export async function teacherWeek(
 ): Promise<WeekGrid> {
   if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
 
-  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
+  const week = await schoolWeek(ctx.schoolId);
+  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf), week);
   const dates = [...dayKeys.values()].sort();
   const from = dates[0]!;
   const to = dates[dates.length - 1]!;
@@ -1131,7 +1147,7 @@ export async function teacherWeek(
     (slot) => !slot.borrowed || slot.coveringMembershipId === teacherMembershipId,
   );
 
-  const days = await buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null);
+  const days = await buildDays(ctx.schoolId, dayKeys, opts.todayKey ?? null, week);
   return { periods, days, slots: kept };
 }
 
@@ -1150,7 +1166,8 @@ async function weekForStudent(
   studentMembershipId: string,
   opts: { weekOf: string; todayKey?: string | null },
 ): Promise<WeekGrid> {
-  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf));
+  const week = await schoolWeek(schoolId);
+  const dayKeys = dayKeysFrom(weekStartKey(opts.weekOf), week);
 
   const enrolments = await db.enrollment.findMany({
     where: { schoolId, studentMembershipId, status: "ACTIVE" },
@@ -1166,7 +1183,7 @@ async function weekForStudent(
           where: { schoolId, classId: { in: classIds } },
           select: SLOT_SELECT,
         }),
-    buildDays(schoolId, dayKeys, opts.todayKey ?? null),
+    buildDays(schoolId, dayKeys, opts.todayKey ?? null, week),
   ]);
 
   const slots = await resolveWeek(schoolId, rows, dayKeys);

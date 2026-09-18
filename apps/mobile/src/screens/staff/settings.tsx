@@ -2,15 +2,15 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminSettingsSchema, officeLogoSchema, okSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
+import { adminSettingsSchema, officeLogoSchema, okSchema, schoolWeekSavedSchema, schoolWeekSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Failed, Field, Icon, Loading, Screen, Text, useToast } from "@/components";
+import { Button, Card, Failed, Field, Icon, Loading, Screen, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { pickAndUpload } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Pill } from "../family/shared";
+import { Pill, weekdayName } from "../family/shared";
 import { Chips, Notice } from "./shared";
 
 /** The web's swatches — names, not colours, so a screen reader says "Teal" and the chips stay in the theme's colours. */
@@ -102,6 +102,7 @@ export function AdminSettings() {
             <Button label={t("explore.editProfile")} variant="secondary" onPress={() => router.push("/(app)/directory-profile" as never)} />
           </Card>
           <Housekeeping key={`${d.school.notifAutoReadDays}:${d.school.notifExpireDays}`} d={d} />
+          <TeachingWeek />
         </>
       ) : null}
     </Screen>
@@ -202,6 +203,79 @@ function Housekeeping({ d }: { d: AdminSettingsData }) {
       <Field label={t("notif.expireField")} value={expire} onChangeText={setExpire} placeholder={String(d.notifDefaults.expireDays)} keyboardType="number-pad" maxLength={4} />
       <Button label={t("common.save")} busy={save.isPending} onPress={submit} accessibilityLabel={`${t("common.save")}: ${t("notif.tidyTitle")}`} />
     </Card>
+  );
+}
+
+/** The weekday numbers as the timetable counts them, Monday first and Sunday last — the order a school reads its week in. */
+export const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0] as const;
+export const WEEK_PATH = "/api/v1/office/school-week";
+
+/**
+ * The teaching week — the days the school teaches on, which decide which
+ * days have a register, a staff register, a substitution board and a
+ * timetable column. One GET, seven switches, one POST; the server counts the
+ * timetable lessons a dropped day leaves stranded and the toast says so.
+ */
+function TeachingWeek() {
+  const t = useT();
+  const query = useQuery({
+    queryKey: ["admin", "school-week"],
+    queryFn: async () => schoolWeekSchema.parse(unwrap(await api().get(WEEK_PATH))),
+  });
+  return (
+    <Card title={t("substitutions.weekTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("substitutions.weekIntro")}
+      </Text>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.data ? <TeachingWeekForm key={query.data.days.join(",")} days={query.data.days} /> : null}
+    </Card>
+  );
+}
+
+function TeachingWeekForm({ days }: { days: number[] }) {
+  const t = useT();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const { locale } = useLocale();
+  const [picked, setPicked] = useState<number[]>(days);
+  const [error, setError] = useState<string | null>(null);
+  const dirty = WEEK_ORDER.some((day) => picked.includes(day) !== days.includes(day));
+  const save = useMutation({
+    mutationFn: async (body: { days: number[] }) => schoolWeekSavedSchema.parse(unwrap(await api().post(WEEK_PATH, body))),
+    onSuccess: (r) => {
+      toast.show(r.orphanedSlots > 0 ? `${t("substitutions.weekSaved")} ${t("substitutions.weekOrphaned", { count: r.orphanedSlots })}` : t("substitutions.weekSaved"), r.orphanedSlots > 0 ? "info" : "ok");
+      void qc.invalidateQueries({ queryKey: ["admin", "school-week"] });
+      void qc.invalidateQueries({ queryKey: ["staff"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const toggle = (day: number, on: boolean) => {
+    setError(null);
+    setPicked((prev) => (on ? [...prev.filter((x) => x !== day), day] : prev.filter((x) => x !== day)));
+  };
+  function submit() {
+    const chosen = WEEK_ORDER.filter((day) => picked.includes(day));
+    if (chosen.length === 0) {
+      setError(t("substitutions.weekAtLeastOne"));
+      return;
+    }
+    setError(null);
+    save.mutate({ days: chosen });
+  }
+  return (
+    <>
+      {WEEK_ORDER.map((day) => (
+        <SwitchRow key={day} label={weekdayName(day, locale)} value={picked.includes(day)} onChange={(on) => toggle(day, on)} disabled={save.isPending} />
+      ))}
+      {error ? (
+        <Text variant="xs" tone="danger" accessibilityLiveRegion="polite">
+          {error}
+        </Text>
+      ) : null}
+      <Button label={t("substitutions.weekSave")} busy={save.isPending} disabled={!dirty} onPress={submit} />
+    </>
   );
 }
 

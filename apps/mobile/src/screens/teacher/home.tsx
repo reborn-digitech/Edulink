@@ -10,6 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { clock, dayLabel, relativeTime } from "./support";
 import { MY_KEY, MY_PATH, todayLine, useCheckIn } from "./my-attendance";
+import { periodLine } from "../staff/substitutions";
 
 /**
  * The teacher's Today, the web's /teacher: the registers still to take, the
@@ -27,7 +28,8 @@ export function TeacherHome() {
   });
   const data = query.data;
   const form = data?.formClasses ?? null;
-  const nothingAtAll = data && !form && data.lessons.items.length === 0 && data.marksTodo.length === 0;
+  // A cover from the office is a day, even for a teacher with no lesson of their own.
+  const nothingAtAll = data && !form && data.lessons.items.length === 0 && data.marksTodo.length === 0 && !(data.covers && data.covers.length > 0);
 
   return (
     <Screen title={t("teacher.today")} description={data ? `${data.schoolName} · ${dayLabel(data.dateKey, locale)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -99,6 +101,14 @@ export function TeacherHome() {
             )}
             <Button label={t("teacher.openTimetable")} variant="ghost" onPress={() => router.push("/(app)/timetable" as never)} />
           </Card>
+
+          {data.covers && data.covers.length > 0 ? (
+            <Card title={t("substitutions.myCoversTitle")} action={<Button label={t("teacher.seeAll")} variant="ghost" onPress={() => router.push("/(app)/my-covers" as never)} accessibilityLabel={`${t("teacher.seeAll")}: ${t("substitutions.myCoversTitle")}`} />}>
+              {data.covers.map((c) => (
+                <Row key={c.slotId} title={`${c.subject} · ${c.className}`} caption={[periodLine(t, c), c.room, t("substitutions.coveringFor", { name: c.absentName })].filter(Boolean).join(" · ")} onPress={() => router.push("/(app)/my-covers" as never)} />
+              ))}
+            </Card>
+          ) : null}
 
           {data.marksTodo.length > 0 ? (
             <Card title={t("exams.marksTodoTitle")}>

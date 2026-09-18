@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { formatTimeRange, WEEK_DAYS, weekdayName, weekdayShortName } from "@/lib/school-day";
+import { formatTimeRange, weekdayName, weekdayShortName } from "@/lib/school-day";
 import { saveLesson, removeLesson, duplicateDay } from "./actions";
 import type { PeriodRow, SlotView } from "@/lib/timetable";
 import { actionError } from "@/lib/action-error";
@@ -38,6 +38,7 @@ export function GridEditor({
   classId,
   className,
   periods,
+  days,
   slots,
   staff,
   busy,
@@ -45,6 +46,8 @@ export function GridEditor({
   classId: string;
   className: string;
   periods: PeriodRow[];
+  /** The school's teaching week, Monday first — the grid's columns. */
+  days: number[];
   slots: SlotView[];
   staff: StaffOption[];
   /** `weekday:periodId` → membershipId → what they are already teaching. */
@@ -112,7 +115,7 @@ export function GridEditor({
 
       {/* ---------------- phone: a day at a time ---------------- */}
       <div className="space-y-4 md:hidden">
-        {WEEK_DAYS.map((weekday) => (
+        {days.map((weekday) => (
           <section key={weekday} aria-label={weekdayName(weekday, locale)}>
             <h3 className="mb-2 border-b border-border pb-1 text-sm font-semibold text-fg">
               {weekdayName(weekday, locale)}
@@ -160,7 +163,7 @@ export function GridEditor({
                   {t("timetable.period")}
                 </span>
               </th>
-              {WEEK_DAYS.map((weekday) => (
+              {days.map((weekday) => (
                 <th key={weekday} scope="col" className="p-2 text-left text-sm font-semibold text-fg">
                   <abbr title={weekdayName(weekday, locale)} className="no-underline lg:hidden">
                     {weekdayShortName(weekday, locale)}
@@ -179,7 +182,7 @@ export function GridEditor({
                     {formatTimeRange(period.startMinute, period.endMinute)}
                   </span>
                 </th>
-                {WEEK_DAYS.map((weekday) =>
+                {days.map((weekday) =>
                   period.kind === "BREAK" ? (
                     <td
                       key={weekday}
@@ -216,7 +219,7 @@ export function GridEditor({
           onChange={(e) => setCopySource(e.target.value === "" ? "" : Number(e.target.value))}
         >
           <option value="">{t("timetable.pickADay")}</option>
-          {WEEK_DAYS.map((weekday) => (
+          {days.map((weekday) => (
             <option key={weekday} value={weekday}>
               {weekdayName(weekday, locale)}
             </option>
@@ -229,7 +232,7 @@ export function GridEditor({
           onChange={(e) => setCopyTarget(e.target.value === "" ? "" : Number(e.target.value))}
         >
           <option value="">{t("timetable.pickADay")}</option>
-          {WEEK_DAYS.map((weekday) => (
+          {days.map((weekday) => (
             <option key={weekday} value={weekday}>
               {weekdayName(weekday, locale)}
             </option>

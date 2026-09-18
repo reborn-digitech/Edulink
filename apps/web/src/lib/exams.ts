@@ -3,7 +3,7 @@ import { db } from "./db";
 import { termForDate } from "./terms";
 import { finishedYearContaining } from "./academic-year";
 import { listHolidays, isSchoolClosed } from "./holidays";
-import { formatDateKey } from "./dates";
+import { formatDateKey, parseTeachingDays } from "./dates";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { isDateKey } from "./dates";
@@ -167,8 +167,11 @@ export async function addSlot(
    * refused outright, because no child can sit two.
    */
   if (!input.evenIfClosed) {
-    const spans = await listHolidays(schoolId, { fromKey: input.dateKey, toKey: input.dateKey });
-    if (isSchoolClosed(spans, input.dateKey)) {
+    const [spans, school] = await Promise.all([
+      listHolidays(schoolId, { fromKey: input.dateKey, toKey: input.dateKey }),
+      db.school.findUnique({ where: { id: schoolId }, select: { teachingDays: true } }),
+    ]);
+    if (isSchoolClosed(spans, input.dateKey, parseTeachingDays(school?.teachingDays))) {
       const holiday = spans.find((h) => h.kind === "HOLIDAY");
       throw new AccessError(
         holiday ? "access.paperOnHoliday" : "access.paperOnSunday",

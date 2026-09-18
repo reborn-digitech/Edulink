@@ -2126,6 +2126,23 @@ async function main() {
     await check(null, "/teacher/attendance/me", 307, "signed-out own attendance redirects to login");
   }
 
+  /* ---- substitutions: the board for the day, its print, a teacher's covers; the teaching week on settings ---- */
+  // Riverside's own office, teacher and guardian. The board is empty on a
+  // day nobody is away, and closed on a day the school does not teach, and
+  // both render; the pages are the office's alone.
+  {
+    const boardToday = new Date().toISOString().slice(0, 10);
+    await check(admin, "/admin/substitutions", 200, "the office reads today's substitution board");
+    await check(admin, `/admin/substitutions?date=${boardToday}`, 200, "…and by date");
+    await check(admin, `/admin/substitutions/print?date=${boardToday}`, 200, "…and prints it");
+    await check(admin, "/admin/settings", 200, "the settings page carries the teaching week");
+    await check(teacher, "/admin/substitutions", 307, "⚠ a teacher is not shown the board");
+    await check(teacher, "/teacher", 200, "a teacher's Today carries their covers");
+    await check(parent, "/admin/substitutions", 307, "⚠ a guardian has no board");
+    await check(parent, `/admin/substitutions/print?date=${boardToday}`, 307, "⚠ …nor its print");
+    await check(null, "/admin/substitutions", 307, "signed-out board redirects to login");
+  }
+
   /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
   // ZZ Northgate carries Mathematics and English lists for grade 3 and its
   // grade-3 class is two chapters in; the actors are that school's office,
