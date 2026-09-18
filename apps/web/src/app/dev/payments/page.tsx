@@ -56,7 +56,7 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
   return (
     <main id="main" className="mx-auto max-w-3xl px-4 py-10">
       <div className="mb-6">
-        <Badge tone="warn">Development only</Badge>
+        <Badge tone="warn">{t("fees.devPaymentsDevOnly")}</Badge>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-fg">{t("meta.devPayments")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
           Every online order the devbox gateway is holding. Mark one paid and it settles through the same path the real webhook uses: allocation, receipt, and
@@ -75,7 +75,7 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
       )}
 
       {rows.length === 0 ? (
-        <EmptyState title="No orders waiting" description="Start an online payment from a parent's fees page and it will appear here." />
+        <EmptyState title={t("fees.devPaymentsNoOrders")} description={t("fees.devPaymentsNoOrdersBody")} />
       ) : (
         <ul className="space-y-3">
           {rows.map((row) => (
@@ -101,14 +101,14 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
                       <input type="hidden" name="orderId" value={row.gatewayOrderId} />
                       <input type="hidden" name="amountPaise" value={row.amountPaise} />
                       <Button type="submit" size="sm">
-                        Mark paid
+                        {t("fees.devPaymentsMarkPaid")}
                       </Button>
                     </form>
                     <form action={failAction}>
                       <input type="hidden" name="schoolId" value={row.schoolId} />
                       <input type="hidden" name="orderId" value={row.gatewayOrderId} />
                       <Button type="submit" size="sm" variant="danger">
-                        Fail
+                        {t("fees.devPaymentsFail")}
                       </Button>
                     </form>
                   </div>

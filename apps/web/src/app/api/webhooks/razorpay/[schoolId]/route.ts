@@ -34,18 +34,18 @@ export async function POST(request: Request, { params }: { params: Promise<{ sch
   const raw = await request.text();
   const signature = request.headers.get("x-razorpay-signature");
   const account = await forSchool(schoolId, () => gatewayAccountFor(schoolId)).catch(() => null);
-  if (!account) return NextResponse.json({ error: "no gateway" }, { status: 404 });
-  if (!verifyWebhookSignature(account.webhookSecret, raw, signature)) return NextResponse.json({ error: "bad signature" }, { status: 401 });
+  if (!account) return NextResponse.json({ code: "NO_GATEWAY" }, { status: 404 });
+  if (!verifyWebhookSignature(account.webhookSecret, raw, signature)) return NextResponse.json({ code: "BAD_SIGNATURE" }, { status: 401 });
 
   let event: { event?: string; id?: string; payload?: Record<string, { entity?: Record<string, unknown> }> };
   try {
     event = JSON.parse(raw);
   } catch {
-    return NextResponse.json({ error: "not json" }, { status: 400 });
+    return NextResponse.json({ code: "NOT_JSON" }, { status: 400 });
   }
   const eventId = request.headers.get("x-razorpay-event-id") ?? event.id ?? null;
   const kind = event.event ?? "unknown";
-  if (!eventId) return NextResponse.json({ error: "no event id" }, { status: 400 });
+  if (!eventId) return NextResponse.json({ code: "NO_EVENT_ID" }, { status: 400 });
 
   return forSchool(schoolId, async () => {
     const seen = await db.gatewayEvent.findUnique({ where: { schoolId_provider_eventId: { schoolId, provider: "RAZORPAY", eventId } }, select: { id: true } });

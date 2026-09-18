@@ -11,6 +11,8 @@ import { writeJson } from "./json";
 import { officeOrHead, requireFeesOffice, dateToDay, dayToDate } from "./fees";
 import { FEE_CLAIM_STALE_DAYS } from "./constants";
 import type { ActiveContext } from "./session";
+import { translator } from "./i18n/dictionary";
+import { normaliseLocale } from "@edulink/i18n";
 
 /**
  * Fees: reading the ledger — the office's overview and dues list, the two
@@ -342,6 +344,10 @@ export async function remindNow(ctx: ActiveContext, input: { studentMembershipId
 export async function carryForward(ctx: ActiveContext, input: { fromYearId: string; toYearId: string }): Promise<{ pupils: number; carriedPaise: number }> {
   const caller = requireFeesOffice(ctx);
   if (input.fromYearId === input.toYearId) throw new AccessError("fees.refuseYearSame");
+  // The label is stored text a family reads for a year, so it is written in
+  // the school's own language at the moment it is made.
+  const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { locale: true } });
+  const t = translator(normaliseLocale(school.locale));
   const [from, to] = await Promise.all([
     db.academicYear.findFirst({ where: { id: input.fromYearId, schoolId: caller.schoolId }, select: { id: true, name: true, startDate: true } }),
     db.academicYear.findFirst({ where: { id: input.toYearId, schoolId: caller.schoolId }, select: { id: true, name: true, startDate: true } }),
@@ -368,13 +374,13 @@ export async function carryForward(ctx: ActiveContext, input: { fromYearId: stri
           studentMembershipId,
           academicYearId: to.id,
           instalmentId: null,
-          label: `Opening balance ${from.name}`,
+          label: [t("fees.openingBalance"), from.name].join(" "),
           dueDate,
           grossPaise: amount,
           concessionPaise: 0,
           netPaise: amount,
           status: "OPEN",
-          linesJson: writeJson(list.map((d) => ({ headId: d.id, code: "OB", name: `${from.name} · ${d.label}`, grossPaise: d.netPaise - d.paidPaise, concessionPaise: 0 }))),
+          linesJson: writeJson(list.map((d) => ({ headId: d.id, code: "OB", name: [from.name, d.label].join(" · "), grossPaise: d.netPaise - d.paidPaise, concessionPaise: 0 }))),
         },
         select: { id: true },
       });

@@ -33,7 +33,10 @@ env:
   NEXT_PUBLIC_DEFAULT_COUNTRY_CODE: "+91"
   STORAGE_DIR: ./storage
   # The floor the i18n audit asserts. Lowering it is a deliberate change here.
-  I18N_FLOOR: "157"
+  # 159 since the fees feature: the two new job NAMES in src/lib/jobs.ts
+  # ("fees:remind", "fees:reconcile") count as strings, as the five before them
+  # already did — identifiers, not prose. Every fee sentence is keyed.
+  I18N_FLOOR: "159"
 
 jobs:
   battery:
