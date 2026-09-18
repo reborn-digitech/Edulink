@@ -7,6 +7,7 @@ import {
   ChatCircleDotsIcon,
   FileTextIcon,
   ClipboardTextIcon,
+  FirstAidKitIcon,
   UsersThreeIcon,
   WarningCircleIcon,
 } from "@phosphor-icons/react/ssr";
@@ -21,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { listGradeCategories } from "@/lib/grading";
 import { healthFlagsFor } from "@/lib/health";
+import { openIncidentCounts } from "@/lib/incidents";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
 import { getT } from "@/lib/i18n/server";
@@ -132,6 +134,9 @@ export default async function ClassDetailPage({
   // page the name opens.
   const healthFlags = await healthFlagsFor(ctx.schoolId, roster.map((r) => r.membershipId));
   const anyFlagged = roster.some((r) => healthFlags.has(r.membershipId));
+  // An open incident is a chip too: a fall not yet followed up is something
+  // the next lesson's teacher should see before the name is called.
+  const openIncidents = await openIncidentCounts(klass.schoolId, roster.map((r) => r.membershipId));
 
   const [weights, usedCategories] = await Promise.all([
     listGradeCategories(ctx, classId),
@@ -260,6 +265,11 @@ export default async function ClassDetailPage({
                   <div className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
                       <PersonLink membershipId={student.membershipId} name={student.name} className="truncate text-sm font-medium text-fg" />
+                      {(openIncidents.get(student.membershipId) ?? 0) > 0 && (
+                        <Badge tone="warn" size="sm">
+                          {t("incidents.openChip", { count: openIncidents.get(student.membershipId)! })}
+                        </Badge>
+                      )}
                       {healthFlags.get(student.membershipId)?.allergies && (
                         <Badge tone="warn" size="sm">
                           {t("health.flagAllergy")}
@@ -305,6 +315,15 @@ export default async function ClassDetailPage({
                       </span>
                     )}
                   </span>
+
+                  <Link
+                    href={`/incidents/new?student=${student.membershipId}`}
+                    aria-label={t("incidents.recordFor", { name: student.name })}
+                    title={t("incidents.recordFor", { name: student.name })}
+                    className="grid size-10 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+                  >
+                    <FirstAidKitIcon weight="bold" className="size-5" aria-hidden="true" />
+                  </Link>
 
                   <Button asChild size="sm" variant="ghost" className="shrink-0">
                     <Link href={`/reports/${student.membershipId}`}>

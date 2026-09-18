@@ -75,6 +75,8 @@ describe("one class", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/remark-new", params: { membershipId: ID.pupil1 } });
     await tap(screen.getByRole("button", { name: "Health card: ZZ Bhavesh" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-health", params: { membershipId: ID.pupil2 } });
+    await tap(screen.getByRole("button", { name: "Record an incident for ZZ Asha" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/incident-new", params: { membershipId: ID.pupil1, name: "ZZ Asha" } });
   });
 
   it("the figures about pupils filter the roster", async () => {

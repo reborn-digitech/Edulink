@@ -60,6 +60,7 @@ export const EVENT_KEY: Record<string, TranslationKey> = {
   feeReminders: "messaging.eventFeeReminders",
   feeReceipts: "messaging.eventFeeReceipts",
   circulars: "messaging.eventCirculars",
+  incidents: "messaging.eventIncidents",
 };
 
 export const TRANSPORT_KEY: Record<string, TranslationKey> = {

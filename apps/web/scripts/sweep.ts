@@ -2011,6 +2011,63 @@ async function main() {
   }
   await check(parent, "/health/cards/cnope00000000000000000000", 404, "an invented card id");
 
+  /* ---- incident log: the pupil's file, read by the people the lib admits ---- */
+  // The fixtures' two incidents are ZZ Northgate's (a closed grazed knee on
+  // pupil01, an open sick-room visit on pupil02), so the actors here are that
+  // school's office, a teacher of pupil02's class and pupil02's guardian, minted
+  // for the length of this block; Riverside's own log is walked by everyNavLink.
+  const northgate = await db.school.findFirst({ where: { name: "ZZ Northgate School" }, select: { id: true } });
+  const openIncident = northgate
+    ? await db.incident.findFirst({ where: { schoolId: northgate.id, status: "OPEN" }, select: { id: true, studentMembershipId: true } })
+    : null;
+  if (northgate && openIncident) {
+    const zzAdmin = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    const zzGuardian = await db.guardianship.findFirst({
+      where: { studentMembershipId: openIncident.studentMembershipId, status: "ACTIVE" },
+      select: { parent: { select: { email: true } } },
+    });
+    const zzTeaching = await db.classTeacher.findFirst({
+      where: { class: { schoolId: northgate.id, enrollments: { some: { studentMembershipId: openIncident.studentMembershipId, status: "ACTIVE" } } }, teacher: { status: "ACTIVE" } },
+      select: { classId: true, teacher: { select: { user: { select: { email: true } } } } },
+    });
+    await check(zzAdmin, "/admin/incidents", 200, "the office reads the school's incident log");
+    await check(zzAdmin, "/admin/incidents?status=CLOSED", 200, "…and the closed ones");
+    await check(zzAdmin, `/admin/incidents?status=ALL&student=${openIncident.studentMembershipId}`, 200, "…and one pupil's file");
+    await check(zzAdmin, `/incidents/${openIncident.id}`, 200, "…and opens an incident");
+    await check(zzAdmin, `/incidents/new?student=${openIncident.studentMembershipId}`, 200, "…and records one for any pupil");
+    await check(admin, `/incidents/${openIncident.id}`, 404, "⚠ another school's office cannot, by id");
+    await check(otherAdmin, `/incidents/${openIncident.id}`, 404, "⚠ …nor a third school's");
+    await check(null, `/incidents/${openIncident.id}`, 307, "signed-out incident redirects to login");
+    await check(null, "/admin/incidents", 307, "signed-out log redirects to login");
+    if (zzGuardian?.parent.email) {
+      const zzParent = await mint(zzGuardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/parent/incidents?child=${openIncident.studentMembershipId}`, 200, "a guardian reads the child's incidents");
+      await check(zzParent, `/parent/incidents?child=${openIncident.studentMembershipId}&incident=${openIncident.id}`, 200, "…landing from the notification");
+      await check(zzParent, `/incidents/${openIncident.id}`, 307, "⚠ …but the staff record is not a guardian's page");
+    }
+    if (zzTeaching?.teacher.user.email) {
+      const zzTeacher = await mint(zzTeaching.teacher.user.email, "TEACHER", northgate.id, "zz-teacher");
+      await check(zzTeacher, "/teacher/incidents", 200, "a teacher reads their own pupils' incidents");
+      await check(zzTeacher, `/incidents/${openIncident.id}`, 200, "…and opens one on a pupil they teach");
+      await check(zzTeacher, `/incidents/new?student=${openIncident.studentMembershipId}`, 200, "…and records one for a pupil they teach");
+      await check(zzTeacher, "/admin/incidents", 307, "⚠ …but not the whole school's log");
+      // A pupil in none of this teacher's classes, not merely in another class.
+      const notTaught = await db.enrollment.findFirst({
+        where: {
+          schoolId: northgate.id,
+          status: "ACTIVE",
+          student: { enrollments: { none: { status: "ACTIVE", class: { teachers: { some: { teacher: { user: { email: zzTeaching.teacher.user.email } } } } } } } },
+        },
+        select: { studentMembershipId: true },
+      });
+      if (notTaught) await check(zzTeacher, `/incidents/new?student=${notTaught.studentMembershipId}`, 404, "⚠ …and not for one they do not");
+    }
+  } else {
+    skip("incident log", "no ZZ fixtures with an open incident (run zz:fixtures)");
+  }
+  await check(admin, "/incidents/cnope00000000000000000000", 404, "an invented incident id");
+  await check(admin, "/incidents/new", 404, "recording with no pupil named");
+
   /* ---- negative: cross-tenant and cross-role ---- */
   if (klass) await check(otherAdmin, `/teacher/classes/${klass.id}`, 404, "other school's class must NOT be found");
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");

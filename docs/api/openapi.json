@@ -43209,13 +43209,17 @@
                             },
                             "circulars": {
                               "type": "boolean"
+                            },
+                            "incidents": {
+                              "type": "boolean"
                             }
                           },
                           "required": [
                             "absence",
                             "feeReminders",
                             "feeReceipts",
-                            "circulars"
+                            "circulars",
+                            "incidents"
                           ],
                           "additionalProperties": false
                         }
@@ -43311,7 +43315,8 @@
                               "absence",
                               "feeReminders",
                               "feeReceipts",
-                              "circulars"
+                              "circulars",
+                              "incidents"
                             ],
                             "nullable": true
                           },
@@ -43812,6 +43817,9 @@
                         "type": "boolean"
                       },
                       "circulars": {
+                        "type": "boolean"
+                      },
+                      "incidents": {
                         "type": "boolean"
                       }
                     },
@@ -46465,6 +46473,1386 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/staff/incidents": {
+      "get": {
+        "summary": "The school's incidents for the office and the head, a teacher's own pupils' for a teacher (?status=OPEN|CLOSED|ALL&studentMembershipId=&page=)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reportedByName": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "INJURY",
+                              "ILLNESS",
+                              "BEHAVIOUR",
+                              "SAFEGUARDING",
+                              "OTHER"
+                            ]
+                          },
+                          "severity": {
+                            "type": "string",
+                            "enum": [
+                              "MINOR",
+                              "MODERATE",
+                              "SERIOUS"
+                            ]
+                          },
+                          "occurredAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "place": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "guardiansNotifiedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/occurredAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "OPEN",
+                              "CLOSED"
+                            ]
+                          },
+                          "closedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/occurredAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "closedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "noteCount": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "reportedByName",
+                          "kind",
+                          "severity",
+                          "occurredAt",
+                          "place",
+                          "title",
+                          "guardiansNotifiedAt",
+                          "status",
+                          "closedAt",
+                          "closedByName",
+                          "noteCount"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "openCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "rows",
+                    "total",
+                    "page",
+                    "pageSize",
+                    "openCount"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "OPEN",
+                      "CLOSED",
+                      "ALL"
+                    ],
+                    "default": "OPEN"
+                  },
+                  "studentMembershipId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "default": 1
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Record an incident or a sick-room visit for a pupil; the family is told at once unless notifyGuardians is false",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reportedByName": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "INJURY",
+                        "ILLNESS",
+                        "BEHAVIOUR",
+                        "SAFEGUARDING",
+                        "OTHER"
+                      ]
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": [
+                        "MINOR",
+                        "MODERATE",
+                        "SERIOUS"
+                      ]
+                    },
+                    "occurredAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "place": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "actionTaken": {
+                      "type": "string"
+                    },
+                    "guardiansNotifiedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "CLOSED"
+                      ]
+                    },
+                    "closedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "closedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "authorName": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/occurredAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "authorName",
+                          "body",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canNote": {
+                      "type": "boolean"
+                    },
+                    "canClose": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "reportedByName",
+                    "kind",
+                    "severity",
+                    "occurredAt",
+                    "place",
+                    "title",
+                    "body",
+                    "actionTaken",
+                    "guardiansNotifiedAt",
+                    "status",
+                    "closedAt",
+                    "closedByName",
+                    "notes",
+                    "canNote",
+                    "canClose"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "INJURY",
+                      "ILLNESS",
+                      "BEHAVIOUR",
+                      "SAFEGUARDING",
+                      "OTHER"
+                    ]
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "MINOR",
+                      "MODERATE",
+                      "SERIOUS"
+                    ],
+                    "default": "MINOR"
+                  },
+                  "occurredAt": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "place": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "default": ""
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4000
+                  },
+                  "actionTaken": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "default": ""
+                  },
+                  "notifyGuardians": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "kind",
+                  "title",
+                  "body"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/incidents/{incidentId}": {
+      "get": {
+        "summary": "One incident with its follow-up notes",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reportedByName": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "INJURY",
+                        "ILLNESS",
+                        "BEHAVIOUR",
+                        "SAFEGUARDING",
+                        "OTHER"
+                      ]
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": [
+                        "MINOR",
+                        "MODERATE",
+                        "SERIOUS"
+                      ]
+                    },
+                    "occurredAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "place": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "actionTaken": {
+                      "type": "string"
+                    },
+                    "guardiansNotifiedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "CLOSED"
+                      ]
+                    },
+                    "closedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "closedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "authorName": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/occurredAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "authorName",
+                          "body",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canNote": {
+                      "type": "boolean"
+                    },
+                    "canClose": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "reportedByName",
+                    "kind",
+                    "severity",
+                    "occurredAt",
+                    "place",
+                    "title",
+                    "body",
+                    "actionTaken",
+                    "guardiansNotifiedAt",
+                    "status",
+                    "closedAt",
+                    "closedByName",
+                    "notes",
+                    "canNote",
+                    "canClose"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "incidentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/staff/incidents/{incidentId}/notes": {
+      "post": {
+        "summary": "Add a follow-up note while the incident is open",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reportedByName": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "INJURY",
+                        "ILLNESS",
+                        "BEHAVIOUR",
+                        "SAFEGUARDING",
+                        "OTHER"
+                      ]
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": [
+                        "MINOR",
+                        "MODERATE",
+                        "SERIOUS"
+                      ]
+                    },
+                    "occurredAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "place": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "actionTaken": {
+                      "type": "string"
+                    },
+                    "guardiansNotifiedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "CLOSED"
+                      ]
+                    },
+                    "closedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "closedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "authorName": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/occurredAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "authorName",
+                          "body",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canNote": {
+                      "type": "boolean"
+                    },
+                    "canClose": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "reportedByName",
+                    "kind",
+                    "severity",
+                    "occurredAt",
+                    "place",
+                    "title",
+                    "body",
+                    "actionTaken",
+                    "guardiansNotifiedAt",
+                    "status",
+                    "closedAt",
+                    "closedByName",
+                    "notes",
+                    "canNote",
+                    "canClose"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "body": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  }
+                },
+                "required": [
+                  "body"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "incidentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/staff/incidents/{incidentId}/close": {
+      "post": {
+        "summary": "Close an incident once follow-up is done (the office and the head)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reportedByName": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "INJURY",
+                        "ILLNESS",
+                        "BEHAVIOUR",
+                        "SAFEGUARDING",
+                        "OTHER"
+                      ]
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": [
+                        "MINOR",
+                        "MODERATE",
+                        "SERIOUS"
+                      ]
+                    },
+                    "occurredAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "place": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "actionTaken": {
+                      "type": "string"
+                    },
+                    "guardiansNotifiedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "CLOSED"
+                      ]
+                    },
+                    "closedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/occurredAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "closedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "authorName": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/occurredAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "authorName",
+                          "body",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canNote": {
+                      "type": "boolean"
+                    },
+                    "canClose": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "reportedByName",
+                    "kind",
+                    "severity",
+                    "occurredAt",
+                    "place",
+                    "title",
+                    "body",
+                    "actionTaken",
+                    "guardiansNotifiedAt",
+                    "status",
+                    "closedAt",
+                    "closedByName",
+                    "notes",
+                    "canNote",
+                    "canClose"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "incidentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/family/incidents": {
+      "get": {
+        "summary": "A child's incidents and sick-room visits, with the school's follow-up (?childId=; the first child when omitted)",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "childName": {
+                      "type": "string"
+                    },
+                    "incidents": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reportedByName": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "INJURY",
+                              "ILLNESS",
+                              "BEHAVIOUR",
+                              "SAFEGUARDING",
+                              "OTHER"
+                            ]
+                          },
+                          "severity": {
+                            "type": "string",
+                            "enum": [
+                              "MINOR",
+                              "MODERATE",
+                              "SERIOUS"
+                            ]
+                          },
+                          "occurredAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "place": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "actionTaken": {
+                            "type": "string"
+                          },
+                          "guardiansNotifiedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/incidents/items/properties/occurredAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "OPEN",
+                              "CLOSED"
+                            ]
+                          },
+                          "closedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/incidents/items/properties/occurredAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "closedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "authorName": {
+                                  "type": "string"
+                                },
+                                "body": {
+                                  "type": "string"
+                                },
+                                "createdAt": {
+                                  "$ref": "#/properties/incidents/items/properties/occurredAt"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "authorName",
+                                "body",
+                                "createdAt"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "canNote": {
+                            "type": "boolean"
+                          },
+                          "canClose": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "reportedByName",
+                          "kind",
+                          "severity",
+                          "occurredAt",
+                          "place",
+                          "title",
+                          "body",
+                          "actionTaken",
+                          "guardiansNotifiedAt",
+                          "status",
+                          "closedAt",
+                          "closedByName",
+                          "notes",
+                          "canNote",
+                          "canClose"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "childName",
+                    "incidents"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     }
   }

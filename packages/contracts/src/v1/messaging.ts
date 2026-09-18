@@ -12,7 +12,7 @@ const iso = z.string().datetime();
 const isoOrNull = iso.nullable();
 const count = z.number().int().min(0);
 
-export const messageEventSchema = z.enum(["absence", "feeReminders", "feeReceipts", "circulars"]);
+export const messageEventSchema = z.enum(["absence", "feeReminders", "feeReceipts", "circulars", "incidents"]);
 export const messageChannelSchema = z.enum(["SMS", "WHATSAPP"]);
 export const messageStatusSchema = z.enum(["QUEUED", "SENT", "DELIVERED", "FAILED", "UNDELIVERED", "SKIPPED"]);
 export const messageSkipReasonSchema = z.enum(["no-phone", "opted-out", "channel-off", "event-off", "cap-monthly", "cap-daily", "no-transport", "disabled"]);
@@ -22,13 +22,13 @@ export const messagingSettingsSchema = z.object({
   smsEnabled: z.boolean(),
   whatsappEnabled: z.boolean(),
   monthlyCap: count,
-  events: z.object({ absence: z.boolean(), feeReminders: z.boolean(), feeReceipts: z.boolean(), circulars: z.boolean() }),
+  events: z.object({ absence: z.boolean(), feeReminders: z.boolean(), feeReceipts: z.boolean(), circulars: z.boolean(), incidents: z.boolean() }),
 });
 export const messagingSettingsSaveSchema = z.object({
   smsEnabled: z.boolean().optional(),
   whatsappEnabled: z.boolean().optional(),
   monthlyCap: count.max(1_000_000).optional(),
-  events: z.object({ absence: z.boolean().optional(), feeReminders: z.boolean().optional(), feeReceipts: z.boolean().optional(), circulars: z.boolean().optional() }).optional(),
+  events: z.object({ absence: z.boolean().optional(), feeReminders: z.boolean().optional(), feeReceipts: z.boolean().optional(), circulars: z.boolean().optional(), incidents: z.boolean().optional() }).optional(),
 });
 
 export const messagingAudienceSchema = z.discriminatedUnion("kind", [

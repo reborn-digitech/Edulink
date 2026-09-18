@@ -24,6 +24,7 @@ export function PupilHealth() {
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
   const t = useT();
   const router = useRouter();
+  const th = useTheme();
   const qc = useQueryClient();
   const [editing, setEditing] = useState(false);
   const [saved, setSaved] = useState<string | null>(null);
@@ -99,6 +100,11 @@ export function PupilHealth() {
             />
           ) : null}
           <HealthChecks checks={d.checks} />
+          {/* The incident log's doors: recording one for this pupil, and their file in the log. */}
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            <Button label={t("incidents.record")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/incident-new", params: { membershipId, name: d.studentName } } as never)} style={{ flexGrow: 1 }} />
+            <Button label={t("incidents.viewLog")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/incidents", params: { studentMembershipId: membershipId, name: d.studentName } } as never)} style={{ flexGrow: 1 }} />
+          </View>
         </>
       ) : null}
     </Screen>

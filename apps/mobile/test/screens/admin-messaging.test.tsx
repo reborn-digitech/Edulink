@@ -51,7 +51,7 @@ const BASE = {
 };
 
 const OVERVIEW = {
-  settings: { smsEnabled: true, whatsappEnabled: false, monthlyCap: 500, events: { absence: true, feeReminders: true, feeReceipts: false, circulars: true } },
+  settings: { smsEnabled: true, whatsappEnabled: false, monthlyCap: 500, events: { absence: true, feeReminders: true, feeReceipts: false, circulars: true, incidents: true } },
   transports: { sms: "devbox", whatsapp: "off", problems: ["ZZ set TWILIO_WHATSAPP_FROM"] },
   month: { sent: 42, delivered: 40, failed: 1, skipped: 3, segments: 57, cap: 500 },
   skippedByReason: { "no-phone": 2, "opted-out": 1 },

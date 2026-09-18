@@ -48,6 +48,9 @@ const DIRECT = [
   /** The pupil's health card and its check-ups: the school's, read by the child's teachers and guardians through the app's own rules. */
   "HealthCard",
   "HealthCheck",
+  /** The incident log and its follow-up notes: the school's record of a child's bad day, read by the family through the app's own rules. */
+  "Incident",
+  "IncidentNote",
   "AcademicYear",
   "Term",
   "StaffRecord",
@@ -207,7 +210,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(95);
+    ).toBe(97);
   });
 });
 

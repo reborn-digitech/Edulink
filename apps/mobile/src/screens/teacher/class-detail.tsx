@@ -136,6 +136,18 @@ export function TeacherClassDetail() {
                         </Pressable>
                         <Pressable
                           accessibilityRole="button"
+                          accessibilityLabel={t("incidents.recordFor", { name: p.name })}
+                          hitSlop={4}
+                          onPress={() => {
+                            haptics.tap();
+                            router.push({ pathname: "/(app)/incident-new", params: { membershipId: p.membershipId, name: p.name } } as never);
+                          }}
+                          style={({ pressed }) => ({ width: th.tap, height: th.tap, borderRadius: th.radius.md, alignItems: "center", justifyContent: "center", backgroundColor: th.warnSoft, opacity: pressed ? 0.7 : 1 })}
+                        >
+                          <Icon name="firstAid" size={20} color={th.warn} weight="bold" />
+                        </Pressable>
+                        <Pressable
+                          accessibilityRole="button"
                           accessibilityLabel={t("teacher.messageGuardiansOf", { name: p.name })}
                           hitSlop={4}
                           onPress={() => {

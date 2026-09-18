@@ -14,8 +14,8 @@ import { audienceLabel, channelLabel, messageCaption, purposeLabel, skipLabel, S
 import { must, openWeb } from "./shared";
 
 type SettingsSave = { smsEnabled?: boolean; whatsappEnabled?: boolean; monthlyCap?: number; events?: Partial<MessagingOverview["settings"]["events"]> };
-const EVENTS = ["absence", "feeReminders", "feeReceipts", "circulars"] as const;
-const EVENT_KEY = { absence: "messaging.eventAbsence", feeReminders: "messaging.eventFeeReminders", feeReceipts: "messaging.eventFeeReceipts", circulars: "messaging.eventCirculars" } as const;
+const EVENTS = ["absence", "feeReminders", "feeReceipts", "circulars", "incidents"] as const;
+const EVENT_KEY = { absence: "messaging.eventAbsence", feeReminders: "messaging.eventFeeReminders", feeReceipts: "messaging.eventFeeReceipts", circulars: "messaging.eventCirculars", incidents: "messaging.eventIncidents" } as const;
 
 /**
  * Texts & WhatsApp — the web's /admin/messaging: what the school sent its

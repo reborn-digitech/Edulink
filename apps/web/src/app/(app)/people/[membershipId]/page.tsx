@@ -11,11 +11,15 @@ import {
   PaperPlaneTiltIcon,
   PrinterIcon,
   UsersThreeIcon,
+  WarningCircleIcon,
 } from "@phosphor-icons/react/ssr";
 import { AccessError, requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { healthCardFor } from "@/lib/health";
+import { familyIncidents, listIncidents } from "@/lib/incidents";
+import { INCIDENT_KIND_KEY, INCIDENT_SEVERITY_KEY, INCIDENT_SEVERITY_TONE } from "@/lib/incident-labels";
 import { todayKey } from "@/lib/dates";
+import { Button } from "@/components/ui/button";
 import { HealthCardEditor, HealthCheckForm, HealthChecksList } from "@/components/health-card";
 import { isStaffRole, mayConverse, standingAt } from "@/lib/conversations";
 import { getBadges } from "@/lib/badges";
@@ -162,6 +166,27 @@ export default async function PersonPage({
   if (role === "STUDENT" && !self) {
     try {
       health = await healthCardFor(session, member.id);
+    } catch (error) {
+      if (!(error instanceof AccessError)) throw error;
+    }
+  }
+
+  // The incident log on the pupil's file, by the same rule: the staff who
+  // may see the pupil read and record, the child's guardians read. Each row
+  // is a door — to the staff record, or to the family's page — and a
+  // refusal leaves the section undrawn rather than the page failing.
+  type IncidentLine = { id: string; href: string; occurredAt: Date; kind: keyof typeof INCIDENT_KIND_KEY; severity: keyof typeof INCIDENT_SEVERITY_KEY; title: string; status: "OPEN" | "CLOSED" };
+  let incidents: IncidentLine[] | null = null;
+  const staffViewer = isStaffRole(me);
+  if (role === "STUDENT" && !self) {
+    try {
+      if (staffViewer) {
+        const list = await listIncidents(session, { status: "ALL", studentMembershipId: member.id, page: 1 });
+        incidents = list.rows.map((r) => ({ id: r.id, href: `/incidents/${r.id}`, occurredAt: new Date(r.occurredAt), kind: r.kind, severity: r.severity, title: r.title, status: r.status }));
+      } else {
+        const family = await familyIncidents(session, member.id);
+        incidents = family.incidents.map((r) => ({ id: r.id, href: `/parent/incidents?child=${member.id}#${r.id}`, occurredAt: new Date(r.occurredAt), kind: r.kind, severity: r.severity, title: r.title, status: r.status }));
+      }
     } catch (error) {
       if (!(error instanceof AccessError)) throw error;
     }
@@ -340,6 +365,52 @@ export default async function PersonPage({
                   {health.canRecordCheck && <HealthCheckForm studentMembershipId={member.id} today={todayKey(member.school.timezone)} />}
                 </div>
               </CardBody>
+            </Card>
+          )}
+
+          {incidents && (
+            <Card data-testid="incidents">
+              <CardHeader
+                icon={<WarningCircleIcon weight="duotone" className="size-5" />}
+                title={t("incidents.onFile", { name })}
+                description={incidents.length === 0 ? (staffViewer ? t("incidents.noneBody") : t("incidents.noneForChildBody", { name })) : undefined}
+                action={
+                  staffViewer ? (
+                    <Button asChild variant="secondary" size="sm">
+                      <Link href={`/incidents/new?student=${member.id}`}>{t("incidents.record")}</Link>
+                    </Button>
+                  ) : undefined
+                }
+              />
+              {incidents.length > 0 && (
+                <CardBody>
+                  <ul className="divide-y divide-border">
+                    {incidents.map((incident) => (
+                      <li key={incident.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2.5">
+                        <span className="w-36 shrink-0 text-xs tabular-nums text-fg-muted">
+                          {formatInZone(incident.occurredAt, member.school.timezone, { dateStyle: "medium", timeStyle: "short" }, locale)}
+                        </span>
+                        <Link href={incident.href} className="min-w-0 flex-1 text-sm font-medium text-fg underline underline-offset-2 hover:text-accent-strong">
+                          {incident.title}
+                        </Link>
+                        <span className="flex shrink-0 items-center gap-1.5">
+                          <Badge tone="accent" size="sm">
+                            {t(INCIDENT_KIND_KEY[incident.kind])}
+                          </Badge>
+                          <Badge tone={INCIDENT_SEVERITY_TONE[incident.severity]} size="sm">
+                            {t(INCIDENT_SEVERITY_KEY[incident.severity])}
+                          </Badge>
+                          {incident.status === "CLOSED" && (
+                            <Badge tone="neutral" size="sm">
+                              {t("incidents.closed")}
+                            </Badge>
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardBody>
+              )}
             </Card>
           )}
         </>

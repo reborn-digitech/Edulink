@@ -31,7 +31,7 @@ export type MessageTemplate = {
   vars: readonly string[];
   text: Record<MessageLocale, string>;
   /** The automatic event this template belongs to, or null for the office's own notice. */
-  event: "absence" | "feeReminders" | "feeReceipts" | "circulars" | null;
+  event: "absence" | "feeReminders" | "feeReceipts" | "circulars" | "incidents" | null;
 };
 
 export const MESSAGE_TEMPLATES = {
@@ -85,6 +85,16 @@ export const MESSAGE_TEMPLATES = {
       mr: "{school} कडून सूचना: {notice} - EduLink",
     },
   },
+  incident: {
+    labelKey: "messaging.templateIncident",
+    vars: ["child", "summary", "school"],
+    event: "incidents",
+    text: {
+      en: "{school}: {child} - {summary}. Details and what was done are in the EduLink app; the office can be called. - EduLink",
+      hi: "{school}: {child} - {summary}। विवरण और क्या किया गया, EduLink ऐप में है; कार्यालय को फ़ोन कर सकते हैं। - EduLink",
+      mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते EduLink ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - EduLink",
+    },
+  },
   test: {
     labelKey: "messaging.templateTest",
     vars: ["school"],
@@ -105,7 +115,7 @@ export function isMessageTemplateKey(value: string): value is MessageTemplateKey
 }
 
 /** The automatic events a school may switch off one by one. */
-export const MESSAGE_EVENTS = ["absence", "feeReminders", "feeReceipts", "circulars"] as const;
+export const MESSAGE_EVENTS = ["absence", "feeReminders", "feeReceipts", "circulars", "incidents"] as const;
 export type MessageEvent = (typeof MESSAGE_EVENTS)[number];
 
 /** A variable longer than this is cut, with an ellipsis — the DLT limit per variable is 30. */

@@ -72,6 +72,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts" },
@@ -100,6 +101,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.fees", icon: "receipt", group: "daily", screen: "/(app)/fees" },
     { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.explore", icon: "buildings", group: "school", screen: "/(app)/explore" },
@@ -121,6 +123,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
     { labelKey: "nav.safety", icon: "shield", group: "running", screen: "/(app)/safety" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
@@ -142,6 +145,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
@@ -222,6 +226,10 @@ export const HIDDEN_SCREENS = [
   "messaging-broadcast",
   "health",
   "pupil-health",
+  "incidents",
+  "incident",
+  "incident-new",
+  "family-incidents",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

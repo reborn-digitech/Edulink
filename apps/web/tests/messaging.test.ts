@@ -121,7 +121,7 @@ describe("templates", () => {
 describe("routing", () => {
   it("off by default at a new school; the office switches channels and events; the head may not", async () => {
     expect(transportStatus()).toEqual({ sms: "devbox", whatsapp: "devbox", problems: [] });
-    expect(await messagingSettings(schoolId)).toEqual({ smsEnabled: false, whatsappEnabled: false, monthlyCap: 2000, events: { absence: true, feeReminders: true, feeReceipts: true, circulars: true } });
+    expect(await messagingSettings(schoolId)).toEqual({ smsEnabled: false, whatsappEnabled: false, monthlyCap: 2000, events: { absence: true, feeReminders: true, feeReceipts: true, circulars: true, incidents: true } });
     const off = await deliverToUser({ schoolId, userId: parentA, templateKey: "absence", vars: { child: "A" }, purpose: "absence" });
     expect(off).toMatchObject({ status: "SKIPPED", skipReason: "channel-off" });
     await expect(saveMessagingSettings(principal(), { smsEnabled: true })).rejects.toThrow("messaging.refuseOffice");

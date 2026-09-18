@@ -197,6 +197,8 @@ model School {
   broadcasts          Broadcast[]
   healthCards         HealthCard[]
   healthChecks        HealthCheck[]
+  incidents           Incident[]
+  incidentNotes       IncidentNote[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -371,6 +373,8 @@ model Membership {
   submissions            Submission[]
   healthCard             HealthCard?
   healthChecks           HealthCheck[]
+  incidents              Incident[]           @relation("IncidentStudent")
+  incidentsReported      Incident[]           @relation("IncidentReporter")
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
@@ -3532,4 +3536,61 @@ model HealthCheck {
   student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, studentMembershipId, dateKey])
+}
+
+/// The sick-room and incident log: a fall in the playground, a fever at
+/// eleven, a fight at the gate. Recorded by the teacher who was there,
+/// told to the family at once, kept on the child's file. A record is never
+/// edited after the fact — follow-ups are notes appended below it — so what
+/// the office reads a year later is what was written on the day.
+model Incident {
+  id                     String    @id @default(cuid())
+  schoolId               String
+  studentMembershipId    String
+  reportedByMembershipId String
+  /// INJURY | ILLNESS | BEHAVIOUR | SAFEGUARDING | OTHER
+  kind                   String
+  /// MINOR | MODERATE | SERIOUS
+  severity               String    @default("MINOR")
+  occurredAt             DateTime
+  place                  String?
+  title                  String
+  /// What happened, in the reporter's words.
+  body                   String
+  /// What was done: first aid, rest in the sick room, sent home, doctor called.
+  actionTaken            String    @default("")
+  /// Whether the family was told by this record (a push/text at once) and when.
+  guardiansNotifiedAt    DateTime?
+  /// OPEN | CLOSED — the office closes it once follow-up is done.
+  status                 String    @default("OPEN")
+  closedAt               DateTime?
+  closedByUserId         String?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  school     School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student    Membership     @relation("IncidentStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  reportedBy Membership     @relation("IncidentReporter", fields: [reportedByMembershipId], references: [id], onDelete: Cascade)
+  notes      IncidentNote[]
+
+  @@index([schoolId, status, occurredAt])
+  @@index([schoolId, studentMembershipId, occurredAt])
+  @@index([reportedByMembershipId])
+}
+
+/// A follow-up on an incident: the nurse's note, the call to the family, the
+/// head's decision. Append-only.
+model IncidentNote {
+  id           String   @id @default(cuid())
+  schoolId     String
+  incidentId   String
+  authorUserId String
+  body         String
+  createdAt    DateTime @default(now())
+
+  school   School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  incident Incident @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+
+  @@index([incidentId, createdAt])
+  @@index([schoolId])
 }

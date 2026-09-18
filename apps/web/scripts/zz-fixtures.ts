@@ -627,6 +627,27 @@ async function buildHealth(school: { id: string }, adminUserId: string) {
   return { cards: n };
 }
 
+/**
+ * The incident log for ZZ Northgate: a closed grazed knee on pupil01 from
+ * last week and an OPEN sick-room visit on pupil02 with one follow-up note,
+ * so the sweep's note and close have a door and the screens have both
+ * states. Re-run safe: an open one is recreated if the sweep closed it.
+ */
+async function buildIncidents(school: { id: string }, adminUserId: string) {
+  const [p1, p2] = await Promise.all(["zz.pupil01@zz.test", "zz.pupil02@zz.test"].map((email) => db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", user: { email } }, select: { id: true } })));
+  const teacher = await db.membership.findFirst({ where: { schoolId: school.id, role: "TEACHER", status: "ACTIVE" }, select: { id: true } });
+  if (!p1 || !p2 || !teacher) return { incidents: 0 };
+  const day = 86_400_000;
+  if (!(await db.incident.findFirst({ where: { studentMembershipId: p1.id, title: "ZZ Fell on the steps, grazed knee" }, select: { id: true } }))) {
+    await db.incident.create({ data: { schoolId: school.id, studentMembershipId: p1.id, reportedByMembershipId: teacher.id, kind: "INJURY", severity: "MINOR", occurredAt: new Date(Date.now() - 6 * day), place: "Playground steps", title: "ZZ Fell on the steps, grazed knee", body: "Slipped on the wet steps at the end of break. Small graze on the right knee, no other injury.", actionTaken: "Cleaned and dressed in the sick room; back to class after ten minutes.", guardiansNotifiedAt: new Date(Date.now() - 6 * day), status: "CLOSED", closedAt: new Date(Date.now() - 5 * day), closedByUserId: adminUserId, notes: { create: { schoolId: school.id, authorUserId: adminUserId, body: "Mother called back in the evening; knee fine the next morning." } } } });
+  }
+  const open = await db.incident.findFirst({ where: { studentMembershipId: p2.id, status: "OPEN" }, select: { id: true } });
+  if (!open) {
+    await db.incident.create({ data: { schoolId: school.id, studentMembershipId: p2.id, reportedByMembershipId: teacher.id, kind: "ILLNESS", severity: "MODERATE", occurredAt: new Date(Date.now() - 2 * 3_600_000), place: "Classroom", title: "ZZ Wheezing after PE, used inhaler", body: "Short of breath after the run in PE. Sat down, used her inhaler as on the health card, settled within five minutes.", actionTaken: "Rested in the sick room for twenty minutes; father telephoned.", guardiansNotifiedAt: new Date(Date.now() - 2 * 3_600_000), notes: { create: { schoolId: school.id, authorUserId: adminUserId, body: "Father will bring the spare inhaler tomorrow." } } } });
+  }
+  return { incidents: await db.incident.count({ where: { schoolId: school.id } }) };
+}
+
 async function buildTimetable(
   schoolId: string,
   classes: { id: string; grade: string }[],
@@ -1057,6 +1078,7 @@ async function main() {
   const fees = await buildFees(northgate.school, northgate.admin.id);
   const texts = await buildMessaging(northgate.school, northgate.admin.id);
   const health = await buildHealth(northgate.school, northgate.admin.id);
+  const incidents = await buildIncidents(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1095,6 +1117,7 @@ async function main() {
                  ${fees.receipts} receipt (zz.pupil01's Term 1, cash) — /admin/fees, /parent/fees
      texts       ${texts.numbered} guardians numbered +91 98764 00001…, SMS and WhatsApp on, one notice sent — /admin/messaging
      health      ${health.cards} health cards on the first three pupils (peanut allergy, asthma, a check-up) — /parent/health, /people/<id>
+     incidents   ${incidents.incidents} incidents (a closed grazed knee, an open sick-room visit) — /admin/incidents, /parent/incidents
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}
