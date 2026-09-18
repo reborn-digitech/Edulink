@@ -101,13 +101,18 @@ model School {
   /// Texts to families. Off until the office switches each channel on; the
   /// server also needs a transport (SMS_TRANSPORT / WHATSAPP_TRANSPORT), and a
   /// message goes only to a guardian who has a number and has not opted out.
-  msgSmsEnabled      Boolean @default(false)
-  msgWhatsappEnabled Boolean @default(false)
+  msgSmsEnabled         Boolean @default(false)
+  msgWhatsappEnabled    Boolean @default(false)
   /// Messages per calendar month, both channels together; the school's
   /// spending brake. A text past the cap is recorded SKIPPED, not lost silently.
-  msgMonthlyCap      Int     @default(2000)
+  msgMonthlyCap         Int     @default(2000)
+  /// Staff attendance: the minute of the day (in School.timezone) the staff
+  /// day starts, and the grace after it before a self check-in counts as
+  /// late. 540 is 09:00.
+  staffCheckInMinute    Int     @default(540)
+  staffLateGraceMinutes Int     @default(15)
   /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
-  msgEventsJson      String  @default("{}")
+  msgEventsJson         String  @default("{}")
 
   verifiedAt DateTime?
 
@@ -200,6 +205,7 @@ model School {
   healthChecks        HealthCheck[]
   incidents           Incident[]
   incidentNotes       IncidentNote[]
+  staffAttendance     StaffAttendance[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -377,6 +383,7 @@ model Membership {
   healthChecks           HealthCheck[]
   incidents              Incident[]           @relation("IncidentStudent")
   incidentsReported      Incident[]           @relation("IncidentReporter")
+  staffAttendance        StaffAttendance[]
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
@@ -3624,4 +3631,31 @@ model IncidentNote {
 
   @@index([incidentId, createdAt])
   @@index([schoolId])
+}
+
+/// The staff register: one row per staff member per day. Marked by the
+/// office for the whole staff room, or by the person themselves with a
+/// check-in on the phone (present, or late after the school's grace); a
+/// day inside an approved leave shows as ON_LEAVE without a row. Feeds the
+/// monthly summary and, later, the substitution board.
+model StaffAttendance {
+  id             String    @id @default(cuid())
+  schoolId       String
+  membershipId   String
+  dateKey        String
+  /// PRESENT | LATE | HALF_DAY | ABSENT | ON_LEAVE
+  status         String
+  /// SELF (a check-in) | OFFICE (marked at the desk)
+  source         String    @default("OFFICE")
+  checkedInAt    DateTime?
+  note           String?
+  markedByUserId String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@unique([membershipId, dateKey])
+  @@index([schoolId, dateKey])
 }

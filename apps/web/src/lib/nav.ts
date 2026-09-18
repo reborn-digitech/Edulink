@@ -59,6 +59,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
+    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Fees: what the school asked its families for and what arrived. The
     // office writes; the principal reads the same pages (see fees.ts officeOrHead).
@@ -96,6 +97,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
+    { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // Read-only for the head: the overview, the dues and the structures.
     { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
@@ -123,6 +125,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
     { href: "/teacher/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
     { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running" },
+    { href: "/teacher/attendance/me", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/teacher/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
@@ -230,6 +233,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
     { href: "/teacher/assignments/new", labelKey: "action.newAssignment", icon: "plus", descriptionKey: "action.newAssignmentHint" },
     { href: "/remarks/new", labelKey: "action.messageParent", icon: "chat", descriptionKey: "action.messageParentHint" },
     { href: "/teacher/leave", labelKey: "action.applyLeave", icon: "calendar", descriptionKey: "action.applyLeaveHint" },
+    { href: "/teacher/attendance/me", labelKey: "staffAttendance.checkIn", icon: "checks", descriptionKey: "staffAttendance.myIntro" },
     { href: "/teacher/exams", labelKey: "action.enterMarks", icon: "clipboard", descriptionKey: "action.enterMarksHint" },
     { href: "/teacher/classes", labelKey: "action.reportCards", icon: "clipboard", descriptionKey: "action.reportCardsHint" },
   ],

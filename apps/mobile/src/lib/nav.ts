@@ -72,6 +72,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
+    { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/my-attendance" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
@@ -117,6 +118,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
+    { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
@@ -141,6 +143,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.attendance", icon: "checks", group: "daily", screen: "/(app)/attendance" },
+    { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
@@ -234,6 +237,8 @@ export const HIDDEN_SCREENS = [
   "family-incidents",
   "circulars",
   "circular-reach",
+  "staff-attendance",
+  "my-attendance",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

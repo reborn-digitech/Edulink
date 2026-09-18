@@ -2106,6 +2106,26 @@ async function main() {
     skip("circular reach", "no ZZ fixtures with a circular (run zz:fixtures)");
   }
 
+  /* ---- staff attendance: the office's register and the month, a teacher's own days ---- */
+  // Riverside's own office, teacher and guardian; the dates are the server's
+  // calendar, which the library clamps to the school's own today.
+  {
+    const staffToday = new Date();
+    const staffYesterday = new Date(staffToday.getTime() - 86_400_000).toISOString().slice(0, 10);
+    const staffMonth = staffToday.toISOString().slice(0, 7);
+    await check(admin, "/admin/staff-attendance", 200, "the office reads today's staff register");
+    await check(admin, `/admin/staff-attendance?date=${staffYesterday}`, 200, "…and yesterday's");
+    await check(admin, `/admin/staff-attendance?month=${staffMonth}`, 200, "…and this month, person by person");
+    await check(admin, `/admin/staff-attendance/export?month=${staffMonth}`, 200, "…and downloads the month");
+    await check(admin, `/admin/staff-attendance/export?month=${staffMonth}&format=xlsx`, 200, "…and as a workbook");
+    await check(teacher, "/teacher/attendance/me", 200, "a teacher reads their own attendance");
+    await check(teacher, "/admin/staff-attendance", 307, "⚠ …but not the office's register");
+    await check(parent, "/teacher/attendance/me", 307, "⚠ a guardian has no staff attendance");
+    await check(parent, "/admin/staff-attendance", 307, "⚠ …nor the register");
+    await check(null, "/admin/staff-attendance", 307, "signed-out register redirects to login");
+    await check(null, "/teacher/attendance/me", 307, "signed-out own attendance redirects to login");
+  }
+
   /* ---- negative: cross-tenant and cross-role ---- */
   if (klass) await check(otherAdmin, `/teacher/classes/${klass.id}`, 404, "other school's class must NOT be found");
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");

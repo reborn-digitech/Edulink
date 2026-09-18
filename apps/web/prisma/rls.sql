@@ -1206,6 +1206,15 @@ CREATE POLICY "IncidentNote_tenant_isolation" ON "IncidentNote"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- StaffAttendance
+ALTER TABLE "StaffAttendance" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StaffAttendance" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StaffAttendance_tenant_isolation" ON "StaffAttendance";
+DROP POLICY IF EXISTS "StaffAttendance_readable" ON "StaffAttendance";
+CREATE POLICY "StaffAttendance_tenant_isolation" ON "StaffAttendance"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

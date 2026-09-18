@@ -111,3 +111,4 @@ export * from "./v1/messaging";
 export * from "./v1/health";
 export * from "./v1/incidents";
 export * from "./v1/circulars";
+export * from "./v1/staff-attendance";

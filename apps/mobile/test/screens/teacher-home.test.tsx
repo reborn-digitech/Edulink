@@ -1,7 +1,8 @@
 import { screen, waitFor } from "@testing-library/react-native";
-import { staffTodaySchema } from "@edulink/contracts";
+import { myStaffAttendanceSchema, staffTodaySchema } from "@edulink/contracts";
+import { ToastProvider } from "@/components";
 import { TeacherHome } from "@/screens/teacher/home";
-import { fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap } from "./teacher-support";
+import { callsTo, fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap } from "./teacher-support";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -27,6 +28,20 @@ const TODAY = staffTodaySchema.parse({
     dueSoon: [{ id: "a1", title: "ZZ Fractions sheet", dueAt: new Date(Date.now() + 2 * 86_400_000).toISOString(), className: "ZZ 5A" }],
   },
 });
+
+const MINE = myStaffAttendanceSchema.parse({
+  month: "2026-09",
+  previousMonth: "2026-08",
+  nextMonth: null,
+  today: "2026-09-07",
+  todayStatus: null,
+  canCheckIn: true,
+  checkInMinute: 540,
+  lateGraceMinutes: 15,
+  summary: { present: 4, late: 0, halfDay: 0, absent: 0, onLeave: 0, unmarked: 0, workingDays: 4, percent: 100 },
+  days: [{ dateKey: "2026-09-07", status: null, source: null, checkedInAt: null, note: null, closed: false }],
+});
+const CHECKED_IN = { ...MINE, todayStatus: "PRESENT", canCheckIn: false, days: [{ ...MINE.days[0]!, status: "PRESENT", source: "SELF", checkedInAt: "2026-09-07T03:40:00.000Z" }] };
 
 beforeEach(() => {
   resetOutbox();
@@ -80,5 +95,38 @@ describe("the teacher's Today", () => {
     fetch.mockImplementation(async () => json(TODAY));
     await tap(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(screen.getByText("1 still to take.")).toBeTruthy());
+  });
+
+  it("carries 'I'm in' at the top while the day allows it; the tap posts the check-in and today's line takes the button's place", async () => {
+    let checkedIn = false;
+    const fetch = fakeApi({
+      "/api/v1/staff/today": () => json(TODAY),
+      "/api/v1/staff/attendance/me": () => json(checkedIn ? CHECKED_IN : MINE),
+      "/api/v1/staff/attendance/check-in": () => {
+        checkedIn = true;
+        return json({ status: "PRESENT", checkedInAt: "2026-09-07T03:40:00.000Z", late: false });
+      },
+    });
+    await renderTeacher(
+      <ToastProvider>
+        <TeacherHome />
+      </ToastProvider>,
+    );
+    await screen.findByText("1 still to take.");
+    await tap(await screen.findByRole("button", { name: "I'm in" }));
+    expect(await screen.findByText("Checked in. Have a good day.")).toBeTruthy();
+    expect(callsTo(fetch, "/api/v1/staff/attendance/check-in").map((c) => c.method)).toEqual(["POST"]);
+    await screen.findByText(/^Checked in \d{2}:\d{2}$/);
+    expect(screen.queryByRole("button", { name: "I'm in" })).toBeNull();
+    await tap(screen.getByRole("button", { name: "This month" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-attendance");
+  });
+
+  it("without the staff register answering, the Today screen draws no check-in card and is otherwise unchanged", async () => {
+    fakeApi({ "/api/v1/staff/today": () => json(TODAY) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("1 still to take.");
+    expect(screen.queryByRole("button", { name: "I'm in" })).toBeNull();
+    expect(screen.queryByText("My attendance")).toBeNull();
   });
 });

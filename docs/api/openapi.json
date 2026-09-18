@@ -48453,6 +48453,952 @@
           }
         }
       }
+    },
+    "/api/v1/office/staff-attendance": {
+      "get": {
+        "summary": "The staff register for a day (?date=; today when omitted), with an approved leave shown as ON_LEAVE",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "dateKey": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "today": {
+                      "$ref": "#/properties/dateKey"
+                    },
+                    "closed": {
+                      "type": "boolean"
+                    },
+                    "closedName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "checkInMinute": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "lateGraceMinutes": {
+                      "$ref": "#/properties/checkInMinute"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "avatarKey": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PRESENT",
+                              "LATE",
+                              "HALF_DAY",
+                              "ABSENT",
+                              "ON_LEAVE"
+                            ],
+                            "nullable": true
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "OFFICE",
+                              "SELF",
+                              "LEAVE"
+                            ],
+                            "nullable": true
+                          },
+                          "checkedInAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "onLeave": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name",
+                          "role",
+                          "avatarKey",
+                          "status",
+                          "source",
+                          "checkedInAt",
+                          "note",
+                          "onLeave"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "present": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "late": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "halfDay": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "absent": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "onLeave": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "unmarked": {
+                          "$ref": "#/properties/checkInMinute"
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "present",
+                        "late",
+                        "halfDay",
+                        "absent",
+                        "onLeave",
+                        "unmarked"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "dateKey",
+                    "today",
+                    "closed",
+                    "closedName",
+                    "checkInMinute",
+                    "lateGraceMinutes",
+                    "rows",
+                    "counts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Mark some or all of the staff for a day; a person left out is left as they were",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "marked": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "marked"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "entries": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "membershipId": {
+                          "type": "string",
+                          "pattern": "^c[a-z0-9]{20,}$"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PRESENT",
+                            "LATE",
+                            "HALF_DAY",
+                            "ABSENT",
+                            "ON_LEAVE"
+                          ]
+                        },
+                        "note": {
+                          "type": "string",
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "membershipId",
+                        "status"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 500
+                  }
+                },
+                "required": [
+                  "date",
+                  "entries"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/staff-attendance/settings": {
+      "post": {
+        "summary": "When the staff day starts and the grace before a check-in is late",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "checkInMinute": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1439
+                  },
+                  "lateGraceMinutes": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 180
+                  }
+                },
+                "required": [
+                  "checkInMinute",
+                  "lateGraceMinutes"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/staff-attendance/month": {
+      "get": {
+        "summary": "The month per person: present, late, half days, absent, on leave, unmarked (?month=)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "month": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}$"
+                    },
+                    "previousMonth": {
+                      "$ref": "#/properties/month"
+                    },
+                    "nextMonth": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/month"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "workingDays": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "present": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "late": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "halfDay": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "absent": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "onLeave": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "unmarked": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "workingDays": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "percent": {
+                            "type": "number",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name",
+                          "role",
+                          "present",
+                          "late",
+                          "halfDay",
+                          "absent",
+                          "onLeave",
+                          "unmarked",
+                          "workingDays",
+                          "percent"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "month",
+                    "previousMonth",
+                    "nextMonth",
+                    "workingDays",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "month": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/attendance/me": {
+      "get": {
+        "summary": "My own days this month, today's state and whether I may still check in (?month=)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "month": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}$"
+                    },
+                    "previousMonth": {
+                      "$ref": "#/properties/month"
+                    },
+                    "nextMonth": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/month"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "today": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "todayStatus": {
+                      "type": "string",
+                      "enum": [
+                        "PRESENT",
+                        "LATE",
+                        "HALF_DAY",
+                        "ABSENT",
+                        "ON_LEAVE"
+                      ],
+                      "nullable": true
+                    },
+                    "canCheckIn": {
+                      "type": "boolean"
+                    },
+                    "checkInMinute": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "lateGraceMinutes": {
+                      "$ref": "#/properties/checkInMinute"
+                    },
+                    "summary": {
+                      "type": "object",
+                      "properties": {
+                        "present": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "late": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "halfDay": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "absent": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "onLeave": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "unmarked": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "workingDays": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "percent": {
+                          "type": "number",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "present",
+                        "late",
+                        "halfDay",
+                        "absent",
+                        "onLeave",
+                        "unmarked",
+                        "workingDays",
+                        "percent"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "days": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dateKey": {
+                            "$ref": "#/properties/today"
+                          },
+                          "status": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/todayStatus"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "OFFICE",
+                              "SELF",
+                              "LEAVE"
+                            ],
+                            "nullable": true
+                          },
+                          "checkedInAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "closed": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "dateKey",
+                          "status",
+                          "source",
+                          "checkedInAt",
+                          "note",
+                          "closed"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "month",
+                    "previousMonth",
+                    "nextMonth",
+                    "today",
+                    "todayStatus",
+                    "canCheckIn",
+                    "checkInMinute",
+                    "lateGraceMinutes",
+                    "summary",
+                    "days"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "month": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/attendance/check-in": {
+      "post": {
+        "summary": "\"I'm in\": present, or late after the school's grace; once a day, never on a closed day",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PRESENT",
+                        "LATE",
+                        "HALF_DAY",
+                        "ABSENT",
+                        "ON_LEAVE"
+                      ]
+                    },
+                    "checkedInAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "late": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "checkedInAt",
+                    "late"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

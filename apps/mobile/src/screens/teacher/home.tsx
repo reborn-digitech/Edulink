@@ -2,13 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { QUICK } from "@/lib/nav";
-import { staffTodaySchema } from "@edulink/contracts";
+import { myStaffAttendanceSchema, staffTodaySchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { clock, dayLabel, relativeTime } from "./support";
+import { MY_KEY, MY_PATH, todayLine, useCheckIn } from "./my-attendance";
 
 /**
  * The teacher's Today, the web's /teacher: the registers still to take, the
@@ -30,6 +31,7 @@ export function TeacherHome() {
 
   return (
     <Screen title={t("teacher.today")} description={data ? `${data.schoolName} · ${dayLabel(data.dateKey, locale)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+      <CheckInCard />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {nothingAtAll ? (
@@ -130,5 +132,36 @@ export function TeacherHome() {
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * "I'm in" at the top of the day, or today's line once it is recorded: one
+ * light GET of the staff member's own days. Nothing is drawn while it loads
+ * or if the server refuses, so the Today screen never waits on it.
+ */
+function CheckInCard() {
+  const t = useT();
+  const { locale } = useLocale();
+  const router = useRouter();
+  const query = useQuery({
+    queryKey: [...MY_KEY, "home"],
+    queryFn: async () => myStaffAttendanceSchema.parse(unwrap(await api().get(MY_PATH))),
+  });
+  const checkIn = useCheckIn();
+  const d = query.data;
+  if (!d) return null;
+  const line = todayLine(t, locale, d);
+  if (!d.canCheckIn && !line) return null;
+  return (
+    <Card title={t("staffAttendance.myTitle")} action={<Button label={t("staffAttendance.month")} variant="ghost" onPress={() => router.push("/(app)/my-attendance" as never)} />}>
+      {d.canCheckIn ? (
+        <Button label={t("staffAttendance.checkIn")} busy={checkIn.isPending} onPress={() => checkIn.mutate({ checkInMinute: d.checkInMinute, lateGraceMinutes: d.lateGraceMinutes })} />
+      ) : (
+        <Text variant="base" bold tone={d.todayStatus === "LATE" ? "warn" : d.todayStatus === "ON_LEAVE" ? "accent" : "ok"} accessibilityLiveRegion="polite">
+          {line}
+        </Text>
+      )}
+    </Card>
   );
 }

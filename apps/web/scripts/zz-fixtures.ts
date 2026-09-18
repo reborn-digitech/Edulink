@@ -677,6 +677,35 @@ async function buildCircular(school: { id: string; name: string }, adminUserId: 
   return { postId: post.id };
 }
 
+/**
+ * The staff register for ZZ Northgate: the last five working days marked by
+ * the office, everyone present but one teacher late once and one absent
+ * once, and today's row for the first teacher a check-in. Re-run safe.
+ */
+async function buildStaffAttendance(school: { id: string }, adminUserId: string) {
+  const staff = await db.membership.findMany({ where: { schoolId: school.id, role: { in: ["ADMIN", "PRINCIPAL", "TEACHER"] }, status: "ACTIVE", leftAt: null }, select: { id: true, role: true }, orderBy: [{ role: "asc" }, { id: "asc" }] });
+  const teachers = staff.filter((m) => m.role === "TEACHER");
+  const today = new Date().toISOString().slice(0, 10);
+  const days: string[] = [];
+  for (let back = 1; days.length < 5 && back < 14; back += 1) {
+    const d = new Date(Date.now() - back * 86_400_000);
+    if (d.getUTCDay() !== 0) days.push(d.toISOString().slice(0, 10));
+  }
+  let n = 0;
+  for (const [i, day] of days.entries()) {
+    for (const [j, m] of staff.entries()) {
+      const status = i === 1 && m.id === teachers[0]?.id ? "LATE" : i === 3 && m.id === teachers[1]?.id ? "ABSENT" : "PRESENT";
+      await db.staffAttendance.upsert({ where: { membershipId_dateKey: { membershipId: m.id, dateKey: day } }, create: { schoolId: school.id, membershipId: m.id, dateKey: day, status, source: "OFFICE", markedByUserId: adminUserId, note: status === "ABSENT" ? "Rang in unwell." : null }, update: {} });
+      n += 1;
+      void j;
+    }
+  }
+  if (teachers[0]) {
+    await db.staffAttendance.upsert({ where: { membershipId_dateKey: { membershipId: teachers[0].id, dateKey: today } }, create: { schoolId: school.id, membershipId: teachers[0].id, dateKey: today, status: "PRESENT", source: "SELF", checkedInAt: new Date(), markedByUserId: adminUserId }, update: {} });
+  }
+  return { marked: n, staff: staff.length };
+}
+
 async function buildTimetable(
   schoolId: string,
   classes: { id: string; grade: string }[],
@@ -1109,6 +1138,7 @@ async function main() {
   const health = await buildHealth(northgate.school, northgate.admin.id);
   const incidents = await buildIncidents(northgate.school, northgate.admin.id);
   const circular = await buildCircular(northgate.school, northgate.admin.id);
+  const staffAtt = await buildStaffAttendance(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1149,6 +1179,7 @@ async function main() {
      health      ${health.cards} health cards on the first three pupils (peanut allergy, asthma, a check-up) — /parent/health, /people/<id>
      incidents   ${incidents.incidents} incidents (a closed grazed knee, an open sick-room visit) — /admin/incidents, /parent/incidents
      circular    one notice asking for an acknowledgement, told to every guardian, opened by two, acknowledged by one — /admin/circulars, /bulletin/${circular.postId}
+     staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

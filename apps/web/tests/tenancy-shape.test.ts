@@ -53,6 +53,8 @@ const DIRECT = [
   "IncidentNote",
   /** A circular opened by a reader: denormalised schoolId like PostAck beside it. */
   "PostRead",
+  /** The staff register: a staff member's day, the school's row. */
+  "StaffAttendance",
   "AcademicYear",
   "Term",
   "StaffRecord",
@@ -212,7 +214,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(98);
+    ).toBe(99);
   });
 });
 
