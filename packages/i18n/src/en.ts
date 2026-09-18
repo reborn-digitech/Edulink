@@ -4328,6 +4328,7 @@ export const en = {
     dayTotals: "Present or late, each day",
     legend: "P present · L late · A absent · E excused · blank not marked",
     exportCsv: "Download this month as CSV",
+    exportXlsx: "Download this month as Excel",
   },
   attendanceIntel: {
     sortLowest: "Lowest attendance first",
@@ -4358,6 +4359,8 @@ export const en = {
     fieldMonth: "Month",
     exportRegister: "Download attendance (CSV)",
     exportEnrolment: "Download enrolment summary (CSV)",
+    exportRegisterXlsx: "Download attendance (Excel)",
+    exportEnrolmentXlsx: "Download enrolment summary (Excel)",
   },
 
   journey: {
@@ -4485,6 +4488,16 @@ export const en = {
     blankMeansAbsent:
       "Leave a box empty for a child who did not sit the paper — an absence is not a zero.",
     saveMarks: "Save marks",
+    sheetHint: "Or download the sheet, enter marks in its last column, fill the boxes from it and then save.",
+    sheetDownload: "Download marks sheet (Excel)",
+    sheetFill: "Fill from Excel",
+    sheetColId: "EduLink id (leave as is)",
+    sheetColStudent: "Student",
+    sheetColMarks: "Marks (out of {max})",
+    sheetFilled: "{filled} of {total} boxes filled from the sheet. Check them, then save.",
+    sheetUnmatched: "Not matched: {names}",
+    sheetOver: "{count} above {max} left empty.",
+    sheetNoRows: "No rows with marks were found in that file.",
     unweightedNote:
       "This class combines marks using category weights, and no category named “Exam” carries a weight yet. These marks still appear on grades pages and report cards, but they will not move the weighted overall until the class's weights include one.",
     unweightedLink: "Set category weights",
@@ -4723,6 +4736,7 @@ export const en = {
     nobodyYet: "Nobody yet",
     countOfRole: "{count} {role}",
     exportCsv: "Export CSV",
+    exportXlsx: "Export Excel",
     searchPlaceholder: "Search by name or email…",
     searchLabel: "Search the directory",
     clearSearch: "Clear search",
@@ -4874,7 +4888,8 @@ export const en = {
     classHint: "Optional — they can also join later with the class code.",
     noClass: "No class",
     emails: "Emails",
-    uploadCsv: "Upload CSV",
+    uploadCsv: "Upload CSV or Excel",
+    fileUnreadable: "That file could not be read as a spreadsheet. Save it as .xlsx or .csv and try again.",
     headerOptional: "A header row is optional. Just one email per line works too.",
     fileTooBig: "That file is larger than 2 MB. Split it into smaller batches.",
     readyToInvite: "{count} ready to invite",
@@ -5629,6 +5644,7 @@ export const en = {
     skipped: "Skipped",
     failed: "Failed",
     downloadResult: "Download this list",
+    downloadTemplate: "Download Excel template",
     shareResult: "Share this list",
     admitMore: "Admit more",
     seePeople: "See the directory",
@@ -5887,6 +5903,8 @@ export const en = {
     linkSettings: "Settings",
     linkExportCollections: "Download collections (CSV)",
     linkExportOutstanding: "Download outstanding (CSV)",
+    linkExportCollectionsXlsx: "Download collections (Excel)",
+    linkExportOutstandingXlsx: "Download outstanding (Excel)",
     linkCarryForward: "Carry forward to the new year",
     /* Fee heads. */
     headsTitle: "Fee heads",

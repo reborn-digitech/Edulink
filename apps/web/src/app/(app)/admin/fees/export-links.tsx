@@ -28,8 +28,14 @@ export function ExportLinks({ fromKey, toKey }: { fromKey: string; toKey: string
         <Button asChild={ready} variant="secondary" disabled={!ready} icon={<DownloadSimpleIcon weight="bold" />}>
           {ready ? <a href={collectionsHref}>{t("fees.linkExportCollections")}</a> : <span>{t("fees.linkExportCollections")}</span>}
         </Button>
+        <Button asChild={ready} variant="secondary" disabled={!ready} icon={<DownloadSimpleIcon weight="bold" />}>
+          {ready ? <a href={`${collectionsHref}&format=xlsx`}>{t("fees.linkExportCollectionsXlsx")}</a> : <span>{t("fees.linkExportCollectionsXlsx")}</span>}
+        </Button>
         <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
           <a href="/admin/fees/export/outstanding">{t("fees.linkExportOutstanding")}</a>
+        </Button>
+        <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+          <a href="/admin/fees/export/outstanding?format=xlsx">{t("fees.linkExportOutstandingXlsx")}</a>
         </Button>
       </div>
     </div>

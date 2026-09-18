@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { parseIntakeCsv, toCsv } from "@/lib/csv";
+import { readSpreadsheet, saveXlsx, SPREADSHEET_ACCEPT } from "@/lib/spreadsheet-client";
 import { formatDateKey } from "@/lib/dates";
 import { runIntake, type IntakeState } from "./actions";
 import { actionError } from "@/lib/action-error";
@@ -63,8 +64,19 @@ export function IntakeForm({
       setError(t("invites.fileTooBig"));
       return;
     }
-    setText(await file.text());
+    const content = await readSpreadsheet(file);
+    if (content === null) {
+      setError(t("invites.fileUnreadable"));
+      return;
+    }
+    setText(content);
     setError(null);
+  }
+
+  /** The example rows as a workbook: the office fills it in Excel and uploads it back. */
+  function downloadTemplate() {
+    const [head, ...rows] = EXAMPLE.split("\n").map((line) => line.split(","));
+    void saveXlsx("admissions-template.xlsx", [{ name: t("intake.title"), headers: head ?? [], rows }]);
   }
 
   function submit(event: React.FormEvent) {
@@ -251,13 +263,18 @@ export function IntakeForm({
           <label htmlFor="intake-list" className="block text-sm font-medium text-fg">
             {t("intake.list")}
           </label>
-          <Button type="button" size="sm" variant="ghost" icon={<UploadSimpleIcon weight="bold" />} onClick={() => fileRef.current?.click()}>
-            {t("invites.uploadCsv")}
-          </Button>
+          <div className="flex flex-wrap gap-1">
+            <Button type="button" size="sm" variant="ghost" icon={<DownloadSimpleIcon weight="bold" />} onClick={downloadTemplate}>
+              {t("intake.downloadTemplate")}
+            </Button>
+            <Button type="button" size="sm" variant="ghost" icon={<UploadSimpleIcon weight="bold" />} onClick={() => fileRef.current?.click()}>
+              {t("invites.uploadCsv")}
+            </Button>
+          </div>
           <input
             ref={fileRef}
             type="file"
-            accept=".csv,text/csv,text/plain"
+            accept={SPREADSHEET_ACCEPT}
             aria-label={t("invites.uploadCsv")}
             className="sr-only"
             onChange={(e) => {

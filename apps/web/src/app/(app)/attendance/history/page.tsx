@@ -265,11 +265,18 @@ export default async function AttendanceHistoryPage({
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-4 py-3">
               <p className="text-xs text-fg-muted">{t("attendanceHistory.legend")}</p>
               {ctx.role === "ADMIN" && (
-                <Button asChild variant="ghost" size="sm" icon={<DownloadSimpleIcon weight="bold" />}>
-                  <a href={`/admin/attendance/export/register?classId=${selectedId}&month=${month}`}>
-                    {t("attendanceHistory.exportCsv")}
-                  </a>
-                </Button>
+                <span className="flex flex-wrap gap-1">
+                  <Button asChild variant="ghost" size="sm" icon={<DownloadSimpleIcon weight="bold" />}>
+                    <a href={`/admin/attendance/export/register?classId=${selectedId}&month=${month}`}>
+                      {t("attendanceHistory.exportCsv")}
+                    </a>
+                  </Button>
+                  <Button asChild variant="ghost" size="sm" icon={<DownloadSimpleIcon weight="bold" />}>
+                    <a href={`/admin/attendance/export/register?classId=${selectedId}&month=${month}&format=xlsx`}>
+                      {t("attendanceHistory.exportXlsx")}
+                    </a>
+                  </Button>
+                </span>
               )}
             </div>
           </CardBody>

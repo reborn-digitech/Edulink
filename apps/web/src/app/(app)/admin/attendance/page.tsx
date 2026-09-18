@@ -243,11 +243,17 @@ export default async function AdminAttendancePage({
             <Button type="submit" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportRegister")}
             </Button>
+            <Button type="submit" name="format" value="xlsx" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+              {t("attendanceIntel.exportRegisterXlsx")}
+            </Button>
           </form>
 
-          <form action="/admin/attendance/export/enrolment" method="get">
+          <form action="/admin/attendance/export/enrolment" method="get" className="flex flex-wrap gap-3">
             <Button type="submit" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportEnrolment")}
+            </Button>
+            <Button type="submit" name="format" value="xlsx" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+              {t("attendanceIntel.exportEnrolmentXlsx")}
             </Button>
           </form>
         </CardBody>

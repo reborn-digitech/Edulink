@@ -1,4 +1,5 @@
 import type { Prisma } from "@prisma/client";
+import { exportResponse } from "@/lib/export-file";
 import { getT } from "@/lib/i18n/server";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -108,14 +109,7 @@ export async function GET(request: Request) {
     });
 
     const stamp = new Date().toISOString().slice(0, 10);
-    return new Response(csv, {
-      headers: {
-        "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="edulink-directory-${stamp}.csv"`,
-        // Contains children's PII: never let a proxy or the browser keep it.
-        "Cache-Control": "no-store, private",
-      },
-    });
+    return exportResponse(request, { filename: `edulink-directory-${stamp}.csv`, csv });
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : 403;

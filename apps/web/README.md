@@ -384,6 +384,9 @@ src/lib/                  All business logic. Pages are thin.
   i18n/                   ★ en/hi/mr. `hi.ts`/`mr.ts` are typed from `en.ts`, so a missing key breaks the BUILD.
   dates.ts                dateKey / timezone / DST. Heavily tested.
   csv.ts                  Real RFC 4180 parser (not regex).
+  xlsx.ts                 Excel read and write with nothing installed: a zip of XML over the platform's deflate streams. Client-safe.
+  export-file.ts          Every CSV download answers ?format=xlsx as the same rows in a workbook.
+  spreadsheet-client.ts   The browser side: a pasted-CSV form takes a workbook too; templates and marks sheets are built in the tab.
   env.ts                  Boot-time config gate.
   offline-queue.ts        IndexedDB outbox (client-side).
   constants.ts            Every status string, single source of truth.
@@ -861,6 +864,7 @@ One line each, with the default rejected.
 | Hand-rasterised PNG icons | Deterministic bytes, no native image dependency | sharp / runtime `ImageResponse` |
 | Inline-SVG avatars (72 presets) | No requests, crisp at any size, cannot leak a child's photo | Shipping 72 image files |
 | Hand-written CSV parser | Quoted commas, doubled quotes, embedded newlines, CRLF, Excel BOM — the rows a regex mangles are the ones a school has (`"Okafor, Amara"`) | A regex, or a dependency |
+| Hand-written .xlsx reader and writer | An .xlsx is a zip of XML and deflate ships with browsers and Node 20; ~300 lines cover every sheet a school sends, and the form reads the workbook in the browser | `xlsx` (unmaintained on npm, open advisory) or `exceljs` (forty packages) |
 
 ---
 

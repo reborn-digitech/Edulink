@@ -175,6 +175,9 @@ export default async function DirectoryPage({
           <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
             <a href={exportHref}>{t("people.exportCsv")}</a>
           </Button>
+          <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <a href={`${exportHref}&format=xlsx`}>{t("people.exportXlsx")}</a>
+          </Button>
         </div>
       </div>
 

@@ -12,6 +12,7 @@ import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { saveMarksAction } from "./actions";
 import { MarksForm } from "./marks-form";
+import { MarksSheet } from "./marks-sheet";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -196,6 +197,7 @@ export default async function TeacherExamsPage({
                   ))}
                 </ul>
                 <p className="text-xs text-fg-muted">{t("exams.blankMeansAbsent")}</p>
+                <MarksSheet pupils={grid.pupils} maxMarks={grid.maxMarks} paper={`${grid.seriesName} ${grid.subject}`} />
                 <Button type="submit">{t("exams.saveMarks")}</Button>
               </MarksForm>
             )}

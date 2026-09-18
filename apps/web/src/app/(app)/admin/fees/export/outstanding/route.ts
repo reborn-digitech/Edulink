@@ -1,19 +1,14 @@
 import { getT } from "@/lib/i18n/server";
+import { exportResponse } from "@/lib/export-file";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { outstandingExport } from "@/lib/fees-reports";
 
 /** Everyone with something outstanding this year, with ageing — the defaulter list, as a CSV file. */
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const ctx = await requireApiRole("ADMIN");
     const file = await outstandingExport(ctx);
-    return new Response(file.csv, {
-      headers: {
-        "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="${file.filename}"`,
-        "Cache-Control": "no-store, private",
-      },
-    });
+    return exportResponse(request, file);
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : 403;

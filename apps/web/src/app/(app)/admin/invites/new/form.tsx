@@ -14,6 +14,7 @@ import { SelectField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { parseInviteCsv } from "@/lib/csv";
+import { readSpreadsheet, SPREADSHEET_ACCEPT } from "@/lib/spreadsheet-client";
 import { createInvites, type CreateInvitesState } from "../actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
@@ -56,7 +57,11 @@ export function InviteForm({
       setError(t("invites.fileTooBig"));
       return;
     }
-    const content = await file.text();
+    const content = await readSpreadsheet(file);
+    if (content === null) {
+      setError(t("invites.fileUnreadable"));
+      return;
+    }
     setText(content);
     setError(null);
   }
@@ -218,7 +223,7 @@ export function InviteForm({
           <input
             ref={fileRef}
             type="file"
-            accept=".csv,text/csv,text/plain"
+            accept={SPREADSHEET_ACCEPT}
             className="sr-only"
             onChange={(e) => {
               const file = e.target.files?.[0];

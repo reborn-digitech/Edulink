@@ -1,4 +1,5 @@
 import { getT } from "@/lib/i18n/server";
+import { exportResponse } from "@/lib/export-file";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { registerExport } from "@/lib/attendance-export";
 
@@ -21,13 +22,7 @@ export async function GET(request: Request) {
     const file = await registerExport(ctx, classId, month);
     if (!file) return new Response("class not found", { status: 404 });
 
-    return new Response(file.csv, {
-      headers: {
-        "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="${file.filename}"`,
-        "Cache-Control": "no-store, private",
-      },
-    });
+    return exportResponse(request, file);
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : 403;

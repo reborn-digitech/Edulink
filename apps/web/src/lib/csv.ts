@@ -21,10 +21,15 @@ export type ParsedCsv = {
   lineNumbers: number[];
 };
 
-export function parseCsv(input: string): ParsedCsv {
+/**
+ * The records of a CSV text, as arrays of raw fields with the line each
+ * started on: the tokenizer under parseCsv, and what a workbook is turned
+ * into before the same header mapping runs over it.
+ */
+export function parseCsvRecords(input: string): { records: string[][]; lineNumbers: number[] } {
   // Excel prefixes UTF-8 files with a BOM, which otherwise becomes part of the
   // first header name and makes "name" lookups mysteriously fail.
-  const text = input.replace(/^﻿/, "");
+  const text = input.replace(/^\uFEFF/, "");
 
   const records: string[][] = [];
   const lineNumbers: number[] = [];
@@ -92,6 +97,11 @@ export function parseCsv(input: string): ParsedCsv {
 
   // Flush whatever the file ended on, unless it ended cleanly on a newline.
   if (sawAnyChar && (field !== "" || record.length > 0)) endRecord();
+  return { records, lineNumbers };
+}
+
+export function parseCsv(input: string): ParsedCsv {
+  const { records, lineNumbers } = parseCsvRecords(input);
 
   const headerRecord = records.shift();
   const headerLine = lineNumbers.shift();

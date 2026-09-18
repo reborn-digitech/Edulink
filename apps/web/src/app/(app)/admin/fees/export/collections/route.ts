@@ -1,4 +1,5 @@
 import { getT } from "@/lib/i18n/server";
+import { exportResponse } from "@/lib/export-file";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { isDateKey, todayKey } from "@/lib/dates";
@@ -19,13 +20,7 @@ export async function GET(request: Request) {
     const toKey = url.searchParams.get("toKey") || today;
     if (!isDateKey(fromKey) || !isDateKey(toKey)) throw new AccessError("fees.refuseDate");
     const file = await collectionsExport(ctx, { fromKey, toKey });
-    return new Response(file.csv, {
-      headers: {
-        "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="${file.filename}"`,
-        "Cache-Control": "no-store, private",
-      },
-    });
+    return exportResponse(request, file);
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;

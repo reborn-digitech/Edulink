@@ -1,4 +1,5 @@
 import { getT } from "@/lib/i18n/server";
+import { exportResponse } from "@/lib/export-file";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { enrolmentExport } from "@/lib/attendance-export";
 
@@ -9,17 +10,11 @@ import { enrolmentExport } from "@/lib/attendance-export";
  * child named in the file at all. Built and audited by the library, shared
  * with the phone's export.
  */
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const ctx = await requireApiRole("ADMIN");
     const file = await enrolmentExport(ctx);
-    return new Response(file.csv, {
-      headers: {
-        "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="${file.filename}"`,
-        "Cache-Control": "no-store, private",
-      },
-    });
+    return exportResponse(request, file);
   } catch (error) {
     if (error instanceof AccessError) {
       const status = error.code === "UNAUTHENTICATED" ? 401 : 403;
