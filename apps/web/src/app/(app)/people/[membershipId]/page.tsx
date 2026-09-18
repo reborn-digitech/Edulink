@@ -6,12 +6,17 @@ import {
   ArrowSquareOutIcon,
   BuildingsIcon,
   ChalkboardTeacherIcon,
+  FirstAidKitIcon,
   MedalIcon,
   PaperPlaneTiltIcon,
+  PrinterIcon,
   UsersThreeIcon,
 } from "@phosphor-icons/react/ssr";
-import { requireUser } from "@/lib/tenancy";
+import { AccessError, requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
+import { healthCardFor } from "@/lib/health";
+import { todayKey } from "@/lib/dates";
+import { HealthCardEditor, HealthCheckForm, HealthChecksList } from "@/components/health-card";
 import { isStaffRole, mayConverse, standingAt } from "@/lib/conversations";
 import { getBadges } from "@/lib/badges";
 import { readJsonArray } from "@/lib/json";
@@ -148,6 +153,19 @@ export default async function PersonPage({
     member.school.profilePublishedAt || member.school._count.jobPostings > 0 ? `/explore/${member.schoolId}` : null;
   const pupilClass = member.enrollments[0]?.class ?? null;
   const badges = role === "STUDENT" ? (await getBadges(member.schoolId, member.id, member.school.timezone)).filter((b) => b.earned) : [];
+
+  // The health card, for the staff who may read it and the child's own
+  // guardians. `healthCardFor` is the gate: a teacher who does not teach the
+  // child is refused, and the refusal means the section is simply not drawn
+  // rather than the page failing — the rest of the portrait is still theirs.
+  let health = null;
+  if (role === "STUDENT" && !self) {
+    try {
+      health = await healthCardFor(session, member.id);
+    } catch (error) {
+      if (!(error instanceof AccessError)) throw error;
+    }
+  }
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -295,6 +313,35 @@ export default async function PersonPage({
               </CardBody>
             )}
           </Card>
+
+          {health && (
+            <Card data-testid="health-card">
+              <CardHeader
+                icon={<FirstAidKitIcon weight="duotone" className="size-5" />}
+                title={t("health.title")}
+                description={health.card ? undefined : t("health.noCardYet")}
+                action={
+                  health.card ? (
+                    <Link href={`/health/cards/${member.id}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted underline underline-offset-2 hover:text-fg">
+                      <PrinterIcon weight="bold" className="size-4" aria-hidden="true" />
+                      {t("health.print")}
+                    </Link>
+                  ) : undefined
+                }
+              />
+              <CardBody className="space-y-5">
+                <HealthCardEditor view={health} timezone={member.school.timezone} />
+                <div className="space-y-3 border-t border-border pt-4">
+                  <div>
+                    <h3 className="text-sm font-semibold text-fg">{t("health.checks")}</h3>
+                    <p className="text-xs text-fg-muted">{t("health.checksHint")}</p>
+                  </div>
+                  <HealthChecksList checks={health.checks} />
+                  {health.canRecordCheck && <HealthCheckForm studentMembershipId={member.id} today={todayKey(member.school.timezone)} />}
+                </div>
+              </CardBody>
+            </Card>
+          )}
         </>
       )}
     </div>

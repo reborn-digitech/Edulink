@@ -73,6 +73,8 @@ describe("one class", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignment", params: { assignmentId: "a1" } });
     await tap(screen.getByRole("button", { name: "Message ZZ Asha’s guardians" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/remark-new", params: { membershipId: ID.pupil1 } });
+    await tap(screen.getByRole("button", { name: "Health card: ZZ Bhavesh" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-health", params: { membershipId: ID.pupil2 } });
   });
 
   it("the figures about pupils filter the roster", async () => {

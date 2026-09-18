@@ -1161,6 +1161,24 @@ CREATE POLICY "Broadcast_tenant_isolation" ON "Broadcast"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- HealthCard
+ALTER TABLE "HealthCard" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "HealthCard" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "HealthCard_tenant_isolation" ON "HealthCard";
+DROP POLICY IF EXISTS "HealthCard_readable" ON "HealthCard";
+CREATE POLICY "HealthCard_tenant_isolation" ON "HealthCard"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- HealthCheck
+ALTER TABLE "HealthCheck" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "HealthCheck" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "HealthCheck_tenant_isolation" ON "HealthCheck";
+DROP POLICY IF EXISTS "HealthCheck_readable" ON "HealthCheck";
+CREATE POLICY "HealthCheck_tenant_isolation" ON "HealthCheck"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

@@ -346,6 +346,7 @@ src/lib/                  All business logic. Pages are thin.
   fees.ts                 ★ Fees, the asking side: heads, structures, plans, concessions, DEMANDS. Integer paise. See decision 0003.
   fees-payments.ts        ★ Fees, the receiving side: counter, receipts under a row lock, reversal, refund, the school's gateway, UPI claims. Append-only.
   fees-reports.ts         Fees, the reading side: overview, dues, CSV exports, the reminder and reconcile jobs, year-end carry-forward.
+  health.ts               The pupil's health and emergency card and the school's check-ups; who reads (office, head, the child's teachers, guardians) and who writes.
   gateway.ts              ★ The school's OWN gateway, four allowed calls and no more — the platform never touches the money.
   messaging.ts            ★ Texts to families: who, which channel, whether allowed; every outcome recorded, skips with reasons.
   message-templates.ts    Every sentence a text may carry, in en/hi/mr — DLT and WhatsApp forms via npm run messages:templates.

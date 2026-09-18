@@ -99,6 +99,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.fees", icon: "receipt", group: "daily", screen: "/(app)/fees" },
+    { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.explore", icon: "buildings", group: "school", screen: "/(app)/explore" },
@@ -219,6 +220,8 @@ export const HIDDEN_SCREENS = [
   "messaging",
   "messaging-new",
   "messaging-broadcast",
+  "health",
+  "pupil-health",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

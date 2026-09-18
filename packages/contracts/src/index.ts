@@ -108,3 +108,4 @@ export * from "./v1/contest";
 export * from "./v1/join";
 export * from "./v1/fees";
 export * from "./v1/messaging";
+export * from "./v1/health";

@@ -102,7 +102,21 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   return e.emptyBodyStatus ?? [200, 404, 422];
 }
 
+/**
+ * A status of 0 is a socket the server dropped, not an answer: the dev
+ * server sheds its keep-alive connections while it compiles a route in the
+ * background, and a run of 0s at the tail of the catalog was the whole of
+ * four failed sweeps in a row. One retry after a short pause; a second 0
+ * is reported as the result, so a door that is really shut still shows.
+ */
 async function hit(e: Endpoint, token: string | null, path: string, body?: string): Promise<number> {
+  const first = await hitOnce(e, token, path, body);
+  if (first !== 0) return first;
+  await new Promise((resolve) => setTimeout(resolve, 750));
+  return hitOnce(e, token, path, body);
+}
+
+async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string): Promise<number> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8_000);
   try {

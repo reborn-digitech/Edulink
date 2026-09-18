@@ -45043,6 +45043,1429 @@
           }
         ]
       }
+    },
+    "/api/v1/family/health": {
+      "get": {
+        "summary": "A child's health and emergency card as the guardian sees it (?childId=; the first child when omitted)",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "bloodGroup": {
+                          "type": "string",
+                          "enum": [
+                            "A+",
+                            "A-",
+                            "B+",
+                            "B-",
+                            "AB+",
+                            "AB-",
+                            "O+",
+                            "O-"
+                          ],
+                          "nullable": true
+                        },
+                        "allergies": {
+                          "type": "string"
+                        },
+                        "conditions": {
+                          "type": "string"
+                        },
+                        "medications": {
+                          "type": "string"
+                        },
+                        "dietary": {
+                          "type": "string"
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "doctorName": {
+                          "type": "string"
+                        },
+                        "doctorPhone": {
+                          "type": "string"
+                        },
+                        "contacts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "relation": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "default": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "minLength": 6,
+                                "maxLength": 20
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "phone"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "bloodGroup",
+                        "allergies",
+                        "conditions",
+                        "medications",
+                        "dietary",
+                        "notes",
+                        "doctorName",
+                        "doctorPhone",
+                        "contacts",
+                        "updatedAt",
+                        "updatedByName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "dateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "heightCm": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "weightGrams": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "visionLeft": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visionRight": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "dateKey",
+                          "heightCm",
+                          "weightGrams",
+                          "visionLeft",
+                          "visionRight",
+                          "notes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "canRecordCheck": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "card",
+                    "checks",
+                    "canEdit",
+                    "canRecordCheck"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Write a child's health card (the whole card; a cleared field stays cleared)",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "bloodGroup": {
+                          "type": "string",
+                          "enum": [
+                            "A+",
+                            "A-",
+                            "B+",
+                            "B-",
+                            "AB+",
+                            "AB-",
+                            "O+",
+                            "O-"
+                          ],
+                          "nullable": true
+                        },
+                        "allergies": {
+                          "type": "string"
+                        },
+                        "conditions": {
+                          "type": "string"
+                        },
+                        "medications": {
+                          "type": "string"
+                        },
+                        "dietary": {
+                          "type": "string"
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "doctorName": {
+                          "type": "string"
+                        },
+                        "doctorPhone": {
+                          "type": "string"
+                        },
+                        "contacts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "relation": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "default": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "minLength": 6,
+                                "maxLength": 20
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "phone"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "bloodGroup",
+                        "allergies",
+                        "conditions",
+                        "medications",
+                        "dietary",
+                        "notes",
+                        "doctorName",
+                        "doctorPhone",
+                        "contacts",
+                        "updatedAt",
+                        "updatedByName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "dateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "heightCm": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "weightGrams": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "visionLeft": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visionRight": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "dateKey",
+                          "heightCm",
+                          "weightGrams",
+                          "visionLeft",
+                          "visionRight",
+                          "notes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "canRecordCheck": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "card",
+                    "checks",
+                    "canEdit",
+                    "canRecordCheck"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bloodGroup": {
+                    "type": "string",
+                    "enum": [
+                      "A+",
+                      "A-",
+                      "B+",
+                      "B-",
+                      "AB+",
+                      "AB-",
+                      "O+",
+                      "O-"
+                    ],
+                    "nullable": true,
+                    "default": null
+                  },
+                  "allergies": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "default": ""
+                  },
+                  "conditions": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "medications": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "dietary": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "notes": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "doctorName": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "default": ""
+                  },
+                  "doctorPhone": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "default": ""
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "relation": {
+                          "type": "string",
+                          "maxLength": 40,
+                          "default": ""
+                        },
+                        "phone": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 20
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "phone"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 3,
+                    "default": []
+                  },
+                  "childId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/staff/pupils/{membershipId}/health": {
+      "get": {
+        "summary": "One pupil's health and emergency card, for the office, the head and the pupil's teachers",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "bloodGroup": {
+                          "type": "string",
+                          "enum": [
+                            "A+",
+                            "A-",
+                            "B+",
+                            "B-",
+                            "AB+",
+                            "AB-",
+                            "O+",
+                            "O-"
+                          ],
+                          "nullable": true
+                        },
+                        "allergies": {
+                          "type": "string"
+                        },
+                        "conditions": {
+                          "type": "string"
+                        },
+                        "medications": {
+                          "type": "string"
+                        },
+                        "dietary": {
+                          "type": "string"
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "doctorName": {
+                          "type": "string"
+                        },
+                        "doctorPhone": {
+                          "type": "string"
+                        },
+                        "contacts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "relation": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "default": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "minLength": 6,
+                                "maxLength": 20
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "phone"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "bloodGroup",
+                        "allergies",
+                        "conditions",
+                        "medications",
+                        "dietary",
+                        "notes",
+                        "doctorName",
+                        "doctorPhone",
+                        "contacts",
+                        "updatedAt",
+                        "updatedByName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "dateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "heightCm": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "weightGrams": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "visionLeft": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visionRight": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "dateKey",
+                          "heightCm",
+                          "weightGrams",
+                          "visionLeft",
+                          "visionRight",
+                          "notes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "canRecordCheck": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "card",
+                    "checks",
+                    "canEdit",
+                    "canRecordCheck"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Write one pupil's health card (the office and the head)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "bloodGroup": {
+                          "type": "string",
+                          "enum": [
+                            "A+",
+                            "A-",
+                            "B+",
+                            "B-",
+                            "AB+",
+                            "AB-",
+                            "O+",
+                            "O-"
+                          ],
+                          "nullable": true
+                        },
+                        "allergies": {
+                          "type": "string"
+                        },
+                        "conditions": {
+                          "type": "string"
+                        },
+                        "medications": {
+                          "type": "string"
+                        },
+                        "dietary": {
+                          "type": "string"
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "doctorName": {
+                          "type": "string"
+                        },
+                        "doctorPhone": {
+                          "type": "string"
+                        },
+                        "contacts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "relation": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "default": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "minLength": 6,
+                                "maxLength": 20
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "phone"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "bloodGroup",
+                        "allergies",
+                        "conditions",
+                        "medications",
+                        "dietary",
+                        "notes",
+                        "doctorName",
+                        "doctorPhone",
+                        "contacts",
+                        "updatedAt",
+                        "updatedByName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "dateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "heightCm": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "weightGrams": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "visionLeft": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visionRight": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "dateKey",
+                          "heightCm",
+                          "weightGrams",
+                          "visionLeft",
+                          "visionRight",
+                          "notes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "canRecordCheck": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "card",
+                    "checks",
+                    "canEdit",
+                    "canRecordCheck"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "bloodGroup": {
+                    "type": "string",
+                    "enum": [
+                      "A+",
+                      "A-",
+                      "B+",
+                      "B-",
+                      "AB+",
+                      "AB-",
+                      "O+",
+                      "O-"
+                    ],
+                    "nullable": true,
+                    "default": null
+                  },
+                  "allergies": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "default": ""
+                  },
+                  "conditions": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "medications": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "dietary": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "notes": {
+                    "$ref": "#/properties/allergies",
+                    "default": ""
+                  },
+                  "doctorName": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "default": ""
+                  },
+                  "doctorPhone": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "default": ""
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "relation": {
+                          "type": "string",
+                          "maxLength": 40,
+                          "default": ""
+                        },
+                        "phone": {
+                          "type": "string",
+                          "minLength": 6,
+                          "maxLength": 20
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "phone"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 3,
+                    "default": []
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/staff/pupils/{membershipId}/health/checks": {
+      "post": {
+        "summary": "Record a check-up: height, weight, sight (the office and the head)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "card": {
+                      "type": "object",
+                      "properties": {
+                        "bloodGroup": {
+                          "type": "string",
+                          "enum": [
+                            "A+",
+                            "A-",
+                            "B+",
+                            "B-",
+                            "AB+",
+                            "AB-",
+                            "O+",
+                            "O-"
+                          ],
+                          "nullable": true
+                        },
+                        "allergies": {
+                          "type": "string"
+                        },
+                        "conditions": {
+                          "type": "string"
+                        },
+                        "medications": {
+                          "type": "string"
+                        },
+                        "dietary": {
+                          "type": "string"
+                        },
+                        "notes": {
+                          "type": "string"
+                        },
+                        "doctorName": {
+                          "type": "string"
+                        },
+                        "doctorPhone": {
+                          "type": "string"
+                        },
+                        "contacts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              },
+                              "relation": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "default": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "minLength": 6,
+                                "maxLength": 20
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "phone"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updatedByName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "bloodGroup",
+                        "allergies",
+                        "conditions",
+                        "medications",
+                        "dietary",
+                        "notes",
+                        "doctorName",
+                        "doctorPhone",
+                        "contacts",
+                        "updatedAt",
+                        "updatedByName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "checks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "dateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "heightCm": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "weightGrams": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "visionLeft": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "visionRight": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "notes": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "dateKey",
+                          "heightCm",
+                          "weightGrams",
+                          "visionLeft",
+                          "visionRight",
+                          "notes"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "canRecordCheck": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "card",
+                    "checks",
+                    "canEdit",
+                    "canRecordCheck"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "heightCm": {
+                    "type": "integer",
+                    "minimum": 30,
+                    "maximum": 250,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "weightGrams": {
+                    "type": "integer",
+                    "minimum": 1000,
+                    "maximum": 300000,
+                    "nullable": true,
+                    "default": null
+                  },
+                  "visionLeft": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "default": ""
+                  },
+                  "visionRight": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "default": ""
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "default": ""
+                  }
+                },
+                "required": [
+                  "dateKey"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
     }
   }
 }

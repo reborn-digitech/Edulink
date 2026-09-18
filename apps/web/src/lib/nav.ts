@@ -156,6 +156,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
     { href: "/parent/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "daily" },
+    // The child's health and emergency card: the family writes it, the teachers read it.
+    { href: "/parent/health", labelKey: "nav.health", icon: "heart", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/explore", labelKey: "nav.explore", icon: "buildings", prefix: true, group: "school" },

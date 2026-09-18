@@ -109,12 +109,14 @@ function Directory() {
           <Card title={t("people.showingRange", { from: (d.page - 1) * d.pageSize + 1, to: (d.page - 1) * d.pageSize + d.members.length, total: d.total })}>
             {status === "SUSPENDED" ? <Text variant="xs" tone="muted">{t("people.suspendedNote")}</Text> : null}
             {status === "LEFT" ? <Text variant="xs" tone="muted">{t("people.leftNote")}</Text> : null}
+            {/* A pupil's row opens their health and emergency card; the other rows have no screen of their own on the phone. */}
             {d.members.map((m) => (
               <Row
                 key={m.membershipId}
                 title={m.preferredName ? `${m.name} (${m.preferredName})` : m.name}
                 caption={[roleLabel(t, m.role), m.email ?? t("people.noEmail"), [...m.enrolledIn, ...m.teaches].join(", ") || null, m.scheduledDeparture ? t("people.leavingOn", { date: formatDateKey(m.scheduledDeparture.leaveOnKey) }) : null].filter(Boolean).join(" · ")}
                 right={m.studentCode ? <Text variant="xs" tone="subtle">{m.studentCode}</Text> : null}
+                onPress={m.role === "STUDENT" ? () => router.push({ pathname: "/(app)/pupil-health", params: { membershipId: m.membershipId } } as never) : undefined}
               />
             ))}
             {d.pages > 1 ? (

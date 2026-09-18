@@ -33,6 +33,10 @@ describe("people for the office", () => {
     expect(screen.getByText("Student · No email · ZZ Class A")).toBeTruthy();
     expect(screen.getByText("ZZ-007")).toBeTruthy();
     expect(calls().some((c) => c.line === "GET /api/v1/admin/people?status=ACTIVE&page=1")).toBe(true);
+    // A pupil's row opens their health card; a teacher's row is not a door.
+    await fireEvent.press(screen.getByRole("button", { name: "ZZ Pupil, Student · No email · ZZ Class A" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-health", params: { membershipId: "m7" } });
+    expect(screen.queryByRole("button", { name: /^ZZ Teacher,/ })).toBeNull();
     await fireEvent.changeText(screen.getByLabelText("Search the directory"), "pupil");
     await fireEvent(screen.getByLabelText("Search the directory"), "submitEditing");
     await fireEvent.press(screen.getByRole("radio", { name: "Students" }));

@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { listGradeCategories } from "@/lib/grading";
+import { healthFlagsFor } from "@/lib/health";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
 import { getT } from "@/lib/i18n/server";
@@ -125,6 +126,12 @@ export default async function ClassDetailPage({
   // number to scan forty rows for.
   const shownRoster =
     filter === "concern" ? ofConcern : filter === "noguardian" ? roster.filter((r) => !r.hasGuardian) : roster;
+
+  // The one-glance health flags: an allergy, a condition or a medicine on
+  // a pupil's card is a chip beside the name, and the card is on the person
+  // page the name opens.
+  const healthFlags = await healthFlagsFor(ctx.schoolId, roster.map((r) => r.membershipId));
+  const anyFlagged = roster.some((r) => healthFlags.has(r.membershipId));
 
   const [weights, usedCategories] = await Promise.all([
     listGradeCategories(ctx, classId),
@@ -236,6 +243,7 @@ export default async function ClassDetailPage({
           description={t("teacher.attendanceOver", { days: RANGE_DAYS })}
         />
         <CardBody>
+          {anyFlagged && <p className="mb-2 text-xs text-fg-muted">{t("health.flagsHint")}</p>}
           {roster.length > 0 && shownRoster.length === 0 ? (
             <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
           ) : roster.length === 0 ? (
@@ -250,7 +258,24 @@ export default async function ClassDetailPage({
                 <li key={student.membershipId} className="flex items-center gap-3 py-2.5">
                   <Avatar avatarKey={student.avatarKey} name={student.fullName} size="sm" />
                   <div className="min-w-0 flex-1">
-                    <PersonLink membershipId={student.membershipId} name={student.name} className="block truncate text-sm font-medium text-fg" />
+                    <span className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
+                      <PersonLink membershipId={student.membershipId} name={student.name} className="truncate text-sm font-medium text-fg" />
+                      {healthFlags.get(student.membershipId)?.allergies && (
+                        <Badge tone="warn" size="sm">
+                          {t("health.flagAllergy")}
+                        </Badge>
+                      )}
+                      {healthFlags.get(student.membershipId)?.conditions && (
+                        <Badge tone="warn" size="sm">
+                          {t("health.flagCondition")}
+                        </Badge>
+                      )}
+                      {healthFlags.get(student.membershipId)?.medications && (
+                        <Badge tone="warn" size="sm">
+                          {t("health.flagMedication")}
+                        </Badge>
+                      )}
+                    </span>
                     <p className="truncate text-xs text-fg-muted">{student.fullName}</p>
                   </div>
 

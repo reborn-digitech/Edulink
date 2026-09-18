@@ -601,6 +601,32 @@ const ROTA_SUBJECTS = [
  * teacher is a real state the schema documents and the staffing screen has to
  * render loudly rather than hide.
  */
+/**
+ * Health cards for the first three ZZ Northgate pupils, so the sweep and the
+ * screens have a card with an allergy, one with a condition and one blank
+ * card with a check-up to read. Re-run safe: the card is upserted whole.
+ */
+async function buildHealth(school: { id: string }, adminUserId: string) {
+  const pupils = await db.membership.findMany({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", user: { email: { in: ["zz.pupil01@zz.test", "zz.pupil02@zz.test", "zz.pupil03@zz.test"] } } }, select: { id: true, user: { select: { email: true } } }, orderBy: { user: { email: "asc" } } });
+  const cards: Record<string, { bloodGroup: string | null; allergies: string; conditions: string; medications: string; notes: string; contacts: { name: string; relation: string; phone: string }[] }> = {
+    "zz.pupil01@zz.test": { bloodGroup: "B+", allergies: "Peanuts — carries an EpiPen in the school bag", conditions: "", medications: "", notes: "Sits near the door in the dining hall.", contacts: [{ name: "ZZ Rekha Apte", relation: "mother", phone: "+919876400001" }, { name: "ZZ Dr Kulkarni", relation: "family doctor", phone: "+912024567890" }] },
+    "zz.pupil02@zz.test": { bloodGroup: "O+", allergies: "", conditions: "Asthma", medications: "Salbutamol inhaler, kept with the class teacher", notes: "", contacts: [{ name: "ZZ Sunil Joshi", relation: "father", phone: "+919876400002" }] },
+    "zz.pupil03@zz.test": { bloodGroup: null, allergies: "", conditions: "", medications: "", notes: "", contacts: [] },
+  };
+  let n = 0;
+  for (const p of pupils) {
+    const card = cards[p.user.email ?? ""];
+    if (!card) continue;
+    const data = { bloodGroup: card.bloodGroup, allergies: card.allergies, conditions: card.conditions, medications: card.medications, notes: card.notes, contactsJson: JSON.stringify(card.contacts), updatedByUserId: adminUserId };
+    const row = await db.healthCard.upsert({ where: { studentMembershipId: p.id }, create: { schoolId: school.id, studentMembershipId: p.id, ...data }, update: data, select: { id: true } });
+    if (p.user.email === "zz.pupil03@zz.test" && !(await db.healthCheck.findFirst({ where: { cardId: row.id }, select: { id: true } }))) {
+      await db.healthCheck.create({ data: { schoolId: school.id, cardId: row.id, studentMembershipId: p.id, dateKey: "2026-07-15", heightCm: 128, weightGrams: 27_400, visionLeft: "6/6", visionRight: "6/9", notes: "Annual camp.", recordedByUserId: adminUserId } });
+    }
+    n += 1;
+  }
+  return { cards: n };
+}
+
 async function buildTimetable(
   schoolId: string,
   classes: { id: string; grade: string }[],
@@ -1030,6 +1056,7 @@ async function main() {
   const northgate = await buildNorthgate(ctx);
   const fees = await buildFees(northgate.school, northgate.admin.id);
   const texts = await buildMessaging(northgate.school, northgate.admin.id);
+  const health = await buildHealth(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1067,6 +1094,7 @@ async function main() {
      fees        year ${fees.year.name}; "${fees.structure.name}" published, ${fees.pupils} grade-3 pupils on it,
                  ${fees.receipts} receipt (zz.pupil01's Term 1, cash) — /admin/fees, /parent/fees
      texts       ${texts.numbered} guardians numbered +91 98764 00001…, SMS and WhatsApp on, one notice sent — /admin/messaging
+     health      ${health.cards} health cards on the first three pupils (peanut allergy, asthma, a check-up) — /parent/health, /people/<id>
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

@@ -1988,6 +1988,29 @@ async function main() {
   await check(parent, "/bulletin/global", 200, "⚠ a guardian reads the global feed through their children's schools");
   if (thread) await check(parent, `/remarks/${thread.id}`, 200, "own thread");
 
+  /* ---- health card: the printable document, opened by the people the lib admits ---- */
+  const healthChild = await db.guardianship.findFirst({
+    where: { parent: { email: "parent@example.com" }, status: "ACTIVE" },
+    select: { studentMembershipId: true },
+  });
+  if (healthChild) {
+    await check(parent, `/parent/health?child=${healthChild.studentMembershipId}`, 200, "a guardian reads the child's health card");
+    await check(parent, `/health/cards/${healthChild.studentMembershipId}`, 200, "…and prints it");
+    await check(admin, `/health/cards/${healthChild.studentMembershipId}`, 200, "the office prints any pupil's card");
+    await check(otherAdmin, `/health/cards/${healthChild.studentMembershipId}`, 404, "⚠ another school's office cannot, by id");
+    await check(null, `/health/cards/${healthChild.studentMembershipId}`, 307, "signed-out card redirects to login");
+  }
+  if (teacherClass) {
+    const taught = await db.enrollment.findFirst({ where: { classId: teacherClass.classId, status: "ACTIVE" }, select: { studentMembershipId: true } });
+    if (taught) await check(teacher, `/health/cards/${taught.studentMembershipId}`, 200, "a teacher prints the card of a pupil they teach");
+    const notTaught = await db.enrollment.findFirst({
+      where: { schoolId: riverside.id, status: "ACTIVE", classId: { notIn: [...teacherClassIdSet] } },
+      select: { studentMembershipId: true },
+    });
+    if (notTaught) await check(teacher, `/health/cards/${notTaught.studentMembershipId}`, 404, "⚠ …and not one they do not");
+  }
+  await check(parent, "/health/cards/cnope00000000000000000000", 404, "an invented card id");
+
   /* ---- negative: cross-tenant and cross-role ---- */
   if (klass) await check(otherAdmin, `/teacher/classes/${klass.id}`, 404, "other school's class must NOT be found");
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");

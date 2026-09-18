@@ -275,6 +275,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "student.leave": "audit.studentLeave",
   "student.leave.undo": "audit.studentLeaveUndo",
   "submission.attach": "audit.submissionAttach",
+  "health.update": "audit.healthUpdate",
+  "health.check": "audit.healthCheck",
   "timetable.day.copy": "audit.timetableDayCopy",
   "timetable.period.archive": "audit.timetablePeriodArchive",
   "timetable.period.create": "audit.timetablePeriodCreate",

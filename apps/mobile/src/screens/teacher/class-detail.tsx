@@ -124,6 +124,18 @@ export function TeacherClassDetail() {
                         </View>
                         <Pressable
                           accessibilityRole="button"
+                          accessibilityLabel={t("health.cardOf", { name: p.name })}
+                          hitSlop={4}
+                          onPress={() => {
+                            haptics.tap();
+                            router.push({ pathname: "/(app)/pupil-health", params: { membershipId: p.membershipId } } as never);
+                          }}
+                          style={({ pressed }) => ({ width: th.tap, height: th.tap, borderRadius: th.radius.md, alignItems: "center", justifyContent: "center", backgroundColor: th.dangerSoft, opacity: pressed ? 0.7 : 1 })}
+                        >
+                          <Icon name="heart" size={20} color={th.danger} weight="bold" />
+                        </Pressable>
+                        <Pressable
+                          accessibilityRole="button"
                           accessibilityLabel={t("teacher.messageGuardiansOf", { name: p.name })}
                           hitSlop={4}
                           onPress={() => {

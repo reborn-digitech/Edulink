@@ -195,6 +195,8 @@ model School {
   gatewayEvents       GatewayEvent[]
   outboundMessages    OutboundMessage[]
   broadcasts          Broadcast[]
+  healthCards         HealthCard[]
+  healthChecks        HealthCheck[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -367,6 +369,8 @@ model Membership {
   reviewedInRounds       ReviewRoundTeacher[] @relation("ReviewedTeacher")
   reviewResponsesAbout   ReviewResponse[]     @relation("ReviewResponseTeacher")
   submissions            Submission[]
+  healthCard             HealthCard?
+  healthChecks           HealthCheck[]
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
   assignments            Assignment[]
@@ -3473,4 +3477,59 @@ model Broadcast {
 
   @@index([schoolId, createdAt])
   @@index([authorUserId])
+}
+
+/// The pupil's health and emergency card: what a teacher must know before
+/// the ambulance question is asked. One per pupil, written by the office or
+/// a guardian, read by the child's teachers. Free text on purpose — an
+/// allergy list is not an enum — and kept short by the contracts.
+model HealthCard {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String   @unique
+  /// A+ A- B+ B- AB+ AB- O+ O- or null for "not known".
+  bloodGroup          String?
+  allergies           String   @default("")
+  conditions          String   @default("")
+  medications         String   @default("")
+  dietary             String   @default("")
+  /// Anything else a teacher must know: "carries an inhaler", "no sport this term".
+  notes               String   @default("")
+  doctorName          String?
+  doctorPhone         String?
+  /// JSON [{ name, relation, phone }], at most three, in the order to call.
+  contactsJson        String   @default("[]")
+  updatedByUserId     String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  school  School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership    @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  checks  HealthCheck[]
+
+  @@index([schoolId])
+}
+
+/// One school health check-up: the nurse's or the camp's measurements on a
+/// day. Append-only; the card shows the latest and the history.
+model HealthCheck {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  cardId              String
+  studentMembershipId String
+  dateKey             String
+  heightCm            Int?
+  /// Grams, so 32.5 kg is an integer.
+  weightGrams         Int?
+  visionLeft          String?
+  visionRight         String?
+  notes               String   @default("")
+  recordedByUserId    String?
+  createdAt           DateTime @default(now())
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  card    HealthCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, studentMembershipId, dateKey])
 }
