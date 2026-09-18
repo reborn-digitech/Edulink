@@ -171,7 +171,7 @@ export async function readPost(ctx: ActiveContext, postId: string) {
     audience: post.audience,
     audienceGrade: post.audienceGrade,
     requiresAck: post.requiresAck,
-    canAck: post.requiresAck && post.status === "APPROVED" && ctx.schoolId === post.schoolId,
+    canAck: post.canAck,
     acked: post.acks.length > 0,
     ackCount: post._count.acks,
     author: {

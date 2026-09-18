@@ -120,7 +120,11 @@ describe("reach", () => {
     expect((await postGet(get("/x"), params(postId))).status).toBe(200);
     expect(await db.postRead.count({ where: { postId, userId: parentBUserId } })).toBe(1);
     await as("PARENT_C");
+    // A guardian's session carries no school; the detail must still say they may acknowledge.
+    const detail = await (await postGet(get("/x"), params(postId))).json();
+    expect(detail).toMatchObject({ canAck: true, acked: false });
     expect((await ackPost(post("/x"), params(postId))).status).toBe(200);
+    expect((await (await postGet(get("/x"), params(postId))).json()).acked).toBe(true);
     expect((await ackPost(post("/x"), params(postId))).status).toBe(200);
     expect(await db.postAck.count({ where: { postId } })).toBe(1);
     const plain = await db.post.findFirstOrThrow({ where: { schoolId, title: "ZZ Plain post" }, select: { id: true } });

@@ -483,7 +483,12 @@ export async function getPost(session: ActiveContext, postId: string) {
       })
     : [];
   const membershipByUser = new Map(memberships.map((m) => [m.userId, m.id]));
-  return { ...post, membershipByUser };
+  // Whether THIS reader may acknowledge: decided on the scoped session, because
+  // a guardian's own session carries no school — comparing the raw session's
+  // schoolId with the post's, as the page and the phone once did, left the
+  // people a circular is for without the button.
+  const canAck = post.requiresAck && post.status === "APPROVED" && post.schoolId !== null && session.schoolId === post.schoolId;
+  return { ...post, membershipByUser, canAck };
 }
 
 /* -------------------------------------------------------------------------- */

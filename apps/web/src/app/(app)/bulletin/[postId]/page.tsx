@@ -183,7 +183,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
         {/* "Seen and understood" is the school's own instrument — a reader
             from another school on a global post is not on anyone's checklist
             and gets no button to press. */}
-        {post.requiresAck && post.status === "APPROVED" && session.schoolId === post.schoolId && (
+        {post.canAck && (
           <div className="mt-4 rounded-[--radius-md] bg-accent-soft/40 p-3.5">
             <AckButton postId={post.id} acked={post.acks.length > 0} />
           </div>
