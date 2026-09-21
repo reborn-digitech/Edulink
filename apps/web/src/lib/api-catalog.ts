@@ -26,6 +26,7 @@ import { CIRCULARS } from "./api-catalog/circulars";
 import { STAFF_ATTENDANCE } from "./api-catalog/staff-attendance";
 import { SYLLABUS } from "./api-catalog/syllabus";
 import { SUBSTITUTIONS } from "./api-catalog/substitutions";
+import { REPORT_CARDS } from "./api-catalog/report-cards";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS];

@@ -10,7 +10,7 @@
     "build": "NODE_OPTIONS=--max-old-space-size=4096 next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit",
     "db:push": "node scripts/with-admin-db.mjs prisma db push",
     "db:migrate": "node scripts/with-admin-db.mjs prisma migrate deploy && npm run db:grants",
     "db:migrate:new": "node scripts/with-admin-db.mjs prisma migrate dev --create-only",
@@ -55,7 +55,7 @@
     "appadmin": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-app-admin.ts",
     "guardians:backfill": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/backfill-standin-guardians.ts",
     "i18n": "tsx scripts/i18n-audit.ts",
-    "battery": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json && eslint . && vitest run && npm run rls:verify && npm run quiz:verify && npm run i18n && npm run sweep"
+    "battery": "npm run typecheck && NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit -p scripts/tsconfig.json && eslint . && vitest run && npm run rls:verify && npm run quiz:verify && npm run i18n && npm run sweep"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
@@ -64,6 +64,7 @@
     "@node-rs/argon2": "^2.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "@prisma/client": "^6.19.3",
+    "@react-pdf/renderer": "^4.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",

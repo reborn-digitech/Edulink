@@ -58,6 +58,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true, also: ["/admin/promotion"] },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    // How a report card is worked out and printed: the office's rules, read by every card generated.
+    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
@@ -99,6 +101,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true, also: ["/principal/staff"] },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },

@@ -4,6 +4,7 @@ import { createApiClient } from "@edulink/api-client";
 import type { RoleCode } from "@edulink/contracts";
 import { renderApp, untilRendered } from "../utils";
 import { __setApiClient } from "@/lib/api";
+import { __setDownloadFetch } from "@/lib/download";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider } from "@/lib/session";
 
@@ -67,6 +68,7 @@ export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answ
     return json({ error: "Not found", code: "NOT_FOUND" }, 404);
   });
   __setApiClient(createApiClient({ baseUrl: "http://api.test", getToken: () => "t", fetch: fetch as unknown as typeof globalThis.fetch }));
+  __setDownloadFetch(fetch as unknown as typeof globalThis.fetch);
   // No retries so an error shows at once; no gc timers, which would keep the runner alive.
   const client = new QueryClient({ defaultOptions: { queries: { retry: false, gcTime: Infinity }, mutations: { retry: false, gcTime: Infinity } } });
   const rendered = await renderApp(

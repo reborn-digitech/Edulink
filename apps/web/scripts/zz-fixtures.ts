@@ -43,6 +43,7 @@ import { PrismaClient } from "@prisma/client";
 import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
+import { bandFor, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints } from "../src/lib/report-card-rules";
 
 config();
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
@@ -707,6 +708,144 @@ async function buildStaffAttendance(school: { id: string }, adminUserId: string)
 }
 
 /**
+ * Exams and report cards for ZZ Northgate's grade 3: the year's two terms
+ * with shares of 40 and 60, a unit test and a mid-term in Term 1 with
+ * Mathematics and English papers, marks for every grade-3 pupil (one pupil
+ * missing the mid-term), and the Term 1 cards built the way the app builds
+ * them — subject rows weighted by exam kind and banded on the default CBSE
+ * scale — published, with a draft set under another title for the sweep's
+ * co-scholastic write. The school's rules are written out explicitly so the
+ * sweep can send them back. Re-run safe.
+ */
+async function buildExams(school: { id: string }, adminUserId: string) {
+  const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true, startDate: true, endDate: true } });
+  const admin = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, userId: adminUserId }, select: { id: true } });
+  await db.school.update({ where: { id: school.id }, data: { reportCardConfig: JSON.stringify(DEFAULT_REPORT_CARD_CONFIG) } });
+  const mid = new Date((year.startDate.getTime() + year.endDate.getTime()) / 2);
+  const termSpecs = [
+    { name: "Term 1", start: year.startDate, end: new Date(mid.getTime() - 86_400_000), weight: 40 },
+    { name: "Term 2", start: mid, end: year.endDate, weight: 60 },
+  ];
+  const terms = [];
+  for (const [i, spec] of termSpecs.entries()) {
+    const term = await db.term.upsert({
+      where: { academicYearId_name: { academicYearId: year.id, name: spec.name } },
+      create: { schoolId: school.id, academicYearId: year.id, name: spec.name, startDate: spec.start, endDate: spec.end, position: i + 1, weightPercent: spec.weight },
+      update: { weightPercent: spec.weight },
+      select: { id: true, name: true, startDate: true, endDate: true },
+    });
+    terms.push(term);
+  }
+  const term1 = terms[0]!;
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, select: { id: true }, orderBy: { name: "asc" } });
+  if (!klass) return { series: 0, papers: 0, marks: 0, cards: 0 };
+  const day = (offset: number) => new Date(term1.startDate.getTime() + offset * 86_400_000).toISOString().slice(0, 10);
+  const seriesSpecs = [
+    { name: "Unit test 1", kind: "UNIT_TEST", papers: [{ subject: "Mathematics", max: 25, date: day(40) }, { subject: "English", max: 25, date: day(41) }] },
+    { name: "Mid-term", kind: "MID_TERM", papers: [{ subject: "Mathematics", max: 80, date: day(100) }, { subject: "English", max: 80, date: day(101) }] },
+  ];
+  const papers: { id: string; title: string; subject: string; kind: string; seriesName: string; max: number; position: number; seriesAt: number }[] = [];
+  for (const spec of seriesSpecs) {
+    const series = await db.examSeries.upsert({
+      where: { schoolId_gradeLevel_name: { schoolId: school.id, gradeLevel: "3", name: spec.name } },
+      create: { schoolId: school.id, name: spec.name, gradeLevel: "3", kind: spec.kind, termId: term1.id, publishedAt: new Date(), createdByMembershipId: admin.id },
+      update: { kind: spec.kind, termId: term1.id, publishedAt: new Date() },
+      select: { id: true, createdAt: true },
+    });
+    for (const [i, p] of spec.papers.entries()) {
+      const slot = await db.examSlot.upsert({
+        where: { seriesId_subject: { seriesId: series.id, subject: p.subject } },
+        create: { schoolId: school.id, seriesId: series.id, subject: p.subject, dateKey: p.date, pointsMilli: p.max * 1000, position: i + 1 },
+        update: { dateKey: p.date, pointsMilli: p.max * 1000 },
+        select: { id: true },
+      });
+      const sitting = await db.assignment.upsert({
+        where: { examSlotId_classId: { examSlotId: slot.id, classId: klass.id } },
+        create: { schoolId: school.id, classId: klass.id, authorMembershipId: admin.id, title: `${spec.name} · ${p.subject}`, category: "Exam", pointsMilli: p.max * 1000, examSlotId: slot.id, publishedAt: new Date(), dueAt: new Date(`${p.date}T10:00:00Z`) },
+        update: { pointsMilli: p.max * 1000 },
+        select: { id: true, title: true },
+      });
+      papers.push({ id: sitting.id, title: sitting.title, subject: p.subject, kind: spec.kind, seriesName: spec.name, max: p.max, position: i + 1, seriesAt: series.createdAt.getTime() });
+    }
+  }
+  papers.sort((a, b) => a.seriesAt - b.seriesAt || a.position - b.position);
+  const roll = await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true }, orderBy: { studentMembershipId: "asc" } });
+  let marks = 0;
+  const marksBy = new Map<string, number | null>();
+  for (const [pi, row] of roll.entries()) {
+    for (const [ai, p] of papers.entries()) {
+      // Deterministic marks between 55 % and 96 %; the last pupil missed the mid-term.
+      const missed = pi === roll.length - 1 && p.kind === "MID_TERM";
+      const score = missed ? null : Math.round(p.max * (0.55 + (((pi * 7 + ai * 13) % 21) / 50)) * 1000);
+      marksBy.set(`${p.id}:${row.studentMembershipId}`, score);
+      if (score === null) {
+        await db.grade.deleteMany({ where: { assignmentId: p.id, studentMembershipId: row.studentMembershipId } });
+        continue;
+      }
+      await db.grade.upsert({
+        where: { assignmentId_studentMembershipId: { assignmentId: p.id, studentMembershipId: row.studentMembershipId } },
+        create: { schoolId: school.id, assignmentId: p.id, studentMembershipId: row.studentMembershipId, scoreMilli: score, gradedByMembershipId: admin.id },
+        update: { scoreMilli: score },
+      });
+      marks += 1;
+    }
+  }
+  const config = DEFAULT_REPORT_CARD_CONFIG;
+  let cards = 0;
+  for (const [title, status] of [[term1.name, "PUBLISHED"], ["Mid-term review", "DRAFT"]] as const) {
+    for (const row of roll) {
+      const bySubject = new Map<string, typeof papers>();
+      for (const p of papers) bySubject.set(p.subject, [...(bySubject.get(p.subject) ?? []), p]);
+      const subjects = [...bySubject].map(([subject, ps]) => {
+        const w = kindWeighted(ps.map((p) => ({ label: p.seriesName, kind: p.kind, scoreMilli: marksBy.get(`${p.id}:${row.studentMembershipId}`) ?? null, pointsMilli: p.max * 1000 })), config.kindWeights);
+        const band = bandFor(w.percent, config.bands);
+        return { subject, percent: w.percent, letter: band?.label ?? null, points: band?.points ?? null, parts: w.parts };
+      });
+      const overall = meanPercent(subjects);
+      const points = meanPoints(subjects);
+      const data = {
+        schoolId: school.id,
+        classId: klass.id,
+        studentMembershipId: row.studentMembershipId,
+        academicYearId: year.id,
+        termId: status === "PUBLISHED" ? term1.id : null,
+        title,
+        status,
+        fromDateKey: term1.startDate.toISOString().slice(0, 10),
+        toDateKey: term1.endDate.toISOString().slice(0, 10),
+        attendancePresent: 0,
+        attendanceTotal: 0,
+        overallPercentMilli: overall === null ? null : Math.round(overall * 1000),
+        gradingMethod: "weighted",
+        overallLetter: bandFor(overall, config.bands)?.label ?? null,
+        gradePointsMilli: points === null ? null : Math.round(points * 1000),
+        subjects: JSON.stringify(subjects),
+        scale: JSON.stringify({ bands: config.bands, coScale: config.coScholastic.scale }),
+        layout: JSON.stringify(config.layout),
+        remark: status === "PUBLISHED" ? "Works steadily; reads aloud with confidence." : null,
+        createdByMembershipId: admin.id,
+        publishedAt: status === "PUBLISHED" ? new Date() : null,
+      };
+      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: klass.id, studentMembershipId: row.studentMembershipId, title } }, create: data, update: data, select: { id: true } });
+      await db.reportCardItem.deleteMany({ where: { reportCardId: card.id } });
+      await db.reportCardItem.createMany({
+        data: [
+          ...papers.map((p, position) => {
+            const scoreMilli = marksBy.get(`${p.id}:${row.studentMembershipId}`) ?? null;
+            return { schoolId: school.id, reportCardId: card.id, assignmentId: p.id, title: p.title, category: "Exam", scoreMilli, pointsMilli: p.max * 1000, position, subject: p.subject, kind: "SCHOLASTIC", letter: bandFor(scoreMilli === null ? null : (scoreMilli / (p.max * 1000)) * 100, config.bands)?.label ?? null };
+          }),
+          ...(status === "PUBLISHED"
+            ? config.coScholastic.areas.map((area, position) => ({ schoolId: school.id, reportCardId: card.id, title: area, kind: "CO_SCHOLASTIC", letter: config.coScholastic.scale[position % config.coScholastic.scale.length]!.label, position: papers.length + position }))
+            : []),
+        ],
+      });
+      cards += 1;
+    }
+  }
+  return { series: seriesSpecs.length, papers: papers.length, marks, cards };
+}
+
+/**
  * The substitution board for today: one subject teacher (timetable only, so
  * never the sweep's form teacher, whom the sweep marks present) is absent
  * today and their first lesson of the day is covered by a free colleague.
@@ -1203,6 +1342,7 @@ async function main() {
   const staffAtt = await buildStaffAttendance(northgate.school, northgate.admin.id);
   const syllabus = await buildSyllabus(northgate.school);
   const subs = await buildSubstitutions(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
+  const exams = await buildExams(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1245,6 +1385,7 @@ async function main() {
      circular    one notice asking for an acknowledgement, told to every guardian, opened by two, acknowledged by one — /admin/circulars, /bulletin/${circular.postId}
      staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
+     exams       ${exams.series} series in Term 1 with ${exams.papers} papers, ${exams.marks} marks; ${exams.cards} report cards (Term 1 published with co-scholastic grades, a draft set) — /admin/report-cards
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
 
   ── ZZ Southbank School (small) ──────────────────────────────────────

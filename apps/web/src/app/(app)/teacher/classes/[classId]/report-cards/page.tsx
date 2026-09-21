@@ -5,7 +5,9 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { notFound } from "next/navigation";
 import { requireRole, AccessError } from "@/lib/tenancy";
+import { db } from "@/lib/db";
 import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report-cards";
+import { readReportCardConfig } from "@/lib/report-card-config";
 import { Builder } from "./builder";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
@@ -46,10 +48,14 @@ export default async function ReportCardsPage({
     throw error;
   }
 
-  const [assessments, all, terms] = await Promise.all([
+  // The year and the school's co-scholastic areas: the annual card needs the
+  // one, the grades under each draft the other.
+  const [assessments, all, terms, year, config] = await Promise.all([
     assessmentsFor(ctx, classId),
     cardsForClass(ctx, classId),
     currentTerms(ctx.schoolId!),
+    db.academicYear.findFirst({ where: { schoolId: ctx.schoolId!, isCurrent: true }, select: { id: true, name: true } }),
+    readReportCardConfig(ctx.schoolId!),
   ]);
 
   const titles = [...new Set(all.map((c) => c.title))];
@@ -95,6 +101,8 @@ export default async function ReportCardsPage({
         assessments={assessments}
         existingTitles={titles}
         terms={terms.map((x) => ({ id: x.id, name: x.name, current: x.current }))}
+        academicYear={year}
+        coScholastic={config.coScholastic}
         selectedTitle={selected}
         cards={cards.map((card) => ({
           id: card.id,
@@ -102,6 +110,8 @@ export default async function ReportCardsPage({
           status: card.status,
           remark: card.remark,
           overallPercentMilli: card.overallPercentMilli,
+          overallLetter: card.overallLetter,
+          coScholastic: card.items.map((item) => ({ area: item.title, grade: item.letter, note: item.comment })),
           attendancePresent: card.attendancePresent,
           attendanceTotal: card.attendanceTotal,
           studentName: card.student.user.preferredName ?? card.student.user.name,

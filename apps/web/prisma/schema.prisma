@@ -115,6 +115,11 @@ model School {
   /// comma-separated in order. Monday to Saturday by default, the Indian norm;
   /// a five-day school drops the 6. Read through school-week.ts.
   teachingDays          String  @default("1,2,3,4,5,6")
+  /// The report card's rules, one JSON document read through report-card-config.ts:
+  /// the grading scale (board bands), the co-scholastic areas and their scale,
+  /// the weight of each exam kind inside a term, and the printed layout. Null
+  /// means the defaults; a card snapshots the document it was built with.
+  reportCardConfig      String?
   /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
   msgEventsJson         String  @default("{}")
 
@@ -634,7 +639,19 @@ model ReportCard {
   overallPercentMilli Int?
   /// "points" or "weighted", carried through from `overallForStudent` so a
   /// reader is told which rule produced the number.
-  gradingMethod       String @default("points")
+  gradingMethod       String  @default("points")
+  /// The overall grade on the scale the card was built with, and the mean
+  /// grade points across subjects (thousandths), when the scale carries points.
+  overallLetter       String?
+  gradePointsMilli    Int?
+  /// The subject rows, JSON, SNAPSHOT: each subject's weighted percent, band
+  /// and the parts (papers or terms) that made it, with the weights applied.
+  subjects            String?
+  /// The grading scale and the printed layout the card was built with, JSON,
+  /// SNAPSHOT, so a later change to the school's rules never rewrites an
+  /// issued document.
+  scale               String?
+  layout              String?
 
   /// The practice annexure: what the child's self-practice ladder looked like
   /// on the day the card was generated. JSON, SNAPSHOT like everything else on
@@ -680,6 +697,15 @@ model ReportCardItem {
   pointsMilli Int?
   /// Order the class teacher chose, so the card reads the way they built it.
   position    Int     @default(0)
+  /// The paper's subject, so the card can group papers under it.
+  subject     String?
+  /// SCHOLASTIC (an exam paper) or CO_SCHOLASTIC (an area graded by the class
+  /// teacher on the card itself, kept when the papers are regenerated).
+  kind        String  @default("SCHOLASTIC")
+  /// The grade awarded: a paper's band on the scale, or the co-scholastic grade.
+  letter      String?
+  /// A co-scholastic area's note from the class teacher.
+  comment     String?
 
   school     School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   reportCard ReportCard  @relation(fields: [reportCardId], references: [id], onDelete: Cascade)
@@ -2153,6 +2179,9 @@ model Term {
   /// page by the admin or the principal. Reversible there, because a term
   /// marked done by accident should not need a database admin to unmark.
   finishedAt     DateTime?
+  /// This term's share of the annual report card, in percent. Null on every
+  /// term means equal shares; the office sets them on the calendar.
+  weightPercent  Int?
   createdAt      DateTime  @default(now())
 
   school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)

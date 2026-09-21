@@ -75,3 +75,20 @@ jest.mock("expo-image-picker", () => ({
   launchCameraAsync: jest.fn(async () => ({ canceled: true, assets: null })),
 }));
 jest.mock("expo-screen-capture", () => ({ usePreventScreenCapture: jest.fn(), preventScreenCaptureAsync: jest.fn(async () => {}), allowScreenCaptureAsync: jest.fn(async () => {}) }));
+// The PDF download writes to the cache and opens the share sheet: both are
+// fakes a test can read, for what was written and what was shared.
+jest.mock("expo-file-system", () => {
+  class File {
+    uri: string;
+    written: Uint8Array | string | null = null;
+    constructor(...parts: (string | { uri: string })[]) {
+      this.uri = parts.map((p) => (typeof p === "string" ? p : p.uri)).join("/");
+    }
+    write(content: Uint8Array | string) {
+      this.written = content;
+      (globalThis as { __lastWrittenFile?: File }).__lastWrittenFile = this;
+    }
+  }
+  return { File, Paths: { cache: { uri: "file:///cache" } } };
+});
+jest.mock("expo-sharing", () => ({ isAvailableAsync: jest.fn(async () => true), shareAsync: jest.fn(async () => {}) }));

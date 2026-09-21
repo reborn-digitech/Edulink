@@ -6,15 +6,19 @@ import { useQuery } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyExamsSchema, familyReportCardSchema, familyReportCardsSchema } from "@edulink/contracts";
 import type { Translate } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
+import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, EXAM_KIND, ExamMarksCards, formatDateKey, formatMilli, hhmm, Note, param, subjectName, Tabs, type ExamKind } from "./shared";
+import { Chips, EXAM_KIND, ExamMarksCards, formatDateKey, formatMilli, hhmm, Note, param, Pill, subjectName, Tabs, type ExamKind } from "./shared";
 
 type Tab = "marks" | "upcoming" | "cards";
 type ReportCard = z.infer<typeof familyReportCardSchema>;
+type Layout = NonNullable<ReportCard["layout"]>;
+/** A card issued before the office had any rules to set: everything on, nothing said around it. */
+const DEFAULT_LAYOUT: Layout = { showAttendance: true, showPractice: true, showCoScholastic: true, showGradePoints: true, showAddress: false, showSignatures: false, showRemark: true, useBrandColour: false, signatureLeft: "", signatureRight: "", headerNote: null, footerNote: null, paper: "A4" };
 const KINDS: ExamKind[] = ["UNIT_TEST", "MID_TERM", "FINAL"];
 
 /**
@@ -159,11 +163,19 @@ export function FamilyExams() {
   );
 }
 
-/** One report card as it will be printed — natively, with the phone's share sheet instead of a printer. */
+/**
+ * One report card as it will be printed — natively, with the phone's share
+ * sheet instead of a printer. The card carries the layout it was issued
+ * under (which blocks show, the letterhead's colour and notes) and its own
+ * scale, so a card from a past year keeps looking as it did; the PDF the
+ * server renders comes through the same share sheet as a file.
+ */
 function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
+  const [pdfBusy, setPdfBusy] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
   const query = useQuery({
     queryKey: ["family", "report-card", cardId],
     queryFn: async () => familyReportCardSchema.parse(unwrap(await api().get(`/api/v1/family/report-cards/${encodeURIComponent(cardId)}`))),
@@ -173,13 +185,31 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
     if (!c) return;
     void Share.share({ title: `${c.title} · ${c.studentName}`, message: cardText(c, t, locale) });
   };
+  const downloadPdf = async () => {
+    if (!c) return;
+    setPdfBusy(true);
+    setPdfError(null);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/shared/report-cards/${encodeURIComponent(c.id)}/pdf`, fallback);
+    const error = got.ok ? await shareBytes(got, `${c.title} - ${c.studentName}.pdf`, fallback) : got.error;
+    setPdfBusy(false);
+    setPdfError(error);
+  };
   const range = c ? `${formatDateKey(c.fromDateKey, locale, { day: "numeric", month: "short" })} – ${formatDateKey(c.toDateKey, locale, { day: "numeric", month: "short", year: "numeric" })}` : "";
+  const layout = c?.layout ?? DEFAULT_LAYOUT;
+  const brand = layout.useBrandColour && c?.school.brandPrimary ? c.school.brandPrimary : null;
+  const subjects = c?.subjects ?? [];
+  const coScholastic = c?.coScholastic ?? [];
+  const address = c ? [c.school.addressLine, c.school.city, c.school.region, c.school.postalCode].filter(Boolean).join(", ") : "";
+  const contact = c ? [c.school.contactPhone, c.school.contactEmail, c.school.website].filter(Boolean).join(" · ") : "";
   return (
     <Screen title={c?.title ?? t("nav.exams")} description={c ? `${c.school.name} · ${c.className}${c.classSection ? ` ${c.classSection}` : ""}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       <View style={{ flexDirection: "row", gap: th.space[2] }}>
         <Button variant="secondary" label={t("reportView.back")} onPress={onBack} style={{ flex: 1 }} />
         <Button label={t("mobile.share")} onPress={share} disabled={!c} style={{ flex: 1 }} />
       </View>
+      <Button variant="secondary" label={t("reportView.downloadPdf")} icon={<Icon name="fileText" size={18} color={th.fg} weight="bold" />} busy={pdfBusy} disabled={!c} onPress={() => void downloadPdf()} />
+      {pdfError ? <Failed message={pdfError} onRetry={() => void downloadPdf()} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {c ? (
@@ -192,6 +222,25 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
             </Note>
           ) : null}
           <Card>
+            <Text variant="lg" bold style={brand ? { color: brand } : undefined}>
+              {c.school.name}
+            </Text>
+            {layout.headerNote ? (
+              <Text variant="xs" tone="muted">
+                {layout.headerNote}
+              </Text>
+            ) : null}
+            {layout.showAddress && address ? (
+              <Text variant="xs" tone="muted">
+                {address}
+              </Text>
+            ) : null}
+            {layout.showAddress && contact ? (
+              <Text variant="xs" tone="muted">
+                {contact}
+              </Text>
+            ) : null}
+            {c.scope === "YEAR" ? <Pill label={t("reportView.annualCard")} tone="accent" /> : null}
             <Text variant="2xl" bold accessibilityRole="header">
               {c.studentName}
             </Text>
@@ -201,50 +250,86 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
             <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
               <Figure
                 label={t("reportView.overall")}
-                value={c.overallPercent === null ? "—" : `${c.overallPercent.toFixed(1)}%`}
-                hint={c.overallPercent === null ? t("reportView.noMarksCounted") : c.gradingMethod === "exams" ? t("reportView.examsOnly") : c.gradingMethod === "weighted" ? t("reportView.weightedBy") : t("reportView.acrossBelow")}
+                value={overallText(c)}
+                hint={c.overallPercent === null ? t("reportView.noMarksCounted") : subjects.length > 0 ? t("reportView.weightedExplainerShort") : c.gradingMethod === "exams" ? t("reportView.examsOnly") : c.gradingMethod === "weighted" ? t("reportView.weightedBy") : t("reportView.acrossBelow")}
               />
-              <Figure
-                label={t("reportView.attendance")}
-                value={c.attendancePercent === null ? "—" : `${c.attendancePercent}%`}
-                hint={c.attendanceTotal === 0 ? t("reportView.noRegisterWindow") : t("reportView.daysOf", { present: c.attendancePresent, total: c.attendanceTotal })}
-              />
+              {layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined ? <Figure label={t("reportView.gradePoints")} value={c.gradePoints.toFixed(1)} hint={t("reportView.gradePointsHint")} /> : null}
+              {layout.showAttendance ? (
+                <Figure
+                  label={t("reportView.attendance")}
+                  value={c.attendancePercent === null ? "—" : `${c.attendancePercent}%`}
+                  hint={c.attendanceTotal === 0 ? t("reportView.noRegisterWindow") : t("reportView.daysOf", { present: c.attendancePresent, total: c.attendanceTotal })}
+                />
+              ) : null}
             </View>
           </Card>
-          <Card title={t("reportView.whatThisCovers")}>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-              <Text variant="xs" tone="muted">
-                {t("reportView.assessment")}
-              </Text>
-              <Text variant="xs" tone="muted">
-                {t("reportView.mark")}
-              </Text>
-            </View>
-            {c.items.map((item, index) => (
-              <Row
-                key={index}
-                title={item.title}
-                caption={item.category ?? undefined}
-                right={
-                  <Text variant="sm" bold tone={item.scoreMilli === null ? "muted" : "fg"}>
-                    {/* Blank, not zero: a paper the child has not sat is not a mark of nought. */}
-                    {item.scoreMilli === null ? t("exams.awaitingMarks") : `${formatMilli(item.scoreMilli)}${item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}`}
-                  </Text>
-                }
-              />
-            ))}
-          </Card>
-          {c.practice && c.practice.length > 0 ? (
+          {subjects.length > 0 ? (
+            <Card title={t("reportView.scholastic")}>
+              <View style={{ flexDirection: "row", justifyContent: "space-between", gap: th.space[2] }}>
+                <Text variant="xs" tone="muted">
+                  {`${t("reportView.subject")} · ${c.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}`}
+                </Text>
+                <Text variant="xs" tone="muted">
+                  {[t("reportView.percent"), t("reportView.grade"), t("reportView.points")].join(" · ")}
+                </Text>
+              </View>
+              {subjects.map((row) => (
+                <Row key={row.subject} title={row.subject} caption={partsText(row.parts, t) || undefined} right={<Text variant="sm" bold tone={row.percent === null ? "muted" : "fg"}>{subjectMark(row, t)}</Text>} />
+              ))}
+            </Card>
+          ) : (
+            <Card title={t("reportView.whatThisCovers")}>
+              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                <Text variant="xs" tone="muted">
+                  {t("reportView.assessment")}
+                </Text>
+                <Text variant="xs" tone="muted">
+                  {t("reportView.mark")}
+                </Text>
+              </View>
+              {c.items.map((item, index) => (
+                <Row
+                  key={index}
+                  title={item.title}
+                  caption={[item.subject, item.category].filter(Boolean).join(" · ") || undefined}
+                  right={
+                    <Text variant="sm" bold tone={item.scoreMilli === null ? "muted" : "fg"}>
+                      {/* Blank, not zero: a paper the child has not sat is not a mark of nought. */}
+                      {itemMark(item, t)}
+                    </Text>
+                  }
+                />
+              ))}
+            </Card>
+          )}
+          {layout.showCoScholastic && coScholastic.length > 0 ? (
+            <Card title={t("reportView.coScholastic")}>
+              {coScholastic.map((row) => (
+                <Row key={row.area} title={row.area} caption={row.note ?? undefined} right={<Text variant="sm" bold tone={row.grade ? "fg" : "muted"}>{coGradeText(row.grade, c)}</Text>} />
+              ))}
+            </Card>
+          ) : null}
+          {layout.showPractice && c.practice && c.practice.length > 0 ? (
             <Card title={t("reportView.practiceTitle")}>
               {c.practice.map((row, index) => (
                 <Row key={index} title={row.name} caption={subjectName(t, row.subject)} right={<Text variant="sm">{`L${row.level}/6 · ${row.tiers}/6`}</Text>} />
               ))}
             </Card>
           ) : null}
-          {c.remark ? (
+          {layout.showRemark && c.remark ? (
             <Card title={t("reportView.fromClassTeacher")}>
               <Text variant="sm">{c.remark}</Text>
             </Card>
+          ) : null}
+          {scaleText(c, t) ? (
+            <Text variant="xs" tone="muted">
+              {scaleText(c, t)}
+            </Text>
+          ) : null}
+          {layout.footerNote ? (
+            <Text variant="xs" tone="muted">
+              {layout.footerNote}
+            </Text>
           ) : null}
           <Text variant="xs" tone="muted">
             {footer(c, t, locale)}
@@ -272,6 +357,49 @@ function Figure({ label, value, hint }: { label: string; value: string; hint: st
   );
 }
 
+/** "88.5% · A1": the percent, and the band it falls in when the school has a scale. */
+function overallText(c: ReportCard): string {
+  if (c.overallPercent === null) return "—";
+  return `${c.overallPercent.toFixed(1)}%${c.overallLetter ? ` · ${c.overallLetter}` : ""}`;
+}
+
+type Subject = NonNullable<ReportCard["subjects"]>[number];
+function subjectMark(row: Subject, t: Translate): string {
+  if (row.percent === null) return t("exams.awaitingMarks");
+  return [`${row.percent.toFixed(1)}%`, row.letter, row.points !== null ? String(row.points) : null].filter((x) => x !== null && x !== "").join(" · ");
+}
+
+/** The parts a subject's percent was made of: "Unit test 1 20/25 (80%) · Mid-term 60/80 (75%)". */
+function partsText(parts: Subject["parts"], t: Translate): string {
+  return parts
+    .map((p) => {
+      if (p.scoreMilli === null) return `${p.label} ${t("exams.awaitingMarks")}`;
+      const out = p.pointsMilli ? `${formatMilli(p.scoreMilli)}/${formatMilli(p.pointsMilli)}` : formatMilli(p.scoreMilli);
+      return `${p.label} ${out}${p.percent !== null ? ` (${Math.round(p.percent)}%)` : ""}`;
+    })
+    .join(" · ");
+}
+
+function itemMark(item: ReportCard["items"][number], t: Translate): string {
+  if (item.scoreMilli === null) return t("exams.awaitingMarks");
+  const mark = `${formatMilli(item.scoreMilli)}${item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}`;
+  return item.letter ? `${mark} · ${item.letter}` : mark;
+}
+
+/** A co-scholastic grade with its descriptor from the card's own scale: "A · Outstanding". */
+function coGradeText(grade: string | null, c: ReportCard): string {
+  if (!grade) return "—";
+  const found = c.scale?.coScale.find((s) => s.label === grade);
+  return found?.descriptor ? `${grade} · ${found.descriptor}` : grade;
+}
+
+/** "Scale: A1 ≥ 91% (10) · A2 ≥ 81% (9) …" — the bands the card was graded on, so a letter can be read. */
+function scaleText(c: ReportCard, t: Translate): string {
+  const bands = c.scale?.bands ?? [];
+  if (bands.length === 0) return "";
+  return `${t("reportView.scaleLine")}: ${bands.map((b) => `${b.label} ≥ ${b.minPercent}%${b.points !== null ? ` (${b.points})` : ""}`).join(" · ")}`;
+}
+
 function footer(c: ReportCard, t: Translate, locale: string): string {
   const by = c.authorName ? `${t("reportView.writtenBy", { name: c.authorName })} ` : "";
   return by + (c.publishedAt ? t("reportView.issuedOn", { date: formatDateKey(c.publishedAt.slice(0, 10), locale) }) : t("reportView.notYetIssued"));
@@ -279,19 +407,30 @@ function footer(c: ReportCard, t: Translate, locale: string): string {
 
 /** The card as plain text for the share sheet — the same lines, top to bottom. */
 function cardText(c: ReportCard, t: Translate, locale: string): string {
+  const layout = c.layout ?? DEFAULT_LAYOUT;
+  const subjects = c.subjects ?? [];
   const lines = [
     c.school.name,
+    ...(layout.headerNote ? [layout.headerNote] : []),
     `${c.title} · ${c.className}${c.classSection ? ` ${c.classSection}` : ""}`,
     c.studentName,
     `${formatDateKey(c.fromDateKey, locale)} – ${formatDateKey(c.toDateKey, locale)}`,
     "",
-    `${t("reportView.overall")}: ${c.overallPercent === null ? "—" : `${c.overallPercent.toFixed(1)}%`}`,
-    `${t("reportView.attendance")}: ${c.attendancePercent === null ? "—" : `${c.attendancePercent}%`}`,
-    "",
-    t("reportView.whatThisCovers"),
-    ...c.items.map((item) => `${item.title}${item.category ? ` (${item.category})` : ""}: ${item.scoreMilli === null ? t("exams.awaitingMarks") : `${formatMilli(item.scoreMilli)}${item.pointsMilli ? ` / ${formatMilli(item.pointsMilli)}` : ""}`}`),
+    `${t("reportView.overall")}: ${overallText(c)}`,
   ];
-  if (c.remark) lines.push("", t("reportView.fromClassTeacher"), c.remark);
+  if (layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined) lines.push(`${t("reportView.gradePoints")}: ${c.gradePoints.toFixed(1)}`);
+  if (layout.showAttendance) lines.push(`${t("reportView.attendance")}: ${c.attendancePercent === null ? "—" : `${c.attendancePercent}%`}`);
+  if (subjects.length > 0) {
+    lines.push("", t("reportView.scholastic"), ...subjects.map((row) => `${row.subject}: ${subjectMark(row, t)}${row.parts.length ? ` (${partsText(row.parts, t)})` : ""}`));
+  } else {
+    lines.push("", t("reportView.whatThisCovers"), ...c.items.map((item) => `${item.title}${item.category ? ` (${item.category})` : ""}: ${itemMark(item, t)}`));
+  }
+  const co = c.coScholastic ?? [];
+  if (layout.showCoScholastic && co.length > 0) lines.push("", t("reportView.coScholastic"), ...co.map((row) => `${row.area}: ${coGradeText(row.grade, c)}${row.note ? ` — ${row.note}` : ""}`));
+  if (layout.showRemark && c.remark) lines.push("", t("reportView.fromClassTeacher"), c.remark);
+  const scale = scaleText(c, t);
+  if (scale) lines.push("", scale);
+  if (layout.footerNote) lines.push(layout.footerNote);
   lines.push("", footer(c, t, locale));
   return lines.join("\n");
 }

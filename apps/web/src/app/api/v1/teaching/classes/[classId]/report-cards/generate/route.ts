@@ -16,7 +16,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cla
     const { classId } = await params;
     const parsed = teachingGenerateCardsSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await generateCards(ctx, classId, { title: parsed.data.title, assignmentIds: parsed.data.assignmentIds, termId: parsed.data.termId ?? null });
+    const result = await generateCards(ctx, classId, { title: parsed.data.title, assignmentIds: parsed.data.assignmentIds, termId: parsed.data.termId ?? null, academicYearId: parsed.data.academicYearId ?? null });
     if (!result.ok) return apiRefused(result);
     return ok(teachingCardsGeneratedSchema.parse({ created: result.created ?? 0, updated: result.updated ?? 0, skippedPublished: result.skippedPublished ?? 0 }));
   } catch (error) {

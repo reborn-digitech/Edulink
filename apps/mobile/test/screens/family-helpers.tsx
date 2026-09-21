@@ -3,6 +3,7 @@ import { userEvent } from "@testing-library/react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createApiClient } from "@edulink/api-client";
 import { __setApiClient } from "@/lib/api";
+import { __setDownloadFetch } from "@/lib/download";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider } from "@/lib/session";
 import { renderApp, untilRendered } from "../utils";
@@ -69,6 +70,8 @@ export function fakeApi(answers: Record<string, Answer>): jest.Mock {
     return out instanceof Response ? out : new Response(JSON.stringify(out), { status: 200 });
   });
   __setApiClient(createApiClient({ baseUrl: "http://api.test", getToken: () => "t", fetch: fetch as unknown as typeof globalThis.fetch }));
+  // A PDF download reads the same fake, so a test can answer it with bytes.
+  __setDownloadFetch(fetch as unknown as typeof globalThis.fetch);
   return fetch;
 }
 

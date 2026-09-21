@@ -11,6 +11,10 @@ let locale = "en";
 export function setApiLocale(next: string): void {
   locale = next;
 }
+/** The language the app last set, for a request that does not go through the client (a PDF download). */
+export function apiLocale(): string {
+  return locale;
+}
 
 export const API_BASE = (process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000").replace(/\/+$/, "");
 
@@ -23,6 +27,15 @@ export const API_BASE = (process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:30
 const LOOPBACK = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/;
 if (!__DEV__ && !API_BASE.startsWith("https://") && !LOOPBACK.test(API_BASE)) {
   throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build (got ${API_BASE})`);
+}
+
+/**
+ * The bearer for a request the client cannot make itself (a PDF's bytes).
+ * The one door to the token outside the client, so the security test's list
+ * of readers stays short.
+ */
+export function sessionToken(): Promise<string | null> {
+  return keyStore().get(KEYS.token);
 }
 
 let client: ApiClient | null = null;

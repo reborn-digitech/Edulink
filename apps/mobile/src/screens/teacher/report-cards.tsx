@@ -3,6 +3,7 @@ import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  coScholasticSaveSchema,
   okSchema,
   staffClassesSchema,
   teachingCardsGeneratedSchema,
@@ -14,12 +15,13 @@ import {
 } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
+import { bytesApi, shareBytes } from "@/lib/download";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { haptics } from "@/lib/haptics";
 import { Chips } from "../staff/shared";
-import { EXAM_KIND, Pill } from "../family/shared";
+import { EXAM_KIND, Note, Pill } from "../family/shared";
 
 /**
  * Report cards, the web's /teacher/classes/[classId]/report-cards: pick the
@@ -31,6 +33,9 @@ import { EXAM_KIND, Pill } from "../family/shared";
  */
 type Assessment = TeachingReportCards["assessments"][number];
 type CardRow = TeachingReportCards["cards"][number];
+type CoScholastic = NonNullable<TeachingReportCards["coScholastic"]>;
+/** Where the card's papers come from: a term names its own, the year combines its terms, or the teacher ticks them. */
+type Mode = "term" | "year" | "papers";
 
 export function ReportCardBuilder() {
   const { classId: fromRoute } = useLocalSearchParams<{ classId?: string }>();
@@ -80,7 +85,9 @@ function Builder({ classId }: { classId: string }) {
   const [name, setName] = useState<string | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [termId, setTermId] = useState("");
+  const [mode, setMode] = useState<Mode>("papers");
   const [confirming, setConfirming] = useState(false);
+  const [bundleBusy, setBundleBusy] = useState(false);
   const query = useQuery({
     queryKey: ["teaching", "report-cards", classId, viewTitle],
     placeholderData: keepPreviousData,
@@ -89,7 +96,9 @@ function Builder({ classId }: { classId: string }) {
   const d = query.data;
   const refresh = () => qc.invalidateQueries({ queryKey: ["teaching", "report-cards", classId] });
 
-  const title = name ?? d?.selectedTitle ?? "Term 1";
+  const term = d?.terms.find((x) => x.id === termId) ?? null;
+  const year = d?.academicYear ?? null;
+  const title = name ?? (mode === "term" ? term?.name : mode === "year" ? year?.name : null) ?? d?.selectedTitle ?? "Term 1";
   const generate = useMutation({
     mutationFn: async (body: TeachingGenerateCardsBody) => teachingCardsGeneratedSchema.parse(unwrap(await api().post(`/api/v1/teaching/classes/${classId}/report-cards/generate`, body))),
     onSuccess: async (result, body) => {
@@ -125,15 +134,28 @@ function Builder({ classId }: { classId: string }) {
   }
   const toggle = (id: string) => setPicked((now) => (now.includes(id) ? now.filter((x) => x !== id) : [...now, id]));
   const toggleSeries = (ids: string[]) => setPicked((now) => (ids.every((id) => now.includes(id)) ? now.filter((id) => !ids.includes(id)) : [...now, ...ids.filter((id) => !now.includes(id))]));
+  // A new source starts the title over, so a term's or the year's own name shows.
+  const chooseMode = (next: Mode) => {
+    setMode(next);
+    setName(null);
+  };
   const chooseTerm = (id: string) => {
     setTermId(id);
-    const term = d?.terms.find((x) => x.id === id);
-    if (term) {
-      setName(term.name);
-      setPicked((d?.assessments ?? []).filter((a) => a.termId === id).map((a) => a.assignmentId));
-    }
+    setName(null);
   };
-  const build = () => generate.mutate({ title: title.trim(), assignmentIds: picked, termId: termId || null });
+  const build = () => {
+    const body: TeachingGenerateCardsBody = mode === "term" ? { title: title.trim(), assignmentIds: [], termId } : mode === "year" ? { title: title.trim(), assignmentIds: [], academicYearId: year?.id ?? null } : { title: title.trim(), assignmentIds: picked, termId: null };
+    generate.mutate(body);
+  };
+  const canBuild = title.trim().length >= 2 && (mode === "term" ? termId !== "" : mode === "year" ? year !== null : picked.length > 0);
+  const downloadAll = async (setTitle: string) => {
+    setBundleBusy(true);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/teaching/classes/${classId}/report-cards/pdf?title=${encodeURIComponent(setTitle)}`, fallback);
+    const error = got.ok ? await shareBytes(got, `${setTitle} - ${d?.class.name ?? classId}.pdf`, fallback) : got.error;
+    setBundleBusy(false);
+    if (error) toast.show(error, "danger");
+  };
 
   const cards = d?.cards ?? [];
   const drafts = cards.filter((c) => c.status === "DRAFT").length;
@@ -160,10 +182,39 @@ function Builder({ classId }: { classId: string }) {
           ) : null}
 
           <Card title={t("teacher.builderStepOne")}>
-            <Text variant="xs" tone="muted">
-              {t("teacher.builderPickExplainer")}
-            </Text>
-            {d.assessments.length === 0 ? (
+            <Chips
+              label={t("teacher.builderStepOne")}
+              value={mode}
+              options={[...(d.terms.length > 0 ? [{ value: "term" as const, label: t("reportCards.fromTerm") }] : []), { value: "year" as const, label: t("reportCards.fromYear") }, { value: "papers" as const, label: t("reportCards.fromPapers") }]}
+              onChange={chooseMode}
+            />
+            {mode === "term" ? (
+              <>
+                <Chips label={t("terms.cardTerm")} value={termId} options={d.terms.map((x) => ({ value: x.id, label: `${x.name} · ${t("terms.inTerm", { count: d.assessments.filter((a) => a.termId === x.id).length })}` }))} onChange={chooseTerm} />
+                <Text variant="xs" tone="subtle">
+                  {t("reportCards.termCardHint")}
+                </Text>
+              </>
+            ) : null}
+            {mode === "year" ? (
+              year ? (
+                <Text variant="xs" tone="subtle">
+                  {t("reportCards.yearCard", { year: year.name })}
+                </Text>
+              ) : (
+                <Note tone="warn">
+                  <Text variant="sm" tone="warn">
+                    {t("reportCards.noYear")}
+                  </Text>
+                </Note>
+              )
+            ) : null}
+            {mode === "papers" ? (
+              <Text variant="xs" tone="muted">
+                {t("teacher.builderPickExplainer")}
+              </Text>
+            ) : null}
+            {mode !== "papers" ? null : d.assessments.length === 0 ? (
               <Empty title={t("exams.noPapersTitle")} body={t("teacher.noPublishedWork")} action={<Button label={t("nav.exams")} variant="secondary" onPress={() => router.push("/(app)/exams" as never)} />} />
             ) : (
               [...bySeries.entries()].map(([seriesId, group]) => {
@@ -190,22 +241,10 @@ function Builder({ classId }: { classId: string }) {
           </Card>
 
           <Card title={t("teacher.builderStepTwo")}>
-            {d.terms.length > 0 ? (
-              <>
-                <Chips
-                  label={t("terms.cardTerm")}
-                  value={termId}
-                  options={[{ value: "", label: t("terms.cardNoTerm") }, ...d.terms.map((x) => ({ value: x.id, label: `${x.name} · ${t("terms.inTerm", { count: d.assessments.filter((a) => a.termId === x.id).length })}` }))]}
-                  onChange={chooseTerm}
-                />
-                <Text variant="xs" tone="subtle">
-                  {t("terms.builderTermHint")}
-                </Text>
-              </>
-            ) : null}
-            <Field label={t("teacher.reportName")} value={title} onChangeText={setName} editable={termId === ""} maxLength={120} />
+            {/* A term's card is called what the term is called; the year's and a hand-picked set take any name. */}
+            <Field label={t("teacher.reportName")} value={title} onChangeText={setName} editable={mode !== "term"} maxLength={120} />
             {generate.isError ? <Failed message={generate.error.message} onRetry={build} /> : null}
-            <Button label={t("teacher.generateForClass")} icon={<Icon name="star" size={18} color={th.accentFg} weight="bold" />} busy={generate.isPending} disabled={picked.length === 0 || title.trim().length < 2} onPress={build} />
+            <Button label={t("teacher.generateForClass")} icon={<Icon name="star" size={18} color={th.accentFg} weight="bold" />} busy={generate.isPending} disabled={!canBuild} onPress={build} />
           </Card>
 
           {cards.length > 0 && selected ? (
@@ -233,8 +272,9 @@ function Builder({ classId }: { classId: string }) {
               ) : (
                 <Button label={t("teacher.withdrawAll")} variant="secondary" onPress={() => setConfirming(true)} />
               )}
+              <Button label={t("reportCards.downloadAllPdf")} variant="secondary" icon={<Icon name="fileText" size={18} color={th.fg} weight="bold" />} busy={bundleBusy} onPress={() => void downloadAll(selected)} />
               {cards.map((card) => (
-                <CardEditor key={card.id} card={card} classId={classId} onSaved={refresh} />
+                <CardEditor key={card.id} card={card} classId={classId} coScholastic={d.coScholastic ?? { areas: [], scale: [] }} onSaved={refresh} />
               ))}
             </Card>
           ) : null}
@@ -244,8 +284,8 @@ function Builder({ classId }: { classId: string }) {
   );
 }
 
-/** One pupil's card: the figures, the status, and on a draft the class teacher's remark with its own save. */
-function CardEditor({ card, classId, onSaved }: { card: CardRow; classId: string; onSaved: () => Promise<unknown> }) {
+/** One pupil's card: the figures, the status, and on a draft the class teacher's remark and co-scholastic grades, each with its own save. */
+function CardEditor({ card, classId, coScholastic, onSaved }: { card: CardRow; classId: string; coScholastic: CoScholastic; onSaved: () => Promise<unknown> }) {
   const t = useT();
   const th = useTheme();
   const toast = useToast();
@@ -258,7 +298,7 @@ function CardEditor({ card, classId, onSaved }: { card: CardRow; classId: string
       setRemark(null);
     },
   });
-  const percent = card.overallPercentMilli === null ? t("teacher.noMarksYetShort") : `${(card.overallPercentMilli / 1000).toFixed(1)}%`;
+  const percent = card.overallPercentMilli === null ? t("teacher.noMarksYetShort") : `${(card.overallPercentMilli / 1000).toFixed(1)}%${card.overallLetter ? ` · ${card.overallLetter}` : ""}`;
   const days = card.attendanceTotal > 0 ? ` · ${t("teaching.daysPresent", { present: card.attendancePresent, total: card.attendanceTotal })}` : "";
   const draft = card.status === "DRAFT";
   const text = remark ?? card.remark ?? "";
@@ -279,12 +319,87 @@ function CardEditor({ card, classId, onSaved }: { card: CardRow; classId: string
           />
           {save.isError ? <Failed message={save.error.message} onRetry={() => save.mutate(text)} /> : null}
           {changed ? <Button label={t("teaching.saveRemark")} variant="secondary" busy={save.isPending} onPress={() => save.mutate(text)} /> : null}
+          <CoScholasticEditor card={card} classId={classId} coScholastic={coScholastic} onSaved={onSaved} />
         </>
-      ) : card.remark ? (
-        <Text variant="sm" tone="muted">
-          {card.remark}
+      ) : (
+        <>
+          {card.remark ? (
+            <Text variant="sm" tone="muted">
+              {card.remark}
+            </Text>
+          ) : null}
+          {(card.coScholastic ?? []).filter((g) => g.grade).length > 0 ? (
+            <Text variant="xs" tone="muted">
+              {(card.coScholastic ?? [])
+                .filter((g) => g.grade)
+                .map((g) => `${g.area}: ${g.grade}`)
+                .join(" · ")}
+            </Text>
+          ) : null}
+        </>
+      )}
+    </View>
+  );
+}
+
+type Grades = Record<string, { grade: string; note: string }>;
+function gradesOf(card: CardRow, areas: string[]): Grades {
+  const out: Grades = {};
+  for (const area of areas) {
+    const row = (card.coScholastic ?? []).find((g) => g.area === area);
+    out[area] = { grade: row?.grade ?? "", note: row?.note ?? "" };
+  }
+  return out;
+}
+
+/**
+ * The school's co-scholastic areas on one draft, each graded on the school's
+ * own scale with a line beside it, saved together. Kept when the papers are
+ * regenerated — the grades sit on the card, not on any paper.
+ */
+function CoScholasticEditor({ card, classId, coScholastic, onSaved }: { card: CardRow; classId: string; coScholastic: CoScholastic; onSaved: () => Promise<unknown> }) {
+  const t = useT();
+  const th = useTheme();
+  const toast = useToast();
+  const [edited, setEdited] = useState<Grades | null>(null);
+  const grades = edited ?? gradesOf(card, coScholastic.areas);
+  const save = useMutation({
+    mutationFn: async (next: Grades) => {
+      const body = coScholasticSaveSchema.parse({ cardId: card.id, grades: coScholastic.areas.map((area) => ({ area, grade: next[area]?.grade || null, note: next[area]?.note.trim() || undefined })) });
+      return okSchema.parse(unwrap(await api().post(`/api/v1/teaching/classes/${classId}/report-cards/co-scholastic`, body)));
+    },
+    onSuccess: async () => {
+      toast.show(t("reportCards.coScholasticSaved"));
+      await onSaved();
+      setEdited(null);
+    },
+  });
+  const set = (area: string, patch: Partial<{ grade: string; note: string }>) => setEdited({ ...grades, [area]: { ...(grades[area] ?? { grade: "", note: "" }), ...patch } });
+  const options = [{ value: "", label: t("reportCards.notGraded") }, ...coScholastic.scale.map((s) => ({ value: s.label, label: s.descriptor ? `${s.label} · ${s.descriptor}` : s.label }))];
+  return (
+    <View style={{ gap: th.space[2], padding: th.space[3], borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }}>
+      <Text variant="sm" bold>
+        {t("reportCards.coScholasticTitle")}
+      </Text>
+      <Text variant="xs" tone="muted">
+        {t("reportCards.coScholasticHint")}
+      </Text>
+      {coScholastic.areas.length === 0 ? (
+        <Text variant="xs" tone="subtle">
+          {t("reportCards.noAreas")}
         </Text>
-      ) : null}
+      ) : (
+        <>
+          {coScholastic.areas.map((area) => (
+            <View key={area} style={{ gap: th.space[1] }}>
+              <Chips label={`${area} — ${card.studentName}`} value={grades[area]?.grade ?? ""} options={options} onChange={(grade) => set(area, { grade })} />
+              <Field label={`${t("reportCards.note")}: ${area} — ${card.studentName}`} value={grades[area]?.note ?? ""} onChangeText={(note) => set(area, { note })} maxLength={200} />
+            </View>
+          ))}
+          {save.isError ? <Failed message={save.error.message} onRetry={() => save.mutate(grades)} /> : null}
+          {edited ? <Button label={t("common.save")} variant="secondary" busy={save.isPending} onPress={() => save.mutate(grades)} /> : null}
+        </>
+      )}
     </View>
   );
 }

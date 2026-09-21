@@ -9,6 +9,9 @@ import { ensureSittings } from "./exams";
 import type { ExamKind } from "./constants";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
+import type { CardCoScholastic, CardSubject, GradeBand, ReportCardLayout } from "@edulink/contracts";
+import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, type PaperPart } from "./report-card-rules";
+import { readReportCardConfig } from "./report-card-config";
 
 /**
  * Report cards.
@@ -60,6 +63,9 @@ export type CardItem = {
   category: string | null;
   scoreMilli: number | null;
   pointsMilli: number | null;
+  subject: string | null;
+  /** The paper's own band on the scale the card was built with. */
+  letter: string | null;
 };
 
 export type Card = {
@@ -81,8 +87,27 @@ export type Card = {
   publishedAt: Date | null;
   authorName: string | null;
   items: CardItem[];
-  school: { name: string; logoPath: string | null };
+  school: {
+    name: string;
+    logoPath: string | null;
+    addressLine: string | null;
+    city: string | null;
+    region: string | null;
+    postalCode: string | null;
+    contactPhone: string | null;
+    contactEmail: string | null;
+    website: string | null;
+    brandPrimary: string | null;
+  };
   practice: PracticeAnnexureRow[] | null;
+  /** The configurable card: subject rows with bands, the overall band and points, the class teacher's co-scholastic grades, and the scale and layout the card was built with. */
+  subjects: CardSubject[];
+  overallLetter: string | null;
+  gradePoints: number | null;
+  coScholastic: CardCoScholastic[];
+  scale: { bands: GradeBand[]; coScale: { label: string; descriptor: string | null }[] };
+  layout: ReportCardLayout;
+  scope: "TERM" | "YEAR" | "PAPERS";
 };
 
 /**
@@ -234,7 +259,8 @@ export async function assessmentsFor(
 
 export type GenerateInput = {
   title: string;
-  assignmentIds: string[];
+  /** Hand-picked papers; may be empty when a term or the year names them. */
+  assignmentIds?: string[];
   fromDateKey?: string;
   toDateKey?: string;
   /**
@@ -243,6 +269,11 @@ export type GenerateInput = {
    * typed alongside is ignored — the term is the authority on both.
    */
   termId?: string | null;
+  /**
+   * THE ANNUAL CARD: every paper of every term of the year, each subject's
+   * terms combined by the terms' weights. The year's dates are the window.
+   */
+  academicYearId?: string | null;
 };
 
 /** ⚠ `errorKey`, not a sentence — the leave.ts pattern. The action boundary
@@ -263,13 +294,22 @@ export async function generateCards(
   await assertMayWriteCards(ctx, classId);
 
   const term = input.termId
-    ? await db.term.findFirst({ where: { id: input.termId, schoolId: ctx.schoolId! }, select: { id: true, name: true, startDate: true, endDate: true } })
+    ? await db.term.findFirst({ where: { id: input.termId, schoolId: ctx.schoolId! }, select: { id: true, name: true, startDate: true, endDate: true, academicYearId: true } })
     : null;
   if (input.termId && !term) return { ok: false, errorKey: "terms.notFound" };
+  const year = !term && input.academicYearId
+    ? await db.academicYear.findFirst({
+        where: { id: input.academicYearId, schoolId: ctx.schoolId! },
+        select: { id: true, name: true, startDate: true, endDate: true, terms: { select: { id: true, name: true, weightPercent: true }, orderBy: { startDate: "asc" } } },
+      })
+    : null;
+  if (!term && input.academicYearId && !year) return { ok: false, errorKey: "access.academicYearNotFound" };
 
-  const title = (term ? term.name : input.title).trim().slice(0, 120);
+  const typedTitle = input.title.trim().slice(0, 120);
+  const title = term ? term.name : year && typedTitle.length < 2 ? year.name : typedTitle;
   if (title.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
-  if (input.assignmentIds.length === 0) {
+  const pickedIds = (input.assignmentIds ?? []).slice(0, 100);
+  if (pickedIds.length === 0 && !term && !year) {
     return { ok: false, errorKey: "reportCards.chooseOne" };
   }
 
@@ -277,26 +317,44 @@ export async function generateCards(
     where: { id: ctx.schoolId! },
     select: { timezone: true },
   });
+  const config = await readReportCardConfig(ctx.schoolId!);
   // Re-queried against THIS class. An assignment id from another class — or
   // another school — is simply not found, so a forged form cannot put somebody
   // else's test on this school's report cards.
   // …and an EXAM paper. A homework id smuggled into the form is dropped here:
   // the card is the exam record, and the grades page is where homework lives.
+  // A term or the year names its own papers — every scheduled paper of a
+  // series reporting into it — when none are picked. Picked papers are the
+  // teacher's list as it stands: the term then fixes only the title and the
+  // window, as it always did.
+  const termIds = pickedIds.length === 0 ? (term ? [term.id] : year ? year.terms.map((t) => t.id) : null) : null;
   const assignments = await db.assignment.findMany({
     where: {
-      id: { in: input.assignmentIds.slice(0, 100) },
+      ...(pickedIds.length > 0 ? { id: { in: pickedIds } } : {}),
       schoolId: ctx.schoolId!,
       classId,
       examSlotId: { not: null },
+      examSlot: { series: { archivedAt: null, ...(termIds ? { termId: { in: termIds } } : {}) } },
     },
-    select: { id: true, title: true, category: true, pointsMilli: true },
+    select: {
+      id: true,
+      title: true,
+      category: true,
+      pointsMilli: true,
+      examSlot: { select: { subject: true, position: true, series: { select: { name: true, kind: true, termId: true, createdAt: true } } } },
+    },
   });
   if (assignments.length === 0) {
-    return { ok: false, errorKey: "reportCards.notThisClass" };
+    return { ok: false, errorKey: termIds ? "reportCards.noPapersInTerm" : "reportCards.notThisClass" };
   }
-  // Keep the teacher's chosen order rather than the database's.
-  const order = new Map(input.assignmentIds.map((id, index) => [id, index]));
-  assignments.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
+  // Keep the teacher's chosen order rather than the database's; a term's own
+  // menu reads in the order the papers were sat.
+  if (pickedIds.length > 0) {
+    const order = new Map(pickedIds.map((id, index) => [id, index]));
+    assignments.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
+  } else {
+    assignments.sort((a, b) => a.examSlot!.series.createdAt.getTime() - b.examSlot!.series.createdAt.getTime() || a.examSlot!.position - b.examSlot!.position);
+  }
 
   /**
    * THE CARD'S PERIOD IS THE EXAM'S, NOT TODAY'S. A card generated a week
@@ -320,9 +378,11 @@ export async function generateCards(
     orderBy: { startDate: "desc" },
     select: { startDate: true },
   });
-  const toDateKey = term ? term.endDate.toISOString().slice(0, 10) : (input.toDateKey ?? lastPaper);
+  const toDateKey = term ? term.endDate.toISOString().slice(0, 10) : year ? year.endDate.toISOString().slice(0, 10) : (input.toDateKey ?? lastPaper);
   const fromDateKey = term
     ? term.startDate.toISOString().slice(0, 10)
+    : year
+    ? year.startDate.toISOString().slice(0, 10)
     : input.fromDateKey ??
     (yearOfPapers && yearOfPapers.startDate.toISOString().slice(0, 10) <= firstPaper
       ? yearOfPapers.startDate.toISOString().slice(0, 10)
@@ -433,10 +493,56 @@ export async function generateCards(
      * one hand and a calculator in the other. */
     const scored = entries.reduce((a, e) => a + e.scoreMilli, 0);
     const max = entries.reduce((a, e) => a + e.maxMilli, 0);
-    const overall = {
-      percent: max > 0 ? (scored / max) * 100 : null,
-      method: "exams",
-    };
+
+    /* THE SUBJECT ROWS. Each subject's papers combined by the weight of their
+     * kind inside the term (report-card-rules.ts), and on the annual card each
+     * term's result combined by the term's share of the year. When the school
+     * weights nothing, the row is marks over maximum and the overall stays the
+     * flat figure above. */
+    const bySubject = new Map<string, typeof assignments>();
+    for (const a of assignments) {
+      const list = bySubject.get(a.examSlot!.subject) ?? [];
+      list.push(a);
+      bySubject.set(a.examSlot!.subject, list);
+    }
+    const partOf = (a: (typeof assignments)[number]): PaperPart => ({
+      label: a.examSlot!.series.name,
+      kind: a.examSlot!.series.kind,
+      scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
+      pointsMilli: a.pointsMilli,
+    });
+    let weighted = false;
+    const subjects: CardSubject[] = [];
+    for (const [subject, papers] of bySubject) {
+      let percent: number | null;
+      let parts: CardSubject["parts"];
+      if (year) {
+        const termParts = year.terms
+          .map((t) => {
+            const own = papers.filter((p) => p.examSlot!.series.termId === t.id);
+            if (own.length === 0) return null;
+            const w = kindWeighted(own.map(partOf), config.kindWeights);
+            return { termId: t.id, name: t.name, percent: w.percent, weightPercent: t.weightPercent };
+          })
+          .filter((t): t is NonNullable<typeof t> => t !== null);
+        const combined = combineTerms(termParts);
+        percent = combined.percent;
+        parts = combined.parts.map((p) => ({ label: p.name, kind: "TERM", scoreMilli: null, pointsMilli: null, percent: p.percent, weight: p.weight }));
+        weighted = true;
+      } else {
+        const w = kindWeighted(papers.map(partOf), config.kindWeights);
+        percent = w.percent;
+        parts = w.parts;
+        if (w.method === "weighted") weighted = true;
+      }
+      const band = bandFor(percent, config.bands);
+      subjects.push({ subject, percent, letter: band?.label ?? null, points: band?.points ?? null, parts });
+    }
+    const overall = weighted
+      ? { percent: meanPercent(subjects), method: "weighted" }
+      : { percent: max > 0 ? (scored / max) * 100 : null, method: "exams" };
+    const overallBand = bandFor(overall.percent, config.bands);
+    const points = meanPoints(subjects);
 
     const data = {
       schoolId: ctx.schoolId!,
@@ -452,6 +558,12 @@ export async function generateCards(
       overallPercentMilli:
         overall.percent === null ? null : Math.round(overall.percent * 1000),
       gradingMethod: overall.method,
+      academicYearId: term?.academicYearId ?? year?.id ?? null,
+      overallLetter: overallBand?.label ?? null,
+      gradePointsMilli: points === null ? null : Math.round(points * 1000),
+      subjects: JSON.stringify(subjects),
+      scale: JSON.stringify({ bands: config.bands, coScale: config.coScholastic.scale }),
+      layout: JSON.stringify(config.layout),
       practice: (() => {
         const rows = practiceBy.get(row.studentMembershipId);
         return rows && rows.length > 0 ? JSON.stringify(rows) : null;
@@ -469,18 +581,27 @@ export async function generateCards(
     // Items are REPLACED wholesale rather than reconciled. They are a snapshot,
     // so there is nothing to preserve — and a diff would be a way for a stale
     // row from a previous selection to survive onto the new card.
-    await db.reportCardItem.deleteMany({ where: { reportCardId: card.id } });
+    // …except the class teacher's co-scholastic grades, which are not a
+    // snapshot of anything: they were typed on this card and stay on it.
+    await db.reportCardItem.deleteMany({ where: { reportCardId: card.id, kind: "SCHOLASTIC" } });
     await db.reportCardItem.createMany({
-      data: assignments.map((a, position) => ({
-        schoolId: ctx.schoolId!,
-        reportCardId: card.id,
-        assignmentId: a.id,
-        title: a.title,
-        category: a.category,
-        scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
-        pointsMilli: a.pointsMilli,
-        position,
-      })),
+      data: assignments.map((a, position) => {
+        const scoreMilli = gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null;
+        const paperPercent = scoreMilli !== null && a.pointsMilli ? (scoreMilli / a.pointsMilli) * 100 : null;
+        return {
+          schoolId: ctx.schoolId!,
+          reportCardId: card.id,
+          assignmentId: a.id,
+          title: a.title,
+          category: a.category,
+          scoreMilli,
+          pointsMilli: a.pointsMilli,
+          position,
+          subject: a.examSlot!.subject,
+          kind: "SCHOLASTIC",
+          letter: bandFor(paperPercent, config.bands)?.label ?? null,
+        };
+      }),
     });
   }
 
@@ -490,10 +611,50 @@ export async function generateCards(
     action: "reportCard.generate",
     targetType: "Class",
     targetId: classId,
-    meta: { title, created, updated, skippedPublished, assessments: assignments.length },
+    meta: { title, created, updated, skippedPublished, assessments: assignments.length, scope: term ? "TERM" : year ? "YEAR" : "PAPERS" },
   });
 
   return { ok: true, created, updated, skippedPublished };
+}
+
+/**
+ * The class teacher's co-scholastic grades on one draft card: an area from
+ * the school's list, a grade from its scale, a note. Replaced as a set.
+ */
+export async function setCoScholastic(
+  ctx: ActiveContext,
+  cardId: string,
+  grades: { area: string; grade: string | null; note?: string }[],
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  const card = await db.reportCard.findFirst({
+    where: { id: cardId, schoolId: ctx.schoolId ?? "" },
+    select: { id: true, classId: true, status: true },
+  });
+  if (!card) return { ok: false, errorKey: "reportCards.notInSchool" };
+  await assertMayWriteCards(ctx, card.classId);
+  if (card.status === "PUBLISHED") return { ok: false, errorKey: "reportCards.publishedLocked" };
+
+  const config = await readReportCardConfig(ctx.schoolId!);
+  const areaOf = new Map(config.coScholastic.areas.map((a) => [a.toLowerCase(), a]));
+  const gradeOf = new Map(config.coScholastic.scale.map((g) => [g.label.toLowerCase(), g.label]));
+  const rows: { area: string; grade: string | null; note: string | null }[] = [];
+  for (const g of grades) {
+    const area = areaOf.get(g.area.trim().toLowerCase());
+    if (!area) return { ok: false, errorKey: "reportCards.notAnArea" };
+    const grade = g.grade === null || g.grade.trim() === "" ? null : gradeOf.get(g.grade.trim().toLowerCase());
+    if (grade === undefined) return { ok: false, errorKey: "reportCards.notAGrade" };
+    if (rows.some((r) => r.area === area)) continue;
+    rows.push({ area, grade, note: g.note?.trim().slice(0, 200) || null });
+  }
+
+  await db.reportCardItem.deleteMany({ where: { reportCardId: card.id, kind: "CO_SCHOLASTIC" } });
+  if (rows.length > 0) {
+    await db.reportCardItem.createMany({
+      data: rows.map((r, position) => ({ schoolId: ctx.schoolId!, reportCardId: card.id, title: r.area, kind: "CO_SCHOLASTIC", letter: r.grade, comment: r.note, position })),
+    });
+  }
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "reportCard.coScholastic", targetType: "ReportCard", targetId: card.id, meta: { areas: rows.length } });
+  return { ok: true };
 }
 
 /** The class teacher's words on one card. Drafts only. */
@@ -642,7 +803,9 @@ export async function cardsForClass(ctx: ActiveContext, classId: string, title?:
       attendancePresent: true,
       attendanceTotal: true,
       studentMembershipId: true,
+      overallLetter: true,
       student: { select: { user: { select: { name: true, preferredName: true } } } },
+      items: { where: { kind: "CO_SCHOLASTIC" }, orderBy: { position: "asc" }, select: { title: true, letter: true, comment: true } },
     },
     take: 500,
   });
@@ -681,12 +844,19 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       gradingMethod: true,
       practice: true,
       publishedAt: true,
+      termId: true,
+      academicYearId: true,
+      overallLetter: true,
+      gradePointsMilli: true,
+      subjects: true,
+      scale: true,
+      layout: true,
       class: { select: { name: true, section: true } },
       student: { select: { user: { select: { name: true, preferredName: true } } } },
       createdBy: { select: { user: { select: { name: true, preferredName: true } } } },
       items: {
         orderBy: { position: "asc" },
-        select: { title: true, category: true, scoreMilli: true, pointsMilli: true },
+        select: { title: true, category: true, scoreMilli: true, pointsMilli: true, subject: true, kind: true, letter: true, comment: true },
       },
     },
   });
@@ -697,8 +867,20 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: card.schoolId },
-    select: { name: true, logoPath: true },
+    select: { name: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, website: true, brandPrimary: true },
   });
+  const letterhead = school;
+  // A card built before the rules existed reads the school's rules of today;
+  // one built since keeps the snapshot it was issued with.
+  const current = await readReportCardConfig(card.schoolId);
+  const parseJson = <T,>(raw: string | null, fallback: T): T => {
+    if (!raw) return fallback;
+    try {
+      return JSON.parse(raw) as T;
+    } catch {
+      return fallback;
+    }
+  };
 
   return {
     id: card.id,
@@ -726,8 +908,15 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     authorName: card.createdBy
       ? (card.createdBy.user.preferredName ?? card.createdBy.user.name)
       : null,
-    items: card.items,
-    school,
+    items: card.items.filter((i) => i.kind !== "CO_SCHOLASTIC").map((i) => ({ title: i.title, category: i.category, scoreMilli: i.scoreMilli, pointsMilli: i.pointsMilli, subject: i.subject, letter: i.letter })),
+    school: letterhead,
+    subjects: parseJson<CardSubject[]>(card.subjects, []),
+    overallLetter: card.overallLetter,
+    gradePoints: card.gradePointsMilli === null ? null : card.gradePointsMilli / 1000,
+    coScholastic: card.items.filter((i) => i.kind === "CO_SCHOLASTIC").map((i) => ({ area: i.title, grade: i.letter, note: i.comment })),
+    scale: parseJson(card.scale, { bands: current.bands, coScale: current.coScholastic.scale }),
+    layout: { ...DEFAULT_LAYOUT, ...parseJson<Partial<ReportCardLayout>>(card.layout, current.layout) },
+    scope: card.termId ? "TERM" : card.academicYearId ? "YEAR" : "PAPERS",
     practice: (() => {
       if (!card.practice) return null;
       try {

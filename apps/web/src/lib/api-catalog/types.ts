@@ -81,6 +81,11 @@ export type SweepFixture = {
   /** A slot today whose teacher is away today, and a colleague who is in and free for it; null on a day with no board. */
   substitutionSlotId: string | null;
   substituteMembershipId: string | null;
+  /** A published card, a draft one (for the co-scholastic write), the title of the published set, and the school's current rules as a body to send back. */
+  reportCardId: string | null;
+  draftReportCardId: string | null;
+  reportCardTitle: string | null;
+  reportCardConfig: Record<string, unknown> | null;
   todayKey: string;
 };
 

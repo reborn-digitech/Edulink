@@ -46,6 +46,22 @@ async function substitutionFixture(s: string): Promise<{ substitutionSlotId: str
   return { substitutionSlotId: cover?.slotId ?? null, substituteMembershipId: cover?.substituteMembershipId ?? null };
 }
 
+/** The ZZ report cards: a published Term 1 set and a draft set, and the school's rules read back as a body. */
+async function reportCardFixture(s: string): Promise<{ reportCardId: string | null; draftReportCardId: string | null; reportCardTitle: string | null; reportCardConfig: Record<string, unknown> | null }> {
+  const [published, draft, school] = await Promise.all([
+    db.reportCard.findFirst({ where: { schoolId: s, status: "PUBLISHED" }, orderBy: { createdAt: "asc" }, select: { id: true, title: true } }),
+    db.reportCard.findFirst({ where: { schoolId: s, status: "DRAFT" }, orderBy: { createdAt: "asc" }, select: { id: true } }),
+    db.school.findUnique({ where: { id: s }, select: { reportCardConfig: true } }),
+  ]);
+  let config: Record<string, unknown> | null = null;
+  try {
+    config = school?.reportCardConfig ? (JSON.parse(school.reportCardConfig) as Record<string, unknown>) : null;
+  } catch {
+    config = null;
+  }
+  return { reportCardId: published?.id ?? null, draftReportCardId: draft?.id ?? null, reportCardTitle: published?.title ?? null, reportCardConfig: config };
+}
+
 async function fixture(): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   const s = school.id;
@@ -88,6 +104,7 @@ async function fixture(): Promise<SweepFixture> {
     syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
     lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
     ...(await substitutionFixture(s)),
+    ...(await reportCardFixture(s)),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }

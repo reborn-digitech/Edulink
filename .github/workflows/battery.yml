@@ -103,7 +103,7 @@ jobs:
 
       - name: Typecheck
         working-directory: apps/web
-        run: npx tsc --noEmit && npx tsc --noEmit -p scripts/tsconfig.json
+        run: NODE_OPTIONS=--max-old-space-size=4096 npx tsc --noEmit && NODE_OPTIONS=--max-old-space-size=4096 npx tsc --noEmit -p scripts/tsconfig.json
       - name: Packages
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
       - name: Mobile battery · tsc, eslint, jest with the lib coverage gate, the Maestro flow check

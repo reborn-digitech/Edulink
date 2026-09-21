@@ -1,5 +1,6 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
-import { staffClassesSchema, teachingCardRemarkSchema, teachingCardsTitleSchema, teachingGenerateCardsSchema, teachingReportCardsSchema } from "@edulink/contracts";
+import * as Sharing from "expo-sharing";
+import { coScholasticSaveSchema, staffClassesSchema, teachingCardRemarkSchema, teachingCardsTitleSchema, teachingGenerateCardsSchema, teachingReportCardsSchema } from "@edulink/contracts";
 import { ToastProvider } from "@/components";
 import { ReportCardBuilder } from "@/screens/teacher/report-cards";
 import { gated, json, mountStaff, refused } from "./staff-harness";
@@ -13,6 +14,7 @@ const P2 = "czz0000000000000000pa2";
 const CARD1 = "czz0000000000000000ca1";
 const CARD2 = "czz0000000000000000ca2";
 const TERM1 = "czz0000000000000000te1";
+const YEAR1 = "czz0000000000000000ye1";
 const BASE = `/api/v1/teaching/classes/${ID.class1}/report-cards`;
 
 const BUILDER = teachingReportCardsSchema.parse({
@@ -25,13 +27,18 @@ const BUILDER = teachingReportCardsSchema.parse({
   titles: [],
   selectedTitle: null,
   cards: [],
+  academicYear: { id: YEAR1, name: "ZZ 2026–27" },
+  coScholastic: { areas: ["ZZ Discipline", "ZZ Art"], scale: [{ label: "A", descriptor: "Outstanding" }, { label: "B", descriptor: null }] },
 });
 const card = (id: string, studentName: string, extra: Record<string, unknown> = {}) => ({ id, title: "ZZ Term 1", status: "DRAFT", remark: null, overallPercentMilli: null, attendancePresent: 0, attendanceTotal: 0, studentName, ...extra });
 const WITH_CARDS = teachingReportCardsSchema.parse({
   ...BUILDER,
   titles: ["ZZ Term 1", "ZZ Term 0"],
   selectedTitle: "ZZ Term 1",
-  cards: [card(CARD1, "ZZ Asha", { overallPercentMilli: 81_500, attendancePresent: 40, attendanceTotal: 42 }), card(CARD2, "ZZ Bhavesh", { remark: "ZZ A steady term." })],
+  cards: [
+    card(CARD1, "ZZ Asha", { overallPercentMilli: 81_500, overallLetter: "A2", attendancePresent: 40, attendanceTotal: 42, coScholastic: [{ area: "ZZ Discipline", grade: "B", note: null }] }),
+    card(CARD2, "ZZ Bhavesh", { remark: "ZZ A steady term.", coScholastic: [{ area: "ZZ Discipline", grade: "A", note: "ZZ Always on time." }] }),
+  ],
 });
 const PUBLISHED = teachingReportCardsSchema.parse({ ...WITH_CARDS, cards: WITH_CARDS.cards.map((c) => ({ ...c, status: "PUBLISHED" })) });
 
@@ -44,6 +51,7 @@ const builder = () => (
 beforeEach(() => {
   mockRouter.push.mockClear();
   mockRouter.params = { classId: ID.class1 };
+  (Sharing.shareAsync as jest.Mock).mockClear();
 });
 
 describe("the report-card builder", () => {
@@ -83,17 +91,82 @@ describe("the report-card builder", () => {
     await waitFor(() => expect(calls().some((c) => c.line === `GET ${BASE}?title=ZZ%20Term%201`)).toBe(true));
   });
 
-  it("a term fixes the title and ticks its own papers", async () => {
+  it("built from a term, the term fixes the title and names its own papers: none are sent", async () => {
     const { calls } = await mountStaff(builder(), "TEACHER", {
       [`GET ${BASE}`]: () => json(BUILDER),
       [`POST ${BASE}/generate`]: () => json({ created: 2, updated: 0, skippedPublished: 0 }),
     });
-    await fireEvent.press(await screen.findByRole("radio", { name: "ZZ Term 1 · 2 in this term" }));
+    await fireEvent.press(await screen.findByRole("radio", { name: "Build from a term" }));
+    // Nothing to tick, and nothing to build until a term is picked.
+    expect(screen.queryByRole("checkbox", { name: /^ZZ Maths/ })).toBeNull();
+    expect(screen.getByRole("button", { name: "Generate for the class" })).toBeDisabled();
+    await fireEvent.press(screen.getByRole("radio", { name: "ZZ Term 1 · 2 in this term" }));
     expect(screen.getByLabelText("What this report is called")).toHaveDisplayValue("ZZ Term 1");
     expect(screen.getByLabelText("What this report is called")).not.toBeEnabled();
     await fireEvent.press(screen.getByRole("button", { name: "Generate for the class" }));
     await screen.findByText("2 drafts ready");
-    expect(calls().find((c) => c.line === `POST ${BASE}/generate`)?.body).toEqual({ title: "ZZ Term 1", assignmentIds: [P1, P2], termId: TERM1 });
+    expect(teachingGenerateCardsSchema.parse(calls().find((c) => c.line === `POST ${BASE}/generate`)!.body)).toEqual({ title: "ZZ Term 1", assignmentIds: [], termId: TERM1 });
+  });
+
+  it("the annual card takes the year's name and sends the year; without a year it says so and builds nothing", async () => {
+    const { calls } = await mountStaff(builder(), "TEACHER", {
+      [`GET ${BASE}`]: () => json(BUILDER),
+      [`POST ${BASE}/generate`]: () => json({ created: 2, updated: 0, skippedPublished: 0 }),
+    });
+    await fireEvent.press(await screen.findByRole("radio", { name: "Build the annual card" }));
+    expect(screen.getByText("Annual card: every term of ZZ 2026–27, combined by the terms' shares")).toBeTruthy();
+    expect(screen.getByLabelText("What this report is called")).toHaveDisplayValue("ZZ 2026–27");
+    await fireEvent.changeText(screen.getByLabelText("What this report is called"), "ZZ Annual");
+    await fireEvent.press(screen.getByRole("button", { name: "Generate for the class" }));
+    await screen.findByText("2 drafts ready");
+    expect(teachingGenerateCardsSchema.parse(calls().find((c) => c.line === `POST ${BASE}/generate`)!.body)).toEqual({ title: "ZZ Annual", assignmentIds: [], academicYearId: YEAR1 });
+
+    await mountStaff(builder(), "TEACHER", { [`GET ${BASE}`]: () => json({ ...BUILDER, academicYear: null }) });
+    await fireEvent.press(await screen.findByRole("radio", { name: "Build the annual card" }));
+    expect(screen.getByText("No academic year is set up, so there is no annual card to build.")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Generate for the class" })).toBeDisabled();
+    // Back to the papers: the checkboxes return.
+    await fireEvent.press(screen.getByRole("radio", { name: "Pick the papers yourself" }));
+    expect(screen.getByRole("checkbox", { name: /^ZZ Maths/ })).toBeTruthy();
+  });
+
+  it("each draft's co-scholastic areas are graded on the school's scale with a note and saved together; a set with no areas says so", async () => {
+    const { calls } = await mountStaff(builder(), "TEACHER", {
+      [`GET ${BASE}`]: () => json(WITH_CARDS),
+      [`POST ${BASE}/co-scholastic`]: () => json({ ok: true }),
+    });
+    await screen.findByText("3. Review and publish — ZZ Term 1");
+    // The letter sits beside the percent.
+    expect(screen.getByText("81.5% · A2 · 40 of 42 days")).toBeTruthy();
+    expect(screen.getByLabelText("Note: ZZ Discipline — ZZ Bhavesh")).toHaveDisplayValue("ZZ Always on time.");
+    expect(screen.queryByRole("button", { name: "Save" })).toBeNull();
+    await fireEvent.press(screen.getAllByRole("radio", { name: "A · Outstanding" })[0]!);
+    await fireEvent.changeText(screen.getByLabelText("Note: ZZ Art — ZZ Asha"), "ZZ Paints well.");
+    await fireEvent.press(screen.getByRole("button", { name: "Save" }));
+    expect(await screen.findByText("Co-scholastic grades saved.")).toBeTruthy();
+    expect(coScholasticSaveSchema.parse(calls().find((c) => c.line === `POST ${BASE}/co-scholastic`)!.body)).toEqual({
+      cardId: CARD1,
+      grades: [
+        { area: "ZZ Discipline", grade: "A" },
+        { area: "ZZ Art", grade: null, note: "ZZ Paints well." },
+      ],
+    });
+
+    await mountStaff(builder(), "TEACHER", { [`GET ${BASE}`]: () => json({ ...WITH_CARDS, coScholastic: { areas: [], scale: [] } }) });
+    await screen.findByText("3. Review and publish — ZZ Term 1");
+    expect(screen.getAllByText("The office has not set any co-scholastic areas.")).toHaveLength(2);
+  });
+
+  it("the whole set downloads as one PDF and goes to the share sheet", async () => {
+    const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
+    const { calls } = await mountStaff(builder(), "TEACHER", {
+      [`GET ${BASE}`]: () => json(WITH_CARDS),
+      [`GET ${BASE}/pdf`]: () => new Response(pdf, { status: 200, headers: { "content-type": "application/pdf" } }),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "Download every card as one PDF" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls().some((c) => c.line === `GET ${BASE}/pdf?title=ZZ%20Term%201`)).toBe(true);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/ZZ Term 1 - ZZ 5A\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" }));
   });
 
   it("the drafts take a remark each, then publish together after a second tap", async () => {
@@ -105,7 +178,7 @@ describe("the report-card builder", () => {
     await screen.findByText("3. Review and publish — ZZ Term 1");
     expect(screen.getByLabelText("Draft: 2")).toBeTruthy();
     expect(screen.getByLabelText("Published: 0")).toBeTruthy();
-    expect(screen.getByText("81.5% · 40 of 42 days")).toBeTruthy();
+    expect(screen.getByText("81.5% · A2 · 40 of 42 days")).toBeTruthy();
     expect(screen.getByText("No marks yet")).toBeTruthy();
     expect(screen.getByLabelText("Remark for ZZ Bhavesh")).toHaveDisplayValue("ZZ A steady term.");
     expect(screen.queryByRole("button", { name: "Save remark" })).toBeNull();

@@ -18680,6 +18680,14 @@
                           "pointsMilli": {
                             "type": "integer",
                             "nullable": true
+                          },
+                          "subject": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "letter": {
+                            "type": "string",
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -18698,6 +18706,38 @@
                           "type": "string"
                         },
                         "logoPath": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "region": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactEmail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "website": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "brandPrimary": {
                           "type": "string",
                           "nullable": true
                         }
@@ -18735,6 +18775,257 @@
                         "additionalProperties": false
                       },
                       "nullable": true
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "subject": {
+                            "type": "string"
+                          },
+                          "percent": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "letter": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "points": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "parts": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string"
+                                },
+                                "kind": {
+                                  "type": "string"
+                                },
+                                "scoreMilli": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "pointsMilli": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "percent": {
+                                  "type": "number",
+                                  "nullable": true
+                                },
+                                "weight": {
+                                  "type": "number",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "label",
+                                "kind",
+                                "scoreMilli",
+                                "pointsMilli",
+                                "percent",
+                                "weight"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "subject",
+                          "percent",
+                          "letter",
+                          "points",
+                          "parts"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "overallLetter": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "gradePoints": {
+                      "type": "number",
+                      "nullable": true
+                    },
+                    "coScholastic": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "area": {
+                            "type": "string"
+                          },
+                          "grade": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "area",
+                          "grade",
+                          "note"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "scale": {
+                      "type": "object",
+                      "properties": {
+                        "bands": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 12
+                              },
+                              "minPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100
+                              },
+                              "points": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 10,
+                                "nullable": true
+                              },
+                              "descriptor": {
+                                "type": "string",
+                                "maxLength": 60,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "minPercent",
+                              "points",
+                              "descriptor"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "coScale": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "$ref": "#/properties/scale/properties/bands/items/properties/label"
+                              },
+                              "descriptor": {
+                                "type": "string",
+                                "maxLength": 60,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "descriptor"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "bands",
+                        "coScale"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showAttendance": {
+                          "type": "boolean"
+                        },
+                        "showPractice": {
+                          "type": "boolean"
+                        },
+                        "showCoScholastic": {
+                          "type": "boolean"
+                        },
+                        "showGradePoints": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "showSignatures": {
+                          "type": "boolean"
+                        },
+                        "showRemark": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "headerNote": {
+                          "type": "string",
+                          "maxLength": 160,
+                          "nullable": true
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showAttendance",
+                        "showPractice",
+                        "showCoScholastic",
+                        "showGradePoints",
+                        "showAddress",
+                        "showSignatures",
+                        "showRemark",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "headerNote",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "scope": {
+                      "type": "string",
+                      "enum": [
+                        "TERM",
+                        "YEAR",
+                        "PAPERS"
+                      ]
+                    },
+                    "pdfPath": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -30802,6 +31093,35 @@
                           },
                           "studentName": {
                             "type": "string"
+                          },
+                          "overallLetter": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "coScholastic": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "area": {
+                                  "type": "string"
+                                },
+                                "grade": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "note": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "area",
+                                "grade",
+                                "note"
+                              ],
+                              "additionalProperties": false
+                            }
                           }
                         },
                         "required": [
@@ -30816,6 +31136,59 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "academicYear": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "coScholastic": {
+                      "type": "object",
+                      "properties": {
+                        "areas": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "scale": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string"
+                              },
+                              "descriptor": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "descriptor"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "areas",
+                        "scale"
+                      ],
+                      "additionalProperties": false
                     }
                   },
                   "required": [
@@ -31003,10 +31376,18 @@
                       "type": "string",
                       "pattern": "^c[a-z0-9]{20,}$"
                     },
-                    "minItems": 1,
-                    "maxItems": 100
+                    "maxItems": 100,
+                    "default": []
                   },
                   "termId": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/assignmentIds/items"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "academicYearId": {
                     "allOf": [
                       {
                         "$ref": "#/properties/assignmentIds/items"
@@ -31016,8 +31397,7 @@
                   }
                 },
                 "required": [
-                  "title",
-                  "assignmentIds"
+                  "title"
                 ],
                 "additionalProperties": false
               }
@@ -51413,6 +51793,1199 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/office/report-card-config": {
+      "get": {
+        "summary": "The report card rules: grading scale, co-scholastic areas and scale, exam-kind weights, layout; with the presets and the year's terms and their weights",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preset": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "bands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 12
+                          },
+                          "minPercent": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "points": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10,
+                            "nullable": true
+                          },
+                          "descriptor": {
+                            "type": "string",
+                            "maxLength": 60,
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "minPercent",
+                          "points",
+                          "descriptor"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 12
+                    },
+                    "coScholastic": {
+                      "type": "object",
+                      "properties": {
+                        "areas": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 40
+                          },
+                          "maxItems": 20
+                        },
+                        "scale": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "$ref": "#/properties/bands/items/properties/label"
+                              },
+                              "descriptor": {
+                                "type": "string",
+                                "maxLength": 60,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "descriptor"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8
+                        }
+                      },
+                      "required": [
+                        "areas",
+                        "scale"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "kindWeights": {
+                      "type": "object",
+                      "properties": {
+                        "UNIT_TEST": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        },
+                        "MID_TERM": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        },
+                        "FINAL": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        }
+                      },
+                      "required": [
+                        "UNIT_TEST",
+                        "MID_TERM",
+                        "FINAL"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showAttendance": {
+                          "type": "boolean"
+                        },
+                        "showPractice": {
+                          "type": "boolean"
+                        },
+                        "showCoScholastic": {
+                          "type": "boolean"
+                        },
+                        "showGradePoints": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "showSignatures": {
+                          "type": "boolean"
+                        },
+                        "showRemark": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "headerNote": {
+                          "type": "string",
+                          "maxLength": 160,
+                          "nullable": true
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showAttendance",
+                        "showPractice",
+                        "showCoScholastic",
+                        "showGradePoints",
+                        "showAddress",
+                        "showSignatures",
+                        "showRemark",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "headerNote",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "presets": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "bands": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/bands/items"
+                            }
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "name",
+                          "bands"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "terms": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "weightPercent": {
+                            "type": "integer",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "weightPercent"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "preset",
+                    "bands",
+                    "coScholastic",
+                    "kindWeights",
+                    "layout",
+                    "presets",
+                    "terms"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Replace the report card rules; cards already built keep the rules they were built with",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "preset": {
+                      "type": "string",
+                      "maxLength": 20
+                    },
+                    "bands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 12
+                          },
+                          "minPercent": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100
+                          },
+                          "points": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10,
+                            "nullable": true
+                          },
+                          "descriptor": {
+                            "type": "string",
+                            "maxLength": 60,
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "minPercent",
+                          "points",
+                          "descriptor"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 12
+                    },
+                    "coScholastic": {
+                      "type": "object",
+                      "properties": {
+                        "areas": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 40
+                          },
+                          "maxItems": 20
+                        },
+                        "scale": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "$ref": "#/properties/bands/items/properties/label"
+                              },
+                              "descriptor": {
+                                "type": "string",
+                                "maxLength": 60,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "label",
+                              "descriptor"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 8
+                        }
+                      },
+                      "required": [
+                        "areas",
+                        "scale"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "kindWeights": {
+                      "type": "object",
+                      "properties": {
+                        "UNIT_TEST": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        },
+                        "MID_TERM": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        },
+                        "FINAL": {
+                          "$ref": "#/properties/bands/items/properties/minPercent"
+                        }
+                      },
+                      "required": [
+                        "UNIT_TEST",
+                        "MID_TERM",
+                        "FINAL"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showAttendance": {
+                          "type": "boolean"
+                        },
+                        "showPractice": {
+                          "type": "boolean"
+                        },
+                        "showCoScholastic": {
+                          "type": "boolean"
+                        },
+                        "showGradePoints": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "showSignatures": {
+                          "type": "boolean"
+                        },
+                        "showRemark": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "headerNote": {
+                          "type": "string",
+                          "maxLength": 160,
+                          "nullable": true
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showAttendance",
+                        "showPractice",
+                        "showCoScholastic",
+                        "showGradePoints",
+                        "showAddress",
+                        "showSignatures",
+                        "showRemark",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "headerNote",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "preset",
+                    "bands",
+                    "coScholastic",
+                    "kindWeights",
+                    "layout"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "preset": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "bands": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 12
+                        },
+                        "minPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100
+                        },
+                        "points": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 10,
+                          "nullable": true
+                        },
+                        "descriptor": {
+                          "type": "string",
+                          "maxLength": 60,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "minPercent",
+                        "points",
+                        "descriptor"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 12
+                  },
+                  "coScholastic": {
+                    "type": "object",
+                    "properties": {
+                      "areas": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "maxItems": 20
+                      },
+                      "scale": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "$ref": "#/properties/bands/items/properties/label"
+                            },
+                            "descriptor": {
+                              "type": "string",
+                              "maxLength": 60,
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "descriptor"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "maxItems": 8
+                      }
+                    },
+                    "required": [
+                      "areas",
+                      "scale"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "kindWeights": {
+                    "type": "object",
+                    "properties": {
+                      "UNIT_TEST": {
+                        "$ref": "#/properties/bands/items/properties/minPercent"
+                      },
+                      "MID_TERM": {
+                        "$ref": "#/properties/bands/items/properties/minPercent"
+                      },
+                      "FINAL": {
+                        "$ref": "#/properties/bands/items/properties/minPercent"
+                      }
+                    },
+                    "required": [
+                      "UNIT_TEST",
+                      "MID_TERM",
+                      "FINAL"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "layout": {
+                    "type": "object",
+                    "properties": {
+                      "showAttendance": {
+                        "type": "boolean"
+                      },
+                      "showPractice": {
+                        "type": "boolean"
+                      },
+                      "showCoScholastic": {
+                        "type": "boolean"
+                      },
+                      "showGradePoints": {
+                        "type": "boolean"
+                      },
+                      "showAddress": {
+                        "type": "boolean"
+                      },
+                      "showSignatures": {
+                        "type": "boolean"
+                      },
+                      "showRemark": {
+                        "type": "boolean"
+                      },
+                      "useBrandColour": {
+                        "type": "boolean"
+                      },
+                      "signatureLeft": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "signatureRight": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "headerNote": {
+                        "type": "string",
+                        "maxLength": 160,
+                        "nullable": true
+                      },
+                      "footerNote": {
+                        "type": "string",
+                        "maxLength": 240,
+                        "nullable": true
+                      },
+                      "paper": {
+                        "type": "string",
+                        "enum": [
+                          "A4",
+                          "LETTER"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "showAttendance",
+                      "showPractice",
+                      "showCoScholastic",
+                      "showGradePoints",
+                      "showAddress",
+                      "showSignatures",
+                      "showRemark",
+                      "useBrandColour",
+                      "signatureLeft",
+                      "signatureRight",
+                      "headerNote",
+                      "footerNote",
+                      "paper"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "preset",
+                  "bands",
+                  "coScholastic",
+                  "kindWeights",
+                  "layout"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/terms/{termId}/weight": {
+      "post": {
+        "summary": "A term's share of the annual card, in percent; null clears it",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "weightPercent": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "weightPercent"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "weightPercent": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "weightPercent"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "termId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/teaching/classes/{classId}/report-cards/co-scholastic": {
+      "post": {
+        "summary": "The class teacher's co-scholastic grades on one draft card, replaced as a set; the head may only when named the class's lead",
+        "description": "Roles: TEACHER, ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cardId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "grades": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "area": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "grade": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 12,
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "area",
+                        "grade"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 20
+                  }
+                },
+                "required": [
+                  "cardId",
+                  "grades"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/shared/report-cards/{cardId}/pdf": {
+      "get": {
+        "summary": "One card as a PDF (application/pdf), for anyone who may read the card: its pupil, a guardian, its class teacher, the office",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT",
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/teaching/classes/{classId}/report-cards/pdf": {
+      "get": {
+        "summary": "Every card of the class under one title as one PDF (application/pdf), a page per pupil (?title=)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   }

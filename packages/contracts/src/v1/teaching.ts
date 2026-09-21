@@ -134,15 +134,24 @@ export const teachingReportCardsSchema = z.object({
       attendancePresent: count,
       attendanceTotal: count,
       studentName: z.string(),
+      overallLetter: z.string().nullable().optional(),
+      coScholastic: z.array(z.object({ area: z.string(), grade: z.string().nullable(), note: z.string().nullable() })).optional(),
     }),
   ),
+  /** The current year, for the annual card; null when none is set up. */
+  academicYear: z.object({ id: z.string(), name: z.string() }).nullable().optional(),
+  /** The school's co-scholastic areas and scale, for the class teacher's entry. */
+  coScholastic: z.object({ areas: z.array(z.string()), scale: z.array(z.object({ label: z.string(), descriptor: z.string().nullable() })) }).optional(),
 });
 export type TeachingReportCards = z.infer<typeof teachingReportCardsSchema>;
 
 export const teachingGenerateCardsSchema = z.object({
   title: z.string().trim().min(2).max(120),
-  assignmentIds: z.array(cuid).min(1).max(100),
+  /** Hand-picked papers; may be empty when a term or the year names them. */
+  assignmentIds: z.array(cuid).max(100).default([]),
   termId: cuid.nullable().optional(),
+  /** The annual card: every term of the year combined by the terms' weights. */
+  academicYearId: cuid.nullable().optional(),
 });
 export type TeachingGenerateCardsBody = z.infer<typeof teachingGenerateCardsSchema>;
 

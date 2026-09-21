@@ -6,6 +6,7 @@ import { AccessError } from "@/lib/tenancy";
 import { getGradebook } from "@/lib/grading";
 import { readAttachments } from "@/lib/files";
 import type { Attachment } from "@/lib/json";
+import { readReportCardConfig } from "@/lib/report-card-config";
 import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report-cards";
 import { currentTerms } from "@/lib/terms";
 import { nameCarriesSection } from "@/lib/class-names";
@@ -121,7 +122,13 @@ export async function spendTickets(fileIds: string[]): Promise<void> {
 /** /teacher/classes/[classId]/report-cards: the papers, the terms, the titles built so far and the cards under one. */
 export async function teachingReportCards(ctx: Staff, classId: string, title?: string): Promise<TeachingReportCards> {
   const klass = await orNotFound(assertMayWriteCards(ctx, classId));
-  const [assessments, all, terms] = await Promise.all([assessmentsFor(ctx, classId), cardsForClass(ctx, classId), currentTerms(ctx.schoolId)]);
+  const [assessments, all, terms, year, config] = await Promise.all([
+    assessmentsFor(ctx, classId),
+    cardsForClass(ctx, classId),
+    currentTerms(ctx.schoolId),
+    db.academicYear.findFirst({ where: { schoolId: ctx.schoolId, isCurrent: true }, select: { id: true, name: true } }),
+    readReportCardConfig(ctx.schoolId),
+  ]);
   const titles = [...new Set(all.map((c) => c.title))];
   const selected = title && titles.includes(title) ? title : (titles[0] ?? null);
   const cards = selected ? all.filter((c) => c.title === selected) : [];
@@ -152,7 +159,11 @@ export async function teachingReportCards(ctx: Staff, classId: string, title?: s
       attendancePresent: card.attendancePresent,
       attendanceTotal: card.attendanceTotal,
       studentName: card.student.user.preferredName ?? card.student.user.name,
+      overallLetter: card.overallLetter,
+      coScholastic: card.items.map((i) => ({ area: i.title, grade: i.letter, note: i.comment })),
     })),
+    academicYear: year,
+    coScholastic: { areas: config.coScholastic.areas, scale: config.coScholastic.scale },
   };
 }
 

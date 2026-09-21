@@ -2143,6 +2143,39 @@ async function main() {
     await check(null, "/admin/substitutions", 307, "signed-out board redirects to login");
   }
 
+  /* ---- report card rules: the office's editor; the configurable card and its PDF ---- */
+  // ZZ Northgate carries a published Term 1 set for its grade-3 class; the
+  // actors are its office, that class's lead teacher, and the guardian of a
+  // pupil on it. The PDF endpoints answer as documents, so the sweep asks
+  // only for the status.
+  const cardsClass = northgate
+    ? await db.reportCard.findFirst({ where: { schoolId: northgate.id, status: "PUBLISHED" }, orderBy: { createdAt: "asc" }, select: { id: true, classId: true, title: true, studentMembershipId: true } })
+    : null;
+  if (northgate && cardsClass) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, "/admin/report-cards", 200, "the office reads the report card rules");
+    await check(zzOffice, `/report-cards/${cardsClass.id}`, 200, "…and a published card with its subjects and grades");
+    await check(zzOffice, `/api/v1/shared/report-cards/${cardsClass.id}/pdf`, 200, "…and downloads it as a PDF");
+    await check(zzOffice, `/api/v1/teaching/classes/${cardsClass.classId}/report-cards/pdf?title=${encodeURIComponent(cardsClass.title)}`, 200, "…and the whole set as one PDF");
+    await check(zzOffice, `/teacher/classes/${cardsClass.classId}/report-cards`, 200, "…and the builder with its build modes and co-scholastic entry");
+    const lead = await db.classTeacher.findFirst({ where: { classId: cardsClass.classId, role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } } });
+    const guardian = await db.guardianship.findFirst({ where: { studentMembershipId: cardsClass.studentMembershipId, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (lead?.teacher.user.email) {
+      const zzLead = await mint(lead.teacher.user.email, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, `/teacher/classes/${cardsClass.classId}/report-cards`, 200, "the class teacher opens the builder");
+      await check(zzLead, "/admin/report-cards", 307, "⚠ …but not the rules");
+    }
+    if (guardian?.parent.email) {
+      const zzParent = await mint(guardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/report-cards/${cardsClass.id}`, 200, "a guardian reads the child's card");
+      await check(zzParent, `/api/v1/shared/report-cards/${cardsClass.id}/pdf`, 200, "…and downloads its PDF");
+      await check(zzParent, "/admin/report-cards", 307, "⚠ …but not the rules");
+    }
+    await check(null, "/admin/report-cards", 307, "signed-out rules redirect to login");
+  } else {
+    skip("report card rules", "no ZZ fixtures with a published report card (run zz:fixtures)");
+  }
+
   /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
   // ZZ Northgate carries Mathematics and English lists for grade 3 and its
   // grade-3 class is two chapters in; the actors are that school's office,

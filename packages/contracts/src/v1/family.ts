@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { cardExtrasSchema } from "./report-cards";
 
 /**
  * family: the pupil's and the guardian's pages as JSON — what each page
@@ -563,10 +564,21 @@ export const familyReportCardSchema = z.object({
   gradingMethod: z.string(),
   publishedAt: iso.nullable(),
   authorName: z.string().nullable(),
-  items: z.array(z.object({ title: z.string(), category: z.string().nullable(), scoreMilli: z.number().int().nullable(), pointsMilli: z.number().int().nullable() })),
-  school: z.object({ name: z.string(), logoPath: z.string().nullable() }),
+  items: z.array(z.object({ title: z.string(), category: z.string().nullable(), scoreMilli: z.number().int().nullable(), pointsMilli: z.number().int().nullable(), subject: z.string().nullable().optional(), letter: z.string().nullable().optional() })),
+  school: z.object({
+    name: z.string(),
+    logoPath: z.string().nullable(),
+    addressLine: z.string().nullable().optional(),
+    city: z.string().nullable().optional(),
+    region: z.string().nullable().optional(),
+    postalCode: z.string().nullable().optional(),
+    contactPhone: z.string().nullable().optional(),
+    contactEmail: z.string().nullable().optional(),
+    website: z.string().nullable().optional(),
+    brandPrimary: z.string().nullable().optional(),
+  }),
   practice: z.array(z.object({ subject: z.string(), name: z.string(), level: z.number().int(), tiers: z.number().int() })).nullable(),
-});
+}).merge(cardExtrasSchema);
 
 /** GET /api/v1/family/reviews — every open questionnaire about a teacher who teaches them (or their child). */
 export const familyReviewsSchema = z.object({

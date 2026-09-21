@@ -6,6 +6,7 @@ import { requireApiRole, AccessError } from "@/lib/tenancy";
 import {
   generateCards,
   publishCards,
+  setCoScholastic,
   setRemark,
   withdrawCards,
   type GenerateInput,
@@ -63,6 +64,22 @@ export async function saveRemark(classId: string, cardId: string, remark: string
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const result = await translated(await setRemark(ctx, cardId, remark));
+    revalidatePath(`/teacher/classes/${classId}/report-cards`);
+    return result;
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The class teacher's co-scholastic grades on one draft card, every area at once. */
+export async function saveCoScholastic(
+  classId: string,
+  cardId: string,
+  grades: { area: string; grade: string | null; note?: string }[],
+): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
+    const result = await translated(await setCoScholastic(ctx, cardId, grades));
     revalidatePath(`/teacher/classes/${classId}/report-cards`);
     return result;
   } catch (error) {

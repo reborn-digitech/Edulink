@@ -3,12 +3,12 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowSquareOutIcon, SparkleIcon, WarningIcon } from "@phosphor-icons/react";
+import { ArrowSquareOutIcon, DownloadSimpleIcon, FloppyDiskIcon, SparkleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { generate, publish, saveRemark, withdraw } from "./actions";
+import { generate, publish, saveCoScholastic, saveRemark, withdraw } from "./actions";
 import { useT } from "@/lib/i18n";
 import { EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
 
@@ -27,16 +27,30 @@ type Assessment = {
 
 type TermOption = { id: string; name: string; current: boolean };
 
+/** The school's co-scholastic areas and the scale they are graded on, from the office's rules. */
+type CoScholasticConfig = { areas: string[]; scale: { label: string; descriptor: string | null }[] };
+type CoGrade = { grade: string | null; note: string };
+
 type CardRow = {
   id: string;
   title: string;
   status: string;
   remark: string | null;
   overallPercentMilli: number | null;
+  overallLetter: string | null;
+  coScholastic: { area: string; grade: string | null; note: string | null }[];
   attendancePresent: number;
   attendanceTotal: number;
   studentName: string;
 };
+
+/**
+ * WHERE THE PAPERS COME FROM. A term names its own — every paper reporting
+ * into it — and the year names every term's; only the third way asks the
+ * teacher to tick them. The mode is the first thing on the page because it
+ * decides what the rest of the page shows.
+ */
+type BuildMode = "term" | "year" | "papers";
 
 /**
  * Building a term's report cards.
@@ -57,6 +71,8 @@ export function Builder({
   cards,
   selectedTitle,
   terms,
+  academicYear,
+  coScholastic,
 }: {
   classId: string;
   assessments: Assessment[];
@@ -65,27 +81,66 @@ export function Builder({
   selectedTitle: string | null;
   /** The current year's terms; empty for a school that reports once a year. */
   terms: TermOption[];
+  /** The current year, whose name titles the annual card; null when none is set up. */
+  academicYear: { id: string; name: string } | null;
+  coScholastic: CoScholasticConfig;
 }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [title, setTitle] = useState(selectedTitle ?? "Term 1");
+  /* BUILT FROM A TERM when the school has them: the term fixes the title,
+   * the attendance window and the papers server-side; the count beside it
+   * here is only so the teacher can see there is something to build from. */
+  const initialTerm = terms.find((x) => x.current) ?? terms[0] ?? null;
+  const [title, setTitle] = useState(initialTerm?.name ?? selectedTitle ?? "Term 1");
   const [picked, setPicked] = useState<string[]>([]);
-  /* BUILT FROM A TERM when the school has them: the term fixes the title
-   * and the attendance window server-side, and ticks its own papers here.
-   * "" means the old way — a typed title and the papers chosen by hand. */
-  const [termId, setTermId] = useState<string>("");
+  const [mode, setModeState] = useState<BuildMode>(initialTerm ? "term" : "papers");
+  const [termId, setTermId] = useState<string>(initialTerm?.id ?? "");
   function chooseTerm(id: string) {
     setTermId(id);
     const term = terms.find((x) => x.id === id);
-    if (term) {
-      setTitle(term.name);
-      setPicked(assessments.filter((a) => a.termId === id).map((a) => a.assignmentId));
+    if (term) setTitle(term.name);
+  }
+  function setMode(next: BuildMode) {
+    setModeState(next);
+    setError(null);
+    if (next === "term") {
+      const term = terms.find((x) => x.id === termId);
+      if (term) setTitle(term.name);
+    } else if (next === "year" && academicYear) {
+      setTitle(academicYear.name);
     }
   }
   const [error, setError] = useState<string | null>(null);
   const [remarks, setRemarks] = useState<Record<string, string>>({});
+  /* The co-scholastic grades as typed, per card and per area; a card with
+   * nothing typed yet reads its saved rows. */
+  const [coDrafts, setCoDrafts] = useState<Record<string, Record<string, CoGrade>>>({});
+  const coOf = (card: CardRow, area: string): CoGrade => {
+    const typed = coDrafts[card.id]?.[area];
+    if (typed) return typed;
+    const saved = card.coScholastic.find((r) => r.area === area);
+    return { grade: saved?.grade ?? null, note: saved?.note ?? "" };
+  };
+  const setCo = (cardId: string, area: string, patch: Partial<CoGrade>, base: CoGrade) =>
+    setCoDrafts((prev) => ({ ...prev, [cardId]: { ...(prev[cardId] ?? {}), [area]: { ...base, ...patch } } }));
+  function saveGrades(card: CardRow) {
+    const grades = coScholastic.areas.map((area) => {
+      const d = coOf(card, area);
+      return { area, grade: d.grade, note: d.note.trim() || undefined };
+    });
+    startTransition(async () => {
+      const result = await saveCoScholastic(classId, card.id, grades);
+      if (!result.ok) {
+        toast({ tone: "danger", title: t("teacher.thatDidNotWork"), description: result.error });
+        return;
+      }
+      toast({ tone: "ok", title: t("reportCards.coScholasticSaved") });
+      router.refresh();
+    });
+  }
+  const bundleHref = selectedTitle ? `/api/v1/teaching/classes/${classId}/report-cards/pdf?title=${encodeURIComponent(selectedTitle)}` : null;
 
   const published = cards.filter((c) => c.status === "PUBLISHED").length;
   const drafts = cards.filter((c) => c.status === "DRAFT").length;
@@ -114,10 +169,21 @@ export function Builder({
     );
   }
 
+  const canBuild =
+    title.trim().length >= 2 &&
+    (mode === "term" ? termId !== "" : mode === "year" ? academicYear !== null : picked.length > 0);
+
   function build() {
     setError(null);
     startTransition(async () => {
-      const result = await generate(classId, { title, assignmentIds: picked, termId: termId || null });
+      const result = await generate(
+        classId,
+        mode === "term"
+          ? { title, assignmentIds: [], termId }
+          : mode === "year"
+            ? { title, assignmentIds: [], academicYearId: academicYear?.id ?? null }
+            : { title, assignmentIds: picked },
+      );
       if (!result.ok) {
         setError(result.error ?? t("teacher.thatDidNotWork"));
         return;
@@ -133,6 +199,12 @@ export function Builder({
       router.refresh();
     });
   }
+
+  const modes: { key: BuildMode; label: string; disabled?: boolean }[] = [
+    { key: "term", label: t("reportCards.fromTerm"), disabled: terms.length === 0 },
+    { key: "year", label: t("reportCards.fromYear") },
+    { key: "papers", label: t("reportCards.fromPapers") },
+  ];
 
   return (
     <div className="space-y-6">
@@ -152,7 +224,55 @@ export function Builder({
           </p>
         )}
 
-        {assessments.length === 0 ? (
+        <div role="radiogroup" aria-label={t("teacher.builderStepOne")} className="mt-3 flex flex-wrap gap-1.5" data-testid="build-mode">
+          {modes.map((m) => (
+            <button
+              key={m.key}
+              type="button"
+              role="radio"
+              aria-checked={mode === m.key}
+              disabled={m.disabled}
+              onClick={() => setMode(m.key)}
+              className={cn(
+                "min-h-10 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40",
+                mode === m.key ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg",
+              )}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+
+        {mode === "term" && (
+          <div className="mt-3">
+            <label className="block max-w-xs">
+              <span className="block text-xs font-medium text-fg">{t("terms.cardTerm")}</span>
+              <select
+                value={termId}
+                data-testid="card-term"
+                onChange={(e) => chooseTerm(e.target.value)}
+                className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              >
+                {terms.map((term) => (
+                  <option key={term.id} value={term.id}>
+                    {term.name}
+                    {" · "}
+                    {t("terms.inTerm", { count: assessments.filter((a) => a.termId === term.id).length })}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <p className="mt-1 text-xs text-fg-muted">{t("reportCards.termCardHint")}</p>
+          </div>
+        )}
+
+        {mode === "year" && (
+          <p className={cn("mt-3 rounded-[--radius-md] border border-dashed border-border p-3 text-sm", academicYear ? "text-fg" : "text-fg-muted")}>
+            {academicYear ? t("reportCards.yearCard", { year: academicYear.name }) : t("reportCards.noYear")}
+          </p>
+        )}
+
+        {mode !== "papers" ? null : assessments.length === 0 ? (
           <p className="mt-3 rounded-[--radius-md] border border-dashed border-border p-4 text-sm text-fg-muted">
             {t("teacher.noPublishedWork")}
           </p>
@@ -243,29 +363,6 @@ export function Builder({
       {/* ---------------- 2. generate ---------------- */}
       <section className="border-t border-border pt-5">
         <h2 className="text-sm font-semibold text-fg">{t("teacher.builderStepTwo")}</h2>
-        {terms.length > 0 && (
-          <div className="mt-3">
-            <label className="block max-w-xs">
-              <span className="block text-xs font-medium text-fg">{t("terms.cardTerm")}</span>
-              <select
-                value={termId}
-                data-testid="card-term"
-                onChange={(e) => chooseTerm(e.target.value)}
-                className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
-              >
-                <option value="">{t("terms.cardNoTerm")}</option>
-                {terms.map((term) => (
-                  <option key={term.id} value={term.id}>
-                    {term.name}
-                    {" · "}
-                    {t("terms.inTerm", { count: assessments.filter((a) => a.termId === term.id).length })}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <p className="mt-1 text-xs text-fg-muted">{t("terms.builderTermHint")}</p>
-          </div>
-        )}
         <div className="mt-3 flex flex-wrap items-end gap-3">
           <label className="min-w-[12rem] flex-1">
             <span className="block text-xs font-medium text-fg">{t("teacher.reportName")}</span>
@@ -274,7 +371,7 @@ export function Builder({
               value={title}
               maxLength={120}
               list="report-titles"
-              disabled={termId !== ""}
+              disabled={mode === "term"}
               onChange={(e) => setTitle(e.target.value)}
               className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             />
@@ -286,7 +383,7 @@ export function Builder({
           </label>
           <Button
             loading={pending}
-            disabled={picked.length === 0 || title.trim().length < 2}
+            disabled={!canBuild}
             icon={<SparkleIcon weight="bold" />}
             onClick={build}
           >
@@ -332,6 +429,7 @@ export function Builder({
                 size="sm"
                 variant="secondary"
                 loading={pending}
+                data-testid="withdraw-all"
                 onClick={() =>
                   startTransition(async () => {
                     const result = await withdraw(classId, selectedTitle!);
@@ -349,6 +447,19 @@ export function Builder({
             )}
           </div>
 
+          {bundleHref && (
+            <a
+              href={bundleHref}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-accent-strong underline underline-offset-2 hover:text-accent"
+              data-testid="download-all-pdf"
+            >
+              <DownloadSimpleIcon weight="bold" className="size-4" aria-hidden="true" />
+              {t("reportCards.downloadAllPdf")}
+            </a>
+          )}
+
           <ul className="mt-3 space-y-2">
             {cards.map((card) => (
               <li key={card.id} className="rounded-[--radius-md] border border-border p-3">
@@ -361,6 +472,7 @@ export function Builder({
                       {card.overallPercentMilli === null
                         ? t("teacher.noMarksYetShort")
                         : `${(card.overallPercentMilli / 1000).toFixed(1)}%`}
+                      {card.overallLetter ? ` · ${card.overallLetter}` : ""}
                       {card.attendanceTotal > 0
                         ? ` · ${card.attendancePresent}/${card.attendanceTotal} days`
                         : ""}
@@ -401,6 +513,61 @@ export function Builder({
                       className="w-full rounded-[--radius-sm] border border-border bg-surface px-2.5 py-2 text-sm text-fg outline-none focus:border-accent"
                     />
                   </label>
+                )}
+
+                {/* The class teacher's grades besides the papers: one per area
+                    on the school's own scale, saved together. */}
+                {card.status === "DRAFT" && (
+                  <fieldset className="mt-3 rounded-[--radius-sm] border border-border/60 p-2.5">
+                    <legend className="px-1 text-xs font-semibold text-fg">{t("reportCards.coScholasticTitle")}</legend>
+                    {coScholastic.areas.length === 0 ? (
+                      <p className="text-xs text-fg-muted">{t("reportCards.noAreas")}</p>
+                    ) : (
+                      <>
+                        <p className="text-xs text-fg-muted">{t("reportCards.coScholasticHint")}</p>
+                        <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                          {coScholastic.areas.map((area) => {
+                            const current = coOf(card, area);
+                            return (
+                              <div key={area} className="flex flex-wrap items-end gap-2">
+                                <label className="min-w-[8rem] flex-1">
+                                  <span className="block truncate text-xs font-medium text-fg">{area}</span>
+                                  <select
+                                    value={current.grade ?? ""}
+                                    onChange={(e) => setCo(card.id, area, { grade: e.target.value || null }, current)}
+                                    className="mt-1 min-h-10 w-full rounded-[--radius-sm] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                  >
+                                    <option value="">{t("reportCards.notGraded")}</option>
+                                    {coScholastic.scale.map((g) => (
+                                      <option key={g.label} value={g.label}>
+                                        {g.descriptor ? `${g.label} · ${g.descriptor}` : g.label}
+                                      </option>
+                                    ))}
+                                  </select>
+                                </label>
+                                <label className="min-w-[8rem] flex-1">
+                                  <span className="block text-xs font-medium text-fg">{t("reportCards.note")}</span>
+                                  <input
+                                    type="text"
+                                    maxLength={200}
+                                    value={current.note}
+                                    placeholder={t("common.optional")}
+                                    onChange={(e) => setCo(card.id, area, { note: e.target.value }, current)}
+                                    className="mt-1 min-h-10 w-full rounded-[--radius-sm] border border-border bg-surface px-2 text-sm text-fg outline-none focus:border-accent"
+                                  />
+                                </label>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="mt-2">
+                          <Button type="button" size="sm" variant="secondary" loading={pending} icon={<FloppyDiskIcon weight="bold" />} onClick={() => saveGrades(card)}>
+                            {t("common.save")}
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </fieldset>
                 )}
               </li>
             ))}

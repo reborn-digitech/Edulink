@@ -45,6 +45,9 @@ const ENGLISH = flatten(en);
  */
 const SHARED_WITH_ENGLISH = new Set([
   "login.emailPlaceholder",
+  /** Paper sizes are names the printer dialog shows in Latin letters everywhere. */
+  "reportCardConfig.paperA4",
+  "reportCardConfig.paperLetter",
   /**
    * UPI and UTR are the acronyms every Indian bank app, receipt and
    * statement prints in Latin letters whatever language the rest is in; a

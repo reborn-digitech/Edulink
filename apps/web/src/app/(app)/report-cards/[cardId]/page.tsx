@@ -4,11 +4,12 @@ import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { formatDate, formatDateKey } from "@/lib/dates";
+import { nameCarriesSection } from "@/lib/codes";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
 import Link from "next/link";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -60,9 +61,25 @@ export default async function ReportCardPage({
   if (!card) notFound();
 
   const logoUrl = card.school.logoPath ? `/api/files/${card.school.logoPath}` : null;
+  const { layout, scale } = card;
+  /* The letterhead in the school's colour when the office asked for it; a
+     school with no colour set gets the page's own. */
+  const brand = layout.useBrandColour && card.school.brandPrimary ? { color: card.school.brandPrimary } : undefined;
+  const addressLine = [card.school.addressLine, card.school.city, card.school.region, card.school.postalCode].filter(Boolean).join(", ");
+  const contactLine = [card.school.contactPhone, card.school.contactEmail, card.school.website].filter(Boolean).join(" · ");
+  const showGradeColumn = scale.bands.length > 0;
+  const showPointsColumn = layout.showGradePoints && card.subjects.some((s) => s.points !== null);
+  const coRows = layout.showCoScholastic ? card.coScholastic : [];
+  const scaleLine = scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${b.descriptor}` : ""}`).join(" · ");
+  const cell = "py-2 text-fg print:text-black";
+  const head = "py-2 font-medium";
+  const headRow = "border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70";
+  const bodyRow = "border-b border-border/60 print:border-black/10";
 
   return (
     <article className="mx-auto max-w-2xl print:max-w-none">
+      {/* The sheet the office chose, for the browser's own print dialog. */}
+      <style>{`@page { size: ${layout.paper === "LETTER" ? "letter" : "A4"}; margin: 14mm }`}</style>
       {/* Off the sheet: the way back and the way onto paper. The page is
           designed for print and had neither. */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2 print:hidden">
@@ -70,7 +87,19 @@ export default async function ReportCardPage({
           <ArrowLeftIcon weight="bold" className="size-4" />
           {t("reportView.back")}
         </Link>
-        <PrintButton />
+        <span className="flex flex-wrap items-center gap-2">
+          <a
+            href={`/api/v1/shared/report-cards/${card.id}/pdf`}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-accent-strong underline underline-offset-2 hover:text-accent"
+            data-testid="download-pdf"
+          >
+            <DownloadSimpleIcon weight="bold" className="size-4" aria-hidden="true" />
+            {t("reportView.downloadPdf")}
+          </a>
+          <PrintButton />
+        </span>
       </div>
       {card.status !== "PUBLISHED" && (
         // Only staff can see a draft at all, but a teacher printing one by
@@ -92,12 +121,21 @@ export default async function ReportCardPage({
             />
           )}
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl font-bold tracking-tight text-fg print:text-black sm:text-2xl">
+            <h1 className="text-xl font-bold tracking-tight text-fg print:text-black sm:text-2xl" style={brand}>
               {card.school.name}
             </h1>
-            <p className="text-sm text-fg-muted print:text-black/70">
+            {layout.headerNote && <p className="text-xs text-fg-muted print:text-black/70">{layout.headerNote}</p>}
+            {layout.showAddress && (addressLine || contactLine) && (
+              <p className="text-xs text-fg-muted print:text-black/70">
+                {addressLine}
+                {addressLine && contactLine ? " · " : ""}
+                {contactLine}
+              </p>
+            )}
+            <p className="mt-1 text-sm text-fg-muted print:text-black/70">
+              {card.scope === "YEAR" ? `${t("reportView.annualCard")} · ` : ""}
               {card.title} · {card.className}
-              {card.classSection ? ` ${card.classSection}` : ""}
+              {card.classSection && !nameCarriesSection(card.className, card.classSection) ? ` ${card.classSection}` : ""}
             </p>
           </div>
         </header>
@@ -117,31 +155,91 @@ export default async function ReportCardPage({
         <section className="grid gap-3 sm:grid-cols-2">
           <Figure
             label={t("reportView.overall")}
-            value={card.overallPercent === null ? "—" : `${card.overallPercent.toFixed(1)}%`}
+            value={`${card.overallPercent === null ? "—" : `${card.overallPercent.toFixed(1)}%`}${card.overallLetter ? ` · ${card.overallLetter}` : ""}`}
             hint={
               card.overallPercent === null
                 ? t("reportView.noMarksCounted")
-                : card.gradingMethod === "exams"
-                  ? t("reportView.examsOnly")
-                  : card.gradingMethod === "weighted"
-                    ? t("reportView.weightedBy")
-                    : t("reportView.acrossBelow")
+                : card.subjects.length > 0
+                  ? t("reportView.weightedExplainerShort")
+                  : card.gradingMethod === "exams"
+                    ? t("reportView.examsOnly")
+                    : card.gradingMethod === "weighted"
+                      ? t("reportView.weightedBy")
+                      : t("reportView.acrossBelow")
             }
           />
-          <Figure
-            label={t("reportView.attendance")}
-            value={
-              card.attendancePercent === null ? "—" : `${card.attendancePercent}%`
-            }
-            hint={
-              card.attendanceTotal === 0
-                ? t("reportView.noRegisterWindow")
-                : t("reportView.daysOf", { present: card.attendancePresent, total: card.attendanceTotal })
-            }
-          />
+          {layout.showGradePoints && card.gradePoints !== null && (
+            <Figure label={t("reportView.gradePoints")} value={card.gradePoints.toFixed(2)} hint={t("reportView.gradePointsHint")} />
+          )}
+          {layout.showAttendance && (
+            <Figure
+              label={t("reportView.attendance")}
+              value={
+                card.attendancePercent === null ? "—" : `${card.attendancePercent}%`
+              }
+              hint={
+                card.attendanceTotal === 0
+                  ? t("reportView.noRegisterWindow")
+                  : t("reportView.daysOf", { present: card.attendancePresent, total: card.attendanceTotal })
+              }
+            />
+          )}
         </section>
 
-        {/* ---------------- the assessments ---------------- */}
+        {/* ---------------- the subjects ---------------- */}
+        {card.subjects.length > 0 ? (
+          <section className="mt-6">
+            <h3 className="text-sm font-semibold text-fg print:text-black">{t("reportView.scholastic")}</h3>
+            <table className="mt-2 w-full text-sm" data-testid="subject-table">
+              <thead>
+                <tr className={headRow}>
+                  <th scope="col" className={head}>
+                    {t("reportView.subject")}
+                  </th>
+                  <th scope="col" className={head}>
+                    {card.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}
+                  </th>
+                  <th scope="col" className={`${head} text-right`}>
+                    {t("reportView.percent")}
+                  </th>
+                  {showGradeColumn && (
+                    <th scope="col" className={`${head} text-right`}>
+                      {t("reportView.grade")}
+                    </th>
+                  )}
+                  {showPointsColumn && (
+                    <th scope="col" className={`${head} text-right`}>
+                      {t("reportView.points")}
+                    </th>
+                  )}
+                </tr>
+              </thead>
+              <tbody>
+                {card.subjects.map((subject) => (
+                  <tr key={subject.subject} className={bodyRow}>
+                    <td className={`${cell} pr-3 font-medium`}>{subject.subject}</td>
+                    <td className={`${cell} pr-3 text-xs text-fg-muted print:text-black/70`}>
+                      {subject.parts.map((part, index) => (
+                        <span key={index} className="block whitespace-nowrap tabular-nums">
+                          {part.label}
+                          {part.scoreMilli !== null && part.pointsMilli
+                            ? ` ${formatMilli(part.scoreMilli)}/${formatMilli(part.pointsMilli)}`
+                            : part.percent !== null
+                              ? ` ${part.percent.toFixed(1)}%`
+                              : ""}
+                          {part.weight !== null ? ` (${Math.round(part.weight)}%)` : ""}
+                        </span>
+                      ))}
+                    </td>
+                    <td className={`${cell} text-right tabular-nums`}>{subject.percent === null ? "—" : `${subject.percent.toFixed(1)}%`}</td>
+                    {showGradeColumn && <td className={`${cell} text-right font-semibold`}>{subject.letter ?? "—"}</td>}
+                    {showPointsColumn && <td className={`${cell} text-right tabular-nums`}>{subject.points === null ? "—" : subject.points}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ) : (
         <section className="mt-6">
           <h3 className="text-sm font-semibold text-fg print:text-black">
             {t("reportView.whatThisCovers")}
@@ -187,9 +285,40 @@ export default async function ReportCardPage({
             </tbody>
           </table>
         </section>
+        )}
+
+        {/* ---------------- the class teacher's grades ---------------- */}
+        {coRows.length > 0 && (
+          <section className="mt-6">
+            <h3 className="text-sm font-semibold text-fg print:text-black">{t("reportView.coScholastic")}</h3>
+            <table className="mt-2 w-full text-sm" data-testid="co-scholastic-table">
+              <thead>
+                <tr className={headRow}>
+                  <th scope="col" className={head}>
+                    {t("reportView.subject")}
+                  </th>
+                  <th scope="col" className={`${head} text-right`}>
+                    {t("reportView.grade")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {coRows.map((row) => (
+                  <tr key={row.area} className={bodyRow}>
+                    <td className={`${cell} pr-3`}>
+                      {row.area}
+                      {row.note && <span className="block text-xs text-fg-muted print:text-black/60">{row.note}</span>}
+                    </td>
+                    <td className={`${cell} text-right font-semibold`}>{row.grade ?? "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
 
         {/* ---------------- the practice annexure ---------------- */}
-        {card.practice && (
+        {layout.showPractice && card.practice && (
           <section className="mt-6">
             <h3 className="text-sm font-semibold text-fg print:text-black">
               {t("reportView.practiceTitle")}
@@ -234,7 +363,7 @@ export default async function ReportCardPage({
         )}
 
         {/* ---------------- the teacher's words ---------------- */}
-        {card.remark && (
+        {layout.showRemark && card.remark && (
           <section className="mt-6">
             <h3 className="text-sm font-semibold text-fg print:text-black">
               {t("reportView.fromClassTeacher")}
@@ -245,7 +374,27 @@ export default async function ReportCardPage({
           </section>
         )}
 
+        {/* ---------------- the scale the card was read on ---------------- */}
+        {scale.bands.length > 0 && (
+          <p className="mt-6 text-xs text-fg-muted print:text-black/70">
+            <span className="font-medium">{t("reportView.scaleLine")}: </span>
+            {scaleLine}
+          </p>
+        )}
+
+        {/* ---------------- signatures ---------------- */}
+        {layout.showSignatures && (
+          <section className="mt-10 grid grid-cols-3 gap-4 text-center text-xs text-fg-muted print:text-black/70" data-testid="signatures">
+            {[layout.signatureLeft, t("reportView.signatureParent"), layout.signatureRight].map((who, index) => (
+              <div key={index} className="border-t border-border pt-2 print:border-black/40">
+                {who}
+              </div>
+            ))}
+          </section>
+        )}
+
         <footer className="mt-8 border-t border-border pt-4 text-xs text-fg-muted print:border-black/20 print:text-black/70">
+          {layout.footerNote && <p className="mb-1">{layout.footerNote}</p>}
           {/* Whole sentences with placeholders; the date is a value. */}
           {card.authorName ? `${t("reportView.writtenBy", { name: card.authorName })} ` : ""}
           {card.publishedAt
