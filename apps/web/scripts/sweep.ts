@@ -2176,6 +2176,53 @@ async function main() {
     skip("report card rules", "no ZZ fixtures with a published report card (run zz:fixtures)");
   }
 
+  /* ---- certificates: the office's templates, records and issue pages; the document, its PDF and the public check ---- */
+  // ZZ Northgate carries templates in three languages and issued certificates
+  // on its grade-3 pupils; the actors are its office, the class's lead
+  // teacher, a guardian of a pupil with a certificate, and nobody at all for
+  // the public check.
+  const zzCert = northgate ? await db.issuedCertificate.findFirst({ where: { schoolId: northgate.id, revokedAt: null }, orderBy: { issuedAt: "asc" }, select: { id: true, code: true, studentMembershipId: true, student: { select: { enrollments: { where: { status: "ACTIVE" }, select: { classId: true }, take: 1 } } } } }) : null;
+  if (northgate && zzCert) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, "/admin/certificates", 200, "the office reads its certificate templates");
+    await check(zzOffice, "/admin/certificates/issue", 200, "…and the issue page");
+    await check(zzOffice, `/admin/certificates/issue?membershipId=${zzCert.studentMembershipId}`, 200, "…for one pupil");
+    await check(zzOffice, "/admin/certificates/issued", 200, "…and the issued list");
+    await check(zzOffice, "/admin/records", 200, "…and the pupil records with what is blank");
+    await check(zzOffice, `/admin/records/${zzCert.studentMembershipId}`, 200, "…and one pupil's record");
+    await check(zzOffice, `/certificates/${zzCert.id}`, 200, "…and an issued certificate");
+    await check(zzOffice, `/api/v1/shared/certificates/${zzCert.id}/pdf`, 200, "…and its PDF");
+    const zzClassId = zzCert.student.enrollments[0]?.classId;
+    const lead = zzClassId ? await db.classTeacher.findFirst({ where: { classId: zzClassId, role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } } }) : null;
+    if (lead?.teacher.user.email) {
+      const zzLead = await mint(lead.teacher.user.email, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, `/certificates/${zzCert.id}`, 200, "the class teacher reads a pupil's certificate");
+      await check(zzLead, "/admin/certificates", 307, "⚠ …but not the templates");
+      await check(zzLead, "/admin/records", 307, "⚠ …nor the records list");
+    }
+    const guardian = await db.guardianship.findFirst({ where: { studentMembershipId: zzCert.studentMembershipId, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (guardian?.parent.email) {
+      const zzParent = await mint(guardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/parent/record?child=${zzCert.studentMembershipId}`, 200, "a guardian fills the child's record");
+      await check(zzParent, "/parent/certificates", 200, "…and reads the child's certificates");
+      await check(zzParent, `/certificates/${zzCert.id}`, 200, "…and one of them");
+      await check(zzParent, `/api/v1/shared/certificates/${zzCert.id}/pdf`, 200, "…and its PDF");
+      await check(zzParent, "/admin/certificates", 307, "⚠ …but not the templates");
+    }
+    const zzPupil = await db.membership.findUnique({ where: { id: zzCert.studentMembershipId }, select: { user: { select: { email: true } } } });
+    if (zzPupil?.user.email) {
+      const zzStudent = await mint(zzPupil.user.email, "STUDENT", northgate.id, "zz-pupil");
+      await check(zzStudent, "/student/record", 200, "a pupil fills their own record");
+      await check(zzStudent, "/student/certificates", 200, "…and reads their certificates");
+    }
+    await check(null, `/certificates/check?code=${zzCert.code}`, 200, "anyone checks a printed code");
+    await check(null, "/certificates/check", 200, "…or opens the check page");
+    await check(null, `/certificates/${zzCert.id}`, 307, "signed-out certificate redirects to login");
+    await check(null, "/admin/certificates", 307, "signed-out templates redirect to login");
+  } else {
+    skip("certificates", "no ZZ fixtures with an issued certificate (run zz:fixtures)");
+  }
+
   /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
   // ZZ Northgate carries Mathematics and English lists for grade 3 and its
   // grade-3 class is two chapters in; the actors are that school's office,

@@ -188,37 +188,40 @@ model School {
   meetingSlots         MeetingSlot[]
   meetingBookings      MeetingBooking[]
 
-  admissionsContact   Membership?          @relation("AdmissionsContact", fields: [admissionsContactMembershipId], references: [id], onDelete: SetNull)
-  jobPostings         JobPosting[]
-  enquiries           Enquiry[]
-  enquiryMessages     EnquiryMessage[]
-  terms               Term[]
-  staffRecords        StaffRecord[]
-  scheduledDepartures ScheduledDeparture[]
-  feeHeads            FeeHead[]
-  feeStructures       FeeStructure[]
-  feeInstalments      FeeInstalment[]
-  feeLines            FeeLine[]
-  studentFeePlans     StudentFeePlan[]
-  feeConcessions      FeeConcession[]
-  feeDemands          FeeDemand[]
-  feePayments         FeePayment[]
-  feeAllocations      FeeAllocation[]
-  feeReceipts         FeeReceipt[]
-  feeRefunds          FeeRefund[]
-  feeGatewayAccount   FeeGatewayAccount?
-  gatewayEvents       GatewayEvent[]
-  outboundMessages    OutboundMessage[]
-  broadcasts          Broadcast[]
-  healthCards         HealthCard[]
-  healthChecks        HealthCheck[]
-  incidents           Incident[]
-  incidentNotes       IncidentNote[]
-  staffAttendance     StaffAttendance[]
-  syllabusUnits       SyllabusUnit[]
-  syllabusProgress    SyllabusProgress[]
-  lessonPlans         LessonPlan[]
-  substitutions       Substitution[]
+  admissionsContact    Membership?           @relation("AdmissionsContact", fields: [admissionsContactMembershipId], references: [id], onDelete: SetNull)
+  jobPostings          JobPosting[]
+  enquiries            Enquiry[]
+  enquiryMessages      EnquiryMessage[]
+  terms                Term[]
+  staffRecords         StaffRecord[]
+  scheduledDepartures  ScheduledDeparture[]
+  feeHeads             FeeHead[]
+  feeStructures        FeeStructure[]
+  feeInstalments       FeeInstalment[]
+  feeLines             FeeLine[]
+  studentFeePlans      StudentFeePlan[]
+  feeConcessions       FeeConcession[]
+  feeDemands           FeeDemand[]
+  feePayments          FeePayment[]
+  feeAllocations       FeeAllocation[]
+  feeReceipts          FeeReceipt[]
+  feeRefunds           FeeRefund[]
+  feeGatewayAccount    FeeGatewayAccount?
+  gatewayEvents        GatewayEvent[]
+  outboundMessages     OutboundMessage[]
+  broadcasts           Broadcast[]
+  healthCards          HealthCard[]
+  pupilRecords         PupilRecord[]
+  certificateTemplates CertificateTemplate[]
+  issuedCertificates   IssuedCertificate[]
+  healthChecks         HealthCheck[]
+  incidents            Incident[]
+  incidentNotes        IncidentNote[]
+  staffAttendance      StaffAttendance[]
+  syllabusUnits        SyllabusUnit[]
+  syllabusProgress     SyllabusProgress[]
+  lessonPlans          LessonPlan[]
+  substitutions        Substitution[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -393,6 +396,8 @@ model Membership {
   reviewResponsesAbout   ReviewResponse[]     @relation("ReviewResponseTeacher")
   submissions            Submission[]
   healthCard             HealthCard?
+  pupilRecord            PupilRecord?
+  issuedCertificates     IssuedCertificate[]  @relation("IssuedCertificateStudent")
   healthChecks           HealthCheck[]
   incidents              Incident[]           @relation("IncidentStudent")
   incidentsReported      Incident[]           @relation("IncidentReporter")
@@ -2148,15 +2153,16 @@ model AcademicYear {
   /// the database, never guessed from a count.
   feeReceiptNext Int @default(1)
 
-  school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  holidays        Holiday[]
-  earnedBadges    EarnedBadge[]
-  terms           Term[]
-  feeStructures   FeeStructure[]
-  studentFeePlans StudentFeePlan[]
-  feeConcessions  FeeConcession[]
-  feeDemands      FeeDemand[]
-  feeReceipts     FeeReceipt[]
+  school             School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  holidays           Holiday[]
+  earnedBadges       EarnedBadge[]
+  terms              Term[]
+  feeStructures      FeeStructure[]
+  studentFeePlans    StudentFeePlan[]
+  feeConcessions     FeeConcession[]
+  feeDemands         FeeDemand[]
+  feeReceipts        FeeReceipt[]
+  issuedCertificates IssuedCertificate[]
 
   @@unique([schoolId, name])
   @@index([schoolId, isCurrent])
@@ -3800,4 +3806,118 @@ model Substitution {
   @@unique([slotId, dateKey])
   @@index([schoolId, dateKey])
   @@index([substituteMembershipId, dateKey])
+}
+
+/// THE PUPIL RECORD: the identity and admission details an Indian school
+/// certificate names — parents' names, place of birth, nationality, religion,
+/// caste and category, mother tongue, home address, the admission register
+/// number and date, the last school, the UDISE+ PEN. Filled by the family
+/// after joining or when the office asks, corrected by the office. No
+/// Aadhaar: a school may not demand it and the app does not hold it.
+/// Policy: docs/decisions/0002, row 28.
+model PupilRecord {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String    @unique
+  fatherName          String?
+  motherName          String?
+  placeOfBirth        String?
+  nationality         String?
+  religion            String?
+  caste               String?
+  category            String?
+  motherTongue        String?
+  addressLine         String?
+  city                String?
+  postalCode          String?
+  /// The school's own admission register (GR) number, distinct from the platform's student code.
+  admissionNumber     String?
+  admissionDate       DateTime?
+  admittedToGrade     String?
+  previousSchool      String?
+  /// UDISE+ Permanent Education Number.
+  penNumber           String?
+  /// When the office last asked the family to fill it in, and when the family last did.
+  requestedAt         DateTime?
+  familyFilledAt      DateTime?
+  updatedByUserId     String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId])
+}
+
+/// A certificate the office designs once and issues many times: a kind (TC,
+/// Nirgam Utara, Bonafide, Character, Study, or the school's own), a
+/// language, a heading, an opening paragraph, numbered rows of label and
+/// placeholder, a closing paragraph, the layout and the serial prefix.
+model CertificateTemplate {
+  id              String   @id @default(cuid())
+  schoolId        String
+  /// TC | NIRGAM | BONAFIDE | CHARACTER | STUDY | CUSTOM
+  kind            String
+  name            String
+  /// en | hi | mr — the language the document is written in, whoever reads it.
+  locale          String   @default("en")
+  title           String
+  intro           String   @default("")
+  /// JSON [{label, value}] where value is text with {{placeholders}}.
+  rowsJson        String   @default("[]")
+  outro           String   @default("")
+  /// JSON: showLogo, showAddress, signatureLeft, signatureRight, footerNote, paper, useBrandColour.
+  layoutJson      String   @default("{}")
+  serialPrefix    String
+  active          Boolean  @default(true)
+  createdByUserId String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  school       School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  certificates IssuedCertificate[]
+
+  @@unique([schoolId, name])
+  @@index([schoolId, kind])
+}
+
+/// One certificate issued to one pupil: a DOCUMENT, frozen at issue — the
+/// resolved rows and paragraphs, the layout, the data they were filled from
+/// — with a serial per year and prefix and a code anyone can verify it by.
+model IssuedCertificate {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  templateId          String?
+  studentMembershipId String
+  academicYearId      String?
+  kind                String
+  locale              String
+  serial              String
+  number              Int
+  title               String
+  intro               String    @default("")
+  rowsJson            String    @default("[]")
+  outro               String    @default("")
+  layoutJson          String    @default("{}")
+  /// The values the placeholders were filled from, SNAPSHOT.
+  dataJson            String    @default("{}")
+  /// Typed at issue: what a bonafide is for, a remark on a TC.
+  purpose             String?
+  remark              String?
+  /// The verification code printed on the document.
+  code                String    @unique
+  issuedByUserId      String?
+  issuedAt            DateTime  @default(now())
+  revokedAt           DateTime?
+  revokedReason       String?
+
+  school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  template     CertificateTemplate? @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  student      Membership           @relation("IssuedCertificateStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear?        @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
+
+  @@unique([schoolId, serial])
+  @@index([studentMembershipId])
+  @@index([schoolId, issuedAt])
 }

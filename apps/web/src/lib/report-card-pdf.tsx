@@ -17,22 +17,24 @@ import type { Translate } from "./i18n/dictionary";
  * built on the server from the same frozen snapshot the page shows, so the
  * two never disagree.
  *
- * THE FONT IS NOTO SANS DEVANAGARI, shipped with the app (OFL), because a
- * Marathi remark or a Hindi subject name must shape correctly — conjuncts and
- * matras — and the renderer does that only with a font that carries the
- * script. Latin falls back to the built-in Helvetica through the family list,
- * bold included. The files are traced into the standalone build by
- * next.config.ts.
+ * THE FONT IS MUKTA (Ek Type, OFL), shipped with the app, because a Marathi
+ * remark or a Hindi subject name must shape correctly — conjuncts and matras
+ * — and the renderer does that only with a font that carries the script.
+ * Noto Sans Devanagari was tried first and its long-I vowel (ई) came out as
+ * a short I with a stray reph through this renderer's shaper; Mukta shapes
+ * every string the fixtures and tests throw at it and carries Latin, the
+ * rupee sign and the en-dash itself, with Helvetica still listed as the
+ * fallback. The files are traced into the standalone build by next.config.ts.
  */
 const FONT_DIR = path.join(process.cwd(), "src", "lib", "pdf-fonts");
 let registered = false;
 function ensureFonts() {
   if (registered) return;
   Font.register({
-    family: "Noto Sans Devanagari",
+    family: "Mukta",
     fonts: [
-      { src: path.join(FONT_DIR, "NotoSansDevanagari-Regular.ttf") },
-      { src: path.join(FONT_DIR, "NotoSansDevanagari-Bold.ttf"), fontWeight: 700 },
+      { src: path.join(FONT_DIR, "Mukta-Regular.ttf") },
+      { src: path.join(FONT_DIR, "Mukta-Bold.ttf"), fontWeight: 700 },
     ],
   });
   // No hyphenation: a pupil's name or a subject split across lines is wrong on a document.
@@ -45,7 +47,7 @@ const MUTED = "#5b6472";
 const LINE = "#d6dce6";
 
 const styles = StyleSheet.create({
-  page: { paddingTop: 36, paddingBottom: 40, paddingHorizontal: 40, fontFamily: ["Noto Sans Devanagari", "Helvetica"] as unknown as string, fontSize: 10, color: INK },
+  page: { paddingTop: 36, paddingBottom: 40, paddingHorizontal: 40, fontFamily: ["Mukta", "Helvetica"] as unknown as string, fontSize: 10, color: INK },
   header: { flexDirection: "row", alignItems: "flex-start", gap: 12, borderBottomWidth: 2, paddingBottom: 10, marginBottom: 12 },
   logo: { width: 52, height: 52, objectFit: "contain" },
   schoolName: { fontSize: 18, fontWeight: 700 },

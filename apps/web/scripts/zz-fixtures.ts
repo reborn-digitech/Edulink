@@ -44,6 +44,7 @@ import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
 import { bandFor, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints } from "../src/lib/report-card-rules";
+import { dataFor, fill, fillRows, presetsFor, wordsFor, type PupilFacts } from "../src/lib/certificate-rules";
 
 config();
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
@@ -846,6 +847,90 @@ async function buildExams(school: { id: string }, adminUserId: string) {
 }
 
 /**
+ * Certificates for ZZ Northgate: templates from the presets — the bonafide,
+ * character and study certificates in English, the transfer certificate and
+ * the Nirgam Utara in Marathi, and a retired Hindi bonafide for the sweep's
+ * archive no-op; pupil records filled for the grade-3 class (one left with
+ * the admission date blank, so the office's list has someone to ask); a
+ * bonafide issued to the first pupil in English, a study certificate to the
+ * second in Marathi and one revoked, built the way the app builds them.
+ * Re-run safe: today's issues are rebuilt under fixed serials.
+ */
+async function buildCertificates(school: { id: string; name: string; code: string }, adminUserId: string) {
+  const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true } });
+  const specs = [
+    ...presetsFor("en").filter((p) => ["BONAFIDE", "CHARACTER", "STUDY"].includes(p.kind)).map((p) => ({ ...p, active: true })),
+    ...presetsFor("mr").filter((p) => ["TC", "NIRGAM"].includes(p.kind)).map((p) => ({ ...p, active: true })),
+    { ...presetsFor("hi").find((p) => p.kind === "BONAFIDE")!, name: "बोनाफाइड (जुना)", active: false },
+  ];
+  const templates = new Map<string, { id: string; kind: string; locale: string; title: string; intro: string; rowsJson: string; outro: string; layoutJson: string; serialPrefix: string }>();
+  for (const spec of specs) {
+    const data = { kind: spec.kind, locale: spec.locale, title: spec.title, intro: spec.intro, rowsJson: JSON.stringify(spec.rows), outro: spec.outro, layoutJson: JSON.stringify(spec.layout), serialPrefix: spec.serialPrefix, active: spec.active, createdByUserId: adminUserId };
+    const t = await db.certificateTemplate.upsert({ where: { schoolId_name: { schoolId: school.id, name: spec.name } }, create: { schoolId: school.id, name: spec.name, ...data }, update: data });
+    templates.set(`${spec.kind}-${spec.locale}`, t);
+  }
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, select: { id: true, name: true, gradeLevel: true }, orderBy: { name: "asc" } });
+  if (!klass) return { templates: specs.length, records: 0, issued: 0 };
+  const roll = await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true, preferredName: true, birthdate: true } } } } }, orderBy: { studentMembershipId: "asc" } });
+  const fathers = ["Rohan", "Prakash", "Sunil", "Mahesh", "Anil", "Vijay"];
+  const mothers = ["Sneha", "Kavita", "Rekha", "Vandana", "Meena", "Priya"];
+  let records = 0;
+  for (const [i, row] of roll.entries()) {
+    const surname = (row.student.user.name.replace(/^ZZ\s+/, "").split(" ").pop() ?? "Patil");
+    const data = {
+      fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: "Pune", nationality: "Indian", religion: "Hindu", caste: null, category: i % 3 === 0 ? "General" : "OBC", motherTongue: "Marathi",
+      addressLine: `${10 + i} Shivaji Nagar`, city: "Pune", postalCode: "411005", admissionNumber: `GR-${1000 + i}`,
+      admissionDate: i === roll.length - 1 ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: "Sunrise Nursery", penNumber: null, updatedByUserId: adminUserId, familyFilledAt: new Date(),
+    };
+    await db.pupilRecord.upsert({ where: { studentMembershipId: row.studentMembershipId }, create: { schoolId: school.id, studentMembershipId: row.studentMembershipId, ...data }, update: data });
+    records += 1;
+  }
+  await db.issuedCertificate.deleteMany({ where: { schoolId: school.id, academicYearId: year.id } });
+  const today = new Date().toISOString().slice(0, 10);
+  const issues: { key: string; pupil: (typeof roll)[number]; number: number; purpose: string | null; revoked: boolean }[] = [
+    { key: "BONAFIDE-en", pupil: roll[0]!, number: 1, purpose: "a passport", revoked: false },
+    { key: "STUDY-en", pupil: roll[1]!, number: 1, purpose: "a scholarship", revoked: false },
+    { key: "STUDY-en", pupil: roll[2]!, number: 2, purpose: "a bus pass", revoked: false },
+    { key: "BONAFIDE-en", pupil: roll[1]!, number: 2, purpose: "a bank account", revoked: true },
+  ].filter((i) => i.pupil);
+  let issued = 0;
+  for (const spec of issues) {
+    const t = templates.get(spec.key)!;
+    const locale = t.locale as "en" | "hi" | "mr";
+    const words = wordsFor(locale);
+    const rec = await db.pupilRecord.findUnique({ where: { studentMembershipId: spec.pupil.studentMembershipId } });
+    const serial = `${t.serialPrefix}/${year.name}/${String(spec.number).padStart(4, "0")}`;
+    const facts: PupilFacts = {
+      name: spec.pupil.student.user.preferredName ?? spec.pupil.student.user.name,
+      studentCode: spec.pupil.student.studentCode,
+      birthdateKey: spec.pupil.student.user.birthdate?.toISOString().slice(0, 10) ?? null,
+      ageYears: null,
+      record: rec ? { fatherName: rec.fatherName, motherName: rec.motherName, placeOfBirth: rec.placeOfBirth, nationality: rec.nationality, religion: rec.religion, caste: rec.caste, category: rec.category, motherTongue: rec.motherTongue, addressLine: rec.addressLine, city: rec.city, postalCode: rec.postalCode, admissionNumber: rec.admissionNumber, admissionDateKey: rec.admissionDate?.toISOString().slice(0, 10) ?? null, admittedToGrade: rec.admittedToGrade, previousSchool: rec.previousSchool, penNumber: rec.penNumber } : null,
+      className: klass.name,
+      gradeLevel: klass.gradeLevel,
+      school: { name: school.name, code: school.code, address: "Pune" },
+      yearName: year.name,
+      leaving: null,
+      issue: { dateKey: today, serial, purpose: spec.purpose, remark: null },
+    };
+    const data = dataFor(facts, locale, words);
+    const intro = fill(t.intro, data);
+    const rows = fillRows(JSON.parse(t.rowsJson), data);
+    const outro = fill(t.outro, data);
+    const code = `ZZ${String(issued + 1).padStart(2, "0")}${spec.pupil.studentMembershipId.slice(-6).toUpperCase().replace(/[^A-Z0-9]/g, "X")}`;
+    await db.issuedCertificate.create({
+      data: {
+        schoolId: school.id, templateId: t.id, studentMembershipId: spec.pupil.studentMembershipId, academicYearId: year.id, kind: t.kind, locale, serial, number: spec.number, title: t.title,
+        intro: intro.text, rowsJson: JSON.stringify(rows.rows), outro: outro.text, layoutJson: t.layoutJson, dataJson: JSON.stringify({ ...data, missing: [...new Set([...intro.missing, ...rows.missing, ...outro.missing])] }),
+        purpose: spec.purpose, code, issuedByUserId: adminUserId, revokedAt: spec.revoked ? new Date() : null, revokedReason: spec.revoked ? "Issued to the wrong pupil." : null,
+      },
+    });
+    issued += 1;
+  }
+  return { templates: specs.length, records, issued };
+}
+
+/**
  * The substitution board for today: one subject teacher (timetable only, so
  * never the sweep's form teacher, whom the sweep marks present) is absent
  * today and their first lesson of the day is covered by a free colleague.
@@ -1343,6 +1428,7 @@ async function main() {
   const syllabus = await buildSyllabus(northgate.school);
   const subs = await buildSubstitutions(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
   const exams = await buildExams(northgate.school, northgate.admin.id);
+  const certs = await buildCertificates(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1386,6 +1472,7 @@ async function main() {
      staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
      exams       ${exams.series} series in Term 1 with ${exams.papers} papers, ${exams.marks} marks; ${exams.cards} report cards (Term 1 published with co-scholastic grades, a draft set) — /admin/report-cards
+     certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked) — /admin/certificates
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
 
   ── ZZ Southbank School (small) ──────────────────────────────────────

@@ -115,3 +115,4 @@ export * from "./v1/staff-attendance";
 export * from "./v1/syllabus";
 export * from "./v1/substitutions";
 export * from "./v1/report-cards";
+export * from "./v1/certificates";

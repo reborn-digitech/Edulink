@@ -1251,6 +1251,33 @@ CREATE POLICY "Substitution_tenant_isolation" ON "Substitution"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- PupilRecord
+ALTER TABLE "PupilRecord" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PupilRecord" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PupilRecord_tenant_isolation" ON "PupilRecord";
+DROP POLICY IF EXISTS "PupilRecord_readable" ON "PupilRecord";
+CREATE POLICY "PupilRecord_tenant_isolation" ON "PupilRecord"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- CertificateTemplate
+ALTER TABLE "CertificateTemplate" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "CertificateTemplate" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "CertificateTemplate_tenant_isolation" ON "CertificateTemplate";
+DROP POLICY IF EXISTS "CertificateTemplate_readable" ON "CertificateTemplate";
+CREATE POLICY "CertificateTemplate_tenant_isolation" ON "CertificateTemplate"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- IssuedCertificate
+ALTER TABLE "IssuedCertificate" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "IssuedCertificate" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "IssuedCertificate_tenant_isolation" ON "IssuedCertificate";
+DROP POLICY IF EXISTS "IssuedCertificate_readable" ON "IssuedCertificate";
+CREATE POLICY "IssuedCertificate_tenant_isolation" ON "IssuedCertificate"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

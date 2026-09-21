@@ -15,6 +15,8 @@ import { formatTimeRange } from "@/lib/school-day";
 import { ownWorkScope } from "@/lib/grading";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
+import { pupilRecordFor } from "@/lib/pupil-records";
+import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
@@ -55,7 +57,7 @@ export default async function StudentHome({
   const timezone = membership.school.timezone;
   const today = todayKey(timezone);
 
-  const [attendance, todayRecord, upcoming, examMarks, week] = await Promise.all([
+  const [attendance, todayRecord, upcoming, examMarks, week, recordMissing] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
@@ -80,6 +82,8 @@ export default async function StudentHome({
     }),
     examMarksFor(ctx),
     studentWeek(ctx, ctx.membershipId, { weekOf: today, todayKey: today }),
+    // What the pupil record still lacks for a certificate; the card below asks for it.
+    pupilRecordFor(ctx, ctx.membershipId).then((r) => r.missing as string[]).catch(() => [] as string[]),
   ]);
 
   const streak = computeStreak(attendance.recent);
@@ -108,6 +112,8 @@ export default async function StudentHome({
   return (
     <div className="space-y-6">
       {welcome === "1" && <StudentWelcome name={name} handle={handle ?? null} />}
+
+      <CompleteRecordCard missing={recordMissing} href="/student/record" />
 
       <div className="flex items-center gap-4">
         <Avatar avatarKey={membership.user.avatarKey} name={membership.user.name} size="lg" ring />

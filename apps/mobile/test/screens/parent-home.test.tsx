@@ -24,6 +24,24 @@ const OVERVIEW = {
 };
 
 describe("the guardian's overview", () => {
+  const RECORD_PATH = "/api/v1/family/record";
+  const record = (missing: string[]) => ({ studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: null, birthdate: "2016-03-14", record: null, missing, complete: missing.length === 0, canEdit: true });
+
+  it("nudges to complete the school record while a certificate field is blank, for the child on screen, and not once it is complete", async () => {
+    const { fetch } = await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record(["fatherName", "admissionDate"]) });
+    expect(await screen.findByText("Complete the school record")).toBeTruthy();
+    expect(screen.getByText("The school needs a few details for certificates: Father's name, Date of admission.")).toBeTruthy();
+    expect(calls(fetch, RECORD_PATH)[0]!.url.searchParams.get("childId")).toBe(ID.child);
+    await press(screen.getByRole("button", { name: "Fill it in" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/record", params: { child: ID.child } });
+  });
+
+  it("shows no record card once the record is complete, or while the record cannot be read", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record([]) });
+    await screen.findByText("ZZ Asha was marked present");
+    expect(screen.queryByText("Complete the school record")).toBeNull();
+  });
+
   it("is loading while the overview is on its way", async () => {
     await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": pending });
     expect(await screen.findByRole("progressbar")).toBeTruthy();

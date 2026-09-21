@@ -66,7 +66,7 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname, "../../"),
   // The PDF renderer reads the Devanagari font from disk at request time; the
   // standalone build only carries what is imported, so the files are named.
-  outputFileTracingIncludes: { "/api/v1/shared/report-cards/[cardId]/pdf": ["./src/lib/pdf-fonts/*.ttf"], "/api/v1/teaching/classes/[classId]/report-cards/pdf": ["./src/lib/pdf-fonts/*.ttf"] },
+  outputFileTracingIncludes: { "/api/v1/shared/report-cards/[cardId]/pdf": ["./src/lib/pdf-fonts/*.ttf"], "/api/v1/teaching/classes/[classId]/report-cards/pdf": ["./src/lib/pdf-fonts/*.ttf"], "/api/v1/shared/certificates/[certificateId]/pdf": ["./src/lib/pdf-fonts/*.ttf"] },
   serverExternalPackages: ["@node-rs/argon2", "web-push"],
   // Workspace packages ship TypeScript source, not a build; Next compiles them.
   transpilePackages: ["@edulink/i18n", "@edulink/contracts", "@edulink/api-client"],

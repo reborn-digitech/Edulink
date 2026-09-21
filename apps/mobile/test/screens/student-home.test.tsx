@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react-native";
-import { LESSON, ME_STUDENT, mockRouter, pending, refused, renderFamily, SUMMARY, press } from "./family-helpers";
+import { calls, LESSON, ME_STUDENT, mockRouter, pending, refused, renderFamily, SUMMARY, press } from "./family-helpers";
 import { StudentHome } from "@/screens/family/student-home";
 
 const OVERVIEW = {
@@ -27,6 +27,24 @@ const OVERVIEW = {
 const PATH = "/api/v1/family/student/overview";
 
 describe("the pupil's Today", () => {
+  const RECORD_PATH = "/api/v1/family/record";
+  const record = (missing: string[]) => ({ studentMembershipId: "m-pupil", studentName: "ZZ Pupil", className: "ZZ 5A", studentCode: null, birthdate: "2014-03-14", record: null, missing, complete: missing.length === 0, canEdit: true });
+
+  it("nudges to complete the school record while a certificate field is blank, asking for the pupil's own record, and not once it is complete", async () => {
+    const { fetch } = await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => OVERVIEW, [RECORD_PATH]: () => record(["motherTongue"]) });
+    expect(await screen.findByText("Complete the school record")).toBeTruthy();
+    expect(screen.getByText("The school needs a few details for certificates: Mother tongue.")).toBeTruthy();
+    expect(calls(fetch, RECORD_PATH)[0]!.url.searchParams.get("childId")).toBeNull();
+    await press(screen.getByRole("button", { name: "Fill it in" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/record", params: {} });
+  });
+
+  it("shows no record card once the record is complete", async () => {
+    await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => OVERVIEW, [RECORD_PATH]: () => record([]) });
+    await screen.findByText("Hi ZZ Pupil 👋");
+    expect(screen.queryByText("Complete the school record")).toBeNull();
+  });
+
   it("is loading while the overview is on its way", async () => {
     await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: pending });
     expect(await screen.findByRole("progressbar")).toBeTruthy();

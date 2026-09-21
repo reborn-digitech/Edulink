@@ -60,6 +60,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     // How a report card is worked out and printed: the office's rules, read by every card generated.
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
+    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
+    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
@@ -102,6 +104,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
+    { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
+    { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
@@ -152,6 +156,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/student/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/student/work", "/student/grades"] },
     // ONE place for "how did I do": exam marks, the exams ahead, report cards.
     { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
+    { href: "/student/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "school", also: ["/certificates", "/student/record"] },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
@@ -171,6 +176,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/parent/homework", "/parent/grades"] },
     { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
+    { href: "/parent/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "daily", also: ["/certificates", "/parent/record"] },
     { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
     { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },

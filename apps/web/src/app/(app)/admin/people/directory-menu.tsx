@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ArrowCounterClockwiseIcon,
   BooksIcon,
   CakeIcon,
+  CertificateIcon,
   KeyIcon,
   IdentificationCardIcon,
   DotsThreeIcon,
@@ -202,6 +204,19 @@ export function DirectoryMenu({
                 >
                   {t("people.linkParent")}
                 </MenuItem>
+              )}
+
+              {/* The office's certificates for a pupil: a link, not a panel,
+                  because the issue screen needs the whole page. */}
+              {isStudent && !hasLeft && (
+                <Link
+                  href={`/admin/certificates/issue?membershipId=${membershipId}`}
+                  onClick={() => setOpen(false)}
+                  className="flex w-full items-center gap-2.5 px-3.5 py-2.5 text-left text-sm font-medium text-fg transition-colors hover:bg-surface-muted"
+                >
+                  <CertificateIcon className="size-4" />
+                  {t("certificates.issueFor")}
+                </Link>
               )}
 
               {isStudent &&

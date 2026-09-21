@@ -52987,6 +52987,4003 @@
           }
         ]
       }
+    },
+    "/api/v1/office/certificate-templates": {
+      "get": {
+        "summary": "The school's certificate templates, the presets in every language and the placeholders with a sample pupil's values",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "templates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TC",
+                              "NIRGAM",
+                              "BONAFIDE",
+                              "CHARACTER",
+                              "STUDY",
+                              "CUSTOM"
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "locale": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 120
+                          },
+                          "intro": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "rows": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 80
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "maxLength": 200
+                                }
+                              },
+                              "required": [
+                                "label",
+                                "value"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "maxItems": 40
+                          },
+                          "outro": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "layout": {
+                            "type": "object",
+                            "properties": {
+                              "showLogo": {
+                                "type": "boolean"
+                              },
+                              "showAddress": {
+                                "type": "boolean"
+                              },
+                              "useBrandColour": {
+                                "type": "boolean"
+                              },
+                              "signatureLeft": {
+                                "type": "string",
+                                "maxLength": 40
+                              },
+                              "signatureRight": {
+                                "type": "string",
+                                "maxLength": 40
+                              },
+                              "footerNote": {
+                                "type": "string",
+                                "maxLength": 240,
+                                "nullable": true
+                              },
+                              "paper": {
+                                "type": "string",
+                                "enum": [
+                                  "A4",
+                                  "LETTER"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "showLogo",
+                              "showAddress",
+                              "useBrandColour",
+                              "signatureLeft",
+                              "signatureRight",
+                              "footerNote",
+                              "paper"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "serialPrefix": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9-]{1,12}$"
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "issuedCount": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "name",
+                          "locale",
+                          "title",
+                          "intro",
+                          "rows",
+                          "outro",
+                          "layout",
+                          "serialPrefix",
+                          "id",
+                          "issuedCount",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "presets": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "$ref": "#/properties/templates/items/properties/kind"
+                          },
+                          "name": {
+                            "$ref": "#/properties/templates/items/properties/name"
+                          },
+                          "locale": {
+                            "$ref": "#/properties/templates/items/properties/locale"
+                          },
+                          "title": {
+                            "$ref": "#/properties/templates/items/properties/title"
+                          },
+                          "intro": {
+                            "$ref": "#/properties/templates/items/properties/intro"
+                          },
+                          "rows": {
+                            "$ref": "#/properties/templates/items/properties/rows"
+                          },
+                          "outro": {
+                            "$ref": "#/properties/templates/items/properties/outro"
+                          },
+                          "layout": {
+                            "$ref": "#/properties/templates/items/properties/layout"
+                          },
+                          "serialPrefix": {
+                            "$ref": "#/properties/templates/items/properties/serialPrefix"
+                          },
+                          "key": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "name",
+                          "locale",
+                          "title",
+                          "intro",
+                          "rows",
+                          "outro",
+                          "layout",
+                          "serialPrefix",
+                          "key"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "placeholders": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "sample": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "label",
+                          "sample"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "templates",
+                    "presets",
+                    "placeholders"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a template; the name is unique per school",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "locale": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "intro": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 200
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 40
+                    },
+                    "outro": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showLogo": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showLogo",
+                        "showAddress",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "serialPrefix": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9-]{1,12}$"
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "issuedCount": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "name",
+                    "locale",
+                    "title",
+                    "intro",
+                    "rows",
+                    "outro",
+                    "layout",
+                    "serialPrefix",
+                    "id",
+                    "issuedCount",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "TC",
+                      "NIRGAM",
+                      "BONAFIDE",
+                      "CHARACTER",
+                      "STUDY",
+                      "CUSTOM"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  },
+                  "locale": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "intro": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "rows": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "value": {
+                          "type": "string",
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 40
+                  },
+                  "outro": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "layout": {
+                    "type": "object",
+                    "properties": {
+                      "showLogo": {
+                        "type": "boolean"
+                      },
+                      "showAddress": {
+                        "type": "boolean"
+                      },
+                      "useBrandColour": {
+                        "type": "boolean"
+                      },
+                      "signatureLeft": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "signatureRight": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "footerNote": {
+                        "type": "string",
+                        "maxLength": 240,
+                        "nullable": true
+                      },
+                      "paper": {
+                        "type": "string",
+                        "enum": [
+                          "A4",
+                          "LETTER"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "showLogo",
+                      "showAddress",
+                      "useBrandColour",
+                      "signatureLeft",
+                      "signatureRight",
+                      "footerNote",
+                      "paper"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "serialPrefix": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9-]{1,12}$"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "kind",
+                  "name",
+                  "locale",
+                  "title",
+                  "intro",
+                  "rows",
+                  "outro",
+                  "layout",
+                  "serialPrefix"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/certificate-templates/{templateId}": {
+      "post": {
+        "summary": "Replace a template's wording, rows, layout and prefix; certificates already issued keep theirs",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 80
+                    },
+                    "locale": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "title": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 120
+                    },
+                    "intro": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 200
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "maxItems": 40
+                    },
+                    "outro": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showLogo": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showLogo",
+                        "showAddress",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "serialPrefix": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9-]{1,12}$"
+                    },
+                    "active": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "issuedCount": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "name",
+                    "locale",
+                    "title",
+                    "intro",
+                    "rows",
+                    "outro",
+                    "layout",
+                    "serialPrefix",
+                    "id",
+                    "issuedCount",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "TC",
+                      "NIRGAM",
+                      "BONAFIDE",
+                      "CHARACTER",
+                      "STUDY",
+                      "CUSTOM"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80
+                  },
+                  "locale": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi",
+                      "mr"
+                    ]
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "intro": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "rows": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "value": {
+                          "type": "string",
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "value"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 40
+                  },
+                  "outro": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "layout": {
+                    "type": "object",
+                    "properties": {
+                      "showLogo": {
+                        "type": "boolean"
+                      },
+                      "showAddress": {
+                        "type": "boolean"
+                      },
+                      "useBrandColour": {
+                        "type": "boolean"
+                      },
+                      "signatureLeft": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "signatureRight": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "footerNote": {
+                        "type": "string",
+                        "maxLength": 240,
+                        "nullable": true
+                      },
+                      "paper": {
+                        "type": "string",
+                        "enum": [
+                          "A4",
+                          "LETTER"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "showLogo",
+                      "showAddress",
+                      "useBrandColour",
+                      "signatureLeft",
+                      "signatureRight",
+                      "footerNote",
+                      "paper"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "serialPrefix": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9-]{1,12}$"
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "default": true
+                  }
+                },
+                "required": [
+                  "kind",
+                  "name",
+                  "locale",
+                  "title",
+                  "intro",
+                  "rows",
+                  "outro",
+                  "layout",
+                  "serialPrefix"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/certificate-templates/{templateId}/archive": {
+      "post": {
+        "summary": "Retire a template; it is offered no more, and what was issued from it stands",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/pupil-records": {
+      "get": {
+        "summary": "Every pupil with the certificate fields still blank on their record (?missing=1 for the incomplete only)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "missing": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "fatherName",
+                                "motherName",
+                                "placeOfBirth",
+                                "nationality",
+                                "religion",
+                                "caste",
+                                "category",
+                                "motherTongue",
+                                "addressLine",
+                                "city",
+                                "postalCode",
+                                "admissionNumber",
+                                "admissionDate",
+                                "admittedToGrade",
+                                "previousSchool",
+                                "penNumber"
+                              ]
+                            }
+                          },
+                          "requestedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "familyFilledAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/requestedAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "missing",
+                          "requestedAt",
+                          "familyFilledAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "total": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "complete": {
+                      "$ref": "#/properties/total"
+                    },
+                    "incomplete": {
+                      "$ref": "#/properties/total"
+                    }
+                  },
+                  "required": [
+                    "rows",
+                    "total",
+                    "complete",
+                    "incomplete"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "missing": {
+                    "type": "string",
+                    "enum": [
+                      "1"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/pupil-records/{membershipId}": {
+      "get": {
+        "summary": "One pupil's record as the office sees it",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "birthdate": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "fatherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "placeOfBirth": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "religion": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "caste": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "category": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherTongue": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "admittedToGrade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previousSchool": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "penNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "familyFilledAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "fatherName",
+                        "motherName",
+                        "placeOfBirth",
+                        "nationality",
+                        "religion",
+                        "caste",
+                        "category",
+                        "motherTongue",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "admissionNumber",
+                        "admissionDate",
+                        "admittedToGrade",
+                        "previousSchool",
+                        "penNumber",
+                        "requestedAt",
+                        "familyFilledAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "fatherName",
+                          "motherName",
+                          "placeOfBirth",
+                          "nationality",
+                          "religion",
+                          "caste",
+                          "category",
+                          "motherTongue",
+                          "addressLine",
+                          "city",
+                          "postalCode",
+                          "admissionNumber",
+                          "admissionDate",
+                          "admittedToGrade",
+                          "previousSchool",
+                          "penNumber"
+                        ]
+                      }
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "studentCode",
+                    "birthdate",
+                    "record",
+                    "missing",
+                    "complete",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "The office corrects a pupil's record",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "birthdate": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "fatherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "placeOfBirth": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "religion": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "caste": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "category": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherTongue": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "admittedToGrade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previousSchool": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "penNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "familyFilledAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "fatherName",
+                        "motherName",
+                        "placeOfBirth",
+                        "nationality",
+                        "religion",
+                        "caste",
+                        "category",
+                        "motherTongue",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "admissionNumber",
+                        "admissionDate",
+                        "admittedToGrade",
+                        "previousSchool",
+                        "penNumber",
+                        "requestedAt",
+                        "familyFilledAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "fatherName",
+                          "motherName",
+                          "placeOfBirth",
+                          "nationality",
+                          "religion",
+                          "caste",
+                          "category",
+                          "motherTongue",
+                          "addressLine",
+                          "city",
+                          "postalCode",
+                          "admissionNumber",
+                          "admissionDate",
+                          "admittedToGrade",
+                          "previousSchool",
+                          "penNumber"
+                        ]
+                      }
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "studentCode",
+                    "birthdate",
+                    "record",
+                    "missing",
+                    "complete",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fatherName": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "motherName": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "placeOfBirth": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "nationality": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "religion": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "caste": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "category": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherTongue": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "addressLine": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "city": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "postalCode": {
+                    "type": "string",
+                    "maxLength": 12
+                  },
+                  "admissionNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "admissionDate": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  },
+                  "admittedToGrade": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "previousSchool": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "penNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/pupil-records/request": {
+      "post": {
+        "summary": "Ask the families to fill what is blank: every incomplete pupil, or the ones named",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "asked": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "families": {
+                      "$ref": "#/properties/asked"
+                    }
+                  },
+                  "required": [
+                    "asked",
+                    "families"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "membershipIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^c[a-z0-9]{20,}$"
+                    },
+                    "maxItems": 500
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/certificates": {
+      "get": {
+        "summary": "Every certificate the school has issued, newest first (?membershipId= for one pupil)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TC",
+                              "NIRGAM",
+                              "BONAFIDE",
+                              "CHARACTER",
+                              "STUDY",
+                              "CUSTOM"
+                            ]
+                          },
+                          "locale": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "serial": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/issuedAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "locale",
+                          "serial",
+                          "title",
+                          "studentMembershipId",
+                          "studentName",
+                          "issuedAt",
+                          "revokedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "membershipId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Issue one certificate to one pupil from a template: filled from the record, numbered, frozen, the family told",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "locale": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "intro": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 200
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "outro": {
+                      "type": "string"
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showLogo": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showLogo",
+                        "showAddress",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "purpose": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "remark": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "school": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "code": {
+                          "type": "string"
+                        },
+                        "logoPath": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "region": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactEmail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "brandPrimary": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "code",
+                        "logoPath",
+                        "addressLine",
+                        "city",
+                        "region",
+                        "postalCode",
+                        "contactPhone",
+                        "contactEmail",
+                        "brandPrimary"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "issuedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "issuedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/issuedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "revokedReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "canRevoke": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "kind",
+                    "locale",
+                    "serial",
+                    "title",
+                    "intro",
+                    "rows",
+                    "outro",
+                    "layout",
+                    "purpose",
+                    "remark",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "school",
+                    "code",
+                    "issuedAt",
+                    "issuedByName",
+                    "revokedAt",
+                    "revokedReason",
+                    "missing",
+                    "canRevoke"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "templateId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "studentMembershipId": {
+                    "$ref": "#/properties/templateId"
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "remark": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "leftOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "required": [
+                  "templateId",
+                  "studentMembershipId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/certificates/{certificateId}/revoke": {
+      "post": {
+        "summary": "Revoke an issued certificate with a reason; the paper stays on the list and the check says so",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "locale": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "intro": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 200
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "outro": {
+                      "type": "string"
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showLogo": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showLogo",
+                        "showAddress",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "purpose": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "remark": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "school": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "code": {
+                          "type": "string"
+                        },
+                        "logoPath": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "region": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactEmail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "brandPrimary": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "code",
+                        "logoPath",
+                        "addressLine",
+                        "city",
+                        "region",
+                        "postalCode",
+                        "contactPhone",
+                        "contactEmail",
+                        "brandPrimary"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "issuedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "issuedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/issuedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "revokedReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "canRevoke": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "kind",
+                    "locale",
+                    "serial",
+                    "title",
+                    "intro",
+                    "rows",
+                    "outro",
+                    "layout",
+                    "purpose",
+                    "remark",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "school",
+                    "code",
+                    "issuedAt",
+                    "issuedByName",
+                    "revokedAt",
+                    "revokedReason",
+                    "missing",
+                    "canRevoke"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "certificateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/shared/certificates/{certificateId}": {
+      "get": {
+        "summary": "One issued certificate as it will be printed, for its pupil, a guardian, its class teacher or the office",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT",
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "locale": {
+                      "type": "string",
+                      "enum": [
+                        "en",
+                        "hi",
+                        "mr"
+                      ]
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "intro": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          },
+                          "value": {
+                            "type": "string",
+                            "maxLength": 200
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "value"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "outro": {
+                      "type": "string"
+                    },
+                    "layout": {
+                      "type": "object",
+                      "properties": {
+                        "showLogo": {
+                          "type": "boolean"
+                        },
+                        "showAddress": {
+                          "type": "boolean"
+                        },
+                        "useBrandColour": {
+                          "type": "boolean"
+                        },
+                        "signatureLeft": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "signatureRight": {
+                          "type": "string",
+                          "maxLength": 40
+                        },
+                        "footerNote": {
+                          "type": "string",
+                          "maxLength": 240,
+                          "nullable": true
+                        },
+                        "paper": {
+                          "type": "string",
+                          "enum": [
+                            "A4",
+                            "LETTER"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "showLogo",
+                        "showAddress",
+                        "useBrandColour",
+                        "signatureLeft",
+                        "signatureRight",
+                        "footerNote",
+                        "paper"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "purpose": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "remark": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "school": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "code": {
+                          "type": "string"
+                        },
+                        "logoPath": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "region": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactPhone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "contactEmail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "brandPrimary": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "code",
+                        "logoPath",
+                        "addressLine",
+                        "city",
+                        "region",
+                        "postalCode",
+                        "contactPhone",
+                        "contactEmail",
+                        "brandPrimary"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "issuedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "issuedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/issuedAt"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "revokedReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "canRevoke": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "kind",
+                    "locale",
+                    "serial",
+                    "title",
+                    "intro",
+                    "rows",
+                    "outro",
+                    "layout",
+                    "purpose",
+                    "remark",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "school",
+                    "code",
+                    "issuedAt",
+                    "issuedByName",
+                    "revokedAt",
+                    "revokedReason",
+                    "missing",
+                    "canRevoke"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "certificateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/shared/certificates/{certificateId}/pdf": {
+      "get": {
+        "summary": "The same certificate as a PDF (application/pdf) in the language it was issued in",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT",
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "certificateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/family/record": {
+      "get": {
+        "summary": "The pupil record for the pupil, or for a child (?childId=; the first child when omitted), with what is still blank",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "birthdate": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "fatherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "placeOfBirth": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "religion": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "caste": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "category": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherTongue": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "admittedToGrade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previousSchool": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "penNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "familyFilledAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "fatherName",
+                        "motherName",
+                        "placeOfBirth",
+                        "nationality",
+                        "religion",
+                        "caste",
+                        "category",
+                        "motherTongue",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "admissionNumber",
+                        "admissionDate",
+                        "admittedToGrade",
+                        "previousSchool",
+                        "penNumber",
+                        "requestedAt",
+                        "familyFilledAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "fatherName",
+                          "motherName",
+                          "placeOfBirth",
+                          "nationality",
+                          "religion",
+                          "caste",
+                          "category",
+                          "motherTongue",
+                          "addressLine",
+                          "city",
+                          "postalCode",
+                          "admissionNumber",
+                          "admissionDate",
+                          "admittedToGrade",
+                          "previousSchool",
+                          "penNumber"
+                        ]
+                      }
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "studentCode",
+                    "birthdate",
+                    "record",
+                    "missing",
+                    "complete",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "The family fills the record (?childId= for a guardian); a blank clears the field",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "studentCode": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "birthdate": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "fatherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "placeOfBirth": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nationality": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "religion": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "caste": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "category": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherTongue": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "admissionDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "admittedToGrade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previousSchool": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "penNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "familyFilledAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "fatherName",
+                        "motherName",
+                        "placeOfBirth",
+                        "nationality",
+                        "religion",
+                        "caste",
+                        "category",
+                        "motherTongue",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "admissionNumber",
+                        "admissionDate",
+                        "admittedToGrade",
+                        "previousSchool",
+                        "penNumber",
+                        "requestedAt",
+                        "familyFilledAt",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "missing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "fatherName",
+                          "motherName",
+                          "placeOfBirth",
+                          "nationality",
+                          "religion",
+                          "caste",
+                          "category",
+                          "motherTongue",
+                          "addressLine",
+                          "city",
+                          "postalCode",
+                          "admissionNumber",
+                          "admissionDate",
+                          "admittedToGrade",
+                          "previousSchool",
+                          "penNumber"
+                        ]
+                      }
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "studentCode",
+                    "birthdate",
+                    "record",
+                    "missing",
+                    "complete",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fatherName": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "motherName": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "placeOfBirth": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "nationality": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "religion": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "caste": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "category": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherTongue": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "addressLine": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "city": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "postalCode": {
+                    "type": "string",
+                    "maxLength": 12
+                  },
+                  "admissionNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "admissionDate": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  },
+                  "admittedToGrade": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "previousSchool": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "penNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/family/certificates": {
+      "get": {
+        "summary": "The certificates issued to the pupil, or to each of a guardian's children",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TC",
+                              "NIRGAM",
+                              "BONAFIDE",
+                              "CHARACTER",
+                              "STUDY",
+                              "CUSTOM"
+                            ]
+                          },
+                          "locale": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "serial": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/issuedAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "locale",
+                          "serial",
+                          "title",
+                          "studentMembershipId",
+                          "studentName",
+                          "issuedAt",
+                          "revokedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/certificates/{code}": {
+      "get": {
+        "summary": "Check a printed code: real or not, which kind, serial, school and date — nothing about the pupil",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ],
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "title": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "schoolName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "issuedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/issuedAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "valid",
+                    "kind",
+                    "serial",
+                    "title",
+                    "schoolName",
+                    "issuedAt",
+                    "revokedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
     }
   }
 }

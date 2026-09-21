@@ -21,6 +21,8 @@ import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
+import { pupilRecordFor } from "@/lib/pupil-records";
+import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { AttendanceBadge } from "@/components/ui/badge";
@@ -115,7 +117,7 @@ export default async function ParentDashboard({
             (periodOrder.get(b.periodId)?.position ?? 0),
         );
 
-  const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent] = await Promise.all([
+  const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: selectedId, session: { dateKey: today } },
@@ -162,6 +164,8 @@ export default async function ParentDashboard({
     // Every child's, not just the one on screen: a consent request has a
     // deadline, and hiding it behind the child switcher is how it gets missed.
     pendingConsents(session),
+    // What the pupil record still lacks for a certificate; the card below asks for it.
+    pupilRecordFor(session, selectedId).then((r) => r.missing as string[]).catch(() => [] as string[]),
   ]);
 
   const streak = computeStreak(attendance.recent);
@@ -218,6 +222,8 @@ export default async function ParentDashboard({
         </div>
       </div>
 
+
+      <CompleteRecordCard missing={recordMissing} href={`/parent/record?child=${selectedId}`} />
 
       {awaitingConsent.length > 0 && (
         <Card className="border-warn/40">

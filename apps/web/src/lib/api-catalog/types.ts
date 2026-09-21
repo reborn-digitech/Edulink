@@ -86,6 +86,13 @@ export type SweepFixture = {
   draftReportCardId: string | null;
   reportCardTitle: string | null;
   reportCardConfig: Record<string, unknown> | null;
+  /** An active template and its body to send back, a retired one for the archive no-op, an issued certificate, one that may still be revoked, and its printed code. */
+  certificateTemplateId: string | null;
+  certificateTemplate: Record<string, unknown> | null;
+  retiredTemplateId: string | null;
+  certificateId: string | null;
+  revocableCertificateId: string | null;
+  certificateCode: string | null;
   todayKey: string;
 };
 

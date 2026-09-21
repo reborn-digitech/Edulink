@@ -8,6 +8,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { CompleteRecordCard } from "./record";
 import { ATTENDANCE, ExamMarksCards, formatDateKey, LessonList, Pill, relativeTime } from "./shared";
 
 /** The pupil's Today — the web's /student: attendance, the day's lessons, what is due, the latest exam marks. */
@@ -51,6 +52,9 @@ export function StudentHome() {
               t("student.lastFourWeeks"),
             ].join(" · ")}
           </Text>
+
+          {/* While a certificate field is still blank on the pupil's own record, the nudge to fill it; gone once it is complete. */}
+          <CompleteRecordCard />
 
           <Card title={t("student.todayLessons")} action={<Button variant="ghost" label={t("teacher.openTimetable")} onPress={() => router.push("/(app)/timetable" as never)} />}>
             <Text variant="sm" tone="muted">
