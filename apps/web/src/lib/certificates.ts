@@ -6,6 +6,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
 import { getAttendanceSummary } from "./attendance";
+import { markRequestIssued, requestPurpose } from "./certificate-requests";
 import { ageInYears, todayKey } from "./dates";
 import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
@@ -188,7 +189,9 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
   // Everything the document names is read before the lock is taken: a
   // query on the shared client while the transaction holds the year's row
   // would run on another connection, outside the tenant's context.
-  const facts = await factsFor(caller.schoolId, input.studentMembershipId, { dateKey, serial: "", purpose: input.purpose?.trim() || null, remark: input.remark?.trim() || null }, input.leftOn);
+  // Issued from an ask: the ask's purpose stands unless the office wrote one.
+  const purpose = input.purpose?.trim() || (input.requestId ? await requestPurpose(caller.schoolId, input.requestId) : null);
+  const facts = await factsFor(caller.schoolId, input.studentMembershipId, { dateKey, serial: "", purpose, remark: input.remark?.trim() || null }, input.leftOn);
   const issued = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     // The year's row is the lock: two issues at once take numbers in turn.
@@ -218,7 +221,7 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
         outro: outro.text,
         layoutJson: template.layoutJson,
         dataJson: JSON.stringify({ ...data, missing }),
-        purpose: input.purpose?.trim() || null,
+        purpose,
         remark: input.remark?.trim() || null,
         code: newCode(),
         issuedByUserId: caller.user.id,
@@ -227,7 +230,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
     });
   });
 
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.issue", targetType: "IssuedCertificate", targetId: issued.id, meta: { kind: template.kind, locale, serial: issued.serial, templateId: template.id } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.issue", targetType: "IssuedCertificate", targetId: issued.id, meta: { kind: template.kind, locale, serial: issued.serial, templateId: template.id, requestId: input.requestId ?? null } });
+  if (input.requestId) await markRequestIssued(caller.schoolId, input.requestId, issued.id);
   await notifyGuardians(input.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
     kind: "SYSTEM",

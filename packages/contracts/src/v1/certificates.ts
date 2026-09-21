@@ -201,6 +201,8 @@ export const certificateIssueSchema = z.object({
   remark: z.string().trim().max(400).optional(),
   /** For a TC issued before the pupil's last day: the date the document should carry. */
   leftOn: dateKey.optional(),
+  /** Issued from a family's request: the request is marked issued and points at the paper. */
+  requestId: cuid.optional(),
 });
 
 export const issuedCertificateSchema = z.object({
@@ -267,3 +269,45 @@ export const certificateVerifySchema = z.object({
   issuedAt: iso.nullable(),
   revokedAt: iso.nullable(),
 });
+
+/* -------------------------------------------------------------------------- */
+/* Certificate requests                                                         */
+/* -------------------------------------------------------------------------- */
+
+export const certificateRequestStatusSchema = z.enum(["PENDING", "ISSUED", "DECLINED", "CANCELLED"]);
+export type CertificateRequestStatus = z.infer<typeof certificateRequestStatusSchema>;
+
+/** POST /api/v1/family/certificate-requests — a pupil for themselves, a guardian for a child (?childId=). */
+export const certificateRequestSaveSchema = z.object({
+  kind: certificateKindSchema,
+  purpose: z.string().trim().min(1).max(200),
+});
+export type CertificateRequestSave = z.infer<typeof certificateRequestSaveSchema>;
+
+export const certificateRequestSchema = z.object({
+  id: z.string(),
+  studentMembershipId: z.string(),
+  studentName: z.string(),
+  className: z.string().nullable(),
+  kind: certificateKindSchema,
+  purpose: z.string(),
+  status: certificateRequestStatusSchema,
+  requestedByName: z.string(),
+  certificateId: z.string().nullable(),
+  serial: z.string().nullable(),
+  declineReason: z.string().nullable(),
+  decidedAt: iso.nullable(),
+  createdAt: iso,
+});
+export type CertificateRequestView = z.infer<typeof certificateRequestSchema>;
+
+/** GET /api/v1/family/certificate-requests — mine (or my children's), with the kinds the school offers. */
+export const familyCertificateRequestsSchema = z.object({
+  items: z.array(certificateRequestSchema),
+  /** The kinds with an active template: what may be asked for. */
+  kinds: z.array(certificateKindSchema),
+});
+/** GET /api/v1/office/certificate-requests?status= — the queue, pending first. */
+export const officeCertificateRequestsSchema = z.object({ items: z.array(certificateRequestSchema), pending: count });
+export const officeCertificateRequestsQuerySchema = z.object({ status: certificateRequestStatusSchema.optional() });
+export const certificateRequestDeclineSchema = z.object({ reason: z.string().trim().min(1).max(400) });

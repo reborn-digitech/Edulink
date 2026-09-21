@@ -16,6 +16,29 @@ const CERT = "czz00000000000000000cert1";
 const RECORD = `GET /api/v1/office/pupil-records/${ASHA}`;
 const TEMPLATES = "GET /api/v1/office/certificate-templates";
 const ISSUE = "POST /api/v1/office/certificates";
+const QUEUE = "GET /api/v1/office/certificate-requests";
+const BELA = "czz000000000000000pupil2";
+const REQ1 = "czz000000000000000000req1";
+const REQ2 = "czz000000000000000000req2";
+const REQ3 = "czz000000000000000000req3";
+const DECLINE = `POST /api/v1/office/certificate-requests/${REQ1}/decline`;
+const request = (id: string, status: string, extra: Record<string, unknown> = {}) => ({
+  id,
+  studentMembershipId: BELA,
+  studentName: "ZZ Bela",
+  className: "ZZ 5B",
+  kind: "BONAFIDE",
+  purpose: "ZZ bus pass",
+  status,
+  requestedByName: "ZZ Parent",
+  certificateId: null,
+  serial: null,
+  declineReason: null,
+  decidedAt: null,
+  createdAt: "2026-09-12T05:00:00.000Z",
+  ...extra,
+});
+const QUEUE_VIEW = { items: [request(REQ1, "PENDING"), request(REQ2, "PENDING", { kind: "STUDY", purpose: "ZZ scholarship", requestedByName: "ZZ Bela" }), request(REQ3, "DECLINED", { kind: "CHARACTER", declineReason: "ZZ fees due" })], pending: 2 };
 
 const LAYOUT = { showLogo: true, showAddress: true, useBrandColour: false, signatureLeft: "Office", signatureRight: "Principal", footerNote: null, paper: "A4" };
 const template = (id: string, kind: string, name: string, locale: string, active = true) => ({ id, kind, name, locale, title: name, intro: "", rows: [], outro: "", layout: LAYOUT, serialPrefix: kind, active, issuedCount: 0, updatedAt: "2026-09-01T05:00:00.000Z" });
@@ -47,6 +70,7 @@ const ISSUED = {
 };
 
 const answers = (): Answers => ({
+  [QUEUE]: () => json({ items: [], pending: 0 }),
   [RECORD]: () => json(VIEW),
   [TEMPLATES]: () => json(TEMPLATE_VIEW),
   [ISSUE]: () => json(ISSUED),
@@ -67,7 +91,8 @@ beforeEach(() => {
 describe("issuing a certificate", () => {
   it("loads the pupil and the active templates, each named with its language, and warns what the record has nothing for", async () => {
     await mountStaff(compose(), "ADMIN", answers());
-    expect(screen.getByRole("progressbar")).toBeTruthy();
+    // The queue and the form each load on their own.
+    expect(screen.getAllByRole("progressbar").length).toBeGreaterThanOrEqual(1);
     expect(await screen.findByRole("header", { name: "ZZ Asha" })).toBeTruthy();
     expect(screen.getByText("Pupil · ZZ 5A · ZZ-001")).toBeTruthy();
     expect(screen.getByRole("radio", { name: "ZZ Bonafide · English" })).toBeTruthy();
@@ -135,6 +160,68 @@ describe("issuing a certificate", () => {
     expect(await screen.findByText("No pupils yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Pupil records" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/pupil-records");
+  });
+});
+
+describe("requests from families", () => {
+  it("lists the queue pending first with the pupil, the class, the kind, the purpose and who asked, counts what waits, and only a pending one has the buttons", async () => {
+    mockRouter.params = {};
+    await mountStaff(compose(), "ADMIN", { ...answers(), [QUEUE]: () => json(QUEUE_VIEW) });
+    expect(await screen.findByText("Requests from families")).toBeTruthy();
+    expect(screen.getByText("2 waiting")).toBeTruthy();
+    expect(screen.getAllByText("ZZ Bela · ZZ 5B")).toHaveLength(3);
+    expect(screen.getByText("Bonafide certificate · ZZ bus pass")).toBeTruthy();
+    expect(screen.getByText("Study certificate · ZZ scholarship")).toBeTruthy();
+    expect(screen.getAllByText(/^ZZ Parent · Asked /)).toHaveLength(2);
+    expect(screen.getByText(/^ZZ Bela · Asked /)).toBeTruthy();
+    expect(screen.getByText("Declined: ZZ fees due")).toBeTruthy();
+    expect(screen.getAllByText("Waiting for the office")).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "Issue this" })).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: "Decline" })).toHaveLength(2);
+    // A study certificate has no active template, so that one cannot be issued from here.
+    expect(screen.getAllByRole("button", { name: "Issue this" })[1]).toBeDisabled();
+    // With no pupil opened, the form still says so beneath the queue.
+    expect(screen.getByText("No pupils yet")).toBeTruthy();
+  });
+
+  it("\"Issue this\" puts the pupil and a template of that kind into the form with the purpose, and the issue carries the request", async () => {
+    mockRouter.params = {};
+    const { calls } = await mountStaff(compose(), "ADMIN", { ...answers(), [QUEUE]: () => json(QUEUE_VIEW), [`GET /api/v1/office/pupil-records/${BELA}`]: () => json({ ...VIEW, studentMembershipId: BELA, studentName: "ZZ Bela", className: "ZZ 5B", missing: [] }) });
+    await screen.findByText("Requests from families");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Issue this" })[0]!);
+    expect(await screen.findByRole("header", { name: "ZZ Bela" })).toBeTruthy();
+    expect(screen.getByText("Issuing for a request: ZZ Bela, Bonafide certificate — ZZ bus pass")).toBeTruthy();
+    expect(screen.getByRole("radio", { name: "ZZ Bonafide · English" })).toBeChecked();
+    expect(screen.getByLabelText("Purpose")).toHaveDisplayValue("ZZ bus pass");
+    await fireEvent.press(screen.getByRole("button", { name: "Issue" }));
+    await waitFor(() => expect(calls().some((c) => c.line === ISSUE)).toBe(true));
+    expect(calls().find((c) => c.line === ISSUE)!.body).toEqual({ templateId: BONAFIDE, studentMembershipId: BELA, requestId: REQ1, purpose: "ZZ bus pass" });
+    expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/certificate", params: { id: CERT } });
+  });
+
+  it("declining asks why, sends nothing without a reason, then posts it and says the family has been told", async () => {
+    const { calls } = await mountStaff(compose(), "PRINCIPAL", { ...answers(), [QUEUE]: () => json(QUEUE_VIEW), [DECLINE]: () => json(request(REQ1, "DECLINED", { declineReason: "ZZ fees due" })) });
+    await screen.findByText("Requests from families");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Decline" })[0]!);
+    expect(screen.getByLabelText("Why not")).toBeTruthy();
+    // The decline button inside the first row's note (the other row keeps its own) is disabled until a reason is typed.
+    expect(screen.getAllByRole("button", { name: "Decline" })[0]).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Why not"), " ZZ fees due ");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Decline" })[0]!);
+    await waitFor(() => expect(calls().some((c) => c.line === DECLINE)).toBe(true));
+    expect(calls().find((c) => c.line === DECLINE)!.body).toEqual({ reason: "ZZ fees due" });
+    expect(await screen.findByText("Request declined; the family has been told.")).toBeTruthy();
+    // The queue is asked for again.
+    await waitFor(() => expect(calls().filter((c) => c.line === QUEUE).length).toBeGreaterThanOrEqual(2));
+  });
+
+  it("with nothing asked for, says so with the door to the issued list", async () => {
+    await mountStaff(compose(), "ADMIN", answers());
+    expect(await screen.findByText("Nothing waiting")).toBeTruthy();
+    expect(screen.getByText("Requests from pupils and guardians appear here.")).toBeTruthy();
+    expect(screen.queryByText(/^\d+ waiting$/)).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Issued certificates" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/staff-certificates");
   });
 });
 

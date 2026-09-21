@@ -870,7 +870,7 @@ async function buildCertificates(school: { id: string; name: string; code: strin
     templates.set(`${spec.kind}-${spec.locale}`, t);
   }
   const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, select: { id: true, name: true, gradeLevel: true }, orderBy: { name: "asc" } });
-  if (!klass) return { templates: specs.length, records: 0, issued: 0 };
+  if (!klass) return { templates: specs.length, records: 0, issued: 0, requests: 0 };
   const roll = await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true, preferredName: true, birthdate: true } } } } }, orderBy: { studentMembershipId: "asc" } });
   const fathers = ["Rohan", "Prakash", "Sunil", "Mahesh", "Anil", "Vijay"];
   const mothers = ["Sneha", "Kavita", "Rekha", "Vandana", "Meena", "Priya"];
@@ -930,7 +930,14 @@ async function buildCertificates(school: { id: string; name: string; code: strin
     });
     issued += 1;
   }
-  return { templates: specs.length, records, issued };
+  // The asks: a pending bonafide from the second pupil (the queue on the issue page), a declined study certificate from the third, and a cancelled one from the first — so the sweep's cancel and decline are no-ops.
+  await db.certificateRequest.deleteMany({ where: { schoolId: school.id } });
+  const pupilUser = async (m: (typeof roll)[number]) => (await db.membership.findUniqueOrThrow({ where: { id: m.studentMembershipId }, select: { userId: true } })).userId;
+  let requests = 0;
+  if (roll[1]) { await db.certificateRequest.create({ data: { schoolId: school.id, studentMembershipId: roll[1].studentMembershipId, requestedByUserId: await pupilUser(roll[1]), kind: "BONAFIDE", purpose: "a bus pass" } }); requests += 1; }
+  if (roll[2]) { await db.certificateRequest.create({ data: { schoolId: school.id, studentMembershipId: roll[2].studentMembershipId, requestedByUserId: await pupilUser(roll[2]), kind: "STUDY", purpose: "a scholarship", status: "DECLINED", declineReason: "Fees for Term 1 are outstanding.", decidedByUserId: adminUserId, decidedAt: new Date() } }); requests += 1; }
+  if (roll[0]) { await db.certificateRequest.create({ data: { schoolId: school.id, studentMembershipId: roll[0].studentMembershipId, requestedByUserId: await pupilUser(roll[0]), kind: "CHARACTER", purpose: "a sports trial", status: "CANCELLED", decidedAt: new Date() } }); requests += 1; }
+  return { templates: specs.length, records, issued, requests };
 }
 
 /**
@@ -1550,7 +1557,7 @@ async function main() {
      staff       ${staffAtt.marked} staff-register marks over five working days for ${staffAtt.staff} staff, one late and one absent — /admin/staff-attendance
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
      exams       ${exams.series} series in Term 1 with ${exams.papers} papers, ${exams.marks} marks; ${exams.cards} report cards (Term 1 published with co-scholastic grades, a draft set) — /admin/report-cards
-     certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked) — /admin/certificates
+     certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked), ${certs.requests} asks (one pending, one declined, one cancelled) — /admin/certificates
      filings     UDISE 27250100101, MSBSHSE, Marathi medium; grade-3 records carry gender, BPL/EWS, one impairment, two Marathi names; ${staffRecords.records} staff records — /admin/filings
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions

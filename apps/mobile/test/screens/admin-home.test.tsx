@@ -91,6 +91,22 @@ const filings = (identityMissing: string[], ready: number) => ({
   academicYearName: "2026-27",
 });
 
+const REQUESTS = "GET /api/v1/office/certificate-requests";
+describe("certificate requests on the office's overview", () => {
+  it("while a request waits, counts it and opens the issue screen", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [REQUESTS]: () => json({ items: [], pending: 3 }) });
+    expect(await screen.findByText("Requests from families")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "3 waiting" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/certificate-issue");
+  });
+
+  it("draws no card when nothing waits", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [REQUESTS]: () => json({ items: [], pending: 0 }) });
+    await screen.findByText("Lessons without a teacher");
+    expect(screen.queryByText("Requests from families")).toBeNull();
+  });
+});
+
 describe("filings on the office's overview", () => {
   it("while the identity has a blank or a pupil lacks a field, names the gap and opens the filings", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings(["udiseCode"], 40)) });

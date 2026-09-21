@@ -8479,23 +8479,28 @@
                               },
                               "gender": {
                                 "type": "string",
-                                "nullable": true
+                                "nullable": true,
+                                "default": null
                               },
                               "socialCategory": {
                                 "type": "string",
-                                "nullable": true
+                                "nullable": true,
+                                "default": null
                               },
                               "academicQualification": {
                                 "type": "string",
-                                "nullable": true
+                                "nullable": true,
+                                "default": null
                               },
                               "professionalQualification": {
                                 "type": "string",
-                                "nullable": true
+                                "nullable": true,
+                                "default": null
                               },
                               "appointmentType": {
                                 "type": "string",
-                                "nullable": true
+                                "nullable": true,
+                                "default": null
                               }
                             },
                             "required": [
@@ -8503,12 +8508,7 @@
                               "designation",
                               "qualification",
                               "joinedOnKey",
-                              "leaveDaysPerYear",
-                              "gender",
-                              "socialCategory",
-                              "academicQualification",
-                              "professionalQualification",
-                              "appointmentType"
+                              "leaveDaysPerYear"
                             ],
                             "additionalProperties": false,
                             "nullable": true
@@ -12626,23 +12626,28 @@
                         },
                         "gender": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": true,
+                          "default": null
                         },
                         "socialCategory": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": true,
+                          "default": null
                         },
                         "academicQualification": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": true,
+                          "default": null
                         },
                         "professionalQualification": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": true,
+                          "default": null
                         },
                         "appointmentType": {
                           "type": "string",
-                          "nullable": true
+                          "nullable": true,
+                          "default": null
                         }
                       },
                       "required": [
@@ -12650,12 +12655,7 @@
                         "designation",
                         "qualification",
                         "joinedOnKey",
-                        "leaveDaysPerYear",
-                        "gender",
-                        "socialCategory",
-                        "academicQualification",
-                        "professionalQualification",
-                        "appointmentType"
+                        "leaveDaysPerYear"
                       ],
                       "additionalProperties": false,
                       "nullable": true
@@ -54328,6 +54328,12 @@
                               ]
                             }
                           },
+                          "missingForFiling": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/properties/rows/items/properties/missing/items"
+                            }
+                          },
                           "requestedAt": {
                             "type": "string",
                             "format": "date-time",
@@ -54347,6 +54353,7 @@
                           "studentName",
                           "className",
                           "missing",
+                          "missingForFiling",
                           "requestedAt",
                           "familyFilledAt"
                         ],
@@ -55805,6 +55812,9 @@
                   "leftOn": {
                     "type": "string",
                     "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "requestId": {
+                    "$ref": "#/properties/templateId"
                   }
                 },
                 "required": [
@@ -57477,6 +57487,873 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/family/certificate-requests": {
+      "get": {
+        "summary": "The pupil's own certificate requests, or a child's (?childId=), with the kinds the school offers",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TC",
+                              "NIRGAM",
+                              "BONAFIDE",
+                              "CHARACTER",
+                              "STUDY",
+                              "CUSTOM"
+                            ]
+                          },
+                          "purpose": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "ISSUED",
+                              "DECLINED",
+                              "CANCELLED"
+                            ]
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "certificateId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "serial": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "declineReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/decidedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "kind",
+                          "purpose",
+                          "status",
+                          "requestedByName",
+                          "certificateId",
+                          "serial",
+                          "declineReason",
+                          "decidedAt",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "kinds": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/items/items/properties/kind"
+                      }
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "kinds"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Ask the office for a certificate: the kind and what it is for (?childId= for a guardian); the same kind while one is pending is the same ask",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "ISSUED",
+                        "DECLINED",
+                        "CANCELLED"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "certificateId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "kind",
+                    "purpose",
+                    "status",
+                    "requestedByName",
+                    "certificateId",
+                    "serial",
+                    "declineReason",
+                    "decidedAt",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "TC",
+                      "NIRGAM",
+                      "BONAFIDE",
+                      "CHARACTER",
+                      "STUDY",
+                      "CUSTOM"
+                    ]
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "kind",
+                  "purpose"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/family/certificate-requests/{requestId}/cancel": {
+      "post": {
+        "summary": "Take a pending ask back; a settled one is answered as it stands",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "ISSUED",
+                        "DECLINED",
+                        "CANCELLED"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "certificateId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "kind",
+                    "purpose",
+                    "status",
+                    "requestedByName",
+                    "certificateId",
+                    "serial",
+                    "declineReason",
+                    "decidedAt",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/certificate-requests": {
+      "get": {
+        "summary": "The queue of asks, pending first (?status=)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TC",
+                              "NIRGAM",
+                              "BONAFIDE",
+                              "CHARACTER",
+                              "STUDY",
+                              "CUSTOM"
+                            ]
+                          },
+                          "purpose": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "ISSUED",
+                              "DECLINED",
+                              "CANCELLED"
+                            ]
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "certificateId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "serial": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "declineReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/decidedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "kind",
+                          "purpose",
+                          "status",
+                          "requestedByName",
+                          "certificateId",
+                          "serial",
+                          "declineReason",
+                          "decidedAt",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "pending": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "pending"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PENDING",
+                      "ISSUED",
+                      "DECLINED",
+                      "CANCELLED"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/certificate-requests/{requestId}/decline": {
+      "post": {
+        "summary": "Decline an ask with a reason; the family is told; a settled one is answered as it stands",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM"
+                      ]
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "ISSUED",
+                        "DECLINED",
+                        "CANCELLED"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "certificateId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "kind",
+                    "purpose",
+                    "status",
+                    "requestedByName",
+                    "certificateId",
+                    "serial",
+                    "declineReason",
+                    "decidedAt",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/public/certificates/{code}": {

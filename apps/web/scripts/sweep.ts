@@ -2223,6 +2223,39 @@ async function main() {
     skip("certificates", "no ZZ fixtures with an issued certificate (run zz:fixtures)");
   }
 
+  /* ---- certificate requests: the family's ask on their certificates page, the office's queue and the issue page pre-filled from it ---- */
+  // ZZ Northgate carries a pending request from one of its pupils; the
+  // actors are its office, that pupil, the pupil's guardian and the class's
+  // lead teacher, who has no certificates page of their own.
+  const zzRequest = northgate
+    ? await db.certificateRequest.findFirst({ where: { schoolId: northgate.id, status: "PENDING" }, select: { id: true, studentMembershipId: true, student: { select: { user: { select: { email: true } }, enrollments: { where: { status: "ACTIVE" }, select: { classId: true }, take: 1 } } } } })
+    : null;
+  if (northgate && zzRequest) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, "/admin/certificates/issue", 200, "the office reads the issue page with the families' queue");
+    await check(zzOffice, `/admin/certificates/issue?membershipId=${zzRequest.studentMembershipId}&requestId=${zzRequest.id}`, 200, "…pre-filled from a pending request");
+    if (zzRequest.student.user.email) {
+      const zzStudent = await mint(zzRequest.student.user.email, "STUDENT", northgate.id, "zz-pupil");
+      await check(zzStudent, "/student/certificates", 200, "the pupil who asked reads their request");
+      await check(zzStudent, "/admin/certificates/issue", 307, "⚠ …but not the office's queue");
+    }
+    const asker = await db.guardianship.findFirst({ where: { studentMembershipId: zzRequest.studentMembershipId, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (asker?.parent.email) {
+      const zzParent = await mint(asker.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/parent/certificates?child=${zzRequest.studentMembershipId}`, 200, "the pupil's guardian reads the child's request");
+    }
+    const requestClassId = zzRequest.student.enrollments[0]?.classId;
+    const requestLead = requestClassId ? await db.classTeacher.findFirst({ where: { classId: requestClassId, role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } } }) : null;
+    if (requestLead?.teacher.user.email) {
+      const zzLead = await mint(requestLead.teacher.user.email, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, "/student/certificates", 307, "⚠ the class teacher has no pupil's certificates page");
+      await check(zzLead, "/admin/certificates/issue", 307, "⚠ …nor the office's queue");
+    }
+    await check(null, "/student/certificates", 307, "signed-out certificates redirect to login");
+  } else {
+    skip("certificate requests", "no ZZ fixtures with a pending certificate request (run zz:fixtures)");
+  }
+
   /* ---- admissions: the office's cycles, sittings and pipeline; the family's applications and the school's door ---- */
   // ZZ Northgate carries an open cycle with sittings and applications from
   // its first guardian in every state plus a walk-in; the actors are its

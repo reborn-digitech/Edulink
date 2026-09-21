@@ -18,14 +18,32 @@ type TemplateOption = { id: string; name: string; kind: CertificateKind };
  * The issue form. The pupil and the template are in the URL — changing
  * either reloads the page so the server can say what the record lacks for
  * that pupil — and the purpose, remark and leaving date are this form's
- * own. Issue lands on the document, numbered and frozen.
+ * own. Issuing from a family's request starts with its purpose and carries
+ * the request along, so the library can mark it answered. Issue lands on
+ * the document, numbered and frozen.
  */
-export function IssueForm({ pupils, templates, selectedId, templateId, query }: { pupils: PupilOption[]; templates: TemplateOption[]; selectedId: string; templateId: string; query: string }) {
+export function IssueForm({
+  pupils,
+  templates,
+  selectedId,
+  templateId,
+  query,
+  requestId,
+  purpose: initialPurpose = "",
+}: {
+  pupils: PupilOption[];
+  templates: TemplateOption[];
+  selectedId: string;
+  templateId: string;
+  query: string;
+  requestId?: string;
+  purpose?: string;
+}) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [purpose, setPurpose] = useState("");
+  const [purpose, setPurpose] = useState(initialPurpose);
   const [remark, setRemark] = useState("");
   const [leftOn, setLeftOn] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -40,6 +58,7 @@ export function IssueForm({ pupils, templates, selectedId, templateId, query }: 
     if (membershipId) params.set("membershipId", membershipId);
     if (tpl) params.set("templateId", tpl);
     if (query) params.set("q", query);
+    if (requestId) params.set("requestId", requestId);
     router.replace(`/admin/certificates/issue?${params.toString()}`);
   }
 
@@ -57,6 +76,7 @@ export function IssueForm({ pupils, templates, selectedId, templateId, query }: 
         ...(purpose.trim() ? { purpose: purpose.trim().slice(0, 200) } : {}),
         ...(remark.trim() ? { remark: remark.trim().slice(0, 400) } : {}),
         ...(leaving && leftOn ? { leftOn } : {}),
+        ...(requestId ? { requestId } : {}),
       });
       if (!result.ok || !result.id) {
         setError(actionError(t, result, "common.tryAgain"));
@@ -69,6 +89,7 @@ export function IssueForm({ pupils, templates, selectedId, templateId, query }: 
 
   return (
     <form onSubmit={submit} noValidate className="space-y-4" data-testid="issue-form">
+      {requestId && <input type="hidden" name="requestId" value={requestId} />}
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}

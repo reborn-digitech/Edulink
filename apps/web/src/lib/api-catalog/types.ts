@@ -93,6 +93,9 @@ export type SweepFixture = {
   certificateId: string | null;
   revocableCertificateId: string | null;
   certificateCode: string | null;
+  /** A cancelled ask and a declined one, so the sweep's cancel and decline are no-ops. */
+  cancelledCertificateRequestId: string | null;
+  declinedCertificateRequestId: string | null;
   /** Admissions: the open cycle (and its body to send back), a closed empty one for the purge, a grade it takes, the sweep parent's application with its booked sitting, a cancelled sitting, and one application in each settled state. */
   admissionCycleId: string | null;
   admissionCycle: Record<string, unknown> | null;

@@ -1315,6 +1315,15 @@ CREATE POLICY "EntranceSlot_tenant_isolation" ON "EntranceSlot"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- CertificateRequest
+ALTER TABLE "CertificateRequest" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "CertificateRequest" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "CertificateRequest_tenant_isolation" ON "CertificateRequest";
+DROP POLICY IF EXISTS "CertificateRequest_readable" ON "CertificateRequest";
+CREATE POLICY "CertificateRequest_tenant_isolation" ON "CertificateRequest"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

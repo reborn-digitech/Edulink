@@ -227,6 +227,7 @@ model School {
   pupilRecords         PupilRecord[]
   certificateTemplates CertificateTemplate[]
   issuedCertificates   IssuedCertificate[]
+  certificateRequests  CertificateRequest[]
   admissionCycles      AdmissionCycle[]
   applications         Application[]
   entranceSlots        EntranceSlot[]
@@ -455,6 +456,7 @@ model Membership {
   staffRecord            StaffRecord?
   scheduledDeparture     ScheduledDeparture?
   admittedFrom           Application?         @relation("ApplicationAdmitted")
+  certificateRequests    CertificateRequest[] @relation("CertificateRequestStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -3967,6 +3969,7 @@ model IssuedCertificate {
   template     CertificateTemplate? @relation(fields: [templateId], references: [id], onDelete: SetNull)
   student      Membership           @relation("IssuedCertificateStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
   academicYear AcademicYear?        @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
+  request      CertificateRequest?
 
   @@unique([schoolId, serial])
   @@index([studentMembershipId])
@@ -4089,4 +4092,33 @@ model EntranceSlot {
   applications Application[]
 
   @@index([schoolId, cycleId, startsAt])
+}
+
+/// A family asks the office for a certificate: which kind, and what it is
+/// for. The office issues from it (the request then points at the paper)
+/// or declines with a reason; the family may take a pending one back. One
+/// pending request per pupil and kind: asking again is the same ask.
+model CertificateRequest {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  requestedByUserId   String
+  /// TC | NIRGAM | BONAFIDE | CHARACTER | STUDY | CUSTOM
+  kind                String
+  purpose             String
+  /// PENDING | ISSUED | DECLINED | CANCELLED
+  status              String    @default("PENDING")
+  certificateId       String?   @unique
+  declineReason       String?
+  decidedByUserId     String?
+  decidedAt           DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school      School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student     Membership         @relation("CertificateRequestStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  certificate IssuedCertificate? @relation(fields: [certificateId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status, createdAt])
+  @@index([studentMembershipId, status])
 }

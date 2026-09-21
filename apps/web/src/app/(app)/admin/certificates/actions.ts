@@ -1,14 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { certificateIssueSchema, certificateRevokeSchema, certificateTemplateSaveSchema } from "@edulink/contracts";
+import { certificateIssueSchema, certificateRequestDeclineSchema, certificateRevokeSchema, certificateTemplateSaveSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { archiveTemplate, issueCertificate, revokeCertificate, saveTemplate } from "@/lib/certificates";
+import { declineRequest } from "@/lib/certificate-requests";
 
 /**
  * The office's writes on certificates — a template saved or retired, a
- * certificate issued or revoked — as the web pages call them. Who may do
+ * certificate issued or revoked, a family's request declined — as the web
+ * pages call them. Who may do
  * what is settled inside src/lib/certificates.ts; this file only checks the
  * shape and turns a refusal into a key the page can say in the reader's
  * language. Only async functions and types may be exported from a
@@ -58,8 +60,11 @@ export async function issueAction(input: unknown): Promise<CertificateActionResu
     const ctx = await requireApiUser();
     const parsed = certificateIssueSchema.safeParse(input);
     if (!parsed.success) return { ok: false, errorKey: "common.checkTheForm" };
+    // `requestId` rides along in the parsed body: the library marks the
+    // request issued and takes its purpose when the form gave none.
     const issued = await issueCertificate(ctx, parsed.data);
     revalidatePath("/admin/certificates");
+    revalidatePath("/admin/certificates/issue");
     revalidatePath("/admin/certificates/issued");
     revalidatePath("/parent/certificates");
     revalidatePath("/student/certificates");
@@ -77,6 +82,22 @@ export async function revokeAction(certificateId: string, reason: string): Promi
     await revokeCertificate(ctx, certificateId, parsed.data.reason);
     revalidatePath(`/certificates/${certificateId}`);
     revalidatePath("/admin/certificates/issued");
+    revalidatePath("/parent/certificates");
+    revalidatePath("/student/certificates");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The office declines a family's request with a reason; the family is told. */
+export async function declineRequestAction(requestId: string, reason: string): Promise<CertificateActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const parsed = certificateRequestDeclineSchema.safeParse({ reason });
+    if (!parsed.success || typeof requestId !== "string" || !requestId) return { ok: false, errorKey: "common.checkTheForm" };
+    await declineRequest(ctx, requestId, parsed.data.reason);
+    revalidatePath("/admin/certificates/issue");
     revalidatePath("/parent/certificates");
     revalidatePath("/student/certificates");
     return { ok: true };

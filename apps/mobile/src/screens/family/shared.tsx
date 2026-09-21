@@ -65,6 +65,18 @@ export const ATTENDANCE = {
 export type ExamKind = "UNIT_TEST" | "MID_TERM" | "FINAL";
 export const EXAM_KIND: Record<ExamKind, TranslationKey> = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" };
 
+export type CertificateKind = "TC" | "NIRGAM" | "BONAFIDE" | "CHARACTER" | "STUDY" | "CUSTOM";
+/** A certificate kind's name in the reader's language — the kinds a template is designed for and a family asks for. */
+export const CERTIFICATE_KIND: Record<CertificateKind, TranslationKey> = { TC: "certificates.kindTc", NIRGAM: "certificates.kindNirgam", BONAFIDE: "certificates.kindBonafide", CHARACTER: "certificates.kindCharacter", STUDY: "certificates.kindStudy", CUSTOM: "certificates.kindCustom" };
+export type CertificateRequestStatus = "PENDING" | "ISSUED" | "DECLINED" | "CANCELLED";
+/** A request's status as a label key and a pill tone. */
+export const CERTIFICATE_REQUEST_STATUS: Record<CertificateRequestStatus, { label: TranslationKey; tone: "warn" | "ok" | "danger" | "muted" }> = {
+  PENDING: { label: "certificateRequests.statusPending", tone: "warn" },
+  ISSUED: { label: "certificateRequests.statusIssued", tone: "ok" },
+  DECLINED: { label: "certificateRequests.statusDeclined", tone: "danger" },
+  CANCELLED: { label: "certificateRequests.statusCancelled", tone: "muted" },
+};
+
 const SUBJECT: Record<string, TranslationKey> = {
   MATHS: "subject.MATHS", SCIENCE: "subject.SCIENCE", PHYSICS: "subject.PHYSICS", CHEMISTRY: "subject.CHEMISTRY", BIOLOGY: "subject.BIOLOGY",
   EVS: "subject.EVS", HISTORY: "subject.HISTORY", GEOGRAPHY: "subject.GEOGRAPHY", CIVICS: "subject.CIVICS", ECONOMICS: "subject.ECONOMICS",
