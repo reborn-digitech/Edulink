@@ -62,6 +62,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
+    // The door for next year: the cycle, its sittings and the pipeline from form to seat.
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
@@ -106,6 +108,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
+    // The door for next year: the cycle, its sittings and the pipeline from form to seat.
+    { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
@@ -187,6 +191,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/explore", labelKey: "nav.explore", icon: "buildings", prefix: true, group: "school" },
+    { href: "/parent/applications", labelKey: "nav.applications", icon: "clipboard", prefix: true, group: "school" },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },

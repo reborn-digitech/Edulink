@@ -10,6 +10,7 @@ import { api, API_BASE } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { FamilyApplicationsCard } from "./applications";
 import { CompleteRecordCard } from "./record";
 import { ATTENDANCE, ChildSwitcher, childQuery, ExamMarksCards, formatDateKey, LessonList, Note, param, relativeTime, SectionTitle, StatusBadge } from "./shared";
 
@@ -36,6 +37,8 @@ export function ParentHome() {
     enabled: !noChildren,
   });
   const pupils = children.data?.children ?? overview.data?.children ?? [];
+  const router = useRouter();
+  const th = useTheme();
   const refresh = () => {
     void children.refetch();
     void overview.refetch();
@@ -43,7 +46,20 @@ export function ParentHome() {
   return (
     <Screen title={t("nav.overview")} description={overview.data?.child.schoolName} refreshing={overview.isRefetching} onRefresh={refresh}>
       <ChildSwitcher pupils={pupils} selectedId={childId ?? overview.data?.child.studentMembershipId ?? null} onSelect={setChildId} />
-      {noChildren ? <Empty title={t("shell.yourChildren")} action={<Button label={t("parent.linkAnother")} variant="secondary" onPress={() => void Linking.openURL(`${API_BASE}/parent/link`)} />} /> : null}
+      {noChildren ? (
+        <Empty
+          title={t("shell.yourChildren")}
+          action={
+            <View style={{ gap: th.space[2] }}>
+              <Button label={t("parent.linkAnother")} variant="secondary" onPress={() => void Linking.openURL(`${API_BASE}/parent/link`)} />
+              {/* A guardian with no child yet may be applying for one: the applications are theirs whether or not a child is linked. */}
+              <Button label={t("admissions.myApplications")} variant="ghost" onPress={() => router.push("/(app)/my-applications" as never)} />
+            </View>
+          }
+        />
+      ) : null}
+      {/* The guardian's applications, at every school, while they have any; the card asks for them itself. */}
+      <FamilyApplicationsCard />
       {children.isError && !overview.data ? <Failed message={children.error.message} onRetry={refresh} /> : null}
       {overview.isPending && !noChildren && !children.isError ? <Loading /> : null}
       {overview.isError ? <Failed message={overview.error.message} onRetry={() => void overview.refetch()} /> : null}

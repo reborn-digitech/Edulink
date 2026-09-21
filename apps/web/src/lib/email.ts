@@ -337,6 +337,27 @@ export async function sendParentLinkInvite(
   });
 }
 
+/**
+ * An admission offer. The words arrive already in the family's language
+ * (admissions.ts picks them from the dictionary), because the reader of an
+ * offer is one known person; this only lays them out. Sent whether or not
+ * there is an account behind the address — a walk-in family gets the same
+ * sentences with no button, because there is no page of theirs to open.
+ */
+export async function sendAdmissionOffer(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null }) {
+  await sendEmail({
+    to: input.to,
+    purpose: "ADMISSION",
+    subject: input.subject,
+    text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
+    html: layout(
+      escapeHtml(input.heading),
+      input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
+      input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
+    ),
+  });
+}
+
 export async function sendParentClaimNotice(
   to: string,
   childName: string,

@@ -15,6 +15,7 @@ import {
   TrophyIcon,
   BriefcaseIcon,
   FirstAidKitIcon,
+  DoorOpenIcon,
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/cn";
 import { markNotificationRead } from "./actions";
@@ -43,6 +44,7 @@ const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; 
   ENQUIRY: ChatCircleDotsIcon,
   FEES: ReceiptIcon,
   INCIDENT: FirstAidKitIcon,
+  ADMISSION: DoorOpenIcon,
   SYSTEM: BellIcon,
 };
 

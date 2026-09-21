@@ -6,6 +6,7 @@ import { readJsonArray, type Attachment, type MediaItem } from "./json";
 // directly, because this module is server-only.
 export { formatBytes } from "./json";
 import type { ActiveContext } from "./session";
+import { applicationOwningFile } from "./admissions";
 
 /**
  * Per-file read authorisation.
@@ -32,7 +33,7 @@ import type { ActiveContext } from "./session";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
-  | { allowed: true; kind: "assignment" | "submission" | "post"; public: false }
+  | { allowed: true; kind: "assignment" | "submission" | "post" | "application"; public: false }
   | { allowed: false; reason: "not-found" | "unauthenticated" | "forbidden" };
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
@@ -103,6 +104,17 @@ export async function authorizeFileRead(
       });
       if (teaches) return { allowed: true, kind: "submission", public: false };
     }
+    return DENY;
+  }
+
+  // ---- 2b. an admission application's document: the family that attached
+  // it and the office of the school it was sent to. Nobody else — not a
+  // teacher, not the class it might one day join. Looked up before the
+  // school-scoped branches because the applicant has no school at all.
+  const application = await applicationOwningFile(ref);
+  if (application) {
+    if (application.applicantUserId && application.applicantUserId === user.id) return { allowed: true, kind: "application", public: false };
+    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === application.schoolId) return { allowed: true, kind: "application", public: false };
     return DENY;
   }
 

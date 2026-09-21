@@ -214,6 +214,9 @@ model School {
   pupilRecords         PupilRecord[]
   certificateTemplates CertificateTemplate[]
   issuedCertificates   IssuedCertificate[]
+  admissionCycles      AdmissionCycle[]
+  applications         Application[]
+  entranceSlots        EntranceSlot[]
   healthChecks         HealthCheck[]
   incidents            Incident[]
   incidentNotes        IncidentNote[]
@@ -340,6 +343,7 @@ model User {
   feeRefundsRequested  FeeRefund[]               @relation("FeeRefundRequester")
   outboundMessages     OutboundMessage[]         @relation("MessageRecipient")
   broadcastsSent       Broadcast[]               @relation("BroadcastAuthor")
+  applications         Application[]             @relation("ApplicationApplicant")
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -437,6 +441,7 @@ model Membership {
   feePayments            FeePayment[]         @relation("FeePaymentStudent")
   staffRecord            StaffRecord?
   scheduledDeparture     ScheduledDeparture?
+  admittedFrom           Application?         @relation("ApplicationAdmitted")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -2163,6 +2168,7 @@ model AcademicYear {
   feeDemands         FeeDemand[]
   feeReceipts        FeeReceipt[]
   issuedCertificates IssuedCertificate[]
+  admissionCycles    AdmissionCycle[]
 
   @@unique([schoolId, name])
   @@index([schoolId, isCurrent])
@@ -3174,10 +3180,12 @@ model FeeStructure {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  school      School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  year        AcademicYear     @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
-  instalments FeeInstalment[]
-  plans       StudentFeePlan[]
+  school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  year            AcademicYear     @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  instalments     FeeInstalment[]
+  plans           StudentFeePlan[]
+  admissionCycles AdmissionCycle[]
+  applications    Application[]
 
   @@index([schoolId, academicYearId])
   @@index([academicYearId])
@@ -3920,4 +3928,122 @@ model IssuedCertificate {
   @@unique([schoolId, serial])
   @@index([studentMembershipId])
   @@index([schoolId, issuedAt])
+}
+
+/// ADMISSIONS: a cycle is the school's open door for one academic year — the
+/// grades it takes and how many seats each has, the documents it asks for,
+/// whether there is an entrance test, when it opens and closes, and the fee
+/// structure an admitted pupil is put on. Opened and closed by the office.
+model AdmissionCycle {
+  id              String    @id @default(cuid())
+  schoolId        String
+  academicYearId  String
+  name            String
+  /// JSON [{grade, seats}] in the order the school lists its grades.
+  gradesJson      String    @default("[]")
+  /// JSON [{key, name, required}] — the documents an application should carry.
+  documentsJson   String    @default("[]")
+  testRequired    Boolean   @default(false)
+  /// Shown to families on the school's page and on the form.
+  notice          String    @default("")
+  feeStructureId  String?
+  opensAt         DateTime?
+  closesAt        DateTime?
+  /// DRAFT | OPEN | CLOSED
+  status          String    @default("DRAFT")
+  createdByUserId String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  school       School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear   @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  feeStructure FeeStructure?  @relation(fields: [feeStructureId], references: [id], onDelete: SetNull)
+  applications Application[]
+  slots        EntranceSlot[]
+
+  @@unique([schoolId, academicYearId, name])
+  @@index([schoolId, status])
+}
+
+/// One family's application for one child to one cycle, from the form to the
+/// seat: SUBMITTED → (documents, an entrance test) → OFFERED → ACCEPTED →
+/// ADMITTED, or DECLINED, WAITLISTED, WITHDRAWN. The applicant is a signed-in
+/// guardian account when the family applied themselves, or nobody when the
+/// office entered a walk-in; the child's details live here, under the
+/// applicant, until admission moves them onto a membership and its record.
+/// Policy: docs/decisions/0002, row 29.
+model Application {
+  id                   String    @id @default(cuid())
+  schoolId             String
+  cycleId              String
+  number               Int
+  serial               String
+  applicantUserId      String?
+  applicantName        String
+  applicantPhone       String?
+  applicantEmail       String?
+  /// PARENT | GUARDIAN | OTHER
+  relation             String    @default("PARENT")
+  childName            String
+  childBirthdate       DateTime?
+  gradeApplied         String
+  previousSchool       String?
+  addressLine          String?
+  city                 String?
+  note                 String?
+  /// SUBMITTED | OFFERED | ACCEPTED | ADMITTED | DECLINED | WAITLISTED | WITHDRAWN
+  status               String    @default("SUBMITTED")
+  /// JSON [{key, fileId, name, mime, size, uploadedAt}] — the documents attached.
+  documentsJson        String    @default("[]")
+  documentsVerifiedAt  DateTime?
+  testSlotId           String?
+  testScore            String?
+  testNote             String?
+  testedAt             DateTime?
+  offeredAt            DateTime?
+  offerExpiresAt       DateTime?
+  offerNote            String?
+  respondedAt          DateTime?
+  decisionNote         String?
+  decidedAt            DateTime?
+  admittedMembershipId String?   @unique
+  admittedAt           DateTime?
+  feeStructureId       String?
+  createdByUserId      String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  school       School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  cycle        AdmissionCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  applicant    User?          @relation("ApplicationApplicant", fields: [applicantUserId], references: [id], onDelete: SetNull)
+  testSlot     EntranceSlot?  @relation(fields: [testSlotId], references: [id], onDelete: SetNull)
+  admitted     Membership?    @relation("ApplicationAdmitted", fields: [admittedMembershipId], references: [id], onDelete: SetNull)
+  feeStructure FeeStructure?  @relation(fields: [feeStructureId], references: [id], onDelete: SetNull)
+
+  @@unique([cycleId, number])
+  @@index([schoolId, cycleId, status])
+  @@index([applicantUserId])
+  @@index([testSlotId])
+}
+
+/// An entrance test sitting the office publishes: a time, a place, how many
+/// children it takes. A family books one for its application; the count is
+/// checked under a lock on the slot's row.
+model EntranceSlot {
+  id          String    @id @default(cuid())
+  schoolId    String
+  cycleId     String
+  startsAt    DateTime
+  endsAt      DateTime
+  location    String?
+  note        String?
+  capacity    Int       @default(1)
+  cancelledAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  school       School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  cycle        AdmissionCycle @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+  applications Application[]
+
+  @@index([schoolId, cycleId, startsAt])
 }

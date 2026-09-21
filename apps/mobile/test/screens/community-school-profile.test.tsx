@@ -122,3 +122,34 @@ describe("a school's profile", () => {
     expect(second.calls().some((c) => c.line.startsWith("GET /api/v1/community"))).toBe(false);
   });
 });
+
+describe("applying from a school's profile", () => {
+  const ADMISSIONS = `GET /api/v1/shared/schools/${ID}/admissions`;
+  const CYCLE = "czz000000000000000cycle1";
+  const APP = "czz00000000000000000app1";
+  const OPEN = { cycleId: CYCLE, name: "ZZ Admissions 2026-27", academicYearName: "2026-27", grades: [{ grade: "1", seats: 5, remaining: 3 }], documents: [], testRequired: false, notice: "", closesAt: "2026-12-31" };
+  const MINE = [{ id: APP, serial: "ADM/2026-27/0001", status: "OFFERED", childName: "ZZ Kabir", gradeApplied: "1", applicantName: "ZZ Parent", cycleName: "ZZ Admissions 2026-27", schoolName: "ZZ Hillside", documentsMissing: 0, testBooked: true, createdAt: hourAgo, updatedAt: hourAgo }];
+
+  it("a guardian sees the open cycle with its seats and the door to the form, and their own applications here", async () => {
+    await mountStaff(<SchoolProfile />, "PARENT", { [`GET ${PATH}`]: () => json(PROFILE), [ADMISSIONS]: () => json({ open: OPEN, mine: MINE }) });
+    expect(await screen.findByText("Apply for a place")).toBeTruthy();
+    expect(screen.getByText("ZZ Admissions 2026-27 · 2026-27")).toBeTruthy();
+    expect(screen.getByText("Grade 1 · 3 of 5 seats left")).toBeTruthy();
+    expect(screen.getByText(/^Closes .*2026$/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Apply" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/apply", params: { schoolId: ID, school: "ZZ Hillside" } });
+    expect(screen.getByText("Your applications here")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: /^ZZ Kabir/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: APP } });
+  });
+
+  it("with no open cycle there is no door, and the office is never asked", async () => {
+    const { calls } = await mountStaff(<SchoolProfile />, "PARENT", { [`GET ${PATH}`]: () => json(PROFILE), [ADMISSIONS]: () => json({ open: null, mine: [] }) });
+    await screen.findByText("ZZ Hillside");
+    await waitFor(() => expect(calls().some((c) => c.line === ADMISSIONS)).toBe(true));
+    expect(screen.queryByText("Apply for a place")).toBeNull();
+    const staff = await mountStaff(<SchoolProfile />, "ADMIN", { [`GET ${PATH}`]: () => json(PROFILE) });
+    await screen.findAllByText("ZZ Hillside");
+    expect(staff.calls().some((c) => c.line === ADMISSIONS)).toBe(false);
+  });
+});

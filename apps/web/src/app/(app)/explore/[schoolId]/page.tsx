@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowSquareOutIcon, BriefcaseIcon, MegaphoneIcon, SealCheckIcon, TrophyIcon } from "@phosphor-icons/react/ssr";
+import { ArrowSquareOutIcon, BriefcaseIcon, DoorOpenIcon, MegaphoneIcon, SealCheckIcon, TrophyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { readSchoolProfile } from "@/lib/school-profile";
 import { findMyOpenEnquiry } from "@/lib/enquiries";
+import { schoolAdmissions } from "@/lib/admissions";
+import { formatDateKey } from "@/lib/dates";
+import { Button } from "@/components/ui/button";
+import { ADMISSION_STATUS_KEY, ADMISSION_STATUS_TONE } from "@/components/admissions/labels";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
@@ -35,9 +39,10 @@ export default async function SchoolProfilePage({
   const school = await readSchoolProfile(ctx, schoolId);
   if (!school) notFound();
 
-  const myEnquiryId = school.canEnquire
-    ? await findMyOpenEnquiry(ctx, schoolId, "ADMISSION", null)
-    : null;
+  const [myEnquiryId, admissions] = await Promise.all([
+    school.canEnquire ? findMyOpenEnquiry(ctx, schoolId, "ADMISSION", null) : Promise.resolve(null),
+    schoolAdmissions(ctx, schoolId),
+  ]);
 
   const place = [school.addressLine, school.city, school.region, school.postalCode, school.country]
     .filter(Boolean)
@@ -182,6 +187,53 @@ export default async function SchoolProfilePage({
             ))}
           </ul>
         </section>
+      )}
+
+      {/* The admissions door: the open cycle, what it asks for, and the reader's own applications here. See admissions.ts. */}
+      {admissions.open && (
+        <Card data-testid="admissions-card">
+          <CardBody className="space-y-3 py-4">
+            <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-fg-muted">
+              <DoorOpenIcon weight="duotone" className="size-4" aria-hidden="true" />
+              {t("admissions.applyHere")}
+            </h2>
+            <p className="text-sm font-medium text-fg">{t("admissions.applyIntro", { cycle: admissions.open.name, year: admissions.open.academicYearName })}</p>
+            <ul className="space-y-1 text-sm text-fg-muted">
+              {admissions.open.grades.map((g) => (
+                <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
+              ))}
+              {admissions.open.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(admissions.open.closesAt) })}</li>}
+              {admissions.open.documents.length > 0 && <li>{t("admissions.documentsAsked", { names: admissions.open.documents.map((d) => d.name).join(", ") })}</li>}
+              {admissions.open.testRequired && <li>{t("admissions.testAsked")}</li>}
+            </ul>
+            {admissions.open.notice && <p className="whitespace-pre-wrap text-sm text-fg">{admissions.open.notice}</p>}
+            {ctx.role === "PARENT" && (
+              <Button asChild size="sm">
+                <Link href={`/explore/${school.schoolId}/apply`}>{t("admissions.apply")}</Link>
+              </Button>
+            )}
+            {admissions.mine.length > 0 && (
+              <div className="space-y-1 border-t border-border pt-3">
+                <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("admissions.yourApplicationsHere")}</p>
+                <ul className="space-y-1">
+                  {admissions.mine.map((row) => (
+                    <li key={row.id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                      <span className="flex flex-wrap items-center gap-2">
+                        <Link href={`/parent/applications/${row.id}`} className="font-medium text-fg hover:underline">
+                          {row.childName}
+                        </Link>
+                        <Badge tone={ADMISSION_STATUS_TONE[row.status]} size="sm">{t(ADMISSION_STATUS_KEY[row.status])}</Badge>
+                      </span>
+                      <Link href={`/parent/applications/${row.id}`} className="text-xs font-medium text-accent hover:underline">
+                        {t("admissions.viewApplication")}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </CardBody>
+        </Card>
       )}
 
       {school.canEnquire && (

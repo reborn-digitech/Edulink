@@ -80,3 +80,39 @@ describe("the admin's overview", () => {
     expect(calls().filter((c) => c.line === "GET /api/v1/admin/overview").length).toBeGreaterThanOrEqual(2);
   });
 });
+
+describe("admissions on the office's overview", () => {
+  const CYCLES = "GET /api/v1/office/admissions/cycles";
+  const cycle = (status: string) => ({
+    id: "czz000000000000000cycle1",
+    academicYearId: "czz0000000000000000year1",
+    name: "ZZ Admissions 2026-27",
+    grades: [{ grade: "1", seats: 5 }],
+    documents: [],
+    testRequired: false,
+    notice: "",
+    feeStructureId: null,
+    opensAt: null,
+    closesAt: null,
+    status,
+    academicYearName: "2026-27",
+    feeStructureName: null,
+    seats: [{ grade: "1", seats: 5, applied: 3, offered: 1, accepted: 1, admitted: 0, waitlisted: 0 }],
+    counts: { SUBMITTED: 3, OFFERED: 1, ACCEPTED: 1, ADMITTED: 0, DECLINED: 0, WAITLISTED: 0, WITHDRAWN: 0 },
+    updatedAt: "2026-09-18T05:00:00.000Z",
+  });
+
+  it("while a cycle is open, counts the pipeline and opens it on that cycle", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [CYCLES]: () => json({ cycles: [cycle("OPEN")], years: [], structures: [] }) });
+    expect(await screen.findByText("Admissions")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "ZZ Admissions 2026-27, 3 submitted · 1 offered · 1 accepted" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/applications", params: { cycleId: "czz000000000000000cycle1" } });
+  });
+
+  it("draws no card when no cycle is open", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [CYCLES]: () => json({ cycles: [cycle("CLOSED")], years: [], structures: [] }) });
+    await screen.findByText("Lessons without a teacher");
+    expect(screen.queryByText("Admissions")).toBeNull();
+    expect(screen.queryByText("ZZ Admissions 2026-27")).toBeNull();
+  });
+});

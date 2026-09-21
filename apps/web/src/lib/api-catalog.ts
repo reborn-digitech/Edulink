@@ -28,6 +28,7 @@ import { SYLLABUS } from "./api-catalog/syllabus";
 import { SUBSTITUTIONS } from "./api-catalog/substitutions";
 import { REPORT_CARDS } from "./api-catalog/report-cards";
 import { CERTIFICATES } from "./api-catalog/certificates";
+import { ADMISSIONS } from "./api-catalog/admissions";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS];

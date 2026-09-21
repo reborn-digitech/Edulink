@@ -10,6 +10,7 @@ import { screenFor, type ScreenTarget } from "@/lib/links";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { OfficeAdmissionsCard } from "./admissions";
 import { formatDateKey, pct } from "./shared";
 
 /**
@@ -112,6 +113,8 @@ function Overview({ d }: { d: AdminOverview }) {
           {counts.examSeries === 0 ? t("exams.adminCardNone") : t("exams.adminCardBody", { scheduled: counts.examSeries, published: counts.examSeriesPublished, cards: counts.reportCardsPublished })}
         </Text>
       </Card>
+      {/* While an admission cycle is open: how many applications wait, are offered and are accepted; the card asks for the cycles itself. */}
+      <OfficeAdmissionsCard />
       {d.staffingGap.slots > 0 ? (
         <Card title={t("admin.staffingGapTitle")}>
           <Text variant="sm" tone="muted">

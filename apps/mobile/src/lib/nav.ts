@@ -109,6 +109,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.explore", icon: "buildings", group: "school", screen: "/(app)/explore" },
+    { labelKey: "nav.applications", icon: "clipboard", group: "school", screen: "/(app)/my-applications" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
@@ -134,6 +135,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.pupilRecords", icon: "clipboard", group: "running", screen: "/(app)/pupil-records" },
     { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
+    { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
@@ -162,6 +164,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.pupilRecords", icon: "clipboard", group: "running", screen: "/(app)/pupil-records" },
     { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
+    { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
@@ -261,6 +264,14 @@ export const HIDDEN_SCREENS = [
   "pupil-record",
   "certificate-issue",
   "staff-certificates",
+  "admissions",
+  "admission-slots",
+  "applications",
+  "application-new",
+  "application",
+  "my-applications",
+  "my-application",
+  "apply",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

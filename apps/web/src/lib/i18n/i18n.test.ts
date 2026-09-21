@@ -50,7 +50,7 @@ const SHARED_WITH_ENGLISH = new Set([
   "reportCardConfig.paperLetter",
   /** "UDISE+ PEN" is the government portal's own label for the permanent education number; every school form prints it in Latin letters. */
   "certificateDefaults.rowPen",
-  "certificatePlaceholders.pupil.penNumber",
+  "certificatePlaceholders.pupil_penNumber",
   "pupilRecord.penNumber",
   /**
    * UPI and UTR are the acronyms every Indian bank app, receipt and

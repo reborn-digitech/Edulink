@@ -98,6 +98,11 @@ const SELF_READABLE: Record<string, string> = {
   // teacher who opened it keeps reading it — and how their enquiries page
   // can list them before any school of theirs is known.
   Enquiry: "fromUserId",
+  // A family's own admission application, read from the applicant's side
+  // where no school binding exists yet; every write the family makes to it
+  // goes through the server under the school's own binding (forSchool),
+  // after the library has checked the applicant is this user.
+  Application: "applicantUserId",
   /**
    * A NOTIFICATION BELONGS TO ITS PERSON. It was tenant-only for as long as
    * every notification's school was one of its reader's — and the enquiry

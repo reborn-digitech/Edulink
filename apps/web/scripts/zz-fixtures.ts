@@ -931,6 +931,56 @@ async function buildCertificates(school: { id: string; name: string; code: strin
 }
 
 /**
+ * Admissions at ZZ Northgate: one OPEN cycle for the current year taking
+ * grades 3 and 6 with a birth certificate and a photograph asked for and an
+ * entrance test, three future sittings and one cancelled; one CLOSED empty
+ * cycle for the purge; and, from the first guardian (the same one the API
+ * sweep signs in as), an application in every state — submitted with a
+ * sitting booked and a result, offered, accepted, admitted onto a grade-3
+ * pupil, waitlisted, withdrawn — plus one walk-in the office entered.
+ * Publishes the school's directory profile, which is the door the form is
+ * on. Re-run safe: the school's cycles are rebuilt.
+ */
+async function buildAdmissions(school: { id: string; name: string }, adminUserId: string, structureId: string | null) {
+  const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true } });
+  await db.school.update({ where: { id: school.id }, data: { profilePublishedAt: new Date(), profileAbout: "A neighbourhood school in Pune, grades 3 to 10, with a bilingual primary section." } });
+  await db.admissionCycle.deleteMany({ where: { schoolId: school.id } });
+  const cycle = await db.admissionCycle.create({
+    data: {
+      schoolId: school.id, academicYearId: year.id, name: `Admissions ${year.name}`, status: "OPEN", testRequired: true, feeStructureId: structureId, createdByUserId: adminUserId,
+      gradesJson: JSON.stringify([{ grade: "3", seats: 3 }, { grade: "6", seats: 2 }]),
+      documentsJson: JSON.stringify([{ key: "birth_certificate", name: "Birth certificate", required: true }, { key: "photo", name: "Passport photograph", required: true }, { key: "previous_report", name: "Last report card", required: false }]),
+      notice: "Bring the originals to the entrance test. The office is open 9 to 1 on Saturdays.",
+    },
+  });
+  await db.admissionCycle.create({ data: { schoolId: school.id, academicYearId: year.id, name: `Late admissions ${year.name}`, status: "CLOSED", gradesJson: JSON.stringify([{ grade: "3", seats: 1 }]), createdByUserId: adminUserId } });
+  const day = new Date(); day.setUTCDate(day.getUTCDate() + 14); day.setUTCHours(4, 30, 0, 0);
+  const slots = [];
+  for (let i = 0; i < 3; i += 1) {
+    const startsAt = new Date(day.getTime() + i * 45 * 60_000);
+    slots.push(await db.entranceSlot.create({ data: { schoolId: school.id, cycleId: cycle.id, startsAt, endsAt: new Date(startsAt.getTime() + 45 * 60_000), capacity: 4, location: "Room 3, ground floor" }, select: { id: true } }));
+  }
+  await db.entranceSlot.create({ data: { schoolId: school.id, cycleId: cycle.id, startsAt: new Date(day.getTime() + 3 * 45 * 60_000), endsAt: new Date(day.getTime() + 4 * 45 * 60_000), capacity: 4, cancelledAt: new Date() } });
+  const guardian = await db.guardianship.findFirst({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true, parent: { select: { name: true, email: true } } } });
+  if (!guardian) return { cycles: 2, slots: 4, applications: 0 };
+  const pupil = await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", enrollments: { some: { status: "ACTIVE", class: { gradeLevel: "3" } } } }, orderBy: { id: "desc" }, select: { id: true } });
+  const docs = (n: number) => JSON.stringify([{ key: "birth_certificate", fileId: `zz-fixture-birth-${n}.pdf`, name: "birth-certificate.pdf", mime: "application/pdf", size: 120_000, uploadedAt: new Date().toISOString() }, { key: "photo", fileId: `zz-fixture-photo-${n}.jpg`, name: "photo.jpg", mime: "image/jpeg", size: 80_000, uploadedAt: new Date().toISOString() }]);
+  const base = { schoolId: school.id, cycleId: cycle.id, applicantUserId: guardian.parentUserId, applicantName: guardian.parent.name, applicantEmail: guardian.parent.email, relation: "PARENT", addressLine: "14 Shivaji Nagar", city: "Pune", previousSchool: "Sunrise Nursery" };
+  const soon = new Date(); soon.setUTCDate(soon.getUTCDate() + 10);
+  const specs = [
+    { number: 1, childName: "ZZ Aarohi Deshpande", gradeApplied: "3", childBirthdate: new Date("2019-02-11T00:00:00Z"), status: "SUBMITTED", documentsJson: docs(1), documentsVerifiedAt: new Date(), testSlotId: slots[0]!.id, testScore: "38/50", testNote: "Reads fluently.", testedAt: new Date() },
+    { number: 2, childName: "ZZ Kabir Deshpande", gradeApplied: "6", childBirthdate: new Date("2016-08-30T00:00:00Z"), status: "OFFERED", documentsJson: docs(2), documentsVerifiedAt: new Date(), testSlotId: slots[1]!.id, testScore: "44/50", testedAt: new Date(), offeredAt: new Date(), offerExpiresAt: soon, offerNote: "Please bring the originals when you accept." },
+    { number: 3, childName: "ZZ Meera Deshpande", gradeApplied: "3", childBirthdate: new Date("2019-05-02T00:00:00Z"), status: "ACCEPTED", documentsJson: docs(3), documentsVerifiedAt: new Date(), testScore: "41/50", testedAt: new Date(), offeredAt: new Date(), offerExpiresAt: soon, respondedAt: new Date() },
+    { number: 4, childName: "ZZ Dhruv Deshpande", gradeApplied: "3", childBirthdate: new Date("2019-01-20T00:00:00Z"), status: "ADMITTED", documentsJson: docs(4), documentsVerifiedAt: new Date(), testScore: "45/50", testedAt: new Date(), offeredAt: new Date(), respondedAt: new Date(), admittedAt: new Date(), admittedMembershipId: pupil?.id ?? null, feeStructureId: structureId },
+    { number: 5, childName: "ZZ Ira Deshpande", gradeApplied: "6", childBirthdate: new Date("2016-11-11T00:00:00Z"), status: "WAITLISTED", documentsJson: docs(5), testScore: "29/50", testedAt: new Date(), decidedAt: new Date(), decisionNote: "Second on the list for grade 6." },
+    { number: 6, childName: "ZZ Vihaan Deshpande", gradeApplied: "3", childBirthdate: new Date("2019-07-07T00:00:00Z"), status: "WITHDRAWN", decidedAt: new Date() },
+  ] as const;
+  for (const spec of specs) await db.application.create({ data: { ...base, ...spec, serial: `APP/${year.name}/${String(spec.number).padStart(4, "0")}` } });
+  await db.application.create({ data: { schoolId: school.id, cycleId: cycle.id, number: 7, serial: `APP/${year.name}/0007`, applicantUserId: null, applicantName: "Sujata Kulkarni", applicantPhone: "+91 98764 00077", relation: "PARENT", childName: "ZZ Anvi Kulkarni", gradeApplied: "3", childBirthdate: new Date("2019-03-03T00:00:00Z"), status: "SUBMITTED", note: "Came to the office on Saturday with the paper form.", createdByUserId: adminUserId } });
+  return { cycles: 2, slots: 4, applications: 7 };
+}
+
+/**
  * The substitution board for today: one subject teacher (timetable only, so
  * never the sweep's form teacher, whom the sweep marks present) is absent
  * today and their first lesson of the day is covered by a free colleague.
@@ -1429,6 +1479,7 @@ async function main() {
   const subs = await buildSubstitutions(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
   const exams = await buildExams(northgate.school, northgate.admin.id);
   const certs = await buildCertificates(northgate.school, northgate.admin.id);
+  const admissions = await buildAdmissions(northgate.school, northgate.admin.id, fees.structure.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1473,6 +1524,7 @@ async function main() {
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
      exams       ${exams.series} series in Term 1 with ${exams.papers} papers, ${exams.marks} marks; ${exams.cards} report cards (Term 1 published with co-scholastic grades, a draft set) — /admin/report-cards
      certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked) — /admin/certificates
+     admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
 
   ── ZZ Southbank School (small) ──────────────────────────────────────

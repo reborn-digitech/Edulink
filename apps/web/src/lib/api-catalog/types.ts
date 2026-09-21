@@ -93,6 +93,19 @@ export type SweepFixture = {
   certificateId: string | null;
   revocableCertificateId: string | null;
   certificateCode: string | null;
+  /** Admissions: the open cycle (and its body to send back), a closed empty one for the purge, a grade it takes, the sweep parent's application with its booked sitting, a cancelled sitting, and one application in each settled state. */
+  admissionCycleId: string | null;
+  admissionCycle: Record<string, unknown> | null;
+  closedCycleId: string | null;
+  admissionGrade: string | null;
+  admissionSlotId: string | null;
+  cancelledSlotId: string | null;
+  applicationId: string | null;
+  offeredApplicationId: string | null;
+  acceptedApplicationId: string | null;
+  admittedApplicationId: string | null;
+  waitlistedApplicationId: string | null;
+  withdrawnApplicationId: string | null;
   todayKey: string;
 };
 

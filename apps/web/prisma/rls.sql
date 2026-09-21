@@ -1278,6 +1278,43 @@ CREATE POLICY "IssuedCertificate_tenant_isolation" ON "IssuedCertificate"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- AdmissionCycle
+ALTER TABLE "AdmissionCycle" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AdmissionCycle" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AdmissionCycle_tenant_isolation" ON "AdmissionCycle";
+DROP POLICY IF EXISTS "AdmissionCycle_readable" ON "AdmissionCycle";
+CREATE POLICY "AdmissionCycle_tenant_isolation" ON "AdmissionCycle"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- Application
+ALTER TABLE "Application" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Application" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Application_tenant_isolation" ON "Application";
+DROP POLICY IF EXISTS "Application_readable" ON "Application";
+CREATE POLICY "Application_tenant_isolation" ON "Application"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "Application_readable" ON "Application"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "applicantUserId" = current_setting('app.user_id', true)
+        );
+
+-- EntranceSlot
+ALTER TABLE "EntranceSlot" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "EntranceSlot" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "EntranceSlot_tenant_isolation" ON "EntranceSlot";
+DROP POLICY IF EXISTS "EntranceSlot_readable" ON "EntranceSlot";
+CREATE POLICY "EntranceSlot_tenant_isolation" ON "EntranceSlot"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

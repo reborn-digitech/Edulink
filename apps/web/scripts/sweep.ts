@@ -2223,6 +2223,46 @@ async function main() {
     skip("certificates", "no ZZ fixtures with an issued certificate (run zz:fixtures)");
   }
 
+  /* ---- admissions: the office's cycles, sittings and pipeline; the family's applications and the school's door ---- */
+  // ZZ Northgate carries an open cycle with sittings and applications from
+  // its first guardian in every state plus a walk-in; the actors are its
+  // office, the class's lead teacher, that guardian minted with no school,
+  // and nobody at all.
+  const zzCycle = northgate ? await db.admissionCycle.findFirst({ where: { schoolId: northgate.id, status: "OPEN" }, orderBy: { createdAt: "desc" }, select: { id: true } }) : null;
+  const zzApplicant = northgate ? await db.guardianship.findFirst({ where: { studentSchoolId: northgate.id, status: "ACTIVE" }, select: { parentUserId: true, parent: { select: { email: true } } } }) : null;
+  const zzApplication = northgate && zzApplicant ? await db.application.findFirst({ where: { schoolId: northgate.id, applicantUserId: zzApplicant.parentUserId, status: "SUBMITTED" }, orderBy: { number: "asc" }, select: { id: true } }) : null;
+  if (northgate && zzCycle && zzApplicant?.parent.email && zzApplication) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, "/admin/admissions", 200, "the office reads its admission cycles");
+    await check(zzOffice, "/admin/admissions/new", 200, "…and starts a new one");
+    await check(zzOffice, `/admin/admissions/${zzCycle.id}`, 200, "…and edits the open cycle with its sittings");
+    await check(zzOffice, "/admin/admissions/applications", 200, "…and reads the pipeline");
+    await check(zzOffice, `/admin/admissions/applications?cycleId=${zzCycle.id}&status=SUBMITTED&grade=3`, 200, "…filtered by cycle, stage and grade");
+    await check(zzOffice, "/admin/admissions/applications/new", 200, "…and the walk-in form");
+    await check(zzOffice, `/admin/admissions/applications/${zzApplication.id}`, 200, "…and one application with its steps");
+    const zzLeadClass = await db.class.findFirst({ where: { schoolId: northgate.id, archivedAt: null, teachers: { some: { role: "LEAD" } } }, select: { teachers: { where: { role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } }, take: 1 } } });
+    const zzLeadEmail = zzLeadClass?.teachers[0]?.teacher.user.email;
+    if (zzLeadEmail) {
+      const zzLead = await mint(zzLeadEmail, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, "/admin/admissions", 307, "⚠ a class teacher does not run admissions");
+      await check(zzLead, "/admin/admissions/applications", 307, "⚠ …nor read the pipeline");
+    } else {
+      skip("admissions teacher", "no lead teacher at ZZ Northgate");
+    }
+    const zzParent = await mint(zzApplicant.parent.email, "PARENT", null, "zz-parent");
+    await check(zzParent, "/parent/applications", 200, "the guardian who applied reads their applications");
+    await check(zzParent, `/parent/applications/${zzApplication.id}`, 200, "…and one of them with the sittings to book");
+    await check(zzParent, `/explore/${northgate.id}`, 200, "…and the school's page carrying the open cycle");
+    await check(zzParent, `/explore/${northgate.id}/apply`, 200, "…and the application form");
+    await check(zzParent, "/admin/admissions", 307, "⚠ …but not the office's cycles");
+    await check(zzParent, `/admin/admissions/applications/${zzApplication.id}`, 307, "⚠ …nor the office's view of their own application");
+    await check(null, "/parent/applications", 307, "signed-out applications redirect to login");
+    await check(null, "/admin/admissions", 307, "signed-out admissions redirect to login");
+    await check(null, `/explore/${northgate.id}/apply`, 307, "signed-out application form redirects to login");
+  } else {
+    skip("admissions", "no ZZ fixtures with an open cycle and a submitted application (run zz:fixtures)");
+  }
+
   /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
   // ZZ Northgate carries Mathematics and English lists for grade 3 and its
   // grade-3 class is two chapters in; the actors are that school's office,

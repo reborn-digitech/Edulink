@@ -2,14 +2,15 @@ import { useState } from "react";
 import { Linking, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { communitySchoolProfileSchema, enquiryOpenedSchema } from "@edulink/contracts";
+import { communitySchoolProfileSchema, enquiryOpenedSchema, schoolAdmissionsSchema } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { param, Pill, relativeTime } from "../family/shared";
+import { formatDateKey, param, Pill, relativeTime } from "../family/shared";
+import { nextStepKey, StagePill } from "./application";
 import { employmentTypeLabel } from "./vacancy-detail";
 
 /**
@@ -35,6 +36,12 @@ export function SchoolProfile() {
     queryKey: ["community", "school", schoolId],
     enabled: Boolean(schoolId),
     queryFn: async () => communitySchoolProfileSchema.parse(unwrap(await api().get(`/api/v1/community/schools/${schoolId}`))),
+  });
+  // The open admission cycle and the guardian's own applications here: only a guardian applies, so only a guardian asks.
+  const admissions = useQuery({
+    queryKey: ["shared", "school-admissions", schoolId],
+    enabled: Boolean(schoolId) && role === "PARENT",
+    queryFn: async () => schoolAdmissionsSchema.parse(unwrap(await api().get(`/api/v1/shared/schools/${schoolId}/admissions`))),
   });
   const ask = useMutation({
     mutationFn: async (body: { schoolId: string; kind: "ADMISSION"; body: string }) => {
@@ -129,6 +136,31 @@ export function SchoolProfile() {
                   caption={`${employmentTypeLabel(t, v.employmentType)} · ${t("vacancies.postedAgo", { when: relativeTime(v.createdAt, locale) })}`}
                   onPress={readsVacancies ? () => router.push({ pathname: "/(app)/vacancy", params: { postingId: v.id } } as never) : undefined}
                 />
+              ))}
+            </Card>
+          ) : null}
+          {role === "PARENT" && admissions.data?.open ? (
+            <Card title={t("admissions.applyHere")}>
+              <Text variant="sm" tone="muted">
+                {t("admissions.applyIntro", { cycle: admissions.data.open.name, year: admissions.data.open.academicYearName })}
+              </Text>
+              {admissions.data.open.grades.map((g) => (
+                <Text key={g.grade} variant="sm">
+                  {`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}
+                </Text>
+              ))}
+              {admissions.data.open.closesAt ? (
+                <Text variant="sm" tone="warn">
+                  {t("admissions.closesOn", { date: formatDateKey(admissions.data.open.closesAt, locale) })}
+                </Text>
+              ) : null}
+              <Button label={t("admissions.apply")} onPress={() => router.push({ pathname: "/(app)/apply", params: { schoolId: d.schoolId, school: d.name } } as never)} />
+            </Card>
+          ) : null}
+          {role === "PARENT" && admissions.data && admissions.data.mine.length > 0 ? (
+            <Card title={t("admissions.yourApplicationsHere")}>
+              {admissions.data.mine.map((a) => (
+                <Row key={a.id} title={a.childName} caption={`${a.cycleName} · ${t(nextStepKey(a))}`} right={<StagePill status={a.status} />} onPress={() => router.push({ pathname: "/(app)/my-application", params: { id: a.id } } as never)} />
               ))}
             </Card>
           ) : null}

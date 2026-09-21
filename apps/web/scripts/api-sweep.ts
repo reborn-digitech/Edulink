@@ -81,6 +81,31 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
   return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null };
 }
 
+/** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
+async function admissionFixture(s: string): Promise<Pick<SweepFixture, "admissionCycleId" | "admissionCycle" | "closedCycleId" | "admissionGrade" | "admissionSlotId" | "cancelledSlotId" | "applicationId" | "offeredApplicationId" | "acceptedApplicationId" | "admittedApplicationId" | "waitlistedApplicationId" | "withdrawnApplicationId">> {
+  const [open, closed, cancelled, guardian] = await Promise.all([
+    db.admissionCycle.findFirst({ where: { schoolId: s, status: "OPEN" }, orderBy: { createdAt: "asc" } }),
+    db.admissionCycle.findFirst({ where: { schoolId: s, status: "CLOSED" }, orderBy: { createdAt: "asc" }, select: { id: true } }),
+    db.entranceSlot.findFirst({ where: { schoolId: s, cancelledAt: { not: null } }, select: { id: true } }),
+    db.guardianship.findFirst({ where: { studentSchoolId: s, status: "ACTIVE" }, select: { parentUserId: true } }),
+  ]);
+  let body: Record<string, unknown> | null = null;
+  let grade: string | null = null;
+  if (open) {
+    try {
+      const grades = JSON.parse(open.gradesJson) as { grade: string; seats: number }[];
+      grade = grades[0]?.grade ?? null;
+      body = { academicYearId: open.academicYearId, name: open.name, grades, documents: JSON.parse(open.documentsJson), testRequired: open.testRequired, notice: open.notice, feeStructureId: open.feeStructureId, opensAt: open.opensAt?.toISOString().slice(0, 10) ?? null, closesAt: open.closesAt?.toISOString().slice(0, 10) ?? null };
+    } catch {
+      body = null;
+    }
+  }
+  // The SUBMITTED one must carry documents: the verify step refuses an empty folder, rightly.
+  const mine = (status: string) => (open && guardian ? db.application.findFirst({ where: { cycleId: open.id, applicantUserId: guardian.parentUserId, status, ...(status === "SUBMITTED" ? { documentsJson: { not: "[]" } } : {}) }, orderBy: { number: "asc" }, select: { id: true, testSlotId: true } }) : Promise.resolve(null));
+  const [submitted, offered, accepted, admitted, waitlisted, withdrawn] = await Promise.all([mine("SUBMITTED"), mine("OFFERED"), mine("ACCEPTED"), mine("ADMITTED"), mine("WAITLISTED"), mine("WITHDRAWN")]);
+  return { admissionCycleId: open?.id ?? null, admissionCycle: body, closedCycleId: closed?.id ?? null, admissionGrade: grade, admissionSlotId: submitted?.testSlotId ?? null, cancelledSlotId: cancelled?.id ?? null, applicationId: submitted?.id ?? null, offeredApplicationId: offered?.id ?? null, acceptedApplicationId: accepted?.id ?? null, admittedApplicationId: admitted?.id ?? null, waitlistedApplicationId: waitlisted?.id ?? null, withdrawnApplicationId: withdrawn?.id ?? null };
+}
+
 async function fixture(): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   const s = school.id;
@@ -125,6 +150,7 @@ async function fixture(): Promise<SweepFixture> {
     ...(await substitutionFixture(s)),
     ...(await reportCardFixture(s)),
     ...(await certificateFixture(s)),
+    ...(await admissionFixture(s)),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }

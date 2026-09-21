@@ -88,3 +88,34 @@ describe("the guardian's overview", () => {
     expect(mockRouter.push).toHaveBeenCalledWith(expect.objectContaining({ pathname: "/(app)/timetable", params: { child: ID.child } }));
   });
 });
+
+describe("the guardian's applications on the overview", () => {
+  const APPLICATIONS = "/api/v1/family/applications";
+  const application = (id: string, childName: string, status = "SUBMITTED") => ({ id, serial: "ADM/2026-27/0001", status, childName, gradeApplied: "1", applicantName: "ZZ Parent", cycleName: "ZZ Admissions 2026-27", schoolName: "ZZ Hillside", documentsMissing: 0, testBooked: true, createdAt: "2026-09-18T05:00:00.000Z", updatedAt: "2026-09-18T05:00:00.000Z" });
+
+  it("lists up to three with their stage while there are any, opening one and the list", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, {
+      "/api/v1/family/children": () => CHILDREN,
+      "/api/v1/family/overview": () => OVERVIEW,
+      [APPLICATIONS]: () => ({ items: [application("czz00000000000000000app1", "ZZ Kabir", "OFFERED"), application("czz00000000000000000app2", "ZZ Meera"), application("czz00000000000000000app3", "ZZ Dev"), application("czz00000000000000000app4", "ZZ Nila")] }),
+    });
+    expect(await screen.findByRole("header", { name: "Applications" })).toBeTruthy();
+    expect(screen.getByText("ZZ Kabir")).toBeTruthy();
+    expect(screen.getByText("Offered")).toBeTruthy();
+    expect(screen.getByText("ZZ Hillside · The school has offered a place — answer the offer.")).toBeTruthy();
+    expect(screen.getByText("ZZ Dev")).toBeTruthy();
+    expect(screen.queryByText("ZZ Nila")).toBeNull();
+    await press(screen.getByRole("button", { name: /^ZZ Kabir/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: "czz00000000000000000app1" } });
+    await press(screen.getByRole("button", { name: "Applications" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-applications");
+  });
+
+  it("draws no card with none, and a guardian with no child still reaches the list", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => ({ children: [] }), [APPLICATIONS]: () => ({ items: [] }) });
+    expect(await screen.findByText("Your children")).toBeTruthy();
+    expect(screen.queryByText("ZZ Hillside")).toBeNull();
+    await press(screen.getByRole("button", { name: "Applications" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-applications");
+  });
+});

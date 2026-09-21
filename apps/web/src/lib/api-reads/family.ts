@@ -72,6 +72,17 @@ export async function requireApiParent(): Promise<ActiveContext & { role: "PAREN
   return session as ActiveContext & { role: "PARENT" };
 }
 
+/**
+ * A guardian account, child or no child: the admissions door, where a family
+ * that has no pupil anywhere yet is exactly who is knocking.
+ */
+export async function requireApiFamily(): Promise<ActiveContext & { role: "PARENT" }> {
+  const session = await getSession();
+  if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
+  if (session.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
+  return session as ActiveContext & { role: "PARENT" };
+}
+
 /** A pupil or a guardian; anybody else is refused, the way the shared pages refuse them. */
 export async function requireApiReader(): Promise<ActiveContext & { role: "STUDENT" | "PARENT" }> {
   const session = await getSession();

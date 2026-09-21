@@ -149,6 +149,7 @@ export const NOTIFICATION_KINDS = [
   "ENQUIRY",
   "FEES",
   "INCIDENT",
+  "ADMISSION",
   "SYSTEM",
 ] as const;
 export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
@@ -164,6 +165,7 @@ export const NOTIFICATION_KIND_KEY: Record<NotificationKind, TranslationKey> = {
   ENQUIRY: "notif.kindEnquiry",
   FEES: "notif.kindFees",
   INCIDENT: "notif.kindIncident",
+  ADMISSION: "notif.kindAdmission",
   SYSTEM: "notif.kindSystem",
 };
 

@@ -8,6 +8,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { OfficeAdmissionsCard } from "./admissions";
 import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
 import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 
@@ -71,6 +72,8 @@ function Overview({ d }: { d: PrincipalOverview }) {
         />
       </Card>
       <SyllabusCard d={d} />
+      {/* While an admission cycle is open: the pipeline's counts; the card asks for the cycles itself. */}
+      <OfficeAdmissionsCard />
       {d.classes.length === 0 ? (
         <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : (
