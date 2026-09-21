@@ -28,6 +28,31 @@ const OVERVIEW = {
   reviews: [{ membershipId: "m2", name: "ZZ Teacher", allTime: { responseCount: 12, byQuestion: { q1: 4.2 }, overall: 4.3 }, latest: { overall: 4.3, count: 12 }, previous: null, delta: null }],
 };
 
+const FILINGS = "GET /api/v1/office/filings";
+const filings = (identityMissing: string[], ready: number) => ({
+  identity: { udiseCode: null, board: "CBSE", affiliationNumber: null, district: "Pune", block: null, medium: "English", managementType: "PRIVATE_UNAIDED", state: "Maharashtra", city: "Pune", postalCode: "411001" },
+  identityMissing,
+  pupils: { total: 48, ready, missing: ready < 48 ? { gender: 48 - ready } : {}, withoutLocalName: 0 },
+  staff: { total: 10, ready: 10, missing: {} },
+  grades: [{ gradeLevel: "3", pupils: 48 }],
+  academicYearName: "2026-27",
+});
+
+describe("filings on the head's dashboard", () => {
+  it("while a pupil lacks a UDISE+ field, names the count and opens the filings; nothing when all are ready", async () => {
+    await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings([], 45)) });
+    expect(await screen.findByText("Filings")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "45 of 48 pupils have every UDISE+ field" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/filings");
+  });
+
+  it("draws no card when the identity is whole and every pupil is ready", async () => {
+    await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings([], 48)) });
+    await screen.findByText("Classes worth a look");
+    expect(screen.queryByText("Filings")).toBeNull();
+  });
+});
+
 describe("the principal's dashboard", () => {
   it("loads, then shows what can be fixed today and the classes", async () => {
     const gate = gated();

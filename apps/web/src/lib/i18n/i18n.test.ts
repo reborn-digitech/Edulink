@@ -51,6 +51,13 @@ const SHARED_WITH_ENGLISH = new Set([
   /** "UDISE+ PEN" is the government portal's own label for the permanent education number; every school form prints it in Latin letters. */
   "certificateDefaults.rowPen",
   "certificatePlaceholders.pupil_penNumber",
+  /** Board and file-type acronyms every Indian school writes in Latin letters: CBSE, CISCE, NIOS, IB, CSV, Excel. */
+  "filings.boardCBSE",
+  "filings.boardCISCE",
+  "filings.boardNIOS",
+  "filings.boardIB",
+  "filings.downloadCsv",
+  "filings.downloadXlsx",
   "pupilRecord.penNumber",
   /**
    * UPI and UTR are the acronyms every Indian bank app, receipt and

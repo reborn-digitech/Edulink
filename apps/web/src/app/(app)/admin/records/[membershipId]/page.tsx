@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SealCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { pupilRecordFor } from "@/lib/pupil-records";
-import { OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
+import { FILING_FORM_FIELDS, OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -45,9 +45,22 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
         }
       />
       <Card>
-        <CardHeader title={t("pupilRecord.title")} description={view.missing.length > 0 ? t("pupilRecord.missingList", { fields: view.missing.map(fieldLabel).join(", ") }) : t("pupilRecord.intro")} />
+        <CardHeader
+          title={t("pupilRecord.title")}
+          description={
+            <>
+              {view.missing.length > 0 ? t("pupilRecord.missingList", { fields: view.missing.map(fieldLabel).join(", ") }) : t("pupilRecord.intro")}
+              {view.missingForFiling.length > 0 && (
+                <>
+                  <br />
+                  <span data-testid="record-missing-filing">{t("filings.missingFilingList", { fields: view.missingForFiling.map(fieldLabel).join(", ") })}</span>
+                </>
+              )}
+            </>
+          }
+        />
         <CardBody>
-          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} />
+          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} />
         </CardBody>
       </Card>
     </div>

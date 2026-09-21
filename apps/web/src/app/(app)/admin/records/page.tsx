@@ -29,7 +29,12 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
   const t = await getT();
   const { missing } = await searchParams;
   const missingOnly = missing === "1";
-  const view = await officeRecords(ctx, missingOnly);
+  // ?missing=filing: the pupils the UDISE+ sheet cannot be filled for — a
+  // different set from the certificate's, cut here from the same rows.
+  const filingOnly = missing === "filing";
+  const all = await officeRecords(ctx, missingOnly);
+  const view = filingOnly ? { ...all, rows: all.rows.filter((r) => r.missingForFiling.length > 0) } : all;
+  const filingIds = view.rows.filter((r) => r.missingForFiling.length > 0).map((r) => r.studentMembershipId);
   const fieldLabel = (f: string) => t(`pupilRecord.${f}` as TranslationKey);
   const tab = (active: boolean) => (active ? "rounded-full bg-accent-soft px-3 py-1.5 text-sm font-semibold text-accent-strong" : "rounded-full px-3 py-1.5 text-sm font-medium text-fg-muted hover:bg-surface-muted hover:text-fg");
 
@@ -38,7 +43,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
       <PageHeader
         title={t("pupilRecord.officeTitle")}
         description={t("pupilRecord.officeIntro")}
-        actions={<AskFamiliesButton label={t("pupilRecord.askFamilies")} disabled={view.incomplete === 0} />}
+        actions={filingOnly ? <AskFamiliesButton membershipIds={filingIds} label={t("pupilRecord.askFamilies")} disabled={filingIds.length === 0} /> : <AskFamiliesButton label={t("pupilRecord.askFamilies")} disabled={view.incomplete === 0} />}
       />
 
       <div className="grid gap-3 sm:grid-cols-3">
@@ -50,11 +55,14 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
       <Card>
         <CardBody className="space-y-4 pt-5">
           <nav className="flex flex-wrap gap-1" aria-label={t("common.activeFilters")}>
-            <Link href="/admin/records" className={tab(!missingOnly)} aria-current={!missingOnly ? "page" : undefined}>
+            <Link href="/admin/records" className={tab(!missingOnly && !filingOnly)} aria-current={!missingOnly && !filingOnly ? "page" : undefined}>
               {t("pupilRecord.allPupils")}
             </Link>
             <Link href="/admin/records?missing=1" className={tab(missingOnly)} aria-current={missingOnly ? "page" : undefined}>
               {t("pupilRecord.onlyMissing")}
+            </Link>
+            <Link href="/admin/records?missing=filing" className={tab(filingOnly)} aria-current={filingOnly ? "page" : undefined}>
+              {t("filings.onlyMissingFiling")}
             </Link>
           </nav>
 
@@ -75,6 +83,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
                       )}
                     </p>
                     {row.missing.length > 0 && <p className="mt-0.5 text-xs text-fg-muted">{t("pupilRecord.missingList", { fields: row.missing.map(fieldLabel).join(", ") })}</p>}
+                    {filingOnly && row.missingForFiling.length > 0 && <p className="mt-0.5 text-xs text-fg-muted">{t("filings.missingFilingList", { fields: row.missingForFiling.map(fieldLabel).join(", ") })}</p>}
                     <p className="mt-0.5 text-xs text-fg-subtle">
                       {[
                         row.familyFilledAt ? t("pupilRecord.filledOn", { date: formatDate(new Date(row.familyFilledAt)) }) : null,
@@ -85,7 +94,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
                     </p>
                   </div>
                   <span className="flex shrink-0 flex-wrap items-center gap-2">
-                    {row.missing.length > 0 && <AskFamiliesButton membershipIds={[row.studentMembershipId]} label={t("pupilRecord.askSelected")} variant="ghost" />}
+                    {(row.missing.length > 0 || row.missingForFiling.length > 0) && <AskFamiliesButton membershipIds={[row.studentMembershipId]} label={t("pupilRecord.askSelected")} variant="ghost" />}
                     <Button asChild variant="secondary" size="sm">
                       <Link href={`/admin/records/${row.studentMembershipId}`}>{t("pupilRecord.edit")}</Link>
                     </Button>

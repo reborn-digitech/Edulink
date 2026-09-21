@@ -100,6 +100,8 @@ const FLAT: Record<string, string> = {
   "/admin/admissions/applications": "/(app)/applications",
   "/admin/admissions/applications/new": "/(app)/application-new",
   "/parent/applications": "/(app)/my-applications",
+  // Filings (September 2026): the UDISE+ and board returns, for the office and the head.
+  "/admin/filings": "/(app)/filings",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */

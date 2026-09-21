@@ -28,7 +28,7 @@ const PATH = "/api/v1/family/student/overview";
 
 describe("the pupil's Today", () => {
   const RECORD_PATH = "/api/v1/family/record";
-  const record = (missing: string[]) => ({ studentMembershipId: "m-pupil", studentName: "ZZ Pupil", className: "ZZ 5A", studentCode: null, birthdate: "2014-03-14", record: null, missing, complete: missing.length === 0, canEdit: true });
+  const record = (missing: string[]) => ({ studentMembershipId: "m-pupil", studentName: "ZZ Pupil", className: "ZZ 5A", studentCode: null, birthdate: "2014-03-14", record: null, missing, missingForFiling: [], complete: missing.length === 0, canEdit: true });
 
   it("nudges to complete the school record while a certificate field is blank, asking for the pupil's own record, and not once it is complete", async () => {
     const { fetch } = await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => OVERVIEW, [RECORD_PATH]: () => record(["motherTongue"]) });

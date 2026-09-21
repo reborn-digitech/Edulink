@@ -37,6 +37,12 @@ export type StaffRecordView = {
   /** YYYY-MM-DD; null when the office has not said. */
   joinedOnKey: string | null;
   leaveDaysPerYear: number | null;
+  /** The UDISE+ teacher profile: gender M/F/T, social category, the highest academic and professional qualification codes, the nature of appointment. */
+  gender: string | null;
+  socialCategory: string | null;
+  academicQualification: string | null;
+  professionalQualification: string | null;
+  appointmentType: string | null;
 };
 
 export type StaffRecordInput = {
@@ -45,7 +51,22 @@ export type StaffRecordInput = {
   qualification?: string | null;
   joinedOnKey?: string | null;
   leaveDaysPerYear?: number | null;
+  gender?: string | null;
+  socialCategory?: string | null;
+  academicQualification?: string | null;
+  professionalQualification?: string | null;
+  appointmentType?: string | null;
 };
+
+/** The portal's own codes, so a filing needs no translation: UDISE+ DCF 2024-25 §3.2. */
+export const STAFF_GENDERS = ["M", "F", "T"] as const;
+export const STAFF_SOCIAL_CATEGORIES = ["GENERAL", "SC", "ST", "OBC"] as const;
+/** 3.2.6(a): 1 below secondary … 8 post-doctoral. */
+export const ACADEMIC_QUALIFICATIONS = ["1", "2", "3", "4", "5", "6", "7", "8"] as const;
+/** 3.2.7(a): 1 basic teacher training … 12 B.Ed (Nursery); 9 is not a code. */
+export const PROFESSIONAL_QUALIFICATIONS = ["1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12"] as const;
+/** 3.2.12: regular, contract, part-time or guest. */
+export const APPOINTMENT_TYPES = ["REGULAR", "CONTRACT", "PART_TIME"] as const;
 
 export type LeaveBalance = {
   /** Null when no entitlement is set — the desk is told so rather than shown 0. */
@@ -59,10 +80,10 @@ export type LeaveBalance = {
 };
 
 function empty(membershipId: string): StaffRecordView {
-  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, leaveDaysPerYear: null };
+  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, leaveDaysPerYear: null, gender: null, socialCategory: null, academicQualification: null, professionalQualification: null, appointmentType: null };
 }
 
-function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; leaveDaysPerYear: number | null }): StaffRecordView {
+function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; leaveDaysPerYear: number | null; gender: string | null; socialCategory: string | null; academicQualification: string | null; professionalQualification: string | null; appointmentType: string | null }): StaffRecordView {
   return {
     membershipId: row.membershipId,
     staffNumber: row.staffNumber,
@@ -70,6 +91,11 @@ function view(row: { membershipId: string; staffNumber: string | null; designati
     qualification: row.qualification,
     joinedOnKey: row.joinedOn ? row.joinedOn.toISOString().slice(0, 10) : null,
     leaveDaysPerYear: row.leaveDaysPerYear,
+    gender: row.gender,
+    socialCategory: row.socialCategory,
+    academicQualification: row.academicQualification,
+    professionalQualification: row.professionalQualification,
+    appointmentType: row.appointmentType,
   };
 }
 
@@ -78,6 +104,12 @@ function view(row: { membershipId: string; staffNumber: string | null; designati
  * a member of staff for their own. A pupil, a parent, or another school gets
  * null — the same null a membership that does not exist gets.
  */
+/** A coded field: one of the portal's values, or nothing — never a free string. */
+function pick<T extends string>(value: string | null | undefined, allowed: readonly T[]): T | null {
+  const v = value?.trim().toUpperCase();
+  return v && (allowed as readonly string[]).includes(v) ? (v as T) : null;
+}
+
 export async function staffRecordFor(ctx: ActiveContext, membershipId: string): Promise<StaffRecordView | null> {
   if (!ctx.schoolId) return null;
   const own = ctx.membershipId === membershipId;
@@ -121,6 +153,11 @@ export async function setStaffRecord(
     qualification: trim(input.qualification, 200),
     joinedOn: input.joinedOnKey ? new Date(`${input.joinedOnKey}T00:00:00.000Z`) : null,
     leaveDaysPerYear: days ?? null,
+    gender: pick(input.gender, STAFF_GENDERS),
+    socialCategory: pick(input.socialCategory, STAFF_SOCIAL_CATEGORIES),
+    academicQualification: pick(input.academicQualification, ACADEMIC_QUALIFICATIONS),
+    professionalQualification: pick(input.professionalQualification, PROFESSIONAL_QUALIFICATIONS),
+    appointmentType: pick(input.appointmentType, APPOINTMENT_TYPES),
   };
   await db.staffRecord.upsert({
     where: { membershipId: member.id },

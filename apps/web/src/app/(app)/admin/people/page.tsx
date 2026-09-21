@@ -375,6 +375,11 @@ export default async function DirectoryPage({
                                   qualification: member.staffRecord?.qualification ?? "",
                                   joinedOnKey: member.staffRecord?.joinedOn?.toISOString().slice(0, 10) ?? "",
                                   leaveDaysPerYear: member.staffRecord?.leaveDaysPerYear?.toString() ?? "",
+                                  gender: member.staffRecord?.gender ?? "",
+                                  socialCategory: member.staffRecord?.socialCategory ?? "",
+                                  academicQualification: member.staffRecord?.academicQualification ?? "",
+                                  professionalQualification: member.staffRecord?.professionalQualification ?? "",
+                                  appointmentType: member.staffRecord?.appointmentType ?? "",
                                 }
                           }
                           suspended={member.status === "SUSPENDED"}

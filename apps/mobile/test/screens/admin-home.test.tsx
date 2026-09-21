@@ -81,6 +81,33 @@ describe("the admin's overview", () => {
   });
 });
 
+const FILINGS = "GET /api/v1/office/filings";
+const filings = (identityMissing: string[], ready: number) => ({
+  identity: { udiseCode: null, board: "CBSE", affiliationNumber: null, district: "Pune", block: null, medium: "English", managementType: "PRIVATE_UNAIDED", state: "Maharashtra", city: "Pune", postalCode: "411001" },
+  identityMissing,
+  pupils: { total: 48, ready, missing: ready < 48 ? { gender: 48 - ready } : {}, withoutLocalName: 0 },
+  staff: { total: 10, ready: 10, missing: {} },
+  grades: [{ gradeLevel: "3", pupils: 48 }],
+  academicYearName: "2026-27",
+});
+
+describe("filings on the office's overview", () => {
+  it("while the identity has a blank or a pupil lacks a field, names the gap and opens the filings", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings(["udiseCode"], 40)) });
+    expect(await screen.findByText("Filings")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "40 of 48 pupils have every UDISE+ field, Still blank: UDISE+ code" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/filings");
+  });
+
+  it("draws no card when the identity is whole and every pupil is ready", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings([], 48)) });
+    await screen.findByText("Lessons without a teacher");
+    await screen.findByText("Admissions").catch(() => undefined);
+    expect(screen.queryByText("Filings")).toBeNull();
+    expect(screen.queryByText(/pupils have every UDISE\+ field/)).toBeNull();
+  });
+});
+
 describe("admissions on the office's overview", () => {
   const CYCLES = "GET /api/v1/office/admissions/cycles";
   const cycle = (status: string) => ({

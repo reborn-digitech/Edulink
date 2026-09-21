@@ -1,8 +1,8 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react-native";
 import { ToastProvider } from "@/components";
 import { bodyOf, calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
 import { FamilyRecord } from "@/screens/family/record";
-import { bodyFrom, formFrom, OPTIONAL_FIELDS, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
+import { bodyFrom, FILING_FIELDS, formFrom, OPTIONAL_FIELDS, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
 
 const CHILDREN = { children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela")] };
 const RECORD = {
@@ -22,11 +22,19 @@ const RECORD = {
   admittedToGrade: null,
   previousSchool: null,
   penNumber: null,
+  gender: null,
+  nameLocal: null,
+  fatherNameLocal: null,
+  motherNameLocal: null,
+  bpl: null,
+  ews: null,
+  cwsnType: null,
+  bloodGroup: null,
   requestedAt: "2026-09-01T05:00:00.000Z",
   familyFilledAt: null,
   updatedAt: "2026-09-10T05:00:00.000Z",
 };
-const VIEW = { studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: "ZZ-001", birthdate: "2016-03-14", record: RECORD, missing: ["admissionNumber", "admissionDate"], complete: false, canEdit: true };
+const VIEW = { studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: "ZZ-001", birthdate: "2016-03-14", record: RECORD, missing: ["admissionNumber", "admissionDate"], missingForFiling: ["gender", "bpl"], complete: false, canEdit: true };
 const PATH = "/api/v1/family/record";
 const CHILDREN_PATH = "/api/v1/family/children";
 
@@ -46,7 +54,8 @@ describe("the helpers behind the record", () => {
     expect(body.fatherName).toBe("ZZ Ravi");
     expect(body.admissionDate).toBeNull();
     expect(bodyFrom({ ...formFrom(null), admissionDate: "2023-06-01" }).admissionDate).toBe("2023-06-01");
-    expect(Object.keys(body).sort()).toEqual([...REQUIRED_FIELDS, ...OPTIONAL_FIELDS].sort());
+    expect(Object.keys(body).sort()).toEqual([...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS].sort());
+    expect(bodyFrom({ ...formFrom(null), gender: "F", bpl: "yes", cwsnType: "9", bloodGroup: "B+" })).toMatchObject({ gender: "F", bpl: "yes", ews: "", cwsnType: "9", bloodGroup: "B+", nameLocal: "" });
   });
 });
 
@@ -59,6 +68,7 @@ describe("the pupil record for the guardian", () => {
   it("shows every field with the date of birth read-only, the required ones first, and what is still blank", async () => {
     await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: () => VIEW });
     expect(await screen.findByText("Still blank: Admission register number, Date of admission")).toBeTruthy();
+    expect(screen.getByText("Still blank for the UDISE+ filing: Gender, Below-poverty-line card")).toBeTruthy();
     expect(screen.getByText("2 missing")).toBeTruthy();
     expect(screen.getByLabelText(/^Date of birth: .*2016\. Recorded by the school/)).toBeTruthy();
     expect(screen.getByText("Recorded by the school; ask the office to correct it.")).toBeTruthy();
@@ -76,7 +86,7 @@ describe("the pupil record for the guardian", () => {
   it("saves the whole record for that child, then says it is saved and reads back what still blocks", async () => {
     const { fetch } = await renderFamily(compose(), ME_PARENT, {
       [CHILDREN_PATH]: () => CHILDREN,
-      [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, admissionNumber: "GR-42", admissionDate: "2023-06-01" }, missing: [], complete: true } : VIEW),
+      [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, admissionNumber: "GR-42", admissionDate: "2023-06-01" }, missing: [], missingForFiling: [], complete: true } : VIEW),
     });
     await fireEvent.changeText(await screen.findByLabelText("Admission register number"), "GR-42");
     await fireEvent.changeText(screen.getByLabelText("Date of admission"), "2023-06-01");
@@ -101,10 +111,39 @@ describe("the pupil record for the guardian", () => {
       admittedToGrade: "",
       previousSchool: "",
       penNumber: "",
+      gender: "",
+      nameLocal: "",
+      fatherNameLocal: "",
+      motherNameLocal: "",
+      bpl: "",
+      ews: "",
+      cwsnType: "",
+      bloodGroup: "",
     });
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("Complete")).toBeTruthy();
     expect(screen.queryByText(/^Still blank/)).toBeNull();
+  });
+
+  it("the filing section sends the portal's codes: gender, the name in the school's script, BPL, the impairment type and the blood group", async () => {
+    const { fetch } = await renderFamily(compose(), ME_PARENT, {
+      [CHILDREN_PATH]: () => CHILDREN,
+      [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, gender: "F", bpl: "yes", nameLocal: "ZZ आशा", cwsnType: "9", bloodGroup: "B+" }, missingForFiling: [] } : VIEW),
+    });
+    expect(await screen.findByText("For the UDISE+ and board filings")).toBeTruthy();
+    expect(screen.getByLabelText("Name in the school\u2019s script").props.accessibilityHint).toMatch(/^Optional · The state board prints/);
+    await fireEvent.press(within(screen.getByLabelText("Gender")).getByRole("radio", { name: "Female" }));
+    await fireEvent.changeText(screen.getByLabelText("Name in the school\u2019s script"), "ZZ आशा");
+    await fireEvent.press(within(screen.getByLabelText("Below-poverty-line card")).getByRole("radio", { name: "Yes" }));
+    await fireEvent.press(within(screen.getByLabelText("Disability, if any")).getByRole("radio", { name: "9 — Autism spectrum disorder" }));
+    await fireEvent.press(within(screen.getByLabelText("Blood group")).getByRole("radio", { name: "B+" }));
+    // The section's "Not said" stays on the section not touched.
+    expect(within(screen.getByLabelText("Economically weaker section or disadvantaged group")).getByRole("radio", { name: "Not said" }).props.accessibilityState.checked).toBe(true);
+    await press(screen.getByRole("button", { name: "Save the record" }));
+    await waitFor(() => expect(posts(fetch)).toHaveLength(1));
+    expect(bodyOf(posts(fetch)[0]!)).toMatchObject({ gender: "F", nameLocal: "ZZ आशा", fatherNameLocal: "", motherNameLocal: "", bpl: "yes", ews: "", cwsnType: "9", bloodGroup: "B+" });
+    expect(await screen.findByText("Record saved.")).toBeTruthy();
+    expect(screen.queryByText(/^Still blank for the UDISE\+ filing/)).toBeNull();
   });
 
   it("a date of admission that is not a day is refused before anything is sent", async () => {

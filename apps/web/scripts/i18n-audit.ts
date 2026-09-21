@@ -242,7 +242,15 @@ function scan(): Finding[] {
       // not a string waiting to be moved into it. Its labels go through the
       // dictionary (labelKey); its texts are registered with carriers as
       // written, which is why they cannot live in the dictionary's fold.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/message-templates.ts"),
+      //
+      // …and the UDISE+ impairment list. filing-codes.ts is the portal's own
+      // twenty-one names beside their codes — values the record form shows
+      // so a family can find the code the portal takes, like places.ts's
+      // state names, not sentences of the app's. The portal reads the code.
+      // …and the filings library, whose strings are the UDISE+ bulk sheet's
+      // and the boards' own column headings and code legends — the portal
+      // reads them, not a person, and a translated heading would not upload.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

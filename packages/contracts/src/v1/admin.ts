@@ -864,6 +864,11 @@ export const adminStaffSchema = z.object({
           qualification: z.string().nullable(),
           joinedOnKey: dateKey.nullable(),
           leaveDaysPerYear: z.number().int().nullable(),
+          gender: z.string().nullable().default(null),
+          socialCategory: z.string().nullable().default(null),
+          academicQualification: z.string().nullable().default(null),
+          professionalQualification: z.string().nullable().default(null),
+          appointmentType: z.string().nullable().default(null),
         })
         .nullable(),
       leadClasses: z.array(z.string()),

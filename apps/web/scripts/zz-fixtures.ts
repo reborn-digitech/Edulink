@@ -881,6 +881,9 @@ async function buildCertificates(school: { id: string; name: string; code: strin
       fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: "Pune", nationality: "Indian", religion: "Hindu", caste: null, category: i % 3 === 0 ? "General" : "OBC", motherTongue: "Marathi",
       addressLine: `${10 + i} Shivaji Nagar`, city: "Pune", postalCode: "411005", admissionNumber: `GR-${1000 + i}`,
       admissionDate: i === roll.length - 1 ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: "Sunrise Nursery", penNumber: null, updatedByUserId: adminUserId, familyFilledAt: new Date(),
+      // The filing fields: gender for all but the last (so the UDISE sheet has a blank to name), a BPL and an EWS flag, one child with an impairment, Marathi names on two.
+      gender: i === roll.length - 1 ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, cwsnType: i === 1 ? "2" : null, bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
+      nameLocal: i === 0 ? "आरव पाटील" : i === 1 ? "भक्ती भोसले" : null, fatherNameLocal: i === 0 ? "रोहन पाटील" : null, motherNameLocal: i === 0 ? "स्नेहा पाटील" : null,
     };
     await db.pupilRecord.upsert({ where: { studentMembershipId: row.studentMembershipId }, create: { schoolId: school.id, studentMembershipId: row.studentMembershipId, ...data }, update: data });
     records += 1;
@@ -943,7 +946,7 @@ async function buildCertificates(school: { id: string; name: string; code: strin
  */
 async function buildAdmissions(school: { id: string; name: string }, adminUserId: string, structureId: string | null) {
   const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true } });
-  await db.school.update({ where: { id: school.id }, data: { profilePublishedAt: new Date(), profileAbout: "A neighbourhood school in Pune, grades 3 to 10, with a bilingual primary section." } });
+  await db.school.update({ where: { id: school.id }, data: { profilePublishedAt: new Date(), profileAbout: "A neighbourhood school in Pune, grades 3 to 10, with a bilingual primary section.", udiseCode: "27250100101", board: "MSBSHSE", affiliationNumber: "25.01.001", district: "Pune", block: "Haveli", medium: "Marathi", managementType: "PRIVATE_UNAIDED" } });
   await db.admissionCycle.deleteMany({ where: { schoolId: school.id } });
   const cycle = await db.admissionCycle.create({
     data: {
@@ -978,6 +981,29 @@ async function buildAdmissions(school: { id: string; name: string }, adminUserId
   for (const spec of specs) await db.application.create({ data: { ...base, ...spec, serial: `APP/${year.name}/${String(spec.number).padStart(4, "0")}` } });
   await db.application.create({ data: { schoolId: school.id, cycleId: cycle.id, number: 7, serial: `APP/${year.name}/0007`, applicantUserId: null, applicantName: "Sujata Kulkarni", applicantPhone: "+91 98764 00077", relation: "PARENT", childName: "ZZ Anvi Kulkarni", gradeApplied: "3", childBirthdate: new Date("2019-03-03T00:00:00Z"), status: "SUBMITTED", note: "Came to the office on Saturday with the paper form.", createdByUserId: adminUserId } });
   return { cycles: 2, slots: 4, applications: 7 };
+}
+
+/**
+ * The staff records the UDISE+ teacher profile is cut from: every form tutor
+ * and subject teacher gets a gender, a category, qualifications and an
+ * appointment type; the two idle teachers are left blank so the filings page
+ * has staff to name. Re-run safe.
+ */
+async function buildStaffRecords(school: { id: string }, staff: { membership: { id: string } }[]) {
+  const specs = [
+    { gender: "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: "3", appointmentType: "REGULAR", designation: "Primary teacher" },
+    { gender: "M", socialCategory: "OBC", academicQualification: "4", professionalQualification: "3", appointmentType: "REGULAR", designation: "Class teacher" },
+    { gender: "F", socialCategory: "GENERAL", academicQualification: "4", professionalQualification: "10", appointmentType: "CONTRACT", designation: "Class teacher" },
+    { gender: "M", socialCategory: "SC", academicQualification: "5", professionalQualification: "4", appointmentType: "REGULAR", designation: "Senior teacher" },
+  ];
+  let n = 0;
+  for (const [i, s] of staff.entries()) {
+    const spec = specs[i % specs.length]!;
+    const data = { ...spec, joinedOn: new Date(`${2015 + (i % 8)}-06-01T00:00:00Z`), leaveDaysPerYear: 12 };
+    await db.staffRecord.upsert({ where: { membershipId: s.membership.id }, create: { schoolId: school.id, membershipId: s.membership.id, ...data }, update: data });
+    n += 1;
+  }
+  return { records: n };
 }
 
 /**
@@ -1480,6 +1506,7 @@ async function main() {
   const exams = await buildExams(northgate.school, northgate.admin.id);
   const certs = await buildCertificates(northgate.school, northgate.admin.id);
   const admissions = await buildAdmissions(northgate.school, northgate.admin.id, fees.structure.id);
+  const staffRecords = await buildStaffRecords(northgate.school, [...northgate.teachers, ...northgate.subjectTeachers]);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -1524,6 +1551,7 @@ async function main() {
      syllabus    ${syllabus.units} chapters for grade 3 (Mathematics, English), the grade-3 class two chapters in with one in progress — /admin/syllabus, /principal
      exams       ${exams.series} series in Term 1 with ${exams.papers} papers, ${exams.marks} marks; ${exams.cards} report cards (Term 1 published with co-scholastic grades, a draft set) — /admin/report-cards
      certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked) — /admin/certificates
+     filings     UDISE 27250100101, MSBSHSE, Marathi medium; grade-3 records carry gender, BPL/EWS, one impairment, two Marathi names; ${staffRecords.records} staff records — /admin/filings
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
 

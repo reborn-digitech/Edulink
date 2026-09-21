@@ -747,6 +747,11 @@ export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: stri
             qualification: m.staffRecord.qualification,
             joinedOnKey: m.staffRecord.joinedOn ? dayKey(m.staffRecord.joinedOn) : null,
             leaveDaysPerYear: m.staffRecord.leaveDaysPerYear,
+            gender: m.staffRecord.gender,
+            socialCategory: m.staffRecord.socialCategory,
+            academicQualification: m.staffRecord.academicQualification,
+            professionalQualification: m.staffRecord.professionalQualification,
+            appointmentType: m.staffRecord.appointmentType,
           }
         : null,
       leadClasses: m.classTeachers.map((ct) => ct.class.name),

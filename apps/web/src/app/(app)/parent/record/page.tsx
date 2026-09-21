@@ -4,7 +4,7 @@ import { ArrowLeftIcon, FolderUserIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { pupilRecordFor } from "@/lib/pupil-records";
-import { OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
+import { FILING_FORM_FIELDS, OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
@@ -55,7 +55,7 @@ export default async function ParentRecordPage({ searchParams }: { searchParams:
           description={view.missing.length > 0 ? t("pupilRecord.missingList", { fields: view.missing.map(fieldLabel).join(", ") }) : undefined}
         />
         <CardBody>
-          <PupilRecordForm key={`${selectedId}-${view.record?.updatedAt ?? "new"}`} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} />
+          <PupilRecordForm key={`${selectedId}-${view.record?.updatedAt ?? "new"}`} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} />
         </CardBody>
       </Card>
     </div>

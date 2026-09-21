@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react-native";
 import { ToastProvider } from "@/components";
 import { PupilRecords } from "@/screens/staff/pupil-records";
 import { OfficePupilRecord } from "@/screens/staff/pupil-record";
@@ -14,9 +14,9 @@ const CHIRAG = "czz000000000000000pupil3";
 const PATH = "/api/v1/office/pupil-records";
 
 const ROWS = [
-  { studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A", missing: ["admissionNumber", "admissionDate"], requestedAt: "2026-09-01T05:00:00.000Z", familyFilledAt: null },
-  { studentMembershipId: BELA, studentName: "ZZ Bela", className: "ZZ 3B", missing: ["fatherName"], requestedAt: null, familyFilledAt: null },
-  { studentMembershipId: CHIRAG, studentName: "ZZ Chirag", className: "ZZ 5A", missing: [], requestedAt: "2026-08-20T05:00:00.000Z", familyFilledAt: "2026-08-22T05:00:00.000Z" },
+  { studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A", missing: ["admissionNumber", "admissionDate"], missingForFiling: ["gender"], requestedAt: "2026-09-01T05:00:00.000Z", familyFilledAt: null },
+  { studentMembershipId: BELA, studentName: "ZZ Bela", className: "ZZ 3B", missing: ["fatherName"], missingForFiling: [], requestedAt: null, familyFilledAt: null },
+  { studentMembershipId: CHIRAG, studentName: "ZZ Chirag", className: "ZZ 5A", missing: [], missingForFiling: [], requestedAt: "2026-08-20T05:00:00.000Z", familyFilledAt: "2026-08-22T05:00:00.000Z" },
 ];
 
 /** The list answers by the filter it is asked for, so the toggle can be seen to change the request. */
@@ -53,6 +53,7 @@ describe("the office's pupil records", () => {
     expect(screen.getByLabelText("Only incomplete: 2")).toBeTruthy();
     expect(screen.getByText("Still blank: Admission register number, Date of admission")).toBeTruthy();
     expect(screen.getByText("Still blank: Father's name")).toBeTruthy();
+    expect(screen.getByText("Still blank for the UDISE+ filing: Gender")).toBeTruthy();
     expect(screen.getByText(/^ZZ 5A · Asked .*2026$/)).toBeTruthy();
     expect(screen.getByText("ZZ 3B · Not asked yet")).toBeTruthy();
     expect(screen.getByText("2 missing")).toBeTruthy();
@@ -125,6 +126,7 @@ const VIEW = {
   record: null,
   missing: ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"],
   complete: false,
+  missingForFiling: ["gender"],
   canEdit: true,
 };
 
@@ -145,11 +147,14 @@ describe("one pupil's record for the office", () => {
       },
     );
     expect(await screen.findByText("9 missing")).toBeTruthy();
+    expect(screen.getByText("Still blank for the UDISE+ filing: Gender")).toBeTruthy();
     expect(screen.getByText("The details a school certificate names: the parents, the place of birth, the admission register, the last school. The family fills them in once; the office may correct them.")).toBeTruthy();
     await fireEvent.changeText(screen.getByLabelText("Father's name"), "ZZ Ravi");
+    await fireEvent.press(within(screen.getByLabelText("Gender")).getByRole("radio", { name: "Male" }));
+    await fireEvent.press(within(screen.getByLabelText("Economically weaker section or disadvantaged group")).getByRole("radio", { name: "No" }));
     await fireEvent.press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(calls().some((c) => c.line === `POST ${PATH}/${ASHA}`)).toBe(true));
-    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null });
+    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null, gender: "M", ews: "no", bpl: "", cwsnType: "", bloodGroup: "" });
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("1 missing")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Issue a certificate" }));

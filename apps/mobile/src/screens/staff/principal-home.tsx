@@ -9,6 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { OfficeAdmissionsCard } from "./admissions";
+import { FilingsCard } from "./filings";
 import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
 import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 
@@ -74,6 +75,8 @@ function Overview({ d }: { d: PrincipalOverview }) {
       <SyllabusCard d={d} />
       {/* While an admission cycle is open: the pipeline's counts; the card asks for the cycles itself. */}
       <OfficeAdmissionsCard />
+      {/* While the filing identity has a blank or a pupil lacks a UDISE+ field: the door to the filings, read-only for the head. */}
+      <FilingsCard />
       {d.classes.length === 0 ? (
         <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : (

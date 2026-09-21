@@ -2263,6 +2263,37 @@ async function main() {
     skip("admissions", "no ZZ fixtures with an open cycle and a submitted application (run zz:fixtures)");
   }
 
+  /* ---- filings: the office's UDISE+ and board sheets, the identity and the readiness ---- */
+  // ZZ Northgate is enough on its own: the page needs no fixture beyond the
+  // school, and every export answers with at least its header row. The
+  // actors are its admin, its principal — who reads the page and is refused
+  // the downloads — the class's lead teacher, and nobody at all.
+  if (northgate) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, "/admin/filings", 200, "the office reads its filings page");
+    await check(zzOffice, "/admin/filings/export/udise-students", 200, "…and downloads the UDISE+ student sheet");
+    await check(zzOffice, "/admin/filings/export/udise-enrolment", 200, "…and the enrolment tables");
+    await check(zzOffice, "/admin/filings/export/udise-teachers", 200, "…and the teacher profile");
+    await check(zzOffice, "/admin/filings/export/cbse-candidates?grade=10", 200, "…and a grade's CBSE candidates");
+    await check(zzOffice, "/admin/filings/export/msbshse-candidates?grade=10", 200, "…and the Maharashtra board's pre-list");
+    await check(zzOffice, "/admin/filings/export/udise-teachers?format=xlsx", 200, "…and a sheet as a workbook");
+    await check(zzOffice, "/admin/records?missing=filing", 200, "…and the pupils the sheet cannot be filled for");
+    const zzPrincipal = await mint("zz.principal@zz.test", "PRINCIPAL", northgate.id, "zz-principal");
+    await check(zzPrincipal, "/admin/filings", 200, "the principal reads the filings page");
+    await check(zzPrincipal, "/admin/filings/export/udise-students", 403, "⚠ …but may not download a sheet that names children");
+    const zzFilingLead = await db.class.findFirst({ where: { schoolId: northgate.id, archivedAt: null, teachers: { some: { role: "LEAD" } } }, select: { teachers: { where: { role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } }, take: 1 } } });
+    const zzFilingLeadEmail = zzFilingLead?.teachers[0]?.teacher.user.email;
+    if (zzFilingLeadEmail) {
+      const zzLead = await mint(zzFilingLeadEmail, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, "/admin/filings", 307, "⚠ a class teacher does not file returns");
+    } else {
+      skip("filings teacher", "no lead teacher at ZZ Northgate");
+    }
+    await check(null, "/admin/filings", 307, "signed-out filings redirect to login");
+  } else {
+    skip("filings", "no ZZ Northgate (run zz:fixtures)");
+  }
+
   /* ---- syllabus: the office's lists and coverage, a class's chapters and lessons ---- */
   // ZZ Northgate carries Mathematics and English lists for grade 3 and its
   // grade-3 class is two chapters in; the actors are that school's office,

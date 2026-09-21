@@ -120,8 +120,21 @@ model School {
   /// the weight of each exam kind inside a term, and the printed layout. Null
   /// means the defaults; a card snapshots the document it was built with.
   reportCardConfig      String?
+
+  /// FILINGS: what the UDISE+ portal and the board know the school as. The
+  /// eleven-digit UDISE code, the board (CBSE, CISCE, a state board), its
+  /// affiliation or index number, the district and block the portal files
+  /// the school under, the medium of instruction, and the management type
+  /// in the portal's own words. All optional; the exports name what is blank.
+  udiseCode         String?
+  board             String?
+  affiliationNumber String?
+  district          String?
+  block             String?
+  medium            String?
+  managementType    String?
   /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
-  msgEventsJson         String  @default("{}")
+  msgEventsJson     String  @default("{}")
 
   verifiedAt DateTime?
 
@@ -2038,17 +2051,26 @@ model ScheduledDeparture {
 /// called on the board, what they hold, and how many days' leave a year they
 /// are entitled to — which is what the leave desk needs before it approves.
 model StaffRecord {
-  id               String    @id @default(cuid())
-  schoolId         String
-  membershipId     String    @unique
-  staffNumber      String?
-  designation      String?
-  qualification    String?
-  joinedOn         DateTime?
+  id                        String    @id @default(cuid())
+  schoolId                  String
+  membershipId              String    @unique
+  staffNumber               String?
+  designation               String?
+  qualification             String?
+  joinedOn                  DateTime?
   /// Entitlement per academic year. Null means the school has not said.
-  leaveDaysPerYear Int?
-  updatedAt        DateTime  @updatedAt
-  createdAt        DateTime  @default(now())
+  leaveDaysPerYear          Int?
+  /// FILINGS: the UDISE+ teacher profile beyond the payroll basics — gender
+  /// as the portal codes it, the social category, the highest academic and
+  /// professional qualification, the nature of appointment (regular,
+  /// contract, part-time), and the date of birth when the account has none.
+  gender                    String?
+  socialCategory            String?
+  academicQualification     String?
+  professionalQualification String?
+  appointmentType           String?
+  updatedAt                 DateTime  @updatedAt
+  createdAt                 DateTime  @default(now())
 
   school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
@@ -3852,6 +3874,20 @@ model PupilRecord {
   previousSchool      String?
   /// UDISE+ Permanent Education Number.
   penNumber           String?
+  /// FILINGS: what UDISE+ and the boards ask beyond the certificate fields.
+  /// Gender as the portal codes it (M | F | T); the name and the parents'
+  /// names in the school's own script for a state board that files in it;
+  /// below-poverty-line and economically-weaker-section flags; the type of
+  /// disability in the portal's list, or null; the second language and the
+  /// board's subject codes the pupil sits. Never Aadhaar.
+  gender              String?
+  nameLocal           String?
+  fatherNameLocal     String?
+  motherNameLocal     String?
+  bpl                 Boolean?
+  ews                 Boolean?
+  cwsnType            String?
+  bloodGroup          String?
   /// When the office last asked the family to fill it in, and when the family last did.
   requestedAt         DateTime?
   familyFilledAt      DateTime?

@@ -8476,6 +8476,26 @@
                               "leaveDaysPerYear": {
                                 "type": "integer",
                                 "nullable": true
+                              },
+                              "gender": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "socialCategory": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "academicQualification": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "professionalQualification": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "appointmentType": {
+                                "type": "string",
+                                "nullable": true
                               }
                             },
                             "required": [
@@ -8483,7 +8503,12 @@
                               "designation",
                               "qualification",
                               "joinedOnKey",
-                              "leaveDaysPerYear"
+                              "leaveDaysPerYear",
+                              "gender",
+                              "socialCategory",
+                              "academicQualification",
+                              "professionalQualification",
+                              "appointmentType"
                             ],
                             "additionalProperties": false,
                             "nullable": true
@@ -12598,6 +12623,26 @@
                         "leaveDaysPerYear": {
                           "type": "integer",
                           "nullable": true
+                        },
+                        "gender": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "socialCategory": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "academicQualification": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "professionalQualification": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "appointmentType": {
+                          "type": "string",
+                          "nullable": true
                         }
                       },
                       "required": [
@@ -12605,7 +12650,12 @@
                         "designation",
                         "qualification",
                         "joinedOnKey",
-                        "leaveDaysPerYear"
+                        "leaveDaysPerYear",
+                        "gender",
+                        "socialCategory",
+                        "academicQualification",
+                        "professionalQualification",
+                        "appointmentType"
                       ],
                       "additionalProperties": false,
                       "nullable": true
@@ -54266,7 +54316,15 @@
                                 "admissionDate",
                                 "admittedToGrade",
                                 "previousSchool",
-                                "penNumber"
+                                "penNumber",
+                                "gender",
+                                "nameLocal",
+                                "fatherNameLocal",
+                                "motherNameLocal",
+                                "bpl",
+                                "ews",
+                                "cwsnType",
+                                "bloodGroup"
                               ]
                             }
                           },
@@ -54490,6 +54548,38 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "gender": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fatherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bpl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ews": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cwsnType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bloodGroup": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -54529,6 +54619,14 @@
                         "admittedToGrade",
                         "previousSchool",
                         "penNumber",
+                        "gender",
+                        "nameLocal",
+                        "fatherNameLocal",
+                        "motherNameLocal",
+                        "bpl",
+                        "ews",
+                        "cwsnType",
+                        "bloodGroup",
                         "requestedAt",
                         "familyFilledAt",
                         "updatedAt"
@@ -54556,8 +54654,22 @@
                           "admissionDate",
                           "admittedToGrade",
                           "previousSchool",
-                          "penNumber"
+                          "penNumber",
+                          "gender",
+                          "nameLocal",
+                          "fatherNameLocal",
+                          "motherNameLocal",
+                          "bpl",
+                          "ews",
+                          "cwsnType",
+                          "bloodGroup"
                         ]
+                      }
+                    },
+                    "missingForFiling": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/missing/items"
                       }
                     },
                     "complete": {
@@ -54575,6 +54687,7 @@
                     "birthdate",
                     "record",
                     "missing",
+                    "missingForFiling",
                     "complete",
                     "canEdit"
                   ],
@@ -54745,6 +54858,38 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "gender": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fatherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bpl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ews": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cwsnType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bloodGroup": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -54784,6 +54929,14 @@
                         "admittedToGrade",
                         "previousSchool",
                         "penNumber",
+                        "gender",
+                        "nameLocal",
+                        "fatherNameLocal",
+                        "motherNameLocal",
+                        "bpl",
+                        "ews",
+                        "cwsnType",
+                        "bloodGroup",
                         "requestedAt",
                         "familyFilledAt",
                         "updatedAt"
@@ -54811,8 +54964,22 @@
                           "admissionDate",
                           "admittedToGrade",
                           "previousSchool",
-                          "penNumber"
+                          "penNumber",
+                          "gender",
+                          "nameLocal",
+                          "fatherNameLocal",
+                          "motherNameLocal",
+                          "bpl",
+                          "ews",
+                          "cwsnType",
+                          "bloodGroup"
                         ]
+                      }
+                    },
+                    "missingForFiling": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/missing/items"
                       }
                     },
                     "complete": {
@@ -54830,6 +54997,7 @@
                     "birthdate",
                     "record",
                     "missing",
+                    "missingForFiling",
                     "complete",
                     "canEdit"
                   ],
@@ -54942,6 +55110,103 @@
                   "penNumber": {
                     "type": "string",
                     "maxLength": 40
+                  },
+                  "gender": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "M",
+                          "F",
+                          "T"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "nameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "fatherNameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherNameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "bpl": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no",
+                      ""
+                    ]
+                  },
+                  "ews": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "cwsnType": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "1",
+                          "2",
+                          "3",
+                          "4",
+                          "5",
+                          "6",
+                          "7",
+                          "8",
+                          "9",
+                          "10",
+                          "11",
+                          "12",
+                          "13",
+                          "14",
+                          "15",
+                          "16",
+                          "17",
+                          "18",
+                          "19",
+                          "20",
+                          "21"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "bloodGroup": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "A+",
+                          "A-",
+                          "B+",
+                          "B-",
+                          "AB+",
+                          "AB-",
+                          "O+",
+                          "O-"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -56400,6 +56665,38 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "gender": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fatherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bpl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ews": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cwsnType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bloodGroup": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -56439,6 +56736,14 @@
                         "admittedToGrade",
                         "previousSchool",
                         "penNumber",
+                        "gender",
+                        "nameLocal",
+                        "fatherNameLocal",
+                        "motherNameLocal",
+                        "bpl",
+                        "ews",
+                        "cwsnType",
+                        "bloodGroup",
                         "requestedAt",
                         "familyFilledAt",
                         "updatedAt"
@@ -56466,8 +56771,22 @@
                           "admissionDate",
                           "admittedToGrade",
                           "previousSchool",
-                          "penNumber"
+                          "penNumber",
+                          "gender",
+                          "nameLocal",
+                          "fatherNameLocal",
+                          "motherNameLocal",
+                          "bpl",
+                          "ews",
+                          "cwsnType",
+                          "bloodGroup"
                         ]
+                      }
+                    },
+                    "missingForFiling": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/missing/items"
                       }
                     },
                     "complete": {
@@ -56485,6 +56804,7 @@
                     "birthdate",
                     "record",
                     "missing",
+                    "missingForFiling",
                     "complete",
                     "canEdit"
                   ],
@@ -56662,6 +56982,38 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "gender": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fatherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "motherNameLocal": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bpl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ews": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "cwsnType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bloodGroup": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -56701,6 +57053,14 @@
                         "admittedToGrade",
                         "previousSchool",
                         "penNumber",
+                        "gender",
+                        "nameLocal",
+                        "fatherNameLocal",
+                        "motherNameLocal",
+                        "bpl",
+                        "ews",
+                        "cwsnType",
+                        "bloodGroup",
                         "requestedAt",
                         "familyFilledAt",
                         "updatedAt"
@@ -56728,8 +57088,22 @@
                           "admissionDate",
                           "admittedToGrade",
                           "previousSchool",
-                          "penNumber"
+                          "penNumber",
+                          "gender",
+                          "nameLocal",
+                          "fatherNameLocal",
+                          "motherNameLocal",
+                          "bpl",
+                          "ews",
+                          "cwsnType",
+                          "bloodGroup"
                         ]
+                      }
+                    },
+                    "missingForFiling": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/missing/items"
                       }
                     },
                     "complete": {
@@ -56747,6 +57121,7 @@
                     "birthdate",
                     "record",
                     "missing",
+                    "missingForFiling",
                     "complete",
                     "canEdit"
                   ],
@@ -56859,6 +57234,103 @@
                   "penNumber": {
                     "type": "string",
                     "maxLength": 40
+                  },
+                  "gender": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "M",
+                          "F",
+                          "T"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "nameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "fatherNameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherNameLocal": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "bpl": {
+                    "type": "string",
+                    "enum": [
+                      "yes",
+                      "no",
+                      ""
+                    ]
+                  },
+                  "ews": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "cwsnType": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "1",
+                          "2",
+                          "3",
+                          "4",
+                          "5",
+                          "6",
+                          "7",
+                          "8",
+                          "9",
+                          "10",
+                          "11",
+                          "12",
+                          "13",
+                          "14",
+                          "15",
+                          "16",
+                          "17",
+                          "18",
+                          "19",
+                          "20",
+                          "21"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "bloodGroup": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "A+",
+                          "A-",
+                          "B+",
+                          "B-",
+                          "AB+",
+                          "AB-",
+                          "O+",
+                          "O-"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -66303,6 +66775,970 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/office/filings": {
+      "get": {
+        "summary": "The school's filing identity (UDISE code, board, affiliation, district, block, medium, management), what is still blank on it and on the pupils' and teachers' records, and the grades a board sheet can be cut for",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "identity": {
+                      "type": "object",
+                      "properties": {
+                        "udiseCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "board": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "affiliationNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "district": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "block": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "medium": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "managementType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "udiseCode",
+                        "board",
+                        "affiliationNumber",
+                        "district",
+                        "block",
+                        "medium",
+                        "managementType",
+                        "state",
+                        "city",
+                        "postalCode"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "identityMissing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "pupils": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "ready": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "missing": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        },
+                        "withoutLocalName": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "ready",
+                        "missing",
+                        "withoutLocalName"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "staff": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "ready": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "missing": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "ready",
+                        "missing"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "grades": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "gradeLevel": {
+                            "type": "string"
+                          },
+                          "pupils": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        },
+                        "required": [
+                          "gradeLevel",
+                          "pupils"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "academicYearName": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "identity",
+                    "identityMissing",
+                    "pupils",
+                    "staff",
+                    "grades",
+                    "academicYearName"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/identity": {
+      "post": {
+        "summary": "Set what the portals know the school as; a blank clears the field",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "identity": {
+                      "type": "object",
+                      "properties": {
+                        "udiseCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "board": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "affiliationNumber": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "district": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "block": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "medium": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "managementType": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "state": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "udiseCode",
+                        "board",
+                        "affiliationNumber",
+                        "district",
+                        "block",
+                        "medium",
+                        "managementType",
+                        "state",
+                        "city",
+                        "postalCode"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "identityMissing": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "pupils": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "ready": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "missing": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        },
+                        "withoutLocalName": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "ready",
+                        "missing",
+                        "withoutLocalName"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "staff": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "ready": {
+                          "$ref": "#/properties/pupils/properties/total"
+                        },
+                        "missing": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "ready",
+                        "missing"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "grades": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "gradeLevel": {
+                            "type": "string"
+                          },
+                          "pupils": {
+                            "$ref": "#/properties/pupils/properties/total"
+                          }
+                        },
+                        "required": [
+                          "gradeLevel",
+                          "pupils"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "academicYearName": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "identity",
+                    "identityMissing",
+                    "pupils",
+                    "staff",
+                    "grades",
+                    "academicYearName"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "udiseCode": {
+                    "type": "string",
+                    "pattern": "^(\\d{11})?$"
+                  },
+                  "board": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "CBSE",
+                          "CISCE",
+                          "MSBSHSE",
+                          "OTHER_STATE",
+                          "NIOS",
+                          "IB",
+                          "OTHER"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "affiliationNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "district": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "block": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "medium": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "managementType": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "GOVT",
+                          "GOVT_AIDED",
+                          "PRIVATE_UNAIDED",
+                          "CENTRAL_GOVT",
+                          "LOCAL_BODY",
+                          "OTHER"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/export/udise-students": {
+      "get": {
+        "summary": "The UDISE+ student module's bulk sheet: its fifty-four columns in order with its codes, one row per pupil, Aadhaar blank, dates DD-MM-YYYY. Audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/export/udise-enrolment": {
+      "get": {
+        "summary": "The enrolment tables the portal derives: class by gender by social category, minority, age and impairment, no child named. Audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/export/udise-teachers": {
+      "get": {
+        "summary": "The UDISE+ teacher profile (DCF §3.2) one row per teacher and the head, in the form's order and codes. Audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/export/cbse-candidates": {
+      "get": {
+        "summary": "A grade's candidates in the CBSE registration order with Annexure H/K subject codes, for checking the List of Candidates (?grade=). Audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grade": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20
+                  }
+                },
+                "required": [
+                  "grade"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/filings/export/msbshse-candidates": {
+      "get": {
+        "summary": "A grade's candidates in the Maharashtra board's pre-list order, names in English and the school's script, SSC subject codes (?grade=). Audited",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grade": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20
+                  }
+                },
+                "required": [
+                  "grade"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -41,8 +41,22 @@ async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<V
 type RecordRow = {
   fatherName: string | null; motherName: string | null; placeOfBirth: string | null; nationality: string | null; religion: string | null; caste: string | null; category: string | null; motherTongue: string | null;
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
+  gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
   requestedAt: Date | null; familyFilledAt: Date | null; updatedAt: Date;
 };
+
+/** What the UDISE+ student sheet cannot be filled without, beyond the certificate fields. A blank impairment means none, so it is not asked. */
+export const FILING_RECORD_FIELDS = ["gender", "category", "motherTongue", "bpl", "ews", "admissionNumber", "admissionDate", "addressLine", "postalCode"] as const;
+
+const yesNo = (v: boolean | null | undefined) => (v === true ? "yes" : v === false ? "no" : null);
+
+/** The filing fields still blank on a record; every one of them when there is no record. */
+export function missingFilingFields(record: RecordRow | null): PupilRecordField[] {
+  return FILING_RECORD_FIELDS.filter((f) => {
+    const v = record?.[f];
+    return v === null || v === undefined || (typeof v === "string" && v.trim() === "");
+  }) as PupilRecordField[];
+}
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -57,6 +71,7 @@ function recordView(record: RecordRow | null) {
   return {
     fatherName: record.fatherName, motherName: record.motherName, placeOfBirth: record.placeOfBirth, nationality: record.nationality, religion: record.religion, caste: record.caste, category: record.category, motherTongue: record.motherTongue,
     addressLine: record.addressLine, city: record.city, postalCode: record.postalCode, admissionNumber: record.admissionNumber, admissionDate: record.admissionDate?.toISOString().slice(0, 10) ?? null, admittedToGrade: record.admittedToGrade, previousSchool: record.previousSchool, penNumber: record.penNumber,
+    gender: record.gender, nameLocal: record.nameLocal, fatherNameLocal: record.fatherNameLocal, motherNameLocal: record.motherNameLocal, bpl: yesNo(record.bpl), ews: yesNo(record.ews), cwsnType: record.cwsnType, bloodGroup: record.bloodGroup,
     requestedAt: record.requestedAt?.toISOString() ?? null, familyFilledAt: record.familyFilledAt?.toISOString() ?? null, updatedAt: record.updatedAt.toISOString(),
   };
 }
@@ -68,7 +83,7 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
     db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { class: { select: { name: true } } } }),
   ]);
   const missing = missingFields(record);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(record), missing, complete: missing.length === 0, canEdit: viewer.canEdit };
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(record), missing, missingForFiling: missingFilingFields(record), complete: missing.length === 0, canEdit: viewer.canEdit };
 }
 
 /** Writes the whole record. A blank clears the field. The family's write is dated so the office sees who filled it. */
@@ -81,6 +96,10 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     addressLine: text(input.addressLine), city: text(input.city), postalCode: text(input.postalCode), admissionNumber: text(input.admissionNumber),
     admissionDate: input.admissionDate === undefined ? undefined : input.admissionDate ? new Date(`${input.admissionDate}T00:00:00Z`) : null,
     admittedToGrade: text(input.admittedToGrade), previousSchool: text(input.previousSchool), penNumber: text(input.penNumber),
+    gender: text(input.gender), nameLocal: text(input.nameLocal), fatherNameLocal: text(input.fatherNameLocal), motherNameLocal: text(input.motherNameLocal),
+    bpl: input.bpl === undefined ? undefined : input.bpl === "" ? null : input.bpl === "yes",
+    ews: input.ews === undefined ? undefined : input.ews === "" ? null : input.ews === "yes",
+    cwsnType: text(input.cwsnType), bloodGroup: text(input.bloodGroup),
     updatedByUserId: viewer.userId,
     ...(viewer.family ? { familyFilledAt: new Date() } : {}),
   };
@@ -104,6 +123,7 @@ export async function officeRecords(ctx: ActiveContext, missingOnly: boolean) {
     studentName: p.user.preferredName ?? p.user.name,
     className: p.enrollments[0]?.class.name ?? null,
     missing: missingFields(p.pupilRecord),
+    missingForFiling: missingFilingFields(p.pupilRecord),
     requestedAt: p.pupilRecord?.requestedAt?.toISOString() ?? null,
     familyFilledAt: p.pupilRecord?.familyFilledAt?.toISOString() ?? null,
   }));
@@ -119,9 +139,12 @@ export async function officeRecords(ctx: ActiveContext, missingOnly: boolean) {
  */
 export async function requestRecords(ctx: ActiveContext, membershipIds?: string[]): Promise<{ asked: number; families: number }> {
   if (!ctx.schoolId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("access.notAllowed");
-  const all = await officeRecords(ctx, true);
+  // Unnamed: every pupil a certificate cannot be issued for. Named: those of
+  // them with anything blank at all, so the filings page can ask for a gender
+  // or a ration-card answer from a family whose certificate details are done.
+  const all = await officeRecords(ctx, false);
   const wanted = membershipIds && membershipIds.length > 0 ? new Set(membershipIds) : null;
-  const targets = all.rows.filter((r) => !wanted || wanted.has(r.studentMembershipId));
+  const targets = all.rows.filter((r) => (wanted ? wanted.has(r.studentMembershipId) && (r.missing.length > 0 || r.missingForFiling.length > 0) : r.missing.length > 0));
   const now = new Date();
   const families = new Set<string>();
   for (const t of targets) {

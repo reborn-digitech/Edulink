@@ -25,7 +25,7 @@ const OVERVIEW = {
 
 describe("the guardian's overview", () => {
   const RECORD_PATH = "/api/v1/family/record";
-  const record = (missing: string[]) => ({ studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: null, birthdate: "2016-03-14", record: null, missing, complete: missing.length === 0, canEdit: true });
+  const record = (missing: string[]) => ({ studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: null, birthdate: "2016-03-14", record: null, missing, missingForFiling: [], complete: missing.length === 0, canEdit: true });
 
   it("nudges to complete the school record while a certificate field is blank, for the child on screen, and not once it is complete", async () => {
     const { fetch } = await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record(["fatherName", "admissionDate"]) });

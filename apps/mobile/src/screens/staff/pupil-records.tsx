@@ -88,6 +88,11 @@ export function PupilRecords() {
                       {t("pupilRecord.missingList", { fields: fieldList(t, row.missing) })}
                     </Text>
                   ) : null}
+                  {row.missingForFiling.length > 0 ? (
+                    <Text variant="xs" tone="warn">
+                      {t("filings.recordMissing", { fields: fieldList(t, row.missingForFiling) })}
+                    </Text>
+                  ) : null}
                   <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
                     <Button label={t("pupilRecord.edit")} accessibilityLabel={`${t("pupilRecord.edit")}: ${row.studentName}`} variant="secondary" onPress={() => router.push({ pathname: "/(app)/pupil-record", params: { membershipId: row.studentMembershipId } } as never)} />
                     {!complete ? <Button label={t("pupilRecord.askSelected")} accessibilityLabel={`${t("pupilRecord.askSelected")}: ${row.studentName}`} variant="ghost" disabled={ask.isPending} onPress={() => ask.mutate([row.studentMembershipId])} /> : null}

@@ -70,7 +70,19 @@ const text = z.string().trim().max(120);
 export const pupilRecordFieldSchema = z.enum([
   "fatherName", "motherName", "placeOfBirth", "nationality", "religion", "caste", "category", "motherTongue",
   "addressLine", "city", "postalCode", "admissionNumber", "admissionDate", "admittedToGrade", "previousSchool", "penNumber",
+  // The filing fields: what UDISE+ and the boards ask beyond a certificate.
+  "gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup",
 ]);
+/** Gender as UDISE+ codes it: male, female, transgender. */
+export const pupilGenderSchema = z.enum(["M", "F", "T"]);
+/** The 21 impairment types of the UDISE+ student module, by their portal code. */
+export const CWSN_TYPES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"] as const;
+export const cwsnTypeSchema = z.enum(CWSN_TYPES);
+/** The same eight groups the health card takes (health.ts); named apart so both modules export cleanly. */
+export const RECORD_BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] as const;
+const recordBloodGroupSchema = z.enum(RECORD_BLOOD_GROUPS);
+/** A yes/no the form sends as text; blank clears. */
+const yesNo = z.enum(["yes", "no", ""]);
 export type PupilRecordField = z.infer<typeof pupilRecordFieldSchema>;
 
 /** POST /api/v1/family/record and /api/v1/office/pupil-records/{membershipId} — the whole record; a blank clears the field. */
@@ -91,6 +103,14 @@ export const pupilRecordSaveSchema = z.object({
   admittedToGrade: z.string().trim().max(20).optional(),
   previousSchool: z.string().trim().max(160).optional(),
   penNumber: z.string().trim().max(40).optional(),
+  gender: z.union([pupilGenderSchema, z.literal("")]).optional(),
+  nameLocal: text.optional(),
+  fatherNameLocal: text.optional(),
+  motherNameLocal: text.optional(),
+  bpl: yesNo.optional(),
+  ews: yesNo.optional(),
+  cwsnType: z.union([cwsnTypeSchema, z.literal("")]).optional(),
+  bloodGroup: z.union([recordBloodGroupSchema, z.literal("")]).optional(),
 });
 export type PupilRecordSave = z.infer<typeof pupilRecordSaveSchema>;
 
@@ -111,6 +131,15 @@ export const pupilRecordSchema = z.object({
   admittedToGrade: z.string().nullable(),
   previousSchool: z.string().nullable(),
   penNumber: z.string().nullable(),
+  gender: z.string().nullable(),
+  nameLocal: z.string().nullable(),
+  fatherNameLocal: z.string().nullable(),
+  motherNameLocal: z.string().nullable(),
+  /** "yes" | "no" | null, the way the form shows and sends it. */
+  bpl: z.string().nullable(),
+  ews: z.string().nullable(),
+  cwsnType: z.string().nullable(),
+  bloodGroup: z.string().nullable(),
   requestedAt: iso.nullable(),
   familyFilledAt: iso.nullable(),
   updatedAt: iso.nullable(),
@@ -126,6 +155,8 @@ export const pupilRecordViewSchema = z.object({
   record: pupilRecordSchema.nullable(),
   /** The fields a certificate needs that are still blank. */
   missing: z.array(pupilRecordFieldSchema),
+  /** The fields the UDISE+ filing needs that are still blank. */
+  missingForFiling: z.array(pupilRecordFieldSchema),
   complete: z.boolean(),
   canEdit: z.boolean(),
 });
@@ -142,6 +173,8 @@ export const officeRecordsSchema = z.object({
       studentName: z.string(),
       className: z.string().nullable(),
       missing: z.array(pupilRecordFieldSchema),
+      /** The fields the UDISE+ filing needs that are still blank. */
+      missingForFiling: z.array(pupilRecordFieldSchema),
       requestedAt: iso.nullable(),
       familyFilledAt: iso.nullable(),
     }),

@@ -230,3 +230,5 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
 /** The pupil-record fields a certificate needs before it can be issued without gaps. */
 export const REQUIRED_RECORD_FIELDS = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"] as const;
 export const OPTIONAL_RECORD_FIELDS = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "penNumber"] as const;
+/** The record form's third group: what UDISE+ and the boards ask beyond a certificate (src/lib/pupil-records.ts says which of them a filing cannot do without). */
+export const FILING_FORM_FIELDS = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"] as const;

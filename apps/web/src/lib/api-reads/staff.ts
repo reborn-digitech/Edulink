@@ -636,6 +636,11 @@ export async function staffProfile(ctx: Staff): Promise<StaffProfile> {
           qualification: record.qualification,
           joinedOnKey: record.joinedOnKey,
           leaveDaysPerYear: record.leaveDaysPerYear,
+          gender: record.gender,
+          socialCategory: record.socialCategory,
+          academicQualification: record.academicQualification,
+          professionalQualification: record.professionalQualification,
+          appointmentType: record.appointmentType,
         }
       : null,
     balance,
