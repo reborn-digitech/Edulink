@@ -63,6 +63,13 @@ export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
   quiet: "root.jobCountQuietFams",
   skipped: "root.jobCountSkippedFams",
   missing: "root.jobCountMissing",
+  sessions: "root.jobCountSessions",
+  tokens: "root.jobCountTokens",
+  rateLimits: "root.jobCountRateLimits",
+  uploadTickets: "root.jobCountUploadTickets",
+  outbox: "root.jobCountOutbox",
+  jobRuns: "root.jobCountJobRuns",
+  auditRows: "root.jobCountAuditRows",
 };
 
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };

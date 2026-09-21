@@ -1727,6 +1727,8 @@ model Session {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, revokedAt])
+  /// The retention sweep finds expired rows by this alone.
+  @@index([expiresAt])
 }
 
 model Invite {
@@ -1775,6 +1777,7 @@ model AuthToken {
   user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([email, purpose])
+  @@index([expiresAt])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
   @@index([userId])
 }
@@ -1825,6 +1828,7 @@ model UploadTicket {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, consumedAt])
+  @@index([consumedAt])
 }
 
 model DeviceToken {
@@ -1957,6 +1961,8 @@ model AuditLog {
 
   @@index([schoolId, createdAt])
   @@index([actorUserId, createdAt])
+  /// The retention sweep prunes by age across every school at once.
+  @@index([createdAt])
 }
 
 /// A time-boxed, reasoned grant letting whoever runs the server look inside one
@@ -2079,6 +2085,7 @@ model OutboundEmail {
   createdAt DateTime @default(now())
 
   @@index([to, createdAt])
+  @@index([createdAt])
 }
 
 /// How many times something has been tried lately.

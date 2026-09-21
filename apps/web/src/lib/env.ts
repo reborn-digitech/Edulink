@@ -40,6 +40,62 @@ export type SmtpConfig = {
   from: string;
 };
 
+/* -------------------------------------------------------------------------- */
+/* Retention: how long the security-context rows are kept                      */
+/* -------------------------------------------------------------------------- */
+
+export type RetentionConfig = {
+  /** Days after a session expires or is revoked before its row goes. */
+  sessionDays: number;
+  /** Days after a sign-in token expires or is consumed before its row goes. */
+  tokenDays: number;
+  /** Days after a rate-limit window closes before its bucket goes. */
+  rateLimitDays: number;
+  /** Days after a phone upload ticket is spent before it goes; unspent ones belong to files:reclaim. */
+  uploadTicketDays: number;
+  /** Days the dev outbox keeps a sent email. */
+  outboxDays: number;
+  /** Days a job's run history is kept; the latest successful run of each job always stays. */
+  jobRunDays: number;
+  /** Days an audit row is kept; 0 keeps every row forever. */
+  auditDays: number;
+};
+
+export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730 };
+
+const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number; max: number }> = {
+  sessionDays: { name: "RETENTION_SESSION_DAYS", min: 1, max: 365 },
+  tokenDays: { name: "RETENTION_TOKEN_DAYS", min: 1, max: 365 },
+  rateLimitDays: { name: "RETENTION_RATE_LIMIT_DAYS", min: 1, max: 365 },
+  uploadTicketDays: { name: "RETENTION_UPLOAD_TICKET_DAYS", min: 1, max: 365 },
+  outboxDays: { name: "RETENTION_OUTBOX_DAYS", min: 1, max: 3650 },
+  jobRunDays: { name: "RETENTION_JOB_RUN_DAYS", min: 7, max: 3650 },
+  auditDays: { name: "RETENTION_AUDIT_DAYS", min: 0, max: 36500 },
+};
+
+/**
+ * The retention sweep's day counts (src/lib/retention.ts). Every one is
+ * optional; a malformed value is reported and the default stands, because a
+ * typo in a day count must not silently keep — or silently delete — anything.
+ * RETENTION_AUDIT_DAYS=0 keeps the audit log forever, the policy's old promise.
+ */
+export function readRetentionConfig(): { config: RetentionConfig; problems: { key: string; message: string }[] } {
+  const problems: { key: string; message: string }[] = [];
+  const config: RetentionConfig = { ...RETENTION_DEFAULTS };
+  for (const key of Object.keys(RETENTION_VARS) as (keyof RetentionConfig)[]) {
+    const { name, min, max } = RETENTION_VARS[key];
+    const raw = process.env[name]?.trim();
+    if (!raw) continue;
+    const value = Number(raw);
+    if (!Number.isInteger(value) || value < min || value > max) {
+      problems.push({ key: name, message: `${name} is "${raw}" — expected a whole number of days from ${min} to ${max}; using ${RETENTION_DEFAULTS[key]}.` });
+      continue;
+    }
+    config[key] = value;
+  }
+  return { config, problems };
+}
+
 export function readSmtpConfig():
   | { ok: true; config: SmtpConfig }
   | { ok: false; problems: { key: string; message: string }[] } {
@@ -505,6 +561,9 @@ export function checkEnv(): EnvProblem[] {
       problems.push({ key: "HOSTNAME", message: `JOBS_RUNNER=1 with HOSTNAME=${host || "(unset, 0.0.0.0)"} — a server on the owner connection must listen on loopback only. Set HOSTNAME=127.0.0.1.`, fatal: true });
     }
   }
+
+  // A mistyped retention day count is loud, never fatal: the default stands.
+  for (const problem of readRetentionConfig().problems) problems.push({ ...problem, fatal: false });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
   if (!appUrl) {

@@ -10,13 +10,15 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { jobStatuses, type JobStatus } from "@/lib/jobs";
+import { retentionPreview, RETENTION_KEYS, type RetentionKey } from "@/lib/retention";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { formatInZone } from "@/lib/dates";
 import { cn } from "@/lib/cn";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
-import type { Translate } from "@/lib/i18n/dictionary";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import type { RetentionConfig } from "@/lib/env";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/states";
 
@@ -52,6 +54,25 @@ function summaryPairs(summary: string): [string, string][] {
   return summary ? [["summary", summary]] : [];
 }
 
+const RETENTION_LABEL: Record<RetentionKey, TranslationKey> = {
+  sessions: "root.retentionSessions",
+  tokens: "root.retentionTokens",
+  rateLimits: "root.retentionRateLimits",
+  uploadTickets: "root.retentionUploadTickets",
+  outbox: "root.retentionOutbox",
+  jobRuns: "root.retentionJobRuns",
+  auditRows: "root.retentionAuditRows",
+};
+const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = {
+  sessions: (c) => c.sessionDays,
+  tokens: (c) => c.tokenDays,
+  rateLimits: (c) => c.rateLimitDays,
+  uploadTickets: (c) => c.uploadTicketDays,
+  outbox: (c) => c.outboxDays,
+  jobRuns: (c) => c.jobRunDays,
+  auditRows: (c) => c.auditDays,
+};
+
 type Tone = "running" | "overdue" | "failed" | "ok";
 
 function toneOf(job: JobStatus): Tone {
@@ -85,7 +106,7 @@ export default async function JobsPage({
   const t = await getT();
   const relativeTime = await getRelativeTime();
   await requireSuperuser();
-  const statuses = await jobStatuses();
+  const [statuses, retention] = await Promise.all([jobStatuses(), retentionPreview()]);
   const overdue = statuses.filter((s) => s.overdue).length;
   const failed = statuses.filter((s) => !s.overdue && s.lastFailed).length;
   const onTime = statuses.length - overdue - failed;
@@ -163,6 +184,27 @@ export default async function JobsPage({
       {shownStatuses.length === 0 && state && (
         <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
       )}
+
+      {/* The retention sweep's dial and its queue: the one job whose work is a policy, shown before it runs. */}
+      <Card className="p-4" data-testid="retention">
+        <h2 className="text-sm font-semibold text-fg">{t("root.retentionTitle")}</h2>
+        <p className="mt-1 text-xs text-fg-muted">{t("root.retentionIntro")}</p>
+        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+          {RETENTION_KEYS.map((key) => {
+            const days = RETENTION_DAYS_OF[key](retention.config);
+            return (
+              <div key={key} className="flex items-baseline justify-between gap-3 rounded-[--radius-md] bg-surface-2 px-3 py-2 text-sm">
+                <dt className="text-fg">{t(RETENTION_LABEL[key])}</dt>
+                <dd className="text-right tabular-nums text-fg-muted">
+                  {days === 0 ? t("root.retentionForever") : t("root.retentionDays", { days })}
+                  {" · "}
+                  {retention.pending[key] > 0 ? t("root.retentionPending", { count: retention.pending[key] }) : t("root.retentionNothing")}
+                </dd>
+              </div>
+            );
+          })}
+        </dl>
+      </Card>
 
       <ul className="space-y-3" data-testid="jobs">
         {shownStatuses.map((job) => {

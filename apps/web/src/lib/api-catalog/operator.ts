@@ -33,6 +33,7 @@ export const OPERATOR: Endpoint[] = [
   { method: "POST", path: "/api/v1/operator/schools/{schoolId}/restore", summary: "Put a removed school back: exactly what removal ended", access: "operator", response: c.okSchema },
   { method: "POST", path: "/api/v1/operator/schools/{schoolId}/invites", summary: "Invite an administrator or principal by email", access: "operator", request: c.operatorInviteAdminBodySchema, response: c.okSchema },
   { method: "POST", path: "/api/v1/operator/invites/{inviteId}/revoke", summary: "Withdraw a pending admin invitation", access: "operator", response: c.okSchema },
+  { method: "GET", path: "/api/v1/operator/retention", summary: "The retention sweep: the day counts in force and how many rows of each kind are waiting for tonight", access: "operator", response: c.operatorRetentionSchema },
   { method: "GET", path: "/api/v1/operator/content-team", summary: "Everybody holding the content-team flag", access: "operator", response: c.operatorContentTeamSchema },
   { method: "POST", path: "/api/v1/operator/content-team", summary: "Appoint the account behind an email to the content team", access: "operator", request: c.operatorAppointBodySchema, response: c.okSchema },
   { method: "DELETE", path: "/api/v1/operator/content-team/{userId}", summary: "Take the content-team flag off an account; the account stays", access: "operator", response: c.okSchema },

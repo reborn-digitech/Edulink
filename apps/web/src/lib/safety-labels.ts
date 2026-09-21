@@ -192,6 +192,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "prefs.update": "audit.prefsUpdate",
   "push.subscribe": "audit.pushSubscribe",
   "session.revoke": "audit.sessionRevoke",
+  "retention.sweep": "audit.retentionSweep",
   "session.revoke.others": "audit.sessionRevokeOthers",
   "superuser.school.create": "audit.superuserSchoolCreate",
   "superuser.school.update": "audit.superuserSchoolUpdate",

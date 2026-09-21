@@ -2,6 +2,7 @@ import "server-only";
 import { hostname } from "node:os";
 import { db } from "./db";
 import { tidyAllNotifications } from "./notification-housekeeping";
+import { sweepExpired } from "./retention";
 import { sendWeeklyDigests } from "./digest";
 import { reclaimOrphans } from "./orphans";
 import { runDueDepartures } from "./school-record";
@@ -35,7 +36,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -76,6 +77,17 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { autoRead, expired, perSchool } = await tidyAllNotifications();
       return { summary: { autoRead, expired }, perSchool };
+    },
+  },
+  "retention:sweep": {
+    name: "retention:sweep",
+    schedule: "0 4 * * *",
+    describeKey: "root.jobDescRetention",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { summary, perSchool } = await sweepExpired();
+      return { summary, perSchool };
     },
   },
   "digest:weekly": {

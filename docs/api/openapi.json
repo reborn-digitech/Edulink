@@ -27160,6 +27160,150 @@
         ]
       }
     },
+    "/api/v1/operator/retention": {
+      "get": {
+        "summary": "The retention sweep: the day counts in force and how many rows of each kind are waiting for tonight",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "sessionDays": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "tokenDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "rateLimitDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "uploadTicketDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "outboxDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "jobRunDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "auditDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        }
+                      },
+                      "required": [
+                        "sessionDays",
+                        "tokenDays",
+                        "rateLimitDays",
+                        "uploadTicketDays",
+                        "outboxDays",
+                        "jobRunDays",
+                        "auditDays"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "pending": {
+                      "type": "object",
+                      "properties": {
+                        "sessions": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "tokens": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "rateLimits": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "uploadTickets": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "outbox": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "jobRuns": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "auditRows": {
+                          "$ref": "#/properties/config/properties/sessionDays"
+                        }
+                      },
+                      "required": [
+                        "sessions",
+                        "tokens",
+                        "rateLimits",
+                        "uploadTickets",
+                        "outbox",
+                        "jobRuns",
+                        "auditRows"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "config",
+                    "pending"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/operator/content-team": {
       "get": {
         "summary": "Everybody holding the content-team flag",
