@@ -106,6 +106,7 @@ export function DetailsCard({ a }: { a: ApplicationView }) {
       <Line label={t("admissions.childName")} value={a.childName} />
       <Line label={t("admissions.childBirthdate")} value={a.childBirthdate ? formatDateKey(a.childBirthdate, locale) : null} />
       <Line label={t("admissions.previousSchool")} value={a.previousSchool} />
+      {a.penNumber ? <Line label={t("pupilRecord.penNumber")} value={a.penNumber} /> : null}
       <Line label={t("admissions.address")} value={[a.addressLine, a.city].filter(Boolean).join(", ")} />
       {a.note ? <Line label={t("admissions.note")} value={a.note} /> : null}
       <Line label={t("admissions.applicantName")} value={`${a.applicantName} · ${relationLabel(t, a.relation)}`} />

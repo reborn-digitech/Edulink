@@ -189,6 +189,8 @@ export async function adminPeople(
               { name: { contains: query, mode: "insensitive" } },
               { preferredName: { contains: query, mode: "insensitive" } },
               { email: { contains: query, mode: "insensitive" } },
+              // Eleven digits is a UDISE+ PEN: the one pupil who holds it.
+              ...(/^\d{11}$/.test(query.replace(/[\s-]/g, "")) ? [{ penNumber: query.replace(/[\s-]/g, "") }] : []),
             ],
           },
         }

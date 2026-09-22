@@ -156,6 +156,13 @@ export default async function PersonPage({
   const schoolHref =
     member.school.profilePublishedAt || member.school._count.jobPostings > 0 ? `/explore/${member.schoolId}` : null;
   const pupilClass = member.enrollments[0]?.class ?? null;
+  // The UDISE+ PEN is the pupil's own and the office's business — the
+  // number the filing and the certificates print — so it shows to the
+  // office and to the pupil, and to nobody else on the portrait.
+  const penNumber =
+    role === "STUDENT" && (self || me === "ADMIN" || me === "PRINCIPAL")
+      ? ((await db.user.findUnique({ where: { id: member.userId }, select: { penNumber: true } }))?.penNumber ?? null)
+      : null;
   const badges = role === "STUDENT" ? (await getBadges(member.schoolId, member.id, member.school.timezone)).filter((b) => b.earned) : [];
 
   // The health card, for the staff who may read it and the child's own
@@ -225,6 +232,11 @@ export default async function PersonPage({
               · {t("person.since", { date: formatInZone(member.joinedAt, member.school.timezone, { month: "long", year: "numeric" }, locale) })}
             </span>
           </p>
+          {penNumber && (
+            <p className="mt-1 text-sm text-fg-muted" data-testid="person-pen">
+              {t("pupilRecord.penNumber")} <span className="font-mono text-fg">{penNumber}</span>
+            </p>
+          )}
           {member.user.bio && <p className="mt-2 max-w-prose text-sm leading-relaxed text-fg">{member.user.bio}</p>}
         </div>
         {canMessage ? (

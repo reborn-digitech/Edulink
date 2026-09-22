@@ -2256,6 +2256,31 @@ async function main() {
     skip("certificate requests", "no ZZ fixtures with a pending certificate request (run zz:fixtures)");
   }
 
+  /* ---- the UDISE+ PEN: the office finds a pupil by it, a wrong shape is a sentence, the person page carries it, a teacher is turned away ---- */
+  // ZZ Northgate's grade-3 records carry PENs on their accounts; the actors
+  // are its office, whose page answers the lookup, and a lead teacher, who
+  // has no records page.
+  const zzPenHolder = northgate
+    ? await db.user.findFirst({ where: { penNumber: { not: null }, memberships: { some: { schoolId: northgate.id, role: "STUDENT", status: "ACTIVE", leftAt: null } } }, select: { penNumber: true, memberships: { where: { schoolId: northgate.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true }, take: 1 } } })
+    : null;
+  const zzPenMembership = zzPenHolder?.memberships[0];
+  if (northgate && zzPenHolder?.penNumber && zzPenMembership) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, `/admin/records?pen=${zzPenHolder.penNumber}`, 200, "the office finds a pupil on the roll by their PEN");
+    await check(zzOffice, "/admin/records?pen=123", 200, "…and a wrong shape is the format sentence, not a broken page");
+    await check(zzOffice, `/people/${zzPenMembership.id}`, 200, "…and the pupil's person page carries the PEN");
+    const penLeadClass = await db.class.findFirst({ where: { schoolId: northgate.id, archivedAt: null, teachers: { some: { role: "LEAD" } } }, select: { teachers: { where: { role: "LEAD" }, select: { teacher: { select: { user: { select: { email: true } } } } }, take: 1 } } });
+    const penLeadEmail = penLeadClass?.teachers[0]?.teacher.user.email;
+    if (penLeadEmail) {
+      const zzLead = await mint(penLeadEmail, "TEACHER", northgate.id, "zz-lead");
+      await check(zzLead, `/admin/records?pen=${zzPenHolder.penNumber}`, 307, "⚠ a class teacher cannot look a PEN up");
+    } else {
+      skip("pen teacher", "no lead teacher at ZZ Northgate");
+    }
+  } else {
+    skip("pen", "no ZZ pupil with a PEN on the account (run zz:fixtures)");
+  }
+
   /* ---- admissions: the office's cycles, sittings and pipeline; the family's applications and the school's door ---- */
   // ZZ Northgate carries an open cycle with sittings and applications from
   // its first guardian in every state plus a walk-in; the actors are its

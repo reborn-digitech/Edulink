@@ -42,7 +42,14 @@
 import { PrismaClient } from "@prisma/client";
 import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
+import { createHash } from "node:crypto";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
+
+/** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
+export function fakePen(membershipId: string): string {
+  const n = BigInt(`0x${createHash("sha1").update(membershipId).digest("hex").slice(0, 12)}`) % 1_000_000_000n;
+  return `27${String(n).padStart(9, "0")}`;
+}
 import { bandFor, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints } from "../src/lib/report-card-rules";
 import { dataFor, fill, fillRows, presetsFor, wordsFor, type PupilFacts } from "../src/lib/certificate-rules";
 
@@ -974,12 +981,14 @@ export async function buildCertificates(school: { id: string; name: string; code
       const data = {
         fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: city, nationality: "Indian", religion: "Hindu", caste: null, category: i % 3 === 0 ? "General" : "OBC", motherTongue: "Marathi",
         addressLine: `${10 + i} Shivaji Nagar`, city, postalCode: "411005", admissionNumber: `GR-${(opts.recordGrades ? Number(recordGrade) * 100 : 0) + 1000 + i}`,
-        admissionDate: i === roll.length - 1 ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: opts.previousSchool ?? "Sunrise Nursery", penNumber: null, updatedByUserId: adminUserId, familyFilledAt: new Date(),
+        // A stand-in for the number the UDISE+ portal issues — fictitious, deterministic per pupil, eleven digits; the app never makes one.
+        admissionDate: i === roll.length - 1 ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: opts.previousSchool ?? "Sunrise Nursery", penNumber: fakePen(row.studentMembershipId), updatedByUserId: adminUserId, familyFilledAt: new Date(),
         // The filing fields: gender for all but the last (so the UDISE sheet has a blank to name), a BPL and an EWS flag, one child with an impairment, Marathi names on two.
         gender: i === roll.length - 1 ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, cwsnType: i === 1 ? "2" : null, bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
         nameLocal: i === 0 ? "आरव पाटील" : i === 1 ? "भक्ती भोसले" : null, fatherNameLocal: i === 0 ? "रोहन पाटील" : null, motherNameLocal: i === 0 ? "स्नेहा पाटील" : null,
       };
       await db.pupilRecord.upsert({ where: { studentMembershipId: row.studentMembershipId }, create: { schoolId: school.id, studentMembershipId: row.studentMembershipId, ...data }, update: data });
+      await db.user.update({ where: { id: (await db.membership.findUniqueOrThrow({ where: { id: row.studentMembershipId }, select: { userId: true } })).userId }, data: { penNumber: data.penNumber } });
       records += 1;
     }
   }

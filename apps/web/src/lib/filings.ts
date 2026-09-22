@@ -207,7 +207,7 @@ async function loadPupils(schoolId: string, grade?: string) {
     where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, ...(grade ? { enrollments: { some: { status: "ACTIVE", class: { gradeLevel: grade, archivedAt: null } } } } : {}) },
     select: {
       id: true, studentCode: true, joinedAt: true,
-      user: { select: { name: true, birthdate: true, email: true, phone: true } },
+      user: { select: { name: true, birthdate: true, email: true, phone: true, penNumber: true } },
       pupilRecord: true,
       enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
       guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 },
@@ -486,7 +486,7 @@ export async function cbseCandidatesExport(ctx: ActiveContext, grade: string): P
       "Gender": r?.gender === "M" ? "Male" : r?.gender === "F" ? "Female" : r?.gender === "T" ? "Transgender" : "",
       "Category": upper(r?.category),
       "CWSN": r?.cwsnType ? "Yes" : p ? "No" : "",
-      "PEN": r?.penNumber ?? "",
+      "PEN": p?.user.penNumber ?? r?.penNumber ?? "",
       "Admission No.": r?.admissionNumber ?? "",
       "Mobile": par.phone.replace(/\D/g, "").slice(-10),
       "Email": par.email,
@@ -551,7 +551,7 @@ export async function msbshseCandidatesExport(ctx: ActiveContext, grade: string)
       "Caste": r?.caste ?? "",
       "Medium": school.medium ?? "",
       "Mother tongue": r?.motherTongue ?? "",
-      "PEN": r?.penNumber ?? "",
+      "PEN": p?.user.penNumber ?? r?.penNumber ?? "",
       "GR no.": r?.admissionNumber ?? "",
       "Mobile": par.phone.replace(/\D/g, "").slice(-10),
     };

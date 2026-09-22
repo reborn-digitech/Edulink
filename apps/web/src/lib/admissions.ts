@@ -21,6 +21,7 @@ import { regenerateDemands } from "./fees";
 import { issueFirstSignIn } from "./first-signin";
 import { syncStandinGuardian } from "./standin-guardian";
 import { sendAdmissionOffer } from "./email";
+import { matchPen } from "./pen";
 import { wordsFor } from "./certificate-rules";
 import { normaliseLocale } from "./i18n/locales";
 import { readJson } from "./json";
@@ -399,7 +400,7 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
           applicantUserId: caller.user.id, applicantName: caller.user.preferredName ?? caller.user.name, applicantPhone: null, applicantEmail: caller.user.email,
           relation: input.relation ?? "PARENT",
           childName: input.childName, childBirthdate: input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, gradeApplied: input.gradeApplied,
-          previousSchool: input.previousSchool?.trim() || null, addressLine: input.addressLine?.trim() || null, city: input.city?.trim() || null, note: input.note?.trim() || null,
+          previousSchool: input.previousSchool?.trim() || null, penNumber: input.penNumber?.trim() || null, addressLine: input.addressLine?.trim() || null, city: input.city?.trim() || null, note: input.note?.trim() || null,
           createdByUserId: caller.user.id,
         },
         select: { id: true, serial: true },
@@ -433,7 +434,7 @@ export async function officeApply(ctx: ActiveContext, input: ApplicationSave): P
         applicantUserId: null, applicantName: input.applicantName!.trim(), applicantPhone: input.applicantPhone?.trim() || null, applicantEmail: input.applicantEmail?.trim() || null,
         relation: input.relation ?? "PARENT",
         childName: input.childName, childBirthdate: input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, gradeApplied: input.gradeApplied,
-        previousSchool: input.previousSchool?.trim() || null, addressLine: input.addressLine?.trim() || null, city: input.city?.trim() || null, note: input.note?.trim() || null,
+        previousSchool: input.previousSchool?.trim() || null, penNumber: input.penNumber?.trim() || null, addressLine: input.addressLine?.trim() || null, city: input.city?.trim() || null, note: input.note?.trim() || null,
         createdByUserId: caller.user.id,
       },
       select: { id: true },
@@ -495,6 +496,7 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
       childBirthdate: dateKeyOf(a.childBirthdate),
       gradeApplied: a.gradeApplied,
       previousSchool: a.previousSchool,
+      penNumber: a.penNumber,
       addressLine: a.addressLine,
       city: a.city,
       note: a.note,
@@ -773,18 +775,39 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const handle = handleFor(a.childName, code);
   const todayIso = new Date(`${todayKey("Asia/Kolkata")}T00:00:00Z`);
 
+  // A PEN with the date of birth names an account already on Relay: the seat
+  // goes to that pupil, as a transfer by student code would give it, and
+  // their certificates and records follow them. A PEN nobody holds goes on
+  // the new account; a PEN whose birthdate does not match is refused.
+  let existingUserId: string | null = null;
+  if (a.penNumber) {
+    const match = await matchPen(a.penNumber, birthdate);
+    if (match && "reasonKey" in match) throw new AccessError(match.reasonKey === "intake.penMismatch" ? "admissions.refusePenMismatch" : "admissions.refusePenNeedsBirthdate");
+    if (match) existingUserId = match.userId;
+  }
+  if (existingUserId) {
+    const here = await db.membership.findFirst({ where: { userId: existingUserId, schoolId: caller.schoolId, role: "STUDENT", status: { in: ["ACTIVE", "PENDING"] }, leftAt: null }, select: { id: true } });
+    if (here) throw new AccessError("admissions.refuseAlreadyOnRoll");
+  }
   const minted = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
-    const user = await tx.user.create({ data: { name: a.childName, preferredName: null, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate, isMinor: age === null ? true : age < 18, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
-    const membership = await tx.membership.create({ data: { userId: user.id, schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
-    if (klass) await tx.enrollment.create({ data: { classId: klass.id, schoolId: caller.schoolId, studentMembershipId: membership.id, status: "ACTIVE" } });
+    const user = existingUserId
+      ? { id: existingUserId }
+      : await tx.user.create({ data: { name: a.childName, preferredName: null, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate, isMinor: age === null ? true : age < 18, penNumber: a.penNumber, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
+    // A pupil who once left this school and comes back through the PEN takes their old membership up again: one row per person and school, as the schema says.
+    const prior = existingUserId ? await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: existingUserId, schoolId: caller.schoolId, role: "STUDENT" } }, select: { id: true } }) : null;
+    const membership = prior
+      ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: code, joinedAt: new Date() }, select: { id: true } })
+      : await tx.membership.create({ data: { userId: user.id, schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
+    if (klass) await tx.enrollment.upsert({ where: { classId_studentMembershipId: { classId: klass.id, studentMembershipId: membership.id } }, create: { classId: klass.id, schoolId: caller.schoolId, studentMembershipId: membership.id, status: "ACTIVE" }, update: { status: "ACTIVE", removedAt: null } });
     if (applicantUser) {
       await tx.guardianship.create({ data: { parentUserId: applicantUser.id, studentMembershipId: membership.id, studentSchoolId: caller.schoolId, relation: a.relation, status: "ACTIVE", consentSharingAt: new Date(), consentNotificationsAt: new Date() } });
     }
-    await tx.pupilRecord.create({ data: { schoolId: caller.schoolId, studentMembershipId: membership.id, addressLine: a.addressLine, city: a.city, admissionNumber: input.admissionNumber?.trim() || a.serial, admissionDate: todayIso, admittedToGrade: a.gradeApplied, previousSchool: a.previousSchool, updatedByUserId: caller.user.id } });
+    const recordData = { addressLine: a.addressLine, city: a.city, admissionNumber: input.admissionNumber?.trim() || a.serial, admissionDate: todayIso, admittedToGrade: a.gradeApplied, previousSchool: a.previousSchool, penNumber: a.penNumber, updatedByUserId: caller.user.id };
+    await tx.pupilRecord.upsert({ where: { studentMembershipId: membership.id }, create: { schoolId: caller.schoolId, studentMembershipId: membership.id, ...recordData }, update: recordData });
     let feePlan = false;
     if (structure) {
-      await tx.studentFeePlan.create({ data: { schoolId: caller.schoolId, studentMembershipId: membership.id, structureId: structure.id, academicYearId: structure.academicYearId } });
+      await tx.studentFeePlan.upsert({ where: { studentMembershipId_academicYearId: { studentMembershipId: membership.id, academicYearId: structure.academicYearId } }, create: { schoolId: caller.schoolId, studentMembershipId: membership.id, structureId: structure.id, academicYearId: structure.academicYearId }, update: { structureId: structure.id } });
       await regenerateDemands(tx, caller.schoolId, membership.id, structure.academicYearId);
       feePlan = true;
     }
@@ -792,13 +815,14 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
     return { membershipId: membership.id, feePlan };
   });
 
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.admit", targetType: "Application", targetId: applicationId, meta: { membershipId: minted.membershipId, classId: klass?.id ?? null, feePlan: minted.feePlan, guardianLinked: Boolean(applicantUser), hasBirthdate: birthdate !== null, needsConsent: age !== null && age < CONSENT_AGE } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.admit", targetType: "Application", targetId: applicationId, meta: { membershipId: minted.membershipId, classId: klass?.id ?? null, feePlan: minted.feePlan, guardianLinked: Boolean(applicantUser), hasBirthdate: birthdate !== null, needsConsent: age !== null && age < CONSENT_AGE, linkedByPen: Boolean(existingUserId) } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "student.admit", targetType: "Membership", targetId: minted.membershipId, meta: { classId: klass?.id ?? null, hasBirthdate: birthdate !== null, ownAddress: false, fromApplication: true } });
   if (!applicantUser) {
     await syncStandinGuardian({ schoolId: caller.schoolId, studentMembershipId: minted.membershipId, actorUserId: caller.user.id }).catch((error) => console.error("[admissions] standin sync failed", error));
   }
   let firstSignInCode: string | null = null;
-  if (caller.role === "ADMIN") {
+  // A pupil who already had a login keeps it; a new account gets its slip.
+  if (caller.role === "ADMIN" && !existingUserId) {
     const issued = await issueFirstSignIn(ctx, minted.membershipId).catch((error) => { console.error("[admissions] first sign-in not issued", error); return null; });
     if (issued?.ok) firstSignInCode = issued.issued.code;
   }

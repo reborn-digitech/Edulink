@@ -34,6 +34,7 @@ export function ApplicationNew() {
   const [birthdate, setBirthdate] = useState("");
   const [grade, setGrade] = useState("");
   const [previousSchool, setPreviousSchool] = useState("");
+  const [penNumber, setPenNumber] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [note, setNote] = useState("");
@@ -58,10 +59,12 @@ export function ApplicationNew() {
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
   });
   const dateBad = dateProblem(t, birthdate);
+  const penDigits = penNumber.replace(/[\s-]/g, "");
+  const penBad = penDigits && !/^\d{11}$/.test(penDigits) ? t("pupilRecord.penFormat") : undefined;
   const required = (value: string) => (tried && !value.trim() ? t("refusal.required") : undefined);
   const send = () => {
     setTried(true);
-    if (!chosen || !childName.trim() || !grade || !applicantName.trim() || dateBad) return;
+    if (!chosen || !childName.trim() || !grade || !applicantName.trim() || dateBad || penBad) return;
     create.mutate({
       cycleId: chosen.id,
       childName: childName.trim(),
@@ -70,6 +73,7 @@ export function ApplicationNew() {
       applicantName: applicantName.trim(),
       relation,
       ...(previousSchool.trim() ? { previousSchool: previousSchool.trim() } : {}),
+      ...(penDigits ? { penNumber: penDigits } : {}),
       ...(address.trim() ? { addressLine: address.trim() } : {}),
       ...(city.trim() ? { city: city.trim() } : {}),
       ...(note.trim() ? { note: note.trim() } : {}),
@@ -103,6 +107,7 @@ export function ApplicationNew() {
               <Field label={t("admissions.childName")} value={childName} onChangeText={setChildName} maxLength={120} error={required(childName) ?? refusal?.issues.childName} />
               <Field label={t("admissions.childBirthdate")} hint="YYYY-MM-DD" value={birthdate} onChangeText={setBirthdate} autoCapitalize="none" keyboardType="numbers-and-punctuation" maxLength={10} error={(tried ? dateBad : undefined) ?? refusal?.issues.childBirthdate} />
               <Field label={t("admissions.previousSchool")} value={previousSchool} onChangeText={setPreviousSchool} maxLength={160} error={refusal?.issues.previousSchool} />
+              <Field label={t("admissions.penNumber")} hint={t("pupilRecord.penHint")} value={penNumber} onChangeText={setPenNumber} autoCapitalize="none" keyboardType="number-pad" maxLength={11} error={(tried ? penBad : undefined) ?? refusal?.issues.penNumber} />
               <Field label={t("admissions.address")} value={address} onChangeText={setAddress} maxLength={200} error={refusal?.issues.addressLine} />
               <Field label={t("admissions.city")} value={city} onChangeText={setCity} maxLength={120} error={refusal?.issues.city} />
               <Field label={t("admissions.note")} value={note} onChangeText={setNote} maxLength={2000} multiline error={refusal?.issues.note} />

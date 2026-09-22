@@ -45,6 +45,7 @@ export function ApplyForm({
   const [birthdate, setBirthdate] = useState("");
   const [grade, setGrade] = useState(grades[0] ?? "");
   const [previousSchool, setPreviousSchool] = useState("");
+  const [penNumber, setPenNumber] = useState("");
   const [addressLine, setAddressLine] = useState("");
   const [city, setCity] = useState("");
   const [note, setNote] = useState("");
@@ -59,6 +60,8 @@ export function ApplyForm({
     const needed = t("common.checkTheForm");
     if (!childName.trim()) errors.childName = needed;
     if (!grade) errors.grade = needed;
+    const pen = penNumber.replace(/[\s-]/g, "");
+    if (pen && !/^\d{11}$/.test(pen)) errors.penNumber = t("pupilRecord.penFormat");
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) {
       setError(needed);
@@ -74,6 +77,7 @@ export function ApplyForm({
         ...(previousSchool.trim()
           ? { previousSchool: previousSchool.trim().slice(0, 160) }
           : {}),
+        ...(pen ? { penNumber: pen } : {}),
         ...(addressLine.trim()
           ? { addressLine: addressLine.trim().slice(0, 200) }
           : {}),
@@ -164,6 +168,17 @@ export function ApplyForm({
           maxLength={120}
           autoComplete="off"
           onChange={(e) => setCity(e.target.value)}
+        />
+        <TextField
+          label={t("admissions.penNumber")}
+          hint={t("pupilRecord.penHint")}
+          value={penNumber}
+          maxLength={11}
+          inputMode="numeric"
+          autoComplete="off"
+          error={fieldErrors.penNumber}
+          onChange={(e) => setPenNumber(e.target.value)}
+          data-testid="apply-pen"
         />
       </div>
       <TextField

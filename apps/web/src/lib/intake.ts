@@ -11,6 +11,7 @@ import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
+import { assignPen, matchPen } from "./pen";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -192,15 +193,22 @@ export async function admitPupils(
      * birthdate the old school has on file, because a code is written on a
      * paper document that changes hands.
      */
+    if (row.pen === false) {
+      outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.penFormat" });
+      continue;
+    }
+    // A PEN with the date of birth names an account the same way a transfer
+    // code does; a PEN nobody on Relay holds goes on the new account below.
+    let previous: { userId: string } | null = null;
     if (row.studentCode) {
       const transferCode = row.studentCode.trim().toUpperCase();
-      const previous = await forJoinCode(transferCode, () =>
+      const byCode = await forJoinCode(transferCode, () =>
         db.membership.findFirst({
           where: { studentCode: transferCode, role: "STUDENT" },
           select: { userId: true, user: { select: { id: true, birthdate: true } } },
         }),
       );
-      if (!previous) {
+      if (!byCode) {
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNotFound" });
         continue;
       }
@@ -208,11 +216,21 @@ export async function admitPupils(
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
         continue;
       }
-      const known = previous.user.birthdate;
+      const known = byCode.user.birthdate;
       if (!known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeMismatch" });
         continue;
       }
+      previous = { userId: byCode.userId };
+    } else if (row.pen) {
+      const byPen = await matchPen(row.pen, birthdate);
+      if (byPen && "reasonKey" in byPen) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: byPen.reasonKey });
+        continue;
+      }
+      if (byPen) previous = { userId: byPen.userId };
+    }
+    if (previous) {
       const here = await db.membership.findFirst({
         where: { userId: previous.userId, schoolId, role: "STUDENT", status: { in: ["ACTIVE", "PENDING"] }, leftAt: null },
         select: { id: true },
@@ -223,15 +241,21 @@ export async function admitPupils(
       }
 
       const newCode = studentCode();
+      // A transfer row that carries the PEN puts it on the account it links.
+      if (row.pen) await assignPen(previous.userId, row.pen).catch(() => {});
       let linkedMembershipId: string;
       try {
         const created = await forSchool(schoolId, () =>
           db.$tenantTransaction(async (rawTx) => {
             const tx = rawTx as typeof db;
-            const membership = await tx.membership.create({
-              data: { userId: previous.userId, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: newCode },
-              select: { id: true },
-            });
+            // A pupil who once left this school takes their old membership up again: one row per person and school.
+            const prior = await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: previous.userId, schoolId, role: "STUDENT" } }, select: { id: true } });
+            const membership = prior
+              ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: newCode, joinedAt: new Date() }, select: { id: true } })
+              : await tx.membership.create({
+                  data: { userId: previous.userId, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: newCode },
+                  select: { id: true },
+                });
             if (klass) {
               await tx.enrollment.create({
                 data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
@@ -314,6 +338,7 @@ export async function admitPupils(
               passwordHash: null,
               birthdate,
               isMinor,
+              penNumber: row.pen || null,
               prefs: writeJson({ theme: "system", locale: opts.locale }),
             },
             select: { id: true },
@@ -322,6 +347,8 @@ export async function admitPupils(
             data: { userId: user.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code },
             select: { id: true },
           });
+          // The record mirrors the PEN the account now carries.
+          if (row.pen) await tx.pupilRecord.create({ data: { schoolId, studentMembershipId: membership.id, penNumber: row.pen, updatedByUserId: ctx.user.id } });
           if (klass) {
             await tx.enrollment.create({
               data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },

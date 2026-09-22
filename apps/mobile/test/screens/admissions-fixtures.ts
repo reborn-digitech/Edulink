@@ -61,6 +61,7 @@ export const application = (extra: Record<string, unknown> = {}, can: Partial<ty
   childBirthdate: "2020-04-01",
   gradeApplied: "1",
   previousSchool: null,
+  penNumber: null,
   addressLine: "1 ZZ Road",
   city: "Pune",
   note: null,

@@ -253,6 +253,13 @@ model User {
   id            String    @id @default(cuid())
   email         String?   @unique
   phone         String?   @unique
+  /// UDISE+ Permanent Education Number: eleven digits the portal assigns
+  /// once to a pupil for life. On the account, not the membership, because
+  /// it identifies the person across every school they attend; unique
+  /// across the platform so the office can find a pupil by it and a
+  /// transfer can recognise them. The pupil record mirrors it for the
+  /// certificate and the filing that print it. Never Aadhaar.
+  penNumber     String?   @unique
   passwordHash  String? // null while the account is magic-link / parent-managed only
   name          String
   preferredName String?
@@ -4034,6 +4041,8 @@ model Application {
   childBirthdate       DateTime?
   gradeApplied         String
   previousSchool       String?
+  /// The child's UDISE+ PEN when the family gave it; admission links the account it names.
+  penNumber            String?
   addressLine          String?
   city                 String?
   note                 String?

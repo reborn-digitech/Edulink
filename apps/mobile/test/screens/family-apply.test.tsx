@@ -84,6 +84,22 @@ describe("applying to a school", () => {
     expect(mockRouter.replace).not.toHaveBeenCalled();
   });
 
+  it("the child's PEN goes in the body when given, and a short one is refused before anything is sent", async () => {
+    const { calls } = await mountStaff(compose(), "PARENT", { [SCHOOL_PATH]: () => json({ open: OPEN, mine: [] }), [APPLY]: () => json(application({ penNumber: "27250100101" })) });
+    await fireEvent.changeText(await screen.findByLabelText("Child's name"), "ZZ Kabir");
+    await fireEvent.changeText(screen.getByLabelText("Date of birth"), "2020-04-01");
+    await fireEvent.press(screen.getByRole("radio", { name: "1 · 3 of 5 seats left" }));
+    await fireEvent.changeText(screen.getByLabelText("UDISE+ PEN (if the child has one)"), "2725");
+    await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
+    expect(screen.getByText("A PEN is eleven digits.")).toBeTruthy();
+    expect(calls().some((c) => c.line === APPLY)).toBe(false);
+    await fireEvent.changeText(screen.getByLabelText("UDISE+ PEN (if the child has one)"), "27250100101");
+    await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
+    await waitFor(() => expect(calls().some((c) => c.line === APPLY)).toBe(true));
+    expect(calls().find((c) => c.line === APPLY)!.body).toEqual({ schoolId: SCHOOL, cycleId: CYCLE, childName: "ZZ Kabir", childBirthdate: "2020-04-01", gradeApplied: "1", relation: "PARENT", penNumber: "27250100101" });
+    expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: A1 } });
+  });
+
   it("without a school named, the title is the plain one", async () => {
     mockRouter.params = { schoolId: SCHOOL };
     await mountStaff(compose(), "PARENT", { [SCHOOL_PATH]: () => json({ open: OPEN, mine: [] }) });

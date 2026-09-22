@@ -288,6 +288,13 @@ function reparseHeaderless(input: string): { row: CsvRow; line: number }[] {
  * guardian, and any of the last three may be missing on the day — the
  * office fills them in later from the directory, which already knows how.
  */
+/** Eleven digits or null; `false` when the cell holds something else. Kept here so this module stays free of server-only imports. */
+function penOrNull(raw: string): string | null | false {
+  const digits = raw.replace(/[\s-]/g, "");
+  if (!digits) return null;
+  return /^\d{11}$/.test(digits) ? digits : false;
+}
+
 export type IntakeRow = {
   line: number;
   name: string;
@@ -300,6 +307,8 @@ export type IntakeRow = {
   relation: "PARENT" | "GUARDIAN" | "OTHER";
   /** Present = a transfer: link to the existing account behind this code. */
   studentCode: string | null;
+  /** The UDISE+ PEN, eleven digits; with the date of birth it links a pupil known on Relay, else it goes on the new account. `false` = a wrong shape. */
+  pen: string | null | false;
 };
 
 export type IntakeCsvResult = {
@@ -310,6 +319,8 @@ export type IntakeCsvResult = {
 };
 
 const INTAKE_HEADERS = {
+  /** The UDISE+ Permanent Education Number: eleven digits, the pupil's for life. */
+  pen: ["pen", "pen number", "pen no", "pen no.", "udise pen", "udise+ pen", "permanent education number", "student pen"],
   name: ["name", "pupil", "student", "full name", "pupil name", "student name", "child"],
   birthdate: ["dob", "date of birth", "birthdate", "birth date", "born", "d.o.b.", "d.o.b"],
   className: ["class", "grade", "section", "form", "class name"],
@@ -376,6 +387,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
     guardianName: key(INTAKE_HEADERS.guardianName),
     relation: key(INTAKE_HEADERS.relation),
     studentCode: key(INTAKE_HEADERS.studentCode),
+    pen: key(INTAKE_HEADERS.pen),
   };
   if (col.pupilEmail && ["email", "email address", "e-mail"].includes(col.pupilEmail) && !col.guardianEmail) {
     col.guardianEmail = col.pupilEmail;
@@ -469,6 +481,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
       guardianName: cell(col.guardianName).slice(0, 120) || null,
       relation,
       studentCode: cell(col.studentCode).toUpperCase().slice(0, 40) || null,
+      pen: penOrNull(cell(col.pen)),
     });
   });
 

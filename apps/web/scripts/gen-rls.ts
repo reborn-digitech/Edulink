@@ -648,6 +648,11 @@ function generate(): string {
     const alsoReadable: string[] = [];
     if (selfColumn) alsoReadable.push(`"${selfColumn}" = current_setting('app.user_id', true)`);
     if (codeColumn) alsoReadable.push(`"${codeColumn}" = current_setting('app.join_code', true)`);
+    // …and a pupil's membership by the PEN on their account, bound the same
+    // way a student code is: an eleven-digit number the office already holds,
+    // read-only, one person's rows. This is how intake and admissions
+    // recognise a pupil who moved schools (src/lib/pen.ts).
+    if (table === "Membership") alsoReadable.push(`"userId" IN (SELECT u."id" FROM "User" u WHERE u."penNumber" = current_setting('app.join_code', true))`);
     // …and, for School only, the school BEHIND a student code — see the note
     // on CODE_SCHOOL_READABLE for the 500 this closes.
     if (table === "School") alsoReadable.push(`(${CODE_SCHOOL_READABLE})`);

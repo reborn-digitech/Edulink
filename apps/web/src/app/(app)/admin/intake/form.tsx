@@ -294,6 +294,7 @@ export function IntakeForm({
           className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface p-3.5 font-mono text-sm leading-relaxed outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
         />
         <p className="mt-1 text-xs text-fg-muted">{t("intake.columnsHelp")}</p>
+        <p className="mt-1 text-xs text-fg-muted">{t("intake.penColumn")}</p>
       </div>
 
       {preview && (

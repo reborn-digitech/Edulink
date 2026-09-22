@@ -51,6 +51,19 @@ describe("an application as the office sees it", () => {
     expect(screen.queryByRole("button", { name: "Back to the pool" })).toBeNull();
   });
 
+  it("the child's PEN is a line when the application carries one", async () => {
+    await mountStaff(compose(), "ADMIN", { [GET]: () => json(application({ penNumber: "27250100101" })) });
+    await screen.findByRole("header", { name: "Application ADM/2026-27/0001" });
+    expect(screen.getByText("UDISE+ PEN")).toBeTruthy();
+    expect(screen.getByText("27250100101")).toBeTruthy();
+  });
+
+  it("…and nothing when it does not", async () => {
+    await mountStaff(compose(), "ADMIN", { [GET]: () => json(application()) });
+    await screen.findByRole("header", { name: "Application ADM/2026-27/0001" });
+    expect(screen.queryByText("UDISE+ PEN")).toBeNull();
+  });
+
   it("with nothing allowed, no button is drawn", async () => {
     await mountStaff(compose(), "PRINCIPAL", { [GET]: () => json(application({ status: "WITHDRAWN", decidedAt: "2026-09-19T05:00:00.000Z" })) });
     await screen.findByRole("header", { name: "Application ADM/2026-27/0001" });
@@ -193,6 +206,24 @@ describe("a walk-in family's application", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
     await waitFor(() => expect(calls().some((c) => c.line === CREATE)).toBe(true));
     expect(calls().find((c) => c.line === CREATE)!.body).toEqual({ cycleId: CYCLE, childName: "ZZ Kabir", childBirthdate: "2020-04-01", gradeApplied: "2", applicantName: "ZZ Parent", applicantPhone: "+91 98765 00000", relation: "GUARDIAN" });
+    expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/application", params: { id: A1 } });
+  });
+
+  it("a walk-in with the child's PEN sends it once it is eleven digits", async () => {
+    mockRouter.params = {};
+    const { calls } = await mountStaff(form(), "ADMIN", { [CYCLES]: () => json(CYCLES_VIEW), [CREATE]: () => json(application({ penNumber: "27250100101" })) });
+    await fireEvent.press(await screen.findByRole("radio", { name: "ZZ Admissions 2026-27 · 2026-27" }));
+    await fireEvent.press(screen.getByRole("radio", { name: "2 · 3 seats" }));
+    await fireEvent.changeText(screen.getByLabelText("Child's name"), "ZZ Kabir");
+    await fireEvent.changeText(screen.getByLabelText("UDISE+ PEN (if the child has one)"), "272501001");
+    await fireEvent.changeText(screen.getByLabelText("Applicant"), "ZZ Parent");
+    await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
+    expect(screen.getByText("A PEN is eleven digits.")).toBeTruthy();
+    expect(calls().some((c) => c.line === CREATE)).toBe(false);
+    await fireEvent.changeText(screen.getByLabelText("UDISE+ PEN (if the child has one)"), "27250100101");
+    await fireEvent.press(screen.getByRole("button", { name: "Send the application" }));
+    await waitFor(() => expect(calls().some((c) => c.line === CREATE)).toBe(true));
+    expect(calls().find((c) => c.line === CREATE)!.body).toEqual({ cycleId: CYCLE, childName: "ZZ Kabir", childBirthdate: null, gradeApplied: "2", applicantName: "ZZ Parent", relation: "PARENT", penNumber: "27250100101" });
     expect(mockRouter.replace).toHaveBeenCalledWith({ pathname: "/(app)/application", params: { id: A1 } });
   });
 

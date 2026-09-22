@@ -90,6 +90,7 @@ CREATE POLICY "Membership_readable" ON "Membership"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
          OR "userId" = current_setting('app.user_id', true)
          OR "studentCode" = current_setting('app.join_code', true)
+         OR "userId" IN (SELECT u."id" FROM "User" u WHERE u."penNumber" = current_setting('app.join_code', true))
          OR (EXISTS (
             SELECT 1 FROM "Guardianship" g
              WHERE g."studentMembershipId" = "Membership"."id"

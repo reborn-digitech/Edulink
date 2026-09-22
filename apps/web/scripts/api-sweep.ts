@@ -63,7 +63,7 @@ async function reportCardFixture(s: string): Promise<{ reportCardId: string | nu
 }
 
 /** The ZZ certificates: an active template (and its body to send back), a retired one, an issued certificate, one still to revoke, and a printed code. */
-async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null }> {
+async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null }> {
   const [active, retired, issued, revocable] = await Promise.all([
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: true, kind: "BONAFIDE" }, orderBy: { createdAt: "asc" } }),
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: false }, orderBy: { createdAt: "asc" }, select: { id: true } }),
@@ -82,7 +82,8 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
     db.certificateRequest.findFirst({ where: { schoolId: s, status: "CANCELLED" }, select: { id: true } }),
     db.certificateRequest.findFirst({ where: { schoolId: s, status: "DECLINED" }, select: { id: true } }),
   ]);
-  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null };
+  const pen = await db.user.findFirst({ where: { penNumber: { not: null }, memberships: { some: { schoolId: s, role: "STUDENT", status: "ACTIVE" } } }, select: { penNumber: true } });
+  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null };
 }
 
 /** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
@@ -114,7 +115,8 @@ async function fixture(): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   const s = school.id;
   const first = async <T extends { id: string }>(q: Promise<T | null>) => (await q)?.id ?? null;
-  const klass = await db.class.findFirst({ where: { schoolId: s, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } });
+  // The grade-3 class first: the exams, cards, records, syllabus and certificates fixtures all live there, and the teacher actor is its lead.
+  const klass = (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
   const student = klass ? await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true } }) : null;
   const lead = klass ? await db.classTeacher.findFirst({ where: { classId: klass.id, role: "LEAD" }, select: { teacherMembershipId: true } }) : null;
   return {
@@ -147,7 +149,8 @@ async function fixture(): Promise<SweepFixture> {
     feeReceiptId: await first(db.feeReceipt.findFirst({ where: { schoolId: s }, select: { id: true } })),
     broadcastId: await first(db.broadcast.findFirst({ where: { schoolId: s }, select: { id: true } })),
     // An OPEN one, so the sweep's note and close both have a door; zz:fixtures leaves one open on every run.
-    incidentId: await first(db.incident.findFirst({ where: { schoolId: s, status: "OPEN" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
+    // …and on a pupil of the sampled class, so its lead — the sweep's teacher — may add a note; the newest open incident is often one an earlier sweep opened on another class.
+    incidentId: await first(db.incident.findFirst({ where: { schoolId: s, status: "OPEN", ...(klass ? { student: { enrollments: { some: { classId: klass.id, status: "ACTIVE" } } } } : {}) }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     circularId: await first(db.post.findFirst({ where: { schoolId: s, requiresAck: true, status: "APPROVED" }, orderBy: { createdAt: "desc" }, select: { id: true } })),
     syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
     lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
@@ -162,7 +165,10 @@ async function fixture(): Promise<SweepFixture> {
 async function actors(): Promise<Record<Role, string>> {
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   const byEmail = async (email: string) => (await db.user.findUniqueOrThrow({ where: { email }, select: { id: true } })).id;
-  const teacher = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "TEACHER", status: "ACTIVE" }, select: { userId: true } });
+  // The teacher is the LEAD of the class the fixture samples, so the class-scoped writes (incidents, lessons) are theirs to make; "the first teacher" depended on row order and broke when the fixtures were rebuilt.
+  const sampledClass = (await db.class.findFirst({ where: { schoolId: school.id, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: school.id, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
+  const lead = sampledClass ? await db.classTeacher.findFirst({ where: { classId: sampledClass.id, role: "LEAD" }, select: { teacher: { select: { userId: true } } } }) : null;
+  const teacher = lead ? { userId: lead.teacher.userId } : await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "TEACHER", status: "ACTIVE" }, select: { userId: true } });
   const pupil = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, select: { userId: true } });
   const guardian = await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } });
   const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });

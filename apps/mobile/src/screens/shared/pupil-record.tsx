@@ -24,7 +24,7 @@ export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "catego
 export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"];
 const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS];
 const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint" };
-const MAX: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 40 };
+const MAX: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11 };
 
 export type RecordForm = Record<PupilRecordField, string>;
 
@@ -101,7 +101,7 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
         maxLength={MAX[field] ?? 120}
         editable={editable}
         autoCapitalize={field === "admissionDate" || field === "penNumber" || field === "postalCode" ? "none" : "words"}
-        keyboardType={field === "admissionDate" ? "numbers-and-punctuation" : field === "postalCode" ? "number-pad" : "default"}
+        keyboardType={field === "admissionDate" ? "numbers-and-punctuation" : field === "postalCode" || field === "penNumber" ? "number-pad" : "default"}
         error={field === "admissionDate" && tried && dateBad ? dateBad : issue(field)}
       />
     );

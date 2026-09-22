@@ -140,6 +140,7 @@ export default async function OfficeApplicationPage({
             )}
             {detail(t("admissions.gradeApplied"), view.gradeApplied)}
             {detail(t("admissions.previousSchool"), view.previousSchool)}
+            {view.penNumber && detail(t("pupilRecord.penNumber"), view.penNumber)}
             {detail(t("admissions.address"), view.addressLine)}
             {detail(t("admissions.city"), view.city)}
           </dl>

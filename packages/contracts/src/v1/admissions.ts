@@ -67,6 +67,8 @@ export const applicationSaveSchema = z.object({
   childBirthdate: dateKey.nullable(),
   gradeApplied: z.string().trim().min(1).max(20),
   previousSchool: z.string().trim().max(160).optional(),
+  /** The child's UDISE+ PEN, eleven digits, when the family has it: admission then recognises a pupil known on Relay. */
+  penNumber: z.string().trim().regex(/^(\d{11})?$/, "pen").optional(),
   addressLine: z.string().trim().max(200).optional(),
   city: text.optional(),
   note: z.string().trim().max(2000).optional(),
@@ -108,6 +110,7 @@ export const applicationSchema = z.object({
   childBirthdate: dateKey.nullable(),
   gradeApplied: z.string(),
   previousSchool: z.string().nullable(),
+  penNumber: z.string().nullable(),
   addressLine: z.string().nullable(),
   city: z.string().nullable(),
   note: z.string().nullable(),

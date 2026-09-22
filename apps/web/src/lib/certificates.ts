@@ -61,7 +61,7 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
       studentCode: "STU-2026-0042",
       birthdateKey: "2016-03-10",
       ageYears: 10,
-      record: { fatherName: sw("father"), motherName: sw("mother"), placeOfBirth: sw("place"), nationality: sw("nationality"), religion: sw("religion"), caste: sw("caste"), category: sw("category"), motherTongue: sw("motherTongue"), addressLine: sw("address"), city: sw("city"), postalCode: "411001", admissionNumber: "GR-1042", admissionDateKey: "2022-06-15", admittedToGrade: "1", previousSchool: sw("previousSchool"), penNumber: "1234567890" },
+      record: { fatherName: sw("father"), motherName: sw("mother"), placeOfBirth: sw("place"), nationality: sw("nationality"), religion: sw("religion"), caste: sw("caste"), category: sw("category"), motherTongue: sw("motherTongue"), addressLine: sw("address"), city: sw("city"), postalCode: "411001", admissionNumber: "GR-1042", admissionDateKey: "2022-06-15", admittedToGrade: "1", previousSchool: sw("previousSchool"), penNumber: "27250100001" },
       className: sw("className"),
       gradeLevel: "4",
       school: { name: school.name, code: school.code, address: [school.addressLine, school.city].filter(Boolean).join(", ") || null },
@@ -120,7 +120,7 @@ async function factsFor(schoolId: string, studentMembershipId: string, issue: Pu
   const [pupil, school, year] = await Promise.all([
     db.membership.findFirst({
       where: { id: studentMembershipId, schoolId, role: "STUDENT" },
-      select: { studentCode: true, gradeLevel: true, leftAt: true, user: { select: { name: true, preferredName: true, birthdate: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true, gradeLevel: true } } }, take: 1 }, schoolRecord: true, scheduledDeparture: true },
+      select: { studentCode: true, gradeLevel: true, leftAt: true, user: { select: { name: true, preferredName: true, birthdate: true, penNumber: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true, gradeLevel: true } } }, take: 1 }, schoolRecord: true, scheduledDeparture: true },
     }),
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, code: true, addressLine: true, city: true, region: true, postalCode: true, timezone: true } }),
     db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { name: true, startDate: true, endDate: true } }),
@@ -145,7 +145,7 @@ async function factsFor(schoolId: string, studentMembershipId: string, issue: Pu
     birthdateKey: key(pupil.user.birthdate),
     ageYears: pupil.user.birthdate ? ageInYears(pupil.user.birthdate) : null,
     record: r
-      ? { fatherName: r.fatherName, motherName: r.motherName, placeOfBirth: r.placeOfBirth, nationality: r.nationality, religion: r.religion, caste: r.caste, category: r.category, motherTongue: r.motherTongue, addressLine: r.addressLine, city: r.city, postalCode: r.postalCode, admissionNumber: r.admissionNumber, admissionDateKey: key(r.admissionDate), admittedToGrade: r.admittedToGrade, previousSchool: r.previousSchool, penNumber: r.penNumber }
+      ? { fatherName: r.fatherName, motherName: r.motherName, placeOfBirth: r.placeOfBirth, nationality: r.nationality, religion: r.religion, caste: r.caste, category: r.category, motherTongue: r.motherTongue, addressLine: r.addressLine, city: r.city, postalCode: r.postalCode, admissionNumber: r.admissionNumber, admissionDateKey: key(r.admissionDate), admittedToGrade: r.admittedToGrade, previousSchool: r.previousSchool, penNumber: pupil.user.penNumber ?? r.penNumber }
       : null,
     className: klass?.name ?? departure?.className ?? null,
     gradeLevel: klass?.gradeLevel ?? pupil.gradeLevel ?? null,

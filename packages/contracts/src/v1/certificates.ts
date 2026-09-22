@@ -311,3 +311,11 @@ export const familyCertificateRequestsSchema = z.object({
 export const officeCertificateRequestsSchema = z.object({ items: z.array(certificateRequestSchema), pending: count });
 export const officeCertificateRequestsQuerySchema = z.object({ status: certificateRequestStatusSchema.optional() });
 export const certificateRequestDeclineSchema = z.object({ reason: z.string().trim().min(1).max(400) });
+
+/** GET /api/v1/office/pupils/by-pen/{pen} — who holds a UDISE+ PEN: a pupil here in full, a pupil elsewhere by state alone, or nobody. */
+export const penLookupSchema = z.object({
+  pen: z.string().regex(/^\d{11}$/),
+  found: z.enum(["HERE", "ELSEWHERE_ACTIVE", "ELSEWHERE_LEFT", "NONE"]),
+  pupil: z.object({ membershipId: z.string(), name: z.string(), className: z.string().nullable(), studentCode: z.string().nullable() }).nullable(),
+});
+export type PenLookup = z.infer<typeof penLookupSchema>;

@@ -7,6 +7,7 @@ import { notify, notifyGuardians } from "./notify";
 import { REQUIRED_RECORD_FIELDS } from "./certificate-rules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import { assignPen, normalisePen } from "./pen";
 
 /**
  * The pupil record: the identity and admission details a certificate names.
@@ -20,22 +21,23 @@ import type { Role } from "./constants";
 const READER_ROLES: readonly Role[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"];
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
 
-type Viewer = { userId: string; schoolId: string; role: Role; canEdit: boolean; family: boolean; studentName: string; studentCode: string | null; birthdateKey: string | null };
+type Viewer = { userId: string; schoolId: string; role: Role; canEdit: boolean; family: boolean; studentName: string; studentCode: string | null; birthdateKey: string | null; studentUserId: string; accountPen: string | null };
 
 async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<Viewer> {
   if (ctx.role === "PARENT") {
     const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
-    return { userId: ctx.user.id, schoolId: link.student.schoolId, role: "PARENT", canEdit: true, family: true, studentName: link.student.user.preferredName ?? link.student.user.name, studentCode: link.student.studentCode ?? null, birthdateKey: link.student.user.birthdate?.toISOString().slice(0, 10) ?? null };
+    const acct = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { userId: true, user: { select: { penNumber: true } } } });
+    return { userId: ctx.user.id, schoolId: link.student.schoolId, role: "PARENT", canEdit: true, family: true, studentName: link.student.user.preferredName ?? link.student.user.name, studentCode: link.student.studentCode ?? null, birthdateKey: link.student.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: acct.userId, accountPen: acct.user.penNumber };
   }
   if (!ctx.schoolId || !ctx.role || !ctx.membershipId || !READER_ROLES.includes(ctx.role)) throw new AccessError("access.notAllowed");
   if (ctx.role === "STUDENT") {
     if (ctx.membershipId !== studentMembershipId) throw new AccessError("access.notAllowed", "NOT_FOUND");
-    const me = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, user: { select: { name: true, preferredName: true, birthdate: true } } } });
-    return { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT", canEdit: true, family: true, studentName: me.user.preferredName ?? me.user.name, studentCode: me.studentCode, birthdateKey: me.user.birthdate?.toISOString().slice(0, 10) ?? null };
+    const me = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { name: true, preferredName: true, birthdate: true, penNumber: true } } } });
+    return { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT", canEdit: true, family: true, studentName: me.user.preferredName ?? me.user.name, studentCode: me.studentCode, birthdateKey: me.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: me.userId, accountPen: me.user.penNumber };
   }
   const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId);
-  const row = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, user: { select: { birthdate: true } } } });
-  return { userId: ctx.user.id, schoolId: ctx.schoolId, role: ctx.role, canEdit: OFFICE.includes(ctx.role), family: false, studentName: student.user.preferredName ?? student.user.name, studentCode: row.studentCode, birthdateKey: row.user.birthdate?.toISOString().slice(0, 10) ?? null };
+  const row = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { birthdate: true, penNumber: true } } } });
+  return { userId: ctx.user.id, schoolId: ctx.schoolId, role: ctx.role, canEdit: OFFICE.includes(ctx.role), family: false, studentName: student.user.preferredName ?? student.user.name, studentCode: row.studentCode, birthdateKey: row.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: row.userId, accountPen: row.user.penNumber };
 }
 
 type RecordRow = {
@@ -57,6 +59,8 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
     return v === null || v === undefined || (typeof v === "string" && v.trim() === "");
   }) as PupilRecordField[];
 }
+
+const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -82,8 +86,10 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
     db.pupilRecord.findUnique({ where: { studentMembershipId } }),
     db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { class: { select: { name: true } } } }),
   ]);
-  const missing = missingFields(record);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(record), missing, missingForFiling: missingFilingFields(record), complete: missing.length === 0, canEdit: viewer.canEdit };
+  // The PEN is the account's; a record that has not caught up shows it anyway.
+  const merged = record ? { ...record, penNumber: viewer.accountPen ?? record.penNumber } : viewer.accountPen ? ({ ...EMPTY_RECORD, penNumber: viewer.accountPen } as RecordRow) : null;
+  const missing = missingFields(merged);
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit };
 }
 
 /** Writes the whole record. A blank clears the field. The family's write is dated so the office sees who filled it. */
@@ -91,11 +97,14 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   const viewer = await admit(ctx, studentMembershipId);
   if (!viewer.canEdit) throw new AccessError("access.notAllowed");
   const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
+  // The PEN goes on the account — eleven digits, one pupil each — before the record mirrors it.
+  const pen = input.penNumber === undefined ? undefined : normalisePen(input.penNumber);
+  if (pen !== undefined) await assignPen(viewer.studentUserId, pen);
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality: text(input.nationality), religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue: text(input.motherTongue),
     addressLine: text(input.addressLine), city: text(input.city), postalCode: text(input.postalCode), admissionNumber: text(input.admissionNumber),
     admissionDate: input.admissionDate === undefined ? undefined : input.admissionDate ? new Date(`${input.admissionDate}T00:00:00Z`) : null,
-    admittedToGrade: text(input.admittedToGrade), previousSchool: text(input.previousSchool), penNumber: text(input.penNumber),
+    admittedToGrade: text(input.admittedToGrade), previousSchool: text(input.previousSchool), penNumber: pen,
     gender: text(input.gender), nameLocal: text(input.nameLocal), fatherNameLocal: text(input.fatherNameLocal), motherNameLocal: text(input.motherNameLocal),
     bpl: input.bpl === undefined ? undefined : input.bpl === "" ? null : input.bpl === "yes",
     ews: input.ews === undefined ? undefined : input.ews === "" ? null : input.ews === "yes",

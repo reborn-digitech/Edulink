@@ -40,6 +40,7 @@ export function WalkInForm({ cycles }: { cycles: CycleOption[] }) {
   const [childName, setChildName] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [previousSchool, setPreviousSchool] = useState("");
+  const [penNumber, setPenNumber] = useState("");
   const [addressLine, setAddressLine] = useState("");
   const [city, setCity] = useState("");
   const [note, setNote] = useState("");
@@ -68,6 +69,8 @@ export function WalkInForm({ cycles }: { cycles: CycleOption[] }) {
       errors.applicantName = t("admissions.refuseApplicantName");
     if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       errors.email = needed;
+    const pen = penNumber.replace(/[\s-]/g, "");
+    if (pen && !/^\d{11}$/.test(pen)) errors.penNumber = t("pupilRecord.penFormat");
     setFieldErrors(errors);
     if (Object.keys(errors).length > 0) {
       setError(needed);
@@ -81,6 +84,7 @@ export function WalkInForm({ cycles }: { cycles: CycleOption[] }) {
       ...(previousSchool.trim()
         ? { previousSchool: previousSchool.trim().slice(0, 160) }
         : {}),
+      ...(pen ? { penNumber: pen } : {}),
       ...(addressLine.trim()
         ? { addressLine: addressLine.trim().slice(0, 200) }
         : {}),
@@ -174,6 +178,17 @@ export function WalkInForm({ cycles }: { cycles: CycleOption[] }) {
           maxLength={120}
           autoComplete="off"
           onChange={(e) => setCity(e.target.value)}
+        />
+        <TextField
+          label={t("admissions.penNumber")}
+          hint={t("pupilRecord.penHint")}
+          value={penNumber}
+          maxLength={11}
+          inputMode="numeric"
+          autoComplete="off"
+          error={fieldErrors.penNumber}
+          onChange={(e) => setPenNumber(e.target.value)}
+          data-testid="walk-in-pen"
         />
       </div>
       <TextField

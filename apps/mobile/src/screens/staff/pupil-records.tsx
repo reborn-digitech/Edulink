@@ -2,8 +2,8 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { officeRecordsSchema, recordRequestedSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Screen, Stat, Text, useToast } from "@/components";
+import { officeRecordsSchema, penLookupSchema, recordRequestedSchema, type PenLookup } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Field, Loading, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -14,6 +14,7 @@ import { formatDateKey } from "./shared";
 
 const PATH = "/api/v1/office/pupil-records";
 type Filter = "all" | "missing";
+const PEN_RE = /^\d{11}$/;
 
 /**
  * Pupil records for the office — the web's /admin/pupil-records: how many
@@ -21,7 +22,9 @@ type Filter = "all" | "missing";
  * either way, and for each what is still blank, when the family was last
  * asked and when they answered. "Ask the families" asks every family with
  * something blank; a row's "Ask this family" asks one. Editing opens the
- * same form the family has, with the office as the writer.
+ * same form the family has, with the office as the writer. Above the list,
+ * "Find by PEN" asks who holds a UDISE+ PEN: a pupil here with a door to
+ * the record, a pupil elsewhere on Relay by state alone, or nobody.
  */
 export function PupilRecords() {
   const t = useT();
@@ -44,6 +47,34 @@ export function PupilRecords() {
     },
     onError: (e) => toast.show(e.message, "danger"),
   });
+  const [pen, setPen] = useState("");
+  const [penError, setPenError] = useState<string | null>(null);
+  const lookup = useMutation({
+    mutationFn: async (digits: string) => penLookupSchema.parse(unwrap(await api().get(`/api/v1/office/pupils/by-pen/${digits}`))),
+    onError: (e) => setPenError(e.message),
+  });
+  const find = () => {
+    const digits = pen.replace(/[\s-]/g, "");
+    lookup.reset();
+    if (!PEN_RE.test(digits)) {
+      setPenError(t("pupilRecord.penFormat"));
+      return;
+    }
+    setPenError(null);
+    lookup.mutate(digits);
+  };
+  const found: PenLookup | undefined = lookup.data;
+  const sentence = found
+    ? found.found === "HERE"
+      ? found.pupil?.className
+        ? t("pupilRecord.penFoundHere", { name: found.pupil.name, className: found.pupil.className })
+        : t("pupilRecord.penFoundHereNoClass", { name: found.pupil?.name ?? "" })
+      : found.found === "ELSEWHERE_ACTIVE"
+        ? t("pupilRecord.penElsewhereActive")
+        : found.found === "ELSEWHERE_LEFT"
+          ? t("pupilRecord.penElsewhereLeft")
+          : t("pupilRecord.penNone")
+    : null;
   const d = query.data;
   return (
     <Screen title={t("pupilRecord.officeTitle")} description={t("pupilRecord.officeIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -51,6 +82,20 @@ export function PupilRecords() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
+          <Card title={t("pupilRecord.findByPen")}>
+            <Field label={t("pupilRecord.findByPen")} hint={t("pupilRecord.findByPenHint")} value={pen} onChangeText={setPen} keyboardType="number-pad" maxLength={11} autoCapitalize="none" error={penError} />
+            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+              <Button label={t("pupilRecord.findByPenGo")} variant="secondary" busy={lookup.isPending} onPress={find} />
+              {found?.found === "HERE" && found.pupil ? (
+                <Button label={t("pupilRecord.openRecord")} onPress={() => router.push({ pathname: "/(app)/pupil-record", params: { membershipId: found.pupil!.membershipId } } as never)} />
+              ) : null}
+            </View>
+            {sentence ? (
+              <Text variant="sm" tone={found?.found === "HERE" ? "fg" : "muted"} accessibilityLiveRegion="polite">
+                {sentence}
+              </Text>
+            ) : null}
+          </Card>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
             <Stat label={t("pupilRecord.allPupils")} value={d.total} />
             <Stat label={t("pupilRecord.complete")} value={d.complete} tone={d.complete > 0 ? "ok" : "fg"} />

@@ -57489,6 +57489,131 @@
         }
       }
     },
+    "/api/v1/office/pupils/by-pen/{pen}": {
+      "get": {
+        "summary": "Who holds a UDISE+ PEN: a pupil on the roll here with their class and code, a pupil elsewhere on Relay by state alone (on a roll, or left), or nobody; eleven digits or 403",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pen": {
+                      "type": "string",
+                      "pattern": "^\\d{11}$"
+                    },
+                    "found": {
+                      "type": "string",
+                      "enum": [
+                        "HERE",
+                        "ELSEWHERE_ACTIVE",
+                        "ELSEWHERE_LEFT",
+                        "NONE"
+                      ]
+                    },
+                    "pupil": {
+                      "type": "object",
+                      "properties": {
+                        "membershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "studentCode": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "membershipId",
+                        "name",
+                        "className",
+                        "studentCode"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "pen",
+                    "found",
+                    "pupil"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "pen",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/family/certificate-requests": {
       "get": {
         "summary": "The pupil's own certificate requests, or a child's (?childId=), with the kinds the school offers",
@@ -60686,6 +60811,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -60938,6 +61067,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -61036,6 +61166,10 @@
                   "previousSchool": {
                     "type": "string",
                     "maxLength": 160
+                  },
+                  "penNumber": {
+                    "type": "string",
+                    "pattern": "^(\\d{11})?$"
                   },
                   "addressLine": {
                     "type": "string",
@@ -61231,6 +61365,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -61483,6 +61621,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -61712,6 +61851,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -61964,6 +62107,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -62239,6 +62383,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -62491,6 +62639,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -62720,6 +62869,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -62972,6 +63125,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -63226,6 +63380,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -63478,6 +63636,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -63737,6 +63896,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -63989,6 +64152,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -64523,6 +64687,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -64775,6 +64943,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -64873,6 +65042,10 @@
                   "previousSchool": {
                     "type": "string",
                     "maxLength": 160
+                  },
+                  "penNumber": {
+                    "type": "string",
+                    "pattern": "^(\\d{11})?$"
                   },
                   "addressLine": {
                     "type": "string",
@@ -65071,6 +65244,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -65323,6 +65500,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -65551,6 +65729,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -65803,6 +65985,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -66077,6 +66260,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -66329,6 +66516,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -66577,6 +66765,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -66829,6 +67021,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",
@@ -67084,6 +67277,10 @@
                       "type": "string",
                       "nullable": true
                     },
+                    "penNumber": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "addressLine": {
                       "type": "string",
                       "nullable": true
@@ -67336,6 +67533,7 @@
                     "childBirthdate",
                     "gradeApplied",
                     "previousSchool",
+                    "penNumber",
                     "addressLine",
                     "city",
                     "note",

@@ -49,7 +49,7 @@ export function PupilRecordForm({ view, required, optional, filing = [] }: { vie
     { fields: ["admissionNumber", "admissionDate", "admittedToGrade", "previousSchool", "penNumber"] },
   ];
   const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint" };
-  const maxFor: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 40 };
+  const maxFor: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11 };
   /** The coded filing answers: the value the contract takes and the words the reader sees. */
   const choicesFor: Partial<Record<PupilRecordField, { value: string; text: string }[]>> = {
     gender: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "M", text: t("pupilRecord.genderM") }, { value: "F", text: t("pupilRecord.genderF") }, { value: "T", text: t("pupilRecord.genderT") }],

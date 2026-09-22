@@ -117,6 +117,49 @@ describe("the office's pupil records", () => {
   });
 });
 
+const PEN = "27250100101";
+const BY_PEN = `GET /api/v1/office/pupils/by-pen/${PEN}`;
+
+describe("finding a pupil by PEN", () => {
+  it("refuses anything but eleven digits before asking, then names the pupil here with the class and opens the record", async () => {
+    const { calls } = await mountStaff(compose(), "ADMIN", { ...answers(), [BY_PEN]: () => json({ pen: PEN, found: "HERE", pupil: { membershipId: BELA, name: "ZZ Bela", className: "ZZ 3B", studentCode: "ZZ-002" } }) });
+    await screen.findByText("ZZ Asha");
+    await fireEvent.changeText(screen.getByLabelText("Find a pupil by PEN"), "123");
+    await fireEvent.press(screen.getByRole("button", { name: "Find" }));
+    expect(screen.getByText("A PEN is eleven digits.")).toBeTruthy();
+    expect(calls().some((c) => c.line.includes("/pupils/by-pen/"))).toBe(false);
+    await fireEvent.changeText(screen.getByLabelText("Find a pupil by PEN"), "27250 100101");
+    await fireEvent.press(screen.getByRole("button", { name: "Find" }));
+    expect(await screen.findByText("ZZ Bela, ZZ 3B — on the roll here.")).toBeTruthy();
+    expect(screen.queryByText("A PEN is eleven digits.")).toBeNull();
+    expect(calls().some((c) => c.line === BY_PEN)).toBe(true);
+    await fireEvent.press(screen.getByRole("button", { name: "Open the record" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-record", params: { membershipId: BELA } });
+  });
+
+  it.each([
+    ["here in no class yet, with the door", { pen: PEN, found: "HERE", pupil: { membershipId: BELA, name: "ZZ Bela", className: null, studentCode: null } }, "ZZ Bela — on the roll here, in no class yet.", true],
+    ["on a roll elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_ACTIVE", pupil: null }, /^That PEN belongs to a pupil on the roll at another school on Relay\./, false],
+    ["left elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_LEFT", pupil: null }, /^That PEN belongs to a pupil who has left another school on Relay\./, false],
+    ["nobody, with no door", { pen: PEN, found: "NONE", pupil: null }, "No pupil on Relay holds that PEN.", false],
+  ])("a pupil %s", async (_label, answer, sentence, door) => {
+    await mountStaff(compose(), "PRINCIPAL", { ...answers(), [BY_PEN]: () => json(answer) });
+    await screen.findByText("ZZ Asha");
+    await fireEvent.changeText(screen.getByLabelText("Find a pupil by PEN"), PEN);
+    await fireEvent.press(screen.getByRole("button", { name: "Find" }));
+    expect(await screen.findByText(sentence)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Open the record" }) !== null).toBe(door);
+  });
+
+  it("a refused lookup is said under the field", async () => {
+    await mountStaff(compose(), "ADMIN", { ...answers(), [BY_PEN]: refused("ZZ not yours", 403) });
+    await screen.findByText("ZZ Asha");
+    await fireEvent.changeText(screen.getByLabelText("Find a pupil by PEN"), PEN);
+    await fireEvent.press(screen.getByRole("button", { name: "Find" }));
+    expect(await screen.findByText("ZZ not yours")).toBeTruthy();
+  });
+});
+
 const VIEW = {
   studentMembershipId: ASHA,
   studentName: "ZZ Asha",

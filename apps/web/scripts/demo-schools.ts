@@ -36,8 +36,7 @@ import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoi
 import {
   attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildExams, buildFees, buildHealth, buildIncidents,
   buildMessaging, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable, CLASS_COLOURS,
-  db, enrol, link, setTag, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx,
-} from "./zz-fixtures";
+  db, enrol, link, setTag, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen } from "./zz-fixtures";
 
 setTag("");
 
@@ -625,10 +624,11 @@ async function buildDeshmukh(b: Built, sunita: { id: string }) {
   const record = {
     fatherName: "Prasad Deshmukh", motherName: SUNITA.name, placeOfBirth: "Pune", nationality: "Indian", religion: "Hindu", caste: null, category: "General", motherTongue: "Marathi",
     addressLine: "B-402, Sahil Residency, Aundh", city: "Pune", postalCode: "411007", admissionNumber: first === "Aarav" ? "SPS-2022-0416" : "SVM-2021-0287", admissionDate: new Date(first === "Aarav" ? "2022-06-13T00:00:00Z" : "2021-06-14T00:00:00Z"), admittedToGrade: first === "Aarav" ? "2" : "2",
-    previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", penNumber: null, gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, cwsnType: null, bloodGroup: card.bloodGroup,
+    previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", penNumber: fakePen(b.deshmukh.membershipId), gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, cwsnType: null, bloodGroup: card.bloodGroup,
     updatedByUserId: sunita.id, familyFilledAt: new Date(Date.now() - 20 * DAY),
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...record }, update: record });
+  await db.user.update({ where: { id: b.deshmukh.userId }, data: { penNumber: record.penNumber } });
 }
 
 /* -------------------------------------------------------------------------- */
