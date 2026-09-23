@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import {
+  ArrowsLeftRightIcon,
   BooksIcon,
   CalendarCheckIcon,
   CaretRightIcon,
@@ -25,6 +26,7 @@ import { ReviewDashboard } from "@/components/reviews/review-dashboard";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { currentTerms } from "@/lib/terms";
 import { syllabusCoverage } from "@/lib/syllabus";
+import { officePenChanges } from "@/lib/pen-changes";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
@@ -72,9 +74,15 @@ export default async function PrincipalDashboard({
   // The head shares the year's milestones with the office: start it, finish a
   // term, finish the year, take an accidental close back. The controls live on
   // the calendar page; this card is the head's door to them.
-  const [summary, terms] = await Promise.all([
+  const [summary, terms, penChanges] = await Promise.all([
     schoolSummary(ctx, insights),
     academicYear ? currentTerms(ctx.schoolId, school.timezone) : Promise.resolve([]),
+    // Corrections to pupils' PENs waiting for the head's word: one of the
+    // things that can be settled today, beside the leave.
+    officePenChanges(ctx, "PENDING").catch((error: unknown) => {
+      console.error("[principal pen changes]", error);
+      return { items: [], pending: 0 };
+    }),
   ]);
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
   // How far the chapters have got against how far the year has: one number
@@ -186,6 +194,25 @@ export default async function PrincipalDashboard({
               <span className="block text-xs text-fg-muted">
                 {t("principal.approvingArranges")}
               </span>
+            </span>
+            <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+          </Link>
+        </Card>
+      )}
+
+      {penChanges.pending > 0 && (
+        <Card data-testid="pen-changes-waiting">
+          <Link href="/admin/records" className="flex items-center gap-3 p-4">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-warn-soft text-warn">
+              <ArrowsLeftRightIcon weight="duotone" className="size-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-fg">
+                {t("pupilRecord.penChangesTitle")}
+                {" · "}
+                {t("certificateRequests.pendingCount", { count: penChanges.pending })}
+              </span>
+              <span className="block text-xs text-fg-muted">{t("pupilRecord.penChangesIntro")}</span>
             </span>
             <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
           </Link>

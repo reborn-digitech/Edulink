@@ -11,7 +11,7 @@ import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
-import { assignPen, matchPen } from "./pen";
+import { assignPenIfBlank, matchPen } from "./pen";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -242,7 +242,8 @@ export async function admitPupils(
 
       const newCode = studentCode();
       // A transfer row that carries the PEN puts it on the account it links.
-      if (row.pen) await assignPen(previous.userId, row.pen).catch(() => {});
+      // …only onto an account that has none: a different number on file is a correction, which needs the head and the family.
+      if (row.pen) await assignPenIfBlank(previous.userId, row.pen).catch(() => {});
       let linkedMembershipId: string;
       try {
         const created = await forSchool(schoolId, () =>

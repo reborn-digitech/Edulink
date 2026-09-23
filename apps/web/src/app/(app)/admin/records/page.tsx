@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FolderUserIcon, IdentificationCardIcon, MagnifyingGlassIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { ArrowsLeftRightIcon, FolderUserIcon, IdentificationCardIcon, MagnifyingGlassIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { officeRecords } from "@/lib/pupil-records";
 import { lookupPen, type PenLookup } from "@/lib/pen";
+import { officePenChanges } from "@/lib/pen-changes";
 import { formatDate } from "@/lib/dates";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardBody, StatTile } from "@/components/ui/card";
+import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
@@ -48,7 +49,10 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
   // ?missing=filing: the pupils the UDISE+ sheet cannot be filled for — a
   // different set from the certificate's, cut here from the same rows.
   const filingOnly = missing === "filing";
-  const all = await officeRecords(ctx, missingOnly);
+  // The corrections to PENs the head and a guardian have yet to settle: a
+  // card only while there are any, each row a door to the record page
+  // where the head decides.
+  const [all, penChanges] = await Promise.all([officeRecords(ctx, missingOnly), officePenChanges(ctx, "PENDING")]);
   const view = filingOnly ? { ...all, rows: all.rows.filter((r) => r.missingForFiling.length > 0) } : all;
   const filingIds = view.rows.filter((r) => r.missingForFiling.length > 0).map((r) => r.studentMembershipId);
   // The PEN each row carries: the account's, or the record's mirror of it.
@@ -120,6 +124,35 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
           )}
         </CardBody>
       </Card>
+
+      {penChanges.pending > 0 && (
+        <Card className="border-warn/40" data-testid="pen-changes">
+          <CardHeader icon={<ArrowsLeftRightIcon weight="duotone" className="size-5" />} title={t("pupilRecord.penChangesTitle")} description={t("pupilRecord.penChangesIntro")} action={<Badge tone="warn" size="sm">{t("certificateRequests.pendingCount", { count: penChanges.pending })}</Badge>} />
+          <CardBody>
+            <ul className="divide-y divide-border">
+              {penChanges.items.map((item) => (
+                <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                  <div className="min-w-0 flex-1 basis-64">
+                    <p className="flex flex-wrap items-center gap-2">
+                      <PersonLink membershipId={item.studentMembershipId} name={item.studentName} className="font-semibold text-fg" />
+                      {item.className && <span className="text-xs text-fg-muted">{item.className}</span>}
+                    </p>
+                    <p className="mt-0.5 font-mono text-sm text-fg">{item.toPen ? t("pupilRecord.penChangeFromTo", { from: item.fromPen ?? "—", to: item.toPen }) : t("pupilRecord.penChangeRemoval", { from: item.fromPen ?? "—" })}</p>
+                    <p className="mt-0.5 text-xs text-fg-muted">
+                      {t("pupilRecord.penChangeProposedBy", { name: item.requestedByName })}
+                      {" · "}
+                      {t("pupilRecord.penChangeReason", { reason: item.reason })}
+                    </p>
+                  </div>
+                  <Button asChild variant="secondary" size="sm">
+                    <Link href={`/admin/records/${item.studentMembershipId}`}>{t("pupilRecord.openRecord")}</Link>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+      )}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile label={t("pupilRecord.allPupils")} value={String(view.total)} icon={<UsersThreeIcon weight="duotone" className="size-5" />} />

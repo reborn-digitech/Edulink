@@ -89,9 +89,9 @@ describe("the PEN on the record", () => {
     await db.user.update({ where: { id: other.id }, data: { penNumber: PEN_B } });
     res = await recordGet(get(`/api/v1/office/pupil-records/${otherM}`), params({ membershipId: otherM }));
     expect((await res.json()).record.penNumber).toBe(PEN_B);
-    // Clearing the field clears the account.
-    await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: "" }), params({ membershipId: otherM }));
-    expect((await db.user.findUniqueOrThrow({ where: { id: other.id }, select: { penNumber: true } })).penNumber).toBeNull();
+    // Clearing the field is a correction once a number is on record: refused here, proposed instead (pen-changes.test.ts).
+    expect((await recordPost(json(`/api/v1/office/pupil-records/${otherM}`, { penNumber: "" }), params({ membershipId: otherM }))).status).toBe(403);
+    expect((await db.user.findUniqueOrThrow({ where: { id: other.id }, select: { penNumber: true } })).penNumber).toBe(PEN_B);
   });
 
   it("the office finds a pupil here by PEN, sees another school's pupil by state alone, and nobody for an unknown number; the people search matches it", async () => {

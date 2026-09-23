@@ -62,6 +62,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
+    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
+    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
     { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
@@ -108,6 +110,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
+    // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
+    { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
     // The door for next year: the cycle, its sittings and the pipeline from form to seat.
     { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },

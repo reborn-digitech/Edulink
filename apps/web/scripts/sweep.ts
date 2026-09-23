@@ -2281,6 +2281,31 @@ async function main() {
     skip("pen", "no ZZ pupil with a PEN on the account (run zz:fixtures)");
   }
 
+  /* ---- PEN change approval: the office and the head read the pending correction on the pupil's record, the guardian on the child's ---- */
+  // ZZ Northgate carries one pending correction; the actors are its office,
+  // its head, who decides on the same page, and the pupil's guardian, whose
+  // word is the other half.
+  // Pending first, else the newest: the API sweep settles the fixture's request, and the pages read a settled one too.
+  const zzPenChange = northgate ? (await db.penChangeRequest.findFirst({ where: { schoolId: northgate.id, status: "PENDING" }, select: { id: true, studentMembershipId: true } })) ?? (await db.penChangeRequest.findFirst({ where: { schoolId: northgate.id }, orderBy: { createdAt: "desc" }, select: { id: true, studentMembershipId: true } })) : null;
+  if (northgate && zzPenChange) {
+    const zzOffice = await mint("zz.admin@zz.test", "ADMIN", northgate.id, "zz-admin");
+    await check(zzOffice, `/admin/records/${zzPenChange.studentMembershipId}`, 200, "the office reads the pupil's record with the pending PEN correction and its withdraw");
+    await check(zzOffice, "/admin/records", 200, "…and the records page lists the corrections waiting");
+    const zzPrincipal = await mint("zz.principal@zz.test", "PRINCIPAL", northgate.id, "zz-principal");
+    await check(zzPrincipal, `/admin/records/${zzPenChange.studentMembershipId}`, 200, "the head reads the same page with approve and reject");
+    await check(zzPrincipal, "/principal", 200, "…and the overview counts the correction waiting");
+    const penGuardian = await db.guardianship.findFirst({ where: { studentMembershipId: zzPenChange.studentMembershipId, status: "ACTIVE" }, select: { parent: { select: { email: true } } } });
+    if (penGuardian?.parent.email) {
+      const zzParent = await mint(penGuardian.parent.email, "PARENT", null, "zz-parent");
+      await check(zzParent, `/parent/record?child=${zzPenChange.studentMembershipId}`, 200, "the guardian reads the correction on the child's record with their own decision");
+      await check(zzParent, "/parent", 200, "…and the overview carries the notice");
+    } else {
+      skip("pen change guardian", "the pupil with the pending PEN change has no active guardian");
+    }
+  } else {
+    skip("pen change", "no ZZ pending PEN change request (run zz:fixtures)");
+  }
+
   /* ---- admissions: the office's cycles, sittings and pipeline; the family's applications and the school's door ---- */
   // ZZ Northgate carries an open cycle with sittings and applications from
   // its first guardian in every state plus a walk-in; the actors are its

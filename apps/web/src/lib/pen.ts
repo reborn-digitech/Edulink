@@ -62,6 +62,14 @@ export async function assignPen(userId: string, pen: string | null): Promise<voi
   await db.user.update({ where: { id: userId }, data: { penNumber: pen } });
 }
 
+/** The first entry only: an account already carrying a number keeps it. */
+export async function assignPenIfBlank(userId: string, pen: string): Promise<boolean> {
+  const user = await db.user.findUniqueOrThrow({ where: { id: userId }, select: { penNumber: true } });
+  if (user.penNumber) return false;
+  await assignPen(userId, pen);
+  return true;
+}
+
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
 
 export type PenLookup =

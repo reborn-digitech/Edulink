@@ -43,7 +43,7 @@ const QUEUE_VIEW = { items: [request(REQ1, "PENDING"), request(REQ2, "PENDING", 
 const LAYOUT = { showLogo: true, showAddress: true, useBrandColour: false, signatureLeft: "Office", signatureRight: "Principal", footerNote: null, paper: "A4" };
 const template = (id: string, kind: string, name: string, locale: string, active = true) => ({ id, kind, name, locale, title: name, intro: "", rows: [], outro: "", layout: LAYOUT, serialPrefix: kind, active, issuedCount: 0, updatedAt: "2026-09-01T05:00:00.000Z" });
 const TEMPLATE_VIEW = { templates: [template(BONAFIDE, "BONAFIDE", "ZZ Bonafide", "en"), template(TC, "TC", "ZZ Transfer", "mr"), template(RETIRED, "STUDY", "ZZ Old study", "hi", false)], presets: [], placeholders: [] };
-const VIEW = { studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: "ZZ-001", birthdate: "2016-03-14", record: null, missing: ["fatherName"], missingForFiling: [], complete: false, canEdit: true };
+const VIEW = { studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: "ZZ-001", birthdate: "2016-03-14", record: null, missing: ["fatherName"], missingForFiling: [], complete: false, canEdit: true, penEditable: true, penChange: null };
 const ISSUED = {
   id: CERT,
   kind: "BONAFIDE",

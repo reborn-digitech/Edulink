@@ -107,6 +107,20 @@ describe("certificate requests on the office's overview", () => {
   });
 });
 
+const PEN_CHANGES = "GET /api/v1/office/pen-changes";
+describe("PEN corrections on the office's overview", () => {
+  it("while one waits for the head or a guardian, counts it and opens the pupil records; nothing when none does", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [PEN_CHANGES]: () => json({ items: [], pending: 1 }) });
+    expect(await screen.findByText("PEN corrections")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "1 waiting, Corrections the office has proposed to pupils\u2019 PENs, and where each stands." }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/pupil-records");
+    mockRouter.push.mockClear();
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [PEN_CHANGES]: () => json({ items: [], pending: 0 }) });
+    await screen.findByText("Lessons without a teacher");
+    expect(screen.queryByText("PEN corrections")).toBeNull();
+  });
+});
+
 describe("filings on the office's overview", () => {
   it("while the identity has a blank or a pupil lacks a field, names the gap and opens the filings", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings(["udiseCode"], 40)) });

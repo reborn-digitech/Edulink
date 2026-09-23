@@ -10,6 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { OfficeAdmissionsCard } from "./admissions";
 import { FilingsCard } from "./filings";
+import { OfficePenChangesCard } from "../shared/pupil-record";
 import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
 import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 
@@ -72,6 +73,8 @@ function Overview({ d }: { d: PrincipalOverview }) {
           onPress={() => router.push("/(app)/leave" as never)}
         />
       </Card>
+      {/* Corrections to pupils' PENs waiting for the head's word: settled on the pupil's record. */}
+      <OfficePenChangesCard />
       <SyllabusCard d={d} />
       {/* While an admission cycle is open: the pipeline's counts; the card asks for the cycles itself. */}
       <OfficeAdmissionsCard />

@@ -25,7 +25,7 @@ const OVERVIEW = {
 
 describe("the guardian's overview", () => {
   const RECORD_PATH = "/api/v1/family/record";
-  const record = (missing: string[]) => ({ studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: null, birthdate: "2016-03-14", record: null, missing, missingForFiling: [], complete: missing.length === 0, canEdit: true });
+  const record = (missing: string[]) => ({ studentMembershipId: ID.child, studentName: "ZZ Asha", className: "ZZ 5A", studentCode: null, birthdate: "2016-03-14", record: null, missing, missingForFiling: [], complete: missing.length === 0, canEdit: true, penEditable: false, penChange: null });
 
   it("nudges to complete the school record while a certificate field is blank, for the child on screen, and not once it is complete", async () => {
     const { fetch } = await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record(["fatherName", "admissionDate"]) });
@@ -40,6 +40,20 @@ describe("the guardian's overview", () => {
     await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record([]) });
     await screen.findByText("ZZ Asha was marked present");
     expect(screen.queryByText("Complete the school record")).toBeNull();
+  });
+
+  const PEN_CHANGES = "/api/v1/family/pen-changes";
+  const change = { id: "pc1", studentMembershipId: ID.child2, studentName: "ZZ Bela", className: "ZZ 3B", fromPen: "27250100101", toPen: "27250100102", reason: "Two digits swapped", status: "PENDING", requestedByName: "ZZ Admin", principal: { decided: false, approved: null, by: null }, guardian: { decided: false, approved: null, by: null, waived: false }, decisionReason: null, can: { decide: true, withdraw: false }, createdAt: "2026-09-20T05:00:00.000Z", appliedAt: null };
+
+  it("while a correction to a child's PEN waits for the guardian's word, names the child and opens that child's record; nothing when none waits", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record([]), [PEN_CHANGES]: () => ({ items: [change], pending: 1 }) });
+    expect(await screen.findByText("PEN corrections")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "A correction to ZZ Bela\u2019s PEN needs your approval, 1 waiting" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/record", params: { child: ID.child2 } });
+    mockRouter.push.mockClear();
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW, [RECORD_PATH]: () => record([]), [PEN_CHANGES]: () => ({ items: [{ ...change, status: "APPLIED", can: { decide: false, withdraw: false } }], pending: 0 }) });
+    await screen.findByText("ZZ Asha was marked present");
+    expect(screen.queryByText("PEN corrections")).toBeNull();
   });
 
   it("is loading while the overview is on its way", async () => {

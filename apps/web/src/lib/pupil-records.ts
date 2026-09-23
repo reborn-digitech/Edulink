@@ -8,6 +8,7 @@ import { REQUIRED_RECORD_FIELDS } from "./certificate-rules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { assignPen, normalisePen } from "./pen";
+import { pendingPenChange } from "./pen-changes";
 
 /**
  * The pupil record: the identity and admission details a certificate names.
@@ -89,7 +90,8 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
   // The PEN is the account's; a record that has not caught up shows it anyway.
   const merged = record ? { ...record, penNumber: viewer.accountPen ?? record.penNumber } : viewer.accountPen ? ({ ...EMPTY_RECORD, penNumber: viewer.accountPen } as RecordRow) : null;
   const missing = missingFields(merged);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit };
+  const penChange = await pendingPenChange(ctx, studentMembershipId);
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
 }
 
 /** Writes the whole record. A blank clears the field. The family's write is dated so the office sees who filled it. */
@@ -97,9 +99,24 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   const viewer = await admit(ctx, studentMembershipId);
   if (!viewer.canEdit) throw new AccessError("access.notAllowed");
   const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
-  // The PEN goes on the account — eleven digits, one pupil each — before the record mirrors it.
-  const pen = input.penNumber === undefined ? undefined : normalisePen(input.penNumber);
-  if (pen !== undefined) await assignPen(viewer.studentUserId, pen);
+  // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
+  // principal reads it, and a correction after the first entry goes through a change request
+  // the head and a guardian both approve (pen-changes.ts).
+  let pen: string | null | undefined = undefined;
+  if (input.penNumber !== undefined) {
+    const wanted = normalisePen(input.penNumber);
+    if (ctx.role !== "ADMIN") {
+      if ((wanted ?? null) !== (viewer.accountPen ?? null)) throw new AccessError("pupilRecord.penOnlyAdmin");
+    } else if (viewer.accountPen && wanted !== viewer.accountPen) {
+      throw new AccessError("pupilRecord.penChangeNeedsApproval");
+    } else if (!viewer.accountPen && wanted) {
+      await assignPen(viewer.studentUserId, wanted);
+      await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pen.set", targetType: "Membership", targetId: studentMembershipId });
+      pen = wanted;
+    } else {
+      pen = viewer.accountPen ?? null;
+    }
+  }
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality: text(input.nationality), religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue: text(input.motherTongue),
     addressLine: text(input.addressLine), city: text(input.city), postalCode: text(input.postalCode), admissionNumber: text(input.admissionNumber),

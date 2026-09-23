@@ -1048,6 +1048,11 @@ export async function buildCertificates(school: { id: string; name: string; code
       requests += 1;
     }
   }
+  // One PEN correction awaiting the head and the family on the first pupil, so the approval pages have a row and the sweep a request to decide.
+  await db.penChangeRequest.deleteMany({ where: { schoolId: school.id } });
+  if (roll[0]) {
+    await db.penChangeRequest.create({ data: { schoolId: school.id, studentMembershipId: roll[0].studentMembershipId, fromPen: fakePen(roll[0].studentMembershipId), toPen: fakePen(`${roll[0].studentMembershipId}:corrected`), reason: "Two digits were swapped when the number was typed in; the UDISE+ portal shows the corrected one.", requestedByUserId: adminUserId, guardianWaived: !(await db.guardianship.findFirst({ where: { studentMembershipId: roll[0].studentMembershipId, status: "ACTIVE" }, select: { id: true } })) } });
+  }
   // The asks: a pending bonafide from the second pupil (the queue on the issue page), a declined study certificate from the third, and a cancelled one from the first — so the sweep's cancel and decline are no-ops.
   const requestSpecs: CertRequestSpec[] = opts.requests ?? [
     { pupil: 1, kind: "BONAFIDE", purpose: "a bus pass" },

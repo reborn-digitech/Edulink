@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { PupilRecordForm } from "@/components/pupil-record-form";
+import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -58,6 +59,8 @@ export default async function ParentRecordPage({ searchParams }: { searchParams:
           <PupilRecordForm key={`${selectedId}-${view.record?.updatedAt ?? "new"}`} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} />
         </CardBody>
       </Card>
+      {/* A correction to the child's PEN the office has proposed: the guardian's word is one of the two it needs. */}
+      <PupilRecordPenChange key={`pen-${selectedId}-${view.penChange?.id ?? "none"}`} view={view} role="PARENT" />
     </div>
   );
 }

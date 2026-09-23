@@ -8,7 +8,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { must, Refusal } from "../staff/shared";
-import { fieldList, PupilRecordForm } from "../shared/pupil-record";
+import { fieldList, PenChangeSection, PupilRecordForm } from "../shared/pupil-record";
 import { ChildLeftBanner, ChildSwitcher, childQuery, param } from "./shared";
 
 const PATH = "/api/v1/family/record";
@@ -90,6 +90,8 @@ export function FamilyRecord() {
           onSave={(body) => save.mutate(body)}
         />
       ) : null}
+      {/* A correction to the PEN the office has proposed: the guardian's word is one of the two it needs; the pupil reads where it stands. */}
+      {d ? <PenChangeSection key={`pen-${d.studentMembershipId}-${d.penChange?.id ?? "none"}`} view={d} recordKey={key} /> : null}
     </Screen>
   );
 }

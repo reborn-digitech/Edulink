@@ -11,6 +11,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
 import { PupilRecordForm } from "@/components/pupil-record-form";
+import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -60,9 +61,11 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
           }
         />
         <CardBody>
-          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} />
+          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} admin={ctx.role === "ADMIN"} />
         </CardBody>
       </Card>
+      {/* The PEN correction: the admin's door to proposing one, or the pending one the head decides here. */}
+      <PupilRecordPenChange view={view} role={ctx.role === "ADMIN" ? "ADMIN" : "PRINCIPAL"} />
     </div>
   );
 }

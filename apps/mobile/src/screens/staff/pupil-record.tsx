@@ -8,7 +8,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { PupilRecordForm } from "../shared/pupil-record";
+import { PenChangeSection, PupilRecordForm } from "../shared/pupil-record";
 import { must, Refusal } from "./shared";
 
 /**
@@ -69,6 +69,8 @@ export function OfficePupilRecord() {
           }
         />
       ) : null}
+      {/* The PEN correction: the admin's door to proposing one, or the pending one the head decides here. */}
+      {d ? <PenChangeSection key={`pen-${d.penChange?.id ?? "none"}`} view={d} recordKey={key} /> : null}
     </Screen>
   );
 }

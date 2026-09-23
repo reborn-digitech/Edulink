@@ -145,6 +145,40 @@ export const pupilRecordSchema = z.object({
   updatedAt: iso.nullable(),
 });
 
+/* -------------------------------------------------------------------------- */
+/* PEN change requests                                                          */
+/* -------------------------------------------------------------------------- */
+
+export const penChangeStatusSchema = z.enum(["PENDING", "APPLIED", "REJECTED", "WITHDRAWN"]);
+export type PenChangeStatus = z.infer<typeof penChangeStatusSchema>;
+/** POST /api/v1/office/pupil-records/{membershipId}/pen-change — the admin proposes; null removes the number. */
+export const penChangeProposeSchema = z.object({
+  toPen: z.string().trim().regex(/^\d{11}$/, "pen").nullable(),
+  reason: z.string().trim().min(1).max(400),
+});
+export const penChangeDecideSchema = z.object({ approve: z.boolean(), reason: z.string().trim().max(400).optional() });
+export const penChangeRequestSchema = z.object({
+  id: z.string(),
+  studentMembershipId: z.string(),
+  studentName: z.string(),
+  className: z.string().nullable(),
+  fromPen: z.string().nullable(),
+  toPen: z.string().nullable(),
+  reason: z.string(),
+  status: penChangeStatusSchema,
+  requestedByName: z.string(),
+  principal: z.object({ decided: z.boolean(), approved: z.boolean().nullable(), by: z.string().nullable() }),
+  guardian: z.object({ decided: z.boolean(), approved: z.boolean().nullable(), by: z.string().nullable(), waived: z.boolean() }),
+  decisionReason: z.string().nullable(),
+  /** What this reader may do: the head decides, a guardian decides, the admin withdraws. */
+  can: z.object({ decide: z.boolean(), withdraw: z.boolean() }),
+  createdAt: iso,
+  appliedAt: iso.nullable(),
+});
+export type PenChangeRequestView = z.infer<typeof penChangeRequestSchema>;
+export const penChangesListSchema = z.object({ items: z.array(penChangeRequestSchema), pending: count });
+export const penChangesQuerySchema = z.object({ status: penChangeStatusSchema.optional() });
+
 /** GET /api/v1/family/record?childId= and /api/v1/office/pupil-records/{membershipId}. */
 export const pupilRecordViewSchema = z.object({
   studentMembershipId: z.string(),
@@ -159,6 +193,10 @@ export const pupilRecordViewSchema = z.object({
   missingForFiling: z.array(pupilRecordFieldSchema),
   complete: z.boolean(),
   canEdit: z.boolean(),
+  /** True only for an admin while the account has no PEN: the first entry. A correction goes through a change request. */
+  penEditable: z.boolean(),
+  /** The pending correction to the PEN, if any, and what this reader may do about it. */
+  penChange: penChangeRequestSchema.nullable(),
 });
 export type PupilRecordView = z.infer<typeof pupilRecordViewSchema>;
 

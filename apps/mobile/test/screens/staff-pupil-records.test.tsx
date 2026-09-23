@@ -171,6 +171,8 @@ const VIEW = {
   complete: false,
   missingForFiling: ["gender"],
   canEdit: true,
+  penEditable: true,
+  penChange: null,
 };
 
 describe("one pupil's record for the office", () => {
@@ -190,6 +192,9 @@ describe("one pupil's record for the office", () => {
       },
     );
     expect(await screen.findByText("9 missing")).toBeTruthy();
+    // No PEN on the account yet: the admin types the first entry on the form, and there is no correction to propose.
+    expect(screen.getByLabelText("UDISE+ PEN").props.value).toBe("");
+    expect(screen.queryByText("Propose a correction to the PEN")).toBeNull();
     expect(screen.getByText("Still blank for the UDISE+ filing: Gender")).toBeTruthy();
     expect(screen.getByText("The details a school certificate names: the parents, the place of birth, the admission register, the last school. The family fills them in once; the office may correct them.")).toBeTruthy();
     await fireEvent.changeText(screen.getByLabelText("Father's name"), "ZZ Ravi");
@@ -197,11 +202,98 @@ describe("one pupil's record for the office", () => {
     await fireEvent.press(within(screen.getByLabelText("Economically weaker section or disadvantaged group")).getByRole("radio", { name: "No" }));
     await fireEvent.press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(calls().some((c) => c.line === `POST ${PATH}/${ASHA}`)).toBe(true));
-    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null, gender: "M", ews: "no", bpl: "", cwsnType: "", bloodGroup: "" });
+    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null, penNumber: "", gender: "M", ews: "no", bpl: "", cwsnType: "", bloodGroup: "" });
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("1 missing")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Issue a certificate" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/certificate-issue", params: { membershipId: ASHA } });
+  });
+
+  const RECORD = { fatherName: "ZZ Ravi", motherName: "ZZ Meera", placeOfBirth: "Pune", nationality: "Indian", religion: null, caste: null, category: null, motherTongue: "Marathi", addressLine: "1 ZZ Road", city: "Pune", postalCode: null, admissionNumber: "GR-1", admissionDate: "2023-06-01", admittedToGrade: null, previousSchool: null, penNumber: "27250100101", gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, requestedAt: null, familyFilledAt: null, updatedAt: "2026-09-10T05:00:00.000Z" };
+  const LOCKED = { ...VIEW, record: RECORD, missing: [], complete: true, penEditable: false };
+  const CHANGE = { id: "pc1", studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A", fromPen: "27250100101", toPen: "27250100102", reason: "Two digits swapped", status: "PENDING", requestedByName: "ZZ Admin", principal: { decided: false, approved: null, by: null }, guardian: { decided: false, approved: null, by: null, waived: true }, decisionReason: null, can: { decide: false, withdraw: true }, createdAt: "2026-09-20T05:00:00.000Z", appliedAt: null };
+  const PROPOSE = `POST ${PATH}/${ASHA}/pen-change`;
+  const DECIDE = "POST /api/v1/office/pen-changes/pc1/decide";
+  const WITHDRAW = "POST /api/v1/office/pen-changes/pc1/withdraw";
+  const mount = (role: "ADMIN" | "PRINCIPAL", view: unknown, extra: Record<string, (r: { init: RequestInit }) => Response> = {}) => {
+    mockRouter.params = { membershipId: ASHA };
+    return mountStaff(
+      <ToastProvider>
+        <OfficePupilRecord />
+      </ToastProvider>,
+      role,
+      { [`GET ${PATH}/${ASHA}`]: () => json(view), ...extra },
+    );
+  };
+
+  it("with a PEN on the account, the admin reads it locked, leaves it out of the record they save, and proposes a corrected number with a reason", async () => {
+    const { calls } = await mount("ADMIN", LOCKED, {
+      [`POST ${PATH}/${ASHA}`]: ({ init }) => json({ ...LOCKED, record: { ...RECORD, ...(JSON.parse(String(init.body)) as object) } }),
+      [PROPOSE]: ({ init }) => json({ ...CHANGE, toPen: (JSON.parse(String(init.body)) as { toPen: string | null }).toPen }),
+    });
+    expect(await screen.findByText("27250100101")).toBeTruthy();
+    expect(screen.getByText("Entered by the school office once; a correction needs the principal and a guardian to agree.")).toBeTruthy();
+    expect(screen.queryByLabelText("UDISE+ PEN")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Save the record" }));
+    await waitFor(() => expect(calls().some((c) => c.line === `POST ${PATH}/${ASHA}`)).toBe(true));
+    expect(calls().find((c) => c.line === `POST ${PATH}/${ASHA}`)!.body).not.toHaveProperty("penNumber");
+    // The proposal: a wrong shape is said under the field and nothing is sent until it is right and the reason is there.
+    expect(screen.getByText("Propose a correction to the PEN")).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Corrected PEN"), "123");
+    expect(screen.getByText("A PEN is eleven digits.")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Send for approval" }).props.accessibilityState.disabled).toBe(true);
+    await fireEvent.changeText(screen.getByLabelText("Corrected PEN"), "27250 100102");
+    await fireEvent.changeText(screen.getByLabelText("Why"), "Two digits swapped");
+    await fireEvent.press(screen.getByRole("button", { name: "Send for approval" }));
+    await waitFor(() => expect(calls().some((c) => c.line === PROPOSE)).toBe(true));
+    expect(calls().find((c) => c.line === PROPOSE)!.body).toEqual({ toPen: "27250100102", reason: "Two digits swapped" });
+    expect(await screen.findByText("Proposed. The principal and the family have been told.")).toBeTruthy();
+  });
+
+  it("Remove the number instead proposes a null PEN", async () => {
+    const { calls } = await mount("ADMIN", LOCKED, { [PROPOSE]: () => json({ ...CHANGE, toPen: null }) });
+    await screen.findByText("27250100101");
+    await fireEvent.press(screen.getByRole("switch", { name: "Remove the number instead" }));
+    await fireEvent.changeText(screen.getByLabelText("Why"), "Belongs to another child");
+    await fireEvent.press(screen.getByRole("button", { name: "Send for approval" }));
+    await waitFor(() => expect(calls().some((c) => c.line === PROPOSE)).toBe(true));
+    expect(calls().find((c) => c.line === PROPOSE)!.body).toEqual({ toPen: null, reason: "Belongs to another child" });
+  });
+
+  it("a pending correction shows both words and the admin's Withdraw, which posts and says so; with no guardian the row says the head's word settles it", async () => {
+    const { calls } = await mount("ADMIN", { ...LOCKED, penChange: CHANGE }, { [WITHDRAW]: () => json({ ...CHANGE, status: "WITHDRAWN", can: { decide: false, withdraw: false } }) });
+    expect(await screen.findByText("PEN correction awaiting approval")).toBeTruthy();
+    expect(screen.getByText("From 27250100101 to 27250100102")).toBeTruthy();
+    expect(screen.getByText("Waiting")).toBeTruthy();
+    expect(screen.getByText("No guardian linked; the principal\u2019s word settles it")).toBeTruthy();
+    expect(screen.queryByText("Propose a correction to the PEN")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Approve" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw" }));
+    await waitFor(() => expect(calls().some((c) => c.line === WITHDRAW)).toBe(true));
+    expect(await screen.findByText("Proposal withdrawn.")).toBeTruthy();
+  });
+
+  it("the head approves with one press and rejects with a reason, each posting the office's decision", async () => {
+    const head = { ...CHANGE, can: { decide: true, withdraw: false } };
+    const { calls } = await mount("PRINCIPAL", { ...LOCKED, penChange: head }, { [DECIDE]: ({ init }) => json({ ...head, principal: { decided: true, approved: (JSON.parse(String(init.body)) as { approve: boolean }).approve, by: "ZZ Head" }, can: { decide: false, withdraw: false } }) });
+    await screen.findByText("PEN correction awaiting approval");
+    // The head neither types the number nor proposes: the field is locked with the family's note.
+    expect(screen.getByText("Entered by the school office. A correction needs the principal and a guardian to agree.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Withdraw" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Approve" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === DECIDE)).toHaveLength(1));
+    expect(calls().find((c) => c.line === DECIDE)!.body).toEqual({ approve: true });
+    expect(await screen.findByText("Your decision is recorded.")).toBeTruthy();
+  });
+
+  it("the head's rejection carries the reason typed", async () => {
+    const head = { ...CHANGE, can: { decide: true, withdraw: false } };
+    const { calls } = await mount("PRINCIPAL", { ...LOCKED, penChange: head }, { [DECIDE]: () => json({ ...head, status: "REJECTED", principal: { decided: true, approved: false, by: "ZZ Head" }, decisionReason: "Not this one", can: { decide: false, withdraw: false } }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Reject" }));
+    await fireEvent.changeText(screen.getByLabelText("Why not"), "Not this one");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Reject" }).at(-1)!);
+    await waitFor(() => expect(calls().filter((c) => c.line === DECIDE)).toHaveLength(1));
+    expect(calls().find((c) => c.line === DECIDE)!.body).toEqual({ approve: false, reason: "Not this one" });
   });
 
   it("opened with no pupil, offers the list", async () => {

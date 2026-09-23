@@ -54684,6 +54684,148 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "penEditable": {
+                      "type": "boolean"
+                    },
+                    "penChange": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fromPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "toPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "principal": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "guardian": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "waived": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by",
+                            "waived"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "decisionReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        },
+                        "appliedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "fromPen",
+                        "toPen",
+                        "reason",
+                        "status",
+                        "requestedByName",
+                        "principal",
+                        "guardian",
+                        "decisionReason",
+                        "can",
+                        "createdAt",
+                        "appliedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -54696,7 +54838,9 @@
                     "missing",
                     "missingForFiling",
                     "complete",
-                    "canEdit"
+                    "canEdit",
+                    "penEditable",
+                    "penChange"
                   ],
                   "additionalProperties": false
                 }
@@ -54994,6 +55138,148 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "penEditable": {
+                      "type": "boolean"
+                    },
+                    "penChange": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fromPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "toPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "principal": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "guardian": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "waived": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by",
+                            "waived"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "decisionReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        },
+                        "appliedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "fromPen",
+                        "toPen",
+                        "reason",
+                        "status",
+                        "requestedByName",
+                        "principal",
+                        "guardian",
+                        "decisionReason",
+                        "can",
+                        "createdAt",
+                        "appliedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -55006,7 +55292,9 @@
                     "missing",
                     "missingForFiling",
                     "complete",
-                    "canEdit"
+                    "canEdit",
+                    "penEditable",
+                    "penChange"
                   ],
                   "additionalProperties": false
                 }
@@ -56804,6 +57092,148 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "penEditable": {
+                      "type": "boolean"
+                    },
+                    "penChange": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fromPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "toPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "principal": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "guardian": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "waived": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by",
+                            "waived"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "decisionReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        },
+                        "appliedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "fromPen",
+                        "toPen",
+                        "reason",
+                        "status",
+                        "requestedByName",
+                        "principal",
+                        "guardian",
+                        "decisionReason",
+                        "can",
+                        "createdAt",
+                        "appliedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -56816,7 +57246,9 @@
                     "missing",
                     "missingForFiling",
                     "complete",
-                    "canEdit"
+                    "canEdit",
+                    "penEditable",
+                    "penChange"
                   ],
                   "additionalProperties": false
                 }
@@ -57121,6 +57553,148 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "penEditable": {
+                      "type": "boolean"
+                    },
+                    "penChange": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "fromPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "toPen": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "principal": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "guardian": {
+                          "type": "object",
+                          "properties": {
+                            "decided": {
+                              "type": "boolean"
+                            },
+                            "approved": {
+                              "type": "boolean",
+                              "nullable": true
+                            },
+                            "by": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "waived": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decided",
+                            "approved",
+                            "by",
+                            "waived"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "decisionReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        },
+                        "appliedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "fromPen",
+                        "toPen",
+                        "reason",
+                        "status",
+                        "requestedByName",
+                        "principal",
+                        "guardian",
+                        "decisionReason",
+                        "can",
+                        "createdAt",
+                        "appliedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -57133,7 +57707,9 @@
                     "missing",
                     "missingForFiling",
                     "complete",
-                    "canEdit"
+                    "canEdit",
+                    "penEditable",
+                    "penChange"
                   ],
                   "additionalProperties": false
                 }
@@ -57487,6 +58063,1388 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/office/pupil-records/{membershipId}/pen-change": {
+      "post": {
+        "summary": "The admin proposes a correction to a pupil's PEN with a reason (null removes it); the head and a guardian must both approve before it changes; one pending proposal per pupil",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fromPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "toPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "principal": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "guardian": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "waived": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by",
+                        "waived"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "decisionReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "appliedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "fromPen",
+                    "toPen",
+                    "reason",
+                    "status",
+                    "requestedByName",
+                    "principal",
+                    "guardian",
+                    "decisionReason",
+                    "can",
+                    "createdAt",
+                    "appliedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "toPen": {
+                    "type": "string",
+                    "pattern": "^\\d{11}$",
+                    "nullable": true
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "toPen",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/pen-changes": {
+      "get": {
+        "summary": "The school's PEN change requests, pending first (?status=)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "fromPen": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "toPen": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPLIED",
+                              "REJECTED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "principal": {
+                            "type": "object",
+                            "properties": {
+                              "decided": {
+                                "type": "boolean"
+                              },
+                              "approved": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "by": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "decided",
+                              "approved",
+                              "by"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "guardian": {
+                            "type": "object",
+                            "properties": {
+                              "decided": {
+                                "type": "boolean"
+                              },
+                              "approved": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "by": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "waived": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decided",
+                              "approved",
+                              "by",
+                              "waived"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "decisionReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              },
+                              "withdraw": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide",
+                              "withdraw"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "appliedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "fromPen",
+                          "toPen",
+                          "reason",
+                          "status",
+                          "requestedByName",
+                          "principal",
+                          "guardian",
+                          "decisionReason",
+                          "can",
+                          "createdAt",
+                          "appliedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "pending": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "pending"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PENDING",
+                      "APPLIED",
+                      "REJECTED",
+                      "WITHDRAWN"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/pen-changes/{requestId}/decide": {
+      "post": {
+        "summary": "The head approves or rejects a PEN change; the same decision again changes nothing",
+        "description": "Roles: PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fromPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "toPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "principal": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "guardian": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "waived": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by",
+                        "waived"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "decisionReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "appliedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "fromPen",
+                    "toPen",
+                    "reason",
+                    "status",
+                    "requestedByName",
+                    "principal",
+                    "guardian",
+                    "decisionReason",
+                    "can",
+                    "createdAt",
+                    "appliedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approve": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "approve"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/pen-changes/{requestId}/withdraw": {
+      "post": {
+        "summary": "The admin takes a pending proposal back; a settled one is answered as it stands",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fromPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "toPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "principal": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "guardian": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "waived": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by",
+                        "waived"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "decisionReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "appliedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "fromPen",
+                    "toPen",
+                    "reason",
+                    "status",
+                    "requestedByName",
+                    "principal",
+                    "guardian",
+                    "decisionReason",
+                    "can",
+                    "createdAt",
+                    "appliedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/family/pen-changes": {
+      "get": {
+        "summary": "The PEN changes proposed for a guardian's children that await their word, and the settled ones",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "fromPen": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "toPen": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPLIED",
+                              "REJECTED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "principal": {
+                            "type": "object",
+                            "properties": {
+                              "decided": {
+                                "type": "boolean"
+                              },
+                              "approved": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "by": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "decided",
+                              "approved",
+                              "by"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "guardian": {
+                            "type": "object",
+                            "properties": {
+                              "decided": {
+                                "type": "boolean"
+                              },
+                              "approved": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "by": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "waived": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decided",
+                              "approved",
+                              "by",
+                              "waived"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "decisionReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              },
+                              "withdraw": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide",
+                              "withdraw"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "appliedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "fromPen",
+                          "toPen",
+                          "reason",
+                          "status",
+                          "requestedByName",
+                          "principal",
+                          "guardian",
+                          "decisionReason",
+                          "can",
+                          "createdAt",
+                          "appliedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "pending": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "pending"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/family/pen-changes/{requestId}/decide": {
+      "post": {
+        "summary": "A guardian approves or rejects a PEN change for their child; the same decision again changes nothing",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "fromPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "toPen": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "principal": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "guardian": {
+                      "type": "object",
+                      "properties": {
+                        "decided": {
+                          "type": "boolean"
+                        },
+                        "approved": {
+                          "type": "boolean",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "waived": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decided",
+                        "approved",
+                        "by",
+                        "waived"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "decisionReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "appliedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/createdAt"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "fromPen",
+                    "toPen",
+                    "reason",
+                    "status",
+                    "requestedByName",
+                    "principal",
+                    "guardian",
+                    "decisionReason",
+                    "can",
+                    "createdAt",
+                    "appliedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approve": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "approve"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/office/pupils/by-pen/{pen}": {

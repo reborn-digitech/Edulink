@@ -13,6 +13,7 @@ import { useTheme } from "@/lib/theme";
 import { OfficeAdmissionsCard } from "./admissions";
 import { CertificateRequestsCard } from "./certificate-issue";
 import { FilingsCard } from "./filings";
+import { OfficePenChangesCard } from "../shared/pupil-record";
 import { formatDateKey, pct } from "./shared";
 
 /**
@@ -118,6 +119,8 @@ function Overview({ d }: { d: AdminOverview }) {
       {/* While an admission cycle is open: how many applications wait, are offered and are accepted; the card asks for the cycles itself. */}
       <OfficeAdmissionsCard />
       <CertificateRequestsCard />
+      {/* The PEN corrections the office has proposed and the head or a guardian has yet to settle. */}
+      <OfficePenChangesCard />
       {/* While the filing identity has a blank or a pupil lacks a UDISE+ field: the door to the filings; the card asks for the view itself. */}
       <FilingsCard />
       {d.staffingGap.slots > 0 ? (

@@ -96,8 +96,10 @@ export type SweepFixture = {
   /** A cancelled ask and a declined one, so the sweep's cancel and decline are no-ops. */
   cancelledCertificateRequestId: string | null;
   declinedCertificateRequestId: string | null;
-  /** A ZZ pupil's UDISE+ PEN, for the lookup. */
+  /** A ZZ pupil's UDISE+ PEN, for the lookup; a pending PEN change on the sampled pupil (rejected by the sweep, which is a no-op the second time) and the number the sweep's proposal would carry (the same pending one, so proposing is the same ask). */
   penNumber: string | null;
+  penChangeId: string | null;
+  penChangeToPen: string | null;
   /** Admissions: the open cycle (and its body to send back), a closed empty one for the purge, a grade it takes, the sweep parent's application with its booked sitting, a cancelled sitting, and one application in each settled state. */
   admissionCycleId: string | null;
   admissionCycle: Record<string, unknown> | null;

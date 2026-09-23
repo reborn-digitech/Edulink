@@ -12,6 +12,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { FamilyApplicationsCard } from "./applications";
 import { CompleteRecordCard } from "./record";
+import { FamilyPenChangesCard } from "../shared/pupil-record";
 import { ATTENDANCE, ChildSwitcher, childQuery, ExamMarksCards, formatDateKey, LessonList, Note, param, relativeTime, SectionTitle, StatusBadge } from "./shared";
 
 type Overview = z.infer<typeof familyParentOverviewSchema>;
@@ -125,6 +126,8 @@ function ChildDay({ data }: { data: Overview }) {
 
       {/* While a certificate field is still blank on the child's record, the nudge to fill it; gone once it is complete. */}
       <CompleteRecordCard childId={child.studentMembershipId} />
+      {/* A correction to a child's PEN awaiting this guardian's word — every child's, because the office is waiting on it. */}
+      <FamilyPenChangesCard />
 
       <Card>
         <Text variant="xs" tone="muted" style={{ textTransform: "uppercase" }}>

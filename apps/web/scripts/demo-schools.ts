@@ -629,6 +629,10 @@ async function buildDeshmukh(b: Built, sunita: { id: string }) {
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...record }, update: record });
   await db.user.update({ where: { id: b.deshmukh.userId }, data: { penNumber: record.penNumber } });
+  if (first === "Aarav") {
+    await db.penChangeRequest.deleteMany({ where: { studentMembershipId: b.deshmukh.membershipId } });
+    await db.penChangeRequest.create({ data: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, fromPen: record.penNumber, toPen: fakePen(`${b.deshmukh.membershipId}:corrected`), reason: "The transfer certificate from the previous school shows a different last digit.", requestedByUserId: b.admin.user.id } });
+  }
 }
 
 /* -------------------------------------------------------------------------- */

@@ -9,6 +9,7 @@ import {
   PlusIcon,
   TrophyIcon,
   ClockIcon,
+  IdentificationCardIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
@@ -22,6 +23,7 @@ import { addDaysToKey, formatDateKey, relativeTime, todayKey, weekdayOfKey } fro
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { pupilRecordFor } from "@/lib/pupil-records";
+import { familyPenChanges } from "@/lib/pen-changes";
 import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -169,6 +171,14 @@ export default async function ParentDashboard({
   ]);
 
   const streak = computeStreak(attendance.recent);
+  // A correction to a child's PEN awaiting this guardian's word: every
+  // child's, not just the one on screen, because the office is waiting on
+  // it; the notice opens that child's record, where the decision is made.
+  const penChanges = await familyPenChanges(session).catch((error: unknown) => {
+    console.error("[parent pen changes]", error);
+    return { items: [], pending: 0 };
+  });
+  const penChangeWaiting = penChanges.items.find((item) => item.status === "PENDING" && item.can.decide) ?? null;
 
   // Shared helper — weights by points available, never averages percentages.
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
@@ -224,6 +234,20 @@ export default async function ParentDashboard({
 
 
       <CompleteRecordCard missing={recordMissing} href={`/parent/record?child=${selectedId}`} />
+
+      {penChangeWaiting && (
+        <Card className="border-warn/40" data-testid="pen-change-notice">
+          <Link href={`/parent/record?child=${penChangeWaiting.studentMembershipId}`} className="flex items-center gap-3 p-4">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-warn-soft text-warn">
+              <IdentificationCardIcon weight="duotone" className="size-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-fg">{t("pupilRecord.notifPenProposed", { name: penChangeWaiting.studentName })}</span>
+              <span className="block text-xs text-fg-muted">{t("pupilRecord.penChangeProposedBy", { name: penChangeWaiting.requestedByName })}</span>
+            </span>
+          </Link>
+        </Card>
+      )}
 
       {awaitingConsent.length > 0 && (
         <Card className="border-warn/40">

@@ -228,6 +228,7 @@ model School {
   certificateTemplates CertificateTemplate[]
   issuedCertificates   IssuedCertificate[]
   certificateRequests  CertificateRequest[]
+  penChanges           PenChangeRequest[]
   admissionCycles      AdmissionCycle[]
   applications         Application[]
   entranceSlots        EntranceSlot[]
@@ -464,6 +465,7 @@ model Membership {
   scheduledDeparture     ScheduledDeparture?
   admittedFrom           Application?         @relation("ApplicationAdmitted")
   certificateRequests    CertificateRequest[] @relation("CertificateRequestStudent")
+  penChanges             PenChangeRequest[]
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -4127,6 +4129,42 @@ model CertificateRequest {
   school      School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   student     Membership         @relation("CertificateRequestStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
   certificate IssuedCertificate? @relation(fields: [certificateId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status, createdAt])
+  @@index([studentMembershipId, status])
+}
+
+/// A change to a pupil's PEN once one is on the account: the office proposes
+/// the new number with a reason, the head and a guardian each approve or
+/// reject, and the number changes only when both have approved. The first
+/// entry needs no approval; a correction does, because a wrong PEN on a
+/// transfer certificate follows the child.
+model PenChangeRequest {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  fromPen             String?
+  /// Null = remove the number.
+  toPen               String?
+  reason              String
+  requestedByUserId   String
+  /// PENDING | APPLIED | REJECTED | WITHDRAWN
+  status              String    @default("PENDING")
+  principalDecidedAt  DateTime?
+  principalUserId     String?
+  principalApproved   Boolean?
+  guardianDecidedAt   DateTime?
+  guardianUserId      String?
+  guardianApproved    Boolean?
+  /// True when the pupil had no active guardian at the time, so the head's word settles it.
+  guardianWaived      Boolean   @default(false)
+  decisionReason      String?
+  appliedAt           DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, status, createdAt])
   @@index([studentMembershipId, status])

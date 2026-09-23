@@ -29,7 +29,7 @@ import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
  */
 type FieldGroup = { fields: PupilRecordField[] };
 
-export function PupilRecordForm({ view, required, optional, filing = [] }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[] }) {
+export function PupilRecordForm({ view, required, optional, filing = [], admin = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -64,6 +64,10 @@ export function PupilRecordForm({ view, required, optional, filing = [] }: { vie
     setError(null);
     const input: PupilRecordSave = {};
     for (const f of all) {
+      // The PEN is the admin's to enter once; after that it changes only
+      // through a correction the head and a guardian approve, so a locked
+      // number is not sent back at all.
+      if (f === "penNumber" && !view.penEditable) continue;
       const v = values[f].trim();
       if (f === "admissionDate") input.admissionDate = v || null;
       else (input as Record<string, string>)[f] = v;
@@ -83,6 +87,11 @@ export function PupilRecordForm({ view, required, optional, filing = [] }: { vie
 
   const field = (f: PupilRecordField, hint: string | undefined) => {
     const label = t(`pupilRecord.${f}` as TranslationKey);
+    if (f === "penNumber" && !view.penEditable) {
+      // Shown, never typed: the office entered it once, or has yet to.
+      const locked = values.penNumber ? t(admin ? "pupilRecord.penEnteredBy" : "pupilRecord.penLocked") : t("pupilRecord.penOnlyAdmin");
+      return <TextField key={f} label={label} hint={locked} value={values.penNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
+    }
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setValues((v) => ({ ...v, [f]: e.target.value }));
     if (f === "admissionDate") {
       return <DateField key={f} label={label} hint={hint} required={isRequired(f)} value={values[f]} disabled={readOnly} onChange={onChange} data-testid={`record-${f}`} />;
