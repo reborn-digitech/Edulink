@@ -266,3 +266,154 @@ The audit's checks for items 1, 3, 4 and 5 were tightened from WARN to FAIL. The
 8. Reopen a 100 % concession demand when the concession is revoked; exclude CARRIED from the ledger's paid total; order the demands the receipt year is read from.
 9. Add the collection gaps in section 4 that the school actually files: guardian occupation and income, previous-school TC number and date, roll number, staff date of birth and service start.
 10. Seed last year's registers and the empty tables in section 5 so the demo carries every workflow's data.
+
+## 7. Second pass (2026-09-24): every report and filing, cell by cell, and the inputs behind them
+
+A second suite, `apps/web/tests/data-audit-reports.test.ts` (run by the same `npm run data:audit`, report in
+[reports.md](reports.md)), cuts every sheet the app produces and recomputes it from raw rows: the UDISE+
+student sheet across eighteen coded columns per pupil, the enrolment tables summed back to the roll, the
+teacher profile's codes and both dates, the CBSE and MSBSHSE sheets by pupil and name order, the filings
+readiness counts, the register and enrolment CSVs, the fee collections and outstanding CSVs, the staff month
+CSV and every leave balance, report card papers against the grades, certificate snapshots against the
+account, leaving certificates against the membership, class insights and the progress report over their
+windows, the closed year's archive, the messaging month and every broadcast's counters, the retention
+preview, quiz mastery and competition standings. A final check counts, per school, every input a sheet,
+certificate or receipt needs that is still blank. Run: 18 checks, 0 FAIL, 148 WARN, 69 INFO; with the first
+suite, 47 checks and 0 FAIL.
+
+### What the second pass caught
+
+- **A test that deleted every school's 2025 registers.** `tests/attendance.test.ts` cleaned up with
+  `attendanceSession.deleteMany({ dateKey: { startsWith: "2025-" } })` and no school, so each full battery
+  took the 2025 registers of every school in the database, including the demo schools' last year (the annual
+  cards were left saying 221 of 237 days while the register held 86 of 93). The cleanup is now scoped to the
+  suite's own school and the demo registers were rebuilt. The ZZ simulation schools and Riverside lost their
+  2025 sessions too; the ZZ ones come back with their builders, Riverside's were seed data.
+- **The filings, exports and figures all agree with their rows** for the three audited schools. What the
+  run reports is drift and blanks, not contradictions: two demo leaving certificates whose frozen attendance
+  predates the register that was seeded after them; six pupils per demo school with no gender; 17 of 47 with
+  no guardian and so no phone on the UDISE+ sheet; 35 of 47 without a name in the school's script; every
+  teacher without a phone; ZZ Northgate with 42 pupils filing "Not on record" for category.
+
+### Derived-data gaps still in the reporting code (ranked)
+
+Found by a second read of every report library. File and line as of this commit; none is caught by the
+suite because each needs a row state the fixtures do not hold — the suite's next additions.
+
+**Filings**
+1. `filings.ts:277` — "previous year schooling status" is the platform join date by calendar year: in a
+   school's first year on the app every pupil files as a new admission, and a June admission exported in
+   January files as "was here last year". Use the admission date and the academic year.
+2. `filings.ts:246` — "class attended days" counts marks, not days; a pupil on two registers counts twice.
+3. `filings.ts:374` — the enrolment tables give VJ, NT and SBC rows of their own while the student sheet
+   codes them as OBC, so the two sheets' OBC counts disagree; a grade outside PP/1–12 counts in Total but
+   in no class column.
+4. `filings.ts:310` — grade 1's previous class files "PP", not a portal code (PP1–PP3).
+5. `filings.ts:229` — father's and mother's names never fall back to the linked guardian although the
+   comment says they do; `filings.ts:515` — the Maharashtra middle name never falls back when the father's
+   name is blank (`"".split()[0]` is `""`, so `??` never runs).
+6. `filings.ts:529` — the medium is compared whole to a language name, so "Marathi Medium" codes Marathi as
+   a second language; `filings.ts:136` — any mix of grades outside the listed bands files as "3"; archived
+   classes still count in classes taught (`:410`).
+7. `filings.ts:443` — a designation ("PGT") goes into the DCF's subject column; `filings.ts:478` — every
+   candidate gets every subject the grade teaches, `^math` codes Basic Maths as Standard.
+8. `staff-records.ts:171` — a staff category off the four-code list (VJ, NT) is silently stored as null and
+   the save reports ok.
+9. `filings.ts:58` — a pupil is "ready" without a date of birth, parents' names or a live coded class.
+
+**Attendance**
+10. `attendance-export.ts:38`, `attendance-history.ts:119` — the register CSV and the month grid list
+    today's ACTIVE enrolments, so a past month of an archived class exports no pupils and a mid-month leaver
+    vanishes; a session with no marks shows 0 %, not blank.
+11. `attendance-intel.ts:68` — absence flags include leavers and suspended pupils, and a day on two
+    registers counts twice; an EXCUSED mark resets the run.
+
+**Fees**
+12. `fees-reports.ts:81` vs `:167` — the overview counts leavers' demands; the dues page and the defaulter
+    CSV drop them, so the overview's outstanding is larger than the CSV's.
+13. `fees-reports.ts:184` vs `:102` — dues net across a pupil's demands while the ledger sums each demand,
+    so an overpaid demand hides another's balance on the dues row.
+14. `fees-reports.ts:358` — carry-forward marks PART demands CARRIED, so money already paid on them drops
+    out of every year's paid total; `:268` — "remind now" quotes only the oldest instalment; `:290` —
+    reminders and the OVERDUE_FEES text audience carry no year or roll filter, so leavers' guardians are
+    texted about dues the office cannot see.
+
+**Report cards, archives, insights**
+15. `report-cards.ts:541` — on an "exams" card the overall is marks over maximum, not the mean of the subject
+    rows printed beside it; `report-card-pdf.tsx:76` — the letter comes from the unrounded percent while the
+    percent is rounded (90.96 prints "91.0 % A2").
+16. `report-cards.ts:891`, `certificates.ts:143` — formal papers print the preferred name; the leaving
+    certificate, UDISE+ and the boards print the legal name.
+17. `year-archive.ts:133` — every window ends at 00:00 UTC on the last day, so anything after 05:30 IST that
+    day is dropped; `:306` — the roll counts suspended pupils and uses the platform join date; `:329` —
+    readmission now deletes the departure record, so a closed year's leaver count shrinks later.
+18. `insights.ts:276`, `reports.ts:124` — progress and the pupil's overall are never windowed although the
+    page and the report say they are; only attendance follows the span.
+19. `staff-attendance.ts:288` — the CSV prints marks on closed days that the tallies skip; a teacher who
+    left mid-month disappears from that month; `workingDays` counts the rest of the month while the tallies
+    stop today.
+
+**Certificates and departures**
+20. `certificates.ts:136` — a pupil who left in an earlier year gets "—" for attendance because the window
+    runs from this year's start to the leaving date; `school-record.ts:199` — a backdated leaving date still
+    counts marks after it; `:513` — the TC serial uses the calendar year of the leaving date while every
+    other paper uses the academic year.
+21. `export-file.ts:23` — an eleven-digit PEN or UDISE code and a ten-digit mobile become numeric cells in
+    the workbook; a twelve-digit id would print in scientific notation.
+
+**The same figure, computed differently.** Attendance percent has eight definitions (per mark with EXCUSED
+in the denominator, class-scoped, whole stay, current year to leaving date, marks capped at 250, one decimal
+in one leaving-certificate view and none in the other). The overall grade has four. The pupil's name, the
+class and section, the admission date, the age, the outstanding balance, the category and the serial year
+each have two or more. The suite's cross-report checks are where these should land next.
+
+**Dates in UTC or the server's zone where the school's zone matters:** the UDISE+ join-date fallbacks and
+calendar-year test, the fee month start and the collections range, every year-archive window, the leaving
+date and the TC serial year, the certificate's "issued on" against its own body, the report card's "issued
+on", the messaging daily cap window, the practice month buckets, and admissions' hard-coded Asia/Kolkata.
+
+### Inputs: what a screen collects, what nothing collects
+
+The full column-by-column matrix (model.column, who reads it, where the web and the phone enter it, the
+validation, which readiness list needs it, what happens blank) was built for every column a report reads.
+What it shows:
+
+- **Read but entered nowhere.** The UDISE+ columns with no column in the database (Aadhaar, AAY, alternate
+  mobile, mainstreaming, stream, uniform and textbook, scholarships, SLD/ASD/ADHD, extracurricular,
+  vocational, teacher national code) go out blank by design. Beyond those: a person's **legal name cannot be
+  corrected** once the account exists; the office **cannot enter anyone else's phone** (self-entered with an
+  OTP only), so a school onboarding families by intake has no phone on the UDISE+ sheet until each guardian
+  signs in; a **principal's subjects** cannot be set, only a teacher's.
+- **Entered on the web but not on the phone.** The whole staff record (twelve columns), departures, certificate
+  templates, report card rules, term weights, academic years, fee heads, structures and settings, a teacher's
+  subjects, and the office correcting a pupil's date of birth. Nothing goes the other way.
+- **Free text where the reader wants a code.** Mother tongue (UDISE+ expects a code), nationality (coded by
+  a regex on "india"), PIN code (no six-digit check), admitted-to grade, the school's medium (must equal a
+  bare language name), the affiliation number (fills two boards' different identifiers), designation and
+  staff number (fill coded DCF columns), timetable and profile subjects (regex to three code tables), class
+  grade level when the school's range is not numeric, the academic year's name (part of every serial), and
+  older category and religion values saved before the code lists.
+- **Collected but read by nothing yet.** The occupations, income and the previous school's TC number and
+  date added on the 24th are on the record and both forms; no export prints them. They serve the admission
+  register and the RTE/EWS verification the office does by hand until a sheet asks for them.
+
+### Next steps, in order
+
+1. Fix the "previous year" status and class on the UDISE+ sheet from the admission date and the academic
+   year (items 1, 4), count attended days by day (2), and make the enrolment tables code VJ/NT/SBC as OBC (3).
+2. Give the office a way to enter a guardian's phone and correct a legal name, and the phone a staff record
+   editor; these are the three input gaps the matrix shows with no path at all.
+3. Windowed progress on the insights page and the progress report (18); one attendance definition, or a
+   named one per document, with the label saying which (marks, days, class-scoped).
+4. Fees: one definition of outstanding across the overview, dues, ledger and texts, with leavers in or out
+   everywhere (12–14).
+5. Timezone: the year archive's windows, the fee month and range, the leaving date and TC serial year, both
+   "issued on" stamps (17, 20, and the UTC list).
+6. Validate the coded feeds at entry: mother tongue and nationality as lists, PIN as six digits, the medium
+   as a language, the staff category on the same list the pupil's uses (8, and the free-text list).
+7. Register CSV and month grid from the enrolments of the month, not today's (10); staff month CSV on open
+   days only (19).
+8. The name on formal papers: decide legal or preferred, and print one (16).
+9. Store the PEN, UDISE code and phones as text cells in the workbook (21).
+10. Extend the suite with the row states above (a two-register day, a leaver with a demand, a first-year
+    school, a "Marathi Medium" school) so each of these fails on its own once fixed.

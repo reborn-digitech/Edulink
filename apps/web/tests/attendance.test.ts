@@ -89,10 +89,12 @@ afterAll(async () => {
  * clear of the seed's rolling two-week window.
  */
 async function cleanSyntheticData() {
+  const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" }, select: { id: true } });
+  // Scoped to this suite's school: an unscoped delete by date once took every school's 2025 registers with it (2026-09-24).
   await db.attendanceRecord.deleteMany({
-    where: { session: { dateKey: { startsWith: "2025-" } } },
+    where: { session: { schoolId: riverside.id, dateKey: { startsWith: "2025-" } } },
   });
-  await db.attendanceSession.deleteMany({ where: { dateKey: { startsWith: "2025-" } } });
+  await db.attendanceSession.deleteMany({ where: { schoolId: riverside.id, dateKey: { startsWith: "2025-" } } });
   // Belt and braces: any cross-tenant row a regression might have written.
   await db.attendanceRecord.deleteMany({
     where: { schoolId: fx.schoolId, student: { schoolId: fx.otherSchoolId } },

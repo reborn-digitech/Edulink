@@ -56,7 +56,7 @@
     "appadmin": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-app-admin.ts",
     "guardians:backfill": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/backfill-standin-guardians.ts",
     "i18n": "tsx scripts/i18n-audit.ts",
-    "data:audit": "DATA_AUDIT=1 vitest run tests/data-audit.test.ts",
+    "data:audit": "DATA_AUDIT=1 vitest run tests/data-audit.test.ts tests/data-audit-reports.test.ts",
     "battery": "npm run typecheck && NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit -p scripts/tsconfig.json && eslint . && vitest run && npm run rls:verify && npm run quiz:verify && npm run i18n && npm run sweep"
   },
   "dependencies": {

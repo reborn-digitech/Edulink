@@ -1,14 +1,16 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-24T02:35:59.327Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 1 WARN · 20 INFO
+Run: 2026-09-24T07:04:36.061Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 20 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
-## WARN (1)
+## WARN (3)
 
 | check | school | detail |
 |---|---|---|
 | report-card | ZZ Northgate School | 6 card(s) carry no subjects/scale snapshot and render with today's config |
+| fees-api | Saraswati Vidya Mandir | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
+| fees-api | Sunrise Public School | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 
 ## INFO (20)
 
