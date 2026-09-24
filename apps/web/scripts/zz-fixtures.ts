@@ -773,7 +773,13 @@ export async function buildStaffAttendance(school: { id: string }, adminUserId: 
     }
   }
   if (teachers[0]) {
-    await db.staffAttendance.upsert({ where: { membershipId_dateKey: { membershipId: teachers[0].id, dateKey: today } }, create: { schoolId: school.id, membershipId: teachers[0].id, dateKey: today, status: "PRESENT", source: "SELF", checkedInAt: new Date(), markedByUserId: adminUserId }, update: {} });
+    // A self check-in at the moment the fixture runs, marked the way the app marks it: late once past the school's start plus grace.
+    const checkedInAt = new Date();
+    const settings = await db.school.findUniqueOrThrow({ where: { id: school.id }, select: { timezone: true, staffCheckInMinute: true, staffLateGraceMinutes: true } });
+    const parts = new Intl.DateTimeFormat("en-GB", { timeZone: settings.timezone, hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(checkedInAt);
+    const minute = (Number(parts.find((x) => x.type === "hour")?.value ?? 0) % 24) * 60 + Number(parts.find((x) => x.type === "minute")?.value ?? 0);
+    const selfStatus = minute > settings.staffCheckInMinute + settings.staffLateGraceMinutes ? "LATE" : "PRESENT";
+    await db.staffAttendance.upsert({ where: { membershipId_dateKey: { membershipId: teachers[0].id, dateKey: today } }, create: { schoolId: school.id, membershipId: teachers[0].id, dateKey: today, status: selfStatus, source: "SELF", checkedInAt, markedByUserId: adminUserId }, update: { status: selfStatus, source: "SELF", checkedInAt } });
   }
   return { marked: n, staff: staff.length };
 }
@@ -886,8 +892,11 @@ export async function buildExams(school: { id: string }, adminUserId: string, op
         status,
         fromDateKey: term1.startDate.toISOString().slice(0, 10),
         toDateKey: term1.endDate.toISOString().slice(0, 10),
-        attendancePresent: 0,
-        attendanceTotal: 0,
+        // The register between the card's dates, as the generator counts it: late is there, excused is in the total.
+        ...(await (async () => {
+          const marks = await db.attendanceRecord.findMany({ where: { schoolId: school.id, studentMembershipId: row.studentMembershipId, session: { dateKey: { gte: term1.startDate.toISOString().slice(0, 10), lte: term1.endDate.toISOString().slice(0, 10) } } }, select: { status: true } });
+          return { attendancePresent: marks.filter((m) => m.status === "PRESENT" || m.status === "LATE").length, attendanceTotal: marks.length };
+        })()),
         overallPercentMilli: overall === null ? null : Math.round(overall * 1000),
         gradingMethod: "weighted",
         overallLetter: bandFor(overall, config.bands)?.label ?? null,
