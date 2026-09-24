@@ -115,6 +115,102 @@ export function studentName(index: number): string {
 }
 
 /* -------------------------------------------------------------------------- */
+/* record vocabularies                                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Category and religion are CODED values on the pupil record (the filing
+ * sheets code them; see @edulink/contracts PUPIL_CATEGORIES and
+ * PUPIL_RELIGIONS). The builders write only these, never "General" or "Hindu",
+ * and a caste name plausible for the category and the state. A record that is
+ * not Hindu carries no caste.
+ */
+const CATEGORY_CYCLE = ["GENERAL", "OBC", "GENERAL", "SC", "OBC", "GENERAL", "NT", "OBC", "ST", "GENERAL", "VJ", "SBC"] as const;
+const RELIGION_CYCLE = ["HINDU", "HINDU", "HINDU", "MUSLIM", "HINDU", "HINDU", "CHRISTIAN", "HINDU", "BUDDHIST", "HINDU", "JAIN", "HINDU"] as const;
+const CASTES: Record<string, string[]> = {
+  GENERAL: ["Maratha", "Deshastha Brahmin", "Kayastha", "Lingayat"],
+  OBC: ["Kunbi", "Mali", "Teli", "Sonar"],
+  SC: ["Mahar", "Chambhar", "Matang"],
+  ST: ["Bhil", "Gond", "Warli"],
+  VJ: ["Banjara", "Lamani"],
+  NT: ["Dhangar", "Vanjari", "Gosavi"],
+  SBC: ["Koli"],
+};
+const FATHER_OCCUPATIONS = ["Farmer", "Bank clerk", "Shop owner", "Auto-rickshaw driver", "Software engineer", "Teacher", "Police constable", "Electrician"];
+const MOTHER_OCCUPATIONS = ["Homemaker", "Nurse", "Tailor", "Anganwadi worker", "Accountant", "Homemaker", "Teacher", "Shop assistant"];
+const ANNUAL_INCOMES = [180_000, 420_000, 350_000, 240_000, 1_500_000, 600_000, 480_000, 300_000];
+
+/** The household and social fields of one pupil's record, deterministic in (seat, grade). */
+export function recordFacts(seat: number, grade: number, flags: { bpl: boolean; ews: boolean }) {
+  const category = CATEGORY_CYCLE[(seat + grade) % CATEGORY_CYCLE.length]!;
+  const religion = RELIGION_CYCLE[(seat * 3 + grade) % RELIGION_CYCLE.length]!;
+  const castes = CASTES[category]!;
+  return {
+    category,
+    religion,
+    caste: religion === "HINDU" ? castes[(seat + grade) % castes.length]! : null,
+    fatherOccupation: FATHER_OCCUPATIONS[(seat + grade) % FATHER_OCCUPATIONS.length]!,
+    motherOccupation: MOTHER_OCCUPATIONS[(seat * 2 + grade) % MOTHER_OCCUPATIONS.length]!,
+    // BPL is under a lakh, EWS under eight; the rest as the list says.
+    annualIncome: flags.bpl ? 72_000 : flags.ews ? 450_000 : ANNUAL_INCOMES[(seat + grade) % ANNUAL_INCOMES.length]!,
+  };
+}
+
+/**
+ * The school calendar, two years of it: what a Maharashtra school shuts for,
+ * with the names in both languages the demo schools use. The register
+ * builders skip the HOLIDAY spans; the EXAM span matches the mid-term papers
+ * buildExams writes (day 100 and 101 of a year that starts on 1 June), and
+ * the EVENT is the annual day the demo feed talks about.
+ */
+export type HolidaySpec = { en: string; mr: string; start: string; end?: string; kind?: "HOLIDAY" | "EXAM" | "EVENT"; note?: string };
+export const CALENDAR_2025_26: HolidaySpec[] = [
+  { en: "Independence Day", mr: "स्वातंत्र्य दिन", start: "2025-08-15" },
+  { en: "Ganesh Chaturthi", mr: "गणेश चतुर्थी", start: "2025-08-27", end: "2025-08-30" },
+  { en: "Anant Chaturdashi", mr: "अनंत चतुर्दशी", start: "2025-09-06" },
+  { en: "Gandhi Jayanti and Dussehra", mr: "गांधी जयंती व दसरा", start: "2025-10-02" },
+  { en: "Diwali break", mr: "दिवाळी सुट्टी", start: "2025-10-18", end: "2025-11-02" },
+  { en: "Christmas break", mr: "नाताळ सुट्टी", start: "2025-12-24", end: "2026-01-01" },
+  { en: "Republic Day", mr: "प्रजासत्ताक दिन", start: "2026-01-26" },
+  { en: "Holi", mr: "होळी", start: "2026-03-03", end: "2026-03-04" },
+  { en: "Gudi Padwa", mr: "गुढी पाडवा", start: "2026-03-19" },
+  { en: "Ambedkar Jayanti", mr: "आंबेडकर जयंती", start: "2026-04-14" },
+];
+export const CALENDAR_2026_27: HolidaySpec[] = [
+  { en: "Independence Day", mr: "स्वातंत्र्य दिन", start: "2026-08-15" },
+  { en: "Mid-term examinations", mr: "सहामाही परीक्षा", start: "2026-09-09", end: "2026-09-10", kind: "EXAM", note: "Timetable on the notice board; pupils leave after the paper." },
+  { en: "Ganesh Chaturthi", mr: "गणेश चतुर्थी", start: "2026-09-14", end: "2026-09-16" },
+  { en: "Anant Chaturdashi", mr: "अनंत चतुर्दशी", start: "2026-09-25" },
+  { en: "Gandhi Jayanti", mr: "गांधी जयंती", start: "2026-10-02" },
+  { en: "Dussehra", mr: "दसरा", start: "2026-10-20" },
+  { en: "Diwali break", mr: "दिवाळी सुट्टी", start: "2026-11-05", end: "2026-11-15" },
+  { en: "Annual day", mr: "वार्षिक स्नेहसंमेलन", start: "2026-12-18", kind: "EVENT", note: "School ground, 5 pm; parents welcome from 4.30." },
+  { en: "Christmas", mr: "नाताळ", start: "2026-12-25" },
+  { en: "Republic Day", mr: "प्रजासत्ताक दिन", start: "2027-01-26" },
+  { en: "Holi", mr: "होळी", start: "2027-03-22", end: "2027-03-23" },
+];
+
+/** Every date key from `from` to `to` inclusive. */
+export function dateKeysBetween(from: string, to: string): string[] {
+  const keys: string[] = [];
+  for (let t = Date.parse(`${from}T00:00:00Z`); t <= Date.parse(`${to}T00:00:00Z`); t += 86_400_000) keys.push(new Date(t).toISOString().slice(0, 10));
+  return keys;
+}
+
+/** The days a register is expected between two dates: the school's teaching weekdays (Mon–Sat unless told otherwise) less the days it is shut. */
+export function teachingDaysBetween(from: string, to: string, closed: Set<string>, weekdays: readonly number[] = [1, 2, 3, 4, 5, 6]): string[] {
+  return dateKeysBetween(from, to).filter((k) => weekdays.includes(new Date(`${k}T00:00:00Z`).getUTCDay()) && !closed.has(k));
+}
+
+/** The set of date keys a school's calendar closes it on (HOLIDAY kind only; exams and events keep it open). */
+export async function closedDays(schoolId: string): Promise<Set<string>> {
+  const rows = await db.holiday.findMany({ where: { schoolId, kind: "HOLIDAY" }, select: { startDateKey: true, endDateKey: true } });
+  const closed = new Set<string>();
+  for (const r of rows) for (const k of dateKeysBetween(r.startDateKey, r.endDateKey)) closed.add(k);
+  return closed;
+}
+
+/* -------------------------------------------------------------------------- */
 /* small helpers                                                               */
 /* -------------------------------------------------------------------------- */
 
@@ -677,17 +773,18 @@ const ROTA_SUBJECTS = [
  */
 export async function buildHealth(school: { id: string }, adminUserId: string, opts: { pupils?: string[] } = {}) {
   const emails = opts.pupils ?? ["zz.pupil01@zz.test", "zz.pupil02@zz.test", "zz.pupil03@zz.test"];
-  const cards: { bloodGroup: string | null; allergies: string; conditions: string; medications: string; notes: string; contacts: { name: string; relation: string; phone: string }[]; check: boolean }[] = [
-    { bloodGroup: "B+", allergies: "Peanuts — carries an EpiPen in the school bag", conditions: "", medications: "", notes: "Sits near the door in the dining hall.", contacts: [{ name: `${TAG.prefix}Rekha Apte`, relation: "mother", phone: "+919876400001" }, { name: `${TAG.prefix}Dr Kulkarni`, relation: "family doctor", phone: "+912024567890" }], check: false },
-    { bloodGroup: "O+", allergies: "", conditions: "Asthma", medications: "Salbutamol inhaler, kept with the class teacher", notes: "", contacts: [{ name: `${TAG.prefix}Sunil Joshi`, relation: "father", phone: "+919876400002" }], check: false },
-    { bloodGroup: null, allergies: "", conditions: "", medications: "", notes: "", contacts: [], check: true },
+  const cards: { bloodGroup: string | null; allergies: string; conditions: string; medications: string; notes: string; doctorName: string | null; doctorPhone: string | null; contacts: { name: string; relation: string; phone: string }[]; check: boolean }[] = [
+    { bloodGroup: "B+", allergies: "Peanuts — carries an EpiPen in the school bag", conditions: "", medications: "", notes: "Sits near the door in the dining hall.", doctorName: `${TAG.prefix}Dr S. Kulkarni`, doctorPhone: "+912024567890", contacts: [{ name: `${TAG.prefix}Rekha Apte`, relation: "mother", phone: "+919876400001" }, { name: `${TAG.prefix}Dr Kulkarni`, relation: "family doctor", phone: "+912024567890" }], check: false },
+    { bloodGroup: "O+", allergies: "", conditions: "Asthma", medications: "Salbutamol inhaler, kept with the class teacher", notes: "", doctorName: `${TAG.prefix}Dr Meera Joshi`, doctorPhone: "+912025533120", contacts: [{ name: `${TAG.prefix}Sunil Joshi`, relation: "father", phone: "+919876400002" }], check: false },
+    // The blank card: nothing filled yet, which is a state the screens must show as such.
+    { bloodGroup: null, allergies: "", conditions: "", medications: "", notes: "", doctorName: null, doctorPhone: null, contacts: [], check: true },
   ];
   let n = 0;
   for (const [i, email] of emails.entries()) {
     const card = cards[i % cards.length]!;
     const p = await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", user: { email } }, select: { id: true } });
     if (!p) continue;
-    const data = { bloodGroup: card.bloodGroup, allergies: card.allergies, conditions: card.conditions, medications: card.medications, notes: card.notes, contactsJson: JSON.stringify(card.contacts), updatedByUserId: adminUserId };
+    const data = { bloodGroup: card.bloodGroup, allergies: card.allergies, conditions: card.conditions, medications: card.medications, notes: card.notes, doctorName: card.doctorName, doctorPhone: card.doctorPhone, contactsJson: JSON.stringify(card.contacts), updatedByUserId: adminUserId };
     const row = await db.healthCard.upsert({ where: { studentMembershipId: p.id }, create: { schoolId: school.id, studentMembershipId: p.id, ...data }, update: data, select: { id: true } });
     if (card.check && !(await db.healthCheck.findFirst({ where: { cardId: row.id }, select: { id: true } }))) {
       await db.healthCheck.create({ data: { schoolId: school.id, cardId: row.id, studentMembershipId: p.id, dateKey: "2026-07-15", heightCm: 128, weightGrams: 27_400, visionLeft: "6/6", visionRight: "6/9", notes: "Annual camp.", recordedByUserId: adminUserId } });
@@ -819,9 +916,10 @@ export async function buildExams(school: { id: string }, adminUserId: string, op
   const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: grade, archivedAt: null }, select: { id: true }, orderBy: { name: "asc" } });
   if (!klass) return { series: 0, papers: 0, marks: 0, cards: 0 };
   const day = (offset: number) => new Date(term1.startDate.getTime() + offset * 86_400_000).toISOString().slice(0, 10);
+  // A unit test is an hour from nine; the mid-term two and a half. Minutes from midnight, the slot's own columns.
   const seriesSpecs = [
-    { name: "Unit test 1", kind: "UNIT_TEST", papers: [{ subject: subjectA, max: 25, date: day(40) }, { subject: subjectB, max: 25, date: day(41) }] },
-    { name: "Mid-term", kind: "MID_TERM", papers: [{ subject: subjectA, max: 80, date: day(100) }, { subject: subjectB, max: 80, date: day(101) }] },
+    { name: "Unit test 1", kind: "UNIT_TEST", startMinute: 9 * 60, endMinute: 10 * 60, papers: [{ subject: subjectA, max: 25, date: day(40) }, { subject: subjectB, max: 25, date: day(41) }] },
+    { name: "Mid-term", kind: "MID_TERM", startMinute: 9 * 60, endMinute: 11 * 60 + 30, papers: [{ subject: subjectA, max: 80, date: day(100) }, { subject: subjectB, max: 80, date: day(101) }] },
   ];
   const papers: { id: string; title: string; subject: string; kind: string; seriesName: string; max: number; position: number; seriesAt: number }[] = [];
   for (const spec of seriesSpecs) {
@@ -834,8 +932,8 @@ export async function buildExams(school: { id: string }, adminUserId: string, op
     for (const [i, p] of spec.papers.entries()) {
       const slot = await db.examSlot.upsert({
         where: { seriesId_subject: { seriesId: series.id, subject: p.subject } },
-        create: { schoolId: school.id, seriesId: series.id, subject: p.subject, dateKey: p.date, pointsMilli: p.max * 1000, position: i + 1 },
-        update: { dateKey: p.date, pointsMilli: p.max * 1000 },
+        create: { schoolId: school.id, seriesId: series.id, subject: p.subject, dateKey: p.date, startMinute: spec.startMinute, endMinute: spec.endMinute, pointsMilli: p.max * 1000, position: i + 1 },
+        update: { dateKey: p.date, startMinute: spec.startMinute, endMinute: spec.endMinute, pointsMilli: p.max * 1000 },
         select: { id: true },
       });
       const sitting = await db.assignment.upsert({
@@ -987,13 +1085,20 @@ export async function buildCertificates(school: { id: string; name: string; code
     for (const [i, row] of roll.entries()) {
       if (keep.has(row.studentMembershipId)) { records += 1; continue; }
       const surname = untagged(row.student.user.name).split(" ").pop() ?? "Patil";
+      const last = i === roll.length - 1;
+      const facts = recordFacts(i, Number(recordGrade), { bpl: i === 2, ews: i === 2 || i === 4 });
       const data = {
-        fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: city, nationality: "Indian", religion: "Hindu", caste: null, category: i % 3 === 0 ? "General" : "OBC", motherTongue: "Marathi",
+        // Category and religion are coded (see recordFacts); the caste is a name plausible for the category.
+        fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: city, nationality: "Indian", religion: facts.religion, caste: facts.caste, category: facts.category, motherTongue: "Marathi",
+        // The household as the RTE and EWS verifications ask for it.
+        fatherOccupation: facts.fatherOccupation, motherOccupation: facts.motherOccupation, annualIncome: facts.annualIncome,
         addressLine: `${10 + i} Shivaji Nagar`, city, postalCode: "411005", admissionNumber: `GR-${(opts.recordGrades ? Number(recordGrade) * 100 : 0) + 1000 + i}`,
         // A stand-in for the number the UDISE+ portal issues — fictitious, deterministic per pupil, eleven digits; the app never makes one.
-        admissionDate: i === roll.length - 1 ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: opts.previousSchool ?? "Sunrise Nursery", penNumber: fakePen(row.studentMembershipId), updatedByUserId: adminUserId, familyFilledAt: new Date(),
+        // The last pupil's admission is left undated, and with it the previous school's TC, so the office's list has someone to ask.
+        admissionDate: last ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: opts.previousSchool ?? "Sunrise Nursery", penNumber: fakePen(row.studentMembershipId), updatedByUserId: adminUserId, familyFilledAt: new Date(),
+        previousSchoolTcNumber: last ? null : `TC/2024/${String(100 + Number(recordGrade) * 10 + i).padStart(4, "0")}`, previousSchoolTcDate: last ? null : new Date("2024-06-05T00:00:00Z"),
         // The filing fields: gender for all but the last (so the UDISE sheet has a blank to name), a BPL and an EWS flag, one child with an impairment, Marathi names on two.
-        gender: i === roll.length - 1 ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, cwsnType: i === 1 ? "2" : null, bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
+        gender: last ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, cwsnType: i === 1 ? "2" : null, bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
         nameLocal: i === 0 ? "आरव पाटील" : i === 1 ? "भक्ती भोसले" : null, fatherNameLocal: i === 0 ? "रोहन पाटील" : null, motherNameLocal: i === 0 ? "स्नेहा पाटील" : null,
       };
       await db.pupilRecord.upsert({ where: { studentMembershipId: row.studentMembershipId }, create: { schoolId: school.id, studentMembershipId: row.studentMembershipId, ...data }, update: data });
@@ -1156,7 +1261,9 @@ export async function buildAdmissions(school: { id: string; name: string }, admi
   const gradeA = grades[0]!.grade;
   const gradeB = (grades[1] ?? grades[0]!).grade;
   const admittedGrade = opts.admittedGrade ?? gradeA;
-  const pupil = await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", admittedFrom: null, enrollments: { some: { status: "ACTIVE", class: { gradeLevel: admittedGrade } } } }, orderBy: { id: "desc" }, select: { id: true } });
+  const pupil = await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", admittedFrom: null, enrollments: { some: { status: "ACTIVE", class: { gradeLevel: admittedGrade } } } }, orderBy: { id: "desc" }, select: { id: true, user: { select: { penNumber: true } } } });
+  // The admitted application carries the child's PEN: the seat went to the account the number names (an existing pupil here, whose account already holds it).
+  const admittedPen = pupil ? (pupil.user.penNumber ?? fakePen(pupil.id)) : null;
   const fileTag = opts.fileTag ?? "zz-fixture";
   const docs = (n: number) => JSON.stringify([{ key: "birth_certificate", fileId: `${fileTag}-birth-${n}.pdf`, name: "birth-certificate.pdf", mime: "application/pdf", size: 120_000, uploadedAt: new Date().toISOString() }, { key: "photo", fileId: `${fileTag}-photo-${n}.jpg`, name: "photo.jpg", mime: "image/jpeg", size: 80_000, uploadedAt: new Date().toISOString() }]);
   const base = { schoolId: school.id, cycleId: cycle.id, applicantUserId: applicant.userId, applicantName: applicant.name, applicantEmail: applicant.email, relation: "PARENT", addressLine: opts.addressLine ?? "14 Shivaji Nagar", city: opts.city ?? "Pune", previousSchool: opts.previousSchool ?? "Sunrise Nursery" };
@@ -1169,7 +1276,7 @@ export async function buildAdmissions(school: { id: string; name: string }, admi
     { number: 1, childName: child("Aarohi"), gradeApplied: gradeA, childBirthdate: born(gradeA, 2, 11), status: "SUBMITTED", documentsJson: docs(1), documentsVerifiedAt: new Date(), testSlotId: slots[0]!.id, testScore: "38/50", testNote: "Reads fluently.", testedAt: new Date() },
     { number: 2, childName: child("Kabir"), gradeApplied: gradeB, childBirthdate: born(gradeB, 8, 30), status: "OFFERED", documentsJson: docs(2), documentsVerifiedAt: new Date(), testSlotId: slots[1]!.id, testScore: "44/50", testedAt: new Date(), offeredAt: new Date(), offerExpiresAt: soon, offerNote: "Please bring the originals when you accept." },
     { number: 3, childName: child("Meera"), gradeApplied: gradeA, childBirthdate: born(gradeA, 5, 2), status: "ACCEPTED", documentsJson: docs(3), documentsVerifiedAt: new Date(), testScore: "41/50", testedAt: new Date(), offeredAt: new Date(), offerExpiresAt: soon, respondedAt: new Date() },
-    { number: 4, childName: child("Dhruv"), gradeApplied: admittedGrade, childBirthdate: born(admittedGrade, 1, 20), status: "ADMITTED", documentsJson: docs(4), documentsVerifiedAt: new Date(), testScore: "45/50", testedAt: new Date(), offeredAt: new Date(), respondedAt: new Date(), admittedAt: new Date(), admittedMembershipId: pupil?.id ?? null, feeStructureId: structureId },
+    { number: 4, childName: child("Dhruv"), gradeApplied: admittedGrade, childBirthdate: born(admittedGrade, 1, 20), status: "ADMITTED", documentsJson: docs(4), documentsVerifiedAt: new Date(), testScore: "45/50", testedAt: new Date(), offeredAt: new Date(), respondedAt: new Date(), admittedAt: new Date(), admittedMembershipId: pupil?.id ?? null, penNumber: admittedPen, feeStructureId: structureId },
     { number: 5, childName: child("Ira"), gradeApplied: gradeB, childBirthdate: born(gradeB, 11, 11), status: "WAITLISTED", documentsJson: docs(5), testScore: "29/50", testedAt: new Date(), decidedAt: new Date(), decisionNote: `Second on the list for grade ${gradeB}.` },
     { number: 6, childName: child("Vihaan"), gradeApplied: gradeA, childBirthdate: born(gradeA, 7, 7), status: "WITHDRAWN", decidedAt: new Date() },
   ] as const;
@@ -1195,11 +1302,26 @@ export async function buildStaffRecords(school: { id: string }, staff: { members
   let n = 0;
   for (const [i, s] of staff.entries()) {
     const spec = specs[i % specs.length]!;
-    const data = { ...spec, joinedOn: new Date(`${2015 + (i % 8)}-06-01T00:00:00Z`), leaveDaysPerYear: 12 };
+    const data = { ...spec, ...staffDates(i, 2015 + (i % 8)), staffNumber: `EMP-${String(i + 1).padStart(3, "0")}`, leaveDaysPerYear: 12 };
     await db.staffRecord.upsert({ where: { membershipId: s.membership.id }, create: { schoolId: school.id, membershipId: s.membership.id, ...data }, update: data });
     n += 1;
   }
   return { records: n };
+}
+
+/**
+ * The DCF's three dates for one member of staff: when they joined this school
+ * (1 June of the year given), when they first joined service anywhere (two to
+ * seven years earlier), and when they were born (at least twenty-four before
+ * that). Deterministic in the index.
+ */
+export function staffDates(i: number, joinedYear: number): { joinedOn: Date; serviceJoinedOn: Date; birthdate: Date } {
+  const serviceYear = joinedYear - (2 + (i % 6));
+  return {
+    joinedOn: new Date(Date.UTC(joinedYear, 5, 1)),
+    serviceJoinedOn: new Date(Date.UTC(serviceYear, 5 + (i % 3), 1)),
+    birthdate: new Date(Date.UTC(serviceYear - 24 - ((i * 3) % 9), (i * 5) % 12, 1 + ((i * 7) % 28))),
+  };
 }
 
 /**
@@ -1263,6 +1385,275 @@ export async function buildSyllabus(school: { id: string }, opts: { grade?: stri
     }
   }
   return { units: n };
+}
+
+/* -------------------------------------------------------------------------- */
+/* the collection gaps: the calendar, roll numbers, fee adjustments, an        */
+/* invite, a remark thread, a report, a practice assignment, departures, a     */
+/* competition entry — the rows the data audit found nobody had seeded        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The school calendar for one year, in the school's language. Keyed on
+ * (school, first day, kind), so a second run adds nothing and an entry the
+ * office renamed keeps its name.
+ */
+export async function buildHolidays(school: { id: string }, entries: HolidaySpec[], opts: { academicYearId?: string | null; locale?: string } = {}) {
+  let n = 0;
+  for (const spec of entries) {
+    const kind = spec.kind ?? "HOLIDAY";
+    const existing = await db.holiday.findFirst({ where: { schoolId: school.id, startDateKey: spec.start, kind }, select: { id: true } });
+    if (!existing) {
+      await db.holiday.create({ data: { schoolId: school.id, academicYearId: opts.academicYearId ?? null, name: opts.locale === "mr" ? spec.mr : spec.en, startDateKey: spec.start, endDateKey: spec.end ?? spec.start, kind, note: spec.note ?? null } });
+    }
+    n += 1;
+  }
+  return { entries: n };
+}
+
+/**
+ * The roll number the school assigned in each class: alphabetical, 1..n, the
+ * way most Indian schools number a register. Live classes number their ACTIVE
+ * enrolments; an archived class numbers everyone who sat in it. Only rows
+ * whose number is wrong are written.
+ */
+export async function buildRollNumbers(school: { id: string }) {
+  const classes = await db.class.findMany({ where: { schoolId: school.id }, select: { id: true, archivedAt: true } });
+  let numbered = 0;
+  for (const cls of classes) {
+    const rows = await db.enrollment.findMany({ where: { classId: cls.id, ...(cls.archivedAt ? {} : { status: "ACTIVE" }) }, select: { id: true, rollNumber: true, student: { select: { user: { select: { name: true } } } } } });
+    rows.sort((a, b) => untagged(a.student.user.name).localeCompare(untagged(b.student.user.name)));
+    for (const [i, row] of rows.entries()) {
+      if (row.rollNumber !== i + 1) await db.enrollment.update({ where: { id: row.id }, data: { rollNumber: i + 1 } });
+      numbered += 1;
+    }
+  }
+  return { numbered };
+}
+
+/**
+ * Two things a fee office does that the plain structure never shows: a
+ * concession (a percentage off one head for one pupil, with that pupil's
+ * untouched demands recomputed line by line the way fees.ts does it — net is
+ * gross less concession, status by what is paid) and a refund on a counter
+ * payment (DONE, the newest allocation cut by the amount, the demand's paid
+ * figure and status recomputed from what is left, the payment still PAID
+ * because only part came back). Not called for the ZZ schools: the API sweep
+ * reads Northgate's one payment and its demands as the fixture wrote them.
+ */
+export async function buildFeeAdjustments(
+  school: { id: string },
+  adminUserId: string,
+  opts: { concession: { grade: string; headCode: string; percentBp: number; reason: string }; refund: { clientId: string; amountPaise: number; reason: string; on: Date } },
+) {
+  const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true } });
+  const out = { concessions: 0, refunds: 0 };
+
+  /* the concession: the first pupil of the grade who has paid nothing */
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: opts.concession.grade, archivedAt: null }, select: { id: true }, orderBy: { name: "asc" } });
+  const head = await db.feeHead.findUnique({ where: { schoolId_code: { schoolId: school.id, code: opts.concession.headCode } }, select: { id: true } });
+  if (klass && head) {
+    const roll = await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true }, orderBy: { studentMembershipId: "asc" } });
+    let pupil: string | null = null;
+    for (const r of roll) {
+      if (await db.feePayment.findFirst({ where: { studentMembershipId: r.studentMembershipId, status: { in: ["PAID", "REFUNDED"] } }, select: { id: true } })) continue;
+      pupil = r.studentMembershipId;
+      break;
+    }
+    if (pupil) {
+      const concessions = await db.feeConcession.findMany({ where: { studentMembershipId: pupil, academicYearId: year.id, revokedAt: null }, select: { headId: true, kind: true, value: true } });
+      if (!concessions.some((c) => c.headId === head.id && c.kind === "PERCENT")) {
+        await db.feeConcession.create({ data: { schoolId: school.id, studentMembershipId: pupil, academicYearId: year.id, headId: head.id, kind: "PERCENT", value: opts.concession.percentBp, reason: opts.concession.reason, grantedByUserId: adminUserId } });
+        concessions.push({ headId: head.id, kind: "PERCENT", value: opts.concession.percentBp });
+      }
+      // fees.ts: percentages on the line, amounts capped at the line, rounded to the paisa; untouched demands only.
+      const demands = await db.feeDemand.findMany({ where: { studentMembershipId: pupil, academicYearId: year.id, instalmentId: { not: null }, paidPaise: 0 }, select: { id: true, status: true, instalment: { select: { lines: { select: { headId: true, amountPaise: true, head: { select: { code: true, name: true } } } } } } } });
+      for (const d of demands) {
+        if (!d.instalment || ["WAIVED", "CANCELLED", "CARRIED"].includes(d.status)) continue;
+        const lines = d.instalment.lines.map((l) => {
+          let off = 0;
+          for (const c of concessions) {
+            if (c.headId && c.headId !== l.headId) continue;
+            off += c.kind === "PERCENT" ? Math.round((l.amountPaise * c.value) / 10000) : c.value;
+          }
+          return { headId: l.headId, code: l.head.code, name: l.head.name, grossPaise: l.amountPaise, concessionPaise: Math.max(0, Math.min(l.amountPaise, off)) };
+        });
+        const grossPaise = lines.reduce((a, l) => a + l.grossPaise, 0);
+        const concessionPaise = lines.reduce((a, l) => a + l.concessionPaise, 0);
+        const netPaise = grossPaise - concessionPaise;
+        await db.feeDemand.update({ where: { id: d.id }, data: { grossPaise, concessionPaise, netPaise, linesJson: JSON.stringify(lines), status: netPaise === 0 ? "PAID" : "OPEN" } });
+      }
+      out.concessions = 1;
+    }
+  }
+
+  /* the refund: part of one cash payment returned */
+  const payment = await db.feePayment.findFirst({ where: { schoolId: school.id, clientId: opts.refund.clientId, status: "PAID" }, select: { id: true, amountPaise: true, refunds: { select: { id: true } }, allocations: { select: { id: true, demandId: true, amountPaise: true }, orderBy: { id: "desc" } } } });
+  if (payment) {
+    if (payment.refunds.length === 0 && opts.refund.amountPaise < payment.amountPaise) {
+      await db.feeRefund.create({ data: { schoolId: school.id, paymentId: payment.id, amountPaise: opts.refund.amountPaise, reason: opts.refund.reason, status: "DONE", requestedByUserId: adminUserId, settledAt: opts.refund.on, createdAt: opts.refund.on } });
+      // fees-payments.ts: the newest allocations are cut first, then paid and status come back from what is left.
+      let left = opts.refund.amountPaise;
+      for (const a of payment.allocations) {
+        if (left <= 0) break;
+        const cut = Math.min(a.amountPaise, left);
+        await db.feeAllocation.update({ where: { id: a.id }, data: { amountPaise: a.amountPaise - cut } });
+        left -= cut;
+      }
+      for (const demandId of new Set(payment.allocations.map((a) => a.demandId))) {
+        const demand = await db.feeDemand.findUniqueOrThrow({ where: { id: demandId }, select: { netPaise: true } });
+        const paid = await db.feeAllocation.aggregate({ where: { demandId, payment: { status: { in: ["PAID", "REFUNDED"] } } }, _sum: { amountPaise: true } });
+        const paidPaise = paid._sum.amountPaise ?? 0;
+        await db.feeDemand.update({ where: { id: demandId }, data: { paidPaise, status: paidPaise >= demand.netPaise ? "PAID" : paidPaise > 0 ? "PART" : "OPEN" } });
+      }
+    }
+    out.refunds = await db.feeRefund.count({ where: { paymentId: payment.id } });
+  }
+  return out;
+}
+
+/**
+ * One pending teacher invitation, as the office's form writes it: the hash of
+ * a token (never the token), fourteen days to accept. Keyed on the hash, which
+ * is deterministic in the email, so a second run finds it; a revoked or
+ * accepted one is left as it stands.
+ */
+export async function buildInvite(school: { id: string }, createdByMembershipId: string, spec: { email: string; name: string; subjects: string[]; classId?: string | null }) {
+  const tokenHash = createHash("sha256").update(`fixture-invite:${school.id}:${spec.email}`).digest("hex");
+  const existing = await db.invite.findUnique({ where: { tokenHash }, select: { id: true, status: true } });
+  if (existing) return { inviteId: existing.id, status: existing.status };
+  const row = await db.invite.create({ data: { schoolId: school.id, role: "TEACHER", email: spec.email, name: spec.name, subjects: JSON.stringify(spec.subjects), classId: spec.classId ?? null, tokenHash, status: "PENDING", createdByMembershipId, expiresAt: new Date(Date.now() + 14 * 86_400_000) }, select: { id: true, status: true } });
+  return { inviteId: row.id, status: row.status };
+}
+
+/**
+ * A remark thread between a form teacher and a parent about one pupil, two
+ * messages: the teacher's remark, read by both, and the parent's reply, which
+ * the teacher has not opened yet. Keyed on (pupil, teacher, subject).
+ */
+export async function buildRemarkThread(
+  school: { id: string },
+  spec: { studentMembershipId: string; teacherMembershipId: string; teacherUserId: string; parentUserId: string; subject: string; remark: string; reply: string; daysAgo?: number },
+) {
+  const existing = await db.remarkThread.findFirst({ where: { studentMembershipId: spec.studentMembershipId, teacherMembershipId: spec.teacherMembershipId, subject: spec.subject }, select: { id: true } });
+  if (existing) return { threadId: existing.id, created: false };
+  const first = new Date(Date.now() - (spec.daysAgo ?? 3) * 86_400_000);
+  const second = new Date(first.getTime() + 5 * 3_600_000);
+  const thread = await db.remarkThread.create({ data: { schoolId: school.id, studentMembershipId: spec.studentMembershipId, teacherMembershipId: spec.teacherMembershipId, subject: spec.subject, createdAt: first, lastMessageAt: second }, select: { id: true } });
+  await db.remarkMessage.create({ data: { threadId: thread.id, schoolId: school.id, authorUserId: spec.teacherUserId, body: spec.remark, readBy: JSON.stringify([spec.teacherUserId, spec.parentUserId]), createdAt: first } });
+  await db.remarkMessage.create({ data: { threadId: thread.id, schoolId: school.id, authorUserId: spec.parentUserId, body: spec.reply, readBy: JSON.stringify([spec.parentUserId]), createdAt: second } });
+  return { threadId: thread.id, created: true };
+}
+
+/** One OPEN report on a comment (or a post), as the bulletin's report form files it. Keyed on (target, reporter). */
+export async function buildReport(school: { id: string }, spec: { targetType: "POST" | "COMMENT"; targetId: string; reporterUserId: string; reason: "BULLYING" | "UNSAFE" | "SPAM" | "WRONG_INFO" | "PRIVACY" | "OTHER"; detail: string }) {
+  const existing = await db.report.findFirst({ where: { targetType: spec.targetType, targetId: spec.targetId, reporterUserId: spec.reporterUserId }, select: { id: true } });
+  if (existing) return { reportId: existing.id };
+  const row = await db.report.create({ data: { schoolId: school.id, targetType: spec.targetType, targetId: spec.targetId, reporterUserId: spec.reporterUserId, reason: spec.reason, detail: spec.detail, status: "OPEN", createdAt: new Date(Date.now() - 86_400_000) }, select: { id: true } });
+  return { reportId: row.id };
+}
+
+/**
+ * A practice assignment: the class teacher asks the class to reach a level
+ * on one topic of the shared bank at the class's own level, by a date. The
+ * topic is the first of the preferred slugs that exists with questions, else
+ * the first topic at that level. Nothing when the bank is not imported.
+ */
+export async function buildPracticeAssignment(school: { id: string }, spec: { classId: string; classLevel: number; createdByMembershipId: string; preferSlugs: string[]; targetLevel: number; note: string; dueAt: Date }) {
+  const topics = await db.quizTopic.findMany({ where: { classLevel: spec.classLevel, retiredAt: null, questions: { some: {} } }, select: { id: true, slug: true, name: true }, orderBy: [{ subject: "asc" }, { position: "asc" }] });
+  const topic = spec.preferSlugs.map((s) => topics.find((t) => t.slug === s)).find(Boolean) ?? topics[0];
+  if (!topic) return { assignments: 0, topic: null };
+  const existing = await db.practiceAssignment.findFirst({ where: { classId: spec.classId, topicId: topic.id, archivedAt: null }, select: { id: true } });
+  if (!existing) await db.practiceAssignment.create({ data: { schoolId: school.id, classId: spec.classId, topicId: topic.id, targetLevel: spec.targetLevel, note: spec.note, dueAt: spec.dueAt, createdById: spec.createdByMembershipId } });
+  return { assignments: 1, topic: topic.name };
+}
+
+/**
+ * Departures, both halves. A pupil who has LEFT: a membership with `leftAt`
+ * set (status stays ACTIVE — see school-record.ts), the enrolment REMOVED
+ * and dated, and the SchoolRecord the office issued with every column
+ * `recordDeparture` freezes — the school's name, the class as printed, the
+ * conduct, the reason, the attendance counted over the stay, the serial in
+ * the school's own TC/<year>/<n> series. And a pupil still on the roll whose
+ * departure is SCHEDULED for a day to come. Both keyed so a second run finds
+ * them.
+ */
+export async function buildDepartures(
+  ctx: Ctx,
+  school: { id: string; name: string },
+  adminMembershipId: string,
+  spec: {
+    leaver: { email: string; name: string; classId: string; grade: string; birthdate: Date; joinedOn: Date; leftOn: Date; destination: string; note: string; conduct: "EXCELLENT" | "GOOD" | "SATISFACTORY" };
+    scheduled: { membershipId: string; leaveOnKey: string; reason: "TRANSFERRED" | "GRADUATED" | "LEFT"; destination: string; note: string; conduct: "EXCELLENT" | "GOOD" | "SATISFACTORY" } | null;
+  },
+) {
+  const { leaver } = spec;
+  const user = await upsertUser(ctx, leaver.email, leaver.name, { birthdate: leaver.birthdate, isMinor: true });
+  let membership = await db.membership.findUnique({ where: { userId_schoolId_role: { userId: user.id, schoolId: school.id, role: "STUDENT" } }, select: { id: true, leftAt: true, joinedAt: true, studentCode: true, gradeLevel: true } });
+  if (!membership) {
+    membership = await db.membership.create({ data: { userId: user.id, schoolId: school.id, role: "STUDENT", status: "ACTIVE", gradeLevel: leaver.grade, studentCode: studentCode(), joinedAt: leaver.joinedOn, leftAt: leaver.leftOn }, select: { id: true, leftAt: true, joinedAt: true, studentCode: true, gradeLevel: true } });
+  }
+  const enrolment = await db.enrollment.findUnique({ where: { classId_studentMembershipId: { classId: leaver.classId, studentMembershipId: membership.id } }, select: { id: true } });
+  if (!enrolment) await db.enrollment.create({ data: { classId: leaver.classId, schoolId: school.id, studentMembershipId: membership.id, status: "REMOVED", enrolledAt: leaver.joinedOn, removedAt: leaver.leftOn } });
+  if (!membership.leftAt) await db.membership.update({ where: { id: membership.id }, data: { leftAt: leaver.leftOn } });
+  let record = await db.schoolRecord.findUnique({ where: { studentMembershipId: membership.id }, select: { id: true } });
+  if (!record) {
+    const klass = await db.class.findUniqueOrThrow({ where: { id: leaver.classId }, select: { name: true, section: true } });
+    const className = klass.section && !klass.name.toLowerCase().endsWith(klass.section.toLowerCase()) ? `${klass.name} ${klass.section}` : klass.name;
+    const marks = await db.attendanceRecord.groupBy({ by: ["status"], where: { schoolId: school.id, studentMembershipId: membership.id }, _count: { _all: true } });
+    const counted = marks.reduce((a, r) => a + r._count._all, 0);
+    const present = marks.filter((r) => r.status === "PRESENT" || r.status === "LATE").reduce((a, r) => a + r._count._all, 0);
+    const reportCardCount = await db.reportCard.count({ where: { schoolId: school.id, studentMembershipId: membership.id, status: "PUBLISHED" } });
+    const prefix = `TC/${leaver.leftOn.getUTCFullYear()}/`;
+    const last = await db.schoolRecord.findFirst({ where: { schoolId: school.id, serial: { startsWith: prefix } }, orderBy: { serial: "desc" }, select: { serial: true } });
+    const serial = `${prefix}${String(last?.serial ? Number(last.serial.slice(prefix.length)) + 1 : 1).padStart(4, "0")}`;
+    record = await db.schoolRecord.create({
+      data: {
+        schoolId: school.id, studentUserId: user.id, studentMembershipId: membership.id, schoolName: school.name, gradeLevel: membership.gradeLevel, joinedAt: membership.joinedAt, leftAt: leaver.leftOn,
+        serial, studentName: untagged(leaver.name), studentCode: membership.studentCode, birthdate: leaver.birthdate, className: untagged(className), conduct: leaver.conduct,
+        reason: "TRANSFERRED", destination: leaver.destination, note: leaver.note, attendanceMarked: counted, attendancePresent: present, reportCardCount, issuedByMembershipId: adminMembershipId, createdAt: leaver.leftOn,
+      },
+      select: { id: true },
+    });
+  }
+  let scheduled = 0;
+  if (spec.scheduled) {
+    const s = spec.scheduled;
+    await db.scheduledDeparture.upsert({
+      where: { membershipId: s.membershipId },
+      create: { schoolId: school.id, membershipId: s.membershipId, leaveOnKey: s.leaveOnKey, reason: s.reason, destination: s.destination, note: s.note, conduct: s.conduct, scheduledByMembershipId: adminMembershipId },
+      update: {},
+    });
+    scheduled = 1;
+  }
+  return { leaverMembershipId: membership.id, recordId: record.id, scheduled };
+}
+
+/**
+ * One entry in a PUBLISHED platform competition (no organising school — the
+ * platform's own, which nothing here may create) with a result recorded, the
+ * guardian's consent given, and the school's standing written the way
+ * `refreshStanding` writes it: entrants with a result, best place, best score.
+ * Skipped, with the reason, when no such competition exists.
+ */
+export async function buildCompetitionEntry(
+  school: { id: string; name: string },
+  spec: { title: string; studentMembershipId: string; parentUserId: string | null; rank: number; scoreMilli: number; submissionUrl: string; enteredOn: Date },
+) {
+  const competition = await db.competition.findFirst({ where: { title: spec.title, status: "PUBLISHED", organizerSchoolId: null }, select: { id: true, requiresParentConsent: true, gradeLow: true, gradeHigh: true } });
+  if (!competition) return { entries: 0, skipped: `no published platform competition titled "${spec.title}"` };
+  if (competition.requiresParentConsent && !spec.parentUserId) return { entries: 0, skipped: "the competition needs a guardian's consent and the pupil has no guardian" };
+  await db.competitionEntry.upsert({
+    where: { competitionId_studentMembershipId: { competitionId: competition.id, studentMembershipId: spec.studentMembershipId } },
+    create: { competitionId: competition.id, studentMembershipId: spec.studentMembershipId, schoolId: school.id, status: "RESULTS", parentConsentAt: spec.parentUserId ? spec.enteredOn : null, parentConsentBy: spec.parentUserId, submissionUrl: spec.submissionUrl, scoreMilli: spec.scoreMilli, rank: spec.rank, createdAt: spec.enteredOn },
+    update: {},
+  });
+  const scored = await db.competitionEntry.findMany({ where: { competitionId: competition.id, schoolId: school.id, OR: [{ rank: { not: null } }, { scoreMilli: { not: null } }], ...(competition.requiresParentConsent ? { parentConsentAt: { not: null } } : {}) }, select: { rank: true, scoreMilli: true } });
+  const ranks = scored.map((e) => e.rank).filter((r): r is number => r !== null);
+  const scores = scored.map((e) => e.scoreMilli).filter((s): s is number => s !== null);
+  const standing = { schoolName: school.name, entrants: scored.length, bestRank: ranks.length ? Math.min(...ranks) : null, bestScoreMilli: scores.length ? Math.max(...scores) : null };
+  await db.competitionStanding.upsert({ where: { competitionId_schoolId: { competitionId: competition.id, schoolId: school.id } }, create: { competitionId: competition.id, schoolId: school.id, ...standing }, update: standing });
+  return { entries: 1, skipped: null, competitionId: competition.id };
 }
 
 export async function buildTimetable(
@@ -1708,8 +2099,22 @@ async function main() {
   const certs = await buildCertificates(northgate.school, northgate.admin.id);
   const admissions = await buildAdmissions(northgate.school, northgate.admin.id, fees.structure.id);
   const staffRecords = await buildStaffRecords(northgate.school, [...northgate.teachers, ...northgate.subjectTeachers]);
+  // The collection gaps, for Northgate: this year's calendar, roll numbers, a pending invite, a remark
+  // thread, a practice assignment. Fee adjustments, departures and competition entries are the demo
+  // schools' alone — the sweeps read Northgate's one payment, its rolls and its competitions as they are.
+  const calendar = await buildHolidays(northgate.school, CALENDAR_2026_27, { academicYearId: fees.year.id });
+  const rolls = await buildRollNumbers(northgate.school);
+  const adminMembership = await db.membership.findFirstOrThrow({ where: { schoolId: northgate.school.id, userId: northgate.admin.id, role: "ADMIN" }, select: { id: true } });
+  const invite = await buildInvite(northgate.school, adminMembership.id, { email: `zz.invite1@${DOMAIN}`, name: "ZZ Sadhana Pawar", subjects: ["Hindi"] });
+  const pupil01 = await db.membership.findFirstOrThrow({ where: { schoolId: northgate.school.id, role: "STUDENT", user: { email: `zz.pupil01@${DOMAIN}` } }, select: { id: true } });
+  const parent01 = await db.user.findUniqueOrThrow({ where: { email: `zz.parent01@${DOMAIN}` }, select: { id: true } });
+  await buildRemarkThread(northgate.school, { studentMembershipId: pupil01.id, teacherMembershipId: northgate.teachers[0]!.membership.id, teacherUserId: northgate.teachers[0]!.user.id, parentUserId: parent01.id, subject: "ZZ Reading at home", remark: "Reads aloud well in class now; twenty minutes a day at home would carry it further.", reply: "Thank you — we have started with the library book each evening." });
+  const grade6 = await db.class.findFirstOrThrow({ where: { schoolId: northgate.school.id, gradeLevel: "6", archivedAt: null }, select: { id: true, teachers: { where: { role: "LEAD" }, select: { teacherMembershipId: true }, take: 1 } } });
+  const practice = await buildPracticeAssignment(northgate.school, { classId: grade6.id, classLevel: 6, createdByMembershipId: grade6.teachers[0]!.teacherMembershipId, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: "Reach level 3 before the unit test.", dueAt: new Date("2026-10-16T12:30:00Z") });
   const southbank = await buildSouthbank(ctx);
+  await buildRollNumbers(southbank.school);
   const banyan = await buildBanyan(ctx, southbank.school.id);
+  await buildRollNumbers(banyan.school);
   const experts = await buildExperts(ctx);
   const operator = await buildOperator(ctx);
   const contentTeam = await buildContentTeam(ctx);
@@ -1755,6 +2160,8 @@ async function main() {
      filings     UDISE 27250100101, MSBSHSE, Marathi medium; grade-3 records carry gender, BPL/EWS, one impairment, two Marathi names; ${staffRecords.records} staff records — /admin/filings
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
+     calendar    ${calendar.entries} entries for 2026–27 (holidays, the mid-term exam span, the annual day); ${rolls.numbered} roll numbers — /admin/calendar
+     also        invite ${invite.status} for zz.invite1@${DOMAIN}; a remark thread (zz.teacher1 ↔ zz.parent01 about zz.pupil01); practice assignment for grade 6${practice.topic ? ` on "${practice.topic}"` : " (no bank imported: none)"}
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

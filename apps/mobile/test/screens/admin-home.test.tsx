@@ -59,6 +59,13 @@ describe("the admin's overview", () => {
     expect(screen.queryByRole("button", { name: "Set up the year, Setup progress" })).toBeNull();
   });
 
+  it("with nothing expected today — a closed day, or no class with pupils — the registers stat is a dash, not a count against the classes", async () => {
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json({ ...OVERVIEW, counts: { ...OVERVIEW.counts, registersTakenToday: 0 }, attendanceTakenPercent: null }) });
+    expect(await screen.findByLabelText("Attendance marked: —")).toBeTruthy();
+    expect(screen.getByLabelText("Attendance: —")).toBeTruthy();
+    expect(screen.queryByLabelText(/Attendance marked: 0 of 4 today/)).toBeNull();
+  });
+
   it("a school with nothing yet is told to start the year and invite a teacher", async () => {
     await mountStaff(<AdminHome />, "ADMIN", {
       "GET /api/v1/admin/overview": () =>

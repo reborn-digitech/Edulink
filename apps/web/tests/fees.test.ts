@@ -19,6 +19,7 @@ import { todayKey, addDaysToKey } from "@/lib/dates";
 import {
   archiveStructure,
   assignPlans,
+  concessionOnInstalment,
   concessionOnLine,
   createStructure,
   getStructure,
@@ -184,8 +185,20 @@ describe("plans and demands", () => {
   it("a concession is applied per line, rounded half up, and revoking it restores the gross", async () => {
     expect(concessionOnLine(1_000_00, "h", [{ headId: null, kind: "PERCENT", value: 1250 }])).toBe(12_500);
     expect(concessionOnLine(333, "h", [{ headId: null, kind: "PERCENT", value: 5000 }])).toBe(167);
-    expect(concessionOnLine(100, "h", [{ headId: null, kind: "AMOUNT", value: 500 }])).toBe(100);
+    // Was `headId: null` → 100: a flat amount on all heads is no longer a line's to take (it is
+    // the instalment's, once — see concessionOnInstalment below); an amount on THIS head still is.
+    expect(concessionOnLine(100, "h", [{ headId: "h", kind: "AMOUNT", value: 500 }])).toBe(100);
+    expect(concessionOnLine(100, "h", [{ headId: null, kind: "AMOUNT", value: 500 }])).toBe(0);
     expect(concessionOnLine(100, "h", [{ headId: "other", kind: "PERCENT", value: 10000 }])).toBe(0);
+    // A flat all-heads amount: once per instalment, pro rata by line, the last line takes the
+    // remainder, capped at the instalment's gross; a percentage stays per line beside it.
+    const two = [{ headId: "a", grossPaise: 1_000_00 }, { headId: "b", grossPaise: 300_00 }];
+    expect(concessionOnInstalment(two, [{ headId: null, kind: "AMOUNT", value: 500_00 }])).toEqual([384_62, 115_38]);
+    expect(concessionOnInstalment(two, [{ headId: null, kind: "AMOUNT", value: 5_000_00 }])).toEqual([1_000_00, 300_00]);
+    expect(concessionOnInstalment(two, [{ headId: null, kind: "AMOUNT", value: 100_00 }, { headId: null, kind: "PERCENT", value: 5000 }])).toEqual([500_00 + 76_92, 150_00 + 23_08]);
+    expect(concessionOnInstalment(two, [{ headId: "b", kind: "AMOUNT", value: 400_00 }])).toEqual([0, 300_00]);
+    // A line already at its cap cannot hold its share: the remainder moves to a line with room.
+    expect(concessionOnInstalment(two, [{ headId: "b", kind: "PERCENT", value: 10000 }, { headId: null, kind: "AMOUNT", value: 500_00 }])).toEqual([500_00, 300_00]);
     const id = await grantConcession(admin(), { studentMembershipId: pupilB, headId: tuitionId, kind: "PERCENT", value: 2500, reason: "Sibling" });
     let ledger = await pupilLedger(schoolId, pupilB, { todayKey: TODAY });
     expect(ledger.demands.map((d) => [d.grossPaise, d.concessionPaise, d.netPaise])).toEqual([
@@ -420,5 +433,93 @@ describe("reading and reminding", () => {
     expect(await listStructures(admin(), {})).toEqual([]);
     expect((await listStructures(admin(), { includeArchived: true })).map((s) => s.pupils)).toEqual([2]);
     await expect(assignPlans(admin(), { structureId, classId })).rejects.toThrow("fees.refuseArchived");
+  });
+});
+
+/**
+ * The data audit's fees items (docs/data-audit/README.md 14, 16, 17, 20), on a
+ * fourth pupil and a second structure so the ledgers above keep their numbers.
+ */
+describe("the audit's corrections", () => {
+  let pupilD = "";
+  let auditStructureId = "";
+
+  it("a 100 % concession writes the demand PAID with nothing owed, and revoking it reopens it at the full net", async () => {
+    const pd = await db.user.create({ data: { name: "ZZ Fees PupilD", email: `zz-fees-pupild-${STAMP}@test.invalid` }, select: { id: true } });
+    pupilD = (await db.membership.create({ data: { userId: pd.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZFD${STAMP}`, gradeLevel: "3" }, select: { id: true } })).id;
+    auditStructureId = await createStructure(admin(), {
+      name: "Grade 3 fees (audit)",
+      gradeLevel: "3",
+      instalments: [
+        { label: "Term 1", dueDateKey: addDaysToKey(TODAY, -10), lines: [{ headId: tuitionId, amountPaise: 1_000_00 }, { headId: transportId, amountPaise: 300_00 }] },
+        { label: "Term 2", dueDateKey: addDaysToKey(TODAY, 40), lines: [{ headId: tuitionId, amountPaise: 1_000_00 }, { headId: transportId, amountPaise: 200_00 }] },
+      ],
+    });
+    await publishStructure(admin(), auditStructureId);
+    expect(await assignPlans(admin(), { structureId: auditStructureId, studentMembershipIds: [pupilD] })).toEqual({ assigned: 1, moved: 0, unchanged: 0, refused: [] });
+    const full = await grantConcession(admin(), { studentMembershipId: pupilD, headId: null, kind: "PERCENT", value: 10000, reason: "Staff child" });
+    let ledger = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
+    expect(ledger.demands.map((d) => [d.netPaise, d.paidPaise, d.status, d.outstandingPaise])).toEqual([
+      [0, 0, "PAID", 0],
+      [0, 0, "PAID", 0],
+    ]);
+    expect(ledger.totals).toEqual({ netPaise: 0, paidPaise: 0, outstandingPaise: 0, overduePaise: 0 });
+    // Nobody paid these: revoking the concession must reopen them, not leave two PAID rows for ₹0.
+    await revokeConcession(admin(), full);
+    ledger = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
+    expect(ledger.demands.map((d) => [d.netPaise, d.concessionPaise, d.status, d.overdue])).toEqual([
+      [1_300_00, 0, "OPEN", true],
+      [1_200_00, 0, "OPEN", false],
+    ]);
+    expect(ledger.totals).toEqual({ netPaise: 2_500_00, paidPaise: 0, outstandingPaise: 2_500_00, overduePaise: 1_300_00 });
+  });
+
+  it("a flat concession on all heads comes off each instalment once, spread across its lines", async () => {
+    const flat = await grantConcession(admin(), { studentMembershipId: pupilD, headId: null, kind: "AMOUNT", value: 500_00, reason: "Hardship" });
+    let ledger = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
+    // ₹500 off a term, not ₹500 off every line of every term (which was ₹2,000 across the year).
+    expect(ledger.demands.map((d) => [d.grossPaise, d.concessionPaise, d.netPaise])).toEqual([
+      [1_300_00, 500_00, 800_00],
+      [1_200_00, 500_00, 700_00],
+    ]);
+    expect(ledger.demands[0]!.lines.map((l) => [l.code, l.concessionPaise])).toEqual([["TUI", 384_62], ["TRN", 115_38]]);
+    expect(ledger.demands[1]!.lines.map((l) => [l.code, l.concessionPaise])).toEqual([["TUI", 416_67], ["TRN", 83_33]]);
+    await revokeConcession(admin(), flat);
+    ledger = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
+    expect(ledger.demands.map((d) => d.netPaise)).toEqual([1_300_00, 1_200_00]);
+  });
+
+  it("after a carry-forward the old year's paid total leaves the carried demands out, as its net does", async () => {
+    const part = await recordCounterPayment(admin(), { studentMembershipId: pupilD, amountPaise: 300_00, method: "CASH" });
+    expect(part.serial).toMatch(/^RCPT\/2026–27\//);
+    const before = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
+    expect(before.totals).toEqual({ netPaise: 2_500_00, paidPaise: 300_00, outstandingPaise: 2_200_00, overduePaise: 1_000_00 });
+    expect(await carryForward(admin(), { fromYearId: yearId, toYearId: nextYearId })).toEqual({ pupils: 1, carriedPaise: 2_200_00 });
+    const old = await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: yearId });
+    expect(old.demands.map((d) => [d.status, d.paidPaise])).toEqual([["CARRIED", 300_00], ["CARRIED", 0]]);
+    // Both rows are CARRIED, so net is 0 — and paid must be 0 with it, not ₹300 against nothing.
+    expect(old.totals).toEqual({ netPaise: 0, paidPaise: 0, outstandingPaise: 0, overduePaise: 0 });
+    expect(old.totals.paidPaise).toBeLessThanOrEqual(old.totals.netPaise);
+    const next = await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: nextYearId });
+    expect(next.demands.map((d) => [d.label, d.netPaise, d.status])).toEqual([["Opening balance 2026–27", 2_200_00, "OPEN"]]);
+    // A partly paid demand still has its payment in the ledger's payments list.
+    expect(old.payments.map((p) => p.amountPaise)).toEqual([300_00]);
+  });
+
+  it("a payment allocated across two years is receipted in the earlier year's series", async () => {
+    // A straggler in this year, created AFTER next year's opening balance so insertion order would pick the later year.
+    const straggler = await db.feeDemand.create({ data: { schoolId, studentMembershipId: pupilD, academicYearId: yearId, label: "Lab deposit", dueDate: new Date(`${TODAY}T00:00:00.000Z`), grossPaise: 100_00, netPaise: 100_00, status: "OPEN" }, select: { id: true } });
+    const opening = await db.feeDemand.findFirstOrThrow({ where: { studentMembershipId: pupilD, academicYearId: nextYearId, status: "OPEN" }, select: { id: true } });
+    // Named later-year-first on purpose: the order the caller names them in must not choose the series either.
+    const pay = await recordCounterPayment(admin(), { studentMembershipId: pupilD, amountPaise: 2_300_00, method: "CASH", demandIds: [opening.id, straggler.id] });
+    expect(pay.serial).toMatch(/^RCPT\/2026–27\//);
+    const receipt = await receiptFor(admin(), pay.receiptId);
+    expect(receipt?.snapshot.year).toBe("2026–27");
+    expect(receipt?.snapshot.allocations).toEqual([
+      { demandLabel: "Lab deposit", amountPaise: 100_00 },
+      { demandLabel: "Opening balance 2026–27", amountPaise: 2_200_00 },
+    ]);
+    expect((await db.feeReceipt.findFirstOrThrow({ where: { paymentId: pay.paymentId }, select: { academicYearId: true } })).academicYearId).toBe(yearId);
+    expect((await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: nextYearId })).totals).toEqual({ netPaise: 2_200_00, paidPaise: 2_200_00, outstandingPaise: 0, overduePaise: 0 });
   });
 });

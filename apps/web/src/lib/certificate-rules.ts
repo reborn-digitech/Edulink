@@ -179,6 +179,9 @@ export type PupilFacts = {
 };
 
 /** Every placeholder's value for one pupil, in the document's language. */
+const CATEGORY_WORD: Record<string, string> = { GENERAL: "pupilRecord.catGeneral", SC: "pupilRecord.catSC", ST: "pupilRecord.catST", OBC: "pupilRecord.catOBC", VJ: "pupilRecord.catVJ", NT: "pupilRecord.catNT", SBC: "pupilRecord.catSBC" };
+const RELIGION_WORD: Record<string, string> = { HINDU: "pupilRecord.relHindu", MUSLIM: "pupilRecord.relMuslim", CHRISTIAN: "pupilRecord.relChristian", SIKH: "pupilRecord.relSikh", BUDDHIST: "pupilRecord.relBuddhist", PARSI: "pupilRecord.relParsi", JAIN: "pupilRecord.relJain", OTHER: "pupilRecord.relOther" };
+
 export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = wordsFor(locale)): CertificateData {
   const r = facts.record;
   const parentage = r?.fatherName && r?.motherName ? words("certificateDefaults.childOf", { father: r.fatherName, mother: r.motherName }) : null;
@@ -196,9 +199,10 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
     "pupil.parentage": parentage,
     "pupil.placeOfBirth": r?.placeOfBirth ?? null,
     "pupil.nationality": r?.nationality ?? null,
-    "pupil.religion": r?.religion ?? null,
+    // Coded on the record since the filings were made exact; printed as the word in the paper's language. A value from before the codes prints as typed.
+    "pupil.religion": r?.religion ? (RELIGION_WORD[r.religion.toUpperCase()] ? words(RELIGION_WORD[r.religion.toUpperCase()]!) : r.religion) : null,
     "pupil.caste": r?.caste ?? null,
-    "pupil.category": r?.category ?? null,
+    "pupil.category": r?.category ? (CATEGORY_WORD[r.category.toUpperCase()] ? words(CATEGORY_WORD[r.category.toUpperCase()]!) : r.category) : null,
     "pupil.motherTongue": r?.motherTongue ?? null,
     "pupil.address": address,
     "pupil.admissionNumber": r?.admissionNumber ?? null,
@@ -229,6 +233,6 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
 
 /** The pupil-record fields a certificate needs before it can be issued without gaps. */
 export const REQUIRED_RECORD_FIELDS = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"] as const;
-export const OPTIONAL_RECORD_FIELDS = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "penNumber"] as const;
+export const OPTIONAL_RECORD_FIELDS = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome"] as const;
 /** The record form's third group: what UDISE+ and the boards ask beyond a certificate (src/lib/pupil-records.ts says which of them a filing cannot do without). */
 export const FILING_FORM_FIELDS = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"] as const;

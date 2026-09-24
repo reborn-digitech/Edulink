@@ -409,6 +409,76 @@ describe("the school in one line", () => {
     expect(summary.attendancePercent).not.toBeNull();
   });
 
+  /**
+   * "Registers missing today" is what the school EXPECTS and has not got.
+   * Nothing is expected on a day the school is shut, and nothing from a class
+   * with nobody in it — the plain "classes minus sessions" subtraction chased
+   * the principal for both. The clock is pinned to dates in 2025-07, a month no
+   * other suite writes registers on, so today's real registers cannot leak in.
+   */
+  describe("⚠ registers missing today", () => {
+    // Riverside is Europe/London; noon UTC is the same calendar day there.
+    const at = (dateKey: string) => new Date(`${dateKey}T12:00:00Z`);
+    const HOLIDAY_KEY = "2025-07-16"; // a Wednesday
+    const SUNDAY_KEY = "2025-07-20";
+    const SCHOOL_DAY_KEY = "2025-07-15"; // a Tuesday
+    let emptyClassId: string;
+
+    beforeAll(async () => {
+      await db.holiday.deleteMany({ where: { schoolId: riversideId, name: "ZZ Insight Holiday" } });
+      await db.holiday.create({
+        data: { schoolId: riversideId, name: "ZZ Insight Holiday", startDateKey: HOLIDAY_KEY, endDateKey: HOLIDAY_KEY, kind: "HOLIDAY" },
+      });
+      const empty = await db.class.upsert({
+        where: { joinCode: "ZZZ-INSIGHT-EMPTY" },
+        create: { schoolId: riversideId, name: "ZZ Insight Empty Class", gradeLevel: "5", joinCode: "ZZZ-INSIGHT-EMPTY" },
+        update: { archivedAt: null },
+      });
+      emptyClassId = empty.id;
+      await db.enrollment.deleteMany({ where: { classId: emptyClassId } });
+    });
+
+    afterAll(async () => {
+      await db.holiday.deleteMany({ where: { schoolId: riversideId, name: "ZZ Insight Holiday" } });
+      await db.class.deleteMany({ where: { id: emptyClassId } });
+    });
+
+    it("is 0 on a closing holiday, whatever the classes", async () => {
+      const insights = await classInsights(principal, WINDOW);
+      expect(insights.length).toBeGreaterThan(0);
+      const summary = await schoolSummary(principal, insights, at(HOLIDAY_KEY));
+      expect(summary.registersMissingToday).toBe(0);
+    });
+
+    it("is 0 on a day the school does not teach", async () => {
+      const school = await db.school.findUniqueOrThrow({ where: { id: riversideId }, select: { teachingDays: true } });
+      expect(school.teachingDays.split(",")).not.toContain("0");
+      const insights = await classInsights(principal, WINDOW);
+      const summary = await schoolSummary(principal, insights, at(SUNDAY_KEY));
+      expect(summary.registersMissingToday).toBe(0);
+    });
+
+    it("does not count a class with nobody in it on a school day", async () => {
+      const insights = await classInsights(principal, WINDOW);
+      // The empty class is a class of the school — it is on the insights list…
+      expect(insights.some((k) => k.classId === emptyClassId)).toBe(true);
+
+      // …but not a register anybody can take. The expected figure is every
+      // non-archived class with an active enrolment, less the registers taken.
+      const withPupils = await db.class.findMany({
+        where: { schoolId: riversideId, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } },
+        select: { id: true },
+      });
+      const taken = await db.attendanceSession.count({
+        where: { schoolId: riversideId, dateKey: SCHOOL_DAY_KEY, classId: { in: withPupils.map((c) => c.id) } },
+      });
+      const summary = await schoolSummary(principal, insights, at(SCHOOL_DAY_KEY));
+      expect(summary.registersMissingToday).toBe(withPupils.length - taken);
+      expect(summary.registersMissingToday).toBeLessThan(insights.length);
+      expect(summary.registersMissingToday).toBeGreaterThan(0);
+    });
+  });
+
   it("⚠ refuses a teacher", async () => {
     const insights = await classInsights(principal, WINDOW);
     await expect(schoolSummary(teacher, insights)).rejects.toBeInstanceOf(AccessError);

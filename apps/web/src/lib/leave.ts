@@ -487,6 +487,7 @@ export async function decideLeave(
 type TenantTx = {
   leaveRequest: { update(args: unknown): Promise<unknown> };
   attendanceCover: { deleteMany(args: unknown): Promise<unknown> };
+  substitution: { deleteMany(args: unknown): Promise<unknown> };
 };
 
 /**
@@ -495,14 +496,17 @@ type TenantTx = {
  * Allowed AFTER approval as well as before, because plans change and a teacher
  * who comes in anyway should not leave a phantom absence on the calendar. The
  * cover this request caused is withdrawn with it — and only that cover, which is
- * what `leaveRequestId` is for.
+ * what `leaveRequestId` is for — and so are the substitution board's rows for
+ * the applicant's lessons on the leave's days, which exist only because the
+ * board listed them as away: two cover models, one absence, and the absence
+ * is gone.
  */
 export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<LeaveResult> {
   if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("access.noActiveSchoolSelected");
 
   const request = await db.leaveRequest.findFirst({
     where: { id: leaveId, schoolId: ctx.schoolId },
-    select: { id: true, status: true, teacherMembershipId: true },
+    select: { id: true, status: true, teacherMembershipId: true, fromDateKey: true, toDateKey: true },
   });
   if (!request) return { ok: false, errorKey: "leaveKind.notInSchool" };
 
@@ -529,6 +533,27 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       class: { select: { name: true } },
     },
   });
+  // And the lessons the board handed to somebody on those days. Only the
+  // applicant's own, only inside the leave: a Substitution the register's
+  // ABSENT put there for a colleague is somebody else's absence.
+  const substitutionsWhere = {
+    schoolId: ctx.schoolId,
+    absentMembershipId: request.teacherMembershipId,
+    dateKey: { gte: request.fromDateKey, lte: request.toDateKey },
+  };
+  const releasingLessons =
+    request.status === "APPROVED"
+      ? await db.substitution.findMany({
+          where: substitutionsWhere,
+          select: {
+            dateKey: true,
+            slotId: true,
+            substitute: { select: { userId: true } },
+            absent: { select: { user: { select: { name: true, preferredName: true } } } },
+            slot: { select: { subject: true, class: { select: { name: true } }, period: { select: { name: true } } } },
+          },
+        })
+      : [];
 
   /**
    * `$tenantTransaction`, and NOT `db.$transaction` in either of its forms.
@@ -559,6 +584,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
     await t.attendanceCover.deleteMany({
       where: { leaveRequestId: request.id, schoolId: ctx.schoolId },
     });
+    if (releasingLessons.length > 0) await t.substitution.deleteMany({ where: substitutionsWhere });
   });
 
   for (const cover of releasing) {
@@ -572,6 +598,26 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       bodyVars: { from: cover.fromDateKey },
       url: "/teacher/attendance",
       urgent: true,
+    });
+  }
+  for (const row of releasingLessons) {
+    const vars = {
+      subject: row.slot.subject,
+      className: row.slot.class.name,
+      period: row.slot.period.name,
+      date: row.dateKey,
+      name: row.absent.user.preferredName ?? row.absent.user.name,
+    };
+    await notify({
+      userId: row.substitute.userId,
+      schoolId: ctx.schoolId,
+      kind: "SYSTEM",
+      titleKey: "notifTitle.coverReleased",
+      titleVars: vars,
+      bodyKey: "notifTitle.coverReleasedBody",
+      bodyVars: vars,
+      url: "/teacher",
+      meta: { slotId: row.slotId, dateKey: row.dateKey },
     });
   }
 

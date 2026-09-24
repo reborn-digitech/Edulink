@@ -15,6 +15,7 @@ import { assignPenIfBlank, matchPen } from "./pen";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
+import { syncGradeLevel } from "./grade-level";
 
 /**
  * Admissions intake: a school's list of new pupils becomes pupils.
@@ -251,6 +252,11 @@ export async function admitPupils(
             const tx = rawTx as typeof db;
             // A pupil who once left this school takes their old membership up again: one row per person and school.
             const prior = await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: previous.userId, schoolId, role: "STUDENT" } }, select: { id: true } });
+            // Back on the roll: the departure record and its scheduled leaving go, so no certificate prints the old leaving date.
+            if (prior) {
+              await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId } });
+              await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId } });
+            }
             const membership = prior
               ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: newCode, joinedAt: new Date() }, select: { id: true } })
               : await tx.membership.create({
@@ -258,9 +264,13 @@ export async function admitPupils(
                   select: { id: true },
                 });
             if (klass) {
-              await tx.enrollment.create({
-                data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
+              // Upsert, not create: a pupil back on the roll may have sat in this class before, and the unique index is on (classId, studentMembershipId).
+              await tx.enrollment.upsert({
+                where: { classId_studentMembershipId: { classId: klass.id, studentMembershipId: membership.id } },
+                create: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
+                update: { status: "ACTIVE", removedAt: null, enrolledAt: new Date() },
               });
+              await syncGradeLevel(tx, [membership.id]);
             }
             return { membershipId: membership.id };
           }),
@@ -354,6 +364,7 @@ export async function admitPupils(
             await tx.enrollment.create({
               data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
             });
+            await syncGradeLevel(tx, [membership.id]);
           }
           return { membershipId: membership.id };
         }),

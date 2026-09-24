@@ -10,7 +10,7 @@ const ROSTER = {
   staff: [
     {
       membershipId: "m2", role: "TEACHER", name: "ZZ Teacher", preferredName: null, avatarKey: null, subjects: ["Maths", "Physics"],
-      staffRecord: { staffNumber: "ZZ-T-01", designation: "Senior teacher", qualification: "MSc", joinedOnKey: "2020-06-01", leaveDaysPerYear: 12 },
+      staffRecord: { staffNumber: "ZZ-T-01", designation: "Senior teacher", qualification: "MSc", joinedOnKey: "2020-06-01", leaveDaysPerYear: 12, birthdateKey: "1988-04-02", serviceJoinedOnKey: "2015-06-15" },
       leadClasses: ["ZZ Class A"],
       balance: { entitlement: 12, used: 4, pending: 1, remaining: 8, yearName: "2026-27" },
     },
@@ -32,7 +32,7 @@ describe("the staff roster", () => {
     gate.open(() => json(ROSTER));
     await screen.findByText("ZZ Teacher");
     expect(screen.getByText("1 Teacher · 1 School admin")).toBeTruthy();
-    expect(screen.getByText(/^Senior teacher · Maths, Physics · Class teacher of ZZ Class A · Joined .* · 4 of 12 days used · 8 left · 1 more being asked for$/)).toBeTruthy();
+    expect(screen.getByText(/^Senior teacher · Maths, Physics · Class teacher of ZZ Class A · Joined .* · Joined service on (15 Jun|Jun 15) · Date of birth: (2 Apr|Apr 2) · 4 of 12 days used · 8 left · 1 more being asked for$/)).toBeTruthy();
     expect(screen.getByText("ZZ-T-01")).toBeTruthy();
     expect(screen.getByText("ZZ Office (Zed)")).toBeTruthy();
     expect(screen.getByText("School admin")).toBeTruthy();

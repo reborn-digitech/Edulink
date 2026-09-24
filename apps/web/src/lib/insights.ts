@@ -3,6 +3,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { overallPercent, weightedPercent, weightsAreUsable, type CategoryWeight } from "./grading";
 import { addDaysToKey, todayKey } from "./dates";
+import { registersDue } from "./attendance";
 import type { ActiveContext } from "./session";
 import type { AttendanceStatus } from "./constants";
 
@@ -479,17 +480,22 @@ export type SchoolSummary = {
 export async function schoolSummary(
   ctx: ActiveContext,
   insights: ClassInsight[],
+  /** The clock, for tests that need "today" to be a holiday or a Sunday. */
+  now: Date = new Date(),
 ): Promise<SchoolSummary> {
   const schoolId = assertOversight(ctx);
   const school = await db.school.findUniqueOrThrow({
     where: { id: schoolId },
     select: { timezone: true },
   });
-  const today = todayKey(school.timezone);
+  const today = todayKey(school.timezone, now);
 
-  const [pupils, takenToday, pendingLeave] = await Promise.all([
+  // "Missing" is what the school EXPECTS and has not got: nothing on a closed
+  // day, nothing from a class with nobody in it. `registersDue` carries the
+  // reasoning; here it is only the difference.
+  const [pupils, due, pendingLeave] = await Promise.all([
     db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
-    db.attendanceSession.count({ where: { schoolId, dateKey: today } }),
+    registersDue(schoolId, today),
     db.leaveRequest.count({ where: { schoolId, status: "PENDING" } }),
   ]);
 
@@ -507,7 +513,7 @@ export async function schoolSummary(
     pupils,
     classes: insights.length,
     attendancePercent: total === 0 ? null : Math.round((present * 100) / total),
-    registersMissingToday: Math.max(0, insights.length - takenToday),
+    registersMissingToday: due.missing.length,
     pendingLeave,
     concerns: insights.filter(
       (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,

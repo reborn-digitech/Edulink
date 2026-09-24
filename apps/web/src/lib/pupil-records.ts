@@ -1,5 +1,5 @@
 import "server-only";
-import type { PupilRecordField, PupilRecordSave, PupilRecordView } from "@edulink/contracts";
+import { PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { audit } from "./audit";
@@ -45,6 +45,7 @@ type RecordRow = {
   fatherName: string | null; motherName: string | null; placeOfBirth: string | null; nationality: string | null; religion: string | null; caste: string | null; category: string | null; motherTongue: string | null;
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
   gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
+  previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null;
   requestedAt: Date | null; familyFilledAt: Date | null; updatedAt: Date;
 };
 
@@ -53,15 +54,16 @@ export const FILING_RECORD_FIELDS = ["gender", "category", "motherTongue", "bpl"
 
 const yesNo = (v: boolean | null | undefined) => (v === true ? "yes" : v === false ? "no" : null);
 
-/** The filing fields still blank on a record; every one of them when there is no record. */
+/** The filing fields still blank on a record; every one of them when there is no record. A category the sheet cannot code counts as blank. */
 export function missingFilingFields(record: RecordRow | null): PupilRecordField[] {
   return FILING_RECORD_FIELDS.filter((f) => {
     const v = record?.[f];
+    if (f === "category") return typeof v !== "string" || !(PUPIL_CATEGORIES as readonly string[]).includes(v.trim().toUpperCase());
     return v === null || v === undefined || (typeof v === "string" && v.trim() === "");
   }) as PupilRecordField[];
 }
 
-const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
+const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -71,9 +73,12 @@ export function missingFields(record: RecordRow | null): PupilRecordField[] {
   }) as PupilRecordField[];
 }
 
-function recordView(record: RecordRow | null) {
+function recordView(record: RecordRow | null, rollNumber: number | null = null) {
   if (!record) return null;
   return {
+    previousSchoolTcNumber: record.previousSchoolTcNumber, previousSchoolTcDate: record.previousSchoolTcDate?.toISOString().slice(0, 10) ?? null,
+    fatherOccupation: record.fatherOccupation, motherOccupation: record.motherOccupation, annualIncome: record.annualIncome === null ? null : String(record.annualIncome),
+    rollNumber: rollNumber === null ? null : String(rollNumber),
     fatherName: record.fatherName, motherName: record.motherName, placeOfBirth: record.placeOfBirth, nationality: record.nationality, religion: record.religion, caste: record.caste, category: record.category, motherTongue: record.motherTongue,
     addressLine: record.addressLine, city: record.city, postalCode: record.postalCode, admissionNumber: record.admissionNumber, admissionDate: record.admissionDate?.toISOString().slice(0, 10) ?? null, admittedToGrade: record.admittedToGrade, previousSchool: record.previousSchool, penNumber: record.penNumber,
     gender: record.gender, nameLocal: record.nameLocal, fatherNameLocal: record.fatherNameLocal, motherNameLocal: record.motherNameLocal, bpl: yesNo(record.bpl), ews: yesNo(record.ews), cwsnType: record.cwsnType, bloodGroup: record.bloodGroup,
@@ -85,13 +90,13 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
   const viewer = await admit(ctx, studentMembershipId);
   const [record, enrolment] = await Promise.all([
     db.pupilRecord.findUnique({ where: { studentMembershipId } }),
-    db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { class: { select: { name: true } } } }),
+    db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { rollNumber: true, class: { select: { name: true } } } }),
   ]);
   // The PEN is the account's; a record that has not caught up shows it anyway.
   const merged = record ? { ...record, penNumber: viewer.accountPen ?? record.penNumber } : viewer.accountPen ? ({ ...EMPTY_RECORD, penNumber: viewer.accountPen } as RecordRow) : null;
   const missing = missingFields(merged);
   const penChange = await pendingPenChange(ctx, studentMembershipId);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
 }
 
 /** Writes the whole record. A blank clears the field. The family's write is dated so the office sees who filled it. */
@@ -126,10 +131,18 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     bpl: input.bpl === undefined ? undefined : input.bpl === "" ? null : input.bpl === "yes",
     ews: input.ews === undefined ? undefined : input.ews === "" ? null : input.ews === "yes",
     cwsnType: text(input.cwsnType), bloodGroup: text(input.bloodGroup),
+    previousSchoolTcNumber: text(input.previousSchoolTcNumber),
+    previousSchoolTcDate: input.previousSchoolTcDate === undefined ? undefined : input.previousSchoolTcDate ? new Date(`${input.previousSchoolTcDate}T00:00:00Z`) : null,
+    fatherOccupation: text(input.fatherOccupation), motherOccupation: text(input.motherOccupation),
+    annualIncome: input.annualIncome === undefined ? undefined : input.annualIncome === "" ? null : Number(input.annualIncome),
     updatedByUserId: viewer.userId,
     ...(viewer.family ? { familyFilledAt: new Date() } : {}),
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId }, create: { schoolId: viewer.schoolId, studentMembershipId, ...data }, update: data });
+  // The roll number lives on the present enrolment and is the office's to set; a family's form never sends it and a family's body is ignored if it does.
+  if (input.rollNumber !== undefined && !viewer.family) {
+    await db.enrollment.updateMany({ where: { studentMembershipId, status: "ACTIVE" }, data: { rollNumber: input.rollNumber === "" ? null : Number(input.rollNumber) } });
+  }
   // Which fields, never their values: a caste or an address is not for the audit log.
   await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pupilRecord.update", targetType: "Membership", targetId: studentMembershipId, meta: { fields: Object.keys(input).filter((k) => (input as Record<string, unknown>)[k] !== undefined), family: viewer.family } });
   return pupilRecordFor(ctx, studentMembershipId);

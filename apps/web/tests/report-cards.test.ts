@@ -205,7 +205,10 @@ beforeAll(async () => {
    * A REPORT CARD IS BUILT FROM SCHEDULED EXAMS, so the two assessments are
    * papers on an admin-scheduled series for this class's grade — the sitting
    * rows carry `examSlotId`. A plain homework assignment is no longer a
-   * candidate, and a test below proves that refusal.
+   * candidate, and a test below proves that refusal. The sittings are titled
+   * as the sheet titles them (series · subject): ensureSittings brings a
+   * sitting's title and max level with its paper on every generation, so a
+   * fixture titled any other way is retitled under the test's feet.
    */
   const series = await db.examSeries.create({
     data: {
@@ -228,7 +231,7 @@ beforeAll(async () => {
       schoolId: riversideId,
       classId,
       authorMembershipId: l.membershipId,
-      title: "ZZ Mid-term test",
+      title: "ZZ Report-card exams · ZZ Maths",
       category: "Exam",
       pointsMilli: 100_000,
       examSlotId: slotA.id,
@@ -240,7 +243,7 @@ beforeAll(async () => {
       schoolId: riversideId,
       classId,
       authorMembershipId: l.membershipId,
-      title: "ZZ End-of-term exam",
+      title: "ZZ Report-card exams · ZZ Science",
       category: "Exam",
       pointsMilli: 100_000,
       examSlotId: slotB.id,
@@ -393,7 +396,7 @@ describe("generating", () => {
 
     const card = await getCard(lead, mine.id);
     expect(card!.items).toHaveLength(2);
-    expect(card!.items[0]!.title).toBe("ZZ Mid-term test");
+    expect(card!.items[0]!.title).toBe("ZZ Report-card exams · ZZ Maths");
     expect(card!.overallPercent).toBeCloseTo(85, 1);
   });
 
@@ -404,7 +407,7 @@ describe("generating", () => {
     });
     const cards = await cardsForClass(lead, classId, TITLE);
     const card = await getCard(lead, cards[0]!.id);
-    expect(card!.items[0]!.title).toBe("ZZ End-of-term exam");
+    expect(card!.items[0]!.title).toBe("ZZ Report-card exams · ZZ Science");
   });
 
   it("⚠ leaves an unmarked assessment blank rather than counting it as zero", async () => {
@@ -514,11 +517,11 @@ describe("⚠ a published card keeps saying what it said", () => {
     });
     try {
       const card = await getCard(lead, cardId);
-      expect(card!.items[0]!.title).toBe("ZZ Mid-term test");
+      expect(card!.items[0]!.title).toBe("ZZ Report-card exams · ZZ Maths");
     } finally {
       await db.assignment.update({
         where: { id: assignmentA },
-        data: { title: "ZZ Mid-term test" },
+        data: { title: "ZZ Report-card exams · ZZ Maths" },
       });
     }
   });

@@ -5,6 +5,7 @@ import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { syncStandinGuardian, syncStandinsForClass } from "./standin-guardian";
 import type { ActiveContext } from "./session";
+import { syncGradeLevel } from "./grade-level";
 
 /**
  * The children in a class, and the staff responsible for it.
@@ -202,6 +203,7 @@ export async function enrolStudents(
       update: { status: "ACTIVE", removedAt: null },
       select: { id: true },
     });
+    await syncGradeLevel(db, [student.id]);
     if (result) added++;
   }
 
@@ -240,6 +242,7 @@ export async function removeFromCohort(
     where: { classId, schoolId: ctx.schoolId!, studentMembershipId, status: "ACTIVE" },
     data: { status: "REMOVED", removedAt: new Date() },
   });
+  if (result.count > 0) await syncGradeLevel(db, [studentMembershipId]);
   if (result.count === 0) return { ok: false, errorKey: "refusal.notOnRoll" };
 
   await audit({

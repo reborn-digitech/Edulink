@@ -8477,6 +8477,24 @@
                                 "type": "integer",
                                 "nullable": true
                               },
+                              "birthdateKey": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/staff/items/properties/staffRecord/properties/joinedOnKey"
+                                  }
+                                ],
+                                "nullable": true,
+                                "default": null
+                              },
+                              "serviceJoinedOnKey": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/staff/items/properties/staffRecord/properties/joinedOnKey"
+                                  }
+                                ],
+                                "nullable": true,
+                                "default": null
+                              },
                               "gender": {
                                 "type": "string",
                                 "nullable": true,
@@ -12623,6 +12641,24 @@
                         "leaveDaysPerYear": {
                           "type": "integer",
                           "nullable": true
+                        },
+                        "birthdateKey": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/user/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "serviceJoinedOnKey": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/user/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
                         },
                         "gender": {
                           "type": "string",
@@ -54324,7 +54360,13 @@
                                 "bpl",
                                 "ews",
                                 "cwsnType",
-                                "bloodGroup"
+                                "bloodGroup",
+                                "previousSchoolTcNumber",
+                                "previousSchoolTcDate",
+                                "fatherOccupation",
+                                "motherOccupation",
+                                "annualIncome",
+                                "rollNumber"
                               ]
                             }
                           },
@@ -54587,6 +54629,40 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "previousSchoolTcNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "previousSchoolTcDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "fatherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "motherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "annualIncome": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "rollNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -54669,7 +54745,13 @@
                           "bpl",
                           "ews",
                           "cwsnType",
-                          "bloodGroup"
+                          "bloodGroup",
+                          "previousSchoolTcNumber",
+                          "previousSchoolTcDate",
+                          "fatherOccupation",
+                          "motherOccupation",
+                          "annualIncome",
+                          "rollNumber"
                         ]
                       }
                     },
@@ -55041,6 +55123,40 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "previousSchoolTcNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "previousSchoolTcDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "fatherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "motherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "annualIncome": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "rollNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -55123,7 +55239,13 @@
                           "bpl",
                           "ews",
                           "cwsnType",
-                          "bloodGroup"
+                          "bloodGroup",
+                          "previousSchoolTcNumber",
+                          "previousSchoolTcDate",
+                          "fatherOccupation",
+                          "motherOccupation",
+                          "annualIncome",
+                          "rollNumber"
                         ]
                       }
                     },
@@ -55363,13 +55485,52 @@
                     "$ref": "#/properties/fatherName"
                   },
                   "religion": {
-                    "$ref": "#/properties/fatherName"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "HINDU",
+                          "MUSLIM",
+                          "CHRISTIAN",
+                          "SIKH",
+                          "BUDDHIST",
+                          "PARSI",
+                          "JAIN",
+                          "OTHER"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   },
                   "caste": {
                     "$ref": "#/properties/fatherName"
                   },
                   "category": {
-                    "$ref": "#/properties/fatherName"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "GENERAL",
+                          "SC",
+                          "ST",
+                          "OBC",
+                          "VJ",
+                          "NT",
+                          "SBC"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   },
                   "motherTongue": {
                     "$ref": "#/properties/fatherName"
@@ -55502,6 +55663,32 @@
                         ]
                       }
                     ]
+                  },
+                  "previousSchoolTcNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "previousSchoolTcDate": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/admissionDate"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "fatherOccupation": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherOccupation": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "annualIncome": {
+                    "type": "string",
+                    "pattern": "^\\d{0,9}$"
+                  },
+                  "rollNumber": {
+                    "type": "string",
+                    "pattern": "^\\d{0,4}$"
                   }
                 },
                 "additionalProperties": false
@@ -56995,6 +57182,40 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "previousSchoolTcNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "previousSchoolTcDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "fatherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "motherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "annualIncome": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "rollNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -57077,7 +57298,13 @@
                           "bpl",
                           "ews",
                           "cwsnType",
-                          "bloodGroup"
+                          "bloodGroup",
+                          "previousSchoolTcNumber",
+                          "previousSchoolTcDate",
+                          "fatherOccupation",
+                          "motherOccupation",
+                          "annualIncome",
+                          "rollNumber"
                         ]
                       }
                     },
@@ -57456,6 +57683,40 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "previousSchoolTcNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "previousSchoolTcDate": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/birthdate"
+                            }
+                          ],
+                          "nullable": true,
+                          "default": null
+                        },
+                        "fatherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "motherOccupation": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "annualIncome": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "rollNumber": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -57538,7 +57799,13 @@
                           "bpl",
                           "ews",
                           "cwsnType",
-                          "bloodGroup"
+                          "bloodGroup",
+                          "previousSchoolTcNumber",
+                          "previousSchoolTcDate",
+                          "fatherOccupation",
+                          "motherOccupation",
+                          "annualIncome",
+                          "rollNumber"
                         ]
                       }
                     },
@@ -57778,13 +58045,52 @@
                     "$ref": "#/properties/fatherName"
                   },
                   "religion": {
-                    "$ref": "#/properties/fatherName"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "HINDU",
+                          "MUSLIM",
+                          "CHRISTIAN",
+                          "SIKH",
+                          "BUDDHIST",
+                          "PARSI",
+                          "JAIN",
+                          "OTHER"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   },
                   "caste": {
                     "$ref": "#/properties/fatherName"
                   },
                   "category": {
-                    "$ref": "#/properties/fatherName"
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "GENERAL",
+                          "SC",
+                          "ST",
+                          "OBC",
+                          "VJ",
+                          "NT",
+                          "SBC"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
                   },
                   "motherTongue": {
                     "$ref": "#/properties/fatherName"
@@ -57917,6 +58223,32 @@
                         ]
                       }
                     ]
+                  },
+                  "previousSchoolTcNumber": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "previousSchoolTcDate": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/admissionDate"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "fatherOccupation": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "motherOccupation": {
+                    "$ref": "#/properties/fatherName"
+                  },
+                  "annualIncome": {
+                    "type": "string",
+                    "pattern": "^\\d{0,9}$"
+                  },
+                  "rollNumber": {
+                    "type": "string",
+                    "pattern": "^\\d{0,4}$"
                   }
                 },
                 "additionalProperties": false
@@ -60743,7 +61075,8 @@
                               "ADMITTED",
                               "DECLINED",
                               "WAITLISTED",
-                              "WITHDRAWN"
+                              "WITHDRAWN",
+                              "EXPIRED"
                             ],
                             "properties": {
                               "SUBMITTED": {
@@ -60765,6 +61098,9 @@
                                 "$ref": "#/properties/cycles/items/properties/seats/items/properties/seats"
                               },
                               "WITHDRAWN": {
+                                "$ref": "#/properties/cycles/items/properties/seats/items/properties/seats"
+                              },
+                              "EXPIRED": {
                                 "$ref": "#/properties/cycles/items/properties/seats/items/properties/seats"
                               }
                             },
@@ -61076,7 +61412,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ],
                       "properties": {
                         "SUBMITTED": {
@@ -61098,6 +61435,9 @@
                           "$ref": "#/properties/seats/items/properties/seats"
                         },
                         "WITHDRAWN": {
+                          "$ref": "#/properties/seats/items/properties/seats"
+                        },
+                        "EXPIRED": {
                           "$ref": "#/properties/seats/items/properties/seats"
                         }
                       },
@@ -61464,7 +61804,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ],
                       "properties": {
                         "SUBMITTED": {
@@ -61486,6 +61827,9 @@
                           "$ref": "#/properties/seats/items/properties/seats"
                         },
                         "WITHDRAWN": {
+                          "$ref": "#/properties/seats/items/properties/seats"
+                        },
+                        "EXPIRED": {
                           "$ref": "#/properties/seats/items/properties/seats"
                         }
                       },
@@ -61862,7 +62206,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ],
                       "properties": {
                         "SUBMITTED": {
@@ -61884,6 +62229,9 @@
                           "$ref": "#/properties/seats/items/properties/seats"
                         },
                         "WITHDRAWN": {
+                          "$ref": "#/properties/seats/items/properties/seats"
+                        },
+                        "EXPIRED": {
                           "$ref": "#/properties/seats/items/properties/seats"
                         }
                       },
@@ -62488,7 +62836,8 @@
                               "ADMITTED",
                               "DECLINED",
                               "WAITLISTED",
-                              "WITHDRAWN"
+                              "WITHDRAWN",
+                              "EXPIRED"
                             ]
                           },
                           "childName": {
@@ -62608,7 +62957,8 @@
                       "ADMITTED",
                       "DECLINED",
                       "WAITLISTED",
-                      "WITHDRAWN"
+                      "WITHDRAWN",
+                      "EXPIRED"
                     ]
                   },
                   "grade": {
@@ -62657,7 +63007,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -63211,7 +63562,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -63697,7 +64049,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -64229,7 +64582,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -64715,7 +65069,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -65226,7 +65581,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -65742,7 +66098,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -66398,7 +66755,8 @@
                               "ADMITTED",
                               "DECLINED",
                               "WAITLISTED",
-                              "WITHDRAWN"
+                              "WITHDRAWN",
+                              "EXPIRED"
                             ]
                           },
                           "childName": {
@@ -66533,7 +66891,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -67090,7 +67449,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -67575,7 +67935,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -68106,7 +68467,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -68611,7 +68973,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -69123,7 +69486,8 @@
                         "ADMITTED",
                         "DECLINED",
                         "WAITLISTED",
-                        "WITHDRAWN"
+                        "WITHDRAWN",
+                        "EXPIRED"
                       ]
                     },
                     "cycle": {
@@ -69698,7 +70062,8 @@
                               "ADMITTED",
                               "DECLINED",
                               "WAITLISTED",
-                              "WITHDRAWN"
+                              "WITHDRAWN",
+                              "EXPIRED"
                             ]
                           },
                           "childName": {

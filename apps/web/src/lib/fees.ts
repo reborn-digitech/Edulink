@@ -21,13 +21,16 @@ import { FEE_HEAD_KINDS } from "./constants";
  * and `fees-reports.ts` the reading side. The split follows the money: nothing
  * here ever changes a `paidPaise`.
  *
- * MONEY IS INTEGER PAISE THROUGHOUT. A concession is applied per line and
- * rounded half up to the paisa, so the sum of the lines is the demand and the
- * receipt can print the same numbers the demand carried.
+ * MONEY IS INTEGER PAISE THROUGHOUT. A percentage concession, or an amount
+ * on one head, is applied per line and rounded half up to the paisa; a flat
+ * amount on all heads is taken ONCE PER INSTALMENT and spread across the
+ * lines pro rata, so the sum of the lines is the demand and the receipt can
+ * print the same numbers the demand carried.
  *
  * A DEMAND IS REGENERATED ONLY WHILE UNTOUCHED. Assigning a plan, changing a
  * concession or moving a pupil to another structure rewrites the pupil's
- * OPEN, unpaid demands and leaves any with money against them exactly as they
+ * unpaid demands — OPEN ones, and ones a 100 % concession wrote as PAID with
+ * nothing owed — and leaves any with money against them exactly as they
  * are — a family that has paid Term 1 must not find Term 1 rewritten under
  * them. A published structure is frozen for the same reason: a change after
  * publishing is a new structure.
@@ -376,31 +379,74 @@ export type DemandLine = { headId: string; code: string; name: string; grossPais
 
 type ConcessionRow = { headId: string | null; kind: string; value: number };
 
-/** One line's concession: percentages on the line, amounts capped at the line. Rounded half up to the paisa. */
+/**
+ * One line's own concession: percentages (on this head or on all) on the
+ * line, and an amount on THIS head capped at the line. Rounded half up to the
+ * paisa. A flat amount on all heads is not a line's business — it is taken
+ * once per instalment by `concessionOnInstalment`, never once per line, or a
+ * "₹500 off" on a three-line term would come off three times.
+ */
 export function concessionOnLine(grossPaise: number, headId: string, concessions: ConcessionRow[]): number {
   let off = 0;
   for (const c of concessions) {
     if (c.headId && c.headId !== headId) continue;
     if (c.kind === "PERCENT") off += Math.round((grossPaise * c.value) / 10000);
-    else off += c.value;
+    else if (c.headId) off += c.value;
   }
   return Math.max(0, Math.min(grossPaise, off));
 }
 
 /**
+ * The concession on each line of one instalment, in the lines' order. The
+ * per-line concessions first; then the flat all-heads amounts, summed and
+ * taken once against the instalment: spread pro rata by the line's gross,
+ * rounded half up, each share capped at what the line has left, the last
+ * line taking the remainder, and the whole capped at the instalment's gross
+ * so no demand goes below zero. A rounding remainder a capped line could not
+ * hold goes to the first line that still has room.
+ */
+export function concessionOnInstalment(lines: { headId: string; grossPaise: number }[], concessions: ConcessionRow[]): number[] {
+  const off = lines.map((l) => concessionOnLine(l.grossPaise, l.headId, concessions));
+  const flat = concessions.filter((c) => !c.headId && c.kind === "AMOUNT").reduce((a, c) => a + c.value, 0);
+  const grossTotal = lines.reduce((a, l) => a + l.grossPaise, 0);
+  if (flat <= 0 || grossTotal <= 0) return off;
+  const room = (i: number) => lines[i]!.grossPaise - off[i]!;
+  let left = Math.min(flat, grossTotal - off.reduce((a, x) => a + x, 0));
+  const spread = left;
+  for (let i = 0; i < lines.length && left > 0; i += 1) {
+    const share = i === lines.length - 1 ? left : Math.min(left, Math.round((spread * lines[i]!.grossPaise) / grossTotal));
+    const take = Math.min(room(i), share);
+    off[i]! += take;
+    left -= take;
+  }
+  for (let i = 0; i < lines.length && left > 0; i += 1) {
+    const take = Math.min(room(i), left);
+    off[i]! += take;
+    left -= take;
+  }
+  return off;
+}
+
+/**
  * Rewrites a pupil's demands for a year from their plan and their live
- * concessions. Untouched demands (OPEN, nothing paid) are recomputed;
- * touched ones are left exactly as they stand; demands for instalments the
- * plan no longer has are removed only if untouched. Runs inside the caller's
- * transaction.
+ * concessions. Untouched demands are recomputed; touched ones are left
+ * exactly as they stand; demands for instalments the plan no longer has are
+ * removed only if untouched. Runs inside the caller's transaction.
+ *
+ * UNTOUCHED means no money has ever been allocated to it — paidPaise 0 and
+ * not one allocation row, so a demand a reversed payment once sat on stays
+ * as it is — and it is either OPEN or the PAID-with-nothing-owed a 100 %
+ * concession writes. That last case is why the status alone is not the
+ * test: such a demand was never paid by anyone, and revoking the concession
+ * must reopen it with the new net.
  */
 export async function regenerateDemands(tx: typeof db, schoolId: string, studentMembershipId: string, academicYearId: string): Promise<{ written: number; kept: number }> {
   const plan = await tx.studentFeePlan.findUnique({
     where: { studentMembershipId_academicYearId: { studentMembershipId, academicYearId } },
     include: { structure: { include: { instalments: { orderBy: { sortOrder: "asc" }, include: { lines: { include: { head: { select: { code: true, name: true } } } } } } } } },
   });
-  const existing = await tx.feeDemand.findMany({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: { not: null } } });
-  const untouched = (d: (typeof existing)[number]) => d.paidPaise === 0 && d.status === "OPEN";
+  const existing = await tx.feeDemand.findMany({ where: { schoolId, studentMembershipId, academicYearId, instalmentId: { not: null } }, include: { _count: { select: { allocations: true } } } });
+  const untouched = (d: (typeof existing)[number]) => d.paidPaise === 0 && d._count.allocations === 0 && (d.status === "OPEN" || (d.status === "PAID" && d.netPaise === 0));
   if (!plan) {
     const removable = existing.filter(untouched).map((d) => d.id);
     if (removable.length) await tx.feeDemand.deleteMany({ where: { id: { in: removable } } });
@@ -411,7 +457,11 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
   let written = 0;
   let kept = 0;
   for (const inst of plan.structure.instalments) {
-    const lines: DemandLine[] = inst.lines.map((l) => ({ headId: l.headId, code: l.head.code, name: l.head.name, grossPaise: l.amountPaise, concessionPaise: concessionOnLine(l.amountPaise, l.headId, concessions) }));
+    const off = concessionOnInstalment(
+      inst.lines.map((l) => ({ headId: l.headId, grossPaise: l.amountPaise })),
+      concessions,
+    );
+    const lines: DemandLine[] = inst.lines.map((l, i) => ({ headId: l.headId, code: l.head.code, name: l.head.name, grossPaise: l.amountPaise, concessionPaise: off[i]! }));
     const grossPaise = lines.reduce((a, l) => a + l.grossPaise, 0);
     const concessionPaise = lines.reduce((a, l) => a + l.concessionPaise, 0);
     const netPaise = grossPaise - concessionPaise;
@@ -638,6 +688,7 @@ export async function pupilLedger(schoolId: string, studentMembershipId: string,
     }),
   ]);
   const rows = demands.map((d) => toDemandRow(d, opts.todayKey));
+  const counted = rows.filter((d) => d.status !== "CANCELLED" && d.status !== "CARRIED");
   return {
     pupil: { studentMembershipId: pupil.id, name: pupil.user.preferredName ?? pupil.user.name, studentCode: pupil.studentCode, gradeLevel: pupil.gradeLevel, className: pupil.enrollments[0]?.class.name ?? null, leftAt: pupil.leftAt },
     year,
@@ -660,9 +711,13 @@ export async function pupilLedger(schoolId: string, studentMembershipId: string,
       reversalReason: p.reversalReason,
       refundedPaise: p.refunds.reduce((a, r) => a + r.amountPaise, 0),
     })),
+    // One row set for net and paid: a CARRIED demand's balance lives in next
+    // year's opening balance and a CANCELLED one asks nothing, so neither
+    // counts on either side — paid over the year's own demands can never
+    // exceed net. Outstanding and overdue are 0 on both already (toDemandRow).
     totals: {
-      netPaise: rows.filter((d) => d.status !== "CANCELLED" && d.status !== "CARRIED").reduce((a, d) => a + d.netPaise, 0),
-      paidPaise: rows.reduce((a, d) => a + d.paidPaise, 0),
+      netPaise: counted.reduce((a, d) => a + d.netPaise, 0),
+      paidPaise: counted.reduce((a, d) => a + d.paidPaise, 0),
       outstandingPaise: rows.reduce((a, d) => a + d.outstandingPaise, 0),
       overduePaise: rows.filter((d) => d.overdue).reduce((a, d) => a + d.outstandingPaise, 0),
     },

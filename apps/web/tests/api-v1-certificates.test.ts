@@ -146,7 +146,7 @@ describe("the pupil record", () => {
     await as("STRANGER");
     expect((await familyRecordGet(get(`/api/v1/family/record?childId=${pupilA}`))).status).toBe(403);
     await as("PARENT");
-    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", admissionNumber: "GR-1042", religion: "Hindu", category: "General" }));
+    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", admissionNumber: "GR-1042", religion: "HINDU", category: "GENERAL" }));
     expect(res.status).toBe(200);
     view = await res.json();
     expect(view.missing).toEqual(["admissionDate"]);

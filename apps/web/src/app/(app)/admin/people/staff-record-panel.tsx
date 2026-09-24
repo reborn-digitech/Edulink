@@ -15,6 +15,8 @@ export type StaffRecordInitial = {
   designation: string;
   qualification: string;
   joinedOnKey: string;
+  birthdateKey: string;
+  serviceJoinedOnKey: string;
   leaveDaysPerYear: string;
   /** The UDISE+ teacher profile's coded answers; "" for not said. */
   gender: string;
@@ -64,6 +66,8 @@ export function StaffRecordPanel({
         designation: form.designation,
         qualification: form.qualification,
         joinedOnKey: form.joinedOnKey || null,
+        birthdateKey: form.birthdateKey || null,
+        serviceJoinedOnKey: form.serviceJoinedOnKey || null,
         leaveDaysPerYear: form.leaveDaysPerYear.trim() === "" ? null : Number(form.leaveDaysPerYear),
         gender: form.gender || null,
         socialCategory: form.socialCategory || null,
@@ -103,6 +107,8 @@ export function StaffRecordPanel({
         <TextField label={t("staff.designation")} value={form.designation} placeholder={t("staff.designationPlaceholder")} onChange={set("designation")} data-testid="staff-designation" />
         <TextField label={t("staff.qualification")} value={form.qualification} placeholder={t("staff.qualificationPlaceholder")} onChange={set("qualification")} className="sm:col-span-2" data-testid="staff-qualification" />
         <DateField label={t("staff.joinedOn")} value={form.joinedOnKey} onChange={set("joinedOnKey")} />
+        <DateField label={t("staff.serviceJoinedOn")} hint={t("staff.serviceJoinedOnHint")} value={form.serviceJoinedOnKey} onChange={set("serviceJoinedOnKey")} data-testid="staff-service-joined" />
+        <DateField label={t("staff.birthdate")} value={form.birthdateKey} onChange={set("birthdateKey")} data-testid="staff-birthdate" />
         <TextField label={t("staff.leaveDays")} hint={t("staff.leaveDaysHint")} inputMode="numeric" value={form.leaveDaysPerYear} onChange={set("leaveDaysPerYear")} data-testid="staff-leave-days" />
       </div>
 

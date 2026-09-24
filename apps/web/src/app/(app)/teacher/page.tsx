@@ -15,6 +15,7 @@ import { marksTodoFor } from "@/lib/exams";
 import { EXAM_KIND_KEY } from "@/lib/constants";
 import { teacherWeek } from "@/lib/timetable";
 import { myCovers } from "@/lib/substitutions";
+import { registersDue } from "@/lib/attendance";
 import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -269,16 +270,20 @@ export default async function TeacherHome() {
     );
   }
 
-  const [classes, sessionsToday, dueSoon, ungraded] = await Promise.all([
+  // The registers this teacher is still to take: only the classes they MAY
+  // take (ClassTeacher.canTakeAttendance), only ones with a pupil in them, and
+  // none at all on a day the school is shut.
+  const takeable = await db.classTeacher.findMany({
+    where: { teacherMembershipId: ctx.membershipId, classId: { in: classIds }, canTakeAttendance: true },
+    select: { classId: true },
+  });
+  const [classes, registers, dueSoon, ungraded] = await Promise.all([
     db.class.findMany({
       where: { id: { in: classIds } },
       select: { id: true, name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
       orderBy: { name: "asc" },
     }),
-    db.attendanceSession.findMany({
-      where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } },
-      select: { classId: true },
-    }),
+    registersDue(ctx.schoolId, dateKey, { classIds: [...new Set(takeable.map((row) => row.classId))] }),
     db.assignment.findMany({
       where: {
         schoolId: ctx.schoolId,
@@ -299,8 +304,8 @@ export default async function TeacherHome() {
     }),
   ]);
 
-  const done = new Set(sessionsToday.map((s) => s.classId));
-  const outstanding = classes.filter((c) => !done.has(c.id));
+  const missing = new Set(registers.missing);
+  const outstanding = classes.filter((c) => missing.has(c.id));
 
   return (
     <div className="space-y-6">
@@ -355,7 +360,7 @@ export default async function TeacherHome() {
         <CardBody>
           <ul className="space-y-1.5">
             {classes.map((klass) => {
-              const taken = done.has(klass.id);
+              const taken = registers.taken.includes(klass.id);
               return (
                 <li key={klass.id}>
                   <Link

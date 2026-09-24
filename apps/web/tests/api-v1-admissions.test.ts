@@ -31,6 +31,7 @@ import { POST as bookPost } from "@/app/api/v1/family/applications/[applicationI
 import { POST as respondPost } from "@/app/api/v1/family/applications/[applicationId]/respond/route";
 import { POST as withdrawPost } from "@/app/api/v1/family/applications/[applicationId]/withdraw/route";
 import { GET as schoolGet } from "@/app/api/v1/shared/schools/[schoolId]/admissions/route";
+import { expireOffers } from "@/lib/admissions";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -361,6 +362,86 @@ describe("the office's steps", () => {
     expect((await res.json()).items.map((r: { id: string }) => r.id)).toEqual([taraId]);
   });
 
+  it("a declined application keeps its sitting on the record and not on the count; an offer past its date reads as expired at once, the hourly job writes it, tells the family and audits a count with no name, changes nothing the second time, and the family still cannot answer it", async () => {
+    // Two more of parent B's, both for grade 6, on a sitting of their own.
+    await as("ADMIN");
+    const startsAt = new Date(Date.now() + 14 * 86_400_000);
+    startsAt.setUTCSeconds(0, 0);
+    let res = await slotsPost(json(`/api/v1/office/admissions/cycles/${cycleId}/slots`, { startsAt: startsAt.toISOString(), durationMinutes: 30, count: 1, capacity: 2 }), params({ cycleId }));
+    expect(await res.json()).toEqual({ created: 1 });
+    const slotC = (await (await slotsGet(get(`/api/v1/office/admissions/cycles/${cycleId}/slots`), params({ cycleId }))).json()).slots.find((s: { startsAt: string }) => s.startsAt === startsAt.toISOString()).id as string;
+    await as("PARENT_B");
+    const umaId = (await (await applyPost(json("/api/v1/family/applications", { schoolId, cycleId, childName: `ZZ Adm Child ${STAMP} Uma`, childBirthdate: "2016-03-03", gradeApplied: "6" }))).json()).id as string;
+    const veerId = (await (await applyPost(json("/api/v1/family/applications", { schoolId, cycleId, childName: `ZZ Adm Child ${STAMP} Veer`, childBirthdate: "2016-04-04", gradeApplied: "6" }))).json()).id as string;
+    expect((await (await bookPost(json(`/api/v1/family/applications/${umaId}/book`, { slotId: slotC }), params({ applicationId: umaId }))).json()).testSlot).toMatchObject({ id: slotC, booked: 1 });
+    expect((await (await bookPost(json(`/api/v1/family/applications/${veerId}/book`, { slotId: slotC }), params({ applicationId: veerId }))).json()).testSlot).toMatchObject({ id: slotC, booked: 2 });
+
+    // Declined: Uma's row still says where she sat; the sitting counts one fewer, and is offered again to a family still looking.
+    await as("ADMIN");
+    res = await decidePost(json(`/api/v1/office/admissions/applications/${umaId}/decide`, { status: "DECLINED" }), params({ applicationId: umaId }));
+    expect(await res.json()).toMatchObject({ status: "DECLINED", testSlot: { id: slotC, booked: 1 } });
+    expect((await db.application.findUniqueOrThrow({ where: { id: umaId }, select: { testSlotId: true } })).testSlotId).toBe(slotC);
+    res = await slotsGet(get(`/api/v1/office/admissions/cycles/${cycleId}/slots`), params({ cycleId }));
+    expect((await res.json()).slots.find((s: { id: string }) => s.id === slotC)).toMatchObject({ capacity: 2, booked: 1 });
+
+    // Veer is offered with a date already gone: every reader says EXPIRED before any job runs, and the seat is not counted as offered.
+    res = await offerPost(json(`/api/v1/office/admissions/applications/${veerId}/offer`, { expiresOn: dayKey(-1) }), params({ applicationId: veerId }));
+    expect(res.status).toBe(200);
+    const lapsed = await res.json();
+    expect(lapsed.status).toBe("EXPIRED");
+    expect(lapsed.can).toMatchObject({ respond: false, offer: true, decide: true, admit: false });
+    expect((await db.application.findUniqueOrThrow({ where: { id: veerId }, select: { status: true } })).status).toBe("OFFERED");
+    res = await cyclesGet();
+    const cycle = (await res.json()).cycles.find((c: { id: string }) => c.id === cycleId);
+    expect(cycle.counts.EXPIRED).toBe(1);
+    expect(cycle.seats.find((s: { grade: string }) => s.grade === "6")).toMatchObject({ offered: 0 });
+    expect((await (await pipelineGet(get("/api/v1/office/admissions/applications?status=OFFERED"))).json()).items.map((r: { id: string }) => r.id)).not.toContain(veerId);
+    expect((await (await pipelineGet(get("/api/v1/office/admissions/applications?status=EXPIRED"))).json()).items.map((r: { id: string; status: string }) => [r.id, r.status])).toEqual([[veerId, "EXPIRED"]]);
+    await as("PARENT_B");
+    res = await respondPost(json(`/api/v1/family/applications/${veerId}/respond`, { answer: "ACCEPT" }), params({ applicationId: veerId }));
+    expect(res.status).toBe(403);
+    expect((await res.json()).error).toContain("expired");
+
+    // The job writes it down, once.
+    const toldBefore = await db.notification.count({ where: { userId: parentBUserId, kind: "ADMISSION" } });
+    const first = await expireOffers();
+    expect(first.summary.expired).toBeGreaterThanOrEqual(1);
+    expect(first.perSchool[schoolId]).toEqual({ expired: 1 });
+    const written = await db.application.findUniqueOrThrow({ where: { id: veerId }, select: { status: true, decidedAt: true, decisionNote: true, testSlotId: true } });
+    expect(written).toMatchObject({ status: "EXPIRED", decisionNote: null, testSlotId: slotC });
+    expect(written.decidedAt).not.toBeNull();
+    await as("ADMIN");
+    res = await slotsGet(get(`/api/v1/office/admissions/cycles/${cycleId}/slots`), params({ cycleId }));
+    expect((await res.json()).slots.find((s: { id: string }) => s.id === slotC)).toMatchObject({ capacity: 2, booked: 0 });
+    await as("PARENT_B");
+    const told = await db.notification.findFirst({ where: { userId: parentBUserId, kind: "ADMISSION" }, orderBy: { createdAt: "desc" } });
+    expect(told?.title).toContain("has expired");
+    expect(told?.url).toBe(`/parent/applications/${veerId}`);
+    expect(await db.notification.count({ where: { userId: parentBUserId, kind: "ADMISSION" } })).toBe(toldBefore + 1);
+    const audit = await db.auditLog.findFirst({ where: { action: "admissions.expireOffers" }, orderBy: { createdAt: "desc" } });
+    expect(audit?.schoolId).toBeNull();
+    expect(JSON.parse(audit!.meta)).toMatchObject({ expired: first.summary.expired });
+    expect(audit!.meta).not.toContain("Veer");
+    expect(audit!.meta).not.toContain(veerId);
+
+    // The second run finds nothing here and changes nothing.
+    const second = await expireOffers();
+    expect(second.perSchool[schoolId]).toBeUndefined();
+    expect((await db.application.findUniqueOrThrow({ where: { id: veerId }, select: { decidedAt: true } })).decidedAt).toEqual(written.decidedAt);
+    expect(await db.notification.count({ where: { userId: parentBUserId, kind: "ADMISSION" } })).toBe(toldBefore + 1);
+    res = await respondPost(json(`/api/v1/family/applications/${veerId}/respond`, { answer: "ACCEPT" }), params({ applicationId: veerId }));
+    expect(res.status).toBe(403);
+    expect((await res.json()).error).toContain("expired");
+    res = await familyAppGet(get(`/api/v1/family/applications/${veerId}`), params({ applicationId: veerId }));
+    expect((await res.json()).can).toMatchObject({ respond: false, withdraw: true });
+
+    // Not a dead end for the office: a lapsed offer may be made again, or the child put back or waitlisted.
+    await as("ADMIN");
+    res = await offerPost(json(`/api/v1/office/admissions/applications/${veerId}/offer`, { expiresOn: dayKey(7) }), params({ applicationId: veerId }));
+    expect(await res.json()).toMatchObject({ status: "OFFERED", decidedAt: null });
+    expect((await (await decidePost(json(`/api/v1/office/admissions/applications/${veerId}/decide`, { status: "WAITLISTED" }), params({ applicationId: veerId }))).json())).toMatchObject({ status: "WAITLISTED", offeredAt: null, offerExpiresAt: null });
+  });
+
   it("admits: pupil account, membership, enrolment, the applicant as guardian, the record from the form and the fee plan with its demand in one go; again answers as it stands; the seat count holds; then the closed cycle is purged of the rest", async () => {
     await as("ADMIN");
     expect((await admitPost(json(`/api/v1/office/admissions/applications/${samId}/admit`, {}), params({ applicationId: samId }))).status).toBe(403);
@@ -419,7 +500,7 @@ describe("the office's steps", () => {
     expect((await applyPost(json("/api/v1/family/applications", { schoolId, cycleId, childName: "Late", childBirthdate: null, gradeApplied: "6" }))).status).toBe(403);
     await as("ADMIN");
     res = await cyclePurge(get(`/api/v1/office/admissions/cycles/${cycleId}/purge`), params({ cycleId }));
-    expect(await res.json()).toEqual({ ok: true, removed: 4 });
+    expect(await res.json()).toEqual({ ok: true, removed: 6 });
     expect(await db.application.findMany({ where: { cycleId }, select: { id: true } })).toEqual([{ id: riyaId }]);
     expect(await (await cyclePurge(get(`/api/v1/office/admissions/cycles/${cycleId}/purge`), params({ cycleId }))).json()).toEqual({ ok: true, removed: 0 });
   });

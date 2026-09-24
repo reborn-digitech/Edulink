@@ -591,6 +591,8 @@ model Enrollment {
   status              String    @default("ACTIVE") // ACTIVE | REMOVED
   enrolledAt          DateTime  @default(now())
   removedAt           DateTime?
+  /// The roll number the school assigned in this class, printed on the filing sheets in place of a counter.
+  rollNumber          Int?
   school              School    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -2069,6 +2071,10 @@ model StaffRecord {
   designation               String?
   qualification             String?
   joinedOn                  DateTime?
+  /// The DCF's own two dates: the teacher's date of birth, and the day they first joined service
+  /// anywhere, as distinct from joinedOn, the day they joined this school.
+  birthdate                 DateTime?
+  serviceJoinedOn           DateTime?
   /// Entitlement per academic year. Null means the school has not said.
   leaveDaysPerYear          Int?
   /// FILINGS: the UDISE+ teacher profile beyond the payroll basics — gender
@@ -3864,47 +3870,56 @@ model Substitution {
 /// Aadhaar: a school may not demand it and the app does not hold it.
 /// Policy: docs/decisions/0002, row 28.
 model PupilRecord {
-  id                  String    @id @default(cuid())
-  schoolId            String
-  studentMembershipId String    @unique
-  fatherName          String?
-  motherName          String?
-  placeOfBirth        String?
-  nationality         String?
-  religion            String?
-  caste               String?
-  category            String?
-  motherTongue        String?
-  addressLine         String?
-  city                String?
-  postalCode          String?
+  id                     String    @id @default(cuid())
+  schoolId               String
+  studentMembershipId    String    @unique
+  fatherName             String?
+  motherName             String?
+  placeOfBirth           String?
+  nationality            String?
+  religion               String?
+  caste                  String?
+  category               String?
+  motherTongue           String?
+  addressLine            String?
+  city                   String?
+  postalCode             String?
   /// The school's own admission register (GR) number, distinct from the platform's student code.
-  admissionNumber     String?
-  admissionDate       DateTime?
-  admittedToGrade     String?
-  previousSchool      String?
+  admissionNumber        String?
+  admissionDate          DateTime?
+  admittedToGrade        String?
+  previousSchool         String?
+  /// The transfer certificate the previous school issued — its number and date — which the
+  /// admission register records and a board's pre-list asks for.
+  previousSchoolTcNumber String?
+  previousSchoolTcDate   DateTime?
+  /// The household as the RTE and EWS verifications ask for it: each parent's occupation and the
+  /// family's annual income in rupees. Read by no filing sheet yet; the office and the family fill them.
+  fatherOccupation       String?
+  motherOccupation       String?
+  annualIncome           Int?
   /// UDISE+ Permanent Education Number.
-  penNumber           String?
+  penNumber              String?
   /// FILINGS: what UDISE+ and the boards ask beyond the certificate fields.
   /// Gender as the portal codes it (M | F | T); the name and the parents'
   /// names in the school's own script for a state board that files in it;
   /// below-poverty-line and economically-weaker-section flags; the type of
   /// disability in the portal's list, or null; the second language and the
   /// board's subject codes the pupil sits. Never Aadhaar.
-  gender              String?
-  nameLocal           String?
-  fatherNameLocal     String?
-  motherNameLocal     String?
-  bpl                 Boolean?
-  ews                 Boolean?
-  cwsnType            String?
-  bloodGroup          String?
+  gender                 String?
+  nameLocal              String?
+  fatherNameLocal        String?
+  motherNameLocal        String?
+  bpl                    Boolean?
+  ews                    Boolean?
+  cwsnType               String?
+  bloodGroup             String?
   /// When the office last asked the family to fill it in, and when the family last did.
-  requestedAt         DateTime?
-  familyFilledAt      DateTime?
-  updatedByUserId     String?
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
+  requestedAt            DateTime?
+  familyFilledAt         DateTime?
+  updatedByUserId        String?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
 
   school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)

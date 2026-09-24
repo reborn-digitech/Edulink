@@ -87,7 +87,8 @@ function Overview({ d }: { d: AdminOverview }) {
         </Card>
       )}
       <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
-        <Stat label={t("admin.registerTaken")} value={counts.classes === 0 ? t("admin.noClassesYet") : t("admin.takenToday", { done: counts.registersTakenToday, total: counts.classes })} tone={d.attendanceTakenPercent === null ? "fg" : d.attendanceTakenPercent >= 100 ? "ok" : "warn"} />
+        {/* The percent is the API's truthful figure — null when nothing is expected today (a closed day, or no class with pupils) — so the count against the classes is shown only while something is. */}
+        <Stat label={t("admin.registerTaken")} value={counts.classes === 0 ? t("admin.noClassesYet") : d.attendanceTakenPercent === null ? "—" : t("admin.takenToday", { done: counts.registersTakenToday, total: counts.classes })} tone={d.attendanceTakenPercent === null ? "fg" : d.attendanceTakenPercent >= 100 ? "ok" : "warn"} />
         <Stat label={t("principal.attendance")} value={pct(d.attendanceTakenPercent)} />
       </View>
       <QuickActions actions={QUICK.ADMIN ?? []} onOpen={(href) => router.push(href as never)} />

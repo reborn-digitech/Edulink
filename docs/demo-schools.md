@@ -94,14 +94,15 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 |---|---|
 | People, roles, classes | /admin/people, /admin/classes, /admin/classes/<id>; /principal/staff |
 | Timetable, Mon–Sat, 6 periods + a break, every class staffed | /admin/timetable, /teacher (today's lessons), /principal/timetable |
-| Class registers, last 10 teaching days | /admin/attendance, /teacher/attendance?classId=<id>, /parent/attendance |
+| Class registers, last 10 open days; the whole of last year's register on the archived classes | /admin/attendance, /teacher/attendance?classId=<id>, /parent/attendance |
+| School calendar for both years: holidays, an exam span, the annual day | /admin/calendar |
 | Staff register, last 10 days, one late, one absent, today a check-in | /admin/staff-attendance |
 | Leave: one pending (cover nominated), one approved | /principal/leave, /teacher/leave |
 | Substitutions today (a subject teacher absent, a free colleague covering) | /admin/substitutions |
 | Academic years: 2025–26 closed, 2026–27 current with two terms, 2027–28 waiting | /admin/settings, /admin/calendar |
 | Last year's annual report card, published, for every pupil in grades 6–10 | /report-cards (pupil), /parent/grades → cards, /admin/report-cards |
 | Term 1 exams and published term cards for grades 6 and 9 (a draft set too) | /admin/exams, /admin/report-cards, /teacher/classes/cmubsk1ha002xgnnddzyxcbe7/report-cards |
-| Fees: a structure per grade, every pupil on a plan, two cash receipts per grade | /admin/fees, /admin/fees/dues, /parent/fees, /fees/receipts |
+| Fees: a structure per grade, every pupil on a plan, two cash receipts per grade, a 25 % tuition concession (grade 7), a bus-fee refund on a cash payment (grade 6) | /admin/fees, /admin/fees/dues, /parent/fees, /fees/receipts |
 | Texts: every parent numbered, SMS and WhatsApp on, one broadcast sent | /admin/messaging |
 | Health cards (three per school plus both Deshmukh children), one check-up | /parent/health, /admin/people → a pupil |
 | Incidents: one closed, one open with a note | /admin/incidents, /teacher/incidents, /parent/incidents |
@@ -116,5 +117,12 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 | Quiz practice: 2–5 finished attempts per pupil in grades 6–9 with badges | /student/practice, /parent/practice, /teacher/practice, /principal (practice insights) |
 | Meetings: two teachers per school with slots next week, Sunita booked at each | /teacher/meetings, /parent/meetings |
 | Experts: a published expert, slots, a confirmed workshop at each school with messages, an active mentorship | /experts, /experts/bookings/<id> (as an admin), /expert, /mentoring |
+| A pending teacher invitation (`<school>.invite1@demo.relay.test`) | /admin/people → invitations |
+| A remark thread between the grade-7 form teacher and a parent, the reply unread by the teacher | /teacher/remarks, /parent/remarks |
+| An OPEN report on a comment under the robotics post | /admin/safety (or the review queue) |
+| A practice assignment for grade 6 with a target level | /teacher/practice, /student/practice |
+| A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
+| A pupil who left in August with a transfer record (`<school>.pupil49`, Ayaan Bhatt / Siddhesh Thakare); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
+| Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
 
-Not seeded: a review round (deliberately skipped as cheap only through the UI), fee refunds and online payments, competitions.
+Not seeded: a review round (deliberately skipped as cheap only through the UI), online payments.

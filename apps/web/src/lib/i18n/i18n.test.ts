@@ -50,6 +50,10 @@ const SHARED_WITH_ENGLISH = new Set([
   "reportCardConfig.paperLetter",
   /** "UDISE+ PEN" is the government portal's own label for the permanent education number; every school form prints it in Latin letters. */
   "certificateDefaults.rowPen",
+  /** SC, ST and OBC are the constitutional category initials every Indian form prints in Latin letters, in every language. */
+  "pupilRecord.catSC",
+  "pupilRecord.catST",
+  "pupilRecord.catOBC",
   "certificatePlaceholders.pupil_penNumber",
   /** Board and file-type acronyms every Indian school writes in Latin letters: CBSE, CISCE, NIOS, IB, CSV, Excel. */
   "filings.boardCBSE",

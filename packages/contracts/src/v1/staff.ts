@@ -598,6 +598,9 @@ export const staffProfileSchema = z.object({
       qualification: z.string().nullable(),
       joinedOnKey: dateKey.nullable(),
       leaveDaysPerYear: z.number().int().nullable(),
+      /** The DCF's own two dates: date of birth, and the first day in service anywhere. */
+      birthdateKey: dateKey.nullable().default(null),
+      serviceJoinedOnKey: dateKey.nullable().default(null),
       gender: z.string().nullable().default(null),
       socialCategory: z.string().nullable().default(null),
       academicQualification: z.string().nullable().default(null),

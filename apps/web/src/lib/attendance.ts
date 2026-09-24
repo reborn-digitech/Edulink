@@ -5,6 +5,7 @@ import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import { formatDateKey } from "./dates";
+import { closedOn } from "./holidays";
 import type { AttendanceStatus } from "./constants";
 
 /** Per-status notification titles — one key each, so "was marked late"
@@ -45,7 +46,8 @@ export type MergeResult = {
   applied: number;
   skipped: number;
   rejected: { studentMembershipId: string; reason: string }[];
-  sessionId: string;
+  /** Null when nothing in the batch could be stored — no register exists for a save of nothing. */
+  sessionId: string | null;
 };
 
 /** The slice of the transaction client the register uses; the same idiom as `TenantTx` in membership.ts. */
@@ -109,6 +111,14 @@ export async function saveAttendanceBatch(opts: {
       });
       return false;
     });
+
+    // NOTHING VALID, NO SESSION. The session row is what every "was the
+    // register taken" reader counts, so a batch of only rejected marks — or an
+    // empty one — must not leave one behind: the audit found eighteen registers
+    // "taken" that held no marks at all. The rejections are still reported.
+    if (valid.length === 0) {
+      return { rejected, session: null, applied: 0, skipped: 0, newlyAbsent: [] };
+    }
 
     // The session row is the unit that makes (class, date) unique. upsert rather
     // than create so two teachers opening the register at once do not collide.
@@ -193,7 +203,7 @@ export async function saveAttendanceBatch(opts: {
     return { rejected, session, applied, skipped, newlyAbsent };
   });
 
-  if (applied > 0) {
+  if (applied > 0 && session) {
     publish([channel.class(classId), channel.school(schoolId)], {
       type: "attendance.updated",
       classId,
@@ -235,7 +245,59 @@ export async function saveAttendanceBatch(opts: {
     );
   }
 
-  return { applied, skipped, rejected, sessionId: session.id };
+  return { applied, skipped, rejected, sessionId: session?.id ?? null };
+}
+
+/**
+ * The registers a school expects today, and which of them are still to take.
+ *
+ * Three things the plain "sessions today vs classes" subtraction got wrong,
+ * each of which the audit saw on a real school:
+ *   * a CLOSED DAY — a non-teaching weekday per School.teachingDays, or a
+ *     closing holiday on the calendar — expects no register at all, so nothing
+ *     is missing and nobody is chased for it;
+ *   * a class with NO ACTIVE ENROLMENT has nobody to mark, so it is not
+ *     expected either — a freshly made class or an emptied one is not a
+ *     register the principal can still take;
+ *   * a teacher's own list is only the classes they MAY take, per
+ *     ClassTeacher.canTakeAttendance, which the caller narrows with `classIds`.
+ *
+ * `taken` counts the sessions actually stored for the expected classes; on a
+ * closed day it is whatever was taken out of habit, and `expected` is empty.
+ */
+export async function registersDue(
+  schoolId: string,
+  dateKey: string,
+  opts: { classIds?: string[] } = {},
+): Promise<{ open: boolean; expected: string[]; taken: string[]; missing: string[] }> {
+  const day = await closedOn(schoolId, dateKey);
+  const open = day.teachingDay && !day.closed;
+
+  const classes = await db.class.findMany({
+    where: {
+      schoolId,
+      archivedAt: null,
+      enrollments: { some: { status: "ACTIVE" } },
+      ...(opts.classIds ? { id: { in: opts.classIds } } : {}),
+    },
+    select: { id: true },
+    orderBy: { name: "asc" },
+  });
+  const expected = open ? classes.map((c) => c.id) : [];
+  if (expected.length === 0) return { open, expected, taken: [], missing: [] };
+
+  const sessions = await db.attendanceSession.findMany({
+    where: { schoolId, dateKey, classId: { in: expected } },
+    select: { classId: true },
+  });
+  const taken = new Set(sessions.map((s) => s.classId));
+
+  return {
+    open,
+    expected,
+    taken: [...taken],
+    missing: expected.filter((id) => !taken.has(id)),
+  };
 }
 
 /** Roster plus any marks already recorded for the day. */

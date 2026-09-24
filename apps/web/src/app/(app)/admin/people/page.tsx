@@ -374,6 +374,8 @@ export default async function DirectoryPage({
                                   designation: member.staffRecord?.designation ?? "",
                                   qualification: member.staffRecord?.qualification ?? "",
                                   joinedOnKey: member.staffRecord?.joinedOn?.toISOString().slice(0, 10) ?? "",
+                                  birthdateKey: member.staffRecord?.birthdate?.toISOString().slice(0, 10) ?? "",
+                                  serviceJoinedOnKey: member.staffRecord?.serviceJoinedOn?.toISOString().slice(0, 10) ?? "",
                                   leaveDaysPerYear: member.staffRecord?.leaveDaysPerYear?.toString() ?? "",
                                   gender: member.staffRecord?.gender ?? "",
                                   socialCategory: member.staffRecord?.socialCategory ?? "",

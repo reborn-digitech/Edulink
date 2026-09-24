@@ -83,6 +83,9 @@ export function TeacherProfile() {
         [t("staff.designation"), d.record.designation],
         [t("staff.qualification"), d.record.qualification],
         [t("staff.joinedOn"), d.record.joinedOnKey ? formatDateKey(d.record.joinedOnKey, locale, { day: "numeric", month: "short", year: "numeric" }) : null],
+        // The DCF's own two dates, beside the day they joined this school.
+        [t("staff.birthdate"), d.record.birthdateKey ? formatDateKey(d.record.birthdateKey, locale, { day: "numeric", month: "short", year: "numeric" }) : null],
+        [t("staff.serviceJoinedOn"), d.record.serviceJoinedOnKey ? formatDateKey(d.record.serviceJoinedOnKey, locale, { day: "numeric", month: "short", year: "numeric" }) : null],
         [t("staff.leaveDays"), d.record.leaveDaysPerYear === null ? null : String(d.record.leaveDaysPerYear)],
       ].filter((r): r is [string, string] => Boolean(r[1])))
     : [];

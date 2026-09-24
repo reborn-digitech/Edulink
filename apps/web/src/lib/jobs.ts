@@ -11,6 +11,7 @@ import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
 import { deliverQueuedCirculars } from "./circulars";
+import { expireOffers } from "./admissions";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -36,7 +37,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep" | "admissions:expire-offers";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -87,6 +88,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     expectEveryMs: 2 * DAY,
     run: async () => {
       const { summary, perSchool } = await sweepExpired();
+      return { summary, perSchool };
+    },
+  },
+  "admissions:expire-offers": {
+    name: "admissions:expire-offers",
+    // Hourly, off the quarter fees:reconcile runs on: an offer's date is a
+    // day, and the family should read "expired" within the hour of it.
+    schedule: "45 * * * *",
+    describeKey: "root.jobDescExpireOffers",
+    maxRunMs: 30 * 60_000,
+    expectEveryMs: 3 * HOUR,
+    run: async () => {
+      const { summary, perSchool } = await expireOffers();
       return { summary, perSchool };
     },
   },

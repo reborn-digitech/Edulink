@@ -200,9 +200,15 @@ describe("one pupil's record for the office", () => {
     await fireEvent.changeText(screen.getByLabelText("Father's name"), "ZZ Ravi");
     await fireEvent.press(within(screen.getByLabelText("Gender")).getByRole("radio", { name: "Male" }));
     await fireEvent.press(within(screen.getByLabelText("Economically weaker section or disadvantaged group")).getByRole("radio", { name: "No" }));
+    // The office types the roll number, which the family only reads, and picks the category by its code.
+    expect(screen.getByLabelText("Roll number").props.accessibilityHint).toBe("Optional · In the present class; printed on the filing sheets.");
+    expect(screen.getByLabelText("Roll number").props.keyboardType).toBe("number-pad");
+    await fireEvent.changeText(screen.getByLabelText("Roll number"), "7");
+    await fireEvent.changeText(screen.getByLabelText("Mother\u2019s occupation"), "Nurse");
+    await fireEvent.press(within(screen.getByLabelText("Category")).getByRole("radio", { name: "SC" }));
     await fireEvent.press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(calls().some((c) => c.line === `POST ${PATH}/${ASHA}`)).toBe(true));
-    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null, penNumber: "", gender: "M", ews: "no", bpl: "", cwsnType: "", bloodGroup: "" });
+    expect(calls().find((c) => c.line.startsWith("POST"))!.body).toMatchObject({ fatherName: "ZZ Ravi", motherName: "", admissionDate: null, penNumber: "", gender: "M", ews: "no", bpl: "", cwsnType: "", bloodGroup: "", rollNumber: "7", motherOccupation: "Nurse", category: "SC", religion: "", previousSchoolTcDate: null, annualIncome: "" });
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("1 missing")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Issue a certificate" }));

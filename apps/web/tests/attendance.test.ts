@@ -280,6 +280,57 @@ describe("saveAttendanceBatch — tenant isolation", () => {
   });
 });
 
+describe("saveAttendanceBatch — no register for a save of nothing", () => {
+  // The session row is what every "register taken" reader counts, so a batch
+  // that stores no mark must not leave one behind — the data audit found
+  // eighteen registers "taken" with nothing in them. Dates of their own, in a
+  // month `freshDate` never reaches, because that counter wraps and the
+  // assertion here is that NO session exists for the day.
+  it("⚠ a batch of only rejected marks leaves no session, and still names each rejection", async () => {
+    const dateKey = "2025-11-03";
+    const result = await save(dateKey, [
+      { studentMembershipId: fx.otherStudentId, status: "PRESENT", clientId: "none-1" },
+      { studentMembershipId: "zz-not-a-membership", status: "ABSENT", clientId: "none-2" },
+    ]);
+
+    expect(result.applied).toBe(0);
+    expect(result.skipped).toBe(0);
+    expect(result.rejected.map((r) => r.studentMembershipId)).toEqual([fx.otherStudentId, "zz-not-a-membership"]);
+    expect(result.rejected.every((r) => r.reason === "Not enrolled in this class")).toBe(true);
+    expect(result.sessionId).toBeNull();
+
+    const session = await db.attendanceSession.findUnique({
+      where: { classId_dateKey: { classId: fx.classId, dateKey } },
+    });
+    expect(session).toBeNull();
+  });
+
+  it("an empty batch leaves no session either", async () => {
+    const dateKey = "2025-11-04";
+    const result = await save(dateKey, []);
+    expect(result).toEqual({ applied: 0, skipped: 0, rejected: [], sessionId: null });
+    expect(await db.attendanceSession.count({ where: { classId: fx.classId, dateKey } })).toBe(0);
+  });
+
+  it("a batch with one valid mark still creates the session, taken by the teacher", async () => {
+    const dateKey = "2025-11-05";
+    const result = await save(dateKey, [
+      { studentMembershipId: fx.students[0]!, status: "PRESENT", clientId: "one-1" },
+      { studentMembershipId: fx.otherStudentId, status: "PRESENT", clientId: "one-2" },
+    ]);
+
+    expect(result.applied).toBe(1);
+    expect(result.rejected).toHaveLength(1);
+    expect(result.sessionId).not.toBeNull();
+
+    const session = await db.attendanceSession.findUnique({
+      where: { classId_dateKey: { classId: fx.classId, dateKey } },
+    });
+    expect(session?.id).toBe(result.sessionId);
+    expect(session?.takenByMembershipId).toBe(fx.teacherMembershipId);
+  });
+});
+
 describe("getAttendanceSummary", () => {
   it("counts late arrivals as attended and returns a whole-number percent", async () => {
     const student = fx.students[0]!;

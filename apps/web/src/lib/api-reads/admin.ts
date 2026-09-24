@@ -19,6 +19,7 @@ import { readJsonArray } from "@/lib/json";
 import { promotionPlan } from "@/lib/promotion";
 import { listSeries } from "@/lib/exams";
 import { absenceFlags, attendanceTrend } from "@/lib/attendance-intel";
+import { registersDue } from "@/lib/attendance";
 import { attendanceHistory, historyClassesFor, MONTH_KEY } from "@/lib/attendance-history";
 import { approvedLeaveBetween, schoolLeave, coverCandidates } from "@/lib/leave";
 import { birthdaysBetween } from "@/lib/birthdays";
@@ -77,12 +78,12 @@ export async function apiRefused(
 /* /admin                                                                      */
 /* -------------------------------------------------------------------------- */
 
-export async function adminOverview(ctx: Scoped) {
+export async function adminOverview(ctx: Scoped, now: Date = new Date()) {
   const [school, jobStory] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { name: true, code: true, timezone: true } }),
     schoolJobStory(ctx),
   ]);
-  const dateKey = todayKey(school.timezone);
+  const dateKey = todayKey(school.timezone, now);
   const [
     examSeriesCount,
     examPublishedCount,
@@ -92,7 +93,7 @@ export async function adminOverview(ctx: Scoped) {
     studentCount,
     classCount,
     pendingInvites,
-    todaySessions,
+    registers,
     academicYear,
     calendar,
   ] = await Promise.all([
@@ -105,10 +106,13 @@ export async function adminOverview(ctx: Scoped) {
     db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
     db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
     db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING" } }),
-    db.attendanceSession.count({ where: { schoolId: ctx.schoolId, dateKey } }),
+    // Expected registers only: none on a closed day, none from an empty class.
+    registersDue(ctx.schoolId, dateKey),
     currentAcademicYear(ctx.schoolId),
     listHolidays(ctx.schoolId, { fromKey: dateKey }),
   ]);
+  const registersExpected = registers.expected.length;
+  const todaySessions = registers.taken.length;
   const coming = nextEntry(calendar, dateKey);
   const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
@@ -144,7 +148,9 @@ export async function adminOverview(ctx: Scoped) {
       examSeriesPublished: examPublishedCount,
       reportCardsPublished,
     },
-    attendanceTakenPercent: classCount === 0 ? null : Math.round((todaySessions / classCount) * 100),
+    // Null when nothing is expected — no classes with pupils, or a day the
+    // school is shut — rather than 0 % of nothing.
+    attendanceTakenPercent: registersExpected === 0 ? null : Math.round((todaySessions / registersExpected) * 100),
     staffingGap: staffing,
     jobStory: {
       attention: jobStory.attention,
@@ -748,6 +754,8 @@ export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: stri
             designation: m.staffRecord.designation,
             qualification: m.staffRecord.qualification,
             joinedOnKey: m.staffRecord.joinedOn ? dayKey(m.staffRecord.joinedOn) : null,
+            birthdateKey: m.staffRecord.birthdate ? dayKey(m.staffRecord.birthdate) : null,
+            serviceJoinedOnKey: m.staffRecord.serviceJoinedOn ? dayKey(m.staffRecord.serviceJoinedOn) : null,
             leaveDaysPerYear: m.staffRecord.leaveDaysPerYear,
             gender: m.staffRecord.gender,
             socialCategory: m.staffRecord.socialCategory,

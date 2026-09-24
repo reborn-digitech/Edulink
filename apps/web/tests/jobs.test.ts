@@ -106,6 +106,13 @@ describe("what the operator sees", () => {
     expect(tidyLater.overdue).toBe(true);
   });
 
+  it("admissions:expire-offers is registered, hourly, on the crontab", async () => {
+    const { crontabText, JOBS } = await import("@/lib/jobs");
+    expect(JOBS["admissions:expire-offers"].schedule).toMatch(/^\d{1,2} \* \* \* \*$/);
+    expect(JOBS["admissions:expire-offers"].describeKey).toBe("root.jobDescExpireOffers");
+    expect(crontabText("/srv/edulink")).toContain("admissions:expire-offers");
+  });
+
   it("the crontab names every job on its schedule, through the one runner", async () => {
     const { crontabText, JOBS } = await import("@/lib/jobs");
     const text = crontabText("/srv/edulink");

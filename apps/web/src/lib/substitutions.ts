@@ -50,15 +50,24 @@ async function schoolOf(schoolId: string) {
   return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true, teachingDays: true } });
 }
 
-/** Who is away on the day, and why: the register's word first, then an approved leave. */
+/**
+ * Who is away on the day, and why: the register's word first, then an
+ * approved leave. The register is authoritative in BOTH directions, as it is
+ * on the staff register itself — a stored PRESENT, LATE or HALF_DAY means
+ * the person came in, approved leave or not, and they are not on the board.
+ */
 async function absentOn(ctx: Staff, dateKey: string): Promise<Map<string, AbsentReason>> {
   const [rows, leave] = await Promise.all([
-    db.staffAttendance.findMany({ where: { schoolId: ctx.schoolId, dateKey, status: { in: ["ABSENT", "ON_LEAVE"] } }, select: { membershipId: true, status: true } }),
+    db.staffAttendance.findMany({ where: { schoolId: ctx.schoolId, dateKey }, select: { membershipId: true, status: true } }),
     approvedLeaveBetween(ctx, dateKey, dateKey),
   ]);
   const out = new Map<string, AbsentReason>();
   for (const r of leave) out.set(r.applicantMembershipId, "ON_LEAVE");
-  for (const r of rows) out.set(r.membershipId, r.status === "ABSENT" ? "ABSENT" : "ON_LEAVE");
+  for (const r of rows) {
+    if (r.status === "ABSENT") out.set(r.membershipId, "ABSENT");
+    else if (r.status === "ON_LEAVE") out.set(r.membershipId, "ON_LEAVE");
+    else out.delete(r.membershipId);
+  }
   return out;
 }
 
@@ -234,16 +243,26 @@ export async function clearSubstitution(ctx: ActiveContext, input: z.infer<typeo
   return { changed: true };
 }
 
-/** The lessons I am covering on a day, in period order. */
+/**
+ * The lessons I am covering on a day, in period order. A cover whose absent
+ * teacher is not away after all — the leave withdrawn, or the register saying
+ * they came in — is not a lesson to take, and a closed day has none.
+ */
 export async function myCovers(ctx: ActiveContext, date?: string | null): Promise<z.infer<typeof myCoversSchema>> {
   const caller = staff(ctx);
   const school = await schoolOf(caller.schoolId);
   const dateKey = date && isDateKey(date) ? date : todayKey(school.timezone);
-  const rows = await db.substitution.findMany({
-    where: { schoolId: caller.schoolId, dateKey, substituteMembershipId: caller.membershipId },
-    select: { slotId: true, note: true, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: SLOT_SELECT } },
-  });
+  const closure = await closedOn(caller.schoolId, dateKey);
+  if (!closure.teachingDay || closure.closed) return { dateKey, items: [] };
+  const [rows, away] = await Promise.all([
+    db.substitution.findMany({
+      where: { schoolId: caller.schoolId, dateKey, substituteMembershipId: caller.membershipId },
+      select: { slotId: true, note: true, absentMembershipId: true, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: SLOT_SELECT } },
+    }),
+    absentOn(caller, dateKey),
+  ]);
   const items = rows
+    .filter((r) => away.has(r.absentMembershipId))
     .map((r) => ({
       slotId: r.slotId,
       periodName: r.slot.period.name,

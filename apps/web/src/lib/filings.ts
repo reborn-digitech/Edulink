@@ -63,9 +63,9 @@ function admin(ctx: ActiveContext): Office {
 /** UDISE+ SDMS: Male-1, Female-2, Transgender-3. */
 export const GENDER_CODE: Record<string, string> = { M: "1", F: "2", T: "3" };
 /** UDISE+ SDMS bulk sheet: General-1, SC-2, ST-3, OBC-4. */
-export const CATEGORY_CODE: Record<string, string> = { GENERAL: "1", GEN: "1", SC: "2", ST: "3", OBC: "4" };
+export const CATEGORY_CODE: Record<string, string> = { GENERAL: "1", GEN: "1", SC: "2", ST: "3", OBC: "4", VJ: "4", NT: "4", SBC: "4" };
 /** UDISE+ SDMS: Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7 — from the religion the record holds. */
-export const MINORITY_CODE: Record<string, string> = { MUSLIM: "1", ISLAM: "1", CHRISTIAN: "2", CHRISTIANITY: "2", SIKH: "3", SIKHISM: "3", BUDDHIST: "4", BUDDHISM: "4", PARSI: "5", ZOROASTRIAN: "5", JAIN: "6", JAINISM: "6" };
+export const MINORITY_CODE: Record<string, string> = { MUSLIM: "1", ISLAM: "1", CHRISTIAN: "2", CHRISTIANITY: "2", SIKH: "3", SIKHISM: "3", BUDDHIST: "4", BUDDHISM: "4", PARSI: "5", ZOROASTRIAN: "5", JAIN: "6", JAINISM: "6", HINDU: "7", HINDUISM: "7", OTHER: "7" };
 /** The 21 impairment types of the UDISE+ student module, by code — kept in filing-codes.ts so the record form can show them without this file's server-only imports. */
 export { CWSN_TYPE_NAMES };
 /** UDISE+ DCF §3.2.12. */
@@ -147,7 +147,7 @@ async function identityOf(schoolId: string) {
   return { ...s, identity: { udiseCode: s.udiseCode, board: s.board, affiliationNumber: s.affiliationNumber, district: s.district, block: s.block, medium: s.medium, managementType: s.managementType, state: s.region, city: s.city, postalCode: s.postalCode } };
 }
 
-const STAFF_FILING_FIELDS = ["gender", "socialCategory", "academicQualification", "professionalQualification", "appointmentType", "joinedOn"] as const;
+const STAFF_FILING_FIELDS = ["gender", "socialCategory", "academicQualification", "professionalQualification", "appointmentType", "joinedOn", "serviceJoinedOn"] as const;
 
 /** The office's page: the identity, who is ready and who is not, and the grades a board sheet can be cut for. */
 export async function filingsView(ctx: ActiveContext): Promise<FilingsView> {
@@ -209,7 +209,7 @@ async function loadPupils(schoolId: string, grade?: string) {
       id: true, studentCode: true, joinedAt: true,
       user: { select: { name: true, birthdate: true, email: true, phone: true, penNumber: true } },
       pupilRecord: true,
-      enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
+      enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, rollNumber: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
       guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 },
     },
     orderBy: [{ user: { name: "asc" } }],
@@ -261,14 +261,17 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
   const [pupils, school] = await Promise.all([loadPupils(caller.schoolId), identityOf(caller.schoolId)]);
   const facts = await lastYearFacts(caller.schoolId, pupils.map((p) => p.id));
   let roll = 0;
+  let counter = 0;
   let lastClass = "";
   const rowOf = (p: Pupil | null) => {
     const r = p?.pupilRecord ?? null;
     const klass = p?.enrollments[0]?.class;
     const grade = classCode(klass?.gradeLevel);
     const classKey = `${grade}/${klass?.section ?? "A"}`;
-    roll = classKey === lastClass ? roll + 1 : 1;
+    counter = classKey === lastClass ? counter + 1 : 1;
     lastClass = classKey;
+    // The roll number the school assigned on the enrolment; the running counter only where none was.
+    roll = p?.enrollments[0]?.rollNumber ?? counter;
     const par = p ? parents(p) : { father: "", mother: "", guardian: "", phone: "", email: "" };
     const isCwsn = r?.cwsnType ? "1" : r ? "2" : "";
     const sameSchool = p ? (year(p.joinedAt) < year(new Date()) ? "1" : "2") : "";
@@ -291,7 +294,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "EMAIL ID (Optional)": par.email,
       "MOTHER TONGUE": r?.motherTongue ?? "",
       "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[upper(r?.category)] ?? "",
-      "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": r?.religion ? (MINORITY_CODE[upper(r.religion)] ?? "7") : "",
+      "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": MINORITY_CODE[upper(r?.religion)] ?? "",
       "Is BPL BENEFICIARY (Yes-1, No-2)": yesNo(r?.bpl),
       "Whether AAY beneficiary": "",
       "BELONGS TO EWS/DISADVANTAGED GROUP (Yes-1, No-2)": yesNo(r?.ews),
@@ -371,7 +374,8 @@ export async function udiseEnrolmentExport(ctx: ActiveContext): Promise<CsvExpor
     const cat = CATEGORY_CODE[upper(r?.category)] ? upper(r?.category) === "GEN" ? "GENERAL" : upper(r?.category) : "Not on record";
     bump("4.2 Enrolment by social category", cat, cls, g);
     bump("4.2 Enrolment by social category", "Total", cls, g);
-    if (r?.religion && MINORITY_CODE[upper(r.religion)]) bump("4.2(b) Minority groups", r.religion.trim(), cls, g);
+    const minority = MINORITY_CODE[upper(r?.religion)];
+    if (r?.religion && minority && minority !== "7") bump("4.2(b) Minority groups", upper(r.religion), cls, g);
     const age = p.user.birthdate ? ageInYears(p.user.birthdate) : null;
     bump("4.4 Enrolment by age", age === null ? "Age not on record" : age < 5 ? "<5" : age > 22 ? ">22" : String(age), cls, g);
     if (r?.cwsnType) bump("4.6 CWSN by impairment", `${r.cwsnType} ${CWSN_TYPE_NAMES[r.cwsnType] ?? ""}`.trim(), cls, g);
@@ -422,7 +426,7 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
       "Teacher National Code": "",
       "3.2.1 Name of the Teacher": upper(s?.user.name),
       "3.2.2 Gender (Male-1, Female-2, Transgender-3)": GENDER_CODE[r?.gender ?? ""] ?? "",
-      "3.2.3 Date of Birth (DD/MM/YYYY)": ddmmyyyy(s?.user.birthdate, "/"),
+      "3.2.3 Date of Birth (DD/MM/YYYY)": ddmmyyyy(r?.birthdate ?? s?.user.birthdate, "/"),
       "3.2.4 Teacher Code of State": r?.staffNumber ?? "",
       "3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[r?.socialCategory ?? ""] ?? "",
       "3.2.6(a) Highest Academic Qualification": r?.academicQualification ?? "",
@@ -433,7 +437,7 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
       "3.2.9(a) Aadhaar Number": "",
       "3.2.12 Nature of Appointment (Regular-1, Contract-2, Part-Time-3)": APPOINTMENT_CODE[r?.appointmentType ?? ""] ?? "",
       "3.2.13 Type of Teacher": TEACHER_TYPE_CODE[s?.role ?? ""] ?? "",
-      "3.2.14 Date of Joining in Service (DD/MM/YYYY)": ddmmyyyy(r?.joinedOn ?? null, "/"),
+      "3.2.14 Date of Joining in Service (DD/MM/YYYY)": ddmmyyyy(r?.serviceJoinedOn ?? r?.joinedOn ?? null, "/"),
       "3.2.15 Date of Joining in Present School (DD/MM/YYYY)": ddmmyyyy(r?.joinedOn ?? s?.joinedAt, "/"),
       "3.2.16 Classes Taught": classesTaughtCode(grades),
       "3.2.18 Appointed for Subject": r?.designation ?? "",

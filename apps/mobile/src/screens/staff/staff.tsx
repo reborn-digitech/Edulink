@@ -86,6 +86,8 @@ export function StaffRoster() {
                 s.subjects.join(", ") || null,
                 s.leadClasses.length > 0 ? t("staff.leadOf", { classes: s.leadClasses.join(", ") }) : null,
                 record?.joinedOnKey ? t("staff.joined", { date: formatDateKey(record.joinedOnKey, locale) }) : null,
+                record?.serviceJoinedOnKey ? `${t("staff.serviceJoinedOn")} ${formatDateKey(record.serviceJoinedOnKey, locale)}` : null,
+                record?.birthdateKey ? `${t("staff.birthdate")}: ${formatDateKey(record.birthdateKey, locale)}` : null,
                 s.balance ? (s.balance.entitlement === null ? t("staff.noEntitlement", { used: s.balance.used }) : t("staff.balance", { used: s.balance.used, entitlement: s.balance.entitlement, remaining: s.balance.remaining ?? 0 })) : null,
                 s.balance && s.balance.pending > 0 ? t("staff.balancePending", { pending: s.balance.pending }) : null,
               ]

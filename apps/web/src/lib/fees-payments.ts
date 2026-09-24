@@ -120,8 +120,14 @@ async function issueReceipt(tx: Tx, schoolId: string, payment: { id: string; stu
   const [school, pupil, demands] = await Promise.all([
     tx.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, addressLine: true, city: true, contactPhone: true, feeBankNote: true, feeReceiptPrefix: true } }),
     tx.membership.findUniqueOrThrow({ where: { id: payment.studentMembershipId }, select: { studentCode: true, gradeLevel: true, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } }),
-    tx.feeDemand.findMany({ where: { id: { in: allocations.map((a) => a.demandId) } }, select: { id: true, label: true, academicYearId: true, linesJson: true, netPaise: true } }),
+    tx.feeDemand.findMany({ where: { id: { in: allocations.map((a) => a.demandId) } }, select: { id: true, label: true, academicYearId: true, linesJson: true, netPaise: true }, orderBy: [{ dueDate: "asc" }, { createdAt: "asc" }] }),
   ]);
+  // The receipt is numbered in the year of the EARLIEST-DUE demand the money
+  // settled. A payment can span two years — last year's balance carried in
+  // beside this year's own term, or a straggling bus pass next to next
+  // year's opening balance — and an unordered `in` query once let it land in
+  // whichever series Postgres happened to return first. The earliest due is
+  // the debt the family was clearing first, so its year keeps the number.
   const yearId = demands[0]?.academicYearId;
   if (!yearId) throw new AccessError("fees.refuseNothingDue");
   const year = await tx.academicYear.findUniqueOrThrow({ where: { id: yearId }, select: { name: true } });

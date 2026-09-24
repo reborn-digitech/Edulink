@@ -34,9 +34,9 @@ import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
 import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints } from "../src/lib/report-card-rules";
 import {
-  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildExams, buildFees, buildHealth, buildIncidents,
-  buildMessaging, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable, CLASS_COLOURS,
-  db, enrol, link, setTag, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen } from "./zz-fixtures";
+  attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
+  buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
+  CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen } from "./zz-fixtures";
 
 setTag("");
 
@@ -80,6 +80,12 @@ type SchoolSpec = {
   phonePrefix: string;
   codePrefix: string;
   previousSchool: string;
+  /** The grade-8 pupil who joined in June and left in August, and where they went. */
+  leaver: { name: string; destination: string; note: string };
+  /** Where the grade-8 pupil whose departure is scheduled for the year's end is going. */
+  scheduledDestination: string;
+  /** The teacher the office has invited and who has not yet accepted. */
+  invite: { name: string; subjects: string[] };
   pupilFirst: string[];
   pupilLast: string[];
   parentFirst: string[];
@@ -116,6 +122,9 @@ const SUNRISE: SchoolSpec = {
   phonePrefix: "+919822050",
   codePrefix: "SP",
   previousSchool: "Little Flowers Nursery, Pune",
+  leaver: { name: "Ayaan Bhatt", destination: "Kendriya Vidyalaya, Nagpur", note: "Father transferred; TC handed to the mother on the last day." },
+  scheduledDestination: "Bengaluru — the family moves after the annual examinations.",
+  invite: { name: "Ritu Malhotra", subjects: ["Hindi"] },
   pupilFirst: [
     "Advait", "Bhavya", "Chirag", "Diya", "Eshaan", "Falak", "Gauri", "Harsh",
     "Ishita", "Jai", "Kiara", "Laksh", "Mihika", "Nakul", "Ojaswini", "Parth",
@@ -159,6 +168,9 @@ const SARASWATI: SchoolSpec = {
   phonePrefix: "+919822060",
   codePrefix: "SV",
   previousSchool: "Bal Vikas Mandir, Nashik",
+  leaver: { name: "Siddhesh Thakare", destination: "जिल्हा परिषद शाळा, सिन्नर", note: "वडिलांची बदली; दाखला शेवटच्या दिवशी आईकडे दिला." },
+  scheduledDestination: "पुणे — वार्षिक परीक्षेनंतर कुटुंब स्थलांतरित होत आहे.",
+  invite: { name: "Pallavi Deshpande", subjects: ["English"] },
   pupilFirst: [
     "Aarohi", "Bhushan", "Chaitanya", "Devika", "Eknath", "Gargi", "Hrishikesh", "Ishwari",
     "Jayesh", "Ketaki", "Lalit", "Mrunal", "Ninad", "Omkar", "Pranali", "Rutuja",
@@ -322,17 +334,24 @@ async function buildSchool(ctx: Ctx, spec: SchoolSpec, sunita: { id: string }): 
 /**
  * Every pupil in grades 6–10 was in the grade below last year. The class
  * they sat in is an ARCHIVED class the way promotion leaves one (archivedAt
- * and promotedAt set, the enrolment REMOVED and dated), and on it the annual
- * card the year-end wrote: four subjects, each term's percent combined by the
- * terms' shares, banded on the school's scale, published. The grade-5 pupils
- * joined this year and have no card here.
+ * and promotedAt set, the enrolment REMOVED and dated); on it the whole
+ * year's register, taken by the form teacher of that grade on every teaching
+ * day the calendar left open (Mon–Sat from the June reopening to the April
+ * closing, less the holidays), a few late, fewer absent; and the annual card
+ * the year-end wrote: four subjects, each term's percent combined by the
+ * terms' shares, banded on the school's scale, published, with the
+ * attendance counted from that register between the card's dates exactly as
+ * the generator counts it. The grade-5 pupils joined this year and have no
+ * card here.
  */
-async function buildLastYear(b: Built) {
+async function buildLastYear(b: Built, closed: Set<string>) {
   const config = DEFAULT_REPORT_CARD_CONFIG;
   const subjects = [b.spec.language, "Mathematics", "Science", "Social Science"];
   const leftOn = new Date("2026-04-30T00:00:00Z");
+  const days = teachingDaysBetween("2025-06-16", "2026-04-25", closed);
   const terms = await db.term.findMany({ where: { academicYearId: b.years.prev.id }, orderBy: { position: "asc" }, select: { id: true, name: true, weightPercent: true } });
   let cards = 0;
+  let sessions = 0;
   for (const cls of b.classes) {
     const lastGrade = String(Number(cls.grade) - 1);
     if (!GRADES.includes(lastGrade)) continue;
@@ -343,7 +362,29 @@ async function buildLastYear(b: Built) {
     const roll = b.pupils.filter((p) => p.grade === cls.grade);
     for (const p of roll) {
       const enrolment = await db.enrollment.findUnique({ where: { classId_studentMembershipId: { classId: old.id, studentMembershipId: p.membershipId } }, select: { id: true } });
-      if (!enrolment) await db.enrollment.create({ data: { classId: old.id, schoolId: b.school.id, studentMembershipId: p.membershipId, status: "REMOVED", removedAt: leftOn } });
+      if (!enrolment) await db.enrollment.create({ data: { classId: old.id, schoolId: b.school.id, studentMembershipId: p.membershipId, status: "REMOVED", enrolledAt: new Date("2025-06-16T00:00:00Z"), removedAt: leftOn } });
+    }
+    // The year's register: sessions first (in one statement, duplicates skipped), then every pupil's mark on each.
+    const teacher = b.formTeachers[GRADES.indexOf(lastGrade)]!;
+    if ((await db.attendanceSession.count({ where: { classId: old.id } })) < days.length) {
+      await db.attendanceSession.createMany({ data: days.map((day) => ({ schoolId: b.school.id, classId: old.id, dateKey: day, takenAt: new Date(`${day}T03:45:00Z`), takenByMembershipId: teacher.membership.id, finalizedAt: new Date(`${day}T03:45:00Z`) })), skipDuplicates: true });
+    }
+    const taken = await db.attendanceSession.findMany({ where: { classId: old.id }, select: { id: true, dateKey: true }, orderBy: { dateKey: "asc" } });
+    if ((await db.attendanceRecord.count({ where: { session: { classId: old.id } } })) < taken.length * roll.length) {
+      const marks: { schoolId: string; sessionId: string; studentMembershipId: string; status: string; markedAt: Date }[] = [];
+      for (const [di, s] of taken.entries()) {
+        for (const p of roll) {
+          const r = (p.seat * 7 + di * 3) % 17;
+          marks.push({ schoolId: b.school.id, sessionId: s.id, studentMembershipId: p.membershipId, status: r === 0 ? "ABSENT" : r === 1 ? "LATE" : r === 2 && di % 6 === 0 ? "EXCUSED" : "PRESENT", markedAt: new Date(`${s.dateKey}T03:45:00Z`) });
+        }
+      }
+      await db.attendanceRecord.createMany({ data: marks, skipDuplicates: true });
+    }
+    sessions += taken.length;
+    for (const p of roll) {
+      // The register between the card's dates, as the generator counts it: late is there, excused is in the total.
+      const marks = await db.attendanceRecord.findMany({ where: { schoolId: b.school.id, studentMembershipId: p.membershipId, session: { dateKey: { gte: "2025-06-01", lte: "2026-04-30" } } }, select: { status: true } });
+      const attendance = { attendancePresent: marks.filter((m) => m.status === "PRESENT" || m.status === "LATE").length, attendanceTotal: marks.length };
       const rows = subjects.map((subject, si) => {
         const termParts = terms.map((t, ti) => ({ termId: t.id, name: t.name, percent: 52 + ((p.seat * 11 + si * 7 + ti * 5) % 41), weightPercent: t.weightPercent }));
         const combined = combineTerms(termParts);
@@ -355,7 +396,7 @@ async function buildLastYear(b: Built) {
       const title = `Annual report ${b.years.prev.name}`;
       const data = {
         schoolId: b.school.id, classId: old.id, studentMembershipId: p.membershipId, academicYearId: b.years.prev.id, termId: null, title, status: "PUBLISHED",
-        fromDateKey: "2025-06-01", toDateKey: "2026-04-30", attendancePresent: 196 + (p.seat % 5) * 3, attendanceTotal: 220,
+        fromDateKey: "2025-06-01", toDateKey: "2026-04-30", ...attendance,
         overallPercentMilli: overall === null ? null : Math.round(overall * 1000), gradingMethod: "weighted", overallLetter: bandFor(overall, config.bands)?.label ?? null,
         gradePointsMilli: points === null ? null : Math.round(points * 1000),
         subjects: JSON.stringify(rows.map((r) => ({ subject: r.subject, percent: r.percent, letter: r.letter, points: r.points, parts: r.parts }))),
@@ -363,7 +404,8 @@ async function buildLastYear(b: Built) {
         remark: ["Promoted to the next grade. Consistent through the year.", "Promoted. Reads widely; should show working in mathematics.", "Promoted. A quiet, steady year; more confident in the second term.", "Promoted. Excellent in science; attendance could be better."][p.seat % 4]!,
         createdByMembershipId: b.admin.membership.id, publishedAt: new Date("2026-04-25T09:00:00Z"),
       };
-      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: old.id, studentMembershipId: p.membershipId, title } }, create: data, update: {}, select: { id: true, items: { select: { id: true }, take: 1 } } });
+      // A card already written keeps its marks; only its attendance is held to the register.
+      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: old.id, studentMembershipId: p.membershipId, title } }, create: data, update: attendance, select: { id: true, items: { select: { id: true }, take: 1 } } });
       if (card.items.length === 0) {
         await db.reportCardItem.createMany({
           data: [
@@ -375,17 +417,34 @@ async function buildLastYear(b: Built) {
       cards += 1;
     }
   }
-  return { cards };
+  return { cards, sessions, days: days.length };
 }
 
 /* -------------------------------------------------------------------------- */
 /* the class registers                                                         */
 /* -------------------------------------------------------------------------- */
 
-/** The last ten teaching days, every class marked by its form teacher; a few late, fewer absent. */
-async function buildRegisters(b: Built) {
-  let sessions = 0;
-  for (const day of recentTeachingDays(10)) {
+/** The most recent `n` days the school was open (Mon–Sat, not on the calendar's closed list), oldest first. */
+function recentOpenDays(n: number, closed: Set<string>): string[] {
+  const days: string[] = [];
+  for (let back = 1; days.length < n && back < n * 4; back += 1) {
+    const d = new Date(Date.now() - back * DAY);
+    const k = key(d);
+    if (d.getUTCDay() !== 0 && !closed.has(k)) days.push(k);
+  }
+  return days.reverse();
+}
+
+/**
+ * The last ten days the school was open, every class marked by its form
+ * teacher; a few late, fewer absent. A register on a day the calendar shuts
+ * the school is the anomaly the calendar exists to warn about, so one an
+ * earlier run took on such a day is removed.
+ */
+async function buildRegisters(b: Built, closed: Set<string>) {
+  await db.attendanceSession.deleteMany({ where: { classId: { in: b.classes.map((c) => c.id) }, dateKey: { in: [...closed] } } });
+  const days = recentOpenDays(10, closed);
+  for (const day of days) {
     for (const cls of b.classes) {
       const existing = await db.attendanceSession.findUnique({ where: { classId_dateKey: { classId: cls.id, dateKey: day } }, select: { id: true } });
       if (existing) continue;
@@ -397,10 +456,9 @@ async function buildRegisters(b: Built) {
           records: { create: roll.map((p) => { const r = (p.seat * 7 + Number(day.slice(8)) * 3) % 17; return { schoolId: b.school.id, studentMembershipId: p.membershipId, status: r === 0 ? "ABSENT" : r === 1 ? "LATE" : "PRESENT", markedAt: takenAt }; }) },
         },
       });
-      sessions += 1;
     }
   }
-  return { sessions };
+  return { sessions: await db.attendanceSession.count({ where: { classId: { in: b.classes.map((c) => c.id) }, dateKey: { in: days } } }) };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -467,7 +525,7 @@ async function buildFeed(b: Built, sunita: { id: string }) {
   await c(exhibition.id, b.formTeachers[1]!.user.id, en ? "Yes, as long as all three are in grades 6 to 10." : "हो, तिघेही इयत्ता ६ ते १० मध्ये असले तर चालेल.", 3);
   await c(geometry.id, parentOf(pupilIn("6", 2)), en ? "Is a plastic compass fine?" : "प्लास्टिकचा कंपास चालेल का?", 1);
   await c(geometry.id, b.deshmukh.userId, en ? "Got mine. Do we need the set square too?" : "माझी आहे. सेट स्क्वेअरही लागेल का?", 1);
-  await c(robot.id, pupilIn("8", 0).userId, en ? "It was the fifth try but who's counting" : "पाचवा प्रयत्न होता, पण मोजतंय कोण", 1);
+  const fifthTry = await c(robot.id, pupilIn("8", 0).userId, en ? "It was the fifth try but who's counting" : "पाचवा प्रयत्न होता, पण मोजतंय कोण", 1);
   await c(robot.id, parentOf(pupilIn("8", 2)), en ? "So proud of the team!" : "संघाचा खूप अभिमान!", 1);
   await c(cricket.id, pupilIn("9", 0).userId, en ? "Green will be back next year." : "हिरवे घर पुढच्या वर्षी परत येईल.", 0);
   // Reads: the parents who opened the annual-day notice, and the pupils who read the class posts.
@@ -475,7 +533,9 @@ async function buildFeed(b: Built, sunita: { id: string }) {
   await read(annual.id, b.school.id, sunita.id);
   for (const p of b.pupils.filter((x) => x.grade === "6")) await read(geometry.id, b.school.id, p.userId);
   for (const p of b.pupils.filter((x) => x.grade === "8").slice(0, 6)) await read(robot.id, b.school.id, p.userId);
-  return { posts: posts.length, comments: await db.comment.count({ where: { schoolId: b.school.id } }) };
+  // The one comment somebody reports (see main): the parent of the robot's builder disputes the count.
+  const report = await buildReport(b.school, { targetType: "COMMENT", targetId: fifthTry.id, reporterUserId: parentOf(pupilIn("8", 2)), reason: "WRONG_INFO", detail: en ? "It was the fourth try — the post says so. Please correct it before the exhibition." : "चौथा प्रयत्न होता — पोस्टमध्ये तसेच लिहिले आहे. प्रदर्शनापूर्वी दुरुस्त करा." });
+  return { posts: posts.length, comments: await db.comment.count({ where: { schoolId: b.school.id } }), reportId: report.reportId };
 }
 
 /** One post on the platform feed from Sunrise's office. */
@@ -619,12 +679,15 @@ async function buildLeave(b: Built) {
 async function buildDeshmukh(b: Built, sunita: { id: string }) {
   const first = b.spec.deshmukh.first;
   const local = first === "Aarav" ? { name: "आरव देशमुख", father: "प्रसाद देशमुख", mother: "सुनीता देशमुख" } : { name: "अनया देशमुख", father: "प्रसाद देशमुख", mother: "सुनीता देशमुख" };
-  const card = { bloodGroup: first === "Aarav" ? "A+" : "O+", allergies: first === "Aarav" ? "Dust — mild; carries an inhaler on sports days" : "", conditions: "", medications: first === "Aarav" ? "Salbutamol inhaler, in the school bag" : "", notes: "Mother is the first contact.", contactsJson: JSON.stringify([{ name: SUNITA.name, relation: "mother", phone: SUNITA.phone }, { name: "Prasad Deshmukh", relation: "father", phone: "+919822011224" }]), updatedByUserId: sunita.id };
+  const card = { bloodGroup: first === "Aarav" ? "A+" : "O+", allergies: first === "Aarav" ? "Dust — mild; carries an inhaler on sports days" : "", conditions: "", medications: first === "Aarav" ? "Salbutamol inhaler, in the school bag" : "", notes: "Mother is the first contact.", doctorName: "Dr Anjali Phadke", doctorPhone: "+912025431190", contactsJson: JSON.stringify([{ name: SUNITA.name, relation: "mother", phone: SUNITA.phone }, { name: "Prasad Deshmukh", relation: "father", phone: "+919822011224" }]), updatedByUserId: sunita.id };
   await db.healthCard.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...card }, update: card });
   const record = {
-    fatherName: "Prasad Deshmukh", motherName: SUNITA.name, placeOfBirth: "Pune", nationality: "Indian", religion: "Hindu", caste: null, category: "General", motherTongue: "Marathi",
+    // Category and religion are coded values on the record; the caste is the family's own word.
+    fatherName: "Prasad Deshmukh", motherName: SUNITA.name, placeOfBirth: "Pune", nationality: "Indian", religion: "HINDU", caste: "Maratha", category: "GENERAL", motherTongue: "Marathi",
+    fatherOccupation: "Mechanical engineer", motherOccupation: "Bank officer", annualIncome: 1_800_000,
     addressLine: "B-402, Sahil Residency, Aundh", city: "Pune", postalCode: "411007", admissionNumber: first === "Aarav" ? "SPS-2022-0416" : "SVM-2021-0287", admissionDate: new Date(first === "Aarav" ? "2022-06-13T00:00:00Z" : "2021-06-14T00:00:00Z"), admittedToGrade: first === "Aarav" ? "2" : "2",
-    previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", penNumber: fakePen(b.deshmukh.membershipId), gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, cwsnType: null, bloodGroup: card.bloodGroup,
+    previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", previousSchoolTcNumber: first === "Aarav" ? "LFN/2022/031" : "BVM/2021/117", previousSchoolTcDate: new Date(first === "Aarav" ? "2022-06-01T00:00:00Z" : "2021-06-01T00:00:00Z"),
+    penNumber: fakePen(b.deshmukh.membershipId), gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, cwsnType: null, bloodGroup: card.bloodGroup,
     updatedByUserId: sunita.id, familyFilledAt: new Date(Date.now() - 20 * DAY),
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...record }, update: record });
@@ -833,6 +896,20 @@ async function countBlock(schoolIds: string[], sunitaId: string) {
     expertMessages: await db.expertMessage.count({ where: s }),
     mentorThreads: await db.mentorThread.count({ where: s }),
     mentorMessages: await db.mentorMessage.count({ where: s }),
+    holidays: await db.holiday.count({ where: s }),
+    feeConcessions: await db.feeConcession.count({ where: s }),
+    feeRefunds: await db.feeRefund.count({ where: s }),
+    invites: await db.invite.count({ where: s }),
+    remarkThreads: await db.remarkThread.count({ where: s }),
+    remarkMessages: await db.remarkMessage.count({ where: s }),
+    reports: await db.report.count({ where: s }),
+    practiceAssignments: await db.practiceAssignment.count({ where: s }),
+    scheduledDepartures: await db.scheduledDeparture.count({ where: s }),
+    schoolRecords: await db.schoolRecord.count({ where: s }),
+    leftPupils: await db.membership.count({ where: { ...s, role: "STUDENT", leftAt: { not: null } } }),
+    competitionEntries: await db.competitionEntry.count({ where: s }),
+    competitionStandings: await db.competitionStanding.count({ where: s }),
+    rollNumbers: await db.enrollment.count({ where: { ...s, rollNumber: { not: null } } }),
     sunitaNotifications: await db.notification.count({ where: { userId: sunitaId } }),
   };
   return c;
@@ -927,14 +1004,15 @@ ${input.expert.anjali ? `| ${ANJALI_EMAIL} | Dr Anjali Rao (existing demo expert
 |---|---|
 | People, roles, classes | /admin/people, /admin/classes, /admin/classes/<id>; /principal/staff |
 | Timetable, Mon–Sat, 6 periods + a break, every class staffed | /admin/timetable, /teacher (today's lessons), /principal/timetable |
-| Class registers, last 10 teaching days | /admin/attendance, /teacher/attendance?classId=<id>, /parent/attendance |
+| Class registers, last 10 open days; the whole of last year's register on the archived classes | /admin/attendance, /teacher/attendance?classId=<id>, /parent/attendance |
+| School calendar for both years: holidays, an exam span, the annual day | /admin/calendar |
 | Staff register, last 10 days, one late, one absent, today a check-in | /admin/staff-attendance |
 | Leave: one pending (cover nominated), one approved | /principal/leave, /teacher/leave |
 | Substitutions today (a subject teacher absent, a free colleague covering) | /admin/substitutions |
 | Academic years: 2025–26 closed, 2026–27 current with two terms, 2027–28 waiting | /admin/settings, /admin/calendar |
 | Last year's annual report card, published, for every pupil in grades 6–10 | /report-cards (pupil), /parent/grades → cards, /admin/report-cards |
 | Term 1 exams and published term cards for grades 6 and 9 (a draft set too) | /admin/exams, /admin/report-cards, /teacher/classes/${cls(sunrise, "6").id}/report-cards |
-| Fees: a structure per grade, every pupil on a plan, two cash receipts per grade | /admin/fees, /admin/fees/dues, /parent/fees, /fees/receipts |
+| Fees: a structure per grade, every pupil on a plan, two cash receipts per grade, a 25 % tuition concession (grade 7), a bus-fee refund on a cash payment (grade 6) | /admin/fees, /admin/fees/dues, /parent/fees, /fees/receipts |
 | Texts: every parent numbered, SMS and WhatsApp on, one broadcast sent | /admin/messaging |
 | Health cards (three per school plus both Deshmukh children), one check-up | /parent/health, /admin/people → a pupil |
 | Incidents: one closed, one open with a note | /admin/incidents, /teacher/incidents, /parent/incidents |
@@ -949,8 +1027,15 @@ ${input.expert.anjali ? `| ${ANJALI_EMAIL} | Dr Anjali Rao (existing demo expert
 | Quiz practice: 2–5 finished attempts per pupil in grades 6–9 with badges | /student/practice, /parent/practice, /teacher/practice, /principal (practice insights) |
 | Meetings: two teachers per school with slots next week, Sunita booked at each | /teacher/meetings, /parent/meetings |
 | Experts: a published expert, slots, a confirmed workshop at each school with messages, an active mentorship | /experts, /experts/bookings/<id> (as an admin), /expert, /mentoring |
+| A pending teacher invitation (\`<school>.invite1@${DOMAIN}\`) | /admin/people → invitations |
+| A remark thread between the grade-7 form teacher and a parent, the reply unread by the teacher | /teacher/remarks, /parent/remarks |
+| An OPEN report on a comment under the robotics post | /admin/safety (or the review queue) |
+| A practice assignment for grade 6 with a target level | /teacher/practice, /student/practice |
+| A grade-9 entry in the platform's "Autumn Science Fair" with a result and the school's standing | /competitions, /admin/competitions |
+| A pupil who left in August with a transfer record (\`<school>.pupil49\`, ${sunrise.spec.leaver.name} / ${saraswati.spec.leaver.name}); a grade-8 departure scheduled for 30 April | /admin/people → departures, /admin/certificates |
+| Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
 
-Not seeded: a review round (deliberately skipped as cheap only through the UI), fee refunds and online payments, competitions.
+Not seeded: a review round (deliberately skipped as cheap only through the UI), online payments.
 `;
 }
 
@@ -971,15 +1056,29 @@ async function main() {
     const b = await buildSchool(ctx, spec, sunita);
     const admin = b.admin.user.id;
     const staff = [...b.formTeachers, ...b.subjectTeachers];
-    const lastYear = await buildLastYear(b);
+    const en = spec.locale === "en";
+    // The calendar first: last year's register and this year's skip the days it shuts the school.
+    const calendar = (await buildHolidays(b.school, CALENDAR_2025_26, { academicYearId: b.years.prev.id, locale: spec.locale })).entries + (await buildHolidays(b.school, CALENDAR_2026_27, { academicYearId: b.years.current.id, locale: spec.locale })).entries;
+    const closed = await closedDays(b.school.id);
+    const lastYear = await buildLastYear(b, closed);
     const timetable = await buildTimetable(b.school.id, b.classes.map((c) => ({ id: c.id, grade: c.grade })), staff, { days: [1, 2, 3, 4, 5, 6], unstaffedWeekday: null, subjects: [...spec.formTeachers, ...spec.subjectTeachers].map((t) => t.subjects[0]!) });
     const records = await buildStaffRecords(b.school, staff);
     for (const [i, p] of [b.admin, b.principal, b.spare].entries()) {
-      const data = { gender: i === 0 ? (spec.key === "sunrise" ? "F" : "M") : i === 1 ? (spec.key === "sunrise" ? "M" : "F") : "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: i === 2 ? "3" : "4", appointmentType: "REGULAR", designation: i === 0 ? "Administrator" : i === 1 ? "Principal" : "Assistant teacher", joinedOn: new Date(`${[2012, 2010, 2026][i]}-06-01T00:00:00Z`), leaveDaysPerYear: 12 };
+      const data = { gender: i === 0 ? (spec.key === "sunrise" ? "F" : "M") : i === 1 ? (spec.key === "sunrise" ? "M" : "F") : "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: i === 2 ? "3" : "4", appointmentType: "REGULAR", designation: i === 0 ? "Administrator" : i === 1 ? "Principal" : "Assistant teacher", ...staffDates(10 + i, [2012, 2010, 2026][i]!), staffNumber: `EMP-${101 + i}`, leaveDaysPerYear: 12 };
       await db.staffRecord.upsert({ where: { membershipId: p.membership.id }, create: { schoolId: b.school.id, membershipId: p.membership.id, ...data }, update: data });
     }
-    const registers = await buildRegisters(b);
+    // The departures before anything that reads the roll: the leaver's enrolment is REMOVED from the start, so no plan, record or mark is ever written for them.
+    const g8 = b.classes.find((c) => c.grade === "8")!;
+    const departures = await buildDepartures(ctx, b.school, b.admin.membership.id, {
+      leaver: { email: `${spec.key}.pupil49@${DOMAIN}`, name: spec.leaver.name, classId: g8.id, grade: "8", birthdate: birthdateFor("8", 8), joinedOn: new Date("2026-06-15T00:00:00Z"), leftOn: new Date("2026-08-31T00:00:00Z"), destination: spec.leaver.destination, note: spec.leaver.note, conduct: "GOOD" },
+      scheduled: { membershipId: b.pupils.find((p) => p.grade === "8" && p.seat === 7)!.membershipId, leaveOnKey: "2027-04-30", reason: "TRANSFERRED", destination: spec.scheduledDestination, note: en ? "Parents asked for the TC to be ready by the first week of May." : "पालकांनी मे महिन्याच्या पहिल्या आठवड्यापर्यंत दाखला तयार ठेवण्यास सांगितले.", conduct: "GOOD" },
+    });
+    const registers = await buildRegisters(b, closed);
     const fees = await buildFees(b.school, admin, { grades: GRADES, payers: 2, clientTag: `demo-${spec.key}` });
+    const adjustments = await buildFeeAdjustments(b.school, admin, {
+      concession: { grade: "7", headCode: "TUI", percentBp: 2500, reason: en ? "Sibling concession: second child at the school." : "भावंड सवलत: शाळेतील दुसरे मूल." },
+      refund: { clientId: `demo-${spec.key}-term1-6-1`, amountPaise: 3_000_00, reason: en ? "Transport withdrawn from August; the Term 1 bus fee returned in cash." : "ऑगस्टपासून वाहतूक सेवा बंद; पहिल्या सत्राचे बस शुल्क रोखीने परत.", on: new Date("2026-08-05T05:30:00Z") },
+    });
     const texts = await buildMessaging(b.school, admin, { keepPhones: true, phonePrefix: spec.phonePrefix.replace(/0$/, "9"), locale: spec.locale });
     const others = b.pupils.filter((p) => p.grade === spec.deshmukh.grade && p.seat > 0).map((p) => p.email);
     const health = await buildHealth(b.school, admin, { pupils: others.slice(0, 3) });
@@ -1007,7 +1106,23 @@ async function main() {
     const meetings = await buildMeetings(b, sunita);
     const feed = await buildFeed(b, sunita);
     const quizzes = await buildQuizzes(b);
-    b.counts = { lastYearCards: lastYear.cards, timetableSlots: timetable.slots, staffRecords: records.records + 3, registers: registers.sessions, feeStructures: fees.structures.length, feePupils: fees.pupils, receipts: fees.receipts, textsNumbered: texts.numbered, health: health.cards + 1, incidents: incidents.incidents, circular: circular.postId, staffMarks: staffAtt.marked, syllabus: syllabus6.units + syllabus9.units, subs: subs.covered, exams: `${exams6.series + exams9.series} series, ${exams6.papers + exams9.papers} papers, ${exams6.marks + exams9.marks} marks, ${exams6.cards + exams9.cards} cards`, certs: `${certs.templates} templates, ${certs.records} records, ${certs.issued} issued, ${certs.requests} asks`, leave: leave.requests, meetingSlots: meetings.slots, posts: feed.posts, comments: feed.comments, quizAttempts: quizzes.attempts, quizResponses: quizzes.responses, badges: quizzes.badges };
+    // The rest of what the audit found nobody had seeded: a pending invite, a remark thread, a practice
+    // assignment, a competition entry with the school's standing, and the roll number in every class.
+    const invite = await buildInvite(b.school, b.admin.membership.id, { email: `${spec.key}.invite1@${DOMAIN}`, name: spec.invite.name, subjects: spec.invite.subjects });
+    const g7 = b.classes.find((c) => c.grade === "7")!;
+    const remarked = b.pupils.find((p) => p.grade === "7" && p.seat === 1)!;
+    const remarks = await buildRemarkThread(b.school, {
+      studentMembershipId: remarked.membershipId, teacherMembershipId: g7.teacher.membership.id, teacherUserId: g7.teacher.user.id, parentUserId: remarked.parentUserId!,
+      subject: en ? "Homework diary" : "गृहपाठ वही",
+      remark: en ? `${remarked.name.split(" ")[0]} has not brought the homework diary for a week; could you check it is signed each evening?` : `${remarked.name.split(" ")[0]}ने आठवडाभर गृहपाठ वही आणलेली नाही; रोज संध्याकाळी सही होते का ते पाहाल का?`,
+      reply: en ? "Sorry — it was left at the grandparents'. It will be in the bag from tomorrow." : "क्षमस्व — आजी-आजोबांकडे राहिली होती. उद्यापासून दप्तरात असेल.",
+    });
+    const g6 = b.classes.find((c) => c.grade === "6")!;
+    const practice = await buildPracticeAssignment(b.school, { classId: g6.id, classLevel: 6, createdByMembershipId: g6.teacher.membership.id, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: en ? "Reach level 3 before the unit test on the 16th." : "१६ तारखेच्या घटक चाचणीपूर्वी पातळी ३ गाठा.", dueAt: new Date("2026-10-16T12:30:00Z") });
+    const competitor = b.pupils.find((p) => p.grade === "9" && p.seat === 1)!;
+    const competition = await buildCompetitionEntry(b.school, { title: "Autumn Science Fair", studentMembershipId: competitor.membershipId, parentUserId: competitor.parentUserId, rank: spec.key === "sunrise" ? 3 : 7, scoreMilli: spec.key === "sunrise" ? 84_500 : 78_250, submissionUrl: `https://sciencefair.example.org/entries/${spec.key}-2026-09`, enteredOn: new Date("2026-07-15T04:30:00Z") });
+    const rolls = await buildRollNumbers(b.school);
+    b.counts = { calendar, lastYearCards: lastYear.cards, lastYearRegisters: lastYear.sessions, lastYearDays: lastYear.days, timetableSlots: timetable.slots, staffRecords: records.records + 3, registers: registers.sessions, feeStructures: fees.structures.length, feePupils: fees.pupils, receipts: fees.receipts, concessions: adjustments.concessions, refunds: adjustments.refunds, textsNumbered: texts.numbered, health: health.cards + 1, incidents: incidents.incidents, circular: circular.postId, staffMarks: staffAtt.marked, syllabus: syllabus6.units + syllabus9.units, subs: subs.covered, exams: `${exams6.series + exams9.series} series, ${exams6.papers + exams9.papers} papers, ${exams6.marks + exams9.marks} marks, ${exams6.cards + exams9.cards} cards`, certs: `${certs.templates} templates, ${certs.records} records, ${certs.issued} issued, ${certs.requests} asks`, leave: leave.requests, meetingSlots: meetings.slots, posts: feed.posts, comments: feed.comments, reportId: feed.reportId, quizAttempts: quizzes.attempts, quizResponses: quizzes.responses, badges: quizzes.badges, invite: invite.status, remarkThread: remarks.threadId, practice: practice.topic ?? "none (no bank imported)", competition: competition.skipped ?? `1 entry in "Autumn Science Fair", standing written`, leaver: departures.leaverMembershipId, scheduledDepartures: departures.scheduled, rolls: rolls.numbered };
     built.push(b);
   }
   const [sunrise, saraswati] = built as [Built, Built];
@@ -1048,10 +1163,13 @@ async function main() {
      teachers    ${b.spec.key}.teacher1..6@${DOMAIN}  form teachers of grades 5–10; ${b.spec.key}.subject1..2 subject only; ${b.spec.key}.spare1 unattached
      pupils      ${b.pupils.length} in ${b.classes.length} classes (${b.spec.key}.pupil01..48@${DOMAIN}; ${b.spec.deshmukh.email} in grade ${b.spec.deshmukh.grade})
      parents     ${b.parents.length} (${b.spec.key}.parentNN@${DOMAIN} for pupil NN) + Sunita Deshmukh
-     last year   ${b.counts.lastYearCards} annual cards on archived ${b.years.prev.name} classes
+     calendar    ${b.counts.calendar} entries over ${b.years.prev.name} and ${b.years.current.name} (holidays, an exam span, the annual day)
+     last year   ${b.counts.lastYearCards} annual cards on archived ${b.years.prev.name} classes, each with the year's register behind it: ${b.counts.lastYearRegisters} sessions over ${b.counts.lastYearDays} open days
      timetable   ${b.counts.timetableSlots} slots, Mon–Sat, every one staffed
-     registers   ${b.counts.registers} class sessions over the last 10 teaching days; ${b.counts.staffMarks} staff marks
-     fees        ${b.counts.feeStructures} structures, ${b.counts.feePupils} pupils on plans, ${b.counts.receipts} receipts
+     registers   ${b.counts.registers} class sessions over the last 10 open days; ${b.counts.staffMarks} staff marks; ${b.counts.rolls} roll numbers
+     fees        ${b.counts.feeStructures} structures, ${b.counts.feePupils} pupils on plans, ${b.counts.receipts} receipts, ${b.counts.concessions} concession (25 % off tuition, grade 7), ${b.counts.refunds} refund (bus fee, grade 6)
+     leavers     ${b.spec.leaver.name} (${b.spec.key}.pupil49) left grade 8 on 31 August with a TC record; ${b.counts.scheduledDepartures} departure scheduled for 30 April; membership ${b.counts.leaver}
+     also        invite ${b.counts.invite} for ${b.spec.key}.invite1@${DOMAIN}; remark thread ${b.counts.remarkThread}; report ${b.counts.reportId} on a comment; practice on "${b.counts.practice}"; competition: ${b.counts.competition}
      texts       SMS and WhatsApp on, one broadcast; health ${b.counts.health} cards; incidents ${b.counts.incidents}; circular /bulletin/${b.counts.circular}
      syllabus    ${b.counts.syllabus} chapters (grades 6 and 9); substitutions today: ${b.counts.subs}
      exams       ${b.counts.exams} (grades 6 and 9, Term 1)

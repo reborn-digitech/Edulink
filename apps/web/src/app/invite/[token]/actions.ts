@@ -13,6 +13,7 @@ import { writeJson } from "@/lib/json";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 import { consumeByCaller, retryHintKey, INVITE_ACCEPTS } from "@/lib/rate-limit";
 import { getT, getLocale } from "@/lib/i18n/server";
+import { syncGradeLevel } from "@/lib/grade-level";
 
 export type AcceptState = { ok: boolean; errors: FieldErrors; redirectTo?: string };
 
@@ -328,6 +329,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             },
             update: { status: "ACTIVE", removedAt: null },
           });
+          await syncGradeLevel(tx, [membership.id]);
         } else if (invite.role === "TEACHER") {
           await tx.classTeacher.upsert({
             where: {

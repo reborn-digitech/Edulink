@@ -7,6 +7,7 @@ import { notify, notifyGuardians } from "./notify";
 import { recordDeparture } from "./school-record";
 import { syncStandinGuardian } from "./standin-guardian";
 import type { ActiveContext } from "./session";
+import { syncGradeLevel } from "./grade-level";
 
 /**
  * Year-end promotion: the whole school moves up one grade in one sitting.
@@ -460,6 +461,8 @@ export async function promoteSchool(
           data: { status: "REMOVED", removedAt: now },
         });
       }
+      // Every pupil the run touched — moved, held back or graduating — carries the grade of the class they now sit in, or none.
+      await syncGradeLevel(tx, [...movedTo.map((m) => m.membershipId), ...leavers.map((l) => l.membershipId)]);
 
       // Nobody left behind and nobody arriving → the class is last year's,
       // and goes to the archive. A STAY class is never archived, whoever

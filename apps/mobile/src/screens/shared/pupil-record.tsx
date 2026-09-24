@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { penChangeRequestSchema, penChangesListSchema, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -24,12 +24,25 @@ import { Chips, must, Refusal } from "../staff/shared";
  * cleared. The date of birth is the school's and is only read here.
  */
 export const REQUIRED_FIELDS: PupilRecordField[] = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"];
-export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "penNumber"];
+export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome"];
 /** The filing fields: the chip-picked ones send the portal's code ("M", "yes", "9", "B+") and a blank clears. */
 export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"];
 const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS];
-const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint" };
-const MAX: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11 };
+const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+const MAX: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, previousSchoolTcDate: 10, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
+/** The fields typed as a day key and sent as one, or null when blank. */
+const DATE_FIELDS: PupilRecordField[] = ["admissionDate", "previousSchoolTcDate"];
+/** Digits only, on the number pad: rupees a year and the roll number in the present class. */
+const DIGIT_FIELDS: PupilRecordField[] = ["postalCode", "penNumber", "annualIncome", "rollNumber"];
+/**
+ * The coded choices and their labels: the category as UDISE+ files it plus
+ * Maharashtra's three, the religion so the minority code is exact. Exported
+ * so a test can walk the chips the form offers.
+ */
+export const CATEGORY_VALUES = PUPIL_CATEGORIES;
+export const RELIGION_VALUES = PUPIL_RELIGIONS;
+const CATEGORY_LABEL: Record<(typeof PUPIL_CATEGORIES)[number], TranslationKey> = { GENERAL: "pupilRecord.catGeneral", SC: "pupilRecord.catSC", ST: "pupilRecord.catST", OBC: "pupilRecord.catOBC", VJ: "pupilRecord.catVJ", NT: "pupilRecord.catNT", SBC: "pupilRecord.catSBC" };
+const RELIGION_LABEL: Record<(typeof PUPIL_RELIGIONS)[number], TranslationKey> = { HINDU: "pupilRecord.relHindu", MUSLIM: "pupilRecord.relMuslim", CHRISTIAN: "pupilRecord.relChristian", SIKH: "pupilRecord.relSikh", BUDDHIST: "pupilRecord.relBuddhist", PARSI: "pupilRecord.relParsi", JAIN: "pupilRecord.relJain", OTHER: "pupilRecord.relOther" };
 
 export type RecordForm = Record<PupilRecordField, string>;
 
@@ -52,19 +65,20 @@ export function formFrom(record: PupilRecordView["record"]): RecordForm {
 
 /**
  * What the server is sent: every field trimmed (a blank clears it), the
- * admission date as a day key or null. `omit` leaves fields out altogether —
+ * two dates as a day key or null. `omit` leaves fields out altogether —
  * the PEN once it is locked, which the server would refuse changed and which
- * has no business in the body at all.
+ * has no business in the body at all, and the roll number from a family,
+ * which is the office's to set.
  */
 export function bodyFrom(form: RecordForm, omit: PupilRecordField[] = []): PupilRecordSave {
   const body: Record<string, string | null> = {};
   for (const field of ALL_FIELDS) if (!omit.includes(field)) body[field] = form[field].trim();
-  if (!omit.includes("admissionDate")) body.admissionDate = form.admissionDate.trim() || null;
+  for (const field of DATE_FIELDS) if (!omit.includes(field)) body[field] = form[field].trim() || null;
   return body as PupilRecordSave;
 }
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
-/** A typed admission date that is not a day key is refused before anything is sent. */
+/** A typed date that is not a day key is refused before anything is sent. */
 export function dateProblem(t: Translate, value: string): string | undefined {
   const s = value.trim();
   return !s || DAY.test(s) ? undefined : t("refusal.useRealDateForm");
@@ -92,35 +106,69 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
   const [tried, setTried] = useState(false);
   const set = (field: PupilRecordField, value: string) => setForm((f) => ({ ...f, [field]: value }));
   const issue = (field: PupilRecordField) => refusal?.issues[field];
-  const dateBad = dateProblem(t, form.admissionDate);
+  const dateBad = dateProblem(t, form.admissionDate) ?? dateProblem(t, form.previousSchoolTcDate);
   const editable = !busy && view.canEdit;
+  // The roll number is the office's: the family reads it and never sends it.
+  const familySide = role === "PARENT" || role === "STUDENT";
+  const omitted: PupilRecordField[] = [...(view.penEditable ? [] : (["penNumber"] as PupilRecordField[])), ...(familySide ? (["rollNumber"] as PupilRecordField[]) : [])];
   const yesNo = [
     { value: "", label: t("pupilRecord.notSaid") },
     { value: "yes", label: t("pupilRecord.yes") },
     { value: "no", label: t("pupilRecord.no") },
   ];
+  /** A field shown, never typed: the value or a dash, and the note that says whose it is. */
+  const readOnly = (field: PupilRecordField, note: string, testID: string) => {
+    const shown = form[field] || "—";
+    return (
+      <View key={field} accessible accessibilityLabel={`${fieldLabel(t, field)}: ${shown}. ${note}`} testID={testID} style={{ gap: 2, paddingVertical: th.space[1] }}>
+        <Text variant="xs" bold tone="subtle" style={{ textTransform: "uppercase", letterSpacing: 0.5 }}>
+          {fieldLabel(t, field)}
+        </Text>
+        <Text variant="base" tone={form[field] ? "fg" : "subtle"}>
+          {shown}
+        </Text>
+        <Text variant="xs" tone="subtle">
+          {note}
+        </Text>
+      </View>
+    );
+  };
+  /**
+   * A coded choice as chips: blank, the codes with their labels, and — for
+   * a value typed before the codes existed — the stored word as one more
+   * chip, so it still shows and goes back only as it is.
+   */
+  const coded = (field: "category" | "religion") => {
+    const codes: readonly string[] = field === "category" ? CATEGORY_VALUES : RELIGION_VALUES;
+    const labelOf = (code: string): string => t(field === "category" ? CATEGORY_LABEL[code as (typeof PUPIL_CATEGORIES)[number]] : RELIGION_LABEL[code as (typeof PUPIL_RELIGIONS)[number]]);
+    const stored = view.record?.[field] ?? "";
+    const options = [{ value: "", label: t("pupilRecord.notSaid") }, ...codes.map((code) => ({ value: code, label: labelOf(code) }))];
+    if (stored && !codes.includes(stored)) options.push({ value: stored, label: stored });
+    const hintKey = HINT[field];
+    return (
+      <View key={field} style={{ gap: th.space[1] }}>
+        <Chips label={fieldLabel(t, field)} value={form[field]} options={options} onChange={(v) => set(field, v)} disabled={!editable} />
+        {hintKey || issue(field) ? (
+          <Text variant="xs" tone={issue(field) ? "danger" : "subtle"}>
+            {issue(field) ?? t(hintKey!)}
+          </Text>
+        ) : null}
+      </View>
+    );
+  };
   const input = (field: PupilRecordField, optional: boolean) => {
     if (field === "penNumber" && !view.penEditable) {
       // The PEN is the admin's to enter once; after that it is shown, never
       // typed, and a correction goes through the change below.
-      const shown = form.penNumber || "—";
-      const note = form.penNumber ? t(role === "ADMIN" ? "pupilRecord.penEnteredBy" : "pupilRecord.penLocked") : t("pupilRecord.penOnlyAdmin");
-      return (
-        <View key={field} accessible accessibilityLabel={`${fieldLabel(t, field)}: ${shown}. ${note}`} testID="record-pen-locked" style={{ gap: 2, paddingVertical: th.space[1] }}>
-          <Text variant="xs" bold tone="subtle" style={{ textTransform: "uppercase", letterSpacing: 0.5 }}>
-            {fieldLabel(t, field)}
-          </Text>
-          <Text variant="base" tone={form.penNumber ? "fg" : "subtle"}>
-            {shown}
-          </Text>
-          <Text variant="xs" tone="subtle">
-            {note}
-          </Text>
-        </View>
-      );
+      return readOnly(field, form.penNumber ? t(role === "ADMIN" ? "pupilRecord.penEnteredBy" : "pupilRecord.penLocked") : t("pupilRecord.penOnlyAdmin"), "record-pen-locked");
     }
+    if (field === "rollNumber" && familySide) return readOnly(field, t("pupilRecord.rollNumberOffice"), "record-roll-office");
+    if (field === "category" || field === "religion") return coded(field);
+    const isDate = DATE_FIELDS.includes(field);
+    const isDigits = DIGIT_FIELDS.includes(field);
     const hintKey = HINT[field];
-    const hint = [optional ? t("pupilRecord.optional") : null, hintKey ? t(hintKey) : null, field === "admissionDate" ? "YYYY-MM-DD" : null].filter(Boolean).join(" · ") || undefined;
+    const hint = [optional ? t("pupilRecord.optional") : null, hintKey ? t(hintKey) : null, isDate ? "YYYY-MM-DD" : null].filter(Boolean).join(" · ") || undefined;
+    const ownDateBad = isDate ? dateProblem(t, form[field]) : undefined;
     return (
       <Field
         key={field}
@@ -130,9 +178,9 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
         onChangeText={(v) => set(field, v)}
         maxLength={MAX[field] ?? 120}
         editable={editable}
-        autoCapitalize={field === "admissionDate" || field === "penNumber" || field === "postalCode" ? "none" : "words"}
-        keyboardType={field === "admissionDate" ? "numbers-and-punctuation" : field === "postalCode" || field === "penNumber" ? "number-pad" : "default"}
-        error={field === "admissionDate" && tried && dateBad ? dateBad : issue(field)}
+        autoCapitalize={isDate || isDigits || field === "previousSchoolTcNumber" ? "none" : "words"}
+        keyboardType={isDate ? "numbers-and-punctuation" : isDigits ? "number-pad" : "default"}
+        error={isDate && tried && ownDateBad ? ownDateBad : issue(field)}
       />
     );
   };
@@ -206,7 +254,7 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
           busy={busy}
           onPress={() => {
             setTried(true);
-            if (!dateBad) onSave(bodyFrom(form, view.penEditable ? [] : ["penNumber"]));
+            if (!dateBad) onSave(bodyFrom(form, omitted));
           }}
         />
       ) : null}

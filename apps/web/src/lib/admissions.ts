@@ -26,6 +26,7 @@ import { wordsFor } from "./certificate-rules";
 import { normaliseLocale } from "./i18n/locales";
 import { readJson } from "./json";
 import type { ActiveContext } from "./session";
+import { syncGradeLevel } from "./grade-level";
 
 /**
  * Admissions: the whole road from a family's form to a seat on the roll.
@@ -83,9 +84,26 @@ type CycleGrade = { grade: string; seats: number };
 type CycleDocument = { key: string; name: string; required: boolean };
 type ApplicationDocument = { key: string; fileId: string; name: string; mime: string; size: number; uploadedAt: string };
 
-const STATUSES: AdmissionStatus[] = ["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN"];
-/** The states a family may still act in; everything else is settled. */
+const STATUSES: AdmissionStatus[] = ["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN", "EXPIRED"];
+/**
+ * The states a family may still act in; everything else is settled. A
+ * settled application also stops holding its entrance-test sitting: the
+ * `testSlotId` stays as the record of where the child sat, but only a LIVE
+ * application counts toward a sitting's `booked` figure.
+ */
 const LIVE: AdmissionStatus[] = ["SUBMITTED", "OFFERED", "ACCEPTED", "WAITLISTED"];
+
+/**
+ * What an application's status IS, whatever the row says: an OFFERED one
+ * whose date has passed is EXPIRED. The hourly job writes that onto the row
+ * (`expireOffers`); until it does, every reader — the cycle's counts, the
+ * pipeline, the application itself — reads it the same way, so a seat is
+ * never counted as offered on the strength of a date nobody kept.
+ */
+function effectiveStatus(a: { status: string; offerExpiresAt: Date | null }, now: Date = new Date()): AdmissionStatus {
+  if (a.status === "OFFERED" && a.offerExpiresAt && a.offerExpiresAt.getTime() < now.getTime()) return "EXPIRED";
+  return a.status as AdmissionStatus;
+}
 
 function parseGrades(raw: string): CycleGrade[] {
   return readJsonArray<CycleGrade>(raw).filter((g) => g && typeof g.grade === "string" && Number.isFinite(g.seats)).map((g) => ({ grade: String(g.grade), seats: Math.max(0, Math.floor(g.seats)) }));
@@ -110,14 +128,18 @@ const iso = (d: Date | null) => (d ? d.toISOString() : null);
 type CycleRow = {
   id: string; academicYearId: string; name: string; gradesJson: string; documentsJson: string; testRequired: boolean; notice: string; feeStructureId: string | null; opensAt: Date | null; closesAt: Date | null; status: string; updatedAt: Date;
   academicYear: { name: string }; feeStructure: { name: string } | null;
-  applications: { gradeApplied: string; status: string }[];
+  applications: { gradeApplied: string; status: string; offerExpiresAt: Date | null }[];
 };
 
 function cycleView(c: CycleRow): CycleView {
   const grades = parseGrades(c.gradesJson);
+  const now = new Date();
+  // Counted by what each application IS: an offer past its date is EXPIRED
+  // here even before the hourly job has written it.
+  const applications = c.applications.map((a) => ({ gradeApplied: a.gradeApplied, status: effectiveStatus(a, now) }));
   const counts = Object.fromEntries(STATUSES.map((s) => [s, 0])) as Record<AdmissionStatus, number>;
-  for (const a of c.applications) if (a.status in counts) counts[a.status as AdmissionStatus] += 1;
-  const tally = (grade: string, status: string) => c.applications.filter((a) => a.gradeApplied === grade && a.status === status).length;
+  for (const a of applications) if (a.status in counts) counts[a.status] += 1;
+  const tally = (grade: string, status: string) => applications.filter((a) => a.gradeApplied === grade && a.status === status).length;
   return {
     id: c.id,
     academicYearId: c.academicYearId,
@@ -135,7 +157,7 @@ function cycleView(c: CycleRow): CycleView {
     seats: grades.map((g) => ({
       grade: g.grade,
       seats: g.seats,
-      applied: c.applications.filter((a) => a.gradeApplied === g.grade && a.status !== "WITHDRAWN").length,
+      applied: applications.filter((a) => a.gradeApplied === g.grade && a.status !== "WITHDRAWN").length,
       offered: tally(g.grade, "OFFERED"),
       accepted: tally(g.grade, "ACCEPTED"),
       admitted: tally(g.grade, "ADMITTED"),
@@ -146,7 +168,7 @@ function cycleView(c: CycleRow): CycleView {
   };
 }
 
-const CYCLE_INCLUDE = { academicYear: { select: { name: true } }, feeStructure: { select: { name: true } }, applications: { select: { gradeApplied: true, status: true } } } as const;
+const CYCLE_INCLUDE = { academicYear: { select: { name: true } }, feeStructure: { select: { name: true } }, applications: { select: { gradeApplied: true, status: true, offerExpiresAt: true } } } as const;
 
 /** Every cycle of the school, newest first, with the years and the published structures the editor offers. */
 export async function cyclesView(ctx: ActiveContext) {
@@ -254,7 +276,8 @@ export async function purgeCycle(ctx: ActiveContext, cycleId: string): Promise<{
 
 type SlotRow = { id: string; startsAt: Date; endsAt: Date; location: string | null; note: string | null; capacity: number; cancelledAt: Date | null; _count: { applications: number } };
 const slotView = (s: SlotRow) => ({ id: s.id, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), location: s.location, note: s.note, capacity: s.capacity, booked: s._count.applications, cancelledAt: iso(s.cancelledAt) });
-const SLOT_INCLUDE = { _count: { select: { applications: true } } } as const;
+/** A sitting's `booked` counts the applications still standing on it; a declined, withdrawn, admitted or expired one keeps its `testSlotId` as the record of where the child sat, and holds no seat. */
+const SLOT_INCLUDE = { _count: { select: { applications: { where: { status: { in: LIVE } } } } } } as const;
 
 export async function listSlots(ctx: ActiveContext, cycleId: string) {
   const caller = office(ctx);
@@ -287,11 +310,11 @@ export async function publishSlots(ctx: ActiveContext, cycleId: string, input: {
 /** Cancel a sitting; the families booked on it are released and told. Cancelling twice is a no-op. */
 export async function cancelSlot(ctx: ActiveContext, slotId: string): Promise<{ released: number }> {
   const caller = office(ctx);
-  const slot = await db.entranceSlot.findFirst({ where: { id: slotId, schoolId: caller.schoolId }, select: { id: true, cycleId: true, cancelledAt: true, applications: { select: { id: true, applicantUserId: true, childName: true } } } });
+  const slot = await db.entranceSlot.findFirst({ where: { id: slotId, schoolId: caller.schoolId }, select: { id: true, cycleId: true, cancelledAt: true, applications: { where: { status: { in: LIVE } }, select: { id: true, applicantUserId: true, childName: true } } } });
   if (!slot) throw new AccessError("admissions.notFound", "NOT_FOUND");
   if (slot.cancelledAt) return { released: 0 };
   await db.entranceSlot.update({ where: { id: slotId }, data: { cancelledAt: new Date() } });
-  await db.application.updateMany({ where: { testSlotId: slotId }, data: { testSlotId: null } });
+  await db.application.updateMany({ where: { testSlotId: slotId, status: { in: LIVE } }, data: { testSlotId: null } });
   for (const a of slot.applications) {
     if (a.applicantUserId) await notify({ userId: a.applicantUserId, schoolId: caller.schoolId, kind: "ADMISSION", titleKey: "admissions.notifSlotCancelled", titleVars: { name: a.childName }, bodyKey: "admissions.notifSlotCancelledBody", url: `/parent/applications/${a.id}` });
   }
@@ -473,7 +496,7 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
     const a = await db.application.findUniqueOrThrow({ where: { id: applicationId }, include: APP_INCLUDE });
     const documents = parseAttached(a.documentsJson);
     const required = parseDocuments(a.cycle.documentsJson);
-    const status = a.status as AdmissionStatus;
+    const status = effectiveStatus(a);
     const live = LIVE.includes(status);
     const offerOpen = status === "OFFERED" && (!a.offerExpiresAt || a.offerExpiresAt.getTime() >= Date.now());
     const needsSlot = a.cycle.testRequired && !a.testedAt && live;
@@ -524,8 +547,8 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
         withdraw: !office && status !== "ADMITTED" && status !== "WITHDRAWN",
         verifyDocuments: office && live && !a.documentsVerifiedAt && documents.length > 0,
         recordTest: office && live && a.cycle.testRequired,
-        offer: office && (status === "SUBMITTED" || status === "WAITLISTED"),
-        decide: office && (status === "SUBMITTED" || status === "WAITLISTED" || status === "OFFERED"),
+        offer: office && (status === "SUBMITTED" || status === "WAITLISTED" || status === "EXPIRED"),
+        decide: office && (status === "SUBMITTED" || status === "WAITLISTED" || status === "OFFERED" || status === "EXPIRED"),
         admit: office && status === "ACCEPTED",
       },
       openSlots,
@@ -533,18 +556,25 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
   });
 }
 
-type ListRow = { id: string; serial: string; status: string; childName: string; gradeApplied: string; applicantName: string; documentsJson: string; testSlotId: string | null; createdAt: Date; updatedAt: Date; cycle: { name: string; documentsJson: string }; school: { name: string } };
+type ListRow = { id: string; serial: string; status: string; offerExpiresAt: Date | null; childName: string; gradeApplied: string; applicantName: string; documentsJson: string; testSlotId: string | null; createdAt: Date; updatedAt: Date; cycle: { name: string; documentsJson: string }; school: { name: string } };
 const listRow = (a: ListRow): ApplicationRow => ({
-  id: a.id, serial: a.serial, status: a.status as AdmissionStatus, childName: a.childName, gradeApplied: a.gradeApplied, applicantName: a.applicantName,
+  id: a.id, serial: a.serial, status: effectiveStatus(a), childName: a.childName, gradeApplied: a.gradeApplied, applicantName: a.applicantName,
   cycleName: a.cycle.name, schoolName: a.school.name, documentsMissing: missingKeys(parseDocuments(a.cycle.documentsJson), parseAttached(a.documentsJson)).length, testBooked: Boolean(a.testSlotId),
   createdAt: a.createdAt.toISOString(), updatedAt: a.updatedAt.toISOString(),
 });
 const LIST_INCLUDE = { cycle: { select: { name: true, documentsJson: true } }, school: { select: { name: true } } } as const;
 
+/** The filter's idea of a status is the reader's (`effectiveStatus`): "offered" is an offer still open, "expired" one past its date whether or not the job has written it yet. */
+function statusWhere(status: AdmissionStatus, now: Date) {
+  if (status === "OFFERED") return { status: "OFFERED", OR: [{ offerExpiresAt: null }, { offerExpiresAt: { gte: now } }] };
+  if (status === "EXPIRED") return { OR: [{ status: "EXPIRED" }, { status: "OFFERED", offerExpiresAt: { lt: now } }] };
+  return { status };
+}
+
 /** The office's pipeline: every application to the school, filtered by cycle, status or grade, newest first. */
 export async function officeApplications(ctx: ActiveContext, query: { cycleId?: string; status?: AdmissionStatus; grade?: string }): Promise<{ items: ApplicationRow[] }> {
   const caller = office(ctx);
-  const rows = await db.application.findMany({ where: { schoolId: caller.schoolId, ...(query.cycleId ? { cycleId: query.cycleId } : {}), ...(query.status ? { status: query.status } : {}), ...(query.grade ? { gradeApplied: query.grade } : {}) }, orderBy: { createdAt: "desc" }, include: LIST_INCLUDE });
+  const rows = await db.application.findMany({ where: { schoolId: caller.schoolId, ...(query.cycleId ? { cycleId: query.cycleId } : {}), ...(query.status ? statusWhere(query.status, new Date()) : {}), ...(query.grade ? { gradeApplied: query.grade } : {}) }, orderBy: { createdAt: "desc" }, include: LIST_INCLUDE });
   return { items: rows.map(listRow) };
 }
 
@@ -611,7 +641,7 @@ export async function bookSlot(ctx: ActiveContext, applicationId: string, slotId
     await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
       await tx.$queryRaw`SELECT "id" FROM "EntranceSlot" WHERE "id" = ${slotId} FOR UPDATE`;
-      const slot = await tx.entranceSlot.findFirst({ where: { id: slotId, cycleId: a.cycleId, cancelledAt: null, startsAt: { gte: new Date() } }, select: { id: true, capacity: true, _count: { select: { applications: true } } } });
+      const slot = await tx.entranceSlot.findFirst({ where: { id: slotId, cycleId: a.cycleId, cancelledAt: null, startsAt: { gte: new Date() } }, select: { id: true, capacity: true, ...SLOT_INCLUDE } });
       if (!slot) throw new AccessError("admissions.notFound", "NOT_FOUND");
       if (slot._count.applications >= slot.capacity) throw new AccessError("admissions.refuseSlotFull");
       await tx.application.update({ where: { id: applicationId }, data: { testSlotId: slotId } });
@@ -628,8 +658,8 @@ export async function respond(ctx: ActiveContext, applicationId: string, input: 
   await forSchool(who.schoolId, async () => {
     const a = await db.application.findUniqueOrThrow({ where: { id: applicationId }, select: { status: true, offerExpiresAt: true, respondedAt: true, childName: true, gradeApplied: true } });
     if (a.status === next && a.respondedAt) return;
+    if (effectiveStatus(a) === "EXPIRED") throw new AccessError("admissions.refuseOfferExpired");
     if (a.status !== "OFFERED") throw new AccessError("admissions.refuseNoOffer");
-    if (a.offerExpiresAt && a.offerExpiresAt.getTime() < Date.now()) throw new AccessError("admissions.refuseOfferExpired");
     await db.application.update({ where: { id: applicationId }, data: { status: next, respondedAt: new Date(), decisionNote: input.note?.trim() || null } });
     await audit({ schoolId: who.schoolId, actorUserId: ctx.user.id, action: "admissions.respond", targetType: "Application", targetId: applicationId, meta: { answer: input.answer, byOffice: who.asOffice } });
     const recipients = await officeUserIds(who.schoolId);
@@ -665,7 +695,7 @@ async function officeApplication(ctx: ActiveContext, applicationId: string) {
   return { caller, a };
 }
 
-async function tellApplicant(a: { id: string; schoolId: string; applicantUserId: string | null; childName: string }, titleKey: "admissions.notifOffer" | "admissions.notifDecided" | "admissions.notifAdmitted" | "admissions.notifVerified" | "admissions.notifTested", vars: Record<string, string | number> = {}) {
+async function tellApplicant(a: { id: string; schoolId: string; applicantUserId: string | null; childName: string }, titleKey: "admissions.notifOffer" | "admissions.notifDecided" | "admissions.notifAdmitted" | "admissions.notifVerified" | "admissions.notifTested" | "admissions.notifOfferExpired", vars: Record<string, string | number> = {}) {
   if (!a.applicantUserId) return;
   await notify({ userId: a.applicantUserId, schoolId: a.schoolId, kind: "ADMISSION", titleKey, titleVars: { name: a.childName, ...vars }, url: `/parent/applications/${a.id}` });
 }
@@ -694,11 +724,11 @@ export async function recordTest(ctx: ActiveContext, applicationId: string, inpu
   return applicationView(ctx, applicationId);
 }
 
-/** Offer the seat. From the pool or the waitlist; an offer already standing is left as it is. */
+/** Offer the seat. From the pool, the waitlist, or after an offer the family let lapse; an offer already standing is left as it is. */
 export async function offer(ctx: ActiveContext, applicationId: string, input: { expiresOn: string | null; note?: string; feeStructureId?: string | null }): Promise<ApplicationView> {
   const { caller, a } = await officeApplication(ctx, applicationId);
-  if (a.status === "OFFERED") return applicationView(ctx, applicationId);
-  if (a.status !== "SUBMITTED" && a.status !== "WAITLISTED") throw new AccessError("admissions.refuseSettled");
+  if (a.status === "OFFERED" && effectiveStatus(a) === "OFFERED") return applicationView(ctx, applicationId);
+  if (a.status !== "SUBMITTED" && a.status !== "WAITLISTED" && a.status !== "EXPIRED" && a.status !== "OFFERED") throw new AccessError("admissions.refuseSettled");
   const feeStructureId = input.feeStructureId === undefined ? a.cycle.feeStructureId : input.feeStructureId;
   if (feeStructureId) {
     const structure = await db.feeStructure.findFirst({ where: { id: feeStructureId, schoolId: caller.schoolId, publishedAt: { not: null }, archivedAt: null }, select: { id: true } });
@@ -706,8 +736,8 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
   }
   const expires = input.expiresOn ? parseDateOnly(input.expiresOn) : null;
   if (expires) expires.setUTCHours(23, 59, 59, 999);
-  await db.application.update({ where: { id: applicationId }, data: { status: "OFFERED", offeredAt: new Date(), offerExpiresAt: expires, offerNote: input.note?.trim() || null, respondedAt: null, feeStructureId } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.offer", targetType: "Application", targetId: applicationId, meta: { expires: input.expiresOn, hasStructure: Boolean(feeStructureId), from: a.status } });
+  await db.application.update({ where: { id: applicationId }, data: { status: "OFFERED", offeredAt: new Date(), offerExpiresAt: expires, offerNote: input.note?.trim() || null, respondedAt: null, decidedAt: null, decisionNote: null, feeStructureId } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.offer", targetType: "Application", targetId: applicationId, meta: { expires: input.expiresOn, hasStructure: Boolean(feeStructureId), from: effectiveStatus(a) } });
   await tellApplicant(a, "admissions.notifOffer", { grade: a.gradeApplied });
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true, locale: true } });
   if (a.applicantEmail) {
@@ -724,15 +754,47 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
   return applicationView(ctx, applicationId);
 }
 
-/** Decline, waitlist, or put back into the pool (which also takes back an unanswered offer). The same state again is a no-op. */
+/** Decline, waitlist, or put back into the pool (which also takes back an unanswered or lapsed offer). The same state again is a no-op. */
 export async function decide(ctx: ActiveContext, applicationId: string, input: { status: "DECLINED" | "WAITLISTED" | "SUBMITTED"; note?: string }): Promise<ApplicationView> {
   const { caller, a } = await officeApplication(ctx, applicationId);
   if (a.status === input.status) return applicationView(ctx, applicationId);
-  if (a.status !== "SUBMITTED" && a.status !== "WAITLISTED" && a.status !== "OFFERED") throw new AccessError("admissions.refuseSettled");
-  await db.application.update({ where: { id: applicationId }, data: { status: input.status, decisionNote: input.note?.trim() || null, decidedAt: new Date(), ...(a.status === "OFFERED" ? { offeredAt: null, offerExpiresAt: null, offerNote: null } : {}) } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.decide", targetType: "Application", targetId: applicationId, meta: { from: a.status, to: input.status } });
+  if (a.status !== "SUBMITTED" && a.status !== "WAITLISTED" && a.status !== "OFFERED" && a.status !== "EXPIRED") throw new AccessError("admissions.refuseSettled");
+  const from = effectiveStatus(a);
+  await db.application.update({ where: { id: applicationId }, data: { status: input.status, decisionNote: input.note?.trim() || null, decidedAt: new Date(), ...(from === "OFFERED" || from === "EXPIRED" ? { offeredAt: null, offerExpiresAt: null, offerNote: null } : {}) } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.decide", targetType: "Application", targetId: applicationId, meta: { from, to: input.status } });
   if (input.status !== "SUBMITTED") await tellApplicant(a, "admissions.notifDecided");
   return applicationView(ctx, applicationId);
+}
+
+/**
+ * The hourly job `admissions:expire-offers`: every OFFERED application whose
+ * date has passed becomes EXPIRED, decided now with no note, and the family
+ * is told the way a decline tells them. Readers already treat such a row as
+ * EXPIRED (`effectiveStatus`); this writes it down so the pipeline's filter,
+ * the exports and the row itself agree with what every page has been
+ * showing. One audit row per run with the count and no names — the run is
+ * the operator's, outside any tenant, and stays safe to be so. Per school
+ * the count only. The second run finds nothing and changes nothing.
+ */
+export async function expireOffers(now: Date = new Date()): Promise<{ summary: { expired: number; schools: number }; perSchool: Record<string, Record<string, number>> }> {
+  const schools = await db.school.findMany({ where: { removedAt: null }, select: { id: true } });
+  const perSchool: Record<string, Record<string, number>> = {};
+  let expired = 0;
+  for (const school of schools) {
+    await forSchool(school.id, async () => {
+      const due = await db.application.findMany({ where: { schoolId: school.id, status: "OFFERED", offerExpiresAt: { lt: now } }, select: { id: true, schoolId: true, applicantUserId: true, childName: true, gradeApplied: true } });
+      for (const a of due) {
+        // Guarded on the status, so an answer that landed between the read and this write wins.
+        const moved = await db.application.updateMany({ where: { id: a.id, status: "OFFERED" }, data: { status: "EXPIRED", decidedAt: now, decisionNote: null } });
+        if (moved.count === 0) continue;
+        expired += 1;
+        perSchool[school.id] = { expired: (perSchool[school.id]?.expired ?? 0) + 1 };
+        await tellApplicant(a, "admissions.notifOfferExpired", { grade: a.gradeApplied });
+      }
+    });
+  }
+  await audit({ schoolId: null, actorUserId: null, action: "admissions.expireOffers", meta: { expired, schools: Object.keys(perSchool).length } });
+  return { summary: { expired, schools: Object.keys(perSchool).length }, perSchool };
 }
 
 /** The login handle `joinAsStudent` and intake mint, so an admitted pupil's looks like any other's. */
@@ -796,10 +858,16 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
       : await tx.user.create({ data: { name: a.childName, preferredName: null, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate, isMinor: age === null ? true : age < 18, penNumber: a.penNumber, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
     // A pupil who once left this school and comes back through the PEN takes their old membership up again: one row per person and school, as the schema says.
     const prior = existingUserId ? await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: existingUserId, schoolId: caller.schoolId, role: "STUDENT" } }, select: { id: true } }) : null;
+    // Back on the roll: the departure record and its scheduled leaving go, as the join-code path does, so no certificate prints the old leaving date.
+    if (prior) {
+      await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId: caller.schoolId } });
+      await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId: caller.schoolId } });
+    }
     const membership = prior
       ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: code, joinedAt: new Date() }, select: { id: true } })
       : await tx.membership.create({ data: { userId: user.id, schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
     if (klass) await tx.enrollment.upsert({ where: { classId_studentMembershipId: { classId: klass.id, studentMembershipId: membership.id } }, create: { classId: klass.id, schoolId: caller.schoolId, studentMembershipId: membership.id, status: "ACTIVE" }, update: { status: "ACTIVE", removedAt: null } });
+    await syncGradeLevel(tx, [membership.id]);
     if (applicantUser) {
       await tx.guardianship.create({ data: { parentUserId: applicantUser.id, studentMembershipId: membership.id, studentSchoolId: caller.schoolId, relation: a.relation, status: "ACTIVE", consentSharingAt: new Date(), consentNotificationsAt: new Date() } });
     }

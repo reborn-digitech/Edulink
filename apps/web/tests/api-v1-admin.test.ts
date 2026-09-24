@@ -12,6 +12,7 @@ import { __resetCookies } from "../tests/stubs/next-headers";
 import { hashToken, generateToken } from "@/lib/crypto";
 import { todayKey, addDaysToKey } from "@/lib/dates";
 import { GET as overviewGet } from "@/app/api/v1/admin/overview/route";
+import { adminOverview } from "@/lib/api-reads/admin";
 import { GET as peopleGet } from "@/app/api/v1/admin/people/route";
 import { GET as invitesGet, POST as invitesPost } from "@/app/api/v1/admin/people/invites/route";
 import { POST as inviteRevokePost } from "@/app/api/v1/admin/people/invites/[inviteId]/revoke/route";
@@ -260,6 +261,46 @@ describe("as the admin", () => {
     expect(body.academicYear).toBeNull();
     expect(body.counts).toMatchObject({ teachers: 2, students: 1, classes: 1, pendingInvites: 1 });
     expect(body.checklist.total).toBeGreaterThan(0);
+  });
+
+  it("overview: registers expected only on a teaching day, from classes with pupils", async () => {
+    // The read itself with the clock pinned: TZ is Asia/Kolkata, and noon UTC
+    // is the same calendar day there. One class with one pupil, no register.
+    const ctx = { sessionId: "test", schoolId, membershipId: adminMembershipId, role: "ADMIN" } as unknown as Parameters<typeof adminOverview>[0];
+    const tuesday = await adminOverview(ctx, new Date("2025-07-15T12:00:00Z"));
+    expect(tuesday.counts.registersTakenToday).toBe(0);
+    expect(tuesday.attendanceTakenPercent).toBe(0);
+
+    // A Sunday expects nothing: null rather than "0 % of the registers".
+    const sunday = await adminOverview(ctx, new Date("2025-07-20T12:00:00Z"));
+    expect(sunday.counts.registersTakenToday).toBe(0);
+    expect(sunday.attendanceTakenPercent).toBeNull();
+
+    // A closing holiday the same, and an empty class adds nothing to expect.
+    const holiday = await db.holiday.create({
+      data: { schoolId, name: "ZZ V1A Holiday", startDateKey: "2025-07-16", endDateKey: "2025-07-16", kind: "HOLIDAY" },
+      select: { id: true },
+    });
+    const emptyClass = await db.class.create({
+      data: { schoolId, name: "ZZ V1A Empty", gradeLevel: "5", joinCode: `ZE${String(STAMP).slice(-6)}` },
+      select: { id: true },
+    });
+    try {
+      const wednesday = await adminOverview(ctx, new Date("2025-07-16T12:00:00Z"));
+      expect(wednesday.attendanceTakenPercent).toBeNull();
+      const thursday = await adminOverview(ctx, new Date("2025-07-17T12:00:00Z"));
+      expect(thursday.counts.classes).toBe(2);
+      // Still 0 of 1: the empty class is not a register anybody can take.
+      expect(thursday.attendanceTakenPercent).toBe(0);
+      await db.attendanceSession.create({ data: { schoolId, classId, dateKey: "2025-07-17" } });
+      const taken = await adminOverview(ctx, new Date("2025-07-17T12:00:00Z"));
+      expect(taken.counts.registersTakenToday).toBe(1);
+      expect(taken.attendanceTakenPercent).toBe(100);
+    } finally {
+      await db.attendanceSession.deleteMany({ where: { schoolId, dateKey: "2025-07-17" } });
+      await db.class.delete({ where: { id: emptyClass.id } });
+      await db.holiday.delete({ where: { id: holiday.id } });
+    }
   });
 
   it("people: the directory, narrowed by role; a bad status is 422", async () => {

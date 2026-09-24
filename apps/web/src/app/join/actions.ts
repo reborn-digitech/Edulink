@@ -28,6 +28,7 @@ import { CONSENT_AGE } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { claimChildFor, type ClaimState } from "@/lib/claim-child";
+import { syncGradeLevel } from "@/lib/grade-level";
 
 /**
  * Opens an invitation ADDRESSED TO the signed-in person, from /join.
@@ -206,6 +207,7 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
             status: "ACTIVE",
           },
         });
+        await syncGradeLevel(tx, [membership.id]);
       }
 
         return { userId: user.id, handle: loginHandle, membershipId: membership.id };

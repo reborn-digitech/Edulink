@@ -12,7 +12,8 @@ const iso = z.string().datetime();
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
 const count = z.number().int().min(0);
 
-export const admissionStatusSchema = z.enum(["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN"]);
+/** EXPIRED: an offer the family never answered by its date — set by the hourly `admissions:expire-offers` job, and read as such before the job reaches it. */
+export const admissionStatusSchema = z.enum(["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN", "EXPIRED"]);
 export type AdmissionStatus = z.infer<typeof admissionStatusSchema>;
 export const cycleStatusSchema = z.enum(["DRAFT", "OPEN", "CLOSED"]);
 

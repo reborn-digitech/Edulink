@@ -67,7 +67,7 @@ beforeAll(async () => {
   const period = await db.timetablePeriod.create({ data: { schoolId, name: "P1", position: 1, startMinute: 540, endMinute: 585 }, select: { id: true } });
   await db.timetableSlot.createMany({ data: [{ schoolId, classId, periodId: period.id, weekday: 1, subject: "Mathematics", teacherMembershipId }, { schoolId, classId, periodId: period.id, weekday: 2, subject: "Marathi", teacherMembershipId }, { schoolId, classId, periodId: period.id, weekday: 3, subject: "English", teacherMembershipId }, { schoolId, classId, periodId: period.id, weekday: 4, subject: "Science", teacherMembershipId }, { schoolId, classId, periodId: period.id, weekday: 5, subject: "Social Science", teacherMembershipId }] });
   await db.pupilRecord.create({ data: { schoolId, studentMembershipId: pupilA, fatherName: "Rohan Patil", motherName: "Sneha Patil", nationality: "Indian", religion: "Hindu", category: "OBC", motherTongue: "Marathi", addressLine: "14 Shivaji Nagar", city: "Pune", postalCode: "411005", admissionNumber: "GR-1001", admissionDate: new Date("2024-06-10T00:00:00Z"), penNumber: "12345678901", gender: "M", bpl: false, ews: true, cwsnType: null, nameLocal: "आरव रोहन पाटील", fatherNameLocal: "रोहन पाटील", motherNameLocal: "स्नेहा पाटील" } });
-  await db.staffRecord.create({ data: { schoolId, membershipId: teacherMembershipId, designation: "TGT Mathematics", qualification: "M.Sc", gender: "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: "3", appointmentType: "REGULAR", joinedOn: new Date("2016-06-01T00:00:00Z") } });
+  await db.staffRecord.create({ data: { schoolId, membershipId: teacherMembershipId, designation: "TGT Mathematics", qualification: "M.Sc", gender: "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: "3", serviceJoinedOn: new Date("2012-06-11T00:00:00Z"), appointmentType: "REGULAR", joinedOn: new Date("2016-06-01T00:00:00Z") } });
 });
 
 afterAll(async () => {
@@ -91,7 +91,7 @@ describe("the identity and the readiness", () => {
     expect(view.identity).toMatchObject({ udiseCode: null, board: null, medium: "Marathi", state: "Maharashtra", city: "Pune" });
     expect(view.identityMissing).toEqual(["udiseCode", "board", "affiliationNumber", "district", "block", "managementType"]);
     expect(view.pupils).toEqual({ total: 2, ready: 1, missing: { gender: 1, category: 1, motherTongue: 1, bpl: 1, ews: 1, admissionNumber: 1, admissionDate: 1, addressLine: 1, postalCode: 1 }, withoutLocalName: 1 });
-    expect(view.staff).toEqual({ total: 2, ready: 1, missing: { gender: 1, socialCategory: 1, academicQualification: 1, professionalQualification: 1, appointmentType: 1, joinedOn: 1 } });
+    expect(view.staff).toEqual({ total: 2, ready: 1, missing: { gender: 1, socialCategory: 1, academicQualification: 1, professionalQualification: 1, appointmentType: 1, joinedOn: 1, serviceJoinedOn: 1 } });
     expect(view.grades).toEqual([{ gradeLevel: "10", pupils: 2 }]);
     expect((await identityPost(json("/api/v1/office/filings/identity", { udiseCode: "27250100101" }))).status).toBe(403);
     await as("ADMIN");
@@ -174,7 +174,7 @@ describe("the sheets", () => {
     expect(headers.slice(0, 4)).toEqual(["UDISE Code of School", "Teacher National Code", "3.2.1 Name of the Teacher", "3.2.2 Gender (Male-1, Female-2, Transgender-3)"]);
     expect(rows).toHaveLength(2);
     const teacher = rows.find((r) => r["3.2.1 Name of the Teacher"] === "ZZ FILING TEACHER")!;
-    expect(teacher).toMatchObject({ "UDISE Code of School": "27250100101", "3.2.2 Gender (Male-1, Female-2, Transgender-3)": "2", "3.2.3 Date of Birth (DD/MM/YYYY)": "02/04/1988", "3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)": "1", "3.2.6(a) Highest Academic Qualification": "5", "3.2.6(b) Trade/Degree": "M.Sc", "3.2.7(a) Highest Professional Qualification": "3", "3.2.9(a) Aadhaar Number": "", "3.2.12 Nature of Appointment (Regular-1, Contract-2, Part-Time-3)": "1", "3.2.13 Type of Teacher": "3", "3.2.14 Date of Joining in Service (DD/MM/YYYY)": "01/06/2016", "3.2.16 Classes Taught": "5", "3.2.19(a) Main Subject Taught 1": "3", "3.2.19(b) Main Subject Taught 2": "7", "Classes on the timetable": "10" });
+    expect(teacher).toMatchObject({ "UDISE Code of School": "27250100101", "3.2.2 Gender (Male-1, Female-2, Transgender-3)": "2", "3.2.3 Date of Birth (DD/MM/YYYY)": "02/04/1988", "3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)": "1", "3.2.6(a) Highest Academic Qualification": "5", "3.2.6(b) Trade/Degree": "M.Sc", "3.2.7(a) Highest Professional Qualification": "3", "3.2.9(a) Aadhaar Number": "", "3.2.12 Nature of Appointment (Regular-1, Contract-2, Part-Time-3)": "1", "3.2.13 Type of Teacher": "3", "3.2.14 Date of Joining in Service (DD/MM/YYYY)": "11/06/2012", "3.2.16 Classes Taught": "5", "3.2.19(a) Main Subject Taught 1": "3", "3.2.19(b) Main Subject Taught 2": "7", "Classes on the timetable": "10" });
     const head = rows.find((r) => r["3.2.1 Name of the Teacher"] === "ZZ FILING PRINCIPAL")!;
     expect(head).toMatchObject({ "3.2.13 Type of Teacher": "6", "3.2.2 Gender (Male-1, Female-2, Transgender-3)": "", "3.2.16 Classes Taught": "" });
   });

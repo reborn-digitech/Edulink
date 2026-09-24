@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
-import { CWSN_TYPES, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { CWSN_TYPES, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
@@ -29,7 +29,7 @@ import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
  */
 type FieldGroup = { fields: PupilRecordField[] };
 
-export function PupilRecordForm({ view, required, optional, filing = [], admin = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean }) {
+export function PupilRecordForm({ view, required, optional, filing = [], admin = false, office = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean; office?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -46,10 +46,12 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     { fields: ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue"] },
     { fields: ["religion", "caste", "category"] },
     { fields: ["addressLine", "city", "postalCode"] },
-    { fields: ["admissionNumber", "admissionDate", "admittedToGrade", "previousSchool", "penNumber"] },
+    { fields: ["admissionNumber", "admissionDate", "admittedToGrade", "rollNumber", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber"] },
+    // The household, as the RTE and EWS verifications ask for it.
+    { fields: ["fatherOccupation", "motherOccupation", "annualIncome"] },
   ];
-  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint" };
-  const maxFor: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11 };
+  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+  const maxFor: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
   /** The coded filing answers: the value the contract takes and the words the reader sees. */
   const choicesFor: Partial<Record<PupilRecordField, { value: string; text: string }[]>> = {
     gender: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "M", text: t("pupilRecord.genderM") }, { value: "F", text: t("pupilRecord.genderF") }, { value: "T", text: t("pupilRecord.genderT") }],
@@ -57,6 +59,9 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     ews: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
     cwsnType: [{ value: "", text: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code, text: `${code} — ${CWSN_TYPE_NAMES[code] ?? ""}` }))],
     bloodGroup: [{ value: "", text: t("pupilRecord.notSaid") }, ...RECORD_BLOOD_GROUPS.map((g) => ({ value: g, text: g }))],
+    // Coded so the filings are exact; a value typed before the codes shows as itself until it is picked again.
+    category: [{ value: "", text: t("pupilRecord.notSaid") }, ...PUPIL_CATEGORIES.map((c) => ({ value: c, text: t(`pupilRecord.cat${c === "GENERAL" ? "General" : c}` as TranslationKey) })), ...(values.category && !(PUPIL_CATEGORIES as readonly string[]).includes(values.category) ? [{ value: values.category, text: values.category }] : [])],
+    religion: [{ value: "", text: t("pupilRecord.notSaid") }, ...PUPIL_RELIGIONS.map((r) => ({ value: r, text: t(`pupilRecord.rel${r[0]}${r.slice(1).toLowerCase()}` as TranslationKey) })), ...(values.religion && !(PUPIL_RELIGIONS as readonly string[]).includes(values.religion) ? [{ value: values.religion, text: values.religion }] : [])],
   };
 
   function submit(event: React.FormEvent) {
@@ -68,8 +73,11 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       // through a correction the head and a guardian approve, so a locked
       // number is not sent back at all.
       if (f === "penNumber" && !view.penEditable) continue;
+      // The roll number is the office's; a family's form shows it and never sends it.
+      if (f === "rollNumber" && !office) continue;
       const v = values[f].trim();
       if (f === "admissionDate") input.admissionDate = v || null;
+      else if (f === "previousSchoolTcDate") input.previousSchoolTcDate = v || null;
       else (input as Record<string, string>)[f] = v;
     }
     startTransition(async () => {
@@ -93,7 +101,10 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       return <TextField key={f} label={label} hint={locked} value={values.penNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
     }
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setValues((v) => ({ ...v, [f]: e.target.value }));
-    if (f === "admissionDate") {
+    if (f === "rollNumber" && !office) {
+      return <TextField key={f} label={label} hint={t("pupilRecord.rollNumberOffice")} value={values.rollNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
+    }
+    if (f === "admissionDate" || f === "previousSchoolTcDate") {
       return <DateField key={f} label={label} hint={hint} required={isRequired(f)} value={values[f]} disabled={readOnly} onChange={onChange} data-testid={`record-${f}`} />;
     }
     const choices = choicesFor[f];
@@ -116,6 +127,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
         required={isRequired(f)}
         value={values[f]}
         maxLength={maxFor[f] ?? 120}
+        inputMode={f === "annualIncome" || f === "rollNumber" ? "numeric" : undefined}
         autoComplete="off"
         readOnly={readOnly}
         disabled={readOnly}

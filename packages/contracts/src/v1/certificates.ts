@@ -72,7 +72,15 @@ export const pupilRecordFieldSchema = z.enum([
   "addressLine", "city", "postalCode", "admissionNumber", "admissionDate", "admittedToGrade", "previousSchool", "penNumber",
   // The filing fields: what UDISE+ and the boards ask beyond a certificate.
   "gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup",
+  // The collection gaps the data-flow audit named: the previous school's TC, the household, the roll number.
+  "previousSchoolTcNumber", "previousSchoolTcDate", "fatherOccupation", "motherOccupation", "annualIncome", "rollNumber",
 ]);
+/** Social category as a coded choice: the four UDISE+ codes, plus Maharashtra's VJ, NT and SBC, which file as OBC. */
+export const PUPIL_CATEGORIES = ["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"] as const;
+export const pupilCategorySchema = z.enum(PUPIL_CATEGORIES);
+/** Religion as a coded choice, so the minority code is exact: Hindu and Other file as "not minority". */
+export const PUPIL_RELIGIONS = ["HINDU", "MUSLIM", "CHRISTIAN", "SIKH", "BUDDHIST", "PARSI", "JAIN", "OTHER"] as const;
+export const pupilReligionSchema = z.enum(PUPIL_RELIGIONS);
 /** Gender as UDISE+ codes it: male, female, transgender. */
 export const pupilGenderSchema = z.enum(["M", "F", "T"]);
 /** The 21 impairment types of the UDISE+ student module, by their portal code. */
@@ -91,9 +99,9 @@ export const pupilRecordSaveSchema = z.object({
   motherName: text.optional(),
   placeOfBirth: text.optional(),
   nationality: text.optional(),
-  religion: text.optional(),
+  religion: z.union([pupilReligionSchema, z.literal("")]).optional(),
   caste: text.optional(),
-  category: text.optional(),
+  category: z.union([pupilCategorySchema, z.literal("")]).optional(),
   motherTongue: text.optional(),
   addressLine: z.string().trim().max(200).optional(),
   city: text.optional(),
@@ -111,6 +119,14 @@ export const pupilRecordSaveSchema = z.object({
   ews: yesNo.optional(),
   cwsnType: z.union([cwsnTypeSchema, z.literal("")]).optional(),
   bloodGroup: z.union([recordBloodGroupSchema, z.literal("")]).optional(),
+  previousSchoolTcNumber: z.string().trim().max(40).optional(),
+  previousSchoolTcDate: dateKey.nullable().optional(),
+  fatherOccupation: text.optional(),
+  motherOccupation: text.optional(),
+  /** Rupees a year, digits only; blank clears. */
+  annualIncome: z.string().trim().regex(/^\d{0,9}$/).optional(),
+  /** The roll number in the pupil's present class, digits only; the office's to set, ignored from a family. */
+  rollNumber: z.string().trim().regex(/^\d{0,4}$/).optional(),
 });
 export type PupilRecordSave = z.infer<typeof pupilRecordSaveSchema>;
 
@@ -140,6 +156,14 @@ export const pupilRecordSchema = z.object({
   ews: z.string().nullable(),
   cwsnType: z.string().nullable(),
   bloodGroup: z.string().nullable(),
+  previousSchoolTcNumber: z.string().nullable().default(null),
+  previousSchoolTcDate: dateKey.nullable().default(null),
+  fatherOccupation: z.string().nullable().default(null),
+  motherOccupation: z.string().nullable().default(null),
+  /** Rupees a year as digits, the way the form shows and sends it. */
+  annualIncome: z.string().nullable().default(null),
+  /** The roll number on the pupil's present enrolment. */
+  rollNumber: z.string().nullable().default(null),
   requestedAt: iso.nullable(),
   familyFilledAt: iso.nullable(),
   updatedAt: iso.nullable(),

@@ -28,8 +28,9 @@ export const STAGE: Record<AdmissionStatus, { key: TranslationKey; tone: "muted"
   DECLINED: { key: "admissions.statusDeclined", tone: "danger" },
   WAITLISTED: { key: "admissions.statusWaitlisted", tone: "muted" },
   WITHDRAWN: { key: "admissions.statusWithdrawn", tone: "muted" },
+  EXPIRED: { key: "admissions.statusExpired", tone: "muted" },
 };
-export const STATUSES: AdmissionStatus[] = ["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN"];
+export const STATUSES: AdmissionStatus[] = ["SUBMITTED", "OFFERED", "ACCEPTED", "ADMITTED", "DECLINED", "WAITLISTED", "WITHDRAWN", "EXPIRED"];
 
 export function StagePill({ status }: { status: AdmissionStatus }) {
   const t = useT();

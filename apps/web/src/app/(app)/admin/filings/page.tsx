@@ -26,6 +26,7 @@ const STAFF_FIELD_KEY: Record<string, TranslationKey> = {
   professionalQualification: "staff.filingProfessional",
   appointmentType: "staff.filingAppointment",
   joinedOn: "staff.joinedOn",
+  serviceJoinedOn: "staff.serviceJoinedOn",
 };
 
 /** The five sheets: the three UDISE+ ones need nothing; the two board ones are cut for a grade. */

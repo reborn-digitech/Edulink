@@ -36,6 +36,9 @@ export type StaffRecordView = {
   qualification: string | null;
   /** YYYY-MM-DD; null when the office has not said. */
   joinedOnKey: string | null;
+  /** The DCF's own two dates: date of birth, and the first day in service anywhere (joinedOn is this school). */
+  birthdateKey: string | null;
+  serviceJoinedOnKey: string | null;
   leaveDaysPerYear: number | null;
   /** The UDISE+ teacher profile: gender M/F/T, social category, the highest academic and professional qualification codes, the nature of appointment. */
   gender: string | null;
@@ -50,6 +53,8 @@ export type StaffRecordInput = {
   designation?: string | null;
   qualification?: string | null;
   joinedOnKey?: string | null;
+  birthdateKey?: string | null;
+  serviceJoinedOnKey?: string | null;
   leaveDaysPerYear?: number | null;
   gender?: string | null;
   socialCategory?: string | null;
@@ -80,16 +85,18 @@ export type LeaveBalance = {
 };
 
 function empty(membershipId: string): StaffRecordView {
-  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, leaveDaysPerYear: null, gender: null, socialCategory: null, academicQualification: null, professionalQualification: null, appointmentType: null };
+  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, birthdateKey: null, serviceJoinedOnKey: null, leaveDaysPerYear: null, gender: null, socialCategory: null, academicQualification: null, professionalQualification: null, appointmentType: null };
 }
 
-function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; leaveDaysPerYear: number | null; gender: string | null; socialCategory: string | null; academicQualification: string | null; professionalQualification: string | null; appointmentType: string | null }): StaffRecordView {
+function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; birthdate: Date | null; serviceJoinedOn: Date | null; leaveDaysPerYear: number | null; gender: string | null; socialCategory: string | null; academicQualification: string | null; professionalQualification: string | null; appointmentType: string | null }): StaffRecordView {
   return {
     membershipId: row.membershipId,
     staffNumber: row.staffNumber,
     designation: row.designation,
     qualification: row.qualification,
     joinedOnKey: row.joinedOn ? row.joinedOn.toISOString().slice(0, 10) : null,
+    birthdateKey: row.birthdate ? row.birthdate.toISOString().slice(0, 10) : null,
+    serviceJoinedOnKey: row.serviceJoinedOn ? row.serviceJoinedOn.toISOString().slice(0, 10) : null,
     leaveDaysPerYear: row.leaveDaysPerYear,
     gender: row.gender,
     socialCategory: row.socialCategory,
@@ -137,7 +144,12 @@ export async function setStaffRecord(
   if (!member) return { ok: false, errorKey: "staff.notStaffHere" };
 
   const trim = (v: string | null | undefined, max: number) => (v?.trim().slice(0, max) || null);
-  if (input.joinedOnKey && !isDateKey(input.joinedOnKey)) return { ok: false, errorKey: "staff.badDate" };
+  for (const k of [input.joinedOnKey, input.birthdateKey, input.serviceJoinedOnKey]) if (k && !isDateKey(k)) return { ok: false, errorKey: "staff.badDate" };
+  if (input.birthdateKey || input.serviceJoinedOnKey) {
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } });
+    const today = todayKey(school?.timezone ?? "UTC");
+    if ((input.birthdateKey && input.birthdateKey > today) || (input.serviceJoinedOnKey && input.serviceJoinedOnKey > today)) return { ok: false, errorKey: "staff.joinedInFuture" };
+  }
   if (input.joinedOnKey) {
     // Today in the school's zone, not the server's: at 02:00 IST on the 1st a
     // UTC server still thinks it is yesterday.
@@ -152,6 +164,8 @@ export async function setStaffRecord(
     designation: trim(input.designation, 80),
     qualification: trim(input.qualification, 200),
     joinedOn: input.joinedOnKey ? new Date(`${input.joinedOnKey}T00:00:00.000Z`) : null,
+    birthdate: input.birthdateKey ? new Date(`${input.birthdateKey}T00:00:00.000Z`) : null,
+    serviceJoinedOn: input.serviceJoinedOnKey ? new Date(`${input.serviceJoinedOnKey}T00:00:00.000Z`) : null,
     leaveDaysPerYear: days ?? null,
     gender: pick(input.gender, STAFF_GENDERS),
     socialCategory: pick(input.socialCategory, STAFF_SOCIAL_CATEGORIES),

@@ -26,6 +26,7 @@ import { bandFor, meanPercent, meanPoints } from "@/lib/report-card-rules";
 import { REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { FILING_RECORD_FIELDS } from "@/lib/pupil-records";
 import { todayKey } from "@/lib/dates";
+import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { GET as recordsGet } from "@/app/api/v1/office/pupil-records/route";
 import { GET as filingsGet } from "@/app/api/v1/office/filings/route";
 import { GET as duesGet } from "@/app/api/v1/fees/dues/route";
@@ -247,16 +248,17 @@ d("STORED copies against their source rows", () => {
         if (a.pointsMilli !== a.examSlot!.pointsMilli) marks += 1;
         if (a.title !== `${a.examSlot!.series.name} · ${a.examSlot!.subject}`) titles += 1;
       }
-      if (marks) note("exam-sitting", "WARN", s.name, `${marks} sitting(s) carry a different max from their paper — only saveMarks refreshes the copy`);
-      if (titles) note("exam-sitting", "WARN", s.name, `${titles} sitting(s) carry a stale title after a series rename`);
+      if (marks) note("exam-sitting", "FAIL", s.name, `${marks} sitting(s) carry a different max from their paper`);
+      if (titles) note("exam-sitting", "FAIL", s.name, `${titles} sitting(s) carry a stale title after a series rename`);
       const series = await db.examSeries.findMany({ where: { schoolId: s.id }, select: { id: true, name: true, termId: true, slots: { select: { dateKey: true }, orderBy: { dateKey: "asc" }, take: 1 } } });
       const terms = await db.term.findMany({ where: { schoolId: s.id }, select: { id: true, name: true, startDate: true, endDate: true } });
       for (const x of series) {
         const first = x.slots[0]?.dateKey;
         if (!first) continue;
         const covering = terms.find((t) => t.startDate.toISOString().slice(0, 10) <= first && first <= t.endDate.toISOString().slice(0, 10));
-        if (x.termId && covering && covering.id !== x.termId) note("exam-sitting", "WARN", s.name, `series "${x.name}" is on one term but its first paper (${first}) falls in "${covering.name}"`);
-        if (!x.termId && covering) note("exam-sitting", "WARN", s.name, `series "${x.name}" has no term although "${covering.name}" covers its first paper — it stays off term and annual cards`);
+        // The term is derived from the earliest paper on every paper change (exams.ts), so a series off its term is a contradiction.
+        if (x.termId && covering && covering.id !== x.termId) note("exam-sitting", "FAIL", s.name, `series "${x.name}" is on one term but its first paper (${first}) falls in "${covering.name}"`);
+        if (!x.termId && covering) note("exam-sitting", "FAIL", s.name, `series "${x.name}" has no term although "${covering.name}" covers its first paper`);
       }
     }
     expect(failsOf("exam-sitting")).toEqual([]);
@@ -305,12 +307,15 @@ d("STORED copies against their source rows", () => {
     for (const s of schools) {
       const leftWithClass = await db.membership.count({ where: { schoolId: s.id, role: "STUDENT", leftAt: { not: null }, enrollments: { some: { status: "ACTIVE" } } } });
       if (leftWithClass) note("membership", "FAIL", s.name, `${leftWithClass} pupil(s) have left but still hold an ACTIVE enrolment`);
+      // Every readmission path now deletes the departure record, so one behind a pupil on the roll is a contradiction.
       const stale = await db.schoolRecord.count({ where: { schoolId: s.id, membership: { status: "ACTIVE", leftAt: null } } });
-      if (stale) note("membership", "WARN", s.name, `${stale} departure record(s) belong to pupils back on the roll — a new certificate would print the old leaving date`);
+      if (stale) note("membership", "FAIL", s.name, `${stale} departure record(s) belong to pupils back on the roll`);
       const doubled = await db.$queryRaw<{ n: bigint }[]>`select count(*)::bigint n from (select "studentMembershipId" from "Enrollment" where "schoolId" = ${s.id} and status = 'ACTIVE' group by 1 having count(*) > 1) x`;
       if (Number(doubled[0]?.n ?? 0)) note("membership", "WARN", s.name, `${doubled[0]?.n} pupil(s) hold two ACTIVE enrolments — attendance and marks count them twice`);
-      const noGrade = await db.membership.count({ where: { schoolId: s.id, role: "STUDENT", status: "ACTIVE", leftAt: null, gradeLevel: null } });
-      if (noGrade) note("membership", "INFO", s.name, `${noGrade} pupil(s) have no Membership.gradeLevel — nothing in the app writes it, yet fee reports, certificates and the GRADE audience read it`);
+      // Membership.gradeLevel is a copy of the live class's grade (src/lib/grade-level.ts); a pupil on a roll whose copy disagrees is a contradiction.
+      const enrolled = await db.membership.findMany({ where: { schoolId: s.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, gradeLevel: true, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, orderBy: { enrolledAt: "desc" }, take: 1, select: { class: { select: { gradeLevel: true } } } } } });
+      const off = enrolled.filter((m) => (m.enrollments[0]?.class.gradeLevel ?? null) !== (m.gradeLevel ?? null));
+      if (off.length) note("membership", "FAIL", s.name, `${off.length} pupil(s) carry a Membership.gradeLevel that is not their live class's grade (e.g. ${off[0]!.id})`);
     }
     expect(failsOf("membership")).toEqual([]);
   });
@@ -332,8 +337,9 @@ d("STORED copies against their source rows", () => {
 
   it("attendance-session: a taken register holds marks", async () => {
     for (const s of schools) {
+      // A session is only written once a mark in the batch is valid (attendance.ts), so an empty one is a contradiction.
       const empty = await db.attendanceSession.count({ where: { schoolId: s.id, records: { none: {} } } });
-      if (empty) note("attendance-session", "WARN", s.name, `${empty} register(s) count as taken with no marks — the session is upserted before any mark is validated`);
+      if (empty) note("attendance-session", "FAIL", s.name, `${empty} register(s) count as taken with no marks`);
     }
     expect(failsOf("attendance-session")).toEqual([]);
   });
@@ -342,10 +348,11 @@ d("STORED copies against their source rows", () => {
     for (const s of schools) {
       const apps = await db.application.findMany({ where: { schoolId: s.id }, select: { id: true, serial: true, status: true, admittedMembershipId: true, offerExpiresAt: true, testSlotId: true, penNumber: true, childBirthdate: true } });
       for (const a of apps) if (a.status === "ADMITTED" && !a.admittedMembershipId) note("admission", "FAIL", s.name, `application ${a.serial} is ADMITTED with no membership`);
-      const expired = apps.filter((a) => a.status === "OFFERED" && a.offerExpiresAt && a.offerExpiresAt < new Date()).length;
-      if (expired) note("admission", "WARN", s.name, `${expired} offer(s) are past their date and still OFFERED — no job expires them`);
-      const dead = apps.filter((a) => a.testSlotId && ["DECLINED", "WITHDRAWN", "ADMITTED"].includes(a.status)).length;
-      if (dead) note("admission", "WARN", s.name, `${dead} settled application(s) still hold an entrance slot and inflate its booked count`);
+      // admissions:expire-offers runs hourly, so an offer more than a day past its date still OFFERED is a contradiction; one within the hour is the job's window.
+      const expired = apps.filter((a) => a.status === "OFFERED" && a.offerExpiresAt && a.offerExpiresAt.getTime() < Date.now() - 86_400_000).length;
+      if (expired) note("admission", "FAIL", s.name, `${expired} offer(s) are more than a day past their date and still OFFERED`);
+      const dead = apps.filter((a) => a.testSlotId && ["DECLINED", "WITHDRAWN", "ADMITTED", "EXPIRED"].includes(a.status)).length;
+      if (dead) note("admission", "INFO", s.name, `${dead} settled application(s) keep the slot they sat as a record; the booked count no longer counts them`);
       const noPen = apps.filter((a) => !a.penNumber).length;
       if (noPen) note("admission", "INFO", s.name, `${noPen} of ${apps.length} applications carry no PEN — the field is optional on the form`);
     }
@@ -492,7 +499,9 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       for (const r of sample) {
         const l = await json<{ totals: { netPaise: number; paidPaise: number; outstandingPaise: number; overduePaise: number } }>(await ledgerGet(get(`/api/v1/fees/pupils/${r.studentMembershipId}`), params({ studentMembershipId: r.studentMembershipId })));
         const all = demands.filter((x) => x.studentMembershipId === r.studentMembershipId);
-        const e = { netPaise: sum(all.filter((x) => x.status !== "CANCELLED" && x.status !== "CARRIED").map((x) => x.netPaise)), paidPaise: sum(all.map((x) => x.paidPaise)), outstandingPaise: sum(all.map(outstandingOf)), overduePaise: sum(all.map(overdueOf)) };
+        // Net and paid over the same rows: a CARRIED or CANCELLED demand counts on neither side (README item 14).
+        const counted = all.filter((x) => x.status !== "CANCELLED" && x.status !== "CARRIED");
+        const e = { netPaise: sum(counted.map((x) => x.netPaise)), paidPaise: sum(counted.map((x) => x.paidPaise)), outstandingPaise: sum(all.map(outstandingOf)), overduePaise: sum(all.map(overdueOf)) };
         for (const k of Object.keys(e) as (keyof typeof e)[]) if (l.totals[k] !== e[k]) note("fees-api", "FAIL", s.name, `ledger ${r.studentMembershipId} ${k} ${l.totals[k]} vs raw ${e[k]}`);
       }
     }
@@ -638,7 +647,9 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       const month = todayKey(s.timezone).slice(0, 7);
       const v = await json<{ rows: { membershipId: string; present: number; late: number; halfDay: number; absent: number; onLeave: number; percent: number | null }[] }>(await staffMonthGet(get(`/api/v1/office/staff-attendance/month?month=${month}`)));
       const closed = new Set<string>();
+      // Only a kind that closes the school takes a day out of the tally; an exam or an event span does not (holidays.ts).
       for (const h of await db.holiday.findMany({ where: { schoolId: s.id, startDateKey: { lte: `${month}-31` }, endDateKey: { gte: `${month}-01` } }, select: { startDateKey: true, endDateKey: true, kind: true } })) {
+        if (!HOLIDAY_KIND_META[h.kind as keyof typeof HOLIDAY_KIND_META]?.closesSchool) continue;
         for (let dd = 1; dd <= 31; dd += 1) { const k = `${month}-${String(dd).padStart(2, "0")}`; if (k >= h.startDateKey && k <= h.endDateKey) closed.add(k); }
       }
       const week = s.teachingDays.split(",").map(Number);

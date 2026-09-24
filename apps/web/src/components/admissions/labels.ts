@@ -18,6 +18,7 @@ export const ADMISSION_STATUS_KEY: Record<AdmissionStatus, TranslationKey> = {
   DECLINED: "admissions.statusDeclined",
   WAITLISTED: "admissions.statusWaitlisted",
   WITHDRAWN: "admissions.statusWithdrawn",
+  EXPIRED: "admissions.statusExpired",
 };
 
 export const ADMISSION_STATUS_TONE: Record<AdmissionStatus, BadgeTone> = {
@@ -28,6 +29,7 @@ export const ADMISSION_STATUS_TONE: Record<AdmissionStatus, BadgeTone> = {
   DECLINED: "danger",
   WAITLISTED: "warn",
   WITHDRAWN: "neutral",
+  EXPIRED: "neutral",
 };
 
 export const ADMISSION_STATUSES: AdmissionStatus[] = [
@@ -38,6 +40,7 @@ export const ADMISSION_STATUSES: AdmissionStatus[] = [
   "DECLINED",
   "WAITLISTED",
   "WITHDRAWN",
+  "EXPIRED",
 ];
 
 export type CycleStatus = "DRAFT" | "OPEN" | "CLOSED";

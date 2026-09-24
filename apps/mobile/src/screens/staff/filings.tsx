@@ -46,6 +46,7 @@ const STAFF_FIELD_KEY: Record<string, TranslationKey> = {
   professionalQualification: "staff.filingProfessional",
   appointmentType: "staff.filingAppointment",
   joinedOn: "staff.joinedOn",
+  serviceJoinedOn: "staff.serviceJoinedOn",
 };
 
 /** "UDISE+ code, Board" — the identity fields still blank, in the reader's language. */

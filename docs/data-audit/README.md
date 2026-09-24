@@ -238,7 +238,23 @@ annual cards carry attendance figures with no register behind them); `Applicatio
 `HealthCard.doctorName/Phone`; `PupilRecord.caste`; `School.logoPath`; exam paper start and end times;
 `StaffRecord.staffNumber`. `Membership.gradeLevel` is empty everywhere because nothing writes it.
 
-## 6. Recommended next steps, in order
+## 6. Recommended next steps, in order — done 2026-09-24
+
+All ten were taken up the day after the audit. What each became:
+
+1. **Grade level** — `Membership.gradeLevel` is now a kept copy: `src/lib/grade-level.ts` writes it from the live class on every enrolment path (join by code or invite, intake, admission, the class roll, promotion), a migration backfilled every pupil on a roll, and the audit fails when a copy disagrees with the class.
+2. **Departure record** — admissions and intake delete the old `SchoolRecord` and `ScheduledDeparture` when a pupil comes back; intake also revives a removed enrolment instead of failing on the unique index.
+3. **Registers** — a session is written only once a mark in the batch is valid; `registersDue()` counts only classes with pupils, on open days, and the admin, principal and teacher pages read it (the teacher's list respects who may take the register). The 18 empty ZZ sessions were removed.
+4. **Exam series** — the term is derived from the earliest paper on every paper change; the sitting's max and title follow the paper and the series name; a migration gave existing series their term.
+5. **Offers** — an `EXPIRED` status, an hourly `admissions:expire-offers` job that tells the family and audits a count, expiry applied on read as well, and entrance-slot bookings that count only live applications.
+6. **Filing codes** — category and religion are coded choices on the record (VJ, NT and SBC file as OBC; Hindu and Other as not-minority; an unknown religion codes blank, not "not minority"); an uncodable category counts as missing; certificates print the code as a word in their language.
+7. **Cover models** — cancelling an approved leave clears `Substitution` rows with the `AttendanceCover` rows; a PRESENT, LATE or HALF_DAY register mark takes a teacher off the board; the timetable grid shows the board's substitute; "my covers" hides covers for a teacher no longer away or on a closed day.
+8. **Fees** — a fully waived demand reopens when the concession is revoked; a flat all-heads concession is taken once per instalment; the ledger's paid total excludes carried and cancelled demands; a receipt's year is the earliest-due demand's.
+9. **Collection gaps** — new columns: the previous school's TC number and date, each parent's occupation, the family's annual income, the roll number on the enrolment (the office's to set), the teacher's date of birth and first day in service; on the record form and the staff panel on web and phone; the DCF sheet prints them and the student sheet prints the assigned roll number.
+10. **Demo data** — last year's registers behind every annual card, the calendar, a concession, a refund, an invite, a remark thread, a report, a practice assignment, a leaver with a departure record, a scheduled departure, a competition entry with its standing, and every column that was never filled.
+
+The audit's checks for items 1, 3, 4 and 5 were tightened from WARN to FAIL. The original list, for the record:
+
 
 1. Write `Membership.gradeLevel` on enrolment and promotion, or drop it and read the class's grade everywhere it is used (fees by grade, certificates, the GRADE audience).
 2. Delete the old `SchoolRecord` on readmission through admissions and intake, as the join-code path already does.

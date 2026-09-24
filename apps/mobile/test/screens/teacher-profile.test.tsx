@@ -16,7 +16,7 @@ const PROFILE = staffProfileSchema.parse({
   subjects: ["Maths", "Science"],
   user: { name: "ZZ Teacher", preferredName: "ZZ T", bio: "ZZ bio", avatarKey: null, email: "t@zz.test", birthdate: "1988-04-02", birthdateEditable: true },
   reviews: { responseCount: 12, byQuestion: { CLARITY: 4.5, SUPPORT: 4.2 }, overall: 4.3 },
-  record: { staffNumber: "ZZ-17", designation: "PGT", qualification: "M.Sc.", joinedOnKey: "2019-06-01", leaveDaysPerYear: 12 },
+  record: { staffNumber: "ZZ-17", designation: "PGT", qualification: "M.Sc.", joinedOnKey: "2019-06-01", leaveDaysPerYear: 12, birthdateKey: "1988-04-02", serviceJoinedOnKey: "2015-06-15" },
   balance: { entitlement: 12, used: 3, pending: 1, remaining: 9, yearName: "2026-27" },
 });
 
@@ -33,6 +33,14 @@ describe("the teacher's profile", () => {
     expect(screen.getByLabelText("Since: 2019")).toBeTruthy();
     expect(screen.getByText("PGT")).toBeTruthy();
     expect(screen.getByText("M.Sc.")).toBeTruthy();
+    // The DCF's two dates beside the day they joined this school.
+    expect(screen.getByText("Joined the school on")).toBeTruthy();
+    expect(screen.getByText(/^(1 Jun 2019|Jun 1, 2019)$/)).toBeTruthy();
+    // "Date of birth" is the editable field above and the office's record row below.
+    expect(screen.getAllByText("Date of birth")).toHaveLength(2);
+    expect(screen.getByText(/^(2 Apr 1988|Apr 2, 1988)$/)).toBeTruthy();
+    expect(screen.getByText("Joined service on")).toBeTruthy();
+    expect(screen.getByText(/^(15 Jun 2015|Jun 15, 2015)$/)).toBeTruthy();
     expect(screen.getByText("3 of 12 days used · 9 left")).toBeTruthy();
     expect(screen.getByText("1 more being asked for")).toBeTruthy();
     expect(screen.getByText("Maths")).toBeTruthy();

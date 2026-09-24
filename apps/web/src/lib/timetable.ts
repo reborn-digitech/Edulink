@@ -853,6 +853,13 @@ const SLOT_SELECT = {
  *     front of it is the one thing this feature exists to make visible;
  *   - otherwise the assigned teacher, unchanged.
  *
+ * THE BOARD'S ANSWER COMES FIRST. A `Substitution` names who takes THIS
+ * lesson on THIS day, and the office wrote it against the board's own view of
+ * who is away — the register's ABSENT as well as approved leave. Where one
+ * exists it is the covering teacher, whatever the register-duty cover says;
+ * `AttendanceCover` is per class and per range, and answers only the lessons
+ * the board has not.
+ *
  * THE COVER IS MATCHED TO THE ABSENCE WHERE IT CAN BE. `AttendanceCover` carries
  * `leaveRequestId` when approving leave created it, so the replacement for THIS
  * absence is preferred over any other cover that happens to overlap the class
@@ -874,8 +881,9 @@ async function resolveWeek(
     ...new Set(slots.map((s) => s.teacherMembershipId).filter((id): id is string => Boolean(id))),
   ];
   const classIds = [...new Set(slots.map((s) => s.classId))];
+  const slotIds = slots.map((s) => s.id);
 
-  const [leave, covers] = await Promise.all([
+  const [leave, covers, substitutions] = await Promise.all([
     teacherIds.length === 0
       ? Promise.resolve([])
       : db.leaveRequest.findMany({
@@ -904,7 +912,19 @@ async function resolveWeek(
         covering: { select: { user: { select: { name: true, preferredName: true } } } },
       },
     }),
+    slotIds.length === 0
+      ? Promise.resolve([])
+      : db.substitution.findMany({
+          where: { schoolId, slotId: { in: slotIds }, dateKey: { in: dates } },
+          select: {
+            slotId: true,
+            dateKey: true,
+            substituteMembershipId: true,
+            substitute: { select: { user: { select: { name: true, preferredName: true } } } },
+          },
+        }),
   ]);
+  const substitutionFor = new Map(substitutions.map((row) => [`${row.slotId}|${row.dateKey}`, row]));
 
   return slots.map((slot) => {
     const dateKey = dayKeys.get(slot.weekday) ?? null;
@@ -929,6 +949,15 @@ async function resolveWeek(
     };
 
     if (!dateKey || !slot.teacherMembershipId) return base;
+
+    const substitution = substitutionFor.get(`${slot.id}|${dateKey}`);
+    if (substitution) {
+      return {
+        ...base,
+        coveringMembershipId: substitution.substituteMembershipId,
+        coveringName: substitution.substitute.user.preferredName ?? substitution.substitute.user.name,
+      };
+    }
 
     const absence = leave.find(
       (row) =>

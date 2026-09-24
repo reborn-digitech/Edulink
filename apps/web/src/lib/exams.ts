@@ -35,6 +35,60 @@ function requireAdmin(ctx: ActiveContext): { schoolId: string; membershipId: str
   return { schoolId: ctx.schoolId, membershipId: ctx.membershipId };
 }
 
+/** The sitting's title as the grades page and the card show it. */
+function sittingTitle(seriesName: string, subject: string): string {
+  return `${seriesName} · ${subject}`;
+}
+
+/**
+ * THE TERM IS DERIVED FROM THE DATE SHEET, NOT REMEMBERED. A series reports
+ * into the term its EARLIEST paper falls in, and that is recomputed every
+ * time the sheet changes — a paper added, moved or removed — rather than
+ * filled once from the first paper dated and left. The old fill-once rule
+ * left two ZZ series with no term at all (the API made them, the papers
+ * came after, and nothing looked again), and a series with no term is on
+ * no term card and no annual card. No term over the earliest paper, or no
+ * paper, means null: the round belongs to no term until it does.
+ */
+async function syncSeriesTerm(schoolId: string, seriesId: string): Promise<void> {
+  const series = await db.examSeries.findFirst({
+    where: { id: seriesId, schoolId },
+    select: {
+      termId: true,
+      slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }], take: 1, select: { dateKey: true } },
+    },
+  });
+  if (!series) return;
+  const earliest = series.slots[0];
+  const term = earliest ? await termForDate(schoolId, earliest.dateKey) : null;
+  const termId = term?.id ?? null;
+  if (termId !== series.termId) {
+    await db.examSeries.update({ where: { id: seriesId }, data: { termId } });
+  }
+}
+
+/**
+ * A SITTING'S COPIES FOLLOW THEIR SOURCE. The Assignment row of a sitting
+ * carries the paper's max marks and a title made of the series' name and
+ * the subject; both are copies, and a copy nobody refreshes drifts. "Out of
+ * 80" corrected to "out of 100" on the sheet left the sitting — and the
+ * card's denominator — at 80 unless a teacher happened to save marks again;
+ * a renamed series kept its old name on every sitting. Every sitting of the
+ * given slots is brought back in line here. Grades are never touched.
+ */
+async function syncSittings(where: { seriesId: string } | { slotId: string }): Promise<void> {
+  const slots = await db.examSlot.findMany({
+    where: "seriesId" in where ? { seriesId: where.seriesId } : { id: where.slotId },
+    select: { id: true, subject: true, pointsMilli: true, series: { select: { name: true } } },
+  });
+  for (const slot of slots) {
+    await db.assignment.updateMany({
+      where: { examSlotId: slot.id },
+      data: { title: sittingTitle(slot.series.name, slot.subject), pointsMilli: slot.pointsMilli },
+    });
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 /* The admin's series                                                          */
 /* -------------------------------------------------------------------------- */
@@ -102,14 +156,18 @@ export async function createSeries(
         renamed = `${name} (${stamp}) ${n}`;
       }
       await db.examSeries.update({ where: { id: existing.id }, data: { name: renamed } });
+      // The old series' sittings carry its name in their title; they follow.
+      await syncSittings({ seriesId: existing.id });
     } else {
       throw new AccessError("access.thatExamAlreadyExists");
     }
   }
 
-  // A term, if named; verified to be this school's. An unnamed term is
-  // filled in when the first paper is dated (see addSlot) — the term the
-  // paper falls in is the term the round reports into.
+  // A term named in THIS call is kept as the office's word, verified to be
+  // this school's. Otherwise the term is derived: null now, with no paper
+  // to place it by, and the term of the earliest paper from the first paper
+  // on (see syncSeriesTerm) — the term the sheet falls in is the term the
+  // round reports into.
   let termId: string | null = null;
   if (input.termId) {
     const term = await db.term.findFirst({ where: { id: input.termId, schoolId }, select: { id: true } });
@@ -148,7 +206,7 @@ export async function addSlot(
   const { schoolId } = requireAdmin(ctx);
   const series = await db.examSeries.findFirst({
     where: { id: seriesId, schoolId, archivedAt: null },
-    select: { id: true, termId: true, _count: { select: { slots: true } } },
+    select: { id: true, _count: { select: { slots: true } } },
   });
   if (!series) throw new AccessError("access.examNotFound", "NOT_FOUND");
 
@@ -214,7 +272,7 @@ export async function addSlot(
   }
 
 
-  await db.examSlot.upsert({
+  const slot = await db.examSlot.upsert({
     where: { seriesId_subject: { seriesId, subject } },
     // Re-adding a subject updates its paper rather than refusing: "we moved
     // maths to Monday" is an edit, not an error.
@@ -229,12 +287,12 @@ export async function addSlot(
       endMinute,
       position: series._count.slots,
     },
+    select: { id: true },
   });
-  // A round with no term yet takes the term its first paper falls in.
-  if (!series.termId) {
-    const term = await termForDate(schoolId, input.dateKey);
-    if (term) await db.examSeries.update({ where: { id: series.id }, data: { termId: term.id } });
-  }
+  // The sheet changed: the series' term follows its earliest paper, and the
+  // paper's sittings — if any class has one yet — follow its max marks.
+  await syncSeriesTerm(schoolId, series.id);
+  await syncSittings({ slotId: slot.id });
 
   await audit({
     schoolId,
@@ -265,6 +323,8 @@ export async function removeSlot(ctx: ActiveContext, slotId: string): Promise<vo
   // An unmarked sitting's Assignment survives; its examSlotId becomes null
   // (SetNull on the relation).
   await db.examSlot.delete({ where: { id: slot.id } });
+  // The earliest paper may have been this one; the term follows the rest.
+  await syncSeriesTerm(schoolId, slot.seriesId);
   await audit({
     schoolId,
     actorUserId: ctx.user.id,
@@ -679,12 +739,13 @@ export async function saveMarks(
 
   const sitting = await db.assignment.upsert({
     where: { examSlotId_classId: { examSlotId: slotId, classId } },
-    update: { pointsMilli: slot.pointsMilli },
+    // Both copies follow the sheet (see syncSittings).
+    update: { pointsMilli: slot.pointsMilli, title: sittingTitle(slot.series.name, slot.subject) },
     create: {
       schoolId,
       classId,
       authorMembershipId: membershipId,
-      title: `${slot.series.name} · ${slot.subject}`,
+      title: sittingTitle(slot.series.name, slot.subject),
       category: EXAM_CATEGORY,
       pointsMilli: slot.pointsMilli,
       examSlotId: slotId,
@@ -918,7 +979,9 @@ export async function marksTodoFor(ctx: ActiveContext, todayKey: string): Promis
  * Make sure every scheduled paper of this class's grade has its sitting row,
  * so a report card built from the schedule lists every subject — marked or
  * still blank — rather than only the ones whose grid somebody happened to
- * open. Idempotent on the (slot, class) unique key.
+ * open. Idempotent on the (slot, class) unique key — and a sitting already
+ * there has its max marks and title brought level with the sheet, so a paper
+ * corrected after the grids were opened reaches the card at its new value.
  */
 export async function ensureSittings(
   schoolId: string,
@@ -932,14 +995,15 @@ export async function ensureSittings(
     select: { id: true, subject: true, pointsMilli: true, series: { select: { name: true } } },
   });
   for (const slot of slots) {
+    const title = sittingTitle(slot.series.name, slot.subject);
     await db.assignment.upsert({
       where: { examSlotId_classId: { examSlotId: slot.id, classId } },
-      update: {},
+      update: { pointsMilli: slot.pointsMilli, title },
       create: {
         schoolId,
         classId,
         authorMembershipId,
-        title: `${slot.series.name} · ${slot.subject}`,
+        title,
         category: EXAM_CATEGORY,
         pointsMilli: slot.pointsMilli,
         examSlotId: slot.id,

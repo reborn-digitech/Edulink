@@ -9,6 +9,7 @@ import { consumeByCaller, retryHintKey, CODE_LOOKUPS } from "./rate-limit";
 import type { FieldErrors } from "./validation";
 import type { ActiveContext } from "./session";
 import type { Translate } from "./i18n/dictionary";
+import { syncGradeLevel } from "./grade-level";
 
 /**
  * Joining with a school or class code, as rules rather than as a page.
@@ -239,6 +240,7 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
             create: { classId: lookup.classId, schoolId: lookup.schoolId, studentMembershipId: id, status: "ACTIVE" },
             update: { status: "ACTIVE", removedAt: null },
           });
+          await syncGradeLevel(tx, [id]);
         }
 
         if (age !== null) {

@@ -9,6 +9,7 @@ import {
   examClassesFor,
   marksGrid,
   saveMarks,
+  ensureSittings,
 } from "@/lib/exams";
 import { assessmentsFor } from "@/lib/report-cards";
 import { AccessError } from "@/lib/tenancy";
@@ -368,5 +369,136 @@ describe("the date sheet warns like the register", () => {
     // An unmarked one goes quietly.
     const unmarked = await db.examSlot.findFirstOrThrow({ where: { seriesId: guardSeriesId, subject: "Drawing" } });
     await removeSlot(admin, unmarked.id);
+  });
+});
+
+describe("the term and the sittings follow the sheet", () => {
+  // A year of its own, far in the past, so no seeded term and no holiday
+  // touches it. Riverside teaches Monday to Saturday; every date below is a
+  // weekday. Terms cascade with the year.
+  const YEAR_NAME = "ZZ EXAMS TERMS 1997";
+  const SERIES_NAME = "ZZ Termed Round";
+  let yearId: string;
+  let term1Id: string;
+  let term2Id: string;
+  let termedSeriesId: string;
+
+  const termOf = async (id: string) =>
+    (await db.examSeries.findUniqueOrThrow({ where: { id }, select: { termId: true } })).termId;
+  const cleanup = async () => {
+    const series = await db.examSeries.findMany({
+      where: { schoolId, gradeLevel: GRADE, name: { startsWith: SERIES_NAME } },
+      select: { id: true },
+    });
+    const ids = series.map((s) => s.id);
+    await db.assignment.deleteMany({ where: { examSlot: { seriesId: { in: ids } } } });
+    await db.examSeries.deleteMany({ where: { id: { in: ids } } });
+    await db.academicYear.deleteMany({ where: { schoolId, name: YEAR_NAME } });
+  };
+
+  beforeAll(async () => {
+    await cleanup();
+    yearId = (
+      await db.academicYear.create({
+        data: { schoolId, name: YEAR_NAME, startDate: new Date("1997-06-01T00:00:00Z"), endDate: new Date("1998-04-30T00:00:00Z") },
+      })
+    ).id;
+    term1Id = (
+      await db.term.create({
+        data: { schoolId, academicYearId: yearId, name: "ZZ Term 1", position: 1, startDate: new Date("1997-06-01T00:00:00Z"), endDate: new Date("1997-09-30T00:00:00Z") },
+      })
+    ).id;
+    term2Id = (
+      await db.term.create({
+        data: { schoolId, academicYearId: yearId, name: "ZZ Term 2", position: 2, startDate: new Date("1997-10-01T00:00:00Z"), endDate: new Date("1997-12-20T00:00:00Z") },
+      })
+    ).id;
+  });
+  afterAll(async () => {
+    await cleanup();
+    expect(await db.academicYear.count({ where: { id: yearId } })).toBe(0);
+  });
+
+  it("⚠ a series takes the term of its EARLIEST paper, and follows it as the sheet changes", async () => {
+    termedSeriesId = await createSeries(admin, { name: SERIES_NAME, gradeLevel: GRADE });
+    expect(await termOf(termedSeriesId)).toBeNull(); // no paper yet, nothing to place it by
+
+    // Papers inside Term 1: the series reports into Term 1.
+    await addSlot(admin, termedSeriesId, { subject: "Maths", dateKey: "1997-07-15", maxMarks: 80 });
+    await addSlot(admin, termedSeriesId, { subject: "Science", dateKey: "1997-08-12", maxMarks: 50 });
+    expect(await termOf(termedSeriesId)).toBe(term1Id);
+
+    // Moving the LATER paper into Term 2 changes nothing: the earliest still sits in Term 1.
+    await addSlot(admin, termedSeriesId, { subject: "Science", dateKey: "1997-10-14", maxMarks: 50 });
+    expect(await termOf(termedSeriesId)).toBe(term1Id);
+    // Moving the FIRST paper into Term 2 too moves the series — the old
+    // fill-once rule would have left it on Term 1 for good.
+    await addSlot(admin, termedSeriesId, { subject: "Maths", dateKey: "1997-10-21", maxMarks: 80 });
+    expect(await termOf(termedSeriesId)).toBe(term2Id);
+
+    // A paper added back in Term 1 is now the earliest: Term 1 again…
+    await addSlot(admin, termedSeriesId, { subject: "Hindi", dateKey: "1997-09-09", maxMarks: 40 });
+    expect(await termOf(termedSeriesId)).toBe(term1Id);
+    // …and removing it hands the series back to Term 2.
+    const hindi = await db.examSlot.findFirstOrThrow({ where: { seriesId: termedSeriesId, subject: "Hindi" }, select: { id: true } });
+    await removeSlot(admin, hindi.id);
+    expect(await termOf(termedSeriesId)).toBe(term2Id);
+  });
+
+  it("a paper outside every term leaves the series on none", async () => {
+    // 1997-03-10 is a Monday before the year's first term.
+    await addSlot(admin, termedSeriesId, { subject: "Maths", dateKey: "1997-03-10", maxMarks: 80 });
+    expect(await termOf(termedSeriesId)).toBeNull();
+    // Back inside Term 2 and the term is back.
+    await addSlot(admin, termedSeriesId, { subject: "Maths", dateKey: "1997-10-21", maxMarks: 80 });
+    expect(await termOf(termedSeriesId)).toBe(term2Id);
+  });
+
+  it("a term named at creation is the office's word until the first paper is dated", async () => {
+    const named = await createSeries(admin, { name: `${SERIES_NAME} Named`, gradeLevel: GRADE, termId: term2Id });
+    expect(await termOf(named)).toBe(term2Id);
+    await addSlot(admin, named, { subject: "Maths", dateKey: "1997-07-15", maxMarks: 80 });
+    expect(await termOf(named)).toBe(term1Id);
+    await expect(
+      createSeries(admin, { name: `${SERIES_NAME} Stranger`, gradeLevel: GRADE, termId: "not-a-term" }),
+    ).rejects.toMatchObject({ key: "access.termNotFound" });
+  });
+
+  it("⚠ changing a paper's max marks updates the sitting's max — without a teacher saving marks again", async () => {
+    await ensureSittings(schoolId, classId, admin.membershipId!);
+    const maths = await db.examSlot.findFirstOrThrow({ where: { seriesId: termedSeriesId, subject: "Maths" }, select: { id: true } });
+    const before = await db.assignment.findUniqueOrThrow({ where: { examSlotId_classId: { examSlotId: maths.id, classId } } });
+    expect(before.pointsMilli).toBe(80_000);
+    expect(before.title).toBe(`${SERIES_NAME} · Maths`);
+
+    await addSlot(admin, termedSeriesId, { subject: "Maths", dateKey: "1997-10-21", maxMarks: 100 });
+    const after = await db.assignment.findUniqueOrThrow({ where: { examSlotId_classId: { examSlotId: maths.id, classId } } });
+    expect(after.pointsMilli).toBe(100_000);
+    expect(after.id).toBe(before.id);
+
+    // ensureSittings on a sitting already there brings it level too (it used
+    // to be an empty update).
+    await db.examSlot.update({ where: { id: maths.id }, data: { pointsMilli: 90_000 } });
+    await ensureSittings(schoolId, classId, admin.membershipId!);
+    expect((await db.assignment.findUniqueOrThrow({ where: { id: before.id } })).pointsMilli).toBe(90_000);
+  });
+
+  it("⚠ renaming the series retitles its sittings", async () => {
+    // The one rename this library performs: an archived series stepping
+    // aside for a new one of the same name, stamped with its archive date.
+    await db.examSeries.update({ where: { id: termedSeriesId }, data: { archivedAt: new Date("1998-04-30T00:00:00Z") } });
+    const fresh = await createSeries(admin, { name: SERIES_NAME, gradeLevel: GRADE });
+    expect(fresh).not.toBe(termedSeriesId);
+    const old = await db.examSeries.findUniqueOrThrow({ where: { id: termedSeriesId } });
+    expect(old.name).toBe(`${SERIES_NAME} (1998-04-30)`);
+
+    const sittings = await db.assignment.findMany({
+      where: { classId, examSlot: { seriesId: termedSeriesId } },
+      select: { title: true, examSlot: { select: { subject: true } } },
+    });
+    expect(sittings.length).toBeGreaterThan(0);
+    for (const sitting of sittings) {
+      expect(sitting.title).toBe(`${SERIES_NAME} (1998-04-30) · ${sitting.examSlot!.subject}`);
+    }
   });
 });

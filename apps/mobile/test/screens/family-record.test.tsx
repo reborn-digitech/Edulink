@@ -2,7 +2,7 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react-nativ
 import { ToastProvider } from "@/components";
 import { bodyOf, calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
 import { FamilyRecord } from "@/screens/family/record";
-import { bodyFrom, FILING_FIELDS, formFrom, OPTIONAL_FIELDS, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
+import { bodyFrom, CATEGORY_VALUES, FILING_FIELDS, formFrom, OPTIONAL_FIELDS, RELIGION_VALUES, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
 
 const CHILDREN = { children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela")] };
 const RECORD = {
@@ -30,6 +30,12 @@ const RECORD = {
   ews: null,
   cwsnType: null,
   bloodGroup: null,
+  previousSchoolTcNumber: null,
+  previousSchoolTcDate: null,
+  fatherOccupation: null,
+  motherOccupation: null,
+  annualIncome: null,
+  rollNumber: "12",
   requestedAt: "2026-09-01T05:00:00.000Z",
   familyFilledAt: null,
   updatedAt: "2026-09-10T05:00:00.000Z",
@@ -56,6 +62,13 @@ describe("the helpers behind the record", () => {
     expect(bodyFrom({ ...formFrom(null), admissionDate: "2023-06-01" }).admissionDate).toBe("2023-06-01");
     expect(Object.keys(body).sort()).toEqual([...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS].sort());
     expect(bodyFrom({ ...formFrom(null), gender: "F", bpl: "yes", cwsnType: "9", bloodGroup: "B+" })).toMatchObject({ gender: "F", bpl: "yes", ews: "", cwsnType: "9", bloodGroup: "B+", nameLocal: "" });
+    // The collection gaps: the TC date goes as a key or null, the roll number is left out when told to.
+    expect(body).toMatchObject({ previousSchoolTcNumber: "", previousSchoolTcDate: null, fatherOccupation: "", motherOccupation: "", annualIncome: "", rollNumber: "12" });
+    expect(bodyFrom({ ...formFrom(null), previousSchoolTcDate: " 2022-04-30 " }).previousSchoolTcDate).toBe("2022-04-30");
+    expect(bodyFrom(formFrom(RECORD), ["rollNumber"])).not.toHaveProperty("rollNumber");
+    expect(OPTIONAL_FIELDS).toEqual(["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome"]);
+    expect(CATEGORY_VALUES).toEqual(["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"]);
+    expect(RELIGION_VALUES).toEqual(["HINDU", "MUSLIM", "CHRISTIAN", "SIKH", "BUDDHIST", "PARSI", "JAIN", "OTHER"]);
   });
 });
 
@@ -75,7 +88,19 @@ describe("the pupil record for the guardian", () => {
     expect(screen.getByLabelText("Father's name").props.value).toBe("ZZ Ravi");
     expect(screen.getByLabelText("Mother tongue").props.value).toBe("Marathi");
     expect(screen.getByLabelText("Admission register number").props.value).toBe("");
-    expect(screen.getByLabelText("Religion").props.value).toBe("");
+    // Religion and category are coded choices; nothing stored leaves "Not said" checked.
+    expect(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Not said" }).props.accessibilityState.checked).toBe(true);
+    expect(within(screen.getByLabelText("Category")).getByRole("radio", { name: "OBC" })).toBeTruthy();
+    expect(screen.getByText("As on the admission form. VJ, NT and SBC file with UDISE+ as OBC.")).toBeTruthy();
+    // The collection gaps the audit named, each with its label and hint.
+    expect(screen.getByLabelText("Transfer certificate number (last school)").props.accessibilityHint).toBe("Optional · From the TC the last school issued; the admission register records it.");
+    expect(screen.getByLabelText("Transfer certificate date").props.accessibilityHint).toBe("Optional · YYYY-MM-DD");
+    expect(screen.getByLabelText("Father\u2019s occupation").props.value).toBe("");
+    expect(screen.getByLabelText("Mother\u2019s occupation")).toBeTruthy();
+    expect(screen.getByLabelText("Family\u2019s annual income (\u20b9)").props.keyboardType).toBe("number-pad");
+    // The roll number is the office's: the family reads it with the office's note and cannot type it.
+    expect(screen.getByLabelText("Roll number: 12. Set by the school office.")).toBeTruthy();
+    expect(screen.queryByLabelText("Roll number")).toBeNull();
     // The PEN is the office's to enter: the family reads it and never types it.
     expect(screen.getByLabelText("UDISE+ PEN: —. Only the school admin enters a pupil\u2019s PEN.")).toBeTruthy();
     expect(screen.queryByLabelText("UDISE+ PEN")).toBeNull();
@@ -92,7 +117,12 @@ describe("the pupil record for the guardian", () => {
     });
     await fireEvent.changeText(await screen.findByLabelText("Admission register number"), "GR-42");
     await fireEvent.changeText(screen.getByLabelText("Date of admission"), "2023-06-01");
-    await fireEvent.changeText(screen.getByLabelText("Religion"), "");
+    await fireEvent.press(within(screen.getByLabelText("Category")).getByRole("radio", { name: "OBC" }));
+    await fireEvent.press(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Hindu" }));
+    await fireEvent.changeText(screen.getByLabelText("Transfer certificate number (last school)"), "TC/2022/17");
+    await fireEvent.changeText(screen.getByLabelText("Transfer certificate date"), "2022-04-30");
+    await fireEvent.changeText(screen.getByLabelText("Father\u2019s occupation"), "Farmer");
+    await fireEvent.changeText(screen.getByLabelText("Family\u2019s annual income (\u20b9)"), "240000");
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
     expect(posts(fetch)[0]!.url.searchParams.get("childId")).toBe(ID.child);
@@ -106,9 +136,9 @@ describe("the pupil record for the guardian", () => {
       city: "Pune",
       admissionNumber: "GR-42",
       admissionDate: "2023-06-01",
-      religion: "",
+      religion: "HINDU",
       caste: "",
-      category: "",
+      category: "OBC",
       postalCode: "411001",
       admittedToGrade: "",
       previousSchool: "",
@@ -120,6 +150,11 @@ describe("the pupil record for the guardian", () => {
       ews: "",
       cwsnType: "",
       bloodGroup: "",
+      previousSchoolTcNumber: "TC/2022/17",
+      previousSchoolTcDate: "2022-04-30",
+      fatherOccupation: "Farmer",
+      motherOccupation: "",
+      annualIncome: "240000",
     });
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("Complete")).toBeTruthy();
@@ -157,6 +192,25 @@ describe("the pupil record for the guardian", () => {
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
     expect(bodyOf(posts(fetch)[0]!)).not.toHaveProperty("penNumber");
+  });
+
+  it("a category or religion typed before the codes shows as its own chip, goes back only as it is, and gives way to a code", async () => {
+    const { fetch } = await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: (init) => (init?.method === "POST" ? VIEW : { ...VIEW, record: { ...RECORD, category: "Open", religion: "Hinduism" } }) });
+    const category = within(await screen.findByLabelText("Category"));
+    expect(category.getByRole("radio", { name: "Open" }).props.accessibilityState.checked).toBe(true);
+    expect(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Hinduism" }).props.accessibilityState.checked).toBe(true);
+    await fireEvent.press(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Sikh" }));
+    await press(screen.getByRole("button", { name: "Save the record" }));
+    await waitFor(() => expect(posts(fetch)).toHaveLength(1));
+    expect(bodyOf(posts(fetch)[0]!)).toMatchObject({ category: "Open", religion: "SIKH" });
+  });
+
+  it("a transfer certificate date that is not a day is refused before anything is sent", async () => {
+    const { fetch } = await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: () => VIEW });
+    await fireEvent.changeText(await screen.findByLabelText("Transfer certificate date"), "April 2022");
+    await press(screen.getByRole("button", { name: "Save the record" }));
+    expect(screen.getByText("Use a real date in YYYY-MM-DD form.")).toBeTruthy();
+    expect(posts(fetch)).toHaveLength(0);
   });
 
   it("a date of admission that is not a day is refused before anything is sent", async () => {

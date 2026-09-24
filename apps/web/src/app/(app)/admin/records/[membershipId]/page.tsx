@@ -61,7 +61,7 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
           }
         />
         <CardBody>
-          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} admin={ctx.role === "ADMIN"} />
+          <PupilRecordForm key={view.record?.updatedAt ?? "new"} view={view} required={[...REQUIRED_RECORD_FIELDS]} optional={[...OPTIONAL_RECORD_FIELDS]} filing={[...FILING_FORM_FIELDS]} admin={ctx.role === "ADMIN"} office />
         </CardBody>
       </Card>
       {/* The PEN correction: the admin's door to proposing one, or the pending one the head decides here. */}

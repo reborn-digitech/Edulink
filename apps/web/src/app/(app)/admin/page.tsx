@@ -20,6 +20,7 @@ import { currentAcademicYear } from "@/lib/academic-year";
 import { currentTerms } from "@/lib/terms";
 import { unstaffedLessons } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
+import { registersDue } from "@/lib/attendance";
 import { todayKey, formatDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
@@ -69,8 +70,7 @@ export default async function AdminDashboard({
     studentCount,
     classCount,
     pendingInvites,
-    todaySessions,
-    classesTotal,
+    registers,
     academicYear,
     calendar,
   ] = await Promise.all([
@@ -84,15 +84,20 @@ export default async function AdminDashboard({
       db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
       db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
       db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING" } }),
-      db.attendanceSession.count({ where: { schoolId: ctx.schoolId, dateKey } }),
-      db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
+      // The registers the school EXPECTS today — none on a closed day, none
+      // from a class with nobody in it — against the ones taken.
+      registersDue(ctx.schoolId, dateKey),
       currentAcademicYear(ctx.schoolId),
       // From today on: the dashboard is asking "what is coming up", and a
       // finished break is not that. The calendar page shows the whole year.
       listHolidays(ctx.schoolId, { fromKey: dateKey }),
     ]);
 
-  const attendanceTaken = classesTotal === 0 ? 0 : Math.round((todaySessions / classesTotal) * 100);
+  const classesTotal = registers.expected.length;
+  const todaySessions = registers.taken.length;
+  // Null when nothing is expected — a holiday, a Sunday, or no class with
+  // pupils yet — so the card neither warns nor claims 0 % of nothing.
+  const attendanceTaken = classesTotal === 0 ? null : Math.round((todaySessions / classesTotal) * 100);
   const coming = nextEntry(calendar, dateKey);
   // The running term, for the year strip's milestone CTA. The one to offer is
   // the term today falls in (or the last unfinished one once the dates have
@@ -283,7 +288,7 @@ export default async function AdminDashboard({
       <CelebrationsLink session={ctx} />
 
       <div className="grid gap-3 sm:grid-cols-2">
-        <Card className={classesTotal > 0 && attendanceTaken < 100 ? "border-warn/40" : undefined}>
+        <Card className={attendanceTaken !== null && attendanceTaken < 100 ? "border-warn/40" : undefined}>
           <Link href="/admin/attendance" className="flex items-center gap-3 p-4">
             <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
               <EnvelopeSimpleIcon weight="duotone" className="size-6" />
@@ -291,13 +296,13 @@ export default async function AdminDashboard({
             <span className="min-w-0 flex-1">
               <span className="block font-semibold text-fg">{t("admin.registerTaken")}</span>
               <span className="block text-xs text-fg-muted">
-                {classesTotal === 0
+                {classCount === 0
                   ? t("admin.noClassesYet")
                   : t("admin.takenToday", { done: todaySessions, total: classesTotal })}
               </span>
             </span>
             <span className="shrink-0 text-lg font-bold tabular-nums text-fg">
-              {classesTotal === 0 ? "—" : `${attendanceTaken}%`}
+              {attendanceTaken === null ? "—" : `${attendanceTaken}%`}
             </span>
           </Link>
         </Card>
