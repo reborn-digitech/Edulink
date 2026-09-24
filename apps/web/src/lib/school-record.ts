@@ -3,7 +3,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { forOwnSchools, forSchool } from "./tenant-context";
 import { audit } from "./audit";
-import { todayKey } from "./dates";
+import { dateKeyInZone, todayKey } from "./dates";
 import { notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
@@ -150,6 +150,7 @@ export async function recordDeparture(
       leftAt: true,
       studentCode: true,
       user: { select: { name: true, birthdate: true } },
+      pupilRecord: { select: { admissionDate: true } },
       // The class line on the certificate. ACTIVE first; failing that, the
       // most recently CLOSED one — promotion closes a graduate's enrolment
       // inside its transaction and writes the certificate after it, and a
@@ -181,36 +182,25 @@ export async function recordDeparture(
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: schoolId },
-    select: { name: true },
+    select: { name: true, timezone: true },
   });
+  // The leaving DAY is the instant read in the school's zone: a departure
+  // recorded at 21:00 UTC is the next day in Kolkata, and that is the day
+  // the certificate prints and the register stops at.
+  const leftOnKey = dateKeyInZone(leftAt, school.timezone);
 
   /**
-   * The snapshot. COUNTS, taken now, never recomputed.
-   *
-   * `groupBy` in the database rather than rows into memory, the same as
-   * insights.ts — a pupil with six years of registers is thousands of rows and
-   * this page is a modal on a directory.
-   *
-   * LATE COUNTS AS PRESENT, matching every other attendance figure in this
-   * codebase. A child who arrived at ten past nine was in school, and a
-   * certificate that says otherwise disagrees with the report cards the same
-   * school issued.
+   * The snapshot. COUNTS, taken now, never recomputed: the whole stay up to
+   * the leaving day, so a backdated departure leaves the marks after it out.
+   * `stayAttendance` is the one definition; the certificate template's
+   * [[record.attendance]] reads the same figure.
    */
-  const [byStatus, reportCardCount] = await Promise.all([
-    db.attendanceRecord.groupBy({
-      by: ["status"],
-      where: { schoolId, studentMembershipId: membership.id },
-      _count: { _all: true },
-    }),
+  const [{ marked: counted, present }, reportCardCount] = await Promise.all([
+    stayAttendance(schoolId, membership.id, leftOnKey, { joinedAt: membership.joinedAt, admissionDate: membership.pupilRecord?.admissionDate ?? null, timezone: school.timezone }),
     db.reportCard.count({
       where: { schoolId, studentMembershipId: membership.id, status: "PUBLISHED" },
     }),
   ]);
-
-  const counted = byStatus.reduce((sum, row) => sum + row._count._all, 0);
-  const present = byStatus
-    .filter((row) => row.status === "PRESENT" || row.status === "LATE")
-    .reduce((sum, row) => sum + row._count._all, 0);
 
   const destination = input.destination?.trim().slice(0, 200) || null;
   const note = input.note?.trim().slice(0, 1000) || null;
@@ -271,11 +261,12 @@ export async function recordDeparture(
       data: { leftAt },
     });
 
-    // Their enrolments end with them. REMOVED rather than deleted, exactly as
-    // `cohort.ts` does it, so last term's marks still have a class to belong to.
+    // Their enrolments end with them, on their last day. REMOVED rather than
+    // deleted, exactly as `cohort.ts` does it, so last term's marks still have
+    // a class to belong to.
     await t.enrollment.updateMany({
       where: { studentMembershipId: membership.id, schoolId, status: "ACTIVE" },
-      data: { status: "REMOVED" },
+      data: { status: "REMOVED", removedAt: leftAt },
     });
 
     // The school's stand-in guardianship (see standin-guardian.ts) ends with
@@ -505,13 +496,68 @@ export async function runDueDepartures(now: Date = new Date()): Promise<{
 }
 
 /**
- * The school's own numbering: TC/<year of leaving>/<n>, n counting from one
- * each year, per school. Read the highest issued and add one; the unique
- * index on (schoolId, serial) turns a race into a retry, not a duplicate.
+ * Days marked and days there over the pupil's WHOLE stay: from the earlier of
+ * the day they joined and the record's admission date, to `toKey` — the
+ * leaving day, or today for a pupil still on the roll. Late counts as present,
+ * matching every other attendance figure in this codebase. The one definition
+ * behind the leaving certificate's figure and the certificate template's
+ * [[record.attendance]], so the two papers agree.
+ */
+export async function stayAttendance(
+  schoolId: string,
+  studentMembershipId: string,
+  toKey: string,
+  stay?: { joinedAt: Date; admissionDate: Date | null; timezone: string },
+): Promise<{ marked: number; present: number; fromKey: string }> {
+  let facts = stay;
+  if (!facts) {
+    const m = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { joinedAt: true, pupilRecord: { select: { admissionDate: true } }, school: { select: { timezone: true } } } });
+    facts = { joinedAt: m.joinedAt, admissionDate: m.pupilRecord?.admissionDate ?? null, timezone: m.school.timezone };
+  }
+  // joinedAt is an instant, read in the school's zone; the admission date is a date-only value stored at UTC midnight.
+  const joinedKey = dateKeyInZone(facts.joinedAt, facts.timezone);
+  const admittedKey = facts.admissionDate ? facts.admissionDate.toISOString().slice(0, 10) : null;
+  const fromKey = admittedKey && admittedKey < joinedKey ? admittedKey : joinedKey;
+  // `groupBy` in the database rather than rows into memory, the same as
+  // insights.ts — a pupil with six years of registers is thousands of rows.
+  const byStatus = await db.attendanceRecord.groupBy({
+    by: ["status"],
+    where: { schoolId, studentMembershipId, session: { dateKey: { gte: fromKey, lte: toKey } } },
+    _count: { _all: true },
+  });
+  const marked = byStatus.reduce((sum, row) => sum + row._count._all, 0);
+  const present = byStatus.filter((row) => row.status === "PRESENT" || row.status === "LATE").reduce((sum, row) => sum + row._count._all, 0);
+  return { marked, present, fromKey };
+}
+
+/**
+ * The year a serial is numbered under: the academic year the leaving day
+ * falls in, by its name — TC/2026–27/0001, as every other paper the school
+ * issues — or, for a school with no year covering that day, the calendar
+ * year of the leaving day in the school's zone, the form the earliest
+ * serials took. Years already issued keep their serials as they are.
+ */
+async function serialYear(schoolId: string, leftAt: Date): Promise<{ name: string; fromKey: string; toKey: string; timezone: string }> {
+  const [school, years] = await Promise.all([
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+    db.academicYear.findMany({ where: { schoolId }, orderBy: { startDate: "desc" }, select: { name: true, startDate: true, endDate: true } }),
+  ]);
+  const leftOnKey = dateKeyInZone(leftAt, school.timezone);
+  const day = (d: Date) => d.toISOString().slice(0, 10);
+  const covering = years.find((y) => day(y.startDate) <= leftOnKey && leftOnKey <= day(y.endDate));
+  if (covering) return { name: covering.name, fromKey: day(covering.startDate), toKey: day(covering.endDate), timezone: school.timezone };
+  const year = leftOnKey.slice(0, 4);
+  return { name: year, fromKey: `${year}-01-01`, toKey: `${year}-12-31`, timezone: school.timezone };
+}
+
+/**
+ * The school's own numbering: TC/<year name>/<n>, n counting from one each
+ * year, per school. Read the highest issued and add one; the unique index on
+ * (schoolId, serial) turns a race into a retry, not a duplicate.
  */
 async function nextSerial(schoolId: string, leftAt: Date): Promise<string> {
-  const year = leftAt.getUTCFullYear();
-  const prefix = `TC/${year}/`;
+  const { name } = await serialYear(schoolId, leftAt);
+  const prefix = `TC/${name}/`;
   const last = await db.schoolRecord.findFirst({
     where: { schoolId, serial: { startsWith: prefix } },
     orderBy: { serial: "desc" },
@@ -519,6 +565,32 @@ async function nextSerial(schoolId: string, leftAt: Date): Promise<string> {
   });
   const n = last?.serial ? Number(last.serial.slice(prefix.length)) + 1 : 1;
   return `${prefix}${String(n).padStart(4, "0")}`;
+}
+
+/**
+ * Rows from before the document existed carry no serial. They are numbered
+ * together, every unnumbered row of that year in the order the pupils left —
+ * not the order the office happens to open them — after the highest already
+ * issued; the row asked for gets its serial back.
+ */
+async function numberLegacyRows(schoolId: string, recordId: string, leftAt: Date): Promise<string> {
+  const year = await serialYear(schoolId, leftAt);
+  const prefix = `TC/${year.name}/`;
+  const [last, unnumbered] = await Promise.all([
+    db.schoolRecord.findFirst({ where: { schoolId, serial: { startsWith: prefix } }, orderBy: { serial: "desc" }, select: { serial: true } }),
+    db.schoolRecord.findMany({ where: { schoolId, serial: null }, orderBy: [{ leftAt: "asc" }, { createdAt: "asc" }], select: { id: true, leftAt: true } }),
+  ]);
+  let n = last?.serial ? Number(last.serial.slice(prefix.length)) : 0;
+  let mine: string | null = null;
+  for (const row of unnumbered) {
+    const key = dateKeyInZone(row.leftAt, year.timezone);
+    if (key < year.fromKey || key > year.toKey) continue;
+    n += 1;
+    const serial = `${prefix}${String(n).padStart(4, "0")}`;
+    await db.schoolRecord.update({ where: { id: row.id }, data: { serial } });
+    if (row.id === recordId) mine = serial;
+  }
+  return mine ?? nextSerial(schoolId, leftAt);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -534,7 +606,8 @@ async function nextSerial(schoolId: string, leftAt: Date): Promise<string> {
 export type CertificateView = {
   id: string;
   serial: string | null;
-  school: { name: string; addressLine: string | null; logoPath: string | null; code: string };
+  /** `timezone` is the school's: the days the paper prints are the instants read in it. */
+  school: { name: string; addressLine: string | null; logoPath: string | null; code: string; timezone: string };
   studentName: string;
   studentCode: string | null;
   birthdate: Date | null;
@@ -579,11 +652,10 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
       where: { id: row.studentMembershipId },
       select: { studentCode: true, user: { select: { name: true, birthdate: true } } },
     });
-    const serial = await nextSerial(row.schoolId, row.leftAt);
+    const serial = await numberLegacyRows(row.schoolId, row.id, row.leftAt);
     await db.schoolRecord.update({
       where: { id: row.id },
       data: {
-        serial,
         studentName: row.studentName ?? m?.user.name ?? null,
         studentCode: row.studentCode ?? m?.studentCode ?? null,
         birthdate: row.birthdate ?? m?.user.birthdate ?? null,
@@ -601,7 +673,7 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
   // reader, so the widening is to exactly that school — the switcher's rule.
   const [school, issuer, student] = await forOwnSchools(ctx.user.id, [row.schoolId], async () => {
     return Promise.all([
-      db.school.findUnique({ where: { id: row.schoolId }, select: { name: true, addressLine: true, logoPath: true, code: true } }),
+      db.school.findUnique({ where: { id: row.schoolId }, select: { name: true, addressLine: true, logoPath: true, code: true, timezone: true } }),
       row.issuedByMembershipId
         ? db.membership.findUnique({ where: { id: row.issuedByMembershipId }, select: { user: { select: { name: true } } } })
         : Promise.resolve(null),
@@ -617,6 +689,7 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
       addressLine: school?.addressLine ?? null,
       logoPath: school?.logoPath ?? null,
       code: school?.code ?? "",
+      timezone: school?.timezone ?? "UTC",
     },
     studentName: row.studentName ?? student?.name ?? "",
     studentCode: row.studentCode,
@@ -726,11 +799,12 @@ function toView(
     attendancePresent: row.attendancePresent,
     // NULL, NOT ZERO, when nothing was ever marked — the same rule as every
     // other attendance figure here. A pupil who joined in the last week of term
-    // has no attendance, which is not the same as never turning up.
+    // has no attendance, which is not the same as never turning up. A whole
+    // percent, the same rounding the certificate view prints.
     attendancePercent:
       row.attendanceMarked === 0
         ? null
-        : Math.round((row.attendancePresent * 1000) / row.attendanceMarked) / 10,
+        : Math.round((row.attendancePresent * 100) / row.attendanceMarked),
     reportCardCount: row.reportCardCount,
     issuedHere: viewingSchoolId !== null && row.schoolId === viewingSchoolId,
   };

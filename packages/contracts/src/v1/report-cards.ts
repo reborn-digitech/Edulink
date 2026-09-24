@@ -80,12 +80,23 @@ export const coScholasticSaveSchema = z.object({
     .max(20),
 });
 
-/** A subject row on a card: its weighted percent, band and the parts that made it. */
+/**
+ * A subject row on a card: its percent (one decimal, as printed), band and the
+ * parts that made it, plus the marks and maximum its marked papers contributed.
+ * On an "exams" card the overall is the sum of every row's `scoreMilli` over
+ * the sum of its `pointsMilli` — the figure a parent reproduces from the rows —
+ * so the two never disagree. Optional: a card built before they were kept
+ * still parses.
+ */
 export const cardSubjectSchema = z.object({
   subject: z.string(),
   percent: z.number().nullable(),
   letter: z.string().nullable(),
   points: z.number().nullable(),
+  /** Marks the subject's marked papers scored, totalled; null on an annual card, whose rows are terms. */
+  scoreMilli: z.number().int().nullable().optional(),
+  /** The maximum those same papers carried, totalled. */
+  pointsMilli: z.number().int().nullable().optional(),
   parts: z.array(
     z.object({
       /** The paper's series on a term card; the term on an annual card. */

@@ -343,7 +343,8 @@ export async function schoolAdmissions(ctx: ActiveContext, schoolId: string) {
 }
 
 async function openCycleOf(schoolId: string) {
-  const today = new Date(`${todayKey("Asia/Kolkata")}T00:00:00Z`);
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  const today = new Date(`${todayKey(timezone)}T00:00:00Z`);
   const cycle = await db.admissionCycle.findFirst({
     where: { schoolId, status: "OPEN", OR: [{ opensAt: null }, { opensAt: { lte: today } }], AND: [{ OR: [{ closesAt: null }, { closesAt: { gte: today } }] }] },
     orderBy: { createdAt: "desc" },
@@ -829,13 +830,13 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const structure = feeStructureId ? await db.feeStructure.findFirst({ where: { id: feeStructureId, schoolId: caller.schoolId, publishedAt: { not: null }, archivedAt: null }, select: { id: true, academicYearId: true } }) : null;
   if (feeStructureId && !structure) throw new AccessError("admissions.refuseStructure");
   const applicantUser = a.applicantUserId ? await db.user.findUnique({ where: { id: a.applicantUserId }, select: { id: true, prefs: true } }) : null;
-  const locale = (await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { locale: true } })).locale;
+  const { locale, timezone } = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { locale: true, timezone: true } });
 
   const birthdate = a.childBirthdate;
   const age = birthdate ? ageInYears(birthdate) : null;
   const code = studentCode();
   const handle = handleFor(a.childName, code);
-  const todayIso = new Date(`${todayKey("Asia/Kolkata")}T00:00:00Z`);
+  const todayIso = new Date(`${todayKey(timezone)}T00:00:00Z`);
 
   // A PEN with the date of birth names an account already on Relay: the seat
   // goes to that pupil, as a transfer by student code would give it, and

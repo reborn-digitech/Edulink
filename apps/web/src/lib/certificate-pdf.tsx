@@ -3,8 +3,10 @@ import path from "node:path";
 import React from "react";
 import { Document, Font, Image, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
 import type { IssuedCertificateView } from "./certificate-types";
+import { db } from "./db";
 import { readStoredFile } from "./storage";
 import { wordsFor } from "./certificate-rules";
+import { dateKeyInZone } from "./dates";
 import type { WordsLocale } from "./words";
 import { dateInFigures } from "./words";
 
@@ -47,13 +49,30 @@ const styles = StyleSheet.create({
 
 type Logo = { data: Buffer; format: "png" | "jpg" };
 
-function CertificatePage({ cert, logo, verifyUrl }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string }) {
+/**
+ * "Issued on", as the body of the document says it: the frozen `issue.date`
+ * the wording was filled from — the day of issue in the school's zone — never
+ * the UTC slice of the instant, which is the day before for anything issued
+ * before 05:30 in Kolkata. A row without the frozen value (none is issued
+ * without one) falls back to the instant read in the school's zone.
+ */
+export async function issuedOnFor(cert: Pick<IssuedCertificateView, "id" | "issuedAt">): Promise<string> {
+  const row = await db.issuedCertificate.findUnique({ where: { id: cert.id }, select: { dataJson: true, school: { select: { timezone: true } } } });
+  try {
+    const frozen = (JSON.parse(row?.dataJson ?? "{}") as Record<string, unknown>)["issue.date"];
+    if (typeof frozen === "string" && frozen) return frozen;
+  } catch {
+    // an unreadable snapshot: the instant, below
+  }
+  return dateInFigures(dateKeyInZone(new Date(cert.issuedAt), row?.school.timezone ?? "UTC"));
+}
+
+function CertificatePage({ cert, logo, verifyUrl, issuedOn }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string; issuedOn: string }) {
   const locale = cert.locale as WordsLocale;
   const words = wordsFor(locale);
   const accent = cert.layout.useBrandColour && cert.school.brandPrimary ? cert.school.brandPrimary : INK;
   const address = [cert.school.addressLine, cert.school.city, cert.school.region, cert.school.postalCode].filter(Boolean).join(", ");
   const contact = [cert.school.contactPhone, cert.school.contactEmail].filter(Boolean).join(" · ");
-  const issuedKey = cert.issuedAt.slice(0, 10);
   return (
     <Page size={cert.layout.paper === "LETTER" ? "LETTER" : "A4"} style={styles.page}>
       <View style={[styles.header, { borderBottomColor: accent }]}>
@@ -69,7 +88,7 @@ function CertificatePage({ cert, logo, verifyUrl }: { cert: IssuedCertificateVie
         <Text>
           {words("certificates.serial")}: {cert.serial}
         </Text>
-        <Text>{words("certificates.issuedOn", { date: dateInFigures(issuedKey) })}</Text>
+        <Text>{words("certificates.issuedOn", { date: issuedOn })}</Text>
       </View>
       <Text style={styles.title}>{cert.title}</Text>
       {cert.intro ? <Text style={styles.para}>{cert.intro}</Text> : null}
@@ -102,9 +121,10 @@ export async function renderCertificatePdf(cert: IssuedCertificateView, verifyUr
   const stored = cert.layout.showLogo && cert.school.logoPath ? await readStoredFile(cert.school.logoPath) : null;
   const format: Logo["format"] | null = stored?.mime === "image/png" ? "png" : stored?.mime === "image/jpeg" ? "jpg" : null;
   const logo: Logo | null = stored && format ? { data: stored.bytes, format } : null;
+  const issuedOn = await issuedOnFor(cert);
   const doc = (
     <Document title={`${cert.title} · ${cert.serial}`} author={cert.school.name}>
-      <CertificatePage cert={cert} logo={logo} verifyUrl={verifyUrl} />
+      <CertificatePage cert={cert} logo={logo} verifyUrl={verifyUrl} issuedOn={issuedOn} />
     </Document>
   );
   return Buffer.from(await renderToBuffer(doc));

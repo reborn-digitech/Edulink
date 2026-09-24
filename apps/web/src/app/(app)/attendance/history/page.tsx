@@ -252,7 +252,7 @@ export default async function AttendanceHistoryPage({
                     </th>
                     {history.days.map((day) => (
                       <td key={day.dateKey} className="px-1 py-2 text-center font-semibold tabular-nums text-fg">
-                        {day.percent}%
+                        {day.percent === null ? "—" : `${day.percent}%`}
                       </td>
                     ))}
                     <td className="px-3 py-2 text-right font-semibold tabular-nums text-fg">

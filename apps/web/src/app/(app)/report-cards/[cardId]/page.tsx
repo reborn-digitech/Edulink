@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
-import { getCard } from "@/lib/report-cards";
+import { getCard, gradingHintKey } from "@/lib/report-cards";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
-import { formatDate, formatDateKey } from "@/lib/dates";
+import { formatDateKey } from "@/lib/dates";
 import { nameCarriesSection } from "@/lib/codes";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
@@ -69,6 +69,9 @@ export default async function ReportCardPage({
   const contactLine = [card.school.contactPhone, card.school.contactEmail, card.school.website].filter(Boolean).join(" · ");
   const showGradeColumn = scale.bands.length > 0;
   const showPointsColumn = layout.showGradePoints && card.subjects.some((s) => s.points !== null);
+  /* On a marks-over-maximum card the rows show the marks they contributed, so
+     the overall is the sum of this column over the sum of its maximums. */
+  const showMarksColumn = card.gradingMethod === "exams" && card.subjects.some((s) => s.pointsMilli);
   const coRows = layout.showCoScholastic ? card.coScholastic : [];
   const scaleLine = scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${b.descriptor}` : ""}`).join(" · ");
   const cell = "py-2 text-fg print:text-black";
@@ -153,20 +156,11 @@ export default async function ReportCardPage({
 
         {/* ---------------- headline figures ---------------- */}
         <section className="grid gap-3 sm:grid-cols-2">
+          {/* The percent is already the one-decimal figure the letter was read from; toFixed here only fixes the width. */}
           <Figure
             label={t("reportView.overall")}
             value={`${card.overallPercent === null ? "—" : `${card.overallPercent.toFixed(1)}%`}${card.overallLetter ? ` · ${card.overallLetter}` : ""}`}
-            hint={
-              card.overallPercent === null
-                ? t("reportView.noMarksCounted")
-                : card.subjects.length > 0
-                  ? t("reportView.weightedExplainerShort")
-                  : card.gradingMethod === "exams"
-                    ? t("reportView.examsOnly")
-                    : card.gradingMethod === "weighted"
-                      ? t("reportView.weightedBy")
-                      : t("reportView.acrossBelow")
-            }
+            hint={t(gradingHintKey(card))}
           />
           {layout.showGradePoints && card.gradePoints !== null && (
             <Figure label={t("reportView.gradePoints")} value={card.gradePoints.toFixed(2)} hint={t("reportView.gradePointsHint")} />
@@ -199,6 +193,11 @@ export default async function ReportCardPage({
                   <th scope="col" className={head}>
                     {card.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}
                   </th>
+                  {showMarksColumn && (
+                    <th scope="col" className={`${head} text-right`}>
+                      {t("reportView.mark")}
+                    </th>
+                  )}
                   <th scope="col" className={`${head} text-right`}>
                     {t("reportView.percent")}
                   </th>
@@ -231,6 +230,11 @@ export default async function ReportCardPage({
                         </span>
                       ))}
                     </td>
+                    {showMarksColumn && (
+                      <td className={`${cell} text-right tabular-nums`}>
+                        {subject.scoreMilli !== null && subject.scoreMilli !== undefined && subject.pointsMilli ? `${formatMilli(subject.scoreMilli)}/${formatMilli(subject.pointsMilli)}` : "—"}
+                      </td>
+                    )}
                     <td className={`${cell} text-right tabular-nums`}>{subject.percent === null ? "—" : `${subject.percent.toFixed(1)}%`}</td>
                     {showGradeColumn && <td className={`${cell} text-right font-semibold`}>{subject.letter ?? "—"}</td>}
                     {showPointsColumn && <td className={`${cell} text-right tabular-nums`}>{subject.points === null ? "—" : subject.points}</td>}
@@ -395,10 +399,11 @@ export default async function ReportCardPage({
 
         <footer className="mt-8 border-t border-border pt-4 text-xs text-fg-muted print:border-black/20 print:text-black/70">
           {layout.footerNote && <p className="mb-1">{layout.footerNote}</p>}
-          {/* Whole sentences with placeholders; the date is a value. */}
+          {/* Whole sentences with placeholders; the date is a value — the
+              publish day in the SCHOOL'S zone, never the server's or UTC. */}
           {card.authorName ? `${t("reportView.writtenBy", { name: card.authorName })} ` : ""}
-          {card.publishedAt
-            ? t("reportView.issuedOn", { date: formatDate(card.publishedAt) })
+          {card.issuedDateKey
+            ? t("reportView.issuedOn", { date: formatDateKey(card.issuedDateKey, { day: "numeric", month: "numeric", year: "numeric" }) })
             : t("reportView.notYetIssued")}
         </footer>
       </div>

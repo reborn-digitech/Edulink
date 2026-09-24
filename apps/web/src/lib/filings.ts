@@ -1,5 +1,6 @@
 import "server-only";
 import type { FilingIdentitySave, FilingsView, PupilRecordField } from "@edulink/contracts";
+import { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -81,7 +82,7 @@ const UDISE_SUBJECT_CODE: [RegExp, string][] = [
 /** CBSE subject codes for classes IX–X (Annexure H, 2025-26), by the name a timetable carries. */
 const CBSE_X_CODE: [RegExp, string][] = [
   [/^hindi/i, "002"], [/^english/i, "184"], [/^urdu/i, "003"], [/^punjabi/i, "004"], [/^bengali/i, "005"], [/^tamil/i, "006"], [/^telugu/i, "007"], [/^sindhi/i, "008"], [/^marathi/i, "009"], [/^gujarati/i, "010"], [/^malayalam/i, "012"], [/^odia|^oriya/i, "013"], [/^assamese/i, "014"], [/^kannada/i, "015"], [/^french/i, "018"], [/^german/i, "020"], [/^sanskrit/i, "122"],
-  [/^math/i, "041"], [/^science/i, "086"], [/social/i, "087"], [/computer app|^it$|information tech/i, "402"], [/artificial intel|^ai$/i, "417"], [/home sci/i, "064"], [/painting|^art/i, "049"],
+  [/basic.*math|math.*basic/i, "241"], [/^math/i, "041"], [/^science/i, "086"], [/social/i, "087"], [/computer app|^it$|information tech/i, "402"], [/artificial intel|^ai$/i, "417"], [/home sci/i, "064"], [/painting|^art/i, "049"],
 ];
 /** CBSE subject codes for classes XI–XII (Annexure K, 2025-26). */
 const CBSE_XII_CODE: [RegExp, string][] = [
@@ -116,24 +117,37 @@ function classCode(grade: string | null | undefined): string {
   if (["UKG", "SR KG", "SENIOR KG", "KG2", "KG"].includes(g)) return "PP1";
   return g;
 }
-/** The classes-taught code of §3.2.16 from the grades a teacher's classes span. */
+/** UDISE+ class codes a pupil's grade must resolve to for the sheet: PP3, PP2, PP1, 1–12. */
+const UDISE_CLASS_CODE = /^(PP[123]|[1-9]|1[0-2])$/;
+export const isUdiseClass = (code: string) => UDISE_CLASS_CODE.test(code);
+/**
+ * DCF §3.2.16 "Classes Taught", by the bands a teacher's classes span — the
+ * form's own list, keyed pre-primary/primary/upper/secondary/higher:
+ *   1 Primary only, 2 Upper primary only, 3 Primary and upper primary,
+ *   5 Secondary only, 6 Higher secondary only, 7 Upper primary and secondary,
+ *   8 Secondary and higher secondary, 10 Pre-primary only, 11 Pre-primary and primary.
+ * A combination the form does not list (a teacher of grades 3 and 9, say)
+ * has no code of its own; it files the code of the LOWEST band present
+ * rather than "3", which said upper primary of someone who teaches none.
+ */
+const BANDS = ["pre", "primary", "upper", "secondary", "higher"] as const;
+type Band = (typeof BANDS)[number];
+const CLASSES_TAUGHT_CODE: Record<string, string> = { primary: "1", upper: "2", "primary+upper": "3", secondary: "5", higher: "6", "upper+secondary": "7", "secondary+higher": "8", pre: "10", "pre+primary": "11" };
 function classesTaughtCode(grades: string[]): string {
-  const nums = grades.map((g) => Number(g)).filter((n) => Number.isInteger(n));
-  const pre = grades.some((g) => /^PP/.test(classCode(g)));
-  const primary = nums.some((n) => n >= 1 && n <= 5);
-  const upper = nums.some((n) => n >= 6 && n <= 8);
-  const secondary = nums.some((n) => n >= 9 && n <= 10);
-  const higher = nums.some((n) => n >= 11);
-  if (pre && !primary && !upper && !secondary && !higher) return "10";
-  if (pre && primary && !upper && !secondary && !higher) return "11";
-  if (primary && !upper && !secondary && !higher) return "1";
-  if (upper && !primary && !secondary && !higher) return "2";
-  if (primary && upper && !secondary && !higher) return "3";
-  if (secondary && !primary && !upper && !higher) return "5";
-  if (higher && !primary && !upper && !secondary) return "6";
-  if (upper && secondary && !primary && !higher) return "7";
-  if (secondary && higher && !primary && !upper) return "8";
-  return grades.length ? "3" : "";
+  const bands = new Set<Band>();
+  for (const g of grades) {
+    const code = classCode(g);
+    if (/^PP/.test(code)) bands.add("pre");
+    const n = Number(code);
+    if (!Number.isInteger(n)) continue;
+    if (n >= 1 && n <= 5) bands.add("primary");
+    else if (n >= 6 && n <= 8) bands.add("upper");
+    else if (n >= 9 && n <= 10) bands.add("secondary");
+    else if (n >= 11 && n <= 12) bands.add("higher");
+  }
+  const present = BANDS.filter((b) => bands.has(b));
+  if (present.length === 0) return "";
+  return CLASSES_TAUGHT_CODE[present.join("+")] ?? CLASSES_TAUGHT_CODE[present[0]!]!;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -154,7 +168,7 @@ export async function filingsView(ctx: ActiveContext): Promise<FilingsView> {
   const caller = office(ctx);
   const [school, pupils, staff, classes, year] = await Promise.all([
     identityOf(caller.schoolId),
-    db.membership.findMany({ where: { schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { pupilRecord: true } }),
+    db.membership.findMany({ where: { schoolId: caller.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { pupilRecord: true, user: { select: { birthdate: true } }, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { class: { select: { gradeLevel: true } } }, take: 1, orderBy: { enrolledAt: "desc" } } } }),
     db.membership.findMany({ where: { schoolId: caller.schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { staffRecord: true } }),
     db.class.findMany({ where: { schoolId: caller.schoolId, archivedAt: null }, select: { gradeLevel: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } }),
     db.academicYear.findFirst({ where: { schoolId: caller.schoolId, isCurrent: true }, select: { name: true } }),
@@ -163,7 +177,13 @@ export async function filingsView(ctx: ActiveContext): Promise<FilingsView> {
   let pupilsReady = 0;
   let withoutLocalName = 0;
   for (const p of pupils) {
-    const missing = missingFilingFields(p.pupilRecord);
+    // Ready is wider than the record's own list (what the family can fill):
+    // the sheet also needs the date of birth on the account, both parents'
+    // names, and a live class whose grade codes to a UDISE+ class.
+    const missing: string[] = missingFilingFields(p.pupilRecord);
+    if (!p.user.birthdate) missing.push("birthdate");
+    if (!p.pupilRecord?.fatherName?.trim() || !p.pupilRecord?.motherName?.trim()) missing.push("parents");
+    if (!p.enrollments[0] || !isUdiseClass(classCode(p.enrollments[0].class.gradeLevel))) missing.push("classCode");
     if (missing.length === 0) pupilsReady += 1;
     for (const f of missing) pupilMissing[f] = (pupilMissing[f] ?? 0) + 1;
     if (!p.pupilRecord?.nameLocal) withoutLocalName += 1;
@@ -222,7 +242,12 @@ async function loadPupils(schoolId: string, grade?: string) {
   });
 }
 
-/** The parents' names as UDISE+ wants them: the record's, else the linked guardian's where the relation says which. */
+/**
+ * The parents' names as UDISE+ wants them: the record's only. A linked
+ * guardian never stands in for a father or a mother, because
+ * Guardianship.relation says PARENT or GUARDIAN and not which parent; a
+ * non-parent guardian goes in the sheet's own guardian column.
+ */
 function parents(p: Pupil) {
   const g = p.guardianships[0];
   return {
@@ -234,21 +259,32 @@ function parents(p: Pupil) {
   };
 }
 
-/** The year's attendance and the annual card, per pupil, for the "previous year" columns. */
-async function lastYearFacts(schoolId: string, ids: string[]) {
-  const year = await db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { id: true, startDate: true } });
-  const previous = year ? await db.academicYear.findFirst({ where: { schoolId, endDate: { lt: year.startDate } }, orderBy: { endDate: "desc" }, select: { id: true, startDate: true, endDate: true } }) : null;
+/**
+ * The current year (which decides "was here last year"), and the previous
+ * year's attendance and annual card per pupil for the "previous year"
+ * columns. Attended days are DAYS — distinct register dates with a PRESENT
+ * or LATE mark — so a pupil on two registers the same day counts once;
+ * the portal caps the column at 250.
+ */
+async function yearFacts(schoolId: string, ids: string[]) {
+  const current = await db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { id: true, startDate: true } });
+  const previous = current ? await db.academicYear.findFirst({ where: { schoolId, endDate: { lt: current.startDate } }, orderBy: { endDate: "desc" }, select: { id: true, startDate: true, endDate: true } }) : null;
   const attended = new Map<string, number>();
   const percent = new Map<string, number>();
-  if (!previous) return { attended, percent };
+  if (!previous || ids.length === 0) return { current, attended, percent };
   const from = previous.startDate.toISOString().slice(0, 10), to = previous.endDate.toISOString().slice(0, 10);
-  const [records, cards] = await Promise.all([
-    db.attendanceRecord.groupBy({ by: ["studentMembershipId"], where: { schoolId, studentMembershipId: { in: ids }, status: { in: ["PRESENT", "LATE"] }, session: { dateKey: { gte: from, lte: to } } }, _count: { _all: true } }),
+  const [days, cards] = await Promise.all([
+    db.$queryRaw<{ studentMembershipId: string; days: number | bigint }[]>`
+      SELECT r."studentMembershipId", COUNT(DISTINCT s."dateKey") AS "days"
+      FROM "AttendanceRecord" r JOIN "AttendanceSession" s ON s."id" = r."sessionId"
+      WHERE r."schoolId" = ${schoolId} AND r."studentMembershipId" IN (${Prisma.join(ids)})
+        AND r."status" IN ('PRESENT', 'LATE') AND s."dateKey" >= ${from} AND s."dateKey" <= ${to}
+      GROUP BY r."studentMembershipId"`,
     db.reportCard.findMany({ where: { schoolId, studentMembershipId: { in: ids }, academicYearId: previous.id, termId: null, status: "PUBLISHED", overallPercentMilli: { not: null } }, select: { studentMembershipId: true, overallPercentMilli: true } }),
   ]);
-  for (const r of records) attended.set(r.studentMembershipId, Math.min(r._count._all, 250));
+  for (const r of days) attended.set(r.studentMembershipId, Math.min(Number(r.days), 250));
   for (const c of cards) percent.set(c.studentMembershipId, Math.round((c.overallPercentMilli ?? 0) / 1000));
-  return { attended, percent };
+  return { current, attended, percent };
 }
 
 /**
@@ -259,7 +295,7 @@ async function lastYearFacts(schoolId: string, ids: string[]) {
 export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport> {
   const caller = admin(ctx);
   const [pupils, school] = await Promise.all([loadPupils(caller.schoolId), identityOf(caller.schoolId)]);
-  const facts = await lastYearFacts(caller.schoolId, pupils.map((p) => p.id));
+  const facts = await yearFacts(caller.schoolId, pupils.map((p) => p.id));
   let roll = 0;
   let counter = 0;
   let lastClass = "";
@@ -274,7 +310,14 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
     roll = p?.enrollments[0]?.rollNumber ?? counter;
     const par = p ? parents(p) : { father: "", mother: "", guardian: "", phone: "", email: "" };
     const isCwsn = r?.cwsnType ? "1" : r ? "2" : "";
-    const sameSchool = p ? (year(p.joinedAt) < year(new Date()) ? "1" : "2") : "";
+    // "Was here last year" is the admission date (the record's, else the day
+    // they joined the roll here) falling before the current academic year's
+    // start — not the calendar year of the platform join, which filed every
+    // pupil of a school's first year on the app as a new admission and a
+    // June admission exported in January as an old hand. No current year,
+    // no answer.
+    const admitted = r?.admissionDate ?? p?.joinedAt ?? null;
+    const sameSchool = p && admitted && facts.current ? (admitted < facts.current.startDate ? "1" : "2") : "";
     return {
       "Grade/Class": grade,
       "SECTION": klass?.section ?? "A",
@@ -307,7 +350,8 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "ADMISSION DATE (DD-MM-YYYY)": ddmmyyyy(r?.admissionDate ?? p?.joinedAt),
       "STUDENT STREAM (HS only)": "",
       "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": sameSchool,
-      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && /^\d+$/.test(grade) ? String(Number(grade) - 1 || "PP") : "",
+      // Grade 1's previous class is the portal's last pre-primary code, PP3, not "PP".
+      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && /^\d+$/.test(grade) ? (Number(grade) > 1 ? String(Number(grade) - 1) : "PP3") : "",
       "ADMITTED/ENROLLED UNDER RTE/EWS": r?.ews ? "2" : r ? "0" : "",
       "APPEARED FOR EXAM IN PREVIOUS CLASS": p && sameSchool === "1" ? (facts.percent.has(p.id) ? "1" : "") : "",
       "RESULT FOR PREVIOUS EXAM": p && sameSchool === "1" && facts.percent.has(p.id) ? "1" : "",
@@ -338,11 +382,13 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
   return { filename: `udise-students-${school.udiseCode ?? "school"}-${today()}.csv`, csv, rows: rows.length };
 }
 
-const year = (d: Date) => d.getUTCFullYear();
 const today = () => new Date().toISOString().slice(0, 10);
 
-const UDISE_CLASSES = ["PP", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"] as const;
-const UDISE_CLASS_LABEL: Record<string, string> = { PP: "Pre-Primary", "1": "I", "2": "II", "3": "III", "4": "IV", "5": "V", "6": "VI", "7": "VII", "8": "VIII", "9": "IX", "10": "X", "11": "XI", "12": "XII" };
+/** The class columns, and a last one for a pupil whose grade is not a UDISE+ class or who has no live class, so the columns always sum to Total. */
+const UDISE_CLASSES = ["PP", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "Other"] as const;
+const UDISE_CLASS_LABEL: Record<string, string> = { PP: "Pre-Primary", "1": "I", "2": "II", "3": "III", "4": "IV", "5": "V", "6": "VI", "7": "VII", "8": "VIII", "9": "IX", "10": "X", "11": "XI", "12": "XII", Other: "Not in a listed class" };
+/** The category row is the sheet's own coded name, so VJ, NT and SBC file under OBC here as they do on the student sheet. */
+const CATEGORY_ROW: Record<string, string> = { "1": "GENERAL", "2": "SC", "3": "ST", "4": "OBC" };
 
 /**
  * The enrolment tables the portal derives (DCF §4.2, 4.4, 4.6): class by
@@ -363,15 +409,15 @@ export async function udiseEnrolmentExport(ctx: ActiveContext): Promise<CsvExpor
     const r = t.get(row) ?? blank();
     t.set(row, r);
     const key = gender === "M" ? "B" : gender === "F" ? "G" : "U";
-    const col = (UDISE_CLASSES as readonly string[]).includes(cls) ? cls : cls.startsWith("PP") ? "PP" : cls;
-    if (r[col]) r[col][key] += 1;
+    const col = (UDISE_CLASSES as readonly string[]).includes(cls) && cls !== "Other" ? cls : cls.startsWith("PP") ? "PP" : "Other";
+    r[col]![key] += 1;
     r.Total[key] += 1;
   };
   for (const p of pupils) {
     const r = p.pupilRecord;
     const cls = classCode(p.enrollments[0]?.class.gradeLevel);
     const g = r?.gender ?? null;
-    const cat = CATEGORY_CODE[upper(r?.category)] ? upper(r?.category) === "GEN" ? "GENERAL" : upper(r?.category) : "Not on record";
+    const cat = CATEGORY_ROW[CATEGORY_CODE[upper(r?.category)] ?? ""] ?? "Not on record";
     bump("4.2 Enrolment by social category", cat, cls, g);
     bump("4.2 Enrolment by social category", "Total", cls, g);
     const minority = MINORITY_CODE[upper(r?.religion)];
@@ -407,7 +453,7 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
     identityOf(caller.schoolId),
     db.membership.findMany({
       where: { schoolId: caller.schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
-      select: { id: true, role: true, subjects: true, joinedAt: true, user: { select: { name: true, birthdate: true, email: true, phone: true } }, staffRecord: true, classTeachers: { select: { class: { select: { gradeLevel: true } } } }, timetableSlots: { where: { class: { archivedAt: null } }, select: { subject: true, class: { select: { gradeLevel: true } } } } },
+      select: { id: true, role: true, subjects: true, joinedAt: true, user: { select: { name: true, birthdate: true, email: true, phone: true } }, staffRecord: true, classTeachers: { where: { class: { archivedAt: null } }, select: { class: { select: { gradeLevel: true } } } }, timetableSlots: { where: { class: { archivedAt: null } }, select: { subject: true, class: { select: { gradeLevel: true } } } } },
       orderBy: [{ role: "desc" }, { user: { name: "asc" } }],
     }),
   ]);
@@ -420,6 +466,10 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
     const taught = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([name]) => name);
     const profile = s ? readJsonArray<string>(s.subjects).map((x) => x.trim()).filter(Boolean) : [];
     const subjects = profile.length ? profile : taught;
+    // 3.2.18 is a subject CODE, never the title: the designation with its rank word
+    // stripped ("TGT Mathematics" → Mathematics), matched on the same table as
+    // 3.2.19; else subject 1's code; else blank.
+    const appointedFor = codeFor(UDISE_SUBJECT_CODE, (r?.designation ?? "").replace(/^(PGT|TGT|PRT|NTT|PET|HM)\b[\s:./-]*/i, "").replace(/\bteacher\b/i, "").trim()) || codeFor(UDISE_SUBJECT_CODE, subjects[0] ?? "");
     const grades = s ? [...new Set([...s.classTeachers.map((c) => c.class.gradeLevel), ...s.timetableSlots.map((t) => t.class.gradeLevel)].filter((g): g is string => Boolean(g)))] : [];
     return {
       "UDISE Code of School": school.udiseCode ?? "",
@@ -428,7 +478,7 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
       "3.2.2 Gender (Male-1, Female-2, Transgender-3)": GENDER_CODE[r?.gender ?? ""] ?? "",
       "3.2.3 Date of Birth (DD/MM/YYYY)": ddmmyyyy(r?.birthdate ?? s?.user.birthdate, "/"),
       "3.2.4 Teacher Code of State": r?.staffNumber ?? "",
-      "3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[r?.socialCategory ?? ""] ?? "",
+      "3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[upper(r?.socialCategory)] ?? "",
       "3.2.6(a) Highest Academic Qualification": r?.academicQualification ?? "",
       "3.2.6(b) Trade/Degree": r?.qualification ?? "",
       "3.2.7(a) Highest Professional Qualification": r?.professionalQualification ?? "",
@@ -440,7 +490,7 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
       "3.2.14 Date of Joining in Service (DD/MM/YYYY)": ddmmyyyy(r?.serviceJoinedOn ?? r?.joinedOn ?? null, "/"),
       "3.2.15 Date of Joining in Present School (DD/MM/YYYY)": ddmmyyyy(r?.joinedOn ?? s?.joinedAt, "/"),
       "3.2.16 Classes Taught": classesTaughtCode(grades),
-      "3.2.18 Appointed for Subject": r?.designation ?? "",
+      "3.2.18 Appointed for Subject": appointedFor,
       "3.2.19(a) Main Subject Taught 1": codeFor(UDISE_SUBJECT_CODE, subjects[0] ?? ""),
       "3.2.19(a) Subject 1 name": subjects[0] ?? "",
       "3.2.19(b) Main Subject Taught 2": codeFor(UDISE_SUBJECT_CODE, subjects[1] ?? ""),
@@ -475,7 +525,11 @@ export async function cbseCandidatesExport(ctx: ActiveContext, grade: string): P
   const [pupils, school, subjects] = await Promise.all([loadPupils(caller.schoolId, grade), identityOf(caller.schoolId), gradeSubjects(caller.schoolId, grade)]);
   const senior = Number(grade) >= 11;
   const table = senior ? CBSE_XII_CODE : CBSE_X_CODE;
-  const coded = subjects.map((s) => ({ name: s, code: codeFor(table, s) })).filter((s) => s.code).slice(0, 7);
+  // The grade's list, once per code (a timetable's "Maths" and "Mathematics"
+  // are one paper), and every candidate gets the whole of it: a pupil's own
+  // subject choice is not held anywhere, so the office strikes out on the sheet.
+  const seen = new Set<string>();
+  const coded = subjects.map((s) => ({ name: s, code: codeFor(table, s) })).filter((s) => s.code && !seen.has(s.code) && Boolean(seen.add(s.code))).slice(0, 7);
   const rowOf = (p: Pupil | null) => {
     const r = p?.pupilRecord ?? null;
     const par = p ? parents(p) : { father: "", mother: "", guardian: "", phone: "", email: "" };
@@ -512,7 +566,8 @@ function marathiNameParts(fullName: string, father: string): { surname: string; 
   const parts = fullName.trim().split(/\s+/);
   const first = parts[0] ?? "";
   const surname = parts.length > 1 ? parts[parts.length - 1]! : "";
-  const middle = father.trim().split(/\s+/)[0] ?? (parts.length > 2 ? parts[1]! : "");
+  // "".split()[0] is "", not undefined, so the fallback to the pupil's own middle name needs a blank test.
+  const middle = (father.trim().split(/\s+/)[0] || undefined) ?? (parts.length > 2 ? parts[1]! : "");
   return { surname, first, middle };
 }
 
@@ -526,10 +581,12 @@ function marathiNameParts(fullName: string, father: string): { surname: string; 
 export async function msbshseCandidatesExport(ctx: ActiveContext, grade: string): Promise<CsvExport> {
   const caller = admin(ctx);
   const [pupils, school, subjects] = await Promise.all([loadPupils(caller.schoolId, grade), identityOf(caller.schoolId), gradeSubjects(caller.schoolId, grade)]);
+  // "Marathi Medium" or "Semi-English" names the language inside a phrase: contains, not equals.
   const medium = upper(school.medium);
+  const isMedium = (language: string) => medium.includes(upper(language));
   const languages = subjects.filter((s) => SSC_FIRST_LANGUAGE[upper(s)] || SSC_OTHER_LANGUAGE[upper(s)]);
   const codes: { name: string; code: string }[] = [];
-  for (const l of languages) codes.push({ name: l, code: (upper(l) === medium ? SSC_FIRST_LANGUAGE[upper(l)] : SSC_OTHER_LANGUAGE[upper(l)]) ?? "" });
+  for (const l of languages) codes.push({ name: l, code: (isMedium(l) ? SSC_FIRST_LANGUAGE[upper(l)] : SSC_OTHER_LANGUAGE[upper(l)]) ?? "" });
   for (const s of subjects) if (!languages.includes(s) && codeFor(SSC_CORE_CODE, s)) codes.push({ name: s, code: codeFor(SSC_CORE_CODE, s) });
   const rowOf = (p: Pupil | null) => {
     const r = p?.pupilRecord ?? null;

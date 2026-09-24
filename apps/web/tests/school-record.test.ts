@@ -14,6 +14,7 @@ import {
   undoDeparture,
 } from "@/lib/school-record";
 import type { ActiveContext } from "@/lib/session";
+import { dateKeyInZone } from "@/lib/dates";
 
 /**
  * A pupil leaving a school, and the certificate that goes with them.
@@ -718,5 +719,89 @@ describe("a last day in the future schedules, and the job executes it the mornin
       await db.school.delete({ where: { id: school.id } });
       await db.user.delete({ where: { id: pupil.id } });
     }
+  });
+});
+
+describe("the leaving day, the whole stay and the serial, in the school's own zone and year", () => {
+  const suffix = Math.random().toString(16).slice(2, 10);
+  const TZ = "Asia/Kolkata";
+  let zSchoolId = "";
+  let zAdmin: ActiveContext;
+  let zClassId = "";
+  let zTeacherM = "";
+  const userIds: string[] = [];
+
+  async function zPupil(name: string, joinedAt: Date): Promise<string> {
+    const u = await db.user.create({ data: { email: `${name.toLowerCase().replace(/ /g, "-")}-${suffix}@zz-zone.test`, name, preferredName: "Preferred", prefs: "{}" } });
+    userIds.push(u.id);
+    const m = await db.membership.create({ data: { userId: u.id, schoolId: zSchoolId, role: "STUDENT", status: "ACTIVE", joinedAt } });
+    await db.enrollment.create({ data: { classId: zClassId, schoolId: zSchoolId, studentMembershipId: m.id, status: "ACTIVE" } });
+    return m.id;
+  }
+
+  beforeAll(async () => {
+    zSchoolId = (await db.school.create({ data: { name: "ZZ Zone School", slug: `zz-zone-${suffix}`, code: `ZZN${suffix.slice(0, 5).toUpperCase()}`, contactEmail: `office-${suffix}@zz-zone.test`, timezone: TZ } })).id;
+    await db.academicYear.create({ data: { schoolId: zSchoolId, name: "2025–26", startDate: new Date("2025-06-01T00:00:00Z"), endDate: new Date("2026-04-30T00:00:00Z"), isCurrent: false } });
+    const adminUser = await db.user.create({ data: { email: `admin-${suffix}@zz-zone.test`, name: "ZZ Zone Admin", prefs: "{}" } });
+    userIds.push(adminUser.id);
+    const adminM = await db.membership.create({ data: { userId: adminUser.id, schoolId: zSchoolId, role: "ADMIN", status: "ACTIVE" } });
+    zAdmin = ctx({ userId: adminUser.id, membershipId: adminM.id, schoolId: zSchoolId, role: "ADMIN" });
+    const teacherUser = await db.user.create({ data: { email: `teacher-${suffix}@zz-zone.test`, name: "ZZ Zone Teacher", prefs: "{}" } });
+    userIds.push(teacherUser.id);
+    zTeacherM = (await db.membership.create({ data: { userId: teacherUser.id, schoolId: zSchoolId, role: "TEACHER", status: "ACTIVE" } })).id;
+    zClassId = (await db.class.create({ data: { schoolId: zSchoolId, name: "ZZ Zone 5", gradeLevel: "5", joinCode: `ZZZ-ZONE-${suffix.slice(0, 4)}` } })).id;
+  });
+
+  afterAll(async () => {
+    await db.school.deleteMany({ where: { id: zSchoolId } });
+    await db.user.deleteMany({ where: { id: { in: userIds } } });
+  });
+
+  it("⚠ a departure at 21:00 UTC is the next day in Kolkata, marks after the backdated leaving day are left out, the serial carries the academic year's name, the percent is whole and the legal name is printed", async () => {
+    const pupilM = await zPupil("ZZ Zone Leaver", new Date("2025-06-01T00:00:00Z"));
+    const marks = [["2026-03-09", "PRESENT"], ["2026-03-10", "LATE"], ["2026-03-11", "ABSENT"], ["2026-03-12", "PRESENT"], ["2026-03-13", "PRESENT"]] as const;
+    for (const [dateKey, status] of marks) {
+      const session = await db.attendanceSession.create({ data: { schoolId: zSchoolId, classId: zClassId, dateKey, takenByMembershipId: zTeacherM } });
+      await db.attendanceRecord.create({ data: { schoolId: zSchoolId, sessionId: session.id, studentMembershipId: pupilM, status, clientId: `zz-zone-${dateKey}-${suffix}` } });
+    }
+    // 21:00 UTC on the 10th is 02:30 on the 11th in Kolkata: the leaving day is the 11th.
+    const result = await recordDeparture(zAdmin, pupilM, { reason: "TRANSFERRED", destination: "Elsewhere", leftOn: new Date("2026-03-10T21:00:00Z") });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const tc = await certificateFor(zAdmin, result.recordId);
+    expect(tc).not.toBeNull();
+    expect(tc!.school.timezone).toBe(TZ);
+    expect(dateKeyInZone(tc!.leftAt, tc!.school.timezone)).toBe("2026-03-11");
+    // The 9th, 10th and 11th count; the 12th and 13th, marked after the backdated leaving day, do not.
+    expect(tc!.attendanceMarked).toBe(3);
+    expect(tc!.attendancePresent).toBe(2);
+    expect(tc!.attendancePercent).toBe(67);
+    expect(tc!.serial).toBe("TC/2025–26/0001");
+    expect(tc!.studentName).toBe("ZZ Zone Leaver");
+    // The list view rounds the same way.
+    const listed = await recordsForStudentMembership(zAdmin, pupilM);
+    expect(listed[0]?.attendancePercent).toBe(67);
+    // The enrolment closed on the leaving instant.
+    const enrolment = await db.enrollment.findFirstOrThrow({ where: { studentMembershipId: pupilM } });
+    expect(enrolment.status).toBe("REMOVED");
+    expect(enrolment.removedAt?.toISOString()).toBe("2026-03-10T21:00:00.000Z");
+  });
+
+  it("numbers rows from before the document existed in the order the pupils left, after the highest issued, whichever the office opens first", async () => {
+    const feb = await zPupil("ZZ Zone February", new Date("2025-06-01T00:00:00Z"));
+    const jan = await zPupil("ZZ Zone January", new Date("2025-06-01T00:00:00Z"));
+    const legacy = async (membershipId: string, leftAt: Date) => {
+      const m = await db.membership.update({ where: { id: membershipId }, data: { leftAt }, select: { userId: true } });
+      return (await db.schoolRecord.create({ data: { schoolId: zSchoolId, studentUserId: m.userId, studentMembershipId: membershipId, schoolName: "ZZ Zone School", joinedAt: new Date("2025-06-01T00:00:00Z"), leftAt, reason: "LEFT" } })).id;
+    };
+    const febId = await legacy(feb, new Date("2026-02-01T05:00:00Z"));
+    const janId = await legacy(jan, new Date("2026-01-15T05:00:00Z"));
+    // The office opens February's first: it is still the third of the year, because January's left earlier.
+    expect((await certificateFor(zAdmin, febId))!.serial).toBe("TC/2025–26/0003");
+    expect((await certificateFor(zAdmin, janId))!.serial).toBe("TC/2025–26/0002");
+    // A leaving day no year covers falls back to its calendar year in the school's zone.
+    const stray = await zPupil("ZZ Zone Stray", new Date("2025-06-01T00:00:00Z"));
+    const strayId = await legacy(stray, new Date("2026-05-15T05:00:00Z"));
+    expect((await certificateFor(zAdmin, strayId))!.serial).toBe("TC/2026/0001");
   });
 });

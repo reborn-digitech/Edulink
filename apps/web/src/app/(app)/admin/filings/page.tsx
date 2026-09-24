@@ -29,6 +29,9 @@ const STAFF_FIELD_KEY: Record<string, TranslationKey> = {
   serviceJoinedOn: "staff.serviceJoinedOn",
 };
 
+/** The readiness counts beyond the record's own fields; anything else is a record field named by pupilRecord.<field>. */
+const PUPIL_FIELD_KEY: Record<string, TranslationKey> = { birthdate: "pupilRecord.dob", parents: "filings.missingParents", classCode: "filings.missingClassCode" };
+
 /** The five sheets: the three UDISE+ ones need nothing; the two board ones are cut for a grade. */
 const SHEETS: { kind: FilingKind; titleKey: TranslationKey; bodyKey: TranslationKey; byGrade: boolean }[] = [
   { kind: "udise-students", titleKey: "filings.udiseStudents", bodyKey: "filings.udiseStudentsBody", byGrade: false },
@@ -98,7 +101,7 @@ export default async function FilingsPage() {
                 <ul className="mt-1 divide-y divide-border text-sm" data-testid="filings-pupils-missing">
                   {pupilMissing.map(([field, count]) => (
                     <li key={field} className="flex items-center justify-between gap-3 py-1.5">
-                      <span className="text-fg">{t(`pupilRecord.${field}` as TranslationKey)}</span>
+                      <span className="text-fg">{t(PUPIL_FIELD_KEY[field] ?? (`pupilRecord.${field}` as TranslationKey))}</span>
                       <span className="tabular-nums font-semibold text-fg">{count}</span>
                     </li>
                   ))}

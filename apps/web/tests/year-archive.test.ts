@@ -172,6 +172,7 @@ beforeAll(async () => {
       classId,
       studentMembershipId: pupilM,
       academicYearId: closedYearId,
+      createdByMembershipId: teacherM,
       title: "ZZ Term 2 Card",
       status: "PUBLISHED",
       publishedAt: new Date("2025-03-01T00:00:00.000Z"),
@@ -312,6 +313,37 @@ describe("the pupil's year", () => {
     expect(data.marks.averagePercent).toBe(80);
   });
 
+  /**
+   * ⚠ THE YEAR ENDS AT MIDNIGHT ON THE SCHOOL'S CLOCK, not at 00:00 UTC of
+   * its last day. The window used to be `≤ endDate`, which for this Kolkata
+   * school was 05:30 on 30 April: a mark entered that afternoon fell into no
+   * year at all. Now 10:00Z on the last day (15:30 IST) is in, and 19:00Z
+   * (00:30 IST on 1 May) is out.
+   */
+  it("⚠ a mark graded on the afternoon of the year's last day is in that year", async () => {
+    const mk = async (title: string, gradedAt: Date) => {
+      const a = await db.assignment.create({
+        data: { schoolId, classId, authorMembershipId: teacherM, title, pointsMilli: 10_000, publishedAt: gradedAt },
+        select: { id: true },
+      });
+      await db.grade.create({
+        data: { schoolId, assignmentId: a.id, studentMembershipId: pupilM, scoreMilli: 10_000, gradedAt },
+      });
+      return a.id;
+    };
+    const lastAfternoon = await mk("ZZ Last Afternoon", new Date("2025-04-30T10:00:00.000Z"));
+    const nextMorning = await mk("ZZ Next Morning", new Date("2025-04-30T19:00:00.000Z"));
+    const firstMorning = await mk("ZZ First Morning", new Date("2024-05-31T19:00:00.000Z")); // 00:30 IST on 1 June: in
+    const beforeStart = await mk("ZZ Night Before", new Date("2024-05-31T18:00:00.000Z")); // 23:30 IST on 31 May: out
+    try {
+      const data = await pupilYearArchive(pupilCtx(), pupilM, closedYearId);
+      expect(data.marks.graded).toBe(3); // the fixture's 8/10, the last afternoon and the first morning
+      expect(data.marks.averagePercent).toBe(93);
+    } finally {
+      await db.assignment.deleteMany({ where: { id: { in: [lastAfternoon, nextMorning, firstMorning, beforeStart] } } });
+    }
+  });
+
   it("a guardian reads the same through their guardianship", async () => {
     const data = await pupilYearArchive(ctx({ userId: parentUserId, role: "PARENT" }), pupilM, closedYearId);
     expect(data.reportCards).toHaveLength(1);
@@ -349,6 +381,63 @@ describe("the teacher's year", () => {
     });
   });
 
+  /**
+   * ⚠ THE TEACHER'S OWN HAND. A register somebody else took in the same class
+   * is not one this teacher took, a card the lead wrote is not the
+   * co-teacher's, and a class the teacher no longer holds still shows the work
+   * they did in it that year.
+   */
+  it("⚠ counts only the registers this teacher took, the cards they wrote, and the classes of that year", async () => {
+    const other = await db.user.create({
+      data: { name: "ZZ Other Teacher", email: `zz-archive-other-${STAMP}@test.invalid`, prefs: "{}" },
+      select: { id: true },
+    });
+    const otherM = await db.membership.create({
+      data: { userId: other.id, schoolId, role: "TEACHER", status: "ACTIVE", joinedAt: Y_START },
+      select: { id: true },
+    });
+    const oldClass = await db.class.create({
+      data: { schoolId, name: "ZZ Class 6 (handed on)", joinCode: `ZAO${String(STAMP).slice(-6)}` },
+      select: { id: true },
+    });
+    await db.classTeacher.create({ data: { classId: oldClass.id, schoolId, teacherMembershipId: otherM.id, role: "LEAD" } });
+    // In the fixture class: a register the OTHER teacher took, one nobody signed, a card the other wrote.
+    await db.attendanceSession.create({ data: { schoolId, classId, dateKey: "2024-09-03", takenByMembershipId: otherM.id } });
+    await db.attendanceSession.create({ data: { schoolId, classId, dateKey: "2024-09-04" } });
+    await db.reportCard.create({
+      data: {
+        schoolId, classId, studentMembershipId: pupilM, academicYearId: closedYearId, createdByMembershipId: otherM.id,
+        title: "ZZ Other's Card", status: "PUBLISHED", publishedAt: new Date("2025-03-02T00:00:00.000Z"),
+        fromDateKey: "2024-11-01", toDateKey: "2025-03-01",
+      },
+    });
+    // In a class this teacher no longer holds: one register they took that year.
+    await db.attendanceSession.create({ data: { schoolId, classId: oldClass.id, dateKey: "2024-08-12", takenByMembershipId: teacherM } });
+    try {
+      const data = await teacherYearArchive(
+        ctx({ userId: teacherUserId, membershipId: teacherM, schoolId, role: "TEACHER" }),
+        closedYearId,
+      );
+      expect(data.classes.map((c) => [c.className, c.registersTaken, c.assignmentsSet, c.reportCardsPublished])).toEqual([
+        ["ZZ Class 6 (handed on)", 1, 0, 0],
+        ["ZZ Class 7", 2, 1, 1],
+      ]);
+      const theirs = await teacherYearArchive(
+        ctx({ userId: other.id, membershipId: otherM.id, schoolId, role: "TEACHER" }),
+        closedYearId,
+      );
+      expect(theirs.classes).toEqual([
+        { classId, className: "ZZ Class 7", registersTaken: 1, assignmentsSet: 0, reportCardsPublished: 1 },
+      ]);
+    } finally {
+      await db.attendanceSession.deleteMany({ where: { schoolId, dateKey: { in: ["2024-09-03", "2024-09-04", "2024-08-12"] } } });
+      await db.reportCard.deleteMany({ where: { schoolId, title: "ZZ Other's Card" } });
+      await db.class.deleteMany({ where: { id: oldClass.id } });
+      await db.membership.deleteMany({ where: { id: otherM.id } });
+      await db.user.deleteMany({ where: { id: other.id } });
+    }
+  });
+
   it("⚠ refuses a pupil", async () => {
     await expect(
       teacherYearArchive(ctx({ userId: pupilUserId, membershipId: pupilM, schoolId, role: "STUDENT" }), closedYearId),
@@ -366,6 +455,54 @@ describe("the school's year", () => {
     expect(data.attendance).toEqual({ marked: 2, present: 1 });
     expect(data.reportCardsPublished).toBe(1);
     expect(data.badgesArchived).toBe(1);
+    expect(data.leavers).toBe(0);
+  });
+
+  /**
+   * ⚠ WHO WAS ON THE ROLL, AND WHO LEFT.
+   * The roll is by the admission date the office recorded — a school that
+   * came onto the platform in the year's second term has pupils whose
+   * platform join date is after the year began — a suspended membership is
+   * not on it, and a leaver is counted from the membership's own leaving
+   * date, because the departure record is what a readmission deletes.
+   */
+  it("⚠ the roll follows the admission date and skips the suspended; leavers survive a readmission", async () => {
+    const mk = async (tag: string, data: { joinedAt: Date; leftAt?: Date; status?: string; admissionDate?: Date }) => {
+      const user = await db.user.create({
+        data: { name: `ZZ ${tag}`, email: `zz-archive-${tag.toLowerCase().replace(/\s+/g, "-")}-${STAMP}@test.invalid`, prefs: "{}" },
+        select: { id: true },
+      });
+      const m = await db.membership.create({
+        data: { userId: user.id, schoolId, role: "STUDENT", status: data.status ?? "ACTIVE", joinedAt: data.joinedAt, leftAt: data.leftAt ?? null },
+        select: { id: true },
+      });
+      if (data.admissionDate) {
+        await db.pupilRecord.create({ data: { schoolId, studentMembershipId: m.id, admissionDate: data.admissionDate } });
+      }
+      return { userId: user.id, membershipId: m.id };
+    };
+    const made = await Promise.all([
+      // Suspended: not on the roll.
+      mk("Suspended", { joinedAt: Y_START, status: "SUSPENDED" }),
+      // Admitted in 2023 by the record; the platform only saw them in 2025-06.
+      mk("Early Admit", { joinedAt: new Date("2025-06-15T00:00:00.000Z"), admissionDate: new Date("2023-06-01T00:00:00.000Z") }),
+      // Left at 20:30 IST on the last day (15:00Z): a leaver of this year, no departure record.
+      mk("Leaver", { joinedAt: Y_START, leftAt: new Date("2025-04-30T15:00:00.000Z") }),
+      // Left after the year: on this year's roll, not a leaver of it.
+      mk("Later Leaver", { joinedAt: Y_START, leftAt: new Date("2025-04-30T19:00:00.000Z") }),
+      // Joined after the year on the platform with an admission date after it too: out.
+      mk("Late Admit", { joinedAt: new Date("2025-06-15T00:00:00.000Z"), admissionDate: new Date("2025-05-01T00:00:00.000Z") }),
+    ]);
+    expect(await db.schoolRecord.count({ where: { schoolId } })).toBe(0);
+    try {
+      const data = await schoolYearArchive(ctx({ userId: adminUserId, schoolId, role: "ADMIN" }), closedYearId);
+      // The fixture pupil, the early admit, the leaver and the later leaver.
+      expect(data.pupilsOnRoll).toBe(4);
+      expect(data.leavers).toBe(1);
+    } finally {
+      await db.membership.deleteMany({ where: { id: { in: made.map((m) => m.membershipId) } } });
+      await db.user.deleteMany({ where: { id: { in: made.map((m) => m.userId) } } });
+    }
   });
 
   it("⚠ refuses a teacher", async () => {

@@ -1,4 +1,5 @@
 import "server-only";
+import { PUPIL_CATEGORIES } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -65,7 +66,8 @@ export type StaffRecordInput = {
 
 /** The portal's own codes, so a filing needs no translation: UDISE+ DCF 2024-25 §3.2. */
 export const STAFF_GENDERS = ["M", "F", "T"] as const;
-export const STAFF_SOCIAL_CATEGORIES = ["GENERAL", "SC", "ST", "OBC"] as const;
+/** The same list the pupil record uses; VJ, NT and SBC file with UDISE+ as OBC (code 4), as on the student sheet. */
+export const STAFF_SOCIAL_CATEGORIES = PUPIL_CATEGORIES;
 /** 3.2.6(a): 1 below secondary … 8 post-doctoral. */
 export const ACADEMIC_QUALIFICATIONS = ["1", "2", "3", "4", "5", "6", "7", "8"] as const;
 /** 3.2.7(a): 1 basic teacher training … 12 B.Ed (Nursery); 9 is not a code. */
@@ -111,10 +113,13 @@ function view(row: { membershipId: string; staffNumber: string | null; designati
  * a member of staff for their own. A pupil, a parent, or another school gets
  * null — the same null a membership that does not exist gets.
  */
-/** A coded field: one of the portal's values, or nothing — never a free string. */
-function pick<T extends string>(value: string | null | undefined, allowed: readonly T[]): T | null {
+/** A coded field: one of the portal's values, or null for blank. An answer off the list sets `bad`, and the save is refused — never stored as null and reported saved. */
+function pick<T extends string>(value: string | null | undefined, allowed: readonly T[], bad: { hit: boolean }): T | null {
   const v = value?.trim().toUpperCase();
-  return v && (allowed as readonly string[]).includes(v) ? (v as T) : null;
+  if (!v) return null;
+  if ((allowed as readonly string[]).includes(v)) return v as T;
+  bad.hit = true;
+  return null;
 }
 
 export async function staffRecordFor(ctx: ActiveContext, membershipId: string): Promise<StaffRecordView | null> {
@@ -159,7 +164,17 @@ export async function setStaffRecord(
   const days = input.leaveDaysPerYear;
   if (days != null && (!Number.isInteger(days) || days < 0 || days > 365)) return { ok: false, errorKey: "staff.badLeaveDays" };
 
+  const bad = { hit: false };
+  const coded = {
+    gender: pick(input.gender, STAFF_GENDERS, bad),
+    socialCategory: pick(input.socialCategory, STAFF_SOCIAL_CATEGORIES, bad),
+    academicQualification: pick(input.academicQualification, ACADEMIC_QUALIFICATIONS, bad),
+    professionalQualification: pick(input.professionalQualification, PROFESSIONAL_QUALIFICATIONS, bad),
+    appointmentType: pick(input.appointmentType, APPOINTMENT_TYPES, bad),
+  };
+  if (bad.hit) return { ok: false, errorKey: "staff.badCode" };
   const data = {
+    ...coded,
     staffNumber: trim(input.staffNumber, 40),
     designation: trim(input.designation, 80),
     qualification: trim(input.qualification, 200),
@@ -167,11 +182,6 @@ export async function setStaffRecord(
     birthdate: input.birthdateKey ? new Date(`${input.birthdateKey}T00:00:00.000Z`) : null,
     serviceJoinedOn: input.serviceJoinedOnKey ? new Date(`${input.serviceJoinedOnKey}T00:00:00.000Z`) : null,
     leaveDaysPerYear: days ?? null,
-    gender: pick(input.gender, STAFF_GENDERS),
-    socialCategory: pick(input.socialCategory, STAFF_SOCIAL_CATEGORIES),
-    academicQualification: pick(input.academicQualification, ACADEMIC_QUALIFICATIONS),
-    professionalQualification: pick(input.professionalQualification, PROFESSIONAL_QUALIFICATIONS),
-    appointmentType: pick(input.appointmentType, APPOINTMENT_TYPES),
   };
   await db.staffRecord.upsert({
     where: { membershipId: member.id },

@@ -295,7 +295,30 @@ suite, 47 checks and 0 FAIL.
   no guardian and so no phone on the UDISE+ sheet; 35 of 47 without a name in the school's script; every
   teacher without a phone; ZZ Northgate with 42 pupils filing "Not on record" for category.
 
-### Derived-data gaps still in the reporting code (ranked)
+### Derived-data gaps still in the reporting code (ranked) — all 21 fixed 2026-09-24
+
+Every gap below was closed the same day; the list stays as the record of what each was. In short: the UDISE+
+previous-year columns now key on the admission date and the academic year, attended days are distinct days,
+the enrolment tables file VJ/NT/SBC as OBC and carry an "Other" class column so every table sums to Total,
+grade 1's previous class is PP3, the Maharashtra middle-name fallback runs, the medium matches by containing
+the language, classes-taught composes the DCF's nine codes and ignores archived classes, the designation
+column prints a subject code or nothing, Basic Maths is 241, a staff category off the list is refused and
+the list is the pupil's, readiness needs the date of birth, both parents and a coded class; the register
+CSV and month grid use the month's own roll and an empty day is blank; absence flags read only the roll,
+one day once, with EXCUSED neither present nor absent; outstanding is Σ max(0, net − paid) per demand
+everywhere, leavers stay on the dues list flagged `left`, a carried demand's paid money stays in its year,
+reminders and the overdue text take only the current year's pupils on the roll, and the fee month and range
+run in the school's zone; an "exams" card's rows sum to its overall, every percent is rounded once and the
+letter read from it, the card and the certificate print the legal name, the class label is frozen at
+publish, and "issued on" is the school's day on both papers; every year-archive window is the school's day,
+the roll excludes suspended pupils and keys on the admission date, leavers come from the membership, and a
+teacher's archive counts only what they took, set and wrote; progress and the report's overall follow their
+window; the staff CSV prints open days only and keeps a mid-month leaver, working days stop at today with
+the month's total beside them; the certificate's attendance is the whole stay, one rounding in both views,
+marks after a backdated leaving date are excluded, the TC serial carries the academic year, legacy rows are
+numbered by leaving date; and identifier columns stay text in the workbook. The audit suites were updated
+to the new rules and pass 47 of 47.
+
 
 Found by a second read of every report library. File and line as of this commit; none is caught by the
 suite because each needs a row state the fixtures do not hold — the suite's next additions.

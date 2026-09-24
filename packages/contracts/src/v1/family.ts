@@ -563,6 +563,8 @@ export const familyReportCardSchema = z.object({
   overallPercent: z.number().nullable(),
   gradingMethod: z.string(),
   publishedAt: iso.nullable(),
+  /** The publish day in the school's zone — what the paper prints as "issued on"; null until published. */
+  issuedDateKey: dateKey.nullable().default(null),
   authorName: z.string().nullable(),
   items: z.array(z.object({ title: z.string(), category: z.string().nullable(), scoreMilli: z.number().int().nullable(), pointsMilli: z.number().int().nullable(), subject: z.string().nullable().optional(), letter: z.string().nullable().optional() })),
   school: z.object({

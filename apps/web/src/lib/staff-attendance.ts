@@ -6,7 +6,7 @@ import { audit } from "./audit";
 import { approvedLeaveBetween } from "./leave";
 import { closedOn } from "./holidays";
 import { STAFF_ROLES } from "./staff-records";
-import { isDateKey, isTeachingDay, parseTeachingDays, todayKey } from "./dates";
+import { dateKeyInZone, isDateKey, isTeachingDay, parseTeachingDays, todayKey, zonedStartOfDay } from "./dates";
 import { MONTH_KEY, shiftMonth } from "./attendance-history";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -21,8 +21,10 @@ import type { Role } from "./constants";
  * without anyone marking it; the office may still record something else
  * for that day (a teacher who came in after all), and the row wins over the
  * leave for the counts while the leave stays visible. The month adds up
- * per person over the working days: not Sundays, not closures. Every mark
- * is audited under the school with who and how many, never a name.
+ * per person over the working days: not Sundays, not closures, and only
+ * up to today — or the person's last day, for someone who left during the
+ * month, who keeps their row for it. Every mark is audited under the school
+ * with who and how many, never a name.
  */
 
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
@@ -52,10 +54,11 @@ async function schoolOf(schoolId: string) {
   return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true, staffCheckInMinute: true, staffLateGraceMinutes: true, teachingDays: true } });
 }
 
-async function staffMembers(schoolId: string) {
+/** The staff on the roll; with `since`, also those who left on or after that instant, so a month keeps the row of someone who left during it. */
+async function staffMembers(schoolId: string, since?: Date) {
   return db.membership.findMany({
-    where: { schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
-    select: { id: true, role: true, user: { select: { name: true, preferredName: true, avatarKey: true } } },
+    where: { schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", ...(since ? { OR: [{ leftAt: null }, { leftAt: { gte: since } }] } : { leftAt: null }) },
+    select: { id: true, role: true, leftAt: true, user: { select: { name: true, preferredName: true, avatarKey: true } } },
     orderBy: [{ role: "asc" }, { user: { name: "asc" } }],
   });
 }
@@ -178,14 +181,20 @@ export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttend
   return { status, checkedInAt: now, late };
 }
 
-type Tally = { present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number; percent: number | null };
+type Tally = { present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number; workingDaysInMonth: number; percent: number | null };
 
+/**
+ * The counts over the open teaching days up to `upTo` (today, or the
+ * person's last day), so present + late + halfDay + absent + onLeave +
+ * unmarked = workingDays; `workingDaysInMonth` is the whole month's count.
+ */
 function tally(days: string[], closedDays: Set<string>, rows: Map<string, StaffAttendanceStatus>, leave: (d: string) => boolean, upTo: string, week: readonly number[]): Tally {
-  const t = { present: 0, late: 0, halfDay: 0, absent: 0, onLeave: 0, unmarked: 0, workingDays: 0 };
+  const t = { present: 0, late: 0, halfDay: 0, absent: 0, onLeave: 0, unmarked: 0, workingDays: 0, workingDaysInMonth: 0 };
   for (const d of days) {
     if (!isTeachingDay(d, week) || closedDays.has(d)) continue;
-    t.workingDays += 1;
+    t.workingDaysInMonth += 1;
     if (d > upTo) continue;
+    t.workingDays += 1;
     const s = rows.get(d) ?? (leave(d) ? "ON_LEAVE" : null);
     if (s === "PRESENT") t.present += 1;
     else if (s === "LATE") t.late += 1;
@@ -214,7 +223,7 @@ export async function staffMonth(ctx: ActiveContext, month?: string): Promise<St
   const days = daysOf(m);
   const week = parseTeachingDays(school.teachingDays);
   const [members, rows, closedDays, leave] = await Promise.all([
-    staffMembers(caller.schoolId),
+    staffMembers(caller.schoolId, zonedStartOfDay(days[0]!, school.timezone)),
     db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: { gte: days[0]!, lte: days[days.length - 1]! } }, select: { membershipId: true, dateKey: true, status: true } }),
     closedDaysIn(caller.schoolId, days, week),
     leaveDays(caller, days[0]!, days[days.length - 1]!),
@@ -222,13 +231,16 @@ export async function staffMonth(ctx: ActiveContext, month?: string): Promise<St
   const byMember = new Map<string, Map<string, StaffAttendanceStatus>>();
   for (const r of rows) (byMember.get(r.membershipId) ?? byMember.set(r.membershipId, new Map()).get(r.membershipId)!).set(r.dateKey, r.status as StaffAttendanceStatus);
   const next = shiftMonth(m, 1);
-  const workingDays = days.filter((d) => isTeachingDay(d, week) && !closedDays.has(d)).length;
+  const open = days.filter((d) => isTeachingDay(d, week) && !closedDays.has(d));
+  // A person who left during the month is counted to their last day, in the school's zone.
+  const lastDay = (mem: { leftAt: Date | null }) => (mem.leftAt ? dateKeyInZone(mem.leftAt, school.timezone) : today);
   return {
     month: m,
     previousMonth: shiftMonth(m, -1),
     nextMonth: next <= thisMonth ? next : null,
-    workingDays,
-    rows: members.map((mem) => ({ membershipId: mem.id, name: mem.user.preferredName ?? mem.user.name, role: mem.role, ...tally(days, closedDays, byMember.get(mem.id) ?? new Map(), (d) => leave.get(d)?.has(mem.id) ?? false, today, week) })),
+    workingDays: open.filter((d) => d <= today).length,
+    workingDaysInMonth: open.length,
+    rows: members.map((mem) => ({ membershipId: mem.id, name: mem.user.preferredName ?? mem.user.name, role: mem.role, ...tally(days, closedDays, byMember.get(mem.id) ?? new Map(), (d) => leave.get(d)?.has(mem.id) ?? false, lastDay(mem) < today ? lastDay(mem) : today, week) })),
   };
 }
 
@@ -280,19 +292,33 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
   };
 }
 
-/** The month as CSV rows: a person per row, a day per column, for the office's file. */
+/**
+ * The month as CSV rows: a person per row, a day per column, for the office's
+ * file. A column only for the days the tallies count — open teaching days up
+ * to today, never a Sunday or a closing holiday — so the day cells and the
+ * count columns beside them agree; a person who left during the month has
+ * their row, with nothing after their last day.
+ */
 export async function staffMonthCsvRows(ctx: ActiveContext, month?: string): Promise<{ month: string; headers: string[]; rows: Record<string, string | number>[] }> {
   const caller = office(ctx);
   const view = await staffMonth(ctx, month);
   const school = await schoolOf(caller.schoolId);
-  const days = daysOf(view.month).filter((d) => isTeachingDay(d, parseTeachingDays(school.teachingDays)));
-  const marks = await db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: { in: days } }, select: { membershipId: true, dateKey: true, status: true } });
-  const leave = await leaveDays(caller, days[0]!, days[days.length - 1]!);
+  const today = todayKey(school.timezone);
+  const week = parseTeachingDays(school.teachingDays);
+  const all = daysOf(view.month);
+  const closedDays = await closedDaysIn(caller.schoolId, all, week);
+  const days = all.filter((d) => d <= today && isTeachingDay(d, week) && !closedDays.has(d));
+  const marks = days.length ? await db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: { in: days } }, select: { membershipId: true, dateKey: true, status: true } }) : [];
+  const leave = days.length ? await leaveDays(caller, days[0]!, days[days.length - 1]!) : new Map<string, Set<string>>();
   const byKey = new Map(marks.map((r) => [`${r.membershipId}:${r.dateKey}`, r.status]));
   const short: Record<string, string> = { PRESENT: "P", LATE: "L", HALF_DAY: "H", ABSENT: "A", ON_LEAVE: "LV" };
+  // The tally stops at the person's last day; so does their row.
+  const left = await db.membership.findMany({ where: { id: { in: view.rows.map((r) => r.membershipId) }, leftAt: { not: null } }, select: { id: true, leftAt: true } });
+  const lastDay = new Map(left.map((m) => [m.id, dateKeyInZone(m.leftAt!, school.timezone)]));
   const rows = view.rows.map((r) => {
     const row: Record<string, string | number> = { name: r.name, role: r.role };
-    for (const d of days) row[d] = short[byKey.get(`${r.membershipId}:${d}`) ?? (leave.get(d)?.has(r.membershipId) ? "ON_LEAVE" : "")] ?? "";
+    const last = lastDay.get(r.membershipId);
+    for (const d of days) row[d] = last && d > last ? "" : (short[byKey.get(`${r.membershipId}:${d}`) ?? (leave.get(d)?.has(r.membershipId) ? "ON_LEAVE" : "")] ?? "");
     row.present = r.present;
     row.late = r.late;
     row.half_day = r.halfDay;

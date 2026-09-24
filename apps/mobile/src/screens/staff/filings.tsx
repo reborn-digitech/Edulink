@@ -49,6 +49,9 @@ const STAFF_FIELD_KEY: Record<string, TranslationKey> = {
   serviceJoinedOn: "staff.serviceJoinedOn",
 };
 
+/** The readiness counts beyond the record's own fields; the rest are record fields the shared form names. */
+const PUPIL_FIELD_KEY: Record<string, TranslationKey> = { birthdate: "pupilRecord.dob", parents: "filings.missingParents", classCode: "filings.missingClassCode" };
+
 /** "UDISE+ code, Board" — the identity fields still blank, in the reader's language. */
 export function identityFieldList(t: Translate, fields: string[]): string {
   return fields.map((f) => t(`filings.${f}` as TranslationKey)).join(", ");
@@ -207,7 +210,7 @@ function ReadinessCard({ d }: { d: FilingsView }) {
             {t("filings.pupilsMissing")}
           </Text>
           {pupilMissing.map(([field, n]) => (
-            <Row key={field} title={fieldLabel(t, field as PupilRecordField)} right={<Text variant="base" bold tone="warn">{n}</Text>} />
+            <Row key={field} title={PUPIL_FIELD_KEY[field] ? t(PUPIL_FIELD_KEY[field]) : fieldLabel(t, field as PupilRecordField)} right={<Text variant="base" bold tone="warn">{n}</Text>} />
           ))}
         </View>
       ) : null}

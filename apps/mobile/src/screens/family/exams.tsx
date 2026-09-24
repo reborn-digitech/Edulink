@@ -251,7 +251,7 @@ function ReportCardView({ cardId, onBack }: { cardId: string; onBack: () => void
               <Figure
                 label={t("reportView.overall")}
                 value={overallText(c)}
-                hint={c.overallPercent === null ? t("reportView.noMarksCounted") : subjects.length > 0 ? t("reportView.weightedExplainerShort") : c.gradingMethod === "exams" ? t("reportView.examsOnly") : c.gradingMethod === "weighted" ? t("reportView.weightedBy") : t("reportView.acrossBelow")}
+                hint={c.overallPercent === null ? t("reportView.noMarksCounted") : c.gradingMethod === "weighted" ? t("reportView.weightedExplainerShort") : c.gradingMethod === "exams" ? t("reportView.examsOnly") : t("reportView.acrossBelow")}
               />
               {layout.showGradePoints && c.gradePoints !== null && c.gradePoints !== undefined ? <Figure label={t("reportView.gradePoints")} value={c.gradePoints.toFixed(1)} hint={t("reportView.gradePointsHint")} /> : null}
               {layout.showAttendance ? (
@@ -402,7 +402,7 @@ function scaleText(c: ReportCard, t: Translate): string {
 
 function footer(c: ReportCard, t: Translate, locale: string): string {
   const by = c.authorName ? `${t("reportView.writtenBy", { name: c.authorName })} ` : "";
-  return by + (c.publishedAt ? t("reportView.issuedOn", { date: formatDateKey(c.publishedAt.slice(0, 10), locale) }) : t("reportView.notYetIssued"));
+  return by + (c.issuedDateKey ? t("reportView.issuedOn", { date: formatDateKey(c.issuedDateKey, locale) }) : c.publishedAt ? t("reportView.issuedOn", { date: formatDateKey(c.publishedAt.slice(0, 10), locale) }) : t("reportView.notYetIssued"));
 }
 
 /** The card as plain text for the share sheet — the same lines, top to bottom. */

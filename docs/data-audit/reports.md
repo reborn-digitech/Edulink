@@ -1,14 +1,21 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-09-24T07:04:38.256Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 148 WARN · 69 INFO
+Run: 2026-09-24T15:45:32.327Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 71 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
-## WARN (148)
+## WARN (160)
 
 | check | school | detail |
 |---|---|---|
+| udise-students | Saraswati Vidya Mandir | AAROHI SONAWANE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Vidya Mandir | BHUSHAN JADHAV was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Vidya Mandir | CHAITANYA KALE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Vidya Mandir | DEVIKA MORE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Vidya Mandir | EKNATH PAGAR was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Vidya Mandir | GARGI BORSE was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | GARGI BORSE goes out with blank MOBILE NUMBER |
+| udise-students | Saraswati Vidya Mandir | HRISHIKESH PAWAR was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | HRISHIKESH PAWAR goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | ISHWARI DESHMUKH goes out with blank GENDER, MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | OMKAR BHOSALE goes out with blank MOBILE NUMBER |
@@ -25,7 +32,14 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-students | Saraswati Vidya Mandir | MANDAR BHOSALE goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | NUPUR AHIRE goes out with blank MOBILE NUMBER |
 | udise-students | Saraswati Vidya Mandir | PRATHAMESH NIKAM goes out with blank GENDER, MOBILE NUMBER |
+| udise-students | Sunrise Public School | ADVAIT KULKARNI was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Sunrise Public School | BHAVYA SHINDE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Sunrise Public School | CHIRAG PAWAR was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Sunrise Public School | DIYA MEHTA was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Sunrise Public School | ESHAAN NAIR was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Sunrise Public School | FALAK KADAM was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Sunrise Public School | FALAK KADAM goes out with blank MOBILE NUMBER |
+| udise-students | Sunrise Public School | GAURI JOSHI was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Sunrise Public School | GAURI JOSHI goes out with blank MOBILE NUMBER |
 | udise-students | Sunrise Public School | HARSH GOKHALE goes out with blank GENDER, MOBILE NUMBER |
 | udise-students | Sunrise Public School | NAKUL JADHAV goes out with blank MOBILE NUMBER |
@@ -134,8 +148,6 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| fees-csv | Saraswati Vidya Mandir | ₹30500.00 outstanding belongs to pupils off the roll and is on no defaulter list |
-| fees-csv | Sunrise Public School | ₹30500.00 outstanding belongs to pupils off the roll and is on no defaulter list |
 | report-card-items | ZZ Northgate School | 1 paper(s) on cards differ from the marks as they stand now — a published card is frozen; a draft regenerates when opened |
 | leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 229/247 |
 | leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 229/247 |
@@ -157,7 +169,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 8 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (69)
+## INFO (71)
 
 | check | school | detail |
 |---|---|---|
@@ -176,6 +188,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | register-csv | Sunrise Public School | grade 8: 2 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| fees-csv | Saraswati Vidya Mandir | 1 defaulter row(s) belong to pupils who have left, flagged in the CSV |
+| fees-csv | Sunrise Public School | 1 defaulter row(s) belong to pupils who have left, flagged in the CSV |
 | staff-csv | ZZ Northgate School | 4 staff have no leave entitlement on their record — the desk sees no balance for them |
 | report-card-items | Saraswati Vidya Mandir | 128 card papers checked against their grades |
 | report-card-items | Sunrise Public School | 128 card papers checked against their grades |
@@ -190,7 +204,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | insights | Sunrise Public School | Grade 5 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Sunrise Public School | Grade 7 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Sunrise Public School | Grade 8 · A: 7 pupil(s) have no marks in the window and are outside the class average |
-| insights | ZZ Northgate School | ZZ Grade 10 · A: 1 pupil(s) have no marks in the window and are outside the class average |
+| insights | ZZ Northgate School | ZZ Grade 10 · A: 6 pupil(s) have no marks in the window and are outside the class average |
 | insights | ZZ Northgate School | ZZ Grade 4 · A: 6 pupil(s) have no marks in the window and are outside the class average |
 | insights | ZZ Northgate School | ZZ Grade 5 · A: 6 pupil(s) have no marks in the window and are outside the class average |
 | insights | ZZ Northgate School | ZZ Grade 6 · A: 6 pupil(s) have no marks in the window and are outside the class average |
@@ -200,8 +214,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | progress-report | Saraswati Vidya Mandir | the report prints no school logo (School.logoPath is blank) |
 | progress-report | Sunrise Public School | the report prints no school logo (School.logoPath is blank) |
 | progress-report | ZZ Northgate School | the report prints no school logo (School.logoPath is blank) |
-| year-archive | Saraswati Vidya Mandir | 2025–26: 0 on roll, 0 leavers, 0 badges archived |
-| year-archive | Sunrise Public School | 2025–26: 0 on roll, 0 leavers, 0 badges archived |
+| year-archive | Saraswati Vidya Mandir | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
+| year-archive | Sunrise Public School | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
 | retention | platform | tonight would take sessions 0, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0 |
 | inputs-pupils | Saraswati Vidya Mandir | 6 of 47 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |

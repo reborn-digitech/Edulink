@@ -330,7 +330,8 @@ describe("the pupil's pages", () => {
 
     const card = await reportCardGet(get(`/api/v1/family/report-cards/${cardId}`), cardParams(cardId));
     expect(card.status).toBe(200);
-    expect(await card.json()).toMatchObject({ id: cardId, title: "ZZ Family Term 1", studentName: "Zed", overallPercent: 72.5, authorName: "ZZ Family Teacher" });
+    // The legal name on the card, not the "Zed" the pupil set above: a report card is a formal paper.
+    expect(await card.json()).toMatchObject({ id: cardId, title: "ZZ Family Term 1", studentName: "ZZ Family Pupil", overallPercent: 72.5, authorName: "ZZ Family Teacher" });
     const foreign = await reportCardGet(get(`/api/v1/family/report-cards/${otherCardId}`), cardParams(otherCardId));
     expect(foreign.status).toBe(404);
 

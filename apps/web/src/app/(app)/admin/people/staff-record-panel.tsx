@@ -33,7 +33,7 @@ export type StaffRecordInitial = {
  * them here.
  */
 const GENDERS: { code: string; key: TranslationKey }[] = [{ code: "M", key: "pupilRecord.genderM" }, { code: "F", key: "pupilRecord.genderF" }, { code: "T", key: "pupilRecord.genderT" }];
-const SOCIAL_CATEGORIES: { code: string; key: TranslationKey }[] = [{ code: "GENERAL", key: "filings.catGeneral" }, { code: "SC", key: "filings.catSC" }, { code: "ST", key: "filings.catST" }, { code: "OBC", key: "filings.catOBC" }];
+const SOCIAL_CATEGORIES: { code: string; key: TranslationKey }[] = [{ code: "GENERAL", key: "filings.catGeneral" }, { code: "SC", key: "filings.catSC" }, { code: "ST", key: "filings.catST" }, { code: "OBC", key: "filings.catOBC" }, { code: "VJ", key: "pupilRecord.catVJ" }, { code: "NT", key: "pupilRecord.catNT" }, { code: "SBC", key: "pupilRecord.catSBC" }];
 const ACADEMIC: { code: string; key: TranslationKey }[] = ["1", "2", "3", "4", "5", "6", "7", "8"].map((code) => ({ code, key: `staff.aq${code}` as TranslationKey }));
 const PROFESSIONAL: { code: string; key: TranslationKey }[] = ["1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12"].map((code) => ({ code, key: `staff.pq${code}` as TranslationKey }));
 const APPOINTMENTS: { code: string; key: TranslationKey }[] = [{ code: "REGULAR", key: "staff.apptRegular" }, { code: "CONTRACT", key: "staff.apptContract" }, { code: "PART_TIME", key: "staff.apptPartTime" }];

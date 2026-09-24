@@ -32,6 +32,7 @@ import { POST as respondPost } from "@/app/api/v1/family/applications/[applicati
 import { POST as withdrawPost } from "@/app/api/v1/family/applications/[applicationId]/withdraw/route";
 import { GET as schoolGet } from "@/app/api/v1/shared/schools/[schoolId]/admissions/route";
 import { expireOffers } from "@/lib/admissions";
+import { todayKey } from "@/lib/dates";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -445,7 +446,18 @@ describe("the office's steps", () => {
   it("admits: pupil account, membership, enrolment, the applicant as guardian, the record from the form and the fee plan with its demand in one go; again answers as it stands; the seat count holds; then the closed cycle is purged of the rest", async () => {
     await as("ADMIN");
     expect((await admitPost(json(`/api/v1/office/admissions/applications/${samId}/admit`, {}), params({ applicationId: samId }))).status).toBe(403);
-    let res = await admitPost(json(`/api/v1/office/admissions/applications/${riyaId}/admit`, { classId, admissionNumber: "GR-77" }), params({ applicationId: riyaId }));
+    // ⚠ The admission date is TODAY ON THE SCHOOL'S CLOCK, not Kolkata's: for
+    // the admit, the school sits in whichever far zone is on a different
+    // calendar day from Kolkata right now (one of the two always is), so a
+    // hard-coded zone would write the wrong day.
+    const farZone = todayKey("Pacific/Kiritimati") !== todayKey("Asia/Kolkata") ? "Pacific/Kiritimati" : "Etc/GMT+12";
+    await db.school.update({ where: { id: schoolId }, data: { timezone: farZone } });
+    let res: Response;
+    try {
+      res = await admitPost(json(`/api/v1/office/admissions/applications/${riyaId}/admit`, { classId, admissionNumber: "GR-77" }), params({ applicationId: riyaId }));
+    } finally {
+      await db.school.update({ where: { id: schoolId }, data: { timezone: "Asia/Kolkata" } });
+    }
     expect(res.status).toBe(200);
     const admitted = await res.json();
     expect(admitted).toMatchObject({ className: "ZZ 3A", feePlan: true, guardianLinked: true });
@@ -459,6 +471,8 @@ describe("the office's steps", () => {
     expect(membership.enrollments.map((e) => [e.classId, e.status])).toEqual([[classId, "ACTIVE"]]);
     expect(membership.guardianships.map((g) => [g.parentUserId, g.status, g.relation])).toEqual([[parentAUserId, "ACTIVE", "PARENT"]]);
     expect(membership.pupilRecord).toMatchObject({ admissionNumber: "GR-77", admittedToGrade: "3", previousSchool: "Sunrise Nursery", addressLine: "14 Lake Road", city: "Pune" });
+    expect(membership.pupilRecord?.admissionDate?.toISOString().slice(0, 10)).toBe(todayKey(farZone));
+    expect(membership.pupilRecord?.admissionDate?.toISOString().slice(0, 10)).not.toBe(todayKey("Asia/Kolkata"));
     expect(membership.feePlans.map((p) => p.structureId)).toEqual([structureId]);
     expect(await db.feeDemand.count({ where: { studentMembershipId: membership.id } })).toBe(1);
     const application = await db.application.findUniqueOrThrow({ where: { id: riyaId } });

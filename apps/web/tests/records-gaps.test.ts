@@ -142,6 +142,20 @@ describe("the staff record's two dates", () => {
     expect(row["3.2.14 Date of Joining in Service (DD/MM/YYYY)"]).toBe("15/06/2008");
     expect(row["3.2.15 Date of Joining in Present School (DD/MM/YYYY)"]).toBe("10/06/2019");
   });
+
+  it("a coded answer off the list is refused, not stored as null; NT is on the staff list and codes 4 on the DCF sheet", async () => {
+    const ctx = ctxOf();
+    expect(await setStaffRecord(ctx, teacherMembershipId, { socialCategory: "XYZ", gender: "M" })).toEqual({ ok: false, errorKey: "staff.badCode" });
+    expect(await setStaffRecord(ctx, teacherMembershipId, { gender: "Q" })).toEqual({ ok: false, errorKey: "staff.badCode" });
+    expect(await setStaffRecord(ctx, teacherMembershipId, { appointmentType: "GUEST" })).toEqual({ ok: false, errorKey: "staff.badCode" });
+    expect((await staffRecordFor(ctx, teacherMembershipId))?.gender).toBeNull();
+    expect(await setStaffRecord(ctx, teacherMembershipId, { socialCategory: "nt", gender: "M" })).toEqual({ ok: true });
+    expect(await staffRecordFor(ctx, teacherMembershipId)).toMatchObject({ socialCategory: "NT", gender: "M" });
+    const sheet = rowsOf((await udiseTeachersExport(ctx)).csv);
+    expect(sheet.find((r) => r["3.2.1 Name of the Teacher"] === "ZZ GAPS TEACHER")!["3.2.5 Social Category (General-1, SC-2, ST-3, OBC-4)"]).toBe("4");
+    expect(await setStaffRecord(ctx, teacherMembershipId, { socialCategory: "" })).toEqual({ ok: true });
+    expect((await staffRecordFor(ctx, teacherMembershipId))?.socialCategory).toBeNull();
+  });
 });
 
 describe("the grade level follows the class", () => {

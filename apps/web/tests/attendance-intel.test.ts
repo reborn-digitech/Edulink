@@ -16,12 +16,20 @@ const ADMIN_EMAIL = "zz.admin.absence@riverside.test";
 const SLIPPING_EMAIL = "zz.slipping.absence@riverside.test";
 const STEADY_EMAIL = "zz.steady.absence@riverside.test";
 const PARENT_EMAIL = "zz.parent.absence@riverside.test";
+const TWICE_EMAIL = "zz.twice.absence@riverside.test";
+const EXCUSED_EMAIL = "zz.excused.absence@riverside.test";
+const LEAVER_EMAIL = "zz.leaver.absence@riverside.test";
+const ALL_EMAILS = [ADMIN_EMAIL, SLIPPING_EMAIL, STEADY_EMAIL, PARENT_EMAIL, TWICE_EMAIL, EXCUSED_EMAIL, LEAVER_EMAIL];
 
 let schoolId: string;
 let classId: string;
+let classBId: string;
 let admin: ActiveContext;
 let slippingMembershipId: string;
 let steadyMembershipId: string;
+let twiceMembershipId: string;
+let excusedMembershipId: string;
+let leaverMembershipId: string;
 let parentUserId: string;
 
 function ctxFor(userId: string, membershipId: string, role: "ADMIN"): ActiveContext {
@@ -112,17 +120,74 @@ beforeAll(async () => {
     });
   }
 
+  // Three more children, each a way the old count went wrong.
+  //   twice:   absent on the last day on BOTH this class's register and a
+  //            second class's — one day, not a run of two; six early absences
+  //            make the rate chronic so the flag is there to read.
+  //   excused: absent, absent, EXCUSED, absent on the last four days — a run
+  //            of three, the excused day skipped rather than a reset.
+  //   leaver:  three absences running, but left the school — no flag.
+  const made = await Promise.all(
+    [TWICE_EMAIL, EXCUSED_EMAIL, LEAVER_EMAIL].map((email) =>
+      db.user.create({ data: { email, name: `ZZ ${email.split(".")[1]} Pupil`, prefs: "{}" } }),
+    ),
+  );
+  const [twice, excused, leaver] = await Promise.all(
+    made.map((u, i) =>
+      db.membership.create({
+        data: { userId: u.id, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: i === 2 ? new Date() : null },
+      }),
+    ),
+  );
+  twiceMembershipId = twice!.id;
+  excusedMembershipId = excused!.id;
+  leaverMembershipId = leaver!.id;
+  const classB = await db.class.create({
+    data: { schoolId, name: "ZZ Absence Class B", gradeLevel: "4", joinCode: "ZZABSEN002" },
+  });
+  classBId = classB.id;
+  await db.enrollment.createMany({
+    data: [
+      { classId, schoolId, studentMembershipId: twice!.id },
+      { classId: classBId, schoolId, studentMembershipId: twice!.id },
+      { classId, schoolId, studentMembershipId: excused!.id },
+      { classId, schoolId, studentMembershipId: leaver!.id, status: "REMOVED", removedAt: new Date() },
+    ],
+  });
+  const sessions = await db.attendanceSession.findMany({ where: { classId }, orderBy: { dateKey: "asc" }, select: { id: true, dateKey: true } });
+  const statusFor = (who: "twice" | "excused" | "leaver", i: number) => {
+    if (who === "twice") return i < 6 || i === 9 ? "ABSENT" : "PRESENT";
+    if (who === "excused") return i < 6 ? "PRESENT" : i === 8 ? "EXCUSED" : "ABSENT";
+    return i < 7 ? "PRESENT" : "ABSENT";
+  };
+  await db.attendanceRecord.createMany({
+    data: sessions.flatMap((session, i) => [
+      { sessionId: session.id, schoolId, studentMembershipId: twice!.id, status: statusFor("twice", i) },
+      { sessionId: session.id, schoolId, studentMembershipId: excused!.id, status: statusFor("excused", i) },
+      { sessionId: session.id, schoolId, studentMembershipId: leaver!.id, status: statusFor("leaver", i) },
+    ]),
+  });
+  // Class B's register on the last day marks the same child absent again.
+  await db.attendanceSession.create({
+    data: {
+      schoolId,
+      classId: classBId,
+      dateKey: sessions[9]!.dateKey,
+      records: { create: [{ schoolId, studentMembershipId: twice!.id, status: "ABSENT" }] },
+    },
+  });
+
   admin = ctxFor(adminUser.id, adminMembership.id, "ADMIN");
 });
 
 afterAll(async () => {
   await db.notification.deleteMany({ where: { userId: parentUserId } });
-  await db.attendanceRecord.deleteMany({ where: { session: { classId } } });
-  await db.attendanceSession.deleteMany({ where: { classId } });
+  await db.attendanceRecord.deleteMany({ where: { session: { classId: { in: [classId, classBId] } } } });
+  await db.attendanceSession.deleteMany({ where: { classId: { in: [classId, classBId] } } });
   await db.guardianship.deleteMany({ where: { parentUserId } });
-  await db.enrollment.deleteMany({ where: { classId } });
-  await db.class.deleteMany({ where: { id: classId } });
-  for (const email of [ADMIN_EMAIL, SLIPPING_EMAIL, STEADY_EMAIL, PARENT_EMAIL]) {
+  await db.enrollment.deleteMany({ where: { classId: { in: [classId, classBId] } } });
+  await db.class.deleteMany({ where: { id: { in: [classId, classBId] } } });
+  for (const email of ALL_EMAILS) {
     const user = await db.user.findUnique({ where: { email }, select: { id: true } });
     if (user) {
       await db.membership.deleteMany({ where: { userId: user.id } });
@@ -132,7 +197,7 @@ afterAll(async () => {
   expect(await db.class.count({ where: { id: classId } })).toBe(0);
   expect(
     await db.user.count({
-      where: { email: { in: [ADMIN_EMAIL, SLIPPING_EMAIL, STEADY_EMAIL, PARENT_EMAIL] } },
+      where: { email: { in: ALL_EMAILS } },
     }),
   ).toBe(0);
   await db.$disconnect();
@@ -148,6 +213,38 @@ describe("attendance intelligence", () => {
     expect(slipping!.percent).toBe(30);
     expect(slipping!.guardianCount).toBe(1);
     expect(flags.find((f) => f.studentMembershipId === steadyMembershipId)).toBeUndefined();
+  });
+
+  it("a day on two registers is one absent day: a run of 1, ten marks", async () => {
+    const flags = await absenceFlags(admin);
+    const twice = flags.find((f) => f.studentMembershipId === twiceMembershipId);
+    expect(twice).toBeDefined();
+    expect(twice!.chronic).toBe(true); // 3 of 10 days there
+    expect(twice!.percent).toBe(30);
+    expect(twice!.marks).toBe(10);
+    expect(twice!.currentRun).toBe(1);
+    expect(twice!.consecutive).toBe(false);
+  });
+
+  it("an EXCUSED day between two ABSENT days does not reset the run", async () => {
+    const flags = await absenceFlags(admin);
+    const excused = flags.find((f) => f.studentMembershipId === excusedMembershipId);
+    expect(excused).toBeDefined();
+    expect(excused!.currentRun).toBe(3); // A, A, E, A — the E is skipped
+    expect(excused!.consecutive).toBe(true);
+  });
+
+  it("a leaver with three absences running is not flagged", async () => {
+    const flags = await absenceFlags(admin);
+    expect(flags.find((f) => f.studentMembershipId === leaverMembershipId)).toBeUndefined();
+  });
+
+  it("scoped to a class, only that class's registers count", async () => {
+    const inA = await absenceFlags(admin, { classId });
+    expect(inA.map((f) => f.studentMembershipId)).toContain(slippingMembershipId);
+    const inB = await absenceFlags(admin, { classId: classBId });
+    // One absent day in class B: a mark, not a pattern.
+    expect(inB).toEqual([]);
   });
 
   it("tells the family once, and refuses to nag within a week", async () => {
@@ -168,6 +265,8 @@ describe("attendance intelligence", () => {
     const trend = await attendanceTrend(admin);
     expect(trend).toHaveLength(8);
     const recentMarks = trend.slice(-2).reduce((sum, p) => sum + p.marks, 0);
-    expect(recentMarks).toBeGreaterThanOrEqual(20); // our 10 sessions × 2 pupils
+    // 10 days × 4 pupils on the roll: the leaver's marks and the second
+    // register's repeat of the last day are not counted.
+    expect(recentMarks).toBeGreaterThanOrEqual(40);
   });
 });

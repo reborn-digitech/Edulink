@@ -4,7 +4,7 @@ import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenanc
 import { getAttendanceSummary, computeBestStreak } from "./attendance";
 import { overallForStudent } from "./grading";
 import { getBadges } from "./badges";
-import { addDaysToKey, todayKey } from "./dates";
+import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { AttendanceStatus } from "./constants";
@@ -23,7 +23,10 @@ import type { AttendanceStatus } from "./constants";
  *
  * The window is a real input, not a decoration. "How is she doing?" means
  * something different in October and in June, so the caller says, and the report
- * says back what it covered.
+ * says back what it covered — and the marks follow it as the register does:
+ * only work graded inside the window, on the school's clock, is listed or
+ * counted in the overall. A report that printed "the last twelve weeks" over
+ * every mark the child ever had was a lifetime average with a term's label.
  */
 
 export const DEFAULT_REPORT_DAYS = 84; // twelve weeks — about a term
@@ -118,6 +121,11 @@ export async function buildProgressReport(
   const toKey = range.toKey ?? todayKey(timezone);
   const fromKey = range.fromKey ?? addDaysToKey(toKey, -DEFAULT_REPORT_DAYS);
   if (fromKey > toKey) throw new AccessError("access.thatDateRangeRunsBackwards");
+  // [first day 00:00, day after the last 00:00) on the school's clock.
+  const gradedIn = {
+    gte: zonedStartOfDay(fromKey, timezone),
+    lt: zonedStartOfDay(addDaysToKey(toKey, 1), timezone),
+  };
 
   const [attendance, grades, badges] = await Promise.all([
     getAttendanceSummary(membership.schoolId, studentMembershipId, fromKey, toKey),
@@ -126,6 +134,7 @@ export async function buildProgressReport(
         studentMembershipId,
         schoolId: membership.schoolId,
         scoreMilli: { not: null },
+        gradedAt: gradedIn,
       },
       include: {
         assignment: {

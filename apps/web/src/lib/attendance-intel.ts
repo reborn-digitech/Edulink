@@ -39,7 +39,7 @@ export type AbsenceFlag = {
   className: string;
   percent: number;
   marks: number;
-  /** Sessions in a row absent, counted back from the most recent register. */
+  /** Days in a row absent, counted back from the most recent register day. */
   currentRun: number;
   /** Which rule tripped: the rate, the run, or both. */
   chronic: boolean;
@@ -47,14 +47,41 @@ export type AbsenceFlag = {
   guardianCount: number;
 };
 
+type DayStatus = "PRESENT" | "LATE" | "ABSENT" | "EXCUSED";
+/** Worst first: a day on two registers takes the worse of its two marks. */
+const SEVERITY: Record<DayStatus, number> = { ABSENT: 3, EXCUSED: 2, LATE: 1, PRESENT: 0 };
+
+type MarkRow = { status: string; studentMembershipId: string; session: { dateKey: string } };
+
 /**
- * Every enrolled child whose last `days` of register reads below the
- * threshold, or who is absent right now and has been for three registers
- * running. Sorted worst-first.
+ * One status per pupil per day. A child on two registers the same day — a
+ * class register and a subject one — is absent once, not twice, and the
+ * worse mark stands: ABSENT over EXCUSED over LATE over PRESENT.
+ */
+function foldDays(records: MarkRow[]): Map<string, Map<string, DayStatus>> {
+  const byPupil = new Map<string, Map<string, DayStatus>>();
+  for (const r of records) {
+    const status = r.status as DayStatus;
+    if (!(status in SEVERITY)) continue;
+    const days = byPupil.get(r.studentMembershipId) ?? new Map<string, DayStatus>();
+    const held = days.get(r.session.dateKey);
+    if (held === undefined || SEVERITY[status] > SEVERITY[held]) days.set(r.session.dateKey, status);
+    byPupil.set(r.studentMembershipId, days);
+  }
+  return byPupil;
+}
+
+/** Only children on the roll: membership ACTIVE and not left. Leavers and the suspended are nobody's flag. */
+const ON_ROLL = { status: "ACTIVE", leftAt: null } as const;
+
+/**
+ * Every child on the roll whose last `days` of register reads below the
+ * threshold, or who is absent right now and has been for three days running.
+ * Scoped to one class's registers when `classId` is given. Sorted worst-first.
  */
 export async function absenceFlags(
   ctx: ActiveContext,
-  opts: { days?: number } = {},
+  opts: { days?: number; classId?: string } = {},
 ): Promise<AbsenceFlag[]> {
   const schoolId = assertOversight(ctx);
   const days = opts.days ?? 30;
@@ -66,49 +93,56 @@ export async function absenceFlags(
   const fromKey = addDaysToKey(toKey, -days);
 
   const records = await db.attendanceRecord.findMany({
-    where: { schoolId, session: { dateKey: { gte: fromKey, lte: toKey } } },
+    where: {
+      schoolId,
+      student: ON_ROLL,
+      session: {
+        dateKey: { gte: fromKey, lte: toKey },
+        ...(opts.classId ? { classId: opts.classId } : {}),
+      },
+    },
     select: {
       status: true,
       studentMembershipId: true,
-      session: { select: { dateKey: true, classId: true } },
+      session: { select: { dateKey: true } },
     },
   });
   if (records.length === 0) return [];
 
-  type Tally = { attended: number; total: number; days: { dateKey: string; absent: boolean }[] };
-  const byPupil = new Map<string, Tally>();
-  for (const r of records) {
-    const tally = byPupil.get(r.studentMembershipId) ?? { attended: 0, total: 0, days: [] };
-    tally.total += 1;
-    if (r.status === "PRESENT" || r.status === "LATE") tally.attended += 1;
-    // EXCUSED does not count toward an absence run: the school already knows.
-    tally.days.push({ dateKey: r.session.dateKey, absent: r.status === "ABSENT" });
-    byPupil.set(r.studentMembershipId, tally);
-  }
-
   const flaggedIds: string[] = [];
   const computed = new Map<string, { percent: number; marks: number; run: number }>();
-  for (const [membershipId, tally] of byPupil) {
-    tally.days.sort((a, b) => (a.dateKey < b.dateKey ? -1 : 1));
-    let run = 0;
-    for (const day of tally.days) {
-      run = day.absent ? run + 1 : 0;
+  for (const [membershipId, byDay] of foldDays(records)) {
+    const dayKeys = [...byDay.keys()].sort();
+    let attended = 0;
+    for (const key of dayKeys) {
+      const status = byDay.get(key)!;
+      if (status === "PRESENT" || status === "LATE") attended += 1;
     }
-    const percent = Math.round((tally.attended * 100) / tally.total);
-    computed.set(membershipId, { percent, marks: tally.total, run });
-    const chronic = tally.total >= MIN_MARKS && percent < CHRONIC_THRESHOLD_PERCENT;
+    // The run: trailing ABSENT days, newest first. An EXCUSED day is neither
+    // absent nor present — the school already knows — so it is skipped, not a
+    // break; a PRESENT or LATE day ends the run.
+    let run = 0;
+    for (let i = dayKeys.length - 1; i >= 0; i--) {
+      const status = byDay.get(dayKeys[i]!)!;
+      if (status === "ABSENT") run += 1;
+      else if (status !== "EXCUSED") break;
+    }
+    const marks = dayKeys.length;
+    const percent = Math.round((attended * 100) / marks);
+    computed.set(membershipId, { percent, marks, run });
+    const chronic = marks >= MIN_MARKS && percent < CHRONIC_THRESHOLD_PERCENT;
     const consecutive = run >= CONSECUTIVE_ABSENT;
     if (chronic || consecutive) flaggedIds.push(membershipId);
   }
   if (flaggedIds.length === 0) return [];
 
   const members = await db.membership.findMany({
-    where: { id: { in: flaggedIds } },
+    where: { id: { in: flaggedIds }, schoolId, ...ON_ROLL },
     select: {
       id: true,
       user: { select: { name: true, preferredName: true } },
       enrollments: {
-        where: { status: "ACTIVE" },
+        where: { status: "ACTIVE", ...(opts.classId ? { classId: opts.classId } : {}) },
         select: { class: { select: { name: true } } },
         take: 1,
       },
@@ -204,7 +238,11 @@ export async function sendAbsenceAlert(
 
 export type TrendPoint = { label: string; percent: number | null; marks: number };
 
-/** School attendance percent per week, oldest first, the last eight weeks. */
+/**
+ * School attendance percent per week, oldest first, the last eight weeks.
+ * Counts pupil-days the way the flags do: children on the roll, one mark per
+ * child per day, the worse of two registers standing.
+ */
 export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]> {
   const schoolId = assertOversight(ctx);
   const school = await db.school.findUniqueOrThrow({
@@ -215,9 +253,13 @@ export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]>
   const fromKey = addDaysToKey(toKey, -7 * 8);
 
   const records = await db.attendanceRecord.findMany({
-    where: { schoolId, session: { dateKey: { gte: fromKey, lte: toKey } } },
-    select: { status: true, session: { select: { dateKey: true } } },
+    where: { schoolId, student: ON_ROLL, session: { dateKey: { gte: fromKey, lte: toKey } } },
+    select: { status: true, studentMembershipId: true, session: { select: { dateKey: true } } },
   });
+  const pupilDays: { dateKey: string; status: DayStatus }[] = [];
+  for (const byDay of foldDays(records).values()) {
+    for (const [dateKey, status] of byDay) pupilDays.push({ dateKey, status });
+  }
 
   const points: TrendPoint[] = [];
   for (let week = 7; week >= 0; week--) {
@@ -225,10 +267,10 @@ export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]>
     const end = addDaysToKey(toKey, -7 * week);
     let attended = 0;
     let marks = 0;
-    for (const r of records) {
-      if (r.session.dateKey > start && r.session.dateKey <= end) {
+    for (const d of pupilDays) {
+      if (d.dateKey > start && d.dateKey <= end) {
         marks += 1;
-        if (r.status === "PRESENT" || r.status === "LATE") attended += 1;
+        if (d.status === "PRESENT" || d.status === "LATE") attended += 1;
       }
     }
     points.push({

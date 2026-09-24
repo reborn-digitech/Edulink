@@ -7,10 +7,10 @@ import { AccessError } from "./tenancy";
 import { getAttendanceSummary } from "./attendance";
 import { ensureSittings } from "./exams";
 import type { ExamKind } from "./constants";
-import { addDaysToKey, todayKey } from "./dates";
+import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { CardCoScholastic, CardSubject, GradeBand, ReportCardLayout } from "@edulink/contracts";
-import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, type PaperPart } from "./report-card-rules";
+import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, shownPercent, type PaperPart } from "./report-card-rules";
 import { readReportCardConfig } from "./report-card-config";
 
 /**
@@ -68,13 +68,22 @@ export type CardItem = {
   letter: string | null;
 };
 
+/**
+ * What a card keeps in its `layout` JSON besides the printed layout: the class
+ * as it was named when the card was published. A class renamed or re-sectioned
+ * after the cards went out must not rename the documents already in a drawer.
+ */
+type LayoutSnapshot = Partial<ReportCardLayout> & { className?: string; classSection?: string | null };
+
 export type Card = {
   id: string;
   status: string;
   title: string;
   remark: string | null;
   studentMembershipId: string;
+  /** The LEGAL name, as the leaving certificate, UDISE+ and the boards print it — not the preferred name the app shows elsewhere. */
   studentName: string;
+  /** Frozen at publication on a published card; the live class on a draft. */
   className: string;
   classSection: string | null;
   fromDateKey: string;
@@ -82,13 +91,17 @@ export type Card = {
   attendancePresent: number;
   attendanceTotal: number;
   attendancePercent: number | null;
+  /** One decimal, as printed; the letter beside it is the band of this number. */
   overallPercent: number | null;
   gradingMethod: string;
   publishedAt: Date | null;
+  /** The publish date as a calendar day in the SCHOOL'S zone — what "issued on" prints. */
+  issuedDateKey: string | null;
   authorName: string | null;
   items: CardItem[];
   school: {
     name: string;
+    timezone: string;
     logoPath: string | null;
     addressLine: string | null;
     city: string | null;
@@ -291,7 +304,7 @@ export async function generateCards(
   classId: string,
   input: GenerateInput,
 ): Promise<GenerateResult> {
-  await assertMayWriteCards(ctx, classId);
+  const klass = await assertMayWriteCards(ctx, classId);
 
   const term = input.termId
     ? await db.term.findFirst({ where: { id: input.termId, schoolId: ctx.schoolId! }, select: { id: true, name: true, startDate: true, endDate: true, academicYearId: true } })
@@ -475,30 +488,20 @@ export async function generateCards(
       toDateKey,
     );
 
-    // `maxMilli`, not `pointsMilli` — WeightedEntry's own name for the same
-    // thing. Unmarked assessments are dropped rather than counted as zero: a
-    // test the child has not sat yet is not a mark of nought, and treating it
-    // as one is the single most damaging arithmetic mistake a report card can
-    // make.
-    const entries = assignments
-      .map((a) => ({
-        scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
-        maxMilli: a.pointsMilli,
-      }))
-      .filter((e): e is { scoreMilli: number; maxMilli: number } => e.scoreMilli !== null && e.maxMilli !== null && e.maxMilli > 0);
-
-    /* THE OVERALL IS MARKS OVER MAXIMUM ACROSS THE EXAMS ON THE CARD — not the
-     * category-weighted figure the grades page shows, which blends homework in.
-     * A report card's number must be reproducible by a parent with the card in
-     * one hand and a calculator in the other. */
-    const scored = entries.reduce((a, e) => a + e.scoreMilli, 0);
-    const max = entries.reduce((a, e) => a + e.maxMilli, 0);
-
     /* THE SUBJECT ROWS. Each subject's papers combined by the weight of their
      * kind inside the term (report-card-rules.ts), and on the annual card each
      * term's result combined by the term's share of the year. When the school
-     * weights nothing, the row is marks over maximum and the overall stays the
-     * flat figure above. */
+     * weights nothing, the row is marks over maximum, and the row also KEEPS
+     * THE MARKS AND MAXIMUM it was made from, so the overall below can be the
+     * sum of the rows and a parent can add the rows up to it.
+     *
+     * Unmarked papers are dropped rather than counted as zero: a test the
+     * child has not sat yet is not a mark of nought, and treating it as one is
+     * the single most damaging arithmetic mistake a report card can make.
+     *
+     * EVERY PERCENT IS ROUNDED ONCE, to the one decimal the card prints, and
+     * the letter is read from that rounded number — never from the raw figure
+     * behind it, which is how 90.96 used to print "91.0 % A2". */
     const bySubject = new Map<string, typeof assignments>();
     for (const a of assignments) {
       const list = bySubject.get(a.examSlot!.subject) ?? [];
@@ -516,6 +519,8 @@ export async function generateCards(
     for (const [subject, papers] of bySubject) {
       let percent: number | null;
       let parts: CardSubject["parts"];
+      let scoreMilli: number | null = null;
+      let pointsMilli: number | null = null;
       if (year) {
         const termParts = year.terms
           .map((t) => {
@@ -530,19 +535,37 @@ export async function generateCards(
         parts = combined.parts.map((p) => ({ label: p.name, kind: "TERM", scoreMilli: null, pointsMilli: null, percent: p.percent, weight: p.weight }));
         weighted = true;
       } else {
+        const marked = papers.map(partOf).filter((p): p is PaperPart & { scoreMilli: number; pointsMilli: number } => p.scoreMilli !== null && p.pointsMilli !== null && p.pointsMilli > 0);
         const w = kindWeighted(papers.map(partOf), config.kindWeights);
         percent = w.percent;
         parts = w.parts;
+        if (marked.length > 0) {
+          scoreMilli = marked.reduce((a, p) => a + p.scoreMilli, 0);
+          pointsMilli = marked.reduce((a, p) => a + p.pointsMilli, 0);
+        }
         if (w.method === "weighted") weighted = true;
       }
-      const band = bandFor(percent, config.bands);
-      subjects.push({ subject, percent, letter: band?.label ?? null, points: band?.points ?? null, parts });
+      const shown = shownPercent(percent);
+      const band = bandFor(shown, config.bands);
+      subjects.push({ subject, percent: shown, letter: band?.label ?? null, points: band?.points ?? null, parts, scoreMilli, pointsMilli });
     }
+
+    /* THE OVERALL. Weighted: the mean of the subject percents as printed.
+     * Otherwise MARKS OVER MAXIMUM ACROSS THE EXAMS ON THE CARD — the sum of
+     * the rows' marks over the sum of their maximums, not the mean of the
+     * rows' percents, which differs the moment two papers carry different
+     * maximums; and not the category-weighted figure the grades page shows,
+     * which blends homework in. A report card's number must be reproducible
+     * by a parent with the card in one hand and a calculator in the other,
+     * and the card says under the figure which of the two rules made it. */
+    const scored = subjects.reduce((a, s) => a + (s.scoreMilli ?? 0), 0);
+    const max = subjects.reduce((a, s) => a + (s.pointsMilli ?? 0), 0);
     const overall = weighted
-      ? { percent: meanPercent(subjects), method: "weighted" }
-      : { percent: max > 0 ? (scored / max) * 100 : null, method: "exams" };
+      ? { percent: shownPercent(meanPercent(subjects)), method: "weighted" }
+      : { percent: shownPercent(max > 0 ? (scored / max) * 100 : null), method: "exams" };
     const overallBand = bandFor(overall.percent, config.bands);
     const points = meanPoints(subjects);
+    const layout: LayoutSnapshot = { ...config.layout, className: klass.name, classSection: klass.section };
 
     const data = {
       schoolId: ctx.schoolId!,
@@ -563,7 +586,7 @@ export async function generateCards(
       gradePointsMilli: points === null ? null : Math.round(points * 1000),
       subjects: JSON.stringify(subjects),
       scale: JSON.stringify({ bands: config.bands, coScale: config.coScholastic.scale }),
-      layout: JSON.stringify(config.layout),
+      layout: JSON.stringify(layout),
       practice: (() => {
         const rows = practiceBy.get(row.studentMembershipId);
         return rows && rows.length > 0 ? JSON.stringify(rows) : null;
@@ -599,7 +622,7 @@ export async function generateCards(
           position,
           subject: a.examSlot!.subject,
           kind: "SCHOLASTIC",
-          letter: bandFor(paperPercent, config.bands)?.label ?? null,
+          letter: bandFor(shownPercent(paperPercent), config.bands)?.label ?? null,
         };
       }),
     });
@@ -700,11 +723,31 @@ export async function publishCards(
     where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
     select: {
       id: true,
+      layout: true,
       studentMembershipId: true,
       student: { select: { userId: true, user: { select: { name: true, preferredName: true } } } },
     },
   });
   if (drafts.length === 0) return { ok: false, errorKey: "reportCards.noDrafts" };
+
+  // THE CLASS NAME FREEZES WITH THE CARD. A draft reads the live class; the
+  // published document carries the class as it was called on the day it went
+  // out, so a section renamed in May does not rename March's cards. The label
+  // rides in the layout snapshot, which is already one JSON per card.
+  const klass = await db.class.findFirstOrThrow({ where: { id: classId, schoolId: ctx.schoolId! }, select: { name: true, section: true } });
+  const currentLayout = await readReportCardConfig(ctx.schoolId!);
+  for (const draft of drafts) {
+    let snapshot: LayoutSnapshot = currentLayout.layout;
+    try {
+      if (draft.layout) snapshot = JSON.parse(draft.layout) as LayoutSnapshot;
+    } catch {
+      // A malformed snapshot is replaced by the school's layout of today, which is what the page would have shown for it.
+    }
+    await db.reportCard.update({
+      where: { id: draft.id },
+      data: { layout: JSON.stringify({ ...snapshot, className: klass.name, classSection: klass.section }) },
+    });
+  }
 
   await db.reportCard.updateMany({
     where: { schoolId: ctx.schoolId!, classId, title, status: "DRAFT" },
@@ -852,7 +895,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       scale: true,
       layout: true,
       class: { select: { name: true, section: true } },
-      student: { select: { user: { select: { name: true, preferredName: true } } } },
+      student: { select: { user: { select: { name: true } } } },
       createdBy: { select: { user: { select: { name: true, preferredName: true } } } },
       items: {
         orderBy: { position: "asc" },
@@ -867,7 +910,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: card.schoolId },
-    select: { name: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, website: true, brandPrimary: true },
+    select: { name: true, timezone: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, website: true, brandPrimary: true },
   });
   const letterhead = school;
   // A card built before the rules existed reads the school's rules of today;
@@ -882,15 +925,38 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     }
   };
 
+  // The class label frozen at publication, when the card has one and is
+  // published; a draft, a withdrawn card and a card from before the label was
+  // kept all read the live class.
+  const { className: frozenName, classSection: frozenSection, ...layoutSnapshot } = parseJson<LayoutSnapshot>(card.layout, current.layout);
+  const frozen = card.status === "PUBLISHED" && typeof frozenName === "string";
+
+  // EVERY PERCENT ROUNDED ONCE, to the decimal the card prints, and every
+  // letter read from that rounded figure on the card's own scale — so a
+  // card issued before the rounding rule shows "91.0 %" with the band of
+  // 91.0 rather than the band of the 90.96 behind it. A card with no scale
+  // of its own keeps the letters it was written with.
+  const storedScale = parseJson<{ bands: GradeBand[]; coScale: { label: string; descriptor: string | null }[] } | null>(card.scale, null);
+  const rounded = (percent: number | null, letter: string | null, points: number | null) => {
+    const shown = shownPercent(percent);
+    if (!storedScale) return { percent: shown, letter, points };
+    const band = bandFor(shown, storedScale.bands);
+    return { percent: shown, letter: band?.label ?? null, points: band?.points ?? null };
+  };
+  const overall = rounded(card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000, card.overallLetter, null);
+
   return {
     id: card.id,
     status: card.status,
     title: card.title,
     remark: card.remark,
     studentMembershipId: card.studentMembershipId,
-    studentName: card.student.user.preferredName ?? card.student.user.name,
-    className: card.class.name,
-    classSection: card.class.section,
+    // The legal name: a report card is a formal paper and prints the name the
+    // leaving certificate, UDISE+ and the boards print. The preferred name is
+    // for the app's own screens.
+    studentName: card.student.user.name,
+    className: frozen ? frozenName : card.class.name,
+    classSection: frozen ? (frozenSection ?? null) : card.class.section,
     fromDateKey: card.fromDateKey,
     toDateKey: card.toDateKey,
     attendancePresent: card.attendancePresent,
@@ -901,21 +967,21 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
         // Whole percent — the same rounding the attendance pages use, so the
         // card and the page never disagree by a decimal.
         : Math.round((card.attendancePresent / card.attendanceTotal) * 100),
-    overallPercent:
-      card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000,
+    overallPercent: overall.percent,
     gradingMethod: card.gradingMethod,
     publishedAt: card.publishedAt,
+    issuedDateKey: card.publishedAt ? dateKeyInZone(card.publishedAt, school.timezone) : null,
     authorName: card.createdBy
       ? (card.createdBy.user.preferredName ?? card.createdBy.user.name)
       : null,
     items: card.items.filter((i) => i.kind !== "CO_SCHOLASTIC").map((i) => ({ title: i.title, category: i.category, scoreMilli: i.scoreMilli, pointsMilli: i.pointsMilli, subject: i.subject, letter: i.letter })),
     school: letterhead,
-    subjects: parseJson<CardSubject[]>(card.subjects, []),
-    overallLetter: card.overallLetter,
+    subjects: parseJson<CardSubject[]>(card.subjects, []).map((s) => ({ ...s, ...rounded(s.percent, s.letter, s.points) })),
+    overallLetter: overall.letter,
     gradePoints: card.gradePointsMilli === null ? null : card.gradePointsMilli / 1000,
     coScholastic: card.items.filter((i) => i.kind === "CO_SCHOLASTIC").map((i) => ({ area: i.title, grade: i.letter, note: i.comment })),
-    scale: parseJson(card.scale, { bands: current.bands, coScale: current.coScholastic.scale }),
-    layout: { ...DEFAULT_LAYOUT, ...parseJson<Partial<ReportCardLayout>>(card.layout, current.layout) },
+    scale: storedScale ?? { bands: current.bands, coScale: current.coScholastic.scale },
+    layout: { ...DEFAULT_LAYOUT, ...layoutSnapshot },
     scope: card.termId ? "TERM" : card.academicYearId ? "YEAR" : "PAPERS",
     practice: (() => {
       if (!card.practice) return null;
@@ -928,6 +994,20 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       }
     })(),
   };
+}
+
+/**
+ * The line under the overall figure that says which rule produced it. ONE
+ * FUNCTION FOR THE PAGE AND THE PDF, so the two can never describe the same
+ * number differently: "weighted" is the mean of subjects each weighted by
+ * exam kind, "exams" is marks over maximum across the card, and a card from
+ * before either rule ("points") is described by what it lists.
+ */
+export function gradingHintKey(card: Pick<Card, "overallPercent" | "gradingMethod">): TranslationKey {
+  if (card.overallPercent === null) return "reportView.noMarksCounted";
+  if (card.gradingMethod === "weighted") return "reportView.weightedExplainerShort";
+  if (card.gradingMethod === "exams") return "reportView.examsOnly";
+  return "reportView.acrossBelow";
 }
 
 async function mayRead(

@@ -688,7 +688,8 @@ export async function pupilLedger(schoolId: string, studentMembershipId: string,
     }),
   ]);
   const rows = demands.map((d) => toDemandRow(d, opts.todayKey));
-  const counted = rows.filter((d) => d.status !== "CANCELLED" && d.status !== "CARRIED");
+  const asked = rows.filter((d) => d.status !== "CANCELLED" && d.status !== "CARRIED");
+  const received = rows.filter((d) => d.status !== "CANCELLED");
   return {
     pupil: { studentMembershipId: pupil.id, name: pupil.user.preferredName ?? pupil.user.name, studentCode: pupil.studentCode, gradeLevel: pupil.gradeLevel, className: pupil.enrollments[0]?.class.name ?? null, leftAt: pupil.leftAt },
     year,
@@ -711,13 +712,18 @@ export async function pupilLedger(schoolId: string, studentMembershipId: string,
       reversalReason: p.reversalReason,
       refundedPaise: p.refunds.reduce((a, r) => a + r.amountPaise, 0),
     })),
-    // One row set for net and paid: a CARRIED demand's balance lives in next
-    // year's opening balance and a CANCELLED one asks nothing, so neither
-    // counts on either side — paid over the year's own demands can never
-    // exceed net. Outstanding and overdue are 0 on both already (toDemandRow).
+    // THE RULE (fees-reports.ts has it in full): outstanding and overdue are
+    // per demand — Σ max(0, net − paid) over OPEN and PART rows, never netted
+    // across a pupil's demands, so an overpaid Term 1 does not hide Term 2's
+    // balance. Net leaves out CANCELLED rows (they ask nothing) and CARRIED
+    // ones (their balance is next year's opening balance). Paid leaves out
+    // only CANCELLED rows: money paid on a demand before it was carried was
+    // received in THIS year against this year's receipts and stays in this
+    // year's paid total, so after a carry-forward paid may exceed net here —
+    // the difference is exactly what the opening balance was reduced by.
     totals: {
-      netPaise: counted.reduce((a, d) => a + d.netPaise, 0),
-      paidPaise: counted.reduce((a, d) => a + d.paidPaise, 0),
+      netPaise: asked.reduce((a, d) => a + d.netPaise, 0),
+      paidPaise: received.reduce((a, d) => a + d.paidPaise, 0),
       outstandingPaise: rows.reduce((a, d) => a + d.outstandingPaise, 0),
       overduePaise: rows.filter((d) => d.overdue).reduce((a, d) => a + d.outstandingPaise, 0),
     },
@@ -748,9 +754,12 @@ export async function classFeeRoster(ctx: ActiveContext, classId: string, todayK
       const mine = demands.filter((d) => d.studentMembershipId === e.student.id && (d.status === "OPEN" || d.status === "PART" || d.status === "PAID"));
       const netPaise = mine.reduce((a, d) => a + d.netPaise, 0);
       const paidPaise = mine.reduce((a, d) => a + d.paidPaise, 0);
-      const overduePaise = mine.filter((d) => d.status !== "PAID" && dateToDay(d.dueDate) < todayKeyInZone).reduce((a, d) => a + d.netPaise - d.paidPaise, 0);
+      // Per demand, as everywhere: Σ max(0, net − paid) over the open rows.
+      const balance = (d: (typeof mine)[number]) => (d.status === "PAID" ? 0 : Math.max(0, d.netPaise - d.paidPaise));
+      const outstandingPaise = mine.reduce((a, d) => a + balance(d), 0);
+      const overduePaise = mine.filter((d) => dateToDay(d.dueDate) < todayKeyInZone).reduce((a, d) => a + balance(d), 0);
       const plan = planOf.get(e.student.id);
-      return { studentMembershipId: e.student.id, name: e.student.user.preferredName ?? e.student.user.name, studentCode: e.student.studentCode, structureId: plan?.id ?? null, structureName: plan?.name ?? null, netPaise, paidPaise, outstandingPaise: Math.max(0, netPaise - paidPaise), overduePaise };
+      return { studentMembershipId: e.student.id, name: e.student.user.preferredName ?? e.student.user.name, studentCode: e.student.studentCode, structureId: plan?.id ?? null, structureName: plan?.name ?? null, netPaise, paidPaise, outstandingPaise, overduePaise };
     }),
   };
 }

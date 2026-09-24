@@ -11,6 +11,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { createHmac } from "node:crypto";
 import { PrismaClient } from "@prisma/client";
 import type { ActiveContext } from "@/lib/session";
+import { addDaysToKey, todayKey } from "@/lib/dates";
 import { notify } from "@/lib/notify";
 import { MESSAGE_TEMPLATES, dltForm, renderTemplate, smsSegments, whatsappForm, whatsappVarOrder } from "@/lib/message-templates";
 import {
@@ -34,6 +35,7 @@ import {
 
 const db = new PrismaClient();
 const STAMP = Date.now();
+const TODAY = todayKey("Asia/Kolkata");
 let schoolId = "";
 let adminUserId = "";
 let adminMembershipId = "";
@@ -188,6 +190,29 @@ describe("broadcasts", () => {
     expect((await resolveAudience(schoolId, { kind: "PEOPLE", userIds: [parentA, "nobody"] })).parentUserIds).toEqual([parentA]);
     expect((await resolveAudience(schoolId, { kind: "OVERDUE_FEES" })).parentUserIds).toEqual([]);
     await expect(resolveAudience(schoolId, { kind: "CLASS", classId: "nope" })).rejects.toThrow("messaging.notFound");
+  });
+
+  it("the overdue-fees audience is this year's overdue demands of pupils on the roll: not a leaver's, not last year's, not one due tomorrow", async () => {
+    const past = new Date(`${addDaysToKey(TODAY, -5)}T00:00:00.000Z`);
+    const [thisYear, lastYear] = await Promise.all([
+      db.academicYear.create({ data: { schoolId, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true }, select: { id: true } }),
+      db.academicYear.create({ data: { schoolId, name: "2025–26", startDate: new Date("2025-06-01T00:00:00Z"), endDate: new Date("2026-04-30T00:00:00Z"), isCurrent: false }, select: { id: true } }),
+    ]);
+    // A pupil who has left, with their own guardian, owing this year.
+    const [lu, lp] = await Promise.all([db.user.create({ data: { name: "ZZ Msg Leaver", email: `zz-msg-leaver-${STAMP}@test.invalid` }, select: { id: true } }), db.user.create({ data: { name: "ZZ Msg LeaverParent", email: `zz-msg-leaverparent-${STAMP}@test.invalid`, phone: `+9198709${String(STAMP).slice(-6)}`, phoneVerifiedAt: new Date() }, select: { id: true } })]);
+    const leaver = (await db.membership.create({ data: { userId: lu.id, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: new Date(), studentCode: `ZML${STAMP}`, gradeLevel: "3" }, select: { id: true } })).id;
+    await db.guardianship.create({ data: { parentUserId: lp.id, studentMembershipId: leaver, studentSchoolId: schoolId, status: "ACTIVE" } });
+    await db.feeDemand.createMany({
+      data: [
+        { schoolId, studentMembershipId: pupilA, academicYearId: thisYear.id, label: "Term 1", dueDate: past, grossPaise: 500_00, netPaise: 500_00, status: "OPEN" },
+        { schoolId, studentMembershipId: leaver, academicYearId: thisYear.id, label: "Term 1", dueDate: past, grossPaise: 500_00, netPaise: 500_00, status: "OPEN" },
+        { schoolId, studentMembershipId: pupilB, academicYearId: lastYear.id, label: "Term 3", dueDate: past, grossPaise: 500_00, netPaise: 500_00, status: "PART", paidPaise: 100_00 },
+        { schoolId, studentMembershipId: pupilC, academicYearId: thisYear.id, label: "Term 1", dueDate: new Date(`${addDaysToKey(TODAY, 1)}T00:00:00.000Z`), grossPaise: 500_00, netPaise: 500_00, status: "OPEN" },
+      ],
+    });
+    expect((await resolveAudience(schoolId, { kind: "OVERDUE_FEES" })).parentUserIds).toEqual([parentA]);
+    await db.feeDemand.deleteMany({ where: { schoolId } });
+    await db.academicYear.deleteMany({ where: { schoolId } });
   });
 
   it("previews reach, then sends a notice, queued and drained inline, and reports per person", async () => {

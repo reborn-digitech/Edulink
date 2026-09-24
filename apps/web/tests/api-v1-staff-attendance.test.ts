@@ -13,8 +13,10 @@ import { POST as settingsPost } from "@/app/api/v1/office/staff-attendance/setti
 import { GET as monthGet } from "@/app/api/v1/office/staff-attendance/month/route";
 import { GET as meGet } from "@/app/api/v1/staff/attendance/me/route";
 import { POST as checkInPost } from "@/app/api/v1/staff/attendance/check-in/route";
+import { GET as exportGet } from "@/app/(app)/admin/staff-attendance/export/route";
+import { parseCsvRecords } from "@/lib/csv";
 import { minuteOfDayIn } from "@/lib/staff-attendance";
-import { todayKey } from "@/lib/dates";
+import { todayKey, zonedStartOfDay } from "@/lib/dates";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -160,5 +162,62 @@ describe("the register", () => {
     await as("PARENT");
     expect((await checkInPost()).status).toBe(403);
     expect((await meGet(get("/api/v1/staff/attendance/me"))).status).toBe(403);
+  });
+});
+
+describe("the month's file and the days it counts", () => {
+  it("a closing holiday has no column, a teacher who left mid-month keeps a row to their last day, and every count equals its cells and adds up to workingDays", async () => {
+    await as("ADMIN");
+    const thisMonth = today.slice(0, 7);
+    // The past working days of this month, Sundays out — the same week every other test assumes.
+    const pastOpen: string[] = [];
+    for (let d = `${thisMonth}-01`; d < today; d = todayKey("UTC", new Date(new Date(`${d}T00:00:00Z`).getTime() + 86_400_000))) {
+      if (new Date(`${d}T00:00:00Z`).getUTCDay() !== 0) pastOpen.push(d);
+    }
+    const holidayDay = pastOpen[0] ?? null;
+    const lastDay = pastOpen[pastOpen.length - 1] ?? today;
+    // A third teacher, marked on the day that is about to close and on their last day, who then leaves.
+    const suffix = String(STAMP);
+    const three = await db.user.create({ data: { name: `ZZ Satt Teacher Three`, email: `zz-satt-teacher-three-${suffix}@test.invalid` }, select: { id: true } });
+    const threeM = (await db.membership.create({ data: { userId: three.id, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } })).id;
+    const entries = [...new Set([holidayDay, lastDay].filter((d): d is string => Boolean(d)))];
+    for (const d of entries) expect((await markPost(json("/x", { date: d, entries: [{ membershipId: threeM, status: "PRESENT" }] }))).status).toBe(200);
+    if (holidayDay) await db.holiday.create({ data: { schoolId, name: "ZZ Closing Day", kind: "HOLIDAY", startDateKey: holidayDay, endDateKey: holidayDay } });
+    await db.membership.update({ where: { id: threeM }, data: { leftAt: new Date(zonedStartOfDay(lastDay, TZ).getTime() + 12 * 3_600_000) } });
+
+    const month = await (await monthGet(get("/api/v1/office/staff-attendance/month"))).json();
+    expect(month.workingDaysInMonth).toBeGreaterThanOrEqual(month.workingDays);
+    // Open days up to today: the past working days less the holiday, plus today when it is a working day.
+    const todayOpen = new Date(`${today}T00:00:00Z`).getUTCDay() !== 0 ? 1 : 0;
+    expect(month.workingDays).toBe(pastOpen.length - (holidayDay ? 1 : 0) + todayOpen);
+    const rows: { membershipId: string; present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number }[] = month.rows;
+    for (const r of rows) expect(r.present + r.late + r.halfDay + r.absent + r.onLeave + r.unmarked).toBe(r.workingDays);
+    const leaver = rows.find((r) => r.membershipId === threeM);
+    expect(leaver).toBeTruthy();
+    // Counted to their last day only; the mark on the closed day counts for nothing.
+    expect(leaver!.workingDays).toBe(pastOpen.filter((d) => d !== holidayDay && d <= lastDay).length);
+    // Their mark on the last day counts once that day is open; the one on the holiday never does.
+    const lastDayOpen = lastDay !== holidayDay && new Date(`${lastDay}T00:00:00Z`).getUTCDay() !== 0;
+    expect(leaver!.present).toBe(lastDayOpen ? 1 : 0);
+
+    const res = await exportGet(get("/admin/staff-attendance/export"));
+    expect(res.status).toBe(200);
+    const [headers = [], ...records] = parseCsvRecords(await res.text()).records;
+    const dayCols = headers.map((h, i) => [h, i] as const).filter(([h]) => /^\d{4}-\d{2}-\d{2}$/.test(h));
+    if (holidayDay) expect(headers).not.toContain(holidayDay);
+    for (const [d] of dayCols) expect(new Date(`${d}T00:00:00Z`).getUTCDay()).not.toBe(0);
+    expect(dayCols.length).toBe(month.workingDays);
+    const col = (name: string) => headers.indexOf(name);
+    expect(records.length).toBe(rows.length);
+    for (const rec of records) {
+      const cells = dayCols.map(([, i]) => rec[i] ?? "");
+      const n = (mark: string) => cells.filter((c) => c === mark).length;
+      expect(n("P") + n("L") + n("H") + n("A")).toBe(Number(rec[col("present")]) + Number(rec[col("late")]) + Number(rec[col("half_day")]) + Number(rec[col("absent")]));
+      expect(n("LV")).toBe(Number(rec[col("on_leave")]));
+    }
+    const leaverRec = records.find((r) => r[col("name")] === "ZZ Satt Teacher Three");
+    expect(leaverRec).toBeTruthy();
+    for (const [d, i] of dayCols) if (d > lastDay) expect(leaverRec![i] ?? "").toBe("");
+    await db.holiday.deleteMany({ where: { schoolId, name: "ZZ Closing Day" } });
   });
 });

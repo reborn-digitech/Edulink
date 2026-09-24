@@ -56,6 +56,10 @@ const PUPIL_EMAILS = ["insight.a.unit@riverside.test", "insight.b.unit@riverside
 const MADE = [TEACHER_EMAIL, ...PUPIL_EMAILS];
 
 const WINDOW: Window = { fromDateKey: "2026-02-01", toDateKey: "2026-02-28" };
+/** The head's shortest span: the window's last week. */
+const WINDOW_7: Window = { fromDateKey: "2026-02-22", toDateKey: "2026-02-28" };
+/** Inside every window this suite uses. Riverside is Europe/London. */
+const GRADED_AT = new Date("2026-02-25T12:00:00.000Z");
 
 let riversideId: string;
 let oakfieldId: string;
@@ -207,7 +211,7 @@ async function markRegister(dateKey: string, statuses: string[]) {
   }
 }
 
-async function grade(index: number, scoreMilli: number) {
+async function grade(index: number, scoreMilli: number, gradedAt: Date = GRADED_AT) {
   await db.grade.upsert({
     where: {
       assignmentId_studentMembershipId: {
@@ -221,8 +225,9 @@ async function grade(index: number, scoreMilli: number) {
       studentMembershipId: pupilIds[index]!,
       gradedByMembershipId: teacherMembershipId,
       scoreMilli,
+      gradedAt,
     },
-    update: { scoreMilli },
+    update: { scoreMilli, gradedAt },
   });
 }
 
@@ -318,6 +323,38 @@ describe("⚠ academic progress", () => {
     const klass = mine(await classInsights(principal, WINDOW));
     expect(klass.progress.percent).toBeNull();
     expect(klass.progress.pupilsWithNoMarks).toBe(3);
+  });
+
+  /**
+   * ⚠ THE SPAN BESIDE THE NUMBER IS THE SPAN OF THE NUMBER. The page says
+   * "last 7 days" and the attendance column obeyed it while the progress
+   * column averaged every mark the class ever had. A mark graded thirty days
+   * ago is outside a week; one graded at 23:30 on the window's last day, on
+   * the school's clock, is inside it.
+   */
+  it("⚠ counts only marks graded inside the span", async () => {
+    await grade(0, 10_000, new Date("2026-01-29T12:00:00.000Z")); // thirty days before the week
+    await grade(1, 80_000, new Date("2026-02-25T12:00:00.000Z")); // inside the week
+    await grade(2, 60_000, new Date("2026-02-28T23:30:00.000Z")); // the last evening, London time
+
+    const week = mine(await classInsights(principal, WINDOW_7));
+    expect(week.progress).toEqual({ percent: 70, pupilsCounted: 2, pupilsWithNoMarks: 1 });
+
+    const month = mine(await classInsights(principal, WINDOW));
+    expect(month.progress).toEqual({ percent: 70, pupilsCounted: 2, pupilsWithNoMarks: 1 });
+
+    const all = mine(await classInsights(principal, { fromDateKey: "2026-01-01", toDateKey: "2026-02-28" }));
+    expect(all.progress).toEqual({ percent: 50, pupilsCounted: 3, pupilsWithNoMarks: 0 });
+
+    // A span with no marks in it: null, not 0, and nobody counted.
+    const empty = mine(await classInsights(principal, { fromDateKey: "2026-03-01", toDateKey: "2026-03-07" }));
+    expect(empty.progress).toEqual({ percent: null, pupilsCounted: 0, pupilsWithNoMarks: 3 });
+
+    // The pupil view follows the same span.
+    const { pupils } = await pupilInsights(principal, classId, WINDOW_7);
+    expect(pupils.find((p) => p.name === "Aaron Best")).toMatchObject({ overallPercent: null, hasMarks: false });
+    expect(pupils.find((p) => p.name === "Mira Middle")).toMatchObject({ overallPercent: 80, hasMarks: true });
+    expect(pupils.find((p) => p.name === "Zara Zenith")).toMatchObject({ overallPercent: 60, hasMarks: true });
   });
 });
 

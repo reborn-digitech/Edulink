@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { overallPercent, weightedPercent, weightsAreUsable, type CategoryWeight } from "./grading";
-import { addDaysToKey, todayKey } from "./dates";
+import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import { registersDue } from "./attendance";
 import type { ActiveContext } from "./session";
 import type { AttendanceStatus } from "./constants";
@@ -36,6 +36,19 @@ export const DEFAULT_WINDOW_DAYS = 30;
 export const ATTENDANCE_CONCERN_PERCENT = 85;
 
 export type Window = { fromDateKey: string; toDateKey: string };
+
+/**
+ * The window as instants, for the columns that hold a timestamp rather than a
+ * day key: [first day 00:00, day after the last 00:00) on the school's clock.
+ * A mark graded at 21:00 on the window's last day is in it; one graded the
+ * morning after is not.
+ */
+function instantsOf(window: Window, timezone: string): { gte: Date; lt: Date } {
+  return {
+    gte: zonedStartOfDay(window.fromDateKey, timezone),
+    lt: zonedStartOfDay(addDaysToKey(window.toDateKey, 1), timezone),
+  };
+}
 
 export type ClassInsight = {
   classId: string;
@@ -140,12 +153,16 @@ export async function classInsights(
 ): Promise<ClassInsight[]> {
   const schoolId = assertOversight(ctx);
 
-  const classes = await db.class.findMany({
-    where: { schoolId, archivedAt: null },
-    select: { id: true, name: true, section: true, gradeLevel: true },
-    orderBy: [{ gradeLevel: "asc" }, { name: "asc" }],
-  });
+  const [classes, school] = await Promise.all([
+    db.class.findMany({
+      where: { schoolId, archivedAt: null },
+      select: { id: true, name: true, section: true, gradeLevel: true },
+      orderBy: [{ gradeLevel: "asc" }, { name: "asc" }],
+    }),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+  ]);
   if (classes.length === 0) return [];
+  const gradedIn = instantsOf(window, school.timezone);
 
   const classIds = classes.map((c) => c.id);
 
@@ -208,7 +225,7 @@ export async function classInsights(
     rollByClass.set(row.classId, list);
   }
 
-  const progress = await progressByClass(schoolId, classIds, rollByClass);
+  const progress = await progressByClass(schoolId, classIds, rollByClass, gradedIn);
 
   const cardsByClass = new Map<string, Map<string, { published: number; drafts: number }>>();
   for (const row of cards) {
@@ -267,15 +284,21 @@ export async function classInsights(
  * Pupils with no marks at all are EXCLUDED from the mean and counted separately,
  * so a class where half the work is unmarked cannot quietly report the other
  * half's average as the class's.
+ *
+ * AND IT IS THE WINDOW'S FIGURE. The page shows the span beside the number,
+ * and only marks graded inside it count — the same rule the attendance
+ * column has always followed. A pupil whose marks all fall outside the
+ * window is a pupil with no marks in it.
  */
 async function progressByClass(
   schoolId: string,
   classIds: string[],
   rollByClass: Map<string, string[]>,
+  gradedIn: { gte: Date; lt: Date },
 ): Promise<Map<string, { percent: number | null; pupilsCounted: number; pupilsWithNoMarks: number }>> {
   const [grades, categories] = await Promise.all([
     db.grade.findMany({
-      where: { schoolId, assignment: { classId: { in: classIds } } },
+      where: { schoolId, gradedAt: gradedIn, assignment: { classId: { in: classIds } } },
       select: {
         studentMembershipId: true,
         scoreMilli: true,
@@ -354,10 +377,13 @@ export async function pupilInsights(
 ): Promise<{ klass: { id: string; name: string; section: string | null }; pupils: PupilInsight[] }> {
   const schoolId = assertOversight(ctx);
 
-  const klass = await db.class.findFirst({
-    where: { id: classId, schoolId },
-    select: { id: true, name: true, section: true },
-  });
+  const [klass, school] = await Promise.all([
+    db.class.findFirst({
+      where: { id: classId, schoolId },
+      select: { id: true, name: true, section: true },
+    }),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+  ]);
   if (!klass) throw new AccessError("access.thatClassIsNotInThisSchool", "NOT_FOUND");
 
   const roll = await db.enrollment.findMany({
@@ -381,8 +407,14 @@ export async function pupilInsights(
       },
       _count: true,
     }),
+    // The window's marks only, like the register beside them.
     db.grade.findMany({
-      where: { schoolId, studentMembershipId: { in: membershipIds }, assignment: { classId } },
+      where: {
+        schoolId,
+        studentMembershipId: { in: membershipIds },
+        gradedAt: instantsOf(window, school.timezone),
+        assignment: { classId },
+      },
       select: {
         studentMembershipId: true,
         scoreMilli: true,

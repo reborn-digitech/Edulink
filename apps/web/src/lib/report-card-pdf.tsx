@@ -2,7 +2,7 @@ import "server-only";
 import path from "node:path";
 import React from "react";
 import { Document, Font, Image, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
-import type { Card } from "./report-cards";
+import { gradingHintKey, type Card } from "./report-cards";
 import { readStoredFile } from "./storage";
 import { formatMilli } from "./validation";
 import { nameCarriesSection } from "./codes";
@@ -73,6 +73,8 @@ const styles = StyleSheet.create({
   scale: { marginTop: 8, fontSize: 7.5, color: MUTED },
 });
 
+/* A subject's or the overall's percent arrives already rounded to the one
+   decimal the letter beside it was read from; toFixed here only fixes the width. */
 const pct = (n: number | null, digits = 1) => (n === null ? "—" : `${n.toFixed(digits)}%`);
 
 function Row({ children }: { children: React.ReactNode }) {
@@ -90,6 +92,8 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
   const subjects = card.subjects;
   const showPoints = layout.showGradePoints && subjects.some((s) => s.points !== null);
   const hasLetters = card.scale.bands.length > 0;
+  // Marks over maximum: the rows show the marks they contributed, and the overall is their sum.
+  const showMarks = card.gradingMethod === "exams" && subjects.some((s) => s.pointsMilli);
 
   return (
     <Page size={layout.paper === "LETTER" ? "LETTER" : "A4"} style={styles.page}>
@@ -122,7 +126,7 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
             {pct(card.overallPercent)}
             {card.overallLetter ? `  ${card.overallLetter}` : ""}
           </Text>
-          <Text style={styles.figureLabel}>{card.gradingMethod === "weighted" ? t("reportView.weightedExplainerShort") : t("reportView.examsOnly")}</Text>
+          <Text style={styles.figureLabel}>{t(gradingHintKey(card))}</Text>
         </View>
         {showPoints && card.gradePoints !== null ? (
           <View style={styles.figure}>
@@ -146,6 +150,7 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
           <View style={styles.head}>
             <Text style={styles.cellSubject}>{t("reportView.subject")}</Text>
             <Text style={styles.cellPart}>{card.scope === "YEAR" ? t("reportView.terms") : t("reportView.papers")}</Text>
+            {showMarks ? <Text style={styles.cellNum}>{t("reportView.mark")}</Text> : null}
             <Text style={styles.cellNum}>{t("reportView.percent")}</Text>
             {hasLetters ? <Text style={styles.cellGrade}>{t("reportView.grade")}</Text> : null}
             {showPoints ? <Text style={styles.cellGrade}>{t("reportView.points")}</Text> : null}
@@ -161,6 +166,7 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
                   })
                   .join(" · ")}
               </Text>
+              {showMarks ? <Text style={styles.cellNum}>{s.scoreMilli !== null && s.scoreMilli !== undefined && s.pointsMilli ? `${formatMilli(s.scoreMilli)}/${formatMilli(s.pointsMilli)}` : "—"}</Text> : null}
               <Text style={styles.cellNum}>{pct(s.percent)}</Text>
               {hasLetters ? <Text style={styles.cellGrade}>{s.letter ?? "—"}</Text> : null}
               {showPoints ? <Text style={styles.cellGrade}>{s.points === null ? "—" : String(s.points)}</Text> : null}
@@ -232,7 +238,9 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
         {[
           layout.footerNote,
           card.authorName ? t("reportView.writtenBy", { name: card.authorName }) : null,
-          card.publishedAt ? t("reportView.issuedOn", { date: card.publishedAt.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric" }) }) : t("reportView.notYetIssued"),
+          // The publish day in the SCHOOL'S zone — a card published at 20:00 UTC
+          // on the 3rd was issued on the 4th in Kolkata, and says so.
+          card.issuedDateKey ? t("reportView.issuedOn", { date: date(card.issuedDateKey) }) : t("reportView.notYetIssued"),
         ]
           .filter(Boolean)
           .join("  ·  ")}

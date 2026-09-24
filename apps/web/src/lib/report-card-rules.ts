@@ -161,7 +161,26 @@ export function parseConfig(raw: string | null | undefined, words: Words = engli
   }
 }
 
-/** The band a percent falls in; null on a scale with no bands or for no percent. */
+/**
+ * The percent as the card prints it: one decimal, rounded the way `toFixed(1)`
+ * rounds, so the number a reader sees and the number a band is read from are
+ * the same number. Built from the string on purpose — `Math.round(x * 10) / 10`
+ * and `toFixed(1)` part company on a few binary fractions, and the card
+ * prints `toFixed`.
+ */
+export function shownPercent(percent: number | null): number | null {
+  return percent === null ? null : Number(percent.toFixed(1));
+}
+
+/**
+ * The band a percent falls in; null on a scale with no bands or for no percent.
+ *
+ * ⚠ THE CALLER ROUNDS FIRST. Pass `shownPercent(x)`, never the raw figure: a
+ * card that prints "91.0 %" must carry the band of 91.0, and 90.96 banded raw
+ * comes out one grade lower than the number beside it. Every letter on a
+ * card — the overall, each subject, each paper — is read from the rounded
+ * percent the card shows.
+ */
 export function bandFor(percent: number | null, bands: GradeBand[]): GradeBand | null {
   if (percent === null || bands.length === 0) return null;
   const sorted = [...bands].sort((a, b) => b.minPercent - a.minPercent);

@@ -66,7 +66,10 @@ const monthRowSchema = z.object({
   absent: count,
   onLeave: count,
   unmarked: count,
+  /** Open teaching days up to today (or the person's last day): present + late + halfDay + absent + onLeave + unmarked. */
   workingDays: count,
+  /** Open teaching days in the whole month, today and the rest of it included. */
+  workingDaysInMonth: count.optional(),
   /** Present, late and half days over the working days marked so far, or null with nothing marked. */
   percent: z.number().nullable(),
 });
@@ -77,7 +80,10 @@ export const staffMonthSchema = z.object({
   month: monthKey,
   previousMonth: monthKey,
   nextMonth: monthKey.nullable(),
+  /** Open teaching days up to today. */
   workingDays: count,
+  /** Open teaching days in the whole month. */
+  workingDaysInMonth: count.optional(),
   rows: z.array(monthRowSchema),
 });
 

@@ -4,6 +4,7 @@ import { AccessError } from "@/lib/tenancy";
 import { buildProgressReport } from "@/lib/reports";
 import { overallPercent } from "@/lib/grading";
 import { getAttendanceSummary } from "@/lib/attendance";
+import { addDaysToKey, zonedStartOfDay } from "@/lib/dates";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -63,6 +64,19 @@ let admin: ActiveContext;
 let otherSchoolAdmin: ActiveContext;
 let guardian: ActiveContext;
 let strangerParent: ActiveContext;
+let childTimezone: string;
+
+/**
+ * The marks a report covers: graded inside its window on the school's clock,
+ * [first day 00:00, day after the last 00:00). Recomputed here so the test
+ * asserts the rule and not the helper's own reading of it.
+ */
+function gradedIn(window: { fromKey: string; toKey: string }) {
+  return {
+    gte: zonedStartOfDay(window.fromKey, childTimezone),
+    lt: zonedStartOfDay(addDaysToKey(window.toKey, 1), childTimezone),
+  };
+}
 
 beforeAll(async () => {
   const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
@@ -78,6 +92,7 @@ beforeAll(async () => {
   });
   childMembershipId = guarded.studentMembershipId;
   childSchoolId = guarded.student.schoolId;
+  childTimezone = riverside.timezone;
 
   const priyaTeacher = await db.membership.findFirstOrThrow({
     where: { userId: priya.id, schoolId: riverside.id, role: "TEACHER" },
@@ -198,11 +213,11 @@ describe("the figures", () => {
     expect(report.attendance.counts).toEqual(direct.counts);
   });
 
-  it("⚠ reports the SAME overall grade the gradebook does", async () => {
+  it("⚠ reports the SAME overall grade the gradebook does over the same window", async () => {
     const report = await buildProgressReport(guardian, childMembershipId);
 
     const grades = await db.grade.findMany({
-      where: { studentMembershipId: childMembershipId, scoreMilli: { not: null } },
+      where: { studentMembershipId: childMembershipId, scoreMilli: { not: null }, gradedAt: gradedIn(report.window) },
       include: { assignment: { select: { pointsMilli: true } } },
     });
     const expected = overallPercent(
@@ -276,7 +291,7 @@ describe("the figures", () => {
 
       const report = await buildProgressReport(guardian, childMembershipId);
       const all = await db.grade.findMany({
-        where: { studentMembershipId: childMembershipId, scoreMilli: { not: null } },
+        where: { studentMembershipId: childMembershipId, scoreMilli: { not: null }, gradedAt: gradedIn(report.window) },
         include: { assignment: { select: { pointsMilli: true } } },
       });
       const weighted = overallPercent(
@@ -297,16 +312,63 @@ describe("the figures", () => {
     }
   });
 
-  it("lists every marked piece of work, with the class it belongs to", async () => {
+  it("lists every marked piece of work in the window, with the class it belongs to", async () => {
     const report = await buildProgressReport(guardian, childMembershipId);
     const marked = await db.grade.count({
-      where: { studentMembershipId: childMembershipId, scoreMilli: { not: null } },
+      where: { studentMembershipId: childMembershipId, scoreMilli: { not: null }, gradedAt: gradedIn(report.window) },
     });
 
     expect(report.grades.marked).toHaveLength(marked);
     for (const row of report.grades.marked) {
       expect(row.title).toBeTruthy();
       expect(row.className).toBeTruthy();
+    }
+  });
+
+  /**
+   * ⚠ A TWELVE-WEEK REPORT IS TWELVE WEEKS OF MARKS. The overall used to be a
+   * lifetime average under a term's heading, so a bad year two years back
+   * dragged down every report the child was ever given. A nought graded two
+   * years ago now moves nothing on the default window, and a report whose
+   * window reaches back that far shows it.
+   */
+  it("⚠ a mark from two years ago does not move the 84-day overall", async () => {
+    const before = await buildProgressReport(guardian, childMembershipId);
+    const klass = await db.class.findFirstOrThrow({
+      where: { schoolId: childSchoolId, enrollments: { some: { studentMembershipId: childMembershipId } } },
+    });
+    const author = await db.membership.findFirstOrThrow({ where: { schoolId: childSchoolId, role: "TEACHER" } });
+    const twoYearsAgo = new Date(Date.now() - 2 * 365 * 86_400_000);
+    const old = await db.assignment.create({
+      data: {
+        schoolId: childSchoolId, classId: klass.id, authorMembershipId: author.id,
+        title: "TEST old exam", pointsMilli: 100_000, publishedAt: twoYearsAgo, createdAt: twoYearsAgo,
+      },
+    });
+    try {
+      await db.grade.create({
+        data: {
+          schoolId: childSchoolId, assignmentId: old.id, studentMembershipId: childMembershipId,
+          scoreMilli: 0, gradedByMembershipId: author.id, gradedAt: twoYearsAgo,
+        },
+      });
+      const after = await buildProgressReport(guardian, childMembershipId);
+      expect(after.grades.overallPercent).toBe(before.grades.overallPercent);
+      expect(after.grades.marked).toHaveLength(before.grades.marked.length);
+      expect(after.grades.marked.map((m) => m.title)).not.toContain("TEST old exam");
+
+      // A window that reaches back that far does count it.
+      const reaching = await buildProgressReport(guardian, childMembershipId, {
+        fromKey: addDaysToKey(twoYearsAgo.toISOString().slice(0, 10), -2),
+        toKey: after.window.toKey,
+      });
+      expect(reaching.grades.marked.map((m) => m.title)).toContain("TEST old exam");
+      if (before.grades.overallPercent !== null) {
+        expect(reaching.grades.overallPercent!).toBeLessThan(before.grades.overallPercent);
+      }
+    } finally {
+      await db.grade.deleteMany({ where: { assignmentId: old.id } });
+      await db.assignment.deleteMany({ where: { id: old.id } });
     }
   });
 

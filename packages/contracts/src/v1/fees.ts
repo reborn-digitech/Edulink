@@ -317,6 +317,9 @@ export const feeDuesRowSchema = z.object({
   overduePaise: paise,
   nextDueKey: dateKey.nullable(),
   hasPlan: z.boolean(),
+  /** Off the roll (left, or no longer ACTIVE) but still owing this year: kept on the list so the office can chase it. */
+  /** The pupil has left the roll; their balance stays on the list, flagged. */
+  left: z.boolean().default(false),
 });
 export const feeDuesSchema = z.object({
   rows: z.array(feeDuesRowSchema),

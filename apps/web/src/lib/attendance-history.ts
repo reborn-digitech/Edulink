@@ -66,9 +66,54 @@ export type HistoryDay = {
   late: number;
   absent: number;
   excused: number;
-  /** Present or late, over everyone marked that day. */
-  percent: number;
+  /** Present or late, over everyone marked that day. Null with no marks. */
+  percent: number | null;
 };
+
+export type RollPupil = {
+  id: string;
+  studentCode: string | null;
+  user: { name: string; preferredName: string | null };
+};
+
+/**
+ * The roll of a month: every pupil with a mark in any of the month's sessions
+ * for the class, together with every enrolment in the class that was live at
+ * some point in the month (enrolled by its end, not removed before its start),
+ * in name order. Today's ACTIVE roll is the wrong list for a past month — an
+ * archived or promoted class has none, and a child who left mid-month would
+ * vanish with their marks — so the month is read for who was in it.
+ */
+export async function monthRoll(
+  schoolId: string,
+  classId: string,
+  month: string,
+  sessions: { records: { studentMembershipId: string }[] }[],
+): Promise<RollPupil[]> {
+  const start = new Date(`${month}-01T00:00:00.000Z`);
+  const end = new Date(`${shiftMonth(month, 1)}-01T00:00:00.000Z`);
+  const marked = [...new Set(sessions.flatMap((s) => s.records.map((r) => r.studentMembershipId)))];
+
+  const rows = await db.membership.findMany({
+    where: {
+      schoolId,
+      OR: [
+        { id: { in: marked } },
+        {
+          enrollments: {
+            some: {
+              classId,
+              enrolledAt: { lt: end },
+              OR: [{ removedAt: null }, { removedAt: { gte: start } }],
+            },
+          },
+        },
+      ],
+    },
+    select: { id: true, studentCode: true, user: { select: { name: true, preferredName: true } } },
+  });
+  return rows.sort((a, b) => a.user.name.localeCompare(b.user.name, undefined, { sensitivity: "base" }));
+}
 
 export type HistoryPupil = {
   membershipId: string;
@@ -110,27 +155,19 @@ export async function attendanceHistory(
   const klass = allowed.find((c) => c.id === classId);
   if (!klass) throw new AccessError("access.notYourClassHistory");
 
-  const [sessions, roll] = await Promise.all([
-    db.attendanceSession.findMany({
-      where: { schoolId: ctx.schoolId!, classId, dateKey: { startsWith: `${month}-` } },
-      orderBy: { dateKey: "asc" },
-      select: { dateKey: true, records: { select: { studentMembershipId: true, status: true } } },
-    }),
-    db.enrollment.findMany({
-      where: { schoolId: ctx.schoolId!, classId, status: "ACTIVE" },
-      select: {
-        studentMembershipId: true,
-        student: { select: { user: { select: { name: true, preferredName: true } } } },
-      },
-    }),
-  ]);
+  const sessions = await db.attendanceSession.findMany({
+    where: { schoolId: ctx.schoolId!, classId, dateKey: { startsWith: `${month}-` } },
+    orderBy: { dateKey: "asc" },
+    select: { dateKey: true, records: { select: { studentMembershipId: true, status: true } } },
+  });
+  const roll = await monthRoll(ctx.schoolId!, classId, month, sessions);
 
   const pupils = new Map<string, HistoryPupil>(
     roll.map((r) => [
-      r.studentMembershipId,
+      r.id,
       {
-        membershipId: r.studentMembershipId,
-        name: r.student.user.preferredName ?? r.student.user.name,
+        membershipId: r.id,
+        name: r.user.preferredName ?? r.user.name,
         marks: {},
         present: 0,
         late: 0,
@@ -146,11 +183,11 @@ export async function attendanceHistory(
   let there = 0;
 
   for (const session of sessions) {
-    const day: HistoryDay = { dateKey: session.dateKey, present: 0, late: 0, absent: 0, excused: 0, percent: 0 };
+    const day: HistoryDay = { dateKey: session.dateKey, present: 0, late: 0, absent: 0, excused: 0, percent: null };
     for (const record of session.records) {
       const status = record.status as AttendanceStatus;
-      // A child who has since left the class still counts in the day's
-      // totals — the register said what it said — but has no row.
+      // Every mark in the month has a row: a child who has since left the
+      // class is on the month's roll because the register said what it said.
       const pupil = pupils.get(record.studentMembershipId);
       if (pupil) {
         pupil.marks[session.dateKey] = status;
@@ -159,7 +196,8 @@ export async function attendanceHistory(
       bump(day, status);
     }
     const marked = day.present + day.late + day.absent + day.excused;
-    day.percent = marked === 0 ? 0 : Math.round(((day.present + day.late) / marked) * 100);
+    // A register with no marks is a blank, not a 0 % day.
+    day.percent = marked === 0 ? null : Math.round(((day.present + day.late) / marked) * 100);
     total += marked;
     there += day.present + day.late;
     days.push(day);

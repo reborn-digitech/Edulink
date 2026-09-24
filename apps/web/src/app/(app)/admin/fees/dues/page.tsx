@@ -96,7 +96,12 @@ export default async function DuesPage({ searchParams }: { searchParams: Promise
                       {r.name}
                     </Link>
                     {r.studentCode && <span className="ml-2 text-xs text-fg-muted">{r.studentCode}</span>}
-                    {!r.hasPlan && (
+                    {r.left && (
+                      <Badge tone="danger" size="sm" className="ml-2">
+                        {t("fees.duesLeft")}
+                      </Badge>
+                    )}
+                    {!r.hasPlan && !r.left && (
                       <Badge tone="warn" size="sm" className="ml-2">
                         {t("fees.pupilNoPlan")}
                       </Badge>

@@ -1,7 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
-import { dateKeyInZone } from "./dates";
+import { addDaysToKey, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -17,9 +17,15 @@ import type { ActiveContext } from "./session";
  *
  * A YEAR IS ITS DATE WINDOW. Report cards and badges carry `academicYearId`
  * and are matched by it where set; everything else (attendance, marks, exam
- * series) is matched by falling inside [startDate, endDate] in the school's
- * own timezone. Rows written before year-linkage existed fall back to the
- * window too, so an old report card is not orphaned by a schema improvement.
+ * series) is matched by falling inside the year's days IN THE SCHOOL'S OWN
+ * TIMEZONE: from 00:00 of the first day to the end of the last day, as the
+ * school's clock reads them. `startDate` and `endDate` hold UTC midnight of
+ * the days the office typed, so the ISO date IS the day (the same reading
+ * insights.ts and the badges use); the instants either side of a day come
+ * from `zonedStartOfDay`. Comparing a timestamp with the raw column was
+ * dropping a mark entered after 05:30 IST on the last day of the year. Rows
+ * written before year-linkage existed fall back to the window too, so an old
+ * report card is not orphaned by a schema improvement.
  *
  * ONLY CLOSED YEARS ARE LISTED. The current year is what every ordinary page
  * shows; an archive that includes "now" is two pages disagreeing about the
@@ -64,10 +70,40 @@ export async function closedYearsForPupil(
     select: { joinedAt: true, leftAt: true },
   });
   if (!membership) return [];
-  const years = await listClosedYears(schoolId);
-  return years.filter(
-    (y) => y.endDate >= membership.joinedAt && (membership.leftAt === null || y.startDate <= membership.leftAt),
-  );
+  const [years, school] = await Promise.all([
+    listClosedYears(schoolId),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+  ]);
+  return years.filter((y) => {
+    const w = windowOf(y, school.timezone);
+    return w.to > membership.joinedAt && (membership.leftAt === null || w.from <= membership.leftAt);
+  });
+}
+
+/**
+ * The year's window as instants: [first day 00:00, day after the last day
+ * 00:00) on the school's clock, and the day keys that bound the registers.
+ * `to` is EXCLUSIVE — the last day runs to its own midnight, not to 00:00 UTC.
+ */
+export type YearWindow = { fromKey: string; toKey: string; from: Date; to: Date };
+
+export function windowOf(
+  year: { startDate: Date; endDate: Date },
+  timezone: string,
+): YearWindow {
+  const fromKey = year.startDate.toISOString().slice(0, 10);
+  const toKey = year.endDate.toISOString().slice(0, 10);
+  return {
+    fromKey,
+    toKey,
+    from: zonedStartOfDay(fromKey, timezone),
+    to: zonedStartOfDay(addDaysToKey(toKey, 1), timezone),
+  };
+}
+
+/** Prisma's half-open filter for a timestamp column inside the window. */
+function inWindow(w: YearWindow) {
+  return { gte: w.from, lt: w.to };
 }
 
 async function yearOf(schoolId: string, yearId: string) {
@@ -79,11 +115,8 @@ async function yearOf(schoolId: string, yearId: string) {
     where: { id: schoolId },
     select: { timezone: true },
   });
-  return {
-    year,
-    fromKey: dateKeyInZone(year.startDate, school.timezone),
-    toKey: dateKeyInZone(year.endDate, school.timezone),
-  };
+  const w = windowOf(year, school.timezone);
+  return { year, w, fromKey: w.fromKey, toKey: w.toKey };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -118,7 +151,7 @@ export async function pupilYearArchive(
     schoolId = link.student.schoolId;
   }
 
-  const { year, fromKey, toKey } = await yearOf(schoolId, yearId);
+  const { year, w, fromKey, toKey } = await yearOf(schoolId, yearId);
 
   const [reportCards, attendance, badges, grades] = await Promise.all([
     db.reportCard.findMany({
@@ -128,10 +161,7 @@ export async function pupilYearArchive(
         status: "PUBLISHED",
         OR: [
           { academicYearId: year.id },
-          {
-            academicYearId: null,
-            publishedAt: { gte: year.startDate, lte: year.endDate },
-          },
+          { academicYearId: null, publishedAt: inWindow(w) },
         ],
       },
       orderBy: { publishedAt: "asc" },
@@ -160,7 +190,7 @@ export async function pupilYearArchive(
       where: {
         schoolId,
         studentMembershipId,
-        gradedAt: { gte: year.startDate, lte: year.endDate },
+        gradedAt: inWindow(w),
         scoreMilli: { not: null },
       },
       select: {
@@ -217,7 +247,18 @@ export type TeacherYearArchive = {
   }[];
 };
 
-/** The classes this teacher was attached to, and what happened in them that year. */
+/**
+ * The classes this teacher worked in that year, and what THEY did in each.
+ *
+ * Counted from the rows that carry the teacher's own hand — the registers
+ * they took (`takenByMembershipId`), the assignments they set and the cards
+ * they wrote (`createdByMembershipId`) — not everything that happened in the
+ * classes they hold today. The old reading credited a teacher who took over
+ * a class in June with every register of the year before, and a co-teacher
+ * with the lead's cards; and a class handed to somebody else since vanished
+ * from the archive along with the work done in it. The class list follows
+ * from the rows, so it is the classes of that year and not of this one.
+ */
 export async function teacherYearArchive(
   session: ActiveContext,
   yearId: string,
@@ -226,51 +267,50 @@ export async function teacherYearArchive(
     throw new AccessError("access.onlyTeachingStaffCanOpenThis");
   }
   const schoolId = session.schoolId!;
-  const { year, fromKey, toKey } = await yearOf(schoolId, yearId);
+  const me = session.membershipId;
+  const { year, w, fromKey, toKey } = await yearOf(schoolId, yearId);
 
-  const attached = await db.classTeacher.findMany({
-    where: { schoolId, teacherMembershipId: session.membershipId },
-    select: { classId: true, class: { select: { name: true } } },
+  const [registers, assignments, cards] = await Promise.all([
+    db.attendanceSession.groupBy({
+      by: ["classId"],
+      where: { schoolId, takenByMembershipId: me, dateKey: { gte: fromKey, lte: toKey } },
+      _count: { _all: true },
+    }),
+    db.assignment.groupBy({
+      by: ["classId"],
+      where: { schoolId, authorMembershipId: me, createdAt: inWindow(w) },
+      _count: { _all: true },
+    }),
+    db.reportCard.groupBy({
+      by: ["classId"],
+      where: {
+        schoolId,
+        createdByMembershipId: me,
+        status: "PUBLISHED",
+        OR: [{ academicYearId: year.id }, { academicYearId: null, publishedAt: inWindow(w) }],
+      },
+      _count: { _all: true },
+    }),
+  ]);
+
+  const tally = new Map<string, { registersTaken: number; assignmentsSet: number; reportCardsPublished: number }>();
+  const bucket = (classId: string) => {
+    const found = tally.get(classId) ?? { registersTaken: 0, assignmentsSet: 0, reportCardsPublished: 0 };
+    tally.set(classId, found);
+    return found;
+  };
+  for (const row of registers) bucket(row.classId).registersTaken += row._count._all;
+  for (const row of assignments) bucket(row.classId).assignmentsSet += row._count._all;
+  for (const row of cards) bucket(row.classId).reportCardsPublished += row._count._all;
+  if (tally.size === 0) return { classes: [] };
+
+  const names = await db.class.findMany({
+    where: { schoolId, id: { in: [...tally.keys()] } },
+    select: { id: true, name: true },
   });
-
-  const classes = [];
-  for (const { classId, class: klass } of attached) {
-    const [registersTaken, assignmentsSet, reportCardsPublished] = await Promise.all([
-      db.attendanceSession.count({
-        where: { schoolId, classId, dateKey: { gte: fromKey, lte: toKey } },
-      }),
-      db.assignment.count({
-        where: {
-          schoolId,
-          classId,
-          authorMembershipId: session.membershipId,
-          createdAt: { gte: year.startDate, lte: year.endDate },
-        },
-      }),
-      db.reportCard.count({
-        where: {
-          schoolId,
-          classId,
-          status: "PUBLISHED",
-          OR: [
-            { academicYearId: year.id },
-            { academicYearId: null, publishedAt: { gte: year.startDate, lte: year.endDate } },
-          ],
-        },
-      }),
-    ]);
-    // A class with nothing at all in the window was probably created after the
-    // year closed; keeping it would pad every old year with today's classes.
-    if (registersTaken + assignmentsSet + reportCardsPublished > 0) {
-      classes.push({
-        classId,
-        className: klass.name,
-        registersTaken,
-        assignmentsSet,
-        reportCardsPublished,
-      });
-    }
-  }
+  const classes = names
+    .map((klass) => ({ classId: klass.id, className: klass.name, ...tally.get(klass.id)! }))
+    .sort((a, b) => a.className.localeCompare(b.className));
 
   return { classes };
 }
@@ -297,18 +337,35 @@ export async function schoolYearArchive(
     throw new AccessError("access.onlyASchoolAdminCanOpenThis");
   }
   const schoolId = session.schoolId!;
-  const { year, fromKey, toKey } = await yearOf(schoolId, yearId);
+  const { year, w, fromKey, toKey } = await yearOf(schoolId, yearId);
+
+  // The day after the year's last day, as the date-only column stores days:
+  // UTC midnight of the typed date, so an admission dated the last day is
+  // inside and one dated the next day is out, whatever the school's zone.
+  const dayAfter = new Date(`${addDaysToKey(toKey, 1)}T00:00:00.000Z`);
 
   const [pupilsOnRoll, attendance, reportCardsPublished, leavers, badgesArchived, examSeries] =
     await Promise.all([
-      // On the roll AT ANY POINT of the year: joined before it ended, and not
-      // recorded as leaving before it began.
+      // On the roll AT ANY POINT of the year: admitted before it ended — by
+      // the record's admission date where the office entered one, which for a
+      // school that onboarded mid-way predates the platform join date — and
+      // not recorded as leaving before it began. A suspended membership is
+      // not on the roll.
       db.membership.count({
         where: {
           schoolId,
           role: "STUDENT",
-          joinedAt: { lte: year.endDate },
-          OR: [{ leftAt: null }, { leftAt: { gte: year.startDate } }],
+          status: { not: "SUSPENDED" },
+          AND: [
+            {
+              OR: [
+                { pupilRecord: { admissionDate: { lt: dayAfter } } },
+                { pupilRecord: { is: null }, joinedAt: { lt: w.to } },
+                { pupilRecord: { admissionDate: null }, joinedAt: { lt: w.to } },
+              ],
+            },
+            { OR: [{ leftAt: null }, { leftAt: { gte: w.from } }] },
+          ],
         },
       }),
       db.attendanceRecord.groupBy({
@@ -320,18 +377,18 @@ export async function schoolYearArchive(
         where: {
           schoolId,
           status: "PUBLISHED",
-          OR: [
-            { academicYearId: year.id },
-            { academicYearId: null, publishedAt: { gte: year.startDate, lte: year.endDate } },
-          ],
+          OR: [{ academicYearId: year.id }, { academicYearId: null, publishedAt: inWindow(w) }],
         },
       }),
-      db.schoolRecord.count({
-        where: { schoolId, leftAt: { gte: year.startDate, lte: year.endDate } },
+      // Leavers by the MEMBERSHIP's leaving date. The departure record is what
+      // a readmission deletes, so counting those made a closed year's leaver
+      // count shrink whenever a pupil came back.
+      db.membership.count({
+        where: { schoolId, role: "STUDENT", leftAt: inWindow(w) },
       }),
       db.earnedBadge.count({ where: { schoolId, academicYearId: year.id } }),
       db.examSeries.findMany({
-        where: { schoolId, createdAt: { gte: year.startDate, lte: year.endDate } },
+        where: { schoolId, createdAt: inWindow(w) },
         orderBy: [{ gradeLevel: "asc" }, { name: "asc" }],
         select: { id: true, name: true, gradeLevel: true },
       }),

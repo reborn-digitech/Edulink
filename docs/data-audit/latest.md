@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-24T07:04:36.061Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 20 INFO
+Run: 2026-09-24T15:45:27.600Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 20 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -34,5 +34,5 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | overview-api | Saraswati Vidya Mandir | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Sunrise Public School | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |
-| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide |
+| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide, ScheduledDeparture |
 | population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeStructure.archivedAt, Grade.letter, Grade.comment, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, JobPosting.closedAt, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.decisionReason, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCardItem.comment, StaffRecord.qualification, TimetablePeriod.archivedAt |

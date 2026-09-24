@@ -22,9 +22,10 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
-import { bandFor, meanPercent, meanPoints } from "@/lib/report-card-rules";
+import { bandFor, meanPercent, meanPoints, shownPercent } from "@/lib/report-card-rules";
 import { REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
 import { FILING_RECORD_FIELDS } from "@/lib/pupil-records";
+import { PUPIL_CATEGORIES } from "@edulink/contracts";
 import { todayKey } from "@/lib/dates";
 import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { GET as recordsGet } from "@/app/api/v1/office/pupil-records/route";
@@ -195,7 +196,8 @@ d("STORED copies against their source rows", () => {
         const subjects = JSON.parse(c.subjects) as { subject: string; percent: number | null; letter: string | null; points: number | null }[];
         const bands = (JSON.parse(c.scale) as { bands: { label: string; minPercent: number; points: number | null; descriptor: string | null }[] }).bands;
         if (c.gradingMethod === "weighted") {
-          const mean = meanPercent(subjects);
+          // Every percent on a card is rounded once to what is shown, and the letter read from that (report-card-rules.ts shownPercent).
+          const mean = shownPercent(meanPercent(subjects));
           const milli = mean === null ? null : Math.round(mean * 1000);
           if (milli !== c.overallPercentMilli) note("report-card", "FAIL", s.name, `card ${c.id} "${c.title}": overall ${c.overallPercentMilli} but the mean of its subjects is ${milli}`);
         }
@@ -209,7 +211,7 @@ d("STORED copies against their source rows", () => {
           if ((b?.label ?? null) !== (sub.letter ?? null)) note("report-card", "FAIL", s.name, `card ${c.id} ${sub.subject}: letter ${sub.letter} but the scale gives ${b?.label ?? null}`);
         }
         for (const item of c.items.filter((i) => i.kind === "SCHOLASTIC" && i.scoreMilli !== null && i.pointsMilli)) {
-          const b = bandFor((item.scoreMilli! / item.pointsMilli!) * 100, bands);
+          const b = bandFor(shownPercent((item.scoreMilli! / item.pointsMilli!) * 100), bands);
           if ((b?.label ?? null) !== (item.letter ?? null)) note("report-card", "FAIL", s.name, `card ${c.id} paper "${item.title}": letter ${item.letter} but the scale gives ${b?.label ?? null}`);
         }
       }
@@ -416,7 +418,7 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       for (const p of pupils) {
         const rec = (p.pupilRecord ?? {}) as Record<string, unknown>;
         const missing = REQUIRED_RECORD_FIELDS.filter((f) => blank(rec[f]));
-        const filing = FILING_RECORD_FIELDS.filter((f) => blank(rec[f]));
+        const filing = FILING_RECORD_FIELDS.filter((f) => f === "category" ? !(PUPIL_CATEGORIES as readonly string[]).includes(String(rec[f] ?? "").trim().toUpperCase()) : blank(rec[f]));
         if (!missing.length) complete += 1;
         const row = byId.get(p.id);
         if (!row) { note("records-api", "FAIL", s.name, `pupil ${p.id} missing from the rows`); continue; }
@@ -434,18 +436,23 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       if (!a.admin) continue;
       await as(a.admin, s.id, "ADMIN");
       const view = await json<{ identityMissing: string[]; pupils: { total: number; ready: number; missing: Record<string, number>; withoutLocalName: number }; staff: { total: number; ready: number; missing: Record<string, number> }; grades: { gradeLevel: string; pupils: number }[] }>(await filingsGet());
-      const pupils = await db.membership.findMany({ where: { schoolId: s.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { pupilRecord: true } });
+      const pupils = await db.membership.findMany({ where: { schoolId: s.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { pupilRecord: true, user: { select: { birthdate: true } }, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { class: { select: { gradeLevel: true } } }, take: 1, orderBy: { enrolledAt: "desc" } } } });
       const missing: Record<string, number> = {};
       let ready = 0, withoutLocal = 0;
       for (const p of pupils) {
         const rec = (p.pupilRecord ?? {}) as Record<string, unknown>;
-        const gaps = FILING_RECORD_FIELDS.filter((f) => blank(rec[f]));
+        // Ready is wider than the record: the sheet also needs the date of birth, both parents' names and a class whose grade codes (filings.ts).
+        const gaps: string[] = FILING_RECORD_FIELDS.filter((f) => f === "category" ? !(PUPIL_CATEGORIES as readonly string[]).includes(String(rec[f] ?? "").trim().toUpperCase()) : blank(rec[f]));
+        if (!p.user.birthdate) gaps.push("birthdate");
+        if (blank(rec.fatherName) || blank(rec.motherName)) gaps.push("parents");
+        const grade = p.enrollments[0]?.class.gradeLevel ?? "";
+        if (!/^([1-9]|1[0-2]|PP[123])$/.test(grade) && !/nursery|kg|pre/i.test(grade)) gaps.push("classCode");
         if (!gaps.length) ready += 1;
         for (const g of gaps) missing[g] = (missing[g] ?? 0) + 1;
         if (blank(rec.nameLocal)) withoutLocal += 1;
       }
       if (view.pupils.total !== pupils.length || view.pupils.ready !== ready) note("filings-api", "FAIL", s.name, `pupils ${view.pupils.ready}/${view.pupils.total} ready but raw says ${ready}/${pupils.length}`);
-      for (const f of FILING_RECORD_FIELDS) if ((view.pupils.missing[f] ?? 0) !== (missing[f] ?? 0)) note("filings-api", "FAIL", s.name, `pupils missing ${f}: API ${view.pupils.missing[f] ?? 0} vs raw ${missing[f] ?? 0}`);
+      for (const f of [...FILING_RECORD_FIELDS, "birthdate", "parents", "classCode"]) if ((view.pupils.missing[f] ?? 0) !== (missing[f] ?? 0)) note("filings-api", "FAIL", s.name, `pupils missing ${f}: API ${view.pupils.missing[f] ?? 0} vs raw ${missing[f] ?? 0}`);
       if (view.pupils.withoutLocalName !== withoutLocal) note("filings-api", "FAIL", s.name, `withoutLocalName ${view.pupils.withoutLocalName} vs raw ${withoutLocal}`);
       const gradeRaw = await db.enrollment.groupBy({ by: ["classId"], where: { schoolId: s.id, status: "ACTIVE", class: { archivedAt: null } }, _count: true });
       const classes = new Map((await db.class.findMany({ where: { schoolId: s.id }, select: { id: true, gradeLevel: true } })).map((c) => [c.id, c.gradeLevel]));
@@ -475,7 +482,9 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       const overdueOf = (x: (typeof demands)[number]) => (outstandingOf(x) > 0 && x.dueDate.toISOString().slice(0, 10) < today ? outstandingOf(x) : 0);
 
       const ov = await json<{ totals: { demandedPaise: number; collectedPaise: number; outstandingPaise: number; overduePaise: number }; pupils: { onPlan: number; withoutPlan: number } }>(await feeOverviewGet());
-      const exp = { demandedPaise: sum(live.map((x) => x.netPaise)), collectedPaise: sum(live.map((x) => x.paidPaise)), outstandingPaise: sum(live.map(outstandingOf)), overduePaise: sum(live.map(overdueOf)) };
+      // Collected counts a CARRIED demand's paid money in its own year (fees-reports.ts); demanded and outstanding do not include it.
+      const carriedPaid = sum(demands.filter((x) => x.status === "CARRIED").map((x) => x.paidPaise));
+      const exp = { demandedPaise: sum(live.map((x) => x.netPaise)), collectedPaise: sum(live.map((x) => x.paidPaise)) + carriedPaid, outstandingPaise: sum(live.map(outstandingOf)), overduePaise: sum(live.map(overdueOf)) };
       for (const k of Object.keys(exp) as (keyof typeof exp)[]) if (ov.totals[k] !== exp[k]) note("fees-api", "FAIL", s.name, `overview ${k} ${ov.totals[k]} vs raw ${exp[k]}`);
       const plans = await db.studentFeePlan.count({ where: { schoolId: s.id, academicYearId: year.id } });
       if (ov.pupils.onPlan !== plans) note("fees-api", "FAIL", s.name, `overview onPlan ${ov.pupils.onPlan} vs ${plans} plans`);

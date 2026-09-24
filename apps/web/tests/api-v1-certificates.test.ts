@@ -24,6 +24,11 @@ import { GET as sharedPdf } from "@/app/api/v1/shared/certificates/[certificateI
 import { GET as familyCertsGet } from "@/app/api/v1/family/certificates/route";
 import { GET as verifyGet } from "@/app/api/v1/public/certificates/[code]/route";
 import { presetsFor } from "@/lib/certificate-rules";
+import { issuedOnFor } from "@/lib/certificate-pdf";
+import { recordDeparture } from "@/lib/school-record";
+import { getSession } from "@/lib/session";
+import { todayKey } from "@/lib/dates";
+import { dateInFigures } from "@/lib/words";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -36,6 +41,7 @@ let pupilAUserId = "";
 let pupilA = "";
 let pupilB = "";
 let classId = "";
+let teacherMembershipId = "";
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
@@ -62,6 +68,7 @@ beforeAll(async () => {
   await db.user.update({ where: { id: a.id }, data: { birthdate: new Date("2016-03-10T00:00:00Z") } });
   await db.membership.create({ data: { userId: adminUserId, schoolId, role: "ADMIN", status: "ACTIVE" } });
   const tm = await db.membership.create({ data: { userId: teacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } });
+  teacherMembershipId = tm.id;
   pupilA = (await db.membership.create({ data: { userId: a.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZTA${STAMP}` }, select: { id: true } })).id;
   pupilB = (await db.membership.create({ data: { userId: b.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZTB${STAMP}` }, select: { id: true } })).id;
   await db.guardianship.create({ data: { parentUserId, studentMembershipId: pupilA, studentSchoolId: schoolId, status: "ACTIVE" } });
@@ -280,5 +287,45 @@ describe("issuing", () => {
     const audits = await db.auditLog.findMany({ where: { schoolId, action: { in: ["certificate.issue", "certificate.revoke", "certificate.template"] } }, select: { action: true, meta: true } });
     expect(audits.filter((a) => a.action === "certificate.issue")).toHaveLength(3);
     expect(audits.every((a) => !a.meta.includes("Aarav") && !a.meta.includes("Rohan"))).toBe(true);
+  });
+});
+
+describe("a leaver from an earlier year, and the day of issue", () => {
+  it("the certificate's attendance is the whole stay, equal to the leaving certificate's, not a dash; the leaving day is the school's; the PDF's issued-on is the body's date; the legal name is on both papers", async () => {
+    await as("ADMIN");
+    const adminCtx = (await getSession())!;
+    // A preferred name on the account, and a stay that began the year before: the papers print the legal name.
+    await db.user.update({ where: { id: (await db.membership.findUniqueOrThrow({ where: { id: pupilB }, select: { userId: true } })).userId }, data: { preferredName: "Bee" } });
+    await db.membership.update({ where: { id: pupilB }, data: { joinedAt: new Date("2025-06-01T00:00:00Z") } });
+    // A term of registers the year before the current one.
+    const marks = [["2025-11-03", "PRESENT"], ["2025-11-04", "ABSENT"], ["2025-11-05", "LATE"], ["2025-11-06", "PRESENT"]] as const;
+    for (const [dateKey, status] of marks) {
+      const session = await db.attendanceSession.create({ data: { schoolId, classId, dateKey, takenByMembershipId: teacherMembershipId } });
+      await db.attendanceRecord.create({ data: { schoolId, sessionId: session.id, studentMembershipId: pupilB, status, clientId: `zz-cert-${dateKey}-${STAMP}` } });
+    }
+    // Left on the 5th of November 2025, 20:00 UTC — the 6th in Kolkata, so the 6th's register counts too.
+    const left = await recordDeparture(adminCtx, pupilB, { reason: "TRANSFERRED", destination: "Elsewhere", leftOn: new Date("2025-11-05T20:00:00Z") });
+    expect(left.ok).toBe(true);
+    const record = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: pupilB } });
+    expect(record).toMatchObject({ attendanceMarked: 4, attendancePresent: 3, studentName: "ZZ Cert Bhakti Bhosale" });
+
+    const res = await issuePost(json("/api/v1/office/certificates", { templateId: tcHindiId, studentMembershipId: pupilB }));
+    expect(res.status).toBe(200);
+    const tc = await res.json();
+    expect(tc.studentName).toBe("ZZ Cert Bhakti Bhosale");
+    const values: string[] = tc.rows.map((r: { value: string }) => r.value);
+    expect(values).toContain(`${record.attendancePresent} / ${record.attendanceMarked}`);
+    expect(values.some((v) => v.startsWith("06/11/2025"))).toBe(true);
+    expect(tc.missing).not.toContain("record.attendance");
+    expect(tc.missing).not.toContain("record.leftOn");
+
+    // "Issued on" is the frozen issue.date of the body, the day in the school's zone.
+    const row = await db.issuedCertificate.findUniqueOrThrow({ where: { id: tc.id }, select: { dataJson: true } });
+    const body = JSON.parse(row.dataJson) as Record<string, string | null>;
+    expect(body["issue.date"]).toBe(dateInFigures(todayKey("Asia/Kolkata")));
+    expect(await issuedOnFor(tc)).toBe(body["issue.date"]);
+    // The office's list prints the legal name too.
+    const list = await (await certsGet(get(`/api/v1/office/certificates?membershipId=${pupilB}`))).json();
+    expect(list.items.map((i: { studentName: string }) => i.studentName)).toEqual(["ZZ Cert Bhakti Bhosale", "ZZ Cert Bhakti Bhosale"]);
   });
 });

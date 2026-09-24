@@ -11,6 +11,7 @@ import { translator, type TranslationKey } from "./i18n/dictionary";
 import { readMessageTemplateIds, readTwilioConfig, readWhatsappFrom, readWhatsappTransport } from "./env";
 import { formatPhone } from "./phone";
 import { todayKey } from "./dates";
+import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
 import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
 
@@ -386,9 +387,12 @@ export async function resolveAudience(schoolId: string, audience: Audience): Pro
   } else if (audience.kind === "GRADE") {
     studentIds = (await db.membership.findMany({ where: { ...activePupil, gradeLevel: audience.gradeLevel }, select: { id: true } })).map((m) => m.id);
   } else if (audience.kind === "OVERDUE_FEES") {
-    const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+    // The current year's overdue demands of pupils still on the roll — the
+    // same people the fee-reminder job texts. A leaver's debt is the
+    // office's to chase, not a broadcast's; last year's is carried forward.
+    const [school, year] = await Promise.all([db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }), currentAcademicYear(schoolId)]);
     const today = new Date(`${todayKey(school.timezone)}T00:00:00.000Z`);
-    studentIds = [...new Set((await db.feeDemand.findMany({ where: { schoolId, status: { in: ["OPEN", "PART"] }, dueDate: { lt: today } }, select: { studentMembershipId: true } })).map((d) => d.studentMembershipId))];
+    studentIds = year ? [...new Set((await db.feeDemand.findMany({ where: { schoolId, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, dueDate: { lt: today }, student: activePupil }, select: { studentMembershipId: true } })).map((d) => d.studentMembershipId))] : [];
   } else if (audience.kind === "PEOPLE") {
     if (audience.userIds.length === 0) throw new AccessError("messaging.refuseNobody");
     const links = await db.guardianship.findMany({ where: { parentUserId: { in: audience.userIds }, status: "ACTIVE", studentSchoolId: schoolId }, select: { parentUserId: true }, distinct: ["parentUserId"] });

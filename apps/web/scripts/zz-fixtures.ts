@@ -50,7 +50,7 @@ export function fakePen(membershipId: string): string {
   const n = BigInt(`0x${createHash("sha1").update(membershipId).digest("hex").slice(0, 12)}`) % 1_000_000_000n;
   return `27${String(n).padStart(9, "0")}`;
 }
-import { bandFor, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints } from "../src/lib/report-card-rules";
+import { bandFor, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
 import { dataFor, fill, fillRows, presetsFor, wordsFor, type PupilFacts } from "../src/lib/certificate-rules";
 
 config();
@@ -975,10 +975,12 @@ export async function buildExams(school: { id: string }, adminUserId: string, op
       for (const p of papers) bySubject.set(p.subject, [...(bySubject.get(p.subject) ?? []), p]);
       const subjects = [...bySubject].map(([subject, ps]) => {
         const w = kindWeighted(ps.map((p) => ({ label: p.seriesName, kind: p.kind, scoreMilli: marksBy.get(`${p.id}:${row.studentMembershipId}`) ?? null, pointsMilli: p.max * 1000 })), config.kindWeights);
-        const band = bandFor(w.percent, config.bands);
-        return { subject, percent: w.percent, letter: band?.label ?? null, points: band?.points ?? null, parts: w.parts };
+        // Rounded once to what the card shows, and the letter read from that — as the generator does.
+        const percent = shownPercent(w.percent);
+        const band = bandFor(percent, config.bands);
+        return { subject, percent, letter: band?.label ?? null, points: band?.points ?? null, parts: w.parts };
       });
-      const overall = meanPercent(subjects);
+      const overall = shownPercent(meanPercent(subjects));
       const points = meanPoints(subjects);
       const data = {
         schoolId: school.id,

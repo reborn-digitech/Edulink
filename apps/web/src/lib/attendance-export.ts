@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { toCsv } from "./csv";
 import { audit } from "./audit";
+import { monthRoll } from "./attendance-history";
 
 /**
  * The two compliance files, as text. The web's download routes
@@ -35,16 +36,9 @@ export async function registerExport(ctx: Caller, classId: string, month: string
     },
   });
 
-  const roll = await db.enrollment.findMany({
-    where: { schoolId: ctx.schoolId, classId, status: "ACTIVE" },
-    select: {
-      studentMembershipId: true,
-      student: {
-        select: { studentCode: true, user: { select: { name: true, preferredName: true } } },
-      },
-    },
-    orderBy: { student: { user: { name: "asc" } } },
-  });
+  // The month's own roll — everyone marked in it plus everyone enrolled during
+  // it — so a promoted class's last month and a mid-month leaver keep their rows.
+  const roll = await monthRoll(ctx.schoolId, classId, month, sessions);
 
   const letter: Record<string, string> = { PRESENT: "P", LATE: "L", ABSENT: "A", EXCUSED: "E" };
   const byDay = new Map(
@@ -57,17 +51,17 @@ export async function registerExport(ctx: Caller, classId: string, month: string
 
   const rows = roll.map((r) => {
     const row: Record<string, unknown> = {
-      student_code: r.student.studentCode ?? "",
-      name: r.student.user.name,
+      student_code: r.studentCode ?? "",
+      name: r.user.name,
     };
     let present = 0;
     for (const day of days) {
-      const mark = byDay.get(day)?.get(r.studentMembershipId) ?? "";
+      const mark = byDay.get(day)?.get(r.id) ?? "";
       row[day] = mark;
       if (mark === "P" || mark === "L") present += 1;
     }
     row.days_present = present;
-    row.days_marked = days.filter((d) => byDay.get(d)?.has(r.studentMembershipId)).length;
+    row.days_marked = days.filter((d) => byDay.get(d)?.has(r.id)).length;
     return row;
   });
 

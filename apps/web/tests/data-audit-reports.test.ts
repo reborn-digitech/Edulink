@@ -15,6 +15,7 @@ import { resolve } from "node:path";
 import { parseCsvRecords } from "@/lib/csv";
 import { udiseStudentsExport, udiseEnrolmentExport, udiseTeachersExport, cbseCandidatesExport, msbshseCandidatesExport, filingsView } from "@/lib/filings";
 import { registerExport, enrolmentExport } from "@/lib/attendance-export";
+import { monthRoll } from "@/lib/attendance-history";
 import { collectionsExport, outstandingExport, duesList } from "@/lib/fees-reports";
 import { staffMonthCsvRows } from "@/lib/staff-attendance";
 import { leaveBalanceFor } from "@/lib/staff-records";
@@ -144,12 +145,16 @@ d("the five filing sheets, cell by cell", () => {
         // Previous-year columns: the annual card and the register of the year before this one.
         if (previous) {
           const card = await db.reportCard.findFirst({ where: { schoolId: s.id, studentMembershipId: p.id, academicYearId: previous.id, termId: null, status: "PUBLISHED", overallPercentMilli: { not: null } }, select: { overallPercentMilli: true } });
-          const attended = await db.attendanceRecord.count({ where: { schoolId: s.id, studentMembershipId: p.id, status: { in: ["PRESENT", "LATE"] }, session: { dateKey: { gte: previous.startDate.toISOString().slice(0, 10), lte: previous.endDate.toISOString().slice(0, 10) } } } });
-          const sameSchool = p.joinedAt.getUTCFullYear() < new Date().getUTCFullYear();
+          // Attended days are distinct days, and "was here last year" is the admission date (else the join date) before this year's start (filings.ts).
+          const attendedRows = await db.attendanceRecord.findMany({ where: { schoolId: s.id, studentMembershipId: p.id, status: { in: ["PRESENT", "LATE"] }, session: { dateKey: { gte: previous.startDate.toISOString().slice(0, 10), lte: previous.endDate.toISOString().slice(0, 10) } } }, select: { session: { select: { dateKey: true } } } });
+          const attended = new Set(attendedRows.map((r) => r.session.dateKey)).size;
+          const admitted = rec?.admissionDate ?? p.joinedAt;
+          const sameSchool = !!year && admitted.getTime() < year.startDate.getTime();
           const marks = card ? String(Math.round(card.overallPercentMilli! / 1000)) : "";
           if ((r["MARKS % OF PREVIOUS EXAM"] ?? "") !== marks) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} marks %: sheet "${r["MARKS % OF PREVIOUS EXAM"]}" vs card ${marks || "none"}`);
           const days = attended ? String(Math.min(attended, 250)) : "";
           if ((r["CLASS ATTENDED DAYS (Previous Year)"] ?? "") !== days) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} attended days: sheet "${r["CLASS ATTENDED DAYS (Previous Year)"]}" vs register ${days || "none"}`);
+          if ((r["PREVIOUS ACADEMIC YEAR SCHOOLING STATUS"] ?? "") !== (sameSchool ? "1" : "2")) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} previous-year status: sheet "${r["PREVIOUS ACADEMIC YEAR SCHOOLING STATUS"]}" vs admitted ${admitted.toISOString().slice(0, 10)}`);
           if (sameSchool && card && r["RESULT FOR PREVIOUS EXAM"] !== "1") note("udise-students", "FAIL", s.name, `${upper(p.user.name)} result: sheet "${r["RESULT FOR PREVIOUS EXAM"]}" with a card present`);
           if (sameSchool && !card) note("udise-students", "WARN", s.name, `${upper(p.user.name)} was here last year but has no published annual card — appeared/result/marks go out blank`);
         }
@@ -179,6 +184,9 @@ d("the five filing sheets, cell by cell", () => {
       const catRows = rows.filter((r) => r.table === "4.2 Enrolment by social category" && r.row !== "Total");
       const catSum = sum(catRows.map((r) => sum(totalCols.map((h) => Number(r[h] ?? 0)))));
       if (catSum !== pupils.length) note("udise-enrolment", "FAIL", s.name, `4.2 category rows sum to ${catSum}, the roll has ${pupils.length}`);
+      const obc = catRows.find((r) => r.row === "OBC");
+      const obcRaw = pupils.filter((p) => CATEGORY[upper(p.pupilRecord?.category)] === "4").length;
+      if ((obc ? sum(totalCols.map((h) => Number(obc[h] ?? 0))) : 0) !== obcRaw) note("udise-enrolment", "FAIL", s.name, `OBC row vs raw code-4 pupils ${obcRaw} (VJ, NT and SBC file as OBC)`);
       const notOnRecord = catRows.find((r) => r.row === "Not on record");
       const uncoded = pupils.filter((p) => !CATEGORY[upper(p.pupilRecord?.category)]).length;
       if ((notOnRecord ? sum(totalCols.map((h) => Number(notOnRecord[h] ?? 0))) : 0) !== uncoded) note("udise-enrolment", "FAIL", s.name, `"Not on record" category count vs raw uncoded ${uncoded}`);
@@ -205,7 +213,7 @@ d("the five filing sheets, cell by cell", () => {
       const ctx = ctxs.get(s.id)?.admin;
       if (!ctx) continue;
       const { rows } = rowsOf((await udiseTeachersExport(ctx)).csv);
-      const staff = await db.membership.findMany({ where: { schoolId: s.id, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { id: true, role: true, subjects: true, joinedAt: true, user: { select: { name: true, birthdate: true, phone: true, email: true } }, staffRecord: true, classTeachers: { select: { class: { select: { gradeLevel: true } } } }, timetableSlots: { select: { subject: true, class: { select: { gradeLevel: true } } } } } });
+      const staff = await db.membership.findMany({ where: { schoolId: s.id, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { id: true, role: true, subjects: true, joinedAt: true, user: { select: { name: true, birthdate: true, phone: true, email: true } }, staffRecord: true, classTeachers: { where: { class: { archivedAt: null } }, select: { class: { select: { gradeLevel: true } } } }, timetableSlots: { where: { class: { archivedAt: null } }, select: { subject: true, class: { select: { gradeLevel: true } } } } } });
       if (rows.length !== staff.length) note("udise-teachers", "FAIL", s.name, `${rows.length} rows for ${staff.length} staff`);
       for (const m of staff) {
         const r = rows.find((x) => x["3.2.1 Name of the Teacher"] === upper(m.user.name));
@@ -307,13 +315,15 @@ d("attendance, fees and staff exports", () => {
       const days = headers.filter((h) => /^\d{4}-\d{2}-\d{2}$/.test(h));
       const sessions = await db.attendanceSession.findMany({ where: { schoolId: s.id, classId: last.classId, dateKey: { startsWith: month } }, select: { dateKey: true, records: { select: { studentMembershipId: true, status: true } } } });
       if (days.length !== sessions.length) note("register-csv", "FAIL", s.name, `${month}: ${days.length} day columns for ${sessions.length} sessions`);
-      const roll = await db.enrollment.findMany({ where: { schoolId: s.id, classId: last.classId, status: "ACTIVE" }, select: { studentMembershipId: true, student: { select: { studentCode: true } } } });
+      // The CSV's roll is the month's: everyone marked in it plus the enrolments live during it (attendance-history.ts monthRoll).
+      const roll = await monthRoll(s.id, last.classId, month, sessions.map((x) => ({ dateKey: x.dateKey, records: x.records.map((r) => ({ studentMembershipId: r.studentMembershipId })) })) as never);
+      if (rows.length !== roll.length) note("register-csv", "FAIL", s.name, `${month}: ${rows.length} rows for a month roll of ${roll.length}`);
       for (const e of roll) {
-        const row = rows.find((r) => r.student_code === (e.student.studentCode ?? ""));
-        if (!row) { note("register-csv", "FAIL", s.name, `pupil ${e.studentMembershipId} has no row`); continue; }
-        const mine = sessions.flatMap((x) => x.records.filter((r) => r.studentMembershipId === e.studentMembershipId));
+        const row = rows.find((r) => r.student_code === (e.studentCode ?? ""));
+        if (!row) { note("register-csv", "FAIL", s.name, `pupil ${e.id} has no row`); continue; }
+        const mine = sessions.flatMap((x) => x.records.filter((r) => r.studentMembershipId === e.id));
         const present = mine.filter((r) => r.status === "PRESENT" || r.status === "LATE").length;
-        if (Number(row.days_present) !== present || Number(row.days_marked) !== mine.length) note("register-csv", "FAIL", s.name, `${e.studentMembershipId}: CSV ${row.days_present}/${row.days_marked} vs raw ${present}/${mine.length}`);
+        if (Number(row.days_present) !== present || Number(row.days_marked) !== mine.length) note("register-csv", "FAIL", s.name, `${e.id}: CSV ${row.days_present}/${row.days_marked} vs raw ${present}/${mine.length}`);
       }
       const enrol = rowsOf((await enrolmentExport({ schoolId: s.id, user: { id: ctx.user.id } })).csv).rows;
       const classes = await db.class.findMany({ where: { schoolId: s.id, archivedAt: null }, select: { gradeLevel: true, enrollments: { where: { status: "ACTIVE" }, select: { student: { select: { guardianships: { where: { status: "ACTIVE" }, select: { id: true }, take: 1 } } } } }, teachers: { select: { teacherMembershipId: true } } } });
@@ -349,13 +359,15 @@ d("attendance, fees and staff exports", () => {
       const out = rowsOf((await outstandingExport(ctx)).csv).rows;
       const dues = await duesList(ctx, { status: "open", pageSize: 200, page: 1 });
       if (out.length !== dues.total) note("fees-csv", "FAIL", s.name, `outstanding CSV ${out.length} rows vs dues page total ${dues.total}`);
-      const demands = await db.feeDemand.findMany({ where: { schoolId: s.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true, netPaise: true, paidPaise: true } });
+      // Leavers with a balance stay on the defaulter list, flagged; the CSV total is every OPEN/PART demand of the year.
+      const demands = await db.feeDemand.findMany({ where: { schoolId: s.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] } }, select: { studentMembershipId: true, netPaise: true, paidPaise: true } });
       const rawOutstanding = sum(demands.map((x) => Math.max(0, x.netPaise - x.paidPaise)));
       const csvOutstanding = Math.round(sum(out.map((r) => Number(r.outstanding))) * 100);
       if (csvOutstanding !== rawOutstanding) note("fees-csv", "FAIL", s.name, `outstanding CSV totals ${csvOutstanding} paise vs raw ${rawOutstanding}`);
-      const leavers = await db.feeDemand.findMany({ where: { schoolId: s.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, student: { OR: [{ leftAt: { not: null } }, { status: { not: "ACTIVE" } }] } }, select: { netPaise: true, paidPaise: true } });
-      const leaverDebt = sum(leavers.map((x) => Math.max(0, x.netPaise - x.paidPaise)));
-      if (leaverDebt) note("fees-csv", "WARN", s.name, `₹${(leaverDebt / 100).toFixed(2)} outstanding belongs to pupils off the roll and is on no defaulter list`);
+      const leaverRows = out.filter((r) => r.left === "yes").length;
+      const leaverDemands = await db.feeDemand.count({ where: { schoolId: s.id, academicYearId: year.id, status: { in: ["OPEN", "PART"] }, student: { OR: [{ leftAt: { not: null } }, { status: { not: "ACTIVE" } }] } } });
+      if (leaverDemands && !leaverRows) note("fees-csv", "FAIL", s.name, `${leaverDemands} open demand(s) belong to pupils off the roll but no CSV row is flagged left`);
+      if (leaverRows) note("fees-csv", "INFO", s.name, `${leaverRows} defaulter row(s) belong to pupils who have left, flagged in the CSV`);
     }
     expect(failsOf("fees-csv")).toEqual([]);
   });
@@ -443,8 +455,9 @@ d("report cards, certificates and the leaving certificate", () => {
           const expect_ = `${c.template.serialPrefix}/${c.academicYear.name}/${String(c.number).padStart(4, "0")}`;
           if (c.serial !== expect_) note("certificates", "FAIL", s.name, `${c.serial} is not prefix/year/number (${expect_})`);
         }
-        const name = c.student.user.preferredName ?? c.student.user.name;
-        if (data["pupil.name"] && data["pupil.name"] !== name) note("certificates", "WARN", s.name, `${c.serial} names "${data["pupil.name"]}", the account now says "${name}"`);
+        // Formal papers print the legal name (certificates.ts); a paper issued before that rule may carry the preferred name.
+        const name = c.student.user.name;
+        if (data["pupil.name"] && data["pupil.name"] !== name && data["pupil.name"] !== c.student.user.preferredName) note("certificates", "WARN", s.name, `${c.serial} names "${data["pupil.name"]}", the account now says "${name}"`);
         const dob = c.student.user.birthdate ? ddmmyyyy(c.student.user.birthdate, "/") : null;
         if (dob && data["pupil.dob"] && data["pupil.dob"] !== dob) note("certificates", "FAIL", s.name, `${c.serial} prints DOB ${data["pupil.dob"]}, the account holds ${dob}`);
         if (c.student.pupilRecord?.admissionNumber && data["pupil.admissionNumber"] && data["pupil.admissionNumber"] !== c.student.pupilRecord.admissionNumber) note("certificates", "WARN", s.name, `${c.serial} prints admission no. ${data["pupil.admissionNumber"]}, the record now says ${c.student.pupilRecord.admissionNumber}`);

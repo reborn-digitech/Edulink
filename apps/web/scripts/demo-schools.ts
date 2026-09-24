@@ -32,7 +32,7 @@ import { hash } from "@node-rs/argon2";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
-import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints } from "../src/lib/report-card-rules";
+import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
 import {
   attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
@@ -388,10 +388,12 @@ async function buildLastYear(b: Built, closed: Set<string>) {
       const rows = subjects.map((subject, si) => {
         const termParts = terms.map((t, ti) => ({ termId: t.id, name: t.name, percent: 52 + ((p.seat * 11 + si * 7 + ti * 5) % 41), weightPercent: t.weightPercent }));
         const combined = combineTerms(termParts);
-        const band = bandFor(combined.percent, config.bands);
-        return { subject, percent: combined.percent, letter: band?.label ?? null, points: band?.points ?? null, parts: combined.parts.map((x) => ({ label: x.name, kind: "TERM", scoreMilli: null, pointsMilli: null, percent: x.percent, weight: x.weight })), termParts };
+        // Rounded once to what the card shows, and the letter read from that — as the generator does.
+        const shown = shownPercent(combined.percent);
+        const band = bandFor(shown, config.bands);
+        return { subject, percent: shown, letter: band?.label ?? null, points: band?.points ?? null, parts: combined.parts.map((x) => ({ label: x.name, kind: "TERM", scoreMilli: null, pointsMilli: null, percent: x.percent, weight: x.weight })), termParts };
       });
-      const overall = meanPercent(rows);
+      const overall = shownPercent(meanPercent(rows));
       const points = meanPoints(rows);
       const title = `Annual report ${b.years.prev.name}`;
       const data = {
@@ -405,7 +407,7 @@ async function buildLastYear(b: Built, closed: Set<string>) {
         createdByMembershipId: b.admin.membership.id, publishedAt: new Date("2026-04-25T09:00:00Z"),
       };
       // A card already written keeps its marks; only its attendance is held to the register.
-      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: old.id, studentMembershipId: p.membershipId, title } }, create: data, update: attendance, select: { id: true, items: { select: { id: true }, take: 1 } } });
+      const card = await db.reportCard.upsert({ where: { classId_studentMembershipId_title: { classId: old.id, studentMembershipId: p.membershipId, title } }, create: data, update: data, select: { id: true, items: { select: { id: true }, take: 1 } } });
       if (card.items.length === 0) {
         await db.reportCardItem.createMany({
           data: [

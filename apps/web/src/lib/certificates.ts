@@ -5,9 +5,9 @@ import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
-import { getAttendanceSummary } from "./attendance";
+import { stayAttendance } from "./school-record";
 import { markRequestIssued, requestPurpose } from "./certificate-requests";
-import { ageInYears, todayKey } from "./dates";
+import { ageInYears, dateKeyInZone, todayKey } from "./dates";
 import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
@@ -113,6 +113,7 @@ export async function archiveTemplate(ctx: ActiveContext, templateId: string) {
 /* Issuing                                                                      */
 /* -------------------------------------------------------------------------- */
 
+/** A date-only value (a birthday, an admission date) is stored at UTC midnight; its day is the UTC slice. An instant — a leaving, a joining — is read in the school's zone instead. */
 const key = (d: Date | null | undefined) => (d ? d.toISOString().slice(0, 10) : null);
 
 /** Everything a template may name about one pupil, gathered once. */
@@ -120,10 +121,10 @@ async function factsFor(schoolId: string, studentMembershipId: string, issue: Pu
   const [pupil, school, year] = await Promise.all([
     db.membership.findFirst({
       where: { id: studentMembershipId, schoolId, role: "STUDENT" },
-      select: { studentCode: true, gradeLevel: true, leftAt: true, user: { select: { name: true, preferredName: true, birthdate: true, penNumber: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true, gradeLevel: true } } }, take: 1 }, schoolRecord: true, scheduledDeparture: true },
+      select: { studentCode: true, gradeLevel: true, joinedAt: true, leftAt: true, user: { select: { name: true, birthdate: true, penNumber: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true, gradeLevel: true } } }, take: 1 }, schoolRecord: true, scheduledDeparture: true },
     }),
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, code: true, addressLine: true, city: true, region: true, postalCode: true, timezone: true } }),
-    db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { name: true, startDate: true, endDate: true } }),
+    db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { name: true } }),
   ]);
   if (!pupil) throw new AccessError("certificates.notAPupil", "NOT_FOUND");
   const klass = pupil.enrollments[0]?.class ?? null;
@@ -131,19 +132,20 @@ async function factsFor(schoolId: string, studentMembershipId: string, issue: Pu
   // The leaving block: the departure recorded, the one scheduled, or the date typed at issue.
   const departure = pupil.schoolRecord;
   const scheduled = pupil.scheduledDeparture;
-  const leftOnKey = departure ? key(departure.leftAt) : scheduled ? scheduled.leaveOnKey : (leftOn ?? null);
-  let attendance: string | null = null;
-  if (year) {
-    const from = key(year.startDate)!;
-    const to = leftOnKey && leftOnKey < key(year.endDate)! ? leftOnKey : todayKey(school.timezone);
-    const summary = await getAttendanceSummary(schoolId, studentMembershipId, from, to);
-    attendance = summary.total > 0 ? `${summary.counts.PRESENT + summary.counts.LATE} / ${summary.total}` : null;
-  }
+  const leftOnKey = departure ? dateKeyInZone(departure.leftAt, school.timezone) : scheduled ? scheduled.leaveOnKey : (leftOn ?? null);
+  // Attendance over the WHOLE stay, to the leaving day or today — the leaving
+  // certificate's own figure, so a pupil who left in an earlier year has one.
+  const today = todayKey(school.timezone);
+  const stay = await stayAttendance(schoolId, studentMembershipId, leftOnKey && leftOnKey < today ? leftOnKey : today, { joinedAt: pupil.joinedAt, admissionDate: r?.admissionDate ?? null, timezone: school.timezone });
+  const attendance = stay.marked > 0 ? `${stay.present} / ${stay.marked}` : null;
+  // The day of issue in the school's zone, as a UTC-midnight instant to age a UTC-midnight birthday against.
+  const issuedOn = new Date(`${issue.dateKey}T00:00:00Z`);
   return {
-    name: pupil.user.preferredName ?? pupil.user.name,
+    // The legal name, as the leaving certificate and the filings print it; a formal paper is not the place for a preferred one.
+    name: pupil.user.name,
     studentCode: pupil.studentCode,
     birthdateKey: key(pupil.user.birthdate),
-    ageYears: pupil.user.birthdate ? ageInYears(pupil.user.birthdate) : null,
+    ageYears: pupil.user.birthdate ? ageInYears(pupil.user.birthdate, issuedOn) : null,
     record: r
       ? { fatherName: r.fatherName, motherName: r.motherName, placeOfBirth: r.placeOfBirth, nationality: r.nationality, religion: r.religion, caste: r.caste, category: r.category, motherTongue: r.motherTongue, addressLine: r.addressLine, city: r.city, postalCode: r.postalCode, admissionNumber: r.admissionNumber, admissionDateKey: key(r.admissionDate), admittedToGrade: r.admittedToGrade, previousSchool: r.previousSchool, penNumber: pupil.user.penNumber ?? r.penNumber }
       : null,
@@ -272,7 +274,7 @@ async function mayRead(ctx: ActiveContext, cert: { schoolId: string; studentMemb
 export async function certificateView(ctx: ActiveContext, certificateId: string): Promise<IssuedCertificateView> {
   const cert = await db.issuedCertificate.findFirst({
     where: { id: certificateId, ...(ctx.schoolId ? { schoolId: ctx.schoolId } : {}) },
-    include: { student: { select: { user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } }, school: { select: { name: true, code: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, brandPrimary: true } } },
+    include: { student: { select: { user: { select: { name: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } }, school: { select: { name: true, code: true, logoPath: true, addressLine: true, city: true, region: true, postalCode: true, contactPhone: true, contactEmail: true, brandPrimary: true } } },
   });
   if (!cert || !(await mayRead(ctx, cert))) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   const issuedBy = cert.issuedByUserId ? await db.user.findUnique({ where: { id: cert.issuedByUserId }, select: { name: true, preferredName: true } }) : null;
@@ -295,7 +297,8 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
     purpose: cert.purpose,
     remark: cert.remark,
     studentMembershipId: cert.studentMembershipId,
-    studentName: cert.student.user.preferredName ?? cert.student.user.name,
+    // The legal name on the paper, as it was printed.
+    studentName: cert.student.user.name,
     className: cert.student.enrollments[0]?.class.name ?? null,
     school: cert.school,
     code: cert.code,
@@ -308,14 +311,14 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
   };
 }
 
-const listRow = (c: { id: string; kind: string; locale: string; serial: string; title: string; studentMembershipId: string; issuedAt: Date; revokedAt: Date | null; student: { user: { name: string; preferredName: string | null } } }) => ({
-  id: c.id, kind: c.kind as CertificateKind, locale: asLocale(c.locale), serial: c.serial, title: c.title, studentMembershipId: c.studentMembershipId, studentName: c.student.user.preferredName ?? c.student.user.name, issuedAt: c.issuedAt.toISOString(), revokedAt: c.revokedAt?.toISOString() ?? null,
+const listRow = (c: { id: string; kind: string; locale: string; serial: string; title: string; studentMembershipId: string; issuedAt: Date; revokedAt: Date | null; student: { user: { name: string } } }) => ({
+  id: c.id, kind: c.kind as CertificateKind, locale: asLocale(c.locale), serial: c.serial, title: c.title, studentMembershipId: c.studentMembershipId, studentName: c.student.user.name, issuedAt: c.issuedAt.toISOString(), revokedAt: c.revokedAt?.toISOString() ?? null,
 });
 
 /** The office's list, newest first, optionally one pupil's. */
 export async function listCertificates(ctx: ActiveContext, membershipId?: string) {
   const caller = office(ctx);
-  const rows = await db.issuedCertificate.findMany({ where: { schoolId: caller.schoolId, ...(membershipId ? { studentMembershipId: membershipId } : {}) }, orderBy: { issuedAt: "desc" }, take: 500, include: { student: { select: { user: { select: { name: true, preferredName: true } } } } } });
+  const rows = await db.issuedCertificate.findMany({ where: { schoolId: caller.schoolId, ...(membershipId ? { studentMembershipId: membershipId } : {}) }, orderBy: { issuedAt: "desc" }, take: 500, include: { student: { select: { user: { select: { name: true } } } } } });
   return { items: rows.map(listRow) };
 }
 
@@ -330,7 +333,7 @@ export async function familyCertificates(ctx: ActiveContext) {
     throw new AccessError("access.notAllowed");
   }
   if (ids.length === 0) return { items: [] };
-  const rows = await db.issuedCertificate.findMany({ where: { studentMembershipId: { in: ids } }, orderBy: { issuedAt: "desc" }, take: 200, include: { student: { select: { user: { select: { name: true, preferredName: true } } } } } });
+  const rows = await db.issuedCertificate.findMany({ where: { studentMembershipId: { in: ids } }, orderBy: { issuedAt: "desc" }, take: 200, include: { student: { select: { user: { select: { name: true } } } } } });
   return { items: rows.map(listRow) };
 }
 

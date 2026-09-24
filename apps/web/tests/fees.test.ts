@@ -19,6 +19,7 @@ import { todayKey, addDaysToKey } from "@/lib/dates";
 import {
   archiveStructure,
   assignPlans,
+  classFeeRoster,
   concessionOnInstalment,
   concessionOnLine,
   createStructure,
@@ -489,7 +490,7 @@ describe("the audit's corrections", () => {
     expect(ledger.demands.map((d) => d.netPaise)).toEqual([1_300_00, 1_200_00]);
   });
 
-  it("after a carry-forward the old year's paid total leaves the carried demands out, as its net does", async () => {
+  it("after a carry-forward the old year's net leaves the carried demands out, but the money paid on them stays in its paid total", async () => {
     const part = await recordCounterPayment(admin(), { studentMembershipId: pupilD, amountPaise: 300_00, method: "CASH" });
     expect(part.serial).toMatch(/^RCPT\/2026–27\//);
     const before = await pupilLedger(schoolId, pupilD, { todayKey: TODAY });
@@ -497,9 +498,8 @@ describe("the audit's corrections", () => {
     expect(await carryForward(admin(), { fromYearId: yearId, toYearId: nextYearId })).toEqual({ pupils: 1, carriedPaise: 2_200_00 });
     const old = await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: yearId });
     expect(old.demands.map((d) => [d.status, d.paidPaise])).toEqual([["CARRIED", 300_00], ["CARRIED", 0]]);
-    // Both rows are CARRIED, so net is 0 — and paid must be 0 with it, not ₹300 against nothing.
-    expect(old.totals).toEqual({ netPaise: 0, paidPaise: 0, outstandingPaise: 0, overduePaise: 0 });
-    expect(old.totals.paidPaise).toBeLessThanOrEqual(old.totals.netPaise);
+    // Both rows are CARRIED, so net is 0 — but the ₹300 was received this year, against this year's receipt, and stays this year's paid.
+    expect(old.totals).toEqual({ netPaise: 0, paidPaise: 300_00, outstandingPaise: 0, overduePaise: 0 });
     const next = await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: nextYearId });
     expect(next.demands.map((d) => [d.label, d.netPaise, d.status])).toEqual([["Opening balance 2026–27", 2_200_00, "OPEN"]]);
     // A partly paid demand still has its payment in the ledger's payments list.
@@ -521,5 +521,123 @@ describe("the audit's corrections", () => {
     ]);
     expect((await db.feeReceipt.findFirstOrThrow({ where: { paymentId: pay.paymentId }, select: { academicYearId: true } })).academicYearId).toBe(yearId);
     expect((await pupilLedger(schoolId, pupilD, { todayKey: TODAY, academicYearId: nextYearId })).totals).toEqual({ netPaise: 2_200_00, paidPaise: 2_200_00, outstandingPaise: 0, overduePaise: 0 });
+  });
+});
+
+/**
+ * One definition of outstanding, everywhere (docs/data-audit/README.md §7,
+ * 12–14 and the UTC list): per demand, never netted across a pupil's
+ * demands; leavers stay on the office's lists but get no text; a carried
+ * demand keeps its paid money in its own year; the collections range and
+ * its date column are in the school's zone.
+ */
+describe("one definition of outstanding", () => {
+  let leaver = "";
+  let leaverParentId = "";
+  let overpaid = "";
+  let behind = "";
+  let behindParentId = "";
+  const K = "2026-08-01";
+
+  it("a pupil who has left with an OPEN demand is on the dues list flagged left, in the CSV and in the overview's outstanding, with the same figure", async () => {
+    const [lu, lp] = await Promise.all([db.user.create({ data: { name: "ZZ Fees Leaver", email: `zz-fees-leaver-${STAMP}@test.invalid` }, select: { id: true } }), db.user.create({ data: { name: "ZZ Fees LeaverParent", email: `zz-fees-leaverparent-${STAMP}@test.invalid` }, select: { id: true } })]);
+    leaverParentId = lp.id;
+    leaver = (await db.membership.create({ data: { userId: lu.id, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: new Date(), studentCode: `ZFL${STAMP}`, gradeLevel: "3" }, select: { id: true } })).id;
+    await db.guardianship.create({ data: { parentUserId: leaverParentId, studentMembershipId: leaver, studentSchoolId: schoolId, status: "ACTIVE" } });
+    // Due a week ago: the D+7 bucket would fire for a pupil on the roll.
+    await db.feeDemand.create({ data: { schoolId, studentMembershipId: leaver, academicYearId: yearId, label: "Term 1", dueDate: new Date(`${addDaysToKey(TODAY, -7)}T00:00:00.000Z`), grossPaise: 500_00, netPaise: 500_00, status: "OPEN" } });
+    const open = await duesList(admin(), { status: "open" });
+    const row = open.rows.find((r) => r.studentMembershipId === leaver);
+    expect(row).toMatchObject({ left: true, outstandingPaise: 500_00, overduePaise: 500_00, hasPlan: false });
+    expect(open.rows.filter((r) => r.left).map((r) => r.studentMembershipId)).toEqual([leaver]);
+    const all = await duesList(admin(), { status: "all", pageSize: 200 });
+    const overview = await feeOverview(admin());
+    expect(overview.totals.outstandingPaise).toBe(all.rows.reduce((a, r) => a + r.outstandingPaise, 0));
+    expect(overview.totals.overduePaise).toBe(all.rows.reduce((a, r) => a + r.overduePaise, 0));
+    const csv = (await outstandingExport(admin())).csv.split(/\r?\n/);
+    expect(csv[0]).toBe("pupil,code,class,grade,due,paid,outstanding,overdue,nextDue,left");
+    expect(csv.find((l) => l.includes(`ZFL${STAMP}`))).toMatch(/,500\.00,0\.00,500\.00,500\.00,\d{4}-\d{2}-\d{2},yes$/);
+    expect(csv.filter((l) => l.endsWith(",yes"))).toHaveLength(1);
+  });
+
+  it("an overpaid demand beside an open one gives the open one's balance on the dues row, the ledger, the roster and the overview alike", async () => {
+    const ou = await db.user.create({ data: { name: "ZZ Fees Overpaid", email: `zz-fees-overpaid-${STAMP}@test.invalid` }, select: { id: true } });
+    overpaid = (await db.membership.create({ data: { userId: ou.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZFO${STAMP}`, gradeLevel: "3" }, select: { id: true } })).id;
+    await db.enrollment.create({ data: { classId, schoolId, studentMembershipId: overpaid, status: "ACTIVE" } });
+    const due = new Date(`${addDaysToKey(TODAY, 3)}T00:00:00.000Z`);
+    await db.feeDemand.createMany({
+      data: [
+        { schoolId, studentMembershipId: overpaid, academicYearId: yearId, label: "Term 1", dueDate: due, grossPaise: 1_000_00, netPaise: 1_000_00, paidPaise: 1_500_00, status: "PAID" },
+        { schoolId, studentMembershipId: overpaid, academicYearId: yearId, label: "Term 2", dueDate: due, grossPaise: 700_00, netPaise: 700_00, status: "OPEN" },
+      ],
+    });
+    const before = (await feeOverview(admin())).totals.outstandingPaise;
+    const dues = await duesList(admin(), { q: `ZFO${STAMP}` });
+    // Netted across the pupil this would read ₹200; it is Term 2's ₹700.
+    expect(dues.rows.map((r) => [r.netPaise, r.paidPaise, r.outstandingPaise, r.overduePaise, r.left])).toEqual([[1_700_00, 1_500_00, 700_00, 0, false]]);
+    expect((await pupilLedger(schoolId, overpaid, { todayKey: TODAY })).totals).toEqual({ netPaise: 1_700_00, paidPaise: 1_500_00, outstandingPaise: 700_00, overduePaise: 0 });
+    const roster = await classFeeRoster(admin(), classId, TODAY);
+    expect(roster.pupils.find((p) => p.studentMembershipId === overpaid)).toMatchObject({ netPaise: 1_700_00, paidPaise: 1_500_00, outstandingPaise: 700_00, overduePaise: 0 });
+    const all = await duesList(admin(), { status: "all", pageSize: 200 });
+    const overview = await feeOverview(admin());
+    expect(overview.totals.outstandingPaise).toBe(before);
+    expect(overview.totals.outstandingPaise).toBe(all.rows.reduce((a, r) => a + r.outstandingPaise, 0));
+  });
+
+  it("a PART demand carried forward keeps its ₹400 in its own year's paid total, and the opening balance is the ₹600", async () => {
+    const y1 = await db.academicYear.create({ data: { schoolId, name: "2024–25", startDate: new Date("2024-06-01T00:00:00Z"), endDate: new Date("2025-04-30T00:00:00Z"), isCurrent: false }, select: { id: true } });
+    const y2 = await db.academicYear.create({ data: { schoolId, name: "2025–26", startDate: new Date("2025-06-01T00:00:00Z"), endDate: new Date("2026-04-30T00:00:00Z"), isCurrent: false }, select: { id: true } });
+    await db.feeDemand.create({ data: { schoolId, studentMembershipId: overpaid, academicYearId: y1.id, label: "Term 1", dueDate: new Date("2024-07-01T00:00:00Z"), grossPaise: 1_000_00, netPaise: 1_000_00, paidPaise: 400_00, status: "PART" } });
+    expect(await carryForward(admin(), { fromYearId: y1.id, toYearId: y2.id })).toEqual({ pupils: 1, carriedPaise: 600_00 });
+    const old = await pupilLedger(schoolId, overpaid, { todayKey: TODAY, academicYearId: y1.id });
+    const next = await pupilLedger(schoolId, overpaid, { todayKey: TODAY, academicYearId: y2.id });
+    expect(old.totals).toEqual({ netPaise: 0, paidPaise: 400_00, outstandingPaise: 0, overduePaise: 0 });
+    expect(next.demands.map((d) => [d.label, d.netPaise, d.paidPaise, d.outstandingPaise, d.status])).toEqual([["Opening balance 2024–25", 600_00, 0, 600_00, "OPEN"]]);
+    expect(old.totals.paidPaise + next.totals.paidPaise).toBe(400_00);
+    // The current year's overview does the same for its own carried rows: what pupils A and D paid before the carry is still collected.
+    const carried = await db.feeDemand.findMany({ where: { schoolId, academicYearId: yearId, status: "CARRIED" }, select: { paidPaise: true } });
+    const carriedPaid = carried.reduce((a, d) => a + d.paidPaise, 0);
+    expect(carriedPaid).toBeGreaterThanOrEqual(300_00);
+    const live = await db.feeDemand.findMany({ where: { schoolId, academicYearId: yearId, status: { in: ["OPEN", "PART", "PAID"] } }, select: { paidPaise: true } });
+    expect((await feeOverview(admin())).totals.collectedPaise).toBe(live.reduce((a, d) => a + d.paidPaise, 0) + carriedPaid);
+  });
+
+  it("the texts go to the roll only, and remind-now quotes the whole overdue total", async () => {
+    const [bu, bp] = await Promise.all([db.user.create({ data: { name: "ZZ Fees Behind", email: `zz-fees-behind-${STAMP}@test.invalid` }, select: { id: true } }), db.user.create({ data: { name: "ZZ Fees BehindParent", email: `zz-fees-behindparent-${STAMP}@test.invalid` }, select: { id: true } })]);
+    behindParentId = bp.id;
+    behind = (await db.membership.create({ data: { userId: bu.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZFH${STAMP}`, gradeLevel: "4" }, select: { id: true } })).id;
+    await db.guardianship.create({ data: { parentUserId: behindParentId, studentMembershipId: behind, studentSchoolId: schoolId, status: "ACTIVE" } });
+    await db.feeDemand.createMany({
+      data: [
+        { schoolId, studentMembershipId: behind, academicYearId: yearId, label: "Term 1", dueDate: new Date(`${addDaysToKey(TODAY, -20)}T00:00:00.000Z`), grossPaise: 200_00, netPaise: 200_00, status: "OPEN" },
+        { schoolId, studentMembershipId: behind, academicYearId: yearId, label: "Term 2", dueDate: new Date(`${addDaysToKey(TODAY, -7)}T00:00:00.000Z`), grossPaise: 300_00, netPaise: 300_00, paidPaise: 100_00, status: "PART" },
+      ],
+    });
+    // Both the leaver's Term 1 and this pupil's Term 2 are due a week ago: the D+7 bucket fires for the pupil on the roll only.
+    const job = await sendFeeReminders();
+    expect(job.perSchool[schoolId]).toEqual({ reminders: 1 });
+    expect(await db.notification.count({ where: { userId: leaverParentId, kind: "FEES" } })).toBe(0);
+    expect((await db.feeDemand.findFirstOrThrow({ where: { studentMembershipId: leaver }, select: { lastReminderKey: true } })).lastReminderKey).toBeNull();
+    const daily = await db.notification.findFirstOrThrow({ where: { userId: behindParentId, kind: "FEES" }, orderBy: { createdAt: "desc" } });
+    expect(daily.body).toContain("₹200");
+    // Remind now: the leaver is nobody's to text; the pupil behind is told the whole ₹400, not the oldest instalment's ₹200.
+    expect(await remindNow(admin(), { studentMembershipIds: [leaver] })).toEqual({ families: 0, demands: 0 });
+    expect(await remindNow(admin(), { studentMembershipIds: [behind] })).toEqual({ families: 1, demands: 2 });
+    expect(await db.notification.count({ where: { userId: leaverParentId, kind: "FEES" } })).toBe(0);
+    const manual = await db.notification.findMany({ where: { userId: behindParentId, kind: "FEES" } });
+    expect(manual).toHaveLength(2);
+    expect(manual.map((n) => n.body.includes("₹400") && n.body.includes(addDaysToKey(TODAY, -20))).filter(Boolean)).toHaveLength(1);
+  });
+
+  it("a payment at 01:00 IST on the 2nd prints the 2nd and falls in a range that starts on the 2nd", async () => {
+    // 19:30 UTC on the 1st is 01:00 the next morning in Asia/Kolkata.
+    await db.feePayment.create({ data: { schoolId, studentMembershipId: behind, amountPaise: 100_00, method: "CASH", status: "PAID", paidAt: new Date(`${K}T19:30:00.000Z`), collectedByUserId: adminUserId } });
+    const onThe2nd = (await collectionsExport(admin(), { fromKey: addDaysToKey(K, 1), toKey: addDaysToKey(K, 1) })).csv.split(/\r?\n/).filter(Boolean);
+    expect(onThe2nd).toHaveLength(2);
+    expect(onThe2nd[1]).toMatch(new RegExp(`^${addDaysToKey(K, 1)},`));
+    expect(onThe2nd[1]).toContain(`ZFH${STAMP}`);
+    const onThe1st = (await collectionsExport(admin(), { fromKey: K, toKey: K })).csv.split(/\r?\n/).filter(Boolean);
+    expect(onThe1st).toHaveLength(1);
+    await expect(collectionsExport(admin(), { fromKey: "2026-13-01", toKey: K })).rejects.toThrow("fees.refuseDate");
   });
 });

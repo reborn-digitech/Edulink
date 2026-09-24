@@ -18743,6 +18743,15 @@
                       "format": "date-time",
                       "nullable": true
                     },
+                    "issuedDateKey": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/fromDateKey"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
+                    },
                     "authorName": {
                       "type": "string",
                       "nullable": true
@@ -18880,6 +18889,14 @@
                           },
                           "points": {
                             "type": "number",
+                            "nullable": true
+                          },
+                          "scoreMilli": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "pointsMilli": {
+                            "type": "integer",
                             "nullable": true
                           },
                           "parts": {
@@ -38222,6 +38239,10 @@
                           },
                           "hasPlan": {
                             "type": "boolean"
+                          },
+                          "left": {
+                            "type": "boolean",
+                            "default": false
                           }
                         },
                         "required": [
@@ -49644,6 +49665,9 @@
                       "type": "integer",
                       "minimum": 0
                     },
+                    "workingDaysInMonth": {
+                      "$ref": "#/properties/workingDays"
+                    },
                     "rows": {
                       "type": "array",
                       "items": {
@@ -49677,6 +49701,9 @@
                             "$ref": "#/properties/workingDays"
                           },
                           "workingDays": {
+                            "$ref": "#/properties/workingDays"
+                          },
+                          "workingDaysInMonth": {
                             "$ref": "#/properties/workingDays"
                           },
                           "percent": {
@@ -49857,6 +49884,9 @@
                           "$ref": "#/properties/checkInMinute"
                         },
                         "workingDays": {
+                          "$ref": "#/properties/checkInMinute"
+                        },
+                        "workingDaysInMonth": {
                           "$ref": "#/properties/checkInMinute"
                         },
                         "percent": {

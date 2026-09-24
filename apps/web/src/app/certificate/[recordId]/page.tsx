@@ -53,8 +53,9 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
     { label: t("tc.fieldName"), value: tc.studentName || dash },
     { label: t("tc.fieldAdmissionNo"), value: tc.studentCode ?? dash },
     { label: t("tc.fieldBirthdate"), value: tc.birthdate ? formatDate(tc.birthdate) : dash },
-    { label: t("tc.fieldAdmitted"), value: formatDate(tc.joinedAt) },
-    { label: t("tc.fieldLeft"), value: formatDate(tc.leftAt) },
+    // Joining and leaving are instants: the day is the one in the school's zone. The birthday is a date-only value and stays as stored.
+    { label: t("tc.fieldAdmitted"), value: formatDate(tc.joinedAt, tc.school.timezone) },
+    { label: t("tc.fieldLeft"), value: formatDate(tc.leftAt, tc.school.timezone) },
     { label: t("tc.fieldClass"), value: tc.className ?? (tc.gradeLevel ? t("tc.gradeOnly", { grade: tc.gradeLevel }) : dash) },
     { label: t("tc.fieldReason"), value: REASON_KEY[tc.reason] ? t(REASON_KEY[tc.reason]!) : tc.reason },
     { label: t("tc.fieldConduct"), value: tc.conduct && CONDUCT_KEY[tc.conduct] ? t(CONDUCT_KEY[tc.conduct]!) : dash },
@@ -116,7 +117,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
         <div className="mt-12 grid grid-cols-2 gap-8 text-sm">
           <div>
             <p className="text-[#444]">{t("tc.issuedOn")}</p>
-            <p className="font-medium">{formatDate(tc.issuedAt)}</p>
+            <p className="font-medium">{formatDate(tc.issuedAt, tc.school.timezone)}</p>
             {tc.issuedBy && <p className="mt-1 text-xs text-[#444]">{t("tc.issuedBy", { name: tc.issuedBy })}</p>}
           </div>
           <div className="text-right">

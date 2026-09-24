@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { csvToXlsx, exportResponse, wantsXlsx } from "../src/lib/export-file";
-import { parseXlsx, XLSX_MIME } from "../src/lib/xlsx";
+import { csvToXlsx, exportResponse, isTextColumn, wantsXlsx } from "../src/lib/export-file";
+import { parseXlsx, unzip, XLSX_MIME } from "../src/lib/xlsx";
 
 const file = { filename: "edulink-register-Class_3-2026-09.csv", csv: "student_code,name,2026-09-01,days_present\r\nSTU-007,Asha Rao,P,1\r\n0042,Bilal,A,0\r\n,Chitra,,\r\n" };
 
@@ -33,5 +33,31 @@ describe("export file", () => {
     const bytes = await csvToXlsx("code,phone,amount,note\r\n007,+919876400001,1250.50,12.0\r\n", "s");
     const [sheet] = await parseXlsx(bytes);
     expect(sheet!.rows[1]).toEqual(["007", "+919876400001", "1250.5", "12"]);
+  });
+});
+
+describe("identifier columns", () => {
+  it("keeps a PEN, a UDISE code, a mobile and a PIN as text by header or by length, and marks and amounts as numbers", async () => {
+    const csv = "name,pen,udise_code,mobile,postal_code,roll_no,marks,amount,count\r\nAsha,27250100001,27250100942,9876543210,411001,7,85,1250.50,12\r\nBilal,10000000000,,0987654321,,12,9,0,3\r\n";
+    const [sheet] = await parseXlsx(await csvToXlsx(csv, "s"));
+    // parseXlsx reads every cell back as a string; a number cell comes back normalised (1250.50 → 1250.5) and a text cell exactly as written.
+    expect(sheet!.rows[1]).toEqual(["Asha", "27250100001", "27250100942", "9876543210", "411001", "7", "85", "1250.5", "12"]);
+    expect(sheet!.rows[2]).toEqual(["Bilal", "10000000000", "", "0987654321", "", "12", "9", "0", "3"]);
+    // Under a header that names an identifier the cell is text whatever it looks like; under any other, more than nine digits is text too.
+    expect(isTextColumn("pen")).toBe(true);
+    expect(isTextColumn("student_code")).toBe(true);
+    expect(isTextColumn("PEN Number")).toBe(true);
+    expect(isTextColumn("paid")).toBe(false);
+    expect(isTextColumn("days_present")).toBe(false);
+    // In the sheet's own XML: the PEN and the twelve-digit id are inline strings, the nine-digit figure and the marks are <v> numbers.
+    const bytes = await csvToXlsx("note,value,pen,marks\r\nx,123456789012,27250100001,85\r\ny,123456789,,9\r\n", "s");
+    const [long] = await parseXlsx(bytes);
+    expect(long!.rows[1]).toEqual(["x", "123456789012", "27250100001", "85"]);
+    expect(long!.rows[2]).toEqual(["y", "123456789", "", "9"]);
+    const xml = new TextDecoder().decode((await unzip(bytes)).get("xl/worksheets/sheet1.xml"));
+    expect(xml).toMatch(/<c r="B2"[^>]*t="inlineStr"><is><t[^>]*>123456789012<\/t>/);
+    expect(xml).toMatch(/<c r="C2"[^>]*t="inlineStr"><is><t[^>]*>27250100001<\/t>/);
+    expect(xml).toMatch(/<c r="D2"[^>]*><v>85<\/v>/);
+    expect(xml).toMatch(/<c r="B3"[^>]*><v>123456789<\/v>/);
   });
 });

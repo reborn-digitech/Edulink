@@ -204,7 +204,8 @@ describe("the move", () => {
     expect(p4.leftAt?.toISOString().slice(0, 10)).toBe("2027-04-30");
     const tc = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: pupils[3]! } });
     expect(tc.className).toBe("ZZ Promo 10 A");
-    expect(tc.serial).toMatch(/^TC\/2027\//);
+    // The serial carries the academic year that covers the leaving day, as every other paper does (school-record.ts nextSerial).
+    expect(tc.serial).toMatch(/^TC\/2026–27\//);
 
     // 4 kept its repeater, so it stays; 10 emptied, so it is archived; the
     // existing 5 sent its old roll on to 6 but RECEIVED p1, so it is next
