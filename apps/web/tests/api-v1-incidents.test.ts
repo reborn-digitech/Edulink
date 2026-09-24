@@ -106,7 +106,9 @@ describe("recording", () => {
     expect(view.guardiansNotifiedAt).toEqual(expect.any(String));
     expect(await db.notification.count({ where: { userId: parentUserId } })).toBe(before + 1);
     const note = await db.notification.findFirst({ where: { userId: parentUserId }, orderBy: { createdAt: "desc" }, select: { kind: true, title: true, body: true, url: true } });
-    expect(note).toMatchObject({ kind: "INCIDENT", title: "ZZ Incident Pupil: an incident at school", body: "Fell on the steps, grazed knee", url: `/parent/incidents?child=${pupilMembershipId}&incident=${incidentId}` });
+    // The push body says a note exists; what happened is read in the app (the text on the second channel carries the summary).
+    expect(note).toMatchObject({ kind: "INCIDENT", title: "ZZ Incident Pupil: an incident at school", body: "The school has added a note about ZZ Incident Pupil. Open the app to read it.", url: `/parent/incidents?child=${pupilMembershipId}&incident=${incidentId}` });
+    expect(note?.body).not.toContain("grazed");
     const text = await db.outboundMessage.findFirst({ where: { schoolId, userId: parentUserId, templateKey: "incident" }, select: { body: true, status: true } });
     expect(text?.body).toContain("Fell on the steps, grazed knee");
     expect(text?.body).toContain("ZZ Incident Pupil");

@@ -1,3 +1,4 @@
+import { FAMILY_RECORD_FIELDS } from "@edulink/contracts";
 import { fireEvent, screen, waitFor, within } from "@testing-library/react-native";
 import { ToastProvider } from "@/components";
 import { bodyOf, calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
@@ -87,14 +88,18 @@ describe("the pupil record for the guardian", () => {
     expect(screen.getByText("Recorded by the school; ask the office to correct it.")).toBeTruthy();
     expect(screen.getByLabelText("Father's name").props.value).toBe("ZZ Ravi");
     expect(screen.getByLabelText("Mother tongue").props.value).toBe("Marathi");
-    expect(screen.getByLabelText("Admission register number").props.value).toBe("");
-    // Religion and category are coded choices; nothing stored leaves "Not said" checked.
+    // The office's fields — the admission number and date, the grade, the last school's TC, the category and caste, the filing codes — the family reads under the office's note and cannot type.
+    expect(screen.getByLabelText("Admission register number: —. Set by the school office.")).toBeTruthy();
+    expect(screen.queryByLabelText("Admission register number")).toBeNull();
+    expect(screen.getByLabelText("Date of admission: —. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Category: —. Set by the school office.")).toBeTruthy();
+    expect(screen.queryByLabelText("Category")).toBeNull();
+    expect(screen.getByLabelText("Transfer certificate number (last school): —. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Gender: —. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Below-poverty-line card: —. Set by the school office.")).toBeTruthy();
+    // Religion is the family's: a coded choice, nothing stored leaving "Not said" checked.
     expect(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Not said" }).props.accessibilityState.checked).toBe(true);
-    expect(within(screen.getByLabelText("Category")).getByRole("radio", { name: "OBC" })).toBeTruthy();
-    expect(screen.getByText("As on the admission form. VJ, NT and SBC file with UDISE+ as OBC.")).toBeTruthy();
-    // The collection gaps the audit named, each with its label and hint.
-    expect(screen.getByLabelText("Transfer certificate number (last school)").props.accessibilityHint).toBe("Optional · From the TC the last school issued; the admission register records it.");
-    expect(screen.getByLabelText("Transfer certificate date").props.accessibilityHint).toBe("Optional · YYYY-MM-DD");
+    // The household, as the RTE and EWS verifications ask for it, is the family's to type.
     expect(screen.getByLabelText("Father\u2019s occupation").props.value).toBe("");
     expect(screen.getByLabelText("Mother\u2019s occupation")).toBeTruthy();
     expect(screen.getByLabelText("Family\u2019s annual income (\u20b9)").props.keyboardType).toBe("number-pad");
@@ -110,22 +115,19 @@ describe("the pupil record for the guardian", () => {
     expect(screen.getByText("The school needs these details to issue certificates for your child — a bonafide, a transfer certificate — without asking you again. Fill in what you know; leave the rest blank.")).toBeTruthy();
   });
 
-  it("saves the whole record for that child, then says it is saved and reads back what still blocks", async () => {
+  it("saves the family's fields for that child — never the office's — then says it is saved and reads back what still blocks", async () => {
     const { fetch } = await renderFamily(compose(), ME_PARENT, {
       [CHILDREN_PATH]: () => CHILDREN,
       [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, admissionNumber: "GR-42", admissionDate: "2023-06-01" }, missing: [], missingForFiling: [], complete: true } : VIEW),
     });
-    await fireEvent.changeText(await screen.findByLabelText("Admission register number"), "GR-42");
-    await fireEvent.changeText(screen.getByLabelText("Date of admission"), "2023-06-01");
-    await fireEvent.press(within(screen.getByLabelText("Category")).getByRole("radio", { name: "OBC" }));
-    await fireEvent.press(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Hindu" }));
-    await fireEvent.changeText(screen.getByLabelText("Transfer certificate number (last school)"), "TC/2022/17");
-    await fireEvent.changeText(screen.getByLabelText("Transfer certificate date"), "2022-04-30");
+    await fireEvent.press(within(await screen.findByLabelText("Religion")).getByRole("radio", { name: "Hindu" }));
+    await fireEvent.changeText(screen.getByLabelText("Last school attended"), "ZZ Sunrise Nursery");
     await fireEvent.changeText(screen.getByLabelText("Father\u2019s occupation"), "Farmer");
     await fireEvent.changeText(screen.getByLabelText("Family\u2019s annual income (\u20b9)"), "240000");
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
     expect(posts(fetch)[0]!.url.searchParams.get("childId")).toBe(ID.child);
+    // Exactly FAMILY_RECORD_FIELDS: the admission number, the category, the TC, the filing codes and the roll number are not in the body at all.
     expect(bodyOf(posts(fetch)[0]!)).toEqual({
       fatherName: "ZZ Ravi",
       motherName: "ZZ Meera",
@@ -134,50 +136,44 @@ describe("the pupil record for the guardian", () => {
       motherTongue: "Marathi",
       addressLine: "1 ZZ Road",
       city: "Pune",
-      admissionNumber: "GR-42",
-      admissionDate: "2023-06-01",
       religion: "HINDU",
-      caste: "",
-      category: "OBC",
       postalCode: "411001",
-      admittedToGrade: "",
-      previousSchool: "",
-      gender: "",
+      previousSchool: "ZZ Sunrise Nursery",
       nameLocal: "",
       fatherNameLocal: "",
       motherNameLocal: "",
-      bpl: "",
-      ews: "",
-      cwsnType: "",
       bloodGroup: "",
-      previousSchoolTcNumber: "TC/2022/17",
-      previousSchoolTcDate: "2022-04-30",
       fatherOccupation: "Farmer",
       motherOccupation: "",
       annualIncome: "240000",
     });
+    expect(Object.keys(bodyOf(posts(fetch)[0]!) as object).sort()).toEqual([...FAMILY_RECORD_FIELDS].sort());
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.getByText("Complete")).toBeTruthy();
     expect(screen.queryByText(/^Still blank/)).toBeNull();
   });
 
-  it("the filing section sends the portal's codes: gender, the name in the school's script, BPL, the impairment type and the blood group", async () => {
+  it("the filing section: the family types the name in the school's script and the blood group; the gender, BPL, EWS and impairment codes are the office's, shown as the words the office picked", async () => {
     const { fetch } = await renderFamily(compose(), ME_PARENT, {
       [CHILDREN_PATH]: () => CHILDREN,
-      [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, gender: "F", bpl: "yes", nameLocal: "ZZ आशा", cwsnType: "9", bloodGroup: "B+" }, missingForFiling: [] } : VIEW),
+      [PATH]: (init) => (init?.method === "POST" ? { ...VIEW, record: { ...RECORD, gender: "F", bpl: "yes", nameLocal: "ZZ आशा", cwsnType: "9", bloodGroup: "B+" }, missingForFiling: [] } : { ...VIEW, record: { ...RECORD, gender: "F", cwsnType: "9", category: "OBC" } }),
     });
     expect(await screen.findByText("For the UDISE+ and board filings")).toBeTruthy();
     expect(screen.getByLabelText("Name in the school\u2019s script").props.accessibilityHint).toMatch(/^Optional · The state board prints/);
-    await fireEvent.press(within(screen.getByLabelText("Gender")).getByRole("radio", { name: "Female" }));
+    // The office's codes read as their words, under the office's note, with nothing to press.
+    expect(screen.getByLabelText("Gender: Female. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Disability, if any: 9 — Autism spectrum disorder. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Category: OBC. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Economically weaker section or disadvantaged group: —. Set by the school office.")).toBeTruthy();
+    expect(screen.queryByLabelText("Gender")).toBeNull();
+    expect(screen.queryByLabelText("Below-poverty-line card")).toBeNull();
     await fireEvent.changeText(screen.getByLabelText("Name in the school\u2019s script"), "ZZ आशा");
-    await fireEvent.press(within(screen.getByLabelText("Below-poverty-line card")).getByRole("radio", { name: "Yes" }));
-    await fireEvent.press(within(screen.getByLabelText("Disability, if any")).getByRole("radio", { name: "9 — Autism spectrum disorder" }));
     await fireEvent.press(within(screen.getByLabelText("Blood group")).getByRole("radio", { name: "B+" }));
-    // The section's "Not said" stays on the section not touched.
-    expect(within(screen.getByLabelText("Economically weaker section or disadvantaged group")).getByRole("radio", { name: "Not said" }).props.accessibilityState.checked).toBe(true);
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
-    expect(bodyOf(posts(fetch)[0]!)).toMatchObject({ gender: "F", nameLocal: "ZZ आशा", fatherNameLocal: "", motherNameLocal: "", bpl: "yes", ews: "", cwsnType: "9", bloodGroup: "B+" });
+    const body = bodyOf(posts(fetch)[0]!);
+    expect(body).toMatchObject({ nameLocal: "ZZ आशा", fatherNameLocal: "", motherNameLocal: "", bloodGroup: "B+" });
+    for (const office of ["gender", "bpl", "ews", "cwsnType", "category", "caste", "admissionNumber", "admissionDate", "admittedToGrade", "previousSchoolTcNumber", "previousSchoolTcDate", "rollNumber", "penNumber"]) expect(body).not.toHaveProperty(office);
     expect(await screen.findByText("Record saved.")).toBeTruthy();
     expect(screen.queryByText(/^Still blank for the UDISE\+ filing/)).toBeNull();
   });
@@ -194,31 +190,23 @@ describe("the pupil record for the guardian", () => {
     expect(bodyOf(posts(fetch)[0]!)).not.toHaveProperty("penNumber");
   });
 
-  it("a category or religion typed before the codes shows as its own chip, goes back only as it is, and gives way to a code", async () => {
+  it("a religion typed before the codes shows as its own chip, goes back only as it is, and gives way to a code; a category typed before them reads as typed under the office's note", async () => {
     const { fetch } = await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: (init) => (init?.method === "POST" ? VIEW : { ...VIEW, record: { ...RECORD, category: "Open", religion: "Hinduism" } }) });
-    const category = within(await screen.findByLabelText("Category"));
-    expect(category.getByRole("radio", { name: "Open" }).props.accessibilityState.checked).toBe(true);
+    expect(await screen.findByLabelText("Category: Open. Set by the school office.")).toBeTruthy();
     expect(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Hinduism" }).props.accessibilityState.checked).toBe(true);
     await fireEvent.press(within(screen.getByLabelText("Religion")).getByRole("radio", { name: "Sikh" }));
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
-    expect(bodyOf(posts(fetch)[0]!)).toMatchObject({ category: "Open", religion: "SIKH" });
+    expect(bodyOf(posts(fetch)[0]!)).toMatchObject({ religion: "SIKH" });
+    expect(bodyOf(posts(fetch)[0]!)).not.toHaveProperty("category");
   });
 
-  it("a transfer certificate date that is not a day is refused before anything is sent", async () => {
-    const { fetch } = await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: () => VIEW });
-    await fireEvent.changeText(await screen.findByLabelText("Transfer certificate date"), "April 2022");
-    await press(screen.getByRole("button", { name: "Save the record" }));
-    expect(screen.getByText("Use a real date in YYYY-MM-DD form.")).toBeTruthy();
-    expect(posts(fetch)).toHaveLength(0);
-  });
-
-  it("a date of admission that is not a day is refused before anything is sent", async () => {
-    const { fetch } = await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: () => VIEW });
-    await fireEvent.changeText(await screen.findByLabelText("Date of admission"), "June 2023");
-    await press(screen.getByRole("button", { name: "Save the record" }));
-    expect(screen.getByText("Use a real date in YYYY-MM-DD form.")).toBeTruthy();
-    expect(posts(fetch)).toHaveLength(0);
+  it("the two dates — admission and the last school's TC — are the office's: the family reads them as stored and has nowhere to type one", async () => {
+    await renderFamily(compose(), ME_PARENT, { [CHILDREN_PATH]: () => CHILDREN, [PATH]: () => ({ ...VIEW, record: { ...RECORD, admissionDate: "2023-06-01", previousSchoolTcDate: "2022-04-30" } }) });
+    expect(await screen.findByLabelText("Date of admission: 2023-06-01. Set by the school office.")).toBeTruthy();
+    expect(screen.getByLabelText("Transfer certificate date: 2022-04-30. Set by the school office.")).toBeTruthy();
+    expect(screen.queryByLabelText("Date of admission")).toBeNull();
+    expect(screen.queryByLabelText("Transfer certificate date")).toBeNull();
   });
 
   it("switching child asks for that child's record", async () => {

@@ -9,9 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("admissions.newCycle") };
 }
 
-/** A new cycle, started on the current year. */
+/** A new cycle, started on the current year. The admin's page: the head reads the cycles and decides on the families, and does not design one. */
 export default async function NewCyclePage() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN");
   const t = await getT();
   const view = await cyclesView(ctx);
   return (

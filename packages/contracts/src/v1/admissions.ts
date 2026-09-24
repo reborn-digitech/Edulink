@@ -169,7 +169,7 @@ export const officeApplicationsQuerySchema = z.object({ cycleId: cuid.optional()
 
 /** POST /api/v1/family/applications/{id}/documents — phone tickets or web-stored files, keyed to the cycle's document list. */
 export const applicationDocumentsSaveSchema = z.object({
-  documents: z.array(z.object({ key: z.string().trim().min(1).max(32), fileId: z.string().min(1), name: z.string().trim().min(1).max(120) })).min(1).max(12),
+  documents: z.array(z.object({ key: z.string().trim().min(1).max(32), fileId: z.string().min(1).max(64), name: z.string().trim().min(1).max(120) })).min(1).max(12),
 });
 
 export const applicationBookSchema = z.object({ slotId: cuid });
@@ -196,7 +196,7 @@ export const testResultSchema = z.object({ score: z.string().trim().max(40).null
 export const offerSchema = z.object({ expiresOn: dateKey.nullable(), note: z.string().trim().max(400).optional(), feeStructureId: cuid.nullable().optional() });
 export const decisionSchema = z.object({ status: z.enum(["DECLINED", "WAITLISTED", "SUBMITTED"]), note: z.string().trim().max(400).optional() });
 export const admitSchema = z.object({ classId: cuid.nullable().optional(), feeStructureId: cuid.nullable().optional(), admissionNumber: z.string().trim().max(40).optional() });
-export const admittedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string(), className: z.string().nullable(), feePlan: z.boolean(), guardianLinked: z.boolean(), firstSignInCode: z.string().nullable() });
+export const admittedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string(), className: z.string().nullable(), feePlan: z.boolean(), guardianLinked: z.boolean(), firstSignInCode: z.string().nullable(), /** Set when the applicant had an account but was not linked: the seat went to an existing pupil. */ noteKey: z.string().optional() });
 
 /** GET /api/v1/shared/schools/{schoolId}/admissions — what a family sees on the school's page: the open cycle, its grades, documents and notice. */
 export const schoolAdmissionsSchema = z.object({

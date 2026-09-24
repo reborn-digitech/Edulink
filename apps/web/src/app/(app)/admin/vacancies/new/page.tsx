@@ -10,9 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("vacancies.newTitle") };
 }
 
+/** The admin's page: the head reads the desk, and does not post to it. */
 export default async function NewVacancyPage() {
   const t = await getT();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN");
   const candidates = await listContactCandidates(ctx);
 
   return (

@@ -4,6 +4,8 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { fakePasswordWork, verifyPassword } from "./crypto";
 import { toDisplayLoginName, toLoginEmail } from "./login-name";
+import { loginIdentityKey } from "./passwords";
+import { consume, LOGIN_ATTEMPTS } from "./rate-limit";
 import { forTenant, forUser } from "./tenant-context";
 import type { ActiveContext } from "./session";
 
@@ -88,6 +90,8 @@ export type MergeRefusal = {
   ok: false;
   errorKey: TranslationKey;
   errorVars?: Record<string, string | number>;
+  /** Set on a rate refusal: the boundary composes "{hint}" from it. */
+  retryAfterSeconds?: number;
 };
 export type MergePreview = { ok: true; other: OtherAccount } | MergeRefusal;
 
@@ -133,6 +137,28 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
   if (email.length === 0 || (input.password ?? "").length === 0) {
     await fakePasswordWork();
     return { ok: false, errorKey: GENERIC };
+  }
+
+  /**
+   * ⚠ A PASSWORD PROMPT FOR ANY ACCOUNT, and it had no limit at all: the login
+   * form's ten-in-fifteen never saw a guess made here. Two buckets, and both
+   * are charged before the lookup so an account that does not exist costs
+   * exactly what one that does costs:
+   *
+   *   THE LOGIN'S OWN, shared with `signInWithPassword` and keyed the same
+   *   way, so guesses here and guesses at the front door draw on one count.
+   *
+   *   THE CALLER'S, keyed on the signed-in account, so one session cannot
+   *   walk a list of other people's logins ten guesses at a time.
+   */
+  const perLogin = await consume(`login:${loginIdentityKey(input.identifier ?? "")}`, LOGIN_ATTEMPTS.limit, LOGIN_ATTEMPTS.windowMs);
+  const perCaller = await consume(`merge:${ctx.user.id}`, LOGIN_ATTEMPTS.limit, LOGIN_ATTEMPTS.windowMs);
+  if (!perLogin.allowed || !perCaller.allowed) {
+    return {
+      ok: false,
+      errorKey: "refusal.tooManyRetry",
+      retryAfterSeconds: Math.max(perLogin.retryAfterSeconds, perCaller.retryAfterSeconds),
+    };
   }
 
   const other = await db.user.findUnique({
@@ -294,7 +320,9 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
  */
 export async function previewMerge(ctx: ActiveContext, input: MergeInput): Promise<MergePreview> {
   const result = await authenticate(ctx, input);
-  if (!result.ok) return { ok: false, errorKey: result.errorKey, errorVars: result.errorVars };
+  if (!result.ok) {
+    return { ok: false, errorKey: result.errorKey, errorVars: result.errorVars, retryAfterSeconds: result.retryAfterSeconds };
+  }
   return { ok: true, other: result.other };
 }
 
@@ -337,7 +365,9 @@ type MergeTx = {
  */
 export async function mergeAccounts(ctx: ActiveContext, input: MergeInput): Promise<MergeResult> {
   const auth = await authenticate(ctx, input);
-  if (!auth.ok) return { ok: false, errorKey: auth.errorKey, errorVars: auth.errorVars };
+  if (!auth.ok) {
+    return { ok: false, errorKey: auth.errorKey, errorVars: auth.errorVars, retryAfterSeconds: auth.retryAfterSeconds };
+  }
 
   const { other, schoolIds } = auth;
   const keeperId = ctx.user.id;

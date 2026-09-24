@@ -891,6 +891,18 @@ export async function addComment(
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   /**
+   * The same ceiling createPost puts on posts, a little higher because a
+   * comment is smaller: sixty an hour per person. One person answering a
+   * whole class's questions is real; sixty-one in an hour is a loop.
+   */
+  const commentLimiter = await consume(`comment:${session.user.id}`, COMMENTS_PER_HOUR, 60 * 60 * 1000);
+  if (!commentLimiter.allowed) {
+    throw new AccessError("access.youArePostingALot", "FORBIDDEN", {
+      minutes: Math.max(1, Math.ceil(commentLimiter.retryAfterSeconds / 60)),
+    });
+  }
+
+  /**
    * A reply attaches to a comment ON THIS POST, and threads stay ONE LEVEL
    * DEEP: replying to a reply re-points at the thread's top comment, the way
    * every feed people know does it, so a discussion is a list of comments
@@ -900,26 +912,46 @@ export async function addComment(
    */
   let parentId: string | null = null;
   let parentAuthorUserId: string | null = null;
+  let parentAuthorIsMinor = false;
+  let parentAuthorSchoolId: string | null = null;
   if (parentCommentId) {
     const parent = await db.comment.findFirst({
       where: { id: parentCommentId, postId, status: { not: "REMOVED" } },
-      select: { id: true, parentCommentId: true, authorUserId: true },
+      select: { id: true, parentCommentId: true, authorUserId: true, schoolId: true, author: { select: { isMinor: true } } },
     });
     if (!parent) throw new AccessError("access.postNotFound", "NOT_FOUND");
     parentId = parent.parentCommentId ?? parent.id;
     parentAuthorUserId = parent.authorUserId;
+    parentAuthorIsMinor = parent.author.isMinor;
+    parentAuthorSchoolId = parent.schoolId;
   }
 
   /**
    * Same rule as posts inside a school: a child's words are reviewed, an
-   * adult's are not. On a GLOBAL post the hold is off — a product decision,
-   * made deliberately: the global feed is a public square across schools and
-   * a review queue there would put one school's staff in charge of every
-   * school's children. What remains for global comments is what remains for
-   * everything: the one-tap report, which files with the REPORTER's school.
+   * adult's are not. On a GLOBAL post EVERY comment is held — the global
+   * feed is the one place a child from any school can be answered by an
+   * adult from any other, and the hold used to be off there "so that one
+   * school's staff would not review every school's children". They do not:
+   * a global comment files with the AUTHOR'S OWN school, whose staff review
+   * their own people's words exactly as they review a school post's. The
+   * one-tap report remains for everything else.
    */
-  const status =
-    session.role === "STUDENT" && visible.scope !== "GLOBAL" ? "PENDING" : "APPROVED";
+  const isGlobal = visible.scope === "GLOBAL";
+  const status = session.role === "STUDENT" || isGlobal ? "PENDING" : "APPROVED";
+
+  /**
+   * Which school reviews it. A school post's comment belongs to the post's
+   * school as ever; a global post's comment belongs to the commenter's own
+   * school — the session's, or for a school-less guardian the first school a
+   * child of theirs attends — and only when the commenter has no school at
+   * all does it fall to the post's, which is the tenant the RLS global insert
+   * clause already lets them write into.
+   */
+  let reviewSchoolId = schoolOf(visible);
+  if (isGlobal) {
+    if (session.schoolId) reviewSchoolId = session.schoolId;
+    else if (session.role === "PARENT") reviewSchoolId = (await guardianSchoolIds(session.user.id))[0] ?? reviewSchoolId;
+  }
 
   await db.comment.create({
     data: {
@@ -927,10 +959,18 @@ export async function addComment(
       authorUserId: session.user.id,
       body: body.trim(),
       status,
-      schoolId: schoolOf(visible),
+      schoolId: reviewSchoolId,
       parentCommentId: parentId,
     },
   });
+
+  /**
+   * SAFEGUARDING, stated once: no notification about a stranger's reply ever
+   * reaches a child across schools. A minor is told of a reply only by
+   * somebody of their own school; the reply itself still waits in the
+   * queue above, so on a global post this guard is belt and braces.
+   */
+  const crossSchoolToMinor = parentAuthorIsMinor && parentAuthorSchoolId !== (session.schoolId ?? reviewSchoolId);
 
   if (status === "APPROVED") {
     /**
@@ -947,7 +987,7 @@ export async function addComment(
     const tell = (input: Parameters<typeof notify>[0]) =>
       notify(input).catch(() => undefined);
     const told = new Set<string>([session.user.id]);
-    if (parentAuthorUserId && !told.has(parentAuthorUserId)) {
+    if (parentAuthorUserId && !told.has(parentAuthorUserId) && !crossSchoolToMinor) {
       told.add(parentAuthorUserId);
       await tell({
         userId: parentAuthorUserId,
@@ -973,16 +1013,53 @@ export async function addComment(
   return { status };
 }
 
+/** Comments per person per hour; see addComment. */
+export const COMMENTS_PER_HOUR = 60;
+/** Reports per person per hour; see reportContent. */
+export const REPORTS_PER_HOUR = 10;
+/** One urgent burst to a school's admins per this many milliseconds; later reports in the window queue quietly. */
+export const REPORT_URGENT_WINDOW_MS = 10 * 60 * 1000;
+
 /**
  * One-tap report.
  *
  * Never rejects a duplicate: if a child reports the same thing twice because
- * they were not sure it worked, that must not read as a failure.
+ * they were not sure it worked, that must not read as a failure — the second
+ * tap within a day is answered as the first was and files nothing new, so a
+ * held finger cannot turn one worry into a hundred rows and a hundred
+ * wake-ups. The target is checked to exist so the queue never carries a
+ * report of nothing, ten an hour is the ceiling per person, and a school's
+ * admins are woken URGENTLY once per ten minutes: the first report in the
+ * window bypasses quiet hours, the rest of the window's arrive quietly.
  */
 export async function reportContent(
   session: ActiveContext,
   input: { targetType: "POST" | "COMMENT" | "USER"; targetId: string; reason: string; detail?: string },
 ): Promise<void> {
+  const limiter = await consume(`report:${session.user.id}`, REPORTS_PER_HOUR, 60 * 60 * 1000);
+  if (!limiter.allowed) {
+    throw new AccessError("access.youAreReportingALot", "FORBIDDEN", {
+      minutes: Math.max(1, Math.ceil(limiter.retryAfterSeconds / 60)),
+    });
+  }
+
+  // The target must be something: a post or comment this reader can see (a
+  // global one included, through the same clauses the feed uses), or a person.
+  const exists =
+    input.targetType === "POST"
+      ? await db.post.findFirst({ where: { id: input.targetId }, select: { id: true } })
+      : input.targetType === "COMMENT"
+        ? await db.comment.findFirst({ where: { id: input.targetId }, select: { id: true } })
+        : await db.user.findUnique({ where: { id: input.targetId }, select: { id: true } });
+  if (!exists) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const duplicate = await db.report.findFirst({
+    where: { reporterUserId: session.user.id, targetType: input.targetType, targetId: input.targetId, createdAt: { gte: since } },
+    select: { id: true },
+  });
+  if (duplicate) return;
+
   await db.report.create({
     data: {
       schoolId: session.schoolId,
@@ -995,6 +1072,7 @@ export async function reportContent(
   });
 
   if (session.schoolId) {
+    const burst = await consume(`report-urgent:${session.schoolId}`, 1, REPORT_URGENT_WINDOW_MS);
     const admins = await db.membership.findMany({
       where: { schoolId: session.schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
       select: { userId: true },
@@ -1009,7 +1087,9 @@ export async function reportContent(
           bodyKey: "notifBody.reportedAs",
           bodyVars: { type: input.targetType.toLowerCase(), reason: input.reason.toLowerCase().replace(/_/g, " ") },
           url: "/bulletin?filter=pending",
-          urgent: true, // safeguarding: bypasses quiet hours
+          // safeguarding: the window's first report bypasses quiet hours; the
+          // rest wait for the morning with everything else.
+          urgent: burst.allowed,
         }),
       ),
     );

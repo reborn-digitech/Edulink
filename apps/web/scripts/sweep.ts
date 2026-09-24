@@ -1146,10 +1146,15 @@ async function onboardingSignposts(schoolId: string) {
           page.status === 200 &&
           // The promise, by the id on the element that carries it…
           page.body.includes('id="password-unchanged"') &&
-          // …and no password field at all. `type="password"` is the input's own
-          // markup, so this stays true of a page in any language.
-          !page.body.includes('type="password"'),
-        note: "⚠ an invitation to a known address adds a school and asks for no password",
+          // …no NEW password is asked for (`autoComplete="new-password"` is the
+          // sign-up field's own markup, in any language)…
+          !page.body.includes('autoComplete="new-password"') &&
+          !page.body.includes('autocomplete="new-password"') &&
+          // …and a holder who is not signed in proves it with the password they
+          // already use, since 2026-09-24: the invitation is no longer a 14-day
+          // magic link into a password-holding account.
+          (page.body.includes('autocomplete="current-password"') || page.body.includes('autoComplete="current-password"')),
+        note: "⚠ an invitation to a known address adds a school, asks no new password, and proves the holder with the one they have",
       });
     } finally {
       await db.invite.deleteMany({ where: { id: transferInvite.id } });
@@ -1379,10 +1384,22 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
     await check(head, "/admin/promotion", 307, "⚠ …nor move the school up a year");
     await check(head, "/admin/intake", 307, "⚠ …nor admit pupils from a list");
-    // Hiring is the principal's desk alongside the admin's; the directory
-    // profile stays the admin's alone.
-    await check(head, "/admin/vacancies", 200, "…and the principal runs the vacancy desk");
-    await check(head, "/admin/vacancies/new", 200, "…including posting one");
+    // Hiring is read from the principal's desk alongside the admin's, but
+    // posting is setting the school up — the admin's, like the directory
+    // profile — so the desk shows no post or close button and the form page
+    // redirects.
+    await check(head, "/admin/vacancies", 200, "…and the principal reads the vacancy desk");
+    await check(head, "/admin/vacancies/new", 307, "⚠ …but does not post to it");
+    // The pages that set the school up — templates, the report card rules,
+    // the staff clock, the chapter lists, the admission cycles — the head
+    // reads with every form disabled or absent; designing one redirects.
+    await check(head, "/admin/certificates", 200, "…reads the certificate templates");
+    await check(head, "/admin/certificates/new", 307, "⚠ …but does not design one");
+    await check(head, "/admin/report-cards", 200, "…reads the report card rules");
+    await check(head, "/admin/staff-attendance", 200, "…reads and marks the staff register, without the clock's form");
+    await check(head, "/admin/syllabus", 200, "…reads the chapter lists");
+    await check(head, "/admin/admissions", 200, "…reads the admission cycles");
+    await check(head, "/admin/admissions/new", 307, "⚠ …but does not design a cycle");
     await check(head, "/vacancies", 200, "…and reads the platform board");
     await check(head, "/enquiries", 200, "…and the school's enquiries");
     await check(head, "/admin/directory", 307, "⚠ …but does not edit the directory profile");
@@ -1872,7 +1889,8 @@ async function main() {
    * the success path 500ed. That is why this asserts the redirect rather than a
    * 200, and why a real emailed link was opened by hand.
    */
-  await check(null, "/magic?token=not-a-real-token", 307, "a dead sign-in link goes to the form");
+  // Since 2026-09-24 a magic link shows a "Continue" page on GET and is spent on POST, so a mail scanner following it burns nothing; a dead token is refused at the POST.
+  await check(null, "/magic?token=not-a-real-token", 200, "a sign-in link shows the continue page; the token is spent on POST");
   await check(null, "/magic", 307, "no token at all goes to the form");
   /**
    * The mailbox is NODE_ENV-gated, so the right answer depends on which server

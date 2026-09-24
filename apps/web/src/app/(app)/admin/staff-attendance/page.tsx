@@ -71,7 +71,8 @@ export default async function StaffAttendancePage({ searchParams }: { searchPara
         }
       />
 
-      <SettingsForm checkInMinute={register.checkInMinute} lateGraceMinutes={register.lateGraceMinutes} />
+      {/* The clock is the admin's to set; the head reads it in the line above and marks the register against it. */}
+      {ctx.role === "ADMIN" && <SettingsForm checkInMinute={register.checkInMinute} lateGraceMinutes={register.lateGraceMinutes} />}
 
       {/* ---- the day ---- */}
       <Card>

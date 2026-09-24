@@ -16,7 +16,7 @@ export async function GET() {
 /** POST /api/v1/office/certificate-templates — create one. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = certificateTemplateSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(certificateTemplateSchema.parse(await saveTemplate(ctx, parsed.data)));

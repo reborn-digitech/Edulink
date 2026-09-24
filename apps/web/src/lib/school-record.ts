@@ -288,7 +288,9 @@ export async function recordDeparture(
     action: "student.leave",
     targetType: "Membership",
     targetId: membership.id,
-    meta: { recordId: record.id, reason: input.reason, destination },
+    // The reason is one of LEAVING_REASONS; the destination is free text the
+    // office typed and stays on the record, not in the log the whole office reads.
+    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null },
   });
 
   /**

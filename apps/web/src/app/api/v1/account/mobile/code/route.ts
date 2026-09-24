@@ -14,8 +14,8 @@ export async function POST(request: Request) {
     const ctx = await requireApiSession();
     const parsed = accountMobileCodeSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await startPhoneChange(ctx.user.id, parsed.data.phone);
-    if (!result.ok) return apiRefusal({ errorKey: result.errorKey ?? "common.checkTheForm", retryAfterSeconds: result.retryAfterSeconds }, "phone");
+    const result = await startPhoneChange(ctx.user.id, parsed.data.phone, parsed.data.password);
+    if (!result.ok) return apiRefusal({ errorKey: result.errorKey ?? "common.checkTheForm", retryAfterSeconds: result.retryAfterSeconds }, result.errorKey === "refusal.needsPassword" ? "password" : "phone");
     return ok(accountMobileCodeSentSchema.parse({ hint: result.hint || null }));
   } catch (error) {
     return apiFailure(error, "api/v1/account/mobile/code");

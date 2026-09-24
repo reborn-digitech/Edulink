@@ -2,7 +2,8 @@
 
 import { db } from "@/lib/db";
 import { hashPassword, hashToken, passwordProblems } from "@/lib/crypto";
-import { createSession } from "@/lib/session";
+import { createSession, getSession, revokeAllAccess } from "@/lib/session";
+import { signInWithPassword } from "@/lib/auth-login";
 import { acceptInviteSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { studentCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
@@ -100,20 +101,54 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
    */
   const holder = await db.user.findUnique({
     where: { email },
-    select: { id: true, passwordHash: true },
+    select: { id: true, passwordHash: true, emailVerifiedAt: true },
   });
-  const keepsExistingPassword = Boolean(holder?.passwordHash);
 
-  if (keepsExistingPassword && password) {
-    // Refused rather than ignored. "We took your input and did nothing with it"
-    // is the failure mode this whole change exists to remove, and accepting it
-    // quietly here would put it straight back.
-    return {
-      ok: false,
-      errors: {
-        password: (await getT())("invite.alreadyHavePassword"),
-      },
-    };
+  /**
+   * ⚠ AN ACCOUNT THAT NEVER PROVED ITS ADDRESS IS NOT YET ANYBODY'S. A parent's
+   * sign-up and a school's registration create the row before the
+   * verification mail is opened, so anyone can hold an account under any
+   * address — a head teacher's, say — and wait. The invitation the school
+   * then sends to that address used to land on the waiting account: the
+   * membership attached to it, the password on it stayed, and whoever set
+   * that password was now staff. So an invitation that meets an unverified
+   * holder RECLAIMS it: the link proves the mailbox, which the password
+   * never did. The old hash is discarded, every session, token and push
+   * registration goes, a fresh password is required here, and the address is
+   * marked verified. What was on the account — a child linked, a profile —
+   * stays with the person who can read the mail.
+   */
+  const reclaims = holder !== null && holder.emailVerifiedAt === null;
+  const keepsExistingPassword = Boolean(holder?.passwordHash) && !reclaims;
+
+  if (keepsExistingPassword) {
+    /**
+     * PROOF THAT THIS IS THE ACCOUNT'S OWNER, not merely the mailbox's reader.
+     * Accepting used to sign the existing account in for a fortnight on the
+     * strength of the emailed link alone — a link a mail scanner, a shared
+     * inbox or a forwarded message also holds. The holder either arrived
+     * signed in as themselves (the /join page's "open my invitation" does
+     * exactly that) or types the password they already use, through the
+     * login's own check with its own limit. Nothing about that password
+     * changes; the field is a proof, not a choice.
+     */
+    const current = await getSession();
+    const signedInAsHolder = current !== null && current.user.id === holder!.id;
+    if (!signedInAsHolder) {
+      if (!password) {
+        const words = t("invite.enterYourPassword");
+        return { ok: false, errors: { _form: words, password: words } };
+      }
+      const check = await signInWithPassword(email, password);
+      if (!check.ok) {
+        if (check.reason === "rate") {
+          const h = retryHintKey(check.retryAfterSeconds);
+          return { ok: false, errors: { _form: t("invite.tooManyAttempts", { when: t(h.key, h.vars) }) } };
+        }
+        const words = t("invite.wrongPassword");
+        return { ok: false, errors: { _form: words, password: words } };
+      }
+    }
   }
 
   if (!keepsExistingPassword) {
@@ -141,7 +176,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
   }
 
   const role = invite.role as Role;
-  const passwordHash = password ? await hashPassword(password) : null;
+  // For a holder proving themselves the password is theirs already and is
+  // never re-hashed; for a new or reclaimed account it is the one being set.
+  const passwordHash = password && !keepsExistingPassword ? await hashPassword(password) : null;
 
   let userId: string;
 
@@ -157,14 +194,19 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
           const fresh = await tx.invite.findUnique({ where: { id: invite.id }, select: { status: true } });
           if (fresh?.status !== "PENDING") throw new Error("ALREADY_USED");
 
-          const existing = await tx.user.findUnique({ where: { email }, select: { id: true, passwordHash: true } });
+          const existing = await tx.user.findUnique({ where: { email }, select: { id: true, passwordHash: true, emailVerifiedAt: true } });
           let user = existing;
           if (!user) {
             if (!passwordHash) throw new Error("NEEDS_PASSWORD");
             user = await tx.user.create({
               data: { email, name, passwordHash, emailVerifiedAt: new Date(), prefs: writeJson({ theme: "system", locale }) },
-              select: { id: true, passwordHash: true },
+              select: { id: true, passwordHash: true, emailVerifiedAt: true },
             });
+          } else if (!user.emailVerifiedAt) {
+            // The reclaim, re-decided inside the transaction. See above.
+            if (!passwordHash) throw new Error("NEEDS_PASSWORD");
+            await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date() } });
+            await revokeAllAccess(user.id, { tokens: true, client: tx });
           } else if (!user.passwordHash && passwordHash) {
             await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date() } });
           }
@@ -213,7 +255,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
       action: "parent.link.accept",
       targetType: "Membership",
       targetId: invite.studentMembershipId,
-      meta: { inviteId: invite.id },
+      meta: { inviteId: invite.id, reclaimed: reclaims },
     });
     // A real guardian now exists; the school's stand-in steps aside.
     await syncStandinGuardian({
@@ -244,7 +286,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
 
       const existing = await tx.user.findUnique({
         where: { email },
-        select: { id: true, passwordHash: true },
+        select: { id: true, passwordHash: true, emailVerifiedAt: true },
       });
 
       let user = existing;
@@ -263,8 +305,18 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             birthdate: birthDate,
             prefs: writeJson({ theme: "system", locale }),
           },
-          select: { id: true, passwordHash: true },
+          select: { id: true, passwordHash: true, emailVerifiedAt: true },
         });
+      } else if (!user.emailVerifiedAt) {
+        // The reclaim, re-decided inside the transaction: whoever set the
+        // password on this never-verified account is not known to be the
+        // person reading the mail. Fresh password, everything else out.
+        if (!passwordHash) throw new Error("NEEDS_PASSWORD");
+        await tx.user.update({
+          where: { id: user.id },
+          data: { passwordHash, emailVerifiedAt: new Date(), ...(birthDate ? { birthdate: birthDate } : {}), ...(bio ? { bio } : {}) },
+        });
+        await revokeAllAccess(user.id, { tokens: true, client: tx });
       } else {
         // An existing account. The page still ASKED for a date of birth and a
         // bio, and used to validate both and then write neither — every
@@ -374,7 +426,7 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
     action: "invite.accept",
     targetType: "Invite",
     targetId: invite.id,
-    meta: { role: invite.role },
+    meta: { role: invite.role, reclaimed: reclaims },
   });
 
   // An invited pupil arrives with no parent on the app, exactly like one who

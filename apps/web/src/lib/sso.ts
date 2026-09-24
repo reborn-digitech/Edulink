@@ -2,6 +2,7 @@ import "server-only";
 import { createHash, createPublicKey, createPrivateKey, randomBytes, sign as cryptoSign, verify as cryptoVerify, type KeyObject } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
+import { revokeAllAccess } from "./session";
 
 /**
  * Single sign-on: Google, Microsoft and Apple, as plain OIDC authorization-
@@ -269,7 +270,32 @@ export async function verifyIdToken(
   return payload;
 }
 
-function claimsToIdentity(id: SsoProviderId, claims: Record<string, unknown>): SsoIdentityClaims {
+/**
+ * The Entra tenants whose `email` claim is believed.
+ *
+ * ⚠ MICROSOFT'S `email` CLAIM IS NOT VERIFIED. On a v2 token it is whatever
+ * the account's tenant administrator typed into the mail attribute — and with
+ * the app registered for `common`, ANY tenant's administrator can mint an
+ * account, set its email to a head teacher's address, and sign in here.
+ * Trusting the claim was an account takeover for the price of a free Entra
+ * tenant. Two things make it trustworthy: the `xms_edov` optional claim,
+ * which Microsoft sets true only when the domain's ownership was verified
+ * by the tenant; or the tenant being one the operator named in
+ * SSO_MICROSOFT_TENANTS (comma-separated tenant ids) — including the single
+ * tenant SSO_MICROSOFT_TENANT pins the app to, whose issuer is exact.
+ */
+function microsoftTrustedTenants(): Set<string> {
+  const listed = (process.env.SSO_MICROSOFT_TENANTS ?? "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  const pinned = process.env.SSO_MICROSOFT_TENANT?.trim().toLowerCase();
+  if (pinned && pinned !== "common" && pinned !== "organizations" && pinned !== "consumers") listed.push(pinned);
+  return new Set(listed);
+}
+
+/** Exported for the test suite; the callback reaches it through `completeSso`. */
+export function claimsToIdentity(id: SsoProviderId, claims: Record<string, unknown>): SsoIdentityClaims {
   const str = (v: unknown) => (typeof v === "string" && v.trim() ? v.trim() : null);
   const email = str(claims.email)?.toLowerCase() ?? null;
 
@@ -277,14 +303,14 @@ function claimsToIdentity(id: SsoProviderId, claims: Record<string, unknown>): S
   // only verified addresses:
   //   Google  — email_verified, a real boolean.
   //   Apple   — verified by construction (and relay addresses still route).
-  //   Microsoft — the email claim on a v2 token comes from the account's own
-  //     identity; there is no separate verified flag to read.
+  //   Microsoft — xms_edov, or a tenant the operator trusts. See above.
+  const tenant = str(claims.tid)?.toLowerCase() ?? null;
   const emailVerified =
     id === "google"
       ? claims.email_verified === true
       : id === "apple"
         ? claims.email_verified === true || claims.email_verified === "true" || email !== null
-        : email !== null;
+        : claims.xms_edov === true || (tenant !== null && microsoftTrustedTenants().has(tenant));
 
   return {
     subject: String(claims.sub ?? ""),
@@ -359,16 +385,25 @@ export async function completeSso(
 
 export type SignInResult =
   | { ok: true; userId: string; linked: boolean }
-  | { ok: false; reason: "no-account" | "disabled" };
+  | { ok: false; reason: "no-account" | "disabled" | "unverified-email" };
 
 /**
  * Turn a verified external identity into an Relay user, or refuse.
  *
  *   1. (provider, sub) already linked  -> that user, always — email may have
  *      changed at the provider and must not matter.
- *   2. Unlinked, but a VERIFIED email matches an existing account -> link now
- *      (audited) and sign in.
- *   3. Anything else -> no-account. SSO never creates users; accounts come
+ *   2. Unlinked, with an email the provider could NOT vouch for -> refused as
+ *      unverified-email, whether or not an account holds that address. The
+ *      identity can be attached only from inside a session that proved
+ *      itself another way; never by an address somebody merely typed.
+ *   3. Unlinked, but a VERIFIED email matches an existing account -> link now
+ *      (audited) and sign in. If that account never proved its address —
+ *      created by a parent's sign-up or a school's registration with the
+ *      verification mail unopened — the sign-in is the proof, and whoever
+ *      set the password on it was not necessarily this person: the hash is
+ *      cleared, every session, token and push registration goes, and the
+ *      address is marked verified. The account is theirs from here.
+ *   4. Anything else -> no-account. SSO never creates users; accounts come
  *      from invites, join codes and registration, where a school vouches for
  *      the person.
  *
@@ -395,16 +430,24 @@ export async function signInWithSso(
     return { ok: true, userId: existing.userId, linked: false };
   }
 
-  if (!identity.emailVerified || !identity.email) {
-    return { ok: false, reason: "no-account" };
-  }
+  if (!identity.email) return { ok: false, reason: "no-account" };
+  if (!identity.emailVerified) return { ok: false, reason: "unverified-email" };
 
   const user = await db.user.findUnique({
     where: { email: identity.email },
-    select: { id: true, disabledAt: true, mergedIntoUserId: true },
+    select: { id: true, disabledAt: true, mergedIntoUserId: true, emailVerifiedAt: true },
   });
   if (!user) return { ok: false, reason: "no-account" };
   if (user.disabledAt || user.mergedIntoUserId) return { ok: false, reason: "disabled" };
+
+  const reclaimed = user.emailVerifiedAt === null;
+  if (reclaimed) {
+    await db.user.update({
+      where: { id: user.id },
+      data: { passwordHash: null, emailVerifiedAt: new Date() },
+    });
+    await revokeAllAccess(user.id, { tokens: true });
+  }
 
   await db.ssoIdentity.create({
     data: { userId: user.id, provider: id, subject: identity.subject, email: identity.email },
@@ -415,7 +458,7 @@ export async function signInWithSso(
     action: "auth.ssoLink",
     targetType: "User",
     targetId: user.id,
-    meta: { provider: id },
+    meta: { provider: id, reclaimed },
   });
 
   return { ok: true, userId: user.id, linked: true };

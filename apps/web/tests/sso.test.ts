@@ -1,7 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { generateKeyPairSync, sign as cryptoSign, verify as cryptoVerify } from "node:crypto";
-import { signInWithSso, verifyIdToken, appleClientSecret } from "@/lib/sso";
+import { claimsToIdentity, signInWithSso, verifyIdToken, appleClientSecret } from "@/lib/sso";
+import { generateToken, hashPassword, hashToken } from "@/lib/crypto";
 
 /**
  * SSO's three load-bearing claims, held without any provider credentials:
@@ -14,6 +15,7 @@ import { signInWithSso, verifyIdToken, appleClientSecret } from "@/lib/sso";
 const db = new PrismaClient();
 const LINKED_EMAIL = "zz.sso.linked@riverside.test";
 const DISABLED_EMAIL = "zz.sso.disabled@riverside.test";
+const UNVERIFIED_EMAIL = "zz.sso.unverified@riverside.test";
 
 let linkedUserId: string;
 
@@ -30,10 +32,12 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await db.ssoIdentity.deleteMany({ where: { user: { email: { in: [LINKED_EMAIL, DISABLED_EMAIL] } } } });
-  await db.auditLog.deleteMany({ where: { actorUserId: linkedUserId } });
-  await db.user.deleteMany({ where: { email: { in: [LINKED_EMAIL, DISABLED_EMAIL] } } });
-  expect(await db.user.count({ where: { email: { in: [LINKED_EMAIL, DISABLED_EMAIL] } } })).toBe(0);
+  const emails = [LINKED_EMAIL, DISABLED_EMAIL, UNVERIFIED_EMAIL];
+  const ids = (await db.user.findMany({ where: { email: { in: emails } }, select: { id: true } })).map((u) => u.id);
+  await db.ssoIdentity.deleteMany({ where: { userId: { in: ids } } });
+  await db.auditLog.deleteMany({ where: { actorUserId: { in: ids } } });
+  await db.user.deleteMany({ where: { email: { in: emails } } });
+  expect(await db.user.count({ where: { email: { in: emails } } })).toBe(0);
   await db.$disconnect();
 });
 
@@ -59,14 +63,44 @@ describe("the linking policy", () => {
     expect(await db.ssoIdentity.count({ where: { userId: linkedUserId } })).toBe(1);
   });
 
-  it("an unverified email introduces nobody", async () => {
+  it("an unverified email introduces nobody — and says so, rather than 'no account'", async () => {
     const result = await signInWithSso("google", {
       subject: "zz-sub-2",
       email: LINKED_EMAIL,
       emailVerified: false,
       name: null,
     });
-    expect(result).toEqual({ ok: false, reason: "no-account" });
+    expect(result).toEqual({ ok: false, reason: "unverified-email" });
+    expect(await db.ssoIdentity.count({ where: { subject: "zz-sub-2" } })).toBe(0);
+  });
+
+  it("⚠ a verified email meeting an account that never proved its address takes the account: password gone, sessions and push registrations gone, address verified", async () => {
+    const squatter = await db.user.create({
+      data: { email: UNVERIFIED_EMAIL, name: "ZZ Squatter", prefs: "{}", passwordHash: await hashPassword("whatever-they-typed-8812"), emailVerifiedAt: null },
+    });
+    const session = await db.session.create({
+      data: { userId: squatter.id, tokenHash: hashToken(generateToken()), expiresAt: new Date(Date.now() + 86_400_000) },
+    });
+    await db.authToken.create({
+      data: { userId: squatter.id, email: UNVERIFIED_EMAIL, purpose: "MAGIC_LINK", tokenHash: hashToken(generateToken()), expiresAt: new Date(Date.now() + 600_000) },
+    });
+    await db.deviceToken.create({ data: { userId: squatter.id, expoPushToken: `ExponentPushToken[zz-sso-${squatter.id}]`, platform: "ios" } });
+    await db.pushSubscription.create({ data: { userId: squatter.id, endpoint: `https://push.invalid/zz-sso-${squatter.id}`, p256dh: "k", auth: "a" } });
+
+    const result = await signInWithSso("google", { subject: "zz-sub-5", email: UNVERIFIED_EMAIL, emailVerified: true, name: "The Real One" });
+    expect(result).toEqual({ ok: true, userId: squatter.id, linked: true });
+
+    const after = await db.user.findUniqueOrThrow({ where: { id: squatter.id } });
+    expect(after.passwordHash).toBeNull();
+    expect(after.emailVerifiedAt).not.toBeNull();
+    expect((await db.session.findUniqueOrThrow({ where: { id: session.id } })).revokedAt).not.toBeNull();
+    expect(await db.authToken.count({ where: { userId: squatter.id, consumedAt: null } })).toBe(0);
+    expect(await db.deviceToken.count({ where: { userId: squatter.id } })).toBe(0);
+    expect(await db.pushSubscription.count({ where: { userId: squatter.id } })).toBe(0);
+
+    // A verified account is never touched this way: the linked user above still has what it had.
+    await db.session.deleteMany({ where: { userId: squatter.id } });
+    await db.authToken.deleteMany({ where: { userId: squatter.id } });
   });
 
   it("never creates an account", async () => {
@@ -89,6 +123,38 @@ describe("the linking policy", () => {
       name: null,
     });
     expect(result).toEqual({ ok: false, reason: "disabled" });
+  });
+});
+
+describe("⚠ what Microsoft's email claim is worth", () => {
+  const base = { sub: "ms-sub", email: "Head@School.example", name: "Head" };
+
+  it("nothing on its own: without xms_edov the address is not verified, so it links nobody", () => {
+    const identity = claimsToIdentity("microsoft", { ...base, tid: "11111111-1111-1111-1111-111111111111" });
+    expect(identity.email).toBe("head@school.example");
+    expect(identity.emailVerified).toBe(false);
+  });
+
+  it("verified when the token carries xms_edov true", () => {
+    expect(claimsToIdentity("microsoft", { ...base, xms_edov: true }).emailVerified).toBe(true);
+    expect(claimsToIdentity("microsoft", { ...base, xms_edov: "true" }).emailVerified).toBe(false);
+  });
+
+  it("or when the tenant is one the operator listed", () => {
+    const before = process.env.SSO_MICROSOFT_TENANTS;
+    process.env.SSO_MICROSOFT_TENANTS = "aaaaaaaa-0000-0000-0000-000000000000, BBBBBBBB-0000-0000-0000-000000000000";
+    try {
+      expect(claimsToIdentity("microsoft", { ...base, tid: "bbbbbbbb-0000-0000-0000-000000000000" }).emailVerified).toBe(true);
+      expect(claimsToIdentity("microsoft", { ...base, tid: "cccccccc-0000-0000-0000-000000000000" }).emailVerified).toBe(false);
+    } finally {
+      if (before === undefined) delete process.env.SSO_MICROSOFT_TENANTS;
+      else process.env.SSO_MICROSOFT_TENANTS = before;
+    }
+  });
+
+  it("Google is still its own boolean", () => {
+    expect(claimsToIdentity("google", { ...base, email_verified: true }).emailVerified).toBe(true);
+    expect(claimsToIdentity("google", { ...base }).emailVerified).toBe(false);
   });
 });
 

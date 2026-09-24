@@ -27,6 +27,8 @@ export default async function AdminVacanciesPage({
   const t = await getT();
   const relative = await getRelativeTime();
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  // The head reads the desk and its enquiries; posting and closing are the admin's.
+  const canPost = ctx.role === "ADMIN";
   const { status: rawStatus } = await searchParams;
   // Open is the default view: closed posts accumulate for years and the
   // question this page answers is "what are we hiring for now".
@@ -47,12 +49,14 @@ export default async function AdminVacanciesPage({
           <Button asChild variant="secondary" size="sm">
             <Link href="/vacancies">{t("vacancies.title")}</Link>
           </Button>
-          <Button asChild size="sm">
-            <Link href="/admin/vacancies/new">
-              <PlusIcon className="size-4" aria-hidden="true" />
-              {t("vacancies.postCta")}
-            </Link>
-          </Button>
+          {canPost && (
+            <Button asChild size="sm">
+              <Link href="/admin/vacancies/new">
+                <PlusIcon className="size-4" aria-hidden="true" />
+                {t("vacancies.postCta")}
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
 
@@ -78,9 +82,11 @@ export default async function AdminVacanciesPage({
           title={status === "OPEN" && counts.closed > 0 ? t("vacancies.emptyOpenTitle") : t("vacancies.emptyTitle")}
           description={status === "OPEN" && counts.closed > 0 ? t("vacancies.emptyOpenBody") : t("vacancies.emptyOwnBody")}
           action={
-            <Button asChild size="sm">
-              <Link href="/admin/vacancies/new">{t("vacancies.postCta")}</Link>
-            </Button>
+            canPost ? (
+              <Button asChild size="sm">
+                <Link href="/admin/vacancies/new">{t("vacancies.postCta")}</Link>
+              </Button>
+            ) : undefined
           }
         />
       ) : (
@@ -122,7 +128,7 @@ export default async function AdminVacanciesPage({
                     <span className="text-xs text-fg-muted">
                       {t("vacancies.postedAgo", { when: relative(posting.createdAt) })}
                     </span>
-                    {posting.status === "OPEN" && <CloseButton postingId={posting.id} />}
+                    {posting.status === "OPEN" && canPost && <CloseButton postingId={posting.id} />}
                   </span>
                 </CardBody>
               </Card>

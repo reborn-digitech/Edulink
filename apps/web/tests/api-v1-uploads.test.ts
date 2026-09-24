@@ -8,7 +8,8 @@ import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { POST as uploadPost } from "@/app/api/v1/uploads/route";
 import { POST as bulletinPost } from "@/app/api/v1/shared/bulletin/route";
-import { deleteStoredFile } from "@/lib/storage";
+import { deleteStoredFile, MAX_VIDEO_BYTES } from "@/lib/storage";
+import { UPLOAD_BYTES_DAILY } from "@/lib/rate-limit";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -96,5 +97,42 @@ describe("uploads", () => {
     // A made-up id is the same 404 — an attacker learns nothing from the difference.
     const invented = await bulletinPost(json({ scope: "SCHOOL", title: "ZZ invented", body: "", tags: [], media: [{ fileId: "00000000-0000-4000-8000-000000000000.png", alt: "x", kind: "image" }] }));
     expect(invented.status).toBe(404);
+  });
+
+  it("a body declared larger than anything accepted is 413 before a byte of it is read", async () => {
+    await createSession(teacherId, { schoolId, role: "TEACHER" });
+    // A zero high-water mark: `pull` runs only when somebody reads, not on construction.
+    let read = false;
+    const body = new ReadableStream<Uint8Array>(
+      {
+        pull(controller) {
+          read = true;
+          controller.enqueue(new Uint8Array(PNG));
+          controller.close();
+        },
+      },
+      { highWaterMark: 0 },
+    );
+    const res = await uploadPost(
+      new Request("http://localhost/api/v1/uploads", { method: "POST", body, duplex: "half", headers: { "content-length": String(MAX_VIDEO_BYTES * 2), "content-type": "multipart/form-data; boundary=zz" } } as RequestInit),
+    );
+    expect(res.status).toBe(413);
+    expect(read).toBe(false);
+    expect((await res.json()).issues.file).toContain("too large");
+  });
+
+  it("a person's day is capped by the sizes of what they stored in the last twenty-four hours", async () => {
+    await createSession(otherTeacherId, { schoolId, role: "TEACHER" });
+    const before = await db.uploadTicket.count({ where: { userId: otherTeacherId } });
+    // Five tickets of a hundred megabytes each, minted directly: the day is full.
+    await db.uploadTicket.createMany({ data: Array.from({ length: 5 }, (_, i) => ({ userId: otherTeacherId, fileId: `zz-quota-${STAMP}-${i}.mp4`, mime: "video/mp4", size: UPLOAD_BYTES_DAILY.limit / 5 })) });
+    try {
+      const res = await uploadPost(multipart());
+      expect(res.status).toBe(429);
+      expect((await res.json()).code).toBe("RATE_LIMITED");
+      expect(await db.uploadTicket.count({ where: { userId: otherTeacherId } })).toBe(before + 5);
+    } finally {
+      await db.uploadTicket.deleteMany({ where: { fileId: { startsWith: `zz-quota-${STAMP}-` } } });
+    }
   });
 });

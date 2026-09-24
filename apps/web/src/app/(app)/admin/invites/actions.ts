@@ -10,6 +10,7 @@ import { sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { resendInviteFor } from "@/lib/invites";
 import { INVITE_TTL_DAYS, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { INVITE_EMAILS_DAILY } from "@/lib/rate-limit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { InviteCsvResult } from "@/lib/csv";
 
@@ -92,6 +93,28 @@ export async function createInvites(input: {
       ok: false,
       errorKey: "invites.tooManyAtOnce",
       errorVars: { count: valid.length },
+      outcomes: [],
+      problems,
+      sent: 0,
+    };
+  }
+
+  /**
+   * A CEILING PER DAY, on top of the ceiling per batch. Five hundred a batch
+   * and no limit on batches was a mail cannon with the school's name on it;
+   * a day's invitations are counted from the rows this school created in the
+   * last twenty-four hours, and a batch that would cross the line is refused
+   * whole and told how many are left, rather than sending some and dropping
+   * the rest in silence.
+   */
+  const sentToday = await db.invite.count({
+    where: { schoolId: ctx.schoolId, createdAt: { gte: new Date(Date.now() - INVITE_EMAILS_DAILY.windowMs) } },
+  });
+  if (sentToday + valid.length > INVITE_EMAILS_DAILY.limit) {
+    return {
+      ok: false,
+      errorKey: "invites.dailyCapReached",
+      errorVars: { cap: INVITE_EMAILS_DAILY.limit, left: Math.max(0, INVITE_EMAILS_DAILY.limit - sentToday), count: valid.length },
       outcomes: [],
       problems,
       sent: 0,

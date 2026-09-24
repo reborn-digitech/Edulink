@@ -1,4 +1,5 @@
 import "server-only";
+import { randomUUID } from "node:crypto";
 import { db } from "./db";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -55,34 +56,32 @@ export async function consume(
   const now = new Date();
 
   try {
-    const existing = await db.rateLimit.findUnique({
-      where: { bucket },
-      select: { hits: true, windowEndsAt: true },
-    });
-
-    // No row, or the window has passed: this attempt starts a fresh one.
-    if (!existing || existing.windowEndsAt.getTime() <= now.getTime()) {
-      const windowEndsAt = new Date(now.getTime() + windowMs);
-      await db.rateLimit.upsert({
-        where: { bucket },
-        create: { bucket, hits: 1, windowEndsAt },
-        update: { hits: 1, windowEndsAt },
-      });
-      return { allowed: true, remaining: Math.max(0, limit - 1), retryAfterSeconds: 0 };
-    }
-
-    const hits = existing.hits + 1;
-    await db.rateLimit.update({ where: { bucket }, data: { hits } });
-
-    const retryAfterSeconds = Math.max(
-      1,
-      Math.ceil((existing.windowEndsAt.getTime() - now.getTime()) / 1000),
-    );
-
+    // One statement, so N requests arriving together see N different counts.
+    // A read-then-write here let every request of a burst read the same
+    // count and all pass; the insert-or-update returns the count this request
+    // made, and the window resets in the same statement when it has passed.
+    // The columns are timestamps without a zone, stored as UTC; the values are
+    // passed as ISO text and read as UTC explicitly, so a database session in
+    // another zone cannot shift the comparison by its offset.
+    const windowEndsAt = new Date(now.getTime() + windowMs);
+    const nowIso = now.toISOString();
+    const endIso = windowEndsAt.toISOString();
+    const rows = await db.$queryRaw<{ hits: number; windowEndsAt: Date }[]>`
+      INSERT INTO "RateLimit" ("id", "bucket", "hits", "windowEndsAt", "createdAt", "updatedAt")
+      VALUES (${randomUUID()}, ${bucket}, 1, (${endIso}::timestamptz AT TIME ZONE 'UTC'), (${nowIso}::timestamptz AT TIME ZONE 'UTC'), (${nowIso}::timestamptz AT TIME ZONE 'UTC'))
+      ON CONFLICT ("bucket") DO UPDATE SET
+        "hits" = CASE WHEN "RateLimit"."windowEndsAt" <= (${nowIso}::timestamptz AT TIME ZONE 'UTC') THEN 1 ELSE "RateLimit"."hits" + 1 END,
+        "windowEndsAt" = CASE WHEN "RateLimit"."windowEndsAt" <= (${nowIso}::timestamptz AT TIME ZONE 'UTC') THEN (${endIso}::timestamptz AT TIME ZONE 'UTC') ELSE "RateLimit"."windowEndsAt" END,
+        "updatedAt" = (${nowIso}::timestamptz AT TIME ZONE 'UTC')
+      RETURNING "hits", "windowEndsAt"`;
+    const row = rows[0];
+    if (!row) throw new Error("rate limit row not returned");
+    const hits = Number(row.hits);
+    const retryAfterSeconds = Math.max(1, Math.ceil((new Date(row.windowEndsAt).getTime() - now.getTime()) / 1000));
     if (hits > limit) {
       return { allowed: false, remaining: 0, retryAfterSeconds };
     }
-    return { allowed: true, remaining: limit - hits, retryAfterSeconds: 0 };
+    return { allowed: true, remaining: Math.max(0, limit - hits), retryAfterSeconds: 0 };
   } catch (error) {
     // See the note above: a limiter outage must not be an authentication
     // outage. Logged rather than swallowed, so it is visible in the one place
@@ -291,6 +290,25 @@ export const INVITE_ACCEPTS = { limit: 10, windowMs: 60 * 60_000 };
  * THE HONEST CAVEAT on the first case: `x-forwarded-for` is trustworthy behind
  * a proxy that sets it and forgeable in front of one.
  */
+/**
+ * The caller's address as the proxy in front of us saw it. Fly puts it in
+ * Fly-Client-IP; a generic proxy APPENDS to X-Forwarded-For, so the last
+ * entry is the hop it saw and the first is whatever the client chose to
+ * send — which was, for a while, the entry every per-address limit keyed on.
+ */
+export function clientAddress(hdrs: Headers): string | null {
+  const fly = hdrs.get("fly-client-ip")?.trim();
+  if (fly) return fly;
+  const forwarded = hdrs.get("x-forwarded-for");
+  if (forwarded) {
+    const hops = forwarded.split(",").map((s) => s.trim()).filter(Boolean);
+    const last = hops[hops.length - 1];
+    if (last) return last;
+  }
+  const real = hdrs.get("x-real-ip")?.trim();
+  return real || null;
+}
+
 export async function callerKey(): Promise<string | null> {
   let hdrs: Headers;
   try {
@@ -300,9 +318,7 @@ export async function callerKey(): Promise<string | null> {
     // No request scope. Not a caller — see above.
     return null;
   }
-  const forwarded = hdrs.get("x-forwarded-for");
-  const ip = forwarded?.split(",")[0]?.trim() || hdrs.get("x-real-ip");
-  return ip && ip.length > 0 ? ip : "unknown";
+  return clientAddress(hdrs) ?? "unknown";
 }
 
 /**
@@ -319,3 +335,120 @@ export async function consumeByCaller(
   if (key === null) return { allowed: true, remaining: limit, retryAfterSeconds: 0 };
   return consume(`${prefix}:${key}`, limit, windowMs);
 }
+
+/* -------------------------------------------------------------------------- */
+/* Bringing a pupil over, and the front door                                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Intake lists that carry a student code or a PEN, per SCHOOL.
+ *
+ * A row with a code or a PEN and a date of birth links an EXISTING account —
+ * which is what makes it the one intake row worth guessing at. A list of five
+ * hundred rows was five hundred guesses at one child's birthday in a single
+ * call, from any school anybody had just registered. Ten such lists an hour
+ * is more than an office bringing a cohort over ever sends; a list carrying
+ * more than `INTAKE_MAX_LINKS` linking rows is refused outright rather than
+ * counted. A list that links nobody — plain new pupils — is bounded by
+ * `INTAKE_MAX_ROWS` as before and does not count here.
+ */
+export const INTAKE_RUNS = { limit: 10, windowMs: 60 * 60_000 };
+export const INTAKE_MAX_LINKS = 50;
+
+/**
+ * The register wizard's "is this address free?" check, per address. It
+ * answers a yes/no about whether an account exists, which is an enumeration
+ * oracle when it is unlimited; at the limit it answers "free" — the same
+ * shape — and the submit itself still refuses a taken address.
+ */
+export const EMAIL_CHECKS = { limit: 30, windowMs: 15 * 60_000 };
+
+/* -------------------------------------------------------------------------- */
+/* Finishing what a code started, and the two ceilings on guessing passwords   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Completing a reset, or confirming a phone or email code.
+ *
+ * The token itself dies after five wrong codes, and this is the second wall
+ * behind it: ten completions per fifteen minutes per identifier (the normalised
+ * login for a reset, the signed-in user for a confirm), so a script cannot ask
+ * for a fresh code and burn its five guesses in a loop — thirty guesses an
+ * hour, not thirty a second.
+ */
+export const RESET_COMPLETIONS = { limit: 10, windowMs: 15 * 60_000 };
+
+/**
+ * Password failures from one address, whatever the identifier.
+ *
+ * `LOGIN_ATTEMPTS` is keyed on the login being tried, so spraying one password
+ * across a school's worth of logins never touched it. Fifty failures from one
+ * address in fifteen minutes is far past a household mistyping, and a school
+ * behind one NAT that meets it is met with a clear message rather than a
+ * silent one. Failures only: a success costs nothing here.
+ */
+export const LOGIN_PER_ADDRESS = { limit: 50, windowMs: 15 * 60_000 };
+
+/**
+ * Password failures across the whole service.
+ *
+ * The ceiling on a spray from many addresses: two thousand wrong passwords in
+ * fifteen minutes is not a morning of tired parents, and refusing everyone for
+ * a few minutes is the cheaper outcome. Failures only, as above.
+ */
+export const LOGIN_GLOBAL = { limit: 2_000, windowMs: 15 * 60_000 };
+
+/**
+ * Says whether `bucket` is already exhausted, WITHOUT counting this call.
+ *
+ * For the limits that count failures only: the check runs before the password
+ * is verified and the charge after it fails, so a person signing in correctly
+ * consumes nothing. Fails open exactly as `consume` does, and for the same
+ * reason.
+ */
+export async function peek(bucket: string, limit: number): Promise<RateLimitResult> {
+  try {
+    const row = await db.rateLimit.findUnique({
+      where: { bucket },
+      select: { hits: true, windowEndsAt: true },
+    });
+    const now = Date.now();
+    if (!row || row.windowEndsAt.getTime() <= now || row.hits < limit) {
+      return { allowed: true, remaining: row ? Math.max(0, limit - row.hits) : limit, retryAfterSeconds: 0 };
+    }
+    return {
+      allowed: false,
+      remaining: 0,
+      retryAfterSeconds: Math.max(1, Math.ceil((row.windowEndsAt.getTime() - now) / 1000)),
+    };
+  } catch (error) {
+    console.error("[rate-limit] failing open:", error);
+    return { allowed: true, remaining: limit, retryAfterSeconds: 0 };
+  }
+}
+
+/**
+ * Joining a school by its code, per ACCOUNT. The lookup's limit above is per
+ * address, which one person behind a school's shared connection exhausts for
+ * the whole staffroom and one person with a pool of addresses never meets. A
+ * school code makes an active pupil on the roll at once, so the account that
+ * keeps typing them is counted too — a child joins one school, perhaps two
+ * in a year, never five in a day.
+ */
+export const SCHOOL_CODE_JOINS = { limit: 5, windowMs: 24 * 60 * 60_000 };
+
+/**
+ * Invitation emails a school may send in a day, counted from the Invite rows
+ * it created in the window (see admin/invites/actions.ts). Three hundred is
+ * a whole staff room and a year's intake in one sitting; a thousand a day
+ * from one school is a compromised admin account sending mail in our name.
+ */
+export const INVITE_EMAILS_DAILY = { limit: 300, windowMs: 24 * 60 * 60_000 };
+
+/**
+ * Bytes one person may upload in a day, counted from the UploadTicket rows
+ * (the stored files' own sizes) in the window. Five hundred megabytes is a
+ * sports day of video; the sixty-an-hour ceiling above stops the loop, this
+ * stops the disk filling at one file each.
+ */
+export const UPLOAD_BYTES_DAILY = { limit: 500 * 1024 * 1024, windowMs: 24 * 60 * 60_000 };

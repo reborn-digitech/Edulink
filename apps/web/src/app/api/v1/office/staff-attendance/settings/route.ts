@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/office/staff-attendance/settings — the staff day's start and grace. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = staffAttendanceSettingsSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     await saveStaffAttendanceSettings(ctx, parsed.data);

@@ -77,6 +77,17 @@ let unpublishedProfileId: string;
 let studentMembershipId: string;
 let createdThreadIds: string[] = [];
 
+/**
+ * Two teachers made for this file: one put on the pupil's class, one on no
+ * class at all. The seed's teachers are not used for the pairing checks
+ * because whether they teach this particular child is the seed's business,
+ * and the rule under test is exactly that difference.
+ */
+const CLASS_TEACHER_EMAIL = "zz.mentor.classteacher@zzmentor.test";
+const OTHER_TEACHER_EMAIL = "zz.mentor.otherteacher@zzmentor.test";
+let teacherOfAnotherClass: ActiveContext;
+let madeTeacherMembershipIds: string[] = [];
+
 async function makeExpert(email: string, published: boolean) {
   const user =
     (await db.user.findUnique({ where: { email } })) ??
@@ -133,7 +144,22 @@ beforeAll(async () => {
   unpublishedProfileId = three.profileId;
 
   admin = ctx({ userId: priya.id, membershipId: priyaAdmin.id, schoolId: riverside.id, role: "ADMIN" });
-  teacher = ctx({ userId: tom.id, membershipId: tomTeacher.id, schoolId: riverside.id, role: "TEACHER" });
+  // Tom is a Riverside teacher; whether he teaches this child is the seed's business, so the pairing checks use two teachers of our own.
+  void tomTeacher;
+  const enrolment = await db.enrollment.findFirstOrThrow({ where: { studentMembershipId, status: "ACTIVE" }, select: { classId: true } });
+  const mkTeacher = async (email: string, classId: string | null) => {
+    const user = (await db.user.findUnique({ where: { email } })) ?? (await db.user.create({ data: { email, name: `ZZ Mentor ${email}`, prefs: "{}" } }));
+    const membership = await db.membership.upsert({
+      where: { userId_schoolId_role: { userId: user.id, schoolId: riverside.id, role: "TEACHER" } },
+      create: { userId: user.id, schoolId: riverside.id, role: "TEACHER", status: "ACTIVE" },
+      update: { status: "ACTIVE" },
+    });
+    madeTeacherMembershipIds.push(membership.id);
+    if (classId) await db.classTeacher.upsert({ where: { classId_teacherMembershipId: { classId, teacherMembershipId: membership.id } }, create: { schoolId: riverside.id, classId, teacherMembershipId: membership.id, role: "CO" }, update: {} });
+    return ctx({ userId: user.id, membershipId: membership.id, schoolId: riverside.id, role: "TEACHER" });
+  };
+  teacher = await mkTeacher(CLASS_TEACHER_EMAIL, enrolment.classId);
+  teacherOfAnotherClass = await mkTeacher(OTHER_TEACHER_EMAIL, null);
   otherSchoolAdmin = ctx({ userId: sam.id, membershipId: samAdmin.id, schoolId: oakfield.id, role: "ADMIN" });
   guardian = ctx({ userId: parent.id, role: "PARENT" });
   strangerParent = ctx({ userId: sam.id, role: "PARENT" });
@@ -162,6 +188,10 @@ afterEach(async () => {
 
 afterAll(async () => {
   await db.mentorThread.deleteMany({ where: { expertProfileId: { in: [expertProfileId, otherExpertProfileId] } } });
+  await db.classTeacher.deleteMany({ where: { teacherMembershipId: { in: madeTeacherMembershipIds } } });
+  await db.membership.deleteMany({ where: { id: { in: madeTeacherMembershipIds } } });
+  madeTeacherMembershipIds = [];
+  await db.user.deleteMany({ where: { email: { in: [CLASS_TEACHER_EMAIL, OTHER_TEACHER_EMAIL] } } });
   await db.expertProfile.deleteMany({
     where: { id: { in: [expertProfileId, otherExpertProfileId, unpublishedProfileId] } },
   });
@@ -189,9 +219,14 @@ describe("who may pair a child with a mentor", () => {
     expect(id).toBeTruthy();
   });
 
-  it("lets a teacher do it", async () => {
+  it("lets a teacher of the pupil's class do it", async () => {
     const id = await pair(teacher);
     expect(id).toBeTruthy();
+  });
+
+  it("⚠ refuses a teacher who does not teach the pupil — any teacher pairing any child in the school with an outsider was a safeguarding hole", async () => {
+    await expect(pair(teacherOfAnotherClass)).rejects.toBeInstanceOf(AccessError);
+    expect(await db.mentorThread.count({ where: { expertProfileId, studentMembershipId } })).toBe(0);
   });
 
   it("⚠ refuses the child — a child cannot consent to a stranger", async () => {

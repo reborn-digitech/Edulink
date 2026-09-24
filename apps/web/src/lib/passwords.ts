@@ -1,15 +1,23 @@
 import "server-only";
 import { randomInt } from "node:crypto";
 import { db } from "./db";
+import { revokeAllAccess } from "./session";
 import { audit } from "./audit";
 import { claimToken } from "./auth-tokens";
 import { forUser } from "./tenant-context";
 import { EMAIL_VERIFY_TTL_HOURS } from "./constants";
-import { generateToken, hashPassword, hashToken, passwordProblems } from "./crypto";
+import {
+  fakePasswordWork,
+  generateToken,
+  hashPassword,
+  hashToken,
+  passwordProblems,
+  verifyPassword,
+} from "./crypto";
 import { readJson } from "./json";
 import { isDeliverableEmail, toLoginEmail } from "./login-name";
 import { identifierKind, normalisePhone, phoneHint } from "./phone";
-import { sendResetCode as sendResetSms, sendPhoneCode } from "./sms";
+import { sendResetCode as sendResetSms, sendPhoneCode, sendPhoneChangedNotice } from "./sms";
 import {
   sendResetCode as sendResetEmail,
   sendEmailChangeCode,
@@ -20,6 +28,8 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   consume,
   RESET_REQUESTS,
+  RESET_COMPLETIONS,
+  LOGIN_ATTEMPTS,
   PHONE_VERIFY_REQUESTS,
   EMAIL_CHANGE_REQUESTS,
 } from "./rate-limit";
@@ -66,6 +76,105 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const MAX_RESET_ATTEMPTS = 5;
 
 const RESET_PURPOSE = "PASSWORD_RESET";
+
+/**
+ * The one key an identifier gets, however it was spelled.
+ *
+ * `98765 43210`, `+919876543210` and `+91 98765 43210` are one number, and
+ * `amara.k4f9` and `amara.k4f9@edulink.local` are one handle — resolved by the
+ * SAME rules `findAccount` uses, so a limit keyed on this cannot be sidestepped
+ * by respelling the login. It used to be `identifier.toLowerCase()`, which gave
+ * every spelling its own allowance.
+ */
+export function loginIdentityKey(rawIdentifier: string): string {
+  const raw = rawIdentifier.trim();
+  if (identifierKind(raw) === "PHONE") return normalisePhone(raw) ?? raw.toLowerCase();
+  return toLoginEmail(raw);
+}
+
+/**
+ * ⚠ Charges one guess against a token, in ONE conditional statement.
+ *
+ * `attempts = attempts + 1 WHERE id = ? AND attempts < cap`: of a burst of
+ * twenty guesses arriving together, exactly `cap` rows come back updated and
+ * the rest find nothing to update. The count used to be a JSON field in `meta`,
+ * read and then written, and every guess in the burst read 0 — so the cap held
+ * for a person typing and not for a script.
+ *
+ * Charged BEFORE the code is compared, so the comparison itself is what the
+ * attempt buys: a right code on the sixth try is still refused, which is what
+ * "five attempts" has always promised. A token that cannot be charged is dead
+ * and is marked spent here, so a later request cannot find it live.
+ */
+export async function chargeAttempt(tokenId: string, cap = MAX_RESET_ATTEMPTS): Promise<boolean> {
+  const charged = await db.authToken.updateMany({
+    where: { id: tokenId, consumedAt: null, attempts: { lt: cap } },
+    data: { attempts: { increment: 1 } },
+  });
+  if (charged.count === 1) return true;
+  await db.authToken.updateMany({ where: { id: tokenId, consumedAt: null }, data: { consumedAt: new Date() } });
+  return false;
+}
+
+/**
+ * Gives an attempt back — ONLY after the code it bought was proved right.
+ *
+ * A weak new password must not cost a guess: the person has just shown they
+ * hold the phone, and the refund cannot widen anybody's window because it is
+ * reached by nothing but a correct code.
+ */
+async function refundAttempt(tokenId: string): Promise<void> {
+  await db.authToken.updateMany({
+    where: { id: tokenId, attempts: { gt: 0 } },
+    data: { attempts: { decrement: 1 } },
+  });
+}
+
+/**
+ * Whether `password` is the signed-in person's own, for the two changes that
+ * need it — moving the address or the number an account can be reached at.
+ *
+ * THROUGH THE LOGIN BUCKET, deliberately: this is a password prompt, and a
+ * password prompt with its own allowance is ten more guesses at somebody's
+ * password from a stolen session. Keyed on the account's login exactly as
+ * `signInWithPassword` keys it, so the two share one count of ten.
+ *
+ * An account with no password at all is refused too: "the current password" is
+ * not a thing it has, and a magic-link session should not be enough to redirect
+ * where the next magic link goes.
+ */
+async function holdsOwnPassword(
+  userId: string,
+  password: string,
+): Promise<{ ok: true } | { ok: false; errorKey: TranslationKey; retryAfterSeconds?: number }> {
+  const user = await db.user.findUnique({
+    where: { id: userId },
+    select: { email: true, passwordHash: true },
+  });
+  const gate = await consume(
+    `login:${user?.email ? loginIdentityKey(user.email) : userId}`,
+    LOGIN_ATTEMPTS.limit,
+    LOGIN_ATTEMPTS.windowMs,
+  );
+  if (!gate.allowed) {
+    return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: gate.retryAfterSeconds };
+  }
+  if (!user?.passwordHash || password.length === 0) {
+    await fakePasswordWork();
+    return { ok: false, errorKey: "refusal.needsPassword" };
+  }
+  if (!(await verifyPassword(user.passwordHash, password))) {
+    await audit({ actorUserId: userId, action: "auth.login.failed" });
+    return { ok: false, errorKey: "refusal.needsPassword" };
+  }
+  return { ok: true };
+}
+
+/** Every session but the one making the change — that one stays. */
+async function signOutElsewhere(userId: string, keepSessionId: string | undefined): Promise<void> {
+  // Sessions and the push registrations that outlive them go together (session.ts).
+  await revokeAllAccess(userId, { keepSessionId });
+}
 
 export type ResolvedAccount = {
   userId: string;
@@ -260,7 +369,7 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
           // two writes would fail, and worse, a bare code would be findable
           // without knowing whose it was.
           tokenHash: hashToken(`${account.userId}:${code}`),
-          meta: JSON.stringify({ attempts: 0, channel }),
+          meta: JSON.stringify({ channel }),
           expiresAt: new Date(Date.now() + RESET_TTL_MINUTES * 60_000),
         },
       });
@@ -297,7 +406,7 @@ function randomSixDigits(): number {
 /* Using it                                                                    */
 /* -------------------------------------------------------------------------- */
 
-export type ResetResult = { ok: boolean; errorKey?: TranslationKey };
+export type ResetResult = { ok: boolean; errorKey?: TranslationKey; retryAfterSeconds?: number };
 
 /**
  * Sets a new password, given the identifier and the code that was sent to it.
@@ -313,6 +422,11 @@ export type ResetResult = { ok: boolean; errorKey?: TranslationKey };
  * person's session alive is the one outcome that makes the whole exercise
  * pointless. Their own sessions go too: signing in again is a small price and
  * "log out everywhere" is what a person means by this.
+ *
+ * TEN COMPLETIONS PER IDENTIFIER PER WINDOW, counted before anything is looked
+ * up and keyed on the normalised login, so an identifier that names nobody is
+ * limited exactly like one that does. The token's own five-guess cap bounds one
+ * code; this bounds the loop of "ask for a fresh code, guess five times".
  */
 export async function resetPassword(
   rawIdentifier: string,
@@ -323,6 +437,15 @@ export async function resetPassword(
 
   const trimmedCode = code.trim();
   if (trimmedCode.length === 0) return generic;
+
+  const gate = await consume(
+    `reset-complete:${loginIdentityKey(rawIdentifier)}`,
+    RESET_COMPLETIONS.limit,
+    RESET_COMPLETIONS.windowMs,
+  );
+  if (!gate.allowed) {
+    return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: gate.retryAfterSeconds };
+  }
 
   const account = await findAccount(rawIdentifier);
   if (!account || account.disabled) return generic;
@@ -347,17 +470,14 @@ export async function resetPassword(
       consumedAt: null,
       expiresAt: { gt: new Date() },
     },
-    select: { id: true, meta: true },
+    select: { id: true },
     orderBy: { createdAt: "desc" },
   });
 
   if (!live) return generic;
 
-  const attempts = readJson<{ attempts?: number }>(live.meta, {}).attempts ?? 0;
-  if (attempts >= MAX_RESET_ATTEMPTS) {
-    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
-    return generic;
-  }
+  // One conditional statement, before the comparison — see `chargeAttempt`.
+  if (!(await chargeAttempt(live.id))) return generic;
 
   /**
    * BOTH HALVES OF "ONLY THE NEWEST CODE WORKS" ARE HERE, and each one survives
@@ -380,19 +500,18 @@ export async function resetPassword(
     token.expiresAt.getTime() > Date.now();
 
   if (!correct) {
-    await db.authToken.update({
-      where: { id: live.id },
-      data: { meta: JSON.stringify({ ...readJson<object>(live.meta, {}), attempts: attempts + 1 }) },
-    });
     await audit({ actorUserId: account.userId, action: "auth.reset.failed" });
     return generic;
   }
 
   // The password itself is checked LAST, so a weak one does not consume the
-  // code — somebody who has proved they hold the phone should not have to ask
-  // for a second message because they typed a short password first.
+  // code or the attempt — somebody who has proved they hold the phone should
+  // not have to ask for a second message because they typed a short password.
   const problems = passwordProblems(newPassword, [account.email ?? "", account.phone ?? ""]);
-  if (problems.length > 0) return { ok: false, errorKey: problems[0] };
+  if (problems.length > 0) {
+    await refundAttempt(live.id);
+    return { ok: false, errorKey: problems[0] };
+  }
 
   const passwordHash = await hashPassword(newPassword);
 
@@ -414,14 +533,7 @@ export async function resetPassword(
    * the case that makes the sweep worth more than the single update: it is
    * still live, still a way in, and belongs to a password that no longer exists.
    */
-  await db.session.updateMany({
-    where: { userId: account.userId, revokedAt: null },
-    data: { revokedAt: new Date() },
-  });
-  await db.authToken.updateMany({
-    where: { userId: account.userId, consumedAt: null },
-    data: { consumedAt: new Date() },
-  });
+  await revokeAllAccess(account.userId, { tokens: true });
 
   await audit({ actorUserId: account.userId, action: "auth.reset.completed" });
 
@@ -462,6 +574,7 @@ export type PhoneChange = {
 export async function startPhoneChange(
   userId: string,
   rawPhone: string,
+  password: string,
 ): Promise<PhoneChange> {
   const phone = normalisePhone(rawPhone);
   if (!phone) {
@@ -470,6 +583,17 @@ export async function startPhoneChange(
       errorKey: "refusal.badMobile",
     };
   }
+
+  /**
+   * ⚠ THE PASSWORD FIRST, before anything about the number is said. A number
+   * is where reset codes go, so pointing an account's at a new phone is worth
+   * a stolen session's while — a laptop left open, a token lifted from a
+   * phone. The password is the one thing that session does not carry, and
+   * asking for it here (and signing every other device out at confirm) is
+   * what turns "has a session" back into "is the person".
+   */
+  const proof = await holdsOwnPassword(userId, password);
+  if (!proof.ok) return { ok: false, errorKey: proof.errorKey, retryAfterSeconds: proof.retryAfterSeconds };
 
   const taken = await db.user.findFirst({
     where: { phone, phoneVerifiedAt: { not: null }, id: { not: userId } },
@@ -514,7 +638,7 @@ export async function startPhoneChange(
       // Salted with the user id, for the same reason the reset code is.
       tokenHash: hashToken(`${userId}:${PHONE_PURPOSE}:${code}`),
       // WHERE THE NUMBER LIVES until it is confirmed.
-      meta: JSON.stringify({ attempts: 0, phone }),
+      meta: JSON.stringify({ phone }),
       expiresAt: new Date(Date.now() + RESET_TTL_MINUTES * 60_000),
     },
   });
@@ -530,13 +654,27 @@ export async function startPhoneChange(
  *
  * Same attempt cap and same single message for every failure as the password
  * reset — a person confirming their own number is not somebody to be told which
- * of the three things went wrong.
+ * of the three things went wrong — and the same ten-completions ceiling, keyed
+ * on the account, behind the token's five.
+ *
+ * ON SUCCESS EVERY OTHER SESSION IS SIGNED OUT and the number being replaced is
+ * texted. `keepSessionId` is the session making the change; without one (a
+ * script, a test) every session goes.
  */
-export async function confirmPhoneChange(userId: string, code: string): Promise<PhoneChange> {
+export async function confirmPhoneChange(
+  userId: string,
+  code: string,
+  keepSessionId?: string,
+): Promise<PhoneChange> {
   const generic: PhoneChange = {
     ok: false,
     errorKey: "refusal.codeWrong",
   };
+
+  const gate = await consume(`confirm-phone:${userId}`, RESET_COMPLETIONS.limit, RESET_COMPLETIONS.windowMs);
+  if (!gate.allowed) {
+    return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: gate.retryAfterSeconds };
+  }
 
   const live = await db.authToken.findFirst({
     where: { userId, purpose: PHONE_PURPOSE, consumedAt: null, expiresAt: { gt: new Date() } },
@@ -545,27 +683,16 @@ export async function confirmPhoneChange(userId: string, code: string): Promise<
   });
   if (!live) return generic;
 
-  const meta = readJson<{ attempts?: number; phone?: string }>(live.meta, {});
-  const attempts = meta.attempts ?? 0;
-  if (attempts >= MAX_RESET_ATTEMPTS) {
-    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
-    return generic;
-  }
+  if (!(await chargeAttempt(live.id))) return generic;
 
   const token = await db.authToken.findUnique({
     where: { tokenHash: hashToken(`${userId}:${PHONE_PURPOSE}:${code.trim()}`) },
     select: { id: true },
   });
 
-  if (!token || token.id !== live.id) {
-    await db.authToken.update({
-      where: { id: live.id },
-      data: { meta: JSON.stringify({ ...meta, attempts: attempts + 1 }) },
-    });
-    return generic;
-  }
+  if (!token || token.id !== live.id) return generic;
 
-  const phone = meta.phone;
+  const phone = readJson<{ phone?: string }>(live.meta, {}).phone;
   if (!phone) return generic;
 
   // Re-checked, because fifteen minutes is long enough for somebody else to
@@ -582,11 +709,30 @@ export async function confirmPhoneChange(userId: string, code: string): Promise<
     };
   }
 
+  // Read BEFORE the update: it is the number being replaced, and the one that
+  // has to be told.
+  const previous = await db.user.findUnique({
+    where: { id: userId },
+    select: { phone: true, phoneVerifiedAt: true },
+  });
+
   await db.user.update({
     where: { id: userId },
     data: { phone, phoneVerifiedAt: new Date() },
   });
   await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+  await signOutElsewhere(userId, keepSessionId);
+
+  /**
+   * ⚠ THE OLD NUMBER IS TOLD, after the write and outside any transaction for
+   * the reason `confirmEmailChange` gives. Only a CONFIRMED previous number:
+   * an unconfirmed one was never proved to be anybody's, and texting it is
+   * texting a stranger.
+   */
+  if (previous?.phone && previous.phoneVerifiedAt && previous.phone !== phone) {
+    await sendPhoneChangedNotice(previous.phone, phoneHint(phone));
+  }
+
   await audit({ actorUserId: userId, action: "account.mobile.confirm" });
 
   return { ok: true, hint: phoneHint(phone) };
@@ -627,7 +773,11 @@ export type EmailChange = {
  * one is a claim, and a claim that sits in an indexed column is a claim
  * something will eventually search on.
  */
-export async function startEmailChange(userId: string, rawEmail: string): Promise<EmailChange> {
+export async function startEmailChange(
+  userId: string,
+  rawEmail: string,
+  password: string,
+): Promise<EmailChange> {
   const email = rawEmail.trim().toLowerCase();
 
   /**
@@ -643,6 +793,11 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
   if (!isDeliverableEmail(email)) {
     return { ok: false, errorKey: "refusal.emailUnreceivable" };
   }
+
+  // The password before anything about the address is said — the reasoning is
+  // on `startPhoneChange`, and it is stronger here: the address IS the login.
+  const proof = await holdsOwnPassword(userId, password);
+  if (!proof.ok) return { ok: false, errorKey: proof.errorKey, retryAfterSeconds: proof.retryAfterSeconds };
 
   const current = await db.user.findUnique({ where: { id: userId }, select: { email: true } });
   if (current?.email === email) {
@@ -712,7 +867,7 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
       // Salted with the user id and the purpose, so a six-digit code issued for
       // one person and one job cannot collide with — or open — another's.
       tokenHash: hashToken(`${userId}:${EMAIL_PURPOSE}:${code}`),
-      meta: JSON.stringify({ attempts: 0, email }),
+      meta: JSON.stringify({ email }),
       expiresAt: new Date(Date.now() + RESET_TTL_MINUTES * 60_000),
     },
   });
@@ -733,18 +888,28 @@ export async function startEmailChange(userId: string, rawEmail: string): Promis
  * reported rather than fixed here, but it is the reason this function sets the
  * column itself rather than assuming something upstream did.
  *
- * THE PASSWORD IS NOT RE-ASKED FOR, deliberately. They are signed in, they have
- * proved they read the new inbox, and the old address is told the moment it
- * changes — see `sendEmailChangedNotice`, which is what actually protects the
- * previous owner. Demanding a password on top would stop nobody who already has
- * a live session and would block every parent who cannot remember theirs, which
- * is the population this feature exists for.
+ * THE PASSWORD WAS ASKED FOR AT STEP ONE — see `startEmailChange`. This used to
+ * say, deliberately, that it was not: a live session plus the new inbox was
+ * held to be enough, with the notice to the old address as the protection. But
+ * a session is exactly what somebody with a borrowed laptop or a lifted token
+ * has, and the address is the login and the reset destination — so the change
+ * costs the one thing a session does not carry, every other device is signed
+ * out when it lands, and the old address is still told.
  */
-export async function confirmEmailChange(userId: string, code: string): Promise<EmailChange> {
+export async function confirmEmailChange(
+  userId: string,
+  code: string,
+  keepSessionId?: string,
+): Promise<EmailChange> {
   const generic: EmailChange = {
     ok: false,
     errorKey: "refusal.codeWrong",
   };
+
+  const gate = await consume(`confirm-email:${userId}`, RESET_COMPLETIONS.limit, RESET_COMPLETIONS.windowMs);
+  if (!gate.allowed) {
+    return { ok: false, errorKey: "refusal.tooManyRetry", retryAfterSeconds: gate.retryAfterSeconds };
+  }
 
   const live = await db.authToken.findFirst({
     where: { userId, purpose: EMAIL_PURPOSE, consumedAt: null, expiresAt: { gt: new Date() } },
@@ -753,27 +918,16 @@ export async function confirmEmailChange(userId: string, code: string): Promise<
   });
   if (!live) return generic;
 
-  const meta = readJson<{ attempts?: number; email?: string }>(live.meta, {});
-  const attempts = meta.attempts ?? 0;
-  if (attempts >= MAX_RESET_ATTEMPTS) {
-    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
-    return generic;
-  }
+  if (!(await chargeAttempt(live.id))) return generic;
 
   const token = await db.authToken.findUnique({
     where: { tokenHash: hashToken(`${userId}:${EMAIL_PURPOSE}:${code.trim()}`) },
     select: { id: true },
   });
 
-  if (!token || token.id !== live.id) {
-    await db.authToken.update({
-      where: { id: live.id },
-      data: { meta: JSON.stringify({ ...meta, attempts: attempts + 1 }) },
-    });
-    return generic;
-  }
+  if (!token || token.id !== live.id) return generic;
 
-  const email = meta.email;
+  const email = readJson<{ email?: string }>(live.meta, {}).email;
   if (!email) return generic;
 
   /**
@@ -807,6 +961,7 @@ export async function confirmEmailChange(userId: string, code: string): Promise<
     data: { email, emailVerifiedAt: new Date() },
   });
   await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+  await signOutElsewhere(userId, keepSessionId);
 
   /**
    * ⚠ THE OLD ADDRESS IS TOLD, and this is the security of the whole feature.

@@ -514,6 +514,8 @@ export const en = {
     mobileHintInvalid: "That does not look like a mobile number yet.",
     textMeCode: "Text me a code",
     nothingSavedUntilCode: "Nothing is saved until the code comes back.",
+    currentPassword: "Your current password",
+    currentPasswordHint: "Needed to change where your codes go. Once the change is confirmed, every other device is signed out.",
 
     /* ------------------------------ preferences --------------------------- */
     quietSameTime: "Start and end cannot be the same time.",
@@ -2176,6 +2178,9 @@ export const en = {
     notifDecided: "There is news on {name}'s application",
     notifOfferExpired: "The offer of a place in grade {grade} for {name} has expired — ask the school",
     notifAdmitted: "{name} is admitted to grade {grade}",
+    guardianNotLinked: "The family was not linked as guardians: the seat went to a pupil already on Relay, and the child's existing guardians were told. Link the family from the pupil's record once you have checked who they are.",
+    notifLinkedByPen: "{school} has admitted {name} using their PEN",
+    notifLinkedByPenBody: "If you did not expect this, tell {school} and your own school today.",
     notifVerified: "{name}'s documents have been checked",
     notifTested: "{name}'s test result is recorded",
   },
@@ -2737,6 +2742,7 @@ export const en = {
     organiserHint: "Shown on the card. Left empty, it says Relay.",
     everySchoolSees: "Every school on this server will see it once published.",
     titleTooShort: "Give it a title.",
+    linkMustBeHttps: "The organiser's link must start with https://.",
     summaryTooShort: "Give it a one-line summary.",
 
     questionBank: "Question bank",
@@ -2844,7 +2850,11 @@ export const en = {
   /* ---------------------------------------------------------------------- */
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
+  sms: {
+    phoneChanged: "The mobile number on your Relay account was changed to the number ending {digits}. Reset codes will go there from now on. If you did not do this, contact your school straight away.",
+  },
   refusal: {
+    pushEndpoint: "The push endpoint must be an https address on a known push service.",
     leaveDateNotFuture: "That date is not in the future — record the leaving now instead.",
     nothingScheduled: "No leaving is scheduled for them.",
     accountDisabled: "That account is disabled.",
@@ -2856,6 +2866,7 @@ export const en = {
     alreadyLinkedToThisChild: "That address is already linked to this child.",
     fileEmpty: "That file is empty.",
     fileTooLargeLimit: "That file is too large. The limit is {mb} MB.",
+    uploadDayFull: "You have uploaded {mb} MB today, which is the day's limit. Try again tomorrow.",
     fileTypeUnsupported: "That file type is not supported. Use PNG, JPEG, WebP, GIF or PDF.",
     required: "This is required.",
     notValid: "That is not valid.",
@@ -2901,6 +2912,7 @@ export const en = {
     linkNotRenewable: "That link is not one we can renew.",
     cannotVerify: "That account cannot be verified.",
     noEmailOnAccount: "There is no email address on that account to send to.",
+    needsPassword: "That is not your current password. It is needed to change how you sign in.",
 
     /* ---------------------------- password quality ------------------------ */
     pwAtLeast10: "Use at least 10 characters.",
@@ -2985,6 +2997,7 @@ export const en = {
     onlyTheCurrentYearCloses: "Only the year that is running can be closed.",
     cannotMoveIntoAClosedYear: "That year is already closed — choose the next year to move into.",
     youArePostingALot: "You are posting a lot — try again in about {minutes} minutes.",
+    youAreReportingALot: "You have sent a lot of reports — the school has them. Try again in about {minutes} minutes.",
     onlyAnAdminEditsTheProfile: "Only a school admin edits the directory profile.",
     onlySchoolStaffReadTheBoard: "Only school staff read the vacancies board.",
     onlyAParentAsksAboutAdmission: "Only a parent asks a school about admission.",
@@ -3002,6 +3015,7 @@ export const en = {
     onlyAnAdminCanEditStaffRecords: "Only a school admin can edit staff records.",
     termNotFound: "No such term at this school.",
     onlyAnAdminCanSetTerms: "Only a school admin can set up terms.",
+    onlyAnAdminSetsUpTheSchool: "Only a school admin changes how the school is set up; the head reads it.",
     aPupilHeldBackCannotAlsoMove: "A pupil held back cannot also be moved.",
     onlyAnAdminCanIssueASignIn: "Only a school admin can issue a sign-in code.",
     onlyASchoolAdminCanAdmit: "Only a school admin can admit pupils.",
@@ -3380,6 +3394,16 @@ export const en = {
   /* Getting in — the pupil's four-screen flow, the guardian's sign-up, and   */
   /* the page that decides which of those you are.                            */
   /* ---------------------------------------------------------------------- */
+  sso: {
+    unverifiedEmail:
+      "That sign-in could not prove your email address, so it was not linked to an account. Use your password instead.",
+  },
+  magic: {
+    pageTitle: "Sign in to Relay",
+    title: "Finish signing in",
+    body: "Press Continue to sign in to Relay. The link works once, and nothing that opens it on your behalf can use it.",
+    continue: "Continue",
+  },
   invite: {
     parentHasAccountNote: "That address already has an Relay account. Accepting adds this child to it — your password does not change.",
     parentSignupNote: "Set a password and you are in. You can unlink from your settings at any time.",
@@ -3450,6 +3474,9 @@ export const en = {
     noEmailAttached: "That invitation has no email address attached.",
     alreadyUsed: "That invitation has already been used.",
     couldNotComplete: "We could not complete that. Please try again.",
+    enterYourPassword:
+      "This address already has an account. Enter its password to add the school to it — or log in first and open the link again.",
+    wrongPassword: "That password does not match this account.",
   },
   forgot: {
     title: "Set a new password",
@@ -3524,6 +3551,10 @@ export const en = {
     parentAt: "Parent · {school}",
     parentSchools: "Parent · {count} schools",
     everySchool: "Every school on this server",
+  },
+  claim: {
+    notifExisting: "{claimant} linked themselves to {name} as a guardian",
+    notifExistingBody: "If you do not know them, tell {school} at once.",
   },
   join: {
     waitingTitle: "An invitation is waiting for you",
@@ -4379,6 +4410,7 @@ export const en = {
   /* translation, and belongs in its own change.                             */
   /* ---------------------------------------------------------------------- */
   common: {
+    officeSetsThis: "The school office sets this up. You can read it here, not change it.",
     retry: "Try again",
     comingSoon: "Coming soon",
     comingSoonBody: "This screen is on its way. Until then, the web app has it.",
@@ -5850,6 +5882,7 @@ export const en = {
     listTooLarge: "That list is too large. Split it into smaller batches.",
     noUsableRows: "None of those rows had a usable email address.",
     tooManyAtOnce: "That is {count} invitations at once. Please do 500 or fewer per batch.",
+    dailyCapReached: "A school may send {cap} invitations a day and {left} are left today; this list has {count}. Send the rest tomorrow.",
     classNotYours: "That class is not in your school.",
     notPending: "That invitation is no longer pending.",
     cannotResend: "That invitation cannot be resent.",
@@ -6201,6 +6234,7 @@ export const en = {
       "Your profile is reviewed before any school can see or book you. You will not need to do anything else.",
     couldNotCreate: "Could not create the account.",
     inviteCannotBeUsed: "That invitation cannot be used.",
+    inviteForAnotherAddress: "This invitation was sent to a different email address. Use the address it was sent to.",
     giveYourName: "Please give your name.",
     emailLooksWrong: "That email does not look right.",
     sayWhatYouDo: "Say what you do, in a few words.",
@@ -6475,6 +6509,7 @@ export const en = {
     theirScoreRecorded: "Their score has been recorded.",
     accessRestored: "You can use your school on Relay again.",
     reportedAs: "A {type} was reported as {reason}.",
+    incidentNote: "The school has added a note about {name}. Open the app to read it.",
     missingSchoolLately: "{name} has been missing school lately. Please talk to the class teacher — the school would like to help.",
     teacherCancelledMeeting: "{name} has had to cancel your meeting. Please pick another time.",
     familyBookedSlot: "{name}'s family has booked your slot.",
@@ -6550,6 +6585,9 @@ export const en = {
     penColumn: "A pen column (udise pen, pen number or permanent education number) takes the eleven-digit UDISE+ PEN: with the date of birth it links a pupil already known on Relay, and a fresh one goes on the new account.",
     penNeedsBirthdate: "A row with a PEN needs the date of birth as well \u2014 the number alone is a piece of paper.",
     penMismatch: "The date of birth does not match the one on file for that PEN, so nothing was linked.",
+    identityRefused: "This code or number and date of birth do not name a pupil this school may bring over.",
+    tooManyLinks: "More than {max} rows carry a student code or PEN. Split the list.",
+    tooManyRuns: "Too many lists with student codes or PENs this hour. Try again {when}.",
     penFormat: "The PEN must be eleven digits; the row was skipped.",
     linkedBadge: "Transferred in",
     linkedExisting: "Transferred in — their existing account, record and login carried over.",
@@ -6594,6 +6632,7 @@ export const en = {
     done: "Done",
     hasAddressUseForgot: "{name} has an email address — they set a password with \"Forgotten your password?\" instead.",
     noHandle: "This account has no sign-in handle.",
+    notEligible: "This pupil already has a sign-in.",
     noMatch: "That handle and code do not match, or the code has been used. Ask your school for a new one.",
     panelTitle: "A first sign-in for {name}",
     panelBody: "A one-time code, shown once. {name} types it with their handle at {url} to choose a password. It works for {days} days and for one sign-in; issuing another replaces it.",

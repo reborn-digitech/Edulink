@@ -65,6 +65,39 @@ describe("issuing a first sign-in", () => {
     expect(await issueFirstSignIn(admin, emailPupilMembershipId)).toMatchObject({ ok: false, errorKey: "firstSignin.hasAddressUseForgot" });
   });
 
+  it("⚠ never for an account that already has a sign-in: a password, a verified address, or a life at another school", async () => {
+    /**
+     * Redeeming the code SETS THE PASSWORD. An admin who could issue one for
+     * an account with a password, or for a pupil linked in from another
+     * school, could take that account over — which is what the intake hole
+     * this closes came down to. Refused by name of the rule, and nothing
+     * minted.
+     */
+    const suffix = String(Date.now()).slice(-6);
+    const other = await db.school.findFirstOrThrow({ where: { name: "Oakfield Academy" }, select: { id: true } });
+    const mk = (handle: string, extra: Record<string, unknown> = {}) => db.user.create({ data: { name: `ZZ First ${handle}`, email: `${handle}@${HANDLE_DOMAIN}`, prefs: "{}", isMinor: true, ...extra }, select: { id: true } });
+    const [withPassword, verified, elsewhere, guards] = await Promise.all([
+      mk(`zzfirst.pw${suffix}`, { passwordHash: "not-a-real-hash" }),
+      mk(`zzfirst.ve${suffix}`, { emailVerifiedAt: new Date() }),
+      mk(`zzfirst.el${suffix}`),
+      mk(`zzfirst.gu${suffix}`),
+    ]);
+    const ids = [withPassword.id, verified.id, elsewhere.id, guards.id];
+    try {
+      const memberships = await Promise.all(ids.map((userId, i) => db.membership.create({ data: { userId, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `STU-ZZF${i}${suffix}` }, select: { id: true } })));
+      const atOther = await db.membership.create({ data: { userId: elsewhere.id, schoolId: other.id, role: "STUDENT", status: "ACTIVE", leftAt: new Date(), studentCode: `STU-ZZFX${suffix}` }, select: { id: true } });
+      await db.guardianship.create({ data: { parentUserId: guards.id, studentMembershipId: atOther.id, studentSchoolId: other.id, relation: "PARENT", status: "ACTIVE" } });
+      for (const m of memberships) {
+        expect(await issueFirstSignIn(admin, m.id)).toMatchObject({ ok: false, errorKey: "firstSignin.notEligible" });
+      }
+      expect(await db.authToken.count({ where: { userId: { in: ids }, purpose: FIRST_SIGNIN_PURPOSE } })).toBe(0);
+    } finally {
+      await db.guardianship.deleteMany({ where: { parentUserId: { in: ids } } });
+      await db.membership.deleteMany({ where: { userId: { in: ids } } });
+      await db.user.deleteMany({ where: { id: { in: ids } } });
+    }
+  });
+
   it("mints a readable code on the handle, and a new one replaces the old", async () => {
     const first = await issueFirstSignIn(admin, pupilMembershipId);
     expect(first.ok).toBe(true);
@@ -100,6 +133,10 @@ describe("redeeming it", () => {
   });
 
   it("⚠ five wrong tries spend the code, and every failure reads the same", async () => {
+    // The redeem above set a password, and an account with one is no longer
+    // eligible (it uses the reset). Back to a fresh account for this one.
+    expect(await issueFirstSignIn(admin, pupilMembershipId)).toMatchObject({ ok: false, errorKey: "firstSignin.notEligible" });
+    await db.user.update({ where: { id: pupilUserId }, data: { passwordHash: null } });
     const issued = await issueFirstSignIn(admin, pupilMembershipId);
     if (!issued.ok) throw new Error("no code");
     for (let i = 0; i < MAX_FIRST_SIGNIN_ATTEMPTS; i++) {
@@ -108,5 +145,18 @@ describe("redeeming it", () => {
     expect(await redeemFirstSignIn(HANDLE, issued.issued.code, "Sunflower-2031")).toMatchObject({ ok: false, errorKey: "firstSignin.noMatch" });
     expect(await redeemFirstSignIn("nobody.0000", "AAAA-BBBB", "Sunflower-2031")).toMatchObject({ ok: false, errorKey: "firstSignin.noMatch" });
     expect(await redeemFirstSignIn("zz.first.email@riverside.test", "AAAA-BBBB", "Sunflower-2031")).toMatchObject({ ok: false, errorKey: "firstSignin.noMatch" });
+  });
+
+  it("⚠ twenty wrong tries arriving TOGETHER spend the code after five, and the right one is then refused", async () => {
+    const issued = await issueFirstSignIn(admin, pupilMembershipId);
+    if (!issued.ok) throw new Error("no code");
+    // The count was a JSON field read and then written, so a burst read 0
+    // every time; it is one conditional UPDATE now.
+    const burst = await Promise.all(Array.from({ length: 20 }, () => redeemFirstSignIn(HANDLE, "AAAA-BBBB", "Sunflower-2031")));
+    expect(burst.every((r) => !r.ok)).toBe(true);
+    const token = await db.authToken.findFirstOrThrow({ where: { userId: pupilUserId, purpose: FIRST_SIGNIN_PURPOSE }, orderBy: { createdAt: "desc" } });
+    expect(token.attempts).toBe(MAX_FIRST_SIGNIN_ATTEMPTS);
+    expect(token.consumedAt).not.toBeNull();
+    expect(await redeemFirstSignIn(HANDLE, issued.issued.code, "Sunflower-2031")).toMatchObject({ ok: false, errorKey: "firstSignin.noMatch" });
   });
 });

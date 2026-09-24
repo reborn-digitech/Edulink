@@ -58,6 +58,7 @@ export default async function EditCyclePage({
             cycleId={cycle.id}
             status={cycle.status}
             name={cycle.name}
+            canPurge={ctx.role === "ADMIN"}
           />
         }
         back={{ href: "/admin/admissions", label: t("admissions.title") }}

@@ -12,6 +12,8 @@ import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, PLA
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import { normaliseLocale } from "@edulink/i18n";
+import { translator, type TranslationKey } from "./i18n/dictionary";
 
 /**
  * Certificates: the office designs a template once and issues it many times.
@@ -30,6 +32,12 @@ type Office = ActiveContext & { schoolId: string; membershipId: string; role: Ro
 function office(ctx: ActiveContext): Office {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("access.notAllowed");
   return ctx as Office;
+}
+/** Designing a template is setting the school up, which is the admin's; the head reads the templates and issues from them. */
+function admin(ctx: ActiveContext): Office {
+  const caller = office(ctx);
+  if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
+  return caller;
 }
 
 const DOC_LOCALES: WordsLocale[] = ["en", "hi", "mr"];
@@ -79,7 +87,7 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
 
 /** Create, or replace by id. The name is unique per school; a template issued from may still be reworded, because issued documents keep their own wording. */
 export async function saveTemplate(ctx: ActiveContext, input: CertificateTemplateSave, templateId?: string) {
-  const caller = office(ctx);
+  const caller = admin(ctx);
   const data = { kind: input.kind, name: input.name, locale: input.locale, title: input.title, intro: input.intro, rowsJson: JSON.stringify(input.rows), outro: input.outro, layoutJson: JSON.stringify(input.layout), serialPrefix: input.serialPrefix.toUpperCase(), active: input.active };
   const clash = await db.certificateTemplate.findFirst({ where: { schoolId: caller.schoolId, name: input.name, ...(templateId ? { id: { not: templateId } } : {}) }, include: { _count: { select: { certificates: true } } } });
   if (clash) {
@@ -102,7 +110,7 @@ export async function saveTemplate(ctx: ActiveContext, input: CertificateTemplat
 
 /** Retire a template: it is offered no more; the certificates issued from it stand. */
 export async function archiveTemplate(ctx: ActiveContext, templateId: string) {
-  const caller = office(ctx);
+  const caller = admin(ctx);
   const existing = await db.certificateTemplate.findFirst({ where: { id: templateId, schoolId: caller.schoolId }, select: { id: true, active: true } });
   if (!existing) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (existing.active) await db.certificateTemplate.update({ where: { id: existing.id }, data: { active: false } });
@@ -355,7 +363,7 @@ export async function verifyByCode(code: string) {
   if (!/^[A-Z0-9]{6,16}$/.test(clean)) return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
   // No join to the school: a signed-out connection reads the certificate row alone, and the
   // document's own snapshot carries the school's name as it was when the paper was printed.
-  const cert = await db.issuedCertificate.findUnique({ where: { code: clean }, select: { kind: true, serial: true, title: true, issuedAt: true, revokedAt: true, dataJson: true } });
+  const cert = await db.issuedCertificate.findUnique({ where: { code: clean }, select: { kind: true, serial: true, locale: true, issuedAt: true, revokedAt: true, dataJson: true } });
   if (!cert) return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
   let schoolName: string | null = null;
   try {
@@ -363,7 +371,25 @@ export async function verifyByCode(code: string) {
   } catch {
     schoolName = null;
   }
-  return { valid: !cert.revokedAt, kind: cert.kind as CertificateKind, serial: cert.serial, title: cert.title, schoolName, issuedAt: cert.issuedAt.toISOString(), revokedAt: cert.revokedAt?.toISOString() ?? null };
+  // The KIND'S name, never the filled title: a template's title may read
+  // "Bonafide certificate of [[pupil.name]]", and the public check page is
+  // for anyone holding the code — a landlord, a bank — who learns the paper
+  // is real and nothing about the child. In the paper's own language.
+  const kind = cert.kind as CertificateKind;
+  return { valid: !cert.revokedAt, kind, serial: cert.serial, title: kindLabel(kind, cert.locale), schoolName, issuedAt: cert.issuedAt.toISOString(), revokedAt: cert.revokedAt?.toISOString() ?? null };
+}
+
+const KIND_LABEL_KEY: Record<CertificateKind, TranslationKey> = {
+  TC: "certificates.kindTc",
+  NIRGAM: "certificates.kindNirgam",
+  BONAFIDE: "certificates.kindBonafide",
+  CHARACTER: "certificates.kindCharacter",
+  STUDY: "certificates.kindStudy",
+  CUSTOM: "certificates.kindCustom",
+};
+
+function kindLabel(kind: CertificateKind, locale: string): string {
+  return translator(normaliseLocale(locale))(KIND_LABEL_KEY[kind] ?? "certificates.kindCustom");
 }
 
 export type { CertificateLayout, CertificateRow };

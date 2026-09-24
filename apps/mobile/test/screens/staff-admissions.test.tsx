@@ -61,6 +61,14 @@ describe("the office's admission cycles", () => {
     expect(await screen.findByText("The cycle is open. It shows on your page in the directory.")).toBeTruthy();
   });
 
+  it("the head opens and closes a cycle and never sees the purge", async () => {
+    await mountStaff(compose(<StaffAdmissions />), "PRINCIPAL", answers());
+    await screen.findByText("ZZ Admissions 2026-27");
+    expect(screen.getByRole("button", { name: "Close" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Open" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Delete the forms not admitted" })).toBeNull();
+  });
+
   it("purging a closed cycle asks first, then posts and counts what went", async () => {
     const { calls } = await mountStaff(compose(<StaffAdmissions />), "ADMIN", { ...answers(), [PURGE(CLOSED_CYCLE)]: () => json({ ok: true, removed: 2 }) });
     await screen.findByText("ZZ Admissions 2026-27");

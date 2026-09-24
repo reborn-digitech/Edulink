@@ -2,6 +2,7 @@ import "server-only";
 import { cookies, headers } from "next/headers";
 import { cache } from "react";
 import { db } from "./db";
+import { clientAddress } from "./rate-limit";
 import { generateToken, hashToken } from "./crypto";
 import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
 import { forOwnSchools } from "./tenant-context";
@@ -62,6 +63,35 @@ export type ActiveContext = {
 };
 
 /* -------------------------------------------------------------------------- */
+/* How long a session lives                                                    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A session may slide, but not forever. A bearer token that is used every
+ * fortnight used to be immortal — read past the midpoint, pushed out another
+ * thirty days, indefinitely. It now ends this many days after it was CREATED,
+ * however busy it has been; the person signs in again, once, every six months.
+ */
+export const SESSION_ABSOLUTE_MAX_DAYS = 180;
+
+/**
+ * Whoever runs the server signs in more often than a parent does. An
+ * operator's session slides in seven-day steps rather than thirty: the account
+ * that can read every school is the one whose forgotten laptop matters most.
+ */
+export const SUPERUSER_SESSION_TTL_DAYS = 7;
+
+async function sessionTtlDaysFor(userId: string): Promise<number> {
+  const user = await db.user.findUnique({ where: { id: userId }, select: { isSuperuser: true } });
+  return user?.isSuperuser ? SUPERUSER_SESSION_TTL_DAYS : SESSION_TTL_DAYS;
+}
+
+/** The moment a session created at `createdAt` may last until, whatever slides it. */
+function absoluteEnd(createdAt: Date): number {
+  return createdAt.getTime() + SESSION_ABSOLUTE_MAX_DAYS * 86_400_000;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Cookie                                                                      */
 /* -------------------------------------------------------------------------- */
 
@@ -85,7 +115,8 @@ export async function createSession(
 ): Promise<string> {
   const token = generateToken();
   const hdrs = await headers();
-  const expiresAt = new Date(Date.now() + SESSION_TTL_DAYS * 86_400_000);
+  const ttlDays = await sessionTtlDaysFor(userId);
+  const expiresAt = new Date(Date.now() + ttlDays * 86_400_000);
 
   const session = await db.session.create({
     data: {
@@ -100,7 +131,7 @@ export async function createSession(
   });
 
   const jar = await cookies();
-  jar.set(SESSION_COOKIE, token, cookieOptions(SESSION_TTL_DAYS * 86_400));
+  jar.set(SESSION_COOKIE, token, cookieOptions(ttlDays * 86_400));
   return session.id;
 }
 
@@ -126,10 +157,45 @@ export async function revokeSession(sessionId: string, ownerUserId: string): Pro
 }
 
 export async function revokeOtherSessions(userId: string, keepSessionId: string): Promise<number> {
-  const result = await db.session.updateMany({
-    where: { userId, revokedAt: null, id: { not: keepSessionId } },
-    data: { revokedAt: new Date() },
+  return revokeAllAccess(userId, { keepSessionId });
+}
+
+/** The delegates `revokeAllAccess` touches — `db`, or a transaction client. */
+type RevokeClient = Pick<typeof db, "session" | "authToken" | "deviceToken" | "pushSubscription">;
+
+/**
+ * Everything that could still let somebody in as this person, gone at once.
+ *
+ * Sessions, because that is what "sign out everywhere" means. Every unspent
+ * token, because a magic link requested five minutes ago is a live way in
+ * that outlasts the password it belonged to. And the PUSH REGISTRATIONS —
+ * the phone's Expo token and the browser's web-push subscription — which used
+ * to survive every revocation: a device signed out by a password reset kept
+ * receiving "Aarav was marked absent" and "new mark in Maths" for as long as
+ * the app stayed installed, which is exactly the leak a reset is meant to
+ * close. Both tables are keyed by user alone, so all of the person's go.
+ *
+ * `keepSessionId` is "every device but this one"; the push rows go
+ * regardless, and this device re-registers on its next foreground. `tokens`
+ * is for the flows that take the account back — a reset, a reclaim — and
+ * not for "sign out other devices", which must not burn the verification
+ * email the same person is about to open.
+ */
+export async function revokeAllAccess(
+  userId: string,
+  opts: { keepSessionId?: string; tokens?: boolean; client?: RevokeClient } = {},
+): Promise<number> {
+  const client = opts.client ?? db;
+  const now = new Date();
+  const result = await client.session.updateMany({
+    where: { userId, revokedAt: null, ...(opts.keepSessionId ? { id: { not: opts.keepSessionId } } : {}) },
+    data: { revokedAt: now },
   });
+  if (opts.tokens) {
+    await client.authToken.updateMany({ where: { userId, consumedAt: null }, data: { consumedAt: now } });
+  }
+  await client.deviceToken.deleteMany({ where: { userId } });
+  await client.pushSubscription.deleteMany({ where: { userId } });
   return result.count;
 }
 
@@ -154,7 +220,7 @@ export async function createApiSession(
   opts: { schoolId?: string | null; role?: Role | null; userAgent?: string | null; ip?: string | null } = {},
 ): Promise<{ sessionId: string; token: string; expiresAt: Date }> {
   const token = generateToken();
-  const expiresAt = new Date(Date.now() + SESSION_TTL_DAYS * 86_400_000);
+  const expiresAt = new Date(Date.now() + (await sessionTtlDaysFor(userId)) * 86_400_000);
   const session = await db.session.create({
     data: {
       userId,
@@ -173,12 +239,12 @@ export async function createApiSession(
 /**
  * How far into a session's life a bearer read extends it. The phone never
  * re-signs-in if it is used at least this often: a read past the midpoint
- * pushes the expiry out to a full TTL again (a "sliding" expiry), and the
- * write is skipped while lastSeenAt is fresh so a busy screen does not write
- * the row on every request. Cookies keep their fixed thirty days — the
- * browser's maxAge cannot be reset from a server-component read.
+ * pushes the expiry out to a full TTL again (a "sliding" expiry, capped at
+ * SESSION_ABSOLUTE_MAX_DAYS from creation), and the write is skipped while
+ * lastSeenAt is fresh so a busy screen does not write the row on every
+ * request. Cookies keep their fixed thirty days — the browser's maxAge cannot
+ * be reset from a server-component read.
  */
-const SLIDE_AFTER_MS = (SESSION_TTL_DAYS * 86_400_000) / 2;
 const SEEN_THROTTLE_MS = 60 * 60_000;
 
 export const getSession = cache(async (): Promise<ActiveContext | null> => {
@@ -199,13 +265,18 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
   if (!session) return null;
   if (session.revokedAt) return null;
   if (session.expiresAt.getTime() < Date.now()) return null;
+  // However far it slid, a session ends six months after it began.
+  if (absoluteEnd(session.createdAt) < Date.now()) return null;
   if (session.user.disabledAt) return null;
 
   if (viaBearer && Date.now() - session.lastSeenAt.getTime() > SEEN_THROTTLE_MS) {
-    const slide = session.expiresAt.getTime() - Date.now() < SLIDE_AFTER_MS;
+    const ttlMs = (session.user.isSuperuser ? SUPERUSER_SESSION_TTL_DAYS : SESSION_TTL_DAYS) * 86_400_000;
+    const slide = session.expiresAt.getTime() - Date.now() < ttlMs / 2;
+    // Never past the absolute end: the last slide is a short one.
+    const slidTo = new Date(Math.min(Date.now() + ttlMs, absoluteEnd(session.createdAt)));
     await db.session.update({
       where: { id: session.id },
-      data: { lastSeenAt: new Date(), ...(slide ? { expiresAt: new Date(Date.now() + SESSION_TTL_DAYS * 86_400_000) } : {}) },
+      data: { lastSeenAt: new Date(), ...(slide ? { expiresAt: slidTo } : {}) },
     });
   }
 
@@ -214,8 +285,12 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
   // removed from a school this morning must not keep their afternoon session
   // scoped to it.
   let membershipId: string | null = null;
-  let schoolId: string | null = session.activeSchoolId;
   let role: Role | null = (session.activeRole as Role | null) ?? null;
+  // A parent has no school; neither does a session with no role. A school id
+  // stored against either — POST /api/v1/me/context used to accept any string
+  // for a PARENT — must not become the school this session reads for, or
+  // the channel the events stream subscribes it to.
+  let schoolId: string | null = role && role !== "PARENT" && role !== "EXPERT" ? session.activeSchoolId : null;
 
   // Nothing is bound here, deliberately. This function used to push the schools
   // it had just resolved into a store its callers would read, and in a route
@@ -296,13 +371,18 @@ export async function setActiveContext(
     if (!isParent) return false;
   }
 
+  // A parent's context names no school, whatever the body said: a school id
+  // stored here was read back by getSession and handed to the events stream,
+  // which subscribed the parent to that school's grades and registers.
+  const schoolId = next.role && next.role !== "PARENT" && next.role !== "EXPERT" ? next.schoolId : null;
+
   await db.session.update({
     where: { id: sessionId },
-    data: { activeSchoolId: next.schoolId, activeRole: next.role, lastSeenAt: new Date() },
+    data: { activeSchoolId: schoolId, activeRole: next.role, lastSeenAt: new Date() },
   });
   await db.user.update({
     where: { id: userId },
-    data: { lastRole: next.role, lastSchoolId: next.schoolId },
+    data: { lastRole: next.role, lastSchoolId: schoolId },
   });
   return true;
 }
@@ -400,7 +480,5 @@ async function readContexts(userId: string) {
 }
 
 function clientIp(hdrs: Headers): string | null {
-  const forwarded = hdrs.get("x-forwarded-for");
-  if (forwarded) return forwarded.split(",")[0]?.trim() ?? null;
-  return hdrs.get("x-real-ip");
+  return clientAddress(hdrs);
 }

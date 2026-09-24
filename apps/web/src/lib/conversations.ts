@@ -311,7 +311,7 @@ async function assertParticipant(ctx: ActiveContext, conversationId: string) {
     where: { id: conversationId },
     include: {
       participants: {
-        include: { user: { select: { id: true, name: true, preferredName: true, avatarKey: true } } },
+        include: { user: { select: { id: true, name: true, preferredName: true, avatarKey: true, isMinor: true } } },
       },
     },
   });
@@ -504,6 +504,10 @@ export async function sendConversationMessage(
 
   const senderName = ctx.user.preferredName ?? ctx.user.name;
   const others = conversation.participants.filter((p) => p.userId !== ctx.user.id);
+  // A CHILD'S LOCK SCREEN CARRIES NO MESSAGE TEXT. The push goes through
+  // APNs and FCM and lands on a phone anyone can pick up; a minor gets the
+  // sender's name and nothing else, and reads the words in the app. Adults
+  // keep the preview.
   await Promise.all(
     others.map((p) =>
       notify({
@@ -512,7 +516,7 @@ export async function sendConversationMessage(
         kind: "REMARK",
         titleKey: "notif.newMessageFrom",
         titleVars: { name: senderName },
-        body: text.slice(0, 140),
+        ...(p.user.isMinor ? {} : { body: text.slice(0, 140) }),
         url: `/remarks/c/${conversationId}`,
         meta: { conversationId },
       }),

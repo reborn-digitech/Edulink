@@ -16,7 +16,7 @@ export async function GET() {
 /** POST /api/v1/office/admissions/cycles — create one. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = cycleSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(cycleSchema.parse(await createCycle(ctx, parsed.data)), 201);

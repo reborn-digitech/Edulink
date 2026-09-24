@@ -13,6 +13,7 @@ import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
 import { writeJson } from "@/lib/json";
 import { normaliseLocation } from "@/lib/places";
 import { getT, getLocale } from "@/lib/i18n/server";
+import { consumeByCaller, retryHintKey, SIGNUPS, EMAIL_CHECKS } from "@/lib/rate-limit";
 
 export type RegisterState = {
   ok: boolean;
@@ -38,6 +39,20 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
   }
 
   const { school, admin } = parsed.data;
+
+  /**
+   * ⚠ REGISTERING A SCHOOL MINTS A TENANT AND ITS ADMIN IN ONE PRESS, and an
+   * admin can run intake — which links existing pupils by code and birthday.
+   * The handshake in lib/pen.ts is what keeps a freshly minted school from
+   * bringing anybody over; this is what keeps the minting itself from being
+   * free. Same allowance as a parent signing up, in its own bucket.
+   */
+  const gate = await consumeByCaller("register", SIGNUPS);
+  if (!gate.allowed) {
+    const t = await getT();
+    const hint = retryHintKey(gate.retryAfterSeconds);
+    return { ok: false, errors: { _form: t("join.tooManyAccounts", { when: t(hint.key, hint.vars) }) } };
+  }
 
   // Password quality is checked against the person's own details, which the
   // generic length rule cannot see.
@@ -197,10 +212,19 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
   return { ok: true, errors: {}, schoolCode: created.code };
 }
 
-/** Server-side availability check used by the wizard's live validation. */
+/**
+ * Server-side availability check used by the wizard's live validation.
+ *
+ * ⚠ A YES/NO ABOUT WHETHER AN ADDRESS HAS AN ACCOUNT is an enumeration
+ * oracle when it is free to call. At the limit it answers "available" —
+ * the same shape as any other answer, so a script cannot tell a refusal
+ * from a free address — and the submit itself still refuses a taken one.
+ */
 export async function checkEmailAvailable(email: string): Promise<boolean> {
   const normalized = email.trim().toLowerCase();
   if (!normalized.includes("@")) return true;
+  const gate = await consumeByCaller("email-check", EMAIL_CHECKS);
+  if (!gate.allowed) return true;
   const existing = await db.user.findUnique({
     where: { email: normalized },
     select: { id: true },

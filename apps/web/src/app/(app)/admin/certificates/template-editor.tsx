@@ -53,7 +53,8 @@ function draftFrom(source: Preset | Template, active: boolean): Draft {
  * at its caret and puts the caret after it, so writing "[[pupil.name]]" by
  * hand is never required and never mistyped.
  */
-export function TemplateEditor({ view, template }: { view: CertificateTemplatesView; template?: Template }) {
+/** `readOnly` is the head's view: every control disabled and no save, because designing a template is the admin's. */
+export function TemplateEditor({ view, template, readOnly = false }: { view: CertificateTemplatesView; template?: Template; readOnly?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -180,6 +181,12 @@ export function TemplateEditor({ view, template }: { view: CertificateTemplatesV
 
   return (
     <form onSubmit={submit} noValidate className="space-y-6" data-testid="certificate-template-editor">
+      {readOnly && (
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+          {t("common.officeSetsThis")}
+        </p>
+      )}
+      <fieldset disabled={readOnly} className="min-w-0 space-y-6">
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
@@ -306,11 +313,14 @@ export function TemplateEditor({ view, template }: { view: CertificateTemplatesV
         </CardBody>
       </Card>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="template-save">
-          {t("certificates.save")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="template-save">
+            {t("certificates.save")}
+          </Button>
+        </div>
+      )}
+      </fieldset>
     </form>
   );
 }

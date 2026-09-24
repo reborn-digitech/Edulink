@@ -1,12 +1,13 @@
 import "server-only";
 import { randomInt } from "node:crypto";
 import { db } from "./db";
+import { revokeAllAccess } from "./session";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { hashPassword, hashToken, passwordProblems } from "./crypto";
 import { readJson } from "./json";
 import { isDeliverableEmail, toLoginEmail, HANDLE_DOMAIN } from "./login-name";
-import { forSchool } from "./tenant-context";
+import { forSchool, forUser } from "./tenant-context";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -77,13 +78,33 @@ export async function issueFirstSignIn(ctx: ActiveContext, studentMembershipId: 
 
   const pupil = await db.membership.findFirst({
     where: { id: studentMembershipId, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
-    select: { id: true, user: { select: { id: true, email: true, disabledAt: true } } },
+    select: { id: true, user: { select: { id: true, email: true, disabledAt: true, passwordHash: true, emailVerifiedAt: true } } },
   });
   if (!pupil) return { ok: false, errorKey: "refusal.notPupilsHere" };
   if (pupil.user.disabledAt) return { ok: false, errorKey: "refusal.accountDisabled" };
   if (isDeliverableEmail(pupil.user.email)) return { ok: false, errorKey: "firstSignin.hasAddressUseForgot" };
   const handle = handleOf(pupil.user.email);
   if (!handle) return { ok: false, errorKey: "firstSignin.noHandle" };
+
+  /**
+   * ⚠ A FIRST SIGN-IN IS FOR AN ACCOUNT THAT HAS NEVER SIGNED IN. Redeeming
+   * the code SETS THE PASSWORD, so issuing one for an account that already
+   * has a password, a verified address, or a life at another school — a
+   * membership there, or a child it guards — would let this school's admin
+   * take that account over: a transfer linked by a guessed birthday, then a
+   * code that resets its password. Such an account is refused by name of
+   * the rule; a pupil who has forgotten their password uses the reset, and
+   * one with no address asks the school that issued the account.
+   */
+  const account = pupil.user;
+  if (account.passwordHash || account.emailVerifiedAt) return { ok: false, errorKey: "firstSignin.notEligible" };
+  const elsewhere = await forUser(account.id, async () => {
+    const membership = await db.membership.findFirst({ where: { userId: account.id, schoolId: { not: schoolId } }, select: { id: true } });
+    if (membership) return true;
+    const guards = await db.guardianship.findFirst({ where: { parentUserId: account.id, studentSchoolId: { not: schoolId } }, select: { id: true } });
+    return Boolean(guards);
+  });
+  if (elsewhere) return { ok: false, errorKey: "firstSignin.notEligible" };
 
   const code = mintCode();
   const expiresAt = new Date(Date.now() + FIRST_SIGNIN_TTL_DAYS * 86_400_000);
@@ -145,24 +166,34 @@ export async function redeemFirstSignIn(rawHandle: string, rawCode: string, newP
   });
   if (!live) return generic;
 
-  const meta = readJson<{ attempts?: number; schoolId?: string }>(live.meta, {});
-  const attempts = meta.attempts ?? 0;
-  if (attempts >= MAX_FIRST_SIGNIN_ATTEMPTS) {
-    await db.authToken.update({ where: { id: live.id }, data: { consumedAt: new Date() } });
+  const meta = readJson<{ schoolId?: string }>(live.meta, {});
+
+  // ONE CONDITIONAL STATEMENT charges the try, before the code is compared:
+  // `attempts + 1 WHERE attempts < cap`, so a burst of guesses arriving
+  // together gets exactly the cap between them. The count used to live in
+  // `meta`, read and then written, and every guess in a burst read 0. A token
+  // that cannot be charged is spent.
+  const charged = await db.authToken.updateMany({
+    where: { id: live.id, consumedAt: null, attempts: { lt: MAX_FIRST_SIGNIN_ATTEMPTS } },
+    data: { attempts: { increment: 1 } },
+  });
+  if (charged.count === 0) {
+    await db.authToken.updateMany({ where: { id: live.id, consumedAt: null }, data: { consumedAt: new Date() } });
     return generic;
   }
 
   if (live.tokenHash !== hashToken(`${user.id}:${code}`)) {
-    await db.authToken.update({
-      where: { id: live.id },
-      data: { meta: JSON.stringify({ ...meta, attempts: attempts + 1 }) },
-    });
     await audit({ schoolId: meta.schoolId, actorUserId: user.id, action: "auth.firstSignin.failed" });
     return generic;
   }
 
   const problems = passwordProblems(newPassword, [rawHandle]);
-  if (problems.length > 0) return { ok: false, errorKey: problems[0]! };
+  if (problems.length > 0) {
+    // A weak password after a RIGHT code gives the try back — reached only
+    // past the comparison, so it widens nobody's window.
+    await db.authToken.updateMany({ where: { id: live.id, attempts: { gt: 0 } }, data: { attempts: { decrement: 1 } } });
+    return { ok: false, errorKey: problems[0]! };
+  }
 
   // NOBODY IS SIGNED IN HERE, so the membership row sits behind a fence no
   // session opens. The token remembers which school issued it; that school
@@ -178,8 +209,7 @@ export async function redeemFirstSignIn(rawHandle: string, rawCode: string, newP
   if (!membership) return generic;
 
   await db.user.update({ where: { id: user.id }, data: { passwordHash: await hashPassword(newPassword) } });
-  await db.session.updateMany({ where: { userId: user.id, revokedAt: null }, data: { revokedAt: new Date() } });
-  await db.authToken.updateMany({ where: { userId: user.id, consumedAt: null }, data: { consumedAt: new Date() } });
+  await revokeAllAccess(user.id, { tokens: true });
 
   await audit({ schoolId: membership.schoolId, actorUserId: user.id, action: "auth.firstSignin.completed" });
 

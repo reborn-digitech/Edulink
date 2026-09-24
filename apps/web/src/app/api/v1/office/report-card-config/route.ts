@@ -16,7 +16,7 @@ export async function GET() {
 /** POST /api/v1/office/report-card-config — replace the rules. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = reportCardConfigSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(reportCardConfigSchema.parse(await saveReportCardConfig(ctx, parsed.data)));

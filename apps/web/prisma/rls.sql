@@ -648,9 +648,13 @@ ALTER TABLE "AuditLog" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "AuditLog" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "AuditLog_tenant_isolation" ON "AuditLog";
 DROP POLICY IF EXISTS "AuditLog_readable" ON "AuditLog";
+-- APPEND-ONLY: this is the table's only write policy and it is FOR
+-- INSERT. No policy on this table permits UPDATE or DELETE, so the
+-- application cannot edit or remove a line however it is bound; the
+-- retention sweep prunes by age on the owner connection, which is
+-- outside row security. See APPEND_ONLY in scripts/gen-rls.ts.
 CREATE POLICY "AuditLog_tenant_isolation" ON "AuditLog"
-  FOR ALL
-  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  FOR INSERT
   -- Writes also allow a row belonging to no school, which is how a
   -- login — or a failed one — gets recorded at all. Absent from
   -- USING: writable, and visible to no school.
@@ -884,8 +888,9 @@ CREATE POLICY "SchoolRecord_tenant_isolation" ON "SchoolRecord"
   -- …and the leaving certificate of a child who is one of YOUR pupils
   -- now, whichever school issued it. The one clause in this file that
   -- crosses schools, on one table that holds a summary rather than a
-  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,
-  -- so it cannot be used to browse.
+  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership
+  -- in the STUDENT role, so it cannot be used to browse and a member of
+  -- staff's own school days stay out of their employer's reach.
   -- …and to an ACTIVE guardian of the pupil, which is what lets a parent
   -- follow one child across every school they have attended.
   -- All are in a SELECT-ONLY policy: readable, never writable.
@@ -897,6 +902,7 @@ CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
            SELECT 1 FROM "Membership" m
             WHERE m."userId" = "SchoolRecord"."studentUserId"
               AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."role" = 'STUDENT'
               AND m."status" = 'ACTIVE'
               AND m."leftAt" IS NULL
          ))
@@ -1365,6 +1371,31 @@ CREATE POLICY "OperatorAccess_operator_update" ON "OperatorAccess"
   FOR UPDATE
   USING (current_setting('app.is_superuser', true) = '1')
   WITH CHECK (current_setting('app.is_superuser', true) = '1');
+-- The only column the application may change on a written row is
+-- "endedAt". The owner is exempt (psql is the stated limit); everyone
+-- else is refused with insufficient_privilege. See the note above the
+-- trigger in scripts/gen-rls.ts.
+CREATE OR REPLACE FUNCTION "OperatorAccess_close_only"() RETURNS trigger
+  LANGUAGE plpgsql AS $$
+BEGIN
+  IF pg_has_role(current_user, (SELECT c.relowner FROM pg_class c WHERE c.oid = TG_RELID), 'MEMBER') THEN
+    RETURN NEW;
+  END IF;
+  IF NEW."id" IS DISTINCT FROM OLD."id"
+     OR NEW."schoolId" IS DISTINCT FROM OLD."schoolId"
+     OR NEW."userId" IS DISTINCT FROM OLD."userId"
+     OR NEW."reason" IS DISTINCT FROM OLD."reason"
+     OR NEW."startedAt" IS DISTINCT FROM OLD."startedAt"
+     OR NEW."expiresAt" IS DISTINCT FROM OLD."expiresAt" THEN
+    RAISE EXCEPTION 'OperatorAccess is append-only: only "endedAt" may change'
+      USING ERRCODE = 'insufficient_privilege';
+  END IF;
+  RETURN NEW;
+END $$;
+DROP TRIGGER IF EXISTS "OperatorAccess_close_only" ON "OperatorAccess";
+CREATE TRIGGER "OperatorAccess_close_only"
+  BEFORE UPDATE ON "OperatorAccess"
+  FOR EACH ROW EXECUTE FUNCTION "OperatorAccess_close_only"();
 
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken

@@ -109,10 +109,29 @@ export async function ticketedHandouts(userId: string, handouts: { fileId: strin
   });
 }
 
-/** Spent once: a ticket attached to one record cannot attach the same file to another. */
+/**
+ * Spent once: a ticket attached to one record cannot attach the same file to
+ * another.
+ *
+ * CONDITIONAL, AND COUNTED. `ticketedHandouts` checks `consumedAt: null` and
+ * this used to stamp the ticket without checking again, so two requests that
+ * passed the check together — the phone retrying a save, two tabs — could
+ * each attach the same file to a record of its own, and `files.ts` would then
+ * open that file to both. The stamp is now `WHERE consumedAt IS NULL`, which
+ * Postgres serialises on the row: one request's UPDATE matches, the other's
+ * finds the row already stamped and matches nothing. A short count is that
+ * other request, and it is refused with the same words as a ticket that was
+ * never theirs. Ids are de-duplicated first so a file named twice in one
+ * form is one ticket, not a false shortfall.
+ */
 export async function spendTickets(fileIds: string[]): Promise<void> {
-  if (fileIds.length === 0) return;
-  await db.uploadTicket.updateMany({ where: { fileId: { in: fileIds } }, data: { consumedAt: new Date() } });
+  const ids = [...new Set(fileIds)];
+  if (ids.length === 0) return;
+  const spent = await db.uploadTicket.updateMany({
+    where: { fileId: { in: ids }, consumedAt: null },
+    data: { consumedAt: new Date() },
+  });
+  if (spent.count !== ids.length) throw new AccessError("access.fileNotYours", "NOT_FOUND");
 }
 
 /* -------------------------------------------------------------------------- */

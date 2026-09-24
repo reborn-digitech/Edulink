@@ -105,6 +105,10 @@ describe("the cycle", () => {
     expect((await cyclesGet()).status).toBe(403);
     await as("PARENT_A");
     expect((await cyclesGet()).status).toBe(403);
+    // The head reads the cycles and does not design one.
+    await as("PRINCIPAL");
+    expect((await cyclesGet()).status).toBe(200);
+    expect((await cyclesPost(json("/api/v1/office/admissions/cycles", cycleBody()))).status).toBe(403);
     await as("ADMIN");
     let res = await cyclesGet();
     expect(res.status).toBe(200);
@@ -512,6 +516,9 @@ describe("the office's steps", () => {
     await cycleStatus(json(`/api/v1/office/admissions/cycles/${cycleId}/status`, { status: "CLOSED" }), params({ cycleId }));
     await as("PARENT_B");
     expect((await applyPost(json("/api/v1/family/applications", { schoolId, cycleId, childName: "Late", childBirthdate: null, gradeApplied: "6" }))).status).toBe(403);
+    // Deleting the families' forms is the admin's, as the cycle was; the head is refused with the cycle closed.
+    await as("PRINCIPAL");
+    expect((await cyclePurge(get(`/api/v1/office/admissions/cycles/${cycleId}/purge`), params({ cycleId }))).status).toBe(403);
     await as("ADMIN");
     res = await cyclePurge(get(`/api/v1/office/admissions/cycles/${cycleId}/purge`), params({ cycleId }));
     expect(await res.json()).toEqual({ ok: true, removed: 6 });

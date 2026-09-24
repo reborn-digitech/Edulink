@@ -9,7 +9,7 @@ import { randomBytes } from "node:crypto";
 import { PrismaClient } from "@prisma/client";
 import type { ActiveContext } from "@/lib/session";
 import { saveGatewayAccount } from "@/lib/fees";
-import { startOnlineCheckout } from "@/lib/fees-payments";
+import { requestRefund, startOnlineCheckout } from "@/lib/fees-payments";
 import { signWebhookBody } from "@/lib/gateway";
 import { POST as webhook } from "@/app/api/webhooks/razorpay/[schoolId]/route";
 
@@ -78,10 +78,12 @@ describe("POST /api/webhooks/razorpay/{schoolId}", () => {
     const other = await deliver(schoolId, body, sig, "evt_2");
     expect((await other.json()).outcome).toBe("already");
     expect(await db.feeReceipt.count({ where: { schoolId } })).toBe(1);
-    expect((await db.gatewayEvent.findMany({ where: { schoolId }, orderBy: { receivedAt: "asc" } })).map((e) => [e.eventId, e.outcome])).toEqual([
-      ["evt_1", "settled"],
-      ["evt_2", "already"],
-    ]);
+    // THE EVENT ID COMES FROM THE SIGNED BODY, never the header: the same
+    // body under two header ids is one event, stored once.
+    expect((await db.gatewayEvent.findMany({ where: { schoolId }, orderBy: { receivedAt: "asc" } })).map((e) => [e.eventId, e.outcome])).toEqual([["payment.captured:pay_hook1:", "settled"]]);
+    const withId = JSON.stringify({ id: "evt_body_1", created_at: 1_700_000_000, event: "payment.captured", payload: { payment: { entity: { id: "pay_hook1", order_id: start.orderId, amount: 500_00, method: "upi" } } } });
+    expect((await (await deliver(schoolId, withId, signWebhookBody("zz-hook-webhook-secret", withId), "evt_header_ignored")).json()).outcome).toBe("already");
+    expect((await db.gatewayEvent.findMany({ where: { schoolId }, select: { eventId: true } })).map((e) => e.eventId).sort()).toEqual(["evt_body_1", "payment.captured:pay_hook1:"]);
   });
 
   it("a failed payment closes its order; a refund event marks the refund done", async () => {
@@ -92,6 +94,27 @@ describe("POST /api/webhooks/razorpay/{schoolId}", () => {
     const row = await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId } });
     expect(row.status).toBe("FAILED");
     expect(row.failedReason).toBe("Card declined");
+
+    // FAILED STAYS SETTLEABLE: the retry on the same order is captured, signed, and real money.
+    const captured = JSON.stringify({ event: "payment.captured", created_at: 1_700_000_100, payload: { payment: { entity: { id: "pay_hook2b", order_id: start.orderId, amount: 300_00, method: "card" } } } });
+    expect((await (await deliver(schoolId, captured, signWebhookBody("zz-hook-webhook-secret", captured))).json()).outcome).toBe("settled");
+    const settled = await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId }, include: { receipt: true } });
+    expect(settled.status).toBe("PAID");
+    expect(settled.failedReason).toBeNull();
+    expect(settled.gatewayPaymentId).toBe("pay_hook2b");
+    expect(settled.receipt).not.toBeNull();
+    expect((await db.feeDemand.findUniqueOrThrow({ where: { id: extra.id } })).status).toBe("PAID");
+
+    // TWO CLICKS, ONE REFUND: the second waits on the row lock, re-reads, and is refused.
+    const office = ctx({ userId: adminUserId, membershipId: adminMembershipId, schoolId, role: "ADMIN" });
+    const race = await Promise.allSettled([
+      requestRefund(office, { paymentId: start.paymentId, amountPaise: 300_00, reason: "Double click one" }),
+      requestRefund(office, { paymentId: start.paymentId, amountPaise: 300_00, reason: "Double click two" }),
+    ]);
+    expect(race.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+    expect(race.filter((r) => r.status === "rejected").map((r) => (r as PromiseRejectedResult).reason.key)).toEqual(["fees.refuseRefundTooMuch"]);
+    expect(await db.feeRefund.count({ where: { paymentId: start.paymentId } })).toBe(1);
+    expect((await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId } })).status).toBe("REFUNDED");
 
     const paid = await db.feePayment.findFirstOrThrow({ where: { schoolId, status: "PAID" } });
     await db.feeRefund.create({ data: { schoolId, paymentId: paid.id, amountPaise: 100_00, reason: "test", status: "REQUESTED", gatewayRefundId: "rfnd_hook1", requestedByUserId: adminUserId } });

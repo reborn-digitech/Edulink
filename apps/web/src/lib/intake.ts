@@ -11,7 +11,8 @@ import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
-import { assignPenIfBlank, matchPen } from "./pen";
+import { assignPenIfBlank, matchPen, mayBringOver } from "./pen";
+import { consume, INTAKE_RUNS, INTAKE_MAX_LINKS } from "./rate-limit";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -83,6 +84,25 @@ export type IntakeResult = {
 
 export const INTAKE_MAX_ROWS = 500;
 
+/**
+ * Thrown when the school has sent more linking lists this hour than
+ * `INTAKE_RUNS` allows. Carries the wait so the action can say it and the
+ * API can answer 429 with Retry-After rather than a 422 that invites another
+ * go. An AccessError, so every caller that already catches one still does.
+ */
+export class IntakeLimited extends AccessError {
+  constructor(readonly retryAfterSeconds: number) {
+    super("intake.tooManyRuns", "FORBIDDEN");
+    this.name = "IntakeLimited";
+  }
+}
+
+/** A row that would LINK an existing account rather than mint one. */
+export function isLinkingRow(row: Pick<IntakeRow, "studentCode" | "pen">): boolean {
+  // `pen` is false for a malformed number: still a linking row, refused later by name.
+  return Boolean(row.studentCode) || Boolean(row.pen) || row.pen === false;
+}
+
 function requireAdmin(ctx: ActiveContext): string {
   if (ctx.role !== "ADMIN" || !ctx.schoolId || !ctx.membershipId) {
     throw new AccessError("access.onlyASchoolAdminCanAdmit");
@@ -105,6 +125,22 @@ export async function admitPupils(
 ): Promise<IntakeResult> {
   const schoolId = requireAdmin(ctx);
   if (rows.length > INTAKE_MAX_ROWS) throw new AccessError("access.tooManyPupilsAtOnce", "FORBIDDEN", { max: INTAKE_MAX_ROWS });
+
+  /**
+   * ⚠ LINKING ROWS ARE COUNTED BEFORE ANY ROW IS READ. A row carrying a
+   * student code or a PEN is a guess at an existing child's birthday until
+   * proved otherwise, and a list is a batch of them: fifty at most, and ten
+   * such lists an hour for the school, refused as a whole rather than
+   * trimmed — a trimmed list would be a rate limit with a loophole the size
+   * of the trim. Both refusals name the rule; neither names a pupil. See
+   * INTAKE_RUNS in rate-limit.ts.
+   */
+  const linking = rows.filter(isLinkingRow).length;
+  if (linking > INTAKE_MAX_LINKS) throw new AccessError("intake.tooManyLinks", "FORBIDDEN", { max: INTAKE_MAX_LINKS });
+  if (linking > 0) {
+    const gate = await consume(`intake:links:${schoolId}`, INTAKE_RUNS.limit, INTAKE_RUNS.windowMs);
+    if (!gate.allowed) throw new IntakeLimited(gate.retryAfterSeconds);
+  }
 
   // Classes by name, case-blind, live ones only — a list that names an
   // archived class is naming a class the school no longer runs.
@@ -193,6 +229,18 @@ export async function admitPupils(
      * code alone is deliberately not enough: the row must also carry the
      * birthdate the old school has on file, because a code is written on a
      * paper document that changes hands.
+     *
+     * ⚠ AND THE PAIR ALONE IS NOT ENOUGH EITHER. Anybody could register a
+     * school and be its admin within the minute, so "the office typed the
+     * code and the birthday" proved only that somebody held the paper and
+     * had guessed, or knew, the date. A link now also needs the handshake in
+     * `mayBringOver`: the child is on no other school's roll (the holding
+     * school records the departure first) and this school is verified by
+     * the operator. Every way the row can fail — unknown code, wrong date,
+     * child still elsewhere, school not verified — reads the ONE key
+     * `intake.identityRefused`, so a wrong guess learns nothing about which
+     * half was wrong; "needs a birthdate" is answered before any lookup and
+     * reveals nothing.
      */
     if (row.pen === false) {
       outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.penFormat" });
@@ -202,6 +250,10 @@ export async function admitPupils(
     // code does; a PEN nobody on Relay holds goes on the new account below.
     let previous: { userId: string } | null = null;
     if (row.studentCode) {
+      if (!birthdate) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
+        continue;
+      }
       const transferCode = row.studentCode.trim().toUpperCase();
       const byCode = await forJoinCode(transferCode, () =>
         db.membership.findFirst({
@@ -209,17 +261,9 @@ export async function admitPupils(
           select: { userId: true, user: { select: { id: true, birthdate: true } } },
         }),
       );
-      if (!byCode) {
-        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNotFound" });
-        continue;
-      }
-      if (!birthdate) {
-        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
-        continue;
-      }
-      const known = byCode.user.birthdate;
-      if (!known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
-        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeMismatch" });
+      const known = byCode?.user.birthdate;
+      if (!byCode || !known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.identityRefused" });
         continue;
       }
       previous = { userId: byCode.userId };
@@ -238,6 +282,10 @@ export async function admitPupils(
       });
       if (here) {
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.alreadyOnRoll" });
+        continue;
+      }
+      if (!(await mayBringOver(schoolId, previous.userId))) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.identityRefused" });
         continue;
       }
 

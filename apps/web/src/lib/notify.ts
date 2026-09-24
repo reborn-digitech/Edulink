@@ -8,6 +8,34 @@ import { channel, publish } from "./realtime";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
 import { readVapidConfig } from "./env";
+import { isPushServiceEndpoint } from "./validation";
+
+/** How long one push send may wait on its socket before it is abandoned. */
+export const PUSH_SEND_TIMEOUT_MS = 10_000;
+
+/**
+ * Whether the server will POST to this stored endpoint at all.
+ *
+ * The allow-list in validation.ts is applied when a device registers, and
+ * /api/push is the only writer of the table — but a row written before the
+ * list existed, or through any door added later, is a URL this server would
+ * call with a signed VAPID header. So the send asks again. OUTSIDE PRODUCTION
+ * a loopback host is allowed as well: the delivery suite stands up a local
+ * HTTPS push server and proves the encrypted payload reaches it, which is the
+ * one end-to-end check of the whole pipeline and worth a door that
+ * `NODE_ENV=production` keeps shut — the same shape as every other dev-only
+ * door here.
+ */
+export function isSendableEndpoint(endpoint: string): boolean {
+  if (isPushServiceEndpoint(endpoint)) return true;
+  if (process.env.NODE_ENV === "production") return false;
+  try {
+    const host = new URL(endpoint).hostname;
+    return host === "127.0.0.1" || host === "localhost" || host === "[::1]";
+  } catch {
+    return false;
+  }
+}
 import type { NotificationKind } from "./constants";
 import type { MessageTemplateKey } from "./message-templates";
 
@@ -229,11 +257,23 @@ export async function sendPush(userId: string, payload: PushPayload): Promise<Pu
 
   await Promise.all(
     subscriptions.map(async (sub) => {
+      // Checked again at the moment of sending, not only at registration —
+      // see isSendableEndpoint. A stored endpoint off the list is retired
+      // the way a 410 is: it was never a device we could reach.
+      if (!isSendableEndpoint(sub.endpoint)) {
+        await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
+        result.retired++;
+        console.warn(`[push] retired a subscription whose endpoint is not a known push service`);
+        return;
+      }
       try {
         await webpush.sendNotification(
           { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
           body,
-          { TTL: 60 * 60 * 24 },
+          // A socket that never answers must not hold a notification batch
+          // open for as long as the OS allows; ten seconds is generous for
+          // a push service and short enough that a job still finishes.
+          { TTL: 60 * 60 * 24, timeout: PUSH_SEND_TIMEOUT_MS },
         );
         await db.pushSubscription.update({
           where: { id: sub.id },

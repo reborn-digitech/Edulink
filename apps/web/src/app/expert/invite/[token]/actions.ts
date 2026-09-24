@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { AccessError } from "@/lib/tenancy";
 import { hashPassword, passwordProblems } from "@/lib/crypto";
-import { createSession, getSession } from "@/lib/session";
+import { createSession, getSession, revokeAllAccess } from "@/lib/session";
 import { acceptExpertInvite, readExpertInvite } from "@/lib/experts";
 import { audit } from "@/lib/audit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -53,17 +53,42 @@ export async function acceptInvite(
     if (problems.length > 0) return { ok: false, error: (await getT())(problems[0]!) };
 
     /**
+     * BOUND TO THE ADDRESS IT WAS SENT TO. An invitation addressed to
+     * somebody used to accept any email typed into the form, so the account
+     * it created carried whatever address the holder of the link chose —
+     * unverified, and free to be a head teacher's. The link was emailed to
+     * one address; that is the only address it may create or attach to.
+     */
+    const addressed = state.email?.trim().toLowerCase() ?? null;
+    if (addressed && addressed !== email) {
+      return { ok: false, errorKey: "expert.inviteForAnotherAddress" };
+    }
+
+    /**
      * An email already in use is refused rather than merged — silently
      * attaching an expert profile to somebody else's account would be an
-     * account takeover by whoever holds the link — with ONE exception that
-     * makes the refusal's own advice true: the SIGNED-IN owner of that very
-     * account may attach the profile to themselves. "Log in first, then
-     * open this link" used to be a promise with no path behind it.
+     * account takeover by whoever holds the link — with TWO exceptions. The
+     * SIGNED-IN owner of that very account may attach the profile to
+     * themselves: "log in first, then open this link" used to be a promise
+     * with no path behind it. And an account under the invited address that
+     * NEVER PROVED IT — a sign-up waiting on a verification mail nobody
+     * opened — is reclaimed by the person who can open this one: the old
+     * password goes with every session and token, the typed one is set, and
+     * the address is marked verified. See the school invitation's note.
      */
-    const taken = await db.user.findUnique({ where: { email }, select: { id: true } });
+    const taken = await db.user.findUnique({ where: { email }, select: { id: true, emailVerifiedAt: true, disabledAt: true } });
     const session = await getSession();
-    if (taken && session?.user.id !== taken.id) {
+    const reclaims = taken !== null && taken.emailVerifiedAt === null && addressed === email && !taken.disabledAt;
+    if (taken && session?.user.id !== taken.id && !reclaims) {
       return { ok: false, errorKey: "expert.emailTaken" };
+    }
+
+    if (taken && reclaims) {
+      await db.user.update({
+        where: { id: taken.id },
+        data: { passwordHash: await hashPassword(input.password), emailVerifiedAt: new Date() },
+      });
+      await revokeAllAccess(taken.id, { tokens: true });
     }
 
     // Created INSIDE the acceptance transaction, so a refused invite strands
@@ -75,6 +100,8 @@ export async function acceptInvite(
             email,
             name,
             passwordHash: await hashPassword(input.password),
+            // Opening a link we emailed to this address proves it.
+            ...(addressed ? { emailVerifiedAt: new Date() } : {}),
             // The language they accepted in. `"{}"` here meant every expert
             // account came out English whatever page they had just read.
             prefs: writeJson({ locale: await getLocale() }),
@@ -89,7 +116,7 @@ export async function acceptInvite(
       action: "expert.acceptInvite",
       targetType: "User",
       targetId: accepted.userId,
-      meta: { email },
+      meta: { email, reclaimed: reclaims },
     });
 
     await createSession(accepted.userId, { schoolId: null, role: "EXPERT" });

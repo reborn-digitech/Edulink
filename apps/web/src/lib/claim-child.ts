@@ -5,8 +5,9 @@ import { setActiveContext, type ActiveContext } from "./session";
 import { normalizeCode } from "./codes";
 import { parseDateOnly, sameCalendarDay } from "./dates";
 import { audit } from "./audit";
-import { forJoinCode } from "./tenant-context";
+import { forJoinCode, forSchool } from "./tenant-context";
 import { sendParentClaimNotice } from "./email";
+import { notify } from "./notify";
 import { syncStandinGuardian } from "./standin-guardian";
 import { consume, retryHintKey, CLAIM_ATTEMPTS, CLAIM_PER_CODE } from "./rate-limit";
 import { claimChildSchema, fieldErrors, type FieldErrors } from "./validation";
@@ -123,7 +124,12 @@ export async function claimChildFor(session: ActiveContext, input: unknown, t: T
     }),
   );
 
-  if (!membership || membership.role !== "STUDENT" || membership.status !== "ACTIVE") {
+  // ⚠ A PUPIL WHO HAS LEFT CANNOT BE CLAIMED. The code on a leaving
+  // certificate names a membership that is over; a guardianship on it would
+  // read the child's whole record at a school the family may have left
+  // years ago, and nobody at that school would be looking. Refused like an
+  // unknown code, so the certificate's code confirms nothing.
+  if (!membership || membership.role !== "STUDENT" || membership.status !== "ACTIVE" || membership.leftAt) {
     await fakePasswordWork(); // keep the timing indistinguishable
     return generic;
   }
@@ -211,6 +217,40 @@ export async function claimChildFor(session: ActiveContext, input: unknown, t: T
   await setActiveContext(session.sessionId, session.user.id, { schoolId: null, role: "PARENT" });
 
   const childName = membership.user.preferredName ?? membership.user.name;
+
+  /**
+   * ⚠ A CLAIM IS SEEN BY THE PEOPLE WHO WOULD KNOW IT WAS WRONG. The code
+   * and the birthday are on paper that changes hands, and a guardianship is
+   * the whole record. So the child's other guardians and the school's office
+   * are told, by name of the claimant, that somebody linked themselves — a
+   * right claim is a parent the family expected; a wrong one is now visible
+   * the same minute, not at the next parents' evening.
+   */
+  const claimant = session.user.preferredName ?? session.user.name;
+  const others = await db.guardianship.findMany({
+    where: { studentMembershipId: membership.id, status: "ACTIVE", parentUserId: { not: session.user.id }, relation: { not: "SCHOOL" } },
+    select: { parentUserId: true },
+  });
+  const office = await forSchool(membership.schoolId, () =>
+    db.membership.findMany({ where: { schoolId: membership.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } }),
+  );
+  const told = [...new Set([...others.map((g) => g.parentUserId), ...office.map((m) => m.userId)])].filter((id) => id !== session.user.id);
+  await forSchool(membership.schoolId, () =>
+    Promise.all(
+      told.map((userId) =>
+        notify({
+          userId,
+          schoolId: membership.schoolId,
+          kind: "SYSTEM",
+          titleKey: "claim.notifExisting",
+          titleVars: { claimant, name: childName },
+          bodyKey: "claim.notifExistingBody",
+          bodyVars: { school: membership.school.name },
+          urgent: true,
+        }).catch((error) => console.error("[claimChild] notice to existing guardian failed", error)),
+      ),
+    ),
+  );
 
   if (session.user.email) {
     await sendParentClaimNotice(

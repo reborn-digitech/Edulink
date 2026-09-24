@@ -1,4 +1,6 @@
 import "server-only";
+import { wordsFor } from "./certificate-rules";
+import type { WordsLocale } from "./words";
 import { db } from "./db";
 import { formatPhone } from "./phone";
 import { readTwilioConfig } from "./env";
@@ -197,5 +199,19 @@ export async function sendPhoneCode(to: string, code: string, minutes: number): 
     to,
     text: `${code} is your Relay code to confirm this mobile number. It expires in ${minutes} minutes. If you did not add your number to Relay, ignore this message — nothing will happen.`,
     purpose: "PHONE_VERIFY",
+  });
+}
+
+/**
+ * The number being replaced is told, the way the old address is by
+ * `sendEmailChangedNotice`: whoever moved the reset destination could now
+ * reset the password, and the old phone is the one place the real owner is
+ * certain to hear about it.
+ */
+export async function sendPhoneChangedNotice(to: string, newDigits: string, locale: WordsLocale = "en"): Promise<void> {
+  await sendSms({
+    to,
+    text: wordsFor(locale)("sms.phoneChanged", { digits: newDigits }),
+    purpose: "PHONE_CHANGE",
   });
 }

@@ -27,9 +27,10 @@ function typeLabel(t: ReturnType<typeof useT>, type: string): string {
 
 /**
  * Vacancies: a teacher reads the platform-wide board and opens a post to ask;
- * the office and the head run their school's desk — what it has posted, what
- * each post has drawn, closing one after a confirm, posting a new one with
- * themselves as the hiring contact — and may read the board too.
+ * the office and the head read their school's desk — what it has posted, what
+ * each post has drawn — and may read the board too; posting a new one with
+ * themselves as the hiring contact, and closing one after a confirm, are the
+ * admin's, so the head sees neither the form nor the button.
  */
 export function Vacancies() {
   const role = useRole();
@@ -125,6 +126,8 @@ function Desk({ onBoard }: { onBoard: () => void }) {
   const th = useTheme();
   const qc = useQueryClient();
   const session = useSession();
+  const role = useRole();
+  const canPost = role === "ADMIN";
   const { locale } = useLocale();
   const [status, setStatus] = useState<Status>("open");
   const [notice, setNotice] = useState<{ text: string; tone: "ok" | "danger" } | null>(null);
@@ -186,23 +189,24 @@ function Desk({ onBoard }: { onBoard: () => void }) {
             status === "open" && d.counts.closed > 0 ? (
               <Empty title={t("vacancies.emptyOpenTitle")} body={t("vacancies.emptyOpenBody")} action={<Button label={t("vacancies.closedBadge")} variant="secondary" onPress={() => setStatus("closed")} />} />
             ) : (
-              <Empty title={t("vacancies.emptyTitle")} body={t("vacancies.emptyOwnBody")} action={<Button label={t("vacancies.postCta")} variant="secondary" onPress={() => titleRef.current?.focus()} />} />
+              <Empty title={t("vacancies.emptyTitle")} body={t("vacancies.emptyOwnBody")} action={canPost ? <Button label={t("vacancies.postCta")} variant="secondary" onPress={() => titleRef.current?.focus()} /> : undefined} />
             )
           ) : (
             <Card title={t("vacancies.ourDeskTitle")}>
               {d.postings.map((p) => (
-                <PostingRow key={p.id} posting={p} locale={locale} busy={close.isPending && close.variables === p.id} onClose={() => close.mutate(p.id)} />
+                <PostingRow key={p.id} posting={p} locale={locale} busy={close.isPending && close.variables === p.id} onClose={canPost ? () => close.mutate(p.id) : null} />
               ))}
             </Card>
           )}
-          <NewVacancy key={formKey} titleRef={titleRef} contactName={me?.user.name ?? ""} busy={post.isPending} disabled={!contactId} onPost={(body) => post.mutate({ ...body, hiringContactMembershipId: contactId })} />
+          {canPost ? <NewVacancy key={formKey} titleRef={titleRef} contactName={me?.user.name ?? ""} busy={post.isPending} disabled={!contactId} onPost={(body) => post.mutate({ ...body, hiringContactMembershipId: contactId })} /> : null}
         </>
       ) : null}
     </Screen>
   );
 }
 
-function PostingRow({ posting: p, locale, busy, onClose }: { posting: AdminVacancies["postings"][number]; locale: string; busy: boolean; onClose: () => void }) {
+/** `onClose` null is the head's row: the posting and its enquiries, and no button to close it. */
+function PostingRow({ posting: p, locale, busy, onClose }: { posting: AdminVacancies["postings"][number]; locale: string; busy: boolean; onClose: (() => void) | null }) {
   const t = useT();
   const th = useTheme();
   const router = useRouter();
@@ -216,7 +220,7 @@ function PostingRow({ posting: p, locale, busy, onClose }: { posting: AdminVacan
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
         {/* The count is the door to the enquiries, not a caption — as on the web. */}
         {p.enquiryCount > 0 ? <Button label={enquiries} variant="ghost" onPress={toPosting} /> : null}
-        {open ? (
+        {open && onClose ? (
           confirming ? (
             <>
               <Button label={t("vacancies.closeCta")} variant="danger" busy={busy} onPress={onClose} accessibilityLabel={`${t("vacancies.closeCta")}: ${p.title}`} />

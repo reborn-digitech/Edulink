@@ -1,6 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import type { ActiveContext } from "@/lib/session";
+import { schoolCode } from "@/lib/codes";
+import { SCHOOL_CODE_JOINS } from "@/lib/rate-limit";
 
 /**
  * Joining with a code ON THE ACCOUNT YOU ALREADY HAVE. The sign-up wizard
@@ -165,5 +167,31 @@ describe("joining with a code on an existing account", () => {
     const { joinWithMyAccount } = await import("@/app/join/actions");
     current = null;
     expect((await joinWithMyAccount(classCode)).ok).toBe(false);
+  });
+});
+
+describe("⚠ a school code, which makes a pupil at once", () => {
+  it("is minted with eight random characters after the name's prefix; class and pupil codes are unchanged", () => {
+    const code = schoolCode("Riverside Primary");
+    expect(code).toMatch(/^RIVER-[CDFGHJKMNPQRTVWXY3467]{4}-[CDFGHJKMNPQRTVWXY3467]{4}$/);
+    expect(new Set(Array.from({ length: 20 }, () => schoolCode("Riverside Primary"))).size).toBe(20);
+  });
+
+  it("is limited per ACCOUNT, not only per address: the fifth join in a day is the last", async () => {
+    const { joinWithMyAccount } = await import("@/app/join/actions");
+    const riverside = await db.school.findFirstOrThrow({ where: { id: riversideId }, select: { code: true } });
+    const bucket = `join-school:${pupilUserId}`;
+    await db.rateLimit.deleteMany({ where: { bucket } });
+    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
+    try {
+      for (let i = 0; i < SCHOOL_CODE_JOINS.limit; i += 1) {
+        expect(await joinWithMyAccount(riverside.code)).toMatchObject({ ok: true });
+      }
+      const refused = await joinWithMyAccount(riverside.code);
+      expect(refused.ok).toBe(false);
+      expect(refused.errors.code).toMatch(/too many/i);
+    } finally {
+      await db.rateLimit.deleteMany({ where: { bucket } });
+    }
   });
 });

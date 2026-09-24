@@ -9,6 +9,7 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
+import { hashPassword } from "@/lib/crypto";
 import { accountBookingSchema, accountOverviewSchema, accountPostOptionsSchema } from "@edulink/contracts";
 import { createApiSession, createSession, getSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
@@ -39,6 +40,8 @@ const address = (tag: string) => `zz-account-${tag}-${STAMP}@test.invalid`;
 const RAW_PHONE = `9${String(STAMP).slice(-9)}`;
 const PHONE = normalisePhone(RAW_PHONE)!;
 const NEW_ADDRESS = address("newaddress");
+/** Changing a contact detail asks for the password now (passwords.ts); every fixture person holds this one. */
+const PASSWORD = `Zz-Account-${STAMP}-Kestrel`;
 const TAGS = ["admin", "teacher", "pupil", "parent", "expert", "stranger"] as const;
 
 let schoolId = "";
@@ -112,6 +115,10 @@ beforeAll(async () => {
   __resetCookies();
 });
 
+beforeAll(async () => {
+  await db.user.updateMany({ where: { id: { in: Object.values(users).filter(Boolean) } }, data: { passwordHash: await hashPassword(PASSWORD) } });
+});
+
 afterAll(async () => {
   __resetCookies();
   const userIds = Object.values(users).filter(Boolean);
@@ -143,9 +150,9 @@ describe("signed out", () => {
       signOutPost(json({ sessionId: "anything" })),
       signOutOthersPost(json({ confirm: true })),
       mobileDelete(json({ confirm: true }, "DELETE")),
-      mobileCodePost(json({ phone: RAW_PHONE })),
+      mobileCodePost(json({ phone: RAW_PHONE, password: PASSWORD })),
       mobileConfirmPost(json({ code: "123456" })),
-      emailCodePost(json({ email: NEW_ADDRESS })),
+      emailCodePost(json({ email: NEW_ADDRESS, password: PASSWORD })),
       emailConfirmPost(json({ code: "123456" })),
       postOptionsGet(),
       bookingGet(get(), p(bookingId)),
@@ -295,14 +302,14 @@ describe("devices", () => {
 describe("the mobile number", () => {
   it("a junk number is a 422 against phone; a real one gets a code and a hint, and nothing is saved yet", async () => {
     await asAdmin();
-    const junk = await mobileCodePost(json({ phone: "not a number" }));
+    const junk = await mobileCodePost(json({ phone: "not a number", password: PASSWORD }));
     expect(junk.status).toBe(422);
     const refusal = (await junk.json()) as Envelope;
     expect(refusal.code).toBe("BAD_REQUEST");
     expect(refusal.issues?.phone).toBe(refusal.error);
     expect((await mobileCodePost(json({}))).status).toBe(422);
 
-    const res = await mobileCodePost(json({ phone: RAW_PHONE }));
+    const res = await mobileCodePost(json({ phone: RAW_PHONE, password: PASSWORD }));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ hint: PHONE.slice(-4) });
     expect((await db.user.findUniqueOrThrow({ where: { id: users.admin } })).phone).toBeNull();
@@ -342,7 +349,7 @@ describe("the mobile number", () => {
     let last: Response | undefined;
     // One code already went above; ask until the allowance is spent.
     for (let i = 0; i <= PHONE_VERIFY_REQUESTS.limit; i++) {
-      last = await mobileCodePost(json({ phone: RAW_PHONE }));
+      last = await mobileCodePost(json({ phone: RAW_PHONE, password: PASSWORD }));
       if (last.status === 429) break;
     }
     expect(last!.status).toBe(429);
@@ -357,12 +364,12 @@ describe("the mobile number", () => {
 describe("the email address", () => {
   it("not an address is a 422 against email; a real one gets a code and nothing changes yet", async () => {
     await asTeacher();
-    const junk = await emailCodePost(json({ email: "not-an-email" }));
+    const junk = await emailCodePost(json({ email: "not-an-email", password: PASSWORD }));
     expect(junk.status).toBe(422);
     const refusal = (await junk.json()) as Envelope;
     expect(refusal.issues?.email).toBe(refusal.error);
 
-    const res = await emailCodePost(json({ email: NEW_ADDRESS }));
+    const res = await emailCodePost(json({ email: NEW_ADDRESS, password: PASSWORD }));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ sentTo: NEW_ADDRESS });
     expect((await db.user.findUniqueOrThrow({ where: { id: users.teacher } })).email).toBe(address("teacher"));

@@ -34,6 +34,8 @@ export default async function AdmissionsPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   const view = await cyclesView(ctx);
+  // Designing a cycle and deleting families' forms are the admin's; the head opens, closes and decides.
+  const canSetUp = ctx.role === "ADMIN";
   const columns = [
     t("admissions.grade"),
     t("admissions.seats"),
@@ -62,11 +64,13 @@ export default async function AdmissionsPage() {
                 {t("admissions.pipelineTitle")}
               </Link>
             </Button>
-            <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
-              <Link href="/admin/admissions/new">
-                {t("admissions.newCycle")}
-              </Link>
-            </Button>
+            {canSetUp && (
+              <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
+                <Link href="/admin/admissions/new">
+                  {t("admissions.newCycle")}
+                </Link>
+              </Button>
+            )}
           </span>
         }
       />
@@ -77,11 +81,13 @@ export default async function AdmissionsPage() {
           title={t("admissions.noCycles")}
           description={t("admissions.noCyclesBody")}
           action={
-            <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
-              <Link href="/admin/admissions/new">
-                {t("admissions.newCycle")}
-              </Link>
-            </Button>
+            canSetUp ? (
+              <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
+                <Link href="/admin/admissions/new">
+                  {t("admissions.newCycle")}
+                </Link>
+              </Button>
+            ) : undefined
           }
         />
       ) : (
@@ -126,6 +132,7 @@ export default async function AdmissionsPage() {
                       cycleId={cycle.id}
                       status={cycle.status}
                       name={cycle.name}
+                      canPurge={canSetUp}
                     />
                   }
                 />

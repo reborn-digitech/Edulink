@@ -34,6 +34,7 @@ const db = new PrismaClient();
 const STAMP = Date.now();
 let schoolId = "";
 let adminUserId = "";
+let principalUserId = "";
 let teacherUserId = "";
 let parentUserId = "";
 let strangerUserId = "";
@@ -46,9 +47,10 @@ let teacherMembershipId = "";
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
-async function as(who: "ADMIN" | "TEACHER" | "PARENT" | "STRANGER" | "PUPIL" | null) {
+async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "PARENT" | "STRANGER" | "PUPIL" | null) {
   __resetCookies();
   if (who === "ADMIN") await createSession(adminUserId, { schoolId, role: "ADMIN" });
+  if (who === "PRINCIPAL") await createSession(principalUserId, { schoolId, role: "PRINCIPAL" });
   if (who === "TEACHER") await createSession(teacherUserId, { schoolId, role: "TEACHER" });
   if (who === "PARENT") await createSession(parentUserId, { schoolId: null, role: "PARENT" });
   if (who === "STRANGER") await createSession(strangerUserId, { schoolId: null, role: "PARENT" });
@@ -59,14 +61,16 @@ beforeAll(async () => {
   const suffix = String(STAMP).slice(-6);
   schoolId = (await db.school.create({ data: { name: `ZZ Cert School ${STAMP}`, slug: `zz-cert-${STAMP}`, code: `ZT${suffix}`, contactEmail: `zz-cert-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", addressLine: "12 Lake Road", city: "Pune", locale: "mr" }, select: { id: true } })).id;
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Cert ${who}`, email: `zz-cert-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
-  const [admin, teacher, parent, stranger, a, b] = await Promise.all([mk("Admin"), mk("Teacher"), mk("Parent"), mk("Stranger"), mk("Aarav Apte"), mk("Bhakti Bhosale")]);
+  const [admin, principal, teacher, parent, stranger, a, b] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher"), mk("Parent"), mk("Stranger"), mk("Aarav Apte"), mk("Bhakti Bhosale")]);
   adminUserId = admin.id;
+  principalUserId = principal.id;
   teacherUserId = teacher.id;
   parentUserId = parent.id;
   strangerUserId = stranger.id;
   pupilAUserId = a.id;
   await db.user.update({ where: { id: a.id }, data: { birthdate: new Date("2016-03-10T00:00:00Z") } });
   await db.membership.create({ data: { userId: adminUserId, schoolId, role: "ADMIN", status: "ACTIVE" } });
+  await db.membership.create({ data: { userId: principalUserId, schoolId, role: "PRINCIPAL", status: "ACTIVE" } });
   const tm = await db.membership.create({ data: { userId: teacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } });
   teacherMembershipId = tm.id;
   pupilA = (await db.membership.create({ data: { userId: a.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZTA${STAMP}` }, select: { id: true } })).id;
@@ -80,7 +84,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
-  await db.session.deleteMany({ where: { userId: { in: [adminUserId, teacherUserId, parentUserId, strangerUserId, pupilAUserId] } } });
+  await db.session.deleteMany({ where: { userId: { in: [adminUserId, principalUserId, teacherUserId, parentUserId, strangerUserId, pupilAUserId] } } });
   await db.school.deleteMany({ where: { id: schoolId } });
   await db.user.deleteMany({ where: { email: { contains: `-${STAMP}@test.invalid` } } });
   await db.$disconnect();
@@ -139,6 +143,20 @@ describe("templates", () => {
     expect(again.templates.map((t: { name: string; active: boolean }) => [t.name, t.active])).toEqual([["Bonafide Certificate", true], ["ZZ TC Hindi", true], [study.name, false]]);
     expect((await issuePost(json("/api/v1/office/certificates", { templateId: retired.id, studentMembershipId: pupilA }))).status).toBe(403);
   });
+
+  it("the head reads the templates and issues from them, and neither designs, rewords nor retires one", async () => {
+    await as("PRINCIPAL");
+    const res = await templatesGet();
+    expect(res.status).toBe(200);
+    expect((await res.json()).templates).toHaveLength(3);
+    const bonafide = presetsFor("en").find((p) => p.kind === "BONAFIDE")!;
+    expect((await templatesPost(json("/api/v1/office/certificate-templates", { ...bonafide, name: "ZZ Head's own", active: true }))).status).toBe(403);
+    expect((await templatePut(json(`/api/v1/office/certificate-templates/${bonafideId}`, { ...bonafide, title: "Reworded by the head", active: true }), params({ templateId: bonafideId }))).status).toBe(403);
+    expect((await templateArchive(get(`/api/v1/office/certificate-templates/${bonafideId}/archive`), params({ templateId: bonafideId }))).status).toBe(403);
+    const untouched = await db.certificateTemplate.findUniqueOrThrow({ where: { id: bonafideId }, select: { title: true, active: true } });
+    expect(untouched).toEqual({ title: bonafide.title, active: true });
+    await as("ADMIN");
+  });
 });
 
 describe("the pupil record", () => {
@@ -153,18 +171,21 @@ describe("the pupil record", () => {
     await as("STRANGER");
     expect((await familyRecordGet(get(`/api/v1/family/record?childId=${pupilA}`))).status).toBe(403);
     await as("PARENT");
-    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", admissionNumber: "GR-1042", religion: "HINDU", category: "GENERAL" }));
+    // The office's fields ride along in the family's body — the admission number, the category, an EWS answer — and change nothing: a 200 that keeps them as they stand.
+    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", admissionNumber: "GR-1042", religion: "HINDU", category: "GENERAL", ews: "yes", gender: "M", admittedToGrade: "1" }));
     expect(res.status).toBe(200);
     view = await res.json();
-    expect(view.missing).toEqual(["admissionDate"]);
+    expect(view.missing).toEqual(["admissionNumber", "admissionDate"]);
+    expect(view.record).toMatchObject({ fatherName: "Rohan Apte", religion: "HINDU", admissionNumber: null, category: null, ews: null, gender: null, admittedToGrade: null });
     expect(view.record.familyFilledAt).not.toBeNull();
     expect(view.canEdit).toBe(true);
     await as("PUPIL");
-    res = await familyRecordPost(json("/api/v1/family/record", { previousSchool: "Sunrise Nursery" }));
+    res = await familyRecordPost(json("/api/v1/family/record", { previousSchool: "Sunrise Nursery", admissionNumber: "GR-0001", bpl: "yes", cwsnType: "9", caste: "Typed by the pupil" }));
     expect(res.status).toBe(200);
     const own = await res.json();
     expect(own.record.previousSchool).toBe("Sunrise Nursery");
     expect(own.record.fatherName).toBe("Rohan Apte");
+    expect(own.record).toMatchObject({ admissionNumber: null, bpl: null, cwsnType: null, caste: null });
 
     await as("TEACHER");
     expect((await recordsGet(get("/api/v1/office/pupil-records"))).status).toBe(403);
@@ -172,7 +193,7 @@ describe("the pupil record", () => {
     const all = await (await recordsGet(get("/api/v1/office/pupil-records"))).json();
     expect(all).toMatchObject({ total: 2, complete: 0, incomplete: 2 });
     const onlyMissing = await (await recordsGet(get("/api/v1/office/pupil-records?missing=1"))).json();
-    expect(onlyMissing.rows.map((r: { studentMembershipId: string; missing: string[] }) => [r.studentMembershipId, r.missing.length])).toEqual([[pupilA, 1], [pupilB, 9]]);
+    expect(onlyMissing.rows.map((r: { studentMembershipId: string; missing: string[] }) => [r.studentMembershipId, r.missing.length])).toEqual([[pupilA, 2], [pupilB, 9]]);
 
     res = await requestPost(json("/api/v1/office/pupil-records/request", {}));
     expect(await res.json()).toEqual({ asked: 2, families: 1 });
@@ -182,14 +203,23 @@ describe("the pupil record", () => {
     const asked = await (await recordGet(get(`/api/v1/office/pupil-records/${pupilB}`), params({ membershipId: pupilB }))).json();
     expect(asked.record.requestedAt).not.toBeNull();
 
-    res = await recordPost(json(`/api/v1/office/pupil-records/${pupilA}`, { admissionDate: "2022-06-15", admittedToGrade: "1" }), params({ membershipId: pupilA }));
+    // The office's save is the one that sets what the family could not, and a blank from a family later does not clear it.
+    res = await recordPost(json(`/api/v1/office/pupil-records/${pupilA}`, { admissionNumber: "GR-1042", admissionDate: "2022-06-15", admittedToGrade: "1", category: "GENERAL", ews: "yes" }), params({ membershipId: pupilA }));
     view = await res.json();
     expect(view.complete).toBe(true);
-    expect(view.record.admissionDate).toBe("2022-06-15");
-    expect(view.record.fatherName).toBe("Rohan Apte");
+    expect(view.record).toMatchObject({ admissionNumber: "GR-1042", admissionDate: "2022-06-15", admittedToGrade: "1", category: "GENERAL", ews: "yes", fatherName: "Rohan Apte" });
+    await as("PARENT");
+    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", admissionNumber: "", category: "", ews: "" }));
+    expect(res.status).toBe(200);
+    expect((await res.json()).record).toMatchObject({ admissionNumber: "GR-1042", category: "GENERAL", ews: "yes" });
+    await as("ADMIN");
     const audits = await db.auditLog.findMany({ where: { schoolId, action: { in: ["pupilRecord.update", "pupilRecord.request"] } }, select: { action: true, meta: true } });
-    expect(audits.map((a) => a.action).sort()).toEqual(["pupilRecord.request", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update"]);
+    expect(audits.map((a) => a.action).sort()).toEqual(["pupilRecord.request", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update"]);
     expect(audits.every((a) => !a.meta.includes("Rohan") && !a.meta.includes("Lake"))).toBe(true);
+    // The family's rows name only the fields their save applied.
+    const familyRows = audits.filter((a) => a.action === "pupilRecord.update" && a.meta.includes('"family":true'));
+    expect(familyRows).toHaveLength(3);
+    expect(familyRows.every((a) => !a.meta.includes("admissionNumber") && !a.meta.includes("category") && !a.meta.includes("ews"))).toBe(true);
   });
 });
 
@@ -266,8 +296,10 @@ describe("issuing", () => {
 
     const code = (await db.issuedCertificate.findUniqueOrThrow({ where: { id: certA }, select: { code: true } })).code;
     let check = await (await verifyGet(get(`/api/v1/public/certificates/${code}`), params({ code }))).json();
-    expect(check).toMatchObject({ valid: true, kind: "BONAFIDE", serial: "BC/2026–27/0001", schoolName: `ZZ Cert School ${STAMP}`, revokedAt: null });
+    // The KIND'S label, not the template's filled title, which may carry the pupil's name.
+    expect(check).toMatchObject({ valid: true, kind: "BONAFIDE", title: "Bonafide certificate", serial: "BC/2026–27/0001", schoolName: `ZZ Cert School ${STAMP}`, revokedAt: null });
     expect(Object.keys(check)).not.toContain("studentName");
+    expect(JSON.stringify(check)).not.toContain("Aarav");
     expect(await (await verifyGet(get("/api/v1/public/certificates/NOSUCHCODE"), params({ code: "NOSUCHCODE" }))).json()).toMatchObject({ valid: false, serial: null });
 
     await as("TEACHER");

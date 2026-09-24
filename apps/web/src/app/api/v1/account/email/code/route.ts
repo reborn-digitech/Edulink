@@ -14,8 +14,8 @@ export async function POST(request: Request) {
     const ctx = await requireApiSession();
     const parsed = accountEmailCodeSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await startEmailChange(ctx.user.id, parsed.data.email);
-    if (!result.ok) return apiRefusal({ errorKey: result.errorKey ?? "common.checkTheForm", retryAfterSeconds: result.retryAfterSeconds }, "email");
+    const result = await startEmailChange(ctx.user.id, parsed.data.email, parsed.data.password);
+    if (!result.ok) return apiRefusal({ errorKey: result.errorKey ?? "common.checkTheForm", retryAfterSeconds: result.retryAfterSeconds }, result.errorKey === "refusal.needsPassword" ? "password" : "email");
     return ok(accountEmailCodeSentSchema.parse({ sentTo: result.sentTo }));
   } catch (error) {
     return apiFailure(error, "api/v1/account/email/code");

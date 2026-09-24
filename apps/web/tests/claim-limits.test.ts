@@ -29,6 +29,9 @@ const SUFFIX = "@zzclaim.test";
 const made: string[] = [];
 let schoolId: string;
 let parentUserId: string;
+let existingGuardianUserId: string;
+let officeUserId: string;
+let childMembershipId: string;
 let studentCode: string;
 
 /** A real session row, and the cookie that names it. */
@@ -65,9 +68,27 @@ beforeEach(async () => {
   });
   made.push(child.id);
   studentCode = `STU-ZZ${randomBytes(3).toString("hex").toUpperCase()}`;
-  await db.membership.create({
+  childMembershipId = (await db.membership.create({
     data: { userId: child.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode },
+    select: { id: true },
+  })).id;
+
+  // The child's guardian already on the app, and the school's office: the
+  // two who would know a claim was wrong, and are told of every one.
+  const existing = await db.user.create({
+    data: { email: `existing.${randomBytes(3).toString("hex")}${SUFFIX}`, name: "First Guardian", prefs: "{}" },
   });
+  made.push(existing.id);
+  existingGuardianUserId = existing.id;
+  await db.guardianship.create({
+    data: { parentUserId: existing.id, studentMembershipId: childMembershipId, studentSchoolId: schoolId, relation: "PARENT", status: "ACTIVE" },
+  });
+  const office = await db.user.create({
+    data: { email: `office.${randomBytes(3).toString("hex")}${SUFFIX}`, name: "The Office", prefs: "{}" },
+  });
+  made.push(office.id);
+  officeUserId = office.id;
+  await db.membership.create({ data: { userId: office.id, schoolId, role: "ADMIN", status: "ACTIVE" } });
 
   const parent = await db.user.create({
     data: { email: `parent.${randomBytes(3).toString("hex")}${SUFFIX}`, name: "Guardian", prefs: "{}" },
@@ -80,7 +101,9 @@ beforeEach(async () => {
 afterEach(async () => {
   __resetCookies();
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "claim:" } } });
-  await db.guardianship.deleteMany({ where: { parentUserId } });
+  await db.notification.deleteMany({ where: { userId: { in: made } } });
+  await db.auditLog.deleteMany({ where: { schoolId } });
+  await db.guardianship.deleteMany({ where: { parentUserId: { in: made } } });
   await db.session.deleteMany({ where: { userId: { in: made } } });
   await db.membership.deleteMany({ where: { schoolId } });
   await db.user.deleteMany({ where: { id: { in: made } } });
@@ -106,6 +129,32 @@ describe("claiming a child", () => {
     });
     expect(result.ok, JSON.stringify(result.errors)).toBe(true);
     expect(result.child?.name).toBe("Asha");
+  });
+
+  it("⚠ …and the child's existing guardian and the school's office are told who linked themselves", async () => {
+    // A wrong claim — a code off a photographed letter and a guessed or
+    // known birthday — is now seen the same minute by the people who would
+    // know it was wrong, rather than at the next parents' evening.
+    const result = await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    expect(result.ok, JSON.stringify(result.errors)).toBe(true);
+    for (const userId of [existingGuardianUserId, officeUserId]) {
+      const told = await db.notification.findFirst({ where: { userId }, orderBy: { createdAt: "desc" } });
+      expect(told?.title, userId).toContain("Guardian");
+      expect(told?.title).toContain("Asha");
+    }
+    // The claimant is not told about themselves.
+    expect(await db.notification.count({ where: { userId: parentUserId } })).toBe(0);
+  });
+
+  it("⚠ a pupil who has left cannot be claimed, and the certificate's code confirms nothing", async () => {
+    await db.membership.update({ where: { id: childMembershipId }, data: { leftAt: new Date("2026-04-30T00:00:00Z") } });
+    const result = await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    expect(result.ok).toBe(false);
+    // The same sentence as a wrong code or a wrong birthday.
+    const wrong = await claimChild({ studentCode, birthdate: "2015-04-06", relation: "PARENT" });
+    expect(result.errors._form).toBe(wrong.errors._form);
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+    expect(await db.notification.count({ where: { userId: existingGuardianUserId } })).toBe(0);
   });
 
   it("refuses the right code with the wrong birthday", async () => {

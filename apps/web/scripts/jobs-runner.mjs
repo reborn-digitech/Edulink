@@ -11,8 +11,12 @@
  */
 import { spawn } from "node:child_process";
 
-const host = process.env.HOSTNAME || "127.0.0.1";
-const port = process.env.PORT || "3999";
+// Loopback and a fixed port, NOT inherited: the platform sets HOSTNAME to
+// the machine's own name and PORT to the public one, and the jobs server
+// answering on either would be the scheduler's private door open to the
+// network. Nothing outside this process needs to reach it.
+const host = "127.0.0.1";
+const port = "3999";
 const env = { ...process.env, JOBS_RUNNER: "1", HOSTNAME: host, PORT: port };
 
 const server = spawn(process.execPath, ["server.js"], { env, stdio: "inherit" });

@@ -367,8 +367,51 @@ export const prefsSchema = z.object({
     .default(null),
 });
 
+/**
+ * The push services a browser can hand us an endpoint on, and the only hosts
+ * the server will ever POST a notification to.
+ *
+ * THE ENDPOINT IS A URL THE CLIENT CHOOSES AND THE SERVER LATER FETCHES, which
+ * is the textbook shape of a server-side request forgery: a "subscription"
+ * pointing at 127.0.0.1, the metadata service, or an internal host would have
+ * been stored as a device and then called, with an authenticated VAPID
+ * header, on every notification. Browsers only ever mint endpoints on their
+ * vendor's service, so an exact list costs a real user nothing. Exact hosts
+ * or a dotted suffix — `*.push.services.mozilla.com` must not match
+ * `evil-push.services.mozilla.com.attacker.example` and does not, because
+ * the suffix is anchored at the end and begins with a dot.
+ */
+const PUSH_SERVICE_HOSTS = new Set([
+  "fcm.googleapis.com",
+  "android.googleapis.com",
+  "updates.push.services.mozilla.com",
+  "web.push.apple.com",
+]);
+const PUSH_SERVICE_HOST_SUFFIXES = [".push.services.mozilla.com", ".notify.windows.com", ".push.apple.com"];
+
+/** True when `raw` is an https URL on a known push service and nothing else. */
+export function isPushServiceEndpoint(raw: string): boolean {
+  let url: URL;
+  try {
+    url = new URL(raw);
+  } catch {
+    return false;
+  }
+  if (url.protocol !== "https:") return false;
+  // Credentials in the URL are a way of smuggling a different host past a
+  // reader — `https://fcm.googleapis.com@evil.example/` parses with the real
+  // host `evil.example`, but nothing a push service mints carries them.
+  if (url.username || url.password) return false;
+  const host = url.hostname.toLowerCase();
+  return PUSH_SERVICE_HOSTS.has(host) || PUSH_SERVICE_HOST_SUFFIXES.some((suffix) => host.endsWith(suffix));
+}
+
 export const pushSubscribeSchema = z.object({
-  endpoint: z.string().url().max(1000),
+  endpoint: z
+    .string()
+    .url()
+    .max(1000)
+    .refine(isPushServiceEndpoint, "refusal.pushEndpoint"),
   keys: z.object({ p256dh: z.string().min(10).max(200), auth: z.string().min(10).max(200) }),
 });
 

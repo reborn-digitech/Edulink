@@ -20,16 +20,19 @@ import { purgeCycleAction, setCycleStatusAction } from "./actions";
  * One cycle's verbs: open or close the door, edit, and — for a closed
  * cycle only — delete the forms of the families it did not admit. The
  * purge asks once, because it takes papers away from families who may still
- * want them back; the toast says how many it removed.
+ * want them back; the toast says how many it removed. `canPurge` is the
+ * admin's: the head opens and closes the door and never deletes a form.
  */
 export function CycleRowActions({
   cycleId,
   status,
   name,
+  canPurge = true,
 }: {
   cycleId: string;
   status: CycleStatus;
   name: string;
+  canPurge?: boolean;
 }) {
   const t = useT();
   const router = useRouter();
@@ -106,7 +109,7 @@ export function CycleRowActions({
       >
         <Link href={`/admin/admissions/${cycleId}`}>{t("common.edit")}</Link>
       </Button>
-      {status === "CLOSED" && (
+      {status === "CLOSED" && canPurge && (
         <Button
           variant="ghost"
           size="sm"

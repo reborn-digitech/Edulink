@@ -464,6 +464,8 @@ export const mr: Dictionary = {
     mobileHintInvalid: "हे अजून मोबाइल नंबरसारखे दिसत नाही.",
     textMeCode: "मला कोड SMS करा",
     nothingSavedUntilCode: "कोड परत येईपर्यंत काहीही जतन होत नाही.",
+    currentPassword: "तुमचा सध्याचा पासवर्ड",
+    currentPasswordHint: "तुमचे कोड कुठे जातील हे बदलण्यासाठी आवश्यक. बदल निश्चित होताच इतर प्रत्येक डिव्हाइसमधून साइन आउट होईल.",
 
     quietSameTime: "सुरुवात आणि शेवट एकाच वेळी असू शकत नाहीत.",
 
@@ -2032,6 +2034,9 @@ export const mr: Dictionary = {
     notifDecided: "{name} च्या अर्जावर बातमी आहे",
     notifOfferExpired: "{name} साठी इयत्ता {grade} मधील जागेच्या प्रस्तावाची मुदत संपली — शाळेला विचारा",
     notifAdmitted: "{name} ला इयत्ता {grade} मध्ये प्रवेश",
+    guardianNotLinked: "कुटुंबाला पालक म्हणून जोडले नाही: जागा Relay वर आधीच असलेल्या विद्यार्थ्याला मिळाली, आणि मुलाच्या सध्याच्या पालकांना कळवले. ओळख तपासल्यावर विद्यार्थ्याच्या नोंदीतून कुटुंबाला जोडा.",
+    notifLinkedByPen: "{school} ने {name} ला त्यांच्या PEN वरून प्रवेश दिला",
+    notifLinkedByPenBody: "हे अपेक्षित नसेल, तर आजच {school} ला आणि आपल्या शाळेला सांगा.",
     notifVerified: "{name} ची कागदपत्रे तपासली",
     notifTested: "{name} चा परीक्षा निकाल नोंदवला",
   },
@@ -2579,6 +2584,7 @@ export const mr: Dictionary = {
     organiserHint: "कार्डावर दिसते. रिकामे ठेवल्यास Relay लिहिले जाते.",
     everySchoolSees: "प्रकाशित होताच या सर्व्हरवरील प्रत्येक शाळा ती पाहील.",
     titleTooShort: "तिला एक शीर्षक द्या.",
+    linkMustBeHttps: "आयोजकाची लिंक https:// ने सुरू झाली पाहिजे.",
     summaryTooShort: "एका ओळीचा सारांश द्या.",
 
     questionBank: "प्रश्न बँक",
@@ -2678,7 +2684,11 @@ export const mr: Dictionary = {
     wentOnTo: "पुढे गेले",
   },
 
+  sms: {
+    phoneChanged: "तुमच्या Relay खात्याचा मोबाइल क्रमांक {digits} ने संपणाऱ्या क्रमांकावर बदलला आहे. रीसेट कोड आता तिथे जातील. हे तुम्ही केले नसल्यास लगेच तुमच्या शाळेशी संपर्क साधा.",
+  },
   refusal: {
+    pushEndpoint: "पुश एंडपॉइंट ज्ञात पुश सेवेचा https पत्ता असावा.",
     leaveDateNotFuture: "ही तारीख भविष्यातली नाही — त्याऐवजी आत्ताच सोडणे नोंदवा.",
     nothingScheduled: "त्यांच्यासाठी सोडणे ठरलेले नाही.",
     accountDisabled: "ते खाते बंद आहे.",
@@ -2690,6 +2700,7 @@ export const mr: Dictionary = {
     alreadyLinkedToThisChild: "हा पत्ता या मुलाशी आधीच जोडलेला आहे.",
     fileEmpty: "ती फाइल रिकामी आहे.",
     fileTooLargeLimit: "ती फाइल खूप मोठी आहे. मर्यादा {mb} MB आहे.",
+    uploadDayFull: "तुम्ही आज {mb} MB अपलोड केले आहे, जी दिवसाची मर्यादा आहे. उद्या पुन्हा प्रयत्न करा.",
     fileTypeUnsupported: "त्या प्रकारची फाइल चालत नाही. PNG, JPEG, WebP, GIF किंवा PDF वापरा.",
     required: "हे आवश्यक आहे.",
     notValid: "हे वैध नाही.",
@@ -2734,6 +2745,7 @@ export const mr: Dictionary = {
     linkNotRenewable: "ही आम्ही नवी करू शकतो अशी लिंक नाही.",
     cannotVerify: "त्या खात्याची पडताळणी होऊ शकत नाही.",
     noEmailOnAccount: "त्या खात्यावर पाठवण्यासाठी ईमेल पत्ता नाही.",
+    needsPassword: "हा तुमचा सध्याचा पासवर्ड नाही. साइन इन करण्याची पद्धत बदलण्यासाठी तो आवश्यक आहे.",
 
     pwAtLeast10: "किमान 10 अक्षरे वापरा.",
     pwTooLong: "हे खूप लांब आहे — जास्तीत जास्त 200 अक्षरे.",
@@ -2803,6 +2815,7 @@ export const mr: Dictionary = {
     onlyTheCurrentYearCloses: "फक्त सुरू असलेले वर्षच बंद करता येते.",
     cannotMoveIntoAClosedYear: "ते वर्ष आधीच बंद आहे — पुढे जाण्यासाठी पुढील वर्ष निवडा.",
     youArePostingALot: "तुम्ही खूप पोस्ट करत आहात — सुमारे {minutes} मिनिटांनी पुन्हा प्रयत्न करा.",
+    youAreReportingALot: "तुम्ही खूप तक्रारी पाठवल्या आहेत — त्या शाळेकडे पोहोचल्या आहेत. सुमारे {minutes} मिनिटांनी पुन्हा प्रयत्न करा.",
     onlyAnAdminEditsTheProfile: "निर्देशिका प्रोफाइल फक्त शाळेचा प्रशासक बदलतो.",
     onlySchoolStaffReadTheBoard: "जागांचा बोर्ड फक्त शाळेचे कर्मचारी पाहतात.",
     onlyAParentAsksAboutAdmission: "प्रवेशाबद्दल फक्त पालक विचारतात.",
@@ -2820,6 +2833,7 @@ export const mr: Dictionary = {
     onlyAnAdminCanEditStaffRecords: "फक्त शाळेचा अ‍ॅडमिनच कर्मचारी नोंदी बदलू शकतो.",
     termNotFound: "या शाळेत असे सत्र नाही.",
     onlyAnAdminCanSetTerms: "फक्त शाळेचा अ‍ॅडमिनच सत्रे ठरवू शकतो.",
+    onlyAnAdminSetsUpTheSchool: "शाळेची रचना फक्त शाळेचा अ‍ॅडमिन बदलू शकतो; मुख्याध्यापक ती वाचू शकतात.",
     aPupilHeldBackCannotAlsoMove: "मागे ठेवलेल्या विद्यार्थ्याला सोबतच पुढे पाठवता येत नाही.",
     onlyAnAdminCanIssueASignIn: "फक्त शाळेचा अ‍ॅडमिनच साइन-इन कोड देऊ शकतो.",
     onlyASchoolAdminCanAdmit: "फक्त शाळेचा अ‍ॅडमिनच विद्यार्थ्यांना प्रवेश देऊ शकतो.",
@@ -3171,6 +3185,17 @@ export const mr: Dictionary = {
     previewNotified: "जुळताच पालकांना सूचना",
   },
 
+  sso: {
+    unverifiedEmail:
+      "त्या साइन-इनने तुमचा ईमेल पत्ता सिद्ध होऊ शकला नाही, म्हणून तो कोणत्याही खात्याशी जोडला गेला नाही. त्याऐवजी तुमचा पासवर्ड वापरा.",
+  },
+  magic: {
+    pageTitle: "Relay मध्ये साइन इन करा",
+    title: "साइन-इन पूर्ण करा",
+    body: "Relay मध्ये साइन इन करण्यासाठी पुढे जा दाबा. ही लिंक एकदाच चालते, आणि तुमच्या वतीने ती उघडणारी कोणतीही गोष्ट ती वापरू शकत नाही.",
+    continue: "पुढे जा",
+  },
+
   invite: {
     parentHasAccountNote: "या पत्त्याचे Relay खाते आधीच आहे. स्वीकारल्यावर हे मूल त्यात जोडले जाते — तुमचा पासवर्ड बदलत नाही.",
     parentSignupNote: "पासवर्ड ठरवा आणि तुम्ही आत. तुमच्या सेटिंगमधून कधीही जोड काढू शकता.",
@@ -3234,6 +3259,9 @@ export const mr: Dictionary = {
     noEmailAttached: "या निमंत्रणाशी कोणताही ईमेल पत्ता जोडलेला नाही.",
     alreadyUsed: "हे निमंत्रण आधीच वापरले गेले आहे.",
     couldNotComplete: "आम्ही ते पूर्ण करू शकलो नाही. कृपया पुन्हा प्रयत्न करा.",
+    enterYourPassword:
+      "या पत्त्याचे खाते आधीच आहे. शाळा त्यात जोडण्यासाठी त्याचा पासवर्ड टाका — किंवा आधी लॉग इन करून ही लिंक पुन्हा उघडा.",
+    wrongPassword: "तो पासवर्ड या खात्याशी जुळत नाही.",
   },
   forgot: {
     title: "नवीन पासवर्ड ठरवा",
@@ -3308,6 +3336,10 @@ export const mr: Dictionary = {
     parentAt: "पालक · {school}",
     parentSchools: "पालक · {count} शाळा",
     everySchool: "या सर्व्हरवरील प्रत्येक शाळा",
+  },
+  claim: {
+    notifExisting: "{claimant} यांनी स्वतःला {name} चे पालक म्हणून जोडले",
+    notifExistingBody: "तुम्ही त्यांना ओळखत नसाल, तर लगेच {school} ला सांगा.",
   },
   join: {
     waitingTitle: "तुमच्यासाठी एक निमंत्रण वाट पाहत आहे",
@@ -4050,6 +4082,7 @@ export const mr: Dictionary = {
     withdrawRequest: "हा अर्ज मागे घ्या", withdrawn: "मागे घेतले",
   },
   common: {
+    officeSetsThis: "हे शाळेचे कार्यालय ठरवते. तुम्ही ते इथे वाचू शकता, बदलू शकत नाही.",
     retry: "पुन्हा प्रयत्न करा",
     comingSoon: "लवकरच येत आहे",
     comingSoonBody: "ही स्क्रीन तयार होत आहे. तोपर्यंत वेब अ‍ॅपवर ती उपलब्ध आहे.",
@@ -5452,6 +5485,7 @@ export const mr: Dictionary = {
     listTooLarge: "ही यादी खूप मोठी आहे. ती लहान भागांत विभागा.",
     noUsableRows: "यांपैकी कोणत्याही ओळीत उपयोगी ईमेल पत्ता नव्हता.",
     tooManyAtOnce: "ही एकाच वेळी {count} निमंत्रणे आहेत. कृपया एका वेळी 500 किंवा कमी पाठवा.",
+    dailyCapReached: "एक शाळा दिवसाला {cap} निमंत्रणे पाठवू शकते आणि आज {left} शिल्लक आहेत; या यादीत {count} आहेत. उरलेली उद्या पाठवा.",
     classNotYours: "तो वर्ग तुमच्या शाळेत नाही.",
     notPending: "ते निमंत्रण आता प्रतीक्षेत नाही.",
     cannotResend: "ते निमंत्रण पुन्हा पाठवता येत नाही.",
@@ -5773,6 +5807,7 @@ export const mr: Dictionary = {
       "कोणतीही शाळा तुम्हाला पाहू किंवा बुक करू शकण्याआधी तुमची प्रोफाइल तपासली जाते. त्यासाठी तुम्हाला आणखी काही करावे लागणार नाही.",
     couldNotCreate: "खाते तयार होऊ शकले नाही.",
     inviteCannotBeUsed: "हे निमंत्रण वापरता येणार नाही.",
+    inviteForAnotherAddress: "हे निमंत्रण दुसऱ्या ईमेल पत्त्यावर पाठवले होते. ज्या पत्त्यावर पाठवले तोच वापरा.",
     giveYourName: "कृपया तुमचे नाव सांगा.",
     emailLooksWrong: "हा ईमेल बरोबर वाटत नाही.",
     sayWhatYouDo: "थोडक्यात सांगा की तुम्ही काय करता.",
@@ -6031,6 +6066,7 @@ export const mr: Dictionary = {
     theirScoreRecorded: "त्यांचा स्कोअर नोंदला गेला.",
     accessRestored: "तुम्ही Relay वर तुमची शाळा पुन्हा वापरू शकता.",
     reportedAs: "एका {type} ची {reason} म्हणून तक्रार आली.",
+    incidentNote: "शाळेने {name} बद्दल एक नोंद जोडली आहे. ती वाचण्यासाठी अ‍ॅप उघडा.",
     missingSchoolLately: "{name} अलीकडे शाळेत येत नाही. कृपया वर्गशिक्षकांशी बोला — शाळेला मदत करायची आहे.",
     teacherCancelledMeeting: "{name} यांना तुमची भेट रद्द करावी लागली. कृपया दुसरी वेळ निवडा.",
     familyBookedSlot: "{name} च्या कुटुंबाने तुमचा स्लॉट बुक केला.",
@@ -6106,6 +6142,9 @@ export const mr: Dictionary = {
     penColumn: "pen स्तंभात (udise pen, pen number किंवा permanent education number) अकरा अंकांचा UDISE+ PEN येतो: जन्मतारखेसोबत तो Relay वर आधीच माहीत असलेल्या विद्यार्थ्याला जोडतो, आणि नवा PEN नव्या खात्यावर जातो.",
     penNeedsBirthdate: "PEN असलेल्या ओळीत जन्मतारीखही हवी — नुसता क्रमांक म्हणजे कागदाचा तुकडा.",
     penMismatch: "जन्मतारीख त्या PEN च्या नोंदीशी जुळत नाही, म्हणून काही जोडले नाही.",
+    identityRefused: "हा कोड किंवा क्रमांक आणि जन्मतारीख अशा कोणत्याही विद्यार्थ्याचे नाव सांगत नाहीत ज्याला ही शाळा आणू शकते.",
+    tooManyLinks: "{max} पेक्षा जास्त ओळींमध्ये विद्यार्थी कोड किंवा PEN आहे. यादी विभागा.",
+    tooManyRuns: "या तासात विद्यार्थी कोड किंवा PEN असलेल्या खूप याद्या पाठवल्या. {when} पुन्हा प्रयत्न करा.",
     penFormat: "PEN अकरा अंकांचा हवा; ओळ वगळली.",
     linkedBadge: "बदली होऊन आले",
     linkedExisting: "बदली होऊन आले — त्यांचे आधीचे खाते, नोंद आणि लॉगिन सोबत आले.",
@@ -6150,6 +6189,7 @@ export const mr: Dictionary = {
     done: "झाले",
     hasAddressUseForgot: "{name} कडे ईमेल पत्ता आहे — ते \"पासवर्ड विसरलात?\" मधून पासवर्ड ठरवतात.",
     noHandle: "या खात्याला साइन-इन हँडल नाही.",
+    notEligible: "या विद्यार्थ्याकडे आधीच साइन-इन आहे.",
     noMatch: "हे हँडल आणि कोड जुळत नाहीत, किंवा कोड वापरला गेला आहे. शाळेकडून नवा कोड मागा.",
     panelTitle: "{name} साठी पहिले साइन-इन",
     panelBody: "एकदाच वापरायचा कोड, एकदाच दाखवला जातो. {name} तो आपल्या हँडलसह {url} वर टाकून पासवर्ड निवडतात. तो {days} दिवस आणि एका साइन-इनसाठी चालतो; नवा दिल्यास जुना बदलतो.",

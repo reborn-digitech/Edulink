@@ -123,13 +123,21 @@ export function parseCsv(input: string): ParsedCsv {
 }
 
 /** Quotes a value only when it needs it, the way spreadsheets expect. */
+/**
+ * A cell that starts with =, +, -, @, a tab or a carriage return is a formula
+ * to Excel and LibreOffice, and a pupil's name or a note is typed by someone
+ * who may know that. Such a cell is prefixed with a single quote so it opens
+ * as text; a plain number (a mark, an amount, a negative balance) is left as
+ * it is, since that is the one leading "-" a sheet must keep as a number.
+ */
 export function toCsvValue(value: unknown): string {
-  const text =
+  const raw =
     value === null || value === undefined
       ? ""
       : value instanceof Date
         ? value.toISOString()
         : String(value);
+  const text = /^[=+\-@\t\r]/.test(raw) && !/^-?\d+(\.\d+)?$/.test(raw) ? `'${raw}` : raw;
   return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 

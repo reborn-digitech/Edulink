@@ -147,11 +147,14 @@ function EmailSection({ overview }: { overview: AccountOverview }) {
   const [value, setValue] = useState("");
   const [code, setCode] = useState("");
   const [sentTo, setSentTo] = useState("");
+  // The current password, once per change: a session is not proof of the
+  // person, and the address is where reset codes go.
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const send = useMutation({
     mutationFn: async () => {
-      const result = await api().post("/api/v1/account/email/code", { email: value.trim() });
-      if (!result.ok) throw new Error(result.issues?.email ?? errorText(result, t("account.didNotSend")));
+      const result = await api().post("/api/v1/account/email/code", { email: value.trim(), password });
+      if (!result.ok) throw new Error(result.issues?.password ?? result.issues?.email ?? errorText(result, t("account.didNotSend")));
       return accountEmailCodeSentSchema.parse(result.data);
     },
     onSuccess: (data) => {
@@ -171,6 +174,7 @@ function EmailSection({ overview }: { overview: AccountOverview }) {
       setStep("idle");
       setValue("");
       setCode("");
+      setPassword("");
       setError(null);
       await qc.invalidateQueries({ queryKey: ["account"] });
       // The address is on the person, and the shell shows it.
@@ -222,7 +226,16 @@ function EmailSection({ overview }: { overview: AccountOverview }) {
         hint={value.trim() ? t("account.emailHintNamed", { email: value.trim().toLowerCase() }) : t("account.emailHintEmpty")}
         error={error}
       />
-      <Button label={t("account.emailMeCode")} busy={send.isPending} disabled={!value.trim()} onPress={() => send.mutate()} />
+      <Field
+        label={t("account.currentPassword")}
+        value={password}
+        onChangeText={(next) => { setPassword(next); setError(null); }}
+        secureTextEntry
+        textContentType="password"
+        autoComplete="current-password"
+        hint={t("account.currentPasswordHint")}
+      />
+      <Button label={t("account.emailMeCode")} busy={send.isPending} disabled={!value.trim() || !password} onPress={() => send.mutate()} />
       <Text variant="xs" tone="subtle">
         {t("account.nothingChangesUntilCode")}
       </Text>
@@ -240,12 +253,13 @@ function MobileSection({ overview }: { overview: AccountOverview }) {
   const [value, setValue] = useState("");
   const [code, setCode] = useState("");
   const [hint, setHint] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [removing, setRemoving] = useState(false);
   const send = useMutation({
     mutationFn: async () => {
-      const result = await api().post("/api/v1/account/mobile/code", { phone: value.trim() });
-      if (!result.ok) throw new Error(result.issues?.phone ?? errorText(result, t("account.didNotSend")));
+      const result = await api().post("/api/v1/account/mobile/code", { phone: value.trim(), password });
+      if (!result.ok) throw new Error(result.issues?.password ?? result.issues?.phone ?? errorText(result, t("account.didNotSend")));
       return accountMobileCodeSentSchema.parse(result.data);
     },
     onSuccess: (data) => {
@@ -265,6 +279,7 @@ function MobileSection({ overview }: { overview: AccountOverview }) {
       setStep("idle");
       setValue("");
       setCode("");
+      setPassword("");
       setError(null);
       await qc.invalidateQueries({ queryKey: ["account"] });
     },
@@ -327,7 +342,16 @@ function MobileSection({ overview }: { overview: AccountOverview }) {
         hint={value.trim() ? t("account.mobileHintNamed", { phone: value.trim() }) : t("account.mobileHintEmpty")}
         error={error}
       />
-      <Button label={t("account.textMeCode")} busy={send.isPending} disabled={!value.trim()} onPress={() => send.mutate()} />
+      <Field
+        label={t("account.currentPassword")}
+        value={password}
+        onChangeText={(next) => { setPassword(next); setError(null); }}
+        secureTextEntry
+        textContentType="password"
+        autoComplete="current-password"
+        hint={t("account.currentPasswordHint")}
+      />
+      <Button label={t("account.textMeCode")} busy={send.isPending} disabled={!value.trim() || !password} onPress={() => send.mutate()} />
       <Text variant="xs" tone="subtle">
         {t("account.nothingSavedUntilCode")}
       </Text>

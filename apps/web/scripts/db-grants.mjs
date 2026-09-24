@@ -102,6 +102,18 @@ if (singleRole) {
     "-c", `ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "${appRole}";`,
     // ...and the ones that already exist, which default privileges do not reach.
     "-c", `GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO "${appRole}";`,
+    // THEN TAKE BACK WHAT THE APP MUST NEVER HOLD. The audit log is append-only
+    // — the policies in rls.sql already permit it no UPDATE or DELETE (see
+    // APPEND_ONLY in scripts/gen-rls.ts); this makes the refusal a privilege
+    // error rather than a silent zero, and survives a policy being added back.
+    // The retention sweep prunes it on the owner connection, not this role.
+    "-c", `REVOKE UPDATE, DELETE ON "AuditLog" FROM "${appRole}";`,
+    // The operator's visitor book: a written visit may be CLOSED and nothing
+    // else. Column-level, so the app role can set "endedAt" and cannot touch
+    // the reason, the start or the expiry. The generated trigger in rls.sql
+    // says the same thing for every role but the owner.
+    "-c", `REVOKE UPDATE ON "OperatorAccess" FROM "${appRole}";`,
+    "-c", `GRANT UPDATE ("endedAt") ON "OperatorAccess" TO "${appRole}";`,
   ], { quiet: true });
 }
 
@@ -131,6 +143,36 @@ if (!readable) {
   if (failure) console.error(`    ${failure.split("\n").slice(-3).join("\n    ")}\n`);
   console.error("    Every page would 500 with 42501. The grants above did not take.\n");
   process.exit(1);
+}
+
+// The other half of the proof, for the two tables that must be less than
+// fully writable: the app role holding UPDATE or DELETE on the audit log, or
+// UPDATE on any visitor-book column but "endedAt", is a grant that did not
+// take — and, unlike a lost USAGE grant, one that no page would ever show.
+if (!singleRole) {
+  console.log(`  Checking that ${appRole} cannot rewrite the audit log or the visitor book…`);
+  let held = "";
+  try {
+    held = psql(
+      [
+        "-d", appUrl, "-tAc",
+        `SELECT has_table_privilege('"AuditLog"', 'UPDATE')
+             OR has_table_privilege('"AuditLog"', 'DELETE')
+             OR has_column_privilege('"OperatorAccess"', 'reason', 'UPDATE')
+             OR has_column_privilege('"OperatorAccess"', 'startedAt', 'UPDATE')
+             OR has_column_privilege('"OperatorAccess"', 'expiresAt', 'UPDATE')
+             OR NOT has_column_privilege('"OperatorAccess"', 'endedAt', 'UPDATE');`,
+      ],
+      { quiet: true },
+    ).trim();
+  } catch (error) {
+    held = String(error.stderr ?? error.message ?? error).trim();
+  }
+  if (held !== "f") {
+    console.error(`\n  ✗ ${appRole} still holds a write it must not (${held}).\n`);
+    console.error("    The audit log is not append-only, or a visit row can be rewritten.\n");
+    process.exit(1);
+  }
 }
 
 console.log(`\n  ✓ Grants and policies restored, and ${appRole} can read.\n`);

@@ -50,6 +50,35 @@ export type SchoolOverview = {
 };
 
 /**
+ * Every READ the operator makes inside a school is a line in that school's
+ * audit log, not only every action.
+ *
+ * The visitor book (`withSchoolAccess`) says "the operator was here this
+ * afternoon"; it cannot say what they looked at, because one row covers an
+ * hour. The audit's first finding was exactly that gap — a directory listed,
+ * a name searched, and nothing in the school's Safety Centre to say so. So
+ * each read writes `operator.read.<what>` against the school, with COUNTS AND
+ * NOTHING ELSE in `meta`: how many people were listed, never who; that a
+ * search ran and how long the query was, never the letters typed. The row
+ * says the operator looked; the school's own pages say what there was to see.
+ */
+async function auditRead(
+  session: ActiveContext,
+  schoolId: string,
+  what: "overview" | "posts" | "people" | "people.search",
+  counts: Record<string, number | null>,
+): Promise<void> {
+  await audit({
+    schoolId,
+    actorUserId: session.user.id,
+    action: `operator.read.${what}`,
+    targetType: "School",
+    targetId: schoolId,
+    meta: counts,
+  });
+}
+
+/**
  * The shape of a school, in numbers, for somebody deciding whether there is
  * anything to look at.
  *
@@ -72,6 +101,13 @@ export async function schoolOverview(
       db.post.count({ where: { schoolId, status: "PENDING" } }),
       db.report.count({ where: { schoolId, status: "OPEN" } }),
     ]);
+
+    await auditRead(session, schoolId, "overview", {
+      members: members.reduce((sum, row) => sum + row._count._all, 0),
+      classes,
+      pendingPosts,
+      openReports,
+    });
 
     return {
       members: members.map((row) => ({
@@ -125,6 +161,8 @@ export async function listPosts(
         author: { select: { name: true, preferredName: true } },
       },
     });
+
+    await auditRead(session, schoolId, "posts", { count: posts.length });
 
     return posts.map((post) => ({
       id: post.id,
@@ -315,6 +353,8 @@ export async function listPeople(
       },
     });
 
+    await auditRead(session, schoolId, "people", { count: rows.length });
+
     return rows.map((row) => ({
       membershipId: row.id,
       name: row.user.preferredName ?? row.user.name,
@@ -354,6 +394,9 @@ export async function findPeople(
         user: { select: { name: true, preferredName: true } },
       },
     });
+
+    // The query's LENGTH, never the query: a searched name is a name.
+    await auditRead(session, schoolId, "people.search", { count: rows.length, queryLength: q.length });
 
     return rows.map((row) => ({
       membershipId: row.id,

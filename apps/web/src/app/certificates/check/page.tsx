@@ -4,6 +4,7 @@ import { CheckCircleIcon, MagnifyingGlassIcon, QuestionIcon, XCircleIcon } from 
 import { Wordmark } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { verifyByCode } from "@/lib/certificates";
+import { CODE_LOOKUPS, consumeByCaller } from "@/lib/rate-limit";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
@@ -25,7 +26,10 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
   const t = await getT();
   const { code: rawCode } = await searchParams;
   const code = rawCode?.trim().toUpperCase().slice(0, 16) ?? "";
-  const result = code ? await verifyByCode(code) : null;
+  // The same door as the API: a signed-out caller is an address, and an address gets a hundred and twenty checks a quarter-hour.
+  const gate = code ? await consumeByCaller("certificate-check", CODE_LOOKUPS) : null;
+  const limited = gate !== null && !gate.allowed;
+  const result = code && !limited ? await verifyByCode(code) : null;
 
   return (
     <div className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
@@ -57,6 +61,11 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
           </Button>
         </form>
 
+        {limited && (
+          <p role="alert" className="mt-6 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-3 py-2 text-sm font-medium text-warn">
+            {t("common.tryAgainMoment")}
+          </p>
+        )}
         {result && (
           <section className="mt-8" aria-live="polite" data-testid="verify-result">
             {result.valid ? (

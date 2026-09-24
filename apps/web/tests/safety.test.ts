@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import { createPost, reportContent } from "@/lib/bulletin";
@@ -155,6 +155,11 @@ async function makePost(title: string) {
 }
 
 /* -------------------------------------------------------------------------- */
+
+// Reports are limited to ten an hour per person and one urgent burst per school (bulletin.ts); a suite that files a dozen in a second clears its own buckets.
+beforeEach(async () => {
+  await db.rateLimit.deleteMany({ where: { bucket: { in: [`report:${student.user.id}`, `report:${otherStudent.user.id}`, `report-urgent:${schoolId}`] } } });
+});
 
 describe("access", () => {
   it("is admin-only", async () => {

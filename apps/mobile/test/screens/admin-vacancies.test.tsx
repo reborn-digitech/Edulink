@@ -71,6 +71,14 @@ describe("the school's vacancies desk", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/vacancies?status=all")).toBe(true));
   });
 
+  it("the head reads the desk: the postings and their enquiries, with no form to post and no button to close", async () => {
+    await mountStaff(<Vacancies />, "PRINCIPAL", { "GET /api/v1/admin/vacancies": desk });
+    await screen.findByText("ZZ Science teacher");
+    expect(screen.queryByRole("button", { name: "Close ZZ Science teacher" })).toBeNull();
+    expect(screen.queryByLabelText("Title")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Post a vacancy" })).toBeNull();
+  });
+
   it("closing asks first, then posts and says so", async () => {
     const { calls } = await mountStaff(<Vacancies />, "ADMIN", { "GET /api/v1/admin/vacancies": desk, "POST /api/v1/admin/vacancies/p1/close": () => json({ ok: true }) });
     await fireEvent.press(await screen.findByRole("button", { name: "Close ZZ Science teacher" }));

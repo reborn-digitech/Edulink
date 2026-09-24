@@ -117,6 +117,11 @@ function classCode(grade: string | null | undefined): string {
   if (["UKG", "SR KG", "SENIOR KG", "KG2", "KG"].includes(g)) return "PP1";
   return g;
 }
+/** A grade as it may appear in a Content-Disposition filename: word characters and hyphens only, since `?grade=` is typed by the caller. */
+function filenameSafe(grade: string): string {
+  return grade.replace(/[^\w-]/g, "").slice(0, 24) || "grade";
+}
+
 /** UDISE+ class codes a pupil's grade must resolve to for the sheet: PP3, PP2, PP1, 1–12. */
 const UDISE_CLASS_CODE = /^(PP[123]|[1-9]|1[0-2])$/;
 export const isUdiseClass = (code: string) => UDISE_CLASS_CODE.test(code);
@@ -558,7 +563,7 @@ export async function cbseCandidatesExport(ctx: ActiveContext, grade: string): P
   const rows = pupils.map(rowOf);
   const csv = csvWithHeaders(rows, () => rowOf(null));
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "compliance.export", meta: { kind: "cbse-candidates", grade, rows: rows.length } });
-  return { filename: `cbse-candidates-class-${grade}-${today()}.csv`, csv, rows: rows.length };
+  return { filename: `cbse-candidates-class-${filenameSafe(grade)}-${today()}.csv`, csv, rows: rows.length };
 }
 
 /** Surname, first name and the father's name the way the Maharashtra board prints a candidate: the full name split, the record's father as the middle name. */
@@ -625,7 +630,7 @@ export async function msbshseCandidatesExport(ctx: ActiveContext, grade: string)
   const rows = pupils.map(rowOf);
   const csv = csvWithHeaders(rows, () => rowOf(null));
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "compliance.export", meta: { kind: "msbshse-candidates", grade, rows: rows.length } });
-  return { filename: `msbshse-candidates-std-${grade}-${today()}.csv`, csv, rows: rows.length };
+  return { filename: `msbshse-candidates-std-${filenameSafe(grade)}-${today()}.csv`, csv, rows: rows.length };
 }
 
 /** The filing fields, for the office's record pages to name what the sheet needs. */

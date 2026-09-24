@@ -771,6 +771,15 @@ export async function inviteAdmin(
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { ok: false, errorKey: "root.emailLooksWrong" };
   }
+  // NOT THEMSELVES. The invitation is the one door into a school's admin
+  // seat that the operator holds the key to, and an operator who could
+  // address it to their own account would be minting themselves a
+  // membership in two clicks — exactly what "no membership is created here"
+  // below exists to prevent. Refused by address, the only identity an
+  // invitation carries. (The sentence is the generic refusal: a dedicated
+  // one needs the three dictionaries.)
+  const own = session.user.email?.trim().toLowerCase();
+  if (own && own === email) return { ok: false, errorKey: "root.didNotWork" };
 
   const school = await db.school.findUnique({
     where: { id: schoolId },
@@ -805,6 +814,11 @@ export async function inviteAdmin(
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
   await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "Relay");
 
+  // TWICE, ON PURPOSE. The unattributed row is the operator's own record and
+  // is what /root/audit lists; the row bound to the school is what puts "the
+  // Relay team invited an administrator" in THAT school's Safety Centre —
+  // the same standing as a takedown or a suspension. Until it was written the
+  // school could not see the one operator action that hands out its keys.
   await audit({
     schoolId: null,
     actorUserId: session.user.id,
@@ -812,6 +826,14 @@ export async function inviteAdmin(
     targetType: "School",
     targetId: schoolId,
     meta: { schoolId, email, role },
+  });
+  await audit({
+    schoolId,
+    actorUserId: session.user.id,
+    action: "superuser.invite.admin",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { email, role },
   });
 
   return { ok: true };

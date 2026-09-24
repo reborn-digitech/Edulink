@@ -38,7 +38,19 @@ export function isTextColumn(header: string): boolean {
  * ten-digit mobile — and stays text so it never prints in scientific notation
  * and a leading zero survives. Marks, amounts and counts are all shorter.
  */
-function cellOf(raw: string, header: string): Cell {
+/**
+ * The CSV guard (csv.ts) puts a quote before a cell that starts like a
+ * formula, so a spreadsheet opening the CSV reads text. The workbook writes
+ * inline strings, which no spreadsheet evaluates, so the guard is not needed
+ * there and would print as a stray quote: it comes off, and the cell is the
+ * text it always was.
+ */
+function unguard(raw: string): string {
+  return /^'[=+\-@\t\r]/.test(raw) ? raw.slice(1) : raw;
+}
+
+function cellOf(rawCell: string, header: string): Cell {
+  const raw = unguard(rawCell);
   if (raw === "") return null;
   if (isTextColumn(header)) return raw;
   if (/^-?(0|[1-9]\d{0,8})(\.\d+)?$/.test(raw) && String(Number(raw)) === raw.replace(/\.0+$/, "").replace(/(\.\d*?)0+$/, "$1")) return Number(raw);

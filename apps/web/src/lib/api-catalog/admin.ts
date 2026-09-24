@@ -89,9 +89,9 @@ export const ADMIN: Endpoint[] = [
   { method: "POST", path: "/api/v1/admin/settings", summary: "Save the school's details", access: ["ADMIN"], request: c.schoolDetailsBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /admin/vacancies ----------------------------------------------------
   { method: "GET", path: "/api/v1/admin/vacancies", summary: "The school's own vacancies, with enquiry counts", access: ["ADMIN", "PRINCIPAL"], request: c.adminVacanciesQuerySchema, response: c.adminVacanciesSchema },
-  { method: "POST", path: "/api/v1/admin/vacancies", summary: "Post a vacancy", access: ["ADMIN", "PRINCIPAL"], request: c.vacancyCreateBodySchema, response: c.vacancyCreatedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/admin/vacancies", summary: "Post a vacancy", access: ["ADMIN"], request: c.vacancyCreateBodySchema, response: c.vacancyCreatedSchema, emptyBodyStatus: 422 },
   // Closing the fixture's vacancy is not something to do every run; the suite covers it.
-  { method: "POST", path: "/api/v1/admin/vacancies/{postingId}/close", summary: "Take a vacancy off the board", access: ["ADMIN", "PRINCIPAL"], response: c.okSchema },
+  { method: "POST", path: "/api/v1/admin/vacancies/{postingId}/close", summary: "Take a vacancy off the board", access: ["ADMIN"], response: c.okSchema },
   // ---- /principal/leave, /principal/staff ----------------------------------
   { method: "GET", path: "/api/v1/admin/leave", summary: "The leave queue with balances, duty counts and cover suggestions", access: ["ADMIN", "PRINCIPAL"], response: c.adminLeaveSchema },
   // Deciding the fixture's request is a one-way door; the suite covers it.

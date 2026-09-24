@@ -10,7 +10,7 @@ import {
   MAX_RESET_ATTEMPTS,
   RESET_TTL_MINUTES,
 } from "@/lib/passwords";
-import { RESET_REQUESTS } from "@/lib/rate-limit";
+import { RESET_COMPLETIONS, RESET_REQUESTS } from "@/lib/rate-limit";
 import { hashPassword, verifyPassword } from "@/lib/crypto";
 
 /**
@@ -110,7 +110,14 @@ afterEach(async () => {
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset:+9199999" } } });
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset:noreach" } } });
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "phone-verify:" } } });
+  // The completion and confirm ceilings, and the login bucket the password
+  // check on a phone change draws on — keyed on this file's own people.
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "reset-complete:+9198765" } } });
+  await db.rateLimit.deleteMany({
+    where: { bucket: { in: made.flatMap((id) => [`confirm-phone:${id}`, `confirm-email:${id}`, `login:${id}`]) } },
+  });
   await db.outboundEmail.deleteMany({ where: { purpose: "PHONE_VERIFY" } });
+  await db.outboundEmail.deleteMany({ where: { purpose: "PHONE_CHANGE" } });
   await db.outboundEmail.deleteMany({ where: { purpose: "PASSWORD_RESET" } });
   await db.authToken.deleteMany({ where: { userId: { in: made } } });
   await db.session.deleteMany({ where: { userId: { in: made } } });
@@ -291,6 +298,50 @@ describe("using the code", () => {
     expect((await resetPassword(`rhea${SUFFIX}`, code, "a brand new password")).ok).toBe(false);
   });
 
+  it("⚠ twenty wrong guesses arriving TOGETHER leave the token dead after five, and the right code no longer works", async () => {
+    const code = await requestAndRead();
+    // The attempt count was a JSON field read and then written, so a burst read
+    // 0 twenty times over. It is one conditional UPDATE now; exactly five of
+    // these can be charged, whatever order they land in.
+    const burst = await Promise.all(
+      Array.from({ length: 20 }, (_, i) =>
+        resetPassword(`rhea${SUFFIX}`, String((Number(code) + i + 1) % 1_000_000).padStart(6, "0"), "a brand new password"),
+      ),
+    );
+    expect(burst.every((r) => !r.ok)).toBe(true);
+
+    const token = await db.authToken.findFirstOrThrow({
+      where: { userId, purpose: "PASSWORD_RESET" },
+      orderBy: { createdAt: "desc" },
+    });
+    expect(token.attempts).toBe(MAX_RESET_ATTEMPTS);
+    expect(token.consumedAt).not.toBeNull();
+
+    // With the completion ceiling out of the way, it is the TOKEN that refuses.
+    await db.rateLimit.deleteMany({ where: { bucket: `reset-complete:rhea${SUFFIX}` } });
+    expect((await resetPassword(`rhea${SUFFIX}`, code, "a brand new password")).ok).toBe(false);
+  });
+
+  it("⚠ the eleventh completion in a window is refused, and says when to come back", async () => {
+    const code = await requestAndRead();
+    const wrong = String((Number(code) + 1) % 1_000_000).padStart(6, "0");
+    for (let i = 0; i < RESET_COMPLETIONS.limit; i++) {
+      expect((await resetPassword(`rhea${SUFFIX}`, wrong, "a brand new password")).errorKey).toBe("refusal.codeWrong");
+    }
+    const refused = await resetPassword(`rhea${SUFFIX}`, code, "a brand new password");
+    expect(refused).toMatchObject({ ok: false, errorKey: "refusal.tooManyRetry" });
+    expect(refused.retryAfterSeconds).toBeGreaterThan(0);
+  });
+
+  it("⚠ counts completions by the number, not by its spelling", async () => {
+    const code = await requestAndRead();
+    const wrong = String((Number(code) + 1) % 1_000_000).padStart(6, "0");
+    for (let i = 0; i < RESET_COMPLETIONS.limit; i++) {
+      await resetPassword(i % 2 === 0 ? "98765 00001" : "+91 98765 00001", wrong, "a brand new password");
+    }
+    expect((await resetPassword("+919876500001", code, "a brand new password")).errorKey).toBe("refusal.tooManyRetry");
+  });
+
   it("⚠ refuses an expired code", async () => {
     const code = await requestAndRead();
     await db.authToken.updateMany({
@@ -397,7 +448,7 @@ describe("proving you hold a number", () => {
 
   it("⚠ writes NOTHING until the code comes back", async () => {
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
-    expect((await startPhoneChange(id, "98765 00021")).ok).toBe(true);
+    expect((await startPhoneChange(id, "98765 00021", PASSWORD)).ok).toBe(true);
 
     // The number is in a token, not on the account. This is the property the
     // whole two-step exists for: an unconfirmed number is nowhere a lookup
@@ -417,14 +468,14 @@ describe("proving you hold a number", () => {
 
   it("normalises before it stores, so one number is one account", async () => {
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
-    await startPhoneChange(id, "098765 00022");
+    await startPhoneChange(id, "098765 00022", PASSWORD);
     await confirmPhoneChange(id, (await phoneCode())!);
     expect((await db.user.findUniqueOrThrow({ where: { id } })).phone).toBe("+919876500022");
   });
 
   it("refuses a number that is not one, before sending anything", async () => {
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
-    const result = await startPhoneChange(id, "not a number");
+    const result = await startPhoneChange(id, "not a number", PASSWORD);
     expect(result.ok).toBe(false);
     expect(await phoneCode()).toBeNull();
   });
@@ -432,14 +483,14 @@ describe("proving you hold a number", () => {
   it("⚠ refuses a number another account has CONFIRMED", async () => {
     await makeUser({ email: `holder${SUFFIX}`, phone: "+919876500023" });
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
-    const result = await startPhoneChange(id, "9876500023");
+    const result = await startPhoneChange(id, "9876500023", PASSWORD);
     expect(result.ok).toBe(false);
     expect(result.errorKey).toBe("refusal.numberTaken");
   });
 
   it("⚠ gives up after five wrong codes", async () => {
     const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
-    await startPhoneChange(id, "98765 00024");
+    await startPhoneChange(id, "98765 00024", PASSWORD);
     const code = (await phoneCode())!;
 
     for (let i = 0; i < MAX_RESET_ATTEMPTS; i++) {
@@ -453,11 +504,63 @@ describe("proving you hold a number", () => {
   it("⚠ a code for one account cannot confirm another's number", async () => {
     const mine = await makeUser({ email: `mine${SUFFIX}`, phone: null });
     const theirs = await makeUser({ email: `theirs${SUFFIX}`, phone: null });
-    await startPhoneChange(mine, "98765 00025");
+    await startPhoneChange(mine, "98765 00025", PASSWORD);
     const code = (await phoneCode())!;
 
     expect((await confirmPhoneChange(theirs, code)).ok).toBe(false);
     expect((await db.user.findUniqueOrThrow({ where: { id: theirs } })).phone).toBeNull();
+  });
+
+  it("⚠ needs the current password: without it nothing is sent, with it the code goes", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    // A session is what somebody with a borrowed laptop has; the password is
+    // what they do not, and a number is where reset codes go.
+    expect(await startPhoneChange(id, "98765 00027", "")).toMatchObject({ ok: false, errorKey: "refusal.needsPassword" });
+    expect(await startPhoneChange(id, "98765 00027", "not the password")).toMatchObject({
+      ok: false,
+      errorKey: "refusal.needsPassword",
+    });
+    expect(await phoneCode()).toBeNull();
+
+    expect((await startPhoneChange(id, "98765 00027", PASSWORD)).ok).toBe(true);
+    expect(await phoneCode()).not.toBeNull();
+  });
+
+  it("⚠ an account with no password cannot move its number on a session alone", async () => {
+    const id = await makeUser({ email: `nopass${SUFFIX}`, phone: null, password: null });
+    expect(await startPhoneChange(id, "98765 00027", "anything")).toMatchObject({ ok: false, errorKey: "refusal.needsPassword" });
+  });
+
+  it("⚠ confirming signs every other device out, keeps this one, and tells the old number", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: "+919876500028" });
+    const expiresAt = new Date(Date.now() + 86_400_000);
+    const here = await db.session.create({ data: { userId: id, tokenHash: `zz-here-${Date.now()}`, expiresAt } });
+    const there = await db.session.create({ data: { userId: id, tokenHash: `zz-there-${Date.now()}`, expiresAt } });
+
+    await startPhoneChange(id, "98765 00029", PASSWORD);
+    expect((await confirmPhoneChange(id, (await phoneCode())!, here.id)).ok).toBe(true);
+
+    expect((await db.session.findUniqueOrThrow({ where: { id: here.id } })).revokedAt).toBeNull();
+    expect((await db.session.findUniqueOrThrow({ where: { id: there.id } })).revokedAt).not.toBeNull();
+
+    // The number being replaced hears about it — whoever moved the reset
+    // destination could now reset the password.
+    const notice = await db.outboundEmail.findFirst({
+      where: { purpose: "PHONE_CHANGE", to: "+919876500028" },
+      orderBy: { createdAt: "desc" },
+    });
+    expect(notice?.text).toContain("0029");
+  });
+
+  it("⚠ guesses at a code are ten per window behind the token's five", async () => {
+    const id = await makeUser({ email: `newphone${SUFFIX}`, phone: null });
+    await startPhoneChange(id, "98765 00030", PASSWORD);
+    const code = (await phoneCode())!;
+    const wrong = String((Number(code) + 1) % 1_000_000).padStart(6, "0");
+    for (let i = 0; i < RESET_COMPLETIONS.limit; i++) {
+      expect((await confirmPhoneChange(id, wrong)).errorKey).toBe("refusal.codeWrong");
+    }
+    expect((await confirmPhoneChange(id, code)).errorKey).toBe("refusal.tooManyRetry");
   });
 
   it("removing needs no code — otherwise a wrong number is a trap", async () => {

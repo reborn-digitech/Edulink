@@ -137,7 +137,10 @@ export async function suspendMembership(
     action: "membership.suspend",
     targetType: "Membership",
     targetId: membershipId,
-    meta: { role: target?.role ?? null, reason: trimmed },
+    // The reason is the admin's free text about a person and lives on the
+    // membership row, where the people who may read it read it; the log
+    // records that one was given, and how long, not what it said.
+    meta: { role: target?.role ?? null, reasonLength: trimmed.length },
   });
 
   // A suspended teacher or admin cannot be anybody's stand-in guardian. They

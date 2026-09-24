@@ -77,6 +77,8 @@ export async function officeSyllabus(ctx: ActiveContext, query: { gradeLevel?: s
 /** Replaces one list in order. A unit sent with its id keeps that id and every class's progress on it; the rest are new; anything not sent is removed with its progress. */
 export async function saveOfficeSyllabus(ctx: ActiveContext, input: z.infer<typeof officeSyllabusSaveSchema>): Promise<{ units: number; removed: number }> {
   const caller = office(ctx);
+  // The lists are set up by the admin; the head reads them and the coverage.
+  if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
   const gradeLevel = norm(input.gradeLevel);
   const subject = norm(input.subject);
   const existing = await db.syllabusUnit.findMany({ where: { schoolId: caller.schoolId, gradeLevel, subject }, select: { id: true } });

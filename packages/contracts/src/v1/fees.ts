@@ -174,8 +174,8 @@ export const feeConcessionBodySchema = z.object({
   academicYearId: id.optional(),
   headId: id.nullable().optional(),
   kind: feeConcessionKindSchema,
-  /** Basis points for PERCENT (1250 = 12.5 %), paise per instalment line for AMOUNT. */
-  value: z.number().int().min(1),
+  /** Basis points for PERCENT (1250 = 12.5 %), paise per instalment line for AMOUNT. Bounded at 100 % and at a crore of rupees respectively; the server checks the kind's own ceiling. */
+  value: z.number().int().min(1).max(10_000_000_000),
   reason: trimmed(3, 200),
 });
 export const feeConcessionCreatedSchema = z.object({ id: z.string() });
@@ -234,7 +234,7 @@ export const feeCounterPaymentBodySchema = z.object({
 });
 export const feeReceiptIssuedSchema = z.object({ paymentId: z.string(), receiptId: z.string(), serial: z.string(), already: z.boolean() });
 export const feeReasonBodySchema = z.object({ reason: trimmed(3, 300) });
-export const feeRefundBodySchema = z.object({ amountPaise: z.number().int().min(100), reason: trimmed(3, 300) });
+export const feeRefundBodySchema = z.object({ amountPaise: z.number().int().min(100).max(10_000_000_000), reason: trimmed(3, 300) });
 export const feeRefundResultSchema = z.object({ refundId: z.string(), status: z.string() });
 
 /* ---------------------------------------------------------------------- */

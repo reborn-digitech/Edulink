@@ -38,6 +38,9 @@ export function MobileForm({
   const [step, setStep] = useState<"idle" | "code">("idle");
   const [value, setValue] = useState("");
   const [code, setCode] = useState("");
+  // The current password, asked for once per change: a live session is not
+  // proof of the person, and this is where reset codes will go.
+  const [password, setPassword] = useState("");
   const [hint, setHint] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -47,7 +50,7 @@ export function MobileForm({
     event?.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await sendMobileCode(value);
+      const result = await sendMobileCode(value, password);
       if (!result.ok) {
         setError(result.error ?? t("account.didNotSend"));
         return;
@@ -74,6 +77,7 @@ export function MobileForm({
       setStep("idle");
       setValue("");
       setCode("");
+      setPassword("");
       router.refresh();
     });
   }
@@ -195,9 +199,18 @@ export function MobileForm({
         }
       />
 
+      <TextField
+        label={t("account.currentPassword")}
+        type="password"
+        autoComplete="current-password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        hint={t("account.currentPasswordHint")}
+      />
+
       <div className="flex flex-wrap items-center gap-2">
         {/* Names its channel — see the matching note in `EmailForm`. */}
-        <Button type="submit" size="sm" loading={pending} disabled={!normalised}>
+        <Button type="submit" size="sm" loading={pending} disabled={!normalised || password.length === 0}>
           {t("account.textMeCode")}
         </Button>
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">

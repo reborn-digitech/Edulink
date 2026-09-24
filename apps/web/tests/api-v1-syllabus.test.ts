@@ -20,6 +20,7 @@ const db = new PrismaClient();
 const STAMP = Date.now();
 let schoolId = "";
 let adminUserId = "";
+let principalUserId = "";
 let teacherUserId = "";
 let otherTeacherUserId = "";
 let parentUserId = "";
@@ -28,9 +29,10 @@ let otherClassId = "";
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
-async function as(who: "ADMIN" | "TEACHER" | "OTHER_TEACHER" | "PARENT" | null) {
+async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "OTHER_TEACHER" | "PARENT" | null) {
   __resetCookies();
   if (who === "ADMIN") await createSession(adminUserId, { schoolId, role: "ADMIN" });
+  if (who === "PRINCIPAL") await createSession(principalUserId, { schoolId, role: "PRINCIPAL" });
   if (who === "TEACHER") await createSession(teacherUserId, { schoolId, role: "TEACHER" });
   if (who === "OTHER_TEACHER") await createSession(otherTeacherUserId, { schoolId, role: "TEACHER" });
   if (who === "PARENT") await createSession(parentUserId, { schoolId: null, role: "PARENT" });
@@ -42,12 +44,14 @@ beforeAll(async () => {
   // A year half gone, so "expected" is half the list.
   await db.academicYear.create({ data: { schoolId, name: "ZZ 2026-27", startDate: new Date(Date.now() - 100 * 86_400_000), endDate: new Date(Date.now() + 100 * 86_400_000), isCurrent: true } });
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Syl ${who}`, email: `zz-syl-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
-  const [admin, teacher, other, parent, pupil] = await Promise.all([mk("Admin"), mk("Teacher"), mk("Other"), mk("Parent"), mk("Pupil")]);
+  const [admin, principal, teacher, other, parent, pupil] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher"), mk("Other"), mk("Parent"), mk("Pupil")]);
   adminUserId = admin.id;
+  principalUserId = principal.id;
   teacherUserId = teacher.id;
   otherTeacherUserId = other.id;
   parentUserId = parent.id;
   await db.membership.create({ data: { userId: adminUserId, schoolId, role: "ADMIN", status: "ACTIVE" } });
+  await db.membership.create({ data: { userId: principalUserId, schoolId, role: "PRINCIPAL", status: "ACTIVE" } });
   const tm = await db.membership.create({ data: { userId: teacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } });
   const om = await db.membership.create({ data: { userId: otherTeacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } });
   classId = (await db.class.create({ data: { schoolId, name: "ZZ Syl 4A", gradeLevel: "4", joinCode: `ZS${suffix}` }, select: { id: true } })).id;
@@ -59,7 +63,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
-  await db.session.deleteMany({ where: { userId: { in: [adminUserId, teacherUserId, otherTeacherUserId, parentUserId] } } });
+  await db.session.deleteMany({ where: { userId: { in: [adminUserId, principalUserId, teacherUserId, otherTeacherUserId, parentUserId] } } });
   await db.school.deleteMany({ where: { id: schoolId } });
   await db.user.deleteMany({ where: { email: { contains: `-${STAMP}@test.invalid` } } });
   await db.$disconnect();
@@ -76,6 +80,10 @@ describe("the office's list", () => {
     expect((await officeGet(get("/api/v1/office/syllabus"))).status).toBe(403);
     await as("PARENT");
     expect((await officeGet(get("/api/v1/office/syllabus"))).status).toBe(403);
+    // The head reads the lists; writing one is setting the school up, the admin's.
+    await as("PRINCIPAL");
+    expect((await officeGet(get("/api/v1/office/syllabus"))).status).toBe(200);
+    expect((await officePost(json("/x", { gradeLevel: "4", subject: "ZZ Head's subject", units: [{ title: "ZZ Chapter" }] }))).status).toBe(403);
     await as("ADMIN");
     expect((await officePost(json("/x", {}))).status).toBe(422);
     const saved = await officePost(json("/x", { gradeLevel: "4", subject: " Mathematics ", units: [{ title: "Numbers" }, { title: "Fractions", periodsPlanned: 8 }, { title: "Shapes" }, { title: "Data" }] }));

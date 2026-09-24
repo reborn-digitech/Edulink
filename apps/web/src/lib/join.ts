@@ -5,7 +5,7 @@ import { ageInYears } from "./dates";
 import { audit } from "./audit";
 import { forJoinCode, forSchool } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
-import { consumeByCaller, retryHintKey, CODE_LOOKUPS } from "./rate-limit";
+import { consume, consumeByCaller, retryHintKey, CODE_LOOKUPS, SCHOOL_CODE_JOINS } from "./rate-limit";
 import type { FieldErrors } from "./validation";
 import type { ActiveContext } from "./session";
 import type { Translate } from "./i18n/dictionary";
@@ -175,6 +175,20 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
   const lookup = await lookupJoinCode(rawCode, t);
   if (!lookup.ok) {
     return { ok: false, errors: { code: lookup.error }, ...(lookup.retryAfterSeconds !== undefined ? { retryAfterSeconds: lookup.retryAfterSeconds } : {}) };
+  }
+
+  /**
+   * A SCHOOL code, unlike a class code, puts the account on the roll as an
+   * active pupil with nobody's say-so. The lookup's limit is per address; this
+   * one is per account, so a login that keeps joining schools is stopped by
+   * its own name rather than by whichever address it borrowed. Counted before
+   * the joins that follow, and refused with the lookup's own sentence.
+   */
+  if (lookup.kind === "school") {
+    const gate = await consume(`join-school:${session.user.id}`, SCHOOL_CODE_JOINS.limit, SCHOOL_CODE_JOINS.windowMs);
+    if (!gate.allowed) {
+      return { ok: false, errors: { code: t("join.tooManyTries", { when: hint(t, gate.retryAfterSeconds) }) }, retryAfterSeconds: gate.retryAfterSeconds };
+    }
   }
 
   const [guards, postHere, user] = await Promise.all([

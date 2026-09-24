@@ -1132,6 +1132,7 @@
                 "properties": {
                   "schoolId": {
                     "type": "string",
+                    "maxLength": 64,
                     "nullable": true
                   },
                   "role": {
@@ -7702,15 +7703,14 @@
       },
       "post": {
         "summary": "Post a vacancy",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -7832,15 +7832,14 @@
     "/api/v1/admin/vacancies/{postingId}/close": {
       "post": {
         "summary": "Take a vacancy off the board",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -34950,10 +34949,16 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 40
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
                   }
                 },
                 "required": [
-                  "phone"
+                  "phone",
+                  "password"
                 ],
                 "additionalProperties": false
               }
@@ -35239,10 +35244,16 @@
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 320
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
                   }
                 },
                 "required": [
-                  "email"
+                  "email",
+                  "password"
                 ],
                 "additionalProperties": false
               }
@@ -41478,7 +41489,8 @@
                   },
                   "value": {
                     "type": "integer",
-                    "minimum": 1
+                    "minimum": 1,
+                    "maximum": 10000000000
                   },
                   "reason": {
                     "type": "string",
@@ -41933,7 +41945,8 @@
                 "properties": {
                   "amountPaise": {
                     "type": "integer",
-                    "minimum": 100
+                    "minimum": 100,
+                    "maximum": 10000000000
                   },
                   "reason": {
                     "type": "string",
@@ -47403,6 +47416,7 @@
                   "page": {
                     "type": "integer",
                     "minimum": 1,
+                    "maximum": 1000,
                     "default": 1
                   }
                 },
@@ -49522,15 +49536,14 @@
     "/api/v1/office/staff-attendance/settings": {
       "post": {
         "summary": "When the staff day starts and the grace before a check-in is late",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -50304,15 +50317,14 @@
       },
       "post": {
         "summary": "Replace one grade and subject's list in order; a unit sent with its id keeps its progress",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -51946,15 +51958,14 @@
       },
       "post": {
         "summary": "Set the school's teaching week; answers how many timetable slots now sit on a day the school no longer teaches",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -52357,15 +52368,14 @@
       },
       "post": {
         "summary": "Replace the report card rules; cards already built keep the rules they were built with",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -52798,15 +52808,14 @@
     "/api/v1/office/terms/{termId}/weight": {
       "post": {
         "summary": "A term's share of the annual card, in percent; null clears it",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -53544,15 +53553,14 @@
       },
       "post": {
         "summary": "Create a template; the name is unique per school",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -53887,15 +53895,14 @@
     "/api/v1/office/certificate-templates/{templateId}": {
       "post": {
         "summary": "Replace a template's wording, rows, layout and prefix; certificates already issued keep theirs",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -54240,15 +54247,14 @@
     "/api/v1/office/certificate-templates/{templateId}/archive": {
       "post": {
         "summary": "Retire a template; it is offered no more, and what was issued from it stands",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -61268,15 +61274,14 @@
       },
       "post": {
         "summary": "Create a cycle: grades and seats, documents asked for, entrance test, notice, dates, fee structure; the same name for the same year is the same cycle",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -62374,15 +62379,14 @@
     "/api/v1/office/admissions/cycles/{cycleId}/purge": {
       "post": {
         "summary": "Delete the forms and documents of families a CLOSED cycle did not admit",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -64537,7 +64541,8 @@
                         },
                         "fileId": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "maxLength": 64
                         },
                         "name": {
                           "type": "string",
@@ -66647,6 +66652,9 @@
                     "firstSignInCode": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "noteKey": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -68423,7 +68431,8 @@
                         },
                         "fileId": {
                           "type": "string",
-                          "minLength": 1
+                          "minLength": 1,
+                          "maxLength": 64
                         },
                         "name": {
                           "type": "string",

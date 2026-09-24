@@ -21,14 +21,20 @@ export function randomCode(length: number): string {
 }
 
 /**
- * School code: a readable prefix from the school name plus 4 random chars.
- * "Riverside Primary" -> "RIVER-7X9K". Uniqueness is enforced by the unique
- * index; callers retry on collision.
+ * School code: a readable prefix from the school name plus 8 random chars.
+ * "Riverside Primary" -> "RIVER-7X9K-M3QT". Uniqueness is enforced by the
+ * unique index; callers retry on collision.
+ *
+ * EIGHT, NOT FOUR. The prefix is the school's name, which is public, so four
+ * characters from a 21-letter alphabet left ~194,000 codes to try per school
+ * — and a school code, unlike a class code, makes an ACTIVE pupil on the
+ * roll the moment it is typed. Two groups of four are ~38 bits, still read
+ * aloud in two breaths. Codes already issued keep their length.
  */
 export function schoolCode(schoolName: string): string {
   const letters = schoolName.toUpperCase().replace(/[^A-Z]/g, "");
   const prefix = (letters.slice(0, 5) || "SCHOOL").padEnd(5, "X");
-  return `${prefix}-${randomCode(4)}`;
+  return `${prefix}-${randomCode(4)}-${randomCode(4)}`;
 }
 
 /** Class join code, e.g. "K7M-3QF4". Short enough to read aloud. */

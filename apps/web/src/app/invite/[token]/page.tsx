@@ -97,10 +97,13 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   const holder = invite.email
     ? await db.user.findUnique({
         where: { email: invite.email.toLowerCase() },
-        select: { name: true, preferredName: true, passwordHash: true },
+        select: { id: true, name: true, preferredName: true, passwordHash: true, emailVerifiedAt: true },
       })
     : null;
-  const hasAccount = Boolean(holder?.passwordHash);
+  // An account counts as somebody's only once its address was proved; an
+  // unverified holder is reclaimed by the invitation (actions.ts) and sets a
+  // fresh password like a newcomer.
+  const hasAccount = Boolean(holder?.passwordHash && holder?.emailVerifiedAt);
 
   // Whoever is already signed in on this browser, if anybody. A server fact,
   // read here rather than guessed in the client, because the banner below is
@@ -113,6 +116,10 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
     current !== null &&
     (current.user.email ?? "").toLowerCase() !== (invite?.email ?? "").toLowerCase();
   const signedInAs = someoneElse ? (current.user.preferredName ?? current.user.name) : null;
+  // A verified holder who is not signed in as themselves proves it with their
+  // password before the membership attaches; signed in as themselves, the
+  // session is the proof.
+  const needsPassword = hasAccount && !(current !== null && holder !== null && current.user.id === holder.id);
 
   return (
     <Shell t={t} brand={context?.school.brandPrimary ?? null}>
@@ -218,6 +225,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           defaultSubjects={readJsonArray<string>(invite.subjects)}
           role={role}
           hasAccount={hasAccount}
+          needsPassword={needsPassword}
         />
       </div>
     </Shell>

@@ -30,12 +30,12 @@ export async function post(input: {
   hiringContactMembershipId: string;
 }) {
   return run(async () => {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const result = await createPosting(ctx, input);
     return result.ok ? { ok: true as const, postingId: result.postingId } : result;
   });
 }
 
 export async function close(postingId: string) {
-  return run(async () => closePosting(await requireApiRole("ADMIN", "PRINCIPAL"), postingId));
+  return run(async () => closePosting(await requireApiRole("ADMIN"), postingId));
 }

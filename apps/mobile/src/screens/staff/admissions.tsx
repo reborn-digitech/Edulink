@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
+import { useRole } from "@/lib/session";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { cyclePurgedSchema, cycleSchema, cyclesViewSchema, type CycleView } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Text, useToast } from "@/components";
@@ -19,11 +20,14 @@ const CYCLES_PATH = "/api/v1/office/admissions/cycles";
  * with its seats per grade and how many applications stand at each stage,
  * opened or closed from here, its sittings a row away, and the pipeline a
  * button away. A closed cycle can have the forms it did not admit deleted,
- * after a question. Designing a cycle (grades, documents, the test, the
- * notice) stays on the web, so the empty state's door is there.
+ * after a question — by the admin; the head opens and closes the door and
+ * decides on the families, and never deletes a form. Designing a cycle
+ * (grades, documents, the test, the notice) stays on the web, so the empty
+ * state's door is there.
  */
 export function StaffAdmissions() {
   const t = useT();
+  const canPurge = useRole() === "ADMIN";
   const th = useTheme();
   const router = useRouter();
   const toast = useToast();
@@ -89,7 +93,7 @@ export function StaffAdmissions() {
                   )}
                   <Button label={t("admissions.pipelineTitle")} variant="ghost" onPress={() => router.push({ pathname: "/(app)/applications", params: { cycleId: c.id } } as never)} />
                 </View>
-                {c.status === "CLOSED" ? (
+                {c.status === "CLOSED" && canPurge ? (
                   purging === c.id ? (
                     <Confirm question={t("admissions.purgeConfirm")} confirmLabel={t("admissions.purge")} busy={purge.isPending} onConfirm={() => purge.mutate(c.id)} onCancel={() => setPurging(null)} />
                   ) : (

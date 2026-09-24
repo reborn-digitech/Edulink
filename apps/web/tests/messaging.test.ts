@@ -25,6 +25,7 @@ import {
   messagingSettings,
   previewBroadcast,
   recordProviderStatus,
+  statusMovesForward,
   resendBroadcastFailures,
   resolveAudience,
   saveMessagingSettings,
@@ -253,6 +254,18 @@ describe("broadcasts", () => {
     const sent = (await rows({ userId: parentB, purpose: "broadcast", status: "SENT" }))[0]!;
     expect(await recordProviderStatus(schoolId, { sid: sent.providerSid!, status: "delivered" })).toBe(true);
     expect((await db.outboundMessage.findUniqueOrThrow({ where: { id: sent.id } })).status).toBe("DELIVERED");
+    // FORWARD ONLY: a late or replayed "sent" after "delivered" changes nothing, and a terminal state stays.
+    expect(await recordProviderStatus(schoolId, { sid: sent.providerSid!, status: "sent" })).toBe(true);
+    const still = await db.outboundMessage.findUniqueOrThrow({ where: { id: sent.id } });
+    expect(still.status).toBe("DELIVERED");
+    expect(still.providerStatus).toBe("delivered");
+    expect(statusMovesForward("QUEUED", "SENT")).toBe(true);
+    expect(statusMovesForward("SENT", "DELIVERED")).toBe(true);
+    expect(statusMovesForward("DELIVERED", "SENT")).toBe(false);
+    expect(statusMovesForward("FAILED", "DELIVERED")).toBe(false);
+    expect(statusMovesForward("UNDELIVERED", "SENT")).toBe(false);
+    expect(statusMovesForward("SENT", "FAILED")).toBe(true);
+    expect(statusMovesForward("SKIPPED", "SENT")).toBe(false);
     expect(await recordProviderStatus(schoolId, { sid: "SMnope", status: "delivered" })).toBe(false);
     const other = (await rows({ userId: parentB, purpose: "broadcast", status: "SENT" }))[0];
     if (other) {

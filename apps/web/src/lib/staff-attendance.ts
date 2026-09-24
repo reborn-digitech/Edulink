@@ -158,6 +158,8 @@ export async function markStaffRegister(ctx: ActiveContext, input: { date: strin
 /** The office sets when the staff day starts and the grace before a check-in is late. */
 export async function saveStaffAttendanceSettings(ctx: ActiveContext, input: { checkInMinute: number; lateGraceMinutes: number }): Promise<void> {
   const caller = office(ctx);
+  // The clock is set up by the admin; the head marks the register against it.
+  if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
   await db.school.update({ where: { id: caller.schoolId }, data: { staffCheckInMinute: input.checkInMinute, staffLateGraceMinutes: input.lateGraceMinutes } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.settings", targetType: "School", targetId: caller.schoolId, meta: input });
 }

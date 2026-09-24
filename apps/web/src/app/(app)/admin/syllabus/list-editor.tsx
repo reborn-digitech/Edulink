@@ -48,7 +48,8 @@ export function parsePastedChapters(text: string): { title: string; periods: str
  * a retitle or a move; a row removed here removes that progress, which the
  * warning under the list says before the save does it.
  */
-export function ListEditor({ gradeLevel, subject, units }: { gradeLevel: string; subject: string; units: Unit[] }) {
+/** `readOnly` is the head's view: the list as it stands, nothing to move, add or save, because the lists are the admin's. */
+export function ListEditor({ gradeLevel, subject, units, readOnly = false }: { gradeLevel: string; subject: string; units: Unit[]; readOnly?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -103,6 +104,12 @@ export function ListEditor({ gradeLevel, subject, units }: { gradeLevel: string;
 
   return (
     <form onSubmit={submit} noValidate className="space-y-5" data-testid="syllabus-list-editor">
+      {readOnly && (
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+          {t("common.officeSetsThis")}
+        </p>
+      )}
+      <fieldset disabled={readOnly} className="min-w-0 space-y-5">
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
@@ -139,18 +146,22 @@ export function ListEditor({ gradeLevel, subject, units }: { gradeLevel: string;
         })}
       </ol>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <Button type="button" variant="secondary" size="sm" onClick={add} icon={<PlusIcon weight="bold" />}>
-          {t("syllabus.addChapter")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Button type="button" variant="secondary" size="sm" onClick={add} icon={<PlusIcon weight="bold" />}>
+            {t("syllabus.addChapter")}
+          </Button>
+        </div>
+      )}
 
-      <div className="space-y-2 rounded-[--radius-md] border border-dashed border-border p-3">
-        <TextAreaField label={t("syllabus.paste")} hint={t("syllabus.pasteHint")} rows={4} value={paste} onChange={(e) => setPaste(e.target.value)} />
-        <Button type="button" variant="secondary" size="sm" disabled={paste.trim() === ""} onClick={appendPasted} icon={<PlusIcon weight="bold" />}>
-          {t("common.add")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="space-y-2 rounded-[--radius-md] border border-dashed border-border p-3">
+          <TextAreaField label={t("syllabus.paste")} hint={t("syllabus.pasteHint")} rows={4} value={paste} onChange={(e) => setPaste(e.target.value)} />
+          <Button type="button" variant="secondary" size="sm" disabled={paste.trim() === ""} onClick={appendPasted} icon={<PlusIcon weight="bold" />}>
+            {t("common.add")}
+          </Button>
+        </div>
+      )}
 
       {(removedCount > 0 || units.length > 0) && (
         <p className={`flex items-start gap-2 text-sm ${removedCount > 0 ? "rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-warn" : "text-fg-muted"}`}>
@@ -159,11 +170,14 @@ export function ListEditor({ gradeLevel, subject, units }: { gradeLevel: string;
         </p>
       )}
 
-      <div className="flex flex-wrap items-center gap-2">
-        <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
-          {t("syllabus.save")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />}>
+            {t("syllabus.save")}
+          </Button>
+        </div>
+      )}
+      </fieldset>
     </form>
   );
 }

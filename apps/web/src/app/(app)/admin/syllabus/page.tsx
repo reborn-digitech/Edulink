@@ -121,7 +121,7 @@ export default async function SyllabusPage({ searchParams }: { searchParams: Pro
             }
           />
           <CardBody>
-            <ListEditor key={`${chosen.gradeLevel}|${chosen.subject}|${data.units.map((u) => u.id).join(",")}`} gradeLevel={chosen.gradeLevel} subject={chosen.subject} units={data.units} />
+            <ListEditor key={`${chosen.gradeLevel}|${chosen.subject}|${data.units.map((u) => u.id).join(",")}`} gradeLevel={chosen.gradeLevel} subject={chosen.subject} units={data.units} readOnly={ctx.role !== "ADMIN"} />
           </CardBody>
         </Card>
       )}

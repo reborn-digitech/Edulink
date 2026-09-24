@@ -512,16 +512,64 @@ const GLOBALLY_READABLE: Record<string, string> = {
  * READ ONLY, like everything else here: it goes into the FOR SELECT policy and
  * never into WITH CHECK, so Oakfield can read the certificate and can never
  * write, edit or withdraw one. Issuing stays with the school that signed it.
+ *
+ * A PUPIL'S ROLL, NOT ANY MEMBERSHIP. The audit's third finding: the clause
+ * was anchored on a live membership of any kind, so a school that employed
+ * somebody as a TEACHER could read every leaving certificate that person had
+ * ever been issued as a child. The transfer flow only ever reads through
+ * `recordsForStudentMembership` (src/lib/school-record.ts), which resolves the
+ * membership with `role: "STUDENT"` first — so the policy now says the same
+ * thing: the child must be on THIS school's roll as a pupil, now. A school's
+ * staff room opens nobody's history. The pupil, their guardians and the
+ * issuing school keep their own ways in (SELF_READABLE, GUARDIAN_READABLE and
+ * the tenant clause), which do not pass through here.
+ *
+ * WHAT IS KEPT, AND WHY IT IS SAID OUT LOUD: the receiving school still reads
+ * the certificate under nothing more than its ordinary tenant binding, because
+ * that is the transfer flow — `npm run rls:verify` asserts it by name ("…and
+ * so can the school the child attends NOW") and the office's records page
+ * depends on it. Narrowing it to an explicit per-read setting would be a
+ * stronger door; it was not done here because the verify script, which is the
+ * proof this file is measured against, binds the school and nothing else.
  */
 const MEMBER_READABLE: Record<string, string> = {
   SchoolRecord: `EXISTS (
            SELECT 1 FROM "Membership" m
             WHERE m."userId" = "SchoolRecord"."studentUserId"
               AND m."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND m."role" = 'STUDENT'
               AND m."status" = 'ACTIVE'
               AND m."leftAt" IS NULL
          )`,
 };
+
+/**
+ * Tenant tables that are APPEND-ONLY for the application: INSERT and SELECT,
+ * never UPDATE or DELETE.
+ *
+ * There is one, and it is the audit log. `audit.ts` has called itself
+ * "append-only" since the first commit, and for as long as the policy was FOR
+ * ALL that was a promise made by the ORM's call sites rather than by the
+ * database: any code path bound to a school — a compromised admin session, a
+ * bug, a bad afternoon — could UPDATE the line saying what it had done, or
+ * DELETE it. A log that can be edited by the people it describes is a diary.
+ *
+ * So the write policy on these tables is FOR INSERT ONLY. Postgres denies what
+ * no policy permits, so with no UPDATE or DELETE policy the app role cannot
+ * change or remove a row however it is bound — the same construction that
+ * makes OperatorAccess append-only, applied to the table whose whole purpose
+ * is to be believed. `scripts/db-grants.mjs` revokes UPDATE and DELETE from the
+ * app role as well, so the refusal is a privilege error rather than a silent
+ * zero even if a policy is ever added back.
+ *
+ * WHO STILL DELETES: the retention sweep, which runs on the OWNER connection
+ * (JOBS_RUNNER=1 in src/lib/db.ts) and prunes by age for every school at
+ * once. The owner is a role that bypasses row security, which is why the sweep
+ * worked before this change and why it still does; a school deleted entirely
+ * takes its audit rows with it through the foreign key's cascade, which
+ * Postgres runs as the table owner and outside row security by definition.
+ */
+const APPEND_ONLY = new Set(["AuditLog"]);
 
 /**
  * Tables where the row matching an unguessable CODE may be read, by the named
@@ -584,6 +632,35 @@ function models(): string[] {
     if (name === "School" || /^\s*schoolId\s/m.test(body!)) found.push(name!);
   }
   return found;
+}
+
+/**
+ * The scalar columns of one model, in schema order — what a row-level trigger
+ * has to compare when it asks "did anything but X change?". Read from the
+ * schema rather than listed by hand so a column added to the model tomorrow is
+ * frozen by the same trigger without anybody remembering this file.
+ *
+ * A relation field's type is another model's name; everything else is a
+ * scalar or an enum and is a column. `@@` lines and `///` comments are not
+ * fields.
+ */
+function scalarColumns(model: string): string[] {
+  const schema = readFileSync(SCHEMA_PATH, "utf8");
+  const names = new Set(
+    [...schema.matchAll(/^model\s+(\w+)\s*\{/gm)].map((match) => match[1]!),
+  );
+  const body = new RegExp(`^model\\s+${model}\\s*\\{([\\s\\S]*?)^\\}`, "m").exec(schema)?.[1];
+  if (!body) throw new Error(`no model ${model} in the schema`);
+  const columns: string[] = [];
+  for (const line of body.split("\n")) {
+    const field = /^\s*(\w+)\s+(\w+)(?:\[\])?\??(?:\s|$)/.exec(line);
+    if (!field || line.trim().startsWith("//") || line.trim().startsWith("@@")) continue;
+    const [, name, type] = field;
+    if (names.has(type!)) continue;
+    columns.push(name!);
+  }
+  if (columns.length === 0) throw new Error(`no scalar columns read for ${model}`);
+  return columns;
 }
 
 function generate(): string {
@@ -711,8 +788,9 @@ function generate(): string {
         `  -- …and the leaving certificate of a child who is one of YOUR pupils`,
         `  -- now, whichever school issued it. The one clause in this file that`,
         `  -- crosses schools, on one table that holds a summary rather than a`,
-        `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership,`,
-        `  -- so it cannot be used to browse.`,
+        `  -- record — see MEMBER_READABLE. Anchored on a live ACTIVE membership`,
+        `  -- in the STUDENT role, so it cannot be used to browse and a member of`,
+        `  -- staff's own school days stay out of their employer's reach.`,
       );
     }
     if (recordClause) {
@@ -769,16 +847,41 @@ function generate(): string {
         ]
       : [`  WITH CHECK (${scoped});`];
 
+    // An append-only table's "isolation" policy is FOR INSERT and nothing
+    // else. It keeps the name so the count in tests/rls-sql.test.ts still
+    // finds one write policy per tenant table; what changes is that no policy
+    // anywhere on the table permits UPDATE or DELETE. See APPEND_ONLY.
+    const appendOnly = APPEND_ONLY.has(table);
+    if (appendOnly && alsoReadable.length === 0) {
+      // Without a separate SELECT policy an INSERT-only table could be
+      // written and never read. Every table in APPEND_ONLY has one today;
+      // this fails generation rather than shipping a write-only log.
+      throw new Error(`${table} is APPEND_ONLY but has no read policy of its own`);
+    }
+
     lines.push(
       `-- ${table}`,
       `ALTER TABLE "${table}" ENABLE ROW LEVEL SECURITY;`,
       `ALTER TABLE "${table}" FORCE ROW LEVEL SECURITY;`,
       `DROP POLICY IF EXISTS "${table}_tenant_isolation" ON "${table}";`,
       `DROP POLICY IF EXISTS "${table}_readable" ON "${table}";`,
-      `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
-      ...(alsoReadable.length > 0 ? [`  FOR ALL`] : []),
-      `  USING (${scoped})`,
-      ...writeCheck,
+      ...(appendOnly
+        ? [
+            `-- APPEND-ONLY: this is the table's only write policy and it is FOR`,
+            `-- INSERT. No policy on this table permits UPDATE or DELETE, so the`,
+            `-- application cannot edit or remove a line however it is bound; the`,
+            `-- retention sweep prunes by age on the owner connection, which is`,
+            `-- outside row security. See APPEND_ONLY in scripts/gen-rls.ts.`,
+            `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
+            `  FOR INSERT`,
+            ...writeCheck,
+          ]
+        : [
+            `CREATE POLICY "${table}_tenant_isolation" ON "${table}"`,
+            ...(alsoReadable.length > 0 ? [`  FOR ALL`] : []),
+            `  USING (${scoped})`,
+            ...writeCheck,
+          ]),
     );
 
     if (alsoReadable.length > 0) {
@@ -1006,6 +1109,45 @@ function generate(): string {
       `  FOR UPDATE`,
       `  USING (current_setting('app.is_superuser', true) = '1')`,
       `  WITH CHECK (current_setting('app.is_superuser', true) = '1');`,
+    );
+
+    /**
+     * CLOSING IS THE ONLY EDIT. The UPDATE policy above says WHO may write a
+     * row and nothing about WHAT: a policy compares the new row against a
+     * predicate, never against the old one, so under it alone the operator
+     * could rewrite the reason, backdate `startedAt` or stretch `expiresAt` on
+     * a visit already in the school's book. A trigger can see both rows, so
+     * this one refuses any UPDATE that changes a column other than `endedAt`
+     * — for every role but the table's owner, who is "whoever runs the server
+     * has psql" and is the honest limit every note on this table states.
+     * `scripts/db-grants.mjs` says the same thing a second way, as a
+     * column-level grant to the app role.
+     *
+     * The column list is read from the schema, so a column added to the model
+     * is frozen too.
+     */
+    const frozen = scalarColumns(table).filter((column) => column !== "endedAt");
+    lines.push(
+      `-- The only column the application may change on a written row is`,
+      `-- "endedAt". The owner is exempt (psql is the stated limit); everyone`,
+      `-- else is refused with insufficient_privilege. See the note above the`,
+      `-- trigger in scripts/gen-rls.ts.`,
+      `CREATE OR REPLACE FUNCTION "${table}_close_only"() RETURNS trigger`,
+      `  LANGUAGE plpgsql AS $$`,
+      `BEGIN`,
+      `  IF pg_has_role(current_user, (SELECT c.relowner FROM pg_class c WHERE c.oid = TG_RELID), 'MEMBER') THEN`,
+      `    RETURN NEW;`,
+      `  END IF;`,
+      `  IF ${frozen.map((column) => `NEW."${column}" IS DISTINCT FROM OLD."${column}"`).join(`\n     OR `)} THEN`,
+      `    RAISE EXCEPTION '${table} is append-only: only "endedAt" may change'`,
+      `      USING ERRCODE = 'insufficient_privilege';`,
+      `  END IF;`,
+      `  RETURN NEW;`,
+      `END $$;`,
+      `DROP TRIGGER IF EXISTS "${table}_close_only" ON "${table}";`,
+      `CREATE TRIGGER "${table}_close_only"`,
+      `  BEFORE UPDATE ON "${table}"`,
+      `  FOR EACH ROW EXECUTE FUNCTION "${table}_close_only"();`,
       "",
     );
   }

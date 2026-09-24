@@ -65,7 +65,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
   // A child's comment is held for review inside a school; on a GLOBAL post it
   // is not — see addComment, which owns this rule. The flag only shapes the
   // hint text, so it must tell the same truth.
-  const willBeHeld = session.role === "STUDENT" && post.scope !== "GLOBAL";
+  const willBeHeld = session.role === "STUDENT" || post.scope === "GLOBAL";
 
   // The reach report, for the people who chase it up: the office, the head
   // and the class teachers of the post's own school. A teacher of no class,

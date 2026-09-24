@@ -46,7 +46,7 @@ export default async function ReportCardRulesPage() {
       />
       {/* No key on the form: a term weight saved on blur refreshes the page, and the
           bands the office was halfway through typing must survive that. */}
-      <RulesForm view={view} />
+      <RulesForm view={view} readOnly={ctx.role !== "ADMIN"} />
     </div>
   );
 }

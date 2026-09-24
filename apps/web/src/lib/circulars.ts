@@ -265,9 +265,17 @@ export async function remindCircular(session: ActiveContext, postId: string): Pr
       }
     }
   }
-  const { pushed } = await tell(post, `circular-remind:${postId}`, [...guardianIds], [...otherIds].filter((id) => !guardianIds.has(id)));
+  // THE DAY IS CLAIMED BEFORE ANYONE IS TOLD, and conditionally: the write
+  // lands only if the last reminder is older than the window, so two taps
+  // landing together — or the sweep and a tap — send one round, not two.
+  // The second writer matches zero rows and answers as the no-op above does.
   const remindedAt = new Date();
-  await db.post.update({ where: { id: postId }, data: { remindedAt, remindCount: { increment: 1 } } });
+  const claimed = await db.post.updateMany({
+    where: { id: postId, OR: [{ remindedAt: null }, { remindedAt: { lt: new Date(remindedAt.getTime() - REMIND_EVERY_MS) } }] },
+    data: { remindedAt, remindCount: { increment: 1 } },
+  });
+  if (claimed.count === 0) return { reminded: 0, texted: 0, remindedAt: reach.remindedAt ? new Date(reach.remindedAt) : remindedAt };
+  const { pushed } = await tell(post, `circular-remind:${postId}`, [...guardianIds], [...otherIds].filter((id) => !guardianIds.has(id)));
   await audit({ schoolId: post.schoolId, actorUserId: session.user.id, action: "circular.remind", targetType: "Post", targetId: postId, meta: { reminded: pushed, families: reach.totals.total - reach.totals.acked } });
   return { reminded: pushed, texted: guardianIds.size, remindedAt };
 }

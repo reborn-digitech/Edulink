@@ -6,16 +6,23 @@
 import * as SecureStore from "expo-secure-store";
 import type { KeyStore } from "./storage";
 
+/**
+ * Readable only while the device is unlocked, and never carried to another
+ * device by a backup or an iCloud keychain sync: a session token restored
+ * onto somebody else's phone is a session on somebody else's phone.
+ */
+const OPTIONS = { keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY };
+
 export function platformKeyStore(): KeyStore {
   return {
     async get(key) {
-      return SecureStore.getItemAsync(key);
+      return SecureStore.getItemAsync(key, OPTIONS);
     },
     async set(key, value) {
-      await SecureStore.setItemAsync(key, value);
+      await SecureStore.setItemAsync(key, value, OPTIONS);
     },
     async remove(key) {
-      await SecureStore.deleteItemAsync(key);
+      await SecureStore.deleteItemAsync(key, OPTIONS);
     },
   };
 }

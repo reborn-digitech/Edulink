@@ -32,11 +32,23 @@ import type { TranslationKey } from "./i18n/dictionary";
 
 export type VacancyResult = { ok: true; postingId?: string } | { ok: false; errorKey: TranslationKey };
 
-function requireStaffing(ctx: ActiveContext): { schoolId: string; membershipId: string } {
+/** The desk is read by the office and the head alike: what the school has posted and what each post drew. */
+function requireDesk(ctx: ActiveContext): { schoolId: string; membershipId: string } {
   if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId || !ctx.membershipId) {
     throw new AccessError("access.onlyThePrincipalOrAnAdminCan");
   }
   return { schoolId: ctx.schoolId, membershipId: ctx.membershipId };
+}
+
+/**
+ * Posting and closing shape the school's hiring, which is setting the
+ * school up: the admin's. The head reads the desk (requireDesk) and the
+ * enquiries, and does not open or close a post.
+ */
+function requireStaffing(ctx: ActiveContext): { schoolId: string; membershipId: string } {
+  const desk = requireDesk(ctx);
+  if (ctx.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
+  return desk;
 }
 
 export async function createPosting(
@@ -287,7 +299,7 @@ export async function listOurPostings(
   ctx: ActiveContext,
   opts: { status?: "OPEN" | "CLOSED" | "ALL" } = {},
 ): Promise<OwnPosting[]> {
-  const { schoolId } = requireStaffing(ctx);
+  const { schoolId } = requireDesk(ctx);
   const status = opts.status ?? "ALL";
   const rows = await db.jobPosting.findMany({
     where: { schoolId, ...(status === "ALL" ? {} : { status }) },

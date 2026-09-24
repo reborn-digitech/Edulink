@@ -1,5 +1,5 @@
 import "server-only";
-import { PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { FAMILY_RECORD_FIELDS, PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { audit } from "./audit";
@@ -99,10 +99,22 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
   return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
 }
 
-/** Writes the whole record. A blank clears the field. The family's write is dated so the office sees who filled it. */
-export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: string, input: PupilRecordSave): Promise<PupilRecordView> {
+/** What a family's body may carry: its own fields, and the PEN only so the guard below can see it was not changed. */
+const FAMILY_WRITABLE: ReadonlySet<string> = new Set<string>([...FAMILY_RECORD_FIELDS, "penNumber"]);
+
+/**
+ * Writes the whole record. A blank clears the field. The family's write is
+ * dated so the office sees who filled it — and is cut to the family's
+ * fields first: the admission number and date, the grade admitted to, the
+ * previous school's TC, the category, caste, gender and the BPL, EWS and
+ * impairment answers are the office's, feed the leaving certificate and
+ * the filings, and a family's body naming them (a blank included) changes
+ * nothing, exactly as the roll number and the PEN already worked.
+ */
+export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: string, raw: PupilRecordSave): Promise<PupilRecordView> {
   const viewer = await admit(ctx, studentMembershipId);
   if (!viewer.canEdit) throw new AccessError("access.notAllowed");
+  const input: PupilRecordSave = viewer.family ? (Object.fromEntries(Object.entries(raw).filter(([k]) => FAMILY_WRITABLE.has(k))) as PupilRecordSave) : raw;
   const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
   // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
   // principal reads it, and a correction after the first entry goes through a change request

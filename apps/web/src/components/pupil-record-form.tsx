@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
-import { CWSN_TYPES, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
+import { CWSN_TYPES, FAMILY_RECORD_FIELDS, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
@@ -26,8 +26,18 @@ import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
  * by hand. The filing group holds what UDISE+ and the boards ask beyond a
  * certificate — coded answers picked from the portal's own lists, sent as
  * the same strings every other field is, a blank clearing the value.
+ *
+ * WHO WRITES WHICH FIELD: the office form (`office`) has every field. A
+ * family's form — a guardian's or the pupil's own — types only
+ * FAMILY_RECORD_FIELDS from the contracts; the admission number and date,
+ * the grade admitted to, the previous school's TC, the category, caste,
+ * gender and the BPL, EWS and impairment answers feed the leaving
+ * certificate and the filings, so the family reads them under the office's
+ * note and the form never sends them, as it never sent the roll number or
+ * the PEN. The server drops them from a family's body regardless.
  */
 type FieldGroup = { fields: PupilRecordField[] };
+const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
 
 export function PupilRecordForm({ view, required, optional, filing = [], admin = false, office = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean; office?: boolean }) {
   const t = useT();
@@ -73,8 +83,8 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       // through a correction the head and a guardian approve, so a locked
       // number is not sent back at all.
       if (f === "penNumber" && !view.penEditable) continue;
-      // The roll number is the office's; a family's form shows it and never sends it.
-      if (f === "rollNumber" && !office) continue;
+      // The office's fields — the roll number among them — a family's form shows and never sends.
+      if (!office && !FAMILY_WRITABLE.has(f)) continue;
       const v = values[f].trim();
       if (f === "admissionDate") input.admissionDate = v || null;
       else if (f === "previousSchoolTcDate") input.previousSchoolTcDate = v || null;
@@ -101,8 +111,10 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       return <TextField key={f} label={label} hint={locked} value={values.penNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
     }
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setValues((v) => ({ ...v, [f]: e.target.value }));
-    if (f === "rollNumber" && !office) {
-      return <TextField key={f} label={label} hint={t("pupilRecord.rollNumberOffice")} value={values.rollNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
+    if (!office && !FAMILY_WRITABLE.has(f)) {
+      // The office's: shown as the word the office picked (or the value as typed), never typed here.
+      const shown = choicesFor[f]?.find((c) => c.value === values[f] && c.value !== "")?.text ?? values[f];
+      return <TextField key={f} label={label} hint={t("pupilRecord.rollNumberOffice")} value={shown || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
     }
     if (f === "admissionDate" || f === "previousSchoolTcDate") {
       return <DateField key={f} label={label} hint={hint} required={isRequired(f)} value={values[f]} disabled={readOnly} onChange={onChange} data-testid={`record-${f}`} />;

@@ -34,7 +34,10 @@ async function refused(refusal: MergeRefusal): Promise<{ ok: false; error: strin
     vars.role = t(ROLE_META[vars.role as Role].labelKey);
   }
   if (vars.school === "") vars.school = t("refusal.theSameSchool");
-  return { ok: false, error: refusalText(t, { errorKey: refusal.errorKey, errorVars: vars }) };
+  return {
+    ok: false,
+    error: refusalText(t, { errorKey: refusal.errorKey, errorVars: vars, retryAfterSeconds: refusal.retryAfterSeconds }),
+  };
 }
 
 type CheckOut = Exclude<MergePreview, MergeRefusal> | { ok: false; error: string };

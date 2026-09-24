@@ -14,7 +14,7 @@ function fromApp(cookieValue: string | undefined): boolean {
     return false;
   }
 }
-import { resolveContext } from "@/app/login/actions";
+import { resolveContext } from "@/lib/resolve-context";
 import {
   completeSso,
   signInWithSso,
@@ -64,7 +64,9 @@ async function handle(
   if (!result.ok) return away(result.reason === "state" ? "state" : "failed");
 
   const outcome = await signInWithSso(id, result.identity);
-  if (!outcome.ok) return away(outcome.reason === "disabled" ? "disabled" : "noaccount");
+  if (!outcome.ok) {
+    return away(outcome.reason === "disabled" ? "disabled" : outcome.reason === "unverified-email" ? "unverified" : "noaccount");
+  }
 
   const user = await db.user.findUnique({
     where: { id: outcome.userId },

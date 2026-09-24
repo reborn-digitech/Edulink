@@ -2079,7 +2079,19 @@ async function buildContentTeam(ctx: Ctx) {
 
 /* -------------------------------------------------------------------------- */
 
+/** The fixtures mint known passwords and a superuser: never against a database that is not on this machine, never on production. */
+export function refuseUnlessLocal(): void {
+  const url = process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL ?? "";
+  let host = "";
+  try { host = new URL(url).hostname; } catch { host = ""; }
+  const local = ["localhost", "127.0.0.1", "::1", "[::1]"].includes(host);
+  if (process.env.NODE_ENV === "production" || !local) {
+    throw new Error(`refusing to build fixtures: NODE_ENV=${process.env.NODE_ENV ?? "unset"}, database host "${host || "unknown"}" is not local`);
+  }
+}
+
 async function main() {
+  refuseUnlessLocal();
   if (process.argv.includes("--teardown")) {
     await teardown();
     return;

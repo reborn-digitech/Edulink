@@ -16,7 +16,7 @@ export async function GET() {
 /** POST /api/v1/office/school-week — set the school's teaching week. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = schoolWeekSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(schoolWeekSavedSchema.parse(await setSchoolWeek(ctx, parsed.data)));

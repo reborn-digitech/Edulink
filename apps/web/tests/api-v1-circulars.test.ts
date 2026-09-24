@@ -192,6 +192,19 @@ describe("reach", () => {
     expect(audits.map((a) => a.action).sort()).toEqual(["circular.deliver", "circular.remind"]);
   });
 
+  it("two chases landing together send one round: the day is claimed by a conditional write", async () => {
+    await db.post.update({ where: { id: postId }, data: { remindedAt: new Date(Date.now() - 25 * 3_600_000) } });
+    await as("PRINCIPAL");
+    const before = await db.notification.count({ where: { url: `/bulletin/${postId}` } });
+    const [a, b] = await Promise.all([remindPost(post("/x"), params(postId)), remindPost(post("/x"), params(postId))]);
+    expect(a.status).toBe(200);
+    expect(b.status).toBe(200);
+    const outs = [await a.json(), await b.json()];
+    expect(outs.map((o) => o.reminded).sort()).toEqual([0, 2]);
+    expect(await db.notification.count({ where: { url: `/bulletin/${postId}` } })).toBe(before + 2);
+    expect((await db.post.findUniqueOrThrow({ where: { id: postId } })).remindCount).toBe(2);
+  });
+
   it("the office list sums every circular; a teacher is refused", async () => {
     await as("ADMIN");
     const list = await (await circularsGet()).json();

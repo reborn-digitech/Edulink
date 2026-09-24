@@ -9,9 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("certificates.newTemplate") };
 }
 
-/** A new template, started from a preset in the language the document is written in. */
+/** A new template, started from a preset in the language the document is written in. The admin's page: the head reads templates, and does not design them. */
 export default async function NewTemplatePage() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN");
   const t = await getT();
   const view = await templatesView(ctx);
   return (

@@ -72,13 +72,16 @@ export const accountSignOutDeviceSchema = z.object({ sessionId: z.string().min(1
 export const accountSignOutOthersSchema = z.object({ confirm: z.literal(true) });
 export const accountSignedOutSchema = z.object({ count: z.number().int().nonnegative() });
 
-/** POST /api/v1/account/mobile/code — step one: text a code to the number. Nothing is saved yet. */
-export const accountMobileCodeSchema = z.object({ phone: z.string().trim().min(1).max(40) });
+/** The current password, required to move where reset codes go: a session is not proof of the person. */
+const currentPasswordSchema = z.string().min(1).max(200);
+
+/** POST /api/v1/account/mobile/code — step one: text a code to the number, given the current password. Nothing is saved yet. */
+export const accountMobileCodeSchema = z.object({ phone: z.string().trim().min(1).max(40), password: currentPasswordSchema });
 /** The last digits the code went to, for "sent to the number ending …". */
 export const accountMobileCodeSentSchema = z.object({ hint: z.string().nullable() });
 
-/** POST /api/v1/account/email/code — step one: email a code to the address. Nothing changes yet. */
-export const accountEmailCodeSchema = z.object({ email: z.string().trim().min(1).max(320) });
+/** POST /api/v1/account/email/code — step one: email a code to the address, given the current password. Nothing changes yet. */
+export const accountEmailCodeSchema = z.object({ email: z.string().trim().min(1).max(320), password: currentPasswordSchema });
 export const accountEmailCodeSentSchema = z.object({ sentTo: z.string() });
 
 /** POST /api/v1/account/{mobile|email}/confirm — step two: the code that came back. */

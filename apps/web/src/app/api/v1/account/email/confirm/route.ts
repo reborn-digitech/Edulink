@@ -10,7 +10,8 @@ export async function POST(request: Request) {
     const ctx = await requireApiSession();
     const parsed = accountCodeConfirmSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    const result = await confirmEmailChange(ctx.user.id, parsed.data.code);
+    // This session stays; every other device is signed out by the lib.
+    const result = await confirmEmailChange(ctx.user.id, parsed.data.code, ctx.sessionId);
     if (!result.ok) return apiRefusal({ errorKey: result.errorKey ?? "refusal.codeWrong", retryAfterSeconds: result.retryAfterSeconds }, "code");
     return ok(okSchema.parse({ ok: true }));
   } catch (error) {

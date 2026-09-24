@@ -2,6 +2,8 @@ import { afterAll, afterEach, beforeAll, describe, expect, it, beforeEach } from
 import { PrismaClient } from "@prisma/client";
 import { hashPassword } from "@/lib/crypto";
 import { mergeAccounts, previewMerge } from "@/lib/account-merge";
+import { signInWithPassword } from "@/lib/auth-login";
+import { LOGIN_ATTEMPTS } from "@/lib/rate-limit";
 import { recordDeparture, recordsForStudentUser } from "@/lib/school-record";
 import { login } from "@/app/login/actions";
 import type { ActiveContext } from "@/lib/session";
@@ -257,7 +259,18 @@ afterEach(wipe);
  * identifiers this file uses, by the same make-your-own-fixtures rule.
  */
 beforeEach(async () => {
-  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "login:" } } });
+  // THIS FILE'S OWN LOGINS, not every `login:` row: a wipe of the whole prefix
+  // resets the count another suite is in the middle of asserting on — vitest
+  // runs files in parallel — and login-limits.test.ts counts to eleven.
+  await db.rateLimit.deleteMany({
+    where: {
+      OR: [
+        { bucket: { in: [OLD_EMAIL, NEW_EMAIL, THIRD_EMAIL, ADMIN_EMAIL].map((e) => `login:${e}`) } },
+        { bucket: { startsWith: "login:nobody." } },
+        { bucket: { startsWith: "merge:" } },
+      ],
+    },
+  });
 });
 
 afterAll(async () => {
@@ -437,6 +450,37 @@ describe("merging", () => {
 });
 
 describe("what it refuses", () => {
+  it("⚠ a merge check draws on the login's own bucket, so guesses here and at the front door are one count", async () => {
+    await makeForkedPupil();
+    const keeper = ctx({ userId: newUserId, membershipId: newMembershipId, schoolId: destinationId, role: "STUDENT" });
+
+    // This form is a password prompt for any account, and it had no limit at
+    // all: the login form's ten never saw a guess made here.
+    for (let i = 0; i < LOGIN_ATTEMPTS.limit; i++) {
+      expect((await previewMerge(keeper, { identifier: OLD_EMAIL, password: "not-the-password" })).ok).toBe(false);
+    }
+    const refused = await previewMerge(keeper, { identifier: OLD_EMAIL, password: PASSWORD });
+    expect(refused).toMatchObject({ ok: false, errorKey: "refusal.tooManyRetry" });
+    expect((refused as { retryAfterSeconds?: number }).retryAfterSeconds).toBeGreaterThan(0);
+
+    // The same bucket the login form reads.
+    expect(await signInWithPassword(OLD_EMAIL, PASSWORD)).toMatchObject({ ok: false, reason: "rate" });
+    // And nothing moved.
+    expect((await db.user.findUniqueOrThrow({ where: { id: oldUserId } })).disabledAt).toBeNull();
+  });
+
+  it("⚠ and on the caller's own bucket, so one session cannot walk a list of logins", async () => {
+    await makeForkedPupil();
+    const keeper = ctx({ userId: newUserId, membershipId: newMembershipId, schoolId: destinationId, role: "STUDENT" });
+    for (let i = 0; i < LOGIN_ATTEMPTS.limit; i++) {
+      await previewMerge(keeper, { identifier: `nobody.${i}@edulink.local`, password: "not-the-password" });
+    }
+    expect(await previewMerge(keeper, { identifier: OLD_EMAIL, password: PASSWORD })).toMatchObject({
+      ok: false,
+      errorKey: "refusal.tooManyRetry",
+    });
+  });
+
   it("refuses a wrong password, and says nothing about whether the account exists", async () => {
     await makeForkedPupil();
     const keeper = ctx({ userId: newUserId, membershipId: newMembershipId, schoolId: destinationId, role: "STUDENT" });

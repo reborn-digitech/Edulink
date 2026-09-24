@@ -56,7 +56,8 @@ function wholePercent(raw: string): number | null | undefined {
  * field is wrong, and again on the server so the document is never
  * malformed.
  */
-export function RulesForm({ view }: { view: ReportCardConfigView }) {
+/** `readOnly` is the head's view: every control disabled, no save and no weight written on blur, because the rules are the admin's. */
+export function RulesForm({ view, readOnly = false }: { view: ReportCardConfigView; readOnly?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -179,6 +180,7 @@ export function RulesForm({ view }: { view: ReportCardConfigView }) {
 
   /** One term's share, saved as soon as the field is left and the value differs from what stands. */
   function commitTermWeight(termId: string) {
+    if (readOnly) return;
     const raw = termWeights[termId] ?? "";
     const value = wholePercent(raw);
     if (value === undefined) {
@@ -225,6 +227,12 @@ export function RulesForm({ view }: { view: ReportCardConfigView }) {
 
   return (
     <form onSubmit={submit} noValidate className="space-y-6" data-testid="report-card-rules">
+      {readOnly && (
+        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+          {t("common.officeSetsThis")}
+        </p>
+      )}
+      <fieldset disabled={readOnly} className="min-w-0 space-y-6">
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
@@ -486,11 +494,14 @@ export function RulesForm({ view }: { view: ReportCardConfigView }) {
         </CardBody>
       </Card>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="rules-save">
-          {t("reportCardConfig.save")}
-        </Button>
-      </div>
+      {!readOnly && (
+        <div className="flex flex-wrap items-center gap-2">
+          <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="rules-save">
+            {t("reportCardConfig.save")}
+          </Button>
+        </div>
+      )}
+      </fieldset>
     </form>
   );
 }

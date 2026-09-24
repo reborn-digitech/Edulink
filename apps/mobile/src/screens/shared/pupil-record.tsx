@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -28,6 +28,17 @@ export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "catego
 /** The filing fields: the chip-picked ones send the portal's code ("M", "yes", "9", "B+") and a blank clears. */
 export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"];
 const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS];
+/**
+ * What a family's form types: the contracts' FAMILY_RECORD_FIELDS. The rest —
+ * the admission number and date, the grade admitted to, the previous
+ * school's TC, the category, caste, gender, the BPL, EWS and impairment
+ * answers, the roll number and the PEN — is the office's, feeds the leaving
+ * certificate and the filings, and is shown to the family under the
+ * office's note and never sent. Exported so a test can walk the split.
+ */
+export const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
+/** The fields a family's body leaves out: everything that is the office's, the PEN included. */
+export const OFFICE_FIELDS: PupilRecordField[] = ALL_FIELDS.filter((f) => !FAMILY_WRITABLE.has(f));
 const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
 const MAX: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, previousSchoolTcDate: 10, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
 /** The fields typed as a day key and sent as one, or null when blank. */
@@ -108,17 +119,20 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
   const issue = (field: PupilRecordField) => refusal?.issues[field];
   const dateBad = dateProblem(t, form.admissionDate) ?? dateProblem(t, form.previousSchoolTcDate);
   const editable = !busy && view.canEdit;
-  // The roll number is the office's: the family reads it and never sends it.
+  // The office's fields — the roll number among them — the family reads and never sends.
   const familySide = role === "PARENT" || role === "STUDENT";
-  const omitted: PupilRecordField[] = [...(view.penEditable ? [] : (["penNumber"] as PupilRecordField[])), ...(familySide ? (["rollNumber"] as PupilRecordField[]) : [])];
+  const omitted: PupilRecordField[] = familySide ? OFFICE_FIELDS : view.penEditable ? [] : ["penNumber"];
   const yesNo = [
     { value: "", label: t("pupilRecord.notSaid") },
     { value: "yes", label: t("pupilRecord.yes") },
     { value: "no", label: t("pupilRecord.no") },
   ];
+  /** A coded filing answer: chips for the office, the picked word under the office's note for the family. */
+  const codedChips = (field: "gender" | "bpl" | "ews" | "cwsnType", options: { value: string; label: string }[]) =>
+    familySide ? readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, options.find((o) => o.value === form[field] && o.value !== "")?.label ?? form[field]) : <Chips key={field} label={fieldLabel(t, field)} value={form[field]} options={options} onChange={(v) => set(field, v)} disabled={!editable} />;
   /** A field shown, never typed: the value or a dash, and the note that says whose it is. */
-  const readOnly = (field: PupilRecordField, note: string, testID: string) => {
-    const shown = form[field] || "—";
+  const readOnly = (field: PupilRecordField, note: string, testID: string, display?: string) => {
+    const shown = display || form[field] || "—";
     return (
       <View key={field} accessible accessibilityLabel={`${fieldLabel(t, field)}: ${shown}. ${note}`} testID={testID} style={{ gap: 2, paddingVertical: th.space[1] }}>
         <Text variant="xs" bold tone="subtle" style={{ textTransform: "uppercase", letterSpacing: 0.5 }}>
@@ -163,6 +177,12 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
       return readOnly(field, form.penNumber ? t(role === "ADMIN" ? "pupilRecord.penEnteredBy" : "pupilRecord.penLocked") : t("pupilRecord.penOnlyAdmin"), "record-pen-locked");
     }
     if (field === "rollNumber" && familySide) return readOnly(field, t("pupilRecord.rollNumberOffice"), "record-roll-office");
+    if (familySide && !FAMILY_WRITABLE.has(field)) {
+      // The office's, shown as the word the office picked (a category code as its label), never typed here.
+      const stored = form[field];
+      const shown = field === "category" && (CATEGORY_VALUES as readonly string[]).includes(stored) ? t(CATEGORY_LABEL[stored as (typeof PUPIL_CATEGORIES)[number]]) : stored;
+      return readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, shown);
+    }
     if (field === "category" || field === "religion") return coded(field);
     const isDate = DATE_FIELDS.includes(field);
     const isDigits = DIGIT_FIELDS.includes(field);
@@ -225,24 +245,18 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
         <Text variant="xs" tone="subtle">
           {t("pupilRecord.filingIntro")}
         </Text>
-        <Chips
-          label={fieldLabel(t, "gender")}
-          value={form.gender}
-          options={[
-            { value: "", label: t("pupilRecord.notSaid") },
-            { value: "M", label: t("pupilRecord.genderM") },
-            { value: "F", label: t("pupilRecord.genderF") },
-            { value: "T", label: t("pupilRecord.genderT") },
-          ]}
-          onChange={(v) => set("gender", v)}
-          disabled={!editable}
-        />
+        {codedChips("gender", [
+          { value: "", label: t("pupilRecord.notSaid") },
+          { value: "M", label: t("pupilRecord.genderM") },
+          { value: "F", label: t("pupilRecord.genderF") },
+          { value: "T", label: t("pupilRecord.genderT") },
+        ])}
         {input("nameLocal", true)}
         {input("fatherNameLocal", true)}
         {input("motherNameLocal", true)}
-        <Chips label={fieldLabel(t, "bpl")} value={form.bpl} options={yesNo} onChange={(v) => set("bpl", v)} disabled={!editable} />
-        <Chips label={fieldLabel(t, "ews")} value={form.ews} options={yesNo} onChange={(v) => set("ews", v)} disabled={!editable} />
-        <Chips label={fieldLabel(t, "cwsnType")} value={form.cwsnType} options={[{ value: "", label: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code as string, label: cwsnLabel(code) }))]} onChange={(v) => set("cwsnType", v)} disabled={!editable} />
+        {codedChips("bpl", yesNo)}
+        {codedChips("ews", yesNo)}
+        {codedChips("cwsnType", [{ value: "", label: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code as string, label: cwsnLabel(code) }))])}
         <Text variant="xs" tone="subtle">
           {t("pupilRecord.cwsnHint")}
         </Text>

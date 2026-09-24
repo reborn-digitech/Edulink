@@ -26,6 +26,8 @@ export default async function CertificatesPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   const view = await templatesView(ctx);
+  // The head reads the templates and issues from them; designing one is the admin's.
+  const canDesign = ctx.role === "ADMIN";
 
   return (
     <div className="space-y-6">
@@ -52,9 +54,11 @@ export default async function CertificatesPage() {
           title={t("certificates.templatesTitle")}
           description={t("certificates.templatesIntro")}
           action={
-            <Button asChild variant="secondary" size="sm" icon={<PlusIcon weight="bold" />}>
-              <Link href="/admin/certificates/new">{t("certificates.newTemplate")}</Link>
-            </Button>
+            canDesign ? (
+              <Button asChild variant="secondary" size="sm" icon={<PlusIcon weight="bold" />}>
+                <Link href="/admin/certificates/new">{t("certificates.newTemplate")}</Link>
+              </Button>
+            ) : undefined
           }
         />
         <CardBody>
@@ -65,9 +69,11 @@ export default async function CertificatesPage() {
               title={t("certificates.noTemplates")}
               description={t("certificates.noTemplatesBody")}
               action={
-                <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
-                  <Link href="/admin/certificates/new">{t("certificates.newTemplate")}</Link>
-                </Button>
+                canDesign ? (
+                  <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
+                    <Link href="/admin/certificates/new">{t("certificates.newTemplate")}</Link>
+                  </Button>
+                ) : undefined
               }
             />
           ) : (
@@ -89,7 +95,7 @@ export default async function CertificatesPage() {
                       {[t(CERTIFICATE_KIND_KEY[template.kind]), localeName(template.locale), `${t("certificates.serialPrefix")}: ${template.serialPrefix}`, t("certificates.issued", { count: template.issuedCount })].join(" · ")}
                     </p>
                   </div>
-                  <TemplateRowActions templateId={template.id} name={template.name} active={template.active} />
+                  {canDesign && <TemplateRowActions templateId={template.id} name={template.name} active={template.active} />}
                 </li>
               ))}
             </ul>

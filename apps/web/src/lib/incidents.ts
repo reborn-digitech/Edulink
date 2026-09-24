@@ -135,7 +135,12 @@ export async function recordIncident(ctx: ActiveContext, input: IncidentCreate):
       kind: "INCIDENT",
       titleKey: input.kind === "ILLNESS" ? "notifTitle.incidentIllness" : "notifTitle.incident",
       titleVars: { name: childName },
-      body: input.title,
+      // The push body says a note exists and whose child it is about; what
+      // happened is read in the app. A health or incident line on a lock
+      // screen is the one thing a family should never get from a phone left
+      // on a table. (The text on the second channel has its own template.)
+      bodyKey: "notifBody.incidentNote",
+      bodyVars: { name: childName },
       url: `/parent/incidents?child=${input.studentMembershipId}&incident=${created.id}`,
       text: { templateKey: "incident", vars: { child: childName, summary: input.title.slice(0, 80), school: school.name }, purpose: `incident:${created.id}` },
     }));

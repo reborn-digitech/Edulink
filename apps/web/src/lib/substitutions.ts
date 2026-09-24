@@ -298,6 +298,8 @@ export async function schoolWeekOf(ctx: ActiveContext): Promise<z.infer<typeof s
  */
 export async function setSchoolWeek(ctx: ActiveContext, input: z.infer<typeof schoolWeekSchema>): Promise<{ days: number[]; orphanedSlots: number }> {
   const caller = office(ctx);
+  // Setting the week is setting the school up: the admin's. The head reads it and runs the board.
+  if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
   const days = parseTeachingDays(input.days.join(","));
   const school = await schoolOf(caller.schoolId);
   const orphanedSlots = await db.timetableSlot.count({ where: { schoolId: caller.schoolId, weekday: { notIn: days }, class: { archivedAt: null } } });

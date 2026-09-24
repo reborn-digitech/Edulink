@@ -3,10 +3,11 @@ import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { claimToken } from "@/lib/auth-tokens";
 import { createSession } from "@/lib/session";
-import { resolveContext } from "@/app/login/actions";
+import { resolveContext } from "@/lib/resolve-context";
+import { getT } from "@/lib/i18n/server";
 
 /**
- * The link the login page's "email me a sign-in link instead" has been sending.
+ * The link the login page's "email me a sign-in link instead" sends.
  *
  * ⚠ THIS ROUTE DID NOT EXIST, and it is the worse half of the pair. `/verify`
  * was a button in a welcome email; this is an advertised way to sign in, three
@@ -22,24 +23,81 @@ import { resolveContext } from "@/app/login/actions";
  * 500 lived only on the success path. Opening a real emailed link is what found
  * it.
  *
+ * ⚠ GET SHOWS A BUTTON; POST SPENDS THE TOKEN. The first working version spent
+ * it on GET, and a GET is what everything that is not the person does: the
+ * mail provider's link scanner, the messaging app's preview, the browser's
+ * prefetch. Each of those burned the link before it was clicked — and worse,
+ * each of them could be signed in by it, and a link somebody else was made
+ * to open signed THEIR browser in as the sender (login CSRF). So the GET
+ * renders one small page whose only control is a form that POSTs the token
+ * back, and the POST does what the GET used to. A scanner sees a page and
+ * follows no form; the person presses the button.
+ *
  * FAILURES REDIRECT TO `/login` WITH A REASON rather than rendering their own
- * page. A handler cannot render, and the login form is where somebody holding a
- * dead link needs to be anyway — the message meets them next to the password
- * box that still works.
+ * page. The login form is where somebody holding a dead link needs to be
+ * anyway — the message meets them next to the password box that still works.
  *
  * SPENDING THE TOKEN AND MINTING THE SESSION ARE ONE REQUEST, spend first.
- * `claimToken` consumes with a conditional UPDATE, so a mail client that
- * prefetches the link and the person who then clicks it cannot both be signed
- * in — one wins and the other is told the link was used.
- *
- * IT REUSES `resolveContext`, whose own comment has always said it is exported
- * because "the magic link and invite-acceptance routes need exactly the same
- * logic". This is the magic-link caller it was written for, finally.
+ * `claimToken` consumes with a conditional UPDATE, so two presses of the
+ * button cannot both be signed in — one wins and the other is told the link
+ * was used. And the address the link was minted for must still be the
+ * account's: an email changed after the link was sent means the old inbox
+ * no longer speaks for the account.
  */
 export async function GET(request: NextRequest) {
-  const token = request.nextUrl.searchParams.get("token") ?? undefined;
+  const token = request.nextUrl.searchParams.get("token")?.trim() ?? "";
   const origin = request.nextUrl.origin;
-  const away = (reason: string) => NextResponse.redirect(new URL(`/login?link=${reason}`, origin));
+  if (!token) return NextResponse.redirect(new URL("/login?link=bad", origin));
+
+  const t = await getT();
+  const html = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>${escapeHtml(t("magic.pageTitle"))}</title>
+<style>
+  body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: #f6f7f9; color: #1a1d21; display: grid; min-height: 100vh; place-items: center; }
+  main { background: #fff; border-radius: 16px; padding: 32px 28px; max-width: 420px; width: calc(100% - 32px); box-shadow: 0 8px 30px rgba(0,0,0,.06); text-align: center; }
+  h1 { font-size: 1.35rem; margin: 0 0 12px; }
+  p { margin: 0 0 24px; line-height: 1.5; color: #4b5563; }
+  button { font: inherit; font-weight: 600; background: #1d4ed8; color: #fff; border: 0; border-radius: 12px; padding: 14px 24px; width: 100%; cursor: pointer; }
+  button:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+  @media (prefers-color-scheme: dark) { body { background: #0f1115; color: #e5e7eb; } main { background: #171a21; box-shadow: none; } p { color: #9ca3af; } }
+</style>
+</head>
+<body>
+<main>
+<h1>${escapeHtml(t("magic.title"))}</h1>
+<p>${escapeHtml(t("magic.body"))}</p>
+<form method="post" action="/magic">
+<input type="hidden" name="token" value="${escapeHtml(token)}">
+<button type="submit">${escapeHtml(t("magic.continue"))}</button>
+</form>
+</main>
+</body>
+</html>`;
+  return new NextResponse(html, {
+    status: 200,
+    headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "Referrer-Policy": "no-referrer" },
+  });
+}
+
+export async function POST(request: NextRequest) {
+  const origin = request.nextUrl.origin;
+  const away = (reason: string) => NextResponse.redirect(new URL(`/login?link=${reason}`, origin), 303);
+
+  // Only this site's own page may post the token back. A form on another
+  // site carrying somebody's token would otherwise sign this browser in as
+  // that somebody — the login CSRF the GET-spends-it version already had.
+  const from = request.headers.get("origin");
+  const ours = new Set([origin, process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, "")].filter(Boolean));
+  if (from && !ours.has(from)) return away("bad");
+
+  const form = await request.formData().catch(() => null);
+  const raw = form?.get("token");
+  const token = typeof raw === "string" ? raw.trim() : "";
 
   const claim = await claimToken(token, "MAGIC_LINK");
   if (!claim.ok) {
@@ -53,9 +111,11 @@ export async function GET(request: NextRequest) {
    */
   const user = await db.user.findUnique({
     where: { id: claim.userId },
-    select: { id: true, disabledAt: true, lastRole: true, lastSchoolId: true },
+    select: { id: true, email: true, disabledAt: true, lastRole: true, lastSchoolId: true },
   });
   if (!user || user.disabledAt) return away("bad");
+  // The link was sent to one address; the account must still be at it.
+  if (claim.email && claim.email.toLowerCase() !== (user.email ?? "").toLowerCase()) return away("bad");
 
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
   await createSession(user.id, { schoolId: context.schoolId, role: context.role });
@@ -66,5 +126,14 @@ export async function GET(request: NextRequest) {
     meta: { via: "magic-link", role: context.role },
   });
 
-  return NextResponse.redirect(new URL(context.redirectTo, origin));
+  return NextResponse.redirect(new URL(context.redirectTo, origin), 303);
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }

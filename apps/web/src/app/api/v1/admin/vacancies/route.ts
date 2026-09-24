@@ -19,7 +19,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/admin/vacancies — post a vacancy to the board. The hiring contact must be contactable staff of this school. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = vacancyCreateBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const result = await createPosting(ctx, parsed.data);

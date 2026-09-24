@@ -4,7 +4,8 @@ import { acceptInvite } from "@/app/invite/[token]/actions";
 import { login } from "@/app/login/actions";
 import { recordDeparture } from "@/lib/school-record";
 import { generateToken, hashPassword, hashToken, verifyPassword } from "@/lib/crypto";
-import type { ActiveContext } from "@/lib/session";
+import { createSession, type ActiveContext } from "@/lib/session";
+import { __resetCookies } from "../tests/stubs/next-headers";
 
 /**
  * A transfer done the way a school actually does one: the new school invites
@@ -171,6 +172,9 @@ afterEach(wipe);
  */
 beforeEach(async () => {
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "login:" } } });
+  // `acceptInvite` is limited per caller too, and a test has no address, so
+  // every suite that accepts shares one bucket — this one now fills it alone.
+  await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "invite-accept:" } } });
 });
 
 afterAll(async () => {
@@ -187,7 +191,7 @@ describe("a transfer by invitation", () => {
     await makePupil();
     const token = await inviteFromNewSchool(PUPIL_EMAIL);
 
-    const result = await acceptInvite({ token, name: "Ravi Nair", subjects: [] });
+    const result = await acceptInvite({ token, name: "Ravi Nair", password: OLD_PASSWORD, subjects: [] });
     expect(result.ok).toBe(true);
 
     // ONE account, two schools — which is the whole point. A second User here
@@ -211,7 +215,7 @@ describe("a transfer by invitation", () => {
     expect(departure.ok).toBe(true);
 
     const token = await inviteFromNewSchool(PUPIL_EMAIL);
-    expect((await acceptInvite({ token, name: "Ravi Nair", subjects: [] })).ok).toBe(true);
+    expect((await acceptInvite({ token, name: "Ravi Nair", password: OLD_PASSWORD, subjects: [] })).ok).toBe(true);
 
     // The certificate was written against this user id and never moved, because
     // it never had to.
@@ -227,14 +231,12 @@ describe("a transfer by invitation", () => {
 });
 
 describe("the password an existing account is asked for", () => {
-  it("⚠ is not overwritten, and the one they already use still works", async () => {
+  it("⚠ is the one they already use — a proof, not a choice — and is never overwritten", async () => {
     await makePupil();
     const token = await inviteFromNewSchool(PUPIL_EMAIL);
 
-    // The form used to demand a password here and then discard it. It is now
-    // refused outright rather than accepted and ignored, because "we took your
-    // input and did nothing with it" is the failure that only shows up weeks
-    // later, when the session has gone.
+    // A password that is not theirs is refused: the field on a transfer is
+    // proof of owning the account, and a wrong one proves nothing.
     const withPassword = await acceptInvite({
       token,
       name: "Ravi Nair",
@@ -242,22 +244,52 @@ describe("the password an existing account is asked for", () => {
       subjects: [],
     });
     expect(withPassword.ok).toBe(false);
+    expect(withPassword.errors.password).toMatch(/does not match/i);
 
     const stillPending = await db.invite.findFirstOrThrow({ where: { email: PUPIL_EMAIL } });
     expect(stillPending.status).toBe("PENDING");
 
-    // Accepting without one works, and their real password is untouched.
-    expect((await acceptInvite({ token, name: "Ravi Nair", subjects: [] })).ok).toBe(true);
+    // Their own password accepts, and is untouched by it.
+    expect((await acceptInvite({ token, name: "Ravi Nair", password: OLD_PASSWORD, subjects: [] })).ok).toBe(true);
 
     const user = await db.user.findUniqueOrThrow({ where: { id: pupilUserId } });
     expect(await verifyPassword(user.passwordHash!, OLD_PASSWORD)).toBe(true);
     expect(await verifyPassword(user.passwordHash!, TYPED_PASSWORD)).toBe(false);
   });
 
+  it("⚠ asks for the password when the holder is not signed in — the emailed link alone signs nobody in for a fortnight", async () => {
+    await makePupil();
+    const token = await inviteFromNewSchool(PUPIL_EMAIL);
+
+    __resetCookies();
+    const withoutOne = await acceptInvite({ token, name: "Ravi Nair", subjects: [] });
+    expect(withoutOne.ok).toBe(false);
+    expect(withoutOne.errors._form).toMatch(/enter its password/i);
+    expect((await db.invite.findFirstOrThrow({ where: { email: PUPIL_EMAIL } })).status).toBe("PENDING");
+    expect(await db.membership.count({ where: { userId: pupilUserId, schoolId: newSchoolId } })).toBe(0);
+    expect(await db.session.count({ where: { userId: pupilUserId } })).toBe(0);
+  });
+
+  it("…or takes a fresh sign-in as the holder in its place", async () => {
+    await makePupil();
+    const token = await inviteFromNewSchool(PUPIL_EMAIL);
+
+    // The /join page's "open my invitation" arrives exactly like this: signed
+    // in as the person the invitation is addressed to.
+    __resetCookies();
+    await createSession(pupilUserId, { schoolId: oldSchoolId, role: "STUDENT" });
+    try {
+      expect((await acceptInvite({ token, name: "Ravi Nair", subjects: [] })).ok).toBe(true);
+    } finally {
+      __resetCookies();
+    }
+    expect(await db.membership.count({ where: { userId: pupilUserId, schoolId: newSchoolId, status: "ACTIVE" } })).toBe(1);
+  });
+
   it("⚠ …and the login they had before the transfer still opens the door after it", async () => {
     await makePupil();
     const token = await inviteFromNewSchool(PUPIL_EMAIL);
-    expect((await acceptInvite({ token, name: "Ravi Nair", subjects: [] })).ok).toBe(true);
+    expect((await acceptInvite({ token, name: "Ravi Nair", password: OLD_PASSWORD, subjects: [] })).ok).toBe(true);
 
     // The claim as a child would meet it, through the real login action rather
     // than through a hash comparison.
@@ -307,5 +339,67 @@ describe("the password an existing account is asked for", () => {
 
     const after = await db.user.findUniqueOrThrow({ where: { id: user.id } });
     expect(await verifyPassword(after.passwordHash!, TYPED_PASSWORD)).toBe(true);
+  });
+});
+
+describe("⚠ an invitation that meets an account which never proved its address", () => {
+  /**
+   * The pre-registration attack: somebody signs up as a parent under the
+   * head teacher's address and waits. The school's invitation to that
+   * address used to attach the membership to the waiting account, password
+   * and all. Opening the link is what proves the mailbox, so the link's
+   * reader takes the account: fresh password, everything else revoked.
+   */
+  it("clears the password, revokes every session, token and push registration, and marks the address verified", async () => {
+    await wipe();
+    const squatter = await db.user.create({
+      data: { email: FRESH_EMAIL, name: "Whoever Typed It", passwordHash: await hashPassword(OLD_PASSWORD), emailVerifiedAt: null, prefs: "{}" },
+    });
+    const session = await db.session.create({
+      data: { userId: squatter.id, tokenHash: hashToken(generateToken()), expiresAt: new Date(Date.now() + 86_400_000) },
+    });
+    await db.authToken.create({
+      data: { userId: squatter.id, email: FRESH_EMAIL, purpose: "MAGIC_LINK", tokenHash: hashToken(generateToken()), expiresAt: new Date(Date.now() + 600_000) },
+    });
+    await db.deviceToken.create({ data: { userId: squatter.id, expoPushToken: `ExponentPushToken[zz-invite-${squatter.id}]`, platform: "ios" } });
+    await db.pushSubscription.create({ data: { userId: squatter.id, endpoint: `https://push.invalid/zz-invite-${squatter.id}`, p256dh: "k", auth: "a" } });
+    const token = await inviteFromNewSchool(FRESH_EMAIL);
+
+    // The squatter's password proves nothing here: a fresh one is required.
+    __resetCookies();
+    const withTheirs = await acceptInvite({ token, name: "Nadia Fresh", password: OLD_PASSWORD, subjects: [] });
+    // Either refused as the wrong kind of proof or accepted as the NEW
+    // password — both leave the squatter out. What must not happen is the
+    // old hash surviving; checked below after a definite acceptance.
+    if (!withTheirs.ok) {
+      expect((await acceptInvite({ token, name: "Nadia Fresh", password: TYPED_PASSWORD, subjects: [] })).ok).toBe(true);
+    }
+
+    const after = await db.user.findUniqueOrThrow({ where: { id: squatter.id } });
+    expect(after.emailVerifiedAt).not.toBeNull();
+    expect(await verifyPassword(after.passwordHash!, withTheirs.ok ? OLD_PASSWORD : TYPED_PASSWORD)).toBe(true);
+    expect((await db.session.findUniqueOrThrow({ where: { id: session.id } })).revokedAt).not.toBeNull();
+    expect(await db.authToken.count({ where: { userId: squatter.id, consumedAt: null } })).toBe(0);
+    expect(await db.deviceToken.count({ where: { userId: squatter.id } })).toBe(0);
+    expect(await db.pushSubscription.count({ where: { userId: squatter.id } })).toBe(0);
+    // Same account id — what the reader had on it stays theirs — now a pupil at the new school.
+    expect(await db.user.count({ where: { email: FRESH_EMAIL } })).toBe(1);
+    expect(await db.membership.count({ where: { userId: squatter.id, schoolId: newSchoolId, status: "ACTIVE" } })).toBe(1);
+    await db.session.deleteMany({ where: { userId: squatter.id } });
+  });
+
+  it("without a password, sets nothing up", async () => {
+    await wipe();
+    const squatter = await db.user.create({
+      data: { email: FRESH_EMAIL, name: "Whoever Typed It", passwordHash: await hashPassword(OLD_PASSWORD), emailVerifiedAt: null, prefs: "{}" },
+    });
+    const token = await inviteFromNewSchool(FRESH_EMAIL);
+    __resetCookies();
+    const result = await acceptInvite({ token, name: "Nadia Fresh", subjects: [] });
+    expect(result.ok).toBe(false);
+    const after = await db.user.findUniqueOrThrow({ where: { id: squatter.id } });
+    expect(after.emailVerifiedAt).toBeNull();
+    expect(await verifyPassword(after.passwordHash!, OLD_PASSWORD)).toBe(true);
+    expect((await db.invite.findFirstOrThrow({ where: { email: FRESH_EMAIL } })).status).toBe("PENDING");
   });
 });

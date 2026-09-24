@@ -18,6 +18,7 @@ export function AcceptForm({
   defaultSubjects,
   role,
   hasAccount,
+  needsPassword = false,
   className,
 }: {
   token: string;
@@ -31,6 +32,8 @@ export function AcceptForm({
    * whether a credential is needed.
    */
   hasAccount: boolean;
+  /** The holder is not signed in as themselves: their existing password is asked for, as proof, and sent with the acceptance. */
+  needsPassword?: boolean;
   className?: string;
 }) {
   const t = useT();
@@ -80,7 +83,7 @@ export function AcceptForm({
         // Undefined, not "" — the action refuses a password for an account that
         // already has one, precisely so nobody can type into a field that goes
         // nowhere. Sending an empty string would be doing it by the back door.
-        password: hasAccount ? undefined : password,
+        password: hasAccount ? (needsPassword ? password : undefined) : password,
         birthdate: birthdate || undefined,
         title: title.trim() || undefined,
         bio: bio.trim() || undefined,
@@ -147,6 +150,18 @@ export function AcceptForm({
         error={errors.birthdate}
         onChange={(e) => setBirthdate(e.target.value)}
       />
+      )}
+
+      {hasAccount && needsPassword && (
+        <TextField
+          label={t("invite.enterYourPassword")}
+          required
+          type="password"
+          autoComplete="current-password"
+          value={password}
+          error={errors.password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       )}
 
       {!hasAccount && (

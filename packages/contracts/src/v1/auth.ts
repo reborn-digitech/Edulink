@@ -59,7 +59,7 @@ export const meSchema = z.object({
 });
 export type Me = z.infer<typeof meSchema>;
 
-export const switchContextSchema = z.object({ schoolId: z.string().nullable(), role: roleSchema });
+export const switchContextSchema = z.object({ schoolId: z.string().max(64).nullable(), role: roleSchema });
 
 export const sessionsListSchema = z.object({
   sessions: z.array(

@@ -168,12 +168,16 @@ async function issueReceipt(tx: Tx, schoolId: string, payment: { id: string; stu
 async function settle(tx: Tx, schoolId: string, paymentId: string, extra: { reference?: string | null; gatewayPaymentId?: string | null; gatewayMethod?: string | null; confirmedByUserId?: string | null; paidAt?: Date }): Promise<{ receiptId: string; serial: string; already: boolean }> {
   const p = await tx.feePayment.findFirstOrThrow({ where: { id: paymentId, schoolId }, include: { receipt: { select: { id: true, serial: true } } } });
   if (p.status === "PAID" && p.receipt) return { receiptId: p.receipt.id, serial: p.receipt.serial, already: true };
-  if (p.status !== "INITIATED" && p.status !== "CLAIMED") throw new AccessError("fees.refuseNotSettleable");
+  // A FAILED online order is settled by a signed capture too: the gateway
+  // sends payment.failed for a first attempt and payment.captured for the
+  // retry on the SAME order, and the money is real whichever arrived first.
+  const capturedAfterFailure = p.status === "FAILED" && p.method === "ONLINE" && Boolean(extra.gatewayPaymentId);
+  if (p.status !== "INITIATED" && p.status !== "CLAIMED" && !capturedAfterFailure) throw new AccessError("fees.refuseNotSettleable");
   const paidAt = extra.paidAt ?? new Date();
   const intent = readJson<string[]>(p.intentJson, []);
   const updated = await tx.feePayment.update({
     where: { id: p.id },
-    data: { status: "PAID", paidAt, reference: extra.reference ?? p.reference, gatewayPaymentId: extra.gatewayPaymentId ?? p.gatewayPaymentId, gatewayMethod: extra.gatewayMethod ?? p.gatewayMethod, confirmedByUserId: extra.confirmedByUserId ?? p.confirmedByUserId },
+    data: { status: "PAID", paidAt, failedReason: capturedAfterFailure ? null : p.failedReason, reference: extra.reference ?? p.reference, gatewayPaymentId: extra.gatewayPaymentId ?? p.gatewayPaymentId, gatewayMethod: extra.gatewayMethod ?? p.gatewayMethod, confirmedByUserId: extra.confirmedByUserId ?? p.confirmedByUserId },
   });
   // The demands named at checkout first; if any were paid meanwhile, the
   // rest of the money goes oldest-first so nothing is left as credit.
@@ -361,7 +365,9 @@ export async function settleOnlinePayment(schoolId: string, input: { orderId: st
     const p = await db.feePayment.findFirst({ where: { schoolId, gatewayOrderId: input.orderId }, select: { id: true, amountPaise: true, status: true, studentMembershipId: true } });
     if (!p) return { outcome: "unknown-order", paymentId: null };
     if (p.status === "PAID" || p.status === "REFUNDED") return { outcome: "already", paymentId: p.id };
-    if (p.status !== "INITIATED") return { outcome: "not-settleable", paymentId: p.id };
+    // FAILED stays settleable: a signed capture after a failed attempt on the
+    // same order is the gateway saying the retry went through. See settle().
+    if (p.status !== "INITIATED" && p.status !== "FAILED") return { outcome: "not-settleable", paymentId: p.id };
     if (p.amountPaise !== input.amountPaise) {
       await audit({ schoolId, action: "fees.amountMismatch", targetType: "FeePayment", targetId: p.id, meta: { expected: p.amountPaise, got: input.amountPaise, gatewayPaymentId: input.gatewayPaymentId } });
       return { outcome: "amount-mismatch", paymentId: p.id };
@@ -610,27 +616,40 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
   const p = await db.feePayment.findFirst({ where: { id: input.paymentId, schoolId: caller.schoolId }, include: { refunds: { where: { status: { not: "FAILED" } }, select: { amountPaise: true } }, allocations: { select: { demandId: true } } } });
   if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (p.status !== "PAID" && p.status !== "REFUNDED") throw new AccessError("fees.refuseNotPaid");
-  const already = p.refunds.reduce((a, r) => a + r.amountPaise, 0);
-  if (already + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
+  if (p.refunds.reduce((a, r) => a + r.amountPaise, 0) + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
+  const account = p.method === "ONLINE" ? await gatewayAccountFor(caller.schoolId) : null;
+  if (p.method === "ONLINE" && (!account || !p.gatewayPaymentId)) throw new AccessError("fees.refuseNoGateway");
 
-  let gatewayRefundId: string | null = null;
-  let status: "REQUESTED" | "DONE" = "DONE";
-  if (p.method === "ONLINE") {
-    const account = await gatewayAccountFor(caller.schoolId);
-    if (!account || !p.gatewayPaymentId) throw new AccessError("fees.refuseNoGateway");
-    try {
-      const r = await refundPayment(account, p.gatewayPaymentId, input.amountPaise, { edulink_payment: p.id, reason: why.slice(0, 60) });
-      gatewayRefundId = r.refundId;
-      status = r.status === "processed" ? "DONE" : "REQUESTED";
-    } catch (error) {
-      console.error("[fees:refund]", error instanceof Error ? error.message : error);
-      throw new AccessError("fees.refuseGatewayDown");
-    }
-  }
-  const refund = await db.$tenantTransaction(async (raw) => {
+  /**
+   * ONE REFUND PER CLICK, however many clicks. The payment row is locked for
+   * the whole of this, and the refunded-so-far sum is read again UNDER the
+   * lock: two office tabs pressing "refund" together used to both read
+   * "nothing refunded yet", both ask the gateway, and both record a refund of
+   * the full amount. Now the second waits on the lock, re-reads, and is
+   * refused as too much. The gateway is called inside the lock on purpose —
+   * the alternative, a row written before the gateway answers, would need
+   * an undo path for every way the answer can fail.
+   */
+  const { refund, status, gatewayRefundId } = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
+    await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${p.id} FOR UPDATE`;
+    const refundedSoFar = (await tx.feeRefund.aggregate({ where: { paymentId: p.id, status: { not: "FAILED" } }, _sum: { amountPaise: true } }))._sum.amountPaise ?? 0;
+    if (refundedSoFar + input.amountPaise > p.amountPaise) throw new AccessError("fees.refuseRefundTooMuch");
+
+    let gatewayRefundId: string | null = null;
+    let status: "REQUESTED" | "DONE" = "DONE";
+    if (p.method === "ONLINE" && account && p.gatewayPaymentId) {
+      try {
+        const r = await refundPayment(account, p.gatewayPaymentId, input.amountPaise, { edulink_payment: p.id, reason: why.slice(0, 60) });
+        gatewayRefundId = r.refundId;
+        status = r.status === "processed" ? "DONE" : "REQUESTED";
+      } catch (error) {
+        console.error("[fees:refund]", error instanceof Error ? error.message : error);
+        throw new AccessError("fees.refuseGatewayDown");
+      }
+    }
     const created = await tx.feeRefund.create({ data: { schoolId: caller.schoolId, paymentId: p.id, amountPaise: input.amountPaise, reason: why, status, gatewayRefundId, requestedByUserId: caller.userId, settledAt: status === "DONE" ? new Date() : null }, select: { id: true } });
-    const total = already + input.amountPaise;
+    const total = refundedSoFar + input.amountPaise;
     if (total >= p.amountPaise) await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
     // Reopen the newest allocations first by the refunded amount.
     const allocations = await tx.feeAllocation.findMany({ where: { paymentId: p.id }, orderBy: { id: "desc" } });
@@ -645,7 +664,7 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
       tx,
       allocations.map((a) => a.demandId),
     );
-    return created;
+    return { refund: created, status, gatewayRefundId };
   });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.refund", targetType: "FeePayment", targetId: p.id, meta: { refundId: refund.id, amountPaise: input.amountPaise, status, gatewayRefundId } });
   await notifyGuardians(p.studentMembershipId, (childName) => ({

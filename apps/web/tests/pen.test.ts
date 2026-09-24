@@ -33,6 +33,7 @@ let newSchoolId = "";
 let oldAdminUserId = "";
 let newAdminUserId = "";
 let parentUserId = "";
+let oldParentUserId = "";
 let pupilUserId = "";
 let pupilAtOld = "";
 let yearId = "";
@@ -50,15 +51,17 @@ const ctxOf = (userId: string, schoolId: string, membershipId: string): ActiveCo
 
 beforeAll(async () => {
   const suffix = String(STAMP).slice(-6);
-  const mkSchool = (tag: string) => db.school.create({ data: { name: `ZZ Pen ${tag} ${STAMP}`, slug: `zz-pen-${tag.toLowerCase()}-${STAMP}`, code: `ZP${tag[0]}${suffix.slice(1)}`, contactEmail: `zz-pen-${tag.toLowerCase()}-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", profilePublishedAt: new Date() }, select: { id: true } });
+  const mkSchool = (tag: string) => db.school.create({ data: { name: `ZZ Pen ${tag} ${STAMP}`, slug: `zz-pen-${tag.toLowerCase()}-${STAMP}`, code: `ZP${tag[0]}${suffix.slice(1)}`, contactEmail: `zz-pen-${tag.toLowerCase()}-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", profilePublishedAt: new Date(), verifiedAt: new Date() }, select: { id: true } });
   oldSchoolId = (await mkSchool("Old")).id;
   newSchoolId = (await mkSchool("New")).id;
   const mk = (who: string, extra: Record<string, unknown> = {}) => db.user.create({ data: { name: `ZZ Pen ${who}`, email: `zz-pen-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid`, ...extra }, select: { id: true } });
-  const [oa, na, parent, pupil] = await Promise.all([mk("Old Admin"), mk("New Admin"), mk("Parent"), mk("Riya Rane", { birthdate: new Date("2014-05-20T00:00:00Z") })]);
-  oldAdminUserId = oa.id; newAdminUserId = na.id; parentUserId = parent.id; pupilUserId = pupil.id;
+  const [oa, na, parent, oldParent, pupil] = await Promise.all([mk("Old Admin"), mk("New Admin"), mk("Parent"), mk("Old Parent"), mk("Riya Rane", { birthdate: new Date("2014-05-20T00:00:00Z") })]);
+  oldAdminUserId = oa.id; newAdminUserId = na.id; parentUserId = parent.id; oldParentUserId = oldParent.id; pupilUserId = pupil.id;
   await db.membership.create({ data: { userId: oldAdminUserId, schoolId: oldSchoolId, role: "ADMIN", status: "ACTIVE" } });
   await db.membership.create({ data: { userId: newAdminUserId, schoolId: newSchoolId, role: "ADMIN", status: "ACTIVE" } });
   pupilAtOld = (await db.membership.create({ data: { userId: pupilUserId, schoolId: oldSchoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZPO${STAMP}` }, select: { id: true } })).id;
+  // The pupil's real guardian at the old school: the one a wrong link must reach.
+  await db.guardianship.create({ data: { parentUserId: oldParentUserId, studentMembershipId: pupilAtOld, studentSchoolId: oldSchoolId, relation: "PARENT", status: "ACTIVE" } });
   const oldClass = await db.class.create({ data: { schoolId: oldSchoolId, name: "ZZ 6A", gradeLevel: "6", joinCode: `ZPO1${suffix.slice(1)}` }, select: { id: true } });
   await db.enrollment.create({ data: { schoolId: oldSchoolId, classId: oldClass.id, studentMembershipId: pupilAtOld, status: "ACTIVE" } });
   await db.class.create({ data: { schoolId: newSchoolId, name: "ZZ 7A", gradeLevel: "7", joinCode: `ZPN1${suffix.slice(1)}` } });
@@ -67,7 +70,8 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
-  await db.session.deleteMany({ where: { userId: { in: [oldAdminUserId, newAdminUserId, parentUserId] } } });
+  await db.session.deleteMany({ where: { userId: { in: [oldAdminUserId, newAdminUserId, parentUserId, oldParentUserId] } } });
+  await db.rateLimit.deleteMany({ where: { bucket: `intake:links:${newSchoolId}` } });
   await db.school.deleteMany({ where: { id: { in: [oldSchoolId, newSchoolId] } } });
   await db.user.deleteMany({ where: { OR: [{ email: { contains: `-${STAMP}@test.invalid` } }, { penNumber: { in: [PEN_A, PEN_B, PEN_C] } }] } });
   await db.$disconnect();
@@ -109,18 +113,24 @@ describe("the PEN on the record", () => {
     expect(people.members.map((p: { membershipId: string }) => p.membershipId)).toEqual([pupilAtOld]);
   });
 
-  it("an intake row with the PEN and the date of birth links the pupil's account at the new school, wrong details are refused by name, and a fresh PEN goes on a new account", async () => {
+  it("an intake row with the PEN and the date of birth links the pupil's account at the new school once the old school has recorded the departure, wrong details and a child still elsewhere are refused with one key, and a fresh PEN goes on a new account", async () => {
     const newAdminMembership = (await db.membership.findFirstOrThrow({ where: { userId: newAdminUserId, schoolId: newSchoolId }, select: { id: true } })).id;
     const ctx = ctxOf(newAdminUserId, newSchoolId, newAdminMembership);
     const row = (over: Record<string, unknown>) => ({ line: 1, name: "ZZ Pen Riya Rane", birthdateKey: "2014-05-20", className: "ZZ 7A", pupilEmail: null, guardianEmail: null, guardianName: null, relation: "PARENT" as const, studentCode: null, pen: PEN_A, ...over });
     let result = await admitPupils(ctx, [row({ birthdateKey: null })]);
     expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.penNeedsBirthdate" });
     result = await admitPupils(ctx, [row({ birthdateKey: "2014-05-21" })]);
-    expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.penMismatch" });
+    expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
     result = await admitPupils(ctx, [row({ pen: false })]);
     expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.penFormat" });
+    // ⚠ Right PEN, right date — and the pupil is still on the old school's roll: the same refusal.
     result = await admitPupils(ctx, [row({})]);
-    expect(result.outcomes[0]).toMatchObject({ status: "admitted", linked: true, className: "ZZ 7A" });
+    expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
+    expect(await db.membership.count({ where: { userId: pupilUserId, schoolId: newSchoolId } })).toBe(0);
+    // The old school records the departure — the handshake — and the row links.
+    await db.membership.update({ where: { id: pupilAtOld }, data: { leftAt: new Date() } });
+    result = await admitPupils(ctx, [row({})]);
+    expect(result.outcomes[0], JSON.stringify(result.outcomes[0])).toMatchObject({ status: "admitted", linked: true, className: "ZZ 7A" });
     const memberships = await db.membership.findMany({ where: { userId: pupilUserId, role: "STUDENT" }, select: { schoolId: true } });
     expect(memberships.map((m) => m.schoolId).sort()).toEqual([newSchoolId, oldSchoolId].sort());
     await as("NEW_ADMIN");
@@ -134,7 +144,7 @@ describe("the PEN on the record", () => {
     expect(fresh?.memberships[0]?.pupilRecord?.penNumber).toBe(PEN_C);
   });
 
-  it("an admission carrying the PEN links the existing account at the seat instead of minting another, and refuses a mismatched birthdate", async () => {
+  it("an admission carrying the PEN links the existing account at the seat instead of minting another, makes the applicant no guardian of it, tells the child's own guardian, and refuses a mismatched birthdate", async () => {
     // The pupil leaves the old school for this test's purposes: their account is what the PEN names.
     await db.membership.updateMany({ where: { userId: pupilUserId, schoolId: newSchoolId }, data: { status: "SUSPENDED", leftAt: new Date() } });
     await as("NEW_ADMIN");
@@ -154,9 +164,19 @@ describe("the PEN on the record", () => {
     expect(res.status).toBe(200);
     const admitted = await res.json();
     expect(admitted.firstSignInCode).toBeNull();
+    // ⚠ The applicant is NOT a guardian of an account the platform already knew; the office is told why.
+    expect(admitted).toMatchObject({ guardianLinked: false, noteKey: "admissions.guardianNotLinked" });
     const membership = await db.membership.findUniqueOrThrow({ where: { id: admitted.studentMembershipId }, select: { userId: true, pupilRecord: { select: { penNumber: true } } } });
     expect(membership.userId).toBe(pupilUserId);
     expect(membership.pupilRecord?.penNumber).toBe(PEN_A);
     expect(await db.user.count({ where: { name: { contains: "ZZ Pen Riya Rane" } } })).toBe(1);
+    expect(await db.guardianship.count({ where: { parentUserId, studentMembershipId: admitted.studentMembershipId } })).toBe(0);
+    // The pupil's own guardian at the old school hears which school admitted the child.
+    const told = await db.notification.findFirst({ where: { userId: oldParentUserId, kind: "ADMISSION" }, orderBy: { createdAt: "desc" } });
+    expect(told?.title).toContain(`ZZ Pen New ${STAMP}`);
+    expect(told?.title).toContain("PEN");
+    expect(await db.notification.count({ where: { userId: parentUserId, kind: "ADMISSION", title: { contains: "PEN" } } })).toBe(0);
+    const auditRow = await db.auditLog.findFirst({ where: { schoolId: newSchoolId, action: "admissions.admit", targetId: right.id } });
+    expect(JSON.parse(auditRow!.meta)).toMatchObject({ guardianLinked: false, guardianNotLinked: true, existingGuardiansTold: 1, linkedByPen: true });
   });
 });

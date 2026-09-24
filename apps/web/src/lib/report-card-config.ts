@@ -22,6 +22,12 @@ function office(ctx: ActiveContext): Office {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !OFFICE.includes(ctx.role)) throw new AccessError("access.notAllowed");
   return ctx as Office;
 }
+/** The rules and the weights shape every card from now on: the admin writes them, the head reads them. */
+function admin(ctx: ActiveContext): Office {
+  const caller = office(ctx);
+  if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
+  return caller;
+}
 
 /** The school's words for the defaults, in its own locale. */
 export async function wordsFor(schoolId: string): Promise<Words> {
@@ -56,7 +62,7 @@ export async function reportCardConfigView(ctx: ActiveContext): Promise<ReportCa
 
 /** The office writes the whole document; a card already issued keeps the one it was built with. */
 export async function saveReportCardConfig(ctx: ActiveContext, input: ReportCardConfig): Promise<ReportCardConfig> {
-  const caller = office(ctx);
+  const caller = admin(ctx);
   const config = normaliseConfig(input, await wordsFor(caller.schoolId));
   await db.school.update({ where: { id: caller.schoolId }, data: { reportCardConfig: JSON.stringify(config) } });
   await audit({
@@ -72,7 +78,7 @@ export async function saveReportCardConfig(ctx: ActiveContext, input: ReportCard
 
 /** A term's share of the annual card. Null clears it; with every term cleared the shares are equal. */
 export async function setTermWeight(ctx: ActiveContext, termId: string, weightPercent: number | null): Promise<{ weightPercent: number | null }> {
-  const caller = office(ctx);
+  const caller = admin(ctx);
   const term = await db.term.findFirst({ where: { id: termId, schoolId: caller.schoolId }, select: { id: true, weightPercent: true } });
   if (!term) throw new AccessError("terms.notFound", "NOT_FOUND");
   if (term.weightPercent === weightPercent) return { weightPercent };

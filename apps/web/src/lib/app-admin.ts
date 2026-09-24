@@ -106,6 +106,8 @@ export function readPlatformCompetitionForm(
   if (summary.length < 3) return { ok: false, errorKey: "appadmin.summaryTooShort" };
   const text = (value: unknown) => String(value ?? "") || null;
   const checked = (value: unknown) => value === "on" || value === true;
+  const externalUrl = text(form.externalUrl);
+  if (externalUrl && !isHttpsUrl(externalUrl)) return { ok: false, errorKey: "appadmin.linkMustBeHttps" };
   return {
     ok: true,
     input: {
@@ -119,7 +121,7 @@ export function readPlatformCompetitionForm(
       eligibility: text(form.eligibility),
       rules: text(form.rules),
       prizes: text(form.prizes),
-      externalUrl: text(form.externalUrl),
+      externalUrl,
       registrationClosesAt: parseFormDate(form.registrationClosesAt),
       startsAt: parseFormDate(form.startsAt),
       endsAt: parseFormDate(form.endsAt),
@@ -127,6 +129,20 @@ export function readPlatformCompetitionForm(
       leaderboardEnabled: checked(form.leaderboardEnabled),
     },
   };
+}
+
+/**
+ * An organiser's page opens on every child's phone from a link the content
+ * team typed: https and nothing else — no http, no javascript:, no custom
+ * scheme that hands the phone to another app. The phone refuses the same.
+ */
+export function isHttpsUrl(value: string): boolean {
+  try {
+    const url = new URL(value.trim());
+    return url.protocol === "https:" && Boolean(url.hostname);
+  } catch {
+    return false;
+  }
 }
 
 function parseFormDate(value: unknown): Date | null {
@@ -148,6 +164,7 @@ export async function createPlatformCompetition(
   input: PlatformCompetitionInput,
 ): Promise<string> {
   assertAppAdmin(session);
+  if (input.externalUrl && !isHttpsUrl(input.externalUrl)) throw new AccessError("appadmin.linkMustBeHttps");
 
   const competition = await db.competition.create({
     data: {

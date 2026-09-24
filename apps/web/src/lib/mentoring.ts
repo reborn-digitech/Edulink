@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { audit } from "./audit";
-import { AccessError } from "./tenancy";
+import { AccessError, assertStudentAccess } from "./tenancy";
 import { notify, notifyGuardians } from "./notify";
 import { readJsonArray } from "./json";
 import { studentsForTeacher } from "./remarks";
@@ -298,12 +298,12 @@ export async function createMentorship(
   }
 
 
-  // Scoped find: a membership id from another school does not resolve.
-  const student = await db.membership.findFirst({
-    where: { id: input.studentMembershipId, schoolId: session.schoolId, role: "STUDENT" },
-    select: { id: true },
-  });
-  if (!student) throw new AccessError("access.noSuchPupil", "NOT_FOUND");
+  // The same door every other teacher path uses: a membership id from
+  // another school does not resolve, and a TEACHER reaches only a pupil in a
+  // class they teach — any teacher pairing any child in the school with an
+  // outsider was a safeguarding hole, not a convenience.
+  if (!session.membershipId) throw new AccessError("access.onlyATeacherOrAnAdminCan4");
+  const student = await assertStudentAccess({ schoolId: session.schoolId, membershipId: session.membershipId, role: session.role }, input.studentMembershipId);
 
   const existing = await db.mentorThread.findUnique({
     where: {

@@ -75,6 +75,19 @@ export const pupilRecordFieldSchema = z.enum([
   // The collection gaps the data-flow audit named: the previous school's TC, the household, the roll number.
   "previousSchoolTcNumber", "previousSchoolTcDate", "fatherOccupation", "motherOccupation", "annualIncome", "rollNumber",
 ]);
+/**
+ * The fields a family — a guardian, or the pupil themselves — may write on
+ * /api/v1/family/record. Everything else on the record is the office's:
+ * the admission number, date and grade, the previous school's TC, the
+ * category, caste, gender and the BPL/EWS/impairment answers feed the
+ * leaving certificate and the filings, so a family's save leaves them as
+ * they stand (as it already left the roll number and the PEN) and the family
+ * forms show them read-only. The office forms keep every field.
+ */
+export const FAMILY_RECORD_FIELDS = [
+  "fatherName", "motherName", "placeOfBirth", "nationality", "religion", "motherTongue", "addressLine", "city", "postalCode",
+  "nameLocal", "fatherNameLocal", "motherNameLocal", "bloodGroup", "fatherOccupation", "motherOccupation", "annualIncome", "previousSchool",
+] as const satisfies readonly PupilRecordField[];
 /** Social category as a coded choice: the four UDISE+ codes, plus Maharashtra's VJ, NT and SBC, which file as OBC. */
 export const PUPIL_CATEGORIES = ["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"] as const;
 export const pupilCategorySchema = z.enum(PUPIL_CATEGORIES);

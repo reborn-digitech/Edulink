@@ -71,7 +71,7 @@ export type IncidentRow = z.infer<typeof incidentRowSchema>;
 export const incidentsQuerySchema = z.object({
   status: z.enum(["OPEN", "CLOSED", "ALL"]).default("OPEN"),
   studentMembershipId: cuid.optional(),
-  page: z.coerce.number().int().min(1).default(1),
+  page: z.coerce.number().int().min(1).max(1000).default(1),
 });
 export const incidentsListSchema = z.object({
   rows: z.array(incidentRowSchema),

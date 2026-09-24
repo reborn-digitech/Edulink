@@ -1,9 +1,13 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
-import { admitPupils } from "@/lib/intake";
+import { admitPupils, IntakeLimited, INTAKE_MAX_ROWS } from "@/lib/intake";
+import { INTAKE_RUNS, INTAKE_MAX_LINKS } from "@/lib/rate-limit";
 import { parseIntakeCsv } from "@/lib/csv";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
+import { createSession } from "@/lib/session";
+import { __resetCookies } from "../tests/stubs/next-headers";
+import { POST as intakePost } from "@/app/api/v1/admin/people/intake/route";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -212,11 +216,14 @@ describe("⚠ a transfer row links; it never mints", () => {
     const noDob = await admitPupils(admin, transferRow({ birthdateKey: null, name: `${TAG} NoDob` }) as never, { locale: "en" });
     expect(noDob.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
 
+    // ⚠ A wrong date and an unknown code read the SAME key, so neither
+    // answer says which half of a guess was right.
     const wrongDob = await admitPupils(admin, transferRow({ birthdateKey: "2013-03-14", name: `${TAG} WrongDob` }) as never, { locale: "en" });
-    expect(wrongDob.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeMismatch" });
+    expect(wrongDob.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
 
     const unknown = await admitPupils(admin, transferRow({ studentCode: "STU-NONE-0000", name: `${TAG} Unknown` }) as never, { locale: "en" });
-    expect(unknown.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeNotFound" });
+    expect(unknown.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
+    expect(unknown.outcomes[0]!.reasonKey).toBe(wrongDob.outcomes[0]!.reasonKey);
 
     // None of the refused rows minted anything.
     expect(await db.membership.count({ where: { schoolId, user: { name: { in: [`${TAG} NoDob`, `${TAG} WrongDob`, `${TAG} Unknown`] } } } })).toBe(0);
@@ -225,5 +232,115 @@ describe("⚠ a transfer row links; it never mints", () => {
   it("the CSV parser recognises the column and uppercases the code", () => {
     const parsed = parseIntakeCsv("name,dob,student code\nA Child,13/03/2013,stu-zztr-0001\n", "2026-08-24");
     expect(parsed.valid[0]).toMatchObject({ studentCode: "STU-ZZTR-0001" });
+  });
+});
+
+describe("⚠ the handshake: who may bring a pupil over, and how often", () => {
+  /**
+   * THE HOLE. Anybody could register a school and be its admin at once, and
+   * intake linked any child on the platform by (code, birthday) with nothing
+   * asked of the school that held the child — five hundred guesses a call,
+   * unlimited calls, and a first sign-in code that reset the password. Two
+   * things must now both hold: the child is on no other roll (the holding
+   * school records the departure first) and the receiving school is
+   * verified by the operator. Every failure reads one key.
+   */
+  const STAMP = Date.now();
+  const CODE = `STU-ZZHS-${String(STAMP).slice(-4)}`;
+  let holdingSchoolId: string;
+  let receivingSchoolId: string;
+  let receivingAdminUserId: string;
+  let receiving: ActiveContext;
+  let childUserId: string;
+  let holdingMembershipId: string;
+
+  const row = (over: Record<string, unknown> = {}) => ({
+    line: 1, name: `${TAG} Handshake Child`, birthdateKey: "2014-09-09", className: null,
+    pupilEmail: null, guardianEmail: null, guardianName: null, relation: "PARENT", studentCode: CODE, pen: null, ...over,
+  });
+
+  beforeAll(async () => {
+    const suffix = String(STAMP).slice(-6);
+    const mkSchool = (tag: string, verified: boolean) => db.school.create({
+      data: { name: `ZZ Intake ${tag} ${STAMP}`, slug: `zz-intake-${tag.toLowerCase()}-${STAMP}`, code: `ZI${tag[0]}${suffix.slice(1)}`, contactEmail: `zz-intake-${tag.toLowerCase()}-${STAMP}@intake.test`, timezone: "Asia/Kolkata", verifiedAt: verified ? new Date() : null },
+      select: { id: true },
+    });
+    holdingSchoolId = (await mkSchool("Holding", true)).id;
+    receivingSchoolId = (await mkSchool("Receiving", false)).id;
+    const adminUser = await db.user.create({ data: { name: `${TAG} Receiving Admin`, email: `receiving.admin@intake.test`, prefs: "{}" }, select: { id: true } });
+    receivingAdminUserId = adminUser.id;
+    const adminMembership = await db.membership.create({ data: { userId: adminUser.id, schoolId: receivingSchoolId, role: "ADMIN", status: "ACTIVE" }, select: { id: true } });
+    receiving = ctx({ userId: adminUser.id, membershipId: adminMembership.id, schoolId: receivingSchoolId, role: "ADMIN" });
+    const child = await db.user.create({ data: { name: `${TAG} Handshake Child`, email: `handshake.child@intake.test`, prefs: "{}", birthdate: new Date("2014-09-09T00:00:00Z") }, select: { id: true } });
+    childUserId = child.id;
+    holdingMembershipId = (await db.membership.create({ data: { userId: child.id, schoolId: holdingSchoolId, role: "STUDENT", status: "ACTIVE", studentCode: CODE }, select: { id: true } })).id;
+  });
+
+  afterAll(async () => {
+    __resetCookies();
+    await db.rateLimit.deleteMany({ where: { bucket: `intake:links:${receivingSchoolId}` } });
+    await db.session.deleteMany({ where: { userId: receivingAdminUserId } });
+    await db.school.deleteMany({ where: { id: { in: [holdingSchoolId, receivingSchoolId] } } });
+  });
+
+  it("⚠ an unverified school's row with the right code and birthday is refused, with the one key", async () => {
+    const result = await admitPupils(receiving, [row()] as never, { locale: "en" });
+    expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
+    expect(await db.membership.count({ where: { userId: childUserId, schoolId: receivingSchoolId } })).toBe(0);
+  });
+
+  it("⚠ a verified school's row for a child still on another roll is refused, with the same key; a wrong birthday and an unknown code read no different", async () => {
+    await db.school.update({ where: { id: receivingSchoolId }, data: { verifiedAt: new Date() } });
+    const elsewhere = await admitPupils(receiving, [row()] as never, { locale: "en" });
+    expect(elsewhere.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.identityRefused" });
+    const wrongDob = await admitPupils(receiving, [row({ birthdateKey: "2014-09-10" })] as never, { locale: "en" });
+    const unknown = await admitPupils(receiving, [row({ studentCode: "STU-ZZHS-NONE" })] as never, { locale: "en" });
+    expect(wrongDob.outcomes[0]!.reasonKey).toBe("intake.identityRefused");
+    expect(unknown.outcomes[0]!.reasonKey).toBe("intake.identityRefused");
+    // The same for a PEN nobody holds, one that is held with the wrong date, and one without a date.
+    const noDate = await admitPupils(receiving, [row({ studentCode: null, pen: "27000000001", birthdateKey: null })] as never, { locale: "en" });
+    expect(noDate.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.penNeedsBirthdate" });
+    expect(await db.membership.count({ where: { userId: childUserId, schoolId: receivingSchoolId } })).toBe(0);
+  });
+
+  it("⚠ once the holding school records the departure, the row links", async () => {
+    await db.membership.update({ where: { id: holdingMembershipId }, data: { leftAt: new Date() } });
+    const result = await admitPupils(receiving, [row()] as never, { locale: "en" });
+    expect(result.outcomes[0], JSON.stringify(result.outcomes[0])).toMatchObject({ status: "admitted", linked: true });
+    expect(await db.membership.count({ where: { userId: childUserId, schoolId: receivingSchoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } })).toBe(1);
+    // Still one person.
+    expect(await db.user.count({ where: { name: `${TAG} Handshake Child` } })).toBe(1);
+  });
+
+  it("⚠ a list with more linking rows than the cap is refused whole, before any row is read", async () => {
+    const rows = Array.from({ length: INTAKE_MAX_LINKS + 1 }, (_, i) => row({ line: i + 1, studentCode: `STU-ZZHS-${String(i).padStart(4, "0")}` }));
+    expect(rows.length).toBeLessThan(INTAKE_MAX_ROWS);
+    await expect(admitPupils(receiving, rows as never, { locale: "en" })).rejects.toMatchObject({ key: "intake.tooManyLinks" });
+    const before = await db.rateLimit.findUnique({ where: { bucket: `intake:links:${receivingSchoolId}` }, select: { hits: true } });
+    // The refused list did not count against the hour either.
+    await expect(admitPupils(receiving, rows as never, { locale: "en" })).rejects.toBeInstanceOf(AccessError);
+    const after = await db.rateLimit.findUnique({ where: { bucket: `intake:links:${receivingSchoolId}` }, select: { hits: true } });
+    expect(after?.hits ?? 0).toBe(before?.hits ?? 0);
+  });
+
+  it("⚠ the eleventh linking list in an hour is refused, and the API says 429 with Retry-After; a list that links nobody still goes through", async () => {
+    const bucket = `intake:links:${receivingSchoolId}`;
+    const windowEndsAt = new Date(Date.now() + INTAKE_RUNS.windowMs);
+    await db.rateLimit.upsert({ where: { bucket }, create: { bucket, hits: INTAKE_RUNS.limit, windowEndsAt }, update: { hits: INTAKE_RUNS.limit, windowEndsAt } });
+    await expect(admitPupils(receiving, [row({ line: 1, studentCode: "STU-ZZHS-9999" })] as never, { locale: "en" })).rejects.toBeInstanceOf(IntakeLimited);
+
+    __resetCookies();
+    await createSession(receivingAdminUserId, { schoolId: receivingSchoolId, role: "ADMIN" });
+    const res = await intakePost(new Request("http://localhost/api/v1/admin/people/intake", {
+      method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ csv: `name,dob,student code\n${TAG} Eleventh,09/09/2014,STU-ZZHS-9999\n` }),
+    }));
+    expect(res.status).toBe(429);
+    expect(Number(res.headers.get("Retry-After"))).toBeGreaterThan(0);
+    expect(await res.json()).toMatchObject({ code: "RATE_LIMITED" });
+
+    // Plain rows are not what the limit is about.
+    const plain = await admitPupils(receiving, [row({ studentCode: null, name: `${TAG} Plain Newcomer`, birthdateKey: "2016-01-01" })] as never, { locale: "en" });
+    expect(plain.outcomes[0]).toMatchObject({ status: "admitted" });
   });
 });

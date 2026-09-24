@@ -1,5 +1,6 @@
 "use server";
 
+import { after } from "next/server";
 import { db } from "@/lib/db";
 import { generateToken, hashToken } from "@/lib/crypto";
 import { signInWithPassword } from "@/lib/auth-login";
@@ -18,8 +19,8 @@ import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
-import { forUser } from "@/lib/tenant-context";
-import { MAGIC_LINK_TTL_MINUTES, ROLE_HOME, type Role } from "@/lib/constants";
+import { resolveContext } from "@/lib/resolve-context";
+import { MAGIC_LINK_TTL_MINUTES } from "@/lib/constants";
 import { refusalText } from "@/lib/i18n/refusal";
 
 /** "in about 5 minutes", in the reader's language. See `retryHintKey`. */
@@ -116,11 +117,22 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
 
   const user = await db.user.findUnique({ where: { email }, select: { id: true, disabledAt: true } });
 
-  if (user && !user.disabledAt) {
+  /**
+   * MINTED AND SENT AFTER THE RESPONSE, whether or not there is anybody to send
+   * to. The answer used to wait on the SMTP round trip only when the account
+   * existed, so the time it took to say "if that address is registered, we
+   * have emailed it" was itself the answer to whether it was registered. The
+   * lookup above costs the same either way; everything that does not is
+   * deferred, so the form hears back at the same moment for a stranger and
+   * for a member.
+   */
+  const userId = user && !user.disabledAt ? user.id : null;
+  afterResponse(async () => {
+    if (!userId) return;
     const token = generateToken();
     await db.authToken.create({
       data: {
-        userId: user.id,
+        userId,
         email,
         purpose: "MAGIC_LINK",
         tokenHash: hashToken(token),
@@ -128,133 +140,24 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
       },
     });
     await sendMagicLink(email, `${APP_URL}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES);
-  }
+  });
 
   return { ok: true, errors: {} };
 }
 
 /**
- * Picks the role/school to open the session with. Exported because the magic
- * link and invite-acceptance routes need exactly the same logic.
+ * Runs `task` once the response has gone out. Next's `after` does exactly
+ * that inside a request; outside one — a test calling the action directly —
+ * it throws, and the task runs detached instead so the caller's timing is
+ * still not the mailer's.
  */
-export async function resolveContext(
-  userId: string,
-  preferredRole?: string | null,
-  preferredSchoolId?: string | null,
-): Promise<{ role: Role | null; schoolId: string | null; redirectTo: string }> {
-  // THE ONE PLACE WITH NO SCHOOL TO SCOPE TO, and the reason `forUser` exists.
-  //
-  // This has to ask which schools somebody belongs to, and the answer lives in a
-  // table scoped by school. There is no session yet either — it is created from
-  // what this returns. So it binds the USER instead, and the Membership policy
-  // answers "your own rows" without needing a school.
-  //
-  // Inside the wrapper rather than at the three call sites (password login,
-  // magic link, invite acceptance) on purpose: a call site that has to remember
-  // is a call site that eventually forgets, and forgetting here means everyone
-  // lands on "Join your school" holding a perfectly good password.
-  return forUser(userId, () => resolveContextForUser(userId, preferredRole, preferredSchoolId));
-}
-
-async function resolveContextForUser(
-  userId: string,
-  preferredRole?: string | null,
-  preferredSchoolId?: string | null,
-): Promise<{ role: Role | null; schoolId: string | null; redirectTo: string }> {
-  if (preferredRole && preferredRole !== "PARENT" && preferredSchoolId) {
-    const membership = await db.membership.findFirst({
-      where: {
-        userId,
-        schoolId: preferredSchoolId,
-        role: preferredRole,
-        status: "ACTIVE",
-        leftAt: null,
-      },
-      select: { id: true },
-    });
-    if (membership) {
-      return {
-        role: preferredRole as Role,
-        schoolId: preferredSchoolId,
-        redirectTo: ROLE_HOME[preferredRole as Role],
-      };
-    }
+function afterResponse(task: () => Promise<void>): void {
+  const run = () => task().catch((error) => console.error("[requestMagicLink] deferred send failed", error));
+  try {
+    after(run);
+  } catch {
+    void run();
   }
-
-  const memberships = await db.membership.findMany({
-    where: { userId, status: "ACTIVE", leftAt: null },
-    select: { role: true, schoolId: true },
-    orderBy: { joinedAt: "asc" },
-  });
-
-  const guardianships = await db.guardianship.count({
-    where: { parentUserId: userId, status: "ACTIVE" },
-  });
-
-  // An expert has no Membership and no Guardianship, so without this branch they
-  // authenticate successfully and are then sent to "join a school" — which is
-  // the one thing they must never do. Counted into `total` as well, because a
-  // teacher who is also an expert has two ways in and should be asked which.
-  const expertProfile = await db.expertProfile.findUnique({
-    where: { userId },
-    select: { id: true },
-  });
-
-  const total =
-    memberships.length + (guardianships > 0 ? 1 : 0) + (expertProfile ? 1 : 0);
-
-  // More than one way in? Let them choose rather than guessing wrong.
-  if (total > 1) return { role: null, schoolId: null, redirectTo: "/switch" };
-
-  const only = memberships[0];
-  if (only) {
-    return {
-      role: only.role as Role,
-      schoolId: only.schoolId,
-      redirectTo: ROLE_HOME[only.role as Role],
-    };
-  }
-  if (guardianships > 0) return { role: "PARENT", schoolId: null, redirectTo: "/parent" };
-  // No school on the session, deliberately: an expert's schools are derived from
-  // their confirmed bookings on every request, never carried on the cookie.
-  if (expertProfile) return { role: "EXPERT", schoolId: null, redirectTo: "/expert" };
-
-  // Runs the server, teaches nowhere. Checked LAST, after every school-shaped
-  // way in, because somebody who is both an operator and a teacher should land
-  // in their classroom — the flag is an extra door, not a replacement for one.
-  const operator = await db.user.findUnique({
-    where: { id: userId },
-    select: { isSuperuser: true, isAppAdmin: true },
-  });
-  if (operator?.isSuperuser) return { role: null, schoolId: null, redirectTo: "/root" };
-
-  // Curates the bank, teaches nowhere. Same shape as the operator branch and
-  // for the same reason — and it was missing: a content-team appointment with
-  // no school membership signed in to "Almost there — connect it to a school
-  // or a child", which is the one page that has nothing for them. Below the
-  // superuser check because an operator's own appadmin flag is inherited, not
-  // their front door.
-  if (operator?.isAppAdmin) return { role: null, schoolId: null, redirectTo: "/appadmin" };
-
-  /**
-   * AN ALUMNUS BELONGS TO NOTHING AND IS NOT NEW, which is the distinction this
-   * branch kept failing to draw — first for experts, then for operators, and
-   * now for the person it matters most to.
-   *
-   * Somebody who has left every school they were at, because they moved to one
-   * that is not on this platform or finished school altogether, has no active
-   * membership at all. Sending them to "join with a code" is the same wrong
-   * answer a suspended member used to get: there is no code that helps, and
-   * everything their schools wrote about them was sitting one redirect away.
-   *
-   * Left-and-gone memberships only — `leftAt` is deliberately not filtered, so
-   * this asks "were you ever a pupil" rather than "are you one now".
-   */
-  const everAPupil = await db.membership.count({ where: { userId, role: "STUDENT" } });
-  if (everAPupil > 0) return { role: null, schoolId: null, redirectTo: "/record" };
-
-  // Signed in, but belongs to nothing yet.
-  return { role: null, schoolId: null, redirectTo: "/join?first=1" };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -307,7 +210,9 @@ export async function completeReset(input: unknown): Promise<LoginState> {
     return {
       ok: false,
       errors: {
-        _form: result.errorKey ? refusalText(t, { errorKey: result.errorKey }) : t("login.didNotWork"),
+        _form: result.errorKey
+          ? refusalText(t, { errorKey: result.errorKey, retryAfterSeconds: result.retryAfterSeconds })
+          : t("login.didNotWork"),
       },
     };
   }

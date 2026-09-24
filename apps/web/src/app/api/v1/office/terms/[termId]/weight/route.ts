@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/office/terms/{termId}/weight — the term's share of the annual card. */
 export async function POST(request: Request, { params }: { params: Promise<{ termId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const { termId } = await params;
     const parsed = termWeightSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

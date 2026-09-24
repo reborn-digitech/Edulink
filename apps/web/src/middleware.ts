@@ -31,6 +31,17 @@ export function middleware(request: NextRequest) {
       },
     });
   }
+  // A browser that sends the session cookie AND names another origin is a
+  // cross-site form or script: SameSite=Lax already keeps the cookie off
+  // cross-site POSTs in every current browser, and this is the second lock
+  // for the ones that do not. A native app sends a bearer and no cookie; the
+  // web app's own pages send no Origin that differs from the host.
+  if (request.method !== "GET" && request.method !== "HEAD" && origin !== null && request.cookies.has("edulink_session")) {
+    let originHost: string | null = null;
+    try { originHost = new URL(origin).host; } catch { originHost = null; }
+    const selfHost = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+    if (originHost !== selfHost && !allowed) return new NextResponse(null, { status: 403 });
+  }
   const response = NextResponse.next();
   if (allowed) {
     response.headers.set("Access-Control-Allow-Origin", origin);

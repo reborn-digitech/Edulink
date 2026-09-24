@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
+import { requireSuperuser } from "@/lib/tenancy";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
@@ -23,6 +25,11 @@ export const dynamic = "force-dynamic";
  */
 export default async function MailboxPage() {
   if (process.env.NODE_ENV === "production") notFound();
+  // Off production the page still lists every sign-in link: on a developer's
+  // own machine it is open; on any other host (a staging box left in dev
+  // mode) only a signed-in superuser sees it.
+  const host = (await headers()).get("host") ?? "";
+  if (!/^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(host)) await requireSuperuser();
 
   const emails = await db.outboundEmail.findMany({
     orderBy: { createdAt: "desc" },

@@ -5,7 +5,7 @@ import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, ty
 import { AccessError } from "@/lib/tenancy";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken } from "@/lib/session";
-import { resolveContext } from "@/app/login/actions";
+import { resolveContext } from "@/lib/resolve-context";
 import type { Role } from "@/lib/constants";
 import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";

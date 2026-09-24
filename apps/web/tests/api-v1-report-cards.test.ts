@@ -26,6 +26,7 @@ const db = new PrismaClient();
 const STAMP = Date.now();
 let schoolId = "";
 let adminUserId = "";
+let principalUserId = "";
 let teacherUserId = "";
 let otherTeacherUserId = "";
 let parentUserId = "";
@@ -43,9 +44,10 @@ const paperIds: Record<string, string> = {};
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
-async function as(who: "ADMIN" | "TEACHER" | "OTHER" | "PARENT" | "STRANGER" | null) {
+async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "OTHER" | "PARENT" | "STRANGER" | null) {
   __resetCookies();
   if (who === "ADMIN") await createSession(adminUserId, { schoolId, role: "ADMIN" });
+  if (who === "PRINCIPAL") await createSession(principalUserId, { schoolId, role: "PRINCIPAL" });
   if (who === "TEACHER") await createSession(teacherUserId, { schoolId, role: "TEACHER" });
   if (who === "OTHER") await createSession(otherTeacherUserId, { schoolId, role: "TEACHER" });
   if (who === "PARENT") await createSession(parentUserId, { schoolId: null, role: "PARENT" });
@@ -66,13 +68,15 @@ beforeAll(async () => {
   const suffix = String(STAMP).slice(-6);
   schoolId = (await db.school.create({ data: { name: `ZZ Cards School ${STAMP}`, slug: `zz-cards-${STAMP}`, code: `ZC${suffix}`, contactEmail: `zz-cards-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", addressLine: "12 Lake Road", city: "Pune", brandPrimary: "#1e4fa3" }, select: { id: true } })).id;
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Cards ${who}`, email: `zz-cards-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
-  const [admin, teacher, other, parent, stranger, a, b] = await Promise.all([mk("Admin"), mk("Teacher"), mk("Other Teacher"), mk("Parent"), mk("Stranger"), mk("Asha Pupil"), mk("Bhavesh Pupil")]);
+  const [admin, principal, teacher, other, parent, stranger, a, b] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher"), mk("Other Teacher"), mk("Parent"), mk("Stranger"), mk("Asha Pupil"), mk("Bhavesh Pupil")]);
   adminUserId = admin.id;
+  principalUserId = principal.id;
   teacherUserId = teacher.id;
   otherTeacherUserId = other.id;
   parentUserId = parent.id;
   strangerUserId = stranger.id;
   adminMembershipId = (await db.membership.create({ data: { userId: adminUserId, schoolId, role: "ADMIN", status: "ACTIVE" }, select: { id: true } })).id;
+  await db.membership.create({ data: { userId: principalUserId, schoolId, role: "PRINCIPAL", status: "ACTIVE" } });
   teacherMembershipId = (await db.membership.create({ data: { userId: teacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } })).id;
   await db.membership.create({ data: { userId: otherTeacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" } });
   pupilA = (await db.membership.create({ data: { userId: a.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZCA${STAMP}` }, select: { id: true } })).id;
@@ -141,6 +145,11 @@ describe("the rules", () => {
     await weightPost(json(`/api/v1/office/terms/${term2}/weight`, { weightPercent: 60 }), params({ termId: term2 }));
     expect((await weightPost(json(`/api/v1/office/terms/${term1}/weight`, { weightPercent: 140 }), params({ termId: term1 }))).status).toBe(422);
     await as("TEACHER");
+    expect((await weightPost(json(`/api/v1/office/terms/${term1}/weight`, { weightPercent: 50 }), params({ termId: term1 }))).status).toBe(403);
+    // The head reads the rules and the weights; the document that shapes every card is the admin's to write.
+    await as("PRINCIPAL");
+    expect((await configGet()).status).toBe(200);
+    expect((await configPost(json("/api/v1/office/report-card-config", body))).status).toBe(403);
     expect((await weightPost(json(`/api/v1/office/terms/${term1}/weight`, { weightPercent: 50 }), params({ termId: term1 }))).status).toBe(403);
     await as("ADMIN");
     const again = await (await configGet()).json();

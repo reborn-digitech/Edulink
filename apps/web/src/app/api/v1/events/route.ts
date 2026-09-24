@@ -1,4 +1,5 @@
-import { getSession } from "@/lib/session";
+import { db } from "@/lib/db";
+import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
 
 /**
@@ -9,16 +10,39 @@ import { channel, subscribe } from "@/lib/realtime";
  * on foreground and closes it on background, relying on push meanwhile. A
  * comment line every 25 s keeps proxies from closing an idle stream.
  * Signed-out is 401 with an empty body, not a stream.
+ *
+ * WHO HEARS WHAT. The school channel carries every register, every grade
+ * and every remark thread in the school, and it used to be handed to any
+ * session with a school on it — a parent's included, once a school id had
+ * been stored against one. Staff get the school's stream. A pupil hears
+ * about themselves; a parent hears about their children; neither is
+ * subscribed to a school-wide channel at all.
  */
 export const dynamic = "force-dynamic";
+
+async function channelsFor(ctx: ActiveContext): Promise<string[]> {
+  const channels = [channel.user(ctx.user.id)];
+  if (ctx.role === "STUDENT") {
+    if (ctx.membershipId) channels.push(channel.student(ctx.membershipId));
+    return channels;
+  }
+  if (ctx.role === "PARENT") {
+    const children = await db.guardianship.findMany({
+      where: { parentUserId: ctx.user.id, status: "ACTIVE" },
+      select: { studentMembershipId: true },
+    });
+    for (const child of children) channels.push(channel.student(child.studentMembershipId));
+    return channels;
+  }
+  if (ctx.schoolId && ctx.membershipId) channels.push(channel.school(ctx.schoolId));
+  return channels;
+}
 
 export async function GET(request: Request) {
   const ctx = await getSession();
   if (!ctx) return new Response(null, { status: 401 });
 
-  const channels = [channel.user(ctx.user.id)];
-  if (ctx.schoolId) channels.push(channel.school(ctx.schoolId));
-  if (ctx.role === "STUDENT" && ctx.membershipId) channels.push(channel.student(ctx.membershipId));
+  const channels = await channelsFor(ctx);
 
   const encoder = new TextEncoder();
   let stop = () => {};

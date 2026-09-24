@@ -237,3 +237,19 @@ describe("parseIntakeCsv — an admission list", () => {
     ]);
   });
 });
+
+describe("toCsvValue", () => {
+  it("neutralises a cell that a spreadsheet would run as a formula, and leaves numbers alone", async () => {
+    const { toCsvValue, toCsv } = await import("./csv");
+    expect(toCsvValue('=HYPERLINK("http://x","click")')).toBe('"\'=HYPERLINK(""http://x"",""click"")"');
+    expect(toCsvValue("+cmd|' /C calc'!A0")).toMatch(/^"?'\+cmd/);
+    expect(toCsvValue("@SUM(A1)")).toBe("'@SUM(A1)");
+    expect(toCsvValue("-Rahul")).toBe("'-Rahul");
+    expect(toCsvValue("\tX")).toMatch(/^"?'\t/);
+    expect(toCsvValue("-12.50")).toBe("-12.50");
+    expect(toCsvValue(42)).toBe("42");
+    expect(toCsvValue("Aarav Apte")).toBe("Aarav Apte");
+    const csv = toCsv([{ name: "=1+1", marks: "-5" }], ["name", "marks"]);
+    expect(csv).toBe("name,marks\r\n'=1+1,-5\r\n");
+  });
+});

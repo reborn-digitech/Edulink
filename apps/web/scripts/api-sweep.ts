@@ -113,8 +113,8 @@ async function admissionFixture(s: string): Promise<Pick<SweepFixture, "admissio
   return { admissionCycleId: open?.id ?? null, admissionCycle: body, closedCycleId: closed?.id ?? null, admissionGrade: grade, admissionSlotId: submitted?.testSlotId ?? null, cancelledSlotId: cancelled?.id ?? null, applicationId: submitted?.id ?? null, offeredApplicationId: offered?.id ?? null, acceptedApplicationId: accepted?.id ?? null, admittedApplicationId: admitted?.id ?? null, waitlistedApplicationId: waitlisted?.id ?? null, withdrawnApplicationId: withdrawn?.id ?? null };
 }
 
-async function fixture(): Promise<SweepFixture> {
-  const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
+async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
+  const school = await db.school.findUniqueOrThrow({ where: { slug } });
   const s = school.id;
   const first = async <T extends { id: string }>(q: Promise<T | null>) => (await q)?.id ?? null;
   // The grade-3 class first: the exams, cards, records, syllabus and certificates fixtures all live there, and the teacher actor is its lead.
@@ -229,7 +229,113 @@ async function hitOnce(e: Endpoint, token: string | null, path: string, body?: s
   }
 }
 
+/**
+ * The cross-tenant and cross-person probes (`--cross=school`, `--cross=person`).
+ *
+ * The ordinary sweep proves each door opens for the right role with the
+ * school's own ids. These two prove it stays shut for the WRONG ids: every
+ * catalogued endpoint whose sample carries an id is called by ZZ Northgate's
+ * actors with another school's ids (school), or with a classmate the family
+ * actors are not linked to (person). Anything but a 2xx is a pass — 401,
+ * 403, 404 and 422 all keep the fence — and a 2xx is reported as a breach.
+ * Platform-wide surfaces (shared, competitions, vacancies, experts, the
+ * operator's and the content team's) are outside a school's fence and skipped.
+ */
+const CROSS_MODE = (process.argv.find((a) => a.startsWith("--cross="))?.slice(8) ?? null) as "school" | "person" | null;
+const CROSS_SCHOOL = process.argv.find((a) => a.startsWith("--other="))?.slice(8) ?? "zz-southbank-school";
+const PLATFORM_WIDE = [/^\/api\/v1\/shared\//, /^\/api\/v1\/competitions/, /^\/api\/v1\/contest/, /^\/api\/v1\/vacancies/, /^\/api\/v1\/expert/, /^\/api\/v1\/operator/, /^\/api\/v1\/appadmin/, /^\/api\/v1\/auth\//, /^\/api\/v1\/me\b/, /^\/api\/v1\/account/];
+
+/** Doors that answer for another school ON PURPOSE, with what they give away. */
+const CROSS_SCHOOL_BY_DESIGN: Record<string, string> = {
+  "GET /api/v1/office/pupils/by-pen/{pen}": "answers HERE / ELSEWHERE_ACTIVE / ELSEWHERE_LEFT / NONE by state alone; the other school's name, class and record stay behind the fence (pen.ts)",
+};
+
+async function crossProbe(mode: "school" | "person") {
+  const tokens = await actors();
+  const home = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" }, select: { id: true } });
+  const homeFx = await fixture();
+  const byDesign: string[] = [];
+  const ownData: string[] = [];
+  // A door that answers 2xx is a breach only if the answer carries the other person's id or name; a family door that
+  // ignores a childId it was not built to take and answers the caller's OWN child is not a leak — it is listed apart.
+  const check = async (e: Endpoint, role: Role, path: string, body: Record<string, unknown> | null, label: string, mustNotCarry: string[] = []) => {
+    const res = await hitText(e, tokens[role], path, body ? JSON.stringify(body) : undefined);
+    const twoXx = res.status >= 200 && res.status < 300;
+    const leak = twoXx && mustNotCarry.some((needle) => needle && res.text.includes(needle));
+    const ok = !twoXx || (mustNotCarry.length > 0 && !leak);
+    if (twoXx && !leak && mustNotCarry.length > 0) ownData.push(`${e.method} ${e.path} as ${role}: ${res.status}, answered without the other person`);
+    results.push({ endpoint: `${e.method} ${e.path}${body ? " (valid body)" : ""} [${label}]`, role, expected: [401, 403, 404, 422], got: res.status, ok });
+  };
+  if (mode === "school") {
+    const fx = await fixture(CROSS_SCHOOL);
+    for (const e of ENDPOINTS) {
+      if (typeof e.sample !== "function") continue; // a fixed path carries no id to swap
+      if (e.access === "anyone") { skipped.push(`${e.method} ${e.path} (public)`); continue; }
+      if (PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${e.method} ${e.path} (platform-wide)`); continue; }
+      const key = `${e.method} ${e.path}`;
+      if (CROSS_SCHOOL_BY_DESIGN[key]) { byDesign.push(`${key}: ${CROSS_SCHOOL_BY_DESIGN[key]}`); continue; }
+      const path = e.sample(fx);
+      if (path === null || /\{\w+\}/.test(path)) { skipped.push(key); continue; }
+      if (path === e.sample(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
+      const body = e.sampleBody ? e.sampleBody(fx) : null;
+      for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
+        if (Array.isArray(e.access) && !e.access.includes(role)) continue; // a role the door refuses anyway proves nothing here
+        await check(e, role, path, body, "another school's ids");
+      }
+    }
+  } else {
+    // A guardian asks for a child that is not theirs; a teacher for a pupil in a class they do not teach.
+    const guardian = await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: home.id, status: "ACTIVE" }, select: { parentUserId: true } });
+    const linked = (await db.guardianship.findMany({ where: { parentUserId: guardian.parentUserId }, select: { studentMembershipId: true } })).map((g) => g.studentMembershipId);
+    const notMine = await db.membership.findFirst({ where: { schoolId: home.id, role: "STUDENT", status: "ACTIVE", leftAt: null, id: { notIn: linked } }, select: { id: true } });
+    const teacherLead = homeFx.classId ? await db.classTeacher.findFirst({ where: { classId: homeFx.classId, role: "LEAD" }, select: { teacherMembershipId: true } }) : null;
+    const taught = teacherLead ? (await db.classTeacher.findMany({ where: { teacherMembershipId: teacherLead.teacherMembershipId }, select: { classId: true } })).map((c) => c.classId) : [];
+    const untaughtPupil = await db.enrollment.findFirst({ where: { schoolId: home.id, status: "ACTIVE", classId: { notIn: taught }, class: { archivedAt: null }, student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true } });
+    if (!notMine) throw new Error("no unlinked pupil to probe with");
+    const nameOf = async (id: string) => (await db.membership.findUniqueOrThrow({ where: { id }, select: { user: { select: { name: true } } } })).user.name;
+    const notMineNeedles = [notMine.id, await nameOf(notMine.id)];
+    const untaughtNeedles = untaughtPupil ? [untaughtPupil.studentMembershipId, await nameOf(untaughtPupil.studentMembershipId)] : [];
+    for (const e of ENDPOINTS) {
+      if (e.access === "anyone" || PLATFORM_WIDE.some((re) => re.test(e.path))) continue;
+      const permitted = (r: Role) => e.access === "signed-in" || (Array.isArray(e.access) && e.access.includes(r));
+      const base = typeof e.sample === "function" ? e.sample(homeFx) : (e.sample ?? e.path);
+      if (base === null || /\{\w+\}/.test(base)) continue;
+      const body = e.sampleBody ? e.sampleBody(homeFx) : null;
+      // PARENT: every family door with another child's id on the query string.
+      if (e.path.startsWith("/api/v1/family/") && permitted("PARENT")) {
+        const path = `${base}${base.includes("?") ? "&" : "?"}childId=${notMine.id}`;
+        await check(e, "PARENT", path, body, "a child not theirs", notMineNeedles);
+      }
+      // TEACHER: any door whose sample names the fixture pupil, with a pupil from a class the teacher does not teach.
+      if (untaughtPupil && homeFx.studentMembershipId && permitted("TEACHER") && (base.includes(homeFx.studentMembershipId) || (body && JSON.stringify(body).includes(homeFx.studentMembershipId)))) {
+        const swap = (v: string) => v.split(homeFx.studentMembershipId!).join(untaughtPupil.studentMembershipId);
+        const swappedBody = body ? (JSON.parse(swap(JSON.stringify(body))) as Record<string, unknown>) : null;
+        await check(e, "TEACHER", swap(base), swappedBody, "a pupil of a class they do not teach", untaughtNeedles);
+      }
+    }
+  }
+  const failed = results.filter((r) => !r.ok);
+  for (const r of failed) console.log(`✗ BREACH ${r.endpoint} as ${r.role}: got ${r.got}`);
+  for (const b of byDesign) console.log(`· by design: ${b}`);
+  for (const o of ownData) console.log(`· own data: ${o}`);
+  console.log(`cross-${mode}: ${results.length - failed.length}/${results.length} doors stayed shut, ${failed.length} opened, ${skipped.length} skipped.`);
+}
+
+async function hitText(e: Endpoint, token: string | null, path: string, body?: string): Promise<{ status: number; text: string }> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8_000);
+  try {
+    const res = await fetch(BASE + path, { method: e.method, headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(e.method === "GET" ? {} : { "content-type": "application/json" }) }, body: e.method === "GET" ? undefined : (body ?? "{}"), signal: controller.signal });
+    return { status: res.status, text: await res.text() };
+  } catch {
+    return { status: 0, text: "" };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function main() {
+  if (CROSS_MODE) return crossProbe(CROSS_MODE);
   const tokens = await actors();
   const fx = await fixture();
   for (const e of ENDPOINTS) {

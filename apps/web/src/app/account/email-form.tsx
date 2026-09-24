@@ -50,6 +50,9 @@ export function EmailForm({
   const [step, setStep] = useState<"idle" | "code">("idle");
   const [value, setValue] = useState("");
   const [code, setCode] = useState("");
+  // The current password, asked for once per change: a live session is not
+  // proof of the person, and this is where reset codes will go.
+  const [password, setPassword] = useState("");
   const [sentTo, setSentTo] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -57,7 +60,7 @@ export function EmailForm({
     event?.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await sendEmailCode(value);
+      const result = await sendEmailCode(value, password);
       if (!result.ok) {
         setError(result.error ?? t("account.didNotSend"));
         return;
@@ -84,6 +87,7 @@ export function EmailForm({
       setStep("idle");
       setValue("");
       setCode("");
+      setPassword("");
       router.refresh();
     });
   }
@@ -204,6 +208,15 @@ export function EmailForm({
         }
       />
 
+      <TextField
+        label={t("account.currentPassword")}
+        type="password"
+        autoComplete="current-password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        hint={t("account.currentPasswordHint")}
+      />
+
       <div className="flex flex-wrap items-center gap-2">
         {/*
           NAMES ITS CHANNEL, because this card now holds two of these forms. A
@@ -212,7 +225,7 @@ export function EmailForm({
           neither said which was which. Saying "Email" and "Text" costs a word
           and removes the question.
         */}
-        <Button type="submit" size="sm" loading={pending} disabled={value.trim().length === 0}>
+        <Button type="submit" size="sm" loading={pending} disabled={value.trim().length === 0 || password.length === 0}>
           {t("account.emailMeCode")}
         </Button>
         <p className="flex items-center gap-1.5 text-xs text-fg-muted">

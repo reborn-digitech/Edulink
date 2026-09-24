@@ -145,9 +145,9 @@ export type SendRequest = {
 
 export type SendOutcome = { id: string; status: string; channel: Channel | null; skipReason: SkipReason | null };
 
-async function monthlyCount(schoolId: string, now: Date): Promise<number> {
+async function monthlyCount(schoolId: string, now: Date, client: typeof db = db): Promise<number> {
   const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
-  const agg = await db.outboundMessage.aggregate({ where: { schoolId, status: { in: ["QUEUED", "SENT", "DELIVERED", "UNDELIVERED"] }, createdAt: { gte: start } }, _sum: { segments: true } });
+  const agg = await client.outboundMessage.aggregate({ where: { schoolId, status: { in: ["QUEUED", "SENT", "DELIVERED", "UNDELIVERED"] }, createdAt: { gte: start } }, _sum: { segments: true } });
   return agg._sum.segments ?? 0;
 }
 
@@ -196,16 +196,32 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
 
   const now = new Date();
   const segments = channel === "SMS" ? smsSegments(body) : 1;
-  if ((await monthlyCount(req.schoolId, now)) + segments > settings.monthlyCap) return skip("cap-monthly", channel);
-  if (!req.force) {
-    const dayStart = new Date(`${todayKey(school.timezone, now)}T00:00:00.000Z`);
-    const today = await db.outboundMessage.count({ where: { schoolId: req.schoolId, userId: req.userId, status: { in: ["QUEUED", "SENT", "DELIVERED"] }, createdAt: { gte: new Date(dayStart.getTime() - 12 * 3_600_000) } } });
-    if (today >= DAILY_CAP_PER_PERSON) return skip("cap-daily", channel);
-  }
-
-  const row = await db.outboundMessage.create({
-    data: { schoolId: req.schoolId, userId: req.userId, to: user.phone, channel, templateKey: req.templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
+  /**
+   * THE CAPS AND THE ROW ARE ONE TRANSACTION, serialised on the school. A
+   * broadcast drains many rows at once and a count-then-insert let every
+   * one of a burst read the same count and all pass, so a cap of two
+   * thousand was a cap of two thousand plus the burst. The school row is
+   * locked for the count and the insert together; the send itself happens
+   * after the lock is released, so the lock is held for two queries.
+   */
+  const to = user.phone;
+  const chosen: Channel = channel;
+  const decided = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.$queryRaw`SELECT "id" FROM "School" WHERE "id" = ${req.schoolId} FOR UPDATE`;
+    if ((await monthlyCount(req.schoolId, now, tx)) + segments > settings.monthlyCap) return { skip: "cap-monthly" as SkipReason, row: null };
+    if (!req.force) {
+      const dayStart = new Date(`${todayKey(school.timezone, now)}T00:00:00.000Z`);
+      const today = await tx.outboundMessage.count({ where: { schoolId: req.schoolId, userId: req.userId, status: { in: ["QUEUED", "SENT", "DELIVERED"] }, createdAt: { gte: new Date(dayStart.getTime() - 12 * 3_600_000) } } });
+      if (today >= DAILY_CAP_PER_PERSON) return { skip: "cap-daily" as SkipReason, row: null };
+    }
+    const row = await tx.outboundMessage.create({
+      data: { schoolId: req.schoolId, userId: req.userId, to, channel: chosen, templateKey: req.templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
+    });
+    return { skip: null, row };
   });
+  if (decided.skip || !decided.row) return skip(decided.skip ?? "cap-daily", chosen);
+  const row = decided.row;
   if (req.queueOnly) return { id: row.id, status: "QUEUED", channel, skipReason: null };
   const sent = await sendRow(row);
   return { id: row.id, status: sent.status, channel, skipReason: null };
@@ -337,14 +353,34 @@ export async function drainQueue(limit = 300): Promise<{ sent: number; failed: n
 
 const PROVIDER_STATUS: Record<string, string> = { queued: "SENT", accepted: "SENT", sending: "SENT", sent: "SENT", delivered: "DELIVERED", read: "DELIVERED", undelivered: "UNDELIVERED", failed: "FAILED" };
 
-/** Twilio's status callback: the row by its sid, then the broadcast's counts. Unknown sids are ignored. */
+/**
+ * A message only ever moves FORWARD: QUEUED → SENT → DELIVERED, and FAILED
+ * or UNDELIVERED is the end of the road. Callbacks arrive out of order and
+ * can be replayed by anyone who has seen one, so a "sent" after a
+ * "delivered" — or a "delivered" after a "failed" — changes nothing.
+ */
+const STATUS_RANK: Record<string, number> = { QUEUED: 0, SENT: 1, DELIVERED: 2, UNDELIVERED: 3, FAILED: 3 };
+
+/** Whether a provider's word may move a row from `current` to `next`. Exported for the tests. */
+export function statusMovesForward(current: string, next: string): boolean {
+  const from = STATUS_RANK[current];
+  const to = STATUS_RANK[next];
+  if (from === undefined || to === undefined) return false;
+  if (from >= 3) return false;
+  return to > from;
+}
+
+/** Twilio's status callback: the row by its sid, then the broadcast's counts. Unknown sids are ignored; a step backwards is ignored too. */
 export async function recordProviderStatus(schoolId: string, input: { sid: string; status: string; errorCode?: string | null; errorMessage?: string | null }): Promise<boolean> {
   return forSchool(schoolId, async () => {
     const row = await db.outboundMessage.findFirst({ where: { schoolId, providerSid: input.sid }, select: { id: true, broadcastId: true, status: true } });
     if (!row) return false;
-    const status = PROVIDER_STATUS[input.status.toLowerCase()] ?? row.status;
-    await db.outboundMessage.update({
-      where: { id: row.id },
+    const status = PROVIDER_STATUS[input.status.toLowerCase()];
+    if (!status || !statusMovesForward(row.status, status)) return true;
+    // Conditional on the status the decision was made against, so two
+    // callbacks landing together cannot interleave a step backwards.
+    const moved = await db.outboundMessage.updateMany({
+      where: { id: row.id, status: row.status },
       data: {
         status,
         providerStatus: input.status,
@@ -352,7 +388,7 @@ export async function recordProviderStatus(schoolId: string, input: { sid: strin
         error: input.errorCode ? `${input.errorCode}${input.errorMessage ? `: ${input.errorMessage}` : ""}`.slice(0, 300) : undefined,
       },
     });
-    if (row.broadcastId) await refreshBroadcastCounts(row.broadcastId);
+    if (moved.count > 0 && row.broadcastId) await refreshBroadcastCounts(row.broadcastId);
     return true;
   });
 }

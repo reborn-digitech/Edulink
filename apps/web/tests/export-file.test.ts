@@ -29,6 +29,16 @@ describe("export file", () => {
     ]);
   });
 
+  it("drops the CSV's formula guard on the workbook path: a '=1+1 cell is the text =1+1", async () => {
+    const bytes = await csvToXlsx("name,note\r\n'=1+1,'@mention\r\n'-5,-5\r\nO'Brien,'plain\r\n", "s");
+    const [sheet] = await parseXlsx(bytes);
+    expect(sheet!.rows[1]).toEqual(["=1+1", "@mention"]);
+    // A guarded "-5" is text, as the CSV guard meant it; an unguarded one is a number.
+    expect(sheet!.rows[2]).toEqual(["-5", "-5"]);
+    // An apostrophe that is not a guard stays.
+    expect(sheet!.rows[3]).toEqual(["O'Brien", "'plain"]);
+  });
+
   it("keeps a leading-zero code and a long phone number as text, and an amount as a number", async () => {
     const bytes = await csvToXlsx("code,phone,amount,note\r\n007,+919876400001,1250.50,12.0\r\n", "s");
     const [sheet] = await parseXlsx(bytes);

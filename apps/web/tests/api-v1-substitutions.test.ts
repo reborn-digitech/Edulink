@@ -180,6 +180,10 @@ describe("the board", () => {
     await as("B");
     expect((await weekGet())).toHaveProperty("status", 403);
     expect((await weekPost(json("/api/v1/office/school-week", { days: [1, 2, 3, 4, 5] }))).status).toBe(403);
+    // The head reads the week and may not set it: the week is how the school is set up.
+    await as("PRINCIPAL");
+    expect(await (await weekGet()).json()).toEqual({ days: [1, 2, 3, 4, 5, 6, 0] });
+    expect((await weekPost(json("/api/v1/office/school-week", { days: [1, 2, 3, 4, 5] }))).status).toBe(403);
     await as("ADMIN");
     expect(await (await weekGet()).json()).toEqual({ days: [1, 2, 3, 4, 5, 6, 0] });
     const without = [1, 2, 3, 4, 5, 6, 0].filter((d) => d !== weekday);

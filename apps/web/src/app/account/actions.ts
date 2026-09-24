@@ -135,14 +135,19 @@ async function phoneState(result: Awaited<ReturnType<typeof startPhoneChange>>):
   };
 }
 
-export async function sendMobileCode(raw: string): Promise<PhoneState> {
+/**
+ * WITH THE PASSWORD. A session is what somebody with a borrowed laptop has;
+ * the password is what they do not, and a number is where reset codes go.
+ */
+export async function sendMobileCode(raw: string, password: string): Promise<PhoneState> {
   const session = await requireApiUser();
-  return phoneState(await startPhoneChange(session.user.id, raw));
+  return phoneState(await startPhoneChange(session.user.id, raw, password ?? ""));
 }
 
 export async function confirmMobile(code: string): Promise<PhoneState> {
   const session = await requireApiUser();
-  const result = await confirmPhoneChange(session.user.id, code);
+  // This session stays; every other device is signed out by the lib.
+  const result = await confirmPhoneChange(session.user.id, code, session.sessionId);
   if (result.ok) revalidatePath("/account");
   return phoneState(result);
 }
@@ -181,14 +186,15 @@ async function emailState(result: Awaited<ReturnType<typeof startEmailChange>>):
   };
 }
 
-export async function sendEmailCode(raw: string): Promise<EmailState> {
+/** With the password, for the reason `sendMobileCode` gives — and the address is the login. */
+export async function sendEmailCode(raw: string, password: string): Promise<EmailState> {
   const session = await requireApiUser();
-  return emailState(await startEmailChange(session.user.id, raw));
+  return emailState(await startEmailChange(session.user.id, raw, password ?? ""));
 }
 
 export async function confirmEmail(code: string): Promise<EmailState> {
   const session = await requireApiUser();
-  const result = await confirmEmailChange(session.user.id, code);
+  const result = await confirmEmailChange(session.user.id, code, session.sessionId);
   // The header on this page shows the address, and so does the shell.
   if (result.ok) revalidatePath("/account");
   return emailState(result);

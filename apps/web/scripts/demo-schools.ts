@@ -36,7 +36,7 @@ import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoi
 import {
   attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
-  CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen } from "./zz-fixtures";
+  CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal } from "./zz-fixtures";
 
 setTag("");
 
@@ -1044,6 +1044,7 @@ Not seeded: a review round (deliberately skipped as cheap only through the UI), 
 /* -------------------------------------------------------------------------- */
 
 async function main() {
+  refuseUnlessLocal();
   const passwordHash = await hash(PASSWORD, ARGON);
   const ctx: Ctx = { passwordHash, setPassword: true };
 

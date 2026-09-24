@@ -111,7 +111,9 @@ export function CompetitionDetail() {
   const starts = when(c?.startsAt ?? null);
   const ends = when(c?.endsAt ?? null);
   const staff = role === "ADMIN" || role === "TEACHER";
-  const external = c?.externalUrl ?? null;
+  // https or nothing: the server refuses anything else, and the phone does
+  // not hand itself to a scheme an older record or a tampered answer names.
+  const external = c?.externalUrl && /^https:\/\/[^\s/]+/i.test(c.externalUrl.trim()) ? c.externalUrl.trim() : null;
   const hasActions = Boolean(c && (role === "STUDENT" || role === "PARENT" || c.isOrganiser || staff || external));
   const retryConsent = consent.variables;
   const retryWithdraw = withdraw.variables;

@@ -4,6 +4,10 @@ import { randomBytes } from "node:crypto";
 import { startEmailChange, confirmEmailChange, findAccount } from "@/lib/passwords";
 import { EMAIL_CHANGE_REQUESTS } from "@/lib/rate-limit";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
+import { hashPassword } from "@/lib/crypto";
+
+/** Every account this file makes has it: moving the address costs the current password. */
+const PASSWORD = "correct horse battery";
 
 /**
  * Changing the address an account signs in with.
@@ -47,7 +51,7 @@ function address(label: string): string {
 
 async function makeUser(email: string): Promise<string> {
   addressesUsed.add(email);
-  const user = await db.user.create({ data: { email, name: "Test Person", prefs: "{}" } });
+  const user = await db.user.create({ data: { email, name: "Test Person", prefs: "{}", passwordHash: await hashPassword(PASSWORD) } });
   made.push(user.id);
   return user.id;
 }
@@ -75,6 +79,10 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "email-change:" } } });
+  // The password check draws on the login bucket of the address; the confirm has its own ceiling.
+  await db.rateLimit.deleteMany({ where: { bucket: { in: [...addressesUsed].map((a) => `login:${a}`) } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { in: made.map((id) => `confirm-email:${id}`) } } });
+  await db.session.deleteMany({ where: { userId: { in: made } } });
   await db.authToken.deleteMany({ where: { userId: { in: made } } });
   await db.auditLog.deleteMany({ where: { actorUserId: { in: made } } });
   // By what was actually used, not by shape — see the note on `addressesUsed`.
@@ -91,9 +99,25 @@ afterAll(async () => {
 /* -------------------------------------------------------------------------- */
 
 describe("asking for a code", () => {
+  it("⚠ needs the current password: without it nothing is sent, with it the code goes and every other device is signed out at confirm", async () => {
+    const next = address("guarded");
+    expect(await startEmailChange(userId, next, "")).toMatchObject({ ok: false, errorKey: "refusal.needsPassword" });
+    expect(await startEmailChange(userId, next, "not the password")).toMatchObject({ ok: false, errorKey: "refusal.needsPassword" });
+    expect(await db.outboundEmail.count({ where: { to: next } })).toBe(0);
+
+    const expiresAt = new Date(Date.now() + 86_400_000);
+    const here = await db.session.create({ data: { userId, tokenHash: `zz-email-here-${Date.now()}`, expiresAt } });
+    const there = await db.session.create({ data: { userId, tokenHash: `zz-email-there-${Date.now()}`, expiresAt } });
+
+    expect((await startEmailChange(userId, next, PASSWORD)).ok).toBe(true);
+    expect((await confirmEmailChange(userId, await codeSentTo(next), here.id)).ok).toBe(true);
+    expect((await db.session.findUniqueOrThrow({ where: { id: here.id } })).revokedAt).toBeNull();
+    expect((await db.session.findUniqueOrThrow({ where: { id: there.id } })).revokedAt).not.toBeNull();
+  });
+
   it("sends one, and changes nothing yet", async () => {
     const next = address("after");
-    const result = await startEmailChange(userId, next);
+    const result = await startEmailChange(userId, next, PASSWORD);
 
     expect(result.ok, result.errorKey).toBe(true);
     expect(result.sentTo).toBe(next);
@@ -111,7 +135,7 @@ describe("asking for a code", () => {
 
   it("puts the pending address nowhere a lookup can reach it", async () => {
     const next = address("pending");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
 
     // Not on the user row, and not in the indexed column on the token either.
     expect(await findAccount(next)).toBeNull();
@@ -125,7 +149,7 @@ describe("asking for a code", () => {
 
   it("refuses something that is not an address", async () => {
     for (const bad of ["", "   ", "nope", "no@domain", "two@@at.test", "spaces in@it.test"]) {
-      const result = await startEmailChange(userId, bad);
+      const result = await startEmailChange(userId, bad, PASSWORD);
       expect(result.ok, `"${bad}" should be refused`).toBe(false);
     }
   });
@@ -142,13 +166,13 @@ describe("asking for a code", () => {
     // the assertion, and a mutant that breaks it must not leak a row.
     addressesUsed.add(handleAddress);
 
-    const result = await startEmailChange(userId, handleAddress);
+    const result = await startEmailChange(userId, handleAddress, PASSWORD);
     expect(result.ok).toBe(false);
     expect(result.errorKey).toBe("refusal.emailUnreceivable");
   });
 
   it("refuses the address already on the account", async () => {
-    const result = await startEmailChange(userId, originalEmail.toUpperCase());
+    const result = await startEmailChange(userId, originalEmail.toUpperCase(), PASSWORD);
     expect(result.ok).toBe(false);
     expect(result.errorKey).toBe("refusal.emailAlreadyYours");
   });
@@ -160,7 +184,7 @@ describe("asking for a code", () => {
     const theirs = address("someone-else");
     await makeUser(theirs);
 
-    const result = await startEmailChange(userId, theirs);
+    const result = await startEmailChange(userId, theirs, PASSWORD);
     expect(result.ok).toBe(false);
     expect(result.errorKey).toBe("refusal.emailTakenJoin");
     expect(await db.authToken.count({ where: { userId, purpose: "EMAIL_CHANGE" } })).toBe(0);
@@ -169,7 +193,7 @@ describe("asking for a code", () => {
   it("⚠ stops somebody using it to send mail in a loop", async () => {
     let refusal: string | undefined;
     for (let i = 0; i < EMAIL_CHANGE_REQUESTS.limit + 1; i++) {
-      const result = await startEmailChange(userId, address(`loop${i}`));
+      const result = await startEmailChange(userId, address(`loop${i}`), PASSWORD);
       if (!result.ok && result.errorKey === "refusal.tooManyCodes") {
         refusal = result.errorKey;
         break;
@@ -183,20 +207,20 @@ describe("asking for a code", () => {
     // address, every iteration above would have started its own window and the
     // limit would have bounded nothing at all.
     for (let i = 0; i < EMAIL_CHANGE_REQUESTS.limit; i++) {
-      await startEmailChange(userId, address(`vary${i}`));
+      await startEmailChange(userId, address(`vary${i}`), PASSWORD);
     }
-    const result = await startEmailChange(userId, address("brand-new"));
+    const result = await startEmailChange(userId, address("brand-new"), PASSWORD);
     expect(result.ok).toBe(false);
     expect(result.errorKey).toBe("refusal.tooManyCodes");
   });
 
   it("only the newest code is live", async () => {
     const first = address("first");
-    await startEmailChange(userId, first);
+    await startEmailChange(userId, first, PASSWORD);
     const firstCode = await codeSentTo(first);
 
     const second = address("second");
-    await startEmailChange(userId, second);
+    await startEmailChange(userId, second, PASSWORD);
 
     // The first code is spent, so it neither works nor moves the old address.
     expect((await confirmEmailChange(userId, firstCode)).ok).toBe(false);
@@ -213,7 +237,7 @@ describe("asking for a code", () => {
 describe("using the code", () => {
   it("moves the address across and marks it verified", async () => {
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     const code = await codeSentTo(next);
 
     const result = await confirmEmailChange(userId, code);
@@ -229,7 +253,7 @@ describe("using the code", () => {
 
   it("and the new address is what signs in from then on", async () => {
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     await confirmEmailChange(userId, await codeSentTo(next));
 
     // The point of the whole feature, stated as the thing a person does.
@@ -246,7 +270,7 @@ describe("using the code", () => {
      * — while it is still on record everywhere else — is what does.
      */
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     await confirmEmailChange(userId, await codeSentTo(next));
 
     const notice = await db.outboundEmail.findFirst({
@@ -261,7 +285,7 @@ describe("using the code", () => {
 
   it("a wrong code does not move the address, and costs an attempt", async () => {
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     const code = await codeSentTo(next);
     // DERIVED FROM THE REAL CODE rather than hardcoded, so it is wrong every
     // run. A fixed "123456" is right one run in a million, and a test that
@@ -277,12 +301,13 @@ describe("using the code", () => {
     });
     expect(user.email).toBe(originalEmail);
 
-    // Charged, which is what makes five the ceiling rather than a suggestion.
+    // Charged, which is what makes five the ceiling rather than a suggestion —
+    // in the column, by one conditional UPDATE, not in `meta`.
     const token = await db.authToken.findFirstOrThrow({
       where: { userId, purpose: "EMAIL_CHANGE" },
-      select: { meta: true },
+      select: { attempts: true },
     });
-    expect(JSON.parse(token.meta).attempts).toBe(1);
+    expect(token.attempts).toBe(1);
 
     // And the right code still works afterwards — a wrong guess must not spend
     // the token, only count against it.
@@ -291,7 +316,7 @@ describe("using the code", () => {
 
   it("⚠ five wrong codes spend the token, and the right one no longer works", async () => {
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     const code = await codeSentTo(next);
 
     for (let i = 0; i < 5; i++) {
@@ -317,7 +342,7 @@ describe("using the code", () => {
 
   it("refuses an expired code", async () => {
     const next = address("after");
-    await startEmailChange(userId, next);
+    await startEmailChange(userId, next, PASSWORD);
     const code = await codeSentTo(next);
 
     await db.authToken.updateMany({
@@ -333,7 +358,7 @@ describe("using the code", () => {
     // address. The database would refuse it regardless — `User.email` is unique
     // — but a constraint error is not a sentence anybody can act on.
     const contested = address("contested");
-    await startEmailChange(userId, contested);
+    await startEmailChange(userId, contested, PASSWORD);
     const code = await codeSentTo(contested);
 
     await makeUser(contested);
@@ -368,7 +393,7 @@ describe("a pupil who joined with a class code", () => {
 
   it("can set a real address for the first time", async () => {
     const real = address("asha-real");
-    const started = await startEmailChange(pupilId, real);
+    const started = await startEmailChange(pupilId, real, PASSWORD);
     expect(started.ok, started.errorKey).toBe(true);
 
     const result = await confirmEmailChange(pupilId, await codeSentTo(real));
@@ -382,7 +407,7 @@ describe("a pupil who joined with a class code", () => {
     // carrying account news to a domain nobody owns — and there is no previous
     // owner to warn in the first place.
     const real = address("asha-real");
-    await startEmailChange(pupilId, real);
+    await startEmailChange(pupilId, real, PASSWORD);
     await confirmEmailChange(pupilId, await codeSentTo(real));
 
     expect(await db.outboundEmail.count({ where: { to: handle } })).toBe(0);
@@ -390,7 +415,7 @@ describe("a pupil who joined with a class code", () => {
 
   it("the handle stops being a login once it is replaced", async () => {
     const real = address("asha-real");
-    await startEmailChange(pupilId, real);
+    await startEmailChange(pupilId, real, PASSWORD);
     await confirmEmailChange(pupilId, await codeSentTo(real));
 
     expect(await findAccount(handle)).toBeNull();

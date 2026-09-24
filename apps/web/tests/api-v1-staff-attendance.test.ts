@@ -129,6 +129,9 @@ describe("the register", () => {
   });
 
   it("a teacher checks in — present or late by the school's clock — a second tap a no-op, never on a closed day; the office sees the check-in; the month is theirs", async () => {
+    // The head marks the register and does not set the clock it is marked against.
+    await as("PRINCIPAL");
+    expect((await settingsPost(json("/x", { checkInMinute: 540, lateGraceMinutes: 5 }))).status).toBe(403);
     await as("ADMIN");
     // Whether the check-in lands present or late depends on the wall clock; pin it by setting the day's start around now.
     const nowMinute = minuteOfDayIn(TZ);

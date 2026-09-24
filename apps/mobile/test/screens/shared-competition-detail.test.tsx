@@ -55,6 +55,17 @@ beforeEach(() => {
 });
 
 describe("one competition", () => {
+  it("refuses to open an organiser's link that is not https", async () => {
+    const gate = gated();
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    await mountStaff(<CompetitionDetail />, "TEACHER", { [`GET ${PATH}`]: gate.answer });
+    gate.open(() => json({ ...DETAIL, externalUrl: "http://example.org/bee" }));
+    await screen.findByText("ZZ Maths Bee");
+    expect(screen.queryByText("Organiser's own page")).toBeNull();
+    expect(open).not.toHaveBeenCalled();
+    open.mockRestore();
+  });
+
   it("loads the one in the route: who runs it, the dates, the brief, the board and the rules; staff open the entries in the app", async () => {
     const gate = gated();
     const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);

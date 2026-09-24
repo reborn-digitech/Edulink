@@ -18,7 +18,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/office/syllabus — replace one list in order. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN");
     const parsed = officeSyllabusSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(officeSyllabusSavedSchema.parse(await saveOfficeSyllabus(ctx, parsed.data)));

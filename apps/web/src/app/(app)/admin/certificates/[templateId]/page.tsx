@@ -29,7 +29,7 @@ export default async function EditTemplatePage({ params }: { params: Promise<{ t
         meta={template.active ? <Badge tone="ok" size="sm">{t("certificates.active")}</Badge> : <Badge tone="neutral" size="sm">{t("certificates.archive")}</Badge>}
         back={{ href: "/admin/certificates", label: t("certificates.title") }}
       />
-      <TemplateEditor key={template.updatedAt} view={view} template={template} />
+      <TemplateEditor key={template.updatedAt} view={view} template={template} readOnly={ctx.role !== "ADMIN"} />
     </div>
   );
 }

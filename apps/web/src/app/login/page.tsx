@@ -92,7 +92,9 @@ export default async function LoginPage({
               role="status"
               className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
             >
-              {sso === "denied"
+              {sso === "unverified"
+                ? t("sso.unverifiedEmail")
+                : sso === "denied"
                 ? t("login.ssoDenied")
                 : sso === "noaccount"
                   ? t("login.ssoNoAccount")

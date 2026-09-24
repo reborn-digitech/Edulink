@@ -118,7 +118,11 @@ export async function listGlobalFeed(
         ...(opts.tag ? { tags: { contains: `"${opts.tag}"` } } : {}),
       },
       include: {
-        author: { select: { name: true, preferredName: true } },
+        author: { select: { name: true, preferredName: true, isMinor: true } },
+        // The author's membership is behind its own school's policy, so it
+        // reads null for another school's post; `isMinor` on the User row is
+        // the fact that crosses. Either says "a pupil" for the name rule below.
+        authorship: { select: { role: true } },
         // Readable only for our OWN school's posts — another school's School row
         // is behind its own policy, correctly. `globalSchoolName` is the copy
         // that survives the boundary; this relation is the nicer name when it
@@ -163,7 +167,13 @@ export async function listGlobalFeed(
       media: readJsonArray<MediaItem>(post.media),
       tags: readJsonArray<string>(post.tags),
       createdAt: post.createdAt,
-      authorName: post.author.preferredName ?? post.author.name,
+      // A PUPIL IS A FIRST NAME on the global feed. This is the one page the
+      // whole server reads, and a child's full name beside their school is
+      // enough to find them; staff and parents are adults and keep theirs.
+      authorName:
+        post.author.isMinor || post.authorship?.role === "STUDENT"
+          ? firstNameOf(post.author.preferredName ?? post.author.name)
+          : (post.author.preferredName ?? post.author.name),
       // The denormalised name FIRST: it is the only one readable from another
       // school. The relation is the fallback for our own posts and for any row
       // published before this column existed.
@@ -175,6 +185,11 @@ export async function listGlobalFeed(
       hiddenHere: hidden.has(post.id),
       };
     });
+}
+
+/** "Aarav Sharma" → "Aarav"; a single word stays as it is. */
+export function firstNameOf(name: string): string {
+  return name.trim().split(/\s+/)[0] ?? name;
 }
 
 /**
