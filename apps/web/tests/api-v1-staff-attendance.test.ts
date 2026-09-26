@@ -41,18 +41,17 @@ async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "TEACHER2" | "PARENT"
   if (who === "TEACHER2") await createSession(teacher2UserId, { schoolId, role: "TEACHER" });
   if (who === "PARENT") await createSession(parentUserId, { schoolId: null, role: "PARENT" });
 }
+// THE FIXTURE SCHOOL TEACHES SEVEN DAYS A WEEK, so "today" is an open day
+// whatever the calendar says; this suite once assumed a Monday-to-Saturday
+// week and failed every Sunday in the school's zone. Closures are planted
+// where a test wants one.
 function yesterdayWorking(): string {
-  for (let back = 1; back < 10; back += 1) {
-    const d = new Date(Date.now() - back * 86_400_000);
-    const key = todayKey(TZ, d);
-    if (new Date(`${key}T00:00:00Z`).getUTCDay() !== 0) return key;
-  }
-  throw new Error("no working day");
+  return todayKey(TZ, new Date(Date.now() - 86_400_000));
 }
 
 beforeAll(async () => {
   const suffix = String(STAMP).slice(-6);
-  schoolId = (await db.school.create({ data: { name: `ZZ Staff Att School ${STAMP}`, slug: `zz-satt-${STAMP}`, code: `ZM${suffix}`, contactEmail: `zz-satt-${STAMP}@test.invalid`, timezone: TZ }, select: { id: true } })).id;
+  schoolId = (await db.school.create({ data: { name: `ZZ Staff Att School ${STAMP}`, slug: `zz-satt-${STAMP}`, code: `ZM${suffix}`, contactEmail: `zz-satt-${STAMP}@test.invalid`, timezone: TZ, teachingDays: "0,1,2,3,4,5,6" }, select: { id: true } })).id;
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Satt ${who}`, email: `zz-satt-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
   const [admin, principal, teacher, teacher2, parent, pupil] = await Promise.all([mk("Admin"), mk("Principal"), mk("Teacher"), mk("Teacher Two"), mk("Parent"), mk("Pupil")]);
   adminUserId = admin.id;
@@ -172,10 +171,10 @@ describe("the month's file and the days it counts", () => {
   it("a closing holiday has no column, a teacher who left mid-month keeps a row to their last day, and every count equals its cells and adds up to workingDays", async () => {
     await as("ADMIN");
     const thisMonth = today.slice(0, 7);
-    // The past working days of this month, Sundays out — the same week every other test assumes.
+    // The past days of this month — every one open, on the seven-day week above.
     const pastOpen: string[] = [];
     for (let d = `${thisMonth}-01`; d < today; d = todayKey("UTC", new Date(new Date(`${d}T00:00:00Z`).getTime() + 86_400_000))) {
-      if (new Date(`${d}T00:00:00Z`).getUTCDay() !== 0) pastOpen.push(d);
+      pastOpen.push(d);
     }
     const holidayDay = pastOpen[0] ?? null;
     const lastDay = pastOpen[pastOpen.length - 1] ?? today;
@@ -190,25 +189,22 @@ describe("the month's file and the days it counts", () => {
 
     const month = await (await monthGet(get("/api/v1/office/staff-attendance/month"))).json();
     expect(month.workingDaysInMonth).toBeGreaterThanOrEqual(month.workingDays);
-    // Open days up to today: the past working days less the holiday, plus today when it is a working day.
-    const todayOpen = new Date(`${today}T00:00:00Z`).getUTCDay() !== 0 ? 1 : 0;
-    expect(month.workingDays).toBe(pastOpen.length - (holidayDay ? 1 : 0) + todayOpen);
+    // Open days up to today: the past days less the holiday, plus today.
+    expect(month.workingDays).toBe(pastOpen.length - (holidayDay ? 1 : 0) + 1);
     const rows: { membershipId: string; present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number }[] = month.rows;
     for (const r of rows) expect(r.present + r.late + r.halfDay + r.absent + r.onLeave + r.unmarked).toBe(r.workingDays);
     const leaver = rows.find((r) => r.membershipId === threeM);
     expect(leaver).toBeTruthy();
     // Counted to their last day only; the mark on the closed day counts for nothing.
     expect(leaver!.workingDays).toBe(pastOpen.filter((d) => d !== holidayDay && d <= lastDay).length);
-    // Their mark on the last day counts once that day is open; the one on the holiday never does.
-    const lastDayOpen = lastDay !== holidayDay && new Date(`${lastDay}T00:00:00Z`).getUTCDay() !== 0;
-    expect(leaver!.present).toBe(lastDayOpen ? 1 : 0);
+    // Their mark on the last day counts; the one on the holiday never does.
+    expect(leaver!.present).toBe(lastDay !== holidayDay ? 1 : 0);
 
     const res = await exportGet(get("/admin/staff-attendance/export"));
     expect(res.status).toBe(200);
     const [headers = [], ...records] = parseCsvRecords(await res.text()).records;
     const dayCols = headers.map((h, i) => [h, i] as const).filter(([h]) => /^\d{4}-\d{2}-\d{2}$/.test(h));
     if (holidayDay) expect(headers).not.toContain(holidayDay);
-    for (const [d] of dayCols) expect(new Date(`${d}T00:00:00Z`).getUTCDay()).not.toBe(0);
     expect(dayCols.length).toBe(month.workingDays);
     const col = (name: string) => headers.indexOf(name);
     expect(records.length).toBe(rows.length);

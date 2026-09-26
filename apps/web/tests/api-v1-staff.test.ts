@@ -81,7 +81,8 @@ function futureKey(daysAhead: number): string {
 
 beforeAll(async () => {
   const school = await db.school.create({
-    data: { name: `ZZ Staff School ${STAMP}`, slug: `zz-staff-${STAMP}`, code: `ZS${tail}`, contactEmail: `zz-staff-${STAMP}@test.invalid`, timezone: "Asia/Kolkata" },
+    // Seven teaching days, so "registers due today" holds on a Sunday in the school's zone too.
+    data: { name: `ZZ Staff School ${STAMP}`, slug: `zz-staff-${STAMP}`, code: `ZS${tail}`, contactEmail: `zz-staff-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", teachingDays: "0,1,2,3,4,5,6" },
     select: { id: true },
   });
   schoolId = school.id;
