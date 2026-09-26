@@ -17,6 +17,8 @@ import { createHash, randomBytes } from "node:crypto";
 import { PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { ROLES, type Role } from "../src/lib/constants";
+import { parseTeachingDays } from "../src/lib/dates";
+import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -185,12 +187,30 @@ async function actors(): Promise<Record<Role, string>> {
   return out as Record<Role, string>;
 }
 
+/**
+ * Whether the fixture school is closed today by its own calendar — a day off
+ * its teaching week, or a closing holiday. The staff self check-in refuses a
+ * closed day by design, so on a Sunday in the school's zone the door answers
+ * 403 to every permitted role and the sweep must expect that rather than 200.
+ */
+const CLOSING_KINDS = (Object.keys(HOLIDAY_KIND_META) as HolidayKind[]).filter((k) => HOLIDAY_KIND_META[k].closesSchool);
+let checkInClosedToday = false;
+async function readCheckInClosure(slug = "zz-northgate-school"): Promise<void> {
+  const school = await db.school.findUniqueOrThrow({ where: { slug }, select: { id: true, timezone: true, teachingDays: true } });
+  const key = new Intl.DateTimeFormat("en-CA", { timeZone: school.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const week = parseTeachingDays(school.teachingDays);
+  const closed = await db.holiday.findFirst({ where: { schoolId: school.id, startDateKey: { lte: key }, endDateKey: { gte: key }, kind: { in: CLOSING_KINDS } }, select: { id: true } });
+  checkInClosedToday = !week.includes(new Date(`${key}T00:00:00Z`).getUTCDay()) || closed !== null;
+  if (checkInClosedToday) console.log(`· ${key} is a closed day for the fixture school: the staff check-in is expected to refuse`);
+}
+
 function expected(e: Endpoint, role: Role | null): number | number[] {
   if (role === null) return e.access === "anyone" ? (e.emptyBodyStatus ?? 200) : 401;
   // The operator and the content team hold no school role: every role token is refused.
   if (e.access === "operator" || e.access === "app-admin") return 403;
   const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
   if (!permitted) return 403;
+  if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
   if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : [200, 404];
   return e.emptyBodyStatus ?? [200, 404, 422];
 }
@@ -338,6 +358,7 @@ async function main() {
   if (CROSS_MODE) return crossProbe(CROSS_MODE);
   const tokens = await actors();
   const fx = await fixture();
+  await readCheckInClosure();
   for (const e of ENDPOINTS) {
     const path = typeof e.sample === "function" ? e.sample(fx) : (e.sample ?? e.path);
     if (path === null || /\{\w+\}/.test(path)) {
