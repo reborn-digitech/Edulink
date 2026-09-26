@@ -48749,6 +48749,10 @@
                         },
                         "acked": {
                           "$ref": "#/properties/remindCount"
+                        },
+                        "noGuardian": {
+                          "$ref": "#/properties/remindCount",
+                          "default": 0
                         }
                       },
                       "required": [
@@ -48782,6 +48786,10 @@
                           },
                           "acked": {
                             "$ref": "#/properties/remindCount"
+                          },
+                          "noGuardian": {
+                            "$ref": "#/properties/remindCount",
+                            "default": 0
                           },
                           "outstanding": {
                             "type": "array",
@@ -48838,6 +48846,10 @@
                                     ],
                                     "additionalProperties": false
                                   }
+                                },
+                                "noGuardian": {
+                                  "type": "boolean",
+                                  "default": false
                                 }
                               },
                               "required": [
@@ -49115,6 +49127,10 @@
                           },
                           "acked": {
                             "$ref": "#/properties/rows/items/properties/total"
+                          },
+                          "noGuardian": {
+                            "$ref": "#/properties/rows/items/properties/total",
+                            "default": 0
                           }
                         },
                         "required": [

@@ -653,13 +653,31 @@ export async function schoolLeave(
   if ((ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") || !ctx.schoolId) {
     throw new AccessError("access.onlyThePrincipalOrAnAdminCan2");
   }
-  const rows = await db.leaveRequest.findMany({
-    where: { schoolId: ctx.schoolId, ...(status ? { status } : {}) },
-    orderBy: [{ status: "asc" }, { fromDateKey: "asc" }],
+  if (status) {
+    const rows = await db.leaveRequest.findMany({
+      where: { schoolId: ctx.schoolId, status },
+      orderBy: { fromDateKey: "asc" },
+      take: 300,
+      ...LEAVE_INCLUDE,
+    });
+    return rows.map(shape);
+  }
+  // The queue first and whole, then the history. One list ordered by status
+  // put PENDING last alphabetically and cut it at 300, so a busy school's
+  // desk could disagree with the home page's count of what is waiting.
+  const pending = await db.leaveRequest.findMany({
+    where: { schoolId: ctx.schoolId, status: "PENDING" },
+    orderBy: { fromDateKey: "asc" },
     take: 300,
     ...LEAVE_INCLUDE,
   });
-  return rows.map(shape);
+  const decided = await db.leaveRequest.findMany({
+    where: { schoolId: ctx.schoolId, status: { not: "PENDING" } },
+    orderBy: { fromDateKey: "desc" },
+    take: Math.max(0, 300 - pending.length),
+    ...LEAVE_INCLUDE,
+  });
+  return [...pending, ...decided].map(shape);
 }
 
 /**

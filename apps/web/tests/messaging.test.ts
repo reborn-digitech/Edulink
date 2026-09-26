@@ -275,6 +275,12 @@ describe("broadcasts", () => {
       expect(failed.error).toBe("30003: Unreachable");
       const b = await db.broadcast.findUniqueOrThrow({ where: { id: other.broadcastId! } });
       expect(b.failed).toBeGreaterThanOrEqual(1);
+      // UNDELIVERED is a failure, not a sending as well: the counters add up to the rows.
+      const byStatus = await db.outboundMessage.groupBy({ by: ["status"], where: { broadcastId: other.broadcastId! }, _count: { _all: true } });
+      const n = (s: string) => byStatus.find((g) => g.status === s)?._count._all ?? 0;
+      expect(b.sent).toBe(n("SENT") + n("DELIVERED"));
+      expect(b.failed).toBe(n("FAILED") + n("UNDELIVERED"));
+      expect(b.queued + b.sent + b.failed + b.skipped).toBe(byStatus.reduce((a, g) => a + g._count._all, 0));
       const resent = await resendBroadcastFailures(admin(), other.broadcastId!);
       expect(resent.requeued).toBeGreaterThanOrEqual(1);
       expect((await db.outboundMessage.findUniqueOrThrow({ where: { id: other.id } })).status).toBe("SENT");

@@ -231,7 +231,10 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
           await tx.schoolRecord.deleteMany({ where: { studentMembershipId: existing.id, schoolId: lookup.schoolId } });
           await tx.membership.update({
             where: { id: existing.id },
-            data: { status: "ACTIVE", leftAt: null, studentCode: studentCode() },
+            // A suspension is over when the pupil is back on the roll: the
+            // stamp and the reason go with the status, as they do on the
+            // office's own reinstate and on the admission and intake paths.
+            data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: studentCode() },
           });
           id = existing.id;
         } else {

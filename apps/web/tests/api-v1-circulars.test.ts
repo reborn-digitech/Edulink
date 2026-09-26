@@ -142,11 +142,16 @@ describe("reach", () => {
     const res = await reachGet(get("/x"), params(postId));
     expect(res.status).toBe(200);
     const reach = await res.json();
-    expect(reach.totals).toEqual({ total: 3, told: 2, seen: 2, acked: 1 });
+    // Pupil C has no guardian: for a circular to parents nobody can be told on
+    // that family's behalf, so the family is named apart and kept out of the
+    // count — 1 of 2 acknowledged, not 1 of 3 with a third that no reminder
+    // could ever move.
+    expect(reach.totals).toEqual({ total: 2, told: 2, seen: 2, acked: 1, noGuardian: 1 });
     expect(reach.groups).toHaveLength(1);
     const g = reach.groups[0];
     expect(g.className).toBe("ZZ Circ Class 5");
-    expect(g.outstanding.map((f: { studentName: string; state: string }) => [f.studentName, f.state])).toEqual([["ZZ Circ Pupil A", "SEEN"], ["ZZ Circ Pupil C", "UNREACHED"]]);
+    expect(g.noGuardian).toBe(1);
+    expect(g.outstanding.map((f: { studentName: string; state: string; noGuardian: boolean }) => [f.studentName, f.state, f.noGuardian])).toEqual([["ZZ Circ Pupil A", "SEEN", false], ["ZZ Circ Pupil C", "UNREACHED", true]]);
     const a = g.outstanding[0];
     expect(a.guardians.map((x: { name: string; state: string; hasApp: boolean; texted: boolean; phone: string | null }) => [x.name, x.state, x.hasApp, x.texted, x.phone !== null])).toEqual([["ZZ Circ Parent A", "TOLD", true, true, true], ["ZZ Circ Parent B", "SEEN", false, false, false]]);
     expect(reach.canRemind).toBe(true);
@@ -208,7 +213,8 @@ describe("reach", () => {
   it("the office list sums every circular; a teacher is refused", async () => {
     await as("ADMIN");
     const list = await (await circularsGet()).json();
-    expect(list.rows.map((r: { title: string; total: number; acked: number; seen: number; told: number }) => [r.title, r.total, r.told, r.seen, r.acked])).toEqual([["ZZ Annual day consent", 3, 2, 2, 1]]);
+    // The same figures as the report: two reachable families, one with no guardian named apart.
+    expect(list.rows.map((r: { title: string; total: number; acked: number; seen: number; told: number; noGuardian: number }) => [r.title, r.total, r.told, r.seen, r.acked, r.noGuardian])).toEqual([["ZZ Annual day consent", 2, 2, 2, 1, 1]]);
     await as("TEACHER");
     expect((await circularsGet()).status).toBe(403);
   });

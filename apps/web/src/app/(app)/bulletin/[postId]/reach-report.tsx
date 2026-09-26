@@ -38,6 +38,11 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
         <StatTile label={t("circulars.seen")} value={reach.totals.seen} tone="accent" />
         <StatTile label={t("circulars.acked")} value={reach.totals.acked} tone={outstanding === 0 && reach.totals.total > 0 ? "ok" : "neutral"} hint={outstanding > 0 ? t("circulars.outstandingCount", { count: outstanding }) : undefined} />
       </div>
+      {reach.totals.noGuardian > 0 && (
+        <p className="text-sm text-warn" data-testid="reach-no-guardian">
+          {t("circulars.noGuardianCount", { count: reach.totals.noGuardian })}
+        </p>
+      )}
 
       {/* ---- when it went, and when the rest were chased ---- */}
       <dl className="space-y-1 text-sm text-fg-muted">
@@ -110,7 +115,11 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
                         </td>
                         {!staffOnly && (
                           <td className="px-3 py-2 align-top">
-                            {family.guardians.length === 0 ? (
+                            {family.noGuardian ? (
+                              <Badge tone="warn" size="sm">
+                                {t("circulars.noGuardian")}
+                              </Badge>
+                            ) : family.guardians.length === 0 ? (
                               <span className="text-fg-muted">—</span>
                             ) : (
                               <ul className="space-y-1">

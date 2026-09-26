@@ -116,7 +116,7 @@ export async function listSchools(session: ActiveContext, opts: SchoolListOpts =
   // does not see who its people are.
   const invites = await db.invite.groupBy({
     by: ["schoolId"],
-    where: { role: "ADMIN", status: "PENDING" },
+    where: { role: "ADMIN", status: "PENDING", expiresAt: { gt: new Date() } },
     _count: true,
   });
   const pending = new Map(invites.map((i) => [i.schoolId, i._count]));

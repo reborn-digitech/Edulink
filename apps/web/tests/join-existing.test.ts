@@ -138,6 +138,19 @@ describe("joining with a code on an existing account", () => {
     await db.membership.update({ where: { id: m.id }, data: { leftAt: null } });
   });
 
+  it("⚠ coming back after a suspension clears the stamp and the reason with the status", async () => {
+    const { joinWithMyAccount } = await import("@/app/join/actions");
+    const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
+    await db.membership.update({ where: { id: m.id }, data: { status: "SUSPENDED", suspendedAt: new Date(), suspendedReason: "test" } });
+
+    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
+    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true });
+    const after = await db.membership.findUniqueOrThrow({ where: { id: m.id } });
+    expect(after.status).toBe("ACTIVE");
+    expect(after.suspendedAt).toBeNull();
+    expect(after.suspendedReason).toBeNull();
+  });
+
   it("⚠ refuses a parent's account", async () => {
     const { joinWithMyAccount } = await import("@/app/join/actions");
     current = ctx({ userId: parentUserId, name: "ZZ Join Parent" });

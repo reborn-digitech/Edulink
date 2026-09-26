@@ -393,6 +393,11 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
     data: { parentConsentAt: new Date(), parentConsentBy: session.user.id },
   });
 
+  // A result recorded before the guardian said yes was kept off the board by
+  // the consent rule in `refreshStanding`; the yes puts it on. A recompute, so
+  // for the usual entry with no result yet it changes nothing.
+  await refreshStanding(entry.schoolId, entry.competitionId);
+
   await audit({
     schoolId: entry.schoolId,
     actorUserId: session.user.id,

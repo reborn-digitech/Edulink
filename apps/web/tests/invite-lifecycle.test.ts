@@ -2,6 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { acceptInvite } from "@/app/invite/[token]/actions";
 import { generateToken, hashToken } from "@/lib/crypto";
+import { expireInvites } from "@/lib/invites";
 
 /**
  * What an invitation stops being able to do.
@@ -165,5 +166,17 @@ describe("expiry", () => {
     // Left PENDING, it would keep showing in the admin list as outstanding.
     const row = await db.invite.findUniqueOrThrow({ where: { id } });
     expect(row.status).toBe("EXPIRED");
+  });
+
+  it("⚠ the nightly job marks every lapsed invitation nobody followed, counts it per school, and leaves the live ones alone", async () => {
+    const lapsed = await invite("lapsed-nightly", { expiresAt: new Date(Date.now() - 3_600_000) });
+    const live = await invite("live-nightly");
+    const out = await expireInvites();
+    expect(out.expired).toBeGreaterThanOrEqual(1);
+    expect(out.perSchool[schoolId]?.invitesExpired).toBeGreaterThanOrEqual(1);
+    expect((await db.invite.findUniqueOrThrow({ where: { id: lapsed.id } })).status).toBe("EXPIRED");
+    expect((await db.invite.findUniqueOrThrow({ where: { id: live.id } })).status).toBe("PENDING");
+    // Nothing left to do: the second run reports nothing for this school.
+    expect((await expireInvites()).perSchool[schoolId]).toBeUndefined();
   });
 });

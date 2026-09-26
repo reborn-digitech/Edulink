@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { leaveBalancesFor, leaveDays } from "@/lib/staff-records";
+import { leaveBalancesFor, leaveDayCounterFor } from "@/lib/staff-records";
 import { CalendarCheckIcon , UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -60,6 +60,12 @@ export default async function PrincipalLeavePage({
   const pending = all.filter((row) => row.status === "PENDING");
   // What the desk was approving blind: each applicant's leave this year.
   const balances = await leaveBalancesFor(ctx.schoolId!, pending.map((r) => r.applicantMembershipId));
+  // "This request" on the school's own calendar, as the balance beside it is.
+  const countDays = await leaveDayCounterFor(
+    ctx.schoolId!,
+    pending.reduce((min, r) => (r.fromDateKey < min ? r.fromDateKey : min), pending[0]?.fromDateKey ?? "9999-12-31"),
+    pending.reduce((max, r) => (r.toDateKey > max ? r.toDateKey : max), pending[0]?.toDateKey ?? "0000-01-01"),
+  );
   const decided = all.filter((row) => row.status !== "PENDING");
   // Only a tab that has something behind it: `?tab=decided` with nothing
   // decided falls back to the queue rather than an empty page.
@@ -235,7 +241,7 @@ export default async function PrincipalLeavePage({
                     const b = balances.get(request.applicantMembershipId);
                     if (!b) return null;
                     const counted = request.kind === "CASUAL" || request.kind === "SICK";
-                    return { ...b, thisRequest: counted ? leaveDays(request.fromDateKey, request.toDateKey) : 0 };
+                    return { ...b, thisRequest: counted ? countDays(request.fromDateKey, request.toDateKey) : 0 };
                   })()}
                 />
               </li>

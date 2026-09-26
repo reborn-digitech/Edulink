@@ -137,3 +137,18 @@ export async function setOwnBirthdate(ctx: ActiveContext, dateKey: string): Prom
   });
   return { ok: true };
 }
+
+/**
+ * `User.isMinor` is a stored copy of "under eighteen by the date of birth",
+ * written when the date is, and until now never again: every pupil turned
+ * eighteen still counted as a child for the moderation, the push wording and
+ * the feed. The daily `accounts:tidy` job runs this. Only the ageing direction
+ * is taken here — a corrected date recomputes the flag on its own path — and
+ * only for accounts with a date on record, so an adult who never gave one
+ * keeps whatever their sign-up said.
+ */
+export async function refreshMinority(now: Date = new Date()): Promise<{ adults: number }> {
+  const cutoff = new Date(Date.UTC(now.getUTCFullYear() - 18, now.getUTCMonth(), now.getUTCDate()));
+  const moved = await db.user.updateMany({ where: { isMinor: true, birthdate: { not: null, lte: cutoff } }, data: { isMinor: false } });
+  return { adults: moved.count };
+}

@@ -44,9 +44,10 @@ export default async function InvitesPage({
     db.invite.findMany({
       where: {
         schoolId: ctx.schoolId,
-        status: active,
+        // The "expired" view lists the lapsed ones whether the nightly job has
+        // marked them yet or not; the waiting tab and its count never do.
+        ...(expiredOnly ? { OR: [{ status: "PENDING", expiresAt: { lt: new Date() } }, { status: "EXPIRED" }] } : { status: active, ...(active === "PENDING" ? { expiresAt: { gte: new Date() } } : {}) }),
         ...(roleFilter ? { role: roleFilter } : {}),
-        ...(expiredOnly ? { expiresAt: { lt: new Date() } } : {}),
         ...(q ? { OR: [{ email: { contains: q, mode: "insensitive" } }, { name: { contains: q, mode: "insensitive" } }] } : {}),
       },
       orderBy: { createdAt: "desc" },
@@ -54,7 +55,7 @@ export default async function InvitesPage({
     }),
     db.invite.groupBy({
       by: ["status"],
-      where: { schoolId: ctx.schoolId },
+      where: { schoolId: ctx.schoolId, OR: [{ status: { not: "PENDING" } }, { expiresAt: { gte: new Date() } }] },
       _count: true,
     }),
   ]);

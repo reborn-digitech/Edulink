@@ -1,6 +1,7 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
+import { refreshStanding } from "./competitions";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
@@ -385,6 +386,15 @@ export async function removeMembership(
     };
   }
 
+  // The cascade below takes the pupil's competition entries with it, and a
+  // leaderboard row is a stored count of entries with a result: remember which
+  // boards this pupil was on so they can be recomputed once the rows are gone.
+  const boards = await db.competitionEntry.findMany({
+    where: { studentMembershipId: membershipId, OR: [{ rank: { not: null } }, { scoreMilli: { not: null } }] },
+    select: { competitionId: true },
+    distinct: ["competitionId"],
+  });
+
   await db.$tenantTransaction(async (rawTx) => {
     const t = rawTx as { membership: { delete(args: unknown): Promise<unknown> } };
     // Every relation pointing at Membership is Cascade or SetNull, so this
@@ -392,6 +402,8 @@ export async function removeMembership(
     // dangling. Checked against the schema rather than assumed.
     await t.membership.delete({ where: { id: membershipId } });
   });
+
+  for (const b of boards) await refreshStanding(schoolId, b.competitionId);
 
   // AUDITED AFTER THE ROW IS GONE, and that is the point of an audit log: the
   // only remaining evidence a school has that this person was ever on its roll,

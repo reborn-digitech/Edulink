@@ -353,6 +353,23 @@ export async function listTopics(
       : [];
   const byTopic = new Map(mastery.map((m) => [m.topicId, m]));
 
+  // "Completed" is a finished attempt — every question of the topic answered
+  // in one sitting, the rule `finishIfComplete` applies. The seen-count on the
+  // mastery row accumulates across sittings and was read against today's bank,
+  // so a child who answered the same twelve questions twice looked finished
+  // and one who had finished before the bank grew looked unfinished.
+  const finished = new Set(
+    membershipId && schoolId
+      ? (
+          await db.quizAttempt.findMany({
+            where: { schoolId, studentMembershipId: membershipId, finishedAt: { not: null } },
+            select: { topicId: true },
+            distinct: ["topicId"],
+          })
+        ).map((a) => a.topicId)
+      : [],
+  );
+
   // Tier badges are stored rows, not derived state, so the card can show them
   // without recomputing anything. One query for the child's whole collection;
   // the badge id carries the slug and the tier, so parsing it is enough.
@@ -389,7 +406,7 @@ export async function listTopics(
       level: mine?.level ?? MIN_LEVEL,
       seenCount: mine?.seenCount ?? 0,
       correctCount: mine?.correctCount ?? 0,
-      completed: (mine?.seenCount ?? 0) >= questionCount && questionCount > 0,
+      completed: finished.has(topic.id),
       badgeEarned: mine?.cleanCompletionAt != null,
       tierCount: tiersBySlug.get(topic.slug) ?? 0,
     };

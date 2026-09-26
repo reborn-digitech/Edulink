@@ -84,6 +84,11 @@ export function StaffCircularReach() {
               <Stat label={t("circulars.seen")} value={d.totals.seen} tone="accent" />
               <Stat label={t("circulars.acked")} value={d.totals.acked} tone="ok" />
             </View>
+            {d.totals.noGuardian > 0 ? (
+              <Text variant="sm" tone="warn">
+                {t("circulars.noGuardianCount", { count: d.totals.noGuardian })}
+              </Text>
+            ) : null}
             <Text variant="sm" tone="muted">
               {d.deliveredAt ? t("circulars.delivered", { when: when(d.deliveredAt) }) : d.deliveryQueuedAt ? t("circulars.queued") : t("circulars.notDelivered")}
             </Text>
@@ -148,6 +153,7 @@ function FamilyRow({ family }: { family: Family }) {
           {family.studentName}
         </Text>
         <Pill label={t(state.key)} tone={state.tone} />
+        {family.noGuardian ? <Pill label={t("circulars.noGuardian")} tone="warn" /> : null}
       </View>
       {family.guardians.map((g) => (
         <View key={g.userId} style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: th.space[2], marginLeft: th.space[3] }}>

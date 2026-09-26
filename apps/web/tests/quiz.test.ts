@@ -5,6 +5,7 @@ import {
   MAX_LEVEL,
   MIN_LEVEL,
   clampLevel,
+  listTopics,
   nextMastery,
   nextQuestion,
   parseChoices,
@@ -385,6 +386,33 @@ describe("serving questions", () => {
   it("returns null once the topic is exhausted", async () => {
     const { attemptId } = await playThrough(student, { correct: true });
     expect(await nextQuestion(student, attemptId)).toBeNull();
+  });
+
+  it("⚠ 'completed' means a finished sitting: seeing as many questions as the bank holds across two half-sittings is not it", async () => {
+    const topicFor = async () => (await listTopics(student)).find((t) => t.slug === SLUG)!;
+    expect((await topicFor()).completed).toBe(false);
+
+    // Half the bank answered, the answers lost (a response row can go; the
+    // mastery row's seen-count cannot come back down), and half answered
+    // again: the seen-count reaches the bank's size while the sitting holds
+    // half the answers and no sitting has finished.
+    const half = Math.ceil(questionIds.length / 2);
+    const { attemptId } = await startAttempt(student, SLUG);
+    for (let round = 0; round < 2; round++) {
+      for (let i = 0; i < half; i++) {
+        const served = await nextQuestion(student, attemptId);
+        if (!served) break;
+        await submitAnswer(student, attemptId, served.questionId, 0);
+      }
+      if (round === 0) await db.quizResponse.deleteMany({ where: { attemptId } });
+    }
+    const mastery = await db.quizMastery.findFirstOrThrow({ where: { studentMembershipId: student.membershipId!, topicId: (await topicFor()).id } });
+    expect(mastery.seenCount).toBeGreaterThanOrEqual(questionIds.length);
+    expect((await db.quizAttempt.findUniqueOrThrow({ where: { id: attemptId } })).finishedAt).toBeNull();
+    expect((await topicFor()).completed).toBe(false);
+
+    await playThrough(student, { correct: true });
+    expect((await topicFor()).completed).toBe(true);
   });
 });
 

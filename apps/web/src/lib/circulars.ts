@@ -204,8 +204,8 @@ export async function circularReach(session: ActiveContext, postId: string): Pro
   const groups: CircularReach["groups"] = [];
   if (post.audience === "TEACHERS") {
     const byUser = new Map(staff.map((m) => [m.userId, m]));
-    const fams = [...byUser.values()].map((m) => ({ studentMembershipId: m.id, studentName: m.user.preferredName ?? m.user.name, state: stateOf(m.userId), guardians: [{ userId: m.userId, name: m.user.preferredName ?? m.user.name, phone: office ? m.user.phone : null, hasApp: hasApp.has(m.userId), texted: textedSet.has(m.userId), state: stateOf(m.userId) }] }));
-    groups.push({ classId: null, className: "", total: fams.length, told: fams.filter((f) => RANK[f.state] >= 1).length, seen: fams.filter((f) => RANK[f.state] >= 2).length, acked: fams.filter((f) => f.state === "ACKED").length, outstanding: fams.filter((f) => f.state !== "ACKED").sort((a, b) => a.studentName.localeCompare(b.studentName)) });
+    const fams = [...byUser.values()].map((m) => ({ studentMembershipId: m.id, studentName: m.user.preferredName ?? m.user.name, state: stateOf(m.userId), guardians: [{ userId: m.userId, name: m.user.preferredName ?? m.user.name, phone: office ? m.user.phone : null, hasApp: hasApp.has(m.userId), texted: textedSet.has(m.userId), state: stateOf(m.userId) }], noGuardian: false }));
+    groups.push({ classId: null, className: "", total: fams.length, told: fams.filter((f) => RANK[f.state] >= 1).length, seen: fams.filter((f) => RANK[f.state] >= 2).length, acked: fams.filter((f) => f.state === "ACKED").length, noGuardian: 0, outstanding: fams.filter((f) => f.state !== "ACKED").sort((a, b) => a.studentName.localeCompare(b.studentName)) });
   } else {
     for (const group of fgroups) {
       const fams = group.families.map((f) => {
@@ -213,12 +213,18 @@ export async function circularReach(session: ActiveContext, postId: string): Pro
         let state: ReachState = "UNREACHED";
         for (const g of guardians) state = best(state, g.state);
         if (post.audience !== "PARENTS") state = best(state, stateOf(f.studentUserId));
-        return { studentMembershipId: f.studentMembershipId, studentName: f.studentName, state, guardians };
+        // A family nobody can be told on behalf of. Flagged for every audience
+        // a guardian is part of; for a circular to parents it is also kept out
+        // of the counts, because "82 % reached" must be a figure a reminder can
+        // move, and the office's move here is an invitation, not a chase.
+        const noGuardian = post.audience !== "STUDENTS" && f.guardians.length === 0;
+        return { studentMembershipId: f.studentMembershipId, studentName: f.studentName, state, guardians, noGuardian };
       });
-      groups.push({ classId: group.classId, className: group.className, total: fams.length, told: fams.filter((f) => RANK[f.state] >= 1).length, seen: fams.filter((f) => RANK[f.state] >= 2).length, acked: fams.filter((f) => f.state === "ACKED").length, outstanding: fams.filter((f) => f.state !== "ACKED").sort((a, b) => a.studentName.localeCompare(b.studentName)) });
+      const counted = post.audience === "PARENTS" ? fams.filter((f) => !f.noGuardian) : fams;
+      groups.push({ classId: group.classId, className: group.className, total: counted.length, told: counted.filter((f) => RANK[f.state] >= 1).length, seen: counted.filter((f) => RANK[f.state] >= 2).length, acked: counted.filter((f) => f.state === "ACKED").length, noGuardian: fams.filter((f) => f.noGuardian).length, outstanding: fams.filter((f) => f.state !== "ACKED").sort((a, b) => a.studentName.localeCompare(b.studentName)) });
     }
   }
-  const totals = groups.reduce((t, g) => ({ total: t.total + g.total, told: t.told + g.told, seen: t.seen + g.seen, acked: t.acked + g.acked }), { total: 0, told: 0, seen: 0, acked: 0 });
+  const totals = groups.reduce((t, g) => ({ total: t.total + g.total, told: t.told + g.told, seen: t.seen + g.seen, acked: t.acked + g.acked, noGuardian: t.noGuardian + g.noGuardian }), { total: 0, told: 0, seen: 0, acked: 0, noGuardian: 0 });
   const outstanding = totals.total - totals.acked;
   const remindBlocked: CircularReach["remindBlocked"] = !office ? "not-office" : !post.deliveredAt ? "not-delivered" : outstanding === 0 ? "nothing-outstanding" : post.remindedAt && Date.now() - post.remindedAt.getTime() < REMIND_EVERY_MS ? "too-soon" : "none";
   return {
@@ -281,7 +287,7 @@ export async function remindCircular(session: ActiveContext, postId: string): Pr
 }
 
 /** The office's list: every circular of the school with its reach, newest first. */
-export async function officeCirculars(session: ActiveContext): Promise<{ rows: { postId: string; title: string; audience: string; className: string | null; publishedAt: string; deliveredAt: string | null; remindedAt: string | null; total: number; told: number; seen: number; acked: number }[] }> {
+export async function officeCirculars(session: ActiveContext): Promise<{ rows: { postId: string; title: string; audience: string; className: string | null; publishedAt: string; deliveredAt: string | null; remindedAt: string | null; total: number; told: number; seen: number; acked: number; noGuardian: number }[] }> {
   const { schoolId, role } = session;
   if (!schoolId || !role || !OFFICE.includes(role)) throw new AccessError("access.notAllowed");
   const posts = await db.post.findMany({ where: { schoolId, requiresAck: true, status: "APPROVED" }, select: { ...postSelect, class: { select: { name: true } } }, orderBy: { createdAt: "desc" }, take: 50 });

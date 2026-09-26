@@ -529,7 +529,10 @@ export async function refreshBroadcastCounts(broadcastId: string): Promise<void>
     where: { id: broadcastId },
     data: {
       queued,
-      sent: count("SENT") + count("DELIVERED") + count("UNDELIVERED"),
+      // A row is sent OR failed, never both: UNDELIVERED is the carrier's
+      // failure after a handover, and counting it twice made sent + failed
+      // exceed the recipients on any broadcast with a dead number in it.
+      sent: count("SENT") + count("DELIVERED"),
       delivered: count("DELIVERED"),
       failed: count("FAILED") + count("UNDELIVERED"),
       skipped: count("SKIPPED"),
@@ -643,7 +646,7 @@ export async function messagingOverview(ctx: ActiveContext): Promise<MessagingOv
   return {
     settings,
     transports: transportStatus(),
-    month: { sent: count("SENT") + count("DELIVERED") + count("UNDELIVERED"), delivered: count("DELIVERED"), failed: count("FAILED") + count("UNDELIVERED"), skipped: count("SKIPPED"), segments: segments._sum.segments ?? 0, cap: settings.monthlyCap },
+    month: { sent: count("SENT") + count("DELIVERED"), delivered: count("DELIVERED"), failed: count("FAILED") + count("UNDELIVERED"), skipped: count("SKIPPED"), segments: segments._sum.segments ?? 0, cap: settings.monthlyCap },
     skippedByReason: Object.fromEntries(skipped.map((s) => [s.skipReason ?? "unknown", s._count._all])),
     templates: (Object.keys(MESSAGE_TEMPLATES) as MessageTemplateKey[]).map((key) => ({
       key,

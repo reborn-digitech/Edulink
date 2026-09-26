@@ -28,6 +28,8 @@ export const reachFamilySchema = z.object({
   studentName: z.string(),
   state: reachStateSchema,
   guardians: z.array(reachGuardianSchema),
+  /** No active guardian is linked, so nobody can be told on the family's behalf; the office's move is to invite one. */
+  noGuardian: z.boolean().default(false),
 });
 
 export const reachGroupSchema = z.object({
@@ -37,6 +39,12 @@ export const reachGroupSchema = z.object({
   told: count,
   seen: count,
   acked: count,
+  /**
+   * Families with no guardian linked. For a circular to parents they are
+   * outside `total`, so the figure measures the families a reminder can reach;
+   * they are still listed in `outstanding`, flagged, for the office to invite.
+   */
+  noGuardian: count.default(0),
   /** Families not yet acknowledged, the ones to chase, with the furthest state each got to. */
   outstanding: z.array(reachFamilySchema),
 });
@@ -51,7 +59,7 @@ export const circularReachSchema = z.object({
   deliveryQueuedAt: iso.nullable(),
   remindedAt: iso.nullable(),
   remindCount: count,
-  totals: z.object({ total: count, told: count, seen: count, acked: count }),
+  totals: z.object({ total: count, told: count, seen: count, acked: count, noGuardian: count.default(0) }),
   groups: z.array(reachGroupSchema),
   /** Whether this viewer may chase the outstanding now (office or the head; once a day; something outstanding). */
   canRemind: z.boolean(),
@@ -78,6 +86,7 @@ export const officeCircularsSchema = z.object({
       told: count,
       seen: count,
       acked: count,
+      noGuardian: count.default(0),
     }),
   ),
 });

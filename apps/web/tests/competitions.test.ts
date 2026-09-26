@@ -435,6 +435,27 @@ describe("the parent's waiting list", () => {
     expect(after.some((w) => w.title === TITLE)).toBe(false);
   });
 
+  it("⚠ a result recorded before the yes reaches the board the moment the yes is given", async () => {
+    const { recordResult } = await import("@/lib/competitions");
+    const riversideId = child.schoolId!;
+    const cup = await db.competition.create({
+      data: { title: "TEST Consent Board Cup", summary: "Scored before consent", organizerName: "The Maths Trust", status: "PUBLISHED", requiresParentConsent: true, registrationClosesAt: new Date(Date.now() + 30 * 86_400_000) },
+      select: { id: true },
+    });
+    try {
+      const { entryId } = await enterCompetition(child, cup.id);
+      await recordResult(admin, entryId, { scoreMilli: 7_000, rank: 2 });
+      // Without consent the result is not the school's to show.
+      expect(await db.competitionStanding.count({ where: { competitionId: cup.id, schoolId: riversideId } })).toBe(0);
+
+      await giveConsent(guardian, entryId);
+      const row = await db.competitionStanding.findUniqueOrThrow({ where: { competitionId_schoolId: { competitionId: cup.id, schoolId: riversideId } } });
+      expect(row).toMatchObject({ entrants: 1, bestRank: 2, bestScoreMilli: 7_000 });
+    } finally {
+      await db.competition.delete({ where: { id: cup.id } });
+    }
+  });
+
   it("⚠ never shows another parent's child", async () => {
     await enterCompetition(classmate, published);
     const waiting = await pendingConsents(guardian);

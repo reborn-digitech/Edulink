@@ -246,6 +246,20 @@ export async function leaveDaysFor(
   return leaveDays(from, to, closedDayKeys(spans), week);
 }
 
+/**
+ * One counter for many spans: the school's week and its closed days loaded
+ * once for the window, then `leaveDays` for each request. The desk's queue
+ * used the default six-day week and no holidays for the "this request" figure
+ * beside a balance computed on the real calendar, so the two disagreed
+ * whenever a request crossed a holiday or a day the school does not teach.
+ */
+export async function leaveDayCounterFor(schoolId: string, fromDateKey: string, toDateKey: string): Promise<(from: string, to: string) => number> {
+  if (fromDateKey > toDateKey) return () => 0;
+  const [spans, week] = await Promise.all([listHolidays(schoolId, { fromKey: fromDateKey, toKey: toDateKey }), teachingWeekOf(schoolId)]);
+  const closed = closedDayKeys(spans);
+  return (from, to) => leaveDays(from, to, closed, week);
+}
+
 /** The balance for one member of staff, against the current academic year. */
 export async function leaveBalanceFor(schoolId: string, membershipId: string): Promise<LeaveBalance> {
   const [record, year] = await Promise.all([

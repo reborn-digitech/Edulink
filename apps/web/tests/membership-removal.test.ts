@@ -191,6 +191,26 @@ describe("removing a pupil added by mistake", () => {
     expect(user!.disabledAt).toBeNull();
   });
 
+  it("⚠ takes the pupil's place off a competition board, rather than leaving a count of entries that no longer exist", async () => {
+    const { refreshStanding } = await import("@/lib/competitions");
+    await makeFreshPupil();
+    const cup = await db.competition.create({
+      data: { title: "ZZ Removal Cup", summary: "In school", organizerName: SCHOOL_NAME, organizerSchoolId: schoolId, status: "PUBLISHED", requiresParentConsent: false },
+      select: { id: true },
+    });
+    try {
+      await db.competitionEntry.create({ data: { competitionId: cup.id, schoolId, studentMembershipId: pupilMembershipId, scoreMilli: 9_000, rank: 1 } });
+      await refreshStanding(schoolId, cup.id);
+      expect(await db.competitionStanding.count({ where: { competitionId: cup.id, schoolId } })).toBe(1);
+
+      expect((await removeMembership(admin, pupilMembershipId)).ok).toBe(true);
+      expect(await db.competitionEntry.count({ where: { competitionId: cup.id } })).toBe(0);
+      expect(await db.competitionStanding.count({ where: { competitionId: cup.id, schoolId } })).toBe(0);
+    } finally {
+      await db.competition.delete({ where: { id: cup.id } });
+    }
+  });
+
   it("⚠ leaves an audit line, which is the only evidence left that they were here", async () => {
     await makeFreshPupil();
     const removedId = pupilMembershipId;

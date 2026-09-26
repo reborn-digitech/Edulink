@@ -170,14 +170,22 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 36. **An auto-read or mark-all-read notification counts as "seen" on a circular's reach report**
     (`circulars.ts:198` with `notification-housekeeping.ts:73`).
 37. **A family with no guardian is UNREACHED forever**, and the audience is today's roster, not the roster at
-    publish time.
+    publish time. *Fixed 2026-09-26 (the first half):* the reach report names families with no guardian
+    apart (`noGuardian` on the family, the class and the totals), keeps them out of a PARENTS circular's
+    count so the figure measures what a reminder can move, and flags them in the outstanding list for the
+    office to invite. The roster-at-publish question stands.
 38. **UNDELIVERED texts count in both sent and failed on a broadcast** (`messaging.ts:484-500`); the monthly
-    cap and overview use the UTC month, not the school's.
+    cap and overview use the UTC month, not the school's. *Fixed 2026-09-26 (the first half):* a row is sent
+    or failed, never both, on the broadcast counters and the month overview alike, so queued + sent + failed +
+    skipped is the number of rows. The UTC month stands.
 39. **Twilio callbacks have no ordering guard**, so a late "sent" can regress DELIVERED.
 40. **Quiz `completed` uses a seen-count accumulated across attempts against today's question count**
     (`quiz.ts:392`); reveals never count; permanent badges rely on a unique index over a NULL year that
-    Postgres does not enforce.
-41. **`CompetitionStanding` is not refreshed on consent or cascade deletes.**
+    Postgres does not enforce. *Fixed 2026-09-26 (the first half):* `completed` is a finished sitting, the
+    rule the badge already used — every question of the topic answered in one attempt. The badge index stands.
+41. **`CompetitionStanding` is not refreshed on consent or cascade deletes.** *Fixed 2026-09-26:* a guardian's
+    yes recomputes the board, so a result recorded before consent appears the moment it is given; removing a
+    pupil recomputes every board they had a result on once the cascade has taken their entries.
 
 ### Staff
 
@@ -186,17 +194,23 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 43. **LATE is fixed at check-in and never recomputed; an office override keeps the old `checkedInAt`; a
     stored PRESENT hides approved leave** (`staff-attendance.ts:101-114, 174`).
 44. **The principal's leave card counts days with the default week and no holidays**, while the balance uses
-    the school week and calendar (`principal/leave/page.tsx:238` vs `staff-records.ts:226-250`).
+    the school week and calendar (`principal/leave/page.tsx:238` vs `staff-records.ts:226-250`). *Fixed
+    2026-09-26:* `leaveDayCounterFor()` loads the school's week and closures once for the queue's window and
+    the card's "this request" runs on it.
 45. **The pending-leave list is cut at 300 rows ordered with PENDING last**, so it can disagree with the
-    home page's count (`leave.ts:603`).
+    home page's count (`leave.ts:603`). *Fixed 2026-09-26:* the queue is read first and whole, the history
+    fills what is left of the 300.
 
 ### Accounts
 
 46. **`isMinor` is stamped at creation and never recomputed** (audit: none out of step today, but every
-    17-year-old will be).
-47. **`Membership.suspendedAt` is left set when `join.ts:219` reactivates a suspended pupil.**
+    17-year-old will be). *Fixed 2026-09-26:* the daily `accounts:tidy` job clears the flag for every account
+    whose date of birth is eighteen or more years past; a corrected date still recomputes on its own path.
+47. **`Membership.suspendedAt` is left set when `join.ts:219` reactivates a suspended pupil.** *Fixed
+    2026-09-26:* the stamp and the reason go with the status, as on the reinstate, admission and intake paths.
 48. **`Invite.status = EXPIRED` is never written**, so "invites pending" and the operator's "no admin" count
-    expired invites.
+    expired invites. *Fixed 2026-09-26:* `accounts:tidy` marks every lapsed PENDING invitation EXPIRED each
+    night, and every "waiting" count and list reads the date as well as the status, so it is right between runs.
 
 ## 3. Data the code reads that nobody can enter
 

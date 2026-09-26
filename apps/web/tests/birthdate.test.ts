@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
-import { mayEditOwnBirthdate, setMemberBirthdate, setOwnBirthdate } from "@/lib/birthdate";
+import { mayEditOwnBirthdate, refreshMinority, setMemberBirthdate, setOwnBirthdate } from "@/lib/birthdate";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -132,5 +132,36 @@ describe("the office", () => {
     const u = await db.user.findUniqueOrThrow({ where: { id: pupilUserId } });
     expect(u.birthdate).toBeNull();
     expect(u.isMinor).toBe(true);
+  });
+});
+
+describe("the nightly recompute of who is a minor", () => {
+  const ADULT = "zz.minor.adult.unit@riverside.test";
+  const CHILD = "zz.minor.child.unit@riverside.test";
+  const UNDATED = "zz.minor.undated.unit@riverside.test";
+  afterAll(async () => {
+    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED] } } });
+  });
+
+  it("⚠ a pupil who has turned eighteen stops being a minor; one who has not, and one with no date, keep the flag", async () => {
+    const now = new Date("2026-09-26T06:00:00Z");
+    const eighteenToday = new Date(Date.UTC(2008, 8, 26));
+    const seventeen = new Date(Date.UTC(2008, 8, 27));
+    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED] } } });
+    const [adult, child, undated] = await Promise.all([
+      db.user.create({ data: { email: ADULT, name: "ZZ Minor Adult", prefs: "{}", birthdate: eighteenToday, isMinor: true }, select: { id: true } }),
+      db.user.create({ data: { email: CHILD, name: "ZZ Minor Child", prefs: "{}", birthdate: seventeen, isMinor: true }, select: { id: true } }),
+      db.user.create({ data: { email: UNDATED, name: "ZZ Minor Undated", prefs: "{}", birthdate: null, isMinor: true }, select: { id: true } }),
+    ]);
+
+    const out = await refreshMinority(now);
+    expect(out.adults).toBeGreaterThanOrEqual(1);
+    expect((await db.user.findUniqueOrThrow({ where: { id: adult.id } })).isMinor).toBe(false);
+    expect((await db.user.findUniqueOrThrow({ where: { id: child.id } })).isMinor).toBe(true);
+    expect((await db.user.findUniqueOrThrow({ where: { id: undated.id } })).isMinor).toBe(true);
+
+    // Idempotent: the same day again moves nobody planted here.
+    await refreshMinority(now);
+    expect((await db.user.findUniqueOrThrow({ where: { id: child.id } })).isMinor).toBe(true);
   });
 });

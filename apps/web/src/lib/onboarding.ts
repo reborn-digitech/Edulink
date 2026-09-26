@@ -42,7 +42,7 @@ export async function getChecklist(schoolId: string): Promise<{
     db.membership.count({ where: { schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null } }),
     db.class.count({ where: { schoolId, archivedAt: null } }),
     db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
-    db.invite.count({ where: { schoolId, status: "PENDING" } }),
+    db.invite.count({ where: { schoolId, status: "PENDING", expiresAt: { gt: new Date() } } }),
     db.school.findUnique({
       where: { id: schoolId },
       select: {

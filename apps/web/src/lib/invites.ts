@@ -46,3 +46,20 @@ export async function resendInviteFor(
 
   return { ok: true };
 }
+
+/**
+ * Every pending invitation past its date is marked EXPIRED, in one statement
+ * across schools, for the daily `accounts:tidy` job. The accept path already
+ * writes the status when somebody follows a dead link; nothing wrote it for
+ * the links nobody followed, so "invites waiting" and the operator's "no admin
+ * yet" counted every invitation that had quietly lapsed. Counts are per school,
+ * never a name or an address.
+ */
+export async function expireInvites(now: Date = new Date()): Promise<{ expired: number; perSchool: Record<string, { invitesExpired: number }> }> {
+  const due = await db.invite.groupBy({ by: ["schoolId"], where: { status: "PENDING", expiresAt: { lt: now } }, _count: { _all: true } });
+  if (due.length === 0) return { expired: 0, perSchool: {} };
+  const moved = await db.invite.updateMany({ where: { status: "PENDING", expiresAt: { lt: now } }, data: { status: "EXPIRED" } });
+  const perSchool: Record<string, { invitesExpired: number }> = {};
+  for (const g of due) perSchool[g.schoolId] = { invitesExpired: g._count._all };
+  return { expired: moved.count, perSchool };
+}

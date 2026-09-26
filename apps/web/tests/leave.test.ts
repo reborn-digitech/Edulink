@@ -12,7 +12,7 @@ import {
 import { registerDuty } from "@/lib/register-duty";
 import { forSchool } from "@/lib/tenant-context";
 import type { ActiveContext } from "@/lib/session";
-import { leaveBalanceFor, leaveDays, setStaffRecord, staffRecordFor } from "@/lib/staff-records";
+import { leaveBalanceFor, leaveDayCounterFor, leaveDays, setStaffRecord, staffRecordFor } from "@/lib/staff-records";
 
 /**
  * Staff leave, and the cover that must follow it.
@@ -552,6 +552,37 @@ describe("⚠ staff-only by construction", () => {
   it("⚠ the whole-school list is not open to teachers", async () => {
     await expect(schoolLeave(coverStaff)).rejects.toBeInstanceOf(AccessError);
     await expect(schoolLeave(principal)).resolves.toBeInstanceOf(Array);
+  });
+
+  it("⚠ the whole-school list puts the queue first and whole, before any history", async () => {
+    // Planted directly: an old declined request and a pending one dated before
+    // it, so an alphabetical order by status would list DECLINED first.
+    const planted = await Promise.all([
+      db.leaveRequest.create({ data: { schoolId: riversideId, teacherMembershipId: applicantMembershipId, fromDateKey: "2026-01-12", toDateKey: "2026-01-12", kind: "CASUAL", reason: "planted decided", status: "DECLINED", decidedAt: new Date() }, select: { id: true } }),
+      db.leaveRequest.create({ data: { schoolId: riversideId, teacherMembershipId: applicantMembershipId, fromDateKey: "2026-01-05", toDateKey: "2026-01-05", kind: "CASUAL", reason: "planted pending", status: "PENDING" }, select: { id: true } }),
+    ]);
+    try {
+      const rows = await schoolLeave(principal);
+      const firstDecided = rows.findIndex((r) => r.status !== "PENDING");
+      const lastPending = rows.map((r) => r.status).lastIndexOf("PENDING");
+      expect(lastPending).toBeGreaterThanOrEqual(0);
+      if (firstDecided >= 0) expect(lastPending).toBeLessThan(firstDecided);
+      expect(rows.filter((r) => r.status === "PENDING").length).toBe(await db.leaveRequest.count({ where: { schoolId: riversideId, status: "PENDING" } }));
+    } finally {
+      await db.leaveRequest.deleteMany({ where: { id: { in: planted.map((p) => p.id) } } });
+    }
+  });
+
+  it("⚠ the desk's 'this request' count runs on the school's calendar: a closed Wednesday is not leave", async () => {
+    const holiday = await db.holiday.create({ data: { schoolId: riversideId, name: "ZZ counter closure", startDateKey: "2026-05-06", endDateKey: "2026-05-06", kind: "HOLIDAY" }, select: { id: true } });
+    try {
+      const count = await leaveDayCounterFor(riversideId, FROM, TO);
+      expect(leaveDays(FROM, TO)).toBe(5); // the default week knows nothing of the closure
+      expect(count(FROM, TO)).toBe(4);
+      expect(count("2026-05-06", "2026-05-06")).toBe(0);
+    } finally {
+      await db.holiday.delete({ where: { id: holiday.id } });
+    }
   });
 
   it("shows a teacher only their own requests", async () => {

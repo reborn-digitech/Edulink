@@ -12,6 +12,8 @@ import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
 import { deliverQueuedCirculars } from "./circulars";
 import { expireOffers } from "./admissions";
+import { expireInvites } from "./invites";
+import { refreshMinority } from "./birthdate";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -37,7 +39,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep" | "admissions:expire-offers";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -102,6 +104,21 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { summary, perSchool } = await expireOffers();
       return { summary, perSchool };
+    },
+  },
+  "accounts:tidy": {
+    name: "accounts:tidy",
+    // Daily, between the notifications tidy and the retention sweep: the two
+    // stored copies on accounts that go stale by the calendar alone — an
+    // invitation past its date, a pupil past their eighteenth birthday.
+    schedule: "45 3 * * *",
+    describeKey: "root.jobDescAccountsTidy",
+    maxRunMs: 30 * 60_000,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const invites = await expireInvites();
+      const minors = await refreshMinority();
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults }, perSchool: invites.perSchool };
     },
   },
   "digest:weekly": {

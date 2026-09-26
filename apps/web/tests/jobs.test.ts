@@ -113,6 +113,13 @@ describe("what the operator sees", () => {
     expect(crontabText("/srv/edulink")).toContain("admissions:expire-offers");
   });
 
+  it("accounts:tidy is registered daily, before the retention sweep, on the crontab", async () => {
+    const { crontabText, JOBS } = await import("@/lib/jobs");
+    expect(JOBS["accounts:tidy"].schedule).toBe("45 3 * * *");
+    expect(JOBS["accounts:tidy"].describeKey).toBe("root.jobDescAccountsTidy");
+    expect(crontabText("/srv/edulink")).toContain("accounts:tidy");
+  });
+
   it("the crontab names every job on its schedule, through the one runner", async () => {
     const { crontabText, JOBS } = await import("@/lib/jobs");
     const text = crontabText("/srv/edulink");

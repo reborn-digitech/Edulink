@@ -105,7 +105,7 @@ export async function adminOverview(ctx: Scoped, now: Date = new Date()) {
     db.membership.count({ where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null } }),
     db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
     db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
-    db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING" } }),
+    db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING", expiresAt: { gt: new Date() } } }),
     // Expected registers only: none on a closed day, none from an empty class.
     registersDue(ctx.schoolId, dateKey),
     currentAcademicYear(ctx.schoolId),
@@ -278,16 +278,15 @@ export async function adminInvites(
     db.invite.findMany({
       where: {
         schoolId: ctx.schoolId,
-        status: filters.status,
+        ...(expiredOnly ? { OR: [{ status: "PENDING", expiresAt: { lt: now } }, { status: "EXPIRED" }] } : { status: filters.status, ...(filters.status === "PENDING" ? { expiresAt: { gte: now } } : {}) }),
         ...(roleFilter ? { role: roleFilter } : {}),
-        ...(expiredOnly ? { expiresAt: { lt: now } } : {}),
         ...(q ? { OR: [{ email: { contains: q, mode: "insensitive" } }, { name: { contains: q, mode: "insensitive" } }] } : {}),
       },
       orderBy: { createdAt: "desc" },
       take: 200,
       select: { id: true, role: true, email: true, name: true, classId: true, status: true, expiresAt: true, createdAt: true, acceptedAt: true },
     }),
-    db.invite.groupBy({ by: ["status"], where: { schoolId: ctx.schoolId }, _count: true }),
+    db.invite.groupBy({ by: ["status"], where: { schoolId: ctx.schoolId, OR: [{ status: { not: "PENDING" } }, { expiresAt: { gte: now } }] }, _count: true }),
   ]);
   const countFor = (status: string) => counts.find((c) => c.status === status)?._count ?? 0;
   return {
