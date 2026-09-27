@@ -11,7 +11,7 @@ import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
-import { assignPenIfBlank, matchPen, mayBringOver } from "./pen";
+import { assignPen, matchPen, mayBringOver, normalisePen } from "./pen";
 import { consume, INTAKE_RUNS, INTAKE_MAX_LINKS } from "./rate-limit";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
@@ -290,9 +290,24 @@ export async function admitPupils(
       }
 
       const newCode = studentCode();
-      // A transfer row that carries the PEN puts it on the account it links.
-      // …only onto an account that has none: a different number on file is a correction, which needs the head and the family.
-      if (row.pen) await assignPenIfBlank(previous.userId, row.pen).catch(() => {});
+      // A transfer row that carries the PEN puts it on the account it links —
+      // only onto an account that has none: a different number on file is a
+      // correction, which needs the head and the family; a number already on
+      // another pupil's account is refused. Either way the row SAYS SO: this
+      // used to swallow both, and the office read "admitted" over a PEN the
+      // sheet had quietly dropped.
+      let penWarn: TranslationKey | undefined;
+      if (row.pen) {
+        const onFile = (await db.user.findUnique({ where: { id: previous.userId }, select: { penNumber: true } }))?.penNumber ?? null;
+        if (onFile && onFile !== normalisePen(row.pen)) penWarn = "intake.penDiffers";
+        else if (!onFile) {
+          try {
+            await assignPen(previous.userId, row.pen);
+          } catch {
+            penWarn = "intake.penTaken";
+          }
+        }
+      }
       let linkedMembershipId: string;
       try {
         const created = await forSchool(schoolId, () =>
@@ -345,7 +360,7 @@ export async function admitPupils(
 
       const promotedWarn = klass?.promotedAt ? ("intake.classWasPromoted" as const) : undefined;
       const linkedOutcome: IntakeOutcome = {
-        warnKey: promotedWarn,
+        warnKey: promotedWarn ?? penWarn,
         line: row.line,
         name: row.name,
         status: "admitted",

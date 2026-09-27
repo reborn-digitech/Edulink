@@ -397,6 +397,22 @@ export async function getAttendanceSummary(
   };
 }
 
+/**
+ * The run the child is on now, read from every mark back to the first day
+ * not attended. The home pages used to hand `computeStreak` the summary's
+ * `recent` list — thirty marks of a four-week window — so a run longer than
+ * that read as 30, or as 28 school days, whichever the window cut first. This
+ * walks the marks newest first and stops at the break, however far back it is.
+ */
+export async function currentStreakFor(schoolId: string, studentMembershipId: string, todayKey: string): Promise<number> {
+  const records = await db.attendanceRecord.findMany({
+    where: { schoolId, studentMembershipId, session: { dateKey: { lte: todayKey } } },
+    select: { status: true, session: { select: { dateKey: true } } },
+    orderBy: { session: { dateKey: "desc" } },
+  });
+  return computeStreak(records.map((r) => ({ dateKey: r.session.dateKey, status: r.status as AttendanceStatus })));
+}
+
 /** Consecutive school days present, ending today. Powers the student streak. */
 export function computeStreak(
   recent: { dateKey: string; status: AttendanceStatus }[],

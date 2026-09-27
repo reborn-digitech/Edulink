@@ -156,11 +156,27 @@ describe("the register", () => {
     const mine = await (await meGet(get("/api/v1/staff/attendance/me"))).json();
     expect(mine).toMatchObject({ todayStatus: "ON_LEAVE", canCheckIn: true });
     await as("ADMIN");
+    // The clock moves after the tap: the morning's self check-in is re-read
+    // against the new start and grace, so it is no longer late.
     expect((await settingsPost(json("/x", { checkInMinute: Math.min(1439, nowMinute + 30), lateGraceMinutes: 15 }))).status).toBe(200);
     const reg = await (await registerGet(get("/api/v1/office/staff-attendance"))).json();
     const t1 = reg.rows.find((r: { membershipId: string }) => r.membershipId === teacherMembershipId);
-    expect(t1).toMatchObject({ status: "LATE", source: "SELF" });
+    expect(t1).toMatchObject({ status: "PRESENT", source: "SELF" });
     expect(t1.checkedInAt).toEqual(expect.any(String));
+    // And back: an earlier start makes it late again.
+    expect((await settingsPost(json("/x", { checkInMinute: Math.max(0, nowMinute - 60), lateGraceMinutes: 5 }))).status).toBe(200);
+    const regAgain = await (await registerGet(get("/api/v1/office/staff-attendance"))).json();
+    expect(regAgain.rows.find((r: { membershipId: string }) => r.membershipId === teacherMembershipId)).toMatchObject({ status: "LATE", source: "SELF" });
+    // The office confirming a presence keeps the time they arrived; the office
+    // saying "absent" over a check-in drops it, so the register never reads
+    // "absent, checked in 09:12".
+    expect((await markPost(json("/x", { date: today, entries: [{ membershipId: teacherMembershipId, status: "PRESENT" }] }))).status).toBe(200);
+    let row = await db.staffAttendance.findUniqueOrThrow({ where: { membershipId_dateKey: { membershipId: teacherMembershipId, dateKey: today } } });
+    expect(row).toMatchObject({ status: "PRESENT", source: "OFFICE" });
+    expect(row.checkedInAt).not.toBeNull();
+    expect((await markPost(json("/x", { date: today, entries: [{ membershipId: teacherMembershipId, status: "ABSENT" }] }))).status).toBe(200);
+    row = await db.staffAttendance.findUniqueOrThrow({ where: { membershipId_dateKey: { membershipId: teacherMembershipId, dateKey: today } } });
+    expect(row).toMatchObject({ status: "ABSENT", source: "OFFICE", checkedInAt: null });
     await as("PARENT");
     expect((await checkInPost()).status).toBe(403);
     expect((await meGet(get("/api/v1/staff/attendance/me"))).status).toBe(403);

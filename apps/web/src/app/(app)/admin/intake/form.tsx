@@ -192,7 +192,7 @@ export function IntakeForm({
                         <span className="ml-2 align-middle"><Badge tone="info" size="sm">{t("intake.linkedBadge")}</Badge></span>
                       )}
                       {o.warnKey && (
-                        <span className="ml-2 align-middle" title={t(o.warnKey)}><Badge tone="warn" size="sm">{t("intake.promotedBadge")}</Badge></span>
+                        <span className="ml-2 align-middle" title={t(o.warnKey)}><Badge tone="warn" size="sm">{t(o.warnKey === "intake.classWasPromoted" ? "intake.promotedBadge" : "intake.penBadge")}</Badge></span>
                       )}
                     </td>
                     <td className="px-3 py-2 text-fg-muted">{o.className ?? "—"}</td>

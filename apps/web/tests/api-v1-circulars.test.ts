@@ -197,6 +197,36 @@ describe("reach", () => {
     expect(audits.map((a) => a.action).sort()).toEqual(["circular.deliver", "circular.remind"]);
   });
 
+  it("⚠ the report reads the roster the circular was told to: a pupil who joined the class afterwards is not unreached for it", async () => {
+    const stamp = `${STAMP}-late`;
+    const [pupilD, parentD] = await Promise.all([
+      db.user.create({ data: { name: "ZZ Circ Pupil D", email: `zz-circ-pupil-d-${stamp}@test.invalid` }, select: { id: true } }),
+      db.user.create({ data: { name: "ZZ Circ Parent D", email: `zz-circ-parent-d-${stamp}@test.invalid` }, select: { id: true } }),
+    ]);
+    try {
+      const pm = await db.membership.create({ data: { userId: pupilD.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZLPD${String(STAMP).slice(-5)}`, gradeLevel: "5" }, select: { id: true } });
+      const enrolment = await db.enrollment.create({ data: { schoolId, classId, studentMembershipId: pm.id, status: "ACTIVE" }, select: { id: true } });
+      await db.guardianship.create({ data: { parentUserId: parentD.id, studentMembershipId: pm.id, studentSchoolId: schoolId, status: "ACTIVE" } });
+      await as("ADMIN");
+      // Enrolled after delivery: not on this circular's roster at all.
+      let reach = await (await reachGet(get("/x"), params(postId))).json();
+      expect(reach.totals).toEqual({ total: 2, told: 2, seen: 2, acked: 1, noGuardian: 1 });
+      expect(reach.groups[0].outstanding.some((f: { studentName: string }) => f.studentName === "ZZ Circ Pupil D")).toBe(false);
+      // Had they been on the class when it went out, they would be, and unreached.
+      const delivered = (await db.post.findUniqueOrThrow({ where: { id: postId }, select: { deliveredAt: true } })).deliveredAt!;
+      await db.enrollment.update({ where: { id: enrolment.id }, data: { enrolledAt: new Date(delivered.getTime() - 86_400_000) } });
+      reach = await (await reachGet(get("/x"), params(postId))).json();
+      expect(reach.totals).toEqual({ total: 3, told: 2, seen: 2, acked: 1, noGuardian: 1 });
+      expect(reach.groups[0].outstanding.find((f: { studentName: string }) => f.studentName === "ZZ Circ Pupil D")).toMatchObject({ state: "UNREACHED", noGuardian: false });
+      // Leaving the class after delivery keeps them on the report for what they were sent.
+      await db.enrollment.update({ where: { id: enrolment.id }, data: { status: "REMOVED", removedAt: new Date() } });
+      reach = await (await reachGet(get("/x"), params(postId))).json();
+      expect(reach.totals.total).toBe(3);
+    } finally {
+      await db.user.deleteMany({ where: { id: { in: [pupilD.id, parentD.id] } } });
+    }
+  });
+
   it("two chases landing together send one round: the day is claimed by a conditional write", async () => {
     await db.post.update({ where: { id: postId }, data: { remindedAt: new Date(Date.now() - 25 * 3_600_000) } });
     await as("PRINCIPAL");

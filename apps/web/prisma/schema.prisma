@@ -2314,6 +2314,9 @@ model EarnedBadge {
   student      Membership    @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
   academicYear AcademicYear? @relation(fields: [academicYearId], references: [id], onDelete: SetNull)
 
+  /// Plus a partial unique index over the year-less (permanent) rows —
+  /// migration 20260927010000 — because two NULL years are distinct to this
+  /// unique and a permanent badge could be awarded twice under a race.
   @@unique([studentMembershipId, badgeId, academicYearId])
   @@index([schoolId, studentMembershipId])
 }

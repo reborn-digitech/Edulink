@@ -10,7 +10,7 @@ import { normaliseLocale } from "@edulink/i18n";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { readMessageTemplateIds, readTwilioConfig, readWhatsappFrom, readWhatsappTransport } from "./env";
 import { formatPhone } from "./phone";
-import { todayKey } from "./dates";
+import { todayKey, zonedStartOfDay } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
 import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
@@ -145,8 +145,15 @@ export type SendRequest = {
 
 export type SendOutcome = { id: string; status: string; channel: Channel | null; skipReason: SkipReason | null };
 
+/** The first instant of the school's calendar month that holds `now` — the cap and the overview count in the school's month, not UTC's. */
+export async function monthStartFor(schoolId: string, now: Date, client: typeof db = db): Promise<Date> {
+  const school = await client.school.findUnique({ where: { id: schoolId }, select: { timezone: true } });
+  const tz = school?.timezone ?? "UTC";
+  return zonedStartOfDay(`${todayKey(tz, now).slice(0, 7)}-01`, tz);
+}
+
 async function monthlyCount(schoolId: string, now: Date, client: typeof db = db): Promise<number> {
-  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+  const start = await monthStartFor(schoolId, now, client);
   const agg = await client.outboundMessage.aggregate({ where: { schoolId, status: { in: ["QUEUED", "SENT", "DELIVERED", "UNDELIVERED"] }, createdAt: { gte: start } }, _sum: { segments: true } });
   return agg._sum.segments ?? 0;
 }
@@ -630,7 +637,7 @@ export async function messagingOverview(ctx: ActiveContext): Promise<MessagingOv
   const caller = officeOrHead(ctx);
   const schoolId = caller.schoolId;
   const now = new Date();
-  const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+  const monthStart = await monthStartFor(schoolId, now);
   const [settings, groups, segments, skipped, recent, recentMessages, guardians] = await Promise.all([
     messagingSettings(schoolId),
     db.outboundMessage.groupBy({ by: ["status"], where: { schoolId, createdAt: { gte: monthStart } }, _count: { _all: true } }),

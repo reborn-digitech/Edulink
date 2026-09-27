@@ -359,6 +359,31 @@ describe("getAttendanceSummary", () => {
   });
 });
 
+describe("currentStreakFor", () => {
+  it("⚠ counts a run longer than the home page's four-week window, and stops at the first day not attended", async () => {
+    const { currentStreakFor } = await import("@/lib/attendance");
+    const student = fx.students[3]!;
+    const others = fx.students.filter((s) => s !== student);
+    // Forty consecutive marked days, the oldest an absence, all within the
+    // synthetic 2025 range the suite cleans up.
+    const days: string[] = [];
+    for (let i = 0; i < 41; i++) {
+      const d = new Date(Date.UTC(2025, 9, 1) + i * 86_400_000);
+      days.push(d.toISOString().slice(0, 10));
+    }
+    for (const [i, dateKey] of days.entries()) {
+      await save(dateKey, [{ studentMembershipId: student, status: i === 0 ? "ABSENT" : "PRESENT", clientId: `streak-${i}` }, ...others.slice(0, 1).map((s) => ({ studentMembershipId: s, status: "PRESENT" as const, clientId: `streak-o-${i}` }))]);
+    }
+    const streak = await currentStreakFor(fx.schoolId, student, days[days.length - 1]!);
+    expect(streak).toBe(40);
+    // The thirty-mark list the pages used to read would have said 30.
+    const summary = await getAttendanceSummary(fx.schoolId, student, days[days.length - 28]!, days[days.length - 1]!);
+    expect(computeStreak(summary.recent)).toBeLessThan(40);
+    // As of a day inside the run, the run is what it was then.
+    expect(await currentStreakFor(fx.schoolId, student, days[10]!)).toBe(10);
+  });
+});
+
 describe("computeStreak", () => {
   it("counts consecutive attended days from the most recent backwards", () => {
     expect(

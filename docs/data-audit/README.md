@@ -86,9 +86,11 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 3. **The pupil's percent is not class-scoped and counts EXCUSED in the denominator.**
    `src/lib/attendance.ts:308-322`. A pupil in two classes is counted twice a day; an excused absence lowers
    the percent. The class-level insight (`src/lib/insights.ts:402`) IS class-scoped, so the two disagree.
-4. **The streak tops out at the 30 most recent marks** (`attendance.ts:339`) and at 28 days on the home
+4. *Fixed 2026-09-27:* `currentStreakFor()` walks every mark back to the first day not attended; the three
+    home pages read it instead of the summary's thirty-mark list. **The streak tops out at the 30 most recent marks** (`attendance.ts:339`) and at 28 days on the home
    pages, so a longer real streak is under-reported.
-5. **The parent's "average across N pieces" is over the five most recent homework marks only**
+5. *Fixed 2026-09-27:* the tile averages every marked piece of homework on the web page and the phone read;
+    the five newest are only the list. **The parent's "average across N pieces" is over the five most recent homework marks only**
    (`src/app/(app)/parent/page.tsx:128-137`).
 
 ### Exams and report cards
@@ -162,7 +164,8 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 33. **Settled applications keep their entrance slot** and inflate `slot.booked` (`admissions.ts:256`).
 34. **`admissionNumber` on the record is set to the application serial** when the office types none
     (`admissions.ts:806`); the UDISE sheet then files the app's serial as the GR number.
-35. **A transfer row's PEN conflict is swallowed** (`intake.ts:246`), so a wrong or taken number is dropped
+35. *Fixed 2026-09-27:* the row is admitted with `warnKey` `intake.penTaken` or `intake.penDiffers` and the
+    intake page badges it. **A transfer row's PEN conflict is swallowed** (`intake.ts:246`), so a wrong or taken number is dropped
     without a warning.
 
 ### Communication and engagement
@@ -173,16 +176,20 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
     publish time. *Fixed 2026-09-26 (the first half):* the reach report names families with no guardian
     apart (`noGuardian` on the family, the class and the totals), keeps them out of a PARENTS circular's
     count so the figure measures what a reminder can move, and flags them in the outstanding list for the
-    office to invite. The roster-at-publish question stands.
+    office to invite. *Fixed 2026-09-27 (the second half):* once told, the roster is the class at delivery —
+    enrolled before `deliveredAt`, including anyone removed since — so a later joiner is not unreached.
 38. **UNDELIVERED texts count in both sent and failed on a broadcast** (`messaging.ts:484-500`); the monthly
     cap and overview use the UTC month, not the school's. *Fixed 2026-09-26 (the first half):* a row is sent
     or failed, never both, on the broadcast counters and the month overview alike, so queued + sent + failed +
-    skipped is the number of rows. The UTC month stands.
+    skipped is the number of rows. *Fixed 2026-09-27 (the second half):* `monthStartFor()` gives the cap and
+    the overview the school's calendar month.
 39. **Twilio callbacks have no ordering guard**, so a late "sent" can regress DELIVERED.
 40. **Quiz `completed` uses a seen-count accumulated across attempts against today's question count**
     (`quiz.ts:392`); reveals never count; permanent badges rely on a unique index over a NULL year that
     Postgres does not enforce. *Fixed 2026-09-26 (the first half):* `completed` is a finished sitting, the
-    rule the badge already used — every question of the topic answered in one attempt. The badge index stands.
+    rule the badge already used — every question of the topic answered in one attempt. *Fixed 2026-09-27 (the
+    second half):* a partial unique index over the year-less rows (migration 20260927010000) refuses a second
+    permanent copy under a race.
 41. **`CompetitionStanding` is not refreshed on consent or cascade deletes.** *Fixed 2026-09-26:* a guardian's
     yes recomputes the board, so a result recorded before consent appears the moment it is given; removing a
     pupil recomputes every board they had a result on once the cascade has taken their entries.
@@ -192,7 +199,9 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 42. **Two cover models never reconciled**: the timetable grid reads `AttendanceCover`, the board reads
     `Substitution`; cancelling leave removes the first and not the second (`leave.ts:500-560`).
 43. **LATE is fixed at check-in and never recomputed; an office override keeps the old `checkedInAt`; a
-    stored PRESENT hides approved leave** (`staff-attendance.ts:101-114, 174`).
+    stored PRESENT hides approved leave** (`staff-attendance.ts:101-114, 174`). *Fixed 2026-09-27 (two of
+    three):* saving the clock re-reads today's self check-ins against it; an office mark other than PRESENT or
+    LATE clears the check-in time. The leave shows beside a stored PRESENT as `onLeave` already.
 44. **The principal's leave card counts days with the default week and no holidays**, while the balance uses
     the school week and calendar (`principal/leave/page.tsx:238` vs `staff-records.ts:226-250`). *Fixed
     2026-09-26:* `leaveDayCounterFor()` loads the school's week and closures once for the queue's window and

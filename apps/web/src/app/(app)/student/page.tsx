@@ -18,7 +18,7 @@ import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { pupilRecordFor } from "@/lib/pupil-records";
 import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { db } from "@/lib/db";
-import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -57,8 +57,9 @@ export default async function StudentHome({
   const timezone = membership.school.timezone;
   const today = todayKey(timezone);
 
-  const [attendance, todayRecord, upcoming, examMarks, week, recordMissing] = await Promise.all([
+  const [attendance, streak, todayRecord, upcoming, examMarks, week, recordMissing] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
+    currentStreakFor(ctx.schoolId, ctx.membershipId, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
       select: { status: true },
@@ -86,7 +87,6 @@ export default async function StudentHome({
     pupilRecordFor(ctx, ctx.membershipId).then((r) => r.missing as string[]).catch(() => [] as string[]),
   ]);
 
-  const streak = computeStreak(attendance.recent);
 
   /**
    * THE DAY'S LESSONS, FIRST-CLASS ON THE DASHBOARD. The pupil's Today page

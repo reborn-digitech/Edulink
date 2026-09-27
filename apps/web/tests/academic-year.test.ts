@@ -376,6 +376,19 @@ describe("permanent badges", () => {
     expect(matching[0]!.permanent).toBe(true);
   });
 
+  it("⚠ a second year-less copy is refused by the database itself, not only by the read before the write", async () => {
+    await awardPermanentBadge(schoolId, subjectMembershipId, { badgeId: "abhyaas:idx", label: "Idx" });
+    // The compound unique treats two NULL years as distinct; the partial index does not.
+    await expect(
+      db.earnedBadge.create({ data: { schoolId, studentMembershipId: subjectMembershipId, academicYearId: null, badgeId: "abhyaas:idx", label: "Idx", permanent: true } }),
+    ).rejects.toMatchObject({ code: "P2002" });
+    expect(await db.earnedBadge.count({ where: { studentMembershipId: subjectMembershipId, badgeId: "abhyaas:idx" } })).toBe(1);
+    // Racing awards land as one row.
+    const outs = await Promise.all([1, 2, 3].map(() => awardPermanentBadge(schoolId, subjectMembershipId, { badgeId: "abhyaas:race", label: "Race" })));
+    expect(outs.filter(Boolean)).toHaveLength(1);
+    expect(await db.earnedBadge.count({ where: { studentMembershipId: subjectMembershipId, badgeId: "abhyaas:race" } })).toBe(1);
+  });
+
   it("awarding the same one twice is a no-op", async () => {
     await awardPermanentBadge(schoolId, subjectMembershipId, { badgeId: "abhyaas:x", label: "X" });
     await awardPermanentBadge(schoolId, subjectMembershipId, { badgeId: "abhyaas:x", label: "X" });

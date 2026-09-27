@@ -303,13 +303,33 @@ describe("⚠ the handshake: who may bring a pupil over, and how often", () => {
     expect(await db.membership.count({ where: { userId: childUserId, schoolId: receivingSchoolId } })).toBe(0);
   });
 
-  it("⚠ once the holding school records the departure, the row links", async () => {
+  it("⚠ once the holding school records the departure, the row links — and a PEN already on another pupil is refused out loud, not dropped", async () => {
     await db.membership.update({ where: { id: holdingMembershipId }, data: { leftAt: new Date() } });
-    const result = await admitPupils(receiving, [row()] as never, { locale: "en" });
-    expect(result.outcomes[0], JSON.stringify(result.outcomes[0])).toMatchObject({ status: "admitted", linked: true });
+    const TAKEN = "27000000777";
+    const holder = await db.user.create({ data: { name: `${TAG} Pen Holder`, email: `pen.holder@intake.test`, prefs: "{}", penNumber: TAKEN }, select: { id: true } });
+    try {
+      const result = await admitPupils(receiving, [row({ pen: TAKEN })] as never, { locale: "en" });
+      expect(result.outcomes[0], JSON.stringify(result.outcomes[0])).toMatchObject({ status: "admitted", linked: true, warnKey: "intake.penTaken" });
+      expect((await db.user.findUniqueOrThrow({ where: { id: childUserId } })).penNumber).toBeNull();
+    } finally {
+      await db.user.delete({ where: { id: holder.id } });
+    }
     expect(await db.membership.count({ where: { userId: childUserId, schoolId: receivingSchoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } })).toBe(1);
     // Still one person.
     expect(await db.user.count({ where: { name: `${TAG} Handshake Child` } })).toBe(1);
+  });
+
+  it("⚠ a row whose PEN differs from the one on the account keeps the account's and says so", async () => {
+    const CODE2 = `STU-ZZHT-${String(STAMP).slice(-4)}`;
+    const second = await db.user.create({ data: { name: `${TAG} Handshake Second`, email: `handshake.second@intake.test`, prefs: "{}", birthdate: new Date("2014-09-09T00:00:00Z"), penNumber: "27000000888" }, select: { id: true } });
+    await db.membership.create({ data: { userId: second.id, schoolId: holdingSchoolId, role: "STUDENT", status: "ACTIVE", studentCode: CODE2, leftAt: new Date() } });
+    try {
+      const result = await admitPupils(receiving, [row({ line: 2, name: `${TAG} Handshake Second`, studentCode: CODE2, pen: "27000000999" })] as never, { locale: "en" });
+      expect(result.outcomes[0], JSON.stringify(result.outcomes[0])).toMatchObject({ status: "admitted", linked: true, warnKey: "intake.penDiffers" });
+      expect((await db.user.findUniqueOrThrow({ where: { id: second.id } })).penNumber).toBe("27000000888");
+    } finally {
+      await db.user.delete({ where: { id: second.id } });
+    }
   });
 
   it("⚠ a list with more linking rows than the cap is refused whole, before any row is read", async () => {

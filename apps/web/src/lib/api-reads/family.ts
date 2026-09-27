@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "@/lib/db";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "@/lib/tenancy";
 import { getSession, listContexts, DEFAULT_PREFS, type ActiveContext, type UserPrefs } from "@/lib/session";
-import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { examMarksFor, dateSheetsFor } from "@/lib/exams";
 import { studentWeek, childWeek, weekStartKey, type WeekGrid } from "@/lib/timetable";
 import { ownWorkScope, getStudentWork, childWork, overallForStudent } from "@/lib/grading";
@@ -220,8 +220,9 @@ export async function studentOverview(ctx: StudentCtx) {
     },
   });
   const today = todayKey(membership.school.timezone);
-  const [attendance, todayRecord, upcoming, examMarks, week] = await Promise.all([
+  const [attendance, streak, todayRecord, upcoming, examMarks, week] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
+    currentStreakFor(ctx.schoolId, ctx.membershipId, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
       select: { status: true },
@@ -236,7 +237,7 @@ export async function studentOverview(ctx: StudentCtx) {
     today,
     className: membership.enrollments[0]?.class.name ?? null,
     todayStatus: (todayRecord?.status as AttendanceStatus | undefined) ?? null,
-    streak: computeStreak(attendance.recent),
+    streak: streak,
     attendance: summaryOut(attendance),
     ...lessonsOn(week, today),
     upcoming,
@@ -538,8 +539,9 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
   if (student.leftAt) return empty;
 
   const week = await childWeek(ctx, selectedId, { weekOf: today, todayKey: today });
-  const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent] = await Promise.all([
+  const [attendance, streak, todayRecord, grades, allHomework, upcoming, threads, awaitingConsent] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, addDaysToKey(today, -28), today),
+    currentStreakFor(student.schoolId, selectedId, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: selectedId, session: { dateKey: today } },
       select: { status: true, note: true },
@@ -552,6 +554,14 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
       orderBy: { gradedAt: "desc" },
       take: 5,
     }),
+    // The tile's "average across N pieces" is over EVERY piece of homework
+    // with a mark, not the five newest the list shows: the five gave a
+    // number that swung with the latest sheet while the label promised the
+    // whole.
+    db.grade.findMany({
+      where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
+      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true } } },
+    }),
     dueSoonFor(student.schoolId, selectedId, 4),
     db.remarkThread.findMany({
       where: { studentMembershipId: selectedId },
@@ -563,8 +573,8 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     pendingConsents(ctx),
   ]);
 
-  const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
+  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId))];
   const [weightRows, examMarks] = await Promise.all([
     db.gradeCategory.findMany({ where: { classId: { in: classIds } }, select: { classId: true, name: true, weightBps: true }, orderBy: { position: "asc" } }),
     examMarksFor(ctx),
@@ -576,7 +586,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     weightsByClass.set(row.classId, list);
   }
   const overall = overallForStudent(
-    grades.map((g) => ({ classId: g.assignment.classId, scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli, category: g.assignment.category })),
+    allHomework.map((g) => ({ classId: g.assignment.classId, scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli, category: g.assignment.category })),
     weightsByClass,
   );
 
@@ -585,7 +595,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     left: false,
     todayRecord: todayRecord ? { status: todayRecord.status as AttendanceStatus, note: todayRecord.note } : null,
     attendance: summaryOut(attendance),
-    streak: computeStreak(attendance.recent),
+    streak: streak,
     averagePercent: overall.percent,
     scoredCount: scored.length,
     recentGrades: grades.map((g) => ({

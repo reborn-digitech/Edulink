@@ -18,7 +18,7 @@ import { formatTimeRange } from "@/lib/school-day";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
-import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
+import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
@@ -119,25 +119,20 @@ export default async function ParentDashboard({
             (periodOrder.get(b.periodId)?.position ?? 0),
         );
 
-  const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
+  const [attendance, streak, todayRecord, allHomework, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
+    currentStreakFor(student.schoolId, selectedId, today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: selectedId, session: { dateKey: today } },
       select: { status: true, note: true },
     }),
     // Homework only: an exam paper is also stored as a Grade, but its marks
     // belong to the exam card below, and the tile's "pieces" are the ongoing
-    // work a parent monitors — mixing the two would average a unit test into
-    // a reading log.
+    // work a parent monitors. Every marked piece, for the average the tile
+    // promises — not the five newest.
     db.grade.findMany({
-      where: {
-        studentMembershipId: selectedId,
-        schoolId: student.schoolId,
-        assignment: { examSlotId: null },
-      },
-      include: { assignment: { select: { title: true, pointsMilli: true, category: true, classId: true } } },
-      orderBy: { gradedAt: "desc" },
-      take: 5,
+      where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
+      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true } } },
     }),
     db.assignment.findMany({
       where: {
@@ -170,7 +165,6 @@ export default async function ParentDashboard({
     pupilRecordFor(session, selectedId).then((r) => r.missing as string[]).catch(() => [] as string[]),
   ]);
 
-  const streak = computeStreak(attendance.recent);
   // A correction to a child's PEN awaiting this guardian's word: every
   // child's, not just the one on screen, because the office is waiting on
   // it; the notice opens that child's record, where the decision is made.
@@ -181,8 +175,8 @@ export default async function ParentDashboard({
   const penChangeWaiting = penChanges.items.find((item) => item.status === "PENDING" && item.can.decide) ?? null;
 
   // Shared helper — weights by points available, never averages percentages.
-  const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
+  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId))];
   const [weightRows, examMarks] = await Promise.all([
     db.gradeCategory.findMany({
       where: { classId: { in: classIds } },
@@ -198,7 +192,7 @@ export default async function ParentDashboard({
     weightsByClass.set(row.classId, list);
   }
   const overallResult = overallForStudent(
-    grades.map((g) => ({
+    allHomework.map((g) => ({
       classId: g.assignment.classId,
       scoreMilli: g.scoreMilli,
       maxMilli: g.assignment.pointsMilli,

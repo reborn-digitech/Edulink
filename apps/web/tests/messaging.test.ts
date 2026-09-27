@@ -287,6 +287,17 @@ describe("broadcasts", () => {
     }
   });
 
+  it("⚠ the month the cap and the overview count is the school's month, not UTC's", async () => {
+    const { monthStartFor } = await import("@/lib/messaging");
+    // 00:30 on 1 October in Kolkata is still 30 September in UTC: the month has turned for the school.
+    const turned = await monthStartFor(schoolId, new Date("2026-09-30T19:00:00Z"));
+    expect(turned.toISOString()).toBe("2026-09-30T18:30:00.000Z");
+    // 23:00 UTC on 30 September is 04:30 on 1 October in Kolkata — the same October.
+    expect((await monthStartFor(schoolId, new Date("2026-09-30T23:00:00Z"))).toISOString()).toBe("2026-09-30T18:30:00.000Z");
+    // Mid-month is September's start on the school's clock.
+    expect((await monthStartFor(schoolId, new Date("2026-09-15T12:00:00Z"))).toISOString()).toBe("2026-08-31T18:30:00.000Z");
+  });
+
   it("the overview adds up", async () => {
     const o = await messagingOverview(principal());
     expect(o.settings.smsEnabled).toBe(true);

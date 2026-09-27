@@ -37,9 +37,20 @@ const postSelect = { id: true, schoolId: true, scope: true, classId: true, audie
 type Family = { studentMembershipId: string; studentUserId: string; studentName: string; guardians: { userId: string; name: string; phone: string | null }[] };
 type Group = { classId: string | null; className: string; families: Family[] };
 
-/** The classes a circular is for, with each pupil's guardians. A teacher sees only their own classes. */
+/**
+ * The classes a circular is for, with each pupil's guardians. A teacher sees
+ * only their own classes. Once the circular has been told, the roster is the
+ * one it was told to — pupils on the class at delivery, including any who have
+ * since left it — so a child who joined on Monday is not "unreached" for a
+ * notice that went out the Friday before, and one who left is still chased
+ * for what they were sent. Before delivery it is today's roster.
+ */
 async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: string }): Promise<Group[]> {
   const schoolId = post.schoolId!;
+  const at = post.deliveredAt;
+  const rosterWhere = at
+    ? { enrolledAt: { lte: at }, OR: [{ status: "ACTIVE" }, { removedAt: { gt: at } }] }
+    : { status: "ACTIVE" };
   const classes = await db.class.findMany({
     where: {
       schoolId,
@@ -53,7 +64,7 @@ async function familyGroups(post: PostRow, viewer?: { role: Role; membershipId: 
       id: true,
       name: true,
       enrollments: {
-        where: { status: "ACTIVE" },
+        where: rosterWhere,
         select: {
           student: {
             select: {

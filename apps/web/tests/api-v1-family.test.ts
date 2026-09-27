@@ -394,6 +394,22 @@ describe("the guardian's pages", () => {
     expect(body.attendance.percent).toBe(100);
     expect(body.streak).toBe(1);
     expect(body.averagePercent).toBeNull();
+    // Six marked pieces of homework: the tile averages all six, not the five newest.
+    const pieces = await Promise.all(
+      [40, 60, 80, 100, 100, 100].map((pct, i) =>
+        db.assignment.create({ data: { schoolId, classId, authorMembershipId: teacherMembershipId, title: `ZZ Family Piece ${i}`, pointsMilli: 10_000, dueAt: new Date(Date.now() - (i + 1) * 86_400_000), publishedAt: new Date(Date.now() - (i + 2) * 86_400_000) }, select: { id: true } }).then((a) =>
+          db.grade.create({ data: { schoolId, assignmentId: a.id, studentMembershipId: pupilMembershipId, scoreMilli: pct * 100, gradedAt: new Date(Date.now() - i * 3_600_000) }, select: { id: true, assignmentId: true } }),
+        ),
+      ),
+    );
+    try {
+      const again = await (await overviewGet(get("/api/v1/family/overview"))).json();
+      expect(again.scoredCount).toBe(6);
+      expect(again.averagePercent).toBe(80);
+    } finally {
+      await db.grade.deleteMany({ where: { id: { in: pieces.map((p) => p.id) } } });
+      await db.assignment.deleteMany({ where: { id: { in: pieces.map((p) => p.assignmentId) } } });
+    }
     expect(body.lessonsToday.map((l: { subject: string }) => l.subject)).toEqual(["Mathematics"]);
     // Handed in above, so nothing is due any more — the same rule as the child's page.
     expect(body.upcoming).toEqual([]);

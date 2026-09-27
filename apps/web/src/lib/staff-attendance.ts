@@ -147,7 +147,11 @@ export async function markStaffRegister(ctx: ActiveContext, input: { date: strin
       await t.staffAttendance.upsert({
         where: { membershipId_dateKey: { membershipId: e.membershipId, dateKey: input.date } },
         create: { schoolId: caller.schoolId, membershipId: e.membershipId, dateKey: input.date, status: e.status, source: "OFFICE", note: e.note?.trim() || null, markedByUserId: caller.user.id },
-        update: { status: e.status, source: "OFFICE", note: e.note?.trim() || null, markedByUserId: caller.user.id },
+        // The check-in time is a fact about arriving; it stays under a PRESENT
+        // or LATE the office confirms and goes when the office says the person
+        // was absent, on leave or there for half the day, so the register does
+        // not show "absent, checked in 09:12".
+        update: { status: e.status, source: "OFFICE", note: e.note?.trim() || null, markedByUserId: caller.user.id, ...(e.status === "PRESENT" || e.status === "LATE" ? {} : { checkedInAt: null }) },
       });
     }
   });
@@ -160,8 +164,22 @@ export async function saveStaffAttendanceSettings(ctx: ActiveContext, input: { c
   const caller = office(ctx);
   // The clock is set up by the admin; the head marks the register against it.
   if (caller.role !== "ADMIN") throw new AccessError("access.onlyAnAdminSetsUpTheSchool");
-  await db.school.update({ where: { id: caller.schoolId }, data: { staffCheckInMinute: input.checkInMinute, staffLateGraceMinutes: input.lateGraceMinutes } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.settings", targetType: "School", targetId: caller.schoolId, meta: input });
+  const school = await db.school.update({ where: { id: caller.schoolId }, data: { staffCheckInMinute: input.checkInMinute, staffLateGraceMinutes: input.lateGraceMinutes }, select: { timezone: true } });
+  // LATE was fixed at the moment of the tap against the clock of that moment.
+  // Moving the clock re-reads today's self check-ins against the new one, so
+  // a start time set after the staff have arrived does not leave the morning
+  // marked by the old rule; the office's own marks are its word and stay.
+  const today = todayKey(school.timezone);
+  const rows = await db.staffAttendance.findMany({ where: { schoolId: caller.schoolId, dateKey: today, source: "SELF", checkedInAt: { not: null }, status: { in: ["PRESENT", "LATE"] } }, select: { id: true, status: true, checkedInAt: true } });
+  let relabelled = 0;
+  for (const row of rows) {
+    const late = minuteOfDayIn(school.timezone, row.checkedInAt!) > input.checkInMinute + input.lateGraceMinutes;
+    const status = late ? "LATE" : "PRESENT";
+    if (status === row.status) continue;
+    await db.staffAttendance.update({ where: { id: row.id }, data: { status } });
+    relabelled += 1;
+  }
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.settings", targetType: "School", targetId: caller.schoolId, meta: { ...input, relabelled } });
 }
 
 /** "I'm in": present, or late after the grace; a second time in the day is a no-op that says what stands; never on a closed day. */
