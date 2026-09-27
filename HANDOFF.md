@@ -1,0 +1,180 @@
+# Relay — handoff
+
+Written 2026-09-28 at commit `ff57b2d`. This is the short map. The long operator's manual is
+[apps/web/README.md](apps/web/README.md); the decisions are in [docs/decisions](docs/decisions);
+the audits are in [docs/data-audit](docs/data-audit) and [docs/security](docs/security).
+
+## 1. What has been built
+
+Relay (repository name EduLink; code identifiers stay `edulink`) is a school operations platform for
+Indian schools, in English, Hindi and Marathi, with a web app and a phone app on one database and one
+API. One school is one tenant. The roles are ADMIN (the office), PRINCIPAL (the head), TEACHER, STUDENT,
+PARENT (a guardian, who belongs to no school and sees their children across schools), EXPERT (an outside
+mentor), and two platform roles, the operator (superuser) and the app admin (content team).
+
+What a school can do with it today, all verified end to end:
+
+- **People and roll**: invitations, join codes, intake by spreadsheet, transfers between schools by
+  code or by the government PEN, guardians and stand-in guardians, suspensions, departures with a
+  leaving certificate, the pupil's record that outlives the school, promotion and year close.
+- **The day**: class registers with absence notices, staff self check-in and the staff register,
+  timetable, substitutions for staff away, holidays and the school calendar, leave requests with cover.
+- **Learning**: homework and marks with weighted categories, exams and report cards (rules per school,
+  PDF with Devanagari), syllabus coverage, adaptive practice quizzes with badges, competitions with a
+  cross-school leaderboard, an expert marketplace with consent.
+- **Money**: fee heads, structures, demands, concessions, receipts, refunds, dues and defaulter lists,
+  online payment through a gateway the school owns (decision 0003: the platform never holds money).
+- **Communication**: bulletin and circulars with a reach report and reminders, remark threads, SMS and
+  WhatsApp texts with fixed templates and a monthly cap, push notifications, weekly digests, a
+  moderated cross-school community feed.
+- **Compliance and papers**: UDISE+ student and teacher sheets, CBSE and Maharashtra board sheets,
+  enrolment tables, certificates from templates with serials and a public check, health cards,
+  incident log, a minors' data policy (decision 0002), retention sweeps, an append-only audit log.
+- **Operations**: an operator console that can look inside a school (audited, the school is told),
+  school onboarding, job health, backups, a go-live checklist.
+
+## 2. Architecture
+
+```
+apps/web        Next.js 15 (app router). Pages, /api/v1, every business rule in src/lib.
+apps/mobile     Expo (React Native). Screens per role in src/screens/<role>; talks only to /api/v1.
+packages/contracts   zod schemas for every /api/v1 request and response. The phone parses with them.
+packages/i18n        en / hi / mr dictionaries; every user-facing sentence is a key.
+packages/api-client  The bearer-token fetch wrapper the phone uses.
+packages/tokens      Design tokens shared by web and phone.
+docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 380 endpoints.
+```
+
+**Data.** Postgres, Prisma, 111 models, 28 handwritten migrations. Every school-owned table carries
+`schoolId` and is behind row-level security. The policies are generated (`npm run rls:generate`) and
+verified (`npm run rls:verify`); the app connects as `edulink_app`, which owns nothing and cannot
+bypass RLS, and sets the tenant per query inside its own transaction (`$tenantTransaction`, never a
+bare `$transaction`). Migrations and fixtures run through the owner connection (`npm run db:migrate`,
+which also restores the grants). A bare `prisma migrate deploy` fails with "must be owner".
+
+**API.** `src/lib/api-catalog/*.ts` is the truth: each entry names the method, path, roles allowed,
+request and response schema, and a sample the sweep can call. The docs, the API sweep and the phone's
+access-matrix gate are all derived from it. Sessions are opaque hashed tokens in a cookie on the web
+and a bearer on the phone, re-checked against the live membership on every request, with an absolute
+lifetime. A parent session carries no school.
+
+**Jobs.** One registry in `src/lib/jobs.ts`, run by `npm run job -- <name>` from a crontab the app
+prints (`npm run cron:show`). Twelve jobs: notifications tidy, retention sweep, admission offer expiry,
+accounts tidy (expired invitations, who is a minor), weekly digest, scheduled departures, health
+digest, file reclaim, fee reminders, fee reconciliation, circular delivery, text sending. Each writes a
+JobRun row with a summary; the operator's page calls a job overdue by its own schedule.
+
+**Transports.** Email, SMS, WhatsApp, push and the fee gateway each sit behind an env-selected
+transport (`*_TRANSPORT`), with a devbox transport for development that writes to a dev mailbox and a
+log. Real senders are Twilio and Razorpay; nothing here has been exercised against a live account.
+
+**Files.** Uploads go to `STORAGE_DIR` behind upload tickets bound to the uploader, random names,
+byte-sniffed types and signed short-lived download links.
+
+**Deploy.** Fly.io (`fly.toml`, app `edulink-web`, region `bom`), Docker image from
+`apps/web/Dockerfile`, a release step that runs migrations, managed Postgres and object storage
+beside it. Runbooks for deploy, backup and restore, messaging, security and the mobile release are in
+[docs/runbooks](docs/runbooks). The go-live checklist is [docs/go-live-checklist.md](docs/go-live-checklist.md).
+
+## 3. How to run and verify
+
+```bash
+corepack enable && pnpm install
+cd apps/web && cp .env.example .env && npm run vapid && npm run setup
+pnpm dev                      # web on :3000
+cd apps/mobile && npx expo start --web   # phone's web target on :8081, needs the web API
+```
+
+The verification chain a change is expected to pass, in order:
+
+1. `npm run typecheck`, scripts tsc, `eslint .`
+2. `npx vitest run` (2,398 tests in 196 files at this commit; two audit suites are gated behind `DATA_AUDIT=1`)
+3. `npm run rls:verify` after any schema or policy change; `npm run api:docs` after any catalog or contract change
+4. `npm run i18n -- --max 163` (the count of hardcoded English; a job name counts as a string)
+5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,023 tests with coverage and the gates, Maestro check)
+6. `npm run sweep` (593 page loads by role) and `npm run api:sweep` (2,335 calls, every role against every door; run twice, the first warms the dev server). `--cross=school` and `--cross=person` are the tenant-isolation probes.
+7. `npm run build` with the dev server stopped, then `rm -rf .next`
+8. `npm run data:audit` when derived data or fixtures change (47 checks against the demo schools and ZZ Northgate)
+
+Fixtures: `npm run zz:fixtures` builds ZZ Northgate and ZZ Southbank (every ZZ-prefixed thing is
+disposable); `npm run demo:schools` builds Sunrise and Saraswati (roster in
+[docs/demo-schools.md](docs/demo-schools.md)). Never run `db:seed` or `db:reset` against a database
+with data you care about; the fixture scripts refuse any database that is not local.
+
+## 4. Current state
+
+- Every feature above is built and its verification is green on the local battery at `ff57b2d`.
+- **CI has not run since 84cc987.** The reborn-digitech Actions runner is refused on billing. Every
+  commit since has been verified locally only. `.github/workflows/battery.yml` is the CI definition;
+  `I18N_FLOOR` there is 163.
+- **Never exercised**: the phone on a real device (only the web target and jest); Microsoft SSO
+  against a live tenant; any live Twilio or Razorpay account; the after-response magic-link send in a
+  real request; the jobs through cron rather than by function.
+- **Two remotes**, `reborn` (reborn-digitech/Edulink) and `origin` (ckulkarni03488/Edulink), kept
+  identical; neither is a GitHub fork of the other.
+- **Shared passwords** remain on thirteen local test accounts and on every `@demo.relay.test`
+  account. Scramble them when demos end.
+- **Untracked on purpose**: `pitch/`, `apps/web/.Rhistory`, `.claude/launch.json`.
+
+Recent history, newest first: seven derived-value fixes (ff57b2d); sweep reads the fixture school's
+calendar (c5a63c2); two Sunday-fragile tests (94ed3d6); nine audit fixes and the `accounts:tidy` job
+(87dbb0c); the security assessment and its 41 findings fixed (84cc987); the audit's 21 derived-data
+gaps (4e326b2); the audit's second pass (bf6cd00); the audit's top ten (0ee9580); the data-flow audit
+(04dbe1b).
+
+## 5. Open tasks
+
+**Product decisions, from the security assessment** ([docs/security/assessment-2026-09-24.md](docs/security/assessment-2026-09-24.md)):
+
+1. Hold school-code joins and birthdate claims pending until staff or an existing guardian approves. Needs a PENDING membership state nothing creates today.
+2. Take the student code off the printed leaving certificate, or rotate it on departure.
+3. Put self-registered schools behind operator approval before the identity-linking features open. The code already checks `School.verifiedAt`; the approve button and queue do not exist.
+4. Decide legal versus preferred name on papers (papers print the legal name) and give the office a way to correct a legal name.
+5. Confirm the narrowed principal write scope (twelve settings doors are ADMIN only) and let someone set the principal's own subjects.
+6. PKCE on the phone's SSO hand-off and verified app links, before any store release.
+7. Nonce-based CSP, `__Host-` cookie, HSTS preload once the domain is fixed.
+8. An approve action for held comments on the cross-school feed; the queue can only remove.
+9. Narrower row-level policies for experts, keyed on the booking rather than the school.
+
+**Inputs nothing collects** ([docs/data-audit/README.md](docs/data-audit/README.md) §7): a guardian's
+phone entered by the office; legal name correction; the principal's subjects; coded lists for mother
+tongue, nationality, PIN, designation and the academic year's name; the staff record and departures on
+the phone.
+
+**Audit items still open** (README §2): 4 and 5 fixed; 36 by design; 42 fixed; 43 the leave-beside-a-
+stored-PRESENT display; the first-pass items 8–13, 18, 24, 26 and 29 were documented in September's
+first pass and not re-verified against the code since the 21-gap fix, so check each before assuming
+either way. Section 4 lists the columns no table holds (class section, emergency contact, transport,
+siblings, house, certificate numbers, DBT account) which need a policy row saying which are deliberately
+never held.
+
+**Housekeeping**: restore CI billing and rerun the battery there; scramble the shared passwords; run
+the phone on a device; try Microsoft SSO against one real tenant; a live Twilio and Razorpay
+end-to-end in staging.
+
+## 6. Key decisions
+
+- **One tenant fence, enforced by the database.** RLS on every school table, policies generated from
+  the schema, the app role unable to bypass them. Handlers still bind the person, not only the school.
+- **Money never touches the platform** (decision 0003). The gateway account is the school's; the
+  platform records demands, allocations and receipts, and reconciles.
+- **Minors' data policy** (decision 0002). No Aadhaar, ever. Free-text reasons stay out of audit rows,
+  push bodies to minors are generic, retention is a schedule with dials, and every column a report
+  reads is listed with who may enter it.
+- **The record is the child's.** The pupil record, the PEN and the certificates outlive any school;
+  a transfer is the new school inviting and the old school recording the departure, and the receiving
+  school reads the leaving certificate only for a pupil on its roll today.
+- **Derived values are recomputed, not trusted.** Stored copies (fee status, card totals, standings,
+  grade level, minor flag) have a single writer each and an audit check that compares them with their
+  sources. The audit suites are the regression net for this.
+- **Coded where a filing wants a code.** Category, religion, holiday kinds, staff types and the like
+  are fixed choice lists in `packages/contracts`; free text is refused with a sentence.
+- **Every sentence in three languages.** Hindi ends sentences with the danda; Marathi with a full
+  stop; "शाळा", never "स्कूल". The i18n test fails on English left in Hindi or Marathi unless the key is
+  allow-listed with a reason.
+- **The catalog is the truth for the API.** Docs, sweep expectations, the phone's access gate and the
+  tests all derive from `src/lib/api-catalog`.
+- **Verification is executed, never reasoned about.** Commit messages carry the real numbers and an
+  "Untested:" line. Nothing is called production-ready.
+- **Fixtures are disposable and prefixed.** ZZ schools and `@demo.relay.test` accounts are the only
+  ones a test or script may create or destroy.
