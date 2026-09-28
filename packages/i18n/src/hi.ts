@@ -3849,6 +3849,7 @@ export const hi: Dictionary = {
     excusedHint: "ज्ञात कारण से गैर-हाज़िर",
   },
   student: {
+    youreInName: "आप शामिल हो गए, {name}!",
     todayLessons: "आज के पीरियड",
     todayLessonsBody: "आपका दिन, पीरियड दर पीरियड। पूरा सप्ताह समय-सारणी पर है।",
     practiceCardTitle: "आपका अभ्यास",

@@ -394,6 +394,11 @@ model Membership {
 
   joinedAt DateTime  @default(now())
   leftAt   DateTime?
+  /// When a pupil put their welcome away. The welcome is shown on their first
+  /// visits after they were let in, and its real job is their login name; a
+  /// flag in the address bar could not survive the role picker a newly
+  /// admitted pupil passes through, so it is remembered here.
+  welcomedAt DateTime?
 
   /// Set when status becomes SUSPENDED, cleared on reinstatement.
   ///

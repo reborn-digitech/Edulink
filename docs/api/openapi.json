@@ -14324,7 +14324,7 @@
     },
     "/api/v1/family/student/overview": {
       "get": {
-        "summary": "The pupil's Today page: attendance, the day's lessons, what is due, the latest exam marks",
+        "summary": "The pupil's Today page: attendance, the day's lessons, what is due, the latest exam marks, and the welcome with their login name while they are new",
         "description": "Roles: STUDENT.",
         "security": [
           {
@@ -14342,6 +14342,20 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "welcome": {
+                      "type": "object",
+                      "properties": {
+                        "handle": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "handle"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "name": {
                       "type": "string"
                     },
@@ -14644,6 +14658,7 @@
                     }
                   },
                   "required": [
+                    "welcome",
                     "name",
                     "avatarKey",
                     "today",
@@ -14656,6 +14671,84 @@
                     "lessonsToday",
                     "upcoming",
                     "examMarks"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/family/student/welcomed": {
+      "post": {
+        "summary": "The pupil put their welcome away; the overview stops offering it",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
                   ],
                   "additionalProperties": false
                 }

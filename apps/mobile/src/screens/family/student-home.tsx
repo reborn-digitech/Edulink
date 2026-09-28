@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { QUICK } from "@/lib/nav";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyStudentOverviewSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
@@ -21,6 +21,12 @@ export function StudentHome() {
     queryKey: ["family", "student", "overview"],
     queryFn: async () => familyStudentOverviewSchema.parse(unwrap(await api().get("/api/v1/family/student/overview"))),
   });
+  const qc = useQueryClient();
+  // Put away on the account, so it stays away on the web too; the card leaves at once either way.
+  const putAway = useMutation({
+    mutationFn: async () => api().post("/api/v1/family/student/welcomed", {}),
+    onMutate: () => qc.setQueryData(["family", "student", "overview"], (old: typeof query.data) => (old ? { ...old, welcome: null } : old)),
+  });
   const d = query.data;
   const today = d ? formatDateKey(d.today, locale, { weekday: "long", day: "numeric", month: "long" }) : null;
   const streak = d?.streak ?? 0;
@@ -35,6 +41,27 @@ export function StudentHome() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
+          {d.welcome ? (
+            <Card title={t("student.youreInName", { name: d.name })} accessibilityLiveRegion="polite">
+              <Text variant="sm" tone="muted">
+                {t("student.welcomeBody")}
+              </Text>
+              {d.welcome.handle ? (
+                <View style={{ gap: th.space[1], backgroundColor: th.surfaceMuted, borderRadius: th.radius.md, padding: th.space[3] }}>
+                  <Text variant="xs" tone="muted" bold>
+                    {t("student.saveLogin")}
+                  </Text>
+                  <Text variant="base" bold selectable>
+                    {d.welcome.handle}
+                  </Text>
+                  <Text variant="xs" tone="muted">
+                    {t("student.useThis")}
+                  </Text>
+                </View>
+              ) : null}
+              <Button label={t("student.hideMessage")} variant="secondary" onPress={() => putAway.mutate()} />
+            </Card>
+          ) : null}
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
             <Stat
               label={t("student.today")}

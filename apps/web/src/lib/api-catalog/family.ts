@@ -13,7 +13,8 @@ import type { Endpoint } from "./types";
  */
 export const FAMILY: Endpoint[] = [
   // ---- STUDENT --------------------------------------------------------------
-  { method: "GET", path: "/api/v1/family/student/overview", summary: "The pupil's Today page: attendance, the day's lessons, what is due, the latest exam marks", access: ["STUDENT"], response: c.familyStudentOverviewSchema },
+  { method: "GET", path: "/api/v1/family/student/overview", summary: "The pupil's Today page: attendance, the day's lessons, what is due, the latest exam marks, and the welcome with their login name while they are new", access: ["STUDENT"], response: c.familyStudentOverviewSchema },
+  { method: "POST", path: "/api/v1/family/student/welcomed", summary: "The pupil put their welcome away; the overview stops offering it", access: ["STUDENT"], response: c.okSchema },
   { method: "GET", path: "/api/v1/family/student/assignments", summary: "The pupil's work: to do, handed in, marked", access: ["STUDENT"], response: c.familyStudentAssignmentsSchema },
   { method: "POST", path: "/api/v1/family/student/submissions", summary: "Hand a piece of work in: words and/or photographs of it (ids from POST /api/v1/uploads); replaces the body and the file list until it is marked", access: ["STUDENT"], request: c.familyStudentSubmissionSchema, response: c.familyStudentSubmittedSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/family/student/profile", summary: "The pupil's profile, previous schools, practice, competitions and badges", access: ["STUDENT"], response: c.familyStudentProfileSchema },

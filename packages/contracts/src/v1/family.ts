@@ -146,6 +146,12 @@ const attachmentSchema = z.object({ fileId: z.string(), name: z.string(), size: 
 
 /** GET /api/v1/family/student/overview — the pupil's Today page. */
 export const familyStudentOverviewSchema = z.object({
+  /**
+   * The welcome, while the pupil is new and has not put it away; null
+   * otherwise. `handle` is the login name of a pupil who has no email
+   * address, read from the account.
+   */
+  welcome: z.object({ handle: z.string().nullable() }).nullable(),
   name: z.string(),
   avatarKey: z.string().nullable(),
   today: dateKey,

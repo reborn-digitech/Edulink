@@ -4084,6 +4084,7 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    youreInName: "You’re in, {name}!",
     todayLessons: "Today’s lessons",
     todayLessonsBody: "Your day, period by period. The whole week is on your timetable.",
     practiceCardTitle: "Your practice",

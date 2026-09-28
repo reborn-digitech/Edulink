@@ -5,9 +5,11 @@ import { CopyIcon, SparkleIcon, XIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
 import { Button } from "@/components/ui/button";
 import { useT } from "@/lib/i18n";
+import { dismissWelcome } from "./actions";
 
 /**
- * First-run welcome for a brand-new student.
+ * First-run welcome for a brand-new student: shown until they put it away,
+ * for the first fortnight after they were let in (lib/student-welcome.ts).
  *
  * Its real job is the login handle. A child who joined with a code has no email
  * address, so this generated handle IS how they get back in — showing it once
@@ -24,7 +26,11 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
     <div className="relative overflow-hidden rounded-[--radius-lg] border border-accent/30 bg-accent-soft p-5 animate-pop">
       <button
         type="button"
-        onClick={() => setDismissed(true)}
+        onClick={() => {
+          setDismissed(true);
+          // Remembered on the account, so it stays away on the phone too.
+          void dismissWelcome();
+        }}
         aria-label={t("student.hideMessage")}
         className="absolute right-2 top-2 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
       >
@@ -36,7 +42,7 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
           <SparkleIcon weight="fill" className="size-6" />
         </span>
         <div className="min-w-0">
-          <h2 className="text-lg font-bold text-fg">You&rsquo;re in, {name}!</h2>
+          <h2 className="text-lg font-bold text-fg">{t("student.youreInName", { name })}</h2>
           <p className="mt-1 text-sm leading-relaxed text-fg-muted">
             {t("student.welcomeBody")}
           </p>

@@ -3,6 +3,7 @@ import { calls, LESSON, ME_STUDENT, mockRouter, pending, refused, renderFamily, 
 import { StudentHome } from "@/screens/family/student-home";
 
 const OVERVIEW = {
+  welcome: null,
   name: "ZZ Pupil",
   avatarKey: null,
   today: "2026-09-07",
@@ -43,6 +44,24 @@ describe("the pupil's Today", () => {
     await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => OVERVIEW, [RECORD_PATH]: () => record([]) });
     await screen.findByText("Hi ZZ Pupil 👋");
     expect(screen.queryByText("Complete the school record")).toBeNull();
+  });
+
+  it("welcomes a new pupil with their login name, and putting it away tells the server and takes the card off", async () => {
+    const { fetch } = await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => ({ ...OVERVIEW, welcome: { handle: "zzpupil.k4f9" } }), "/api/v1/family/student/welcomed": () => ({ ok: true }) });
+    expect(await screen.findByText("You’re in, ZZ Pupil!")).toBeTruthy();
+    expect(screen.getByText("Your login name — save this with a grown-up")).toBeTruthy();
+    expect(screen.getByText("zzpupil.k4f9")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Hide this message" }));
+    expect(screen.queryByText("You’re in, ZZ Pupil!")).toBeNull();
+    expect(calls(fetch, "/api/v1/family/student/welcomed")).toHaveLength(1);
+    // The day is still there underneath.
+    expect(screen.getByText("Hi ZZ Pupil 👋")).toBeTruthy();
+  });
+
+  it("a new pupil who signs in with an email address is welcomed with no login name to save; an old one is not welcomed", async () => {
+    await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => ({ ...OVERVIEW, welcome: { handle: null } }) });
+    expect(await screen.findByText("You’re in, ZZ Pupil!")).toBeTruthy();
+    expect(screen.queryByText("Your login name — save this with a grown-up")).toBeNull();
   });
 
   it("is loading while the overview is on its way", async () => {

@@ -191,6 +191,42 @@ describe("the pupil's pages", () => {
     expect(body.examMarks[0].series[0].papers[0]).toMatchObject({ subject: "Mathematics", marks: null, maxMarks: 50 });
   });
 
+  it("⚠ the welcome is offered to a new pupil with the login name from the ACCOUNT, until they put it away; an old membership is not greeted", async () => {
+    const { HANDLE_DOMAIN } = await import("@/lib/login-name");
+    const { POST: welcomedPost } = await import("@/app/api/v1/family/student/welcomed/route");
+    // Made a minute ago, with an email address: a welcome, and no login name to save.
+    expect((await (await studentOverviewGet()).json()).welcome).toEqual({ handle: null });
+
+    // A child with no address signs in with the name the wizard made.
+    const was = (await db.user.findUniqueOrThrow({ where: { id: pupilUserId }, select: { email: true } })).email;
+    await db.user.update({ where: { id: pupilUserId }, data: { email: `zzfamily.k4f9@${HANDLE_DOMAIN}` } });
+    try {
+      await as("STUDENT");
+      expect((await (await studentOverviewGet()).json()).welcome).toEqual({ handle: "zzfamily.k4f9" });
+
+      // Here a month: not new any more, and nobody is greeted late.
+      await db.membership.update({ where: { id: pupilMembershipId }, data: { joinedAt: new Date(Date.now() - 30 * 86_400_000) } });
+      expect((await (await studentOverviewGet()).json()).welcome).toBeNull();
+      await db.membership.update({ where: { id: pupilMembershipId }, data: { joinedAt: new Date() } });
+
+      const res = await welcomedPost();
+      expect(res.status).toBe(200);
+      expect((await (await studentOverviewGet()).json()).welcome).toBeNull();
+      const stamped = (await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).welcomedAt;
+      expect(stamped).not.toBeNull();
+      // A second press changes nothing.
+      expect((await welcomedPost()).status).toBe(200);
+      expect((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).welcomedAt).toEqual(stamped);
+
+      // Not a pupil: refused, and nobody else's welcome is put away.
+      await as("PARENT");
+      expect((await welcomedPost()).status).toBe(403);
+    } finally {
+      await db.user.update({ where: { id: pupilUserId }, data: { email: was } });
+      await as("STUDENT");
+    }
+  });
+
   it("assignments: the reading log is to do; handing it in moves it to handed in; a second delivery replaces the body", async () => {
     const before = await studentAssignmentsGet();
     expect(before.status).toBe(200);

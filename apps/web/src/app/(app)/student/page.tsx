@@ -25,6 +25,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
+import { welcomeFor } from "@/lib/student-welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
@@ -34,15 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.today") };
 }
 
-export default async function StudentHome({
-  searchParams,
-}: {
-  searchParams: Promise<{ welcome?: string; handle?: string }>;
-}) {
+export default async function StudentHome() {
   const ctx = await requireRole("STUDENT");
   const t = await getT();
   const locale = await getLocale();
-  const { welcome, handle } = await searchParams;
+  const welcome = await welcomeFor(ctx);
 
   const membership = await db.membership.findUniqueOrThrow({
     where: { id: ctx.membershipId },
@@ -111,7 +108,7 @@ export default async function StudentHome({
 
   return (
     <div className="space-y-6">
-      {welcome === "1" && <StudentWelcome name={name} handle={handle ?? null} />}
+      {welcome && <StudentWelcome name={name} handle={welcome.handle} />}
 
       <CompleteRecordCard missing={recordMissing} href="/student/record" />
 

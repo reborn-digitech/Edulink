@@ -1,3 +1,4 @@
+import { welcomeFor } from "@/lib/student-welcome";
 import "server-only";
 import { db } from "@/lib/db";
 import { AccessError, assertAssignmentAccess, assertGuardianAccess } from "@/lib/tenancy";
@@ -220,7 +221,8 @@ export async function studentOverview(ctx: StudentCtx) {
     },
   });
   const today = todayKey(membership.school.timezone);
-  const [attendance, streak, todayRecord, upcoming, examMarks, week] = await Promise.all([
+  const [welcome, attendance, streak, todayRecord, upcoming, examMarks, week] = await Promise.all([
+    welcomeFor(ctx),
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
     currentStreakFor(ctx.schoolId, ctx.membershipId, today),
     db.attendanceRecord.findFirst({
@@ -232,6 +234,7 @@ export async function studentOverview(ctx: StudentCtx) {
     studentWeek(ctx, ctx.membershipId, { weekOf: today, todayKey: today }),
   ]);
   return {
+    welcome,
     name: membership.user.preferredName ?? membership.user.name,
     avatarKey: membership.user.avatarKey,
     today,

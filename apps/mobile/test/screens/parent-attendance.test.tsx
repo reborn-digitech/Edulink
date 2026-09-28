@@ -53,7 +53,7 @@ describe("a child's attendance", () => {
   });
 
   it("a pupil reads their own last four weeks from their overview", async () => {
-    const overview = { name: "ZZ Pupil", avatarKey: null, today: "2026-09-07", className: null, todayStatus: "LATE", streak: 0, attendance: SUMMARY, closedToday: false, closedName: null, lessonsToday: [], upcoming: [], examMarks: [] };
+    const overview = { welcome: null, name: "ZZ Pupil", avatarKey: null, today: "2026-09-07", className: null, todayStatus: "LATE", streak: 0, attendance: SUMMARY, closedToday: false, closedName: null, lessonsToday: [], upcoming: [], examMarks: [] };
     await renderFamily(<FamilyAttendance />, ME_STUDENT, { "/api/v1/family/student/overview": () => overview });
     expect(await screen.findByText("95%")).toBeTruthy();
     expect(screen.getAllByText("Present").length).toBeGreaterThan(0);
