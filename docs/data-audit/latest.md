@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-24T15:45:27.600Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 20 INFO
+Run: 2026-09-28T01:43:03.404Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 21 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -12,15 +12,16 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | fees-api | Saraswati Vidya Mandir | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 | fees-api | Sunrise Public School | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 
-## INFO (20)
+## INFO (21)
 
 | check | school | detail |
 |---|---|---|
 | admission | Saraswati Vidya Mandir | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | Sunrise Public School | 6 of 7 applications carry no PEN — the field is optional on the form |
-| admission | ZZ Northgate School | 6 of 7 applications carry no PEN — the field is optional on the form |
+| admission | ZZ Northgate School | 8 of 9 applications carry no PEN — the field is optional on the form |
 | certificate | Saraswati Vidya Mandir | CC/2026–27/0001 printed "—" for: record.conduct |
 | certificate | Sunrise Public School | CC/2026–27/0001 printed "—" for: record.conduct |
+| quiz | Sunrise Public School | 1 attempt(s) were opened and never answered |
 | quiz | ZZ Northgate School | 1 attempt(s) were opened and never answered |
 | filings-api | Saraswati Vidya Mandir | staff ready 10/10 |
 | filings-api | Sunrise Public School | staff ready 10/10 |
@@ -28,11 +29,11 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | cards-api | Saraswati Vidya Mandir | the sampled child has no report card to read |
 | cards-api | Sunrise Public School | the sampled child has no report card to read |
 | cards-api | ZZ Northgate School | the sampled child has no report card to read |
-| board-api | Saraswati Vidya Mandir | 2026-09-24: 1 away, 5 lessons, 1 covered |
-| board-api | Sunrise Public School | 2026-09-24: 1 away, 5 lessons, 1 covered |
-| board-api | ZZ Northgate School | 2026-09-24: 1 away, 6 lessons, 1 covered |
+| board-api | Saraswati Vidya Mandir | 2026-09-28: 0 away, 0 lessons, 0 covered |
+| board-api | Sunrise Public School | 2026-09-28: 0 away, 0 lessons, 0 covered |
+| board-api | ZZ Northgate School | 2026-09-28: 0 away, 0 lessons, 0 covered |
 | overview-api | Saraswati Vidya Mandir | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Sunrise Public School | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |
 | population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide, ScheduledDeparture |
-| population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeStructure.archivedAt, Grade.letter, Grade.comment, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, JobPosting.closedAt, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.decisionReason, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCardItem.comment, StaffRecord.qualification, TimetablePeriod.archivedAt |
+| population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeStructure.archivedAt, Grade.letter, Grade.comment, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, JobPosting.closedAt, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, StaffRecord.qualification, TimetablePeriod.archivedAt |

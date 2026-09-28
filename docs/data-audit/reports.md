@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-09-24T15:45:32.327Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 71 INFO
+Run: 2026-09-28T01:43:00.860Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 71 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -128,26 +128,26 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-teachers | ZZ Northgate School | ZZ TANMAY GODSE goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ NASREEN MIRZA goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ PRAKASH SALUNKHE goes out with blank 3.2.8(a) |
-| udise-teachers | ZZ Northgate School | ZZ KIRAN VAIDYA goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ DEEPAK AHER goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
-| board-sheets | Saraswati Vidya Mandir | GAYATRI THAKARE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | HARSHAD GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | KALYANI SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | MANDAR BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| udise-teachers | ZZ Northgate School | ZZ KIRAN VAIDYA goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
 | board-sheets | Saraswati Vidya Mandir | NUPUR AHIRE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | KALYANI SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | HARSHAD GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | GAYATRI THAKARE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | MANDAR BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | PRATHAMESH NIKAM has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | YASHVI BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | AARNA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | DARSH DESHPANDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | IRA JADHAV has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | KRISH SHARMA has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | DARSH DESHPANDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | AARNA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ TARUN BHATT has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ URVASHI CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | report-card-items | ZZ Northgate School | 1 paper(s) on cards differ from the marks as they stand now — a published card is frozen; a draft regenerates when opened |
 | leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 229/247 |
 | leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 229/247 |
