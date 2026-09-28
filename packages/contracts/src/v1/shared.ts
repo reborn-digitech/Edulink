@@ -73,6 +73,8 @@ export const bulletinFeedSchema = z.object({
   schools: z.array(z.object({ id: z.string(), name: z.string() })),
   filter: z.enum(["pending", "mine"]).nullable(),
   pendingCount: count,
+  /** Comments held at this school that the reader may approve or remove; 0 for anybody who reviews nothing. */
+  heldCommentCount: count,
   items: z.array(bulletinFeedPostSchema),
   nextCursor: z.string().nullable(),
 });
@@ -105,6 +107,8 @@ export const bulletinCommentSchema = z.object({
   parentCommentId: z.string().nullable(),
   createdAt: iso,
   mine: z.boolean(),
+  /** True on a held comment the reader may approve or remove. */
+  canReview: z.boolean(),
   author: z.object({ id: z.string(), name: z.string(), avatarKey: z.string().nullable(), membershipId: z.string().nullable() }),
 });
 
@@ -147,7 +151,7 @@ export const bulletinPostDetailSchema = z.object({
   }),
   reactions: z.record(count),
   myReactions: z.array(z.string()),
-  /** A child's comment is held for review inside a school; not on a global post. */
+  /** A child's comment is held for review inside a school; on a global post everybody's is. */
   commentsWillBeHeld: z.boolean(),
   comments: z.array(bulletinCommentSchema),
   /** The delivery checklist, class by class — staff only, else empty. */
@@ -186,6 +190,29 @@ export const bulletinReviewBodySchema = z.object({
   decision: z.enum(["APPROVE", "REJECT"]),
   reason: z.string().trim().max(500).optional(),
 });
+
+/** GET /api/v1/shared/bulletin/comments/held — the comments waiting on the reader, oldest first. */
+export const bulletinHeldCommentSchema = z.object({
+  id: z.string(),
+  postId: z.string(),
+  postTitle: z.string(),
+  /** On the cross-school feed: held here because its author is one of this school's people. */
+  shared: z.boolean(),
+  className: z.string().nullable(),
+  reply: z.boolean(),
+  body: z.string(),
+  createdAt: iso,
+  authorName: z.string(),
+});
+export const bulletinHeldCommentsSchema = z.object({ items: z.array(bulletinHeldCommentSchema) });
+export type BulletinHeldComment = z.infer<typeof bulletinHeldCommentSchema>;
+
+/** POST /api/v1/shared/bulletin/comments/{commentId}/review — staff approve or remove a held comment; removing needs a reason the author is told. */
+export const bulletinCommentReviewBodySchema = z.object({
+  decision: z.enum(["APPROVE", "REMOVE"]),
+  reason: z.string().trim().max(500).optional(),
+});
+export type BulletinCommentReviewBody = z.infer<typeof bulletinCommentReviewBodySchema>;
 
 /** POST /api/v1/shared/bulletin/{postId}/hide — an admin hides a global post from their school, or unhides it. */
 export const bulletinHideBodySchema = z.object({ hidden: z.boolean(), reason: z.string().trim().max(500).optional() });

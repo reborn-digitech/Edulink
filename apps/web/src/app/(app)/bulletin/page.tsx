@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MegaphoneIcon, PlusIcon, GlobeIcon} from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
-import { listFeed, pendingCount, parentBulletinSchools, pendingByAuthor } from "@/lib/bulletin";
+import { heldComments, listFeed, pendingCount, parentBulletinSchools, pendingByAuthor } from "@/lib/bulletin";
+import { HeldComments } from "./held-comments";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
@@ -67,7 +68,7 @@ export default async function BulletinPage({
   const showPending = filter === "pending" && isStaff;
   const showMine = filter === "mine";
 
-  const [posts, queue, school] = await Promise.all([
+  const [posts, queue, held, school] = await Promise.all([
     listFeed(session, {
       tag,
       status: showPending ? ("PENDING" as PostStatus) : undefined,
@@ -77,6 +78,8 @@ export default async function BulletinPage({
       q,
     }),
     pendingCount(session),
+    // Read for the count on the tab whichever tab is open; listed only on "To review".
+    heldComments(session),
     db.school.findUniqueOrThrow({
       where: { id: activeSchoolId },
       select: { name: true },
@@ -86,7 +89,7 @@ export default async function BulletinPage({
   const tabs = [
     { id: "", label: t("bulletin.tabEverything") },
     ...(isStaff
-      ? [{ id: "pending", label: t("bulletin.tabToReview") + (queue > 0 ? ` (${queue})` : "") }]
+      ? [{ id: "pending", label: t("bulletin.tabToReview") + (queue + held.length > 0 ? ` (${queue + held.length})` : "") }]
       : []),
     { id: "mine", label: session.role === "STUDENT" ? t("bulletin.tabMyPosts") : t("bulletin.tabMine") },
   ];
@@ -186,7 +189,9 @@ export default async function BulletinPage({
         <BulkReview authors={await pendingByAuthor(session)} />
       )}
 
-      {posts.length === 0 ? (
+      {showPending && <HeldComments comments={held} />}
+
+      {posts.length === 0 && showPending && held.length > 0 ? null : posts.length === 0 ? (
         <EmptyState
           icon={<MegaphoneIcon weight="duotone" className="size-8" />}
           title={

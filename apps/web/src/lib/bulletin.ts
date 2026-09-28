@@ -363,7 +363,8 @@ export async function listFeed(
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
-      _count: { select: { comments: true, acks: true } },
+      // What a reader will find on opening the post: held and removed comments are not counted, as on the cross-school feed.
+      _count: { select: { comments: { where: { status: "APPROVED" } }, acks: true } },
     },
     // Pinned first, then newest. Two keys so a pinned post does not need its
     // createdAt fudged to stay at the top.
@@ -455,10 +456,14 @@ export async function getPost(session: ActiveContext, postId: string) {
           // The review queue is the PUBLISHING school's: its staff see held
           // comments; staff of any other school reading a global post do not.
           // RLS enforces the same line, so this filter and the policy agree.
+          // A REMOVED comment is gone for every reader, its author and the
+          // staff who removed it included: "own" and "our school's" used to
+          // let it through, so a comment taken down stayed on the page
+          // looking like any other. The author was told why when it went.
           (session.role === "ADMIN" || session.role === "TEACHER") && session.schoolId
-            ? { OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }, { schoolId: session.schoolId }] }
+            ? { status: { not: "REMOVED" }, OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }, { schoolId: session.schoolId }] }
             : // Students and parents never see held comments other than their own.
-              { OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }] },
+              { status: { not: "REMOVED" }, OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }] },
         include: { author: { select: { id: true, name: true, preferredName: true, avatarKey: true } } },
         orderBy: { createdAt: "asc" },
       },
@@ -491,7 +496,17 @@ export async function getPost(session: ActiveContext, postId: string) {
   // schoolId with the post's, as the page and the phone once did, left the
   // people a circular is for without the button.
   const canAck = post.requiresAck && post.status === "APPROVED" && post.schoolId !== null && session.schoolId === post.schoolId;
-  return { ...post, membershipByUser, canAck };
+  // Which held comments THIS reader may decide — the same rule moderateComment
+  // applies, worked out once here so the page and the phone draw the buttons
+  // only where pressing one would be accepted.
+  const teachesPostClass = post.scope === "CLASS" && post.classId !== null && post.schoolId === session.schoolId && classIds.includes(post.classId);
+  const reviewableCommentIds = new Set(
+    post.comments
+      .filter((c) => c.status === "PENDING" && session.schoolId !== null && c.schoolId === session.schoolId)
+      .filter(() => session.role === "ADMIN" || (session.role === "TEACHER" && teachesPostClass))
+      .map((c) => c.id),
+  );
+  return { ...post, membershipByUser, canAck, reviewableCommentIds };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -804,6 +819,193 @@ export async function moderateAuthorPending(
     decided++;
   }
   return { decided };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Held comments                                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The comments waiting on this reviewer, as a WHERE.
+ *
+ * A comment is held in two cases (addComment owns the rule): a pupil's, on a
+ * post inside their school; and anybody's, on a GLOBAL post. Either way the
+ * row carries the school whose staff review it in `schoolId` — the post's
+ * school for the first, the AUTHOR'S OWN school for the second — so the queue
+ * is one predicate on the comment, and a school never reviews another
+ * school's people.
+ *
+ * Who may decide mirrors `moderatePost`: an admin decides anything held at
+ * their school; a teacher decides comments on the CLASS posts of classes
+ * they teach, and nothing school-wide or global.
+ */
+async function heldCommentsWhere(session: ActiveContext): Promise<Prisma.CommentWhereInput | null> {
+  const { schoolId, membershipId, role } = session;
+  if (!schoolId || !membershipId) return null;
+  if (role === "ADMIN") return { schoolId, status: "PENDING" };
+  if (role === "TEACHER") {
+    const classIds = await classIdsFor(session);
+    if (classIds.length === 0) return null;
+    return { schoolId, status: "PENDING", post: { schoolId, scope: "CLASS", classId: { in: classIds } } };
+  }
+  return null;
+}
+
+/** How many comments are waiting on this person specifically. */
+export async function heldCommentCount(session: ActiveContext): Promise<number> {
+  const where = await heldCommentsWhere(session);
+  return where ? db.comment.count({ where }) : 0;
+}
+
+export type HeldComment = {
+  id: string;
+  postId: string;
+  postTitle: string;
+  /** On the cross-school feed: held here because its author is one of ours. */
+  shared: boolean;
+  className: string | null;
+  reply: boolean;
+  body: string;
+  createdAt: Date;
+  authorName: string;
+};
+
+/** The comments waiting on this person, oldest first — the one who has waited longest is read first. At most a hundred. */
+export async function heldComments(session: ActiveContext): Promise<HeldComment[]> {
+  const where = await heldCommentsWhere(session);
+  if (!where) return [];
+  const rows = await db.comment.findMany({
+    where,
+    orderBy: { createdAt: "asc" },
+    take: 100,
+    select: {
+      id: true,
+      postId: true,
+      body: true,
+      createdAt: true,
+      parentCommentId: true,
+      author: { select: { name: true, preferredName: true } },
+      post: { select: { title: true, scope: true, class: { select: { name: true } } } },
+    },
+  });
+  return rows.map((row) => ({
+    id: row.id,
+    postId: row.postId,
+    postTitle: row.post.title,
+    shared: row.post.scope === "GLOBAL",
+    className: row.post.class?.name ?? null,
+    reply: row.parentCommentId !== null,
+    body: row.body,
+    createdAt: row.createdAt,
+    authorName: row.author.preferredName ?? row.author.name,
+  }));
+}
+
+/**
+ * Approve or remove a held comment.
+ *
+ * THE MISSING HALF. Holding was built (a pupil's comment, and since the
+ * security assessment every comment on the cross-school feed) and releasing
+ * was not: a held comment stayed held until somebody removed it, so the hold
+ * was in practice a deletion with a delay.
+ *
+ * APPROVING DOES WHAT POSTING WOULD HAVE DONE. `addComment` tells the person
+ * replied to, or the post's author, only when the comment goes live at once;
+ * for a held one that moment is now, so the same two notifications are sent
+ * here, under the same safeguard: nothing about a stranger's reply reaches a
+ * child across schools. They are best-effort for the reason given there — a
+ * notification lives in its recipient's tenant, which a reviewer from another
+ * school cannot write into. The author is told their comment is live.
+ *
+ * REMOVING NEEDS A REASON, and the author is told it, as `removeContent`
+ * does. The reason stays out of the audit row: free text about a child does
+ * not belong in a log kept for two years (decision 0002).
+ *
+ * AN ADMIN MAY DECIDE THEIR OWN COMMENT on the cross-school feed. It is held
+ * like anybody's, and they are the school's reviewer; an admin may already
+ * publish a whole post to that feed unreviewed, and a school with one admin
+ * would otherwise never be heard there.
+ *
+ * The status write is conditional on PENDING, so two reviewers pressing at
+ * once decide it once: the second is told it has already been reviewed.
+ */
+export async function moderateComment(
+  session: ActiveContext,
+  commentId: string,
+  decision: "APPROVE" | "REMOVE",
+  reason?: string,
+): Promise<void> {
+  const { schoolId, membershipId, role, user } = session;
+  if (!schoolId || !membershipId || (role !== "TEACHER" && role !== "ADMIN")) {
+    throw new AccessError("access.youCannotReviewComments");
+  }
+
+  const comment = await db.comment.findFirst({
+    where: { id: commentId, schoolId },
+    select: {
+      id: true,
+      status: true,
+      authorUserId: true,
+      postId: true,
+      parentCommentId: true,
+      post: { select: { title: true, scope: true, classId: true, schoolId: true, authorUserId: true } },
+      parent: { select: { authorUserId: true, schoolId: true, author: { select: { isMinor: true } } } },
+    },
+  });
+  if (!comment) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+
+  if (role === "TEACHER") {
+    if (comment.post.scope !== "CLASS" || !comment.post.classId || comment.post.schoolId !== schoolId) {
+      throw new AccessError("access.onlyAnAdminCanReviewThisComment");
+    }
+    const teaches = await db.classTeacher.findFirst({
+      where: { classId: comment.post.classId, teacherMembershipId: membershipId },
+      select: { id: true },
+    });
+    if (!teaches) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+  }
+
+  if (comment.status !== "PENDING") throw new AccessError("access.thatCommentHasAlreadyBeenReviewed");
+  const note = reason?.trim() ?? "";
+  if (decision === "REMOVE" && !note) throw new AccessError("access.writeANoteSoTheAuthorKnows");
+
+  const decided = await db.comment.updateMany({
+    where: { id: comment.id, schoolId, status: "PENDING" },
+    data: { status: decision === "APPROVE" ? "APPROVED" : "REMOVED" },
+  });
+  if (decided.count === 0) throw new AccessError("access.thatCommentHasAlreadyBeenReviewed");
+
+  const url = `/bulletin/${comment.postId}`;
+  const tell = (input: Parameters<typeof notify>[0]) => notify(input).catch(() => undefined);
+
+  if (decision === "REMOVE") {
+    if (comment.authorUserId !== user.id) {
+      await tell({ userId: comment.authorUserId, schoolId, kind: "POST", titleKey: "notifTitle.commentRemoved", body: note, url });
+    }
+  } else {
+    const told = new Set<string>([user.id]);
+    if (!told.has(comment.authorUserId)) {
+      told.add(comment.authorUserId);
+      await tell({ userId: comment.authorUserId, schoolId, kind: "POST", titleKey: "bulletin.notifCommentLive", body: comment.post.title, url });
+    }
+    const crossSchoolToMinor = Boolean(comment.parent?.author.isMinor) && comment.parent?.schoolId !== schoolId;
+    if (comment.parent && !told.has(comment.parent.authorUserId) && !crossSchoolToMinor) {
+      told.add(comment.parent.authorUserId);
+      await tell({ userId: comment.parent.authorUserId, schoolId: comment.post.schoolId, kind: "POST", titleKey: "bulletin.notifNewReply", body: comment.post.title, url });
+    }
+    if (!comment.parentCommentId && !told.has(comment.post.authorUserId)) {
+      await tell({ userId: comment.post.authorUserId, schoolId: comment.post.schoolId, kind: "POST", titleKey: "bulletin.notifNewComment", body: comment.post.title, url });
+    }
+  }
+
+  await audit({
+    schoolId,
+    actorUserId: user.id,
+    action: decision === "APPROVE" ? "comment.approve" : "comment.remove",
+    targetType: "Comment",
+    targetId: comment.id,
+    meta: { postId: comment.postId, shared: comment.post.scope === "GLOBAL" },
+  });
 }
 
 /** Pin / unpin. Admin-only: pinning is a whole-school editorial decision. */

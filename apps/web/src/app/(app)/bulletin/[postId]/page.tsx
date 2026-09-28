@@ -15,6 +15,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
+import { CommentReview } from "../comment-review";
 import { ReplyToggle } from "./reply-toggle";
 import { ReactionRow } from "../reactions";
 import { PostMedia } from "../media";
@@ -62,9 +63,9 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
     if (reaction.userId === session.user.id) myReactions.push(reaction.kind);
   }
 
-  // A child's comment is held for review inside a school; on a GLOBAL post it
-  // is not — see addComment, which owns this rule. The flag only shapes the
-  // hint text, so it must tell the same truth.
+  // A child's comment is held for review inside a school; on a GLOBAL post
+  // everybody's is — see addComment, which owns this rule. The flag only
+  // shapes the hint text, so it must tell the same truth.
   const willBeHeld = session.role === "STUDENT" || post.scope === "GLOBAL";
 
   // The reach report, for the people who chase it up: the office, the head
@@ -259,6 +260,11 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                         <ClockIcon weight="fill" className="size-3.5" />
                         {mine ? t("bulletin.checkingBeforeOthers") : t("bulletin.awaitingReview")}
                       </p>
+                    )}
+                    {/* Only where pressing would be accepted: the lib works out
+                        which held comments this reader may decide. */}
+                    {held && post.reviewableCommentIds.has(entry.id) && (
+                      <CommentReview commentId={entry.id} postId={post.id} authorName={entry.author.preferredName ?? entry.author.name} />
                     )}
                     {/* Replying to a reply answers the same thread — the lib
                         re-points it at the top comment either way. */}

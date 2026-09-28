@@ -14,6 +14,7 @@ import { useRole, useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { AUDIENCE, CATEGORY, Media, Reactions, Tags } from "./bulletin";
 import { Confirm, Note, param, Pill, relativeTime, useAuthHeaders } from "./shared";
+import { CommentReview } from "./comment-review";
 
 type Detail = z.infer<typeof bulletinPostDetailSchema>;
 type Comment = Detail["comments"][number];
@@ -325,6 +326,7 @@ function CommentView({ comment, reply, canReply, onReply }: { comment: Comment; 
             {comment.mine ? t("bulletin.checkingBeforeOthers") : t("bulletin.awaitingReview")}
           </Text>
         ) : null}
+        {held && comment.canReview ? <CommentReview commentId={comment.id} authorName={comment.author.name} /> : null}
         {canReply && !held ? (
           <View style={{ alignSelf: "flex-start" }}>
             <Button label={t("bulletin.reply")} variant="ghost" accessibilityLabel={`${t("bulletin.reply")}: ${comment.author.name}`} onPress={() => onReply({ id: comment.parentCommentId ?? comment.id, name: comment.author.name })} />

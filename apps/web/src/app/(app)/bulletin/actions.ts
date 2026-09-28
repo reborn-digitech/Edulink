@@ -10,6 +10,7 @@ import {
   createPost,
   moderatePost,
   moderateAuthorPending,
+  moderateComment,
   reportContent,
   toggleReaction,
   togglePin,
@@ -154,6 +155,30 @@ export async function review(
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[review]", error);
+    return { ok: false, error: (await getT())("common.somethingWrong") };
+  }
+}
+
+/** Approve or remove a held comment — see comment-review.tsx; who may is the lib's rule. */
+export async function reviewComment(
+  commentId: string,
+  postId: string,
+  decision: "APPROVE" | "REMOVE",
+  reason?: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+  if (decision !== "APPROVE" && decision !== "REMOVE") return { ok: false, error: (await getT())("common.somethingWrong") };
+
+  try {
+    await moderateComment(session, commentId, decision, reason?.slice(0, 500));
+    revalidatePath("/bulletin");
+    revalidatePath(`/bulletin/${postId}`);
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[review-comment]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

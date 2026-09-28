@@ -20,6 +20,9 @@ import { POST as reactPost } from "@/app/api/v1/shared/bulletin/[postId]/react/r
 import { POST as commentPost } from "@/app/api/v1/shared/bulletin/[postId]/comments/route";
 import { POST as reviewPost } from "@/app/api/v1/shared/bulletin/[postId]/review/route";
 import { POST as hidePost } from "@/app/api/v1/shared/bulletin/[postId]/hide/route";
+import { GET as heldGet } from "@/app/api/v1/shared/bulletin/comments/held/route";
+import { POST as commentReviewPost } from "@/app/api/v1/shared/bulletin/comments/[commentId]/review/route";
+import { bulletinFeedSchema, bulletinHeldCommentsSchema, bulletinPostDetailSchema } from "@edulink/contracts";
 import { GET as inboxGet } from "@/app/api/v1/shared/inbox/route";
 import { POST as conversationsPost } from "@/app/api/v1/shared/conversations/route";
 import { GET as conversationGet } from "@/app/api/v1/shared/conversations/[conversationId]/route";
@@ -249,6 +252,8 @@ describe("signed out", () => {
       globalGet(get("/api/v1/shared/bulletin/global")),
       postGet(get("/x"), p({ postId: approvedPostId })),
       reactPost(json("/x", { kind: "CLAP" }), p({ postId: approvedPostId })),
+      heldGet(),
+      commentReviewPost(json("/x", { decision: "APPROVE" }), p({ commentId: "nope" })),
       inboxGet(get("/api/v1/shared/inbox")),
       conversationsPost(json("/x", {})),
       peopleGet(get("/api/v1/shared/people")),
@@ -382,6 +387,54 @@ describe("bulletin", () => {
     expect(ok.status).toBe(200);
     expect((await reviewPost(json("/x", { decision: "REJECT", reason: "twice" }), p({ postId: pendingPostId }))).status).toBe(403);
     expect((await db.post.findUnique({ where: { id: pendingPostId }, select: { status: true } }))?.status).toBe("APPROVED");
+  });
+
+  it("a held comment: in the office's queue and on the post with its buttons, refused to a pupil and to a teacher of no such class, approved once by the admin", async () => {
+    const held = await db.comment.findFirstOrThrow({ where: { postId: approvedPostId, authorUserId: pupilUserId, status: "PENDING" }, select: { id: true } });
+    const review = (body: unknown, commentId = held.id) => commentReviewPost(json("/x", body), p({ commentId }));
+
+    await asPupil();
+    expect((await heldGet()).status).toBe(403);
+    expect((await review({ decision: "APPROVE" })).status).toBe(403);
+    // The pupil sees their own held comment, with no buttons.
+    const own = bulletinPostDetailSchema.parse(await (await postGet(get("/x"), p({ postId: approvedPostId }))).json());
+    expect(own.comments.find((c) => c.id === held.id)).toMatchObject({ status: "PENDING", mine: true, canReview: false });
+
+    await asTeacher();
+    // A school-wide post's comments are the office's: the teacher's queue is empty and the press is refused.
+    expect(bulletinHeldCommentsSchema.parse(await (await heldGet()).json()).items).toEqual([]);
+    expect((await review({ decision: "APPROVE" })).status).toBe(403);
+    expect(bulletinFeedSchema.parse(await (await bulletinGet(get("/api/v1/shared/bulletin"))).json()).heldCommentCount).toBe(0);
+
+    await asAdmin();
+    const queue = bulletinHeldCommentsSchema.parse(await (await heldGet()).json());
+    expect(queue.items.map((c) => c.id)).toContain(held.id);
+    expect(queue.items.find((c) => c.id === held.id)).toMatchObject({ postId: approvedPostId, body: "Can I come?", shared: false, reply: false });
+    expect(bulletinFeedSchema.parse(await (await bulletinGet(get("/api/v1/shared/bulletin"))).json()).heldCommentCount).toBe(queue.items.length);
+    const seen = bulletinPostDetailSchema.parse(await (await postGet(get("/x"), p({ postId: approvedPostId }))).json());
+    expect(seen.comments.find((c) => c.id === held.id)).toMatchObject({ status: "PENDING", canReview: true });
+
+    expect((await review({ decision: "MAYBE" })).status).toBe(422);
+    expect((await review({})).status).toBe(422);
+    const noReason = await review({ decision: "REMOVE" });
+    expect(noReason.status).toBe(403);
+    expect(await noReason.json()).toMatchObject({ error: "Write a note so the author knows what happened." });
+    expect((await review({ decision: "APPROVE" }, "clzznope00000000000000000")).status).toBe(404);
+
+    const ok = await review({ decision: "APPROVE" });
+    expect(ok.status).toBe(200);
+    expect(await ok.json()).toEqual({ ok: true });
+    expect((await db.comment.findUniqueOrThrow({ where: { id: held.id }, select: { status: true } })).status).toBe("APPROVED");
+    const twice = await review({ decision: "REMOVE", reason: "too late" });
+    expect(twice.status).toBe(403);
+    expect(await twice.json()).toMatchObject({ error: "That comment has already been reviewed" });
+
+    // Another school's office cannot reach it, held or not.
+    await db.comment.update({ where: { id: held.id }, data: { status: "PENDING" } });
+    await asOtherAdmin();
+    expect((await review({ decision: "APPROVE" })).status).toBe(404);
+    expect(bulletinHeldCommentsSchema.parse(await (await heldGet()).json()).items.map((c) => c.id)).not.toContain(held.id);
+    await db.comment.update({ where: { id: held.id }, data: { status: "APPROVED" } });
   });
 
   it("hiding a global post is the admin's lever only", async () => {

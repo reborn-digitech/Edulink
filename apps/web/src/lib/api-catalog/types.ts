@@ -56,6 +56,8 @@ export type SweepFixture = {
   examSlotId: string | null;
   assignmentId: string | null;
   postId: string | null;
+  /** A comment held for review at the school; the sweep sends no decision, so it stays held. */
+  heldCommentId: string | null;
   conversationId: string | null;
   remarkThreadId: string | null;
   competitionId: string | null;

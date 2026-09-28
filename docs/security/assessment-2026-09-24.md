@@ -160,6 +160,9 @@ storage and clearing everything on sign-out.
   (nothing in the app creates or lists a PENDING membership today, so joins stay ACTIVE behind the longer
   code and the per-account limit).
 - An approve action for held comments, which the moderation queue lacks.
+  **Built 2026-09-28:** `moderateComment` releases or removes a held comment at the school that holds it,
+  audited as `comment.approve` or `comment.remove` with no free text in the row; approving sends the
+  notifications posting would have sent, and still none to a child about a reply from another school.
 - The student code off printed papers, or rotated when a pupil leaves.
 - New self-registered schools behind operator approval before identity-linking features open to them.
   **Built 2026-09-28:** the operator gives and withdraws `School.verifiedAt` from `/root` and from the phone,

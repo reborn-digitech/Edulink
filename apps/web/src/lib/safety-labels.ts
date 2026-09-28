@@ -184,6 +184,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "post.submit": "audit.postSubmit",
   "post.approve": "audit.postApprove",
   "post.reject": "audit.postReject",
+  "comment.approve": "audit.commentApprove",
+  "comment.remove": "audit.commentRemove",
   "post.pin": "audit.postPin",
   "post.unpin": "audit.postUnpin",
   "content.report": "audit.contentReport",

@@ -13,6 +13,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { Chips, Note, Pill, relativeTime, useAuthHeaders } from "./shared";
+import { HeldComments } from "./comment-review";
 
 type Feed = z.infer<typeof bulletinFeedSchema>;
 type Post = Feed["items"][number];
@@ -116,6 +117,7 @@ export function FamilyBulletin() {
       {error ? <Failed message={error} /> : null}
       {active.isPending ? <Loading /> : null}
       {active.isError ? <Failed message={active.error.message} onRetry={() => void active.refetch()} /> : null}
+      {scope === "school" && first && first.schoolId !== null ? <HeldComments count={first.heldCommentCount} onOpen={open} /> : null}
       {scope === "school" && first ? (
         first.schoolId === null ? (
           <Empty

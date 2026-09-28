@@ -38,8 +38,8 @@ const DETAIL = bulletinPostDetailSchema.parse({
   myReactions: [],
   commentsWillBeHeld: false,
   comments: [
-    { id: "c1", body: "ZZ Well done all", status: "APPROVED", parentCommentId: null, createdAt: AT, mine: false, author: { id: "u-p", name: "ZZ Parent", avatarKey: null, membershipId: null } },
-    { id: "c2", body: "ZZ Thank you", status: "APPROVED", parentCommentId: "c1", createdAt: AT, mine: false, author: { id: "u-t", name: "ZZ Teacher", avatarKey: "preset:fox-sunset", membershipId: "m-t" } },
+    { id: "c1", body: "ZZ Well done all", status: "APPROVED", parentCommentId: null, createdAt: AT, mine: false, canReview: false, author: { id: "u-p", name: "ZZ Parent", avatarKey: null, membershipId: null } },
+    { id: "c2", body: "ZZ Thank you", status: "APPROVED", parentCommentId: "c1", createdAt: AT, mine: false, canReview: false, author: { id: "u-t", name: "ZZ Teacher", avatarKey: "preset:fox-sunset", membershipId: "m-t" } },
   ],
   ackReport: [],
 });
@@ -108,6 +108,34 @@ describe("a post", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Send back" }));
     expect(await screen.findByText("Sent back with your note")).toBeTruthy();
     expect(calls().filter((c) => c.line === `POST ${PATH}/review`).map((c) => c.body)).toEqual([{ decision: "APPROVE" }, { decision: "REJECT", reason: "ZZ Please add a title" }]);
+  });
+
+  it("a held comment the reader may decide carries its two buttons; one they may not carries none", async () => {
+    const held = (canReview: boolean) => ({
+      ...DETAIL,
+      comments: [{ id: "c9", body: "ZZ Can I come?", status: "PENDING", parentCommentId: null, createdAt: AT, mine: false, canReview, author: { id: "u-p", name: "ZZ Pupil", avatarKey: null, membershipId: null } }],
+    });
+    const REVIEW = "POST /api/v1/shared/bulletin/comments/c9/review";
+    const first = await mount("ADMIN", { [`GET ${PATH}`]: () => json(held(true)), [REVIEW]: () => json({ ok: true }) });
+    expect(await screen.findByText("ZZ Can I come?")).toBeTruthy();
+    expect(screen.getByText("Awaiting review")).toBeTruthy();
+    // Held: no way to answer it yet.
+    expect(screen.queryByRole("button", { name: "Reply: ZZ Pupil" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Remove comment: ZZ Pupil" }));
+    expect(screen.getAllByRole("button", { name: "Remove comment: ZZ Pupil" }).at(-1)).toBeDisabled();
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Approve comment: ZZ Pupil" }));
+    expect(await screen.findByText("Comment approved")).toBeTruthy();
+    expect(first.calls().find((c) => c.line === REVIEW)?.body).toEqual({ decision: "APPROVE" });
+    // The post is read again, so the comment shows as the server now holds it.
+    await waitFor(() => expect(first.calls().filter((c) => c.line === `GET ${PATH}`).length).toBeGreaterThanOrEqual(2));
+  });
+
+  it("a teacher who may not decide a held comment sees it waiting, with no buttons", async () => {
+    await mount("TEACHER", { [`GET ${PATH}`]: () => json({ ...DETAIL, comments: [{ id: "c9", body: "ZZ Can I come?", status: "PENDING", parentCommentId: null, createdAt: AT, mine: false, canReview: false, author: { id: "u-p", name: "ZZ Pupil", avatarKey: null, membershipId: null } }] }) });
+    expect(await screen.findByText("ZZ Can I come?")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /^Approve comment/ })).toBeNull();
+    expect(screen.queryByRole("button", { name: /^Remove comment/ })).toBeNull();
   });
 
   it("an admin hides another school's shared post from their own school, after being asked", async () => {

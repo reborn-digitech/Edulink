@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react-native";
-import { bodyOf, calls, ID, ME_PARENT, ME_STUDENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
+import { bodyOf, calls, ID, ME_PARENT, ME_STUDENT, mockRouter, pending, refused, renderFamily, press, type } from "./family-helpers";
 import { FamilyBulletin } from "@/screens/family/bulletin";
+import { ToastProvider } from "@/components";
 
 jest.mock("expo-image", () => {
   const React = jest.requireActual("react");
@@ -35,7 +36,12 @@ const POST = {
   acked: false,
   ackCount: 0,
 };
-const page = (items: object[], nextCursor: string | null) => ({ schoolId: "s1", schoolName: "ZZ School", schools: [], filter: null, pendingCount: 0, items, nextCursor });
+const page = (items: object[], nextCursor: string | null, heldCommentCount = 0) => ({ schoolId: "s1", schoolName: "ZZ School", schools: [], filter: null, pendingCount: 0, heldCommentCount, items, nextCursor });
+const HELD = "/api/v1/shared/bulletin/comments/held";
+const HELD_ITEMS = [
+  { id: "h1", postId: ID.post, postTitle: "ZZ Sports day", shared: false, className: "ZZ Class A", reply: false, body: "ZZ Which day is it?", createdAt: "2026-09-08T10:00:00.000Z", authorName: "ZZ Pupil" },
+  { id: "h2", postId: "p9", postTitle: "ZZ Science fair", shared: true, className: null, reply: true, body: "ZZ Lovely work", createdAt: "2026-09-08T11:00:00.000Z", authorName: "ZZ Teacher" },
+];
 const PATH = "/api/v1/shared/bulletin";
 const REACT = `/api/v1/shared/bulletin/${ID.post}/react`;
 const GLOBAL = "/api/v1/shared/bulletin/global";
@@ -56,6 +62,13 @@ const GLOBAL_POST = {
   ours: false,
   hiddenHere: false,
 };
+
+/** The review's "approved" and "removed" are toasts, which need their provider. */
+const withToasts = (
+  <ToastProvider>
+    <FamilyBulletin />
+  </ToastProvider>
+);
 
 describe("the bulletin", () => {
   beforeEach(() => mockRouter.push.mockClear());
@@ -80,6 +93,48 @@ describe("the bulletin", () => {
     await renderFamily(<FamilyBulletin />, ME_PARENT, { [PATH]: () => ({ ...page([], null), schoolId: null, schoolName: null }) });
     await press(await screen.findByRole("button", { name: "Link another child" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/link-child");
+  });
+
+  it("comments waiting on the reader head the bulletin: approved in one press, removed only with a reason, and each opens its post", async () => {
+    const R1 = "/api/v1/shared/bulletin/comments/h1/review";
+    const R2 = "/api/v1/shared/bulletin/comments/h2/review";
+    const { fetch } = await renderFamily(withToasts, ME_STUDENT, { [PATH]: () => page([POST], null, 2), [HELD]: () => ({ items: HELD_ITEMS }), [R1]: () => ({ ok: true }), [R2]: () => ({ ok: true }) });
+    expect(await screen.findByText("Comments waiting (2)")).toBeTruthy();
+    expect(screen.getByText("ZZ Which day is it?")).toBeTruthy();
+    expect(screen.getByText("Shared feed")).toBeTruthy();
+    expect(screen.getByText("Reply")).toBeTruthy();
+    await press(screen.getByRole("button", { name: /^On: ZZ Science fair/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/post", params: { postId: "p9" } });
+
+    await press(screen.getByRole("button", { name: "Approve comment: ZZ Pupil" }));
+    await waitFor(() => expect(calls(fetch, R1).map(bodyOf)).toEqual([{ decision: "APPROVE" }]));
+    expect(await screen.findByText("Comment approved")).toBeTruthy();
+
+    await press(screen.getByRole("button", { name: "Remove comment: ZZ Teacher" }));
+    expect(screen.getAllByRole("button", { name: "Remove comment: ZZ Teacher" }).at(-1)).toBeDisabled();
+    expect(calls(fetch, R2)).toEqual([]);
+    await type(screen.getByLabelText("Why it is being removed"), "ZZ Not about the fair");
+    await press(screen.getAllByRole("button", { name: "Remove comment: ZZ Teacher" }).at(-1)!);
+    await waitFor(() => expect(calls(fetch, R2).map(bodyOf)).toEqual([{ decision: "REMOVE", reason: "ZZ Not about the fair" }]));
+    expect(await screen.findByText("Comment removed")).toBeTruthy();
+  });
+
+  it("with no comment waiting, the queue is not asked for and not shown", async () => {
+    const { fetch } = await renderFamily(withToasts, ME_STUDENT, { [PATH]: () => page([POST], null) });
+    await screen.findByText("ZZ Sports day");
+    expect(screen.queryByText(/^Comments waiting/)).toBeNull();
+    expect(calls(fetch, HELD)).toEqual([]);
+  });
+
+  it("a refused decision is an alert above the buttons, which stay", async () => {
+    await renderFamily(withToasts, ME_STUDENT, {
+      [PATH]: () => page([POST], null, 1),
+      [HELD]: () => ({ items: [HELD_ITEMS[0]] }),
+      "/api/v1/shared/bulletin/comments/h1/review": refused(403, "That comment has already been reviewed"),
+    });
+    await press(await screen.findByRole("button", { name: "Approve comment: ZZ Pupil" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("That comment has already been reviewed");
+    expect(screen.getByRole("button", { name: "Approve comment: ZZ Pupil" })).toBeTruthy();
   });
 
   it("is loading while the feed is on its way", async () => {

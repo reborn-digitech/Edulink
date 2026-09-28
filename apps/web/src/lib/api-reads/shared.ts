@@ -6,7 +6,7 @@ import { getT } from "@/lib/i18n/server";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { readJson, readJsonArray, type MediaItem } from "@/lib/json";
 import { NOTIFICATION_KINDS, POST_CATEGORIES, type NotificationKind, type PostCategory, type PostStatus, type Role } from "@/lib/constants";
-import { ackReport, getPost, listFeed, parentBulletinSchools, pendingCount, type AckGroup } from "@/lib/bulletin";
+import { ackReport, getPost, heldCommentCount, heldComments, listFeed, parentBulletinSchools, pendingCount, type AckGroup } from "@/lib/bulletin";
 import { listGlobalFeed } from "@/lib/global-feed";
 import { conversationSchools, listConversations, peopleToMessage } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
@@ -87,11 +87,11 @@ export async function readBulletinFeed(
   const activeSchoolId = ctx.schoolId ?? (parentSchools.find((s) => s.id === opts.school)?.id ?? parentSchools[0]?.id ?? null);
   const filter = opts.filter === "pending" || opts.filter === "mine" ? opts.filter : null;
   if (!activeSchoolId) {
-    return { schoolId: null, schoolName: null, schools: parentSchools, filter, pendingCount: 0, items: [], nextCursor: null };
+    return { schoolId: null, schoolName: null, schools: parentSchools, filter, pendingCount: 0, heldCommentCount: 0, items: [], nextCursor: null };
   }
   const isStaff = ctx.role === "ADMIN" || ctx.role === "TEACHER";
   const showPending = filter === "pending" && isStaff;
-  const [posts, queue, school] = await Promise.all([
+  const [posts, queue, held, school] = await Promise.all([
     listFeed(ctx, {
       tag: opts.tag,
       status: showPending ? ("PENDING" as PostStatus) : undefined,
@@ -101,6 +101,7 @@ export async function readBulletinFeed(
       q: opts.q,
     }),
     pendingCount(ctx),
+    heldCommentCount(ctx),
     db.school.findUniqueOrThrow({ where: { id: activeSchoolId }, select: { name: true } }),
   ]);
   const page = sliceAfter(posts, opts.cursor, opts.limit);
@@ -110,6 +111,7 @@ export async function readBulletinFeed(
     schools: parentSchools,
     filter,
     pendingCount: queue,
+    heldCommentCount: held,
     items: page.items.map((post) => ({ ...post, createdAt: iso(post.createdAt) })),
     nextCursor: page.nextCursor,
   };
@@ -135,6 +137,12 @@ export async function readGlobalFeed(
   const posts = await listGlobalFeed(ctx, { category: opts.category, q: opts.q, tag: opts.tag });
   const page = sliceAfter(posts, opts.cursor, opts.limit);
   return { items: page.items.map((post) => ({ ...post, createdAt: iso(post.createdAt) })), nextCursor: page.nextCursor };
+}
+
+/** The comments waiting on the reader — empty for anybody who reviews nothing. */
+export async function readHeldComments(ctx: ActiveContext) {
+  const rows = await heldComments(ctx);
+  return { items: rows.map((row) => ({ ...row, createdAt: iso(row.createdAt) })) };
 }
 
 export async function readPost(ctx: ActiveContext, postId: string) {
@@ -183,7 +191,8 @@ export async function readPost(ctx: ActiveContext, postId: string) {
     },
     reactions,
     myReactions,
-    commentsWillBeHeld: ctx.role === "STUDENT" && post.scope !== "GLOBAL",
+    // addComment owns the rule: a pupil's comment is held, and on the cross-school feed everybody's is.
+    commentsWillBeHeld: ctx.role === "STUDENT" || post.scope === "GLOBAL",
     comments: post.comments.map((entry) => ({
       id: entry.id,
       body: entry.body,
@@ -191,6 +200,7 @@ export async function readPost(ctx: ActiveContext, postId: string) {
       parentCommentId: entry.parentCommentId,
       createdAt: iso(entry.createdAt),
       mine: entry.authorUserId === ctx.user.id,
+      canReview: post.reviewableCommentIds.has(entry.id),
       author: {
         id: entry.author.id,
         name: entry.author.preferredName ?? entry.author.name,
