@@ -106,7 +106,10 @@ describe("templates", () => {
     expect(view.templates).toEqual([]);
     expect(view.presets).toHaveLength(15);
     expect(view.presets.map((p: { key: string }) => p.key)).toContain("NIRGAM-mr");
-    expect(view.placeholders).toHaveLength(38);
+    // Thirty-eight before the two codes left the list: a certificate carries no code that opens anything.
+    expect(view.placeholders).toHaveLength(36);
+    expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("pupil.studentCode");
+    expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("school.code");
     expect(view.placeholders.find((p: { key: string }) => p.key === "pupil.name").label).toBe("विद्यार्थ्याचे नाव");
     // The school writes Marathi: the sample pupil's date of birth is in Marathi words.
     expect(view.placeholders.find((p: { key: string }) => p.key === "pupil.dobWords").sample).toBe("दहा मार्च दोन हजार सोळा");

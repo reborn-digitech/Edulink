@@ -19,14 +19,21 @@ export const wordsFor = (locale: WordsLocale): Words => (key, vars) => translato
 export const CERTIFICATE_KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM"];
 
 export const PLACEHOLDER_KEYS = [
-  "pupil.name", "pupil.studentCode", "pupil.dob", "pupil.dobWords", "pupil.age",
+  "pupil.name", "pupil.dob", "pupil.dobWords", "pupil.age",
   "pupil.fatherName", "pupil.motherName", "pupil.parentage", "pupil.placeOfBirth", "pupil.nationality",
   "pupil.religion", "pupil.caste", "pupil.category", "pupil.motherTongue", "pupil.address",
   "pupil.admissionNumber", "pupil.admissionDate", "pupil.admittedToGrade", "pupil.previousSchool", "pupil.penNumber",
-  "class.name", "class.grade", "school.name", "school.address", "school.code", "year.name",
+  "class.name", "class.grade", "school.name", "school.address", "year.name",
   "record.leftOn", "record.leftOnWords", "record.reason", "record.conduct", "record.destination", "record.attendance", "record.lastClass",
   "issue.date", "issue.dateWords", "issue.serial", "issue.purpose", "issue.remark",
 ] as const;
+/**
+ * NOT IN THE LIST, ON PURPOSE: the pupil's student code and the school's join
+ * code. Each opens something — with the date of birth the first is what a
+ * guardian's claim asks for, and the second lets its holder join the school
+ * — and a certificate is a paper that changes hands. The school's register
+ * number (`pupil.admissionNumber`) is the number a certificate carries.
+ */
 export type PlaceholderKey = (typeof PLACEHOLDER_KEYS)[number];
 export type CertificateData = Partial<Record<PlaceholderKey, string | null>>;
 
@@ -190,7 +197,6 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
   const conductKey = facts.leaving?.conduct ? ({ EXCELLENT: "tc.conductExcellent", GOOD: "tc.conductGood", SATISFACTORY: "tc.conductSatisfactory" } as Record<string, string>)[facts.leaving.conduct] : null;
   return {
     "pupil.name": facts.name,
-    "pupil.studentCode": facts.studentCode,
     "pupil.dob": facts.birthdateKey ? dateInFigures(facts.birthdateKey) : null,
     "pupil.dobWords": facts.birthdateKey ? dateInWords(facts.birthdateKey, locale) : null,
     "pupil.age": facts.ageYears === null ? null : String(facts.ageYears),
@@ -214,7 +220,6 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
     "class.grade": facts.gradeLevel,
     "school.name": facts.school.name,
     "school.address": facts.school.address,
-    "school.code": facts.school.code,
     "year.name": facts.yearName,
     "record.leftOn": facts.leaving?.leftOnKey ? dateInFigures(facts.leaving.leftOnKey) : null,
     "record.leftOnWords": facts.leaving?.leftOnKey ? dateInWords(facts.leaving.leftOnKey, locale) : null,

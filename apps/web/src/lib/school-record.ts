@@ -611,7 +611,8 @@ export type CertificateView = {
   id: string;
   serial: string | null;
   /** `timezone` is the school's: the days the paper prints are the instants read in it. */
-  school: { name: string; addressLine: string | null; logoPath: string | null; code: string; timezone: string };
+  /** No join code: the document is handed across a counter, and that code lets its holder join the school. */
+  school: { name: string; addressLine: string | null; logoPath: string | null; timezone: string };
   studentName: string;
   /** The school's own admission register number; null where the school holds none. */
   admissionNumber: string | null;
@@ -678,7 +679,7 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
   // reader, so the widening is to exactly that school — the switcher's rule.
   const [school, issuer, student] = await forOwnSchools(ctx.user.id, [row.schoolId], async () => {
     return Promise.all([
-      db.school.findUnique({ where: { id: row.schoolId }, select: { name: true, addressLine: true, logoPath: true, code: true, timezone: true } }),
+      db.school.findUnique({ where: { id: row.schoolId }, select: { name: true, addressLine: true, logoPath: true, timezone: true } }),
       row.issuedByMembershipId
         ? db.membership.findUnique({ where: { id: row.issuedByMembershipId }, select: { user: { select: { name: true } } } })
         : Promise.resolve(null),
@@ -693,7 +694,6 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
       name: row.schoolName,
       addressLine: school?.addressLine ?? null,
       logoPath: school?.logoPath ?? null,
-      code: school?.code ?? "",
       timezone: school?.timezone ?? "UTC",
     },
     studentName: row.studentName ?? student?.name ?? "",

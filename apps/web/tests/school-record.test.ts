@@ -1,3 +1,4 @@
+import { PLACEHOLDER_KEYS } from "@/lib/certificate-rules";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
@@ -576,6 +577,13 @@ describe("the certificate as a document", () => {
     // The school's own register number is what the line carries; the student code is nowhere on the document.
     expect(tc!.admissionNumber).toBe((await db.pupilRecord.findUnique({ where: { studentMembershipId: pupilMembershipId }, select: { admissionNumber: true } }))?.admissionNumber ?? null);
     expect(JSON.stringify(tc)).not.toContain("studentCode");
+    // Nor the school's join code: whoever holds the paper could join the school with it.
+    const joinCode = (await db.school.findUniqueOrThrow({ where: { id: admin.schoolId! }, select: { code: true } })).code;
+    expect(JSON.stringify(tc)).not.toContain(joinCode);
+    expect(Object.keys(tc!.school).sort()).toEqual(["addressLine", "logoPath", "name", "timezone"]);
+    // And a template cannot put either on a certificate it issues.
+    expect(PLACEHOLDER_KEYS).not.toContain("pupil.studentCode");
+    expect(PLACEHOLDER_KEYS).not.toContain("school.code");
     const held = (await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode;
     if (held) expect(JSON.stringify(tc)).not.toContain(held);
     expect(tc!.className).toBeTruthy();

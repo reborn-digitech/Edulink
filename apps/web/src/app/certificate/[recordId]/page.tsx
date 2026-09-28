@@ -126,7 +126,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
           </div>
         </div>
 
-        <p className="mt-8 text-[0.7rem] leading-relaxed text-[#666]">{t("tc.footer", { code: tc.school.code, serial: tc.serial ?? dash })}</p>
+        <p className="mt-8 text-[0.7rem] leading-relaxed text-[#666]">{t("tc.footer", { school: tc.school.name, serial: tc.serial ?? dash })}</p>
       </article>
     </div>
   );
