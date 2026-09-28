@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import withSerwistInit from "@serwist/next";
 import path from "node:path";
+import { contentSecurityPolicy } from "./src/lib/csp";
 
 // Serwist compiles src/sw.ts -> public/sw.js at build time.
 // Disabled in dev: a live service worker caching HMR chunks makes every
@@ -20,41 +21,20 @@ const withSerwist = withSerwistInit({
 const isDev = process.env.NODE_ENV === "development";
 
 /**
- * The Content Security Policy, one string.
- *
- * WHAT IT DOES AND DOES NOT PROMISE. Scripts allow 'unsafe-inline' because the
- * theme script in <head> is inline by design (it must run before first paint,
- * and Next's own hydration scripts are inline too); a nonce-per-request policy
- * needs middleware on every route and is Phase 1's follow-up, not its first
- * step. What this policy does close, today: any script, style, font, image or
- * fetch to a host that is not this one; framing by any other site; forms
- * posting anywhere but here; plugins. The app serves every asset itself — no
- * font host, no CDN, no analytics — so 'self' is the honest allow-list, with
- * one named exception: the gateway checkout, below.
- *
- * Dev needs 'unsafe-eval' and a websocket for Turbopack's HMR; production gets
- * neither.
+ * The policy for everything that is NOT a page — the API, files, static
+ * assets — where no inline script runs at all. A page's policy carries a
+ * nonce minted per response, so it is written by the middleware, which
+ * replaces this header on the documents it serves. See src/lib/csp.ts.
  */
-const csp = [
-  "default-src 'self'",
-  // checkout.razorpay.com is the ONE outside script: the school's own gateway's
-  // checkout, loaded by the family's fees page when a school has entered its
-  // keys, and by nothing else. Its frame and its calls come from the razorpay
-  // hosts below; the money goes to the school (docs/decisions/0003).
-  `script-src 'self' 'unsafe-inline' https://checkout.razorpay.com${isDev ? " 'unsafe-eval'" : ""}`,
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
-  "media-src 'self' blob:",
-  "font-src 'self' data:",
-  `connect-src 'self' https://api.razorpay.com https://checkout.razorpay.com https://lumberjack.razorpay.com${isDev ? " ws: wss:" : ""}`,
-  "frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com",
-  "worker-src 'self'",
-  "manifest-src 'self'",
-  "frame-ancestors 'none'",
-  "form-action 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-].join("; ");
+const csp = contentSecurityPolicy({ dev: isDev });
+
+/**
+ * HSTS: two years, subdomains included. The preload flag is a promise about
+ * every subdomain of the domain, kept by browsers for months after it is
+ * withdrawn, so it is the operator's to make: HSTS_PRELOAD=1 adds it, once
+ * the production domain is fixed and everything under it is on HTTPS.
+ */
+const hsts = `max-age=63072000; includeSubDomains${process.env.HSTS_PRELOAD === "1" ? "; preload" : ""}`;
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -76,9 +56,7 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: [
           { key: "Content-Security-Policy", value: csp },
-          // Two years, subdomains included; the preload flag is left off until
-          // the domain has been on HTTPS long enough to be sure.
-          ...(isDev ? [] : [{ key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" }]),
+          ...(isDev ? [] : [{ key: "Strict-Transport-Security", value: hsts }]),
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "X-Frame-Options", value: "DENY" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },

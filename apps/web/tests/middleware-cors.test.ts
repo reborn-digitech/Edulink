@@ -28,7 +28,12 @@ describe("CORS on /api/v1", () => {
 
   it("covers the API and the files it names, and nothing else under /api", () => {
     // A picture in a post is fetched with the bearer token, so the browser asks first: the same answer, the same list of origins.
-    expect(config.matcher).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+    // The first entry is every page, for its nonce (tests/csp.test.ts); the rest are the doors CORS answers at.
+    expect(config.matcher.slice(1)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+    // An API path outside those doors passes through with nothing added, whoever asks.
+    const other = middleware(new NextRequest("http://localhost:3000/api/push", { method: "OPTIONS", headers: { origin: "http://localhost:8081" } }));
+    expect(other.status).toBe(200);
+    expect(other.headers.get("access-control-allow-origin")).toBeNull();
     const file = (method: string, origin: string) => new NextRequest("http://localhost:3000/api/files/abc.png?w=640", { method, headers: { origin } });
     expect(middleware(file("OPTIONS", "http://localhost:8081")).status).toBe(204);
     expect(middleware(file("OPTIONS", "https://evil.example")).status).toBe(403);

@@ -369,7 +369,15 @@ export const MAGIC_LINK_TTL_MINUTES = 20;
 export const INVITE_TTL_DAYS = 14;
 export const EMAIL_VERIFY_TTL_HOURS = 48;
 
-export const SESSION_COOKIE = "edulink_session";
+/**
+ * `__Host-` IN PRODUCTION. A browser accepts a cookie with that prefix only
+ * over HTTPS, only with Path=/, and only with no Domain — so it cannot be
+ * set by, or sent to, any other host under the same domain, and a page on a
+ * subdomain cannot plant a session on this one. The prefix needs Secure,
+ * which a development server on http cannot always give, so development
+ * keeps the plain name.
+ */
+export const SESSION_COOKIE = process.env.NODE_ENV === "production" ? "__Host-edulink_session" : "edulink_session";
 
 /** Age below which parental consent gates apply. (§6 COPPA / GDPR-K) */
 export const CONSENT_AGE = 13;

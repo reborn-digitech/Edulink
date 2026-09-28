@@ -9,9 +9,14 @@ styles, images (`data:` and `blob:` for uploads and the lightbox), media,
 fonts, fetches, workers and the manifest all from this origin only;
 `frame-ancestors 'none'`; `form-action 'self'`; `base-uri 'self'`;
 `object-src 'none'`. The app serves every asset itself, so the allow-list is
-one word. Scripts keep `'unsafe-inline'` because the theme script must run
-before first paint; the nonce-per-request policy is the next step and needs
-middleware on every route. HSTS two years with subdomains in production.
+one word. Since 2026-09-29 a page's scripts run by nonce: the middleware mints
+one per response (`src/lib/csp.ts`, `src/middleware.ts`), Next puts it on every
+script it writes and the layout on the theme script, and the policy carries
+`'nonce-…' 'strict-dynamic'` with no `'unsafe-inline'`. Everything that is not a
+page gets the policy with no nonce, in which no inline script runs. Styles keep
+`'unsafe-inline'`. HSTS two years with subdomains in production; `HSTS_PRELOAD=1`
+adds `preload`, which is the operator's to set once the domain is fixed, since
+browsers keep that promise for months after it is withdrawn.
 `X-Frame-Options`, `nosniff`, referrer and permissions policies were already
 there. Verified on the standalone production server and in the browser with
 no violation on the admin, bulletin, attendance, practice and timetable pages.
@@ -19,8 +24,12 @@ no violation on the admin, bulletin, attendance, practice and timetable pages.
 ## Cookies (`session.ts`)
 
 `httpOnly`, `secure` in production, `SameSite=Lax` (strict would break a
-magic-link landing). The locale cookie is not httpOnly by design: it carries
-no authority. Unchanged.
+magic-link landing). In production the session cookie is named
+`__Host-edulink_session`: a browser takes that prefix only over HTTPS, with
+`Path=/` and no `Domain`, so no other host under the domain can set it or be
+sent it. Development keeps `edulink_session`. A deployment that changes to this
+build signs everybody out once, because the old name is not read. The locale
+cookie is not httpOnly by design: it carries no authority.
 
 ## Rate limits (`rate-limit.ts`)
 

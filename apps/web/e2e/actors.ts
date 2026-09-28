@@ -39,6 +39,12 @@ export async function contextFor(
     { name, value, domain: url.hostname, path: "/", httpOnly: true, sameSite: "Lax" },
     { name: "edulink_locale", value: opts.locale, domain: url.hostname, path: "/", sameSite: "Lax" },
   ]);
+  // A production build names the cookie with the __Host- prefix, which a
+  // browser takes only as Secure; a dev server reads the plain name above.
+  // The same token under both, so the suite runs against either.
+  await context
+    .addCookies([{ name: `__Host-${name}`, value, url: url.origin, httpOnly: true, secure: true, sameSite: "Lax" }])
+    .catch(() => undefined);
   await context.addInitScript((theme: string) => {
     try {
       window.localStorage.setItem("edulink.appearance", JSON.stringify({ theme, motion: "reduced" }));

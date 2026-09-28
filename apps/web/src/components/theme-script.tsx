@@ -50,6 +50,7 @@ const script = `
 })();
 `;
 
-export function ThemeScript() {
-  return <script dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
+/** The nonce is this response's, from the middleware: the policy lets no inline script run without it. */
+export function ThemeScript({ nonce }: { nonce?: string }) {
+  return <script nonce={nonce} dangerouslySetInnerHTML={{ __html: script }} suppressHydrationWarning />;
 }

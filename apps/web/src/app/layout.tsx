@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
+import { NONCE_HEADER } from "@/lib/csp";
 import "./globals.css";
 import { ThemeScript } from "@/components/theme-script";
 import { ToastProvider } from "@/components/ui/toast";
@@ -78,7 +80,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
-        <ThemeScript />
+        <ThemeScript nonce={(await headers()).get(NONCE_HEADER) ?? undefined} />
       </head>
       {/* suppressHydrationWarning for the BODY ATTRIBUTES only (it does not
           cascade): browser extensions — Grammarly stamps data-gr-ext-installed

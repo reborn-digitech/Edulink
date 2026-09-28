@@ -40,7 +40,7 @@ async function mint(email: string, role: string | null, schoolId: string | null,
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
-  return { label, cookie: `edulink_session=${token}`, sessionId: session.id };
+  return { label, cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, sessionId: session.id };
 }
 
 /**
@@ -1822,7 +1822,7 @@ async function main() {
       expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
-  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}`, sessionId: "" };
+  const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "" };
 
   // Real ids for the dynamic routes.
   const klass = await db.class.findFirst({ where: { schoolId: riverside.id, archivedAt: null } });

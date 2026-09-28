@@ -175,4 +175,6 @@ storage and clearing everything on sign-out.
   code is minted against it, and the exchange asks for the verifier; a code with the wrong verifier is refused
   and spent. Verified app links wait on the production domain.
 - A nonce-based CSP without `unsafe-inline`; a `__Host-` cookie; HSTS preload once the domain is fixed.
+  **Built 2026-09-29:** a nonce per response with `'strict-dynamic'` and no `'unsafe-inline'` for scripts; the
+  session cookie carries the `__Host-` prefix in production; preload is `HSTS_PRELOAD=1`, the operator's to set.
 - Narrower row-level policies for experts, keyed on the booking or the mentorship rather than the school.

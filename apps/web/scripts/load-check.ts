@@ -57,7 +57,7 @@ async function mint(userId: string, role: string, schoolId: string | null): Prom
     },
   });
   minted.push(s.id);
-  return { cookie: `edulink_session=${token}`, id: s.id };
+  return { cookie: `edulink_session=${token}; __Host-edulink_session=${token}`, id: s.id };
 }
 
 type Sample = { ms: number; status: number };
