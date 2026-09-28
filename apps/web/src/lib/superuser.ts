@@ -73,8 +73,8 @@ export function assertSuperuser(session: ActiveContext): void {
  */
 export type SchoolListOpts = {
   q?: string;
-  /** live (default): not removed; removed; noadmin: live with no admin yet; all. */
-  state?: "live" | "removed" | "noadmin" | "all";
+  /** live (default): not removed; removed; noadmin: live with no admin yet; unverified: live and not yet checked by the operator; all. */
+  state?: "live" | "removed" | "noadmin" | "unverified" | "all";
   country?: string;
   sort?: "newest" | "oldest" | "name";
 };
@@ -87,6 +87,7 @@ export async function listSchools(session: ActiveContext, opts: SchoolListOpts =
   const schools = await db.school.findMany({
     where: {
       ...(state === "removed" ? { removedAt: { not: null } } : state === "all" ? {} : { removedAt: null }),
+      ...(state === "unverified" ? { verifiedAt: null } : {}),
       ...(opts.country ? { country: opts.country } : {}),
       ...(q
         ? { OR: [{ name: { contains: q, mode: "insensitive" } }, { city: { contains: q, mode: "insensitive" } }, { code: { contains: q, mode: "insensitive" } }] }
@@ -215,6 +216,10 @@ export async function createSchool(
           timezone: details.timezone,
           brandPrimary: details.brandPrimary || null,
           onboardingState: writeJson({ createdSchool: true }),
+          // The operator's own mark, made by the operator's own hand: a
+          // school added from /root is checked by the act of adding it. The
+          // queue is for schools that registered themselves.
+          verifiedAt: new Date(),
         },
       });
 
@@ -743,6 +748,58 @@ export async function restoreSchool(
     targetType: "School",
     targetId: schoolId,
     meta: { schoolId, name: school.name, ...counts },
+  });
+
+  return { ok: true };
+}
+
+/**
+ * The operator's mark on a school: somebody has checked that it is real.
+ *
+ * WHAT THE MARK OPENS is one thing, and `mayBringOver` in pen.ts is where it
+ * is read: a school may attach a membership to a pupil's EXISTING account, by
+ * student code or PEN, only if it carries this mark. Anybody can register a
+ * school and be its admin at once, so without the mark a self-registered
+ * school adds new pupils and does everything else, and cannot reach a child
+ * who already has an account elsewhere. The security assessment of 2026-09-24
+ * put the check in; nothing in the app could set the mark until this.
+ *
+ * WITHDRAWING IS THE SAME DOOR, the other way, for a mark given by mistake.
+ * It ends nothing: pupils already brought over keep their memberships, and a
+ * pupil returning to a school that already knew them needs no mark at all.
+ *
+ * A school already in the state asked for is left as it is, first stamp and
+ * all, and no second audit row is written: the press was harmless and the
+ * log says what changed, not what was pressed. A removed school is refused,
+ * since every door that would grow it again is shut until it is restored.
+ *
+ * The School table is one of the two the superuser flag opens, so this needs
+ * no tenant binding and records no visit: nothing inside the school is read.
+ */
+export async function setSchoolVerified(
+  session: ActiveContext,
+  schoolId: string,
+  verified: boolean,
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+
+  const school = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { id: true, name: true, removedAt: true, verifiedAt: true },
+  });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
+  if (Boolean(school.verifiedAt) === verified) return { ok: true };
+
+  await db.school.update({ where: { id: schoolId }, data: { verifiedAt: verified ? new Date() : null } });
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: verified ? "superuser.school.verify" : "superuser.school.unverify",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { schoolId, name: school.name },
   });
 
   return { ok: true };

@@ -20,8 +20,8 @@ const count = z.number().int().min(0);
 
 export const operatorOverviewQuerySchema = z.object({
   q: z.string().trim().max(200).optional(),
-  /** live (default): not removed; removed; noadmin: live with an admin invite still pending; all. */
-  state: z.enum(["live", "removed", "noadmin", "all"]).default("live"),
+  /** live (default): not removed; removed; noadmin: live with an admin invite still pending; unverified: live and not yet checked by the operator; all. */
+  state: z.enum(["live", "removed", "noadmin", "unverified", "all"]).default("live"),
 });
 export type OperatorOverviewQuery = z.infer<typeof operatorOverviewQuerySchema>;
 
@@ -35,6 +35,8 @@ export const operatorSchoolSchema = z.object({
   gradeHigh: z.string().nullable(),
   createdAt: iso,
   removedAt: isoOrNull,
+  /** When the operator marked the school checked; null while it waits. */
+  verifiedAt: isoOrNull,
   pendingAdminInvites: count,
 });
 export type OperatorSchool = z.infer<typeof operatorSchoolSchema>;
@@ -56,7 +58,7 @@ export const operatorJobSchema = z.object({
 export type OperatorJob = z.infer<typeof operatorJobSchema>;
 
 export const operatorOverviewSchema = z.object({
-  counts: z.object({ live: count, removed: count, noAdmin: count, appAdmins: count, expertsWaiting: count }),
+  counts: z.object({ live: count, removed: count, noAdmin: count, unverified: count, appAdmins: count, expertsWaiting: count }),
   /** Live first, newest first, at most 200 — narrowed by the query's q and state. */
   schools: z.array(operatorSchoolSchema),
   jobs: z.array(operatorJobSchema),
@@ -191,6 +193,8 @@ export const operatorSchoolDetailSchema = z.object({
     timezone: z.string(),
     createdAt: iso,
     removedAt: isoOrNull,
+    /** When the operator marked the school checked; null while it waits. */
+    verifiedAt: isoOrNull,
   }),
   /** Its administrator and principal invitations, newest first, at most 50. */
   invites: z.array(
@@ -218,6 +222,14 @@ export type OperatorSchoolDetail = z.infer<typeof operatorSchoolDetailSchema>;
  */
 export const operatorSchoolRemoveBodySchema = z.object({ confirmName: z.string().max(200) });
 export type OperatorSchoolRemoveBody = z.infer<typeof operatorSchoolRemoveBodySchema>;
+
+/**
+ * The operator's mark that a school has been checked, given or withdrawn. It
+ * is what lets a school bring over a pupil who already has an account, by
+ * student code or PEN; a school already in the state asked for is left as it is.
+ */
+export const operatorSchoolVerificationBodySchema = z.object({ verified: z.boolean() });
+export type OperatorSchoolVerificationBody = z.infer<typeof operatorSchoolVerificationBodySchema>;
 
 export const operatorInviteAdminBodySchema = z.object({
   email: z.string().trim().max(320),

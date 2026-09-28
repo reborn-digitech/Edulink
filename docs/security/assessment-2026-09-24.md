@@ -162,6 +162,8 @@ storage and clearing everything on sign-out.
 - An approve action for held comments, which the moderation queue lacks.
 - The student code off printed papers, or rotated when a pupil leaves.
 - New self-registered schools behind operator approval before identity-linking features open to them.
+  **Built 2026-09-28:** the operator gives and withdraws `School.verifiedAt` from `/root` and from the phone,
+  each change audited as `superuser.school.verify` or `superuser.school.unverify`; `mayBringOver` is unchanged.
 - PKCE on the phone's SSO hand-off and verified app links.
 - A nonce-based CSP without `unsafe-inline`; a `__Host-` cookie; HSTS preload once the domain is fixed.
 - Narrower row-level policies for experts, keyed on the booking or the mentorship rather than the school.

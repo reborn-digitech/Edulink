@@ -41,6 +41,7 @@ const DETAIL = operatorSchoolDetailSchema.parse({
     timezone: "Asia/Kolkata",
     createdAt: ago(3 * 86_400_000),
     removedAt: null,
+    verifiedAt: null,
   },
   invites: [
     { id: "i1", email: "head@zz.test", name: "ZZ Head", role: "PRINCIPAL", status: "PENDING", createdAt: ago(2 * 3_600_000), expiresAt: ago(-7 * 86_400_000) },
@@ -49,6 +50,7 @@ const DETAIL = operatorSchoolDetailSchema.parse({
   access: [{ id: "x1", operatorName: "ZZ Operator", reason: "ZZ checking the register", startedAt: ago(3_600_000), live: false }],
 });
 const REMOVED = { ...DETAIL, school: { ...DETAIL.school, removedAt: ago(86_400_000) } };
+const CHECKED = { ...DETAIL, school: { ...DETAIL.school, verifiedAt: ago(2 * 86_400_000) } };
 
 const mount = (overrides: Answers = {}) =>
   mountStaff(
@@ -152,6 +154,47 @@ describe("one school, for the operator", () => {
     expect(screen.getByLabelText("Highest grade").props.value).toBe("2");
   });
 
+  it("a school not yet checked: says what waits on the check, and approves only after a confirm; Keep sends nothing", async () => {
+    const { calls } = await mount({ "POST /api/v1/operator/schools/s1/verification": () => json({ ok: true }) });
+    expect(await screen.findByText("Has this school been checked?")).toBeTruthy();
+    expect(screen.getByText("Awaiting check")).toBeTruthy();
+    expect(screen.getByText(/^Nobody has checked this school yet\./)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Withdraw approval" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Approve school" }));
+    expect(screen.getByText("Approve this school? It will be able to bring over pupils who have left another school.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Keep" }));
+    expect(calls().some((c) => c.line === "POST /api/v1/operator/schools/s1/verification")).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Approve school" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/verification")?.body).toEqual({ verified: true }));
+    expect(await screen.findByText("School approved")).toBeTruthy();
+    // The page is read again, so the mark shows as the server holds it.
+    await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1").length).toBeGreaterThanOrEqual(2));
+  });
+
+  it("a checked school: says when, and withdraws the approval after a confirm; a refusal is a toast with the server's sentence", async () => {
+    const { calls } = await mount({
+      "GET /api/v1/operator/schools/s1": () => json(CHECKED),
+      "POST /api/v1/operator/schools/s1/verification": () => json({ ok: true }),
+    });
+    expect(await screen.findByText("Checked 2 days ago")).toBeTruthy();
+    expect(screen.getByText(/^This school has been checked\./)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Approve school" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw approval" }));
+    expect(screen.getByText(/^Withdraw this school's approval\?/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/verification")?.body).toEqual({ verified: false }));
+    expect(await screen.findByText("Approval withdrawn")).toBeTruthy();
+  });
+
+  it("the check refused by the server: the sentence is a toast and the question stays open", async () => {
+    await mount({ "POST /api/v1/operator/schools/s1/verification": refused("That school has been removed from this server.", 422) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Approve school" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    expect(await screen.findByText("That school has been removed from this server.")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Confirm" })).toBeTruthy();
+  });
+
   it("removes only behind the school's exact name, typed, and sends the name for the server to check too", async () => {
     const { calls } = await mount({ "POST /api/v1/operator/schools/s1/remove": () => json({ ok: true }) });
     await screen.findByText("ZZ Northgate");
@@ -174,6 +217,7 @@ describe("one school, for the operator", () => {
     expect(await screen.findByText("removed yesterday")).toBeTruthy();
     expect(screen.getByText("Removed")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Remove school" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Approve school" })).toBeNull();
     expect(screen.queryByLabelText("Email")).toBeNull();
     await fireEvent.press(screen.getByRole("button", { name: "Restore school" }));
     expect(screen.getByText("Put this school back on the server? Everything removal ended comes back.")).toBeTruthy();

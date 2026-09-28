@@ -25,7 +25,7 @@ export default async function RootPage({
   const t = await getT();
   const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
-  const state = rawState === "removed" || rawState === "noadmin" || rawState === "all" ? rawState : "live";
+  const state = rawState === "removed" || rawState === "noadmin" || rawState === "unverified" || rawState === "all" ? rawState : "live";
   const sort = rawSort === "oldest" || rawSort === "name" ? rawSort : "newest";
   const countries = await schoolCountries(session);
   const country = rawCountry && countries.includes(rawCountry) ? rawCountry : undefined;
@@ -76,6 +76,7 @@ export default async function RootPage({
               options: [
                 { value: "live", label: t("root.stateLive"), count: liveCount },
                 { value: "noadmin", label: t("root.stateNoAdmin"), count: totals.filter((s) => !s.removedAt && s.pendingAdminInvites > 0).length },
+                { value: "unverified", label: t("root.stateUnverified"), count: totals.filter((s) => !s.removedAt && !s.verifiedAt).length },
                 { value: "removed", label: t("root.removedBadge"), count: totals.length - liveCount },
                 { value: "all", label: t("vacancies.filterAll"), count: totals.length },
               ],
@@ -136,6 +137,11 @@ export default async function RootPage({
                       </Badge>
                     ) : (
                       <>
+                        {!school.verifiedAt && (
+                          <Badge tone="warn" size="sm">
+                            {t("root.stateUnverified")}
+                          </Badge>
+                        )}
                         {school.pendingAdminInvites > 0 && (
                           <Badge tone="warn" size="sm">
                             {school.pendingAdminInvites === 1

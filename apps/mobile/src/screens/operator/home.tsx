@@ -23,7 +23,7 @@ import { Chips } from "../staff/shared";
 import { Note, Pill, relativeTime } from "../family/shared";
 
 type Section = "schools" | "jobs" | "experts" | "team" | "log";
-type SchoolState = "live" | "noadmin" | "removed" | "all";
+type SchoolState = "live" | "noadmin" | "unverified" | "removed" | "all";
 type JobTone = "running" | "overdue" | "failed" | "ok";
 
 /** How long the search waits after the last keystroke before it asks the server. */
@@ -109,6 +109,7 @@ export function OperatorHome() {
         <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
           <Stat label={t("root.stateLive")} value={d.counts.live} />
           <Stat label={t("root.stateNoAdmin")} value={d.counts.noAdmin} tone={d.counts.noAdmin > 0 ? "warn" : "fg"} />
+          <Stat label={t("root.stateUnverified")} value={d.counts.unverified} tone={d.counts.unverified > 0 ? "warn" : "fg"} />
           <Stat label={t("root.removedBadge")} value={d.counts.removed} />
           <Stat label={t("root.contentTeam")} value={d.counts.appAdmins} />
           <Stat label={t("expert.waitingForYou")} value={d.counts.expertsWaiting} tone={d.counts.expertsWaiting > 0 ? "accent" : "fg"} />
@@ -135,6 +136,7 @@ export function OperatorHome() {
             options={[
               { value: "live", label: t("root.stateLive") },
               { value: "noadmin", label: t("root.stateNoAdmin") },
+              { value: "unverified", label: t("root.stateUnverified") },
               { value: "removed", label: t("root.removedBadge") },
               { value: "all", label: t("vacancies.filterAll") },
             ]}
@@ -168,6 +170,7 @@ export function OperatorHome() {
 
 function Schools({ d, narrowed, onOpen, onAdd, onClear }: { d: OperatorOverview; narrowed: boolean; onOpen: (schoolId: string) => void; onAdd: () => void; onClear: () => void }) {
   const t = useT();
+  const th = useTheme();
   const { locale } = useLocale();
   if (d.schools.length === 0 && !narrowed) {
     return <Empty icon="buildings" title={t("root.noSchoolsYet")} body={t("root.addFirstOne")} action={<Button label={t("root.addSchool")} onPress={onAdd} />} />;
@@ -193,8 +196,14 @@ function Schools({ d, narrowed, onOpen, onAdd, onClear }: { d: OperatorOverview;
               right={
                 s.removedAt ? (
                   <Pill label={t("root.removedBadge")} tone="danger" />
-                ) : s.pendingAdminInvites > 0 ? (
-                  <Pill label={s.pendingAdminInvites === 1 ? t("root.invitesPendingOne") : t("root.invitesPendingMany", { count: s.pendingAdminInvites })} tone="warn" />
+                ) : !s.verifiedAt || s.pendingAdminInvites > 0 ? (
+                  // A school that registered itself is often both: not yet checked, and its admin still to accept.
+                  <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
+                    {!s.verifiedAt ? <Pill label={t("root.stateUnverified")} tone="warn" /> : null}
+                    {s.pendingAdminInvites > 0 ? (
+                      <Pill label={s.pendingAdminInvites === 1 ? t("root.invitesPendingOne") : t("root.invitesPendingMany", { count: s.pendingAdminInvites })} tone="warn" />
+                    ) : null}
+                  </View>
                 ) : null
               }
               onPress={() => onOpen(s.id)}

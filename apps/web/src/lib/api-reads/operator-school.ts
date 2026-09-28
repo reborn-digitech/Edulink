@@ -48,6 +48,7 @@ export async function operatorSchoolDetail(ctx: ActiveContext, schoolId: string)
       timezone: school.timezone,
       createdAt: iso(school.createdAt),
       removedAt: isoOrNull(school.removedAt),
+      verifiedAt: isoOrNull(school.verifiedAt),
     },
     invites: invites.map((i) => ({ id: i.id, email: i.email, name: i.name, role: i.role, status: i.status, createdAt: iso(i.createdAt), expiresAt: iso(i.expiresAt) })),
     access: access.map((a) => ({ id: a.id, operatorName: a.operatorName, reason: a.reason, startedAt: iso(a.startedAt), live: a.live })),

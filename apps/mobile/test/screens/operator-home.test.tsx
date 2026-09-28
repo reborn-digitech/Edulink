@@ -23,10 +23,10 @@ const NOW = Date.now();
 const ago = (ms: number) => new Date(NOW - ms).toISOString();
 
 const OVERVIEW = operatorOverviewSchema.parse({
-  counts: { live: 2, removed: 1, noAdmin: 1, appAdmins: 3, expertsWaiting: 1 },
+  counts: { live: 2, removed: 1, noAdmin: 1, unverified: 1, appAdmins: 3, expertsWaiting: 1 },
   schools: [
-    { id: "s1", name: "ZZ Northgate", city: "Pune", country: "India", code: "NORTH-7X9K", gradeLow: "1", gradeHigh: "10", createdAt: ago(3 * 86_400_000), removedAt: null, pendingAdminInvites: 0 },
-    { id: "s2", name: "ZZ Riverside", city: null, country: null, code: "RIVER-1A2B", gradeLow: null, gradeHigh: null, createdAt: ago(2 * 3_600_000), removedAt: null, pendingAdminInvites: 1 },
+    { id: "s1", name: "ZZ Northgate", city: "Pune", country: "India", code: "NORTH-7X9K", gradeLow: "1", gradeHigh: "10", createdAt: ago(3 * 86_400_000), removedAt: null, verifiedAt: ago(2 * 86_400_000), pendingAdminInvites: 0 },
+    { id: "s2", name: "ZZ Riverside", city: null, country: null, code: "RIVER-1A2B", gradeLow: null, gradeHigh: null, createdAt: ago(2 * 3_600_000), removedAt: null, verifiedAt: null, pendingAdminInvites: 1 },
   ],
   jobs: [
     { name: "digest:weekly", schedule: "0 7 * * 5", describeKey: "root.jobDescDigest", lastRun: { startedAt: ago(3_600_000), finishedAt: ago(3_500_000), ok: true, summary: '{"digests":4}', error: null }, lastSuccessAt: ago(3_600_000), overdue: false, lastFailed: false, running: false },
@@ -87,11 +87,14 @@ describe("the operator's home", () => {
     expect(screen.getByText("Server")).toBeTruthy();
     expect(screen.getByLabelText("Live: 2")).toBeTruthy();
     expect(screen.getByLabelText("Admin invite pending: 1")).toBeTruthy();
+    expect(screen.getByLabelText("Awaiting check: 1")).toBeTruthy();
     expect(screen.getByLabelText("Content team: 3")).toBeTruthy();
     expect(screen.getByLabelText("Waiting for you: 1")).toBeTruthy();
     expect(screen.getByText(/Pune, India · Join code NORTH-7X9K · joined 3 days ago/)).toBeTruthy();
     expect(screen.getByText(/No address · Join code RIVER-1A2B · joined 2 hours ago/)).toBeTruthy();
+    // The school that registered itself wears both: not yet checked, and its admin still to accept.
     expect(screen.getByText("1 invite pending")).toBeTruthy();
+    expect(screen.getAllByText("Awaiting check").length).toBeGreaterThanOrEqual(2);
     expect(calls().some((c) => c.line === "GET /api/v1/operator/overview")).toBe(true);
   });
 
@@ -104,6 +107,8 @@ describe("the operator's home", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/operator-new-school");
     // No door to the web is left on the console.
     expect(screen.queryByRole("button", { name: "Server administration" })).toBeNull();
+    await fireEvent.press(screen.getByRole("radio", { name: "Awaiting check" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/operator/overview?state=unverified")).toBe(true));
     await fireEvent.press(screen.getByRole("radio", { name: "Removed" }));
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/operator/overview?state=removed")).toBe(true));
     await fireEvent.changeText(screen.getByLabelText("Search"), "river");

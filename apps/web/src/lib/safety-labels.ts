@@ -207,6 +207,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "superuser.school.update": "audit.superuserSchoolUpdate",
   "superuser.school.remove": "audit.superuserSchoolRemove",
   "superuser.school.restore": "audit.superuserSchoolRestore",
+  "superuser.school.verify": "audit.superuserSchoolVerify",
+  "superuser.school.unverify": "audit.superuserSchoolUnverify",
   "superuser.school.delete": "audit.superuserSchoolDelete",
   "superuser.appadmin.appoint": "audit.superuserAppadminAppoint",
   "superuser.appadmin.dismiss": "audit.superuserAppadminDismiss",

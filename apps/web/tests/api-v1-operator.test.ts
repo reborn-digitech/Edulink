@@ -135,7 +135,7 @@ describe("as the operator", () => {
     expect(res.status).toBe(200);
     const body = operatorOverviewSchema.parse(await res.json());
     expect(body.schools.map((s) => s.name)).toEqual([SCHOOL_NAME]);
-    expect(body.schools[0]).toMatchObject({ id: schoolId, city: "ZZ Town", removedAt: null, pendingAdminInvites: 0 });
+    expect(body.schools[0]).toMatchObject({ id: schoolId, city: "ZZ Town", removedAt: null, verifiedAt: null, pendingAdminInvites: 0 });
     expect(body.counts.live).toBeGreaterThanOrEqual(1);
     expect(body.counts.removed).toBeGreaterThanOrEqual(1);
     expect(body.counts.appAdmins).toBeGreaterThanOrEqual(1);
@@ -149,6 +149,12 @@ describe("as the operator", () => {
     const all = operatorOverviewSchema.parse(await (await overviewGet(get(`${P}/operator/overview?state=all&q=ZZ%20V1O`))).json());
     // Live first, then the removed one.
     expect(all.schools.map((s) => s.id)).toEqual([schoolId, removedSchoolId]);
+
+    // Waiting for the operator's check: live and unmarked. A removed school is not in the queue, marked or not.
+    const waiting = operatorOverviewSchema.parse(await (await overviewGet(get(`${P}/operator/overview?state=unverified&q=ZZ%20V1O`))).json());
+    expect(waiting.schools.map((s) => s.id)).toEqual([schoolId]);
+    expect(waiting.counts.unverified).toBeGreaterThanOrEqual(1);
+    expect(waiting.counts.unverified).toBeLessThanOrEqual(waiting.counts.live);
 
     expect((await overviewGet(get(`${P}/operator/overview?state=BOGUS`))).status).toBe(422);
   });

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, BuildingsIcon, EraserIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, BuildingsIcon, EraserIcon, ShieldCheckIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites } from "@/lib/superuser";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
 import { RemoveSchool } from "./remove-school";
 import { RestoreSchool } from "./restore-school";
+import { VerifySchool } from "./verify-school";
 import { DeleteSchool } from "./delete-school";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 
@@ -47,6 +48,11 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
               {t("root.removedBadge")}
             </Badge>
           )}
+          {!school.removedAt && !school.verifiedAt && (
+            <Badge tone="warn" size="sm">
+              {t("root.stateUnverified")}
+            </Badge>
+          )}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">
           {school.removedAt ? (
@@ -73,6 +79,23 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         </div>
       ) : (
         <>
+      {/* First on the page while the school waits: it is the one thing here
+          that somebody else is waiting on. */}
+      <Card className={school.verifiedAt ? undefined : "border-warn/50"}>
+        <CardHeader
+          icon={<ShieldCheckIcon weight="duotone" className="size-5" />}
+          title={t("root.verifyTitle")}
+          description={
+            school.verifiedAt
+              ? `${t("root.verifiedAgo", { when: relativeTime(school.verifiedAt) })} · ${t("root.verifiedExplainer")}`
+              : t("root.verifyExplainer")
+          }
+        />
+        <CardBody>
+          <VerifySchool schoolId={school.id} verified={Boolean(school.verifiedAt)} />
+        </CardBody>
+      </Card>
+
       <Card>
         <CardHeader
           title={t("root.lookInside")}

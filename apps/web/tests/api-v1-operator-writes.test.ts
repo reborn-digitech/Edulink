@@ -17,6 +17,8 @@ import { POST as schoolsPost } from "@/app/api/v1/operator/schools/route";
 import { GET as schoolGet, PATCH as schoolPatch } from "@/app/api/v1/operator/schools/[schoolId]/route";
 import { POST as removePost } from "@/app/api/v1/operator/schools/[schoolId]/remove/route";
 import { POST as restorePost } from "@/app/api/v1/operator/schools/[schoolId]/restore/route";
+import { POST as verificationPost } from "@/app/api/v1/operator/schools/[schoolId]/verification/route";
+import { mayBringOver } from "@/lib/pen";
 import { POST as invitesPost } from "@/app/api/v1/operator/schools/[schoolId]/invites/route";
 import { POST as revokePost } from "@/app/api/v1/operator/invites/[inviteId]/revoke/route";
 import { POST as standingPost } from "@/app/api/v1/operator/experts/[profileId]/standing/route";
@@ -64,6 +66,7 @@ function everyHandler() {
     { name: "PATCH school", call: () => schoolPatch(send("PATCH", `/schools/${targetSchoolId}`, { city: "Nowhere" }), school) },
     { name: "POST remove", call: () => removePost(send("POST", `/schools/${targetSchoolId}/remove`, { confirmName: TARGET_NAME }), school) },
     { name: "POST restore", call: () => restorePost(send("POST", `/schools/${targetSchoolId}/restore`), school) },
+    { name: "POST verification", call: () => verificationPost(send("POST", `/schools/${targetSchoolId}/verification`, { verified: true }), school) },
     { name: "POST invites", call: () => invitesPost(send("POST", `/schools/${targetSchoolId}/invites`, { email: `zz-v1ow-gate-${STAMP}@test.invalid` }), school) },
     { name: "POST revoke", call: () => revokePost(send("POST", "/invites/nope/revoke"), params({ inviteId: "nope" })) },
     { name: "POST standing", call: () => standingPost(send("POST", `/experts/${profileId}/standing`, { published: true, verified: true }), params({ profileId })) },
@@ -129,7 +132,7 @@ describe("the gates", () => {
       expect(await res.json()).toMatchObject({ code: "FORBIDDEN" });
     }
     const target = await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } });
-    expect(target).toMatchObject({ city: "ZZ Town", removedAt: null });
+    expect(target).toMatchObject({ city: "ZZ Town", removedAt: null, verifiedAt: null });
     expect(await db.school.count({ where: { name: CREATED_NAME } })).toBe(0);
     expect(await db.expertProfile.findUniqueOrThrow({ where: { id: profileId } })).toMatchObject({ publishedAt: null });
     expect(await db.user.findUniqueOrThrow({ where: { id: candidateUserId } })).toMatchObject({ isAppAdmin: false });
@@ -145,6 +148,8 @@ describe("as the operator", () => {
     const body = operatorSchoolCreatedSchema.parse(await res.json());
     createdSchoolId = body.schoolId;
     expect(await db.school.findUniqueOrThrow({ where: { id: body.schoolId } })).toMatchObject({ name: CREATED_NAME, code: body.code, gradeLow: "1", gradeHigh: "8", city: "ZZ Pune" });
+    // A school the operator adds by hand is checked by the act of adding it.
+    expect((await db.school.findUniqueOrThrow({ where: { id: body.schoolId } })).verifiedAt).not.toBeNull();
 
     const short = await schoolsPost(send("POST", "/schools", { name: "Z", contactEmail: "z@test.invalid", timezone: "Asia/Kolkata" }));
     expect(short.status).toBe(422);
@@ -199,6 +204,47 @@ describe("as the operator", () => {
     expect(await again.json()).toMatchObject({ error: "That invitation is no longer pending." });
   });
 
+  it("marks a school checked and withdraws the mark: the door for bringing a pupil over opens and shuts with it, a repeat moves nothing, and each change is in the server log once", async () => {
+    const school = params({ schoolId: targetSchoolId });
+    const verify = (verified: unknown) => verificationPost(send("POST", `/schools/${targetSchoolId}/verification`, verified === undefined ? {} : { verified }), school);
+    const logged = (action: string) => db.auditLog.count({ where: { action, targetId: targetSchoolId } });
+
+    // A school made without the operator's hand waits, and may bring nobody over.
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt).toBeNull();
+    expect(await mayBringOver(targetSchoolId, candidateUserId)).toBe(false);
+
+    // Nothing to say, or not a yes or no: 422, and nothing moved.
+    expect((await verify(undefined)).status).toBe(422);
+    expect((await verify("yes")).status).toBe(422);
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt).toBeNull();
+
+    const given = await verify(true);
+    expect(given.status).toBe(200);
+    expect(okSchema.parse(await given.json())).toEqual({ ok: true });
+    const stamp = (await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt;
+    expect(stamp).not.toBeNull();
+    expect(await mayBringOver(targetSchoolId, candidateUserId)).toBe(true);
+    const detail = operatorSchoolDetailSchema.parse(await (await schoolGet(get(`/schools/${targetSchoolId}`), school)).json());
+    expect(detail.school.verifiedAt).toBe(stamp!.toISOString());
+
+    // Pressed again: 200, the first stamp stands, and the log has one row.
+    expect((await verify(true)).status).toBe(200);
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt).toEqual(stamp);
+    expect(await logged("superuser.school.verify")).toBe(1);
+
+    const withdrawn = await verify(false);
+    expect(withdrawn.status).toBe(200);
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt).toBeNull();
+    expect(await mayBringOver(targetSchoolId, candidateUserId)).toBe(false);
+    expect((await verify(false)).status).toBe(200);
+    expect(await logged("superuser.school.unverify")).toBe(1);
+
+    const row = await db.auditLog.findFirstOrThrow({ where: { action: "superuser.school.verify", targetId: targetSchoolId } });
+    expect(row).toMatchObject({ schoolId: null, actorUserId: operatorUserId, targetType: "School" });
+
+    expect((await verificationPost(send("POST", "/schools/nope/verification", { verified: true }), params({ schoolId: "nope" }))).status).toBe(404);
+  });
+
   it("removes only behind the school's exact name, typed; then restores it, once", async () => {
     const school = params({ schoolId: targetSchoolId });
     // No name at all, then the wrong one: both 422, and the school still stands.
@@ -216,6 +262,11 @@ describe("as the operator", () => {
     const invite = await invitesPost(send("POST", `/schools/${targetSchoolId}/invites`, { email: `zz-v1ow-late-${STAMP}@test.invalid` }), school);
     expect(invite.status).toBe(422);
     expect(await invite.json()).toMatchObject({ error: "That school has been removed from this server." });
+    // Nor be marked checked while it is off the server.
+    const marked = await verificationPost(send("POST", `/schools/${targetSchoolId}/verification`, { verified: true }), school);
+    expect(marked.status).toBe(422);
+    expect(await marked.json()).toMatchObject({ error: "That school has been removed from this server." });
+    expect((await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt).toBeNull();
 
     const restored = await restorePost(send("POST", `/schools/${targetSchoolId}/restore`), school);
     expect(restored.status).toBe(200);
@@ -271,7 +322,8 @@ describe("as the operator", () => {
     expect(res.status).toBe(200);
     const body = operatorAuditSchema.parse(await res.json());
     const actions = new Set(body.items.map((r) => r.action));
-    expect(actions).toEqual(new Set(["superuser.school.update", "superuser.school.remove", "superuser.school.restore"]));
+    expect(actions).toEqual(new Set(["superuser.school.update", "superuser.school.verify", "superuser.school.unverify", "superuser.school.remove", "superuser.school.restore"]));
+    expect(body.items.find((r) => r.action === "superuser.school.verify")).toMatchObject({ actionKey: "audit.superuserSchoolVerify", schoolName: TARGET_NAME });
     expect(body.total).toBe(body.items.length);
     expect(body.items.every((r) => r.actorName === "ZZ V1OW Operator")).toBe(true);
     expect(body.items.find((r) => r.action === "superuser.school.remove")).toMatchObject({ actionKey: "audit.superuserSchoolRemove", schoolName: TARGET_NAME });

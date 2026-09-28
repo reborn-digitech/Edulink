@@ -40,6 +40,7 @@ export async function operatorOverview(ctx: ActiveContext, query: OperatorOvervi
       live: live.length,
       removed: all.length - live.length,
       noAdmin: live.filter((s) => s.pendingAdminInvites > 0).length,
+      unverified: live.filter((s) => !s.verifiedAt).length,
       appAdmins: appAdmins.length,
       expertsWaiting: experts.filter((e) => e.publishedAt === null).length,
     },
@@ -53,6 +54,7 @@ export async function operatorOverview(ctx: ActiveContext, query: OperatorOvervi
       gradeHigh: s.gradeHigh,
       createdAt: iso(s.createdAt),
       removedAt: isoOrNull(s.removedAt),
+      verifiedAt: isoOrNull(s.verifiedAt),
       pendingAdminInvites: s.pendingAdminInvites,
     })),
     jobs: jobs.map((j) => ({

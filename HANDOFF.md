@@ -129,7 +129,7 @@ gaps (4e326b2); the audit's second pass (bf6cd00); the audit's top ten (0ee9580)
 
 1. Hold school-code joins and birthdate claims pending until staff or an existing guardian approves. Needs a PENDING membership state nothing creates today.
 2. Take the student code off the printed leaving certificate, or rotate it on departure.
-3. Put self-registered schools behind operator approval before the identity-linking features open. The code already checks `School.verifiedAt`; the approve button and queue do not exist.
+3. ~~Put self-registered schools behind operator approval before the identity-linking features open.~~ **Done 2026-09-28.** The operator's console has an "Awaiting check" queue and each school's page an approve and a withdraw button (`setSchoolVerified` in `src/lib/superuser.ts`, `POST /api/v1/operator/schools/{schoolId}/verification`, the phone's operator screens); a school the operator adds by hand is marked at creation; the office's intake page tells an unmarked school what waits on the check. Still open: nothing tells the school when the mark is given or withdrawn, and the ten unmarked schools in the development database are fixtures nobody has approved.
 4. Decide legal versus preferred name on papers (papers print the legal name) and give the office a way to correct a legal name.
 5. Confirm the narrowed principal write scope (twelve settings doors are ADMIN only) and let someone set the principal's own subjects.
 6. PKCE on the phone's SSO hand-off and verified app links, before any store release.

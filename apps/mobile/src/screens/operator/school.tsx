@@ -169,7 +169,8 @@ async function send(call: Promise<{ ok: true } | { ok: false; error: string }>, 
 }
 
 /**
- * The web's /root/[schoolId] on a phone: who runs the school (admin and
+ * The web's /root/[schoolId] on a phone: whether the school has been checked
+ * (the operator's mark, given or withdrawn here), who runs it (admin and
  * principal invitations, sent and withdrawn here), its details, every time
  * it has been opened, and removal behind the school's exact name, typed —
  * or, once removed, restore. Erasing a school entirely stays on the web on
@@ -220,6 +221,7 @@ export function OperatorSchool() {
           </>
         ) : (
           <>
+            <Verification schoolId={schoolId} verifiedAt={school.verifiedAt} onDone={changed} />
             <Invites schoolId={schoolId} invites={d.invites} onChanged={changed} />
             <Card title={t("root.details")}>
               <Text variant="xs" tone="muted">
@@ -245,6 +247,53 @@ export function OperatorSchool() {
         )
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * The operator's mark that the school has been checked, given or withdrawn
+ * behind a plain confirm, as on the web: neither direction ends anything.
+ * The mark is what lets a school bring over a pupil who already has an
+ * account elsewhere, by student code or PEN.
+ */
+function Verification({ schoolId, verifiedAt, onDone }: { schoolId: string; verifiedAt: string | null; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const toast = useToast();
+  const [confirming, setConfirming] = useState(false);
+  const verified = verifiedAt !== null;
+  const set = useMutation({
+    mutationFn: (next: boolean) => send(api().post(`/api/v1/operator/schools/${schoolId}/verification`, { verified: next }), t("root.didNotWork")),
+    onSuccess: (_data, next) => {
+      setConfirming(false);
+      toast.show(t(next ? "root.schoolVerifiedToast" : "root.schoolUnverifiedToast"));
+      onDone();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  return (
+    <Card title={t("root.verifyTitle")}>
+      <View style={{ flexDirection: "row" }}>
+        {verifiedAt !== null ? <Pill label={t("root.verifiedAgo", { when: relativeTime(verifiedAt, locale) })} tone="ok" /> : <Pill label={t("root.stateUnverified")} tone="warn" />}
+      </View>
+      <Text variant="sm" tone="muted">
+        {verified ? t("root.verifiedExplainer") : t("root.verifyExplainer")}
+      </Text>
+      {confirming ? (
+        <Note tone={verified ? "danger" : "accent"}>
+          <Text variant="sm" bold>
+            {verified ? t("root.unverifyConfirm") : t("root.verifyConfirm")}
+          </Text>
+          <View style={{ flexDirection: "row", gap: th.space[2] }}>
+            <Button label={t("common.confirm")} variant={verified ? "danger" : "primary"} busy={set.isPending} onPress={() => set.mutate(!verified)} style={{ flexGrow: 1 }} />
+            <Button label={t("common.keep")} variant="secondary" onPress={() => setConfirming(false)} style={{ flexGrow: 1 }} />
+          </View>
+        </Note>
+      ) : (
+        <Button label={verified ? t("root.unverifyCta") : t("root.verifyCta")} variant={verified ? "secondary" : "primary"} onPress={() => setConfirming(true)} />
+      )}
+    </Card>
   );
 }
 

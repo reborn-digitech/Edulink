@@ -8,6 +8,7 @@ import {
   updateSchool,
   removeSchools, deleteSchoolsEntirely, removeSchool,
   restoreSchool,
+  setSchoolVerified,
   deleteSchoolEntirely,
   inviteAdmin,
   revokeInvite,
@@ -141,6 +142,24 @@ export async function restoreSchoolAction(schoolId: string): Promise<Result> {
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await restoreSchool(session, schoolId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * Gives or withdraws the operator's mark that a school has been checked —
+ * what lets it bring over a pupil who already has an account elsewhere.
+ */
+export async function setSchoolVerifiedAction(schoolId: string, verified: boolean): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await setSchoolVerified(session, schoolId, verified === true);
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);
