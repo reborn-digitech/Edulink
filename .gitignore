@@ -12,7 +12,10 @@ dist/
 .env*.local
 
 # test + tooling
-coverage/
+# Test coverage output only — anchored, because an unanchored "coverage/" also hid
+# apps/web/src/app/(app)/admin/syllabus/coverage and its API route from git.
+/apps/web/coverage/
+/apps/mobile/coverage/
 *.tsbuildinfo
 next-env.d.ts
 .tmp-orphan-store/
