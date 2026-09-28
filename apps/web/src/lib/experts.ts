@@ -8,6 +8,7 @@ import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
 import { forJoinCode } from "./tenant-context";
+import { asTheSchool } from "./expert-binding";
 import type { ActiveContext } from "./session";
 
 /**
@@ -525,24 +526,26 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
   // The other side is told — the link that proves it moved, which every
   // other write in this file already carries.
   const counterpart = isTheExpert ? booking.bookedBy?.userId : booking.expert.userId;
-  if (counterpart) {
-    await notify({
-      userId: counterpart,
-      schoolId: booking.schoolId,
-      kind: "EXPERT",
-      titleKey: "notifTitle.bookingCancelled",
-      body: booking.slot.startsAt.toISOString().slice(0, 16).replace("T", " ") + " UTC",
-      url: `/experts/bookings/${bookingId}`,
-    });
-  }
+  await asTheSchool(session, booking.schoolId, async () => {
+    if (counterpart) {
+      await notify({
+        userId: counterpart,
+        schoolId: booking.schoolId,
+        kind: "EXPERT",
+        titleKey: "notifTitle.bookingCancelled",
+        body: booking.slot.startsAt.toISOString().slice(0, 16).replace("T", " ") + " UTC",
+        url: `/experts/bookings/${bookingId}`,
+      });
+    }
 
-  await audit({
-    schoolId: booking.schoolId,
-    actorUserId: session.user.id,
-    action: "expert.cancel",
-    targetType: "ExpertBooking",
-    targetId: bookingId,
-    meta: { by: isTheExpert ? "expert" : "school" },
+    await audit({
+      schoolId: booking.schoolId,
+      actorUserId: session.user.id,
+      action: "expert.cancel",
+      targetType: "ExpertBooking",
+      targetId: bookingId,
+      meta: { by: isTheExpert ? "expert" : "school" },
+    });
   });
 }
 
@@ -748,15 +751,17 @@ export async function postMessage(
         select: { userId: true },
       });
       if (booker) {
-        await notify({
-          userId: booker.userId,
-          schoolId: booking.schoolId,
-          kind: "EXPERT",
-          titleKey: "notifTitle.personReplied",
-          titleVars: { name: booking.expert.user.name },
-          body: clean.slice(0, 120),
-          url: `/experts/bookings/${bookingId}`,
-        });
+        await asTheSchool(session, booking.schoolId, () =>
+          notify({
+            userId: booker.userId,
+            schoolId: booking.schoolId,
+            kind: "EXPERT",
+            titleKey: "notifTitle.personReplied",
+            titleVars: { name: booking.expert.user.name },
+            body: clean.slice(0, 120),
+            url: `/experts/bookings/${bookingId}`,
+          }),
+        );
       }
     }
   } else {

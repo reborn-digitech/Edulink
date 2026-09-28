@@ -1728,6 +1728,134 @@ async function main() {
       `accepted ${accepted.count} (want 1), touched another invite ${wrongToken.count} (want 0), rewrote a consumed one ${reused.count} (want 0)`,
     );
 
+    // AN EXPERT REACHES THEIR ENGAGEMENT AND NOTHING ELSE OF THE SCHOOL. One
+    // confirmed booking used to put the whole school in their tenant set; the
+    // set is now empty and every reach is a clause keyed on the booking or
+    // the mentorship. Two experts at school A, so "their own" means something.
+    psql(
+      DB,
+      `INSERT INTO "User" (id,name,prefs,"updatedAt") VALUES
+         ('verify-x1','Expert One','{}',now()),
+         ('verify-x2','Expert Two','{}',now()),
+         ('verify-x3','Expert Three','{}',now());
+       INSERT INTO "ExpertProfile" (id,"userId",headline,"updatedAt") VALUES
+         ('verify-xp1','verify-x1','Robotics',now()),
+         ('verify-xp2','verify-x2','Chess',now());
+       INSERT INTO "ExpertSlot" (id,"expertProfileId","startsAt","endsAt","updatedAt") VALUES
+         ('verify-xs1','verify-xp1', now() + interval '1 day', now() + interval '1 day 1 hour', now()),
+         ('verify-xs2','verify-xp2', now() + interval '2 day', now() + interval '2 day 1 hour', now()),
+         ('verify-xs3','verify-xp1', now() + interval '3 day', now() + interval '3 day 1 hour', now());
+       INSERT INTO "ExpertBooking" (id,"schoolId","expertProfileId","expertUserId","slotId",topic,status,"bookedByMembershipId","updatedAt") VALUES
+         ('verify-xb1','verify-a','verify-xp1','verify-x1','verify-xs1','Robots','CONFIRMED','verify-m-a',now()),
+         ('verify-xb2','verify-a','verify-xp2','verify-x2','verify-xs2','Openings','CONFIRMED','verify-m-other',now()),
+         ('verify-xb3','verify-b','verify-xp1','verify-x1','verify-xs3','Old talk','CANCELLED','verify-m-b',now());
+       INSERT INTO "ExpertMessage" (id,"schoolId","bookingId","authorUserId",body) VALUES
+         ('verify-xm1','verify-a','verify-xb1','verify-u','See you at ten'),
+         ('verify-xm2','verify-a','verify-xb2','verify-other','Bring a board'),
+         ('verify-xm3','verify-b','verify-xb3','verify-u','Sorry, cancelled');
+       INSERT INTO "MentorThread" (id,"schoolId","expertProfileId","expertUserId","studentMembershipId",purpose,status,"updatedAt") VALUES
+         ('verify-xt1','verify-b','verify-xp1','verify-x1','verify-m-pupil-b','Science fair','ACTIVE',now()),
+         ('verify-xt2','verify-b','verify-xp2','verify-x2','verify-m-pupil-b','Chess club','PENDING_CONSENT',now());
+       INSERT INTO "MentorMessage" (id,"schoolId","threadId","authorUserId",body) VALUES
+         ('verify-xmm1','verify-b','verify-xt1','verify-pupil','Hello');`,
+    );
+    type Counted = Record<string, { count: (a?: unknown) => Promise<number>; findMany: (a?: unknown) => Promise<{ id: string }[]> }>;
+    const ids = async (tx: TxLike, model: string) => (await (tx as unknown as Counted)[model]!.findMany({ select: { id: true } })).map((r) => r.id).sort();
+    const same = (got: string[], want: string[]) => JSON.stringify(got) === JSON.stringify(want);
+    const expertOne = await asPerson("verify-x1", async (tx) => ({
+      bookings: await ids(tx, "expertBooking"),
+      bookingMessages: await ids(tx, "expertMessage"),
+      threads: await ids(tx, "mentorThread"),
+      mentorMessages: await ids(tx, "mentorMessage"),
+      schools: (await ids(tx, "school")).filter((id) => id === "verify-a" || id === "verify-b"),
+      members: await ids(tx, "membership"),
+      posts: (await ids(tx, "post")).length,
+      records: await (tx as unknown as Counted).schoolRecord!.count(),
+      audit: await (tx as unknown as Counted).auditLog!.count(),
+      notifications: await (tx as unknown as Counted).notification!.count(),
+    }));
+    check(
+      "⚠ an expert reads their OWN bookings and mentorships, and the messages of the live ones only",
+      same(expertOne.bookings, ["verify-xb1", "verify-xb3"]) && same(expertOne.bookingMessages, ["verify-xm1"]) && same(expertOne.threads, ["verify-xt1"]) && same(expertOne.mentorMessages, ["verify-xmm1"]),
+      `bookings ${JSON.stringify(expertOne.bookings)}, their messages ${JSON.stringify(expertOne.bookingMessages)} (want only verify-xm1: another expert's and a cancelled booking's stay shut), threads ${JSON.stringify(expertOne.threads)}, mentor messages ${JSON.stringify(expertOne.mentorMessages)}`,
+    );
+    check(
+      "⚠ …the school of a live engagement, the one member of staff who booked them and the one pupil they mentor",
+      same(expertOne.schools, ["verify-a", "verify-b"]) && same(expertOne.members, ["verify-m-a", "verify-m-pupil-b"]),
+      `schools ${JSON.stringify(expertOne.schools)}, memberships ${JSON.stringify(expertOne.members)} (want the booker verify-m-a and the pupil verify-m-pupil-b, and nobody else at either school)`,
+    );
+    // Posts the whole platform may read (an approved GLOBAL one) are not the school's private rows; count only what is not global.
+    const privatePosts = await asPerson("verify-x1", (tx) => (tx as unknown as Counted).post!.count({ where: { NOT: { scope: "GLOBAL" } } }));
+    check(
+      "⚠ …and NOTHING else of the school: no post of its own, no leaving certificate, no audit line, nobody's notifications",
+      privatePosts === 0 && expertOne.records === 0 && expertOne.audit === 0 && expertOne.notifications === 0,
+      `an expert with a confirmed booking read ${privatePosts} of the school's own post(s), ${expertOne.records} certificate(s), ${expertOne.audit} audit line(s), ${expertOne.notifications} notification(s) — one booking opens the school`,
+    );
+    const pendingExpert = await asPerson("verify-x2", async (tx) => ({
+      mentorMessages: await ids(tx, "mentorMessage"),
+      schools: (await ids(tx, "school")).filter((id) => id === "verify-b"),
+      members: await ids(tx, "membership"),
+    }));
+    check(
+      "⚠ a mentorship no guardian has agreed to opens nothing: not the school, not the pupil",
+      pendingExpert.mentorMessages.length === 0 && !pendingExpert.members.includes("verify-m-pupil-b"),
+      `before consent the expert read memberships ${JSON.stringify(pendingExpert.members)}, messages ${JSON.stringify(pendingExpert.mentorMessages)}`,
+    );
+
+    const wrote = async (userId: string, model: string, data: Record<string, unknown>): Promise<boolean> => {
+      try {
+        await asPerson(userId, (tx) => outreachTx(tx)[model]!.create({ data }));
+        return true;
+      } catch {
+        return false;
+      }
+    };
+    const ownMessage = await wrote("verify-x1", "expertMessage", { id: "verify-xw1", schoolId: "verify-a", bookingId: "verify-xb1", authorUserId: "verify-x1", body: "On my way" });
+    const intoAnothers = await wrote("verify-x1", "expertMessage", { id: "verify-xw2", schoolId: "verify-a", bookingId: "verify-xb2", authorUserId: "verify-x1", body: "Hello" });
+    const intoCancelled = await wrote("verify-x1", "expertMessage", { id: "verify-xw3", schoolId: "verify-b", bookingId: "verify-xb3", authorUserId: "verify-x1", body: "Hello" });
+    const asSomebodyElse = await wrote("verify-x1", "expertMessage", { id: "verify-xw4", schoolId: "verify-a", bookingId: "verify-xb1", authorUserId: "verify-u", body: "Forged" });
+    const underWrongSchool = await wrote("verify-x1", "expertMessage", { id: "verify-xw5", schoolId: "verify-b", bookingId: "verify-xb1", authorUserId: "verify-x1", body: "Misfiled" });
+    const toPupil = await wrote("verify-x1", "mentorMessage", { id: "verify-xw6", schoolId: "verify-b", threadId: "verify-xt1", authorUserId: "verify-x1", body: "Well done" });
+    const beforeConsent = await wrote("verify-x2", "mentorMessage", { id: "verify-xw7", schoolId: "verify-b", threadId: "verify-xt2", authorUserId: "verify-x2", body: "Hello" });
+    const aPost = await wrote("verify-x1", "post", { id: "verify-xw8", schoolId: "verify-a", authorUserId: "verify-x1", scope: "SCHOOL", title: "From outside", status: "APPROVED", tags: "[]", media: "[]" });
+    check(
+      "⚠ an expert writes in their own live engagement, signed by them, filed under its school — and nowhere else",
+      ownMessage && toPupil && !intoAnothers && !intoCancelled && !asSomebodyElse && !underWrongSchool && !beforeConsent && !aPost,
+      `own message ${ownMessage} and to their pupil ${toPupil} (want true); another expert's booking ${intoAnothers}, a cancelled one ${intoCancelled}, signed as somebody else ${asSomebodyElse}, filed under another school ${underWrongSchool}, before consent ${beforeConsent}, a post on the school's bulletin ${aPost} (want false)`,
+    );
+    const cancelled = await asPerson("verify-x1", (tx) => outreachTx(tx).expertBooking!.updateMany({ where: { id: "verify-xb1" }, data: { status: "CANCELLED" } }));
+    const anothers = await asPerson("verify-x1", (tx) => outreachTx(tx).expertBooking!.updateMany({ where: { id: "verify-xb2" }, data: { status: "CANCELLED" } }));
+    const givenAway = await asPerson("verify-x1", (tx) => outreachTx(tx).expertBooking!.updateMany({ where: { id: "verify-xb1" }, data: { expertUserId: "verify-x2" } })).then(
+      (r) => r.count,
+      () => 0,
+    );
+    const afterCancel = await asPerson("verify-x1", async (tx) => ({
+      messages: await ids(tx, "expertMessage"),
+      schoolA: (await ids(tx, "school")).includes("verify-a"),
+      booker: (await ids(tx, "membership")).includes("verify-m-a"),
+    }));
+    check(
+      "⚠ an expert cancels their own booking, not another's, cannot give it away — and the school shuts behind them",
+      cancelled.count === 1 && anothers.count === 0 && givenAway === 0 && afterCancel.messages.length === 0 && !afterCancel.schoolA && !afterCancel.booker,
+      `cancelled own ${cancelled.count} (want 1), another's ${anothers.count} (want 0), gave it to somebody else ${givenAway} (want 0); after cancelling still read messages ${JSON.stringify(afterCancel.messages)}, the school ${afterCancel.schoolA}, the booker ${afterCancel.booker}`,
+    );
+    // Telling the school and the line in its log are NOT the expert's to
+    // write: the server writes both under the school's binding, after the
+    // library has found the engagement to be theirs (asTheSchool).
+    const told = await wrote("verify-x1", "notification", { id: "verify-xn1", schoolId: "verify-a", userId: "verify-u", kind: "EXPERT", title: "Cancelled", body: "" });
+    const logged = await wrote("verify-x1", "auditLog", { id: "verify-xa1", schoolId: "verify-a", actorUserId: "verify-x1", action: "expert.cancel", meta: "{}" });
+    const boundTold = await withTenantOn(client, "verify-a", (tx: TxLike) =>
+      outreachTx(tx).notification!.create({ data: { id: "verify-xn2", schoolId: "verify-a", userId: "verify-u", kind: "EXPERT", title: "Cancelled", body: "" } }).then(
+        () => true,
+        () => false,
+      ),
+    );
+    check(
+      "⚠ an expert's own session writes the school no notice and no audit line; the school's binding does",
+      !told && !logged && boundTold,
+      `with only the expert bound: notification ${told}, audit line ${logged} (want false); under the school's binding ${boundTold} (want true)`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

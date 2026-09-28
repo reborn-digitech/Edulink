@@ -4,6 +4,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { audit } from "./audit";
 import { AccessError, assertStudentAccess } from "./tenancy";
 import { notify, notifyGuardians } from "./notify";
+import { asTheSchool } from "./expert-binding";
 import { readJsonArray } from "./json";
 import { studentsForTeacher } from "./remarks";
 import type { ActiveContext } from "./session";
@@ -574,23 +575,27 @@ export async function postMentorMessage(
   // The other party, plus the guardians — who are told that a conversation about
   // their child is happening, every time, rather than having to go looking.
   if (isExpert) {
-    await notify({
-      userId: student.user.id,
-      schoolId: thread.schoolId,
-      kind: "EXPERT",
-      titleKey: "notifTitle.personSentYouMessage",
-      titleVars: { name: expert.user.name },
-      body: clean.slice(0, 120),
-      url: `/mentoring/${threadId}`,
+    // The pupil and their guardians are told under the school's binding: an
+    // expert's own session is bound to no school and may write nobody a notice.
+    await asTheSchool(session, thread.schoolId, async () => {
+      await notify({
+        userId: student.user.id,
+        schoolId: thread.schoolId,
+        kind: "EXPERT",
+        titleKey: "notifTitle.personSentYouMessage",
+        titleVars: { name: expert.user.name },
+        body: clean.slice(0, 120),
+        url: `/mentoring/${threadId}`,
+      });
+      await notifyGuardians(thread.studentMembershipId, (childName) => ({
+        schoolId: thread.schoolId,
+        kind: "EXPERT",
+        titleKey: "notifTitle.personMessagedChild",
+        titleVars: { name: expert.user.name, child: childName },
+        bodyKey: "notifBody.readWholeConversation",
+        url: `/mentoring/${threadId}`,
+      }));
     });
-    await notifyGuardians(thread.studentMembershipId, (childName) => ({
-      schoolId: thread.schoolId,
-      kind: "EXPERT",
-      titleKey: "notifTitle.personMessagedChild",
-      titleVars: { name: expert.user.name, child: childName },
-      bodyKey: "notifBody.readWholeConversation",
-      url: `/mentoring/${threadId}`,
-    }));
   } else {
     await notify({
       userId: thread.expertUserId,

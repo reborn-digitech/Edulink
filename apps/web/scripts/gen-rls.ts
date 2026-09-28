@@ -544,6 +544,114 @@ const MEMBER_READABLE: Record<string, string> = {
 };
 
 /**
+ * WHAT AN EXPERT MAY REACH, KEYED ON THE ENGAGEMENT AND NOT ON THE SCHOOL.
+ *
+ * An expert belongs to no school. They used to be given one anyway: every
+ * school with a confirmed booking or an active mentorship went into their
+ * tenant set, and the tenant clause then opened that school's EVERY table to
+ * them — its registers, its marks, its pupils' records — with only the
+ * application's own checks standing between an outside adult and all of it.
+ * The security assessment of 2026-09-24 called that what it was (finding 16):
+ * one booking opened the whole school at database level.
+ *
+ * Their tenant set is now EMPTY (src/lib/tenant-request.ts), and what they
+ * need is named here, each clause an equality on their own user id through
+ * the booking or the mentorship itself:
+ *
+ *   ExpertMessage  the conversation of a booking that is theirs and CONFIRMED
+ *   MentorMessage  the conversation of a mentorship that is theirs and ACTIVE
+ *   School         the school of such a booking or mentorship — its name on
+ *                  their list, its clock for a notification's quiet hours
+ *   Membership     the one member of staff who booked them, and the one pupil
+ *                  they mentor; nobody else at the school
+ *
+ * ExpertBooking and MentorThread themselves are already theirs to read
+ * through SELF_READABLE. A booking that is cancelled and a mentorship that
+ * has ended drop out of every clause at once, as they dropped out of the
+ * tenant set before: access ends when the engagement does, and nothing has
+ * to revoke it.
+ *
+ * READ ONLY, like every clause in a FOR SELECT policy. What an expert WRITES
+ * is four narrow policies further down, each pinned to their own authorship.
+ *
+ * THE SUBQUERIES ARE SAFE. ExpertBooking and MentorThread are narrowed by
+ * their own policies to the caller's own rows, which is what each clause asks
+ * for again explicitly; neither of those policies reads School or Membership,
+ * so nothing here can recurse.
+ */
+const mine = `current_setting('app.user_id', true) <> ''`;
+const expertBooking = (on: string, live = true) => `EXISTS (
+           SELECT 1 FROM "ExpertBooking" eb
+            WHERE ${on}
+              AND eb."expertUserId" = current_setting('app.user_id', true)${live ? `
+              AND eb."status" = 'CONFIRMED'` : ""})`;
+const mentorThread = (on: string, live = true) => `EXISTS (
+           SELECT 1 FROM "MentorThread" mt
+            WHERE ${on}
+              AND mt."expertUserId" = current_setting('app.user_id', true)${live ? `
+              AND mt."status" = 'ACTIVE'` : ""})`;
+
+const EXPERT_READABLE: Record<string, string> = {
+  ExpertMessage: `${mine}
+          AND ${expertBooking(`eb."id" = "ExpertMessage"."bookingId"`)}`,
+  MentorMessage: `${mine}
+          AND ${mentorThread(`mt."id" = "MentorMessage"."threadId"`)}`,
+  School: `${mine}
+          AND (${expertBooking(`eb."schoolId" = "School"."id"`)}
+           OR ${mentorThread(`mt."schoolId" = "School"."id"`)})`,
+  Membership: `${mine}
+          AND (${expertBooking(`eb."bookedByMembershipId" = "Membership"."id"`)}
+           OR ${mentorThread(`mt."studentMembershipId" = "Membership"."id"`)})`,
+};
+
+/**
+ * WHAT AN EXPERT MAY WRITE INTO A SCHOOL'S TENANT BY POLICY, which is two
+ * things.
+ *
+ *   A message in their own booking or mentorship, signed by them, filed under
+ *   the school the engagement belongs to — the school on the row must be the
+ *   engagement's, or a crafted insert could ride one school's booking into
+ *   another school's tenant.
+ *
+ *   Their own booking, to cancel it. UPDATE only, pinned to their user id on
+ *   both sides, so they can change their booking and cannot give it away.
+ *
+ * WHAT IS NOT HERE, AND WHY. Telling the school ("the expert cancelled") and
+ * the line in the school's log are writes too, and a policy for them was
+ * tried: it cannot work. Prisma writes with RETURNING, and Postgres returns
+ * a row only to somebody who may also READ it — a notification is its
+ * recipient's and an audit line is the school's, and opening either to an
+ * outside adult to read is the wrong trade. So those two are written by the
+ * server under the school's own binding (`forSchool`), after the library
+ * has established that the booking or the mentorship is this expert's — the
+ * same construction a family's admission application uses. See
+ * `asTheSchool` in src/lib/experts.ts.
+ */
+const EXPERT_WRITES: Record<string, { name: string; command: "INSERT" | "UPDATE"; using?: string; check: string; note: string }[]> = {
+  ExpertMessage: [{
+    name: "expert_insert", command: "INSERT", note: "An expert's own message in their own confirmed booking.",
+    check: `${mine}
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND ${expertBooking(`eb."id" = "ExpertMessage"."bookingId"
+              AND eb."schoolId" = "ExpertMessage"."schoolId"`)}`,
+  }],
+  MentorMessage: [{
+    name: "expert_insert", command: "INSERT", note: "An expert's own message in their own active mentorship.",
+    check: `${mine}
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND ${mentorThread(`mt."id" = "MentorMessage"."threadId"
+              AND mt."schoolId" = "MentorMessage"."schoolId"`)}`,
+  }],
+  ExpertBooking: [{
+    name: "expert_update", command: "UPDATE", note: "An expert cancelling their own booking.",
+    using: `${mine}
+          AND "expertUserId" = current_setting('app.user_id', true)`,
+    check: `${mine}
+          AND "expertUserId" = current_setting('app.user_id', true)`,
+  }],
+};
+
+/**
  * Tenant tables that are APPEND-ONLY for the application: INSERT and SELECT,
  * never UPDATE or DELETE.
  *
@@ -742,6 +850,8 @@ function generate(): string {
     if (guardianClause) alsoReadable.push(`(${guardianClause})`);
     const addresseeClause = ADDRESSEE_READABLE[table];
     if (addresseeClause) alsoReadable.push(`(${addresseeClause})`);
+    const expertClause = EXPERT_READABLE[table];
+    if (expertClause) alsoReadable.push(`(${expertClause})`);
     if (SUPERUSER_NULL_READABLE.has(table)) {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
@@ -781,6 +891,13 @@ function generate(): string {
         `  -- …and a PENDING invitation addressed to the caller's own VERIFIED`,
         `  -- email — what lets /join offer the invitation instead of "go back`,
         `  -- to your inbox". See ADDRESSEE_READABLE in scripts/gen-rls.ts.`,
+      );
+    }
+    if (expertClause) {
+      usingNote.push(
+        `  -- …and, to an EXPERT, the rows of their own engagement and no others:`,
+        `  -- keyed on a booking or a mentorship that is theirs and live, never on`,
+        `  -- the school. See EXPERT_READABLE in scripts/gen-rls.ts.`,
       );
     }
     if (memberClause) {
@@ -1048,6 +1165,18 @@ function generate(): string {
         `     AND "acceptedAt" IS NULL`,
         `     AND "revokedAt" IS NULL)`,
         `  WITH CHECK (${held});`,
+      );
+    }
+    for (const write of EXPERT_WRITES[table] ?? []) {
+      lines.push(
+        ``,
+        `  -- ${write.note} Keyed on the engagement, not the`,
+        `  -- school. See EXPERT_WRITES in scripts/gen-rls.ts.`,
+        `DROP POLICY IF EXISTS "${table}_${write.name}" ON "${table}";`,
+        `CREATE POLICY "${table}_${write.name}" ON "${table}"`,
+        `  FOR ${write.command}`,
+        ...(write.using ? [`  USING (${write.using})`] : []),
+        `  WITH CHECK (${write.check});`,
       );
     }
     if (table === "EnquiryMessage") {

@@ -50,6 +50,9 @@ CREATE POLICY "School_tenant_isolation" ON "School"
   -- …and one row of this table belonging to ANOTHER school, by the
   -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
   -- what that predicate opens and why it is safe to open it.
+  -- …and, to an EXPERT, the rows of their own engagement and no others:
+  -- keyed on a booking or a mentorship that is theirs and live, never on
+  -- the school. See EXPERT_READABLE in scripts/gen-rls.ts.
   -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "School_readable" ON "School"
   FOR SELECT
@@ -66,6 +69,17 @@ CREATE POLICY "School_readable" ON "School"
            SELECT 1 FROM "JobPosting" j
             WHERE j."schoolId" = "School"."id"
               AND j."status" = 'OPEN')))
+         OR (current_setting('app.user_id', true) <> ''
+          AND (EXISTS (
+           SELECT 1 FROM "ExpertBooking" eb
+            WHERE eb."schoolId" = "School"."id"
+              AND eb."expertUserId" = current_setting('app.user_id', true)
+              AND eb."status" = 'CONFIRMED')
+           OR EXISTS (
+           SELECT 1 FROM "MentorThread" mt
+            WHERE mt."schoolId" = "School"."id"
+              AND mt."expertUserId" = current_setting('app.user_id', true)
+              AND mt."status" = 'ACTIVE')))
         );
 
 -- Membership
@@ -82,6 +96,9 @@ CREATE POLICY "Membership_tenant_isolation" ON "Membership"
   -- which schools you belong to before any school is known.
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
+  -- …and, to an EXPERT, the rows of their own engagement and no others:
+  -- keyed on a booking or a mentorship that is theirs and live, never on
+  -- the school. See EXPERT_READABLE in scripts/gen-rls.ts.
   -- …and to an ACTIVE guardian of the pupil, which is what lets a parent
   -- follow one child across every school they have attended.
   -- All are in a SELECT-ONLY policy: readable, never writable.
@@ -97,6 +114,17 @@ CREATE POLICY "Membership_readable" ON "Membership"
                AND g."parentUserId" = current_setting('app.user_id', true)
                AND g."status" = 'ACTIVE'
           ))
+         OR (current_setting('app.user_id', true) <> ''
+          AND (EXISTS (
+           SELECT 1 FROM "ExpertBooking" eb
+            WHERE eb."bookedByMembershipId" = "Membership"."id"
+              AND eb."expertUserId" = current_setting('app.user_id', true)
+              AND eb."status" = 'CONFIRMED')
+           OR EXISTS (
+           SELECT 1 FROM "MentorThread" mt
+            WHERE mt."studentMembershipId" = "Membership"."id"
+              AND mt."expertUserId" = current_setting('app.user_id', true)
+              AND mt."status" = 'ACTIVE')))
         );
 
 -- Class
@@ -805,14 +833,54 @@ CREATE POLICY "ExpertBooking_readable" ON "ExpertBooking"
          OR "expertUserId" = current_setting('app.user_id', true)
         );
 
+  -- An expert cancelling their own booking. Keyed on the engagement, not the
+  -- school. See EXPERT_WRITES in scripts/gen-rls.ts.
+DROP POLICY IF EXISTS "ExpertBooking_expert_update" ON "ExpertBooking";
+CREATE POLICY "ExpertBooking_expert_update" ON "ExpertBooking"
+  FOR UPDATE
+  USING (current_setting('app.user_id', true) <> ''
+          AND "expertUserId" = current_setting('app.user_id', true))
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "expertUserId" = current_setting('app.user_id', true));
+
 -- ExpertMessage
 ALTER TABLE "ExpertMessage" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "ExpertMessage" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "ExpertMessage_tenant_isolation" ON "ExpertMessage";
 DROP POLICY IF EXISTS "ExpertMessage_readable" ON "ExpertMessage";
 CREATE POLICY "ExpertMessage_tenant_isolation" ON "ExpertMessage"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and, to an EXPERT, the rows of their own engagement and no others:
+  -- keyed on a booking or a mentorship that is theirs and live, never on
+  -- the school. See EXPERT_READABLE in scripts/gen-rls.ts.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ExpertMessage_readable" ON "ExpertMessage"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (current_setting('app.user_id', true) <> ''
+          AND EXISTS (
+           SELECT 1 FROM "ExpertBooking" eb
+            WHERE eb."id" = "ExpertMessage"."bookingId"
+              AND eb."expertUserId" = current_setting('app.user_id', true)
+              AND eb."status" = 'CONFIRMED'))
+        );
+
+  -- An expert's own message in their own confirmed booking. Keyed on the engagement, not the
+  -- school. See EXPERT_WRITES in scripts/gen-rls.ts.
+DROP POLICY IF EXISTS "ExpertMessage_expert_insert" ON "ExpertMessage";
+CREATE POLICY "ExpertMessage_expert_insert" ON "ExpertMessage"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND EXISTS (
+           SELECT 1 FROM "ExpertBooking" eb
+            WHERE eb."id" = "ExpertMessage"."bookingId"
+              AND eb."schoolId" = "ExpertMessage"."schoolId"
+              AND eb."expertUserId" = current_setting('app.user_id', true)
+              AND eb."status" = 'CONFIRMED'));
 
 -- ExpertInvite
 ALTER TABLE "ExpertInvite" ENABLE ROW LEVEL SECURITY;
@@ -870,8 +938,38 @@ ALTER TABLE "MentorMessage" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "MentorMessage_tenant_isolation" ON "MentorMessage";
 DROP POLICY IF EXISTS "MentorMessage_readable" ON "MentorMessage";
 CREATE POLICY "MentorMessage_tenant_isolation" ON "MentorMessage"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and, to an EXPERT, the rows of their own engagement and no others:
+  -- keyed on a booking or a mentorship that is theirs and live, never on
+  -- the school. See EXPERT_READABLE in scripts/gen-rls.ts.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "MentorMessage_readable" ON "MentorMessage"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (current_setting('app.user_id', true) <> ''
+          AND EXISTS (
+           SELECT 1 FROM "MentorThread" mt
+            WHERE mt."id" = "MentorMessage"."threadId"
+              AND mt."expertUserId" = current_setting('app.user_id', true)
+              AND mt."status" = 'ACTIVE'))
+        );
+
+  -- An expert's own message in their own active mentorship. Keyed on the engagement, not the
+  -- school. See EXPERT_WRITES in scripts/gen-rls.ts.
+DROP POLICY IF EXISTS "MentorMessage_expert_insert" ON "MentorMessage";
+CREATE POLICY "MentorMessage_expert_insert" ON "MentorMessage"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND EXISTS (
+           SELECT 1 FROM "MentorThread" mt
+            WHERE mt."id" = "MentorMessage"."threadId"
+              AND mt."schoolId" = "MentorMessage"."schoolId"
+              AND mt."expertUserId" = current_setting('app.user_id', true)
+              AND mt."status" = 'ACTIVE'));
 
 -- SchoolRecord
 ALTER TABLE "SchoolRecord" ENABLE ROW LEVEL SECURITY;

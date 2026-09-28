@@ -178,3 +178,6 @@ storage and clearing everything on sign-out.
   **Built 2026-09-29:** a nonce per response with `'strict-dynamic'` and no `'unsafe-inline'` for scripts; the
   session cookie carries the `__Host-` prefix in production; preload is `HSTS_PRELOAD=1`, the operator's to set.
 - Narrower row-level policies for experts, keyed on the booking or the mentorship rather than the school.
+  **Built 2026-09-29:** an expert is bound to no school; they read the messages of their own live engagement,
+  that school’s row, the member of staff who booked them and the pupil they mentor, and write a message of
+  their own or cancel their own booking. `rls:verify` proves each, and that nothing else of the school opens.
