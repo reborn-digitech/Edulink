@@ -547,6 +547,43 @@ async function buildNorthgate(ctx: Ctx) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* people waiting for a yes                                                    */
+/* -------------------------------------------------------------------------- */
+
+/** Fixed ids, so the API sweep can renew the two rows before it reads them (scripts/api-sweep.ts). */
+export const WAITING_JOIN_ID = "zz-fixture-join";
+export const WAITING_CLAIM_ID = "zz-fixture-claim";
+
+/**
+ * One pupil who typed the grade-3 class's code and one person who claimed
+ * pupil 01, both still waiting: the queue has something in it for the class's
+ * teacher, the office and pupil 01's parent, and the API sweep has an id for
+ * each decide endpoint. The sweep sends no decision, so they stay waiting. A
+ * second run finds the same two rows and makes them new again, which is what
+ * keeps them inside the thirty days a request lives (lib/request-expiry.ts).
+ */
+export async function buildWaiting(ctx: Ctx, school: { id: string }) {
+  const joiner = await upsertUser(ctx, `zz.joiner01@${DOMAIN}`, "ZZ Ira Gokhale", { birthdate: new Date("2017-08-14T00:00:00Z"), isMinor: true });
+  const claimant = await upsertUser(ctx, `zz.claimant01@${DOMAIN}`, "ZZ Vasant Apte");
+  const grade3 = await db.class.findFirstOrThrow({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, orderBy: { name: "asc" }, select: { id: true } });
+  const pupil01 = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", user: { email: `zz.pupil01@${DOMAIN}` } }, select: { id: true } });
+  const fresh = { status: "PENDING", createdAt: new Date(), decidedAt: null, declineReason: null };
+  const join = await db.joinRequest.upsert({
+    where: { id: WAITING_JOIN_ID },
+    create: { id: WAITING_JOIN_ID, schoolId: school.id, userId: joiner.id, classId: grade3.id, via: "CLASS" },
+    update: { ...fresh, decidedByMembershipId: null },
+    select: { id: true },
+  });
+  const claim = await db.guardianClaim.upsert({
+    where: { id: WAITING_CLAIM_ID },
+    create: { id: WAITING_CLAIM_ID, schoolId: school.id, studentMembershipId: pupil01.id, claimantUserId: claimant.id, relation: "GUARDIAN" },
+    update: { ...fresh, decidedByUserId: null },
+    select: { id: true },
+  });
+  return { join, claim };
+}
+
+/* -------------------------------------------------------------------------- */
 /* fees                                                                        */
 /* -------------------------------------------------------------------------- */
 
@@ -2125,6 +2162,8 @@ async function main() {
   await buildRemarkThread(northgate.school, { studentMembershipId: pupil01.id, teacherMembershipId: northgate.teachers[0]!.membership.id, teacherUserId: northgate.teachers[0]!.user.id, parentUserId: parent01.id, subject: "ZZ Reading at home", remark: "Reads aloud well in class now; twenty minutes a day at home would carry it further.", reply: "Thank you — we have started with the library book each evening." });
   const grade6 = await db.class.findFirstOrThrow({ where: { schoolId: northgate.school.id, gradeLevel: "6", archivedAt: null }, select: { id: true, teachers: { where: { role: "LEAD" }, select: { teacherMembershipId: true }, take: 1 } } });
   const practice = await buildPracticeAssignment(northgate.school, { classId: grade6.id, classLevel: 6, createdByMembershipId: grade6.teachers[0]!.teacherMembershipId, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: "Reach level 3 before the unit test.", dueAt: new Date("2026-10-16T12:30:00Z") });
+  const waiting = await buildWaiting(ctx, northgate.school);
+  console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}`);
   const southbank = await buildSouthbank(ctx);
   await buildRollNumbers(southbank.school);
   const banyan = await buildBanyan(ctx, southbank.school.id);

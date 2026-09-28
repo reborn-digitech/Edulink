@@ -2,7 +2,9 @@
  * The API leg of the sweep: every endpoint in the catalog, as every role and
  * signed out, asserting the status alone — the same shape as the page sweep.
  *
- *   npm run api:sweep            against NEXT_PUBLIC_APP_URL (default :3000)
+ *   npm run api:sweep                       against NEXT_PUBLIC_APP_URL (default :3000)
+ *   npm run api:sweep -- --only=/shared/joins   only the endpoints whose path contains the text:
+ *                                               a check of one change, not the sweep's count
  *
  * Sessions are minted on ZZ Northgate exactly as the page sweep mints its
  * own, sent as bearer tokens (not cookies — the point is the phone's door),
@@ -119,6 +121,8 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug } });
   const s = school.id;
   const first = async <T extends { id: string }>(q: Promise<T | null>) => (await q)?.id ?? null;
+  /** A fixture row with a fixed id, renewed by `write`; null when the fixtures have not made it. */
+  const renewed = async (write: () => Promise<{ count: number }>, id: string) => ((await write()).count > 0 ? { id } : null);
   // The grade-3 class first: the exams, cards, records, syllabus and certificates fixtures all live there, and the teacher actor is its lead.
   const klass = (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
   const student = klass ? await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true } }) : null;
@@ -134,8 +138,10 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     assignmentId: await first(db.assignment.findFirst({ where: { schoolId: s }, select: { id: true } })),
     postId: await first(db.post.findFirst({ where: { schoolId: s }, select: { id: true } })),
     heldCommentId: await first(db.comment.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
-    joinRequestId: await first(db.joinRequest.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
-    guardianClaimId: await first(db.guardianClaim.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    // The fixture's own two rows, by id (zz-fixtures.ts `buildWaiting`), made new first: a request
+    // lives thirty days, and a fixture built in August must still be waiting in October.
+    joinRequestId: await first(renewed(() => db.joinRequest.updateMany({ where: { id: "zz-fixture-join", schoolId: s }, data: { status: "PENDING", createdAt: new Date(), decidedAt: null } }), "zz-fixture-join")),
+    guardianClaimId: await first(renewed(() => db.guardianClaim.updateMany({ where: { id: "zz-fixture-claim", schoolId: s }, data: { status: "PENDING", createdAt: new Date(), decidedAt: null } }), "zz-fixture-claim")),
     conversationId: await first(db.conversation.findFirst({ where: { schoolId: s }, select: { id: true } })),
     remarkThreadId: await first(db.remarkThread.findFirst({ where: { schoolId: s }, select: { id: true } })),
     // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date.
@@ -265,6 +271,8 @@ async function hitOnce(e: Endpoint, token: string | null, path: string, body?: s
  * operator's and the content team's) are outside a school's fence and skipped.
  */
 const CROSS_MODE = (process.argv.find((a) => a.startsWith("--cross="))?.slice(8) ?? null) as "school" | "person" | null;
+/** `--only=a,b`: the endpoints whose catalog path contains any of these. */
+const ONLY = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",").filter(Boolean) ?? null;
 const CROSS_SCHOOL = process.argv.find((a) => a.startsWith("--other="))?.slice(8) ?? "zz-southbank-school";
 const PLATFORM_WIDE = [/^\/api\/v1\/shared\//, /^\/api\/v1\/competitions/, /^\/api\/v1\/contest/, /^\/api\/v1\/vacancies/, /^\/api\/v1\/expert/, /^\/api\/v1\/operator/, /^\/api\/v1\/appadmin/, /^\/api\/v1\/auth\//, /^\/api\/v1\/me\b/, /^\/api\/v1\/account/];
 
@@ -363,6 +371,7 @@ async function main() {
   const fx = await fixture();
   await readCheckInClosure();
   for (const e of ENDPOINTS) {
+    if (ONLY && !ONLY.some((text) => e.path.includes(text))) continue;
     const path = typeof e.sample === "function" ? e.sample(fx) : (e.sample ?? e.path);
     if (path === null || /\{\w+\}/.test(path)) {
       skipped.push(`${e.method} ${e.path}`);
