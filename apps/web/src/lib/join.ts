@@ -1,15 +1,12 @@
 import "server-only";
 import { db } from "./db";
-import { normalizeCode, studentCode } from "./codes";
-import { ageInYears } from "./dates";
-import { audit } from "./audit";
+import { normalizeCode } from "./codes";
 import { forJoinCode, forSchool } from "./tenant-context";
-import { syncStandinGuardian } from "./standin-guardian";
+import { requestToJoin } from "./join-requests";
 import { consume, consumeByCaller, retryHintKey, CODE_LOOKUPS, SCHOOL_CODE_JOINS } from "./rate-limit";
 import type { FieldErrors } from "./validation";
 import type { ActiveContext } from "./session";
 import type { Translate } from "./i18n/dictionary";
-import { syncGradeLevel } from "./grade-level";
 
 /**
  * Joining with a school or class code, as rules rather than as a page.
@@ -66,7 +63,7 @@ export async function lookupJoinCode(raw: string, t: Translate): Promise<JoinCod
    * behind a proxy that sets `x-forwarded-for` this is the caller; in front of
    * one it is forgeable. It raises the cost of enumeration from nothing to
    * something rather than being a wall, and the reason that is tolerable is
-   * that a code grants a PENDING membership and sight of nothing. The phone's
+   * that a code grants a REQUEST to join and sight of nothing. The phone's
    * POST /api/v1/join/lookup comes through here too, so it counts against the
    * same allowance.
    */
@@ -150,26 +147,31 @@ export async function lookupJoinCode(raw: string, t: Translate): Promise<JoinCod
 /* -------------------------------------------------------------------------- */
 
 export type JoinWithAccountResult =
-  | { ok: true; schoolId: string; membershipId: string; alreadyHere: boolean }
+  | { ok: true; schoolId: string; schoolName: string; className: string | null; requestId: string; alreadyWaiting: boolean }
   | { ok: false; errors: FieldErrors; retryAfterSeconds?: number };
 
 /**
- * A signed-in person joins a school or a class as a pupil with their own
- * account — no new user, no password, no second identity.
+ * A signed-in person ASKS to join a school or a class as a pupil with their
+ * own account — no new user, no password, no second identity.
  *
  * THE WIZARD MINTS AN ACCOUNT. That is right for a child with nothing, and
  * wrong for everyone who already has something: a pupil changing school, or
  * one a parent set up, who was told "join with the class code" and got a
  * second login with an empty record. The leaving certificate, the report
  * cards and the badges are on THIS user id, so this is where the membership
- * goes.
+ * will go.
+ *
+ * ⚠ IT WAITS. This used to put the account on the roll at once; it now files
+ * a request, and the office (a school's code) or the class's teacher (a
+ * class's code) lets them in — see lib/join-requests.ts, whose `admit` is
+ * what this function used to do. A pupil already on the roll who types
+ * another class's code asks that class's teacher the same way.
  *
  * Refused, with a sentence, when the account is plainly not a pupil's: it
- * guards a child, or it already holds a staff post at this school. A pupil
- * already on the roll here is simply enrolled in the class the code names.
+ * guards a child, or it already holds a staff post at this school.
  *
- * Sets no session: the caller switches its own (a cookie on the web, the
- * bearer session's active context on the phone) once this says yes.
+ * Sets no session and switches none: there is nothing to switch to until
+ * somebody has said yes.
  */
 export async function joinWithAccount(session: ActiveContext, rawCode: string, t: Translate): Promise<JoinWithAccountResult> {
   const lookup = await lookupJoinCode(rawCode, t);
@@ -178,11 +180,10 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
   }
 
   /**
-   * A SCHOOL code, unlike a class code, puts the account on the roll as an
-   * active pupil with nobody's say-so. The lookup's limit is per address; this
-   * one is per account, so a login that keeps joining schools is stopped by
-   * its own name rather than by whichever address it borrowed. Counted before
-   * the joins that follow, and refused with the lookup's own sentence.
+   * The lookup's limit is per address; this one is per account, so a login
+   * that keeps asking schools is stopped by its own name rather than by
+   * whichever address it borrowed. Counted before the request is filed, and
+   * refused with the lookup's own sentence.
    */
   if (lookup.kind === "school") {
     const gate = await consume(`join-school:${session.user.id}`, SCHOOL_CODE_JOINS.limit, SCHOOL_CODE_JOINS.windowMs);
@@ -191,7 +192,7 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
     }
   }
 
-  const [guards, postHere, user] = await Promise.all([
+  const [guards, postHere] = await Promise.all([
     db.guardianship.count({ where: { parentUserId: session.user.id, status: "ACTIVE" } }),
     forSchool(lookup.schoolId, () =>
       db.membership.findFirst({
@@ -199,91 +200,33 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
         select: { id: true },
       }),
     ),
-    db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { birthdate: true } }),
   ]);
   if (guards > 0) return { ok: false, errors: { _form: t("join.thisIsAParentsAccount") } };
   if (postHere) return { ok: false, errors: { _form: t("join.youWorkHere") } };
 
-  const age = user.birthdate ? ageInYears(user.birthdate) : null;
-  let membershipId: string;
-  let alreadyHere = false;
+  // On the roll already and asking for no class: there is nothing to ask for.
+  if (lookup.kind === "school") {
+    const onRoll = await forSchool(lookup.schoolId, () =>
+      db.membership.findFirst({ where: { userId: session.user.id, schoolId: lookup.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true } }),
+    );
+    if (onRoll) return { ok: false, errors: { _form: t("join.alreadyOnTheRoll") } };
+  }
 
   try {
-    const result = await forSchool(lookup.schoolId, () =>
-      db.$tenantTransaction(async (rawTx) => {
-        const tx = rawTx as typeof db;
-        const existing = await tx.membership.findFirst({
-          where: { userId: session.user.id, schoolId: lookup.schoolId, role: "STUDENT" },
-          select: { id: true, status: true, leftAt: true },
-        });
-        let id: string;
-        if (existing && existing.status === "ACTIVE" && !existing.leftAt) {
-          id = existing.id;
-          alreadyHere = true;
-        } else if (existing) {
-          // Came back after leaving: the same membership returns to the roll,
-          // so their history here is theirs again. The leaving certificate
-          // goes with the leaving: "left on the 30th" is no longer true of a
-          // child on tomorrow's register, and one certificate per membership
-          // is the rule — the next departure, if there is one, writes a fresh
-          // one over the whole stay. (A battery found the old row blocking
-          // every later departure.)
-          await tx.schoolRecord.deleteMany({ where: { studentMembershipId: existing.id, schoolId: lookup.schoolId } });
-          await tx.membership.update({
-            where: { id: existing.id },
-            // A suspension is over when the pupil is back on the roll: the
-            // stamp and the reason go with the status, as they do on the
-            // office's own reinstate and on the admission and intake paths.
-            data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: studentCode() },
-          });
-          id = existing.id;
-        } else {
-          const made = await tx.membership.create({
-            data: {
-              userId: session.user.id,
-              schoolId: lookup.schoolId,
-              role: "STUDENT",
-              status: "ACTIVE",
-              studentCode: studentCode(),
-            },
-            select: { id: true },
-          });
-          id = made.id;
-        }
-
-        if (lookup.kind === "class") {
-          await tx.enrollment.upsert({
-            where: { classId_studentMembershipId: { classId: lookup.classId, studentMembershipId: id } },
-            create: { classId: lookup.classId, schoolId: lookup.schoolId, studentMembershipId: id, status: "ACTIVE" },
-            update: { status: "ACTIVE", removedAt: null },
-          });
-          await syncGradeLevel(tx, [id]);
-        }
-
-        if (age !== null) {
-          await tx.user.update({ where: { id: session.user.id }, data: { isMinor: age < 18 } });
-        }
-        return id;
-      }),
+    const filed = await requestToJoin(
+      session.user.id,
+      lookup.kind === "class" ? { kind: "class", schoolId: lookup.schoolId, classId: lookup.classId } : { kind: "school", schoolId: lookup.schoolId },
     );
-    membershipId = result;
+    return {
+      ok: true,
+      schoolId: lookup.schoolId,
+      schoolName: lookup.schoolName,
+      className: lookup.kind === "class" ? lookup.className : null,
+      requestId: filed.requestId,
+      alreadyWaiting: filed.alreadyWaiting,
+    };
   } catch (error) {
     console.error("[joinWithMyAccount]", error);
     return { ok: false, errors: { _form: t("join.couldNotSetUp") } };
   }
-
-  await audit({
-    schoolId: lookup.schoolId,
-    actorUserId: session.user.id,
-    action: "student.join",
-    meta: { via: lookup.kind, existingAccount: true, alreadyHere },
-  });
-
-  await syncStandinGuardian({
-    schoolId: lookup.schoolId,
-    studentMembershipId: membershipId,
-    actorUserId: session.user.id,
-  }).catch((error) => console.error("[joinWithMyAccount] standin sync failed", error));
-
-  return { ok: true, schoolId: lookup.schoolId, membershipId, alreadyHere };
 }

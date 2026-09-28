@@ -62,6 +62,9 @@ const FLAT: Record<string, string> = {
   "/mentoring": "/(app)/mentoring",
   "/competitions": "/(app)/competitions",
   "/enquiries": "/(app)/enquiries",
+  // People waiting for a yes: the staff's queue and a guardian's are one screen.
+  "/joins": "/(app)/joins",
+  "/parent/claims": "/(app)/joins",
   "/root": "/(app)/operator",
   "/appadmin": "/(app)/appadmin",
   // The screens that used to open the web (September 2026).

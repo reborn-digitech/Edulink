@@ -89,6 +89,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
     // The office can now write to anyone at the school, so the inbox is theirs too.
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
+    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
@@ -128,6 +130,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
+    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
@@ -149,6 +153,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/attendance/me", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/teacher/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
+    { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
     { href: "/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school" },
@@ -193,6 +199,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/health", labelKey: "nav.health", icon: "heart", prefix: true, group: "daily" },
     { href: "/parent/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
+    // Hidden by the shell until somebody asks to be linked to one of their children.
+    { href: "/parent/claims", labelKey: "joinRequests.parentClaimsNav", icon: "userPlus", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/explore", labelKey: "nav.explore", icon: "buildings", prefix: true, group: "school" },
     { href: "/parent/applications", labelKey: "nav.applications", icon: "clipboard", prefix: true, group: "school" },

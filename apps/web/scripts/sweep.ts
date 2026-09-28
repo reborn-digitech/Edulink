@@ -1930,9 +1930,17 @@ async function main() {
     "/remarks", "/admin/people/export",
     // Cross-school outreach: the directory desk, the vacancy desk, the board.
     "/admin/vacancies", "/admin/vacancies/new", "/vacancies", "/explore", "/enquiries",
+    // People who typed a code, or asked to be linked to a pupil, and wait for a yes.
+    "/joins",
   ]) {
     await check(admin, p);
   }
+  // The queue is the deciders': a pupil and a guardian are sent home, and
+  // somebody signed out to the login page.
+  await check(student, "/joins", 307, "a pupil decides nobody's join");
+  await check(parent, "/joins", 307, "a guardian's queue is /parent/claims");
+  await check(null, "/joins", 307, "signed out");
+  await check(null, "/join/waiting", 307, "signed out");
   // The directory profile moved onto Settings; the old route lands on the card.
   await check(admin, "/admin/directory", 307, "directory profile edited on Settings now");
   // Messages are teacher↔parent, so an admin is sent to pick a role rather than
@@ -1946,7 +1954,7 @@ async function main() {
     "/teacher/classes", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin/new", "/remarks", "/remarks/new",
     "/notifications", "/account", "/account/merge", "/switch", "/mentoring",
     // A teacher browses the platform-wide board and their own enquiries.
-    "/vacancies", "/explore", "/enquiries",
+    "/vacancies", "/explore", "/enquiries", "/joins",
   ]) {
     await check(teacher, p);
   }
@@ -1994,6 +2002,8 @@ async function main() {
     "/remarks/new",
     // A parent explores other schools and keeps their enquiry threads.
     "/explore", "/enquiries",
+    // Somebody asking to be linked to their child waits on them as well as the office.
+    "/parent/claims",
   ]) {
     await check(parent, p);
   }
@@ -2008,7 +2018,9 @@ async function main() {
 
   /* ---- health card: the printable document, opened by the people the lib admits ---- */
   const healthChild = await db.guardianship.findFirst({
-    where: { parent: { email: "parent@example.com" }, status: "ACTIVE" },
+    // Their child AT RIVERSIDE, by name: they have one at Oakfield too, and
+    // which came first was the database's choice and not the sweep's.
+    where: { parent: { email: "parent@example.com" }, status: "ACTIVE", studentSchoolId: riverside.id },
     select: { studentMembershipId: true },
   });
   if (healthChild) {

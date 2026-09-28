@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/brand";
 import { ClaimChildForm } from "./form";
 import { getSession, listContexts } from "@/lib/session";
+import { myClaims } from "@/lib/guardian-claims";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -23,7 +24,7 @@ export default async function ParentLinkPage() {
   const t = await getT();
   if (!session) redirect("/join/parent");
 
-  const { children } = await listContexts(session.user.id);
+  const [{ children }, claims] = await Promise.all([listContexts(session.user.id), myClaims(session.user.id)]);
 
   return (
     <div data-role="parent" className="min-h-safe bg-bg">
@@ -60,6 +61,20 @@ export default async function ParentLinkPage() {
               ))}
             </ul>
           </div>
+        )}
+
+        {/* What this person has asked for and not been given: that it waits, or
+            was not accepted, and at which school. Never whose child it was. */}
+        {claims.length > 0 && (
+          <ul className="mt-6 space-y-2" data-testid="my-claims">
+            {claims.map((claim) => (
+              <li key={claim.id} className="rounded-[--radius-md] border border-border bg-surface px-4 py-3 text-sm text-fg">
+                {claim.status === "PENDING"
+                  ? t("joinRequests.claimWaiting", { school: claim.schoolName })
+                  : t("joinRequests.claimDeclined", { school: claim.schoolName })}
+              </li>
+            ))}
+          </ul>
         )}
 
         <ClaimChildForm className="mt-7" hasChildren={children.length > 0} />

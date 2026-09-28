@@ -240,6 +240,8 @@ model School {
   syllabusProgress     SyllabusProgress[]
   lessonPlans          LessonPlan[]
   substitutions        Substitution[]
+  joinRequests         JoinRequest[]
+  guardianClaims       GuardianClaim[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -366,6 +368,8 @@ model User {
   outboundMessages     OutboundMessage[]         @relation("MessageRecipient")
   broadcastsSent       Broadcast[]               @relation("BroadcastAuthor")
   applications         Application[]             @relation("ApplicationApplicant")
+  joinRequests         JoinRequest[]             @relation("JoinRequester")
+  guardianClaims       GuardianClaim[]           @relation("GuardianClaimant")
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -466,10 +470,81 @@ model Membership {
   admittedFrom           Application?         @relation("ApplicationAdmitted")
   certificateRequests    CertificateRequest[] @relation("CertificateRequestStudent")
   penChanges             PenChangeRequest[]
+  guardianClaims         GuardianClaim[]      @relation("GuardianClaimStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
   @@index([userId])
+}
+
+/// SOMEBODY ASKING TO JOIN, BEFORE ANYBODY HAS SAID YES.
+///
+/// A school's code and a class's code are printed on posters and photographed
+/// off whiteboards, and a join used to put whoever typed one on the roll at
+/// once, as an active pupil, with nobody's say-so. A code now makes THIS row
+/// and nothing else: no membership, no enrolment, no stand-in guardian, no
+/// sight of the school. The office decides a join by the school's code; the
+/// class's teacher, or the office, one by a class's code. Approval is what
+/// creates the membership, by the same steps the join used to take at once.
+///
+/// A separate table and not a PENDING membership, on purpose: hundreds of
+/// queries read Membership and Enrollment for "who is on the roll", and a row
+/// that is not there cannot be counted, listed, marked absent or billed by
+/// one of them that forgot to ask about its status.
+model JoinRequest {
+  id       String  @id @default(cuid())
+  schoolId String
+  userId   String
+  /// Set when the code was a class's: the class approval enrols them in.
+  classId  String?
+  /// SCHOOL | CLASS — which kind of code was typed, kept after a class is deleted.
+  via      String
+  status   String  @default("PENDING") // PENDING | APPROVED | DECLINED
+
+  createdAt             DateTime  @default(now())
+  decidedAt             DateTime?
+  decidedByMembershipId String?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  user   User   @relation("JoinRequester", fields: [userId], references: [id], onDelete: Cascade)
+  class  Class? @relation(fields: [classId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status])
+  @@index([userId])
+  @@index([classId])
+}
+
+/// SOMEBODY ASKING TO BE A CHILD'S GUARDIAN, BEFORE ANYBODY HAS SAID YES.
+///
+/// The student code and the date of birth are both on paper that changes
+/// hands, and a guardianship is the child's whole record. A right pair used
+/// to make the guardianship at once and tell the family afterwards; it now
+/// makes this row, and the guardianship is made when the office, or a
+/// guardian the child already has, approves it.
+///
+/// A separate table for the reason JoinRequest is one: Guardianship is what
+/// the row-level policies read to decide who may see a child's record, and a
+/// claim must not be a row any of them could mistake for a guardian.
+model GuardianClaim {
+  id                  String @id @default(cuid())
+  /// The child's school, for the office's queue and the tenant policy.
+  schoolId            String
+  studentMembershipId String
+  claimantUserId      String
+  relation            String @default("PARENT") // PARENT | GUARDIAN | OTHER
+  status              String @default("PENDING") // PENDING | APPROVED | DECLINED
+
+  createdAt       DateTime  @default(now())
+  decidedAt       DateTime?
+  decidedByUserId String?
+
+  school   School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student  Membership @relation("GuardianClaimStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  claimant User       @relation("GuardianClaimant", fields: [claimantUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, status])
+  @@index([studentMembershipId, status])
+  @@index([claimantUserId])
 }
 
 model Guardianship {
@@ -545,6 +620,7 @@ model Class {
   gradeCategories     GradeCategory[]
   syllabusProgress    SyllabusProgress[]
   lessonPlans         LessonPlan[]
+  joinRequests        JoinRequest[]
 
   @@index([schoolId, archivedAt])
 }

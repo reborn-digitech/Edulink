@@ -127,6 +127,52 @@ CREATE POLICY "Membership_readable" ON "Membership"
               AND mt."status" = 'ACTIVE')))
         );
 
+-- JoinRequest
+ALTER TABLE "JoinRequest" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "JoinRequest" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "JoinRequest_tenant_isolation" ON "JoinRequest";
+DROP POLICY IF EXISTS "JoinRequest_readable" ON "JoinRequest";
+CREATE POLICY "JoinRequest_tenant_isolation" ON "JoinRequest"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "JoinRequest_readable" ON "JoinRequest"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "userId" = current_setting('app.user_id', true)
+        );
+
+-- GuardianClaim
+ALTER TABLE "GuardianClaim" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "GuardianClaim" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "GuardianClaim_tenant_isolation" ON "GuardianClaim";
+DROP POLICY IF EXISTS "GuardianClaim_readable" ON "GuardianClaim";
+CREATE POLICY "GuardianClaim_tenant_isolation" ON "GuardianClaim"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- …and to an ACTIVE guardian of the pupil, which is what lets a parent
+  -- follow one child across every school they have attended.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "GuardianClaim_readable" ON "GuardianClaim"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "claimantUserId" = current_setting('app.user_id', true)
+         OR (EXISTS (
+            SELECT 1 FROM "Guardianship" g
+             WHERE g."studentMembershipId" = "GuardianClaim"."studentMembershipId"
+               AND g."parentUserId" = current_setting('app.user_id', true)
+               AND g."status" = 'ACTIVE'
+          ))
+        );
+
 -- Class
 ALTER TABLE "Class" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Class" FORCE ROW LEVEL SECURITY;

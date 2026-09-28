@@ -114,6 +114,13 @@ const SELF_READABLE: Record<string, string> = {
    * tenant-scoped, so nobody can mint a notification into another school.
    */
   Notification: "userId",
+  // Somebody who asked to join reads their own request — which is all they
+  // can read of the school until it is approved: that it is waiting, or that
+  // it was declined. Read-only; the request is written by the server under
+  // the school's binding, and decided by the school.
+  JoinRequest: "userId",
+  // The same for somebody who asked to be a child's guardian.
+  GuardianClaim: "claimantUserId",
 };
 
 /**
@@ -188,6 +195,11 @@ const OWN_RECORD_READABLE: Record<string, string> = {
 const GUARDIAN_READABLE: Record<string, string> = {
   Membership: guardianOf(`"Membership"."id"`),
   SchoolRecord: guardianOf(`"SchoolRecord"."studentMembershipId"`),
+  // A claim on a child is shown to the guardians the child already has: they
+  // are the people who would know it was wrong, and one of them may decide
+  // it. Read-only — their decision is written by the server under the
+  // school's binding, after the library has found them to be a guardian.
+  GuardianClaim: guardianOf(`"GuardianClaim"."studentMembershipId"`),
 };
 
 /**

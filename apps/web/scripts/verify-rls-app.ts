@@ -1856,6 +1856,59 @@ async function main() {
       `with only the expert bound: notification ${told}, audit line ${logged} (want false); under the school's binding ${boundTold} (want true)`,
     );
 
+    // SOMEBODY WAITING FOR A YES READS THEIR OWN REQUEST AND NOTHING OF THE
+    // SCHOOL. A code used to make a membership; it now makes a JoinRequest,
+    // and a student code and a birthday a GuardianClaim. Neither is a row any
+    // policy counts as belonging, and neither is the asker's to write.
+    psql(
+      DB,
+      `INSERT INTO "JoinRequest" (id,"schoolId","userId","classId",via,status) VALUES
+         ('verify-jr1','verify-a','verify-x3','verify-class-a','CLASS','PENDING'),
+         ('verify-jr2','verify-a','verify-x2',NULL,'SCHOOL','PENDING');
+       INSERT INTO "GuardianClaim" (id,"schoolId","studentMembershipId","claimantUserId",relation,status) VALUES
+         ('verify-gc1','verify-a','verify-m-pupil-a','verify-x3','PARENT','PENDING'),
+         ('verify-gc2','verify-a','verify-m-other','verify-x2','PARENT','PENDING');`,
+    );
+    const asker = await asPerson("verify-x3", async (tx) => ({
+      joins: await ids(tx, "joinRequest"),
+      claims: await ids(tx, "guardianClaim"),
+      schoolA: (await ids(tx, "school")).includes("verify-a"),
+      members: (await ids(tx, "membership")).filter((id) => ["verify-m-a", "verify-m-other", "verify-m-pupil-a"].includes(id)),
+      classes: (await ids(tx, "class")).length,
+      guardianships: await outreachTx(tx).guardianship!.count({ where: { studentMembershipId: "verify-m-pupil-a" } }),
+    }));
+    check(
+      "⚠ somebody waiting reads their own request and their own claim — and nothing of the school they asked",
+      same(asker.joins, ["verify-jr1"]) && same(asker.claims, ["verify-gc1"]) && !asker.schoolA && asker.members.length === 0 && asker.classes === 0,
+      `joins ${JSON.stringify(asker.joins)}, claims ${JSON.stringify(asker.claims)} (want their own one of each); read the school ${asker.schoolA}, its members ${JSON.stringify(asker.members)}, ${asker.classes} class(es)`,
+    );
+    const guardianSees = await asPerson("verify-parent", async (tx) => ({ claims: await ids(tx, "guardianClaim"), joins: await ids(tx, "joinRequest") }));
+    check(
+      "⚠ a guardian reads the claims on their OWN child, not another child's, and no join",
+      same(guardianSees.claims, ["verify-gc1"]) && guardianSees.joins.length === 0,
+      `claims ${JSON.stringify(guardianSees.claims)} (want only verify-gc1), joins ${JSON.stringify(guardianSees.joins)}`,
+    );
+    const selfAsked = await wrote("verify-x3", "joinRequest", { id: "verify-jr3", schoolId: "verify-b", userId: "verify-x3", via: "SCHOOL" });
+    const selfClaimed = await wrote("verify-x3", "guardianClaim", { id: "verify-gc3", schoolId: "verify-b", studentMembershipId: "verify-m-pupil-b", claimantUserId: "verify-x3" });
+    const selfApproved = await asPerson("verify-x3", (tx) => outreachTx(tx).joinRequest!.updateMany({ where: { id: "verify-jr1" }, data: { status: "APPROVED" } })).then((r) => r.count, () => 0);
+    const selfLinked = await asPerson("verify-x3", (tx) => outreachTx(tx).guardianClaim!.updateMany({ where: { id: "verify-gc1" }, data: { status: "APPROVED" } })).then((r) => r.count, () => 0);
+    const guardianApproved = await asPerson("verify-parent", (tx) => outreachTx(tx).guardianClaim!.updateMany({ where: { id: "verify-gc1" }, data: { status: "APPROVED" } })).then((r) => r.count, () => 0);
+    const selfEnrolled = await wrote("verify-x3", "membership", { id: "verify-m-x3", userId: "verify-x3", schoolId: "verify-a", role: "STUDENT", status: "ACTIVE" });
+    check(
+      "⚠ nobody files or decides a request from their own session: the asker cannot approve theirs, nor make the membership it asks for",
+      !selfAsked && !selfClaimed && selfApproved === 0 && selfLinked === 0 && guardianApproved === 0 && !selfEnrolled,
+      `with only the person bound: filed a join ${selfAsked}, filed a claim ${selfClaimed}, approved own join ${selfApproved}, approved own claim ${selfLinked}, a guardian approved from their own session ${guardianApproved}, made own membership ${selfEnrolled} (want false and 0 throughout)`,
+    );
+    const hereQueue = await withTenantOn(client, "verify-a", async (tx: TxLike) => ({ joins: await ids(tx, "joinRequest"), claims: await ids(tx, "guardianClaim") }));
+    const thereQueue = await withTenantOn(client, "verify-b", async (tx: TxLike) => ({ joins: await ids(tx, "joinRequest"), claims: await ids(tx, "guardianClaim") }));
+    const decidedHere = await withTenantOn(client, "verify-a", (tx: TxLike) => outreachTx(tx).joinRequest!.updateMany({ where: { id: "verify-jr1" }, data: { status: "DECLINED" } }));
+    const decidedThere = await withTenantOn(client, "verify-b", (tx: TxLike) => outreachTx(tx).joinRequest!.updateMany({ where: { id: "verify-jr2" }, data: { status: "APPROVED" } }));
+    check(
+      "⚠ the queue is the school's: it reads and decides its own requests, and another school finds none",
+      same(hereQueue.joins, ["verify-jr1", "verify-jr2"]) && same(hereQueue.claims, ["verify-gc1", "verify-gc2"]) && thereQueue.joins.length === 0 && thereQueue.claims.length === 0 && decidedHere.count === 1 && decidedThere.count === 0,
+      `school A read joins ${JSON.stringify(hereQueue.joins)} and claims ${JSON.stringify(hereQueue.claims)}, decided ${decidedHere.count} (want 1); school B read ${JSON.stringify(thereQueue.joins)} and ${JSON.stringify(thereQueue.claims)}, decided ${decidedThere.count} of A's (want 0)`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

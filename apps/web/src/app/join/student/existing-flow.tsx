@@ -22,7 +22,8 @@ function formatCode(raw: string): string {
  * The code flow for somebody who ALREADY HAS AN ACCOUNT: two steps, not
  * four. Check the code, then "Join Class 5 as Aanya" — no name, no avatar,
  * no password, because all three already exist on the account that is
- * signed in, and that account is the one whose record must carry on.
+ * signed in, and that account is the one whose record must carry on. The
+ * press files a request, and the page it lands on is where they wait.
  */
 export function ExistingAccountJoinFlow({ name }: { name: string }) {
   const t = useT();
@@ -60,8 +61,17 @@ export function ExistingAccountJoinFlow({ name }: { name: string }) {
         setErrors(result.errors);
         return;
       }
-      toast({ tone: "ok", title: t("join.youreIn") });
-      router.push(result.redirectTo ?? "/student");
+      toast({
+        tone: "ok",
+        title: t("joinRequests.joinFiledTitle"),
+        description:
+          found?.kind === "class"
+            ? t("joinRequests.joinFiledClass", { className: found.className, school: found.schoolName })
+            : found
+              ? t("joinRequests.joinFiledSchool", { school: found.schoolName })
+              : undefined,
+      });
+      router.push(result.redirectTo ?? "/join/waiting");
       router.refresh();
     });
   }

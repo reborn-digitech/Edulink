@@ -58,6 +58,9 @@ export type SweepFixture = {
   postId: string | null;
   /** A comment held for review at the school; the sweep sends no decision, so it stays held. */
   heldCommentId: string | null;
+  /** A join and a guardian claim waiting at the school; the sweep sends no decision, so they stay waiting. */
+  joinRequestId: string | null;
+  guardianClaimId: string | null;
   conversationId: string | null;
   remarkThreadId: string | null;
   competitionId: string | null;

@@ -134,6 +134,8 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     assignmentId: await first(db.assignment.findFirst({ where: { schoolId: s }, select: { id: true } })),
     postId: await first(db.post.findFirst({ where: { schoolId: s }, select: { id: true } })),
     heldCommentId: await first(db.comment.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    joinRequestId: await first(db.joinRequest.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    guardianClaimId: await first(db.guardianClaim.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
     conversationId: await first(db.conversation.findFirst({ where: { schoolId: s }, select: { id: true } })),
     remarkThreadId: await first(db.remarkThread.findFirst({ where: { schoolId: s }, select: { id: true } })),
     // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date.

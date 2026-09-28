@@ -2,6 +2,8 @@ import { afterAll, afterEach, beforeEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { randomBytes, createHash } from "node:crypto";
 import { claimChild } from "@/app/join/actions";
+import { decideClaim, waitingClaimsForGuardian, waitingClaimsForOffice } from "@/lib/guardian-claims";
+import type { ActiveContext } from "@/lib/session";
 import { CLAIM_ATTEMPTS, CLAIM_PER_CODE } from "@/lib/rate-limit";
 import { SESSION_COOKIE } from "@/lib/constants";
 import { __setCookie, __resetCookies } from "../tests/stubs/next-headers";
@@ -33,6 +35,23 @@ let existingGuardianUserId: string;
 let officeUserId: string;
 let childMembershipId: string;
 let studentCode: string;
+
+/** The context a session of this person's would resolve to. */
+async function who(userId: string, role: ActiveContext["role"]): Promise<ActiveContext> {
+  const user = await db.user.findUniqueOrThrow({ where: { id: userId } });
+  const membership = role && role !== "PARENT" ? await db.membership.findFirst({ where: { userId, schoolId, role } }) : null;
+  return {
+    sessionId: "zz-claim",
+    membershipId: membership?.id ?? null,
+    schoolId: membership ? schoolId : null,
+    role,
+    user: {
+      id: user.id, name: user.name, preferredName: null, email: user.email, avatarKey: null,
+      isMinor: false, isSuperuser: false, isAppAdmin: false,
+      prefs: { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null },
+    },
+  };
+}
 
 /** A real session row, and the cookie that names it. */
 async function signIn(userId: string): Promise<void> {
@@ -103,6 +122,7 @@ afterEach(async () => {
   await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "claim:" } } });
   await db.notification.deleteMany({ where: { userId: { in: made } } });
   await db.auditLog.deleteMany({ where: { schoolId } });
+  await db.guardianClaim.deleteMany({ where: { schoolId } });
   await db.guardianship.deleteMany({ where: { parentUserId: { in: made } } });
   await db.session.deleteMany({ where: { userId: { in: made } } });
   await db.membership.deleteMany({ where: { schoolId } });
@@ -128,10 +148,71 @@ describe("claiming a child", () => {
       relation: "PARENT",
     });
     expect(result.ok, JSON.stringify(result.errors)).toBe(true);
-    expect(result.child?.name).toBe("Asha");
+    expect(result.pending).toEqual({ schoolName: "ZZ Claim School", alreadyWaiting: false });
   });
 
-  it("⚠ …and the child's existing guardian and the school's office are told who linked themselves", async () => {
+  it("⚠ …and the right pair FILES A CLAIM: no guardianship, and the answer does not name the child", async () => {
+    const result = await claimChild({ studentCode, birthdate: "2015-04-05", relation: "GUARDIAN" });
+    expect(JSON.stringify(result)).not.toContain("Asha");
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+    expect(await db.guardianClaim.findFirst({ where: { claimantUserId: parentUserId }, select: { status: true, relation: true, studentMembershipId: true } })).toEqual({
+      status: "PENDING",
+      relation: "GUARDIAN",
+      studentMembershipId: childMembershipId,
+    });
+    // Claiming again while it waits is the same claim, and rings nobody twice.
+    const again = await claimChild({ studentCode, birthdate: "2015-04-05", relation: "GUARDIAN" });
+    expect(again.pending?.alreadyWaiting).toBe(true);
+    expect(await db.guardianClaim.count({ where: { claimantUserId: parentUserId } })).toBe(1);
+    expect(await db.notification.count({ where: { userId: officeUserId } })).toBe(1);
+  });
+
+  it("⚠ the office approves it, and only then is there a guardianship", async () => {
+    await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    const office = await who(officeUserId, "ADMIN");
+    const [claim] = await waitingClaimsForOffice(office);
+    expect(claim).toMatchObject({ claimantName: "Guardian", childName: "Asha", relation: "PARENT", schoolName: "ZZ Claim School" });
+    await decideClaim(office, claim!.id, "APPROVE");
+    expect(await db.guardianship.findFirst({ where: { parentUserId, studentMembershipId: childMembershipId }, select: { status: true, relation: true } })).toEqual({ status: "ACTIVE", relation: "PARENT" });
+    expect((await db.notification.findFirst({ where: { userId: parentUserId } }))?.title).toContain("Asha");
+    const approved = await db.auditLog.findFirst({ where: { schoolId, action: "parent.claim" } });
+    expect(approved?.actorUserId).toBe(parentUserId);
+    expect(approved?.meta).toContain(officeUserId);
+    await expect(decideClaim(office, claim!.id, "DECLINE")).rejects.toThrow();
+  });
+
+  it("⚠ a guardian the child already has may decide it; the claimant, a stranger and a teacher may not", async () => {
+    await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    const claim = await db.guardianClaim.findFirstOrThrow({ where: { claimantUserId: parentUserId } });
+
+    await expect(decideClaim(await who(parentUserId, null), claim.id, "APPROVE")).rejects.toMatchObject({ key: "access.claimNotFound" });
+    const stranger = await db.user.create({ data: { email: `stranger.${randomBytes(3).toString("hex")}${SUFFIX}`, name: "Stranger", prefs: "{}" } });
+    made.push(stranger.id);
+    await expect(decideClaim(await who(stranger.id, "PARENT"), claim.id, "APPROVE")).rejects.toMatchObject({ key: "access.claimNotFound" });
+    await db.membership.create({ data: { userId: stranger.id, schoolId, role: "TEACHER", status: "ACTIVE" } });
+    await expect(decideClaim(await who(stranger.id, "TEACHER"), claim.id, "APPROVE")).rejects.toMatchObject({ key: "access.claimNotFound" });
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+
+    expect((await waitingClaimsForGuardian(existingGuardianUserId)).map((row) => row.id)).toEqual([claim.id]);
+    expect(await waitingClaimsForGuardian(stranger.id)).toEqual([]);
+    await decideClaim(await who(existingGuardianUserId, "PARENT"), claim.id, "DECLINE");
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+    expect((await db.guardianClaim.findUniqueOrThrow({ where: { id: claim.id } })).status).toBe("DECLINED");
+    // Told that it was not accepted, and at which school; not whose child it was.
+    const told = await db.notification.findFirst({ where: { userId: parentUserId } });
+    expect(told?.title).toContain("ZZ Claim School");
+    expect(`${told?.title} ${told?.body}`).not.toContain("Asha");
+  });
+
+  it("⚠ a pupil who left while the claim waited cannot be approved", async () => {
+    await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    const claim = await db.guardianClaim.findFirstOrThrow({ where: { claimantUserId: parentUserId } });
+    await db.membership.update({ where: { id: childMembershipId }, data: { leftAt: new Date() } });
+    await expect(decideClaim(await who(officeUserId, "ADMIN"), claim.id, "APPROVE")).rejects.toMatchObject({ key: "access.thatPupilHasLeft" });
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+  });
+
+  it("⚠ …and the child's existing guardian and the school's office are told who is asking", async () => {
     // A wrong claim — a code off a photographed letter and a guessed or
     // known birthday — is now seen the same minute by the people who would
     // know it was wrong, rather than at the next parents' evening.

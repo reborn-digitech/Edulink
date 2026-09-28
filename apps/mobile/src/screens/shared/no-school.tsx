@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { useMutation } from "@tanstack/react-query";
-import { joinLookupSchema, type JoinLookup } from "@edulink/contracts";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { joinFiledSchema, joinLookupSchema, joinRequestsSchema, type JoinLookup } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Icon, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
+import { unwrap } from "@/lib/query";
+import { Pill } from "../family/shared";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -21,9 +23,11 @@ export function formatJoinCode(raw: string): string {
 /**
  * Signed in, but part of no school: the web's /join "What's your code?" for
  * somebody who already has an account. Check the code (POST
- * /api/v1/join/lookup), see which school and class it is, then join it as a
- * pupil on this account (POST /api/v1/join) — the server moves this session
- * to the school as a pupil, and re-reading /me brings the tab bar. A refusal
+ * /api/v1/join/lookup), see which school and class it is, then ASK to join it
+ * as a pupil on this account (POST /api/v1/join). The request waits for the
+ * office or the class's teacher; what waits, and what was not accepted, is
+ * listed above the code, and pulling down re-reads /me, which brings the tab
+ * bar once somebody has said yes. A refusal
  * about the code sits under the field; anything else (a parent's account, a
  * staff post there, the guessing limit, no connection) is a Failed with a
  * retry. Sign out is the other way off this screen.
@@ -33,6 +37,11 @@ export function NoSchool() {
   const th = useTheme();
   const toast = useToast();
   const session = useSession();
+  const qc = useQueryClient();
+  const requests = useQuery({
+    queryKey: ["join", "requests"],
+    queryFn: async () => joinRequestsSchema.parse(unwrap(await api().get("/api/v1/join/requests"))),
+  });
   const [code, setCode] = useState("");
   const [found, setFound] = useState<JoinLookup | null>(null);
   const [codeError, setCodeError] = useState<string | null>(null);
@@ -66,11 +75,14 @@ export function NoSchool() {
     mutationFn: async (typed: string) => {
       const result = await api().post("/api/v1/join", { code: typed });
       if (!result.ok) throw refusal(result);
+      return joinFiledSchema.parse(result.data);
     },
     onSuccess: async () => {
-      toast.show(t("join.youreIn"));
-      // The session is the school's pupil now; /me says so and the tab bar follows.
-      await session.refresh();
+      toast.show(t("joinRequests.joinFiledTitle"));
+      setCode("");
+      setFound(null);
+      // Nothing of the school is open yet: the request is what there is to show.
+      await qc.invalidateQueries({ queryKey: ["join", "requests"] });
     },
     onError: (e: Refusal) => refuse(e, joinIt),
   });
@@ -86,11 +98,36 @@ export function NoSchool() {
     join.mutate(code);
   }
 
+  const waiting = (requests.data?.requests ?? []).filter((request) => request.status !== "APPROVED");
   const joinLabel = found?.className ? t("join.joinClassAs", { className: found.className, name }) : t("join.joinSchoolAs", { school: found?.schoolName ?? "", name });
 
   return (
-    <Screen title={t("switch.notPartOfSchool")} description={t("switch.notPartBody")}>
+    <Screen
+      title={t("switch.notPartOfSchool")}
+      description={t("switch.notPartBody")}
+      refreshing={requests.isRefetching}
+      onRefresh={() => {
+        void requests.refetch();
+        // Somebody may have said yes: /me is where the school appears.
+        void session.refresh();
+      }}
+    >
       {failure ? <Failed message={failure.message} onRetry={failure.retry} /> : null}
+      {waiting.length > 0 ? (
+        <Card title={t("joinRequests.waitingTitle")} accessibilityLiveRegion="polite">
+          <Text variant="sm" tone="muted">
+            {t("joinRequests.waitingBody")}
+          </Text>
+          {waiting.map((request) => (
+            <View key={request.id} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: th.space[2], borderTopWidth: 1, borderTopColor: th.border, paddingTop: th.space[2] }}>
+              <Text variant="sm" bold style={{ flex: 1 }}>
+                {request.className ? t("joinRequests.waitingRowClass", { className: request.className, school: request.schoolName }) : request.schoolName}
+              </Text>
+              <Pill label={request.status === "PENDING" ? t("joinRequests.statusPending") : t("joinRequests.statusDeclined")} tone={request.status === "PENDING" ? "warn" : "muted"} />
+            </View>
+          ))}
+        </Card>
+      ) : null}
       <Card title={t("join.whatsYourCode")}>
         <Text variant="sm" tone="muted">
           {t("join.signedInAsBody", { name })}

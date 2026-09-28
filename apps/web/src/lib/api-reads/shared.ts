@@ -1,3 +1,5 @@
+import { waitingJoins } from "@/lib/join-requests";
+import { waitingClaimsForGuardian, waitingClaimsForOffice } from "@/lib/guardian-claims";
 import "server-only";
 import { db } from "@/lib/db";
 import { AccessError, assertGuardianAccess } from "@/lib/tenancy";
@@ -137,6 +139,18 @@ export async function readGlobalFeed(
   const posts = await listGlobalFeed(ctx, { category: opts.category, q: opts.q, tag: opts.tag });
   const page = sliceAfter(posts, opts.cursor, opts.limit);
   return { items: page.items.map((post) => ({ ...post, createdAt: iso(post.createdAt) })), nextCursor: page.nextCursor };
+}
+
+/** Everybody waiting on the reader for a yes: joins by code, and claims to be a child's guardian. */
+export async function readWaitingQueue(ctx: ActiveContext) {
+  const [joins, claims] = await Promise.all([
+    waitingJoins(ctx),
+    ctx.role === "PARENT" ? waitingClaimsForGuardian(ctx.user.id) : waitingClaimsForOffice(ctx),
+  ]);
+  return {
+    joins: joins.map(({ classId: _classId, ...join }) => ({ ...join, createdAt: iso(join.createdAt) })),
+    claims: claims.map((claim) => ({ ...claim, createdAt: iso(claim.createdAt) })),
+  };
 }
 
 /** The comments waiting on the reader — empty for anybody who reviews nothing. */

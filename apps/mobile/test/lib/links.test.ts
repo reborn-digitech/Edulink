@@ -15,6 +15,8 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/mentoring/th1")).toEqual({ pathname: "/(app)/mentoring/thread", params: { threadId: "th1" } });
     expect(screenFor("/competitions/co1")).toEqual({ pathname: "/(app)/competitions/detail", params: { competitionId: "co1" } });
     expect(screenFor("/competitions/new")).toEqual({ pathname: "/(app)/competition-new" });
+    expect(screenFor("/joins")).toEqual({ pathname: "/(app)/joins" });
+    expect(screenFor("/parent/claims")).toEqual({ pathname: "/(app)/joins" });
     expect(screenFor("/enquiries/en1")).toEqual({ pathname: "/(app)/enquiries/detail", params: { enquiryId: "en1" } });
     expect(screenFor("/admin/timetable")).toEqual({ pathname: "/(app)/timetable" });
     expect(screenFor("/admin/safety")).toEqual({ pathname: "/(app)/safety" });

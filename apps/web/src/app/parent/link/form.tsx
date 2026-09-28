@@ -37,7 +37,7 @@ export function ClaimChildForm({
   const [birthdate, setBirthdate] = useState("");
   const [relation, setRelation] = useState("PARENT");
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [linked, setLinked] = useState<{ name: string; schoolName: string } | null>(null);
+  const [filed, setFiled] = useState<{ schoolName: string } | null>(null);
 
   function formatCode(raw: string): string {
     const clean = raw.toUpperCase().replace(/[^A-Z0-9]/g, "");
@@ -67,20 +67,20 @@ export function ClaimChildForm({
         setErrors(result.errors);
         return;
       }
-      setLinked(result.child!);
+      setFiled({ schoolName: result.pending?.schoolName ?? "" });
       router.refresh();
     });
   }
 
-  if (linked) {
+  if (filed) {
     return (
       <div className={cn("rounded-[--radius-lg] border border-border bg-surface p-6 text-center", className)}>
-        <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-ok-soft text-ok animate-confetti">
+        <div className="mx-auto mb-4 grid size-16 place-items-center rounded-full bg-accent-soft text-accent-strong">
           <CheckCircleIcon weight="fill" className="size-10" />
         </div>
-        <h2 className="text-xl font-bold text-fg">{t("parent.youreLinkedTo", { name: linked.name })}</h2>
+        <h2 className="text-xl font-bold text-fg">{t("joinRequests.claimFiledTitle")}</h2>
         <p className="mx-auto mt-2 max-w-sm text-sm text-fg-muted">
-          {t("parent.canNowSeeAt", { school: linked.schoolName })}
+          {t("joinRequests.claimFiledBody", { school: filed.schoolName })}
         </p>
 
         <div className="mt-7 flex flex-col gap-2 sm:flex-row">
@@ -88,16 +88,18 @@ export function ClaimChildForm({
             block
             variant="secondary"
             onClick={() => {
-              setLinked(null);
+              setFiled(null);
               setStudentCode("");
               setBirthdate("");
             }}
           >
             {t("parent.linkAnother")}
           </Button>
-          <Button block onClick={() => router.push("/parent")} iconRight={<ArrowRightIcon weight="bold" />}>
-            {t("parent.seeDashboard")}
-          </Button>
+{hasChildren && (
+            <Button block onClick={() => router.push("/parent")} iconRight={<ArrowRightIcon weight="bold" />}>
+              {t("parent.seeDashboard")}
+            </Button>
+          )}
         </div>
       </div>
     );

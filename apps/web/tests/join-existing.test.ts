@@ -6,10 +6,11 @@ import { SCHOOL_CODE_JOINS } from "@/lib/rate-limit";
 
 /**
  * Joining with a code ON THE ACCOUNT YOU ALREADY HAVE. The sign-up wizard
- * mints a user; this must not. What holds: the signed-in user gains a
- * pupil membership (and the class) on their own id; a second press enrols
- * without a second membership; a parent's account and a staff account at
- * that school are refused with a sentence.
+ * mints a user; this must not. What holds: the signed-in user ASKS, and once
+ * the office has let them in gains a pupil membership (and the class) on
+ * their own id; asking and being let in twice makes no second membership; a
+ * parent's account and a staff account at that school are refused with a
+ * sentence.
  */
 
 const db = new PrismaClient();
@@ -50,6 +51,17 @@ let classCode: string;
 let pupilUserId: string;
 let parentUserId: string;
 let tomUserId: string;
+let office: ActiveContext;
+
+/** Asks with the code, as the pupil, and has the office let them in. */
+async function joinAndBeLetIn(): Promise<void> {
+  const { joinWithMyAccount } = await import("@/app/join/actions");
+  const { decideJoin } = await import("@/lib/join-requests");
+  current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
+  expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true, redirectTo: "/join/waiting" });
+  const request = await db.joinRequest.findFirstOrThrow({ where: { userId: pupilUserId, status: "PENDING" } });
+  await decideJoin(office, request.id, "APPROVE");
+}
 
 beforeAll(async () => {
   const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
@@ -81,9 +93,16 @@ beforeAll(async () => {
   });
 
   tomUserId = (await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } })).id;
+
+  const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
+  const priyaAdmin = await db.membership.findFirstOrThrow({ where: { userId: priya.id, schoolId: riversideId, role: "ADMIN" } });
+  office = ctx({ userId: priya.id, name: "Priya", membershipId: priyaAdmin.id, schoolId: riversideId, role: "ADMIN" });
+  await db.joinRequest.deleteMany({ where: { userId: { in: [pupil.id, parent.id] } } });
 });
 
 afterAll(async () => {
+  await db.notification.deleteMany({ where: { OR: [{ userId: pupilUserId }, { titleKey: { startsWith: "joinRequests." }, titleVars: { contains: "ZZ Join" } }] } });
+  await db.joinRequest.deleteMany({ where: { userId: { in: [pupilUserId, parentUserId, tomUserId] } } });
   await db.enrollment.deleteMany({ where: { classId } });
   await db.membership.deleteMany({ where: { userId: pupilUserId } });
   await db.guardianship.deleteMany({ where: { parentUserId } });
@@ -93,12 +112,19 @@ afterAll(async () => {
 });
 
 describe("joining with a code on an existing account", () => {
-  it("adds a pupil membership and the class to THIS user — no new account", async () => {
+  it("⚠ asking makes a request and nothing else: no membership, no enrolment, no stand-in guardian", async () => {
     const { joinWithMyAccount } = await import("@/app/join/actions");
-    const before = await db.user.count();
     current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
-    const result = await joinWithMyAccount(classCode);
-    expect(result).toMatchObject({ ok: true, redirectTo: "/student" });
+    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true, redirectTo: "/join/waiting" });
+    expect(await db.joinRequest.count({ where: { userId: pupilUserId, classId, status: "PENDING" } })).toBe(1);
+    expect(await db.membership.count({ where: { userId: pupilUserId } })).toBe(0);
+    expect(await db.enrollment.count({ where: { classId } })).toBe(0);
+    await db.joinRequest.deleteMany({ where: { userId: pupilUserId } });
+  });
+
+  it("let in, it adds a pupil membership and the class to THIS user — no new account", async () => {
+    const before = await db.user.count();
+    await joinAndBeLetIn();
     expect(await db.user.count()).toBe(before);
 
     const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
@@ -108,26 +134,20 @@ describe("joining with a code on an existing account", () => {
     expect((await db.user.findUniqueOrThrow({ where: { id: pupilUserId } })).isMinor).toBe(true);
   });
 
-  it("a second press enrols again without a second membership", async () => {
-    const { joinWithMyAccount } = await import("@/app/join/actions");
-    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
-    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true });
+  it("asking and being let in again enrols again without a second membership", async () => {
+    await joinAndBeLetIn();
     expect(await db.membership.count({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } })).toBe(1);
   });
 
   it("⚠ coming back after leaving withdraws the old certificate, so a later departure can be recorded", async () => {
-    const { joinWithMyAccount } = await import("@/app/join/actions");
     const { recordDeparture } = await import("@/lib/school-record");
-    const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
-    const priyaAdmin = await db.membership.findFirstOrThrow({ where: { userId: priya.id, schoolId: riversideId, role: "ADMIN" } });
-    const admin = ctx({ userId: priya.id, name: "Priya", membershipId: priyaAdmin.id, schoolId: riversideId, role: "ADMIN" });
+    const admin = office;
     const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
 
     expect((await recordDeparture(admin, m.id, { reason: "LEFT" })).ok).toBe(true);
     expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(1);
 
-    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
-    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true });
+    await joinAndBeLetIn();
     expect((await db.membership.findUniqueOrThrow({ where: { id: m.id } })).leftAt).toBeNull();
     expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(0);
 
@@ -139,12 +159,10 @@ describe("joining with a code on an existing account", () => {
   });
 
   it("⚠ coming back after a suspension clears the stamp and the reason with the status", async () => {
-    const { joinWithMyAccount } = await import("@/app/join/actions");
     const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
     await db.membership.update({ where: { id: m.id }, data: { status: "SUSPENDED", suspendedAt: new Date(), suspendedReason: "test" } });
 
-    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
-    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true });
+    await joinAndBeLetIn();
     const after = await db.membership.findUniqueOrThrow({ where: { id: m.id } });
     expect(after.status).toBe("ACTIVE");
     expect(after.suspendedAt).toBeNull();
@@ -183,7 +201,33 @@ describe("joining with a code on an existing account", () => {
   });
 });
 
-describe("⚠ a school code, which makes a pupil at once", () => {
+describe("⚠ the sign-up wizard, for a child with no account", () => {
+  it("makes the account and a request — and no membership, no enrolment, nothing of the school", async () => {
+    const { joinAsStudent } = await import("@/app/join/actions");
+    current = null;
+    const result = await joinAsStudent({ schoolCode: classCode, name: "ZZ Wizard Pupil", avatarKey: "fox", birthdate: "2015-06-01", password: "Plum-Kettle-Orbit-42" });
+    expect(result.ok, JSON.stringify(result.errors)).toBe(true);
+    expect(result.redirectTo).toMatch(/^\/join\/waiting\?handle=zzwizardpupi\./);
+
+    const made = await db.user.findFirstOrThrow({ where: { name: "ZZ Wizard Pupil" }, orderBy: { createdAt: "desc" } });
+    try {
+      expect(made.isMinor).toBe(true);
+      expect(await db.membership.count({ where: { userId: made.id } })).toBe(0);
+      expect(await db.joinRequest.findFirst({ where: { userId: made.id }, select: { status: true, via: true, classId: true, schoolId: true } })).toEqual({
+        status: "PENDING",
+        via: "CLASS",
+        classId,
+        schoolId: riversideId,
+      });
+    } finally {
+      await db.notification.deleteMany({ where: { titleVars: { contains: "ZZ Wizard" } } });
+      await db.auditLog.deleteMany({ where: { actorUserId: made.id } });
+      await db.user.deleteMany({ where: { id: made.id } });
+    }
+  });
+});
+
+describe("⚠ a school code", () => {
   it("is minted with eight random characters after the name's prefix; class and pupil codes are unchanged", () => {
     const code = schoolCode("Riverside Primary");
     expect(code).toMatch(/^RIVER-[CDFGHJKMNPQRTVWXY3467]{4}-[CDFGHJKMNPQRTVWXY3467]{4}$/);
@@ -195,6 +239,10 @@ describe("⚠ a school code, which makes a pupil at once", () => {
     const riverside = await db.school.findFirstOrThrow({ where: { id: riversideId }, select: { code: true } });
     const bucket = `join-school:${pupilUserId}`;
     await db.rateLimit.deleteMany({ where: { bucket } });
+    // Not on the roll: a pupil already there is told so, and asks for nothing.
+    await db.enrollment.deleteMany({ where: { classId } });
+    await db.guardianship.deleteMany({ where: { studentMembershipId: { in: (await db.membership.findMany({ where: { userId: pupilUserId }, select: { id: true } })).map((m) => m.id) } } });
+    await db.membership.deleteMany({ where: { userId: pupilUserId } });
     current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
     try {
       for (let i = 0; i < SCHOOL_CODE_JOINS.limit; i += 1) {

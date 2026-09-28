@@ -1,18 +1,16 @@
 import { NextResponse } from "next/server";
-import { apiErrorSchema, joinCodeBodySchema } from "@edulink/contracts";
+import { apiErrorSchema, joinCodeBodySchema, joinFiledSchema } from "@edulink/contracts";
 import { joinWithAccount } from "@/lib/join";
-import { getSession, setActiveContext } from "@/lib/session";
-import { AccessError } from "@/lib/tenancy";
 import { getT } from "@/lib/i18n/server";
-import { apiFailure, apiInvalid, meBody, ok, readJson } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { requireApiSession } from "@/lib/api-reads/shared";
 
 /**
- * POST /api/v1/join — join the school (and class) a code names, as a pupil, on
- * the account that is signed in: the web's joinWithMyAccount through the same
- * joinWithAccount. The web then sets a fresh cookie; a bearer session cannot
- * be handed a cookie, so THIS session's active context moves to the school as
- * STUDENT instead and the fresh /me comes back — the phone's tab bar follows.
+ * POST /api/v1/join — ASK to join the school (and class) a code names, as a
+ * pupil, on the account that is signed in: the web's joinWithMyAccount through
+ * the same joinWithAccount. The request is filed and the session is left as
+ * it was; the office, or the class's teacher, lets them in, and the phone
+ * finds the school in /me once they have.
  * A refusal is a 422 with the sentence (on `code` when it is about the code);
  * the code-guessing limit is a 429 with Retry-After.
  */
@@ -39,10 +37,10 @@ export async function POST(request: Request) {
         headers: { "Cache-Control": "no-store" },
       });
     }
-    const switched = await setActiveContext(ctx.sessionId, ctx.user.id, { schoolId: joined.schoolId, role: "STUDENT" });
-    if (!switched) throw new AccessError("access.wrongRoleForThisAction");
-    const fresh = await getSession();
-    return ok(await meBody(fresh ?? ctx));
+    return ok(
+      joinFiledSchema.parse({ requestId: joined.requestId, schoolName: joined.schoolName, className: joined.className, alreadyWaiting: joined.alreadyWaiting }),
+      202,
+    );
   } catch (error) {
     return apiFailure(error, "api/v1/join");
   }

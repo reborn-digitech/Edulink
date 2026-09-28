@@ -148,8 +148,8 @@ export function StudentJoinFlow() {
         return;
       }
 
-      toast({ tone: "ok", title: t("join.youreIn") });
-      router.push(result.redirectTo ?? "/student");
+      toast({ tone: "ok", title: t("joinRequests.joinFiledTitle") });
+      router.push(result.redirectTo ?? "/join/waiting");
       router.refresh();
     });
   }

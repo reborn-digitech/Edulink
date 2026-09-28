@@ -21389,6 +21389,403 @@
         ]
       }
     },
+    "/api/v1/shared/joins": {
+      "get": {
+        "summary": "Everybody waiting on the reader: joins by code, and claims to be a child's guardian, oldest first",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "joins": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "age": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "via": {
+                            "type": "string",
+                            "enum": [
+                              "SCHOOL",
+                              "CLASS"
+                            ]
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "onRoll": {
+                            "type": "boolean"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "age",
+                          "via",
+                          "className",
+                          "onRoll",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "claimantName": {
+                            "type": "string"
+                          },
+                          "claimantEmail": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "relation": {
+                            "type": "string",
+                            "enum": [
+                              "PARENT",
+                              "GUARDIAN",
+                              "OTHER"
+                            ]
+                          },
+                          "childName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/joins/items/properties/createdAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "claimantName",
+                          "claimantEmail",
+                          "relation",
+                          "childName",
+                          "className",
+                          "schoolName",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "joins",
+                    "claims"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shared/joins/{requestId}/decide": {
+      "post": {
+        "summary": "Let somebody who typed a code in, or decline: the office, or a teacher of the class the code named",
+        "description": "Roles: TEACHER, ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVE",
+                      "DECLINE"
+                    ]
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/shared/claims/{claimId}/decide": {
+      "post": {
+        "summary": "Make a claimant a child's guardian, or decline: the office, or a guardian the child already has",
+        "description": "Roles: ADMIN, PRINCIPAL, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "APPROVE",
+                      "DECLINE"
+                    ]
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "claimId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/shared/inbox": {
       "get": {
         "summary": "Conversations and remark threads in one list",
@@ -30741,7 +31138,7 @@
     },
     "/api/v1/community/link-child": {
       "get": {
-        "summary": "The children this account is already linked to",
+        "summary": "The children this account is already linked to, and its claims still waiting or declined",
         "description": "Any signed-in session.",
         "security": [
           {
@@ -30779,10 +31176,43 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "DECLINED"
+                            ]
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "status",
+                          "schoolName",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "required": [
-                    "children"
+                    "children",
+                    "claims"
                   ],
                   "additionalProperties": false
                 }
@@ -30832,7 +31262,7 @@
         }
       },
       "post": {
-        "summary": "Link to a child by student code and date of birth (rate-limited per caller and per code)",
+        "summary": "Ask to be linked to a child by student code and date of birth (rate-limited per caller and per code); the claim waits for the office or a guardian the child already has",
         "description": "Any signed-in session.",
         "security": [
           {
@@ -30848,25 +31278,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "child": {
+                    "pending": {
                       "type": "object",
                       "properties": {
-                        "name": {
-                          "type": "string"
-                        },
                         "schoolName": {
                           "type": "string"
+                        },
+                        "alreadyWaiting": {
+                          "type": "boolean"
                         }
                       },
                       "required": [
-                        "name",
-                        "schoolName"
+                        "schoolName",
+                        "alreadyWaiting"
                       ],
                       "additionalProperties": false
                     }
                   },
                   "required": [
-                    "child"
+                    "pending"
                   ],
                   "additionalProperties": false
                 }
@@ -38041,7 +38471,7 @@
     },
     "/api/v1/join": {
       "post": {
-        "summary": "Join the school (and class) a code names, as a pupil on this account; this session switches to it and the fresh /me comes back",
+        "summary": "Ask to join the school (and class) a code names, as a pupil on this account; the request waits for the office or the class's teacher and nothing of the school opens until then",
         "description": "Any signed-in session.",
         "security": [
           {
@@ -38057,119 +38487,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "user": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "preferredName": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "email": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "avatarKey": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "isMinor": {
-                          "type": "boolean"
-                        },
-                        "locale": {
-                          "type": "string",
-                          "enum": [
-                            "en",
-                            "hi",
-                            "mr"
-                          ]
-                        },
-                        "isSuperuser": {
-                          "type": "boolean",
-                          "default": false
-                        },
-                        "isAppAdmin": {
-                          "type": "boolean",
-                          "default": false
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name",
-                        "preferredName",
-                        "email",
-                        "avatarKey",
-                        "isMinor",
-                        "locale"
-                      ],
-                      "additionalProperties": false
+                    "requestId": {
+                      "type": "string"
                     },
-                    "active": {
-                      "type": "object",
-                      "properties": {
-                        "schoolId": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "role": {
-                          "type": "string",
-                          "enum": [
-                            "ADMIN",
-                            "PRINCIPAL",
-                            "TEACHER",
-                            "STUDENT",
-                            "PARENT",
-                            "EXPERT"
-                          ],
-                          "nullable": true
-                        },
-                        "membershipId": {
-                          "type": "string",
-                          "nullable": true
-                        }
-                      },
-                      "required": [
-                        "schoolId",
-                        "role",
-                        "membershipId"
-                      ],
-                      "additionalProperties": false
+                    "schoolName": {
+                      "type": "string"
                     },
-                    "contexts": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "schoolId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "schoolName": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "role": {
-                            "$ref": "#/properties/active/properties/role"
-                          }
-                        },
-                        "required": [
-                          "schoolId",
-                          "schoolName",
-                          "role"
-                        ],
-                        "additionalProperties": false
-                      }
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "alreadyWaiting": {
+                      "type": "boolean"
                     }
                   },
                   "required": [
-                    "user",
-                    "active",
-                    "contexts"
+                    "requestId",
+                    "schoolName",
+                    "className",
+                    "alreadyWaiting"
                   ],
                   "additionalProperties": false
                 }
@@ -38233,6 +38569,114 @@
                   "code"
                 ],
                 "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/join/requests": {
+      "get": {
+        "summary": "My own requests to join: the ones waiting and the ones not accepted, newest first",
+        "description": "Any signed-in session.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "signed-in",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "requests": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPROVED",
+                              "DECLINED"
+                            ]
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "status",
+                          "schoolName",
+                          "className",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "requests"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
               }
             }
           }

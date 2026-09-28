@@ -9,7 +9,6 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useSession } from "@/lib/session";
 import { Chips } from "../staff/shared";
 
 type Relation = "PARENT" | "GUARDIAN" | "OTHER";
@@ -33,8 +32,9 @@ export function formatStudentCode(raw: string): string {
  * home and the child's date of birth, because a code alone gets written on
  * things and read aloud. Every mismatch is the same one sentence and the
  * attempts are limited on the server, per account and per code; a limit
- * comes back with how long to wait. On success the session is a guardian's,
- * so the phone re-reads who is signed in.
+ * comes back with how long to wait. A right pair FILES A CLAIM: the school's
+ * office, or a guardian the child already has, decides, and until then the
+ * screen names the school and not the child.
  */
 export function LinkChild() {
   const t = useT();
@@ -42,12 +42,11 @@ export function LinkChild() {
   const router = useRouter();
   const qc = useQueryClient();
   const toast = useToast();
-  const session = useSession();
   const [code, setCode] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [relation, setRelation] = useState<Relation>("PARENT");
   const [errors, setErrors] = useState<Errors>({});
-  const [linked, setLinked] = useState<{ name: string; schoolName: string } | null>(null);
+  const [filed, setFiled] = useState<{ schoolName: string } | null>(null);
   const query = useQuery({
     queryKey: ["community", "link-child"],
     queryFn: async () => communityLinkChildPageSchema.parse(unwrap(await api().get("/api/v1/community/link-child"))),
@@ -62,13 +61,11 @@ export function LinkChild() {
       }
       return communityChildLinkedSchema.parse(result.data);
     },
-    onSuccess: ({ child }) => {
+    onSuccess: ({ pending }) => {
       setErrors({});
-      setLinked(child);
-      toast.show(t("parent.youreLinkedTo", { name: child.name }));
-      void session.refresh();
+      setFiled({ schoolName: pending.schoolName });
+      toast.show(t("joinRequests.claimFiledTitle"));
       void qc.invalidateQueries({ queryKey: ["community", "link-child"] });
-      void qc.invalidateQueries({ queryKey: ["family"] });
     },
     onError: (e: Refusal) => {
       const issues = e.issues ?? {};
@@ -81,6 +78,8 @@ export function LinkChild() {
     },
   });
 
+  const children = query.data?.children ?? [];
+  const hasChildren = children.length > 0;
   const submit = () => {
     const next: Errors = {};
     if (code.replace(/[^A-Z0-9]/g, "").length < 6) next.studentCode = t("parent.enterFullCode");
@@ -92,30 +91,30 @@ export function LinkChild() {
     link.mutate({ studentCode: code, birthdate: dob, relation });
   };
   const again = () => {
-    setLinked(null);
+    setFiled(null);
     setCode("");
     setBirthdate("");
     setErrors({});
   };
 
-  if (linked) {
+  if (filed) {
     return (
-      <Screen title={t("parent.youreLinkedTo", { name: linked.name })}>
+      <Screen title={t("joinRequests.claimFiledTitle")}>
         <View style={{ alignItems: "center", gap: th.space[3], paddingVertical: th.space[4] }}>
-          <View style={{ width: 72, height: 72, borderRadius: th.radius.xl, backgroundColor: th.okSoft, alignItems: "center", justifyContent: "center" }}>
-            <Icon name="checkCircle" size={44} color={th.ok} weight="fill" />
+          <View style={{ width: 72, height: 72, borderRadius: th.radius.xl, backgroundColor: th.accentSoft, alignItems: "center", justifyContent: "center" }}>
+            <Icon name="checkCircle" size={44} color={th.accent} weight="fill" />
           </View>
           <Text variant="base" tone="muted" style={{ textAlign: "center" }} accessibilityLiveRegion="polite">
-            {t("parent.canNowSeeAt", { school: linked.schoolName })}
+            {t("joinRequests.claimFiledBody", { school: filed.schoolName })}
           </Text>
         </View>
-        <Button label={t("parent.seeDashboard")} onPress={() => router.replace("/(app)" as never)} />
         <Button label={t("parent.linkAnother")} variant="secondary" onPress={again} />
+        {hasChildren ? <Button label={t("parent.seeDashboard")} onPress={() => router.replace("/(app)" as never)} /> : null}
       </Screen>
     );
   }
 
-  const children = query.data?.children ?? [];
+  const claims = query.data?.claims ?? [];
   return (
     <Screen title={children.length > 0 ? t("parent.addAnotherChild") : t("parent.linkToYourChild")} description={t("parent.linkNeedCode")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
@@ -124,6 +123,13 @@ export function LinkChild() {
         <Card title={t("parent.alreadyLinked")}>
           {children.map((child) => (
             <Row key={child.guardianshipId} icon="user" title={child.name} caption={child.schoolName} />
+          ))}
+        </Card>
+      ) : null}
+      {claims.length > 0 ? (
+        <Card>
+          {claims.map((claim) => (
+            <Row key={claim.id} icon="clock" title={t(claim.status === "PENDING" ? "joinRequests.claimWaiting" : "joinRequests.claimDeclined", { school: claim.schoolName })} />
           ))}
         </Card>
       ) : null}

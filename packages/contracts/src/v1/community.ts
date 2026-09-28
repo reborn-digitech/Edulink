@@ -146,6 +146,8 @@ export const guardianRelationSchema = z.enum(["PARENT", "GUARDIAN", "OTHER"]);
 /** GET /api/v1/community/link-child — the children this account is already linked to. */
 export const communityLinkChildPageSchema = z.object({
   children: z.array(z.object({ guardianshipId: z.string(), name: z.string(), schoolName: z.string() })),
+  /** What this account has asked for and not been given: waiting, or declined, and at which school — never whose child. */
+  claims: z.array(z.object({ id: z.string(), status: z.enum(["PENDING", "DECLINED"]), schoolName: z.string(), createdAt: z.string().datetime() })),
 });
 
 /** POST /api/v1/community/link-child — both factors: the code off the letter home, and the child's date of birth. */
@@ -155,4 +157,9 @@ export const communityLinkChildSchema = z.object({
   relation: guardianRelationSchema.default("PARENT"),
 });
 
-export const communityChildLinkedSchema = z.object({ child: z.object({ name: z.string(), schoolName: z.string() }) });
+/**
+ * A right code and date FILES A CLAIM; it links nobody. The office, or a
+ * guardian the child already has, decides — and until they do the claimant
+ * is told the school and not the child.
+ */
+export const communityChildLinkedSchema = z.object({ pending: z.object({ schoolName: z.string(), alreadyWaiting: z.boolean() }) });

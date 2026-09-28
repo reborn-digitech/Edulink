@@ -4,6 +4,8 @@ import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { anyOpenReviews } from "@/lib/reviews";
 import { anyEnquiries } from "@/lib/enquiries";
+import { waitingJoinCount } from "@/lib/join-requests";
+import { waitingClaimCount } from "@/lib/guardian-claims";
 import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
 import { unreadConversationCount } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
@@ -97,6 +99,23 @@ export async function SignedInShell({
     if (!(await anyEnquiries(session))) hiddenHrefs.push("/enquiries");
   }
 
+  /**
+   * People waiting for a yes: the entry exists while somebody waits on this
+   * reader, and carries how many. A guardian's is the claims on their own
+   * children.
+   */
+  const badges: Record<string, number> = unreadMessages > 0 ? { "/remarks": unreadMessages } : {};
+  if (role === "ADMIN" || role === "PRINCIPAL" || role === "TEACHER") {
+    const waiting = (await waitingJoinCount(session)) + (await waitingClaimCount(session));
+    if (waiting > 0) badges["/joins"] = waiting;
+    else hiddenHrefs.push("/joins");
+  }
+  if (role === "PARENT") {
+    const waiting = await waitingClaimCount(session);
+    if (waiting > 0) badges["/parent/claims"] = waiting;
+    else hiddenHrefs.push("/parent/claims");
+  }
+
   return (
     <AppShell
       user={{
@@ -109,7 +128,7 @@ export async function SignedInShell({
       }}
       unreadCount={unreadCount}
       hiddenHrefs={hiddenHrefs}
-      badges={unreadMessages > 0 ? { "/remarks": unreadMessages } : {}}
+      badges={badges}
     >
       {children}
     </AppShell>

@@ -1,20 +1,18 @@
 import "server-only";
 import { db } from "./db";
 import { fakePasswordWork } from "./crypto";
-import { setActiveContext, type ActiveContext } from "./session";
+import type { ActiveContext } from "./session";
 import { normalizeCode } from "./codes";
 import { parseDateOnly, sameCalendarDay } from "./dates";
 import { audit } from "./audit";
-import { forJoinCode, forSchool } from "./tenant-context";
-import { sendParentClaimNotice } from "./email";
-import { notify } from "./notify";
-import { syncStandinGuardian } from "./standin-guardian";
+import { forJoinCode } from "./tenant-context";
+import { fileClaim } from "./guardian-claims";
 import { consume, retryHintKey, CLAIM_ATTEMPTS, CLAIM_PER_CODE } from "./rate-limit";
 import { claimChildSchema, fieldErrors, type FieldErrors } from "./validation";
 import type { Translate } from "./i18n/dictionary";
 
 /**
- * A guardian linking themselves to a child by the child's student code and
+ * A guardian ASKING to be linked to a child by the child's student code and
  * date of birth — the web's /parent/link form (through the claimChild server
  * action) and the phone's POST /api/v1/community/link-child, one function so
  * the two doors cannot drift in the one place drifting is dangerous: the
@@ -23,12 +21,12 @@ import type { Translate } from "./i18n/dictionary";
  * 429 with Retry-After rather than a 422 that invites another go.
  */
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export type ClaimState = {
   ok: boolean;
   errors: FieldErrors;
-  child?: { name: string; schoolName: string };
+  /** A right code and date: the claim is filed and waits for the office or a guardian the child already has. */
+  pending?: { schoolName: string; alreadyWaiting: boolean };
   /** Set on the two rate-limit refusals only: seconds until another attempt counts. */
   retryAfterSeconds?: number;
 };
@@ -175,95 +173,26 @@ export async function claimChildFor(session: ActiveContext, input: unknown, t: T
     };
   }
 
-  await db.guardianship.upsert({
-    where: {
-      parentUserId_studentMembershipId: {
-        parentUserId: session.user.id,
-        studentMembershipId: membership.id,
-      },
-    },
-    create: {
-      parentUserId: session.user.id,
-      studentMembershipId: membership.id,
-      studentSchoolId: membership.schoolId,
-      relation,
-      status: "ACTIVE",
-      consentSharingAt: new Date(),
-      consentNotificationsAt: new Date(),
-    },
-    update: { status: "ACTIVE", relation, consentSharingAt: new Date() },
-  });
-
-  await audit({
-    schoolId: membership.schoolId,
-    actorUserId: session.user.id,
-    action: "parent.claim",
-    targetType: "Membership",
-    targetId: membership.id,
-  });
-
-  // A real guardian now exists, so the school's stand-in (the class teacher
-  // or an admin holding guardian rights while no parent was on the app) is
-  // revoked in the same breath. The parent replaces; they never share.
-  await syncStandinGuardian({
-    schoolId: membership.schoolId,
-    studentMembershipId: membership.id,
-    actorUserId: session.user.id,
-  }).catch((error) => console.error("[claimChild] standin sync failed", error));
-
-  // Switch the live session into the parent role. Without this a brand-new
-  // parent lands on the role picker immediately after claiming, which reads as
-  // "did that work?" rather than as success.
-  await setActiveContext(session.sessionId, session.user.id, { schoolId: null, role: "PARENT" });
-
-  const childName = membership.user.preferredName ?? membership.user.name;
-
   /**
-   * ⚠ A CLAIM IS SEEN BY THE PEOPLE WHO WOULD KNOW IT WAS WRONG. The code
+   * ⚠ THE RIGHT PAIR FILES A CLAIM; IT NO LONGER MAKES A GUARDIAN. The code
    * and the birthday are on paper that changes hands, and a guardianship is
-   * the whole record. So the child's other guardians and the school's office
-   * are told, by name of the claimant, that somebody linked themselves — a
-   * right claim is a parent the family expected; a wrong one is now visible
-   * the same minute, not at the next parents' evening.
+   * the child's whole record. The office, or a guardian the child already
+   * has, says yes before anything opens (lib/guardian-claims.ts) — and the
+   * claimant is told that it waits, and at which school, and not whose
+   * child the pair named.
    */
-  const claimant = session.user.preferredName ?? session.user.name;
-  const others = await db.guardianship.findMany({
-    where: { studentMembershipId: membership.id, status: "ACTIVE", parentUserId: { not: session.user.id }, relation: { not: "SCHOOL" } },
-    select: { parentUserId: true },
+  const filed = await fileClaim({
+    claimant: { id: session.user.id, name: session.user.preferredName ?? session.user.name },
+    studentMembershipId: membership.id,
+    schoolId: membership.schoolId,
+    childName: membership.user.preferredName ?? membership.user.name,
+    schoolName: membership.school.name,
+    relation,
   });
-  const office = await forSchool(membership.schoolId, () =>
-    db.membership.findMany({ where: { schoolId: membership.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } }),
-  );
-  const told = [...new Set([...others.map((g) => g.parentUserId), ...office.map((m) => m.userId)])].filter((id) => id !== session.user.id);
-  await forSchool(membership.schoolId, () =>
-    Promise.all(
-      told.map((userId) =>
-        notify({
-          userId,
-          schoolId: membership.schoolId,
-          kind: "SYSTEM",
-          titleKey: "claim.notifExisting",
-          titleVars: { claimant, name: childName },
-          bodyKey: "claim.notifExistingBody",
-          bodyVars: { school: membership.school.name },
-          urgent: true,
-        }).catch((error) => console.error("[claimChild] notice to existing guardian failed", error)),
-      ),
-    ),
-  );
-
-  if (session.user.email) {
-    await sendParentClaimNotice(
-      session.user.email,
-      childName,
-      membership.school.name,
-      `${APP_URL}/parent`,
-    ).catch((error) => console.error("[claimChild] notice failed", error));
-  }
 
   return {
     ok: true,
     errors: {},
-    child: { name: childName, schoolName: membership.school.name },
+    pending: { schoolName: membership.school.name, alreadyWaiting: filed.alreadyWaiting },
   };
 }

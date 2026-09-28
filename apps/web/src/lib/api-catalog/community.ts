@@ -48,6 +48,6 @@ export const COMMUNITY: Endpoint[] = [
     sample: (f) => (f.vacancyId ? `/api/v1/community/vacancies/${f.vacancyId}` : null),
   },
   // ---- /parent/link -----------------------------------------------------------
-  { method: "GET", path: "/api/v1/community/link-child", summary: "The children this account is already linked to", access: "signed-in", response: c.communityLinkChildPageSchema },
-  { method: "POST", path: "/api/v1/community/link-child", summary: "Link to a child by student code and date of birth (rate-limited per caller and per code)", access: "signed-in", request: c.communityLinkChildSchema, response: c.communityChildLinkedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/community/link-child", summary: "The children this account is already linked to, and its claims still waiting or declined", access: "signed-in", response: c.communityLinkChildPageSchema },
+  { method: "POST", path: "/api/v1/community/link-child", summary: "Ask to be linked to a child by student code and date of birth (rate-limited per caller and per code); the claim waits for the office or a guardian the child already has", access: "signed-in", request: c.communityLinkChildSchema, response: c.communityChildLinkedSchema, emptyBodyStatus: 422 },
 ];

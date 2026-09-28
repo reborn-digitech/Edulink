@@ -9,8 +9,8 @@ import { studentCode } from "@/lib/codes";
 import { ageInYears, parseDateOnly } from "@/lib/dates";
 import { audit } from "@/lib/audit";
 import { forSchool, forUser } from "@/lib/tenant-context";
+import { requestToJoin } from "@/lib/join-requests";
 import { writeJson } from "@/lib/json";
-import { syncStandinGuardian } from "@/lib/standin-guardian";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
   consumeByCaller,
@@ -28,7 +28,6 @@ import { CONSENT_AGE } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { claimChildFor, type ClaimState } from "@/lib/claim-child";
-import { syncGradeLevel } from "@/lib/grade-level";
 
 /**
  * Opens an invitation ADDRESSED TO the signed-in person, from /join.
@@ -154,69 +153,46 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
 
   const passwordHash = await hashPassword(password);
 
+  /**
+   * ⚠ AN ACCOUNT AND A REQUEST, AND NOTHING OF THE SCHOOL. This used to make
+   * the membership and the enrolment here and sign the child in as a pupil.
+   * The code is on a poster; it now earns a place in a queue
+   * (lib/join-requests.ts), and the membership is made when the class's
+   * teacher or the office lets them in. The session below has no school and
+   * no role, so every page of the school is closed to it until then.
+   */
   let userId: string;
   let handle: string;
-  let membershipId: string;
 
   try {
-    // `$tenantTransaction`, wrapped in the school the code named — NOT a plain
-    // `db.$transaction`. The per-query extension does not reach inside an
-    // interactive transaction: the callback gets a raw client, so nothing sets
-    // `app.school_ids` and every INSERT below is refused by the policy. There is
-    // no session yet either, so the school has to come from the lookup.
-    const created = await forSchool(lookup.schoolId, () =>
-      db.$tenantTransaction(async (rawTx) => {
-        const tx = rawTx as typeof db;
-      // Login handle: first name + 4 chars of their student code. Readable
-      // enough for a child to type, unique enough to not collide.
-      const code = studentCode();
-      const base = (preferredName || name).toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 12) || "student";
-      const loginHandle = `${base}.${code.slice(-4).toLowerCase()}`;
+    // Login handle: first name + 4 characters nobody else has. Readable
+    // enough for a child to type, unique enough to not collide.
+    const base = (preferredName || name).toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 12) || "student";
+    handle = `${base}.${studentCode().slice(-4).toLowerCase()}`;
 
-      const user = await tx.user.create({
-        data: {
-          name,
-          preferredName: preferredName || name.split(" ")[0] || name,
-          // Stored in the email column so the single unique login lookup keeps
-          // working; the handle domain is never routable. See login-name.ts.
-          email: `${loginHandle}@${HANDLE_DOMAIN}`,
-          passwordHash,
-          avatarKey,
-          birthdate: birthDate,
-          isMinor,
-          prefs: writeJson({ theme: "system", locale }),
-        },
-      });
+    const user = await db.user.create({
+      data: {
+        name,
+        preferredName: preferredName || name.split(" ")[0] || name,
+        // Stored in the email column so the single unique login lookup keeps
+        // working; the handle domain is never routable. See login-name.ts.
+        email: `${handle}@${HANDLE_DOMAIN}`,
+        passwordHash,
+        avatarKey,
+        birthdate: birthDate,
+        isMinor,
+        prefs: writeJson({ theme: "system", locale }),
+      },
+      select: { id: true },
+    });
+    userId = user.id;
 
-      const membership = await tx.membership.create({
-        data: {
-          userId: user.id,
-          schoolId: lookup.schoolId,
-          role: "STUDENT",
-          status: "ACTIVE",
-          studentCode: code,
-        },
-      });
-
-      if (lookup.kind === "class") {
-        await tx.enrollment.create({
-          data: {
-            classId: lookup.classId,
-            schoolId: lookup.schoolId,
-            studentMembershipId: membership.id,
-            status: "ACTIVE",
-          },
-        });
-        await syncGradeLevel(tx, [membership.id]);
-      }
-
-        return { userId: user.id, handle: loginHandle, membershipId: membership.id };
-      }),
+    await requestToJoin(
+      userId,
+      lookup.kind === "class"
+        ? { kind: "class", schoolId: lookup.schoolId, classId: lookup.classId }
+        : { kind: "school", schoolId: lookup.schoolId },
     );
-
-    userId = created.userId;
-    handle = created.handle;
-    membershipId = created.membershipId;
   } catch (error) {
     console.error("[joinAsStudent]", error);
     return {
@@ -228,21 +204,13 @@ export async function joinAsStudent(input: unknown): Promise<JoinState> {
   await audit({
     schoolId: lookup.schoolId,
     actorUserId: userId,
-    action: "student.join",
+    action: "student.signup",
     meta: { via: lookup.kind, needsConsent },
   });
 
-  // A brand-new pupil has no parent on the app yet, so the class teacher (or
-  // an admin) stands in as guardian until one claims them.
-  await syncStandinGuardian({
-    schoolId: lookup.schoolId,
-    studentMembershipId: membershipId,
-    actorUserId: userId,
-  }).catch((error) => console.error("[joinAsStudent] standin sync failed", error));
+  await createSession(userId, { schoolId: null, role: null });
 
-  await createSession(userId, { schoolId: lookup.schoolId, role: "STUDENT" });
-
-  return { ok: true, errors: {}, redirectTo: `/student?welcome=1&handle=${encodeURIComponent(handle)}` };
+  return { ok: true, errors: {}, redirectTo: `/join/waiting?handle=${encodeURIComponent(handle)}` };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -319,12 +287,12 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
 /* -------------------------------------------------------------------------- */
 
 /**
- * A signed-in person joins a school or a class as a pupil with their own
- * account — no new user, no password, no second identity. The rules (a
- * parent's account and a staff post here are refused; a left membership
- * returns; the class enrolment; the stand-in guardian) are `joinWithAccount`
- * in lib/join.ts, which the phone's POST /api/v1/join calls too. What stays
- * here is the web's own ending: a fresh cookie session as the pupil.
+ * A signed-in person ASKS to join a school or a class as a pupil with their
+ * own account — no new user, no password, no second identity. The rules (a
+ * parent's account and a staff post here are refused; asking twice is asking
+ * once) are `joinWithAccount` in lib/join.ts, which the phone's POST
+ * /api/v1/join calls too. The session is left as it was: there is nothing to
+ * switch to until somebody has said yes.
  */
 export async function joinWithMyAccount(rawCode: string): Promise<JoinState> {
   const t = await getT();
@@ -334,6 +302,5 @@ export async function joinWithMyAccount(rawCode: string): Promise<JoinState> {
   const joined = await joinWithAccount(session, rawCode, t);
   if (!joined.ok) return { ok: false, errors: joined.errors };
 
-  await createSession(session.user.id, { schoolId: joined.schoolId, role: "STUDENT" });
-  return { ok: true, errors: {}, redirectTo: "/student" };
+  return { ok: true, errors: {}, redirectTo: "/join/waiting" };
 }

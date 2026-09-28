@@ -3,6 +3,8 @@ import { getSession, listContexts } from "@/lib/session";
 import { hasRecord } from "@/lib/student-record";
 import { SignedInShell } from "@/components/nav/signed-in-shell";
 import { db } from "@/lib/db";
+import { myJoinRequests } from "@/lib/join-requests";
+import { myClaims } from "@/lib/guardian-claims";
 
 /**
  * Shell for every signed-in area THAT BELONGS TO A SCHOOL.
@@ -55,6 +57,12 @@ export default async function AppLayout({ children }: { children: React.ReactNod
        * tells the cases apart.
        */
       if (await hasRecord(session)) redirect("/record");
+
+      // Somebody who typed a code and waits for a yes, or asked to be linked
+      // to a child: the page that says so, not the box they already filled.
+      const [joins, claims] = await Promise.all([myJoinRequests(session.user.id), myClaims(session.user.id)]);
+      if (joins.length > 0) redirect("/join/waiting");
+      if (claims.length > 0) redirect("/parent/link");
 
       redirect("/join?first=1");
     }

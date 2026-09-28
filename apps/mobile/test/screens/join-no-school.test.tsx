@@ -8,11 +8,12 @@ jest.mock("expo-router", () => ({ useRouter: () => ({ push: jest.fn(), replace: 
 
 /** Signed in, part of no school: no contexts and nothing active. */
 const NO_SCHOOL = { ...me("STUDENT"), user: { ...me("STUDENT").user, name: "ZZ Aanya", preferredName: "Aanya" }, active: { schoolId: null, role: null, membershipId: null }, contexts: [] };
-const JOINED = { ...NO_SCHOOL, active: { schoolId: "s1", role: "STUDENT", membershipId: "m9" }, contexts: [{ schoolId: "s1", schoolName: "ZZ School", role: "STUDENT" }] };
+const WAITING = { id: "jr1", status: "PENDING", schoolName: "ZZ School", className: "ZZ Class 5A", createdAt: "2026-09-29T08:00:00.000Z" };
 const CLASS = { kind: "class", schoolName: "ZZ School", className: "ZZ Class 5A" };
 
-const mount = (answers: Answers) =>
-  mountStaff(
+const mount = (given: Answers) => {
+  const answers: Answers = { "GET /api/v1/join/requests": () => json({ requests: [] }), ...given };
+  return mountStaff(
     <ToastProvider>
       <NoSchool />
     </ToastProvider>,
@@ -20,6 +21,7 @@ const mount = (answers: Answers) =>
     answers,
     { me: NO_SCHOOL },
   );
+};
 
 async function typeAndCheck(code: string) {
   await screen.findByText("What's your code?");
@@ -28,28 +30,40 @@ async function typeAndCheck(code: string) {
 }
 
 describe("joining a school with a code, from the phone", () => {
-  it("checks the code, shows the school and the class, joins as a pupil, and reads /me again", async () => {
-    let joined = false;
+  it("checks the code, shows the school and the class, ASKS to join, and shows the request waiting — the session does not move", async () => {
+    let asked = false;
     const { calls } = await mount({
       "POST /api/v1/join/lookup": () => json(CLASS),
       "POST /api/v1/join": () => {
-        joined = true;
-        return json(JOINED);
+        asked = true;
+        return json({ requestId: "jr1", schoolName: "ZZ School", className: "ZZ Class 5A", alreadyWaiting: false }, 202);
       },
-      "GET /api/v1/me": () => json(joined ? JOINED : NO_SCHOOL),
+      "GET /api/v1/join/requests": () => json({ requests: asked ? [WAITING] : [] }),
     });
     expect(screen.queryByText(/web/i)).toBeNull();
+    expect(screen.queryByText("Waiting for a yes")).toBeNull();
     await typeAndCheck("zzc5a12");
     expect(await screen.findByText("ZZ School")).toBeTruthy();
     expect(screen.getByText("Class: ZZ Class 5A")).toBeTruthy();
     expect(screen.getByText("You will join as a pupil.")).toBeTruthy();
     expect(calls().find((c) => c.line === "POST /api/v1/join/lookup")?.body).toEqual({ code: "ZZC-5A12" });
 
-    const mesBefore = calls().filter((c) => c.line === "GET /api/v1/me").length;
     await fireEvent.press(screen.getByRole("button", { name: "Join ZZ Class 5A as Aanya" }));
-    await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/me").length).toBeGreaterThan(mesBefore));
+    expect(await screen.findByText("Waiting for a yes")).toBeTruthy();
+    expect(screen.getByText("ZZ Class 5A at ZZ School")).toBeTruthy();
+    expect(screen.getByText("Waiting")).toBeTruthy();
+    expect(screen.getByText("Request sent")).toBeTruthy();
     expect(calls().find((c) => c.line === "POST /api/v1/join")?.body).toEqual({ code: "ZZC-5A12" });
-    expect(await screen.findByText("You're in! 🎉")).toBeTruthy();
+    // The code box is cleared for another, and nobody was told they are in.
+    expect(screen.getByLabelText("School or class code")).toHaveDisplayValue("");
+    expect(screen.queryByText("You're in! 🎉")).toBeNull();
+    expect(calls().filter((c) => c.line === "GET /api/v1/me").length).toBe(1);
+  });
+
+  it("a request that was not accepted says so, by the school's name alone", async () => {
+    await mount({ "GET /api/v1/join/requests": () => json({ requests: [{ ...WAITING, status: "DECLINED", className: null }] }) });
+    expect(await screen.findByText("Not accepted")).toBeTruthy();
+    expect(screen.getByText("ZZ School")).toBeTruthy();
   });
 
   it("a whole-school code says so and names the school on the button", async () => {

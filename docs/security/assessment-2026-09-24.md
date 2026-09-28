@@ -159,6 +159,13 @@ storage and clearing everything on sign-out.
 - Claims and school-code joins held pending until a teacher, the office or an existing guardian approves
   (nothing in the app creates or lists a PENDING membership today, so joins stay ACTIVE behind the longer
   code and the per-account limit).
+  **Built 2026-09-29:** a code files a `JoinRequest` and a right code and birthday a `GuardianClaim`, in
+  tables of their own, so nothing that reads the roll or the guardianships can count a request. The
+  office decides a join by the school's code; a teacher of the class, or the office, one by a class's
+  code; the office or a guardian the child already has decides a claim, and nobody their own. The asker
+  reads their own request and nothing of the school, and a claimant is told the school and never the
+  child. The row policies give the asker and the child's guardians a read and nobody a write from their
+  own session (four checks in `rls:verify`).
 - An approve action for held comments, which the moderation queue lacks.
   **Built 2026-09-28:** `moderateComment` releases or removes a held comment at the school that holds it,
   audited as `comment.approve` or `comment.remove` with no free text in the row; approving sends the

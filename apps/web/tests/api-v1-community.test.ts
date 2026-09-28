@@ -14,6 +14,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import {
   communityChildLinkedSchema,
+  waitingQueueSchema,
   communityLinkChildPageSchema,
   communityMentoringOptionsSchema,
   communityMentorThreadSchema,
@@ -34,6 +35,8 @@ import { POST as enquiryClosePost } from "@/app/api/v1/community/enquiries/[enqu
 import { GET as schoolGet } from "@/app/api/v1/community/schools/[schoolId]/route";
 import { GET as vacancyGet } from "@/app/api/v1/community/vacancies/[postingId]/route";
 import { GET as linkGet, POST as linkPost } from "@/app/api/v1/community/link-child/route";
+import { GET as queueGet } from "@/app/api/v1/shared/joins/route";
+import { POST as claimDecidePost } from "@/app/api/v1/shared/claims/[claimId]/decide/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -372,9 +375,9 @@ describe("closing an enquiry", () => {
 });
 
 describe("linking a child", () => {
-  it("nobody yet, a bad body, a mismatch that says nothing, then the link — and the session is a guardian's", async () => {
+  it("⚠ nobody yet, a bad body, a mismatch that says nothing, then a claim that waits — and the office's yes is what links", async () => {
     await as(newParentUserId);
-    expect(communityLinkChildPageSchema.parse(await (await linkGet()).json())).toEqual({ children: [] });
+    expect(communityLinkChildPageSchema.parse(await (await linkGet()).json())).toEqual({ children: [], claims: [] });
 
     const bad = await linkPost(json({ studentCode: "ZZ", birthdate: "someday" }));
     expect(bad.status).toBe(422);
@@ -385,11 +388,35 @@ describe("linking a child", () => {
     expect((await errorOf(wrong)).error).toMatch(/do not match a student/);
 
     const res = await linkPost(json({ studentCode: PUPIL2_CODE, birthdate: "2014-02-03", relation: "GUARDIAN" }));
-    expect(res.status).toBe(201);
-    expect(communityChildLinkedSchema.parse(await res.json())).toEqual({ child: { name: "ZZ Community pupil2", schoolName: `ZZ Community School ${STAMP}` } });
-    expect((await getSession())?.role).toBe("PARENT");
+    expect(res.status).toBe(202);
+    // The school, and not the child: the pair is not confirmed to be anybody's until somebody says yes.
+    expect(communityChildLinkedSchema.parse(await res.json())).toEqual({ pending: { schoolName: `ZZ Community School ${STAMP}`, alreadyWaiting: false } });
+    expect((await getSession())?.role).toBeNull();
+    expect(await db.guardianship.count({ where: { parentUserId: newParentUserId } })).toBe(0);
+    const waiting = communityLinkChildPageSchema.parse(await (await linkGet()).json());
+    expect(waiting.children).toEqual([]);
+    expect(waiting.claims).toEqual([expect.objectContaining({ status: "PENDING", schoolName: `ZZ Community School ${STAMP}` })]);
+    const claimId = waiting.claims[0]!.id;
+    const decide = (decision: string) => claimDecidePost(json({ decision }), p({ claimId }));
+
+    // Not the claimant, not a teacher, not another school's office.
+    expect((await decide("APPROVE")).status).toBe(403);
+    await asTeacher();
+    expect((await decide("APPROVE")).status).toBe(403);
+    await asOtherAdmin();
+    expect(waitingQueueSchema.parse(await (await queueGet()).json()).claims).toEqual([]);
+    expect((await decide("APPROVE")).status).toBe(404);
+    expect(await db.guardianship.count({ where: { parentUserId: newParentUserId } })).toBe(0);
+
+    await asPrincipal();
+    const queue = waitingQueueSchema.parse(await (await queueGet()).json());
+    expect(queue.claims).toEqual([expect.objectContaining({ id: claimId, childName: "ZZ Community pupil2", relation: "GUARDIAN" })]);
+    expect((await decide("APPROVE")).status).toBe(200);
+
+    await as(newParentUserId);
     const page = communityLinkChildPageSchema.parse(await (await linkGet()).json());
     expect(page.children.map((c) => c.name)).toEqual(["ZZ Community pupil2"]);
+    expect(page.claims).toEqual([]);
     expect(await db.guardianship.findFirst({ where: { parentUserId: newParentUserId, studentMembershipId: pupil2MembershipId }, select: { relation: true, status: true } })).toEqual({ relation: "GUARDIAN", status: "ACTIVE" });
 
     // Linking the same child again is refused with its own sentence.
