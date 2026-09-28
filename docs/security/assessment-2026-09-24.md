@@ -165,7 +165,8 @@ storage and clearing everything on sign-out.
   code; the office or a guardian the child already has decides a claim, and nobody their own. The asker
   reads their own request and nothing of the school, and a claimant is told the school and never the
   child. The row policies give the asker and the child's guardians a read and nobody a write from their
-  own session (four checks in `rls:verify`).
+  own session (four checks in `rls:verify`). A declined asker waits seven days before the same request can
+  be made again, and a request nobody decides in thirty days expires (`src/lib/request-expiry.ts`).
 - An approve action for held comments, which the moderation queue lacks.
   **Built 2026-09-28:** `moderateComment` releases or removes a held comment at the school that holds it,
   audited as `comment.approve` or `comment.remove` with no free text in the row; approving sends the

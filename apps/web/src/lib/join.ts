@@ -3,6 +3,7 @@ import { db } from "./db";
 import { normalizeCode } from "./codes";
 import { forJoinCode, forSchool } from "./tenant-context";
 import { requestToJoin } from "./join-requests";
+import { AccessError } from "./tenancy";
 import { consume, consumeByCaller, retryHintKey, CODE_LOOKUPS, SCHOOL_CODE_JOINS } from "./rate-limit";
 import type { FieldErrors } from "./validation";
 import type { ActiveContext } from "./session";
@@ -226,6 +227,7 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
       alreadyWaiting: filed.alreadyWaiting,
     };
   } catch (error) {
+    if (error instanceof AccessError) return { ok: false, errors: { _form: t(error.key, error.vars) } };
     console.error("[joinWithMyAccount]", error);
     return { ok: false, errors: { _form: t("join.couldNotSetUp") } };
   }

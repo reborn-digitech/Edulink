@@ -21563,7 +21563,7 @@
     },
     "/api/v1/shared/joins/{requestId}/decide": {
       "post": {
-        "summary": "Let somebody who typed a code in, or decline: the office, or a teacher of the class the code named",
+        "summary": "Let somebody who typed a code in, or decline with an optional sentence for them: the office, or a teacher of the class the code named",
         "description": "Roles: TEACHER, ADMIN.",
         "security": [
           {
@@ -21651,6 +21651,10 @@
                       "APPROVE",
                       "DECLINE"
                     ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
                   }
                 },
                 "required": [
@@ -21675,7 +21679,7 @@
     },
     "/api/v1/shared/claims/{claimId}/decide": {
       "post": {
-        "summary": "Make a claimant a child's guardian, or decline: the office, or a guardian the child already has",
+        "summary": "Make a claimant a child's guardian, or decline with an optional sentence for them: the office, or a guardian the child already has",
         "description": "Roles: ADMIN, PRINCIPAL, PARENT.",
         "security": [
           {
@@ -21764,6 +21768,10 @@
                       "APPROVE",
                       "DECLINE"
                     ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
                   }
                 },
                 "required": [
@@ -31189,11 +31197,16 @@
                             "type": "string",
                             "enum": [
                               "PENDING",
-                              "DECLINED"
+                              "DECLINED",
+                              "EXPIRED"
                             ]
                           },
                           "schoolName": {
                             "type": "string"
+                          },
+                          "declineReason": {
+                            "type": "string",
+                            "nullable": true
                           },
                           "createdAt": {
                             "type": "string",
@@ -31204,6 +31217,7 @@
                           "id",
                           "status",
                           "schoolName",
+                          "declineReason",
                           "createdAt"
                         ],
                         "additionalProperties": false
@@ -38577,7 +38591,7 @@
     },
     "/api/v1/join/requests": {
       "get": {
-        "summary": "My own requests to join: the ones waiting and the ones not accepted, newest first",
+        "summary": "My own requests to join: waiting, not accepted (with what the school said), or expired after thirty days, newest first",
         "description": "Any signed-in session.",
         "security": [
           {
@@ -38605,14 +38619,18 @@
                             "type": "string",
                             "enum": [
                               "PENDING",
-                              "APPROVED",
-                              "DECLINED"
+                              "DECLINED",
+                              "EXPIRED"
                             ]
                           },
                           "schoolName": {
                             "type": "string"
                           },
                           "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "declineReason": {
                             "type": "string",
                             "nullable": true
                           },
@@ -38626,6 +38644,7 @@
                           "status",
                           "schoolName",
                           "className",
+                          "declineReason",
                           "createdAt"
                         ],
                         "additionalProperties": false

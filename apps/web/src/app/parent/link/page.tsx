@@ -7,6 +7,8 @@ import { getSession, listContexts } from "@/lib/session";
 import { myClaims } from "@/lib/guardian-claims";
 import { getT } from "@/lib/i18n/server";
 
+const CLAIM_KEY = { PENDING: "joinRequests.claimWaiting", DECLINED: "joinRequests.claimDeclined", EXPIRED: "joinRequests.claimExpired" } as const;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("meta.linkChild") };
@@ -69,9 +71,8 @@ export default async function ParentLinkPage() {
           <ul className="mt-6 space-y-2" data-testid="my-claims">
             {claims.map((claim) => (
               <li key={claim.id} className="rounded-[--radius-md] border border-border bg-surface px-4 py-3 text-sm text-fg">
-                {claim.status === "PENDING"
-                  ? t("joinRequests.claimWaiting", { school: claim.schoolName })
-                  : t("joinRequests.claimDeclined", { school: claim.schoolName })}
+                {t(CLAIM_KEY[claim.status], { school: claim.schoolName })}
+                {claim.declineReason && <span className="mt-1 block text-fg-muted">{t("joinRequests.reasonGiven", { reason: claim.declineReason })}</span>}
               </li>
             ))}
           </ul>

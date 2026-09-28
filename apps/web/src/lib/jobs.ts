@@ -14,6 +14,7 @@ import { deliverQueuedCirculars } from "./circulars";
 import { expireOffers } from "./admissions";
 import { expireInvites } from "./invites";
 import { refreshMinority } from "./birthdate";
+import { expireRequests } from "./request-expiry";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -118,7 +119,13 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const invites = await expireInvites();
       const minors = await refreshMinority();
-      return { summary: { invitesExpired: invites.expired, adults: minors.adults }, perSchool: invites.perSchool };
+      // Joins and guardian claims nobody decided in thirty days: see lib/request-expiry.ts.
+      const requests = await expireRequests();
+      const perSchool: Record<string, Record<string, number>> = {};
+      for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
+        perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
+      }
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults, joinsExpired: requests.joins, claimsExpired: requests.claims }, perSchool };
     },
   },
   "digest:weekly": {

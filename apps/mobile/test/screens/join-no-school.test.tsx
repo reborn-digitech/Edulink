@@ -8,7 +8,7 @@ jest.mock("expo-router", () => ({ useRouter: () => ({ push: jest.fn(), replace: 
 
 /** Signed in, part of no school: no contexts and nothing active. */
 const NO_SCHOOL = { ...me("STUDENT"), user: { ...me("STUDENT").user, name: "ZZ Aanya", preferredName: "Aanya" }, active: { schoolId: null, role: null, membershipId: null }, contexts: [] };
-const WAITING = { id: "jr1", status: "PENDING", schoolName: "ZZ School", className: "ZZ Class 5A", createdAt: "2026-09-29T08:00:00.000Z" };
+const WAITING = { id: "jr1", status: "PENDING", schoolName: "ZZ School", className: "ZZ Class 5A", declineReason: null, createdAt: "2026-09-29T08:00:00.000Z" };
 const CLASS = { kind: "class", schoolName: "ZZ School", className: "ZZ Class 5A" };
 
 const mount = (given: Answers) => {
@@ -60,10 +60,31 @@ describe("joining a school with a code, from the phone", () => {
     expect(calls().filter((c) => c.line === "GET /api/v1/me").length).toBe(1);
   });
 
-  it("a request that was not accepted says so, by the school's name alone", async () => {
-    await mount({ "GET /api/v1/join/requests": () => json({ requests: [{ ...WAITING, status: "DECLINED", className: null }] }) });
+  it("a request that was not accepted says so, with what the school said; an expired one says they may ask again", async () => {
+    await mount({
+      "GET /api/v1/join/requests": () =>
+        json({
+          requests: [
+            { ...WAITING, status: "DECLINED", className: null, declineReason: "Please ask the office in person." },
+            { ...WAITING, id: "jr0", status: "EXPIRED" },
+          ],
+        }),
+    });
     expect(await screen.findByText("Not accepted")).toBeTruthy();
     expect(screen.getByText("ZZ School")).toBeTruthy();
+    expect(screen.getByText("The school said: Please ask the office in person.")).toBeTruthy();
+    expect(screen.getByText("Expired")).toBeTruthy();
+    expect(screen.getByText("Nobody decided it in 30 days. You can ask again with the code.")).toBeTruthy();
+    // Nothing is waiting, so nothing says that somebody will decide.
+    expect(screen.queryByText(/^Your request has gone to/)).toBeNull();
+  });
+
+  it("asking again within the week of a decline is refused in the server's words", async () => {
+    const soon = "Your request was not accepted. After a request is not accepted, it cannot be made again for 7 days.";
+    await mount({ "POST /api/v1/join/lookup": () => json(CLASS), "POST /api/v1/join": () => json({ error: soon, code: "BAD_REQUEST" }, 422) });
+    await typeAndCheck("ZZC5A12");
+    await fireEvent.press(await screen.findByRole("button", { name: "Join ZZ Class 5A as Aanya" }));
+    expect(await screen.findByText(soon)).toBeTruthy();
   });
 
   it("a whole-school code says so and names the school on the button", async () => {

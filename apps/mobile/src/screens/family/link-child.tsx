@@ -15,6 +15,7 @@ type Relation = "PARENT" | "GUARDIAN" | "OTHER";
 const RELATIONS: Relation[] = ["PARENT", "GUARDIAN", "OTHER"];
 const RELATION_KEY: Record<Relation, TranslationKey> = { PARENT: "parent.relationParent", GUARDIAN: "parent.relationGuardian", OTHER: "parent.relationOther" };
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
+const CLAIM_KEY: Record<"PENDING" | "DECLINED" | "EXPIRED", TranslationKey> = { PENDING: "joinRequests.claimWaiting", DECLINED: "joinRequests.claimDeclined", EXPIRED: "joinRequests.claimExpired" };
 
 type Errors = { studentCode?: string; birthdate?: string; form?: string };
 type Refusal = Error & { issues?: Record<string, string> };
@@ -129,7 +130,7 @@ export function LinkChild() {
       {claims.length > 0 ? (
         <Card>
           {claims.map((claim) => (
-            <Row key={claim.id} icon="clock" title={t(claim.status === "PENDING" ? "joinRequests.claimWaiting" : "joinRequests.claimDeclined", { school: claim.schoolName })} />
+            <Row key={claim.id} icon="clock" title={t(CLAIM_KEY[claim.status], { school: claim.schoolName })} caption={claim.declineReason ? t("joinRequests.reasonGiven", { reason: claim.declineReason }) : undefined} />
           ))}
         </Card>
       ) : null}

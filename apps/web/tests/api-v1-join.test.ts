@@ -215,12 +215,68 @@ describe("a person with no school", () => {
 
     await signInAs(adminUserId, "ADMIN");
     expect(waitingQueueSchema.parse(await (await queueGet()).json()).joins.map((join) => join.id)).toEqual([filed.requestId]);
-    expect((await decide(filed.requestId, "DECLINE")).status).toBe(200);
+    const declined = await decidePost(post("/api/v1/shared/joins/x/decide", { decision: "DECLINE", reason: "  Please ask the office in person.  " }), { params: Promise.resolve({ requestId: filed.requestId }) });
+    expect(declined.status).toBe(200);
     expect(await db.membership.count({ where: { userId: joinerUserId } })).toBe(0);
 
     await signInAs(joinerUserId);
     const mine = joinRequestsSchema.parse(await (await requestsGet()).json());
-    expect(mine.requests.map((request) => request.status)).toEqual(["DECLINED"]);
+    expect(mine.requests.map((request) => [request.status, request.declineReason])).toEqual([["DECLINED", "Please ask the office in person."]]);
+    // Told what the school said, and the log holds that something was said and not what.
+    const told = await db.notification.findFirst({ where: { userId: joinerUserId, titleKey: "joinRequests.notifDeclined" } });
+    expect(told?.body).toBe("The school said: Please ask the office in person.");
+    const logged = await db.auditLog.findFirst({ where: { schoolId, action: "student.join.decline" } });
+    expect(logged?.meta).toContain("reasonGiven");
+    expect(logged?.meta).not.toContain("office in person");
+  });
+
+  it("⚠ after a decline the same request cannot be made again for seven days — and can on the eighth", async () => {
+    await signInAs(joinerUserId);
+    const soon = await joinPost(post("/api/v1/join", { code: SCHOOL_CODE }));
+    expect(soon.status).toBe(422);
+    expect(apiErrorSchema.parse(await soon.json()).error).toBe("Your request was not accepted. After a request is not accepted, it cannot be made again for 7 days.");
+    expect(await db.joinRequest.count({ where: { userId: joinerUserId, status: "PENDING" } })).toBe(0);
+    // Another door is another question: the class's teacher has not said no.
+    expect((await joinPost(post("/api/v1/join", { code: CLASS_CODE }))).status).toBe(202);
+    await db.joinRequest.deleteMany({ where: { userId: joinerUserId, status: "PENDING" } });
+
+    await db.joinRequest.updateMany({ where: { userId: joinerUserId, status: "DECLINED" }, data: { decidedAt: new Date(Date.now() - 8 * 86_400_000) } });
+    expect((await joinPost(post("/api/v1/join", { code: SCHOOL_CODE }))).status).toBe(202);
+  });
+
+  it("⚠ a request nobody decided in thirty days waits on nobody: out of the queue, refused if decided, EXPIRED to the asker, and asking again is a new request", async () => {
+    const stale = await db.joinRequest.findFirstOrThrow({ where: { userId: joinerUserId, status: "PENDING" } });
+    await db.joinRequest.update({ where: { id: stale.id }, data: { createdAt: new Date(Date.now() - 31 * 86_400_000) } });
+
+    await signInAs(adminUserId, "ADMIN");
+    expect(waitingQueueSchema.parse(await (await queueGet()).json()).joins).toEqual([]);
+    const late = await decide(stale.id, "APPROVE");
+    expect(late.status).toBe(403);
+    expect(apiErrorSchema.parse(await late.json()).error).toMatch(/has expired/);
+    expect(await db.membership.count({ where: { userId: joinerUserId } })).toBe(0);
+
+    await signInAs(joinerUserId);
+    // The column still says PENDING; the date is what the asker is shown.
+    expect(joinRequestsSchema.parse(await (await requestsGet()).json()).requests.find((request) => request.id === stale.id)?.status).toBe("EXPIRED");
+    const again = joinFiledSchema.parse(await (await joinPost(post("/api/v1/join", { code: SCHOOL_CODE }))).json());
+    expect(again.alreadyWaiting).toBe(false);
+    expect(again.requestId).not.toBe(stale.id);
+    expect((await db.joinRequest.findUniqueOrThrow({ where: { id: stale.id } })).status).toBe("EXPIRED");
+  });
+
+  it("⚠ the nightly job expires what is past its thirty days, tells the asker once, counts per school, and leaves the rest", async () => {
+    const { expireRequests } = await import("@/lib/request-expiry");
+    const live = await db.joinRequest.findFirstOrThrow({ where: { userId: joinerUserId, status: "PENDING" } });
+    const old = await db.joinRequest.create({ data: { userId: pupilUserId, schoolId, via: "SCHOOL", createdAt: new Date(Date.now() - 40 * 86_400_000) } });
+
+    const out = await expireRequests(new Date(), { schoolIds: [schoolId] });
+    expect(out).toMatchObject({ joins: 1, claims: 0, perSchool: { [schoolId]: { joinsExpired: 1 } } });
+    expect((await db.joinRequest.findUniqueOrThrow({ where: { id: old.id } })).status).toBe("EXPIRED");
+    expect((await db.joinRequest.findUniqueOrThrow({ where: { id: live.id } })).status).toBe("PENDING");
+    expect(await db.notification.count({ where: { userId: pupilUserId, titleKey: "joinRequests.notifExpired" } })).toBe(1);
+
+    expect(await expireRequests(new Date(), { schoolIds: [schoolId] })).toMatchObject({ joins: 0, claims: 0, perSchool: {} });
+    expect(await db.notification.count({ where: { userId: pupilUserId, titleKey: "joinRequests.notifExpired" } })).toBe(1);
   });
 
   it("a parent's account is refused with the parent sentence, and joins nothing", async () => {

@@ -12,8 +12,9 @@ const NONE = communityLinkChildPageSchema.parse({ children: [], claims: [] });
 const CLAIMS = communityLinkChildPageSchema.parse({
   children: [],
   claims: [
-    { id: "gc1", status: "PENDING", schoolName: "ZZ School", createdAt: "2026-09-29T08:00:00.000Z" },
-    { id: "gc2", status: "DECLINED", schoolName: "ZZ Other School", createdAt: "2026-09-28T08:00:00.000Z" },
+    { id: "gc1", status: "PENDING", schoolName: "ZZ School", declineReason: null, createdAt: "2026-09-29T08:00:00.000Z" },
+    { id: "gc2", status: "DECLINED", schoolName: "ZZ Other School", declineReason: "We do not know you.", createdAt: "2026-09-28T08:00:00.000Z" },
+    { id: "gc3", status: "EXPIRED", schoolName: "ZZ Third School", declineReason: null, createdAt: "2026-08-01T08:00:00.000Z" },
   ],
 });
 const MISMATCH = "That code and date of birth do not match a student. Check both with the school — the code is on the letter they sent home.";
@@ -77,6 +78,8 @@ describe("linking a child", () => {
     await mountStaff(<LinkChild />, "PARENT", { [`GET ${PATH}`]: () => json(CLAIMS) }, { me: NEW_GUARDIAN });
     expect(await screen.findByText("Your request at ZZ School is waiting.")).toBeTruthy();
     expect(screen.getByText("Your request at ZZ Other School was not accepted.")).toBeTruthy();
+    expect(screen.getByText("The school said: We do not know you.")).toBeTruthy();
+    expect(screen.getByText("Your request at ZZ Third School was not decided in 30 days and has expired. You can ask again.")).toBeTruthy();
     expect(screen.getByLabelText("Student code")).toBeTruthy();
   });
 

@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { waitingQueueSchema, type JoinDecisionBody } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Loading, Screen, Text, useToast } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -14,15 +15,18 @@ import { Pill, relativeTime } from "../family/shared";
 const RELATION_KEY: Record<"PARENT" | "GUARDIAN" | "OTHER", TranslationKey> = { PARENT: "parent.relationParent", GUARDIAN: "parent.relationGuardian", OTHER: "parent.relationOther" };
 
 /**
- * The two decisions on somebody waiting, as on the web: one press each, and
- * no reason asked for a decline. A refusal stays above the buttons until the
- * next try; a decision reads the queue again, so the row leaves it.
+ * The two decisions on somebody waiting, as on the web. Letting in is one
+ * press. Declining opens a box first: a sentence for the asker, which may be
+ * left empty. A refusal stays above the buttons until the next try; a
+ * decision reads the queue again, so the row leaves it.
  */
 function Decide({ kind, id, name }: { kind: "join" | "claim"; id: string; name: string }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
   const toast = useToast();
+  const [declining, setDeclining] = useState(false);
+  const [reason, setReason] = useState("");
   const decide = useMutation({
     mutationFn: async (body: JoinDecisionBody) => {
       const result = kind === "join" ? await api().post(`/api/v1/shared/joins/${encodeURIComponent(id)}/decide`, body) : await api().post(`/api/v1/shared/claims/${encodeURIComponent(id)}/decide`, body);
@@ -30,19 +34,42 @@ function Decide({ kind, id, name }: { kind: "join" | "claim"; id: string; name: 
       return body.decision;
     },
     onSuccess: (decision) => {
+      setDeclining(false);
+      setReason("");
       toast.show(t(decision === "DECLINE" ? "joinRequests.declinedToast" : kind === "join" ? "joinRequests.letInToast" : "joinRequests.claimApprovedToast"));
       void qc.invalidateQueries({ queryKey: ["joins"] });
     },
   });
   const yes = t(kind === "join" ? "joinRequests.letInCta" : "joinRequests.approveClaimCta");
   const no = t("joinRequests.declineCta");
+  const said = reason.trim();
   return (
     <View style={{ gap: th.space[2] }}>
       {decide.isError ? <Failed message={decide.error.message} /> : null}
-      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
-        <Button label={yes} accessibilityLabel={`${yes}: ${name}`} busy={decide.isPending} onPress={() => decide.mutate({ decision: "APPROVE" })} />
-        <Button label={no} accessibilityLabel={`${no}: ${name}`} variant="secondary" disabled={decide.isPending} onPress={() => decide.mutate({ decision: "DECLINE" })} />
-      </View>
+      {declining ? (
+        <>
+          <Field
+            label={t("joinRequests.declineReasonLabel")}
+            hint={t(kind === "join" ? "joinRequests.declineReasonHint" : "joinRequests.declineReasonHintClaim")}
+            value={reason}
+            onChangeText={(next) => {
+              setReason(next);
+              if (decide.isError) decide.reset();
+            }}
+            multiline
+            maxLength={300}
+          />
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            <Button label={no} accessibilityLabel={`${no}: ${name}`} variant="danger" busy={decide.isPending} onPress={() => decide.mutate(said ? { decision: "DECLINE", reason: said } : { decision: "DECLINE" })} />
+            <Button label={t("common.cancel")} variant="secondary" disabled={decide.isPending} onPress={() => setDeclining(false)} />
+          </View>
+        </>
+      ) : (
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+          <Button label={yes} accessibilityLabel={`${yes}: ${name}`} busy={decide.isPending} onPress={() => decide.mutate({ decision: "APPROVE" })} />
+          <Button label={no} accessibilityLabel={`${no}: ${name}`} variant="secondary" disabled={decide.isPending} onPress={() => setDeclining(true)} />
+        </View>
+      )}
     </View>
   );
 }

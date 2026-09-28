@@ -3012,6 +3012,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    thatRequestHasExpired: "That request is more than 30 days old and has expired. They can ask again.",
     fileNotYours: "That file is not one you uploaded.",
     sessionNotFound: "That device is not signed in here.",
     notForYourGrade: "This competition is for other grades.",
@@ -3587,6 +3588,14 @@ export const en = {
     everySchool: "Every school on this server",
   },
   joinRequests: {
+    statusExpired: "Expired",
+    reasonGiven: "The school said: {reason}",
+    declineReasonLabel: "A sentence for them (optional)",
+    declineReasonHint: "The person who asked will read this. Leave it empty to say only that the request was not accepted.",
+    declineReasonHintClaim: "The person who asked will read this. Do not name the child: they have not been told whose code it is.",
+    claimExpired: "Your request at {school} was not decided in 30 days and has expired. You can ask again.",
+    notifExpired: "Your request to join {school} has expired",
+    notifExpiredBody: "Nobody decided it in 30 days. You can ask again with the code.",
     notifAskedClass: "{name} asks to join {className}",
     notifAskedSchool: "{name} asks to join the school",
     notifAskedBody: "Let them in, or decline, from the list of people waiting.",
@@ -3634,6 +3643,9 @@ export const en = {
     parentClaimsNav: "Requests to link",
   },
   claim: {
+    notifExpired: "Your request to be linked at {school} has expired",
+    notifExpiredBody: "Nobody decided it in 30 days. You can ask again.",
+    declinedRecently: "Your request was not accepted. After a request is not accepted, it cannot be made again for {days} days.",
     notifAsked: "{claimant} asks to be linked to {name} as a guardian",
     notifAskedBody: "Approve only if you know them. {school} can decide too.",
     notifDeclined: "Your request to be linked at {school} was not accepted",
@@ -3642,6 +3654,7 @@ export const en = {
     notifApprovedBody: "{school} or the family confirmed your request.",
   },
   join: {
+    declinedRecently: "Your request was not accepted. After a request is not accepted, it cannot be made again for {days} days.",
     waitingTitle: "An invitation is waiting for you",
     waitingTitleMany: "{count} invitations are waiting for you",
     waitingBody: "Sent to your own address. Accepting joins with the account you are signed in as — nothing to retype.",

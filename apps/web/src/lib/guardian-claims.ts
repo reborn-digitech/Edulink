@@ -7,6 +7,7 @@ import { AccessError } from "./tenancy";
 import { forSchool, forUser } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
 import type { ActiveContext } from "./session";
+import { COOL_OFF_DAYS, coolOffCutoff, statusNow, stillWaiting, waitingCutoff } from "./request-expiry";
 
 /**
  * A claim to be a child's guardian, and the yes that makes it one.
@@ -48,10 +49,23 @@ export async function fileClaim(input: {
   const { claimant, studentMembershipId, schoolId, relation } = input;
   return forSchool(schoolId, async () => {
     const waiting = await db.guardianClaim.findFirst({
-      where: { claimantUserId: claimant.id, studentMembershipId, status: "PENDING" },
+      where: { claimantUserId: claimant.id, studentMembershipId, ...stillWaiting() },
       select: { id: true },
     });
     if (waiting) return { claimId: waiting.id, alreadyWaiting: true };
+
+    // SEVEN DAYS AFTER A NO — see lib/request-expiry.ts. It says nothing the
+    // claimant was not already told: that a claim of theirs was declined.
+    const declined = await db.guardianClaim.findFirst({
+      where: { claimantUserId: claimant.id, studentMembershipId, status: "DECLINED", decidedAt: { gte: coolOffCutoff() } },
+      select: { id: true },
+    });
+    if (declined) throw new AccessError("claim.declinedRecently", "FORBIDDEN", { days: COOL_OFF_DAYS });
+
+    await db.guardianClaim.updateMany({
+      where: { claimantUserId: claimant.id, studentMembershipId, status: "PENDING", createdAt: { lt: waitingCutoff() } },
+      data: { status: "EXPIRED", decidedAt: new Date() },
+    });
 
     const made = await db.guardianClaim.create({
       data: { schoolId, studentMembershipId, claimantUserId: claimant.id, relation },
@@ -92,7 +106,7 @@ export async function fileClaim(input: {
 /* The claimant's own view                                                     */
 /* -------------------------------------------------------------------------- */
 
-export type MyClaim = { id: string; status: "PENDING" | "DECLINED"; schoolName: string; createdAt: Date };
+export type MyClaim = { id: string; status: "PENDING" | "DECLINED" | "EXPIRED"; schoolName: string; declineReason: string | null; createdAt: Date };
 
 /**
  * What the claimant is waiting on: that a claim at a named school waits, or
@@ -102,8 +116,8 @@ export type MyClaim = { id: string; status: "PENDING" | "DECLINED"; schoolName: 
 export async function myClaims(userId: string): Promise<MyClaim[]> {
   const rows = await forUser(userId, () =>
     db.guardianClaim.findMany({
-      where: { claimantUserId: userId, status: { in: ["PENDING", "DECLINED"] } },
-      select: { id: true, status: true, schoolId: true, createdAt: true },
+      where: { claimantUserId: userId, status: { in: ["PENDING", "DECLINED", "EXPIRED"] } },
+      select: { id: true, status: true, schoolId: true, createdAt: true, declineReason: true },
       orderBy: { createdAt: "desc" },
       take: 20,
     }),
@@ -111,7 +125,13 @@ export async function myClaims(userId: string): Promise<MyClaim[]> {
   return Promise.all(
     rows.map(async (row) => {
       const school = await forSchool(row.schoolId, () => db.school.findUnique({ where: { id: row.schoolId }, select: { name: true } }));
-      return { id: row.id, status: row.status as MyClaim["status"], schoolName: school?.name ?? "", createdAt: row.createdAt };
+      return {
+        id: row.id,
+        status: statusNow(row) as MyClaim["status"],
+        schoolName: school?.name ?? "",
+        declineReason: row.status === "DECLINED" ? row.declineReason : null,
+        createdAt: row.createdAt,
+      };
     }),
   );
 }
@@ -174,7 +194,7 @@ const shaped = (row: ClaimRow): WaitingClaim => ({
 export async function waitingClaimsForOffice(session: ActiveContext): Promise<WaitingClaim[]> {
   if (!session.schoolId || (session.role !== "ADMIN" && session.role !== "PRINCIPAL")) return [];
   const rows = await db.guardianClaim.findMany({
-    where: { schoolId: session.schoolId, status: "PENDING" },
+    where: { schoolId: session.schoolId, ...stillWaiting() },
     orderBy: { createdAt: "asc" },
     take: 200,
     select: CLAIM_SELECT,
@@ -199,7 +219,7 @@ export async function waitingClaimsForGuardian(userId: string): Promise<WaitingC
     [...bySchool].map(([schoolId, membershipIds]) =>
       forSchool(schoolId, () =>
         db.guardianClaim.findMany({
-          where: { schoolId, studentMembershipId: { in: membershipIds }, status: "PENDING", claimantUserId: { not: userId } },
+          where: { schoolId, studentMembershipId: { in: membershipIds }, ...stillWaiting(), claimantUserId: { not: userId } },
           orderBy: { createdAt: "asc" },
           select: CLAIM_SELECT,
         }),
@@ -212,7 +232,7 @@ export async function waitingClaimsForGuardian(userId: string): Promise<WaitingC
 export async function waitingClaimCount(session: ActiveContext): Promise<number> {
   if (session.role === "PARENT") return (await waitingClaimsForGuardian(session.user.id)).length;
   if (!session.schoolId || (session.role !== "ADMIN" && session.role !== "PRINCIPAL")) return 0;
-  return db.guardianClaim.count({ where: { schoolId: session.schoolId, status: "PENDING" } });
+  return db.guardianClaim.count({ where: { schoolId: session.schoolId, ...stillWaiting() } });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -231,7 +251,8 @@ export async function waitingClaimCount(session: ActiveContext): Promise<number>
  *
  * DECIDED ONCE, by a status write conditional on PENDING that comes first.
  */
-export async function decideClaim(session: ActiveContext, claimId: string, decision: "APPROVE" | "DECLINE"): Promise<void> {
+export async function decideClaim(session: ActiveContext, claimId: string, decision: "APPROVE" | "DECLINE", reason?: string): Promise<void> {
+  const said = decision === "DECLINE" ? reason?.trim().slice(0, 300) || null : null;
   // Read under whatever this session is bound to: the office's own school, or
   // a guardian's children's schools. Anybody bound to neither finds nothing.
   const pointer = await db.guardianClaim.findFirst({
@@ -253,11 +274,12 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
     const claim = await db.guardianClaim.findFirst({ where: { id: claimId, schoolId: pointer.schoolId }, select: { ...CLAIM_SELECT, status: true, claimantUserId: true } });
     if (!claim) throw new AccessError("access.claimNotFound", "NOT_FOUND");
     if (claim.status !== "PENDING") throw new AccessError("access.thatClaimHasAlreadyBeenDecided");
+    if (claim.createdAt < waitingCutoff()) throw new AccessError("access.thatRequestHasExpired");
     if (decision === "APPROVE" && (claim.student.leftAt || claim.student.status !== "ACTIVE")) throw new AccessError("access.thatPupilHasLeft");
 
     const claimed = await db.guardianClaim.updateMany({
       where: { id: claimId, schoolId: pointer.schoolId, status: "PENDING" },
-      data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: new Date(), decidedByUserId: session.user.id },
+      data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: new Date(), decidedByUserId: session.user.id, declineReason: said },
     });
     if (claimed.count === 0) throw new AccessError("access.thatClaimHasAlreadyBeenDecided");
 
@@ -265,14 +287,14 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
     const by = isOffice ? "office" : "guardian";
 
     if (decision === "DECLINE") {
-      await audit({ schoolId: pointer.schoolId, actorUserId: session.user.id, action: "parent.claim.decline", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { by } });
+      await audit({ schoolId: pointer.schoolId, actorUserId: session.user.id, action: "parent.claim.decline", targetType: "Membership", targetId: pointer.studentMembershipId, meta: { by, reasonGiven: said !== null } });
       await notify({
         userId: claim.claimantUserId,
         schoolId: pointer.schoolId,
         kind: "SYSTEM",
         titleKey: "claim.notifDeclined",
         titleVars: { school: claim.school.name },
-        bodyKey: "claim.notifDeclinedBody",
+        ...(said ? { bodyKey: "joinRequests.reasonGiven" as const, bodyVars: { reason: said } } : { bodyKey: "claim.notifDeclinedBody" as const }),
         url: "/parent/link",
       }).catch((error) => console.error("[decideClaim] notice failed", error));
       return;

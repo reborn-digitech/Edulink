@@ -195,11 +195,39 @@ describe("claiming a child", () => {
 
     expect((await waitingClaimsForGuardian(existingGuardianUserId)).map((row) => row.id)).toEqual([claim.id]);
     expect(await waitingClaimsForGuardian(stranger.id)).toEqual([]);
-    await decideClaim(await who(existingGuardianUserId, "PARENT"), claim.id, "DECLINE");
+    await decideClaim(await who(existingGuardianUserId, "PARENT"), claim.id, "DECLINE", "We do not know you.");
     expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
-    expect((await db.guardianClaim.findUniqueOrThrow({ where: { id: claim.id } })).status).toBe("DECLINED");
+    expect(await db.guardianClaim.findUniqueOrThrow({ where: { id: claim.id }, select: { status: true, declineReason: true } })).toEqual({ status: "DECLINED", declineReason: "We do not know you." });
+    expect((await db.auditLog.findFirst({ where: { schoolId, action: "parent.claim.decline" } }))?.meta).not.toContain("do not know");
+
+    // Seven days after a no: the right pair again is refused in its own words, and files nothing.
+    const soon = await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    expect(soon.ok).toBe(false);
+    expect(soon.errors._form).toMatch(/cannot be made again for 7 days/);
+    expect(await db.guardianClaim.count({ where: { claimantUserId: parentUserId, status: "PENDING" } })).toBe(0);
+    await db.guardianClaim.update({ where: { id: claim.id }, data: { decidedAt: new Date(Date.now() - 8 * 86_400_000) } });
+    await db.rateLimit.deleteMany({ where: { bucket: { startsWith: "claim:" } } });
+    expect((await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" })).pending?.alreadyWaiting).toBe(false);
     // Told that it was not accepted, and at which school; not whose child it was.
-    const told = await db.notification.findFirst({ where: { userId: parentUserId } });
+    const told = await db.notification.findFirst({ where: { userId: parentUserId, titleKey: "claim.notifDeclined" } });
+    expect(told?.title).toContain("ZZ Claim School");
+    expect(told?.body).toBe("The school said: We do not know you.");
+    expect(`${told?.title} ${told?.body}`).not.toContain("Asha");
+  });
+
+  it("⚠ a claim nobody decided in thirty days is in nobody's queue and cannot be approved", async () => {
+    await claimChild({ studentCode, birthdate: "2015-04-05", relation: "PARENT" });
+    const claim = await db.guardianClaim.findFirstOrThrow({ where: { claimantUserId: parentUserId } });
+    await db.guardianClaim.update({ where: { id: claim.id }, data: { createdAt: new Date(Date.now() - 31 * 86_400_000) } });
+    const office = await who(officeUserId, "ADMIN");
+    expect(await waitingClaimsForOffice(office)).toEqual([]);
+    expect(await waitingClaimsForGuardian(existingGuardianUserId)).toEqual([]);
+    await expect(decideClaim(office, claim.id, "APPROVE")).rejects.toMatchObject({ key: "access.thatRequestHasExpired" });
+    expect(await db.guardianship.count({ where: { parentUserId } })).toBe(0);
+
+    const { expireRequests } = await import("@/lib/request-expiry");
+    expect(await expireRequests(new Date(), { schoolIds: [schoolId] })).toMatchObject({ joins: 0, claims: 1, perSchool: { [schoolId]: { claimsExpired: 1 } } });
+    const told = await db.notification.findFirst({ where: { userId: parentUserId, titleKey: "claim.notifExpired" } });
     expect(told?.title).toContain("ZZ Claim School");
     expect(`${told?.title} ${told?.body}`).not.toContain("Asha");
   });

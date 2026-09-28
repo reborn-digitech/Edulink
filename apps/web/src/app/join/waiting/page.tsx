@@ -11,6 +11,8 @@ import { myJoinRequests } from "@/lib/join-requests";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import { getRelativeTime, getT } from "@/lib/i18n/server";
 
+const STATUS_KEY = { PENDING: "joinRequests.statusPending", DECLINED: "joinRequests.statusDeclined", EXPIRED: "joinRequests.statusExpired" } as const;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("joinRequests.waitingTitle") };
@@ -67,7 +69,7 @@ export default async function JoinWaitingPage({ searchParams }: { searchParams: 
           <HourglassMediumIcon weight="duotone" className="size-8" />
         </div>
         <h1 className="text-3xl font-bold tracking-tight text-fg">{t("joinRequests.waitingTitle")}</h1>
-        <p className="mt-2 text-fg-muted">{requests.length > 0 ? t("joinRequests.waitingBody") : t("joinRequests.waitingNone")}</p>
+        <p className="mt-2 text-fg-muted">{waiting.length > 0 ? t("joinRequests.waitingBody") : t("joinRequests.waitingNone")}</p>
 
         {handle && (
           <Card className="mt-6 border-accent/40 p-4" data-testid="handle-reminder">
@@ -84,9 +86,11 @@ export default async function JoinWaitingPage({ searchParams }: { searchParams: 
                     {request.className ? t("joinRequests.waitingRowClass", { className: request.className, school: request.schoolName }) : request.schoolName}
                   </p>
                   <p className="text-xs text-fg-muted">{relativeTime(request.createdAt)}</p>
+                  {request.declineReason && <p className="mt-1 text-sm text-fg">{t("joinRequests.reasonGiven", { reason: request.declineReason })}</p>}
+                  {request.status === "EXPIRED" && <p className="mt-1 text-sm text-fg-muted">{t("joinRequests.notifExpiredBody")}</p>}
                 </div>
                 <Badge tone={request.status === "PENDING" ? "warn" : "neutral"} size="sm">
-                  {request.status === "PENDING" ? t("joinRequests.statusPending") : t("joinRequests.statusDeclined")}
+                  {t(STATUS_KEY[request.status])}
                 </Badge>
               </li>
             ))}

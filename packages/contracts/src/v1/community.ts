@@ -147,7 +147,7 @@ export const guardianRelationSchema = z.enum(["PARENT", "GUARDIAN", "OTHER"]);
 export const communityLinkChildPageSchema = z.object({
   children: z.array(z.object({ guardianshipId: z.string(), name: z.string(), schoolName: z.string() })),
   /** What this account has asked for and not been given: waiting, or declined, and at which school — never whose child. */
-  claims: z.array(z.object({ id: z.string(), status: z.enum(["PENDING", "DECLINED"]), schoolName: z.string(), createdAt: z.string().datetime() })),
+  claims: z.array(z.object({ id: z.string(), status: z.enum(["PENDING", "DECLINED", "EXPIRED"]), schoolName: z.string(), declineReason: z.string().nullable(), createdAt: z.string().datetime() })),
 });
 
 /** POST /api/v1/community/link-child — both factors: the code off the letter home, and the child's date of birth. */

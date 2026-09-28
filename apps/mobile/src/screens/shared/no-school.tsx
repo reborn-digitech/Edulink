@@ -11,6 +11,7 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
 type Refusal = Error & { issues?: Record<string, string> };
+const STATUS_KEY = { PENDING: "joinRequests.statusPending", DECLINED: "joinRequests.statusDeclined", EXPIRED: "joinRequests.statusExpired" } as const;
 
 /** The web's formatCode on /join: capitals and digits, 5+4 for a school, 3+4 for a class. */
 export function formatJoinCode(raw: string): string {
@@ -98,7 +99,7 @@ export function NoSchool() {
     join.mutate(code);
   }
 
-  const waiting = (requests.data?.requests ?? []).filter((request) => request.status !== "APPROVED");
+  const waiting = requests.data?.requests ?? [];
   const joinLabel = found?.className ? t("join.joinClassAs", { className: found.className, name }) : t("join.joinSchoolAs", { school: found?.schoolName ?? "", name });
 
   return (
@@ -115,15 +116,25 @@ export function NoSchool() {
       {failure ? <Failed message={failure.message} onRetry={failure.retry} /> : null}
       {waiting.length > 0 ? (
         <Card title={t("joinRequests.waitingTitle")} accessibilityLiveRegion="polite">
-          <Text variant="sm" tone="muted">
-            {t("joinRequests.waitingBody")}
-          </Text>
+          {waiting.some((request) => request.status === "PENDING") ? (
+            <Text variant="sm" tone="muted">
+              {t("joinRequests.waitingBody")}
+            </Text>
+          ) : null}
           {waiting.map((request) => (
             <View key={request.id} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: th.space[2], borderTopWidth: 1, borderTopColor: th.border, paddingTop: th.space[2] }}>
-              <Text variant="sm" bold style={{ flex: 1 }}>
-                {request.className ? t("joinRequests.waitingRowClass", { className: request.className, school: request.schoolName }) : request.schoolName}
-              </Text>
-              <Pill label={request.status === "PENDING" ? t("joinRequests.statusPending") : t("joinRequests.statusDeclined")} tone={request.status === "PENDING" ? "warn" : "muted"} />
+              <View style={{ flex: 1, gap: th.space[1] }}>
+                <Text variant="sm" bold>
+                  {request.className ? t("joinRequests.waitingRowClass", { className: request.className, school: request.schoolName }) : request.schoolName}
+                </Text>
+                {request.declineReason ? <Text variant="sm">{t("joinRequests.reasonGiven", { reason: request.declineReason })}</Text> : null}
+                {request.status === "EXPIRED" ? (
+                  <Text variant="sm" tone="muted">
+                    {t("joinRequests.notifExpiredBody")}
+                  </Text>
+                ) : null}
+              </View>
+              <Pill label={t(STATUS_KEY[request.status])} tone={request.status === "PENDING" ? "warn" : "muted"} />
             </View>
           ))}
         </Card>

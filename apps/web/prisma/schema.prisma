@@ -499,11 +499,14 @@ model JoinRequest {
   classId  String?
   /// SCHOOL | CLASS — which kind of code was typed, kept after a class is deleted.
   via      String
-  status   String  @default("PENDING") // PENDING | APPROVED | DECLINED
+  status   String  @default("PENDING") // PENDING | APPROVED | DECLINED | EXPIRED
 
   createdAt             DateTime  @default(now())
   decidedAt             DateTime?
   decidedByMembershipId String?
+  /// What the decider chose to tell the asker with a decline. The asker reads
+  /// it; the audit log never holds it.
+  declineReason         String?
 
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   user   User   @relation("JoinRequester", fields: [userId], references: [id], onDelete: Cascade)
@@ -532,11 +535,13 @@ model GuardianClaim {
   studentMembershipId String
   claimantUserId      String
   relation            String @default("PARENT") // PARENT | GUARDIAN | OTHER
-  status              String @default("PENDING") // PENDING | APPROVED | DECLINED
+  status              String @default("PENDING") // PENDING | APPROVED | DECLINED | EXPIRED
 
   createdAt       DateTime  @default(now())
   decidedAt       DateTime?
   decidedByUserId String?
+  /// What the decider chose to tell the claimant with a decline.
+  declineReason   String?
 
   school   School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   student  Membership @relation("GuardianClaimStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)

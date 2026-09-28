@@ -32,7 +32,7 @@ export const JOIN: Endpoint[] = [
   {
     method: "GET",
     path: "/api/v1/join/requests",
-    summary: "My own requests to join: the ones waiting and the ones not accepted, newest first",
+    summary: "My own requests to join: waiting, not accepted (with what the school said), or expired after thirty days, newest first",
     access: "signed-in",
     response: c.joinRequestsSchema,
   },

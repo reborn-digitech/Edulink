@@ -13,7 +13,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ cla
     const { claimId } = await params;
     const parsed = joinDecisionBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
-    await decideClaim(ctx, claimId, parsed.data.decision);
+    await decideClaim(ctx, claimId, parsed.data.decision, parsed.data.reason);
     return ok(okSchema.parse({ ok: true }));
   } catch (error) {
     return apiFailure(error, "api/v1/shared/claims/[claimId]/decide");

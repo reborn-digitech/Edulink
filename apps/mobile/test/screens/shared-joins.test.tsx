@@ -57,6 +57,25 @@ describe("people waiting for a yes", () => {
     expect(screen.queryByText("ZZ Aanya Rao")).toBeNull();
   });
 
+  it("declining asks for a sentence first, which may be left empty; what is written goes with the decision", async () => {
+    const { calls } = await mount("TEACHER", {
+      [`GET ${PATH}`]: () => json(waitingQueueSchema.parse({ joins: [JOIN, SCHOOL_JOIN], claims: [] })),
+      "POST /api/v1/shared/joins/jr1/decide": () => json({ ok: true }),
+      "POST /api/v1/shared/joins/jr2/decide": () => json({ ok: true }),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "Decline: ZZ Aanya Rao" }));
+    expect(screen.getByText("The person who asked will read this. Leave it empty to say only that the request was not accepted.")).toBeTruthy();
+    expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
+    await fireEvent.changeText(screen.getByLabelText("A sentence for them (optional)"), "  Wrong class, ask for 5B.  ");
+    await fireEvent.press(screen.getByRole("button", { name: "Decline: ZZ Aanya Rao" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/shared/joins/jr1/decide")?.body).toEqual({ decision: "DECLINE", reason: "Wrong class, ask for 5B." }));
+    expect(await screen.findByText("Declined")).toBeTruthy();
+
+    await fireEvent.press(await screen.findByRole("button", { name: "Decline: ZZ Kabir Shah" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Decline: ZZ Kabir Shah" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/shared/joins/jr2/decide")?.body).toEqual({ decision: "DECLINE" }));
+  });
+
   it("declines a claim, and a refusal stays above the buttons", async () => {
     const taken = "That request to be linked has already been decided.";
     const { calls } = await mount("ADMIN", {
@@ -64,8 +83,12 @@ describe("people waiting for a yes", () => {
       "POST /api/v1/shared/claims/gc1/decide": () => json({ error: taken, code: "FORBIDDEN" }, 403),
     });
     await fireEvent.press(await screen.findByRole("button", { name: "Decline: ZZ Meera Rao" }));
+    // A claimant has not been told whose code it is, and the box says so.
+    expect(screen.getByText(/^The person who asked will read this\. Do not name the child/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Decline: ZZ Meera Rao" }));
     expect(await screen.findByRole("alert")).toHaveTextContent(taken);
     expect(calls().find((c) => c.line === "POST /api/v1/shared/claims/gc1/decide")?.body).toEqual({ decision: "DECLINE" });
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
     expect(screen.getByRole("button", { name: "Approve: ZZ Meera Rao" })).toBeTruthy();
   });
 

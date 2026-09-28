@@ -32,10 +32,13 @@ const iso = z.string().datetime();
 /** One request of the asker's own: that it waits, or was not accepted, and where. */
 export const joinRequestSchema = z.object({
   id: z.string(),
-  status: z.enum(["PENDING", "APPROVED", "DECLINED"]),
+  /** EXPIRED: nobody decided it in thirty days, and the asker may ask again. */
+  status: z.enum(["PENDING", "DECLINED", "EXPIRED"]),
   schoolName: z.string(),
   /** The class the code named; null for a whole-school code. */
   className: z.string().nullable(),
+  /** What the decider chose to say with a decline; null when they said nothing. */
+  declineReason: z.string().nullable(),
   createdAt: iso,
 });
 export type JoinRequest = z.infer<typeof joinRequestSchema>;
@@ -89,5 +92,9 @@ export const waitingQueueSchema = z.object({ joins: z.array(waitingJoinSchema), 
 export type WaitingQueue = z.infer<typeof waitingQueueSchema>;
 
 /** POST …/joins/{requestId}/decide and …/claims/{claimId}/decide. */
-export const joinDecisionBodySchema = z.object({ decision: z.enum(["APPROVE", "DECLINE"]) });
+export const joinDecisionBodySchema = z.object({
+  decision: z.enum(["APPROVE", "DECLINE"]),
+  /** With a decline only, and optional: a sentence the asker will read. Never kept in the audit log. */
+  reason: z.string().trim().max(300).optional(),
+});
 export type JoinDecisionBody = z.infer<typeof joinDecisionBodySchema>;

@@ -7,6 +7,7 @@ import { parseDateOnly, sameCalendarDay } from "./dates";
 import { audit } from "./audit";
 import { forJoinCode } from "./tenant-context";
 import { fileClaim } from "./guardian-claims";
+import { AccessError } from "./tenancy";
 import { consume, retryHintKey, CLAIM_ATTEMPTS, CLAIM_PER_CODE } from "./rate-limit";
 import { claimChildSchema, fieldErrors, type FieldErrors } from "./validation";
 import type { Translate } from "./i18n/dictionary";
@@ -181,14 +182,21 @@ export async function claimChildFor(session: ActiveContext, input: unknown, t: T
    * claimant is told that it waits, and at which school, and not whose
    * child the pair named.
    */
-  const filed = await fileClaim({
-    claimant: { id: session.user.id, name: session.user.preferredName ?? session.user.name },
-    studentMembershipId: membership.id,
-    schoolId: membership.schoolId,
-    childName: membership.user.preferredName ?? membership.user.name,
-    schoolName: membership.school.name,
-    relation,
-  });
+  let filed: Awaited<ReturnType<typeof fileClaim>>;
+  try {
+    filed = await fileClaim({
+      claimant: { id: session.user.id, name: session.user.preferredName ?? session.user.name },
+      studentMembershipId: membership.id,
+      schoolId: membership.schoolId,
+      childName: membership.user.preferredName ?? membership.user.name,
+      schoolName: membership.school.name,
+      relation,
+    });
+  } catch (error) {
+    // Declined within the week: said in its own words, to somebody who was told of the decline.
+    if (error instanceof AccessError) return { ok: false, errors: { _form: t(error.key, error.vars) } };
+    throw error;
+  }
 
   return {
     ok: true,

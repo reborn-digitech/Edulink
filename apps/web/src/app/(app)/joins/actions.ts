@@ -23,15 +23,15 @@ async function decided(tag: string, work: () => Promise<void>): Promise<Decision
 }
 
 /** Lets somebody who typed a code in, or does not. Who may is `decideJoin`'s rule. */
-export async function decideJoinRequest(requestId: string, decision: "APPROVE" | "DECLINE"): Promise<DecisionResult> {
+export async function decideJoinRequest(requestId: string, decision: "APPROVE" | "DECLINE", reason?: string): Promise<DecisionResult> {
   const session = await getSession();
   if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
-  return decided("[decide-join]", () => decideJoin(session, requestId, decision));
+  return decided("[decide-join]", () => decideJoin(session, requestId, decision, reason));
 }
 
 /** Makes a claimant a child's guardian, or does not. Who may is `decideClaim`'s rule. */
-export async function decideGuardianClaim(claimId: string, decision: "APPROVE" | "DECLINE"): Promise<DecisionResult> {
+export async function decideGuardianClaim(claimId: string, decision: "APPROVE" | "DECLINE", reason?: string): Promise<DecisionResult> {
   const session = await getSession();
   if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
-  return decided("[decide-claim]", () => decideClaim(session, claimId, decision));
+  return decided("[decide-claim]", () => decideClaim(session, claimId, decision, reason));
 }

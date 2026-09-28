@@ -9,6 +9,7 @@ import { forSchool, forUser } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
 import { syncGradeLevel } from "./grade-level";
 import type { ActiveContext } from "./session";
+import { COOL_OFF_DAYS, coolOffCutoff, statusNow, stillWaiting, waitingCutoff } from "./request-expiry";
 
 /**
  * Asking to join, and being let in.
@@ -53,10 +54,25 @@ export async function requestToJoin(userId: string, target: JoinTarget): Promise
   const classId = target.kind === "class" ? target.classId : null;
   return forSchool(target.schoolId, async () => {
     const waiting = await db.joinRequest.findFirst({
-      where: { userId, schoolId: target.schoolId, classId, status: "PENDING" },
+      where: { userId, schoolId: target.schoolId, classId, ...stillWaiting() },
       select: { id: true },
     });
     if (waiting) return { requestId: waiting.id, schoolId: target.schoolId, alreadyWaiting: true };
+
+    // SEVEN DAYS AFTER A NO — see lib/request-expiry.ts. The same school and
+    // class: a pupil declined by one class's teacher may still ask another's.
+    const declined = await db.joinRequest.findFirst({
+      where: { userId, schoolId: target.schoolId, classId, status: "DECLINED", decidedAt: { gte: coolOffCutoff() } },
+      select: { id: true },
+    });
+    if (declined) throw new AccessError("join.declinedRecently", "FORBIDDEN", { days: COOL_OFF_DAYS });
+
+    // One left PENDING past its thirty days, which the nightly job has not
+    // reached: it stops waiting here, so that asking again is a new request.
+    await db.joinRequest.updateMany({
+      where: { userId, schoolId: target.schoolId, classId, status: "PENDING", createdAt: { lt: waitingCutoff() } },
+      data: { status: "EXPIRED", decidedAt: new Date() },
+    });
 
     const made = await db.joinRequest.create({
       data: { userId, schoolId: target.schoolId, classId, via: target.kind === "class" ? "CLASS" : "SCHOOL" },
@@ -117,9 +133,11 @@ async function decidersOf(schoolId: string, classId: string | null): Promise<str
 
 export type MyJoinRequest = {
   id: string;
-  status: "PENDING" | "APPROVED" | "DECLINED";
+  status: "PENDING" | "DECLINED" | "EXPIRED";
   schoolName: string;
   className: string | null;
+  /** What the decider chose to say with a decline; null when they said nothing. */
+  declineReason: string | null;
   createdAt: Date;
 };
 
@@ -131,8 +149,8 @@ export type MyJoinRequest = {
 export async function myJoinRequests(userId: string): Promise<MyJoinRequest[]> {
   const rows = await forUser(userId, () =>
     db.joinRequest.findMany({
-      where: { userId, status: { in: ["PENDING", "DECLINED"] } },
-      select: { id: true, status: true, schoolId: true, classId: true, createdAt: true },
+      where: { userId, status: { in: ["PENDING", "DECLINED", "EXPIRED"] } },
+      select: { id: true, status: true, schoolId: true, classId: true, createdAt: true, declineReason: true },
       orderBy: { createdAt: "desc" },
       take: 20,
     }),
@@ -145,9 +163,10 @@ export async function myJoinRequests(userId: string): Promise<MyJoinRequest[]> {
       }));
       return {
         id: row.id,
-        status: row.status as MyJoinRequest["status"],
+        status: statusNow(row) as MyJoinRequest["status"],
         schoolName: names.school?.name ?? "",
         className: names.klass?.name ?? null,
+        declineReason: row.status === "DECLINED" ? row.declineReason : null,
         createdAt: row.createdAt,
       };
     }),
@@ -187,7 +206,7 @@ export async function waitingJoins(session: ActiveContext): Promise<WaitingJoin[
   if (!scope) return [];
   if (scope.classIds !== "all" && scope.classIds.length === 0) return [];
   const rows = await db.joinRequest.findMany({
-    where: { schoolId: scope.schoolId, status: "PENDING", ...(scope.classIds === "all" ? {} : { classId: { in: scope.classIds } }) },
+    where: { schoolId: scope.schoolId, ...stillWaiting(), ...(scope.classIds === "all" ? {} : { classId: { in: scope.classIds } }) },
     orderBy: { createdAt: "asc" },
     take: 200,
     select: {
@@ -223,7 +242,7 @@ export async function waitingJoinCount(session: ActiveContext): Promise<number> 
   if (!scope) return 0;
   if (scope.classIds !== "all" && scope.classIds.length === 0) return 0;
   return db.joinRequest.count({
-    where: { schoolId: scope.schoolId, status: "PENDING", ...(scope.classIds === "all" ? {} : { classId: { in: scope.classIds } }) },
+    where: { schoolId: scope.schoolId, ...stillWaiting(), ...(scope.classIds === "all" ? {} : { classId: { in: scope.classIds } }) },
   });
 }
 
@@ -245,13 +264,13 @@ export async function waitingJoinCount(session: ActiveContext): Promise<number> 
  * A PARENT'S ACCOUNT AND A MEMBER OF STAFF ARE STILL REFUSED, here as well
  * as when they asked: an account can change between the asking and the yes.
  */
-export async function decideJoin(session: ActiveContext, requestId: string, decision: "APPROVE" | "DECLINE"): Promise<void> {
+export async function decideJoin(session: ActiveContext, requestId: string, decision: "APPROVE" | "DECLINE", reason?: string): Promise<void> {
   const scope = await decidable(session);
   if (!scope) throw new AccessError("access.youCannotDecideJoins");
 
   const request = await db.joinRequest.findFirst({
     where: { id: requestId, schoolId: scope.schoolId },
-    select: { id: true, userId: true, classId: true, via: true, status: true, class: { select: { name: true, archivedAt: true } }, school: { select: { name: true } } },
+    select: { id: true, userId: true, classId: true, via: true, status: true, createdAt: true, class: { select: { name: true, archivedAt: true } }, school: { select: { name: true } } },
   });
   if (!request) throw new AccessError("access.joinRequestNotFound", "NOT_FOUND");
   if (scope.classIds !== "all") {
@@ -259,6 +278,10 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
     if (!scope.classIds.includes(request.classId)) throw new AccessError("access.joinRequestNotFound", "NOT_FOUND");
   }
   if (request.status !== "PENDING") throw new AccessError("access.thatJoinHasAlreadyBeenDecided");
+  // Past its thirty days it waits on nobody, whether or not the job has said so.
+  if (request.createdAt < waitingCutoff()) throw new AccessError("access.thatRequestHasExpired");
+  // Said to the asker, and kept out of the log: a sentence, not a record.
+  const said = decision === "DECLINE" ? reason?.trim().slice(0, 300) || null : null;
 
   if (decision === "APPROVE") {
     const [guards, post] = await Promise.all([
@@ -273,19 +296,19 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
 
   const claimed = await db.joinRequest.updateMany({
     where: { id: request.id, schoolId: scope.schoolId, status: "PENDING" },
-    data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: new Date(), decidedByMembershipId: session.membershipId },
+    data: { status: decision === "APPROVE" ? "APPROVED" : "DECLINED", decidedAt: new Date(), decidedByMembershipId: session.membershipId, declineReason: said },
   });
   if (claimed.count === 0) throw new AccessError("access.thatJoinHasAlreadyBeenDecided");
 
   if (decision === "DECLINE") {
-    await audit({ schoolId: scope.schoolId, actorUserId: session.user.id, action: "student.join.decline", targetType: "JoinRequest", targetId: request.id, meta: { via: request.via } });
+    await audit({ schoolId: scope.schoolId, actorUserId: session.user.id, action: "student.join.decline", targetType: "JoinRequest", targetId: request.id, meta: { via: request.via, reasonGiven: said !== null } });
     await notify({
       userId: request.userId,
       schoolId: scope.schoolId,
       kind: "SYSTEM",
       titleKey: "joinRequests.notifDeclined",
       titleVars: { school: request.school.name },
-      bodyKey: "joinRequests.notifDeclinedBody",
+      ...(said ? { bodyKey: "joinRequests.reasonGiven" as const, bodyVars: { reason: said } } : { bodyKey: "joinRequests.notifDeclinedBody" as const }),
       url: "/join/waiting",
     }).catch((error) => console.error("[decideJoin] notice failed", error));
     return;
@@ -296,7 +319,7 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
     membershipId = await admit(scope.schoolId, request.userId, request.classId);
   } catch (error) {
     // Nobody was admitted, so the request goes back to waiting rather than reading "approved" over an empty roll.
-    await db.joinRequest.updateMany({ where: { id: request.id, schoolId: scope.schoolId }, data: { status: "PENDING", decidedAt: null, decidedByMembershipId: null } });
+    await db.joinRequest.updateMany({ where: { id: request.id, schoolId: scope.schoolId }, data: { status: "PENDING", decidedAt: null, decidedByMembershipId: null, declineReason: null } });
     throw error;
   }
 
