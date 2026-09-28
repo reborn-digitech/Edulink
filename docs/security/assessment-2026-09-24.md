@@ -171,5 +171,8 @@ storage and clearing everything on sign-out.
   **Built 2026-09-28:** the operator gives and withdraws `School.verifiedAt` from `/root` and from the phone,
   each change audited as `superuser.school.verify` or `superuser.school.unverify`; `mayBringOver` is unchanged.
 - PKCE on the phone's SSO hand-off and verified app links.
+  **PKCE built 2026-09-29:** the app sends the S256 challenge of a verifier it keeps at the start, the one-time
+  code is minted against it, and the exchange asks for the verifier; a code with the wrong verifier is refused
+  and spent. Verified app links wait on the production domain.
 - A nonce-based CSP without `unsafe-inline`; a `__Host-` cookie; HSTS preload once the domain is fixed.
 - Narrower row-level policies for experts, keyed on the booking or the mentorship rather than the school.

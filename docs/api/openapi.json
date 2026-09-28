@@ -674,13 +674,18 @@
                     "minLength": 20,
                     "maxLength": 200
                   },
+                  "verifier": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9\\-._~]{43,128}$"
+                  },
                   "device": {
                     "type": "string",
                     "maxLength": 120
                   }
                 },
                 "required": [
-                  "code"
+                  "code",
+                  "verifier"
                 ],
                 "additionalProperties": false
               }

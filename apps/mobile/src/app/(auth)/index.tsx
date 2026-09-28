@@ -8,6 +8,7 @@ import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { LanguageRow } from "@/components/language-row";
+import { beginHandoff, handoffUrl } from "@/lib/sso-handoff";
 
 /**
  * Sign in: password first, the same identifier the web accepts (email, phone
@@ -38,6 +39,16 @@ export default function SignIn() {
     await session.accept(res.data);
   }
 
+  /** The verifier is made and kept before the browser opens; only its challenge goes with the link. */
+  async function continueWith(provider: "google") {
+    setError(null);
+    try {
+      await Linking.openURL(handoffUrl(API_BASE, provider, await beginHandoff()));
+    } catch {
+      setError(t("common.somethingWrong"));
+    }
+  }
+
   return (
     <Screen title={t("login.title")} description={t("login.welcome")}>
       <View style={{ gap: th.space[3] }}>
@@ -47,7 +58,7 @@ export default function SignIn() {
       </View>
       <View style={{ gap: th.space[2], marginTop: th.space[3] }}>
         <Button label={t("login.emailMeALink")} variant="secondary" onPress={() => router.push("/(auth)/magic-link")} />
-        <Button label={t("login.ssoContinue", { provider: "Google" })} variant="secondary" onPress={() => void Linking.openURL(`${API_BASE}/api/sso/google/start?client=app`)} />
+        <Button label={t("login.ssoContinue", { provider: "Google" })} variant="secondary" onPress={() => void continueWith("google")} />
         <Button label={t("firstSignin.title")} variant="ghost" onPress={() => router.push("/(auth)/first-signin")} />
       </View>
       <LanguageRow />

@@ -71,6 +71,8 @@ export const KEYS = {
   session: "edulink.session.meta",
   locale: "edulink.locale",
   lock: "edulink.lock",
+  /** The verifier of an SSO hand-off in flight: written when the browser opens, spent when the deep link comes back. */
+  ssoVerifier: "edulink.sso.verifier",
   /** The last crash, kept until the next start has posted it (see lib/crash.ts). */
   crash: "edulink.crash",
 } as const;

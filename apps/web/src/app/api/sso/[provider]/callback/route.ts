@@ -3,15 +3,21 @@ import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { createSession } from "@/lib/session";
 import { generateToken, hashToken } from "@/lib/crypto";
+import { pkceChallengeSchema } from "@edulink/contracts";
+import { writeJson } from "@/lib/json";
 
 const APP_SCHEME = process.env.APP_DEEP_LINK_SCHEME?.trim() || "edulink";
 const APP_EXCHANGE_TTL_MS = 2 * 60_000;
 
-function fromApp(cookieValue: string | undefined): boolean {
+/** The app's marker and the challenge it sent at the start; null for a browser's own sign-in. */
+function appHandoff(cookieValue: string | undefined): { challenge: string | null } | null {
   try {
-    return (JSON.parse(cookieValue ?? "") as { c?: string }).c === "app";
+    const saved = JSON.parse(cookieValue ?? "") as { c?: string; ch?: unknown };
+    if (saved.c !== "app") return null;
+    const challenge = pkceChallengeSchema.safeParse(saved.ch);
+    return { challenge: challenge.success ? challenge.data : null };
   } catch {
-    return false;
+    return null;
   }
 }
 import { resolveContext } from "@/lib/resolve-context";
@@ -76,10 +82,16 @@ async function handle(
 
   // The phone's hand-off: no browser session, a one-time code on the deep
   // link, and POST /api/v1/auth/sso/exchange turns it into a bearer session.
-  if (fromApp(request.cookies.get(SSO_COOKIE)?.value)) {
+  // The code is bound to the challenge the app sent at the start: only the
+  // holder of the verifier can spend it, so a code read off the deep link by
+  // another app is worth nothing. A hand-off with no challenge is refused —
+  // the start route refuses one too, and this is the second lock.
+  const handoff = appHandoff(request.cookies.get(SSO_COOKIE)?.value);
+  if (handoff) {
+    if (!handoff.challenge) return away("failed");
     const code = generateToken();
     await db.authToken.create({
-      data: { userId: user.id, purpose: "APP_EXCHANGE", tokenHash: hashToken(code), expiresAt: new Date(Date.now() + APP_EXCHANGE_TTL_MS) },
+      data: { userId: user.id, purpose: "APP_EXCHANGE", tokenHash: hashToken(code), meta: writeJson({ challenge: handoff.challenge }), expiresAt: new Date(Date.now() + APP_EXCHANGE_TTL_MS) },
     });
     const response = NextResponse.redirect(`${APP_SCHEME}://sso?code=${encodeURIComponent(code)}&provider=${id}`);
     response.cookies.delete(SSO_COOKIE);

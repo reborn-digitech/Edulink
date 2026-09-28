@@ -27,7 +27,18 @@ export const firstSignInSchema = z.object({
   device: z.string().trim().max(120).optional(),
 });
 
-export const ssoExchangeSchema = z.object({ code: z.string().min(20).max(200), device: z.string().trim().max(120).optional() });
+/** RFC 7636's code verifier: 43 to 128 of the unreserved characters. */
+export const pkceVerifierSchema = z.string().regex(/^[A-Za-z0-9\-._~]{43,128}$/);
+/** Its challenge: the SHA-256 of the verifier, base64url without padding — always 43 characters. */
+export const pkceChallengeSchema = z.string().regex(/^[A-Za-z0-9_-]{43}$/);
+
+/**
+ * The code from the deep link AND the verifier the app kept to itself when it
+ * started the sign-in. The code travels through the system browser and an
+ * app link any app may have registered for; the verifier never leaves the
+ * app, so the code alone is worth nothing to whoever else receives it.
+ */
+export const ssoExchangeSchema = z.object({ code: z.string().min(20).max(200), verifier: pkceVerifierSchema, device: z.string().trim().max(120).optional() });
 
 export const sessionResponseSchema = z.object({
   token: z.string(),

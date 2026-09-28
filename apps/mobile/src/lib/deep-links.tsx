@@ -7,10 +7,12 @@ import type { SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
 import { useSession } from "./session";
 import { screenFor } from "./links";
+import { takeVerifier } from "./sso-handoff";
 
 /**
  * Two kinds of link open the app: the SSO hand-off (edulink://sso?code=…),
- * which is exchanged for a session here and nowhere else, and a
+ * which is exchanged for a session here and nowhere else, with the verifier
+ * this app kept when it began the sign-in (lib/sso-handoff.ts), and a
  * notification's URL (the same path the web writes), mapped to a screen by
  * lib/links.ts. A URL with no screen opens the web in the system browser.
  */
@@ -34,7 +36,12 @@ export function useDeepLinks() {
       if (parsed.hostname === "sso" || parsed.path === "sso") {
         const code = typeof parsed.queryParams?.code === "string" ? parsed.queryParams.code : null;
         if (!code) return;
-        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, device: "Relay app" });
+        // Only a hand-off this app began: the verifier it kept is what the
+        // server asks for beside the code. A code that arrives with none
+        // kept is somebody else's link, and is not sent anywhere.
+        const verifier = await takeVerifier();
+        if (!verifier) return;
+        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, verifier, device: "Relay app" });
         if (res.ok) await acceptRef.current(res.data);
         return;
       }

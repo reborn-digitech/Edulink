@@ -31,7 +31,7 @@ A bearer token is the same `Session` row a browser gets as a cookie.
 | Password | `POST /api/v1/auth/login` `{ identifier, password, device? }` |
 | Magic link | `POST /api/v1/auth/magic-link` `{ email }`, then `POST /api/v1/auth/magic-link/consume` `{ token }` |
 | Pupil's first sign-in | `POST /api/v1/auth/first-signin` `{ handle, code, password }` |
-| SSO | open `/api/sso/{provider}/start?client=app` in the system browser; the callback redirects to `edulink://sso?code=…`; `POST /api/v1/auth/sso/exchange` `{ code }` within two minutes |
+| SSO | make a PKCE verifier (43 to 128 unreserved characters) and keep it; open `/api/sso/{provider}/start?client=app&challenge=<base64url SHA-256 of the verifier>` in the system browser (400 without a challenge); the callback redirects to `edulink://sso?code=…`; `POST /api/v1/auth/sso/exchange` `{ code, verifier }` within two minutes. A code sent with the wrong verifier is refused and spent |
 | Who am I | `GET /api/v1/me` |
 | Switch school/role | `POST /api/v1/me/context` |
 | Devices | `GET /api/v1/me/sessions`, `DELETE /api/v1/me/sessions/{id}` |

@@ -11,6 +11,7 @@ import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { POST as loginPost } from "@/app/api/v1/auth/login/route";
 import { POST as consumePost } from "@/app/api/v1/auth/magic-link/consume/route";
 import { POST as exchangePost } from "@/app/api/v1/auth/sso/exchange/route";
+import { pkceChallengeOf } from "@/lib/auth-tokens";
 import { POST as logoutPost } from "@/app/api/v1/auth/logout/route";
 import { GET as meGet } from "@/app/api/v1/me/route";
 import { POST as contextPost } from "@/app/api/v1/me/context/route";
@@ -177,14 +178,43 @@ describe("one-time codes", () => {
     expect(again.status).toBe(401);
   });
 
-  it("an SSO exchange code signs in once and dies after two minutes", async () => {
+  it("an SSO exchange code signs in once, only for the app that holds its verifier, and dies after two minutes", async () => {
+    const verifier = `zz-verifier-${STAMP}-${"v".repeat(32)}`;
+    const mint = (raw: string, over: { meta?: string; expiresAt?: Date } = {}) =>
+      db.authToken.create({ data: { userId, purpose: "APP_EXCHANGE", tokenHash: hashToken(raw), meta: over.meta ?? JSON.stringify({ challenge: pkceChallengeOf(verifier) }), expiresAt: over.expiresAt ?? new Date(Date.now() + 120_000) } });
+    const exchange = (body: unknown) => exchangePost(json("/api/v1/auth/sso/exchange", body));
+    const spent = async (raw: string) => (await db.authToken.findUniqueOrThrow({ where: { tokenHash: hashToken(raw) }, select: { consumedAt: true } })).consumedAt !== null;
+
+    // RFC 7636's own example, so the hash is the one every other implementation computes.
+    expect(pkceChallengeOf("dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk")).toBe("E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM");
+
     const raw = `zz-exchange-${STAMP}`;
-    await db.authToken.create({ data: { userId, purpose: "APP_EXCHANGE", tokenHash: hashToken(raw), expiresAt: new Date(Date.now() + 120_000) } });
-    expect((await exchangePost(json("/api/v1/auth/sso/exchange", { code: raw }))).status).toBe(200);
-    expect((await exchangePost(json("/api/v1/auth/sso/exchange", { code: raw }))).status).toBe(401);
+    await mint(raw);
+    // No verifier, or one that is not a verifier: refused by shape, and the code is untouched.
+    expect((await exchange({ code: raw })).status).toBe(422);
+    expect((await exchange({ code: raw, verifier: "short" })).status).toBe(422);
+    expect(await spent(raw)).toBe(false);
+    expect((await exchange({ code: raw, verifier })).status).toBe(200);
+    expect((await exchange({ code: raw, verifier })).status).toBe(401);
+
+    // The code without its verifier: refused like a wrong code, and spent, so the right verifier is too late.
+    const stolen = `zz-stolen-${STAMP}`;
+    await mint(stolen);
+    const wrong = await exchange({ code: stolen, verifier: `zz-another-apps-${"w".repeat(40)}` });
+    const unknown = await exchange({ code: `zz-nobodys-code-${STAMP}`, verifier });
+    expect(wrong.status).toBe(401);
+    expect(await wrong.json()).toEqual(await unknown.json());
+    expect(await spent(stolen)).toBe(true);
+    expect((await exchange({ code: stolen, verifier })).status).toBe(401);
+
+    // A code minted against no challenge signs nobody in.
+    const bare = `zz-bare-${STAMP}`;
+    await mint(bare, { meta: "{}" });
+    expect((await exchange({ code: bare, verifier })).status).toBe(401);
+
     const stale = `zz-stale-${STAMP}`;
-    await db.authToken.create({ data: { userId, purpose: "APP_EXCHANGE", tokenHash: hashToken(stale), expiresAt: new Date(Date.now() - 1_000) } });
-    expect((await exchangePost(json("/api/v1/auth/sso/exchange", { code: stale }))).status).toBe(401);
+    await mint(stale, { expiresAt: new Date(Date.now() - 1_000) });
+    expect((await exchange({ code: stale, verifier })).status).toBe(401);
   });
 });
 

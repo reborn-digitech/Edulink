@@ -49,15 +49,27 @@ beforeEach(() => {
 });
 
 describe("deep links", () => {
-  it("the SSO hand-off code is exchanged once and the session accepted", async () => {
-    const store = memoryStore();
+  it("the SSO hand-off code is exchanged once, with the verifier this app kept, and the session accepted", async () => {
+    const store = memoryStore({ [KEYS.ssoVerifier]: "the-verifier-this-app-made-before-the-browser-opened" });
     __setKeyStore(store);
     const calls = fakeApi(store);
     mockInitialUrl = "edulink://sso?code=one-time-code-from-the-callback&provider=google";
     const { result } = await renderHook(() => (useDeepLinks(), useSession()), { wrapper });
     await waitFor(() => expect(result.current.status).toBe("signed-in"));
-    expect(calls.find((c) => c.path === "/api/v1/auth/sso/exchange")?.body).toMatchObject({ code: "one-time-code-from-the-callback" });
+    expect(calls.find((c) => c.path === "/api/v1/auth/sso/exchange")?.body).toEqual({ code: "one-time-code-from-the-callback", verifier: "the-verifier-this-app-made-before-the-browser-opened", device: "Relay app" });
     expect(await store.get(KEYS.token)).toBe("tok-sso");
+    // Spent with the code: the same link arriving again has nothing to send.
+    expect(await store.get(KEYS.ssoVerifier)).toBeFalsy();
+  });
+
+  it("⚠ a hand-off this app did not begin is not exchanged: no verifier kept, nothing sent", async () => {
+    const store = memoryStore();
+    __setKeyStore(store);
+    const calls = fakeApi(store);
+    mockInitialUrl = "edulink://sso?code=a-code-from-somebody-elses-sign-in&provider=google";
+    const { result } = await renderHook(() => (useDeepLinks(), useSession()), { wrapper });
+    await waitFor(() => expect(result.current.status).toBe("signed-out"));
+    expect(calls.some((c) => c.path === "/api/v1/auth/sso/exchange")).toBe(false);
   });
 
   it("a notification's web URL, arriving while open, routes to the mapped screen", async () => {

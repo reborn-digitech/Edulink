@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { pkceChallengeSchema } from "@edulink/contracts";
 import { beginSso, ssoRedirectUri, SSO_COOKIE, SSO_COOKIE_MAX_AGE, SSO_PROVIDERS, type SsoProviderId } from "@/lib/sso";
 
 /**
@@ -22,14 +23,21 @@ export async function GET(
   const origin = process.env.NEXT_PUBLIC_APP_URL?.trim() || request.nextUrl.origin;
   const redirectUri = ssoRedirectUri(origin, id);
 
+  // ?client=app must say who is asking: the challenge of a verifier only that
+  // app holds. Checked before anything is minted, so a hand-off that could
+  // not be bound to its app is never begun.
+  const fromApp = request.nextUrl.searchParams.get("client") === "app";
+  const challenge = pkceChallengeSchema.safeParse(request.nextUrl.searchParams.get("challenge"));
+  if (fromApp && !challenge.success) return new NextResponse(null, { status: 400 });
+
   const begun = beginSso(id, redirectUri);
   if (!begun) return new NextResponse(null, { status: 404 });
 
   // ?client=app: the phone opened this in the system browser. The marker rides
   // in the state cookie, and the callback hands the result to the app's deep
-  // link instead of setting a browser session.
-  const fromApp = request.nextUrl.searchParams.get("client") === "app";
-  const cookieValue = fromApp ? JSON.stringify({ ...(JSON.parse(begun.cookieValue) as object), c: "app" }) : begun.cookieValue;
+  // link instead of setting a browser session. The challenge rides with it
+  // and is fixed to the one-time code the callback mints.
+  const cookieValue = fromApp && challenge.success ? JSON.stringify({ ...(JSON.parse(begun.cookieValue) as object), c: "app", ch: challenge.data }) : begun.cookieValue;
 
   const response = NextResponse.redirect(begun.authorizeUrl);
   response.cookies.set(SSO_COOKIE, cookieValue, {
