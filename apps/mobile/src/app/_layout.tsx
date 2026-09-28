@@ -3,6 +3,7 @@ import { QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { Stack, usePathname, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Platform, useColorScheme, View } from "react-native";
+import type { ReactNode } from "react";
 import * as Device from "expo-device";
 import { makeQueryClient } from "@/lib/query";
 import { SessionProvider, useSession } from "@/lib/session";
@@ -66,6 +67,28 @@ function RootedBanner() {
   );
 }
 
+/** The widest a phone is: past this, the web target stops growing and sits in the middle of the window. */
+export const PHONE_MAX_WIDTH = 480;
+
+/**
+ * ON THE WEB ONLY, the app keeps a phone's width. The web target exists to
+ * look at the phone app in a browser; on a desktop window every screen used
+ * to stretch to the window's edge, buttons twelve hundred pixels wide, which
+ * is no screen the app will ever be drawn on. A phone draws nothing here:
+ * the children are returned as they are.
+ */
+function PhoneFrame({ children }: { children: ReactNode }) {
+  const th = useTheme();
+  if (Platform.OS !== "web") return <>{children}</>;
+  return (
+    <View style={{ flex: 1, alignItems: "center", backgroundColor: th.surfaceMuted }}>
+      <View testID="phone-frame" style={{ flex: 1, width: "100%", maxWidth: PHONE_MAX_WIDTH, backgroundColor: th.bg }}>
+        {children}
+      </View>
+    </View>
+  );
+}
+
 function Gate() {
   const session = useSession();
   const queryClient = useQueryClient();
@@ -108,7 +131,9 @@ function Gate() {
     return (
       <RoleThemeProvider role={session.status === "signed-in" ? session.me.active.role : null}>
         <StatusBar style={scheme === "dark" ? "light" : "dark"} />
-        <UpdateRequired policy={version.policy} />
+        <PhoneFrame>
+          <UpdateRequired policy={version.policy} />
+        </PhoneFrame>
       </RoleThemeProvider>
     );
   }
@@ -116,15 +141,17 @@ function Gate() {
   return (
     <RoleThemeProvider role={session.status === "signed-in" ? session.me.active.role : null}>
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
-      <ToastProvider>
-        <View style={{ flex: 1 }}>
-          {rooted ? <RootedBanner /> : null}
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(auth)" />
-            <Stack.Screen name="(app)" />
-          </Stack>
-        </View>
-      </ToastProvider>
+      <PhoneFrame>
+        <ToastProvider>
+          <View style={{ flex: 1 }}>
+            {rooted ? <RootedBanner /> : null}
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(auth)" />
+              <Stack.Screen name="(app)" />
+            </Stack>
+          </View>
+        </ToastProvider>
+      </PhoneFrame>
     </RoleThemeProvider>
   );
 }

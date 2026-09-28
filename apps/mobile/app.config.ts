@@ -14,9 +14,20 @@ import base from "./app.json";
  */
 const projectId = process.env.EAS_PROJECT_ID;
 
+/**
+ * The web target's output. "static" (app.json's, and the export's) renders
+ * every route on the server; under `expo start --web` that means a render per
+ * page load, and the dev server was seen to run out of an 8 GB heap after
+ * some sixty full loads. EXPO_WEB_OUTPUT=single makes the dev server hand
+ * out one page and render nothing itself. The export is not affected: it
+ * is run without the variable.
+ */
+const webOutput = process.env.EXPO_WEB_OUTPUT === "single" ? "single" : undefined;
+
 const config: ExpoConfig = {
   ...(base.expo as ExpoConfig),
   runtimeVersion: { policy: "appVersion" },
+  ...(webOutput ? { web: { ...(base.expo as ExpoConfig).web, output: webOutput } } : {}),
   ...(projectId
     ? {
         updates: { url: `https://u.expo.dev/${projectId}`, fallbackToCacheTimeout: 0, checkAutomatically: "ON_LOAD" },

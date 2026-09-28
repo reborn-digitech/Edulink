@@ -240,7 +240,7 @@ git push -q reborn master && git push -q origin master                   # the p
   "configurations": [
     { "name": "edulink-dev", "runtimeExecutable": "corepack", "runtimeArgs": ["pnpm", "--filter", "@edulink/web", "dev"], "port": 3000, "autoPort": true },
     { "name": "edulink-prod", "runtimeExecutable": "corepack", "runtimeArgs": ["pnpm", "--filter", "@edulink/web", "start"], "port": 3000 },
-    { "name": "edulink-mobile-web", "runtimeExecutable": "corepack", "runtimeArgs": ["pnpm", "--filter", "@edulink/mobile", "exec", "expo", "start", "--web", "--port", "8081"], "env": { "NODE_OPTIONS": "--max-old-space-size=8192" }, "port": 8081 },
+    { "name": "edulink-mobile-web", "runtimeExecutable": "corepack", "runtimeArgs": ["pnpm", "--filter", "@edulink/mobile", "exec", "expo", "start", "--web", "--port", "8081"], "env": { "NODE_OPTIONS": "--max-old-space-size=8192", "EXPO_WEB_OUTPUT": "single" }, "port": 8081 },
     { "name": "edulink-mobile-static", "runtimeExecutable": "corepack", "runtimeArgs": ["pnpm", "--filter", "@edulink/mobile", "exec", "expo", "serve", "--port", "8081"], "port": 8081 }
   ]
 }

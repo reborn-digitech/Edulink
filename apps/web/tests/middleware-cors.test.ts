@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { NextRequest } from "next/server";
-import { middleware } from "@/middleware";
+import { config, middleware } from "@/middleware";
 
 /** Only named origins, only preflights they send, nothing added for anyone else. */
 describe("CORS on /api/v1", () => {
@@ -24,5 +24,26 @@ describe("CORS on /api/v1", () => {
     expect(middleware(req("GET", "http://localhost:8081")).headers.get("access-control-allow-origin")).toBe("http://localhost:8081");
     expect(middleware(req("GET", "https://evil.example")).headers.get("access-control-allow-origin")).toBeNull();
     expect(middleware(req("GET")).headers.get("access-control-allow-origin")).toBeNull();
+  });
+
+  it("covers the API and the files it names, and nothing else under /api", () => {
+    // A picture in a post is fetched with the bearer token, so the browser asks first: the same answer, the same list of origins.
+    expect(config.matcher).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+    const file = (method: string, origin: string) => new NextRequest("http://localhost:3000/api/files/abc.png?w=640", { method, headers: { origin } });
+    expect(middleware(file("OPTIONS", "http://localhost:8081")).status).toBe(204);
+    expect(middleware(file("OPTIONS", "https://evil.example")).status).toBe(403);
+    expect(middleware(file("GET", "https://evil.example")).headers.get("access-control-allow-origin")).toBeNull();
+  });
+
+  it("with nothing configured and outside development, names no origin at all", () => {
+    const saved = process.env.API_CORS_ORIGINS;
+    delete process.env.API_CORS_ORIGINS;
+    try {
+      expect(process.env.NODE_ENV).not.toBe("development");
+      expect(middleware(req("OPTIONS", "http://localhost:8081")).status).toBe(403);
+      expect(middleware(req("GET", "http://localhost:8081")).headers.get("access-control-allow-origin")).toBeNull();
+    } finally {
+      process.env.API_CORS_ORIGINS = saved;
+    }
   });
 });

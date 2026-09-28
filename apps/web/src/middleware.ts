@@ -1,8 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
- * CORS for /api/v1, and only there, and only for origins named in
- * API_CORS_ORIGINS (comma-separated). The phone needs none of this — a
+ * CORS for /api/v1 and for the files it names (/api/files), and only there,
+ * and only for origins named in API_CORS_ORIGINS (comma-separated). A
+ * picture in a post is fetched with the bearer token, which makes a browser
+ * ask first; without the same answer the web target drew every picture as
+ * an empty box. The phone needs none of this — a
  * native app has no origin — but the app's web target during development
  * runs on another port, and a browser will not let it call the API without
  * these headers. In development, with nothing configured, Expo's default
@@ -52,4 +55,4 @@ export function middleware(request: NextRequest) {
 
 // /api/attendance as well: the phone posts the same body the web form does,
 // on purpose, so the outbox replay is byte-identical to the web's.
-export const config = { matcher: ["/api/v1/:path*", "/api/attendance"] };
+export const config = { matcher: ["/api/v1/:path*", "/api/attendance", "/api/files/:path*"] };
