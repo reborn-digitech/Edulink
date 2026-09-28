@@ -139,6 +139,7 @@ describe("the principal's dashboard", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("The dashboard could not be loaded.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line.startsWith("GET /api/v1/staff/principal/overview")).length).toBe(2));
-    expect(await screen.findByRole("alert")).toHaveTextContent("Network request failed");
+    // The first failure's alert is still on screen when the retry is sent: wait for the words, not for an alert.
+    await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent("Network request failed"));
   });
 });

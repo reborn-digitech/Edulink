@@ -26,8 +26,9 @@ const E = flatten(en);
 const H = flatten(hi);
 const M = flatten(mr);
 
-/** Strings that are the same in every language on purpose: e-mail and URL placeholders, a name, a code. */
+/** Strings that are the same in every language on purpose: e-mail and URL placeholders, a name, a code, a board's initials. */
 const SAME_ON_PURPOSE = new Set([
+  "filings.boardCISCE",
   "enquiries.threadTitleVacancy", "competitions.exampleUrlPlaceholder", "avatar.name", "join.genericEmailPlaceholder",
   "register.contactEmailPlaceholder", "register.websitePlaceholder", "register.yourEmailPlaceholder", "login.emailPlaceholder",
   "login.loginNamePlaceholder", "settings.emailPlaceholder", "root.emailPlaceholder", "invite.emailPlaceholder", "expert.emailPlaceholder",

@@ -97,6 +97,18 @@ export type NotifyInput = NotifyTitle & {
   text?: { templateKey: MessageTemplateKey; vars: Record<string, string | number>; purpose: string };
 };
 
+/**
+ * messaging.ts imports notify, so notify reaches it lazily — and through ONE
+ * promise. A circular told to several guardians at once calls notify for
+ * each of them together; with a bare `await import()` in each call, the
+ * second caller could be handed the module while the first was still
+ * loading it, and its text failed with "cannot access before
+ * initialization", caught and logged below as if the send had failed. Seen
+ * under the test runner; one shared promise makes the order not matter.
+ */
+let messagingModule: Promise<typeof import("./messaging")> | null = null;
+const messaging = () => (messagingModule ??= import("./messaging"));
+
 export async function notify(input: NotifyInput): Promise<void> {
   const user = await db.user.findUnique({
     where: { id: input.userId },
@@ -136,7 +148,7 @@ export async function notify(input: NotifyInput): Promise<void> {
   // the channel for the family WITHOUT the app, and the router has its own
   // switches. A failure there is a FAILED row, never a thrown notify().
   if (input.text && input.schoolId) {
-    const { deliverToUser } = await import("./messaging");
+    const { deliverToUser } = await messaging();
     await deliverToUser({ schoolId: input.schoolId, userId: input.userId, templateKey: input.text.templateKey, vars: input.text.vars, purpose: input.text.purpose }).catch((error) => console.error("[notify] text", error instanceof Error ? error.message : error));
   }
 
