@@ -16,7 +16,7 @@ mentor), and two platform roles, the operator (superuser) and the app admin (con
 What a school can do with it today, all verified end to end:
 
 - **People and roll**: invitations, join codes, intake by spreadsheet, transfers between schools by
-  code or by the government PEN, guardians and stand-in guardians, suspensions, departures with a
+  the government PEN, guardians and stand-in guardians, suspensions, departures with a
   leaving certificate, the pupil's record that outlives the school, promotion and year close.
 - **The day**: class registers with absence notices, staff self check-in and the staff register,
   timetable, substitutions for staff away, holidays and the school calendar, leave requests with cover.
@@ -128,7 +128,7 @@ gaps (4e326b2); the audit's second pass (bf6cd00); the audit's top ten (0ee9580)
 **Product decisions, from the security assessment** ([docs/security/assessment-2026-09-24.md](docs/security/assessment-2026-09-24.md)):
 
 1. Hold school-code joins and birthdate claims pending until staff or an existing guardian approves. Needs a PENDING membership state nothing creates today.
-2. Take the student code off the printed leaving certificate, or rotate it on departure.
+2. ~~Take the student code off the printed leaving certificate, or rotate it on departure.~~ **Done 2026-09-28: off the paper.** The certificate's "Admission number" line carries the school's own register number from the pupil record (`SchoolRecord.admissionNumber`, migration `20260928010000`; the `studentCode` column is dropped). Intake refuses another school's student code, so a pupil arriving from elsewhere is brought over by PEN and date of birth only, and one without a PEN is admitted as new. A code a school gave its own former pupil still brings that pupil back. Still open: certificates already printed carry the old code, which now opens nothing at another school; a school with no register numbers entered prints a dash on that line.
 3. ~~Put self-registered schools behind operator approval before the identity-linking features open.~~ **Done 2026-09-28.** The operator's console has an "Awaiting check" queue and each school's page an approve and a withdraw button (`setSchoolVerified` in `src/lib/superuser.ts`, `POST /api/v1/operator/schools/{schoolId}/verification`, the phone's operator screens); a school the operator adds by hand is marked at creation; the office's intake page tells an unmarked school what waits on the check. Still open: nothing tells the school when the mark is given or withdrawn, and the ten unmarked schools in the development database are fixtures nobody has approved.
 4. Decide legal versus preferred name on papers (papers print the legal name) and give the office a way to correct a legal name.
 5. Confirm the narrowed principal write scope (twelve settings doors are ADMIN only) and let someone set the principal's own subjects.

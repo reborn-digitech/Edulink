@@ -148,9 +148,8 @@ export async function recordDeparture(
       gradeLevel: true,
       joinedAt: true,
       leftAt: true,
-      studentCode: true,
       user: { select: { name: true, birthdate: true } },
-      pupilRecord: { select: { admissionDate: true } },
+      pupilRecord: { select: { admissionDate: true, admissionNumber: true } },
       // The class line on the certificate. ACTIVE first; failing that, the
       // most recently CLOSED one — promotion closes a graduate's enrolment
       // inside its transaction and writes the certificate after it, and a
@@ -241,7 +240,10 @@ export async function recordDeparture(
         // handed to another school.
         serial,
         studentName: membership.user.name,
-        studentCode: membership.studentCode,
+        // The school's register number, never the platform's student code:
+        // the certificate also prints the date of birth, and the pair is
+        // what a claim asks for.
+        admissionNumber: membership.pupilRecord?.admissionNumber ?? null,
         birthdate: membership.user.birthdate,
         className,
         conduct: input.conduct ?? null,
@@ -611,7 +613,8 @@ export type CertificateView = {
   /** `timezone` is the school's: the days the paper prints are the instants read in it. */
   school: { name: string; addressLine: string | null; logoPath: string | null; code: string; timezone: string };
   studentName: string;
-  studentCode: string | null;
+  /** The school's own admission register number; null where the school holds none. */
+  admissionNumber: string | null;
   birthdate: Date | null;
   className: string | null;
   gradeLevel: string | null;
@@ -647,25 +650,25 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
   if (!row) return null;
 
   // A row from before the document existed gets its lines filled on first
-  // reading by the office — the serial, the name, the code — from what the
-  // school still holds. The family's reading changes nothing.
+  // reading by the office — the serial, the name, the register number — from
+  // what the school still holds. The family's reading changes nothing.
   if (asOffice && row.serial === null) {
     const m = await db.membership.findUnique({
       where: { id: row.studentMembershipId },
-      select: { studentCode: true, user: { select: { name: true, birthdate: true } } },
+      select: { pupilRecord: { select: { admissionNumber: true } }, user: { select: { name: true, birthdate: true } } },
     });
     const serial = await numberLegacyRows(row.schoolId, row.id, row.leftAt);
     await db.schoolRecord.update({
       where: { id: row.id },
       data: {
         studentName: row.studentName ?? m?.user.name ?? null,
-        studentCode: row.studentCode ?? m?.studentCode ?? null,
+        admissionNumber: row.admissionNumber ?? m?.pupilRecord?.admissionNumber ?? null,
         birthdate: row.birthdate ?? m?.user.birthdate ?? null,
       },
     });
     row.serial = serial;
     row.studentName = row.studentName ?? m?.user.name ?? null;
-    row.studentCode = row.studentCode ?? m?.studentCode ?? null;
+    row.admissionNumber = row.admissionNumber ?? m?.pupilRecord?.admissionNumber ?? null;
     row.birthdate = row.birthdate ?? m?.user.birthdate ?? null;
   }
 
@@ -694,7 +697,7 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
       timezone: school?.timezone ?? "UTC",
     },
     studentName: row.studentName ?? student?.name ?? "",
-    studentCode: row.studentCode,
+    admissionNumber: row.admissionNumber,
     birthdate: row.birthdate,
     className: row.className,
     gradeLevel: row.gradeLevel,

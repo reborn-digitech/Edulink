@@ -164,6 +164,9 @@ storage and clearing everything on sign-out.
   audited as `comment.approve` or `comment.remove` with no free text in the row; approving sends the
   notifications posting would have sent, and still none to a child about a reply from another school.
 - The student code off printed papers, or rotated when a pupil leaves.
+  **Built 2026-09-28, off the paper:** the leaving certificate prints the school's register number, and
+  intake no longer links an account by another school's student code; a transfer is by PEN and date of
+  birth, behind the same handshake. Certificates a school issues from templates never printed the code.
 - New self-registered schools behind operator approval before identity-linking features open to them.
   **Built 2026-09-28:** the operator gives and withdraws `School.verifiedAt` from `/root` and from the phone,
   each change audited as `superuser.school.verify` or `superuser.school.unverify`; `mayBringOver` is unchanged.

@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
-import { forSchool, forJoinCode } from "./tenant-context";
+import { forSchool } from "./tenant-context";
 import { studentCode } from "./codes";
 import { HANDLE_DOMAIN } from "./login-name";
 import { writeJson } from "./json";
@@ -210,37 +210,32 @@ export async function admitPupils(
     }
 
     /**
-     * ⚠ A TRANSFER LINKS; IT NEVER MINTS. A row carrying the pupil's code
-     * from their previous school attaches the new membership to the child's
-     * EXISTING account, so the leaving certificate — which follows the
-     * person — is readable to this school the moment the child is on its
-     * roll, and the child keeps the login they already know.
+     * ⚠ A TRANSFER LINKS; IT NEVER MINTS. A row carrying the pupil's PEN and
+     * date of birth attaches the new membership to the child's EXISTING
+     * account, so the leaving certificate — which follows the person — is
+     * readable to this school the moment the child is on its roll, and the
+     * child keeps the login they already know.
      *
-     * This closed the fork a functional audit walked into: a real transfer
-     * typed into intake minted a second account, and the receiving school
-     * read zero records for a child who arrived holding a certificate. The
-     * invitation path cannot cover it, because a handle-only child has no
-     * email to invite — but every such child HAS a code, printed on the
-     * certificate itself.
+     * THE STUDENT CODE NO LONGER DOES THIS. It did: the code was printed on
+     * the leaving certificate beside the date of birth, and a row carrying
+     * the pair linked the account. A certificate is a paper that changes
+     * hands, the pair on it never expired and could be used again and again,
+     * and the same pair is what a guardian's claim asks for. The certificate
+     * now prints the school's own register number, and a row that carries
+     * another school's student code is refused with a sentence that says
+     * what to send instead. A child with no PEN arriving from elsewhere is
+     * admitted as a new pupil; the PEN is how an account follows a child
+     * between schools. A code THIS school gave still names its own former
+     * pupil, from its own books, and brings them back.
      *
-     * THE FENCE IS NOT WIDENED. `Membership.studentCode` is globally unique,
-     * high-entropy, and already CODE_READABLE under the join-code binding —
-     * the same mechanism a child typing a class code uses. Possession of the
-     * code alone is deliberately not enough: the row must also carry the
-     * birthdate the old school has on file, because a code is written on a
-     * paper document that changes hands.
-     *
-     * ⚠ AND THE PAIR ALONE IS NOT ENOUGH EITHER. Anybody could register a
-     * school and be its admin within the minute, so "the office typed the
-     * code and the birthday" proved only that somebody held the paper and
-     * had guessed, or knew, the date. A link now also needs the handshake in
-     * `mayBringOver`: the child is on no other school's roll (the holding
-     * school records the departure first) and this school is verified by
-     * the operator. Every way the row can fail — unknown code, wrong date,
+     * ⚠ AND THE PEN WITH THE DATE IS NOT ENOUGH EITHER. Anybody could register
+     * a school and be its admin within the minute. A link also needs the
+     * handshake in `mayBringOver`: the child is on no other school's roll
+     * (the holding school records the departure first) and this school is
+     * verified by the operator. Every way the match can fail — wrong date,
      * child still elsewhere, school not verified — reads the ONE key
      * `intake.identityRefused`, so a wrong guess learns nothing about which
-     * half was wrong; "needs a birthdate" is answered before any lookup and
-     * reveals nothing.
+     * half was wrong.
      */
     if (row.pen === false) {
       outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.penFormat" });
@@ -250,23 +245,32 @@ export async function admitPupils(
     // code does; a PEN nobody on Relay holds goes on the new account below.
     let previous: { userId: string } | null = null;
     if (row.studentCode) {
+      // ONLY A CODE THIS SCHOOL GAVE. Read with this school bound, so the
+      // lookup cannot see another school's membership at all: a code from
+      // anywhere else, real or invented, finds nothing and is told the same
+      // sentence. What is left is a pupil coming back to a school that
+      // already knew them, named by a number from that school's own books.
+      const ownCode = row.studentCode.trim().toUpperCase();
+      const own = await forSchool(schoolId, () =>
+        db.membership.findFirst({
+          where: { studentCode: ownCode, schoolId, role: "STUDENT" },
+          select: { userId: true, user: { select: { birthdate: true } } },
+        }),
+      );
+      if (!own) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNoLongerLinks" });
+        continue;
+      }
       if (!birthdate) {
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
         continue;
       }
-      const transferCode = row.studentCode.trim().toUpperCase();
-      const byCode = await forJoinCode(transferCode, () =>
-        db.membership.findFirst({
-          where: { studentCode: transferCode, role: "STUDENT" },
-          select: { userId: true, user: { select: { id: true, birthdate: true } } },
-        }),
-      );
-      const known = byCode?.user.birthdate;
-      if (!byCode || !known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
+      const known = own.user.birthdate;
+      if (!known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
         outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.identityRefused" });
         continue;
       }
-      previous = { userId: byCode.userId };
+      previous = { userId: own.userId };
     } else if (row.pen) {
       const byPen = await matchPen(row.pen, birthdate);
       if (byPen && "reasonKey" in byPen) {

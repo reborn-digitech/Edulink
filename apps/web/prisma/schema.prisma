@@ -2935,8 +2935,10 @@ model SchoolRecord {
   /// school's own numbering — TC/2026/0042 — one per school per certificate.
   serial      String?
   studentName String?
-  /// The admission number on this platform: the student code.
-  studentCode String?
+  /// The school's own admission register (GR) number, from the pupil record.
+  /// NOT the platform's student code, which this line used to carry: a code
+  /// that opens an account does not belong on a paper that changes hands.
+  admissionNumber String?
   birthdate   DateTime?
   className   String?
   /// EXCELLENT | GOOD | SATISFACTORY — the one word a TC carries about conduct.

@@ -337,11 +337,11 @@ const INTAKE_HEADERS = {
   guardianName: ["guardian name", "parent name", "parent/guardian name", "father", "mother"],
   relation: ["relation", "relationship", "guardian relation"],
   /**
-   * The pupil's own code from their PREVIOUS school — printed on the leaving
-   * certificate and on their profile as STU-XXXX-XXXX. A row that carries it
-   * is a TRANSFER: the new membership attaches to the child's existing
-   * account, so the certificate and the record follow the person instead of
-   * a second account being minted beside the first.
+   * A student code THIS school gave — on the pupil's profile and in the
+   * office's own lists as STU-XXXX-XXXX. A row that carries it brings back a
+   * pupil who left this school, on the account they already have. Another
+   * school's code is refused: the leaving certificate no longer prints one,
+   * and a pupil arriving from elsewhere is named by their PEN.
    */
   studentCode: ["student code", "pupil code", "transfer code", "code", "stu code", "student id"],
 } as const;

@@ -1612,7 +1612,7 @@ export async function buildDepartures(
     record = await db.schoolRecord.create({
       data: {
         schoolId: school.id, studentUserId: user.id, studentMembershipId: membership.id, schoolName: school.name, gradeLevel: membership.gradeLevel, joinedAt: membership.joinedAt, leftAt: leaver.leftOn,
-        serial, studentName: untagged(leaver.name), studentCode: membership.studentCode, birthdate: leaver.birthdate, className: untagged(className), conduct: leaver.conduct,
+        serial, studentName: untagged(leaver.name), admissionNumber: null, birthdate: leaver.birthdate, className: untagged(className), conduct: leaver.conduct,
         reason: "TRANSFERRED", destination: leaver.destination, note: leaver.note, attendanceMarked: counted, attendancePresent: present, reportCardCount, issuedByMembershipId: adminMembershipId, createdAt: leaver.leftOn,
       },
       select: { id: true },

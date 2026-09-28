@@ -573,7 +573,11 @@ describe("the certificate as a document", () => {
     expect(tc).not.toBeNull();
     expect(tc!.serial).toMatch(/^TC\/2026\/\d{4}$/);
     expect(tc!.studentName).toBe((await db.user.findUniqueOrThrow({ where: { id: pupilUserId } })).name);
-    expect(tc!.studentCode).toBe((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode);
+    // The school's own register number is what the line carries; the student code is nowhere on the document.
+    expect(tc!.admissionNumber).toBe((await db.pupilRecord.findUnique({ where: { studentMembershipId: pupilMembershipId }, select: { admissionNumber: true } }))?.admissionNumber ?? null);
+    expect(JSON.stringify(tc)).not.toContain("studentCode");
+    const held = (await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode;
+    if (held) expect(JSON.stringify(tc)).not.toContain(held);
     expect(tc!.className).toBeTruthy();
     expect(tc!.conduct).toBe("GOOD");
     expect(tc!.issuedHere).toBe(true);
@@ -604,12 +608,13 @@ describe("the certificate as a document", () => {
   it("fills in a certificate issued before the document existed, on the office's first reading", async () => {
     const result = await recordDeparture(admin, pupilMembershipId, { reason: "GRADUATED" });
     if (!result.ok) throw new Error("no record");
-    await db.schoolRecord.update({ where: { id: result.recordId }, data: { serial: null, studentName: null, studentCode: null } });
+    await db.pupilRecord.upsert({ where: { studentMembershipId: pupilMembershipId }, create: { schoolId: admin.schoolId!, studentMembershipId: pupilMembershipId, admissionNumber: "GR/ZZ/0042" }, update: { admissionNumber: "GR/ZZ/0042" } });
+    await db.schoolRecord.update({ where: { id: result.recordId }, data: { serial: null, studentName: null, admissionNumber: null } });
     const tc = await certificateFor(admin, result.recordId);
     expect(tc?.serial).toMatch(/^TC\//);
     expect(tc?.studentName).toBeTruthy();
-    // The fixture pupil carries no student code; what the membership holds is what the line gets.
-    expect(tc?.studentCode).toBe((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode);
+    // What the school's register holds is what the line gets.
+    expect(tc?.admissionNumber).toBe("GR/ZZ/0042");
   });
 });
 

@@ -51,7 +51,8 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
   const dash = "—";
   const rows: { label: string; value: string }[] = [
     { label: t("tc.fieldName"), value: tc.studentName || dash },
-    { label: t("tc.fieldAdmissionNo"), value: tc.studentCode ?? dash },
+    // The school's register number. Not the student code: with the date of birth below it, that pair is what a claim asks for.
+    { label: t("tc.fieldAdmissionNo"), value: tc.admissionNumber ?? dash },
     { label: t("tc.fieldBirthdate"), value: tc.birthdate ? formatDate(tc.birthdate) : dash },
     // Joining and leaving are instants: the day is the one in the school's zone. The birthday is a date-only value and stays as stored.
     { label: t("tc.fieldAdmitted"), value: formatDate(tc.joinedAt, tc.school.timezone) },
