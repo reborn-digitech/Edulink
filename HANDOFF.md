@@ -187,8 +187,16 @@ Everything that matters is in the repository except the items below. Do these on
 **Install.** Node 20.20 (nvm), `corepack enable` (pins pnpm 9.15), PostgreSQL 16 via Homebrew, `gh`.
 No Docker, no Xcode needed for the web target of the phone app.
 
-**Clone at the same path** if you can, `/Users/<you>/Edulink`, because Claude Code keys its per-project
-memory folder on the repo path (see below). Then:
+**Clone from reborn-digitech**, which is the repository CI watches:
+
+```bash
+git clone https://github.com/reborn-digitech/Edulink.git && cd Edulink
+```
+
+If the encrypted migration branch is still on the remote (`git ls-remote origin migration-2026-09-28`),
+fetch it and run `bash migration/restore.sh` instead of the manual steps below: it installs the tooling,
+arranges both remotes and your git identity, deletes the branch from both remotes, and restores the old
+Mac's database, files and Claude memory. Otherwise, set up by hand:
 
 ```bash
 createdb edulink_dev
@@ -211,8 +219,9 @@ only in that database and are not needed.
 owner so `git push origin` works. A clone has one remote; every commit goes to both, so add the other:
 
 ```bash
-git remote add reborn https://github.com/reborn-digitech/Edulink.git   # if you cloned from origin
-git remote add origin https://github.com/ckulkarni03488/Edulink.git     # if you cloned from reborn
+git remote rename origin reborn                                          # the clone from reborn-digitech
+git remote add origin https://github.com/ckulkarni03488/Edulink.git     # the second repository
+git config --global user.name "Chinmay Kulkarni" && git config --global user.email "ckulkarni03488@ucumberlands.edu"
 git push -q reborn master && git push -q origin master                   # the push, every time
 ```
 
