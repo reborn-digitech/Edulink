@@ -16,7 +16,9 @@ import { POST as templateArchive } from "@/app/api/v1/office/certificate-templat
 import { GET as recordsGet } from "@/app/api/v1/office/pupil-records/route";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
 import { POST as requestPost } from "@/app/api/v1/office/pupil-records/request/route";
-import { GET as familyRecordGet, POST as familyRecordPost } from "@/app/api/v1/family/record/route";
+import { GET as familyRecordGet } from "@/app/api/v1/family/record/route";
+import { POST as familyChangePost } from "@/app/api/v1/family/record/changes/route";
+import { POST as changeDecidePost } from "@/app/api/v1/office/record-changes/[requestId]/decide/route";
 import { GET as certsGet, POST as issuePost } from "@/app/api/v1/office/certificates/route";
 import { POST as revokePost } from "@/app/api/v1/office/certificates/[certificateId]/revoke/route";
 import { GET as sharedGet } from "@/app/api/v1/shared/certificates/[certificateId]/route";
@@ -47,6 +49,17 @@ let teacherMembershipId = "";
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
+/** How a family's value reaches the record since 2026-09-29: they ask, and the office approves. */
+async function askAndApprove(who: "PARENT" | "PUPIL", query: string, studentMembershipId: string, changes: Record<string, string>) {
+  await as(who);
+  const asked = await familyChangePost(json(`/api/v1/family/record/changes${query}`, { changes, reason: "ZZ test" }));
+  expect(asked.status).toBe(200);
+  const { id } = (await asked.json()) as { id: string };
+  await as("ADMIN");
+  expect((await changeDecidePost(json(`/api/v1/office/record-changes/${id}/decide`, { approve: true }), params({ requestId: id }))).status).toBe(200);
+  return (await recordGet(get(`/api/v1/office/pupil-records/${studentMembershipId}`), params({ membershipId: studentMembershipId }))).json();
+}
+
 async function as(who: "ADMIN" | "PRINCIPAL" | "TEACHER" | "PARENT" | "STRANGER" | "PUPIL" | null) {
   __resetCookies();
   if (who === "ADMIN") await createSession(adminUserId, { schoolId, role: "ADMIN" });
@@ -163,7 +176,7 @@ describe("templates", () => {
 });
 
 describe("the pupil record", () => {
-  it("is blank until the family fills it; the guardian and the pupil may, a stranger may not; the office sees who is incomplete and asks the families, who are told", async () => {
+  it("is blank until the family's details are approved; the guardian and the pupil may read and ask, a stranger may not; the office sees who is incomplete and asks the families, who are told", async () => {
     await as("ADMIN");
     let res = await recordGet(get(`/api/v1/office/pupil-records/${pupilA}`), params({ membershipId: pupilA }));
     expect(res.status).toBe(200);
@@ -174,21 +187,40 @@ describe("the pupil record", () => {
     await as("STRANGER");
     expect((await familyRecordGet(get(`/api/v1/family/record?childId=${pupilA}`))).status).toBe(403);
     await as("PARENT");
-    // The office's fields ride along in the family's body — the admission number, the category, an EWS answer — and change nothing: a 200 that keeps them as they stand.
-    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", admissionNumber: "GR-1042", religion: "HINDU", category: "GENERAL", ews: "yes", gender: "M", admittedToGrade: "1" }));
+    // The guardian reads and does not write: the record stays blank while their ask waits, and says that one does.
+    const details = { fatherName: "Rohan Apte", motherName: "Sneha Apte", placeOfBirth: "Pune", nationality: "Indian", motherTongue: "Marathi", addressLine: "12 Lake Road", city: "Pune", religion: "HINDU" };
+    res = await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupilA}`, { changes: details, reason: "ZZ the admission form" }));
     expect(res.status).toBe(200);
-    view = await res.json();
+    const ask = await res.json();
+    expect(ask).toMatchObject({ status: "PENDING", byPupil: false, can: { decide: false, withdraw: true } });
+    // Coded when ask: the language and the nationality are the list's codes before the office has seen them.
+    expect(ask.changes).toEqual(expect.arrayContaining([{ field: "motherTongue", from: null, to: "MARATHI" }, { field: "nationality", from: null, to: "INDIAN" }]));
+    view = await (await familyRecordGet(get(`/api/v1/family/record?childId=${pupilA}`))).json();
+    expect(view).toMatchObject({ record: null, canEdit: false, canRequest: true, change: { id: ask.id } });
+    // Nothing that differs from the record is nothing to ask.
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupilA}`, { changes: { fatherName: "" }, reason: "ZZ" }))).status).toBe(403);
+    // Only the office decides.
+    expect((await changeDecidePost(json(`/api/v1/office/record-changes/${ask.id}/decide`, { approve: true }), params({ requestId: ask.id }))).status).toBe(403);
+    await as("TEACHER");
+    expect((await changeDecidePost(json(`/api/v1/office/record-changes/${ask.id}/decide`, { approve: true }), params({ requestId: ask.id }))).status).toBe(403);
+    await as("ADMIN");
+    res = await changeDecidePost(json(`/api/v1/office/record-changes/${ask.id}/decide`, { approve: true }), params({ requestId: ask.id }));
+    expect(await res.json()).toMatchObject({ status: "APPLIED", can: { decide: false, withdraw: false } });
+    // Deciding it again answers it as it stands.
+    res = await changeDecidePost(json(`/api/v1/office/record-changes/${ask.id}/decide`, { approve: false, reason: "too late" }), params({ requestId: ask.id }));
+    expect(await res.json()).toMatchObject({ status: "APPLIED", declineReason: null });
+    view = await (await recordGet(get(`/api/v1/office/pupil-records/${pupilA}`), params({ membershipId: pupilA }))).json();
     expect(view.missing).toEqual(["admissionNumber", "admissionDate"]);
-    expect(view.record).toMatchObject({ fatherName: "Rohan Apte", religion: "HINDU", admissionNumber: null, category: null, ews: null, gender: null, admittedToGrade: null });
+    expect(view.record).toMatchObject({ fatherName: "Rohan Apte", religion: "HINDU", motherTongue: "MARATHI", admissionNumber: null, category: null, ews: null, gender: null, admittedToGrade: null });
     expect(view.record.familyFilledAt).not.toBeNull();
-    expect(view.canEdit).toBe(true);
-    await as("PUPIL");
-    res = await familyRecordPost(json("/api/v1/family/record", { previousSchool: "Sunrise Nursery", admissionNumber: "GR-0001", bpl: "yes", cwsnType: "9", caste: "Typed by the pupil" }));
-    expect(res.status).toBe(200);
-    const own = await res.json();
+    expect(view.change).toBeNull();
+    const own = await askAndApprove("PUPIL", "", pupilA, { previousSchool: "Sunrise Nursery" });
     expect(own.record.previousSchool).toBe("Sunrise Nursery");
     expect(own.record.fatherName).toBe("Rohan Apte");
-    expect(own.record).toMatchObject({ admissionNumber: null, bpl: null, cwsnType: null, caste: null });
+    const heard = await db.notification.findMany({ where: { schoolId, titleKey: { startsWith: "recordChanges." } }, select: { userId: true, titleKey: true } });
+    expect(heard.filter((n) => n.titleKey === "recordChanges.notifAsked").every((n) => n.userId !== parentUserId && n.userId !== pupilAUserId)).toBe(true);
+    expect(heard.filter((n) => n.titleKey === "recordChanges.notifApplied").map((n) => (n.userId === parentUserId ? "parent" : n.userId === pupilAUserId ? "pupil" : "other")).sort()).toEqual(["parent", "parent", "pupil"]);
+    await db.notification.deleteMany({ where: { schoolId, titleKey: { startsWith: "recordChanges." } } });
 
     await as("TEACHER");
     expect((await recordsGet(get("/api/v1/office/pupil-records"))).status).toBe(403);
@@ -206,22 +238,30 @@ describe("the pupil record", () => {
     const asked = await (await recordGet(get(`/api/v1/office/pupil-records/${pupilB}`), params({ membershipId: pupilB }))).json();
     expect(asked.record.requestedAt).not.toBeNull();
 
-    // The office's save is the one that sets what the family could not, and a blank from a family later does not clear it.
+    // The office's save sets the rest; a family's later ask to clear them changes nothing while it waits, and nothing when it is declined.
     res = await recordPost(json(`/api/v1/office/pupil-records/${pupilA}`, { admissionNumber: "GR-1042", admissionDate: "2022-06-15", admittedToGrade: "1", category: "GENERAL", ews: "yes" }), params({ membershipId: pupilA }));
     view = await res.json();
     expect(view.complete).toBe(true);
     expect(view.record).toMatchObject({ admissionNumber: "GR-1042", admissionDate: "2022-06-15", admittedToGrade: "1", category: "GENERAL", ews: "yes", fatherName: "Rohan Apte" });
     await as("PARENT");
-    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupilA}`, { fatherName: "Rohan Apte", admissionNumber: "", category: "", ews: "" }));
-    expect(res.status).toBe(200);
-    expect((await res.json()).record).toMatchObject({ admissionNumber: "GR-1042", category: "GENERAL", ews: "yes" });
+    res = await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupilA}`, { changes: { fatherName: "Rohan Apte", admissionNumber: "", category: "", ews: "" }, reason: "ZZ a mistake" }));
+    const clearing = await res.json();
+    // What does not differ is not kept: the father's name is as it was.
+    expect(clearing.changes.map((c: { field: string }) => c.field).sort()).toEqual(["admissionNumber", "category", "ews"]);
     await as("ADMIN");
+    res = await changeDecidePost(json(`/api/v1/office/record-changes/${clearing.id}/decide`, { approve: false, reason: "These are from the admission register." }), params({ requestId: clearing.id }));
+    expect(await res.json()).toMatchObject({ status: "DECLINED", declineReason: "These are from the admission register." });
+    expect((await (await recordGet(get(`/api/v1/office/pupil-records/${pupilA}`), params({ membershipId: pupilA }))).json()).record).toMatchObject({ admissionNumber: "GR-1042", category: "GENERAL", ews: "yes" });
+    const changeAudits = await db.auditLog.findMany({ where: { schoolId, action: { startsWith: "pupilRecord.change." } }, select: { action: true, meta: true } });
+    expect(changeAudits.map((a) => a.action).sort()).toEqual(["pupilRecord.change.apply", "pupilRecord.change.apply", "pupilRecord.change.decline", "pupilRecord.change.request", "pupilRecord.change.request", "pupilRecord.change.request"]);
+    // Which fields and whether a sentence was given, never the values or the sentence.
+    expect(changeAudits.every((a) => !a.meta.includes("Rohan") && !a.meta.includes("Lake") && !a.meta.includes("admission register") && !a.meta.includes("ZZ"))).toBe(true);
     const audits = await db.auditLog.findMany({ where: { schoolId, action: { in: ["pupilRecord.update", "pupilRecord.request"] } }, select: { action: true, meta: true } });
-    expect(audits.map((a) => a.action).sort()).toEqual(["pupilRecord.request", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update"]);
+    expect(audits.map((a) => a.action).sort()).toEqual(["pupilRecord.request", "pupilRecord.update", "pupilRecord.update", "pupilRecord.update"]);
     expect(audits.every((a) => !a.meta.includes("Rohan") && !a.meta.includes("Lake"))).toBe(true);
-    // The family's rows name only the fields their save applied.
+    // The rows that came from a family's ask say so, and name only the fields it applied.
     const familyRows = audits.filter((a) => a.action === "pupilRecord.update" && a.meta.includes('"family":true'));
-    expect(familyRows).toHaveLength(3);
+    expect(familyRows).toHaveLength(2);
     expect(familyRows.every((a) => !a.meta.includes("admissionNumber") && !a.meta.includes("category") && !a.meta.includes("ews"))).toBe(true);
   });
 });

@@ -1475,6 +1475,15 @@ CREATE POLICY "CertificateRequest_tenant_isolation" ON "CertificateRequest"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- RecordChangeRequest
+ALTER TABLE "RecordChangeRequest" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "RecordChangeRequest" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "RecordChangeRequest_tenant_isolation" ON "RecordChangeRequest";
+DROP POLICY IF EXISTS "RecordChangeRequest_readable" ON "RecordChangeRequest";
+CREATE POLICY "RecordChangeRequest_tenant_isolation" ON "RecordChangeRequest"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- PenChangeRequest
 ALTER TABLE "PenChangeRequest" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "PenChangeRequest" FORCE ROW LEVEL SECURITY;

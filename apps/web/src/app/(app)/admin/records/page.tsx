@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowsLeftRightIcon, FolderUserIcon, IdentificationCardIcon, MagnifyingGlassIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { ArrowsLeftRightIcon, ClockCounterClockwiseIcon, FolderUserIcon, IdentificationCardIcon, MagnifyingGlassIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { officeRecords } from "@/lib/pupil-records";
 import { lookupPen, type PenLookup } from "@/lib/pen";
 import { officePenChanges } from "@/lib/pen-changes";
+import { officeRecordChanges } from "@/lib/record-changes";
 import { formatDate } from "@/lib/dates";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -52,7 +53,8 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
   // The corrections to PENs the head and a guardian have yet to settle: a
   // card only while there are any, each row a door to the record page
   // where the head decides.
-  const [all, penChanges] = await Promise.all([officeRecords(ctx, missingOnly), officePenChanges(ctx, "PENDING")]);
+  // And what families have asked to have changed: the same kind of card, each row a door to the record where the office decides.
+  const [all, penChanges, recordChanges] = await Promise.all([officeRecords(ctx, missingOnly), officePenChanges(ctx, "PENDING"), officeRecordChanges(ctx, "PENDING")]);
   const view = filingOnly ? { ...all, rows: all.rows.filter((r) => r.missingForFiling.length > 0) } : all;
   const filingIds = view.rows.filter((r) => r.missingForFiling.length > 0).map((r) => r.studentMembershipId);
   // The PEN each row carries: the account's, or the record's mirror of it.
@@ -124,6 +126,31 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
           )}
         </CardBody>
       </Card>
+
+      {recordChanges.pending > 0 && (
+        <Card className="border-warn/40" data-testid="record-changes-waiting">
+          <CardHeader icon={<ClockCounterClockwiseIcon weight="duotone" className="size-5" />} title={t("recordChanges.officeTitle")} description={t("recordChanges.officeIntro")} action={<Badge tone="warn" size="sm">{t("recordChanges.waitingCount", { count: recordChanges.pending })}</Badge>} />
+          <CardBody>
+            <ul className="divide-y divide-border">
+              {recordChanges.items.map((item) => (
+                <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                  <div className="min-w-0 flex-1 basis-64">
+                    <p className="flex flex-wrap items-center gap-2">
+                      <PersonLink membershipId={item.studentMembershipId} name={item.studentName} className="font-semibold text-fg" />
+                      {item.className && <span className="text-xs text-fg-muted">{item.className}</span>}
+                    </p>
+                    <p className="mt-0.5 text-sm text-fg">{item.changes.map((c) => fieldLabel(c.field)).join(", ")}</p>
+                    <p className="mt-0.5 text-xs text-fg-muted">{t(item.byPupil ? "recordChanges.askedByPupil" : "recordChanges.askedBy", { name: item.requestedByName, date: formatDate(new Date(item.createdAt)) })}</p>
+                  </div>
+                  <Button asChild variant="secondary" size="sm">
+                    <Link href={`/admin/records/${item.studentMembershipId}`}>{t("pupilRecord.openRecord")}</Link>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+      )}
 
       {penChanges.pending > 0 && (
         <Card className="border-warn/40" data-testid="pen-changes">

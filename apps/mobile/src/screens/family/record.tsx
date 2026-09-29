@@ -1,25 +1,24 @@
 import { useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { familyChildrenSchema, pupilRecordViewSchema, type PupilRecordSave } from "@edulink/contracts";
+import { familyChildrenSchema, pupilRecordViewSchema, recordChangeSchema, recordChangesListSchema, type RecordChangeFile } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Screen, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { must, Refusal } from "../staff/shared";
-import { fieldList, PenChangeSection, PupilRecordForm } from "../shared/pupil-record";
+import { fieldList, PenChangeSection, PupilRecordForm, RecordChangesSection } from "../shared/pupil-record";
 import { ChildLeftBanner, ChildSwitcher, childQuery, param } from "./shared";
-
-const PATH = "/api/v1/family/record";
 
 /**
  * The pupil record for the family — the web's /parent/record and /student/record:
- * the guardian fills it in for one child at a time (the switcher's children
+ * the guardian reads it for one child at a time (the switcher's children
  * come from /family/children as the overview's do; the record endpoint
- * answers for one child), the pupil for themselves with no child to choose.
- * One POST writes the record as a whole; the server answers with what still
- * blocks a certificate, and the form says so until nothing does.
+ * answers for one child), the pupil their own with no child to choose.
+ * Neither writes it: the record is the office's. What they send is an ask —
+ * the fields they would have changed, and why — which waits above the form
+ * until the office approves or declines it, or they take it back.
  */
 export function FamilyRecord() {
   const t = useT();
@@ -30,6 +29,8 @@ export function FamilyRecord() {
   const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
   const [childId, setChildId] = useState<string | null>(param(params.childId) ?? param(params.child) ?? null);
   const [refusal, setRefusal] = useState<Refusal | null>(null);
+  // Counts the asks sent from here: the form is keyed by it, so a sent ask puts the form back to reading the record.
+  const [sent, setSent] = useState(0);
   const family = role === "PARENT" || role === "STUDENT";
   const children = useQuery({
     queryKey: ["family", "children"],
@@ -43,15 +44,25 @@ export function FamilyRecord() {
     queryFn: async () => pupilRecordViewSchema.parse(unwrap(await api().get(`/api/v1/family/record${childQuery(role === "PARENT" ? childId : null)}`))),
   });
   const d = query.data;
-  const save = useMutation({
-    mutationFn: async (body: PupilRecordSave) => pupilRecordViewSchema.parse(must(await api().post(`${PATH}${childQuery(role === "PARENT" && d ? d.studentMembershipId : null)}`, body), t("common.somethingWrong"))),
-    onSuccess: (next) => {
-      qc.setQueryData(key, next);
+  const changesKey = ["family", "record-changes", role === "PARENT" ? childId : "me"];
+  const changes = useQuery({
+    queryKey: changesKey,
+    enabled: family,
+    queryFn: async () => recordChangesListSchema.parse(unwrap(await api().get(`/api/v1/family/record/changes${childQuery(role === "PARENT" ? childId : null)}`))),
+  });
+  const ask = useMutation({
+    mutationFn: async (body: RecordChangeFile) => recordChangeSchema.parse(must(await api().post(`/api/v1/family/record/changes${childQuery(role === "PARENT" && d ? d.studentMembershipId : null)}`, body), t("common.somethingWrong"))),
+    onSuccess: () => {
       setRefusal(null);
-      toast.show(t("pupilRecord.saved"), "ok");
+      setSent((n) => n + 1);
+      toast.show(t("recordChanges.sent"), "ok");
+      void qc.invalidateQueries({ queryKey: key });
+      void qc.invalidateQueries({ queryKey: ["family", "record-changes"] });
     },
     onError: (e) => setRefusal(e instanceof Refusal ? e : new Refusal(e.message, 0, {})),
   });
+  // The asks on this record, the waiting one first as the server sorts them; the record's own copy of the waiting one while the list is on its way.
+  const asks = changes.data?.items ?? (d?.change ? [d.change] : []);
   if (role !== null && !family) {
     return (
       <Screen title={t("pupilRecord.title")}>
@@ -80,14 +91,16 @@ export function FamilyRecord() {
           <Failed message={query.error.message} onRetry={() => void query.refetch()} />
         )
       ) : null}
+      {/* What has been asked of the office sits above the record: the form is long, and an ask that waits should be seen before it is asked again. */}
+      {d ? <RecordChangesSection items={asks} recordKey={key} /> : null}
       {d ? (
         <PupilRecordForm
-          key={`${d.studentMembershipId}-${d.record?.updatedAt ?? "new"}`}
+          key={`${d.studentMembershipId}-${d.record?.updatedAt ?? "new"}-${sent}`}
           view={d}
           intro={role === "STUDENT" ? t("pupilRecord.studentIntro") : t("pupilRecord.familyIntro")}
-          busy={save.isPending}
+          busy={ask.isPending}
           refusal={refusal}
-          onSave={(body) => save.mutate(body)}
+          onAsk={(body) => ask.mutate(body)}
         />
       ) : null}
       {/* A correction to the PEN the office has proposed: the guardian's word is one of the two it needs; the pupil reads where it stands. */}

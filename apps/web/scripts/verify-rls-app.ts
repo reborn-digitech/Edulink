@@ -1909,6 +1909,29 @@ async function main() {
       `school A read joins ${JSON.stringify(hereQueue.joins)} and claims ${JSON.stringify(hereQueue.claims)}, decided ${decidedHere.count} (want 1); school B read ${JSON.stringify(thereQueue.joins)} and ${JSON.stringify(thereQueue.claims)}, decided ${decidedThere.count} of A's (want 0)`,
     );
 
+    // A FAMILY'S ASK TO CHANGE THE PUPIL RECORD IS THE SCHOOL'S ROW. The
+    // family files it and takes it back through the server, under the
+    // school's binding, after the library has found them to be the pupil or
+    // a guardian; from their own session they read none and write none, and
+    // another school finds none to decide.
+    psql(
+      DB,
+      `INSERT INTO "RecordChangeRequest" (id,"schoolId","studentMembershipId","requestedByUserId","changesJson",reason,status,"updatedAt") VALUES
+         ('verify-rc1','verify-a','verify-m-pupil-a','verify-parent','[{"field":"city","from":null,"to":"Pune"}]','verify','PENDING',now());`,
+    );
+    const askHere = await withTenantOn(client, "verify-a", (tx: TxLike) => ids(tx, "recordChangeRequest"));
+    const askThere = await withTenantOn(client, "verify-b", (tx: TxLike) => ids(tx, "recordChangeRequest"));
+    const askOwn = await asPerson("verify-parent", (tx) => ids(tx, "recordChangeRequest")).catch(() => [] as string[]);
+    const askSelfApplied = await asPerson("verify-parent", (tx) => outreachTx(tx).recordChangeRequest!.updateMany({ where: { id: "verify-rc1" }, data: { status: "APPLIED" } })).then((r) => r.count, () => 0);
+    const askSelfFiled = await wrote("verify-parent", "recordChangeRequest", { id: "verify-rc2", schoolId: "verify-a", studentMembershipId: "verify-m-pupil-a", requestedByUserId: "verify-parent", changesJson: "[]", reason: "verify" });
+    const askDecidedThere = await withTenantOn(client, "verify-b", (tx: TxLike) => outreachTx(tx).recordChangeRequest!.updateMany({ where: { id: "verify-rc1" }, data: { status: "APPLIED" } }));
+    const askDecidedHere = await withTenantOn(client, "verify-a", (tx: TxLike) => outreachTx(tx).recordChangeRequest!.updateMany({ where: { id: "verify-rc1" }, data: { status: "DECLINED" } }));
+    check(
+      "⚠ an ask to change a pupil's record is the school's: it reads and decides its own, another school finds none, and the family's own session neither files nor applies one",
+      same(askHere, ["verify-rc1"]) && askThere.length === 0 && askOwn.length === 0 && askSelfApplied === 0 && !askSelfFiled && askDecidedThere.count === 0 && askDecidedHere.count === 1,
+      `school A read ${JSON.stringify(askHere)} and decided ${askDecidedHere.count} (want the one, and 1); school B read ${JSON.stringify(askThere)} and decided ${askDecidedThere.count} (want none, and 0); the guardian's own session read ${JSON.stringify(askOwn)}, applied ${askSelfApplied}, filed ${askSelfFiled} (want none, 0, false)`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

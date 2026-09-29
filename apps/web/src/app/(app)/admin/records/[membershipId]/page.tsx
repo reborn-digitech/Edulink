@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SealCheckIcon } from "@phosphor-icons/react/ssr";
+import { ClockCounterClockwiseIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { pupilRecordFor } from "@/lib/pupil-records";
 import { FILING_FORM_FIELDS, OPTIONAL_RECORD_FIELDS, REQUIRED_RECORD_FIELDS } from "@/lib/certificate-rules";
@@ -11,6 +11,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
 import { PupilRecordForm } from "@/components/pupil-record-form";
+import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -45,6 +46,15 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
           </Button>
         }
       />
+      {/* What the family has asked to have changed: approving puts their values on the record below. */}
+      {view.change && (
+        <Card className="border-warn/40" data-testid="record-change-waiting">
+          <CardHeader icon={<ClockCounterClockwiseIcon weight="duotone" className="size-5" />} title={t("recordChanges.officeTitle")} description={t("recordChanges.officeIntro")} />
+          <CardBody>
+            <RecordChangePanel key={view.change.id} change={view.change} />
+          </CardBody>
+        </Card>
+      )}
       <Card>
         <CardHeader
           title={t("pupilRecord.title")}

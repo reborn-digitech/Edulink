@@ -2,7 +2,7 @@ import type { TranslationKey } from "./i18n/dictionary";
 import { codeFromList, MOTHER_TONGUES, NATIONALITIES, PIN_CODE } from "@edulink/contracts";
 import { normalisePhone } from "./phone";
 import "server-only";
-import { FAMILY_RECORD_FIELDS, PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { audit } from "./audit";
@@ -12,12 +12,15 @@ import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { assignPen, normalisePen } from "./pen";
 import { pendingPenChange } from "./pen-changes";
+import { pendingRecordChange } from "./record-changes";
 
 /**
  * The pupil record: the identity and admission details a certificate names.
  *
- * WHO WRITES IT: the family — a guardian, or the pupil themselves — and the
- * office. A teacher of the pupil's class may read it (a class teacher fills a
+ * WHO WRITES IT: the office, an admin or the head, and nobody else. The
+ * family — a guardian, or the pupil themselves — reads all of it and asks
+ * for a change (record-changes.ts), which the office applies or declines.
+ * A teacher of the pupil's class may read it (a class teacher fills a
  * TC's rows from it) but not write it. Classmates never see it. The date of
  * birth stays on the user, under birthdate.ts's own rules; the record shows
  * it and says whom to ask.
@@ -27,24 +30,25 @@ const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
 
 type Viewer = { userId: string; schoolId: string; role: Role; canEdit: boolean; family: boolean; studentName: string; studentCode: string | null; birthdateKey: string | null; studentUserId: string; accountPen: string | null };
 
-async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<Viewer> {
+/** Who is looking at this pupil's record, or a refusal. The family reads; the office writes. */
+export async function recordViewer(ctx: ActiveContext, studentMembershipId: string): Promise<Viewer> {
   if (ctx.role === "PARENT") {
     const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
     const acct = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { userId: true, user: { select: { penNumber: true } } } });
-    return { userId: ctx.user.id, schoolId: link.student.schoolId, role: "PARENT", canEdit: true, family: true, studentName: link.student.user.preferredName ?? link.student.user.name, studentCode: link.student.studentCode ?? null, birthdateKey: link.student.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: acct.userId, accountPen: acct.user.penNumber };
+    return { userId: ctx.user.id, schoolId: link.student.schoolId, role: "PARENT", canEdit: false, family: true, studentName: link.student.user.preferredName ?? link.student.user.name, studentCode: link.student.studentCode ?? null, birthdateKey: link.student.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: acct.userId, accountPen: acct.user.penNumber };
   }
   if (!ctx.schoolId || !ctx.role || !ctx.membershipId || !READER_ROLES.includes(ctx.role)) throw new AccessError("access.notAllowed");
   if (ctx.role === "STUDENT") {
     if (ctx.membershipId !== studentMembershipId) throw new AccessError("access.notAllowed", "NOT_FOUND");
     const me = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { name: true, preferredName: true, birthdate: true, penNumber: true } } } });
-    return { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT", canEdit: true, family: true, studentName: me.user.preferredName ?? me.user.name, studentCode: me.studentCode, birthdateKey: me.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: me.userId, accountPen: me.user.penNumber };
+    return { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT", canEdit: false, family: true, studentName: me.user.preferredName ?? me.user.name, studentCode: me.studentCode, birthdateKey: me.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: me.userId, accountPen: me.user.penNumber };
   }
   const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId);
   const row = await db.membership.findUniqueOrThrow({ where: { id: studentMembershipId }, select: { studentCode: true, userId: true, user: { select: { birthdate: true, penNumber: true } } } });
   return { userId: ctx.user.id, schoolId: ctx.schoolId, role: ctx.role, canEdit: OFFICE.includes(ctx.role), family: false, studentName: student.user.preferredName ?? student.user.name, studentCode: row.studentCode, birthdateKey: row.user.birthdate?.toISOString().slice(0, 10) ?? null, studentUserId: row.userId, accountPen: row.user.penNumber };
 }
 
-type RecordRow = {
+export type RecordRow = {
   fatherName: string | null; motherName: string | null; placeOfBirth: string | null; nationality: string | null; religion: string | null; caste: string | null; category: string | null; motherTongue: string | null;
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
   gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
@@ -75,7 +79,7 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
   }) as PupilRecordField[];
 }
 
-const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, rte: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
+export const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, rte: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -85,7 +89,7 @@ export function missingFields(record: RecordRow | null): PupilRecordField[] {
   }) as PupilRecordField[];
 }
 
-function recordView(record: RecordRow | null, rollNumber: number | null = null, repeating: boolean | null = null) {
+export function recordView(record: RecordRow | null, rollNumber: number | null = null, repeating: boolean | null = null) {
   if (!record) return null;
   return {
     previousSchoolTcNumber: record.previousSchoolTcNumber, previousSchoolTcDate: record.previousSchoolTcDate?.toISOString().slice(0, 10) ?? null,
@@ -102,7 +106,7 @@ function recordView(record: RecordRow | null, rollNumber: number | null = null, 
 }
 
 export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: string): Promise<PupilRecordView> {
-  const viewer = await admit(ctx, studentMembershipId);
+  const viewer = await recordViewer(ctx, studentMembershipId);
   const [record, enrolment] = await Promise.all([
     db.pupilRecord.findUnique({ where: { studentMembershipId } }),
     db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { rollNumber: true, repeating: true, class: { select: { name: true } } } }),
@@ -111,44 +115,15 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
   const merged = record ? { ...record, penNumber: viewer.accountPen ?? record.penNumber } : viewer.accountPen ? ({ ...EMPTY_RECORD, penNumber: viewer.accountPen } as RecordRow) : null;
   const missing = missingFields(merged);
   const penChange = await pendingPenChange(ctx, studentMembershipId);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null, enrolment?.repeating ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null, enrolment?.repeating ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, canRequest: viewer.family, change: await pendingRecordChange(ctx, studentMembershipId), penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
 }
 
-/** What a family's body may carry: its own fields, and the PEN only so the guard below can see it was not changed. */
-const FAMILY_WRITABLE: ReadonlySet<string> = new Set<string>([...FAMILY_RECORD_FIELDS, "penNumber"]);
-
 /**
- * Writes the whole record. A blank clears the field. The family's write is
- * dated so the office sees who filled it — and is cut to the family's
- * fields first: the admission number and date, the grade admitted to, the
- * previous school's TC, the category, caste, gender and the BPL, EWS and
- * impairment answers are the office's, feed the leaving certificate and
- * the filings, and a family's body naming them (a blank included) changes
- * nothing, exactly as the roll number and the PEN already worked.
+ * The values a sheet reads, checked and coded, or a refusal — apart from the
+ * write, so that a family's ask is refused for a PIN of five digits when it
+ * is made and not when the office comes to approve it.
  */
-export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: string, raw: PupilRecordSave): Promise<PupilRecordView> {
-  const viewer = await admit(ctx, studentMembershipId);
-  if (!viewer.canEdit) throw new AccessError("access.notAllowed");
-  const input: PupilRecordSave = viewer.family ? (Object.fromEntries(Object.entries(raw).filter(([k]) => FAMILY_WRITABLE.has(k))) as PupilRecordSave) : raw;
-  const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
-  // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
-  // principal reads it, and a correction after the first entry goes through a change request
-  // the head and a guardian both approve (pen-changes.ts).
-  let pen: string | null | undefined = undefined;
-  if (input.penNumber !== undefined) {
-    const wanted = normalisePen(input.penNumber);
-    if (ctx.role !== "ADMIN") {
-      if ((wanted ?? null) !== (viewer.accountPen ?? null)) throw new AccessError("pupilRecord.penOnlyAdmin");
-    } else if (viewer.accountPen && wanted !== viewer.accountPen) {
-      throw new AccessError("pupilRecord.penChangeNeedsApproval");
-    } else if (!viewer.accountPen && wanted) {
-      await assignPen(viewer.studentUserId, wanted);
-      await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pen.set", targetType: "Membership", targetId: studentMembershipId });
-      pen = wanted;
-    } else {
-      pen = viewer.accountPen ?? null;
-    }
-  }
+export async function codedValues(studentMembershipId: string, input: PupilRecordSave) {
   // The number the school rings: kept as E.164 or refused, never reduced to whichever digits were typed.
   let contact: string | null | undefined = undefined;
   if (input.guardianPhone !== undefined) {
@@ -177,6 +152,42 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   const nationality = fromList(NATIONALITIES, input.nationality, stored?.nationality, "pupilRecord.chooseNationality");
   const pin = input.postalCode === undefined ? undefined : input.postalCode.replace(/\s+/g, "") || null;
   if (pin && !PIN_CODE.test(pin) && pin !== (stored?.postalCode ?? "").trim()) throw new AccessError("pupilRecord.pinSixDigits");
+  return { contact, motherTongue, nationality, pin };
+}
+
+/**
+ * Writes the whole record. A blank clears the field. THE OFFICE'S ALONE:
+ * until 2026-09-29 a guardian or the pupil wrote the family's fields here,
+ * and a name or an address on a certificate could change with nobody at the
+ * school having looked. The family now reads the record and asks
+ * (record-changes.ts); the office applies the ask through this same
+ * function, so a value a family proposed passes every check a value the
+ * office typed does.
+ */
+export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: string, raw: PupilRecordSave, opts: { fromFamily?: boolean } = {}): Promise<PupilRecordView> {
+  const viewer = await recordViewer(ctx, studentMembershipId);
+  if (!viewer.canEdit) throw new AccessError(viewer.family ? "pupilRecord.askTheOffice" : "access.notAllowed");
+  const input: PupilRecordSave = raw;
+  const text = (v: string | undefined) => (v === undefined ? undefined : v.trim() || null);
+  // The PEN is the admin's to enter, once: the family's form shows it and never sends it, a
+  // principal reads it, and a correction after the first entry goes through a change request
+  // the head and a guardian both approve (pen-changes.ts).
+  let pen: string | null | undefined = undefined;
+  if (input.penNumber !== undefined) {
+    const wanted = normalisePen(input.penNumber);
+    if (ctx.role !== "ADMIN") {
+      if ((wanted ?? null) !== (viewer.accountPen ?? null)) throw new AccessError("pupilRecord.penOnlyAdmin");
+    } else if (viewer.accountPen && wanted !== viewer.accountPen) {
+      throw new AccessError("pupilRecord.penChangeNeedsApproval");
+    } else if (!viewer.accountPen && wanted) {
+      await assignPen(viewer.studentUserId, wanted);
+      await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pen.set", targetType: "Membership", targetId: studentMembershipId });
+      pen = wanted;
+    } else {
+      pen = viewer.accountPen ?? null;
+    }
+  }
+  const { contact, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality, religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue,
     addressLine: text(input.addressLine), city: text(input.city), postalCode: pin, admissionNumber: text(input.admissionNumber),
@@ -193,19 +204,19 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     guardianPhone: contact,
     rte: input.rte === undefined ? undefined : input.rte === "" ? null : input.rte === "yes",
     updatedByUserId: viewer.userId,
-    ...(viewer.family ? { familyFilledAt: new Date() } : {}),
+    ...(opts.fromFamily ? { familyFilledAt: new Date() } : {}),
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId }, create: { schoolId: viewer.schoolId, studentMembershipId, ...data }, update: data });
   // The roll number lives on the present enrolment and is the office's to set; a family's form never sends it and a family's body is ignored if it does.
-  if (input.rollNumber !== undefined && !viewer.family) {
+  if (input.rollNumber !== undefined) {
     await db.enrollment.updateMany({ where: { studentMembershipId, status: "ACTIVE" }, data: { rollNumber: input.rollNumber === "" ? null : Number(input.rollNumber) } });
   }
   // Repeating the class is the enrolment's too, and the office's: a blank is "no".
-  if (input.repeating !== undefined && !viewer.family) {
+  if (input.repeating !== undefined) {
     await db.enrollment.updateMany({ where: { studentMembershipId, status: "ACTIVE" }, data: { repeating: input.repeating === "yes" } });
   }
   // Which fields, never their values: a caste or an address is not for the audit log.
-  await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pupilRecord.update", targetType: "Membership", targetId: studentMembershipId, meta: { fields: Object.keys(input).filter((k) => (input as Record<string, unknown>)[k] !== undefined), family: viewer.family } });
+  await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pupilRecord.update", targetType: "Membership", targetId: studentMembershipId, meta: { fields: Object.keys(input).filter((k) => (input as Record<string, unknown>)[k] !== undefined), family: opts.fromFamily === true } });
   return pupilRecordFor(ctx, studentMembershipId);
 }
 

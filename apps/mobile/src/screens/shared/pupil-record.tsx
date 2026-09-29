@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
+import { penChangeRequestSchema, penChangesListSchema, RECORD_CHANGE_FIELDS, recordChangeSchema, recordChangesListSchema, type RecordChangeFile, type RecordChangeView, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -16,12 +16,13 @@ import { Chips, must, Refusal } from "../staff/shared";
 
 /**
  * The pupil record — the details a school certificate names — as both sides
- * write it: the family on /record for their own child (or the pupil for
- * themselves), the office on /pupil-record for any pupil. The form is every
- * field at once, the ones a certificate needs first and the rest marked
- * optional, then what the UDISE+ and board filings ask beyond a certificate;
- * the server keeps the whole record as sent, so a cleared field stays
- * cleared. The date of birth is the school's and is only read here.
+ * meet it: the office writes it on /pupil-record for any pupil; the family
+ * on /record reads it for their own child (or the pupil for themselves) and
+ * asks the office to change it. The form is every field at once, the ones a
+ * certificate needs first and the rest marked optional, then what the UDISE+
+ * and board filings ask beyond a certificate; the server keeps the whole
+ * record as the office sends it, so a cleared field stays cleared. The date
+ * of birth is the school's and is only read here.
  */
 export const REQUIRED_FIELDS: PupilRecordField[] = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"];
 export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome", "guardianPhone"];
@@ -29,16 +30,14 @@ export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "catego
 export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "rte", "repeating", "cwsnType", "bloodGroup"];
 const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS];
 /**
- * What a family's form types: the contracts' FAMILY_RECORD_FIELDS. The rest —
- * the admission number and date, the grade admitted to, the previous
- * school's TC, the category, caste, gender, the BPL, EWS and impairment
- * answers, the roll number and the PEN — is the office's, feeds the leaving
- * certificate and the filings, and is shown to the family under the
- * office's note and never sent. Exported so a test can walk the split.
+ * What a family may ask to have changed: the contracts' RECORD_CHANGE_FIELDS,
+ * every field but the PEN (which has a correction of its own), the roll
+ * number and "repeating the class" (which are the enrolment's). A family
+ * writes none of them: since 2026-09-29 the record is the office's alone to
+ * write, and what the family types is an ask the office approves or
+ * declines. Exported so a test can walk the split.
  */
-export const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
-/** The fields a family's body leaves out: everything that is the office's, the PEN included. */
-export const OFFICE_FIELDS: PupilRecordField[] = ALL_FIELDS.filter((f) => !FAMILY_WRITABLE.has(f));
+export const ASKABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(RECORD_CHANGE_FIELDS);
 const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { postalCode: "pupilRecord.pinHint", guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
 const MAX: Partial<Record<PupilRecordField, number>> = { guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, previousSchoolTcDate: 10, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
 /** The fields typed as a day key and sent as one, or null when blank. */
@@ -92,6 +91,34 @@ export function bodyFrom(form: RecordForm, omit: PupilRecordField[] = []): Pupil
   return body as PupilRecordSave;
 }
 
+/**
+ * What a family's ask carries: only the askable fields whose trimmed value
+ * differs from the record's, a blank asking for the field to be cleared (a
+ * blank date as null). Nothing in it means there is nothing to ask.
+ */
+export function changesFrom(form: RecordForm, record: PupilRecordView["record"]): RecordChangeFile["changes"] {
+  const changes: Record<string, string | null> = {};
+  for (const field of ALL_FIELDS) {
+    if (!ASKABLE.has(field)) continue;
+    const value = form[field].trim();
+    if (value === (record?.[field] ?? "").trim()) continue;
+    changes[field] = DATE_FIELDS.includes(field) && !value ? null : value;
+  }
+  return changes as RecordChangeFile["changes"];
+}
+
+/** One stored value as the word a reader sees, so "MARATHI" is never shown as a code; a value typed before the lists shows as itself. */
+export function valueWords(t: Translate, field: PupilRecordField, value: string): string {
+  if (field === "bpl" || field === "ews" || field === "rte" || field === "repeating") return value === "yes" ? t("pupilRecord.yes") : value === "no" ? t("pupilRecord.no") : value;
+  if (field === "gender") return value === "M" ? t("pupilRecord.genderM") : value === "F" ? t("pupilRecord.genderF") : value === "T" ? t("pupilRecord.genderT") : value;
+  if (field === "cwsnType") return value === CWSN_NONE ? t("pupilRecord.cwsnNone") : cwsnLabel(value);
+  if (field === "motherTongue") return (LANGUAGE_VALUES as readonly string[]).includes(value) ? t(LANGUAGE_LABEL[value as MotherTongue]) : value;
+  if (field === "nationality") return (NATIONALITY_VALUES as readonly string[]).includes(value) ? t(NATIONALITY_LABEL[value as Nationality]) : value;
+  if (field === "category") return (CATEGORY_VALUES as readonly string[]).includes(value) ? t(CATEGORY_LABEL[value as (typeof PUPIL_CATEGORIES)[number]]) : value;
+  if (field === "religion") return (RELIGION_VALUES as readonly string[]).includes(value) ? t(RELIGION_LABEL[value as (typeof PUPIL_RELIGIONS)[number]]) : value;
+  return value;
+}
+
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 /** A typed date that is not a day key is refused before anything is sent. */
 export function dateProblem(t: Translate, value: string): string | undefined {
@@ -108,49 +135,64 @@ export function RecordStanding({ view }: { view: PupilRecordView }) {
 /**
  * The whole record as one form. The date of birth leads it, read-only with
  * the school's note; then the fields a certificate needs, then the optional
- * ones. Nothing is sent until Save, and the parent screen owns the request
- * so it can put the server's sentence above the button and refresh its own
- * copy. `intro` is the sentence for whoever is filling it in.
+ * ones. `intro` is the sentence for whoever is reading it.
+ *
+ * WHO WRITES: the office's form has every field and Save. A family's form —
+ * a guardian's or the pupil's own — is READ until "Ask for a change" is
+ * pressed; then every field but the PEN, the roll number and "repeating"
+ * can be typed in, a reason is asked for, and `onAsk` is handed only the
+ * fields that differ from the record. Nothing is sent until Save or Send,
+ * and the parent screen owns the request so it can put the server's
+ * sentence beside the button and refresh its own copy.
  */
-export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: { view: PupilRecordView; intro: string; busy: boolean; refusal: Refusal | null; onSave: (body: PupilRecordSave) => void; extra?: ReactNode }) {
+export function PupilRecordForm({ view, intro, busy, refusal, onSave, onAsk, extra }: { view: PupilRecordView; intro: string; busy: boolean; refusal: Refusal | null; onSave?: (body: PupilRecordSave) => void; onAsk?: (body: RecordChangeFile) => void; extra?: ReactNode }) {
   const t = useT();
   const th = useTheme();
   const role = useRole();
   const { locale } = useLocale();
   const [form, setForm] = useState<RecordForm>(() => formFrom(view.record));
   const [tried, setTried] = useState(false);
+  // The family's form: read first, and typed in only once they have said they want something changed.
+  const [asking, setAsking] = useState(false);
+  const [reason, setReason] = useState("");
+  const [problem, setProblem] = useState<string | null>(null);
   const set = (field: PupilRecordField, value: string) => setForm((f) => ({ ...f, [field]: value }));
-  const issue = (field: PupilRecordField) => refusal?.issues[field];
+  const issue = (field: PupilRecordField) => refusal?.issues[field] ?? refusal?.issues[`changes.${field}`];
   const dateBad = dateProblem(t, form.admissionDate) ?? dateProblem(t, form.previousSchoolTcDate);
-  const editable = !busy && view.canEdit;
-  // The office's fields — the roll number among them — the family reads and never sends.
   const familySide = role === "PARENT" || role === "STUDENT";
-  const omitted: PupilRecordField[] = familySide ? OFFICE_FIELDS : view.penEditable ? [] : ["penNumber"];
+  const editable = !busy && (familySide ? asking : view.canEdit);
+  /** Read, not typed: the whole record until the family asks for a change, and the three fields that are never theirs to ask about. */
+  const reads = (field: PupilRecordField) => familySide && (!asking || !ASKABLE.has(field));
+  const omitted: PupilRecordField[] = view.penEditable ? [] : ["penNumber"];
   const yesNo = [
     { value: "", label: t("pupilRecord.notSaid") },
     { value: "yes", label: t("pupilRecord.yes") },
     { value: "no", label: t("pupilRecord.no") },
   ];
-  /** A coded filing answer: chips for the office, the picked word under the office's note for the family. */
-  const codedChips = (field: "gender" | "bpl" | "ews" | "rte" | "repeating" | "cwsnType", options: { value: string; label: string }[]) =>
-    familySide ? readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, options.find((o) => o.value === form[field] && o.value !== "")?.label ?? form[field]) : <Chips key={field} label={fieldLabel(t, field)} value={form[field]} options={options} onChange={(v) => set(field, v)} disabled={!editable} />;
-  /** A field shown, never typed: the value or a dash, and the note that says whose it is. */
-  const readOnly = (field: PupilRecordField, note: string, testID: string, display?: string) => {
+  /** A field shown, never typed: the value or a dash, and — where there is one — the note that says whose it is. */
+  const readOnly = (field: PupilRecordField, note: string | undefined, testID: string, display?: string) => {
     const shown = display || form[field] || "—";
     return (
-      <View key={field} accessible accessibilityLabel={`${fieldLabel(t, field)}: ${shown}. ${note}`} testID={testID} style={{ gap: 2, paddingVertical: th.space[1] }}>
+      <View key={field} accessible accessibilityLabel={note ? `${fieldLabel(t, field)}: ${shown}. ${note}` : `${fieldLabel(t, field)}: ${shown}`} testID={testID} style={{ gap: 2, paddingVertical: th.space[1] }}>
         <Text variant="xs" bold tone="subtle" style={{ textTransform: "uppercase", letterSpacing: 0.5 }}>
           {fieldLabel(t, field)}
         </Text>
         <Text variant="base" tone={form[field] ? "fg" : "subtle"}>
           {shown}
         </Text>
-        <Text variant="xs" tone="subtle">
-          {note}
-        </Text>
+        {note ? (
+          <Text variant="xs" tone="subtle">
+            {note}
+          </Text>
+        ) : null}
       </View>
     );
   };
+  /** What the family reads: the stored code as its word, and the office's note only on what they cannot ask about. */
+  const read = (field: PupilRecordField) => readOnly(field, ASKABLE.has(field) ? undefined : t("pupilRecord.rollNumberOffice"), field === "rollNumber" ? "record-roll-office" : `record-read-${field}`, valueWords(t, field, form[field]));
+  /** A coded filing answer: chips for whoever may type, the picked word for a family that is reading. */
+  const codedChips = (field: "gender" | "bpl" | "ews" | "rte" | "repeating" | "cwsnType" | "bloodGroup", options: { value: string; label: string }[]) =>
+    reads(field) ? read(field) : <Chips key={field} label={fieldLabel(t, field)} value={form[field]} options={options} onChange={(v) => set(field, v)} disabled={!editable} />;
   /**
    * A coded choice as chips: blank, the codes with their labels, and — for
    * a value typed before the codes existed — the stored word as one more
@@ -158,18 +200,8 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
    */
   const coded = (field: "category" | "religion" | "motherTongue" | "nationality") => {
     const codes: readonly string[] = field === "category" ? CATEGORY_VALUES : field === "religion" ? RELIGION_VALUES : field === "motherTongue" ? LANGUAGE_VALUES : NATIONALITY_VALUES;
-    const labelOf = (code: string): string =>
-      t(
-        field === "category"
-          ? CATEGORY_LABEL[code as (typeof PUPIL_CATEGORIES)[number]]
-          : field === "religion"
-            ? RELIGION_LABEL[code as (typeof PUPIL_RELIGIONS)[number]]
-            : field === "motherTongue"
-              ? LANGUAGE_LABEL[code as MotherTongue]
-              : NATIONALITY_LABEL[code as Nationality],
-      );
     const stored = view.record?.[field] ?? "";
-    const options = [{ value: "", label: t("pupilRecord.notSaid") }, ...codes.map((code) => ({ value: code, label: labelOf(code) }))];
+    const options = [{ value: "", label: t("pupilRecord.notSaid") }, ...codes.map((code) => ({ value: code, label: valueWords(t, field, code) }))];
     if (stored && !codes.includes(stored)) options.push({ value: stored, label: stored });
     const hintKey = HINT[field];
     return (
@@ -189,13 +221,7 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
       // typed, and a correction goes through the change below.
       return readOnly(field, form.penNumber ? t(role === "ADMIN" ? "pupilRecord.penEnteredBy" : "pupilRecord.penLocked") : t("pupilRecord.penOnlyAdmin"), "record-pen-locked");
     }
-    if (field === "rollNumber" && familySide) return readOnly(field, t("pupilRecord.rollNumberOffice"), "record-roll-office");
-    if (familySide && !FAMILY_WRITABLE.has(field)) {
-      // The office's, shown as the word the office picked (a category code as its label), never typed here.
-      const stored = form[field];
-      const shown = field === "category" && (CATEGORY_VALUES as readonly string[]).includes(stored) ? t(CATEGORY_LABEL[stored as (typeof PUPIL_CATEGORIES)[number]]) : stored;
-      return readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, shown);
-    }
+    if (reads(field)) return read(field);
     if (field === "category" || field === "religion" || field === "motherTongue" || field === "nationality") return coded(field);
     const isDate = DATE_FIELDS.includes(field);
     const isDigits = DIGIT_FIELDS.includes(field);
@@ -217,6 +243,28 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
       />
     );
   };
+  /** The family's ask: only what differs from the record, and why. Refused here when there is nothing to ask or no reason. */
+  const ask = () => {
+    setTried(true);
+    if (dateBad) return;
+    const changes = changesFrom(form, view.record);
+    if (Object.keys(changes).length === 0) {
+      setProblem(t("recordChanges.nothingChanges"));
+      return;
+    }
+    setProblem(null);
+    if (!reason.trim()) return;
+    onAsk?.({ changes, reason: reason.trim() });
+  };
+  /** Leaving the ask puts the form back to the record: what was typed was never the record's. */
+  const stopAsking = () => {
+    setAsking(false);
+    setTried(false);
+    setReason("");
+    setProblem(null);
+    setForm(formFrom(view.record));
+  };
+  const said = problem ?? refusal?.message ?? null;
   return (
     <Card title={t("pupilRecord.title")} action={<RecordStanding view={view} />}>
       <Text variant="sm" tone="muted">
@@ -243,7 +291,8 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
           {t("pupilRecord.dobNote")}
         </Text>
       </View>
-      {refusal ? <Failed message={refusal.message} /> : null}
+      {/* The office's refusal sits above its fields; a family's sits in the ask, beside the button that sent it. */}
+      {refusal && !familySide ? <Failed message={refusal.message} /> : null}
       {REQUIRED_FIELDS.map((field) => input(field, false))}
       <View style={{ gap: th.space[3], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
         <Text variant="base" bold accessibilityRole="header">
@@ -281,17 +330,38 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
         <Text variant="xs" tone="subtle">
           {t("pupilRecord.cwsnHint")}
         </Text>
-        <Chips label={fieldLabel(t, "bloodGroup")} value={form.bloodGroup} options={[{ value: "", label: t("pupilRecord.notSaid") }, ...RECORD_BLOOD_GROUPS.map((g) => ({ value: g as string, label: g }))]} onChange={(v) => set("bloodGroup", v)} disabled={!editable} />
+        {codedChips("bloodGroup", [{ value: "", label: t("pupilRecord.notSaid") }, ...RECORD_BLOOD_GROUPS.map((g) => ({ value: g as string, label: g }))])}
       </View>
-      {view.canEdit ? (
+      {!familySide && view.canEdit ? (
         <Button
           label={t("pupilRecord.save")}
           busy={busy}
           onPress={() => {
             setTried(true);
-            if (!dateBad) onSave(bodyFrom(form, omitted));
+            if (!dateBad) onSave?.(bodyFrom(form, omitted));
           }}
         />
+      ) : null}
+      {familySide && view.canRequest && !asking ? (
+        <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+          <Text variant="sm" tone="muted">
+            {t("recordChanges.readOnlyNote")}
+          </Text>
+          <Button label={t("recordChanges.askForChange")} variant="secondary" onPress={() => setAsking(true)} />
+        </View>
+      ) : null}
+      {familySide && asking ? (
+        <Note tone="accent">
+          <Text variant="sm" tone="muted">
+            {view.change ? `${t("recordChanges.formIntro")} ${t("recordChanges.replaceNote")}` : t("recordChanges.formIntro")}
+          </Text>
+          {said ? <Failed message={said} /> : null}
+          <Field label={t("recordChanges.reasonLabel")} hint={t("recordChanges.reasonHint")} value={reason} onChangeText={setReason} maxLength={400} multiline editable={!busy} error={tried && !reason.trim() ? t("root.sayWhyShort") : undefined} />
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            <Button label={t("recordChanges.send")} busy={busy} onPress={ask} />
+            <Button label={t("recordChanges.stopAsking")} variant="secondary" disabled={busy} onPress={stopAsking} />
+          </View>
+        </Note>
       ) : null}
       {extra}
     </Card>
@@ -487,6 +557,171 @@ export function FamilyPenChangesCard() {
   return (
     <Card title={t("pupilRecord.penChangesTitle")} testID="pen-changes-card">
       <Row title={t("pupilRecord.notifPenProposed", { name: waiting.studentName })} caption={t("certificateRequests.pendingCount", { count: d.pending })} onPress={() => router.push({ pathname: "/(app)/record", params: { child: waiting.studentMembershipId } } as never)} />
+    </Card>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* A family's ask to change the record                                          */
+/* -------------------------------------------------------------------------- */
+
+const OFFICE_RECORD_CHANGES_KEY = ["office", "record-changes"];
+const FAMILY_RECORD_CHANGES_KEY = ["family", "record-changes"];
+
+const RECORD_CHANGE_STATUS: Record<RecordChangeView["status"], { label: TranslationKey; tone: "warn" | "ok" | "danger" | "muted" }> = {
+  PENDING: { label: "recordChanges.statusPending", tone: "warn" },
+  APPLIED: { label: "recordChanges.statusApplied", tone: "ok" },
+  DECLINED: { label: "recordChanges.statusDeclined", tone: "danger" },
+  WITHDRAWN: { label: "recordChanges.statusWithdrawn", tone: "muted" },
+};
+
+/** "Town or city: Pune → Nashik", one line per field asked about, a code as its word and nothing as "blank". */
+export function recordChangeLines(t: Translate, change: RecordChangeView): { field: PupilRecordField; line: string }[] {
+  const words = (field: PupilRecordField, value: string | null) => (value === null || value === "" ? t("recordChanges.blank") : valueWords(t, field, value));
+  return change.changes.map((c) => ({ field: c.field, line: t("recordChanges.changeLine", { field: fieldLabel(t, c.field), from: words(c.field, c.from), to: words(c.field, c.to) }) }));
+}
+
+/**
+ * One ask to change a pupil's record, as both sides read it: where it
+ * stands, who asked and when, each field with what the record held and what
+ * is proposed, and why. The office gets the two decisions — declining opens
+ * a box for a sentence the family will read — and the family the way to
+ * take a waiting ask back. What the reader may do is the server's answer
+ * (`can`), not this card's guess. `recordKey` is the record query the card
+ * sits beside, refetched after every write so the form shows what the
+ * record now holds. `bare` draws the ask without a card of its own, for a
+ * list of earlier ones inside one card.
+ */
+export function RecordChangeCard({ change, recordKey, bare }: { change: RecordChangeView; recordKey?: QueryKey; bare?: boolean }) {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const { locale } = useLocale();
+  const [refusal, setRefusal] = useState<string | null>(null);
+  const [declining, setDeclining] = useState(false);
+  const [why, setWhy] = useState("");
+  const settle = (message: string) => {
+    setRefusal(null);
+    setDeclining(false);
+    setWhy("");
+    toast.show(message, "ok");
+    if (recordKey) void qc.invalidateQueries({ queryKey: recordKey });
+    void qc.invalidateQueries({ queryKey: OFFICE_RECORD_CHANGES_KEY });
+    void qc.invalidateQueries({ queryKey: ["office", "pupil-records"] });
+    void qc.invalidateQueries({ queryKey: FAMILY_RECORD_CHANGES_KEY });
+  };
+  const fail = (e: unknown) => setRefusal(e instanceof Refusal ? e.message : t("common.somethingWrong"));
+  const decide = useMutation({
+    mutationFn: async ({ approve, reason }: { approve: boolean; reason?: string }) => recordChangeSchema.parse(must(await api().post(`/api/v1/office/record-changes/${encodeURIComponent(change.id)}/decide`, approve ? { approve: true } : { approve: false, ...(reason ? { reason } : {}) }), t("common.somethingWrong"))),
+    onSuccess: (_next, sent) => settle(t(sent.approve ? "recordChanges.approved" : "recordChanges.declined")),
+    onError: fail,
+  });
+  const withdraw = useMutation({
+    mutationFn: async () => recordChangeSchema.parse(must(await api().post(`/api/v1/family/record/changes/${encodeURIComponent(change.id)}/withdraw`, {}), t("common.somethingWrong"))),
+    onSuccess: () => settle(t("recordChanges.withdrawn")),
+    onError: fail,
+  });
+  const busy = decide.isPending || withdraw.isPending;
+  const status = RECORD_CHANGE_STATUS[change.status];
+  const pill = <Pill label={t(status.label)} tone={status.tone} />;
+  const body = (
+    <>
+      {bare ? pill : null}
+      <Text variant="sm" tone="muted">
+        {t(change.byPupil ? "recordChanges.askedByPupil" : "recordChanges.askedBy", { name: change.requestedByName, date: formatDateKey(change.createdAt.slice(0, 10), locale) })}
+      </Text>
+      {recordChangeLines(t, change).map((c) => (
+        <Text key={c.field} variant="base" testID={`record-change-${c.field}`}>
+          {c.line}
+        </Text>
+      ))}
+      <Text variant="sm" tone="muted">
+        {t("recordChanges.reasonGiven", { reason: change.reason })}
+      </Text>
+      {change.declineReason ? (
+        <Text variant="sm" bold>
+          {t("recordChanges.officeSaid", { reason: change.declineReason })}
+        </Text>
+      ) : null}
+      {refusal ? <Failed message={refusal} /> : null}
+      {change.can.decide && !declining ? (
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+          <Button label={t("recordChanges.approve")} busy={decide.isPending} disabled={busy} onPress={() => decide.mutate({ approve: true })} />
+          <Button label={t("recordChanges.decline")} variant="secondary" disabled={busy} onPress={() => setDeclining(true)} />
+        </View>
+      ) : null}
+      {change.can.decide && declining ? (
+        <Note tone="danger">
+          <Field label={t("recordChanges.declineReasonLabel")} value={why} onChangeText={setWhy} maxLength={400} multiline editable={!busy} />
+          <Confirm question={`${change.studentName}: ${fieldList(t, change.changes.map((c) => c.field))}`} confirmLabel={t("recordChanges.decline")} busy={decide.isPending} onConfirm={() => decide.mutate({ approve: false, reason: why.trim() || undefined })} onCancel={() => setDeclining(false)} />
+        </Note>
+      ) : null}
+      {change.can.withdraw ? <Button label={t("recordChanges.withdraw")} variant="secondary" busy={withdraw.isPending} disabled={busy} onPress={() => withdraw.mutate()} /> : null}
+    </>
+  );
+  if (bare) return <View testID="record-change" style={{ gap: th.space[2] }}>{body}</View>;
+  return (
+    <Card title={t(change.can.decide ? "recordChanges.officeTitle" : change.status === "PENDING" ? "recordChanges.waitingTitle" : "recordChanges.earlier")} action={pill} testID="record-change">
+      {body}
+    </Card>
+  );
+}
+
+/**
+ * The asks on one pupil's record, beside the form: the one that waits in a
+ * card of its own, then the earlier ones — updated, declined, taken back —
+ * together in one card, the newest first as the server sends them. Five at
+ * most: the list is what happened lately, not an archive. Nothing at all
+ * while nobody has asked.
+ */
+export function RecordChangesSection({ items, recordKey }: { items: RecordChangeView[]; recordKey?: QueryKey }) {
+  const t = useT();
+  const th = useTheme();
+  const shown = items.slice(0, 5);
+  const waiting = shown.filter((c) => c.status === "PENDING");
+  const earlier = shown.filter((c) => c.status !== "PENDING");
+  return (
+    <>
+      {waiting.map((c) => (
+        <RecordChangeCard key={c.id} change={c} recordKey={recordKey} />
+      ))}
+      {earlier.length > 0 ? (
+        <Card title={t("recordChanges.earlier")} testID="record-changes-earlier">
+          {earlier.map((c, i) => (
+            <View key={c.id} style={i > 0 ? { paddingTop: th.space[3], borderTopWidth: 1, borderTopColor: th.border } : undefined}>
+              <RecordChangeCard change={c} recordKey={recordKey} bare />
+            </View>
+          ))}
+        </Card>
+      ) : null}
+    </>
+  );
+}
+
+/** The asks that wait for the office, as the home card and the records list both read them: one query, one key. */
+export function useOfficeRecordChanges() {
+  const role = useRole();
+  return useQuery({
+    queryKey: OFFICE_RECORD_CHANGES_KEY,
+    enabled: role === "ADMIN" || role === "PRINCIPAL",
+    queryFn: async () => recordChangesListSchema.parse(unwrap(await api().get("/api/v1/office/record-changes?status=PENDING"))),
+  });
+}
+
+/**
+ * The office's home card while a family's ask waits: the count, and the
+ * door to the records list where each is named. Nothing while none wait, or
+ * while the list cannot be read.
+ */
+export function OfficeRecordChangesCard() {
+  const t = useT();
+  const router = useRouter();
+  const d = useOfficeRecordChanges().data;
+  if (!d || d.pending === 0) return null;
+  return (
+    <Card title={t("recordChanges.officeTitle")} testID="record-changes-card">
+      <Row title={t("recordChanges.waitingCount", { count: d.pending })} caption={t("recordChanges.officeIntro")} onPress={() => router.push("/(app)/pupil-records" as never)} />
     </Card>
   );
 }

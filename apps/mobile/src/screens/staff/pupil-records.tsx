@@ -3,13 +3,13 @@ import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { officeRecordsSchema, penLookupSchema, recordRequestedSchema, type PenLookup } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Screen, Stat, Text, useToast } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Pill, Tabs } from "../family/shared";
-import { fieldList } from "../shared/pupil-record";
+import { fieldList, useOfficeRecordChanges } from "../shared/pupil-record";
 import { formatDateKey } from "./shared";
 
 const PATH = "/api/v1/office/pupil-records";
@@ -24,7 +24,9 @@ const PEN_RE = /^\d{11}$/;
  * something blank; a row's "Ask this family" asks one. Editing opens the
  * same form the family has, with the office as the writer. Above the list,
  * "Find by PEN" asks who holds a UDISE+ PEN: a pupil here with a door to
- * the record, a pupil elsewhere on Relay by state alone, or nobody.
+ * the record, a pupil elsewhere on Relay by state alone, or nobody. Above
+ * that again, while families' asks wait, each one by the pupil's name and
+ * the fields asked about, leading to that pupil's record where it is decided.
  */
 export function PupilRecords() {
   const t = useT();
@@ -76,12 +78,23 @@ export function PupilRecords() {
           : t("pupilRecord.penNone")
     : null;
   const d = query.data;
+  const waiting = useOfficeRecordChanges().data?.items.filter((c) => c.status === "PENDING") ?? [];
   return (
     <Screen title={t("pupilRecord.officeTitle")} description={t("pupilRecord.officeIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
+          {waiting.length > 0 ? (
+            <Card title={t("recordChanges.officeTitle")} action={<Pill label={t("recordChanges.waitingCount", { count: waiting.length })} tone="warn" />} testID="record-changes-waiting">
+              <Text variant="sm" tone="muted">
+                {t("recordChanges.officeIntro")}
+              </Text>
+              {waiting.map((c) => (
+                <Row key={c.id} title={c.studentName} caption={[c.className, fieldList(t, c.changes.map((x) => x.field))].filter(Boolean).join(" · ")} onPress={() => router.push({ pathname: "/(app)/pupil-record", params: { membershipId: c.studentMembershipId } } as never)} />
+              ))}
+            </Card>
+          ) : null}
           <Card title={t("pupilRecord.findByPen")}>
             <Field label={t("pupilRecord.findByPen")} hint={t("pupilRecord.findByPenHint")} value={pen} onChangeText={setPen} keyboardType="number-pad" maxLength={11} autoCapitalize="none" error={penError} />
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>

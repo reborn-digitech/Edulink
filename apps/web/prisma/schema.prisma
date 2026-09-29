@@ -242,6 +242,7 @@ model School {
   substitutions        Substitution[]
   joinRequests         JoinRequest[]
   guardianClaims       GuardianClaim[]
+  recordChangeRequests RecordChangeRequest[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -432,6 +433,7 @@ model Membership {
   submissions            Submission[]
   healthCard             HealthCard?
   pupilRecord            PupilRecord?
+  recordChangeRequests   RecordChangeRequest[]
   issuedCertificates     IssuedCertificate[]  @relation("IssuedCertificateStudent")
   healthChecks           HealthCheck[]
   incidents              Incident[]           @relation("IncidentStudent")
@@ -4286,6 +4288,36 @@ model CertificateRequest {
 /// reject, and the number changes only when both have approved. The first
 /// entry needs no approval; a correction does, because a wrong PEN on a
 /// transfer certificate follows the child.
+/// A FAMILY'S ASK TO CHANGE THE PUPIL RECORD. The record is the office's to
+/// write; a guardian or the pupil reads it and proposes new values with a
+/// reason, and the office applies them or declines. One waits per pupil:
+/// asking again while one waits replaces it.
+model RecordChangeRequest {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  requestedByUserId   String
+  /// True when the pupil asked for themselves, false for a guardian.
+  byPupil             Boolean   @default(false)
+  /// [{ field, from, to }] as the form's strings; null is a blank.
+  changesJson         String
+  reason              String
+  /// PENDING | APPLIED | DECLINED | WITHDRAWN
+  status              String    @default("PENDING")
+  decidedAt           DateTime?
+  decidedByUserId     String?
+  /// What the office chose to tell the family with a decline.
+  declineReason       String?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, status, createdAt])
+  @@index([studentMembershipId, status])
+}
+
 model PenChangeRequest {
   id                  String    @id @default(cuid())
   schoolId            String

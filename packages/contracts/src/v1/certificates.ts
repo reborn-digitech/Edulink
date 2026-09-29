@@ -80,13 +80,12 @@ export const pupilRecordFieldSchema = z.enum([
   "rte", "repeating",
 ]);
 /**
- * The fields a family — a guardian, or the pupil themselves — may write on
- * /api/v1/family/record. Everything else on the record is the office's:
- * the admission number, date and grade, the previous school's TC, the
- * category, caste, gender and the BPL/EWS/impairment answers feed the
- * leaving certificate and the filings, so a family's save leaves them as
- * they stand (as it already left the roll number and the PEN) and the family
- * forms show them read-only. The office forms keep every field.
+ * The fields a family knows of itself: the ones the office's "ask the
+ * families" is about. A FAMILY WRITES NONE OF THEM. Since 2026-09-29 the
+ * record is the office's alone to write; a guardian or the pupil reads it
+ * and asks for a change (RECORD_CHANGE_FIELDS, below), and the office
+ * applies it or declines. The list is kept because it still says which
+ * blanks a family can be asked about.
  */
 export const FAMILY_RECORD_FIELDS = [
   "fatherName", "motherName", "placeOfBirth", "nationality", "religion", "motherTongue", "addressLine", "city", "postalCode",
@@ -138,7 +137,7 @@ const recordBloodGroupSchema = z.enum(RECORD_BLOOD_GROUPS);
 const yesNo = z.enum(["yes", "no", ""]);
 export type PupilRecordField = z.infer<typeof pupilRecordFieldSchema>;
 
-/** POST /api/v1/family/record and /api/v1/office/pupil-records/{membershipId} — the whole record; a blank clears the field. */
+/** POST /api/v1/office/pupil-records/{membershipId} — the whole record; a blank clears the field. The family's ask carries the same shape. */
 export const pupilRecordSaveSchema = z.object({
   fatherName: text.optional(),
   motherName: text.optional(),
@@ -226,6 +225,55 @@ export const pupilRecordSchema = z.object({
 });
 
 /* -------------------------------------------------------------------------- */
+/* A family's ask to change the record                                          */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * What a family may ask to have changed: every field of the record but
+ * three. The PEN has a correction of its own that the head and a guardian
+ * both approve; the roll number and "repeating the class" are the
+ * enrolment's and not the record's.
+ */
+export const RECORD_CHANGE_EXCLUDED = ["penNumber", "rollNumber", "repeating"] as const satisfies readonly PupilRecordField[];
+export const RECORD_CHANGE_FIELDS = pupilRecordFieldSchema.options.filter((f) => !(RECORD_CHANGE_EXCLUDED as readonly string[]).includes(f)) as Exclude<PupilRecordField, (typeof RECORD_CHANGE_EXCLUDED)[number]>[];
+export const recordChangeStatusSchema = z.enum(["PENDING", "APPLIED", "DECLINED", "WITHDRAWN"]);
+export type RecordChangeStatus = z.infer<typeof recordChangeStatusSchema>;
+/**
+ * POST /api/v1/family/record/changes — the values the family proposes, as the
+ * record's own form sends them (a blank asks for the field to be cleared),
+ * and why. Only the fields that differ from the record are kept.
+ */
+export const recordChangeFileSchema = z.object({
+  changes: pupilRecordSaveSchema.omit({ penNumber: true, rollNumber: true, repeating: true }).strict(),
+  reason: z.string().trim().min(1).max(400),
+});
+export type RecordChangeFile = z.infer<typeof recordChangeFileSchema>;
+/** POST /api/v1/office/record-changes/{requestId}/decide — approve applies the values; a decline may carry a sentence for the family. */
+export const recordChangeDecideSchema = z.object({ approve: z.boolean(), reason: z.string().trim().max(400).optional() });
+export const recordChangeSchema = z.object({
+  id: z.string(),
+  studentMembershipId: z.string(),
+  studentName: z.string(),
+  className: z.string().nullable(),
+  requestedByName: z.string(),
+  /** True when the pupil asked for themselves. */
+  byPupil: z.boolean(),
+  reason: z.string(),
+  status: recordChangeStatusSchema,
+  /** Each field asked about: what the record held when it was asked, and what is proposed. Null is a blank. */
+  changes: z.array(z.object({ field: pupilRecordFieldSchema, from: z.string().nullable(), to: z.string().nullable() })),
+  declineReason: z.string().nullable(),
+  decidedByName: z.string().nullable(),
+  decidedAt: iso.nullable(),
+  /** What this reader may do: the office decides, the family takes it back. */
+  can: z.object({ decide: z.boolean(), withdraw: z.boolean() }),
+  createdAt: iso,
+});
+export type RecordChangeView = z.infer<typeof recordChangeSchema>;
+export const recordChangesListSchema = z.object({ items: z.array(recordChangeSchema), pending: count });
+export const recordChangesQuerySchema = z.object({ status: recordChangeStatusSchema.optional() });
+
+/* -------------------------------------------------------------------------- */
 /* PEN change requests                                                          */
 /* -------------------------------------------------------------------------- */
 
@@ -273,6 +321,10 @@ export const pupilRecordViewSchema = z.object({
   missingForFiling: z.array(pupilRecordFieldSchema),
   complete: z.boolean(),
   canEdit: z.boolean(),
+  /** True for a guardian and for the pupil: they read the record and may ask the office to change it. */
+  canRequest: z.boolean().default(false),
+  /** The request waiting on this pupil's record, if any, and what this reader may do about it. */
+  change: recordChangeSchema.nullable().default(null),
   /** True only for an admin while the account has no PEN: the first entry. A correction goes through a change request. */
   penEditable: z.boolean(),
   /** The pending correction to the PEN, if any, and what this reader may do about it. */

@@ -11,7 +11,7 @@ import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
-import { POST as familyRecordPost } from "@/app/api/v1/family/record/route";
+import { POST as familyChangePost } from "@/app/api/v1/family/record/changes/route";
 import { POST as proposePost } from "@/app/api/v1/office/pupil-records/[membershipId]/pen-change/route";
 import { GET as officeListGet } from "@/app/api/v1/office/pen-changes/route";
 import { POST as headDecide } from "@/app/api/v1/office/pen-changes/[requestId]/decide/route";
@@ -69,11 +69,10 @@ let requestId = "";
 describe("who enters and who corrects", () => {
   it("the family and the head cannot set it; the admin enters it once; a second entry is refused and pointed at a proposal", async () => {
     await as("PARENT");
-    expect((await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { penNumber: PEN_1, fatherName: "Rahul" }))).status).toBe(403);
-    // Sending the field blank, as the read-only form does, is not an attempt to set it.
-    expect((await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { penNumber: "", fatherName: "Rahul Rane" }))).status).toBe(200);
+    // The family writes nothing, and what it may ask the office to change does not include the PEN: a body naming it is refused whole.
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { penNumber: PEN_1, fatherName: "Rahul" }, reason: "ZZ test" }))).status).toBe(422);
     await as("PUPIL");
-    expect((await familyRecordPost(json("/api/v1/family/record", { penNumber: PEN_1 }))).status).toBe(403);
+    expect((await familyChangePost(json("/api/v1/family/record/changes", { changes: { penNumber: PEN_1 }, reason: "ZZ test" }))).status).toBe(422);
     await as("PRINCIPAL");
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_1 }), params({ membershipId: pupil }))).status).toBe(403);
     await as("ADMIN");
@@ -87,10 +86,10 @@ describe("who enters and who corrects", () => {
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_2 }), params({ membershipId: pupil }))).status).toBe(403);
     // The same number again, as the form always sends it, is fine.
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { penNumber: PEN_1, city: "Pune" }), params({ membershipId: pupil }))).status).toBe(200);
-    // Once on record, the family's form may echo it but not change it.
+    // Once on record, the family can no more ask for another.
     await as("PARENT");
-    expect((await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { penNumber: PEN_1 }))).status).toBe(200);
-    expect((await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { penNumber: PEN_2 }))).status).toBe(403);
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { penNumber: PEN_2 }, reason: "ZZ test" }))).status).toBe(422);
+    expect(await db.recordChangeRequest.count({ where: { schoolId } })).toBe(0);
     const audit = await db.auditLog.findFirst({ where: { schoolId, action: "pen.set", targetId: pupil } });
     expect(audit).not.toBeNull();
     expect(audit!.meta).not.toContain(PEN_1);

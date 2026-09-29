@@ -62,13 +62,13 @@ describe("the office's pupil records", () => {
     expect(screen.getByRole("tab", { name: "Only incomplete (2)" })).toBeTruthy();
   });
 
-  it("the toggle asks for every pupil, where a complete record says when the family filled it", async () => {
+  it("the toggle asks for every pupil, where a complete record says when the family's details were approved", async () => {
     const { calls } = await mountStaff(compose(), "PRINCIPAL", answers());
     await screen.findByText("ZZ Asha");
     await fireEvent.press(screen.getByRole("tab", { name: "All pupils (3)" }));
     expect(await screen.findByText("ZZ Chirag")).toBeTruthy();
     expect(calls().some((c) => c.line === `GET ${PATH}`)).toBe(true);
-    expect(screen.getByText(/^ZZ 5A · Filled by the family .*2026$/)).toBeTruthy();
+    expect(screen.getByText(/^ZZ 5A · Family's details approved .*2026$/)).toBeTruthy();
     // The word once on the stat, once on the complete row's pill.
     expect(screen.getAllByText("Complete")).toHaveLength(2);
     // A complete record has nothing to ask for.
@@ -114,6 +114,32 @@ describe("the office's pupil records", () => {
     await mountStaff(compose(), "ADMIN", { [`GET ${PATH}`]: refused("ZZ broke") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+});
+
+const ASKS = "GET /api/v1/office/record-changes";
+const ASK = { id: "rc1", studentMembershipId: BELA, studentName: "ZZ Bela", className: "ZZ 3B", requestedByName: "ZZ Parent", byPupil: false, reason: "We moved house in June", status: "PENDING", changes: [{ field: "city", from: "Pune", to: "Nashik" }, { field: "category", from: null, to: "OBC" }], declineReason: null, decidedByName: null, decidedAt: null, can: { decide: true, withdraw: false }, createdAt: "2026-09-20T05:00:00.000Z" };
+
+describe("the asks that wait, above the list", () => {
+  it("names each pupil with the fields asked about and opens that pupil's record, asking only for the ones that wait", async () => {
+    const { calls } = await mountStaff(compose(), "ADMIN", { ...answers(), [ASKS]: () => json({ items: [ASK, { ...ASK, id: "rc2", studentMembershipId: CHIRAG, studentName: "ZZ Chirag", className: null, changes: [{ field: "fatherName", from: "ZZ Ravi", to: "ZZ Ravindra" }] }], pending: 2 }) });
+    expect(await screen.findByText("Changes families have asked for")).toBeTruthy();
+    expect(calls().some((c) => c.line === `${ASKS}?status=PENDING`)).toBe(true);
+    expect(screen.getByText("2 waiting")).toBeTruthy();
+    expect(screen.getByText("A family cannot change a record itself. Approve to put their values on the record, or decline.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "ZZ Chirag, Father's name" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-record", params: { membershipId: CHIRAG } });
+    await fireEvent.press(screen.getByRole("button", { name: "ZZ Bela, ZZ 3B · Town or city, Category" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/pupil-record", params: { membershipId: BELA } });
+  });
+
+  it("draws no card when none wait, or when the list cannot be read", async () => {
+    await mountStaff(compose(), "PRINCIPAL", { ...answers(), [ASKS]: () => json({ items: [], pending: 0 }) });
+    await screen.findByText("ZZ Asha");
+    expect(screen.queryByText("Changes families have asked for")).toBeNull();
+    await mountStaff(compose(), "PRINCIPAL", { ...answers(), [ASKS]: refused("ZZ no list") });
+    await screen.findByText("ZZ Asha");
+    expect(screen.queryByText("Changes families have asked for")).toBeNull();
   });
 });
 
@@ -300,6 +326,67 @@ describe("one pupil's record for the office", () => {
     await fireEvent.press(screen.getAllByRole("button", { name: "Reject" }).at(-1)!);
     await waitFor(() => expect(calls().filter((c) => c.line === DECIDE)).toHaveLength(1));
     expect(calls().find((c) => c.line === DECIDE)!.body).toEqual({ approve: false, reason: "Not this one" });
+  });
+
+  const ASKED = { ...ASK, studentMembershipId: ASHA, studentName: "ZZ Asha", className: "ZZ 5A" };
+  const DECIDE_ASK = "POST /api/v1/office/record-changes/rc1/decide";
+
+  it("a family's ask waits above the form with its lines in words; Approve and update posts the yes, says so and reads the record again, which now holds the values", async () => {
+    let applied = false;
+    mockRouter.params = { membershipId: ASHA };
+    const { calls } = await mountStaff(
+      <ToastProvider>
+        <OfficePupilRecord />
+      </ToastProvider>,
+      "ADMIN",
+      {
+        [`GET ${PATH}/${ASHA}`]: () => json(applied ? { ...LOCKED, record: { ...RECORD, city: "Nashik", category: "OBC", updatedAt: "2026-09-21T05:00:00.000Z" }, change: null } : { ...LOCKED, change: ASKED }),
+        [DECIDE_ASK]: () => {
+          applied = true;
+          return json({ ...ASKED, status: "APPLIED", decidedByName: "ZZ Head", decidedAt: "2026-09-21T05:00:00.000Z", can: { decide: false, withdraw: false } });
+        },
+      },
+    );
+    expect(await screen.findByText("Changes families have asked for")).toBeTruthy();
+    expect(screen.getByText("Waiting")).toBeTruthy();
+    expect(screen.getByText(/^Asked by ZZ Parent on .*2026$/)).toBeTruthy();
+    expect(screen.getByText("Town or city: Pune → Nashik")).toBeTruthy();
+    expect(screen.getByText("Category: blank → OBC")).toBeTruthy();
+    expect(screen.getByText("Reason: We moved house in June")).toBeTruthy();
+    // The office decides; taking back is the family's.
+    expect(screen.queryByRole("button", { name: "Take it back" })).toBeNull();
+    expect(screen.getByLabelText("Town or city").props.value).toBe("Pune");
+    await fireEvent.press(screen.getByRole("button", { name: "Approve and update" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === DECIDE_ASK)).toHaveLength(1));
+    expect(calls().find((c) => c.line === DECIDE_ASK)!.body).toEqual({ approve: true });
+    expect(await screen.findByText("Record updated")).toBeTruthy();
+    await waitFor(() => expect(screen.getByLabelText("Town or city").props.value).toBe("Nashik"));
+    expect(within(screen.getByLabelText("Category")).getByRole("radio", { name: "OBC" })).toBeChecked();
+    expect(screen.queryByText("Changes families have asked for")).toBeNull();
+  });
+
+  it("Decline opens a box for a sentence the family will read, and posts the no with it; Cancel closes the box and a bare decline carries no reason", async () => {
+    const { calls } = await mount("PRINCIPAL", { ...LOCKED, change: ASKED }, { [DECIDE_ASK]: () => json({ ...ASKED, status: "DECLINED", declineReason: "The register says Pune", can: { decide: false, withdraw: false } }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Decline" }));
+    expect(calls().some((c) => c.line === DECIDE_ASK)).toBe(false);
+    expect(screen.getByText("ZZ Asha: Town or city, Category")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    expect(screen.queryByLabelText("A sentence for the family (optional)")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Decline" }));
+    await fireEvent.changeText(screen.getByLabelText("A sentence for the family (optional)"), " The register says Pune ");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Decline" }).at(-1)!);
+    await waitFor(() => expect(calls().filter((c) => c.line === DECIDE_ASK)).toHaveLength(1));
+    expect(calls().find((c) => c.line === DECIDE_ASK)!.body).toEqual({ approve: false, reason: "The register says Pune" });
+    expect(await screen.findByText("Request declined")).toBeTruthy();
+  });
+
+  it("a decline with nothing typed posts only the no, and a refused decision is an alert on the card", async () => {
+    const { calls } = await mount("ADMIN", { ...LOCKED, change: ASKED }, { [DECIDE_ASK]: () => json({ error: "ZZ already decided", code: "CONFLICT" }, 409) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Decline" }));
+    await fireEvent.press(screen.getAllByRole("button", { name: "Decline" }).at(-1)!);
+    await waitFor(() => expect(calls().filter((c) => c.line === DECIDE_ASK)).toHaveLength(1));
+    expect(calls().find((c) => c.line === DECIDE_ASK)!.body).toEqual({ approve: false });
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ already decided");
   });
 
   it("opened with no pupil, offers the list", async () => {

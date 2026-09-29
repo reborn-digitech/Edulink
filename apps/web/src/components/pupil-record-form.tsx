@@ -1,18 +1,19 @@
 "use client";
 
-import { CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
+import { CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, RECORD_CHANGE_FIELDS } from "@edulink/contracts";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { FloppyDiskIcon } from "@phosphor-icons/react";
-import { CWSN_TYPES, FAMILY_RECORD_FIELDS, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
+import { FloppyDiskIcon, PaperPlaneTiltIcon, PencilSimpleLineIcon } from "@phosphor-icons/react";
+import { CWSN_TYPES, RECORD_BLOOD_GROUPS, type PupilRecordField, type PupilRecordSave, type PupilRecordView, PUPIL_CATEGORIES, PUPIL_RELIGIONS } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
-import { DateField, SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
+import { LANGUAGE_KEY, NATIONALITY_KEY } from "@/components/pupil-record-words";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { CWSN_TYPE_NAMES } from "@/lib/filing-codes";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
+import { fileRecordChangeAction, savePupilRecordAction } from "@/app/(app)/parent/record/actions";
 
 /**
  * The pupil record as a form: the identity and admission details a
@@ -28,20 +29,17 @@ import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
  * certificate — coded answers picked from the portal's own lists, sent as
  * the same strings every other field is, a blank clearing the value.
  *
- * WHO WRITES WHICH FIELD: the office form (`office`) has every field. A
- * family's form — a guardian's or the pupil's own — types only
- * FAMILY_RECORD_FIELDS from the contracts; the admission number and date,
- * the grade admitted to, the previous school's TC, the category, caste,
- * gender and the BPL, EWS and impairment answers feed the leaving
- * certificate and the filings, so the family reads them under the office's
- * note and the form never sends them, as it never sent the roll number or
- * the PEN. The server drops them from a family's body regardless.
+ * WHO WRITES: the office form (`office`) has every field and saves them.
+ * A family's form — a guardian's or the pupil's own — is READ-ONLY until
+ * "Ask for a change" is pressed; then every field but the PEN, the roll
+ * number and "repeating" can be typed in, a reason is asked for, and the
+ * form sends the office only the fields that differ from the record. The
+ * record itself does not change until the office approves
+ * (src/lib/record-changes.ts); the server refuses a family's save outright.
  */
 type FieldGroup = { fields: PupilRecordField[] };
-const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
+const ASKABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(RECORD_CHANGE_FIELDS);
 
-const LANGUAGE_KEY = { ASSAMESE: "pupilRecord.langAssamese", BENGALI: "pupilRecord.langBengali", BODO: "pupilRecord.langBodo", DOGRI: "pupilRecord.langDogri", ENGLISH: "pupilRecord.langEnglish", GUJARATI: "pupilRecord.langGujarati", HINDI: "pupilRecord.langHindi", KANNADA: "pupilRecord.langKannada", KASHMIRI: "pupilRecord.langKashmiri", KONKANI: "pupilRecord.langKonkani", MAITHILI: "pupilRecord.langMaithili", MALAYALAM: "pupilRecord.langMalayalam", MANIPURI: "pupilRecord.langManipuri", MARATHI: "pupilRecord.langMarathi", NEPALI: "pupilRecord.langNepali", ODIA: "pupilRecord.langOdia", PUNJABI: "pupilRecord.langPunjabi", SANSKRIT: "pupilRecord.langSanskrit", SANTALI: "pupilRecord.langSantali", SINDHI: "pupilRecord.langSindhi", TAMIL: "pupilRecord.langTamil", TELUGU: "pupilRecord.langTelugu", URDU: "pupilRecord.langUrdu", OTHER: "pupilRecord.langOther" } as const satisfies Record<MotherTongue, TranslationKey>;
-const NATIONALITY_KEY = { INDIAN: "pupilRecord.natIndian", NEPALI: "pupilRecord.natNepali", BHUTANESE: "pupilRecord.natBhutanese", BANGLADESHI: "pupilRecord.natBangladeshi", SRI_LANKAN: "pupilRecord.natSriLankan", OTHER: "pupilRecord.natOther" } as const satisfies Record<Nationality, TranslationKey>;
 
 export function PupilRecordForm({ view, required, optional, filing = [], admin = false, office = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean; office?: boolean }) {
   const t = useT();
@@ -54,6 +52,10 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     return Object.fromEntries(all.map((f) => [f, r?.[f] ?? ""])) as Record<PupilRecordField, string>;
   });
   const [error, setError] = useState<string | null>(null);
+  // The family's form: read first, and typed in only once they have said they want something changed.
+  const [asking, setAsking] = useState(false);
+  const [reason, setReason] = useState("");
+  const initial = (f: PupilRecordField) => view.record?.[f] ?? "";
 
   const isRequired = (f: PupilRecordField) => required.includes(f);
   const groups: FieldGroup[] = [
@@ -86,14 +88,13 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
   function submit(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
+    if (!office) return ask();
     const input: PupilRecordSave = {};
     for (const f of all) {
       // The PEN is the admin's to enter once; after that it changes only
       // through a correction the head and a guardian approve, so a locked
       // number is not sent back at all.
       if (f === "penNumber" && !view.penEditable) continue;
-      // The office's fields — the roll number among them — a family's form shows and never sends.
-      if (!office && !FAMILY_WRITABLE.has(f)) continue;
       const v = values[f].trim();
       if (f === "admissionDate") input.admissionDate = v || null;
       else if (f === "previousSchoolTcDate") input.previousSchoolTcDate = v || null;
@@ -110,7 +111,44 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     });
   }
 
-  const readOnly = !view.canEdit;
+  /** The family's ask: only what differs from the record, and why. */
+  function ask() {
+    const changes: Record<string, string | null> = {};
+    for (const f of all) {
+      if (!ASKABLE.has(f)) continue;
+      const v = values[f].trim();
+      if (v === initial(f).trim()) continue;
+      changes[f] = (f === "admissionDate" || f === "previousSchoolTcDate") && !v ? null : v;
+    }
+    if (Object.keys(changes).length === 0) {
+      setError(t("recordChanges.nothingChanges"));
+      return;
+    }
+    if (!reason.trim()) {
+      setError(t("common.checkTheForm"));
+      return;
+    }
+    startTransition(async () => {
+      const result = await fileRecordChangeAction(view.studentMembershipId, { changes, reason: reason.trim() });
+      if (!result.ok) {
+        setError(actionError(t, result, "common.tryAgain"));
+        return;
+      }
+      toast({ tone: "ok", title: t("recordChanges.sent") });
+      setAsking(false);
+      setReason("");
+      router.refresh();
+    });
+  }
+
+  function stopAsking() {
+    setAsking(false);
+    setError(null);
+    setReason("");
+    setValues(Object.fromEntries(all.map((f) => [f, initial(f)])) as Record<PupilRecordField, string>);
+  }
+
+  const readOnly = office ? !view.canEdit : !asking;
 
   const field = (f: PupilRecordField, hint: string | undefined) => {
     const label = t(`pupilRecord.${f}` as TranslationKey);
@@ -120,10 +158,10 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
       return <TextField key={f} label={label} hint={locked} value={values.penNumber || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
     }
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setValues((v) => ({ ...v, [f]: e.target.value }));
-    if (!office && !FAMILY_WRITABLE.has(f)) {
-      // The office's: shown as the word the office picked (or the value as typed), never typed here.
+    if (!office && (!asking || !ASKABLE.has(f))) {
+      // Read, not typed: the whole record until the family asks for a change, and the enrolment's two fields always.
       const shown = choicesFor[f]?.find((c) => c.value === values[f] && c.value !== "")?.text ?? values[f];
-      return <TextField key={f} label={label} hint={t("pupilRecord.rollNumberOffice")} value={shown || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
+      return <TextField key={f} label={label} hint={asking ? t("pupilRecord.rollNumberOffice") : undefined} value={shown || "—"} readOnly disabled autoComplete="off" data-testid={`record-${f}`} data-locked="true" />;
     }
     if (f === "admissionDate" || f === "previousSchoolTcDate") {
       return <DateField key={f} label={label} hint={hint} required={isRequired(f)} value={values[f]} disabled={readOnly} onChange={onChange} data-testid={`record-${f}`} />;
@@ -186,11 +224,38 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
         </fieldset>
       )}
 
-      {!readOnly && (
+      {office && !readOnly && (
         <div className="flex flex-wrap items-center gap-2">
           <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="record-save">
             {t("pupilRecord.save")}
           </Button>
+        </div>
+      )}
+
+      {!office && view.canRequest && !asking && (
+        <div className="space-y-2">
+          <p className="text-sm leading-relaxed text-fg-muted">{t("recordChanges.readOnlyNote")}</p>
+          <Button type="button" variant="secondary" icon={<PencilSimpleLineIcon weight="bold" />} onClick={() => setAsking(true)} data-testid="record-ask">
+            {t("recordChanges.askForChange")}
+          </Button>
+        </div>
+      )}
+
+      {!office && asking && (
+        <div className="space-y-3 rounded-[--radius-md] border border-border bg-surface-muted p-4" data-testid="record-ask-box">
+          <p className="text-sm leading-relaxed text-fg-muted">
+            {t("recordChanges.formIntro")}
+            {view.change ? ` ${t("recordChanges.replaceNote")}` : ""}
+          </p>
+          <TextAreaField label={t("recordChanges.reasonLabel")} hint={t("recordChanges.reasonHint")} required value={reason} maxLength={400} rows={2} onChange={(e) => setReason(e.target.value)} data-testid="record-ask-reason" />
+          <div className="flex flex-wrap items-center gap-2">
+            <Button type="submit" loading={pending} icon={<PaperPlaneTiltIcon weight="bold" />} data-testid="record-ask-send">
+              {t("recordChanges.send")}
+            </Button>
+            <Button type="button" variant="secondary" disabled={pending} onClick={stopAsking}>
+              {t("recordChanges.stopAsking")}
+            </Button>
+          </div>
         </div>
       )}
     </form>

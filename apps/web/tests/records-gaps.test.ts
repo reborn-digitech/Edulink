@@ -11,7 +11,8 @@ import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
-import { POST as familyRecordPost } from "@/app/api/v1/family/record/route";
+import { POST as familyChangePost } from "@/app/api/v1/family/record/changes/route";
+import { POST as changeDecidePost } from "@/app/api/v1/office/record-changes/[requestId]/decide/route";
 import { udiseStudentsExport, udiseTeachersExport } from "@/lib/filings";
 import { enrolStudents, removeFromCohort } from "@/lib/cohort";
 import { setStaffRecord, staffRecordFor } from "@/lib/staff-records";
@@ -35,6 +36,17 @@ let otherClassId = "";
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
+/** How a family's value reaches the record since 2026-09-29: they ask, and the office approves. */
+async function askAndApprove(who: "PARENT", query: string, studentMembershipId: string, changes: Record<string, string>) {
+  await as(who);
+  const asked = await familyChangePost(json(`/api/v1/family/record/changes${query}`, { changes, reason: "ZZ test" }));
+  expect(asked.status).toBe(200);
+  const { id } = (await asked.json()) as { id: string };
+  await as("ADMIN");
+  expect((await changeDecidePost(json(`/api/v1/office/record-changes/${id}/decide`, { approve: true }), params({ requestId: id }))).status).toBe(200);
+  return (await recordGet(get(`/api/v1/office/pupil-records/${studentMembershipId}`), params({ membershipId: studentMembershipId }))).json();
+}
+
 async function as(who: "ADMIN" | "PARENT" | null) {
   __resetCookies();
   if (who === "ADMIN") await createSession(adminUserId, { schoolId, role: "ADMIN" });
@@ -99,12 +111,12 @@ describe("⚠ the family's contact number", () => {
     expect((await (await save("")).json()).record.guardianPhone).toBeNull();
   });
 
-  it("the family writes their own, and the UDISE+ sheet prints the guardian's proved number first and the record's when there is none", async () => {
+  it("the family asks for their own and the office approves it, and the UDISE+ sheet prints the guardian's proved number first and the record's when there is none", async () => {
     const { parentsForTest } = await import("@/lib/filings");
+    // A number that is not one is refused when it is asked, not when the office comes to approve it.
     await as("PARENT");
-    const res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { guardianPhone: "+91 91234 56789" }));
-    expect(res.status).toBe(200);
-    expect((await res.json()).record.guardianPhone).toBe("+919123456789");
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { guardianPhone: "12" }, reason: "ZZ test" }))).status).toBe(403);
+    expect((await askAndApprove("PARENT", `?childId=${pupil}`, pupil, { guardianPhone: "+91 91234 56789" })).record.guardianPhone).toBe("+919123456789");
 
     const row = { user: { phone: null }, pupilRecord: { fatherName: null, motherName: null, guardianPhone: "+919123456789" } };
     expect(parentsForTest({ ...row, guardianships: [] }).phone).toBe("+919123456789");
@@ -171,7 +183,7 @@ describe("⚠ names from a list: the mother tongue, the nationality, the PIN", (
 });
 
 describe("⚠ the answers the filing used to guess", () => {
-  it("the office says whether the pupil came in under the RTE quota, repeats the class, and has no impairment; a family's body naming them changes nothing", async () => {
+  it("the office says whether the pupil came in under the RTE quota, repeats the class, and has no impairment; a family's ask about the enrolment's answer is refused", async () => {
     await as("ADMIN");
     const save = (body: Record<string, string>) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
     let view = await (await save({ rte: "yes", repeating: "yes", cwsnType: "NONE" })).json();
@@ -180,9 +192,15 @@ describe("⚠ the answers the filing used to guess", () => {
     expect((await db.enrollment.findFirstOrThrow({ where: { studentMembershipId: pupil, status: "ACTIVE" } })).repeating).toBe(true);
     expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil } })).rte).toBe(true);
 
+    // "Repeating" is the enrolment's and not the record's: an ask naming it is refused whole. The rest waits for the office and changes nothing until it approves.
     await as("PARENT");
-    view = await (await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { rte: "no", repeating: "no", cwsnType: "", motherOccupation: "Nurse" }))).json();
-    expect(view.record).toMatchObject({ rte: "yes", repeating: "yes", cwsnType: "NONE", motherOccupation: "Nurse" });
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { repeating: "no", motherOccupation: "Nurse" }, reason: "ZZ test" }))).status).toBe(422);
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { rte: "no", motherOccupation: "Nurse" }, reason: "ZZ test" }))).status).toBe(200);
+    await as("ADMIN");
+    view = await (await recordGet(get(`/api/v1/office/pupil-records/${pupil}`), params({ membershipId: pupil }))).json();
+    expect(view.record).toMatchObject({ rte: "yes", repeating: "yes", cwsnType: "NONE" });
+    expect(view.change.changes.map((c: { field: string }) => c.field).sort()).toEqual(["motherOccupation", "rte"]);
+    await db.recordChangeRequest.deleteMany({ where: { studentMembershipId: pupil } });
 
     await as("ADMIN");
     // Taken back: a blank is "nobody has asked", and the filing waits for an answer.
@@ -194,7 +212,7 @@ describe("⚠ the answers the filing used to guess", () => {
 });
 
 describe("the record's new fields and coded choices", () => {
-  it("the office saves the TC, the household, coded category and religion and the roll number; a family cannot set the roll number; an uncodable category counts as missing", async () => {
+  it("the office saves the TC, the household, coded category and religion and the roll number; a family cannot ask for the roll number; an uncodable category counts as missing", async () => {
     await as("ADMIN");
     const body = { fatherName: "Rahul Rane", motherName: "Rina Rane", category: "VJ", religion: "OTHER", previousSchoolTcNumber: "TC/2025/0042", previousSchoolTcDate: "2025-04-30", fatherOccupation: "Farmer", motherOccupation: "Tailor", annualIncome: "240000", rollNumber: "7" };
     let res = await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
@@ -205,11 +223,10 @@ describe("the record's new fields and coded choices", () => {
     expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil }, select: { annualIncome: true } })).annualIncome).toBe(240000);
     // A value off the list is refused at the door.
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { category: "Maratha" }), params({ membershipId: pupil }))).status).toBe(422);
-    // The family's form never sends the roll number; a body that does is ignored, and the rest is saved.
+    // The roll number is not the family's to ask about; the rest of what they ask reaches the record when the office approves.
     await as("PARENT");
-    res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { ...body, rollNumber: "9", motherOccupation: "Nurse" }));
-    expect(res.status).toBe(200);
-    expect((await res.json()).record).toMatchObject({ rollNumber: "7", motherOccupation: "Nurse" });
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { rollNumber: "9", motherOccupation: "Nurse" }, reason: "ZZ test" }))).status).toBe(422);
+    expect((await askAndApprove("PARENT", `?childId=${pupil}`, pupil, { ...body, rollNumber: undefined as unknown as string, motherOccupation: "Nurse" })).record).toMatchObject({ rollNumber: "7", motherOccupation: "Nurse" });
     // A category typed before the codes still shows; one the sheet can code ("General") passes, one it cannot ("Maratha") counts as blank.
     await db.pupilRecord.update({ where: { studentMembershipId: pupil }, data: { category: "General" } });
     await as("ADMIN");

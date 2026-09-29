@@ -13,7 +13,7 @@ import { useTheme } from "@/lib/theme";
 import { OfficeAdmissionsCard } from "./admissions";
 import { CertificateRequestsCard } from "./certificate-issue";
 import { FilingsCard } from "./filings";
-import { OfficePenChangesCard } from "../shared/pupil-record";
+import { OfficePenChangesCard, OfficeRecordChangesCard } from "../shared/pupil-record";
 import { formatDateKey, pct } from "./shared";
 
 /**
@@ -121,6 +121,7 @@ function Overview({ d }: { d: AdminOverview }) {
       <OfficeAdmissionsCard />
       <CertificateRequestsCard />
       {/* The PEN corrections the office has proposed and the head or a guardian has yet to settle. */}
+      <OfficeRecordChangesCard />
       <OfficePenChangesCard />
       {/* While the filing identity has a blank or a pupil lacks a UDISE+ field: the door to the filings; the card asks for the view itself. */}
       <FilingsCard />

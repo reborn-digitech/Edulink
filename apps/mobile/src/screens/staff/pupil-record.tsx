@@ -8,14 +8,17 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { PenChangeSection, PupilRecordForm } from "../shared/pupil-record";
+import { PenChangeSection, PupilRecordForm, RecordChangeCard } from "../shared/pupil-record";
 import { must, Refusal } from "./shared";
 
 /**
  * One pupil's record for the office — the web's /admin/pupil-records/[id]:
- * the same form the family has, with the office as the writer, and under it
- * the door to issuing a certificate from what the record now holds. Reached
- * from the records list with the membership id in the route.
+ * the form the family reads, with the office as the writer, and under it
+ * the door to issuing a certificate from what the record now holds. Above
+ * it, while a family's ask waits, the ask itself with the two decisions:
+ * approving puts their values on the record, and the form — keyed by when
+ * the record last changed — then shows them. Reached from the records list
+ * with the membership id in the route.
  */
 export function OfficePupilRecord() {
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
@@ -54,6 +57,7 @@ export function OfficePupilRecord() {
     <Screen title={d ? d.studentName : t("pupilRecord.title")} description={d ? [d.className, d.studentCode].filter(Boolean).join(" · ") || undefined : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {d?.change ? <RecordChangeCard key={d.change.id} change={d.change} recordKey={key} /> : null}
       {d ? (
         <PupilRecordForm
           key={d.record?.updatedAt ?? "new"}

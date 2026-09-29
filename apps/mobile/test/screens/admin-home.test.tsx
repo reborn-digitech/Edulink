@@ -128,6 +128,21 @@ describe("PEN corrections on the office's overview", () => {
   });
 });
 
+const RECORD_CHANGES = "GET /api/v1/office/record-changes";
+describe("families' asks on the office's overview", () => {
+  it("while one waits, counts it and opens the pupil records, asking only for the ones that wait; nothing when none does", async () => {
+    const { calls } = await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [RECORD_CHANGES]: () => json({ items: [], pending: 2 }) });
+    expect(await screen.findByText("Changes families have asked for")).toBeTruthy();
+    expect(calls().some((c) => c.line === `${RECORD_CHANGES}?status=PENDING`)).toBe(true);
+    await fireEvent.press(screen.getByRole("button", { name: "2 waiting, A family cannot change a record itself. Approve to put their values on the record, or decline." }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/pupil-records");
+    mockRouter.push.mockClear();
+    await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [RECORD_CHANGES]: () => json({ items: [], pending: 0 }) });
+    await screen.findByText("Lessons without a teacher");
+    expect(screen.queryByText("Changes families have asked for")).toBeNull();
+  });
+});
+
 describe("filings on the office's overview", () => {
   it("while the identity has a blank or a pupil lacks a field, names the gap and opens the filings", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW), [FILINGS]: () => json(filings(["udiseCode"], 40)) });

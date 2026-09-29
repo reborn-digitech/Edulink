@@ -56469,6 +56469,125 @@
                     "canEdit": {
                       "type": "boolean"
                     },
+                    "canRequest": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "change": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "byPupil": {
+                          "type": "boolean"
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "DECLINED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "changes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "field": {
+                                "$ref": "#/properties/missing/items"
+                              },
+                              "from": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "to": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "field",
+                              "from",
+                              "to"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "declineReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedByName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "requestedByName",
+                        "byPupil",
+                        "reason",
+                        "status",
+                        "changes",
+                        "declineReason",
+                        "decidedByName",
+                        "decidedAt",
+                        "can",
+                        "createdAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true,
+                      "default": null
+                    },
                     "penEditable": {
                       "type": "boolean"
                     },
@@ -56980,6 +57099,125 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "canRequest": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "change": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "byPupil": {
+                          "type": "boolean"
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "DECLINED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "changes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "field": {
+                                "$ref": "#/properties/missing/items"
+                              },
+                              "from": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "to": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "field",
+                              "from",
+                              "to"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "declineReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedByName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "requestedByName",
+                        "byPupil",
+                        "reason",
+                        "status",
+                        "changes",
+                        "declineReason",
+                        "decidedByName",
+                        "decidedAt",
+                        "can",
+                        "createdAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true,
+                      "default": null
                     },
                     "penEditable": {
                       "type": "boolean"
@@ -58777,7 +59015,7 @@
     },
     "/api/v1/family/record": {
       "get": {
-        "summary": "The pupil record for the pupil, or for a child (?childId=; the first child when omitted), with what is still blank",
+        "summary": "The pupil record for the pupil, or for a child (?childId=; the first child when omitted), with what is still blank and the ask that waits on it; read-only for the family",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -59073,6 +59311,125 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "canRequest": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "change": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "studentName": {
+                          "type": "string"
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "requestedByName": {
+                          "type": "string"
+                        },
+                        "byPupil": {
+                          "type": "boolean"
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PENDING",
+                            "APPLIED",
+                            "DECLINED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "changes": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "field": {
+                                "$ref": "#/properties/missing/items"
+                              },
+                              "from": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "to": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "field",
+                              "from",
+                              "to"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "declineReason": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedByName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "decidedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/requestedAt"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "can": {
+                          "type": "object",
+                          "properties": {
+                            "decide": {
+                              "type": "boolean"
+                            },
+                            "withdraw": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "decide",
+                            "withdraw"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "createdAt": {
+                          "$ref": "#/properties/record/properties/requestedAt"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "studentMembershipId",
+                        "studentName",
+                        "className",
+                        "requestedByName",
+                        "byPupil",
+                        "reason",
+                        "status",
+                        "changes",
+                        "declineReason",
+                        "decidedByName",
+                        "decidedAt",
+                        "can",
+                        "createdAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true,
+                      "default": null
                     },
                     "penEditable": {
                       "type": "boolean"
@@ -59294,9 +59651,11 @@
             }
           }
         }
-      },
-      "post": {
-        "summary": "The family fills the record (?childId= for a guardian); a blank clears the field",
+      }
+    },
+    "/api/v1/family/record/changes": {
+      "get": {
+        "summary": "What the family has asked the office to change on the record (?childId= for a guardian), the waiting ask first",
         "description": "Roles: STUDENT, PARENT.",
         "security": [
           {
@@ -59315,440 +59674,162 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "studentMembershipId": {
-                      "type": "string"
-                    },
-                    "studentName": {
-                      "type": "string"
-                    },
-                    "className": {
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "studentCode": {
-                      "type": "string",
-                      "nullable": true
-                    },
-                    "birthdate": {
-                      "type": "string",
-                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-                      "nullable": true
-                    },
-                    "record": {
-                      "type": "object",
-                      "properties": {
-                        "fatherName": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "motherName": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "placeOfBirth": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "nationality": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "religion": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "caste": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "category": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "motherTongue": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "addressLine": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "city": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "postalCode": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "admissionNumber": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "admissionDate": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/birthdate"
-                            }
-                          ],
-                          "nullable": true
-                        },
-                        "admittedToGrade": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "previousSchool": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "penNumber": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "gender": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "nameLocal": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "fatherNameLocal": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "motherNameLocal": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "bpl": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "ews": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "cwsnType": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "bloodGroup": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "previousSchoolTcNumber": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "previousSchoolTcDate": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/birthdate"
-                            }
-                          ],
-                          "nullable": true,
-                          "default": null
-                        },
-                        "fatherOccupation": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "motherOccupation": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "annualIncome": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "guardianPhone": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "rte": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "repeating": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "rollNumber": {
-                          "type": "string",
-                          "nullable": true,
-                          "default": null
-                        },
-                        "requestedAt": {
-                          "type": "string",
-                          "format": "date-time",
-                          "nullable": true
-                        },
-                        "familyFilledAt": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/record/properties/requestedAt"
-                            }
-                          ],
-                          "nullable": true
-                        },
-                        "updatedAt": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/record/properties/requestedAt"
-                            }
-                          ],
-                          "nullable": true
-                        }
-                      },
-                      "required": [
-                        "fatherName",
-                        "motherName",
-                        "placeOfBirth",
-                        "nationality",
-                        "religion",
-                        "caste",
-                        "category",
-                        "motherTongue",
-                        "addressLine",
-                        "city",
-                        "postalCode",
-                        "admissionNumber",
-                        "admissionDate",
-                        "admittedToGrade",
-                        "previousSchool",
-                        "penNumber",
-                        "gender",
-                        "nameLocal",
-                        "fatherNameLocal",
-                        "motherNameLocal",
-                        "bpl",
-                        "ews",
-                        "cwsnType",
-                        "bloodGroup",
-                        "requestedAt",
-                        "familyFilledAt",
-                        "updatedAt"
-                      ],
-                      "additionalProperties": false,
-                      "nullable": true
-                    },
-                    "missing": {
+                    "items": {
                       "type": "array",
                       "items": {
-                        "type": "string",
-                        "enum": [
-                          "fatherName",
-                          "motherName",
-                          "placeOfBirth",
-                          "nationality",
-                          "religion",
-                          "caste",
-                          "category",
-                          "motherTongue",
-                          "addressLine",
-                          "city",
-                          "postalCode",
-                          "admissionNumber",
-                          "admissionDate",
-                          "admittedToGrade",
-                          "previousSchool",
-                          "penNumber",
-                          "gender",
-                          "nameLocal",
-                          "fatherNameLocal",
-                          "motherNameLocal",
-                          "bpl",
-                          "ews",
-                          "cwsnType",
-                          "bloodGroup",
-                          "previousSchoolTcNumber",
-                          "previousSchoolTcDate",
-                          "fatherOccupation",
-                          "motherOccupation",
-                          "annualIncome",
-                          "rollNumber",
-                          "guardianPhone",
-                          "rte",
-                          "repeating"
-                        ]
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "byPupil": {
+                            "type": "boolean"
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPLIED",
+                              "DECLINED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "changes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "field": {
+                                  "type": "string",
+                                  "enum": [
+                                    "fatherName",
+                                    "motherName",
+                                    "placeOfBirth",
+                                    "nationality",
+                                    "religion",
+                                    "caste",
+                                    "category",
+                                    "motherTongue",
+                                    "addressLine",
+                                    "city",
+                                    "postalCode",
+                                    "admissionNumber",
+                                    "admissionDate",
+                                    "admittedToGrade",
+                                    "previousSchool",
+                                    "penNumber",
+                                    "gender",
+                                    "nameLocal",
+                                    "fatherNameLocal",
+                                    "motherNameLocal",
+                                    "bpl",
+                                    "ews",
+                                    "cwsnType",
+                                    "bloodGroup",
+                                    "previousSchoolTcNumber",
+                                    "previousSchoolTcDate",
+                                    "fatherOccupation",
+                                    "motherOccupation",
+                                    "annualIncome",
+                                    "rollNumber",
+                                    "guardianPhone",
+                                    "rte",
+                                    "repeating"
+                                  ]
+                                },
+                                "from": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "to": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "field",
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "declineReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              },
+                              "withdraw": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide",
+                              "withdraw"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/decidedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "requestedByName",
+                          "byPupil",
+                          "reason",
+                          "status",
+                          "changes",
+                          "declineReason",
+                          "decidedByName",
+                          "decidedAt",
+                          "can",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
                       }
                     },
-                    "missingForFiling": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/properties/missing/items"
-                      }
-                    },
-                    "complete": {
-                      "type": "boolean"
-                    },
-                    "canEdit": {
-                      "type": "boolean"
-                    },
-                    "penEditable": {
-                      "type": "boolean"
-                    },
-                    "penChange": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "studentMembershipId": {
-                          "type": "string"
-                        },
-                        "studentName": {
-                          "type": "string"
-                        },
-                        "className": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "fromPen": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "toPen": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "reason": {
-                          "type": "string"
-                        },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "PENDING",
-                            "APPLIED",
-                            "REJECTED",
-                            "WITHDRAWN"
-                          ]
-                        },
-                        "requestedByName": {
-                          "type": "string"
-                        },
-                        "principal": {
-                          "type": "object",
-                          "properties": {
-                            "decided": {
-                              "type": "boolean"
-                            },
-                            "approved": {
-                              "type": "boolean",
-                              "nullable": true
-                            },
-                            "by": {
-                              "type": "string",
-                              "nullable": true
-                            }
-                          },
-                          "required": [
-                            "decided",
-                            "approved",
-                            "by"
-                          ],
-                          "additionalProperties": false
-                        },
-                        "guardian": {
-                          "type": "object",
-                          "properties": {
-                            "decided": {
-                              "type": "boolean"
-                            },
-                            "approved": {
-                              "type": "boolean",
-                              "nullable": true
-                            },
-                            "by": {
-                              "type": "string",
-                              "nullable": true
-                            },
-                            "waived": {
-                              "type": "boolean"
-                            }
-                          },
-                          "required": [
-                            "decided",
-                            "approved",
-                            "by",
-                            "waived"
-                          ],
-                          "additionalProperties": false
-                        },
-                        "decisionReason": {
-                          "type": "string",
-                          "nullable": true
-                        },
-                        "can": {
-                          "type": "object",
-                          "properties": {
-                            "decide": {
-                              "type": "boolean"
-                            },
-                            "withdraw": {
-                              "type": "boolean"
-                            }
-                          },
-                          "required": [
-                            "decide",
-                            "withdraw"
-                          ],
-                          "additionalProperties": false
-                        },
-                        "createdAt": {
-                          "$ref": "#/properties/record/properties/requestedAt"
-                        },
-                        "appliedAt": {
-                          "allOf": [
-                            {
-                              "$ref": "#/properties/record/properties/requestedAt"
-                            }
-                          ],
-                          "nullable": true
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "studentMembershipId",
-                        "studentName",
-                        "className",
-                        "fromPen",
-                        "toPen",
-                        "reason",
-                        "status",
-                        "requestedByName",
-                        "principal",
-                        "guardian",
-                        "decisionReason",
-                        "can",
-                        "createdAt",
-                        "appliedAt"
-                      ],
-                      "additionalProperties": false,
-                      "nullable": true
+                    "pending": {
+                      "type": "integer",
+                      "minimum": 0
                     }
                   },
                   "required": [
-                    "studentMembershipId",
-                    "studentName",
-                    "className",
-                    "studentCode",
-                    "birthdate",
-                    "record",
-                    "missing",
-                    "missingForFiling",
-                    "complete",
-                    "canEdit",
-                    "penEditable",
-                    "penChange"
+                    "items",
+                    "pending"
                   ],
                   "additionalProperties": false
                 }
@@ -59803,240 +59884,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "fatherName": {
+                  "childId": {
                     "type": "string",
-                    "maxLength": 120
-                  },
-                  "motherName": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "placeOfBirth": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "nationality": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "religion": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "HINDU",
-                          "MUSLIM",
-                          "CHRISTIAN",
-                          "SIKH",
-                          "BUDDHIST",
-                          "PARSI",
-                          "JAIN",
-                          "OTHER"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          ""
-                        ]
-                      }
-                    ]
-                  },
-                  "caste": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "category": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "GENERAL",
-                          "SC",
-                          "ST",
-                          "OBC",
-                          "VJ",
-                          "NT",
-                          "SBC"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          ""
-                        ]
-                      }
-                    ]
-                  },
-                  "motherTongue": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "addressLine": {
-                    "type": "string",
-                    "maxLength": 200
-                  },
-                  "city": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "postalCode": {
-                    "type": "string",
-                    "maxLength": 12
-                  },
-                  "admissionNumber": {
-                    "type": "string",
-                    "maxLength": 40
-                  },
-                  "admissionDate": {
-                    "type": "string",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
-                    "nullable": true
-                  },
-                  "admittedToGrade": {
-                    "type": "string",
-                    "maxLength": 20
-                  },
-                  "previousSchool": {
-                    "type": "string",
-                    "maxLength": 160
-                  },
-                  "penNumber": {
-                    "type": "string",
-                    "maxLength": 40
-                  },
-                  "gender": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "M",
-                          "F",
-                          "T"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          ""
-                        ]
-                      }
-                    ]
-                  },
-                  "nameLocal": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "fatherNameLocal": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "motherNameLocal": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "bpl": {
-                    "type": "string",
-                    "enum": [
-                      "yes",
-                      "no",
-                      ""
-                    ]
-                  },
-                  "ews": {
-                    "$ref": "#/properties/bpl"
-                  },
-                  "cwsnType": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "1",
-                          "2",
-                          "3",
-                          "4",
-                          "5",
-                          "6",
-                          "7",
-                          "8",
-                          "9",
-                          "10",
-                          "11",
-                          "12",
-                          "13",
-                          "14",
-                          "15",
-                          "16",
-                          "17",
-                          "18",
-                          "19",
-                          "20",
-                          "21"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          "NONE"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          ""
-                        ]
-                      }
-                    ]
-                  },
-                  "rte": {
-                    "$ref": "#/properties/bpl"
-                  },
-                  "repeating": {
-                    "$ref": "#/properties/bpl"
-                  },
-                  "bloodGroup": {
-                    "anyOf": [
-                      {
-                        "type": "string",
-                        "enum": [
-                          "A+",
-                          "A-",
-                          "B+",
-                          "B-",
-                          "AB+",
-                          "AB-",
-                          "O+",
-                          "O-"
-                        ]
-                      },
-                      {
-                        "type": "string",
-                        "enum": [
-                          ""
-                        ]
-                      }
-                    ]
-                  },
-                  "previousSchoolTcNumber": {
-                    "type": "string",
-                    "maxLength": 40
-                  },
-                  "previousSchoolTcDate": {
-                    "allOf": [
-                      {
-                        "$ref": "#/properties/admissionDate"
-                      }
-                    ],
-                    "nullable": true
-                  },
-                  "fatherOccupation": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "motherOccupation": {
-                    "$ref": "#/properties/fatherName"
-                  },
-                  "annualIncome": {
-                    "type": "string",
-                    "pattern": "^\\d{0,9}$"
-                  },
-                  "guardianPhone": {
-                    "type": "string",
-                    "maxLength": 24
-                  },
-                  "rollNumber": {
-                    "type": "string",
-                    "pattern": "^\\d{0,4}$"
+                    "pattern": "^c[a-z0-9]{20,}$"
                   }
                 },
                 "additionalProperties": false
@@ -60044,6 +59894,1174 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Ask the office to change the record: the proposed values and a reason (?childId= for a guardian). The family writes nothing itself; only the fields that differ are kept; asking again while one waits replaces it",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "byPupil": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "DECLINED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "changes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "enum": [
+                              "fatherName",
+                              "motherName",
+                              "placeOfBirth",
+                              "nationality",
+                              "religion",
+                              "caste",
+                              "category",
+                              "motherTongue",
+                              "addressLine",
+                              "city",
+                              "postalCode",
+                              "admissionNumber",
+                              "admissionDate",
+                              "admittedToGrade",
+                              "previousSchool",
+                              "penNumber",
+                              "gender",
+                              "nameLocal",
+                              "fatherNameLocal",
+                              "motherNameLocal",
+                              "bpl",
+                              "ews",
+                              "cwsnType",
+                              "bloodGroup",
+                              "previousSchoolTcNumber",
+                              "previousSchoolTcDate",
+                              "fatherOccupation",
+                              "motherOccupation",
+                              "annualIncome",
+                              "rollNumber",
+                              "guardianPhone",
+                              "rte",
+                              "repeating"
+                            ]
+                          },
+                          "from": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "to": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "from",
+                          "to"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "requestedByName",
+                    "byPupil",
+                    "reason",
+                    "status",
+                    "changes",
+                    "declineReason",
+                    "decidedByName",
+                    "decidedAt",
+                    "can",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "changes": {
+                    "type": "object",
+                    "properties": {
+                      "fatherName": {
+                        "type": "string",
+                        "maxLength": 120
+                      },
+                      "motherName": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "placeOfBirth": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "nationality": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "religion": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "HINDU",
+                              "MUSLIM",
+                              "CHRISTIAN",
+                              "SIKH",
+                              "BUDDHIST",
+                              "PARSI",
+                              "JAIN",
+                              "OTHER"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "caste": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "category": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "GENERAL",
+                              "SC",
+                              "ST",
+                              "OBC",
+                              "VJ",
+                              "NT",
+                              "SBC"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "motherTongue": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "addressLine": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "city": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "postalCode": {
+                        "type": "string",
+                        "maxLength": 12
+                      },
+                      "admissionNumber": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "admissionDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                        "nullable": true
+                      },
+                      "admittedToGrade": {
+                        "type": "string",
+                        "maxLength": 20
+                      },
+                      "previousSchool": {
+                        "type": "string",
+                        "maxLength": 160
+                      },
+                      "gender": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "M",
+                              "F",
+                              "T"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "nameLocal": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "fatherNameLocal": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "motherNameLocal": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "bpl": {
+                        "type": "string",
+                        "enum": [
+                          "yes",
+                          "no",
+                          ""
+                        ]
+                      },
+                      "ews": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "cwsnType": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "1",
+                              "2",
+                              "3",
+                              "4",
+                              "5",
+                              "6",
+                              "7",
+                              "8",
+                              "9",
+                              "10",
+                              "11",
+                              "12",
+                              "13",
+                              "14",
+                              "15",
+                              "16",
+                              "17",
+                              "18",
+                              "19",
+                              "20",
+                              "21"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "NONE"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "rte": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "bloodGroup": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "A+",
+                              "A-",
+                              "B+",
+                              "B-",
+                              "AB+",
+                              "AB-",
+                              "O+",
+                              "O-"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "previousSchoolTcNumber": {
+                        "type": "string",
+                        "maxLength": 40
+                      },
+                      "previousSchoolTcDate": {
+                        "allOf": [
+                          {
+                            "$ref": "#/properties/changes/properties/admissionDate"
+                          }
+                        ],
+                        "nullable": true
+                      },
+                      "fatherOccupation": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "motherOccupation": {
+                        "$ref": "#/properties/changes/properties/fatherName"
+                      },
+                      "annualIncome": {
+                        "type": "string",
+                        "pattern": "^\\d{0,9}$"
+                      },
+                      "guardianPhone": {
+                        "type": "string",
+                        "maxLength": 24
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "changes",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/family/record/changes/{requestId}/withdraw": {
+      "post": {
+        "summary": "The family takes a waiting ask back; a settled one is answered as it stands",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "byPupil": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "DECLINED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "changes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "enum": [
+                              "fatherName",
+                              "motherName",
+                              "placeOfBirth",
+                              "nationality",
+                              "religion",
+                              "caste",
+                              "category",
+                              "motherTongue",
+                              "addressLine",
+                              "city",
+                              "postalCode",
+                              "admissionNumber",
+                              "admissionDate",
+                              "admittedToGrade",
+                              "previousSchool",
+                              "penNumber",
+                              "gender",
+                              "nameLocal",
+                              "fatherNameLocal",
+                              "motherNameLocal",
+                              "bpl",
+                              "ews",
+                              "cwsnType",
+                              "bloodGroup",
+                              "previousSchoolTcNumber",
+                              "previousSchoolTcDate",
+                              "fatherOccupation",
+                              "motherOccupation",
+                              "annualIncome",
+                              "rollNumber",
+                              "guardianPhone",
+                              "rte",
+                              "repeating"
+                            ]
+                          },
+                          "from": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "to": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "from",
+                          "to"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "requestedByName",
+                    "byPupil",
+                    "reason",
+                    "status",
+                    "changes",
+                    "declineReason",
+                    "decidedByName",
+                    "decidedAt",
+                    "can",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/record-changes": {
+      "get": {
+        "summary": "What families have asked to have changed on pupils' records, the waiting ones first (?status=)",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "requestedByName": {
+                            "type": "string"
+                          },
+                          "byPupil": {
+                            "type": "boolean"
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "APPLIED",
+                              "DECLINED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "changes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "field": {
+                                  "type": "string",
+                                  "enum": [
+                                    "fatherName",
+                                    "motherName",
+                                    "placeOfBirth",
+                                    "nationality",
+                                    "religion",
+                                    "caste",
+                                    "category",
+                                    "motherTongue",
+                                    "addressLine",
+                                    "city",
+                                    "postalCode",
+                                    "admissionNumber",
+                                    "admissionDate",
+                                    "admittedToGrade",
+                                    "previousSchool",
+                                    "penNumber",
+                                    "gender",
+                                    "nameLocal",
+                                    "fatherNameLocal",
+                                    "motherNameLocal",
+                                    "bpl",
+                                    "ews",
+                                    "cwsnType",
+                                    "bloodGroup",
+                                    "previousSchoolTcNumber",
+                                    "previousSchoolTcDate",
+                                    "fatherOccupation",
+                                    "motherOccupation",
+                                    "annualIncome",
+                                    "rollNumber",
+                                    "guardianPhone",
+                                    "rte",
+                                    "repeating"
+                                  ]
+                                },
+                                "from": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "to": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "field",
+                                "from",
+                                "to"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "declineReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              },
+                              "withdraw": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide",
+                              "withdraw"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/decidedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "className",
+                          "requestedByName",
+                          "byPupil",
+                          "reason",
+                          "status",
+                          "changes",
+                          "declineReason",
+                          "decidedByName",
+                          "decidedAt",
+                          "can",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "pending": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "pending"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PENDING",
+                      "APPLIED",
+                      "DECLINED",
+                      "WITHDRAWN"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/record-changes/{requestId}/decide": {
+      "post": {
+        "summary": "The office applies a family's proposed values to the record, or declines with an optional sentence for them; a settled ask is answered as it stands",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "byPupil": {
+                      "type": "boolean"
+                    },
+                    "reason": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "APPLIED",
+                        "DECLINED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "changes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "enum": [
+                              "fatherName",
+                              "motherName",
+                              "placeOfBirth",
+                              "nationality",
+                              "religion",
+                              "caste",
+                              "category",
+                              "motherTongue",
+                              "addressLine",
+                              "city",
+                              "postalCode",
+                              "admissionNumber",
+                              "admissionDate",
+                              "admittedToGrade",
+                              "previousSchool",
+                              "penNumber",
+                              "gender",
+                              "nameLocal",
+                              "fatherNameLocal",
+                              "motherNameLocal",
+                              "bpl",
+                              "ews",
+                              "cwsnType",
+                              "bloodGroup",
+                              "previousSchoolTcNumber",
+                              "previousSchoolTcDate",
+                              "fatherOccupation",
+                              "motherOccupation",
+                              "annualIncome",
+                              "rollNumber",
+                              "guardianPhone",
+                              "rte",
+                              "repeating"
+                            ]
+                          },
+                          "from": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "to": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "field",
+                          "from",
+                          "to"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedByName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "can": {
+                      "type": "object",
+                      "properties": {
+                        "decide": {
+                          "type": "boolean"
+                        },
+                        "withdraw": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "decide",
+                        "withdraw"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "requestedByName",
+                    "byPupil",
+                    "reason",
+                    "status",
+                    "changes",
+                    "declineReason",
+                    "decidedByName",
+                    "decidedAt",
+                    "can",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approve": {
+                    "type": "boolean"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 400
+                  }
+                },
+                "required": [
+                  "approve"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/family/certificates": {

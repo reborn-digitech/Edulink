@@ -69,6 +69,22 @@ describe("PEN corrections on the head's dashboard", () => {
   });
 });
 
+const RECORD_CHANGES = "GET /api/v1/office/record-changes";
+describe("families' asks on the head's dashboard", () => {
+  it("while one waits, counts it and opens the pupil records; nothing when none does", async () => {
+    await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW), [RECORD_CHANGES]: () => json({ items: [], pending: 1 }) });
+    expect(await screen.findByText("Changes families have asked for")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "1 waiting, A family cannot change a record itself. Approve to put their values on the record, or decline." }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/pupil-records");
+  });
+
+  it("draws no card when nothing waits", async () => {
+    await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW), [RECORD_CHANGES]: () => json({ items: [], pending: 0 }) });
+    await screen.findByText("ZZ Class A");
+    expect(screen.queryByText("Changes families have asked for")).toBeNull();
+  });
+});
+
 describe("the principal's dashboard", () => {
   it("loads, then shows what can be fixed today and the classes", async () => {
     const gate = gated();

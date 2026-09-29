@@ -578,6 +578,36 @@ export const waitingIds = (tag: string) => ({
  * which keeps them inside the thirty days a request lives
  * (lib/request-expiry.ts).
  */
+/**
+ * A family's asks to change the pupil record: one the office declined, on
+ * the named pupil (the sweep's own, so that deciding it and taking it back
+ * are both answered as it stands and change nothing), and with `waiting`
+ * one still waiting on another pupil, so the office's page has a row. Fixed
+ * ids, so a second run finds the same rows.
+ */
+export async function buildRecordChanges(school: { id: string }, adminUserId: string, opts: { tag?: string; pupilEmail?: string; waiting?: boolean } = {}) {
+  const suffix = opts.tag ? `-${opts.tag}` : "";
+  const pupils = await db.membership.findMany({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { id: true, userId: true, user: { select: { email: true } } } });
+  const own = pupils.find((p) => p.user.email === opts.pupilEmail) ?? pupils[0];
+  if (!own) throw new Error("buildRecordChanges: the school has no pupil");
+  const guardianOf = async (studentMembershipId: string, fallback: string) => (await db.guardianship.findFirst({ where: { studentMembershipId, status: "ACTIVE", relation: { not: "SCHOOL" } }, orderBy: { id: "asc" }, select: { parentUserId: true } }))?.parentUserId ?? fallback;
+  // What the API sweep left waiting on its own pupil goes, so a rebuilt fixture is the fixture and nothing more.
+  await db.recordChangeRequest.deleteMany({ where: { schoolId: school.id, reason: "ZZ sweep" } });
+  const declinedId = `zz-fixture-record-change${suffix}`;
+  const declined = { schoolId: school.id, studentMembershipId: own.id, requestedByUserId: await guardianOf(own.id, own.userId), byPupil: false, changesJson: JSON.stringify([{ field: "addressLine", from: null, to: "ZZ 14 Shivaji Nagar" }]), reason: "We have moved house.", status: "DECLINED", decidedAt: new Date(), decidedByUserId: adminUserId, declineReason: "Please bring the rent agreement to the office." };
+  await db.recordChangeRequest.upsert({ where: { id: declinedId }, create: { id: declinedId, ...declined }, update: declined });
+  let waiting: string | null = null;
+  const other = pupils.find((p) => p.id !== own.id);
+  if (opts.waiting && other) {
+    waiting = `zz-fixture-record-change-waiting${suffix}`;
+    const data = { schoolId: school.id, studentMembershipId: other.id, requestedByUserId: await guardianOf(other.id, other.userId), byPupil: false, changesJson: JSON.stringify([{ field: "motherOccupation", from: null, to: "Nurse" }, { field: "bloodGroup", from: null, to: "B+" }]), reason: "These were blank on the form.", status: "PENDING", decidedAt: null, decidedByUserId: null, declineReason: null, createdAt: new Date() };
+    // Whatever else waits on that pupil gives way: one waits per pupil.
+    await db.recordChangeRequest.deleteMany({ where: { schoolId: school.id, studentMembershipId: other.id, status: "PENDING", id: { not: waiting } } });
+    await db.recordChangeRequest.upsert({ where: { id: waiting }, create: { id: waiting, ...data }, update: data });
+  }
+  return { declined: declinedId, waiting };
+}
+
 export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
   const ids = waitingIds(opts.tag ?? "");
   const joiner = await upsertUser(ctx, `zz.joiner01@${DOMAIN}`, "ZZ Ira Gokhale", { birthdate: new Date("2017-08-14T00:00:00Z"), isMinor: true });
@@ -2194,7 +2224,10 @@ async function main() {
   const practice = await buildPracticeAssignment(northgate.school, { classId: grade6.id, classLevel: 6, createdByMembershipId: grade6.teachers[0]!.teacherMembershipId, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: "Reach level 3 before the unit test.", dueAt: new Date("2026-10-16T12:30:00Z") });
   const waiting = await buildWaiting(ctx, northgate.school, { pupilEmail: `zz.pupil01@${DOMAIN}`, others: true });
   console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}; not the sweep's to decide: ${waiting.otherJoin?.id ?? "none"}, ${waiting.otherClaim?.id ?? "none"}`);
+  const recordChanges = await buildRecordChanges(northgate.school, northgate.admin.id, { pupilEmail: `zz.pupil01@${DOMAIN}`, waiting: true });
+  console.log(`  Asks to change a record: declined ${recordChanges.declined}, waiting ${recordChanges.waiting ?? "none"}`);
   const southbank = await buildSouthbank(ctx);
+  await buildRecordChanges(southbank.school, southbank.admin.id, { tag: "southbank" });
   // The same pair at the second school, for Northgate's staff to be refused from outside.
   await buildWaiting(ctx, southbank.school, { tag: "southbank" });
   await buildRollNumbers(southbank.school);

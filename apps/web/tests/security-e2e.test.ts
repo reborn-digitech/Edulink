@@ -12,7 +12,7 @@ import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { GET as verifyGet } from "@/app/api/v1/public/certificates/[code]/route";
 import { GET as familyChildrenGet } from "@/app/api/v1/family/children/route";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
-import { POST as familyRecordPost } from "@/app/api/v1/family/record/route";
+import { POST as familyChangePost } from "@/app/api/v1/family/record/changes/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -93,8 +93,10 @@ describe("fields a client may not set", () => {
   it("a guardian cannot set the PEN or the roll number through the record, and a body naming another school changes nothing", async () => {
     __resetCookies();
     await createSession(parentUserId, { schoolId: null, role: "PARENT" });
-    const res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { fatherName: "R", penNumber: "27000000001", rollNumber: "3", schoolId: "someone-else", role: "ADMIN" }));
-    expect(res.status).toBe(403);
+    // A guardian writes nothing on the record; what they may ask for leaves out the PEN and the roll number, and a body naming a key the ask does not have is refused whole.
+    const res = await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { fatherName: "R", penNumber: "27000000001", rollNumber: "3", schoolId: "someone-else", role: "ADMIN" }, reason: "ZZ test" }));
+    expect(res.status).toBe(422);
+    expect(await db.recordChangeRequest.count({ where: { studentMembershipId: pupil } })).toBe(0);
     __resetCookies();
     await createSession(adminUserId, { schoolId, role: "ADMIN" });
     const ok = await recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { fatherName: "R", schoolId: "someone-else", studentMembershipId: "someone-else" }), params({ membershipId: pupil }));

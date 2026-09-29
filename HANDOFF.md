@@ -203,6 +203,14 @@ end-to-end in staging.
   another school's code is refused. A join by code and a claim on a child wait for the office, the
   class's teacher or a guardian the child already has, and the deciders are told in the app, not by
   email.
+- **The pupil record is the office's to write** (decided by the owner, 2026-09-29). A guardian and
+  the pupil read all of it and write none of it. They propose new values on the record's own form
+  with a reason, a blank the office asked about included, and an admin or the head applies them or
+  declines with a sentence (`src/lib/record-changes.ts`, table `RecordChangeRequest`, migration
+  `20260929100000`). An ask may name any field but the PEN, which has its own correction, and the
+  roll number and "repeating", which are the enrolment's. One waits per pupil; asking again replaces
+  it. `POST /api/v1/family/record` is gone, so the phone app ships with the server. An admin or the
+  head reaches a pupil's record from the pupil's page; the page itself shows none of its values.
 
 ## 7. Moving development to another machine
 
