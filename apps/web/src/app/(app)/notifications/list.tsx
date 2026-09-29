@@ -132,7 +132,7 @@ export function NotificationBellLink({ unread }: { unread: number }) {
     >
       <BellIcon className="size-5" />
       {unread > 0 && (
-        <span className="absolute right-2 top-2 grid min-w-4 place-items-center rounded-full bg-danger px-1 text-[0.625rem] font-bold text-white">
+        <span className="absolute right-2 top-2 grid min-w-4 place-items-center rounded-full bg-danger px-1 text-[0.625rem] font-bold text-danger-fg">
           {unread > 9 ? "9+" : unread}
         </span>
       )}

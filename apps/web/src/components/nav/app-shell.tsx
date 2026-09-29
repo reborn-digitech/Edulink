@@ -139,7 +139,7 @@ export function AppShell({
             <NavIcon name="bell" className="size-5" />
             <span className="flex-1">{t("shell.notifications")}</span>
             {unreadCount > 0 && (
-              <span className="grid min-w-5 place-items-center rounded-full bg-danger px-1.5 text-[0.6875rem] font-bold text-white">
+              <span className="grid min-w-5 place-items-center rounded-full bg-danger px-1.5 text-[0.6875rem] font-bold text-danger-fg">
                 {unreadCount > 99 ? "99+" : unreadCount}
               </span>
             )}
@@ -209,7 +209,7 @@ export function AppShell({
           >
             <NavIcon name="bell" className="size-5" />
             {unreadCount > 0 && (
-              <span className="absolute right-2 top-2 grid min-w-4 place-items-center rounded-full bg-danger px-1 text-[0.625rem] font-bold text-white">
+              <span className="absolute right-2 top-2 grid min-w-4 place-items-center rounded-full bg-danger px-1 text-[0.625rem] font-bold text-danger-fg">
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}

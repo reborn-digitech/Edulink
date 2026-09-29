@@ -29,7 +29,7 @@ const button = cva(
           "bg-surface text-fg border border-border shadow-sm hover:bg-surface-muted hover:border-border-strong",
         soft: "bg-accent-soft text-accent-strong hover:brightness-95",
         ghost: "text-fg-muted hover:bg-surface-muted hover:text-fg",
-        danger: "bg-danger text-white shadow-sm hover:brightness-110",
+        danger: "bg-danger text-danger-fg shadow-sm hover:brightness-110",
         outline: "border-2 border-accent text-accent-strong hover:bg-accent-soft",
         link: "text-accent-strong underline underline-offset-4 hover:brightness-125",
       },

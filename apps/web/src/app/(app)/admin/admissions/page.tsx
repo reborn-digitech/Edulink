@@ -137,7 +137,8 @@ export default async function AdmissionsPage() {
                   }
                 />
                 <CardBody>
-                  <div className="overflow-x-auto">
+                  {/* Reachable by keyboard: a region that scrolls sideways has to take focus to be scrolled. */}
+                  <div className="overflow-x-auto" tabIndex={0}>
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">

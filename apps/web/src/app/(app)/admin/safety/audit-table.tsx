@@ -66,7 +66,7 @@ export function AuditTable({ rows }: { rows: AuditEntry[] }) {
           className={cn(
             "inline-flex min-h-12 items-center justify-center gap-2 rounded-[--radius-md] px-4 text-sm font-medium",
             sensitiveOnly
-              ? "bg-danger text-white"
+              ? "bg-danger text-danger-fg"
               : "border border-border bg-surface text-fg-muted hover:text-fg",
           )}
         >

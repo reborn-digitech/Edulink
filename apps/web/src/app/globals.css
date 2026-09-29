@@ -42,6 +42,7 @@
   --warn: #b45309;
   --warn-soft: #fffbeb;
   --danger: #be123c;
+  --danger-fg: #ffffff; /* text on top of --danger: a badge's count, a destructive button's label */
   --danger-soft: #fff1f2;
   --info: #0369a1;
   --info-soft: #f0f9ff;
@@ -122,6 +123,7 @@
   --warn: #fbbf24;
   --warn-soft: #2a2010;
   --danger: #fb7185;
+  --danger-fg: #2a0610; /* dark, as --accent-fg is here: white on this rose is 2.7:1 */
   --danger-soft: #2d1219;
   --info: #38bdf8;
   --info-soft: #0c2436;
@@ -241,6 +243,7 @@
   --ok: #006600;
   --warn: #7a3d00;
   --danger: #a30014;
+  --danger-fg: #ffffff;
   --info: #003d99;
   --att-present: #006600;
   --att-late: #7a3d00;
@@ -322,6 +325,7 @@
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
   --color-danger: var(--danger);
+  --color-danger-fg: var(--danger-fg);
   --color-danger-soft: var(--danger-soft);
   --color-info: var(--info);
   --color-info-soft: var(--info-soft);
