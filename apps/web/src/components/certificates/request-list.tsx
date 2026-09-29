@@ -24,6 +24,10 @@ export const REQUEST_STATUS: Record<CertificateRequestStatus, { key: Translation
   CANCELLED: { key: "certificateRequests.statusCancelled", tone: "neutral" },
 };
 
+/** A request as it stands: answered with a paper since withdrawn, it is withdrawn, whatever its own status says. */
+export const requestStatus = (item: { status: CertificateRequestStatus; revokedAt?: string | null }): { key: TranslationKey; tone: "warn" | "ok" | "danger" | "neutral" } =>
+  item.revokedAt ? { key: "certificateRequests.statusRevoked", tone: "danger" } : REQUEST_STATUS[item.status];
+
 /**
  * The family's requests, newest first: what was asked, when, and what came
  * of it. An issued one links to the paper; a declined one carries the
@@ -57,7 +61,7 @@ export function CertificateRequestList({ items, from }: { items: CertificateRequ
   return (
     <ul className="divide-y divide-border" data-testid="certificate-requests">
       {items.map((item) => {
-        const status = REQUEST_STATUS[item.status];
+        const status = requestStatus(item);
         return (
           <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-3" data-status={item.status}>
             <div className="min-w-0 flex-1 basis-56">
@@ -69,7 +73,7 @@ export function CertificateRequestList({ items, from }: { items: CertificateRequ
               </p>
               <p className="mt-0.5 text-sm text-fg">{item.purpose}</p>
               <p className="mt-0.5 text-xs text-fg-muted">
-                {[t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
+                {[t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
                   .filter(Boolean)
                   .join(" · ")}
               </p>

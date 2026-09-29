@@ -1664,6 +1664,8 @@ export const hi: Dictionary = {
     purpose: "पासपोर्ट",
   },
   certificateRequests: {
+    statusRevoked: "वापस लिया गया",
+    revokedOn: "स्कूल ने {date} को वापस लिया",
     title: "अनुरोध",
     askTitle: "प्रमाणपत्र माँगें",
     askIntro: "कौन-सा प्रमाणपत्र और किसलिए, बताएँ। कार्यालय आपके रिकॉर्ड से जारी करेगा, या कारण बताएगा।",
@@ -2130,6 +2132,8 @@ export const hi: Dictionary = {
     codesNote: "कोड UDISE+ बल्क शीट के अनुसार: सामान्य-1, SC-2, ST-3, OBC-4; पुरुष-1, स्त्री-2, ट्रांसजेंडर-3; तिथियाँ DD-MM-YYYY।",
   },
   pupilRecord: {
+    certificateRevoked: "{name} का एक प्रमाणपत्र वापस ले लिया गया है",
+    certificateRevokedBody: "स्कूल ने प्रमाणपत्र {serial} वापस ले लिया है। यह अब मान्य नहीं है; दूसरा चाहिए तो कार्यालय से कहें।",
     langAssamese: "असमिया",
     langBengali: "बांग्ला",
     langBodo: "बोडो",

@@ -160,6 +160,16 @@ describe("the family's requests", () => {
     expect(screen.getAllByRole("button", { name: "Take it back" })).toHaveLength(1);
   });
 
+  it("⚠ one answered with a paper the school then withdrew says withdrawn, and when, in place of issued", async () => {
+    const withdrawn = { items: [request(REQ2, "ISSUED", { kind: "STUDY", certificateId: CERT, serial: "SC/2026-27/0002", decidedAt: "2026-09-14T05:00:00.000Z", revokedAt: "2026-09-20T05:00:00.000Z" })], kinds: REQUEST_VIEW.kinds };
+    await renderFamily(compose(), ME_STUDENT, { [PATH]: () => ({ items: [] }), [REQUESTS]: () => withdrawn });
+    expect(await screen.findByText("Withdrawn")).toBeTruthy();
+    expect(screen.getByText(/^Withdrawn by the school on /)).toBeTruthy();
+    expect(screen.queryByText("Issued")).toBeNull();
+    // The paper can still be opened: it says on its face that it was withdrawn.
+    expect(screen.getByRole("button", { name: "Open the certificate" })).toBeTruthy();
+  });
+
   it("a pending one is taken back after a confirmation, and not on a change of mind", async () => {
     const { fetch } = await renderFamily(compose(), ME_STUDENT, { [PATH]: () => ({ items: [] }), [REQUESTS]: (init, url) => (init?.method === "POST" && url.pathname.endsWith("/cancel") ? request(REQ1, "CANCELLED") : REQUEST_VIEW), [`${REQUESTS}/${REQ1}/cancel`]: () => request(REQ1, "CANCELLED") });
     await screen.findByText("Your requests");

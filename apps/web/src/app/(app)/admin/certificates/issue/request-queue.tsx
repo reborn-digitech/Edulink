@@ -15,7 +15,7 @@ import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
-import { REQUEST_STATUS } from "@/components/certificates/request-list";
+import { requestStatus } from "@/components/certificates/request-list";
 import { declineRequestAction } from "../actions";
 
 /**
@@ -79,7 +79,7 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
         ) : (
           <ul className="divide-y divide-border">
             {items.map((item) => {
-              const status = REQUEST_STATUS[item.status];
+              const status = requestStatus(item);
               const isPending = item.status === "PENDING";
               return (
                 <li key={item.id} className="space-y-3 py-3" data-status={item.status}>
@@ -97,7 +97,7 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
                         {item.purpose ? ` — ${item.purpose}` : ""}
                       </p>
                       <p className="mt-0.5 text-xs text-fg-muted">
-                        {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
+                        {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
                           .filter(Boolean)
                           .join(" · ")}
                       </p>

@@ -365,6 +365,28 @@ describe("a leaver from an earlier year, and the day of issue", () => {
   });
 });
 
+describe("⚠ the head of the paper is the paper's", () => {
+  it("keeps the class and the school's name it was issued with, when the class is renamed, the school is, and the pupil is in no class at all", async () => {
+    await as("ADMIN");
+    const cert = await db.issuedCertificate.findFirstOrThrow({ where: { schoolId, studentMembershipId: pupilA, kind: "BONAFIDE" }, orderBy: { issuedAt: "asc" }, select: { id: true } });
+    const read = async () => (await (await sharedGet(get(`/api/v1/shared/certificates/${cert.id}`), params({ certificateId: cert.id }))).json()) as { className: string | null; school: { name: string; city: string | null } };
+    const before = await read();
+    expect(before.className).toBe("ZZ 4A");
+    const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true } });
+    try {
+      await db.class.update({ where: { id: classId }, data: { name: "ZZ 4 Tulip" } });
+      await db.school.update({ where: { id: schoolId }, data: { name: "ZZ Renamed Academy" } });
+      expect(await read()).toMatchObject({ className: "ZZ 4A", school: { name: school.name, city: "Pune" } });
+      await db.enrollment.updateMany({ where: { studentMembershipId: pupilA }, data: { status: "REMOVED" } });
+      expect((await read()).className).toBe("ZZ 4A");
+    } finally {
+      await db.enrollment.updateMany({ where: { studentMembershipId: pupilA }, data: { status: "ACTIVE" } });
+      await db.class.update({ where: { id: classId }, data: { name: "ZZ 4A" } });
+      await db.school.update({ where: { id: schoolId }, data: { name: school.name } });
+    }
+  });
+});
+
 describe("⚠ the office corrects a legal name", () => {
   const OLD = "ZZ Cert Aarav Apte";
   const NEW = "ZZ Cert Aarav Aapte";

@@ -404,6 +404,12 @@ export const certificateRequestSchema = z.object({
   serial: z.string().nullable(),
   declineReason: z.string().nullable(),
   decidedAt: iso.nullable(),
+  /**
+   * When the certificate this request was answered with was withdrawn; null
+   * while it stands. Read from the certificate, not kept on the request: an
+   * ISSUED request whose paper was revoked is shown as withdrawn.
+   */
+  revokedAt: iso.nullable().default(null),
   createdAt: iso,
 });
 export type CertificateRequestView = z.infer<typeof certificateRequestSchema>;

@@ -61700,6 +61700,15 @@
                             "format": "date-time",
                             "nullable": true
                           },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/decidedAt"
+                              }
+                            ],
+                            "nullable": true,
+                            "default": null
+                          },
                           "createdAt": {
                             "$ref": "#/properties/items/items/properties/decidedAt"
                           }
@@ -61872,6 +61881,15 @@
                       "type": "string",
                       "format": "date-time",
                       "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/decidedAt"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
                     },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"
@@ -62050,6 +62068,15 @@
                       "format": "date-time",
                       "nullable": true
                     },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/decidedAt"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
+                    },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"
                     }
@@ -62208,6 +62235,15 @@
                             "type": "string",
                             "format": "date-time",
                             "nullable": true
+                          },
+                          "revokedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/items/items/properties/decidedAt"
+                              }
+                            ],
+                            "nullable": true,
+                            "default": null
                           },
                           "createdAt": {
                             "$ref": "#/properties/items/items/properties/decidedAt"
@@ -62386,6 +62422,15 @@
                       "type": "string",
                       "format": "date-time",
                       "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/decidedAt"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
                     },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"

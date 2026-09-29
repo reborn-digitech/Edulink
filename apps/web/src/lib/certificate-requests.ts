@@ -46,10 +46,10 @@ async function asker(ctx: ActiveContext, childId?: string): Promise<{ studentMem
 
 const INCLUDE = {
   student: { select: { user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } },
-  certificate: { select: { serial: true } },
+  certificate: { select: { serial: true, revokedAt: true } },
 } as const;
 
-type Row = { id: string; studentMembershipId: string; kind: string; purpose: string; status: string; requestedByUserId: string; certificateId: string | null; declineReason: string | null; decidedAt: Date | null; createdAt: Date; student: { user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] }; certificate: { serial: string } | null };
+type Row = { id: string; studentMembershipId: string; kind: string; purpose: string; status: string; requestedByUserId: string; certificateId: string | null; declineReason: string | null; decidedAt: Date | null; createdAt: Date; student: { user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] }; certificate: { serial: string; revokedAt: Date | null } | null };
 
 async function view(rows: Row[]): Promise<CertificateRequestView[]> {
   const byIds = [...new Set(rows.map((r) => r.requestedByUserId))];
@@ -68,6 +68,7 @@ async function view(rows: Row[]): Promise<CertificateRequestView[]> {
     serial: r.certificate?.serial ?? null,
     declineReason: r.declineReason,
     decidedAt: r.decidedAt?.toISOString() ?? null,
+    revokedAt: r.certificate?.revokedAt?.toISOString() ?? null,
     createdAt: r.createdAt.toISOString(),
   }));
 }

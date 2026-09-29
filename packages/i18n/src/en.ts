@@ -1805,6 +1805,8 @@ export const en = {
     purpose: "a passport",
   },
   certificateRequests: {
+    statusRevoked: "Withdrawn",
+    revokedOn: "Withdrawn by the school on {date}",
     title: "Requests",
     askTitle: "Ask for a certificate",
     askIntro: "Say which certificate and what it is for. The office issues it from your record, or tells you why not.",
@@ -2271,6 +2273,8 @@ export const en = {
     codesNote: "Codes follow the UDISE+ bulk sheet: General-1, SC-2, ST-3, OBC-4; Male-1, Female-2, Transgender-3; dates DD-MM-YYYY.",
   },
   pupilRecord: {
+    certificateRevoked: "A certificate for {name} has been withdrawn",
+    certificateRevokedBody: "The school has withdrawn certificate {serial}. It no longer stands; ask the office if you need another.",
     langAssamese: "Assamese",
     langBengali: "Bengali",
     langBodo: "Bodo",

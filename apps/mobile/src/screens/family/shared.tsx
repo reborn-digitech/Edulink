@@ -70,6 +70,9 @@ export type CertificateKind = "TC" | "NIRGAM" | "BONAFIDE" | "CHARACTER" | "STUD
 export const CERTIFICATE_KIND: Record<CertificateKind, TranslationKey> = { TC: "certificates.kindTc", NIRGAM: "certificates.kindNirgam", BONAFIDE: "certificates.kindBonafide", CHARACTER: "certificates.kindCharacter", STUDY: "certificates.kindStudy", CUSTOM: "certificates.kindCustom" };
 export type CertificateRequestStatus = "PENDING" | "ISSUED" | "DECLINED" | "CANCELLED";
 /** A request's status as a label key and a pill tone. */
+/** A request as it stands: answered with a paper since withdrawn, it is withdrawn, whatever its own status says. */
+export const certificateRequestStatus = (r: { status: CertificateRequestStatus; revokedAt?: string | null }): { label: TranslationKey; tone: "warn" | "ok" | "danger" | "muted" } =>
+  r.revokedAt ? { label: "certificateRequests.statusRevoked", tone: "danger" } : CERTIFICATE_REQUEST_STATUS[r.status];
 export const CERTIFICATE_REQUEST_STATUS: Record<CertificateRequestStatus, { label: TranslationKey; tone: "warn" | "ok" | "danger" | "muted" }> = {
   PENDING: { label: "certificateRequests.statusPending", tone: "warn" },
   ISSUED: { label: "certificateRequests.statusIssued", tone: "ok" },

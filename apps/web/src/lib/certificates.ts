@@ -289,11 +289,22 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
   if (!cert || !(await mayRead(ctx, cert))) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   const issuedBy = cert.issuedByUserId ? await db.user.findUnique({ where: { id: cert.issuedByUserId }, select: { name: true, preferredName: true } }) : null;
   let missing: string[] = [];
+  /**
+   * THE HEAD OF THE PAPER IS THE PAPER'S, as its body always was. The values
+   * the body was filled from are kept with it; the class and the school's
+   * name above the body were read live, so a pupil who had left showed no
+   * class on their own transfer certificate, and a school renamed in June
+   * renamed the head of March's paper while the body and the public check
+   * went on saying the old name.
+   */
+  let printed: Record<string, unknown> = {};
   try {
-    missing = ((JSON.parse(cert.dataJson) as { missing?: string[] }).missing ?? []).filter((m): m is string => typeof m === "string");
+    printed = JSON.parse(cert.dataJson) as Record<string, unknown>;
+    missing = ((printed as { missing?: string[] }).missing ?? []).filter((m): m is string => typeof m === "string");
   } catch {
     missing = [];
   }
+  const asPrinted = (key: string): string | null => (typeof printed[key] === "string" && (printed[key] as string).trim() ? (printed[key] as string) : null);
   return {
     id: cert.id,
     kind: cert.kind as CertificateKind,
@@ -310,8 +321,8 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
     // The legal name on the paper, as it was printed: the paper's own copy,
     // and the account's only for a paper older than the copy.
     studentName: cert.studentName ?? cert.student.user.name,
-    className: cert.student.enrollments[0]?.class.name ?? null,
-    school: cert.school,
+    className: asPrinted("class.name") ?? asPrinted("record.lastClass") ?? cert.student.enrollments[0]?.class.name ?? null,
+    school: { ...cert.school, name: asPrinted("school.name") ?? cert.school.name },
     code: cert.code,
     issuedAt: cert.issuedAt.toISOString(),
     issuedByName: issuedBy ? (issuedBy.preferredName ?? issuedBy.name) : null,
@@ -351,12 +362,23 @@ export async function familyCertificates(ctx: ActiveContext) {
 /** Marks the document revoked with a reason; the paper stays on the list and the verify page says so. */
 export async function revokeCertificate(ctx: ActiveContext, certificateId: string, reason: string): Promise<IssuedCertificateView> {
   const caller = office(ctx);
-  const cert = await db.issuedCertificate.findFirst({ where: { id: certificateId, schoolId: caller.schoolId }, select: { id: true, revokedAt: true, serial: true } });
+  const cert = await db.issuedCertificate.findFirst({ where: { id: certificateId, schoolId: caller.schoolId }, select: { id: true, revokedAt: true, serial: true, studentMembershipId: true } });
   if (!cert) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   // Already revoked: nothing changes and the document is answered as it stands.
   if (cert.revokedAt) return certificateView(ctx, cert.id);
   await db.issuedCertificate.update({ where: { id: cert.id }, data: { revokedAt: new Date(), revokedReason: reason.trim().slice(0, 200) } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.revoke", targetType: "IssuedCertificate", targetId: cert.id, meta: { serial: cert.serial } });
+  // The family holds the paper: they are told it no longer stands, as they were told when it was issued.
+  await notifyGuardians(cert.studentMembershipId, (childName) => ({
+    schoolId: caller.schoolId,
+    kind: "SYSTEM",
+    titleKey: "pupilRecord.certificateRevoked",
+    titleVars: { name: childName },
+    bodyKey: "pupilRecord.certificateRevokedBody",
+    bodyVars: { serial: cert.serial },
+    url: `/certificates/${cert.id}`,
+    meta: { certificateId: cert.id },
+  }));
   return certificateView(ctx, cert.id);
 }
 

@@ -10,7 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, must, Refusal } from "../staff/shared";
-import { CERTIFICATE_KIND, CERTIFICATE_REQUEST_STATUS, ChildSwitcher, childQuery, Confirm, formatDateKey, Pill, type CertificateKind } from "./shared";
+import { CERTIFICATE_KIND, certificateRequestStatus, ChildSwitcher, childQuery, Confirm, formatDateKey, Pill, type CertificateKind } from "./shared";
 
 const REQUESTS = "/api/v1/family/certificate-requests";
 
@@ -176,7 +176,7 @@ function RequestRow({ request: r, kindLabel, confirming, busy, onCancel, onConfi
   const th = useTheme();
   const router = useRouter();
   const { locale } = useLocale();
-  const status = CERTIFICATE_REQUEST_STATUS[r.status];
+  const status = certificateRequestStatus(r);
   return (
     <View style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderColor: th.border }}>
       <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2] }}>
@@ -193,6 +193,11 @@ function RequestRow({ request: r, kindLabel, confirming, busy, onCancel, onConfi
       <Text variant="xs" tone="subtle">
         {t("certificateRequests.askedOn", { date: formatDateKey(r.createdAt.slice(0, 10), locale) })}
       </Text>
+      {r.revokedAt ? (
+        <Text variant="sm" tone="danger">
+          {t("certificateRequests.revokedOn", { date: formatDateKey(r.revokedAt.slice(0, 10), locale) })}
+        </Text>
+      ) : null}
       {r.status === "ISSUED" && r.serial ? (
         <Text variant="sm" tone="ok">
           {t("certificateRequests.issuedAs", { serial: r.serial })}

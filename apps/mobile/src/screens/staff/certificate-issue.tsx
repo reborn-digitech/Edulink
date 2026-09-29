@@ -9,7 +9,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { CERTIFICATE_KIND, CERTIFICATE_REQUEST_STATUS, Note, Pill, type CertificateKind } from "../family/shared";
+import { CERTIFICATE_KIND, certificateRequestStatus, Note, Pill, type CertificateKind } from "../family/shared";
 import { dateProblem, fieldList } from "../shared/pupil-record";
 import { Chips, formatDateKey, must, openWeb, Refusal } from "./shared";
 
@@ -203,7 +203,7 @@ function RequestQueue({ active, onIssue }: { active: string[]; onIssue: (r: Cert
         <Empty icon="tray" title={t("certificateRequests.queueEmpty")} body={t("certificateRequests.queueEmptyBody")} action={<Button label={t("certificates.issuedTitle")} variant="ghost" onPress={() => router.push("/(app)/staff-certificates" as never)} />} />
       ) : (
         d.items.map((r) => {
-          const status = CERTIFICATE_REQUEST_STATUS[r.status];
+          const status = certificateRequestStatus(r);
           const open = declining === r.id;
           return (
             <View key={r.id} style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderColor: th.border }}>
@@ -222,6 +222,11 @@ function RequestQueue({ active, onIssue }: { active: string[]; onIssue: (r: Cert
               {r.status === "DECLINED" && r.declineReason ? (
                 <Text variant="xs" tone="danger">
                   {t("certificateRequests.declinedBecause", { reason: r.declineReason })}
+                </Text>
+              ) : null}
+              {r.revokedAt ? (
+                <Text variant="xs" tone="danger">
+                  {t("certificateRequests.revokedOn", { date: formatDateKey(r.revokedAt.slice(0, 10), locale) })}
                 </Text>
               ) : null}
               {r.status === "ISSUED" && r.serial ? (

@@ -161,3 +161,38 @@ describe("asking", () => {
     expect(kinds).toEqual(expect.arrayContaining([["certificate.requestDecline", "STUDY"], ["certificate.requestCancel", "STUDY"]]));
   });
 });
+
+describe("⚠ a request answered with a paper the school then withdraws", () => {
+  it("is shown as withdrawn to the family and the office, the family is told, and they may ask again", async () => {
+    const { revokeCertificate } = await import("@/lib/certificates");
+    const { getSession } = await import("@/lib/session");
+    const answered = await db.certificateRequest.findFirstOrThrow({ where: { schoolId, status: "ISSUED", certificateId: { not: null } }, select: { id: true, certificateId: true, kind: true } });
+    await db.notification.deleteMany({ where: { userId: { in: [parentUserId, pupilUserId] }, titleKey: "pupilRecord.certificateRevoked" } });
+
+    await as("PARENT");
+    let mine = (await (await familyGet(get(`/api/v1/family/certificate-requests?childId=${pupil}`))).json()).items as { id: string; status: string; revokedAt: string | null }[];
+    expect(mine.find((r) => r.id === answered.id)).toMatchObject({ status: "ISSUED", revokedAt: null });
+
+    await as("ADMIN");
+    await revokeCertificate((await getSession())!, answered.certificateId!, "Issued to the wrong pupil");
+    const queue = (await (await queueGet(get("/api/v1/office/certificate-requests?status=ISSUED"))).json()).items as { id: string; revokedAt: string | null }[];
+    expect(queue.find((r) => r.id === answered.id)?.revokedAt).toBeTruthy();
+
+    await as("PARENT");
+    mine = (await (await familyGet(get(`/api/v1/family/certificate-requests?childId=${pupil}`))).json()).items;
+    expect(mine.find((r) => r.id === answered.id)).toMatchObject({ status: "ISSUED" });
+    expect(mine.find((r) => r.id === answered.id)?.revokedAt).toBeTruthy();
+    const told = await db.notification.findFirst({ where: { userId: parentUserId, titleKey: "pupilRecord.certificateRevoked" } });
+    expect(told?.body).toMatch(/has withdrawn certificate .* It no longer stands/);
+    // Revoked twice is revoked once, and the family is told once.
+    await as("ADMIN");
+    await revokeCertificate((await getSession())!, answered.certificateId!, "Again");
+    expect(await db.notification.count({ where: { userId: parentUserId, titleKey: "pupilRecord.certificateRevoked" } })).toBe(1);
+
+    await as("PARENT");
+    const again = await familyPost(json(`/api/v1/family/certificate-requests?childId=${pupil}`, { kind: answered.kind, purpose: "ZZ a paper that stands" }));
+    expect(again.status).toBeLessThan(300);
+    expect((await again.json()).status).toBe("PENDING");
+  });
+});
+
