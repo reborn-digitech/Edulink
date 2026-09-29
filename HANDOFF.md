@@ -211,6 +211,11 @@ end-to-end in staging.
   roll number and "repeating", which are the enrolment's. One waits per pupil; asking again replaces
   it. `POST /api/v1/family/record` is gone, so the phone app ships with the server. An admin or the
   head reaches a pupil's record from the pupil's page; the page itself shows none of its values.
+  Confirmed by the owner on 2026-09-30, as built: one ask waits per pupil and a second replaces it;
+  the office is told when an ask is made and not when it is rewritten; the guardians are always told
+  the decision and the pupil only when the pupil asked; a pupil who has left cannot be asked about;
+  and a checkbox inside its own label is a touch target by its label, so the 20-pixel box on the
+  record page stays as it is.
 
 ## 7. Moving development to another machine
 
