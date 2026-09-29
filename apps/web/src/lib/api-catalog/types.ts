@@ -39,6 +39,18 @@ export type Endpoint = {
   sample?: string | ((fixture: SweepFixture) => string | null);
   /** For a body-taking endpoint: a valid body from the fixture, so the sweep can assert 200 as well as 422. */
   sampleBody?: (fixture: SweepFixture) => Record<string, unknown> | null;
+  /**
+   * FOR THE CROSS PROBES ALONE, never the ordinary sweep. A door whose valid
+   * body IS the act (a decision, a leaving, a whole record) cannot carry a
+   * `sampleBody`: the sweep would perform it, as every permitted role, on
+   * every run. But a probe that sends no body is refused for the body and
+   * never reaches the fence it came to try. So the probe has a body and a
+   * path of its own, sent only with ANOTHER school's or another person's
+   * ids — where the right answer is a refusal, and a 2xx is the breach the
+   * probe exists to find. Naming one also says the door is a school's, for
+   * an endpoint filed under a platform-wide prefix.
+   */
+  probe?: { path?: (fixture: SweepFixture) => string | null; body?: (fixture: SweepFixture) => Record<string, unknown> | null };
 };
 
 /**
@@ -61,6 +73,9 @@ export type SweepFixture = {
   /** A join and a guardian claim waiting at the school; the sweep sends no decision, so they stay waiting. */
   joinRequestId: string | null;
   guardianClaimId: string | null;
+  /** A join by the code of a class the sweep's teacher does not teach, and a claim on a child the sweep's parent does not guard: theirs to be refused. */
+  otherClassJoinRequestId: string | null;
+  otherFamilyClaimId: string | null;
   conversationId: string | null;
   remarkThreadId: string | null;
   competitionId: string | null;

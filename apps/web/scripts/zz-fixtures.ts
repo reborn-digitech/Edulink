@@ -550,37 +550,67 @@ async function buildNorthgate(ctx: Ctx) {
 /* people waiting for a yes                                                    */
 /* -------------------------------------------------------------------------- */
 
-/** Fixed ids, so the API sweep can renew the two rows before it reads them (scripts/api-sweep.ts). */
+/**
+ * Fixed ids, so the API sweep can renew the rows before it reads them
+ * (scripts/api-sweep.ts). Northgate's are the first pair, as they always
+ * were; every other school's carry the school's tag.
+ */
 export const WAITING_JOIN_ID = "zz-fixture-join";
 export const WAITING_CLAIM_ID = "zz-fixture-claim";
+export const waitingIds = (tag: string) => ({
+  join: tag ? `${WAITING_JOIN_ID}-${tag}` : WAITING_JOIN_ID,
+  claim: tag ? `${WAITING_CLAIM_ID}-${tag}` : WAITING_CLAIM_ID,
+  /** A join by another class's code, and a claim on another family's child: what the sweep's own teacher and parent may not decide. */
+  otherJoin: `${WAITING_JOIN_ID}-other${tag ? `-${tag}` : ""}`,
+  otherClaim: `${WAITING_CLAIM_ID}-other${tag ? `-${tag}` : ""}`,
+});
 
 /**
- * One pupil who typed the grade-3 class's code and one person who claimed
- * pupil 01, both still waiting: the queue has something in it for the class's
- * teacher, the office and pupil 01's parent, and the API sweep has an id for
- * each decide endpoint. The sweep sends no decision, so they stay waiting. A
- * second run finds the same two rows and makes them new again, which is what
- * keeps them inside the thirty days a request lives (lib/request-expiry.ts).
+ * People waiting for a yes. At Northgate: one pupil who typed the grade-3
+ * class's code and one person who claimed pupil 01, so the class's teacher,
+ * the office and pupil 01's parent each have something in their queue and
+ * the API sweep has an id for each decide endpoint; and beside them a join
+ * by ANOTHER class's code and a claim on ANOTHER family's child, which the
+ * sweep's teacher and parent must be refused (the cross-person probe). At
+ * every other school the first pair alone, for the cross-school probe to
+ * try from outside. The sweep sends no decision the door accepts, so they
+ * stay waiting; a second run finds the same rows and makes them new again,
+ * which keeps them inside the thirty days a request lives
+ * (lib/request-expiry.ts).
  */
-export async function buildWaiting(ctx: Ctx, school: { id: string }) {
+export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
+  const ids = waitingIds(opts.tag ?? "");
   const joiner = await upsertUser(ctx, `zz.joiner01@${DOMAIN}`, "ZZ Ira Gokhale", { birthdate: new Date("2017-08-14T00:00:00Z"), isMinor: true });
   const claimant = await upsertUser(ctx, `zz.claimant01@${DOMAIN}`, "ZZ Vasant Apte");
-  const grade3 = await db.class.findFirstOrThrow({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, orderBy: { name: "asc" }, select: { id: true } });
-  const pupil01 = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", user: { email: `zz.pupil01@${DOMAIN}` } }, select: { id: true } });
+  const classes = await db.class.findMany({ where: { schoolId: school.id, archivedAt: null }, orderBy: [{ gradeLevel: "asc" }, { name: "asc" }], select: { id: true, gradeLevel: true } });
+  const sorted = [...classes].sort((a, b) => Number(a.gradeLevel) - Number(b.gradeLevel));
+  const first = sorted[0];
+  if (!first) throw new Error("buildWaiting: the school has no class to ask to join");
+  const pupil = await db.membership.findFirstOrThrow({
+    where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null, ...(opts.pupilEmail ? { user: { email: opts.pupilEmail } } : {}) },
+    orderBy: { id: "asc" },
+    select: { id: true },
+  });
   const fresh = { status: "PENDING", createdAt: new Date(), decidedAt: null, declineReason: null };
-  const join = await db.joinRequest.upsert({
-    where: { id: WAITING_JOIN_ID },
-    create: { id: WAITING_JOIN_ID, schoolId: school.id, userId: joiner.id, classId: grade3.id, via: "CLASS" },
-    update: { ...fresh, decidedByMembershipId: null },
-    select: { id: true },
-  });
-  const claim = await db.guardianClaim.upsert({
-    where: { id: WAITING_CLAIM_ID },
-    create: { id: WAITING_CLAIM_ID, schoolId: school.id, studentMembershipId: pupil01.id, claimantUserId: claimant.id, relation: "GUARDIAN" },
-    update: { ...fresh, decidedByUserId: null },
-    select: { id: true },
-  });
-  return { join, claim };
+  const join = (id: string, classId: string) =>
+    db.joinRequest.upsert({ where: { id }, create: { id, schoolId: school.id, userId: joiner.id, classId, via: "CLASS" }, update: { ...fresh, decidedByMembershipId: null, classId }, select: { id: true } });
+  const claim = (id: string, studentMembershipId: string) =>
+    db.guardianClaim.upsert({ where: { id }, create: { id, schoolId: school.id, studentMembershipId, claimantUserId: claimant.id, relation: "GUARDIAN" }, update: { ...fresh, decidedByUserId: null, studentMembershipId }, select: { id: true } });
+  const made = { join: await join(ids.join, first.id), claim: await claim(ids.claim, pupil.id), otherJoin: null as { id: string } | null, otherClaim: null as { id: string } | null };
+  if (opts.others) {
+    // A class the first class's teachers do not teach, and a pupil the first pupil's guardians do not guard.
+    const teachers = (await db.classTeacher.findMany({ where: { classId: first.id }, select: { teacherMembershipId: true } })).map((t) => t.teacherMembershipId);
+    const otherClass = await db.class.findFirst({ where: { schoolId: school.id, archivedAt: null, id: { not: first.id }, teachers: { none: { teacherMembershipId: { in: teachers } } } }, orderBy: { name: "asc" }, select: { id: true } });
+    const guardians = (await db.guardianship.findMany({ where: { studentMembershipId: pupil.id, status: "ACTIVE" }, select: { parentUserId: true } })).map((g) => g.parentUserId);
+    const otherPupil = await db.membership.findFirst({
+      where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null, id: { not: pupil.id }, guardianships: { none: { parentUserId: { in: guardians }, status: "ACTIVE" } } },
+      orderBy: { id: "asc" },
+      select: { id: true },
+    });
+    if (otherClass) made.otherJoin = await join(ids.otherJoin, otherClass.id);
+    if (otherPupil) made.otherClaim = await claim(ids.otherClaim, otherPupil.id);
+  }
+  return made;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -2162,9 +2192,11 @@ async function main() {
   await buildRemarkThread(northgate.school, { studentMembershipId: pupil01.id, teacherMembershipId: northgate.teachers[0]!.membership.id, teacherUserId: northgate.teachers[0]!.user.id, parentUserId: parent01.id, subject: "ZZ Reading at home", remark: "Reads aloud well in class now; twenty minutes a day at home would carry it further.", reply: "Thank you — we have started with the library book each evening." });
   const grade6 = await db.class.findFirstOrThrow({ where: { schoolId: northgate.school.id, gradeLevel: "6", archivedAt: null }, select: { id: true, teachers: { where: { role: "LEAD" }, select: { teacherMembershipId: true }, take: 1 } } });
   const practice = await buildPracticeAssignment(northgate.school, { classId: grade6.id, classLevel: 6, createdByMembershipId: grade6.teachers[0]!.teacherMembershipId, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: "Reach level 3 before the unit test.", dueAt: new Date("2026-10-16T12:30:00Z") });
-  const waiting = await buildWaiting(ctx, northgate.school);
-  console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}`);
+  const waiting = await buildWaiting(ctx, northgate.school, { pupilEmail: `zz.pupil01@${DOMAIN}`, others: true });
+  console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}; not the sweep's to decide: ${waiting.otherJoin?.id ?? "none"}, ${waiting.otherClaim?.id ?? "none"}`);
   const southbank = await buildSouthbank(ctx);
+  // The same pair at the second school, for Northgate's staff to be refused from outside.
+  await buildWaiting(ctx, southbank.school, { tag: "southbank" });
   await buildRollNumbers(southbank.school);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   await buildRollNumbers(banyan.school);

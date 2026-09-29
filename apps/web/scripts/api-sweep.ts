@@ -121,8 +121,20 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug } });
   const s = school.id;
   const first = async <T extends { id: string }>(q: Promise<T | null>) => (await q)?.id ?? null;
-  /** A fixture row with a fixed id, renewed by `write`; null when the fixtures have not made it. */
-  const renewed = async (write: () => Promise<{ count: number }>, id: string) => ((await write()).count > 0 ? { id } : null);
+  /**
+   * This school's waiting fixture among the ids the builder gives (zz-fixtures.ts `waitingIds`), made new
+   * first: a request lives thirty days, and a fixture built in August must still be waiting in October.
+   * Null when the fixtures have not made it.
+   */
+  const again = { status: "PENDING", createdAt: new Date(), decidedAt: null, declineReason: null };
+  const waitingJoin = async (ids: string[]) => {
+    await db.joinRequest.updateMany({ where: { id: { in: ids }, schoolId: s }, data: again });
+    return first(db.joinRequest.findFirst({ where: { id: { in: ids }, schoolId: s }, select: { id: true } }));
+  };
+  const waitingClaim = async (ids: string[]) => {
+    await db.guardianClaim.updateMany({ where: { id: { in: ids }, schoolId: s }, data: again });
+    return first(db.guardianClaim.findFirst({ where: { id: { in: ids }, schoolId: s }, select: { id: true } }));
+  };
   // The grade-3 class first: the exams, cards, records, syllabus and certificates fixtures all live there, and the teacher actor is its lead.
   const klass = (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
   const student = klass ? await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true } }) : null;
@@ -140,8 +152,10 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     heldCommentId: await first(db.comment.findFirst({ where: { schoolId: s, status: "PENDING" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
     // The fixture's own two rows, by id (zz-fixtures.ts `buildWaiting`), made new first: a request
     // lives thirty days, and a fixture built in August must still be waiting in October.
-    joinRequestId: await first(renewed(() => db.joinRequest.updateMany({ where: { id: "zz-fixture-join", schoolId: s }, data: { status: "PENDING", createdAt: new Date(), decidedAt: null } }), "zz-fixture-join")),
-    guardianClaimId: await first(renewed(() => db.guardianClaim.updateMany({ where: { id: "zz-fixture-claim", schoolId: s }, data: { status: "PENDING", createdAt: new Date(), decidedAt: null } }), "zz-fixture-claim")),
+    joinRequestId: await waitingJoin(["zz-fixture-join", "zz-fixture-join-southbank"]),
+    guardianClaimId: await waitingClaim(["zz-fixture-claim", "zz-fixture-claim-southbank"]),
+    otherClassJoinRequestId: await waitingJoin(["zz-fixture-join-other"]),
+    otherFamilyClaimId: await waitingClaim(["zz-fixture-claim-other"]),
     conversationId: await first(db.conversation.findFirst({ where: { schoolId: s }, select: { id: true } })),
     remarkThreadId: await first(db.remarkThread.findFirst({ where: { schoolId: s }, select: { id: true } })),
     // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date.
@@ -293,6 +307,8 @@ async function crossProbe(mode: "school" | "person") {
   const homeFx = await fixture();
   const byDesign: string[] = [];
   const ownData: string[] = [];
+  /** The doors tried with a body or a path of the probe's own, named so the count can be read. */
+  const tried: string[] = [];
   // A door that answers 2xx is a breach only if the answer carries the other person's id or name; a family door that
   // ignores a childId it was not built to take and answers the caller's OWN child is not a leak — it is listed apart.
   const check = async (e: Endpoint, role: Role, path: string, body: Record<string, unknown> | null, label: string, mustNotCarry: string[] = []) => {
@@ -306,15 +322,20 @@ async function crossProbe(mode: "school" | "person") {
   if (mode === "school") {
     const fx = await fixture(CROSS_SCHOOL);
     for (const e of ENDPOINTS) {
-      if (typeof e.sample !== "function") continue; // a fixed path carries no id to swap
+      // The probe's own path where the ordinary sweep has none (a door with no body, whose call is the act).
+      const pathOf = e.probe?.path ?? (typeof e.sample === "function" ? e.sample : null);
+      if (!pathOf) continue; // a fixed path carries no id to swap
       if (e.access === "anyone") { skipped.push(`${e.method} ${e.path} (public)`); continue; }
-      if (PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${e.method} ${e.path} (platform-wide)`); continue; }
+      // A door that names a probe is a school's, wherever it is filed: the queue of people waiting is under /shared.
+      if (!e.probe && PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${e.method} ${e.path} (platform-wide)`); continue; }
       const key = `${e.method} ${e.path}`;
       if (CROSS_SCHOOL_BY_DESIGN[key]) { byDesign.push(`${key}: ${CROSS_SCHOOL_BY_DESIGN[key]}`); continue; }
-      const path = e.sample(fx);
+      const path = pathOf(fx);
       if (path === null || /\{\w+\}/.test(path)) { skipped.push(key); continue; }
-      if (path === e.sample(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
-      const body = e.sampleBody ? e.sampleBody(fx) : null;
+      if (path === pathOf(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
+      // A valid body, so the refusal is the fence's and not the parser's.
+      const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
+      if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
       for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
         if (Array.isArray(e.access) && !e.access.includes(role)) continue; // a role the door refuses anyway proves nothing here
         await check(e, role, path, body, "another school's ids");
@@ -336,6 +357,19 @@ async function crossProbe(mode: "school" | "person") {
     if (!notMine) throw new Error("no unlinked pupil to probe with");
     const nameOf = async (id: string) => (await db.membership.findUniqueOrThrow({ where: { id }, select: { user: { select: { name: true } } } })).user.name;
     const notMineNeedles = [notMine.id, await nameOf(notMine.id)];
+    // The queue's two decisions, by the people who may decide SOME and not these: a teacher of another class,
+    // and a guardian of another child. A valid decision is sent, so the refusal is the rule's.
+    const decide = (path: string) => ENDPOINTS.find((e) => e.method === "POST" && e.path === path)!;
+    if (homeFx.otherClassJoinRequestId) {
+      const e = decide("/api/v1/shared/joins/{requestId}/decide");
+      await check(e, "TEACHER", `/api/v1/shared/joins/${homeFx.otherClassJoinRequestId}/decide`, { decision: "APPROVE" }, "a join by another class's code");
+      tried.push(`POST ${e.path} as TEACHER (valid body)`);
+    } else skipped.push("POST /api/v1/shared/joins/{requestId}/decide (no join by another class's code in the fixtures)");
+    if (homeFx.otherFamilyClaimId) {
+      const e = decide("/api/v1/shared/claims/{claimId}/decide");
+      await check(e, "PARENT", `/api/v1/shared/claims/${homeFx.otherFamilyClaimId}/decide`, { decision: "APPROVE" }, "a claim on a child not theirs");
+      tried.push(`POST ${e.path} as PARENT (valid body)`);
+    } else skipped.push("POST /api/v1/shared/claims/{claimId}/decide (no claim on another family's child in the fixtures)");
     const untaughtNeedles = untaughtPupil ? [untaughtPupil.studentMembershipId, await nameOf(untaughtPupil.studentMembershipId)] : [];
     for (const e of ENDPOINTS) {
       if (e.access === "anyone" || PLATFORM_WIDE.some((re) => re.test(e.path))) continue;
@@ -358,6 +392,7 @@ async function crossProbe(mode: "school" | "person") {
   }
   const failed = results.filter((r) => !r.ok);
   for (const r of failed) console.log(`✗ BREACH ${r.endpoint} as ${r.role}: got ${r.got}`);
+  for (const d of tried) console.log(`· tried: ${d}`);
   for (const b of byDesign) console.log(`· by design: ${b}`);
   for (const o of ownData) console.log(`· own data: ${o}`);
   console.log(`cross-${mode}: ${results.length - failed.length}/${results.length} doors stayed shut, ${failed.length} opened, ${skipped.length} skipped.`);
