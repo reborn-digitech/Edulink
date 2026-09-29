@@ -8,7 +8,7 @@ import { notifyGuardians } from "./notify";
 import { stayAttendance } from "./school-record";
 import { markRequestIssued, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
-import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
+import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, placeholderKeys, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -128,6 +128,17 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
 /** Create, or replace by id. The name is unique per school; a template issued from may still be reworded, because issued documents keep their own wording. */
 export async function saveTemplate(ctx: ActiveContext, input: CertificateTemplateSave, templateId?: string) {
   const caller = admin(ctx);
+  /**
+   * A CODE THE CERTIFICATE CANNOT FILL IS REFUSED, AND NAMED. It used to be
+   * saved, and printed a dash on every paper issued from the template with
+   * nobody told why. The web's editor has refused it since e3a344a; this
+   * is the same refusal for the phone and for anything else that calls the
+   * API. A template saved before this with such a code in it still opens
+   * and still issues — it is refused when it is next saved.
+   */
+  const known = new Set<string>(PLACEHOLDER_KEYS);
+  const unknown = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(placeholderKeys))].filter((key) => !known.has(key));
+  if (unknown.length > 0) throw new AccessError("certificates.unknownDetails", "FORBIDDEN", { list: unknown.map((k) => `[[${k}]]`).join(", ") });
   const data = { kind: input.kind, name: input.name, locale: input.locale, title: input.title, intro: input.intro, rowsJson: JSON.stringify(input.rows), outro: input.outro, layoutJson: JSON.stringify(input.layout), serialPrefix: input.serialPrefix.toUpperCase(), active: input.active };
   const clash = await db.certificateTemplate.findFirst({ where: { schoolId: caller.schoolId, name: input.name, ...(templateId ? { id: { not: templateId } } : {}) }, include: { _count: { select: { certificates: true } } } });
   if (clash) {

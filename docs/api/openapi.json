@@ -55197,7 +55197,7 @@
         }
       },
       "post": {
-        "summary": "Create a template; the name is unique per school",
+        "summary": "Create a template; the name is unique per school; a [[code]] the certificate cannot fill is refused with a 403 that names it",
         "description": "Roles: ADMIN.",
         "security": [
           {
@@ -55539,7 +55539,7 @@
     },
     "/api/v1/office/certificate-templates/{templateId}": {
       "post": {
-        "summary": "Replace a template's wording, rows, layout and prefix; certificates already issued keep theirs",
+        "summary": "Replace a template's wording, rows, layout and prefix; certificates already issued keep theirs; a [[code]] the certificate cannot fill is refused with a 403 that names it",
         "description": "Roles: ADMIN.",
         "security": [
           {

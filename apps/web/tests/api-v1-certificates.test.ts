@@ -140,6 +140,13 @@ describe("templates", () => {
     expect((await repeat.json()).id).toBe(bonafideId);
     expect((await templatesPost(json("/api/v1/office/certificate-templates", { ...bonafide, title: "Another heading", active: true }))).status).toBe(403);
     expect((await templatesPost(json("/api/v1/office/certificate-templates", { kind: "TC" }))).status).toBe(422);
+    // A code the certificate cannot fill is refused and named, wherever in the template it is; nothing is saved.
+    for (const bad of [{ intro: "Certified that [[pupil.nmae]] is a pupil." }, { outro: "Issued to [[pupil.studentCode]]." }, { rows: [{ label: "Name", value: "[[pupil.name]] [[school.joinCode]]" }] }, { title: "[[nothing.here]]" }]) {
+      const refused = await templatesPost(json("/api/v1/office/certificate-templates", { ...bonafide, name: "ZZ Unknown code", ...bad, active: true }));
+      expect(refused.status).toBe(403);
+      expect((await refused.json()).error).toMatch(/\[\[(pupil\.nmae|pupil\.studentCode|school\.joinCode|nothing\.here)\]\]/);
+    }
+    expect(await db.certificateTemplate.count({ where: { schoolId, name: "ZZ Unknown code" } })).toBe(0);
 
     const tc = presetsFor("hi").find((p) => p.kind === "TC")!;
     res = await templatesPost(json("/api/v1/office/certificate-templates", { ...tc, name: "ZZ TC Hindi", serialPrefix: "tc", active: true }));
