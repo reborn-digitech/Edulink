@@ -24,13 +24,14 @@ import { RemovePanel } from "./remove-actions";
 import { SubjectsPanel } from "./subjects-panel";
 import { ParentLinkPanel } from "./parent-link-panel";
 import { BirthdatePanel } from "./birthdate-panel";
+import { LegalNamePanel } from "./legal-name-panel";
 import { FirstSignInPanel } from "./first-signin-panel";
 import { StaffRecordPanel, type StaffRecordInitial } from "./staff-record-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "firstSignin" | "staff" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "legalName" | "firstSignin" | "staff" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -51,6 +52,7 @@ export function DirectoryMenu({
   isTeacher,
   subjects,
   birthdate,
+  legalName,
   handleOnly,
   leavingOnKey,
   staffRecord,
@@ -65,6 +67,8 @@ export function DirectoryMenu({
   subjects?: string[];
   /** ISO date on file, "" when none — the office may set or correct it. */
   birthdate?: string;
+  /** The name papers print — the office may correct it. */
+  legalName?: string;
   /** A pupil on a login handle with no address: the office can issue a first sign-in code. */
   handleOnly?: boolean;
   /** A leaving already dated ahead — offers Cancel instead of Record as left. */
@@ -191,6 +195,12 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
+              {!hasLeft && legalName !== undefined && (
+                <MenuItem icon={<IdentificationCardIcon className="size-4" />} onClick={() => show("legalName")}>
+                  {t("people.legalNameAction")}
+                </MenuItem>
+              )}
+
               {isStudent && handleOnly && !hasLeft && !suspended && (
                 <MenuItem icon={<KeyIcon className="size-4" />} onClick={() => show("firstSignin")}>
                   {t("people.firstSigninAction")}
@@ -278,6 +288,9 @@ export function DirectoryMenu({
           initial={birthdate ?? ""}
           onClose={() => setPanel(null)}
         />
+      )}
+      {panel === "legalName" && legalName !== undefined && (
+        <LegalNamePanel membershipId={membershipId} name={name} initial={legalName} onClose={() => setPanel(null)} />
       )}
       {panel === "staff" && staffRecord && (
         <StaffRecordPanel membershipId={membershipId} name={name} initial={staffRecord} onClose={() => setPanel(null)} />

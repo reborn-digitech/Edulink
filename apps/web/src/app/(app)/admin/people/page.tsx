@@ -313,6 +313,12 @@ export default async function DirectoryPage({
                             {t("people.leavingOn", { date: formatDateKey(member.scheduledDeparture.leaveOnKey, { dateStyle: "medium" }) })}
                           </p>
                         )}
+                        {/* The name papers print, where it is not the one the row is called by. */}
+                        {member.user.name !== displayName && (
+                          <p className="mt-0.5 text-xs text-fg-subtle" data-testid="legal-name">
+                            {t("people.legalNameLine", { name: member.user.name })}
+                          </p>
+                        )}
                         {role === "STUDENT" && !member.leftAt && (
                           <p className="mt-0.5 text-xs text-fg-subtle">
                             {member.user.birthdate
@@ -364,6 +370,7 @@ export default async function DirectoryPage({
                           isTeacher={role === "TEACHER"}
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
+                          legalName={member.user.name}
                           handleOnly={!isDeliverableEmail(member.user.email)}
                           leavingOnKey={member.scheduledDeparture?.leaveOnKey ?? null}
                           staffRecord={

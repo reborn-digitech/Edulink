@@ -558,6 +558,19 @@ describe("⚠ a published card keeps saying what it said", () => {
     expect(card!.status).toBe("DRAFT");
     expect(card!.items[0]!.scoreMilli).toBe(55_000);
   });
+
+  it("⚠ carries the legal name it was published with, and gives it up when it is withdrawn", async () => {
+    const cardId = await publishOne();
+    const legal = (await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId }, select: { user: { select: { name: true } } } })).user.name;
+    expect((await db.reportCard.findUniqueOrThrow({ where: { id: cardId } })).studentName).toBe(legal);
+    // What the card prints is its own copy, whatever the account says afterwards.
+    await db.reportCard.update({ where: { id: cardId }, data: { studentName: "ZZ As It Was Printed" } });
+    expect((await getCard(lead, cardId))!.studentName).toBe("ZZ As It Was Printed");
+
+    expect((await withdrawCards(lead, classId, TITLE)).ok).toBe(true);
+    expect((await db.reportCard.findUniqueOrThrow({ where: { id: cardId } })).studentName).toBeNull();
+    expect((await getCard(lead, cardId))!.studentName).toBe(legal);
+  });
 });
 
 describe("⚠ a draft is invisible outside the staff room", () => {

@@ -2833,6 +2833,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    onlyTheOfficeCorrectsLegalNames: "केवल स्कूल का एडमिन कानूनी नाम सुधार सकता है।",
     thatRequestHasExpired: "वह अनुरोध 30 दिनों से पुराना है और उसका समय समाप्त हो गया है। वे फिर से अनुरोध कर सकते हैं।",
     fileNotYours: "वह फ़ाइल आपने अपलोड नहीं की है।",
     sessionNotFound: "वह डिवाइस यहाँ साइन-इन नहीं है।",
@@ -5132,6 +5133,7 @@ export const hi: Dictionary = {
   },
 
   audit: {
+    userLegalNameSet: "कानूनी नाम सुधारा",
     schoolProfileUpdate: "स्कूल की निर्देशिका प्रोफ़ाइल बदली",
     schoolProfilePublish: "स्कूल को निर्देशिका में प्रकाशित किया",
     schoolProfileUnpublish: "स्कूल को निर्देशिका से हटाया",
@@ -5389,6 +5391,20 @@ export const hi: Dictionary = {
     expertProfileUpdate: "एक विशेषज्ञ ने अपनी प्रोफ़ाइल बदली",
   },
   people: {
+    legalNameAction: "कानूनी नाम…",
+    legalNameTitle: "{name} का कानूनी नाम",
+    legalNameBody: "वह नाम जो प्रमाणपत्रों, रिपोर्ट कार्डों और सरकारी विवरणों पर छपता है। नए कागज़ात पर सुधारा हुआ नाम छपेगा। पहले जारी हो चुके कागज़ात पर वही नाम रहेगा जिसके साथ वे जारी हुए थे: किसी को बदलने के लिए उसे रद्द करके फिर से जारी करें। संबंधित व्यक्ति को, और विद्यार्थी के अभिभावकों को, सूचित किया जाता है।",
+    legalNameField: "कानूनी नाम, जैसा प्रवेश रजिस्टर में है",
+    legalNameReason: "सुधार का कारण",
+    legalNameChoose: "कारण चुनें",
+    legalNameReasonSpelling: "वर्तनी गलत थी",
+    legalNameReasonAdmission: "प्रवेश रजिस्टर या जन्म प्रमाणपत्र से मेल नहीं खाता था",
+    legalNameReasonLegalChange: "नाम कानूनी रूप से बदला गया",
+    legalNameSaved: "कानूनी नाम सुधारा गया",
+    legalNameNotSaved: "कानूनी नाम सुधारा नहीं जा सका",
+    legalNameNotAName: "नाम अक्षरों में लिखें, 2 से 120 अक्षर, बिना अंकों या चिह्नों के।",
+    legalNameChooseReason: "चुनें कि नाम क्यों सुधारा जा रहा है।",
+    legalNameLine: "कानूनी नाम: {name}",
     leavingOn: "{date} को छोड़ेंगे",
     cancelLeaving: "निर्धारित छोड़ना रद्द करें",
     leavingScheduled: "{name} का {date} को छोड़ना दर्ज है। तब तक उनकी पूरी पहुँच बनी रहेगी।",
@@ -6099,6 +6115,7 @@ export const hi: Dictionary = {
     forChild: "{name} के लिए",
   },
   notifTitle: {
+    legalNameSet: "स्कूल के कागज़ात पर कानूनी नाम सुधारा गया",
     incident: "{name}: स्कूल में एक घटना",
     incidentIllness: "{name} की स्कूल में तबीयत ठीक नहीं थी",
     coverAssigned: "कृपया {className} की {subject} कक्षा लें, {period}",
@@ -6160,6 +6177,7 @@ export const hi: Dictionary = {
     feeClaimWaiting: "एक UPI भुगतान पुष्टि की प्रतीक्षा में है",
   },
   notifBody: {
+    legalNameSet: "स्कूल कार्यालय ने इसे {name} किया है। पहले जारी हो चुके कागज़ात पर वही नाम रहेगा जिसके साथ वे जारी हुए थे। यदि यह गलत है, तो कार्यालय को बताएँ।",
     coverForLeave: "{name} के लिए, {from} से {to} तक: {classes}।",
     staffRecordUpdated: "कार्यालय ने आपका स्टाफ रिकॉर्ड अपडेट किया। देखने के लिए अपनी प्रोफ़ाइल खोलें।",
     birthdateSet: "स्कूल कार्यालय ने आपकी जन्मतिथि दर्ज की। अगर ग़लत है तो कार्यालय को बताएँ।",

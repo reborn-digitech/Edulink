@@ -784,6 +784,10 @@ model ReportCard {
 
   createdByMembershipId String?
   publishedAt           DateTime?
+  /// The pupil's legal name as the published card printed it: set when the
+  /// card is published, cleared when it is withdrawn to a draft. A draft
+  /// reads the name of today.
+  studentName           String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -4078,6 +4082,11 @@ model IssuedCertificate {
   /// Typed at issue: what a bonafide is for, a remark on a TC.
   purpose             String?
   remark              String?
+  /// The pupil's legal name AS PRINTED, frozen at issue like the rows and the
+  /// serial. The office may correct a legal name afterwards
+  /// (lib/legal-name.ts); the paper in the family's drawer does not change,
+  /// and the public check by code must go on matching it.
+  studentName         String?
   /// The verification code printed on the document.
   code                String    @unique
   issuedByUserId      String?

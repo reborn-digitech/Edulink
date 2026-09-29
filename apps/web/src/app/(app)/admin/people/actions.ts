@@ -17,6 +17,7 @@ import { scheduleDeparture, cancelScheduledDeparture } from "@/lib/school-record
 import { todayKey } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { setMemberBirthdate } from "@/lib/birthdate";
+import { correctLegalName } from "@/lib/legal-name";
 import type { GuardianRelation } from "@/lib/constants";
 import {
   recordDeparture,
@@ -219,6 +220,19 @@ export async function setBirthdateAction(membershipId: string, dateKey: string):
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     revalidatePath("/admin/calendar");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The office corrects a legal name, with a coded reason — audited, and told. Papers already out keep theirs. */
+export async function correctLegalNameAction(membershipId: string, name: string, reason: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await correctLegalName(ctx, membershipId, name, reason);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
     return { ok: true };
   } catch (error) {
     return failure(error);

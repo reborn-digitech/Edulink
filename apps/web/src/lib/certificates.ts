@@ -220,6 +220,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
         schoolId: caller.schoolId,
         templateId: template.id,
         studentMembershipId: input.studentMembershipId,
+        // The name as this paper prints it, kept with the paper.
+        studentName: facts.name,
         academicYearId: year.id,
         kind: template.kind,
         locale,
@@ -305,8 +307,9 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
     purpose: cert.purpose,
     remark: cert.remark,
     studentMembershipId: cert.studentMembershipId,
-    // The legal name on the paper, as it was printed.
-    studentName: cert.student.user.name,
+    // The legal name on the paper, as it was printed: the paper's own copy,
+    // and the account's only for a paper older than the copy.
+    studentName: cert.studentName ?? cert.student.user.name,
     className: cert.student.enrollments[0]?.class.name ?? null,
     school: cert.school,
     code: cert.code,
@@ -319,8 +322,8 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
   };
 }
 
-const listRow = (c: { id: string; kind: string; locale: string; serial: string; title: string; studentMembershipId: string; issuedAt: Date; revokedAt: Date | null; student: { user: { name: string } } }) => ({
-  id: c.id, kind: c.kind as CertificateKind, locale: asLocale(c.locale), serial: c.serial, title: c.title, studentMembershipId: c.studentMembershipId, studentName: c.student.user.name, issuedAt: c.issuedAt.toISOString(), revokedAt: c.revokedAt?.toISOString() ?? null,
+const listRow = (c: { id: string; kind: string; locale: string; serial: string; title: string; studentMembershipId: string; studentName: string | null; issuedAt: Date; revokedAt: Date | null; student: { user: { name: string } } }) => ({
+  id: c.id, kind: c.kind as CertificateKind, locale: asLocale(c.locale), serial: c.serial, title: c.title, studentMembershipId: c.studentMembershipId, studentName: c.studentName ?? c.student.user.name, issuedAt: c.issuedAt.toISOString(), revokedAt: c.revokedAt?.toISOString() ?? null,
 });
 
 /** The office's list, newest first, optionally one pupil's. */

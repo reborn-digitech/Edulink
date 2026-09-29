@@ -883,3 +883,18 @@ export const adminStaffSchema = z.object({
   subjectOptions: z.array(z.object({ subject: z.string(), count: z.number().int() })),
 });
 export type AdminStaff = z.infer<typeof adminStaffSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* Correcting a legal name                                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Why the office corrected a legal name. A CODE, NOT A SENTENCE: it is kept
+ * in the audit log, which holds no free text about a child.
+ *   SPELLING          it was typed wrongly
+ *   ADMISSION_RECORD  it did not match the admission register or the birth certificate
+ *   LEGAL_CHANGE      the name itself changed: a gazette notice, a court order, a marriage
+ */
+export const LEGAL_NAME_REASONS = ["SPELLING", "ADMISSION_RECORD", "LEGAL_CHANGE"] as const;
+export const legalNameReasonSchema = z.enum(LEGAL_NAME_REASONS);
+export type LegalNameReason = z.infer<typeof legalNameReasonSchema>;

@@ -3012,6 +3012,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyTheOfficeCorrectsLegalNames: "Only a school admin can correct a legal name.",
     thatRequestHasExpired: "That request is more than 30 days old and has expired. They can ask again.",
     fileNotYours: "That file is not one you uploaded.",
     sessionNotFound: "That device is not signed in here.",
@@ -5514,6 +5515,7 @@ export const en = {
   },
 
   audit: {
+    userLegalNameSet: "Corrected a legal name",
     schoolProfileUpdate: "Updated the school’s directory profile",
     schoolProfilePublish: "Published the school in the directory",
     schoolProfileUnpublish: "Removed the school from the directory",
@@ -5774,6 +5776,20 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    legalNameAction: "Legal name…",
+    legalNameTitle: "Legal name for {name}",
+    legalNameBody: "The name certificates, report cards and filings print. New papers will print the corrected name. Papers already issued keep the name they were issued with: revoke and issue again to replace one. The person, and a pupil's guardians, are told.",
+    legalNameField: "Legal name, as on the admission register",
+    legalNameReason: "Why it is being corrected",
+    legalNameChoose: "Choose a reason",
+    legalNameReasonSpelling: "It was spelt wrongly",
+    legalNameReasonAdmission: "It did not match the admission register or birth certificate",
+    legalNameReasonLegalChange: "The name was legally changed",
+    legalNameSaved: "Legal name corrected",
+    legalNameNotSaved: "Could not correct the legal name",
+    legalNameNotAName: "Enter the name in letters, 2 to 120 characters, with no numbers or symbols.",
+    legalNameChooseReason: "Choose why the name is being corrected.",
+    legalNameLine: "Legal name: {name}",
     leavingOn: "Leaving on {date}",
     cancelLeaving: "Cancel scheduled leaving",
     leavingScheduled: "{name} is recorded as leaving on {date}. They keep full access until then.",
@@ -6535,6 +6551,7 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    legalNameSet: "The legal name on the school's papers was corrected",
     incident: "{name}: an incident at school",
     incidentIllness: "{name} was unwell at school",
     coverAssigned: "Please cover {subject} for {className}, {period}",
@@ -6598,6 +6615,7 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    legalNameSet: "The school office set it to {name}. Papers already issued keep the name they were issued with. If it is wrong, tell the office.",
     coverForLeave: "For {name}, {from} to {to}: {classes}.",
     staffRecordUpdated: "The office updated your staff record. Open your profile to see it.",
     birthdateSet: "The school office set your date of birth. If it is wrong, tell the office.",

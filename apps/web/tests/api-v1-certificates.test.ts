@@ -364,3 +364,81 @@ describe("a leaver from an earlier year, and the day of issue", () => {
     expect(list.items.map((i: { studentName: string }) => i.studentName)).toEqual(["ZZ Cert Bhakti Bhosale", "ZZ Cert Bhakti Bhosale"]);
   });
 });
+
+describe("⚠ the office corrects a legal name", () => {
+  const OLD = "ZZ Cert Aarav Apte";
+  const NEW = "ZZ Cert Aarav Aapte";
+
+  it("is the admin's alone, wants a name in letters and a reason from the list, and changes nothing until it has both", async () => {
+    const { correctLegalName } = await import("@/lib/legal-name");
+    for (const who of ["TEACHER", "PRINCIPAL", "PARENT", "PUPIL"] as const) {
+      await as(who);
+      await expect(correctLegalName((await getSession())!, pupilA, NEW, "SPELLING")).rejects.toMatchObject({ key: "access.onlyTheOfficeCorrectsLegalNames" });
+    }
+    await as("ADMIN");
+    const admin = (await getSession())!;
+    expect(await correctLegalName(admin, pupilA, "Aarav 2", "SPELLING")).toEqual({ ok: false, errorKey: "people.legalNameNotAName" });
+    expect(await correctLegalName(admin, pupilA, "A", "SPELLING")).toEqual({ ok: false, errorKey: "people.legalNameNotAName" });
+    expect(await correctLegalName(admin, pupilA, "<b>Aarav</b>", "SPELLING")).toEqual({ ok: false, errorKey: "people.legalNameNotAName" });
+    expect(await correctLegalName(admin, pupilA, NEW, "because I say so")).toEqual({ ok: false, errorKey: "people.legalNameChooseReason" });
+    expect(await correctLegalName(admin, "no-such-membership", NEW, "SPELLING")).toEqual({ ok: false, errorKey: "refusal.notAMemberHere" });
+    // The same name is no correction: nothing is written and nobody is told.
+    expect(await correctLegalName(admin, pupilA, `  ${OLD}  `, "SPELLING")).toEqual({ ok: true, changed: false });
+    expect((await db.user.findUniqueOrThrow({ where: { id: pupilAUserId } })).name).toBe(OLD);
+    expect(await db.auditLog.count({ where: { schoolId, action: "user.legalname.set" } })).toBe(0);
+  });
+
+  it("a name in Devanagari, and one with an apostrophe and a hyphen, are names", async () => {
+    const { cleanLegalName } = await import("@/lib/legal-name");
+    expect(cleanLegalName("  आरव   आपटे ")).toBe("आरव आपटे");
+    expect(cleanLegalName("Mary-Anne O’Brien")).toBe("Mary-Anne O’Brien");
+    expect(cleanLegalName("Dr. A. P. J. Kalam")).toBe("Dr. A. P. J. Kalam");
+    expect(cleanLegalName("-Aarav")).toBeNull();
+  });
+
+  it("⚠ the paper already out keeps the name it was issued with; the next paper prints the corrected one; the pupil and the guardian are told", async () => {
+    const { correctLegalName } = await import("@/lib/legal-name");
+    await as("ADMIN");
+    const admin = (await getSession())!;
+    // A paper issued under the old name carries its own copy of it.
+    const certA = (await db.issuedCertificate.findFirstOrThrow({ where: { schoolId, studentMembershipId: pupilA, kind: "BONAFIDE" }, orderBy: { issuedAt: "asc" }, select: { id: true } })).id;
+    expect((await db.issuedCertificate.findUniqueOrThrow({ where: { id: certA } })).studentName).toBe(OLD);
+    await db.notification.deleteMany({ where: { userId: { in: [pupilAUserId, parentUserId] } } });
+
+    try {
+      expect(await correctLegalName(admin, pupilA, NEW, "ADMISSION_RECORD")).toEqual({ ok: true, changed: true });
+      expect((await db.user.findUniqueOrThrow({ where: { id: pupilAUserId } })).name).toBe(NEW);
+
+      const before = await (await sharedGet(get(`/api/v1/shared/certificates/${certA}`), params({ certificateId: certA }))).json();
+      expect(before.studentName).toBe(OLD);
+      const after = await (await issuePost(json("/api/v1/office/certificates", { templateId: bonafideId, studentMembershipId: pupilA, purpose: "a bank account" }))).json();
+      expect(after.studentName).toBe(NEW);
+      expect(after.intro).toContain(NEW);
+      const list = await (await certsGet(get(`/api/v1/office/certificates?membershipId=${pupilA}`))).json();
+      expect(new Set(list.items.map((i: { studentName: string }) => i.studentName))).toEqual(new Set([OLD, NEW]));
+
+      const logged = await db.auditLog.findFirstOrThrow({ where: { schoolId, action: "user.legalname.set" } });
+      expect(logged.actorUserId).toBe(adminUserId);
+      expect(JSON.parse(logged.meta ?? "{}")).toEqual({ from: OLD, to: NEW, reason: "ADMISSION_RECORD" });
+      for (const userId of [pupilAUserId, parentUserId]) {
+        const told = await db.notification.findFirst({ where: { userId, titleKey: "notifTitle.legalNameSet" } });
+        expect(told?.body, userId).toContain(NEW);
+      }
+    } finally {
+      await db.user.update({ where: { id: pupilAUserId }, data: { name: OLD } });
+    }
+  });
+
+  it("⚠ another school's office finds nobody by that id", async () => {
+    const { correctLegalName } = await import("@/lib/legal-name");
+    await as("ADMIN");
+    const admin = (await getSession())!;
+    const elsewhere = await db.school.create({ data: { name: `ZZ Cert Elsewhere ${STAMP}`, slug: `zz-cert-else-${STAMP}`, code: `ZCE${String(STAMP).slice(-6)}`, contactEmail: `zz-cert-else-${STAMP}@test.invalid` }, select: { id: true } });
+    try {
+      expect(await correctLegalName({ ...admin, schoolId: elsewhere.id }, pupilA, NEW, "SPELLING")).toEqual({ ok: false, errorKey: "refusal.notAMemberHere" });
+      expect((await db.user.findUniqueOrThrow({ where: { id: pupilAUserId } })).name).toBe(OLD);
+    } finally {
+      await db.school.delete({ where: { id: elsewhere.id } });
+    }
+  });
+});

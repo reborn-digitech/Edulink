@@ -745,7 +745,9 @@ export async function publishCards(
     }
     await db.reportCard.update({
       where: { id: draft.id },
-      data: { layout: JSON.stringify({ ...snapshot, className: klass.name, classSection: klass.section }) },
+      // …and so does the pupil's legal name: a name the office corrects in
+      // June does not rewrite March's card (lib/legal-name.ts).
+      data: { layout: JSON.stringify({ ...snapshot, className: klass.name, classSection: klass.section }), studentName: draft.student.user.name },
     });
   }
 
@@ -812,7 +814,7 @@ export async function withdrawCards(
 
   const result = await db.reportCard.updateMany({
     where: { schoolId: ctx.schoolId!, classId, title, status: "PUBLISHED" },
-    data: { status: "DRAFT", publishedAt: null },
+    data: { status: "DRAFT", publishedAt: null, studentName: null },
   });
   if (result.count === 0) return { ok: false, errorKey: "reportCards.nothingUnderName" };
 
@@ -894,6 +896,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
       subjects: true,
       scale: true,
       layout: true,
+      studentName: true,
       class: { select: { name: true, section: true } },
       student: { select: { user: { select: { name: true } } } },
       createdBy: { select: { user: { select: { name: true, preferredName: true } } } },
@@ -954,7 +957,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     // The legal name: a report card is a formal paper and prints the name the
     // leaving certificate, UDISE+ and the boards print. The preferred name is
     // for the app's own screens.
-    studentName: card.student.user.name,
+    studentName: card.studentName ?? card.student.user.name,
     className: frozen ? frozenName : card.class.name,
     classSection: frozen ? (frozenSection ?? null) : card.class.section,
     fromDateKey: card.fromDateKey,
