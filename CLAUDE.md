@@ -4,7 +4,7 @@ Read HANDOFF.md first for what this is. These are the rules every change here fo
 learned the hard way and are not negotiable without saying so in the commit.
 
 ## Tooling
-- pnpm only through `corepack pnpm` (pinned 9.15.x); Node 20.20. The web app is `apps/web`, the phone
+- pnpm only through `corepack pnpm` (pinned 9.15.x); Node 24 (`.nvmrc`). The web app is `apps/web`, the phone
   `apps/mobile`; run each app's `npm run …` from its own directory.
 - Web `tsc` needs 4 GB heap: `NODE_OPTIONS=--max-old-space-size=4096`, for `tsconfig.json` and `scripts/tsconfig.json`.
 - Migrations, seeds and fixtures run through the owner connection: `npm run db:migrate` (not a bare

@@ -31,7 +31,7 @@ mutations that passed when they should not have, and what that revealed.
 
 ## Run it
 
-Requires Node ≥ 20.9 (developed on 20.20.2) and **PostgreSQL 14+**. No Docker, no
+Requires Node ≥ 24 (developed on 24.21.0; on 20.20.2 until 2026-09-30) and **PostgreSQL 14+**. No Docker, no
 external accounts.
 
 ```bash

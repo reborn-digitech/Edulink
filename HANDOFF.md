@@ -221,7 +221,7 @@ end-to-end in staging.
 
 Everything that matters is in the repository except the items below. Do these once on the new Mac.
 
-**Install.** Node 20.20 (nvm), `corepack enable` (pins pnpm 9.15), PostgreSQL 16 via Homebrew, `gh`.
+**Install.** Node 24 (`.nvmrc`; nvm, or Homebrew's keg-only `node@24` put on the PATH), `corepack enable` (pins pnpm 9.15), PostgreSQL 16 via Homebrew, `gh`.
 No Docker, no Xcode needed for the web target of the phone app.
 
 **Clone from reborn-digitech**, which is the repository CI watches:
