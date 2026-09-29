@@ -211,14 +211,13 @@ export async function pupilYearArchive(
   // Percent of available marks, only over rows where both sides exist — an
   // ungraded or unpointed assignment says nothing about how the year went.
   const scorable = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const averagePercent =
-    scorable.length === 0
-      ? null
-      : Math.round(
-          (scorable.reduce((sum, g) => sum + g.scoreMilli! / g.assignment.pointsMilli!, 0) /
-            scorable.length) *
-            100,
-        );
+  // MARKS EARNED OVER MARKS AVAILABLE, divided once — the rule grading.ts
+  // states and every other figure here follows. This used to be the mean of
+  // each piece's own percent, which counts a five-mark quiz as much as a
+  // hundred-mark paper: 1/5 and 90/100 read as 55 % of a year that was 87 %.
+  const earned = scorable.reduce((sum, g) => sum + g.scoreMilli!, 0);
+  const available = scorable.reduce((sum, g) => sum + g.assignment.pointsMilli!, 0);
+  const averagePercent = available === 0 ? null : Math.round((earned * 100) / available);
 
   return {
     reportCards: reportCards.map((c) => ({

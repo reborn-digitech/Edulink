@@ -313,6 +313,25 @@ describe("the pupil's year", () => {
     expect(data.marks.averagePercent).toBe(80);
   });
 
+  it("⚠ the year's figure is marks earned over marks available, not the mean of each piece's percent", async () => {
+    const at = new Date("2025-01-15T06:00:00.000Z");
+    const mk = async (title: string, pointsMilli: number, scoreMilli: number) => {
+      const a = await db.assignment.create({ data: { schoolId, classId, authorMembershipId: teacherM, title, pointsMilli, publishedAt: at }, select: { id: true } });
+      await db.grade.create({ data: { schoolId, assignmentId: a.id, studentMembershipId: pupilM, scoreMilli, gradedAt: at } });
+      return a.id;
+    };
+    const quiz = await mk("ZZ Five Mark Quiz", 5_000, 1_000);
+    const paper = await mk("ZZ Hundred Mark Paper", 100_000, 90_000);
+    try {
+      const data = await pupilYearArchive(pupilCtx(), pupilM, closedYearId);
+      // With the fixture's 8 of 10: 99 of 115 is 86 %. The mean of 80 %, 20 % and 90 % would have said 63 %.
+      expect(data.marks.graded).toBe(3);
+      expect(data.marks.averagePercent).toBe(86);
+    } finally {
+      await db.assignment.deleteMany({ where: { id: { in: [quiz, paper] } } });
+    }
+  });
+
   /**
    * ⚠ THE YEAR ENDS AT MIDNIGHT ON THE SCHOOL'S CLOCK, not at 00:00 UTC of
    * its last day. The window used to be `≤ endDate`, which for this Kolkata
