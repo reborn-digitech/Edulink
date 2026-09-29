@@ -1475,6 +1475,24 @@ CREATE POLICY "CertificateRequest_tenant_isolation" ON "CertificateRequest"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SignatureImage
+ALTER TABLE "SignatureImage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SignatureImage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SignatureImage_tenant_isolation" ON "SignatureImage";
+DROP POLICY IF EXISTS "SignatureImage_readable" ON "SignatureImage";
+CREATE POLICY "SignatureImage_tenant_isolation" ON "SignatureImage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PaperSignature
+ALTER TABLE "PaperSignature" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PaperSignature" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PaperSignature_tenant_isolation" ON "PaperSignature";
+DROP POLICY IF EXISTS "PaperSignature_readable" ON "PaperSignature";
+CREATE POLICY "PaperSignature_tenant_isolation" ON "PaperSignature"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- RecordChangeRequest
 ALTER TABLE "RecordChangeRequest" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "RecordChangeRequest" FORCE ROW LEVEL SECURITY;

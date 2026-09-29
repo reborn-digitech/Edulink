@@ -65,12 +65,20 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
         )}
         {outro.trim() && <p className="mt-4 whitespace-pre-wrap text-xs leading-relaxed">{fill(outro)}</p>}
 
-        <div className={`mt-8 grid grid-cols-2 gap-6 text-center text-[0.6875rem] ${muted}`}>
-          {[layout.signatureLeft, layout.signatureRight].map((who, index) => (
-            <div key={index} className="border-t border-border pt-1.5">
-              {who || " "}
-            </div>
-          ))}
+        {/* Where a signature and the seal will be drawn, as a word in a box: the pictures are the signers' own. */}
+        <div className={`mt-6 grid grid-cols-[1fr_auto_1fr] items-end gap-4 text-center text-[0.6875rem] ${muted}`} data-testid="preview-signatures">
+          {([["signerLeft", layout.signatureLeft], ["seal", ""], ["signerRight", layout.signatureRight]] as const).map(([slot, who]) =>
+            slot === "seal" ? (
+              <div key={slot} className="w-14">
+                {layout.showSeal && <div className="grid size-14 place-items-center rounded-full border border-dashed border-border-strong italic">{t("signatures.sampleSeal")}</div>}
+              </div>
+            ) : (
+              <div key={slot}>
+                <div className="grid h-8 place-items-center">{layout[slot] !== "NONE" && <span className="rounded-[--radius-sm] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}</div>
+                <div className="min-h-6 border-t border-border pt-1.5">{who}</div>
+              </div>
+            ),
+          )}
         </div>
         {layout.footerNote?.trim() && <p className={`mt-5 border-t border-border pt-3 text-[0.6875rem] ${muted}`}>{layout.footerNote}</p>}
       </div>

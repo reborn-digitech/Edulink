@@ -40,6 +40,7 @@
  * tenant yet cannot be written through the app's row-level-security role.
  */
 import { PrismaClient } from "@prisma/client";
+import { fixturePng } from "./png";
 import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
 import { createHash } from "node:crypto";
@@ -606,6 +607,34 @@ export async function buildRecordChanges(school: { id: string }, adminUserId: st
     await db.recordChangeRequest.upsert({ where: { id: waiting }, create: { id: waiting, ...data }, update: data });
   }
   return { declined: declinedId, waiting };
+}
+
+/**
+ * Signatures and the seal: the admin's and the head's own, the school's
+ * seal, and on the school's first issued certificate the admin's signature
+ * already drawn (deciding it again answers it as it stands, which is what
+ * the sweep does) and the head's still waiting, so the head's page has a
+ * paper to sign. The pictures are made here and are in no file.
+ */
+export async function buildSignatures(school: { id: string }, people: { adminUserId: string; principalUserId?: string | null }) {
+  const signature = new Uint8Array(fixturePng(300, 100));
+  const seal = new Uint8Array(fixturePng(200, 200));
+  const member = (userId: string, role: string) => db.membership.findFirst({ where: { schoolId: school.id, userId, role, status: "ACTIVE" }, select: { id: true, user: { select: { name: true } } } });
+  const admin = await member(people.adminUserId, "ADMIN");
+  const head = people.principalUserId ? await member(people.principalUserId, "PRINCIPAL") : null;
+  for (const who of [admin, head]) {
+    if (who) await db.signatureImage.upsert({ where: { membershipId: who.id }, create: { schoolId: school.id, kind: "PERSON", membershipId: who.id, png: signature }, update: { png: signature } });
+  }
+  await db.signatureImage.deleteMany({ where: { schoolId: school.id, kind: "SEAL" } });
+  await db.signatureImage.create({ data: { schoolId: school.id, kind: "SEAL", png: seal } });
+  const paper = await db.issuedCertificate.findFirst({ where: { schoolId: school.id, revokedAt: null }, orderBy: { issuedAt: "asc" }, select: { id: true } });
+  await db.paperSignature.deleteMany({ where: { schoolId: school.id } });
+  if (paper && admin) {
+    await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "LEFT", role: "ADMIN", status: "SIGNED", signerUserId: people.adminUserId, signerName: admin.user.name, png: signature, requestedByUserId: people.adminUserId, decidedAt: new Date() } });
+    await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "RIGHT", role: "PRINCIPAL", status: "PENDING", requestedByUserId: people.adminUserId } });
+    await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "SEAL", status: "SIGNED", png: seal, requestedByUserId: people.adminUserId, decidedAt: new Date() } });
+  }
+  return { paperId: paper?.id ?? null };
 }
 
 export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
@@ -2224,10 +2253,14 @@ async function main() {
   const practice = await buildPracticeAssignment(northgate.school, { classId: grade6.id, classLevel: 6, createdByMembershipId: grade6.teachers[0]!.teacherMembershipId, preferSlugs: ["maths-6-integers", "maths-6-knowing-our-numbers"], targetLevel: 3, note: "Reach level 3 before the unit test.", dueAt: new Date("2026-10-16T12:30:00Z") });
   const waiting = await buildWaiting(ctx, northgate.school, { pupilEmail: `zz.pupil01@${DOMAIN}`, others: true });
   console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}; not the sweep's to decide: ${waiting.otherJoin?.id ?? "none"}, ${waiting.otherClaim?.id ?? "none"}`);
+  const principal = await db.user.findUnique({ where: { email: `zz.principal@${DOMAIN}` }, select: { id: true } });
+  const signatures = await buildSignatures(northgate.school, { adminUserId: northgate.admin.id, principalUserId: principal?.id });
+  console.log(`  Signatures: the admin's, the head's and the seal; on certificate ${signatures.paperId ?? "none"} the admin's drawn and the head's waiting`);
   const recordChanges = await buildRecordChanges(northgate.school, northgate.admin.id, { pupilEmail: `zz.pupil01@${DOMAIN}`, waiting: true });
   console.log(`  Asks to change a record: declined ${recordChanges.declined}, waiting ${recordChanges.waiting ?? "none"}`);
   const southbank = await buildSouthbank(ctx);
   await buildRecordChanges(southbank.school, southbank.admin.id, { tag: "southbank" });
+  await buildSignatures(southbank.school, { adminUserId: southbank.admin.id });
   // The same pair at the second school, for Northgate's staff to be refused from outside.
   await buildWaiting(ctx, southbank.school, { tag: "southbank" });
   await buildRollNumbers(southbank.school);

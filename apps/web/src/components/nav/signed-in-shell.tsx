@@ -6,6 +6,7 @@ import { anyOpenReviews } from "@/lib/reviews";
 import { anyEnquiries } from "@/lib/enquiries";
 import { waitingJoinCount } from "@/lib/join-requests";
 import { waitingClaimCount } from "@/lib/guardian-claims";
+import { waitingSignatureCount } from "@/lib/signatures";
 import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
 import { unreadConversationCount } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
@@ -109,6 +110,11 @@ export async function SignedInShell({
     const waiting = (await waitingJoinCount(session)) + (await waitingClaimCount(session));
     if (waiting > 0) badges["/joins"] = waiting;
     else hiddenHrefs.push("/joins");
+  }
+  // Papers somebody else issued that wait for this reader's signature: the count on the entry, which is always there.
+  if (role === "ADMIN" || role === "PRINCIPAL") {
+    const toSign = await waitingSignatureCount(session);
+    if (toSign > 0) badges["/admin/signatures"] = toSign;
   }
   if (role === "PARENT") {
     const waiting = await waitingClaimCount(session);

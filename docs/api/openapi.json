@@ -54991,6 +54991,23 @@
                           "layout": {
                             "type": "object",
                             "properties": {
+                              "signerLeft": {
+                                "type": "string",
+                                "enum": [
+                                  "NONE",
+                                  "ADMIN",
+                                  "PRINCIPAL"
+                                ],
+                                "default": "NONE"
+                              },
+                              "signerRight": {
+                                "$ref": "#/properties/templates/items/properties/layout/properties/signerLeft",
+                                "default": "NONE"
+                              },
+                              "showSeal": {
+                                "type": "boolean",
+                                "default": false
+                              },
                               "showLogo": {
                                 "type": "boolean"
                               },
@@ -55278,6 +55295,23 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showLogo": {
                           "type": "boolean"
                         },
@@ -55469,6 +55503,23 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "signerLeft": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "ADMIN",
+                          "PRINCIPAL"
+                        ],
+                        "default": "NONE"
+                      },
+                      "signerRight": {
+                        "$ref": "#/properties/layout/properties/signerLeft",
+                        "default": "NONE"
+                      },
+                      "showSeal": {
+                        "type": "boolean",
+                        "default": false
+                      },
                       "showLogo": {
                         "type": "boolean"
                       },
@@ -55620,6 +55671,23 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showLogo": {
                           "type": "boolean"
                         },
@@ -55811,6 +55879,23 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "signerLeft": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "ADMIN",
+                          "PRINCIPAL"
+                        ],
+                        "default": "NONE"
+                      },
+                      "signerRight": {
+                        "$ref": "#/properties/layout/properties/signerLeft",
+                        "default": "NONE"
+                      },
+                      "showSeal": {
+                        "type": "boolean",
+                        "default": false
+                      },
                       "showLogo": {
                         "type": "boolean"
                       },
@@ -58018,6 +58103,23 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showLogo": {
                           "type": "boolean"
                         },
@@ -58136,9 +58238,83 @@
                     "code": {
                       "type": "string"
                     },
-                    "issuedAt": {
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "enum": [
+                              "LEFT",
+                              "RIGHT"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "ADMIN",
+                              "PRINCIPAL"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "SIGNED",
+                              "DECLINED"
+                            ]
+                          },
+                          "signerName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "image": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slot",
+                          "role",
+                          "status",
+                          "signerName",
+                          "image",
+                          "decidedAt",
+                          "can"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    },
+                    "seal": {
                       "type": "string",
-                      "format": "date-time"
+                      "nullable": true,
+                      "default": null
+                    },
+                    "issuedAt": {
+                      "$ref": "#/properties/signatures/items/properties/decidedAt"
                     },
                     "issuedByName": {
                       "type": "string",
@@ -58147,7 +58323,7 @@
                     "revokedAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/issuedAt"
+                          "$ref": "#/properties/signatures/items/properties/decidedAt"
                         }
                       ],
                       "nullable": true
@@ -58357,6 +58533,23 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showLogo": {
                           "type": "boolean"
                         },
@@ -58475,9 +58668,83 @@
                     "code": {
                       "type": "string"
                     },
-                    "issuedAt": {
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "enum": [
+                              "LEFT",
+                              "RIGHT"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "ADMIN",
+                              "PRINCIPAL"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "SIGNED",
+                              "DECLINED"
+                            ]
+                          },
+                          "signerName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "image": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slot",
+                          "role",
+                          "status",
+                          "signerName",
+                          "image",
+                          "decidedAt",
+                          "can"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    },
+                    "seal": {
                       "type": "string",
-                      "format": "date-time"
+                      "nullable": true,
+                      "default": null
+                    },
+                    "issuedAt": {
+                      "$ref": "#/properties/signatures/items/properties/decidedAt"
                     },
                     "issuedByName": {
                       "type": "string",
@@ -58486,7 +58753,7 @@
                     "revokedAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/issuedAt"
+                          "$ref": "#/properties/signatures/items/properties/decidedAt"
                         }
                       ],
                       "nullable": true
@@ -58691,6 +58958,23 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showLogo": {
                           "type": "boolean"
                         },
@@ -58809,9 +59093,83 @@
                     "code": {
                       "type": "string"
                     },
-                    "issuedAt": {
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "enum": [
+                              "LEFT",
+                              "RIGHT"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "ADMIN",
+                              "PRINCIPAL"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "SIGNED",
+                              "DECLINED"
+                            ]
+                          },
+                          "signerName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "image": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slot",
+                          "role",
+                          "status",
+                          "signerName",
+                          "image",
+                          "decidedAt",
+                          "can"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    },
+                    "seal": {
                       "type": "string",
-                      "format": "date-time"
+                      "nullable": true,
+                      "default": null
+                    },
+                    "issuedAt": {
+                      "$ref": "#/properties/signatures/items/properties/decidedAt"
                     },
                     "issuedByName": {
                       "type": "string",
@@ -58820,7 +59178,7 @@
                     "revokedAt": {
                       "allOf": [
                         {
-                          "$ref": "#/properties/issuedAt"
+                          "$ref": "#/properties/signatures/items/properties/decidedAt"
                         }
                       ],
                       "nullable": true
@@ -59651,6 +60009,653 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/office/signatures": {
+      "get": {
+        "summary": "The reader's own signature, the school's seal, and the papers waiting for the reader's signature",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mine": {
+                      "type": "object",
+                      "properties": {
+                        "image": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "image",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "seal": {
+                      "type": "object",
+                      "properties": {
+                        "image": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "updatedAt": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/mine/properties/updatedAt"
+                            }
+                          ],
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "image",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "canSetSeal": {
+                      "type": "boolean"
+                    },
+                    "waiting": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "paperKind": {
+                            "type": "string",
+                            "enum": [
+                              "CERTIFICATE",
+                              "REPORT_CARD"
+                            ]
+                          },
+                          "paperId": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "serial": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "requestedByName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/mine/properties/updatedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "paperKind",
+                          "paperId",
+                          "title",
+                          "serial",
+                          "studentName",
+                          "requestedByName",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "mine",
+                    "seal",
+                    "canSetSeal",
+                    "waiting"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/signatures/mine": {
+      "post": {
+        "summary": "Set the reader's own signature: a PNG as a data URL, at most 200 KB and 1200 by 600. It is drawn at once on papers the reader issues, and on a paper somebody else issues only after the reader approves that paper",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "pattern": "^data:image\\/png;base64,[A-Za-z0-9+/=]+$",
+                    "maxLength": 400000
+                  }
+                },
+                "required": [
+                  "image"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/signatures/mine/remove": {
+      "post": {
+        "summary": "Take the reader's signature away; papers already signed keep their own copy",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/signatures/seal": {
+      "post": {
+        "summary": "Set the school's seal: a PNG as a data URL, at most 250 KB and 800 by 800",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "pattern": "^data:image\\/png;base64,[A-Za-z0-9+/=]+$",
+                    "maxLength": 400000
+                  }
+                },
+                "required": [
+                  "image"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/signatures/seal/remove": {
+      "post": {
+        "summary": "Take the seal away; papers already sealed keep their own copy",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/office/signatures/{signatureId}/decide": {
+      "post": {
+        "summary": "Sign a paper that waited for the reader, or decline to; only somebody of the role the line names, with a signature of their own; a settled one is answered as it stands",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paperKind": {
+                      "type": "string",
+                      "enum": [
+                        "CERTIFICATE",
+                        "REPORT_CARD"
+                      ]
+                    },
+                    "paperId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "SIGNED",
+                        "DECLINED"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "paperKind",
+                    "paperId",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approve": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "approve"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "signatureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/family/record/changes": {

@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
   num: { width: 22, color: MUTED, fontSize: 9 },
   label: { flex: 5, color: MUTED },
   value: { flex: 6, fontWeight: 700 },
-  signatures: { flexDirection: "row", justifyContent: "space-between", marginTop: 36, gap: 40 },
+  signatures: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginTop: 24, gap: 24 },
+  signatureLine: { borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 9, color: MUTED, textAlign: "center" },
   signature: { flex: 1, borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 9, color: MUTED, textAlign: "center" },
   footer: { position: "absolute", left: 52, right: 52, bottom: 24, fontSize: 7.5, color: MUTED, textAlign: "center" },
   revoked: { position: "absolute", top: 260, left: 52, right: 52, textAlign: "center", fontSize: 40, color: "#b03a2e", opacity: 0.35, fontWeight: 700 },
@@ -104,10 +105,21 @@ function CertificatePage({ cert, logo, verifyUrl, issuedOn }: { cert: IssuedCert
         </View>
       ) : null}
       {cert.outro ? <Text style={[styles.para, { marginTop: 10 }]}>{cert.outro}</Text> : null}
-      <View style={styles.signatures}>
-        <Text style={styles.signature}>{cert.layout.signatureLeft}</Text>
-        <Text style={styles.signature}>{cert.layout.signatureRight}</Text>
+      {/* The paper's own copy of each signature above its line, the seal between; a line that waits is printed bare. */}
+      {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
+      <View style={styles.signatures} wrap={false}>
+        {(["LEFT", "SEAL", "RIGHT"] as const).map((slot) => {
+          if (slot === "SEAL") return <View key={slot} style={{ width: 64, alignItems: "center", justifyContent: "flex-end" }}>{cert.seal ? <Image src={cert.seal} style={{ width: 60, height: 60, objectFit: "contain" }} /> : null}</View>;
+          const signature = cert.signatures.find((s) => s.slot === slot);
+          return (
+            <View key={slot} style={{ flex: 1 }}>
+              <View style={{ height: 40, alignItems: "center", justifyContent: "flex-end" }}>{signature?.image ? <Image src={signature.image} style={{ maxHeight: 38, maxWidth: 150, objectFit: "contain" }} /> : null}</View>
+              <Text style={styles.signatureLine}>{slot === "LEFT" ? cert.layout.signatureLeft : cert.layout.signatureRight}</Text>
+            </View>
+          );
+        })}
       </View>
+      {/* eslint-enable jsx-a11y/alt-text */}
       {cert.revokedAt ? <Text style={styles.revoked}>{words("certificates.revoke").toUpperCase()}</Text> : null}
       <Text style={styles.footer} fixed>
         {[cert.layout.footerNote, words("certificates.verifyLine", { url: verifyUrl, code: cert.code })].filter(Boolean).join("  ·  ")}

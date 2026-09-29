@@ -9,6 +9,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { RevokeForm } from "./revoke-form";
+import { SignPaper } from "@/components/certificates/sign-paper";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -80,6 +81,17 @@ export default async function CertificatePage({ params, searchParams }: { params
         </p>
       )}
 
+      {/* The reader whose signature this paper waits for signs it here, having read it. */}
+      {!cert.revokedAt &&
+        cert.signatures
+          .filter((s) => s.can.decide)
+          .map((s) => (
+            <div key={s.id} lang={readerLocale} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
+              <span>{t("signatures.yourWord")}</span>
+              <SignPaper signatureId={s.id} label={[cert.studentName, cert.title].join(", ")} />
+            </div>
+          ))}
+
       {cert.revokedAt && (
         <p className="mb-4 rounded-[--radius-md] border border-danger/40 bg-danger-soft px-4 py-3 text-sm font-semibold text-danger print:border-black print:bg-transparent print:text-black" data-testid="revoked-banner">
           {t("certificates.revokedBanner", { date: formatDate(new Date(cert.revokedAt)), reason: cert.revokedReason ?? "—" })}
@@ -136,13 +148,37 @@ export default async function CertificatePage({ params, searchParams }: { params
 
         {cert.outro && <p className="mx-auto mt-6 max-w-prose whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black">{cert.outro}</p>}
 
-        {/* ---------------- signatures ---------------- */}
-        <section className={`mt-12 grid grid-cols-2 gap-8 text-center text-xs ${muted}`} data-testid="signatures">
-          {[layout.signatureLeft, layout.signatureRight].map((who, index) => (
-            <div key={index} className="border-t border-border pt-2 print:border-black/40">
-              {who}
-            </div>
-          ))}
+        {/* ---------------- signatures ----------------
+            The paper's own copy of each picture, above the line it signs, and the
+            seal between them. A line whose signature still waits is printed bare;
+            that it waits is said on the screen and not on the sheet. */}
+        <section className={`mt-10 grid grid-cols-[1fr_auto_1fr] items-end gap-6 text-center text-xs ${muted}`} data-testid="signatures">
+          {(["LEFT", "SEAL", "RIGHT"] as const).map((slot) => {
+            if (slot === "SEAL") {
+              return (
+                <div key={slot} className="w-20">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- the paper's own copy, handed over as a data URL */}
+                  {cert.seal && <img src={cert.seal} alt={t("signatures.sealTitle")} className="mx-auto size-20 object-contain" data-testid="certificate-seal" />}
+                </div>
+              );
+            }
+            const signature = cert.signatures.find((s) => s.slot === slot);
+            return (
+              <div key={slot}>
+                <div className="grid h-14 place-items-end justify-center">
+                  {signature?.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- the paper's own copy, handed over as a data URL
+                    <img src={signature.image} alt={t("signatures.signedBy", { name: signature.signerName ?? "" })} className="max-h-14 max-w-full object-contain" data-testid={`certificate-signature-${slot.toLowerCase()}`} />
+                  ) : signature ? (
+                    <span lang={readerLocale} className="mb-1 rounded-full border border-border px-2 py-0.5 text-[0.6875rem] print:hidden" data-testid={`certificate-signature-${slot.toLowerCase()}-${signature.status.toLowerCase()}`}>
+                      {t(signature.status === "DECLINED" ? "signatures.declinedLine" : "signatures.awaiting")}
+                    </span>
+                  ) : null}
+                </div>
+                <div className="border-t border-border pt-2 print:border-black/40">{slot === "LEFT" ? layout.signatureLeft : layout.signatureRight}</div>
+              </div>
+            );
+          })}
         </section>
 
         <footer lang={readerLocale} className={`mt-8 border-t border-border pt-4 text-xs ${muted} print:border-black/20`}>

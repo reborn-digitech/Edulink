@@ -15,7 +15,17 @@ export default defineConfig({
   testDir: "./e2e",
   globalSetup: "./e2e/global-setup.ts",
   fullyParallel: false,
-  workers: 2,
+  /**
+   * ONE WORKER. With two, a file ran beside another, and two of the files
+   * change what their actor reads: the viewport matrix sets the admin's and
+   * the teacher's language to Hindi for half its cells, and the record's
+   * sets the guardian's. A test in another file that signed in as the same
+   * admin meanwhile was drawn in Hindi and failed on an English word
+   * (2026-09-30, seven failures in one run and none in the next). The
+   * accounts are the fixture's and there is one of each, so the files take
+   * turns.
+   */
+  workers: 1,
   retries: process.env.CI ? 1 : 0,
   timeout: 60_000,
   reporter: process.env.CI ? [["list"], ["html", { open: "never", outputFolder: "e2e/report" }]] : [["list"]],

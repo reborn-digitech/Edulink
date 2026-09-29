@@ -13,6 +13,7 @@ import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { normaliseLocale } from "@edulink/i18n";
+import { paperSignatures, signOnIssue } from "./signatures";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 
 /**
@@ -295,6 +296,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
 
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.issue", targetType: "IssuedCertificate", targetId: issued.id, meta: { kind: template.kind, locale, serial: issued.serial, templateId: template.id, requestId: input.requestId ?? null } });
   if (input.requestId) await markRequestIssued(caller.schoolId, input.requestId, issued.id);
+  // The issuer's own signature on the lines that are theirs, a wait on the lines that are somebody else's, and the seal.
+  await signOnIssue(ctx, { kind: "CERTIFICATE", id: issued.id, schoolId: caller.schoolId, title: issued.title, studentName: facts.name }, parseLayout(template.layoutJson, words));
   await notifyGuardians(input.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
     kind: "SYSTEM",
@@ -355,6 +358,7 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
   } catch {
     missing = [];
   }
+  const signed = await paperSignatures(ctx, { kind: "CERTIFICATE", id: cert.id, schoolId: cert.schoolId });
   const asPrinted = (key: string): string | null => (typeof printed[key] === "string" && (printed[key] as string).trim() ? (printed[key] as string) : null);
   return {
     id: cert.id,
@@ -375,6 +379,8 @@ export async function certificateView(ctx: ActiveContext, certificateId: string)
     className: asPrinted("class.name") ?? asPrinted("record.lastClass") ?? cert.student.enrollments[0]?.class.name ?? null,
     school: { ...cert.school, name: asPrinted("school.name") ?? cert.school.name },
     code: cert.code,
+    signatures: signed.signatures,
+    seal: signed.seal,
     issuedAt: cert.issuedAt.toISOString(),
     issuedByName: issuedBy ? (issuedBy.preferredName ?? issuedBy.name) : null,
     revokedAt: cert.revokedAt?.toISOString() ?? null,

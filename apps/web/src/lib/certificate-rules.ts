@@ -71,6 +71,9 @@ export function fillRows(rows: CertificateRow[], data: CertificateData): { rows:
 
 export function defaultLayoutFor(words: Words = englishWords): CertificateLayout {
   return {
+    signerLeft: "NONE",
+    signerRight: "NONE",
+    showSeal: false,
     showLogo: true,
     showAddress: true,
     useBrandColour: true,

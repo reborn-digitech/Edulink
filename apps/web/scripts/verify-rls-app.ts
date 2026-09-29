@@ -1932,6 +1932,26 @@ async function main() {
       `school A read ${JSON.stringify(askHere)} and decided ${askDecidedHere.count} (want the one, and 1); school B read ${JSON.stringify(askThere)} and decided ${askDecidedThere.count} (want none, and 0); the guardian's own session read ${JSON.stringify(askOwn)}, applied ${askSelfApplied}, filed ${askSelfFiled} (want none, 0, false)`,
     );
 
+    // A SIGNATURE AND THE PAPER'S COPY OF IT ARE THE SCHOOL'S ROWS. Nobody's
+    // own session reads a picture or signs a paper; the server does both
+    // under the school's binding, after the library has found the signer to
+    // hold the role the line names.
+    psql(
+      DB,
+      `INSERT INTO "SignatureImage" (id,"schoolId",kind,png,"updatedAt") VALUES ('verify-sig1','verify-a','SEAL',decode('89504e47','hex'),now());
+       INSERT INTO "PaperSignature" (id,"schoolId","paperKind","paperId",slot,role,status,"updatedAt") VALUES ('verify-ps1','verify-a','CERTIFICATE','verify-paper','RIGHT','PRINCIPAL','PENDING',now());`,
+    );
+    const inkHere = await withTenantOn(client, "verify-a", async (tx: TxLike) => ({ images: await ids(tx, "signatureImage"), papers: await ids(tx, "paperSignature") }));
+    const inkThere = await withTenantOn(client, "verify-b", async (tx: TxLike) => ({ images: await ids(tx, "signatureImage"), papers: await ids(tx, "paperSignature") }));
+    const inkOwn = await asPerson("verify-parent", async (tx) => ({ images: await ids(tx, "signatureImage"), papers: await ids(tx, "paperSignature") })).catch(() => ({ images: [] as string[], papers: [] as string[] }));
+    const inkSelfSigned = await asPerson("verify-parent", (tx) => outreachTx(tx).paperSignature!.updateMany({ where: { id: "verify-ps1" }, data: { status: "SIGNED" } })).then((r) => r.count, () => 0);
+    const inkSignedThere = await withTenantOn(client, "verify-b", (tx: TxLike) => outreachTx(tx).paperSignature!.updateMany({ where: { id: "verify-ps1" }, data: { status: "SIGNED" } }));
+    check(
+      "⚠ a signature, the seal and a paper's copy of them are the school's: another school reads and signs none, and nobody's own session reads a picture or signs a paper",
+      same(inkHere.images, ["verify-sig1"]) && same(inkHere.papers, ["verify-ps1"]) && inkThere.images.length === 0 && inkThere.papers.length === 0 && inkOwn.images.length === 0 && inkOwn.papers.length === 0 && inkSelfSigned === 0 && inkSignedThere.count === 0,
+      `school A read ${JSON.stringify(inkHere)} (want the one of each); school B read ${JSON.stringify(inkThere)} and signed ${inkSignedThere.count} (want none, and 0); a person's own session read ${JSON.stringify(inkOwn)} and signed ${inkSelfSigned} (want none, and 0)`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

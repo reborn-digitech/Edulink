@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowDownIcon, ArrowUpIcon, DotsSixVerticalIcon, FloppyDiskIcon, TrashIcon } from "@phosphor-icons/react";
-import type { CertificateKind, CertificateLayout, CertificateTemplateSave, CertificateTemplatesView } from "@edulink/contracts";
+import type { CertificateKind, CertificateLayout, CertificateTemplateSave, CertificateTemplatesView, PaperSigner } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -82,7 +82,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [preset, setPreset] = useState<string>(template ? "" : (view.presets[0]?.key ?? ""));
-  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
+  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { signerLeft: "NONE", signerRight: "NONE", showSeal: false, showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   /** A preset replaces every text at once; the fields are made anew so none keeps what it was showing. */
@@ -411,6 +411,18 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                   <CheckboxField key={key} label={layoutLabel[key]} checked={draft.layout[key]} onChange={(e) => patchLayout({ [key]: e.target.checked })} />
                 ))}
               </div>
+              {/* Who signs each line, and whether the seal is printed. The words under the lines are below. */}
+              <div className="grid gap-3 sm:grid-cols-2">
+                {(["signerLeft", "signerRight"] as const).map((side) => (
+                  <SelectField key={side} label={t(side === "signerLeft" ? "signatures.signerLeft" : "signatures.signerRight")} value={draft.layout[side]} onChange={(e) => patchLayout({ [side]: e.target.value as PaperSigner })} data-testid={`template-${side}`}>
+                    <option value="NONE">{t("signatures.signerNone")}</option>
+                    <option value="ADMIN">{t("signatures.signerAdmin")}</option>
+                    <option value="PRINCIPAL">{t("signatures.signerPrincipal")}</option>
+                  </SelectField>
+                ))}
+              </div>
+              <p className="text-xs leading-relaxed text-fg-muted">{t("signatures.signerHint")}</p>
+              <CheckboxField label={t("signatures.showSeal")} checked={draft.layout.showSeal} onChange={(e) => patchLayout({ showSeal: e.target.checked })} />
               <div className="grid gap-3 sm:grid-cols-2">
                 <TextField label={t("certificates.signatureLeft")} value={draft.layout.signatureLeft} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureLeft: e.target.value })} />
                 <TextField label={t("certificates.signatureRight")} value={draft.layout.signatureRight} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureRight: e.target.value })} />

@@ -61,6 +61,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // How a report card is worked out and printed: the office's rules, read by every card generated.
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
+    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
     // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
     { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },
@@ -111,6 +112,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/admin/report-cards", labelKey: "nav.reportCards", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/certificates", labelKey: "nav.certificates", icon: "clipboard", prefix: true, group: "running", also: ["/certificates"] },
+    { href: "/admin/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
     { href: "/admin/records", labelKey: "nav.pupilRecords", icon: "users", prefix: true, group: "running" },
     // The UDISE+ and board sheets cut from the records: the office cuts, the head reads.
     { href: "/admin/filings", labelKey: "nav.filings", icon: "clipboard", prefix: true, group: "running" },

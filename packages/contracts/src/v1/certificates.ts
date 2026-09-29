@@ -18,7 +18,20 @@ export const documentLocaleSchema = z.enum(["en", "hi", "mr"]);
 export const certificateRowSchema = z.object({ label: z.string().trim().min(1).max(80), value: z.string().trim().max(200) });
 export type CertificateRow = z.infer<typeof certificateRowSchema>;
 
+/**
+ * Who signs a paper's line. NONE prints the line and the title under it, as
+ * every paper did before 2026-09-30; ADMIN or PRINCIPAL also draws that
+ * person's signature — at once when they issue the paper themselves, and
+ * once they have approved it when somebody else did.
+ */
+export const paperSignerSchema = z.enum(["NONE", "ADMIN", "PRINCIPAL"]);
+export type PaperSigner = z.infer<typeof paperSignerSchema>;
+
 export const certificateLayoutSchema = z.object({
+  signerLeft: paperSignerSchema.default("NONE"),
+  signerRight: paperSignerSchema.default("NONE"),
+  /** The school's seal, drawn between the two signatures. */
+  showSeal: z.boolean().default(false),
   showLogo: z.boolean(),
   showAddress: z.boolean(),
   useBrandColour: z.boolean(),
@@ -225,6 +238,52 @@ export const pupilRecordSchema = z.object({
 });
 
 /* -------------------------------------------------------------------------- */
+/* Signatures and the seal                                                      */
+/* -------------------------------------------------------------------------- */
+
+/** A picture as the browser hands it over: a PNG as a data URL. The server reads the bytes and refuses anything else. */
+export const pngDataUrlSchema = z.string().regex(/^data:image\/png;base64,[A-Za-z0-9+/=]+$/, "png").max(400_000);
+export const signatureSaveSchema = z.object({ image: pngDataUrlSchema });
+export const paperSignatureStatusSchema = z.enum(["PENDING", "SIGNED", "DECLINED"]);
+/** One signature on one issued paper, as its reader sees it. */
+export const paperSignatureSchema = z.object({
+  id: z.string(),
+  slot: z.enum(["LEFT", "RIGHT"]),
+  role: z.enum(["ADMIN", "PRINCIPAL"]),
+  status: paperSignatureStatusSchema,
+  signerName: z.string().nullable(),
+  /** The paper's own copy of the picture, once signed. */
+  image: z.string().nullable(),
+  decidedAt: iso.nullable(),
+  /** True for the person whose word this signature waits for. */
+  can: z.object({ decide: z.boolean() }),
+});
+export type PaperSignatureView = z.infer<typeof paperSignatureSchema>;
+/** GET /api/v1/office/signatures — the reader's own signature, the school's seal, and the papers waiting for the reader. */
+export const signaturesViewSchema = z.object({
+  mine: z.object({ image: z.string().nullable(), updatedAt: iso.nullable() }),
+  seal: z.object({ image: z.string().nullable(), updatedAt: iso.nullable() }),
+  /** True for an admin: the seal is the school's and the admin's to set. */
+  canSetSeal: z.boolean(),
+  waiting: z.array(
+    z.object({
+      id: z.string(),
+      paperKind: z.enum(["CERTIFICATE", "REPORT_CARD"]),
+      paperId: z.string(),
+      title: z.string(),
+      serial: z.string().nullable(),
+      studentName: z.string(),
+      requestedByName: z.string().nullable(),
+      createdAt: iso,
+    }),
+  ),
+});
+export type SignaturesView = z.infer<typeof signaturesViewSchema>;
+export const paperSignatureDecideSchema = z.object({ approve: z.boolean() });
+/** The paper the decision was about, and how the signature now stands. */
+export const paperSignatureDecidedSchema = z.object({ paperKind: z.enum(["CERTIFICATE", "REPORT_CARD"]), paperId: z.string(), status: paperSignatureStatusSchema });
+
+/* -------------------------------------------------------------------------- */
 /* A family's ask to change the record                                          */
 /* -------------------------------------------------------------------------- */
 
@@ -403,6 +462,9 @@ export const issuedCertificateSchema = z.object({
     brandPrimary: z.string().nullable(),
   }),
   code: z.string(),
+  /** The signatures this paper's template asks for, and the school's seal as this paper keeps it. */
+  signatures: z.array(paperSignatureSchema).default([]),
+  seal: z.string().nullable().default(null),
   issuedAt: iso,
   issuedByName: z.string().nullable(),
   revokedAt: iso.nullable(),

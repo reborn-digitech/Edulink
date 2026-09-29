@@ -243,6 +243,8 @@ model School {
   joinRequests         JoinRequest[]
   guardianClaims       GuardianClaim[]
   recordChangeRequests RecordChangeRequest[]
+  signatureImages      SignatureImage[]
+  paperSignatures      PaperSignature[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -4288,6 +4290,59 @@ model CertificateRequest {
 /// reject, and the number changes only when both have approved. The first
 /// entry needs no approval; a correction does, because a wrong PEN on a
 /// transfer certificate follows the child.
+/// A SIGNATURE OR THE SCHOOL'S SEAL, AS A PICTURE. One per person who signs
+/// the school's papers (an admin, the head) and one seal per school. The
+/// picture is kept in the row and not in the file store: it is small, it is
+/// never served by a link of its own, and it is read only to be drawn on a
+/// paper its reader may already see.
+model SignatureImage {
+  id           String   @id @default(cuid())
+  schoolId     String
+  /// PERSON | SEAL
+  kind         String   @default("PERSON")
+  /// Whose signature it is; null for the seal.
+  membershipId String?  @unique
+  png          Bytes
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, kind])
+}
+
+/// A SIGNATURE ON ONE ISSUED PAPER. The paper's own copy of the picture, so
+/// that a signature changed or removed afterwards does not change a paper
+/// already out. A person's signature is put on a paper they issue
+/// themselves; on a paper somebody else issued it WAITS for them, and is
+/// drawn only once they have approved that paper.
+model PaperSignature {
+  id                String    @id @default(cuid())
+  schoolId          String
+  /// CERTIFICATE | REPORT_CARD
+  paperKind         String
+  paperId           String
+  /// LEFT | RIGHT | SEAL
+  slot              String
+  /// ADMIN | PRINCIPAL; null for the seal.
+  role              String?
+  /// PENDING | SIGNED | DECLINED
+  status            String    @default("PENDING")
+  signerUserId      String?
+  /// The signer's name as it stood when they signed.
+  signerName        String?
+  png               Bytes?
+  requestedByUserId String?
+  decidedAt         DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([paperKind, paperId, slot])
+  @@index([schoolId, status, role])
+}
+
 /// A FAMILY'S ASK TO CHANGE THE PUPIL RECORD. The record is the office's to
 /// write; a guardian or the pupil reads it and proposes new values with a
 /// reason, and the office applies them or declines. One waits per pupil:
