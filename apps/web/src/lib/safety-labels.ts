@@ -124,6 +124,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "fees.headRestore": "audit.feesHeadRestore",
   "fees.onlineSettled": "audit.feesOnlineSettled",
   "fees.refund": "audit.feesRefund",
+  "fees.refund.failed": "audit.feesRefundFailed",
   "fees.remindNow": "audit.feesRemindNow",
   "fees.reverse": "audit.feesReverse",
   "fees.settings": "audit.feesSettings",

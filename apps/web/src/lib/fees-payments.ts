@@ -648,18 +648,22 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
         throw new AccessError("fees.refuseGatewayDown");
       }
     }
-    const created = await tx.feeRefund.create({ data: { schoolId: caller.schoolId, paymentId: p.id, amountPaise: input.amountPaise, reason: why, status, gatewayRefundId, requestedByUserId: caller.userId, settledAt: status === "DONE" ? new Date() : null }, select: { id: true } });
-    const total = refundedSoFar + input.amountPaise;
-    if (total >= p.amountPaise) await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
-    // Reopen the newest allocations first by the refunded amount.
+    // Reopen the newest allocations first by the refunded amount — and keep what was
+    // taken from each, so that a refund the gateway fails can be put back exactly.
     const allocations = await tx.feeAllocation.findMany({ where: { paymentId: p.id }, orderBy: { id: "desc" } });
+    const cuts: { allocationId: string; amountPaise: number }[] = [];
     let left = input.amountPaise;
     for (const a of allocations) {
       if (left <= 0) break;
       const cut = Math.min(a.amountPaise, left);
+      if (cut <= 0) continue;
       await tx.feeAllocation.update({ where: { id: a.id }, data: { amountPaise: a.amountPaise - cut } });
+      cuts.push({ allocationId: a.id, amountPaise: cut });
       left -= cut;
     }
+    const created = await tx.feeRefund.create({ data: { schoolId: caller.schoolId, paymentId: p.id, amountPaise: input.amountPaise, reason: why, status, gatewayRefundId, cutsJson: JSON.stringify(cuts), requestedByUserId: caller.userId, settledAt: status === "DONE" ? new Date() : null }, select: { id: true } });
+    const total = refundedSoFar + input.amountPaise;
+    if (total >= p.amountPaise) await tx.feePayment.update({ where: { id: p.id }, data: { status: "REFUNDED" } });
     await recomputeDemands(
       tx,
       allocations.map((a) => a.demandId),
@@ -678,6 +682,64 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
     meta: { paymentId: p.id, refundId: refund.id },
   }));
   return { refundId: refund.id, status };
+}
+
+/**
+ * ⚠ THE GATEWAY SAID NO. A refund reopens the demand the moment it is asked
+ * for — the family is told the money is on its way and the ledger shows the
+ * fee as owed again — and the gateway answers later. When the answer was a
+ * failure nothing heard it: the refund sat REQUESTED for ever, the family
+ * owed a fee they had paid, and the money had never left the school.
+ *
+ * So a failure puts back exactly what the refund took (its own `cutsJson`),
+ * marks it FAILED with the gateway's reason, gives the payment back its PAID
+ * standing when no other refund has emptied it, and recomputes the demands.
+ * A refund made before the cuts were kept is marked and reported, and its
+ * demand is left for the office, who are told either way. Once only: a
+ * second failure event, or one for a refund already done, changes nothing.
+ */
+export async function markRefundFailed(schoolId: string, gatewayRefundId: string, reason: string): Promise<"refund-failed" | "ignored"> {
+  const done = await forSchool(schoolId, () =>
+    db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      const refund = await tx.feeRefund.findFirst({ where: { schoolId, gatewayRefundId, status: "REQUESTED" }, select: { id: true, paymentId: true, amountPaise: true, cutsJson: true, requestedByUserId: true } });
+      if (!refund) return null;
+      await tx.$queryRaw`SELECT "id" FROM "FeePayment" WHERE "id" = ${refund.paymentId} FOR UPDATE`;
+      const claimed = await tx.feeRefund.updateMany({ where: { id: refund.id, status: "REQUESTED" }, data: { status: "FAILED", failedReason: reason.slice(0, 200), settledAt: new Date() } });
+      if (claimed.count === 0) return null;
+
+      const cuts = readJson<{ allocationId: string; amountPaise: number }[]>(refund.cutsJson, []);
+      const demandIds: string[] = [];
+      for (const cut of cuts) {
+        const allocation = await tx.feeAllocation.findFirst({ where: { id: cut.allocationId, paymentId: refund.paymentId }, select: { id: true, amountPaise: true, demandId: true } });
+        if (!allocation) continue;
+        await tx.feeAllocation.update({ where: { id: allocation.id }, data: { amountPaise: allocation.amountPaise + cut.amountPaise } });
+        demandIds.push(allocation.demandId);
+      }
+      const payment = await tx.feePayment.findUniqueOrThrow({ where: { id: refund.paymentId }, select: { id: true, status: true, amountPaise: true, studentMembershipId: true } });
+      const stillRefunded = (await tx.feeRefund.aggregate({ where: { paymentId: payment.id, status: { not: "FAILED" } }, _sum: { amountPaise: true } }))._sum.amountPaise ?? 0;
+      if (payment.status === "REFUNDED" && stillRefunded < payment.amountPaise) await tx.feePayment.update({ where: { id: payment.id }, data: { status: "PAID" } });
+      await recomputeDemands(tx, [...new Set(demandIds)]);
+      return { refund, payment, putBack: cuts.length > 0 };
+    }),
+  );
+  if (!done) return "ignored";
+  await forSchool(schoolId, async () => {
+    await audit({ schoolId, actorUserId: null, action: "fees.refund.failed", targetType: "FeePayment", targetId: done.payment.id, meta: { refundId: done.refund.id, amountPaise: done.refund.amountPaise, gatewayRefundId, putBack: done.putBack } });
+    // The office asked for it and has to pay it another way; the family was told money was coming.
+    await notify({ userId: done.refund.requestedByUserId, schoolId, kind: "FEES", titleKey: "notifTitle.feeRefundFailedOffice", bodyKey: "notifBody.feeRefundFailedOffice", bodyVars: { amount: rupees(done.refund.amountPaise) }, url: "/admin/fees", urgent: true, meta: { paymentId: done.payment.id, refundId: done.refund.id } }).catch(() => {});
+    await notifyGuardians(done.payment.studentMembershipId, (childName) => ({
+      schoolId,
+      kind: "FEES",
+      titleKey: "notifTitle.feeRefundFailed",
+      titleVars: { name: childName },
+      bodyKey: "notifBody.feeRefundFailed",
+      bodyVars: { amount: rupees(done.refund.amountPaise) },
+      url: "/parent/fees",
+      meta: { paymentId: done.payment.id, refundId: done.refund.id },
+    })).catch(() => {});
+  });
+  return "refund-failed";
 }
 
 export async function markRefundDone(schoolId: string, gatewayRefundId: string): Promise<void> {

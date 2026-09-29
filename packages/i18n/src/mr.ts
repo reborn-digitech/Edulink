@@ -5178,6 +5178,7 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    feesRefundFailed: "गेटवेवर एक परतावा अयशस्वी झाला आणि तो पुन्हा जमा धरला गेला",
     userLegalNameSet: "कायदेशीर नाव दुरुस्त केले",
     schoolProfileUpdate: "शाळेचे निर्देशिका प्रोफाइल बदलले",
     schoolProfilePublish: "शाळा निर्देशिकेत प्रकाशित केली",
@@ -6158,6 +6159,8 @@ export const mr: Dictionary = {
     forChild: "{name} साठी",
   },
   notifTitle: {
+    feeRefundFailed: "{name} यांचा परतावा पूर्ण झाला नाही",
+    feeRefundFailedOffice: "पेमेंट गेटवेवर एक परतावा अयशस्वी झाला",
     legalNameSet: "शाळेच्या कागदपत्रांवरील कायदेशीर नाव दुरुस्त केले",
     incident: "{name}: शाळेत एक घटना",
     incidentIllness: "{name} ला शाळेत बरे वाटत नव्हते",
@@ -6220,6 +6223,8 @@ export const mr: Dictionary = {
     feeClaimWaiting: "एक UPI पेमेंट खात्रीच्या प्रतीक्षेत आहे",
   },
   notifBody: {
+    feeRefundFailed: "{amount} चा परतावा बँकेत अयशस्वी झाला. काहीही घेतले किंवा परत केलेले नाही; शाळेचे कार्यालय तो दुसऱ्या मार्गाने देईल.",
+    feeRefundFailedOffice: "{amount} चा परतावा पूर्ण झाला नाही. पेमेंट पुन्हा भरलेले मानले आहे; तो दुसऱ्या मार्गाने परत करा, किंवा पुन्हा एकदा प्रयत्न करा.",
     legalNameSet: "शाळेच्या कार्यालयाने ते {name} असे केले आहे. आधीच दिलेल्या कागदपत्रांवर ते ज्या नावाने दिले गेले तेच नाव राहील. हे चुकीचे असल्यास कार्यालयाला कळवा.",
     coverForLeave: "{name} साठी, {from} ते {to}: {classes}.",
     staffRecordUpdated: "कार्यालयाने तुमची कर्मचारी नोंद अद्ययावत केली. पाहण्यासाठी तुमची प्रोफाइल उघडा.",

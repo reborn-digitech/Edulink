@@ -122,4 +122,43 @@ describe("POST /api/webhooks/razorpay/{schoolId}", () => {
     expect((await (await deliver(schoolId, refunded, signWebhookBody("zz-hook-webhook-secret", refunded))).json()).outcome).toBe("refund-done");
     expect((await db.feeRefund.findFirstOrThrow({ where: { gatewayRefundId: "rfnd_hook1" } })).status).toBe("DONE");
   });
+
+  it("⚠ a refund the gateway fails is put back: the demand is paid again, the payment stands, the office and the family are told, once", async () => {
+    const office = ctx({ userId: adminUserId, membershipId: adminMembershipId, schoolId, role: "ADMIN" });
+    const year = await db.academicYear.findFirstOrThrow({ where: { schoolId } });
+    const demand = await db.feeDemand.create({ data: { schoolId, studentMembershipId: pupilId, academicYearId: year.id, label: "Term 3", dueDate: new Date("2027-02-01T00:00:00Z"), grossPaise: 500_00, netPaise: 500_00, linesJson: "[]" } });
+    const start = await startOnlineCheckout(ctx({ userId: parentUserId, role: "PARENT" }), { studentMembershipId: pupilId, demandIds: [demand.id] });
+    const captured = JSON.stringify({ event: "payment.captured", created_at: 1_700_000_300, payload: { payment: { entity: { id: "pay_hook3", order_id: start.orderId, amount: 500_00, method: "upi" } } } });
+    expect((await (await deliver(schoolId, captured, signWebhookBody("zz-hook-webhook-secret", captured))).json()).outcome).toBe("settled");
+    expect((await db.feeDemand.findUniqueOrThrow({ where: { id: demand.id } })).status).toBe("PAID");
+
+    const asked = await requestRefund(office, { paymentId: start.paymentId, amountPaise: 200_00, reason: "Paid twice by mistake" });
+    // The gateway has the request and has not answered: the demand is owed again by what was refunded.
+    await db.feeRefund.update({ where: { id: asked.refundId }, data: { status: "REQUESTED", settledAt: null, gatewayRefundId: "rfnd_hook_fail" } });
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: demand.id }, select: { status: true, paidPaise: true } })).toEqual({ status: "PART", paidPaise: 300_00 });
+    expect(JSON.parse((await db.feeRefund.findUniqueOrThrow({ where: { id: asked.refundId } })).cutsJson!)).toEqual([expect.objectContaining({ amountPaise: 200_00 })]);
+    await db.notification.deleteMany({ where: { schoolId, titleKey: { startsWith: "notifTitle.feeRefundFailed" } } });
+
+    const failed = JSON.stringify({ event: "refund.failed", created_at: 1_700_000_400, payload: { refund: { entity: { id: "rfnd_hook_fail", error_description: "Account closed" } } } });
+    expect((await (await deliver(schoolId, failed, signWebhookBody("zz-hook-webhook-secret", failed))).json()).outcome).toBe("refund-failed");
+    expect(await db.feeRefund.findUniqueOrThrow({ where: { id: asked.refundId }, select: { status: true, failedReason: true } })).toEqual({ status: "FAILED", failedReason: "Account closed" });
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: demand.id }, select: { status: true, paidPaise: true } })).toEqual({ status: "PAID", paidPaise: 500_00 });
+    expect((await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId } })).status).toBe("PAID");
+    expect(await db.notification.count({ where: { userId: adminUserId, titleKey: "notifTitle.feeRefundFailedOffice" } })).toBe(1);
+    expect(await db.notification.count({ where: { userId: parentUserId, titleKey: "notifTitle.feeRefundFailed" } })).toBe(1);
+    const logged = await db.auditLog.findFirstOrThrow({ where: { schoolId, action: "fees.refund.failed" } });
+    expect(JSON.parse(logged.meta)).toMatchObject({ refundId: asked.refundId, amountPaise: 200_00, putBack: true });
+
+    // The same failure delivered again under another event id, and a failure for a refund already done, change nothing.
+    const again = JSON.stringify({ event: "refund.failed", created_at: 1_700_000_500, payload: { refund: { entity: { id: "rfnd_hook_fail" } } } });
+    expect((await (await deliver(schoolId, again, signWebhookBody("zz-hook-webhook-secret", again))).json()).outcome).toBe("ignored");
+    const late = JSON.stringify({ event: "refund.failed", created_at: 1_700_000_600, payload: { refund: { entity: { id: "rfnd_hook1" } } } });
+    expect((await (await deliver(schoolId, late, signWebhookBody("zz-hook-webhook-secret", late))).json()).outcome).toBe("ignored");
+    expect((await db.feeRefund.findFirstOrThrow({ where: { gatewayRefundId: "rfnd_hook1" } })).status).toBe("DONE");
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: demand.id }, select: { paidPaise: true } })).toEqual({ paidPaise: 500_00 });
+    expect(await db.notification.count({ where: { userId: adminUserId, titleKey: "notifTitle.feeRefundFailedOffice" } })).toBe(1);
+
+    // A refund asked for again after the failure is a refund like any other.
+    expect((await requestRefund(office, { paymentId: start.paymentId, amountPaise: 200_00, reason: "Second try" })).refundId).not.toBe(asked.refundId);
+  });
 });

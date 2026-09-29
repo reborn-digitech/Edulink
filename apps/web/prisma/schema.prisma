@@ -3597,6 +3597,12 @@ model FeeRefund {
   /// REQUESTED | DONE | FAILED
   status            String    @default("REQUESTED")
   gatewayRefundId   String?
+  /// What this refund took off each allocation, JSON [{ allocationId,
+  /// amountPaise }]: the demand is reopened when the refund is asked for, so a
+  /// refund the gateway then fails has to put back exactly what it took.
+  cutsJson          String?
+  /// The gateway's reason, when it failed.
+  failedReason      String?
   requestedByUserId String
   settledAt         DateTime?
 

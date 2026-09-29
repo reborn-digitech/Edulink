@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { forSchool } from "@/lib/tenant-context";
 import { gatewayAccountFor } from "@/lib/fees";
-import { failOnlinePayment, markRefundDone, settleOnlinePayment } from "@/lib/fees-payments";
+import { failOnlinePayment, markRefundDone, markRefundFailed, settleOnlinePayment } from "@/lib/fees-payments";
 import { verifyWebhookSignature } from "@/lib/gateway";
 import { writeJson } from "@/lib/json";
 import { createHash } from "node:crypto";
@@ -80,7 +80,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ sch
 
     let outcome = "ignored";
     const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; method?: string; error_description?: string } | undefined;
-    const refund = event.payload?.refund?.entity as { id?: string } | undefined;
+    const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
     if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
       outcome = (await settleOnlinePayment(schoolId, { orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount, gatewayMethod: payment.method ?? null })).outcome;
     } else if (kind === "payment.failed" && payment?.order_id) {
@@ -89,6 +89,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ sch
     } else if (kind === "refund.processed" && refund?.id) {
       await markRefundDone(schoolId, refund.id);
       outcome = "refund-done";
+    } else if (kind === "refund.failed" && refund?.id) {
+      // The money never left: what the refund reopened is put back, and the office and the family are told.
+      outcome = await markRefundFailed(schoolId, refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway");
     }
     await db.gatewayEvent.update({ where: { id: row.id }, data: { processedAt: new Date(), outcome } });
     return NextResponse.json({ ok: true, outcome, meta: writeJson({ kind }) });

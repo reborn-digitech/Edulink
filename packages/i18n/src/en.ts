@@ -5563,6 +5563,7 @@ export const en = {
   },
 
   audit: {
+    feesRefundFailed: "A refund failed at the gateway and was put back",
     userLegalNameSet: "Corrected a legal name",
     schoolProfileUpdate: "Updated the school’s directory profile",
     schoolProfilePublish: "Published the school in the directory",
@@ -6599,6 +6600,8 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    feeRefundFailed: "The refund for {name} did not go through",
+    feeRefundFailedOffice: "A refund failed at the payment gateway",
     legalNameSet: "The legal name on the school's papers was corrected",
     incident: "{name}: an incident at school",
     incidentIllness: "{name} was unwell at school",
@@ -6663,6 +6666,8 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    feeRefundFailed: "The refund of {amount} failed at the bank. Nothing has been taken or returned; the school office will arrange it another way.",
+    feeRefundFailedOffice: "The refund of {amount} did not go through. The payment stands as paid again; refund it another way, or try once more.",
     legalNameSet: "The school office set it to {name}. Papers already issued keep the name they were issued with. If it is wrong, tell the office.",
     coverForLeave: "For {name}, {from} to {to}: {classes}.",
     staffRecordUpdated: "The office updated your staff record. Open your profile to see it.",
