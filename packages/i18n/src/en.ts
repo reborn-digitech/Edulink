@@ -3012,6 +3012,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyTheOfficeSetsSubjects: "Only a school admin can set teaching subjects.",
     onlyTheOfficeCorrectsLegalNames: "Only a school admin can correct a legal name.",
     thatRequestHasExpired: "That request is more than 30 days old and has expired. They can ask again.",
     fileNotYours: "That file is not one you uploaded.",

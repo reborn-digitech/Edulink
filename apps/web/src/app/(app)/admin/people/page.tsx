@@ -367,7 +367,7 @@ export default async function DirectoryPage({
                           membershipId={member.id}
                           name={displayName}
                           isStudent={role === "STUDENT"}
-                          isTeacher={role === "TEACHER"}
+                          isTeacher={role === "TEACHER" || role === "PRINCIPAL"}
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
                           legalName={member.user.name}

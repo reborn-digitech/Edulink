@@ -2833,6 +2833,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    onlyTheOfficeSetsSubjects: "केवल स्कूल का एडमिन पढ़ाए जाने वाले विषय तय कर सकता है।",
     onlyTheOfficeCorrectsLegalNames: "केवल स्कूल का एडमिन कानूनी नाम सुधार सकता है।",
     thatRequestHasExpired: "वह अनुरोध 30 दिनों से पुराना है और उसका समय समाप्त हो गया है। वे फिर से अनुरोध कर सकते हैं।",
     fileNotYours: "वह फ़ाइल आपने अपलोड नहीं की है।",

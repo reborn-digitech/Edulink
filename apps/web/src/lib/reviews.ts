@@ -407,13 +407,25 @@ export async function submitReview(
  * Replace a teacher's subject list. Admin-only: the teacher chose at signup,
  * and from then on the school's office owns the record — the same authority
  * that assigns them lessons in those subjects.
+ *
+ * THE HEAD TEACHES TOO. A principal was invited as a principal and never
+ * passed the subject picker, so a head who takes Class 9 for mathematics had
+ * no subjects and nobody could give them any: the teacher filing printed a
+ * blank for them and the cover board never suggested them. The office sets a
+ * principal's the same way. The head does not set their own — the twelve
+ * settings doors that are the admin's alone stay the admin's (decided
+ * 2026-09-29), and this is one more record the office keeps.
  */
 export async function setTeacherSubjects(
   ctx: ActiveContext,
   teacherMembershipId: string,
   subjects: string[],
 ): Promise<ReviewResult> {
-  const schoolId = requireAdmin(ctx);
+  // The ADMIN'S alone, here in the library and not only at the page's door:
+  // `requireAdmin` above admits the head, which is right for review rounds
+  // and let a principal write anybody's subjects, their own included.
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyTheOfficeSetsSubjects");
+  const schoolId = ctx.schoolId;
 
   const cleaned = [
     ...new Map(
@@ -425,7 +437,7 @@ export async function setTeacherSubjects(
   ].slice(0, 20);
 
   const updated = await db.membership.updateMany({
-    where: { id: teacherMembershipId, schoolId, role: "TEACHER", leftAt: null },
+    where: { id: teacherMembershipId, schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, leftAt: null },
     data: { subjects: cleaned.length > 0 ? writeJson(cleaned) : null },
   });
   if (updated.count === 0) return { ok: false, errorKey: "reviews.noSuchTeacher" };
@@ -441,7 +453,7 @@ export async function setTeacherSubjects(
 
   const target = await db.membership.findUnique({
     where: { id: teacherMembershipId },
-    select: { userId: true },
+    select: { userId: true, role: true },
   });
   if (target) {
     await notify({
@@ -450,7 +462,8 @@ export async function setTeacherSubjects(
       kind: "SYSTEM",
       titleKey: "reviews.notifSubjectsChanged",
       body: cleaned.join(", "),
-      url: "/teacher/profile",
+      // A head has no teacher's profile page; their account is where they are sent.
+      url: target.role === "PRINCIPAL" ? "/account" : "/teacher/profile",
     }).catch(() => undefined);
   }
 

@@ -62,7 +62,7 @@ export function DirectoryMenu({
   membershipId: string;
   name: string;
   isStudent: boolean;
-  /** Teacher rows also carry the subjects editor. */
+  /** Teacher rows, and the head's, also carry the subjects editor. */
   isTeacher?: boolean;
   subjects?: string[];
   /** ISO date on file, "" when none — the office may set or correct it. */

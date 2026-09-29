@@ -2830,6 +2830,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    onlyTheOfficeSetsSubjects: "फक्त शाळेचा अ‍ॅडमिन शिकवले जाणारे विषय ठरवू शकतो.",
     onlyTheOfficeCorrectsLegalNames: "फक्त शाळेचा अ‍ॅडमिन कायदेशीर नाव दुरुस्त करू शकतो.",
     thatRequestHasExpired: "ती विनंती 30 दिवसांपेक्षा जुनी आहे आणि तिची मुदत संपली आहे. ते पुन्हा विनंती करू शकतात.",
     fileNotYours: "ती फाइल तुम्ही अपलोड केलेली नाही.",
