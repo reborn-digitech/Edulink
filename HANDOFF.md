@@ -195,6 +195,14 @@ end-to-end in staging.
   "Untested:" line. Nothing is called production-ready.
 - **Fixtures are disposable and prefixed.** ZZ schools and `@demo.relay.test` accounts are the only
   ones a test or script may create or destroy.
+- **Who waits for a yes, and who does not** (confirmed by the owner, 2026-09-29). A school that
+  registers itself waits for the operator; one the operator adds by hand is approved as it is made.
+  A comment on the cross-school feed waits at its author's school, and an admin may release their own,
+  since an admin may already publish a whole post there and a school with one admin would otherwise
+  never be heard. A school's own student code still brings its own former pupil back at intake; only
+  another school's code is refused. A join by code and a claim on a child wait for the office, the
+  class's teacher or a guardian the child already has, and the deciders are told in the app, not by
+  email.
 
 ## 7. Moving development to another machine
 
