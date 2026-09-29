@@ -148,7 +148,8 @@ export async function readWaitingQueue(ctx: ActiveContext) {
     ctx.role === "PARENT" ? waitingClaimsForGuardian(ctx.user.id) : waitingClaimsForOffice(ctx),
   ]);
   return {
-    joins: joins.map(({ classId: _classId, ...join }) => ({ ...join, createdAt: iso(join.createdAt) })),
+    // The queue's row without the class's id: the contract names the class and nothing else of it.
+    joins: joins.map((join) => ({ id: join.id, name: join.name, age: join.age, via: join.via, className: join.className, onRoll: join.onRoll, createdAt: iso(join.createdAt) })),
     claims: claims.map((claim) => ({ ...claim, createdAt: iso(claim.createdAt) })),
   };
 }
