@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowDownIcon, ArrowUpIcon, FloppyDiskIcon, TrashIcon } from "@phosphor-icons/react";
+import { ArrowDownIcon, ArrowUpIcon, DotsSixVerticalIcon, FloppyDiskIcon, TrashIcon } from "@phosphor-icons/react";
 import type { CertificateKind, CertificateLayout, CertificateTemplateSave, CertificateTemplatesView } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";
 import { Button } from "@/components/ui/button";
@@ -68,6 +68,10 @@ function draftFrom(source: Preset | Template, active: boolean): Draft {
  *    a sample pupil in the document's language (template-preview.tsx).
  *  - a code the certificate cannot fill is red in the text, named above
  *    the save button, and stops the save. It used to save and print a dash.
+ *  - a row is moved by its handle, dragged with a mouse or a finger, the
+ *    rows making way as it passes. The two arrows stay, and the handle
+ *    takes the arrow keys, because a keyboard and a screen reader cannot
+ *    drag; where the row now stands is said aloud.
  */
 /** `readOnly` is the head's view: every control disabled and no save, because designing a template is the admin's. */
 export function TemplateEditor({ view, palette, template, readOnly = false }: { view: CertificateTemplatesView; palette: PaletteEntry[]; template?: Template; readOnly?: boolean }) {
@@ -83,6 +87,11 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   /** A preset replaces every text at once; the fields are made anew so none keeps what it was showing. */
   const [generation, setGeneration] = useState(0);
+  /** The row being dragged, the rows as they stand now, and where each is drawn: what a drag is worked out from. */
+  const [dragging, setDragging] = useState<string | null>(null);
+  const [moved, setMoved] = useState("");
+  const rowEls = useRef(new Map<string, HTMLLIElement>());
+  const rowsNow = useRef<RowDraft[]>([]);
   const fields = useRef(new Map<string, TokenFieldHandle>());
   const hold = (id: string) => (handle: TokenFieldHandle | null) => {
     if (handle) fields.current.set(id, handle);
@@ -108,6 +117,65 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
       rows.splice(target, 0, row!);
       return { ...d, rows };
     });
+  /** The row under the pointer takes the dragged row's place as soon as the pointer is past its middle. */
+  const dragTo = (key: string, y: number) => {
+    const rows = rowsNow.current;
+    const from = rows.findIndex((r) => r.key === key);
+    if (from < 0) return;
+    let target = from;
+    rows.forEach((row, index) => {
+      const box = rowEls.current.get(row.key)?.getBoundingClientRect();
+      if (!box || index === from) return;
+      const middle = box.top + box.height / 2;
+      if (index < from && y < middle) target = Math.min(target, index);
+      if (index > from && y > middle) target = Math.max(target, index);
+    });
+    if (target === from) return;
+    setDraft((d) => {
+      const next = [...d.rows];
+      const at = next.findIndex((r) => r.key === key);
+      if (at < 0) return d;
+      const [row] = next.splice(at, 1);
+      next.splice(Math.min(target, next.length), 0, row!);
+      return { ...d, rows: next };
+    });
+  };
+  const say = (key: string, delta = 0) => {
+    const rows = rowsNow.current;
+    const index = rows.findIndex((r) => r.key === key);
+    if (index < 0) return;
+    const position = Math.min(Math.max(index + delta, 0), rows.length - 1) + 1;
+    setMoved(t("certificates.rowMoved", { name: rows[index]!.label || String(index + 1), position, count: rows.length }));
+  };
+
+  useEffect(() => {
+    rowsNow.current = draft.rows;
+  }, [draft.rows]);
+  /**
+   * The drag is followed on the WINDOW and not on the handle. A row that
+   * changes place is moved in the page, the handle with it, and a handle
+   * that has been moved lets go of the pointer it had captured: the finger
+   * lifted over another row's handle and the drag never ended.
+   */
+  useEffect(() => {
+    if (!dragging) return;
+    const move = (event: PointerEvent) => dragTo(dragging, event.clientY);
+    const end = () => {
+      setDragging(null);
+      say(dragging);
+    };
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", end);
+    window.addEventListener("pointercancel", end);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", end);
+      window.removeEventListener("pointercancel", end);
+    };
+    // dragTo and say read the rows through a ref; the listeners are made once for a drag.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dragging]);
+
   /** A row for one detail: labelled in the language the document is written in, which need not be the reader's. */
   const addRowFor = (entry: PaletteEntry) => setDraft((d) => ({ ...d, rows: [...d.rows, { key: nextKey(), label: entry.labels[d.locale], value: `[[${entry.key}]]` }] }));
   const addBlankRow = () => setDraft((d) => ({ ...d, rows: [...d.rows, { key: nextKey(), label: "", value: "" }] }));
@@ -266,7 +334,16 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                   {draft.rows.map((row, index) => {
                     const rowName = row.label || String(index + 1);
                     return (
-                      <li key={row.key} className="rounded-[--radius-md] border border-border px-3 pb-1 pt-3" data-testid="template-row">
+                      <li
+                        key={row.key}
+                        ref={(el) => {
+                          if (el) rowEls.current.set(row.key, el);
+                          else rowEls.current.delete(row.key);
+                        }}
+                        className={`rounded-[--radius-md] border px-3 pb-1 pt-3 ${dragging === row.key ? "border-accent bg-accent-soft shadow-md" : "border-border"}`}
+                        data-testid="template-row"
+                        data-dragging={dragging === row.key || undefined}
+                      >
                         <div className="grid items-start gap-2 sm:grid-cols-[1.5rem_minmax(0,1fr)_minmax(0,1.3fr)]">
                           <span className="pt-3 text-sm tabular-nums text-fg-muted" aria-hidden="true">
                             {index + 1}.
@@ -279,6 +356,27 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                             <div className="mr-auto min-w-0 flex-1 sm:pl-8">
                               <DetailPicker palette={palette} variant="icon" label={[t("certificates.changeDetail"), rowName].join(": ")} onPick={(entry) => setRowDetail(row, entry)} />
                             </div>
+                            <button
+                              type="button"
+                              className={`${iconButton} cursor-grab touch-none active:cursor-grabbing`}
+                              aria-label={[t("certificates.dragRow"), rowName].join(": ")}
+                              title={t("certificates.dragRow")}
+                              data-testid="row-handle"
+                              onPointerDown={(event) => {
+                                if (event.button !== 0) return;
+                                event.preventDefault();
+                                setDragging(row.key);
+                              }}
+                              onKeyDown={(event) => {
+                                if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+                                event.preventDefault();
+                                const delta = event.key === "ArrowUp" ? -1 : 1;
+                                say(row.key, delta);
+                                moveRow(row.key, delta);
+                              }}
+                            >
+                              <DotsSixVerticalIcon weight="bold" className="size-4" aria-hidden="true" />
+                            </button>
                             <button type="button" className={iconButton} onClick={() => moveRow(row.key, -1)} disabled={index === 0} aria-label={[t("syllabus.moveUp"), rowName].join(": ")} title={t("syllabus.moveUp")}>
                               <ArrowUpIcon weight="bold" className="size-4" aria-hidden="true" />
                             </button>
@@ -294,6 +392,9 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                     );
                   })}
                 </ol>
+                <p className="sr-only" role="status" aria-live="polite" data-testid="row-moved">
+                  {moved}
+                </p>
                 {!readOnly && <DetailPicker palette={palette} variant="add" label={t("certificates.addRow")} intro={t("certificates.pickIntro")} onPick={addRowFor} onBlank={addBlankRow} disabled={draft.rows.length >= 40} testId="add-row" />}
               </fieldset>
 

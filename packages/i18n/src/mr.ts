@@ -1818,6 +1818,8 @@ export const mr: Dictionary = {
     unknownDetails: "प्रमाणपत्र हे भरू शकत नाही: {list}. ते काढा, किंवा यादीतून तपशील निवडा.",
     noRowsYet: "अजून एकही ओळ नाही. या प्रमाणपत्रात हवे असलेले तपशील जोडा.",
     sampleFor: "उदाहरणार्थ: {sample}",
+    dragRow: "ओढून जागा बदला",
+    rowMoved: "{name}: आता {count} पैकी ओळ {position}",
   },
   admissions: {
     title: "प्रवेश",

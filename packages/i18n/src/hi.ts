@@ -1821,6 +1821,8 @@ export const hi: Dictionary = {
     unknownDetails: "प्रमाणपत्र इन्हें नहीं भर सकता: {list}। इन्हें हटाएँ, या सूची से कोई विवरण चुनें।",
     noRowsYet: "अभी कोई पंक्ति नहीं है। इस प्रमाणपत्र में जो विवरण चाहिए वे जोड़ें।",
     sampleFor: "जैसे: {sample}",
+    dragRow: "खींचकर जगह बदलें",
+    rowMoved: "{name}: अब {count} में से पंक्ति {position}",
   },
   admissions: {
     title: "प्रवेश",

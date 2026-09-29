@@ -152,6 +152,60 @@ test("a code the certificate cannot fill is named and stops the save; a good tem
   await context.close();
 });
 
+test("a row is dragged by its handle, with a mouse and with a finger, and moved by the arrow keys", async ({ browser, baseURL }) => {
+  const labels = async (page: Page) => page.getByTestId("row-label").evaluateAll((els) => els.slice(0, 4).map((el) => (el as HTMLInputElement).value));
+  const centre = async (page: Page, row: number, testId: string) => {
+    const box = (await rows(page).nth(row).getByTestId(testId).boundingBox())!;
+    return { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  };
+  for (const [viewport, touch] of [[DESK, false], [VIEWPORTS.iphone, true]] as const) {
+    const context = await contextFor(browser, admin.cookie, { viewport, theme: "light", locale: "en" }, baseURL!);
+    const page = await context.newPage();
+    await open(page);
+    const before = await labels(page);
+    // The first row is carried past the middle of the third: it lands third, and the two it passed move up.
+    await rows(page).first().scrollIntoViewIfNeeded();
+    const from = await centre(page, 0, "row-handle");
+    const to = await centre(page, 2, "row-handle");
+    if (touch) {
+      const handle = rows(page).first().getByTestId("row-handle");
+      const fire = (on: "handle" | "window", p: { x: number; y: number }, type: string) =>
+        page.evaluate(
+          ([target, kind, x, y]) => {
+            const el = target === "handle" ? document.querySelector('[data-testid="template-row"] [data-testid="row-handle"]')! : window;
+            el.dispatchEvent(new PointerEvent(kind as string, { bubbles: true, cancelable: true, pointerType: "touch", pointerId: 7, button: 0, clientX: x as number, clientY: y as number, isPrimary: true }));
+          },
+          [on, type, p.x, p.y] as const,
+        );
+      await expect(handle).toBeVisible();
+      const point = (p: { x: number; y: number }, type: string) => fire(type === "pointerdown" ? "handle" : "window", p, type);
+      await point(from, "pointerdown");
+      await point({ x: from.x, y: (from.y + to.y) / 2 }, "pointermove");
+      await point({ x: to.x, y: to.y + 30 }, "pointermove");
+      await point({ x: to.x, y: to.y + 30 }, "pointerup");
+    } else {
+      await page.mouse.move(from.x, from.y);
+      await page.mouse.down();
+      await page.mouse.move(from.x, (from.y + to.y) / 2, { steps: 4 });
+      await page.mouse.move(to.x, to.y + 30, { steps: 4 });
+      await expect(page.locator("[data-dragging]")).toHaveCount(1);
+      await page.mouse.up();
+    }
+    await expect(page.locator("[data-dragging]")).toHaveCount(0);
+    expect(await labels(page)).toEqual([before[1], before[2], before[0], before[3]]);
+    await expect(page.getByTestId("row-moved")).toContainText("now row 3 of");
+    // The preview follows.
+    await expect(page.getByTestId("preview-rows").locator("tr").nth(2)).toContainText(before[0]!);
+    // And back by the keyboard, which cannot drag: the handle takes the arrow keys.
+    await rows(page).nth(2).getByTestId("row-handle").focus();
+    await page.keyboard.press("ArrowUp");
+    await rows(page).nth(1).getByTestId("row-handle").focus();
+    await page.keyboard.press("ArrowUp");
+    expect(await labels(page)).toEqual(before);
+    await context.close();
+  }
+});
+
 for (const theme of ["light", "dark"] as const) {
   for (const [vpName, viewport] of [["desk", DESK], ["iphone", VIEWPORTS.iphone]] as const) {
     test(`the editor with the list open · ${vpName} · ${theme}`, async ({ browser, baseURL }) => {

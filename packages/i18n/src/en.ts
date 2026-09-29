@@ -1962,6 +1962,8 @@ export const en = {
     unknownDetails: "The certificate cannot fill these: {list}. Remove them, or choose a detail from the list.",
     noRowsYet: "No rows yet. Add the details this certificate lists.",
     sampleFor: "for example: {sample}",
+    dragRow: "Drag to move",
+    rowMoved: "{name}: now row {position} of {count}",
   },
   admissions: {
     title: "Admissions",
