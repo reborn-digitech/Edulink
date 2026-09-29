@@ -137,8 +137,12 @@ gaps (4e326b2); the audit's second pass (bf6cd00); the audit's top ten (0ee9580)
 8. ~~An approve action for held comments on the cross-school feed; the queue can only remove.~~ **Done 2026-09-28.** `moderateComment` in `src/lib/bulletin.ts` approves or removes a held comment (removing needs a reason the author is told); the "To review" tab lists the comments waiting on the reader and a held comment on a post carries the two buttons, on the web and the phone; `GET /api/v1/shared/bulletin/comments/held` and `POST /api/v1/shared/bulletin/comments/{commentId}/review`. An admin decides anything held at their school, a teacher the comments on their classes' posts. A removed comment is off the page for everybody, and a feed card counts approved comments only. Still open: nobody is notified when a comment is held, so the count on the tab is the only signal.
 9. ~~Narrower row-level policies for experts, keyed on the booking rather than the school.~~ **Done 2026-09-29.** An expert’s tenant set is empty; what they reach is named in `scripts/gen-rls.ts` (`EXPERT_READABLE`, `EXPERT_WRITES`), each clause keyed on their own confirmed booking or active mentorship. Their notice to the school and the audit line are written by the server under the school’s binding (`asTheSchool`, `src/lib/expert-binding.ts`). A database that ran an earlier build of this change may hold two policies the generator no longer writes, `Notification_expert_insert` and `AuditLog_expert_insert`; no released build created them.
 
-**Inputs nothing collects** ([docs/data-audit/README.md](docs/data-audit/README.md) §7): a guardian's
-phone entered by the office; legal name correction; the principal's subjects; coded lists for mother
+**Inputs nothing collects** ([docs/data-audit/README.md](docs/data-audit/README.md) §7): ~~a guardian's
+phone entered by the office~~ (done 2026-09-29: `PupilRecord.guardianPhone`, the record's and not the
+account's sign-in phone, written by the office or the family on the record form, web and phone; the filings
+print a linked guardian's proved number first and this one when there is none; texts and WhatsApp still go
+only to a number its owner proved, which is a decision still to take); ~~legal name correction~~; ~~the
+principal's subjects~~; coded lists for mother
 tongue, nationality, PIN, designation and the academic year's name; the staff record and departures on
 the phone.
 

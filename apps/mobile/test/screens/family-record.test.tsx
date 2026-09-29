@@ -36,6 +36,7 @@ const RECORD = {
   fatherOccupation: null,
   motherOccupation: null,
   annualIncome: null,
+  guardianPhone: null,
   rollNumber: "12",
   requestedAt: "2026-09-01T05:00:00.000Z",
   familyFilledAt: null,
@@ -67,7 +68,10 @@ describe("the helpers behind the record", () => {
     expect(body).toMatchObject({ previousSchoolTcNumber: "", previousSchoolTcDate: null, fatherOccupation: "", motherOccupation: "", annualIncome: "", rollNumber: "12" });
     expect(bodyFrom({ ...formFrom(null), previousSchoolTcDate: " 2022-04-30 " }).previousSchoolTcDate).toBe("2022-04-30");
     expect(bodyFrom(formFrom(RECORD), ["rollNumber"])).not.toHaveProperty("rollNumber");
-    expect(OPTIONAL_FIELDS).toEqual(["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome"]);
+    expect(OPTIONAL_FIELDS).toEqual(["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome", "guardianPhone"]);
+    // The family's contact number is the family's to write, and is sent as typed: the server keeps it or refuses it.
+    expect((FAMILY_RECORD_FIELDS as readonly string[]).includes("guardianPhone")).toBe(true);
+    expect(bodyFrom({ ...formFrom(null), guardianPhone: " 98765 43210 " }).guardianPhone).toBe("98765 43210");
     expect(CATEGORY_VALUES).toEqual(["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"]);
     expect(RELIGION_VALUES).toEqual(["HINDU", "MUSLIM", "CHRISTIAN", "SIKH", "BUDDHIST", "PARSI", "JAIN", "OTHER"]);
   });
@@ -124,6 +128,7 @@ describe("the pupil record for the guardian", () => {
     await fireEvent.changeText(screen.getByLabelText("Last school attended"), "ZZ Sunrise Nursery");
     await fireEvent.changeText(screen.getByLabelText("Father\u2019s occupation"), "Farmer");
     await fireEvent.changeText(screen.getByLabelText("Family\u2019s annual income (\u20b9)"), "240000");
+    await fireEvent.changeText(screen.getByLabelText("Family\u2019s contact number"), "98765 43210");
     await press(screen.getByRole("button", { name: "Save the record" }));
     await waitFor(() => expect(posts(fetch)).toHaveLength(1));
     expect(posts(fetch)[0]!.url.searchParams.get("childId")).toBe(ID.child);
@@ -146,6 +151,7 @@ describe("the pupil record for the guardian", () => {
       fatherOccupation: "Farmer",
       motherOccupation: "",
       annualIncome: "240000",
+      guardianPhone: "98765 43210",
     });
     expect(Object.keys(bodyOf(posts(fetch)[0]!) as object).sort()).toEqual([...FAMILY_RECORD_FIELDS].sort());
     expect(await screen.findByText("Record saved.")).toBeTruthy();

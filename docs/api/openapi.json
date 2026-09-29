@@ -55343,7 +55343,8 @@
                                 "fatherOccupation",
                                 "motherOccupation",
                                 "annualIncome",
-                                "rollNumber"
+                                "rollNumber",
+                                "guardianPhone"
                               ]
                             }
                           },
@@ -55635,6 +55636,11 @@
                           "nullable": true,
                           "default": null
                         },
+                        "guardianPhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -55728,7 +55734,8 @@
                           "fatherOccupation",
                           "motherOccupation",
                           "annualIncome",
-                          "rollNumber"
+                          "rollNumber",
+                          "guardianPhone"
                         ]
                       }
                     },
@@ -56129,6 +56136,11 @@
                           "nullable": true,
                           "default": null
                         },
+                        "guardianPhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -56222,7 +56234,8 @@
                           "fatherOccupation",
                           "motherOccupation",
                           "annualIncome",
-                          "rollNumber"
+                          "rollNumber",
+                          "guardianPhone"
                         ]
                       }
                     },
@@ -56662,6 +56675,10 @@
                   "annualIncome": {
                     "type": "string",
                     "pattern": "^\\d{0,9}$"
+                  },
+                  "guardianPhone": {
+                    "type": "string",
+                    "maxLength": 24
                   },
                   "rollNumber": {
                     "type": "string",
@@ -58188,6 +58205,11 @@
                           "nullable": true,
                           "default": null
                         },
+                        "guardianPhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -58281,7 +58303,8 @@
                           "fatherOccupation",
                           "motherOccupation",
                           "annualIncome",
-                          "rollNumber"
+                          "rollNumber",
+                          "guardianPhone"
                         ]
                       }
                     },
@@ -58689,6 +58712,11 @@
                           "nullable": true,
                           "default": null
                         },
+                        "guardianPhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -58782,7 +58810,8 @@
                           "fatherOccupation",
                           "motherOccupation",
                           "annualIncome",
-                          "rollNumber"
+                          "rollNumber",
+                          "guardianPhone"
                         ]
                       }
                     },
@@ -59222,6 +59251,10 @@
                   "annualIncome": {
                     "type": "string",
                     "pattern": "^\\d{0,9}$"
+                  },
+                  "guardianPhone": {
+                    "type": "string",
+                    "maxLength": 24
                   },
                   "rollNumber": {
                     "type": "string",

@@ -1,3 +1,4 @@
+import { normalisePhone } from "./phone";
 import "server-only";
 import { FAMILY_RECORD_FIELDS, PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
 import { db } from "./db";
@@ -45,7 +46,7 @@ type RecordRow = {
   fatherName: string | null; motherName: string | null; placeOfBirth: string | null; nationality: string | null; religion: string | null; caste: string | null; category: string | null; motherTongue: string | null;
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
   gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
-  previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null;
+  previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null; guardianPhone: string | null;
   requestedAt: Date | null; familyFilledAt: Date | null; updatedAt: Date;
 };
 
@@ -63,7 +64,7 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
   }) as PupilRecordField[];
 }
 
-const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
+const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -78,6 +79,7 @@ function recordView(record: RecordRow | null, rollNumber: number | null = null) 
   return {
     previousSchoolTcNumber: record.previousSchoolTcNumber, previousSchoolTcDate: record.previousSchoolTcDate?.toISOString().slice(0, 10) ?? null,
     fatherOccupation: record.fatherOccupation, motherOccupation: record.motherOccupation, annualIncome: record.annualIncome === null ? null : String(record.annualIncome),
+    guardianPhone: record.guardianPhone,
     rollNumber: rollNumber === null ? null : String(rollNumber),
     fatherName: record.fatherName, motherName: record.motherName, placeOfBirth: record.placeOfBirth, nationality: record.nationality, religion: record.religion, caste: record.caste, category: record.category, motherTongue: record.motherTongue,
     addressLine: record.addressLine, city: record.city, postalCode: record.postalCode, admissionNumber: record.admissionNumber, admissionDate: record.admissionDate?.toISOString().slice(0, 10) ?? null, admittedToGrade: record.admittedToGrade, previousSchool: record.previousSchool, penNumber: record.penNumber,
@@ -134,6 +136,12 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
       pen = viewer.accountPen ?? null;
     }
   }
+  // The number the school rings: kept as E.164 or refused, never reduced to whichever digits were typed.
+  let contact: string | null | undefined = undefined;
+  if (input.guardianPhone !== undefined) {
+    contact = input.guardianPhone.trim() === "" ? null : normalisePhone(input.guardianPhone);
+    if (input.guardianPhone.trim() !== "" && !contact) throw new AccessError("pupilRecord.phoneNotANumber");
+  }
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality: text(input.nationality), religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue: text(input.motherTongue),
     addressLine: text(input.addressLine), city: text(input.city), postalCode: text(input.postalCode), admissionNumber: text(input.admissionNumber),
@@ -147,6 +155,7 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     previousSchoolTcDate: input.previousSchoolTcDate === undefined ? undefined : input.previousSchoolTcDate ? new Date(`${input.previousSchoolTcDate}T00:00:00Z`) : null,
     fatherOccupation: text(input.fatherOccupation), motherOccupation: text(input.motherOccupation),
     annualIncome: input.annualIncome === undefined ? undefined : input.annualIncome === "" ? null : Number(input.annualIncome),
+    guardianPhone: contact,
     updatedByUserId: viewer.userId,
     ...(viewer.family ? { familyFilledAt: new Date() } : {}),
   };

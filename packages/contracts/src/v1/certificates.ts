@@ -74,6 +74,8 @@ export const pupilRecordFieldSchema = z.enum([
   "gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup",
   // The collection gaps the data-flow audit named: the previous school's TC, the household, the roll number.
   "previousSchoolTcNumber", "previousSchoolTcDate", "fatherOccupation", "motherOccupation", "annualIncome", "rollNumber",
+  // The number the school rings: the record's, not the account's sign-in phone.
+  "guardianPhone",
 ]);
 /**
  * The fields a family — a guardian, or the pupil themselves — may write on
@@ -87,6 +89,7 @@ export const pupilRecordFieldSchema = z.enum([
 export const FAMILY_RECORD_FIELDS = [
   "fatherName", "motherName", "placeOfBirth", "nationality", "religion", "motherTongue", "addressLine", "city", "postalCode",
   "nameLocal", "fatherNameLocal", "motherNameLocal", "bloodGroup", "fatherOccupation", "motherOccupation", "annualIncome", "previousSchool",
+  "guardianPhone",
 ] as const satisfies readonly PupilRecordField[];
 /** Social category as a coded choice: the four UDISE+ codes, plus Maharashtra's VJ, NT and SBC, which file as OBC. */
 export const PUPIL_CATEGORIES = ["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"] as const;
@@ -138,6 +141,8 @@ export const pupilRecordSaveSchema = z.object({
   motherOccupation: text.optional(),
   /** Rupees a year, digits only; blank clears. */
   annualIncome: z.string().trim().regex(/^\d{0,9}$/).optional(),
+  /** The family's contact number as typed; the server keeps it as E.164 or refuses it. Blank clears. */
+  guardianPhone: z.string().trim().max(24).optional(),
   /** The roll number in the pupil's present class, digits only; the office's to set, ignored from a family. */
   rollNumber: z.string().trim().regex(/^\d{0,4}$/).optional(),
 });
@@ -175,6 +180,8 @@ export const pupilRecordSchema = z.object({
   motherOccupation: z.string().nullable().default(null),
   /** Rupees a year as digits, the way the form shows and sends it. */
   annualIncome: z.string().nullable().default(null),
+  /** The family's contact number, E.164. */
+  guardianPhone: z.string().nullable().default(null),
   /** The roll number on the pupil's present enrolment. */
   rollNumber: z.string().nullable().default(null),
   requestedAt: iso.nullable(),

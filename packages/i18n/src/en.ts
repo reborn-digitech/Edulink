@@ -2270,6 +2270,9 @@ export const en = {
     codesNote: "Codes follow the UDISE+ bulk sheet: General-1, SC-2, ST-3, OBC-4; Male-1, Female-2, Transgender-3; dates DD-MM-YYYY.",
   },
   pupilRecord: {
+    guardianPhone: "Family’s contact number",
+    guardianPhoneHint: "The number the school rings, as on the admission form. It goes on the UDISE+ sheet. It is not used to sign in.",
+    phoneNotANumber: "Enter the contact number in digits, with the country code if it is not an Indian number.",
     title: "Pupil record",
     metaTitle: "Pupil record",
     intro: "The details a school certificate names: the parents, the place of birth, the admission register, the last school. The family fills them in once; the office may correct them.",

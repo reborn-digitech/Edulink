@@ -71,6 +71,49 @@ afterAll(async () => {
   await db.$disconnect();
 });
 
+describe("⚠ the family's contact number", () => {
+  it("the office writes it on the record, kept as E.164; rubbish is refused; blank clears; the account's own phone is never touched", async () => {
+    await as("ADMIN");
+    const save = (guardianPhone: string) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, { guardianPhone }), params({ membershipId: pupil }));
+    const accountBefore = await db.user.findMany({ where: { email: { contains: `-${STAMP}@test.invalid` } }, select: { id: true, phone: true, phoneVerifiedAt: true }, orderBy: { id: "asc" } });
+
+    let res = await save("098765 43210");
+    expect(res.status).toBe(200);
+    expect((await res.json()).record.guardianPhone).toBe("+919876543210");
+    expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil } })).guardianPhone).toBe("+919876543210");
+
+    for (const bad of ["call the office", "9+919876543210", "office@example.com"]) {
+      res = await save(bad);
+      expect(res.status, bad).toBe(403);
+      expect((await res.json()).error).toMatch(/^Enter the contact number in digits/);
+    }
+    expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil } })).guardianPhone).toBe("+919876543210");
+
+    // Which field, never its value, in the log.
+    const logged = await db.auditLog.findFirstOrThrow({ where: { action: "pupilRecord.update", targetId: pupil }, orderBy: { createdAt: "desc" } });
+    expect(logged.meta).toContain("guardianPhone");
+    expect(logged.meta).not.toContain("9876543210");
+    // The record's number signs nobody in: no account's phone moved.
+    expect(await db.user.findMany({ where: { email: { contains: `-${STAMP}@test.invalid` } }, select: { id: true, phone: true, phoneVerifiedAt: true }, orderBy: { id: "asc" } })).toEqual(accountBefore);
+
+    expect((await (await save("")).json()).record.guardianPhone).toBeNull();
+  });
+
+  it("the family writes their own, and the UDISE+ sheet prints the guardian's proved number first and the record's when there is none", async () => {
+    const { parentsForTest } = await import("@/lib/filings");
+    await as("PARENT");
+    const res = await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { guardianPhone: "+91 91234 56789" }));
+    expect(res.status).toBe(200);
+    expect((await res.json()).record.guardianPhone).toBe("+919123456789");
+
+    const row = { user: { phone: null }, pupilRecord: { fatherName: null, motherName: null, guardianPhone: "+919123456789" } };
+    expect(parentsForTest({ ...row, guardianships: [] }).phone).toBe("+919123456789");
+    expect(parentsForTest({ ...row, guardianships: [{ relation: "PARENT", parent: { name: "P", phone: null, email: null } }] }).phone).toBe("+919123456789");
+    expect(parentsForTest({ ...row, guardianships: [{ relation: "PARENT", parent: { name: "P", phone: "+919000000001", email: null } }] }).phone).toBe("+919000000001");
+    expect(parentsForTest({ user: { phone: "+919000000002" }, pupilRecord: null, guardianships: [] }).phone).toBe("+919000000002");
+  });
+});
+
 describe("the record's new fields and coded choices", () => {
   it("the office saves the TC, the household, coded category and religion and the roll number; a family cannot set the roll number; an uncodable category counts as missing", async () => {
     await as("ADMIN");

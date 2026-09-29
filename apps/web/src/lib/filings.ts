@@ -253,13 +253,24 @@ async function loadPupils(schoolId: string, grade?: string) {
  * Guardianship.relation says PARENT or GUARDIAN and not which parent; a
  * non-parent guardian goes in the sheet's own guardian column.
  */
+/** `parents` over the four columns it reads, for a test that has no roll to load. */
+export function parentsForTest(p: {
+  user: { phone: string | null };
+  pupilRecord: { fatherName: string | null; motherName: string | null; guardianPhone: string | null } | null;
+  guardianships: { relation: string; parent: { name: string; phone: string | null; email: string | null } }[];
+}) {
+  return parents(p as unknown as Pupil);
+}
+
 function parents(p: Pupil) {
   const g = p.guardianships[0];
   return {
     father: p.pupilRecord?.fatherName ?? "",
     mother: p.pupilRecord?.motherName ?? "",
     guardian: g && g.relation !== "PARENT" ? g.parent.name : "",
-    phone: g?.parent.phone ?? p.user.phone ?? "",
+    // A linked guardian's own number, proved by a code; else the number on the
+    // record, which the office or the family wrote; else the pupil's own.
+    phone: g?.parent.phone ?? p.pupilRecord?.guardianPhone ?? p.user.phone ?? "",
     email: g?.parent.email ?? "",
   };
 }

@@ -3998,6 +3998,13 @@ model PupilRecord {
   fatherOccupation       String?
   motherOccupation       String?
   annualIncome           Int?
+  /// THE NUMBER THE SCHOOL RINGS, as the admission form gives it: written by
+  /// the office or the family, unverified, E.164. It is the record's and NOT
+  /// the account's — `User.phone` is proved by a code and is a way to sign
+  /// in and to reset a password, so nobody but its owner may write it. This
+  /// one signs nobody in. The filings print a linked guardian's own proved
+  /// number first and this one when there is none.
+  guardianPhone          String?
   /// UDISE+ Permanent Education Number.
   penNumber              String?
   /// FILINGS: what UDISE+ and the boards ask beyond the certificate fields.

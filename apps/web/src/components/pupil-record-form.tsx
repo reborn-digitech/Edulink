@@ -55,13 +55,13 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
   const groups: FieldGroup[] = [
     { fields: ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue"] },
     { fields: ["religion", "caste", "category"] },
-    { fields: ["addressLine", "city", "postalCode"] },
+    { fields: ["addressLine", "city", "postalCode", "guardianPhone"] },
     { fields: ["admissionNumber", "admissionDate", "admittedToGrade", "rollNumber", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber"] },
     // The household, as the RTE and EWS verifications ask for it.
     { fields: ["fatherOccupation", "motherOccupation", "annualIncome"] },
   ];
-  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
-  const maxFor: Partial<Record<PupilRecordField, number>> = { addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
+  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+  const maxFor: Partial<Record<PupilRecordField, number>> = { guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
   /** The coded filing answers: the value the contract takes and the words the reader sees. */
   const choicesFor: Partial<Record<PupilRecordField, { value: string; text: string }[]>> = {
     gender: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "M", text: t("pupilRecord.genderM") }, { value: "F", text: t("pupilRecord.genderF") }, { value: "T", text: t("pupilRecord.genderT") }],
@@ -139,7 +139,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
         required={isRequired(f)}
         value={values[f]}
         maxLength={maxFor[f] ?? 120}
-        inputMode={f === "annualIncome" || f === "rollNumber" ? "numeric" : undefined}
+        inputMode={f === "annualIncome" || f === "rollNumber" ? "numeric" : f === "guardianPhone" ? "tel" : undefined}
         autoComplete="off"
         readOnly={readOnly}
         disabled={readOnly}
