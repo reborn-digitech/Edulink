@@ -64,6 +64,27 @@ Verified against `apps/mobile/package.json` and `apps/web/package.json` (no anal
   4. the system browser, opened only on `API_BASE` paths — SSO start and the web pages the app hands off to (`Linking.openURL` sites in `apps/mobile/src`, all prefixed with `API_BASE`).
 - **Every third-party destination the server talks to:** the SSO providers on the web sign-in — Google, Microsoft, Apple as plain OIDC, no SDK, each present only when its env vars are (`apps/web/src/lib/sso.ts`; the phone's sign-in screen offers Google); the email transport — SMTP through nodemailer, whichever relay the deployment sets (`apps/web/src/lib/email.ts`); the SMS transport — Twilio by a form POST, no SDK (`apps/web/src/lib/sms.ts`); Web Push endpoints for browser subscriptions (`web-push`, `apps/web/src/lib/notify.ts`); and **Anthropic's API**, used by `apps/web/src/lib/translate.ts` to translate a **question-bank question** the content team types — the input is the question text, never a pupil's data, and it runs only when `ANTHROPIC_API_KEY` is set.
 
+## What the app deliberately does not hold
+
+Decided 2026-09-29, from the data audit's list of columns no table holds (docs/data-audit/README.md §4). A
+column that is absent on purpose is written down here, so that its absence is not taken for an oversight
+and filled.
+
+| What | Decision | Why |
+|---|---|---|
+| Aadhaar number | Never held | As above: the UDISE+ sheet's two Aadhaar columns go out blank and the office enters them on the portal. |
+| A bank account for scholarship transfer (DBT) | Never held | An account number beside a child's name is a target with no use inside the app; the scholarship portals take it from the family. |
+| Caste certificate and income certificate numbers | Never held | The record holds the category and the income the family states; the certificate is shown to the office, which does not need the app to keep its number. |
+| Disability certificate number and percentage; immunisation records | Not held | The record holds the UDISE+ impairment type and the health card holds what a teacher needs on the day. Nothing the app produces prints more. |
+| A pupil's photograph | Not held | No paper the app prints carries one, and a photograph of every child is the most sensitive thing a school could store here. |
+| Sibling links, transport route or stop, hostel or day scholar, house | Not held for now | No filing, certificate or receipt reads them. To be added when a feature needs one, with its own row above. |
+| AAY, scholarships received, free uniform and textbooks, stream and vocational fields, mainstreamed date, alternate mobile | Left blank on the sheet | The office enters them on the portal. |
+| A pass or fail, a promotion result, a rank | Deliberately not computed | The report card states marks and a band. The UDISE+ sheet states a pass only for a pupil who moved up with last year's card; a repeater's result is left for the office. |
+
+Since the audit these were added and are no longer on its list: each parent's occupation and the family's
+income, the previous school's TC number and date, the assigned roll number, a teacher's date of birth and
+first day in service, the family's contact number, and up to three people to call on the health card.
+
 ## Child-specific rules on the phone
 
 - **Permissions asked for** (`apps/mobile/app.json`): **notifications** (asked after sign-in, refusal is silent, `push.ts`) and the **camera** (asked at a pupil's first photo hand-in, refusal shows a way to the phone's settings and leaves the picker beside it, `camera.ts`). The camera, photo-library and Face ID permissions and their plugins that the foundations had declared were removed in Phase 6 once this inventory found no screen using them (Gap 1, closed); the camera returned with photo hand-ins, alone: `expo-image-picker` is configured with its photos and microphone permissions off, and Android's storage and media-read permissions are blocked in `app.json`, so nothing already on the phone is reachable through the app.

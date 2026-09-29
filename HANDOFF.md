@@ -154,12 +154,16 @@ member of staff's record or a pupil's health card, school record and leaving; fi
 `/api/v1/admin/people/{membershipId}/`; the leaving's rule is `src/lib/leaving.ts`, shared with the web's
 action; still web only: correcting a legal name, a date of birth, subjects, pausing and removing).
 
-**Audit items still open** (README §2): 4 and 5 fixed; 36 by design; 42 fixed; 43 the leave-beside-a-
-stored-PRESENT display; the first-pass items 8–13, 18, 24, 26 and 29 were documented in September's
-first pass and not re-verified against the code since the 21-gap fix, so check each before assuming
-either way. Section 4 lists the columns no table holds (class section, emergency contact, transport,
-siblings, house, certificate numbers, DBT account) which need a policy row saying which are deliberately
-never held.
+**Audit items** (README §2): 4 and 5 fixed; 36 by design; 42 fixed; 43 handled. The first-pass items 8–13,
+18, 24, 26 and 29 were re-checked against the code on 2026-09-29: 11 was already fixed, and the other
+nine were fixed that day (8 a card with no scale is given the one it was shown with before the rules
+change; 9 a failed subject stops the grade-point mean; 10 an annual card is refused over half-set term
+shares; 12 a save keeps the letter; 13 the archive's figure is marks over maximum; 18 a refund the gateway
+fails is put back; 24 the certificate's class and school name are the paper's own; 26 a request whose
+certificate was revoked says so; 29 the UDISE+ sheet files blanks for what nobody answered, with RTE and
+repeating as the office's own answers). Open from them: the RTE cell's code 1 has not been checked against
+the portal's validation sheet; a certificate's issuer and the school's address are still read live. The
+columns no table holds are decided in docs/decisions/0002, "What the app deliberately does not hold".
 
 **Housekeeping**: restore CI billing and rerun the battery there; scramble the shared passwords; run
 the phone on a device; try Microsoft SSO against one real tenant; a live Twilio and Razorpay

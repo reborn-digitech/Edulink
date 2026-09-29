@@ -73,6 +73,11 @@ Final run: 29 checks, 0 FAIL, 6 WARN, 20 INFO.
 
 ## 2. Derived values that can go wrong in the product (ranked)
 
+**Re-checked 2026-09-29.** Items 8–13, 18, 24, 26 and 29 below were read against the code as it stood: 11 had
+been fixed since (the page and the PDF read one function), and the other nine were fixed that day, one
+commit each or two to a commit where they shared a file. Each line below is kept as it was written, as the
+record of what was found; HANDOFF.md section 5 says what each became.
+
 Each line names the code and what the audit or the read found. "Evidence" is from the audited schools.
 
 ### Attendance
@@ -237,6 +242,9 @@ Each line names the code and what the audit or the read found. "Evidence" is fro
 | `HealthCard.doctorName/Phone`, `PupilRecord.caste`, `School.logoPath`, `Assignment.rubric`, `ExamSlot.startMinute/endMinute`, `StaffRecord.staffNumber/qualification` | printed or exported | never populated in any school, demo or ZZ |
 
 ## 4. Data the school needs that no column holds
+
+**Decided 2026-09-29:** which of these are absent on purpose is written in docs/decisions/0002, "What the
+app deliberately does not hold". The list below is the audit's, as found.
 
 Verified against `prisma/schema.prisma` (no column, no model):
 
