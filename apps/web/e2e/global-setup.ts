@@ -10,7 +10,7 @@ import { config } from "dotenv";
  * no password is typed here. Every session carries userAgent "e2e" and a
  * one-hour expiry; `teardown` below removes them.
  */
-export type Actor = { role: string; cookie: string; email?: string; classId?: string; slotId?: string };
+export type Actor = { role: string; cookie: string; email?: string; classId?: string; slotId?: string; pupilId?: string; askedAboutPupilId?: string };
 export type Sessions = Record<string, Actor>;
 
 config({ path: ".env" });
@@ -60,11 +60,24 @@ export default async function globalSetup() {
     (await db.examSlot.create({ data: { schoolId: school.id, seriesId: series.id, subject: "Mathematics", dateKey: "2026-09-01", pointsMilli: 50_000 }, select: { id: true } }));
   sessions.TEACHER = { role: "TEACHER", email: lead.teacher.user.email ?? undefined, cookie: await mint(lead.teacher.userId, "TEACHER", school.id), classId: lead.class.id, slotId: slot.id };
 
-  const pupil = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, select: { userId: true } });
-  sessions.STUDENT = { role: "STUDENT", cookie: await mint(pupil.userId, "STUDENT", school.id) };
+  // A NAMED pupil and that pupil's own parent, as the API sweep signs in (bc8e649). "The first active pupil" and
+  // "the first guardianship" had no order, so each run could be a different child and a screenshot of their
+  // page a different page. The lowest id where a database has no such pupil.
+  const pupil =
+    (await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null, user: { email: "zz.pupil01@zz.test" } }, select: { id: true, userId: true, user: { select: { email: true } } } })) ??
+    (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { id: true, userId: true, user: { select: { email: true } } } }));
+  sessions.STUDENT = { role: "STUDENT", email: pupil.user.email ?? undefined, cookie: await mint(pupil.userId, "STUDENT", school.id), pupilId: pupil.id };
 
-  const guardian = await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } });
-  sessions.PARENT = { role: "PARENT", cookie: await mint(guardian.parentUserId, "PARENT", null) };
+  const guardian =
+    (await db.guardianship.findFirst({ where: { studentMembershipId: pupil.id, status: "ACTIVE", relation: { not: "SCHOOL" } }, orderBy: { id: "asc" }, select: { parentUserId: true, parent: { select: { email: true } } } })) ??
+    (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { parentUserId: true, parent: { select: { email: true } } } }));
+  sessions.PARENT = { role: "PARENT", email: guardian.parent.email ?? undefined, cookie: await mint(guardian.parentUserId, "PARENT", null), pupilId: pupil.id };
+
+  // The pupil a family's ask to change the record waits on (zz-fixtures.ts `buildRecordChanges`): the page where the office decides.
+  const waiting = await db.recordChangeRequest.findFirst({ where: { schoolId: school.id, id: "zz-fixture-record-change-waiting", status: "PENDING" }, select: { studentMembershipId: true } });
+  sessions.ADMIN.pupilId = pupil.id;
+  sessions.ADMIN.askedAboutPupilId = waiting?.studentMembershipId;
+  sessions.PRINCIPAL.askedAboutPupilId = waiting?.studentMembershipId;
 
   const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });
   if (expert) sessions.EXPERT = { role: "EXPERT", cookie: await mint(expert.userId, "EXPERT", null) };

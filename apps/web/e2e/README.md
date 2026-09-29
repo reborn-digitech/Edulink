@@ -11,6 +11,15 @@ on the ZZ fixture (`npm run zz:fixtures` first).
   English and Hindi: no horizontal overflow, every interactive element at least
   44 px tall, and a screenshot against the platform's baseline.
 
+- `record.spec.ts` — the pupil record where the navigation sweep cannot reach: the
+  family's form once "Ask for a change" is pressed, the office's page for one pupil
+  with a family's ask waiting and its decline box open, the pupil's page with the
+  office's door to the record, and the guardian's record page at the four sizes. It
+  presses what opens a form and never what sends one. Its pictures are compared only
+  where this platform has a baseline (`screenshotWhereBaselined` in `checks.ts`).
+
+The pupil and the guardian are zz.pupil01 and that pupil's own parent, by name.
+
 ```bash
 npx playwright test                    # both
 npx playwright test e2e/axe.spec.ts    # one

@@ -1,7 +1,8 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
+import { overflow, smallTargets } from "./checks";
 
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -47,34 +48,6 @@ const PAGES = [
   { name: "timetable", actor: admin, path: () => "/admin/timetable" },
   { name: "people-toolbar", actor: admin, path: () => "/admin/people" },
 ];
-
-async function overflow(page: Page): Promise<number> {
-  return page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-}
-
-async function smallTargets(page: Page): Promise<string[]> {
-  return page.evaluate(() => {
-    const out: string[] = [];
-    const els = document.querySelectorAll<HTMLElement>('a[href], button, input:not([type="hidden"]), select, textarea, [role="button"], [role="radio"], [role="checkbox"], [role="tab"]');
-    for (const el of els) {
-      const r = el.getBoundingClientRect();
-      if (r.width === 0 || r.height === 0) continue; // hidden
-      const style = getComputedStyle(el);
-      if (style.visibility === "hidden" || style.display === "none") continue;
-      // Visually hidden on purpose (sr-only: 1×1, clipped): a screen-reader
-      // door, not a touch target.
-      if (r.width <= 1 && r.height <= 1) continue;
-      if (style.clip === "rect(0px, 0px, 0px, 0px)" || style.clipPath === "inset(50%)") continue;
-      // Inline links inside running text are exempt by WCAG 2.5.8; count controls.
-      if (el.tagName === "A" && el.closest("p, li, td")) continue;
-      if (r.height < 44 && r.width < 44) {
-        const label = (el.getAttribute("aria-label") || el.textContent || el.id || "").trim().slice(0, 40);
-        out.push(`${el.tagName.toLowerCase()}${el.className ? "." + String(el.className).split(" ").slice(0, 2).join(".") : ""} ${Math.round(r.width)}×${Math.round(r.height)} "${label}"`);
-      }
-    }
-    return out;
-  });
-}
 
 for (const { name, actor, path } of PAGES) {
   for (const [vpName, viewport] of Object.entries(VIEWPORTS)) {
