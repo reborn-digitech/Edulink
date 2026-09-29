@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { requireRole } from "@/lib/tenancy";
-import { templatesView } from "@/lib/certificates";
+import { templatePalette, templatesView } from "@/lib/certificates";
 import { PageHeader } from "@/components/ui/page-header";
 import { getT } from "@/lib/i18n/server";
 import { TemplateEditor } from "../template-editor";
@@ -13,11 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function NewTemplatePage() {
   const ctx = await requireRole("ADMIN");
   const t = await getT();
-  const view = await templatesView(ctx);
+  const [view, palette] = await Promise.all([templatesView(ctx), templatePalette(ctx)]);
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="mx-auto max-w-6xl space-y-6">
       <PageHeader title={t("certificates.newTemplate")} description={t("certificates.templatesIntro")} back={{ href: "/admin/certificates", label: t("certificates.title") }} />
-      <TemplateEditor view={view} />
+      <TemplateEditor view={view} palette={palette} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
-import { overflow, screenshotWhereBaselined, seriousViolations, smallTargets } from "./checks";
+import { hidePinned, overflow, screenshotWhereBaselined, seriousViolations, smallTargets } from "./checks";
 
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -111,6 +111,7 @@ for (const [vpName, viewport] of Object.entries(VIEWPORTS)) {
         expect((await page.goto(`/parent/record?child=${parent.pupilId}`, { waitUntil: "networkidle" }))?.status()).toBe(200);
         expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
         expect(await smallTargets(page), "interactive elements under 44px").toEqual([]);
+        await hidePinned(page);
         await screenshotWhereBaselined(page.getByTestId("pupil-record-form"), `guardian-record-${vpName}-${theme}-${locale}.png`, info);
         await context.close();
         await preferLocale(parent.email, "en");

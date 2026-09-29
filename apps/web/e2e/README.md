@@ -18,6 +18,15 @@ on the ZZ fixture (`npm run zz:fixtures` first).
   presses what opens a form and never what sends one. Its pictures are compared only
   where this platform has a baseline (`screenshotWhereBaselined` in `checks.ts`).
 
+- `template-editor.spec.ts` — the certificate template editor at a desk and at phone
+  width: a detail chosen from the list and shown as a chip, a row made by choosing what
+  it prints, a detail inserted at the caret of its own paragraph, a code the certificate
+  cannot fill stopping the save, and one template saved, read back from the database
+  and removed ("ZZ e2e template …", ZZ Northgate's).
+
+A picture of an element taller than the window is taken with everything pinned to the
+window hidden (`hidePinned` in `checks.ts`); never run two Playwright runs at once.
+
 The pupil and the guardian are zz.pupil01 and that pupil's own parent, by name.
 
 ```bash

@@ -52,18 +52,11 @@ function templateView(t: { id: string; kind: string; name: string; locale: strin
   return { id: t.id, kind: t.kind as CertificateKind, name: t.name, locale: asLocale(t.locale), title: t.title, intro: t.intro, rows: parseRows(t.rowsJson), outro: t.outro, layout: parseLayout(t.layoutJson, words), serialPrefix: t.serialPrefix, active: t.active, issuedCount: t._count.certificates, updatedAt: t.updatedAt.toISOString() };
 }
 
-/** The school's templates, the presets in every language, and the placeholders with a sample pupil's values. */
-export async function templatesView(ctx: ActiveContext): Promise<CertificateTemplatesView> {
-  const caller = office(ctx);
-  const [rows, school] = await Promise.all([
-    db.certificateTemplate.findMany({ where: { schoolId: caller.schoolId }, orderBy: [{ active: "desc" }, { kind: "asc" }, { name: "asc" }], include: { _count: { select: { certificates: true } } } }),
-    db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true, code: true, addressLine: true, city: true, locale: true } }),
-  ]);
-  const locale = asLocale(school.locale);
+/** The sample pupil the editor shows and its preview is filled with, in one language. */
+function samplePupil(school: { name: string; code: string; addressLine: string | null; city: string | null }, locale: WordsLocale) {
   const words = wordsFor(locale);
-  // The sample pupil the placeholder palette shows, in the school's language.
   const sw = (key: string) => words(`certificateSample.${key}`);
-  const sample = dataFor(
+  return dataFor(
     {
       name: sw("name"),
       studentCode: "STU-2026-0042",
@@ -80,6 +73,53 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
     locale,
     words,
   );
+}
+
+/**
+ * What the template editor picks from: every detail a certificate can carry,
+ * in the group an office would look for it under, named in each of the
+ * three languages and filled for the sample pupil in each. The editor names
+ * a detail in the READER's language, labels a new row in the DOCUMENT's, and
+ * fills its preview in the document's — three different languages at once
+ * in a school that reads English and issues in Marathi. The web editor's
+ * alone: the API's view (templatesView) is as it was.
+ */
+export type PaletteGroup = "PUPIL" | "FAMILY" | "ADMISSION" | "SCHOOL" | "LEAVING" | "ISSUE";
+export type PaletteEntry = { key: string; group: PaletteGroup; labels: Record<WordsLocale, string>; samples: Record<WordsLocale, string> };
+const FAMILY_KEYS = new Set(["pupil.fatherName", "pupil.motherName", "pupil.parentage"]);
+const ADMISSION_KEYS = new Set(["pupil.admissionNumber", "pupil.admissionDate", "pupil.admittedToGrade", "pupil.previousSchool", "pupil.penNumber"]);
+function groupOf(key: string): PaletteGroup {
+  if (FAMILY_KEYS.has(key)) return "FAMILY";
+  if (ADMISSION_KEYS.has(key)) return "ADMISSION";
+  if (key.startsWith("pupil.")) return "PUPIL";
+  if (key.startsWith("record.")) return "LEAVING";
+  if (key.startsWith("issue.")) return "ISSUE";
+  return "SCHOOL";
+}
+export async function templatePalette(ctx: ActiveContext): Promise<PaletteEntry[]> {
+  const caller = office(ctx);
+  const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true, code: true, addressLine: true, city: true } });
+  const locales: WordsLocale[] = ["en", "hi", "mr"];
+  const samples = Object.fromEntries(locales.map((l) => [l, samplePupil(school, l)])) as Record<WordsLocale, ReturnType<typeof samplePupil>>;
+  const each = (pick: (l: WordsLocale) => string) => Object.fromEntries(locales.map((l) => [l, pick(l)])) as Record<WordsLocale, string>;
+  return PLACEHOLDER_KEYS.map((key) => ({
+    key,
+    group: groupOf(key),
+    labels: each((l) => wordsFor(l)(`certificatePlaceholders.${key.replace(".", "_")}`)),
+    samples: each((l) => samples[l][key] ?? BLANK),
+  }));
+}
+
+/** The school's templates, the presets in every language, and the placeholders with a sample pupil's values. */
+export async function templatesView(ctx: ActiveContext): Promise<CertificateTemplatesView> {
+  const caller = office(ctx);
+  const [rows, school] = await Promise.all([
+    db.certificateTemplate.findMany({ where: { schoolId: caller.schoolId }, orderBy: [{ active: "desc" }, { kind: "asc" }, { name: "asc" }], include: { _count: { select: { certificates: true } } } }),
+    db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { name: true, code: true, addressLine: true, city: true, locale: true } }),
+  ]);
+  const locale = asLocale(school.locale);
+  const words = wordsFor(locale);
+  const sample = samplePupil(school, locale);
   // The dictionary's keys cannot hold a dot, so "pupil.name" is looked up as "pupil_name".
   const placeholders = PLACEHOLDER_KEYS.map((key) => ({ key, label: words(`certificatePlaceholders.${key.replace(".", "_")}`), sample: sample[key] ?? BLANK }));
   return { templates: rows.map(templateView), presets: allPresets(), placeholders };

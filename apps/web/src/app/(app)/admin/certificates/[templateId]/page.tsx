@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/tenancy";
-import { templatesView } from "@/lib/certificates";
+import { templatePalette, templatesView } from "@/lib/certificates";
 import { PageHeader } from "@/components/ui/page-header";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
@@ -17,19 +17,19 @@ export default async function EditTemplatePage({ params }: { params: Promise<{ t
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
   const { templateId } = await params;
-  const view = await templatesView(ctx);
+  const [view, palette] = await Promise.all([templatesView(ctx), templatePalette(ctx)]);
   const template = view.templates.find((x) => x.id === templateId);
   if (!template) notFound();
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="mx-auto max-w-6xl space-y-6">
       <PageHeader
         title={template.name}
         description={[t(CERTIFICATE_KIND_KEY[template.kind]), localeName(template.locale), t("certificates.issued", { count: template.issuedCount })].join(" · ")}
         meta={template.active ? <Badge tone="ok" size="sm">{t("certificates.active")}</Badge> : <Badge tone="neutral" size="sm">{t("certificates.archive")}</Badge>}
         back={{ href: "/admin/certificates", label: t("certificates.title") }}
       />
-      <TemplateEditor key={template.updatedAt} view={view} template={template} readOnly={ctx.role !== "ADMIN"} />
+      <TemplateEditor key={template.updatedAt} view={view} palette={palette} template={template} readOnly={ctx.role !== "ADMIN"} />
     </div>
   );
 }

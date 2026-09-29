@@ -48,6 +48,22 @@ export async function seriousViolations(page: Page, label: string): Promise<stri
   return serious.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`);
 }
 
+/**
+ * Everything pinned to the window is hidden before an element is pictured.
+ * A picture of an element taller than the window is taken in strips, and
+ * the header, the bottom bar and the "Offline" banner that comes and goes
+ * under load were drawn across each strip: the record's form failed eleven
+ * comparisons on 2026-09-30 with nothing of the form having changed.
+ */
+export async function hidePinned(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    for (const el of document.querySelectorAll<HTMLElement>("body *")) {
+      const position = getComputedStyle(el).position;
+      if (position === "fixed" || position === "sticky") el.style.setProperty("visibility", "hidden", "important");
+    }
+  });
+}
+
 export async function screenshotWhereBaselined(target: Page | Locator, name: string, info: TestInfo): Promise<void> {
   const writing = info.config.updateSnapshots !== "missing" && info.config.updateSnapshots !== "none";
   if (!writing && !existsSync(info.snapshotPath(name))) {

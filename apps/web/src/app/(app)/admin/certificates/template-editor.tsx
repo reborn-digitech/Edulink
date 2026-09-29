@@ -2,15 +2,19 @@
 
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowDownIcon, ArrowUpIcon, FloppyDiskIcon, PlusIcon, TrashIcon } from "@phosphor-icons/react";
+import { ArrowDownIcon, ArrowUpIcon, FloppyDiskIcon, TrashIcon } from "@phosphor-icons/react";
 import type { CertificateKind, CertificateLayout, CertificateTemplateSave, CertificateTemplatesView } from "@edulink/contracts";
+import type { PaletteEntry } from "@/lib/certificates";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
-import { CheckboxField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
+import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { CERTIFICATE_KIND_KEY, localeName } from "@/components/certificates/labels";
+import { DetailPicker } from "@/components/certificates/detail-picker";
+import { TemplatePreview } from "@/components/certificates/template-preview";
+import { TokenField, type TokenFieldHandle } from "@/components/certificates/token-field";
 import { saveTemplateAction } from "./actions";
 
 type Preset = CertificateTemplatesView["presets"][number];
@@ -20,6 +24,7 @@ type RowDraft = { key: string; label: string; value: string };
 const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM"];
 const LOCALES: ("en" | "hi" | "mr")[] = ["en", "hi", "mr"];
 const LAYOUT_TOGGLES: (keyof Pick<CertificateLayout, "showLogo" | "showAddress" | "useBrandColour">)[] = ["showLogo", "showAddress", "useBrandColour"];
+const TOKEN = /\[\[\s*([a-z]+\.[A-Za-z]+)\s*\]\]/g;
 
 let seq = 0;
 const nextKey = () => `row-${++seq}`;
@@ -48,14 +53,27 @@ function draftFrom(source: Preset | Template, active: boolean): Draft {
  * its serial prefix. A preset fills the whole form so a school starts from
  * a board-shaped document and changes the words, never from a blank page.
  *
- * PLACEHOLDERS ARE INSERTED WHERE THE CURSOR WAS. Each text that may carry
- * one reports itself on focus; the palette splices [[key]] into that text
- * at its caret and puts the caret after it, so writing "[[pupil.name]]" by
- * hand is never required and never mistyped.
+ * A DETAIL OF THE PUPIL IS CHOSEN, NOT TYPED. Until 2026-09-30 it was a code
+ * in double brackets, picked from a list of thirty-six at the foot of the
+ * form and written into whichever text had last been clicked in — or into
+ * nothing, silently, when none had. Now:
+ *  - "Add a row" opens the list under the rows. Choosing "Admission
+ *    register number" makes the row, labelled in the DOCUMENT's language
+ *    and filled with that detail; "a row of your own" makes an empty one.
+ *  - each paragraph has "Insert a detail" of its own, which writes at the
+ *    caret of that paragraph and no other.
+ *  - a detail is shown as a chip with its name in the READER's language
+ *    (token-field.tsx). What is saved is what was always saved.
+ *  - the certificate is drawn beside the form as it is written, filled for
+ *    a sample pupil in the document's language (template-preview.tsx).
+ *  - a code the certificate cannot fill is red in the text, named above
+ *    the save button, and stops the save. It used to save and print a dash.
  */
 /** `readOnly` is the head's view: every control disabled and no save, because designing a template is the admin's. */
-export function TemplateEditor({ view, template, readOnly = false }: { view: CertificateTemplatesView; template?: Template; readOnly?: boolean }) {
+export function TemplateEditor({ view, palette, template, readOnly = false }: { view: CertificateTemplatesView; palette: PaletteEntry[]; template?: Template; readOnly?: boolean }) {
   const t = useT();
+  const uiLocale = useLocale();
+  const reader = uiLocale === "hi" || uiLocale === "mr" ? uiLocale : "en";
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -63,14 +81,23 @@ export function TemplateEditor({ view, template, readOnly = false }: { view: Cer
   const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  /** The text last focused, so the palette knows where to write. */
-  const focused = useRef<{ id: string; el: HTMLInputElement | HTMLTextAreaElement } | null>(null);
+  /** A preset replaces every text at once; the fields are made anew so none keeps what it was showing. */
+  const [generation, setGeneration] = useState(0);
+  const fields = useRef(new Map<string, TokenFieldHandle>());
+  const hold = (id: string) => (handle: TokenFieldHandle | null) => {
+    if (handle) fields.current.set(id, handle);
+    else fields.current.delete(id);
+  };
+
+  const byKey = new Map(palette.map((p) => [p.key, p]));
+  const labelOf = (key: string) => byKey.get(key)?.labels[reader] ?? null;
+  const unknownIn = (text: string) => [...text.matchAll(TOKEN)].map((m) => m[1]!).filter((key) => !byKey.has(key));
+  const unknown = [...new Set([draft.title, draft.intro, draft.outro, ...draft.rows.map((r) => r.value)].flatMap(unknownIn))];
 
   const patch = (p: Partial<Draft>) => setDraft((d) => ({ ...d, ...p }));
   const patchLayout = (p: Partial<CertificateLayout>) => setDraft((d) => ({ ...d, layout: { ...d.layout, ...p } }));
   const patchRow = (key: string, p: Partial<RowDraft>) => setDraft((d) => ({ ...d, rows: d.rows.map((r) => (r.key === key ? { ...r, ...p } : r)) }));
   const removeRow = (key: string) => setDraft((d) => ({ ...d, rows: d.rows.filter((r) => r.key !== key) }));
-  const addRow = () => setDraft((d) => ({ ...d, rows: [...d.rows, { key: nextKey(), label: "", value: "" }] }));
   const moveRow = (key: string, delta: -1 | 1) =>
     setDraft((d) => {
       const index = d.rows.findIndex((r) => r.key === key);
@@ -81,6 +108,16 @@ export function TemplateEditor({ view, template, readOnly = false }: { view: Cer
       rows.splice(target, 0, row!);
       return { ...d, rows };
     });
+  /** A row for one detail: labelled in the language the document is written in, which need not be the reader's. */
+  const addRowFor = (entry: PaletteEntry) => setDraft((d) => ({ ...d, rows: [...d.rows, { key: nextKey(), label: entry.labels[d.locale], value: `[[${entry.key}]]` }] }));
+  const addBlankRow = () => setDraft((d) => ({ ...d, rows: [...d.rows, { key: nextKey(), label: "", value: "" }] }));
+  /** Another detail for a row that has one: the value is replaced, and the label with it if it was the old detail's own. */
+  const setRowDetail = (row: RowDraft, entry: PaletteEntry) => {
+    const was = [...row.value.matchAll(TOKEN)].map((m) => byKey.get(m[1]!)).find(Boolean);
+    const ownLabel = !row.label.trim() || (was !== undefined && LOCALES.some((l) => was.labels[l] === row.label.trim()));
+    patchRow(row.key, { value: `[[${entry.key}]]`, ...(ownLabel ? { label: entry.labels[draft.locale] } : {}) });
+    setGeneration((g) => g + 1);
+  };
 
   function choosePreset(key: string) {
     setPreset(key);
@@ -88,39 +125,8 @@ export function TemplateEditor({ view, template, readOnly = false }: { view: Cer
     if (!found) return;
     // The name and the active flag are the office's own; the preset brings the words.
     setDraft((d) => ({ ...draftFrom(found, d.active), name: template ? d.name : found.name }));
+    setGeneration((g) => g + 1);
   }
-
-  /** Writes a field by its id — the three paragraphs, or one row's value. */
-  function writeField(id: string, next: string) {
-    if (id === "title" || id === "intro" || id === "outro") patch({ [id]: next } as Partial<Draft>);
-    else if (id.startsWith("value:")) patchRow(id.slice("value:".length), { value: next });
-  }
-
-  function insertPlaceholder(key: string) {
-    const target = focused.current;
-    if (!target) return;
-    const token = `[[${key}]]`;
-    const { el, id } = target;
-    const current = el.value;
-    const start = el.selectionStart ?? current.length;
-    const end = el.selectionEnd ?? start;
-    writeField(id, current.slice(0, start) + token + current.slice(end));
-    requestAnimationFrame(() => {
-      el.focus();
-      const caret = start + token.length;
-      try {
-        el.setSelectionRange(caret, caret);
-      } catch {
-        /* a field type that has no caret */
-      }
-    });
-  }
-
-  /** Each text that may carry a placeholder names itself; the handler runs on focus, never during render. */
-  const rememberFocus = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const id = event.currentTarget.dataset.field;
-    if (id) focused.current = { id, el: event.currentTarget };
-  };
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -133,6 +139,10 @@ export function TemplateEditor({ view, template, readOnly = false }: { view: Cer
     const rows = draft.rows.filter((r) => r.label.trim() || r.value.trim());
     for (const r of rows) if (!r.label.trim()) errors[`row-${r.key}`] = needed;
     setFieldErrors(errors);
+    if (unknown.length > 0) {
+      setError(t("certificates.unknownDetails", { list: unknown.map((k) => `[[${k}]]`).join(", ") }));
+      return;
+    }
     if (Object.keys(errors).length > 0) {
       setError(needed);
       return;
@@ -171,156 +181,170 @@ export function TemplateEditor({ view, template, readOnly = false }: { view: Cer
     });
   }
 
-  const iconButton = "grid size-10 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
-  const compact = "[&_input]:min-h-10 [&_input]:py-2";
+  const iconButton = "grid size-11 shrink-0 place-items-center rounded-[--radius-md] text-fg-muted hover:bg-surface-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-40";
   const layoutLabel: Record<(typeof LAYOUT_TOGGLES)[number], string> = {
     showLogo: t("certificates.showLogo"),
     showAddress: t("certificates.showAddress"),
     useBrandColour: t("certificates.useBrandColour"),
   };
+  /** One of the two paragraphs, with the button that inserts a detail at its own caret. */
+  const paragraph = (id: "intro" | "outro", label: string) => (
+    <div className="space-y-2">
+      <TokenField key={`${id}-${generation}-${reader}`} ref={hold(id)} label={label} multiline value={draft[id]} onChange={(next) => patch({ [id]: next } as Partial<Draft>)} labelOf={labelOf} disabled={readOnly} data-testid={`template-${id}`} />
+      {!readOnly && <DetailPicker palette={palette} label={t("certificates.insertDetail")} onPick={(entry) => fields.current.get(id)?.insert(entry.key)} testId={`insert-${id}`} />}
+    </div>
+  );
 
   return (
-    <form onSubmit={submit} noValidate className="space-y-6" data-testid="certificate-template-editor">
-      {readOnly && (
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
-          {t("common.officeSetsThis")}
-        </p>
-      )}
-      <fieldset disabled={readOnly} className="min-w-0 space-y-6">
-      {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
-          {error}
-        </p>
-      )}
-
-      {/* ---- what this template is ---- */}
-      <Card>
-        <CardHeader title={t("certificates.templatesTitle")} description={t("certificates.templatesIntro")} />
-        <CardBody className="space-y-4">
-          <SelectField label={t("certificates.fromPreset")} value={preset} onChange={(e) => choosePreset(e.target.value)} className="max-w-sm" data-testid="template-preset">
-            {template && <option value="">—</option>}
-            {LOCALES.map((locale) => (
-              <optgroup key={locale} label={localeName(locale)}>
-                {view.presets
-                  .filter((p) => p.locale === locale)
-                  .map((p) => (
-                    <option key={p.key} value={p.key}>
-                      {p.name}
+    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
+      <form onSubmit={submit} noValidate className="min-w-0 space-y-6" data-testid="certificate-template-editor">
+        {readOnly && (
+          <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="office-sets-this">
+            {t("common.officeSetsThis")}
+          </p>
+        )}
+        <fieldset disabled={readOnly} className="min-w-0 space-y-6">
+          {/* ---- what this template is ---- */}
+          <Card>
+            <CardHeader title={t("certificates.templatesTitle")} description={t("certificates.templatesIntro")} />
+            <CardBody className="space-y-4">
+              <SelectField label={t("certificates.fromPreset")} value={preset} onChange={(e) => choosePreset(e.target.value)} className="max-w-sm" data-testid="template-preset">
+                {template && <option value="">—</option>}
+                {LOCALES.map((locale) => (
+                  <optgroup key={locale} label={localeName(locale)}>
+                    {view.presets
+                      .filter((p) => p.locale === locale)
+                      .map((p) => (
+                        <option key={p.key} value={p.key}>
+                          {p.name}
+                        </option>
+                      ))}
+                  </optgroup>
+                ))}
+              </SelectField>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <TextField label={t("certificates.name")} value={draft.name} maxLength={80} required autoComplete="off" error={fieldErrors.name} onChange={(e) => patch({ name: e.target.value })} data-testid="template-name" />
+                <SelectField label={t("certificates.kind")} value={draft.kind} onChange={(e) => patch({ kind: e.target.value as CertificateKind })}>
+                  {KINDS.map((k) => (
+                    <option key={k} value={k}>
+                      {t(CERTIFICATE_KIND_KEY[k])}
                     </option>
                   ))}
-              </optgroup>
-            ))}
-          </SelectField>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <TextField label={t("certificates.name")} value={draft.name} maxLength={80} required autoComplete="off" error={fieldErrors.name} onChange={(e) => patch({ name: e.target.value })} data-testid="template-name" />
-            <SelectField label={t("certificates.kind")} value={draft.kind} onChange={(e) => patch({ kind: e.target.value as CertificateKind })}>
-              {KINDS.map((k) => (
-                <option key={k} value={k}>
-                  {t(CERTIFICATE_KIND_KEY[k])}
-                </option>
-              ))}
-            </SelectField>
-            <SelectField label={t("certificates.language")} value={draft.locale} onChange={(e) => patch({ locale: e.target.value as Draft["locale"] })}>
-              {LOCALES.map((l) => (
-                <option key={l} value={l}>
-                  {localeName(l)}
-                </option>
-              ))}
-            </SelectField>
-            <TextField label={t("certificates.serialPrefix")} hint={t("certificates.serialHint")} value={draft.serialPrefix} maxLength={12} autoComplete="off" error={fieldErrors.serialPrefix} onChange={(e) => patch({ serialPrefix: e.target.value })} />
-          </div>
-          <CheckboxField label={t("certificates.active")} checked={draft.active} onChange={(e) => patch({ active: e.target.checked })} />
-        </CardBody>
-      </Card>
+                </SelectField>
+                <SelectField label={t("certificates.language")} value={draft.locale} onChange={(e) => patch({ locale: e.target.value as Draft["locale"] })} data-testid="template-language">
+                  {LOCALES.map((l) => (
+                    <option key={l} value={l}>
+                      {localeName(l)}
+                    </option>
+                  ))}
+                </SelectField>
+                <TextField label={t("certificates.serialPrefix")} hint={t("certificates.serialHint")} value={draft.serialPrefix} maxLength={12} autoComplete="off" error={fieldErrors.serialPrefix} onChange={(e) => patch({ serialPrefix: e.target.value })} />
+              </div>
+              <CheckboxField label={t("certificates.active")} checked={draft.active} onChange={(e) => patch({ active: e.target.checked })} />
+            </CardBody>
+          </Card>
 
-      {/* ---- the words ---- */}
-      <Card>
-        <CardHeader title={t("certificates.heading")} />
-        <CardBody className="space-y-4">
-          <TextField label={t("certificates.heading")} value={draft.title} maxLength={120} required autoComplete="off" error={fieldErrors.title} onChange={(e) => patch({ title: e.target.value })} data-field="title" onFocus={rememberFocus} data-testid="template-title" />
-          <TextAreaField label={t("certificates.introText")} rows={4} value={draft.intro} maxLength={2000} onChange={(e) => patch({ intro: e.target.value })} data-field="intro" onFocus={rememberFocus} />
+          {/* ---- the words ---- */}
+          <Card>
+            <CardHeader title={t("certificates.heading")} description={t("certificates.detailsHint")} />
+            <CardBody className="space-y-5">
+              <TextField label={t("certificates.heading")} value={draft.title} maxLength={120} required autoComplete="off" error={fieldErrors.title} onChange={(e) => patch({ title: e.target.value })} data-testid="template-title" />
+              {paragraph("intro", t("certificates.introText"))}
 
-          <fieldset className="space-y-2">
-            <legend className="text-sm font-medium text-fg">{t("certificates.rows")}</legend>
-            {draft.rows.map((row, index) => {
-              const rowName = row.label || String(index + 1);
-              return (
-                <div key={row.key} className="grid grid-cols-2 items-end gap-2 rounded-[--radius-md] border border-border p-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_auto_auto_auto]">
-                  <TextField label={t("certificates.rowLabel")} value={row.label} maxLength={80} autoComplete="off" error={fieldErrors[`row-${row.key}`]} onChange={(e) => patchRow(row.key, { label: e.target.value })} className={compact} />
-                  <TextField label={t("certificates.rowValue")} value={row.value} maxLength={200} autoComplete="off" onChange={(e) => patchRow(row.key, { value: e.target.value })} data-field={`value:${row.key}`} onFocus={rememberFocus} className={compact} />
-                  <button type="button" className={iconButton} onClick={() => moveRow(row.key, -1)} disabled={index === 0} aria-label={[t("syllabus.moveUp"), rowName].join(": ")} title={t("syllabus.moveUp")}>
-                    <ArrowUpIcon weight="bold" className="size-4" aria-hidden="true" />
-                  </button>
-                  <button type="button" className={iconButton} onClick={() => moveRow(row.key, 1)} disabled={index === draft.rows.length - 1} aria-label={[t("syllabus.moveDown"), rowName].join(": ")} title={t("syllabus.moveDown")}>
-                    <ArrowDownIcon weight="bold" className="size-4" aria-hidden="true" />
-                  </button>
-                  <button type="button" className={`${iconButton} hover:text-danger`} onClick={() => removeRow(row.key)} aria-label={[t("certificates.removeRow"), rowName].join(": ")} title={t("certificates.removeRow")}>
-                    <TrashIcon weight="bold" className="size-4" aria-hidden="true" />
-                  </button>
-                </div>
-              );
-            })}
-            <Button type="button" variant="secondary" size="sm" onClick={addRow} icon={<PlusIcon weight="bold" />} disabled={draft.rows.length >= 40}>
-              {t("certificates.addRow")}
-            </Button>
-          </fieldset>
+              <fieldset className="space-y-2" data-testid="template-rows">
+                <legend className="text-sm font-medium text-fg">{t("certificates.rows")}</legend>
+                {draft.rows.length === 0 && <p className="rounded-[--radius-md] border border-dashed border-border px-3 py-4 text-center text-sm text-fg-muted">{t("certificates.noRowsYet")}</p>}
+                {/* The two columns are named once, above the rows; each row's own labels are a screen reader's. */}
+                {draft.rows.length > 0 && (
+                  <div className="hidden grid-cols-[1.5rem_minmax(0,1fr)_minmax(0,1.3fr)] gap-2 px-3 text-xs font-medium text-fg-muted sm:grid" aria-hidden="true">
+                    <span />
+                    <span>{t("certificates.rowLabel")}</span>
+                    <span>{t("certificates.rowValue")}</span>
+                  </div>
+                )}
+                <ol className="space-y-2">
+                  {draft.rows.map((row, index) => {
+                    const rowName = row.label || String(index + 1);
+                    return (
+                      <li key={row.key} className="rounded-[--radius-md] border border-border px-3 pb-1 pt-3" data-testid="template-row">
+                        <div className="grid items-start gap-2 sm:grid-cols-[1.5rem_minmax(0,1fr)_minmax(0,1.3fr)]">
+                          <span className="pt-3 text-sm tabular-nums text-fg-muted" aria-hidden="true">
+                            {index + 1}.
+                          </span>
+                          <TextField label={t("certificates.rowLabel")} value={row.label} maxLength={80} autoComplete="off" error={fieldErrors[`row-${row.key}`]} onChange={(e) => patchRow(row.key, { label: e.target.value })} className="sm:[&>label]:sr-only" data-testid="row-label" />
+                          <TokenField key={`${row.key}-${generation}-${reader}`} label={t("certificates.rowValue")} value={row.value} onChange={(next) => patchRow(row.key, { value: next })} labelOf={labelOf} disabled={readOnly} className="sm:[&>span:first-child]:sr-only" data-testid="row-value" />
+                        </div>
+                        {!readOnly && (
+                          <div className="mt-1 flex flex-wrap items-start justify-end gap-1">
+                            <div className="mr-auto min-w-0 flex-1 sm:pl-8">
+                              <DetailPicker palette={palette} variant="icon" label={[t("certificates.changeDetail"), rowName].join(": ")} onPick={(entry) => setRowDetail(row, entry)} />
+                            </div>
+                            <button type="button" className={iconButton} onClick={() => moveRow(row.key, -1)} disabled={index === 0} aria-label={[t("syllabus.moveUp"), rowName].join(": ")} title={t("syllabus.moveUp")}>
+                              <ArrowUpIcon weight="bold" className="size-4" aria-hidden="true" />
+                            </button>
+                            <button type="button" className={iconButton} onClick={() => moveRow(row.key, 1)} disabled={index === draft.rows.length - 1} aria-label={[t("syllabus.moveDown"), rowName].join(": ")} title={t("syllabus.moveDown")}>
+                              <ArrowDownIcon weight="bold" className="size-4" aria-hidden="true" />
+                            </button>
+                            <button type="button" className={`${iconButton} hover:text-danger`} onClick={() => removeRow(row.key)} aria-label={[t("certificates.removeRow"), rowName].join(": ")} title={t("certificates.removeRow")}>
+                              <TrashIcon weight="bold" className="size-4" aria-hidden="true" />
+                            </button>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+                {!readOnly && <DetailPicker palette={palette} variant="add" label={t("certificates.addRow")} intro={t("certificates.pickIntro")} onPick={addRowFor} onBlank={addBlankRow} disabled={draft.rows.length >= 40} testId="add-row" />}
+              </fieldset>
 
-          <TextAreaField label={t("certificates.outroText")} rows={3} value={draft.outro} maxLength={2000} onChange={(e) => patch({ outro: e.target.value })} data-field="outro" onFocus={rememberFocus} />
-        </CardBody>
-      </Card>
+              {paragraph("outro", t("certificates.outroText"))}
+            </CardBody>
+          </Card>
 
-      {/* ---- the placeholder palette ---- */}
-      <Card>
-        <CardHeader title={t("certificates.placeholders")} description={t("certificates.placeholdersHint")} />
-        <CardBody>
-          <ul className="flex flex-wrap gap-2" aria-label={t("certificates.placeholders")}>
-            {view.placeholders.map((p) => (
-              <li key={p.key}>
-                <button
-                  type="button"
-                  onMouseDown={(e) => e.preventDefault() /* keep the focus where the text is */}
-                  onClick={() => insertPlaceholder(p.key)}
-                  className="rounded-full border border-border bg-surface px-3 py-1.5 text-left text-xs hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-                  title={[t("certificates.insert"), `[[${p.key}]]`].join(" ")}
-                >
-                  <span className="font-medium text-fg">{p.label}</span>
-                  <span className="ml-1.5 text-fg-muted">{p.sample}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </CardBody>
-      </Card>
+          {/* ---- the printed layout ---- */}
+          <Card>
+            <CardHeader title={t("certificates.layoutTitle")} />
+            <CardBody className="space-y-4">
+              <div className="grid gap-2 sm:grid-cols-3">
+                {LAYOUT_TOGGLES.map((key) => (
+                  <CheckboxField key={key} label={layoutLabel[key]} checked={draft.layout[key]} onChange={(e) => patchLayout({ [key]: e.target.checked })} />
+                ))}
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <TextField label={t("certificates.signatureLeft")} value={draft.layout.signatureLeft} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureLeft: e.target.value })} />
+                <TextField label={t("certificates.signatureRight")} value={draft.layout.signatureRight} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureRight: e.target.value })} />
+              </div>
+              <TextField label={t("certificates.footerNote")} value={draft.layout.footerNote ?? ""} maxLength={240} autoComplete="off" onChange={(e) => patchLayout({ footerNote: e.target.value })} />
+              <SelectField label={t("certificates.paper")} value={draft.layout.paper} onChange={(e) => patchLayout({ paper: e.target.value === "LETTER" ? "LETTER" : "A4" })} className="max-w-xs">
+                <option value="A4">{t("reportCardConfig.paperA4")}</option>
+                <option value="LETTER">{t("reportCardConfig.paperLetter")}</option>
+              </SelectField>
+            </CardBody>
+          </Card>
 
-      {/* ---- the printed layout ---- */}
-      <Card>
-        <CardHeader title={t("certificates.layoutTitle")} />
-        <CardBody className="space-y-4">
-          <div className="grid gap-2 sm:grid-cols-3">
-            {LAYOUT_TOGGLES.map((key) => (
-              <CheckboxField key={key} label={layoutLabel[key]} checked={draft.layout[key]} onChange={(e) => patchLayout({ [key]: e.target.checked })} />
-            ))}
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <TextField label={t("certificates.signatureLeft")} value={draft.layout.signatureLeft} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureLeft: e.target.value })} />
-            <TextField label={t("certificates.signatureRight")} value={draft.layout.signatureRight} maxLength={40} autoComplete="off" onChange={(e) => patchLayout({ signatureRight: e.target.value })} />
-          </div>
-          <TextField label={t("certificates.footerNote")} value={draft.layout.footerNote ?? ""} maxLength={240} autoComplete="off" onChange={(e) => patchLayout({ footerNote: e.target.value })} />
-          <SelectField label={t("certificates.paper")} value={draft.layout.paper} onChange={(e) => patchLayout({ paper: e.target.value === "LETTER" ? "LETTER" : "A4" })} className="max-w-xs">
-            <option value="A4">{t("reportCardConfig.paperA4")}</option>
-            <option value="LETTER">{t("reportCardConfig.paperLetter")}</option>
-          </SelectField>
-        </CardBody>
-      </Card>
+          {unknown.length > 0 && !error && (
+            <p className="rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-fg" data-testid="unknown-details">
+              {t("certificates.unknownDetails", { list: unknown.map((k) => `[[${k}]]`).join(", ") })}
+            </p>
+          )}
+          {error && (
+            <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+              {error}
+            </p>
+          )}
+          {!readOnly && (
+            <div className="flex flex-wrap items-center gap-2">
+              <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="template-save">
+                {t("certificates.save")}
+              </Button>
+            </div>
+          )}
+        </fieldset>
+      </form>
 
-      {!readOnly && (
-        <div className="flex flex-wrap items-center gap-2">
-          <Button type="submit" loading={pending} icon={<FloppyDiskIcon weight="bold" />} data-testid="template-save">
-            {t("certificates.save")}
-          </Button>
-        </div>
-      )}
-      </fieldset>
-    </form>
+      <aside className="min-w-0 lg:sticky lg:top-20">
+        <TemplatePreview palette={palette} locale={draft.locale} title={draft.title} intro={draft.intro} rows={draft.rows} outro={draft.outro} layout={draft.layout} />
+      </aside>
+    </div>
   );
 }
