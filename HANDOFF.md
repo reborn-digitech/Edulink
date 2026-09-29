@@ -148,8 +148,11 @@ tongue, nationality, PIN, designation and the academic year's name~~ (done 2026-
 refuses, a word typed before the lists may be sent back untouched and is a blank to a filing; the
 designation stays a title and the subject appointed for is its own coded field; a year is named
 `2026–27` at the calendar's door, `academicYearName`; still free text: the admitted-to grade, the
-school's medium, the affiliation number, the staff number, timetable and profile subjects); the staff
-record and departures on the phone.
+school's medium, the affiliation number, the staff number, timetable and profile subjects); ~~the staff
+record and departures on the phone~~ (done 2026-09-29: the phone's directory row opens the person, a
+member of staff's record or a pupil's health card, school record and leaving; five endpoints under
+`/api/v1/admin/people/{membershipId}/`; the leaving's rule is `src/lib/leaving.ts`, shared with the web's
+action; still web only: correcting a legal name, a date of birth, subjects, pausing and removing).
 
 **Audit items still open** (README §2): 4 and 5 fixed; 36 by design; 42 fixed; 43 the leave-beside-a-
 stored-PRESENT display; the first-pass items 8–13, 18, 24, 26 and 29 were documented in September's

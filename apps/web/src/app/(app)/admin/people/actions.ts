@@ -1,5 +1,6 @@
 "use server";
 
+import { recordOrScheduleLeaving } from "@/lib/leaving";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
@@ -13,17 +14,10 @@ import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
 import { issueFirstSignIn } from "@/lib/first-signin";
 import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
-import { scheduleDeparture, cancelScheduledDeparture } from "@/lib/school-record";
-import { todayKey } from "@/lib/dates";
-import { db } from "@/lib/db";
+import { cancelScheduledDeparture, undoDeparture } from "@/lib/school-record";
 import { setMemberBirthdate } from "@/lib/birthdate";
 import { correctLegalName } from "@/lib/legal-name";
 import type { GuardianRelation } from "@/lib/constants";
-import {
-  recordDeparture,
-  undoDeparture,
-  type DepartureInput,
-} from "@/lib/school-record";
 
 /**
  * Pausing and restoring access, from the directory.
@@ -92,41 +86,11 @@ export async function recordLeaving(
 ): Promise<Result & { recordId?: string; scheduledFor?: string }> {
   try {
     const ctx = await requireApiRole("ADMIN");
-    /**
-     * A LAST DAY IN THE FUTURE SCHEDULES. The pupil keeps access through
-     * that day; the daily job records the departure the morning after —
-     * the first functional test found the date being written on the
-     * certificate and ignored by everything else.
-     */
-    if (input.leftOn) {
-      const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
-      if (input.leftOn > todayKey(school.timezone)) {
-        const scheduled = await scheduleDeparture(ctx, membershipId, {
-          reason: input.reason as DepartureInput["reason"],
-          conduct: (input.conduct || null) as DepartureInput["conduct"],
-          destination: input.destination,
-          note: input.note,
-          leaveOnKey: input.leftOn,
-        });
-        if (!scheduled.ok) return { ok: false, errorKey: scheduled.errorKey };
-        revalidatePath("/admin/people");
-        return { ok: true, scheduledFor: scheduled.leaveOnKey };
-      }
-    }
-    const result = await recordDeparture(ctx, membershipId, {
-      reason: input.reason as DepartureInput["reason"],
-      conduct: (input.conduct || null) as DepartureInput["conduct"],
-      destination: input.destination,
-      note: input.note,
-      // An empty date box means today, which is what it means on paper. A
-      // typed-in date that is not a date is refused by the library rather than
-      // silently becoming today — a certificate is dated, and the wrong date is
-      // worse than being asked again.
-      leftOn: input.leftOn ? new Date(input.leftOn) : undefined,
-    });
+    // Today or a later day, recorded or kept: the rule is lib/leaving.ts, which the phone's endpoint calls too.
+    const result = await recordOrScheduleLeaving(ctx, membershipId, input);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
-    return { ok: true, recordId: result.recordId };
+    return { ok: true, ...(result.recordId ? { recordId: result.recordId } : {}), ...(result.scheduledFor ? { scheduledFor: result.scheduledFor } : {}) };
   } catch (error) {
     return failure(error);
   }

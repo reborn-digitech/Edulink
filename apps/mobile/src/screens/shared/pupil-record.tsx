@@ -1,9 +1,8 @@
-import { MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
+import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";

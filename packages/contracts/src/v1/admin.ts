@@ -911,3 +911,62 @@ export type LegalNameReason = z.infer<typeof legalNameReasonSchema>;
 export const STAFF_APPOINTED_SUBJECTS = ["MATHEMATICS", "EVS", "MUSIC", "SCIENCE", "SOCIAL_SCIENCE", "ACCOUNTANCY", "BIOLOGY", "BUSINESS_STUDIES", "CHEMISTRY", "COMPUTER_SCIENCE", "ECONOMICS", "GEOGRAPHY", "HISTORY", "PHYSICS", "POLITICAL_SCIENCE", "PSYCHOLOGY", "HINDI", "SANSKRIT", "URDU", "ENGLISH", "REGIONAL_LANGUAGE", "SOCIOLOGY", "STATISTICS", "ART", "PHYSICAL_EDUCATION", "WORK_EDUCATION"] as const;
 export const staffAppointedSubjectSchema = z.enum(STAFF_APPOINTED_SUBJECTS);
 export type StaffAppointedSubject = z.infer<typeof staffAppointedSubjectSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* The staff record, and a pupil's leaving, from the phone                     */
+/* -------------------------------------------------------------------------- */
+
+const recordText = (max: number) => z.string().trim().max(max).nullable();
+/**
+ * POST /api/v1/admin/people/{membershipId}/staff-record — THE WHOLE RECORD,
+ * every key present: a save replaces the record, so a body that leaves a key
+ * out would clear it without anybody having meant to. A null or an empty
+ * string is how a field is cleared on purpose.
+ */
+export const staffRecordSaveSchema = z.object({
+  staffNumber: recordText(40),
+  designation: recordText(80),
+  qualification: recordText(200),
+  joinedOnKey: dateKey.nullable(),
+  birthdateKey: dateKey.nullable(),
+  serviceJoinedOnKey: dateKey.nullable(),
+  leaveDaysPerYear: z.number().int().min(0).max(365).nullable(),
+  gender: recordText(8),
+  socialCategory: recordText(16),
+  academicQualification: recordText(4),
+  professionalQualification: recordText(4),
+  appointmentType: recordText(16),
+  appointedSubject: recordText(32),
+});
+export type StaffRecordSave = z.infer<typeof staffRecordSaveSchema>;
+
+/** GET the same path: who it is, and the record as it stands (every field null when the office has written none). */
+export const staffRecordViewSchema = z.object({
+  membershipId: id,
+  name: z.string(),
+  role: z.string(),
+  canEdit: z.boolean(),
+  record: staffRecordSaveSchema,
+});
+export type StaffRecordPage = z.infer<typeof staffRecordViewSchema>;
+
+export const LEAVING_REASON_CODES = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
+export const LEAVING_CONDUCTS = ["EXCELLENT", "GOOD", "SATISFACTORY"] as const;
+/**
+ * POST /api/v1/admin/people/{membershipId}/leaving — record that a pupil has
+ * left, which issues their leaving certificate; a last day after today is
+ * kept until the morning after it. Everything typed here is printed on a
+ * paper the family hands to the next school.
+ */
+export const leavingBodySchema = z.object({
+  reason: z.enum(LEAVING_REASON_CODES),
+  conduct: z.enum(LEAVING_CONDUCTS).nullable().optional(),
+  destination: z.string().trim().max(160).optional(),
+  note: z.string().trim().max(500).optional(),
+  /** The last day; left out or null, it is today in the school's zone. */
+  leftOn: dateKey.nullable().optional(),
+});
+export type LeavingBody = z.infer<typeof leavingBodySchema>;
+/** Recorded now (the certificate's id) or kept for a later day (the day). */
+export const leavingResultSchema = z.object({ recordId: z.string().nullable(), scheduledFor: dateKey.nullable() });
+export type LeavingResult = z.infer<typeof leavingResultSchema>;

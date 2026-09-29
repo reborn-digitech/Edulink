@@ -252,6 +252,8 @@ export const HIDDEN_SCREENS = [
   "messaging-broadcast",
   "health",
   "pupil-health",
+  "person",
+  "staff-record",
   "incidents",
   "incident",
   "incident-new",

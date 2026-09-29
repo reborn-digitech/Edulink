@@ -93,14 +93,24 @@ export function StaffRoster() {
               ]
                 .filter(Boolean)
                 .join(" · ");
-              return <Row key={s.membershipId} title={s.preferredName ? `${s.name} (${s.preferredName})` : s.name} caption={caption} right={record?.staffNumber ? <Text variant="xs" tone="subtle">{record.staffNumber}</Text> : null} />;
+              return (
+                <Row
+                  key={s.membershipId}
+                  title={s.preferredName ? `${s.name} (${s.preferredName})` : s.name}
+                  caption={caption}
+                  right={record?.staffNumber ? <Text variant="xs" tone="subtle">{record.staffNumber}</Text> : null}
+                  onPress={() => router.push({ pathname: "/(app)/staff-record", params: { membershipId: s.membershipId } } as never)}
+                />
+              );
             })}
           </Card>
         )
       ) : null}
-      <Text variant="xs" tone="subtle">
-        {t("staff.rosterReadOnly")}
-      </Text>
+      {role === "ADMIN" ? null : (
+        <Text variant="xs" tone="subtle">
+          {t("staff.rosterReadOnly")}
+        </Text>
+      )}
       {role === "ADMIN" ? <Button label={t("staff.rosterEditLink")} variant="secondary" onPress={() => router.push("/(app)/people" as never)} /> : null}
     </Screen>
   );

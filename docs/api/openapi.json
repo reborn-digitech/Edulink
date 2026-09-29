@@ -3175,6 +3175,700 @@
         ]
       }
     },
+    "/api/v1/admin/people/{membershipId}/staff-record": {
+      "get": {
+        "summary": "A member of staff's record as it stands; the head reads, the office edits",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "membershipId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string"
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    },
+                    "record": {
+                      "type": "object",
+                      "properties": {
+                        "staffNumber": {
+                          "type": "string",
+                          "maxLength": 40,
+                          "nullable": true
+                        },
+                        "designation": {
+                          "type": "string",
+                          "maxLength": 80,
+                          "nullable": true
+                        },
+                        "qualification": {
+                          "type": "string",
+                          "maxLength": 200,
+                          "nullable": true
+                        },
+                        "joinedOnKey": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                          "nullable": true
+                        },
+                        "birthdateKey": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/joinedOnKey"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "serviceJoinedOnKey": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/record/properties/joinedOnKey"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "leaveDaysPerYear": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 365,
+                          "nullable": true
+                        },
+                        "gender": {
+                          "type": "string",
+                          "maxLength": 8,
+                          "nullable": true
+                        },
+                        "socialCategory": {
+                          "type": "string",
+                          "maxLength": 16,
+                          "nullable": true
+                        },
+                        "academicQualification": {
+                          "type": "string",
+                          "maxLength": 4,
+                          "nullable": true
+                        },
+                        "professionalQualification": {
+                          "type": "string",
+                          "maxLength": 4,
+                          "nullable": true
+                        },
+                        "appointmentType": {
+                          "type": "string",
+                          "maxLength": 16,
+                          "nullable": true
+                        },
+                        "appointedSubject": {
+                          "type": "string",
+                          "maxLength": 32,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "staffNumber",
+                        "designation",
+                        "qualification",
+                        "joinedOnKey",
+                        "birthdateKey",
+                        "serviceJoinedOnKey",
+                        "leaveDaysPerYear",
+                        "gender",
+                        "socialCategory",
+                        "academicQualification",
+                        "professionalQualification",
+                        "appointmentType",
+                        "appointedSubject"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "membershipId",
+                    "name",
+                    "role",
+                    "canEdit",
+                    "record"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "The office writes the whole staff record, every key present; a null clears a field",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "staffNumber": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "designation": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "nullable": true
+                  },
+                  "qualification": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "nullable": true
+                  },
+                  "joinedOnKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  },
+                  "birthdateKey": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/joinedOnKey"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "serviceJoinedOnKey": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/joinedOnKey"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "leaveDaysPerYear": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 365,
+                    "nullable": true
+                  },
+                  "gender": {
+                    "type": "string",
+                    "maxLength": 8,
+                    "nullable": true
+                  },
+                  "socialCategory": {
+                    "type": "string",
+                    "maxLength": 16,
+                    "nullable": true
+                  },
+                  "academicQualification": {
+                    "type": "string",
+                    "maxLength": 4,
+                    "nullable": true
+                  },
+                  "professionalQualification": {
+                    "type": "string",
+                    "maxLength": 4,
+                    "nullable": true
+                  },
+                  "appointmentType": {
+                    "type": "string",
+                    "maxLength": 16,
+                    "nullable": true
+                  },
+                  "appointedSubject": {
+                    "type": "string",
+                    "maxLength": 32,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "staffNumber",
+                  "designation",
+                  "qualification",
+                  "joinedOnKey",
+                  "birthdateKey",
+                  "serviceJoinedOnKey",
+                  "leaveDaysPerYear",
+                  "gender",
+                  "socialCategory",
+                  "academicQualification",
+                  "professionalQualification",
+                  "appointmentType",
+                  "appointedSubject"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/people/{membershipId}/leaving": {
+      "post": {
+        "summary": "Record that a pupil has left and issue the leaving certificate, or keep a later last day until it comes",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recordId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "scheduledFor": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "recordId",
+                    "scheduledFor"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "TRANSFERRED",
+                      "GRADUATED",
+                      "LEFT"
+                    ]
+                  },
+                  "conduct": {
+                    "type": "string",
+                    "enum": [
+                      "EXCELLENT",
+                      "GOOD",
+                      "SATISFACTORY"
+                    ],
+                    "nullable": true
+                  },
+                  "destination": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  },
+                  "leftOn": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/people/{membershipId}/leaving/undo": {
+      "post": {
+        "summary": "Undo a leaving recorded by mistake: back on the roll, the certificate withdrawn",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/people/{membershipId}/leaving/cancel": {
+      "post": {
+        "summary": "Give up a last day kept for later, before it comes",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/admin/people/intake": {
       "post": {
         "summary": "Admit pupils from a pasted CSV",

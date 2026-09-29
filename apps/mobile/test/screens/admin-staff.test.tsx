@@ -39,11 +39,16 @@ describe("the staff roster", () => {
     expect(screen.getByText("The office keeps these records; this page only reads them.")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Edit in the directory" })).toBeNull();
     expect(calls().some((c) => c.line === "GET /api/v1/admin/staff")).toBe(true);
+    // A row opens that person's record, which the head reads.
+    await fireEvent.press(screen.getByRole("button", { name: /^ZZ Teacher,/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/staff-record", params: { membershipId: "m2" } });
   });
 
   it("the role and subject chips and the search ask the API; the office edits in the directory", async () => {
     const { calls } = await mountStaff(<StaffRoster />, "ADMIN", { "GET /api/v1/admin/staff": () => json(ROSTER) });
     await screen.findByText("ZZ Teacher");
+    // The office edits: the page does not say it only reads.
+    expect(screen.queryByText("The office keeps these records; this page only reads them.")).toBeNull();
     await fireEvent.press(screen.getByRole("button", { name: "Edit in the directory" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/people");
     await fireEvent.press(screen.getByRole("radio", { name: "Teachers" }));
