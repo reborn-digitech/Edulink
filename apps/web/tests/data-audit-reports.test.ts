@@ -100,7 +100,7 @@ afterAll(async () => {
 async function rawPupils(schoolId: string, grade?: string) {
   return db.membership.findMany({
     where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, ...(grade ? { enrollments: { some: { status: "ACTIVE", class: { gradeLevel: grade, archivedAt: null } } } } : {}) },
-    select: { id: true, joinedAt: true, user: { select: { name: true, birthdate: true, phone: true, email: true, penNumber: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { rollNumber: true, enrolledAt: true, class: { select: { name: true, gradeLevel: true, section: true } } }, orderBy: { enrolledAt: "desc" }, take: 1 }, guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 } },
+    select: { id: true, joinedAt: true, user: { select: { name: true, birthdate: true, phone: true, email: true, penNumber: true } }, pupilRecord: true, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { rollNumber: true, repeating: true, enrolledAt: true, class: { select: { name: true, gradeLevel: true, section: true } } }, orderBy: { enrolledAt: "desc" }, take: 1 }, guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 } },
   });
 }
 
@@ -139,12 +139,13 @@ d("the five filing sheets, cell by cell", () => {
           "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": MINORITY[upper(rec?.religion)] ?? "",
           "Is BPL BENEFICIARY (Yes-1, No-2)": yesNo(rec?.bpl),
           "BELONGS TO EWS/DISADVANTAGED GROUP (Yes-1, No-2)": yesNo(rec?.ews),
-          "IS CWSN (Yes-1, No-2)": rec?.cwsnType ? "1" : rec ? "2" : "",
-          "CWSN IMPAIRMENT TYPE": rec?.cwsnType ?? "",
+          // A type is Yes, "NONE" is No, and a blank is an answer nobody gave: filed blank.
+          "IS CWSN (Yes-1, No-2)": !rec?.cwsnType ? "" : rec.cwsnType === "NONE" ? "2" : "1",
+          "CWSN IMPAIRMENT TYPE": rec?.cwsnType && rec.cwsnType !== "NONE" ? rec.cwsnType : "",
           "Admission Number": rec?.admissionNumber ?? "",
           "ADMISSION DATE (DD-MM-YYYY)": ddmmyyyy(rec?.admissionDate ?? p.joinedAt),
           "Grade/Class": p.enrollments[0]?.class.gradeLevel ?? "",
-          "SECTION": p.enrollments[0]?.class.section ?? "A",
+          "SECTION": p.enrollments[0]?.class.section ?? "",
         };
         for (const [k, v] of Object.entries(exp)) if ((r[k] ?? "") !== v) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} ${k}: sheet "${r[k]}" vs raw "${v}"`);
         if (p.enrollments[0]?.rollNumber != null && r["Roll no"] !== String(p.enrollments[0].rollNumber)) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} roll no: sheet ${r["Roll no"]} vs enrolment ${p.enrollments[0].rollNumber}`);
@@ -165,7 +166,9 @@ d("the five filing sheets, cell by cell", () => {
           const days = attended ? String(Math.min(attended, 250)) : "";
           if ((r["CLASS ATTENDED DAYS (Previous Year)"] ?? "") !== days) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} attended days: sheet "${r["CLASS ATTENDED DAYS (Previous Year)"]}" vs register ${days || "none"}`);
           if ((r["PREVIOUS ACADEMIC YEAR SCHOOLING STATUS"] ?? "") !== (sameSchool ? "1" : "2")) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} previous-year status: sheet "${r["PREVIOUS ACADEMIC YEAR SCHOOLING STATUS"]}" vs admitted ${admitted.toISOString().slice(0, 10)}`);
-          if (sameSchool && card && r["RESULT FOR PREVIOUS EXAM"] !== "1") note("udise-students", "FAIL", s.name, `${upper(p.user.name)} result: sheet "${r["RESULT FOR PREVIOUS EXAM"]}" with a card present`);
+          // A repeater's result is left for the office: the sheet states a pass only for a pupil who moved up.
+          const repeating = p.enrollments[0]?.repeating === true;
+          if (sameSchool && card && r["RESULT FOR PREVIOUS EXAM"] !== (repeating ? "" : "1")) note("udise-students", "FAIL", s.name, `${upper(p.user.name)} result: sheet "${r["RESULT FOR PREVIOUS EXAM"]}" with a card present`);
           if (sameSchool && !card) note("udise-students", "WARN", s.name, `${upper(p.user.name)} was here last year but has no published annual card — appeared/result/marks go out blank`);
         }
         // What the sheet needs that the school has not entered.
@@ -205,7 +208,7 @@ d("the five filing sheets, cell by cell", () => {
       if (ageSum !== pupils.length) note("udise-enrolment", "FAIL", s.name, `4.4 age rows sum to ${ageSum}, the roll has ${pupils.length}`);
       const cwsnRows = rows.filter((r) => r.table === "4.6 CWSN by impairment");
       const cwsnSum = sum(cwsnRows.map((r) => sum(totalCols.map((h) => Number(r[h] ?? 0)))));
-      const cwsnRaw = pupils.filter((p) => p.pupilRecord?.cwsnType).length;
+      const cwsnRaw = pupils.filter((p) => p.pupilRecord?.cwsnType && p.pupilRecord.cwsnType !== "NONE").length;
       if (cwsnSum !== cwsnRaw) note("udise-enrolment", "FAIL", s.name, `4.6 CWSN counts ${cwsnSum}, raw ${cwsnRaw}`);
       const minRows = rows.filter((r) => r.table === "4.2(b) Minority groups");
       const minSum = sum(minRows.map((r) => sum(totalCols.map((h) => Number(r[h] ?? 0)))));
@@ -276,7 +279,7 @@ d("the five filing sheets, cell by cell", () => {
         if ((c["PEN"] ?? "") !== (p.user.penNumber ?? rec?.penNumber ?? "")) note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} CBSE PEN "${c["PEN"]}" vs account ${p.user.penNumber}`);
         if ((c["Category"] ?? "") !== upper(rec?.category)) note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} CBSE category "${c["Category"]}" vs "${upper(rec?.category)}"`);
         if ((c["Date of Birth (DD/MM/YYYY)"] ?? "") !== ddmmyyyy(p.user.birthdate, "/")) note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} CBSE DOB`);
-        if ((c["CWSN"] ?? "") !== (rec?.cwsnType ? "Yes" : "No")) note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} CBSE CWSN`);
+        if ((c["CWSN"] ?? "") !== (!rec?.cwsnType ? "" : rec.cwsnType === "NONE" ? "No" : "Yes")) note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} CBSE CWSN`);
         const parts = p.user.name.trim().split(/\s+/);
         const m = ms.find((r) => r["First name"] === upper(parts[0]) && r["Surname"] === upper(parts.length > 1 ? parts[parts.length - 1] : ""));
         if (!m) { note("board-sheets", "FAIL", s.name, `${upper(p.user.name)} missing from the MSBSHSE sheet by name order`); continue; }

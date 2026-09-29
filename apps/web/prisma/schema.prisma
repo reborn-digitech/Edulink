@@ -679,6 +679,11 @@ model Enrollment {
   removedAt           DateTime?
   /// The roll number the school assigned in this class, printed on the filing sheets in place of a counter.
   rollNumber          Int?
+  /// REPEATING THE CLASS: held back at promotion, or said so by the office.
+  /// The filing's "class studied in the previous year" was always this
+  /// grade less one, so a repeater filed as promoted. A new enrolment
+  /// starts false.
+  repeating           Boolean   @default(false)
   school              School    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class   Class      @relation(fields: [classId], references: [id], onDelete: Cascade)
@@ -4003,6 +4008,10 @@ model PupilRecord {
   fatherOccupation       String?
   motherOccupation       String?
   annualIncome           Int?
+  /// Admitted under the Right to Education Act's quota: the office's answer,
+  /// null until it has given one. It was read off the EWS answer, which is
+  /// a different fact — a family may be one and not the other.
+  rte                    Boolean?
   /// THE NUMBER THE SCHOOL RINGS, as the admission form gives it: written by
   /// the office or the family, unverified, E.164. It is the record's and NOT
   /// the account's — `User.phone` is proved by a code and is a way to sign

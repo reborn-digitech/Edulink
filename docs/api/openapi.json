@@ -56048,7 +56048,9 @@
                                 "motherOccupation",
                                 "annualIncome",
                                 "rollNumber",
-                                "guardianPhone"
+                                "guardianPhone",
+                                "rte",
+                                "repeating"
                               ]
                             }
                           },
@@ -56345,6 +56347,16 @@
                           "nullable": true,
                           "default": null
                         },
+                        "rte": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "repeating": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -56439,7 +56451,9 @@
                           "motherOccupation",
                           "annualIncome",
                           "rollNumber",
-                          "guardianPhone"
+                          "guardianPhone",
+                          "rte",
+                          "repeating"
                         ]
                       }
                     },
@@ -56845,6 +56859,16 @@
                           "nullable": true,
                           "default": null
                         },
+                        "rte": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "repeating": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -56939,7 +56963,9 @@
                           "motherOccupation",
                           "annualIncome",
                           "rollNumber",
-                          "guardianPhone"
+                          "guardianPhone",
+                          "rte",
+                          "repeating"
                         ]
                       }
                     },
@@ -57330,10 +57356,22 @@
                       {
                         "type": "string",
                         "enum": [
+                          "NONE"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
                           ""
                         ]
                       }
                     ]
+                  },
+                  "rte": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "repeating": {
+                    "$ref": "#/properties/bpl"
                   },
                   "bloodGroup": {
                     "anyOf": [
@@ -58914,6 +58952,16 @@
                           "nullable": true,
                           "default": null
                         },
+                        "rte": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "repeating": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -59008,7 +59056,9 @@
                           "motherOccupation",
                           "annualIncome",
                           "rollNumber",
-                          "guardianPhone"
+                          "guardianPhone",
+                          "rte",
+                          "repeating"
                         ]
                       }
                     },
@@ -59421,6 +59471,16 @@
                           "nullable": true,
                           "default": null
                         },
+                        "rte": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "repeating": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "rollNumber": {
                           "type": "string",
                           "nullable": true,
@@ -59515,7 +59575,9 @@
                           "motherOccupation",
                           "annualIncome",
                           "rollNumber",
-                          "guardianPhone"
+                          "guardianPhone",
+                          "rte",
+                          "repeating"
                         ]
                       }
                     },
@@ -59906,10 +59968,22 @@
                       {
                         "type": "string",
                         "enum": [
+                          "NONE"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
                           ""
                         ]
                       }
                     ]
+                  },
+                  "rte": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "repeating": {
+                    "$ref": "#/properties/bpl"
                   },
                   "bloodGroup": {
                     "anyOf": [

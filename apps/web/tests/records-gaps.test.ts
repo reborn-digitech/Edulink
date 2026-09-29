@@ -170,6 +170,29 @@ describe("⚠ names from a list: the mother tongue, the nationality, the PIN", (
   });
 });
 
+describe("⚠ the answers the filing used to guess", () => {
+  it("the office says whether the pupil came in under the RTE quota, repeats the class, and has no impairment; a family's body naming them changes nothing", async () => {
+    await as("ADMIN");
+    const save = (body: Record<string, string>) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
+    let view = await (await save({ rte: "yes", repeating: "yes", cwsnType: "NONE" })).json();
+    expect(view.record).toMatchObject({ rte: "yes", repeating: "yes", cwsnType: "NONE" });
+    expect(view.missingForFiling).not.toEqual(expect.arrayContaining(["rte", "cwsnType"]));
+    expect((await db.enrollment.findFirstOrThrow({ where: { studentMembershipId: pupil, status: "ACTIVE" } })).repeating).toBe(true);
+    expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil } })).rte).toBe(true);
+
+    await as("PARENT");
+    view = await (await familyRecordPost(json(`/api/v1/family/record?childId=${pupil}`, { rte: "no", repeating: "no", cwsnType: "", motherOccupation: "Nurse" }))).json();
+    expect(view.record).toMatchObject({ rte: "yes", repeating: "yes", cwsnType: "NONE", motherOccupation: "Nurse" });
+
+    await as("ADMIN");
+    // Taken back: a blank is "nobody has asked", and the filing waits for an answer.
+    view = await (await save({ rte: "", repeating: "no", cwsnType: "" })).json();
+    expect(view.record).toMatchObject({ rte: null, repeating: "no", cwsnType: null });
+    expect(view.missingForFiling).toEqual(expect.arrayContaining(["rte", "cwsnType"]));
+    expect((await save({ cwsnType: "none at all" })).status).toBe(422);
+  });
+});
+
 describe("the record's new fields and coded choices", () => {
   it("the office saves the TC, the household, coded category and religion and the roll number; a family cannot set the roll number; an uncodable category counts as missing", async () => {
     await as("ADMIN");

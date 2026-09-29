@@ -37,6 +37,8 @@ const RECORD = {
   motherOccupation: null,
   annualIncome: null,
   guardianPhone: null,
+  rte: null,
+  repeating: "no",
   rollNumber: "12",
   requestedAt: "2026-09-01T05:00:00.000Z",
   familyFilledAt: null,

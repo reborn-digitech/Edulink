@@ -76,6 +76,8 @@ export const pupilRecordFieldSchema = z.enum([
   "previousSchoolTcNumber", "previousSchoolTcDate", "fatherOccupation", "motherOccupation", "annualIncome", "rollNumber",
   // The number the school rings: the record's, not the account's sign-in phone.
   "guardianPhone",
+  // What the UDISE+ sheet used to guess: admitted under the RTE quota, and repeating the class (kept on the enrolment).
+  "rte", "repeating",
 ]);
 /**
  * The fields a family — a guardian, or the pupil themselves — may write on
@@ -127,6 +129,8 @@ export const pupilGenderSchema = z.enum(["M", "F", "T"]);
 /** The 21 impairment types of the UDISE+ student module, by their portal code. */
 export const CWSN_TYPES = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"] as const;
 export const cwsnTypeSchema = z.enum(CWSN_TYPES);
+/** "Asked, and none": apart from a blank, which is "nobody has asked" and is filed blank. */
+export const CWSN_NONE = "NONE";
 /** The same eight groups the health card takes (health.ts); named apart so both modules export cleanly. */
 export const RECORD_BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] as const;
 const recordBloodGroupSchema = z.enum(RECORD_BLOOD_GROUPS);
@@ -158,7 +162,10 @@ export const pupilRecordSaveSchema = z.object({
   motherNameLocal: text.optional(),
   bpl: yesNo.optional(),
   ews: yesNo.optional(),
-  cwsnType: z.union([cwsnTypeSchema, z.literal("")]).optional(),
+  cwsnType: z.union([cwsnTypeSchema, z.literal(CWSN_NONE), z.literal("")]).optional(),
+  /** The office's two answers for the filing; a family's body naming them changes nothing. */
+  rte: yesNo.optional(),
+  repeating: yesNo.optional(),
   bloodGroup: z.union([recordBloodGroupSchema, z.literal("")]).optional(),
   previousSchoolTcNumber: z.string().trim().max(40).optional(),
   previousSchoolTcDate: dateKey.nullable().optional(),
@@ -207,6 +214,10 @@ export const pupilRecordSchema = z.object({
   annualIncome: z.string().nullable().default(null),
   /** The family's contact number, E.164. */
   guardianPhone: z.string().nullable().default(null),
+  /** "yes" | "no" | null: admitted under the RTE quota. */
+  rte: z.string().nullable().default(null),
+  /** "yes" | "no": repeating the class, from the pupil's present enrolment; null when they are in no class. */
+  repeating: z.string().nullable().default(null),
   /** The roll number on the pupil's present enrolment. */
   rollNumber: z.string().nullable().default(null),
   requestedAt: iso.nullable(),

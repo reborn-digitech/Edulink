@@ -85,8 +85,8 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 
 | Email | Name | Look at |
 |---|---|---|
-| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmubsk57u0bl5gnnddkt3g1xf at Sunrise, /expert/bookings/cmubsk5810bldgnndd8fvskhh at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
-| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmubsk58c0blvgnndouogyy95 — a careers talk booked by Saraswati |
+| vikram.sethi@demo.relay.test | Dr Vikram Sethi | /expert (two confirmed "Robotics for grade 8" workshops next week: /expert/bookings/cmukxuvux02c7govx5b9hqzch at Sunrise, /expert/bookings/cmukxuvuz02cfgovxswhqkw68 at Saraswati), /expert/availability (slots over the next two weeks), /mentoring/cmubsk5830bllgnnda3lqepvp (active mentorship with Lavanya Kulkarni, grade 9 at Sunrise, three messages), /expert/profile |
+| anjali.rao@expert.test | Dr Anjali Rao (existing demo expert) | /expert/bookings/cmukxuvv102cpgovxgpahijdr — a careers talk booked by Saraswati |
 
 ## Workflows seeded, and where to see each
 

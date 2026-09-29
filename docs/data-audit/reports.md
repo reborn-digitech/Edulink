@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-09-29T10:07:33.197Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 73 INFO
+Run: 2026-09-29T10:22:59.795Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 73 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -149,8 +149,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | report-card-items | ZZ Northgate School | 1 paper(s) on cards differ from the marks as they stand now — a published card is frozen; a draft regenerates when opened |
-| leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 231/249 |
-| leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 231/249 |
+| leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 232/250 |
+| leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 232/250 |
 | inputs-pupils | Saraswati Vidya Mandir | 35 of 47 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Saraswati Vidya Mandir | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | Sunrise Public School | 35 of 47 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
@@ -217,7 +217,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | year-archive | Saraswati Vidya Mandir | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | Sunrise Public School | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
-| retention | platform | tonight would take sessions 2, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0 |
+| retention | platform | tonight would take sessions 3, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0 |
 | inputs-pupils | Saraswati Vidya Mandir | 6 of 47 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
 | inputs-pupils | Saraswati Vidya Mandir | 17 of 47 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
 | inputs-pupils | Saraswati Vidya Mandir | 17 of 47 pupils lack a guardian with a number they proved — feeds texts and reminders |

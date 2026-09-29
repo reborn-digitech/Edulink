@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type QueryKey } from "@tanstack/react-query";
-import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
+import { FAMILY_RECORD_FIELDS, penChangeRequestSchema, penChangesListSchema, PUPIL_CATEGORIES, PUPIL_RELIGIONS, RECORD_BLOOD_GROUPS, CWSN_TYPES, type PenChangeRequestView, type PupilRecordField, type PupilRecordSave, type PupilRecordView, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Row, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -26,7 +26,7 @@ import { Chips, must, Refusal } from "../staff/shared";
 export const REQUIRED_FIELDS: PupilRecordField[] = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"];
 export const OPTIONAL_FIELDS: PupilRecordField[] = ["religion", "caste", "category", "postalCode", "admittedToGrade", "previousSchool", "previousSchoolTcNumber", "previousSchoolTcDate", "penNumber", "rollNumber", "fatherOccupation", "motherOccupation", "annualIncome", "guardianPhone"];
 /** The filing fields: the chip-picked ones send the portal's code ("M", "yes", "9", "B+") and a blank clears. */
-export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "cwsnType", "bloodGroup"];
+export const FILING_FIELDS: PupilRecordField[] = ["gender", "nameLocal", "fatherNameLocal", "motherNameLocal", "bpl", "ews", "rte", "repeating", "cwsnType", "bloodGroup"];
 const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, ...FILING_FIELDS];
 /**
  * What a family's form types: the contracts' FAMILY_RECORD_FIELDS. The rest —
@@ -132,7 +132,7 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
     { value: "no", label: t("pupilRecord.no") },
   ];
   /** A coded filing answer: chips for the office, the picked word under the office's note for the family. */
-  const codedChips = (field: "gender" | "bpl" | "ews" | "cwsnType", options: { value: string; label: string }[]) =>
+  const codedChips = (field: "gender" | "bpl" | "ews" | "rte" | "repeating" | "cwsnType", options: { value: string; label: string }[]) =>
     familySide ? readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, options.find((o) => o.value === form[field] && o.value !== "")?.label ?? form[field]) : <Chips key={field} label={fieldLabel(t, field)} value={form[field]} options={options} onChange={(v) => set(field, v)} disabled={!editable} />;
   /** A field shown, never typed: the value or a dash, and the note that says whose it is. */
   const readOnly = (field: PupilRecordField, note: string, testID: string, display?: string) => {
@@ -269,7 +269,15 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
         {input("motherNameLocal", true)}
         {codedChips("bpl", yesNo)}
         {codedChips("ews", yesNo)}
-        {codedChips("cwsnType", [{ value: "", label: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code as string, label: cwsnLabel(code) }))])}
+        {codedChips("rte", yesNo)}
+        <Text variant="xs" tone="subtle">
+          {t("pupilRecord.rteHint")}
+        </Text>
+        {codedChips("repeating", [{ value: "no", label: t("pupilRecord.no") }, { value: "yes", label: t("pupilRecord.yes") }])}
+        <Text variant="xs" tone="subtle">
+          {t("pupilRecord.repeatingHint")}
+        </Text>
+        {codedChips("cwsnType", [{ value: "", label: t("pupilRecord.notSaid") }, { value: CWSN_NONE, label: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code as string, label: cwsnLabel(code) }))])}
         <Text variant="xs" tone="subtle">
           {t("pupilRecord.cwsnHint")}
         </Text>

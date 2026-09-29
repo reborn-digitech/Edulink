@@ -1137,7 +1137,7 @@ export async function buildCertificates(school: { id: string; name: string; code
         admissionDate: last ? null : new Date("2024-06-15T00:00:00Z"), admittedToGrade: "1", previousSchool: opts.previousSchool ?? "Sunrise Nursery", penNumber: fakePen(row.studentMembershipId), updatedByUserId: adminUserId, familyFilledAt: new Date(),
         previousSchoolTcNumber: last ? null : `TC/2024/${String(100 + Number(recordGrade) * 10 + i).padStart(4, "0")}`, previousSchoolTcDate: last ? null : new Date("2024-06-05T00:00:00Z"),
         // The filing fields: gender for all but the last (so the UDISE sheet has a blank to name), a BPL and an EWS flag, one child with an impairment, Marathi names on two.
-        gender: last ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, cwsnType: i === 1 ? "2" : null, bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
+        gender: last ? null : i % 2 === 0 ? "M" : "F", bpl: i === 2, ews: i === 2 || i === 4, rte: i === 4, cwsnType: i === 1 ? "2" : "NONE", bloodGroup: ["A+", "O+", "B+", null, "AB+", "O-"][i % 6] ?? null,
         nameLocal: i === 0 ? "आरव पाटील" : i === 1 ? "भक्ती भोसले" : null, fatherNameLocal: i === 0 ? "रोहन पाटील" : null, motherNameLocal: i === 0 ? "स्नेहा पाटील" : null,
       };
       await db.pupilRecord.upsert({ where: { studentMembershipId: row.studentMembershipId }, create: { schoolId: school.id, studentMembershipId: row.studentMembershipId, ...data }, update: data });

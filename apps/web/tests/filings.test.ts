@@ -94,11 +94,11 @@ beforeAll(async () => {
   const [s4a, s4b, s5, s6, sNow] = await Promise.all([session("2025-08-04"), session("2025-08-04", diplomaClassId), session("2025-08-05"), session("2025-08-06"), session("2026-06-10")]);
   await db.attendanceRecord.createMany({ data: [{ schoolId, sessionId: s4a.id, studentMembershipId: pupilA, status: "PRESENT" }, { schoolId, sessionId: s4b.id, studentMembershipId: pupilA, status: "PRESENT" }, { schoolId, sessionId: s5.id, studentMembershipId: pupilA, status: "LATE" }, { schoolId, sessionId: s6.id, studentMembershipId: pupilA, status: "ABSENT" }, { schoolId, sessionId: sNow.id, studentMembershipId: pupilA, status: "PRESENT" }] });
   await db.pupilRecord.createMany({ data: [
-    { schoolId, studentMembershipId: pupilC, fatherName: "Kiran Kamble", motherName: "Asha Kamble", nationality: "Indian", religion: "BUDDHIST", category: "NT", motherTongue: "Marathi", addressLine: "9 Station Road", city: "Pune", postalCode: "411002", admissionNumber: "GR-1003", admissionDate: new Date("2026-06-15T00:00:00Z"), gender: "F", bpl: false, ews: false },
-    { schoolId, studentMembershipId: pupilD, fatherName: "Sunil Jadhav", motherName: "Mina Jadhav", nationality: "Indian", religion: "HINDU", category: "GENERAL", motherTongue: "Marathi", addressLine: "2 Mill Lane", city: "Pune", postalCode: "411003", admissionNumber: "GR-1004", admissionDate: new Date("2024-06-10T00:00:00Z"), gender: "M", bpl: false, ews: false },
+    { schoolId, studentMembershipId: pupilC, fatherName: "Kiran Kamble", motherName: "Asha Kamble", nationality: "Indian", religion: "BUDDHIST", category: "NT", motherTongue: "Marathi", addressLine: "9 Station Road", city: "Pune", postalCode: "411002", admissionNumber: "GR-1003", admissionDate: new Date("2026-06-15T00:00:00Z"), gender: "F", bpl: false, ews: false, rte: false, cwsnType: "NONE" },
+    { schoolId, studentMembershipId: pupilD, fatherName: "Sunil Jadhav", motherName: "Mina Jadhav", nationality: "Indian", religion: "HINDU", category: "GENERAL", motherTongue: "Marathi", addressLine: "2 Mill Lane", city: "Pune", postalCode: "411003", admissionNumber: "GR-1004", admissionDate: new Date("2024-06-10T00:00:00Z"), gender: "M", bpl: false, ews: false, rte: false, cwsnType: "NONE" },
   ] });
   await db.staffRecord.create({ data: { schoolId, membershipId: teacherTwoMembershipId, designation: "PGT", gender: "M", socialCategory: "NT", academicQualification: "6", professionalQualification: "4", appointmentType: "CONTRACT", serviceJoinedOn: new Date("2015-06-08T00:00:00Z"), joinedOn: new Date("2020-06-01T00:00:00Z") } });
-  await db.pupilRecord.create({ data: { schoolId, studentMembershipId: pupilA, fatherName: "Rohan Patil", motherName: "Sneha Patil", nationality: "Indian", religion: "Hindu", category: "OBC", motherTongue: "Marathi", addressLine: "14 Shivaji Nagar", city: "Pune", postalCode: "411005", admissionNumber: "GR-1001", admissionDate: new Date("2024-06-10T00:00:00Z"), penNumber: "12345678901", gender: "M", bpl: false, ews: true, cwsnType: null, nameLocal: "आरव रोहन पाटील", fatherNameLocal: "रोहन पाटील", motherNameLocal: "स्नेहा पाटील" } });
+  await db.pupilRecord.create({ data: { schoolId, studentMembershipId: pupilA, fatherName: "Rohan Patil", motherName: "Sneha Patil", nationality: "Indian", religion: "Hindu", category: "OBC", motherTongue: "Marathi", addressLine: "14 Shivaji Nagar", city: "Pune", postalCode: "411005", admissionNumber: "GR-1001", admissionDate: new Date("2024-06-10T00:00:00Z"), penNumber: "12345678901", gender: "M", bpl: false, ews: true, rte: false, cwsnType: "NONE", nameLocal: "आरव रोहन पाटील", fatherNameLocal: "रोहन पाटील", motherNameLocal: "स्नेहा पाटील" } });
   await db.staffRecord.create({ data: { schoolId, membershipId: teacherMembershipId, designation: "TGT Mathematics", qualification: "M.Sc", gender: "F", socialCategory: "GENERAL", academicQualification: "5", professionalQualification: "3", serviceJoinedOn: new Date("2012-06-11T00:00:00Z"), appointmentType: "REGULAR", joinedOn: new Date("2016-06-01T00:00:00Z") } });
 });
 
@@ -123,7 +123,7 @@ describe("the identity and the readiness", () => {
     expect(view.identity).toMatchObject({ udiseCode: null, board: null, medium: "Marathi", state: "Maharashtra", city: "Pune" });
     expect(view.identityMissing).toEqual(["udiseCode", "board", "affiliationNumber", "district", "block", "managementType"]);
     // Bhakti has no record (and so no parents); Chaitra has no date of birth and no class the portal knows; Aarav and Dev are ready.
-    expect(view.pupils).toEqual({ total: 4, ready: 2, missing: { gender: 1, category: 1, motherTongue: 1, bpl: 1, ews: 1, admissionNumber: 1, admissionDate: 1, addressLine: 1, postalCode: 1, parents: 1, birthdate: 1, classCode: 1 }, withoutLocalName: 3 });
+    expect(view.pupils).toEqual({ total: 4, ready: 2, missing: { gender: 1, category: 1, motherTongue: 1, bpl: 1, ews: 1, rte: 1, cwsnType: 1, admissionNumber: 1, admissionDate: 1, addressLine: 1, postalCode: 1, parents: 1, birthdate: 1, classCode: 1 }, withoutLocalName: 3 });
     expect(view.staff).toEqual({ total: 3, ready: 2, missing: { gender: 1, socialCategory: 1, academicQualification: 1, professionalQualification: 1, appointmentType: 1, joinedOn: 1, serviceJoinedOn: 1 } });
     // Every live class's grade, the archived grade-12 class left out; the two grades with no pupils are the second teacher's.
     expect(view.grades).toEqual([{ gradeLevel: "1", pupils: 1 }, { gradeLevel: "3", pupils: 0 }, { gradeLevel: "9", pupils: 0 }, { gradeLevel: "10", pupils: 2 }, { gradeLevel: "Diploma", pupils: 1 }]);
@@ -142,7 +142,7 @@ describe("the identity and the readiness", () => {
 
   it("the record form carries the filing fields; the office view names what the filing still lacks", async () => {
     await as("ADMIN");
-    let res = await recordPost(json(`/api/v1/office/pupil-records/${pupilB}`, { gender: "F", category: "SC", motherTongue: "Marathi", bpl: "yes", ews: "no", cwsnType: "2", bloodGroup: "O+", addressLine: "3 Lake Road", postalCode: "411001", admissionNumber: "GR-1002", admissionDate: "2024-06-12" }), params({ membershipId: pupilB }));
+    let res = await recordPost(json(`/api/v1/office/pupil-records/${pupilB}`, { gender: "F", category: "SC", motherTongue: "Marathi", bpl: "yes", ews: "no", rte: "no", cwsnType: "2", bloodGroup: "O+", addressLine: "3 Lake Road", postalCode: "411001", admissionNumber: "GR-1002", admissionDate: "2024-06-12" }), params({ membershipId: pupilB }));
     expect(res.status).toBe(200);
     let view = await res.json();
     expect(view.record).toMatchObject({ gender: "F", category: "SC", bpl: "yes", ews: "no", cwsnType: "2", bloodGroup: "O+" });
@@ -151,7 +151,8 @@ describe("the identity and the readiness", () => {
     res = await recordPost(json(`/api/v1/office/pupil-records/${pupilB}`, { bpl: "", cwsnType: "" }), params({ membershipId: pupilB }));
     view = await res.json();
     expect(view.record).toMatchObject({ bpl: null, cwsnType: null, gender: "F" });
-    expect(view.missingForFiling).toEqual(["bpl"]);
+    // A blank impairment is "nobody has asked", and the record waits for an answer as it does for the card.
+    expect(view.missingForFiling).toEqual(["bpl", "cwsnType"]);
     expect((await recordPost(json(`/api/v1/office/pupil-records/${pupilB}`, { gender: "X" }), params({ membershipId: pupilB }))).status).toBe(422);
     await recordPost(json(`/api/v1/office/pupil-records/${pupilB}`, { bpl: "yes", cwsnType: "2" }), params({ membershipId: pupilB }));
     res = await recordGet(get(`/api/v1/office/pupil-records/${pupilB}`), params({ membershipId: pupilB }));
@@ -197,6 +198,31 @@ describe("the sheets", () => {
     expect(dev).toMatchObject({ "Grade/Class": "1", "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": "1", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "PP3" });
     const audit = await db.auditLog.findFirst({ where: { schoolId, action: "compliance.export" }, orderBy: { createdAt: "desc" } });
     expect(JSON.parse(audit!.meta)).toEqual({ kind: "udise-students", rows: 4, udise: true });
+
+    // ⚠ WHAT THE SHEET USED TO GUESS. Aarav was asked and has no impairment; he is not an RTE admission, and his family is EWS.
+    const RTE = "ADMITTED/ENROLLED UNDER RTE/EWS";
+    expect(aarav).toMatchObject({ "IS CWSN (Yes-1, No-2)": "2", "CWSN IMPAIRMENT TYPE": "", [RTE]: "2", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "9" });
+    const was = await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupilA }, select: { cwsnType: true, rte: true, ews: true } });
+    const klass = await db.class.findFirstOrThrow({ where: { enrollments: { some: { studentMembershipId: pupilA, status: "ACTIVE" } }, gradeLevel: "10" }, select: { id: true, section: true } });
+    try {
+      // Nobody has asked about an impairment or the quota, the class has no section, and he is repeating the year.
+      await db.pupilRecord.update({ where: { studentMembershipId: pupilA }, data: { cwsnType: null, rte: null, ews: false } });
+      await db.class.update({ where: { id: klass.id }, data: { section: null } });
+      await db.enrollment.updateMany({ where: { studentMembershipId: pupilA, classId: klass.id }, data: { repeating: true } });
+      let again = rowsOf((await (await studentsGet()).json()).csv).rows.find((r) => r["Name of Student"] === "ZZ FILING AARAV PATIL")!;
+      expect(again).toMatchObject({ SECTION: "", "IS CWSN (Yes-1, No-2)": "", "CWSN IMPAIRMENT TYPE": "", [RTE]: "", "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": "10", "RESULT FOR PREVIOUS EXAM": "" });
+      // The office says he came in under the quota, and that neither applies to nobody.
+      await db.pupilRecord.update({ where: { studentMembershipId: pupilA }, data: { rte: true } });
+      again = rowsOf((await (await studentsGet()).json()).csv).rows.find((r) => r["Name of Student"] === "ZZ FILING AARAV PATIL")!;
+      expect(again[RTE]).toBe("1");
+      await db.pupilRecord.update({ where: { studentMembershipId: pupilA }, data: { rte: false } });
+      again = rowsOf((await (await studentsGet()).json()).csv).rows.find((r) => r["Name of Student"] === "ZZ FILING AARAV PATIL")!;
+      expect(again[RTE]).toBe("0");
+    } finally {
+      await db.pupilRecord.update({ where: { studentMembershipId: pupilA }, data: was });
+      await db.class.update({ where: { id: klass.id }, data: { section: klass.section } });
+      await db.enrollment.updateMany({ where: { studentMembershipId: pupilA, classId: klass.id }, data: { repeating: false } });
+    }
     expect(audit!.meta).not.toContain("Aarav");
   });
 

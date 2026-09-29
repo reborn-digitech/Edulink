@@ -48,12 +48,18 @@ type RecordRow = {
   fatherName: string | null; motherName: string | null; placeOfBirth: string | null; nationality: string | null; religion: string | null; caste: string | null; category: string | null; motherTongue: string | null;
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
   gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
-  previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null; guardianPhone: string | null;
+  previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null; guardianPhone: string | null; rte: boolean | null;
   requestedAt: Date | null; familyFilledAt: Date | null; updatedAt: Date;
 };
 
-/** What the UDISE+ student sheet cannot be filled without, beyond the certificate fields. A blank impairment means none, so it is not asked. */
-export const FILING_RECORD_FIELDS = ["gender", "category", "motherTongue", "bpl", "ews", "admissionNumber", "admissionDate", "addressLine", "postalCode"] as const;
+/**
+ * What the UDISE+ student sheet cannot be filled without, beyond the
+ * certificate fields. The impairment and the RTE answer are among them: a
+ * blank used to be filed as "No", which is an answer nobody gave. "None" is
+ * now said (cwsnType NONE), and until it or a type is, the sheet's cell is
+ * blank and the record is not ready.
+ */
+export const FILING_RECORD_FIELDS = ["gender", "category", "motherTongue", "bpl", "ews", "rte", "cwsnType", "admissionNumber", "admissionDate", "addressLine", "postalCode"] as const;
 
 const yesNo = (v: boolean | null | undefined) => (v === true ? "yes" : v === false ? "no" : null);
 
@@ -69,7 +75,7 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
   }) as PupilRecordField[];
 }
 
-const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
+const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, rte: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -79,12 +85,14 @@ export function missingFields(record: RecordRow | null): PupilRecordField[] {
   }) as PupilRecordField[];
 }
 
-function recordView(record: RecordRow | null, rollNumber: number | null = null) {
+function recordView(record: RecordRow | null, rollNumber: number | null = null, repeating: boolean | null = null) {
   if (!record) return null;
   return {
     previousSchoolTcNumber: record.previousSchoolTcNumber, previousSchoolTcDate: record.previousSchoolTcDate?.toISOString().slice(0, 10) ?? null,
     fatherOccupation: record.fatherOccupation, motherOccupation: record.motherOccupation, annualIncome: record.annualIncome === null ? null : String(record.annualIncome),
     guardianPhone: record.guardianPhone,
+    rte: yesNo(record.rte),
+    repeating: repeating === null ? null : repeating ? "yes" : "no",
     rollNumber: rollNumber === null ? null : String(rollNumber),
     fatherName: record.fatherName, motherName: record.motherName, placeOfBirth: record.placeOfBirth, nationality: record.nationality, religion: record.religion, caste: record.caste, category: record.category, motherTongue: record.motherTongue,
     addressLine: record.addressLine, city: record.city, postalCode: record.postalCode, admissionNumber: record.admissionNumber, admissionDate: record.admissionDate?.toISOString().slice(0, 10) ?? null, admittedToGrade: record.admittedToGrade, previousSchool: record.previousSchool, penNumber: record.penNumber,
@@ -97,13 +105,13 @@ export async function pupilRecordFor(ctx: ActiveContext, studentMembershipId: st
   const viewer = await admit(ctx, studentMembershipId);
   const [record, enrolment] = await Promise.all([
     db.pupilRecord.findUnique({ where: { studentMembershipId } }),
-    db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { rollNumber: true, class: { select: { name: true } } } }),
+    db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { rollNumber: true, repeating: true, class: { select: { name: true } } } }),
   ]);
   // The PEN is the account's; a record that has not caught up shows it anyway.
   const merged = record ? { ...record, penNumber: viewer.accountPen ?? record.penNumber } : viewer.accountPen ? ({ ...EMPTY_RECORD, penNumber: viewer.accountPen } as RecordRow) : null;
   const missing = missingFields(merged);
   const penChange = await pendingPenChange(ctx, studentMembershipId);
-  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
+  return { studentMembershipId, studentName: viewer.studentName, className: enrolment?.class.name ?? null, studentCode: viewer.studentCode, birthdate: viewer.birthdateKey, record: recordView(merged, enrolment?.rollNumber ?? null, enrolment?.repeating ?? null), missing, missingForFiling: missingFilingFields(merged), complete: missing.length === 0, canEdit: viewer.canEdit, penEditable: ctx.role === "ADMIN" && !viewer.accountPen, penChange };
 }
 
 /** What a family's body may carry: its own fields, and the PEN only so the guard below can see it was not changed. */
@@ -183,6 +191,7 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     fatherOccupation: text(input.fatherOccupation), motherOccupation: text(input.motherOccupation),
     annualIncome: input.annualIncome === undefined ? undefined : input.annualIncome === "" ? null : Number(input.annualIncome),
     guardianPhone: contact,
+    rte: input.rte === undefined ? undefined : input.rte === "" ? null : input.rte === "yes",
     updatedByUserId: viewer.userId,
     ...(viewer.family ? { familyFilledAt: new Date() } : {}),
   };
@@ -190,6 +199,10 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
   // The roll number lives on the present enrolment and is the office's to set; a family's form never sends it and a family's body is ignored if it does.
   if (input.rollNumber !== undefined && !viewer.family) {
     await db.enrollment.updateMany({ where: { studentMembershipId, status: "ACTIVE" }, data: { rollNumber: input.rollNumber === "" ? null : Number(input.rollNumber) } });
+  }
+  // Repeating the class is the enrolment's too, and the office's: a blank is "no".
+  if (input.repeating !== undefined && !viewer.family) {
+    await db.enrollment.updateMany({ where: { studentMembershipId, status: "ACTIVE" }, data: { repeating: input.repeating === "yes" } });
   }
   // Which fields, never their values: a caste or an address is not for the audit log.
   await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "pupilRecord.update", targetType: "Membership", targetId: studentMembershipId, meta: { fields: Object.keys(input).filter((k) => (input as Record<string, unknown>)[k] !== undefined), family: viewer.family } });

@@ -449,9 +449,15 @@ export async function promoteSchool(
         await tx.enrollment.upsert({
           where: { classId_studentMembershipId: { classId: target.id, studentMembershipId: e.studentMembershipId } },
           create: { classId: target.id, schoolId, studentMembershipId: e.studentMembershipId, status: "ACTIVE" },
-          update: { status: "ACTIVE", removedAt: null },
+          update: { status: "ACTIVE", removedAt: null, repeating: false },
         });
         movedTo.push({ membershipId: e.studentMembershipId, className: target.name });
+      }
+
+      // Held back out of a class that moved on: they repeat it, and the filing says so.
+      const repeaters = roll.filter((e) => hold.has(e.studentMembershipId));
+      if (repeaters.length > 0) {
+        await tx.enrollment.updateMany({ where: { id: { in: repeaters.map((e) => e.id) } }, data: { repeating: true } });
       }
 
       // The old enrolments close, dated — what the archive reads.

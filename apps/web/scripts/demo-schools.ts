@@ -689,7 +689,7 @@ async function buildDeshmukh(b: Built, sunita: { id: string }) {
     fatherOccupation: "Mechanical engineer", motherOccupation: "Bank officer", annualIncome: 1_800_000,
     addressLine: "B-402, Sahil Residency, Aundh", city: "Pune", postalCode: "411007", admissionNumber: first === "Aarav" ? "SPS-2022-0416" : "SVM-2021-0287", admissionDate: new Date(first === "Aarav" ? "2022-06-13T00:00:00Z" : "2021-06-14T00:00:00Z"), admittedToGrade: first === "Aarav" ? "2" : "2",
     previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", previousSchoolTcNumber: first === "Aarav" ? "LFN/2022/031" : "BVM/2021/117", previousSchoolTcDate: new Date(first === "Aarav" ? "2022-06-01T00:00:00Z" : "2021-06-01T00:00:00Z"),
-    penNumber: fakePen(b.deshmukh.membershipId), gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, cwsnType: null, bloodGroup: card.bloodGroup,
+    penNumber: fakePen(b.deshmukh.membershipId), gender: first === "Aarav" ? "M" : "F", nameLocal: local.name, fatherNameLocal: local.father, motherNameLocal: local.mother, bpl: false, ews: false, rte: false, cwsnType: "NONE", bloodGroup: card.bloodGroup,
     updatedByUserId: sunita.id, familyFilledAt: new Date(Date.now() - 20 * DAY),
   };
   await db.pupilRecord.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...record }, update: record });

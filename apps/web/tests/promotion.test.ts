@@ -184,11 +184,14 @@ describe("the move", () => {
     expect(p1.find((e) => e.classId === four)).toMatchObject({ status: "REMOVED" });
     expect(p1.find((e) => e.classId === four)?.removedAt).not.toBeNull();
     expect(p1.find((e) => e.classId === fiveExisting)).toMatchObject({ status: "ACTIVE" });
+    // Moved up: not a repeater in the class they arrived in.
+    expect((await db.enrollment.findFirstOrThrow({ where: { studentMembershipId: pupils[0], classId: fiveExisting } })).repeating).toBe(false);
 
     // p2 was held back: still active in 4, nowhere else.
     const p2 = await db.enrollment.findMany({ where: { studentMembershipId: pupils[1] } });
     expect(p2).toHaveLength(1);
-    expect(p2[0]).toMatchObject({ classId: four, status: "ACTIVE" });
+    // …and marked as repeating it, which is what the filing reads for "class studied last year".
+    expect(p2[0]).toMatchObject({ classId: four, status: "ACTIVE", repeating: true });
 
     // p3 went 5 → the new 6, which carried the section.
     const six = await db.class.findFirstOrThrow({ where: { schoolId: riversideId, name: "ZZ Promo 6" } });

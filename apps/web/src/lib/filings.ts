@@ -1,4 +1,4 @@
-import { codeFromList, MOTHER_TONGUES, NATIONALITIES } from "@edulink/contracts";
+import { codeFromList, CWSN_NONE, MOTHER_TONGUES, NATIONALITIES } from "@edulink/contracts";
 import "server-only";
 import type { FilingIdentitySave, FilingsView, PupilRecordField } from "@edulink/contracts";
 import { Prisma } from "@prisma/client";
@@ -251,7 +251,7 @@ async function loadPupils(schoolId: string, grade?: string) {
       id: true, studentCode: true, joinedAt: true,
       user: { select: { name: true, birthdate: true, email: true, phone: true, penNumber: true } },
       pupilRecord: true,
-      enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, rollNumber: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
+      enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { enrolledAt: true, rollNumber: true, repeating: true, class: { select: { name: true, gradeLevel: true, section: true } } }, take: 1, orderBy: { enrolledAt: "desc" } },
       guardianships: { where: { status: "ACTIVE" }, select: { relation: true, parent: { select: { name: true, phone: true, email: true } } }, take: 1 },
     },
     orderBy: [{ user: { name: "asc" } }],
@@ -336,13 +336,21 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
     const r = p?.pupilRecord ?? null;
     const klass = p?.enrollments[0]?.class;
     const grade = classCode(klass?.gradeLevel);
-    const classKey = `${grade}/${klass?.section ?? "A"}`;
+    const classKey = `${grade}/${klass?.section ?? ""}`;
     counter = classKey === lastClass ? counter + 1 : 1;
     lastClass = classKey;
     // The roll number the school assigned on the enrolment; the running counter only where none was.
     roll = p?.enrollments[0]?.rollNumber ?? counter;
     const par = p ? parents(p) : { father: "", mother: "", guardian: "", phone: "", email: "" };
-    const isCwsn = r?.cwsnType ? "1" : r ? "2" : "";
+    /**
+     * ⚠ AN ANSWER NOBODY GAVE IS FILED BLANK. A record with no impairment
+     * chosen used to file "No", and a class with no section "A": both are
+     * statements, and the school had made neither. "None" is a choice on
+     * the form now (cwsnType NONE) and files No; a blank files blank, and
+     * the record is not ready until somebody has answered.
+     */
+    const isCwsn = !r?.cwsnType ? "" : r.cwsnType === CWSN_NONE ? "2" : "1";
+    const repeating = p?.enrollments[0]?.repeating === true;
     // "Was here last year" is the admission date (the record's, else the day
     // they joined the roll here) falling before the current academic year's
     // start — not the calendar year of the platform join, which filed every
@@ -353,7 +361,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
     const sameSchool = p && admitted && facts.current ? (admitted < facts.current.startDate ? "1" : "2") : "";
     return {
       "Grade/Class": grade,
-      "SECTION": klass?.section ?? "A",
+      "SECTION": klass?.section ?? "",
       "Roll no": roll,
       "Name of Student": upper(p?.user.name),
       "GENDER": GENDER_CODE[r?.gender ?? ""] ?? "",
@@ -375,7 +383,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "Whether AAY beneficiary": "",
       "BELONGS TO EWS/DISADVANTAGED GROUP (Yes-1, No-2)": yesNo(r?.ews),
       "IS CWSN (Yes-1, No-2)": isCwsn,
-      "CWSN IMPAIRMENT TYPE": r?.cwsnType ?? "",
+      "CWSN IMPAIRMENT TYPE": r?.cwsnType && r.cwsnType !== CWSN_NONE ? r.cwsnType : "",
       "CHILD IS INDIAN NATIONAL (Yes-1, No-2)": indianNational(r?.nationality),
       "CHILD IS OUT-OF-SCHOOL-CHILD (Yes-1, No-2)": "2",
       "When mainstreamed": "",
@@ -384,10 +392,15 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "STUDENT STREAM (HS only)": "",
       "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": sameSchool,
       // Grade 1's previous class is the portal's last pre-primary code, PP3, not "PP".
-      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && /^\d+$/.test(grade) ? (Number(grade) > 1 ? String(Number(grade) - 1) : "PP3") : "",
-      "ADMITTED/ENROLLED UNDER RTE/EWS": r?.ews ? "2" : r ? "0" : "",
+      // A pupil repeating the class studied THIS class last year; everybody else, the one below it.
+      "CLASS STUDIED IN PREVIOUS ACADEMIC YEAR": sameSchool === "1" && /^\d+$/.test(grade) ? (repeating ? grade : Number(grade) > 1 ? String(Number(grade) - 1) : "PP3") : "",
+      // The office's own answer where it has given one. 1 for an RTE admission is this code's reading of the
+      // column beside the 2 and 0 it already printed and has not been checked against the portal's sheet.
+      "ADMITTED/ENROLLED UNDER RTE/EWS": r?.rte === true ? "1" : r?.ews === true ? "2" : r && r.rte === false && r.ews === false ? "0" : "",
       "APPEARED FOR EXAM IN PREVIOUS CLASS": p && sameSchool === "1" ? (facts.percent.has(p.id) ? "1" : "") : "",
-      "RESULT FOR PREVIOUS EXAM": p && sameSchool === "1" && facts.percent.has(p.id) ? "1" : "",
+      // Passed, for a pupil who moved up with a card to show for it. A repeater's result is left for the
+      // office to enter on the portal: the app computes no pass or fail, and this sheet will not state one.
+      "RESULT FOR PREVIOUS EXAM": p && sameSchool === "1" && facts.percent.has(p.id) && !repeating ? "1" : "",
       "MARKS % OF PREVIOUS EXAM": p ? (facts.percent.get(p.id) ?? "") : "",
       "CLASS ATTENDED DAYS (Previous Year)": p ? (facts.attended.get(p.id) ?? "") : "",
       "Free Uniform (Yes-1, No-2)": "",
@@ -457,7 +470,7 @@ export async function udiseEnrolmentExport(ctx: ActiveContext): Promise<CsvExpor
     if (r?.religion && minority && minority !== "7") bump("4.2(b) Minority groups", upper(r.religion), cls, g);
     const age = p.user.birthdate ? ageInYears(p.user.birthdate) : null;
     bump("4.4 Enrolment by age", age === null ? "Age not on record" : age < 5 ? "<5" : age > 22 ? ">22" : String(age), cls, g);
-    if (r?.cwsnType) bump("4.6 CWSN by impairment", `${r.cwsnType} ${CWSN_TYPE_NAMES[r.cwsnType] ?? ""}`.trim(), cls, g);
+    if (r?.cwsnType && r.cwsnType !== CWSN_NONE) bump("4.6 CWSN by impairment", `${r.cwsnType} ${CWSN_TYPE_NAMES[r.cwsnType] ?? ""}`.trim(), cls, g);
   }
   const rows: Record<string, unknown>[] = [];
   for (const [table, byRow] of tables) {
@@ -577,7 +590,8 @@ export async function cbseCandidatesExport(ctx: ActiveContext, grade: string): P
       "Date of Birth (DD/MM/YYYY)": ddmmyyyy(p?.user.birthdate, "/"),
       "Gender": r?.gender === "M" ? "Male" : r?.gender === "F" ? "Female" : r?.gender === "T" ? "Transgender" : "",
       "Category": upper(r?.category),
-      "CWSN": r?.cwsnType ? "Yes" : p ? "No" : "",
+      // Yes for a type, No for "none" said; blank while nobody has asked.
+      "CWSN": !r?.cwsnType ? "" : r.cwsnType === CWSN_NONE ? "No" : "Yes",
       "PEN": p?.user.penNumber ?? r?.penNumber ?? "",
       "Admission No.": r?.admissionNumber ?? "",
       "Mobile": par.phone.replace(/\D/g, "").slice(-10),
