@@ -7,6 +7,7 @@ import {
   BuildingsIcon,
   ChalkboardTeacherIcon,
   FirstAidKitIcon,
+  FolderUserIcon,
   MedalIcon,
   PaperPlaneTiltIcon,
   PrinterIcon,
@@ -163,6 +164,11 @@ export default async function PersonPage({
     role === "STUDENT" && (self || me === "ADMIN" || me === "PRINCIPAL")
       ? ((await db.user.findUnique({ where: { id: member.userId }, select: { penNumber: true } }))?.penNumber ?? null)
       : null;
+  // The pupil's record — the admission number, the category, what the
+  // certificates and the filings print — is the office's page. The portrait
+  // shows none of it, since a teacher may open the portrait too; the office
+  // gets the door.
+  const recordHref = role === "STUDENT" && (me === "ADMIN" || me === "PRINCIPAL") ? `/admin/records/${member.id}` : null;
   const badges = role === "STUDENT" ? (await getBadges(member.schoolId, member.id, member.school.timezone)).filter((b) => b.earned) : [];
 
   // The health card, for the staff who may read it and the child's own
@@ -235,6 +241,14 @@ export default async function PersonPage({
           {penNumber && (
             <p className="mt-1 text-sm text-fg-muted" data-testid="person-pen">
               {t("pupilRecord.penNumber")} <span className="font-mono text-fg">{penNumber}</span>
+            </p>
+          )}
+          {recordHref && (
+            <p className="mt-1 text-sm">
+              <Link href={recordHref} className="inline-flex items-center gap-1.5 font-medium text-fg-muted underline underline-offset-2 hover:text-fg" data-testid="person-record">
+                <FolderUserIcon weight="duotone" className="size-4" aria-hidden="true" />
+                {t("pupilRecord.openRecord")}
+              </Link>
             </p>
           )}
           {member.user.bio && <p className="mt-2 max-w-prose text-sm leading-relaxed text-fg">{member.user.bio}</p>}
