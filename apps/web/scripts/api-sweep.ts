@@ -182,8 +182,14 @@ async function actors(): Promise<Record<Role, string>> {
   const sampledClass = (await db.class.findFirst({ where: { schoolId: school.id, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: school.id, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
   const lead = sampledClass ? await db.classTeacher.findFirst({ where: { classId: sampledClass.id, role: "LEAD" }, select: { teacher: { select: { userId: true } } } }) : null;
   const teacher = lead ? { userId: lead.teacher.userId } : await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "TEACHER", status: "ACTIVE" }, select: { userId: true } });
-  const pupil = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, select: { userId: true } });
-  const guardian = await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } });
+  // The pupil and the guardian BY NAME: pupil 01 and their parent, whom the fixtures give the certificate
+  // requests, the record and the remark thread the samples point at. "The first pupil" was whichever row the
+  // database returned first, and the sweep's own writes move rows: each run signed in as a different child,
+  // and the one after a rebuild was refused another pupil's certificate request with a 404 that was right.
+  const pupil = (await db.membership.findFirst({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE", leftAt: null, user: { email: "zz.pupil01@zz.test" } }, select: { id: true, userId: true } }))
+    ?? (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, orderBy: { id: "asc" }, select: { id: true, userId: true } }));
+  const guardian = (await db.guardianship.findFirst({ where: { studentMembershipId: pupil.id, status: "ACTIVE", relation: { not: "SCHOOL" } }, orderBy: { id: "asc" }, select: { parentUserId: true } }))
+    ?? (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { parentUserId: true } }));
   const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });
   const out: Partial<Record<Role, string>> = {
     ADMIN: await mint(await byEmail("zz.admin@zz.test"), "ADMIN", school.id),
