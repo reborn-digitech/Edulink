@@ -287,8 +287,13 @@ async function hitOnce(e: Endpoint, token: string | null, path: string, body?: s
  * school's own ids. These two prove it stays shut for the WRONG ids: every
  * catalogued endpoint whose sample carries an id is called by ZZ Northgate's
  * actors with another school's ids (school), or with a classmate the family
- * actors are not linked to (person). Anything but a 2xx is a pass — 401,
- * 403, 404 and 422 all keep the fence — and a 2xx is reported as a breach.
+ * actors are not linked to (person). A refusal is a pass — 401, 403, 404,
+ * 405 and 422 all keep the fence — and a 2xx is reported as a breach. NO
+ * ANSWER IS NOT A REFUSAL: with the server down every call came back with
+ * nothing, and the probe counted each as a door that stayed shut (found
+ * 2026-09-29, when the app had stopped the dev server). The probe now asks
+ * /api/health first and stops if it is not answered, and a call that gets
+ * no answer or a 5xx is reported apart and fails the run.
  * Platform-wide surfaces (shared, competitions, vacancies, experts, the
  * operator's and the content team's) are outside a school's fence and skipped.
  */
@@ -304,6 +309,8 @@ const CROSS_SCHOOL_BY_DESIGN: Record<string, string> = {
 };
 
 async function crossProbe(mode: "school" | "person") {
+  const health = await fetch(BASE + "/api/health").then((r) => r.status, () => 0);
+  if (health !== 200) throw new Error(`cross-${mode}: ${BASE}/api/health answered ${health}; the server is down, and nothing was tried`);
   const tokens = await actors();
   const home = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" }, select: { id: true } });
   const homeFx = await fixture();
@@ -317,7 +324,9 @@ async function crossProbe(mode: "school" | "person") {
     const res = await hitText(e, tokens[role], path, body ? JSON.stringify(body) : undefined);
     const twoXx = res.status >= 200 && res.status < 300;
     const leak = twoXx && mustNotCarry.some((needle) => needle && res.text.includes(needle));
-    const ok = !twoXx || (mustNotCarry.length > 0 && !leak);
+    // No answer, or the server's own failure, says nothing about the fence.
+    const unanswered = res.status === 0 || res.status >= 500;
+    const ok = !unanswered && (!twoXx || (mustNotCarry.length > 0 && !leak));
     if (twoXx && !leak && mustNotCarry.length > 0) ownData.push(`${e.method} ${e.path} as ${role}: ${res.status}, answered without the other person`);
     results.push({ endpoint: `${e.method} ${e.path}${body ? " (valid body)" : ""} [${label}]`, role, expected: [401, 403, 404, 422], got: res.status, ok });
   };
@@ -372,6 +381,18 @@ async function crossProbe(mode: "school" | "person") {
       await check(e, "PARENT", `/api/v1/shared/claims/${homeFx.otherFamilyClaimId}/decide`, { decision: "APPROVE" }, "a claim on a child not theirs");
       tried.push(`POST ${e.path} as PARENT (valid body)`);
     } else skipped.push("POST /api/v1/shared/claims/{claimId}/decide (no claim on another family's child in the fixtures)");
+    // An ask to change the record of a child who is not theirs, still waiting (zz-fixtures.ts `buildRecordChanges`):
+    // the guardian and the pupil each try to take it back. The loop below tries the same door with the id of their
+    // OWN settled ask and another child on the query string, which the door does not read; that proves nothing of
+    // the fence, so the ask itself is another family's here.
+    const othersAsk = await db.recordChangeRequest.findFirst({ where: { schoolId: home.id, status: "PENDING", studentMembershipId: { notIn: [...linked, ...(theirs ? [theirs.id] : [])] } }, orderBy: { id: "asc" }, select: { id: true } });
+    if (othersAsk) {
+      const e = decide("/api/v1/family/record/changes/{requestId}/withdraw");
+      for (const role of ["PARENT", "STUDENT"] as const) {
+        await check(e, role, `/api/v1/family/record/changes/${othersAsk.id}/withdraw`, null, "an ask about a child not theirs");
+        tried.push(`POST ${e.path} as ${role}`);
+      }
+    } else skipped.push("POST /api/v1/family/record/changes/{requestId}/withdraw (no ask waiting on another family's child in the fixtures)");
     const untaughtNeedles = untaughtPupil ? [untaughtPupil.studentMembershipId, await nameOf(untaughtPupil.studentMembershipId)] : [];
     for (const e of ENDPOINTS) {
       if (e.access === "anyone" || PLATFORM_WIDE.some((re) => re.test(e.path))) continue;
@@ -393,11 +414,12 @@ async function crossProbe(mode: "school" | "person") {
     }
   }
   const failed = results.filter((r) => !r.ok);
-  for (const r of failed) console.log(`✗ BREACH ${r.endpoint} as ${r.role}: got ${r.got}`);
+  for (const r of failed) console.log(r.got === 0 || r.got >= 500 ? `✗ NO ANSWER ${r.endpoint} as ${r.role}: got ${r.got}` : `✗ BREACH ${r.endpoint} as ${r.role}: got ${r.got}`);
   for (const d of tried) console.log(`· tried: ${d}`);
   for (const b of byDesign) console.log(`· by design: ${b}`);
   for (const o of ownData) console.log(`· own data: ${o}`);
-  console.log(`cross-${mode}: ${results.length - failed.length}/${results.length} doors stayed shut, ${failed.length} opened, ${skipped.length} skipped.`);
+  console.log(`cross-${mode}: ${results.length - failed.length}/${results.length} doors stayed shut, ${failed.filter((r) => r.got !== 0 && r.got < 500).length} opened, ${failed.filter((r) => r.got === 0 || r.got >= 500).length} unanswered, ${skipped.length} skipped.`);
+  if (failed.length > 0) process.exitCode = 1;
 }
 
 async function hitText(e: Endpoint, token: string | null, path: string, body?: string): Promise<{ status: number; text: string }> {
