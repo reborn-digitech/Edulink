@@ -10,7 +10,7 @@ import type { ExamKind } from "./constants";
 import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { CardCoScholastic, CardSubject, GradeBand, ReportCardLayout } from "@edulink/contracts";
-import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, shownPercent, type PaperPart } from "./report-card-rules";
+import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, shownPercent, termSharesComplete, type PaperPart } from "./report-card-rules";
 import { readReportCardConfig } from "./report-card-config";
 
 /**
@@ -317,6 +317,8 @@ export async function generateCards(
       })
     : null;
   if (!term && input.academicYearId && !year) return { ok: false, errorKey: "access.academicYearNotFound" };
+  // An annual card over terms whose shares are half set would leave a term out without saying so.
+  if (year && !termSharesComplete(year.terms)) return { ok: false, errorKey: "reportCards.giveEveryTermAShare" };
 
   const typedTitle = input.title.trim().slice(0, 120);
   const title = term ? term.name : year && typedTitle.length < 2 ? year.name : typedTitle;

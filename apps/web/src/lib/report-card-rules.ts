@@ -249,11 +249,37 @@ export function combineTerms(terms: TermPart[]): { percent: number | null; parts
   };
 }
 
-/** The mean of the subjects' grade points, when the scale carries any. */
-export function meanPoints(subjects: { points: number | null }[]): number | null {
+/**
+ * The mean of the subjects' grade points, when the scale carries any.
+ *
+ * ⚠ A SUBJECT WITH A RESULT AND NO POINTS STOPS THE MEAN. On a scale like
+ * CBSE's the lowest band, E, carries no points. Leaving such a subject out
+ * and averaging the rest gave a pupil who failed mathematics a HIGHER figure
+ * than one who scraped a D in it: 9.5 over two subjects against 7.7 over
+ * three. There is no honest mean over a subject the scale gives no number
+ * to, so the card prints none, and the letters say the rest. A subject with
+ * no result at all (nothing marked yet) is not a failure and is left out, as
+ * it always was.
+ */
+export function meanPoints(subjects: { points: number | null; percent?: number | null }[]): number | null {
   const withPoints = subjects.filter((s) => s.points !== null);
   if (withPoints.length === 0) return null;
+  if (subjects.some((s) => s.points === null && s.percent !== null && s.percent !== undefined)) return null;
   return round2(withPoints.reduce((a, s) => a + s.points!, 0) / withPoints.length);
+}
+
+/**
+ * Whether a year's terms can be combined as they stand: every term has its
+ * share, or none has. ONE TERM WITH A SHARE AND ANOTHER WITHOUT is an office
+ * half-way through setting them, and combining then gave the term without a
+ * share nothing at all — a whole term's marks off the annual card with
+ * nothing on the card to say so. A share of nought is a share: a term the
+ * school has said counts for nothing.
+ */
+export function termSharesComplete(terms: { weightPercent: number | null }[]): boolean {
+  const withShare = terms.filter((t) => t.weightPercent !== null && t.weightPercent > 0).length;
+  if (withShare === 0) return true;
+  return terms.every((t) => t.weightPercent !== null);
 }
 
 /** The overall percent: the mean of the subjects' percents. */

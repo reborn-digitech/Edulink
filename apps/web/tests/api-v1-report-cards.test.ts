@@ -159,6 +159,21 @@ describe("the rules", () => {
   });
 });
 
+describe("⚠ an annual card over terms whose shares are half set", () => {
+  it("is refused with the sentence, and makes no card; with every share set it is not", async () => {
+    await db.term.update({ where: { id: term2 }, data: { weightPercent: null } });
+    try {
+      await as("TEACHER");
+      const res = await generatePost(json(`/api/v1/teaching/classes/${classId}/report-cards/generate`, { title: "ZZ Half set", assignmentIds: [], academicYearId: yearId }), params({ classId }));
+      expect(res.status).toBe(422);
+      expect((await res.json()).error).toMatch(/^Give every term its share of the year, or none of them/);
+      expect(await db.reportCard.count({ where: { classId, termId: null, academicYearId: yearId } })).toBe(0);
+    } finally {
+      await db.term.update({ where: { id: term2 }, data: { weightPercent: 60 } });
+    }
+  });
+});
+
 describe("a term card", () => {
   let cardA = "";
   let cardB = "";

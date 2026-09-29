@@ -1530,6 +1530,7 @@ export const en = {
   /* Report cards (lib refusals) and the printed report views                */
   /* ---------------------------------------------------------------------- */
   reportCards: {
+    giveEveryTermAShare: "Give every term its share of the year, or none of them, before making the annual card: a term with no share would be left off it.",
     giveName: "Give the report a name, like “Term 1”.",
     chooseOne: "Choose at least one test or assignment to report on.",
     windowBackwards: "The window starts after it ends.",

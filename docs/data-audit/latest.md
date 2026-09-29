@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-29T09:03:04.026Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 21 INFO
+Run: 2026-09-29T09:32:31.038Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 21 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 

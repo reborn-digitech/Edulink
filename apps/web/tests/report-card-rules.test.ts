@@ -4,7 +4,7 @@
  * combined by their share of the year, and the rules document normalised.
  */
 import { describe, expect, it } from "vitest";
-import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints, normaliseConfig, parseConfig, REPORT_CARD_PRESETS } from "@/lib/report-card-rules";
+import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, kindWeighted, meanPercent, meanPoints, termSharesComplete, normaliseConfig, parseConfig, REPORT_CARD_PRESETS } from "@/lib/report-card-rules";
 
 const cbse = REPORT_CARD_PRESETS[0]!.bands;
 
@@ -115,5 +115,27 @@ describe("terms by their share of the year", () => {
     expect(meanPercent([{ percent: 80 }, { percent: 60 }, { percent: null }])).toBe(70);
     expect(meanPoints([{ points: 10 }, { points: 9 }, { points: null }])).toBe(9.5);
     expect(meanPoints([{ points: null }])).toBeNull();
+  });
+
+  it("⚠ prints no mean of points over a subject the scale gives none to: a failure does not raise the figure", () => {
+    const passedAll = [{ points: 10, percent: 95 }, { points: 9, percent: 85 }, { points: 4, percent: 35 }];
+    const failedOne = [{ points: 10, percent: 95 }, { points: 9, percent: 85 }, { points: null, percent: 20 }];
+    expect(meanPoints(passedAll)).toBe(7.67);
+    expect(meanPoints(failedOne)).toBeNull();
+    // Nothing marked yet is not a failure: the subject is left out, as it was.
+    expect(meanPoints([{ points: 10, percent: 95 }, { points: 9, percent: 85 }, { points: null, percent: null }])).toBe(9.5);
+    // A scale with no points at all has no mean, whatever the results.
+    expect(meanPoints([{ points: null, percent: 80 }, { points: null, percent: 20 }])).toBeNull();
+  });
+
+  it("⚠ a year's terms combine only when every term has its share, or none has", () => {
+    const shares = (...w: (number | null)[]) => termSharesComplete(w.map((weightPercent) => ({ weightPercent })));
+    expect(shares(null, null)).toBe(true);
+    expect(shares(40, 60)).toBe(true);
+    expect(shares(100, 0)).toBe(true);
+    expect(shares(0, 0)).toBe(true);
+    expect(shares(40, null)).toBe(false);
+    expect(shares(null, 60, null)).toBe(false);
+    expect(shares()).toBe(true);
   });
 });
