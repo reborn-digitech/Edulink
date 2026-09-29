@@ -223,6 +223,9 @@ Everything that matters is in the repository except the items below. Do these on
 
 **Install.** Node 24 (`.nvmrc`; nvm, or Homebrew's keg-only `node@24` put on the PATH), `corepack enable` (pins pnpm 9.15), PostgreSQL 16 via Homebrew, `gh`.
 No Docker, no Xcode needed for the web target of the phone app.
+The move from Node 20 to Node 24 was made on 2026-09-30 (5636c43) and needed no change to the code; the
+whole chain, the Playwright suite, the API sweep and the two cross probes were run on 24.21.0 that day
+with the counts they had on 20.20.2.
 
 **Clone from reborn-digitech**, which is the repository CI watches:
 
