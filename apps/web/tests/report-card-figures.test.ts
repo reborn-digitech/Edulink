@@ -28,7 +28,7 @@ let pupilB = ""; // Maths 90.96/100 only → 91.0 → the band of 91.0, not of 9
 let maths = "";
 let science = "";
 
-function ctx(userId: string, membershipId: string, role: "TEACHER"): ActiveContext {
+function ctx(userId: string, membershipId: string, role: "TEACHER" | "ADMIN"): ActiveContext {
   return {
     sessionId: "test-session",
     membershipId,
@@ -143,6 +143,41 @@ describe("the figures on the card", () => {
     const card = (await getCard(teacher, row.id))!;
     expect([card.overallPercent, card.overallLetter]).toEqual([91, "A1"]);
     await db.reportCard.update({ where: { id: row.id }, data: { overallPercentMilli: 91_000, overallLetter: "A1" } });
+  });
+
+  it("⚠ a card that kept no scale is given the one it was shown with before the rules change, and its letters stay as written", async () => {
+    const { saveReportCardConfig, readReportCardConfig } = await import("@/lib/report-card-config");
+    const office = await db.user.create({ data: { name: "ZZ Figures Office", email: `zz-figures-office-${Date.now()}@test.invalid`, prefs: "{}" }, select: { id: true } });
+    const om = await db.membership.create({ data: { userId: office.id, schoolId, role: "ADMIN", status: "ACTIVE" }, select: { id: true } });
+    const admin = ctx(office.id, om.id, "ADMIN");
+    const row = await db.reportCard.findFirstOrThrow({ where: { classId, studentMembershipId: pupilA, title: "ZZ Term 1" }, select: { id: true, scale: true, overallLetter: true } });
+    const own = await db.reportCard.findFirstOrThrow({ where: { classId, studentMembershipId: pupilB, title: "ZZ Term 1" }, select: { id: true, scale: true } });
+    const was = await readReportCardConfig(schoolId);
+    try {
+      // An older card: no scale of its own, and a letter written by a rule of its day.
+      await db.reportCard.update({ where: { id: row.id }, data: { scale: null, overallLetter: "ZZ-OLD" } });
+      expect((await getCard(teacher, row.id))!.scale.bands).toEqual(was.bands);
+
+      const moved = { ...was, bands: was.bands.map((b, i) => (i === 0 ? { ...b, minPercent: 99, descriptor: "ZZ moved" } : b)) };
+      await saveReportCardConfig(admin, moved);
+
+      const card = (await getCard(teacher, row.id))!;
+      expect(card.scale.bands).toEqual(was.bands);
+      expect(card.overallLetter).toBe("ZZ-OLD");
+      expect(JSON.parse((await db.reportCard.findUniqueOrThrow({ where: { id: row.id } })).scale!)).toMatchObject({ kept: true });
+      // A card with a scale of its own was not touched, and a second change moves neither.
+      expect((await db.reportCard.findUniqueOrThrow({ where: { id: own.id } })).scale).toBe(own.scale);
+      await saveReportCardConfig(admin, { ...moved, bands: moved.bands.map((b, i) => (i === 0 ? { ...b, minPercent: 98 } : b)) });
+      expect((await getCard(teacher, row.id))!.scale.bands).toEqual(was.bands);
+      const logged = await db.auditLog.findFirst({ where: { schoolId, action: "reportCard.config" }, orderBy: { createdAt: "asc" } });
+      expect(JSON.parse(logged!.meta ?? "{}").cardsGivenTheirScale).toBe(1);
+    } finally {
+      await db.school.update({ where: { id: schoolId }, data: { reportCardConfig: JSON.stringify(was) } });
+      await db.reportCard.update({ where: { id: row.id }, data: { scale: row.scale, overallLetter: row.overallLetter } });
+      await db.auditLog.deleteMany({ where: { schoolId, action: "reportCard.config" } });
+      await db.membership.delete({ where: { id: om.id } });
+      await db.user.delete({ where: { id: office.id } });
+    }
   });
 
   it("prints the legal name, not the preferred name the app shows elsewhere", async () => {

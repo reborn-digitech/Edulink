@@ -941,10 +941,13 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
   // card issued before the rounding rule shows "91.0 %" with the band of
   // 91.0 rather than the band of the 90.96 behind it. A card with no scale
   // of its own keeps the letters it was written with.
-  const storedScale = parseJson<{ bands: GradeBand[]; coScale: { label: string; descriptor: string | null }[] } | null>(card.scale, null);
+  const storedScale = parseJson<{ bands: GradeBand[]; coScale: { label: string; descriptor: string | null }[]; kept?: boolean } | null>(card.scale, null);
   const rounded = (percent: number | null, letter: string | null, points: number | null) => {
     const shown = shownPercent(percent);
-    if (!storedScale) return { percent: shown, letter, points };
+    // A scale KEPT for an older card (report-card-config.ts) is the legend it
+    // was shown with; its letters were written before any scale was stored and
+    // stay as they were written, as they did while it had none.
+    if (!storedScale || storedScale.kept) return { percent: shown, letter, points };
     const band = bandFor(shown, storedScale.bands);
     return { percent: shown, letter: band?.label ?? null, points: band?.points ?? null };
   };
@@ -985,7 +988,7 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     overallLetter: overall.letter,
     gradePoints: card.gradePointsMilli === null ? null : card.gradePointsMilli / 1000,
     coScholastic: card.items.filter((i) => i.kind === "CO_SCHOLASTIC").map((i) => ({ area: i.title, grade: i.letter, note: i.comment })),
-    scale: storedScale ?? { bands: current.bands, coScale: current.coScholastic.scale },
+    scale: storedScale ? { bands: storedScale.bands, coScale: storedScale.coScale } : { bands: current.bands, coScale: current.coScholastic.scale },
     layout: { ...DEFAULT_LAYOUT, ...layoutSnapshot },
     scope: card.termId ? "TERM" : card.academicYearId ? "YEAR" : "PAPERS",
     practice: (() => {

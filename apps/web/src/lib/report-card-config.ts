@@ -64,6 +64,22 @@ export async function reportCardConfigView(ctx: ActiveContext): Promise<ReportCa
 export async function saveReportCardConfig(ctx: ActiveContext, input: ReportCardConfig): Promise<ReportCardConfig> {
   const caller = admin(ctx);
   const config = normaliseConfig(input, await wordsFor(caller.schoolId));
+  /**
+   * ⚠ THE CARDS THAT KEPT NO SCALE ARE GIVEN THE ONE THEY HAVE BEEN SHOWN
+   * WITH, BEFORE IT CHANGES. A card made since the rules were configurable
+   * carries its own scale; an older one carries none and was drawn with the
+   * school's scale of the day, so a band moved in June redrew March's card.
+   * The moment the rules are about to change is the last moment today's
+   * scale is still the one those cards were read with, so it is written
+   * onto each of them here, once, and they stop following the school. A
+   * card that has a scale is never touched.
+   */
+  const before = await readReportCardConfig(caller.schoolId);
+  const kept = await db.reportCard.updateMany({
+    where: { schoolId: caller.schoolId, scale: null },
+    // `kept`: the legend this card was shown with, not the scale its letters were read from — see getCard.
+    data: { scale: JSON.stringify({ bands: before.bands, coScale: before.coScholastic.scale, kept: true }) },
+  });
   await db.school.update({ where: { id: caller.schoolId }, data: { reportCardConfig: JSON.stringify(config) } });
   await audit({
     schoolId: caller.schoolId,
@@ -71,7 +87,7 @@ export async function saveReportCardConfig(ctx: ActiveContext, input: ReportCard
     action: "reportCard.config",
     targetType: "School",
     targetId: caller.schoolId,
-    meta: { preset: config.preset, bands: config.bands.length, areas: config.coScholastic.areas.length, kindWeights: config.kindWeights, paper: config.layout.paper },
+    meta: { preset: config.preset, bands: config.bands.length, areas: config.coScholastic.areas.length, kindWeights: config.kindWeights, paper: config.layout.paper, cardsGivenTheirScale: kept.count },
   });
   return config;
 }
