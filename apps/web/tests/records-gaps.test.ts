@@ -114,6 +114,62 @@ describe("⚠ the family's contact number", () => {
   });
 });
 
+describe("⚠ names from a list: the mother tongue, the nationality, the PIN", () => {
+  const save = (body: Record<string, string>) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
+  const stored = () => db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: pupil }, select: { motherTongue: true, nationality: true, postalCode: true } });
+
+  it("a language and a nationality are kept as the list's code, however the name was typed; a word off the list is refused and nothing changes", async () => {
+    await as("ADMIN");
+    expect((await save({ motherTongue: " marathi ", nationality: "sri lankan", postalCode: "411 001" })).status).toBe(200);
+    expect(await stored()).toEqual({ motherTongue: "MARATHI", nationality: "SRI_LANKAN", postalCode: "411001" });
+    expect((await save({ motherTongue: "KONKANI", nationality: "INDIAN" })).status).toBe(200);
+    expect(await stored()).toMatchObject({ motherTongue: "KONKANI", nationality: "INDIAN" });
+
+    for (const [body, sentence] of [
+      [{ motherTongue: "Marathi and Hindi" }, "Choose the mother tongue from the list."],
+      [{ nationality: "Earthling" }, "Choose the nationality from the list."],
+      [{ postalCode: "41100" }, "A PIN code is six digits and does not start with 0."],
+      [{ postalCode: "011001" }, "A PIN code is six digits and does not start with 0."],
+      [{ postalCode: "41100A" }, "A PIN code is six digits and does not start with 0."],
+    ] as const) {
+      const res = await save(body);
+      expect(res.status, JSON.stringify(body)).toBe(403);
+      expect((await res.json()).error).toBe(sentence);
+    }
+    expect(await stored()).toEqual({ motherTongue: "KONKANI", nationality: "INDIAN", postalCode: "411001" });
+  });
+
+  it("a word typed before the lists may be sent back untouched, so the rest of an old record can be saved; it is a blank to a filing until it is picked", async () => {
+    await as("ADMIN");
+    await db.pupilRecord.update({ where: { studentMembershipId: pupil }, data: { motherTongue: "Ahirani", nationality: "Bharat", postalCode: "4110" } });
+    const res = await save({ motherTongue: "Ahirani", nationality: "Bharat", postalCode: "4110", fatherOccupation: "Weaver" });
+    expect(res.status).toBe(200);
+    const view = await res.json();
+    expect(view.record).toMatchObject({ motherTongue: "Ahirani", nationality: "Bharat", postalCode: "4110", fatherOccupation: "Weaver" });
+    expect(view.missingForFiling).toEqual(expect.arrayContaining(["motherTongue", "postalCode"]));
+    // A different word off the list is still refused.
+    expect((await save({ motherTongue: "Khandeshi" })).status).toBe(403);
+
+    expect((await (await save({ motherTongue: "OTHER", nationality: "INDIAN", postalCode: "425001" })).json()).missingForFiling).not.toEqual(expect.arrayContaining(["motherTongue", "postalCode"]));
+  });
+
+  it("the sheets print the language's name and code the national from the code; a paper prints both in its own language", async () => {
+    const { languageName, indianNational } = await import("@/lib/filings");
+    const { dataFor, wordsFor } = await import("@/lib/certificate-rules");
+    expect([languageName("MARATHI"), languageName("odia"), languageName("OTHER"), languageName("Ahirani"), languageName(null)]).toEqual(["Marathi", "Odia", "Other", "Ahirani", ""]);
+    expect([indianNational("INDIAN"), indianNational("NEPALI"), indianNational("OTHER"), indianNational("Indian"), indianNational("भारतीय"), indianNational("British"), indianNational(""), indianNational(null)]).toEqual(["1", "2", "2", "1", "1", "2", "", ""]);
+
+    const facts = { name: "ZZ Pupil", studentCode: null, birthdateKey: null, ageYears: null, record: { motherTongue: "MARATHI", nationality: "INDIAN" } } as unknown as Parameters<typeof dataFor>[0];
+    const paper = (locale: "en" | "hi" | "mr") => {
+      const d = dataFor({ ...facts, school: {}, stay: {}, issue: {} } as unknown as Parameters<typeof dataFor>[0], locale, wordsFor(locale));
+      return [d["pupil.motherTongue"], d["pupil.nationality"]];
+    };
+    expect(paper("en")).toEqual(["Marathi", "Indian"]);
+    expect(paper("hi")).toEqual(["मराठी", "भारतीय"]);
+    expect(paper("mr")).toEqual(["मराठी", "भारतीय"]);
+  });
+});
+
 describe("the record's new fields and coded choices", () => {
   it("the office saves the TC, the household, coded category and religion and the roll number; a family cannot set the roll number; an uncodable category counts as missing", async () => {
     await as("ADMIN");
@@ -191,6 +247,15 @@ describe("the staff record's two dates", () => {
     expect(await setStaffRecord(ctx, teacherMembershipId, { socialCategory: "XYZ", gender: "M" })).toEqual({ ok: false, errorKey: "staff.badCode" });
     expect(await setStaffRecord(ctx, teacherMembershipId, { gender: "Q" })).toEqual({ ok: false, errorKey: "staff.badCode" });
     expect(await setStaffRecord(ctx, teacherMembershipId, { appointmentType: "GUEST" })).toEqual({ ok: false, errorKey: "staff.badCode" });
+    // The subject appointed for is a name from the filing's own list, and the sheet prints its number.
+    expect(await setStaffRecord(ctx, teacherMembershipId, { appointedSubject: "Maths" })).toEqual({ ok: false, errorKey: "staff.badCode" });
+    expect((await setStaffRecord(ctx, teacherMembershipId, { designation: "Senior teacher", appointedSubject: "MATHEMATICS" })).ok).toBe(true);
+    expect((await db.staffRecord.findUniqueOrThrow({ where: { membershipId: teacherMembershipId } })).appointedSubject).toBe("MATHEMATICS");
+    const { APPOINTED_SUBJECT_CODE } = await import("@/lib/filings");
+    const { STAFF_APPOINTED_SUBJECTS } = await import("@edulink/contracts");
+    expect(Object.keys(APPOINTED_SUBJECT_CODE).sort()).toEqual([...STAFF_APPOINTED_SUBJECTS].sort());
+    expect([APPOINTED_SUBJECT_CODE.MATHEMATICS, APPOINTED_SUBJECT_CODE.ENGLISH, APPOINTED_SUBJECT_CODE.PHYSICAL_EDUCATION]).toEqual(["3", "46", "92"]);
+    expect(new Set(Object.values(APPOINTED_SUBJECT_CODE)).size).toBe(STAFF_APPOINTED_SUBJECTS.length);
     expect((await staffRecordFor(ctx, teacherMembershipId))?.gender).toBeNull();
     expect(await setStaffRecord(ctx, teacherMembershipId, { socialCategory: "nt", gender: "M" })).toEqual({ ok: true });
     expect(await staffRecordFor(ctx, teacherMembershipId)).toMatchObject({ socialCategory: "NT", gender: "M" });

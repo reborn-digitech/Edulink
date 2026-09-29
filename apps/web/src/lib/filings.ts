@@ -1,3 +1,4 @@
+import { codeFromList, MOTHER_TONGUES, NATIONALITIES } from "@edulink/contracts";
 import "server-only";
 import type { FilingIdentitySave, FilingsView, PupilRecordField } from "@edulink/contracts";
 import { Prisma } from "@prisma/client";
@@ -71,6 +72,8 @@ export const MINORITY_CODE: Record<string, string> = { MUSLIM: "1", ISLAM: "1", 
 export { CWSN_TYPE_NAMES };
 /** UDISE+ DCF §3.2.12. */
 const APPOINTMENT_CODE: Record<string, string> = { REGULAR: "1", CONTRACT: "2", PART_TIME: "3" };
+/** UDISE+ DCF §3.2.18: the subject appointed for, from the code the office picked — the same numbers as UDISE_SUBJECT_CODE below. */
+export const APPOINTED_SUBJECT_CODE: Record<string, string> = { MATHEMATICS: "3", EVS: "4", MUSIC: "6", SCIENCE: "7", SOCIAL_SCIENCE: "8", ACCOUNTANCY: "10", BIOLOGY: "11", BUSINESS_STUDIES: "12", CHEMISTRY: "13", COMPUTER_SCIENCE: "14", ECONOMICS: "15", GEOGRAPHY: "18", HISTORY: "19", PHYSICS: "22", POLITICAL_SCIENCE: "23", PSYCHOLOGY: "24", HINDI: "41", SANSKRIT: "43", URDU: "45", ENGLISH: "46", REGIONAL_LANGUAGE: "47", SOCIOLOGY: "52", STATISTICS: "57", ART: "91", PHYSICAL_EDUCATION: "92", WORK_EDUCATION: "93" };
 /** UDISE+ DCF §3.2.13: 3 teacher, 6 principal, 1 head teacher. */
 const TEACHER_TYPE_CODE: Record<string, string> = { TEACHER: "3", PRINCIPAL: "6", ADMIN: "1" };
 /** UDISE+ DCF §3.2.19 subject codes, matched on the subject name a timetable or a profile carries. */
@@ -97,6 +100,20 @@ const SSC_CORE_CODE: [RegExp, string][] = [[/^ict|information/i, "41"], [/genera
 /** The header row even when the school has nobody to list: the keys of a row built from nothing. */
 function csvWithHeaders(rows: Record<string, unknown>[], sample: () => Record<string, unknown>): string {
   return toCsv(rows, rows.length ? undefined : Object.keys(sample()));
+}
+
+/** The language's English name from its code; a word typed before the list as it was typed. */
+const LANGUAGE_NAME: Record<string, string> = { ASSAMESE: "Assamese", BENGALI: "Bengali", BODO: "Bodo", DOGRI: "Dogri", ENGLISH: "English", GUJARATI: "Gujarati", HINDI: "Hindi", KANNADA: "Kannada", KASHMIRI: "Kashmiri", KONKANI: "Konkani", MAITHILI: "Maithili", MALAYALAM: "Malayalam", MANIPURI: "Manipuri", MARATHI: "Marathi", NEPALI: "Nepali", ODIA: "Odia", PUNJABI: "Punjabi", SANSKRIT: "Sanskrit", SANTALI: "Santali", SINDHI: "Sindhi", TAMIL: "Tamil", TELUGU: "Telugu", URDU: "Urdu", OTHER: "Other" };
+export function languageName(value: string | null | undefined): string {
+  if (!value) return "";
+  return LANGUAGE_NAME[codeFromList(MOTHER_TONGUES, value) ?? ""] ?? value.trim();
+}
+/** Yes-1 for the code INDIAN, No-2 for any other code; a word typed before the list is read as it was, by whether it says India. */
+export function indianNational(value: string | null | undefined): string {
+  if (!value || !value.trim()) return "";
+  const code = codeFromList(NATIONALITIES, value);
+  if (code) return code === "INDIAN" ? "1" : "2";
+  return /india|भारतीय/i.test(value) ? "1" : "2";
 }
 
 function codeFor(table: [RegExp, string][], subject: string): string {
@@ -351,7 +368,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "MOBILE NUMBER": par.phone.replace(/\D/g, "").slice(-10),
       "ALTERNATE MOBILE NUMBER (Optional)": "",
       "EMAIL ID (Optional)": par.email,
-      "MOTHER TONGUE": r?.motherTongue ?? "",
+      "MOTHER TONGUE": languageName(r?.motherTongue),
       "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[upper(r?.category)] ?? "",
       "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": MINORITY_CODE[upper(r?.religion)] ?? "",
       "Is BPL BENEFICIARY (Yes-1, No-2)": yesNo(r?.bpl),
@@ -359,7 +376,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "BELONGS TO EWS/DISADVANTAGED GROUP (Yes-1, No-2)": yesNo(r?.ews),
       "IS CWSN (Yes-1, No-2)": isCwsn,
       "CWSN IMPAIRMENT TYPE": r?.cwsnType ?? "",
-      "CHILD IS INDIAN NATIONAL (Yes-1, No-2)": r?.nationality ? (/india/i.test(r.nationality) ? "1" : "2") : "",
+      "CHILD IS INDIAN NATIONAL (Yes-1, No-2)": indianNational(r?.nationality),
       "CHILD IS OUT-OF-SCHOOL-CHILD (Yes-1, No-2)": "2",
       "When mainstreamed": "",
       "Admission Number": r?.admissionNumber ?? "",
@@ -485,7 +502,8 @@ export async function udiseTeachersExport(ctx: ActiveContext): Promise<CsvExport
     // 3.2.18 is a subject CODE, never the title: the designation with its rank word
     // stripped ("TGT Mathematics" → Mathematics), matched on the same table as
     // 3.2.19; else subject 1's code; else blank.
-    const appointedFor = codeFor(UDISE_SUBJECT_CODE, (r?.designation ?? "").replace(/^(PGT|TGT|PRT|NTT|PET|HM)\b[\s:./-]*/i, "").replace(/\bteacher\b/i, "").trim()) || codeFor(UDISE_SUBJECT_CODE, subjects[0] ?? "");
+    // The office's own answer first; the designation's words and subject 1 are what is left when it has not said.
+    const appointedFor = APPOINTED_SUBJECT_CODE[r?.appointedSubject ?? ""] || codeFor(UDISE_SUBJECT_CODE, (r?.designation ?? "").replace(/^(PGT|TGT|PRT|NTT|PET|HM)\b[\s:./-]*/i, "").replace(/\bteacher\b/i, "").trim()) || codeFor(UDISE_SUBJECT_CODE, subjects[0] ?? "");
     const grades = s ? [...new Set([...s.classTeachers.map((c) => c.class.gradeLevel), ...s.timetableSlots.map((t) => t.class.gradeLevel)].filter((g): g is string => Boolean(g)))] : [];
     return {
       "UDISE Code of School": school.udiseCode ?? "",
@@ -627,7 +645,7 @@ export async function msbshseCandidatesExport(ctx: ActiveContext, grade: string)
       "Category": upper(r?.category),
       "Caste": r?.caste ?? "",
       "Medium": school.medium ?? "",
-      "Mother tongue": r?.motherTongue ?? "",
+      "Mother tongue": languageName(r?.motherTongue),
       "PEN": p?.user.penNumber ?? r?.penNumber ?? "",
       "GR no.": r?.admissionNumber ?? "",
       "Mobile": par.phone.replace(/\D/g, "").slice(-10),

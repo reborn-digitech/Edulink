@@ -2181,6 +2181,11 @@ model StaffRecord {
   academicQualification     String?
   professionalQualification String?
   appointmentType           String?
+  /// DCF 3.2.18, the subject this teacher was APPOINTED for, as one of the
+  /// contracts' STAFF_APPOINTED_SUBJECTS. It was guessed from the designation
+  /// with its rank word stripped ("TGT Mathematics"), which a designation
+  /// like "Senior teacher" does not survive.
+  appointedSubject          String?
   updatedAt                 DateTime  @updatedAt
   createdAt                 DateTime  @default(now())
 

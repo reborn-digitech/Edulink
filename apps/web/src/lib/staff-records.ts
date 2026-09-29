@@ -1,3 +1,4 @@
+import { STAFF_APPOINTED_SUBJECTS } from "@edulink/contracts";
 import "server-only";
 import { PUPIL_CATEGORIES } from "@edulink/contracts";
 import { db } from "./db";
@@ -47,6 +48,8 @@ export type StaffRecordView = {
   academicQualification: string | null;
   professionalQualification: string | null;
   appointmentType: string | null;
+  /** DCF 3.2.18: the subject appointed for, one of STAFF_APPOINTED_SUBJECTS. */
+  appointedSubject: string | null;
 };
 
 export type StaffRecordInput = {
@@ -62,6 +65,7 @@ export type StaffRecordInput = {
   academicQualification?: string | null;
   professionalQualification?: string | null;
   appointmentType?: string | null;
+  appointedSubject?: string | null;
 };
 
 /** The portal's own codes, so a filing needs no translation: UDISE+ DCF 2024-25 §3.2. */
@@ -87,10 +91,10 @@ export type LeaveBalance = {
 };
 
 function empty(membershipId: string): StaffRecordView {
-  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, birthdateKey: null, serviceJoinedOnKey: null, leaveDaysPerYear: null, gender: null, socialCategory: null, academicQualification: null, professionalQualification: null, appointmentType: null };
+  return { membershipId, staffNumber: null, designation: null, qualification: null, joinedOnKey: null, birthdateKey: null, serviceJoinedOnKey: null, leaveDaysPerYear: null, gender: null, socialCategory: null, academicQualification: null, professionalQualification: null, appointmentType: null, appointedSubject: null };
 }
 
-function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; birthdate: Date | null; serviceJoinedOn: Date | null; leaveDaysPerYear: number | null; gender: string | null; socialCategory: string | null; academicQualification: string | null; professionalQualification: string | null; appointmentType: string | null }): StaffRecordView {
+function view(row: { membershipId: string; staffNumber: string | null; designation: string | null; qualification: string | null; joinedOn: Date | null; birthdate: Date | null; serviceJoinedOn: Date | null; leaveDaysPerYear: number | null; gender: string | null; socialCategory: string | null; academicQualification: string | null; professionalQualification: string | null; appointmentType: string | null; appointedSubject: string | null }): StaffRecordView {
   return {
     membershipId: row.membershipId,
     staffNumber: row.staffNumber,
@@ -105,6 +109,7 @@ function view(row: { membershipId: string; staffNumber: string | null; designati
     academicQualification: row.academicQualification,
     professionalQualification: row.professionalQualification,
     appointmentType: row.appointmentType,
+    appointedSubject: row.appointedSubject,
   };
 }
 
@@ -171,6 +176,7 @@ export async function setStaffRecord(
     academicQualification: pick(input.academicQualification, ACADEMIC_QUALIFICATIONS, bad),
     professionalQualification: pick(input.professionalQualification, PROFESSIONAL_QUALIFICATIONS, bad),
     appointmentType: pick(input.appointmentType, APPOINTMENT_TYPES, bad),
+    appointedSubject: pick(input.appointedSubject, STAFF_APPOINTED_SUBJECTS, bad),
   };
   if (bad.hit) return { ok: false, errorKey: "staff.badCode" };
   const data = {

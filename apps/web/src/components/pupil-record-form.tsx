@@ -1,5 +1,6 @@
 "use client";
 
+import { MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
@@ -39,6 +40,9 @@ import { savePupilRecordAction } from "@/app/(app)/parent/record/actions";
 type FieldGroup = { fields: PupilRecordField[] };
 const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
 
+const LANGUAGE_KEY = { ASSAMESE: "pupilRecord.langAssamese", BENGALI: "pupilRecord.langBengali", BODO: "pupilRecord.langBodo", DOGRI: "pupilRecord.langDogri", ENGLISH: "pupilRecord.langEnglish", GUJARATI: "pupilRecord.langGujarati", HINDI: "pupilRecord.langHindi", KANNADA: "pupilRecord.langKannada", KASHMIRI: "pupilRecord.langKashmiri", KONKANI: "pupilRecord.langKonkani", MAITHILI: "pupilRecord.langMaithili", MALAYALAM: "pupilRecord.langMalayalam", MANIPURI: "pupilRecord.langManipuri", MARATHI: "pupilRecord.langMarathi", NEPALI: "pupilRecord.langNepali", ODIA: "pupilRecord.langOdia", PUNJABI: "pupilRecord.langPunjabi", SANSKRIT: "pupilRecord.langSanskrit", SANTALI: "pupilRecord.langSantali", SINDHI: "pupilRecord.langSindhi", TAMIL: "pupilRecord.langTamil", TELUGU: "pupilRecord.langTelugu", URDU: "pupilRecord.langUrdu", OTHER: "pupilRecord.langOther" } as const satisfies Record<MotherTongue, TranslationKey>;
+const NATIONALITY_KEY = { INDIAN: "pupilRecord.natIndian", NEPALI: "pupilRecord.natNepali", BHUTANESE: "pupilRecord.natBhutanese", BANGLADESHI: "pupilRecord.natBangladeshi", SRI_LANKAN: "pupilRecord.natSriLankan", OTHER: "pupilRecord.natOther" } as const satisfies Record<Nationality, TranslationKey>;
+
 export function PupilRecordForm({ view, required, optional, filing = [], admin = false, office = false }: { view: PupilRecordView; required: PupilRecordField[]; optional: PupilRecordField[]; filing?: PupilRecordField[]; admin?: boolean; office?: boolean }) {
   const t = useT();
   const router = useRouter();
@@ -60,7 +64,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     // The household, as the RTE and EWS verifications ask for it.
     { fields: ["fatherOccupation", "motherOccupation", "annualIncome"] },
   ];
-  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { postalCode: "pupilRecord.pinHint", guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
   const maxFor: Partial<Record<PupilRecordField, number>> = { guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
   /** The coded filing answers: the value the contract takes and the words the reader sees. */
   const choicesFor: Partial<Record<PupilRecordField, { value: string; text: string }[]>> = {
@@ -69,6 +73,9 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     ews: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
     cwsnType: [{ value: "", text: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code, text: `${code} — ${CWSN_TYPE_NAMES[code] ?? ""}` }))],
     bloodGroup: [{ value: "", text: t("pupilRecord.notSaid") }, ...RECORD_BLOOD_GROUPS.map((g) => ({ value: g, text: g }))],
+    // Names from a list, so a sheet reads one spelling; a word typed before the list shows as itself until one is picked.
+    motherTongue: [{ value: "", text: t("pupilRecord.notSaid") }, ...MOTHER_TONGUES.map((c) => ({ value: c as string, text: t(LANGUAGE_KEY[c]) })), ...(values.motherTongue && !(MOTHER_TONGUES as readonly string[]).includes(values.motherTongue) ? [{ value: values.motherTongue, text: values.motherTongue }] : [])],
+    nationality: [{ value: "", text: t("pupilRecord.notSaid") }, ...NATIONALITIES.map((c) => ({ value: c as string, text: t(NATIONALITY_KEY[c]) })), ...(values.nationality && !(NATIONALITIES as readonly string[]).includes(values.nationality) ? [{ value: values.nationality, text: values.nationality }] : [])],
     // Coded so the filings are exact; a value typed before the codes shows as itself until it is picked again.
     category: [{ value: "", text: t("pupilRecord.notSaid") }, ...PUPIL_CATEGORIES.map((c) => ({ value: c, text: t(`pupilRecord.cat${c === "GENERAL" ? "General" : c}` as TranslationKey) })), ...(values.category && !(PUPIL_CATEGORIES as readonly string[]).includes(values.category) ? [{ value: values.category, text: values.category }] : [])],
     religion: [{ value: "", text: t("pupilRecord.notSaid") }, ...PUPIL_RELIGIONS.map((r) => ({ value: r, text: t(`pupilRecord.rel${r[0]}${r.slice(1).toLowerCase()}` as TranslationKey) })), ...(values.religion && !(PUPIL_RELIGIONS as readonly string[]).includes(values.religion) ? [{ value: values.religion, text: values.religion }] : [])],
@@ -139,7 +146,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
         required={isRequired(f)}
         value={values[f]}
         maxLength={maxFor[f] ?? 120}
-        inputMode={f === "annualIncome" || f === "rollNumber" ? "numeric" : f === "guardianPhone" ? "tel" : undefined}
+        inputMode={f === "annualIncome" || f === "rollNumber" || f === "postalCode" ? "numeric" : f === "guardianPhone" ? "tel" : undefined}
         autoComplete="off"
         readOnly={readOnly}
         disabled={readOnly}

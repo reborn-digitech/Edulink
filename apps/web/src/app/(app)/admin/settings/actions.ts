@@ -1,5 +1,6 @@
 "use server";
 
+import { PIN_CODE } from "@edulink/contracts";
 import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -60,6 +61,11 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
   // A state typed into the country box, or "india" in lower case, is saved
   // in the one shape the directory groups on. See lib/places.ts.
   const location = normaliseLocation(d);
+  // An Indian school's PIN is six digits: it is printed on every paper and filed on every sheet.
+  const pin = d.postalCode?.replace(/\s+/g, "") ?? "";
+  if (pin && location.country === "India" && !PIN_CODE.test(pin)) {
+    return { ok: false, errors: { postalCode: (await getT())("pupilRecord.pinSixDigits") } };
+  }
 
   await db.school.update({
     where: { id: ctx.schoolId },
@@ -71,7 +77,7 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
       addressLine: d.addressLine || null,
       city: d.city || null,
       region: location.region,
-      postalCode: d.postalCode || null,
+      postalCode: (location.country === "India" ? pin : d.postalCode) || null,
       country: location.country,
       gradeLow: d.gradeLow || null,
       gradeHigh: d.gradeHigh || null,

@@ -1,3 +1,4 @@
+import { MOTHER_TONGUES, NATIONALITIES, type MotherTongue, type Nationality } from "@edulink/contracts";
 import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
@@ -39,7 +40,7 @@ const ALL_FIELDS: PupilRecordField[] = [...REQUIRED_FIELDS, ...OPTIONAL_FIELDS, 
 export const FAMILY_WRITABLE: ReadonlySet<PupilRecordField> = new Set<PupilRecordField>(FAMILY_RECORD_FIELDS);
 /** The fields a family's body leaves out: everything that is the office's, the PEN included. */
 export const OFFICE_FIELDS: PupilRecordField[] = ALL_FIELDS.filter((f) => !FAMILY_WRITABLE.has(f));
-const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+const HINT: Partial<Record<PupilRecordField, TranslationKey>> = { postalCode: "pupilRecord.pinHint", guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
 const MAX: Partial<Record<PupilRecordField, number>> = { guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admissionDate: 10, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, previousSchoolTcDate: 10, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
 /** The fields typed as a day key and sent as one, or null when blank. */
 const DATE_FIELDS: PupilRecordField[] = ["admissionDate", "previousSchoolTcDate"];
@@ -51,6 +52,10 @@ const DIGIT_FIELDS: PupilRecordField[] = ["postalCode", "penNumber", "annualInco
  * so a test can walk the chips the form offers.
  */
 export const CATEGORY_VALUES = PUPIL_CATEGORIES;
+export const LANGUAGE_VALUES = MOTHER_TONGUES;
+export const NATIONALITY_VALUES = NATIONALITIES;
+const LANGUAGE_LABEL: Record<MotherTongue, TranslationKey> = { ASSAMESE: "pupilRecord.langAssamese", BENGALI: "pupilRecord.langBengali", BODO: "pupilRecord.langBodo", DOGRI: "pupilRecord.langDogri", ENGLISH: "pupilRecord.langEnglish", GUJARATI: "pupilRecord.langGujarati", HINDI: "pupilRecord.langHindi", KANNADA: "pupilRecord.langKannada", KASHMIRI: "pupilRecord.langKashmiri", KONKANI: "pupilRecord.langKonkani", MAITHILI: "pupilRecord.langMaithili", MALAYALAM: "pupilRecord.langMalayalam", MANIPURI: "pupilRecord.langManipuri", MARATHI: "pupilRecord.langMarathi", NEPALI: "pupilRecord.langNepali", ODIA: "pupilRecord.langOdia", PUNJABI: "pupilRecord.langPunjabi", SANSKRIT: "pupilRecord.langSanskrit", SANTALI: "pupilRecord.langSantali", SINDHI: "pupilRecord.langSindhi", TAMIL: "pupilRecord.langTamil", TELUGU: "pupilRecord.langTelugu", URDU: "pupilRecord.langUrdu", OTHER: "pupilRecord.langOther" };
+const NATIONALITY_LABEL: Record<Nationality, TranslationKey> = { INDIAN: "pupilRecord.natIndian", NEPALI: "pupilRecord.natNepali", BHUTANESE: "pupilRecord.natBhutanese", BANGLADESHI: "pupilRecord.natBangladeshi", SRI_LANKAN: "pupilRecord.natSriLankan", OTHER: "pupilRecord.natOther" };
 export const RELIGION_VALUES = PUPIL_RELIGIONS;
 const CATEGORY_LABEL: Record<(typeof PUPIL_CATEGORIES)[number], TranslationKey> = { GENERAL: "pupilRecord.catGeneral", SC: "pupilRecord.catSC", ST: "pupilRecord.catST", OBC: "pupilRecord.catOBC", VJ: "pupilRecord.catVJ", NT: "pupilRecord.catNT", SBC: "pupilRecord.catSBC" };
 const RELIGION_LABEL: Record<(typeof PUPIL_RELIGIONS)[number], TranslationKey> = { HINDU: "pupilRecord.relHindu", MUSLIM: "pupilRecord.relMuslim", CHRISTIAN: "pupilRecord.relChristian", SIKH: "pupilRecord.relSikh", BUDDHIST: "pupilRecord.relBuddhist", PARSI: "pupilRecord.relParsi", JAIN: "pupilRecord.relJain", OTHER: "pupilRecord.relOther" };
@@ -152,9 +157,18 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
    * a value typed before the codes existed — the stored word as one more
    * chip, so it still shows and goes back only as it is.
    */
-  const coded = (field: "category" | "religion") => {
-    const codes: readonly string[] = field === "category" ? CATEGORY_VALUES : RELIGION_VALUES;
-    const labelOf = (code: string): string => t(field === "category" ? CATEGORY_LABEL[code as (typeof PUPIL_CATEGORIES)[number]] : RELIGION_LABEL[code as (typeof PUPIL_RELIGIONS)[number]]);
+  const coded = (field: "category" | "religion" | "motherTongue" | "nationality") => {
+    const codes: readonly string[] = field === "category" ? CATEGORY_VALUES : field === "religion" ? RELIGION_VALUES : field === "motherTongue" ? LANGUAGE_VALUES : NATIONALITY_VALUES;
+    const labelOf = (code: string): string =>
+      t(
+        field === "category"
+          ? CATEGORY_LABEL[code as (typeof PUPIL_CATEGORIES)[number]]
+          : field === "religion"
+            ? RELIGION_LABEL[code as (typeof PUPIL_RELIGIONS)[number]]
+            : field === "motherTongue"
+              ? LANGUAGE_LABEL[code as MotherTongue]
+              : NATIONALITY_LABEL[code as Nationality],
+      );
     const stored = view.record?.[field] ?? "";
     const options = [{ value: "", label: t("pupilRecord.notSaid") }, ...codes.map((code) => ({ value: code, label: labelOf(code) }))];
     if (stored && !codes.includes(stored)) options.push({ value: stored, label: stored });
@@ -183,7 +197,7 @@ export function PupilRecordForm({ view, intro, busy, refusal, onSave, extra }: {
       const shown = field === "category" && (CATEGORY_VALUES as readonly string[]).includes(stored) ? t(CATEGORY_LABEL[stored as (typeof PUPIL_CATEGORIES)[number]]) : stored;
       return readOnly(field, t("pupilRecord.rollNumberOffice"), `record-office-${field}`, shown);
     }
-    if (field === "category" || field === "religion") return coded(field);
+    if (field === "category" || field === "religion" || field === "motherTongue" || field === "nationality") return coded(field);
     const isDate = DATE_FIELDS.includes(field);
     const isDigits = DIGIT_FIELDS.includes(field);
     const hintKey = HINT[field];

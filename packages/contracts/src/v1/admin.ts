@@ -872,6 +872,7 @@ export const adminStaffSchema = z.object({
           academicQualification: z.string().nullable().default(null),
           professionalQualification: z.string().nullable().default(null),
           appointmentType: z.string().nullable().default(null),
+          appointedSubject: z.string().nullable().default(null),
         })
         .nullable(),
       leadClasses: z.array(z.string()),
@@ -898,3 +899,15 @@ export type AdminStaff = z.infer<typeof adminStaffSchema>;
 export const LEGAL_NAME_REASONS = ["SPELLING", "ADMISSION_RECORD", "LEGAL_CHANGE"] as const;
 export const legalNameReasonSchema = z.enum(LEGAL_NAME_REASONS);
 export type LegalNameReason = z.infer<typeof legalNameReasonSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* The subject a teacher was appointed for                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * UDISE+ DCF 3.2.18 and 3.2.19 subjects, by name; the filing holds the
+ * number each prints (filings.ts). The office picks one on the staff record.
+ */
+export const STAFF_APPOINTED_SUBJECTS = ["MATHEMATICS", "EVS", "MUSIC", "SCIENCE", "SOCIAL_SCIENCE", "ACCOUNTANCY", "BIOLOGY", "BUSINESS_STUDIES", "CHEMISTRY", "COMPUTER_SCIENCE", "ECONOMICS", "GEOGRAPHY", "HISTORY", "PHYSICS", "POLITICAL_SCIENCE", "PSYCHOLOGY", "HINDI", "SANSKRIT", "URDU", "ENGLISH", "REGIONAL_LANGUAGE", "SOCIOLOGY", "STATISTICS", "ART", "PHYSICAL_EDUCATION", "WORK_EDUCATION"] as const;
+export const staffAppointedSubjectSchema = z.enum(STAFF_APPOINTED_SUBJECTS);
+export type StaffAppointedSubject = z.infer<typeof staffAppointedSubjectSchema>;

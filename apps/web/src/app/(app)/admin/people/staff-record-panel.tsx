@@ -24,6 +24,7 @@ export type StaffRecordInitial = {
   academicQualification: string;
   professionalQualification: string;
   appointmentType: string;
+  appointedSubject: string;
 };
 
 /**
@@ -36,6 +37,7 @@ const GENDERS: { code: string; key: TranslationKey }[] = [{ code: "M", key: "pup
 const SOCIAL_CATEGORIES: { code: string; key: TranslationKey }[] = [{ code: "GENERAL", key: "filings.catGeneral" }, { code: "SC", key: "filings.catSC" }, { code: "ST", key: "filings.catST" }, { code: "OBC", key: "filings.catOBC" }, { code: "VJ", key: "pupilRecord.catVJ" }, { code: "NT", key: "pupilRecord.catNT" }, { code: "SBC", key: "pupilRecord.catSBC" }];
 const ACADEMIC: { code: string; key: TranslationKey }[] = ["1", "2", "3", "4", "5", "6", "7", "8"].map((code) => ({ code, key: `staff.aq${code}` as TranslationKey }));
 const PROFESSIONAL: { code: string; key: TranslationKey }[] = ["1", "2", "3", "4", "5", "6", "7", "8", "10", "11", "12"].map((code) => ({ code, key: `staff.pq${code}` as TranslationKey }));
+const APPOINTED_SUBJECTS: { code: string; key: TranslationKey }[] = [{ code: "MATHEMATICS", key: "staff.subjectMathematics" }, { code: "EVS", key: "staff.subjectEvs" }, { code: "MUSIC", key: "staff.subjectMusic" }, { code: "SCIENCE", key: "staff.subjectScience" }, { code: "SOCIAL_SCIENCE", key: "staff.subjectSocialScience" }, { code: "ACCOUNTANCY", key: "staff.subjectAccountancy" }, { code: "BIOLOGY", key: "staff.subjectBiology" }, { code: "BUSINESS_STUDIES", key: "staff.subjectBusinessStudies" }, { code: "CHEMISTRY", key: "staff.subjectChemistry" }, { code: "COMPUTER_SCIENCE", key: "staff.subjectComputerScience" }, { code: "ECONOMICS", key: "staff.subjectEconomics" }, { code: "GEOGRAPHY", key: "staff.subjectGeography" }, { code: "HISTORY", key: "staff.subjectHistory" }, { code: "PHYSICS", key: "staff.subjectPhysics" }, { code: "POLITICAL_SCIENCE", key: "staff.subjectPoliticalScience" }, { code: "PSYCHOLOGY", key: "staff.subjectPsychology" }, { code: "HINDI", key: "staff.subjectHindi" }, { code: "SANSKRIT", key: "staff.subjectSanskrit" }, { code: "URDU", key: "staff.subjectUrdu" }, { code: "ENGLISH", key: "staff.subjectEnglish" }, { code: "REGIONAL_LANGUAGE", key: "staff.subjectRegionalLanguage" }, { code: "SOCIOLOGY", key: "staff.subjectSociology" }, { code: "STATISTICS", key: "staff.subjectStatistics" }, { code: "ART", key: "staff.subjectArt" }, { code: "PHYSICAL_EDUCATION", key: "staff.subjectPhysicalEducation" }, { code: "WORK_EDUCATION", key: "staff.subjectWorkEducation" }];
 const APPOINTMENTS: { code: string; key: TranslationKey }[] = [{ code: "REGULAR", key: "staff.apptRegular" }, { code: "CONTRACT", key: "staff.apptContract" }, { code: "PART_TIME", key: "staff.apptPartTime" }];
 
 /** The office's editor for a member of staff's record — the desk's five fields and the filing's five, one save. */
@@ -74,6 +76,7 @@ export function StaffRecordPanel({
         academicQualification: form.academicQualification || null,
         professionalQualification: form.professionalQualification || null,
         appointmentType: form.appointmentType || null,
+        appointedSubject: form.appointedSubject || null,
       });
       if (!result.ok) {
         setError(actionError(t, result, "staff.notSaved"));
@@ -119,6 +122,7 @@ export function StaffRecordPanel({
         {coded("academicQualification", t("staff.filingAcademic"), ACADEMIC, "staff-academic")}
         {coded("professionalQualification", t("staff.filingProfessional"), PROFESSIONAL, "staff-professional")}
         {coded("appointmentType", t("staff.filingAppointment"), APPOINTMENTS, "staff-appointment")}
+        {coded("appointedSubject", t("staff.filingAppointedSubject"), APPOINTED_SUBJECTS, "staff-appointed-subject")}
       </div>
 
       <div className="mt-3 flex flex-wrap gap-2">

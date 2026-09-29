@@ -389,6 +389,7 @@ export default async function DirectoryPage({
                                   academicQualification: member.staffRecord?.academicQualification ?? "",
                                   professionalQualification: member.staffRecord?.professionalQualification ?? "",
                                   appointmentType: member.staffRecord?.appointmentType ?? "",
+                                  appointedSubject: member.staffRecord?.appointedSubject ?? "",
                                 }
                           }
                           suspended={member.status === "SUSPENDED"}

@@ -8,6 +8,7 @@
  * FAIL = the sheet disagrees with its own rows; WARN = a snapshot that has
  * drifted or a figure a blank input makes wrong; INFO = inputs still needed.
  */
+import { MOTHER_TONGUES } from "@edulink/contracts";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -31,6 +32,13 @@ import type { ActiveContext } from "@/lib/session";
 
 const RUN = process.env.DATA_AUDIT === "1";
 const d = RUN ? describe : describe.skip;
+/** The audit's own reading of a stored mother tongue: a code of the list as the language's English name, anything else as it stands. */
+const languageWord = (stored: string | null | undefined): string => {
+  if (!stored) return "";
+  if (stored === "OTHER") return "Other";
+  return (MOTHER_TONGUES as readonly string[]).includes(stored) ? stored[0] + stored.slice(1).toLowerCase() : stored.trim();
+};
+
 const db = new PrismaClient();
 
 type Finding = { check: string; level: "FAIL" | "WARN" | "INFO"; school: string; detail: string };
@@ -123,8 +131,10 @@ d("the five filing sheets, cell by cell", () => {
           "MOTHER NAME": upper(rec?.motherName),
           "FATHER NAME": upper(rec?.fatherName),
           "PINCODE": rec?.postalCode ?? "",
-          "MOBILE NUMBER": (g?.parent.phone ?? p.user.phone ?? "").replace(/\D/g, "").slice(-10),
-          "MOTHER TONGUE": rec?.motherTongue ?? "",
+          // A linked guardian's proved number, then the record's own, then the pupil's.
+          "MOBILE NUMBER": (g?.parent.phone ?? rec?.guardianPhone ?? p.user.phone ?? "").replace(/\D/g, "").slice(-10),
+          // The language's name from its code; a word typed before the list as it stands.
+          "MOTHER TONGUE": languageWord(rec?.motherTongue),
           "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": CATEGORY[upper(rec?.category)] ?? "",
           "MINORITY GROUP (Muslim-1, Christian-2, Sikh-3, Buddhist-4, Parsi-5, Jain-6, Not Minority-7)": MINORITY[upper(rec?.religion)] ?? "",
           "Is BPL BENEFICIARY (Yes-1, No-2)": yesNo(rec?.bpl),
@@ -619,7 +629,8 @@ d("inputs the school still has to enter", () => {
       const gaps: [string, number, string][] = [
         ["date of birth", count((p) => !p.user.birthdate), "UDISE+ DOB, both board sheets, every certificate, the age tables"],
         ["gender", count((p) => !p.pupilRecord?.gender), "UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets"],
-        ["a guardian with a phone", count((p) => !(p.guardianships[0]?.parent.phone ?? p.user.phone)), "UDISE+ MOBILE NUMBER, texts and reminders"],
+        ["a contact number, the guardian's or the record's", count((p) => !(p.guardianships[0]?.parent.phone ?? p.pupilRecord?.guardianPhone ?? p.user.phone)), "UDISE+ MOBILE NUMBER"],
+        ["a guardian with a number they proved", count((p) => !p.guardianships[0]?.parent.phone), "texts and reminders"],
         ["a guardian at all", count((p) => !p.guardianships[0]), "circulars, fee reminders, the PEN change approval"],
         ["a pupil record", count((p) => !p.pupilRecord), "every certificate field, every filing column"],
         ["father's and mother's names", count((p) => !p.pupilRecord?.fatherName || !p.pupilRecord?.motherName), "certificates (\"child of\"), UDISE+, the board sheets"],
@@ -627,7 +638,7 @@ d("inputs the school still has to enter", () => {
         ["admission date", count((p) => !p.pupilRecord?.admissionDate), "UDISE+ ADMISSION DATE falls back to the day the account joined"],
         ["category (coded)", count((p) => !CATEGORY[upper(p.pupilRecord?.category)]), "UDISE+ SOCIAL CATEGORY, the enrolment tables, the board sheets"],
         ["religion (coded)", count((p) => !MINORITY[upper(p.pupilRecord?.religion)]), "UDISE+ MINORITY GROUP"],
-        ["mother tongue", count((p) => !p.pupilRecord?.motherTongue), "UDISE+ MOTHER TONGUE, MSBSHSE"],
+        ["mother tongue, from the list", count((p) => !p.pupilRecord?.motherTongue || !(MOTHER_TONGUES as readonly string[]).includes(p.pupilRecord.motherTongue)), "UDISE+ MOTHER TONGUE, MSBSHSE"],
         ["address and PIN", count((p) => !p.pupilRecord?.addressLine || !p.pupilRecord?.postalCode), "UDISE+ PRESENT ADDRESS and PINCODE, certificates"],
         ["BPL and EWS answered", count((p) => p.pupilRecord?.bpl == null || p.pupilRecord?.ews == null), "UDISE+ BPL, EWS and RTE columns"],
         ["name in the school's script", count((p) => !p.pupilRecord?.nameLocal), "the MSBSHSE pre-list's Devanagari columns"],

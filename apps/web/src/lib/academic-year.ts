@@ -35,6 +35,31 @@ const tEn = translator("en");
 /** Pupils per snapshot round-trip; 250 keeps the `IN` lists and the insert comfortably sized. */
 const SNAPSHOT_CHUNK = 250;
 
+/**
+ * A year's name as every serial prints it: "2026–27", or "2026" for a school
+ * whose year is the calendar's. THE NAME IS PART OF A CERTIFICATE'S NUMBER
+ * (BC/2026–27/0001), so it is not a label to be typed freely: "2026-27",
+ * "2026 - 27" and "AY 26/27" were three names for one year and three series
+ * of serials. A hyphen or a slash becomes the en dash; anything that is not
+ * a year, or whose second half is not the year after the first, or whose
+ * first half is not the year the dates start in, comes back null.
+ *
+ * Asked at the office's door (the calendar's action). The library below
+ * takes the name it is given: the simulation and the tests name years as
+ * they need to.
+ */
+export function academicYearName(raw: string, startDate: Date): string | null {
+  const typed = raw.trim().replace(/\s+/g, "");
+  const single = /^(\d{4})$/.exec(typed);
+  const pair = /^(\d{4})[–\-\/](\d{2}|\d{4})$/.exec(typed);
+  const first = Number((single ?? pair)?.[1]);
+  if (!first || first !== startDate.getUTCFullYear()) return null;
+  if (single) return String(first);
+  const second = Number(pair![2]) % 100;
+  if (second !== (first + 1) % 100) return null;
+  return `${first}–${String(second).padStart(2, "0")}`;
+}
+
 export type AcademicYearInput = {
   name: string;
   startDate: Date;

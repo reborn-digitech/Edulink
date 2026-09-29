@@ -643,6 +643,7 @@ export async function staffProfile(ctx: Staff): Promise<StaffProfile> {
           academicQualification: record.academicQualification,
           professionalQualification: record.professionalQualification,
           appointmentType: record.appointmentType,
+          appointedSubject: record.appointedSubject,
         }
       : null,
     balance,

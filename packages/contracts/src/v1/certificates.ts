@@ -97,6 +97,31 @@ export const pupilCategorySchema = z.enum(PUPIL_CATEGORIES);
 /** Religion as a coded choice, so the minority code is exact: Hindu and Other file as "not minority". */
 export const PUPIL_RELIGIONS = ["HINDU", "MUSLIM", "CHRISTIAN", "SIKH", "BUDDHIST", "PARSI", "JAIN", "OTHER"] as const;
 export const pupilReligionSchema = z.enum(PUPIL_RELIGIONS);
+/**
+ * Mother tongue as a coded choice: the twenty-two languages of the Eighth
+ * Schedule, English, and "another". A NAME FROM A LIST, so "Marathi",
+ * "marathi " and "मराठी" are one language on every sheet. The list is of
+ * languages and not of any portal's numbers: a sheet that wants a number
+ * maps from these.
+ */
+export const MOTHER_TONGUES = ["ASSAMESE", "BENGALI", "BODO", "DOGRI", "ENGLISH", "GUJARATI", "HINDI", "KANNADA", "KASHMIRI", "KONKANI", "MAITHILI", "MALAYALAM", "MANIPURI", "MARATHI", "NEPALI", "ODIA", "PUNJABI", "SANSKRIT", "SANTALI", "SINDHI", "TAMIL", "TELUGU", "URDU", "OTHER"] as const;
+export const motherTongueSchema = z.enum(MOTHER_TONGUES);
+export type MotherTongue = z.infer<typeof motherTongueSchema>;
+/** Nationality as a coded choice: the filing asks only whether the child is an Indian national, and a regex on a typed word answered it. */
+export const NATIONALITIES = ["INDIAN", "NEPALI", "BHUTANESE", "BANGLADESHI", "SRI_LANKAN", "OTHER"] as const;
+export const nationalitySchema = z.enum(NATIONALITIES);
+export type Nationality = z.infer<typeof nationalitySchema>;
+/** An Indian PIN code: six digits, the first never zero. */
+export const PIN_CODE = /^[1-9]\d{5}$/;
+/**
+ * What somebody typed, as the list's code when it is one: the code itself,
+ * or the language's or nationality's English name in any capitals. Anything
+ * else comes back null, for the caller to refuse or to leave as it stands.
+ */
+export function codeFromList<T extends string>(list: readonly T[], typed: string): T | null {
+  const key = typed.trim().toUpperCase().replace(/[\s-]+/g, "_");
+  return (list as readonly string[]).includes(key) ? (key as T) : null;
+}
 /** Gender as UDISE+ codes it: male, female, transgender. */
 export const pupilGenderSchema = z.enum(["M", "F", "T"]);
 /** The 21 impairment types of the UDISE+ student module, by their portal code. */

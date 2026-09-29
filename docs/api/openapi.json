@@ -8523,6 +8523,11 @@
                                 "type": "string",
                                 "nullable": true,
                                 "default": null
+                              },
+                              "appointedSubject": {
+                                "type": "string",
+                                "nullable": true,
+                                "default": null
                               }
                             },
                             "required": [
@@ -12685,6 +12690,11 @@
                           "default": null
                         },
                         "appointmentType": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "appointedSubject": {
                           "type": "string",
                           "nullable": true,
                           "default": null

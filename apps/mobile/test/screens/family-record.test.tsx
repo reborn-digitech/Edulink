@@ -3,18 +3,18 @@ import { fireEvent, screen, waitFor, within } from "@testing-library/react-nativ
 import { ToastProvider } from "@/components";
 import { bodyOf, calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
 import { FamilyRecord } from "@/screens/family/record";
-import { bodyFrom, CATEGORY_VALUES, FILING_FIELDS, formFrom, OPTIONAL_FIELDS, RELIGION_VALUES, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
+import { bodyFrom, CATEGORY_VALUES, FILING_FIELDS, formFrom, LANGUAGE_VALUES, NATIONALITY_VALUES, OPTIONAL_FIELDS, RELIGION_VALUES, REQUIRED_FIELDS } from "@/screens/shared/pupil-record";
 
 const CHILDREN = { children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela")] };
 const RECORD = {
   fatherName: "ZZ Ravi",
   motherName: "ZZ Meera",
   placeOfBirth: "Pune",
-  nationality: "Indian",
+  nationality: "INDIAN",
   religion: null,
   caste: null,
   category: null,
-  motherTongue: "Marathi",
+  motherTongue: "MARATHI",
   addressLine: "1 ZZ Road",
   city: "Pune",
   postalCode: "411001",
@@ -56,7 +56,7 @@ const compose = () => (
 describe("the helpers behind the record", () => {
   it("start from the record as stored, or blank, and send every field trimmed with a blank date as null", () => {
     expect(formFrom(null).fatherName).toBe("");
-    expect(formFrom(RECORD).motherTongue).toBe("Marathi");
+    expect(formFrom(RECORD).motherTongue).toBe("MARATHI");
     expect(formFrom(RECORD).religion).toBe("");
     const body = bodyFrom({ ...formFrom(RECORD), fatherName: "  ZZ Ravi ", admissionDate: " " });
     expect(body.fatherName).toBe("ZZ Ravi");
@@ -73,6 +73,10 @@ describe("the helpers behind the record", () => {
     expect((FAMILY_RECORD_FIELDS as readonly string[]).includes("guardianPhone")).toBe(true);
     expect(bodyFrom({ ...formFrom(null), guardianPhone: " 98765 43210 " }).guardianPhone).toBe("98765 43210");
     expect(CATEGORY_VALUES).toEqual(["GENERAL", "SC", "ST", "OBC", "VJ", "NT", "SBC"]);
+    // Names from a list: the languages of the Eighth Schedule with English and "another", and six nationalities.
+    expect(LANGUAGE_VALUES).toHaveLength(24);
+    expect(LANGUAGE_VALUES).toEqual(expect.arrayContaining(["MARATHI", "HINDI", "ENGLISH", "URDU", "OTHER"]));
+    expect(NATIONALITY_VALUES).toEqual(["INDIAN", "NEPALI", "BHUTANESE", "BANGLADESHI", "SRI_LANKAN", "OTHER"]);
     expect(RELIGION_VALUES).toEqual(["HINDU", "MUSLIM", "CHRISTIAN", "SIKH", "BUDDHIST", "PARSI", "JAIN", "OTHER"]);
   });
 });
@@ -91,7 +95,9 @@ describe("the pupil record for the guardian", () => {
     expect(screen.getByLabelText(/^Date of birth: .*2016\. Recorded by the school/)).toBeTruthy();
     expect(screen.getByText("Recorded by the school; ask the office to correct it.")).toBeTruthy();
     expect(screen.getByLabelText("Father's name").props.value).toBe("ZZ Ravi");
-    expect(screen.getByLabelText("Mother tongue").props.value).toBe("Marathi");
+    // A name from a list, picked and not typed: the stored code shows as the language's word, chosen.
+    expect(within(screen.getByLabelText("Mother tongue")).getByRole("radio", { name: "Marathi" })).toBeChecked();
+    expect(within(screen.getByLabelText("Nationality")).getByRole("radio", { name: "Indian" })).toBeChecked();
     // The office's fields — the admission number and date, the grade, the last school's TC, the category and caste, the filing codes — the family reads under the office's note and cannot type.
     expect(screen.getByLabelText("Admission register number: —. Set by the school office.")).toBeTruthy();
     expect(screen.queryByLabelText("Admission register number")).toBeNull();
@@ -137,8 +143,8 @@ describe("the pupil record for the guardian", () => {
       fatherName: "ZZ Ravi",
       motherName: "ZZ Meera",
       placeOfBirth: "Pune",
-      nationality: "Indian",
-      motherTongue: "Marathi",
+      nationality: "INDIAN",
+      motherTongue: "MARATHI",
       addressLine: "1 ZZ Road",
       city: "Pune",
       religion: "HINDU",

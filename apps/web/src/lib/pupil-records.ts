@@ -1,3 +1,5 @@
+import type { TranslationKey } from "./i18n/dictionary";
+import { codeFromList, MOTHER_TONGUES, NATIONALITIES, PIN_CODE } from "@edulink/contracts";
 import { normalisePhone } from "./phone";
 import "server-only";
 import { FAMILY_RECORD_FIELDS, PUPIL_CATEGORIES, type PupilRecordField, type PupilRecordSave, type PupilRecordView } from "@edulink/contracts";
@@ -60,6 +62,9 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
   return FILING_RECORD_FIELDS.filter((f) => {
     const v = record?.[f];
     if (f === "category") return typeof v !== "string" || !(PUPIL_CATEGORIES as readonly string[]).includes(v.trim().toUpperCase());
+    // A language typed before the list, or a PIN that is not six digits, is a blank to a sheet that reads them.
+    if (f === "motherTongue") return typeof v !== "string" || codeFromList(MOTHER_TONGUES, v) === null;
+    if (f === "postalCode") return typeof v !== "string" || !PIN_CODE.test(v.trim());
     return v === null || v === undefined || (typeof v === "string" && v.trim() === "");
   }) as PupilRecordField[];
 }
@@ -142,9 +147,31 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     contact = input.guardianPhone.trim() === "" ? null : normalisePhone(input.guardianPhone);
     if (input.guardianPhone.trim() !== "" && !contact) throw new AccessError("pupilRecord.phoneNotANumber");
   }
+  /**
+   * CODED AT THE DOOR. Mother tongue and nationality are names from a list
+   * and the PIN is six digits, because a sheet reads them: typed freely they
+   * were "Marathi", "marathi" and "मराठी", and an Indian national was
+   * whoever's nationality contained "india". A value typed before the lists
+   * and sent back untouched is left as it stands, so an old record can still
+   * be saved for its other fields; it counts as blank for a filing until it
+   * is picked from the list.
+   */
+  const stored = await db.pupilRecord.findUnique({ where: { studentMembershipId }, select: { motherTongue: true, nationality: true, postalCode: true } });
+  const fromList = <T extends string>(list: readonly T[], typed: string | undefined, was: string | null | undefined, refusal: TranslationKey): string | null | undefined => {
+    if (typed === undefined) return undefined;
+    if (typed.trim() === "") return null;
+    const code = codeFromList(list, typed);
+    if (code) return code;
+    if (was && typed.trim() === was.trim()) return was;
+    throw new AccessError(refusal);
+  };
+  const motherTongue = fromList(MOTHER_TONGUES, input.motherTongue, stored?.motherTongue, "pupilRecord.chooseMotherTongue");
+  const nationality = fromList(NATIONALITIES, input.nationality, stored?.nationality, "pupilRecord.chooseNationality");
+  const pin = input.postalCode === undefined ? undefined : input.postalCode.replace(/\s+/g, "") || null;
+  if (pin && !PIN_CODE.test(pin) && pin !== (stored?.postalCode ?? "").trim()) throw new AccessError("pupilRecord.pinSixDigits");
   const data = {
-    fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality: text(input.nationality), religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue: text(input.motherTongue),
-    addressLine: text(input.addressLine), city: text(input.city), postalCode: text(input.postalCode), admissionNumber: text(input.admissionNumber),
+    fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality, religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue,
+    addressLine: text(input.addressLine), city: text(input.city), postalCode: pin, admissionNumber: text(input.admissionNumber),
     admissionDate: input.admissionDate === undefined ? undefined : input.admissionDate ? new Date(`${input.admissionDate}T00:00:00Z`) : null,
     admittedToGrade: text(input.admittedToGrade), previousSchool: text(input.previousSchool), penNumber: pen,
     gender: text(input.gender), nameLocal: text(input.nameLocal), fatherNameLocal: text(input.fatherNameLocal), motherNameLocal: text(input.motherNameLocal),

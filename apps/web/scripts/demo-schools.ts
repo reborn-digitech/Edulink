@@ -685,7 +685,7 @@ async function buildDeshmukh(b: Built, sunita: { id: string }) {
   await db.healthCard.upsert({ where: { studentMembershipId: b.deshmukh.membershipId }, create: { schoolId: b.school.id, studentMembershipId: b.deshmukh.membershipId, ...card }, update: card });
   const record = {
     // Category and religion are coded values on the record; the caste is the family's own word.
-    fatherName: "Prasad Deshmukh", motherName: SUNITA.name, placeOfBirth: "Pune", nationality: "Indian", religion: "HINDU", caste: "Maratha", category: "GENERAL", motherTongue: "Marathi",
+    fatherName: "Prasad Deshmukh", motherName: SUNITA.name, placeOfBirth: "Pune", nationality: "INDIAN", religion: "HINDU", caste: "Maratha", category: "GENERAL", motherTongue: "MARATHI",
     fatherOccupation: "Mechanical engineer", motherOccupation: "Bank officer", annualIncome: 1_800_000,
     addressLine: "B-402, Sahil Residency, Aundh", city: "Pune", postalCode: "411007", admissionNumber: first === "Aarav" ? "SPS-2022-0416" : "SVM-2021-0287", admissionDate: new Date(first === "Aarav" ? "2022-06-13T00:00:00Z" : "2021-06-14T00:00:00Z"), admittedToGrade: first === "Aarav" ? "2" : "2",
     previousSchool: first === "Aarav" ? "Little Flowers Nursery, Pune" : "Bal Vikas Mandir, Nashik", previousSchoolTcNumber: first === "Aarav" ? "LFN/2022/031" : "BVM/2021/117", previousSchoolTcDate: new Date(first === "Aarav" ? "2022-06-01T00:00:00Z" : "2021-06-01T00:00:00Z"),

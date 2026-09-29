@@ -142,9 +142,14 @@ phone entered by the office~~ (done 2026-09-29: `PupilRecord.guardianPhone`, the
 account's sign-in phone, written by the office or the family on the record form, web and phone; the filings
 print a linked guardian's proved number first and this one when there is none; texts and WhatsApp still go
 only to a number its owner proved, which is a decision still to take); ~~legal name correction~~; ~~the
-principal's subjects~~; coded lists for mother
-tongue, nationality, PIN, designation and the academic year's name; the staff record and departures on
-the phone.
+principal's subjects~~; ~~coded lists for mother
+tongue, nationality, PIN, designation and the academic year's name~~ (done 2026-09-29: `MOTHER_TONGUES`,
+`NATIONALITIES`, `PIN_CODE` and `STAFF_APPOINTED_SUBJECTS` in the contracts; the record keeps a code or
+refuses, a word typed before the lists may be sent back untouched and is a blank to a filing; the
+designation stays a title and the subject appointed for is its own coded field; a year is named
+`2026–27` at the calendar's door, `academicYearName`; still free text: the admitted-to grade, the
+school's medium, the affiliation number, the staff number, timetable and profile subjects); the staff
+record and departures on the phone.
 
 **Audit items still open** (README §2): 4 and 5 fixed; 36 by design; 42 fixed; 43 the leave-beside-a-
 stored-PRESENT display; the first-pass items 8–13, 18, 24, 26 and 29 were documented in September's

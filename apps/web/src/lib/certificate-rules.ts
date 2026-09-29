@@ -189,6 +189,15 @@ export type PupilFacts = {
 const CATEGORY_WORD: Record<string, string> = { GENERAL: "pupilRecord.catGeneral", SC: "pupilRecord.catSC", ST: "pupilRecord.catST", OBC: "pupilRecord.catOBC", VJ: "pupilRecord.catVJ", NT: "pupilRecord.catNT", SBC: "pupilRecord.catSBC" };
 const RELIGION_WORD: Record<string, string> = { HINDU: "pupilRecord.relHindu", MUSLIM: "pupilRecord.relMuslim", CHRISTIAN: "pupilRecord.relChristian", SIKH: "pupilRecord.relSikh", BUDDHIST: "pupilRecord.relBuddhist", PARSI: "pupilRecord.relParsi", JAIN: "pupilRecord.relJain", OTHER: "pupilRecord.relOther" };
 
+const LANGUAGE_WORD: Record<string, string> = { ASSAMESE: "pupilRecord.langAssamese", BENGALI: "pupilRecord.langBengali", BODO: "pupilRecord.langBodo", DOGRI: "pupilRecord.langDogri", ENGLISH: "pupilRecord.langEnglish", GUJARATI: "pupilRecord.langGujarati", HINDI: "pupilRecord.langHindi", KANNADA: "pupilRecord.langKannada", KASHMIRI: "pupilRecord.langKashmiri", KONKANI: "pupilRecord.langKonkani", MAITHILI: "pupilRecord.langMaithili", MALAYALAM: "pupilRecord.langMalayalam", MANIPURI: "pupilRecord.langManipuri", MARATHI: "pupilRecord.langMarathi", NEPALI: "pupilRecord.langNepali", ODIA: "pupilRecord.langOdia", PUNJABI: "pupilRecord.langPunjabi", SANSKRIT: "pupilRecord.langSanskrit", SANTALI: "pupilRecord.langSantali", SINDHI: "pupilRecord.langSindhi", TAMIL: "pupilRecord.langTamil", TELUGU: "pupilRecord.langTelugu", URDU: "pupilRecord.langUrdu", OTHER: "pupilRecord.langOther" };
+const NATIONALITY_WORD: Record<string, string> = { INDIAN: "pupilRecord.natIndian", NEPALI: "pupilRecord.natNepali", BHUTANESE: "pupilRecord.natBhutanese", BANGLADESHI: "pupilRecord.natBangladeshi", SRI_LANKAN: "pupilRecord.natSriLankan", OTHER: "pupilRecord.natOther" };
+/** A coded record value as the word a paper prints, in the paper's language; a value typed before the codes as itself. */
+const worded = (table: Record<string, string>, value: string | null | undefined, words: Words): string | null => {
+  if (!value) return null;
+  const key = table[value.trim().toUpperCase().replace(/[\s-]+/g, "_")];
+  return key ? words(key) : value;
+};
+
 export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = wordsFor(locale)): CertificateData {
   const r = facts.record;
   const parentage = r?.fatherName && r?.motherName ? words("certificateDefaults.childOf", { father: r.fatherName, mother: r.motherName }) : null;
@@ -204,12 +213,12 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
     "pupil.motherName": r?.motherName ?? null,
     "pupil.parentage": parentage,
     "pupil.placeOfBirth": r?.placeOfBirth ?? null,
-    "pupil.nationality": r?.nationality ?? null,
+    "pupil.nationality": worded(NATIONALITY_WORD, r?.nationality, words),
     // Coded on the record since the filings were made exact; printed as the word in the paper's language. A value from before the codes prints as typed.
     "pupil.religion": r?.religion ? (RELIGION_WORD[r.religion.toUpperCase()] ? words(RELIGION_WORD[r.religion.toUpperCase()]!) : r.religion) : null,
     "pupil.caste": r?.caste ?? null,
     "pupil.category": r?.category ? (CATEGORY_WORD[r.category.toUpperCase()] ? words(CATEGORY_WORD[r.category.toUpperCase()]!) : r.category) : null,
-    "pupil.motherTongue": r?.motherTongue ?? null,
+    "pupil.motherTongue": worded(LANGUAGE_WORD, r?.motherTongue, words),
     "pupil.address": address,
     "pupil.admissionNumber": r?.admissionNumber ?? null,
     "pupil.admissionDate": r?.admissionDateKey ? dateInFigures(r.admissionDateKey) : null,

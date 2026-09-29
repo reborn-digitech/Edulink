@@ -9,7 +9,7 @@ import {
   deleteHoliday,
   type HolidayKind,
 } from "@/lib/holidays";
-import { createAcademicYear, closeAcademicYear, reopenAcademicYear } from "@/lib/academic-year";
+import { createAcademicYear, closeAcademicYear, reopenAcademicYear, academicYearName } from "@/lib/academic-year";
 import { createTerm, deleteTerm, finishTerm, reopenTerm } from "@/lib/terms";
 
 /**
@@ -119,8 +119,11 @@ export async function startAcademicYear(input: {
     // reopening, and the terms inside it. The holiday calendar above stays the
     // office's alone.
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    // The name is part of every certificate's serial: one shape, read from what was typed or refused.
+    const name = academicYearName(input.name, asUtcDate(input.startDateKey));
+    if (!name) throw new AccessError("access.nameTheYearByItsYears");
     const id = await createAcademicYear(ctx, {
-      name: input.name.trim(),
+      name,
       startDate: asUtcDate(input.startDateKey),
       endDate: asUtcDate(input.endDateKey),
     });

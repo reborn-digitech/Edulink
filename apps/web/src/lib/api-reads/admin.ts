@@ -761,6 +761,7 @@ export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: stri
             academicQualification: m.staffRecord.academicQualification,
             professionalQualification: m.staffRecord.professionalQualification,
             appointmentType: m.staffRecord.appointmentType,
+            appointedSubject: m.staffRecord.appointedSubject,
           }
         : null,
       leadClasses: m.classTeachers.map((ct) => ct.class.name),

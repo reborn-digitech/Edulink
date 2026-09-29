@@ -1128,7 +1128,7 @@ export async function buildCertificates(school: { id: string; name: string; code
       const facts = recordFacts(i, Number(recordGrade), { bpl: i === 2, ews: i === 2 || i === 4 });
       const data = {
         // Category and religion are coded (see recordFacts); the caste is a name plausible for the category.
-        fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: city, nationality: "Indian", religion: facts.religion, caste: facts.caste, category: facts.category, motherTongue: "Marathi",
+        fatherName: `${fathers[i % fathers.length]} ${surname}`, motherName: `${mothers[i % mothers.length]} ${surname}`, placeOfBirth: city, nationality: "INDIAN", religion: facts.religion, caste: facts.caste, category: facts.category, motherTongue: "MARATHI",
         // The household as the RTE and EWS verifications ask for it.
         fatherOccupation: facts.fatherOccupation, motherOccupation: facts.motherOccupation, annualIncome: facts.annualIncome,
         addressLine: `${10 + i} Shivaji Nagar`, city, postalCode: "411005", admissionNumber: `GR-${(opts.recordGrades ? Number(recordGrade) * 100 : 0) + 1000 + i}`,

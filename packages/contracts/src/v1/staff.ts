@@ -606,6 +606,7 @@ export const staffProfileSchema = z.object({
       academicQualification: z.string().nullable().default(null),
       professionalQualification: z.string().nullable().default(null),
       appointmentType: z.string().nullable().default(null),
+      appointedSubject: z.string().nullable().default(null),
     })
     .nullable(),
   balance: z.object({
