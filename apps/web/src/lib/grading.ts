@@ -644,7 +644,10 @@ export async function saveGrades(
       },
       update: {
         scoreMilli,
-        letter: input.letter?.trim() || null,
+        // A save that says nothing of the letter leaves it as it stands. The
+        // web's gradebook never sends one, so every mark saved there cleared
+        // the letter the phone had set; an empty string is how one is cleared.
+        ...(input.letter !== undefined ? { letter: input.letter.trim() || null } : {}),
         comment: input.comment?.trim() || null,
         gradedByMembershipId: ctx.membershipId,
         gradedAt: new Date(),

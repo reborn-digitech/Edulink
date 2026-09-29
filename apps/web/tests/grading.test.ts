@@ -216,6 +216,20 @@ describe("saveGrades", () => {
     expect(row.comment).toBe("Nice working out.");
   });
 
+  it("⚠ keeps the letter when a save says nothing of it, sets it when one is sent, and clears it on an empty one", async () => {
+    const pupil = students[0]!;
+    const letterOf = async () => (await db.grade.findUniqueOrThrow({ where: { assignmentId_studentMembershipId: { assignmentId, studentMembershipId: pupil } } })).letter;
+    await saveGrades(teacher, assignmentId, [{ studentMembershipId: pupil, score: 17, letter: " B1 " }], { notifyStudents: false });
+    expect(await letterOf()).toBe("B1");
+    // The web's gradebook: a score and a comment, no letter.
+    await saveGrades(teacher, assignmentId, [{ studentMembershipId: pupil, score: 18, comment: "Better." }], { notifyStudents: false });
+    expect(await letterOf()).toBe("B1");
+    await saveGrades(teacher, assignmentId, [{ studentMembershipId: pupil, score: 18, letter: "A2" }], { notifyStudents: false });
+    expect(await letterOf()).toBe("A2");
+    await saveGrades(teacher, assignmentId, [{ studentMembershipId: pupil, score: 18, letter: "" }], { notifyStudents: false });
+    expect(await letterOf()).toBeNull();
+  });
+
   it("allows bonus marks above the maximum", async () => {
     // 22 out of 20 is a real thing teachers do.
     const result = await saveGrades(
