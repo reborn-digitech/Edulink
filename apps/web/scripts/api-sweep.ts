@@ -322,9 +322,14 @@ async function crossProbe(mode: "school" | "person") {
     }
   } else {
     // A guardian asks for a child that is not theirs; a teacher for a pupil in a class they do not teach.
-    const guardian = await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: home.id, status: "ACTIVE" }, select: { parentUserId: true } });
+    // The guardian the PARENT actor IS (actors(), above): pupil 01's. "The first guardianship" could be another
+    // family's, and the child chosen as "not theirs" would then be measured against the wrong parent.
+    const theirs = await db.membership.findFirst({ where: { schoolId: home.id, role: "STUDENT", status: "ACTIVE", leftAt: null, user: { email: "zz.pupil01@zz.test" } }, select: { id: true } });
+    const guardian =
+      (theirs ? await db.guardianship.findFirst({ where: { studentMembershipId: theirs.id, status: "ACTIVE", relation: { not: "SCHOOL" } }, orderBy: { id: "asc" }, select: { parentUserId: true } }) : null) ??
+      (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: home.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { parentUserId: true } }));
     const linked = (await db.guardianship.findMany({ where: { parentUserId: guardian.parentUserId }, select: { studentMembershipId: true } })).map((g) => g.studentMembershipId);
-    const notMine = await db.membership.findFirst({ where: { schoolId: home.id, role: "STUDENT", status: "ACTIVE", leftAt: null, id: { notIn: linked } }, select: { id: true } });
+    const notMine = await db.membership.findFirst({ where: { schoolId: home.id, role: "STUDENT", status: "ACTIVE", leftAt: null, id: { notIn: linked } }, orderBy: { id: "asc" }, select: { id: true } });
     const teacherLead = homeFx.classId ? await db.classTeacher.findFirst({ where: { classId: homeFx.classId, role: "LEAD" }, select: { teacherMembershipId: true } }) : null;
     const taught = teacherLead ? (await db.classTeacher.findMany({ where: { teacherMembershipId: teacherLead.teacherMembershipId }, select: { classId: true } })).map((c) => c.classId) : [];
     const untaughtPupil = await db.enrollment.findFirst({ where: { schoolId: home.id, status: "ACTIVE", classId: { notIn: taught }, class: { archivedAt: null }, student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true } });
