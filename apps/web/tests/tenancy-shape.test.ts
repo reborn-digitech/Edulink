@@ -141,6 +141,8 @@ const DIRECT = [
   "ExamSlot",
   "MeetingSlot",
   "MeetingBooking",
+  /** A pupil's seat in a gig slot (decision 0004): the pupil's school's row. Its provider, who may be an expert with no school, reads their own through SELF_READABLE. */
+  "GigBooking",
   /**
    * The fees ledger. Every table carries the school's id directly — a
    * demand, a payment, a receipt, an allocation are the school's rows about
@@ -222,6 +224,7 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   GigEarning: "what the company owes a contributor — bound to the person",
   GigPayment: "the operator's record of a transfer to a contributor — bound to the person",
   GigPayee: "a contributor's own UPI id — bound to the person",
+  GigSlot: "a time a provider offers; an expert's is open to every school, a teacher's names its school in teacherSchoolId and is held to it in the library",
 };
 
 function modelBodies(): Map<string, string> {
@@ -245,7 +248,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(121);
+    ).toBe(123);
   });
 });
 

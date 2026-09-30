@@ -182,9 +182,15 @@ end-to-end in staging.
   records what the company paid by UPI (`/root/gigs`); `src/lib/gig-questions.ts`. ₹10 a question,
   only when it is added to the bank, the first 20 unpaid, 200 a month per teacher, inside a monthly
   budget; past a limit adding waits and nothing is added unpaid. The platform pays nobody: a
-  payment is the operator's record of a transfer. Not built: experts' paid sessions and workshops,
-  a pupil's free allowance, teachers' free guidance, and the gateway split, which wait on a
-  lawyer's opinion and an accountant (see the decision).
+  payment is the operator's record of a transfer. Also built, the free tier of sessions
+  (`src/lib/gig-sessions.ts`): an expert offers one-to-ones and workshops to every school's
+  pupils and a teacher one-to-one guidance to their own school's once the office switches it on
+  (`/expert/sessions`, `/teacher/guidance`), on the provider's own meeting link; a pupil has two
+  free one-to-ones and two workshop seats a school year (`/sessions`), a pupil's own ask waits
+  for a guardian, the link shows only while a seat is confirmed, and the office reads and may
+  cancel every booking of its pupils (`/admin/sessions`). Not built: paying past the allowance
+  and the gateway split, which wait on a lawyer's opinion and an accountant (see the decision);
+  reminders; the phone.
 - **Minors' data policy** (decision 0002). No Aadhaar, ever. Free-text reasons stay out of audit rows,
   push bodies to minors are generic, retention is a schedule with dials, and every column a report
   reads is listed with who may enter it.

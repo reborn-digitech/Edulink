@@ -24,7 +24,14 @@ Experts and teachers may do work through the platform that is first given free a
 
 **Built (2026-09-30): questions for the bank.** `QuestionContribution` (the question in three languages, SUBMITTED → RETURNED / ACCEPTED / REJECTED / WITHDRAWN), `GigEarning` (written once, when a question is added; PAID or FREE_BLOCK), `GigPayment` (the operator's record of a transfer, by its UTR), `GigPayee` (a teacher's own UPI id) and `GigSettings` (the six dials). A teacher writes at `/teacher/contributions`; the content team reads at `/appadmin/contributions`; the operator holds the dials and records payments at `/root/gigs`.
 
-**Not built:** sessions, workshops, allowances, teachers' guidance, and everything that takes a family's money.
+**Built (2026-09-30): the free tier of sessions.** `GigSlot` (a time a provider offers: an expert's one-to-one or workshop for every school's pupils, a teacher's one-to-one for their own school's, on the provider's own https meeting link) and `GigBooking` (a pupil's seat: PENDING_CONSENT → CONFIRMED → DELIVERED / MISSED / UNHELD, or CANCELLED), `src/lib/gig-sessions.ts`. A pupil or a guardian books at `/sessions`; an expert offers at `/expert/sessions` and a teacher at `/teacher/guidance`; the office reads and cancels at `/admin/sessions`, where it also switches teachers' guidance on; the operator holds nine more dials at `/root/gigs`. What was decided in building it, beyond the table above:
+
+- A pupil's own ask waits for a guardian; a guardian's booking for their child is confirmed at once. The school does not approve a session, but its office is told when an outside adult is to meet one of its pupils, reads every booking, and may cancel any with a reason.
+- The meeting link is shown to the pupil and their guardians only while the seat is confirmed, and to the office never.
+- A teacher's guidance draws on the same two one-to-ones a year as an expert's, since that is the arithmetic the allowance was set by.
+- A provider's free duty is counted and shown to them; nothing yet enforces it, there being nothing yet to charge for.
+
+**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds), reminders before a session, the phone's screens for any of this.
 
 ## The invariants of what is built
 
@@ -32,7 +39,9 @@ Experts and teachers may do work through the platform that is first given free a
 2. **The limits are counted under a lock** on the settings row, so two reviewers adding at once cannot take a teacher past their month or the month past its budget (`tests/gig-questions.test.ts` adds two at once and expects one).
 3. **The platform pays nobody.** A `GigPayment` is the operator's record of a transfer made from the company's bank outside the app. Its amount is the server's sum of the earnings it settles, never a typed one; a reference is recorded once; only months that have ended are settled. No gateway call exists in this area, and decision 0003's invariants test still passes untouched.
 4. **The person is the fence.** These tables carry no school: the bank is every school's, the reviewer is the content team and the payer is the company. A teacher reads and changes only their own questions; another teacher's is a 404 (the cross-person probe tries it). A teacher's UPI id is read by that teacher and by the operator, and is never written to the audit log.
-5. **An import does not delete a teacher's work.** `quiz:import` removes from a chapter only the questions a file wrote; one made in the app (`source` "Relay content team" or "teacher contribution") is left.
+5. **A pupil's allowance and a slot's seats are counted where they cannot be raced.** A booking is one transaction under a lock on the pupil's own membership row: the year's seats are counted, the seat is claimed by an update that cannot take a slot past its seats, and the booking is written (`bookSeat`; `tests/gig-sessions.test.ts` sends three pupils after two seats and two asks after a pupil's last free one).
+6. **A minor does not book alone, and an outside adult reaches only the seat.** An expert reads their own bookings by their own user id and nothing of the school through them (`npm run rls:verify` asserts it); what they write to one the server writes under the school's binding after finding the booking to be theirs.
+7. **An import does not delete a teacher's work.** `quiz:import` removes from a chapter only the questions a file wrote; one made in the app (`source` "Relay content team" or "teacher contribution") is left.
 
 ## Before paid sessions
 

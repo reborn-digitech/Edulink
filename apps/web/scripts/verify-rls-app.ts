@@ -1757,7 +1757,13 @@ async function main() {
          ('verify-xt1','verify-b','verify-xp1','verify-x1','verify-m-pupil-b','Science fair','ACTIVE',now()),
          ('verify-xt2','verify-b','verify-xp2','verify-x2','verify-m-pupil-b','Chess club','PENDING_CONSENT',now());
        INSERT INTO "MentorMessage" (id,"schoolId","threadId","authorUserId",body) VALUES
-         ('verify-xmm1','verify-b','verify-xt1','verify-pupil','Hello');`,
+         ('verify-xmm1','verify-b','verify-xt1','verify-pupil','Hello');
+       INSERT INTO "GigSlot" (id,"providerUserId","providerKind",kind,title,"startsAt","endsAt","meetingUrl",seats,"seatsTaken","updatedAt") VALUES
+         ('verify-gs1','verify-x1','EXPERT','ONE_TO_ONE','Robots, one to one', now() + interval '1 day', now() + interval '1 day 30 minutes','https://meet.example/x1',1,1,now()),
+         ('verify-gs2','verify-x2','EXPERT','ONE_TO_ONE','Openings, one to one', now() + interval '2 day', now() + interval '2 day 30 minutes','https://meet.example/x2',1,1,now());
+       INSERT INTO "GigBooking" (id,"schoolId","slotId","studentMembershipId","providerUserId",kind,"bookedByUserId",purpose,status,"updatedAt") VALUES
+         ('verify-gb1','verify-b','verify-gs1','verify-m-b','verify-x1','ONE_TO_ONE','verify-u','Robots','CONFIRMED',now()),
+         ('verify-gb2','verify-b','verify-gs2','verify-m-b','verify-x2','ONE_TO_ONE','verify-u','Openings','CONFIRMED',now());`,
     );
     type Counted = Record<string, { count: (a?: unknown) => Promise<number>; findMany: (a?: unknown) => Promise<{ id: string }[]> }>;
     const ids = async (tx: TxLike, model: string) => (await (tx as unknown as Counted)[model]!.findMany({ select: { id: true } })).map((r) => r.id).sort();
@@ -1783,6 +1789,18 @@ async function main() {
       "⚠ …the school of a live engagement, the one member of staff who booked them and the one pupil they mentor",
       same(expertOne.schools, ["verify-a", "verify-b"]) && same(expertOne.members, ["verify-m-a", "verify-m-pupil-b"]),
       `schools ${JSON.stringify(expertOne.schools)}, memberships ${JSON.stringify(expertOne.members)} (want the booker verify-m-a and the pupil verify-m-pupil-b, and nobody else at either school)`,
+    );
+    // A seat in a session (gigs, decision 0004) is the pupil's school's row. Its provider reads their own by their
+    // own user id and nothing through it: verify-m-b, the pupil of verify-gb1, is not among the members above, and
+    // the expert's own binding writes nothing to the row (the server writes under the school's binding instead).
+    const seats = await asPerson("verify-x1", async (tx) => ({
+      own: await ids(tx, "gigBooking"),
+      changed: await (tx as unknown as Record<string, { updateMany: (a: unknown) => Promise<{ count: number }> }>).gigBooking!.updateMany({ where: { id: { in: ["verify-gb1", "verify-gb2"] } }, data: { status: "DELIVERED" } }).then((r) => r.count, () => 0),
+    }));
+    check(
+      "⚠ an expert reads their OWN seats in sessions and no other provider's, writes none of them, and the seat opens nothing of the school",
+      same(seats.own, ["verify-gb1"]) && seats.changed === 0 && !expertOne.members.includes("verify-m-b"),
+      `seats ${JSON.stringify(seats.own)} (want only verify-gb1), rows changed ${seats.changed} (want 0), members ${JSON.stringify(expertOne.members)} (must not hold verify-m-b)`,
     );
     // Posts the whole platform may read (an approved GLOBAL one) are not the school's private rows; count only what is not global.
     const privatePosts = await asPerson("verify-x1", (tx) => (tx as unknown as Counted).post!.count({ where: { NOT: { scope: "GLOBAL" } } }));

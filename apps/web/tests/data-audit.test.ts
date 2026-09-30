@@ -164,6 +164,20 @@ d("STORED copies against their source rows", () => {
     expect(failsOf("gig-earnings")).toEqual([]);
   });
 
+  it("gig-seats: a slot's stored count of seats taken is the number of its seats not cancelled, and never more than it has", async () => {
+    // Slots are no school's rows; read across the platform.
+    const slots = await db.gigSlot.findMany({ select: { id: true, seats: true, seatsTaken: true, cancelledAt: true, _count: { select: { bookings: { where: { status: { not: "CANCELLED" } } } } } } });
+    for (const s of slots) {
+      if (s.seatsTaken !== s._count.bookings) note("gig-seats", "FAIL", "platform", `slot ${s.id} stores ${s.seatsTaken} seat(s) taken but holds ${s._count.bookings} booking(s) not cancelled`);
+      if (s.seatsTaken > s.seats) note("gig-seats", "FAIL", "platform", `slot ${s.id} has ${s.seatsTaken} of ${s.seats} seats taken`);
+      if (s.cancelledAt && s._count.bookings > 0) note("gig-seats", "FAIL", "platform", `cancelled slot ${s.id} still holds ${s._count.bookings} live seat(s)`);
+    }
+    const drift = await db.gigBooking.count({ where: { status: "CANCELLED", cancelledAt: null } });
+    if (drift) note("gig-seats", "WARN", "platform", `${drift} cancelled seat(s) with no time of cancelling`);
+    note("gig-seats", "INFO", "platform", `${slots.length} slot(s) offered`);
+    expect(failsOf("gig-seats")).toEqual([]);
+  });
+
   it("pen-change: an applied request put its number on the account; a pending one still matches its snapshot", async () => {
     for (const s of schools) {
       const rows = await db.penChangeRequest.findMany({ where: { schoolId: s.id }, select: { id: true, status: true, fromPen: true, toPen: true, student: { select: { user: { select: { penNumber: true } } } } } });

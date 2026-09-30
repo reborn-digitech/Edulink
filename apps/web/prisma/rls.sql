@@ -1511,6 +1511,25 @@ CREATE POLICY "PenChangeRequest_tenant_isolation" ON "PenChangeRequest"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- GigBooking
+ALTER TABLE "GigBooking" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "GigBooking" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "GigBooking_tenant_isolation" ON "GigBooking";
+DROP POLICY IF EXISTS "GigBooking_readable" ON "GigBooking";
+CREATE POLICY "GigBooking_tenant_isolation" ON "GigBooking"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "GigBooking_readable" ON "GigBooking"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "providerUserId" = current_setting('app.user_id', true)
+        );
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
@@ -1577,6 +1596,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   GigPayee
 --   GigPayment
 --   GigSettings
+--   GigSlot
 --   Guardianship
 --   JobRun
 --   OutboundEmail

@@ -84,9 +84,16 @@ function operator(ctx: ActiveContext): void {
 /* The dials                                                                   */
 /* -------------------------------------------------------------------------- */
 
-export type GigSettingsView = { questionRatePaise: number; questionFreeCount: number; questionMonthlyCap: number; questionMonthlyBudgetPaise: number; questionDailyLimit: number; questionPendingLimit: number };
+export type GigSettingsView = {
+  questionRatePaise: number; questionFreeCount: number; questionMonthlyCap: number; questionMonthlyBudgetPaise: number; questionDailyLimit: number; questionPendingLimit: number;
+  /** Sessions (src/lib/gig-sessions.ts): a pupil's free allowance in a school year, what a provider owes free, and the cancelling window. */
+  pupilFreeOneToOnes: number; pupilFreeWorkshops: number; expertStartOneToOnes: number; expertStartWorkshops: number; expertMonthlyOneToOnes: number; expertQuarterlyWorkshops: number; teacherMonthlyGuidance: number; freeCancelHours: number; workshopMaxSeats: number;
+};
 
-const SETTINGS_SELECT = { questionRatePaise: true, questionFreeCount: true, questionMonthlyCap: true, questionMonthlyBudgetPaise: true, questionDailyLimit: true, questionPendingLimit: true } as const;
+const SETTINGS_SELECT = {
+  questionRatePaise: true, questionFreeCount: true, questionMonthlyCap: true, questionMonthlyBudgetPaise: true, questionDailyLimit: true, questionPendingLimit: true,
+  pupilFreeOneToOnes: true, pupilFreeWorkshops: true, expertStartOneToOnes: true, expertStartWorkshops: true, expertMonthlyOneToOnes: true, expertQuarterlyWorkshops: true, teacherMonthlyGuidance: true, freeCancelHours: true, workshopMaxSeats: true,
+} as const;
 
 /** The one row, made with the schema's defaults the first time anybody asks. */
 export async function gigSettings(): Promise<GigSettingsView> {
@@ -100,6 +107,15 @@ const SETTING_BOUNDS: Record<keyof GigSettingsView, [number, number]> = {
   questionMonthlyBudgetPaise: [0, 1_000_000_000],
   questionDailyLimit: [1, 200],
   questionPendingLimit: [1, 500],
+  pupilFreeOneToOnes: [0, 50],
+  pupilFreeWorkshops: [0, 50],
+  expertStartOneToOnes: [0, 200],
+  expertStartWorkshops: [0, 50],
+  expertMonthlyOneToOnes: [0, 100],
+  expertQuarterlyWorkshops: [0, 50],
+  teacherMonthlyGuidance: [0, 100],
+  freeCancelHours: [0, 168],
+  workshopMaxSeats: [2, 500],
 };
 
 export async function saveGigSettings(ctx: ActiveContext, input: GigSettingsView): Promise<GigResult<{ settings: GigSettingsView }>> {

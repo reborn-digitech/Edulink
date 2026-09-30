@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
 import { gigOverview } from "@/lib/gig-questions";
+import { sessionCounts } from "@/lib/gig-sessions";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -26,7 +27,7 @@ export default async function RootGigsPage() {
   const t = await getT();
   const locale = await getLocale();
   const money = (paise: number) => formatPaise(paise, locale);
-  const o = await gigOverview(session);
+  const [o, sessions] = await Promise.all([gigOverview(session), sessionCounts(session)]);
   const s = o.settings;
 
   return (
@@ -68,7 +69,37 @@ export default async function RootGigsPage() {
       <Card>
         <CardHeader title={t("gigs.dialsTitle")} />
         <CardBody>
-          <SettingsForm initial={{ rateRupees: s.questionRatePaise / 100, freeCount: s.questionFreeCount, monthlyCap: s.questionMonthlyCap, budgetRupees: s.questionMonthlyBudgetPaise / 100, dailyLimit: s.questionDailyLimit, pendingLimit: s.questionPendingLimit }} />
+          <SettingsForm
+            testId="gig-settings"
+            dials={[
+              { key: "questionRatePaise", label: t("gigs.setRate"), value: s.questionRatePaise, rupees: true },
+              { key: "questionFreeCount", label: t("gigs.setFree"), value: s.questionFreeCount },
+              { key: "questionMonthlyCap", label: t("gigs.setCap"), value: s.questionMonthlyCap },
+              { key: "questionMonthlyBudgetPaise", label: t("gigs.setBudget"), value: s.questionMonthlyBudgetPaise, rupees: true },
+              { key: "questionDailyLimit", label: t("gigs.setDaily"), value: s.questionDailyLimit },
+              { key: "questionPendingLimit", label: t("gigs.setPending"), value: s.questionPendingLimit },
+            ]}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader title={t("gigs.sessionsDials")} description={t("gigs.sessionsLine", { slots: sessions.upcomingSlots, taken: sessions.seatsTaken, seats: sessions.upcomingSeats })} />
+        <CardBody>
+          <SettingsForm
+            testId="gig-session-settings"
+            dials={[
+              { key: "pupilFreeOneToOnes", label: t("gigs.setPupilOne"), value: s.pupilFreeOneToOnes },
+              { key: "pupilFreeWorkshops", label: t("gigs.setPupilWork"), value: s.pupilFreeWorkshops },
+              { key: "expertStartOneToOnes", label: t("gigs.setExpertStartOne"), value: s.expertStartOneToOnes },
+              { key: "expertStartWorkshops", label: t("gigs.setExpertStartWork"), value: s.expertStartWorkshops },
+              { key: "expertMonthlyOneToOnes", label: t("gigs.setExpertMonthly"), value: s.expertMonthlyOneToOnes },
+              { key: "expertQuarterlyWorkshops", label: t("gigs.setExpertQuarterly"), value: s.expertQuarterlyWorkshops },
+              { key: "teacherMonthlyGuidance", label: t("gigs.setTeacherMonthly"), value: s.teacherMonthlyGuidance },
+              { key: "freeCancelHours", label: t("gigs.setCancelHours"), value: s.freeCancelHours },
+              { key: "workshopMaxSeats", label: t("gigs.setMaxSeats"), value: s.workshopMaxSeats },
+            ]}
+          />
         </CardBody>
       </Card>
 

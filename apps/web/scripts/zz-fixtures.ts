@@ -680,6 +680,51 @@ export async function buildGigQuestions(school: { id: string; name: string }) {
   return { waiting: waiting.id, topic: topic.name };
 }
 
+/**
+ * Sessions and workshops (gigs, decision 0004). Northgate's teachers may offer guidance; the first ZZ
+ * expert offers a one-to-one that pupil 01 has a confirmed seat in (booked by their parent), a workshop
+ * with pupil 02 in it, an open one-to-one, and one last week that pupil 01's family said was not held;
+ * the lead of Grade 3 offers an open half hour. At the second school a teacher offers one that a pupil
+ * of theirs has a seat in, so that the cross-school probe has a booking to be refused. Rebuilt each run.
+ */
+export async function buildGigSessions(northgate: { id: string }, southbank: { id: string }) {
+  const expert = await db.user.findUnique({ where: { email: `zz.expert1@${DOMAIN}` }, select: { id: true, expertProfile: { select: { publishedAt: true } } } });
+  const lead = await db.classTeacher.findFirst({ where: { schoolId: northgate.id, role: "LEAD", class: { gradeLevel: "3", archivedAt: null } }, select: { teacher: { select: { userId: true } } } });
+  const otherTeacher = await db.membership.findFirst({ where: { schoolId: southbank.id, role: "TEACHER", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { userId: true } });
+  await db.school.updateMany({ where: { id: { in: [northgate.id, southbank.id] } }, data: { teacherGuidanceOn: true } });
+  const providers = [expert?.id, lead?.teacher.userId, otherTeacher?.userId].filter((id): id is string => Boolean(id));
+  await db.gigSlot.deleteMany({ where: { providerUserId: { in: providers }, title: { startsWith: "ZZ " } } });
+  if (!expert?.expertProfile?.publishedAt) return { confirmed: null };
+  const pupil = async (email: string) => db.membership.findFirst({ where: { schoolId: northgate.id, role: "STUDENT", status: "ACTIVE", user: { email } }, select: { id: true, guardianships: { where: { status: "ACTIVE" }, take: 1, select: { parentUserId: true } } } });
+  const [p1, p2] = [await pupil(`zz.pupil01@${DOMAIN}`), await pupil(`zz.pupil02@${DOMAIN}`)];
+  const year = async (schoolId: string) => (await db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { id: true } }))?.id ?? null;
+  // Whole hours from now, so a rebuild never leaves a slot in the past that should be ahead.
+  const at = (days: number, hour = 10) => { const d = new Date(Date.now() + days * 86_400_000); d.setUTCHours(hour, 0, 0, 0); return d; };
+  const slot = (providerUserId: string, providerKind: string, teacherSchoolId: string | null, kind: string, title: string, startsAt: Date, minutes: number, seats: number, seatsTaken: number) =>
+    db.gigSlot.create({ data: { providerUserId, providerKind, teacherSchoolId, kind, title, startsAt, endsAt: new Date(startsAt.getTime() + minutes * 60_000), meetingUrl: `https://meet.zz.test/${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`, seats, seatsTaken }, select: { id: true } });
+  const seat = (schoolId: string, slotId: string, studentMembershipId: string, providerUserId: string, kind: string, status: string, bookedByUserId: string, academicYearId: string | null, purpose: string) =>
+    db.gigBooking.create({ data: { schoolId, slotId, studentMembershipId, providerUserId, kind, status, bookedByUserId, purpose, academicYearId, consentAt: new Date(), consentUserId: bookedByUserId, closedAt: status === "UNHELD" ? new Date() : null }, select: { id: true } });
+  const yearN = await year(northgate.id);
+  let confirmed: string | null = null;
+  if (p1) {
+    const by = p1.guardianships[0]?.parentUserId ?? expert.id;
+    const a = await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Ask an engineer about her work", at(7), 30, 1, 1);
+    confirmed = (await seat(northgate.id, a.id, p1.id, expert.id, "ONE_TO_ONE", "CONFIRMED", by, yearN, "ZZ How does somebody become an engineer?")).id;
+    const d = await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Olympiad maths, one to one", at(-3), 30, 1, 1);
+    await seat(northgate.id, d.id, p1.id, expert.id, "ONE_TO_ONE", "UNHELD", by, yearN, "ZZ Help with last year's paper.");
+  }
+  const b = await slot(expert.id, "EXPERT", null, "WORKSHOP", "ZZ Bridges: build one from paper", at(10), 60, 20, p2 ? 1 : 0);
+  if (p2) await seat(northgate.id, b.id, p2.id, expert.id, "WORKSHOP", "CONFIRMED", p2.guardianships[0]?.parentUserId ?? expert.id, yearN, "ZZ She builds things from card at home.");
+  await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Careers in applied science", at(14), 30, 1, 0);
+  if (lead) await slot(lead.teacher.userId, "TEACHER", northgate.id, "ONE_TO_ONE", "ZZ Reading aloud, a half hour", at(5, 9), 30, 1, 0);
+  const southPupil = await db.membership.findFirst({ where: { schoolId: southbank.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { id: true, userId: true } });
+  if (otherTeacher && southPupil) {
+    const f = await slot(otherTeacher.userId, "TEACHER", southbank.id, "ONE_TO_ONE", "ZZ Fractions before the unit test", at(6, 9), 30, 1, 1);
+    await seat(southbank.id, f.id, southPupil.id, otherTeacher.userId, "ONE_TO_ONE", "CONFIRMED", southPupil.userId, await year(southbank.id), "ZZ Fractions with unlike denominators.");
+  }
+  return { confirmed };
+}
+
 export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
   const ids = waitingIds(opts.tag ?? "");
   const joiner = await upsertUser(ctx, `zz.joiner01@${DOMAIN}`, "ZZ Ira Gokhale", { birthdate: new Date("2017-08-14T00:00:00Z"), isMinor: true });
@@ -2314,6 +2359,8 @@ async function main() {
   const banyan = await buildBanyan(ctx, southbank.school.id);
   await buildRollNumbers(banyan.school);
   const experts = await buildExperts(ctx);
+  const sessions = await buildGigSessions(northgate.school, southbank.school);
+  console.log(`  Sessions: ${sessions.confirmed ? `pupil 01's confirmed seat ${sessions.confirmed}, one not held, a workshop with pupil 02, two open times, a teacher's half hour; one at Southbank` : "none (no published ZZ expert)"}`);
   const operator = await buildOperator(ctx);
   const contentTeam = await buildContentTeam(ctx);
 

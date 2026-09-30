@@ -75803,6 +75803,33 @@
                         },
                         "questionPendingLimit": {
                           "type": "integer"
+                        },
+                        "pupilFreeOneToOnes": {
+                          "type": "integer"
+                        },
+                        "pupilFreeWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertStartOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertStartWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertMonthlyOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertQuarterlyWorkshops": {
+                          "type": "integer"
+                        },
+                        "teacherMonthlyGuidance": {
+                          "type": "integer"
+                        },
+                        "freeCancelHours": {
+                          "type": "integer"
+                        },
+                        "workshopMaxSeats": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -75811,7 +75838,16 @@
                         "questionMonthlyCap",
                         "questionMonthlyBudgetPaise",
                         "questionDailyLimit",
-                        "questionPendingLimit"
+                        "questionPendingLimit",
+                        "pupilFreeOneToOnes",
+                        "pupilFreeWorkshops",
+                        "expertStartOneToOnes",
+                        "expertStartWorkshops",
+                        "expertMonthlyOneToOnes",
+                        "expertQuarterlyWorkshops",
+                        "teacherMonthlyGuidance",
+                        "freeCancelHours",
+                        "workshopMaxSeats"
                       ],
                       "additionalProperties": false
                     },
@@ -77504,6 +77540,1676 @@
         }
       }
     },
+    "/api/v1/gigs/sessions": {
+      "get": {
+        "summary": "For a pupil, or each of a guardian's children: the free allowance of the school year, their seats (the meeting link only while one is confirmed), and the times open to book",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "children": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "timeZone": {
+                            "type": "string"
+                          },
+                          "allowance": {
+                            "type": "object",
+                            "properties": {
+                              "ONE_TO_ONE": {
+                                "type": "object",
+                                "properties": {
+                                  "allowed": {
+                                    "type": "integer"
+                                  },
+                                  "used": {
+                                    "type": "integer"
+                                  },
+                                  "left": {
+                                    "type": "integer"
+                                  }
+                                },
+                                "required": [
+                                  "allowed",
+                                  "used",
+                                  "left"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "WORKSHOP": {
+                                "$ref": "#/properties/children/items/properties/allowance/properties/ONE_TO_ONE"
+                              }
+                            },
+                            "required": [
+                              "ONE_TO_ONE",
+                              "WORKSHOP"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "bookings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/children/items/properties/id"
+                                },
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ONE_TO_ONE",
+                                    "WORKSHOP"
+                                  ]
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "startsAt": {
+                                  "type": "string"
+                                },
+                                "endsAt": {
+                                  "type": "string"
+                                },
+                                "providerName": {
+                                  "type": "string"
+                                },
+                                "providerKind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "EXPERT",
+                                    "TEACHER"
+                                  ]
+                                },
+                                "purpose": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "PENDING_CONSENT",
+                                    "CONFIRMED",
+                                    "CANCELLED",
+                                    "DELIVERED",
+                                    "MISSED",
+                                    "UNHELD"
+                                  ]
+                                },
+                                "meetingUrl": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "lateCancel": {
+                                  "type": "boolean"
+                                },
+                                "rating": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "canConsent": {
+                                  "type": "boolean"
+                                },
+                                "canCancel": {
+                                  "type": "boolean"
+                                },
+                                "canRate": {
+                                  "type": "boolean"
+                                },
+                                "canReportUnheld": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "kind",
+                                "title",
+                                "startsAt",
+                                "endsAt",
+                                "providerName",
+                                "providerKind",
+                                "purpose",
+                                "status",
+                                "meetingUrl",
+                                "lateCancel",
+                                "rating",
+                                "canConsent",
+                                "canCancel",
+                                "canRate",
+                                "canReportUnheld"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "open": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/children/items/properties/id"
+                                },
+                                "kind": {
+                                  "$ref": "#/properties/children/items/properties/bookings/items/properties/kind"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "startsAt": {
+                                  "type": "string"
+                                },
+                                "endsAt": {
+                                  "type": "string"
+                                },
+                                "seatsLeft": {
+                                  "type": "integer"
+                                },
+                                "providerName": {
+                                  "type": "string"
+                                },
+                                "providerKind": {
+                                  "$ref": "#/properties/children/items/properties/bookings/items/properties/providerKind"
+                                },
+                                "providerHeadline": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "kind",
+                                "title",
+                                "startsAt",
+                                "endsAt",
+                                "seatsLeft",
+                                "providerName",
+                                "providerKind",
+                                "providerHeadline"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "schoolName",
+                          "timeZone",
+                          "allowance",
+                          "bookings",
+                          "open"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "children"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/sessions/book": {
+      "post": {
+        "summary": "A pupil asks for a seat, which waits for a guardian, or a guardian takes one for their child; refused past the free allowance or when the last seat has gone",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "bookingId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "bookingId",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "slotId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "studentMembershipId": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/slotId"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "purpose": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "slotId",
+                  "purpose"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/sessions/{bookingId}/consent": {
+      "post": {
+        "summary": "A guardian agrees to their child's ask, or declines it and the seat is given back",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approve": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "approve"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/sessions/{bookingId}/cancel": {
+      "post": {
+        "summary": "A seat is given up by the pupil or a guardian, or cancelled with a reason by the provider or the pupil's school; given up late by the family it still counts against the allowance",
+        "description": "Roles: STUDENT, PARENT, ADMIN, PRINCIPAL, TEACHER, EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT",
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER",
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD"
+                      ]
+                    },
+                    "lateCancel": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "lateCancel"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/sessions/{bookingId}/unheld": {
+      "post": {
+        "summary": "After it should have ended, the family says the provider did not hold it; it stops counting against the pupil",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/sessions/{bookingId}/rate": {
+      "post": {
+        "summary": "The family rates a session out of five, once, after it was held",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "rating": {
+                    "type": "integer"
+                  },
+                  "feedback": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "rating"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/slots": {
+      "get": {
+        "summary": "A provider's offered times, who has a seat in each, and what they have given free against what is asked; a teacher whose school has not switched guidance on is told so",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "EXPERT",
+                        "TEACHER"
+                      ]
+                    },
+                    "timeZone": {
+                      "type": "string"
+                    },
+                    "duty": {
+                      "type": "object",
+                      "properties": {
+                        "deliveredOneToOnes": {
+                          "type": "integer"
+                        },
+                        "heldWorkshops": {
+                          "type": "integer"
+                        },
+                        "oneToOnesThisMonth": {
+                          "type": "integer"
+                        },
+                        "workshopsThisQuarter": {
+                          "type": "integer"
+                        },
+                        "startOneToOnes": {
+                          "type": "integer"
+                        },
+                        "startWorkshops": {
+                          "type": "integer"
+                        },
+                        "monthlyOneToOnes": {
+                          "type": "integer"
+                        },
+                        "quarterlyWorkshops": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "deliveredOneToOnes",
+                        "heldWorkshops",
+                        "oneToOnesThisMonth",
+                        "workshopsThisQuarter",
+                        "startOneToOnes",
+                        "startWorkshops",
+                        "monthlyOneToOnes",
+                        "quarterlyWorkshops"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "slots": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "ONE_TO_ONE",
+                              "WORKSHOP"
+                            ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "startsAt": {
+                            "type": "string"
+                          },
+                          "endsAt": {
+                            "type": "string"
+                          },
+                          "meetingUrl": {
+                            "type": "string"
+                          },
+                          "seats": {
+                            "type": "integer"
+                          },
+                          "seatsTaken": {
+                            "type": "integer"
+                          },
+                          "cancelled": {
+                            "type": "boolean"
+                          },
+                          "started": {
+                            "type": "boolean"
+                          },
+                          "bookings": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/slots/items/properties/id"
+                                },
+                                "pupilName": {
+                                  "type": "string"
+                                },
+                                "schoolName": {
+                                  "type": "string"
+                                },
+                                "purpose": {
+                                  "type": "string"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "PENDING_CONSENT",
+                                    "CONFIRMED",
+                                    "CANCELLED",
+                                    "DELIVERED",
+                                    "MISSED",
+                                    "UNHELD"
+                                  ]
+                                },
+                                "rating": {
+                                  "type": "integer",
+                                  "nullable": true
+                                },
+                                "feedback": {
+                                  "type": "string",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "pupilName",
+                                "schoolName",
+                                "purpose",
+                                "status",
+                                "rating",
+                                "feedback"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "title",
+                          "startsAt",
+                          "endsAt",
+                          "meetingUrl",
+                          "seats",
+                          "seatsTaken",
+                          "cancelled",
+                          "started",
+                          "bookings"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "enabled",
+                    "kind",
+                    "timeZone",
+                    "duty",
+                    "slots"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Offer a time: a one-to-one of thirty minutes, or (an expert) a workshop with its length and seats, on the provider's own https meeting link",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "slotId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "slotId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "ONE_TO_ONE",
+                      "WORKSHOP"
+                    ]
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "startsAt": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "minutes": {
+                    "type": "integer"
+                  },
+                  "meetingUrl": {
+                    "type": "string",
+                    "maxLength": 600
+                  },
+                  "seats": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "title",
+                  "startsAt",
+                  "meetingUrl"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/slots/{slotId}/cancel": {
+      "post": {
+        "summary": "The provider takes a time back with a reason; every seat in it is cancelled, none counted against a pupil, and each family is told",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "slotId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/sessions/{bookingId}/close": {
+      "post": {
+        "summary": "After it has begun, the provider says how a seat went: held, or the pupil did not come",
+        "description": "Roles: EXPERT, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT",
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "outcome": {
+                    "type": "string",
+                    "enum": [
+                      "DELIVERED",
+                      "MISSED"
+                    ]
+                  }
+                },
+                "required": [
+                  "outcome"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/school": {
+      "get": {
+        "summary": "The office reads every session of its pupils, without the meeting link, and whether its teachers may offer guidance",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "guidanceOn": {
+                      "type": "boolean"
+                    },
+                    "canSwitch": {
+                      "type": "boolean"
+                    },
+                    "timeZone": {
+                      "type": "string"
+                    },
+                    "bookings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "pupilName": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "ONE_TO_ONE",
+                              "WORKSHOP"
+                            ]
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "startsAt": {
+                            "type": "string"
+                          },
+                          "providerName": {
+                            "type": "string"
+                          },
+                          "providerKind": {
+                            "type": "string",
+                            "enum": [
+                              "EXPERT",
+                              "TEACHER"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING_CONSENT",
+                              "CONFIRMED",
+                              "CANCELLED",
+                              "DELIVERED",
+                              "MISSED",
+                              "UNHELD"
+                            ]
+                          },
+                          "purpose": {
+                            "type": "string"
+                          },
+                          "canCancel": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "pupilName",
+                          "kind",
+                          "title",
+                          "startsAt",
+                          "providerName",
+                          "providerKind",
+                          "status",
+                          "purpose",
+                          "canCancel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "guidanceOn",
+                    "canSwitch",
+                    "timeZone",
+                    "bookings"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/school/guidance": {
+      "post": {
+        "summary": "The school lets its teachers offer free one-to-one guidance to its own pupils, or stops; stopping cancels nothing already booked",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "guidanceOn": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "guidanceOn"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "on": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "on"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/appadmin/contributions": {
       "get": {
         "summary": "Teachers' questions waiting to be read, or those decided, by status",
@@ -78385,6 +80091,33 @@
                         },
                         "questionPendingLimit": {
                           "type": "integer"
+                        },
+                        "pupilFreeOneToOnes": {
+                          "type": "integer"
+                        },
+                        "pupilFreeWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertStartOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertStartWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertMonthlyOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertQuarterlyWorkshops": {
+                          "type": "integer"
+                        },
+                        "teacherMonthlyGuidance": {
+                          "type": "integer"
+                        },
+                        "freeCancelHours": {
+                          "type": "integer"
+                        },
+                        "workshopMaxSeats": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -78393,7 +80126,16 @@
                         "questionMonthlyCap",
                         "questionMonthlyBudgetPaise",
                         "questionDailyLimit",
-                        "questionPendingLimit"
+                        "questionPendingLimit",
+                        "pupilFreeOneToOnes",
+                        "pupilFreeWorkshops",
+                        "expertStartOneToOnes",
+                        "expertStartWorkshops",
+                        "expertMonthlyOneToOnes",
+                        "expertQuarterlyWorkshops",
+                        "teacherMonthlyGuidance",
+                        "freeCancelHours",
+                        "workshopMaxSeats"
                       ],
                       "additionalProperties": false
                     },
@@ -78464,6 +80206,26 @@
                     "accruingPaise": {
                       "type": "integer"
                     },
+                    "sessions": {
+                      "type": "object",
+                      "properties": {
+                        "upcomingSlots": {
+                          "type": "integer"
+                        },
+                        "upcomingSeats": {
+                          "type": "integer"
+                        },
+                        "seatsTaken": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "upcomingSlots",
+                        "upcomingSeats",
+                        "seatsTaken"
+                      ],
+                      "additionalProperties": false
+                    },
                     "payments": {
                       "type": "array",
                       "items": {
@@ -78521,6 +80283,7 @@
                     "waiting",
                     "due",
                     "accruingPaise",
+                    "sessions",
                     "payments"
                   ],
                   "additionalProperties": false
@@ -78609,6 +80372,33 @@
                         },
                         "questionPendingLimit": {
                           "type": "integer"
+                        },
+                        "pupilFreeOneToOnes": {
+                          "type": "integer"
+                        },
+                        "pupilFreeWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertStartOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertStartWorkshops": {
+                          "type": "integer"
+                        },
+                        "expertMonthlyOneToOnes": {
+                          "type": "integer"
+                        },
+                        "expertQuarterlyWorkshops": {
+                          "type": "integer"
+                        },
+                        "teacherMonthlyGuidance": {
+                          "type": "integer"
+                        },
+                        "freeCancelHours": {
+                          "type": "integer"
+                        },
+                        "workshopMaxSeats": {
+                          "type": "integer"
                         }
                       },
                       "required": [
@@ -78617,7 +80407,16 @@
                         "questionMonthlyCap",
                         "questionMonthlyBudgetPaise",
                         "questionDailyLimit",
-                        "questionPendingLimit"
+                        "questionPendingLimit",
+                        "pupilFreeOneToOnes",
+                        "pupilFreeWorkshops",
+                        "expertStartOneToOnes",
+                        "expertStartWorkshops",
+                        "expertMonthlyOneToOnes",
+                        "expertQuarterlyWorkshops",
+                        "teacherMonthlyGuidance",
+                        "freeCancelHours",
+                        "workshopMaxSeats"
                       ],
                       "additionalProperties": false
                     }
@@ -78695,6 +80494,33 @@
                   },
                   "questionPendingLimit": {
                     "type": "integer"
+                  },
+                  "pupilFreeOneToOnes": {
+                    "type": "integer"
+                  },
+                  "pupilFreeWorkshops": {
+                    "type": "integer"
+                  },
+                  "expertStartOneToOnes": {
+                    "type": "integer"
+                  },
+                  "expertStartWorkshops": {
+                    "type": "integer"
+                  },
+                  "expertMonthlyOneToOnes": {
+                    "type": "integer"
+                  },
+                  "expertQuarterlyWorkshops": {
+                    "type": "integer"
+                  },
+                  "teacherMonthlyGuidance": {
+                    "type": "integer"
+                  },
+                  "freeCancelHours": {
+                    "type": "integer"
+                  },
+                  "workshopMaxSeats": {
+                    "type": "integer"
                   }
                 },
                 "required": [
@@ -78703,7 +80529,16 @@
                   "questionMonthlyCap",
                   "questionMonthlyBudgetPaise",
                   "questionDailyLimit",
-                  "questionPendingLimit"
+                  "questionPendingLimit",
+                  "pupilFreeOneToOnes",
+                  "pupilFreeWorkshops",
+                  "expertStartOneToOnes",
+                  "expertStartWorkshops",
+                  "expertMonthlyOneToOnes",
+                  "expertQuarterlyWorkshops",
+                  "teacherMonthlyGuidance",
+                  "freeCancelHours",
+                  "workshopMaxSeats"
                 ],
                 "additionalProperties": false
               }

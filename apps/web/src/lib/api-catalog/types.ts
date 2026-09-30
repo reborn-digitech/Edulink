@@ -127,6 +127,10 @@ export type SweepFixture = {
   /** A teacher's question for the bank that waits for the content team, and one its author took back (zz-fixtures.ts `buildGigQuestions`). */
   gigContributionId: string | null;
   gigWithdrawnContributionId: string | null;
+  /** Sessions (zz-fixtures.ts `buildGigSessions`): the sweep's pupil's confirmed seat, one their family said was not held, and the slot of the first. */
+  gigBookingId: string | null;
+  gigUnheldBookingId: string | null;
+  gigSlotId: string | null;
   /** A signed line on a certificate of a pupil who is NOT the sweep's pupil, for the cross-person probe. */
   otherPupilSignatureId: string | null;
   signaturePng: string | null;

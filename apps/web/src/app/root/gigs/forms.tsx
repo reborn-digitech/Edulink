@@ -8,24 +8,16 @@ import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
 import { recordGigPaymentAction, saveGigSettingsAction } from "./actions";
 
-type Dials = { rateRupees: number; freeCount: number; monthlyCap: number; budgetRupees: number; dailyLimit: number; pendingLimit: number };
+export type Dial = { key: string; label: string; value: number; /** Shown in rupees, kept in paise. */ rupees?: boolean };
 
-/** The six numbers the operator holds: the rate, the unpaid first ones, a teacher's month, the budget and the sending limits. */
-export function SettingsForm({ initial }: { initial: Dials }) {
+/** A group of the operator's dials, whole numbers, saved together; the dials of the other groups are left as they are. */
+export function SettingsForm({ dials, testId }: { dials: Dial[]; testId: string }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [dials, setDials] = useState<Record<keyof Dials, string>>(() => Object.fromEntries(Object.entries(initial).map(([k, v]) => [k, String(v)])) as Record<keyof Dials, string>);
+  const [values, setValues] = useState<Record<string, string>>(() => Object.fromEntries(dials.map((d) => [d.key, String(d.rupees ? d.value / 100 : d.value)])));
   const [error, setError] = useState<string | null>(null);
-  const fields: [keyof Dials, string][] = [
-    ["rateRupees", t("gigs.setRate")],
-    ["freeCount", t("gigs.setFree")],
-    ["monthlyCap", t("gigs.setCap")],
-    ["budgetRupees", t("gigs.setBudget")],
-    ["dailyLimit", t("gigs.setDaily")],
-    ["pendingLimit", t("gigs.setPending")],
-  ];
 
   return (
     <form
@@ -33,17 +25,21 @@ export function SettingsForm({ initial }: { initial: Dials }) {
       onSubmit={(event) => {
         event.preventDefault();
         setError(null);
-        const numbers = Object.fromEntries(Object.entries(dials).map(([k, v]) => [k, Number(v)])) as Dials;
-        if (Object.values(numbers).some((n) => !Number.isFinite(n))) return setError(t("gigs.refuseSetting"));
+        const patch: Record<string, number> = {};
+        for (const d of dials) {
+          const n = Number(values[d.key]);
+          if (values[d.key]!.trim() === "" || !Number.isFinite(n)) return setError(t("gigs.refuseSetting"));
+          patch[d.key] = d.rupees ? Math.round(n * 100) : n;
+        }
         startTransition(async () => {
-          const result = await saveGigSettingsAction(numbers);
+          const result = await saveGigSettingsAction(patch);
           if (!result.ok) return setError(result.error);
           toast({ tone: "ok", title: result.message });
           router.refresh();
         });
       }}
       className="space-y-4"
-      data-testid="gig-settings"
+      data-testid={testId}
     >
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
@@ -51,8 +47,8 @@ export function SettingsForm({ initial }: { initial: Dials }) {
         </p>
       )}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-typing="en">
-        {fields.map(([key, label]) => (
-          <TextField key={key} label={label} inputMode="numeric" autoComplete="off" value={dials[key]} onChange={(e) => setDials((d) => ({ ...d, [key]: e.target.value }))} data-testid={`gig-set-${key}`} />
+        {dials.map((d) => (
+          <TextField key={d.key} label={d.label} inputMode="numeric" autoComplete="off" value={values[d.key] ?? ""} onChange={(e) => setValues((v) => ({ ...v, [d.key]: e.target.value }))} data-testid={`gig-set-${d.key}`} />
         ))}
       </div>
       <Button type="submit" disabled={pending}>

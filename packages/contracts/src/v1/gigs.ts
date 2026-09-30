@@ -44,6 +44,15 @@ export const gigSettingsSchema = z.object({
   questionMonthlyBudgetPaise: z.number().int(),
   questionDailyLimit: z.number().int(),
   questionPendingLimit: z.number().int(),
+  pupilFreeOneToOnes: z.number().int(),
+  pupilFreeWorkshops: z.number().int(),
+  expertStartOneToOnes: z.number().int(),
+  expertStartWorkshops: z.number().int(),
+  expertMonthlyOneToOnes: z.number().int(),
+  expertQuarterlyWorkshops: z.number().int(),
+  teacherMonthlyGuidance: z.number().int(),
+  freeCancelHours: z.number().int(),
+  workshopMaxSeats: z.number().int(),
 });
 export type GigSettings = z.infer<typeof gigSettingsSchema>;
 
@@ -149,6 +158,8 @@ export const gigOverviewSchema = z.object({
   waiting: z.number().int(),
   due: z.array(z.object({ userId: id, name: z.string(), email: z.string().nullable(), schoolName: z.string(), upiId: z.string().nullable(), payeeName: z.string().nullable(), questions: z.number().int(), amountPaise: z.number().int(), throughMonth: z.string() })),
   accruingPaise: z.number().int(),
+  /** What is on offer across every school: slots ahead and their seats. */
+  sessions: z.object({ upcomingSlots: z.number().int(), upcomingSeats: z.number().int(), seatsTaken: z.number().int() }),
   payments: z.array(z.object({ id, userId: id, name: z.string(), amountPaise: z.number().int(), upiId: z.string(), utr: z.string(), note: z.string().nullable(), paidAt: z.string(), questions: z.number().int() })),
 });
 export type GigOverview = z.infer<typeof gigOverviewSchema>;
@@ -159,3 +170,109 @@ export const gigSettingsSavedSchema = z.object({ settings: gigSettingsSchema });
 /** POST /api/v1/operator/gigs/payments — the reference of a transfer already made to a contributor; the amount is the server's sum of what they are owed. */
 export const gigPaymentBodySchema = z.object({ userId: id, utr: z.string().max(40), note: z.string().max(300).optional() });
 export const gigPaymentSchema = z.object({ payment: z.object({ id, amountPaise: z.number().int(), questions: z.number().int() }) });
+
+/* ---------------------------------------------------------------------- */
+/* Sessions and workshops                                                  */
+/* ---------------------------------------------------------------------- */
+
+export const gigSessionKindSchema = z.enum(["ONE_TO_ONE", "WORKSHOP"]);
+export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"]);
+export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER"]);
+const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.number().int(), left: z.number().int() });
+
+/** GET /api/v1/gigs/sessions — for a pupil, or for each of a guardian's children: the free allowance, their seats, and what is open to book. */
+export const gigFamilySessionsSchema = z.object({
+  children: z.array(
+    z.object({
+      id,
+      name: z.string(),
+      schoolName: z.string(),
+      timeZone: z.string(),
+      allowance: z.object({ ONE_TO_ONE: gigAllowanceRowSchema, WORKSHOP: gigAllowanceRowSchema }),
+      bookings: z.array(
+        z.object({
+          id,
+          kind: gigSessionKindSchema,
+          title: z.string(),
+          startsAt: z.string(),
+          endsAt: z.string(),
+          providerName: z.string(),
+          providerKind: gigProviderKindSchema,
+          purpose: z.string(),
+          status: gigBookingStatusSchema,
+          /** The provider's own room: present only while the seat is confirmed. */
+          meetingUrl: z.string().nullable(),
+          lateCancel: z.boolean(),
+          rating: z.number().int().nullable(),
+          canConsent: z.boolean(),
+          canCancel: z.boolean(),
+          canRate: z.boolean(),
+          canReportUnheld: z.boolean(),
+        }),
+      ),
+      open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable() })),
+    }),
+  ),
+});
+export type GigFamilySessions = z.infer<typeof gigFamilySessionsSchema>;
+
+/** POST /api/v1/gigs/sessions/book — a pupil asks for a seat (it waits for a guardian), or a guardian takes one for their child. */
+export const gigBookBodySchema = z.object({ slotId: id, studentMembershipId: id.nullable().optional(), purpose: z.string().max(500) });
+export const gigBookedSchema = z.object({ bookingId: id, status: gigBookingStatusSchema });
+
+/** POST /api/v1/gigs/sessions/{bookingId}/consent — a guardian's yes or no to their child's ask. */
+export const gigConsentBodySchema = z.object({ approve: z.boolean() });
+export const gigBookingStatusSetSchema = z.object({ status: gigBookingStatusSchema });
+
+/** POST /api/v1/gigs/sessions/{bookingId}/cancel — a seat given up; the reason may be empty for the family and is needed from anybody else. */
+export const gigCancelBodySchema = z.object({ reason: z.string().max(300) });
+export const gigCancelledSchema = z.object({ status: gigBookingStatusSchema, lateCancel: z.boolean() });
+
+/** POST /api/v1/gigs/sessions/{bookingId}/rate — out of five, once, after it was held. */
+export const gigRateBodySchema = z.object({ rating: z.number().int(), feedback: z.string().max(500).optional() });
+
+/** POST /api/v1/gigs/sessions/{bookingId}/close — the provider says how a seat went. */
+export const gigCloseBodySchema = z.object({ outcome: z.enum(["DELIVERED", "MISSED"]) });
+
+/** GET /api/v1/gigs/slots — a provider's offered times, who has a seat in each, and what they have given free. */
+export const gigProviderSchema = z.object({
+  enabled: z.boolean(),
+  kind: gigProviderKindSchema,
+  timeZone: z.string(),
+  duty: z.object({ deliveredOneToOnes: z.number().int(), heldWorkshops: z.number().int(), oneToOnesThisMonth: z.number().int(), workshopsThisQuarter: z.number().int(), startOneToOnes: z.number().int(), startWorkshops: z.number().int(), monthlyOneToOnes: z.number().int(), quarterlyWorkshops: z.number().int() }).nullable(),
+  slots: z.array(
+    z.object({
+      id,
+      kind: gigSessionKindSchema,
+      title: z.string(),
+      startsAt: z.string(),
+      endsAt: z.string(),
+      meetingUrl: z.string(),
+      seats: z.number().int(),
+      seatsTaken: z.number().int(),
+      cancelled: z.boolean(),
+      started: z.boolean(),
+      bookings: z.array(z.object({ id, pupilName: z.string(), schoolName: z.string(), purpose: z.string(), status: gigBookingStatusSchema, rating: z.number().int().nullable(), feedback: z.string().nullable() })),
+    }),
+  ),
+});
+export type GigProvider = z.infer<typeof gigProviderSchema>;
+
+/** POST /api/v1/gigs/slots — offer a time: a one-to-one of thirty minutes, or a workshop with its length and seats. */
+export const gigSlotBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), startsAt: z.string().max(40), minutes: z.number().int().optional(), meetingUrl: z.string().max(600), seats: z.number().int().optional() });
+export const gigSlotMadeSchema = z.object({ slotId: id });
+
+/** POST /api/v1/gigs/slots/{slotId}/cancel — the provider takes a time back, with a reason every family is told. */
+export const gigSlotCancelBodySchema = z.object({ reason: z.string().max(300) });
+
+/** GET /api/v1/gigs/school — the office's view: every session of the school's pupils, and whether its teachers may offer guidance. */
+export const gigSchoolSessionsSchema = z.object({
+  guidanceOn: z.boolean(),
+  canSwitch: z.boolean(),
+  timeZone: z.string(),
+  bookings: z.array(z.object({ id, pupilName: z.string(), kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), providerName: z.string(), providerKind: gigProviderKindSchema, status: gigBookingStatusSchema, purpose: z.string(), canCancel: z.boolean() })),
+});
+
+/** POST /api/v1/gigs/school/guidance — the school lets its teachers offer free guidance to its own pupils, or stops. */
+export const gigGuidanceBodySchema = z.object({ on: z.boolean() });
+export const gigGuidanceSetSchema = z.object({ guidanceOn: z.boolean() });

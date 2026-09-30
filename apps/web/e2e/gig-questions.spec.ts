@@ -114,9 +114,11 @@ test("the content team's pages are the content team's: a teacher is sent away, a
   const desk = await asOperator.newPage();
   expect((await desk.goto("/root/gigs", { waitUntil: "networkidle" }))?.status()).toBe(200);
   const settings = await db.gigSettings.findUniqueOrThrow({ where: { id: "gigs" } });
-  await expect(desk.getByTestId("gig-set-rateRupees")).toHaveValue(String(settings.questionRatePaise / 100));
-  await expect(desk.getByTestId("gig-set-monthlyCap")).toHaveValue(String(settings.questionMonthlyCap));
+  await expect(desk.getByTestId("gig-set-questionRatePaise")).toHaveValue(String(settings.questionRatePaise / 100));
+  await expect(desk.getByTestId("gig-set-questionMonthlyCap")).toHaveValue(String(settings.questionMonthlyCap));
   await expect(desk.getByTestId("gig-month")).toContainText("waiting to be read");
+  // The sessions' dials are a group of their own, saved by themselves.
+  await expect(desk.getByTestId("gig-session-settings").getByTestId("gig-set-pupilFreeOneToOnes")).toHaveValue(String(settings.pupilFreeOneToOnes));
   expect(await seriousViolations(desk, "root gigs")).toEqual([]);
   await asOperator.close();
 });

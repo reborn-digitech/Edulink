@@ -67,6 +67,12 @@ const NO_SCHOOL_POLICY = new Set([
   "GigEarning",
   "GigPayment",
   "GigPayee",
+  // A time a provider offers. An expert's is open to every school's pupils,
+  // so it can be no one school's, exactly as ExpertSlot is not; a teacher's
+  // names its school in a column of its own and is held to it in
+  // src/lib/gig-sessions.ts. What a PUPIL did with a slot, GigBooking, is the
+  // pupil's school's row and is scoped normally.
+  "GigSlot",
 ]);
 
 /**
@@ -95,6 +101,12 @@ const SELF_READABLE: Record<string, string> = {
   // school through this table, so it has to be readable before any school is
   // known. Read-only, keyed on their own user id.
   MentorThread: "expertUserId",
+  // The same bootstrap a third time: an expert's sessions with pupils are
+  // bookings in those pupils' schools, and the expert has no school. Their
+  // own bookings, by their own user id, read-only. What they write to one
+  // (how it went, a cancellation) the server writes under the school's
+  // binding after the library has found the booking to be theirs.
+  GigBooking: "providerUserId",
   // A LEAVING CERTIFICATE OUTLIVES THE MEMBERSHIP IT DESCRIBES, which is the
   // whole difficulty. The moment a pupil leaves Riverside, Riverside drops out
   // of their tenant set — correctly — and a policy keyed only on `schoolId`

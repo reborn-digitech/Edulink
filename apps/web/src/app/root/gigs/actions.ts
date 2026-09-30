@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { formatPaise } from "@edulink/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
-import { recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
+import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -15,12 +15,11 @@ async function failure(error: unknown): Promise<{ ok: false; error: string }> {
   return { ok: false, error: t("common.tryAgainMoment") };
 }
 
-/** The operator's dials. Rupees on the form, paise in the row. */
-export async function saveGigSettingsAction(input: { rateRupees: number; freeCount: number; monthlyCap: number; budgetRupees: number; dailyLimit: number; pendingLimit: number }): Promise<Result> {
+/** The operator's dials, a group of them at a time: what is not sent stays as it is. Paise in the row, whatever the form showed. */
+export async function saveGigSettingsAction(patch: Partial<GigSettingsView>): Promise<Result> {
   try {
     const ctx = await requireApiOperator();
-    const settings: GigSettingsView = { questionRatePaise: Math.round(input.rateRupees * 100), questionFreeCount: input.freeCount, questionMonthlyCap: input.monthlyCap, questionMonthlyBudgetPaise: Math.round(input.budgetRupees * 100), questionDailyLimit: input.dailyLimit, questionPendingLimit: input.pendingLimit };
-    const result = await saveGigSettings(ctx, settings);
+    const result = await saveGigSettings(ctx, { ...(await gigSettings()), ...patch });
     const t = await getT();
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");

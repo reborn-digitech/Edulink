@@ -71,7 +71,7 @@ async function reportCardFixture(s: string): Promise<{ reportCardId: string | nu
 const SWEEP_PNG = `data:image/png;base64,${fixturePng(32, 16).toString("base64")}`;
 
 /** The ZZ certificates: an active template (and its body to send back), a retired one, an issued certificate, one still to revoke, and a printed code. */
-async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null; gigContributionId: string | null; gigWithdrawnContributionId: string | null }> {
+async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null; gigContributionId: string | null; gigWithdrawnContributionId: string | null; gigBookingId: string | null; gigUnheldBookingId: string | null; gigSlotId: string | null }> {
   const [active, retired, issued, revocable] = await Promise.all([
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: true, kind: "BONAFIDE" }, orderBy: { createdAt: "asc" } }),
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: false }, orderBy: { createdAt: "asc" }, select: { id: true } }),
@@ -99,10 +99,14 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
   // A teacher's questions for the bank (zz-fixtures.ts `buildGigQuestions`): the one that waits, and one its author took back.
   const gigs = await db.questionContribution.findMany({ where: { authorSchoolId: s, stem: { startsWith: "ZZ " }, status: { in: ["SUBMITTED", "WITHDRAWN"] } }, orderBy: { id: "asc" }, select: { id: true, status: true } });
   const gig = (status: string) => gigs.find((g) => g.status === status)?.id ?? null;
+  // Sessions (zz-fixtures.ts `buildGigSessions`): pupil 01's confirmed seat where the school has one, else the school's first; and the seat their family said was not held.
+  const gigSeats = await db.gigBooking.findMany({ where: { schoolId: s, slot: { title: { startsWith: "ZZ " } }, status: { in: ["CONFIRMED", "UNHELD"] } }, orderBy: { id: "asc" }, select: { id: true, slotId: true, status: true, student: { select: { user: { select: { email: true } } } } } });
+  const gigSeat = gigSeats.find((b) => b.status === "CONFIRMED" && b.student.user.email === "zz.pupil01@zz.test") ?? gigSeats.find((b) => b.status === "CONFIRMED") ?? null;
+  const gigUnheld = gigSeats.find((b) => b.status === "UNHELD") ?? null;
   const paperSignature = await db.paperSignature.findFirst({ where: { schoolId: s, status: { not: "PENDING" }, slot: { in: ["LEFT", "RIGHT"] } }, orderBy: { id: "asc" }, select: { id: true } });
   // A signed line on another pupil's certificate (zz-fixtures.ts `buildSignatures`): what the sweep's pupil and parent must be refused.
   const otherPupilSignature = await db.paperSignature.findFirst({ where: { schoolId: s, paperKind: "CERTIFICATE", status: "SIGNED", slot: "LEFT", paperId: { in: (await db.issuedCertificate.findMany({ where: { schoolId: s, student: { user: { email: { not: "zz.pupil01@zz.test" } } } }, select: { id: true } })).map((c) => c.id) } }, orderBy: { id: "asc" }, select: { id: true } });
-  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG, gigContributionId: gig("SUBMITTED"), gigWithdrawnContributionId: gig("WITHDRAWN") };
+  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG, gigContributionId: gig("SUBMITTED"), gigWithdrawnContributionId: gig("WITHDRAWN"), gigBookingId: gigSeat?.id ?? null, gigUnheldBookingId: gigUnheld?.id ?? null, gigSlotId: gigSeat?.slotId ?? null };
 }
 
 /** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
@@ -416,6 +420,18 @@ async function crossProbe(mode: "school" | "person") {
         tried.push(`${method} ${e.path} as TEACHER${send ? " (valid body)" : ""}`);
       }
     } else skipped.push("/api/v1/gigs/questions/{contributionId} (no other teacher's question in the fixtures)");
+    // Another pupil's seat in a session (zz-fixtures.ts `buildGigSessions`, pupil 02's in the workshop): the sweep's pupil and their
+    // parent neither agree to it, give it up, rate it nor say it was not held; and the sweep's teacher, whose booking it is not, neither marks nor cancels it.
+    const othersSeat = await db.gigBooking.findFirst({ where: { schoolId: home.id, status: "CONFIRMED", slot: { title: { startsWith: "ZZ " } }, studentMembershipId: { notIn: [...linked, ...(theirs ? [theirs.id] : [])] } }, orderBy: { id: "asc" }, select: { id: true } });
+    if (othersSeat) {
+      const door = (tail: string) => ENDPOINTS.find((x) => x.method === "POST" && x.path === `/api/v1/gigs/sessions/{bookingId}/${tail}`)!;
+      for (const [tail, body, roles] of [["consent", { approve: true }, ["PARENT"]], ["cancel", { reason: "" }, ["PARENT", "STUDENT"]], ["unheld", null, ["PARENT", "STUDENT"]], ["rate", { rating: 5 }, ["PARENT", "STUDENT"]], ["close", { outcome: "DELIVERED" }, ["TEACHER"]], ["cancel", { reason: "ZZ probe: not my seat" }, ["TEACHER"]]] as const) {
+        for (const role of roles) {
+          await check(door(tail), role, `/api/v1/gigs/sessions/${othersSeat.id}/${tail}`, body, role === "TEACHER" ? "a seat in another provider's session" : "another pupil's seat in a session");
+          tried.push(`POST ${door(tail).path} as ${role}${body ? " (valid body)" : ""}`);
+        }
+      }
+    } else skipped.push("/api/v1/gigs/sessions/{bookingId}/* (no other pupil's seat in the fixtures)");
     // A picture on another pupil's certificate: the sweep's pupil and their parent are refused it.
     if (homeFx.otherPupilSignatureId) {
       const e = ENDPOINTS.find((x) => x.method === "GET" && x.path === "/api/v1/shared/signatures/{signatureId}")!;

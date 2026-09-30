@@ -91,6 +91,9 @@ model School {
   /// bank statement. Null means the school does not take UPI directly.
   feeUpiId         String?
   feeUpiPayee      String?
+
+  /// Gigs (decision 0004): the school lets its teachers offer free one-to-one guidance to its own pupils.
+  teacherGuidanceOn Boolean @default(false)
   /// The receipt serial's prefix: "RCPT/2026-27/000123". Per school, so a
   /// school moving from paper keeps the series its auditor knows.
   feeReceiptPrefix String  @default("RCPT")
@@ -245,6 +248,7 @@ model School {
   recordChangeRequests RecordChangeRequest[]
   signatureImages      SignatureImage[]
   paperSignatures      PaperSignature[]
+  gigBookings          GigBooking[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -377,6 +381,7 @@ model User {
   gigEarnings          GigEarning[]              @relation("GigEarner")
   gigPaymentsReceived  GigPayment[]              @relation("GigPaymentPayee")
   gigPayee             GigPayee?
+  gigSlots             GigSlot[]                 @relation("GigSlotProvider")
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -484,6 +489,7 @@ model Membership {
   certificateRequests    CertificateRequest[] @relation("CertificateRequestStudent")
   penChanges             PenChangeRequest[]
   guardianClaims         GuardianClaim[]      @relation("GuardianClaimStudent")
+  gigBookings            GigBooking[]         @relation("GigBookingStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -4453,6 +4459,19 @@ model GigSettings {
   /// How many a teacher may send in a day, and hold unreviewed at once.
   questionDailyLimit         Int      @default(20)
   questionPendingLimit       Int      @default(50)
+  /// A pupil's free allowance in a school year: one-to-one sessions, and seats at workshops.
+  pupilFreeOneToOnes         Int      @default(2)
+  pupilFreeWorkshops         Int      @default(2)
+  /// What an expert owes free: a starting block, then a standing quota.
+  expertStartOneToOnes       Int      @default(10)
+  expertStartWorkshops       Int      @default(2)
+  expertMonthlyOneToOnes     Int      @default(2)
+  expertQuarterlyWorkshops   Int      @default(1)
+  /// The half-hours of guidance asked of a teacher in a month; asked, not enforced.
+  teacherMonthlyGuidance     Int      @default(2)
+  /// A seat given up at least this many hours before the start is not counted against the pupil's allowance.
+  freeCancelHours            Int      @default(12)
+  workshopMaxSeats           Int      @default(30)
   updatedByUserId            String?
   updatedAt                  DateTime @updatedAt
 }
@@ -4551,4 +4570,84 @@ model GigPayee {
   updatedAt DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+/// A time a provider offers: one pupil for a one-to-one, up to `seats` for a workshop. It carries no
+/// school: an expert's is open to every school's pupils, and a teacher's names the one school it is for.
+/// The meeting link is the provider's own room and is shown to a pupil and their guardians only while
+/// their seat is confirmed.
+model GigSlot {
+  id              String    @id @default(cuid())
+  providerUserId  String
+  /// EXPERT | TEACHER
+  providerKind    String
+  /// A teacher's guidance is for pupils of this school alone. Null for an expert's slot.
+  teacherSchoolId String?
+  /// ONE_TO_ONE | WORKSHOP
+  kind            String
+  title           String
+  startsAt        DateTime
+  endsAt          DateTime
+  meetingUrl      String
+  seats           Int       @default(1)
+  /// Seats not cancelled: waiting for a guardian, confirmed, or already held, missed or not held. One
+  /// writer (src/lib/gig-sessions.ts), which claims a seat with the booking and releases it when the
+  /// booking is cancelled; checked by data:audit.
+  seatsTaken      Int       @default(0)
+  /// What it costs a family past their allowance, in paise. Always 0 until paid sessions are built.
+  pricePaise      Int       @default(0)
+  cancelledAt     DateTime?
+  cancelReason    String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  provider User         @relation("GigSlotProvider", fields: [providerUserId], references: [id], onDelete: Cascade)
+  bookings GigBooking[]
+
+  @@index([providerUserId, startsAt])
+  @@index([startsAt])
+  @@index([teacherSchoolId, startsAt])
+}
+
+/// A pupil's seat in a slot. It is the pupil's school's row: the school is told, reads it and may cancel it.
+model GigBooking {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  slotId              String
+  studentMembershipId String
+  /// Denormalised from the slot: an expert has no school, and reads their own bookings by this column.
+  providerUserId      String
+  /// Denormalised from the slot: ONE_TO_ONE | WORKSHOP, the allowance it draws on.
+  kind                String
+  bookedByUserId      String
+  /// What the pupil wants from it, in their own or their guardian's words.
+  purpose             String
+  /// PENDING_CONSENT | CONFIRMED | CANCELLED | DELIVERED | MISSED (the pupil did not come) | UNHELD (the provider did not)
+  status              String
+  /// The school year whose allowance it counts against.
+  academicYearId      String?
+  consentAt           DateTime?
+  consentUserId       String?
+  cancelledAt         DateTime?
+  cancelledByUserId   String?
+  cancelReason        String?
+  /// Given up by the family inside the free-cancel window: still counted against the allowance.
+  lateCancel          Boolean   @default(false)
+  /// When the provider said how it went, or the family said it was not held.
+  closedAt            DateTime?
+  rating              Int?
+  feedback            String?
+  ratedAt             DateTime?
+  remindedAt          DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slot    GigSlot    @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  student Membership @relation("GigBookingStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([slotId, studentMembershipId])
+  @@index([schoolId, studentMembershipId, kind])
+  @@index([providerUserId, status])
+  @@index([studentMembershipId])
 }
