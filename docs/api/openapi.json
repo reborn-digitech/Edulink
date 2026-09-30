@@ -19853,6 +19853,24 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "TEACHER",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showAttendance": {
                           "type": "boolean"
                         },
@@ -19930,6 +19948,80 @@
                     },
                     "pdfPath": {
                       "type": "string"
+                    },
+                    "signatures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "slot": {
+                            "type": "string",
+                            "enum": [
+                              "LEFT",
+                              "RIGHT"
+                            ]
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "TEACHER",
+                              "ADMIN",
+                              "PRINCIPAL"
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "SIGNED",
+                              "DECLINED"
+                            ]
+                          },
+                          "signerName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "image": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "decidedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "can": {
+                            "type": "object",
+                            "properties": {
+                              "decide": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "decide"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slot",
+                          "role",
+                          "status",
+                          "signerName",
+                          "image",
+                          "decidedAt",
+                          "can"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "seal": {
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -53837,6 +53929,24 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "TEACHER",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showAttendance": {
                           "type": "boolean"
                         },
@@ -54135,6 +54245,24 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "signerLeft": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "TEACHER",
+                            "ADMIN",
+                            "PRINCIPAL"
+                          ],
+                          "default": "NONE"
+                        },
+                        "signerRight": {
+                          "$ref": "#/properties/layout/properties/signerLeft",
+                          "default": "NONE"
+                        },
+                        "showSeal": {
+                          "type": "boolean",
+                          "default": false
+                        },
                         "showAttendance": {
                           "type": "boolean"
                         },
@@ -54368,6 +54496,24 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "signerLeft": {
+                        "type": "string",
+                        "enum": [
+                          "NONE",
+                          "TEACHER",
+                          "ADMIN",
+                          "PRINCIPAL"
+                        ],
+                        "default": "NONE"
+                      },
+                      "signerRight": {
+                        "$ref": "#/properties/layout/properties/signerLeft",
+                        "default": "NONE"
+                      },
+                      "showSeal": {
+                        "type": "boolean",
+                        "default": false
+                      },
                       "showAttendance": {
                         "type": "boolean"
                       },
@@ -58256,6 +58402,7 @@
                           "role": {
                             "type": "string",
                             "enum": [
+                              "TEACHER",
                               "ADMIN",
                               "PRINCIPAL"
                             ]
@@ -58686,6 +58833,7 @@
                           "role": {
                             "type": "string",
                             "enum": [
+                              "TEACHER",
                               "ADMIN",
                               "PRINCIPAL"
                             ]
@@ -59111,6 +59259,7 @@
                           "role": {
                             "type": "string",
                             "enum": [
+                              "TEACHER",
                               "ADMIN",
                               "PRINCIPAL"
                             ]
@@ -60013,8 +60162,8 @@
     },
     "/api/v1/office/signatures": {
       "get": {
-        "summary": "The reader's own signature, the school's seal, and the papers waiting for the reader's signature",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "summary": "The reader's own signature, the school's seal, and the papers waiting for the reader's signature: certificates, and sets of report cards, a teacher's being of the classes they teach",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER.",
         "security": [
           {
             "bearer": []
@@ -60022,7 +60171,8 @@
         ],
         "x-access": [
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -60088,11 +60238,16 @@
                             "type": "string",
                             "enum": [
                               "CERTIFICATE",
-                              "REPORT_CARD"
+                              "REPORT_CARD_SET"
                             ]
                           },
                           "paperId": {
                             "type": "string"
+                          },
+                          "count": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "default": 1
                           },
                           "title": {
                             "type": "string"
@@ -60183,7 +60338,7 @@
     "/api/v1/office/signatures/mine": {
       "post": {
         "summary": "Set the reader's own signature: a PNG as a data URL, at most 200 KB and 1200 by 600. It is drawn at once on papers the reader issues, and on a paper somebody else issues only after the reader approves that paper",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER.",
         "security": [
           {
             "bearer": []
@@ -60191,7 +60346,8 @@
         ],
         "x-access": [
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -60283,7 +60439,7 @@
     "/api/v1/office/signatures/mine/remove": {
       "post": {
         "summary": "Take the reader's signature away; papers already signed keep their own copy",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER.",
         "security": [
           {
             "bearer": []
@@ -60291,7 +60447,8 @@
         ],
         "x-access": [
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -60538,8 +60695,8 @@
     },
     "/api/v1/office/signatures/{signatureId}/decide": {
       "post": {
-        "summary": "Sign a paper that waited for the reader, or decline to; only somebody of the role the line names, with a signature of their own; a settled one is answered as it stands",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "summary": "Sign a paper that waited for the reader, or decline to; only somebody of the role the line names, a teacher only for a class they teach, with a signature of their own. One signature signs every card of a set of report cards. A settled one is answered as it stands",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER.",
         "security": [
           {
             "bearer": []
@@ -60547,7 +60704,8 @@
         ],
         "x-access": [
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -60561,7 +60719,7 @@
                       "type": "string",
                       "enum": [
                         "CERTIFICATE",
-                        "REPORT_CARD"
+                        "REPORT_CARD_SET"
                       ]
                     },
                     "paperId": {

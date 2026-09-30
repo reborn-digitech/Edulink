@@ -128,10 +128,16 @@ export function RulesPreview({ schoolName, bands, areas, coScale, layout }: { sc
         )}
 
         {layout.showSignatures && (
-          <div className={`mt-8 grid grid-cols-3 gap-4 text-center text-[0.6875rem] ${muted}`} data-testid="preview-signatures">
-            {[layout.signatureLeft, t("reportView.signatureParent"), layout.signatureRight].map((who, index) => (
-              <div key={index} className="min-h-6 border-t border-border pt-1.5">
-                {who}
+          <div className={`mt-6 grid grid-cols-3 items-end gap-4 text-center text-[0.6875rem] ${muted}`} data-testid="preview-signatures">
+            {/* Where a signature and the seal will be drawn, as a word in a box: the pictures are the signers' own. */}
+            {([["signerLeft", layout.signatureLeft], ["parent", t("reportView.signatureParent")], ["signerRight", layout.signatureRight]] as const).map(([slot, who]) => (
+              <div key={slot}>
+                <div className="grid h-9 place-items-center">
+                  {slot === "parent"
+                    ? layout.showSeal && <span className="grid size-9 place-items-center rounded-full border border-dashed border-border-strong text-[0.5625rem] italic">{t("signatures.sampleSeal")}</span>
+                    : layout[slot] !== "NONE" && <span className="rounded-[--radius-sm] border border-dashed border-border-strong px-2 py-0.5 italic">{t("signatures.sampleSignature")}</span>}
+                </div>
+                <div className="min-h-6 border-t border-border pt-1.5">{who}</div>
               </div>
             ))}
           </div>

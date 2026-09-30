@@ -209,8 +209,11 @@ end-to-end in staging.
   migration `20260930010000`). A template says who signs each of its two lines and whether the seal
   is printed. A signature is drawn at once on a paper its owner issues; on a paper somebody else
   issues it waits, the line printed bare, until its owner opens that paper and approves it. An
-  issued paper keeps its own copy of each picture. Certificates only so far: report cards still
-  print the two lines bare.
+  issued paper keeps its own copy of each picture. A report card is signed A CLASS AT A TIME, as
+  it is published (decided 2026-09-30): one row for the set, one approval by the head for every card
+  of it, the set unsigned when it is taken back to drafts. A teacher keeps a signature too, for the
+  report cards of the classes they teach, and signs no certificate. The parent's line is always
+  bare, for a hand.
 - **The pupil record is the office's to write** (decided by the owner, 2026-09-29). A guardian and
   the pupil read all of it and write none of it. They propose new values on the record's own form
   with a reason, a blank the office asked about included, and an admin or the head applies them or

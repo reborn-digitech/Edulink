@@ -6,7 +6,7 @@ import { removeMySignature } from "@/lib/signatures";
 /** POST /api/v1/office/signatures/mine/remove — takes the reader's signature away; papers already signed keep their copy. */
 export async function POST() {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "TEACHER");
     await removeMySignature(ctx);
     return ok(okSchema.parse({ ok: true }));
   } catch (error) {

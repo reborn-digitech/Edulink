@@ -9,10 +9,19 @@ import type { ActiveContext } from "./session";
 /**
  * Signatures and the school's seal, as pictures on the school's papers.
  *
- * WHO HAS ONE. An admin and the head each keep one signature; the school
- * keeps one seal, which is the admin's to set. A template says who signs
- * each of its two lines (the contracts' paperSignerSchema) and whether the
- * seal is printed.
+ * WHO HAS ONE. An admin, the head and a teacher each keep one signature;
+ * the school keeps one seal, which is the admin's to set. A certificate's
+ * template and the report card's rules say who signs each of the two lines
+ * (the contracts' paperSignerSchema and cardSignerSchema) and whether the
+ * seal is printed. A teacher signs report cards, of the classes they teach,
+ * and no certificate.
+ *
+ * A REPORT CARD IS SIGNED A CLASS AT A TIME, as it is published: one row
+ * for the set (the class and the title), one approval for every card in
+ * it. Thirty approvals for one class's term would be thirty presses nobody
+ * reads between. The head opens any card of the set, reads it, and signs
+ * them all; a set taken back to drafts loses its signatures, and published
+ * again it asks again.
  *
  * ⚠ A SIGNATURE IS ITS OWNER'S TO PUT. It is drawn at once on a paper its
  * owner issues. On a paper somebody else issues it WAITS: the line is
@@ -33,9 +42,26 @@ import type { ActiveContext } from "./session";
  * paper; never the picture.
  */
 
-export type PaperKind = "CERTIFICATE" | "REPORT_CARD";
-type SignerRole = "ADMIN" | "PRINCIPAL";
-const SIGNERS: readonly SignerRole[] = ["ADMIN", "PRINCIPAL"];
+export type PaperKind = "CERTIFICATE" | "REPORT_CARD_SET";
+type SignerRole = "TEACHER" | "ADMIN" | "PRINCIPAL";
+const SIGNERS: readonly SignerRole[] = ["TEACHER", "ADMIN", "PRINCIPAL"];
+
+/** A set of report cards is named by its class and its title; the class's id holds no bar. */
+export const cardSetId = (classId: string, title: string) => `${classId}|${title}`;
+const cardSetOf = (paperId: string) => {
+  const at = paperId.indexOf("|");
+  return { classId: paperId.slice(0, at), title: paperId.slice(at + 1) };
+};
+/** Whether this teacher teaches the class a set is of: a teacher's signature is for their own classes. */
+async function teaches(membershipId: string, schoolId: string, classId: string): Promise<boolean> {
+  return Boolean(await db.classTeacher.findFirst({ where: { classId, schoolId, teacherMembershipId: membershipId }, select: { id: true } }));
+}
+/** Whether a line that waits is this reader's to sign: their role, and for a teacher their class. */
+async function mine(me: { schoolId: string; membershipId: string; role: SignerRole }, row: { schoolId: string; role: string | null; paperKind: string; paperId: string }): Promise<boolean> {
+  if (row.schoolId !== me.schoolId || row.role !== me.role) return false;
+  if (me.role !== "TEACHER") return true;
+  return row.paperKind === "REPORT_CARD_SET" && (await teaches(me.membershipId, me.schoolId, cardSetOf(row.paperId).classId));
+}
 
 /** A signature is a strip; the seal is a square. Both are small, because both are drawn small. */
 export const SIGNATURE_LIMIT = { bytes: 200 * 1024, width: 1200, height: 600 } as const;
@@ -108,13 +134,14 @@ export async function removeSeal(ctx: ActiveContext): Promise<void> {
  * the seal as it stands today. A paper whose template asks for nobody gets
  * no rows at all and prints as papers always did.
  */
-export async function signOnIssue(ctx: ActiveContext, paper: { kind: PaperKind; id: string; schoolId: string; title: string; studentName: string }, layout: Pick<CertificateLayout, "signerLeft" | "signerRight" | "showSeal">): Promise<void> {
-  const slots = ([["LEFT", layout.signerLeft], ["RIGHT", layout.signerRight]] as const).filter(([, who]) => who === "ADMIN" || who === "PRINCIPAL") as ["LEFT" | "RIGHT", SignerRole][];
+export async function signOnIssue(ctx: ActiveContext, paper: { kind: PaperKind; id: string; schoolId: string; title: string; studentName: string; count?: number }, layout: { signerLeft: CertificateLayout["signerLeft"] | "TEACHER"; signerRight: CertificateLayout["signerRight"] | "TEACHER"; showSeal: boolean }): Promise<void> {
+  const slots = ([["LEFT", layout.signerLeft], ["RIGHT", layout.signerRight]] as const).filter(([, who]) => (SIGNERS as readonly string[]).includes(who) && (who !== "TEACHER" || paper.kind === "REPORT_CARD_SET")) as ["LEFT" | "RIGHT", SignerRole][];
   const issuerName = ctx.user.name;
   const own = ctx.membershipId && ctx.schoolId === paper.schoolId ? await db.signatureImage.findFirst({ where: { membershipId: ctx.membershipId, schoolId: paper.schoolId, kind: "PERSON" }, select: { png: true } }) : null;
   const waitingOn = new Set<SignerRole>();
   for (const [slot, role] of slots) {
-    const mine = ctx.role === role && ctx.schoolId === paper.schoolId && own !== null;
+    // The issuer's own line: their role, and for a teacher a class they teach — which publishing the set has already required of them.
+    const mine = ctx.role === role && ctx.schoolId === paper.schoolId && own !== null && (role !== "TEACHER" || (ctx.membershipId !== null && (await teaches(ctx.membershipId, paper.schoolId, cardSetOf(paper.id).classId))));
     await db.paperSignature.upsert({
       where: { paperKind_paperId_slot: { paperKind: paper.kind, paperId: paper.id, slot } },
       create: mine
@@ -131,10 +158,17 @@ export async function signOnIssue(ctx: ActiveContext, paper: { kind: PaperKind; 
   }
   if (waitingOn.size === 0) return;
   // Told once per person, however many of the paper's lines wait for them; and not the issuer, who knows.
-  const holders = await db.membership.findMany({ where: { schoolId: paper.schoolId, role: { in: [...waitingOn] }, status: "ACTIVE", leftAt: null, userId: { not: ctx.user.id } }, select: { userId: true } });
+  const office = [...waitingOn].filter((r) => r !== "TEACHER");
+  const holders = office.length > 0 ? await db.membership.findMany({ where: { schoolId: paper.schoolId, role: { in: office }, status: "ACTIVE", leftAt: null, userId: { not: ctx.user.id } }, select: { userId: true, role: true } }) : [];
+  // A teacher's line waits for the teachers of that class, and no other teacher.
+  const classTeachers = waitingOn.has("TEACHER") ? await db.classTeacher.findMany({ where: { classId: cardSetOf(paper.id).classId, schoolId: paper.schoolId, teacher: { status: "ACTIVE", leftAt: null, userId: { not: ctx.user.id } } }, select: { teacher: { select: { userId: true } } } }) : [];
+  const told = new Map<string, string>();
+  for (const h of holders) told.set(h.userId, "/admin/signatures");
+  for (const c of classTeachers) if (!told.has(c.teacher.userId)) told.set(c.teacher.userId, "/teacher/signatures");
+  const set = paper.kind === "REPORT_CARD_SET";
   await Promise.all(
-    [...new Set(holders.map((h) => h.userId))].map((userId) =>
-      notify({ userId, schoolId: paper.schoolId, kind: "SYSTEM", titleKey: "signatures.notifWaiting", titleVars: { name: paper.studentName, title: paper.title }, bodyKey: "signatures.notifWaitingBody", url: "/admin/signatures" }).catch((error) => console.error("[signOnIssue] notice failed", error)),
+    [...told].map(([userId, url]) =>
+      notify({ userId, schoolId: paper.schoolId, kind: "SYSTEM", titleKey: set ? "signatures.notifSetWaiting" : "signatures.notifWaiting", titleVars: set ? { className: paper.studentName, title: paper.title, count: paper.count ?? 1 } : { name: paper.studentName, title: paper.title }, bodyKey: "signatures.notifWaitingBody", url }).catch((error) => console.error("[signOnIssue] notice failed", error)),
     ),
   );
 }
@@ -142,8 +176,12 @@ export async function signOnIssue(ctx: ActiveContext, paper: { kind: PaperKind; 
 /** The signatures and the seal of one paper, for a reader the paper's own rule has already let in. */
 export async function paperSignatures(ctx: ActiveContext, paper: { kind: PaperKind; id: string; schoolId: string }): Promise<{ signatures: PaperSignatureView[]; seal: string | null }> {
   const rows = await db.paperSignature.findMany({ where: { paperKind: paper.kind, paperId: paper.id, schoolId: paper.schoolId }, orderBy: { slot: "asc" } });
-  const signatures: PaperSignatureView[] = rows
-    .filter((r) => (r.slot === "LEFT" || r.slot === "RIGHT") && (r.role === "ADMIN" || r.role === "PRINCIPAL"))
+  const signatures0 = rows
+    .filter((r) => (r.slot === "LEFT" || r.slot === "RIGHT") && (SIGNERS as readonly string[]).includes(r.role ?? ""));
+  const reader = ctx.schoolId && ctx.membershipId && ctx.role && (SIGNERS as readonly string[]).includes(ctx.role) ? { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role as SignerRole } : null;
+  const decidable = new Set<string>();
+  for (const r of signatures0) if (r.status === "PENDING" && reader && (await mine(reader, r))) decidable.add(r.id);
+  const signatures: PaperSignatureView[] = signatures0
     .map((r) => ({
       id: r.id,
       slot: r.slot as "LEFT" | "RIGHT",
@@ -152,7 +190,7 @@ export async function paperSignatures(ctx: ActiveContext, paper: { kind: PaperKi
       signerName: r.signerName,
       image: r.status === "SIGNED" ? pngUrl(r.png) : null,
       decidedAt: r.decidedAt?.toISOString() ?? null,
-      can: { decide: r.status === "PENDING" && ctx.schoolId === paper.schoolId && ctx.role === r.role },
+      can: { decide: decidable.has(r.id) },
     }));
   const seal = rows.find((r) => r.slot === "SEAL" && r.status === "SIGNED");
   return { signatures, seal: pngUrl(seal?.png) };
@@ -165,8 +203,8 @@ export async function decidePaperSignature(ctx: ActiveContext, signatureId: stri
   if (!row || row.slot === "SEAL") throw new AccessError("signatures.notFound", "NOT_FOUND");
   const paper = { paperKind: row.paperKind as PaperKind, paperId: row.paperId };
   // A settled one is answered as it stands to either of the two who sign the school's papers: both read the paper.
-  if (row.status !== "PENDING") return { ...paper, status: row.status };
-  if (row.role !== me.role) throw new AccessError("signatures.notYours");
+  if (row.status !== "PENDING") return { ...(await opened(me.schoolId, paper)), status: row.status };
+  if (!(await mine(me, row))) throw new AccessError("signatures.notYours");
   let png: Uint8Array<ArrayBuffer> | null = null;
   if (approve) {
     const own = await db.signatureImage.findFirst({ where: { membershipId: me.membershipId, schoolId: me.schoolId, kind: "PERSON" }, select: { png: true } });
@@ -177,34 +215,59 @@ export async function decidePaperSignature(ctx: ActiveContext, signatureId: stri
   const won = await db.paperSignature.updateMany({ where: { id: row.id, status: "PENDING" }, data: approve ? { status: "SIGNED", signerUserId: ctx.user.id, signerName: ctx.user.name, png, decidedAt: new Date() } : { status: "DECLINED", signerUserId: ctx.user.id, signerName: ctx.user.name, decidedAt: new Date() } });
   if (won.count === 0) {
     const now = await db.paperSignature.findUniqueOrThrow({ where: { id: row.id }, select: { status: true } });
-    return { ...paper, status: now.status };
+    return { ...(await opened(me.schoolId, paper)), status: now.status };
   }
   await audit({ schoolId: me.schoolId, actorUserId: ctx.user.id, action: approve ? "paper.sign" : "paper.sign.decline", targetType: row.paperKind, targetId: row.paperId, meta: { slot: row.slot, role: row.role, own: false } });
   if (row.requestedByUserId && row.requestedByUserId !== ctx.user.id) {
     const named = await paperNamed(me.schoolId, paper.paperKind, paper.paperId);
     if (named) await notify({ userId: row.requestedByUserId, schoolId: me.schoolId, kind: "SYSTEM", titleKey: approve ? "signatures.notifSigned" : "signatures.notifDeclined", titleVars: { signer: ctx.user.name, name: named.studentName, title: named.title }, url: named.url }).catch((error) => console.error("[decidePaperSignature] notice failed", error));
   }
-  return { ...paper, status: approve ? "SIGNED" : "DECLINED" };
+  return { ...(await opened(me.schoolId, paper)), status: approve ? "SIGNED" : "DECLINED" };
+}
+
+/** The paper a decision's answer names: the certificate, or for a set one of its cards, which is what a page can open. */
+async function opened(schoolId: string, paper: { paperKind: PaperKind; paperId: string }): Promise<{ paperKind: PaperKind; paperId: string }> {
+  if (paper.paperKind !== "REPORT_CARD_SET") return paper;
+  const named = await paperNamed(schoolId, paper.paperKind, paper.paperId);
+  return { paperKind: paper.paperKind, paperId: named?.openId ?? paper.paperId };
 }
 
 /** What a paper is called, for the list of what waits and for a notice. Null for one that is gone or revoked. */
-async function paperNamed(schoolId: string, kind: PaperKind, id: string): Promise<{ title: string; serial: string | null; studentName: string; url: string } | null> {
+async function paperNamed(schoolId: string, kind: PaperKind, id: string): Promise<{ title: string; serial: string | null; studentName: string; url: string; openId: string; count: number } | null> {
   if (kind === "CERTIFICATE") {
     const c = await db.issuedCertificate.findFirst({ where: { id, schoolId, revokedAt: null }, select: { title: true, serial: true, studentName: true, student: { select: { user: { select: { name: true } } } } } });
-    return c ? { title: c.title, serial: c.serial, studentName: c.studentName ?? c.student.user.name, url: `/certificates/${id}` } : null;
+    return c ? { title: c.title, serial: c.serial, studentName: c.studentName ?? c.student.user.name, url: `/certificates/${id}`, openId: id, count: 1 } : null;
   }
-  const card = await db.reportCard.findFirst({ where: { id, schoolId }, select: { title: true, studentName: true, student: { select: { user: { select: { name: true } } } } } });
-  return card ? { title: card.title, serial: null, studentName: card.studentName ?? card.student.user.name, url: `/report-cards/${id}` } : null;
+  // A set: named by its class, opened at the first of its cards by the pupil's name, counted.
+  const { classId, title } = cardSetOf(id);
+  const cards = await db.reportCard.findMany({ where: { schoolId, classId, title, status: "PUBLISHED" }, orderBy: [{ student: { user: { name: "asc" } } }, { id: "asc" }], select: { id: true, layout: true, class: { select: { name: true } } } });
+  const first = cards[0];
+  if (!first) return null;
+  let className = first.class.name;
+  try {
+    const frozen = first.layout ? (JSON.parse(first.layout) as { className?: string }).className : undefined;
+    if (typeof frozen === "string" && frozen) className = frozen;
+  } catch {
+    // The class as it is called today.
+  }
+  return { title, serial: null, studentName: className, url: `/report-cards/${first.id}`, openId: first.id, count: cards.length };
+}
+
+/** A set taken back to drafts loses its signatures: published again, it asks again. */
+export async function unsignCardSet(schoolId: string, classId: string, title: string): Promise<void> {
+  await db.paperSignature.deleteMany({ where: { schoolId, paperKind: "REPORT_CARD_SET", paperId: cardSetId(classId, title) } });
 }
 
 /** The reader's own signature, the seal, and the papers that wait for the reader's word. */
 export async function signaturesView(ctx: ActiveContext): Promise<SignaturesView> {
   const me = signer(ctx);
-  const [mine, seal, pending] = await Promise.all([
+  const [own, seal, pendingAll] = await Promise.all([
     db.signatureImage.findFirst({ where: { membershipId: me.membershipId, schoolId: me.schoolId, kind: "PERSON" }, select: { png: true, updatedAt: true } }),
     db.signatureImage.findFirst({ where: { schoolId: me.schoolId, kind: "SEAL" }, select: { png: true, updatedAt: true } }),
     db.paperSignature.findMany({ where: { schoolId: me.schoolId, status: "PENDING", role: me.role, slot: { in: ["LEFT", "RIGHT"] } }, orderBy: { createdAt: "asc" }, take: 200 }),
   ]);
+  const pending: typeof pendingAll = [];
+  for (const p of pendingAll) if (await mine(me, p)) pending.push(p);
   const askers = await db.user.findMany({ where: { id: { in: [...new Set(pending.map((p) => p.requestedByUserId).filter((x): x is string => Boolean(x)))] } }, select: { id: true, name: true, preferredName: true } });
   const asker = new Map(askers.map((u) => [u.id, u.preferredName ?? u.name]));
   const waiting: SignaturesView["waiting"] = [];
@@ -215,13 +278,18 @@ export async function signaturesView(ctx: ActiveContext): Promise<SignaturesView
     // A paper with both lines waiting for the same role is one paper to open.
     if (seen.has(`${p.paperKind}:${p.paperId}`)) continue;
     seen.add(`${p.paperKind}:${p.paperId}`);
-    waiting.push({ id: p.id, paperKind: p.paperKind as PaperKind, paperId: p.paperId, title: named.title, serial: named.serial, studentName: named.studentName, requestedByName: p.requestedByUserId ? (asker.get(p.requestedByUserId) ?? null) : null, createdAt: p.createdAt.toISOString() });
+    waiting.push({ id: p.id, paperKind: p.paperKind as PaperKind, paperId: named.openId, count: named.count, title: named.title, serial: named.serial, studentName: named.studentName, requestedByName: p.requestedByUserId ? (asker.get(p.requestedByUserId) ?? null) : null, createdAt: p.createdAt.toISOString() });
   }
-  return { mine: { image: pngUrl(mine?.png), updatedAt: mine?.updatedAt.toISOString() ?? null }, seal: { image: pngUrl(seal?.png), updatedAt: seal?.updatedAt.toISOString() ?? null }, canSetSeal: me.role === "ADMIN", waiting };
+  return { mine: { image: pngUrl(own?.png), updatedAt: own?.updatedAt.toISOString() ?? null }, seal: { image: pngUrl(seal?.png), updatedAt: seal?.updatedAt.toISOString() ?? null }, canSetSeal: me.role === "ADMIN", waiting };
 }
 
 /** How many papers wait for the reader, for the menu's count. Nothing for somebody who signs nothing. */
 export async function waitingSignatureCount(ctx: ActiveContext): Promise<number> {
-  if (!ctx.schoolId || !ctx.role || !(SIGNERS as readonly string[]).includes(ctx.role)) return 0;
-  return db.paperSignature.count({ where: { schoolId: ctx.schoolId, status: "PENDING", role: ctx.role, slot: { in: ["LEFT", "RIGHT"] } } });
+  if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SIGNERS as readonly string[]).includes(ctx.role)) return 0;
+  const where = { schoolId: ctx.schoolId, status: "PENDING", role: ctx.role, slot: { in: ["LEFT", "RIGHT"] } };
+  if (ctx.role !== "TEACHER") return db.paperSignature.count({ where });
+  const me = { schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: "TEACHER" as const };
+  let n = 0;
+  for (const row of await db.paperSignature.findMany({ where, select: { schoolId: true, role: true, paperKind: true, paperId: true } })) if (await mine(me, row)) n += 1;
+  return n;
 }

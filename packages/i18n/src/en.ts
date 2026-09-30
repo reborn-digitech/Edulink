@@ -3750,6 +3750,11 @@ export const en = {
     signerHint: "A signature is drawn at once on a paper its owner issues, and after they approve it on a paper somebody else issues.",
     sampleSignature: "signature",
     sampleSeal: "seal",
+    signerTeacher: "The class teacher",
+    notifSetWaiting: "{count} report cards of {className}, {title}, wait for your signature",
+    setCount: "{count} report cards",
+    signsWholeSet: "This set of {count} report cards waits for your signature. Signing here signs all of them.",
+    teacherIntro: "Your signature, as it is drawn on the report cards of the classes you teach.",
   },
   recordChanges: {
     askForChange: "Ask for a change",

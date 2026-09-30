@@ -3,7 +3,7 @@
 import { useId, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowDownIcon, ArrowUpIcon, FloppyDiskIcon, PlusIcon, TrashIcon, WarningCircleIcon } from "@phosphor-icons/react";
-import type { GradeBand, ReportCardConfig, ReportCardConfigView, ReportCardLayout } from "@edulink/contracts";
+import type { CardSigner, GradeBand, ReportCardConfig, ReportCardConfigView, ReportCardLayout } from "@edulink/contracts";
 import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
@@ -492,6 +492,19 @@ export function RulesForm({ view, schoolName, readOnly = false }: { view: Report
                     <CheckboxField key={key} label={layoutLabel[key]} checked={layout[key]} onChange={(e) => setLayout((l) => ({ ...l, [key]: e.target.checked }))} data-testid={`layout-${key}`} />
                   ))}
                 </div>
+                {/* Who signs the two lines that are the school's, and whether the seal is printed. */}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {(["signerLeft", "signerRight"] as const).map((side) => (
+                    <SelectField key={side} label={t(side === "signerLeft" ? "signatures.signerLeft" : "signatures.signerRight")} value={layout[side]} onChange={(e) => setLayout((l) => ({ ...l, [side]: e.target.value as CardSigner }))} data-testid={`layout-${side}`}>
+                      <option value="NONE">{t("signatures.signerNone")}</option>
+                      <option value="TEACHER">{t("signatures.signerTeacher")}</option>
+                      <option value="ADMIN">{t("signatures.signerAdmin")}</option>
+                      <option value="PRINCIPAL">{t("signatures.signerPrincipal")}</option>
+                    </SelectField>
+                  ))}
+                </div>
+                <p className="text-xs leading-relaxed text-fg-muted">{t("signatures.signerHint")}</p>
+                <CheckboxField label={t("signatures.showSeal")} checked={layout.showSeal} onChange={(e) => setLayout((l) => ({ ...l, showSeal: e.target.checked }))} data-testid="layout-showSeal" />
                 <div className="grid gap-3 sm:grid-cols-2">
                   <TextField label={t("reportCardConfig.signatureLeft")} value={layout.signatureLeft} maxLength={40} autoComplete="off" onChange={(e) => setLayout((l) => ({ ...l, signatureLeft: e.target.value }))} />
                   <TextField label={t("reportCardConfig.signatureRight")} value={layout.signatureRight} maxLength={40} autoComplete="off" onChange={(e) => setLayout((l) => ({ ...l, signatureRight: e.target.value }))} />

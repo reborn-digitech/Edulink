@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   cellNum: { flex: 1.2, textAlign: "right" },
   cellGrade: { flex: 1, textAlign: "right", fontWeight: 700 },
   remark: { marginTop: 3, lineHeight: 1.4 },
-  signatures: { flexDirection: "row", justifyContent: "space-between", marginTop: 34, gap: 24 },
+  signatures: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end", marginTop: 20, gap: 24 },
+  signatureLine: { borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 8.5, color: MUTED, textAlign: "center" },
   signature: { flex: 1, borderTopWidth: 0.75, borderTopColor: INK, paddingTop: 4, fontSize: 8.5, color: MUTED, textAlign: "center" },
   footer: { position: "absolute", left: 40, right: 40, bottom: 22, fontSize: 7.5, color: MUTED, textAlign: "center" },
   scale: { marginTop: 8, fontSize: 7.5, color: MUTED },
@@ -227,10 +228,19 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
       ) : null}
 
       {layout.showSignatures ? (
-        <View style={styles.signatures}>
-          <Text style={styles.signature}>{layout.signatureLeft}</Text>
-          <Text style={styles.signature}>{layout.signatureRight}</Text>
-          <Text style={styles.signature}>{t("reportView.signatureParent")}</Text>
+        <View style={styles.signatures} wrap={false}>
+          {/* The set's own copy of each signature above its line; the seal stands over the parent's, which is signed by hand. */}
+          {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
+          {(["LEFT", "PARENT", "RIGHT"] as const).map((slot) => {
+            const image = slot === "PARENT" ? card.seal : (card.signatures.find((s) => s.slot === slot)?.image ?? null);
+            return (
+              <View key={slot} style={{ flex: 1 }}>
+                <View style={{ height: 38, alignItems: "center", justifyContent: "flex-end" }}>{image ? <Image src={image} style={{ maxHeight: 36, maxWidth: 130, objectFit: "contain" }} /> : null}</View>
+                <Text style={styles.signatureLine}>{slot === "LEFT" ? layout.signatureLeft : slot === "RIGHT" ? layout.signatureRight : t("reportView.signatureParent")}</Text>
+              </View>
+            );
+          })}
+          {/* eslint-enable jsx-a11y/alt-text */}
         </View>
       ) : null}
 

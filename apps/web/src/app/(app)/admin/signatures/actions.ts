@@ -23,7 +23,7 @@ function failure(error: unknown): SignatureActionResult {
 async function run(work: (ctx: Awaited<ReturnType<typeof requireApiUser>>) => Promise<unknown>, paths: string[] = []): Promise<SignatureActionResult> {
   try {
     await work(await requireApiUser());
-    for (const path of ["/admin/signatures", ...paths]) revalidatePath(path);
+    for (const path of ["/admin/signatures", "/teacher/signatures", ...paths]) revalidatePath(path);
     return { ok: true };
   } catch (error) {
     return failure(error);
@@ -46,8 +46,9 @@ export async function decideSignatureAction(signatureId: string, approve: unknow
   let paper = "";
   const result = await run(async (ctx) => {
     const decided = await decidePaperSignature(ctx, signatureId, parsed.data.approve);
-    paper = decided.paperKind === "CERTIFICATE" ? `/certificates/${decided.paperId}` : `/report-cards/${decided.paperId}`;
+    paper = decided.paperKind === "CERTIFICATE" ? `/certificates/${decided.paperId}` : "/report-cards/[cardId]";
   });
-  if (result.ok && paper) revalidatePath(paper);
+  // A set's signature is on every card of the set: the cards' page is refreshed as a page, not one address of it.
+  if (result.ok && paper) revalidatePath(paper, paper.includes("[") ? "page" : undefined);
   return result;
 }

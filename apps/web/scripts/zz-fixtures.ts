@@ -634,7 +634,16 @@ export async function buildSignatures(school: { id: string }, people: { adminUse
     await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "RIGHT", role: "PRINCIPAL", status: "PENDING", requestedByUserId: people.adminUserId } });
     await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "SEAL", status: "SIGNED", png: seal, requestedByUserId: people.adminUserId, decidedAt: new Date() } });
   }
-  return { paperId: paper?.id ?? null };
+  // A published set of report cards, signed as a set: its class teacher's drawn, the head's waiting on all of its cards at once.
+  const card = await db.reportCard.findFirst({ where: { schoolId: school.id, status: "PUBLISHED" }, orderBy: [{ publishedAt: "asc" }, { id: "asc" }], select: { classId: true, title: true } });
+  const lead = card ? await db.classTeacher.findFirst({ where: { classId: card.classId, schoolId: school.id, role: "LEAD" }, select: { teacher: { select: { id: true, userId: true, user: { select: { name: true } } } } } }) : null;
+  if (card && lead) {
+    await db.signatureImage.upsert({ where: { membershipId: lead.teacher.id }, create: { schoolId: school.id, kind: "PERSON", membershipId: lead.teacher.id, png: signature }, update: { png: signature } });
+    const set = `${card.classId}|${card.title}`;
+    await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "REPORT_CARD_SET", paperId: set, slot: "LEFT", role: "TEACHER", status: "SIGNED", signerUserId: lead.teacher.userId, signerName: lead.teacher.user.name, png: signature, requestedByUserId: lead.teacher.userId, decidedAt: new Date() } });
+    await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "REPORT_CARD_SET", paperId: set, slot: "RIGHT", role: "PRINCIPAL", status: "PENDING", requestedByUserId: lead.teacher.userId } });
+  }
+  return { paperId: paper?.id ?? null, cardSet: card ? `${card.title}` : null };
 }
 
 export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
@@ -2255,7 +2264,7 @@ async function main() {
   console.log(`  Waiting for a yes: join ${waiting.join.id}, claim ${waiting.claim.id}; not the sweep's to decide: ${waiting.otherJoin?.id ?? "none"}, ${waiting.otherClaim?.id ?? "none"}`);
   const principal = await db.user.findUnique({ where: { email: `zz.principal@${DOMAIN}` }, select: { id: true } });
   const signatures = await buildSignatures(northgate.school, { adminUserId: northgate.admin.id, principalUserId: principal?.id });
-  console.log(`  Signatures: the admin's, the head's and the seal; on certificate ${signatures.paperId ?? "none"} the admin's drawn and the head's waiting`);
+  console.log(`  Signatures: the admin's, the head's and the seal; on certificate ${signatures.paperId ?? "none"} the admin's drawn and the head's waiting; on the report cards "${signatures.cardSet ?? "none"}" the class teacher's drawn and the head's waiting`);
   const recordChanges = await buildRecordChanges(northgate.school, northgate.admin.id, { pupilEmail: `zz.pupil01@${DOMAIN}`, waiting: true });
   console.log(`  Asks to change a record: declined ${recordChanges.declined}, waiting ${recordChanges.waiting ?? "none"}`);
   const southbank = await buildSouthbank(ctx);

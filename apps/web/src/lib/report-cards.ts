@@ -9,7 +9,8 @@ import { ensureSittings } from "./exams";
 import type { ExamKind } from "./constants";
 import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
-import type { CardCoScholastic, CardSubject, GradeBand, ReportCardLayout } from "@edulink/contracts";
+import type { CardCoScholastic, CardSubject, GradeBand, PaperSignatureView, ReportCardLayout } from "@edulink/contracts";
+import { cardSetId, paperSignatures, signOnIssue, unsignCardSet } from "./signatures";
 import { bandFor, combineTerms, DEFAULT_LAYOUT, kindWeighted, meanPercent, meanPoints, shownPercent, termSharesComplete, type PaperPart } from "./report-card-rules";
 import { readReportCardConfig } from "./report-card-config";
 
@@ -120,6 +121,11 @@ export type Card = {
   coScholastic: CardCoScholastic[];
   scale: { bands: GradeBand[]; coScale: { label: string; descriptor: string | null }[] };
   layout: ReportCardLayout;
+  /** The signatures of the set the card was published in, and the seal as the set keeps it; none on a draft. */
+  signatures: PaperSignatureView[];
+  seal: string | null;
+  /** How many cards the set holds: what one signature signs. */
+  setCount: number;
   scope: "TERM" | "YEAR" | "PAPERS";
 };
 
@@ -758,6 +764,9 @@ export async function publishCards(
     data: { status: "PUBLISHED", publishedAt: new Date() },
   });
 
+  // Signed as a set: the publisher's own line at once, the others waiting for whoever they are for, one approval for all the cards.
+  await signOnIssue(ctx, { kind: "REPORT_CARD_SET", id: cardSetId(classId, title), schoolId: ctx.schoolId!, title, studentName: klass.name, count: drafts.length }, { signerLeft: currentLayout.layout.signerLeft, signerRight: currentLayout.layout.signerRight, showSeal: currentLayout.layout.showSeal });
+
   await audit({
     schoolId: ctx.schoolId,
     actorUserId: ctx.user.id,
@@ -819,6 +828,8 @@ export async function withdrawCards(
     data: { status: "DRAFT", publishedAt: null, studentName: null },
   });
   if (result.count === 0) return { ok: false, errorKey: "reportCards.nothingUnderName" };
+  // Taken back, the set is unsigned: published again, it asks again.
+  await unsignCardSet(ctx.schoolId!, classId, title);
 
   await audit({
     schoolId: ctx.schoolId,
@@ -952,6 +963,8 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     return { percent: shown, letter: band?.label ?? null, points: band?.points ?? null };
   };
   const overall = rounded(card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000, card.overallLetter, null);
+  const signed = card.status === "PUBLISHED" ? await paperSignatures(ctx, { kind: "REPORT_CARD_SET", id: cardSetId(card.classId, card.title), schoolId: card.schoolId }) : { signatures: [], seal: null };
+  const setCount = signed.signatures.length > 0 ? await db.reportCard.count({ where: { schoolId: card.schoolId, classId: card.classId, title: card.title, status: "PUBLISHED" } }) : 1;
 
   return {
     id: card.id,
@@ -990,6 +1003,9 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     coScholastic: card.items.filter((i) => i.kind === "CO_SCHOLASTIC").map((i) => ({ area: i.title, grade: i.letter, note: i.comment })),
     scale: storedScale ? { bands: storedScale.bands, coScale: storedScale.coScale } : { bands: current.bands, coScale: current.coScholastic.scale },
     layout: { ...DEFAULT_LAYOUT, ...layoutSnapshot },
+    signatures: signed.signatures,
+    seal: signed.seal,
+    setCount,
     scope: card.termId ? "TERM" : card.academicYearId ? "YEAR" : "PAPERS",
     practice: (() => {
       if (!card.practice) return null;

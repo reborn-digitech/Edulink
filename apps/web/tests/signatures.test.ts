@@ -87,14 +87,15 @@ afterAll(async () => {
 });
 
 describe("a signature and the seal are set", () => {
-  it("by an admin and the head for themselves, the seal by the admin alone; a teacher and a parent have neither", async () => {
+  it("by an admin and the head for themselves, the seal by the admin alone; a parent has neither, and a certificate's line cannot be a teacher's", async () => {
     await as(null);
     expect((await signaturesGet()).status).toBe(401);
-    for (const who of ["TEACHER", "PARENT"] as const) {
-      await as(who);
-      expect((await signaturesGet()).status).toBe(403);
-      expect((await minePost(json("/api/v1/office/signatures/mine", { image: ADMIN_INK }))).status).toBe(403);
-    }
+    await as("PARENT");
+    expect((await signaturesGet()).status).toBe(403);
+    expect((await minePost(json("/api/v1/office/signatures/mine", { image: ADMIN_INK }))).status).toBe(403);
+    // A teacher signs report cards (tests/card-set-signatures.test.ts) and no certificate: a template cannot name one.
+    await as("ADMIN");
+    expect((await templatesPost(json("/api/v1/office/certificate-templates", { kind: "BONAFIDE", name: "ZZ teacher line", locale: "en", title: "Bonafide Certificate", intro: "", rows: [], outro: "", layout: layout({ signerLeft: "TEACHER" }), serialPrefix: "BC", active: true }))).status).toBe(422);
     await as("ADMIN");
     expect(await (await signaturesGet()).json()).toEqual({ mine: { image: null, updatedAt: null }, seal: { image: null, updatedAt: null }, canSetSeal: true, waiting: [] });
     expect((await minePost(json("/api/v1/office/signatures/mine", { image: ADMIN_INK }))).status).toBe(200);

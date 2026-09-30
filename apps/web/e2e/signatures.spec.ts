@@ -74,11 +74,12 @@ test("the head finds a paper waiting, opens it, signs it there, and the picture 
   const page = await context.newPage();
   expect((await page.goto("/admin/signatures", { waitUntil: "networkidle" }))?.status()).toBe(200);
   const waiting = page.getByTestId("signatures-waiting");
-  await expect(waiting.getByText("1 waiting")).toBeVisible();
+  // A certificate, and a set of report cards as one entry.
+  await expect(waiting.getByText("2 waiting")).toBeVisible();
   // The head reads the seal and does not set it.
   await expect(page.getByText("Only a school admin sets the seal.")).toBeVisible();
   await expect(page.getByTestId("signature-seal")).toHaveCount(0);
-  await waiting.getByRole("link", { name: "Open the paper" }).click();
+  await waiting.locator("li", { hasText: "Bonafide" }).or(waiting.locator("li").filter({ hasNotText: "report cards" })).first().getByRole("link", { name: "Open the paper" }).click();
   await page.waitForURL(/\/certificates\//);
   // The admin's signature and the seal are drawn; the head's line says it waits.
   await expect(page.getByTestId("certificate-signature-left")).toBeVisible();
@@ -88,9 +89,46 @@ test("the head finds a paper waiting, opens it, signs it there, and the picture 
   await expect(page.getByTestId("certificate-signature-right")).toBeVisible();
   await expect(page.getByTestId("signature-waits")).toHaveCount(0);
   await page.screenshot({ path: "e2e/results/certificate-signed.png", fullPage: true });
+  // The set of report cards: one entry for all of its cards, opened at one of them, signed there for all.
+  await page.goto("/admin/signatures", { waitUntil: "networkidle" });
+  const set = page.getByTestId("signatures-waiting").locator("li", { hasText: "report cards" });
+  await expect(set).toHaveCount(1);
+  await set.getByRole("link", { name: "Open the paper" }).click();
+  await page.waitForURL(/\/report-cards\//);
+  await expect(page.getByTestId("card-signature-left")).toBeVisible();
+  await expect(page.getByTestId("card-signature-right-pending")).toHaveText("Awaiting signature");
+  await expect(page.getByTestId("signature-waits")).toContainText("Signing here signs all of them.");
+  await page.getByTestId("signature-waits").getByTestId("sign-approve").click();
+  await expect(page.getByTestId("card-signature-right")).toBeVisible();
+  await page.screenshot({ path: "e2e/results/report-card-signed.png", fullPage: true });
   await page.goto("/admin/signatures", { waitUntil: "networkidle" });
   await expect(page.getByText("Nothing is waiting for you.")).toBeVisible();
   await context.close();
+});
+
+test("a teacher keeps a signature and no seal, and the rules offer the class teacher a line", async ({ browser, baseURL }) => {
+  const teacher = all.TEACHER!;
+  const context = await contextFor(browser, teacher.cookie, { viewport: VIEWPORTS.iphone, theme: "light", locale: "en" }, baseURL!);
+  const page = await context.newPage();
+  expect((await page.goto("/teacher/signatures", { waitUntil: "networkidle" }))?.status()).toBe(200);
+  await expect(page.getByTestId("signature-mine")).toBeVisible();
+  await expect(page.getByText("School seal")).toHaveCount(0);
+  expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
+  expect(await smallTargets(page), "interactive elements under 44px").toEqual([]);
+  expect(await seriousViolations(page, "signatures TEACHER light")).toEqual([]);
+  // The office's page is not a teacher's.
+  expect((await page.goto("/admin/signatures", { waitUntil: "networkidle" }))?.url()).not.toContain("/admin/signatures");
+  await context.close();
+
+  const office = await contextFor(browser, admin.cookie, { viewport: DESK, theme: "light", locale: "en" }, baseURL!);
+  const rules = await office.newPage();
+  expect((await rules.goto("/admin/report-cards", { waitUntil: "networkidle" }))?.status()).toBe(200);
+  await rules.getByTestId("rules-tab-layout").click();
+  await rules.getByTestId("layout-signerLeft").selectOption("TEACHER");
+  await rules.getByTestId("layout-showSeal").check();
+  await expect(rules.getByTestId("preview-signatures").getByText("signature")).toHaveCount(1);
+  await expect(rules.getByTestId("preview-signatures").getByText("seal")).toHaveCount(1);
+  await office.close();
 });
 
 test("the admin cannot sign the head's line, and the paper says so to nobody but the head", async ({ browser, baseURL }) => {

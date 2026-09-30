@@ -26,6 +26,16 @@ export type CertificateRow = z.infer<typeof certificateRowSchema>;
  */
 export const paperSignerSchema = z.enum(["NONE", "ADMIN", "PRINCIPAL"]);
 export type PaperSigner = z.infer<typeof paperSignerSchema>;
+/**
+ * Who signs a line of a REPORT CARD: the same, and the class's teacher, whose
+ * line a report card has and a certificate has not. A report card is
+ * published a class at a time, so its signatures are put and waited for a
+ * class at a time: one approval signs every card of the set.
+ */
+export const cardSignerSchema = z.enum(["NONE", "TEACHER", "ADMIN", "PRINCIPAL"]);
+export type CardSigner = z.infer<typeof cardSignerSchema>;
+export const signingRoleSchema = z.enum(["TEACHER", "ADMIN", "PRINCIPAL"]);
+export const paperKindSchema = z.enum(["CERTIFICATE", "REPORT_CARD_SET"]);
 
 export const certificateLayoutSchema = z.object({
   signerLeft: paperSignerSchema.default("NONE"),
@@ -249,7 +259,7 @@ export const paperSignatureStatusSchema = z.enum(["PENDING", "SIGNED", "DECLINED
 export const paperSignatureSchema = z.object({
   id: z.string(),
   slot: z.enum(["LEFT", "RIGHT"]),
-  role: z.enum(["ADMIN", "PRINCIPAL"]),
+  role: signingRoleSchema,
   status: paperSignatureStatusSchema,
   signerName: z.string().nullable(),
   /** The paper's own copy of the picture, once signed. */
@@ -268,8 +278,11 @@ export const signaturesViewSchema = z.object({
   waiting: z.array(
     z.object({
       id: z.string(),
-      paperKind: z.enum(["CERTIFICATE", "REPORT_CARD"]),
+      paperKind: paperKindSchema,
+      /** The certificate; or, for a set of report cards, one card of the set to open and read. */
       paperId: z.string(),
+      /** How many papers the one signature signs: 1 for a certificate, the class's cards for a set. */
+      count: count.default(1),
       title: z.string(),
       serial: z.string().nullable(),
       studentName: z.string(),
@@ -281,7 +294,7 @@ export const signaturesViewSchema = z.object({
 export type SignaturesView = z.infer<typeof signaturesViewSchema>;
 export const paperSignatureDecideSchema = z.object({ approve: z.boolean() });
 /** The paper the decision was about, and how the signature now stands. */
-export const paperSignatureDecidedSchema = z.object({ paperKind: z.enum(["CERTIFICATE", "REPORT_CARD"]), paperId: z.string(), status: paperSignatureStatusSchema });
+export const paperSignatureDecidedSchema = z.object({ paperKind: paperKindSchema, paperId: z.string(), status: paperSignatureStatusSchema });
 
 /* -------------------------------------------------------------------------- */
 /* A family's ask to change the record                                          */

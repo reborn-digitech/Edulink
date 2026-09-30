@@ -6,7 +6,7 @@ import { decidePaperSignature } from "@/lib/signatures";
 /** POST /api/v1/office/signatures/{signatureId}/decide — sign a paper that waited for the reader, or decline to. */
 export async function POST(request: Request, { params }: { params: Promise<{ signatureId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "TEACHER");
     const { signatureId } = await params;
     const parsed = paperSignatureDecideSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

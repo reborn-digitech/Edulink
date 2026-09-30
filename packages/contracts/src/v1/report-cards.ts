@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { cardSignerSchema, paperSignatureSchema } from "./certificates";
 
 /**
  * The configurable report card: the school's grading scale (a board's
@@ -28,6 +29,10 @@ export const examKindWeightsSchema = z.object({ UNIT_TEST: percent, MID_TERM: pe
 export type ExamKindWeights = z.infer<typeof examKindWeightsSchema>;
 
 export const reportCardLayoutSchema = z.object({
+  /** Who signs the left and the right line, and whether the seal is printed; the middle line is the parent's and is signed by hand. */
+  signerLeft: cardSignerSchema.default("NONE"),
+  signerRight: cardSignerSchema.default("NONE"),
+  showSeal: z.boolean().default(false),
   showAttendance: z.boolean(),
   showPractice: z.boolean(),
   showCoScholastic: z.boolean(),
@@ -126,6 +131,9 @@ export const cardExtrasSchema = z.object({
   /** "TERM" when built from one term, "YEAR" from the whole year, "PAPERS" from hand-picked papers. */
   scope: z.enum(["TERM", "YEAR", "PAPERS"]).optional(),
   pdfPath: z.string().optional(),
+  /** The signatures of the set this card was published in, and the seal as the set keeps it. */
+  signatures: z.array(paperSignatureSchema).optional(),
+  seal: z.string().nullable().optional(),
 });
 
 export const teachingCardsBundleQuerySchema = z.object({ title: z.string().trim().min(1).max(120) });

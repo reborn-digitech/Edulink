@@ -112,9 +112,9 @@ export async function SignedInShell({
     else hiddenHrefs.push("/joins");
   }
   // Papers somebody else issued that wait for this reader's signature: the count on the entry, which is always there.
-  if (role === "ADMIN" || role === "PRINCIPAL") {
+  if (role === "ADMIN" || role === "PRINCIPAL" || role === "TEACHER") {
     const toSign = await waitingSignatureCount(session);
-    if (toSign > 0) badges["/admin/signatures"] = toSign;
+    if (toSign > 0) badges[role === "TEACHER" ? "/teacher/signatures" : "/admin/signatures"] = toSign;
   }
   if (role === "PARENT") {
     const waiting = await waitingClaimCount(session);

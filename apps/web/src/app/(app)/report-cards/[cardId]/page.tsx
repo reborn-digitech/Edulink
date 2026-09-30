@@ -11,6 +11,7 @@ import { PersonLink } from "@/components/person-link";
 import Link from "next/link";
 import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
+import { SignPaper } from "@/components/certificates/sign-paper";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -85,6 +86,15 @@ export default async function ReportCardPage({
       <style>{`@page { size: ${layout.paper === "LETTER" ? "letter" : "A4"}; margin: 14mm }`}</style>
       {/* Off the sheet: the way back and the way onto paper. The page is
           designed for print and had neither. */}
+      {/* The reader whose signature this set waits for signs it here, having read a card of it. */}
+      {card.signatures
+        .filter((s) => s.can.decide)
+        .map((s) => (
+          <div key={s.id} className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-4 py-3 text-sm text-fg print:hidden" data-testid="signature-waits">
+            <span>{t("signatures.signsWholeSet", { count: card.setCount })}</span>
+            <SignPaper signatureId={s.id} label={[card.className, card.title].join(", ")} />
+          </div>
+        ))}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2 print:hidden">
         <Link href={backHref} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
           <ArrowLeftIcon weight="bold" className="size-4" />
@@ -386,14 +396,33 @@ export default async function ReportCardPage({
           </p>
         )}
 
-        {/* ---------------- signatures ---------------- */}
+        {/* ---------------- signatures ----------------
+            The class teacher's and the head's as the set keeps them, above their
+            lines; the parent's line between them is signed by hand. A line that
+            waits is printed bare, and says that it waits on the screen alone. */}
         {layout.showSignatures && (
-          <section className="mt-10 grid grid-cols-3 gap-4 text-center text-xs text-fg-muted print:text-black/70" data-testid="signatures">
-            {[layout.signatureLeft, t("reportView.signatureParent"), layout.signatureRight].map((who, index) => (
-              <div key={index} className="border-t border-border pt-2 print:border-black/40">
-                {who}
-              </div>
-            ))}
+          <section className="mt-8 grid grid-cols-3 items-end gap-4 text-center text-xs text-fg-muted print:text-black/70" data-testid="signatures">
+            {(["LEFT", "PARENT", "RIGHT"] as const).map((slot) => {
+              const signature = slot === "PARENT" ? undefined : card.signatures.find((s) => s.slot === slot);
+              return (
+                <div key={slot}>
+                  <div className="grid h-14 place-items-end justify-center">
+                    {signature?.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element -- the set's own copy, handed over as a data URL
+                      <img src={signature.image} alt={t("signatures.signedBy", { name: signature.signerName ?? "" })} className="max-h-14 max-w-full object-contain" data-testid={`card-signature-${slot.toLowerCase()}`} />
+                    ) : signature ? (
+                      <span className="mb-1 rounded-full border border-border px-2 py-0.5 text-[0.6875rem] print:hidden" data-testid={`card-signature-${slot.toLowerCase()}-${signature.status.toLowerCase()}`}>
+                        {t(signature.status === "DECLINED" ? "signatures.declinedLine" : "signatures.awaiting")}
+                      </span>
+                    ) : slot === "PARENT" && card.seal ? (
+                      // eslint-disable-next-line @next/next/no-img-element -- the set's own copy, handed over as a data URL
+                      <img src={card.seal} alt={t("signatures.sealTitle")} className="size-14 object-contain" data-testid="card-seal" />
+                    ) : null}
+                  </div>
+                  <div className="border-t border-border pt-2 print:border-black/40">{slot === "LEFT" ? layout.signatureLeft : slot === "RIGHT" ? layout.signatureRight : t("reportView.signatureParent")}</div>
+                </div>
+              );
+            })}
           </section>
         )}
 
