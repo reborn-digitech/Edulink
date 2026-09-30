@@ -160,13 +160,16 @@ export function TypingSwitch({ className }: { className?: string }) {
       setHint(null);
     };
     const onBlur = () => setHint(null);
+    // The bubble is placed where the box was; a page scrolled under it would leave it stranded, so it goes until the next keystroke.
     document.addEventListener("input", onInput, true);
     document.addEventListener("keydown", onKeyDown, true);
     document.addEventListener("focusout", onBlur, true);
+    document.addEventListener("scroll", onBlur, true);
     return () => {
       document.removeEventListener("input", onInput, true);
       document.removeEventListener("keydown", onKeyDown, true);
       document.removeEventListener("focusout", onBlur, true);
+      document.removeEventListener("scroll", onBlur, true);
       if (engine === me) engine = null;
     };
   }, []);
