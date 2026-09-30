@@ -24,6 +24,16 @@ on the ZZ fixture (`npm run zz:fixtures` first).
   cannot fill stopping the save, and one template saved, read back from the database
   and removed ("ZZ e2e template …", ZZ Northgate's).
 
+- `signatures.spec.ts` — a signature signed in the box and kept, a paper that waits opened
+  and signed by the head, and no way offered to sign a line that is somebody else's.
+- `report-card-rules.spec.ts` — the rules' four sections: the scale drawn as it is typed,
+  the totals of the weights, the areas as a list, the sample card following the form, and
+  one save that writes the terms' shares with the rest. ZZ Northgate's rules are put back.
+
+The suite runs ONE FILE AT A TIME (`workers: 1`): two of the files set their actor's
+language to Hindi, and a file beside them signed in as the same actor failed on an English
+word. Restart the dev server after the last edit and before a full run.
+
 A picture of an element taller than the window is taken with everything pinned to the
 window hidden (`hidePinned` in `checks.ts`); never run two Playwright runs at once.
 

@@ -26,13 +26,14 @@ export default async function ReportCardRulesPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
 
-  const [view, newest] = await Promise.all([
+  const [view, school, newest] = await Promise.all([
     reportCardConfigView(ctx),
+    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { name: true } }),
     db.reportCard.findFirst({ where: { schoolId: ctx.schoolId, status: "PUBLISHED" }, orderBy: { publishedAt: "desc" }, select: { id: true } }),
   ]);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-6">
+    <div className="mx-auto max-w-6xl space-y-6">
       <PageHeader
         title={t("reportCardConfig.title")}
         description={t("reportCardConfig.intro")}
@@ -44,9 +45,8 @@ export default async function ReportCardRulesPage() {
           ) : undefined
         }
       />
-      {/* No key on the form: a term weight saved on blur refreshes the page, and the
-          bands the office was halfway through typing must survive that. */}
-      <RulesForm view={view} readOnly={ctx.role !== "ADMIN"} />
+      {/* No key on the form: a save refreshes the page, and what the office has typed since must survive that. */}
+      <RulesForm view={view} schoolName={school.name} readOnly={ctx.role !== "ADMIN"} />
     </div>
   );
 }
