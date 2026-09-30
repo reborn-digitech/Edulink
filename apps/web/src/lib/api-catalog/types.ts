@@ -124,6 +124,8 @@ export type SweepFixture = {
   recordChangeId: string | null;
   /** A settled signature on a fixture certificate (deciding it answers it as it stands), and a small PNG to set one with. */
   paperSignatureId: string | null;
+  /** A signed line on a certificate of a pupil who is NOT the sweep's pupil, for the cross-person probe. */
+  otherPupilSignatureId: string | null;
   signaturePng: string | null;
   /** Admissions: the open cycle (and its body to send back), a closed empty one for the purge, a grade it takes, the sweep parent's application with its booked sitting, a cancelled sitting, and one application in each settled state. */
   admissionCycleId: string | null;

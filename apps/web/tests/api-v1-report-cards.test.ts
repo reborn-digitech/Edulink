@@ -190,7 +190,7 @@ describe("a term card", () => {
     cardA = a.id;
     cardB = b.id;
     expect(a.overallLetter).toBe("A");
-    const rowA = await db.reportCard.findUniqueOrThrow({ where: { id: cardA }, select: { subjects: true, overallPercentMilli: true, gradingMethod: true, academicYearId: true, termId: true, scale: true, layout: true, items: { select: { subject: true, letter: true, kind: true } } } });
+    const rowA = await db.reportCard.findUniqueOrThrow({ where: { id: cardA }, select: { subjects: true, overallPercentMilli: true, gradingMethod: true, academicYearId: true, termId: true, scale: true, layout: true, items: { orderBy: { position: "asc" }, select: { subject: true, letter: true, kind: true } } } });
     const subjects = JSON.parse(rowA.subjects!) as { subject: string; percent: number; letter: string; parts: { weight: number | null }[] }[];
     expect(subjects.map((s) => [s.subject, s.percent, s.letter])).toEqual([["Mathematics", 77, "A"], ["English", 100, "A"]]);
     expect(subjects[0]!.parts.map((p) => p.weight)).toEqual([40, 60]);

@@ -634,6 +634,9 @@ export async function buildSignatures(school: { id: string }, people: { adminUse
     await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "RIGHT", role: "PRINCIPAL", status: "PENDING", requestedByUserId: people.adminUserId } });
     await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: paper.id, slot: "SEAL", status: "SIGNED", png: seal, requestedByUserId: people.adminUserId, decidedAt: new Date() } });
   }
+  // And the admin's signature on a second certificate, another pupil's, for the cross-person probe to be refused.
+  const other = await db.issuedCertificate.findFirst({ where: { schoolId: school.id, revokedAt: null, ...(paper ? { id: { not: paper.id } } : {}) }, orderBy: { issuedAt: "asc" }, select: { id: true } });
+  if (other && admin) await db.paperSignature.create({ data: { schoolId: school.id, paperKind: "CERTIFICATE", paperId: other.id, slot: "LEFT", role: "ADMIN", status: "SIGNED", signerUserId: people.adminUserId, signerName: admin.user.name, png: signature, requestedByUserId: people.adminUserId, decidedAt: new Date() } });
   // A published set of report cards, signed as a set: its class teacher's drawn, the head's waiting on all of its cards at once.
   const card = await db.reportCard.findFirst({ where: { schoolId: school.id, status: "PUBLISHED" }, orderBy: [{ publishedAt: "asc" }, { id: "asc" }], select: { classId: true, title: true } });
   const lead = card ? await db.classTeacher.findFirst({ where: { classId: card.classId, schoolId: school.id, role: "LEAD" }, select: { teacher: { select: { id: true, userId: true, user: { select: { name: true } } } } } }) : null;
@@ -2269,6 +2272,8 @@ async function main() {
   console.log(`  Asks to change a record: declined ${recordChanges.declined}, waiting ${recordChanges.waiting ?? "none"}`);
   const southbank = await buildSouthbank(ctx);
   await buildRecordChanges(southbank.school, southbank.admin.id, { tag: "southbank" });
+  // One certificate at the second school, with a signed line on it, so the cross-school probe has a picture address to be refused.
+  await buildCertificates(southbank.school, southbank.admin.id, { grade: "6", recordGrades: [], templates: [{ kind: "BONAFIDE", locale: "en" }], issues: [{ key: "BONAFIDE-en", pupil: 0, number: 1, purpose: "a bus pass" }] });
   await buildSignatures(southbank.school, { adminUserId: southbank.admin.id });
   // The same pair at the second school, for Northgate's staff to be refused from outside.
   await buildWaiting(ctx, southbank.school, { tag: "southbank" });

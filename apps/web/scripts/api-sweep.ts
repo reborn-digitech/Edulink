@@ -71,7 +71,7 @@ async function reportCardFixture(s: string): Promise<{ reportCardId: string | nu
 const SWEEP_PNG = `data:image/png;base64,${fixturePng(32, 16).toString("base64")}`;
 
 /** The ZZ certificates: an active template (and its body to send back), a retired one, an issued certificate, one still to revoke, and a printed code. */
-async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; signaturePng: string | null }> {
+async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null }> {
   const [active, retired, issued, revocable] = await Promise.all([
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: true, kind: "BONAFIDE" }, orderBy: { createdAt: "asc" } }),
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: false }, orderBy: { createdAt: "asc" }, select: { id: true } }),
@@ -97,7 +97,9 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
   const recordChange = await db.recordChangeRequest.findFirst({ where: { schoolId: s, id: { in: ["zz-fixture-record-change", "zz-fixture-record-change-southbank"] }, status: { not: "PENDING" } }, select: { id: true } });
   // The fixture's settled signature (zz-fixtures.ts `buildSignatures`), whose decision is answered as it stands.
   const paperSignature = await db.paperSignature.findFirst({ where: { schoolId: s, status: { not: "PENDING" }, slot: { in: ["LEFT", "RIGHT"] } }, orderBy: { id: "asc" }, select: { id: true } });
-  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, signaturePng: SWEEP_PNG };
+  // A signed line on another pupil's certificate (zz-fixtures.ts `buildSignatures`): what the sweep's pupil and parent must be refused.
+  const otherPupilSignature = await db.paperSignature.findFirst({ where: { schoolId: s, paperKind: "CERTIFICATE", status: "SIGNED", slot: "LEFT", paperId: { in: (await db.issuedCertificate.findMany({ where: { schoolId: s, student: { user: { email: { not: "zz.pupil01@zz.test" } } } }, select: { id: true } })).map((c) => c.id) } }, orderBy: { id: "asc" }, select: { id: true } });
+  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG };
 }
 
 /** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
@@ -399,6 +401,14 @@ async function crossProbe(mode: "school" | "person") {
         tried.push(`POST ${e.path} as ${role}`);
       }
     } else skipped.push("POST /api/v1/family/record/changes/{requestId}/withdraw (no ask waiting on another family's child in the fixtures)");
+    // A picture on another pupil's certificate: the sweep's pupil and their parent are refused it.
+    if (homeFx.otherPupilSignatureId) {
+      const e = ENDPOINTS.find((x) => x.method === "GET" && x.path === "/api/v1/shared/signatures/{signatureId}")!;
+      for (const role of ["PARENT", "STUDENT"] as const) {
+        await check(e, role, `/api/v1/shared/signatures/${homeFx.otherPupilSignatureId}`, null, "a picture on another pupil's certificate");
+        tried.push(`GET ${e.path} as ${role}`);
+      }
+    } else skipped.push("GET /api/v1/shared/signatures/{signatureId} (no signed line on another pupil's certificate in the fixtures)");
     const untaughtNeedles = untaughtPupil ? [untaughtPupil.studentMembershipId, await nameOf(untaughtPupil.studentMembershipId)] : [];
     for (const e of ENDPOINTS) {
       if (e.access === "anyone" || PLATFORM_WIDE.some((re) => re.test(e.path))) continue;
