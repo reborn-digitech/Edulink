@@ -30,8 +30,9 @@ Experts and teachers may do work through the platform that is first given free a
 - The meeting link is shown to the pupil and their guardians only while the seat is confirmed, and to the office never.
 - A teacher's guidance draws on the same two one-to-ones a year as an expert's, since that is the arithmetic the allowance was set by.
 - A provider's free duty is counted and shown to them; nothing yet enforces it, there being nothing yet to charge for.
+- A confirmed seat in a session that starts within a day is reminded once to the pupil and their guardians, and the provider once for the slot, by the hourly job `gigs:remind`.
 
-**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds), reminders before a session, the phone's screens for any of this.
+**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds), and the phone's screens for any of this.
 
 ## The invariants of what is built
 

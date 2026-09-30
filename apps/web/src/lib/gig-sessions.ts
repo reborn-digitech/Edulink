@@ -567,6 +567,34 @@ export async function rateBooking(ctx: ActiveContext, bookingId: string, input: 
   return { ok: true };
 }
 
+/**
+ * The job (gigs:remind, hourly): a confirmed seat in a session that starts
+ * within a day is told to the pupil and their guardians once, and its provider
+ * is told once for the slot. The row is claimed before anybody is told, so two
+ * runs at once remind a family once.
+ */
+export async function remindSessions(now: Date = new Date()): Promise<{ reminded: number; perSchool: Record<string, { reminded: number }> }> {
+  const due = await db.gigBooking.findMany({
+    where: { status: "CONFIRMED", remindedAt: null, slot: { cancelledAt: null, startsAt: { gt: now, lte: new Date(now.getTime() + 24 * HOUR) } } },
+    orderBy: { createdAt: "asc" },
+    take: 500,
+    select: { id: true, schoolId: true, studentMembershipId: true, slotId: true, student: { select: { userId: true } }, slot: { select: { title: true, providerUserId: true, providerKind: true } } },
+  });
+  const perSchool: Record<string, { reminded: number }> = {};
+  let reminded = 0;
+  for (const b of due) {
+    // The provider is told when the first seat of their slot is reminded, and not again for the seats after it.
+    const first = (await db.gigBooking.count({ where: { slotId: b.slotId, remindedAt: { not: null } } })) === 0;
+    const claimed = await forSchool(b.schoolId, () => db.gigBooking.updateMany({ where: { id: b.id, schoolId: b.schoolId, status: "CONFIRMED", remindedAt: null }, data: { remindedAt: now } }));
+    if (claimed.count === 0) continue;
+    await tellFamily(b, b.student.userId, () => ({ kind: noteKind(b.slot.providerKind), titleKey: "gigs.notifRemind", titleVars: { title: b.slot.title }, url: "/sessions" }));
+    if (first) await tellProvider(b.schoolId, b.slot, "gigs.notifRemind", {});
+    reminded += 1;
+    (perSchool[b.schoolId] ??= { reminded: 0 }).reminded += 1;
+  }
+  return { reminded, perSchool };
+}
+
 /* -------------------------------------------------------------------------- */
 /* The school's office                                                         */
 /* -------------------------------------------------------------------------- */

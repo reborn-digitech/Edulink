@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import { gigSettings } from "@/lib/gig-questions";
-import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, familySessions, mySlots, offerSlot, rateBooking, reportUnheld, schoolSessions, sessionCounts, setTeacherGuidance } from "@/lib/gig-sessions";
+import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, familySessions, mySlots, offerSlot, rateBooking, remindSessions, reportUnheld, schoolSessions, sessionCounts, setTeacherGuidance } from "@/lib/gig-sessions";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -330,6 +330,33 @@ describe("sessions and workshops", () => {
     expect(await setTeacherGuidance(admin(), false)).toMatchObject({ ok: true, guidanceOn: false });
     await expect(offerSlot(teacher(), slot("ONE_TO_ONE"))).rejects.toMatchObject({ key: "gigs.refuseGuidanceOff" });
     expect(await db.gigBooking.count({ where: { providerUserId: id.teacher!, status: "DELIVERED" } })).toBe(1);
+  });
+
+  it("a confirmed seat in a session that starts within a day is reminded once: the pupil, their guardian, and the provider once for the slot", async () => {
+    const slotId = await offer(expert(), "WORKSHOP", 1100, { seats: 3 });
+    await bookSeat(gq(), { slotId, studentMembershipId: member.q, purpose: "ZZ A workshop to be reminded of" });
+    const waiting = await bookSeat(p2(), { slotId, purpose: "ZZ p2 asks and nobody has agreed yet" });
+    expect(waiting).toMatchObject({ ok: true, status: "PENDING_CONSENT" });
+    const starts = (await db.gigSlot.findUniqueOrThrow({ where: { id: slotId } })).startsAt;
+    // Two days before: nobody is reminded of this one.
+    await remindSessions(new Date(starts.getTime() - 48 * HOUR));
+    expect(await notes("gq", "starts within a day")).toBe(0);
+    // Six hours before: the family and the expert, once; the seat no guardian agreed to is not reminded.
+    const eve = new Date(starts.getTime() - 6 * HOUR);
+    const run = await remindSessions(eve);
+    expect(run.perSchool[school.b]).toEqual({ reminded: 1 });
+    expect(await notes("q", "starts within a day")).toBe(1);
+    expect(await notes("gq", "starts within a day")).toBe(1);
+    expect(await notes("expert", "starts within a day")).toBe(1);
+    expect(await notes("g2", "starts within a day")).toBe(0);
+    // Agreed to after the first run: the family is reminded at the next, the expert not again.
+    await consentToBooking(g2(), waiting.ok ? waiting.bookingId : "", true, eve);
+    const again = await remindSessions(new Date(eve.getTime() + HOUR));
+    expect(again.perSchool[school.a]).toEqual({ reminded: 1 });
+    expect(again.perSchool[school.b]).toBeUndefined();
+    expect(await notes("g2", "starts within a day")).toBe(1);
+    expect(await notes("expert", "starts within a day")).toBe(1);
+    expect((await remindSessions(new Date(eve.getTime() + 2 * HOUR))).reminded).toBe(0);
   });
 
   it("the operator counts what is on offer and nobody else does", async () => {

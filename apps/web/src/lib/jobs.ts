@@ -11,6 +11,7 @@ import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
 import { deliverQueuedCirculars } from "./circulars";
+import { remindSessions } from "./gig-sessions";
 import { expireOffers } from "./admissions";
 import { expireInvites } from "./invites";
 import { refreshMinority } from "./birthdate";
@@ -40,7 +41,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -216,6 +217,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { delivered, recipients, perSchool } = await deliverQueuedCirculars();
       return { summary: { delivered, recipients }, perSchool };
+    },
+  },
+  "gigs:remind": {
+    name: "gigs:remind",
+    // Hourly: a confirmed seat in a session that starts within a day is told
+    // to the family once and its provider once for the slot.
+    schedule: "20 * * * *",
+    describeKey: "root.jobDescGigsRemind",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: 3 * HOUR,
+    run: async () => {
+      const { reminded, perSchool } = await remindSessions();
+      return { summary: { reminded }, perSchool };
     },
   },
   "messages:send": {

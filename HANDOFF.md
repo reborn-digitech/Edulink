@@ -190,7 +190,8 @@ end-to-end in staging.
   for a guardian, the link shows only while a seat is confirmed, and the office reads and may
   cancel every booking of its pupils (`/admin/sessions`). Not built: paying past the allowance
   and the gateway split, which wait on a lawyer's opinion and an accountant (see the decision);
-  reminders; the phone.
+  the phone. The hourly job `gigs:remind` tells a family and the provider of a session that starts
+  within a day, once.
 - **Minors' data policy** (decision 0002). No Aadhaar, ever. Free-text reasons stay out of audit rows,
   push bodies to minors are generic, retention is a schedule with dials, and every column a report
   reads is listed with who may enter it.

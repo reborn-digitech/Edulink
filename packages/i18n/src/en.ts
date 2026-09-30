@@ -2645,6 +2645,7 @@ export const en = {
     jobDescAccountsTidy: "Marks invitations past their date as expired and, from their date of birth, stops counting pupils who have turned eighteen as minors.",
     jobDescExpireOffers: "Marks admission offers the family did not answer by their date as expired, and tells the family.",
     jobDescCirculars: "Tells a circular's audience the moment it is published — a push to everyone with the app, a text to the families where the school allows — when the audience was too large to tell in the request.",
+    jobDescGigsRemind: "Reminds a pupil, their guardians and the provider of a session or workshop that starts within a day, once.",
     jobDescMessages: "Sends the texts queued for families — a notice to a thousand guardians goes out a few hundred a minute.",
     jobs: "Jobs",
     jobsAllRunning: "Every scheduled job has run when it should.",
@@ -3786,6 +3787,7 @@ export const en = {
     sameAsPaper: "Same as the paper",
   },
   gigs: {
+    notifRemind: "{title} starts within a day",
     sessionsTitle: "Sessions and workshops",
     sessionsIntro: "One-to-one time with an expert or a teacher, and workshops, held on the provider's own meeting link. Each pupil has a free allowance in a school year.",
     allowanceLine: "Free this school year: {oneLeft} of {oneAllowed} one-to-ones and {workLeft} of {workAllowed} workshop seats left.",
