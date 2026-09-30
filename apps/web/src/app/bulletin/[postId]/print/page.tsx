@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fontStack } from "@/lib/fonts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AccessError, requireUser } from "@/lib/tenancy";
@@ -72,12 +73,16 @@ export default async function CircularPrintPage({ params }: { params: Promise<{ 
 
         <h2 className={`mt-8 text-center text-xl font-bold uppercase ${latin ? "tracking-[0.2em]" : ""}`}>{t("circulars.printTitle")}</h2>
 
-        <h3 className="mt-6 text-2xl font-bold leading-snug" data-testid="circular-print-title">
+        <h3 style={{ fontFamily: fontStack(post.font, locale) }} className="mt-6 text-2xl font-bold leading-snug" data-testid="circular-print-title">
           {post.title}
         </h3>
         {post.class?.name && <p className="mt-1 text-sm text-[#444]">{post.class.name}</p>}
 
-        {post.body && <p className="mt-5 whitespace-pre-wrap text-base leading-relaxed">{post.body}</p>}
+        {post.body && (
+          <p style={{ fontFamily: fontStack(post.font, locale) }} className="mt-5 whitespace-pre-wrap text-base leading-relaxed">
+            {post.body}
+          </p>
+        )}
 
         {images.length > 0 && (
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">

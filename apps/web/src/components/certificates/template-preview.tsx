@@ -3,6 +3,7 @@
 import type { CertificateLayout } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";
 import { useT } from "@/lib/i18n";
+import { fontStack } from "@/lib/fonts";
 
 /**
  * The certificate as it will print, filled for the sample pupil in the
@@ -27,7 +28,7 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
         <h3 className="text-sm font-semibold text-fg">{t("certificates.preview")}</h3>
         <p className="text-xs leading-relaxed text-fg-muted">{t("certificates.previewHint")}</p>
       </div>
-      <div lang={locale} className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm">
+      <div lang={locale} style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
         <header className="flex items-start gap-3 border-b border-border pb-3">
           {layout.showLogo && <div aria-hidden="true" className="size-10 shrink-0 rounded-[--radius-md] border border-dashed border-border-strong" />}
           <div className="min-w-0 flex-1">

@@ -1034,6 +1034,12 @@ export function gradingHintKey(card: Pick<Card, "overallPercent" | "gradingMetho
   return "reportView.acrossBelow";
 }
 
+export async function mayReadCard(ctx: ActiveContext, card: { classId: string; studentMembershipId: string; status: string; schoolId: string }): Promise<boolean> {
+  // A guardian has no school; everybody else must stand at the card's.
+  if (ctx.role !== "PARENT" && ctx.schoolId !== card.schoolId) return false;
+  return mayRead(ctx, card);
+}
+
 async function mayRead(
   ctx: ActiveContext,
   card: { classId: string; studentMembershipId: string; status: string },

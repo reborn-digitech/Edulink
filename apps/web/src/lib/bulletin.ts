@@ -34,6 +34,8 @@ export type FeedPost = {
   id: string;
   scope: PostScope;
   category: PostCategory;
+  /** The typeface the post is set in, by the web's key (src/lib/fonts.ts). */
+  font: string;
   title: string;
   body: string;
   tags: string[];
@@ -386,6 +388,7 @@ export async function listFeed(
       id: post.id,
       scope: post.scope as PostScope,
       category: post.category as PostCategory,
+      font: post.font,
       title: post.title,
       body: post.body,
       tags: readJsonArray<string>(post.tags),
@@ -538,6 +541,7 @@ export async function createPost(
     tags: string[];
     media: MediaItem[];
     category?: PostCategory;
+    font?: string;
     audience?: PostAudience;
     audienceGrade?: string;
     requiresAck?: boolean;
@@ -616,6 +620,7 @@ export async function createPost(
       authorMembershipId: membershipId,
       scope: input.scope,
       category: input.category ?? "UPDATES",
+      font: input.font ?? "default",
       title: input.title,
       body: input.body,
       tags: writeJson(input.tags),

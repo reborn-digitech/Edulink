@@ -33,10 +33,13 @@ import type { ActiveContext } from "./session";
  * picture as it was when the paper was signed; a signature changed or
  * removed afterwards changes the next paper and not the last.
  *
- * THE PICTURE IS NEVER A LINK. It is kept in the row, read only to be drawn
- * on a paper its reader may already see, and handed over inside that
- * paper's own answer. There is no address at which a signature can be
- * fetched by itself.
+ * THE PICTURE IS FETCHED BY AN ADDRESS THAT ASKS WHO IS ASKING. It was
+ * handed over inside the paper's own answer as a data URL, and a signature
+ * drawn by hand is twenty kilobytes of it: the page's stream broke on it
+ * twice under a full run ("ArrayBuffer is not detachable", 2026-09-30).
+ * The answer now carries an address, /api/v1/shared/signatures/{id}, which
+ * gives the picture only to a reader the paper's own rule lets in, and
+ * /api/v1/office/signatures/image for one's own and the seal.
  *
  * The audit log carries who set, removed, signed and declined, and which
  * paper; never the picture.
@@ -84,6 +87,8 @@ export function pngFrom(dataUrl: string, limit: { bytes: number; width: number; 
 }
 
 export const pngUrl = (png: Uint8Array | null | undefined): string | null => (png && png.length > 0 ? `data:image/png;base64,${Buffer.from(png).toString("base64")}` : null);
+/** The address a paper's copy of a picture is fetched at; the row's id is the address, and the paper's rule the lock. */
+export const signatureUrl = (row: { id: string; png: Uint8Array | null }): string | null => (row.png && row.png.length > 0 ? `/api/v1/shared/signatures/${row.id}` : null);
 
 function signer(ctx: ActiveContext): { schoolId: string; membershipId: string; role: SignerRole } {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SIGNERS as readonly string[]).includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
@@ -188,12 +193,60 @@ export async function paperSignatures(ctx: ActiveContext, paper: { kind: PaperKi
       role: r.role as SignerRole,
       status: r.status as PaperSignatureView["status"],
       signerName: r.signerName,
-      image: r.status === "SIGNED" ? pngUrl(r.png) : null,
+      image: r.status === "SIGNED" ? signatureUrl(r) : null,
       decidedAt: r.decidedAt?.toISOString() ?? null,
       can: { decide: decidable.has(r.id) },
     }));
   const seal = rows.find((r) => r.slot === "SEAL" && r.status === "SIGNED");
-  return { signatures, seal: pngUrl(seal?.png) };
+  return { signatures, seal: seal ? signatureUrl(seal) : null };
+}
+
+/** One's own signature or the school's seal, as bytes, for the office's page. */
+export async function ownImage(ctx: ActiveContext, of: "mine" | "seal"): Promise<Uint8Array | null> {
+  const me = signer(ctx);
+  const row = of === "mine" ? await db.signatureImage.findFirst({ where: { membershipId: me.membershipId, schoolId: me.schoolId, kind: "PERSON" }, select: { png: true } }) : await db.signatureImage.findFirst({ where: { schoolId: me.schoolId, kind: "SEAL" }, select: { png: true } });
+  return row?.png ?? null;
+}
+
+/**
+ * A paper's copy of a picture, for a reader the PAPER's own rule lets in: the
+ * certificate's, or for a set any card of it. Nobody fetches a picture of
+ * a paper they could not open.
+ */
+export async function paperImage(ctx: ActiveContext, signatureId: string): Promise<Uint8Array | null> {
+  const row = await db.paperSignature.findFirst({ where: { id: signatureId }, select: { schoolId: true, paperKind: true, paperId: true, status: true, png: true } });
+  if (!row || row.status !== "SIGNED" || !row.png) return null;
+  if (row.paperKind === "CERTIFICATE") {
+    const { mayReadCertificate } = await import("./certificates");
+    const cert = await db.issuedCertificate.findFirst({ where: { id: row.paperId, schoolId: row.schoolId }, select: { schoolId: true, studentMembershipId: true } });
+    if (!cert || !(await mayReadCertificate(ctx, cert))) return null;
+    return row.png;
+  }
+  const { mayReadCard } = await import("./report-cards");
+  const { classId, title } = cardSetOf(row.paperId);
+  const cards = await db.reportCard.findMany({ where: { schoolId: row.schoolId, classId, title }, select: { classId: true, studentMembershipId: true, status: true, schoolId: true } });
+  for (const card of cards) if (await mayReadCard(ctx, card)) return row.png;
+  return null;
+}
+
+/** The pictures a paper's view names, as bytes by slot, for a PDF whose reader the route has already let in. */
+export async function paperImages(view: { signatures: { slot: "LEFT" | "RIGHT"; image: string | null }[]; seal: string | null }): Promise<Partial<Record<"LEFT" | "RIGHT" | "SEAL", Uint8Array>>> {
+  const idOf = (url: string | null) => url?.match(/\/api\/v1\/shared\/signatures\/([a-z0-9]+)$/)?.[1] ?? null;
+  const wanted: { slot: "LEFT" | "RIGHT" | "SEAL"; id: string }[] = [];
+  for (const s of view.signatures) {
+    const id = idOf(s.image);
+    if (id) wanted.push({ slot: s.slot, id });
+  }
+  const seal = idOf(view.seal);
+  if (seal) wanted.push({ slot: "SEAL", id: seal });
+  if (wanted.length === 0) return {};
+  const rows = await db.paperSignature.findMany({ where: { id: { in: wanted.map((w) => w.id) }, status: "SIGNED" }, select: { id: true, png: true } });
+  const out: Partial<Record<"LEFT" | "RIGHT" | "SEAL", Uint8Array>> = {};
+  for (const w of wanted) {
+    const png = rows.find((r) => r.id === w.id)?.png;
+    if (png) out[w.slot] = png;
+  }
+  return out;
 }
 
 /** The owner signs a paper that waited for them, or declines to. A settled one is left as it stands. */
@@ -280,7 +333,9 @@ export async function signaturesView(ctx: ActiveContext): Promise<SignaturesView
     seen.add(`${p.paperKind}:${p.paperId}`);
     waiting.push({ id: p.id, paperKind: p.paperKind as PaperKind, paperId: named.openId, count: named.count, title: named.title, serial: named.serial, studentName: named.studentName, requestedByName: p.requestedByUserId ? (asker.get(p.requestedByUserId) ?? null) : null, createdAt: p.createdAt.toISOString() });
   }
-  return { mine: { image: pngUrl(own?.png), updatedAt: own?.updatedAt.toISOString() ?? null }, seal: { image: pngUrl(seal?.png), updatedAt: seal?.updatedAt.toISOString() ?? null }, canSetSeal: me.role === "ADMIN", waiting };
+  // The address carries the time it was last set, so a browser does not show yesterday's picture from its cache.
+  const at = (row: { png: Uint8Array; updatedAt: Date } | null, of: "mine" | "seal") => (row && row.png.length > 0 ? `/api/v1/office/signatures/image?of=${of}&v=${row.updatedAt.getTime()}` : null);
+  return { mine: { image: at(own, "mine"), updatedAt: own?.updatedAt.toISOString() ?? null }, seal: { image: at(seal, "seal"), updatedAt: seal?.updatedAt.toISOString() ?? null }, canSetSeal: me.role === "ADMIN", waiting };
 }
 
 /** How many papers wait for the reader, for the menu's count. Nothing for somebody who signs nothing. */

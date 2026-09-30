@@ -71,6 +71,8 @@ function actionMessages(source: string): string[] {
 const SKIP_EXACT = new Set([
   "Relay", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
   "Mac", "Windows", "Linux", "PDF", "PNG", "JPEG", "WebP", "GIF", "CSV", "SMS",
+  // The bundled typefaces, by the names their files give them (src/lib/fonts.ts).
+  "Noto Sans Devanagari", "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Noto Sans", "Noto Serif",
 ]);
 
 const PROPS = ["title", "description", "label", "placeholder", "hint", "alt", "aria-label", "empty", "cta"];

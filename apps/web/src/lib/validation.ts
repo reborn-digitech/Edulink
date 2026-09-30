@@ -301,6 +301,8 @@ export const postSchema = z.object({
   // Defaulted rather than required so every form shipped before categories
   // existed still parses; the composer always sends one explicitly.
   category: z.enum(POST_CATEGORIES).default("UPDATES"),
+  /** The typeface, by the web's key; "default" is the reader's own. */
+  font: z.string().trim().regex(/^[a-z]{1,40}$/).default("default"),
   classId: z.string().cuid().optional().or(z.literal("")),
   // Targeting; the lib re-checks that only staff may narrow or require an ack,
   // so a forged student form degrades to an ordinary everyone-post.

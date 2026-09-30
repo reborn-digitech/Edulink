@@ -10,6 +10,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { RevokeForm } from "./revoke-form";
 import { SignPaper } from "@/components/certificates/sign-paper";
+import { fontStack } from "@/lib/fonts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -98,7 +99,7 @@ export default async function CertificatePage({ params, searchParams }: { params
         </p>
       )}
 
-      <div className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
+      <div style={{ fontFamily: fontStack(layout.font, cert.locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8" data-testid="certificate-sheet">
         {/* ---------------- letterhead ---------------- */}
         <header className="flex items-start gap-4 border-b border-border pb-5 print:border-black/20">
           {logoUrl && (

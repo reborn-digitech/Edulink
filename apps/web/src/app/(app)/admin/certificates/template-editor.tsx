@@ -13,6 +13,7 @@ import { actionError } from "@/lib/action-error";
 import { useLocale, useT } from "@/lib/i18n";
 import { CERTIFICATE_KIND_KEY, localeName } from "@/components/certificates/labels";
 import { DetailPicker } from "@/components/certificates/detail-picker";
+import { FontSelect } from "@/components/font-select";
 import { TemplatePreview } from "@/components/certificates/template-preview";
 import { TokenField, type TokenFieldHandle } from "@/components/certificates/token-field";
 import { saveTemplateAction } from "./actions";
@@ -82,7 +83,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [preset, setPreset] = useState<string>(template ? "" : (view.presets[0]?.key ?? ""));
-  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { signerLeft: "NONE", signerRight: "NONE", showSeal: false, showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
+  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { font: "default", signerLeft: "NONE", signerRight: "NONE", showSeal: false, showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   /** A preset replaces every text at once; the fields are made anew so none keeps what it was showing. */
@@ -306,6 +307,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
                     </option>
                   ))}
                 </SelectField>
+                <FontSelect value={draft.layout.font} locale={draft.locale} onChange={(font) => patchLayout({ font })} testId="template-font" />
                 <TextField label={t("certificates.serialPrefix")} hint={t("certificates.serialHint")} value={draft.serialPrefix} maxLength={12} autoComplete="off" error={fieldErrors.serialPrefix} onChange={(e) => patch({ serialPrefix: e.target.value })} />
               </div>
               <CheckboxField label={t("certificates.active")} checked={draft.active} onChange={(e) => patch({ active: e.target.checked })} />

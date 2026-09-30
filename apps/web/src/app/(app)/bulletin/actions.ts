@@ -48,6 +48,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   const fields = {
     scope: String(formData.get("scope") ?? ""),
     category: String(formData.get("category") ?? "UPDATES"),
+    font: String(formData.get("font") ?? "default"),
     classId: String(formData.get("classId") ?? ""),
     audience: String(formData.get("audience") ?? "ALL"),
     audienceGrade: String(formData.get("audienceGrade") ?? ""),
@@ -116,6 +117,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
     const result = await createPost(session, {
       scope: parsed.data.scope,
       category: parsed.data.category,
+      font: parsed.data.font,
       classId: parsed.data.classId || undefined,
       title: parsed.data.title,
       body: parsed.data.body,

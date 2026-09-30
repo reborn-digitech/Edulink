@@ -19853,6 +19853,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -20589,6 +20594,10 @@
                               "UPDATES"
                             ]
                           },
+                          "font": {
+                            "type": "string",
+                            "default": "default"
+                          },
                           "title": {
                             "type": "string"
                           },
@@ -20927,6 +20936,11 @@
                     ],
                     "default": "UPDATES"
                   },
+                  "font": {
+                    "type": "string",
+                    "pattern": "^[a-z]{1,40}$",
+                    "default": "default"
+                  },
                   "classId": {
                     "type": "string",
                     "pattern": "^c[a-z0-9]{20,}$"
@@ -21056,6 +21070,10 @@
                               "LEARNING",
                               "UPDATES"
                             ]
+                          },
+                          "font": {
+                            "type": "string",
+                            "default": "default"
                           },
                           "title": {
                             "type": "string"
@@ -21252,6 +21270,10 @@
                         "LEARNING",
                         "UPDATES"
                       ]
+                    },
+                    "font": {
+                      "type": "string",
+                      "default": "default"
                     },
                     "title": {
                       "type": "string"
@@ -53929,6 +53951,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -54245,6 +54272,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -54496,6 +54528,11 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "font": {
+                        "type": "string",
+                        "pattern": "^[a-z]{1,40}$",
+                        "default": "default"
+                      },
                       "signerLeft": {
                         "type": "string",
                         "enum": [
@@ -55137,6 +55174,11 @@
                           "layout": {
                             "type": "object",
                             "properties": {
+                              "font": {
+                                "type": "string",
+                                "pattern": "^[a-z]{1,40}$",
+                                "default": "default"
+                              },
                               "signerLeft": {
                                 "type": "string",
                                 "enum": [
@@ -55441,6 +55483,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -55649,6 +55696,11 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "font": {
+                        "type": "string",
+                        "pattern": "^[a-z]{1,40}$",
+                        "default": "default"
+                      },
                       "signerLeft": {
                         "type": "string",
                         "enum": [
@@ -55817,6 +55869,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -56025,6 +56082,11 @@
                   "layout": {
                     "type": "object",
                     "properties": {
+                      "font": {
+                        "type": "string",
+                        "pattern": "^[a-z]{1,40}$",
+                        "default": "default"
+                      },
                       "signerLeft": {
                         "type": "string",
                         "enum": [
@@ -58249,6 +58311,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -58680,6 +58747,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -59106,6 +59178,11 @@
                     "layout": {
                       "type": "object",
                       "properties": {
+                        "font": {
+                          "type": "string",
+                          "pattern": "^[a-z]{1,40}$",
+                          "default": "default"
+                        },
                         "signerLeft": {
                           "type": "string",
                           "enum": [
@@ -60333,6 +60410,178 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/office/signatures/image": {
+      "get": {
+        "summary": "The reader's own signature (?of=mine) or the school's seal (?of=seal) as a PNG (image/png); 404 while there is none",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/shared/signatures/{signatureId}": {
+      "get": {
+        "summary": "A paper's own copy of a signature or the seal as a PNG (image/png), for a reader the paper's own rule lets in: the certificate's pupil, a guardian, the class's teacher or the office",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT",
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "signatureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/office/signatures/mine": {

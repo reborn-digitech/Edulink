@@ -21,6 +21,8 @@ import { POST as sealPost } from "@/app/api/v1/office/signatures/seal/route";
 import { POST as decidePost } from "@/app/api/v1/office/signatures/[signatureId]/decide/route";
 import { POST as configPost } from "@/app/api/v1/office/report-card-config/route";
 import { GET as cardPdfGet } from "@/app/api/v1/shared/report-cards/[cardId]/pdf/route";
+import { GET as ownImageGet } from "@/app/api/v1/office/signatures/image/route";
+import { GET as paperImageGet } from "@/app/api/v1/shared/signatures/[signatureId]/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -49,7 +51,14 @@ async function as(who: Who) {
   return (await getSession())!;
 }
 const decide = (id: string, approve: boolean) => decidePost(json(`/api/v1/office/signatures/${id}/decide`, { approve }), params({ signatureId: id }));
-const lines = (card: { signatures: { slot: string; status: string; image: string | null }[] }) => card.signatures.map((s) => [s.slot, s.status, s.image]);
+/** What a picture's address gives, as the data URL it was set from; null for none or a refusal. */
+async function fetched(url: string | null): Promise<string | null> {
+  if (!url) return null;
+  const id = url.match(/\/api\/v1\/shared\/signatures\/([a-z0-9]+)/)?.[1];
+  const res = id ? await paperImageGet(get(url), params({ signatureId: id })) : await ownImageGet(get(url));
+  return res.status === 200 ? `data:image/png;base64,${Buffer.from(await res.arrayBuffer()).toString("base64")}` : null;
+}
+const lines = async (card: { signatures: { slot: string; status: string; image: string | null }[] }) => Promise.all(card.signatures.map(async (s) => [s.slot, s.status, await fetched(s.image)]));
 const drafts = () => db.reportCard.updateMany({ where: { id: { in: cards } }, data: { status: "DRAFT", publishedAt: null } });
 
 beforeAll(async () => {
@@ -90,7 +99,9 @@ describe("a set of report cards is signed as one", () => {
     await as("TEACHER");
     expect((await minePost(json("/api/v1/office/signatures/mine", { image: TEACHER_INK }))).status).toBe(200);
     expect((await sealPost(json("/api/v1/office/signatures/seal", { image: SEAL }))).status).toBe(403);
-    expect(await (await signaturesGet()).json()).toMatchObject({ mine: { image: TEACHER_INK }, canSetSeal: false, waiting: [] });
+    const view = await (await signaturesGet()).json();
+    expect(view).toMatchObject({ canSetSeal: false, waiting: [] });
+    expect(await fetched(view.mine.image)).toBe(TEACHER_INK);
     await as("PRINCIPAL");
     expect((await minePost(json("/api/v1/office/signatures/mine", { image: HEAD_INK }))).status).toBe(200);
     await as("ADMIN");
@@ -106,8 +117,8 @@ describe("a set of report cards is signed as one", () => {
     expect(await publishCards(ctx, classId, TITLE)).toMatchObject({ ok: true, published: 3 });
     for (const id of cards) {
       const card = (await getCard(ctx, id))!;
-      expect(lines(card)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "PENDING", null]]);
-      expect(card.seal).toBe(SEAL);
+      expect(await lines(card)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "PENDING", null]]);
+      expect(await fetched(card.seal)).toBe(SEAL);
       expect(card.setCount).toBe(3);
     }
     // One row for the head's line, however many the cards.
@@ -140,7 +151,7 @@ describe("a set of report cards is signed as one", () => {
     expect((await getCard(ctx, cards[1]!))!.signatures[1]!.can).toEqual({ decide: true });
     const decided = await (await decide(view.waiting[0].id, true)).json();
     expect(decided).toMatchObject({ paperKind: "REPORT_CARD_SET", status: "SIGNED" });
-    for (const id of cards) expect(lines((await getCard(ctx, id))!)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "SIGNED", HEAD_INK]]);
+    for (const id of cards) expect(await lines((await getCard(ctx, id))!)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "SIGNED", HEAD_INK]]);
     expect((await (await signaturesGet()).json()).waiting).toEqual([]);
     const pdf = await cardPdfGet(get(`/api/v1/shared/report-cards/${cards[0]}/pdf`), params({ cardId: cards[0]! }));
     expect(pdf.status).toBe(200);
@@ -154,7 +165,7 @@ describe("a set of report cards is signed as one", () => {
     expect((await getCard(ctx, cards[0]!))?.signatures).toEqual([]);
     ctx = await as("ADMIN");
     expect(await publishCards(ctx, classId, TITLE)).toMatchObject({ ok: true, published: 3 });
-    expect(lines((await getCard(ctx, cards[0]!))!)).toEqual([["LEFT", "PENDING", null], ["RIGHT", "PENDING", null]]);
+    expect(await lines((await getCard(ctx, cards[0]!))!)).toEqual([["LEFT", "PENDING", null], ["RIGHT", "PENDING", null]]);
     const left = (await db.paperSignature.findFirstOrThrow({ where: { schoolId, slot: "LEFT" } })).id;
     await as("OTHER_TEACHER");
     expect((await (await signaturesGet()).json()).waiting).toEqual([]);
@@ -162,7 +173,7 @@ describe("a set of report cards is signed as one", () => {
     await as("TEACHER");
     expect((await (await signaturesGet()).json()).waiting).toHaveLength(1);
     expect(await (await decide(left, true)).json()).toMatchObject({ status: "SIGNED" });
-    expect(lines((await getCard(await as("PRINCIPAL"), cards[2]!))!)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "PENDING", null]]);
+    expect(await lines((await getCard(await as("PRINCIPAL"), cards[2]!))!)).toEqual([["LEFT", "SIGNED", TEACHER_INK], ["RIGHT", "PENDING", null]]);
     await drafts();
   });
 

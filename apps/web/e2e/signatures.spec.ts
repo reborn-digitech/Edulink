@@ -64,7 +64,7 @@ test("the admin signs in the box, with a mouse at a desk and a finger on a phone
     await expect(page.getByText("Signature saved")).toBeVisible();
     // What is kept is a PNG and not what was there before.
     await expect.poll(async () => mine.getByTestId("signature-mine-current").getAttribute("src")).not.toBe(was);
-    expect(await mine.getByTestId("signature-mine-current").getAttribute("src")).toMatch(/^data:image\/png;base64,/);
+    expect(await mine.getByTestId("signature-mine-current").getAttribute("src")).toMatch(/^\/api\/v1\/office\/signatures\/image\?of=mine/);
     await context.close();
   }
 });
@@ -133,7 +133,7 @@ test("a teacher keeps a signature and no seal, and the rules offer the class tea
 
 test("the admin cannot sign the head's line, and the paper says so to nobody but the head", async ({ browser, baseURL }) => {
   const school = await northgate();
-  const pending = await db.paperSignature.findFirst({ where: { schoolId: school.id, role: "PRINCIPAL", slot: "RIGHT" }, select: { id: true, paperId: true } });
+  const pending = await db.paperSignature.findFirst({ where: { schoolId: school.id, paperKind: "CERTIFICATE", role: "PRINCIPAL", slot: "RIGHT" }, select: { id: true, paperId: true } });
   test.skip(!pending, "no fixture signature — run npm run zz:fixtures");
   await db.paperSignature.update({ where: { id: pending!.id }, data: { status: "PENDING", png: null, signerUserId: null, signerName: null, decidedAt: null } });
   const context = await contextFor(browser, admin.cookie, { viewport: DESK, theme: "light", locale: "en" }, baseURL!);

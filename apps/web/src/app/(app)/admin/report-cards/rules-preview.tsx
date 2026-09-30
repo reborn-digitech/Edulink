@@ -2,6 +2,7 @@
 
 import type { ReportCardLayout } from "@edulink/contracts";
 import { useT } from "@/lib/i18n";
+import { fontStack } from "@/lib/fonts";
 import type { LiveBand } from "./scale-bar";
 
 /**
@@ -27,7 +28,7 @@ function bandOf(percent: number, bands: LiveBand[]): LiveBand | null {
   return [...bands].filter((b) => b.minPercent !== null).sort((a, b) => (b.minPercent ?? 0) - (a.minPercent ?? 0)).find((b) => percent >= (b.minPercent ?? 0)) ?? null;
 }
 
-export function RulesPreview({ schoolName, bands, areas, coScale, layout }: { schoolName: string; bands: LiveBand[]; areas: string[]; coScale: string[]; layout: ReportCardLayout }) {
+export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout }: { schoolName: string; locale: string; bands: LiveBand[]; areas: string[]; coScale: string[]; layout: ReportCardLayout }) {
   const t = useT();
   const rows = SAMPLE.map((s) => ({ subject: t(s.key), percent: s.percent, band: bandOf(s.percent, bands) }));
   const overall = Math.round((rows.reduce((sum, r) => sum + r.percent, 0) / rows.length) * 10) / 10;
@@ -44,7 +45,7 @@ export function RulesPreview({ schoolName, bands, areas, coScale, layout }: { sc
         <h3 className="text-sm font-semibold text-fg">{t("reportCardConfig.previewTitle")}</h3>
         <p className="text-xs leading-relaxed text-fg-muted">{t("reportCardConfig.previewHint")}</p>
       </div>
-      <div className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm">
+      <div style={{ fontFamily: fontStack(layout.font, locale) }} className="rounded-[--radius-lg] border border-border bg-surface p-5 text-fg shadow-sm" data-testid="preview-paper">
         <header className="border-b border-border pb-3">
           <p className={`text-base font-bold tracking-tight ${layout.useBrandColour ? "text-accent-strong" : "text-fg"}`} data-testid="preview-school">
             {schoolName}

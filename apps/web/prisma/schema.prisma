@@ -1470,6 +1470,8 @@ model Post {
   /// Defaulted to UPDATES because every post written before categories existed
   /// was an announcement — which is what UPDATES means.
   category String @default("UPDATES")
+  /// The typeface the post is set in, by the web's key (src/lib/fonts.ts); "default" is the reader's own.
+  font     String @default("default")
 
   /// Who a SCHOOL post is FOR: everyone, only families, only staff, or only
   /// pupils. A courtesy filter applied at QUERY time, never a secrecy boundary —

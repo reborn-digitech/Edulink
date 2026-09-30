@@ -8,7 +8,9 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
+import { FontSelect } from "@/components/font-select";
+import type { FontKey } from "@/lib/fonts";
 import { POST_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "../categories";
 
@@ -55,6 +57,8 @@ export function ComposeForm({
   // Deliberately unset until chosen — every post carries one of the five, and
   // an unnoticed default would put half the school's life under "Updates".
   const [category, setCategory] = useState<PostCategory | "">(initialCategory ?? "");
+  const [font, setFont] = useState<FontKey>("default");
+  const locale = useLocale();
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [audience, setAudience] = useState<"ALL" | "PARENTS" | "TEACHERS" | "STUDENTS">("ALL");
   const [audienceGrade, setAudienceGrade] = useState("");
@@ -194,6 +198,7 @@ export function ComposeForm({
       const payload = new FormData();
       payload.set("scope", scope);
       payload.set("category", category);
+      payload.set("font", font);
       payload.set("classId", scope === "CLASS" ? classId : "");
       payload.set("audience", scope === "SCHOOL" ? audience : "ALL");
       payload.set("audienceGrade", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceGrade : "");
@@ -287,6 +292,8 @@ export function ComposeForm({
           </div>
         </fieldset>
       )}
+
+      <FontSelect value={font} locale={locale} onChange={setFont} testId="post-font" />
 
       <SelectField
         label={t("bulletin.categoryLabel")}

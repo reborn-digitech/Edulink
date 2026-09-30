@@ -315,6 +315,10 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
 /* Reading                                                                      */
 /* -------------------------------------------------------------------------- */
 
+export async function mayReadCertificate(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string }): Promise<boolean> {
+  return mayRead(ctx, cert);
+}
+
 async function mayRead(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string }): Promise<boolean> {
   if (ctx.role === "PARENT") {
     try {

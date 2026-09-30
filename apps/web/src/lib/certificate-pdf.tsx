@@ -6,6 +6,8 @@ import type { IssuedCertificateView } from "./certificate-types";
 import { db } from "./db";
 import { readStoredFile } from "./storage";
 import { wordsFor } from "./certificate-rules";
+import { pdfFamilyFor } from "./pdf-font-registry";
+import { paperImages } from "./signatures";
 import { dateKeyInZone } from "./dates";
 import type { WordsLocale } from "./words";
 import { dateInFigures } from "./words";
@@ -68,14 +70,15 @@ export async function issuedOnFor(cert: Pick<IssuedCertificateView, "id" | "issu
   return dateInFigures(dateKeyInZone(new Date(cert.issuedAt), row?.school.timezone ?? "UTC"));
 }
 
-function CertificatePage({ cert, logo, verifyUrl, issuedOn }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string; issuedOn: string }) {
+type Pictures = Partial<Record<"LEFT" | "RIGHT" | "SEAL", Uint8Array>>;
+function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: IssuedCertificateView; logo: Logo | null; verifyUrl: string; issuedOn: string; pictures: Pictures }) {
   const locale = cert.locale as WordsLocale;
   const words = wordsFor(locale);
   const accent = cert.layout.useBrandColour && cert.school.brandPrimary ? cert.school.brandPrimary : INK;
   const address = [cert.school.addressLine, cert.school.city, cert.school.region, cert.school.postalCode].filter(Boolean).join(", ");
   const contact = [cert.school.contactPhone, cert.school.contactEmail].filter(Boolean).join(" · ");
   return (
-    <Page size={cert.layout.paper === "LETTER" ? "LETTER" : "A4"} style={styles.page}>
+    <Page size={cert.layout.paper === "LETTER" ? "LETTER" : "A4"} style={[styles.page, { fontFamily: pdfFamilyFor(cert.layout.font) as unknown as string }]}>
       <View style={[styles.header, { borderBottomColor: accent }]}>
         {/* eslint-disable-next-line jsx-a11y/alt-text -- the renderer's Image has no alt; the logo is decoration beside the school's name */}
         {cert.layout.showLogo && logo ? <Image src={logo} style={styles.logo} /> : null}
@@ -109,11 +112,11 @@ function CertificatePage({ cert, logo, verifyUrl, issuedOn }: { cert: IssuedCert
       {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
       <View style={styles.signatures} wrap={false}>
         {(["LEFT", "SEAL", "RIGHT"] as const).map((slot) => {
-          if (slot === "SEAL") return <View key={slot} style={{ width: 64, alignItems: "center", justifyContent: "flex-end" }}>{cert.seal ? <Image src={cert.seal} style={{ width: 60, height: 60, objectFit: "contain" }} /> : null}</View>;
-          const signature = cert.signatures.find((s) => s.slot === slot);
+          if (slot === "SEAL") return <View key={slot} style={{ width: 64, alignItems: "center", justifyContent: "flex-end" }}>{pictures.SEAL ? <Image src={{ data: Buffer.from(pictures.SEAL), format: "png" }} style={{ width: 60, height: 60, objectFit: "contain" }} /> : null}</View>;
+          const picture = pictures[slot];
           return (
             <View key={slot} style={{ flex: 1 }}>
-              <View style={{ height: 40, alignItems: "center", justifyContent: "flex-end" }}>{signature?.image ? <Image src={signature.image} style={{ maxHeight: 38, maxWidth: 150, objectFit: "contain" }} /> : null}</View>
+              <View style={{ height: 40, alignItems: "center", justifyContent: "flex-end" }}>{picture ? <Image src={{ data: Buffer.from(picture), format: "png" }} style={{ maxHeight: 38, maxWidth: 150, objectFit: "contain" }} /> : null}</View>
               <Text style={styles.signatureLine}>{slot === "LEFT" ? cert.layout.signatureLeft : cert.layout.signatureRight}</Text>
             </View>
           );
@@ -134,9 +137,10 @@ export async function renderCertificatePdf(cert: IssuedCertificateView, verifyUr
   const format: Logo["format"] | null = stored?.mime === "image/png" ? "png" : stored?.mime === "image/jpeg" ? "jpg" : null;
   const logo: Logo | null = stored && format ? { data: stored.bytes, format } : null;
   const issuedOn = await issuedOnFor(cert);
+  const pictures = await paperImages(cert);
   const doc = (
     <Document title={`${cert.title} · ${cert.serial}`} author={cert.school.name}>
-      <CertificatePage cert={cert} logo={logo} verifyUrl={verifyUrl} issuedOn={issuedOn} />
+      <CertificatePage cert={cert} logo={logo} verifyUrl={verifyUrl} issuedOn={issuedOn} pictures={pictures} />
     </Document>
   );
   return Buffer.from(await renderToBuffer(doc));

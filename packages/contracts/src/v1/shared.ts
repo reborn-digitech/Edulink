@@ -40,6 +40,8 @@ export const bulletinFeedPostSchema = z.object({
   id: z.string(),
   scope: bulletinScopeSchema,
   category: bulletinCategorySchema,
+  /** The typeface the post is set in, by the web's key; "default" for the reader's own. */
+  font: z.string().default("default"),
   title: z.string(),
   body: z.string(),
   tags: z.array(z.string()),
@@ -82,6 +84,7 @@ export const bulletinFeedSchema = z.object({
 export const bulletinGlobalPostSchema = z.object({
   id: z.string(),
   category: bulletinCategorySchema,
+  font: z.string().default("default"),
   title: z.string(),
   body: z.string(),
   media: z.array(bulletinMediaItemSchema),
@@ -125,6 +128,7 @@ export const bulletinPostDetailSchema = z.object({
   id: z.string(),
   scope: bulletinScopeSchema,
   category: bulletinCategorySchema,
+  font: z.string().default("default"),
   title: z.string(),
   body: z.string(),
   tags: z.array(z.string()),
@@ -162,6 +166,7 @@ export const bulletinPostDetailSchema = z.object({
 export const bulletinCreatePostSchema = z.object({
   scope: bulletinScopeSchema,
   category: bulletinCategorySchema.default("UPDATES"),
+  font: z.string().trim().regex(/^[a-z]{1,40}$/).default("default"),
   classId: cuid.optional(),
   title: z.string().trim().min(2).max(200),
   body: z.string().trim().max(20_000).default(""),

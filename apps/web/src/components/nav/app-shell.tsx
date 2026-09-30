@@ -8,6 +8,7 @@ import { OutboxBadge } from "./outbox-badge";
 import { NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
+import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
@@ -115,7 +116,11 @@ export function AppShell({
             </div>
           ))}
         </nav>
-        <div className="px-3 pb-2"><OutboxBadge /></div>
+        <div className="flex items-center justify-between gap-2 px-3 pb-2">
+          <OutboxBadge />
+          {/* A second copy of the switch: the header above is the phone's, and a desk has this rail instead. */}
+          <TypingSwitch />
+        </div>
 
         <div className="border-t border-border p-3">
           {user.isSuperuser && (
@@ -178,6 +183,7 @@ export function AppShell({
           <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
         </Link>
         <div className="flex items-center gap-1">
+          <TypingSwitch />
           {secondary.length > 0 && (
             <button
               type="button"

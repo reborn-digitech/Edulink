@@ -3,6 +3,8 @@ import path from "node:path";
 import React from "react";
 import { Document, Font, Image, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
 import { gradingHintKey, type Card } from "./report-cards";
+import { pdfFamilyFor } from "./pdf-font-registry";
+import { paperImages } from "./signatures";
 import { readStoredFile } from "./storage";
 import { formatMilli } from "./validation";
 import { nameCarriesSection } from "./codes";
@@ -84,7 +86,8 @@ function Row({ children }: { children: React.ReactNode }) {
 
 type Logo = { data: Buffer; format: "png" | "jpg" };
 
-function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t: Translate; locale: string }) {
+type Pictures = Partial<Record<"LEFT" | "RIGHT" | "SEAL", Uint8Array>>;
+function CardPage({ card, logo, t, locale, pictures }: { card: Card; logo: Logo | null; t: Translate; locale: string; pictures: Pictures }) {
   const layout = card.layout;
   const accent = layout.useBrandColour && card.school.brandPrimary ? card.school.brandPrimary : INK;
   const address = [card.school.addressLine, card.school.city, card.school.region, card.school.postalCode].filter(Boolean).join(", ");
@@ -97,7 +100,7 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
   const showMarks = card.gradingMethod === "exams" && subjects.some((s) => s.pointsMilli);
 
   return (
-    <Page size={layout.paper === "LETTER" ? "LETTER" : "A4"} style={styles.page}>
+    <Page size={layout.paper === "LETTER" ? "LETTER" : "A4"} style={[styles.page, { fontFamily: pdfFamilyFor(layout.font) as unknown as string }]}>
       <View style={[styles.header, { borderBottomColor: accent }]}>
         {/* eslint-disable-next-line jsx-a11y/alt-text -- the renderer's Image has no alt; the logo is decoration beside the school's name */}
         {logo ? <Image src={logo} style={styles.logo} /> : null}
@@ -232,10 +235,10 @@ function CardPage({ card, logo, t, locale }: { card: Card; logo: Logo | null; t:
           {/* The set's own copy of each signature above its line; the seal stands over the parent's, which is signed by hand. */}
           {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
           {(["LEFT", "PARENT", "RIGHT"] as const).map((slot) => {
-            const image = slot === "PARENT" ? card.seal : (card.signatures.find((s) => s.slot === slot)?.image ?? null);
+            const image = slot === "PARENT" ? pictures.SEAL : pictures[slot];
             return (
               <View key={slot} style={{ flex: 1 }}>
-                <View style={{ height: 38, alignItems: "center", justifyContent: "flex-end" }}>{image ? <Image src={image} style={{ maxHeight: 36, maxWidth: 130, objectFit: "contain" }} /> : null}</View>
+                <View style={{ height: 38, alignItems: "center", justifyContent: "flex-end" }}>{image ? <Image src={{ data: Buffer.from(image), format: "png" }} style={{ maxHeight: 36, maxWidth: 130, objectFit: "contain" }} /> : null}</View>
                 <Text style={styles.signatureLine}>{slot === "LEFT" ? layout.signatureLeft : slot === "RIGHT" ? layout.signatureRight : t("reportView.signatureParent")}</Text>
               </View>
             );
@@ -267,10 +270,16 @@ export async function renderReportCardsPdf(cards: Card[], t: Translate, locale =
   // The renderer decodes PNG and JPEG only; any other logo is left off rather than failing the file.
   const format: Logo["format"] | null = stored?.mime === "image/png" ? "png" : stored?.mime === "image/jpeg" ? "jpg" : null;
   const logo: Logo | null = stored && format ? { data: stored.bytes, format } : null;
+  // The pictures of each card's set, read once per set: every card of a set shares them.
+  const pictures = new Map<string, Pictures>();
+  for (const card of cards) {
+    const key = [card.seal, ...card.signatures.map((s) => s.image)].join("|");
+    if (!pictures.has(key)) pictures.set(key, await paperImages(card));
+  }
   const doc = (
     <Document title={cards[0] ? `${cards[0].title} · ${cards[0].className}` : "Report cards"} author={cards[0]?.school.name}>
       {cards.map((card) => (
-        <CardPage key={card.id} card={card} logo={logo} t={t} locale={locale} />
+        <CardPage key={card.id} card={card} logo={logo} t={t} locale={locale} pictures={pictures.get([card.seal, ...card.signatures.map((s) => s.image)].join("|")) ?? {}} />
       ))}
     </Document>
   );

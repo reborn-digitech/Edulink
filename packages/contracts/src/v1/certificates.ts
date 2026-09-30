@@ -37,7 +37,11 @@ export type CardSigner = z.infer<typeof cardSignerSchema>;
 export const signingRoleSchema = z.enum(["TEACHER", "ADMIN", "PRINCIPAL"]);
 export const paperKindSchema = z.enum(["CERTIFICATE", "REPORT_CARD_SET"]);
 
+/** A typeface the web bundles (apps/web/src/lib/fonts.ts), by key; "default" is the paper's own stack. */
+export const fontKeySchema = z.string().trim().regex(/^[a-z]{1,40}$/).default("default");
+
 export const certificateLayoutSchema = z.object({
+  font: fontKeySchema,
   signerLeft: paperSignerSchema.default("NONE"),
   signerRight: paperSignerSchema.default("NONE"),
   /** The school's seal, drawn between the two signatures. */

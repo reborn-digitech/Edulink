@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cardSignerSchema, paperSignatureSchema } from "./certificates";
+import { cardSignerSchema, fontKeySchema, paperSignatureSchema } from "./certificates";
 
 /**
  * The configurable report card: the school's grading scale (a board's
@@ -29,6 +29,7 @@ export const examKindWeightsSchema = z.object({ UNIT_TEST: percent, MID_TERM: pe
 export type ExamKindWeights = z.infer<typeof examKindWeightsSchema>;
 
 export const reportCardLayoutSchema = z.object({
+  font: fontKeySchema,
   /** Who signs the left and the right line, and whether the seal is printed; the middle line is the parent's and is signed by hand. */
   signerLeft: cardSignerSchema.default("NONE"),
   signerRight: cardSignerSchema.default("NONE"),

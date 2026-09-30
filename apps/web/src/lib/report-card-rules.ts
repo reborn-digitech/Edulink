@@ -60,6 +60,7 @@ export function presetsFor(words: Words = englishWords): { key: string; name: st
 
 export function defaultLayoutFor(words: Words = englishWords): ReportCardLayout {
   return {
+    font: "default",
     signerLeft: "NONE",
     signerRight: "NONE",
     showSeal: false,

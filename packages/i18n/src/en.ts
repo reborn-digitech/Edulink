@@ -3756,6 +3756,20 @@ export const en = {
     signsWholeSet: "This set of {count} report cards waits for your signature. Signing here signs all of them.",
     teacherIntro: "Your signature, as it is drawn on the report cards of the classes you teach.",
   },
+  fonts: {
+    label: "Typeface",
+    hint: "Shown the same on every device, on the screen and in the PDF.",
+    appDefault: "The app's own",
+    groupDevanagari: "Devanagari (Hindi, Marathi)",
+    groupLatin: "Latin (English)",
+  },
+  typing: {
+    switch: "Typing in {language}; press to change",
+    switchHint: "What the keyboard writes: English letters, or Hindi or Marathi typed in English letters",
+    en: "English",
+    hi: "Hindi",
+    mr: "Marathi",
+  },
   recordChanges: {
     askForChange: "Ask for a change",
     readOnlyNote: "Only the school office can change this record. If something is wrong or missing, ask for a change.",

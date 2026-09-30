@@ -28,7 +28,7 @@ export default async function ReportCardRulesPage() {
 
   const [view, school, newest] = await Promise.all([
     reportCardConfigView(ctx),
-    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { name: true } }),
+    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { name: true, locale: true } }),
     db.reportCard.findFirst({ where: { schoolId: ctx.schoolId, status: "PUBLISHED" }, orderBy: { publishedAt: "desc" }, select: { id: true } }),
   ]);
 
@@ -46,7 +46,7 @@ export default async function ReportCardRulesPage() {
         }
       />
       {/* No key on the form: a save refreshes the page, and what the office has typed since must survive that. */}
-      <RulesForm view={view} schoolName={school.name} readOnly={ctx.role !== "ADMIN"} />
+      <RulesForm view={view} schoolName={school.name} schoolLocale={school.locale ?? "en"} readOnly={ctx.role !== "ADMIN"} />
     </div>
   );
 }

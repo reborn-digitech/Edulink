@@ -181,6 +181,7 @@ export async function readPost(ctx: ActiveContext, postId: string) {
     id: post.id,
     scope: post.scope,
     category: post.category,
+    font: post.font,
     title: post.title,
     body: post.body,
     tags: readJsonArray<string>(post.tags),

@@ -6,12 +6,13 @@ import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { formatDateKey } from "@/lib/dates";
 import { nameCarriesSection } from "@/lib/codes";
 import { formatMilli } from "@/lib/validation";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
 import Link from "next/link";
 import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { SignPaper } from "@/components/certificates/sign-paper";
+import { fontStack } from "@/lib/fonts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,6 +49,7 @@ export default async function ReportCardPage({
   searchParams: Promise<{ from?: string }>;
 }) {
   const t = await getT();
+  const readerLocale = await getLocale();
   const subjectName = (code: string) => {
     const key = SUBJECT_KEY[code as QuizSubject];
     return key ? t(key) : code;
@@ -122,7 +124,7 @@ export default async function ReportCardPage({
         </p>
       )}
 
-      <div className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
+      <div style={{ fontFamily: fontStack(layout.font, readerLocale) }} data-testid="card-sheet" className="rounded-[--radius-lg] border border-border bg-surface p-6 print:rounded-none print:border-0 print:bg-white print:p-0 print:text-black sm:p-8">
         {/* ---------------- letterhead ---------------- */}
         <header className="flex items-start gap-4 border-b border-border pb-5 print:border-black/20">
           {logoUrl && (

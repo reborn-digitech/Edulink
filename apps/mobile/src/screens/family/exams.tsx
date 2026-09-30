@@ -18,7 +18,7 @@ type Tab = "marks" | "upcoming" | "cards";
 type ReportCard = z.infer<typeof familyReportCardSchema>;
 type Layout = NonNullable<ReportCard["layout"]>;
 /** A card issued before the office had any rules to set: everything on, nothing said around it. */
-const DEFAULT_LAYOUT: Layout = { signerLeft: "NONE", signerRight: "NONE", showSeal: false, showAttendance: true, showPractice: true, showCoScholastic: true, showGradePoints: true, showAddress: false, showSignatures: false, showRemark: true, useBrandColour: false, signatureLeft: "", signatureRight: "", headerNote: null, footerNote: null, paper: "A4" };
+const DEFAULT_LAYOUT: Layout = { font: "default", signerLeft: "NONE", signerRight: "NONE", showSeal: false, showAttendance: true, showPractice: true, showCoScholastic: true, showGradePoints: true, showAddress: false, showSignatures: false, showRemark: true, useBrandColour: false, signatureLeft: "", signatureRight: "", headerNote: null, footerNote: null, paper: "A4" };
 const KINDS: ExamKind[] = ["UNIT_TEST", "MID_TERM", "FINAL"];
 
 /**

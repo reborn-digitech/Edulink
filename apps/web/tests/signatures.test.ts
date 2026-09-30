@@ -20,6 +20,8 @@ import { POST as mineRemove } from "@/app/api/v1/office/signatures/mine/remove/r
 import { POST as sealPost } from "@/app/api/v1/office/signatures/seal/route";
 import { POST as sealRemove } from "@/app/api/v1/office/signatures/seal/remove/route";
 import { POST as decidePost } from "@/app/api/v1/office/signatures/[signatureId]/decide/route";
+import { GET as ownImageGet } from "@/app/api/v1/office/signatures/image/route";
+import { GET as paperImageGet } from "@/app/api/v1/shared/signatures/[signatureId]/route";
 import { POST as templatesPost } from "@/app/api/v1/office/certificate-templates/route";
 import { POST as issuePost } from "@/app/api/v1/office/certificates/route";
 import { GET as certificateGet } from "@/app/api/v1/shared/certificates/[certificateId]/route";
@@ -39,6 +41,16 @@ const NEW_INK = url(fixturePng(280, 90));
 const SEAL = url(fixturePng(200, 200));
 
 const get = (path: string) => new Request(`http://localhost${path}`);
+/** What a picture's address gives, as the data URL the picture was set from; null for a refusal. */
+async function fetched(url: string | null): Promise<string | null> {
+  if (!url) return null;
+  const id = url.match(/\/api\/v1\/shared\/signatures\/([a-z0-9]+)/)?.[1];
+  const res = id ? await paperImageGet(get(url), params({ signatureId: id })) : await ownImageGet(get(url));
+  if (res.status !== 200) return null;
+  return `data:image/png;base64,${Buffer.from(await res.arrayBuffer()).toString("base64")}`;
+}
+const pictures = async (view: { signatures: { image: string | null }[]; seal: string | null }) => ({ signatures: await Promise.all(view.signatures.map((s) => fetched(s.image))), seal: await fetched(view.seal) });
+const own = async (view: { mine: { image: string | null }; seal: { image: string | null } }) => ({ mine: await fetched(view.mine.image), seal: await fetched(view.seal.image) });
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
 const params = <T extends object>(p: T) => ({ params: Promise.resolve(p) });
 type Who = "ADMIN" | "ADMIN2" | "PRINCIPAL" | "TEACHER" | "PARENT" | "OTHER_ADMIN";
@@ -100,13 +112,14 @@ describe("a signature and the seal are set", () => {
     expect(await (await signaturesGet()).json()).toEqual({ mine: { image: null, updatedAt: null }, seal: { image: null, updatedAt: null }, canSetSeal: true, waiting: [] });
     expect((await minePost(json("/api/v1/office/signatures/mine", { image: ADMIN_INK }))).status).toBe(200);
     expect((await sealPost(json("/api/v1/office/signatures/seal", { image: SEAL }))).status).toBe(200);
-    expect(await (await signaturesGet()).json()).toMatchObject({ mine: { image: ADMIN_INK }, seal: { image: SEAL }, canSetSeal: true });
+    expect(await own(await (await signaturesGet()).json())).toEqual({ mine: ADMIN_INK, seal: SEAL });
     await as("PRINCIPAL");
     expect((await sealPost(json("/api/v1/office/signatures/seal", { image: SEAL }))).status).toBe(403);
     expect((await sealRemove()).status).toBe(403);
     expect((await minePost(json("/api/v1/office/signatures/mine", { image: HEAD_INK }))).status).toBe(200);
     // The head reads the seal and their own signature, and nobody else's.
-    expect(await (await signaturesGet()).json()).toMatchObject({ mine: { image: HEAD_INK }, seal: { image: SEAL }, canSetSeal: false });
+    expect(await (await signaturesGet()).json()).toMatchObject({ canSetSeal: false });
+    expect(await own(await (await signaturesGet()).json())).toEqual({ mine: HEAD_INK, seal: SEAL });
     await as("OTHER_ADMIN");
     expect(await (await signaturesGet()).json()).toMatchObject({ mine: { image: null }, seal: { image: null } });
   });
@@ -121,7 +134,7 @@ describe("a signature and the seal are set", () => {
     expect((await send("javascript:alert(1)")).status).toBe(422);
     expect((await send(`data:image/png;base64,${"A".repeat(500_000)}`)).status).toBe(422);
     // Nothing of those replaced what was kept.
-    expect(await (await signaturesGet()).json()).toMatchObject({ mine: { image: ADMIN_INK } });
+    expect((await own(await (await signaturesGet()).json())).mine).toBe(ADMIN_INK);
   });
 });
 
@@ -140,11 +153,12 @@ describe("a paper is signed", () => {
     await as("ADMIN");
     both = await issue(await template("ZZ signed", { signerLeft: "ADMIN", signerRight: "PRINCIPAL", showSeal: true }));
     const view = await paper(both);
-    expect(view.seal).toBe(SEAL);
+    expect(await pictures(view)).toEqual({ signatures: [ADMIN_INK, null], seal: SEAL });
     expect(view.signatures).toEqual([
-      expect.objectContaining({ slot: "LEFT", role: "ADMIN", status: "SIGNED", image: ADMIN_INK, signerName: "ZZ Sign ADMIN", can: { decide: false } }),
+      expect.objectContaining({ slot: "LEFT", role: "ADMIN", status: "SIGNED", signerName: "ZZ Sign ADMIN", can: { decide: false } }),
       expect.objectContaining({ slot: "RIGHT", role: "PRINCIPAL", status: "PENDING", image: null, signerName: null, can: { decide: false } }),
     ]);
+    expect(view.signatures[0].image).toMatch(/^\/api\/v1\/shared\/signatures\//);
     waiting = view.signatures[1].id;
     const told = await db.notification.findMany({ where: { schoolId, titleKey: "signatures.notifWaiting" }, select: { userId: true, url: true } });
     expect(told).toEqual([{ userId: users.PRINCIPAL, url: "/admin/signatures" }]);
@@ -152,6 +166,11 @@ describe("a paper is signed", () => {
     await as("PARENT");
     const family = await paper(both);
     expect(family.signatures.map((s: { status: string; can: { decide: boolean } }) => [s.status, s.can.decide])).toEqual([["SIGNED", false], ["PENDING", false]]);
+    // The family fetches the picture; a stranger to the paper is refused it.
+    expect(await fetched(family.signatures[0].image)).toBe(ADMIN_INK);
+    await as("OTHER_ADMIN");
+    expect(await fetched(family.signatures[0].image)).toBeNull();
+    await as("PARENT");
     const pdf = await certificatePdf(get(`/api/v1/shared/certificates/${both}/pdf`), params({ certificateId: both }));
     expect(pdf.status).toBe(200);
     expect(Buffer.from(await pdf.arrayBuffer()).subarray(0, 5).toString("latin1")).toBe("%PDF-");
@@ -178,7 +197,8 @@ describe("a paper is signed", () => {
     expect((await paper(both)).signatures[1].can).toEqual({ decide: true });
     expect(await (await decide(waiting, true)).json()).toEqual({ paperKind: "CERTIFICATE", paperId: both, status: "SIGNED" });
     expect(await (await decide(waiting, false)).json()).toMatchObject({ status: "SIGNED" });
-    expect((await paper(both)).signatures[1]).toMatchObject({ status: "SIGNED", image: HEAD_INK, signerName: "ZZ Sign PRINCIPAL", can: { decide: false } });
+    expect((await paper(both)).signatures[1]).toMatchObject({ status: "SIGNED", signerName: "ZZ Sign PRINCIPAL", can: { decide: false } });
+    expect((await pictures(await paper(both))).signatures).toEqual([ADMIN_INK, HEAD_INK]);
     expect((await (await signaturesGet()).json()).waiting).toEqual([]);
     const told = await db.notification.findMany({ where: { schoolId, titleKey: "signatures.notifSigned" }, select: { userId: true } });
     expect(told).toEqual([{ userId: users.ADMIN }]);
@@ -205,14 +225,11 @@ describe("a paper is signed", () => {
     expect((await sealRemove()).status).toBe(200);
     await as("PRINCIPAL");
     expect((await mineRemove()).status).toBe(200);
-    const old = await paper(both);
-    expect(old.seal).toBe(SEAL);
-    expect(old.signatures.map((s: { image: string }) => s.image)).toEqual([ADMIN_INK, HEAD_INK]);
+    expect(await pictures(await paper(both))).toEqual({ signatures: [ADMIN_INK, HEAD_INK], seal: SEAL });
     // The next paper has the new signature, no seal, and the head's line waiting on a head who now has none.
     await as("ADMIN");
     const next = await paper(await issue((await db.certificateTemplate.findFirstOrThrow({ where: { schoolId, name: "ZZ signed" } })).id));
-    expect(next.seal).toBeNull();
-    expect(next.signatures[0]).toMatchObject({ status: "SIGNED", image: NEW_INK });
+    expect(await pictures(next)).toEqual({ signatures: [NEW_INK, null], seal: null });
     expect(next.signatures[1]).toMatchObject({ status: "PENDING", image: null });
   });
 

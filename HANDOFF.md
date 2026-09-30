@@ -213,7 +213,16 @@ end-to-end in staging.
   it is published (decided 2026-09-30): one row for the set, one approval by the head for every card
   of it, the set unsigned when it is taken back to drafts. A teacher keeps a signature too, for the
   report cards of the classes they teach, and signs no certificate. The parent's line is always
-  bare, for a hand.
+  bare, for a hand. A picture is fetched by a guarded address (`/api/v1/shared/signatures/{id}`,
+  given only to a reader the paper lets in), not carried inside the paper's answer: a drawn signature
+  is twenty kilobytes of data URL and broke the page's stream.
+- **A typeface is chosen per document, and the keyboard is switched per person** (decided by the
+  owner, 2026-09-30). Nine faces are bundled under `apps/web/public/fonts` (`src/lib/fonts.ts`), OFL
+  all; a certificate template, the report card rules and a post carry a `font` key, "default" being
+  the app's own stack, and the PDFs are set from the same files. The header's switch (EN, हिंदी,
+  मराठी) turns English letters into Devanagari as a word ends, in every box of the app, by a strict
+  table in the browser (`src/lib/transliterate.ts`): a long vowel is typed twice, nothing is
+  guessed, nothing is sent anywhere. Kept on the device, not per box.
 - **The pupil record is the office's to write** (decided by the owner, 2026-09-29). A guardian and
   the pupil read all of it and write none of it. They propose new values on the record's own form
   with a reason, a blank the office asked about included, and an admin or the head applies them or

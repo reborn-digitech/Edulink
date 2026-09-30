@@ -12,6 +12,7 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { saveRules, saveTermWeight } from "./actions";
 import { RulesPreview } from "./rules-preview";
+import { FontSelect } from "@/components/font-select";
 import { ScaleBar, scaleProblems } from "./scale-bar";
 
 /** A band as typed: numbers are strings until the save, so a half-typed "7" is not clamped under the cursor. */
@@ -96,7 +97,7 @@ const SECTIONS: { id: Section; key: "reportCardConfig.tabScale" | "reportCardCon
 type AreaDraft = { key: string; name: string };
 
 /** `readOnly` is the head's view: every control disabled, no save and no weight written on blur, because the rules are the admin's. */
-export function RulesForm({ view, schoolName, readOnly = false }: { view: ReportCardConfigView; schoolName: string; readOnly?: boolean }) {
+export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: { view: ReportCardConfigView; schoolName: string; schoolLocale: string; readOnly?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -492,6 +493,7 @@ export function RulesForm({ view, schoolName, readOnly = false }: { view: Report
                     <CheckboxField key={key} label={layoutLabel[key]} checked={layout[key]} onChange={(e) => setLayout((l) => ({ ...l, [key]: e.target.checked }))} data-testid={`layout-${key}`} />
                   ))}
                 </div>
+                <FontSelect value={layout.font} locale={schoolLocale} onChange={(font) => setLayout((l) => ({ ...l, font }))} testId="layout-font" />
                 {/* Who signs the two lines that are the school's, and whether the seal is printed. */}
                 <div className="grid gap-3 sm:grid-cols-2">
                   {(["signerLeft", "signerRight"] as const).map((side) => (
@@ -535,7 +537,7 @@ export function RulesForm({ view, schoolName, readOnly = false }: { view: Report
       </form>
 
       <aside className="min-w-0 lg:sticky lg:top-20">
-        <RulesPreview schoolName={schoolName} bands={liveBands} areas={areas.map((a) => a.name.trim()).filter(Boolean)} coScale={coScale.map((g) => g.label.trim()).filter(Boolean)} layout={layout} />
+        <RulesPreview schoolName={schoolName} locale={schoolLocale} bands={liveBands} areas={areas.map((a) => a.name.trim()).filter(Boolean)} coScale={coScale.map((g) => g.label.trim()).filter(Boolean)} layout={layout} />
       </aside>
     </div>
   );

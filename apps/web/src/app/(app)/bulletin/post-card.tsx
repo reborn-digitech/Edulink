@@ -23,6 +23,7 @@ import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { ROLE_META, type PostCategory, type ReactionKind, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "./categories";
+import { fontStack } from "@/lib/fonts";
 import { PostMedia } from "./media";
 import { ReactionRow } from "./reactions";
 
@@ -30,6 +31,7 @@ type Post = {
   id: string;
   scope: string;
   category: PostCategory;
+  font?: string;
   title: string;
   body: string;
   tags: string[];
@@ -163,7 +165,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           </div>
         </header>
 
-        <h2 className="mt-3 text-lg font-bold leading-snug text-fg">
+        <h2 style={{ fontFamily: fontStack(post.font, "en") }} className="mt-3 text-lg font-bold leading-snug text-fg">
           <Link href={`/bulletin/${post.id}`} className="hover:underline">
             {post.title}
           </Link>
@@ -179,7 +181,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
         </Link>
 
         {post.body && (
-          <p className="mt-1.5 whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-fg-muted">
+          <p style={{ fontFamily: fontStack(post.font, "en") }} className="mt-1.5 whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-fg-muted" data-testid="post-body">
             {post.body}
           </p>
         )}
