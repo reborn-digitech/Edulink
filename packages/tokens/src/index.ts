@@ -80,6 +80,38 @@ export const accents: Record<Theme, Record<RoleFamily, Accent>> = {
   },
 };
 
+/**
+ * The frame of a light page: the menu on a desk, the bars on a phone. Light
+ * was one white sheet — the page three per cent off the cards — where dark
+ * has two clear tones, and the owner chose on 30 Sep 2026 to give light the
+ * same two: the frame in dark's navy, the page behind the cards tinted so
+ * the white cards stand off it, and a wash of the role's colour fading
+ * behind the page title. In dark the frame is the surface, as it was; high
+ * contrast keeps its black on white and never takes the frame. The frame's
+ * accents are dark's, whose pairs are checked for contrast on navy.
+ */
+export type Frame = Pick<Palette, "surface" | "surfaceMuted" | "surfaceSunken" | "border" | "borderStrong" | "fg" | "fgMuted" | "fgSubtle" | "fgInverse">;
+
+export const frame: Record<Theme, Frame> = {
+  light: {
+    surface: "#141924", surfaceMuted: "#1b2231", surfaceSunken: "#232c3d", border: "#2a3446", borderStrong: "#3b475e",
+    fg: "#edf0f7", fgMuted: "#a6b0c4", fgSubtle: "#8b95aa", fgInverse: "#0b0e15",
+  },
+  dark: {
+    surface: "#141924", surfaceMuted: "#1b2231", surfaceSunken: "#232c3d", border: "#2a3446", borderStrong: "#3b475e",
+    fg: "#edf0f7", fgMuted: "#a6b0c4", fgSubtle: "#8b95aa", fgInverse: "#0b0e15",
+  },
+};
+
+/** The frame's accents: dark's in both themes. */
+export const frameAccents: Record<Theme, Record<RoleFamily, Accent>> = { light: accents.dark, dark: accents.dark };
+
+/** The page behind the cards inside the signed-in shell (the web's --bg there): tinted in light, dark's own in dark. */
+export const canvas: Record<Theme, string> = { light: "#eef1f8", dark: "#0b0e15" };
+
+/** How much of the role's colour the wash behind a page title starts with, fading to the canvas over `washHeight` points. */
+export const wash = { alpha: 0.22, height: 260 } as const;
+
 /** Which accent family a role uses: the principal shares the admin's, an expert the teacher's. */
 export function familyFor(role: string | null | undefined): RoleFamily {
   switch (role) {

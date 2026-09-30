@@ -82,7 +82,7 @@ function PhoneFrame({ children }: { children: ReactNode }) {
   if (Platform.OS !== "web") return <>{children}</>;
   return (
     <View style={{ flex: 1, alignItems: "center", backgroundColor: th.surfaceMuted }}>
-      <View testID="phone-frame" style={{ flex: 1, width: "100%", maxWidth: PHONE_MAX_WIDTH, backgroundColor: th.bg }}>
+      <View testID="phone-frame" style={{ flex: 1, width: "100%", maxWidth: PHONE_MAX_WIDTH, backgroundColor: th.canvas }}>
         {children}
       </View>
     </View>

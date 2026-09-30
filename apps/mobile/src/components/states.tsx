@@ -47,8 +47,8 @@ export function Loading({ label }: { label?: string }) {
 export function Empty({ title, body, action, icon = "tray" }: { title: string; body?: string; action?: ReactNode; icon?: string }) {
   const t = useTheme();
   return (
-    <View accessibilityLiveRegion="polite" style={{ padding: t.space[6], alignItems: "center", gap: t.space[2], backgroundColor: t.surfaceMuted, borderRadius: t.radius.lg }}>
-      <View style={{ width: 56, height: 56, borderRadius: t.radius.xl, backgroundColor: t.surface, alignItems: "center", justifyContent: "center", marginBottom: t.space[1] }}>
+    <View accessibilityLiveRegion="polite" style={{ padding: t.space[6], alignItems: "center", gap: t.space[2], backgroundColor: t.surface, borderWidth: 1, borderColor: t.border, borderRadius: t.radius.lg }}>
+      <View style={{ width: 56, height: 56, borderRadius: t.radius.xl, backgroundColor: t.surfaceMuted, alignItems: "center", justifyContent: "center", marginBottom: t.space[1] }}>
         <Icon name={icon} size={28} color={t.fgSubtle} weight="duotone" />
       </View>
       <Text variant="lg" bold style={{ textAlign: "center" }}>

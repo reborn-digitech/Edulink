@@ -33,6 +33,30 @@ describe("back navigation", () => {
   });
 });
 
+describe("the ground of a screen", () => {
+  it("in light draws the role's colour washing down behind the title, and in dark does not", async () => {
+    const rn = jest.requireActual("react-native") as { useColorScheme: () => string };
+    const spy = jest.spyOn(rn, "useColorScheme");
+    spy.mockReturnValue("light");
+    const light = await renderApp(
+      <Screen title="ZZ Today">
+        <Text>body</Text>
+      </Screen>,
+    );
+    // Hidden from the screen reader on purpose, so the query has to look past that.
+    expect(screen.getByTestId("wash", { includeHiddenElements: true })).toBeTruthy();
+    await light.unmount();
+    spy.mockReturnValue("dark");
+    await renderApp(
+      <Screen title="ZZ Today">
+        <Text>body</Text>
+      </Screen>,
+    );
+    expect(screen.queryByTestId("wash", { includeHiddenElements: true })).toBeNull();
+    spy.mockRestore();
+  });
+});
+
 function SaysSaved({ message, tone }: { message: string; tone?: "ok" | "danger" | "info" }) {
   const toast = useToast();
   useEffect(() => {

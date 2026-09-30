@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, RefreshControl, ScrollView, View, type ViewProps } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Defs, LinearGradient, Rect, Stop } from "react-native-svg";
 import { useTheme } from "@/lib/theme";
 import { useT } from "@/lib/i18n";
 import { haptics } from "@/lib/haptics";
@@ -10,7 +11,8 @@ import { Icon } from "./icon";
 import { useBack } from "./chrome";
 
 /**
- * The page: safe area, the ground colour, a title the screen reader hears
+ * The page: safe area, the ground colour with the role's colour washing
+ * down behind the title in the light theme, a title the screen reader hears
  * first (accessibilityRole header), a description, and pull-to-refresh when
  * the screen has server state. The same shape as the web's PageHeader.
  * A screen that is not a tab (its route wraps it in <BackTo>) gets a back
@@ -48,7 +50,8 @@ export function Screen({
     </View>
   );
   return (
-    <SafeAreaView role="main" edges={["top", "left", "right"]} style={{ flex: 1, backgroundColor: t.bg }}>
+    <SafeAreaView role="main" edges={["top", "left", "right"]} style={{ flex: 1, backgroundColor: t.canvas }}>
+      {t.theme === "light" ? <Wash /> : null}
       <PageTitle title={title} />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       {scroll ? (
@@ -64,6 +67,26 @@ export function Screen({
       )}
       </KeyboardAvoidingView>
     </SafeAreaView>
+  );
+}
+
+/**
+ * The role's colour fading down behind the page title, as the web's shell
+ * draws it (globals.css, data-wash): a fixed band the content scrolls over.
+ * Light only; dark keeps its two tones as they were.
+ */
+function Wash() {
+  const t = useTheme();
+  return (
+    <Svg testID="wash" pointerEvents="none" style={{ position: "absolute", top: 0, left: 0, right: 0 }} width="100%" height={t.wash.height} aria-hidden>
+      <Defs>
+        <LinearGradient id="wash" x1="0" y1="0" x2="0" y2="1">
+          <Stop offset="0" stopColor={t.accent} stopOpacity={t.wash.alpha} />
+          <Stop offset="1" stopColor={t.accent} stopOpacity={0} />
+        </LinearGradient>
+      </Defs>
+      <Rect x="0" y="0" width="100%" height="100%" fill="url(#wash)" />
+    </Svg>
   );
 }
 

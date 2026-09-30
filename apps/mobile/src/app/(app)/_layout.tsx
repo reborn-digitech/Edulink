@@ -53,9 +53,10 @@ export default function AppLayout() {
       backBehavior="history"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: th.accentStrong,
-        tabBarInactiveTintColor: th.fgMuted,
-        tabBarStyle: { backgroundColor: th.surface, borderTopColor: th.border, minHeight: 56 },
+        // The bar is the frame: dark's navy in both themes, with dark's accents (lib/theme.tsx).
+        tabBarActiveTintColor: th.frame.accentStrong,
+        tabBarInactiveTintColor: th.frame.fgMuted,
+        tabBarStyle: { backgroundColor: th.frame.surface, borderTopColor: th.frame.border, minHeight: 56 },
         // Our own label, so it shrinks to fit instead of ending in "…" — large
         // text on Android — and takes back the library's 5 pt pressable padding
         // that once cut off "Attendance" (components/tab-label.tsx).

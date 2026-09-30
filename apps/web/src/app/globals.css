@@ -146,6 +146,73 @@
 }
 
 /* --------------------------------------------------------------------------
+   The frame of a light page.
+
+   Light was one white sheet: the page three per cent off the cards, where
+   dark has two clear tones. The owner chose on 30 Sep 2026 to give light the
+   same two (option 2 of four shown on the real screens): the frame — the
+   menu on a desk, the top and bottom bars and the More sheet on a phone,
+   `data-chrome` in app-shell.tsx — in dark's navy with dark's text and
+   accents, whose pairs are already checked on navy; the page behind the
+   cards (`data-shell`) tinted so the white cards stand off it; and a wash of
+   the role's colour (`data-wash`) fading behind the page title, which a
+   school's brand colour takes over as it takes every accent. Dark is as it
+   was. High contrast never takes the frame: black on white is its point.
+   Public pages and the operator's and the content team's areas are outside
+   the shell and unchanged. @edulink/tokens mirrors the numbers for the phone
+   (frame, canvas, wash) and tests/tokens-drift.test.ts holds them together.
+   -------------------------------------------------------------------------- */
+@media screen {
+[data-theme="light"]:not([data-contrast="high"]) [data-shell] {
+  --bg: #eef1f8;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-chrome] {
+  --surface: #141924;
+  --surface-muted: #1b2231;
+  --surface-sunken: #232c3d;
+  --border: #2a3446;
+  --border-strong: #3b475e;
+  --fg: #edf0f7;
+  --fg-muted: #a6b0c4;
+  --fg-subtle: #8b95aa;
+  --fg-inverse: #0b0e15;
+  --accent: #60a5fa;
+  --accent-strong: #93c5fd;
+  --accent-soft: #10203a;
+  --accent-ring: #3b82f6;
+  --accent-fg: #06121f;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.55);
+  color: var(--fg);
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="student"] [data-chrome] {
+  --accent: #4ade80;
+  --accent-strong: #86efac;
+  --accent-soft: #0f2a1c;
+  --accent-ring: #22c55e;
+  --accent-fg: #04140b;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="parent"] [data-chrome] {
+  --accent: #c084fc;
+  --accent-strong: #d8b4fe;
+  --accent-soft: #221037;
+  --accent-ring: #a855f7;
+  --accent-fg: #14061f;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="admin"] [data-chrome] {
+  --accent: #94a3b8;
+  --accent-strong: #cbd5e1;
+  --accent-soft: #1e2635;
+  --accent-ring: #64748b;
+  --accent-fg: #0b0e15;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-wash] {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, var(--bg)) 0, var(--bg) 260px);
+}
+}
+
+/* --------------------------------------------------------------------------
    Role accents. Each pair is checked so that:
      --accent-fg on --accent      >= 4.5:1
      --accent-strong on --surface >= 4.5:1

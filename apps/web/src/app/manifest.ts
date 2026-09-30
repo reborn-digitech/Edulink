@@ -21,7 +21,7 @@ export default function manifest(): MetadataRoute.Manifest {
     // with minimal chrome rather than the browser tab strip.
     display_override: ["standalone", "minimal-ui"],
     orientation: "portrait-primary",
-    theme_color: "#2563eb",
+    theme_color: "#141924",
     background_color: "#f6f7fb",
     lang: "en",
     dir: "ltr",

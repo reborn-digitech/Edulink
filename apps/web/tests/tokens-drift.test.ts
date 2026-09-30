@@ -5,7 +5,7 @@
  */
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-import { accents, palette } from "@edulink/tokens";
+import { accents, canvas, frame, frameAccents, palette, wash } from "@edulink/tokens";
 
 const css = readFileSync("src/app/globals.css", "utf8");
 
@@ -47,5 +47,30 @@ describe("the tokens package mirrors globals.css", () => {
         expect(accents.dark[family][key as keyof typeof accents.dark.teacher], `dark ${family} --${cssName}`).toBe(dark[cssName]);
       }
     }
+  });
+});
+
+describe("the frame of a light page mirrors globals.css too", () => {
+  const FRAME_KEYS: Record<string, keyof typeof frame.light> = {
+    surface: "surface", "surface-muted": "surfaceMuted", "surface-sunken": "surfaceSunken", border: "border", "border-strong": "borderStrong",
+    fg: "fg", "fg-muted": "fgMuted", "fg-subtle": "fgSubtle", "fg-inverse": "fgInverse",
+  };
+  const LIGHT = '^\\[data-theme="light"\\]:not\\(\\[data-contrast="high"\\]\\) ';
+  it("the frame's surfaces and text, and its accents for every family, are dark's", () => {
+    const chrome = block(new RegExp(LIGHT + "\\[data-chrome\\]\\s*\\{", "m"));
+    for (const [cssName, key] of Object.entries(FRAME_KEYS)) expect(frame.light[key], `frame --${cssName}`).toBe(chrome[cssName]);
+    for (const [cssName, key] of Object.entries(ACCENT)) expect(frameAccents.light.teacher[key as keyof typeof accents.light.teacher], `frame --${cssName}`).toBe(chrome[cssName]);
+    for (const family of ["student", "parent", "admin"] as const) {
+      const rule = block(new RegExp(LIGHT + `\\[data-role="${family}"\\] \\[data-chrome\\]\\s*\\{`, "m"));
+      for (const [cssName, key] of Object.entries(ACCENT)) expect(frameAccents.light[family][key as keyof typeof accents.light.teacher], `frame ${family} --${cssName}`).toBe(rule[cssName]);
+    }
+  });
+  it("the canvas behind the cards and the wash", () => {
+    const shell = block(new RegExp(LIGHT + "\\[data-shell\\]\\s*\\{", "m"));
+    expect(canvas.light).toBe(shell.bg);
+    const m = new RegExp(LIGHT + "\\[data-wash\\]\\s*\\{[^}]*var\\(--accent\\) (\\d+)%[^}]*var\\(--bg\\) (\\d+)px", "m").exec(css);
+    expect(m, "the wash rule").not.toBeNull();
+    expect(Number(m![1]) / 100).toBe(wash.alpha);
+    expect(Number(m![2])).toBe(wash.height);
   });
 });

@@ -62,7 +62,7 @@ export function AppearanceForm({
     root.setAttribute("data-motion", next.motion === "reduced" ? "reduced" : "full");
 
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#0b0e15" : "#2563eb");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#0b0e15" : "#141924");
 
     try {
       const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "{}");

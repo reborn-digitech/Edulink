@@ -87,12 +87,16 @@ export function AppShell({
   return (
     // data-role drives every accent token in the subtree, so the whole shell
     // recolours per role from one attribute.
-    <div data-role={user.role.toLowerCase()} className="min-h-safe bg-bg">
+    // data-shell tints the page behind the cards in the light theme; data-chrome
+    // marks the frame (menu, bars, sheet) that takes dark's navy there; data-wash
+    // fades the role's colour behind the page title. globals.css, "The frame of
+    // a light page".
+    <div data-role={user.role.toLowerCase()} data-shell className="min-h-safe bg-bg">
       {/* ---------- desktop side rail ---------- */}
       {/* print:hidden on every piece of chrome: the sheet is the page's content,
           not the app around it. Found the hard way — the first printed progress
           report carried the side rail, the bottom tabs and the FAB. */}
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex print:hidden">
+      <aside data-chrome className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-border bg-surface lg:flex print:hidden">
         <div className="flex h-16 items-center gap-2.5 border-b border-border px-5">
           <Logo size={28} />
           <div className="min-w-0">
@@ -177,7 +181,7 @@ export function AppShell({
       </aside>
 
       {/* ---------- mobile top bar ---------- */}
-      <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden print:hidden">
+      <header data-chrome className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden print:hidden">
         <Link href={items[0]!.href} className="flex min-w-0 items-center gap-2">
           <Logo size={26} />
           <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
@@ -227,7 +231,7 @@ export function AppShell({
       </header>
 
       {/* ---------- content ---------- */}
-      <div className="lg:pl-64 print:pl-0">
+      <div data-wash className="lg:pl-64 print:pl-0">
         <main
           id="main"
           className="mx-auto max-w-5xl px-4 pb-32 pt-4 sm:px-6 lg:pb-12 lg:pt-8 print:p-0"
@@ -259,6 +263,7 @@ export function AppShell({
 
       {/* ---------- mobile bottom bar ---------- */}
       <nav
+        data-chrome
         aria-label={t("shell.mainNav")}
         className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 pb-safe backdrop-blur-md lg:hidden print:hidden"
       >
@@ -305,7 +310,7 @@ export function AppShell({
             onClick={() => setMoreOpen(false)}
             className="absolute inset-0 bg-black/40"
           />
-          <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl bg-surface p-4 pb-safe shadow-xl animate-in-up">
+          <div data-chrome className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl bg-surface p-4 pb-safe shadow-xl animate-in-up">
             {secondary.map(({ group, items: list }) => (
               <div key={group} className="mb-4">
                 <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">

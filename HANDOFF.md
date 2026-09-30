@@ -42,7 +42,8 @@ apps/mobile     Expo (React Native). Screens per role in src/screens/<role>; tal
 packages/contracts   zod schemas for every /api/v1 request and response. The phone parses with them.
 packages/i18n        en / hi / mr dictionaries; every user-facing sentence is a key.
 packages/api-client  The bearer-token fetch wrapper the phone uses.
-packages/tokens      Design tokens shared by web and phone.
+packages/tokens      Design tokens shared by web and phone: palettes, role accents, and the light frame
+                     (navy menu and bars, tinted canvas, role-colour wash) chosen 2026-09-30.
 docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 380 endpoints.
 ```
 

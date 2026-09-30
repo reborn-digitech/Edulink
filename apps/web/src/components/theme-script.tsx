@@ -40,9 +40,9 @@ const script = `
       root.setAttribute('data-standalone', 'true');
     }
 
-    // Keep the Android status bar in step with the live theme.
+    // Keep the Android status bar in step with the live theme: the page in dark, the navy top bar in light.
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b0e15' : '#2563eb');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b0e15' : '#141924');
   } catch (e) {
     // A blocked/full localStorage must never stop the app rendering.
     document.documentElement.setAttribute('data-theme', 'light');

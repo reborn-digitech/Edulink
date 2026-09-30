@@ -20,11 +20,11 @@ export function Card({ title, action, children, style, ...rest }: ViewProps & { 
   );
 }
 
-/** A figure with a caption — the web's StatTile. */
+/** A figure with a caption — the web's StatTile. A card's surface and border, so it stands off the tinted canvas as a card does. */
 export function Stat({ label, value, tone = "fg" }: { label: string; value: string | number; tone?: "fg" | "ok" | "warn" | "danger" | "accent" }) {
   const t = useTheme();
   return (
-    <View accessible accessibilityLabel={`${label}: ${value}`} style={{ flex: 1, minWidth: 120, backgroundColor: t.surfaceMuted, borderRadius: t.radius.md, padding: t.space[3], gap: 2 }}>
+    <View accessible accessibilityLabel={`${label}: ${value}`} style={{ flex: 1, minWidth: 120, backgroundColor: t.surface, borderWidth: 1, borderColor: t.border, borderRadius: t.radius.md, padding: t.space[3], gap: 2 }}>
       <Text variant="xs" tone="subtle">
         {label}
       </Text>

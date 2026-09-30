@@ -56,7 +56,7 @@ export const viewport: Viewport = {
   // Deliberately NOT capping maximumScale — blocking pinch-zoom fails WCAG
   // 1.4.4 and is exactly the sort of thing low-vision users need. (§6)
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#2563eb" },
+    { media: "(prefers-color-scheme: light)", color: "#141924" },
     { media: "(prefers-color-scheme: dark)", color: "#0b0e15" },
   ],
 };
