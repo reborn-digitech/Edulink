@@ -101,6 +101,25 @@ export function word(locale: Locale, key: string): string {
 }
 
 /** The labels of this role's tab bar, More last, in one language. */
+/**
+ * Words on a screen that are a key of the dictionary and not a sentence. A
+ * release bundles only the keys scripts/i18n-subset.cjs finds the phone can
+ * ask for, and the translator answers a key it does not hold with the key
+ * itself: on the exported web target, which is such a bundle, one left out
+ * shows here and on no other check.
+ */
+const KEYS = new Set<string>();
+(function keysOf(tree: unknown, prefix = ""): void {
+  for (const [name, value] of Object.entries(tree as Record<string, unknown>)) {
+    if (typeof value === "string") KEYS.add(prefix + name);
+    else keysOf(value, `${prefix}${name}.`);
+  }
+})(en);
+
+export function rawKeys(text: string): string[] {
+  return [...new Set(text.split(/\s+/).map((part) => part.replace(/[.,:;!?()]+$/, "")).filter((part) => KEYS.has(part)))];
+}
+
 export function tabLabels(role: Role, locale: Locale): string[] {
   return [...TABS[role].map((tab) => tab.labelKey), "nav.more"].map((key) => word(locale, key));
 }

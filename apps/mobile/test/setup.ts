@@ -92,3 +92,37 @@ jest.mock("expo-file-system", () => {
   return { File, Paths: { cache: { uri: "file:///cache" } } };
 });
 jest.mock("expo-sharing", () => ({ isAvailableAsync: jest.fn(async () => true), shareAsync: jest.fn(async () => {}) }));
+
+// A release bundle carries only the keys scripts/i18n-subset.cjs finds the
+// phone can ask for, and a key it misses shows as the key itself on a phone
+// and nowhere in these tests, which run on the whole dictionaries. So every
+// key a test file asks the translator for is kept, and the file fails if one
+// of them is a sentence the release would not have. Keys the dictionary does
+// not hold at all are another test's business (test/lib/keys.test.ts).
+jest.mock("@edulink/i18n", () => {
+  const actual = jest.requireActual("@edulink/i18n");
+  const asked = new Set<string>();
+  (globalThis as { __askedKeys?: Set<string> }).__askedKeys = asked;
+  return {
+    ...actual,
+    translatorFor: (dictionary: unknown) => {
+      const t = actual.translatorFor(dictionary);
+      return (key: string, vars?: Record<string, string | number>) => {
+        asked.add(key);
+        return t(key, vars);
+      };
+    },
+  };
+});
+
+afterAll(() => {
+  const asked = (globalThis as { __askedKeys?: Set<string> }).__askedKeys;
+  if (!asked || asked.size === 0) return;
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { usedKeys } = require("../scripts/i18n-subset.cjs") as { usedKeys: () => { used: Set<string>; all: Map<string, string> } };
+  const { used, all } = usedKeys();
+  const left = [...asked].filter((key) => all.has(key) && !used.has(key)).sort();
+  if (left.length > 0) {
+    throw new Error(`scripts/i18n-subset.cjs leaves out ${left.length} key(s) this file asked the translator for, and a release would show the key in place of the sentence: ${left.join(", ")}`);
+  }
+});

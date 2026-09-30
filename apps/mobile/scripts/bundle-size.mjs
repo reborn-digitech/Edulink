@@ -12,9 +12,14 @@
  * had come in (no new dependency, icons still per file). Metro's minified JS is
  * measured (what Hermes compiles; the .hbc it becomes is about 8% larger and
  * is reported too when present). Above the target is a warning that names
- * the number; above the ceiling the gate fails. The ceiling is the release
- * limit; lowering it to the target is the release's job once the dictionaries
- * ship as the app's subset rather than the web's whole (see the Phase 5 report).
+ * the number; above the ceiling the gate fails.
+ *
+ * On 30 Sep 2026 the bundle stood at 5.82 MB, over the ceiling for some
+ * commits while CI was refused, and 1.75 MB of it was the three dictionaries
+ * whole, the web's sentences with the phone's. A release now carries the
+ * phone's share of them (scripts/i18n-subset.cjs, swapped in by
+ * metro.config.js), which is what this measures. The ceiling stayed where it
+ * was; lowering it to the target is the owner's to decide.
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";

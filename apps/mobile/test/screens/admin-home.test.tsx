@@ -15,9 +15,10 @@ const OVERVIEW = {
     total: 3,
     complete: false,
     steps: [
-      { id: "year", done: true, href: "/admin/calendar", titleKey: "admin.setUpYear", descriptionKey: "admin.setupProgress", ctaKey: "admin.setUpYear", blockedBy: null },
-      { id: "teachers", done: false, href: "/admin/invites/new?role=TEACHER", titleKey: "admin.invitePeople", descriptionKey: "admin.setupProgress", ctaKey: "admin.invitePeople", blockedBy: null },
-      { id: "verify", done: false, href: "/account/verify", titleKey: "meta.confirmEmail", descriptionKey: "admin.setupProgress", ctaKey: "meta.confirmEmail", blockedBy: null },
+      // The steps as getChecklist writes them: a release carries the sentences of its keys and of no others.
+      { id: "classes", done: true, href: "/admin/classes/new", titleKey: "checklist.classesTitle", descriptionKey: "checklist.classesSetUpMany", descriptionVars: { count: 4 }, ctaKey: "checklist.classesMoreCta", blockedBy: null },
+      { id: "teachers", done: false, href: "/admin/invites/new?role=TEACHER", titleKey: "checklist.teachersTitle", descriptionKey: "checklist.invitesWaitingMany", descriptionVars: { count: 3 }, ctaKey: "checklist.teachersCta", blockedBy: null },
+      { id: "verify", done: false, href: "/account/verify", titleKey: "checklist.verifyTitle", descriptionKey: "checklist.verifyBody", ctaKey: "checklist.verifyCta", blockedBy: null },
     ],
   },
   counts: { teachers: 8, students: 120, classes: 4, pendingInvites: 3, registersTakenToday: 3, examSeries: 2, examSeriesPublished: 1, reportCardsPublished: 0 },
@@ -45,9 +46,9 @@ describe("the admin's overview", () => {
 
   it("every door is the app's own screen: a checklist step with its role, its section for a step with no screen, the editor, exams and invitations", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW) });
-    await fireEvent.press(await screen.findByRole("button", { name: "Invite people, Setup progress" }));
+    await fireEvent.press(await screen.findByRole("button", { name: "Invite your teachers, 3 invitations are waiting to be accepted." }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/invites", params: { role: "TEACHER" } });
-    await fireEvent.press(screen.getByRole("button", { name: "Confirm your email, Setup progress" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm your email address, We sent you a link. It keeps your school's account recoverable." }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/account" });
     await fireEvent.press(screen.getByRole("button", { name: "Open the timetable" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/timetable-editor");
@@ -56,7 +57,7 @@ describe("the admin's overview", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Invite people" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
     // A step already done is not a door.
-    expect(screen.queryByRole("button", { name: "Set up the year, Setup progress" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Create your classes, 4 classes set up." })).toBeNull();
   });
 
   it("with nothing expected today — a closed day, or no class with pupils — the registers stat is a dash, not a count against the classes", async () => {

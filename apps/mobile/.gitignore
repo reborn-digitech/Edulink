@@ -19,6 +19,8 @@ expo-env.d.ts
 *.mobileprovision
 
 # Metro
+# The phone's share of the dictionaries, written by scripts/i18n-subset.cjs when a release is bundled.
+i18n-subset/
 .metro-health-check*
 
 # debug

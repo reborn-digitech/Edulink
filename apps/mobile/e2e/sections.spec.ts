@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { allRoutesFor, contextFor, rolesWithTokens, settle } from "./actors";
+import { allRoutesFor, contextFor, rawKeys, rolesWithTokens, settle } from "./actors";
 
 /**
  * Every section the web's NAV gives a role is a screen on the phone: the
@@ -7,7 +7,9 @@ import { allRoutesFor, contextFor, rolesWithTokens, settle } from "./actors";
  * page answers under 400, the app draws its own header (not the sign-in
  * page, not a placeholder), and nothing on it is an alert — a refused or
  * misparsed answer shows as one, so a screen whose query is wrong for the
- * role fails here rather than on a phone.
+ * role fails here rather than on a phone. Nor is any word on it a key of the
+ * dictionary where its sentence should be, which is what a release shows for
+ * a key left out of the phone's share of the dictionaries.
  */
 const actors = rolesWithTokens();
 
@@ -27,6 +29,7 @@ for (const { role, token } of actors) {
         const text = await page.locator("body").innerText();
         expect(text, `${route} shows the sign-in page`).not.toContain("Welcome back");
         expect(text, `${route} is still a placeholder`).not.toContain("Coming soon");
+        expect(rawKeys(text), `${route} shows a key where a sentence should be`).toEqual([]);
         const alerts = await page.getByRole("alert").allInnerTexts();
         expect(alerts, `${route} shows an alert`).toEqual([]);
         expect(await page.getByRole("heading").count(), `${route} has no heading`).toBeGreaterThan(0);

@@ -1,4 +1,6 @@
-// Metro for the EduLink app: Expo's defaults, with one change.
+// Metro for the EduLink app: Expo's defaults, with two changes.
+//
+// 1. The minifier writes Devanagari as itself.
 //
 // Terser's `ascii_only` writes every non-ASCII character as a \uXXXX escape.
 // For this app that meant all 238,571 Devanagari characters of the Hindi and
@@ -16,5 +18,34 @@ config.transformer.minifierConfig = {
   ...config.transformer.minifierConfig,
   output: { ...config.transformer.minifierConfig.output, ascii_only: false },
 };
+
+// 2. A release is bundled with the phone's share of the dictionaries.
+//
+// packages/i18n holds what the web and the phone say, some 7,600 keys in each
+// of three languages, and the phone asks for a little over half of them. Metro
+// cannot leave the rest out by itself, so they were 0.9 MB of the bundle that
+// no screen could show (30 Sep 2026). scripts/i18n-subset.cjs writes the three
+// dictionaries with only the keys the phone can ask for (the names of the keys
+// once, each language as its sentences), and the resolver below gives Metro
+// those files wherever packages/i18n/src/{en,hi,mr}.ts is asked for.
+//
+// Only when a release is bundled (`expo export`, an EAS build): a development
+// server keeps the whole dictionaries, so a key used for the first time while
+// it runs is a sentence and not a key until the next restart. EDULINK_I18N_SUBSET=1
+// forces the subset on, which is how the web target is walked with it;
+// EDULINK_I18N_FULL=1 forces it off.
+const { writeSubset } = require("./scripts/i18n-subset.cjs");
+
+const release = process.env.NODE_ENV === "production" || process.argv.some((arg) => arg === "export" || arg === "export:embed");
+if (process.env.EDULINK_I18N_FULL !== "1" && (release || process.env.EDULINK_I18N_SUBSET === "1")) {
+  const subset = writeSubset();
+  const whole = /[\\/]packages[\\/]i18n[\\/]src[\\/](en|hi|mr)\.ts$/;
+  const upstream = config.resolver.resolveRequest;
+  config.resolver.resolveRequest = (context, moduleName, platform) => {
+    const resolved = upstream ? upstream(context, moduleName, platform) : context.resolveRequest(context, moduleName, platform);
+    const match = resolved.type === "sourceFile" ? whole.exec(resolved.filePath) : null;
+    return match ? { type: "sourceFile", filePath: subset[match[1]] } : resolved;
+  };
+}
 
 module.exports = config;
