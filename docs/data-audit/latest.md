@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-30T03:21:25.344Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 21 INFO
+Run: 2026-09-30T12:36:13.518Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 22 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -12,13 +12,14 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | fees-api | Saraswati Vidya Mandir | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 | fees-api | Sunrise Public School | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 
-## INFO (21)
+## INFO (22)
 
 | check | school | detail |
 |---|---|---|
+| gig-earnings | platform | 0 contributed question(s) in the bank, 0 payment(s) recorded |
 | admission | Saraswati Vidya Mandir | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | Sunrise Public School | 6 of 7 applications carry no PEN — the field is optional on the form |
-| admission | ZZ Northgate School | 7 of 8 applications carry no PEN — the field is optional on the form |
+| admission | ZZ Northgate School | 6 of 7 applications carry no PEN — the field is optional on the form |
 | certificate | Saraswati Vidya Mandir | CC/2026–27/0001 printed "—" for: record.conduct |
 | certificate | Sunrise Public School | CC/2026–27/0001 printed "—" for: record.conduct |
 | quiz | Sunrise Public School | 1 attempt(s) were opened and never answered |
@@ -35,5 +36,5 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | overview-api | Saraswati Vidya Mandir | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Sunrise Public School | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |
-| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide, ScheduledDeparture |
-| population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeRefund.cutsJson, FeeRefund.failedReason, FeeStructure.archivedAt, Grade.letter, Grade.comment, GuardianClaim.decidedAt, GuardianClaim.decidedByUserId, GuardianClaim.declineReason, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, JobPosting.closedAt, JoinRequest.decidedAt, JoinRequest.decidedByMembershipId, JoinRequest.declineReason, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, PupilRecord.guardianPhone, PupilRecord.alternatePhone, PupilRecord.freeUniform, PupilRecord.freeTextbook, PupilRecord.extracurricular, PupilRecord.stream, PupilRecord.vocationalCourse, PupilRecord.vocationalTradeId, PupilRecord.vocationalJobRoleId, PupilRecord.vocationalExamAppeared, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCardItem.comment, StaffRecord.qualification, StaffRecord.appointedSubject, TimetablePeriod.archivedAt |
+| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide |
+| population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeRefund.cutsJson, FeeRefund.failedReason, FeeStructure.archivedAt, Grade.letter, Grade.comment, GuardianClaim.decidedAt, GuardianClaim.decidedByUserId, GuardianClaim.declineReason, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, IssuedCertificate.studentName, JobPosting.closedAt, JoinRequest.decidedAt, JoinRequest.decidedByMembershipId, JoinRequest.declineReason, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.decisionReason, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, PupilRecord.guardianPhone, PupilRecord.alternatePhone, PupilRecord.freeUniform, PupilRecord.freeTextbook, PupilRecord.extracurricular, PupilRecord.stream, PupilRecord.vocationalCourse, PupilRecord.vocationalTradeId, PupilRecord.vocationalJobRoleId, PupilRecord.vocationalExamAppeared, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCardItem.comment, StaffRecord.qualification, StaffRecord.appointedSubject, TimetablePeriod.archivedAt |

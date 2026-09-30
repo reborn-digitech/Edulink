@@ -71,7 +71,7 @@ async function reportCardFixture(s: string): Promise<{ reportCardId: string | nu
 const SWEEP_PNG = `data:image/png;base64,${fixturePng(32, 16).toString("base64")}`;
 
 /** The ZZ certificates: an active template (and its body to send back), a retired one, an issued certificate, one still to revoke, and a printed code. */
-async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null }> {
+async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null; gigContributionId: string | null; gigWithdrawnContributionId: string | null }> {
   const [active, retired, issued, revocable] = await Promise.all([
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: true, kind: "BONAFIDE" }, orderBy: { createdAt: "asc" } }),
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: false }, orderBy: { createdAt: "asc" }, select: { id: true } }),
@@ -96,10 +96,13 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
   // The fixture's settled ask, by id (zz-fixtures.ts `buildRecordChanges`): deciding it and taking it back are both answered as it stands.
   const recordChange = await db.recordChangeRequest.findFirst({ where: { schoolId: s, id: { in: ["zz-fixture-record-change", "zz-fixture-record-change-southbank"] }, status: { not: "PENDING" } }, select: { id: true } });
   // The fixture's settled signature (zz-fixtures.ts `buildSignatures`), whose decision is answered as it stands.
+  // A teacher's questions for the bank (zz-fixtures.ts `buildGigQuestions`): the one that waits, and one its author took back.
+  const gigs = await db.questionContribution.findMany({ where: { authorSchoolId: s, stem: { startsWith: "ZZ " }, status: { in: ["SUBMITTED", "WITHDRAWN"] } }, orderBy: { id: "asc" }, select: { id: true, status: true } });
+  const gig = (status: string) => gigs.find((g) => g.status === status)?.id ?? null;
   const paperSignature = await db.paperSignature.findFirst({ where: { schoolId: s, status: { not: "PENDING" }, slot: { in: ["LEFT", "RIGHT"] } }, orderBy: { id: "asc" }, select: { id: true } });
   // A signed line on another pupil's certificate (zz-fixtures.ts `buildSignatures`): what the sweep's pupil and parent must be refused.
   const otherPupilSignature = await db.paperSignature.findFirst({ where: { schoolId: s, paperKind: "CERTIFICATE", status: "SIGNED", slot: "LEFT", paperId: { in: (await db.issuedCertificate.findMany({ where: { schoolId: s, student: { user: { email: { not: "zz.pupil01@zz.test" } } } }, select: { id: true } })).map((c) => c.id) } }, orderBy: { id: "asc" }, select: { id: true } });
-  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG };
+  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG, gigContributionId: gig("SUBMITTED"), gigWithdrawnContributionId: gig("WITHDRAWN") };
 }
 
 /** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
@@ -401,6 +404,18 @@ async function crossProbe(mode: "school" | "person") {
         tried.push(`POST ${e.path} as ${role}`);
       }
     } else skipped.push("POST /api/v1/family/record/changes/{requestId}/withdraw (no ask waiting on another family's child in the fixtures)");
+    // A question ANOTHER teacher wrote for the bank (zz-fixtures.ts `buildGigQuestions`): the sweep's teacher reads, changes and takes back none of it.
+    const mineGig = homeFx.gigContributionId ? await db.questionContribution.findUnique({ where: { id: homeFx.gigContributionId }, select: { authorUserId: true, topicId: true } }) : null;
+    const othersGig = mineGig ? await db.questionContribution.findFirst({ where: { authorSchoolId: home.id, stem: { startsWith: "ZZ " }, status: "SUBMITTED", authorUserId: { not: mineGig.authorUserId } }, orderBy: { id: "asc" }, select: { id: true } }) : null;
+    if (mineGig && othersGig) {
+      const text = { stem: "ZZ probe: what is two and two?", choices: ["3", "4"], solution: "Two and two make four." };
+      const body = { topicId: mineGig.topicId, difficulty: 1, answerIndex: 1, en: text, hi: text, mr: text, terms: true };
+      for (const [method, tail, send] of [["GET", "", null], ["POST", "", body], ["POST", "/withdraw", null]] as const) {
+        const e = ENDPOINTS.find((x) => x.method === method && x.path === `/api/v1/gigs/questions/{contributionId}${tail}`)!;
+        await check(e, "TEACHER", `/api/v1/gigs/questions/${othersGig.id}${tail}`, send, "another teacher's question for the bank");
+        tried.push(`${method} ${e.path} as TEACHER${send ? " (valid body)" : ""}`);
+      }
+    } else skipped.push("/api/v1/gigs/questions/{contributionId} (no other teacher's question in the fixtures)");
     // A picture on another pupil's certificate: the sweep's pupil and their parent are refused it.
     if (homeFx.otherPupilSignatureId) {
       const e = ENDPOINTS.find((x) => x.method === "GET" && x.path === "/api/v1/shared/signatures/{signatureId}")!;

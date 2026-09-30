@@ -16,7 +16,7 @@ export type Sessions = Record<string, Actor>;
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
-async function mint(userId: string, role: string, schoolId: string | null): Promise<string> {
+async function mint(userId: string, role: string | null, schoolId: string | null): Promise<string> {
   const token = randomBytes(32).toString("base64url");
   await db.session.create({
     data: {
@@ -81,6 +81,14 @@ export default async function globalSetup() {
 
   const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });
   if (expert) sessions.EXPERT = { role: "EXPERT", cookie: await mint(expert.userId, "EXPERT", null) };
+
+  // The content team and the operator: the fixture's flagged accounts, with no school and no role, as they really sign in.
+  const platform = async (key: string, email: string) => {
+    const user = await db.user.findUnique({ where: { email }, select: { id: true } });
+    if (user) sessions[key] = { role: key, email, cookie: await mint(user.id, null, null) };
+  };
+  await platform("APPADMIN", "zz.appadmin@zz.test");
+  await platform("OPERATOR", "zz.operator@zz.test");
 
   writeFileSync(join(__dirname, ".sessions.json"), JSON.stringify(sessions, null, 2));
   await db.$disconnect();

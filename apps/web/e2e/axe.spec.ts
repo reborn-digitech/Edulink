@@ -9,7 +9,9 @@ import { contextFor, sessions, VIEWPORTS } from "./actors";
  * minor ones are printed, not failed — the number should fall, not be hidden.
  */
 const all = sessions();
-const roles = Object.keys(all) as (keyof typeof NAV)[];
+// The content team and the operator are signed in for their own specs and have no menu in NAV: their pages are
+// walked by gig-questions.spec.ts, not here.
+const roles = (Object.keys(all) as (keyof typeof NAV)[]).filter((role) => NAV[role]);
 
 for (const role of roles) {
   const actor = all[role]!;

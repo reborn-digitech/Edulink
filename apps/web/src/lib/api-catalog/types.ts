@@ -124,6 +124,9 @@ export type SweepFixture = {
   recordChangeId: string | null;
   /** A settled signature on a fixture certificate (deciding it answers it as it stands), and a small PNG to set one with. */
   paperSignatureId: string | null;
+  /** A teacher's question for the bank that waits for the content team, and one its author took back (zz-fixtures.ts `buildGigQuestions`). */
+  gigContributionId: string | null;
+  gigWithdrawnContributionId: string | null;
   /** A signed line on a certificate of a pupil who is NOT the sweep's pupil, for the cross-person probe. */
   otherPupilSignatureId: string | null;
   signaturePng: string | null;

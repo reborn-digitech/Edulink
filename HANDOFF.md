@@ -175,6 +175,16 @@ end-to-end in staging.
   the schema, the app role unable to bypass them. Handlers still bind the person, not only the school.
 - **Money never touches the platform** (decision 0003). The gateway account is the school's; the
   platform records demands, allocations and receipts, and reconciles.
+- **Gigs: work done for the platform, free first and then paid** (decision 0004, the owner's choices
+  of 2026-09-30). Built so far: a teacher writes questions for the practice bank in English, Hindi
+  and Marathi (`/teacher/contributions`), the content team adds them to the bank, returns or
+  rejects them (`/appadmin/contributions`), and the operator holds the rate and the limits and
+  records what the company paid by UPI (`/root/gigs`); `src/lib/gig-questions.ts`. ₹10 a question,
+  only when it is added to the bank, the first 20 unpaid, 200 a month per teacher, inside a monthly
+  budget; past a limit adding waits and nothing is added unpaid. The platform pays nobody: a
+  payment is the operator's record of a transfer. Not built: experts' paid sessions and workshops,
+  a pupil's free allowance, teachers' free guidance, and the gateway split, which wait on a
+  lawyer's opinion and an accountant (see the decision).
 - **Minors' data policy** (decision 0002). No Aadhaar, ever. Free-text reasons stay out of audit rows,
   push bodies to minors are generic, retention is a schedule with dials, and every column a report
   reads is listed with who may enter it.

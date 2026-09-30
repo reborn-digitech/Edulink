@@ -649,6 +649,37 @@ export async function buildSignatures(school: { id: string }, people: { adminUse
   return { paperId: paper?.id ?? null, cardSet: card ? `${card.title}` : null };
 }
 
+/**
+ * A teacher's questions for the practice bank (gigs, decision 0004): one that
+ * waits for the content team, one returned with a note and one the teacher
+ * took back, all by the lead of Grade 3, who is the teacher the sweep signs
+ * in as; and where that teacher is paid. NONE IS ADDED TO THE BANK: the bank
+ * is every school's, and a fixture's question in it would be set to real
+ * pupils. The rows are this teacher's own and are rebuilt each run.
+ */
+export async function buildGigQuestions(school: { id: string; name: string }) {
+  const lead = await db.classTeacher.findFirst({ where: { schoolId: school.id, role: "LEAD", class: { gradeLevel: "3", archivedAt: null } }, select: { teacher: { select: { userId: true } } } });
+  const topic = await db.quizTopic.findFirst({ where: { retiredAt: null, subject: "MATHS" }, orderBy: [{ classLevel: "asc" }, { position: "asc" }], select: { id: true, name: true } });
+  await db.gigSettings.upsert({ where: { id: "gigs" }, create: { id: "gigs" }, update: {} });
+  if (!lead || !topic) return { waiting: null, topic: null };
+  const userId = lead.teacher.userId;
+  await db.gigPayee.upsert({ where: { userId }, create: { userId, upiId: "zz.teacher@zzbank", payeeName: "ZZ Teacher" }, update: {} });
+  // Only what the fixtures made and nobody added to the bank: an accepted one has an earning, and is somebody's test or somebody's work.
+  await db.questionContribution.deleteMany({ where: { authorUserId: userId, stem: { startsWith: "ZZ " }, status: { not: "ACCEPTED" } } });
+  const base = { authorUserId: userId, authorSchoolId: school.id, authorSchoolName: school.name, topicId: topic.id, difficulty: 1, answerIndex: 1, choices: JSON.stringify(["7", "8", "9", "10"]), choicesHi: JSON.stringify(["7", "8", "9", "10"]), choicesMr: JSON.stringify(["7", "8", "9", "10"]), termsAcceptedAt: new Date() };
+  const text = (n: string) => ({ stem: `ZZ What is three more than ${n}?`, solution: "Count on three from the number.", stemHi: `ZZ ${n} से तीन अधिक कितना है?`, solutionHi: "संख्या से आगे तीन गिनें।", stemMr: `ZZ ${n} पेक्षा तीन जास्त किती?`, solutionMr: "संख्येपासून पुढे तीन मोजा." });
+  const waiting = await db.questionContribution.create({ data: { ...base, ...text("five"), status: "SUBMITTED" }, select: { id: true } });
+  await db.questionContribution.create({ data: { ...base, ...text("six"), answerIndex: 2, status: "RETURNED", reviewNote: "ZZ Write the number as a numeral in all three languages.", reviewedAt: new Date() } });
+  await db.questionContribution.create({ data: { ...base, ...text("seven"), answerIndex: 3, status: "WITHDRAWN" } });
+  // And one by ANOTHER teacher, which the first must not be able to read, change or take back (the cross-person probe).
+  const other = await db.classTeacher.findFirst({ where: { schoolId: school.id, role: "LEAD", teacher: { userId: { not: userId } } }, orderBy: { id: "asc" }, select: { teacher: { select: { userId: true } } } });
+  if (other) {
+    await db.questionContribution.deleteMany({ where: { authorUserId: other.teacher.userId, stem: { startsWith: "ZZ " }, status: { not: "ACCEPTED" } } });
+    await db.questionContribution.create({ data: { ...base, ...text("eight"), authorUserId: other.teacher.userId, answerIndex: 0, status: "SUBMITTED" } });
+  }
+  return { waiting: waiting.id, topic: topic.name };
+}
+
 export async function buildWaiting(ctx: Ctx, school: { id: string }, opts: { tag?: string; pupilEmail?: string; others?: boolean } = {}) {
   const ids = waitingIds(opts.tag ?? "");
   const joiner = await upsertUser(ctx, `zz.joiner01@${DOMAIN}`, "ZZ Ira Gokhale", { birthdate: new Date("2017-08-14T00:00:00Z"), isMinor: true });
@@ -2268,6 +2299,8 @@ async function main() {
   const principal = await db.user.findUnique({ where: { email: `zz.principal@${DOMAIN}` }, select: { id: true } });
   const signatures = await buildSignatures(northgate.school, { adminUserId: northgate.admin.id, principalUserId: principal?.id });
   console.log(`  Signatures: the admin's, the head's and the seal; on certificate ${signatures.paperId ?? "none"} the admin's drawn and the head's waiting; on the report cards "${signatures.cardSet ?? "none"}" the class teacher's drawn and the head's waiting`);
+  const gigs = await buildGigQuestions(northgate.school);
+  console.log(`  Questions for the bank: ${gigs.waiting ? `one waiting (${gigs.waiting}), one returned, one taken back, in "${gigs.topic}"` : "none (no bank imported, or no lead for Grade 3)"}`);
   const recordChanges = await buildRecordChanges(northgate.school, northgate.admin.id, { pupilEmail: `zz.pupil01@${DOMAIN}`, waiting: true });
   console.log(`  Asks to change a record: declined ${recordChanges.declined}, waiting ${recordChanges.waiting ?? "none"}`);
   const southbank = await buildSouthbank(ctx);

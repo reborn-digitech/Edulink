@@ -28,6 +28,8 @@ config();
 
 const DIR = join(process.cwd(), "content", "quiz");
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
+/** The `source` of a question made in the app rather than imported: src/lib/app-admin.ts and src/lib/gig-questions.ts. */
+const AUTHORED_IN_THE_APP = new Set(["Relay content team", "teacher contribution"]);
 
 type Translation = { stem?: string; choices?: string[]; solution?: string };
 
@@ -115,7 +117,7 @@ async function main() {
 
     const existing = await db.quizQuestion.findMany({
       where: { topicId: row.id },
-      select: { id: true, stem: true },
+      select: { id: true, stem: true, source: true },
     });
     const byStem = new Map(existing.map((q) => [q.stem.trim(), q.id]));
     const keep = new Set<string>();
@@ -172,7 +174,10 @@ async function main() {
     // A question deleted from the file is deleted from the bank. Its responses
     // cascade away with it — which is the honest outcome, because a child's
     // answer to a question that no longer exists cannot be scored or shown.
-    const orphans = existing.filter((q) => !keep.has(q.id)).map((q) => q.id);
+    // Only a question the FILES wrote can be orphaned by them. One typed in by the content team or
+    // written by a teacher and added to the bank (gigs) was never in a file, and an import that
+    // deleted it would take a teacher's paid work out of the bank without a word.
+    const orphans = existing.filter((q) => !keep.has(q.id) && !AUTHORED_IN_THE_APP.has(q.source)).map((q) => q.id);
     if (orphans.length) {
       await db.quizQuestion.deleteMany({ where: { id: { in: orphans } } });
       questionsRemoved += orphans.length;

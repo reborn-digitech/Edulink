@@ -75762,6 +75762,3077 @@
           }
         }
       }
+    },
+    "/api/v1/gigs/questions": {
+      "get": {
+        "summary": "A teacher's own questions for the bank, what they stand to earn, and where they are paid",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "questionRatePaise": {
+                          "type": "integer"
+                        },
+                        "questionFreeCount": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyCap": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyBudgetPaise": {
+                          "type": "integer"
+                        },
+                        "questionDailyLimit": {
+                          "type": "integer"
+                        },
+                        "questionPendingLimit": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "questionRatePaise",
+                        "questionFreeCount",
+                        "questionMonthlyCap",
+                        "questionMonthlyBudgetPaise",
+                        "questionDailyLimit",
+                        "questionPendingLimit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "standing": {
+                      "type": "object",
+                      "properties": {
+                        "accepted": {
+                          "type": "integer"
+                        },
+                        "freeLeft": {
+                          "type": "integer"
+                        },
+                        "paidThisMonth": {
+                          "type": "integer"
+                        },
+                        "paidLeftThisMonth": {
+                          "type": "integer"
+                        },
+                        "duePaise": {
+                          "type": "integer"
+                        },
+                        "paidPaise": {
+                          "type": "integer"
+                        },
+                        "sentToday": {
+                          "type": "integer"
+                        },
+                        "waiting": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "accepted",
+                        "freeLeft",
+                        "paidThisMonth",
+                        "paidLeftThisMonth",
+                        "duePaise",
+                        "paidPaise",
+                        "sentToday",
+                        "waiting"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "payee": {
+                      "type": "object",
+                      "properties": {
+                        "upiId": {
+                          "type": "string"
+                        },
+                        "payeeName": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "upiId",
+                        "payeeName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "draftOn": {
+                      "type": "boolean"
+                    },
+                    "contributions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "topic": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "$ref": "#/properties/contributions/items/properties/id"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "subject": {
+                                "type": "string"
+                              },
+                              "classLevel": {
+                                "type": "integer"
+                              },
+                              "chapter": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "name",
+                              "subject",
+                              "classLevel",
+                              "chapter"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "difficulty": {
+                            "type": "integer"
+                          },
+                          "answerIndex": {
+                            "type": "integer"
+                          },
+                          "en": {
+                            "type": "object",
+                            "properties": {
+                              "stem": {
+                                "type": "string",
+                                "maxLength": 2000
+                              },
+                              "choices": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 500
+                                },
+                                "minItems": 1,
+                                "maxItems": 6
+                              },
+                              "solution": {
+                                "type": "string",
+                                "maxLength": 4000
+                              }
+                            },
+                            "required": [
+                              "stem",
+                              "choices",
+                              "solution"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "hi": {
+                            "$ref": "#/properties/contributions/items/properties/en"
+                          },
+                          "mr": {
+                            "$ref": "#/properties/contributions/items/properties/en"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "SUBMITTED",
+                              "RETURNED",
+                              "ACCEPTED",
+                              "REJECTED",
+                              "WITHDRAWN"
+                            ]
+                          },
+                          "reviewNote": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reviewedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "submittedAt": {
+                            "type": "string"
+                          },
+                          "questionId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "earning": {
+                            "type": "object",
+                            "properties": {
+                              "amountPaise": {
+                                "type": "integer"
+                              },
+                              "basis": {
+                                "type": "string",
+                                "enum": [
+                                  "PAID",
+                                  "FREE_BLOCK"
+                                ]
+                              },
+                              "month": {
+                                "type": "string"
+                              },
+                              "paid": {
+                                "type": "boolean"
+                              }
+                            },
+                            "required": [
+                              "amountPaise",
+                              "basis",
+                              "month",
+                              "paid"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "open": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "topic",
+                          "difficulty",
+                          "answerIndex",
+                          "en",
+                          "hi",
+                          "mr",
+                          "status",
+                          "reviewNote",
+                          "reviewedAt",
+                          "submittedAt",
+                          "questionId",
+                          "earning",
+                          "open"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "settings",
+                    "standing",
+                    "payee",
+                    "draftOn",
+                    "contributions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Send a question in English, Hindi and Marathi; refused past the day's or the waiting limit, or when the same words are already in the bank",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "contribution": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "topic": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/contribution/properties/id"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "classLevel": {
+                              "type": "integer"
+                            },
+                            "chapter": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "subject",
+                            "classLevel",
+                            "chapter"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "answerIndex": {
+                          "type": "integer"
+                        },
+                        "en": {
+                          "type": "object",
+                          "properties": {
+                            "stem": {
+                              "type": "string",
+                              "maxLength": 2000
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "maxLength": 500
+                              },
+                              "minItems": 1,
+                              "maxItems": 6
+                            },
+                            "solution": {
+                              "type": "string",
+                              "maxLength": 4000
+                            }
+                          },
+                          "required": [
+                            "stem",
+                            "choices",
+                            "solution"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "hi": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "mr": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "SUBMITTED",
+                            "RETURNED",
+                            "ACCEPTED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "reviewNote": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewedAt": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "submittedAt": {
+                          "type": "string"
+                        },
+                        "questionId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "earning": {
+                          "type": "object",
+                          "properties": {
+                            "amountPaise": {
+                              "type": "integer"
+                            },
+                            "basis": {
+                              "type": "string",
+                              "enum": [
+                                "PAID",
+                                "FREE_BLOCK"
+                              ]
+                            },
+                            "month": {
+                              "type": "string"
+                            },
+                            "paid": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "amountPaise",
+                            "basis",
+                            "month",
+                            "paid"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "open": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "topic",
+                        "difficulty",
+                        "answerIndex",
+                        "en",
+                        "hi",
+                        "mr",
+                        "status",
+                        "reviewNote",
+                        "reviewedAt",
+                        "submittedAt",
+                        "questionId",
+                        "earning",
+                        "open"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "contribution"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "topicId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "difficulty": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 6
+                  },
+                  "answerIndex": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "en": {
+                    "type": "object",
+                    "properties": {
+                      "stem": {
+                        "type": "string",
+                        "maxLength": 2000
+                      },
+                      "choices": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "minItems": 1,
+                        "maxItems": 6
+                      },
+                      "solution": {
+                        "type": "string",
+                        "maxLength": 4000
+                      }
+                    },
+                    "required": [
+                      "stem",
+                      "choices",
+                      "solution"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "hi": {
+                    "$ref": "#/properties/en"
+                  },
+                  "mr": {
+                    "$ref": "#/properties/en"
+                  },
+                  "terms": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "topicId",
+                  "difficulty",
+                  "answerIndex",
+                  "en",
+                  "hi",
+                  "mr",
+                  "terms"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/questions/topics": {
+      "get": {
+        "summary": "The chapters a question can be written for",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "topics": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "classLevel": {
+                            "type": "integer"
+                          },
+                          "chapter": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "subject",
+                          "classLevel",
+                          "chapter"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "topics"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/questions/draft": {
+      "post": {
+        "summary": "A machine draft of the Hindi and the Marathi from the English, for the teacher to correct; saved nowhere",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hi": {
+                      "type": "object",
+                      "properties": {
+                        "stem": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "choices": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "minItems": 1,
+                          "maxItems": 6
+                        },
+                        "solution": {
+                          "type": "string",
+                          "maxLength": 4000
+                        }
+                      },
+                      "required": [
+                        "stem",
+                        "choices",
+                        "solution"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "mr": {
+                      "$ref": "#/properties/hi"
+                    }
+                  },
+                  "required": [
+                    "hi",
+                    "mr"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "stem": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "choices": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    },
+                    "minItems": 1,
+                    "maxItems": 6
+                  },
+                  "solution": {
+                    "type": "string",
+                    "maxLength": 4000
+                  }
+                },
+                "required": [
+                  "stem",
+                  "choices",
+                  "solution"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/gigs/questions/{contributionId}": {
+      "get": {
+        "summary": "One of the teacher's own questions; somebody else's is not found",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "topic": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/properties/id"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "classLevel": {
+                          "type": "integer"
+                        },
+                        "chapter": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "subject",
+                        "classLevel",
+                        "chapter"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "difficulty": {
+                      "type": "integer"
+                    },
+                    "answerIndex": {
+                      "type": "integer"
+                    },
+                    "en": {
+                      "type": "object",
+                      "properties": {
+                        "stem": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "choices": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "minItems": 1,
+                          "maxItems": 6
+                        },
+                        "solution": {
+                          "type": "string",
+                          "maxLength": 4000
+                        }
+                      },
+                      "required": [
+                        "stem",
+                        "choices",
+                        "solution"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "hi": {
+                      "$ref": "#/properties/en"
+                    },
+                    "mr": {
+                      "$ref": "#/properties/en"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "SUBMITTED",
+                        "RETURNED",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "reviewNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reviewedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "submittedAt": {
+                      "type": "string"
+                    },
+                    "questionId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "earning": {
+                      "type": "object",
+                      "properties": {
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "basis": {
+                          "type": "string",
+                          "enum": [
+                            "PAID",
+                            "FREE_BLOCK"
+                          ]
+                        },
+                        "month": {
+                          "type": "string"
+                        },
+                        "paid": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "amountPaise",
+                        "basis",
+                        "month",
+                        "paid"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "open": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "topic",
+                    "difficulty",
+                    "answerIndex",
+                    "en",
+                    "hi",
+                    "mr",
+                    "status",
+                    "reviewNote",
+                    "reviewedAt",
+                    "submittedAt",
+                    "questionId",
+                    "earning",
+                    "open"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contributionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Change a question that still waits or was returned; it goes back to the content team",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "contribution": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "topic": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/contribution/properties/id"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "classLevel": {
+                              "type": "integer"
+                            },
+                            "chapter": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "subject",
+                            "classLevel",
+                            "chapter"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "answerIndex": {
+                          "type": "integer"
+                        },
+                        "en": {
+                          "type": "object",
+                          "properties": {
+                            "stem": {
+                              "type": "string",
+                              "maxLength": 2000
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "maxLength": 500
+                              },
+                              "minItems": 1,
+                              "maxItems": 6
+                            },
+                            "solution": {
+                              "type": "string",
+                              "maxLength": 4000
+                            }
+                          },
+                          "required": [
+                            "stem",
+                            "choices",
+                            "solution"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "hi": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "mr": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "SUBMITTED",
+                            "RETURNED",
+                            "ACCEPTED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "reviewNote": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewedAt": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "submittedAt": {
+                          "type": "string"
+                        },
+                        "questionId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "earning": {
+                          "type": "object",
+                          "properties": {
+                            "amountPaise": {
+                              "type": "integer"
+                            },
+                            "basis": {
+                              "type": "string",
+                              "enum": [
+                                "PAID",
+                                "FREE_BLOCK"
+                              ]
+                            },
+                            "month": {
+                              "type": "string"
+                            },
+                            "paid": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "amountPaise",
+                            "basis",
+                            "month",
+                            "paid"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "open": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "topic",
+                        "difficulty",
+                        "answerIndex",
+                        "en",
+                        "hi",
+                        "mr",
+                        "status",
+                        "reviewNote",
+                        "reviewedAt",
+                        "submittedAt",
+                        "questionId",
+                        "earning",
+                        "open"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "contribution"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "topicId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "difficulty": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 6
+                  },
+                  "answerIndex": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 5
+                  },
+                  "en": {
+                    "type": "object",
+                    "properties": {
+                      "stem": {
+                        "type": "string",
+                        "maxLength": 2000
+                      },
+                      "choices": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "minItems": 1,
+                        "maxItems": 6
+                      },
+                      "solution": {
+                        "type": "string",
+                        "maxLength": 4000
+                      }
+                    },
+                    "required": [
+                      "stem",
+                      "choices",
+                      "solution"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "hi": {
+                    "$ref": "#/properties/en"
+                  },
+                  "mr": {
+                    "$ref": "#/properties/en"
+                  },
+                  "terms": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "topicId",
+                  "difficulty",
+                  "answerIndex",
+                  "en",
+                  "hi",
+                  "mr",
+                  "terms"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contributionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/questions/{contributionId}/withdraw": {
+      "post": {
+        "summary": "Take back a question that is not settled; taken back twice is taken back",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "contribution": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "topic": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/contribution/properties/id"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "classLevel": {
+                              "type": "integer"
+                            },
+                            "chapter": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "subject",
+                            "classLevel",
+                            "chapter"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "answerIndex": {
+                          "type": "integer"
+                        },
+                        "en": {
+                          "type": "object",
+                          "properties": {
+                            "stem": {
+                              "type": "string",
+                              "maxLength": 2000
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "maxLength": 500
+                              },
+                              "minItems": 1,
+                              "maxItems": 6
+                            },
+                            "solution": {
+                              "type": "string",
+                              "maxLength": 4000
+                            }
+                          },
+                          "required": [
+                            "stem",
+                            "choices",
+                            "solution"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "hi": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "mr": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "SUBMITTED",
+                            "RETURNED",
+                            "ACCEPTED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "reviewNote": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewedAt": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "submittedAt": {
+                          "type": "string"
+                        },
+                        "questionId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "earning": {
+                          "type": "object",
+                          "properties": {
+                            "amountPaise": {
+                              "type": "integer"
+                            },
+                            "basis": {
+                              "type": "string",
+                              "enum": [
+                                "PAID",
+                                "FREE_BLOCK"
+                              ]
+                            },
+                            "month": {
+                              "type": "string"
+                            },
+                            "paid": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "amountPaise",
+                            "basis",
+                            "month",
+                            "paid"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "open": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "topic",
+                        "difficulty",
+                        "answerIndex",
+                        "en",
+                        "hi",
+                        "mr",
+                        "status",
+                        "reviewNote",
+                        "reviewedAt",
+                        "submittedAt",
+                        "questionId",
+                        "earning",
+                        "open"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "contribution"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contributionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/payee": {
+      "post": {
+        "summary": "The contributor's own UPI id, where the company pays them",
+        "description": "Roles: TEACHER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payee": {
+                      "type": "object",
+                      "properties": {
+                        "upiId": {
+                          "type": "string"
+                        },
+                        "payeeName": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "upiId",
+                        "payeeName"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payee"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "upiId": {
+                    "type": "string",
+                    "maxLength": 320
+                  },
+                  "payeeName": {
+                    "type": "string",
+                    "maxLength": 80
+                  }
+                },
+                "required": [
+                  "upiId",
+                  "payeeName"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/contributions": {
+      "get": {
+        "summary": "Teachers' questions waiting to be read, or those decided, by status",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "SUBMITTED",
+                        "RETURNED",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "counts": {
+                      "type": "object",
+                      "required": [
+                        "SUBMITTED",
+                        "RETURNED",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ],
+                      "properties": {
+                        "SUBMITTED": {
+                          "type": "integer"
+                        },
+                        "RETURNED": {
+                          "$ref": "#/properties/counts/properties/SUBMITTED"
+                        },
+                        "ACCEPTED": {
+                          "$ref": "#/properties/counts/properties/SUBMITTED"
+                        },
+                        "REJECTED": {
+                          "$ref": "#/properties/counts/properties/SUBMITTED"
+                        },
+                        "WITHDRAWN": {
+                          "$ref": "#/properties/counts/properties/SUBMITTED"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "status": {
+                            "$ref": "#/properties/status"
+                          },
+                          "stem": {
+                            "type": "string"
+                          },
+                          "topicName": {
+                            "type": "string"
+                          },
+                          "subject": {
+                            "type": "string"
+                          },
+                          "classLevel": {
+                            "type": "integer"
+                          },
+                          "authorName": {
+                            "type": "string"
+                          },
+                          "authorSchoolName": {
+                            "type": "string"
+                          },
+                          "submittedAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "status",
+                          "stem",
+                          "topicName",
+                          "subject",
+                          "classLevel",
+                          "authorName",
+                          "authorSchoolName",
+                          "submittedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "counts",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/contributions/{contributionId}": {
+      "get": {
+        "summary": "One teacher's question in three languages, and what adding it today would earn its author",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "topic": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/properties/id"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string"
+                        },
+                        "classLevel": {
+                          "type": "integer"
+                        },
+                        "chapter": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "subject",
+                        "classLevel",
+                        "chapter"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "difficulty": {
+                      "type": "integer"
+                    },
+                    "answerIndex": {
+                      "type": "integer"
+                    },
+                    "en": {
+                      "type": "object",
+                      "properties": {
+                        "stem": {
+                          "type": "string",
+                          "maxLength": 2000
+                        },
+                        "choices": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "minItems": 1,
+                          "maxItems": 6
+                        },
+                        "solution": {
+                          "type": "string",
+                          "maxLength": 4000
+                        }
+                      },
+                      "required": [
+                        "stem",
+                        "choices",
+                        "solution"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "hi": {
+                      "$ref": "#/properties/en"
+                    },
+                    "mr": {
+                      "$ref": "#/properties/en"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "SUBMITTED",
+                        "RETURNED",
+                        "ACCEPTED",
+                        "REJECTED",
+                        "WITHDRAWN"
+                      ]
+                    },
+                    "reviewNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reviewedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "submittedAt": {
+                      "type": "string"
+                    },
+                    "questionId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "earning": {
+                      "type": "object",
+                      "properties": {
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "basis": {
+                          "type": "string",
+                          "enum": [
+                            "PAID",
+                            "FREE_BLOCK"
+                          ]
+                        },
+                        "month": {
+                          "type": "string"
+                        },
+                        "paid": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "amountPaise",
+                        "basis",
+                        "month",
+                        "paid"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "open": {
+                      "type": "boolean"
+                    },
+                    "authorName": {
+                      "type": "string"
+                    },
+                    "authorSchoolName": {
+                      "type": "string"
+                    },
+                    "authorAccepted": {
+                      "type": "integer"
+                    },
+                    "authorPaidThisMonth": {
+                      "type": "integer"
+                    },
+                    "outcome": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "basis": {
+                              "type": "string",
+                              "enum": [
+                                "FREE_BLOCK",
+                                "PAID"
+                              ]
+                            },
+                            "amountPaise": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "basis",
+                            "amountPaise"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "refuse": {
+                              "type": "string",
+                              "enum": [
+                                "gigs.refuseMonthlyCap",
+                                "gigs.refuseBudget"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "refuse"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    },
+                    "spentThisMonthPaise": {
+                      "type": "integer"
+                    },
+                    "budgetPaise": {
+                      "type": "integer"
+                    },
+                    "freeCount": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "topic",
+                    "difficulty",
+                    "answerIndex",
+                    "en",
+                    "hi",
+                    "mr",
+                    "status",
+                    "reviewNote",
+                    "reviewedAt",
+                    "submittedAt",
+                    "questionId",
+                    "earning",
+                    "open",
+                    "authorName",
+                    "authorSchoolName",
+                    "authorAccepted",
+                    "authorPaidThisMonth",
+                    "outcome",
+                    "spentThisMonthPaise",
+                    "budgetPaise",
+                    "freeCount"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contributionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/appadmin/contributions/{contributionId}/decide": {
+      "post": {
+        "summary": "Add the question to the bank (the only act that earns), return it with a note, or reject it with a reason; adding is refused when the teacher's month or the budget is used up",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "contribution": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "topic": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "$ref": "#/properties/contribution/properties/id"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "subject": {
+                              "type": "string"
+                            },
+                            "classLevel": {
+                              "type": "integer"
+                            },
+                            "chapter": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "subject",
+                            "classLevel",
+                            "chapter"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "difficulty": {
+                          "type": "integer"
+                        },
+                        "answerIndex": {
+                          "type": "integer"
+                        },
+                        "en": {
+                          "type": "object",
+                          "properties": {
+                            "stem": {
+                              "type": "string",
+                              "maxLength": 2000
+                            },
+                            "choices": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "maxLength": 500
+                              },
+                              "minItems": 1,
+                              "maxItems": 6
+                            },
+                            "solution": {
+                              "type": "string",
+                              "maxLength": 4000
+                            }
+                          },
+                          "required": [
+                            "stem",
+                            "choices",
+                            "solution"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "hi": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "mr": {
+                          "$ref": "#/properties/contribution/properties/en"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "SUBMITTED",
+                            "RETURNED",
+                            "ACCEPTED",
+                            "REJECTED",
+                            "WITHDRAWN"
+                          ]
+                        },
+                        "reviewNote": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "reviewedAt": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "submittedAt": {
+                          "type": "string"
+                        },
+                        "questionId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "earning": {
+                          "type": "object",
+                          "properties": {
+                            "amountPaise": {
+                              "type": "integer"
+                            },
+                            "basis": {
+                              "type": "string",
+                              "enum": [
+                                "PAID",
+                                "FREE_BLOCK"
+                              ]
+                            },
+                            "month": {
+                              "type": "string"
+                            },
+                            "paid": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "amountPaise",
+                            "basis",
+                            "month",
+                            "paid"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "open": {
+                          "type": "boolean"
+                        },
+                        "authorName": {
+                          "type": "string"
+                        },
+                        "authorSchoolName": {
+                          "type": "string"
+                        },
+                        "authorAccepted": {
+                          "type": "integer"
+                        },
+                        "authorPaidThisMonth": {
+                          "type": "integer"
+                        },
+                        "outcome": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "basis": {
+                                  "type": "string",
+                                  "enum": [
+                                    "FREE_BLOCK",
+                                    "PAID"
+                                  ]
+                                },
+                                "amountPaise": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "basis",
+                                "amountPaise"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "refuse": {
+                                  "type": "string",
+                                  "enum": [
+                                    "gigs.refuseMonthlyCap",
+                                    "gigs.refuseBudget"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "refuse"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "spentThisMonthPaise": {
+                          "type": "integer"
+                        },
+                        "budgetPaise": {
+                          "type": "integer"
+                        },
+                        "freeCount": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "topic",
+                        "difficulty",
+                        "answerIndex",
+                        "en",
+                        "hi",
+                        "mr",
+                        "status",
+                        "reviewNote",
+                        "reviewedAt",
+                        "submittedAt",
+                        "questionId",
+                        "earning",
+                        "open",
+                        "authorName",
+                        "authorSchoolName",
+                        "authorAccepted",
+                        "authorPaidThisMonth",
+                        "outcome",
+                        "spentThisMonthPaise",
+                        "budgetPaise",
+                        "freeCount"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "contribution"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "ACCEPT",
+                      "RETURN",
+                      "REJECT"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 1000
+                  },
+                  "edit": {
+                    "type": "object",
+                    "properties": {
+                      "topicId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64
+                      },
+                      "difficulty": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 6
+                      },
+                      "answerIndex": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 5
+                      },
+                      "en": {
+                        "type": "object",
+                        "properties": {
+                          "stem": {
+                            "type": "string",
+                            "maxLength": 2000
+                          },
+                          "choices": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 500
+                            },
+                            "minItems": 1,
+                            "maxItems": 6
+                          },
+                          "solution": {
+                            "type": "string",
+                            "maxLength": 4000
+                          }
+                        },
+                        "required": [
+                          "stem",
+                          "choices",
+                          "solution"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "hi": {
+                        "$ref": "#/properties/edit/properties/en"
+                      },
+                      "mr": {
+                        "$ref": "#/properties/edit/properties/en"
+                      }
+                    },
+                    "required": [
+                      "topicId",
+                      "difficulty",
+                      "answerIndex",
+                      "en",
+                      "hi",
+                      "mr"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "decision"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "contributionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/gigs": {
+      "get": {
+        "summary": "The rate, the limits and the budget; this month's spend; who is owed for the months that have ended; what was paid",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "questionRatePaise": {
+                          "type": "integer"
+                        },
+                        "questionFreeCount": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyCap": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyBudgetPaise": {
+                          "type": "integer"
+                        },
+                        "questionDailyLimit": {
+                          "type": "integer"
+                        },
+                        "questionPendingLimit": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "questionRatePaise",
+                        "questionFreeCount",
+                        "questionMonthlyCap",
+                        "questionMonthlyBudgetPaise",
+                        "questionDailyLimit",
+                        "questionPendingLimit"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "month": {
+                      "type": "string"
+                    },
+                    "spentThisMonthPaise": {
+                      "type": "integer"
+                    },
+                    "addedThisMonth": {
+                      "type": "integer"
+                    },
+                    "waiting": {
+                      "type": "integer"
+                    },
+                    "due": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "upiId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "payeeName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "questions": {
+                            "type": "integer"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "throughMonth": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "userId",
+                          "name",
+                          "email",
+                          "schoolName",
+                          "upiId",
+                          "payeeName",
+                          "questions",
+                          "amountPaise",
+                          "throughMonth"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "accruingPaise": {
+                      "type": "integer"
+                    },
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/due/items/properties/userId"
+                          },
+                          "userId": {
+                            "$ref": "#/properties/due/items/properties/userId"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "upiId": {
+                            "type": "string"
+                          },
+                          "utr": {
+                            "type": "string"
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paidAt": {
+                            "type": "string"
+                          },
+                          "questions": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "userId",
+                          "name",
+                          "amountPaise",
+                          "upiId",
+                          "utr",
+                          "note",
+                          "paidAt",
+                          "questions"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "settings",
+                    "month",
+                    "spentThisMonthPaise",
+                    "addedThisMonth",
+                    "waiting",
+                    "due",
+                    "accruingPaise",
+                    "payments"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/settings": {
+      "post": {
+        "summary": "Set the rate for a question, the unpaid first ones, a teacher's monthly limit, the monthly budget and the sending limits",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "questionRatePaise": {
+                          "type": "integer"
+                        },
+                        "questionFreeCount": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyCap": {
+                          "type": "integer"
+                        },
+                        "questionMonthlyBudgetPaise": {
+                          "type": "integer"
+                        },
+                        "questionDailyLimit": {
+                          "type": "integer"
+                        },
+                        "questionPendingLimit": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "questionRatePaise",
+                        "questionFreeCount",
+                        "questionMonthlyCap",
+                        "questionMonthlyBudgetPaise",
+                        "questionDailyLimit",
+                        "questionPendingLimit"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "settings"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "questionRatePaise": {
+                    "type": "integer"
+                  },
+                  "questionFreeCount": {
+                    "type": "integer"
+                  },
+                  "questionMonthlyCap": {
+                    "type": "integer"
+                  },
+                  "questionMonthlyBudgetPaise": {
+                    "type": "integer"
+                  },
+                  "questionDailyLimit": {
+                    "type": "integer"
+                  },
+                  "questionPendingLimit": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "questionRatePaise",
+                  "questionFreeCount",
+                  "questionMonthlyCap",
+                  "questionMonthlyBudgetPaise",
+                  "questionDailyLimit",
+                  "questionPendingLimit"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/payments": {
+      "post": {
+        "summary": "Record the reference of a UPI transfer already made to a contributor; it settles what they are owed for the months that have ended",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payment": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "questions": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "amountPaise",
+                        "questions"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payment"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "utr": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "userId",
+                  "utr"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

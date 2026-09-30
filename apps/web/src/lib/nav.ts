@@ -155,6 +155,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/attendance/me", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     { href: "/teacher/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
     { href: "/teacher/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
+    { href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running" },
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },

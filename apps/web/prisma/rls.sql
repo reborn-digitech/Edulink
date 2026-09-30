@@ -1573,10 +1573,15 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   Competition
 --   ExpertProfile
 --   ExpertSlot
+--   GigEarning
+--   GigPayee
+--   GigPayment
+--   GigSettings
 --   Guardianship
 --   JobRun
 --   OutboundEmail
 --   PushSubscription
+--   QuestionContribution
 --   QuizQuestion
 --   QuizQuestionTranslation
 --   QuizTopic

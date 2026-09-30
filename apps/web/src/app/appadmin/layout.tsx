@@ -26,19 +26,23 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
   return (
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
-        <div className="mx-auto flex h-16 max-w-4xl items-center justify-between gap-4 px-4">
+        <div className="mx-auto flex min-h-16 max-w-4xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2">
           <Link href="/appadmin" className="flex min-w-0 items-center gap-2.5">
             <Wordmark size={24} />
             <span className="rounded-full bg-surface-muted px-2 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-muted">
               {t("appadmin.badge")}
             </span>
           </Link>
-          <div className="flex items-center gap-1">
+          {/* The links wrap under the wordmark on a narrow screen instead of pushing the page sideways. */}
+          <div className="flex flex-wrap items-center gap-1">
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin">{t("appadmin.competitions")}</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/bank">{t("appadmin.questionBank")}</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/contributions">{t("gigs.queueNav")}</Link>
             </Button>
             {/* The operator arrives from /root; give them the way back. An app
                 admin never sees this link and the page behind it would 404 on

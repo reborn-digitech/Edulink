@@ -373,6 +373,10 @@ model User {
   applications         Application[]             @relation("ApplicationApplicant")
   joinRequests         JoinRequest[]             @relation("JoinRequester")
   guardianClaims       GuardianClaim[]           @relation("GuardianClaimant")
+  contributions        QuestionContribution[]    @relation("ContributionAuthor")
+  gigEarnings          GigEarning[]              @relation("GigEarner")
+  gigPaymentsReceived  GigPayment[]              @relation("GigPaymentPayee")
+  gigPayee             GigPayee?
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -2479,6 +2483,7 @@ model QuizTopic {
   mastery             QuizMastery[]
   translations        QuizTopicTranslation[]
   practiceAssignments PracticeAssignment[]
+  contributions       QuestionContribution[]
 
   @@index([subject, classLevel, position])
 }
@@ -4419,4 +4424,131 @@ model PenChangeRequest {
 
   @@index([schoolId, status, createdAt])
   @@index([studentMembershipId, status])
+}
+
+// ---------------------------------------------------------------------------
+// Gigs: work a person does for the platform itself, outside any school
+// (decision 0004). The first is a teacher writing questions for the shared
+// practice bank. These tables carry no school: the bank is every school's,
+// the reviewer is the content team, and the payer is the company. What
+// guards them is the person — every read and write in src/lib/gig-questions.ts
+// is bound to the signed-in user or to the content team's flag.
+//
+// THE PLATFORM STILL MOVES NO MONEY. A teacher is paid by the operator from
+// the company's own bank, by UPI, outside the app; GigPayment is the record
+// of that transfer (its UTR), not the transfer.
+// ---------------------------------------------------------------------------
+
+/// One row, id "gigs": the dials the operator holds.
+model GigSettings {
+  id                         String   @id @default("gigs")
+  /// What one question added to the bank earns, in paise.
+  questionRatePaise          Int      @default(1000)
+  /// A teacher's first questions added to the bank earn nothing.
+  questionFreeCount          Int      @default(20)
+  /// The most questions one teacher is paid for in a calendar month.
+  questionMonthlyCap         Int      @default(200)
+  /// The most the company pays for questions in a calendar month, all teachers together.
+  questionMonthlyBudgetPaise Int      @default(500000)
+  /// How many a teacher may send in a day, and hold unreviewed at once.
+  questionDailyLimit         Int      @default(20)
+  questionPendingLimit       Int      @default(50)
+  updatedByUserId            String?
+  updatedAt                  DateTime @updatedAt
+}
+
+/// A question a teacher wrote for the bank, in English, Hindi and Marathi, and what the content team said to it.
+model QuestionContribution {
+  id               String    @id @default(cuid())
+  authorUserId     String
+  /// The school the teacher wrote from: its name for the reviewer to read, and its id so that the
+  /// notice of a decision can be written under that school's binding. Not a tenant key: no policy
+  /// reads it, and a teacher who moves school keeps their contributions.
+  authorSchoolId   String
+  authorSchoolName String
+  topicId          String
+  difficulty       Int
+  stem             String
+  /// JSON arrays of option strings, the same order and length in each language.
+  choices          String
+  answerIndex      Int
+  solution         String
+  stemHi           String
+  choicesHi        String
+  solutionHi       String
+  stemMr           String
+  choicesMr        String
+  solutionMr       String
+  /// SUBMITTED | RETURNED | ACCEPTED | REJECTED | WITHDRAWN
+  status           String    @default("SUBMITTED")
+  reviewNote       String?
+  reviewedByUserId String?
+  reviewedAt       DateTime?
+  /// The bank's row, once added. Accepted means exactly this: the question is in the bank.
+  questionId       String?   @unique
+  /// The author said the work is their own and the platform may use it.
+  termsAcceptedAt  DateTime
+  submittedAt      DateTime  @default(now())
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  author  User        @relation("ContributionAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
+  topic   QuizTopic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  earning GigEarning?
+
+  @@index([authorUserId, status])
+  @@index([status, submittedAt])
+}
+
+/// What one accepted piece of work earned. Written once, when the work is accepted, and never changed but to say it was paid.
+model GigEarning {
+  id             String   @id @default(cuid())
+  userId         String
+  /// QUESTION
+  kind           String
+  contributionId String   @unique
+  amountPaise    Int
+  /// PAID (the rate of the day) or FREE_BLOCK (one of the first unpaid ones).
+  basis          String
+  /// The calendar month the work was accepted in, "2026-09", by the server's clock: the month the cap and the budget count.
+  month          String
+  paymentId      String?
+  createdAt      DateTime @default(now())
+
+  user         User                 @relation("GigEarner", fields: [userId], references: [id], onDelete: Cascade)
+  contribution QuestionContribution @relation(fields: [contributionId], references: [id], onDelete: Cascade)
+  payment      GigPayment?          @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([userId, month])
+  @@index([month])
+  @@index([paymentId])
+}
+
+/// The operator's record of one UPI transfer made to a contributor from the company's bank, outside the app.
+model GigPayment {
+  id           String   @id @default(cuid())
+  userId       String
+  /// The sum of the earnings it settles, kept as what was sent.
+  amountPaise  Int
+  /// Where it was sent, as it stood that day.
+  upiId        String
+  utr          String   @unique
+  note         String?
+  paidByUserId String
+  paidAt       DateTime @default(now())
+
+  user     User         @relation("GigPaymentPayee", fields: [userId], references: [id], onDelete: Cascade)
+  earnings GigEarning[]
+
+  @@index([userId, paidAt])
+}
+
+/// Where a contributor is paid: their own UPI id, typed by them.
+model GigPayee {
+  userId    String   @id
+  upiId     String
+  payeeName String
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

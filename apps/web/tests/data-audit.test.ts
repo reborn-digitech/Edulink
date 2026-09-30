@@ -132,6 +132,38 @@ d("STORED copies against their source rows", () => {
     expect(failsOf("pen-mirror")).toEqual([]);
   });
 
+  it("gig-earnings: a question in the bank has one earning and a bank row, a payment is the sum of what it settles, and no month is over its limits", async () => {
+    // The platform's own, not a school's: gigs carry no school (decision 0004).
+    const where = "platform";
+    const accepted = await db.questionContribution.findMany({ where: { status: "ACCEPTED" }, select: { id: true, questionId: true, earning: { select: { id: true } } } });
+    for (const c of accepted) {
+      if (!c.earning) note("gig-earnings", "FAIL", where, `contribution ${c.id} is ACCEPTED with no earning`);
+      if (!c.questionId) note("gig-earnings", "FAIL", where, `contribution ${c.id} is ACCEPTED with no question in the bank`);
+      else if (!(await db.quizQuestion.findUnique({ where: { id: c.questionId }, select: { id: true } }))) note("gig-earnings", "WARN", where, `contribution ${c.id} was added to the bank as ${c.questionId}, which is no longer there — the payment stands by design`);
+    }
+    const stray = await db.gigEarning.count({ where: { contribution: { status: { not: "ACCEPTED" } } } });
+    if (stray) note("gig-earnings", "FAIL", where, `${stray} earning(s) hang from a contribution that is not in the bank`);
+    const wrongBasis = await db.gigEarning.count({ where: { OR: [{ basis: "FREE_BLOCK", amountPaise: { not: 0 } }, { basis: "PAID", amountPaise: { lte: 0 } }] } });
+    if (wrongBasis) note("gig-earnings", "FAIL", where, `${wrongBasis} earning(s) whose amount contradicts their basis`);
+    const payments = await db.gigPayment.findMany({ select: { id: true, amountPaise: true, userId: true, earnings: { select: { amountPaise: true, userId: true } } } });
+    for (const p of payments) {
+      const settled = sum(p.earnings.map((e) => e.amountPaise));
+      if (settled !== p.amountPaise) note("gig-earnings", "FAIL", where, `payment ${p.id} records ${p.amountPaise} paise but settles ${settled}`);
+      if (p.earnings.some((e) => e.userId !== p.userId)) note("gig-earnings", "FAIL", where, `payment ${p.id} settles another person's earning`);
+    }
+    const settings = await db.gigSettings.findUnique({ where: { id: "gigs" } });
+    if (settings) {
+      const perTeacher = await db.gigEarning.groupBy({ by: ["userId", "month"], where: { basis: "PAID" }, _count: { _all: true } });
+      const over = perTeacher.filter((g) => g._count._all > settings.questionMonthlyCap);
+      if (over.length) note("gig-earnings", "WARN", where, `${over.length} teacher-month(s) hold more paid questions than today's limit of ${settings.questionMonthlyCap} — the limit was lowered after they were added, or the lock failed`);
+      const perMonth = await db.gigEarning.groupBy({ by: ["month"], _sum: { amountPaise: true } });
+      const spent = perMonth.filter((g) => (g._sum.amountPaise ?? 0) > settings.questionMonthlyBudgetPaise);
+      if (spent.length) note("gig-earnings", "WARN", where, `${spent.length} month(s) committed more than today's budget of ${settings.questionMonthlyBudgetPaise} paise`);
+    }
+    note("gig-earnings", "INFO", where, `${accepted.length} contributed question(s) in the bank, ${payments.length} payment(s) recorded`);
+    expect(failsOf("gig-earnings")).toEqual([]);
+  });
+
   it("pen-change: an applied request put its number on the account; a pending one still matches its snapshot", async () => {
     for (const s of schools) {
       const rows = await db.penChangeRequest.findMany({ where: { schoolId: s.id }, select: { id: true, status: true, fromPen: true, toPen: true, student: { select: { user: { select: { penNumber: true } } } } } });

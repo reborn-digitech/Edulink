@@ -58,6 +58,15 @@ const NO_SCHOOL_POLICY = new Set([
   // school-owned and is scoped normally.
   "ExpertProfile",
   "ExpertSlot",
+  // Gigs are work done for the platform itself (decision 0004): the bank is
+  // every school's, the reviewer is the content team and the payer is the
+  // company, so there is no school to key a policy on. The person is the
+  // fence, held in src/lib/gig-questions.ts and tested there.
+  "GigSettings",
+  "QuestionContribution",
+  "GigEarning",
+  "GigPayment",
+  "GigPayee",
 ]);
 
 /**

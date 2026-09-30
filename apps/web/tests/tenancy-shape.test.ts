@@ -217,6 +217,11 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   QuizQuestionTranslation: "a translation of the shared catalogue is still the shared catalogue",
   ExpertProfile: "an expert belongs to no school — the marketplace is shared, like Competition",
   ExpertSlot: "belongs to an ExpertProfile, so it belongs to no school either",
+  GigSettings: "the operator's dials for work done for the platform itself; one row, no school",
+  QuestionContribution: "a teacher's question for the shared bank, reviewed by the content team — bound to its author, not to a school",
+  GigEarning: "what the company owes a contributor — bound to the person",
+  GigPayment: "the operator's record of a transfer to a contributor — bound to the person",
+  GigPayee: "a contributor's own UPI id — bound to the person",
 };
 
 function modelBodies(): Map<string, string> {
@@ -240,7 +245,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(116);
+    ).toBe(121);
   });
 });
 
