@@ -195,9 +195,9 @@ function Editor({ topics, draftOn, existing }: { topics: Topic[]; draftOn: boole
 
       {LANGUAGES.map((l) => (
         <Card key={l} title={names[l]}>
-          <Field label={[names[l], t("appadmin.stemLabel")].join(" · ")} value={draft[l].stem} onChangeText={(stem) => patch(l, { stem })} multiline maxLength={2000} />
+          <Field label={[names[l], t("appadmin.stemLabel")].join(" · ")} typing={l} value={draft[l].stem} onChangeText={(stem) => patch(l, { stem })} multiline maxLength={2000} />
           {draft[l].choices.map((choice, index) => (
-            <Field key={index} label={[names[l], t("appadmin.choiceN", { n: index + 1 })].join(" · ")} value={choice} onChangeText={(text) => patch(l, { choices: draft[l].choices.map((c, i) => (i === index ? text : c)) })} maxLength={500} />
+            <Field key={index} label={[names[l], t("appadmin.choiceN", { n: index + 1 })].join(" · ")} typing={l} value={choice} onChangeText={(text) => patch(l, { choices: draft[l].choices.map((c, i) => (i === index ? text : c)) })} maxLength={500} />
           ))}
           {l === "en" ? (
             <View style={{ gap: th.space[1] }}>
@@ -210,7 +210,7 @@ function Editor({ topics, draftOn, existing }: { topics: Topic[]; draftOn: boole
               </Text>
             </View>
           ) : null}
-          <Field label={[names[l], t("appadmin.solutionLabel")].join(" · ")} value={draft[l].solution} onChangeText={(solution) => patch(l, { solution })} multiline maxLength={4000} />
+          <Field label={[names[l], t("appadmin.solutionLabel")].join(" · ")} typing={l} value={draft[l].solution} onChangeText={(solution) => patch(l, { solution })} multiline maxLength={4000} />
         </Card>
       ))}
 

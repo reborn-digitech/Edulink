@@ -2,6 +2,7 @@ import { render, type RenderOptions } from "@testing-library/react-native";
 import type { ReactElement, ReactNode } from "react";
 import { I18nProvider } from "@/lib/i18n";
 import { ThemeChoiceProvider } from "@/lib/theme";
+import { TypingProvider } from "@/lib/typing";
 
 /**
  * Requests a screen makes while it mounts are answered only after render()
@@ -25,7 +26,9 @@ export function untilRendered(): Promise<void> {
 export async function renderApp(ui: ReactElement, options?: RenderOptions) {
   const wrapper = ({ children }: { children: ReactNode }) => (
     <I18nProvider initial="en">
-      <ThemeChoiceProvider initial="system">{children}</ThemeChoiceProvider>
+      <ThemeChoiceProvider initial="system">
+        <TypingProvider initial="en">{children}</TypingProvider>
+      </ThemeChoiceProvider>
     </I18nProvider>
   );
   let release: () => void = () => {};

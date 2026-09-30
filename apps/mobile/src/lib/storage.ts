@@ -72,6 +72,8 @@ export const KEYS = {
   locale: "edulink.locale",
   /** Light, dark or the phone's own setting (lib/theme.tsx). */
   theme: "edulink.theme",
+  /** What the keyboard writes: en, hi or mr (lib/typing.tsx). */
+  typing: "edulink.typing",
   lock: "edulink.lock",
   /** The verifier of an SSO hand-off in flight: written when the browser opens, spent when the deep link comes back. */
   ssoVerifier: "edulink.sso.verifier",

@@ -9,6 +9,7 @@ import { makeQueryClient } from "@/lib/query";
 import { SessionProvider, useSession } from "@/lib/session";
 import { I18nProvider, useT } from "@/lib/i18n";
 import { RoleThemeProvider, ThemeChoiceProvider, useScheme, useTheme } from "@/lib/theme";
+import { TypingProvider } from "@/lib/typing";
 import { useDeepLinks } from "@/lib/deep-links";
 import { registerForPush } from "@/lib/push";
 import { useVersionGate } from "@/lib/version";
@@ -27,9 +28,11 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <ThemeChoiceProvider>
-          <SessionProvider>
-            <Gate />
-          </SessionProvider>
+          <TypingProvider>
+            <SessionProvider>
+              <Gate />
+            </SessionProvider>
+          </TypingProvider>
         </ThemeChoiceProvider>
       </I18nProvider>
     </QueryClientProvider>

@@ -20,6 +20,7 @@ import { DotsThreeOutlineIcon } from "phosphor-react-native/src/icons/DotsThreeO
 import { EnvelopeIcon } from "phosphor-react-native/src/icons/Envelope";
 import { GearIcon } from "phosphor-react-native/src/icons/Gear";
 import { HouseIcon } from "phosphor-react-native/src/icons/House";
+import { KeyboardIcon } from "phosphor-react-native/src/icons/Keyboard";
 import { MegaphoneIcon } from "phosphor-react-native/src/icons/Megaphone";
 import { PaletteIcon } from "phosphor-react-native/src/icons/Palette";
 import { PaperPlaneTiltIcon } from "phosphor-react-native/src/icons/PaperPlaneTilt";
@@ -80,7 +81,7 @@ import { FirstAidIcon } from "phosphor-react-native/src/icons/FirstAid";
  * a strict check on every machine.
  */
 const MAP = {
-  house: HouseIcon, checks: ChecksIcon, chalkboard: ChalkboardIcon, chat: ChatIcon, clipboard: ClipboardTextIcon, brain: BrainIcon,
+  house: HouseIcon, keyboard: KeyboardIcon, checks: ChecksIcon, chalkboard: ChalkboardIcon, chat: ChatIcon, clipboard: ClipboardTextIcon, brain: BrainIcon,
   users: UsersIcon, calendar: CalendarIcon, chartLine: ChartLineIcon, bell: BellIcon, gear: GearIcon, user: UserIcon, clock: ClockIcon,
   star: StarIcon, trophy: TrophyIcon, archive: ArchiveIcon, briefcase: BriefcaseIcon, buildings: BuildingsIcon, envelope: EnvelopeIcon,
   megaphone: MegaphoneIcon, palette: PaletteIcon, plus: PlusIcon, shield: ShieldIcon, dots: DotsThreeOutlineIcon, signOut: SignOutIcon,
