@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { KeyboardIcon } from "@phosphor-icons/react";
 import { transliterateWord, wordAt, type TypingLanguage } from "@/lib/transliterate";
 import { useT } from "@/lib/i18n";
@@ -20,6 +21,11 @@ import { useT } from "@/lib/i18n";
  *
  * NOTHING LEAVES THE DEVICE. The conversion is a table (lib/transliterate.ts),
  * not a service.
+ *
+ * A BOX MAY ASK FOR A LANGUAGE OF ITS OWN, over the switch: a certificate's
+ * paragraph set in a Devanagari face is typed in Devanagari and one set in
+ * a Latin face in English, whatever the switch says, by a data-typing
+ * attribute on the box (the owner, 2026-09-30).
  *
  * How a box is written to: an input or a textarea through its own value
  * setter and an input event, so a React-controlled field sees the change as
@@ -45,6 +51,12 @@ function editableOf(target: EventTarget | null): Editable | null {
   if (target instanceof HTMLInputElement) return ["text", "search", ""].includes(target.type) && !target.readOnly && !target.disabled ? target : null;
   if (target instanceof HTMLTextAreaElement) return !target.readOnly && !target.disabled ? target : null;
   return target.isContentEditable ? target : null;
+}
+
+/** The language a box asks for itself, or the switch's. */
+function languageOf(el: Editable, fallback: TypingLanguage): TypingLanguage {
+  const own = el.closest("[data-typing]")?.getAttribute("data-typing");
+  return own === "en" || own === "hi" || own === "mr" ? own : fallback;
 }
 
 /** The Latin word before the caret, in an input or a textarea. */
@@ -73,49 +85,69 @@ function pendingInRegion(): { word: string; node: Text; start: number; end: numb
   return end === range.startOffset && end > start ? { word: (node.textContent ?? "").slice(start, end), node, start, end } : null;
 }
 
+/**
+ * ONE ENGINE FOR THE PAGE. The header mounts the switch twice, once for a
+ * desk and once for a phone, one of them hidden; the language is a store
+ * both read, and the listeners and the hint belong to whichever instance
+ * mounted first, the hint drawn on the body so a hidden header cannot hide
+ * it. Two engines once drew two hints.
+ */
+const store = { language: "en" as TypingLanguage, subscribers: new Set<() => void>() };
+const subscribe = (fn: () => void) => {
+  store.subscribers.add(fn);
+  return () => store.subscribers.delete(fn);
+};
+function setLanguage(next: TypingLanguage) {
+  store.language = next;
+  store.subscribers.forEach((fn) => fn());
+}
+let engine: symbol | null = null;
+
 export function TypingSwitch({ className }: { className?: string }) {
   const t = useT();
-  const [language, setLanguage] = useState<TypingLanguage>("en");
+  const language = useSyncExternalStore(subscribe, () => store.language, () => "en" as TypingLanguage);
   const [hint, setHint] = useState<{ text: string; left: number; top: number } | null>(null);
-  const languageRef = useRef<TypingLanguage>("en");
+  const [owner, setOwner] = useState(false);
 
   useEffect(() => {
-    const first = read();
-    languageRef.current = first;
+    const me = Symbol("typing");
+    if (engine) return;
+    engine = me;
     // The saved choice is applied after the first paint: the server drew "en", and a hydration must match it.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLanguage(first);
-  }, []);
-
-  useEffect(() => {
-    const showHint = (el: Editable, word: string) => {
+    setOwner(true);
+    setLanguage(read());
+    const showHint = (el: Editable, word: string, language: TypingLanguage) => {
       const box = el.getBoundingClientRect();
-      const becomes = transliterateWord(word, languageRef.current);
+      const becomes = transliterateWord(word, language);
       setHint(becomes === word ? null : { text: `${word} → ${becomes}`, left: box.left, top: box.bottom + 4 });
     };
     const onInput = (event: Event) => {
-      if (languageRef.current === "en") return setHint(null);
       const el = editableOf(event.target);
       if (!el) return setHint(null);
+      const language = languageOf(el, store.language);
+      if (language === "en") return setHint(null);
       const pending = el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement ? pendingIn(el) : pendingInRegion();
-      if (pending) showHint(el, pending.word);
+      if (pending) showHint(el, pending.word, language);
       else setHint(null);
     };
     const onKeyDown = (event: KeyboardEvent) => {
-      if (languageRef.current === "en" || event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
       if (!(event.key === "Enter" || ENDS_A_WORD.test(event.key))) return;
       const el = editableOf(event.target);
       if (!el) return;
+      const language = languageOf(el, store.language);
+      if (language === "en") return;
       if (el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement) {
         const pending = pendingIn(el);
         if (!pending) return;
-        const becomes = transliterateWord(pending.word, languageRef.current);
+        const becomes = transliterateWord(pending.word, language);
         if (becomes === pending.word) return;
         setValue(el, el.value.slice(0, pending.start) + becomes + el.value.slice(pending.end), pending.start + becomes.length);
       } else {
         const pending = pendingInRegion();
         if (!pending) return;
-        const becomes = transliterateWord(pending.word, languageRef.current);
+        const becomes = transliterateWord(pending.word, language);
         if (becomes === pending.word) return;
         const range = document.createRange();
         range.setStart(pending.node, pending.start);
@@ -135,11 +167,11 @@ export function TypingSwitch({ className }: { className?: string }) {
       document.removeEventListener("input", onInput, true);
       document.removeEventListener("keydown", onKeyDown, true);
       document.removeEventListener("focusout", onBlur, true);
+      if (engine === me) engine = null;
     };
   }, []);
 
   const choose = (next: TypingLanguage) => {
-    languageRef.current = next;
     setLanguage(next);
     setHint(null);
     try {
@@ -164,11 +196,14 @@ export function TypingSwitch({ className }: { className?: string }) {
         <KeyboardIcon className="size-4" aria-hidden="true" />
         <span aria-hidden="true">{label}</span>
       </button>
-      {hint && (
-        <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[--radius-sm] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
-          {hint.text}
-        </span>
-      )}
+      {owner &&
+        hint &&
+        createPortal(
+          <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[--radius-sm] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
+            {hint.text}
+          </span>,
+          document.body,
+        )}
     </>
   );
 }

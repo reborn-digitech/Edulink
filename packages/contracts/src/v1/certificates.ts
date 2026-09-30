@@ -42,6 +42,9 @@ export const fontKeySchema = z.string().trim().regex(/^[a-z]{1,40}$/).default("d
 
 export const certificateLayoutSchema = z.object({
   font: fontKeySchema,
+  /** The opening and closing paragraphs' own faces; "default" here is the paper's. What is typed into a paragraph follows its face's script. */
+  introFont: fontKeySchema,
+  outroFont: fontKeySchema,
   signerLeft: paperSignerSchema.default("NONE"),
   signerRight: paperSignerSchema.default("NONE"),
   /** The school's seal, drawn between the two signatures. */

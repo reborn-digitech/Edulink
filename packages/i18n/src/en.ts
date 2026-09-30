@@ -3779,6 +3779,8 @@ export const en = {
     appDefault: "The app's own",
     groupDevanagari: "Devanagari (Hindi, Marathi)",
     groupLatin: "Latin (English)",
+    forParagraph: "Typeface for this paragraph",
+    sameAsPaper: "Same as the paper",
   },
   typing: {
     switch: "Typing in {language}; press to change",
@@ -3786,6 +3788,7 @@ export const en = {
     en: "English",
     hi: "Hindi",
     mr: "Marathi",
+    byFace: "Typed in {language}, as its typeface asks, whatever the keyboard switch says.",
   },
   recordChanges: {
     askForChange: "Ask for a change",

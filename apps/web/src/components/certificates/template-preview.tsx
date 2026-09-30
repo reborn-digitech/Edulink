@@ -3,7 +3,7 @@
 import type { CertificateLayout } from "@edulink/contracts";
 import type { PaletteEntry } from "@/lib/certificates";
 import { useT } from "@/lib/i18n";
-import { fontStack } from "@/lib/fonts";
+import { fontStack, paragraphFont } from "@/lib/fonts";
 
 /**
  * The certificate as it will print, filled for the sample pupil in the
@@ -45,7 +45,7 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
           {fill(title) || "—"}
         </p>
         {intro.trim() && (
-          <p className="mt-4 whitespace-pre-wrap text-xs leading-relaxed" data-testid="preview-intro">
+          <p style={{ fontFamily: fontStack(paragraphFont(layout.introFont, layout.font), locale) }} className="mt-4 whitespace-pre-wrap text-xs leading-relaxed" data-testid="preview-intro">
             {fill(intro)}
           </p>
         )}
@@ -64,7 +64,11 @@ export function TemplatePreview({ palette, locale, title, intro, rows, outro, la
             </tbody>
           </table>
         )}
-        {outro.trim() && <p className="mt-4 whitespace-pre-wrap text-xs leading-relaxed">{fill(outro)}</p>}
+        {outro.trim() && (
+          <p style={{ fontFamily: fontStack(paragraphFont(layout.outroFont, layout.font), locale) }} className="mt-4 whitespace-pre-wrap text-xs leading-relaxed" data-testid="preview-outro">
+            {fill(outro)}
+          </p>
+        )}
 
         {/* Where a signature and the seal will be drawn, as a word in a box: the pictures are the signers' own. */}
         <div className={`mt-6 grid grid-cols-[1fr_auto_1fr] items-end gap-4 text-center text-[0.6875rem] ${muted}`} data-testid="preview-signatures">

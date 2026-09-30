@@ -14,6 +14,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { CERTIFICATE_KIND_KEY, localeName } from "@/components/certificates/labels";
 import { DetailPicker } from "@/components/certificates/detail-picker";
 import { FontSelect } from "@/components/font-select";
+import { fontStack, paragraphFont, typingFor } from "@/lib/fonts";
 import { TemplatePreview } from "@/components/certificates/template-preview";
 import { TokenField, type TokenFieldHandle } from "@/components/certificates/token-field";
 import { saveTemplateAction } from "./actions";
@@ -83,7 +84,7 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [preset, setPreset] = useState<string>(template ? "" : (view.presets[0]?.key ?? ""));
-  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { font: "default", signerLeft: "NONE", signerRight: "NONE", showSeal: false, showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
+  const [draft, setDraft] = useState<Draft>(() => (template ? draftFrom(template, template.active) : view.presets[0] ? draftFrom(view.presets[0], true) : { kind: "CUSTOM", name: "", locale: "en", title: "", intro: "", rows: [], outro: "", layout: { font: "default", introFont: "default", outroFont: "default", signerLeft: "NONE", signerRight: "NONE", showSeal: false, showLogo: true, showAddress: true, useBrandColour: true, signatureLeft: "", signatureRight: "", footerNote: null, paper: "A4" }, serialPrefix: "CERT", active: true }));
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   /** A preset replaces every text at once; the fields are made anew so none keeps what it was showing. */
@@ -256,13 +257,25 @@ export function TemplateEditor({ view, palette, template, readOnly = false }: { 
     showAddress: t("certificates.showAddress"),
     useBrandColour: t("certificates.useBrandColour"),
   };
-  /** One of the two paragraphs, with the button that inserts a detail at its own caret. */
-  const paragraph = (id: "intro" | "outro", label: string) => (
-    <div className="space-y-2">
-      <TokenField key={`${id}-${generation}-${reader}`} ref={hold(id)} label={label} multiline value={draft[id]} onChange={(next) => patch({ [id]: next } as Partial<Draft>)} labelOf={labelOf} disabled={readOnly} data-testid={`template-${id}`} />
-      {!readOnly && <DetailPicker palette={palette} label={t("certificates.insertDetail")} onPick={(entry) => fields.current.get(id)?.insert(entry.key)} testId={`insert-${id}`} />}
-    </div>
-  );
+  /**
+   * One of the two paragraphs, with its own face and the button that inserts a detail at its own caret.
+   * The face decides what is typed into it, over the header's switch: a Devanagari face is typed in
+   * Devanagari and a Latin face in English; "same as the paper" follows the template's language.
+   */
+  const paragraph = (id: "intro" | "outro", label: string) => {
+    const key = id === "intro" ? "introFont" : "outroFont";
+    const face = paragraphFont(draft.layout[key], draft.layout.font);
+    const typing = typingFor(face, draft.locale);
+    return (
+      <div className="space-y-2">
+        <TokenField key={`${id}-${generation}-${reader}`} ref={hold(id)} label={label} multiline value={draft[id]} onChange={(next) => patch({ [id]: next } as Partial<Draft>)} labelOf={labelOf} disabled={readOnly} typing={typing} style={{ fontFamily: fontStack(face, draft.locale) }} hint={t("typing.byFace", { language: t(`typing.${typing}`) })} data-testid={`template-${id}`} />
+        <div className="flex flex-wrap items-end gap-3">
+          <FontSelect label={t("fonts.forParagraph")} defaultLabel={t("fonts.sameAsPaper")} hint={null} value={draft.layout[key]} locale={draft.locale} onChange={(font) => patchLayout({ [key]: font })} className="w-full max-w-xs" testId={`template-${id}-font`} />
+          {!readOnly && <DetailPicker palette={palette} label={t("certificates.insertDetail")} onPick={(entry) => fields.current.get(id)?.insert(entry.key)} testId={`insert-${id}`} />}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">

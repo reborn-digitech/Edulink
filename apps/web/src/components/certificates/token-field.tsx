@@ -1,8 +1,9 @@
 "use client";
 
-import { forwardRef, useEffect, useId, useImperativeHandle, useLayoutEffect, useRef } from "react";
+import { forwardRef, useEffect, useId, useImperativeHandle, useLayoutEffect, useRef, type CSSProperties } from "react";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
+import type { TypingLanguage } from "@/lib/transliterate";
 
 /**
  * A text the office types in, where a detail of the pupil is a word and not
@@ -42,6 +43,10 @@ type Props = {
   className?: string;
   /** The label is for a screen reader alone: a row's value sits under a column the row already names. */
   hideLabel?: boolean;
+  /** What this region is typed in, over the header's switch: a paragraph set in a Devanagari face is typed in Devanagari. */
+  typing?: TypingLanguage;
+  /** The face the region is drawn in, so the writer sees the paper's. */
+  style?: CSSProperties;
   "data-testid"?: string;
 };
 
@@ -140,7 +145,7 @@ function caretAt(root: HTMLElement, offset: number) {
   selection?.addRange(range);
 }
 
-export const TokenField = forwardRef<TokenFieldHandle, Props>(function TokenField({ label, value, onChange, labelOf, multiline = false, required, disabled, hint, error, className, hideLabel, ...rest }, ref) {
+export const TokenField = forwardRef<TokenFieldHandle, Props>(function TokenField({ label, value, onChange, labelOf, multiline = false, required, disabled, hint, error, className, hideLabel, typing, style, ...rest }, ref) {
   const t = useT();
   const id = useId();
   const root = useRef<HTMLDivElement>(null);
@@ -253,6 +258,8 @@ export const TokenField = forwardRef<TokenFieldHandle, Props>(function TokenFiel
         aria-disabled={disabled || undefined}
         spellCheck
         data-testid={rest["data-testid"]}
+        data-typing={typing}
+        style={style}
         className={cn(
           "w-full whitespace-pre-wrap break-words rounded-[--radius-md] border bg-surface px-3.5 py-3 text-[0.9375rem] leading-relaxed text-fg",
           multiline ? "min-h-28" : "min-h-12",

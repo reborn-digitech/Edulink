@@ -6,6 +6,7 @@ import type { IssuedCertificateView } from "./certificate-types";
 import { db } from "./db";
 import { readStoredFile } from "./storage";
 import { wordsFor } from "./certificate-rules";
+import { paragraphFont } from "./fonts";
 import { pdfFamilyFor } from "./pdf-font-registry";
 import { paperImages } from "./signatures";
 import { dateKeyInZone } from "./dates";
@@ -95,7 +96,8 @@ function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: 
         <Text>{words("certificates.issuedOn", { date: issuedOn })}</Text>
       </View>
       <Text style={styles.title}>{cert.title}</Text>
-      {cert.intro ? <Text style={styles.para}>{cert.intro}</Text> : null}
+      {/* Each paragraph in its own face, where the template gave it one; the rest of the paper in the paper's. */}
+      {cert.intro ? <Text style={[styles.para, { fontFamily: pdfFamilyFor(paragraphFont(cert.layout.introFont, cert.layout.font)) as unknown as string }]}>{cert.intro}</Text> : null}
       {cert.rows.length > 0 ? (
         <View style={{ marginVertical: 8 }}>
           {cert.rows.map((r, i) => (
@@ -107,7 +109,7 @@ function CertificatePage({ cert, logo, verifyUrl, issuedOn, pictures }: { cert: 
           ))}
         </View>
       ) : null}
-      {cert.outro ? <Text style={[styles.para, { marginTop: 10 }]}>{cert.outro}</Text> : null}
+      {cert.outro ? <Text style={[styles.para, { marginTop: 10, fontFamily: pdfFamilyFor(paragraphFont(cert.layout.outroFont, cert.layout.font)) as unknown as string }]}>{cert.outro}</Text> : null}
       {/* The paper's own copy of each signature above its line, the seal between; a line that waits is printed bare. */}
       {/* eslint-disable jsx-a11y/alt-text -- a PDF's Image takes no alt; the line under it names the signer's office */}
       <View style={styles.signatures} wrap={false}>

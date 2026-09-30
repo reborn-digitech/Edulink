@@ -3567,6 +3567,8 @@ export const hi: Dictionary = {
     appDefault: "ऐप का अपना",
     groupDevanagari: "देवनागरी (हिंदी, मराठी)",
     groupLatin: "लैटिन (अंग्रेज़ी)",
+    forParagraph: "इस अनुच्छेद का टाइपफ़ेस",
+    sameAsPaper: "कागज़ जैसा ही",
   },
   typing: {
     switch: "{language} में टाइप हो रहा है; बदलने के लिए दबाएँ",
@@ -3574,6 +3576,7 @@ export const hi: Dictionary = {
     en: "अंग्रेज़ी",
     hi: "हिंदी",
     mr: "मराठी",
+    byFace: "टाइपफ़ेस के अनुसार {language} में टाइप होगा, कीबोर्ड स्विच चाहे जो हो।",
   },
   recordChanges: {
     askForChange: "बदलाव के लिए कहें",

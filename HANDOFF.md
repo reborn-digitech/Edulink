@@ -229,6 +229,13 @@ end-to-end in staging.
   मराठी) turns English letters into Devanagari as a word ends, in every box of the app, by a strict
   table in the browser (`src/lib/transliterate.ts`): a long vowel is typed twice, nothing is
   guessed, nothing is sent anywhere. Kept on the device, not per box.
+- **A certificate's two paragraphs carry a face each, and the face decides what is typed** (decided
+  by the owner, 2026-09-30). The paper's face stays for the header, title, rows and lines;
+  `introFont` and `outroFont` on the layout are "default" (the paper's) or a face of their own.
+  A paragraph set in a Devanagari face is typed in Devanagari, Hindi or Marathi by the template's
+  language, one set in a Latin face in English, whatever the header's switch says
+  (`data-typing` on the box; `typingFor` in `src/lib/fonts.ts`); "same as the paper" follows the
+  template's language. The page and the PDF set each paragraph in its face.
 - **The pupil record is the office's to write** (decided by the owner, 2026-09-29). A guardian and
   the pupil read all of it and write none of it. They propose new values on the record's own form
   with a reason, a blank the office asked about included, and an admin or the head applies them or

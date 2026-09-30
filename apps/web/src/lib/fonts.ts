@@ -12,6 +12,8 @@
  *
  * No server-only import: the editor's select reads this in the browser.
  */
+import type { TypingLanguage } from "./transliterate";
+
 export type Script = "latin" | "devanagari";
 export type FontKey = "default" | "mukta" | "notosansdevanagari" | "notoserifdevanagari" | "hind" | "tirodevanagarimarathi" | "inter" | "notosans" | "notoserif" | "merriweather";
 
@@ -59,6 +61,23 @@ export function fontStack(key: string | null | undefined, locale: string): strin
   if (!face) return undefined;
   const fallback = scriptOf(locale) === "devanagari" ? '"Mukta", "Noto Sans Devanagari", sans-serif' : "ui-sans-serif, system-ui, sans-serif";
   return `"${face.family}", ${fallback}`;
+}
+
+/** The face a paragraph of a certificate is set in: its own, or the paper's when it names none. */
+export const paragraphFont = (own: string | null | undefined, paper: string | null | undefined): string => (own && own !== "default" ? own : paper || "default");
+
+/**
+ * What is typed into a paragraph set in a face, whatever the header's
+ * switch says (the owner, 2026-09-30): Devanagari for a Devanagari face,
+ * Hindi or Marathi by the document's language and Hindi for an English
+ * document; English letters for a Latin face; and the document's own
+ * language where the face is the app's own or sets both scripts.
+ */
+export function typingFor(fontKey: string | null | undefined, locale: string): TypingLanguage {
+  const own: TypingLanguage = locale === "hi" || locale === "mr" ? locale : "en";
+  const face = fontByKey(fontKey);
+  if (!face || face.scripts.length > 1) return own;
+  return face.scripts[0] === "devanagari" ? (own === "en" ? "hi" : own) : "en";
 }
 
 /** The file a weight of a face is in, under public/fonts. */

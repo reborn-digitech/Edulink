@@ -10,7 +10,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 import { RevokeForm } from "./revoke-form";
 import { SignPaper } from "@/components/certificates/sign-paper";
-import { fontStack } from "@/lib/fonts";
+import { fontStack, paragraphFont } from "@/lib/fonts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -129,7 +129,11 @@ export default async function CertificatePage({ params, searchParams }: { params
         {/* ---------------- the document ---------------- */}
         <h2 className={`mt-8 text-center text-xl font-bold uppercase underline decoration-1 underline-offset-8 text-fg print:text-black ${latin ? "tracking-[0.2em]" : ""}`}>{cert.title}</h2>
 
-        {cert.intro && <p className="mx-auto mt-6 max-w-prose whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black">{cert.intro}</p>}
+        {cert.intro && (
+          <p style={{ fontFamily: fontStack(paragraphFont(layout.introFont, layout.font), cert.locale) }} className="mx-auto mt-6 max-w-prose whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black" data-testid="certificate-intro">
+            {cert.intro}
+          </p>
+        )}
 
         {cert.rows.length > 0 && (
           <table className="mt-6 w-full text-sm" data-testid="certificate-rows">
@@ -147,7 +151,11 @@ export default async function CertificatePage({ params, searchParams }: { params
           </table>
         )}
 
-        {cert.outro && <p className="mx-auto mt-6 max-w-prose whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black">{cert.outro}</p>}
+        {cert.outro && (
+          <p style={{ fontFamily: fontStack(paragraphFont(layout.outroFont, layout.font), cert.locale) }} className="mx-auto mt-6 max-w-prose whitespace-pre-wrap text-sm leading-relaxed text-fg print:text-black" data-testid="certificate-outro">
+            {cert.outro}
+          </p>
+        )}
 
         {/* ---------------- signatures ----------------
             The paper's own copy of each picture, above the line it signs, and the

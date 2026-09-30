@@ -10,13 +10,13 @@ import { useT } from "@/lib/i18n";
  * own stack at the top. Each option is drawn in its own face, which is the
  * only sample a font needs.
  */
-export function FontSelect({ value, locale, onChange, disabled, testId }: { value: string; locale: string; onChange: (key: FontKey) => void; disabled?: boolean; testId?: string }) {
+export function FontSelect({ value, locale, onChange, disabled, testId, label, defaultLabel, hint, className }: { value: string; locale: string; onChange: (key: FontKey) => void; disabled?: boolean; testId?: string; /** For a part of a document: what the select is for, what "default" means there (the paper's face), and no hint or another. */ label?: string; defaultLabel?: string; hint?: string | null; className?: string }) {
   const t = useT();
   const first = scriptOf(locale);
   const groups = ([first, first === "latin" ? "devanagari" : "latin"] as const).map((script) => ({ script, faces: FONTS.filter((f) => f.scripts.includes(script)) }));
   return (
-    <SelectField label={t("fonts.label")} hint={t("fonts.hint")} value={value} disabled={disabled} onChange={(e) => onChange(e.target.value as FontKey)} data-testid={testId}>
-      <option value="default">{t("fonts.appDefault")}</option>
+    <SelectField label={label ?? t("fonts.label")} hint={hint === undefined ? t("fonts.hint") : (hint ?? undefined)} value={value} disabled={disabled} className={className} onChange={(e) => onChange(e.target.value as FontKey)} data-testid={testId}>
+      <option value="default">{defaultLabel ?? t("fonts.appDefault")}</option>
       {groups.map(({ script, faces }) => (
         <optgroup key={script} label={t(script === "devanagari" ? "fonts.groupDevanagari" : "fonts.groupLatin")}>
           {faces.map((f) => (

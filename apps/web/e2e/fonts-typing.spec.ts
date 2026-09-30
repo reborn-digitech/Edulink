@@ -65,7 +65,9 @@ test("the keyboard switched to Marathi turns English letters into Devanagari as 
   await page.keyboard.type("2026 ");
   await expect(name).toHaveValue("शाळा 2026 ");
 
-  // The certificate's paragraph, which is an editable region and not a box.
+  // The certificate's paragraph, which is an editable region and not a box. A paragraph is typed in its
+  // face's script over the switch, and "same as the paper" is the template's language: a Marathi template.
+  await page.getByTestId("template-language").selectOption("mr");
   const intro = page.getByTestId("template-intro");
   await intro.click();
   await page.keyboard.press("ControlOrMeta+a");
@@ -86,6 +88,62 @@ test("the keyboard switched to Marathi turns English letters into Devanagari as 
   await expect(sw).toHaveAttribute("data-language", "hi");
   await page.reload({ waitUntil: "networkidle" });
   await expect(page.getByTestId("typing-switch").first()).toHaveAttribute("data-language", "hi");
+  await page.evaluate(() => window.localStorage.removeItem("edulink.typing"));
+  await context.close();
+});
+
+test("a paragraph set in a Devanagari face is typed in Devanagari and one in a Latin face in English, whatever the switch says, and each wears its face on the preview", async ({ browser, baseURL }) => {
+  const context = await contextFor(browser, admin.cookie, { viewport: DESK, theme: "light", locale: "en" }, baseURL!);
+  const page = await context.newPage();
+  expect((await page.goto("/admin/certificates/new", { waitUntil: "networkidle" }))?.status()).toBe(200);
+  const sw = page.getByTestId("typing-switch").first();
+  await expect(sw).toHaveAttribute("data-language", "en");
+  const intro = page.getByTestId("template-intro");
+  const outro = page.getByTestId("template-outro");
+  const title = page.getByTestId("template-title");
+  const typeInto = async (box: typeof intro, text: string) => {
+    await box.click();
+    await page.keyboard.press("ControlOrMeta+a");
+    await page.keyboard.type(text);
+  };
+
+  // An English template with the switch on English: "same as the paper" types English.
+  await expect(intro).toHaveAttribute("data-typing", "en");
+  // The opening paragraph set in Hind: typed in Hindi with the switch still on English, the hint shown, the face on the box and the preview.
+  await page.getByTestId("template-intro-font").selectOption("hind");
+  await expect(intro).toHaveAttribute("data-typing", "hi");
+  await expect(intro).toHaveCSS("font-family", /Hind/);
+  await expect(page.getByText("Typed in Hindi, as its typeface asks, whatever the keyboard switch says.")).toBeVisible();
+  await typeInto(intro, "namaste");
+  await expect(page.getByTestId("typing-hint")).toHaveText("namaste → नमस्ते");
+  await page.keyboard.type(" ");
+  await expect(intro).toHaveText("नमस्ते ");
+  await expect(page.getByTestId("preview-intro")).toHaveText("नमस्ते");
+  await expect(page.getByTestId("preview-intro")).toHaveCSS("font-family", /Hind/);
+  // The heading, which has no face of its own, still follows the switch: English letters stay letters.
+  await typeInto(title, "namaste ");
+  await expect(title).toHaveValue("namaste ");
+
+  // The switch on Marathi and the closing paragraph set in Merriweather: English letters stay letters there, and the heading becomes Devanagari.
+  await sw.click();
+  await sw.click();
+  await expect(sw).toHaveAttribute("data-language", "mr");
+  await page.getByTestId("template-outro-font").selectOption("merriweather");
+  await expect(outro).toHaveAttribute("data-typing", "en");
+  await typeInto(outro, "namaste ");
+  await expect(outro).toHaveText("namaste ");
+  await expect(page.getByTestId("preview-outro")).toHaveCSS("font-family", /Merriweather/);
+  await typeInto(title, "shaaLaa ");
+  await expect(title).toHaveValue("शाळा ");
+
+  // A Marathi template with the switch back on English: a paragraph set "same as the paper" is typed in Marathi.
+  await sw.click();
+  await expect(sw).toHaveAttribute("data-language", "en");
+  await page.getByTestId("template-outro-font").selectOption("default");
+  await page.getByTestId("template-language").selectOption("mr");
+  await expect(outro).toHaveAttribute("data-typing", "mr");
+  await typeInto(outro, "shaaLaa ");
+  await expect(outro).toHaveText("शाळा ");
   await page.evaluate(() => window.localStorage.removeItem("edulink.typing"));
   await context.close();
 });
