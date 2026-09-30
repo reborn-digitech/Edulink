@@ -18,8 +18,14 @@
  * commits while CI was refused, and 1.75 MB of it was the three dictionaries
  * whole, the web's sentences with the phone's. A release now carries the
  * phone's share of them (scripts/i18n-subset.cjs, swapped in by
- * metro.config.js), which is what this measures. The ceiling stayed where it
- * was; lowering it to the target is the owner's to decide.
+ * metro.config.js), which is what this measures: 4.93 MB on Android, 0.07 MB
+ * under the ceiling, about one feature's screens. The owner was given the
+ * choice that day (trim the icons' unused weights, raise the ceiling, or leave
+ * it) and raised the ceiling to 5.5 MB. The target is where it was, so every
+ * run still names the number; what the ceiling costs is the weight of each
+ * over-the-air update, 1.26 MB gzipped at 4.93 MB. The levers not yet pulled,
+ * by the source map: the icons, 0.23 MB with six weights drawn for each where
+ * the phone uses three, and the screens themselves, 1.31 MB.
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -28,7 +34,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const TARGET_MB = 4.5;
-const CEILING_MB = 5.0;
+const CEILING_MB = 5.5;
 const MB = 1024 * 1024;
 
 const out = mkdtempSync(join(tmpdir(), "edulink-bundle-"));

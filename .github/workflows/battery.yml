@@ -108,7 +108,7 @@ jobs:
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
       - name: Mobile battery · tsc, eslint, jest with the lib coverage gate, the Maestro flow check
         run: pnpm --filter @edulink/mobile battery
-      - name: Mobile bundle size · both platforms, target 4.5 MB, ceiling 5 MB
+      - name: Mobile bundle size · both platforms, target 4.5 MB, ceiling 5.5 MB
         run: pnpm --filter @edulink/mobile bundle:check
       - name: Mobile bundle size record
         if: always()
