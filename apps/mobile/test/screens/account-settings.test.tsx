@@ -150,6 +150,16 @@ describe("the account", () => {
     await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/account/locale")?.body).toEqual({ locale: "hi" }));
   });
 
+  it("the colour scheme chosen here is the phone's at once and is saved to the account beside the channels", async () => {
+    const { calls } = await mount({ "POST /api/v1/account/prefs": () => json(OVERVIEW) });
+    await fireEvent.press(await screen.findByRole("tab", { name: "Preferences" }));
+    const light = screen.getByRole("radio", { name: "Light" });
+    expect(screen.getByRole("radio", { name: "System" })).toBeChecked();
+    await fireEvent.press(light);
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/account/prefs")?.body).toEqual({ channels: { push: true, email: false }, quietHours: null, theme: "light" }));
+    expect(light).toBeChecked();
+  });
+
   it("devices: this one is marked; another is signed out after asking; so is everywhere else", async () => {
     const { calls } = await mount({
       "POST /api/v1/account/devices/sign-out": () => json({ ok: true }),

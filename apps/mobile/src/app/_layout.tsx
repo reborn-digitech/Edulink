@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { QueryClientProvider, useQueryClient } from "@tanstack/react-query";
 import { Stack, usePathname, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Platform, useColorScheme, View } from "react-native";
+import { Platform, View } from "react-native";
 import type { ReactNode } from "react";
 import * as Device from "expo-device";
 import { makeQueryClient } from "@/lib/query";
 import { SessionProvider, useSession } from "@/lib/session";
 import { I18nProvider, useT } from "@/lib/i18n";
-import { RoleThemeProvider, useTheme } from "@/lib/theme";
+import { RoleThemeProvider, ThemeChoiceProvider, useScheme, useTheme } from "@/lib/theme";
 import { useDeepLinks } from "@/lib/deep-links";
 import { registerForPush } from "@/lib/push";
 import { useVersionGate } from "@/lib/version";
@@ -26,9 +26,11 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
-        <SessionProvider>
-          <Gate />
-        </SessionProvider>
+        <ThemeChoiceProvider>
+          <SessionProvider>
+            <Gate />
+          </SessionProvider>
+        </ThemeChoiceProvider>
       </I18nProvider>
     </QueryClientProvider>
   );
@@ -95,7 +97,8 @@ function Gate() {
   const rooted = useRootedWarning();
   const segments = useSegments();
   const router = useRouter();
-  const scheme = useColorScheme();
+  // The status bar follows the app's scheme, not the phone's alone, since the choice of 2026-10-01.
+  const scheme = useScheme();
   const inAuth = segments[0] === "(auth)";
   const pathname = usePathname();
   const version = useVersionGate();

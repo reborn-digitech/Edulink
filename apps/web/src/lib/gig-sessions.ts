@@ -614,7 +614,7 @@ export async function schoolSessions(ctx: ActiveContext, now: Date = new Date())
   });
   return {
     guidanceOn: school.teacherGuidanceOn,
-    canSwitch: ctx.role === "ADMIN",
+    canSwitch: ctx.role === "ADMIN" || ctx.role === "PRINCIPAL",
     timeZone: school.timezone,
     bookings: rows.map((b) => ({ id: b.id, pupilName: b.student.user.preferredName ?? b.student.user.name, kind: b.kind as SessionKind, title: b.slot.title, startsAt: b.slot.startsAt.toISOString(), providerName: b.slot.provider.name, providerKind: b.slot.providerKind as "EXPERT" | "TEACHER", status: b.status as BookingStatus, purpose: b.purpose, canCancel: LIVE.includes(b.status as BookingStatus) && b.slot.startsAt > now })),
   };
@@ -622,7 +622,8 @@ export async function schoolSessions(ctx: ActiveContext, now: Date = new Date())
 
 /** The school lets its teachers offer free guidance to its own pupils, or stops. Stopping cancels nothing already booked. */
 export async function setTeacherGuidance(ctx: ActiveContext, on: boolean): Promise<GigResult<{ guidanceOn: boolean }>> {
-  if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.wrongRoleForThisAction");
+  // The office and the head both run the school: the head once read the switch and could not turn it, which read as a broken checkbox (the owner, 2026-10-01).
+  if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) throw new AccessError("access.wrongRoleForThisAction");
   await db.school.update({ where: { id: ctx.schoolId }, data: { teacherGuidanceOn: on } });
   await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: on ? "gig.guidance.on" : "gig.guidance.off", targetType: "School", targetId: ctx.schoolId });
   return { ok: true, guidanceOn: on };

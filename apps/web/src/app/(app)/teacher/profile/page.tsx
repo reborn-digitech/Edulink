@@ -114,7 +114,7 @@ export default async function TeacherProfilePage() {
         <CardHeader title={t("staff.yourRecord")} />
         <CardBody>
           {recordRows.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("staff.nothingOnFile")}</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("staff.nothingOnFile")}</p>
           ) : (
             <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
               {recordRows.map(([label, value]) => (

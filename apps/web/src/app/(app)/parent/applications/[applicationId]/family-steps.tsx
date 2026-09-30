@@ -62,7 +62,7 @@ export function SlotChooser({
 
   if (slots.length === 0)
     return (
-      <p className="text-sm text-fg-muted">{t("admissions.noSlotsOpen")}</p>
+      <p className="py-4 text-center text-sm text-fg-muted">{t("admissions.noSlotsOpen")}</p>
     );
 
   return (

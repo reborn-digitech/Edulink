@@ -66,7 +66,7 @@ export default async function BroadcastPage({ params }: { params: Promise<{ broa
         <CardHeader title={t("messaging.detailRecipients")} />
         <CardBody>
           {messages.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("messaging.detailEmpty")}</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("messaging.detailEmpty")}</p>
           ) : (
             <div className="overflow-x-auto" tabIndex={0}>
               <table className="w-full text-sm">

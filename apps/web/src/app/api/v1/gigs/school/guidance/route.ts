@@ -7,7 +7,7 @@ import { requireGigRole } from "../../guard";
 /** POST /api/v1/gigs/school/guidance — the school lets its teachers offer free one-to-one guidance to its own pupils, or stops. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireGigRole("ADMIN");
+    const ctx = await requireGigRole("ADMIN", "PRINCIPAL");
     const parsed = gigGuidanceBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const result = await setTeacherGuidance(ctx, parsed.data.on);

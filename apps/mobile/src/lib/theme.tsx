@@ -1,5 +1,6 @@
-import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { useColorScheme } from "react-native";
+import { KEYS, keyStore } from "./storage";
 import { accents, canvas, familyFor, frame, frameAccents, palette, radius, space, tap, wash, type Accent, type Frame, type Palette, type Theme } from "@edulink/tokens";
 
 /**
@@ -20,8 +21,59 @@ export function RoleThemeProvider({ role, children }: { role: string | null; chi
   return <RoleCtx.Provider value={role}>{children}</RoleCtx.Provider>;
 }
 
+/**
+ * Light, dark, or the phone's own setting: the web's three-way choice, on
+ * the phone since 2026-10-01 (the owner asked for a light option). Kept on
+ * the device so the sign-in screen is already right next time, and, once
+ * signed in, written to the account's prefs.theme by the account screen so
+ * the web follows; the account's own choice, once read there, wins here as
+ * the language's does.
+ */
+export type ThemeChoice = "system" | "light" | "dark";
+type ThemeChoiceCtx = { choice: ThemeChoice; setChoice: (next: ThemeChoice) => void };
+const ChoiceCtx = createContext<ThemeChoiceCtx | null>(null);
+
+export function isThemeChoice(value: unknown): value is ThemeChoice {
+  return value === "system" || value === "light" || value === "dark";
+}
+
+export function ThemeChoiceProvider({ children, initial }: { children: ReactNode; initial?: ThemeChoice }) {
+  const [choice, setChoiceState] = useState<ThemeChoice>(initial ?? "system");
+  useEffect(() => {
+    if (initial) return;
+    void keyStore()
+      .get(KEYS.theme)
+      .then((saved) => {
+        if (isThemeChoice(saved)) setChoiceState(saved);
+      });
+  }, [initial]);
+  const value = useMemo<ThemeChoiceCtx>(
+    () => ({
+      choice,
+      setChoice: (next) => {
+        setChoiceState(next);
+        void keyStore().set(KEYS.theme, next);
+      },
+    }),
+    [choice],
+  );
+  return <ChoiceCtx.Provider value={value}>{children}</ChoiceCtx.Provider>;
+}
+
+export function useThemeChoice(): ThemeChoiceCtx {
+  const ctx = useContext(ChoiceCtx);
+  return ctx ?? { choice: "system", setChoice: () => {} };
+}
+
+/** The scheme the app draws in: the choice, or the phone's when the choice is "system". */
+export function useScheme(): Theme {
+  const os = useColorScheme() === "dark" ? "dark" : "light";
+  const { choice } = useThemeChoice();
+  return choice === "system" ? os : choice;
+}
+
 export function useTheme(): Tokens {
-  const scheme = useColorScheme() === "dark" ? "dark" : "light";
+  const scheme = useScheme();
   const role = useContext(RoleCtx);
   return useMemo(() => {
     const family = familyFor(role);

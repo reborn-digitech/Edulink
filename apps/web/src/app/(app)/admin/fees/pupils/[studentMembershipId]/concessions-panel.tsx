@@ -70,7 +70,7 @@ export function ConcessionsPanel({ studentMembershipId, concessions, heads, offi
   return (
     <div className="space-y-4">
       {concessions.length === 0 ? (
-        <p className="text-sm text-fg-muted">{t("ui.noneShort")}</p>
+        <p className="py-4 text-center text-sm text-fg-muted">{t("ui.noneShort")}</p>
       ) : (
         <ul className="divide-y divide-border text-sm">
           {concessions.map((c) => (

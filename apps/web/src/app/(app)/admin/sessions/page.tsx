@@ -35,7 +35,7 @@ export default async function AdminSessionsPage() {
       <Card>
         <CardBody>
           {view.bookings.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("gigs.officeNone")}</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("gigs.officeNone")}</p>
           ) : (
             <ul className="divide-y divide-border" data-testid="office-sessions">
               {view.bookings.map((b) => (

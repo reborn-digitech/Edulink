@@ -127,7 +127,7 @@ export default async function MessagingPage() {
           <CardHeader icon={<MegaphoneIcon weight="duotone" className="size-5" />} title={t("messaging.broadcastsTitle")} description={t("messaging.broadcastsIntro")} />
           <CardBody>
             {o.recent.length === 0 ? (
-              <p className="text-sm text-fg-muted">{t("messaging.broadcastsEmpty")}</p>
+              <p className="py-4 text-center text-sm text-fg-muted">{t("messaging.broadcastsEmpty")}</p>
             ) : (
               <ul className="divide-y divide-border text-sm">
                 {o.recent.map((b) => (
@@ -163,7 +163,7 @@ export default async function MessagingPage() {
           <CardHeader icon={<ChatsCircleIcon weight="duotone" className="size-5" />} title={t("messaging.recentTitle")} />
           <CardBody>
             {o.recentMessages.length === 0 ? (
-              <p className="text-sm text-fg-muted">{t("messaging.recentEmpty")}</p>
+              <p className="py-4 text-center text-sm text-fg-muted">{t("messaging.recentEmpty")}</p>
             ) : (
               <ul className="divide-y divide-border text-sm">
                 {o.recentMessages.map((m) => (

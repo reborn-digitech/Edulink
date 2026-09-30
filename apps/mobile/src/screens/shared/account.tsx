@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { SwitchRow } from "@/components/switch-row";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
 import type { z } from "zod";
@@ -12,7 +12,7 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
-import { useTheme } from "@/lib/theme";
+import { isThemeChoice, useTheme, useThemeChoice, type ThemeChoice } from "@/lib/theme";
 import { Confirm, Note, Pill, relativeTime, Tabs } from "../family/shared";
 
 type Tab = "profile" | "prefs" | "devices";
@@ -440,8 +440,77 @@ function PrefsTab({ overview }: { overview: AccountOverview }) {
         ) : null}
         <Button label={t("prefs.saveNotifications")} busy={save.isPending} disabled={!dirty} onPress={submit} />
       </Card>
+      <AppearanceCard overview={overview} />
       <LanguageCard />
     </>
+  );
+}
+
+/**
+ * Light, dark or the phone's own: the web's colour scheme, on the phone
+ * since 2026-10-01. The choice is the device's at once, and sent to the
+ * account (prefs.theme, beside the channels the prefs door needs) so the
+ * web follows; the account's own choice, read here, is taken once.
+ */
+const THEMES: ThemeChoice[] = ["system", "light", "dark"];
+
+function AppearanceCard({ overview }: { overview: AccountOverview }) {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const { choice, setChoice } = useThemeChoice();
+  const adopted = useRef(false);
+  useEffect(() => {
+    if (adopted.current) return;
+    adopted.current = true;
+    if (isThemeChoice(overview.prefs.theme) && overview.prefs.theme !== choice) setChoice(overview.prefs.theme);
+    // The account's choice is read once, when the card first draws.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const { mutate: persist, isPending } = useMutation({
+    mutationFn: async (theme: ThemeChoice) => {
+      const result = await api().post("/api/v1/account/prefs", { channels: overview.prefs.channels, quietHours: overview.prefs.quietHours, theme });
+      if (!result.ok) throw new Error(errorText(result, t("prefs.notSaved")));
+    },
+    onSuccess: () => {
+      toast.show(t("prefs.saved"));
+      void qc.invalidateQueries({ queryKey: ["account"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const label = { system: t("prefs.system"), light: t("prefs.light"), dark: t("prefs.dark") };
+  return (
+    <Card title={t("prefs.colourScheme")}>
+      <Text variant="xs" tone="muted">
+        {t("prefs.colourSchemeHint")}
+      </Text>
+      <View accessibilityRole="radiogroup" accessibilityLabel={t("prefs.colourScheme")} style={{ flexDirection: "row", gap: th.space[1], backgroundColor: th.surfaceMuted, borderRadius: th.radius.md, padding: th.space[1] }}>
+        {THEMES.map((option) => {
+          const on = option === choice;
+          return (
+            <Pressable
+              key={option}
+              accessibilityRole="radio"
+              accessibilityState={{ checked: on, disabled: isPending }}
+              aria-checked={on}
+              accessibilityLabel={label[option]}
+              disabled={isPending}
+              onPress={() => {
+                if (on) return;
+                setChoice(option);
+                persist(option);
+              }}
+              style={{ flex: 1, minHeight: th.tap, alignItems: "center", justifyContent: "center", borderRadius: th.radius.sm, backgroundColor: on ? th.surface : undefined }}
+            >
+              <Text variant="sm" bold={on} tone={on ? "fg" : "muted"}>
+                {label[option]}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </Card>
   );
 }
 

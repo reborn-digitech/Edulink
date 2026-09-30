@@ -79128,14 +79128,15 @@
     "/api/v1/gigs/school/guidance": {
       "post": {
         "summary": "The school lets its teachers offer free one-to-one guidance to its own pupils, or stops; stopping cancels nothing already booked",
-        "description": "Roles: ADMIN.",
+        "description": "Roles: ADMIN, PRINCIPAL.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "ADMIN"
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {

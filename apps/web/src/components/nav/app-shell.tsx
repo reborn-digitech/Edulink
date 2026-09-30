@@ -12,7 +12,7 @@ import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
-import { LOCALES, useLocale, useT } from "@/lib/i18n";
+import { useT } from "@/lib/i18n";
 import type { Translate } from "@/lib/i18n";
 import { ROLE_META, type Role } from "@/lib/constants";
 
@@ -122,11 +122,9 @@ export function AppShell({
             </div>
           ))}
         </nav>
-        {/* A rule above this row: the menu scrolls behind it on a short window, and a cut-off entry with no edge looked like a fault. */}
-        <div className="flex items-center justify-between gap-2 border-t border-border px-3 py-1.5">
+        {/* The language is changed on the account page, one tap away; a link to it here was one more thing in the menu (the owner, 2026-10-01). */}
+        <div className="flex items-center justify-between gap-2 px-3 pb-2">
           <OutboxBadge />
-          {/* The app's language, by name, opening where it is changed. The typing switch that stood here read as this and was not. */}
-          <LanguageLink t={t} />
         </div>
 
         <div className="border-t border-border p-3">
@@ -338,13 +336,6 @@ export function AppShell({
                       </Link>
                     </li>
                   ))}
-            <div className="mb-4">
-              <ul className="grid grid-cols-2 gap-1">
-                <li>
-                  <LanguageLink t={t} onClick={() => setMoreOpen(false)} />
-                </li>
-              </ul>
-            </div>
                 </ul>
               </div>
             ))}
@@ -400,23 +391,5 @@ export function SignOutButton() {
         {t("shell.signOut")}
       </button>
     </form>
-  );
-}
-
-/** "Language · हिन्दी": the app's language by its own name, opening the account page where it is changed. */
-function LanguageLink({ t, onClick }: { t: Translate; onClick?: () => void }) {
-  const locale = useLocale();
-  const name = LOCALES.find((l) => l.code === locale)?.native ?? locale;
-  return (
-    <Link
-      href="/account#language"
-      onClick={onClick}
-      className="flex min-h-11 items-center gap-2 rounded-[--radius-md] px-3 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
-    >
-      <NavIcon name="translate" className="size-5" />
-      <span>
-        {t("language.title")} · <span lang={locale}>{name}</span>
-      </span>
-    </Link>
   );
 }

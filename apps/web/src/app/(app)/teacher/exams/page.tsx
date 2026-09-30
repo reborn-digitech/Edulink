@@ -168,7 +168,7 @@ export default async function TeacherExamsPage({
                 marks — on screen for every pupil. A new key remounts the form
                 with the new paper's own marks. */}
             {grid.pupils.length === 0 ? (
-              <p className="text-sm text-fg-muted">{t("exams.emptyRoll")}</p>
+              <p className="py-4 text-center text-sm text-fg-muted">{t("exams.emptyRoll")}</p>
             ) : (
               <MarksForm slotId={selectedSlot.id} classId={selectedClass.id} action={saveMarksAction}>
                 <input type="hidden" name="slotId" value={selectedSlot.id} />

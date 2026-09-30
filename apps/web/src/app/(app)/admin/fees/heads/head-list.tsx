@@ -76,7 +76,7 @@ export function HeadList({ heads }: { heads: HeadRow[] }) {
   return (
     <div className="space-y-5">
       {heads.length === 0 ? (
-        <p className="text-sm text-fg-muted">{t("fees.headsEmpty")}</p>
+        <p className="py-4 text-center text-sm text-fg-muted">{t("fees.headsEmpty")}</p>
       ) : (
         <div className="overflow-x-auto" tabIndex={0}>
           <table className="w-full text-sm">

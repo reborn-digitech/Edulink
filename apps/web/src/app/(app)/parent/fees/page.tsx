@@ -152,7 +152,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
             <CardHeader icon={<WalletIcon weight="duotone" className="size-5" />} title={t("fees.parentPickTitle")} />
             <CardBody className="space-y-4">
               {payable.length === 0 ? (
-                <p className="text-sm text-fg-muted">{t("fees.parentNothingDue")}</p>
+                <p className="py-4 text-center text-sm text-fg-muted">{t("fees.parentNothingDue")}</p>
               ) : (
                 <PayChooser
                   studentMembershipId={child.studentMembershipId}

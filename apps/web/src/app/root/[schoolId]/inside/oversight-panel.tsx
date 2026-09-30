@@ -76,7 +76,7 @@ export function OversightPanel({
           {t("root.whatPublished")}
         </h2>
         {posts.length === 0 ? (
-          <p className="text-sm text-fg-muted">{t("root.nothingPosted")}</p>
+          <p className="py-4 text-center text-sm text-fg-muted">{t("root.nothingPosted")}</p>
         ) : (
           <ul className="space-y-2">
             {posts.map((post) => (

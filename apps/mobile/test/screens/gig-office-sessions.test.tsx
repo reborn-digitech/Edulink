@@ -28,7 +28,7 @@ describe("the office's sessions", () => {
     expect(calls().find((c) => c.line === "POST /api/v1/gigs/sessions/b1/cancel")?.body).toEqual({ reason: "ZZ The school trip is that day" });
   });
 
-  it("the admin turns teachers' guidance off and on; the head reads the switch and cannot turn it", async () => {
+  it("the admin turns teachers' guidance off and on; a switch the server says cannot be turned is shown locked", async () => {
     const first = await mountStaff(<OfficeSessions />, "ADMIN", { [`GET ${PATH}`]: () => json(view({ bookings: [] })), [`POST ${PATH}/guidance`]: () => json({ guidanceOn: false }) });
     expect(await screen.findByText("No pupil has a session yet.")).toBeTruthy();
     const toggle = screen.getByRole("switch", { name: "Let our teachers offer free one-to-one guidance to our pupils" });

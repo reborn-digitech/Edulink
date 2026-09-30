@@ -175,7 +175,7 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
           <Card className="lg:sticky lg:top-4 lg:self-start">
             <CardHeader title={t("fees.takePaymentTitle")} />
             <CardBody>
-              {openDemands.length === 0 ? <p className="text-sm text-fg-muted">{t("fees.refuseNothingDue")}</p> : <TakePaymentForm studentMembershipId={p.studentMembershipId} openDemands={openDemands} todayKey={today} />}
+              {openDemands.length === 0 ? <p className="py-4 text-center text-sm text-fg-muted">{t("fees.refuseNothingDue")}</p> : <TakePaymentForm studentMembershipId={p.studentMembershipId} openDemands={openDemands} todayKey={today} />}
             </CardBody>
           </Card>
         )}

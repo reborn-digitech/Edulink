@@ -107,7 +107,7 @@ export default async function RootGigsPage() {
         <CardHeader title={t("gigs.paymentsTitle")} />
         <CardBody>
           {o.payments.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("gigs.paymentsNone")}</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("gigs.paymentsNone")}</p>
           ) : (
             <ul className="divide-y divide-border" data-testid="gig-payments">
               {o.payments.map((p) => (

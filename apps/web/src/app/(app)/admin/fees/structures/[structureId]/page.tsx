@@ -139,7 +139,7 @@ export default async function StructurePage({ params, searchParams }: { params: 
           <CardHeader title={roster.klass.name} description={roster.year?.name} />
           <CardBody>
             {roster.pupils.length === 0 ? (
-              <p className="text-sm text-fg-muted">{t("fees.duesEmpty")}</p>
+              <p className="py-4 text-center text-sm text-fg-muted">{t("fees.duesEmpty")}</p>
             ) : (
               <div className="overflow-x-auto" tabIndex={0}>
                 <table className="w-full text-sm">

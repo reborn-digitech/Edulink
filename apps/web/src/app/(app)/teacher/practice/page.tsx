@@ -275,7 +275,7 @@ export default async function TeacherPracticePage({
         />
         <CardBody className="space-y-4">
           {assignments.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("practice.assignmentsEmpty")}</p>
+            <p className="py-4 text-center text-sm text-fg-muted">{t("practice.assignmentsEmpty")}</p>
           ) : (
             assignments.map((a) => (
               <div key={a.id} className="rounded-lg border border-border p-4">

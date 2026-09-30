@@ -48,7 +48,7 @@ export default async function SessionsPage() {
               <CardHeader title={t("gigs.yourSeats")} />
               <CardBody>
                 {c.bookings.length === 0 ? (
-                  <p className="text-sm text-fg-muted">{t("gigs.noSeats")}</p>
+                  <p className="py-4 text-center text-sm text-fg-muted">{t("gigs.noSeats")}</p>
                 ) : (
                   <ul className="divide-y divide-border" data-testid="session-seats">
                     {c.bookings.map((b) => (
@@ -82,7 +82,7 @@ export default async function SessionsPage() {
               <CardHeader title={t("gigs.openTitle")} />
               <CardBody>
                 {c.open.length === 0 ? (
-                  <p className="text-sm text-fg-muted">{t("gigs.noneOpen")}</p>
+                  <p className="py-4 text-center text-sm text-fg-muted">{t("gigs.noneOpen")}</p>
                 ) : (
                   <ul className="divide-y divide-border" data-testid="session-open">
                     {c.open.map((s) => (
