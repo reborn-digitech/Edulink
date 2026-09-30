@@ -4033,6 +4033,21 @@ model PupilRecord {
   guardianPhone          String?
   /// UDISE+ Permanent Education Number.
   penNumber              String?
+  /// THE SHEET'S PLAIN ANSWERS, added 2026-09-30: a second number to ring;
+  /// whether the pupil was given a free uniform and free textbooks this
+  /// year and takes part in extracurricular activity; and, for the higher
+  /// secondary, the stream and the vocational course as the portal codes
+  /// them. Nothing here is an identifier or a welfare, health or income
+  /// fact; those the sheet still leaves for the office (decision 0002).
+  alternatePhone         String?
+  freeUniform            Boolean?
+  freeTextbook           Boolean?
+  extracurricular        Boolean?
+  stream                 String?
+  vocationalCourse       Boolean?
+  vocationalTradeId      String?
+  vocationalJobRoleId    String?
+  vocationalExamAppeared Boolean?
   /// FILINGS: what UDISE+ and the boards ask beyond the certificate fields.
   /// Gender as the portal codes it (M | F | T); the name and the parents'
   /// names in the school's own script for a state board that files in it;

@@ -78,7 +78,8 @@ and filled.
 | Disability certificate number and percentage; immunisation records | Not held | The record holds the UDISE+ impairment type and the health card holds what a teacher needs on the day. Nothing the app produces prints more. |
 | A pupil's photograph | Not held | No paper the app prints carries one, and a photograph of every child is the most sensitive thing a school could store here. |
 | Sibling links, transport route or stop, hostel or day scholar, house | Not held for now | No filing, certificate or receipt reads them. To be added when a feature needs one, with its own row above. |
-| AAY, scholarships received, free uniform and textbooks, stream and vocational fields, mainstreamed date, alternate mobile | Left blank on the sheet | The office enters them on the portal. |
+| Free uniform and textbooks, extracurricular activity, stream, vocational course with its trade and job role ids, alternate mobile | Held since 2026-09-30 | Plain answers about schooling, none an identifier or a welfare, health or income fact; on the record's form and the UDISE+ sheet. |
+| AAY beneficiary, scholarships received and the NSP code, scholarship amount, the CWSN facility, SLD/ASD/ADHD screening and the SLD type, mainstreamed date, the teacher's national code | Left blank on the sheet | Welfare, income and health facts about a child (and the teacher's portal identifier) are the office's to enter on the portal; each is a decision of its own if a school asks for it (2026-09-30). |
 | A pass or fail, a promotion result, a rank | Deliberately not computed | The report card states marks and a band. The UDISE+ sheet states a pass only for a pupil who moved up with last year's card; a repeater's result is left for the office. |
 
 Since the audit these were added and are no longer on its list: each parent's occupation and the family's

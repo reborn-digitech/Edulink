@@ -1,4 +1,4 @@
-import { CWSN_NONE, PUPIL_CATEGORIES, PUPIL_RELIGIONS, type MotherTongue, type Nationality, type PupilRecordField } from "@edulink/contracts";
+import { CWSN_NONE, PUPIL_CATEGORIES, PUPIL_RELIGIONS, PUPIL_STREAMS, type MotherTongue, type Nationality, type PupilRecordField } from "@edulink/contracts";
 import { CWSN_TYPE_NAMES } from "@/lib/filing-codes";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -15,7 +15,8 @@ type T = (key: TranslationKey, vars?: Record<string, string | number>) => string
 /** One stored value as words; a value typed before the lists shows as itself. */
 export function recordValueText(t: T, field: PupilRecordField, value: string | null): string {
   if (value === null || value === "") return t("recordChanges.blank");
-  if (field === "bpl" || field === "ews" || field === "rte" || field === "repeating") return value === "yes" ? t("pupilRecord.yes") : value === "no" ? t("pupilRecord.no") : value;
+  if (field === "bpl" || field === "ews" || field === "rte" || field === "repeating" || field === "freeUniform" || field === "freeTextbook" || field === "extracurricular" || field === "vocationalCourse" || field === "vocationalExamAppeared") return value === "yes" ? t("pupilRecord.yes") : value === "no" ? t("pupilRecord.no") : value;
+  if (field === "stream") return (PUPIL_STREAMS as readonly string[]).includes(value) ? t(`pupilRecord.stream${value}` as TranslationKey) : value;
   if (field === "gender") return value === "M" ? t("pupilRecord.genderM") : value === "F" ? t("pupilRecord.genderF") : value === "T" ? t("pupilRecord.genderT") : value;
   if (field === "cwsnType") return value === CWSN_NONE ? t("pupilRecord.cwsnNone") : CWSN_TYPE_NAMES[value] ? `${value} — ${CWSN_TYPE_NAMES[value]}` : value;
   if (field === "motherTongue") return value in LANGUAGE_KEY ? t(LANGUAGE_KEY[value as MotherTongue]) : value;

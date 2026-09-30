@@ -8,7 +8,7 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { createSession } from "@/lib/session";
+import { createSession, getSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { GET as recordGet, POST as recordPost } from "@/app/api/v1/office/pupil-records/[membershipId]/route";
 import { POST as familyChangePost } from "@/app/api/v1/family/record/changes/route";
@@ -307,6 +307,38 @@ describe("the staff record's two dates", () => {
 });
 
 describe("the grade level follows the class", () => {
+  it("the sheet's plain answers: the office saves a second number, the free uniform and textbooks, extracurricular activity, the stream and the vocational course, and the sheet prints them; the family may ask for them", async () => {
+    await as("ADMIN");
+    const save = (body: Record<string, string>) => recordPost(json(`/api/v1/office/pupil-records/${pupil}`, body), params({ membershipId: pupil }));
+    expect((await save({ alternatePhone: "12" })).status).toBe(403);
+    expect((await save({ stream: "9" })).status).toBe(422);
+    expect((await save({ vocationalTradeId: "not an id!" })).status).toBe(422);
+    const view = await (await save({ alternatePhone: "+91 98765 00000", freeUniform: "yes", freeTextbook: "no", extracurricular: "yes", stream: "2", vocationalCourse: "yes", vocationalTradeId: "SEC-12", vocationalJobRoleId: "JR-7", vocationalExamAppeared: "no" })).json();
+    expect(view.record).toMatchObject({ alternatePhone: "+919876500000", freeUniform: "yes", freeTextbook: "no", extracurricular: "yes", stream: "2", vocationalCourse: "yes", vocationalTradeId: "SEC-12", vocationalJobRoleId: "JR-7", vocationalExamAppeared: "no" });
+    const ctx = (await getSession())!;
+    const row = rowsOf((await udiseStudentsExport(ctx)).csv).find((r) => r["Name of Student"] === "ZZ GAPS RIYA RANE")!;
+    // A leading plus is quoted on the sheet so a spreadsheet does not read a formula, as the first number is.
+    expect(row["ALTERNATE MOBILE NUMBER (Optional)"]).toBe("'+919876500000");
+    expect(row["Free Uniform (Yes-1, No-2)"]).toBe("1");
+    expect(row["Free TextBook (Yes-1, No-2)"]).toBe("2");
+    expect(row["Extracurricular (Yes-1, No-2)"]).toBe("1");
+    expect(row["STUDENT STREAM (HS only)"]).toBe("2");
+    expect(row["Vocational course (Yes-1, No-2)"]).toBe("1");
+    expect(row["Trade/Sector ID"]).toBe("SEC-12");
+    expect(row["Job Role ID"]).toBe("JR-7");
+    expect(row["Appeared for vocational exam"]).toBe("2");
+    // What the sheet still leaves for the office: nothing of these reached it.
+    expect(row["Aadhaar No of Child"]).toBe("");
+    expect(row["Whether AAY beneficiary"]).toBe("");
+    expect(row["Central scholarship (Yes-1, No-2)"]).toBe("");
+    // A family may ask for these as for any field; a blank clears.
+    await as("PARENT");
+    expect((await familyChangePost(json(`/api/v1/family/record/changes?childId=${pupil}`, { changes: { freeUniform: "", extracurricular: "no" }, reason: "ZZ test" }))).status).toBe(200);
+    await db.recordChangeRequest.deleteMany({ where: { studentMembershipId: pupil } });
+    await as("ADMIN");
+    expect((await (await save({ alternatePhone: "", freeUniform: "", freeTextbook: "", extracurricular: "", stream: "", vocationalCourse: "", vocationalTradeId: "", vocationalJobRoleId: "", vocationalExamAppeared: "" })).json()).record).toMatchObject({ alternatePhone: null, freeUniform: null, stream: null, vocationalTradeId: null });
+  });
+
   it("is set when a pupil is enrolled, moves with a change of class, and clears when they leave the roll", async () => {
     const ctx = ctxOf();
     const grade = async () => (await db.membership.findUniqueOrThrow({ where: { id: pupil }, select: { gradeLevel: true } })).gradeLevel;

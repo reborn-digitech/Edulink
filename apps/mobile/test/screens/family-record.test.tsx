@@ -37,7 +37,7 @@ const RECORD = {
   motherOccupation: null,
   annualIncome: null,
   guardianPhone: null,
-  rte: null,
+  rte: null, alternatePhone: null, freeUniform: null, freeTextbook: null, extracurricular: null, stream: null, vocationalCourse: null, vocationalTradeId: null, vocationalJobRoleId: null, vocationalExamAppeared: null,
   repeating: "no",
   rollNumber: "12",
   requestedAt: "2026-09-01T05:00:00.000Z",

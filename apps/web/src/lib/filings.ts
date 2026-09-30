@@ -374,7 +374,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "PRESENT ADDRESS": [r?.addressLine, r?.city].filter(Boolean).join(", "),
       "PINCODE": r?.postalCode ?? "",
       "MOBILE NUMBER": par.phone.replace(/\D/g, "").slice(-10),
-      "ALTERNATE MOBILE NUMBER (Optional)": "",
+      "ALTERNATE MOBILE NUMBER (Optional)": r?.alternatePhone ?? "",
       "EMAIL ID (Optional)": par.email,
       "MOTHER TONGUE": languageName(r?.motherTongue),
       "SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4)": CATEGORY_CODE[upper(r?.category)] ?? "",
@@ -389,7 +389,7 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "When mainstreamed": "",
       "Admission Number": r?.admissionNumber ?? "",
       "ADMISSION DATE (DD-MM-YYYY)": ddmmyyyy(r?.admissionDate ?? p?.joinedAt),
-      "STUDENT STREAM (HS only)": "",
+      "STUDENT STREAM (HS only)": r?.stream ?? "",
       "PREVIOUS ACADEMIC YEAR SCHOOLING STATUS": sameSchool,
       // Grade 1's previous class is the portal's last pre-primary code, PP3, not "PP".
       // A pupil repeating the class studied THIS class last year; everybody else, the one below it.
@@ -403,8 +403,8 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "RESULT FOR PREVIOUS EXAM": p && sameSchool === "1" && facts.percent.has(p.id) && !repeating ? "1" : "",
       "MARKS % OF PREVIOUS EXAM": p ? (facts.percent.get(p.id) ?? "") : "",
       "CLASS ATTENDED DAYS (Previous Year)": p ? (facts.attended.get(p.id) ?? "") : "",
-      "Free Uniform (Yes-1, No-2)": "",
-      "Free TextBook (Yes-1, No-2)": "",
+      "Free Uniform (Yes-1, No-2)": yesNo(r?.freeUniform),
+      "Free TextBook (Yes-1, No-2)": yesNo(r?.freeTextbook),
       "Central scholarship (Yes-1, No-2)": "",
       "NSP scholarship code": "",
       "State scholarship (Yes-1, No-2)": "",
@@ -415,11 +415,11 @@ export async function udiseStudentsExport(ctx: ActiveContext): Promise<CsvExport
       "SLD type": "",
       "Screened for ASD (Yes-1, No-2)": "",
       "Screened for ADHD (Yes-1, No-2)": "",
-      "Extracurricular (Yes-1, No-2)": "",
-      "Vocational course (Yes-1, No-2)": "",
-      "Trade/Sector ID": "",
-      "Job Role ID": "",
-      "Appeared for vocational exam": "",
+      "Extracurricular (Yes-1, No-2)": yesNo(r?.extracurricular),
+      "Vocational course (Yes-1, No-2)": yesNo(r?.vocationalCourse),
+      "Trade/Sector ID": r?.vocationalTradeId ?? "",
+      "Job Role ID": r?.vocationalJobRoleId ?? "",
+      "Appeared for vocational exam": yesNo(r?.vocationalExamAppeared),
     };
   };
   const rows = pupils.map(rowOf);

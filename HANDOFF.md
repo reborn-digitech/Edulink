@@ -216,6 +216,12 @@ end-to-end in staging.
   bare, for a hand. A picture is fetched by a guarded address (`/api/v1/shared/signatures/{id}`,
   given only to a reader the paper lets in), not carried inside the paper's answer: a drawn signature
   is twenty kilobytes of data URL and broke the page's stream.
+- **What the record holds for the UDISE+ sheet, and what it does not** (decided by the owner,
+  2026-09-30: Aadhaar stays out, the other plain answers come in). The record gained the sheet's
+  alternate mobile, free uniform, free textbooks, extracurricular activity, stream and the vocational
+  course with its ids (migration `20260930030000`); still left blank for the office, each a decision
+  of its own: AAY, scholarships and the NSP code, the CWSN facility and the SLD/ASD/ADHD screenings,
+  the mainstreamed date, the teacher's national code. Decision 0002's table says which is which.
 - **A typeface is chosen per document, and the keyboard is switched per person** (decided by the
   owner, 2026-09-30). Nine faces are bundled under `apps/web/public/fonts` (`src/lib/fonts.ts`), OFL
   all; a certificate template, the report card rules and a post carry a `font` key, "default" being

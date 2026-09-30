@@ -1,6 +1,6 @@
 "use client";
 
-import { CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, RECORD_CHANGE_FIELDS } from "@edulink/contracts";
+import { CWSN_NONE, MOTHER_TONGUES, NATIONALITIES, PUPIL_STREAMS, RECORD_CHANGE_FIELDS } from "@edulink/contracts";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon, PaperPlaneTiltIcon, PencilSimpleLineIcon } from "@phosphor-icons/react";
@@ -66,8 +66,8 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     // The household, as the RTE and EWS verifications ask for it.
     { fields: ["fatherOccupation", "motherOccupation", "annualIncome"] },
   ];
-  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { rte: "pupilRecord.rteHint", repeating: "pupilRecord.repeatingHint", postalCode: "pupilRecord.pinHint", guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
-  const maxFor: Partial<Record<PupilRecordField, number>> = { guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
+  const hintFor: Partial<Record<PupilRecordField, TranslationKey>> = { alternatePhone: "pupilRecord.alternatePhoneHint", stream: "pupilRecord.streamHint", vocationalTradeId: "pupilRecord.vocationalIdHint", vocationalJobRoleId: "pupilRecord.vocationalIdHint", rte: "pupilRecord.rteHint", repeating: "pupilRecord.repeatingHint", postalCode: "pupilRecord.pinHint", guardianPhone: "pupilRecord.guardianPhoneHint", category: "pupilRecord.categoryHint", admissionNumber: "pupilRecord.admissionNumberHint", penNumber: "pupilRecord.penHint", nameLocal: "pupilRecord.nameLocalHint", cwsnType: "pupilRecord.cwsnHint", previousSchoolTcNumber: "pupilRecord.tcHint", annualIncome: "pupilRecord.annualIncomeHint", rollNumber: "pupilRecord.rollNumberHint" };
+  const maxFor: Partial<Record<PupilRecordField, number>> = { alternatePhone: 24, vocationalTradeId: 20, vocationalJobRoleId: 20, guardianPhone: 24, addressLine: 200, postalCode: 12, admissionNumber: 40, admittedToGrade: 20, previousSchool: 160, penNumber: 11, previousSchoolTcNumber: 40, fatherOccupation: 120, motherOccupation: 120, annualIncome: 9, rollNumber: 4 };
   /** The coded filing answers: the value the contract takes and the words the reader sees. */
   const choicesFor: Partial<Record<PupilRecordField, { value: string; text: string }[]>> = {
     gender: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "M", text: t("pupilRecord.genderM") }, { value: "F", text: t("pupilRecord.genderF") }, { value: "T", text: t("pupilRecord.genderT") }],
@@ -75,6 +75,12 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
     ews: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
     rte: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
     repeating: [{ value: "no", text: t("pupilRecord.no") }, { value: "yes", text: t("pupilRecord.yes") }],
+    freeUniform: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
+    freeTextbook: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
+    extracurricular: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
+    vocationalCourse: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
+    vocationalExamAppeared: [{ value: "", text: t("pupilRecord.notSaid") }, { value: "yes", text: t("pupilRecord.yes") }, { value: "no", text: t("pupilRecord.no") }],
+    stream: [{ value: "", text: t("pupilRecord.notSaid") }, ...PUPIL_STREAMS.map((code) => ({ value: code, text: t(`pupilRecord.stream${code}` as TranslationKey) }))],
     cwsnType: [{ value: "", text: t("pupilRecord.notSaid") }, { value: CWSN_NONE, text: t("pupilRecord.cwsnNone") }, ...CWSN_TYPES.map((code) => ({ value: code, text: `${code} — ${CWSN_TYPE_NAMES[code] ?? ""}` }))],
     bloodGroup: [{ value: "", text: t("pupilRecord.notSaid") }, ...RECORD_BLOOD_GROUPS.map((g) => ({ value: g, text: g }))],
     // Names from a list, so a sheet reads one spelling; a word typed before the list shows as itself until one is picked.
@@ -186,7 +192,7 @@ export function PupilRecordForm({ view, required, optional, filing = [], admin =
         required={isRequired(f)}
         value={values[f]}
         maxLength={maxFor[f] ?? 120}
-        inputMode={f === "annualIncome" || f === "rollNumber" || f === "postalCode" ? "numeric" : f === "guardianPhone" ? "tel" : undefined}
+        inputMode={f === "annualIncome" || f === "rollNumber" || f === "postalCode" ? "numeric" : f === "guardianPhone" || f === "alternatePhone" ? "tel" : undefined}
         autoComplete="off"
         readOnly={readOnly}
         disabled={readOnly}

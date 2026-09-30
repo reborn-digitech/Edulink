@@ -53,6 +53,7 @@ export type RecordRow = {
   addressLine: string | null; city: string | null; postalCode: string | null; admissionNumber: string | null; admissionDate: Date | null; admittedToGrade: string | null; previousSchool: string | null; penNumber: string | null;
   gender: string | null; nameLocal: string | null; fatherNameLocal: string | null; motherNameLocal: string | null; bpl: boolean | null; ews: boolean | null; cwsnType: string | null; bloodGroup: string | null;
   previousSchoolTcNumber: string | null; previousSchoolTcDate: Date | null; fatherOccupation: string | null; motherOccupation: string | null; annualIncome: number | null; guardianPhone: string | null; rte: boolean | null;
+  alternatePhone: string | null; freeUniform: boolean | null; freeTextbook: boolean | null; extracurricular: boolean | null; stream: string | null; vocationalCourse: boolean | null; vocationalTradeId: string | null; vocationalJobRoleId: string | null; vocationalExamAppeared: boolean | null;
   requestedAt: Date | null; familyFilledAt: Date | null; updatedAt: Date;
 };
 
@@ -66,6 +67,8 @@ export type RecordRow = {
 export const FILING_RECORD_FIELDS = ["gender", "category", "motherTongue", "bpl", "ews", "rte", "cwsnType", "admissionNumber", "admissionDate", "addressLine", "postalCode"] as const;
 
 const yesNo = (v: boolean | null | undefined) => (v === true ? "yes" : v === false ? "no" : null);
+/** A yes/no as the form sends it: "yes", "no", "" to clear, or nothing to leave as it stands. */
+const flag = (v: "yes" | "no" | "" | undefined) => (v === undefined ? undefined : v === "" ? null : v === "yes");
 
 /** The filing fields still blank on a record; every one of them when there is no record. A category the sheet cannot code counts as blank. */
 export function missingFilingFields(record: RecordRow | null): PupilRecordField[] {
@@ -79,7 +82,7 @@ export function missingFilingFields(record: RecordRow | null): PupilRecordField[
   }) as PupilRecordField[];
 }
 
-export const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, rte: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
+export const EMPTY_RECORD: RecordRow = { fatherName: null, motherName: null, placeOfBirth: null, nationality: null, religion: null, caste: null, category: null, motherTongue: null, addressLine: null, city: null, postalCode: null, admissionNumber: null, admissionDate: null, admittedToGrade: null, previousSchool: null, penNumber: null, gender: null, nameLocal: null, fatherNameLocal: null, motherNameLocal: null, bpl: null, ews: null, cwsnType: null, bloodGroup: null, previousSchoolTcNumber: null, previousSchoolTcDate: null, fatherOccupation: null, motherOccupation: null, annualIncome: null, guardianPhone: null, rte: null, alternatePhone: null, freeUniform: null, freeTextbook: null, extracurricular: null, stream: null, vocationalCourse: null, vocationalTradeId: null, vocationalJobRoleId: null, vocationalExamAppeared: null, requestedAt: null, familyFilledAt: null, updatedAt: new Date(0) };
 
 /** The certificate fields still blank on a record; every one of them when there is no record. */
 export function missingFields(record: RecordRow | null): PupilRecordField[] {
@@ -96,6 +99,7 @@ export function recordView(record: RecordRow | null, rollNumber: number | null =
     fatherOccupation: record.fatherOccupation, motherOccupation: record.motherOccupation, annualIncome: record.annualIncome === null ? null : String(record.annualIncome),
     guardianPhone: record.guardianPhone,
     rte: yesNo(record.rte),
+    alternatePhone: record.alternatePhone, freeUniform: yesNo(record.freeUniform), freeTextbook: yesNo(record.freeTextbook), extracurricular: yesNo(record.extracurricular), stream: record.stream, vocationalCourse: yesNo(record.vocationalCourse), vocationalTradeId: record.vocationalTradeId, vocationalJobRoleId: record.vocationalJobRoleId, vocationalExamAppeared: yesNo(record.vocationalExamAppeared),
     repeating: repeating === null ? null : repeating ? "yes" : "no",
     rollNumber: rollNumber === null ? null : String(rollNumber),
     fatherName: record.fatherName, motherName: record.motherName, placeOfBirth: record.placeOfBirth, nationality: record.nationality, religion: record.religion, caste: record.caste, category: record.category, motherTongue: record.motherTongue,
@@ -130,6 +134,11 @@ export async function codedValues(studentMembershipId: string, input: PupilRecor
     contact = input.guardianPhone.trim() === "" ? null : normalisePhone(input.guardianPhone);
     if (input.guardianPhone.trim() !== "" && !contact) throw new AccessError("pupilRecord.phoneNotANumber");
   }
+  let alternate: string | null | undefined = undefined;
+  if (input.alternatePhone !== undefined) {
+    alternate = input.alternatePhone.trim() === "" ? null : normalisePhone(input.alternatePhone);
+    if (input.alternatePhone.trim() !== "" && !alternate) throw new AccessError("pupilRecord.phoneNotANumber");
+  }
   /**
    * CODED AT THE DOOR. Mother tongue and nationality are names from a list
    * and the PIN is six digits, because a sheet reads them: typed freely they
@@ -152,7 +161,7 @@ export async function codedValues(studentMembershipId: string, input: PupilRecor
   const nationality = fromList(NATIONALITIES, input.nationality, stored?.nationality, "pupilRecord.chooseNationality");
   const pin = input.postalCode === undefined ? undefined : input.postalCode.replace(/\s+/g, "") || null;
   if (pin && !PIN_CODE.test(pin) && pin !== (stored?.postalCode ?? "").trim()) throw new AccessError("pupilRecord.pinSixDigits");
-  return { contact, motherTongue, nationality, pin };
+  return { contact, alternate, motherTongue, nationality, pin };
 }
 
 /**
@@ -187,7 +196,7 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
       pen = viewer.accountPen ?? null;
     }
   }
-  const { contact, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
+  const { contact, alternate, motherTongue, nationality, pin } = await codedValues(studentMembershipId, input);
   const data = {
     fatherName: text(input.fatherName), motherName: text(input.motherName), placeOfBirth: text(input.placeOfBirth), nationality, religion: text(input.religion), caste: text(input.caste), category: text(input.category), motherTongue,
     addressLine: text(input.addressLine), city: text(input.city), postalCode: pin, admissionNumber: text(input.admissionNumber),
@@ -203,6 +212,9 @@ export async function savePupilRecord(ctx: ActiveContext, studentMembershipId: s
     annualIncome: input.annualIncome === undefined ? undefined : input.annualIncome === "" ? null : Number(input.annualIncome),
     guardianPhone: contact,
     rte: input.rte === undefined ? undefined : input.rte === "" ? null : input.rte === "yes",
+    alternatePhone: alternate,
+    freeUniform: flag(input.freeUniform), freeTextbook: flag(input.freeTextbook), extracurricular: flag(input.extracurricular), vocationalCourse: flag(input.vocationalCourse), vocationalExamAppeared: flag(input.vocationalExamAppeared),
+    stream: text(input.stream), vocationalTradeId: text(input.vocationalTradeId), vocationalJobRoleId: text(input.vocationalJobRoleId),
     updatedByUserId: viewer.userId,
     ...(opts.fromFamily ? { familyFilledAt: new Date() } : {}),
   };

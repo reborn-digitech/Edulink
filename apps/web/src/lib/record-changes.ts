@@ -107,6 +107,7 @@ export async function fileRecordChange(ctx: ActiveContext, studentMembershipId: 
     else if (field === "nationality") to = coded.nationality ?? null;
     else if (field === "postalCode") to = coded.pin ?? null;
     else if (field === "guardianPhone") to = coded.contact ?? null;
+    else if (field === "alternatePhone") to = coded.alternate ?? null;
     else if (field === "annualIncome" && to !== null) to = String(Number(to));
     const from = present[field] ?? null;
     if (to !== from) changes.push({ field, from, to });

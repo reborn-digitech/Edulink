@@ -56343,7 +56343,16 @@
                                 "rollNumber",
                                 "guardianPhone",
                                 "rte",
-                                "repeating"
+                                "repeating",
+                                "alternatePhone",
+                                "freeUniform",
+                                "freeTextbook",
+                                "extracurricular",
+                                "stream",
+                                "vocationalCourse",
+                                "vocationalTradeId",
+                                "vocationalJobRoleId",
+                                "vocationalExamAppeared"
                               ]
                             }
                           },
@@ -56655,6 +56664,51 @@
                           "nullable": true,
                           "default": null
                         },
+                        "alternatePhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeUniform": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeTextbook": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "extracurricular": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "stream": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalCourse": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalTradeId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalJobRoleId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalExamAppeared": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -56746,7 +56800,16 @@
                           "rollNumber",
                           "guardianPhone",
                           "rte",
-                          "repeating"
+                          "repeating",
+                          "alternatePhone",
+                          "freeUniform",
+                          "freeTextbook",
+                          "extracurricular",
+                          "stream",
+                          "vocationalCourse",
+                          "vocationalTradeId",
+                          "vocationalJobRoleId",
+                          "vocationalExamAppeared"
                         ]
                       }
                     },
@@ -57286,6 +57349,51 @@
                           "nullable": true,
                           "default": null
                         },
+                        "alternatePhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeUniform": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeTextbook": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "extracurricular": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "stream": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalCourse": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalTradeId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalJobRoleId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalExamAppeared": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -57377,7 +57485,16 @@
                           "rollNumber",
                           "guardianPhone",
                           "rte",
-                          "repeating"
+                          "repeating",
+                          "alternatePhone",
+                          "freeUniform",
+                          "freeTextbook",
+                          "extracurricular",
+                          "stream",
+                          "vocationalCourse",
+                          "vocationalTradeId",
+                          "vocationalJobRoleId",
+                          "vocationalExamAppeared"
                         ]
                       }
                     },
@@ -57956,6 +58073,53 @@
                   "rollNumber": {
                     "type": "string",
                     "pattern": "^\\d{0,4}$"
+                  },
+                  "alternatePhone": {
+                    "type": "string",
+                    "maxLength": 24
+                  },
+                  "freeUniform": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "freeTextbook": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "extracurricular": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "stream": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "1",
+                          "2",
+                          "3",
+                          "4",
+                          "5"
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "vocationalCourse": {
+                    "$ref": "#/properties/bpl"
+                  },
+                  "vocationalTradeId": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Za-z-]{0,20}$"
+                  },
+                  "vocationalJobRoleId": {
+                    "type": "string",
+                    "pattern": "^[0-9A-Za-z-]{0,20}$"
+                  },
+                  "vocationalExamAppeared": {
+                    "$ref": "#/properties/bpl"
                   }
                 },
                 "additionalProperties": false
@@ -59789,6 +59953,51 @@
                           "nullable": true,
                           "default": null
                         },
+                        "alternatePhone": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeUniform": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "freeTextbook": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "extracurricular": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "stream": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalCourse": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalTradeId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalJobRoleId": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
+                        "vocationalExamAppeared": {
+                          "type": "string",
+                          "nullable": true,
+                          "default": null
+                        },
                         "requestedAt": {
                           "type": "string",
                           "format": "date-time",
@@ -59880,7 +60089,16 @@
                           "rollNumber",
                           "guardianPhone",
                           "rte",
-                          "repeating"
+                          "repeating",
+                          "alternatePhone",
+                          "freeUniform",
+                          "freeTextbook",
+                          "extracurricular",
+                          "stream",
+                          "vocationalCourse",
+                          "vocationalTradeId",
+                          "vocationalJobRoleId",
+                          "vocationalExamAppeared"
                         ]
                       }
                     },
@@ -61162,7 +61380,16 @@
                                     "rollNumber",
                                     "guardianPhone",
                                     "rte",
-                                    "repeating"
+                                    "repeating",
+                                    "alternatePhone",
+                                    "freeUniform",
+                                    "freeTextbook",
+                                    "extracurricular",
+                                    "stream",
+                                    "vocationalCourse",
+                                    "vocationalTradeId",
+                                    "vocationalJobRoleId",
+                                    "vocationalExamAppeared"
                                   ]
                                 },
                                 "from": {
@@ -61398,7 +61625,16 @@
                               "rollNumber",
                               "guardianPhone",
                               "rte",
-                              "repeating"
+                              "repeating",
+                              "alternatePhone",
+                              "freeUniform",
+                              "freeTextbook",
+                              "extracurricular",
+                              "stream",
+                              "vocationalCourse",
+                              "vocationalTradeId",
+                              "vocationalJobRoleId",
+                              "vocationalExamAppeared"
                             ]
                           },
                           "from": {
@@ -61746,6 +61982,53 @@
                       "guardianPhone": {
                         "type": "string",
                         "maxLength": 24
+                      },
+                      "alternatePhone": {
+                        "type": "string",
+                        "maxLength": 24
+                      },
+                      "freeUniform": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "freeTextbook": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "extracurricular": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "stream": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "1",
+                              "2",
+                              "3",
+                              "4",
+                              "5"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              ""
+                            ]
+                          }
+                        ]
+                      },
+                      "vocationalCourse": {
+                        "$ref": "#/properties/changes/properties/bpl"
+                      },
+                      "vocationalTradeId": {
+                        "type": "string",
+                        "pattern": "^[0-9A-Za-z-]{0,20}$"
+                      },
+                      "vocationalJobRoleId": {
+                        "type": "string",
+                        "pattern": "^[0-9A-Za-z-]{0,20}$"
+                      },
+                      "vocationalExamAppeared": {
+                        "$ref": "#/properties/changes/properties/bpl"
                       }
                     },
                     "additionalProperties": false
@@ -61859,7 +62142,16 @@
                               "rollNumber",
                               "guardianPhone",
                               "rte",
-                              "repeating"
+                              "repeating",
+                              "alternatePhone",
+                              "freeUniform",
+                              "freeTextbook",
+                              "extracurricular",
+                              "stream",
+                              "vocationalCourse",
+                              "vocationalTradeId",
+                              "vocationalJobRoleId",
+                              "vocationalExamAppeared"
                             ]
                           },
                           "from": {
@@ -62083,7 +62375,16 @@
                                     "rollNumber",
                                     "guardianPhone",
                                     "rte",
-                                    "repeating"
+                                    "repeating",
+                                    "alternatePhone",
+                                    "freeUniform",
+                                    "freeTextbook",
+                                    "extracurricular",
+                                    "stream",
+                                    "vocationalCourse",
+                                    "vocationalTradeId",
+                                    "vocationalJobRoleId",
+                                    "vocationalExamAppeared"
                                   ]
                                 },
                                 "from": {
@@ -62326,7 +62627,16 @@
                               "rollNumber",
                               "guardianPhone",
                               "rte",
-                              "repeating"
+                              "repeating",
+                              "alternatePhone",
+                              "freeUniform",
+                              "freeTextbook",
+                              "extracurricular",
+                              "stream",
+                              "vocationalCourse",
+                              "vocationalTradeId",
+                              "vocationalJobRoleId",
+                              "vocationalExamAppeared"
                             ]
                           },
                           "from": {

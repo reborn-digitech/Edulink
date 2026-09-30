@@ -105,7 +105,13 @@ export const pupilRecordFieldSchema = z.enum([
   "guardianPhone",
   // What the UDISE+ sheet used to guess: admitted under the RTE quota, and repeating the class (kept on the enrolment).
   "rte", "repeating",
+  // The sheet's plain answers (2026-09-30): a second number, free uniform and textbooks, extracurricular activity,
+  // and the higher secondary's stream and vocational course by the portal's codes.
+  "alternatePhone", "freeUniform", "freeTextbook", "extracurricular", "stream", "vocationalCourse", "vocationalTradeId", "vocationalJobRoleId", "vocationalExamAppeared",
 ]);
+/** The higher secondary's stream as UDISE+ codes it: 1 Arts, 2 Science, 3 Commerce, 4 Vocational, 5 Other. */
+export const PUPIL_STREAMS = ["1", "2", "3", "4", "5"] as const;
+export const pupilStreamSchema = z.enum(PUPIL_STREAMS);
 /**
  * The fields a family knows of itself: the ones the office's "ask the
  * families" is about. A FAMILY WRITES NONE OF THEM. Since 2026-09-29 the
@@ -203,6 +209,16 @@ export const pupilRecordSaveSchema = z.object({
   guardianPhone: z.string().trim().max(24).optional(),
   /** The roll number in the pupil's present class, digits only; the office's to set, ignored from a family. */
   rollNumber: z.string().trim().regex(/^\d{0,4}$/).optional(),
+  alternatePhone: z.string().trim().max(24).optional(),
+  freeUniform: yesNo.optional(),
+  freeTextbook: yesNo.optional(),
+  extracurricular: yesNo.optional(),
+  stream: z.union([pupilStreamSchema, z.literal("")]).optional(),
+  vocationalCourse: yesNo.optional(),
+  /** The portal's own ids for the trade or sector and the job role; digits and dashes. */
+  vocationalTradeId: z.string().trim().regex(/^[0-9A-Za-z-]{0,20}$/).optional(),
+  vocationalJobRoleId: z.string().trim().regex(/^[0-9A-Za-z-]{0,20}$/).optional(),
+  vocationalExamAppeared: yesNo.optional(),
 });
 export type PupilRecordSave = z.infer<typeof pupilRecordSaveSchema>;
 
@@ -246,6 +262,15 @@ export const pupilRecordSchema = z.object({
   repeating: z.string().nullable().default(null),
   /** The roll number on the pupil's present enrolment. */
   rollNumber: z.string().nullable().default(null),
+  alternatePhone: z.string().nullable().default(null),
+  freeUniform: z.string().nullable().default(null),
+  freeTextbook: z.string().nullable().default(null),
+  extracurricular: z.string().nullable().default(null),
+  stream: z.string().nullable().default(null),
+  vocationalCourse: z.string().nullable().default(null),
+  vocationalTradeId: z.string().nullable().default(null),
+  vocationalJobRoleId: z.string().nullable().default(null),
+  vocationalExamAppeared: z.string().nullable().default(null),
   requestedAt: iso.nullable(),
   familyFilledAt: iso.nullable(),
   updatedAt: iso.nullable(),
