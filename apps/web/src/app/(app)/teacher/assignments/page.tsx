@@ -156,13 +156,6 @@ export default async function AssignmentsPage({
           icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
           title={classFilter || state ? t("common.noResultsTitle") : t("teacher.noAssignmentsYet")}
           description={classFilter || state ? t("common.noResultsBody") : t("teacher.setWorkBlurb")}
-          action={
-            classFilter || state ? undefined : (
-              <Button asChild>
-                <Link href="/teacher/assignments/new">{t("teacher.setSomeWork")}</Link>
-              </Button>
-            )
-          }
         />
       ) : (
         <ul className="space-y-2">

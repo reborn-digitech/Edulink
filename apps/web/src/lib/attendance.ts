@@ -410,14 +410,24 @@ export async function currentStreakFor(schoolId: string, studentMembershipId: st
     select: { status: true, session: { select: { dateKey: true } } },
     orderBy: { session: { dateKey: "desc" } },
   });
-  return computeStreak(records.map((r) => ({ dateKey: r.session.dateKey, status: r.status as AttendanceStatus })));
+  return computeStreak(records.map((r) => ({ dateKey: r.session.dateKey, status: r.status as AttendanceStatus })), todayKey);
 }
 
-/** Consecutive school days present, ending today. Powers the student streak. */
+/** How long a run stays "current" after its last mark: a week covers a weekend and a short holiday, not a term. */
+const STREAK_STALE_AFTER_DAYS = 7;
+
+/**
+ * Consecutive school days present, ending today. Powers the student streak.
+ * With `todayKey` given, a run whose last mark is more than a week old is
+ * over — the parent's overview once said "No records yet" for the month
+ * beside "56 school days in a row" from a term that had ended.
+ */
 export function computeStreak(
   recent: { dateKey: string; status: AttendanceStatus }[],
+  todayKey?: string,
 ): number {
   const sorted = [...recent].sort((a, b) => b.dateKey.localeCompare(a.dateKey));
+  if (todayKey && sorted[0] && (Date.parse(todayKey) - Date.parse(sorted[0].dateKey)) / 86_400_000 > STREAK_STALE_AFTER_DAYS) return 0;
   let streak = 0;
   for (const day of sorted) {
     if (day.status === "PRESENT" || day.status === "LATE") streak++;

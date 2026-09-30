@@ -173,7 +173,7 @@ export function Gradebook({
 
   return (
     <div className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("teacher.students")} value={stats.total} />
         <StatTile
           label={t("teacher.handedIn")}

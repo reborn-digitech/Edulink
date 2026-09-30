@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import {
   BellIcon,
   ReceiptIcon,
@@ -30,7 +30,14 @@ export type NotificationItem = {
   url: string | null;
   read: boolean;
   when: string;
+  /** The same notice, sent again and again: shown once with its count, the newest on top. */
+  count?: number;
+  /** Every row folded into this one, the newest first; opening it reads them all. */
+  ids?: string[];
 };
+
+/** Rows shown before "Show more": a parent once had 16,000 px of notices on a phone. */
+const PAGE = 30;
 
 const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; weight?: "duotone" }>> = {
   EXPERT: BriefcaseIcon,
@@ -52,21 +59,23 @@ export function NotificationList({ items }: { items: NotificationItem[] }) {
   const t = useT();
   const router = useRouter();
   const [, startTransition] = useTransition();
+  const [shown, setShown] = useState(PAGE);
 
   function open(item: NotificationItem) {
     // Reading is a side effect of opening, not a separate chore. Fires
     // optimistically — a failed read receipt must never block navigation.
     if (!item.read) {
       startTransition(async () => {
-        await markNotificationRead(item.id);
+        for (const id of item.ids ?? [item.id]) await markNotificationRead(id);
       });
     }
     if (item.url) router.push(item.url);
   }
 
   return (
+    <>
     <ul className="divide-y divide-border">
-      {items.map((item) => {
+      {items.slice(0, shown).map((item) => {
         const Icon = ICONS[item.kind] ?? BellIcon;
         const Row = item.url ? "button" : "div";
 
@@ -100,6 +109,11 @@ export function NotificationList({ items }: { items: NotificationItem[] }) {
                   >
                     {item.title}
                   </span>
+                  {(item.count ?? 1) > 1 && (
+                    <span className="shrink-0 rounded-full bg-surface-muted px-1.5 text-xs font-semibold text-fg-muted" title={t("notif.repeated", { count: item.count! })}>
+                      ×{item.count}
+                    </span>
+                  )}
                   {!item.read && (
                     <span
                       className="size-2 shrink-0 rounded-full bg-accent"
@@ -119,6 +133,14 @@ export function NotificationList({ items }: { items: NotificationItem[] }) {
         );
       })}
     </ul>
+    {items.length > shown && (
+      <div className="border-t border-border p-3 text-center">
+        <button type="button" onClick={() => setShown((n) => n + PAGE)} className="tap rounded-[--radius-md] px-4 text-sm font-medium text-accent-strong hover:bg-surface-muted">
+          {t("common.showMore", { count: items.length - shown })}
+        </button>
+      </div>
+    )}
+    </>
   );
 }
 

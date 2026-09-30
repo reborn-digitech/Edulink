@@ -13,11 +13,17 @@ export function LeaveBalanceCard({ balance, t }: { balance: LeaveBalance; t: Tra
         description={balance.yearName ? t("staff.balanceYear", { year: balance.yearName }) : undefined}
       />
       <CardBody>
-        <p className="text-lg font-semibold text-fg">
-          {balance.entitlement === null
-            ? t("staff.noEntitlement", { used: balance.used })
-            : t("staff.balance", { used: balance.used, entitlement: balance.entitlement, remaining: balance.remaining ?? 0 })}
-        </p>
+        {/* Two facts, two lines: the days approved, and that no entitlement is set. */}
+        {balance.entitlement === null ? (
+          <>
+            <p className="text-lg font-semibold text-fg">{t("staff.daysApprovedThisYear", { used: balance.used })}</p>
+            <p className="mt-1 text-sm text-fg-muted">{t("staff.noEntitlementLine")}</p>
+          </>
+        ) : (
+          <p className="text-lg font-semibold text-fg">
+            {t("staff.balance", { used: balance.used, entitlement: balance.entitlement, remaining: balance.remaining ?? 0 })}
+          </p>
+        )}
         {balance.pending > 0 && <p className="mt-1 text-sm text-fg-muted">{t("staff.balancePending", { pending: balance.pending })}</p>}
       </CardBody>
     </Card>

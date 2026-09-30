@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DateField } from "@/components/ui/field";
 import { ExamIcon, PlusIcon, WarningIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -279,15 +280,7 @@ export default async function AdminExamsPage({
                     className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
                   />
                 </label>
-                <label className="block text-sm">
-                  <span className="mb-1 block font-medium text-fg">{t("exams.colDay")}</span>
-                  <input
-                    type="date"
-                    name="dateKey"
-                    required
-                    className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-                  />
-                </label>
+                <DateField label={t("exams.colDay")} name="dateKey" required />
                 <label className="block text-sm">
                   <span className="mb-1 block font-medium text-fg">{t("exams.fieldStart")}</span>
                   <input

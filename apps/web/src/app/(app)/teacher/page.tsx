@@ -241,7 +241,7 @@ export default async function TeacherHome() {
 
         {coversCard}
 
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <StatTile
             label={t("teacher.lessonsToday")}
             value={lessons.length}
@@ -318,7 +318,7 @@ export default async function TeacherHome() {
 
       {lessonsCard}
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("teacher.registersLeft")}
           value={outstanding.length}

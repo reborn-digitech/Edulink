@@ -139,7 +139,8 @@ export default async function AdminDashboard({
             <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-accent-fg">
               <GraduationCapIcon weight="fill" className="size-6" />
             </span>
-            <div className="min-w-0 flex-1">
+            {/* The text asks for 14 rem before it shares a line with the button: at phone width the button goes underneath instead of squeezing twelve lines beside it. */}
+            <div className="min-w-0 flex-1 basis-56">
               <p className="font-semibold text-fg">{t("admin.startYear")}</p>
               <p className="mt-0.5 text-sm text-fg-muted">{t("admin.startYearBody")}</p>
             </div>
@@ -152,7 +153,7 @@ export default async function AdminDashboard({
         <Card>
           <CardBody className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
             <CalendarBlankIcon weight="duotone" className="size-6 shrink-0 text-fg-muted" />
-            <div className="min-w-0 flex-1">
+            <div className="min-w-0 flex-1 basis-56">
               <p className="text-sm font-semibold text-fg">
                 {academicYear.name}
                 <span className="ml-2 font-normal text-fg-muted">
@@ -400,10 +401,11 @@ export default async function AdminDashboard({
                 {t("admin.jobStoryMissing")}
               </p>
             )}
-            <dl className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-[auto_1fr]">
+            {/* The counts are the news; the job's code ("digest:weekly") is the operator's word and stays off the office's page. */}
+            <dl className="grid gap-y-1.5 text-sm">
               {jobStory.entries.map((entry) => (
                 <div key={entry.job} className="contents">
-                  <dt className="font-mono text-xs leading-6 text-fg-muted">{entry.job}</dt>
+                  <dt className="sr-only">{entry.job}</dt>
                   <dd className="flex flex-wrap items-center gap-x-3 gap-y-1 text-fg">
                     {Object.entries(entry.counts).map(([key, value]) => (
                       <span key={key} className={JOB_ATTENTION_KEYS.has(key) ? "inline-flex items-center gap-1 font-semibold text-danger" : "inline-flex items-center gap-1"}>

@@ -31,6 +31,7 @@ import {
   BriefcaseIcon,
   ArchiveIcon,
   type Icon,
+  TranslateIcon,
 } from "@phosphor-icons/react";
 
 /**
@@ -59,6 +60,7 @@ const ICONS: Record<string, Icon> = {
   plus: PlusIcon,
   receipt: ReceiptIcon,
   palette: PaletteIcon,
+  translate: TranslateIcon,
   bell: BellIcon,
   calendar: CalendarBlankIcon,
   clock: ClockIcon,

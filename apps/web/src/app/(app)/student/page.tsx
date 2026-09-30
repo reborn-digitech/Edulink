@@ -125,7 +125,7 @@ export default async function StudentHome() {
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("student.today")}
           value={
@@ -246,6 +246,8 @@ export default async function StudentHome() {
             <ul className="space-y-2">
               {upcoming.map((assignment) => {
                 const dueSoon = assignment.dueAt && isWithin(assignment.dueAt, 2 * 86_400_000);
+                // isWithin(d, 0): the date is already behind the clock.
+                const pastDue = Boolean(assignment.dueAt && isWithin(assignment.dueAt, 0));
                 return (
                   <li key={assignment.id}>
                     <Link
@@ -258,9 +260,9 @@ export default async function StudentHome() {
                         </span>
                         <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                       </span>
-                      {/* Gentle, never alarming — "soon", not "OVERDUE" in red. */}
-                      <Badge tone={dueSoon ? "warn" : "neutral"} size="sm">
-                        {assignment.dueAt ? relativeTime(assignment.dueAt) : t("student.noDate")}
+                      {/* Gentle, never alarming — "soon", not "OVERDUE" in red; but a date that has passed says so, not "2 months ago" under "What is due". */}
+                      <Badge tone={dueSoon || pastDue ? "warn" : "neutral"} size="sm">
+                        {assignment.dueAt ? (pastDue ? `${t("student.pastDue")} · ${relativeTime(assignment.dueAt)}` : relativeTime(assignment.dueAt)) : t("student.noDate")}
                       </Badge>
                     </Link>
                   </li>

@@ -2,11 +2,15 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { NAV } from "../src/lib/nav";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
+import { overflow, smallTargets } from "./checks";
 
 /**
  * The accessibility gate: every navigation entry, as every role, at phone
  * width, in both themes. Zero serious or critical violations. Moderate and
  * minor ones are printed, not failed — the number should fall, not be hidden.
+ * In the light theme the page is also measured as the phone app's are: no
+ * sideways scroll, and no control under 44 px — the walk of 2026-10-01 found
+ * 40 px reactions and 30 px chips on pages this suite had passed.
  */
 const all = sessions();
 // The content team and the operator are signed in for their own specs and have no menu in NAV: their pages are
@@ -43,6 +47,10 @@ for (const role of roles) {
           expect(
             serious.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`),
           ).toEqual([]);
+          if (theme === "light") {
+            expect(await overflow(page), `${href} scrolls sideways`).toBeLessThanOrEqual(0);
+            expect(await smallTargets(page), `${href}: interactive elements under 44px`).toEqual([]);
+          }
           await context.close();
         });
       }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DateField } from "@/components/ui/field";
 import Link from "next/link";
 import { BrainIcon, FlagIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
@@ -259,14 +260,7 @@ export default async function TeacherPracticePage({
                 className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
               />
             </label>
-            <label className="block text-sm">
-              <span className="mb-1 block font-medium text-fg">{t("practice.fieldDue")}</span>
-              <input
-                type="date"
-                name="dueAt"
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-              />
-            </label>
+            <DateField label={t("practice.fieldDue")} name="dueAt" />
             <div className="sm:col-span-2">
               <Button type="submit">{t("practice.setSubmit")}</Button>
             </div>

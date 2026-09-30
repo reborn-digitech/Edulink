@@ -30,7 +30,7 @@ export function ChildSwitcher({
   const t = useT();
   return (
     <nav aria-label={t("parent.chooseChild")}>
-      <ul className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <ul className="flex flex-wrap gap-2 pb-1">
         {pupils.map((child) => {
           const active = child.studentMembershipId === selectedId;
           return (

@@ -27278,6 +27278,10 @@
                           },
                           "pendingAdminInvites": {
                             "$ref": "#/properties/counts/properties/live"
+                          },
+                          "isTestFixture": {
+                            "type": "boolean",
+                            "default": false
                           }
                         },
                         "required": [
@@ -27437,6 +27441,7 @@
                       "removed",
                       "noadmin",
                       "unverified",
+                      "test",
                       "all"
                     ],
                     "default": "live"

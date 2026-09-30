@@ -78,9 +78,12 @@ export default async function RecordPage() {
       {children.length > 0 && (
         <section className="space-y-3">
           <div>
-            <h2 className="text-lg font-bold tracking-tight text-fg">
-              {record ? t("shell.yourChildren") : t("record.childrenRecords")}
-            </h2>
+            {/* The page's own heading when there is no record of one's own above it. */}
+            {record ? (
+              <h2 className="text-lg font-bold tracking-tight text-fg">{t("shell.yourChildren")}</h2>
+            ) : (
+              <h1 className="text-lg font-bold tracking-tight text-fg">{t("record.childrenRecords")}</h1>
+            )}
             <p className="mt-1 text-sm text-fg-muted">{t("record.childrenIntro")}</p>
           </div>
           <ul className="space-y-3">

@@ -101,7 +101,11 @@ The verification chain a change is expected to pass, in order:
 Fixtures: `npm run zz:fixtures` builds ZZ Northgate and ZZ Southbank (every ZZ-prefixed thing is
 disposable); `npm run demo:schools` builds Sunrise and Saraswati (roster in
 [docs/demo-schools.md](docs/demo-schools.md)). Never run `db:seed` or `db:reset` against a database
-with data you care about; the fixture scripts refuse any database that is not local.
+with data you care about; the fixture scripts refuse any database that is not local. Every ZZ school
+and person carries `isTestFixture` (set by zz:fixtures and the migration of 2026-10-01), which keeps
+them out of the directories real schools read (`src/lib/fixtures.ts`) and off the operator's default
+list; the API sweep deletes whatever a fixture school gained during its run, and the page sweep the
+notices it caused its actors, so a run leaves the fixtures as it found them.
 
 ## 4. Current state
 

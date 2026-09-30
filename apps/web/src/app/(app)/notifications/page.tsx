@@ -7,7 +7,7 @@ import { relativeTime } from "@/lib/dates";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { NotificationList } from "./list";
+import { NotificationList, type NotificationItem } from "./list";
 import { BulkActions } from "./bulk-actions";
 import { NOTIFICATION_KINDS, NOTIFICATION_KIND_KEY, type NotificationKind } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
@@ -137,7 +137,7 @@ export default async function NotificationsPage({
       ) : (
         <Card className="overflow-hidden">
           <NotificationList
-            items={rows.map((row) => ({
+            items={fold(rows.map((row) => ({
               id: row.id,
               kind: row.kind as NotificationKind,
               // Said again in the reader's language of today when the key
@@ -147,12 +147,37 @@ export default async function NotificationsPage({
               url: row.url,
               read: row.readAt !== null,
               when: relativeTime(row.createdAt),
-            }))}
+            })))}
           />
         </Card>
       )}
     </div>
   );
+}
+
+/**
+ * The same notice sent many times is one row with a count: a suggested
+ * mentor was once 77 rows, a restored access 100. Rows fold when their
+ * title, body and link are the same; the newest carries the rest, is unread
+ * if any of them is, and opening it reads them all.
+ */
+function fold(items: NotificationItem[]): NotificationItem[] {
+  const out: NotificationItem[] = [];
+  const at = new Map<string, number>();
+  for (const item of items) {
+    const key = `${item.kind}\u0000${item.title}\u0000${item.body}\u0000${item.url ?? ""}`;
+    const i = at.get(key);
+    if (i === undefined) {
+      at.set(key, out.length);
+      out.push({ ...item, count: 1, ids: [item.id] });
+    } else {
+      const first = out[i]!;
+      first.count = (first.count ?? 1) + 1;
+      first.ids!.push(item.id);
+      first.read = first.read && item.read;
+    }
+  }
+  return out;
 }
 
 /**

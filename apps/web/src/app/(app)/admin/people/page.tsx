@@ -270,11 +270,16 @@ export default async function DirectoryPage({
 
                       <div className="min-w-0 flex-1">
                         <PersonLink membershipId={member.id} name={displayName} className="block truncate font-semibold text-fg" />
-                        {/* Student emails are school-issued but still PII; only
-                            admins see this page, and it is never public. */}
-                        <p className="truncate text-xs text-fg-muted">
-                          {member.title ?? member.user.email ?? t("people.noEmail")}
-                        </p>
+                        {/* A row is for finding somebody: the name, the class, the role. A
+                            pupil's email, legal name and date of birth are on their page
+                            (the walk of 2026-10-01: 28 five-line cards, a child's birth
+                            date on a list). Staff keep their title or address, which is
+                            how the office tells two teachers apart. */}
+                        {role !== "STUDENT" && (
+                          <p className="truncate text-xs text-fg-muted">
+                            {member.title ?? member.user.email ?? t("people.noEmail")}
+                          </p>
+                        )}
                         {classNames.length > 0 && (
                           <p className="mt-0.5 truncate text-xs text-fg-subtle">
                             {classNames.join(" · ")}
@@ -313,18 +318,15 @@ export default async function DirectoryPage({
                             {t("people.leavingOn", { date: formatDateKey(member.scheduledDeparture.leaveOnKey, { dateStyle: "medium" }) })}
                           </p>
                         )}
-                        {/* The name papers print, where it is not the one the row is called by. */}
-                        {member.user.name !== displayName && (
+                        {/* The name papers print, where it is not the one the row is called by: staff only; a pupil's is on their page. */}
+                        {role !== "STUDENT" && member.user.name !== displayName && (
                           <p className="mt-0.5 text-xs text-fg-subtle" data-testid="legal-name">
                             {t("people.legalNameLine", { name: member.user.name })}
                           </p>
                         )}
-                        {role === "STUDENT" && !member.leftAt && (
-                          <p className="mt-0.5 text-xs text-fg-subtle">
-                            {member.user.birthdate
-                              ? t("people.born", { date: formatDate(member.user.birthdate) })
-                              : t("people.noBirthdate")}
-                          </p>
+                        {/* A pupil with no date of birth on file is still flagged, because the filings need it; the date itself is not. */}
+                        {role === "STUDENT" && !member.leftAt && !member.user.birthdate && (
+                          <p className="mt-0.5 text-xs text-fg-subtle">{t("people.noBirthdate")}</p>
                         )}
                         {role === "STUDENT" &&
                           !member.leftAt &&

@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { incidentsListSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, Row, Screen, ShowMore, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -83,7 +83,8 @@ export function StaffIncidents() {
           />
         ) : (
           <Card title={t("incidents.openCount", { count: d.openCount })}>
-            {d.rows.map((r) => (
+            <ShowMore items={d.rows}>
+              {(shown) => shown.map((r) => (
               <Row
                 key={r.id}
                 title={r.title}
@@ -98,7 +99,8 @@ export function StaffIncidents() {
                 }
                 onPress={() => router.push({ pathname: "/(app)/incident", params: { incidentId: r.id } } as never)}
               />
-            ))}
+              ))}
+            </ShowMore>
             {pages > 1 ? (
               <View accessibilityLabel={t("people.pagination")} style={{ flexDirection: "row", alignItems: "center", gap: th.space[2] }}>
                 <Button label={t("people.previous")} variant="secondary" disabled={d.page <= 1} onPress={() => setPage(d.page - 1)} />

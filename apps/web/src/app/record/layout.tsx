@@ -28,11 +28,12 @@ export default async function RecordLayout({ children }: { children: React.React
   return (
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
-        <div className="mx-auto flex h-16 max-w-2xl items-center justify-between gap-3 px-4">
+        {/* Wraps under the wordmark at phone width: three buttons on one 16 px-gutter line once pushed Sign out off the screen. */}
+        <div className="mx-auto flex min-h-16 max-w-2xl flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-2">
           <Link href="/record" aria-label={t("record.yourRecord")}>
             <Wordmark size={26} />
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {/*
               A door back into a school, for the ordinary case where somebody
               with a live membership arrived here from their account page.

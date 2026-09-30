@@ -149,6 +149,11 @@ model School {
   /// their accounts, their certificates and their portable records, exactly as
   /// alumni do.
   removedAt DateTime?
+  /// A school the tests and the sweeps make and destroy (the ZZ schools). It
+  /// is a flag and not a name prefix so that the directories and the
+  /// operator's default list can leave it out without reading names: a real
+  /// school's Experts page once listed seven fixture experts (2026-10-01).
+  isTestFixture Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -314,6 +319,9 @@ model User {
   /// Competition) are the shared catalogue and carry no school policy; the
   /// authorisation is this flag, checked at the application boundary.
   isAppAdmin Boolean @default(false)
+  /// A person the tests make (the ZZ people, the sweeps' experts): left out of
+  /// every cross-school directory unless the reader is a fixture too.
+  isTestFixture Boolean @default(false)
 
   disabledAt DateTime?
 

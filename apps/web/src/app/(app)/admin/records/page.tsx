@@ -181,7 +181,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
         </Card>
       )}
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile label={t("pupilRecord.allPupils")} value={String(view.total)} icon={<UsersThreeIcon weight="duotone" className="size-5" />} />
         <StatTile label={t("pupilRecord.complete")} value={String(view.complete)} tone={view.complete > 0 ? "ok" : "neutral"} icon={<FolderUserIcon weight="duotone" className="size-5" />} />
         <StatTile label={t("pupilRecord.onlyMissing")} value={String(view.incomplete)} tone={view.incomplete > 0 ? "warn" : "neutral"} icon={<FolderUserIcon weight="duotone" className="size-5" />} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CopyIcon, PrinterIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
@@ -21,8 +21,14 @@ export function ClassCode({ joinCode, className }: { joinCode: string; className
   const { toast } = useToast();
   const [showQr, setShowQr] = useState(false);
 
-  const joinUrl =
-    typeof window !== "undefined" ? `${window.location.origin}/join/student` : "/join/student";
+  // The server renders the path and the browser fills in its origin after
+  // the first paint: reading window during render gave React two different
+  // strings and a hydration error on every open of this page.
+  const [joinUrl, setJoinUrl] = useState("/join/student");
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setJoinUrl(`${window.location.origin}/join/student`);
+  }, []);
 
   return (
     <div className="rounded-[--radius-lg] border border-border bg-surface p-4">

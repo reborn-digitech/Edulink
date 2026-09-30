@@ -1,5 +1,6 @@
 "use client";
 
+import { DateField } from "@/components/ui/field";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -111,15 +112,7 @@ export function OpenRoundForm({
             ))}
           </select>
         </label>
-        <label className="block">
-          <span className="block text-xs font-medium text-fg">{t("reviews.closesOn")}</span>
-          <input
-            type="date"
-            value={closes}
-            onChange={(event) => setCloses(event.target.value)}
-            className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
-          />
-        </label>
+        <DateField label={t("reviews.closesOn")} value={closes} onChange={(event) => setCloses(event.target.value)} />
       </div>
 
       {error && (

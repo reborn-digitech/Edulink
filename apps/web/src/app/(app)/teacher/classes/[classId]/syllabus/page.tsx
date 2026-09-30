@@ -86,7 +86,7 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
           </nav>
 
           {/* ---- where the class is ---- */}
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
             <StatTile
               label={t("syllabus.status")}
               value={view.percent === null ? "—" : `${view.percent}%`}

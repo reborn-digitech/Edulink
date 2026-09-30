@@ -42,6 +42,8 @@ export default async function MyStaffAttendancePage({ searchParams }: { searchPa
   const time = (iso: string | null) => (iso ? formatInZone(new Date(iso), school.timezone, { timeStyle: "short" }, locale) : null);
   const todayTime = time(todayRow?.checkedInAt ?? null);
   const workingDaysLine = t("staffAttendance.workingDays", { count: view.summary.workingDays });
+  const marked = view.days.filter((day) => day.status || day.note);
+  const unmarked = view.days.filter((day) => !day.status && !day.note && !day.closed).length;
   const percentHint = [monthLabel, workingDaysLine].join(" · ");
   const settingsLine = [
     `${t("staffAttendance.dayStart")} ${minuteToClock(view.checkInMinute)}`,
@@ -104,7 +106,7 @@ export default async function MyStaffAttendancePage({ searchParams }: { searchPa
         )}
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("staffAttendance.columnPercent")}
           value={view.summary.percent === null ? "—" : `${view.summary.percent}%`}
@@ -122,11 +124,13 @@ export default async function MyStaffAttendancePage({ searchParams }: { searchPa
       <Card>
         <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={monthLabel} description={workingDaysLine} />
         <CardBody>
-          {view.days.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-6" title={t("staffAttendance.nothingThisMonth")} />
+          {/* Only the days with a mark or a note: a month of "Not marked" rows was 23 lines of nothing. The unmarked days are one count. */}
+          {marked.length === 0 ? (
+            <EmptyState className="border-0 bg-transparent py-6" title={t("staffAttendance.nothingThisMonth")} description={unmarked > 0 ? t("staffAttendance.unmarkedDays", { count: unmarked }) : undefined} />
           ) : (
             <ul className="divide-y divide-border">
-              {view.days.map((day) => {
+              {unmarked > 0 && <li className="py-2 text-xs text-fg-subtle">{t("staffAttendance.unmarkedDays", { count: unmarked })}</li>}
+              {marked.map((day) => {
                 const at = time(day.checkedInAt);
                 return (
                   <li key={day.dateKey} className={`flex items-center justify-between gap-3 py-3 ${day.closed ? "text-fg-subtle" : ""}`}>

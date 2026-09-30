@@ -102,7 +102,7 @@ export default async function ParentAttendancePage({
         )}
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile
           label={t("parent.overall")}
           value={summary.percent === null ? "—" : `${summary.percent}%`}

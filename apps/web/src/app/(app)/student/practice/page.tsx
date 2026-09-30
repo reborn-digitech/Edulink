@@ -236,7 +236,7 @@ export default async function PracticePage({
             <nav aria-label={t("practice.allClasses")} className="flex flex-wrap gap-2">
               <Link
                 href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=all`}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                   !gradeNum ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
               >
@@ -246,7 +246,7 @@ export default async function PracticePage({
                 <Link
                   key={g}
                   href={`/student/practice?${subject ? `subject=${subject}&` : ""}grade=${g}`}
-                  className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                  className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                     gradeNum === g ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
                 >
@@ -260,7 +260,7 @@ export default async function PracticePage({
             <nav aria-label={t("student.subjects")} className="flex flex-wrap gap-2">
               <Link
                 href={`/student/practice?grade=${gradeNum ?? "all"}`}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                   !subject ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                 }`}
               >
@@ -270,7 +270,7 @@ export default async function PracticePage({
                 <Link
                   key={s}
                   href={`/student/practice?subject=${s}&grade=${gradeNum ?? "all"}`}
-                  className={`rounded-full px-3 py-1.5 text-sm font-medium ${
+                  className={`inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium ${
                     subject === s ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
                   }`}
                 >
@@ -302,8 +302,9 @@ export default async function PracticePage({
                       )}
                     </div>
 
+                    {/* The chapter's description is read on the chapter, not on the list: 34 of them made the page 5,000 px on a phone. Two lines of it on a desk. */}
                     {topic.summary && (
-                      <p className="mt-1.5 text-sm text-fg-muted">{topic.summary}</p>
+                      <p className="mt-1.5 hidden text-sm text-fg-muted sm:line-clamp-2 sm:block">{topic.summary}</p>
                     )}
 
                     <div className="mt-3 flex flex-wrap items-center gap-2">

@@ -53,6 +53,7 @@ export type SchoolSummary = {
   createdAt: Date;
   /** Set when the operator took this school off the installation. */
   removedAt: Date | null;
+  isTestFixture: boolean;
   /** Pending admin invitations, so an operator can see a school with no admin yet. */
   pendingAdminInvites: number;
 };
@@ -73,8 +74,8 @@ export function assertSuperuser(session: ActiveContext): void {
  */
 export type SchoolListOpts = {
   q?: string;
-  /** live (default): not removed; removed; noadmin: live with no admin yet; unverified: live and not yet checked by the operator; all. */
-  state?: "live" | "removed" | "noadmin" | "unverified" | "all";
+  /** live (default): not removed; removed; noadmin: live with no admin yet; unverified: live and not yet checked by the operator; test: the fixtures the tests make; all. Every state but test and all leaves the fixtures out. */
+  state?: "live" | "removed" | "noadmin" | "unverified" | "test" | "all";
   country?: string;
   sort?: "newest" | "oldest" | "name";
 };
@@ -88,6 +89,7 @@ export async function listSchools(session: ActiveContext, opts: SchoolListOpts =
     where: {
       ...(state === "removed" ? { removedAt: { not: null } } : state === "all" ? {} : { removedAt: null }),
       ...(state === "unverified" ? { verifiedAt: null } : {}),
+      ...(state === "test" ? { isTestFixture: true } : state === "all" ? {} : { isTestFixture: false }),
       ...(opts.country ? { country: opts.country } : {}),
       ...(q
         ? { OR: [{ name: { contains: q, mode: "insensitive" } }, { city: { contains: q, mode: "insensitive" } }, { code: { contains: q, mode: "insensitive" } }] }
@@ -108,6 +110,7 @@ export async function listSchools(session: ActiveContext, opts: SchoolListOpts =
       verifiedAt: true,
       createdAt: true,
       removedAt: true,
+      isTestFixture: true,
     },
   });
 

@@ -89,7 +89,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
             </Card>
           )}
 
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <StatTile label={t("fees.parentOutstanding")} value={money(child.totals.outstandingPaise)} tone={child.totals.outstandingPaise > 0 ? "warn" : "ok"} icon={<WalletIcon weight="duotone" className="size-5" />} />
             <StatTile label={t("fees.parentOverdue")} value={money(child.totals.overduePaise)} tone={child.totals.overduePaise > 0 ? "danger" : "neutral"} />
             <StatTile label={t("fees.parentPaidSoFar")} value={money(child.totals.paidPaise)} tone="neutral" />

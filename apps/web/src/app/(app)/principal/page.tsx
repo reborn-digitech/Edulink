@@ -113,7 +113,8 @@ export default async function PrincipalDashboard({
       <Card>
         <CardBody className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
           <CalendarCheckIcon weight="duotone" className="size-6 shrink-0 text-fg-muted" />
-          <div className="min-w-0 flex-1">
+          {/* 14 rem before sharing a line: the button drops under the text on a phone. */}
+          <div className="min-w-0 flex-1 basis-56">
             <p className="text-sm font-semibold text-fg">
               {academicYear ? academicYear.name : t("admin.startYear")}
               <span className="ml-2 font-normal text-fg-muted">
@@ -151,7 +152,7 @@ export default async function PrincipalDashboard({
       <CelebrationsLink session={ctx} />
 
       {/* ---------------- what can still be fixed today ---------------- */}
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("principal.registersMissing")}
           value={String(summary.registersMissingToday)}
@@ -227,12 +228,12 @@ export default async function PrincipalDashboard({
             title={t("syllabus.coverageTitle")}
             description={t("syllabus.coverageIntro")}
             action={
-              <Link href="/admin/syllabus/coverage" className="text-sm font-semibold text-accent-strong hover:underline">
+              <Link href="/admin/syllabus/coverage" className="inline-flex min-h-11 items-center text-sm font-semibold text-accent-strong hover:underline">
                 {t("syllabus.coverageTitle")}
               </Link>
             }
           />
-          <CardBody className="grid gap-3 sm:grid-cols-2">
+          <CardBody className="grid grid-cols-2 gap-3 sm:grid-cols-2">
             <StatTile
               label={t("syllabus.overall")}
               value={syllabus.overallPercent === null ? "—" : `${syllabus.overallPercent}%`}
@@ -264,7 +265,7 @@ export default async function PrincipalDashboard({
           action={
             <Link
               href={`/principal/classes?days=${span}`}
-              className="text-sm font-semibold text-accent-strong hover:underline"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-accent-strong hover:underline"
             >
               {t("principal.allOf", { count: insights.length })}
             </Link>

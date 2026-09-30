@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { DateField } from "@/components/ui/field";
 import { CalendarPlusIcon, UsersThreeIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -56,15 +57,8 @@ export default async function TeacherMeetingsPage({
         />
         <CardBody>
           <form action={publishSlotsAction} className="grid gap-3 sm:grid-cols-5">
-            <label className="block text-sm">
-              <span className="mb-1 block font-medium text-fg">{t("meetings.fieldDate")}</span>
-              <input
-                type="date"
-                name="date"
-                required
-                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
-              />
-            </label>
+            {/* The app's date field, day-month-year, where the browser's own wrote mm/dd/yyyy. */}
+            <DateField label={t("meetings.fieldDate")} name="date" required />
             <label className="block text-sm">
               <span className="mb-1 block font-medium text-fg">{t("meetings.fieldFrom")}</span>
               <input

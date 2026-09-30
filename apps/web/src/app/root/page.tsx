@@ -25,7 +25,7 @@ export default async function RootPage({
   const t = await getT();
   const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
-  const state = rawState === "removed" || rawState === "noadmin" || rawState === "unverified" || rawState === "all" ? rawState : "live";
+  const state = rawState === "removed" || rawState === "noadmin" || rawState === "unverified" || rawState === "test" || rawState === "all" ? rawState : "live";
   const sort = rawSort === "oldest" || rawSort === "name" ? rawSort : "newest";
   const countries = await schoolCountries(session);
   const country = rawCountry && countries.includes(rawCountry) ? rawCountry : undefined;
@@ -33,7 +33,9 @@ export default async function RootPage({
     listSchools(session, { q, state, country, sort }),
     listSchools(session, { state: "all" }),
   ]);
-  const liveCount = totals.filter((s) => !s.removedAt).length;
+  // The fixtures are their own chip: the default list is the real schools, 14 ZZ schools once buried the four that were.
+  const real = totals.filter((s) => !s.isTestFixture);
+  const liveCount = real.filter((s) => !s.removedAt).length;
   const narrowed = Boolean(q || state !== "live" || country);
 
   return (
@@ -75,9 +77,10 @@ export default async function RootPage({
               defaultValue: "live",
               options: [
                 { value: "live", label: t("root.stateLive"), count: liveCount },
-                { value: "noadmin", label: t("root.stateNoAdmin"), count: totals.filter((s) => !s.removedAt && s.pendingAdminInvites > 0).length },
-                { value: "unverified", label: t("root.stateUnverified"), count: totals.filter((s) => !s.removedAt && !s.verifiedAt).length },
-                { value: "removed", label: t("root.removedBadge"), count: totals.length - liveCount },
+                { value: "noadmin", label: t("root.stateNoAdmin"), count: real.filter((s) => !s.removedAt && s.pendingAdminInvites > 0).length },
+                { value: "unverified", label: t("root.stateUnverified"), count: real.filter((s) => !s.removedAt && !s.verifiedAt).length },
+                { value: "removed", label: t("root.removedBadge"), count: real.length - liveCount },
+                { value: "test", label: t("root.stateTest"), count: totals.length - real.length },
                 { value: "all", label: t("vacancies.filterAll"), count: totals.length },
               ],
             },

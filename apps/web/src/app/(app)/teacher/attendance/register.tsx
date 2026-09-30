@@ -259,7 +259,7 @@ export function Register({
           <SyncPill state={state} queued={queued} online={online} complete={complete} />
         </div>
 
-        <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
           {ATTENDANCE_STATUSES.map((status) => (
             <span
               key={status}

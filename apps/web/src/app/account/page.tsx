@@ -283,10 +283,11 @@ export default async function AccountPage({
             <AppearanceForm prefs={prefs} section="notifications" phone={user.phone ? formatPhone(user.phone) : null} />
           </CardBody>
           <CardHeader
+            id="language"
             icon={<TranslateIcon weight="duotone" className="size-5" />}
             title={t("language.title")}
             description={t("language.description")}
-            className="border-t border-border"
+            className="scroll-mt-20 border-t border-border"
           />
           <CardBody>
             <LanguageForm />

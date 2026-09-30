@@ -1206,6 +1206,7 @@ export const mr: Dictionary = {
   },
 
   notif: {
+    repeated: "{count} वेळा पाठवले; सर्वात नवे दाखवले आहे",
     kindFilter: "प्रकार",
     allKinds: "सर्व प्रकार",
     kindExpert: "तज्ज्ञ",
@@ -2404,6 +2405,7 @@ export const mr: Dictionary = {
   },
 
   root: {
+    stateTest: "चाचणी फिक्स्चर",
     selectSchool: "{name} निवडा",
     selectedCount: "{count} निवडले",
     removeSelected: "निवडलेले काढा",
@@ -2701,6 +2703,8 @@ export const mr: Dictionary = {
   },
 
   appadmin: {
+    chapterCountOne: "1 धडा",
+    chapterCountMany: "{count} धडे",
     bankSearchPlaceholder: "विषय आणि प्रकरणे शोधा",
     difficultyFilter: "काठिण्य",
     difficultyN: "स्तर {n}",
@@ -3828,6 +3832,7 @@ export const mr: Dictionary = {
     notifPaid: "{count} प्रश्नांसाठी तुम्हाला {amount} दिले गेले",
   },
   typing: {
+    label: "टायपिंग: {language}",
     switch: "{language} मध्ये टाइप होत आहे; बदलण्यासाठी दाबा",
     switchHint: "कीबोर्ड काय लिहितो: इंग्रजी अक्षरे, किंवा इंग्रजी अक्षरांत टाइप केलेली हिंदी किंवा मराठी",
     en: "इंग्रजी",
@@ -4352,6 +4357,7 @@ export const mr: Dictionary = {
     excusedHint: "ज्ञात कारणाने गैरहजर",
   },
   student: {
+    pastDue: "मुदत उलटली",
     youreInName: "तुम्ही सामील झालात, {name}!",
     todayLessons: "आजचे तास",
     todayLessonsBody: "तुमचा दिवस, तासागणिक. संपूर्ण आठवडा वेळापत्रकावर आहे.",
@@ -4596,7 +4602,7 @@ export const mr: Dictionary = {
     coverTakenOn: "तुम्ही घेतलेले कव्हर",
     yourLessons: "तुमचे तास",
     lessonsInPeriodOrder: "आजचे शिकवणे, तासिकांच्या क्रमाने. संपूर्ण आठवडा वेळापत्रकावर आहे.",
-    noLessonsToday: "आज एकही तास नाही. संपूर्ण आठवडा वेळापत्रकावर आहे.",
+    noLessonsToday: "आज एकही तास नाही.",
     closedToday: "आज शाळा बंद आहे — {name}.",
     openTimetable: "वेळापत्रक उघडा",
     studentsCount: "{count} विद्यार्थी",
@@ -4688,6 +4694,7 @@ export const mr: Dictionary = {
     withdrawRequest: "हा अर्ज मागे घ्या", withdrawn: "मागे घेतले",
   },
   common: {
+    showMore: "आणखी {count} दाखवा",
     officeSetsThis: "हे शाळेचे कार्यालय ठरवते. तुम्ही ते इथे वाचू शकता, बदलू शकत नाही.",
     retry: "पुन्हा प्रयत्न करा",
     comingSoon: "लवकरच येत आहे",
@@ -6960,6 +6967,11 @@ export const mr: Dictionary = {
     inTerm: "या सत्रात {count}",
   },
   staff: {
+    daysApprovedThisYear: "या वर्षी {used} दिवस मंजूर",
+    noEntitlementLine: "या वर्षासाठी अजून हक्क ठरलेला नाही — कार्यालय तो ठरवते.",
+    nameHint: "तुमचे पूर्ण नाव कर्मचारी नोंदीत आहे, जी शाळा कार्यालय ठेवते.",
+    birthdateHint: "कार्यालय आणि फायलिंगसाठी कर्मचारी नोंदीत ठेवली जाते.",
+    birthdateLocked: "कर्मचारी नोंदीत ठेवली आहे; शाळा कार्यालय ती बदलते.",
     filingAppointedSubject: "ज्या विषयासाठी नियुक्ती झाली",
     subjectMathematics: "गणित",
     subjectEvs: "परिसर अभ्यास",
@@ -7501,6 +7513,7 @@ export const mr: Dictionary = {
     noCoverageBody: "कार्यालय प्रत्येक इयत्तेची धड्यांची यादी वेबवर लिहिते. एखाद्या वर्गाकडे यादी आली की त्याची पूर्तता येथे दिसेल.",
   },
   staffAttendance: {
+    unmarkedDays: "{count} कामाचे दिवस नोंदवलेले नाहीत",
     title: "कर्मचारी हजेरी",
     metaTitle: "कर्मचारी हजेरी",
     intro: "आज कोण आले. कार्यालय टेबलावर कर्मचारी कक्षाची हजेरी लावते, किंवा प्रत्येकजण फोनवरून चेक-इन करतो; मंजूर रजा आपोआप दिसते. महिना प्रत्येक व्यक्तीनुसार जमतो.",

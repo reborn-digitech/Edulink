@@ -1,4 +1,5 @@
 import "server-only";
+import { readerIsFixture, realSchoolsOnly } from "./fixtures";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
@@ -200,6 +201,7 @@ export async function listDirectory(
     where: {
       profilePublishedAt: { not: null },
       removedAt: null,
+      ...realSchoolsOnly(await readerIsFixture(ctx.schoolId)),
       ...(filters.country ? { country: filters.country } : {}),
       ...(filters.region ? { region: filters.region } : {}),
       ...(q

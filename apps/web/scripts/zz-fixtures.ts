@@ -223,10 +223,11 @@ export async function upsertUser(
 ) {
   return db.user.upsert({
     where: { email },
-    update: ctx.setPassword ? { passwordHash: ctx.passwordHash } : {},
+    update: { isTestFixture: true, ...(ctx.setPassword ? { passwordHash: ctx.passwordHash } : {}) },
     create: {
       email,
       name,
+      isTestFixture: true,
       passwordHash: ctx.passwordHash,
       emailVerifiedAt: new Date(),
       prefs: JSON.stringify({ theme: "system", channels: { push: true, email: true } }),
@@ -268,6 +269,7 @@ export async function upsertSchool(input: {
     data: {
       name: input.name,
       slug: input.slug,
+      isTestFixture: true,
       code: schoolCode(untagged(input.name)),
       city: input.city,
       country: "India",
@@ -2313,6 +2315,12 @@ async function main() {
 
   const passwordHash = await hash(PASSWORD, ARGON);
   const ctx: Ctx = { passwordHash };
+
+  // Every ZZ school and person is a fixture, whichever script made it (the
+  // seed, a sweep, an older run of this one): the flag is what keeps them out
+  // of the directories real schools read.
+  await db.school.updateMany({ where: { name: { startsWith: "ZZ " }, isTestFixture: false }, data: { isTestFixture: true } });
+  await db.user.updateMany({ where: { OR: [{ email: { endsWith: "@zz.test" } }, { email: { startsWith: "zz." } }, { name: { startsWith: "ZZ " } }], isTestFixture: false }, data: { isTestFixture: true } });
 
   const northgate = await buildNorthgate(ctx);
   const fees = await buildFees(northgate.school, northgate.admin.id);

@@ -410,6 +410,17 @@ describe("computeStreak", () => {
     expect(computeStreak([])).toBe(0);
   });
 
+  it("is over once its last mark is more than a week old, and current within the week", () => {
+    const run = [
+      { dateKey: "2026-07-27", status: "PRESENT" as const },
+      { dateKey: "2026-07-24", status: "PRESENT" as const },
+      { dateKey: "2026-07-23", status: "LATE" as const },
+    ];
+    expect(computeStreak(run, "2026-08-03")).toBe(3);
+    expect(computeStreak(run, "2026-08-04")).toBe(0);
+    expect(computeStreak(run)).toBe(3);
+  });
+
   it("does not depend on the input already being sorted", () => {
     expect(
       computeStreak([

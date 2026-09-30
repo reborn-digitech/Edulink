@@ -1333,6 +1333,7 @@ export const en = {
   /* The notifications page                                                  */
   /* ---------------------------------------------------------------------- */
   notif: {
+    repeated: "Sent {count} times; the newest is shown",
     kindFilter: "Kind",
     allKinds: "All kinds",
     kindExpert: "Experts",
@@ -2551,6 +2552,7 @@ export const en = {
   /* The operator's console — /root, and the refusals its libs mint          */
   /* ---------------------------------------------------------------------- */
   root: {
+    stateTest: "Test fixtures",
     selectSchool: "Select {name}",
     selectedCount: "{count} selected",
     removeSelected: "Remove selected",
@@ -2859,6 +2861,8 @@ export const en = {
   /* The content team's area — question bank and platform competitions       */
   /* ---------------------------------------------------------------------- */
   appadmin: {
+    chapterCountOne: "1 chapter",
+    chapterCountMany: "{count} chapters",
     bankSearchPlaceholder: "Search topics and chapters",
     difficultyFilter: "Difficulty",
     difficultyN: "Level {n}",
@@ -4043,6 +4047,7 @@ export const en = {
     notifPaid: "{amount} was paid to you for {count} questions",
   },
   typing: {
+    label: "Typing: {language}",
     switch: "Typing in {language}; press to change",
     switchHint: "What the keyboard writes: English letters, or Hindi or Marathi typed in English letters",
     en: "English",
@@ -4590,6 +4595,7 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    pastDue: "Past due",
     youreInName: "You’re in, {name}!",
     todayLessons: "Today’s lessons",
     todayLessonsBody: "Your day, period by period. The whole week is on your timetable.",
@@ -4847,7 +4853,7 @@ export const en = {
     coverTakenOn: "Cover you have taken on",
     yourLessons: "Your lessons",
     lessonsInPeriodOrder: "Today's teaching, period by period. The whole week is on your timetable.",
-    noLessonsToday: "No lessons today. The whole week is on your timetable.",
+    noLessonsToday: "No lessons today.",
     closedToday: "School is closed today — {name}.",
     openTimetable: "Open the timetable",
 
@@ -5016,6 +5022,7 @@ export const en = {
   /* translation, and belongs in its own change.                             */
   /* ---------------------------------------------------------------------- */
   common: {
+    showMore: "Show {count} more",
     officeSetsThis: "The school office sets this up. You can read it here, not change it.",
     retry: "Try again",
     comingSoon: "Coming soon",
@@ -7403,6 +7410,11 @@ export const en = {
     inTerm: "{count} in this term",
   },
   staff: {
+    daysApprovedThisYear: "{used} days approved this year",
+    noEntitlementLine: "No entitlement set for the year yet — the office sets it.",
+    nameHint: "Your full name is on the staff record, which the school office keeps.",
+    birthdateHint: "Kept on the staff record, for the office and the filings.",
+    birthdateLocked: "Kept on the staff record; the school office changes it.",
     filingAppointedSubject: "Subject appointed for",
     subjectMathematics: "Mathematics",
     subjectEvs: "Environmental studies",
@@ -7958,6 +7970,7 @@ export const en = {
     noCoverageBody: "The office writes each grade's chapter list on the web; once a class has one, its coverage shows here.",
   },
   staffAttendance: {
+    unmarkedDays: "{count} working days not marked",
     title: "Staff attendance",
     metaTitle: "Staff attendance",
     intro: "Who was in today. The office marks the staff room at the desk, or each person checks in on their phone; an approved leave shows itself. The month adds up per person.",

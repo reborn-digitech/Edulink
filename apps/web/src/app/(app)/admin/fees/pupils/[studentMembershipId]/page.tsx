@@ -57,7 +57,7 @@ export default async function PupilFeesPage({ params }: { params: Promise<{ stud
         meta={p.leftAt ? <Badge tone="neutral">{t("ui.reasonLeft")}</Badge> : undefined}
       />
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile label={t("fees.duesColDue")} value={money(ledger.totals.netPaise)} />
         <StatTile label={t("fees.duesColPaid")} value={money(ledger.totals.paidPaise)} tone="ok" />
         <StatTile label={t("fees.duesColOutstanding")} value={money(ledger.totals.outstandingPaise)} tone={ledger.totals.outstandingPaise > 0 ? "warn" : "neutral"} />

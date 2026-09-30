@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { familyChildrenSchema, familyIncidentsSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, Screen, ShowMore, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -70,13 +70,17 @@ export function FamilyIncidents() {
         d.incidents.length === 0 ? (
           <Empty icon="firstAid" title={t("incidents.noneForChild")} body={t("incidents.noneForChildBody", { name: d.childName })} action={<Button label={t("nav.health")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/health", params: childId ? { childId } : {} } as never)} />} />
         ) : (
-          d.incidents.map((i) => (
-            <Card key={i.id} title={i.title}>
-              <IncidentBadges kind={i.kind} severity={i.severity} status={i.status} />
-              <IncidentRecord incident={i} />
-              <IncidentNotes notes={i.notes} bare />
-            </Card>
-          ))
+          <ShowMore items={d.incidents}>
+            {(shown) =>
+              shown.map((i) => (
+                <Card key={i.id} title={i.title}>
+                  <IncidentBadges kind={i.kind} severity={i.severity} status={i.status} />
+                  <IncidentRecord incident={i} />
+                  <IncidentNotes notes={i.notes} bare />
+                </Card>
+              ))
+            }
+          </ShowMore>
         )
       ) : null}
     </Screen>

@@ -12,7 +12,7 @@ import { TypingSwitch } from "@/components/typing-switch";
 import { Avatar } from "@/components/ui/avatar";
 import { Logo } from "@/components/brand";
 import { cn } from "@/lib/cn";
-import { useT } from "@/lib/i18n";
+import { LOCALES, useLocale, useT } from "@/lib/i18n";
 import type { Translate } from "@/lib/i18n";
 import { ROLE_META, type Role } from "@/lib/constants";
 
@@ -71,7 +71,9 @@ export function AppShell({
     group,
     items: items.filter((i) => !i.primary && (i.group ?? "school") === group),
   })).filter((g) => g.items.length > 0);
-  const action = PRIMARY_ACTION[user.role];
+  // Only on the pages it belongs to (QuickAction.on), and never on the page it opens.
+  const primary = PRIMARY_ACTION[user.role];
+  const action = primary && primary.on?.includes(pathname) && primary.href !== pathname ? primary : null;
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -120,10 +122,11 @@ export function AppShell({
             </div>
           ))}
         </nav>
-        <div className="flex items-center justify-between gap-2 px-3 pb-2">
+        {/* A rule above this row: the menu scrolls behind it on a short window, and a cut-off entry with no edge looked like a fault. */}
+        <div className="flex items-center justify-between gap-2 border-t border-border px-3 py-1.5">
           <OutboxBadge />
-          {/* A second copy of the switch: the header above is the phone's, and a desk has this rail instead. */}
-          <TypingSwitch />
+          {/* The app's language, by name, opening where it is changed. The typing switch that stood here read as this and was not. */}
+          <LanguageLink t={t} />
         </div>
 
         <div className="border-t border-border p-3">
@@ -187,7 +190,6 @@ export function AppShell({
           <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
         </Link>
         <div className="flex items-center gap-1">
-          <TypingSwitch />
           {secondary.length > 0 && (
             <button
               type="button"
@@ -234,11 +236,15 @@ export function AppShell({
       <div data-wash className="lg:pl-64 print:pl-0">
         <main
           id="main"
-          className="mx-auto max-w-5xl px-4 pb-32 pt-4 sm:px-6 lg:pb-12 lg:pt-8 print:p-0"
+          // Room under the last row for the bottom bar, and for the floating button where one is drawn (its bottom edge is 8.75 rem up).
+          className={cn("mx-auto max-w-5xl px-4 pt-4 sm:px-6 lg:pb-12 lg:pt-8 print:p-0", action ? "pb-44" : "pb-24")}
         >
           {children}
         </main>
       </div>
+
+      {/* The typing switch: one engine for the page, drawn beside whichever text box has focus. */}
+      <TypingSwitch />
 
       {/* ---------- floating action button ---------- */}
       {action && (
@@ -332,6 +338,13 @@ export function AppShell({
                       </Link>
                     </li>
                   ))}
+            <div className="mb-4">
+              <ul className="grid grid-cols-2 gap-1">
+                <li>
+                  <LanguageLink t={t} onClick={() => setMoreOpen(false)} />
+                </li>
+              </ul>
+            </div>
                 </ul>
               </div>
             ))}
@@ -387,5 +400,23 @@ export function SignOutButton() {
         {t("shell.signOut")}
       </button>
     </form>
+  );
+}
+
+/** "Language · हिन्दी": the app's language by its own name, opening the account page where it is changed. */
+function LanguageLink({ t, onClick }: { t: Translate; onClick?: () => void }) {
+  const locale = useLocale();
+  const name = LOCALES.find((l) => l.code === locale)?.native ?? locale;
+  return (
+    <Link
+      href="/account#language"
+      onClick={onClick}
+      className="flex min-h-11 items-center gap-2 rounded-[--radius-md] px-3 text-sm font-medium text-fg-muted transition-colors hover:bg-surface-muted hover:text-fg"
+    >
+      <NavIcon name="translate" className="size-5" />
+      <span>
+        {t("language.title")} · <span lang={locale}>{name}</span>
+      </span>
+    </Link>
   );
 }

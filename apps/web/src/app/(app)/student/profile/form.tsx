@@ -21,6 +21,9 @@ export function ProfileForm({
   handle,
   studentCode,
   bioHintKey,
+  nameHintKey,
+  birthdateHintKey,
+  birthdateLockedKey,
   birthdate,
   birthdateEditable,
 }: {
@@ -33,6 +36,10 @@ export function ProfileForm({
   /** The teacher profile reuses this form; its bio is read by colleagues,
    * not classmates, and the hint must say so. */
   bioHintKey?: TranslationKey;
+  /** A member of staff is not a pupil: the sentences under the name and the date of birth are theirs to give. */
+  nameHintKey?: TranslationKey;
+  birthdateHintKey?: TranslationKey;
+  birthdateLockedKey?: TranslationKey;
   /** ISO date on file, "" when none. */
   birthdate: string;
   /** Staff always; a pupil only while no guardian is linked (birthdate.ts). */
@@ -178,13 +185,13 @@ export function ProfileForm({
           </div>
         )}
       </dl>
-      <p className="text-xs text-fg-muted">{t("student.nameHint")}</p>
+      <p className="text-xs text-fg-muted">{t(nameHintKey ?? "student.nameHint")}</p>
 
       {birthdateEditable ? (
         <DateField
           className="max-w-xs"
           label={t("student.birthdate")}
-          hint={t("student.birthdateHint")}
+          hint={t(birthdateHintKey ?? "student.birthdateHint")}
           value={draft.birthdate}
           error={errors.birthdate}
           onChange={(e) => setDraft((d) => ({ ...d, birthdate: e.target.value }))}
@@ -195,7 +202,7 @@ export function ProfileForm({
             <dt className="text-sm text-fg-muted">
               {t("student.birthdate")}
               <span className="mt-0.5 block text-xs text-fg-subtle">
-                {birthdate ? t("student.birthdateLocked") : t("student.birthdateNone")}
+                {birthdate ? t(birthdateLockedKey ?? "student.birthdateLocked") : t("student.birthdateNone")}
               </span>
             </dt>
             <dd className="text-right text-sm font-medium text-fg">{birthdate ? formatDateKey(birthdate, { day: "numeric", month: "short", year: "numeric" }) : "—"}</dd>

@@ -88,7 +88,7 @@ export default async function FilingsPage() {
           }
         />
         <CardBody className="space-y-5">
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
             <StatTile label={t("filings.pupilsReady", { ready: view.pupils.ready, total: view.pupils.total })} value={`${view.pupils.ready}/${view.pupils.total}`} tone={view.pupils.total > 0 && view.pupils.ready === view.pupils.total ? "ok" : "warn"} icon={<UsersThreeIcon weight="duotone" className="size-5" />} />
             <StatTile label={t("filings.staffReady", { ready: view.staff.ready, total: view.staff.total })} value={`${view.staff.ready}/${view.staff.total}`} tone={view.staff.total > 0 && view.staff.ready === view.staff.total ? "ok" : "warn"} icon={<UsersThreeIcon weight="duotone" className="size-5" />} />
           </div>

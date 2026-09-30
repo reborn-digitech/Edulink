@@ -34,11 +34,12 @@ const button = cva(
         link: "text-accent-strong underline underline-offset-4 hover:brightness-125",
       },
       size: {
-        sm: "h-10 min-h-10 px-3 text-sm",
+        // 44 px, the floor the phone app holds too: 40 px small buttons were the app's commonest miss (the walk of 2026-10-01).
+        sm: "h-11 min-h-11 px-3 text-sm",
         md: "h-12 min-h-12 px-5 text-[0.9375rem]",
         lg: "h-14 min-h-14 px-7 text-base",
         icon: "h-12 w-12 min-h-12 min-w-12 p-0",
-        "icon-sm": "h-10 w-10 min-h-10 min-w-10 p-0",
+        "icon-sm": "h-11 w-11 min-h-11 min-w-11 p-0",
       },
       block: { true: "w-full", false: "" },
     },

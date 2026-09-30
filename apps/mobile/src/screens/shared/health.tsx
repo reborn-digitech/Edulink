@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { View } from "react-native";
 import { BLOOD_GROUPS, type HealthCardSave, type HealthCardView as HealthCard, type HealthContact } from "@edulink/contracts";
 import type { Translate } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Field, Row, Text } from "@/components";
+import { Button, Card, Empty, Failed, Field, Row, ShowMore, Text } from "@/components";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { formatDateKey, formatInstant, Note } from "../family/shared";
@@ -319,7 +319,8 @@ export function HealthChecks({ checks, action }: { checks: HealthCard["checks"];
           {t("health.noChecks")}
         </Text>
       ) : (
-        sorted.map((c) => (
+        <ShowMore items={sorted}>
+          {(shown) => shown.map((c) => (
           <Row
             key={c.id}
             title={formatDateKey(c.dateKey, locale)}
@@ -334,7 +335,8 @@ export function HealthChecks({ checks, action }: { checks: HealthCard["checks"];
                 .join(" · ") || t("health.none")
             }
           />
-        ))
+          ))}
+        </ShowMore>
       )}
     </Card>
   );

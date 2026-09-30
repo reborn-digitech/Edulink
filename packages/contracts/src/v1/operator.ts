@@ -21,7 +21,7 @@ const count = z.number().int().min(0);
 export const operatorOverviewQuerySchema = z.object({
   q: z.string().trim().max(200).optional(),
   /** live (default): not removed; removed; noadmin: live with an admin invite still pending; unverified: live and not yet checked by the operator; all. */
-  state: z.enum(["live", "removed", "noadmin", "unverified", "all"]).default("live"),
+  state: z.enum(["live", "removed", "noadmin", "unverified", "test", "all"]).default("live"),
 });
 export type OperatorOverviewQuery = z.infer<typeof operatorOverviewQuerySchema>;
 
@@ -38,6 +38,8 @@ export const operatorSchoolSchema = z.object({
   /** When the operator marked the school checked; null while it waits. */
   verifiedAt: isoOrNull,
   pendingAdminInvites: count,
+  /** A school the tests make; the list's default state leaves these out. */
+  isTestFixture: z.boolean().default(false),
 });
 export type OperatorSchool = z.infer<typeof operatorSchoolSchema>;
 

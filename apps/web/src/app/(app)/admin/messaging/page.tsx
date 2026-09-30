@@ -54,7 +54,7 @@ export default async function MessagingPage() {
       />
 
       {/* ---------------- the numbers ---------------- */}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         <StatTile label={t("messaging.cardSentMonth")} value={o.month.sent} />
         <StatTile label={t("messaging.cardDelivered")} value={o.month.delivered} tone="ok" />
         <StatTile label={t("messaging.cardFailed")} value={o.month.failed} tone={o.month.failed > 0 ? "danger" : "neutral"} />

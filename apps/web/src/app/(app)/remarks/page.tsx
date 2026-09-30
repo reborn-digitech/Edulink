@@ -103,15 +103,11 @@ export default async function RemarksPage({
       )}
 
       {conversations.length === 0 && threads.length === 0 ? (
+        // One button for the one action, in the header above; a second here read as a choice.
         <EmptyState
           icon={<ChatCircleDotsIcon weight="duotone" className="size-8" />}
           title={t("remarks.noMessagesYet")}
           description={t("convo.emptyBody")}
-          action={
-            <Button asChild>
-              <Link href="/remarks/people">{t("convo.newMessage")}</Link>
-            </Button>
-          }
         />
       ) : (
         <div className="space-y-6">

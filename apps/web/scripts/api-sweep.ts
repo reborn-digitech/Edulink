@@ -17,7 +17,7 @@
  */
 import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
@@ -482,8 +482,47 @@ async function hitText(e: Endpoint, token: string | null, path: string, body?: s
   }
 }
 
+/**
+ * What a run wrote, taken away again. Every write endpoint is called with a
+ * valid body as every permitted role, and each call that succeeds leaves a
+ * row: after a few months a fixture pupil had 142 health checks and 205
+ * incidents, all "ZZ Sweep" (the walk of 2026-10-01). So the run notes when
+ * it started and, at the end, deletes every row of every school-scoped
+ * model that a ZZ fixture school gained since — nothing older, nothing of
+ * any other school. Models are read from Prisma's own model list, so a new
+ * table is covered without being named here; a row another row still points
+ * at (a fee head under a line, both new) waits for the next pass.
+ *
+ * A ROW THE RUN REPLACED GOES TOO: an endpoint that removes and re-saves (a
+ * signature, the seal) leaves a row made during the run where a fixture's
+ * stood, and this cannot tell the two apart. So a run still ends with
+ * zz:fixtures, as the rules say, and the last line here says so.
+ */
+async function sweepAway(startedAt: Date) {
+  const schools = (await db.school.findMany({ where: { isTestFixture: true }, select: { id: true } })).map((s) => s.id);
+  if (schools.length === 0) return;
+  const models = Prisma.dmmf.datamodel.models.filter((m) => m.fields.some((f) => f.name === "schoolId") && m.fields.some((f) => f.name === "createdAt"));
+  let remaining = models.map((m) => m.name);
+  let removed = 0;
+  for (let pass = 0; pass < 4 && remaining.length > 0; pass++) {
+    const next: string[] = [];
+    for (const name of remaining) {
+      const delegate = (db as unknown as Record<string, { deleteMany: (args: unknown) => Promise<{ count: number }> }>)[name[0]!.toLowerCase() + name.slice(1)];
+      if (!delegate) continue;
+      try {
+        removed += (await delegate.deleteMany({ where: { schoolId: { in: schools }, createdAt: { gte: startedAt } } })).count;
+      } catch {
+        next.push(name);
+      }
+    }
+    remaining = next;
+  }
+  console.log(`swept away ${removed} rows the run wrote to the fixture schools${remaining.length ? ` (could not: ${remaining.join(", ")})` : ""}; rows it replaced went with them — run zz:fixtures.`);
+}
+
 async function main() {
   if (CROSS_MODE) return crossProbe(CROSS_MODE);
+  const startedAt = new Date();
   const tokens = await actors();
   const fx = await fixture();
   await readCheckInClosure();
@@ -517,6 +556,7 @@ async function main() {
   for (const s of skipped) console.log(`· skipped (no sample): ${s}`);
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
   if (failed.length) process.exitCode = 1;
+  await sweepAway(startedAt);
 }
 
 main()

@@ -15,6 +15,9 @@ import type { ReactNode } from "react";
  * `back` is a plain link to the parent, for pages that are one level deep.
  * `meta` is a small badge-like slot beside the title (a count, a status).
  */
+/** An intro longer than this is clamped on a phone. About two lines at 390 px. */
+const LONG = 110;
+
 export function PageHeader({
   title,
   description,
@@ -44,7 +47,19 @@ export function PageHeader({
             {title}
             {meta}
           </h1>
-          {description && <p className="mt-1 max-w-prose text-sm text-fg-muted">{description}</p>}
+          {description &&
+            (typeof description === "string" && description.length > LONG ? (
+              // A long intro is two lines on a phone, and opens to the whole
+              // on a press; a desk reads it all. Every page opened with a
+              // paragraph (the walk of 2026-10-01), and on a phone the
+              // paragraph was the screen. The summary is the text itself, so
+              // there is nothing extra to find: the ellipsis is the handle.
+              <details className="group mt-1 max-w-prose">
+                <summary className="cursor-pointer list-none text-sm text-fg-muted [&::-webkit-details-marker]:hidden max-sm:line-clamp-2 max-sm:group-open:line-clamp-none">{description}</summary>
+              </details>
+            ) : (
+              <p className="mt-1 max-w-prose text-sm text-fg-muted">{description}</p>
+            ))}
         </div>
         {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
       </div>

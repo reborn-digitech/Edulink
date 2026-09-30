@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { BooksIcon } from "@phosphor-icons/react/ssr";
+import { BooksIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
 import { requireAppAdmin } from "@/lib/tenancy";
 import { listBankTopics } from "@/lib/app-admin";
-import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
@@ -76,35 +75,41 @@ export default async function BankPage({
           description={t("appadmin.bankEmptyBody")}
         />
       ) : (
-        [...bySubject.entries()].map(([subject, subjectTopics]) => (
-          <section key={subject} className="space-y-2">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-subtle">
-              {SUBJECT_KEY[subject as QuizSubject] ? t(SUBJECT_KEY[subject as QuizSubject]) : subject}
-            </h2>
-            <ul className="space-y-2">
+        // One subject open at a time: the whole bank on one page was 32,000 px
+        // on a phone (the walk of 2026-10-01). A subject is a disclosure with its
+        // count; the first is open, every one is when the list has been narrowed;
+        // inside, a chapter is a row, not a card.
+        [...bySubject.entries()].map(([subject, subjectTopics], index) => (
+          <details key={subject} open={narrowed || index === 0} className="group rounded-[--radius-lg] border border-border bg-surface shadow-sm">
+            <summary className="tap flex cursor-pointer list-none items-center justify-between gap-3 px-4 text-sm font-semibold text-fg [&::-webkit-details-marker]:hidden">
+              <span className="flex items-center gap-2">
+                <CaretRightIcon weight="bold" className="size-4 text-fg-subtle transition-transform group-open:rotate-90" aria-hidden="true" />
+                {SUBJECT_KEY[subject as QuizSubject] ? t(SUBJECT_KEY[subject as QuizSubject]) : subject}
+              </span>
+              <span className="text-xs font-medium tabular-nums text-fg-muted">
+                {subjectTopics.length === 1 ? t("appadmin.chapterCountOne") : t("appadmin.chapterCountMany", { count: subjectTopics.length })}
+              </span>
+            </summary>
+            <ul className="divide-y divide-border border-t border-border">
               {subjectTopics.map((topic) => (
                 <li key={topic.id}>
-                  <Card interactive>
-                    <Link href={`/appadmin/bank/${topic.id}`} className="block p-4">
-                      <div className="flex flex-wrap items-center justify-between gap-3">
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate font-semibold text-fg">{topic.name}</p>
-                          <p className="truncate text-xs text-fg-muted">
-                            {t("appadmin.classN", { n: topic.classLevel })} · {topic.chapter}
-                          </p>
-                        </div>
-                        <span className="text-sm tabular-nums text-fg-muted">
-                          {topic.questionCount === 1
-                            ? t("appadmin.questionCountOne")
-                            : t("appadmin.questionCountMany", { count: topic.questionCount })}
-                        </span>
-                      </div>
-                    </Link>
-                  </Card>
+                  <Link href={`/appadmin/bank/${topic.id}`} className="flex min-h-11 items-center justify-between gap-3 px-4 py-2 hover:bg-surface-muted/60">
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-fg">{topic.name}</span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {t("appadmin.classN", { n: topic.classLevel })} · {topic.chapter}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-xs tabular-nums text-fg-muted">
+                      {topic.questionCount === 1
+                        ? t("appadmin.questionCountOne")
+                        : t("appadmin.questionCountMany", { count: topic.questionCount })}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
-          </section>
+          </details>
         ))
       )}
     </div>

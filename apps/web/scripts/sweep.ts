@@ -26,6 +26,7 @@ type Actor = { label: string; cookie: string; sessionId: string };
 async function mint(email: string, role: string | null, schoolId: string | null, label: string): Promise<Actor> {
   const user = await db.user.findUnique({ where: { email } });
   if (!user) throw new Error(`no such user: ${email}`);
+  touched.add(user.id);
   const token = randomBytes(32).toString("base64url");
   const session = await db.session.create({
     data: {
@@ -109,6 +110,9 @@ const results: { role: string; path: string; status: number; expected: number; o
  * the story there. Now it says so, and the count says how many.
  */
 const skipped: string[] = [];
+/** When the run began, and whose notices it will have caused: a suspension restored a hundred times had told the teacher a hundred times. */
+const startedAt = new Date();
+const touched = new Set<string>();
 function skip(what: string, why: string) {
   skipped.push(`${what} — ${why}`);
 }
@@ -381,8 +385,8 @@ async function expertBooking(
 
   const expertUser = await db.user.upsert({
     where: { email: EMAIL },
-    create: { email: EMAIL, name: "ZZ Sweep Bookable", prefs: "{}" },
-    update: {},
+    create: { email: EMAIL, name: "ZZ Sweep Bookable", prefs: "{}", isTestFixture: true },
+    update: { isTestFixture: true },
   });
   const profile = await db.expertProfile.upsert({
     where: { userId: expertUser.id },
@@ -621,8 +625,8 @@ async function mentorshipThread(
 
   const expertUser = await db.user.upsert({
     where: { email: "zz.sweep.mentor@edulink.test" },
-    create: { email: "zz.sweep.mentor@edulink.test", name: "ZZ Sweep Mentor", prefs: "{}" },
-    update: {},
+    create: { email: "zz.sweep.mentor@edulink.test", name: "ZZ Sweep Mentor", prefs: "{}", isTestFixture: true },
+    update: { isTestFixture: true },
   });
   const profile = await db.expertProfile.upsert({
     where: { userId: expertUser.id },
@@ -723,7 +727,7 @@ async function alumniRecord(schoolId: string) {
 
   try {
     const user = await db.user.create({
-      data: { email, name: "Sweep Alumnus", preferredName: "Sweep", prefs: "{}" },
+      data: { email, name: "Sweep Alumnus", preferredName: "Sweep", prefs: "{}", isTestFixture: true },
     });
     madeUserIds.push(user.id);
 
@@ -801,7 +805,7 @@ async function alumniRecord(schoolId: string) {
 
     // A guardian follows the same child, across a school the child has left.
     const parent = await db.user.create({
-      data: { email: parentEmail, name: "Sweep Alumni Parent", prefs: "{}" },
+      data: { email: parentEmail, name: "Sweep Alumni Parent", prefs: "{}", isTestFixture: true },
     });
     madeUserIds.push(parent.id);
     await db.guardianship.create({
@@ -1810,6 +1814,7 @@ async function main() {
 
   // Students may have no email (self-joined), so mint straight off the user row.
   const studentUser = studentMembership!.user;
+  touched.add(studentUser.id);
   const studentToken = randomBytes(32).toString("base64url");
   await db.session.create({
     data: {
@@ -2521,8 +2526,8 @@ async function main() {
   // reachable only by somebody holding an ExpertProfile, and the seed has none.
   const sweepExpertUser = await db.user.upsert({
     where: { email: SWEEP_EXPERT_EMAIL },
-    create: { email: SWEEP_EXPERT_EMAIL, name: "ZZ Sweep Expert", prefs: "{}" },
-    update: {},
+    create: { email: SWEEP_EXPERT_EMAIL, name: "ZZ Sweep Expert", prefs: "{}", isTestFixture: true },
+    update: { isTestFixture: true },
   });
   await db.expertProfile.upsert({
     where: { userId: sweepExpertUser.id },
@@ -2669,6 +2674,9 @@ async function main() {
   );
 
   await db.session.deleteMany({ where: { userAgent: "sweep" } });
+  // The notices this run caused its actors — a restored access, a suggested mentor — are the run's, not theirs to keep.
+  const notices = await db.notification.deleteMany({ where: { userId: { in: [...touched] }, createdAt: { gte: startedAt } } });
+  console.log(`swept away ${notices.count} notices the run caused.`);
   process.exit(failed.length ? 1 : 0);
 }
 

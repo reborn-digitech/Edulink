@@ -1,4 +1,5 @@
 import "server-only";
+import { readerIsFixture, realPeopleOnly } from "./fixtures";
 import { randomBytes, createHash } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -312,7 +313,7 @@ export async function listMarketplace(
   if (!session.schoolId) return [];
 
   const experts = await db.expertProfile.findMany({
-    where: { publishedAt: { not: null } },
+    where: { publishedAt: { not: null }, ...realPeopleOnly(await readerIsFixture(session.schoolId)) },
     include: {
       user: { select: { name: true, preferredName: true } },
       slots: {

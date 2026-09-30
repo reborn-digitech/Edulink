@@ -45,16 +45,22 @@ test("the keyboard switched to Marathi turns English letters into Devanagari as 
   const context = await contextFor(browser, admin.cookie, { viewport: DESK, theme: "light", locale: "en" }, baseURL!);
   const page = await context.newPage();
   expect((await page.goto("/admin/certificates/new", { waitUntil: "networkidle" }))?.status()).toBe(200);
+  // The switch is a chip beside whichever box has focus, and nowhere until one has.
   const sw = page.getByTestId("typing-switch").first();
   await expect(sw).toHaveAttribute("data-language", "en");
+  await expect(sw).toBeHidden();
+  const name = page.getByTestId("template-name");
+  await name.click();
+  await expect(sw).toBeVisible();
+  await expect(sw).toHaveText("Typing: EN");
   await sw.click();
   await expect(sw).toHaveAttribute("data-language", "hi");
   await sw.click();
   await expect(sw).toHaveAttribute("data-language", "mr");
+  // The box kept its focus through the presses.
+  await expect(name).toBeFocused();
 
   // An ordinary box: what the word will become is shown while it is typed, and written when it ends.
-  const name = page.getByTestId("template-name");
-  await name.click();
   await page.keyboard.press("ControlOrMeta+a");
   await page.keyboard.type("shaaLaa");
   await expect(page.getByTestId("typing-hint")).toHaveText("shaaLaa → शाळा");
@@ -75,7 +81,9 @@ test("the keyboard switched to Marathi turns English letters into Devanagari as 
   await expect(intro).toHaveText("नमस्ते ");
   await expect(page.getByTestId("preview-intro")).toHaveText("नमस्ते");
 
-  // Back to English: letters stay letters.
+  // Back to English: letters stay letters. The chip beside a paragraph that chooses its own language cannot be
+  // pressed, so the plain box is focused first.
+  await name.click();
   await sw.click();
   await expect(sw).toHaveAttribute("data-language", "en");
   await name.click();
@@ -154,6 +162,9 @@ for (const theme of ["light", "dark"] as const) {
     const page = await context.newPage();
     expect((await page.goto("/bulletin/new", { waitUntil: "networkidle" }))?.status()).toBe(200);
     await expect(page.getByTestId("post-font")).toBeVisible();
+    // Nowhere until a box has focus; then once, beside it.
+    await expect(page.locator('[data-testid="typing-switch"]:visible')).toHaveCount(0);
+    await page.locator("textarea").first().click();
     await expect(page.locator('[data-testid="typing-switch"]:visible')).toHaveCount(1);
     expect(await overflow(page), "the page scrolls sideways").toBeLessThanOrEqual(0);
     expect(await smallTargets(page), "interactive elements under 44px").toEqual([]);

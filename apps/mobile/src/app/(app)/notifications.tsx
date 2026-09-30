@@ -2,7 +2,7 @@ import { BackTo } from "@/components/back-to";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { View } from "react-native";
 import { notificationsSchema } from "@edulink/contracts";
-import { Button, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { Button, Empty, Failed, Loading, Row, Screen, ShowMore, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -31,9 +31,9 @@ function NotificationsInner() {
         ) : (
           <View style={{ gap: th.space[2] }}>
             <Button label={t("notif.markAllRead")} variant="secondary" onPress={() => readAll.mutate()} busy={readAll.isPending} />
-            {query.data.items.map((n) => (
-              <Row key={n.id} title={n.title} caption={n.body || undefined} right={n.read ? null : <Text variant="xs" tone="accent" bold>{t("notif.tabUnread")}</Text>} />
-            ))}
+            <ShowMore items={query.data.items}>
+              {(shown) => shown.map((n) => <Row key={n.id} title={n.title} caption={n.body || undefined} right={n.read ? null : <Text variant="xs" tone="accent" bold>{t("notif.tabUnread")}</Text>} />)}
+            </ShowMore>
           </View>
         )
       ) : null}

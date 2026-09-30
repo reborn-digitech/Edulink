@@ -1,4 +1,5 @@
 import "server-only";
+import { readerIsFixture } from "./fixtures";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -323,7 +324,7 @@ export type OpenSlot = { id: string; kind: SessionKind; title: string; startsAt:
 /** The times a pupil could take a seat in: published experts' and their own school's teachers', not begun, not full, not already theirs. */
 async function openFor(c: Child, now: Date): Promise<OpenSlot[]> {
   const slots = await db.gigSlot.findMany({
-    where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: "TEACHER", teacherSchoolId: c.schoolId }] },
+    where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: "TEACHER", teacherSchoolId: c.schoolId }], ...(await readerIsFixture(c.schoolId) ? {} : { provider: { isTestFixture: false } }) },
     orderBy: { startsAt: "asc" },
     take: 300,
     select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, providerKind: true, providerUserId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true } } } } },

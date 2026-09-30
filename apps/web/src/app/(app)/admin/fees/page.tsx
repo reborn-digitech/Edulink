@@ -128,13 +128,13 @@ export default async function FeesOverviewPage() {
       )}
 
       {/* ---------------- the numbers ---------------- */}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatTile label={t("fees.cardDemanded")} value={money(o.totals.demandedPaise)} hint={o.year.name} />
         <StatTile label={t("fees.cardCollected")} value={money(o.totals.collectedPaise)} tone="ok" />
         <StatTile label={t("fees.cardOutstanding")} value={money(o.totals.outstandingPaise)} tone={o.totals.outstandingPaise > 0 ? "warn" : "neutral"} />
         <StatTile label={t("fees.cardOverdue")} value={money(o.totals.overduePaise)} tone={o.totals.overduePaise > 0 ? "danger" : "neutral"} />
       </div>
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile label={t("fees.cardPupilsOnPlan")} value={o.pupils.onPlan} />
         <StatTile label={t("fees.cardPupilsWithout")} value={o.pupils.withoutPlan} tone={o.pupils.withoutPlan > 0 ? "warn" : "neutral"} />
         <StatTile

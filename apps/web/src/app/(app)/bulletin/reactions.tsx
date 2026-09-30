@@ -102,7 +102,7 @@ export function ReactionRow({
               aria-label={n > 0 ? `${label} (${n})` : label}
               aria-pressed={pressed}
               className={cn(
-                "peer inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold",
+                "peer inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-sm font-semibold",
                 "transition-[transform,background-color] duration-[--dur-fast] active:scale-90",
                 pressed
                   ? "bg-accent-soft text-accent-strong"

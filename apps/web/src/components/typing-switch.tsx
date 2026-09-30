@@ -16,8 +16,11 @@ import { useT } from "@/lib/i18n";
  * ONE SWITCH FOR THE PERSON, kept on the device. The owner asked for the
  * switch on each box; a box of its own would have needed every one of the
  * app's some hundred text fields to carry it, and the person typing Marathi
- * types Marathi into all of them. The switch is in the header instead, and
- * the box being typed in shows which language is on.
+ * types Marathi into all of them. So there is one switch, and it is shown
+ * beside whichever box has focus, labelled ("Typing: English"), and nowhere
+ * else: in the menu it read as the app's language, which it is not (the
+ * owner, 2026-10-01). A box that asks for a language of its own shows the
+ * same chip, saying so, and it cannot be pressed.
  *
  * NOTHING LEAVES THE DEVICE. The conversion is a table (lib/transliterate.ts),
  * not a service.
@@ -108,6 +111,8 @@ export function TypingSwitch({ className }: { className?: string }) {
   const language = useSyncExternalStore(subscribe, () => store.language, () => "en" as TypingLanguage);
   const [hint, setHint] = useState<{ text: string; left: number; top: number } | null>(null);
   const [owner, setOwner] = useState(false);
+  /** The box with focus: where the chip is drawn, and whether the box chooses its own language. */
+  const [anchor, setAnchor] = useState<{ top: number; right: number; own: TypingLanguage | null } | null>(null);
 
   useEffect(() => {
     const me = Symbol("typing");
@@ -160,16 +165,53 @@ export function TypingSwitch({ className }: { className?: string }) {
       setHint(null);
     };
     const onBlur = () => setHint(null);
-    // The bubble is placed where the box was; a page scrolled under it would leave it stranded, so it goes until the next keystroke.
+    // The chip sits above the box's top-right corner, or under it when the box is at the top of the window.
+    const place = (el: Editable) => {
+      const box = el.getBoundingClientRect();
+      const own = el.closest("[data-typing]")?.getAttribute("data-typing");
+      setAnchor({ top: box.top >= 40 ? box.top - 34 : box.bottom + 4, right: Math.max(8, window.innerWidth - box.right), own: own === "en" || own === "hi" || own === "mr" ? own : null });
+    };
+    const onFocusIn = (event: FocusEvent) => {
+      const el = editableOf(event.target);
+      if (el) place(el);
+    };
+    const onFocusOut = (event: FocusEvent) => {
+      // Focus moving onto the chip itself keeps it; anywhere else lets it go.
+      if (event.relatedTarget instanceof HTMLElement && event.relatedTarget.closest("[data-typing-chip]")) return;
+      setAnchor(null);
+    };
+    // The bubble is placed where the box was; a page scrolled under it would leave it stranded, so it goes until the
+    // next keystroke. The chip follows the box instead: a click that scrolls a box into view must not lose it.
+    let raf = 0;
+    const onScroll = () => {
+      setHint(null);
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = editableOf(document.activeElement);
+        if (el) place(el);
+        else setAnchor(null);
+      });
+    };
+    const onKeyUp = (event: KeyboardEvent) => {
+      const el = editableOf(event.target);
+      if (el) place(el);
+    };
     document.addEventListener("input", onInput, true);
     document.addEventListener("keydown", onKeyDown, true);
+    document.addEventListener("keyup", onKeyUp, true);
+    document.addEventListener("focusin", onFocusIn, true);
     document.addEventListener("focusout", onBlur, true);
-    document.addEventListener("scroll", onBlur, true);
+    document.addEventListener("focusout", onFocusOut, true);
+    document.addEventListener("scroll", onScroll, true);
     return () => {
       document.removeEventListener("input", onInput, true);
       document.removeEventListener("keydown", onKeyDown, true);
+      document.removeEventListener("keyup", onKeyUp, true);
+      document.removeEventListener("focusin", onFocusIn, true);
       document.removeEventListener("focusout", onBlur, true);
-      document.removeEventListener("scroll", onBlur, true);
+      document.removeEventListener("focusout", onFocusOut, true);
+      document.removeEventListener("scroll", onScroll, true);
+      cancelAnimationFrame(raf);
       if (engine === me) engine = null;
     };
   }, []);
@@ -183,30 +225,43 @@ export function TypingSwitch({ className }: { className?: string }) {
       /* the choice lives for the page */
     }
   };
-  const label = { en: "EN", hi: "हिंदी", mr: "मराठी" }[language];
+  const shown = anchor?.own ?? language;
+  const label = { en: "EN", hi: "हिंदी", mr: "मराठी" }[shown];
 
-  return (
+  // Only the engine's own instance draws anything; a second mount (a test, a nested page) is the store alone.
+  if (!owner) return null;
+  return createPortal(
     <>
-      <button
-        type="button"
-        onClick={() => choose(LANGUAGES[(LANGUAGES.indexOf(language) + 1) % LANGUAGES.length]!)}
-        aria-label={t("typing.switch", { language: t(`typing.${language}`) })}
-        title={t("typing.switchHint")}
-        className={`tap inline-flex items-center justify-center gap-1 rounded-full px-2 text-xs font-semibold text-fg-muted hover:bg-surface-muted ${language !== "en" ? "bg-accent-soft text-accent-strong" : ""} ${className ?? ""}`}
-        data-testid="typing-switch"
-        data-language={language}
+      <span
+        data-typing-chip
+        hidden={!anchor}
+        style={anchor ? { top: anchor.top, right: anchor.right } : undefined}
+        className="fixed z-50 inline-flex items-center rounded-full border border-border bg-surface shadow-md print:hidden"
       >
-        <KeyboardIcon className="size-4" aria-hidden="true" />
-        <span aria-hidden="true">{label}</span>
-      </button>
-      {owner &&
-        hint &&
-        createPortal(
-          <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[--radius-sm] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
-            {hint.text}
-          </span>,
-          document.body,
-        )}
-    </>
+        <button
+          type="button"
+          disabled={Boolean(anchor?.own)}
+          // The box keeps its focus and its caret while the chip is pressed.
+          onMouseDown={(event) => event.preventDefault()}
+          onClick={() => choose(LANGUAGES[(LANGUAGES.indexOf(language) + 1) % LANGUAGES.length]!)}
+          aria-label={anchor?.own ? t("typing.byFace", { language: t(`typing.${shown}`) }) : t("typing.switch", { language: t(`typing.${shown}`) })}
+          title={anchor?.own ? t("typing.byFace", { language: t(`typing.${shown}`) }) : t("typing.switchHint")}
+          className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-fg-muted hover:bg-surface-muted disabled:hover:bg-surface ${shown !== "en" ? "text-accent-strong" : ""} ${className ?? ""}`}
+          data-testid="typing-switch"
+          // The switch's own choice; what the focused box asks for instead, when it does, is data-own.
+          data-language={language}
+          data-own={anchor?.own ?? ""}
+        >
+          <KeyboardIcon className="size-4" aria-hidden="true" />
+          <span aria-hidden="true">{t("typing.label", { language: label })}</span>
+        </button>
+      </span>
+      {hint && (
+        <span role="status" aria-live="polite" style={{ left: hint.left, top: hint.top }} className="pointer-events-none fixed z-50 rounded-[--radius-sm] border border-border bg-surface px-2 py-1 text-sm text-fg shadow-md" data-testid="typing-hint">
+          {hint.text}
+        </span>
+      )}
+    </>,
+    document.body,
   );
 }

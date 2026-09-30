@@ -192,7 +192,8 @@ export function DataToolbar({
       )}
 
       {chipFacets.map((facet) => (
-        <div key={facet.key} role="group" aria-label={facet.label} className="-mx-1 flex snap-x gap-1.5 overflow-x-auto px-1 pb-0.5 no-scrollbar">
+        // The chips wrap: a row that scrolled sideways was cut at "Mentoring one chil…" with no sign of more (the walk of 2026-10-01).
+        <div key={facet.key} role="group" aria-label={facet.label} className="-mx-1 flex flex-wrap gap-1.5 px-1 pb-0.5">
           {facet.options.map((o) => {
             const on = facet.value === o.value;
             return (

@@ -1209,6 +1209,7 @@ export const hi: Dictionary = {
   },
 
   notif: {
+    repeated: "{count} बार भेजा गया; सबसे नया दिखाया गया है",
     kindFilter: "प्रकार",
     allKinds: "सभी प्रकार",
     kindExpert: "विशेषज्ञ",
@@ -2407,6 +2408,7 @@ export const hi: Dictionary = {
   },
 
   root: {
+    stateTest: "परीक्षण फ़िक्स्चर",
     selectSchool: "{name} चुनें",
     selectedCount: "{count} चुने गए",
     removeSelected: "चुने हुए हटाएँ",
@@ -2704,6 +2706,8 @@ export const hi: Dictionary = {
   },
 
   appadmin: {
+    chapterCountOne: "1 अध्याय",
+    chapterCountMany: "{count} अध्याय",
     bankSearchPlaceholder: "विषय और अध्याय खोजें",
     difficultyFilter: "कठिनाई",
     difficultyN: "स्तर {n}",
@@ -3831,6 +3835,7 @@ export const hi: Dictionary = {
     notifPaid: "{count} प्रश्नों के लिए आपको {amount} का भुगतान हुआ",
   },
   typing: {
+    label: "टाइपिंग: {language}",
     switch: "{language} में टाइप हो रहा है; बदलने के लिए दबाएँ",
     switchHint: "कीबोर्ड क्या लिखे: अंग्रेज़ी अक्षर, या अंग्रेज़ी अक्षरों में टाइप की गई हिंदी या मराठी",
     en: "अंग्रेज़ी",
@@ -4355,6 +4360,7 @@ export const hi: Dictionary = {
     excusedHint: "ज्ञात कारण से गैर-हाज़िर",
   },
   student: {
+    pastDue: "समय निकल गया",
     youreInName: "आप शामिल हो गए, {name}!",
     todayLessons: "आज के पीरियड",
     todayLessonsBody: "आपका दिन, पीरियड दर पीरियड। पूरा सप्ताह समय-सारणी पर है।",
@@ -4599,7 +4605,7 @@ export const hi: Dictionary = {
     coverTakenOn: "आपने संभाला हुआ कवर",
     yourLessons: "आपके पाठ",
     lessonsInPeriodOrder: "आज का पढ़ाना, पीरियड के क्रम में। पूरा सप्ताह समय-सारणी पर है।",
-    noLessonsToday: "आज कोई पाठ नहीं। पूरा सप्ताह समय-सारणी पर है।",
+    noLessonsToday: "आज कोई पाठ नहीं।",
     closedToday: "आज स्कूल बंद है — {name}।",
     openTimetable: "समय-सारणी खोलें",
     studentsCount: "{count} विद्यार्थी",
@@ -4691,6 +4697,7 @@ export const hi: Dictionary = {
     withdrawRequest: "यह आवेदन वापस लें", withdrawn: "वापस लिया",
   },
   common: {
+    showMore: "{count} और दिखाएँ",
     officeSetsThis: "इसे स्कूल कार्यालय तय करता है। आप इसे यहाँ पढ़ सकते हैं, बदल नहीं सकते।",
     retry: "फिर कोशिश करें",
     comingSoon: "जल्द आ रहा है",
@@ -6965,6 +6972,11 @@ export const hi: Dictionary = {
     inTerm: "इस सत्र में {count}",
   },
   staff: {
+    daysApprovedThisYear: "इस वर्ष {used} दिन स्वीकृत",
+    noEntitlementLine: "इस वर्ष के लिए अभी कोई हक़ तय नहीं — कार्यालय इसे तय करता है।",
+    nameHint: "आपका पूरा नाम स्टाफ़ रिकॉर्ड में है, जिसे शाला कार्यालय रखता है।",
+    birthdateHint: "कार्यालय और फ़ाइलिंग के लिए स्टाफ़ रिकॉर्ड में रखी जाती है।",
+    birthdateLocked: "स्टाफ़ रिकॉर्ड में रखी है; शाला कार्यालय इसे बदलता है।",
     filingAppointedSubject: "जिस विषय के लिए नियुक्ति हुई",
     subjectMathematics: "गणित",
     subjectEvs: "पर्यावरण अध्ययन",
@@ -7506,6 +7518,7 @@ export const hi: Dictionary = {
     noCoverageBody: "कार्यालय हर कक्षा-स्तर की अध्याय सूची वेब पर लिखता है। जब किसी कक्षा के पास सूची होगी, उसकी कवरेज यहाँ दिखेगी।",
   },
   staffAttendance: {
+    unmarkedDays: "{count} कार्य दिवस अंकित नहीं",
     title: "स्टाफ़ उपस्थिति",
     metaTitle: "स्टाफ़ उपस्थिति",
     intro: "आज कौन आया। दफ़्तर मेज़ पर स्टाफ़ रूम की हाज़िरी लगाता है, या हर व्यक्ति अपने फ़ोन से चेक-इन करता है; स्वीकृत छुट्टी खुद दिख जाती है। महीना हर व्यक्ति के हिसाब से जुड़ता है।",

@@ -103,6 +103,9 @@ export default async function TeacherProfilePage() {
             handle={null}
             studentCode={null}
             bioHintKey="reviews.bioHintTeacher"
+            nameHintKey="staff.nameHint"
+            birthdateHintKey="staff.birthdateHint"
+            birthdateLockedKey="staff.birthdateLocked"
           />
         </CardBody>
       </Card>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { cn } from "@/lib/cn";
 import {
   CalendarCheckIcon,
   ChartLineUpIcon,
@@ -19,7 +20,7 @@ import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { pupilRecordFor } from "@/lib/pupil-records";
@@ -313,7 +314,7 @@ export default async function ParentDashboard({
       </Card>
 
       {/* ---------------- at a glance ---------------- */}
-      <div className="grid gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("parent.attendance")}
           value={attendance.percent === null ? "—" : `${attendance.percent}%`}
@@ -431,8 +432,9 @@ export default async function ParentDashboard({
                       </span>
                       <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                     </span>
-                    <span className="shrink-0 text-xs font-medium text-fg-muted">
-                      {assignment.dueAt ? relativeTime(assignment.dueAt) : t("parent.noDueDate")}
+                    {/* A date that has passed says so: "2 months ago" under "Work due soon" read as a contradiction. */}
+                    <span className={cn("shrink-0 text-xs font-medium", assignment.dueAt && isWithin(assignment.dueAt, 0) ? "text-warn" : "text-fg-muted")}>
+                      {assignment.dueAt ? (isWithin(assignment.dueAt, 0) ? `${t("diary.overdue")} · ${relativeTime(assignment.dueAt)}` : relativeTime(assignment.dueAt)) : t("parent.noDueDate")}
                     </span>
                   </Link>
                 </li>

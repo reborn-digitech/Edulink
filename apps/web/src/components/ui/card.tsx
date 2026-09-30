@@ -9,7 +9,8 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-[--radius-lg] border border-border bg-surface shadow-sm",
+        // min-w-0: a card in a grid or flex row is sized by its column, not by the widest table inside it, which once pushed the fees page 110 px past a phone's edge.
+        "min-w-0 rounded-[--radius-lg] border border-border bg-surface shadow-sm",
         interactive &&
           "transition-[transform,box-shadow,border-color] duration-[--dur] ease-[--ease-out] hover:-translate-y-0.5 hover:shadow-md hover:border-border-strong active:translate-y-0",
         className,
@@ -25,19 +26,25 @@ export function CardHeader({
   action,
   icon,
   className,
+  id,
 }: {
   title: ReactNode;
   description?: ReactNode;
   action?: ReactNode;
   icon?: ReactNode;
   className?: string;
+  /** An anchor a link can open the card at. */
+  id?: string;
 }) {
   // The action wraps beneath the title on a narrow screen rather than
   // squeezing it to a word: a 311px pane once showed "Y…" for "Your lessons"
-  // beside an "Open the timetable" button.
+  // beside an "Open the timetable" button, and at 390px the title still had
+  // a third of the width beside that link (the walk of 2026-10-01). The title
+  // block asks for 14 rem before it shares a line, so a short "See all" sits
+  // beside it and anything wider goes underneath.
   return (
-    <div className={cn("flex flex-wrap items-start justify-between gap-3 p-5 pb-3", className)}>
-      <div className="flex min-w-0 flex-1 basis-40 items-start gap-3">
+    <div id={id} className={cn("flex flex-wrap items-start justify-between gap-3 p-5 pb-3", className)}>
+      <div className="flex min-w-0 flex-1 basis-56 items-start gap-3">
         {icon && (
           <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-accent-soft text-accent-strong">
             {icon}
@@ -48,7 +55,7 @@ export function CardHeader({
           {description && <p className="mt-0.5 text-sm text-fg-muted">{description}</p>}
         </div>
       </div>
-      {action && <div className="shrink-0">{action}</div>}
+      {action && <div className="max-w-full shrink-0">{action}</div>}
     </div>
   );
 }

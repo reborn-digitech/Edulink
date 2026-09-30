@@ -48,6 +48,15 @@ export type QuickAction = {
   labelKey: TranslationKey;
   icon: string;
   descriptionKey: TranslationKey;
+  /**
+   * The pages the floating button is drawn on, by exact path. Absent for the
+   * palette's actions, which float nowhere. The walk of 2026-10-01 found the
+   * button on every page of a role, covering the last row of a short register,
+   * a chapter picker and the icon of the next card, and beside a header button
+   * that said the same; it floats only where the action belongs now, and never
+   * on the page it leads to.
+   */
+  on?: string[];
 };
 
 export const NAV: Record<Role, NavItem[]> = {
@@ -232,17 +241,20 @@ export const NAV: Record<Role, NavItem[]> = {
 
 /** The one action each role does most. Becomes the floating action button. */
 export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
+  // The overview's header has its own "Invite people", so the button floats on the people pages instead.
   ADMIN: {
     href: "/admin/invites/new",
     labelKey: "action.invitePeople",
     icon: "userPlus",
     descriptionKey: "action.invitePeopleHint",
+    on: ["/admin/people", "/admin/classes"],
   },
   TEACHER: {
     href: "/teacher/attendance",
     labelKey: "action.takeRegister",
     icon: "checks",
     descriptionKey: "action.takeRegisterHint",
+    on: ["/teacher", "/teacher/classes"],
   },
   PRINCIPAL: null,
   STUDENT: null,
@@ -252,6 +264,7 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
     labelKey: "action.offerTime",
     icon: "calendar",
     descriptionKey: "action.offerTimeHint",
+    on: ["/expert", "/expert/sessions"],
   },
 };
 
