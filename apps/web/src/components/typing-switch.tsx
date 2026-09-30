@@ -56,10 +56,19 @@ function editableOf(target: EventTarget | null): Editable | null {
   return target.isContentEditable ? target : null;
 }
 
-/** The language a box asks for itself, or the switch's. */
-function languageOf(el: Editable, fallback: TypingLanguage): TypingLanguage {
+/**
+ * A box that asks for a language of its own (data-typing) gets it as its
+ * DEFAULT, and the chip beside it still cycles — for that box alone, kept
+ * while the page lives (the owner, 2026-10-01: "this should allow switching
+ * languages by clicking here"). A plain box follows the switch.
+ */
+const overrides = new WeakMap<Element, TypingLanguage>();
+function ownLanguage(el: Editable): TypingLanguage | null {
   const own = el.closest("[data-typing]")?.getAttribute("data-typing");
-  return own === "en" || own === "hi" || own === "mr" ? own : fallback;
+  return own === "en" || own === "hi" || own === "mr" ? own : null;
+}
+function languageOf(el: Editable, fallback: TypingLanguage): TypingLanguage {
+  return overrides.get(el) ?? ownLanguage(el) ?? fallback;
 }
 
 /** The Latin word before the caret, in an input or a textarea. */
@@ -112,7 +121,7 @@ export function TypingSwitch({ className }: { className?: string }) {
   const [hint, setHint] = useState<{ text: string; left: number; top: number } | null>(null);
   const [owner, setOwner] = useState(false);
   /** The box with focus: where the chip is drawn, and whether the box chooses its own language. */
-  const [anchor, setAnchor] = useState<{ top: number; right: number; own: TypingLanguage | null } | null>(null);
+  const [anchor, setAnchor] = useState<{ top: number; right: number; own: TypingLanguage | null; el: Editable } | null>(null);
 
   useEffect(() => {
     const me = Symbol("typing");
@@ -168,8 +177,7 @@ export function TypingSwitch({ className }: { className?: string }) {
     // The chip sits above the box's top-right corner, or under it when the box is at the top of the window.
     const place = (el: Editable) => {
       const box = el.getBoundingClientRect();
-      const own = el.closest("[data-typing]")?.getAttribute("data-typing");
-      setAnchor({ top: box.top >= 40 ? box.top - 34 : box.bottom + 4, right: Math.max(8, window.innerWidth - box.right), own: own === "en" || own === "hi" || own === "mr" ? own : null });
+      setAnchor({ top: box.top >= 40 ? box.top - 34 : box.bottom + 4, right: Math.max(8, window.innerWidth - box.right), own: ownLanguage(el), el });
     };
     const onFocusIn = (event: FocusEvent) => {
       const el = editableOf(event.target);
@@ -225,8 +233,20 @@ export function TypingSwitch({ className }: { className?: string }) {
       /* the choice lives for the page */
     }
   };
-  const shown = anchor?.own ?? language;
+  // What the focused box types in: its own override, its typeface's language, or the switch's.
+  const shown = anchor ? languageOf(anchor.el, language) : language;
   const label = { en: "EN", hi: "हिंदी", mr: "मराठी" }[shown];
+  const cycle = () => {
+    const next = LANGUAGES[(LANGUAGES.indexOf(shown) + 1) % LANGUAGES.length]!;
+    if (anchor?.own) {
+      // The box's own default is the typeface's; the press is this box's alone.
+      overrides.set(anchor.el, next);
+      setHint(null);
+      setAnchor({ ...anchor });
+    } else {
+      choose(next);
+    }
+  };
 
   // Only the engine's own instance draws anything; a second mount (a test, a nested page) is the store alone.
   if (!owner) return null;
@@ -240,17 +260,16 @@ export function TypingSwitch({ className }: { className?: string }) {
       >
         <button
           type="button"
-          disabled={Boolean(anchor?.own)}
           // The box keeps its focus and its caret while the chip is pressed.
           onMouseDown={(event) => event.preventDefault()}
-          onClick={() => choose(LANGUAGES[(LANGUAGES.indexOf(language) + 1) % LANGUAGES.length]!)}
-          aria-label={anchor?.own ? t("typing.byFace", { language: t(`typing.${shown}`) }) : t("typing.switch", { language: t(`typing.${shown}`) })}
-          title={anchor?.own ? t("typing.byFace", { language: t(`typing.${shown}`) }) : t("typing.switchHint")}
-          className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-fg-muted hover:bg-surface-muted disabled:hover:bg-surface ${shown !== "en" ? "text-accent-strong" : ""} ${className ?? ""}`}
+          onClick={cycle}
+          aria-label={t("typing.switch", { language: t(`typing.${shown}`) })}
+          title={anchor?.own ? t("typing.byFaceDefault", { language: t(`typing.${anchor.own}`) }) : t("typing.switchHint")}
+          className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-fg-muted hover:bg-surface-muted ${shown !== "en" ? "text-accent-strong" : ""} ${className ?? ""}`}
           data-testid="typing-switch"
-          // The switch's own choice; what the focused box asks for instead, when it does, is data-own.
+          // The switch's own choice; what the focused box types in, when that differs, is data-own.
           data-language={language}
-          data-own={anchor?.own ?? ""}
+          data-own={anchor && shown !== language ? shown : ""}
         >
           <KeyboardIcon className="size-4" aria-hidden="true" />
           <span aria-hidden="true">{t("typing.label", { language: label })}</span>

@@ -81,8 +81,8 @@ test("the keyboard switched to Marathi turns English letters into Devanagari as 
   await expect(intro).toHaveText("नमस्ते ");
   await expect(page.getByTestId("preview-intro")).toHaveText("नमस्ते");
 
-  // Back to English: letters stay letters. The chip beside a paragraph that chooses its own language cannot be
-  // pressed, so the plain box is focused first.
+  // Back to English: letters stay letters. The chip beside a paragraph that chooses its own language cycles that
+  // box alone, so the plain box is focused first to turn the switch itself.
   await name.click();
   await sw.click();
   await expect(sw).toHaveAttribute("data-language", "en");
@@ -128,6 +128,23 @@ test("a paragraph set in a Devanagari face is typed in Devanagari and one in a L
   await expect(intro).toHaveText("नमस्ते ");
   await expect(page.getByTestId("preview-intro")).toHaveText("नमस्ते");
   await expect(page.getByTestId("preview-intro")).toHaveCSS("font-family", /Hind/);
+  // The chip beside the paragraph says Hindi, the box's own default, and can still be pressed: for this box alone
+  // (the owner, 2026-10-01). Pressed twice, past Marathi to English, the same letters stay letters; the switch itself
+  // is untouched, and the hint under the box is about the default.
+  await expect(sw).toHaveAttribute("data-own", "hi");
+  await expect(sw).toHaveAttribute("data-language", "en");
+  await sw.click();
+  await expect(sw).toHaveAttribute("data-own", "mr");
+  await sw.click();
+  await expect(sw).toHaveAttribute("data-own", "");
+  await expect(sw).toHaveAttribute("data-language", "en");
+  await page.keyboard.type("namaste ");
+  await expect(intro).toHaveText("नमस्ते namaste ");
+  // Back to the box's own Hindi, by pressing on: the override is the box's, and the heading never had one.
+  await sw.click();
+  await expect(sw).toHaveAttribute("data-own", "hi");
+  await page.keyboard.type("namaste ");
+  await expect(intro).toHaveText("नमस्ते namaste नमस्ते ");
   // The heading, which has no face of its own, still follows the switch: English letters stay letters.
   await typeInto(title, "namaste ");
   await expect(title).toHaveValue("namaste ");

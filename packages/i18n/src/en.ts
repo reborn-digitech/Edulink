@@ -4047,6 +4047,7 @@ export const en = {
     notifPaid: "{amount} was paid to you for {count} questions",
   },
   typing: {
+    byFaceDefault: "Starts in {language}, as its typeface asks; press to type in another.",
     label: "Typing: {language}",
     switch: "Typing in {language}; press to change",
     switchHint: "What the keyboard writes: English letters, or Hindi or Marathi typed in English letters",
