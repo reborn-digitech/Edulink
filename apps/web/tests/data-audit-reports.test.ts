@@ -23,7 +23,7 @@ import { leaveBalanceFor } from "@/lib/staff-records";
 import { classInsights, defaultWindow } from "@/lib/insights";
 import { buildProgressReport } from "@/lib/reports";
 import { schoolYearArchive, listClosedYears } from "@/lib/year-archive";
-import { messagingOverview } from "@/lib/messaging";
+import { messagingOverview, monthStartFor } from "@/lib/messaging";
 import { retentionPreview } from "@/lib/retention";
 import { HOLIDAY_KIND_META } from "@/lib/holiday-kinds";
 import { todayKey } from "@/lib/dates";
@@ -572,8 +572,8 @@ d("the figures the head, the family and the operator read", () => {
       const ctx = ctxs.get(s.id)?.admin;
       if (!ctx) continue;
       const ov = await messagingOverview(ctx);
-      const now = new Date();
-      const monthStart = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
+      // The school's month, as the overview counts it: UTC's month once differed from Kolkata's for five and a half hours on the 1st (1 Oct 2026, 01:47 IST).
+      const monthStart = await monthStartFor(s.id, new Date());
       const rows = await db.outboundMessage.groupBy({ by: ["status"], where: { schoolId: s.id, createdAt: { gte: monthStart } }, _count: true });
       const n = (st: string) => rows.find((r) => r.status === st)?._count ?? 0;
       const exp = { sent: n("SENT") + n("DELIVERED") + n("UNDELIVERED"), delivered: n("DELIVERED"), failed: n("FAILED") + n("UNDELIVERED"), skipped: n("SKIPPED") };

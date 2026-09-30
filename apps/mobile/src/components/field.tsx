@@ -74,7 +74,7 @@ export function Field({ label, error, hint, style, typing, onChangeText, onFocus
             accessibilityLabel={tr("typing.switch", { language: tr(`typing.${language}`) })}
             testID="typing-switch"
             onPress={cycle}
-            style={({ pressed }) => ({ flexDirection: "row", alignItems: "center", gap: t.space[1], minHeight: 32, paddingHorizontal: t.space[3], borderRadius: t.radius.xl, borderWidth: 1, borderColor: t.border, backgroundColor: pressed ? t.surfaceMuted : t.surface })}
+            style={({ pressed }) => ({ flexDirection: "row", alignItems: "center", gap: t.space[1], minHeight: 44, paddingHorizontal: t.space[3], borderRadius: t.radius.xl, borderWidth: 1, borderColor: t.border, backgroundColor: pressed ? t.surfaceMuted : t.surface })}
           >
             <Icon name="keyboard" size={16} color={language === "en" ? t.fgMuted : t.accentStrong} weight="regular" />
             <Text variant="xs" bold tone={language === "en" ? "muted" : "accent"}>

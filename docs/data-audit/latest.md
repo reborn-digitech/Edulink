@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-09-30T13:38:43.234Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 23 INFO
+Run: 2026-09-30T22:48:20.643Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 23 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -31,11 +31,11 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | cards-api | Saraswati Vidya Mandir | the sampled child has no report card to read |
 | cards-api | Sunrise Public School | the sampled child has no report card to read |
 | cards-api | ZZ Northgate School | the sampled child has no report card to read |
-| board-api | Saraswati Vidya Mandir | 2026-09-30: 1 away, 5 lessons, 1 covered |
-| board-api | Sunrise Public School | 2026-09-30: 1 away, 5 lessons, 1 covered |
-| board-api | ZZ Northgate School | 2026-09-30: 1 away, 6 lessons, 1 covered |
+| board-api | Saraswati Vidya Mandir | 2026-10-01: 0 away, 0 lessons, 0 covered |
+| board-api | Sunrise Public School | 2026-10-01: 0 away, 0 lessons, 0 covered |
+| board-api | ZZ Northgate School | 2026-10-01: 0 away, 0 lessons, 0 covered |
 | overview-api | Saraswati Vidya Mandir | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Sunrise Public School | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |
-| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide |
+| population | all | school tables with no rows: ExpertInvite, GatewayEvent, GlobalPostHide, ScheduledDeparture |
 | population | all | nullable columns never populated: AdmissionCycle.opensAt, AdmissionCycle.closesAt, Assignment.rubric, AttendanceRecord.note, AttendanceSession.note, EarnedBadge.academicYearId, Enquiry.closedAt, EntranceSlot.note, ExamSeries.archivedAt, FeeConcession.revokedAt, FeeDemand.carriedToDemandId, FeeHead.retiredAt, FeePayment.confirmedByUserId, FeePayment.failedReason, FeePayment.reversedAt, FeePayment.reversedByUserId, FeePayment.reversalReason, FeeRefund.gatewayRefundId, FeeRefund.cutsJson, FeeRefund.failedReason, FeeStructure.archivedAt, GigBooking.cancelledAt, GigBooking.cancelledByUserId, GigBooking.cancelReason, GigBooking.rating, GigBooking.feedback, GigBooking.ratedAt, GigBooking.remindedAt, Grade.letter, Grade.comment, GuardianClaim.decidedAt, GuardianClaim.decidedByUserId, GuardianClaim.declineReason, Invite.classId, Invite.acceptedByUserId, Invite.acceptedAt, Invite.relation, Invite.studentMembershipId, IssuedCertificate.remark, IssuedCertificate.studentName, JobPosting.closedAt, JoinRequest.decidedAt, JoinRequest.decidedByMembershipId, JoinRequest.declineReason, MeetingBooking.cancelledAt, MeetingSlot.cancelledAt, Membership.suspendedAt, Membership.suspendedReason, MentorThread.closedAt, MentorThread.declineReason, OperatorAccess.endedAt, OutboundMessage.error, OutboundMessage.deliveredAt, PenChangeRequest.principalDecidedAt, PenChangeRequest.principalUserId, PenChangeRequest.principalApproved, PenChangeRequest.guardianDecidedAt, PenChangeRequest.guardianUserId, PenChangeRequest.guardianApproved, PenChangeRequest.decisionReason, PenChangeRequest.appliedAt, Post.rejectionReason, Post.pinnedAt, Post.audienceGrade, PracticeAssignment.archivedAt, PupilRecord.guardianPhone, PupilRecord.alternatePhone, PupilRecord.freeUniform, PupilRecord.freeTextbook, PupilRecord.extracurricular, PupilRecord.stream, PupilRecord.vocationalCourse, PupilRecord.vocationalTradeId, PupilRecord.vocationalJobRoleId, PupilRecord.vocationalExamAppeared, RemarkThread.closedAt, Report.resolvedAt, Report.resolutionNote, ReportCardItem.comment, StaffRecord.qualification, StaffRecord.appointedSubject, TimetablePeriod.archivedAt |

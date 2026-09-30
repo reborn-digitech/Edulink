@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-09-30T13:38:40.751Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 73 INFO
+Run: 2026-09-30T22:50:09.906Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 74 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -169,7 +169,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 8 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (73)
+## INFO (74)
 
 | check | school | detail |
 |---|---|---|
@@ -233,6 +233,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | Sunrise Public School | 6 of 47 pupils lack admission date — feeds UDISE+ ADMISSION DATE falls back to the day the account joined |
 | inputs-pupils | Sunrise Public School | 6 of 47 pupils lack previous school's TC — feeds the admission register's TC column, for pupils who came from another school |
 | inputs-school | Sunrise Public School | school has no logo — certificates, receipts and progress reports print no logo |
+| inputs-school | Sunrise Public School | 6 timetable slot(s) have no teacher |
 | inputs-school | Sunrise Public School | 43 pupil(s) have no health card |
 | inputs-pupils | ZZ Northgate School | 1 of 48 pupils lack previous school's TC — feeds the admission register's TC column, for pupils who came from another school |
 | inputs-staff | ZZ Northgate School | 4 of 12 staff lack a staff record — feeds the DCF teacher profile, leave balances |

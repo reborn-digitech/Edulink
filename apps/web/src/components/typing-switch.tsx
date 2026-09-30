@@ -265,7 +265,7 @@ export function TypingSwitch({ className }: { className?: string }) {
           onClick={cycle}
           aria-label={t("typing.switch", { language: t(`typing.${shown}`) })}
           title={anchor?.own ? t("typing.byFaceDefault", { language: t(`typing.${anchor.own}`) }) : t("typing.switchHint")}
-          className={`inline-flex min-h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-fg-muted hover:bg-surface-muted ${shown !== "en" ? "text-accent-strong" : ""} ${className ?? ""}`}
+          className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 text-xs font-semibold text-fg-muted hover:bg-surface-muted ${shown !== "en" ? "text-accent-strong" : ""} ${className ?? ""}`}
           data-testid="typing-switch"
           // The switch's own choice; what the focused box types in, when that differs, is data-own.
           data-language={language}
