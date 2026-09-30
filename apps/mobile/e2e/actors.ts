@@ -83,7 +83,7 @@ export function allRoutesFor(role: Role): string[] {
  * class, a post, a booking — are covered by their jest tests.)
  */
 const EXTRA: Partial<Record<Role, string[]>> = {
-  TEACHER: ["/worksheets", "/report-cards", "/remark-new", "/mentoring-setup", "/avatar"],
+  TEACHER: ["/worksheets", "/report-cards", "/remark-new", "/mentoring-setup", "/avatar", "/contribution"],
   STUDENT: ["/quiz?mode=revision", "/post-new", "/mentoring-setup", "/avatar"],
   PARENT: ["/link-child", "/mentoring-setup"],
   ADMIN: ["/invites", "/intake", "/directory-profile", "/class-new", "/timetable-editor", "/competition-new", "/post-new", "/fees-dues", "/fee-claims", "/messaging-new"],

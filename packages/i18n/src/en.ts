@@ -3787,6 +3787,13 @@ export const en = {
     sameAsPaper: "Same as the paper",
   },
   gigs: {
+    slotDate: "Date",
+    slotTime: "Time",
+    topicSearch: "Find a chapter",
+    topicChosen: "Chapter: {name}",
+    changeTopic: "Change the chapter",
+    chooseTopic: "Choose a chapter first.",
+    answerLabel: "The correct option",
     notifRemind: "{title} starts within a day",
     sessionsTitle: "Sessions and workshops",
     sessionsIntro: "One-to-one time with an expert or a teacher, and workshops, held on the provider's own meeting link. Each pupil has a free allowance in a school year.",

@@ -182,6 +182,8 @@ const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.numb
 
 /** GET /api/v1/gigs/sessions — for a pupil, or for each of a guardian's children: the free allowance, their seats, and what is open to book. */
 export const gigFamilySessionsSchema = z.object({
+  /** A confirmed seat given up inside this many hours of the start still counts against the allowance. */
+  freeCancelHours: z.number().int(),
   children: z.array(
     z.object({
       id,

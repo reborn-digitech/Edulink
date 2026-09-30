@@ -105,6 +105,13 @@ const FLAT: Record<string, string> = {
   "/parent/applications": "/(app)/my-applications",
   // Filings (September 2026): the UDISE+ and board returns, for the office and the head.
   "/admin/filings": "/(app)/filings",
+  // Gigs (September 2026): sessions are one screen for the family, the provider and the office; a teacher's questions for the bank are two.
+  "/sessions": "/(app)/sessions",
+  "/expert/sessions": "/(app)/sessions",
+  "/teacher/guidance": "/(app)/sessions",
+  "/admin/sessions": "/(app)/sessions",
+  "/teacher/contributions": "/(app)/contributions",
+  "/teacher/contributions/new": "/(app)/contribution",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */
@@ -119,6 +126,7 @@ const BY_ID: { prefix: string; pathname: string; param: string; not?: string[] }
   { prefix: "/admin/messaging/", pathname: "/(app)/messaging-broadcast", param: "broadcastId", not: ["new"] },
   { prefix: "/admin/admissions/applications/", pathname: "/(app)/application", param: "id", not: ["new"] },
   { prefix: "/parent/applications/", pathname: "/(app)/my-application", param: "id" },
+  { prefix: "/teacher/contributions/", pathname: "/(app)/contribution", param: "id", not: ["new"] },
 ];
 
 export function screenFor(url: string): ScreenTarget | null {

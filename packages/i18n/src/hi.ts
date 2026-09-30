@@ -3575,6 +3575,13 @@ export const hi: Dictionary = {
     sameAsPaper: "कागज़ जैसा ही",
   },
   gigs: {
+    slotDate: "तारीख़",
+    slotTime: "समय",
+    topicSearch: "अध्याय खोजें",
+    topicChosen: "अध्याय: {name}",
+    changeTopic: "अध्याय बदलें",
+    chooseTopic: "पहले एक अध्याय चुनें।",
+    answerLabel: "सही विकल्प",
     notifRemind: "{title} एक दिन के भीतर शुरू होगा",
     sessionsTitle: "सत्र और कार्यशालाएँ",
     sessionsIntro: "किसी विशेषज्ञ या शिक्षक के साथ आमने-सामने का समय, और कार्यशालाएँ, प्रदाता के अपने मीटिंग लिंक पर। हर विद्यार्थी को एक शैक्षणिक वर्ष में कुछ सत्र निःशुल्क मिलते हैं।",

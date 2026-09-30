@@ -189,8 +189,9 @@ end-to-end in staging.
   free one-to-ones and two workshop seats a school year (`/sessions`), a pupil's own ask waits
   for a guardian, the link shows only while a seat is confirmed, and the office reads and may
   cancel every booking of its pupils (`/admin/sessions`). Not built: paying past the allowance
-  and the gateway split, which wait on a lawyer's opinion and an accountant (see the decision);
-  the phone. The hourly job `gigs:remind` tells a family and the provider of a session that starts
+  and the gateway split, which wait on a lawyer's opinion and an accountant (see the decision).
+  The phone has the family's, the provider's and the office's sessions on one route and a teacher's
+  questions on two; the content team's review and the operator's page are on the web only. The hourly job `gigs:remind` tells a family and the provider of a session that starts
   within a day, once.
 - **Minors' data policy** (decision 0002). No Aadhaar, ever. Free-text reasons stay out of audit rows,
   push bodies to minors are generic, retention is a schedule with dials, and every column a report

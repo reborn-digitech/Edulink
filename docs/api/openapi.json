@@ -77561,6 +77561,9 @@
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "freeCancelHours": {
+                      "type": "integer"
+                    },
                     "children": {
                       "type": "array",
                       "items": {
@@ -77769,6 +77772,7 @@
                     }
                   },
                   "required": [
+                    "freeCancelHours",
                     "children"
                   ],
                   "additionalProperties": false

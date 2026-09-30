@@ -356,7 +356,7 @@ export type FamilyBooking = {
 export type FamilyChild = { id: string; name: string; schoolName: string; /** The school's clock, which the times are read in. */ timeZone: string; allowance: Allowance; bookings: FamilyBooking[]; open: OpenSlot[] };
 
 /** Everything a pupil, or a guardian for each of their children, sees of sessions: the allowance, their seats, and what is open. */
-export async function familySessions(ctx: ActiveContext, now: Date = new Date()): Promise<{ children: FamilyChild[] }> {
+export async function familySessions(ctx: ActiveContext, now: Date = new Date()): Promise<{ children: FamilyChild[]; /** A confirmed seat given up inside this many hours of the start still counts. */ freeCancelHours: number }> {
   const all = await children(ctx);
   const settings = await gigSettings();
   const out: FamilyChild[] = [];
@@ -399,7 +399,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
       }),
     });
   }
-  return { children: out };
+  return { children: out, freeCancelHours: settings.freeCancelHours };
 }
 
 async function tellProvider(schoolId: string, slot: { providerUserId: string; providerKind: string; title: string }, titleKey: TranslationKey, vars: Record<string, string | number>, body?: string): Promise<void> {

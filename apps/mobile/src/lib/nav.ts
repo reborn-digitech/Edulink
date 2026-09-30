@@ -44,11 +44,13 @@ export const TABS: Record<RoleCode, Tab[]> = {
     { name: "index", labelKey: "nav.bookings", icon: "house" },
     { name: "availability", labelKey: "nav.availability", icon: "calendar" },
     { name: "mentoring", labelKey: "nav.mentoring", icon: "chat" },
+    // Sessions and workshops with pupils (gigs): a primary of the expert's on the web, and their fourth tab here. For every other role it is a More entry.
+    { name: "sessions", labelKey: "nav.sessions", icon: "users" },
   ],
 };
 
 /** Every screen name any role has a tab for; the tab layout declares them all and hides the rest per role. */
-export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "assignments", "practice", "people", "leave", "availability", "mentoring", "more"] as const;
+export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "assignments", "practice", "people", "leave", "availability", "mentoring", "sessions", "more"] as const;
 
 /**
  * The rest of the web's NAV for each role — what the web's rail and More
@@ -85,6 +87,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" },
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -97,6 +101,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -118,6 +123,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
   ],
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
@@ -151,6 +157,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -177,6 +184,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
@@ -282,6 +290,8 @@ export const HIDDEN_SCREENS = [
   "my-application",
   "apply",
   "filings",
+  "contributions",
+  "contribution",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

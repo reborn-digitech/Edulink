@@ -32,7 +32,9 @@ Experts and teachers may do work through the platform that is first given free a
 - A provider's free duty is counted and shown to them; nothing yet enforces it, there being nothing yet to charge for.
 - A confirmed seat in a session that starts within a day is reminded once to the pupil and their guardians, and the provider once for the slot, by the hourly job `gigs:remind`.
 
-**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds), and the phone's screens for any of this.
+**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds).
+
+**On the phone (2026-09-30).** Sessions is one route for every role: a pupil or a guardian books and answers, an expert (for whom it is a fourth tab) or a teacher offers, marks and cancels, and the office reads, cancels and turns the guidance switch. A teacher's questions are two screens, the list with their standing and where they are paid, and the question itself in three languages. The content team's review and the operator's dials and payments stay on the web.
 
 ## The invariants of what is built
 

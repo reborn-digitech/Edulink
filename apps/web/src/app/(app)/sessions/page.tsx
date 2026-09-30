@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { familySessions, type BookingStatus } from "@/lib/gig-sessions";
-import { gigSettings } from "@/lib/gig-questions";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
@@ -27,7 +26,7 @@ export default async function SessionsPage() {
   if (ctx.role !== "STUDENT" && ctx.role !== "PARENT") redirect("/");
   const t = await getT();
   const locale = await getLocale();
-  const [{ children }, settings] = await Promise.all([familySessions(ctx), gigSettings()]);
+  const { children, freeCancelHours } = await familySessions(ctx);
   const byGuardian = ctx.role === "PARENT";
 
   return (
@@ -72,7 +71,7 @@ export default async function SessionsPage() {
                             <span className="ml-2 text-xs text-fg-muted">{t("gigs.linkHint")}</span>
                           </p>
                         )}
-                        <SeatActions bookingId={b.id} title={b.title} canConsent={b.canConsent} canCancel={b.canCancel} canRate={b.canRate} canReportUnheld={b.canReportUnheld} confirmed={b.status === "CONFIRMED"} lateHours={settings.freeCancelHours} />
+                        <SeatActions bookingId={b.id} title={b.title} canConsent={b.canConsent} canCancel={b.canCancel} canRate={b.canRate} canReportUnheld={b.canReportUnheld} confirmed={b.status === "CONFIRMED"} lateHours={freeCancelHours} />
                       </li>
                     ))}
                   </ul>

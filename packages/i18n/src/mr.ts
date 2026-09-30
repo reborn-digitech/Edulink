@@ -3572,6 +3572,13 @@ export const mr: Dictionary = {
     sameAsPaper: "कागदाप्रमाणेच",
   },
   gigs: {
+    slotDate: "तारीख",
+    slotTime: "वेळ",
+    topicSearch: "धडा शोधा",
+    topicChosen: "धडा: {name}",
+    changeTopic: "धडा बदला",
+    chooseTopic: "आधी एक धडा निवडा.",
+    answerLabel: "बरोबर पर्याय",
     notifRemind: "{title} एका दिवसात सुरू होईल",
     sessionsTitle: "सत्रे आणि कार्यशाळा",
     sessionsIntro: "तज्ज्ञ किंवा शिक्षकासोबत समोरासमोर वेळ, आणि कार्यशाळा, देणाऱ्याच्या स्वतःच्या मीटिंग लिंकवर. प्रत्येक विद्यार्थ्याला एका शैक्षणिक वर्षात काही सत्रे मोफत मिळतात.",

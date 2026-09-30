@@ -21,6 +21,11 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/admin/timetable")).toEqual({ pathname: "/(app)/timetable" });
     expect(screenFor("/admin/safety")).toEqual({ pathname: "/(app)/safety" });
     expect(screenFor("/admin/filings")).toEqual({ pathname: "/(app)/filings" });
+    // Gigs: the four web pages of sessions are one screen; a teacher's question opens by its id.
+    for (const path of ["/sessions", "/expert/sessions", "/teacher/guidance", "/admin/sessions"]) expect(screenFor(path)).toEqual({ pathname: "/(app)/sessions" });
+    expect(screenFor("/teacher/contributions")).toEqual({ pathname: "/(app)/contributions" });
+    expect(screenFor("/teacher/contributions/new")).toEqual({ pathname: "/(app)/contribution" });
+    expect(screenFor("/teacher/contributions/q1")).toEqual({ pathname: "/(app)/contribution", params: { id: "q1" } });
     expect(screenFor("/parent/settings")).toEqual({ pathname: "/(app)/settings" });
     expect(screenFor("/expert/availability")).toEqual({ pathname: "/(app)/availability" });
     expect(screenFor("/attendance/history")).toEqual({ pathname: "/(app)/attendance" });
