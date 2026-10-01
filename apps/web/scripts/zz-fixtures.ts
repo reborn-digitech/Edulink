@@ -1582,6 +1582,36 @@ export async function buildSubstitutions(school: { id: string }, adminUserId: st
 }
 
 /**
+ * A second lesson of today's absent teacher, covered by the head, so the
+ * covering person's own doors (/teaching/covers/{id}/acknowledge and
+ * /decline) have a row the API sweep's PRINCIPAL is named on. Not the
+ * sweep's teacher: the grade-3 lead teaches every staffed period of the ZZ
+ * week (free only in Friday's last period, which the fixture leaves
+ * unstaffed), so no honest cover could name them. The head teaches nothing
+ * and is free in every period. ZZ Northgate only (demo:schools does not
+ * call it); run after buildSubstitutions, whose delete of today's rows it
+ * relies on.
+ */
+export async function buildHeadCover(school: { id: string }, adminUserId: string, absent: { membership: { id: string } } | undefined) {
+  if (!absent) return { covered: 0 };
+  const today = new Date().toISOString().slice(0, 10);
+  const weekday = new Date(`${today}T00:00:00Z`).getUTCDay();
+  const head = await db.membership.findFirst({ where: { schoolId: school.id, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, user: { email: `zz.principal@${DOMAIN}` } }, select: { id: true } });
+  if (!head) return { covered: 0 };
+  const away = await db.staffAttendance.findFirst({ where: { membershipId: head.id, dateKey: today, status: { in: ["ABSENT", "ON_LEAVE"] } }, select: { id: true } });
+  if (away) return { covered: 0 };
+  const taken = (await db.substitution.findMany({ where: { schoolId: school.id, dateKey: today }, select: { slotId: true } })).map((r) => r.slotId);
+  const slots = await db.timetableSlot.findMany({ where: { schoolId: school.id, weekday, teacherMembershipId: absent.membership.id, class: { archivedAt: null }, id: { notIn: taken } }, orderBy: { period: { position: "asc" } }, select: { id: true, periodId: true } });
+  for (const slot of slots) {
+    const busy = await db.timetableSlot.findFirst({ where: { schoolId: school.id, weekday, periodId: slot.periodId, teacherMembershipId: head.id }, select: { id: true } });
+    if (busy) continue;
+    await db.substitution.create({ data: { schoolId: school.id, dateKey: today, slotId: slot.id, absentMembershipId: absent.membership.id, substituteMembershipId: head.id, note: "ZZ the head takes this one.", createdByUserId: adminUserId } });
+    return { covered: 1 };
+  }
+  return { covered: 0 };
+}
+
+/**
  * The syllabus for ZZ Northgate's grade 3: Mathematics and English lists,
  * the grade-3 class two chapters into each with one in progress, and two
  * lessons (one taught, one planned), so the head's coverage has rows and
@@ -2343,6 +2373,7 @@ async function main() {
   const staffAtt = await buildStaffAttendance(northgate.school, northgate.admin.id);
   const syllabus = await buildSyllabus(northgate.school);
   const subs = await buildSubstitutions(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
+  const headCover = await buildHeadCover(northgate.school, northgate.admin.id, northgate.subjectTeachers[0]);
   const exams = await buildExams(northgate.school, northgate.admin.id);
   const certs = await buildCertificates(northgate.school, northgate.admin.id);
   const admissions = await buildAdmissions(northgate.school, northgate.admin.id, fees.structure.id);
@@ -2424,7 +2455,7 @@ async function main() {
      certificates ${certs.templates} templates (en, mr, one retired hi), ${certs.records} grade-3 pupil records (the last missing its admission date), ${certs.issued} issued (one revoked), ${certs.requests} asks (one pending, one declined, one cancelled) — /admin/certificates
      filings     UDISE 27250100101, MSBSHSE, Marathi medium; grade-3 records carry gender, BPL/EWS, one impairment, two Marathi names; ${staffRecords.records} staff records — /admin/filings
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
-     substitutes ${subs.covered} lesson covered today (zz.subject1 absent, a free colleague on their first lesson) — /admin/substitutions
+     substitutes ${subs.covered + headCover.covered} lesson(s) covered today (zz.subject1 absent, a free colleague on their first lesson, zz.principal on the next) — /admin/substitutions
      calendar    ${calendar.entries} entries for 2026–27 (holidays, the mid-term exam span, the annual day); ${rolls.numbered} roll numbers — /admin/calendar
      also        invite ${invite.status} for zz.invite1@${DOMAIN}; a remark thread (zz.teacher1 ↔ zz.parent01 about zz.pupil01); practice assignment for grade 6${practice.topic ? ` on "${practice.topic}"` : " (no bank imported: none)"}
 

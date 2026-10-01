@@ -8,7 +8,9 @@ import { startTwoFactor } from "@/lib/two-factor";
  * POST /api/v1/account/totp/start — a fresh secret for the authenticator
  * app, as base32 and as the otpauth:// link. Nothing guards the sign-in until
  * /confirm has seen one code from it. The office, the head and the operator
- * only; 403 for everyone else and when the server has no sealing key.
+ * only — by the account's memberships, not the session's active role, since
+ * the secret guards every sign-in whatever context follows (two-factor.ts);
+ * 403 for everyone else and when the server has no sealing key.
  */
 export async function POST() {
   try {

@@ -34,9 +34,14 @@ export const ACCOUNT: Endpoint[] = [
   { method: "POST", path: "/api/v1/account/bookings/{bookingId}/messages", summary: "Write in a booking's conversation", access: BOOKING_SIDES, request: c.accountBookingMessageSchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
   { method: "POST", path: "/api/v1/account/bookings/{bookingId}/cancel", summary: "Cancel a booking (either side; the hour goes back on offer)", access: BOOKING_SIDES, response: c.okSchema, sample: () => null },
   // ---- two-step sign-in (TOTP): the office, the head and the operator ------------
-  // The status is every signed-in person's (it says whether they may turn it on); turning it on and off is theirs alone, and the lib refuses the rest with 403. No sampleBody: a valid code is a secret only an authenticator app holds.
+  // The status is every signed-in person's (it says whether they may turn it on). Two-step sign-in belongs to the ACCOUNT, not to the
+  // session's active role: the secret guards every sign-in whatever context follows, so two-factor.ts decides eligibility by the
+  // person's memberships (an active ADMIN or PRINCIPAL anywhere, or the operator), which `start` alone checks — the role list on it is
+  // that rule as the catalog can say it (a teacher who is also an office member elsewhere is admitted). `confirm` needs the pending
+  // secret only `start` makes (409 otherwise) and `disable` must stay open to a person whose office role has ended, so both are any
+  // signed-in person's and read the body first. No sampleBody: a valid code is a secret only an authenticator app holds.
   { method: "GET", path: "/api/v1/account/totp", summary: "Two-step sign-in: whether it is on for me, and whether I may turn it on", access: "signed-in", response: c.totpStatusSchema },
-  { method: "POST", path: "/api/v1/account/totp/start", summary: "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed", access: ["ADMIN", "PRINCIPAL"], response: c.totpStartedSchema },
-  { method: "POST", path: "/api/v1/account/totp/confirm", summary: "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once", access: ["ADMIN", "PRINCIPAL"], request: c.totpConfirmSchema, response: c.totpConfirmedSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/account/totp/disable", summary: "A code from the app, or a recovery code, turns two-step sign-in off", access: ["ADMIN", "PRINCIPAL"], request: c.totpDisableSchema, response: c.okSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/account/totp/start", summary: "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed. Decided by the account, not the session's role: an active ADMIN or PRINCIPAL membership at any school, or the operator (403 otherwise)", access: ["ADMIN", "PRINCIPAL"], response: c.totpStartedSchema },
+  { method: "POST", path: "/api/v1/account/totp/confirm", summary: "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once", access: "signed-in", request: c.totpConfirmSchema, response: c.totpConfirmedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/account/totp/disable", summary: "A code from the app, or a recovery code, turns two-step sign-in off", access: "signed-in", request: c.totpDisableSchema, response: c.okSchema, emptyBodyStatus: 422 },
 ];

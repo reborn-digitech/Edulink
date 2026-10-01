@@ -147,7 +147,7 @@ export type SweepFixture = {
   admittedApplicationId: string | null;
   waitlistedApplicationId: string | null;
   withdrawnApplicationId: string | null;
-  /** A cover today whose substitute is the sweep's teacher (the sampled class's lead), for the acknowledge and decline doors; null when nobody asked them to cover anything. */
+  /** A cover today whose substitute is the sweep's head (zz.principal; the fixture's grade-3 lead teaches every staffed period), for the acknowledge and decline doors; null when nobody asked them to cover anything. */
   myCoverId: string | null;
   /** A lesson plan template of the school, for the apply door. */
   planTemplateId: string | null;
