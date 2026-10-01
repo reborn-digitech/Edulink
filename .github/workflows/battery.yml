@@ -110,6 +110,12 @@ jobs:
       - name: Packages
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
       - name: Mobile battery · tsc, eslint, jest with the lib coverage gate, the Maestro flow check
+        # Jest's own process holds every suite's result and the coverage map;
+        # at 178 suites it crossed the runner's ~2 GB default heap 151 suites in
+        # (run 36846750919, "JavaScript heap out of memory"). A Mac's default
+        # is larger. Four, as the web's tsc has.
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
         run: pnpm --filter @edulink/mobile battery
       - name: Mobile bundle size · both platforms, target 4.5 MB, ceiling 5.5 MB
         run: pnpm --filter @edulink/mobile bundle:check
