@@ -14,6 +14,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { formatDateKey, formatInstant, Note, Pill } from "./shared";
+import { MyDataCard } from "./settings";
 
 type Profile = z.infer<typeof familyStudentProfileSchema>;
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
@@ -76,6 +77,7 @@ export function StudentProfile() {
             </Card>
           ) : null}
           <Badges profile={d} />
+          <MyDataCard body={t("exports.myDataBody")} items={[{ id: "me", label: t("exports.download"), path: "/api/v1/family/export", fileName: `relay-export-${d.preferredName ?? d.name}.json` }]} />
         </>
       ) : null}
     </Screen>

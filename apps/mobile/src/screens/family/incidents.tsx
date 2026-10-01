@@ -9,6 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { IncidentBadges, IncidentNotes, IncidentRecord } from "../shared/incidents";
+import { Refusal } from "../staff/shared";
 import { ChildLeftBanner, ChildSwitcher, childQuery, param } from "./shared";
 
 const PATH = "/api/v1/family/incidents";
@@ -19,7 +20,8 @@ const PATH = "/api/v1/family/incidents";
  * whether and when the family was told, the school's follow-up notes, and
  * the closed line; all read-only. The switcher's children come from
  * /family/children as the health card's do; the endpoint answers for one
- * child at a time.
+ * child at a time. A pupil reads their own log from the age the school
+ * sets; refused (403) they are shown "ask a grown-up".
  */
 export function FamilyIncidents() {
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
@@ -35,10 +37,43 @@ export function FamilyIncidents() {
     queryFn: async () => familyChildrenSchema.parse(unwrap(await api().get("/api/v1/family/children"))),
   });
   const query = useQuery({
-    queryKey: ["family", "incidents", childId],
-    enabled: role === "PARENT",
-    queryFn: async () => familyIncidentsSchema.parse(unwrap(await api().get(`${PATH}${childQuery(childId)}`))),
+    queryKey: ["family", "incidents", role === "STUDENT" ? "mine" : childId],
+    enabled: role === "PARENT" || role === "STUDENT",
+    retry: false,
+    queryFn: async () => {
+      const result = await api().get(`${PATH}${role === "STUDENT" ? "" : childQuery(childId)}`);
+      if (!result.ok && result.status === 403 && role === "STUDENT") throw new Refusal(result.error, 403, {});
+      return familyIncidentsSchema.parse(unwrap(result));
+    },
   });
+  if (role === "STUDENT") {
+    const refused = query.isError && query.error instanceof Refusal && query.error.status === 403;
+    const mine = query.data;
+    return (
+      <Screen title={t("familyCare.myIncidentsTitle")} description={mine ? t("familyCare.myIncidentsBody") : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+        {query.isPending ? <Loading /> : null}
+        {refused ? <Empty icon="shield" title={t("familyCare.askGrownUpTitle")} body={t("familyCare.askGrownUpBody")} action={<Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />} /> : null}
+        {query.isError && !refused ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+        {mine ? (
+          mine.incidents.length === 0 ? (
+            <Empty icon="firstAid" title={t("incidents.noneForChild")} body={t("incidents.noneForChildBody", { name: mine.childName })} action={<Button label={t("nav.health")} variant="secondary" onPress={() => router.push("/(app)/health" as never)} />} />
+          ) : (
+            <ShowMore items={mine.incidents}>
+              {(shown) =>
+                shown.map((i) => (
+                  <Card key={i.id} title={i.title}>
+                    <IncidentBadges kind={i.kind} severity={i.severity} status={i.status} />
+                    <IncidentRecord incident={i} />
+                    <IncidentNotes notes={i.notes} bare />
+                  </Card>
+                ))
+              }
+            </ShowMore>
+          )
+        ) : null}
+      </Screen>
+    );
+  }
   if (role !== null && role !== "PARENT") {
     return (
       <Screen title={t("incidents.title")}>

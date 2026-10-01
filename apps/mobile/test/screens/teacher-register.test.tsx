@@ -1,5 +1,6 @@
 import { screen, waitFor } from "@testing-library/react-native";
 import * as Haptics from "expo-haptics";
+import { onlineManager } from "@tanstack/react-query";
 import { attendanceClassesSchema, registerSchema } from "@edulink/contracts";
 import { Register } from "@/screens/teacher/register";
 import { listQueued } from "@/lib/outbox";
@@ -51,6 +52,21 @@ describe("the register", () => {
     await screen.findByText("1 of 2 marked");
     expect(callsTo(fetch, "/api/v1/staff/attendance/register")[0]!.url.searchParams.get("classId")).toBe(ID.class1);
     expect(screen.getByText("Note for ZZ Bhavesh: Left early")).toBeTruthy();
+  });
+
+  it("the family's absence note for the day sits under the pupil's name", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    const roster = [
+      { ...REGISTER.roster[0]!, absenceNote: { reason: "ILLNESS", text: "Fever since last night.", byFamily: true } },
+      { ...REGISTER.roster[1]!, absenceNote: { reason: "RELIGIOUS", text: "", byFamily: false } },
+    ];
+    fakeApi({ "/api/v1/staff/attendance/register": () => json({ ...REGISTER, roster }) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    expect(screen.getByText("Absent — Illness, told by the family · “Fever since last night.”")).toBeTruthy();
+    expect(screen.getByText("Absent — Religious observance, told by the pupil")).toBeTruthy();
+    // An older server's answer, with no note at all, still parses.
+    expect(registerSchema.parse(REGISTER).roster[0]!.absenceNote).toBeUndefined();
   });
 
   it("with nobody to mark, says so", async () => {
@@ -118,6 +134,39 @@ describe("the register", () => {
     expect(replay.headers.Authorization).toBe("Bearer t");
     expect(replay.body).toEqual(JSON.parse(queued[0]!.body));
     await waitFor(() => expect(screen.queryByText("1 waiting to send")).toBeNull());
+  });
+
+  it("known to be offline, a tap goes straight to the outbox with no fetch first, as the web's register does", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    const fetch = fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER), "/api/attendance": () => json(SAVED) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    onlineManager.setOnline(false);
+    try {
+      await tap(screen.getAllByRole("radio", { name: "Late" })[0]!);
+      await waitFor(() => expect(screen.getByText("Saved on this device")).toBeTruthy(), slow);
+      expect(callsTo(fetch, "/api/attendance")).toHaveLength(0);
+      const queued = await listQueued(`attendance:${ID.class1}`);
+      expect(queued).toHaveLength(1);
+      expect(JSON.parse(queued[0]!.body)).toMatchObject({ classId: ID.class1, dateKey: "2026-09-07" });
+    } finally {
+      onlineManager.setOnline(true);
+    }
+    // Back online: the runner hears it and replays, byte for byte.
+    await waitFor(() => expect(callsTo(fetch, "/api/attendance")).toHaveLength(1), slow);
+    expect(callsTo(fetch, "/api/attendance")[0]!.headers["X-Edulink-Replay"]).toBe("1");
+    await waitFor(() => expect(screen.queryByText("1 waiting to send")).toBeNull());
+    expect(await listQueued()).toHaveLength(0);
+  });
+
+  it("a mark the server would not take (a pupil no longer in the class) is said beside the saved state", async () => {
+    mockRouter.params = { classId: ID.class1 };
+    fakeApi({ "/api/v1/staff/attendance/register": () => json(REGISTER), "/api/attendance": () => json({ applied: 0, rejected: [{ studentMembershipId: ID.pupil1, reason: "NOT_ENROLLED" }] }) });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    await tap(screen.getAllByRole("radio", { name: "Present" })[0]!);
+    await waitFor(() => expect(screen.getByText("Saved")).toBeTruthy(), slow);
+    expect(screen.getByText("Some marks were not saved: 1 student(s) are no longer in this class.")).toBeTruthy();
   });
 
   it("a refusal the server means is shown with a retry, not queued", async () => {

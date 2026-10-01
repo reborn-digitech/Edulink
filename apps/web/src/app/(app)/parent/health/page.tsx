@@ -3,7 +3,8 @@ import Link from "next/link";
 import { ArrowLeftIcon, FirstAidKitIcon, PrinterIcon, StethoscopeIcon } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
-import { healthCardFor } from "@/lib/health";
+import { healthCardFor, healthCardReadsFor } from "@/lib/health";
+import { HealthCardReadsDisclosure } from "@/components/health-card-reads";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ChildSwitcher } from "../child-switcher";
 import { ChildLeftBanner } from "../child-left";
@@ -33,7 +34,7 @@ export default async function ParentHealthPage({ searchParams }: { searchParams:
   const link = await assertGuardianAccess(session.user.id, selectedId);
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
-  const view = await healthCardFor(session, selectedId);
+  const [view, reads] = await Promise.all([healthCardFor(session, selectedId), healthCardReadsFor(session, selectedId)]);
   const selected = children.find((c) => c.studentMembershipId === selectedId);
 
   return (
@@ -65,8 +66,10 @@ export default async function ParentHealthPage({ searchParams }: { searchParams:
             ) : undefined
           }
         />
-        <CardBody>
+        <CardBody className="space-y-4">
           <HealthCardEditor view={view} timezone={student.school.timezone} />
+          {/* Who at the school has opened the card: the one question a family should be able to ask of a medical page. */}
+          <HealthCardReadsDisclosure reads={reads} timezone={student.school.timezone} />
         </CardBody>
       </Card>
 

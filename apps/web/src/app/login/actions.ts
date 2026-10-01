@@ -22,6 +22,8 @@ import { audit } from "@/lib/audit";
 import { resolveContext } from "@/lib/resolve-context";
 import { MAGIC_LINK_TTL_MINUTES } from "@/lib/constants";
 import { refusalText } from "@/lib/i18n/refusal";
+import { cookies } from "next/headers";
+import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 
 /** "in about 5 minutes", in the reader's language. See `retryHintKey`. */
 function hint(t: Translate, seconds: number): string {
@@ -35,6 +37,8 @@ export type LoginState = {
   ok: boolean;
   errors: FieldErrors;
   redirectTo?: string;
+  /** The password was right and a code from the authenticator app is asked for next, at redirectTo. */
+  twoFactor?: boolean;
 };
 
 /**
@@ -70,6 +74,16 @@ export async function login(input: unknown): Promise<LoginState> {
     return { ok: false, errors: { _form: t("login.noMatch") } };
   }
   const user = { id: signIn.userId, lastRole: signIn.lastRole, lastSchoolId: signIn.lastSchoolId };
+
+  // Two-step sign-in: no session yet. The challenge rides a five-minute
+  // cookie to /login/code, whose action mints the session the way this one
+  // would have — see src/lib/two-factor.ts.
+  const challenge = await twoFactorChallengeFor(user.id, "password");
+  if (challenge) {
+    const jar = await cookies();
+    jar.set(TWO_FACTOR_COOKIE, challenge, twoFactorCookieOptions());
+    return { ok: true, errors: {}, redirectTo: "/login/code", twoFactor: true };
+  }
 
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
 

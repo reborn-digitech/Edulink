@@ -116,7 +116,7 @@ function Directory() {
                 title={m.preferredName ? `${m.name} (${m.preferredName})` : m.name}
                 caption={[roleLabel(t, m.role), m.email ?? t("people.noEmail"), [...m.enrolledIn, ...m.teaches].join(", ") || null, m.scheduledDeparture ? t("people.leavingOn", { date: formatDateKey(m.scheduledDeparture.leaveOnKey) }) : null].filter(Boolean).join(" · ")}
                 right={m.studentCode ? <Text variant="xs" tone="subtle">{m.studentCode}</Text> : null}
-                onPress={() => router.push({ pathname: "/(app)/person", params: { membershipId: m.membershipId, name: m.name, role: m.role, left: m.leftAt ? "1" : "", leavingOn: m.scheduledDeparture?.leaveOnKey ?? "" } } as never)}
+                onPress={() => router.push({ pathname: "/(app)/person", params: { membershipId: m.membershipId, name: m.name, role: m.role, left: m.leftAt ? "1" : "", leavingOn: m.scheduledDeparture?.leaveOnKey ?? "", status: m.status, birthdate: m.birthdateKey ?? "", subjects: m.subjects.join(",") } } as never)}
               />
             ))}
             {d.pages > 1 ? (

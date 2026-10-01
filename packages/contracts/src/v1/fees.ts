@@ -63,6 +63,8 @@ export const feeSettingsSchema = z.object({
   transport: z.enum(["devbox", "razorpay", "off"]),
   /** Where the school points its gateway's webhook. */
   webhookUrl: z.string(),
+  /** From this age a pupil may read their own dues; null means pupils see no fees. */
+  pupilFeeViewAge: z.number().int().nullable().default(null),
 });
 export type FeeSettings = z.infer<typeof feeSettingsSchema>;
 
@@ -71,6 +73,7 @@ export const feeSettingsSaveSchema = z.object({
   upiPayee: z.string().trim().max(80).nullable().optional(),
   receiptPrefix: z.string().trim().max(12).optional(),
   bankNote: z.string().trim().max(600).nullable().optional(),
+  pupilFeeViewAge: z.number().int().min(5).max(25).nullable().optional(),
 });
 
 export const feeGatewaySaveSchema = z.object({
@@ -105,6 +108,8 @@ export const feeStructureSummarySchema = z.object({
   pupils: z.number().int(),
   publishedAt: isoOrNull,
   archivedAt: isoOrNull,
+  /** Open to families: a guardian may choose it for their child (family-money.ts). */
+  selfEnrol: z.boolean().default(false),
 });
 export const feeStructuresQuerySchema = z.object({ academicYearId: id.optional(), includeArchived: z.coerce.boolean().optional() });
 export const feeStructuresSchema = z.object({ structures: z.array(feeStructureSummarySchema), year: yearRef, heads: z.number().int() });

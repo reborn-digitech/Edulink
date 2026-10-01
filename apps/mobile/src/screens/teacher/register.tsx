@@ -11,7 +11,8 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { newClientId } from "@/lib/outbox";
-import { OutboxBadge, dayLabel, useOutboxRunner, writeOrQueue } from "./support";
+import { OutboxBadge, dayLabel, postOrQueue, useOutboxRunner } from "./support";
+import { REASON_KEY } from "../family/absence-notes";
 
 /**
  * The register, the web's /teacher/attendance, with the outbox first: a tap
@@ -103,6 +104,8 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   const [local, setLocal] = useState<Record<string, Mark>>({});
   const [state, setState] = useState<SaveState>("idle");
   const [error, setError] = useState<string | null>(null);
+  // How many of the last batch the server would not take (a pupil no longer in the class): said beside the state, as the web's toast says it.
+  const [rejected, setRejected] = useState(0);
   const dirty = useRef(new Map<string, Mark>());
   const lastBody = useRef<{ classId: string; dateKey: string; marks: unknown[] } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -121,7 +124,8 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
     lastBody.current = body;
     setState("saving");
     setError(null);
-    const outcome = await writeOrQueue(await api().post("/api/attendance", body), { url: "/api/attendance", body, tag });
+    setRejected(0);
+    const outcome = await postOrQueue<{ applied?: number; rejected?: unknown[] }>({ url: "/api/attendance", body, tag });
     if (outcome.kind === "refused") {
       setState("error");
       setError(outcome.message || t("teacher.checkConnection"));
@@ -129,6 +133,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
     }
     lastBody.current = null;
     setState(outcome.kind === "sent" ? "saved" : "queued");
+    if (outcome.kind === "sent" && Array.isArray(outcome.data?.rejected)) setRejected(outcome.data.rejected.length);
     void qc.invalidateQueries({ queryKey: ["staff", "attendance", "classes"] });
     void qc.invalidateQueries({ queryKey: ["staff", "today"] });
   }, [classId, register.data?.dateKey, qc, t, tag]);
@@ -201,6 +206,11 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
             </Text>
           </View>
           <OutboxBadge tag={tag} />
+          {rejected > 0 ? (
+            <Text variant="sm" tone="warn" accessibilityLiveRegion="polite">
+              {t("teacher.someNotSaved")}: {t("teacher.noLongerInClass", { count: rejected })}
+            </Text>
+          ) : null}
           {state === "error" ? <Failed message={error ?? t("teacher.didNotSave")} onRetry={() => void flush()} /> : null}
           {!data.readOnly && unmarked.length > 0 ? <Button label={t("teacher.markAllPresent", { count: unmarked.length })} variant="secondary" onPress={markAllPresent} /> : null}
           {data.roster.length === 0 ? (
@@ -215,6 +225,13 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
                     <Text variant="base" bold>
                       {p.name}
                     </Text>
+                    {p.absenceNote ? (
+                      // The family told the school first: the line sits under the name before the teacher marks anything.
+                      <Text variant="xs" bold tone="warn" testID="absence-note-line">
+                        {t(p.absenceNote.byFamily ? "familyCare.registerLine" : "familyCare.registerLineSelf", { reason: t(REASON_KEY[p.absenceNote.reason]) })}
+                        {p.absenceNote.text ? ` · “${p.absenceNote.text}”` : ""}
+                      </Text>
+                    ) : null}
                     {note ? (
                       <Text variant="xs" tone="muted">
                         {t("teacher.noteFor", { name: p.name })}: {note}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BrainIcon, GraduationCapIcon, SealCheckIcon, TrophyIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import { BrainIcon, DownloadSimpleIcon, GraduationCapIcon, SealCheckIcon, TrophyIcon, UserIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -7,6 +7,7 @@ import { getBadges } from "@/lib/badges";
 import { myRecords } from "@/lib/school-record";
 import { SchoolRecordList } from "@/components/school-record-list";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { ProfileForm } from "./form";
 import { BadgeGrid } from "./badges";
 import { getT } from "@/lib/i18n/server";
@@ -192,6 +193,25 @@ export default async function StudentProfilePage() {
         />
         <CardBody>
           <BadgeGrid badges={badges} />
+        </CardBody>
+      </Card>
+
+      {/* ---------- the pupil's own data (DPDP s.11) ---------- */}
+      <Card>
+        <CardHeader
+          icon={<DownloadSimpleIcon weight="duotone" className="size-5" />}
+          title={t("exports.myDataTitle")}
+          description={t("exports.myDataBody")}
+        />
+        <CardBody className="space-y-3">
+          <div data-testid="family-export">
+            <Button asChild size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+              <a href="/api/v1/family/export" download>
+                {t("exports.download")}
+              </a>
+            </Button>
+          </div>
+          <p className="text-xs leading-relaxed text-fg-muted">{t("exports.fewPerHour")}</p>
         </CardBody>
       </Card>
     </div>

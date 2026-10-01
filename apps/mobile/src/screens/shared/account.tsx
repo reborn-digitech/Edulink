@@ -14,6 +14,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { isThemeChoice, useTheme, useThemeChoice, type ThemeChoice } from "@/lib/theme";
 import { Confirm, Note, Pill, relativeTime, Tabs } from "../family/shared";
+import { TwoStepCard } from "./two-step-card";
 
 type Tab = "profile" | "prefs" | "devices";
 type Sessions = z.infer<typeof sessionsListSchema>;
@@ -122,6 +123,8 @@ function ProfileTab({ overview }: { overview: AccountOverview }) {
         <View style={{ height: 1, backgroundColor: th.border }} />
         <MobileSection overview={overview} />
       </Card>
+      {/* Two-step sign-in: the card draws itself for the office, the head and the operator alone. */}
+      <TwoStepCard />
     </>
   );
 }

@@ -4,11 +4,12 @@ import type { Endpoint } from "./types";
 /** Auth, me, devices, events, and the outbox's two writes. */
 export const CORE: Endpoint[] = [
   // ---- auth ---------------------------------------------------------------
-  { method: "POST", path: "/api/v1/auth/login", summary: "Sign in with a password", access: "anyone", request: c.passwordLoginSchema, response: c.sessionResponseSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/auth/login", summary: "Sign in with a password (a person with two-step sign-in on gets TWO_FACTOR and a challenge for /auth/totp instead of a session)", access: "anyone", request: c.passwordLoginSchema, response: c.signInResponseSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/auth/magic-link", summary: "Email a sign-in link", access: "anyone", request: c.magicLinkRequestSchema, response: c.okSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/auth/magic-link/consume", summary: "Turn a sign-in link's token into a session", access: "anyone", request: c.magicLinkConsumeSchema, response: c.sessionResponseSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/auth/magic-link/consume", summary: "Turn a sign-in link's token into a session (or TWO_FACTOR and a challenge, as /auth/login)", access: "anyone", request: c.magicLinkConsumeSchema, response: c.signInResponseSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/auth/first-signin", summary: "A pupil's first sign-in with the code the school issued", access: "anyone", request: c.firstSignInSchema, response: c.sessionResponseSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/auth/sso/exchange", summary: "Exchange the one-time code from the SSO deep link for a session", access: "anyone", request: c.ssoExchangeSchema, response: c.sessionResponseSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/auth/sso/exchange", summary: "Exchange the one-time code from the SSO deep link for a session (or TWO_FACTOR and a challenge, as /auth/login)", access: "anyone", request: c.ssoExchangeSchema, response: c.signInResponseSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/auth/totp", summary: "The second step of a two-step sign-in: the challenge and a code from the authenticator app, or one recovery code, for the session the first step would have minted", access: "anyone", request: c.totpSignInSchema, response: c.sessionResponseSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/auth/logout", summary: "Revoke this session", access: "signed-in", response: c.okSchema },
   // ---- me -----------------------------------------------------------------
   { method: "GET", path: "/api/v1/me", summary: "Who I am, where I belong, what is active", access: "signed-in", response: c.meSchema },

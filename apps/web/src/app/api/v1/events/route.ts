@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
+import { teacherClassIds } from "@/lib/tenancy";
 
 /**
  * GET /api/v1/events — server-sent events for this session.
@@ -32,6 +33,15 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
       select: { studentMembershipId: true },
     });
     for (const child of children) channels.push(channel.student(child.studentMembershipId));
+    return channels;
+  }
+  // A teacher hears their own classes and the threads they are party to,
+  // not the whole school: the school channel carries every pupil's grade,
+  // register and remark ids, which the office and the head may hear and a
+  // teacher of two classes has no business with (the review of 2026-10-01).
+  if (ctx.role === "TEACHER" && ctx.schoolId && ctx.membershipId) {
+    channels.push(channel.staff(ctx.membershipId));
+    for (const classId of await teacherClassIds(ctx.schoolId, ctx.membershipId)) channels.push(channel.class(classId));
     return channels;
   }
   if (ctx.schoolId && ctx.membershipId) channels.push(channel.school(ctx.schoolId));

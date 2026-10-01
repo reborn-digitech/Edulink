@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { TabBar } from "@/components/ui/tabs";
+import { SelfEnrolToggle } from "./self-enrol-toggle";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -81,6 +82,7 @@ export default async function FeeStructuresPage({ searchParams }: { searchParams
                 <th className="px-4 py-3 text-right font-medium">{t("fees.structureInstalments")}</th>
                 <th className="px-4 py-3 text-right font-medium">{t("fees.structureTotal")}</th>
                 <th className="px-4 py-3 text-right font-medium">{t("fees.structurePupils")}</th>
+                <th className="px-4 py-3 text-center font-medium" title={t("fees.selfEnrolHint")}>{t("fees.selfEnrolColumn")}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -103,6 +105,13 @@ export default async function FeeStructuresPage({ searchParams }: { searchParams
                   <td className="px-4 py-3 text-right tabular-nums">{s.instalments}</td>
                   <td className="px-4 py-3 text-right tabular-nums font-medium">{formatPaise(s.totalPaise, locale)}</td>
                   <td className="px-4 py-3 text-right tabular-nums">{s.pupils}</td>
+                  <td className="px-4 py-3 text-center">
+                    {s.publishedAt && !s.archivedAt ? (
+                      <SelfEnrolToggle structureId={s.id} open={s.selfEnrol} canEdit={office} name={s.name} />
+                    ) : (
+                      <span className="text-xs text-fg-subtle">—</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>

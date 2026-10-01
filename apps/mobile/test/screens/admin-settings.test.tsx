@@ -62,6 +62,18 @@ function week(orphaned = 0): Answers {
     },
   };
 }
+/** The pupils' own-eyes age the settings screen also asks for: never, unless a test says otherwise, and a save is remembered. */
+const SELF_READ = "/api/v1/office/self-read-age";
+function selfRead(initial: number | null = null): Answers {
+  let selfReadAge = initial;
+  return {
+    [`GET ${SELF_READ}`]: () => json({ selfReadAge }),
+    [`POST ${SELF_READ}`]: async ({ init }) => {
+      selfReadAge = (JSON.parse(String(init.body)) as { selfReadAge: number | null }).selfReadAge;
+      return json({ selfReadAge });
+    },
+  };
+}
 const withToasts = (answers: Answers) =>
   mountStaff(
     <ToastProvider>
@@ -221,5 +233,39 @@ describe("school settings", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Not now.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/settings").length).toBe(2));
+  });
+});
+
+describe("the pupils' own eyes", () => {
+  it("shows the age, or blank for never, and saves a whole number of years with the sentence back", async () => {
+    const { calls } = await withToasts({ ...week(), ...selfRead(), "GET /api/v1/admin/settings": () => json(DATA) });
+    const field = await screen.findByLabelText("Pupils may read their own health card and incidents from age");
+    expect(field.props.value).toBe("");
+    await fireEvent.changeText(field, "16");
+    await fireEvent.press(screen.getByRole("button", { name: "Save: Pupils' own eyes" }));
+    await screen.findByText("Saved. Pupils aged 16 and over may read their own card and incidents.");
+    expect(calls().find((c) => c.line === `POST ${SELF_READ}`)?.body).toEqual({ selfReadAge: 16 });
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${SELF_READ}`).length).toBe(2));
+  });
+
+  it("blank switches it off; a word is refused before anything is sent; the server's refusal is a toast", async () => {
+    const { calls } = await withToasts({ ...week(), ...selfRead(16), "GET /api/v1/admin/settings": () => json(DATA) });
+    const field = await screen.findByLabelText("Pupils may read their own health card and incidents from age");
+    expect(field.props.value).toBe("16");
+    await fireEvent.changeText(field, "ten");
+    await fireEvent.press(screen.getByRole("button", { name: "Save: Pupils' own eyes" }));
+    expect(await screen.findByText("A whole number of years.")).toBeTruthy();
+    expect(calls().filter((c) => c.line === `POST ${SELF_READ}`)).toHaveLength(0);
+    await fireEvent.changeText(field, "");
+    await fireEvent.press(screen.getByRole("button", { name: "Save: Pupils' own eyes" }));
+    await screen.findByText("Saved. Pupils do not read their own card or incidents.");
+    expect(calls().find((c) => c.line === `POST ${SELF_READ}`)?.body).toEqual({ selfReadAge: null });
+  });
+
+  it("a refused save says why", async () => {
+    await withToasts({ ...week(), [`GET ${SELF_READ}`]: () => json({ selfReadAge: null }), [`POST ${SELF_READ}`]: refused("ZZ not the office", 403), "GET /api/v1/admin/settings": () => json(DATA) });
+    await fireEvent.changeText(await screen.findByLabelText("Pupils may read their own health card and incidents from age"), "14");
+    await fireEvent.press(screen.getByRole("button", { name: "Save: Pupils' own eyes" }));
+    expect(await screen.findByText("ZZ not the office")).toBeTruthy();
   });
 });

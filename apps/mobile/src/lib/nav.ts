@@ -89,12 +89,18 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions" },
     { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" },
+    { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
+    { labelKey: "agenda.title", icon: "calendar", group: "daily", screen: "/(app)/agenda" },
+    { labelKey: "fees.myFeesTitle", icon: "receipt", group: "daily", screen: "/(app)/fees" },
     { labelKey: "nav.certificates", icon: "fileText", group: "daily", screen: "/(app)/certificates" },
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
+    // The pupil's own health card and incident log, read-only from the age the school sets; below it, "ask a grown-up".
+    { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
+    { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
@@ -109,6 +115,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
     { labelKey: "nav.fees", icon: "receipt", group: "daily", screen: "/(app)/fees" },
+    { labelKey: "agenda.title", icon: "calendar", group: "daily", screen: "/(app)/agenda" },
     { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
     { labelKey: "nav.certificates", icon: "fileText", group: "daily", screen: "/(app)/certificates" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
@@ -158,6 +165,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
+    { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -167,6 +176,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "running", screen: "/(app)/substitutions" },
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
+    // The head's own decisions as sentences, read from the audit log (the web's /principal/decisions).
+    { labelKey: "decisions.title", icon: "clipboard", group: "running", screen: "/(app)/decisions" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
@@ -185,6 +196,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
+    { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
@@ -292,6 +305,12 @@ export const HIDDEN_SCREENS = [
   "filings",
   "contributions",
   "contribution",
+  "search",
+  "agenda",
+  "signatures",
+  "report-card-rules",
+  "contribution-queue",
+  "decisions",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

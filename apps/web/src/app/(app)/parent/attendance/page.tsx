@@ -5,6 +5,8 @@ import { ArrowLeftIcon, CalendarCheckIcon, CaretLeftIcon, CaretRightIcon } from 
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { getAttendanceSummary } from "@/lib/attendance";
+import { listAbsenceNotes } from "@/lib/absence-notes";
+import { AbsenceNotesCard } from "./absence-notes";
 import { formatDateKey, isTeachingDay, parseTeachingDays, todayKey } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { MONTH_KEY, shiftMonth } from "@/lib/attendance-history";
@@ -55,6 +57,8 @@ export default async function ParentAttendancePage({
       : thisMonth;
   const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" }, locale);
   const summary = await getAttendanceSummary(student.schoolId, selectedId, `${month}-01`, `${month}-31`);
+  // The days away the family has told the school about, for a child still at the school.
+  const absenceNotes = student.leftAt ? null : await listAbsenceNotes(session, selectedId);
 
   // Only days that actually have a record, newest first — showing a blank row
   // for every weekend and holiday would bury the days that matter.
@@ -194,6 +198,8 @@ export default async function ParentAttendancePage({
           )}
         </CardBody>
       </Card>
+
+      {absenceNotes && <AbsenceNotesCard initial={absenceNotes} />}
 
       {summary.percent !== null && summary.percent < 90 && (
         <p className="rounded-[--radius-md] border border-warn/40 bg-warn-soft p-4 text-sm leading-relaxed text-warn">

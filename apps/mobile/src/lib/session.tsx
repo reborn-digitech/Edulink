@@ -4,6 +4,7 @@ import { api } from "./api";
 import { KEYS, keyStore } from "./storage";
 import { clearQueue } from "./outbox";
 import { clearSharedFiles } from "./download";
+import { Image } from "expo-image";
 import { unwrap } from "./query";
 import { unregisterPush } from "./push";
 
@@ -83,6 +84,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         // report not yet sent (it would be posted as the next person's).
         await clearQueue();
         await clearSharedFiles();
+        // The bulletin's photographs sit in expo-image's disk cache (decision
+        // 0002, gap 2, the part that stayed open): gone with the person too.
+        try {
+          await Image.clearDiskCache();
+          await Image.clearMemoryCache();
+        } catch {
+          // The web target has no disk cache to clear.
+        }
         await keyStore().remove(KEYS.crash);
         await keyStore().remove(KEYS.token);
         await keyStore().remove(KEYS.session);

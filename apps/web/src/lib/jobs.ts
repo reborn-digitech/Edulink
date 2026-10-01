@@ -6,7 +6,7 @@ import { sweepExpired } from "./retention";
 import { sendWeeklyDigests } from "./digest";
 import { reclaimOrphans } from "./orphans";
 import { runDueDepartures } from "./school-record";
-import { sendOperatorHealthDigest } from "./job-health";
+import { sendOperatorHealthDigest, watchJobs } from "./job-health";
 import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
@@ -41,7 +41,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -230,6 +230,20 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { reminded, perSchool } = await remindSessions();
       return { summary: { reminded }, perSchool };
+    },
+  },
+  "jobs:watch": {
+    name: "jobs:watch",
+    // Every quarter hour: the alarm between the morning digests. A job past
+    // its own `expectEveryMs` is told to every operator, in the app and by
+    // email, once per job per twelve hours (job-health.ts, watchJobs).
+    schedule: "*/15 * * * *",
+    describeKey: "root.jobDescWatch",
+    maxRunMs: 5 * 60_000,
+    expectEveryMs: HOUR,
+    run: async () => {
+      const { overdue, alerted, muted, operators, emailed } = await watchJobs();
+      return { summary: { overdue, alerted, muted, operators, emailed } };
     },
   },
   "messages:send": {

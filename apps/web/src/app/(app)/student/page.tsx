@@ -232,6 +232,17 @@ export default async function StudentHome() {
                 ? t("student.toDoCountOne")
                 : t("student.toDoCountMany", { count: upcoming.length })
           }
+          action={
+            // The fortnight ahead — exams, work, sessions, closures and (when the school allows) fee dates — on one dated list; "My fees" sits beside it.
+            <span className="flex flex-wrap items-center gap-3">
+              <Link href="/student/agenda" className="text-sm font-medium text-accent hover:underline" data-testid="student-agenda-link">
+                {t("agenda.link")}
+              </Link>
+              <Link href="/student/fees" className="text-sm font-medium text-accent hover:underline" data-testid="student-fees-link">
+                {t("fees.myFeesTitle")}
+              </Link>
+            </span>
+          }
         />
         <CardBody>
           {upcoming.length === 0 ? (

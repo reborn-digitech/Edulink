@@ -13,21 +13,35 @@ import { overflow, smallTargets } from "./checks";
  * 40 px reactions and 30 px chips on pages this suite had passed.
  */
 const all = sessions();
-// The content team and the operator are signed in for their own specs and have no menu in NAV: their pages are
-// walked by gig-questions.spec.ts, not here.
 const roles = (Object.keys(all) as (keyof typeof NAV)[]).filter((role) => NAV[role]);
 
-for (const role of roles) {
+/**
+ * The content team and the operator have no menu in NAV — their pages hang
+ * off /appadmin and /root with their own layouts — so until 2026-10-01 only
+ * gig-questions.spec.ts opened them and nothing measured them. The same
+ * gate, over the pages their layouts link to.
+ */
+const PLATFORM: Record<string, string[]> = {
+  APPADMIN: ["/appadmin", "/appadmin/bank", "/appadmin/contributions", "/appadmin/new"],
+  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
+};
+
+const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [
+  ...roles.map((role): [string, string[], Set<string>] => [
+    role,
+    Array.from(new Set(NAV[role].flatMap((item) => [item.href, ...(item.also ?? [])]))),
+    new Set(NAV[role].flatMap((item) => item.also ?? []).filter((href) => !NAV[role].some((item) => item.href === href))),
+  ]),
+  ...Object.entries(PLATFORM).filter(([role]) => all[role]).map(([role, hrefs]): [string, string[], Set<string>] => [role, hrefs, new Set()]),
+];
+
+for (const [role, hrefs, prefixes] of walked) {
   const actor = all[role]!;
-  const hrefs = Array.from(new Set(NAV[role].flatMap((item) => [item.href, ...(item.also ?? [])])));
-  /**
-   * An entry's `also` is a PREFIX that counts as "here" for the highlight —
-   * /certificates/<id> under Certificates, /incidents/<id> under Incidents —
-   * and need not be a page of its own. One that is a page is tested like any
-   * other; one that answers 404 is a prefix, and is skipped and said so. An
-   * entry's own href is never excused.
-   */
-  const prefixes = new Set(NAV[role].flatMap((item) => item.also ?? []).filter((href) => !NAV[role].some((item) => item.href === href)));
+  // An entry's `also` is a PREFIX that counts as "here" for the highlight —
+  // /certificates/<id> under Certificates, /incidents/<id> under Incidents —
+  // and need not be a page of its own. One that is a page is tested like any
+  // other; one that answers 404 is a prefix, and is skipped and said so. An
+  // entry's own href is never excused.
   for (const theme of ["light", "dark"] as const) {
     test.describe(`${role} · ${theme}`, () => {
       for (const href of hrefs) {

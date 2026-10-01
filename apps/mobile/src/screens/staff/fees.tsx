@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import { useQuery } from "@tanstack/react-query";
-import { feeOverviewSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
-import { api } from "@/lib/api";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { feeOkSchema, feeOverviewSchema, feeSettingsSchema, feeStructuresSchema } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text } from "@/components";
+import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -116,6 +117,9 @@ export function StaffFees() {
             )}
           </Card>
 
+          {office ? <OpenPlans /> : null}
+          {office ? <PupilViewAge /> : null}
+
           <Card title={t("fees.setUpTitle")}>
             <Row icon="clipboard" title={t("fees.linkStructures")} caption={`${t("fees.setUpStructuresHint")} · ${t("fees.phoneOpensWeb")}`} onPress={web("/admin/fees/structures")} />
             <Row icon="fileText" title={t("fees.linkHeads")} caption={`${t("fees.setUpHeadsHint")} · ${t("fees.phoneOpensWeb")}`} onPress={web("/admin/fees/heads")} />
@@ -131,5 +135,117 @@ export function StaffFees() {
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * One switch per published plan: open to families, or the office's alone.
+ * A guardian may then put their child on an open plan themselves (while the
+ * child is on no plan and nothing is paid). Drafts and archived plans are
+ * not listed: a draft's numbers may change and an archived one takes nobody.
+ */
+function OpenPlans() {
+  const t = useT();
+  const { locale } = useLocale();
+  const qc = useQueryClient();
+  const [notice, setNotice] = useState<string | null>(null);
+  const query = useQuery({
+    queryKey: ["fees", "structures"],
+    queryFn: async () => feeStructuresSchema.parse(unwrap(await api().get("/api/v1/fees/structures"))),
+  });
+  const flip = useMutation({
+    mutationFn: async (input: { id: string; open: boolean }) => {
+      const result = await api().post(`/api/v1/fees/structures/${input.id}/self-enrol`, { open: input.open });
+      if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      return feeOkSchema.parse(result.data);
+    },
+    onSuccess: () => {
+      setNotice(null);
+      void qc.invalidateQueries({ queryKey: ["fees", "structures"] });
+    },
+    onError: (e) => setNotice(e.message),
+  });
+  if (!query.data) return null;
+  const live = query.data.structures.filter((s) => s.publishedAt && !s.archivedAt);
+  return (
+    <Card title={t("fees.selfEnrolPhoneTitle")}>
+      <Text variant="sm" tone="muted">
+        {t("fees.selfEnrolHint")}
+      </Text>
+      {notice ? (
+        <Text variant="sm" tone="danger" accessibilityLiveRegion="polite">
+          {notice}
+        </Text>
+      ) : null}
+      {live.length === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("fees.selfEnrolPhoneEmpty")}
+        </Text>
+      ) : (
+        live.map((s) => (
+          <SwitchRow
+            key={s.id}
+            label={s.name}
+            hint={[s.gradeLevel ? `${t("fees.structureGrade")} ${s.gradeLevel}` : t("fees.structureAllGrades"), money(s.totalPaise, locale), s.selfEnrol ? t("fees.selfEnrolOn") : t("fees.selfEnrolOff")].join(" · ")}
+            value={s.selfEnrol}
+            disabled={flip.isPending}
+            onChange={(next) => flip.mutate({ id: s.id, open: next })}
+          />
+        ))
+      )}
+    </Card>
+  );
+}
+
+/**
+ * From what age a pupil may read their own dues (never pay). The save sends
+ * the other settings back as they are: the server rewrites the row whole.
+ */
+function PupilViewAge() {
+  const t = useT();
+  const qc = useQueryClient();
+  // The box holds what was typed; until something is typed it shows the saved value, so no effect is needed to copy it in.
+  const [typed, setTyped] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  const query = useQuery({
+    queryKey: ["fees", "settings"],
+    queryFn: async () => feeSettingsSchema.parse(unwrap(await api().get("/api/v1/fees/settings"))),
+  });
+  const current = query.data?.pupilFeeViewAge;
+  const saved = current === null || current === undefined ? "" : String(current);
+  const age = typed ?? saved;
+  const setAge = (next: string) => setTyped(next);
+  const save = useMutation({
+    mutationFn: async () => {
+      const s = query.data!;
+      const clean = age.trim();
+      const result = await api().post("/api/v1/fees/settings", { upiId: s.upiId, upiPayee: s.upiPayee, receiptPrefix: s.receiptPrefix, bankNote: s.bankNote, pupilFeeViewAge: clean === "" ? null : Number(clean) });
+      if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      return feeOkSchema.parse(result.data);
+    },
+    onSuccess: () => {
+      setTyped(null);
+      setNotice({ tone: "ok", text: t("fees.settingsSaved") });
+      void qc.invalidateQueries({ queryKey: ["fees", "settings"] });
+    },
+    onError: (e) => setNotice({ tone: "danger", text: e.message }),
+  });
+  if (!query.data) return null;
+  const clean = age.trim();
+  const valid = clean === "" || (/^\d{1,2}$/.test(clean) && Number(clean) >= 5 && Number(clean) <= 25);
+  const dirty = clean !== saved;
+  return (
+    <Card title={t("fees.pupilViewTitle")}>
+      <Field label={t("fees.pupilViewAge")} value={age} onChangeText={setAge} keyboardType="number-pad" maxLength={2} hint={t("fees.pupilViewAgeHint")} error={valid ? null : t("fees.refusePupilViewAge")} />
+      <Text variant="sm" tone="muted">
+        {clean === "" ? t("fees.pupilViewOff") : t("fees.pupilViewFrom", { age: clean })}
+      </Text>
+      {notice ? (
+        <Text variant="sm" bold tone={notice.tone} accessibilityLiveRegion="polite">
+          {notice.text}
+        </Text>
+      ) : null}
+      <Button label={t("common.save")} disabled={!valid || !dirty} busy={save.isPending} onPress={() => save.mutate()} />
+    </Card>
   );
 }

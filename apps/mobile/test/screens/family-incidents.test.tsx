@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react-native";
-import { calls, child, ID, ME_PARENT, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
+import { calls, child, ID, ME_PARENT, ME_STUDENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
 import { FamilyIncidents } from "@/screens/family/incidents";
 
 const CHILDREN = { children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela")] };
@@ -74,9 +74,26 @@ describe("a child's incidents for the guardian", () => {
     expect(screen.getByText("Nothing recorded")).toBeTruthy();
   });
 
-  it("a pupil is not shown the log", async () => {
-    await renderFamily(<FamilyIncidents />, ME_STUDENT, {});
-    expect(await screen.findByText("No incidents")).toBeTruthy();
+  it("a pupil old enough by the school's rule reads their own log, read-only", async () => {
+    const { fetch } = await renderFamily(<FamilyIncidents />, ME_STUDENT, { [PATH]: () => ({ childName: "ZZ Pupil", incidents: [INCIDENT] }) });
+    expect(await screen.findByText("My incidents")).toBeTruthy();
+    expect(await screen.findByText("ZZ Fell on the steps, grazed knee")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Add a note" })).toBeNull();
+    expect(calls(fetch, PATH)[0]!.url.search).toBe("");
+    expect(calls(fetch, CHILDREN_PATH)).toHaveLength(0);
+  });
+
+  it("a pupil with nothing recorded is told so, with the health card as the door", async () => {
+    await renderFamily(<FamilyIncidents />, ME_STUDENT, { [PATH]: () => ({ childName: "ZZ Pupil", incidents: [] }) });
+    expect(await screen.findByText("Nothing recorded")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Health card" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/health");
+  });
+
+  it("a pupil the school's rule refuses is told to ask a grown-up", async () => {
+    await renderFamily(<FamilyIncidents />, ME_STUDENT, { [PATH]: refused(403, "ZZ not yet") });
+    expect(await screen.findByText("Ask a grown-up")).toBeTruthy();
+    expect(screen.queryByRole("alert")).toBeNull();
     expect(screen.getByRole("button", { name: "Overview" })).toBeTruthy();
   });
 

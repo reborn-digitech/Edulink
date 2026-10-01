@@ -90,6 +90,20 @@ opening the app in the same second is not, and needs either more processes
 or the overview cached. Start at two machines of `shared-cpu-2x` and read the
 p95 from the platform's metrics for a week before deciding.
 
+The concurrent-user run of 2026-10-01 (one process, this laptop, Postgres on
+the same machine): the light profile met its targets (register p95 111 ms,
+overview 178 ms), the moderate one did not (732 ms, 1,010 ms) and the plan
+profile of 30 teachers and 200 guardians firing without pause sat at 4.5 s
+and 5.3 s with no error. The time is queueing, not per-request cost, so the
+settings for a fifty-school fleet are two `web` machines (`fly.toml` keeps
+two running) and a Prisma pool of thirty on each: append
+`?connection_limit=30&pool_timeout=20` to `DATABASE_URL` (the default is the
+machine's cores times two plus one, 5 on a shared-cpu-2x), and give Postgres
+`max_connections` room for both machines, the jobs machine and the release
+step (`2 × 30 + 10 + 5` is 75; a managed Postgres of the smallest size allows
+100). Before a launch, repeat the plan profile from a second machine with k6
+against the deployed app, not from the laptop that also runs the database.
+
 ## Uploads
 
 With `STORAGE_BUCKET` and the four `STORAGE_S3_*` variables set, uploads go to

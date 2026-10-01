@@ -5,6 +5,7 @@ import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
 import type { SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
+import { isTwoFactor } from "./two-factor";
 import { useSession } from "./session";
 import { screenFor } from "./links";
 import { takeVerifier } from "./sso-handoff";
@@ -42,7 +43,13 @@ export function useDeepLinks() {
         const verifier = await takeVerifier();
         if (!verifier) return;
         const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, verifier, device: "Relay app" });
-        if (res.ok) await acceptRef.current(res.data);
+        if (!res.ok) return;
+        // Two-step sign-in: the provider was the first step; the code screen is the second.
+        if (isTwoFactor(res.data)) {
+          router.push({ pathname: "/(auth)/two-factor", params: { challenge: res.data.challenge } } as never);
+          return;
+        }
+        await acceptRef.current(res.data);
         return;
       }
       const target = screenFor(parsed.path ? `/${parsed.path}${parsed.queryParams ? "?" + new URLSearchParams(parsed.queryParams as Record<string, string>).toString() : ""}` : "/");

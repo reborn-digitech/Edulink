@@ -3,6 +3,7 @@ import { claimAppExchange } from "@/lib/auth-tokens";
 import { db } from "@/lib/db";
 import { apiFailure, apiInvalid, issueApiSession, readJson } from "@/lib/api-v1";
 import { getT } from "@/lib/i18n/server";
+import { twoFactorGate } from "@/lib/api-two-factor";
 import { NextResponse } from "next/server";
 
 /**
@@ -29,6 +30,8 @@ export async function POST(request: Request) {
     if (!claim.ok) return NextResponse.json({ error: t("login.noMatch"), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
     const user = await db.user.findUnique({ where: { id: claim.userId }, select: { id: true, disabledAt: true, lastRole: true, lastSchoolId: true } });
     if (!user || user.disabledAt) return NextResponse.json({ error: t("login.noMatch"), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
+    const second = await twoFactorGate(user.id, "sso");
+    if (second) return second;
     return issueApiSession(request, user.id, user, "sso", parsed.data.device);
   } catch (error) {
     return apiFailure(error, "api/v1/auth/sso/exchange");

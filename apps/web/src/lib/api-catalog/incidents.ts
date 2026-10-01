@@ -13,5 +13,6 @@ export const INCIDENTS: Endpoint[] = [
   { method: "GET", path: "/api/v1/staff/incidents/{incidentId}", summary: "One incident with its follow-up notes", access: ["TEACHER", "ADMIN", "PRINCIPAL"], response: c.incidentSchema, sample: one("") },
   { method: "POST", path: "/api/v1/staff/incidents/{incidentId}/notes", summary: "Add a follow-up note while the incident is open", access: ["TEACHER", "ADMIN", "PRINCIPAL"], request: c.incidentNoteCreateSchema, response: c.incidentSchema, emptyBodyStatus: 422, sample: one("/notes"), sampleBody: () => ({ body: "ZZ Sweep: guardian called back, all well." }) },
   { method: "POST", path: "/api/v1/staff/incidents/{incidentId}/close", summary: "Close an incident once follow-up is done (the office and the head)", access: ["ADMIN", "PRINCIPAL"], response: c.incidentSchema, sample: one("/close") },
-  { method: "GET", path: "/api/v1/family/incidents", summary: "A child's incidents and sick-room visits, with the school's follow-up (?childId=; the first child when omitted)", access: ["PARENT"], request: c.familyIncidentsQuerySchema, response: c.familyIncidentsSchema },
+  // The pupil's own log from the age the school sets (health.ts has the note on the sweep's pupil).
+  { method: "GET", path: "/api/v1/family/incidents", summary: "A child's incidents and sick-room visits, with the school's follow-up (?childId=; the first child when omitted) — or the pupil's own, read-only, from the age the school sets", access: ["STUDENT", "PARENT"], request: c.familyIncidentsQuerySchema, response: c.familyIncidentsSchema },
 ];

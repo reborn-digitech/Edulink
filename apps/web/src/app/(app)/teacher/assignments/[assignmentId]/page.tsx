@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole, AccessError } from "@/lib/tenancy";
 import { getGradebook } from "@/lib/grading";
 import { Gradebook } from "./gradebook";
@@ -11,6 +11,7 @@ import { formatMilli } from "@/lib/validation";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -53,6 +54,19 @@ export default async function AssignmentPage({
           {assignment.dueAt ? ` · ${t("teacher.dueWhenLower", { when: relativeTime(assignment.dueAt) })}` : ""}</>} />
 
       {!assignment.publishedAt && <PublishBar assignmentId={assignment.id} />}
+
+      {/* The class's whole gradebook — every assignment as a column, the marks
+          and whether the work came in — as a file from the API's door, the
+          same CSV/Excel split as the office's attendance exports. */}
+      <form action={`/api/v1/teaching/classes/${assignment.classId}/gradebook/export`} method="get" className="flex flex-wrap items-center gap-3" data-testid="gradebook-export">
+        <span className="text-xs text-fg-muted">{t("exports.gradebookHint")}</span>
+        <Button type="submit" size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+          {t("exports.gradebookCsv")}
+        </Button>
+        <Button type="submit" name="format" value="xlsx" size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+          {t("exports.gradebookXlsx")}
+        </Button>
+      </form>
 
       {assignment.body && (
         <div className="whitespace-pre-wrap rounded-[--radius-md] border border-border bg-surface p-4 text-sm leading-relaxed text-fg-muted">

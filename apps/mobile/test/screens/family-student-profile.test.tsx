@@ -1,4 +1,5 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import * as Sharing from "expo-sharing";
 import { bodyOf, calls, ME_STUDENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
 import { StudentProfile } from "@/screens/family/student-profile";
 
@@ -82,5 +83,19 @@ describe("the pupil's profile", () => {
     await renderFamily(<StudentProfile />, ME_STUDENT, { [PATH]: refused(500, "ZZ broke") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+
+  it("downloads the pupil's own data as a JSON file to the share sheet", async () => {
+    (Sharing.shareAsync as jest.Mock).mockClear();
+    const doc = new TextEncoder().encode(JSON.stringify({ format: "relay-person-export" }));
+    const { fetch } = await renderFamily(<StudentProfile />, ME_STUDENT, {
+      [PATH]: () => PROFILE,
+      "/api/v1/family/export": () => new Response(doc, { status: 200, headers: { "content-type": "application/json; charset=utf-8" } }),
+    });
+    expect(await screen.findByText("Download my data")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Download" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls(fetch, "/api/v1/family/export")).toHaveLength(1);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/relay-export-ZZ Pupil Full\.json$/), expect.objectContaining({ mimeType: "application/json" }));
   });
 });

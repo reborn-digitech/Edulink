@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon, ReceiptIcon, WalletIcon, WarningIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, CalendarBlankIcon, ListChecksIcon, ReceiptIcon, WalletIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireParent, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { familyFees, type FamilyFees } from "@/lib/fees-payments";
+import { familyPlans, paymentCalendar, type FamilyCalendar, type FamilyPlans } from "@/lib/fees-family";
 import { formatDateKey, formatInZone } from "@/lib/dates";
 import { formatPaise } from "@edulink/i18n";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -13,7 +14,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ChildSwitcher } from "../child-switcher";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { PayChooser } from "./pay-chooser";
-import { FEE_DEMAND_STATUS_KEY, FEE_METHOD_KEY, FEE_PAYMENT_STATUS_KEY, demandTone, paymentTone } from "./labels";
+import { PlanChooser } from "./plan-chooser";
+import { FEE_CALENDAR_KIND_KEY, FEE_CALENDAR_STATUS_KEY, FEE_DEMAND_STATUS_KEY, FEE_METHOD_KEY, FEE_PAYMENT_STATUS_KEY, calendarTone, demandTone, paymentTone } from "./labels";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -51,6 +53,12 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
   }
   const { children, child } = fees;
   const timezone = child ? ((await db.school.findUnique({ where: { id: child.schoolId }, select: { timezone: true } }))?.timezone ?? "UTC") : "UTC";
+  // The plans the office opened to families, and the year's dates — read beside the ledger, never from it.
+  let plans: FamilyPlans | null = null;
+  let calendar: FamilyCalendar | null = null;
+  if (child) {
+    [plans, calendar] = await Promise.all([familyPlans(session, child.studentMembershipId).catch(() => null), paymentCalendar(session, child.studentMembershipId).catch(() => null)]);
+  }
 
   const dueDate = (key: string) => formatDateKey(key, { day: "numeric", month: "short", year: "numeric" }, locale);
   const money = (paise: number) => formatPaise(paise, locale);
@@ -94,6 +102,15 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
             <StatTile label={t("fees.parentOverdue")} value={money(child.totals.overduePaise)} tone={child.totals.overduePaise > 0 ? "danger" : "neutral"} />
             <StatTile label={t("fees.parentPaidSoFar")} value={money(child.totals.paidPaise)} tone="neutral" />
           </div>
+
+          {plans && child.year && !plans.current && (
+            <Card>
+              <CardHeader icon={<ListChecksIcon weight="duotone" className="size-5" />} title={t("fees.plansTitle")} />
+              <CardBody>
+                <PlanChooser plans={plans} childName={child.name} />
+              </CardBody>
+            </Card>
+          )}
 
           <Card>
             <CardHeader icon={<ReceiptIcon weight="duotone" className="size-5" />} title={t("fees.pupilDemandsTitle")} description={child.year?.name} />
@@ -147,6 +164,39 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
               )}
             </CardBody>
           </Card>
+
+          {calendar && child.year && (
+            <Card>
+              <CardHeader icon={<CalendarBlankIcon weight="duotone" className="size-5" />} title={t("fees.calendarTitle")} description={t("fees.calendarIntro")} />
+              <CardBody className="p-0">
+                {calendar.rows.length === 0 ? (
+                  <div className="px-5 py-6">
+                    <EmptyState className="border-0 bg-transparent py-6" title={t("fees.calendarEmpty", { name: child.name })} />
+                  </div>
+                ) : (
+                  <ol className="divide-y divide-border" data-testid="fees-calendar">
+                    {calendar.rows.map((row, index) => (
+                      <li key={`${row.kind}-${row.demandId ?? row.title}-${row.date}-${index}`} className={`flex flex-wrap items-center justify-between gap-3 px-5 py-2.5 ${row.date === calendar!.todayKey ? "bg-accent-soft/40" : ""}`} data-kind={row.kind} data-status={row.status}>
+                        <span className="flex min-w-0 items-center gap-3">
+                          <span className="w-28 shrink-0 text-sm tabular-nums text-fg-muted">{dueDate(row.date)}</span>
+                          <span className="min-w-0">
+                            <span className="block truncate text-sm font-medium text-fg">{row.title}</span>
+                            <span className="block text-xs text-fg-muted">{FEE_CALENDAR_KIND_KEY[row.kind] ? t(FEE_CALENDAR_KIND_KEY[row.kind]!) : row.kind}</span>
+                          </span>
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <span className="text-sm font-semibold tabular-nums text-fg">{money(row.amount)}</span>
+                          <Badge tone={calendarTone(row.status)} size="sm">
+                            {FEE_CALENDAR_STATUS_KEY[row.status] ? t(FEE_CALENDAR_STATUS_KEY[row.status]!) : row.status}
+                          </Badge>
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </CardBody>
+            </Card>
+          )}
 
           <Card>
             <CardHeader icon={<WalletIcon weight="duotone" className="size-5" />} title={t("fees.parentPickTitle")} />

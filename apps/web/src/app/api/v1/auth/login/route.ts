@@ -2,6 +2,7 @@ import { passwordLoginSchema } from "@edulink/contracts";
 import { signInWithPassword } from "@/lib/auth-login";
 import { apiFailure, apiInvalid, issueApiSession, readJson } from "@/lib/api-v1";
 import { getT } from "@/lib/i18n/server";
+import { twoFactorGate } from "@/lib/api-two-factor";
 import { NextResponse } from "next/server";
 
 /**
@@ -28,6 +29,9 @@ export async function POST(request: Request) {
       }
       return NextResponse.json({ error: t("login.noMatch"), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
     }
+    // Two-step sign-in: the session waits for a code (POST /api/v1/auth/totp).
+    const second = await twoFactorGate(result.userId, "password");
+    if (second) return second;
     return issueApiSession(request, result.userId, result, "password", parsed.data.device);
   } catch (error) {
     return apiFailure(error, "api/v1/auth/login");

@@ -204,10 +204,106 @@ describe("the family's fees", () => {
     await waitFor(() => expect(calls(fetch, PATH).length).toBe(2));
   });
 
-  it("a pupil has no fees page of their own and is sent to messages", async () => {
-    await renderFamily(<FamilyFees />, ME_STUDENT, {});
+  it("a teacher has no fees page here and is sent to messages", async () => {
+    await renderFamily(<FamilyFees />, { ...ME_STUDENT, active: { ...ME_STUDENT.active, role: "TEACHER" }, contexts: [{ ...ME_STUDENT.contexts[0]!, role: "TEACHER" }] }, {});
     expect(await screen.findByText("Only a guardian can pay from here.")).toBeTruthy();
     await press(screen.getByRole("button", { name: "Messages" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
+  });
+});
+
+const PLANS_PATH = "/api/v1/family/fees/plans";
+const ENROL_PATH = "/api/v1/family/fees/plans/enrol";
+const CALENDAR_PATH = "/api/v1/family/fees/calendar";
+const MINE_PATH = "/api/v1/family/fees/mine";
+const PLAN = { id: "czz000000000000000plan01", name: "ZZ Grade 5 fees", gradeLevel: "5", totalPaise: 1_250_000, instalments: [{ id: "i1", label: "ZZ Term 1", dueDateKey: "2026-06-15", totalPaise: 500_000 }, { id: "i2", label: "ZZ Term 2", dueDateKey: "2026-10-15", totalPaise: 750_000 }] };
+const PLANS = (over: Record<string, unknown> = {}) => ({ student: { studentMembershipId: ID.child, name: "ZZ Asha", gradeLevel: "5" }, year: { id: "y1", name: "2026-27" }, current: null, canEnrol: true, plans: [PLAN], ...over });
+const CALENDAR = {
+  student: { studentMembershipId: ID.child, name: "ZZ Asha" },
+  year: { id: "y1", name: "2026-27" },
+  todayKey: "2026-09-20",
+  rows: [
+    { date: "2026-06-15", title: "ZZ Term 1", amount: 500_000, status: "OVERDUE", kind: "INSTALMENT", demandId: "d1" },
+    { date: "2026-10-08", title: "ZZ Term 2", amount: 750_000, status: "UPCOMING", kind: "REMINDER", demandId: "d2" },
+    { date: "2026-10-15", title: "ZZ Term 2", amount: 750_000, status: "UPCOMING", kind: "INSTALMENT", demandId: "d2" },
+  ],
+};
+const MINE = (over: Record<string, unknown> = {}) => ({
+  allowed: true,
+  fromAge: 14,
+  reason: null,
+  schoolName: "ZZ School",
+  year: { id: "y1", name: "2026-27" },
+  todayKey: "2026-09-20",
+  demands: [DEMAND("d1", "ZZ Term 1", "2026-06-15", 500_000, "PAID"), DEMAND("d2", "ZZ Term 2", "2026-10-15", 750_000)],
+  totals: { outstandingPaise: 750_000, overduePaise: 0, paidPaise: 500_000 },
+  nextDue: { label: "ZZ Term 2", dueDateKey: "2026-10-15", amountPaise: 750_000 },
+  ...over,
+});
+
+describe("choosing a fee plan and the payment calendar", () => {
+  it("the open plans are offered while the child is on none; choosing one is confirmed, sent, and the dues are read again", async () => {
+    const { fetch } = await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS(), [CALENDAR_PATH]: () => CALENDAR, [ENROL_PATH]: () => ({ ok: true, structureId: PLAN.id, demands: 2 }) });
+    expect(await screen.findByText("ZZ Grade 5 fees")).toBeTruthy();
+    expect(screen.getByText(/2 instalments · ₹12,500/)).toBeTruthy();
+    expect(screen.getByText(/ZZ Term 1 · Jun 15, 2026 · ₹5,000/)).toBeTruthy();
+    expect(calls(fetch, PLANS_PATH)[0]!.url.searchParams.get("student")).toBe(ID.child);
+    await press(screen.getByRole("button", { name: "Choose this plan" }));
+    expect(await screen.findByText("Put ZZ Asha on ZZ Grade 5 fees?")).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Confirm" }));
+    expect(await screen.findByText(/ZZ Asha is on ZZ Grade 5 fees\./)).toBeTruthy();
+    expect(bodyOf(calls(fetch, ENROL_PATH)[0]!)).toEqual({ student: ID.child, planId: PLAN.id });
+    await waitFor(() => expect(calls(fetch, PATH).length).toBe(2));
+  });
+
+  it("once the child is on a plan the chooser is gone; with something paid it says only the office can change it; with no open plan it says so", async () => {
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS({ current: { structureId: PLAN.id, structureName: "ZZ Grade 5 fees", paidPaise: 0 } }), [CALENDAR_PATH]: () => CALENDAR });
+    expect(await screen.findByText("Payment calendar")).toBeTruthy();
+    expect(screen.queryByText("Choose a fee plan")).toBeNull();
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS({ canEnrol: false }), [CALENDAR_PATH]: () => CALENDAR });
+    expect(await screen.findByText(/only the office can change the plan/)).toBeTruthy();
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS({ plans: [] }), [CALENDAR_PATH]: () => CALENDAR });
+    expect(await screen.findByText("No plan is open to families right now.")).toBeTruthy();
+  });
+
+  it("a refused choice is said in the card", async () => {
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS(), [CALENDAR_PATH]: () => CALENDAR, [ENROL_PATH]: refused(403, "ZZ already on a plan") });
+    await press(await screen.findByRole("button", { name: "Choose this plan" }));
+    await press(await screen.findByRole("button", { name: "Confirm" }));
+    expect(await screen.findByText("ZZ already on a plan")).toBeTruthy();
+  });
+
+  it("the calendar lists every date with its kind, amount and state, in the server's order", async () => {
+    await renderFamily(<FamilyFees />, ME_PARENT, { [PATH]: () => FAMILY, [PLANS_PATH]: () => PLANS(), [CALENDAR_PATH]: () => CALENDAR });
+    expect(await screen.findByText("Jun 15, 2026 · ZZ Term 1")).toBeTruthy();
+    expect(screen.getByText("Instalment · ₹5,000")).toBeTruthy();
+    // "Overdue" is also the pick list's word for Term 1; the calendar's own pill sits beside its row.
+    expect(screen.getAllByText("Overdue").length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText("Oct 8, 2026 · ZZ Term 2")).toBeTruthy();
+    expect(screen.getByText("Reminder · ₹7,500")).toBeTruthy();
+    expect(screen.getAllByText("Upcoming")).toHaveLength(2);
+  });
+});
+
+describe("a pupil's own fees", () => {
+  it("at or past the school's age: the sentence to ask a grown-up, the totals, the next due date and the instalments — no way to pay", async () => {
+    await renderFamily(<FamilyFees />, ME_STUDENT, { [MINE_PATH]: () => MINE() });
+    expect(await screen.findByText(/Ask a grown-up at home to pay/)).toBeTruthy();
+    expect(screen.getByLabelText("Outstanding: ₹7,500")).toBeTruthy();
+    expect(screen.getByLabelText("Next due: Oct 15, 2026")).toBeTruthy();
+    expect(screen.getByText("ZZ Term 2")).toBeTruthy();
+    expect(screen.getByText(/Due Oct 15, 2026 · Paid ₹0/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Pay online" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Pay by UPI" })).toBeNull();
+    expect(screen.queryByRole("checkbox")).toBeNull();
+  });
+
+  it("under the age, without a date of birth, or where the school shows pupils nothing, says which", async () => {
+    await renderFamily(<FamilyFees />, ME_STUDENT, { [MINE_PATH]: () => MINE({ allowed: false, reason: "UNDER_AGE", demands: [], nextDue: null }) });
+    expect(await screen.findByText("Your school shows fees to pupils from age 14.")).toBeTruthy();
+    await renderFamily(<FamilyFees />, ME_STUDENT, { [MINE_PATH]: () => MINE({ allowed: false, reason: "NO_BIRTHDATE", demands: [], nextDue: null }) });
+    expect(await screen.findByText(/Your date of birth is not on file/)).toBeTruthy();
+    await renderFamily(<FamilyFees />, ME_STUDENT, { [MINE_PATH]: () => MINE({ allowed: false, reason: "OFF", fromAge: null, demands: [], nextDue: null }) });
+    expect(await screen.findByText("Your school does not show fees to pupils.")).toBeTruthy();
   });
 });

@@ -138,6 +138,15 @@ model School {
   managementType    String?
   /// Which automatic events may text: JSON { absence, feeReminders, feeReceipts, circulars }. Missing = on.
   msgEventsJson     String  @default("{}")
+  /// Fees for the pupil's own eyes: from this age (by the date of birth on
+  /// the account) a pupil may read their dues, what is paid and the next due
+  /// date — never a way to pay. Null means pupils see no fees at all.
+  pupilFeeViewAge   Int?
+
+  /// From this age (by the date of birth on the account) a pupil may read
+  /// their own health card and incident log, read-only; the office sets it.
+  /// Null means never: a nine-year-old's screen is a classroom screen.
+  selfReadAge       Int?
 
   verifiedAt DateTime?
 
@@ -254,6 +263,8 @@ model School {
   signatureImages      SignatureImage[]
   paperSignatures      PaperSignature[]
   gigBookings          GigBooking[]
+  absenceNotes         AbsenceNote[]
+  healthCardReads      HealthCardRead[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -391,6 +402,20 @@ model User {
   gigPayee             GigPayee?
   gigSlots             GigSlot[]                 @relation("GigSlotProvider")
 
+  /// Two-step sign-in (TOTP, RFC 6238), for the office, the head and the
+  /// operator. The secret is sealed under FEES_SECRET_KEY and bound to
+  /// `${userId}:totp` (src/lib/secret-box.ts); a secret being set up waits in
+  /// totpPendingEnc until one code confirms it and is never used to sign in.
+  /// Recovery codes are kept as sha256 hashes and each is spent once.
+  /// totpLastStep is the thirty-second step of the last code accepted, so the
+  /// same code cannot be replayed inside its window.
+  totpSecretEnc      String?
+  totpPendingEnc     String?
+  totpEnabledAt      DateTime?
+  totpRecoveryHashes String[]  @default([])
+  totpLastStep       Int?
+  twoFactorChallenges TwoFactorChallenge[]
+
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
   @@index([mergedIntoUserId])
@@ -498,6 +523,8 @@ model Membership {
   penChanges             PenChangeRequest[]
   guardianClaims         GuardianClaim[]      @relation("GuardianClaimStudent")
   gigBookings            GigBooking[]         @relation("GigBookingStudent")
+  absenceNotes           AbsenceNote[]        @relation("AbsenceNoteStudent")
+  healthCardReads        HealthCardRead[]     @relation("HealthCardReadStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -3357,6 +3384,10 @@ model FeeStructure {
   gradeLevel     String?
   publishedAt    DateTime?
   archivedAt     DateTime?
+  /// Open to families: a guardian may put their child on this structure
+  /// themselves (while it is published, not archived, and the child is on no
+  /// plan this year with nothing paid). The office turns it on per structure.
+  selfEnrol      Boolean   @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -4658,4 +4689,80 @@ model GigBooking {
   @@index([schoolId, studentMembershipId, kind])
   @@index([providerUserId, status])
   @@index([studentMembershipId])
+}
+
+/// THE FAMILY SAYS THE CHILD WILL BE AWAY, before the register is taken.
+///
+/// A guardian (or the pupil, for themselves) files one note per day with a
+/// coded reason and an optional line. The register shows it beside the
+/// pupil's row for that day, and the absence notice the register would have
+/// sent the family for a pupil who has a note is not sent — the family told
+/// the school, not the other way round. `dateKey` is the school's day. A
+/// note can be taken back by its author until the day's register has marked
+/// the pupil; a past day's note stays as part of the record.
+model AbsenceNote {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  dateKey             String
+  /// ILLNESS | FAMILY | RELIGIOUS | TRAVEL | OTHER (ABSENCE_REASONS in @edulink/contracts).
+  reason              String
+  text                String?
+  authorUserId        String
+  /// PARENT when a guardian filed it, STUDENT when the pupil did.
+  authorRole          String
+  createdAt           DateTime @default(now())
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation("AbsenceNoteStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, dateKey])
+  @@index([schoolId, dateKey])
+}
+
+/// WHO READ A PUPIL'S HEALTH CARD. One row per read by a member of staff
+/// (the office, the head, a teacher of the class); the family's own reads
+/// and the pupil's are not rows, because the family is who this list is
+/// for. `healthCardId` is null when the card had not been written yet — the
+/// page was still opened. The guardian's "who has read this" shows the
+/// last ninety days; the retention sweep may trim older rows.
+model HealthCardRead {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  healthCardId        String?
+  readerUserId        String
+  /// ADMIN | PRINCIPAL | TEACHER, as the reader was at the moment of reading.
+  readerRole          String
+  readAt              DateTime  @default(now())
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student Membership @relation("HealthCardReadStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, studentMembershipId, readAt])
+}
+
+/// The second step of a sign-in whose first step passed. Minted when a
+/// person with two-step sign-in gives the right password, follows a sign-in
+/// link or comes back from SSO; the raw token goes to the browser (a
+/// five-minute cookie) or the phone (the TWO_FACTOR answer) and only its hash
+/// is kept. Spent by one right code, dead after five wrong ones or five
+/// minutes. Belongs to a user before any school is chosen, like AuthToken.
+model TwoFactorChallenge {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  /// How the first step was passed: password | magic-link | sso:<provider>.
+  via       String
+  /// Wrong codes charged so far, by one conditional UPDATE (attempts < cap).
+  attempts  Int       @default(0)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  /// The retention sweep finds dead rows by this alone.
+  @@index([expiresAt])
 }

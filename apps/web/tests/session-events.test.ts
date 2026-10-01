@@ -27,6 +27,9 @@ const STAMP = Date.now();
 let schoolId = "";
 let parentId = "";
 let teacherId = "";
+let teacherMembershipId = "";
+let adminId = "";
+let classId = "";
 let child = "";
 let otherPupil = "";
 
@@ -74,10 +77,14 @@ beforeAll(async () => {
     })
   ).id;
   const mk = (who: string) => db.user.create({ data: { name: `ZZ Events ${who}`, email: `zz-events-${who.toLowerCase()}-${STAMP}@test.invalid` }, select: { id: true } });
-  const [parent, teacher, p1, p2] = await Promise.all([mk("Parent"), mk("Teacher"), mk("Child"), mk("Other")]);
+  const [parent, teacher, p1, p2, admin] = await Promise.all([mk("Parent"), mk("Teacher"), mk("Child"), mk("Other"), mk("Admin")]);
   parentId = parent.id;
   teacherId = teacher.id;
-  await db.membership.create({ data: { userId: teacherId, schoolId, role: "TEACHER", status: "ACTIVE" } });
+  adminId = admin.id;
+  teacherMembershipId = (await db.membership.create({ data: { userId: teacherId, schoolId, role: "TEACHER", status: "ACTIVE" }, select: { id: true } })).id;
+  await db.membership.create({ data: { userId: adminId, schoolId, role: "ADMIN", status: "ACTIVE" } });
+  classId = (await db.class.create({ data: { schoolId, name: "ZZ Events 5A", gradeLevel: "5", section: "A", joinCode: `ZZEV${STAMP}` }, select: { id: true } })).id;
+  await db.classTeacher.create({ data: { classId, schoolId, teacherMembershipId } });
   child = (await db.membership.create({ data: { userId: p1.id, schoolId, role: "STUDENT", status: "ACTIVE" }, select: { id: true } })).id;
   otherPupil = (await db.membership.create({ data: { userId: p2.id, schoolId, role: "STUDENT", status: "ACTIVE" }, select: { id: true } })).id;
   await db.guardianship.create({ data: { parentUserId: parentId, studentMembershipId: child, studentSchoolId: schoolId, status: "ACTIVE" } });
@@ -87,6 +94,8 @@ afterAll(async () => {
   __resetCookies();
   await db.session.deleteMany({ where: { user: { email: { contains: `-${STAMP}@test.invalid` } } } });
   await db.guardianship.deleteMany({ where: { studentSchoolId: schoolId } });
+  await db.classTeacher.deleteMany({ where: { class: { schoolId } } });
+  await db.class.deleteMany({ where: { schoolId } });
   await db.membership.deleteMany({ where: { schoolId } });
   await db.school.deleteMany({ where: { id: schoolId } });
   await db.user.deleteMany({ where: { email: { contains: `-${STAMP}@test.invalid` } } });
@@ -154,19 +163,38 @@ describe("who hears what", () => {
     }
   });
 
-  it("a member of staff hears the school", async () => {
+  it("a teacher hears their own classes and threads, not the whole school; the office hears the school", async () => {
     __resetCookies();
     await createSession(teacherId, { schoolId, role: "TEACHER" });
     const stream = await open();
     try {
       const ready = await stream.next(2_000);
       const channels = (ready as { data: { channels: string[] } }).data.channels;
-      expect(channels).toContain(channel.school(schoolId));
-      publish([channel.school(schoolId)], { type: "attendance.updated", classId: "zz-c", dateKey: "2026-09-24" });
+      expect(channels).not.toContain(channel.school(schoolId));
+      expect(channels).toContain(channel.class(classId));
+      expect(channels).toContain(channel.staff(teacherMembershipId));
+      // Another class's register, published as the register code does: not theirs.
+      publish([channel.class("zz-other-class"), channel.school(schoolId)], { type: "attendance.updated", classId: "zz-other-class", dateKey: "2026-09-24" });
+      expect(await stream.next(300)).toBe("timeout");
+      // Their own class's: heard.
+      publish([channel.class(classId), channel.school(schoolId)], { type: "attendance.updated", classId, dateKey: "2026-09-24" });
       const got = await stream.next(2_000);
       expect((got as { event: string }).event).toBe("attendance.updated");
     } finally {
       stream.stop();
+    }
+
+    __resetCookies();
+    await createSession(adminId, { schoolId, role: "ADMIN" });
+    const office = await open();
+    try {
+      const ready = await office.next(2_000);
+      const channels = (ready as { data: { channels: string[] } }).data.channels;
+      expect(channels).toContain(channel.school(schoolId));
+      publish([channel.class("zz-other-class"), channel.school(schoolId)], { type: "attendance.updated", classId: "zz-other-class", dateKey: "2026-09-24" });
+      expect((await office.next(2_000) as { event: string }).event).toBe("attendance.updated");
+    } finally {
+      office.stop();
     }
   });
 });

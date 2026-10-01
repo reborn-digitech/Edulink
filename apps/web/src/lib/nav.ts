@@ -130,6 +130,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/admissions", labelKey: "nav.admissions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
+    // The head's own decisions, as sentences, read from the audit log (lib/decision-log.ts).
+    { href: "/principal/decisions", labelKey: "decisions.title", icon: "clipboard", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
@@ -191,6 +193,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
+    // The pupil's own health card and incident log, read-only from the age the school sets (self-read.ts); below it, "ask a grown-up".
+    { href: "/student/health", labelKey: "nav.health", icon: "heart", prefix: true, group: "daily" },
+    { href: "/student/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "daily" },
     // Social Media sits with school life for a pupil — the bottom bar keeps
     // the four things a school day is made of.
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },

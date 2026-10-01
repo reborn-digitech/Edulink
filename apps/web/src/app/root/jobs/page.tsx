@@ -11,6 +11,7 @@ import {
 import { requireSuperuser } from "@/lib/tenancy";
 import { jobStatuses, type JobStatus } from "@/lib/jobs";
 import { retentionPreview, RETENTION_KEYS, type RetentionKey } from "@/lib/retention";
+import { lastJobAlerts } from "@/lib/job-health";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -106,7 +107,7 @@ export default async function JobsPage({
   const t = await getT();
   const relativeTime = await getRelativeTime();
   await requireSuperuser();
-  const [statuses, retention] = await Promise.all([jobStatuses(), retentionPreview()]);
+  const [statuses, retention, alerts] = await Promise.all([jobStatuses(), retentionPreview(), lastJobAlerts()]);
   const overdue = statuses.filter((s) => s.overdue).length;
   const failed = statuses.filter((s) => !s.overdue && s.lastFailed).length;
   const onTime = statuses.length - overdue - failed;
@@ -276,6 +277,15 @@ export default async function JobsPage({
                   )}
                   <dt className="text-fg-muted">{t("root.jobLastSuccess")}</dt>
                   <dd className="text-fg">{job.lastSuccessAt ? relativeTime(job.lastSuccessAt) : t("root.jobNever")}</dd>
+                  {/* The watch's last alert on this job (jobs:watch), while the job is still overdue. */}
+                  {job.overdue && alerts.has(job.name) && (
+                    <>
+                      <dt className="text-fg-muted">{t("root.jobOverdue")}</dt>
+                      <dd className="text-danger" data-testid="alerted-at">
+                        {t("root.jobAlertedAt", { when: `${relativeTime(alerts.get(job.name)!)} · ${formatInZone(alerts.get(job.name)!, "UTC")} UTC` })}
+                      </dd>
+                    </>
+                  )}
                 </dl>
               </Card>
             </li>

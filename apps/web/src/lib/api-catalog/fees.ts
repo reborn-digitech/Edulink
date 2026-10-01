@@ -65,4 +65,7 @@ export const FEES: Endpoint[] = [
   { method: "POST", path: "/api/v1/fees/family/upi", summary: "Start a UPI payment to the school's own id: an intent link and a reference", access: ["PARENT"], request: c.familyPayBodySchema, response: c.familyUpiStartSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/fees/family/upi/claim", summary: "Say the UPI payment went through and give its UTR for the office to confirm", access: ["PARENT"], request: c.familyUpiClaimBodySchema, response: c.feeOkSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/fees/family/payments/{paymentId}", summary: "One of my payments: where it is, and its receipt once issued", access: ["PARENT"], response: c.familyPaymentStatusSchema },
+  // ---- open to families -------------------------------------------------------
+  // A sweep as ADMIN would flip the fixture's structure open and shut on every run, so the write carries no sampleBody and proves its 422.
+  { method: "POST", path: "/api/v1/fees/structures/{structureId}/self-enrol", summary: "Open a published structure to families to choose for their child (open: false closes it again)", access: ["ADMIN"], request: c.feeStructureSelfEnrolBodySchema, response: c.feeOkSchema, emptyBodyStatus: 422, sample: (f) => (f.feeStructureId ? `/api/v1/fees/structures/${f.feeStructureId}/self-enrol` : null) },
 ];

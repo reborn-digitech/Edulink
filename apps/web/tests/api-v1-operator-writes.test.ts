@@ -43,6 +43,9 @@ let expertUserId = "";
 let blankExpertUserId = "";
 let profileId = "";
 let blankProfileId = "";
+// The target school's office, told when the operator verifies it.
+let targetAdminUserId = "";
+let targetHeadUserId = "";
 
 const P = "http://localhost/api/v1/operator";
 const get = (path: string) => new Request(`${P}${path}`);
@@ -98,13 +101,17 @@ beforeAll(async () => {
   expertUserId = expert.id;
   blankExpertUserId = blank.id;
   await db.membership.create({ data: { userId: teacherUserId, schoolId: homeSchoolId, role: "TEACHER", status: "ACTIVE" } });
+  targetAdminUserId = (await db.user.create({ data: { name: "ZZ V1OW Target Admin", email: `zz-v1ow-tadmin-${STAMP}@test.invalid` }, select: { id: true } })).id;
+  targetHeadUserId = (await db.user.create({ data: { name: "ZZ V1OW Target Head", email: `zz-v1ow-thead-${STAMP}@test.invalid` }, select: { id: true } })).id;
+  await db.membership.create({ data: { userId: targetAdminUserId, schoolId: targetSchoolId, role: "ADMIN", status: "ACTIVE" } });
+  await db.membership.create({ data: { userId: targetHeadUserId, schoolId: targetSchoolId, role: "PRINCIPAL", status: "ACTIVE" } });
   profileId = (await db.expertProfile.create({ data: { userId: expertUserId, headline: "ZZ V1OW robotics coach", publishedAt: null }, select: { id: true } })).id;
   blankProfileId = (await db.expertProfile.create({ data: { userId: blankExpertUserId, headline: "", publishedAt: null }, select: { id: true } })).id;
 });
 
 afterAll(async () => {
   __resetCookies();
-  const users = [teacherUserId, operatorUserId, candidateUserId, expertUserId, blankExpertUserId].filter(Boolean);
+  const users = [teacherUserId, operatorUserId, candidateUserId, expertUserId, blankExpertUserId, targetAdminUserId, targetHeadUserId].filter(Boolean);
   await db.session.deleteMany({ where: { userId: { in: users } } });
   await db.expertProfile.deleteMany({ where: { userId: { in: users } } });
   await db.membership.deleteMany({ where: { userId: { in: users } } });
@@ -223,6 +230,14 @@ describe("as the operator", () => {
     expect(okSchema.parse(await given.json())).toEqual({ ok: true });
     const stamp = (await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt;
     expect(stamp).not.toBeNull();
+    // The school is told, once each to its admin and its head: "Relay has verified <school>; the directory lists it from today."
+    const toldVerified = (userId: string) => db.notification.findMany({ where: { userId, titleKey: "notifTitle.schoolVerified" } });
+    const adminTold = await toldVerified(targetAdminUserId);
+    expect(adminTold).toHaveLength(1);
+    expect(adminTold[0]).toMatchObject({ schoolId: targetSchoolId, kind: "SYSTEM", title: `Relay has verified ${TARGET_NAME}`, body: `Relay has verified ${TARGET_NAME}; the directory lists it from today.`, url: "/admin/directory" });
+    expect(JSON.parse(adminTold[0]!.meta)).toEqual({ event: "school.verified" });
+    expect(await toldVerified(targetHeadUserId)).toHaveLength(1);
+    expect(await toldVerified(teacherUserId)).toHaveLength(0);
     expect(await mayBringOver(targetSchoolId, candidateUserId)).toBe(true);
     const detail = operatorSchoolDetailSchema.parse(await (await schoolGet(get(`/schools/${targetSchoolId}`), school)).json());
     expect(detail.school.verifiedAt).toBe(stamp!.toISOString());
@@ -238,6 +253,8 @@ describe("as the operator", () => {
     expect(await mayBringOver(targetSchoolId, candidateUserId)).toBe(false);
     expect((await verify(false)).status).toBe(200);
     expect(await logged("superuser.school.unverify")).toBe(1);
+    // A repeat press and the withdrawal told nobody again.
+    expect(await db.notification.count({ where: { userId: { in: [targetAdminUserId, targetHeadUserId] }, titleKey: "notifTitle.schoolVerified" } })).toBe(2);
 
     const row = await db.auditLog.findFirstOrThrow({ where: { action: "superuser.school.verify", targetId: targetSchoolId } });
     expect(row).toMatchObject({ schoolId: null, actorUserId: operatorUserId, targetType: "School" });

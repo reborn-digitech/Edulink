@@ -10,6 +10,7 @@ import { forTenant } from "./tenant-context";
 import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
 import { sendTeacherInvite } from "./email";
+import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
 import { syncStandinGuardian } from "./standin-guardian";
 import { INVITE_TTL_DAYS } from "./constants";
@@ -805,7 +806,45 @@ export async function setSchoolVerified(
     meta: { schoolId, name: school.name },
   });
 
+  if (verified) await tellSchoolVerified(session, schoolId, school.name);
+
   return { ok: true };
+}
+
+/**
+ * The school hears that it was verified: every active admin and head gets
+ * one notification ("Relay has verified <school>; the directory lists it
+ * from today"). Bound to the school as the operator, because a Notification
+ * row lives inside the tenant fence and the memberships do too; nothing of
+ * the school is read but who its office is. Withdrawing the mark tells
+ * nobody — it is a correction of the operator's own record. Best-effort:
+ * a notification that fails to write must not undo the mark.
+ */
+async function tellSchoolVerified(session: ActiveContext, schoolId: string, schoolName: string): Promise<void> {
+  try {
+    await asOperatorIn(session, schoolId, async () => {
+      const office = await db.membership.findMany({
+        where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+        select: { userId: true },
+        distinct: ["userId"],
+      });
+      for (const member of office) {
+        await notify({
+          userId: member.userId,
+          schoolId,
+          kind: "SYSTEM",
+          titleKey: "notifTitle.schoolVerified",
+          titleVars: { school: schoolName },
+          bodyKey: "notifBody.schoolVerified",
+          bodyVars: { school: schoolName },
+          url: "/admin/directory",
+          meta: { event: "school.verified" },
+        });
+      }
+    });
+  } catch (error) {
+    console.error("[superuser] school.verified notification failed", error instanceof Error ? error.message : error);
+  }
 }
 
 /**

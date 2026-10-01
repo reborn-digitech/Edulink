@@ -1,5 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import * as Sharing from "expo-sharing";
 import { staffExamsSchema } from "@edulink/contracts";
+import { ToastProvider } from "@/components";
 import { TeacherExams } from "@/screens/teacher/exams";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 import { ID } from "./teacher-support";
@@ -31,7 +33,10 @@ const EXAMS = staffExamsSchema.parse({
   ],
 });
 
-beforeEach(() => mockRouter.push.mockClear());
+beforeEach(() => {
+  mockRouter.push.mockClear();
+  (Sharing.shareAsync as jest.Mock).mockClear();
+});
 
 describe("the teacher's exams", () => {
   it("loads, then shows each series and its papers; a paper opens the marks grid with the class and paper picked", async () => {
@@ -71,5 +76,38 @@ describe("the teacher's exams", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Not now.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/staff/exams").length).toBe(2));
+  });
+
+  it("an exam's marks for the class go to the share sheet as a CSV named for the exam and the class", async () => {
+    const csv = new TextEncoder().encode("name,roll_no\r\nZZ Asha,1\r\n");
+    const { calls } = await mountStaff(
+      <ToastProvider>
+        <TeacherExams />
+      </ToastProvider>,
+      "TEACHER",
+      {
+        "GET /api/v1/staff/exams": () => json(EXAMS),
+        [`GET /api/v1/teaching/classes/${ID.class1}/marks/export`]: ({ url }) => (url.searchParams.get("exam") === ID.series1 ? new Response(csv, { status: 200, headers: { "content-type": "text/csv; charset=utf-8" } }) : json({ error: "ZZ not that exam", code: "NOT_FOUND" }, 404)),
+      },
+    );
+    await screen.findByText("ZZ Term 1");
+    await fireEvent.press(screen.getByRole("button", { name: "Share CSV" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls().some((c) => c.line === `GET /api/v1/teaching/classes/${ID.class1}/marks/export?exam=${ID.series1}`)).toBe(true);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/ZZ Term 1 - ZZ 5A\.csv$/), expect.objectContaining({ mimeType: "text/csv" }));
+  });
+
+  it("a refused export is a toast and nothing is shared", async () => {
+    await mountStaff(
+      <ToastProvider>
+        <TeacherExams />
+      </ToastProvider>,
+      "TEACHER",
+      { "GET /api/v1/staff/exams": () => json(EXAMS), [`GET /api/v1/teaching/classes/${ID.class1}/marks/export`]: () => json({ error: "ZZ too many files", code: "RATE_LIMITED" }, 429) },
+    );
+    await screen.findByText("ZZ Term 1");
+    await fireEvent.press(screen.getByRole("button", { name: "Share CSV" }));
+    expect(await screen.findByText("ZZ too many files")).toBeTruthy();
+    expect(Sharing.shareAsync).not.toHaveBeenCalled();
   });
 });

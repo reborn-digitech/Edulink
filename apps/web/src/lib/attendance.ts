@@ -6,6 +6,7 @@ import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import { formatDateKey } from "./dates";
 import { closedOn } from "./holidays";
+import { absenceNotesOn } from "./absence-notes";
 import type { AttendanceStatus } from "./constants";
 
 /** Per-status notification titles — one key each, so "was marked late"
@@ -222,7 +223,10 @@ export async function saveAttendanceBatch(opts: {
 
   // Guardians hear about a change TO an absence, never about a re-save of one
   // they were already told about — otherwise a flaky connection spams parents.
-  if (opts.notify !== false) {
+  // And never about a day the family told the school about first: a pupil
+  // with an absence note for the day (absence-notes.ts) is skipped.
+  if (opts.notify !== false && newlyAbsent.length > 0) {
+    const told = await absenceNotesOn(schoolId, newlyAbsent.map((n) => n.studentMembershipId), dateKey);
     const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
     /**
      * Rendered in the GUARDIAN's language by `notify` (it reads the
@@ -230,7 +234,7 @@ export async function saveAttendanceBatch(opts: {
      * so the notifications page can say it again if they change language.
      */
     await Promise.all(
-      newlyAbsent.map(({ studentMembershipId, status }) =>
+      newlyAbsent.filter(({ studentMembershipId }) => !told.has(studentMembershipId)).map(({ studentMembershipId, status }) =>
         notifyGuardians(studentMembershipId, (childName) => ({
           kind: "ATTENDANCE",
           schoolId,
@@ -300,7 +304,7 @@ export async function registersDue(
   };
 }
 
-/** Roster plus any marks already recorded for the day. */
+/** Roster plus any marks already recorded for the day, and the family's absence note for the day beside each pupil who filed one. */
 export async function getRegister(schoolId: string, classId: string, dateKey: string) {
   const [klass, enrollments, session] = await Promise.all([
     db.class.findFirst({
@@ -324,6 +328,7 @@ export async function getRegister(schoolId: string, classId: string, dateKey: st
   if (!klass) return null;
 
   const marks = new Map(session?.records.map((r) => [r.studentMembershipId, r]) ?? []);
+  const notes = await absenceNotesOn(schoolId, enrollments.map((e) => e.studentMembershipId), dateKey);
 
   const roster = enrollments
     .map((enrollment) => {
@@ -335,6 +340,7 @@ export async function getRegister(schoolId: string, classId: string, dateKey: st
         avatarKey: enrollment.student.user.avatarKey,
         status: (record?.status as AttendanceStatus | undefined) ?? null,
         note: record?.note ?? null,
+        absenceNote: notes.get(enrollment.studentMembershipId) ?? null,
       };
     })
     // Sorted by the name actually shown, using locale rules so accented names

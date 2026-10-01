@@ -5,6 +5,7 @@ import { claimToken } from "@/lib/auth-tokens";
 import { createSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
 import { getT } from "@/lib/i18n/server";
+import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 
 /**
  * The link the login page's "email me a sign-in link instead" sends.
@@ -116,6 +117,14 @@ export async function POST(request: NextRequest) {
   if (!user || user.disabledAt) return away("bad");
   // The link was sent to one address; the account must still be at it.
   if (claim.email && claim.email.toLowerCase() !== (user.email ?? "").toLowerCase()) return away("bad");
+
+  // Two-step sign-in: the link was the first step; the code page is the second.
+  const challenge = await twoFactorChallengeFor(user.id, "magic-link");
+  if (challenge) {
+    const step = NextResponse.redirect(new URL("/login/code", origin), 303);
+    step.cookies.set(TWO_FACTOR_COOKIE, challenge, twoFactorCookieOptions());
+    return step;
+  }
 
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
   await createSession(user.id, { schoolId: context.schoolId, role: context.role });

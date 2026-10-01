@@ -10,7 +10,7 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { saveFeeSettingsAction } from "./actions";
 
-type Values = { upiId: string; upiPayee: string; receiptPrefix: string; bankNote: string };
+type Values = { upiId: string; upiPayee: string; receiptPrefix: string; bankNote: string; pupilFeeViewAge: string };
 
 /**
  * The UPI id, the receipt series and the bank note. Three cards on the page
@@ -24,14 +24,15 @@ export function SettingsForms({ initial, yearName }: { initial: Values; yearName
   const [pending, startTransition] = useTransition();
   const [values, setValues] = useState<Values>(initial);
   const [error, setError] = useState<string | null>(null);
-  const dirty = values.upiId !== initial.upiId || values.upiPayee !== initial.upiPayee || values.receiptPrefix !== initial.receiptPrefix || values.bankNote !== initial.bankNote;
+  const dirty = values.upiId !== initial.upiId || values.upiPayee !== initial.upiPayee || values.receiptPrefix !== initial.receiptPrefix || values.bankNote !== initial.bankNote || values.pupilFeeViewAge !== initial.pupilFeeViewAge;
   const set = (key: keyof Values, value: string) => setValues((v) => ({ ...v, [key]: value }));
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
     setError(null);
     startTransition(async () => {
-      const result = await saveFeeSettingsAction({ upiId: values.upiId.trim() || null, upiPayee: values.upiPayee.trim() || null, receiptPrefix: values.receiptPrefix.trim(), bankNote: values.bankNote.trim() || null });
+      const age = values.pupilFeeViewAge.trim();
+      const result = await saveFeeSettingsAction({ upiId: values.upiId.trim() || null, upiPayee: values.upiPayee.trim() || null, receiptPrefix: values.receiptPrefix.trim(), bankNote: values.bankNote.trim() || null, pupilFeeViewAge: age === "" ? null : Number(age) });
       if (!result.ok) {
         setError(actionError(t, result, "common.tryAgain"));
         return;
@@ -66,6 +67,12 @@ export function SettingsForms({ initial, yearName }: { initial: Values; yearName
 
       <section className="space-y-3">
         <TextAreaField label={t("fees.bankNote")} rows={3} maxLength={600} hint={t("fees.bankNoteHint")} value={values.bankNote} onChange={(e) => set("bankNote", e.target.value)} />
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="text-sm font-semibold text-fg">{t("fees.pupilViewTitle")}</h3>
+        <TextField label={t("fees.pupilViewAge")} type="number" inputMode="numeric" min={5} max={25} step={1} className="max-w-xs" hint={t("fees.pupilViewAgeHint")} value={values.pupilFeeViewAge} onChange={(e) => set("pupilFeeViewAge", e.target.value)} data-testid="fees-pupil-view-age" />
+        <p className="text-xs text-fg-muted">{values.pupilFeeViewAge.trim() === "" ? t("fees.pupilViewOff") : t("fees.pupilViewFrom", { age: values.pupilFeeViewAge.trim() })}</p>
       </section>
 
       <Button type="submit" loading={pending} disabled={!dirty} icon={<FloppyDiskIcon weight="bold" />}>

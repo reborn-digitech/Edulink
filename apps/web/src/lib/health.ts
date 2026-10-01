@@ -6,6 +6,8 @@ import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { readJsonArray, writeJson } from "./json";
 import { audit } from "./audit";
+import { forSchool } from "./tenant-context";
+import { assertSelfRead } from "./self-read";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -15,13 +17,21 @@ import type { Role } from "./constants";
  * WHO READS IT: the office and the head for any pupil of the school, a
  * teacher for the pupils of their own classes (assertStudentAccess), and a
  * guardian for their own child (assertGuardianAccess). Classmates never; the
- * child not in this release — a nine-year-old's screen is a classroom
- * screen. WHO WRITES IT: the office, the head and the guardians, because the
+ * child only from the age the school sets (self-read.ts) — a nine-year-old's
+ * screen is a classroom screen, a sixteen-year-old reads their own card as
+ * their family does, and never writes it. WHO WRITES IT: the office, the head and the guardians, because the
  * family knows the allergies and the office holds the doctor's number; a
  * teacher reads. A check-up (height, weight, sight) is the school's own
  * measurement and only the office records it. Every write is audited under
  * the school, and the card is a whole: what the form sends is what the card
  * becomes, so a cleared field stays cleared (decision 0002, row 26).
+ *
+ * EVERY STAFF READ IS A ROW. A health card is the one page a family should
+ * be able to ask "who has looked at this" about, so `healthCardFor` writes a
+ * HealthCardRead for the office, the head and a teacher, and the guardian
+ * reads the last ninety days of them (`healthCardReadsFor`). The family's
+ * own reads and the pupil's are not rows: the list is for them. A write's
+ * read-back is not a row either — the audit log has the write.
  */
 
 const WRITER_ROLES: readonly Role[] = ["ADMIN", "PRINCIPAL"];
@@ -29,11 +39,19 @@ const READER_ROLES: readonly Role[] = ["ADMIN", "PRINCIPAL", "TEACHER"];
 
 type Viewer = { userId: string; schoolId: string; role: Role; membershipId: string | null; canEdit: boolean; canRecordCheck: boolean; studentName: string };
 
+/** How long the guardian's "who has read this" looks back. */
+export const HEALTH_READS_DAYS = 90;
+
 /** Resolves who is asking and whether they may see this pupil's card at all. */
 async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<Viewer> {
   if (ctx.role === "PARENT") {
     const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
     return { userId: ctx.user.id, schoolId: link.student.schoolId, role: "PARENT", membershipId: null, canEdit: true, canRecordCheck: false, studentName: link.student.user.preferredName ?? link.student.user.name };
+  }
+  if (ctx.role === "STUDENT") {
+    // Their own card, from the school's age, read-only: the write side never widens.
+    const self = await assertSelfRead(ctx, studentMembershipId);
+    return { userId: ctx.user.id, schoolId: self.schoolId, role: "STUDENT", membershipId: self.membershipId, canEdit: false, canRecordCheck: false, studentName: self.studentName };
   }
   if (!ctx.schoolId || !ctx.role || !ctx.membershipId || !READER_ROLES.includes(ctx.role)) throw new AccessError("access.notAllowed");
   const student = await assertStudentAccess({ schoolId: ctx.schoolId, membershipId: ctx.membershipId, role: ctx.role }, studentMembershipId);
@@ -47,9 +65,48 @@ export function readContacts(raw: string | null | undefined): HealthContact[] {
     .flatMap((r) => (r.success ? [r.data] : []));
 }
 
-/** The card as the viewer may see it, with the check-ups newest first. */
+/** The card as the viewer may see it, with the check-ups newest first. A staff read is recorded for the family. */
 export async function healthCardFor(ctx: ActiveContext, studentMembershipId: string): Promise<HealthCardView> {
   const viewer = await admit(ctx, studentMembershipId);
+  const view = await loadCard(viewer, studentMembershipId);
+  if (READER_ROLES.includes(viewer.role)) {
+    const cardId = await db.healthCard.findUnique({ where: { studentMembershipId }, select: { id: true } });
+    // Bound to the pupil's school, which `admit` has already established is the reader's own.
+    await forSchool(viewer.schoolId, () =>
+      db.healthCardRead.create({ data: { schoolId: viewer.schoolId, studentMembershipId, healthCardId: cardId?.id ?? null, readerUserId: viewer.userId, readerRole: viewer.role }, select: { id: true } }),
+    );
+  }
+  return view;
+}
+
+/**
+ * The guardian's list of who at the school opened the card, last ninety
+ * days, newest first. Names are read at list time, so a teacher who has
+ * since left still has a name; the role is the one they read with.
+ */
+export async function healthCardReadsFor(ctx: ActiveContext, studentMembershipId: string, now: Date = new Date()) {
+  if (ctx.role !== "PARENT") throw new AccessError("access.notAllowed");
+  const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
+  const since = new Date(now.getTime() - HEALTH_READS_DAYS * 86_400_000);
+  const rows = await db.healthCardRead.findMany({
+    where: { schoolId: link.student.schoolId, studentMembershipId, readAt: { gte: since } },
+    orderBy: { readAt: "desc" },
+    take: 500,
+    select: { id: true, readerUserId: true, readerRole: true, readAt: true },
+  });
+  const ids = [...new Set(rows.map((r) => r.readerUserId))];
+  const users = ids.length ? await db.user.findMany({ where: { id: { in: ids } }, select: { id: true, name: true } }) : [];
+  const names = new Map(users.map((u) => [u.id, u.name]));
+  return {
+    studentMembershipId,
+    childName: link.student.user.preferredName ?? link.student.user.name,
+    days: HEALTH_READS_DAYS,
+    reads: rows.map((r) => ({ id: r.id, readerName: names.get(r.readerUserId) ?? "", readerRole: r.readerRole as "ADMIN" | "PRINCIPAL" | "TEACHER", readAt: r.readAt.toISOString() })),
+  };
+}
+
+/** The card itself, for a viewer `admit` has already let in. */
+async function loadCard(viewer: Viewer, studentMembershipId: string): Promise<HealthCardView> {
   const [card, enrolment] = await Promise.all([
     db.healthCard.findUnique({ where: { studentMembershipId }, include: { checks: { orderBy: [{ dateKey: "desc" }, { createdAt: "desc" }] } } }),
     db.enrollment.findFirst({ where: { studentMembershipId, status: "ACTIVE" }, select: { class: { select: { name: true } } } }),
@@ -111,7 +168,7 @@ export async function saveHealthCard(ctx: ActiveContext, studentMembershipId: st
     // What kind of thing changed, never the text: the audit log is read by the whole office.
     meta: { cardId: card.id, by: viewer.role, allergies: input.allergies.length > 0, conditions: input.conditions.length > 0, contacts: input.contacts.length },
   });
-  return healthCardFor(ctx, studentMembershipId);
+  return loadCard(viewer, studentMembershipId);
 }
 
 /** Records one check-up. The office and the head only. */
@@ -140,7 +197,7 @@ export async function recordHealthCheck(
     select: { id: true },
   });
   await audit({ schoolId: viewer.schoolId, actorUserId: viewer.userId, action: "health.check", targetType: "Membership", targetId: studentMembershipId, meta: { checkId: check.id, dateKey: input.dateKey } });
-  return healthCardFor(ctx, studentMembershipId);
+  return loadCard(viewer, studentMembershipId);
 }
 
 export type HealthFlag = { allergies: boolean; conditions: boolean; medications: boolean };

@@ -24,12 +24,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string; sso?: string }>;
+  searchParams: Promise<{ next?: string; expired?: string; reset?: string; link?: string; sso?: string; step?: string }>;
 }) {
   const session = await getSession();
   if (session?.role) redirect(ROLE_HOME[session.role]);
 
-  const { expired, reset, link, sso } = await searchParams;
+  const { expired, reset, link, sso, step } = await searchParams;
   const t = await getT();
   const ssoProviders = enabledProviders();
 
@@ -101,6 +101,17 @@ export default async function LoginPage({
                   : sso === "disabled"
                     ? t("login.ssoDisabled")
                     : t("login.ssoFailed")}
+            </p>
+          )}
+
+          {/* The second step of a two-step sign-in died (five minutes, five
+              wrong codes, or no challenge at all): one sentence, start again. */}
+          {step === "expired" && (
+            <p
+              role="status"
+              className="mt-5 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm font-medium text-warn"
+            >
+              {t("totp.stepExpired")}
             </p>
           )}
 

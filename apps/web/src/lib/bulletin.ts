@@ -1093,7 +1093,7 @@ export async function addComment(
         { OR: [visibilityWhere(session, classIds, grades), GLOBAL_POST_READABLE] },
       ],
     },
-    select: { id: true, authorUserId: true, schoolId: true, title: true, scope: true },
+    select: { id: true, authorUserId: true, schoolId: true, title: true, scope: true, classId: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
@@ -1179,6 +1179,10 @@ export async function addComment(
    */
   const crossSchoolToMinor = parentAuthorIsMinor && parentAuthorSchoolId !== (session.schoolId ?? reviewSchoolId);
 
+  if (status === "PENDING") {
+    await tellOfHeldComment(session, reviewSchoolId, { id: postId, title: visible.title, scope: visible.scope as PostScope, classId: visible.classId, authorUserId: visible.authorUserId, schoolId: visible.schoolId });
+  }
+
   if (status === "APPROVED") {
     /**
      * Who gets told: a reply tells the person being replied to, a comment
@@ -1218,6 +1222,90 @@ export async function addComment(
   }
 
   return { status };
+}
+
+/**
+ * A held comment is told to somebody who can release it, and to the person
+ * who wrote it.
+ *
+ * WHO IS TOLD, in order, the first that applies: the post's author, when
+ * they are staff of the reviewing school who may decide it (an admin, or
+ * the teacher of a class post's class — moderateComment's rule); else the
+ * teachers of the class, for a class post; else the office. One event,
+ * "comment.held", to that set, with the review page as its link. The
+ * commenter is told once per post that their words wait for a teacher —
+ * a second comment on the same post, still waiting, says nothing new.
+ *
+ * BEST-EFFORT, like every notification in this file: a global post's
+ * comment reviewed by the commenter's own school writes rows inside that
+ * tenant, and a row that cannot be written must not refuse the comment.
+ */
+async function tellOfHeldComment(
+  session: ActiveContext,
+  reviewSchoolId: string,
+  post: { id: string; title: string; scope: PostScope; classId: string | null; authorUserId: string; schoolId: string | null },
+): Promise<void> {
+  const tell = (input: Parameters<typeof notify>[0]) => notify(input).catch(() => undefined);
+  const commenterName = session.user.preferredName ?? session.user.name;
+  const classId = post.scope === "CLASS" && post.schoolId === reviewSchoolId ? post.classId : null;
+
+  let reviewers: string[] = [];
+  const author = await db.membership.findFirst({
+    where: {
+      userId: post.authorUserId,
+      schoolId: reviewSchoolId,
+      status: "ACTIVE",
+      leftAt: null,
+      OR: [{ role: "ADMIN" }, ...(classId ? [{ role: "TEACHER" as const, classTeachers: { some: { classId } } }] : [])],
+    },
+    select: { userId: true },
+  });
+  if (author) reviewers = [author.userId];
+  else if (classId) {
+    const teachers = await db.membership.findMany({
+      where: { schoolId: reviewSchoolId, role: "TEACHER", status: "ACTIVE", leftAt: null, classTeachers: { some: { classId } } },
+      select: { userId: true },
+    });
+    reviewers = teachers.map((m) => m.userId);
+  }
+  if (reviewers.length === 0) {
+    const office = await db.membership.findMany({ where: { schoolId: reviewSchoolId, role: "ADMIN", status: "ACTIVE", leftAt: null }, select: { userId: true } });
+    reviewers = office.map((m) => m.userId);
+  }
+
+  await Promise.all(
+    [...new Set(reviewers)]
+      .filter((userId) => userId !== session.user.id)
+      .map((userId) =>
+        tell({
+          userId,
+          schoolId: reviewSchoolId,
+          kind: "POST",
+          titleKey: "notifTitle.commentHeld",
+          bodyKey: "notifBody.commentHeld",
+          bodyVars: { name: commenterName, title: post.title },
+          url: "/bulletin?filter=pending",
+          meta: { event: "comment.held", postId: post.id },
+        }),
+      ),
+  );
+
+  const already = await db.notification.findFirst({
+    where: { userId: session.user.id, titleKey: "notifTitle.commentWaiting", url: `/bulletin/${post.id}` },
+    select: { id: true },
+  });
+  if (!already) {
+    await tell({
+      userId: session.user.id,
+      schoolId: reviewSchoolId,
+      kind: "POST",
+      titleKey: "notifTitle.commentWaiting",
+      bodyKey: "notifBody.commentWaiting",
+      bodyVars: { title: post.title },
+      url: `/bulletin/${post.id}`,
+      meta: { event: "comment.waiting", postId: post.id },
+    });
+  }
 }
 
 /** Comments per person per hour; see addComment. */

@@ -90,6 +90,8 @@ export function More() {
         <LanguageRow />
       </Card>
       <View style={{ gap: th.space[2] }}>
+        {/* One search across the school, for every role with a school; an expert has none to search. */}
+        {role && role !== "EXPERT" ? <Button label={t("search.title")} variant="secondary" onPress={() => router.push("/(app)/search")} /> : null}
         <Button label={t("shell.notifications")} variant="secondary" onPress={() => router.push("/(app)/notifications")} />
         <Button label={t("report.title")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report", params: { from: pathname } })} />
         <Button label={t("shell.signOut")} variant="danger" onPress={() => void session.signOut()} />

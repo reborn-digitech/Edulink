@@ -415,6 +415,11 @@ export default async function ParentDashboard({
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           title={t("parent.comingUp")}
           description={t("parent.workDueSoon")}
+          action={
+            <Link href={`/parent/agenda?child=${selectedId}`} className="text-sm font-medium text-accent hover:underline" data-testid="parent-agenda-link">
+              {t("agenda.link")}
+            </Link>
+          }
         />
         <CardBody>
           {upcoming.length === 0 ? (

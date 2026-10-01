@@ -95,6 +95,8 @@ export function AppAdminHome() {
           {t("appadmin.bankIntro")}
         </Text>
         <Row icon="books" title={t("appadmin.questionBank")} onPress={() => router.push("/(app)/question-bank" as never)} />
+        {/* Teachers' questions for the bank: the review queue, the web's /appadmin/contributions. */}
+        <Row icon="clipboard" title={t("gigs.queueTitle")} onPress={() => router.push("/(app)/contribution-queue" as never)} />
       </Card>
       <Button label={t("shell.signOut")} variant="ghost" onPress={() => void session.signOut()} />
     </Screen>

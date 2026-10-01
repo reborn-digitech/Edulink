@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BellIcon, GearIcon, UsersIcon } from "@phosphor-icons/react/ssr";
+import { BellIcon, DownloadSimpleIcon, GearIcon, UsersIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
@@ -14,6 +14,7 @@ import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "@/app/account/appearance-form";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { UnlinkChild } from "./unlink-child";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -84,7 +85,7 @@ export default async function ParentSettingsPage() {
             {children.map((child) => (
               <li
                 key={child.guardianshipId}
-                className="flex items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
+                className="flex flex-wrap items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
               >
                 <span className="flex min-w-0 items-center gap-3">
                   <Avatar avatarKey={null} name={child.name} size="sm" />
@@ -95,15 +96,40 @@ export default async function ParentSettingsPage() {
                     </span>
                   </span>
                 </span>
-                <Badge tone="accent" size="sm">
-                  {t("parent.linked")}
-                </Badge>
+                <span className="flex shrink-0 items-center gap-2">
+                  <Badge tone="accent" size="sm">
+                    {t("parent.linked")}
+                  </Badge>
+                  {/* The school's stand-in link is the school's to end: only a family link offers "Remove". */}
+                  {child.relation !== "SCHOOL" && <UnlinkChild studentMembershipId={child.studentMembershipId} name={child.name} />}
+                </span>
               </li>
             ))}
           </ul>
           <p className="mt-3 text-xs leading-relaxed text-fg-muted">
             {t("parent.settingsApplyAll")}
           </p>
+        </CardBody>
+      </Card>
+
+      {/* ---------- the family's own data (DPDP s.11) ---------- */}
+      <Card>
+        <CardHeader
+          icon={<DownloadSimpleIcon weight="duotone" className="size-5" />}
+          title={t("exports.myDataTitle")}
+          description={t("exports.childDataBody")}
+        />
+        <CardBody className="space-y-3">
+          <div className="flex flex-wrap gap-3" data-testid="family-export">
+            {children.map((child) => (
+              <Button key={child.guardianshipId} asChild size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+                <a href={`/api/v1/family/export?student=${child.studentMembershipId}`} download>
+                  {t("exports.downloadFor", { name: child.name })}
+                </a>
+              </Button>
+            ))}
+          </div>
+          <p className="text-xs leading-relaxed text-fg-muted">{t("exports.fewPerHour")}</p>
         </CardBody>
       </Card>
 

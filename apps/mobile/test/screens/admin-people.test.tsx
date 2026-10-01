@@ -35,9 +35,9 @@ describe("people for the office", () => {
     expect(calls().some((c) => c.line === "GET /api/v1/admin/people?status=ACTIVE&page=1")).toBe(true);
     // Every row opens the person: who they are, and whether they have left or are leaving, go with it.
     await fireEvent.press(screen.getByRole("button", { name: "ZZ Pupil, Student · No email · ZZ Class A" }));
-    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/person", params: { membershipId: "m7", name: "ZZ Pupil", role: "STUDENT", left: "", leavingOn: "" } });
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/person", params: { membershipId: "m7", name: "ZZ Pupil", role: "STUDENT", left: "", leavingOn: "", status: "ACTIVE", birthdate: "", subjects: "" } });
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Teacher,/ }));
-    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/person", params: { membershipId: "m2", name: "ZZ Teacher", role: "TEACHER", left: "", leavingOn: "" } });
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/person", params: { membershipId: "m2", name: "ZZ Teacher", role: "TEACHER", left: "", leavingOn: "", status: "ACTIVE", birthdate: "", subjects: "" } });
     await fireEvent.changeText(screen.getByLabelText("Search the directory"), "pupil");
     await fireEvent(screen.getByLabelText("Search the directory"), "submitEditing");
     await fireEvent.press(screen.getByRole("radio", { name: "Students" }));

@@ -119,3 +119,90 @@ export * from "./v1/report-cards";
 export * from "./v1/certificates";
 export * from "./v1/admissions";
 export * from "./v1/filings";
+export * from "./v1/family-money";
+
+/* -------------------------------------------------------------------------- */
+/* Global search — GET /api/v1/search                                          */
+/* -------------------------------------------------------------------------- */
+
+/** `?q=` two to eighty characters once trimmed; `?limit=` rows per group. */
+export const searchQuerySchema = z.object({
+  q: z.string().trim().min(2).max(80),
+  limit: z.coerce.number().int().min(1).max(50).default(20),
+});
+export type SearchQuery = z.infer<typeof searchQuerySchema>;
+
+export const searchKindSchema = z.enum(["people", "posts", "messages", "papers", "pages"]);
+export type SearchKind = z.infer<typeof searchKindSchema>;
+
+/**
+ * One hit: what it is, a line to show, the web path and the phone's screen.
+ * `phoneRoute` is null for a page of the role's menu, which the phone maps
+ * from `href` itself (lib/links.ts), and for anything the phone has no
+ * screen for, which it opens on the web.
+ */
+export const searchHitSchema = z.object({
+  kind: searchKindSchema,
+  id: z.string(),
+  title: z.string(),
+  subtitle: z.string().nullable(),
+  href: z.string(),
+  phoneRoute: z.string().nullable(),
+});
+export type SearchHit = z.infer<typeof searchHitSchema>;
+
+export const searchResultsSchema = z.object({
+  q: z.string(),
+  people: z.array(searchHitSchema),
+  posts: z.array(searchHitSchema),
+  messages: z.array(searchHitSchema),
+  papers: z.array(searchHitSchema),
+  pages: z.array(searchHitSchema),
+});
+export type SearchResults = z.infer<typeof searchResultsSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* Exports: a class's marks as a file, and a person's own data (DPDP s.11)      */
+/* -------------------------------------------------------------------------- */
+
+/** The file a class export comes back as: CSV unless the link says xlsx. */
+export const exportFormatSchema = z.enum(["csv", "xlsx"]);
+export const marksExportQuerySchema = z.object({ exam: cuid, format: exportFormatSchema.optional() });
+export const gradebookExportQuerySchema = z.object({ format: exportFormatSchema.optional() });
+/** A guardian names the child (`student`, a membership id); a pupil's own export takes no parameter. */
+export const familyExportQuerySchema = z.object({ student: cuid.optional() });
+
+/* -------------------------------------------------------------------------- */
+/* The directory's row actions, from the phone                                 */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * What the office does to one person from the directory's row menu on the
+ * web (admin/people/actions.ts), as the phone reaches it: a legal name
+ * corrected for a coded reason, a date of birth set or cleared, a teacher's
+ * subjects replaced as a set, access paused with a reason kept in the audit
+ * log and restored, and a membership removed when nothing was ever recorded
+ * against it. Every rule is the library's (lib/legal-name.ts, lib/birthdate.ts,
+ * lib/reviews.ts, lib/membership.ts); the body carries the shape alone.
+ */
+/** POST /api/v1/admin/people/{membershipId}/legal-name — the name as on the admission register, and why. */
+export const legalNameBodySchema = z.object({ name: z.string().trim().min(1).max(120), reason: z.enum(["SPELLING", "ADMISSION_RECORD", "LEGAL_CHANGE"]) });
+export type LegalNameBody = z.infer<typeof legalNameBodySchema>;
+/** POST /api/v1/admin/people/{membershipId}/birthdate — the day, or null to clear it. */
+export const birthdateBodySchema = z.object({ dateKey: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date").nullable() });
+export type BirthdateBody = z.infer<typeof birthdateBodySchema>;
+/** POST /api/v1/admin/people/{membershipId}/subjects — a teacher's subjects, replaced as a set; the server trims, de-duplicates and keeps twenty. */
+export const subjectsBodySchema = z.object({ subjects: z.array(z.string().max(60)).max(40) });
+export type SubjectsBody = z.infer<typeof subjectsBodySchema>;
+/** POST /api/v1/admin/people/{membershipId}/pause — why, kept in the audit log; the server refuses a blank. */
+export const pauseBodySchema = z.object({ reason: z.string().max(500) });
+export type PauseBody = z.infer<typeof pauseBodySchema>;
+/**
+ * POST /api/v1/admin/people/{membershipId}/remove — a 422 names what stood in
+ * the way as `issues` (attendance, marks, submissions, reportCards), each a
+ * sentence in the caller's language; the sentence itself is `error`.
+ */
+export const removalIssueKeys = ["attendance", "marks", "submissions", "reportCards"] as const;
+export * from "./v1/family-care";
+export * from "./v1/totp";
+export * from "./v1/decisions";

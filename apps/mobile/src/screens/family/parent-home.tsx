@@ -167,7 +167,7 @@ function ChildDay({ data }: { data: Overview }) {
         <LessonList lessons={data.lessonsToday} closedToday={data.closedToday} closedName={data.closedName} />
       </Card>
 
-      <Card title={t("parent.comingUp")}>
+      <Card title={t("parent.comingUp")} action={<Button variant="ghost" label={t("agenda.link")} onPress={() => router.push({ pathname: "/(app)/agenda", params: childParams } as never)} />}>
         <Text variant="sm" tone="muted">
           {t("parent.workDueSoon")}
         </Text>

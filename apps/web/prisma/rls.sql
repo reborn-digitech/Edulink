@@ -1530,6 +1530,24 @@ CREATE POLICY "GigBooking_readable" ON "GigBooking"
          OR "providerUserId" = current_setting('app.user_id', true)
         );
 
+-- AbsenceNote
+ALTER TABLE "AbsenceNote" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AbsenceNote" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AbsenceNote_tenant_isolation" ON "AbsenceNote";
+DROP POLICY IF EXISTS "AbsenceNote_readable" ON "AbsenceNote";
+CREATE POLICY "AbsenceNote_tenant_isolation" ON "AbsenceNote"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- HealthCardRead
+ALTER TABLE "HealthCardRead" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "HealthCardRead" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "HealthCardRead_tenant_isolation" ON "HealthCardRead";
+DROP POLICY IF EXISTS "HealthCardRead_readable" ON "HealthCardRead";
+CREATE POLICY "HealthCardRead_tenant_isolation" ON "HealthCardRead"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
@@ -1609,6 +1627,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   RateLimit
 --   Session
 --   SsoIdentity
+--   TwoFactorChallenge
 --   User
 -- They are scoped by user instead, which the application layer already does.
 

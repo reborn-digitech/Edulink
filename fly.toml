@@ -32,7 +32,10 @@ primary_region = "bom"
   force_https = true
   auto_stop_machines = false
   auto_start_machines = true
-  min_machines_running = 1
+  # Two web machines from the first deploy: the load run of 2026-10-01 put
+  # one process at p95 4.5 s for the register under the plan profile, the
+  # time being queueing for the pool and the CPU, not the request itself.
+  min_machines_running = 2
 
   [[http_service.checks]]
     interval = "30s"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExamIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
+import { ExamIcon, CheckCircleIcon, DownloadSimpleIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { EXAM_CATEGORY, examClassesFor, marksGrid } from "@/lib/exams";
 import { listGradeCategories, weightsAreUsable } from "@/lib/grading";
@@ -51,7 +51,7 @@ export default async function TeacherExamsPage({
 
   const selectedClass = classes.find((c) => c.id === requestedClass) ?? classes[0]!;
   const slots = selectedClass.series.flatMap((s) =>
-    s.slots.map((slot) => ({ ...slot, seriesName: s.name })),
+    s.slots.map((slot) => ({ ...slot, seriesId: s.id, seriesName: s.name })),
   );
   // The first paper self-selects: chips over dead space made a teacher's
   // first visit a guessing game.
@@ -162,6 +162,19 @@ export default async function TeacherExamsPage({
             description={t("exams.gridHint", { max: grid.maxMarks })}
           />
           <CardBody>
+            {/* The whole exam for this class as a sheet — every paper, the
+                total and the grade — from the API's file door, the same
+                split the office's attendance exports use: CSV or Excel. */}
+            <form action={`/api/v1/teaching/classes/${selectedClass.id}/marks/export`} method="get" className="mb-4 flex flex-wrap items-center gap-3" data-testid="marks-export">
+              <input type="hidden" name="exam" value={selectedSlot.seriesId} />
+              <span className="text-xs text-fg-muted">{t("exports.marksHint")}</span>
+              <Button type="submit" size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+                {t("exports.marksCsv")}
+              </Button>
+              <Button type="submit" name="format" value="xlsx" size="sm" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+                {t("exports.marksXlsx")}
+              </Button>
+            </form>
             {/* The form is KEYED BY THE PAPER. Its boxes are uncontrolled
                 (`defaultValue`), so without the key a click from English to
                 Mathematics kept the same <input> elements — and English's

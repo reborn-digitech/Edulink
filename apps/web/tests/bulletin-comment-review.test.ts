@@ -82,6 +82,17 @@ describe("a pupil's comment on a class post", () => {
     expect((await addComment(as("PupilA"), classPostId, "Which atlas?")).status).toBe("PENDING");
     commentId = await newest(classPostId, "PupilA");
 
+    // Held: the post's author, office staff who may decide it, is told once with the review page; the class's
+    // other teacher is not (the author came first); the pupil is told once that it waits for a teacher.
+    const held = await db.notification.findMany({ where: { userId: people.AdminA!.userId, titleKey: "notifTitle.commentHeld" } });
+    expect(held).toHaveLength(1);
+    expect(held[0]).toMatchObject({ schoolId: schoolA, kind: "POST", url: "/bulletin?filter=pending", body: `ZZ PupilA commented on "ZZ CR class post ${STAMP}". It stays hidden until a teacher or the office approves it.` });
+    expect(JSON.parse(held[0]!.meta)).toEqual({ event: "comment.held", postId: classPostId });
+    expect(await told("TeacherA", "notifTitle.commentHeld")).toBe(0);
+    const waiting = await db.notification.findMany({ where: { userId: people.PupilA!.userId, titleKey: "notifTitle.commentWaiting" } });
+    expect(waiting).toHaveLength(1);
+    expect(waiting[0]).toMatchObject({ url: `/bulletin/${classPostId}`, body: `A teacher or the office will read your comment on "ZZ CR class post ${STAMP}" before it is shown. You will be told when it is.` });
+
     const office = await heldComments(as("AdminA"));
     expect(office.map((c) => c.id)).toEqual([commentId]);
     expect(office[0]).toMatchObject({ postId: classPostId, shared: false, reply: false, body: "Which atlas?", authorName: "ZZ PupilA" });
@@ -129,6 +140,9 @@ describe("a pupil's comment on a class post", () => {
   it("removed only with a reason, which the author is told and the log does not keep", async () => {
     await addComment(as("PupilA"), classPostId, "ZZ silly words");
     const id = await newest(classPostId, "PupilA");
+    // A second held comment on the same post: the reviewer hears again, the pupil is not told twice.
+    expect(await told("AdminA", "notifTitle.commentHeld")).toBe(2);
+    expect(await told("PupilA", "notifTitle.commentWaiting")).toBe(1);
     await expect(moderateComment(as("AdminA"), id, "REMOVE")).rejects.toMatchObject({ key: "access.writeANoteSoTheAuthorKnows" });
     await expect(moderateComment(as("AdminA"), id, "REMOVE", "   ")).rejects.toMatchObject({ key: "access.writeANoteSoTheAuthorKnows" });
     expect(await statusOf(id)).toBe("PENDING");
@@ -150,6 +164,10 @@ describe("comments on the cross-school feed", () => {
   it("each is held at its author's school: that school's admin decides it, its teachers and the publishing school do not", async () => {
     await addComment(as("TeacherB"), globalPostId, "Lovely work");
     const id = await newest(globalPostId, "TeacherB");
+    // Held at B: the post's author (a pupil of A) cannot decide it and there is no class, so B's office is told; A hears nothing.
+    expect(await told("AdminB", "notifTitle.commentHeld")).toBe(1);
+    expect(await told("AdminA", "notifTitle.commentHeld")).toBe(2);
+    expect(await told("TeacherB", "notifTitle.commentWaiting")).toBe(1);
     expect((await heldComments(as("AdminB"))).map((c) => c.id)).toEqual([id]);
     expect((await heldComments(as("AdminB")))[0]).toMatchObject({ shared: true, postTitle: `ZZ CR shared post ${STAMP}` });
     expect(await heldComments(as("AdminA"))).toEqual([]);

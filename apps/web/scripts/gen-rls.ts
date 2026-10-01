@@ -31,6 +31,9 @@ const NO_SCHOOL_POLICY = new Set([
   // An external login bound to a user — read and written while signing in,
   // before any school is known. Same standing as AuthToken.
   "SsoIdentity",
+  // The second step of a sign-in, minted before any school is chosen — the
+  // same standing as AuthToken and Session.
+  "TwoFactorChallenge",
   "PushSubscription",
   "Guardianship",
   "Competition",

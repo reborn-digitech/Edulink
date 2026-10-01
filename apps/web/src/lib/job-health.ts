@@ -4,10 +4,11 @@ import { db } from "./db";
 // calls sendOperatorHealthDigest below, and this file reads jobStatuses from
 // the registry. Both sides touch the other only inside function bodies, never
 // at module init, so the live bindings are settled by the time either runs.
-import { JOB_NAMES, jobStatuses, type JobName, type JobStatus } from "./jobs";
+import { JOBS, JOB_NAMES, jobStatuses, type JobName, type JobStatus } from "./jobs";
 import { assertSuperuser } from "./superuser";
 import { AccessError } from "./tenancy";
 import { sendHealthDigestEmail } from "./email";
+import { notify } from "./notify";
 import { relativeTime } from "./dates";
 import { translator } from "./i18n/dictionary";
 import type { ActiveContext } from "./session";
@@ -316,4 +317,100 @@ export async function sendOperatorHealthDigest(now: Date = new Date()): Promise<
     await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml);
   }
   return { emailed: operators.length, ...counts, quiet: false };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The overdue-job watch                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The health digest is one email a morning; this is the alarm between
+ * mornings. The jobs:watch job runs every quarter hour and, when any job is
+ * overdue by its own `expectEveryMs`, tells every operator twice over — an
+ * in-app notification and the operator email — and then holds its tongue
+ * about that job for twelve hours, so a broken crontab is one alert per job
+ * per half day and not one every fifteen minutes.
+ *
+ * THE RECORD OF AN ALERT IS A JobRun ROW named `alert:<job>`, one per alert,
+ * written here and read by nobody else: jobStatuses walks the registry's
+ * names only, so these rows never appear as runs, and the retention sweep
+ * prunes them by age with the rest. No new table, no new column, one
+ * writer. The watch never alerts on itself: if it is the thing that is
+ * broken, nothing it could send would say so — the digest covers that.
+ */
+export const JOB_ALERT_REPEAT_MS = 12 * 3_600_000;
+const alertRowName = (job: JobName) => `alert:${job}`;
+
+/** When each job was last alerted on, for /root/jobs' "Alerted at …" line. */
+export async function lastJobAlerts(): Promise<Map<JobName, Date>> {
+  const rows = await db.jobRun.findMany({
+    where: { job: { in: JOB_NAMES.map(alertRowName) } },
+    orderBy: { startedAt: "desc" },
+    distinct: ["job"],
+    select: { job: true, startedAt: true },
+  });
+  return new Map(rows.map((r) => [r.job.slice("alert:".length) as JobName, r.startedAt]));
+}
+
+export type WatchOutcome = { overdue: number; alerted: number; muted: number; operators: number; emailed: number };
+
+export async function watchJobs(opts: { now?: Date; statuses?: JobStatus[]; operatorIds?: string[] } = {}): Promise<WatchOutcome> {
+  const now = opts.now ?? new Date();
+  const statuses = opts.statuses ?? (await jobStatuses(now));
+  const overdue = statuses.filter((s) => s.overdue && s.name !== "jobs:watch");
+  const out: WatchOutcome = { overdue: overdue.length, alerted: 0, muted: 0, operators: 0, emailed: 0 };
+  if (overdue.length === 0) return out;
+
+  // Operators are read once, after the first job that needs them: a run with
+  // every job muted reads nothing.
+  let operators: { id: string; email: string | null }[] | null = null;
+  const loadOperators = async () => {
+    if (operators) return operators;
+    operators = opts.operatorIds
+      ? await db.user.findMany({ where: { id: { in: opts.operatorIds }, disabledAt: null }, select: { id: true, email: true } })
+      : await db.user.findMany({ where: { isSuperuser: true, disabledAt: null }, select: { id: true, email: true } });
+    out.operators = operators.length;
+    return operators;
+  };
+  for (const job of overdue) {
+    const last = await db.jobRun.findFirst({ where: { job: alertRowName(job.name) }, orderBy: { startedAt: "desc" }, select: { startedAt: true } });
+    if (last && now.getTime() - last.startedAt.getTime() < JOB_ALERT_REPEAT_MS) {
+      out.muted++;
+      continue;
+    }
+    const ops = await loadOperators();
+    const hours = Math.max(1, Math.round(JOBS[job.name].expectEveryMs / 3_600_000));
+    const when = job.lastSuccessAt ? job.lastSuccessAt.toISOString().slice(0, 16).replace("T", " ") : null;
+    let emailed = 0;
+    for (const op of ops) {
+      await notify({
+        userId: op.id,
+        schoolId: null,
+        kind: "SYSTEM",
+        titleKey: "notifTitle.jobOverdue",
+        titleVars: { job: job.name },
+        bodyKey: when ? "notifBody.jobOverdue" : "notifBody.jobOverdueNever",
+        bodyVars: when ? { job: job.name, when, hours } : { job: job.name, hours },
+        url: "/root/jobs?state=overdue",
+        meta: { event: "job.overdue", job: job.name },
+      }).catch((error) => console.error("[jobs:watch] notify", error instanceof Error ? error.message : error));
+      if (op.email) {
+        // The same words as the notification, in English — the language the
+        // operator email and the crontab keep (see crontabText).
+        const tEn = translator("en");
+        const subject = `Relay: ${tEn("notifTitle.jobOverdue", { job: job.name })}`;
+        const text = when ? tEn("notifBody.jobOverdue", { job: job.name, when, hours }) : tEn("notifBody.jobOverdueNever", { job: job.name, hours });
+        const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`);
+        emailed++;
+      }
+    }
+    out.emailed += emailed;
+    await db.jobRun.create({
+      data: { job: alertRowName(job.name), startedAt: now, finishedAt: now, ok: true, summary: JSON.stringify({ operators: ops.length, emailed }) },
+      select: { id: true },
+    });
+    out.alerted++;
+  }
+  return out;
 }

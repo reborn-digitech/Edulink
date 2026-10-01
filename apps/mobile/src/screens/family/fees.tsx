@@ -4,7 +4,7 @@ import { Linking, Pressable, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { familyCheckoutSchema, familyFeesSchema, familyPaymentStatusSchema, familyUpiStartSchema, type FamilyFees as FamilyFeesData } from "@edulink/contracts";
+import { familyCheckoutSchema, familyFeeCalendarSchema, familyFeeEnrolledSchema, familyFeePlansSchema, familyFeesSchema, familyPaymentStatusSchema, familyUpiStartSchema, pupilFeesSchema, type FamilyFees as FamilyFeesData } from "@edulink/contracts";
 import type { z } from "zod";
 import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
 import { API_BASE, api, errorText } from "@/lib/api";
@@ -12,7 +12,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildSwitcher, childQuery, formatDateKey, formatInstant, Note, openWeb, param, Pill } from "./shared";
+import { ChildSwitcher, childQuery, Confirm, formatDateKey, formatInstant, Note, openWeb, param, Pill } from "./shared";
 import { demandStatusLabel, methodLabel, money, PAY_TONE, payable, payStatusLabel, receiptPath } from "../shared/fees";
 
 /**
@@ -41,6 +41,7 @@ export function FamilyFees() {
   const t = useT();
   const router = useRouter();
   if (role === "PARENT") return <ParentFees />;
+  if (role === "STUDENT") return <PupilFees />;
   return (
     <Screen title={t("fees.parentTitle")}>
       {role === null ? <Loading /> : <Empty title={t("fees.parentTitle")} body={t("fees.refuseFamily")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />}
@@ -160,6 +161,8 @@ function ParentFees() {
               onClose={() => setFlow(null)}
             />
           ) : (
+            <>
+            <PlanChooser studentMembershipId={child.studentMembershipId} childName={child.name} />
             <Card title={t("fees.parentPickTitle")}>
               {open.length === 0 ? (
                 <Text variant="sm" tone="ok" bold>
@@ -218,6 +221,8 @@ function ParentFees() {
                 </>
               )}
             </Card>
+            <PaymentCalendar studentMembershipId={child.studentMembershipId} childName={child.name} />
+            </>
           )}
 
           {options?.bankNote ? (
@@ -386,5 +391,191 @@ function History({ child }: { child: Child }) {
         })
       )}
     </Card>
+  );
+}
+
+/** The calendar's words for a row's state, by the server's status. */
+const CAL_STATUS: Record<string, { key: "fees.calStatusUpcoming" | "fees.calStatusDueSoon" | "fees.calStatusOverdue" | "fees.calStatusPaid" | "fees.calStatusPart" | "fees.calStatusWaived" | "fees.calStatusCarried"; tone: "muted" | "ok" | "warn" | "danger" | "accent" }> = {
+  UPCOMING: { key: "fees.calStatusUpcoming", tone: "muted" },
+  DUE_SOON: { key: "fees.calStatusDueSoon", tone: "warn" },
+  OVERDUE: { key: "fees.calStatusOverdue", tone: "danger" },
+  PAID: { key: "fees.calStatusPaid", tone: "ok" },
+  PART: { key: "fees.calStatusPart", tone: "warn" },
+  WAIVED: { key: "fees.calStatusWaived", tone: "accent" },
+  CARRIED: { key: "fees.calStatusCarried", tone: "accent" },
+};
+const CAL_KIND = { INSTALMENT: "fees.calendarInstalment", DUE: "fees.calendarDue", REMINDER: "fees.calendarReminder" } as const;
+
+/**
+ * The plans the office opened to families, for this child, while the child
+ * is on none: choose one, confirm, and the server writes the plan through
+ * the office's own assign. Gone once the child is on a plan.
+ */
+function PlanChooser({ studentMembershipId, childName }: { studentMembershipId: string; childName: string }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const qc = useQueryClient();
+  const [confirming, setConfirming] = useState<{ id: string; name: string } | null>(null);
+  const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  const query = useQuery({
+    queryKey: ["family", "fees", "plans", studentMembershipId],
+    queryFn: async () => familyFeePlansSchema.parse(unwrap(await api().get(`/api/v1/family/fees/plans?student=${encodeURIComponent(studentMembershipId)}`))),
+  });
+  const enrol = useMutation({
+    mutationFn: async (planId: string) => {
+      const result = await api().post("/api/v1/family/fees/plans/enrol", { student: studentMembershipId, planId });
+      if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      return familyFeeEnrolledSchema.parse(result.data);
+    },
+    onSuccess: (_r, planId) => {
+      const name = query.data?.plans.find((p) => p.id === planId)?.name ?? "";
+      setConfirming(null);
+      setNotice({ tone: "ok", text: t("fees.plansEnrolled", { name: childName, plan: name }) });
+      void qc.invalidateQueries({ queryKey: ["family", "fees"] });
+    },
+    onError: (e) => {
+      setConfirming(null);
+      setNotice({ tone: "danger", text: e.message });
+    },
+  });
+  const d = query.data;
+  if (!d || !d.year) return null;
+  if (d.current && !notice) return null;
+  return (
+    <Card title={t("fees.plansTitle")}>
+      {notice ? (
+        <Note tone={notice.tone}>
+          <Text variant="sm" bold tone={notice.tone} accessibilityLiveRegion="polite">
+            {notice.text}
+          </Text>
+        </Note>
+      ) : null}
+      {d.current ? null : !d.canEnrol ? (
+        <Text variant="sm" tone="muted">
+          {t("fees.plansCannotPaid")}
+        </Text>
+      ) : d.plans.length === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("fees.plansNone")}
+        </Text>
+      ) : (
+        <>
+          <Text variant="sm" tone="muted">
+            {t("fees.plansIntro", { name: childName })}
+          </Text>
+          {d.plans.map((p) => (
+            <View key={p.id} style={{ gap: th.space[1] }}>
+              <Row
+                title={p.name}
+                caption={[t("fees.plansInstalmentsCount", { count: p.instalments.length, total: money(p.totalPaise, locale) }), p.gradeLevel ? `${t("fees.structureGrade")} ${p.gradeLevel}` : t("fees.structureAllGrades")].join(" · ")}
+                right={confirming?.id === p.id ? undefined : <Button label={t("fees.plansChoose")} variant="secondary" disabled={enrol.isPending} onPress={() => setConfirming({ id: p.id, name: p.name })} />}
+              />
+              <Text variant="xs" tone="muted">
+                {p.instalments.map((i) => `${i.label} · ${formatDateKey(i.dueDateKey, locale)} · ${money(i.totalPaise, locale)}`).join("\n")}
+              </Text>
+              {confirming?.id === p.id ? <Confirm question={t("fees.plansConfirm", { name: childName, plan: p.name })} confirmLabel={t("common.confirm")} busy={enrol.isPending} onConfirm={() => enrol.mutate(p.id)} onCancel={() => setConfirming(null)} /> : null}
+            </View>
+          ))}
+        </>
+      )}
+    </Card>
+  );
+}
+
+/** The year's due dates — instalments, other dues and the reminders still to come — as a dated list. */
+function PaymentCalendar({ studentMembershipId, childName }: { studentMembershipId: string; childName: string }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const query = useQuery({
+    queryKey: ["family", "fees", "calendar", studentMembershipId],
+    queryFn: async () => familyFeeCalendarSchema.parse(unwrap(await api().get(`/api/v1/family/fees/calendar?student=${encodeURIComponent(studentMembershipId)}`))),
+  });
+  const d = query.data;
+  if (!d || !d.year) return null;
+  return (
+    <Card title={t("fees.calendarTitle")}>
+      <Text variant="sm" tone="muted">
+        {t("fees.calendarIntro")}
+      </Text>
+      {d.rows.length === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("fees.calendarEmpty", { name: childName })}
+        </Text>
+      ) : (
+        d.rows.map((row, index) => {
+          const status = CAL_STATUS[row.status] ?? { key: "fees.calStatusUpcoming" as const, tone: "muted" as const };
+          return (
+            <Row
+              key={`${row.kind}-${row.demandId ?? row.title}-${row.date}-${index}`}
+              title={`${formatDateKey(row.date, locale)} · ${row.title}`}
+              caption={`${t(CAL_KIND[row.kind])} · ${money(row.amount, locale)}`}
+              right={<Pill label={t(status.key)} tone={status.tone} />}
+            />
+          );
+        })
+      )}
+    </Card>
+  );
+}
+
+/**
+ * A pupil's own fees — the web's /student/fees: dues, what is paid and the
+ * next due date, only while the school lets pupils of their age see them.
+ * No way to pay, by design: a pupil never pays, and the screen says so.
+ */
+function PupilFees() {
+  const t = useT();
+  const th = useTheme();
+  const router = useRouter();
+  const { locale } = useLocale();
+  const query = useQuery({
+    queryKey: ["family", "fees", "mine"],
+    queryFn: async () => pupilFeesSchema.parse(unwrap(await api().get("/api/v1/family/fees/mine"))),
+  });
+  const d = query.data;
+  return (
+    <Screen title={t("fees.myFeesTitle")} description={d ? [d.schoolName, d.year?.name].filter(Boolean).join(" · ") : t("fees.pupilIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {d && !d.allowed ? <Empty title={t("fees.myFeesTitle")} body={d.reason === "UNDER_AGE" ? t("fees.pupilNotAllowedAge", { age: d.fromAge ?? 0 }) : d.reason === "NO_BIRTHDATE" ? t("fees.pupilNotAllowedBirthdate") : t("fees.pupilNotAllowedOff")} action={<Button label={t("agenda.title")} variant="secondary" onPress={() => router.push("/(app)/agenda" as never)} />} /> : null}
+      {d?.allowed ? (
+        <>
+          <Note tone="accent">
+            <Text variant="sm" bold tone="accent">
+              {t("fees.pupilAskGrownUp")}
+            </Text>
+          </Note>
+          <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
+            <Stat label={t("fees.parentOutstanding")} value={money(d.totals.outstandingPaise, locale)} tone={d.totals.outstandingPaise > 0 ? "warn" : "ok"} />
+            <Stat label={t("fees.parentOverdue")} value={money(d.totals.overduePaise, locale)} tone={d.totals.overduePaise > 0 ? "danger" : "fg"} />
+            <Stat label={t("fees.pupilNextDue")} value={d.nextDue ? formatDateKey(d.nextDue.dueDateKey, locale) : "—"} />
+          </View>
+          <Card title={t("fees.pupilDemandsTitle")}>
+            {d.demands.length === 0 ? (
+              <Text variant="sm" tone="ok" bold>
+                {t("fees.pupilNothingDue")}
+              </Text>
+            ) : (
+              d.demands.map((row) => (
+                <Row
+                  key={row.id}
+                  title={row.label}
+                  caption={[t("fees.parentDue", { date: formatDateKey(row.dueDateKey, locale) }), `${t("fees.duesColPaid")} ${money(row.paidPaise, locale)}`].join(" · ")}
+                  right={
+                    <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
+                      <Text variant="base" bold style={{ fontVariant: ["tabular-nums"] }}>
+                        {money(row.outstandingPaise, locale)}
+                      </Text>
+                      <Pill label={row.overdue ? t("fees.overdue") : demandStatusLabel(t, row.status)} tone={row.overdue ? "danger" : row.status === "PAID" ? "ok" : "warn"} />
+                    </View>
+                  }
+                />
+              ))
+            )}
+          </Card>
+        </>
+      ) : null}
+    </Screen>
   );
 }

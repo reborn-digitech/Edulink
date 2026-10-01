@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { registerAbsenceNoteSchema } from "./family-care";
 
 /**
  * staff: the teacher's and the principal's pages as JSON — one response
@@ -191,6 +192,8 @@ export const registerSchema = z.object({
       avatarKey: z.string().nullable(),
       status: attendanceStatusSchema.nullable(),
       note: z.string().nullable(),
+      /** The family said the pupil would be away today (family-care.ts); absent from an older server's answer. */
+      absenceNote: registerAbsenceNoteSchema.nullable().optional(),
     }),
   ),
   finalizedAt: isoDate.nullable(),

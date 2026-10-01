@@ -21,6 +21,7 @@ function appHandoff(cookieValue: string | undefined): { challenge: string | null
   }
 }
 import { resolveContext } from "@/lib/resolve-context";
+import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 import {
   completeSso,
   signInWithSso,
@@ -96,6 +97,15 @@ async function handle(
     const response = NextResponse.redirect(`${APP_SCHEME}://sso?code=${encodeURIComponent(code)}&provider=${id}`);
     response.cookies.delete(SSO_COOKIE);
     return response;
+  }
+
+  // Two-step sign-in: the provider was the first step; the code page is the second.
+  const challenge = await twoFactorChallengeFor(user.id, `sso:${id}`);
+  if (challenge) {
+    const step = NextResponse.redirect(new URL("/login/code", origin));
+    step.cookies.set(TWO_FACTOR_COOKIE, challenge, twoFactorCookieOptions());
+    step.cookies.delete(SSO_COOKIE);
+    return step;
   }
 
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);

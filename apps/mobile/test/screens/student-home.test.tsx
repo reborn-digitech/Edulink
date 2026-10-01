@@ -79,6 +79,14 @@ describe("the pupil's Today", () => {
     expect(screen.getByText("90%")).toBeTruthy();
   });
 
+  it("opens the fortnight ahead and the pupil's own fees", async () => {
+    await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => OVERVIEW });
+    await press(await screen.findByRole("button", { name: "What is coming up" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/agenda");
+    await press(screen.getByRole("button", { name: /^My fees/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/fees");
+  });
+
   it("with nothing on and nothing due, says so gently", async () => {
     await renderFamily(<StudentHome />, ME_STUDENT, { [PATH]: () => ({ ...OVERVIEW, todayStatus: null, lessonsToday: [], upcoming: [], examMarks: [] }) });
     expect(await screen.findByText("Nothing due right now")).toBeTruthy();

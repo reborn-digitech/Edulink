@@ -55,6 +55,9 @@ const DIRECT = [
   "PostRead",
   /** The staff register: a staff member's day, the school's row. */
   "StaffAttendance",
+  /** A family's word that a child will be away, and who read a child's health card: the school's rows, written and read through the family rules (2026-10-01). */
+  "AbsenceNote",
+  "HealthCardRead",
   /** The syllabus: the school's chapter list per grade and subject, a class's progress on each, and the lessons planned and taught. */
   "SyllabusUnit",
   "SyllabusProgress",
@@ -205,6 +208,7 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   Session: "belongs to a user, not a school; a session survives switching school",
   AuthToken: "belongs to a user, before any school is chosen",
   SsoIdentity: "an external login bound to a user, before any school is chosen — like AuthToken",
+  TwoFactorChallenge: "the second step of a sign-in, minted before any school is chosen — like AuthToken",
   PushSubscription: "belongs to a user's device",
   DeviceToken: "the phone's push token — belongs to a user's device, like PushSubscription",
   UploadTicket: "a file a person uploaded and has not attached yet; the post that consumes it is the tenant-scoped row",
@@ -248,7 +252,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(123);
+    ).toBe(126);
   });
 });
 

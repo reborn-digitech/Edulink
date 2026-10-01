@@ -9,8 +9,9 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { useRole } from "@/lib/session";
+import { useRole, useSession } from "@/lib/session";
 import { ATTENDANCE, ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, Note, param, StatusBadge } from "./shared";
+import { AbsenceNotes } from "./absence-notes";
 
 /**
  * Attendance for the family. A guardian reads one month of one child's
@@ -96,6 +97,9 @@ function ChildAttendance() {
             )}
           </Card>
 
+          {/* The days away the family has told the school about, for a child still at the school. */}
+          {d.child.leftAt ? null : <AbsenceNotes studentMembershipId={d.child.studentMembershipId} />}
+
           {summary.percent !== null && summary.percent < 90 ? (
             <Note tone="warn">
               <Text variant="sm" tone="warn">
@@ -118,6 +122,8 @@ function PupilAttendance() {
   const th = useTheme();
   const { locale } = useLocale();
   const router = useRouter();
+  const session = useSession();
+  const membershipId = session.status === "signed-in" ? session.me.active.membershipId : null;
   const query = useQuery({
     queryKey: ["family", "student", "overview"],
     queryFn: async () => familyStudentOverviewSchema.parse(unwrap(await api().get("/api/v1/family/student/overview"))),
@@ -148,6 +154,8 @@ function PupilAttendance() {
               ))
             )}
           </Card>
+          {/* The pupil tells the school themselves. */}
+          {membershipId ? <AbsenceNotes studentMembershipId={membershipId} self /> : null}
         </>
       ) : null}
     </Screen>

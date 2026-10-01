@@ -3,6 +3,7 @@ import { claimToken } from "@/lib/auth-tokens";
 import { db } from "@/lib/db";
 import { apiFailure, apiInvalid, issueApiSession, readJson } from "@/lib/api-v1";
 import { getT } from "@/lib/i18n/server";
+import { twoFactorGate } from "@/lib/api-two-factor";
 import { NextResponse } from "next/server";
 
 /**
@@ -25,6 +26,8 @@ export async function POST(request: Request) {
     if (!user || user.disabledAt) {
       return NextResponse.json({ error: t("login.noMatch"), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
     }
+    const second = await twoFactorGate(user.id, "magic-link");
+    if (second) return second;
     return issueApiSession(request, user.id, user, "magic-link", parsed.data.device);
   } catch (error) {
     return apiFailure(error, "api/v1/auth/magic-link/consume");

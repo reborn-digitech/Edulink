@@ -270,6 +270,10 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "auth.firstSignin.failed": "audit.authFirstSigninFailed",
   "auth.firstSignin.completed": "audit.authFirstSigninCompleted",
   "auth.reset.failed": "audit.authResetFailed",
+  "auth.totp.enrolled": "audit.authTotpEnrolled",
+  "auth.totp.disabled": "audit.authTotpDisabled",
+  "auth.totp.passed": "audit.authTotpPassed",
+  "auth.totp.failed": "audit.authTotpFailed",
   "auth.reset.requested": "audit.authResetRequested",
   "class.cohort.add": "audit.classCohortAdd",
   "school.promote": "audit.schoolPromote",
@@ -384,6 +388,11 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "term.finish": "audit.termFinish",
   "term.reopen": "audit.termReopen",
   "expert.profile.update": "audit.expertProfileUpdate",
+  "absence.note": "audit.absenceNote",
+  "absence.note.delete": "audit.absenceNoteDelete",
+  "family.export": "audit.familyExport",
+  "guardianship.unlinked": "audit.guardianshipUnlinked",
+  "marks.export": "audit.marksExport",
 };
 
 export function actionKey(action: string): TranslationKey | null {
@@ -396,6 +405,7 @@ export function isSensitiveAction(action: string): boolean {
     action === "directory.export" ||
     action === "compliance.export" ||
     action === "auth.login.failed" ||
+    action === "auth.totp.failed" ||
     action === "parent.claim.failed" ||
     action.startsWith("report.") ||
     action === "content.report"

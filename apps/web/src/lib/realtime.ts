@@ -69,6 +69,8 @@ export const channel = {
   class: (classId: string) => `class:${classId}`,
   user: (userId: string) => `user:${userId}`,
   student: (studentMembershipId: string) => `student:${studentMembershipId}`,
+  /** One member of staff, by membership: the remark threads they are party to. */
+  staff: (membershipId: string) => `staff:${membershipId}`,
 };
 
 export function subscriberCount(): number {

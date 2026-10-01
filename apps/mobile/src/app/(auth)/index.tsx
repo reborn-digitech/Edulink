@@ -9,6 +9,8 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { LanguageRow } from "@/components/language-row";
 import { beginHandoff, handoffUrl } from "@/lib/sso-handoff";
+import { isTwoFactor } from "@/lib/two-factor";
+import { TwoFactorStep } from "@/screens/auth/two-factor-step";
 
 /**
  * Sign in: password first, the same identifier the web accepts (email, phone
@@ -26,6 +28,8 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // The password was right and a code from the authenticator app is asked for next.
+  const [challenge, setChallenge] = useState<string | null>(null);
 
   async function submit() {
     setBusy(true);
@@ -34,6 +38,10 @@ export default function SignIn() {
     setBusy(false);
     if (!res.ok) {
       setError(res.status === 429 && res.retryAfterSeconds ? `${res.error} (${res.retryAfterSeconds}s)` : errorText(res, t("login.noMatch")));
+      return;
+    }
+    if (isTwoFactor(res.data)) {
+      setChallenge(res.data.challenge);
       return;
     }
     await session.accept(res.data);
@@ -47,6 +55,20 @@ export default function SignIn() {
     } catch {
       setError(t("common.somethingWrong"));
     }
+  }
+
+  if (challenge) {
+    return (
+      <Screen title={t("login.title")}>
+        <TwoFactorStep
+          challenge={challenge}
+          onBack={() => {
+            setChallenge(null);
+            setPassword("");
+          }}
+        />
+      </Screen>
+    );
   }
 
   return (

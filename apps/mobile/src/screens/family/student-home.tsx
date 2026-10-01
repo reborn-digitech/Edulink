@@ -90,7 +90,7 @@ export function StudentHome() {
             <LessonList lessons={d.lessonsToday} closedToday={d.closedToday} closedName={d.closedName} />
           </Card>
 
-          <Card title={t("student.whatIsDue")}>
+          <Card title={t("student.whatIsDue")} action={<Button variant="ghost" label={t("agenda.link")} onPress={() => router.push("/(app)/agenda" as never)} />}>
             <Text variant="sm" tone="muted">
               {d.upcoming.length === 0 ? t("student.nothingDueShort") : d.upcoming.length === 1 ? t("student.toDoCountOne") : t("student.toDoCountMany", { count: d.upcoming.length })}
             </Text>
@@ -112,6 +112,12 @@ export function StudentHome() {
           {d.examMarks.map((m) => (
             <ExamMarksCards key={m.studentMembershipId} marks={m} compact onSeeAll={() => router.push("/(app)/exams" as never)} />
           ))}
+
+          {/* The fortnight ahead on one dated list, and the pupil's own fees (shown only when the school allows their age). */}
+          <Card>
+            <Row icon="calendar" title={t("agenda.title")} caption={t("agenda.introPupil", { days: 14 })} onPress={() => router.push("/(app)/agenda" as never)} />
+            <Row icon="receipt" title={t("fees.myFeesTitle")} caption={t("fees.pupilIntro")} onPress={() => router.push("/(app)/fees" as never)} />
+          </Card>
         </>
       ) : null}
     </Screen>

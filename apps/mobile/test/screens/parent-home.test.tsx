@@ -61,6 +61,12 @@ describe("the guardian's overview", () => {
     expect(await screen.findByRole("progressbar")).toBeTruthy();
   });
 
+  it("opens the child's fortnight ahead from the coming-up card", async () => {
+    await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW });
+    await press(await screen.findByRole("button", { name: "What is coming up" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/agenda", params: { child: ID.child } });
+  });
+
   it("shows the child's day, and switching child asks the API for that child", async () => {
     const { fetch } = await renderFamily(<ParentHome />, ME_PARENT, { "/api/v1/family/children": () => CHILDREN, "/api/v1/family/overview": () => OVERVIEW });
     expect(await screen.findByText("ZZ Asha was marked present")).toBeTruthy();

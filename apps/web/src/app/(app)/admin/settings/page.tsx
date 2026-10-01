@@ -11,9 +11,10 @@ import { LogoPicker } from "./logo-picker";
 import { DetailsForm } from "./details-form";
 import { NotifTidyForm } from "./notif-tidy-form";
 import { TeachingWeekForm } from "./teaching-week-form";
+import { SelfReadAgeForm } from "./self-read-age-form";
 import { parseTeachingDays } from "@/lib/dates";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
-import { BroomIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, CalendarCheckIcon, EyeIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -51,6 +52,7 @@ export default async function SettingsPage() {
       gradeHigh: true,
       timezone: true,
       teachingDays: true,
+      selfReadAge: true,
     },
     }),
     readOwnProfileSettings(ctx),
@@ -101,6 +103,17 @@ export default async function SettingsPage() {
         />
         <CardBody>
           <TeachingWeekForm initialDays={parseTeachingDays(school.teachingDays)} />
+        </CardBody>
+      </Card>
+
+      <Card id="self-read-age">
+        <CardHeader
+          icon={<EyeIcon weight="duotone" className="size-5" />}
+          title={t("familyCare.selfReadTitle")}
+          description={t("familyCare.selfReadBody")}
+        />
+        <CardBody>
+          <SelfReadAgeForm initialAge={school.selfReadAge} />
         </CardBody>
       </Card>
 

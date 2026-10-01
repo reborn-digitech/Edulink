@@ -130,6 +130,60 @@ describe("the fees overview", () => {
   });
 });
 
+const STRUCTURES = {
+  structures: [
+    { id: "czz00000000000000000st01", name: "ZZ Grade 5 fees", gradeLevel: "5", academicYearId: "y1", yearName: "2026-27", instalments: 2, totalPaise: 1_250_000, pupils: 24, publishedAt: "2026-04-01T05:00:00.000Z", archivedAt: null, selfEnrol: false },
+    { id: "czz00000000000000000st02", name: "ZZ Draft", gradeLevel: null, academicYearId: "y1", yearName: "2026-27", instalments: 1, totalPaise: 100_000, pupils: 0, publishedAt: null, archivedAt: null, selfEnrol: false },
+  ],
+  year: YEAR,
+  heads: 3,
+};
+const SETTINGS = { upiId: "zzschool@upi", upiPayee: "ZZ School", receiptPrefix: "ZZ", bankNote: null, gateway: null, sealingAvailable: true, transport: "devbox", webhookUrl: "http://api.test/api/webhooks/razorpay/s1", pupilFeeViewAge: null };
+
+describe("plans open to families and the pupil's age", () => {
+  it("the office opens a published plan with a switch; a draft is not offered", async () => {
+    const { calls } = await mountStaff(<StaffFees />, "ADMIN", {
+      "GET /api/v1/fees/overview": () => json(OVERVIEW),
+      "GET /api/v1/fees/structures": () => json(STRUCTURES),
+      "GET /api/v1/fees/settings": () => json(SETTINGS),
+      "POST /api/v1/fees/structures/czz00000000000000000st01/self-enrol": () => json({ ok: true }),
+    });
+    const toggle = await screen.findByRole("switch", { name: "ZZ Grade 5 fees" });
+    expect(screen.queryByRole("switch", { name: "ZZ Draft" })).toBeNull();
+    expect(screen.getByText(/Grade 5 · ₹12,500 · Office only/)).toBeTruthy();
+    await fireEvent.press(toggle);
+    await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/fees/structures/czz00000000000000000st01/self-enrol")).toBe(true));
+    expect(calls().find((c) => c.line.startsWith("POST /api/v1/fees/structures/"))!.body).toEqual({ open: true });
+  });
+
+  it("the age pupils may see their fees from is saved with the other settings kept as they are; a bad age is refused on the phone", async () => {
+    const { calls } = await mountStaff(<StaffFees />, "ADMIN", {
+      "GET /api/v1/fees/overview": () => json(OVERVIEW),
+      "GET /api/v1/fees/structures": () => json(STRUCTURES),
+      "GET /api/v1/fees/settings": () => json(SETTINGS),
+      "POST /api/v1/fees/settings": () => json({ ok: true }),
+    });
+    const box = await screen.findByLabelText("Pupils may see their fee dues from age");
+    expect(screen.getByText("Pupils do not see fees")).toBeTruthy();
+    await fireEvent.changeText(box, "3");
+    expect(screen.getByText("The age must be a whole number between 5 and 25.")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
+    await fireEvent.changeText(box, "14");
+    expect(screen.getByText("From age 14")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Save" }));
+    await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/fees/settings")).toBe(true));
+    expect(calls().find((c) => c.line === "POST /api/v1/fees/settings")!.body).toEqual({ upiId: "zzschool@upi", upiPayee: "ZZ School", receiptPrefix: "ZZ", bankNote: null, pupilFeeViewAge: 14 });
+    expect(await screen.findByText("Saved.")).toBeTruthy();
+  });
+
+  it("the head sees neither card", async () => {
+    await mountStaff(<StaffFees />, "PRINCIPAL", { "GET /api/v1/fees/overview": () => json(OVERVIEW), "GET /api/v1/fees/structures": () => json(STRUCTURES) });
+    expect(await screen.findByLabelText("Asked for: ₹5,00,000")).toBeTruthy();
+    expect(screen.queryByRole("switch", { name: "ZZ Grade 5 fees" })).toBeNull();
+    expect(screen.queryByText("Fees for pupils")).toBeNull();
+  });
+});
+
 describe("the dues", () => {
   it("builds the query the server documents", () => {
     expect(duesPath("all", "", 1)).toBe("/api/v1/fees/dues");

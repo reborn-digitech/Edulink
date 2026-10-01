@@ -4,13 +4,83 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRightIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { searchResultsSchema, type SearchHit, type SearchKind } from "@edulink/contracts";
 import { NAV, QUICK_ACTIONS } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
 import type { Role } from "@/lib/constants";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 type Entry = { href: string; label: string; icon: string; description?: string; group: string };
+
+/** The server's groups in the order they are drawn, with the icon each row carries; pages the palette already matched itself. */
+const SERVER_GROUPS: { kind: Exclude<SearchKind, "pages">; labelKey: TranslationKey; icon: string }[] = [
+  { kind: "people", labelKey: "search.groupPeople", icon: "users" },
+  { kind: "posts", labelKey: "search.groupPosts", icon: "megaphone" },
+  { kind: "messages", labelKey: "search.groupMessages", icon: "chat" },
+  { kind: "papers", labelKey: "search.groupPapers", icon: "clipboard" },
+];
+
+/** A keystroke's worth of quiet before the server is asked, so typing a name is one request and not seven. */
+export const SEARCH_DEBOUNCE_MS = 250;
+/** The server is asked only once the box holds this much (the endpoint's own floor). */
+export const SEARCH_MIN_CHARS = 2;
+
+type ServerState = { status: "idle" } | { status: "searching" } | { status: "done"; hits: Entry[] } | { status: "failed" };
+type Answer = { q: string; state: Extract<ServerState, { status: "done" | "failed" }> };
+
+/**
+ * The server's hits for the box, debounced and cancellable: a new keystroke
+ * aborts the fetch in flight, and an answer to a question no longer asked
+ * is dropped. The state is derived from the last answer and the question
+ * now in the box — an answer to another question is "searching", not stale
+ * rows — so the effect sets nothing until the server has spoken. The web
+ * filters its own pages, so the server's `pages` group is left out here.
+ */
+export function useServerSearch(query: string, enabled: boolean, labelFor: (key: TranslationKey) => string): ServerState {
+  const [answer, setAnswer] = useState<Answer | null>(null);
+  const q = query.trim();
+  const asked = enabled && q.length >= SEARCH_MIN_CHARS;
+  useEffect(() => {
+    if (!asked) return;
+    const controller = new AbortController();
+    let settled = false;
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/v1/search?q=${encodeURIComponent(q)}&limit=8`, {
+          credentials: "include",
+          headers: { accept: "application/json" },
+          cache: "no-store",
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        const results = searchResultsSchema.parse(await response.json());
+        const hits: Entry[] = SERVER_GROUPS.flatMap((group) =>
+          results[group.kind].map((hit: SearchHit) => ({
+            href: hit.href,
+            label: hit.title,
+            description: hit.subtitle ?? undefined,
+            icon: group.icon,
+            group: labelFor(group.labelKey),
+          })),
+        );
+        settled = true;
+        setAnswer({ q, state: { status: "done", hits } });
+      } catch {
+        if (controller.signal.aborted) return;
+        settled = true;
+        setAnswer({ q, state: { status: "failed" } });
+      }
+    }, SEARCH_DEBOUNCE_MS);
+    return () => {
+      clearTimeout(timer);
+      if (!settled) controller.abort();
+    };
+  }, [q, asked, labelFor]);
+  if (!asked) return { status: "idle" };
+  return answer && answer.q === q ? answer.state : { status: "searching" };
+}
 
 /**
  * ⌘K palette.
@@ -95,7 +165,7 @@ export function CommandPalette({
     return list;
   }, [role, contextCount, isSuperuser, hiddenHrefs, t]);
 
-  const results = useMemo(() => {
+  const menuResults = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return entries;
     return entries.filter(
@@ -105,6 +175,12 @@ export function CommandPalette({
         e.href.toLowerCase().includes(q),
     );
   }, [entries, query]);
+
+  // After the menu's matches, what the server finds: people, posts,
+  // messages and papers this person may already see. An expert has no school
+  // to search, so the server is not asked for them.
+  const server = useServerSearch(query, open && role !== "EXPERT", t);
+  const results = useMemo(() => (server.status === "done" ? [...menuResults, ...server.hits] : menuResults), [menuResults, server]);
 
   // Back to the top whenever the search changes — adjusted during render, so
   // the highlight never sits on a row the new results no longer contain.
@@ -188,7 +264,7 @@ export function CommandPalette({
         </div>
 
         <div className="max-h-[min(24rem,50vh)] overflow-y-auto p-2 scrollbar-thin">
-          {results.length === 0 ? (
+          {results.length === 0 && server.status !== "searching" ? (
             <p className="px-3 py-8 text-center text-sm text-fg-muted">
               {/* The example is a nav label, so it is a page name the reader can
                   actually see in their own language rather than an English one. */}
@@ -199,7 +275,7 @@ export function CommandPalette({
               const showGroup = entry.group !== lastGroup;
               lastGroup = entry.group;
               return (
-                <div key={`${entry.href}-${entry.label}`}>
+                <div key={`${entry.group}-${entry.href}-${entry.label}`}>
                   {showGroup && (
                     <p className="px-3 pb-1 pt-3 text-[0.6875rem] font-semibold uppercase tracking-wide text-fg-subtle">
                       {entry.group}
@@ -233,6 +309,18 @@ export function CommandPalette({
                 </div>
               );
             })
+          )}
+          {/* The server's state under the menu's matches: a status line the
+              screen reader hears, never a row the cursor can land on. */}
+          {server.status === "searching" && (
+            <p role="status" aria-live="polite" className="px-3 py-3 text-center text-xs text-fg-muted">
+              {t("search.searching")}
+            </p>
+          )}
+          {server.status === "failed" && (
+            <p role="status" aria-live="polite" className="px-3 py-3 text-center text-xs text-danger">
+              {t("search.failed")}
+            </p>
           )}
         </div>
       </div>

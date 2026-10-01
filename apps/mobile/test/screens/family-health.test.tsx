@@ -184,8 +184,43 @@ describe("a child's health card for the guardian", () => {
     expect(await screen.findByText("Link to your child")).toBeTruthy();
   });
 
-  it("a pupil has no card of their own on the phone", async () => {
-    await renderFamily(<FamilyHealth />, ME_STUDENT, {});
-    expect(await screen.findByText("The office or a guardian fills this in; a teacher reads it here.")).toBeTruthy();
+  it("the guardian can see who at the school has read the card, read only when the disclosure is opened", async () => {
+    const READS = `/api/v1/family/students/${ID.child}/health/reads`;
+    const { fetch } = await renderFamily(<FamilyHealth />, ME_PARENT, {
+      [CHILDREN_PATH]: () => CHILDREN,
+      [PATH]: () => CARD,
+      [READS]: () => ({ studentMembershipId: ID.child, childName: "ZZ Asha", days: 90, reads: [{ id: "r1", readerName: "ZZ Teacher", readerRole: "TEACHER", readAt: "2026-09-18T05:00:00.000Z" }, { id: "r2", readerName: "ZZ Office", readerRole: "ADMIN", readAt: "2026-09-17T05:00:00.000Z" }] }),
+    });
+    await screen.findByText("ZZ Asha's health card");
+    expect(calls(fetch, READS)).toHaveLength(0);
+    await press(screen.getByRole("button", { name: "Who has read this" }));
+    expect(await screen.findByText("ZZ Teacher (teacher)")).toBeTruthy();
+    expect(screen.getByText("ZZ Office (school office)")).toBeTruthy();
+    expect(screen.getByText(/^Members of staff who opened ZZ Asha's card in the last 90 days/)).toBeTruthy();
+    expect(calls(fetch, READS)).toHaveLength(1);
+  });
+
+  it("a pupil old enough by the school's rule reads their own card, read-only, with no child asked for", async () => {
+    const { fetch } = await renderFamily(<FamilyHealth />, ME_STUDENT, { [PATH]: () => ({ ...CARD, studentName: "ZZ Pupil", canEdit: false }) });
+    expect(await screen.findByText("My health card")).toBeTruthy();
+    expect(await screen.findByLabelText("Allergies: Peanuts")).toBeTruthy();
+    expect(screen.getByText("Height 132 cm · Weight 29.5 kg · ZZ camp")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Edit the card" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Who has read this" })).toBeNull();
+    expect(calls(fetch, PATH)[0]!.url.search).toBe("");
+    expect(calls(fetch, CHILDREN_PATH)).toHaveLength(0);
+  });
+
+  it("a pupil the school's rule refuses is told to ask a grown-up, with the overview as the door", async () => {
+    await renderFamily(<FamilyHealth />, ME_STUDENT, { [PATH]: refused(403, "ZZ not yet") });
+    expect(await screen.findByText("Ask a grown-up")).toBeTruthy();
+    expect(screen.getByText(/^Your health card and incident log are read by your family and the school/)).toBeTruthy();
+    expect(screen.queryByRole("alert")).toBeNull();
+    await press(screen.getByRole("button", { name: "Overview" }));
+  });
+
+  it("a pupil's other failure is still an alert with a retry", async () => {
+    await renderFamily(<FamilyHealth />, ME_STUDENT, { [PATH]: refused(500, "ZZ broke") });
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
   });
 });

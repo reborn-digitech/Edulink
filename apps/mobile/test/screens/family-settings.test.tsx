@@ -1,4 +1,5 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import * as Sharing from "expo-sharing";
 import { bodyOf, calls, child, ID, ME_PARENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
 import { ParentSettings } from "@/screens/family/settings";
 
@@ -70,5 +71,71 @@ describe("a guardian's settings", () => {
     await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: refused(500, "ZZ broke") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+
+  it("downloads one child's data as a JSON file to the share sheet, one button per child", async () => {
+    (Sharing.shareAsync as jest.Mock).mockClear();
+    const doc = new TextEncoder().encode(JSON.stringify({ format: "relay-person-export" }));
+    const { fetch } = await renderFamily(<ParentSettings />, ME_PARENT, {
+      [PATH]: () => ({ ...SETTINGS, children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bhavesh")] }),
+      "/api/v1/family/export": () => new Response(doc, { status: 200, headers: { "content-type": "application/json; charset=utf-8" } }),
+    });
+    expect(await screen.findByText("Download my data")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Download for ZZ Bhavesh" })).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Download for ZZ Asha" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls(fetch, "/api/v1/family/export").map((c) => c.url.search)).toEqual([`?student=${ID.child}`]);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/relay-export-ZZ Asha\.json$/), expect.objectContaining({ mimeType: "application/json" }));
+  });
+});
+
+describe("removing a child from the account", () => {
+  const LINK = `/api/v1/family/children/${ID.child}/link`;
+  const TWO = { ...SETTINGS, children: [child(ID.child, "ZZ Asha"), child(ID.child2, "ZZ Bela", { relation: "SCHOOL" })] };
+
+  it("offers Remove on a family link only, and the button waits for the child's name typed back", async () => {
+    const { fetch } = await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => TWO });
+    await screen.findByText("ZZ Asha");
+    expect(screen.getAllByRole("button", { name: /^Remove: / })).toHaveLength(1);
+    await press(screen.getByRole("button", { name: "Remove: ZZ Asha" }));
+    expect(screen.getByText("Remove this child from my account")).toBeTruthy();
+    expect(screen.getByText(/^You will stop seeing ZZ Asha's register/)).toBeTruthy();
+    const confirm = screen.getByRole("button", { name: "Remove ZZ Asha from my account" });
+    expect(confirm).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Type ZZ Asha to confirm"), "Asha");
+    expect(screen.getByRole("button", { name: "Remove ZZ Asha from my account" })).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Type ZZ Asha to confirm"), "zz asha ");
+    expect(screen.getByRole("button", { name: "Remove ZZ Asha from my account" })).not.toBeDisabled();
+    await press(screen.getByRole("button", { name: "Cancel" }));
+    expect(screen.queryByText("Remove this child from my account")).toBeNull();
+    expect(calls(fetch, LINK)).toHaveLength(0);
+  });
+
+  it("sends one DELETE with the confirmation; with a child left the list is re-read, with none the link page is next", async () => {
+    const { fetch } = await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => TWO, [LINK]: () => ({ ok: true, schoolStandsIn: true, remaining: 1 }) });
+    await press(await screen.findByRole("button", { name: "Remove: ZZ Asha" }));
+    await fireEvent.changeText(screen.getByLabelText("Type ZZ Asha to confirm"), "ZZ Asha");
+    await press(screen.getByRole("button", { name: "Remove ZZ Asha from my account" }));
+    await waitFor(() => expect(calls(fetch, LINK).map((c) => c.init?.method)).toEqual(["DELETE"]));
+    expect(bodyOf(calls(fetch, LINK)[0]!)).toEqual({ confirm: true });
+    await waitFor(() => expect(calls(fetch, PATH).length).toBeGreaterThan(1));
+    expect(mockRouter.replace).not.toHaveBeenCalled();
+
+    mockRouter.replace.mockClear();
+    const second = await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => SETTINGS, [LINK]: () => ({ ok: true, schoolStandsIn: false, remaining: 0 }) });
+    await press(await screen.findByRole("button", { name: "Remove: ZZ Asha" }));
+    await fireEvent.changeText(screen.getByLabelText("Type ZZ Asha to confirm"), "ZZ Asha");
+    await press(screen.getByRole("button", { name: "Remove ZZ Asha from my account" }));
+    await waitFor(() => expect(calls(second.fetch, LINK)).toHaveLength(1));
+    await waitFor(() => expect(mockRouter.replace).toHaveBeenCalledWith("/(app)/link-child"));
+  });
+
+  it("a refusal is shown under the name, and the form stays open", async () => {
+    await renderFamily(<ParentSettings />, ME_PARENT, { [PATH]: () => SETTINGS, [LINK]: refused(403, "ZZ nobody can stand in") });
+    await press(await screen.findByRole("button", { name: "Remove: ZZ Asha" }));
+    await fireEvent.changeText(screen.getByLabelText("Type ZZ Asha to confirm"), "ZZ Asha");
+    await press(screen.getByRole("button", { name: "Remove ZZ Asha from my account" }));
+    expect(await screen.findByText("ZZ nobody can stand in")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Remove ZZ Asha from my account" })).toBeTruthy();
   });
 });

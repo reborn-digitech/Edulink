@@ -30,6 +30,8 @@ import { LanguageForm } from "./language-form";
 import { EmailForm } from "./email-form";
 import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
+import { TotpCard } from "./totp-card";
+import { twoFactorStatus } from "@/lib/two-factor";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { switchContext } from "@/app/switch/actions";
 import { getT } from "@/lib/i18n/server";
@@ -81,6 +83,8 @@ export default async function AccountPage({
   const isHandle = user.email?.endsWith(`@${HANDLE_DOMAIN}`) ?? false;
 
   const showRecord = await hasRecord(session);
+  // Two-step sign-in is offered to the office, the head and the operator alone.
+  const twoFactor = await twoFactorStatus(session.user.id);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -135,6 +139,9 @@ export default async function AccountPage({
           </div>
         </CardBody>
       </Card>
+
+      {/* ---------- two-step sign-in ---------- */}
+      {twoFactor.eligible && <TotpCard enabled={twoFactor.enabled} recoveryLeft={twoFactor.recoveryLeft} available={twoFactor.available} />}
 
       {/* ---------- roles ---------- */}
       <Card>

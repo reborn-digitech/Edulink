@@ -384,7 +384,7 @@ export async function createThread(
     return created;
   });
 
-  publish([channel.school(schoolId), channel.student(studentMembershipId)], {
+  publish([channel.school(schoolId), channel.student(studentMembershipId), channel.staff(teacherMembershipId)], {
     type: "remark.message",
     threadId: thread.id,
   });
@@ -429,7 +429,7 @@ export async function replyToThread(
     data: { lastMessageAt: message.createdAt },
   });
 
-  publish([channel.school(thread.schoolId), channel.student(thread.studentMembershipId)], {
+  publish([channel.school(thread.schoolId), channel.student(thread.studentMembershipId), channel.staff(thread.teacherMembershipId)], {
     type: "remark.message",
     threadId: thread.id,
   });

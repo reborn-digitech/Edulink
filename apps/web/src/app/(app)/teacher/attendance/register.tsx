@@ -16,6 +16,8 @@ import { cn } from "@/lib/cn";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { enqueue, newClientId, countQueued } from "@/lib/offline-queue";
 import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
+import type { RegisterAbsenceNote } from "@edulink/contracts";
 
 export type RosterEntry = {
   membershipId: string;
@@ -24,6 +26,17 @@ export type RosterEntry = {
   avatarKey: string | null;
   status: AttendanceStatus | null;
   note: string | null;
+  /** The family said the pupil would be away today (absence-notes.ts): shown, never edited here. */
+  absenceNote?: RegisterAbsenceNote | null;
+};
+
+/** One key per coded reason, so the audit sees a key and not a template. */
+const REASON_KEY: Record<RegisterAbsenceNote["reason"], TranslationKey> = {
+  ILLNESS: "familyCare.reasonILLNESS",
+  FAMILY: "familyCare.reasonFAMILY",
+  RELIGIOUS: "familyCare.reasonRELIGIOUS",
+  TRAVEL: "familyCare.reasonTRAVEL",
+  OTHER: "familyCare.reasonOTHER",
 };
 
 type Pending = "idle" | "saving" | "queued" | "saved" | "error";
@@ -375,6 +388,13 @@ function StudentRow({
 
       <div className="min-w-0 flex-1 basis-28">
         <p className="truncate text-sm font-semibold text-fg">{entry.name}</p>
+        {entry.absenceNote ? (
+          // The family told the school first: the line sits under the name before the teacher marks anything.
+          <p className="truncate text-xs font-medium text-warn" data-testid="absence-note-line" title={entry.absenceNote.text || undefined}>
+            {t(entry.absenceNote.byFamily ? "familyCare.registerLine" : "familyCare.registerLineSelf", { reason: t(REASON_KEY[entry.absenceNote.reason]) })}
+            {entry.absenceNote.text ? ` · “${entry.absenceNote.text}”` : ""}
+          </p>
+        ) : null}
         {entry.note ? (
           <p className="truncate text-xs text-fg-muted">{entry.note}</p>
         ) : entry.fullName !== entry.name ? (

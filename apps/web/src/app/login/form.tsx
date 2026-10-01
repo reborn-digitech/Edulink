@@ -44,7 +44,7 @@ export function LoginForm({ className }: { className?: string }) {
         setErrors(result.errors);
         return;
       }
-      toast({ tone: "ok", title: t("login.welcome") });
+      if (!result.twoFactor) toast({ tone: "ok", title: t("login.welcome") });
       router.push(result.redirectTo ?? "/");
       router.refresh();
     });

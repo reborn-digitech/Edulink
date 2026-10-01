@@ -71,11 +71,13 @@ export type FeeSettings = {
   /** Whether a gateway account CAN be saved here: the sealing key is present. */
   sealingAvailable: boolean;
   transport: "devbox" | "razorpay" | "off";
+  /** From this age a pupil may read their own dues (never pay); null means pupils see no fees. */
+  pupilFeeViewAge: number | null;
 };
 
 export async function feeSettings(schoolId: string): Promise<FeeSettings> {
   const [school, gateway] = await Promise.all([
-    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { feeUpiId: true, feeUpiPayee: true, feeReceiptPrefix: true, feeBankNote: true } }),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { feeUpiId: true, feeUpiPayee: true, feeReceiptPrefix: true, feeBankNote: true, pupilFeeViewAge: true } }),
     db.feeGatewayAccount.findUnique({ where: { schoolId }, select: { provider: true, keyId: true, mode: true, updatedAt: true } }),
   ]);
   return {
@@ -86,21 +88,24 @@ export async function feeSettings(schoolId: string): Promise<FeeSettings> {
     gateway: gateway ? { provider: gateway.provider, keyId: gateway.keyId, mode: gateway.mode as "TEST" | "LIVE", updatedAt: gateway.updatedAt } : null,
     sealingAvailable: sealingAvailable(),
     transport: readFeesGatewayTransport(),
+    pupilFeeViewAge: school.pupilFeeViewAge,
   };
 }
 
 const UPI_ID = /^[A-Za-z0-9.\-_]{2,256}@[A-Za-z]{2,64}$/;
 
-export async function saveFeeSettings(ctx: ActiveContext, input: { upiId?: string | null; upiPayee?: string | null; receiptPrefix?: string; bankNote?: string | null }): Promise<void> {
+export async function saveFeeSettings(ctx: ActiveContext, input: { upiId?: string | null; upiPayee?: string | null; receiptPrefix?: string; bankNote?: string | null; pupilFeeViewAge?: number | null }): Promise<void> {
   const caller = office(ctx);
+  // The pupil's age gate: a whole number of years between 5 and 25, or null (no pupil sees fees). Left out of the input, it stays as it is.
+  if (input.pupilFeeViewAge !== undefined && input.pupilFeeViewAge !== null && (!Number.isInteger(input.pupilFeeViewAge) || input.pupilFeeViewAge < 5 || input.pupilFeeViewAge > 25)) throw new AccessError("fees.refusePupilViewAge");
   const upiId = input.upiId?.trim() || null;
   if (upiId && !UPI_ID.test(upiId)) throw new AccessError("fees.refuseUpiId");
   const upiPayee = input.upiPayee?.trim().slice(0, 80) || null;
   if (upiId && !upiPayee) throw new AccessError("fees.refuseUpiPayee");
   const receiptPrefix = (input.receiptPrefix ?? "RCPT").trim().toUpperCase().replace(/[^A-Z0-9-]/g, "").slice(0, 12) || "RCPT";
   const bankNote = input.bankNote?.trim().slice(0, 600) || null;
-  await db.school.update({ where: { id: caller.schoolId }, data: { feeUpiId: upiId, feeUpiPayee: upiPayee, feeReceiptPrefix: receiptPrefix, feeBankNote: bankNote } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.settings", targetType: "School", targetId: caller.schoolId, meta: { upi: Boolean(upiId), receiptPrefix } });
+  await db.school.update({ where: { id: caller.schoolId }, data: { feeUpiId: upiId, feeUpiPayee: upiPayee, feeReceiptPrefix: receiptPrefix, feeBankNote: bankNote, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.settings", targetType: "School", targetId: caller.schoolId, meta: { upi: Boolean(upiId), receiptPrefix, ...(input.pupilFeeViewAge !== undefined ? { pupilFeeViewAge: input.pupilFeeViewAge } : {}) } });
 }
 
 /**
@@ -203,6 +208,8 @@ export type StructureSummary = {
   pupils: number;
   publishedAt: Date | null;
   archivedAt: Date | null;
+  /** Open to families to choose for their child (fees-family.ts). */
+  selfEnrol: boolean;
 };
 
 export async function listStructures(ctx: ActiveContext, opts: { academicYearId?: string; includeArchived?: boolean } = {}): Promise<StructureSummary[]> {
@@ -223,6 +230,7 @@ export async function listStructures(ctx: ActiveContext, opts: { academicYearId?
     pupils: s._count.plans,
     publishedAt: s.publishedAt,
     archivedAt: s.archivedAt,
+    selfEnrol: s.selfEnrol,
   }));
 }
 
@@ -262,6 +270,7 @@ export async function getStructure(ctx: ActiveContext, structureId: string): Pro
     pupils: s._count.plans,
     publishedAt: s.publishedAt,
     archivedAt: s.archivedAt,
+    selfEnrol: s.selfEnrol,
     instalmentRows,
     paidDemands: s.instalments.reduce((a, i) => a + i._count.demands, 0),
   };
@@ -369,6 +378,23 @@ export async function archiveStructure(ctx: ActiveContext, structureId: string):
   if (!s) throw new AccessError("fees.notFound", "NOT_FOUND");
   await db.feeStructure.update({ where: { id: structureId }, data: { archivedAt: new Date() } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.structureArchive", targetType: "FeeStructure", targetId: structureId });
+}
+
+/**
+ * Open a structure to families, or close it again. Only a published, live
+ * structure can be open: a draft's numbers may still change and an archived
+ * one takes nobody. Closing it leaves every pupil already on it exactly
+ * where they are.
+ */
+export async function setStructureSelfEnrol(ctx: ActiveContext, structureId: string, open: boolean): Promise<void> {
+  const caller = office(ctx);
+  const s = await db.feeStructure.findFirst({ where: { id: structureId, schoolId: caller.schoolId }, select: { id: true, publishedAt: true, archivedAt: true, selfEnrol: true } });
+  if (!s) throw new AccessError("fees.notFound", "NOT_FOUND");
+  if (open && !s.publishedAt) throw new AccessError("fees.refuseSelfEnrolDraft");
+  if (open && s.archivedAt) throw new AccessError("fees.refuseArchived");
+  if (s.selfEnrol === open) return;
+  await db.feeStructure.update({ where: { id: structureId }, data: { selfEnrol: open } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: open ? "fees.structureOpen" : "fees.structureClose", targetType: "FeeStructure", targetId: structureId });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -489,7 +515,17 @@ export type AssignResult = { assigned: number; moved: number; unchanged: number;
  * refused by name, because moving them would mean rewriting a paid term.
  */
 export async function assignPlans(ctx: ActiveContext, input: { structureId: string; classId?: string; studentMembershipIds?: string[] }): Promise<AssignResult> {
-  const caller = office(ctx);
+  return assignPlansAs(office(ctx), input);
+}
+
+/**
+ * The one writer of a pupil's plan. The office calls it through
+ * `assignPlans`; a guardian choosing an open structure for their child
+ * (fees-family.ts) calls it with themselves as the caller, after its own
+ * checks — so a self-enrolment writes the plan and its demands exactly as an
+ * office assignment does, and the ledger keeps one writer.
+ */
+export async function assignPlansAs(caller: FeeCaller, input: { structureId: string; classId?: string; studentMembershipIds?: string[] }): Promise<AssignResult> {
   const structure = await db.feeStructure.findFirst({ where: { id: input.structureId, schoolId: caller.schoolId }, select: { id: true, academicYearId: true, publishedAt: true, archivedAt: true } });
   if (!structure) throw new AccessError("fees.notFound", "NOT_FOUND");
   if (!structure.publishedAt) throw new AccessError("fees.refuseAssignDraft");

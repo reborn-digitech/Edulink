@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Linking, View } from "react-native";
+import { onlineManager } from "@tanstack/react-query";
 import type { ApiResult } from "@edulink/contracts";
 import { Icon, Text } from "@/components";
-import { API_BASE } from "@/lib/api";
+import { API_BASE, api } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { countQueued, enqueue, onQueueEvent } from "@/lib/outbox";
@@ -85,6 +86,26 @@ export async function writeOrQueue(result: ApiResult<unknown>, item: { url: stri
     return { kind: "queued" };
   }
   return { kind: "refused", status: result.status, message: result.error };
+}
+
+/**
+ * The register's whole rule, the web register's flush in one call: known to
+ * be offline (the web target's navigator.onLine, which React Query mirrors;
+ * a phone never says so and goes on to the one attempt), the body goes
+ * straight to the outbox with no doomed fetch first; otherwise it is posted
+ * and writeOrQueue decides. `url` may be the attendance door outside /v1,
+ * which the phone posts to exactly as the web does so a replay is the same
+ * bytes from either. What the server answered comes back with a sent
+ * outcome, for the count of marks it rejected.
+ */
+export async function postOrQueue<T = unknown>(item: { url: string; body: unknown; tag: string }): Promise<WriteOutcome & { data?: T }> {
+  if (!onlineManager.isOnline()) {
+    await enqueue({ url: item.url, method: "POST", body: JSON.stringify(item.body), tag: item.tag });
+    return { kind: "queued" };
+  }
+  const result = await api().post<T>(item.url, item.body);
+  const outcome = await writeOrQueue(result, item);
+  return outcome.kind === "sent" && result.ok ? { ...outcome, data: result.data } : outcome;
 }
 
 /** For mutationFn: throws the refusal so React Query reports it, otherwise resolves. */

@@ -664,7 +664,7 @@ export async function saveGrades(
     saved++;
     if (!existing) newlyGraded.push(input.studentMembershipId);
 
-    publish([channel.student(input.studentMembershipId), channel.school(ctx.schoolId)], {
+    publish([channel.student(input.studentMembershipId), channel.class(assignment.classId), channel.school(ctx.schoolId)], {
       type: "grade.updated",
       studentMembershipId: input.studentMembershipId,
       assignmentId,

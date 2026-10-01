@@ -48,4 +48,6 @@ export const STAFF: Endpoint[] = [
   { method: "GET", path: "/api/v1/staff/principal/overview", summary: "The head's dashboard over a window", access: ["PRINCIPAL", "ADMIN"], request: c.spanQuerySchema, response: c.principalOverviewSchema },
   { method: "GET", path: "/api/v1/staff/principal/classes", summary: "Class insights over a window", access: ["PRINCIPAL", "ADMIN"], request: c.principalClassesQuerySchema, response: c.principalClassesSchema },
   { method: "GET", path: "/api/v1/staff/principal/timetable", summary: "One class's week, with gaps counted", access: ["PRINCIPAL", "ADMIN"], request: c.principalTimetableQuerySchema, response: c.principalTimetableSchema },
+  // ---- /principal/decisions -------------------------------------------------
+  { method: "GET", path: "/api/v1/principal/decisions", summary: "The head's decision log, newest first: leave, PEN and record changes, certificates, joins, admissions (the office reads the head's)", access: ["PRINCIPAL", "ADMIN"], request: c.decisionsQuerySchema, response: c.decisionsSchema },
 ];

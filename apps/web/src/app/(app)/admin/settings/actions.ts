@@ -13,6 +13,7 @@ import { normaliseLocation } from "@/lib/places";
 import { setNotifThresholds, AUTO_READ_RANGE, EXPIRE_RANGE } from "@/lib/notification-housekeeping";
 import { LOGO_MAX_BYTES, removeSchoolLogo, setSchoolLogo } from "@/lib/school-logo";
 import { setSchoolWeek } from "@/lib/substitutions";
+import { setSelfReadAge, SELF_READ_AGE_RANGE } from "@/lib/self-read";
 
 export type SettingsState = { ok: boolean; errors: FieldErrors };
 
@@ -195,6 +196,29 @@ export async function saveTeachingWeek(days: number[]): Promise<{ ok: boolean; e
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[saveTeachingWeek]", error);
+    return { ok: false, error: (await getT())("common.tryAgain") };
+  }
+}
+
+/**
+ * From what age a pupil may read their own health card and incidents
+ * (self-read.ts). Blank means never. The range is the library's; the
+ * sentence for a value outside it names the range.
+ */
+export async function saveSelfReadAge(input: { age: string }): Promise<{ ok: boolean; error?: string; selfReadAge?: number | null }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const raw = typeof input?.age === "string" ? input.age.trim() : "";
+    const t = await getT();
+    if (raw !== "" && !/^\d+$/.test(raw)) return { ok: false, error: t("familyCare.selfReadNotWhole") };
+    const age = raw === "" ? null : Number(raw);
+    if (age !== null && (age < SELF_READ_AGE_RANGE.min || age > SELF_READ_AGE_RANGE.max)) return { ok: false, error: t("familyCare.selfReadOutOfRange", SELF_READ_AGE_RANGE) };
+    const result = await setSelfReadAge(ctx, age);
+    revalidatePath("/admin/settings");
+    return { ok: true, selfReadAge: result.selfReadAge };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[saveSelfReadAge]", error);
     return { ok: false, error: (await getT())("common.tryAgain") };
   }
 }

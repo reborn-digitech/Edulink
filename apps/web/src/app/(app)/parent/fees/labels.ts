@@ -53,3 +53,37 @@ export function paymentTone(status: string): BadgeTone {
       return "neutral";
   }
 }
+
+/** The payment calendar's words: a row's state and its kind. */
+export const FEE_CALENDAR_STATUS_KEY: Record<string, TranslationKey> = {
+  UPCOMING: "fees.calStatusUpcoming",
+  DUE_SOON: "fees.calStatusDueSoon",
+  OVERDUE: "fees.calStatusOverdue",
+  PAID: "fees.calStatusPaid",
+  PART: "fees.calStatusPart",
+  WAIVED: "fees.calStatusWaived",
+  CARRIED: "fees.calStatusCarried",
+};
+
+export const FEE_CALENDAR_KIND_KEY: Record<string, TranslationKey> = {
+  INSTALMENT: "fees.calendarInstalment",
+  DUE: "fees.calendarDue",
+  REMINDER: "fees.calendarReminder",
+};
+
+export function calendarTone(status: string): BadgeTone {
+  switch (status) {
+    case "PAID":
+      return "ok";
+    case "OVERDUE":
+      return "danger";
+    case "DUE_SOON":
+    case "PART":
+      return "warn";
+    case "WAIVED":
+    case "CARRIED":
+      return "info";
+    default:
+      return "neutral";
+  }
+}

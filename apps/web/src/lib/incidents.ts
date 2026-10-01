@@ -4,6 +4,7 @@ import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
+import { assertSelfRead } from "./self-read";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -20,7 +21,8 @@ import type { Role } from "./constants";
  * from the child three days later has been failed by the school. Telling
  * them is the default at the moment of recording — a push and, where the
  * school has the channel on, a text — and the record says when it went.
- * The child does not see it. (Decision 0002, row 27.)
+ * The child does not see it until the age the school sets (self-read.ts),
+ * and then reads it as the family does, never writes. (Decision 0002, row 27.)
  */
 
 const OFFICE: readonly Role[] = ["ADMIN", "PRINCIPAL"];
@@ -211,12 +213,17 @@ export async function closeIncident(ctx: ActiveContext, incidentId: string): Pro
   return incidentFor(ctx, incidentId);
 }
 
-/** A guardian's read of their child's incidents, newest first, with the follow-up notes. */
+/** A guardian's read of their child's incidents — or a pupil's own, from the school's age — newest first, with the follow-up notes. */
 export async function familyIncidents(ctx: ActiveContext, studentMembershipId: string): Promise<{ childName: string; incidents: IncidentView[] }> {
-  const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
+  const childName = ctx.role === "STUDENT" ? (await assertSelfRead(ctx, studentMembershipId)).studentName : await guardianChildName(ctx, studentMembershipId);
   const rows = await db.incident.findMany({ where: { studentMembershipId }, include, orderBy: { occurredAt: "desc" } });
   const incidents = await Promise.all(rows.map((r) => viewOf(r, { canNote: false, canClose: false })));
-  return { childName: link.student.user.preferredName ?? link.student.user.name, incidents };
+  return { childName, incidents };
+}
+
+async function guardianChildName(ctx: ActiveContext, studentMembershipId: string): Promise<string> {
+  const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
+  return link.student.user.preferredName ?? link.student.user.name;
 }
 
 /** How many open incidents a pupil has: the chip on a roster. */

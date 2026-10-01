@@ -1,3 +1,4 @@
+import { Image } from "expo-image";
 import { __setOutboxStore, countQueued, enqueue, memoryOutbox } from "@/lib/outbox";
 import { act, renderHook, waitFor } from "@testing-library/react-native";
 import type { ReactNode } from "react";
@@ -58,11 +59,16 @@ describe("the session", () => {
     await enqueue({ method: "POST", url: "/api/v1/marks", body: "{}", tag: "marks" });
     await store.set(KEYS.crash, JSON.stringify({ message: "boom" }));
     expect(await countQueued()).toBe(1);
+    const disk = jest.spyOn(Image, "clearDiskCache").mockResolvedValue(true);
+    const memory = jest.spyOn(Image, "clearMemoryCache").mockResolvedValue(true);
     await act(() => result.current.signOut());
     expect(result.current.status).toBe("signed-out");
     expect(await store.get(KEYS.token)).toBeNull();
     expect(await countQueued()).toBe(0);
     expect(await store.get(KEYS.crash)).toBeNull();
+    // The bulletin's photographs go with the person (decision 0002, gap 2).
+    expect(disk).toHaveBeenCalledTimes(1);
+    expect(memory).toHaveBeenCalledTimes(1);
     const logoutCall = fetch.mock.calls.find((c) => String(c[0]).endsWith("/auth/logout"));
     expect((logoutCall![1] as RequestInit).headers).toMatchObject({ Authorization: "Bearer tok-2" });
   });

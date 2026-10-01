@@ -11,7 +11,7 @@ function refresh() {
   revalidatePath("/parent/fees");
 }
 
-export async function saveFeeSettingsAction(input: { upiId?: string | null; upiPayee?: string | null; receiptPrefix?: string; bankNote?: string | null }): Promise<ActionResult> {
+export async function saveFeeSettingsAction(input: { upiId?: string | null; upiPayee?: string | null; receiptPrefix?: string; bankNote?: string | null; pupilFeeViewAge?: number | null }): Promise<ActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN");
     await saveFeeSettings(ctx, input);

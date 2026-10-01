@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminSettingsSchema, officeLogoSchema, okSchema, schoolWeekSavedSchema, schoolWeekSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
+import { adminSettingsSchema, officeLogoSchema, okSchema, schoolWeekSavedSchema, schoolWeekSchema, selfReadAgeSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Icon, Loading, Screen, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
@@ -103,6 +103,7 @@ export function AdminSettings() {
           </Card>
           <Housekeeping key={`${d.school.notifAutoReadDays}:${d.school.notifExpireDays}`} d={d} />
           <TeachingWeek />
+          <SelfReadAge />
         </>
       ) : null}
     </Screen>
@@ -276,6 +277,60 @@ function TeachingWeekForm({ days }: { days: number[] }) {
       ) : null}
       <Button label={t("substitutions.weekSave")} busy={save.isPending} disabled={!dirty} onPress={submit} />
     </>
+  );
+}
+
+/** The office's dial for the pupil's own eyes. */
+export const SELF_READ_PATH = "/api/v1/office/self-read-age";
+
+/**
+ * From what age a pupil reads their own health card and incident log —
+ * the web's "Pupils' own eyes" card: one number, blank for never. The
+ * server holds the range (its sentence names it) and the audit row.
+ */
+function SelfReadAge() {
+  const t = useT();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const query = useQuery({
+    queryKey: ["admin", "self-read-age"],
+    queryFn: async () => selfReadAgeSchema.parse(unwrap(await api().get(SELF_READ_PATH))),
+  });
+  const [age, setAge] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const shown = age ?? (query.data?.selfReadAge === null || query.data?.selfReadAge === undefined ? "" : String(query.data.selfReadAge));
+  const save = useMutation({
+    mutationFn: async (body: { selfReadAge: number | null }) => selfReadAgeSchema.parse(unwrap(await api().post(SELF_READ_PATH, body))),
+    onSuccess: (r) => {
+      toast.show(r.selfReadAge === null ? t("familyCare.selfReadSavedOff") : t("familyCare.selfReadSaved", { age: r.selfReadAge }));
+      setAge(null);
+      void qc.invalidateQueries({ queryKey: ["admin", "self-read-age"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  function submit() {
+    const raw = shown.trim();
+    if (raw !== "" && !/^\d+$/.test(raw)) {
+      setError(t("familyCare.selfReadNotWhole"));
+      return;
+    }
+    setError(null);
+    save.mutate({ selfReadAge: raw === "" ? null : Number(raw) });
+  }
+  return (
+    <Card title={t("familyCare.selfReadTitle")} testID="self-read-age">
+      <Text variant="xs" tone="subtle">
+        {t("familyCare.selfReadBody")}
+      </Text>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.data ? (
+        <>
+          <Field label={t("familyCare.selfReadLabel")} hint={t("familyCare.selfReadHint")} value={shown} onChangeText={(next) => { setAge(next); setError(null); }} keyboardType="number-pad" maxLength={2} error={error} />
+          <Button label={t("common.save")} busy={save.isPending} onPress={submit} accessibilityLabel={`${t("common.save")}: ${t("familyCare.selfReadTitle")}`} />
+        </>
+      ) : null}
+    </Card>
   );
 }
 

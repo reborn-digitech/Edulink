@@ -74,4 +74,6 @@ export const SHARED: Endpoint[] = [
     emptyBodyStatus: 422,
     sampleBody: () => ({ kind: "PROBLEM", message: "ZZ sweep: the sweep reporting a problem on purpose", screen: "sweep", device: { platform: "android", appVersion: "0.0.0" } }),
   },
+  // ---- global search ----------------------------------------------------------
+  { method: "GET", path: "/api/v1/search", summary: "One search across the people, posts, messages, papers and pages the caller may already see; `q` two to eighty characters", access: "signed-in", response: c.searchResultsSchema, sample: "/api/v1/search?q=zz" },
 ];

@@ -37,7 +37,7 @@ export default async function FeeSettingsPage() {
       <Card>
         <CardHeader icon={<QrCodeIcon weight="duotone" className="size-5" />} title={t("fees.upiTitle")} action={s.upiId ? <Badge tone="ok">{s.upiId}</Badge> : undefined} />
         <CardBody>
-          <SettingsForms initial={{ upiId: s.upiId ?? "", upiPayee: s.upiPayee ?? "", receiptPrefix: s.receiptPrefix, bankNote: s.bankNote ?? "" }} yearName={year?.name ?? "—"} />
+          <SettingsForms initial={{ upiId: s.upiId ?? "", upiPayee: s.upiPayee ?? "", receiptPrefix: s.receiptPrefix, bankNote: s.bankNote ?? "", pupilFeeViewAge: s.pupilFeeViewAge === null ? "" : String(s.pupilFeeViewAge) }} yearName={year?.name ?? "—"} />
         </CardBody>
       </Card>
 
