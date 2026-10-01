@@ -1,4 +1,4 @@
-import { createCipheriv, randomBytes } from "node:crypto";
+import { createCipheriv, createHmac, randomBytes } from "node:crypto";
 import { test, expect, type Page } from "@playwright/test";
 import { all, currentYear, db, northgate, openAs, sound, STAMP } from "./flow-helpers";
 
@@ -18,6 +18,8 @@ const operator = all.OPERATOR;
 const ONLINE_PAISE = 150_000;
 const UPI_PAISE = 90_000;
 const UTR = `ZZE2EUPI${String(STAMP).slice(-9)}`;
+/** The test gateway account's webhook secret, sealed into the school for the run; never a real one. */
+const WEBHOOK_SECRET = "zz-e2e-webhook-never-real";
 let schoolId: string;
 let pupilId: string;
 let onlineDemandId: string;
@@ -52,7 +54,7 @@ test.beforeAll(async () => {
   upiBefore = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { feeUpiId: true, feeUpiPayee: true } });
   if (!upiBefore.feeUpiId || !upiBefore.feeUpiPayee) await db.school.update({ where: { id: schoolId }, data: { feeUpiId: "zznorthgate@zzbank", feeUpiPayee: "ZZ Northgate School" } });
   if (!(await db.feeGatewayAccount.findUnique({ where: { schoolId }, select: { id: true } }))) {
-    await db.feeGatewayAccount.create({ data: { schoolId, provider: "RAZORPAY", keyId: "rzp_test_zze2e000001", secretEnc: seal("zz-e2e-secret-never-real", `${schoolId}:secret`), webhookSecretEnc: seal("zz-e2e-webhook-never-real", `${schoolId}:webhook`), mode: "TEST" } });
+    await db.feeGatewayAccount.create({ data: { schoolId, provider: "RAZORPAY", keyId: "rzp_test_zze2e000001", secretEnc: seal("zz-e2e-secret-never-real", `${schoolId}:secret`), webhookSecretEnc: seal(WEBHOOK_SECRET, `${schoolId}:webhook`), mode: "TEST" } });
     gatewayMade = true;
   }
   onlineDemandId = await due(year.id, `ZZ e2e online due ${STAMP}`, ONLINE_PAISE);
@@ -102,14 +104,34 @@ test("the guardian starts an online checkout, the devbox order is marked paid an
 
   // The operator settles it through the devbox page — the webhook's own door.
   const dev = await openAs(browser, operator!, baseURL!);
-  expect((await dev.goto("/dev/payments", { waitUntil: "networkidle" }))?.status()).toBe(200);
-  const row = dev.locator(`[data-testid="dev-payment"][data-payment-id="${paymentId}"]`);
-  await expect(row).toContainText(order.gatewayOrderId!);
-  await row.getByTestId("dev-payment-paid").click();
-  await dev.waitForURL((url) => url.searchParams.get("outcome") === "settled", { waitUntil: "networkidle" });
-  await expect(dev.getByTestId("dev-payments-outcome")).toContainText("settled");
-  await expect(dev.locator(`[data-testid="dev-payment"][data-payment-id="${paymentId}"]`)).toHaveCount(0);
-  await sound(dev, "OPERATOR the devbox page after settling");
+  const dashboard = await dev.goto("/dev/payments", { waitUntil: "networkidle" });
+  if (dashboard?.status() === 404) {
+    // A production build has no devbox dashboard (dev/payments/page.tsx is
+    // notFound under NODE_ENV production), and CI's server is one (run
+    // 36871181377). The order is settled through the signed gateway webhook
+    // instead — the door the dashboard's button stands in for — signed with
+    // the test webhook secret this suite sealed into the school's account.
+    expect(gatewayMade, "the webhook path needs the test gateway account this suite made").toBe(true);
+    const body = JSON.stringify({
+      event: "payment.captured",
+      id: `evt_zze2e${STAMP}`,
+      created_at: Math.floor(Date.now() / 1000),
+      payload: { payment: { entity: { id: `pay_devbox${STAMP}`, order_id: order.gatewayOrderId, amount: ONLINE_PAISE, method: "upi" } } },
+    });
+    const signature = createHmac("sha256", WEBHOOK_SECRET).update(body).digest("hex");
+    const hook = await fetch(`${baseURL}/api/webhooks/razorpay/${schoolId}`, { method: "POST", headers: { "content-type": "application/json", "x-razorpay-signature": signature }, body });
+    expect(hook.status).toBe(200);
+    expect(await hook.json()).toMatchObject({ ok: true, outcome: "settled" });
+  } else {
+    expect(dashboard?.status()).toBe(200);
+    const row = dev.locator(`[data-testid="dev-payment"][data-payment-id="${paymentId}"]`);
+    await expect(row).toContainText(order.gatewayOrderId!);
+    await row.getByTestId("dev-payment-paid").click();
+    await dev.waitForURL((url) => url.searchParams.get("outcome") === "settled", { waitUntil: "networkidle" });
+    await expect(dev.getByTestId("dev-payments-outcome")).toContainText("settled");
+    await expect(dev.locator(`[data-testid="dev-payment"][data-payment-id="${paymentId}"]`)).toHaveCount(0);
+    await sound(dev, "OPERATOR the devbox page after settling");
+  }
 
   // The guardian's panel, polling every two seconds, turns to paid with the serial; the due is settled.
   const paid = panel.getByTestId("fees-online-paid");
