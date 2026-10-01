@@ -25,6 +25,12 @@ config({ path: ".env" });
  * evidence that tenant isolation holds.
  */
 const adminEnv = process.env as Record<string, string | undefined>;
+// The app role's own URL, as dotenv resolved it (the environment first, then
+// .env), kept before it is swapped for the owner's: tests/rls-app-role.test.ts
+// connects as it. On CI the .env is the example's placeholders and the real
+// URL is only in the environment, so reading the file would name a database
+// that does not exist there.
+adminEnv.DATABASE_APP_URL ??= adminEnv.DATABASE_URL;
 if (adminEnv.DATABASE_ADMIN_URL) adminEnv.DATABASE_URL = adminEnv.DATABASE_ADMIN_URL;
 
 const env = process.env as Record<string, string | undefined>;

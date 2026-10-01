@@ -1,6 +1,4 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { readFileSync, existsSync } from "node:fs";
-import { parse } from "dotenv";
 import { PrismaClient } from "@prisma/client";
 
 /**
@@ -28,16 +26,18 @@ import { PrismaClient } from "@prisma/client";
  *
  * Fixtures are written as the owner and every read below is a fresh app-role
  * transaction with the settings the app would have set. Skipped, and says so,
- * when .env has a single role: there is no app role to be refused.
+ * when the configuration has a single role: there is no app role to be refused.
  */
 
 const owner = new PrismaClient();
 
 function appRoleUrl(): string | null {
-  if (!existsSync(".env")) return null;
-  const env = parse(readFileSync(".env", "utf8"));
-  const app = env.DATABASE_URL;
-  const admin = env.DATABASE_ADMIN_URL ?? app;
+  // tests/setup.ts keeps the app role's URL as DATABASE_APP_URL before it
+  // points DATABASE_URL at the owner; both are what dotenv resolved, the
+  // environment winning over .env, so CI's real URLs are read and not the
+  // example file's placeholders.
+  const app = process.env.DATABASE_APP_URL;
+  const admin = process.env.DATABASE_ADMIN_URL ?? app;
   if (!app || !admin) return null;
   try {
     if (new URL(app).username === new URL(admin).username) return null;
