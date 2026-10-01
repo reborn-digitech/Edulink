@@ -72,7 +72,12 @@ export function FilePicker({
 
   return (
     <div className={className}>
-      <span className="block text-sm font-medium text-fg">{label}</span>
+      {/* A label FOR the file input, not a span beside it: the input is
+          visually hidden behind the button, and axe found it nameless on the
+          expert's KYC card (CI run 36871181377, "label (critical)"). */}
+      <label htmlFor={inputId} className="block text-sm font-medium text-fg">
+        {label}
+      </label>
 
       {files.length > 0 && (
         <ul className="mt-1.5 space-y-1.5">
