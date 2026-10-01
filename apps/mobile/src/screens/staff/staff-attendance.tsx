@@ -10,7 +10,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Tabs } from "../family/shared";
+import { Note, Tabs } from "../family/shared";
 import { timeOf } from "../teacher/my-attendance";
 import { clock } from "../teacher/support";
 import { addDaysToKey, formatDateKey, parseClock, pct, roleLabel } from "./shared";
@@ -122,10 +122,16 @@ function DayRegister({ date, onDate, onStaff }: { date: string | null; onDate: (
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         <>
+          {/* On its soft box, as the family screens put a warning: the warn ink
+              straight on the light frame's tinted canvas measured under 4.5:1
+              (CI run 36924208500, on Gandhi Jayanti, the first closed day the
+              gate had seen). */}
           {d.closed ? (
-            <Text variant="sm" tone="warn">
-              {t("staffAttendance.closedDay", { name: d.closedName ?? t("staffAttendance.sunday") })}
-            </Text>
+            <Note tone="warn">
+              <Text variant="sm" tone="warn">
+                {t("staffAttendance.closedDay", { name: d.closedName ?? t("staffAttendance.sunday") })}
+              </Text>
+            </Note>
           ) : null}
           <Text variant="sm" bold accessibilityLiveRegion="polite">
             {t("staffAttendance.counts", { present: d.counts.present, late: d.counts.late, absent: d.counts.absent, onLeave: d.counts.onLeave })}
