@@ -46,7 +46,10 @@ jobs:
   battery:
     name: typecheck · lint · unit · rls · quiz · i18n · audit · build
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # About 26 minutes on 2026-10-01 (the phone battery 5 to 10 of them, the
+    # web suite 6, the build 4 to 5); run 36848020146 met the old 30-minute cap
+    # in the production build with every step before it green.
+    timeout-minutes: 45
     services:
       postgres:
         image: postgres:16
