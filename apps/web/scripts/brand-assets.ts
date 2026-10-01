@@ -166,8 +166,10 @@ async function main() {
   await png(inset(cutoutSvg.replace(/fill="#141924"/g, 'fill="#ffffff"').replace(/stroke="#f0a33a"/g, `stroke="${BRAND.accent}"`), 0.8, BRAND.tile), 512, join(iconsDir, "maskable-512.png"));
   await png(tileSvg, 180, join(iconsDir, "apple-touch-icon.png"));
   await png(cutoutSvg, 512, join(iconsDir, "logo.png"));
-  await png(tileSvg, 64, join(web, "public/icon.png"));
-  await sharp(Buffer.from(tileSvg), { density: 300 }).resize(32, 32).png().toFile(join(web, "public/favicon.png"));
+  // Next's favicon is src/app/icon.png; public/favicon.ico stays for the
+  // agents that ask for the old name (a PNG under that name, which browsers take).
+  await png(tileSvg, 64, join(web, "src/app/icon.png"));
+  await sharp(Buffer.from(tileSvg), { density: 300 }).resize(32, 32).png().toFile(join(web, "public/favicon.ico"));
 
   // The phone: Expo's square icon, Android's three adaptive layers, the splash and the web favicon.
   await png(tileSvg, 1024, join(mobileImages, "icon.png"));
