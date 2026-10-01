@@ -1,4 +1,5 @@
 import Head from "expo-router/head";
+import { useT } from "@/lib/i18n";
 
 /**
  * The document title on the web target: what a browser tab, a history entry
@@ -6,9 +7,10 @@ import Head from "expo-router/head";
  * nothing — a native screen has no document.
  */
 export function PageTitle({ title }: { title?: string }) {
+  const name = useT()("brand.name");
   return (
     <Head>
-      <title>{title ? `${title} · Relay` : "Relay"}</title>
+      <title>{title ? `${title} · ${name}` : name}</title>
     </Head>
   );
 }

@@ -19,7 +19,9 @@ import { join } from "node:path";
  * see where things stand, `-- <path>` to see one file's strings.
  *
  * WHAT IT DOES NOT COUNT, on purpose:
- *   - product nouns that are the same in every language (Relay, Chrome, PDF)
+ *   - product nouns that are the same in every language (Chrome, PDF), and the
+ *     product's own name standing alone in Latin letters (Shalaghar) — in a
+ *     sentence it comes from the dictionary, where Hindi and Marathi spell it
  *   - anything already inside t("…")
  *   - `console.*`, thrown Error messages, and comments: not read by a parent
  */
@@ -69,7 +71,7 @@ function actionMessages(source: string): string[] {
 
 /** Same in every language, or not shown to a reader. */
 const SKIP_EXACT = new Set([
-  "Relay", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
+  "Shalaghar", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
   "Mac", "Windows", "Linux", "PDF", "PNG", "JPEG", "WebP", "GIF", "CSV", "SMS",
   // The bundled typefaces, by the names their files give them (src/lib/fonts.ts).
   "Noto Sans Devanagari", "Noto Serif Devanagari", "Tiro Devanagari Marathi", "Noto Sans", "Noto Serif",

@@ -131,10 +131,10 @@ export function readSmtpConfig():
     problems.push({ key: "SMTP_USER", message: "SMTP_USER and SMTP_PASS must be set together — one without the other is a typo, not a choice." });
   }
 
-  // "Relay <no-reply@school.example>" or a bare address; either way an @.
+  // "Shalaghar <no-reply@school.example>" or a bare address; either way an @.
   const from = process.env.EMAIL_FROM?.trim();
   if (!from) {
-    problems.push({ key: "EMAIL_FROM", message: 'EMAIL_FROM is not set — the address messages come from, e.g. "Relay <no-reply@your-domain>".' });
+    problems.push({ key: "EMAIL_FROM", message: 'EMAIL_FROM is not set — the address messages come from, e.g. "Shalaghar <no-reply@your-domain>".' });
   } else if (!/@/.test(from)) {
     problems.push({ key: "EMAIL_FROM", message: `EMAIL_FROM is "${from}" — that is not an email address.` });
   }

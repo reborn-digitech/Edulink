@@ -234,7 +234,7 @@ export function composeHealthDigest(
   if (attentionSchools.length > 0) {
     parts.push(`${attentionSchools.length} school${attentionSchools.length === 1 ? "" : "s"} need${attentionSchools.length === 1 ? "s" : ""} attention`);
   }
-  const subject = `Relay health: ${parts.join(" · ")}`;
+  const subject = `Shalaghar health: ${parts.join(" · ")}`;
 
   const jobLine = (s: JobStatus): string =>
     s.overdue
@@ -399,7 +399,7 @@ export async function watchJobs(opts: { now?: Date; statuses?: JobStatus[]; oper
         // The same words as the notification, in English — the language the
         // operator email and the crontab keep (see crontabText).
         const tEn = translator("en");
-        const subject = `Relay: ${tEn("notifTitle.jobOverdue", { job: job.name })}`;
+        const subject = `Shalaghar: ${tEn("notifTitle.jobOverdue", { job: job.name })}`;
         const text = when ? tEn("notifBody.jobOverdue", { job: job.name, when, hours }) : tEn("notifBody.jobOverdueNever", { job: job.name, hours });
         const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`);

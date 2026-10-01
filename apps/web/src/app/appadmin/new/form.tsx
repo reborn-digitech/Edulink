@@ -62,7 +62,7 @@ export function PlatformCompetitionForm() {
         name="organizerName"
         maxLength={120}
         hint={t("appadmin.organiserHint")}
-        placeholder="Relay"
+        placeholder={t("brand.name")}
       />
 
       <div className="grid gap-4 sm:grid-cols-3">

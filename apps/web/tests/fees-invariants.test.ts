@@ -7,7 +7,7 @@ import { ALLOWED_CALLS } from "@/lib/gateway";
  * ⚠ THE MONEY NEVER PASSES THROUGH THE PLATFORM — as code, not prose.
  *
  * docs/decisions/0003 records the decision: a parent pays the school, into
- * the school's own gateway account or its own UPI id; Relay creates the
+ * the school's own gateway account or its own UPI id; Shalaghar creates the
  * order and hears the webhook, holds nothing, pools nothing, splits nothing,
  * takes no share. Under the RBI's Payment Aggregator directions that is the
  * line between a technology provider and an entity that needs authorisation,
@@ -80,8 +80,8 @@ describe("invariant 4 — receipts are issued in the school's name", () => {
     const payments = read("src/lib/fees-payments.ts");
     expect(payments).toMatch(/school: \{ name: school\.name/);
     const en = read("../../packages/i18n/src/en.ts");
-    expect(en).toMatch(/parentPayeeNote: "You are paying \{school\}\. Relay does not receive or hold this payment/);
-    expect(en).toMatch(/receiptFooter: ".*Relay neither receives nor holds fees\."/);
+    expect(en).toMatch(/parentPayeeNote: "You are paying \{school\}\. Shalaghar does not receive or hold this payment/);
+    expect(en).toMatch(/receiptFooter: ".*Shalaghar neither receives nor holds fees\."/);
   });
 });
 

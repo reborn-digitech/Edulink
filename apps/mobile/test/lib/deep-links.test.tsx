@@ -56,7 +56,7 @@ describe("deep links", () => {
     mockInitialUrl = "edulink://sso?code=one-time-code-from-the-callback&provider=google";
     const { result } = await renderHook(() => (useDeepLinks(), useSession()), { wrapper });
     await waitFor(() => expect(result.current.status).toBe("signed-in"));
-    expect(calls.find((c) => c.path === "/api/v1/auth/sso/exchange")?.body).toEqual({ code: "one-time-code-from-the-callback", verifier: "the-verifier-this-app-made-before-the-browser-opened", device: "Relay app" });
+    expect(calls.find((c) => c.path === "/api/v1/auth/sso/exchange")?.body).toEqual({ code: "one-time-code-from-the-callback", verifier: "the-verifier-this-app-made-before-the-browser-opened", device: "Shalaghar app" });
     expect(await store.get(KEYS.token)).toBe("tok-sso");
     // Spent with the code: the same link arriving again has nothing to send.
     expect(await store.get(KEYS.ssoVerifier)).toBeFalsy();

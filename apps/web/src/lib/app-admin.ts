@@ -158,7 +158,7 @@ function parseFormDate(value: unknown): Date | null {
  * DRAFT first, like the school path — publishing puts this in front of every
  * child on the installation and deserves its own deliberate press. `verified`
  * is set, and honestly: this is the one author for whom "checked by the people
- * running Relay" is true by construction.
+ * running Shalaghar" is true by construction.
  */
 export async function createPlatformCompetition(
   session: ActiveContext,
@@ -172,7 +172,7 @@ export async function createPlatformCompetition(
       title: input.title,
       summary: input.summary,
       body: input.body ?? "",
-      organizerName: input.organizerName?.trim() || "Relay",
+      organizerName: input.organizerName?.trim() || "Shalaghar",
       organizerSchoolId: null,
       subject: input.subject ?? null,
       gradeLow: input.gradeLow ?? null,

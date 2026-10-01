@@ -7,7 +7,7 @@ import { callsTo, fakeApi, json, offline, refusal, tap, typeInto } from "./teach
 const mockRouter = { push: jest.fn(), replace: jest.fn(), params: { from: "/more" } as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
 
-const ATTACH = "We attach: Test, iOS, Relay 0.1.0 (1), and the screen you came from (/more). Nothing else.";
+const ATTACH = "We attach: Test, iOS, Shalaghar 0.1.0 (1), and the screen you came from (/more). Nothing else.";
 
 describe("report a problem", () => {
   beforeEach(() => {
@@ -47,7 +47,7 @@ describe("report a problem", () => {
     mockRouter.params = {};
     fakeApi({});
     await renderApp(<ReportProblem />);
-    expect(screen.getByText("We attach: Test, iOS, Relay 0.1.0 (1), and the screen you came from (not recorded). Nothing else.")).toBeTruthy();
+    expect(screen.getByText("We attach: Test, iOS, Shalaghar 0.1.0 (1), and the screen you came from (not recorded). Nothing else.")).toBeTruthy();
   });
 
   it("a refusal is an alert with a retry", async () => {

@@ -258,7 +258,7 @@ function PupilViewAge() {
  * The bank statement, pasted — the web's import card. The server matches
  * each credit to a pupil by its UTR, its cheque number or the student code
  * in the narration and says what it would do; the button then records the
- * matched lines through the counter and confirms the claims. Relay records
+ * matched lines through the counter and confirms the claims. Shalaghar records
  * that the money arrived; it never moves it.
  */
 function BankImport() {

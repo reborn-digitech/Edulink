@@ -448,7 +448,7 @@ type RestoreTx = {
  * uses to take back exactly those and no other — an organic leaver's
  * certificate never carries it. One constant so the two can never drift.
  */
-const REMOVAL_NOTE = "The school was removed from this Relay installation.";
+const REMOVAL_NOTE = "The school was removed from this Shalaghar installation.";
 
 /**
  * Takes a school off the installation.
@@ -817,7 +817,7 @@ export async function setSchoolVerified(
 
 /**
  * The school hears that it was verified: every active admin and head gets
- * one notification ("Relay has verified <school>; the directory lists it
+ * one notification ("Shalaghar has verified <school>; the directory lists it
  * from today"). Bound to the school as the operator, because a Notification
  * row lives inside the tenant fence and the memberships do too; nothing of
  * the school is read but who its office is. Withdrawing the mark tells
@@ -915,11 +915,11 @@ export async function inviteAdmin(
   });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "Relay");
+  await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "Shalaghar");
 
   // TWICE, ON PURPOSE. The unattributed row is the operator's own record and
   // is what /root/audit lists; the row bound to the school is what puts "the
-  // Relay team invited an administrator" in THAT school's Safety Centre —
+  // Shalaghar team invited an administrator" in THAT school's Safety Centre —
   // the same standing as a takedown or a suspension. Until it was written the
   // school could not see the one operator action that hands out its keys.
   await audit({
@@ -1721,7 +1721,7 @@ export async function resendAdminInvite(session: ActiveContext, schoolId: string
   const token = generateToken();
   await db.invite.update({ where: { id: invite.id }, data: { tokenHash: hashToken(token), expiresAt: new Date(Date.now() + INVITE_TTL_DAYS * 86_400_000) } });
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendTeacherInvite(invite.email, `${appUrl}/invite/${token}`, school.name, "Relay");
+  await sendTeacherInvite(invite.email, `${appUrl}/invite/${token}`, school.name, "Shalaghar");
 
   await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { schoolId, name: school.name, email: invite.email, role: invite.role } });
   await audit({ schoolId, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { email: invite.email, role: invite.role } });

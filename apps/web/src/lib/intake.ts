@@ -242,7 +242,7 @@ export async function admitPupils(
       continue;
     }
     // A PEN with the date of birth names an account the same way a transfer
-    // code does; a PEN nobody on Relay holds goes on the new account below.
+    // code does; a PEN nobody on Shalaghar holds goes on the new account below.
     let previous: { userId: string } | null = null;
     if (row.studentCode) {
       // ONLY A CODE THIS SCHOOL GAVE. Read with this school bound, so the

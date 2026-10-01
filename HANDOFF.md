@@ -1,4 +1,4 @@
-# Relay — handoff
+# Shalaghar — handoff
 
 Written 2026-09-28 at commit `ff57b2d`. This is the short map. The working rules a session must follow are in
 [CLAUDE.md](CLAUDE.md), which Claude Code reads on its own. The long operator's manual is
@@ -7,7 +7,8 @@ the audits are in [docs/data-audit](docs/data-audit) and [docs/security](docs/se
 
 ## 1. What has been built
 
-Relay (repository name EduLink; code identifiers stay `edulink`) is a school operations platform for
+Shalaghar (शालाघर in Hindi, शाळाघर in Marathi; called Relay until 2 October 2026 and EduLink before 18 September;
+repository name EduLink; code identifiers stay `edulink`) is a school operations platform for
 Indian schools, in English, Hindi and Marathi, with a web app and a phone app on one database and one
 API. One school is one tenant. The roles are ADMIN (the office), PRINCIPAL (the head), TEACHER, STUDENT,
 PARENT (a guardian, who belongs to no school and sees their children across schools), EXPERT (an outside

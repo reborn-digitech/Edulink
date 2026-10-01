@@ -1,10 +1,10 @@
-# Relay — App Store and Google Play listing (English)
+# Shalaghar — App Store and Google Play listing (English)
 
 Derived from `docs/decisions/0002-minors-data-policy.md`. Placeholders in ALL CAPS are the founder's to fill.
 
 ## Name
 
-Relay
+Shalaghar
 
 ## Subtitle (App Store, 30 characters)
 
@@ -16,7 +16,7 @@ Attendance, marks, homework and messages for your school. Works offline.
 
 ## Full description (both stores, under 4,000 characters)
 
-Relay is your school's app. The register, marks, homework, report cards and messages from teachers — in one place, in your language.
+Shalaghar is your school's app. The register, marks, homework, report cards and messages from teachers — in one place, in your language.
 
 FOR PARENTS AND GUARDIANS
 • See whether your child was in school today.
@@ -47,7 +47,7 @@ Nobody creates an account in this app. Your school issues the sign-in to you or 
 YOUR CHILD'S INFORMATION
 No advertising, no tracking, no data sold to anyone. What the school records about a child is seen only by that school, the child's own teachers, the child's guardians and the child. Screenshots are blocked on the marks and report-card screens. Read the full policy at PRIVACY_URL.
 
-Relay is for schools that have signed up. If your school is not on Relay yet, ask the office to write to SUPPORT_EMAIL.
+Shalaghar is for schools that have signed up. If your school is not on Shalaghar yet, ask the office to write to SUPPORT_EMAIL.
 
 ## Keywords (App Store, 100 characters)
 

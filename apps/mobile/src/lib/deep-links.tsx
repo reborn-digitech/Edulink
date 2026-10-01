@@ -42,7 +42,7 @@ export function useDeepLinks() {
         // kept is somebody else's link, and is not sent anywhere.
         const verifier = await takeVerifier();
         if (!verifier) return;
-        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, verifier, device: "Relay app" });
+        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, verifier, device: "Shalaghar app" });
         if (!res.ok) return;
         // Two-step sign-in: the provider was the first step; the code screen is the second.
         if (isTwoFactor(res.data)) {

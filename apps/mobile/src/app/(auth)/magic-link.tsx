@@ -32,7 +32,7 @@ export default function MagicLink() {
   async function consume() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/magic-link/consume", { token: token.trim(), device: "Relay app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/magic-link/consume", { token: token.trim(), device: "Shalaghar app" });
     setBusy(false);
     if (!res.ok) return setError(errorText(res, t("login.noMatch")));
     // Two-step sign-in: the link was the first step; the code screen is the second.

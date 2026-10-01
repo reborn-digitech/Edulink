@@ -74,7 +74,7 @@ describe("one competition", () => {
     gate.open(() => json(DETAIL));
     await screen.findByText("ZZ Maths Bee");
     expect(screen.getByText("Run by ZZ School")).toBeTruthy();
-    expect(screen.getByText("Checked by Relay")).toBeTruthy();
+    expect(screen.getByText("Checked by Shalaghar")).toBeTruthy();
     expect(screen.getByText("Entries close")).toBeTruthy();
     expect(screen.getByText("Starts")).toBeTruthy();
     expect(screen.queryByText("Ends")).toBeNull();
@@ -189,7 +189,7 @@ describe("one competition", () => {
     const { calls } = await mountStaff(<CompetitionDetail />, "ADMIN", { [`GET ${PATH}`]: () => json({ ...DETAIL, isOrganiser: true, status: "DRAFT" }), [`POST ${STATUS}`]: () => json({ ok: true, status: "PUBLISHED" }) });
     expect(await screen.findByText("Your school is organising this one. Nobody else can see it yet.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Publish it" }));
-    expect(screen.getByText("Once you publish it, pupils at every school on Relay can see it and ask to enter.")).toBeTruthy();
+    expect(screen.getByText("Once you publish it, pupils at every school on Shalaghar can see it and ask to enter.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Publish it" }));
     await waitFor(() => expect(calls().find((c) => c.line === `POST ${STATUS}`)?.body).toEqual({ status: "PUBLISHED" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));

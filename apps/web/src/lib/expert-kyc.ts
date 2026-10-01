@@ -219,7 +219,7 @@ export type FeedEvent = { uid: string; startsAt: Date; endsAt: Date; summary: st
 
 /** The document for a list of events; exported for the test to hold the shape. */
 export function renderIcs(events: FeedEvent[], now: Date, calendarName: string): string {
-  const lines: string[] = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Relay//ExpertCalendar//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsText(calendarName)}`];
+  const lines: string[] = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Shalaghar//ExpertCalendar//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsText(calendarName)}`];
   for (const e of events) {
     lines.push("BEGIN:VEVENT", `UID:${e.uid}@relay`, `DTSTAMP:${icsStamp(now)}`, `DTSTART:${icsStamp(e.startsAt)}`, `DTEND:${icsStamp(e.endsAt)}`, `SUMMARY:${icsText(e.summary)}`);
     if (e.description) lines.push(`DESCRIPTION:${icsText(e.description)}`);

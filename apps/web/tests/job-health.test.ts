@@ -206,7 +206,7 @@ describe("the operator's health digest", () => {
       ],
       [{ schoolId: "s1", name: "ZZ Digest School", jobs: [{ job: "departures:run", at: new Date(), counts: { stuck: 2 } }] }],
     )!;
-    expect(digest.subject).toBe("Relay health: 1 job overdue · 1 failed · 1 school needs attention");
+    expect(digest.subject).toBe("Shalaghar health: 1 job overdue · 1 failed · 1 school needs attention");
     expect(digest.text).toContain("digest:weekly: overdue (last success never)");
     expect(digest.text).toContain("files:reclaim: last run failed — disk fell off");
     expect(digest.text).toContain("ZZ Digest School: 2 stuck");
@@ -222,7 +222,7 @@ describe("the operator's health digest", () => {
     expect(out.emailed).toBeGreaterThanOrEqual(1);
     const sent = await db.outboundEmail.findMany({ where: { purpose: "HEALTH" }, select: { to: true, subject: true, text: true } });
     expect(sent.length).toBe(out.emailed);
-    expect(sent[0]!.subject).toMatch(/Relay health:/);
+    expect(sent[0]!.subject).toMatch(/Shalaghar health:/);
     expect(sent[0]!.text).toContain("ZZ Job Health B: 1 stuck");
     expect(sent[0]!.text).toContain("ZZ Job Health C: 3 files on record, gone from disk");
   });

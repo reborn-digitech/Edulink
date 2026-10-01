@@ -120,7 +120,7 @@ describe("posting a competition", () => {
 
   it("someone who may not post is told so, and the door is the competitions list", async () => {
     await mountStaff(<CompetitionNew />, "TEACHER", {});
-    expect(await screen.findByText("Only a school's admins, or Relay's content team, can post a competition.")).toBeTruthy();
+    expect(await screen.findByText("Only a school's admins, or Shalaghar's content team, can post a competition.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Competitions" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/competitions");
   });

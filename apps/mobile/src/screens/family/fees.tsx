@@ -19,7 +19,7 @@ import { demandStatusLabel, methodLabel, money, PAY_TONE, payable, payStatusLabe
  * Fees for the family — the web's /parent/fees: what the school asked for
  * this year, what has been paid, and the ways this school takes the rest.
  * The phone chooses the instalments and starts the payment; the money goes
- * to the school's own gateway or UPI id, never through Relay. An online
+ * to the school's own gateway or UPI id, never through Shalaghar. An online
  * checkout opens the school's payment page on the web (the gateway's own
  * script runs there), and the phone watches the payment until the receipt
  * appears; a UPI payment opens the UPI app with the school as payee and the

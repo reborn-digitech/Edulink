@@ -49,7 +49,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: { "/api/v1/shared/report-cards/[cardId]/pdf": ["./src/lib/pdf-fonts/*.ttf"], "/api/v1/teaching/classes/[classId]/report-cards/pdf": ["./src/lib/pdf-fonts/*.ttf"], "/api/v1/shared/certificates/[certificateId]/pdf": ["./src/lib/pdf-fonts/*.ttf"] },
   serverExternalPackages: ["@node-rs/argon2", "web-push"],
   // Workspace packages ship TypeScript source, not a build; Next compiles them.
-  transpilePackages: ["@edulink/i18n", "@edulink/contracts", "@edulink/api-client"],
+  transpilePackages: ["@edulink/i18n", "@edulink/contracts", "@edulink/api-client", "@edulink/tokens"],
   async headers() {
     return [
       {

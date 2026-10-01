@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Linking, View } from "react-native";
 import { useRouter } from "expo-router";
 import type { SessionResponse } from "@edulink/contracts";
-import { Button, Field, Screen, Text } from "@/components";
+import { Button, Field, Screen, Text, Wordmark } from "@/components";
 import { api, API_BASE, errorText } from "@/lib/api";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
@@ -34,7 +34,7 @@ export default function SignIn() {
   async function submit() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/login", { identifier: identifier.trim(), password, device: "Relay app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/login", { identifier: identifier.trim(), password, device: "Shalaghar app" });
     setBusy(false);
     if (!res.ok) {
       setError(res.status === 429 && res.retryAfterSeconds ? `${res.error} (${res.retryAfterSeconds}s)` : errorText(res, t("login.noMatch")));
@@ -73,6 +73,9 @@ export default function SignIn() {
 
   return (
     <Screen title={t("login.title")} description={t("login.welcome")}>
+      <View style={{ alignItems: "center", paddingVertical: th.space[2] }}>
+        <Wordmark height={44} testID="wordmark" />
+      </View>
       <View style={{ gap: th.space[3] }}>
         <Field label={t("login.emailOrLoginName")} value={identifier} onChangeText={setIdentifier} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" textContentType="username" autoComplete="username" />
         <Field label={t("login.password")} value={password} onChangeText={setPassword} secureTextEntry textContentType="password" autoComplete="current-password" error={error} onSubmitEditing={submit} returnKeyType="go" />

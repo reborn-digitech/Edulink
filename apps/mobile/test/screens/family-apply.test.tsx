@@ -39,7 +39,7 @@ describe("applying to a school", () => {
   it("with no open cycle, says so with the door to the directory", async () => {
     await mountStaff(compose(), "PARENT", { [SCHOOL_PATH]: () => json({ open: null, mine: [] }) });
     expect(screen.getByRole("progressbar")).toBeTruthy();
-    expect(await screen.findByText("This school is not taking applications through Relay right now.")).toBeTruthy();
+    expect(await screen.findByText("This school is not taking applications through Shalaghar right now.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Explore schools" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/explore");
     expect(screen.queryByRole("button", { name: "Send the application" })).toBeNull();

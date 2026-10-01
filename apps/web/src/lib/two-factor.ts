@@ -44,7 +44,7 @@ import {
  * path and this file owns neither.
  */
 
-export const TOTP_ISSUER = "Relay";
+export const TOTP_ISSUER = "Shalaghar";
 /** The web keeps the challenge here between the two steps, for as long as the challenge lives. */
 export const TWO_FACTOR_COOKIE = "edulink_2fa";
 export const CHALLENGE_TTL_MS = 5 * 60_000;

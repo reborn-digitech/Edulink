@@ -1,4 +1,4 @@
-# EduLink
+# Shalaghar
 
 One workspace, three kinds of thing:
 

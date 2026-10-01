@@ -851,7 +851,7 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const handle = handleFor(a.childName, code);
   const todayIso = new Date(`${todayKey(timezone)}T00:00:00Z`);
 
-  // A PEN with the date of birth names an account already on Relay: the seat
+  // A PEN with the date of birth names an account already on Shalaghar: the seat
   // goes to that pupil, as a transfer by student code would give it, and
   // their certificates and records follow them. A PEN nobody holds goes on
   // the new account.

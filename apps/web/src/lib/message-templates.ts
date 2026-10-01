@@ -40,9 +40,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "school"],
     event: "absence",
     text: {
-      en: "{child} has been missing school lately. Please speak to the office at {school}. - Relay",
-      hi: "{child} इन दिनों स्कूल नहीं आ रहे/रही हैं। कृपया {school} के कार्यालय से बात करें। - Relay",
-      mr: "{child} सध्या शाळेत येत नाही. कृपया {school} च्या कार्यालयाशी बोला. - Relay",
+      en: "{child} has been missing school lately. Please speak to the office at {school}. - Shalaghar",
+      hi: "{child} इन दिनों स्कूल नहीं आ रहे/रही हैं। कृपया {school} के कार्यालय से बात करें। - शालाघर",
+      mr: "{child} सध्या शाळेत येत नाही. कृपया {school} च्या कार्यालयाशी बोला. - शाळाघर",
     },
   },
   feeDueSoon: {
@@ -50,9 +50,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "date", "school"],
     event: "feeReminders",
     text: {
-      en: "Fees of {amount} for {child} are due on {date} at {school}. Pay in the Relay app or at the office. - Relay",
-      hi: "{school} में {child} की {amount} फ़ीस {date} को देय है। Relay ऐप में या कार्यालय में भुगतान करें। - Relay",
-      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय आहे. Relay ॲपमध्ये किंवा कार्यालयात भरा. - Relay",
+      en: "Fees of {amount} for {child} are due on {date} at {school}. Pay in the Shalaghar app or at the office. - Shalaghar",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय है। शालाघर ऐप में या कार्यालय में भुगतान करें। - शालाघर",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय आहे. शाळाघर ॲपमध्ये किंवा कार्यालयात भरा. - शाळाघर",
     },
   },
   feeOverdue: {
@@ -60,9 +60,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "date", "school"],
     event: "feeReminders",
     text: {
-      en: "Fees of {amount} for {child} at {school} were due on {date} and are still unpaid. Pay in the Relay app or at the office. - Relay",
-      hi: "{school} में {child} की {amount} फ़ीस {date} को देय थी और अभी बाक़ी है। Relay ऐप में या कार्यालय में भुगतान करें। - Relay",
-      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय होती आणि अजून बाकी आहे. Relay ॲपमध्ये किंवा कार्यालयात भरा. - Relay",
+      en: "Fees of {amount} for {child} at {school} were due on {date} and are still unpaid. Pay in the Shalaghar app or at the office. - Shalaghar",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय थी और अभी बाक़ी है। शालाघर ऐप में या कार्यालय में भुगतान करें। - शालाघर",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय होती आणि अजून बाकी आहे. शाळाघर ॲपमध्ये किंवा कार्यालयात भरा. - शाळाघर",
     },
   },
   feeReceived: {
@@ -70,9 +70,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "serial", "school"],
     event: "feeReceipts",
     text: {
-      en: "{school} received {amount} for {child}. Receipt {serial} is in the Relay app. Thank you. - Relay",
-      hi: "{school} को {child} के लिए {amount} मिले। रसीद {serial} Relay ऐप में है। धन्यवाद। - Relay",
-      mr: "{school} ला {child} साठी {amount} मिळाले. पावती {serial} Relay ॲपमध्ये आहे. धन्यवाद. - Relay",
+      en: "{school} received {amount} for {child}. Receipt {serial} is in the Shalaghar app. Thank you. - Shalaghar",
+      hi: "{school} को {child} के लिए {amount} मिले। रसीद {serial} शालाघर ऐप में है। धन्यवाद। - शालाघर",
+      mr: "{school} ला {child} साठी {amount} मिळाले. पावती {serial} शाळाघर ॲपमध्ये आहे. धन्यवाद. - शाळाघर",
     },
   },
   circular: {
@@ -80,9 +80,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["school", "notice"],
     event: "circulars",
     text: {
-      en: "Notice from {school}: {notice} - Relay",
-      hi: "{school} से सूचना: {notice} - Relay",
-      mr: "{school} कडून सूचना: {notice} - Relay",
+      en: "Notice from {school}: {notice} - Shalaghar",
+      hi: "{school} से सूचना: {notice} - शालाघर",
+      mr: "{school} कडून सूचना: {notice} - शाळाघर",
     },
   },
   incident: {
@@ -90,9 +90,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "summary", "school"],
     event: "incidents",
     text: {
-      en: "{school}: {child} - {summary}. Details and what was done are in the Relay app; the office can be called. - Relay",
-      hi: "{school}: {child} - {summary}। विवरण और क्या किया गया, Relay ऐप में है; कार्यालय को फ़ोन कर सकते हैं। - Relay",
-      mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते Relay ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - Relay",
+      en: "{school}: {child} - {summary}. Details and what was done are in the Shalaghar app; the office can be called. - Shalaghar",
+      hi: "{school}: {child} - {summary}। विवरण और क्या किया गया, शालाघर ऐप में है; कार्यालय को फ़ोन कर सकते हैं। - शालाघर",
+      mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते शाळाघर ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - शाळाघर",
     },
   },
   test: {
@@ -100,9 +100,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["school"],
     event: null,
     text: {
-      en: "This is a test message from {school} on Relay. No action is needed. - Relay",
-      hi: "यह Relay पर {school} की ओर से एक परीक्षण संदेश है। कुछ करने की ज़रूरत नहीं है। - Relay",
-      mr: "हा Relay वर {school} कडून एक चाचणी संदेश आहे. काही करण्याची गरज नाही. - Relay",
+      en: "This is a test message from {school} on Shalaghar. No action is needed. - Shalaghar",
+      hi: "यह शालाघर पर {school} की ओर से एक परीक्षण संदेश है। कुछ करने की ज़रूरत नहीं है। - शालाघर",
+      mr: "हा शाळाघरावर {school} कडून एक चाचणी संदेश आहे. काही करण्याची गरज नाही. - शाळाघर",
     },
   },
 } as const satisfies Record<string, MessageTemplate>;

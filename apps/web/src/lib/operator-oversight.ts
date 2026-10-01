@@ -298,7 +298,7 @@ export async function setMembershipSuspension(
         data: {
           status: "SUSPENDED",
           suspendedAt: new Date(),
-          suspendedReason: `Paused by the Relay team: ${clean}`,
+          suspendedReason: `Paused by the Shalaghar team: ${clean}`,
         },
       });
     } else {

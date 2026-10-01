@@ -495,7 +495,7 @@ export function submissionOpen(
  *
  * A link rather than a file: `submissionUrl` is what the schema has, and a
  * competition's own site is where work almost always goes. Uploading through
- * Relay would mean storing a child's work for an organiser who cannot read it
+ * Shalaghar would mean storing a child's work for an organiser who cannot read it
  * — see Later in the README.
  */
 export async function submitEntry(
@@ -749,7 +749,7 @@ export type CompetitionInput = {
  *
  * `verified` is deliberately NOT settable here. It means "somebody running this
  * installation looked at it", and a school marking its own competition as
- * checked-by-Relay would make the badge meaningless.
+ * checked-by-Shalaghar would make the badge meaningless.
  */
 export async function createCompetition(
   session: ActiveContext,

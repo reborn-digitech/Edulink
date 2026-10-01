@@ -65,7 +65,7 @@ describe("two-step sign-in on the phone", () => {
     await fireEvent.changeText(box, "000000");
     await fireEvent.press(submit);
     expect(await screen.findByText("ZZ That code is not right. 4 tries left.")).toBeTruthy();
-    expect(calls().filter((c) => c.line === "POST /api/v1/auth/totp")[0]?.body).toEqual({ challenge: CHALLENGE, code: "000000", device: "Relay app" });
+    expect(calls().filter((c) => c.line === "POST /api/v1/auth/totp")[0]?.body).toEqual({ challenge: CHALLENGE, code: "000000", device: "Shalaghar app" });
 
     await fireEvent.changeText(box, "123456");
     await fireEvent.press(screen.getByRole("button", { name: "Sign in" }));

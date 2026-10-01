@@ -165,9 +165,9 @@ describe("finding a pupil by PEN", () => {
 
   it.each([
     ["here in no class yet, with the door", { pen: PEN, found: "HERE", pupil: { membershipId: BELA, name: "ZZ Bela", className: null, studentCode: null } }, "ZZ Bela — on the roll here, in no class yet.", true],
-    ["on a roll elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_ACTIVE", pupil: null }, /^That PEN belongs to a pupil on the roll at another school on Relay\./, false],
-    ["left elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_LEFT", pupil: null }, /^That PEN belongs to a pupil who has left another school on Relay\./, false],
-    ["nobody, with no door", { pen: PEN, found: "NONE", pupil: null }, "No pupil on Relay holds that PEN.", false],
+    ["on a roll elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_ACTIVE", pupil: null }, /^That PEN belongs to a pupil on the roll at another school on Shalaghar\./, false],
+    ["left elsewhere, with no door", { pen: PEN, found: "ELSEWHERE_LEFT", pupil: null }, /^That PEN belongs to a pupil who has left another school on Shalaghar\./, false],
+    ["nobody, with no door", { pen: PEN, found: "NONE", pupil: null }, "No pupil on Shalaghar holds that PEN.", false],
   ])("a pupil %s", async (_label, answer, sentence, door) => {
     await mountStaff(compose(), "PRINCIPAL", { ...answers(), [BY_PEN]: () => json(answer) });
     await screen.findByText("ZZ Asha");

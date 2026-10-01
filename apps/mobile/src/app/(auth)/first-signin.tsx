@@ -23,7 +23,7 @@ export default function FirstSignIn() {
   async function submit() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/first-signin", { handle: handle.trim(), code: code.trim(), password, device: "Relay app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/first-signin", { handle: handle.trim(), code: code.trim(), password, device: "Shalaghar app" });
     setBusy(false);
     if (!res.ok) return setError(errorText(res, t("login.noMatch")));
     await session.accept(res.data);

@@ -33,7 +33,7 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
   const t = await getT();
   const { missing, pen } = await searchParams;
   // ?pen=: who holds a UDISE+ PEN — a pupil here with a door to the record,
-  // a pupil elsewhere on Relay by state alone, or nobody. A wrong shape is
+  // a pupil elsewhere on Shalaghar by state alone, or nobody. A wrong shape is
   // the format sentence, not a broken page.
   const penAsked = typeof pen === "string" ? pen.trim() : "";
   let lookup: PenLookup | null = null;

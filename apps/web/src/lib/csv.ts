@@ -315,7 +315,7 @@ export type IntakeRow = {
   relation: "PARENT" | "GUARDIAN" | "OTHER";
   /** Present = a transfer: link to the existing account behind this code. */
   studentCode: string | null;
-  /** The UDISE+ PEN, eleven digits; with the date of birth it links a pupil known on Relay, else it goes on the new account. `false` = a wrong shape. */
+  /** The UDISE+ PEN, eleven digits; with the date of birth it links a pupil known on Shalaghar, else it goes on the new account. `false` = a wrong shape. */
   pen: string | null | false;
 };
 

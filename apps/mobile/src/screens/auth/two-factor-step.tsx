@@ -25,7 +25,7 @@ export function TwoFactorStep({ challenge, onBack }: { challenge: string; onBack
   async function submit() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/totp", { challenge, code: code.trim(), device: "Relay app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/totp", { challenge, code: code.trim(), device: "Shalaghar app" });
     setBusy(false);
     if (!res.ok) {
       setError(res.status === 429 && res.retryAfterSeconds ? `${res.error} (${res.retryAfterSeconds}s)` : errorText(res, t("totp.wrongCode")));

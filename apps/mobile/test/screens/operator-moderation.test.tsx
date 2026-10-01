@@ -45,7 +45,7 @@ describe("platform moderation", () => {
     gate.open(() => json(live()));
     await screen.findByText("ZZ Science fair");
     expect(screen.getByText(/ZZ Banyan · Aarav · .*3 comments · Our volcano/)).toBeTruthy();
-    expect(screen.getByText(/School no longer on Relay · Meera Joshi/)).toBeTruthy();
+    expect(screen.getByText(/School no longer on Shalaghar · Meera Joshi/)).toBeTruthy();
     expect(screen.getByRole("radio", { name: "Live (2)" })).toBeTruthy();
     expect(screen.getByRole("radio", { name: "Taken down (1)" })).toBeTruthy();
     expect(screen.getByText("Held comments stay with the school that holds them.")).toBeTruthy();

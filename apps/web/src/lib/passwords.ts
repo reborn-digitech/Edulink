@@ -1116,7 +1116,7 @@ export async function resendVerification(
       select: { school: { select: { name: true } } },
       orderBy: { joinedAt: "asc" },
     });
-    return membership?.school.name ?? "Relay";
+    return membership?.school.name ?? "Shalaghar";
   });
 
   const fresh = generateToken();

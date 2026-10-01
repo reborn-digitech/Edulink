@@ -54,7 +54,7 @@ describe("jobs:watch", () => {
     expect(note.url).toBe("/root/jobs?state=overdue");
     expect(note.kind).toBe("SYSTEM");
     const mail = await db.outboundEmail.findFirstOrThrow({ where: { to: EMAIL } });
-    expect(mail.subject).toBe("Relay: A scheduled job is overdue: digest:weekly");
+    expect(mail.subject).toBe("Shalaghar: A scheduled job is overdue: digest:weekly");
     expect(mail.text).toBe("digest:weekly last succeeded at 2026-09-20 16:00 UTC and is expected every 192 hours. Open the jobs page to see what is waiting.");
 
     // Ten minutes on, still overdue: muted. Twelve hours on: alerted again.

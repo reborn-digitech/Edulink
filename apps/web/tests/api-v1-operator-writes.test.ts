@@ -230,11 +230,11 @@ describe("as the operator", () => {
     expect(okSchema.parse(await given.json())).toEqual({ ok: true });
     const stamp = (await db.school.findUniqueOrThrow({ where: { id: targetSchoolId } })).verifiedAt;
     expect(stamp).not.toBeNull();
-    // The school is told, once each to its admin and its head: "Relay has verified <school>; the directory lists it from today."
+    // The school is told, once each to its admin and its head: "Shalaghar has verified <school>; the directory lists it from today."
     const toldVerified = (userId: string) => db.notification.findMany({ where: { userId, titleKey: "notifTitle.schoolVerified" } });
     const adminTold = await toldVerified(targetAdminUserId);
     expect(adminTold).toHaveLength(1);
-    expect(adminTold[0]).toMatchObject({ schoolId: targetSchoolId, kind: "SYSTEM", title: `Relay has verified ${TARGET_NAME}`, body: `Relay has verified ${TARGET_NAME}; the directory lists it from today.`, url: "/admin/directory" });
+    expect(adminTold[0]).toMatchObject({ schoolId: targetSchoolId, kind: "SYSTEM", title: `Shalaghar has verified ${TARGET_NAME}`, body: `Shalaghar has verified ${TARGET_NAME}; the directory lists it from today.`, url: "/admin/directory" });
     expect(JSON.parse(adminTold[0]!.meta)).toEqual({ event: "school.verified" });
     expect(await toldVerified(targetHeadUserId)).toHaveLength(1);
     expect(await toldVerified(teacherUserId)).toHaveLength(0);

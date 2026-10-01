@@ -14,7 +14,7 @@ import type { Role } from "./constants";
  * record only mirrors it for the certificate and the filing that print it.
  *
  * WHAT IT OPENS. Bound the way a student code is — `forJoinCode(pen)` — the
- * PEN lets the office see whether a pupil is known on Relay before they are
+ * PEN lets the office see whether a pupil is known on Shalaghar before they are
  * on the roll here: on the roll elsewhere, left elsewhere with a leaving
  * certificate waiting, or unknown. Nothing else crosses: the other school's
  * name, the class, the record stay behind the fence. To bring a pupil over,

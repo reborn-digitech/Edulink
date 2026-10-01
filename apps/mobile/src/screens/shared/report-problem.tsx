@@ -62,7 +62,7 @@ export function ReportProblem() {
   const attach = t("report.attachLine", {
     device: device.model ?? device.platform,
     os: device.os ?? device.platform,
-    app: `Relay ${device.appVersion}${device.build ? ` (${device.build})` : ""}`,
+    app: `${t("brand.name")} ${device.appVersion}${device.build ? ` (${device.build})` : ""}`,
     screen: from ?? t("report.screenUnknown"),
   });
 

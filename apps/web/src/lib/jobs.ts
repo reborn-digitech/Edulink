@@ -399,7 +399,7 @@ export async function jobStatuses(now: Date = new Date()): Promise<JobStatus[]> 
  */
 export function crontabText(appDir: string): string {
   const lines = [
-    "# Relay scheduled jobs — generated from src/lib/jobs.ts; do not edit by hand.",
+    "# Shalaghar scheduled jobs — generated from src/lib/jobs.ts; do not edit by hand.",
     "# Install with `npm run cron:install`, inspect with `npm run cron:show`.",
     "SHELL=/bin/sh",
     "PATH=/usr/local/bin:/usr/bin:/bin",

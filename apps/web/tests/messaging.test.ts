@@ -94,7 +94,7 @@ afterAll(async () => {
 
 describe("templates", () => {
   it("render in the reader's language, trim a variable to the DLT limit, and fall back to English", () => {
-    expect(renderTemplate("absence", "en", { child: "Asha", school: "ZZ School" })).toBe("Asha has been missing school lately. Please speak to the office at ZZ School. - Relay");
+    expect(renderTemplate("absence", "en", { child: "Asha", school: "ZZ School" })).toBe("Asha has been missing school lately. Please speak to the office at ZZ School. - Shalaghar");
     expect(renderTemplate("absence", "hi", { child: "आशा", school: "ZZ School" })).toContain("आशा इन दिनों स्कूल नहीं");
     expect(renderTemplate("absence", "mr", { child: "आशा", school: "ZZ School" })).toContain("शाळेत");
     expect(renderTemplate("absence", "fr", { child: "Asha", school: "S" })).toContain("has been missing");
@@ -104,11 +104,11 @@ describe("templates", () => {
   });
 
   it("print the DLT and WhatsApp forms with the variables in order", () => {
-    expect(dltForm("feeDueSoon", "en")).toBe("Fees of {#var#} for {#var#} are due on {#var#} at {#var#}. Pay in the Relay app or at the office. - Relay");
-    expect(whatsappForm("feeDueSoon", "en")).toBe("Fees of {{1}} for {{2}} are due on {{3}} at {{4}}. Pay in the Relay app or at the office. - Relay");
+    expect(dltForm("feeDueSoon", "en")).toBe("Fees of {#var#} for {#var#} are due on {#var#} at {#var#}. Pay in the Shalaghar app or at the office. - Shalaghar");
+    expect(whatsappForm("feeDueSoon", "en")).toBe("Fees of {{1}} for {{2}} are due on {{3}} at {{4}}. Pay in the Shalaghar app or at the office. - Shalaghar");
     expect(whatsappVarOrder("feeDueSoon", "en")).toEqual(["amount", "child", "date", "school"]);
     expect(whatsappVarOrder("feeDueSoon", "hi")).toEqual(["school", "child", "amount", "date"]);
-    for (const [key, t] of Object.entries(MESSAGE_TEMPLATES)) for (const lang of ["en", "hi", "mr"] as const) expect(t.text[lang], `${key}/${lang}`).toContain("Relay");
+    for (const [key, t] of Object.entries(MESSAGE_TEMPLATES)) for (const lang of ["en", "hi", "mr"] as const) expect(t.text[lang], `${key}/${lang}`).toContain({ en: "Shalaghar", hi: "शालाघर", mr: "शाळाघर" }[lang]);
   });
 
   it("count SMS segments: GSM-7 at 160/153, Devanagari at 70/67", () => {
@@ -144,7 +144,7 @@ describe("routing", () => {
     const out = await deliverToUser({ schoolId, userId: parentA, templateKey: "absence", vars: { child: "Asha" }, purpose: "absence" });
     expect(out).toMatchObject({ status: "SENT", channel: "SMS", skipReason: null });
     const row = await db.outboundMessage.findUniqueOrThrow({ where: { id: out.id } });
-    expect(row.body).toBe(`Asha has been missing school lately. Please speak to the office at ZZ Msg School ${STAMP}. - Relay`);
+    expect(row.body).toBe(`Asha has been missing school lately. Please speak to the office at ZZ Msg School ${STAMP}. - Shalaghar`);
     expect(row.providerSid).toBe(`devbox_${row.id}`);
     expect(row.segments).toBe(1);
     expect(await db.outboundEmail.count({ where: { to: row.to, purpose: "SMS", text: row.body } })).toBe(1);

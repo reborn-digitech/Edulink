@@ -19,7 +19,7 @@ const status = (id: string) => `/api/v1/appadmin/competitions/${id}/status`;
 
 const COMPETITIONS = {
   items: [
-    { id: "c1", title: "ZZ Maths Olympiad", summary: "For classes 6 to 10.", status: "PUBLISHED", organizerName: "Relay", registrationClosesAt: "2026-12-01T00:00:00.000Z", createdAt: ago(2 * 86_400_000) },
+    { id: "c1", title: "ZZ Maths Olympiad", summary: "For classes 6 to 10.", status: "PUBLISHED", organizerName: "Shalaghar", registrationClosesAt: "2026-12-01T00:00:00.000Z", createdAt: ago(2 * 86_400_000) },
     { id: "c2", title: "ZZ Essay Prize", summary: "Five hundred words.", status: "DRAFT", organizerName: "ZZ Trust", registrationClosesAt: null, createdAt: ago(3_600_000) },
   ],
 };
@@ -38,7 +38,7 @@ describe("the content team's home", () => {
     expect(screen.getByText("ZZ Curator")).toBeTruthy();
     expect(screen.getByText("Content")).toBeTruthy();
     expect(screen.getByText("ZZ Essay Prize")).toBeTruthy();
-    expect(screen.getByText(/^For classes 6 to 10\. · Relay · .*2026 · posted 2 days ago$/)).toBeTruthy();
+    expect(screen.getByText(/^For classes 6 to 10\. · Shalaghar · .*2026 · posted 2 days ago$/)).toBeTruthy();
     expect(screen.getByText(/^Five hundred words\. · ZZ Trust · posted 1 hour ago$/)).toBeTruthy();
     expect(screen.getAllByText("Live").length).toBeGreaterThanOrEqual(2);
     expect(screen.getAllByText("Draft").length).toBeGreaterThanOrEqual(2);

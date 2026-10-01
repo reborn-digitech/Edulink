@@ -24,7 +24,7 @@ const PEN_RE = /^\d{11}$/;
  * something blank; a row's "Ask this family" asks one. Editing opens the
  * same form the family has, with the office as the writer. Above the list,
  * "Find by PEN" asks who holds a UDISE+ PEN: a pupil here with a door to
- * the record, a pupil elsewhere on Relay by state alone, or nobody. Above
+ * the record, a pupil elsewhere on Shalaghar by state alone, or nobody. Above
  * that again, while families' asks wait, each one by the pupil's name and
  * the fields asked about, leading to that pupil's record where it is decided.
  */

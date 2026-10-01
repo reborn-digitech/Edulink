@@ -8,7 +8,7 @@ import { getT } from "@/lib/i18n/server";
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return {
-    title: { default: t("appadmin.areaTitle"), template: "%s · Relay" },
+    title: { default: t("appadmin.areaTitle"), template: `%s · ${t("brand.name")}` },
     robots: { index: false, follow: false },
   };
 }

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { en } from "@/lib/i18n/en";
 
 /**
  * Web App Manifest. Served at /manifest.webmanifest by Next's metadata route.
@@ -9,8 +10,10 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Relay — school, home, connected",
-    short_name: "Relay",
+    // The manifest is one file for every reader (lang "en"), so it carries the
+    // English name and tagline; the page's own title follows the reader's language.
+    name: `${en.brand.name} — ${en.brand.tagline}`,
+    short_name: en.brand.name,
     description:
       "Attendance, assignments, grades and teacher messages for schools, students and parents. Works offline.",
     id: "/",
