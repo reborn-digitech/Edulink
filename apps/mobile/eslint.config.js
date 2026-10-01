@@ -23,7 +23,7 @@ module.exports = defineConfig([
       "react-native-a11y/no-nested-touchables": "error",
     },
   },
-  // Node's own names in the one script Metro's config loads as CommonJS.
-  { files: ["scripts/*.cjs"], languageOptions: { globals: { __dirname: "readonly", Buffer: "readonly" } } },
+  // Node's own names in the scripts Metro's config loads as CommonJS.
+  { files: ["scripts/*.cjs"], languageOptions: { globals: { __dirname: "readonly", __filename: "readonly", Buffer: "readonly" } } },
   { ignores: ["dist/*", ".expo/*", "node_modules/*", "coverage/*", "i18n-subset/*"] },
 ]);

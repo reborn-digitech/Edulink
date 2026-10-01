@@ -1,4 +1,4 @@
-// Metro for the EduLink app: Expo's defaults, with two changes.
+// Metro for the EduLink app: Expo's defaults, with three changes.
 //
 // 1. The minifier writes Devanagari as itself.
 //
@@ -47,5 +47,19 @@ if (process.env.EDULINK_I18N_FULL !== "1" && (release || process.env.EDULINK_I18
     return match ? { type: "sourceFile", filePath: subset[match[1]] } : resolved;
   };
 }
+
+// 3. The icons carry the four weights the phone draws.
+//
+// Each Phosphor icon file draws its icon six ways and the phone asks for four
+// (regular, bold, fill, duotone); scripts/icon-weights.cjs is Expo's Babel
+// transformer with a step in front that leaves out the thin and light
+// drawings, 69 KB of the bundle (1 Oct 2026), and draws those two names
+// regular. Every bundle, so the development server shows what a release does.
+const iconWeights = require("./scripts/icon-weights.cjs");
+
+if (config.transformer.babelTransformerPath !== iconWeights.UPSTREAM) {
+  throw new Error(`metro.config.js: Expo's Babel transformer is ${config.transformer.babelTransformerPath}, not the ${iconWeights.UPSTREAM} scripts/icon-weights.cjs hands files on to`);
+}
+config.transformer.babelTransformerPath = require.resolve("./scripts/icon-weights.cjs");
 
 module.exports = config;

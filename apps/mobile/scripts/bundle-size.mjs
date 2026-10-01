@@ -23,9 +23,16 @@
  * choice that day (trim the icons' unused weights, raise the ceiling, or leave
  * it) and raised the ceiling to 5.5 MB. The target is where it was, so every
  * run still names the number; what the ceiling costs is the weight of each
- * over-the-air update, 1.26 MB gzipped at 4.93 MB. The levers not yet pulled,
- * by the source map: the icons, 0.23 MB with six weights drawn for each where
- * the phone uses three, and the screens themselves, 1.31 MB.
+ * over-the-air update, 1.26 MB gzipped at 4.93 MB.
+ *
+ * By 1 Oct 2026 two waves of screens had brought it to 5.37 MB. The icons now
+ * carry the four weights the phone draws, not six (scripts/icon-weights.cjs,
+ * 66 KB): 5.31 MB. What is left, by the source map: the screens, 1.73 MB, of
+ * which about 0.6 MB is the React Compiler's memo caches (app.json
+ * experiments.reactCompiler; 4.71 MB with it off, measured, not taken); the
+ * three dictionaries' phone share, 1.05 MB, every key named in the phone's
+ * source; contracts, 0.24 MB, 77 KB of it schemas the phone does not use that
+ * only Expo's unstable tree shaking leaves out.
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
