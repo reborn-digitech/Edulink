@@ -2,6 +2,16 @@ import * as c from "@edulink/contracts";
 import type { Endpoint } from "./types";
 
 /**
+ * The day after the platform's date. f.todayKey is the UTC date, and the
+ * school's own today (the day the note door measures "past" from) runs ahead
+ * of it in India after 18:30 UTC: run 36903504275 swept at 00:11 IST and the
+ * note for "today" was refused as a past day, 403, for the pupil and the
+ * parent. Tomorrow by UTC is never before the school's today in any zone and
+ * always well inside the sixty days ahead.
+ */
+const dayAfter = (key: string): string => new Date(Date.parse(`${key}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
+
+/**
  * family: the pupil's and the guardian's pages, in the order of the nav.
  *
  * A guardian's endpoints take `childId` (the student membership id) as a
@@ -72,7 +82,7 @@ export const FAMILY: Endpoint[] = [
   { method: "DELETE", path: "/api/v1/family/children/{membershipId}/link", summary: "The guardian ends their own link to this child; refused when it would leave the child with no guardian and nobody at the school to stand in. The office is told", access: ["PARENT"], request: c.familyUnlinkSchema, response: c.familyUnlinkedSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/family/children/${f.studentMembershipId}/link` : null) },
   { method: "GET", path: "/api/v1/family/students/{membershipId}/absence-notes", summary: "The coming days the family said the pupil would be away, soonest first — a guardian's child, or the pupil's own", access: ["STUDENT", "PARENT"], response: c.absenceNotesSchema, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes` : null) },
   // One note per day, a second replacing the first, so the sweep's note is the same note every run.
-  { method: "POST", path: "/api/v1/family/students/{membershipId}/absence-notes", summary: "Tell the school the pupil will be away on a day (today or up to sixty days ahead), with a coded reason; the register shows it and no absence notice is sent for that day", access: ["STUDENT", "PARENT"], request: c.absenceNoteCreateSchema, response: c.absenceNotesSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes` : null), sampleBody: (f) => ({ dateKey: f.todayKey, reason: "FAMILY", text: "ZZ Sweep: away for the day." }) },
+  { method: "POST", path: "/api/v1/family/students/{membershipId}/absence-notes", summary: "Tell the school the pupil will be away on a day (today or up to sixty days ahead), with a coded reason; the register shows it and no absence notice is sent for that day", access: ["STUDENT", "PARENT"], request: c.absenceNoteCreateSchema, response: c.absenceNotesSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes` : null), sampleBody: (f) => ({ dateKey: dayAfter(f.todayKey), reason: "FAMILY", text: "ZZ Sweep: away for the day." }) },
   // A throwaway note pupil 01 wrote for a fortnight ahead, put back before each run (scripts/sweep-doors.ts): the pupil takes it back (200) and the parent, after, finds it gone (404).
   { method: "DELETE", path: "/api/v1/family/students/{membershipId}/absence-notes/{noteId}", summary: "Its author takes a note back, before the day's register has marked the pupil", access: ["STUDENT", "PARENT"], response: c.absenceNotesSchema, sample: (f) => (f.studentMembershipId && f.goneAbsenceNoteId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes/${f.goneAbsenceNoteId}` : null) },
   { method: "GET", path: "/api/v1/family/students/{membershipId}/health/reads", summary: "Who at the school opened the child's health card in the last ninety days: name, role and time, newest first", access: ["PARENT"], response: c.healthCardReadsSchema, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/health/reads` : null) },
