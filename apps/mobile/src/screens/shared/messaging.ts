@@ -26,6 +26,7 @@ const SKIP: Record<string, TranslationKey> = {
   "cap-daily": "messaging.skipCapDaily",
   "no-transport": "messaging.skipNoTransport",
   disabled: "messaging.skipDisabled",
+  unverifiedNumber: "officeBulk.skipUnverifiedNumber",
 };
 /** What the server writes in `purpose` (messaging.ts, fees-reports.ts, attendance-intel.ts) → the office's word for it. */
 const PURPOSE: Record<string, TranslationKey> = {

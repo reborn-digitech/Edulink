@@ -114,8 +114,11 @@ function createClient() {
        * acceptance, starting a remark thread — set the tenant once at the top
        * instead of per statement, so they stay a single atomic unit.
        */
-      async $tenantTransaction<T>(work: (tx: unknown) => Promise<T>): Promise<T> {
+      async $tenantTransaction<T>(work: (tx: unknown) => Promise<T>, opts?: { timeout?: number; maxWait?: number }): Promise<T> {
         const { schoolIds, userId, joinCode, isSuperuser } = await tenantForThisQuery();
+        // `opts` is Prisma's own: a transaction that is seconds of database
+        // time by nature (the bank's trigram pass, bank-tools.ts) asks for
+        // more than the five-second default rather than being cut off mid-way.
         return base.$transaction(async (tx) => {
           if (schoolIds.length > 0) {
             await tx.$executeRaw`SELECT set_config('app.school_ids', ${schoolIds.join(",")}, true)`;
@@ -130,7 +133,7 @@ function createClient() {
             await tx.$executeRaw`SELECT set_config('app.is_superuser', '1', true)`;
           }
           return markInTransaction(() => work(tx));
-        });
+        }, opts);
       },
     },
   });

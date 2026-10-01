@@ -45,4 +45,11 @@ export const OFFICE: Endpoint[] = [
   { method: "POST", path: "/api/v1/office/exams/{seriesId}/archive", summary: "Send an exam series to the archive", access: ["ADMIN"], response: c.okSchema },
   // ---- notification housekeeping --------------------------------------------------
   { method: "POST", path: "/api/v1/office/notifications/housekeeping", summary: "How long this school's notices live", access: ["ADMIN"], request: c.officeHousekeepingBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
+  // ---- the timetable in bulk (October 2026) ------------------------------------------
+  // The preview writes nothing, so the sweep proves its 200 with a sheet naming nothing the fixture has; the commit and the copy would rewrite ZZ Northgate's grid, so they carry no sampleBody and prove their 422.
+  { method: "POST", path: "/api/v1/office/timetable/import/preview", summary: "What a pasted timetable sheet (day, period, class, subject, teacher, room) would write, and every cell it cannot resolve", access: ["ADMIN"], request: c.timetableImportBodySchema, response: c.timetableImportPreviewSchema, emptyBodyStatus: 422, sampleBody: () => ({ csv: "day,period,class,subject,teacher,room\nMonday,1,ZZ Sweep No Class,Maths,,\n" }) },
+  { method: "POST", path: "/api/v1/office/timetable/import", summary: "Write the sheet: each cell upserted on (class, day, period) in one transaction; a teacher that cannot be honoured is left blank", access: ["ADMIN"], request: c.timetableImportBodySchema, response: c.timetableImportResultSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/office/timetable/copy", summary: "Copy one section's week onto its sister sections, teachers left blank for the office to fill (overwrites theirs)", access: ["ADMIN"], request: c.timetableCopyBodySchema, response: c.timetableCopyResultSchema, emptyBodyStatus: 422 },
+  // ---- usage against the plan (2026-10-01) ------------------------------------------
+  { method: "GET", path: "/api/v1/office/usage", summary: "This school's running month — pupils, texts, storage, people active — against its plan's caps, and the months before it; the office's own", access: ["ADMIN", "PRINCIPAL"], response: c.officeUsageSchema },
 ];

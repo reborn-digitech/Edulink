@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { registerAbsenceNoteSchema } from "./family-care";
+import { expertRatingSchema } from "./experts";
 
 /**
  * staff: the teacher's and the principal's pages as JSON — one response
@@ -651,6 +652,8 @@ export const staffExpertsSchema = z.object({
       organisation: z.string().nullable(),
       specialisms: z.array(z.string()),
       verified: z.boolean(),
+      /** Families' ratings of their sessions, from three on; null reads as "New". Absent from older servers. */
+      rating: expertRatingSchema.default(null),
       offering: z.enum(["SESSIONS", "MENTORING", "BOTH"]),
       mentorCapacity: z.number().int().nullable(),
       mentoringOpen: z.boolean(),

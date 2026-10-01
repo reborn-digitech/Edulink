@@ -39,7 +39,17 @@ export const substitutionLessonSchema = z.object({
   absentMembershipId: z.string(),
   absentName: z.string(),
   absentReason: absentReasonSchema,
-  substitute: z.object({ membershipId: z.string(), name: z.string(), note: z.string().nullable() }).nullable(),
+  substitute: z
+    .object({
+      membershipId: z.string(),
+      name: z.string(),
+      note: z.string().nullable(),
+      /** The covering teacher's answer: taken, or declined with why (the office reassigns a declined one). */
+      acknowledgedAt: z.string().datetime().nullable().default(null),
+      declinedAt: z.string().datetime().nullable().default(null),
+      declineReason: z.string().nullable().default(null),
+    })
+    .nullable(),
   candidates: z.array(substitutionCandidateSchema),
 });
 
@@ -73,6 +83,8 @@ export const substitutionClearSchema = z.object({ dateKey, slotId: cuid });
 /** GET /api/v1/staff/substitutions/me?date= — the lessons I am covering that day. */
 export const myCoversQuerySchema = z.object({ date: dateKey.optional() });
 export const myCoverSchema = z.object({
+  /** The cover row itself, what /teaching/covers/{id}/acknowledge and /decline name. */
+  id: z.string(),
   slotId: z.string(),
   periodName: z.string().nullable(),
   position: count,
@@ -84,6 +96,10 @@ export const myCoverSchema = z.object({
   room: z.string().nullable(),
   absentName: z.string(),
   note: z.string().nullable(),
+  /** My answer so far: nothing yet, taken, or declined with why. */
+  acknowledgedAt: z.string().datetime().nullable().default(null),
+  declinedAt: z.string().datetime().nullable().default(null),
+  declineReason: z.string().nullable().default(null),
 });
 export const myCoversSchema = z.object({ dateKey, items: z.array(myCoverSchema) });
 export type MyCover = z.infer<typeof myCoverSchema>;

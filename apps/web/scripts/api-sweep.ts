@@ -199,6 +199,9 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     syllabusUnitId: klass ? await first(db.syllabusUnit.findFirst({ where: { schoolId: s, gradeLevel: (await db.class.findUniqueOrThrow({ where: { id: klass.id }, select: { gradeLevel: true } })).gradeLevel ?? "" }, orderBy: { position: "asc" }, select: { id: true } })) : null,
     lessonPlanId: klass ? await first(db.lessonPlan.findFirst({ where: { classId: klass.id }, orderBy: { createdAt: "desc" }, select: { id: true } })) : null,
     ...(await substitutionFixture(s)),
+    // A cover the sweep's own teacher was asked to take today, so the acknowledge and decline doors have a row that is theirs; null skips them.
+    myCoverId: lead ? await first(db.substitution.findFirst({ where: { schoolId: s, dateKey: new Date().toISOString().slice(0, 10), substituteMembershipId: lead.teacherMembershipId }, select: { id: true } })) : null,
+    planTemplateId: await first(db.lessonPlanTemplate.findFirst({ where: { schoolId: s }, orderBy: { createdAt: "asc" }, select: { id: true } })),
     ...(await reportCardFixture(s)),
     ...(await certificateFixture(s)),
     ...(await admissionFixture(s)),

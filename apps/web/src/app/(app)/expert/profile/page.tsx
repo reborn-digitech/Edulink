@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChartLineUpIcon, ListChecksIcon, SealCheckIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import { ChartLineUpIcon, ListChecksIcon, SealCheckIcon, StarIcon, UserIcon } from "@phosphor-icons/react/ssr";
 import { requireExpert, AccessError } from "@/lib/tenancy";
 import { getOwnProfile, ownImpact } from "@/lib/experts";
+import { calendarTokenUrl, readKyc } from "@/lib/expert-kyc";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProfileForm } from "./profile-form";
+import { KycCard } from "./kyc-card";
+import { CalendarCard } from "./calendar-card";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -30,10 +33,12 @@ export default async function ExpertProfilePage() {
   const t = await getT();
   const session = await requireExpert();
 
-  let profile, impact;
+  let profile, impact, kyc, calendar;
   try {
     profile = await getOwnProfile(session);
     impact = await ownImpact(session);
+    kyc = await readKyc(session);
+    calendar = await calendarTokenUrl(session);
   } catch (error) {
     // An EXPERT session with no ExpertProfile row should not exist, but a 500
     // is the wrong way to find out. Same answer the other pages give.
@@ -55,6 +60,13 @@ export default async function ExpertProfilePage() {
             {t("expert.verified")}
           </Badge>
         )}
+        {/* Families' ratings, as the marketplace shows them: an average from three on, "New" before. */}
+        <span data-testid="expert-rating">
+          <Badge tone={impact.rating ? "ok" : "neutral"} size="sm">
+            <StarIcon weight="fill" className="mr-1 inline size-3" />
+            {impact.rating ? t("expert.ratingLine", { average: impact.rating.average.toFixed(1), count: impact.rating.count }) : t("expert.ratingNew")}
+          </Badge>
+        </span>
         <p className="text-xs text-fg-muted">
           {profile.published ? t("expert.listedBody") : t("expert.notListedBody")}
         </p>
@@ -121,6 +133,10 @@ export default async function ExpertProfilePage() {
           </ul>
         </CardBody>
       </Card>
+
+      <KycCard initial={kyc} />
+
+      <CalendarCard initialUrl={calendar.url} />
 
       <Card>
         <CardHeader

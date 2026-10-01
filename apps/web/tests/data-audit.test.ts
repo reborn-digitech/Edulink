@@ -42,6 +42,7 @@ import { GET as principalOverviewGet } from "@/app/api/v1/staff/principal/overvi
 import { GET as cyclesGet } from "@/app/api/v1/office/admissions/cycles/route";
 import { GET as circularsGet } from "@/app/api/v1/office/circulars/route";
 import { GET as staffMonthGet } from "@/app/api/v1/office/staff-attendance/month/route";
+import { computeUsage, loadStoredSizes, monthKeyFor } from "@/lib/plans";
 
 const RUN = process.env.DATA_AUDIT === "1";
 const d = RUN ? describe : describe.skip;
@@ -447,6 +448,37 @@ d("STORED copies against their source rows", () => {
     }
     expect(failsOf("quiz")).toEqual([]);
   });
+
+  /**
+   * QuestionStat is the bank's own count of every school's answers, written by
+   * the nightly bank:stats job alone (src/lib/bank-tools.ts, rebuildQuestionStats)
+   * and read by the content team's bank page, where no school's rows are
+   * readable. Server-wide, not per school: one bucket sums answers from every
+   * school. A bucket that disagrees with the rows since the last run is a WARN
+   * (the snapshot is nightly by design; answers given today, and a school
+   * deleted since, show here until the next run); an impossibility — more
+   * right than asked, more timed than asked, a negative — is a FAIL.
+   */
+  it("question-stat: every (question, grade) bucket is the sum of the answer rows; impossibilities never", async () => {
+    const buckets = await db.questionStat.findMany({ select: { questionId: true, grade: true, asked: true, correct: true, seconds: true, timed: true, updatedAt: true } });
+    const impossible = buckets.filter((b) => b.correct > b.asked || b.timed > b.asked || b.asked < 0 || b.seconds < 0);
+    if (impossible.length) note("question-stat", "FAIL", "server", `${impossible.length} bucket(s) hold an impossible count (more right or timed than asked, or a negative)`);
+    const sums = await db.$queryRaw<{ questionId: string; grade: number; asked: number; correct: number; seconds: number; timed: number }[]>`
+      select r."questionId", coalesce(r."gradeLevel", 0)::int as grade, count(*)::int as asked, count(*) filter (where r."correct")::int as correct,
+             coalesce(sum(r."seconds"), 0)::int as seconds, count(r."seconds")::int as timed
+        from "QuizResponse" r where r."chosenIndex" is not null group by r."questionId", coalesce(r."gradeLevel", 0)`;
+    const expected = new Map(sums.map((x) => [`${x.questionId}|${x.grade}`, x]));
+    const stored = new Map(buckets.map((b) => [`${b.questionId}|${b.grade}`, b]));
+    let drift = 0;
+    for (const [key, want] of expected) {
+      const have = stored.get(key);
+      if (!have || have.asked !== want.asked || have.correct !== want.correct || have.seconds !== want.seconds || have.timed !== want.timed) drift++;
+    }
+    for (const key of stored.keys()) if (!expected.has(key)) drift++;
+    if (drift) note("question-stat", "WARN", "server", `${drift} bucket(s) differ from the answer rows since the last bank:stats run (nightly; run \`npm run job -- bank:stats\` to refresh)`);
+    else note("question-stat", "INFO", "server", `${buckets.length} bucket(s) over ${expected.size} (question, grade) pair(s) match the answer rows exactly`);
+    expect(failsOf("question-stat")).toEqual([]);
+  });
 });
 
 d("ON-READ answers against a recomputation from raw rows", () => {
@@ -742,6 +774,26 @@ d("ON-READ answers against a recomputation from raw rows", () => {
       }
     }
     expect(failsOf("cycles-api")).toEqual([]);
+  });
+});
+
+d("usage: the nightly sample against the rows it counts", () => {
+  it("usage-sample: this month's stored counts are what the roll, the texts and the files add up to", async () => {
+    const sizes = await loadStoredSizes();
+    for (const s of schools) {
+      const month = monthKeyFor(s.timezone);
+      const stored = await db.usageSample.findUnique({ where: { schoolId_month: { schoolId: s.id, month } } });
+      if (!stored) { note("usage-sample", "INFO", s.name, `no row for ${month} yet (usage:sample has not run)`); continue; }
+      const fresh = await computeUsage(s.id, month, { sizes });
+      // A row is the night's picture; a day's enrolments or texts since are drift, not a contradiction. A row younger than a day must agree.
+      const young = Date.now() - stored.computedAt.getTime() < 24 * 3_600_000;
+      for (const key of ["pupils", "messages", "storageMb"] as const) {
+        if (stored[key] !== fresh[key]) note("usage-sample", young ? "FAIL" : "WARN", s.name, `${month} ${key}: stored ${stored[key]} vs recomputed ${fresh[key]} (computed ${stored.computedAt.toISOString()})`);
+      }
+      // The audit's own sign-ins add sessions; the recomputed figure may only grow.
+      if (fresh.activeUsers < stored.activeUsers) note("usage-sample", "WARN", s.name, `${month} activeUsers: stored ${stored.activeUsers} vs recomputed ${fresh.activeUsers}`);
+    }
+    expect(failsOf("usage-sample")).toEqual([]);
   });
 });
 

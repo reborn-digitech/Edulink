@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { roleSchema } from "./auth";
+import { expertRatingSchema } from "./experts";
 
 /**
  * shared: the pages every role reads — the bulletin, the inbox, notifications,
@@ -688,6 +689,8 @@ export const expertProfileSchema = z.object({
     activeMentorships: count,
     mentorCapacity: z.number().int().nullable(),
     upcomingSlots: count,
+    /** Families' ratings of their sessions, from three on; null reads as "New". Absent from older servers. */
+    rating: expertRatingSchema.default(null),
   }),
 });
 

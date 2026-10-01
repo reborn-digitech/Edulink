@@ -70,6 +70,7 @@ export function TeacherClassDetail() {
             <Button label={t("teacher.reportCards")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report-cards", params: { classId } } as never)} style={{ flexGrow: 1 }} />
             <Button label={t("exams.enterMarks")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/marks", params: { classId } } as never)} style={{ flexGrow: 1 }} />
             <Button label={t("syllabus.openSyllabus")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/syllabus", params: { classId } } as never)} style={{ flexGrow: 1 }} />
+            <Button label={t("classAnalytics.open")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/class-analytics", params: { classId } } as never)} style={{ flexGrow: 1 }} />
           </View>
 
           <Card title={t("teacher.classJoinCode")} action={<Button label={t("mobile.share")} variant="ghost" icon={<Icon name="share" size={18} color={th.accentStrong} weight="bold" />} onPress={() => shareCode(data)} />}>

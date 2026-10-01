@@ -1,3 +1,5 @@
+import { recordError, reportError } from "./lib/metrics";
+
 /**
  * Runs once when the server starts, before any request is served.
  *
@@ -20,7 +22,10 @@ export async function register() {
  * carries what an on-call person needs to find the failure (route, method,
  * the digest Next shows the person on the error page, the commit) and
  * nothing that identifies a person: no cookie, no body, no query string.
- * A Sentry DSN, once there is one, is called from here and nowhere else.
+ * The same line is counted in src/lib/metrics.ts (a "render" error) and,
+ * when SENTRY_DSN is set, posted to the error tracker by the same module
+ * — which imports nothing from node:* at module scope, because this file
+ * is compiled for the edge runtime too (see the memory note).
  */
 export async function onRequestError(
   error: unknown,
@@ -45,4 +50,8 @@ export async function onRequestError(
   // runtime, which has no `process` streams, and the line lands on stderr
   // either way.
   console.error(JSON.stringify(line));
+  recordError("render");
+  if (process.env.SENTRY_DSN) {
+    await reportError(error, { where: context.routePath || request.path, kind: "render", method: request.method });
+  }
 }

@@ -1,6 +1,6 @@
 import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
-import { operatorSchoolDetailSchema } from "@edulink/contracts";
+import { operatorPlansSchema, operatorSchoolDetailSchema, operatorSchoolSupportSchema } from "@edulink/contracts";
 import { OperatorSchool } from "@/screens/operator/school";
 import { ToastProvider } from "@/components";
 import { API_BASE } from "@/lib/api";
@@ -50,6 +50,30 @@ const DETAIL = operatorSchoolDetailSchema.parse({
   access: [{ id: "x1", operatorName: "ZZ Operator", reason: "ZZ checking the register", startedAt: ago(3_600_000), live: false }],
 });
 const REMOVED = { ...DETAIL, school: { ...DETAIL.school, removedAt: ago(86_400_000) } };
+
+/** The school's office, its plan and this month's usage — the support read (2026-10-01). */
+const SUPPORT = operatorSchoolSupportSchema.parse({
+  admins: [
+    { userId: "u-admin", name: "ZZ Admin", email: "admin@zz.test", role: "ADMIN", liveSessions: 2, lastSeenAt: ago(3_600_000) },
+    { userId: "u-head", name: "ZZ Head", email: null, role: "PRINCIPAL", liveSessions: 0, lastSeenAt: null },
+  ],
+  plan: { id: "p1", code: "starter", name: "Starter" },
+  planSince: ago(10 * 86_400_000),
+  usage: {
+    month: "2026-10",
+    plan: { id: "p1", code: "starter", name: "Starter" },
+    counts: { pupils: 120, messages: 2300, storageMb: 40, activeUsers: 61 },
+    caps: { pupils: 100, messages: 5000, storageMb: null },
+    over: { pupils: true, messages: false, storageMb: false },
+    computedAt: ago(6 * 3_600_000),
+  },
+});
+const PLANS = operatorPlansSchema.parse({
+  items: [
+    { id: "p1", code: "starter", name: "Starter", pupilCap: 100, messageCap: 5000, storageCapMb: null, priceMonthlyPaise: 49900, createdAt: ago(30 * 86_400_000), schools: 1 },
+    { id: "p2", code: "campus", name: "Campus", pupilCap: null, messageCap: null, storageCapMb: 2048, priceMonthlyPaise: null, createdAt: ago(30 * 86_400_000), schools: 0 },
+  ],
+});
 const CHECKED = { ...DETAIL, school: { ...DETAIL.school, verifiedAt: ago(2 * 86_400_000) } };
 
 const mount = (overrides: Answers = {}) =>
@@ -58,7 +82,7 @@ const mount = (overrides: Answers = {}) =>
       <OperatorSchool />
     </ToastProvider>,
     "ADMIN",
-    { "GET /api/v1/operator/schools/s1": () => json(DETAIL), ...overrides },
+    { "GET /api/v1/operator/schools/s1": () => json(DETAIL), "GET /api/v1/operator/schools/s1/support": () => json(SUPPORT), "GET /api/v1/operator/plans": () => json(PLANS), ...overrides },
     { me: OPERATOR },
   );
 
@@ -71,7 +95,8 @@ describe("one school, for the operator", () => {
     gate.open(() => json(DETAIL));
     expect(await screen.findByText("ZZ Northgate")).toBeTruthy();
     expect(screen.getByText("Join code NORTH-7X9K · Asia/Kolkata")).toBeTruthy();
-    expect(screen.getByText("head@zz.test")).toBeTruthy();
+    // Twice: in the invitations and, pending, under "Help the office" with its send-again door.
+    expect(screen.getAllByText("head@zz.test")).toHaveLength(2);
     expect(screen.getByText(/^Principal · ZZ Head · 2 hours ago/)).toBeTruthy();
     expect(screen.getByText("Pending")).toBeTruthy();
     expect(screen.getByText("Accepted")).toBeTruthy();
@@ -239,5 +264,88 @@ describe("one school, for the operator", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("No such school.");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1").length).toBe(2));
+  });
+});
+
+describe("help for the office, the plan and the usage (2026-10-01)", () => {
+  it("lists the school's admins with their live sessions, the plan and since when, and this month's usage with the over-cap figure", async () => {
+    await mount();
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByText("ZZ Admin")).toBeTruthy();
+    expect(screen.getByText("2 live sessions")).toBeTruthy();
+    expect(screen.getByText(/^Administrator · admin@zz.test · Last seen 1 hour ago/)).toBeTruthy();
+    expect(screen.getByText("Not signed in anywhere")).toBeTruthy();
+    expect(screen.getByText("On this plan last week")).toBeTruthy();
+    expect(screen.getByText("Usage · 2026-10")).toBeTruthy();
+    expect(screen.getByText("Over cap")).toBeTruthy();
+    expect(screen.getByLabelText("Pupils: 120 of 100")).toBeTruthy();
+    expect(screen.getByLabelText("Texts: 2,300 of 5,000".replace(/,/g, ""))).toBeTruthy();
+    expect(screen.getByLabelText("Storage: 40 MB")).toBeTruthy();
+    expect(screen.getByLabelText("Active people: 61")).toBeTruthy();
+    expect(screen.getByText("Counted 6 hours ago")).toBeTruthy();
+  });
+
+  it("sends a pending invitation again, with the toast; a refusal is a toast with the server's sentence", async () => {
+    let refuse = false;
+    const { calls } = await mount({
+      "POST /api/v1/operator/schools/s1/support/resend-invite": () => (refuse ? json({ error: "That invitation is no longer pending.", code: "BAD_REQUEST" }, 422) : json({ ok: true })),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "Send again: head@zz.test" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/support/resend-invite")?.body).toEqual({ inviteId: "i1" }));
+    expect(await screen.findByText("Invitation sent again with a fresh link")).toBeTruthy();
+    refuse = true;
+    await fireEvent.press(screen.getByRole("button", { name: "Send again: head@zz.test" }));
+    expect(await screen.findByText("That invitation is no longer pending.")).toBeTruthy();
+  });
+
+  it("emails an admin a sign-in link only after a confirm that says no password is set; Keep sends nothing", async () => {
+    const { calls } = await mount({ "POST /api/v1/operator/schools/s1/support/sign-in-link": () => json({ ok: true }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Email a sign-in link: ZZ Admin" }));
+    expect(screen.getByText("Email ZZ Admin a one-time sign-in link? No password is set or shown to you.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Keep" }));
+    expect(calls().some((c) => c.line.endsWith("/sign-in-link"))).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Email a sign-in link: ZZ Admin" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/support/sign-in-link")?.body).toEqual({ userId: "u-admin" }));
+    expect(await screen.findByText("Sign-in link sent; it works once, for twenty minutes")).toBeTruthy();
+  });
+
+  it("signs an admin out everywhere after a confirm, and says how many sessions ended; a refusal is a toast", async () => {
+    let refuse = false;
+    const { calls } = await mount({
+      "POST /api/v1/operator/schools/s1/support/sign-out": () => (refuse ? json({ error: "That account is disabled.", code: "BAD_REQUEST" }, 422) : json({ ok: true, sessionsEnded: 2 })),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "Sign out everywhere: ZZ Admin" }));
+    expect(screen.getByText(/^Sign ZZ Admin out of every device\?/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/support/sign-out")?.body).toEqual({ userId: "u-admin" }));
+    expect(await screen.findByText("Signed out of 2 sessions")).toBeTruthy();
+    refuse = true;
+    await fireEvent.press(screen.getByRole("button", { name: "Sign out everywhere: ZZ Head" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm" }));
+    expect(await screen.findByText("That account is disabled.")).toBeTruthy();
+  });
+
+  it("changes the plan from the list of plans, the button waiting for a change; the manage door opens the web", async () => {
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    const { calls } = await mount({ "POST /api/v1/operator/schools/s1/plan": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByRole("radio", { name: "Campus (campus)" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Set plan" })).toBeDisabled();
+    await fireEvent.press(screen.getByRole("radio", { name: "No plan" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Set plan" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/plan")?.body).toEqual({ planId: null }));
+    expect(await screen.findByText("Plan set; the school's office has been told")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Manage plans" }));
+    expect(open).toHaveBeenCalledWith(`${API_BASE}/root/plans`);
+    open.mockRestore();
+  });
+
+  it("a school the nightly job has not counted yet says so, and a support read that fails is an alert with a retry", async () => {
+    const { calls } = await mount({ "GET /api/v1/operator/schools/s1/support": () => json({ ...SUPPORT, usage: { ...SUPPORT.usage, counts: null, over: { pupils: false, messages: false, storageMb: false }, computedAt: null } }) });
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByText("Not written yet — the nightly job has not run for this month.")).toBeTruthy();
+    expect(screen.queryByText("Over cap")).toBeNull();
+    expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1/support").length).toBe(1);
   });
 });

@@ -1,6 +1,6 @@
 import "server-only";
 import type { z } from "zod";
-import type { substitutionAssignSchema, substitutionBoardSchema, substitutionClearSchema, substitutionLessonSchema, myCoversSchema, schoolWeekSchema } from "@edulink/contracts";
+import type { substitutionAssignSchema, substitutionBoardSchema, substitutionClearSchema, substitutionLessonSchema, myCoversSchema, schoolWeekSchema, coverAnsweredSchema } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -83,6 +83,9 @@ const SLOT_SELECT = {
   period: { select: { name: true, position: true, startMinute: true, endMinute: true } },
 } as const;
 
+/** A lesson counts as covered when someone is named and has not declined; a declined cover is the office's to reassign. */
+const isCovered = (l: Lesson) => Boolean(l.substitute && !l.substitute.declinedAt);
+
 /** The board for a day: today when none is asked for. */
 export async function substitutionBoard(ctx: ActiveContext, date?: string | null): Promise<Board> {
   const caller = office(ctx);
@@ -101,7 +104,7 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
       take: 500,
     }),
     db.timetableSlot.findMany({ where: { schoolId: caller.schoolId, weekday, class: { archivedAt: null } }, select: SLOT_SELECT }),
-    db.substitution.findMany({ where: { schoolId: caller.schoolId, dateKey }, select: { slotId: true, substituteMembershipId: true, note: true } }),
+    db.substitution.findMany({ where: { schoolId: caller.schoolId, dateKey }, select: { slotId: true, substituteMembershipId: true, note: true, acknowledgedAt: true, declinedAt: true, declineReason: true } }),
   ]);
   const memberById = new Map(members.map((m) => [m.id, m]));
   const coverBySlot = new Map(rows.map((r) => [r.slotId, r]));
@@ -119,7 +122,8 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
   const slotById = new Map(daySlots.map((s) => [s.id, s]));
   for (const r of rows) {
     const slot = slotById.get(r.slotId);
-    if (slot) bump(r.substituteMembershipId, slot.periodId);
+    // A declined cover holds nobody: the person who said no is free for it again, and for anything else that period.
+    if (slot && !r.declinedAt) bump(r.substituteMembershipId, slot.periodId);
   }
   const subjectsBy = new Map(members.map((m) => [m.id, new Set(readJsonArray<string>(m.subjects).map((s) => s.toLowerCase()))]));
 
@@ -157,7 +161,7 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
         absentMembershipId: absentId,
         absentName: nameOf(memberById.get(absentId)!.user),
         absentReason: away.get(absentId)!,
-        substitute: cover && coverer ? { membershipId: cover.substituteMembershipId, name: nameOf(coverer.user), note: cover.note } : null,
+        substitute: cover && coverer ? { membershipId: cover.substituteMembershipId, name: nameOf(coverer.user), note: cover.note, acknowledgedAt: cover.acknowledgedAt?.toISOString() ?? null, declinedAt: cover.declinedAt?.toISOString() ?? null, declineReason: cover.declineReason } : null,
         candidates,
       };
     })
@@ -167,10 +171,10 @@ export async function substitutionBoard(ctx: ActiveContext, date?: string | null
     .filter(([id]) => memberById.has(id))
     .map(([id, reason]) => {
       const mine = lessons.filter((l) => l.absentMembershipId === id);
-      return { membershipId: id, name: nameOf(memberById.get(id)!.user), reason, lessons: mine.length, covered: mine.filter((l) => l.substitute).length };
+      return { membershipId: id, name: nameOf(memberById.get(id)!.user), reason, lessons: mine.length, covered: mine.filter((l) => isCovered(l)).length };
     })
     .sort((a, b) => b.lessons - a.lessons || a.name.localeCompare(b.name));
-  const covered = lessons.filter((l) => l.substitute).length;
+  const covered = lessons.filter((l) => isCovered(l)).length;
   return { dateKey, closed: false, closedName: null, absent, lessons, covered, uncovered: lessons.length - covered };
 }
 
@@ -199,9 +203,10 @@ export async function assignSubstitute(ctx: ActiveContext, input: z.infer<typeof
   if (!sub) throw new AccessError("substitutions.noSuchStaff", "NOT_FOUND");
   if (away.has(sub.id)) throw new AccessError("substitutions.substituteAway");
 
-  const existing = await db.substitution.findUnique({ where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } }, select: { id: true, substituteMembershipId: true, note: true } });
+  const existing = await db.substitution.findUnique({ where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } }, select: { id: true, substituteMembershipId: true, note: true, declinedAt: true } });
   const note = input.note?.trim() || null;
   if (existing && existing.substituteMembershipId === sub.id && (existing.note ?? null) === note) return { changed: false };
+  const samePerson = Boolean(existing && existing.substituteMembershipId === sub.id);
 
   // A clash: their own lesson in that period, or another cover that period that day.
   const [ownClash, coverClash] = await Promise.all([
@@ -214,7 +219,8 @@ export async function assignSubstitute(ctx: ActiveContext, input: z.infer<typeof
   await db.substitution.upsert({
     where: { slotId_dateKey: { slotId: slot.id, dateKey: input.dateKey } },
     create: { schoolId: caller.schoolId, dateKey: input.dateKey, slotId: slot.id, absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id },
-    update: { absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id },
+    // Someone else named: their answer is theirs to give; the same person with a new note keeps the answer they gave.
+    update: { absentMembershipId: slot.teacherMembershipId, substituteMembershipId: sub.id, note, createdByUserId: caller.user.id, ...(samePerson ? {} : { acknowledgedAt: null, declinedAt: null, declineReason: null }) },
   });
   const absent = await db.membership.findUnique({ where: { id: slot.teacherMembershipId }, select: { user: { select: { name: true, preferredName: true } } } });
   const vars = { subject: slot.subject, className: slot.class.name, period: slot.period.name, date: input.dateKey, name: absent ? nameOf(absent.user) : "" };
@@ -257,13 +263,14 @@ export async function myCovers(ctx: ActiveContext, date?: string | null): Promis
   const [rows, away] = await Promise.all([
     db.substitution.findMany({
       where: { schoolId: caller.schoolId, dateKey, substituteMembershipId: caller.membershipId },
-      select: { slotId: true, note: true, absentMembershipId: true, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: SLOT_SELECT } },
+      select: { id: true, slotId: true, note: true, acknowledgedAt: true, declinedAt: true, declineReason: true, absentMembershipId: true, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: SLOT_SELECT } },
     }),
     absentOn(caller, dateKey),
   ]);
   const items = rows
     .filter((r) => away.has(r.absentMembershipId))
     .map((r) => ({
+      id: r.id,
       slotId: r.slotId,
       periodName: r.slot.period.name,
       position: r.slot.period.position,
@@ -275,9 +282,65 @@ export async function myCovers(ctx: ActiveContext, date?: string | null): Promis
       room: r.slot.room,
       absentName: nameOf(r.absent.user),
       note: r.note,
+      acknowledgedAt: r.acknowledgedAt?.toISOString() ?? null,
+      declinedAt: r.declinedAt?.toISOString() ?? null,
+      declineReason: r.declineReason,
     }))
     .sort((a, b) => a.position - b.position);
   return { dateKey, items };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The covering teacher's answer                                               */
+/* -------------------------------------------------------------------------- */
+
+/** The cover row, mine to answer: the school's, and I am the one named on it. Anyone else's is not found. */
+async function myCover(caller: Staff, coverId: string) {
+  const cover = await db.substitution.findFirst({
+    where: { id: coverId, schoolId: caller.schoolId, substituteMembershipId: caller.membershipId },
+    select: { id: true, slotId: true, dateKey: true, acknowledgedAt: true, declinedAt: true, declineReason: true, absent: { select: { user: { select: { name: true, preferredName: true } } } }, substitute: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: { subject: true, class: { select: { name: true } }, period: { select: { name: true } } } } },
+  });
+  if (!cover) throw new AccessError("substitutions.noSuchCover", "NOT_FOUND");
+  return cover;
+}
+
+/**
+ * I have seen the cover and will take it. Saying so twice changes nothing;
+ * saying so after declining takes the decline back (the office is not told
+ * again — the board simply shows the lesson covered).
+ */
+export async function acknowledgeCover(ctx: ActiveContext, coverId: string): Promise<z.infer<typeof coverAnsweredSchema>> {
+  const caller = staff(ctx);
+  const cover = await myCover(caller, coverId);
+  if (cover.acknowledgedAt && !cover.declinedAt) return { changed: false, state: "ACKNOWLEDGED" };
+  await db.substitution.update({ where: { id: cover.id }, data: { acknowledgedAt: new Date(), declinedAt: null, declineReason: null } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.acknowledge", targetType: "Substitution", targetId: cover.id, meta: { slotId: cover.slotId, dateKey: cover.dateKey, afterDecline: Boolean(cover.declinedAt) } });
+  return { changed: true, state: "ACKNOWLEDGED" };
+}
+
+/**
+ * I cannot take the cover, and why. The office and the head are told at once
+ * (event "cover.declined") so the lesson can be given to someone else; the
+ * board shows it uncovered again with the reason beside the name. The same
+ * reason twice changes nothing and tells nobody twice.
+ */
+export async function declineCover(ctx: ActiveContext, coverId: string, reason: string): Promise<z.infer<typeof coverAnsweredSchema>> {
+  const caller = staff(ctx);
+  const cover = await myCover(caller, coverId);
+  const why = reason.trim().slice(0, 300);
+  if (cover.declinedAt && cover.declineReason === why) return { changed: false, state: "DECLINED" };
+  await db.substitution.update({ where: { id: cover.id }, data: { declinedAt: new Date(), declineReason: why, acknowledgedAt: null } });
+  const office = await db.membership.findMany({
+    where: { schoolId: caller.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null, NOT: { id: caller.membershipId } },
+    select: { userId: true },
+    distinct: ["userId"],
+    take: 50,
+  });
+  const vars = { subject: cover.slot.subject, className: cover.slot.class.name, period: cover.slot.period.name ?? "", date: cover.dateKey, name: nameOf(cover.substitute.user), reason: why };
+  const url = `/admin/substitutions?date=${cover.dateKey}`;
+  await Promise.all(office.map((m) => notify({ userId: m.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverDeclined", titleVars: vars, bodyKey: "notifTitle.coverDeclinedBody", bodyVars: vars, url, meta: { event: "cover.declined", coverId: cover.id, slotId: cover.slotId, dateKey: cover.dateKey } })));
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.decline", targetType: "Substitution", targetId: cover.id, meta: { slotId: cover.slotId, dateKey: cover.dateKey, told: office.length } });
+  return { changed: true, state: "DECLINED" };
 }
 
 /* -------------------------------------------------------------------------- */

@@ -99,6 +99,14 @@ const SHARED_WITH_ENGLISH = new Set([
    */
   "settings.websitePlaceholder",
   /**
+   * p50, p95 and "ms" are the statistician's and the engineer's own marks —
+   * a percentile and milliseconds — printed in Latin letters on every
+   * monitoring page in every language; the labels beside them are translated.
+   */
+  "root.metricsP50",
+  "root.metricsP95",
+  "root.metricsMs",
+  /**
    * AN IANA TIME ZONE IDENTIFIER, which is an ASCII key in a global database
    * and not a word. `Asia/Kolkata` is what the field must contain to work — the
    * expert types their real zone over it, and every zone in the list is spelt

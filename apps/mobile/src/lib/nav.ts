@@ -78,6 +78,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "substitutions.myCoversTitle", icon: "arrowsClockwise", group: "running", screen: "/(app)/my-covers" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "running", screen: "/(app)/incidents" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
+    // What the head has shown me of my observations, targets and appraisals (the web's /teacher/appraisals).
+    { labelKey: "appraisal.myTitle", icon: "clipboard", group: "running", screen: "/(app)/my-appraisals" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts" },
@@ -140,6 +142,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
     { labelKey: "nav.staffAttendance", icon: "checks", group: "running", screen: "/(app)/staff-attendance" },
     { labelKey: "nav.substitutions", icon: "arrowsClockwise", group: "running", screen: "/(app)/substitutions" },
+    // The school across terms and years: the office reads what the head reads (the web's /principal/trends).
+    { labelKey: "trends.title", icon: "chartLine", group: "running", screen: "/(app)/trends" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
@@ -178,6 +182,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
     // The head's own decisions as sentences, read from the audit log (the web's /principal/decisions).
     { labelKey: "decisions.title", icon: "clipboard", group: "running", screen: "/(app)/decisions" },
+    // The school across terms and years, recomputed on every read (the web's /principal/trends).
+    { labelKey: "trends.title", icon: "chartLine", group: "running", screen: "/(app)/trends" },
     { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.messaging", icon: "chats", group: "running", screen: "/(app)/messaging" },
     { labelKey: "nav.circulars", icon: "megaphone", group: "running", screen: "/(app)/circulars" },
@@ -264,6 +270,7 @@ export const HIDDEN_SCREENS = [
   "post",
   "operator-school",
   "operator-new-school",
+  "operator-metrics",
   "fees",
   "fees-dues",
   "fee-pupil",
@@ -311,6 +318,11 @@ export const HIDDEN_SCREENS = [
   "report-card-rules",
   "contribution-queue",
   "decisions",
+  "class-analytics",
+  "staff-appraisal",
+  "my-appraisals",
+  "trends",
+  "moderation",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

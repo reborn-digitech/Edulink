@@ -1548,6 +1548,41 @@ CREATE POLICY "HealthCardRead_tenant_isolation" ON "HealthCardRead"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- UsageSample
+ALTER TABLE "UsageSample" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "UsageSample" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "UsageSample_tenant_isolation" ON "UsageSample";
+DROP POLICY IF EXISTS "UsageSample_readable" ON "UsageSample";
+CREATE POLICY "UsageSample_tenant_isolation" ON "UsageSample"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "UsageSample_readable" ON "UsageSample"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR current_setting('app.is_superuser', true) = '1'
+        );
+
+-- StaffAppraisal
+ALTER TABLE "StaffAppraisal" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StaffAppraisal" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StaffAppraisal_tenant_isolation" ON "StaffAppraisal";
+DROP POLICY IF EXISTS "StaffAppraisal_readable" ON "StaffAppraisal";
+CREATE POLICY "StaffAppraisal_tenant_isolation" ON "StaffAppraisal"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- LessonPlanTemplate
+ALTER TABLE "LessonPlanTemplate" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LessonPlanTemplate" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "LessonPlanTemplate_tenant_isolation" ON "LessonPlanTemplate";
+DROP POLICY IF EXISTS "LessonPlanTemplate_readable" ON "LessonPlanTemplate";
+CREATE POLICY "LessonPlanTemplate_tenant_isolation" ON "LessonPlanTemplate"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
@@ -1618,6 +1653,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   Guardianship
 --   JobRun
 --   OutboundEmail
+--   Plan
 --   PushSubscription
 --   QuestionContribution
 --   QuizQuestion

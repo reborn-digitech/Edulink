@@ -5,6 +5,7 @@ import {
   ArrowLeftIcon,
   BooksIcon,
   CalendarCheckIcon,
+  ChartBarIcon,
   ChatCircleDotsIcon,
   FileTextIcon,
   ClipboardTextIcon,
@@ -239,6 +240,9 @@ export default async function ClassDetailPage({
         </Button>
         <Button asChild variant="secondary" icon={<BooksIcon weight="bold" />}>
           <Link href={`/teacher/classes/${klass.id}/syllabus`}>{t("syllabus.openSyllabus")}</Link>
+        </Button>
+        <Button asChild variant="secondary" icon={<ChartBarIcon weight="bold" />}>
+          <Link href={`/teacher/classes/${klass.id}/analytics`}>{t("classAnalytics.open")}</Link>
         </Button>
       </div>
 

@@ -101,6 +101,10 @@ const SENT_BY_SERVER = [
   { screen: "src/screens/staff/invites.tsx", properties: ["reasonKey"], written: ["app/(app)/admin/invites/actions.ts"] },
   // A pupil not admitted, and a guardian not invited, whose reason is inviteParent's refusal or matchPen's.
   { screen: "src/screens/staff/intake.tsx", properties: ["reasonKey", "guardianReasonKey"], written: ["lib/intake.ts", "lib/pen.ts", "lib/parent-link.ts"] },
+  // A timetable sheet's row whose teacher could not be honoured, and its rows that could not be placed (reasonKey, through shared.tsx): previewTimetableImport.
+  { screen: "src/screens/staff/timetable-editor.tsx", properties: ["teacherIssueKey"], written: ["lib/timetable.ts"] },
+  // A bank statement line the office must key by hand, with why: previewBankImport.
+  { screen: "src/screens/staff/fees.tsx", properties: ["problemKey"], written: ["lib/fees-bank-import.ts"] },
 ];
 
 /** The places the phone's source translates a sent key, as "screen property": what SENT_BY_SERVER has to cover. */

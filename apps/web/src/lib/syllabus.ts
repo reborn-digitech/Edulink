@@ -1,11 +1,12 @@
 import "server-only";
 import type { z } from "zod";
-import type { lessonPlanSaveSchema, officeSyllabusSaveSchema, officeSyllabusSchema, staffSyllabusSchema, syllabusCoverageSchema } from "@edulink/contracts";
+import type { lessonPlanSaveSchema, officeSyllabusSaveSchema, officeSyllabusSchema, staffSyllabusSchema, syllabusCoverageSchema, planTemplateApplySchema, planTemplateSaveSchema, planTemplatesSchema } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertClassAccess } from "./tenancy";
 import { audit } from "./audit";
 import { currentAcademicYear } from "./academic-year";
 import { todayKey } from "./dates";
+import { readJson, writeJson } from "./json";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -218,4 +219,83 @@ async function nudgeUnit(caller: Staff, classId: string, unitId: string): Promis
   const current = await db.syllabusProgress.findUnique({ where: { classId_unitId: { classId, unitId } }, select: { status: true } });
   if (current && current.status !== "NOT_STARTED") return;
   await db.syllabusProgress.upsert({ where: { classId_unitId: { classId, unitId } }, create: { schoolId: caller.schoolId, classId, unitId, status: "IN_PROGRESS", byMembershipId: caller.membershipId }, update: { status: "IN_PROGRESS", byMembershipId: caller.membershipId } });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Lesson plan templates                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A plan kept to use again. A template is the WORDS of a lesson — topic,
+ * notes, homework — with the subject and grade it was written for, shared
+ * with every teacher of the school. Applying one copies the words into a
+ * new plan for a class the caller teaches; the template is never linked, so
+ * a plan applied last term stands as it was taught even if the template is
+ * rewritten or removed. The author or the office may remove one.
+ */
+type TemplateBody = { topic: string; notes: string; homework: string };
+const EMPTY_BODY: TemplateBody = { topic: "", notes: "", homework: "" };
+
+export async function listPlanTemplates(ctx: ActiveContext, query: { subject?: string } = {}): Promise<z.infer<typeof planTemplatesSchema>> {
+  const caller = staff(ctx);
+  const subject = query.subject ? norm(query.subject) : null;
+  const rows = await db.lessonPlanTemplate.findMany({
+    where: { schoolId: caller.schoolId, ...(subject ? { subject } : {}) },
+    orderBy: [{ createdAt: "desc" }],
+    take: 200,
+  });
+  const authors = await db.user.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.authorUserId))] } }, select: { id: true, name: true, preferredName: true } });
+  const nameBy = new Map(authors.map((u) => [u.id, u.preferredName ?? u.name]));
+  const items = rows.map((r) => {
+    const body = readJson<TemplateBody>(r.body, EMPTY_BODY);
+    return { id: r.id, subject: r.subject, grade: r.grade, title: r.title, topic: body.topic ?? "", notes: body.notes ?? "", homework: body.homework ?? "", authorName: nameBy.get(r.authorUserId) ?? "", own: r.authorUserId === caller.user.id, createdAt: r.createdAt.toISOString() };
+  });
+  // Mine first, newest first inside each half.
+  items.sort((a, b) => Number(b.own) - Number(a.own) || b.createdAt.localeCompare(a.createdAt));
+  return { items };
+}
+
+/** Keep a lesson of a class I teach as a template; the title is the plan's topic unless another is given. */
+export async function savePlanTemplate(ctx: ActiveContext, input: z.infer<typeof planTemplateSaveSchema>): Promise<{ id: string }> {
+  const caller = staff(ctx);
+  const lesson = await db.lessonPlan.findFirst({ where: { id: input.lessonId, schoolId: caller.schoolId }, select: { id: true, classId: true, subject: true, topic: true, notes: true, homework: true, class: { select: { gradeLevel: true } } } });
+  if (!lesson) throw new AccessError("syllabus.refuseUnknownLesson", "NOT_FOUND");
+  await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, lesson.classId);
+  const template = await db.lessonPlanTemplate.create({
+    data: { schoolId: caller.schoolId, authorUserId: caller.user.id, subject: lesson.subject, grade: lesson.class.gradeLevel, title: norm(input.title ?? lesson.topic), body: writeJson({ topic: lesson.topic, notes: lesson.notes, homework: lesson.homework }) },
+    select: { id: true },
+  });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "syllabus.template.save", targetType: "LessonPlanTemplate", targetId: template.id, meta: { lessonId: lesson.id, subject: lesson.subject } });
+  return template;
+}
+
+/** Copy a template into a new PLANNED lesson for a class I teach, under a chapter of its grade when one is named, on the day given or today. */
+export async function applyPlanTemplate(ctx: ActiveContext, templateId: string, input: z.infer<typeof planTemplateApplySchema>): Promise<{ lessonId: string }> {
+  const caller = staff(ctx);
+  const template = await db.lessonPlanTemplate.findFirst({ where: { id: templateId, schoolId: caller.schoolId } });
+  if (!template) throw new AccessError("syllabus.refuseUnknownTemplate", "NOT_FOUND");
+  const klass = await assertClassAccess({ schoolId: caller.schoolId, membershipId: caller.membershipId, role: caller.role }, input.classId, { write: true });
+  if (input.unitId) {
+    const unit = await db.syllabusUnit.findFirst({ where: { id: input.unitId, schoolId: caller.schoolId, gradeLevel: klass.gradeLevel ?? "" }, select: { id: true } });
+    if (!unit) throw new AccessError("syllabus.refuseUnknownUnit", "NOT_FOUND");
+  }
+  const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
+  const body = readJson<TemplateBody>(template.body, EMPTY_BODY);
+  const lesson = await db.lessonPlan.create({
+    data: { schoolId: caller.schoolId, classId: klass.id, teacherMembershipId: caller.membershipId, subject: template.subject, unitId: input.unitId ?? null, dateKey: input.dateKey ?? todayKey(school.timezone), topic: norm(body.topic || template.title), notes: body.notes ?? "", homework: body.homework ?? "", status: "PLANNED" },
+    select: { id: true },
+  });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "syllabus.template.apply", targetType: "Class", targetId: klass.id, meta: { templateId: template.id, lessonId: lesson.id } });
+  return { lessonId: lesson.id };
+}
+
+/** The author, or the office, takes a template out of the list; plans already copied from it stand. Nothing there is a no-op. */
+export async function deletePlanTemplate(ctx: ActiveContext, templateId: string): Promise<{ changed: boolean }> {
+  const caller = staff(ctx);
+  const template = await db.lessonPlanTemplate.findFirst({ where: { id: templateId, schoolId: caller.schoolId }, select: { id: true, authorUserId: true } });
+  if (!template) return { changed: false };
+  if (template.authorUserId !== caller.user.id && !OFFICE.includes(caller.role)) throw new AccessError("syllabus.refuseNotYourTemplate");
+  await db.lessonPlanTemplate.delete({ where: { id: template.id } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "syllabus.template.delete", targetType: "LessonPlanTemplate", targetId: template.id });
+  return { changed: true };
 }

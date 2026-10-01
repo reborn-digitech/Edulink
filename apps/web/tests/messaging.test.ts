@@ -124,7 +124,7 @@ describe("templates", () => {
 describe("routing", () => {
   it("off by default at a new school; the office switches channels and events; the head may not", async () => {
     expect(transportStatus()).toEqual({ sms: "devbox", whatsapp: "devbox", problems: [] });
-    expect(await messagingSettings(schoolId)).toEqual({ smsEnabled: false, whatsappEnabled: false, monthlyCap: 2000, events: { absence: true, feeReminders: true, feeReceipts: true, circulars: true, incidents: true } });
+    expect(await messagingSettings(schoolId)).toEqual({ smsEnabled: false, whatsappEnabled: false, monthlyCap: 2000, events: { absence: true, feeReminders: true, feeReceipts: true, circulars: true, incidents: true }, textOfficePhones: false });
     const off = await deliverToUser({ schoolId, userId: parentA, templateKey: "absence", vars: { child: "A" }, purpose: "absence" });
     expect(off).toMatchObject({ status: "SKIPPED", skipReason: "channel-off" });
     await expect(saveMessagingSettings(principal(), { smsEnabled: true })).rejects.toThrow("messaging.refuseOffice");
@@ -321,5 +321,60 @@ describe("the provider signature", () => {
     expect(twilioSignatureValid("other", url, params, sig)).toBe(false);
     expect(twilioSignatureValid("tok", url, { ...params, MessageStatus: "failed" }, sig)).toBe(false);
     expect(twilioSignatureValid("tok", url, params, null)).toBe(false);
+  });
+});
+
+/**
+ * The number the office typed. A guardian with no proved number is "no-phone"
+ * until the pupil's record carries a guardian phone; then the row says the
+ * number is there but unproved, until the office switches textOfficePhones
+ * on — and then an absence notice, a fee reminder or a circular goes to it,
+ * audited "office-entered", while a receipt, an incident and the test still
+ * do not. Off again, the sends stop.
+ */
+describe("texts to the office-entered guardian phone", () => {
+  const officeNumber = `+9198709${String(STAMP).slice(-6)}`;
+  const send = (templateKey: "absence" | "feeDueSoon" | "circular" | "feeReceived" | "incident", vars: Record<string, string>, purpose: string) => deliverToUser({ schoolId, userId: parentNoPhone, templateKey, vars, purpose });
+
+  it("switch off: a record's number is reported as unproved, never texted", async () => {
+    await db.pupilRecord.create({ data: { schoolId, studentMembershipId: pupilC, guardianPhone: officeNumber } });
+    expect(await messagingSettings(schoolId)).toMatchObject({ textOfficePhones: false });
+    const out = await send("absence", { child: "C" }, "absence");
+    expect(out).toMatchObject({ status: "SKIPPED", skipReason: "unverifiedNumber" });
+    const row = await db.outboundMessage.findUniqueOrThrow({ where: { id: out.id } });
+    expect(row.to).toBe(officeNumber);
+    expect(await db.auditLog.count({ where: { schoolId, action: "messaging.officePhone" } })).toBe(0);
+  });
+
+  it("switch on: the three events reach the record's number and are audited office-entered; a receipt, an incident and the test do not", async () => {
+    await saveMessagingSettings(admin(), { textOfficePhones: true, events: { feeReceipts: true } });
+    expect(await messagingSettings(schoolId)).toMatchObject({ textOfficePhones: true });
+    for (const [templateKey, vars, purpose] of [
+      ["absence", { child: "C" }, "absence"],
+      ["feeDueSoon", { child: "C", amount: "₹1", date: "d" }, "fees:dueSoon"],
+      ["circular", { notice: "N" }, "circular"],
+    ] as const) {
+      const out = await send(templateKey, { ...vars }, purpose);
+      expect(out, templateKey).toMatchObject({ status: "SENT", skipReason: null });
+      const row = await db.outboundMessage.findUniqueOrThrow({ where: { id: out.id } });
+      expect(row.to).toBe(officeNumber);
+      expect(row.userId).toBe(parentNoPhone);
+      const entry = await db.auditLog.findFirst({ where: { schoolId, action: "messaging.officePhone", targetId: out.id } });
+      expect(entry?.meta).toContain("office-entered");
+    }
+    expect(await send("feeReceived", { child: "C", amount: "₹1", serial: "R/1" }, "fees:received")).toMatchObject({ status: "SKIPPED", skipReason: "unverifiedNumber" });
+    expect(await send("incident", { child: "C", summary: "S" }, "incident")).toMatchObject({ status: "SKIPPED", skipReason: "unverifiedNumber" });
+    // A proved number is still preferred: parent A's own phone, not the record's.
+    const own = await deliverToUser({ schoolId, userId: parentA, templateKey: "circular", vars: { notice: "N" }, purpose: "circular", force: true });
+    expect((await db.outboundMessage.findUniqueOrThrow({ where: { id: own.id } })).to).not.toBe(officeNumber);
+    expect(await db.auditLog.count({ where: { schoolId, action: "messaging.officePhone" } })).toBe(3);
+  });
+
+  it("switch off again: back to unproved; and with no number on the record at all, no-phone", async () => {
+    await saveMessagingSettings(admin(), { textOfficePhones: false });
+    expect(await send("absence", { child: "C" }, "absence")).toMatchObject({ status: "SKIPPED", skipReason: "unverifiedNumber" });
+    await db.pupilRecord.updateMany({ where: { schoolId, studentMembershipId: pupilC }, data: { guardianPhone: null } });
+    expect(await send("absence", { child: "C" }, "absence")).toMatchObject({ status: "SKIPPED", skipReason: "no-phone" });
+    expect(await db.auditLog.count({ where: { schoolId, action: "messaging.officePhone" } })).toBe(3);
   });
 });

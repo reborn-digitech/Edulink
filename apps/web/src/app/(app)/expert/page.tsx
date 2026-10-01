@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BriefcaseIcon, ChatCircleDotsIcon } from "@phosphor-icons/react/ssr";
+import { BriefcaseIcon, ChatCircleDotsIcon, GiftIcon } from "@phosphor-icons/react/ssr";
 import { requireExpert } from "@/lib/tenancy";
 import { listBookings } from "@/lib/experts";
-import { Card, CardBody } from "@/components/ui/card";
+import { freeDutyRemaining } from "@/lib/gig-sessions";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
@@ -20,11 +21,36 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ExpertHome() {
   const t = await getT();
   const ctx = await requireExpert();
-  const bookings = await listBookings(ctx);
+  const [bookings, duty] = await Promise.all([listBookings(ctx), freeDutyRemaining(ctx.user.id)]);
+  const dutyLines = [
+    duty.oneToOnes > 0 ? (duty.stage.oneToOnes === "START" ? t("gigs.freeDutyStartOneToOnes", { count: duty.oneToOnes, start: duty.asked.startOneToOnes }) : t("gigs.freeDutyMonthOneToOnes", { count: duty.oneToOnes })) : null,
+    duty.workshops > 0 ? (duty.stage.workshops === "START" ? t("gigs.freeDutyStartWorkshops", { count: duty.workshops, start: duty.asked.startWorkshops }) : t("gigs.freeDutyQuarterWorkshops", { count: duty.workshops })) : null,
+  ].filter((line): line is string => line !== null);
 
   return (
     <div className="space-y-5">
       <PageHeader title={t("expert.bookings")} description={t("expert.bookingsBody")} />
+
+      {/* Decision 0004's free duty, from the one function that gates a price (freeDutyRemaining). */}
+      <Card data-testid="free-duty">
+        <CardHeader icon={<GiftIcon weight="duotone" className="size-5" />} title={t("gigs.freeDutyTitle")} description={t("gigs.freeDutyBody")} />
+        <CardBody>
+          {dutyLines.length === 0 ? (
+            <p className="text-sm font-medium text-ok">{t("gigs.freeDutyDone")}</p>
+          ) : (
+            <ul className="space-y-1 text-sm text-fg">
+              {dutyLines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          )}
+          <p className="mt-2 text-xs text-fg-muted">
+            <Link href="/expert/sessions" className="font-medium text-accent hover:underline">
+              {t("gigs.providerTitle")}
+            </Link>
+          </p>
+        </CardBody>
+      </Card>
 
       {bookings.length === 0 ? (
         <EmptyState

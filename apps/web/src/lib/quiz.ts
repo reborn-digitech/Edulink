@@ -590,7 +590,7 @@ export async function submitAnswer(
 
   const attempt = await db.quizAttempt.findFirst({
     where: { id: attemptId, schoolId, studentMembershipId: membershipId },
-    select: { id: true, topicId: true, revealedAny: true, finishedAt: true },
+    select: { id: true, topicId: true, revealedAny: true, finishedAt: true, startedAt: true },
   });
   if (!attempt) throw new AccessError("access.attemptNotFound", "NOT_FOUND");
 
@@ -609,8 +609,17 @@ export async function submitAnswer(
 
   const existing = await db.quizResponse.findUnique({
     where: { attemptId_questionId: { attemptId, questionId } },
-    select: { id: true, correct: true, revealedSolution: true },
+    select: { id: true, correct: true, revealedSolution: true, chosenIndex: true },
   });
+
+  // THE MOMENT OF THE ANSWER, recorded once. The first time a question is
+  // answered in a sitting (a fresh row, or a reveal-only row getting its
+  // answer) the row takes the child's grade and how long the answer took —
+  // facts of that moment, which the nightly bank:stats job adds up per
+  // question and per grade for the content team (QuestionStat). A re-answer
+  // of the same question keeps both: the time was spent once.
+  const firstAnswer = !existing || existing.chosenIndex === null;
+  const moment = firstAnswer ? await answerMoment(schoolId, membershipId, attempt.id, attempt.startedAt, questionId) : null;
 
   const mastery = await getOrCreateMastery(schoolId, membershipId, attempt.topicId);
 
@@ -681,8 +690,10 @@ export async function submitAnswer(
       correct,
       servedDifficulty: question.difficulty,
       revealedSolution: false,
+      gradeLevel: moment?.gradeLevel ?? null,
+      seconds: moment?.seconds ?? null,
     },
-    update: { chosenIndex: inRange ? chosenIndex : null, correct },
+    update: { chosenIndex: inRange ? chosenIndex : null, correct, ...(moment ? { gradeLevel: moment.gradeLevel, seconds: moment.seconds } : {}) },
   });
 
   const finish = await finishIfComplete(schoolId, membershipId, attempt.id, attempt.topicId);
@@ -767,6 +778,43 @@ export async function revealSolution(
     answerIndex: question.answerIndex,
     badgeForfeited: !attempt.revealedAny,
   };
+}
+
+/** A walk-away is not thinking time: an answer is counted as taking at most this long. */
+export const ANSWER_SECONDS_CAP = 600;
+
+/**
+ * What the row records about the moment of a first answer: the child's grade
+ * (1–12 from their form group's gradeLevel, the lowest when they sit in
+ * several, as practice-insights reads it; null when nothing names one) and
+ * the seconds since the previous answer in the sitting, or since the sitting
+ * began when this is its first, capped at ANSWER_SECONDS_CAP.
+ */
+async function answerMoment(
+  schoolId: string,
+  membershipId: string,
+  attemptId: string,
+  startedAt: Date,
+  questionId: string,
+  now = new Date(),
+): Promise<{ gradeLevel: number | null; seconds: number }> {
+  const [enrolments, previous] = await Promise.all([
+    db.enrollment.findMany({
+      where: { schoolId, studentMembershipId: membershipId, status: "ACTIVE" },
+      select: { class: { select: { gradeLevel: true } } },
+    }),
+    db.quizResponse.findFirst({
+      where: { attemptId, questionId: { not: questionId } },
+      orderBy: { answeredAt: "desc" },
+      select: { answeredAt: true },
+    }),
+  ]);
+  const grades = enrolments
+    .map((e) => Number.parseInt(e.class.gradeLevel ?? "", 10))
+    .filter((n) => Number.isInteger(n) && n >= 1 && n <= 12);
+  const since = previous?.answeredAt ?? startedAt;
+  const seconds = Math.max(0, Math.min(ANSWER_SECONDS_CAP, Math.round((now.getTime() - since.getTime()) / 1000)));
+  return { gradeLevel: grades.length ? Math.min(...grades) : null, seconds };
 }
 
 /* -------------------------------------------------------------------------- */

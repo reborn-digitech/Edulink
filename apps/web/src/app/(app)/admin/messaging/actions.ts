@@ -11,7 +11,7 @@ function refresh(broadcastId?: string) {
   if (broadcastId) revalidatePath(`/admin/messaging/${broadcastId}`);
 }
 
-export async function saveMessagingSettingsAction(input: { smsEnabled: boolean; whatsappEnabled: boolean; monthlyCap: number; events: Record<MessageEvent, boolean> }): Promise<ActionResult> {
+export async function saveMessagingSettingsAction(input: { smsEnabled: boolean; whatsappEnabled: boolean; monthlyCap: number; events: Record<MessageEvent, boolean>; textOfficePhones?: boolean }): Promise<ActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN");
     await saveMessagingSettings(ctx, input);

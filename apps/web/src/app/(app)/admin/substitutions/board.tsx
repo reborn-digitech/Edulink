@@ -35,7 +35,8 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [open, setOpen] = useState(lesson.substitute === null);
+  // A declined cover opens the picker at once: the lesson is the office's to give to someone else.
+  const [open, setOpen] = useState(lesson.substitute === null || Boolean(lesson.substitute.declinedAt));
   const [who, setWho] = useState(lesson.substitute?.membershipId ?? lesson.candidates[0]?.membershipId ?? "");
   const [note, setNote] = useState(lesson.substitute?.note ?? "");
   const [error, setError] = useState<string | null>(null);
@@ -110,10 +111,24 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
         <span className="flex min-w-0 shrink-0 flex-wrap items-center gap-2">
           {lesson.substitute ? (
             <>
-              <Badge tone="ok" size="md" className="max-w-full">
+              <Badge tone={lesson.substitute.declinedAt ? "danger" : "ok"} size="md" className="max-w-full">
                 <ArrowsLeftRightIcon weight="bold" className="size-3.5 shrink-0" aria-hidden="true" />
                 <span className="truncate">{lesson.substitute.name}</span>
               </Badge>
+              {/* The covering teacher's answer: taken, declined (the office reassigns), or nothing yet. */}
+              {lesson.substitute.declinedAt ? (
+                <Badge tone="danger" size="sm">
+                  {t("covers.stateDeclined")}
+                </Badge>
+              ) : lesson.substitute.acknowledgedAt ? (
+                <Badge tone="ok" size="sm">
+                  {t("covers.stateTaken")}
+                </Badge>
+              ) : (
+                <Badge tone="neutral" size="sm">
+                  {t("covers.stateWaiting")}
+                </Badge>
+              )}
               {!open && (
                 <Button type="button" variant="ghost" size="sm" disabled={pending} onClick={() => setOpen(true)} icon={<PencilSimpleIcon weight="bold" />}>
                   {t("substitutions.change")}
@@ -132,6 +147,9 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
       </div>
 
       {lesson.substitute?.note && !open && <p className="text-xs text-fg-muted">{t("substitutions.note")}: {lesson.substitute.note}</p>}
+      {lesson.substitute?.declinedAt && !open && (
+        <p className="text-xs font-medium text-danger">{t("covers.declinedBecause", { name: lesson.substitute.name, reason: lesson.substitute.declineReason ?? "" })}</p>
+      )}
 
       {error && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">

@@ -29,7 +29,10 @@ function model(name: string): string {
 describe("invariant 1 — money moves parent → school, never through a platform account", () => {
   it("the gateway account is one per SCHOOL and there is no platform-level account anywhere", () => {
     expect(model("FeeGatewayAccount")).toMatch(/schoolId\s+String\s+@unique/);
-    expect(SCHEMA).not.toMatch(/model (Platform|Wallet|Escrow|Nodal|Settlement|Payout)\w*/);
+    // "Platform" alone would also catch PlatformTakedown (the content team's
+    // moderation record, 2026-10-01), which holds no money; the money words
+    // after it are what this guards.
+    expect(SCHEMA).not.toMatch(/model (Platform(Account|Wallet|Gateway|Ledger|Balance)|Wallet|Escrow|Nodal|Settlement|Payout)\w*/);
     // No environment variable names a platform gateway account.
     const env = read("src/lib/env.ts");
     expect(env).not.toMatch(/RAZORPAY_KEY|FEES_GATEWAY_KEY|FEES_GATEWAY_SECRET|PLATFORM_KEY/);

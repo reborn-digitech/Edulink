@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import { expertBookingsSchema, expertProfileSchema } from "@edulink/contracts";
+import { expertBookingsSchema, expertFreeDutySchema, expertProfileSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
@@ -36,6 +36,17 @@ export function ExpertHome() {
     queryKey: ["expert", "profile"],
     queryFn: async () => expertProfileSchema.parse(unwrap(await api().get("/api/v1/shared/expert/profile"))),
   });
+  // Decision 0004's free duty, from the one function that gates a price (the web's freeDutyRemaining).
+  const duty = useQuery({
+    queryKey: ["expert", "free-duty"],
+    queryFn: async () => expertFreeDutySchema.parse(unwrap(await api().get("/api/v1/expert/free-duty"))),
+  });
+  const dutyLines = duty.data
+    ? [
+        duty.data.oneToOnes > 0 ? (duty.data.stage.oneToOnes === "START" ? t("gigs.freeDutyStartOneToOnes", { count: duty.data.oneToOnes, start: duty.data.asked.startOneToOnes }) : t("gigs.freeDutyMonthOneToOnes", { count: duty.data.oneToOnes })) : null,
+        duty.data.workshops > 0 ? (duty.data.stage.workshops === "START" ? t("gigs.freeDutyStartWorkshops", { count: duty.data.workshops, start: duty.data.asked.startWorkshops }) : t("gigs.freeDutyQuarterWorkshops", { count: duty.data.workshops })) : null,
+      ].filter((line): line is string => line !== null)
+    : [];
   const d = query.data;
   // "Coming up" is judged against the moment the screen opened; a pull-to-refresh keeps the same line.
   const [now] = useState(() => Date.now());
@@ -71,6 +82,25 @@ export function ExpertHome() {
           </Text>
           <Button label={t("nav.profile")} variant="secondary" onPress={() => router.push("/(app)/profile" as never)} />
         </Note>
+      ) : null}
+      {duty.data ? (
+        <Card title={t("gigs.freeDutyTitle")}>
+          <Text variant="xs" tone="subtle">
+            {t("gigs.freeDutyBody")}
+          </Text>
+          {dutyLines.length === 0 ? (
+            <Text variant="sm" tone="ok" bold>
+              {t("gigs.freeDutyDone")}
+            </Text>
+          ) : (
+            dutyLines.map((line) => (
+              <Text key={line} variant="sm">
+                {line}
+              </Text>
+            ))
+          )}
+          <Button label={t("gigs.providerTitle")} variant="secondary" onPress={() => router.push("/(app)/sessions" as never)} />
+        </Card>
       ) : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}

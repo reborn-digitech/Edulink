@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { CoverAnswer } from "./cover-answer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -98,7 +99,7 @@ export default async function TeacherHome() {
       <CardBody>
         <ul className="divide-y divide-border">
           {covers.map((cover) => (
-            <li key={cover.slotId} className="flex items-center gap-3 py-2.5">
+            <li key={cover.slotId} className="flex flex-wrap items-center gap-3 py-2.5 sm:flex-nowrap">
               <span className="w-28 shrink-0">
                 <span className="block text-sm font-medium text-fg">{cover.periodName}</span>
                 <span className="block text-xs tabular-nums text-fg-muted">
@@ -115,6 +116,7 @@ export default async function TeacherHome() {
                   {cover.note ? ` · ${cover.note}` : ""}
                 </span>
               </span>
+              <CoverAnswer coverId={cover.id} acknowledgedAt={cover.acknowledgedAt} declinedAt={cover.declinedAt} declineReason={cover.declineReason} />
             </li>
           ))}
         </ul>

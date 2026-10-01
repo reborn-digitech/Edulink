@@ -2,9 +2,9 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { operatorSchoolDetailSchema, type OperatorInviteAdminBody, type OperatorSchoolDetail, type OperatorSchoolUpdateBody } from "@edulink/contracts";
+import { operatorPlansSchema, operatorSchoolDetailSchema, operatorSchoolSupportSchema, type OperatorInviteAdminBody, type OperatorSchoolDetail, type OperatorSchoolSupport, type OperatorSchoolUpdateBody } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -188,6 +188,12 @@ export function OperatorSchool() {
     enabled: Boolean(schoolId),
     queryFn: async () => operatorSchoolDetailSchema.parse(unwrap(await api().get(`/api/v1/operator/schools/${schoolId}`))),
   });
+  /** The school's office, its plan and this month's usage: a second read, so the page above is not held up by it. */
+  const support = useQuery({
+    queryKey: ["operator", "school", schoolId, "support"],
+    enabled: Boolean(schoolId) && Boolean(query.data) && !query.data?.school.removedAt,
+    queryFn: async () => operatorSchoolSupportSchema.parse(unwrap(await api().get(`/api/v1/operator/schools/${schoolId}/support`))),
+  });
   /** A write here changes this page, the console's list and counts, and the server log. */
   const changed = () => {
     void qc.invalidateQueries({ queryKey: ["operator", "school", schoolId] });
@@ -223,6 +229,14 @@ export function OperatorSchool() {
           <>
             <Verification schoolId={schoolId} verifiedAt={school.verifiedAt} onDone={changed} />
             <Invites schoolId={schoolId} invites={d.invites} onChanged={changed} />
+            {support.isError ? <Failed message={support.error.message} onRetry={() => void support.refetch()} /> : null}
+            {support.data ? (
+              <>
+                <Support schoolId={schoolId} data={support.data} pending={d.invites.filter((i) => i.status === "PENDING")} onDone={changed} />
+                <Plan schoolId={schoolId} data={support.data} onDone={changed} />
+                <Usage usage={support.data.usage} />
+              </>
+            ) : null}
             <Card title={t("root.details")}>
               <Text variant="xs" tone="muted">
                 {t("root.detailsDescription")}
@@ -504,6 +518,181 @@ function Restore({ schoolId, onDone }: { schoolId: string; onDone: () => void })
         </Note>
       ) : (
         <Button label={t("root.restoreCta")} onPress={() => setConfirming(true)} />
+      )}
+    </Card>
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Help for the office, the plan, and this month's usage (2026-10-01)         */
+/* ------------------------------------------------------------------------- */
+
+/**
+ * The web's support card: a pending invitation sent again, an administrator
+ * emailed a one-time sign-in link, an administrator signed out of every
+ * device — each behind a confirm, each aimed at a person the school already
+ * made its admin, and never a password. The office is told by the server.
+ */
+function Support({ schoolId, data, pending, onDone }: { schoolId: string; data: OperatorSchoolSupport; pending: OperatorSchoolDetail["invites"]; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const toast = useToast();
+  const [confirming, setConfirming] = useState<{ kind: "link" | "out"; userId: string; name: string } | null>(null);
+  const resend = useMutation({
+    mutationFn: (inviteId: string) => send(api().post(`/api/v1/operator/schools/${schoolId}/support/resend-invite`, { inviteId }), t("root.didNotWork")),
+    onSuccess: () => {
+      toast.show(t("root.supportResendDone"));
+      onDone();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const link = useMutation({
+    mutationFn: (userId: string) => send(api().post(`/api/v1/operator/schools/${schoolId}/support/sign-in-link`, { userId }), t("root.didNotWork")),
+    onSuccess: () => {
+      setConfirming(null);
+      toast.show(t("root.supportSignInLinkDone"));
+      onDone();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const signOut = useMutation({
+    mutationFn: async (userId: string) => {
+      const result = await api().post<{ ok: true; sessionsEnded: number }>(`/api/v1/operator/schools/${schoolId}/support/sign-out`, { userId });
+      if (!result.ok) throw new Error(errorText(result, t("root.didNotWork")));
+      return result.data.sessionsEnded;
+    },
+    onSuccess: (ended) => {
+      setConfirming(null);
+      toast.show(ended === 1 ? t("root.supportSignOutDoneOne") : t("root.supportSignOutDoneMany", { count: ended }));
+      onDone();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const sessions = (n: number) => (n === 0 ? t("root.supportLiveSessionsNone") : n === 1 ? t("root.supportLiveSessionsOne") : t("root.supportLiveSessionsMany", { count: n }));
+  return (
+    <Card title={t("root.support")}>
+      <Text variant="xs" tone="muted">
+        {t("root.supportIntro")}
+      </Text>
+      {pending.map((inv) => (
+        <Row
+          key={inv.id}
+          icon="envelope"
+          title={inv.email ?? "—"}
+          caption={inv.role === "PRINCIPAL" ? t("role.principal") : t("root.administrator")}
+          right={<Button label={t("root.supportResend")} variant="secondary" busy={resend.isPending && resend.variables === inv.id} onPress={() => resend.mutate(inv.id)} accessibilityLabel={`${t("root.supportResend")}: ${inv.email ?? "—"}`} />}
+        />
+      ))}
+      {data.admins.length === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("root.supportNoAdmins")}
+        </Text>
+      ) : (
+        data.admins.map((a) => (
+          <View key={a.userId} style={{ gap: th.space[2], borderTopWidth: 1, borderTopColor: th.border, paddingTop: th.space[2] }}>
+            <Row
+              icon="user"
+              title={a.name}
+              caption={[a.role === "PRINCIPAL" ? t("role.principal") : t("root.administrator"), a.email, a.lastSeenAt ? t("root.supportLastSeen", { when: relativeTime(a.lastSeenAt, locale) }) : null].filter(Boolean).join(" · ")}
+              right={<Pill label={sessions(a.liveSessions)} tone={a.liveSessions > 0 ? "accent" : "muted"} />}
+            />
+            {confirming?.userId === a.userId ? (
+              <Note tone={confirming.kind === "out" ? "danger" : "accent"}>
+                <Text variant="sm" bold>
+                  {confirming.kind === "out" ? t("root.supportSignOutConfirm", { name: a.name }) : t("root.supportSignInLinkConfirm", { name: a.name })}
+                </Text>
+                <View style={{ flexDirection: "row", gap: th.space[2] }}>
+                  <Button
+                    label={t("common.confirm")}
+                    variant={confirming.kind === "out" ? "danger" : "primary"}
+                    busy={link.isPending || signOut.isPending}
+                    onPress={() => (confirming.kind === "out" ? signOut.mutate(a.userId) : link.mutate(a.userId))}
+                    style={{ flexGrow: 1 }}
+                  />
+                  <Button label={t("common.keep")} variant="secondary" onPress={() => setConfirming(null)} style={{ flexGrow: 1 }} />
+                </View>
+              </Note>
+            ) : (
+              <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+                <Button label={t("root.supportSignInLink")} variant="secondary" onPress={() => setConfirming({ kind: "link", userId: a.userId, name: a.name })} accessibilityLabel={`${t("root.supportSignInLink")}: ${a.name}`} style={{ flexGrow: 1 }} />
+                <Button label={t("root.supportSignOut")} variant="ghost" onPress={() => setConfirming({ kind: "out", userId: a.userId, name: a.name })} accessibilityLabel={`${t("root.supportSignOut")}: ${a.name}`} style={{ flexGrow: 1 }} />
+              </View>
+            )}
+          </View>
+        ))
+      )}
+    </Card>
+  );
+}
+
+/** Which plan the school is on, changed from the list of plans; the server audits and tells the office. */
+function Plan({ schoolId, data, onDone }: { schoolId: string; data: OperatorSchoolSupport; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const current = data.plan?.id ?? "";
+  const [chosen, setChosen] = useState<string>(current);
+  const plans = useQuery({
+    queryKey: ["operator", "plans"],
+    queryFn: async () => operatorPlansSchema.parse(unwrap(await api().get("/api/v1/operator/plans"))),
+  });
+  const assign = useMutation({
+    mutationFn: (planId: string | null) => send(api().post(`/api/v1/operator/schools/${schoolId}/plan`, { planId }), t("root.didNotWork")),
+    onSuccess: () => {
+      toast.show(t("root.planAssigned"));
+      void qc.invalidateQueries({ queryKey: ["operator", "school", schoolId, "support"] });
+      void qc.invalidateQueries({ queryKey: ["operator", "plans"] });
+      onDone();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const options = [{ value: "", label: t("root.planNone") }, ...(plans.data?.items ?? []).map((p) => ({ value: p.id, label: `${p.name} (${p.code})` }))];
+  return (
+    <Card title={t("root.planTitle")}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        {data.plan ? <Pill label={data.plan.name} tone="accent" /> : <Pill label={t("root.planNone")} />}
+        {data.planSince ? <Pill label={t("root.planSinceAgo", { when: relativeTime(data.planSince, locale) })} /> : null}
+      </View>
+      <Text variant="xs" tone="muted">
+        {t("root.planExplainer")}
+      </Text>
+      {plans.isError ? <Failed message={plans.error.message} onRetry={() => void plans.refetch()} /> : null}
+      {plans.data ? <Chips label={t("root.planTitle")} value={chosen} options={options} onChange={setChosen} /> : null}
+      <Button label={t("root.planAssign")} busy={assign.isPending} disabled={chosen === current} onPress={() => assign.mutate(chosen || null)} />
+      <Button label={t("root.planManage")} variant="ghost" onPress={() => openWeb("/root/plans")} />
+    </Card>
+  );
+}
+
+/** This month against the plan: four figures, each with its cap, over-cap in red. */
+function Usage({ usage }: { usage: OperatorSchoolSupport["usage"] }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  if (!usage) return null;
+  const c = usage.counts;
+  const figure = (value: number | undefined, cap: number | null, unit = "") => (value === undefined ? "—" : cap === null ? `${value}${unit}` : t("root.usageOfCap", { used: `${value}${unit}`, cap: `${cap}${unit}` }));
+  const over = usage.over.pupils || usage.over.messages || usage.over.storageMb;
+  return (
+    <Card title={`${t("root.usage")} · ${usage.month}`}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        {c ? <Pill label={over ? t("root.usageOverCap") : t("root.usageWithinCap")} tone={over ? "danger" : "ok"} /> : null}
+        {usage.computedAt ? <Pill label={t("root.usageComputedAgo", { when: relativeTime(usage.computedAt, locale) })} /> : null}
+      </View>
+      {c ? (
+        <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
+          <Stat label={t("root.usagePupils")} value={figure(c.pupils, usage.caps.pupils)} tone={usage.over.pupils ? "danger" : "fg"} />
+          <Stat label={t("root.usageMessages")} value={figure(c.messages, usage.caps.messages)} tone={usage.over.messages ? "danger" : "fg"} />
+          <Stat label={t("root.usageStorage")} value={figure(c.storageMb, usage.caps.storageMb, " MB")} tone={usage.over.storageMb ? "danger" : "fg"} />
+          <Stat label={t("root.usageActive")} value={c.activeUsers} />
+        </View>
+      ) : (
+        <Text variant="sm" tone="muted">
+          {t("root.usageNotSampled")}
+        </Text>
       )}
     </Card>
   );

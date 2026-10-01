@@ -7,6 +7,8 @@ import { publish, channel } from "./realtime";
 import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertClassAccess } from "./tenancy";
+import { forSchool } from "./tenant-context";
+import { assertAppAdmin } from "./app-admin";
 import { consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { PostCategory, PostScope, PostStatus, ReactionKind, Role } from "./constants";
@@ -157,11 +159,15 @@ function visibilityWhere(
     ],
   };
 
-  const mine: Prisma.PostWhereInput = { schoolId, authorUserId: user.id };
+  // An author sees their own post in any state BUT one: taken down by the
+  // platform (platformTakedown below) it is gone for everyone, the author
+  // included, who was told why in a notification. The admin's whole-school
+  // view below says the same.
+  const mine: Prisma.PostWhereInput = { schoolId, authorUserId: user.id, status: { not: "TAKEN_DOWN" } };
 
   if (role === "ADMIN") {
     // Admins can see everything in their own school, including the queue.
-    return { schoolId };
+    return { schoolId, status: { not: "TAKEN_DOWN" } };
   }
   if (role === "TEACHER") {
     return {
@@ -1543,5 +1549,258 @@ export async function postableClasses(session: ActiveContext) {
     where: { id: { in: ids }, archivedAt: null },
     select: { id: true, name: true },
     orderBy: { name: "asc" },
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/* Platform moderation of the global feed                                      */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE ACTOR ABOVE A SCHOOL, for the one surface that crosses schools.
+ *
+ * global-feed.ts states the design: publishing is the owning school's write,
+ * showing is each consuming school's choice, and a take-down for everyone
+ * was missing because nobody stood above a school. The content team and the
+ * operator now do, for GLOBAL posts only. The mechanism is the status: a
+ * taken-down post is TAKEN_DOWN, which the database's global clause (scope
+ * GLOBAL and status APPROVED) no longer admits — so every other school, its
+ * reactions and its comments lose the row at once, without a policy change —
+ * and which every feed and queue in this file filters out at home, the
+ * author's own view included. A PlatformTakedown row keeps what the platform
+ * needs to list and restore it, because once taken down the post is no longer
+ * readable from outside its school.
+ *
+ * WRITING UNDER THE SCHOOL. The platform's session has no school, and the
+ * app role may only write Post rows under a tenant, so the status write runs
+ * under forSchool with the id the DATABASE returned on the post — the rule
+ * tenant-context.ts states for that function. The school is told (its office
+ * and the author, with the reason) and the act is in the school's own audit
+ * log with the platform member as actor and `platform: true` in the meta.
+ * A school's own hide (GlobalPostHide) is untouched by any of this.
+ */
+export type ModerationStatus = "live" | "takenDown" | "restored";
+export const MODERATION_PAGE = 30;
+
+export type ModerationItem = {
+  postId: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  schoolName: string;
+  authorName: string;
+  createdAt: Date;
+  commentCount: number;
+  status: "APPROVED" | "TAKEN_DOWN" | "RESTORED";
+  takedown: { reason: string; at: Date; by: string; restoredAt: Date | null; restoredBy: string | null } | null;
+};
+
+export type ModerationList = { status: ModerationStatus; page: number; pages: number; counts: Record<ModerationStatus, number>; items: ModerationItem[] };
+
+/** "Aarav Sharma" → "Aarav", as global-feed.ts shows a pupil (spelt here too, since that module imports this one). */
+function firstNameOf(name: string): string {
+  return name.trim().split(/\s+/)[0] ?? name;
+}
+
+function excerptOf(body: string): string {
+  const text = body.replace(/\s+/g, " ").trim();
+  return text.length > 240 ? `${text.slice(0, 239)}…` : text;
+}
+
+async function namesOf(userIds: string[]): Promise<Map<string, string>> {
+  const ids = [...new Set(userIds)];
+  if (ids.length === 0) return new Map();
+  const users = await db.user.findMany({ where: { id: { in: ids } }, select: { id: true, name: true, preferredName: true } });
+  return new Map(users.map((u) => [u.id, u.preferredName ?? u.name]));
+}
+
+/**
+ * Every school's global posts, newest first, with the school named: what is
+ * live (readable through the global clause), what the platform has taken
+ * down, and what it has since restored. Held comments are not here — a held
+ * comment is the review queue of the school that holds it (moderateComment),
+ * and the platform does not read a school's queue.
+ */
+export async function listPlatformModeration(session: ActiveContext, opts: { status?: ModerationStatus; page?: number } = {}): Promise<ModerationList> {
+  assertAppAdmin(session);
+  const status = opts.status ?? "live";
+  const liveWhere: Prisma.PostWhereInput = { scope: "GLOBAL", status: "APPROVED" };
+  const [live, takenDown, restored] = await Promise.all([
+    db.post.count({ where: liveWhere }),
+    db.platformTakedown.count({ where: { restoredAt: null } }),
+    db.platformTakedown.count({ where: { restoredAt: { not: null } } }),
+  ]);
+  const counts = { live, takenDown, restored };
+  const pages = Math.max(1, Math.ceil(counts[status] / MODERATION_PAGE));
+  const page = Math.min(pages, Math.max(1, Math.trunc(opts.page ?? 1)));
+  const skip = (page - 1) * MODERATION_PAGE;
+
+  if (status === "live") {
+    const posts = await db.post.findMany({
+      where: liveWhere,
+      orderBy: { createdAt: "desc" },
+      skip,
+      take: MODERATION_PAGE,
+      select: {
+        id: true,
+        title: true,
+        body: true,
+        category: true,
+        createdAt: true,
+        globalSchoolName: true,
+        author: { select: { name: true, preferredName: true, isMinor: true } },
+        authorship: { select: { role: true } },
+        _count: { select: { comments: { where: { status: "APPROVED" } } } },
+      },
+    });
+    return {
+      status,
+      page,
+      pages,
+      counts,
+      items: posts.map((post) => ({
+        postId: post.id,
+        title: post.title,
+        excerpt: excerptOf(post.body),
+        category: post.category,
+        schoolName: post.globalSchoolName ?? "",
+        // A pupil is a first name on every cross-school surface (global-feed.ts).
+        authorName: post.author.isMinor || post.authorship?.role === "STUDENT" ? firstNameOf(post.author.preferredName ?? post.author.name) : (post.author.preferredName ?? post.author.name),
+        createdAt: post.createdAt,
+        commentCount: post._count.comments,
+        status: "APPROVED" as const,
+        takedown: null,
+      })),
+    };
+  }
+
+  const rows = await db.platformTakedown.findMany({
+    where: status === "takenDown" ? { restoredAt: null } : { restoredAt: { not: null } },
+    orderBy: status === "takenDown" ? { takenDownAt: "desc" } : { restoredAt: "desc" },
+    skip,
+    take: MODERATION_PAGE,
+  });
+  const names = await namesOf(rows.flatMap((r) => [r.takenDownByUserId, ...(r.restoredByUserId ? [r.restoredByUserId] : [])]));
+  return {
+    status,
+    page,
+    pages,
+    counts,
+    items: rows.map((r) => ({
+      postId: r.postId,
+      title: r.title,
+      excerpt: "",
+      category: "",
+      schoolName: r.schoolName,
+      authorName: "",
+      createdAt: r.takenDownAt,
+      commentCount: 0,
+      status: r.restoredAt ? ("RESTORED" as const) : ("TAKEN_DOWN" as const),
+      takedown: { reason: r.reason, at: r.takenDownAt, by: names.get(r.takenDownByUserId) ?? "", restoredAt: r.restoredAt, restoredBy: r.restoredByUserId ? (names.get(r.restoredByUserId) ?? "") : null },
+    })),
+  };
+}
+
+/** One live global post with its approved comments, for the platform's reader. */
+export async function readPlatformPost(session: ActiveContext, postId: string) {
+  assertAppAdmin(session);
+  const post = await db.post.findFirst({
+    where: { id: postId, scope: "GLOBAL", status: "APPROVED" },
+    select: {
+      id: true,
+      title: true,
+      body: true,
+      category: true,
+      tags: true,
+      createdAt: true,
+      globalSchoolName: true,
+      author: { select: { name: true, preferredName: true, isMinor: true } },
+      authorship: { select: { role: true } },
+      comments: { where: { status: "APPROVED" }, orderBy: { createdAt: "asc" }, select: { id: true, body: true, createdAt: true, author: { select: { name: true, preferredName: true, isMinor: true } } } },
+    },
+  });
+  if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  const shown = (a: { name: string; preferredName: string | null; isMinor: boolean }, pupil: boolean) => (a.isMinor || pupil ? firstNameOf(a.preferredName ?? a.name) : (a.preferredName ?? a.name));
+  return {
+    postId: post.id,
+    title: post.title,
+    body: post.body,
+    category: post.category,
+    tags: readJsonArray<string>(post.tags),
+    schoolName: post.globalSchoolName ?? "",
+    authorName: shown(post.author, post.authorship?.role === "STUDENT"),
+    createdAt: post.createdAt,
+    comments: post.comments.map((c) => ({ id: c.id, body: c.body, createdAt: c.createdAt, authorName: shown(c.author, false) })),
+  };
+}
+
+/** The office of the publishing school and the author: who is told of a take-down and a restore. */
+async function tellSchool(schoolId: string, authorUserId: string, input: { titleKey: "notifTitle.postPlatformTakedown" | "notifTitle.postPlatformRestored"; body: string; url: string }) {
+  const admins = await db.membership.findMany({ where: { schoolId, role: "ADMIN", status: "ACTIVE" }, select: { userId: true } });
+  const told = new Set<string>([authorUserId, ...admins.map((m) => m.userId)]);
+  for (const userId of told) {
+    await notify({ userId, schoolId, kind: "POST", titleKey: input.titleKey, body: input.body, url: input.url }).catch(() => undefined);
+  }
+}
+
+export async function platformTakedown(session: ActiveContext, postId: string, reason: string): Promise<void> {
+  assertAppAdmin(session);
+  const note = reason.trim();
+  if (note.length < 3) throw new AccessError("moderation.reasonRequired");
+
+  const standing = await db.platformTakedown.findUnique({ where: { postId }, select: { restoredAt: true } });
+  if (standing && !standing.restoredAt) throw new AccessError("moderation.alreadyTakenDown");
+
+  // Readable through the global clause exactly when it may be taken down.
+  const post = await db.post.findFirst({
+    where: { id: postId, scope: "GLOBAL", status: "APPROVED" },
+    select: { id: true, schoolId: true, title: true, globalSchoolName: true, authorUserId: true },
+  });
+  if (!post || !post.schoolId) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  const schoolId = post.schoolId;
+
+  await forSchool(schoolId, async () => {
+    const changed = await db.post.updateMany({ where: { id: post.id, schoolId, status: "APPROVED" }, data: { status: "TAKEN_DOWN" } });
+    if (changed.count === 0) throw new AccessError("moderation.alreadyTakenDown");
+    await db.platformTakedown.upsert({
+      where: { postId: post.id },
+      create: { postId: post.id, postSchoolId: schoolId, schoolName: post.globalSchoolName ?? "", title: post.title, reason: note, takenDownByUserId: session.user.id },
+      update: { reason: note, takenDownByUserId: session.user.id, takenDownAt: new Date(), restoredAt: null, restoredByUserId: null, title: post.title },
+    });
+    await audit({
+      schoolId,
+      actorUserId: session.user.id,
+      action: "post.platformTakedown",
+      targetType: "Post",
+      targetId: post.id,
+      meta: { title: post.title, reason: note, platform: true },
+    });
+    await tellSchool(schoolId, post.authorUserId, { titleKey: "notifTitle.postPlatformTakedown", body: `${post.title} — ${note}`, url: "/bulletin" });
+    publish([channel.school(schoolId)], { type: "post.status", postId: post.id, status: "TAKEN_DOWN" });
+  });
+}
+
+export async function platformRestore(session: ActiveContext, postId: string): Promise<void> {
+  assertAppAdmin(session);
+  const row = await db.platformTakedown.findUnique({ where: { postId } });
+  if (!row) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (row.restoredAt) throw new AccessError("moderation.alreadyRestored");
+  const schoolId = row.postSchoolId;
+
+  await forSchool(schoolId, async () => {
+    const post = await db.post.findFirst({ where: { id: postId, schoolId, status: "TAKEN_DOWN" }, select: { id: true, title: true, authorUserId: true } });
+    if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
+    await db.post.update({ where: { id: post.id }, data: { status: "APPROVED" } });
+    await db.platformTakedown.update({ where: { postId }, data: { restoredAt: new Date(), restoredByUserId: session.user.id } });
+    await audit({
+      schoolId,
+      actorUserId: session.user.id,
+      action: "post.platformRestore",
+      targetType: "Post",
+      targetId: post.id,
+      meta: { title: post.title, platform: true },
+    });
+    await tellSchool(schoolId, post.authorUserId, { titleKey: "notifTitle.postPlatformRestored", body: post.title, url: `/bulletin/${post.id}` });
+    publish([channel.school(schoolId)], { type: "post.status", postId: post.id, status: "APPROVED" });
   });
 }

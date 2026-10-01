@@ -57,6 +57,15 @@ export function QuestionRow({
               <span className="text-xs uppercase tracking-wide text-fg-muted">
                 {["en", ...question.languages].join(" · ")}
               </span>
+              {/* A native speaker has read the Hindi, the Marathi: translation-review.ts. */}
+              {question.reviewed.hi && <Badge tone="ok" size="sm">{t("translationReview.reviewedHi")}</Badge>}
+              {question.reviewed.mr && <Badge tone="ok" size="sm">{t("translationReview.reviewedMr")}</Badge>}
+              {/* How it is doing, from the nightly bank:stats job; nothing until a child has answered it. */}
+              {question.stats && question.stats.asked > 0 && (
+                <span className="text-xs tabular-nums text-fg-muted" title={t("bankStats.columnTitle")}>
+                  {t("bankStats.column", { asked: question.stats.asked, rate: question.stats.correctRate ?? 0, seconds: question.stats.avgSeconds ?? 0 })}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex items-center gap-2">

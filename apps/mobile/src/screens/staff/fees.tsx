@@ -2,8 +2,9 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { feeOkSchema, feeOverviewSchema, feeSettingsSchema, feeStructuresSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text } from "@/components";
+import { feeBankImportPreviewSchema, feeBankImportResultSchema, feeOkSchema, feeOverviewSchema, feeSettingsSchema, feeStructuresSchema, type FeeBankImportLine, type FeeBankImportPreview } from "@edulink/contracts";
+import type { TranslationKey } from "@edulink/i18n";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -11,7 +12,9 @@ import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { formatInstant } from "../family/shared";
 import { methodLabel, money, payStatusLabel, receiptPath } from "../shared/fees";
-import { openWeb } from "./shared";
+import { formatDateKey, openWeb } from "./shared";
+
+const STATEMENT_EXAMPLE = "Date,Description,Reference,Credit\n01/09/2026,NEFT STU-7K2M-9QDX RAVI,N245261234567890,12500.00\n02/09/2026,CLG CHQ 004512 STU-3PX8-Q2MN,004512,8000";
 
 /**
  * The fees overview — the web's /admin/fees: what the school asked for this
@@ -117,6 +120,7 @@ export function StaffFees() {
             )}
           </Card>
 
+          {office ? <BankImport /> : null}
           {office ? <OpenPlans /> : null}
           {office ? <PupilViewAge /> : null}
 
@@ -248,4 +252,98 @@ function PupilViewAge() {
       <Button label={t("common.save")} disabled={!valid || !dirty} busy={save.isPending} onPress={() => save.mutate()} />
     </Card>
   );
+}
+
+/**
+ * The bank statement, pasted — the web's import card. The server matches
+ * each credit to a pupil by its UTR, its cheque number or the student code
+ * in the narration and says what it would do; the button then records the
+ * matched lines through the counter and confirms the claims. Relay records
+ * that the money arrived; it never moves it.
+ */
+function BankImport() {
+  const t = useT();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const { locale } = useLocale();
+  const [csv, setCsv] = useState("");
+  const [preview, setPreview] = useState<{ csv: string; data: FeeBankImportPreview } | null>(null);
+  const [failed, setFailed] = useState<{ line: number; error: string }[]>([]);
+  const check = useMutation({
+    mutationFn: async (text: string) => ({ csv: text, data: feeBankImportPreviewSchema.parse(unwrap(await api().post("/api/v1/fees/bank-import/preview", { csv: text }))) }),
+    onSuccess: (next) => {
+      setFailed([]);
+      setPreview(next);
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const commit = useMutation({
+    mutationFn: async (text: string) => feeBankImportResultSchema.parse(unwrap(await api().post("/api/v1/fees/bank-import/commit", { csv: text }))),
+    onSuccess: (r) => {
+      toast.show(t("officeBulk.bankDone", { recorded: r.recorded, confirmed: r.confirmed, unmatched: r.unmatched }), r.recorded + r.confirmed > 0 ? "ok" : "info");
+      setFailed(r.failed);
+      setCsv("");
+      setPreview(null);
+      for (const queryKey of [["fees", "overview"], ["fees", "claims"], ["fees", "dues"]]) void qc.invalidateQueries({ queryKey });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const fresh = preview && preview.csv === csv ? preview.data : null;
+  const matched = fresh ? fresh.counts.new + fresh.counts.claim : 0;
+  return (
+    <Card title={t("officeBulk.bankTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("officeBulk.bankBody")}
+      </Text>
+      <Field label={t("officeBulk.bankLabel")} hint={t("officeBulk.bankColumns")} value={csv} onChangeText={setCsv} placeholder={STATEMENT_EXAMPLE} multiline autoCapitalize="none" autoCorrect={false} style={{ minHeight: 120, textAlignVertical: "top" }} />
+      {failed.length > 0 ? (
+        <View accessibilityLiveRegion="polite" style={{ gap: 2 }}>
+          {failed.map((f) => (
+            <Text key={f.line} variant="xs" tone="danger">
+              {t("officeBulk.bankLineFailed", { line: f.line, error: f.error })}
+            </Text>
+          ))}
+        </View>
+      ) : null}
+      {fresh ? (
+        <View accessibilityLiveRegion="polite" style={{ gap: 2 }}>
+          <Text variant="sm" bold>
+            {[t("officeBulk.bankCountNew", { count: fresh.counts.new }), t("officeBulk.bankCountClaim", { count: fresh.counts.claim }), t("officeBulk.bankCountAlready", { count: fresh.counts.already }), t("officeBulk.bankCountUnmatched", { count: fresh.counts.unmatched })].join(" · ")}
+          </Text>
+          {fresh.lines.slice(0, 12).map((l) => (
+            <Row key={l.line} title={`${t("invites.line", { line: l.line })} · ${l.amountPaise !== null ? money(l.amountPaise, locale) : "—"}${l.dateKey ? ` · ${formatDateKey(l.dateKey, locale, { day: "numeric", month: "short" })}` : ""}`} caption={`${outcomeLabel(t, l)}${l.reference ? ` · ${l.reference}` : ""}`} />
+          ))}
+          {fresh.lines.length > 12 ? (
+            <Text variant="xs" tone="muted">
+              {t("invites.andMore", { count: fresh.lines.length - 12 })}
+            </Text>
+          ) : null}
+          {matched === 0 ? (
+            <Text variant="xs" tone="muted">
+              {t("officeBulk.bankNothingToRecord")}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
+      {fresh && matched > 0 ? (
+        <Button label={`${t("officeBulk.bankCommit")} (${matched})`} busy={commit.isPending} onPress={() => commit.mutate(csv)} />
+      ) : fresh ? null : (
+        <Button label={t("officeBulk.bankPreview")} disabled={!csv.trim()} busy={check.isPending} onPress={() => check.mutate(csv)} />
+      )}
+    </Card>
+  );
+}
+
+/** What one statement line would do, in the office's words. */
+function outcomeLabel(t: (key: TranslationKey, vars?: Record<string, string | number>) => string, l: FeeBankImportLine): string {
+  switch (l.outcome) {
+    case "new":
+      return `${t("officeBulk.bankOutcomeNew", { name: l.pupilName ?? "" })}${l.method ? ` · ${methodLabel(t, l.method)}` : ""}`;
+    case "claim":
+      return t("officeBulk.bankOutcomeClaim", { name: l.pupilName ?? "" });
+    case "already":
+      return [t("officeBulk.bankOutcomeAlready"), l.pupilName].filter(Boolean).join(" · ");
+    default:
+      return [t("officeBulk.bankOutcomeUnmatched"), l.problemKey ? t(l.problemKey as TranslationKey) : null, l.pupilName].filter(Boolean).join(" · ");
+  }
 }

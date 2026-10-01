@@ -12,11 +12,13 @@ const PROFILE = expertProfileSchema.parse({
 });
 const UNLISTED = { profile: { ...PROFILE.profile, published: false, verified: false, bio: "", specialisms: [] }, impact: { ...PROFILE.impact, sessionsDone: 0, sessionsBooked: 0, activeMentorships: 0 } };
 const PATH = "/api/v1/shared/expert/profile";
+/** The standing cards (papers, calendar) answer quietly here; expert-standing.test.tsx is theirs. */
+const QUIET = { "GET /api/v1/expert/kyc": () => json({ status: "NONE", note: null, submittedAt: null, decidedAt: null, documents: [], canSubmit: true }), "GET /api/v1/expert/calendar/token": () => json({ url: null }) };
 
 describe("the expert's profile", () => {
   it("loads, then shows the standing, the impact, the checklist and the words", async () => {
     const gate = gated();
-    await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: gate.answer });
+    await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
     gate.open(() => json(PROFILE));
     await screen.findByText("Listed");
@@ -38,14 +40,14 @@ describe("the expert's profile", () => {
   });
 
   it("draws the expert's avatar beside their name; changing it is the app's own picker", async () => {
-    await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(PROFILE) });
+    await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(PROFILE) });
     expect(await screen.findByRole("image", { name: "ZZ Head" })).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Change my look" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/avatar");
   });
 
   it("not listed yet reads as such, and nothing yet hides the impact card", async () => {
-    await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(UNLISTED) });
+    await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(UNLISTED) });
     expect(await screen.findByText("Not listed yet")).toBeTruthy();
     expect(screen.getByText(/^Nobody can see you yet\./)).toBeTruthy();
     expect(screen.queryByText("Verified")).toBeNull();
@@ -53,7 +55,7 @@ describe("the expert's profile", () => {
   });
 
   it("saves the profile with the body the contract takes: a tag removed, one added, mentoring with a cap", async () => {
-    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(PROFILE), [`POST ${PATH}`]: () => json({ ok: true }) });
+    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(PROFILE), [`POST ${PATH}`]: () => json({ ok: true }) });
     await fireEvent.changeText(await screen.findByLabelText("Headline"), "ZZ Careers adviser, 15 years");
     await fireEvent.press(screen.getByRole("button", { name: "Remove Careers" }));
     await fireEvent.changeText(screen.getByLabelText("Add a specialism"), "Robotics");
@@ -78,7 +80,7 @@ describe("the expert's profile", () => {
   });
 
   it("a blank timezone is caught before the server is asked", async () => {
-    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(PROFILE) });
+    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(PROFILE) });
     await fireEvent.changeText(await screen.findByLabelText("Your timezone"), "  ");
     await fireEvent.press(screen.getByRole("button", { name: "Save profile" }));
     expect(screen.getByText("Some of this needs another look.")).toBeTruthy();
@@ -86,7 +88,7 @@ describe("the expert's profile", () => {
   });
 
   it("a refused save is an alert with a retry", async () => {
-    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(PROFILE), [`POST ${PATH}`]: refused("ZZ that headline is taken", 409) });
+    const { calls } = await mountStaff(<ExpertProfile />, "EXPERT", { ...QUIET, [`GET ${PATH}`]: () => json(PROFILE), [`POST ${PATH}`]: refused("ZZ that headline is taken", 409) });
     await fireEvent.press(await screen.findByRole("button", { name: "Save profile" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ that headline is taken");
     await fireEvent.press(screen.getByRole("button", { name: "Try again" }));

@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, BuildingsIcon, EraserIcon, ShieldCheckIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
-import { getSchool, listAdminInvites } from "@/lib/superuser";
+import { getSchool, listAdminInvites, listSchoolAdmins } from "@/lib/superuser";
+import { listPlans, schoolUsage } from "@/lib/plans";
+import { PlanPanel } from "./plan-panel";
+import { SupportPanel } from "./support-panel";
+import { UsageCard } from "../usage-card";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +33,7 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
   if (!school) notFound();
 
   const invites = await listAdminInvites(session, schoolId);
+  const [admins, plans, usage] = school.removedAt ? [[], [], null] : await Promise.all([listSchoolAdmins(session, schoolId), listPlans(session), schoolUsage(schoolId)]);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -118,6 +123,40 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           <InvitePanel schoolId={school.id} invites={invites} />
         </CardBody>
       </Card>
+
+      {/* Help for a locked-out office, without becoming it: the three doors
+          are aimed at people the school already made its admins, and each
+          lands in the school's own Safety Centre. */}
+      <Card>
+        <CardHeader icon={<LifebuoyIcon weight="duotone" className="size-5" />} title={t("root.support")} description={t("root.supportIntro")} />
+        <CardBody>
+          <SupportPanel
+            schoolId={school.id}
+            admins={admins.map((a) => ({ ...a, lastSeenAt: a.lastSeenAt?.toISOString() ?? null }))}
+            pending={invites.filter((i) => i.status === "PENDING").map((i) => ({ id: i.id, email: i.email, role: i.role }))}
+          />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={<TagIcon weight="duotone" className="size-5" />}
+          title={t("root.planTitle")}
+          description={school.planSince ? `${t("root.planSinceAgo", { when: relativeTime(school.planSince) })} · ${t("root.planExplainer")}` : t("root.planExplainer")}
+        />
+        <CardBody>
+          <PlanPanel schoolId={school.id} planId={school.planId} plans={plans.map((p) => ({ id: p.id, code: p.code, name: p.name }))} />
+        </CardBody>
+      </Card>
+
+      {usage && (
+        <Card>
+          <CardHeader icon={<ChartBarIcon weight="duotone" className="size-5" />} title={t("root.usage")} description={usage.computedAt ? t("root.usageComputedAgo", { when: relativeTime(usage.computedAt) }) : t("root.usageNotSampled")} />
+          <CardBody>
+            <UsageCard usage={usage} />
+          </CardBody>
+        </Card>
+      )}
 
       <Card>
         <CardHeader

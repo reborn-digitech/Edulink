@@ -68,6 +68,14 @@ export function SettingsForm({ initial }: { initial: MessagingSettings }) {
         </div>
       </fieldset>
 
+      {/* The number the office typed: a wrong one on a record texts a stranger about the child, so the risk is on the switch itself. */}
+      <CheckboxField
+        label={t("officeBulk.textOfficePhonesToggle")}
+        description={t("officeBulk.textOfficePhonesHint")}
+        checked={values.textOfficePhones}
+        onChange={(e) => setValues((v) => ({ ...v, textOfficePhones: e.target.checked }))}
+      />
+
       <Button type="submit" loading={pending} disabled={!dirty} icon={<FloppyDiskIcon weight="bold" />}>
         {t("common.save")}
       </Button>

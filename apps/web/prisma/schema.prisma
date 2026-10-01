@@ -148,6 +148,15 @@ model School {
   /// Null means never: a nine-year-old's screen is a classroom screen.
   selfReadAge       Int?
 
+  /// TEXTS TO THE NUMBER THE OFFICE TYPED. Off, only a number its owner
+  /// proved with a code (User.phone) is ever texted. On, an absence notice,
+  /// a fee reminder or a circular may also go to the guardian phone on the
+  /// pupil's record (PupilRecord.guardianPhone, unverified) when the guardian
+  /// has no proved number — and a wrong number on the record texts a
+  /// stranger, which is why it is the office's choice and every such send
+  /// is audited "office-entered". Read in messaging.ts.
+  textOfficePhones Boolean @default(false)
+
   verifiedAt DateTime?
 
   /// REMOVED, NOT DELETED. Set when the operator takes the school off the
@@ -265,6 +274,14 @@ model School {
   gigBookings          GigBooking[]
   absenceNotes         AbsenceNote[]
   healthCardReads      HealthCardRead[]
+  staffAppraisals      StaffAppraisal[]
+  lessonPlanTemplates  LessonPlanTemplate[]
+  /// The plan the operator put the school on, and since when; null is "no
+  /// plan", and every cap then falls back to the school's own value.
+  planId               String?
+  planSince            DateTime?
+  plan                 Plan?                 @relation(fields: [planId], references: [id], onDelete: SetNull)
+  usageSamples         UsageSample[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -525,6 +542,7 @@ model Membership {
   gigBookings            GigBooking[]         @relation("GigBookingStudent")
   absenceNotes           AbsenceNote[]        @relation("AbsenceNoteStudent")
   healthCardReads        HealthCardRead[]     @relation("HealthCardReadStudent")
+  appraisals             StaffAppraisal[]      @relation("StaffAppraisalSubject")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -1553,7 +1571,7 @@ model Post {
   /// under, which is what provenance means.
   globalSchoolName String?
 
-  status                 String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED
+  status                 String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED | TAKEN_DOWN (the platform's; see PlatformTakedown)
   rejectionReason        String?
   reviewedByMembershipId String?
   reviewedAt             DateTime?
@@ -1570,6 +1588,8 @@ model Post {
 
   comments    Comment[]
   globalHides GlobalPostHide[]
+  /// The platform's take-down of a GLOBAL post, when status is TAKEN_DOWN.
+  takedown    PlatformTakedown?
   reactions   Reaction[]
   acks        PostAck[]
   reads       PostRead[]
@@ -2620,6 +2640,16 @@ model QuizQuestion {
   /// Null means unreviewed, and the verifier counts those out loud.
   reviewedAt DateTime?
   reviewedBy String?
+  /// A NATIVE SPEAKER READ THE HINDI (or the Marathi). The translation rows are
+  /// machine drafts the moment they are written (app-admin.ts translates on
+  /// save, and clears these); a person on the content team stamps a language
+  /// here once they have read it, from /appadmin/translations. A content-quality
+  /// flag only: an unreviewed draft is still served, because a draft a child can
+  /// read beats an English question a child cannot. Decision 0002, gap 8.
+  hiReviewedAt DateTime?
+  mrReviewedAt DateTime?
+  hiReviewedBy String?
+  mrReviewedBy String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -2627,6 +2657,7 @@ model QuizQuestion {
   topic        QuizTopic                 @relation(fields: [topicId], references: [id], onDelete: Cascade)
   responses    QuizResponse[]
   translations QuizQuestionTranslation[]
+  stats        QuestionStat[]
 
   @@index([topicId, difficulty])
 }
@@ -2667,6 +2698,16 @@ model QuizResponse {
   revealedSolution Boolean @default(false)
   /// The level the engine served this at, kept so a run can be replayed.
   servedDifficulty Int
+  /// The pupil's grade when they answered (1–12 from their form group's
+  /// gradeLevel), null when no enrolment names one or the row predates the
+  /// column. A fact of the moment, kept because a promotion in April would
+  /// otherwise move last year's answers up a grade.
+  gradeLevel       Int?
+  /// Seconds between this answer and the previous answer in the sitting (or
+  /// the sitting's start), capped at 600: a child who walked away for an hour
+  /// did not spend an hour on the question. Null on a reveal-only row and on
+  /// rows that predate the column.
+  seconds          Int?
 
   answeredAt DateTime @default(now())
 
@@ -2808,6 +2849,24 @@ model ExpertProfile {
   /// Set when a human has actually checked who this person is.
   verifiedAt  DateTime?
   verifiedBy  String?
+
+  /// KYC — who this person is, on paper. NONE | SUBMITTED | VERIFIED | REJECTED
+  /// (EXPERT_KYC_STATUSES in @edulink/contracts). ONE TRUTH WITH `verifiedAt`:
+  /// VERIFIED here sets it, anything else clears it, whichever door was used
+  /// (the operator's KYC decision or the older "mark identity checked"), so
+  /// the marketplace's badge has exactly one meaning. See src/lib/expert-kyc.ts.
+  kycStatus      String    @default("NONE")
+  /// The expert's note while the papers wait; the operator's reason once decided.
+  kycNote        String?
+  kycSubmittedAt DateTime?
+  kycDecidedAt   DateTime?
+  /// Stored file ids (never URLs) from the upload-ticket pipeline; files.ts
+  /// opens them to the expert themself and the operator alone.
+  kycDocumentIds String[]  @default([])
+  /// The secret in this expert's iCalendar feed URL; null until minted, and
+  /// a rotation refuses the old one at once. Slots and school names only —
+  /// no pupil is ever named in the feed (decision 0002).
+  calendarToken  String?   @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -4021,6 +4080,12 @@ model Substitution {
   substituteMembershipId String
   note                   String?
   createdByUserId        String?
+  /// The covering teacher's answer: seen and taken, or declined with a reason
+  /// so the office reassigns. Reassigning to someone else clears both; the
+  /// same person again keeps their answer.
+  acknowledgedAt         DateTime?
+  declinedAt             DateTime?
+  declineReason          String?
   createdAt              DateTime @default(now())
   updatedAt              DateTime @updatedAt
 
@@ -4765,4 +4830,157 @@ model TwoFactorChallenge {
   @@index([userId])
   /// The retention sweep finds dead rows by this alone.
   @@index([expiresAt])
+}
+
+/// A plan the operator offers a school: what it allows per month, and a
+/// price the operator RECORDS, never collects — money never touches the
+/// platform (decision 0003). A null cap is "no cap". Platform-wide, so no
+/// school policy: the office reads its own school's plan through the School
+/// row, and the operator reads and writes every one.
+model Plan {
+  id                String   @id @default(cuid())
+  /// Short, unique, typed by the operator: starter, standard, …
+  code              String   @unique
+  name              String
+  pupilCap          Int?
+  messageCap        Int?
+  storageCapMb      Int?
+  priceMonthlyPaise Int?
+  createdAt         DateTime @default(now())
+
+  schools School[]
+}
+
+/// One school's usage for one calendar month, written by the nightly
+/// usage:sample job (its one writer) and recomputed by the data audit:
+/// pupils on the roll, texts sent, storage held and people active that month.
+/// The school's row — its office reads its own — and the operator reads every
+/// school's against its plan.
+model UsageSample {
+  id          String   @id @default(cuid())
+  schoolId    String
+  /// YYYY-MM in the school's own calendar.
+  month       String
+  pupils      Int
+  messages    Int
+  storageMb   Int
+  activeUsers Int
+  computedAt  DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, month])
+  @@index([month])
+}
+
+/// WHAT THE HEAD WROTE ABOUT A MEMBER OF STAFF: a lesson observed, a target
+/// set, the year's appraisal. The head's rows (the office reads them); the
+/// member of staff reads an entry only once the head has marked it visible
+/// to them. The rating is 1–5 or nothing; the words are the head's own.
+model StaffAppraisal {
+  id                String   @id @default(cuid())
+  schoolId          String
+  staffMembershipId String
+  appraiserUserId   String
+  /// The academic year as the school writes it ("2026–27"), copied from the current year when written.
+  year              String
+  /// OBSERVATION | TARGET | APPRAISAL (APPRAISAL_KINDS in @edulink/contracts).
+  kind              String
+  date              DateTime
+  summary           String
+  strengths         String?
+  targets           String?
+  rating            Int?
+  visibleToStaff    Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  school School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  staff  Membership @relation("StaffAppraisalSubject", fields: [staffMembershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, staffMembershipId, date])
+}
+
+/// A LESSON PLAN KEPT TO USE AGAIN: the topic, notes and homework of a plan a
+/// teacher saved, for the school's teachers to copy into another class's
+/// chapter. Applying one COPIES the words into a new LessonPlan; nothing
+/// links back, so editing the template later changes no class's plan.
+model LessonPlanTemplate {
+  id           String   @id @default(cuid())
+  schoolId     String
+  authorUserId String
+  subject      String
+  grade        String?
+  title        String
+  /// JSON: { topic, notes, homework }. String, like every JSON column here.
+  body         String   @default("{}")
+  createdAt    DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, subject])
+  @@index([schoolId, authorUserId])
+}
+
+/// HOW A QUESTION IS DOING, PER GRADE OF THE CHILDREN WHO MET IT.
+///
+/// A STORED COPY WITH ONE WRITER. The content team reads the bank from outside
+/// every school, and a child's answers (QuizResponse) are their school's rows,
+/// behind its policy — so "how often is this question got right" cannot be
+/// computed on read by the person who needs it. These rows belong to the bank
+/// (no school, no policy, like QuizQuestion) and are written by exactly one
+/// function, `submitAnswer` in src/lib/quiz.ts, the moment an answer is
+/// recorded: asked +1, correct +1 when right, the seconds the answer took.
+/// `npm run data:audit` recomputes every row from the responses and fails on
+/// a contradiction. `grade` 0 is "no grade recorded" (an answer by a pupil
+/// with no form group, or one that predates QuizResponse.gradeLevel).
+model QuestionStat {
+  id         String   @id @default(cuid())
+  questionId String
+  /// 1–12, or 0 when the answering pupil's grade was not known.
+  grade      Int      @default(0)
+  /// Answers recorded (a reveal without an answer is not one).
+  asked      Int      @default(0)
+  correct    Int      @default(0)
+  /// The sum of QuizResponse.seconds over the answers that carry one, and how many do.
+  seconds    Int      @default(0)
+  timed      Int      @default(0)
+  updatedAt  DateTime @updatedAt
+
+  question QuizQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, grade])
+}
+
+/// THE ACTOR ABOVE A SCHOOL, AT LAST, AND ONLY FOR THE GLOBAL FEED.
+///
+/// global-feed.ts explains why no school can take another's post down: the
+/// global clause is read-only and `schoolId` stays on the row. What was
+/// missing on purpose — a take-down for everyone — is this row. The content
+/// team or the operator takes a GLOBAL post down (src/lib/bulletin.ts,
+/// platformTakedown): the post's status becomes TAKEN_DOWN, which drops it
+/// out of the global clause in the database and out of every feed in the
+/// application, and this row keeps what the platform needs in order to list
+/// it and restore it, because a TAKEN_DOWN post is no longer readable from
+/// outside its school. No school owns this row — it is the platform's record
+/// of its own act — so it carries no `schoolId` and no policy; `postSchoolId`
+/// is the publishing school, named so a restore can write under forSchool.
+/// The school is told, and the act is in that school's audit log.
+model PlatformTakedown {
+  id                String    @id @default(cuid())
+  postId            String    @unique
+  /// The publishing school, copied from the post when it was taken down.
+  postSchoolId      String
+  /// Its name and the post's title, copied: readable here after the row is not.
+  schoolName        String
+  title             String
+  reason            String
+  takenDownByUserId String
+  takenDownAt       DateTime  @default(now())
+  restoredAt        DateTime?
+  restoredByUserId  String?
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([takenDownAt])
 }

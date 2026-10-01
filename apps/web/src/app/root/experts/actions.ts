@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { requireSuperuser, AccessError } from "@/lib/tenancy";
 import { setExpertStanding } from "@/lib/superuser";
+import { decideKyc } from "@/lib/expert-kyc";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /** See the note in `expert/availability/actions.ts` on the two-field shape. */
@@ -33,6 +34,23 @@ export async function setStanding(
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[root-experts]", error);
+    return { ok: false, errorKey: "common.somethingWrong" };
+  }
+}
+
+/** The operator answers an expert's identity papers; the marketplace badge follows (one truth, see expert-kyc.ts). */
+export async function decideKycAction(profileId: string, input: { decision: "VERIFIED" | "REJECTED"; note: string }): Promise<Result> {
+  try {
+    const session = await requireSuperuser();
+    const result = await decideKyc(session, profileId, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/experts");
+    revalidatePath("/experts");
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[root-experts-kyc]", error);
     return { ok: false, errorKey: "common.somethingWrong" };
   }
 }

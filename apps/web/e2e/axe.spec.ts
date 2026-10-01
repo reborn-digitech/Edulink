@@ -23,7 +23,7 @@ const roles = (Object.keys(all) as (keyof typeof NAV)[]).filter((role) => NAV[ro
  */
 const PLATFORM: Record<string, string[]> = {
   APPADMIN: ["/appadmin", "/appadmin/bank", "/appadmin/contributions", "/appadmin/new"],
-  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
+  OPERATOR: ["/root", "/root/experts", "/root/content-team", "/root/gigs", "/root/audit", "/root/jobs", "/root/plans", "/root/metrics", "/root/new", "/appadmin", "/appadmin/bank", "/appadmin/contributions"],
 };
 
 const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [

@@ -60,6 +60,15 @@ export const SHARED: Endpoint[] = [
   { method: "DELETE", path: "/api/v1/shared/expert/availability/{slotId}", summary: "Withdraw an unbooked window", access: ["EXPERT"], response: c.okSchema, sample: () => null },
   { method: "GET", path: "/api/v1/shared/expert/profile", summary: "The expert's own profile and impact", access: ["EXPERT"], response: c.expertProfileSchema },
   { method: "POST", path: "/api/v1/shared/expert/profile", summary: "Save the expert's own profile", access: ["EXPERT"], request: c.expertSaveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
+  // ---- the expert's standing: papers, free duty, the calendar feed (src/lib/expert-kyc.ts) ----
+  // The role alone opens these, listed or not: papers are sent before anybody is listed. The feed itself
+  // is "anyone" because a calendar application holds no session; the token in its URL is the whole key.
+  { method: "GET", path: "/api/v1/expert/kyc", summary: "Where the expert's identity papers stand: status, the note, the stored ids", access: ["EXPERT"], response: c.expertKycSchema, sample: "/api/v1/expert/kyc" },
+  { method: "POST", path: "/api/v1/expert/kyc", summary: "Send identity papers: one to five file ids uploaded in the expert's own name, with a note for the operator; a waiting set is replaced", access: ["EXPERT"], request: c.expertKycSubmitBodySchema, response: c.expertKycSchema, emptyBodyStatus: 422, sample: "/api/v1/expert/kyc" },
+  { method: "GET", path: "/api/v1/expert/free-duty", summary: "What the expert still owes free this period before a price may be asked (decision 0004)", access: ["EXPERT"], response: c.expertFreeDutySchema, sample: "/api/v1/expert/free-duty" },
+  { method: "GET", path: "/api/v1/expert/calendar/token", summary: "The expert's calendar feed URL, or null until one is minted", access: ["EXPERT"], response: c.expertCalendarTokenSchema, sample: "/api/v1/expert/calendar/token" },
+  { method: "POST", path: "/api/v1/expert/calendar/token", summary: "Mint or rotate the calendar feed's token; the old URL stops answering at once", access: ["EXPERT"], response: c.expertCalendarTokenSchema, sample: () => null },
+  { method: "GET", path: "/api/v1/expert/calendar.ics", summary: "The expert's offered times and booked sessions as an iCalendar feed, by the token in the URL; school names and session kinds only, never a pupil", access: "anyone", response: c.expertCalendarFeedSchema, sample: () => null },
   // ---- uploads ----------------------------------------------------------------
   { method: "POST", path: "/api/v1/uploads", summary: "Upload one file (multipart `file`); read it back via /api/files/{fileId}", access: "signed-in", response: c.uploadResultSchema, emptyBodyStatus: 422 },
   // ---- the app itself: the kill switch, and reporting a problem ---------------

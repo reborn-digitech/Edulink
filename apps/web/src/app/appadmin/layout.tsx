@@ -44,6 +44,12 @@ export default async function AppAdminLayout({ children }: { children: React.Rea
             <Button asChild variant="ghost" size="sm">
               <Link href="/appadmin/contributions">{t("gigs.queueNav")}</Link>
             </Button>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/translations">{t("translationReview.nav")}</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/moderation">{t("moderation.nav")}</Link>
+            </Button>
             {/* The operator arrives from /root; give them the way back. An app
                 admin never sees this link and the page behind it would 404 on
                 them anyway. */}

@@ -38,7 +38,9 @@ env:
   # identifiers, not prose. Every fee and messaging sentence is keyed; the
   # text-message registry is a trilingual table the audit skips by design.
   # 165: "jobs:watch" joined the job names on 2026-10-01.
-  I18N_FLOOR: "165"
+  # 166: "usage:sample" (the nightly plan-usage count) joined them on 2026-10-01.
+  # 167: "bank:stats" (the nightly question-stat count for the content team) joined them on 2026-10-01.
+  I18N_FLOOR: "167"
 
 jobs:
   battery:

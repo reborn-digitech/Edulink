@@ -88,6 +88,7 @@ export async function operatorExperts(ctx: ActiveContext) {
       publishedAt: isoOrNull(e.publishedAt),
       verifiedAt: isoOrNull(e.verifiedAt),
       createdAt: iso(e.createdAt),
+      kyc: { status: e.kyc.status, note: e.kyc.note, submittedAt: e.kyc.submittedAt, decidedAt: e.kyc.decidedAt, documents: e.kyc.documents },
     })),
   };
 }

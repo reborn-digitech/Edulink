@@ -1,5 +1,7 @@
 import "server-only";
 import { readerIsFixture, realPeopleOnly } from "./fixtures";
+import { expertRatings } from "./expert-kyc";
+import type { ExpertRating } from "@edulink/contracts";
 import { randomBytes, createHash } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -291,7 +293,10 @@ export type MarketplaceExpert = {
   bio: string;
   organisation: string | null;
   specialisms: string[];
+  /** The operator has checked who they are: KYC VERIFIED, the one truth behind the badge. */
   verified: boolean;
+  /** Families' ratings of their sessions, from three on; null reads as "New". */
+  rating: ExpertRating;
   /** What they agreed to do, so a school is not offered a button that refuses. */
   offering: ExpertOffering;
   mentorCapacity: number | null;
@@ -323,6 +328,8 @@ export async function listMarketplace(
     },
     orderBy: { publishedAt: "desc" },
   });
+  // Computed on read, never stored: see expert-kyc.ts for why it is read under the expert's own binding.
+  const ratings = await expertRatings(experts.map((e) => e.userId));
 
   return experts
     .map((expert) => ({
@@ -332,7 +339,8 @@ export async function listMarketplace(
       bio: expert.bio,
       organisation: expert.organisation,
       specialisms: readJsonArray<string>(expert.specialisms),
-      verified: expert.verifiedAt !== null,
+      verified: expert.kycStatus === "VERIFIED",
+      rating: ratings.get(expert.userId) ?? null,
       offering: expert.offering as ExpertOffering,
       mentorCapacity: expert.mentorCapacity,
       /**
@@ -884,6 +892,8 @@ export async function ownImpact(session: ActiveContext): Promise<{
   activeMentorships: number;
   mentorCapacity: number | null;
   upcomingSlots: number;
+  /** Families' ratings of their sessions, from three on; null reads as "New". */
+  rating: ExpertRating;
 }> {
   if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
   const profile = await db.expertProfile.findUnique({
@@ -911,6 +921,7 @@ export async function ownImpact(session: ActiveContext): Promise<{
     activeMentorships: profile.activeMentorships,
     mentorCapacity: profile.mentorCapacity,
     upcomingSlots,
+    rating: (await expertRatings([session.user.id])).get(session.user.id) ?? null,
   };
 }
 
@@ -928,7 +939,7 @@ export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile>
       offering: true,
       mentorCapacity: true,
       publishedAt: true,
-      verifiedAt: true,
+      kycStatus: true,
     },
   });
   if (!profile) throw new AccessError("access.noExpertProfile", "NOT_FOUND");
@@ -942,7 +953,7 @@ export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile>
     offering: profile.offering as ExpertOffering,
     mentorCapacity: profile.mentorCapacity,
     published: profile.publishedAt !== null,
-    verified: profile.verifiedAt !== null,
+    verified: profile.kycStatus === "VERIFIED",
   };
 }
 

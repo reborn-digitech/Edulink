@@ -98,6 +98,13 @@ export function AppAdminHome() {
         {/* Teachers' questions for the bank: the review queue, the web's /appadmin/contributions. */}
         <Row icon="clipboard" title={t("gigs.queueTitle")} onPress={() => router.push("/(app)/contribution-queue" as never)} />
       </Card>
+      {/* The global feed from above every school: the web's /appadmin/moderation. */}
+      <Card title={t("moderation.nav")}>
+        <Text variant="sm" tone="muted">
+          {t("moderation.intro")}
+        </Text>
+        <Row icon="shield" title={t("moderation.title")} onPress={() => router.push("/(app)/moderation" as never)} />
+      </Card>
       <Button label={t("shell.signOut")} variant="ghost" onPress={() => void session.signOut()} />
     </Screen>
   );

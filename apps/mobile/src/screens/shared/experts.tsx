@@ -137,7 +137,16 @@ function ExpertCard({ expert, openSlot, topic, busy, onOpen, onTopic, onBook, wh
   const th = useTheme();
   const mentoring = expert.offering === "SESSIONS" ? null : expert.mentoringOpen ? (expert.mentorCapacity === null ? t("expert.takingMentees") : t("expert.upToAtATime", { count: expert.mentorCapacity })) : t("expert.notTakingMentees");
   return (
-    <Card title={expert.name} action={expert.verified ? <Pill tone="ok" label={t("expert.verified")} /> : null}>
+    <Card
+      title={expert.name}
+      action={
+        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[1], justifyContent: "flex-end" }}>
+          {expert.verified ? <Pill tone="ok" label={t("expert.verified")} /> : null}
+          {/* Families' ratings, computed on the server from three on; "New" before that. */}
+          <Pill tone={expert.rating ? "accent" : "muted"} label={expert.rating ? t("expert.ratingLine", { average: expert.rating.average.toFixed(1), count: expert.rating.count }) : t("expert.ratingNew")} />
+        </View>
+      }
+    >
       {expert.organisation ? (
         <Text variant="xs" tone="muted">
           {expert.organisation}

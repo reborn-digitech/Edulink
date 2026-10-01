@@ -14,7 +14,7 @@ import { formatInstant, Pill } from "../family/shared";
 import { audienceLabel, channelLabel, messageCaption, purposeLabel, skipLabel, STATUS_TONE, statusLabel, transportLabel } from "../shared/messaging";
 import { must, openWeb } from "./shared";
 
-type SettingsSave = { smsEnabled?: boolean; whatsappEnabled?: boolean; monthlyCap?: number; events?: Partial<MessagingOverview["settings"]["events"]> };
+type SettingsSave = { smsEnabled?: boolean; whatsappEnabled?: boolean; monthlyCap?: number; events?: Partial<MessagingOverview["settings"]["events"]>; textOfficePhones?: boolean };
 const EVENTS = ["absence", "feeReminders", "feeReceipts", "circulars", "incidents"] as const;
 const EVENT_KEY = { absence: "messaging.eventAbsence", feeReminders: "messaging.eventFeeReminders", feeReceipts: "messaging.eventFeeReceipts", circulars: "messaging.eventCirculars", incidents: "messaging.eventIncidents" } as const;
 
@@ -96,6 +96,10 @@ export function StaffMessaging() {
               {EVENTS.map((event) => (
                 <SwitchRow key={event} label={t(EVENT_KEY[event])} value={d.settings.events[event]} disabled={!office || save.isPending} onChange={(next) => save.mutate({ events: { [event]: next } })} />
               ))}
+            </View>
+            {/* The number the office typed: a wrong one on a record texts a stranger about the child, so the risk sits on the switch. */}
+            <View style={{ gap: th.space[2], paddingTop: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
+              <SwitchRow label={t("officeBulk.textOfficePhonesToggle")} hint={t("officeBulk.textOfficePhonesHint")} value={d.settings.textOfficePhones} disabled={!office || save.isPending} onChange={(next) => save.mutate({ textOfficePhones: next })} />
             </View>
           </Card>
 

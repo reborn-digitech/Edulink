@@ -6,6 +6,7 @@ import { assertClassAccessForRegister, assertMayTakeRegister, registerDuty } fro
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { withMetrics } from "@/lib/metrics";
 
 /**
  * Attendance endpoint.
@@ -16,8 +17,12 @@ import { getT } from "@/lib/i18n/server";
  * It is a route handler rather than a server action specifically because the
  * service worker has to be able to replay it as a plain fetch with a JSON body
  * while no page is open. Server actions are not replayable that way.
+ *
+ * One of the three routes the operator's counters time (src/lib/metrics.ts):
+ * the register is the write the outbox replays, and a replay — a request
+ * carrying X-Edulink-Owner — is counted as one.
  */
-export async function POST(request: Request) {
+const timed = withMetrics("attendance", async (request: Request) => {
   try {
     const ctx = await requireApiRole("TEACHER", "ADMIN");
 
@@ -78,6 +83,10 @@ export async function POST(request: Request) {
     console.error("[api/attendance] unexpected", error);
     return NextResponse.json({ error: (await getT())("attendance.saveFailed") }, { status: 500 });
   }
+});
+
+export async function POST(request: Request) {
+  return timed(request);
 }
 
 /** Roster + existing marks for a class/day, used to hydrate and to refresh. */

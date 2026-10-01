@@ -377,3 +377,23 @@ export async function sendParentClaimNotice(
     ),
   });
 }
+
+/**
+ * A notice to an expert, who belongs to no school: the operator's answer to
+ * their identity papers (src/lib/expert-kyc.ts). An in-app notification is a
+ * school's row and an expert's tenant set is empty, so for them the mail is
+ * the channel; the words come translated into their own language.
+ */
+export async function sendExpertNotice(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null }) {
+  await sendEmail({
+    to: input.to,
+    purpose: "EXPERT_KYC",
+    subject: input.subject,
+    text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
+    html: layout(
+      escapeHtml(input.heading),
+      input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
+      input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
+    ),
+  });
+}

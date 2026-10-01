@@ -11,7 +11,13 @@ import {
   setSlot,
   clearSlot,
   copyDay,
+  previewTimetableImport,
+  commitTimetableImport,
+  copyWeekToSections,
   type Result,
+  type TimetableImportPreview,
+  type TimetableImportResult,
+  type TimetableCopyResult,
 } from "@/lib/timetable";
 import type { PeriodKind } from "@/lib/school-day";
 
@@ -135,6 +141,41 @@ export async function duplicateDay(
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await copyDay(ctx, classId, fromWeekday, toWeekday);
+    if (result.ok) refresh();
+    return result;
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Writes nothing: what the pasted sheet would put on the grid, and every cell it cannot. */
+export async function previewImport(csv: string): Promise<Result & { preview?: TimetableImportPreview }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const preview = await previewTimetableImport(ctx, csv.slice(0, 500_000));
+    return { ok: true, preview };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Writes the sheet in one transaction, each cell upserted on (class, day, period). */
+export async function runImport(csv: string): Promise<Result & { result?: TimetableImportResult }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await commitTimetableImport(ctx, csv.slice(0, 500_000));
+    refresh();
+    return { ok: true, result };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** One section's week onto its sisters, teachers left blank. */
+export async function duplicateToSections(fromClassId: string, toClassIds: string[]): Promise<Result & Partial<TimetableCopyResult>> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await copyWeekToSections(ctx, fromClassId, toClassIds);
     if (result.ok) refresh();
     return result;
   } catch (error) {

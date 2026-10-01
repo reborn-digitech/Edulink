@@ -5,6 +5,8 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { readKyc } from "@/lib/expert-kyc";
+import { KycCard } from "../profile/kyc-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,9 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function ExpertPendingPage() {
   const t = await getT();
-  await requireUser();
+  const session = await requireUser();
+  // The one thing an unlisted expert can do to move the review along: send their papers.
+  const kyc = session.role === "EXPERT" ? await readKyc(session).catch(() => null) : null;
   return (
-    <div className="mx-auto max-w-lg py-10">
+    <div className="mx-auto max-w-lg space-y-6 py-10">
       <EmptyState
         icon={<HourglassIcon weight="duotone" className="size-8" />}
         title={t("expert.underReview")}
@@ -33,6 +37,7 @@ export default async function ExpertPendingPage() {
           </Button>
         }
       />
+      {kyc && <KycCard initial={kyc} />}
     </div>
   );
 }

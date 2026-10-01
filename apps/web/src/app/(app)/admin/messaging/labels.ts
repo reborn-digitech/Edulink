@@ -35,6 +35,7 @@ export const SKIP_KEY: Record<string, TranslationKey> = {
   "cap-daily": "messaging.skipCapDaily",
   "no-transport": "messaging.skipNoTransport",
   disabled: "messaging.skipDisabled",
+  unverifiedNumber: "officeBulk.skipUnverifiedNumber",
 };
 
 /** What each caller of deliverToUser names as its purpose. */

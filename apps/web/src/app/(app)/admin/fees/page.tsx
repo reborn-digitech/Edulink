@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarBlankIcon, DownloadSimpleIcon, ReceiptIcon, ArrowCounterClockwiseIcon, WrenchIcon } from "@phosphor-icons/react/ssr";
+import { CalendarBlankIcon, DownloadSimpleIcon, ReceiptIcon, ArrowCounterClockwiseIcon, BankIcon, WrenchIcon } from "@phosphor-icons/react/ssr";
 import { formatPaise } from "@edulink/i18n";
 import { requireRole } from "@/lib/tenancy";
 import { feeOverview } from "@/lib/fees-reports";
@@ -16,6 +16,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { METHOD_KEY, PAY_STATUS_KEY, PAY_STATUS_TONE, receiptHref } from "./labels";
 import { CarryForwardForm } from "./carry-forward-form";
 import { ExportLinks } from "./export-links";
+import { BankImportCard } from "./bank-import-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -284,6 +285,16 @@ export default async function FeesOverviewPage() {
             </Card>
           )}
         </div>
+      )}
+
+      {/* ---------------- the bank statement ---------------- */}
+      {office && (
+        <Card>
+          <CardHeader icon={<BankIcon weight="duotone" className="size-5" />} title={t("officeBulk.bankTitle")} description={t("officeBulk.bankBody")} />
+          <CardBody>
+            <BankImportCard />
+          </CardBody>
+        </Card>
       )}
     </div>
   );

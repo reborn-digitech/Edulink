@@ -94,6 +94,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
+    // The school across terms and years: the office reads what the head reads (lib/analytics-longitudinal.ts).
+    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "running" },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
@@ -132,6 +134,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     // The head's own decisions, as sentences, read from the audit log (lib/decision-log.ts).
     { href: "/principal/decisions", labelKey: "decisions.title", icon: "clipboard", prefix: true, group: "running" },
+    // The school across terms and years, recomputed on read (lib/analytics-longitudinal.ts).
+    { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
@@ -170,6 +174,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/signatures", labelKey: "nav.signatures", icon: "clipboard", group: "running" },
     { href: "/teacher/contributions", labelKey: "nav.contributions", icon: "books", prefix: true, group: "running" },
     { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    // What the head has shown me of my observations, targets and appraisals (lib/appraisal.ts).
+    { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },

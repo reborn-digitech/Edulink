@@ -14,6 +14,7 @@ import {
   type PeriodKind,
 } from "./school-day";
 import type { ActiveContext } from "./session";
+import { parseCsv } from "./csv";
 
 /**
  * The weekly timetable: the school's day, the grid of lessons, and who is
@@ -1277,4 +1278,279 @@ export async function timetableClasses(ctx: ActiveContext) {
     take: 300,
   });
   return rows;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Bulk: a pasted sheet, and a section's week copied to its sisters            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THE SHEET. A school that already has a timetable has it in a spreadsheet,
+ * one row per lesson: day, period, class, subject, teacher, room. Pasted
+ * here it is previewed first — every row resolved against the school's own
+ * periods, classes and staff, every cell that cannot be resolved named with
+ * its line — and written only when the office says so, in one transaction,
+ * each cell upserted on (class, day, period) so the same sheet twice leaves
+ * the same grid.
+ *
+ * WHAT STOPS A ROW and what does not. A day, period or class the school
+ * does not have, a break, a blank subject: the row is not written, because
+ * there is nowhere to put it. A teacher who is not on staff, two of the
+ * same name, or one already teaching another class then: the LESSON is
+ * written and the teacher left blank, exactly as the day-copy tool does —
+ * an unstaffed cell is visible and fixable where a missing one is not — and
+ * the preview says so against the line.
+ */
+
+export type TimetableImportProblem = { line: number; value: string; reasonKey: TranslationKey; reasonVars?: Record<string, string | number> };
+export type TimetableImportRow = {
+  line: number;
+  weekday: number;
+  periodId: string;
+  periodName: string;
+  classId: string;
+  className: string;
+  subject: string;
+  room: string | null;
+  teacherMembershipId: string | null;
+  teacherName: string | null;
+  teacherIssueKey: TranslationKey | null;
+  teacherIssueVars?: Record<string, string | number>;
+  /** A lesson is already in that cell; the sheet's replaces it. */
+  replaces: boolean;
+};
+export type TimetableImportPreview = {
+  rows: TimetableImportRow[];
+  problems: TimetableImportProblem[];
+  recognised: { day: boolean; period: boolean; className: boolean; subject: boolean; teacher: boolean; room: boolean };
+};
+
+const IMPORT_MAX_ROWS = 3000;
+const DAY_WORDS: Record<string, number> = {
+  sun: 0, sunday: 0, "रवि": 0, "रविवार": 0,
+  mon: 1, monday: 1, "सोम": 1, "सोमवार": 1,
+  tue: 2, tues: 2, tuesday: 2, "मंगल": 2, "मंगलवार": 2, "मंगळ": 2, "मंगळवार": 2,
+  wed: 3, wednesday: 3, "बुध": 3, "बुधवार": 3,
+  thu: 4, thur: 4, thurs: 4, thursday: 4, "गुरु": 4, "गुरुवार": 4,
+  fri: 5, friday: 5, "शुक्र": 5, "शुक्रवार": 5,
+  sat: 6, saturday: 6, "शनि": 6, "शनिवार": 6,
+};
+
+function pickColumn(headers: string[], ...patterns: RegExp[]): string | null {
+  for (const pattern of patterns) {
+    const hit = headers.find((h) => pattern.test(h));
+    if (hit) return hit;
+  }
+  return null;
+}
+
+const fold = (value: string) => value.trim().toLowerCase().replace(/\s+/g, " ");
+
+/** "Monday", "Mon", "1", "सोमवार" → the weekday number; null when it is none of those. */
+export function parseWeekdayWord(raw: string): number | null {
+  const text = fold(raw);
+  if (text === "") return null;
+  if (/^[0-6]$/.test(text)) return Number(text);
+  if (text in DAY_WORDS) return DAY_WORDS[text]!;
+  const head = text.replace(/[^a-zऀ-ॿ]/g, "");
+  return head in DAY_WORDS ? DAY_WORDS[head]! : null;
+}
+
+/**
+ * Resolves the sheet against the school. Pure of writes; the commit calls it
+ * and then writes what it returns.
+ */
+export async function previewTimetableImport(ctx: ActiveContext, csv: string): Promise<TimetableImportPreview> {
+  assertAdmin(ctx);
+  const parsed = parseCsv(csv.slice(0, 500_000));
+  const headers = parsed.headers;
+  const dayCol = pickColumn(headers, /^(week)?day$/, /day/);
+  const periodCol = pickColumn(headers, /^period/, /period|slot|hour/);
+  const classCol = pickColumn(headers, /^class$/, /class|section|division/);
+  const subjectCol = pickColumn(headers, /^subject$/, /subject|lesson/);
+  const teacherCol = pickColumn(headers, /^teacher$/, /teacher|staff|email/);
+  const roomCol = pickColumn(headers, /^room$/, /room|venue/);
+  const recognised = { day: Boolean(dayCol), period: Boolean(periodCol), className: Boolean(classCol), subject: Boolean(subjectCol), teacher: Boolean(teacherCol), room: Boolean(roomCol) };
+  const problems: TimetableImportProblem[] = [];
+  if (!dayCol || !periodCol || !classCol || !subjectCol) {
+    problems.push({ line: 1, value: headers.join(", "), reasonKey: "officeBulk.timetableNeedColumns" });
+    return { rows: [], problems, recognised };
+  }
+
+  const [week, periods, classes, staff, existing] = await Promise.all([
+    schoolWeek(ctx.schoolId),
+    db.timetablePeriod.findMany({ where: { schoolId: ctx.schoolId, archivedAt: null }, orderBy: [{ position: "asc" }, { startMinute: "asc" }], select: { id: true, name: true, kind: true } }),
+    db.class.findMany({ where: { schoolId: ctx.schoolId, archivedAt: null }, select: { id: true, name: true, section: true } }),
+    db.membership.findMany({
+      where: { schoolId: ctx.schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+      select: { id: true, user: { select: { name: true, preferredName: true, email: true } } },
+      take: 1000,
+    }),
+    db.timetableSlot.findMany({ where: { schoolId: ctx.schoolId, class: { archivedAt: null } }, select: { classId: true, weekday: true, periodId: true, teacherMembershipId: true, class: { select: { name: true } } } }),
+  ]);
+  const lessonPeriods = periods.filter((p) => p.kind === "LESSON");
+  const periodByName = new Map(periods.map((p) => [fold(p.name), p]));
+  const classByName = new Map<string, { id: string; name: string }>();
+  for (const k of classes) {
+    classByName.set(fold(k.name), k);
+    if (k.section) classByName.set(fold(`${k.name} ${k.section}`), k);
+  }
+  const staffByEmail = new Map<string, { id: string; name: string }>();
+  const staffByName = new Map<string, { id: string; name: string }[]>();
+  for (const m of staff) {
+    const name = m.user.preferredName ?? m.user.name;
+    if (m.user.email) staffByEmail.set(fold(m.user.email), { id: m.id, name });
+    for (const n of new Set([fold(m.user.name), fold(m.user.preferredName ?? "")])) {
+      if (!n) continue;
+      staffByName.set(n, [...(staffByName.get(n) ?? []), { id: m.id, name }]);
+    }
+  }
+  const cellOf = (classId: string, weekday: number, periodId: string) => `${classId}:${weekday}:${periodId}`;
+  const existingCells = new Set(existing.map((e) => cellOf(e.classId, e.weekday, e.periodId)));
+  /** `weekday:periodId:teacher` → the class they already teach then, for the clash check. */
+  const busy = new Map<string, { classId: string; className: string }>();
+  for (const e of existing) if (e.teacherMembershipId) busy.set(`${e.weekday}:${e.periodId}:${e.teacherMembershipId}`, { classId: e.classId, className: e.class.name });
+
+  const rows: TimetableImportRow[] = [];
+  const seenCell = new Map<string, number>();
+  const claimedInSheet = new Map<string, string>();
+  parsed.rows.slice(0, IMPORT_MAX_ROWS).forEach((cells, index) => {
+    const line = parsed.lineNumbers[index] ?? index + 2;
+    const dayText = cells[dayCol] ?? "";
+    const periodText = cells[periodCol] ?? "";
+    const classText = cells[classCol] ?? "";
+    const subject = (cells[subjectCol] ?? "").trim().slice(0, SUBJECT_MAX);
+    const teacherText = teacherCol ? (cells[teacherCol] ?? "").trim() : "";
+    const room = roomCol ? (cells[roomCol] ?? "").trim().slice(0, ROOM_MAX) || null : null;
+    const label = [dayText, periodText, classText, subject].filter(Boolean).join(" · ");
+
+    const weekday = parseWeekdayWord(dayText);
+    if (weekday === null) return void problems.push({ line, value: label, reasonKey: "officeBulk.timetableUnknownDay", reasonVars: { day: dayText } });
+    if (!week.includes(weekday)) return void problems.push({ line, value: label, reasonKey: "timetable.mondayToSaturday" });
+
+    const periodKey = fold(periodText);
+    let period = periodByName.get(periodKey) ?? null;
+    if (!period && /^\d{1,2}$/.test(periodKey)) period = lessonPeriods[Number(periodKey) - 1] ?? null;
+    if (!period) return void problems.push({ line, value: label, reasonKey: "officeBulk.timetableUnknownPeriod", reasonVars: { period: periodText } });
+    if (period.kind === "BREAK") return void problems.push({ line, value: label, reasonKey: "timetable.isABreak", reasonVars: { name: period.name } });
+
+    const klass = classByName.get(fold(classText)) ?? null;
+    if (!klass) return void problems.push({ line, value: label, reasonKey: "officeBulk.timetableUnknownClass", reasonVars: { class: classText } });
+    if (subject.length < 1) return void problems.push({ line, value: label, reasonKey: "timetable.saySubject" });
+
+    const cell = cellOf(klass.id, weekday, period.id);
+    const earlier = seenCell.get(cell);
+    if (earlier !== undefined) return void problems.push({ line, value: label, reasonKey: "officeBulk.timetableCellTwice", reasonVars: { line: earlier } });
+    seenCell.set(cell, line);
+
+    let teacherMembershipId: string | null = null;
+    let teacherName: string | null = null;
+    let teacherIssueKey: TranslationKey | null = null;
+    let teacherIssueVars: Record<string, string | number> | undefined;
+    if (teacherText) {
+      const byEmail = staffByEmail.get(fold(teacherText));
+      const byName = byEmail ? [byEmail] : (staffByName.get(fold(teacherText)) ?? []);
+      if (byName.length === 0) teacherIssueKey = "timetable.notTeachingStaff";
+      else if (byName.length > 1) {
+        teacherIssueKey = "officeBulk.timetableTeacherAmbiguous";
+        teacherIssueVars = { teacher: teacherText };
+      } else {
+        const found = byName[0]!;
+        const at = `${weekday}:${period.id}:${found.id}`;
+        const elsewhere = busy.get(at);
+        const inSheet = claimedInSheet.get(at);
+        if (elsewhere && elsewhere.classId !== klass.id) {
+          teacherIssueKey = "timetable.teacherClash";
+          teacherIssueVars = { class: elsewhere.className, subject };
+        } else if (inSheet && inSheet !== klass.id) {
+          teacherIssueKey = "officeBulk.timetableTeacherClashInSheet";
+          teacherIssueVars = { teacher: found.name };
+        } else {
+          teacherMembershipId = found.id;
+          teacherName = found.name;
+          claimedInSheet.set(at, klass.id);
+        }
+      }
+    }
+    rows.push({ line, weekday, periodId: period.id, periodName: period.name, classId: klass.id, className: klass.name, subject, room, teacherMembershipId, teacherName, teacherIssueKey, ...(teacherIssueVars ? { teacherIssueVars } : {}), replaces: existingCells.has(cell) });
+  });
+  if (parsed.rows.length > IMPORT_MAX_ROWS) problems.push({ line: IMPORT_MAX_ROWS + 2, value: "", reasonKey: "officeBulk.timetableTooManyRows", reasonVars: { max: IMPORT_MAX_ROWS } });
+  return { rows, problems, recognised };
+}
+
+export type TimetableImportResult = { written: number; replaced: number; unstaffed: number; classes: number; problems: TimetableImportProblem[] };
+
+/**
+ * Writes the sheet: the preview run again (the office may have changed a
+ * class name since it looked) and every resolved row upserted in one tenant
+ * transaction. A row with a teacher problem is written without the teacher.
+ * Idempotent: the same sheet twice upserts the same cells.
+ */
+export async function commitTimetableImport(ctx: ActiveContext, csv: string): Promise<TimetableImportResult> {
+  assertAdmin(ctx);
+  const preview = await previewTimetableImport(ctx, csv);
+  const schoolId = ctx.schoolId;
+  if (preview.rows.length > 0) {
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as typeof db;
+      // A class archived before releasing its teachers would make the unique on (school, weekday, period, teacher) refuse a row below; free its claims first, as setSlot does.
+      const teachers = [...new Set(preview.rows.map((r) => r.teacherMembershipId).filter((id): id is string => Boolean(id)))];
+      if (teachers.length > 0) await tx.timetableSlot.updateMany({ where: { schoolId, teacherMembershipId: { in: teachers }, class: { archivedAt: { not: null } } }, data: { teacherMembershipId: null } });
+      for (const row of preview.rows) {
+        await tx.timetableSlot.upsert({
+          where: { classId_weekday_periodId: { classId: row.classId, weekday: row.weekday, periodId: row.periodId } },
+          create: { schoolId, classId: row.classId, periodId: row.periodId, weekday: row.weekday, subject: row.subject, teacherMembershipId: row.teacherMembershipId, room: row.room },
+          update: { subject: row.subject, teacherMembershipId: row.teacherMembershipId, room: row.room },
+          select: { id: true },
+        });
+      }
+    });
+  }
+  const result: TimetableImportResult = {
+    written: preview.rows.length,
+    replaced: preview.rows.filter((r) => r.replaces).length,
+    unstaffed: preview.rows.filter((r) => !r.teacherMembershipId).length,
+    classes: new Set(preview.rows.map((r) => r.classId)).size,
+    problems: preview.problems,
+  };
+  await audit({ schoolId, actorUserId: ctx.user.id, action: "timetable.import", targetType: "School", targetId: schoolId, meta: { written: result.written, replaced: result.replaced, unstaffed: result.unstaffed, classes: result.classes, problems: result.problems.length } });
+  return result;
+}
+
+export type TimetableCopyResult = { copied: number; unstaffed: number; classes: { classId: string; className: string; copied: number }[] };
+
+/**
+ * Copies one section's whole week onto its sister sections — 5A's grid
+ * onto 5B and 5C, the single most repetitive thing about a school of many
+ * sections. The subjects and periods are what the sisters share; the
+ * TEACHER never is, because 5A's maths teacher is in 5A at that very
+ * period, so every copied lesson is written without one, for the office to
+ * fill from the free list. Rooms are the source's and are not copied either.
+ * OVERWRITES each target's week, as the day copy does and for its reason.
+ */
+export async function copyWeekToSections(ctx: ActiveContext, fromClassId: string, toClassIds: string[]): Promise<Result & TimetableCopyResult> {
+  assertAdmin(ctx);
+  const schoolId = ctx.schoolId;
+  const targets = [...new Set(toClassIds)].filter((id) => id !== fromClassId).slice(0, 40);
+  if (targets.length === 0) return { ok: false, errorKey: "officeBulk.copyNeedSections", copied: 0, unstaffed: 0, classes: [] };
+  const [source, sisters, slots] = await Promise.all([
+    db.class.findFirst({ where: { id: fromClassId, schoolId, archivedAt: null }, select: { id: true, name: true } }),
+    db.class.findMany({ where: { id: { in: targets }, schoolId, archivedAt: null }, select: { id: true, name: true }, orderBy: { name: "asc" } }),
+    db.timetableSlot.findMany({ where: { schoolId, classId: fromClassId }, select: { periodId: true, weekday: true, subject: true } }),
+  ]);
+  if (!source) return { ok: false, errorKey: "timetable.classNotHere", copied: 0, unstaffed: 0, classes: [] };
+  if (sisters.length !== targets.length) return { ok: false, errorKey: "timetable.classNotHere", copied: 0, unstaffed: 0, classes: [] };
+  if (slots.length === 0) return { ok: false, errorKey: "timetable.nothingToCopy", copied: 0, unstaffed: 0, classes: [] };
+
+  await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    await tx.timetableSlot.deleteMany({ where: { schoolId, classId: { in: sisters.map((k) => k.id) } } });
+    await tx.timetableSlot.createMany({
+      data: sisters.flatMap((k) => slots.map((s) => ({ schoolId, classId: k.id, periodId: s.periodId, weekday: s.weekday, subject: s.subject, teacherMembershipId: null, room: null }))),
+    });
+  });
+  const classes = sisters.map((k) => ({ classId: k.id, className: k.name, copied: slots.length }));
+  const copied = slots.length * sisters.length;
+  await audit({ schoolId, actorUserId: ctx.user.id, action: "timetable.sections.copy", targetType: "Class", targetId: fromClassId, meta: { from: source.name, to: sisters.map((k) => k.name), copied } });
+  return { ok: true, copied, unstaffed: copied, classes };
 }

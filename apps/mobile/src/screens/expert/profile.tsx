@@ -3,16 +3,19 @@ import { Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
-import { expertProfileSchema, expertSaveProfileSchema, okSchema } from "@edulink/contracts";
+import { EXPERT_KYC_MAX_DOCUMENTS, expertCalendarTokenSchema, expertKycSchema, expertProfileSchema, expertSaveProfileSchema, okSchema, type ExpertKyc } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Failed, Field, Icon, Loading, Screen, Stat, Text } from "@/components";
+import { Button, Card, Failed, Field, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
 import { Avatar } from "@/components/avatar";
-import { api, errorText } from "@/lib/api";
+import { api, API_BASE, errorText } from "@/lib/api";
+import { copyText } from "@/lib/copy";
+import { openFile } from "@/lib/open-file";
+import { PickError, pickAndUpload, type Picked } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Pill } from "../family/shared";
+import { formatInstant, Pill } from "../family/shared";
 import { Chips } from "../staff/shared";
 
 /**
@@ -71,6 +74,8 @@ export function ExpertProfile() {
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
               <Pill label={p.published ? t("expert.listed") : t("expert.notListedYet")} tone={p.published ? "ok" : "warn"} />
               {p.verified ? <Pill label={t("expert.verified")} tone="accent" /> : null}
+              {/* Families' ratings, as the marketplace shows them: an average from three on, "New" before. */}
+              <Pill label={impact.rating ? t("expert.ratingLine", { average: impact.rating.average.toFixed(1), count: impact.rating.count }) : t("expert.ratingNew")} tone={impact.rating ? "ok" : "muted"} />
             </View>
             <Text variant="xs" tone="muted">
               {p.published ? t("expert.listedBody") : t("expert.notListedBody")}
@@ -107,11 +112,197 @@ export function ExpertProfile() {
             ))}
           </Card>
 
+          <KycCard />
+          <CalendarCard />
+
           {/* The form owns its words from the first answer on: a pull-to-refresh must not wipe what is being typed. */}
           <ProfileForm profile={p} />
         </>
       ) : null}
     </Screen>
+  );
+}
+
+const KYC_KEY: Record<ExpertKyc["status"], TranslationKey> = { NONE: "expert.kycStatusNONE", SUBMITTED: "expert.kycStatusSUBMITTED", VERIFIED: "expert.kycStatusVERIFIED", REJECTED: "expert.kycStatusREJECTED" };
+const KYC_TONE: Record<ExpertKyc["status"], "muted" | "warn" | "ok" | "danger"> = { NONE: "muted", SUBMITTED: "warn", VERIFIED: "ok", REJECTED: "danger" };
+
+/**
+ * The expert's identity papers — the web's KYC card. Each file goes through
+ * the phone's one picker (lib/pick-file: a ticket in the expert's own name),
+ * the ids go to POST /api/v1/expert/kyc with a note, and what was sent is
+ * opened back through a five-minute link, never a stored URL.
+ */
+function KycCard() {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const { locale } = useLocale();
+  const [picked, setPicked] = useState<Picked[]>([]);
+  const [note, setNote] = useState("");
+  const [problem, setProblem] = useState<string | null>(null);
+  const [picking, setPicking] = useState(false);
+  const query = useQuery({
+    queryKey: ["expert", "kyc"],
+    queryFn: async () => expertKycSchema.parse(unwrap(await api().get("/api/v1/expert/kyc"))),
+  });
+  const send = useMutation({
+    mutationFn: async () => {
+      const result = await api().post("/api/v1/expert/kyc", { documentIds: picked.map((f) => f.fileId), note });
+      if (!result.ok) throw new Error(errorText(result, t("expert.kycDidNotSend")));
+      return expertKycSchema.parse(result.data);
+    },
+    onSuccess: (next) => {
+      setPicked([]);
+      setNote("");
+      qc.setQueryData(["expert", "kyc"], next);
+      void qc.invalidateQueries({ queryKey: ["expert", "profile"] });
+    },
+  });
+  const pick = async () => {
+    setProblem(null);
+    setPicking(true);
+    try {
+      const file = await pickAndUpload("document", t("common.somethingWrong"));
+      if (file && !picked.some((f) => f.fileId === file.fileId)) setPicked([...picked, file]);
+    } catch (e) {
+      setProblem(e instanceof PickError || e instanceof Error ? e.message : t("common.somethingWrong"));
+    } finally {
+      setPicking(false);
+    }
+  };
+  const when = (iso: string) => formatInstant(iso, locale, { day: "numeric", month: "short", year: "numeric" });
+  const d = query.data;
+  return (
+    <Card title={t("expert.kycTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("expert.kycBody")}
+      </Text>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {d ? (
+        <>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: th.space[2] }}>
+            <Pill label={t(KYC_KEY[d.status])} tone={KYC_TONE[d.status]} />
+            {d.submittedAt ? (
+              <Text variant="xs" tone="muted">
+                {t("expert.kycSubmittedOn", { date: when(d.submittedAt) })}
+              </Text>
+            ) : null}
+            {d.decidedAt ? (
+              <Text variant="xs" tone="muted">
+                {t("expert.kycDecidedOn", { date: when(d.decidedAt) })}
+              </Text>
+            ) : null}
+          </View>
+          {d.note && d.status !== "SUBMITTED" ? <Text variant="sm">{t("expert.kycOperatorNote", { note: d.note })}</Text> : null}
+          {d.documents.map((doc, i) => (
+            <Row
+              key={doc.fileId}
+              icon="paperclip"
+              title={t("expert.kycOpenDocument", { n: i + 1 })}
+              caption={doc.mime}
+              onPress={() => {
+                void openFile(doc.fileId, t("common.tryAgain")).then((error) => {
+                  if (error) setProblem(error);
+                });
+              }}
+            />
+          ))}
+          {d.canSubmit ? (
+            <>
+              <Text variant="sm" bold>
+                {t("expert.kycDocuments")}
+              </Text>
+              <Text variant="xs" tone="subtle">
+                {t("expert.kycDocumentCount", { count: picked.length, max: EXPERT_KYC_MAX_DOCUMENTS })}
+              </Text>
+              {picked.map((f) => (
+                <Row key={f.fileId} icon="paperclip" title={f.name} caption={f.mime} right={<Button label={t("expert.kycRemoveDocument", { name: f.name })} variant="ghost" onPress={() => setPicked(picked.filter((x) => x.fileId !== f.fileId))} />} />
+              ))}
+              <Button label={t("expert.kycAddDocument")} variant="secondary" busy={picking} disabled={picked.length >= EXPERT_KYC_MAX_DOCUMENTS} onPress={() => void pick()} />
+              <Field label={t("expert.kycYourNote")} hint={t("expert.kycYourNoteHint")} value={note} onChangeText={setNote} multiline maxLength={1000} style={{ minHeight: 72, textAlignVertical: "top", paddingTop: th.space[3] }} />
+              {problem ? (
+                <Text variant="sm" tone="danger" accessibilityLiveRegion="polite">
+                  {problem}
+                </Text>
+              ) : null}
+              {send.isError ? <Failed message={send.error.message} onRetry={() => send.mutate()} /> : null}
+              {send.isSuccess ? (
+                <Text variant="sm" tone="ok" bold accessibilityLiveRegion="polite">
+                  {t("expert.kycSent")}
+                </Text>
+              ) : null}
+              <Button label={d.status === "NONE" ? t("expert.kycSend") : t("expert.kycResend")} busy={send.isPending} disabled={picked.length === 0} onPress={() => send.mutate()} />
+            </>
+          ) : null}
+        </>
+      ) : null}
+    </Card>
+  );
+}
+
+/** "Subscribe in your calendar": the feed address, minted or rotated by one door, shown absolute so it pastes into a calendar app as it is. */
+function CalendarCard() {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const [copied, setCopied] = useState<string | null>(null);
+  const query = useQuery({
+    queryKey: ["expert", "calendar"],
+    queryFn: async () => expertCalendarTokenSchema.parse(unwrap(await api().get("/api/v1/expert/calendar/token"))),
+  });
+  const rotate = useMutation({
+    mutationFn: async () => {
+      const result = await api().post("/api/v1/expert/calendar/token");
+      if (!result.ok) throw new Error(errorText(result, t("expert.calendarDidNotMint")));
+      return expertCalendarTokenSchema.parse(result.data);
+    },
+    onSuccess: (next) => {
+      setCopied(null);
+      qc.setQueryData(["expert", "calendar"], next);
+    },
+  });
+  const url = query.data?.url ? `${API_BASE}${query.data.url}` : null;
+  return (
+    <Card title={t("expert.calendarTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("expert.calendarBody")}
+      </Text>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {query.data ? (
+        url ? (
+          <>
+            <Text variant="xs" tone="muted" bold>
+              {t("expert.calendarUrl")}
+            </Text>
+            <Text variant="xs" selectable accessibilityLabel={t("expert.calendarUrl")}>
+              {url}
+            </Text>
+            <Text variant="xs" tone="muted">
+              {t("expert.calendarRotateHint")}
+            </Text>
+            {copied ? (
+              <Text variant="sm" tone="ok" bold accessibilityLiveRegion="polite">
+                {copied}
+              </Text>
+            ) : null}
+            <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+              <Button label={t("expert.calendarCopy")} variant="secondary" onPress={() => void copyText(url, t("expert.calendarTitle")).then((done) => setCopied(done ? t("expert.calendarCopied") : t("totp.copyFailed")))} style={{ flexGrow: 1 }} />
+              <Button label={t("expert.calendarRotate")} variant="ghost" busy={rotate.isPending} onPress={() => rotate.mutate()} style={{ flexGrow: 1 }} />
+            </View>
+          </>
+        ) : (
+          <>
+            <Text variant="sm" tone="muted">
+              {t("expert.calendarNone")}
+            </Text>
+            <Button label={t("expert.calendarMint")} busy={rotate.isPending} onPress={() => rotate.mutate()} />
+          </>
+        )
+      ) : null}
+      {rotate.isError ? <Failed message={rotate.error.message} onRetry={() => rotate.mutate()} /> : null}
+    </Card>
   );
 }
 

@@ -161,13 +161,77 @@ async function allowanceOf(c: Child, settings: GigSettingsView): Promise<Allowan
 /* The provider's side                                                         */
 /* -------------------------------------------------------------------------- */
 
-export type SlotInput = { kind: SessionKind; title: string; startsAt: string; minutes?: number; meetingUrl: string; seats?: number };
+export type SlotInput = { kind: SessionKind; title: string; startsAt: string; minutes?: number; meetingUrl: string; seats?: number; /** A price above zero is the paid path, which is gated here and not yet built. */ pricePaise?: number };
+
+/* -------------------------------------------------------------------------- */
+/* Free duty (decision 0004)                                                   */
+/* -------------------------------------------------------------------------- */
+
+export type FreeDuty = {
+  /** Free one-to-ones still owed in this period. */
+  oneToOnes: number;
+  /** Free workshops still owed in this period. */
+  workshops: number;
+  period: { month: string; quarter: string };
+  stage: { oneToOnes: "START" | "ONGOING"; workshops: "START" | "ONGOING" };
+  asked: { startOneToOnes: number; startWorkshops: number; monthlyOneToOnes: number; quarterlyWorkshops: number };
+  dutyDone: boolean;
+};
+
+/** "2026-Q4" for a month key, in the same clock the month key is read in. */
+export const quarterKey = (month: string): string => {
+  const [y, m] = month.split("-").map(Number) as [number, number];
+  return `${y}-Q${Math.floor((m - 1) / 3) + 1}`;
+};
+
+/**
+ * What an expert still owes free before a price may be asked (decision 0004):
+ * the first `expertStartOneToOnes` one-to-ones and `expertStartWorkshops`
+ * workshops free, and after those `expertMonthlyOneToOnes` a month and
+ * `expertQuarterlyWorkshops` a quarter. Counted from sessions DELIVERED — a
+ * seat asked for or missed owes nothing either way — a workshop once however
+ * many seats it held, by the clock the gig month is read in (monthKey).
+ *
+ * This is the gate the paid path will use and the only place the rule lives:
+ * `offerSlot` refuses a price while anything here is owed, and the expert's
+ * home reads it as "2 free one-to-ones left this month".
+ */
+export async function freeDutyRemaining(expertUserId: string, now: Date = new Date()): Promise<FreeDuty> {
+  const settings = await gigSettings();
+  const delivered = await db.gigBooking.findMany({ where: { providerUserId: expertUserId, status: "DELIVERED" }, select: { kind: true, slotId: true, slot: { select: { startsAt: true } } } });
+  const month = monthKey(now);
+  const quarter = quarterKey(month);
+  const ones = delivered.filter((d) => d.kind === "ONE_TO_ONE");
+  const workshops = new Map(delivered.filter((d) => d.kind === "WORKSHOP").map((d) => [d.slotId, d.slot.startsAt] as const));
+  const oneStage = ones.length < settings.expertStartOneToOnes ? "START" : "ONGOING";
+  const workshopStage = workshops.size < settings.expertStartWorkshops ? "START" : "ONGOING";
+  const oneToOnes = oneStage === "START" ? settings.expertStartOneToOnes - ones.length : Math.max(0, settings.expertMonthlyOneToOnes - ones.filter((d) => monthKey(d.slot.startsAt) === month).length);
+  const owedWorkshops = workshopStage === "START" ? settings.expertStartWorkshops - workshops.size : Math.max(0, settings.expertQuarterlyWorkshops - [...workshops.values()].filter((at) => quarterKey(monthKey(at)) === quarter).length);
+  return {
+    oneToOnes,
+    workshops: owedWorkshops,
+    period: { month, quarter },
+    stage: { oneToOnes: oneStage, workshops: workshopStage },
+    asked: { startOneToOnes: settings.expertStartOneToOnes, startWorkshops: settings.expertStartWorkshops, monthlyOneToOnes: settings.expertMonthlyOneToOnes, quarterlyWorkshops: settings.expertQuarterlyWorkshops },
+    dutyDone: oneToOnes === 0 && owedWorkshops === 0,
+  };
+}
 
 /** A provider offers a time. */
 export async function offerSlot(ctx: ActiveContext, input: SlotInput, now: Date = new Date()): Promise<GigResult<{ slotId: string }>> {
   const me = await provider(ctx);
   const settings = await gigSettings();
   if (me.kind === "TEACHER" && input.kind !== "ONE_TO_ONE") return { ok: false, errorKey: "gigs.refuseTeacherWorkshop" };
+  if ((input.pricePaise ?? 0) > 0) {
+    // THE PAID GATE, in the order the decisions stack: a teacher's guidance is always free; an expert
+    // asks a price only once the period's free duty is given (0004); and even then nothing paid is
+    // built, so the price is refused rather than stored (0003) — the row's pricePaise stays 0.
+    if (me.kind !== "EXPERT") return { ok: false, errorKey: "gigs.refusePaidNotYet" };
+    const duty = await freeDutyRemaining(me.userId, now);
+    const owed = input.kind === "ONE_TO_ONE" ? duty.oneToOnes : duty.workshops;
+    if (owed > 0) return { ok: false, errorKey: input.kind === "ONE_TO_ONE" ? "gigs.freeDutyFirst" : "gigs.freeDutyFirstWorkshop", vars: { count: owed } };
+    return { ok: false, errorKey: "gigs.refusePaidNotYet" };
+  }
   const title = input.title.trim();
   if (title.length < 5 || title.length > 120) return { ok: false, errorKey: "gigs.refuseSlotTitle" };
   const startsAt = new Date(input.startsAt);

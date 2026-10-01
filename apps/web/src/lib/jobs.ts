@@ -16,6 +16,8 @@ import { expireOffers } from "./admissions";
 import { expireInvites } from "./invites";
 import { refreshMinority } from "./birthdate";
 import { expireRequests } from "./request-expiry";
+import { rebuildQuestionStats } from "./bank-tools";
+import { sampleUsage } from "./plans";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -41,7 +43,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -105,6 +107,20 @@ export const JOBS: Record<JobName, JobSpec> = {
     expectEveryMs: 3 * HOUR,
     run: async () => {
       const { summary, perSchool } = await expireOffers();
+      return { summary, perSchool };
+    },
+  },
+  "usage:sample": {
+    name: "usage:sample",
+    // Nightly, after the day's last texts and before the tidies: each live
+    // school's month so far — pupils, texts, storage, people active — as one
+    // UsageSample row, the table's one writer (src/lib/plans.ts).
+    schedule: "10 2 * * *",
+    describeKey: "root.jobDescUsage",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { summary, perSchool } = await sampleUsage();
       return { summary, perSchool };
     },
   },
@@ -257,6 +273,21 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { sent, failed, perSchool } = await drainQueue();
       return { summary: { sent, failed }, perSchool };
+    },
+  },
+  "bank:stats": {
+    name: "bank:stats",
+    // Nightly, after the retention sweep has had its say on the answer rows:
+    // the one writer of QuestionStat (bank-tools.ts, rebuildQuestionStats),
+    // every (question, grade) bucket recomputed from every school's answers,
+    // which only the owner connection a job runs on can read across schools.
+    schedule: "20 4 * * *",
+    describeKey: "root.jobDescBankStats",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { questions, buckets, removed } = await rebuildQuestionStats();
+      return { summary: { questions, buckets, removed } };
     },
   },
 };

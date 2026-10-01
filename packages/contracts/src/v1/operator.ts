@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { expertKycDocumentSchema, expertKycStatusSchema } from "./experts";
 
 /**
  * operator: the server operator's pages (the web's /root) and the content
@@ -136,6 +137,16 @@ export const operatorExpertsSchema = z.object({
       publishedAt: isoOrNull,
       verifiedAt: isoOrNull,
       createdAt: iso,
+      /** The papers: where they stand, the note, and the stored ids the operator opens through /api/files. Absent from older servers. */
+      kyc: z
+        .object({
+          status: expertKycStatusSchema,
+          note: z.string().nullable(),
+          submittedAt: isoOrNull,
+          decidedAt: isoOrNull,
+          documents: z.array(expertKycDocumentSchema),
+        })
+        .default({ status: "NONE", note: null, submittedAt: null, decidedAt: null, documents: [] }),
     }),
   ),
 });

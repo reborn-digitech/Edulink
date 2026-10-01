@@ -6,10 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
-import { setStanding } from "./actions";
+import { setStanding, decideKycAction } from "./actions";
 import type { CurationEntry } from "@/lib/superuser";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
+import { formatDate } from "@/lib/dates";
+import { TextAreaField } from "@/components/ui/field";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
+import type { ExpertKyc } from "@edulink/contracts";
+
+const KYC_KEY: Record<ExpertKyc["status"], TranslationKey> = { NONE: "expert.kycStatusNONE", SUBMITTED: "expert.kycStatusSUBMITTED", VERIFIED: "expert.kycStatusVERIFIED", REJECTED: "expert.kycStatusREJECTED" };
+const KYC_TONE: Record<ExpertKyc["status"], "neutral" | "warn" | "ok" | "danger"> = { NONE: "neutral", SUBMITTED: "warn", VERIFIED: "ok", REJECTED: "danger" };
 
 /**
  * One expert, and the two decisions an operator makes about them.
@@ -28,9 +35,27 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const [rejecting, setRejecting] = useState(false);
+  const [reason, setReason] = useState("");
 
   const published = entry.publishedAt !== null;
   const verified = entry.verifiedAt !== null;
+  const kyc = entry.kyc;
+
+  function decide(decision: "VERIFIED" | "REJECTED") {
+    setError(null);
+    startTransition(async () => {
+      const result = await decideKycAction(entry.profileId, { decision, note: reason });
+      if (!result.ok) {
+        setError(actionError(t, result, "common.tryAgain"));
+        return;
+      }
+      setRejecting(false);
+      setReason("");
+      toast({ tone: "ok", title: decision === "VERIFIED" ? t("expert.kycVerifiedToast", { name: entry.name }) : t("expert.kycRejectedToast", { name: entry.name }) });
+      router.refresh();
+    });
+  }
 
   function apply(next: { published: boolean; verified: boolean }, done: string) {
     setError(null);
@@ -107,6 +132,57 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
       {entry.bio && (
         <p className="mt-2 line-clamp-4 text-sm leading-relaxed text-fg-muted">{entry.bio}</p>
       )}
+
+      {/* The papers: the KYC column. The ids open through /api/files, which admits the expert and the operator only. */}
+      <div className="mt-3 space-y-2 rounded-[--radius-md] border border-border bg-surface-muted p-3" data-testid="kyc-row">
+        <p className="flex flex-wrap items-center gap-2 text-sm">
+          <span className="font-semibold text-fg">{t("expert.kycColumn")}</span>
+          <Badge tone={KYC_TONE[kyc.status]} size="sm">
+            {t(KYC_KEY[kyc.status])}
+          </Badge>
+          {kyc.submittedAt && <span className="text-xs text-fg-muted">{t("expert.kycSubmittedOn", { date: formatDate(new Date(kyc.submittedAt)) })}</span>}
+          {kyc.decidedAt && <span className="text-xs text-fg-muted">{t("expert.kycDecidedOn", { date: formatDate(new Date(kyc.decidedAt)) })}</span>}
+        </p>
+        {kyc.note && <p className="text-sm text-fg-muted">{kyc.note}</p>}
+        {kyc.documents.length === 0 ? (
+          <p className="text-xs text-fg-muted">{t("expert.kycNoPapers")}</p>
+        ) : (
+          <ul className="flex flex-wrap gap-2 text-sm">
+            {kyc.documents.map((d, i) => (
+              <li key={d.fileId}>
+                <a href={`/api/files/${encodeURIComponent(d.fileId)}`} target="_blank" rel="noreferrer noopener" className="font-medium text-accent hover:underline">
+                  {t("expert.kycOpenDocument", { n: i + 1 })}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+        {kyc.documents.length > 0 && kyc.status !== "VERIFIED" && (
+          <div className="flex flex-wrap gap-2">
+            <Button size="sm" loading={pending} onClick={() => decide("VERIFIED")} data-testid="kyc-verify">
+              {t("expert.kycVerify")}
+            </Button>
+            {!rejecting && (
+              <Button size="sm" variant="secondary" loading={pending} onClick={() => setRejecting(true)}>
+                {t("expert.kycReject")}
+              </Button>
+            )}
+          </div>
+        )}
+        {rejecting && (
+          <div className="space-y-2">
+            <TextAreaField label={t("expert.kycRejectReason")} value={reason} onChange={(e) => setReason(e.target.value)} maxLength={1000} rows={2} />
+            <div className="flex flex-wrap gap-2">
+              <Button size="sm" variant="danger" loading={pending} disabled={reason.trim().length === 0} onClick={() => decide("REJECTED")} data-testid="kyc-reject">
+                {t("expert.kycReject")}
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => setRejecting(false)}>
+                {t("common.keep")}
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {error && (
         <p role="alert" className="mt-3 text-sm font-medium text-danger">

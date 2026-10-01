@@ -10,6 +10,7 @@ import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
 import { BulkSelectProvider, SelectSchool } from "./bulk-select";
+import { UsageSummary } from "./usage-summary";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -55,6 +56,9 @@ export default async function RootPage({
       <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("root.operatorIntro")}
       </p>
+
+      {/* This month against each school's plan, from the nightly rows; only when there is a live school to count. */}
+      {liveCount > 0 && <UsageSummary session={session} />}
 
       {(totals.length > 1 || narrowed) && (
         <DataToolbar

@@ -9,13 +9,17 @@ import { AccessError } from "./tenancy";
 import { forTenant } from "./tenant-context";
 import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
-import { sendTeacherInvite } from "./email";
+import { sendMagicLink, sendTeacherInvite } from "./email";
+import { revokeAllAccess } from "./session";
+import { MAGIC_LINK_TTL_MINUTES } from "./constants";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
 import { syncStandinGuardian } from "./standin-guardian";
 import { INVITE_TTL_DAYS } from "./constants";
 import { normaliseLocation } from "./places";
 import type { ActiveContext } from "./session";
+import { kycViews } from "./expert-kyc";
+import type { ExpertKyc } from "@edulink/contracts";
 
 /**
  * Whoever runs the server.
@@ -1234,6 +1238,8 @@ export type CurationEntry = {
   publishedAt: Date | null;
   verifiedAt: Date | null;
   createdAt: Date;
+  /** Their papers: status, note, and the stored ids the operator opens through /api/files. */
+  kyc: ExpertKyc;
 };
 
 /**
@@ -1264,9 +1270,15 @@ export async function listExpertsForCuration(session: ActiveContext): Promise<Cu
       publishedAt: true,
       verifiedAt: true,
       createdAt: true,
+      kycStatus: true,
+      kycNote: true,
+      kycSubmittedAt: true,
+      kycDecidedAt: true,
+      kycDocumentIds: true,
       user: { select: { name: true, email: true } },
     },
   });
+  const kyc = await kycViews(profiles);
 
   return profiles.map((profile) => ({
     profileId: profile.id,
@@ -1283,6 +1295,7 @@ export async function listExpertsForCuration(session: ActiveContext): Promise<Cu
     publishedAt: profile.publishedAt,
     verifiedAt: profile.verifiedAt,
     createdAt: profile.createdAt,
+    kyc: kyc.get(profile.id)!,
   }));
 }
 
@@ -1310,7 +1323,7 @@ export async function setExpertStanding(
 
   const profile = await db.expertProfile.findUnique({
     where: { id: profileId },
-    select: { id: true, headline: true, publishedAt: true, user: { select: { name: true } } },
+    select: { id: true, headline: true, publishedAt: true, verifiedAt: true, verifiedBy: true, kycStatus: true, kycDocumentIds: true, user: { select: { name: true } } },
   });
   if (!profile) return { ok: false, errorKey: "root.noSuchExpert" };
 
@@ -1325,12 +1338,17 @@ export async function setExpertStanding(
   // mentorships stay exactly as they were: a school that has arranged an hour
   // next Tuesday, or a child who has a mentor, must not have it removed
   // silently because somebody was taken off a list. It stops them being found.
+  // ONE TRUTH WITH KYC (src/lib/expert-kyc.ts): "identity checked" here IS a
+  // VERIFIED decision, and withdrawing it puts the papers, if any, back in the
+  // queue rather than leaving a badge whose two columns disagree.
+  const verifiedNow = next.verified && profile.kycStatus !== "VERIFIED";
   await db.expertProfile.update({
     where: { id: profileId },
     data: {
       publishedAt: next.published ? (profile.publishedAt ?? new Date()) : null,
-      verifiedAt: next.verified ? new Date() : null,
-      verifiedBy: next.verified ? session.user.id : null,
+      verifiedAt: next.verified ? (profile.verifiedAt ?? new Date()) : null,
+      verifiedBy: next.verified ? (profile.verifiedBy ?? session.user.id) : null,
+      ...(next.verified ? (verifiedNow ? { kycStatus: "VERIFIED", kycDecidedAt: new Date() } : {}) : profile.kycStatus === "VERIFIED" ? { kycStatus: profile.kycDocumentIds.length > 0 ? "SUBMITTED" : "NONE", kycDecidedAt: null } : {}),
     },
   });
 
@@ -1571,4 +1589,203 @@ export async function accessHistory(schoolId: string, take = 50) {
     operatorEmail: row.user.email,
     live: row.endedAt === null && row.expiresAt.getTime() > Date.now(),
   }));
+}
+
+/* -------------------------------------------------------------------------- */
+/* Support tooling — help a school's office in without ever becoming it        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * THREE DOORS AND NO IMPERSONATION. An administrator locked out of their
+ * school rings whoever runs the server, and until these existed the honest
+ * answers were "I will invite you again" by hand and "I cannot". What the
+ * operator can do now: send a pending admin invitation again with a fresh
+ * link; send an administrator a sign-in link by email (a magic link — the
+ * operator never sees, sets or resets a password); and sign an administrator
+ * out of every device (every session, every unspent token, every push
+ * registration — the same revocation a password reset performs).
+ *
+ * WHAT THE OPERATOR STILL CANNOT DO is the point: none of these signs the
+ * operator in as anybody, reads anything of the school, or creates an account
+ * or a membership. Each is aimed at a person the school ALREADY made its
+ * administrator or head, checked by membership, and each is audited twice —
+ * the operator's own unattributed row and a row in the school's own Safety
+ * Centre — with the school's office told by notification, exactly as a
+ * verification is (tellSchoolVerified above).
+ */
+
+export type SchoolAdminRow = {
+  userId: string;
+  name: string;
+  email: string | null;
+  role: "ADMIN" | "PRINCIPAL";
+  liveSessions: number;
+  lastSeenAt: Date | null;
+};
+
+/** The school's active administrators and head: who the doors below may be aimed at. */
+export async function listSchoolAdmins(session: ActiveContext, schoolId: string): Promise<SchoolAdminRow[]> {
+  assertSuperuser(session);
+  const members = await asOperatorIn(session, schoolId, () =>
+    db.membership.findMany({
+      where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+      select: { userId: true, role: true, user: { select: { name: true, email: true } } },
+      orderBy: [{ role: "asc" }, { joinedAt: "asc" }],
+    }),
+  );
+  const seen = new Map<string, SchoolAdminRow>();
+  for (const m of members) {
+    if (seen.has(m.userId)) continue;
+    seen.set(m.userId, { userId: m.userId, name: m.user.name, email: m.user.email, role: m.role as "ADMIN" | "PRINCIPAL", liveSessions: 0, lastSeenAt: null });
+  }
+  if (seen.size === 0) return [];
+  const sessions = await db.session.groupBy({
+    by: ["userId"],
+    where: { userId: { in: [...seen.keys()] }, revokedAt: null, expiresAt: { gt: new Date() } },
+    _count: { _all: true },
+    _max: { lastSeenAt: true },
+  });
+  for (const row of sessions) {
+    const admin = seen.get(row.userId);
+    if (!admin) continue;
+    admin.liveSessions = row._count._all;
+    admin.lastSeenAt = row._max.lastSeenAt;
+  }
+  return [...seen.values()];
+}
+
+/** One of the school's active admins or its head, by account id — or the refusal. */
+async function schoolAdmin(session: ActiveContext, schoolId: string, userId: string): Promise<{ ok: true; user: { id: string; name: string; email: string | null; role: string }; schoolName: string } | { ok: false; errorKey: TranslationKey }> {
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true } });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
+  const member = await asOperatorIn(session, schoolId, () =>
+    db.membership.findFirst({
+      where: { schoolId, userId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+      select: { role: true, user: { select: { id: true, name: true, email: true, disabledAt: true } } },
+    }),
+  );
+  if (!member) return { ok: false, errorKey: "root.notAnAdminHere" };
+  if (member.user.disabledAt) return { ok: false, errorKey: "root.adminAccountDisabled" };
+  return { ok: true, user: { id: member.user.id, name: member.user.name, email: member.user.email, role: member.role }, schoolName: school.name };
+}
+
+/** The school's office hears what the operator did for it — best-effort, as tellSchoolVerified is. */
+async function tellSchoolOffice(
+  session: ActiveContext,
+  schoolId: string,
+  text: { titleKey: TranslationKey; bodyKey: TranslationKey; vars: Record<string, string | number>; event: string },
+): Promise<void> {
+  try {
+    await asOperatorIn(session, schoolId, async () => {
+      const office = await db.membership.findMany({
+        where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+        select: { userId: true },
+        distinct: ["userId"],
+      });
+      for (const member of office) {
+        await notify({
+          userId: member.userId,
+          schoolId,
+          kind: "SYSTEM",
+          titleKey: text.titleKey,
+          titleVars: text.vars,
+          bodyKey: text.bodyKey,
+          bodyVars: text.vars,
+          url: "/admin/safety",
+          meta: { event: text.event },
+        });
+      }
+    });
+  } catch (error) {
+    console.error(`[superuser] ${text.event} notification failed`, error instanceof Error ? error.message : error);
+  }
+}
+
+/**
+ * Sends a pending admin or principal invitation again, with a fresh link;
+ * the old link stops working. The same steps resendInviteFor takes for the
+ * office, through the operator's own table (Invite is one of the two).
+ */
+export async function resendAdminInvite(session: ActiveContext, schoolId: string, inviteId: string): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true } });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
+  const invite = await db.invite.findFirst({
+    where: { id: inviteId, schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "PENDING" },
+    select: { id: true, email: true, role: true },
+  });
+  if (!invite?.email) return { ok: false, errorKey: "root.inviteNotPending" };
+
+  const token = generateToken();
+  await db.invite.update({ where: { id: invite.id }, data: { tokenHash: hashToken(token), expiresAt: new Date(Date.now() + INVITE_TTL_DAYS * 86_400_000) } });
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  await sendTeacherInvite(invite.email, `${appUrl}/invite/${token}`, school.name, "Relay");
+
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { schoolId, name: school.name, email: invite.email, role: invite.role } });
+  await audit({ schoolId, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { email: invite.email, role: invite.role } });
+  await tellSchoolOffice(session, schoolId, {
+    titleKey: "notifTitle.operatorResentInvite",
+    bodyKey: "notifBody.operatorResentInvite",
+    vars: { school: school.name, email: invite.email },
+    event: "operator.invite.resend",
+  });
+  return { ok: true };
+}
+
+/**
+ * Emails one of the school's administrators a sign-in link — the same
+ * MAGIC_LINK token the login page mints, good for twenty minutes and once.
+ * NEVER A PASSWORD: the operator sets nothing, sees nothing, and the person
+ * changes their own password from their account page once in.
+ */
+export async function sendAdminResetLink(session: ActiveContext, schoolId: string, userId: string): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+  const found = await schoolAdmin(session, schoolId, userId);
+  if (!found.ok) return found;
+  const email = found.user.email?.trim().toLowerCase();
+  // A handle (name.x4f9@edulink.local) is a lookup key wearing an address's shape; nothing routes there.
+  if (!email || email.endsWith(".local") || email.endsWith(".invalid")) return { ok: false, errorKey: "root.adminHasNoEmail" };
+
+  const token = generateToken();
+  await db.authToken.create({
+    data: { userId: found.user.id, email, purpose: "MAGIC_LINK", tokenHash: hashToken(token), expiresAt: new Date(Date.now() + MAGIC_LINK_TTL_MINUTES * 60_000) },
+  });
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  await sendMagicLink(email, `${appUrl}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES);
+
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.admin.signInLink", targetType: "User", targetId: found.user.id, meta: { schoolId, name: found.schoolName, email } });
+  await audit({ schoolId, actorUserId: session.user.id, action: "superuser.admin.signInLink", targetType: "User", targetId: found.user.id, meta: { email, role: found.user.role } });
+  await tellSchoolOffice(session, schoolId, {
+    titleKey: "notifTitle.operatorSignInLink",
+    bodyKey: "notifBody.operatorSignInLink",
+    vars: { school: found.schoolName, name: found.user.name },
+    event: "operator.admin.signInLink",
+  });
+  return { ok: true };
+}
+
+/**
+ * Signs one of the school's administrators out everywhere: every session,
+ * every unspent token and every push registration, as a password reset does
+ * (revokeAllAccess). For the phone left in a taxi and the laptop in the
+ * staff room; the person signs in again with what they know.
+ */
+export async function signOutAdminEverywhere(session: ActiveContext, schoolId: string, userId: string): Promise<{ ok: boolean; errorKey?: TranslationKey; sessionsEnded?: number }> {
+  assertSuperuser(session);
+  const found = await schoolAdmin(session, schoolId, userId);
+  if (!found.ok) return found;
+
+  const sessionsEnded = await revokeAllAccess(found.user.id, { tokens: true });
+
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.admin.signOut", targetType: "User", targetId: found.user.id, meta: { schoolId, name: found.schoolName, sessionsEnded } });
+  await audit({ schoolId, actorUserId: session.user.id, action: "superuser.admin.signOut", targetType: "User", targetId: found.user.id, meta: { role: found.user.role, sessionsEnded } });
+  await tellSchoolOffice(session, schoolId, {
+    titleKey: "notifTitle.operatorSignedOut",
+    bodyKey: "notifBody.operatorSignedOut",
+    vars: { school: found.schoolName, name: found.user.name },
+    event: "operator.admin.signOut",
+  });
+  return { ok: true, sessionsEnded };
 }

@@ -59,6 +59,9 @@ const DIRECT = [
   "AbsenceNote",
   "HealthCardRead",
   /** The syllabus: the school's chapter list per grade and subject, a class's progress on each, and the lessons planned and taught. */
+  /** The head's notes on a member of staff, and a lesson plan kept to copy into another class (2026-10-01). */
+  "StaffAppraisal",
+  "LessonPlanTemplate",
   "SyllabusUnit",
   "SyllabusProgress",
   "LessonPlan",
@@ -185,6 +188,8 @@ const DIRECT = [
   // A request to join and a claim to be a guardian: filed under the school asked, decided by it.
   "JoinRequest",
   "GuardianClaim",
+  /** A school's month of usage — pupils, texts, storage, people active — written by the nightly usage:sample job; the operator also reads every school's (SUPERUSER_READABLE in gen-rls.ts). */
+  "UsageSample",
 ];
 
 /**
@@ -229,6 +234,9 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   GigPayment: "the operator's record of a transfer to a contributor — bound to the person",
   GigPayee: "a contributor's own UPI id — bound to the person",
   GigSlot: "a time a provider offers; an expert's is open to every school, a teacher's names its school in teacherSchoolId and is held to it in the library",
+  QuestionStat: "the bank's own count of how a question is doing across every school, written by the nightly bank:stats job alone — belongs to a QuizQuestion, which belongs to no school",
+  PlatformTakedown: "the platform's record of taking a shared post down for every school; postSchoolId names the publishing school for the restore, the row is nobody's tenant",
+  Plan: "a plan the operator offers — a name, caps and a recorded price; the office reads its own through School.planId, and nothing in it belongs to a school",
 };
 
 function modelBodies(): Map<string, string> {
@@ -252,7 +260,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(126);
+    ).toBe(132);
   });
 });
 

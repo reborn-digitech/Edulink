@@ -45,6 +45,7 @@
     "digest:weekly": "npm run --silent job -- digest:weekly",
     "notifications:tidy": "npm run --silent job -- notifications:tidy",
     "jobs:watch": "npm run --silent job -- jobs:watch",
+    "usage:sample": "npm run --silent job -- usage:sample",
     "cron:install": "node scripts/cron.mjs install",
     "cron:show": "node scripts/cron.mjs show",
     "cron:remove": "node scripts/cron.mjs remove",

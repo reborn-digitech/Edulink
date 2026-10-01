@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IdentificationCardIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { IdentificationCardIcon, NotebookIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { leaveBalancesFor, STAFF_ROLES } from "@/lib/staff-records";
@@ -138,6 +138,11 @@ export default async function PrincipalStaffPage({
                       <p className="flex flex-wrap items-center gap-2 font-semibold text-fg">
                         <PersonLink membershipId={member.id} name={name} />
                         <Badge tone="neutral" size="sm">{t(member.role === "TEACHER" ? "role.teacher" : member.role === "PRINCIPAL" ? "role.principal" : "role.admin")}</Badge>
+                        {/* The head's notes on this person: observations, targets, the year's appraisal (the office reads them). */}
+                        <Link href={`/principal/staff/${member.id}/appraisal`} className="inline-flex items-center gap-1 text-xs font-medium text-accent-strong hover:underline">
+                          <NotebookIcon className="size-3.5" aria-hidden="true" />
+                          {t("appraisal.open")}
+                        </Link>
                       </p>
                       <p className="mt-0.5 text-xs text-fg-muted">
                         {[

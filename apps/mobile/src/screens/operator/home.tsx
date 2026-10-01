@@ -15,6 +15,7 @@ import {
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
+import { openFile } from "@/lib/open-file";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
@@ -159,7 +160,12 @@ export function OperatorHome() {
           }}
         />
       ) : null}
-      {d && section === "jobs" ? <Jobs jobs={d.jobs} onRefresh={() => void query.refetch()} /> : null}
+      {d && section === "jobs" ? (
+        <>
+          <Button label={t("root.metrics")} variant="secondary" onPress={() => router.push("/(app)/operator-metrics" as never)} />
+          <Jobs jobs={d.jobs} onRefresh={() => void query.refetch()} />
+        </>
+      ) : null}
       {section === "experts" ? <Experts /> : null}
       {section === "team" ? <Team /> : null}
       {section === "log" ? <Log onAdd={addSchool} /> : null}
@@ -322,6 +328,98 @@ function standingsFor(t: (key: TranslationKey, vars?: Record<string, string | nu
   ];
 }
 
+const KYC_KEY: Record<Expert["kyc"]["status"], TranslationKey> = { NONE: "expert.kycStatusNONE", SUBMITTED: "expert.kycStatusSUBMITTED", VERIFIED: "expert.kycStatusVERIFIED", REJECTED: "expert.kycStatusREJECTED" };
+const KYC_TONE: Record<Expert["kyc"]["status"], "muted" | "warn" | "ok" | "danger"> = { NONE: "muted", SUBMITTED: "warn", VERIFIED: "ok", REJECTED: "danger" };
+
+/**
+ * The web's KYC column: where an expert's papers stand, the papers
+ * themselves (opened through a five-minute link, never a stored URL), and
+ * the decision — verify, or reject with the reason the expert reads.
+ */
+function Kyc({ e }: { e: Expert }) {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const [mode, setMode] = useState<"idle" | "verify" | "reject">("idle");
+  const [reason, setReason] = useState("");
+  const decide = useMutation({
+    mutationFn: (decision: "VERIFIED" | "REJECTED") => send(api().post(`/api/v1/operator/experts/${e.profileId}/kyc`, { decision, note: reason }), t("root.didNotWork")),
+    onSuccess: (_done, decision) => {
+      setMode("idle");
+      setReason("");
+      toast.show(decision === "VERIFIED" ? t("expert.kycVerifiedToast", { name: e.name }) : t("expert.kycRejectedToast", { name: e.name }));
+      void qc.invalidateQueries({ queryKey: ["operator", "experts"] });
+      void qc.invalidateQueries({ queryKey: ["operator", "audit"] });
+    },
+    onError: (err) => toast.show(err.message, "danger"),
+  });
+  const k = e.kyc;
+  return (
+    <View style={{ gap: th.space[2], padding: th.space[3], borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", alignItems: "center", gap: th.space[2] }}>
+        <Text variant="sm" bold>
+          {t("expert.kycColumn")}
+        </Text>
+        <Pill label={t(KYC_KEY[k.status])} tone={KYC_TONE[k.status]} />
+      </View>
+      {k.note ? (
+        <Text variant="sm" tone="muted">
+          {k.note}
+        </Text>
+      ) : null}
+      {k.documents.length === 0 ? (
+        <Text variant="xs" tone="muted">
+          {t("expert.kycNoPapers")}
+        </Text>
+      ) : (
+        k.documents.map((doc, i) => (
+          <Row
+            key={doc.fileId}
+            icon="paperclip"
+            title={t("expert.kycOpenDocument", { n: i + 1 })}
+            caption={doc.mime}
+            onPress={() => {
+              void openFile(doc.fileId, t("common.tryAgain")).then((error) => {
+                if (error) toast.show(error, "danger");
+              });
+            }}
+          />
+        ))
+      )}
+      {k.documents.length > 0 && k.status !== "VERIFIED" && mode === "idle" ? (
+        <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+          <Button label={t("expert.kycVerify")} accessibilityLabel={`${t("expert.kycVerify")}: ${e.name}`} onPress={() => setMode("verify")} style={{ flexGrow: 1 }} />
+          <Button label={t("expert.kycReject")} accessibilityLabel={`${t("expert.kycReject")}: ${e.name}`} variant="secondary" onPress={() => setMode("reject")} style={{ flexGrow: 1 }} />
+        </View>
+      ) : null}
+      {mode === "verify" ? (
+        <Note tone="accent">
+          <Text variant="sm" bold tone="accent">
+            {t("expert.kycConfirmVerify", { name: e.name })}
+          </Text>
+          <View style={{ flexDirection: "row", gap: th.space[2] }}>
+            <Button label={t("common.confirm")} busy={decide.isPending} onPress={() => decide.mutate("VERIFIED")} style={{ flexGrow: 1 }} />
+            <Button label={t("common.keep")} variant="secondary" onPress={() => setMode("idle")} style={{ flexGrow: 1 }} />
+          </View>
+        </Note>
+      ) : null}
+      {mode === "reject" ? (
+        <Note tone="danger">
+          <Text variant="sm" bold tone="danger">
+            {t("expert.kycConfirmReject", { name: e.name })}
+          </Text>
+          <Field label={t("expert.kycRejectReason")} value={reason} onChangeText={setReason} multiline maxLength={1000} />
+          <View style={{ flexDirection: "row", gap: th.space[2] }}>
+            <Button label={t("common.confirm")} variant="danger" busy={decide.isPending} disabled={reason.trim().length === 0} onPress={() => decide.mutate("REJECTED")} style={{ flexGrow: 1 }} />
+            <Button label={t("common.keep")} variant="secondary" onPress={() => setMode("idle")} style={{ flexGrow: 1 }} />
+          </View>
+        </Note>
+      ) : null}
+    </View>
+  );
+}
+
 function Experts() {
   const t = useT();
   const th = useTheme();
@@ -377,6 +475,7 @@ function Experts() {
               </Text>
             ) : null}
             {e.verifiedAt !== null ? <Pill label={t("expert.identityChecked")} tone="accent" /> : null}
+            <Kyc e={e} />
             {open ? (
               <Note tone={open.tone}>
                 <Text variant="sm" bold tone={open.tone}>

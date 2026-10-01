@@ -5,6 +5,7 @@ import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { clampLevel, parseChoices, QUIZ_SUBJECTS } from "./quiz";
 import { translateQuestion } from "./translate";
+import { statsFor, type QuestionStatSummary } from "./bank-tools";
 import type { ActiveContext } from "./session";
 
 /**
@@ -269,6 +270,10 @@ export type BankQuestion = {
   solution: string;
   /** Which languages this question is translated into. */
   languages: string[];
+  /** Which of those a native speaker has read (translation-review.ts). */
+  reviewed: { hi: boolean; mr: boolean };
+  /** How it is doing, from the nightly bank:stats job; null until a child has answered it. */
+  stats: QuestionStatSummary | null;
 };
 
 export async function listBankQuestions(
@@ -287,10 +292,13 @@ export async function listBankQuestions(
       choices: true,
       answerIndex: true,
       solution: true,
+      hiReviewedAt: true,
+      mrReviewedAt: true,
       translations: { select: { language: true } },
     },
     take: 1000,
   });
+  const stats = await statsFor(questions.map((q) => q.id));
 
   return questions.map((q) => ({
     id: q.id,
@@ -300,6 +308,8 @@ export async function listBankQuestions(
     answerIndex: q.answerIndex,
     solution: q.solution,
     languages: q.translations.map((t) => t.language).sort(),
+    reviewed: { hi: q.hiReviewedAt !== null, mr: q.mrReviewedAt !== null },
+    stats: stats.get(q.id) ?? null,
   }));
 }
 
@@ -315,6 +325,8 @@ export async function getBankQuestion(session: ActiveContext, questionId: string
       choices: true,
       answerIndex: true,
       solution: true,
+      hiReviewedAt: true,
+      mrReviewedAt: true,
       translations: { select: { language: true } },
     },
   });
@@ -328,6 +340,7 @@ export async function getBankQuestion(session: ActiveContext, questionId: string
     answerIndex: q.answerIndex,
     solution: q.solution,
     languages: q.translations.map((t) => t.language).sort(),
+    reviewed: { hi: q.hiReviewedAt !== null, mr: q.mrReviewedAt !== null },
   };
 }
 
@@ -387,6 +400,12 @@ async function upsertTranslations(questionId: string, input: QuestionInput): Pro
       },
     });
   }
+  // The words a native speaker read are gone; so is the record that they read
+  // them. The question goes back on the review list (translation-review.ts).
+  await db.quizQuestion.update({
+    where: { id: questionId },
+    data: { hiReviewedAt: null, hiReviewedBy: null, mrReviewedAt: null, mrReviewedBy: null },
+  });
   return true;
 }
 

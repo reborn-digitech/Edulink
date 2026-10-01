@@ -7,6 +7,7 @@ import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { BankTools } from "./bank-tools";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -47,6 +48,9 @@ export default async function BankPage({
   return (
     <div className="space-y-6">
       <PageHeader title={t("appadmin.questionBank")} description={t("appadmin.bankIntro")} />
+
+      {/* The sheet in and out, and the duplicates report (2026-10-01). */}
+      <BankTools subject={subject} />
 
       {(allTopics.length > 3 || narrowed) && (
         <DataToolbar

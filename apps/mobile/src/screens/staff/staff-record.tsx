@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { STAFF_APPOINTED_SUBJECTS, staffRecordViewSchema, type StaffAppointedSubject, type StaffRecordPage, type StaffRecordSave } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
@@ -63,6 +63,7 @@ export function StaffRecord() {
   // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
   usePrivateScreen();
   const t = useT();
+  const router = useRouter();
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
   const id = membershipId ?? "";
   const query = useQuery({
@@ -75,6 +76,8 @@ export function StaffRecord() {
     <Screen title={d ? t("staff.title", { name: d.name }) : t("people.staffRecordAction")} description={d ? t("staff.body", { name: d.name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {/* The head's notes on this person — observations, targets, the year's appraisal; the office reads them. */}
+      {d ? <Button label={t("appraisal.open")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/staff-appraisal", params: { membershipId: id } } as never)} /> : null}
       {/* Keyed by what was read: a record read again starts the form again from it. */}
       {d ? <RecordForm key={JSON.stringify(d.record)} id={id} view={d} /> : null}
     </Screen>

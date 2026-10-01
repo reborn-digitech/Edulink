@@ -2,23 +2,25 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminTimetableSchema, okSchema, savedIdSchema, type AdminTimetable } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
+import { adminTimetableSchema, okSchema, savedIdSchema, timetableCopyResultSchema, timetableImportPreviewSchema, timetableImportResultSchema, type AdminTimetable, type TimetableImportPreview } from "@edulink/contracts";
+import type { TranslationKey } from "@edulink/i18n";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, SwitchRow, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { formatTimeRange, hhmm, weekdayName } from "../family/shared";
-import { Chips, parseClock } from "./shared";
+import { Chips, parseClock, problemLine } from "./shared";
 
 type Period = AdminTimetable["periods"][number];
 type Slot = NonNullable<AdminTimetable["grid"]>["slots"][number];
 type Kind = "LESSON" | "BREAK";
-type Section = "day" | "week";
+type Section = "day" | "week" | "sheet";
 export type PeriodBody = { name: string; startMinute: number; endMinute: number; kind: Kind };
 export type SlotBody = { classId: string; periodId: string; weekday: number; subject: string; teacherMembershipId: string | null; room: string | null };
 
 const WEEKDAYS = [1, 2, 3, 4, 5, 6];
+const SHEET_EXAMPLE = "day,period,class,subject,teacher,room\nMonday,1,Class 5 A,Maths,rao@example.com,12\nMonday,2,Class 5 A,English,Mrs Khan,12";
 
 function useRefresh() {
   const qc = useQueryClient();
@@ -55,12 +57,13 @@ export function TimetableEditor() {
         options={[
           { value: "day", label: t("timetable.schoolDay") },
           { value: "week", label: t("timetable.classWeek") },
+          { value: "sheet", label: t("officeBulk.timetableSheetTab") },
         ]}
         onChange={setSection}
       />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
-      {d ? section === "day" ? <DayPanel periods={d.periods} /> : <WeekPanel data={d} onClass={setClassId} onDay={() => setSection("day")} /> : null}
+      {d ? section === "day" ? <DayPanel periods={d.periods} /> : section === "sheet" ? <SheetPanel hasClasses={d.classes.length > 0} onDay={() => setSection("day")} /> : <WeekPanel data={d} onClass={setClassId} onDay={() => setSection("day")} /> : null}
     </Screen>
   );
 }
@@ -304,9 +307,153 @@ function WeekPanel({ data: d, onClass, onDay }: { data: AdminTimetable; onClass:
               );
             })}
           </Card>
+          {(d.grid?.slots.length ?? 0) > 0 ? <CopySections classId={classId} className={selected.name} sisters={d.classes.filter((k) => k.id !== classId && k.gradeLevel === selected.gradeLevel)} /> : null}
         </>
       )}
     </>
+  );
+}
+
+/**
+ * This class's week onto its sister sections — the living classes of the
+ * same grade, each a switch. Teachers are left blank (they are in this class
+ * at that very period) and each chosen section's week is replaced, so a
+ * confirm stands between the choice and the copy.
+ */
+function CopySections({ classId, className, sisters }: { classId: string; className: string; sisters: AdminTimetable["classes"] }) {
+  const t = useT();
+  const th = useTheme();
+  const toast = useToast();
+  const refresh = useRefresh();
+  const [chosen, setChosen] = useState<string[]>([]);
+  const [confirming, setConfirming] = useState(false);
+  const copy = useMutation({
+    mutationFn: async () => timetableCopyResultSchema.parse(unwrap(await api().post("/api/v1/office/timetable/copy", { fromClassId: classId, toClassIds: chosen }))),
+    onSuccess: (r) => {
+      toast.show(t("officeBulk.copyDone", { count: r.copied, classes: r.classes.length }));
+      setChosen([]);
+      setConfirming(false);
+      refresh();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  return (
+    <Card title={t("officeBulk.copyTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("officeBulk.copyBody")}
+      </Text>
+      {sisters.length === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("officeBulk.copyNoSisters")}
+        </Text>
+      ) : (
+        <>
+          {sisters.map((k) => (
+            <SwitchRow
+              key={k.id}
+              label={k.name}
+              value={chosen.includes(k.id)}
+              disabled={copy.isPending}
+              onChange={(on) => {
+                setConfirming(false);
+                setChosen((c) => (on ? [...new Set([...c, k.id])] : c.filter((x) => x !== k.id)));
+              }}
+            />
+          ))}
+          <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+            {confirming ? (
+              <>
+                <Button label={t("common.confirm")} variant="danger" busy={copy.isPending} onPress={() => copy.mutate()} accessibilityLabel={`${t("common.confirm")}: ${t("officeBulk.copyGo")} ${className}`} />
+                <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
+              </>
+            ) : (
+              <Button label={t("officeBulk.copyGo")} variant="secondary" disabled={chosen.length === 0} onPress={() => setConfirming(true)} />
+            )}
+          </View>
+        </>
+      )}
+    </Card>
+  );
+}
+
+/**
+ * The whole timetable from a pasted sheet — the web's import card. The
+ * server resolves every row against the school's periods, classes and staff
+ * and says what it would write and what it cannot; only then does the
+ * button write, each cell upserted, so the same sheet twice is harmless.
+ */
+function SheetPanel({ hasClasses, onDay }: { hasClasses: boolean; onDay: () => void }) {
+  const t = useT();
+  const toast = useToast();
+  const refresh = useRefresh();
+  const { locale } = useLocale();
+  const [csv, setCsv] = useState("");
+  const [preview, setPreview] = useState<{ csv: string; data: TimetableImportPreview } | null>(null);
+  const check = useMutation({
+    mutationFn: async (text: string) => ({ csv: text, data: timetableImportPreviewSchema.parse(unwrap(await api().post("/api/v1/office/timetable/import/preview", { csv: text }))) }),
+    onSuccess: (next) => setPreview(next),
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const write = useMutation({
+    mutationFn: async (text: string) => timetableImportResultSchema.parse(unwrap(await api().post("/api/v1/office/timetable/import", { csv: text }))),
+    onSuccess: (r) => {
+      toast.show(r.written > 0 ? `${t("officeBulk.timetableWritten", { count: r.written, classes: r.classes })}${r.unstaffed > 0 ? ` ${t("officeBulk.timetableWrittenUnstaffed", { count: r.unstaffed })}` : ""}` : t("officeBulk.timetableNothingToWrite"), r.written > 0 ? "ok" : "info");
+      setCsv("");
+      setPreview(null);
+      refresh();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  if (!hasClasses) return <Empty icon="chalkboard" title={t("timetable.noClasses")} body={t("timetable.noClassesBody")} action={<Button label={t("timetable.schoolDay")} variant="secondary" onPress={onDay} />} />;
+  const fresh = preview && preview.csv === csv ? preview.data : null;
+  return (
+    <Card title={t("officeBulk.timetableImportTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("officeBulk.timetableImportBody")}
+      </Text>
+      <Field label={t("officeBulk.timetableImportLabel")} hint={t("officeBulk.timetableImportColumns")} value={csv} onChangeText={setCsv} placeholder={SHEET_EXAMPLE} multiline autoCapitalize="none" autoCorrect={false} style={{ minHeight: 140, textAlignVertical: "top" }} />
+      {fresh ? <SheetPreview preview={fresh} locale={locale} /> : null}
+      {fresh && fresh.rows.length > 0 ? (
+        <Button label={fresh.rows.length === 1 ? t("officeBulk.timetableWriteOne") : t("officeBulk.timetableWriteMany", { count: fresh.rows.length })} busy={write.isPending} onPress={() => write.mutate(csv)} />
+      ) : fresh ? null : (
+        <Button label={t("officeBulk.timetablePreview")} disabled={!csv.trim()} busy={check.isPending} onPress={() => check.mutate(csv)} />
+      )}
+    </Card>
+  );
+}
+
+/** The server's reading of the sheet: how many lessons, how many without a teacher, each problem row with its line. */
+function SheetPreview({ preview: p, locale }: { preview: TimetableImportPreview; locale: string }) {
+  const t = useT();
+  const th = useTheme();
+  const unstaffed = p.rows.filter((r) => !r.teacherMembershipId).length;
+  const replaces = p.rows.filter((r) => r.replaces).length;
+  return (
+    <View accessibilityLiveRegion="polite" style={{ backgroundColor: th.surfaceMuted, borderRadius: th.radius.md, padding: th.space[3], gap: th.space[2] }}>
+      <Text variant="sm" bold>
+        {[t("officeBulk.timetableReady", { count: p.rows.length }), replaces > 0 ? t("officeBulk.timetableReplaces", { count: replaces }) : null, unstaffed > 0 ? t("officeBulk.timetableWithoutTeacher", { count: unstaffed }) : null, p.problems.length > 0 ? t("invites.needALook", { count: p.problems.length }) : null].filter(Boolean).join(" · ")}
+      </Text>
+      {p.rows.length === 0 ? (
+        <Text variant="xs" tone="muted">
+          {t("officeBulk.timetableNothingToWrite")}
+        </Text>
+      ) : null}
+      {p.rows
+        .filter((r) => r.teacherIssueKey)
+        .slice(0, 5)
+        .map((r) => (
+          <Row key={`r${r.line}`} title={`${t("invites.line", { line: r.line })} · ${weekdayName(r.weekday, locale)} · ${r.periodName} · ${r.className} · ${r.subject}`} caption={`${t(r.teacherIssueKey as TranslationKey, r.teacherIssueVars)} · ${t("officeBulk.timetableNoTeacherNote")}`} />
+        ))}
+      {p.problems.slice(0, 5).map((problem) => {
+        const line = problemLine(t, problem);
+        return <Row key={`p${problem.line}:${problem.reasonKey}`} title={line.title} caption={line.caption} />;
+      })}
+      {p.problems.length > 5 ? (
+        <Text variant="xs" tone="muted">
+          {t("invites.andMore", { count: p.problems.length - 5 })}
+        </Text>
+      ) : null}
+    </View>
   );
 }
 

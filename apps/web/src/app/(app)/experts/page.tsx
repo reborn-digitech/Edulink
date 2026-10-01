@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BriefcaseIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
+import { BriefcaseIcon, SealCheckIcon, StarIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { listMarketplace, listBookings } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
@@ -125,6 +125,13 @@ export default async function ExpertsPage({
                           {t("expert.verified")}
                         </Badge>
                       )}
+                      {/* Computed on read from families' ratings; "New" until three have rated. */}
+                      <span title={expert.rating ? undefined : t("expert.ratingNewHint")} data-testid="expert-rating">
+                        <Badge tone={expert.rating ? "accent" : "neutral"} size="sm">
+                          <StarIcon weight="fill" className="mr-1 inline size-3" />
+                          {expert.rating ? t("expert.ratingLine", { average: expert.rating.average.toFixed(1), count: expert.rating.count }) : t("expert.ratingNew")}
+                        </Badge>
+                      </span>
                       {expert.organisation && (
                         <span className="text-xs text-fg-muted">{expert.organisation}</span>
                       )}

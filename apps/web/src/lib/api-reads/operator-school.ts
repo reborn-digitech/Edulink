@@ -107,7 +107,7 @@ export async function operatorAuditPage(ctx: ActiveContext, query: OperatorAudit
  * a returned-but-not-awaited call carries straight past the catch — the 404
  * escaped as an unhandled AccessError. Thrown synchronously, apiFailure sees it.
  */
-const NOT_FOUND: TranslationKey[] = ["root.noSuchSchool", "root.noSuchExpert"];
+const NOT_FOUND: TranslationKey[] = ["root.noSuchSchool", "root.noSuchExpert", "root.noSuchPlan"];
 export function operatorRefused(result: { errorKey?: TranslationKey }): Promise<NextResponse> {
   if (result.errorKey && NOT_FOUND.includes(result.errorKey)) throw new AccessError(result.errorKey, "NOT_FOUND");
   return apiRefused({ errorKey: result.errorKey ?? "root.didNotWork" });

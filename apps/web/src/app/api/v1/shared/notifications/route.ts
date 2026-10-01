@@ -2,9 +2,10 @@ import { notificationsQuerySchema, notificationsSchema } from "@edulink/contract
 import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 import { asNotificationKind, listNotifications, requireApiSession } from "@/lib/api-reads/shared";
 import { query, text } from "../helpers";
+import { withMetrics } from "@/lib/metrics";
 
-/** GET /api/v1/shared/notifications — mine, newest first, `?filter=unread`, `?kind=`, cursor paged. */
-export async function GET(request: Request) {
+/** GET /api/v1/shared/notifications — mine, newest first, `?filter=unread`, `?kind=`, cursor paged. Polled by every open phone, so one of the three routes the operator's counters time (src/lib/metrics.ts). */
+const timed = withMetrics("shared", async (request: Request) => {
   try {
     const ctx = await requireApiSession();
     const params = query(request);
@@ -21,4 +22,8 @@ export async function GET(request: Request) {
   } catch (error) {
     return apiFailure(error, "api/v1/shared/notifications");
   }
+});
+
+export async function GET(request: Request) {
+  return timed(request);
 }

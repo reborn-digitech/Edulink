@@ -7,6 +7,7 @@ import { readJsonArray, type Attachment, type MediaItem } from "./json";
 export { formatBytes } from "./json";
 import type { ActiveContext } from "./session";
 import { applicationOwningFile } from "./admissions";
+import { kycOwningFile } from "./expert-kyc";
 
 /**
  * Per-file read authorisation.
@@ -33,7 +34,7 @@ import { applicationOwningFile } from "./admissions";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
-  | { allowed: true; kind: "assignment" | "submission" | "post" | "application"; public: false }
+  | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc"; public: false }
   | { allowed: false; reason: "not-found" | "unauthenticated" | "forbidden" };
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
@@ -115,6 +116,17 @@ export async function authorizeFileRead(
   if (application) {
     if (application.applicantUserId && application.applicantUserId === user.id) return { allowed: true, kind: "application", public: false };
     if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === application.schoolId) return { allowed: true, kind: "application", public: false };
+    return DENY;
+  }
+
+  // ---- 2c. an expert's KYC papers: the expert themself and the operator
+  // (User.isSuperuser), nobody else — not a school that booked them, not
+  // another expert. The ids are on a row that belongs to no school, so this
+  // too comes before the school-scoped branches; a refusal is the same
+  // not-found as an id that never existed.
+  const kyc = await kycOwningFile(fileId);
+  if (kyc) {
+    if (kyc.userId === user.id || user.isSuperuser) return { allowed: true, kind: "kyc", public: false };
     return DENY;
   }
 

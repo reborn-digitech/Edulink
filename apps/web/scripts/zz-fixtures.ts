@@ -693,7 +693,11 @@ export async function buildGigSessions(northgate: { id: string }, southbank: { i
   const expert = await db.user.findUnique({ where: { email: `zz.expert1@${DOMAIN}` }, select: { id: true, expertProfile: { select: { publishedAt: true } } } });
   const lead = await db.classTeacher.findFirst({ where: { schoolId: northgate.id, role: "LEAD", class: { gradeLevel: "3", archivedAt: null } }, select: { teacher: { select: { userId: true } } } });
   const otherTeacher = await db.membership.findFirst({ where: { schoolId: southbank.id, role: "TEACHER", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { userId: true } });
-  await db.school.updateMany({ where: { id: { in: [northgate.id, southbank.id] } }, data: { teacherGuidanceOn: true } });
+  // The guidance switch on; and the two ages the office sets for what a
+  // pupil may read of their own (health card and incidents, fee dues) at
+  // eight, so the sweep's pupil — zz.pupil01, in grade 3 — is let through
+  // the doors the catalog lists STUDENT on. A fixture, not a real school.
+  await db.school.updateMany({ where: { id: { in: [northgate.id, southbank.id] } }, data: { teacherGuidanceOn: true, selfReadAge: 8, pupilFeeViewAge: 8 } });
   const providers = [expert?.id, lead?.teacher.userId, otherTeacher?.userId].filter((id): id is string => Boolean(id));
   await db.gigSlot.deleteMany({ where: { providerUserId: { in: providers }, title: { startsWith: "ZZ " } } });
   if (!expert?.expertProfile?.publishedAt) return { confirmed: null };

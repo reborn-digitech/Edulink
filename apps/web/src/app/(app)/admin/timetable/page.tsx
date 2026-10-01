@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
-import { CalendarBlankIcon, ClockIcon } from "@phosphor-icons/react/ssr";
+import { CalendarBlankIcon, ClockIcon, CopyIcon, UploadSimpleIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import {
   listPeriods,
@@ -15,6 +15,8 @@ import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { DayPanel } from "./day-panel";
 import { GridEditor, type StaffOption } from "./grid-editor";
+import { ImportForm } from "./import-form";
+import { CopySections } from "./copy-sections";
 import { getT } from "@/lib/i18n/server";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
@@ -190,9 +192,45 @@ export default async function AdminTimetablePage({
                 </CardBody>
               </Card>
             )}
+
+            {/* The week onto the sister sections: the living classes of the same grade. */}
+            {selected && grid && grid.slots.length > 0 && (
+              <Card>
+                <CardHeader
+                  icon={<CopyIcon weight="duotone" className="size-5" />}
+                  title={t("officeBulk.copyTitle")}
+                  description={t("officeBulk.copyBody")}
+                />
+                <CardBody>
+                  <CopySections
+                    classId={selected.id}
+                    className={selected.name}
+                    sisters={classes
+                      .filter((k) => k.id !== selected.id && k.gradeLevel === selected.gradeLevel)
+                      .map((k) => ({ id: k.id, name: k.section && !nameCarriesSection(k.name, k.section) ? `${k.name} ${k.section}` : k.name }))}
+                  />
+                </CardBody>
+              </Card>
+            )}
           </>
         )}
       </section>
+
+      {/* ---------------- step three: the whole thing from a sheet ---------------- */}
+      {classes.length > 0 && (
+        <section aria-labelledby="import-heading">
+          <Card>
+            <CardHeader
+              icon={<UploadSimpleIcon weight="duotone" className="size-5" />}
+              title={<span id="import-heading">{t("officeBulk.timetableImportTitle")}</span>}
+              description={t("officeBulk.timetableImportBody")}
+            />
+            <CardBody>
+              <ImportForm />
+            </CardBody>
+          </Card>
+        </section>
+      )}
     </div>
   );
 }

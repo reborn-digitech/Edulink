@@ -15,7 +15,7 @@ const count = z.number().int().min(0);
 export const messageEventSchema = z.enum(["absence", "feeReminders", "feeReceipts", "circulars", "incidents"]);
 export const messageChannelSchema = z.enum(["SMS", "WHATSAPP"]);
 export const messageStatusSchema = z.enum(["QUEUED", "SENT", "DELIVERED", "FAILED", "UNDELIVERED", "SKIPPED"]);
-export const messageSkipReasonSchema = z.enum(["no-phone", "opted-out", "channel-off", "event-off", "cap-monthly", "cap-daily", "no-transport", "disabled"]);
+export const messageSkipReasonSchema = z.enum(["no-phone", "opted-out", "channel-off", "event-off", "cap-monthly", "cap-daily", "no-transport", "disabled", "unverifiedNumber"]);
 export const transportStateSchema = z.enum(["devbox", "twilio", "off"]);
 
 export const messagingSettingsSchema = z.object({
@@ -23,12 +23,15 @@ export const messagingSettingsSchema = z.object({
   whatsappEnabled: z.boolean(),
   monthlyCap: count,
   events: z.object({ absence: z.boolean(), feeReminders: z.boolean(), feeReceipts: z.boolean(), circulars: z.boolean(), incidents: z.boolean() }),
+  /** Absence notices, fee reminders and circulars may go to the guardian phone the office typed on the pupil's record when the guardian has no proved number. */
+  textOfficePhones: z.boolean().default(false),
 });
 export const messagingSettingsSaveSchema = z.object({
   smsEnabled: z.boolean().optional(),
   whatsappEnabled: z.boolean().optional(),
   monthlyCap: count.max(1_000_000).optional(),
   events: z.object({ absence: z.boolean().optional(), feeReminders: z.boolean().optional(), feeReceipts: z.boolean().optional(), circulars: z.boolean().optional(), incidents: z.boolean().optional() }).optional(),
+  textOfficePhones: z.boolean().optional(),
 });
 
 export const messagingAudienceSchema = z.discriminatedUnion("kind", [

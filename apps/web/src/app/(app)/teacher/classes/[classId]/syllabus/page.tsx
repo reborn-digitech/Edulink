@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BooksIcon, ChartBarIcon, NotePencilIcon } from "@phosphor-icons/react/ssr";
 import { AccessError, requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { staffSyllabus } from "@/lib/syllabus";
+import { listPlanTemplates, staffSyllabus } from "@/lib/syllabus";
 import { formatDateKey, todayKey } from "@/lib/dates";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -14,6 +14,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { LessonForm } from "./lesson-form";
 import { LessonStatusControl, UnitStatusControl } from "./progress-controls";
+import { ApplyTemplatePanel, SaveTemplateButton } from "./template-actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,6 +49,8 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
   }
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
   const today = todayKey(school.timezone);
+  // The school's templates for this subject, for the "copy one in" panel beside the plan form.
+  const templates = view.subject ? (await listPlanTemplates(ctx, { subject: view.subject })).items : [];
   const subjectHref = (s: string) => `/teacher/classes/${view.classId}/syllabus?subject=${encodeURIComponent(s)}`;
   const day = (key: string) => formatDateKey(key, { weekday: "short", day: "numeric", month: "short" }, locale);
   const doneCount = view.units.filter((u) => u.status === "DONE").length;
@@ -151,6 +154,13 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
                     <LessonForm key={view.subject} classId={view.classId} subject={view.subject} today={today} units={view.units.map((u) => ({ id: u.id, title: u.title }))} />
                   </section>
                 )}
+                {view.canEdit && (
+                  <section aria-label={t("planTemplates.title")} className="rounded-[--radius-md] border border-border p-3.5">
+                    <h3 className="mb-1 text-sm font-semibold text-fg">{t("planTemplates.title")}</h3>
+                    <p className="mb-3 text-xs text-fg-muted">{t("planTemplates.hint")}</p>
+                    <ApplyTemplatePanel key={`${view.subject}:${templates.length}`} classId={view.classId} templates={templates} units={view.units.map((u) => ({ id: u.id, title: u.title }))} today={today} />
+                  </section>
+                )}
 
                 {view.lessons.length === 0 ? (
                   <p className="py-4 text-center text-sm text-fg-muted">{t("syllabus.noLessons")}</p>
@@ -177,8 +187,9 @@ export default async function ClassSyllabusPage({ params, searchParams }: { para
                           )}
                         </div>
                         {view.canEdit && (
-                          <div className="w-full shrink-0 sm:w-auto">
+                          <div className="flex w-full shrink-0 flex-col gap-1.5 sm:w-auto sm:items-end">
                             <LessonStatusControl lessonId={lesson.id} topic={lesson.topic} status={lesson.status} />
+                            <SaveTemplateButton lessonId={lesson.id} topic={lesson.topic} />
                           </div>
                         )}
                       </li>

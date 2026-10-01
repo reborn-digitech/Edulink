@@ -2,15 +2,15 @@ import { useState } from "react";
 import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { contestBankSchema, contestBankTopicSchema, contestQuestionSavedSchema, type ContestBank, type ContestBankQuestion, type ContestQuestion } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Text, useToast } from "@/components";
+import { bankStatsSchema, contestBankSchema, contestBankTopicSchema, contestQuestionSavedSchema, type ContestBank, type ContestBankQuestion, type ContestQuestion } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { haptics } from "@/lib/haptics";
 import { unwrap } from "@/lib/query";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Chips, must, Refusal } from "../staff/shared";
-import { levelName, param, Pill, subjectName } from "../family/shared";
+import { formatInstant, levelName, param, Pill, subjectName } from "../family/shared";
 
 type Topic = ContestBank["topics"][number];
 const LEVELS = ["1", "2", "3", "4", "5", "6"] as const;
@@ -240,7 +240,7 @@ function Chapter({ topicId, questionId }: { topicId: string; questionId: string 
           ) : (
             <Card title={all.length === 1 ? t("appadmin.questionCountOne") : t("appadmin.questionCountMany", { count: all.length })}>
               {shown.map((x) => (
-                <Row key={x.id} title={x.stem} caption={`${t("appadmin.levelN", { n: x.difficulty })} · ${languages(x)}`} onPress={() => router.push({ pathname: "/(app)/question-bank", params: { topicId, questionId: x.id } } as never)} />
+                <Row key={x.id} title={x.stem} caption={[`${t("appadmin.levelN", { n: x.difficulty })} · ${languages(x)}`, reviewedLine(t, x), statsLine(t, x)].filter(Boolean).join(" · ")} onPress={() => router.push({ pathname: "/(app)/question-bank", params: { topicId, questionId: x.id } } as never)} />
               ))}
             </Card>
           )}
@@ -253,6 +253,65 @@ function Chapter({ topicId, questionId }: { topicId: string; questionId: string 
 /** Language codes, not names: "EN · HI · MR" reads the same in every dictionary and says exactly which rows exist. */
 function languages(question: ContestBankQuestion): string {
   return ["en", ...question.languages].join(" · ").toUpperCase();
+}
+
+type T = ReturnType<typeof useT>;
+
+/** Which translations a native speaker has read (the web's green badges); nothing when none. */
+function reviewedLine(t: T, question: ContestBankQuestion): string {
+  return [question.reviewed?.hi ? t("translationReview.reviewedHi") : null, question.reviewed?.mr ? t("translationReview.reviewedMr") : null].filter(Boolean).join(" · ");
+}
+
+/** The bank list's stats column: answered, right, seconds — from last night's count; nothing until a child has answered. */
+function statsLine(t: T, question: ContestBankQuestion): string {
+  const s = question.stats;
+  if (!s || s.asked === 0) return "";
+  return t("bankStats.column", { asked: s.asked, rate: s.correctRate ?? 0, seconds: s.avgSeconds ?? 0 });
+}
+
+/** One question's numbers, whole and by the answering pupils' grade — GET /api/v1/appadmin/bank/stats. */
+function QuestionStats({ questionId }: { questionId: string }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const query = useQuery({
+    queryKey: ["appadmin", "bank", "stats", questionId],
+    queryFn: async () => bankStatsSchema.parse(unwrap(await api().get(`/api/v1/appadmin/bank/stats?questionId=${questionId}`))),
+  });
+  const d = query.data;
+  return (
+    <Card title={t("bankStats.title")}>
+      {query.isPending ? <Loading /> : null}
+      {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {d && d.asked === 0 ? (
+        <Text variant="sm" tone="muted">
+          {t("bankStats.none")}
+        </Text>
+      ) : null}
+      {d && d.asked > 0 ? (
+        <>
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            <Stat label={t("bankStats.asked", { count: d.asked })} value={d.asked} />
+            <Stat label={t("bankStats.correctRate", { rate: d.correctRate ?? 0 })} value={`${d.correctRate ?? 0}%`} tone={(d.correctRate ?? 0) < 40 ? "warn" : "ok"} />
+            <Stat label={t("bankStats.avgSeconds", { seconds: d.avgSeconds ?? 0 })} value={d.avgSeconds ?? "—"} />
+          </View>
+          {d.byGrade.length > 0 ? (
+            <View style={{ gap: th.space[1] }}>
+              <Text variant="xs" tone="muted">
+                {t("bankStats.byGrade")}
+              </Text>
+              {d.byGrade.map((g) => (
+                <Row key={g.grade} title={g.grade === 0 ? t("bankStats.gradeUnknown") : t("bankStats.gradeN", { n: g.grade })} caption={t("bankStats.column", { asked: g.asked, rate: g.correctRate ?? 0, seconds: g.avgSeconds ?? 0 })} />
+              ))}
+            </View>
+          ) : null}
+          <Text variant="xs" tone="muted">
+            {d.updatedAt ? `${t("bankStats.updatedAt", { when: formatInstant(d.updatedAt, locale, { day: "numeric", month: "short" }) })} · ${t("bankStats.nightly")}` : t("bankStats.nightly")}
+          </Text>
+        </>
+      ) : null}
+    </Card>
+  );
 }
 
 /** One question as a child meets it: the stem, the options with the right one marked, the level, and the worked solution. */
@@ -271,7 +330,14 @@ function QuestionView({ question, onEdit }: { question: ContestBankQuestion; onE
         <Text variant="base" bold>
           {question.stem}
         </Text>
+        {reviewedLine(t, question) ? (
+          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+            {question.reviewed?.hi ? <Pill tone="ok" label={t("translationReview.reviewedHi")} /> : null}
+            {question.reviewed?.mr ? <Pill tone="ok" label={t("translationReview.reviewedMr")} /> : null}
+          </View>
+        ) : null}
       </Card>
+      <QuestionStats questionId={question.id} />
       <Card title={t("appadmin.choicesLabel")}>
         {question.choices.map((choice, index) => {
           const right = index === question.answerIndex;

@@ -43,7 +43,17 @@ import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, isMessageTemplateKey, renderTemplate
  */
 
 export type Channel = "SMS" | "WHATSAPP";
-export type SkipReason = "no-phone" | "opted-out" | "channel-off" | "event-off" | "cap-monthly" | "cap-daily" | "no-transport" | "disabled";
+export type SkipReason = "no-phone" | "opted-out" | "channel-off" | "event-off" | "cap-monthly" | "cap-daily" | "no-transport" | "disabled" | "unverifiedNumber";
+
+/**
+ * THE EVENTS THAT MAY REACH A NUMBER NOBODY PROVED. With School.textOfficePhones
+ * on, a guardian with no proved number is texted at the guardian phone the
+ * office typed on the pupil's record — for these three alone: the texts a
+ * family must not miss and that say nothing a stranger could use. A receipt
+ * (an amount), an incident (a child's name and what happened) and the
+ * office's test stay with proved numbers.
+ */
+export const OFFICE_PHONE_EVENTS: readonly MessageEvent[] = ["absence", "feeReminders", "circulars"];
 
 /** A person may be texted this many times a day, whatever the events say. */
 export const DAILY_CAP_PER_PERSON = 5;
@@ -60,6 +70,8 @@ export type MessagingSettings = {
   whatsappEnabled: boolean;
   monthlyCap: number;
   events: Record<MessageEvent, boolean>;
+  /** Absence notices, fee reminders and circulars may go to the office-entered guardian phone when no proved number exists. */
+  textOfficePhones: boolean;
 };
 
 function eventsFrom(json: string): Record<MessageEvent, boolean> {
@@ -68,8 +80,9 @@ function eventsFrom(json: string): Record<MessageEvent, boolean> {
 }
 
 export async function messagingSettings(schoolId: string): Promise<MessagingSettings> {
-  const s = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { msgSmsEnabled: true, msgWhatsappEnabled: true, msgMonthlyCap: true, msgEventsJson: true } });
-  return { smsEnabled: s.msgSmsEnabled, whatsappEnabled: s.msgWhatsappEnabled, monthlyCap: s.msgMonthlyCap, events: eventsFrom(s.msgEventsJson) };
+  const s = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { msgSmsEnabled: true, msgWhatsappEnabled: true, msgMonthlyCap: true, msgEventsJson: true, textOfficePhones: true, plan: { select: { messageCap: true } } } });
+  // The cap is the PLAN'S when the school is on a plan that states one (src/lib/plans.ts), else the school's own dial.
+  return { smsEnabled: s.msgSmsEnabled, whatsappEnabled: s.msgWhatsappEnabled, monthlyCap: s.plan?.messageCap ?? s.msgMonthlyCap, events: eventsFrom(s.msgEventsJson), textOfficePhones: s.textOfficePhones };
 }
 
 function office(ctx: ActiveContext): { schoolId: string; userId: string } {
@@ -81,7 +94,7 @@ function officeOrHead(ctx: ActiveContext): { schoolId: string; userId: string } 
   return { schoolId: ctx.schoolId, userId: ctx.user.id };
 }
 
-export async function saveMessagingSettings(ctx: ActiveContext, input: { smsEnabled?: boolean; whatsappEnabled?: boolean; monthlyCap?: number; events?: Partial<Record<MessageEvent, boolean>> }): Promise<void> {
+export async function saveMessagingSettings(ctx: ActiveContext, input: { smsEnabled?: boolean; whatsappEnabled?: boolean; monthlyCap?: number; events?: Partial<Record<MessageEvent, boolean>>; textOfficePhones?: boolean }): Promise<void> {
   const caller = office(ctx);
   const current = await messagingSettings(caller.schoolId);
   const cap = input.monthlyCap === undefined ? current.monthlyCap : Math.round(input.monthlyCap);
@@ -89,9 +102,9 @@ export async function saveMessagingSettings(ctx: ActiveContext, input: { smsEnab
   const events = { ...current.events, ...Object.fromEntries(Object.entries(input.events ?? {}).filter(([, v]) => typeof v === "boolean")) };
   await db.school.update({
     where: { id: caller.schoolId },
-    data: { msgSmsEnabled: input.smsEnabled ?? current.smsEnabled, msgWhatsappEnabled: input.whatsappEnabled ?? current.whatsappEnabled, msgMonthlyCap: cap, msgEventsJson: writeJson(events) },
+    data: { msgSmsEnabled: input.smsEnabled ?? current.smsEnabled, msgWhatsappEnabled: input.whatsappEnabled ?? current.whatsappEnabled, msgMonthlyCap: cap, msgEventsJson: writeJson(events), textOfficePhones: input.textOfficePhones ?? current.textOfficePhones },
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "messaging.settings", targetType: "School", targetId: caller.schoolId, meta: { sms: input.smsEnabled ?? current.smsEnabled, whatsapp: input.whatsappEnabled ?? current.whatsappEnabled, cap } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "messaging.settings", targetType: "School", targetId: caller.schoolId, meta: { sms: input.smsEnabled ?? current.smsEnabled, whatsapp: input.whatsappEnabled ?? current.whatsappEnabled, cap, textOfficePhones: input.textOfficePhones ?? current.textOfficePhones } });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -177,7 +190,19 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   const body = renderTemplate(req.templateKey, locale, { school: school.name, ...req.vars });
   const transports = transportStatus();
 
-  const skip = async (reason: SkipReason, channel: Channel | null = null, to = user?.phone ?? ""): Promise<SendOutcome> => {
+  /**
+   * THE OFFICE-ENTERED NUMBER. A guardian with no proved number may still be
+   * reached at the guardian phone on their child's record, when the school
+   * has chosen that and the event is one of the three; the row then carries
+   * that number and the send is audited "office-entered". When the school
+   * has not chosen it, or the event is another, the row says the number
+   * was there but unproved — "unverifiedNumber" — so the office can see
+   * what the switch would reach. Nothing at all stays "no-phone".
+   */
+  const officeEntered = user && !user.phone && !user.disabledAt ? await officeEnteredPhone(req.schoolId, req.userId) : null;
+  const officeRouteOpen = Boolean(officeEntered && settings.textOfficePhones && template.event && !req.force && OFFICE_PHONE_EVENTS.includes(template.event));
+
+  const skip = async (reason: SkipReason, channel: Channel | null = null, to = user?.phone ?? officeEntered ?? ""): Promise<SendOutcome> => {
     const row = await db.outboundMessage.create({
       data: { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey: req.templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
       select: { id: true },
@@ -186,7 +211,8 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   };
 
   if (!user || user.disabledAt) return skip("disabled");
-  if (!user.phone) return skip("no-phone");
+  if (!user.phone && !officeEntered) return skip("no-phone");
+  if (!user.phone && !officeRouteOpen) return skip("unverifiedNumber");
   if (template.event && !req.force && !settings.events[template.event]) return skip("event-off");
 
   // Channel: WhatsApp first when both are open to this person.
@@ -211,7 +237,7 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
    * locked for the count and the insert together; the send itself happens
    * after the lock is released, so the lock is held for two queries.
    */
-  const to = user.phone;
+  const to = user.phone ?? officeEntered!;
   const chosen: Channel = channel;
   const decided = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
@@ -229,6 +255,9 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   });
   if (decided.skip || !decided.row) return skip(decided.skip ?? "cap-daily", chosen);
   const row = decided.row;
+  if (!user.phone) {
+    await audit({ schoolId: req.schoolId, actorUserId: null, action: "messaging.officePhone", targetType: "OutboundMessage", targetId: row.id, meta: { source: "office-entered", userId: req.userId, templateKey: req.templateKey, purpose: req.purpose, channel: chosen } });
+  }
   if (req.queueOnly) return { id: row.id, status: "QUEUED", channel, skipReason: null };
   const sent = await sendRow(row);
   return { id: row.id, status: sent.status, channel, skipReason: null };
@@ -237,6 +266,22 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
 /* -------------------------------------------------------------------------- */
 /* The provider                                                                */
 /* -------------------------------------------------------------------------- */
+
+/**
+ * The guardian phone the office typed on a child's record, for a guardian of
+ * that child in this school: the first non-blank one across their children
+ * here, the record's own number before its alternate. Unverified by design
+ * (the record's note says why); the caller decides whether it may be used.
+ */
+async function officeEnteredPhone(schoolId: string, parentUserId: string): Promise<string | null> {
+  const links = await db.guardianship.findMany({ where: { parentUserId, studentSchoolId: schoolId, status: "ACTIVE" }, select: { studentMembershipId: true }, take: 20 });
+  if (links.length === 0) return null;
+  const records = await forSchool(schoolId, () =>
+    db.pupilRecord.findMany({ where: { schoolId, studentMembershipId: { in: links.map((l) => l.studentMembershipId) } }, select: { guardianPhone: true, alternatePhone: true }, take: 20 }),
+  );
+  for (const r of records) for (const candidate of [r.guardianPhone, r.alternatePhone]) if (candidate && candidate.trim()) return candidate.trim();
+  return null;
+}
 
 type Row = { id: string; schoolId: string; to: string; channel: string; templateKey: string; locale: string; varsJson: string; body: string; purpose: string };
 

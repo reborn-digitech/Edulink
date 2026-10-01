@@ -76,7 +76,22 @@ const NO_SCHOOL_POLICY = new Set([
   // src/lib/gig-sessions.ts. What a PUPIL did with a slot, GigBooking, is the
   // pupil's school's row and is scoped normally.
   "GigSlot",
+  // A plan the operator offers: a name, four caps and a recorded price. The
+  // office reads its own school's through the School row and the operator
+  // reads and writes every one; nothing in it belongs to a school.
+  "Plan",
 ]);
+
+/**
+ * Tables whose rows the SUPERUSER may READ across every school, and nothing
+ * more. One table: UsageSample, a school's monthly counts (pupils, texts,
+ * storage, active people — numbers, never a name) written by the nightly
+ * usage:sample job as the owner and read by the operator against the
+ * school's plan. The clause goes into USING of the SELECT policy only, never
+ * into WITH CHECK: the operator cannot write a count, and the school's own
+ * reads stay the ordinary tenant clause.
+ */
+const SUPERUSER_READABLE = new Set(["UsageSample"]);
 
 /**
  * Tables where a user may additionally READ their own rows, by the named column,
@@ -892,6 +907,9 @@ function generate(): string {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
       );
+    }
+    if (SUPERUSER_READABLE.has(table)) {
+      alsoReadable.push(`current_setting('app.is_superuser', true) = '1'`);
     }
 
     const usingNote: string[] = [];

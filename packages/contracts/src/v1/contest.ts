@@ -132,6 +132,10 @@ export const contestBankQuestionSchema = z.object({
   solution: z.string(),
   /** The languages beside English this question is translated into. */
   languages: z.array(z.string()),
+  /** Which of those a native speaker has read (2026-10-01; absent from an older server). */
+  reviewed: z.object({ hi: z.boolean(), mr: z.boolean() }).optional(),
+  /** How it is doing, from the nightly bank:stats job; null until a child has answered it. */
+  stats: z.object({ asked: z.number().int().min(0), correct: z.number().int().min(0), correctRate: z.number().int().min(0).max(100).nullable(), avgSeconds: z.number().int().min(0).nullable() }).nullable().optional(),
 });
 export type ContestBankQuestion = z.infer<typeof contestBankQuestionSchema>;
 

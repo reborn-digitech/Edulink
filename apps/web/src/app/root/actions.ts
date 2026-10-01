@@ -15,8 +15,12 @@ import {
   appointAppAdmin,
   dismissAppAdmin,
   assertSuperuser,
+  resendAdminInvite,
+  sendAdminResetLink,
+  signOutAdminEverywhere,
   type SchoolDetails,
 } from "@/lib/superuser";
+import { assignPlan, createPlan, deletePlan, updatePlan, type PlanInput } from "@/lib/plans";
 
 /**
  * Operator actions.
@@ -219,6 +223,105 @@ export async function dismissAppAdminAction(userId: string): Promise<Result> {
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root/content-team");
     return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Plans, and the three support doors (2026-10-01)                            */
+/* -------------------------------------------------------------------------- */
+
+export async function createPlanAction(input: PlanInput): Promise<Result & { planId?: string }> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await createPlan(session, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/plans");
+    return { ok: true, planId: result.planId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function updatePlanAction(planId: string, input: Partial<PlanInput>): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await updatePlan(session, planId, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/plans");
+    revalidatePath("/root");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function deletePlanAction(planId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await deletePlan(session, planId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/plans");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Puts a school on a plan, or (null) off every plan; the lib audits it and tells the school's office. */
+export async function assignPlanAction(schoolId: string, planId: string | null): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await assignPlan(session, schoolId, planId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function resendAdminInviteAction(schoolId: string, inviteId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await resendAdminInvite(session, schoolId, inviteId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Emails one of the school's admins a one-time sign-in link; no password is set or seen. */
+export async function sendAdminSignInLinkAction(schoolId: string, userId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await sendAdminResetLink(session, schoolId, userId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function signOutAdminAction(schoolId: string, userId: string): Promise<Result & { sessionsEnded?: number }> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await signOutAdminEverywhere(session, schoolId, userId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true, sessionsEnded: result.sessionsEnded ?? 0 };
   } catch (error) {
     return failure(error);
   }

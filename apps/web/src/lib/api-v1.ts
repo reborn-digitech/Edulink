@@ -4,13 +4,14 @@ import type { z } from "zod";
 import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
 import type { ActiveContext } from "@/lib/session";
-import { createApiSession, listContexts, bearerToken } from "@/lib/session";
+import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
 import type { Role } from "@/lib/constants";
 import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { clientAddress, consume } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
+import { kindOfStatus, recordError, reportError } from "@/lib/metrics";
 
 /**
  * What every /api/v1 handler shares: one error envelope, one way to read a
@@ -30,10 +31,27 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
     const code: ApiError["code"] = status === 401 ? "UNAUTHORIZED" : status === 404 ? "NOT_FOUND" : "FORBIDDEN";
+    recordError(kindOfStatus(status));
     return envelope({ error: t(error.key, error.vars), code }, status);
   }
-  if (error instanceof BodyTooLarge) return envelope({ error: t("common.bodyTooLarge"), code: "TOO_LARGE" }, 413);
-  console.error(`[${where}] unexpected`, error);
+  if (error instanceof BodyTooLarge) {
+    recordError("too-large");
+    return envelope({ error: t("common.bodyTooLarge"), code: "TOO_LARGE" }, 413);
+  }
+  // THE ONE SEAM EVERY FAILED HANDLER PASSES THROUGH: counted here, and
+  // posted to the error tracker when SENTRY_DSN is set (else the log line
+  // this always wrote) — with the person's and the school's ids as tags
+  // and nothing of the request. The ids are best-effort: a failure before
+  // the session resolved is reported without them.
+  recordError("unexpected");
+  let who: { userId: string | null; schoolId: string | null } = { userId: null, schoolId: null };
+  try {
+    const ctx = await getSession();
+    if (ctx) who = { userId: ctx.user.id, schoolId: ctx.schoolId };
+  } catch {
+    // Reporting must never fail the failure.
+  }
+  await reportError(error, { where, kind: "unexpected", userId: who.userId, schoolId: who.schoolId });
   return envelope({ error: t("common.somethingWrong"), code: "SERVER" }, 500);
 }
 

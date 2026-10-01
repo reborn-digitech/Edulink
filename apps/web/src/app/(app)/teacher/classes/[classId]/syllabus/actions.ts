@@ -1,11 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { lessonPlanSaveSchema, lessonStatusSaveSchema, syllabusProgressSaveSchema } from "@edulink/contracts";
+import { lessonPlanSaveSchema, lessonStatusSaveSchema, syllabusProgressSaveSchema, planTemplateApplySchema, planTemplateSaveSchema } from "@edulink/contracts";
 import { z } from "zod";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
-import { saveLessonPlan, saveSyllabusProgress, setLessonStatus } from "@/lib/syllabus";
+import { applyPlanTemplate, deletePlanTemplate, saveLessonPlan, savePlanTemplate, saveSyllabusProgress, setLessonStatus } from "@/lib/syllabus";
 
 /**
  * A class's three writes on its syllabus — move a chapter along, plan or
@@ -69,6 +69,50 @@ export async function setLessonStatusAction(input: unknown): Promise<ClassSyllab
     revalidatePath("/teacher/classes/[classId]/syllabus", "page");
     revalidatePath("/admin/syllabus/coverage");
     revalidatePath("/principal");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* ---- lesson plan templates: keep a plan, copy one in, take one out ---- */
+
+export async function savePlanTemplateAction(input: unknown): Promise<ClassSyllabusActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const parsed = planTemplateSaveSchema.safeParse(input);
+    if (!parsed.success) return { ok: false, errorKey: "common.checkTheForm" };
+    const { id } = await savePlanTemplate(ctx, parsed.data);
+    revalidatePath("/teacher/classes/[classId]/syllabus", "page");
+    return { ok: true, id };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+const applyInput = z.object({ templateId: cuid }).and(planTemplateApplySchema);
+
+export async function applyPlanTemplateAction(input: unknown): Promise<ClassSyllabusActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const parsed = applyInput.safeParse(input);
+    if (!parsed.success) return { ok: false, errorKey: "common.checkTheForm" };
+    const { templateId, ...rest } = parsed.data;
+    const { lessonId } = await applyPlanTemplate(ctx, templateId, rest);
+    refresh(rest.classId);
+    return { ok: true, id: lessonId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function deletePlanTemplateAction(input: unknown): Promise<ClassSyllabusActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const parsed = z.object({ templateId: cuid }).safeParse(input);
+    if (!parsed.success) return { ok: false, errorKey: "common.checkTheForm" };
+    await deletePlanTemplate(ctx, parsed.data.templateId);
+    revalidatePath("/teacher/classes/[classId]/syllabus", "page");
     return { ok: true };
   } catch (error) {
     return failure(error);

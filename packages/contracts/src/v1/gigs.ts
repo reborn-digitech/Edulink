@@ -261,7 +261,8 @@ export const gigProviderSchema = z.object({
 export type GigProvider = z.infer<typeof gigProviderSchema>;
 
 /** POST /api/v1/gigs/slots — offer a time: a one-to-one of thirty minutes, or a workshop with its length and seats. */
-export const gigSlotBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), startsAt: z.string().max(40), minutes: z.number().int().optional(), meetingUrl: z.string().max(600), seats: z.number().int().optional() });
+/** `pricePaise` is the gate paid sessions will pass through: refused while free duty remains (decision 0004), and refused after it until paid sessions exist (decision 0003). Omitted or 0 is a free time. */
+export const gigSlotBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), startsAt: z.string().max(40), minutes: z.number().int().optional(), meetingUrl: z.string().max(600), seats: z.number().int().optional(), pricePaise: z.number().int().min(0).max(10_000_000).optional() });
 export const gigSlotMadeSchema = z.object({ slotId: id });
 
 /** POST /api/v1/gigs/slots/{slotId}/cancel — the provider takes a time back, with a reason every family is told. */
