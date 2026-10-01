@@ -154,7 +154,13 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
   };
   // The grade-3 class first: the exams, cards, records, syllabus and certificates fixtures all live there, and the teacher actor is its lead.
   const klass = (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, gradeLevel: "3", enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } })) ?? (await db.class.findFirst({ where: { schoolId: s, archivedAt: null, enrollments: { some: { status: "ACTIVE" } } }, select: { id: true } }));
-  const student = klass ? await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true } }) : null;
+  // Pupil 01 first, the child the STUDENT and PARENT actors are (see actors below): "the first active
+  // enrolment" was heap order, pupil 01 on the laptop and another child on CI's fresh database, where the
+  // pupil's own absence-note doors then answered the pupil 403 and the parent 404 (run 36842613891).
+  const student = klass
+    ? ((await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE", student: { user: { email: "zz.pupil01@zz.test" } } }, select: { studentMembershipId: true } }))
+      ?? (await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { studentMembershipId: true } })))
+    : null;
   const lead = klass ? await db.classTeacher.findFirst({ where: { classId: klass.id, role: "LEAD" }, select: { teacherMembershipId: true } }) : null;
   return {
     schoolId: s,
