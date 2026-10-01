@@ -42,12 +42,28 @@ let eightA: string;
 let eightB: string;
 let pupils: string[] = [];
 let previousGradeHigh: string | null = null;
+let madeYearId: string | null = null;
 
 beforeAll(async () => {
   const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
   riversideId = riverside.id;
   previousGradeHigh = riverside.gradeHigh;
   await db.school.update({ where: { id: riversideId }, data: { gradeHigh: "10" } });
+  // The certificate's serial names the academic year that covers the leaving
+  // day. The seed gives Riverside no year (a laptop's Riverside has one from
+  // using the app; CI's fresh database does not), so the year this suite
+  // leaves pupils in is made here when it is missing — not current, so no
+  // other suite's idea of Riverside's year moves — and removed afterwards.
+  const covering = await db.academicYear.findFirst({
+    where: { schoolId: riversideId, startDate: { lte: new Date("2027-04-30T00:00:00Z") }, endDate: { gte: new Date("2027-04-30T00:00:00Z") } },
+    select: { id: true },
+  });
+  if (!covering) {
+    madeYearId = (await db.academicYear.create({
+      data: { schoolId: riversideId, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: false },
+      select: { id: true },
+    })).id;
+  }
 
   const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
@@ -107,6 +123,7 @@ afterAll(async () => {
   await db.membership.deleteMany({ where: { user: { email: { in: EMAILS } } } });
   await db.user.deleteMany({ where: { email: { in: EMAILS } } });
   await db.class.deleteMany({ where: { id: { in: ids } } });
+  if (madeYearId) await db.academicYear.delete({ where: { id: madeYearId } });
   await db.$disconnect();
 });
 
