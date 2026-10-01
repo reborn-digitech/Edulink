@@ -201,14 +201,19 @@ jobs:
           # throwaway FEES_SECRET_KEY, the box that seals gateway keys and the
           # two-step sign-in secrets — without it POST /account/totp/start
           # rightly answers 403, which is a deployment's choice and not what the
-          # catalog's sweep of the office and the head is there to prove.
+          # catalog's sweep of the office and the head is there to prove. And a
+          # FILE_LINK_SECRET: a production build signs no file links without
+          # one (file-links.ts) and answers 503, where the dev server makes a
+          # key per process; a deployment must set it (env.ts, fatal).
           node -e '
             const k = require("web-push").generateVAPIDKeys();
             const fees = require("crypto").randomBytes(32).toString("base64");
+            const links = require("crypto").randomBytes(32).toString("base64url");
             console.log(`::add-mask::${k.privateKey}`);
             console.log(`::add-mask::${fees}`);
+            console.log(`::add-mask::${links}`);
             require("fs").appendFileSync(process.env.GITHUB_ENV,
-              `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\nFEES_SECRET_KEY=${fees}\n`);
+              `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\nFEES_SECRET_KEY=${fees}\nFILE_LINK_SECRET=${links}\n`);
           '
           npx prisma generate
           node scripts/with-admin-db.mjs npx prisma migrate deploy
