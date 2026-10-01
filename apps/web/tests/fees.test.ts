@@ -640,4 +640,14 @@ describe("one definition of outstanding", () => {
     expect(onThe1st).toHaveLength(1);
     await expect(collectionsExport(admin(), { fromKey: "2026-13-01", toKey: K })).rejects.toThrow("fees.refuseDate");
   });
+
+  it("at 01:00 IST on the 2nd the counter takes a payment dated the school's today, the 2nd, and refuses the 3rd", async () => {
+    // 19:30 UTC on the 1st: the platform's date is the 1st, the school's the 2nd.
+    const at = new Date(`${K}T19:30:00.000Z`);
+    await expect(recordCounterPayment(admin(), { studentMembershipId: behind, amountPaise: 100_00, method: "CASH", paidAtKey: addDaysToKey(K, 2) }, at)).rejects.toThrow("fees.refuseDate");
+    await expect(recordCounterPayment(admin(), { studentMembershipId: behind, amountPaise: 100_00, method: "CASH", paidAtKey: "2026-02-30" }, at)).rejects.toThrow("fees.refuseDate");
+    const taken = await recordCounterPayment(admin(), { studentMembershipId: behind, amountPaise: 100_00, method: "CASH", paidAtKey: addDaysToKey(K, 1), clientId: `ist-${STAMP}` }, at);
+    // Today is the moment it was taken, not a midnight that has not come yet.
+    expect((await db.feePayment.findUniqueOrThrow({ where: { id: taken.paymentId }, select: { paidAt: true } })).paidAt?.toISOString()).toBe(at.toISOString());
+  });
 });

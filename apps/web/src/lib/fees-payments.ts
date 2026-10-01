@@ -6,7 +6,7 @@ import { notify, notifyGuardians } from "./notify";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
-import { todayKey } from "./dates";
+import { isDateKey, todayKey } from "./dates";
 import { readJson, writeJson } from "./json";
 import { parseCsv } from "./csv";
 import { createOrder, fetchOrderPayments, refundPayment, verifyCheckoutSignature, upiIntentLink, looksLikeUtr, GatewayError } from "./gateway";
@@ -209,7 +209,7 @@ export type CounterPaymentInput = {
   paidAtKey?: string | null;
 };
 
-export async function recordCounterPayment(ctx: ActiveContext, input: CounterPaymentInput): Promise<{ paymentId: string; receiptId: string; serial: string; already: boolean }> {
+export async function recordCounterPayment(ctx: ActiveContext, input: CounterPaymentInput, now: Date = new Date()): Promise<{ paymentId: string; receiptId: string; serial: string; already: boolean }> {
   const caller = requireFeesOffice(ctx);
   if (!(COUNTER_METHODS as readonly string[]).includes(input.method)) throw new AccessError("fees.refuseMethod");
   if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new AccessError("fees.refuseAmount");
@@ -223,8 +223,17 @@ export async function recordCounterPayment(ctx: ActiveContext, input: CounterPay
     const replay = await db.feePayment.findUnique({ where: { schoolId_clientId: { schoolId: caller.schoolId, clientId } }, include: { receipt: { select: { id: true, serial: true } } } });
     if (replay?.receipt) return { paymentId: replay.id, receiptId: replay.receipt.id, serial: replay.receipt.serial, already: true };
   }
-  const paidAt = input.paidAtKey ? new Date(`${input.paidAtKey}T00:00:00.000Z`) : new Date();
-  if (Number.isNaN(paidAt.getTime()) || paidAt.getTime() > Date.now() + 60_000) throw new AccessError("fees.refuseDate");
+  // The day is the school's day. The form sends the school's today, and the
+  // old check read the key as UTC midnight and refused anything after the
+  // platform's clock: from 00:00 to 05:30 in India the office's own today was
+  // "a future day" and no payment could be taken at the counter (CI run
+  // 36909003458, "That is not a valid date."). Today is now; an earlier day,
+  // entered later, is that day; a day after the school's today is refused.
+  const key = input.paidAtKey?.trim() || null;
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
+  const schoolToday = todayKey(timezone, now);
+  if (key && (!isDateKey(key) || key > schoolToday)) throw new AccessError("fees.refuseDate");
+  const paidAt = !key || key === schoolToday ? now : new Date(`${key}T00:00:00.000Z`);
 
   const result = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
