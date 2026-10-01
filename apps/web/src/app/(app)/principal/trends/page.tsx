@@ -73,7 +73,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
           <Card>
             <CardHeader icon={<ChartLineUpIcon weight="duotone" className="size-5" />} title={t("trends.termsTitle")} description={t("trends.termsHint")} />
             <CardBody className="p-0">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto" tabIndex={0}>
                 <table className="w-full text-sm">
                   <thead>
                     <tr>
@@ -185,7 +185,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
               {view.cohorts.length === 0 ? (
                 <p className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</p>
               ) : (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto" tabIndex={0}>
                   <table className="w-full text-sm">
                     <thead>
                       <tr>

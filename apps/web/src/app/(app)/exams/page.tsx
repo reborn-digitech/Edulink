@@ -209,7 +209,7 @@ export default async function ExamsPage({
                     .filter(Boolean)
                     .join(" · ")}
                 />
-                <CardBody className="overflow-x-auto p-0">
+                <CardBody className="overflow-x-auto p-0" tabIndex={0}>
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
