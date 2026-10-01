@@ -26,18 +26,27 @@ function key(): Buffer {
   return read.key;
 }
 
-export function seal(plain: string): string {
+/**
+ * `bound` is what the sealed value belongs to (the school's id and the
+ * field), authenticated with the ciphertext as associated data: a v2 value
+ * moved to another row or column fails to open. A v1 value, sealed before
+ * 2026-10-01 without it, still opens, and is written back as v2 the next
+ * time the school saves its keys.
+ */
+export function seal(plain: string, bound = ""): string {
   const nonce = randomBytes(12);
   const cipher = createCipheriv(ALG, key(), nonce);
+  cipher.setAAD(Buffer.from(bound, "utf8"));
   const body = Buffer.concat([cipher.update(plain, "utf8"), cipher.final()]);
   const tag = cipher.getAuthTag();
-  return ["v1", nonce.toString("base64url"), body.toString("base64url"), tag.toString("base64url")].join(".");
+  return ["v2", nonce.toString("base64url"), body.toString("base64url"), tag.toString("base64url")].join(".");
 }
 
-export function open(sealed: string): string {
+export function open(sealed: string, bound = ""): string {
   const [version, nonce, body, tag] = sealed.split(".");
-  if (version !== "v1" || !nonce || !body || !tag) throw new Error("secret-box: not a sealed value");
+  if ((version !== "v1" && version !== "v2") || !nonce || !body || !tag) throw new Error("secret-box: not a sealed value");
   const decipher = createDecipheriv(ALG, key(), Buffer.from(nonce, "base64url"));
+  if (version === "v2") decipher.setAAD(Buffer.from(bound, "utf8"));
   decipher.setAuthTag(Buffer.from(tag, "base64url"));
   return Buffer.concat([decipher.update(Buffer.from(body, "base64url")), decipher.final()]).toString("utf8");
 }

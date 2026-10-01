@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -21,6 +22,8 @@ import { must, Notice, Refusal } from "./shared";
  * record form once it has posted.
  */
 export function StaffIncident() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const { incidentId } = useLocalSearchParams<{ incidentId?: string }>();
   const t = useT();
   const th = useTheme();

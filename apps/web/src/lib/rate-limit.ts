@@ -297,7 +297,11 @@ export const INVITE_ACCEPTS = { limit: 10, windowMs: 60 * 60_000 };
  * send — which was, for a while, the entry every per-address limit keyed on.
  */
 export function clientAddress(hdrs: Headers): string | null {
-  const fly = hdrs.get("fly-client-ip")?.trim();
+  // Fly-Client-IP is Fly's word, and only Fly's: anywhere else a client
+  // could send the header itself and key every per-address limit on a
+  // string of its choosing. Trusted on Fly (FLY_APP_NAME is set by the
+  // platform) or where the operator says the proxy sets it.
+  const fly = trustFlyHeader() ? hdrs.get("fly-client-ip")?.trim() : undefined;
   if (fly) return fly;
   const forwarded = hdrs.get("x-forwarded-for");
   if (forwarded) {
@@ -307,6 +311,10 @@ export function clientAddress(hdrs: Headers): string | null {
   }
   const real = hdrs.get("x-real-ip")?.trim();
   return real || null;
+}
+
+function trustFlyHeader(): boolean {
+  return Boolean(process.env.FLY_APP_NAME) || process.env.TRUST_FLY_CLIENT_IP === "1";
 }
 
 export async function callerKey(): Promise<string | null> {

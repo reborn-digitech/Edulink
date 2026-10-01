@@ -4,7 +4,7 @@ import { getCard } from "@/lib/report-cards";
 import { db } from "@/lib/db";
 import { renderReportCardsPdf } from "@/lib/report-card-pdf";
 import { getT, getLocale } from "@/lib/i18n/server";
-import { apiFailure, apiInvalid } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, budget, PDF_BUNDLE_BUDGET } from "@/lib/api-v1";
 
 /** GET /api/v1/teaching/classes/{classId}/report-cards/pdf?title= — the class's cards under one title, a page each. */
 export async function GET(request: Request, { params }: { params: Promise<{ classId: string }> }) {
@@ -13,9 +13,11 @@ export async function GET(request: Request, { params }: { params: Promise<{ clas
     const { classId } = await params;
     const parsed = teachingCardsBundleQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
+    const refused = await budget(`pdf-bundle:${ctx.user.id}`, PDF_BUNDLE_BUDGET.limit, PDF_BUNDLE_BUDGET.windowMs);
+    if (refused) return refused;
     // Reading, not writing: the head and the office read every card, a
     // teacher of the class theirs, and getCard's own gate decides each one.
-    const rows = await db.reportCard.findMany({ where: { schoolId: ctx.schoolId, classId, title: parsed.data.title }, select: { id: true }, take: 500 });
+    const rows = await db.reportCard.findMany({ where: { schoolId: ctx.schoolId, classId, title: parsed.data.title }, select: { id: true }, take: 400 });
     const cards = [];
     for (const row of rows) {
       const card = await getCard(ctx, row.id);

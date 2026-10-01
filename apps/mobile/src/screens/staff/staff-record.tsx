@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -59,6 +60,8 @@ export function staffBodyFrom(form: StaffForm): StaffRecordSave {
  * office edits; the head reads the same screen with nothing to press.
  */
 export function StaffRecord() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
   const id = membershipId ?? "";

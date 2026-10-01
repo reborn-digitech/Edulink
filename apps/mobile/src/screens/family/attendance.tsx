@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
@@ -18,6 +19,8 @@ import { ATTENDANCE, ChildLeftBanner, ChildSwitcher, childQuery, formatDateKey, 
  * weeks from their own overview, which is what their Today page shows too.
  */
 export function FamilyAttendance() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const role = useRole();
   const t = useT();
   if (role === "STUDENT") return <PupilAttendance />;

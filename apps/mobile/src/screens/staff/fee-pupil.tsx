@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -27,6 +28,8 @@ const METHODS: CounterMethod[] = ["CASH", "CHEQUE", "BANK", "UPI"];
  * the web's; the phone opens the pupil there for those.
  */
 export function FeePupil() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const { studentMembershipId } = useLocalSearchParams<{ studentMembershipId?: string }>();
   const t = useT();
   const th = useTheme();

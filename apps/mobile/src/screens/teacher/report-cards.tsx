@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Pressable, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -38,6 +39,8 @@ type CoScholastic = NonNullable<TeachingReportCards["coScholastic"]>;
 type Mode = "term" | "year" | "papers";
 
 export function ReportCardBuilder() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const { classId: fromRoute } = useLocalSearchParams<{ classId?: string }>();
   const [picked, setPicked] = useState<string | null>(null);
   const classId = fromRoute || picked;

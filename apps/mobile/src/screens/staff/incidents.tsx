@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
@@ -33,6 +34,8 @@ export function logQuery(status: Status, studentMembershipId: string | undefined
  * the door is the class roster, where every pupil's row has it.
  */
 export function StaffIncidents() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const params = useLocalSearchParams<{ studentMembershipId?: string; name?: string }>();
   const pupilId = typeof params.studentMembershipId === "string" && params.studentMembershipId ? params.studentMembershipId : undefined;
   const pupilName = typeof params.name === "string" && params.name ? params.name : undefined;

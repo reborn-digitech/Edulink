@@ -28,6 +28,7 @@ const KEYS = [
   "TWILIO_AUTH_TOKEN",
   "TWILIO_FROM",
   "VAPID_SUBJECT",
+  "FILE_LINK_SECRET",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -66,6 +67,9 @@ const GOOD_SMTP = {
 } as const;
 
 /** A complete, healthy Twilio block. */
+/** A deployment signs the phone's file links with a key of its own since 2026-10-01. */
+const GOOD_FILE_LINKS = { FILE_LINK_SECRET: "f".repeat(40) };
+
 const GOOD_TWILIO = {
   TWILIO_ACCOUNT_SID: "AC" + "0123456789abcdef".repeat(2),
   TWILIO_AUTH_TOKEN: "sekrit",
@@ -91,6 +95,7 @@ describe("checkEnv — VAPID", () => {
       VAPID_SUBJECT: "mailto:ops@edulink.example",
       ...GOOD_SMTP,
       ...GOOD_TWILIO,
+      ...GOOD_FILE_LINKS,
     });
     expect(checkEnv()).toEqual([]);
   });
@@ -446,8 +451,12 @@ describe("⚠ checkEnv — the VAPID pair, checked as a pair", () => {
   });
 
   it("the matching pair passes, and length is still checked first", () => {
-    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, ...GOOD_FILE_LINKS, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
     expect(checkEnv()).toEqual([]);
+
+    // Without the file-link key a deployment does not boot: the phone's links would be refused.
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, FILE_LINK_SECRET: "", NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
+    expect(checkEnv().find((p) => p.key === "FILE_LINK_SECRET")?.fatal).toBe(true);
 
     set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: "tooshort" });
     const problems = checkEnv();

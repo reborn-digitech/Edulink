@@ -4695,6 +4695,7 @@ export const mr: Dictionary = {
     withdrawRequest: "हा अर्ज मागे घ्या", withdrawn: "मागे घेतले",
   },
   common: {
+    bodyTooLarge: "हे एका विनंतीत या दाराच्या क्षमतेपेक्षा जास्त आहे.",
     showMore: "आणखी {count} दाखवा",
     officeSetsThis: "हे शाळेचे कार्यालय ठरवते. तुम्ही ते इथे वाचू शकता, बदलू शकत नाही.",
     retry: "पुन्हा प्रयत्न करा",

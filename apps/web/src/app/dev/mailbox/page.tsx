@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
+import { clientAddress } from "@/lib/rate-limit";
 import { requireSuperuser } from "@/lib/tenancy";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,11 +26,14 @@ export const dynamic = "force-dynamic";
  */
 export default async function MailboxPage() {
   if (process.env.NODE_ENV === "production") notFound();
-  // Off production the page still lists every sign-in link: on a developer's
-  // own machine it is open; on any other host (a staging box left in dev
-  // mode) only a signed-in superuser sees it.
-  const host = (await headers()).get("host") ?? "";
-  if (!/^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(host)) await requireSuperuser();
+  // Off production the page still lists every sign-in link. It is open only
+  // on a developer's own machine, which is a fact about the socket and not
+  // about the Host header a request can name: a loopback address in the
+  // trusted client address, and never when the process is told it is deployed.
+  const hdrs = await headers();
+  const address = clientAddress(hdrs) ?? "";
+  const loopback = /^(127\.0\.0\.1|::1|::ffff:127\.0\.0\.1)$/.test(address) || (address === "" && /^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(hdrs.get("host") ?? "") && !process.env.FLY_APP_NAME && !process.env.NEXT_PUBLIC_APP_URL?.startsWith("https://"));
+  if (!loopback) await requireSuperuser();
 
   const emails = await db.outboundEmail.findMany({
     orderBy: { createdAt: "desc" },

@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { headers } from "next/headers";
 import { db } from "./db";
 import { forSchool } from "./tenant-context";
+import { clientAddress } from "./rate-limit";
 import { writeJson } from "./json";
 
 /**
@@ -67,7 +68,8 @@ export async function audit(entry: {
       // again. The three-year simulation caught the regression on its first
       // write.
       ip = await headers().then(
-        (hdrs) => hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null,
+        // The address the rate limiter trusts (Fly's header, else the last hop), not the first hop a client can write.
+        (hdrs) => clientAddress(hdrs),
       );
     } catch {
       ip = null;

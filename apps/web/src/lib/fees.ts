@@ -120,8 +120,8 @@ export async function saveGatewayAccount(ctx: ActiveContext, input: { keyId: str
   const mode = keyId.startsWith("rzp_live_") ? "LIVE" : input.mode;
   await db.feeGatewayAccount.upsert({
     where: { schoolId: caller.schoolId },
-    create: { schoolId: caller.schoolId, provider: "RAZORPAY", keyId, secretEnc: seal(secret), webhookSecretEnc: seal(webhookSecret), mode },
-    update: { keyId, secretEnc: seal(secret), webhookSecretEnc: seal(webhookSecret), mode },
+    create: { schoolId: caller.schoolId, provider: "RAZORPAY", keyId, secretEnc: seal(secret, `${caller.schoolId}:secret`), webhookSecretEnc: seal(webhookSecret, `${caller.schoolId}:webhook`), mode },
+    update: { keyId, secretEnc: seal(secret, `${caller.schoolId}:secret`), webhookSecretEnc: seal(webhookSecret, `${caller.schoolId}:webhook`), mode },
   });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.gatewaySave", targetType: "School", targetId: caller.schoolId, meta: { keyId, mode } });
 }
@@ -136,7 +136,7 @@ export async function removeGatewayAccount(ctx: ActiveContext): Promise<void> {
 export async function gatewayAccountFor(schoolId: string): Promise<(GatewayAccount & { webhookSecret: string }) | null> {
   const row = await db.feeGatewayAccount.findUnique({ where: { schoolId } });
   if (!row) return null;
-  return { keyId: row.keyId, secret: open(row.secretEnc), webhookSecret: open(row.webhookSecretEnc), mode: row.mode as "TEST" | "LIVE" };
+  return { keyId: row.keyId, secret: open(row.secretEnc, `${schoolId}:secret`), webhookSecret: open(row.webhookSecretEnc, `${schoolId}:webhook`), mode: row.mode as "TEST" | "LIVE" };
 }
 
 /* -------------------------------------------------------------------------- */

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { flushQueue, onQueueEvent } from "@/lib/offline-queue";
+import { flushQueue, onQueueEvent, setOutboxOwner } from "@/lib/offline-queue";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
@@ -35,12 +35,27 @@ function subscribeToConnectivity(onChange: () => void): () => void {
 const readConnectivity = () => navigator.onLine;
 const assumeOnline = () => true;
 
-export function AppRuntime() {
+export function AppRuntime({ owner }: { owner: string | null }) {
   const t = useT();
   const { toast } = useToast();
   const online = useSyncExternalStore(subscribeToConnectivity, readConnectivity, assumeOnline);
   const [updateReady, setUpdateReady] = useState(false);
   const wasOffline = useRef(false);
+
+  /* ---- whose device this is right now ----
+   *
+   * The outbox and the worker's caches are per browser, not per person. The
+   * layout says who is signed in on every page; when that changes, the rows
+   * another person queued are dropped and the private caches cleared, and
+   * the worker is told the same, so the next person on a staff-room machine
+   * starts with nothing of the last.
+   */
+  useEffect(() => {
+    void setOutboxOwner(owner).then(({ changed }) => {
+      if (!changed) return;
+      navigator.serviceWorker?.controller?.postMessage({ type: "CLEAR_PRIVATE" });
+    });
+  }, [owner]);
 
   /* ---- service worker ---- */
   useEffect(() => {

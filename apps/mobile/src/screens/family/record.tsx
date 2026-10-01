@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyChildrenSchema, pupilRecordViewSchema, recordChangeSchema, recordChangesListSchema, type RecordChangeFile } from "@edulink/contracts";
@@ -21,6 +22,8 @@ import { ChildLeftBanner, ChildSwitcher, childQuery, param } from "./shared";
  * until the office approves or declines it, or they take it back.
  */
 export function FamilyRecord() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const role = useRole();
   const router = useRouter();

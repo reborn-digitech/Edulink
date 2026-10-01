@@ -465,11 +465,14 @@ describe("as the admin", () => {
     expect(body.classes.map((c: { id: string }) => c.id)).toContain(classId);
     expect((await attendanceGet(get(`${P}/attendance?window=45`))).status).toBe(422);
 
-    const history = await historyGet(get(`${P}/attendance/history?classId=${classId}&month=2026-09`));
+    // This month, by the school's clock: the roll of a month is who was
+    // enrolled by its end, and these pupils were enrolled a moment ago.
+    const month = new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit" }).format(new Date());
+    const history = await historyGet(get(`${P}/attendance/history?classId=${classId}&month=${month}`));
     expect(history.status).toBe(200);
     const h = await history.json();
     expect(h.history.class.id).toBe(classId);
-    expect(h.history.month).toBe("2026-09");
+    expect(h.history.month).toBe(month);
     expect(h.history.pupils.length).toBeGreaterThanOrEqual(1);
     const picker = await (await historyGet(get(`${P}/attendance/history`))).json();
     expect(picker.classes).toHaveLength(2);

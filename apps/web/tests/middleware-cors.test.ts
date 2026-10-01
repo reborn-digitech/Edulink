@@ -29,11 +29,22 @@ describe("CORS on /api/v1", () => {
   it("covers the API and the files it names, and nothing else under /api", () => {
     // A picture in a post is fetched with the bearer token, so the browser asks first: the same answer, the same list of origins.
     // The first entry is every page, for its nonce (tests/csp.test.ts); the rest are the doors CORS answers at.
-    expect(config.matcher.slice(1)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+    expect(config.matcher.slice(1, 4)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
     // An API path outside those doors passes through with nothing added, whoever asks.
     const other = middleware(new NextRequest("http://localhost:3000/api/push", { method: "OPTIONS", headers: { origin: "http://localhost:8081" } }));
     expect(other.status).toBe(200);
     expect(other.headers.get("access-control-allow-origin")).toBeNull();
+    // The three cookie doors take the Origin lock and no CORS: a cross-site
+    // POST with the session cookie is refused, the app's own page and a
+    // bearer call (no cookie) pass, and no origin is ever named back.
+    for (const path of ["/api/push", "/api/practice/answer", "/api/auth/logout"]) {
+      const locked = (origin: string, cookie: boolean) =>
+        middleware(new NextRequest(`http://localhost:3000${path}`, { method: "POST", headers: { origin, host: "localhost:3000", ...(cookie ? { cookie: "edulink_session=x" } : {}) } }));
+      expect(locked("https://evil.example", true).status, path).toBe(403);
+      expect(locked("http://localhost:3000", true).status, path).toBe(200);
+      expect(locked("https://evil.example", false).status, path).toBe(200);
+      expect(locked("http://localhost:8081", true).headers.get("access-control-allow-origin"), path).toBeNull();
+    }
     const file = (method: string, origin: string) => new NextRequest("http://localhost:3000/api/files/abc.png?w=640", { method, headers: { origin } });
     expect(middleware(file("OPTIONS", "http://localhost:8081")).status).toBe(204);
     expect(middleware(file("OPTIONS", "https://evil.example")).status).toBe(403);

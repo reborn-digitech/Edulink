@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -21,6 +22,8 @@ import { must, Refusal } from "./shared";
  * with the membership id in the route.
  */
 export function OfficePupilRecord() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const { membershipId } = useLocalSearchParams<{ membershipId?: string }>();
   const t = useT();
   const th = useTheme();

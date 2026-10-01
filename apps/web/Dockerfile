@@ -6,7 +6,7 @@
 # The image carries no .env; every setting comes from the host's secret store
 # (see docs/runbooks/deploy.md) and env.ts refuses to serve a half-configured
 # one. Migrations run as a release step, never at container start.
-FROM node:20-bookworm-slim AS base
+FROM node:24-bookworm-slim AS base
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0 PNPM_HOME=/pnpm PATH=/pnpm:$PATH
 # openssl in every stage: Prisma detects the OpenSSL version to pick its query
 # engine, and without it the build stage guessed 1.1.x for a runtime that has 3.0.
@@ -32,7 +32,7 @@ ENV NEXT_TELEMETRY_DISABLED=1 APP_COMMIT=$APP_COMMIT
 # The type check inside `next build` needs more than Node's default heap on an 8 GB box (~1.7 GB for tsc alone); 4 GB is what a 16 GB runner gives by default.
 RUN cd apps/web && npx prisma generate && NODE_OPTIONS=--max-old-space-size=4096 npx next build
 
-FROM node:20-bookworm-slim AS runtime
+FROM node:24-bookworm-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0 NEXT_TELEMETRY_DISABLED=1
 ARG APP_COMMIT=unknown

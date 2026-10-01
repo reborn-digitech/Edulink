@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -81,6 +82,8 @@ function isSensitiveAction(action: string): boolean {
  * see — happens here, after the note is written.
  */
 export function Safety() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();

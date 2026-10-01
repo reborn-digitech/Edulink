@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -27,6 +28,8 @@ const FIRST_AVATAR = "preset:fox-sunset";
  * their badges. Choosing an avatar is the app's own picker ("/(app)/avatar").
  */
 export function StudentProfile() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const role = useRole();
   const router = useRouter();

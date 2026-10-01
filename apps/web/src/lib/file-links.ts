@@ -1,4 +1,4 @@
-import { createHmac, hkdfSync, randomBytes, timingSafeEqual } from "node:crypto";
+import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 
 /**
  * Five-minute links to one stored file, for opening it OUTSIDE the app.
@@ -19,18 +19,17 @@ export const FILE_LINK_TTL_SECONDS = 300;
 let devKey: Buffer | null = null;
 
 /**
- * The signing key. FILE_LINK_SECRET when set (32+ characters). Otherwise a key
- * derived from VAPID_PRIVATE_KEY with HKDF under its own label — every
- * deployment that sends push already has that secret, and a derived key with a
- * separate label is unrelated to the push signature in use. With neither: a
- * random key for this process in development and tests, and NULL in
- * production, where links are refused and the phone opens the web page.
+ * The signing key: FILE_LINK_SECRET, 32+ characters. Until 2026-10-01 a
+ * deployment without one derived a key from the push private key; the
+ * review that day called it one secret guarding two things, so a deployed
+ * server now signs no links without a key of its own (env.ts says so at
+ * boot). In development and tests: a random key for this process.
  */
 export function fileLinkKey(): Buffer | null {
   const own = process.env.FILE_LINK_SECRET?.trim();
   if (own && own.length >= 32) return Buffer.from(own, "utf8");
-  const vapid = process.env.VAPID_PRIVATE_KEY?.trim();
-  if (vapid) return Buffer.from(hkdfSync("sha256", vapid, "edulink", "file-links-v1", 32));
+  // No longer derived from the push key (the review of 2026-10-01): one secret
+  // guarded two unrelated things. Production without its own key signs no links.
   if (process.env.NODE_ENV === "production") return null;
   devKey ??= randomBytes(32);
   return devKey;

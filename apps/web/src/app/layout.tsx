@@ -7,6 +7,7 @@ import { ToastProvider } from "@/components/ui/toast";
 import { AppRuntime } from "@/components/app-runtime";
 import { I18nProvider } from "@/lib/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { getSession } from "@/lib/session";
 import { dictionaryFor } from "@/lib/i18n/dictionary";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -76,7 +77,7 @@ export const viewport: Viewport = {
  * parent sees before any account exists.
  */
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const [locale, t] = await Promise.all([getLocale(), getT()]);
+  const [locale, t, session] = await Promise.all([getLocale(), getT(), getSession()]);
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
@@ -95,7 +96,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </a>
         <I18nProvider locale={locale} dictionary={dictionaryFor(locale)}>
           <ToastProvider>
-            <AppRuntime />
+            <AppRuntime owner={session?.user.id ?? null} />
             {children}
           </ToastProvider>
         </I18nProvider>

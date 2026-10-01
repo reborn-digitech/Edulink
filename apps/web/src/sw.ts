@@ -63,7 +63,15 @@ const serwist = new Serwist({
       handler: new NetworkFirst({
         cacheName: "edulink-api",
         networkTimeoutSeconds: 4,
-        plugins: [new ExpirationPlugin({ maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 })],
+        plugins: [
+          new ExpirationPlugin({ maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 }),
+          {
+            // A response the server said not to store (a PDF, a record, a
+            // session answer) is not kept for the next person on the device.
+            cacheWillUpdate: async ({ response }) =>
+              response.ok && !/no-store/i.test(response.headers.get("cache-control") ?? "") ? response : null,
+          },
+        ],
       }),
     },
     {
@@ -106,17 +114,21 @@ serwist.addEventListeners();
 const DB_NAME = "edulink";
 const STORE = "outbox";
 
+const META = "meta";
+const OWNER_KEY = "owner";
+
 type QueuedRequest = {
   id: string;
   url: string;
   method: string;
   body: string;
   tag: string;
+  owner?: string | null;
 };
 
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, 1);
+    const request = indexedDB.open(DB_NAME, 2);
     request.onupgradeneeded = () => {
       const db = request.result;
       if (!db.objectStoreNames.contains(STORE)) {
@@ -124,6 +136,7 @@ function openDb(): Promise<IDBDatabase> {
         store.createIndex("tag", "tag");
         store.createIndex("createdAt", "createdAt");
       }
+      if (!db.objectStoreNames.contains(META)) db.createObjectStore(META);
     };
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
@@ -132,16 +145,25 @@ function openDb(): Promise<IDBDatabase> {
 
 async function drainOutbox(): Promise<void> {
   const db = await openDb();
-  const items: QueuedRequest[] = await new Promise((resolve, reject) => {
+  const all: QueuedRequest[] = await new Promise((resolve, reject) => {
     const request = db.transaction(STORE, "readonly").objectStore(STORE).getAll();
     request.onsuccess = () => resolve(request.result as QueuedRequest[]);
     request.onerror = () => reject(request.error);
   });
+  // Only the signed-in person's rows go out (the page keeps the owner in the
+  // meta store); another person's wait, and the server refuses a replay
+  // that names someone else in any case.
+  const owner: string | null = await new Promise((resolve) => {
+    const request = db.transaction(META, "readonly").objectStore(META).get(OWNER_KEY);
+    request.onsuccess = () => resolve((request.result as string | null | undefined) ?? null);
+    request.onerror = () => resolve(null);
+  });
+  const items = all.filter((item) => (item.owner ?? null) === owner);
 
   for (const item of items) {
     const response = await fetch(item.url, {
       method: item.method,
-      headers: { "content-type": "application/json", "x-edulink-replay": "1" },
+      headers: { "content-type": "application/json", "x-edulink-replay": "1", ...(item.owner ? { "x-edulink-owner": item.owner } : {}) },
       body: item.body,
     });
 
@@ -224,7 +246,13 @@ self.addEventListener("notificationclick", (event) => {
 });
 
 self.addEventListener("message", (event) => {
-  if ((event.data as { type?: string } | undefined)?.type === "SKIP_WAITING") {
+  const type = (event.data as { type?: string } | undefined)?.type;
+  if (type === "SKIP_WAITING") {
     void self.skipWaiting();
+  }
+  // The page saw the person change (sign-out, or someone else signing in):
+  // what the last person read must not be the next person's offline page.
+  if (type === "CLEAR_PRIVATE") {
+    event.waitUntil(Promise.all(["edulink-api", "edulink-pages"].map((name) => caches.delete(name))));
   }
 });

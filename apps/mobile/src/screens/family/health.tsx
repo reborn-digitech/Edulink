@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyChildrenSchema, healthCardSchema, type HealthCardSave } from "@edulink/contracts";
@@ -21,6 +22,8 @@ const PATH = "/api/v1/family/health";
  * as the overview's do; the card endpoint answers for one child at a time.
  */
 export function FamilyHealth() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const role = useRole();
   const router = useRouter();

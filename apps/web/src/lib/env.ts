@@ -594,6 +594,12 @@ export function checkEnv(): EnvProblem[] {
     });
   }
 
+  // The key that signs five-minute file links: without one, a deployed server
+  // hands the phone no links at all. It once fell back to the push key.
+  if (isProd && !((process.env.FILE_LINK_SECRET?.trim().length ?? 0) >= 32)) {
+    problems.push({ key: "FILE_LINK_SECRET", message: "FILE_LINK_SECRET is not set (32+ random characters): file links for the phone are refused until it is.", fatal: true });
+  }
+
   // Saying "smtp" is a promise; a boot that cannot keep it must say so NOW,
   // not at the first parent's password reset. Fatal when deployed, loud
   // locally — the VAPID rule.

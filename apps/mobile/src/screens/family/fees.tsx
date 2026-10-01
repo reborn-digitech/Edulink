@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Linking, Pressable, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -34,6 +35,8 @@ export const POLL = { intervalMs: 2000, maxMs: 60_000 };
 const SETTLED = new Set(["PAID", "FAILED", "REVERSED", "REFUNDED"]);
 
 export function FamilyFees() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const role = useRole();
   const t = useT();
   const router = useRouter();

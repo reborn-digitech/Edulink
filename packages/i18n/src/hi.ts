@@ -4698,6 +4698,7 @@ export const hi: Dictionary = {
     withdrawRequest: "यह आवेदन वापस लें", withdrawn: "वापस लिया",
   },
   common: {
+    bodyTooLarge: "यह एक अनुरोध में इस द्वार की क्षमता से अधिक है।",
     showMore: "{count} और दिखाएँ",
     officeSetsThis: "इसे स्कूल कार्यालय तय करता है। आप इसे यहाँ पढ़ सकते हैं, बदल नहीं सकते।",
     retry: "फिर कोशिश करें",

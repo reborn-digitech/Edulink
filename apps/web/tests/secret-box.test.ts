@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { randomBytes } from "node:crypto";
+import { createCipheriv, randomBytes } from "node:crypto";
 import { open, seal, sealingAvailable } from "@/lib/secret-box";
 
 /**
@@ -22,11 +22,25 @@ describe("secret-box", () => {
     const a = seal("rzp-secret-1234");
     const b = seal("rzp-secret-1234");
     expect(a).not.toBe(b);
-    expect(a.startsWith("v1.")).toBe(true);
+    expect(a.startsWith("v2.")).toBe(true);
     expect(a).not.toContain("rzp-secret");
     expect(open(a)).toBe("rzp-secret-1234");
     expect(open(b)).toBe("rzp-secret-1234");
     expect(sealingAvailable()).toBe(true);
+  });
+
+  it("a value bound to one row does not open for another, and a v1 value sealed before binding still opens", () => {
+    const bound = seal("rzp-secret", "school-a:secret");
+    expect(open(bound, "school-a:secret")).toBe("rzp-secret");
+    expect(() => open(bound, "school-b:secret")).toThrow();
+    expect(() => open(bound)).toThrow();
+    // A v1 value: the same cipher with no associated data, as every value sealed before 2026-10-01 was.
+    const key = Buffer.from(process.env.FEES_SECRET_KEY!, "base64");
+    const nonce = randomBytes(12);
+    const cipher = createCipheriv("aes-256-gcm", key, nonce);
+    const body = Buffer.concat([cipher.update("old-secret", "utf8"), cipher.final()]);
+    const v1 = ["v1", nonce.toString("base64url"), body.toString("base64url"), cipher.getAuthTag().toString("base64url")].join(".");
+    expect(open(v1, "school-a:secret")).toBe("old-secret");
   });
 
   it("refuses a tampered value and a value it did not seal", () => {

@@ -31,6 +31,10 @@ The phone app ships two ways, and the difference is one question: did anything n
 
 Actions → "mobile over-the-air update" → channel (staging first, then production) and a one-line message. The workflow refuses unless the change is JS-only and the battery and the bundle gate pass. Verify on a staging device that the update was taken (`expo-updates` `updateId` shows in More → the app's version line once that line exists) before running it for production.
 
+### Code signing the updates
+
+An over-the-air update is JavaScript the phone runs as the app; whoever can publish one on the channel can change what every phone does. Before the first production update, sign them: `npx expo-updates codesigning:generate --key-output-directory keys --certificate-output-directory certs --certificate-validity-duration-years 10 --certificate-common-name "Relay"`, keep the private key out of git (it belongs with `EXPO_TOKEN`, in the repository's secrets and the release engineer's keychain), put the certificate path and `codeSigningMetadata: { keyid: "main", alg: "rsa-v1_5-sha256" }` under `updates` in `app.config.ts`, and pass `--private-key-path` to `eas update` in `.github/workflows/ota.yml`. A phone then refuses an update the key did not sign, even one published with a leaked Expo token. This is not configured yet: it needs the EAS project to exist first, and the key must be made on a machine the owner controls, not in a workflow.
+
 ## The kill switch
 
 When a build must not be used any more (a security fix, a broken API contract), raise the minimum on the API and every older app shows the update screen and nothing else:

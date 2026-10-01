@@ -38,14 +38,41 @@ function page(request: NextRequest): NextResponse {
   return response;
 }
 
-/** The three API doors a browser on another origin may knock on. Every other /api path passes untouched. */
+/** The three API doors a browser on another origin may knock on. */
 const CORS_PATHS = /^\/api\/(v1\/|attendance$|attendance\/|files\/)/;
+/**
+ * Doors a browser writes to with the session cookie and no CORS: the push
+ * subscription, a practice answer, the logout. They relied on SameSite=Lax
+ * alone until the review of 2026-10-01; they take the Origin lock below now,
+ * and nothing else — no CORS headers, since no other origin may call them.
+ */
+const LOCKED_PATHS = /^\/api\/(push$|practice\/|auth\/)/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (isPage(pathname)) return page(request);
-  if (!CORS_PATHS.test(pathname)) return NextResponse.next();
-  return cors(request);
+  if (CORS_PATHS.test(pathname)) return cors(request);
+  if (LOCKED_PATHS.test(pathname)) return originLock(request) ?? NextResponse.next();
+  return NextResponse.next();
+}
+
+/**
+ * A browser that sends the session cookie AND names another origin is a
+ * cross-site form or script: SameSite=Lax already keeps the cookie off
+ * cross-site POSTs in every current browser, and this is the second lock
+ * for the ones that do not. A native app sends a bearer and no cookie; the
+ * web app's own pages send no Origin that differs from the host. Returns
+ * the refusal, or null to let the request through.
+ */
+function originLock(request: NextRequest, allowed = false): NextResponse | null {
+  const origin = request.headers.get("origin");
+  if (request.method === "GET" || request.method === "HEAD" || origin === null) return null;
+  if (!request.cookies.has("edulink_session") && !request.cookies.has("__Host-edulink_session")) return null;
+  let originHost: string | null = null;
+  try { originHost = new URL(origin).host; } catch { originHost = null; }
+  const selfHost = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
+  if (originHost !== selfHost && !allowed) return new NextResponse(null, { status: 403 });
+  return null;
 }
 
 function cors(request: NextRequest) {
@@ -58,23 +85,14 @@ function cors(request: NextRequest) {
       headers: {
         "Access-Control-Allow-Origin": origin,
         "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, Accept-Language, X-Edulink-Replay",
+        "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept, Accept-Language, X-Edulink-Replay, X-Edulink-Owner",
         "Access-Control-Max-Age": "600",
         Vary: "Origin",
       },
     });
   }
-  // A browser that sends the session cookie AND names another origin is a
-  // cross-site form or script: SameSite=Lax already keeps the cookie off
-  // cross-site POSTs in every current browser, and this is the second lock
-  // for the ones that do not. A native app sends a bearer and no cookie; the
-  // web app's own pages send no Origin that differs from the host.
-  if (request.method !== "GET" && request.method !== "HEAD" && origin !== null && (request.cookies.has("edulink_session") || request.cookies.has("__Host-edulink_session"))) {
-    let originHost: string | null = null;
-    try { originHost = new URL(origin).host; } catch { originHost = null; }
-    const selfHost = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-    if (originHost !== selfHost && !allowed) return new NextResponse(null, { status: 403 });
-  }
+  const refused = originLock(request, allowed);
+  if (refused) return refused;
   const response = NextResponse.next();
   if (allowed) {
     response.headers.set("Access-Control-Allow-Origin", origin);
@@ -83,8 +101,9 @@ function cors(request: NextRequest) {
   return response;
 }
 
-// Every page, for its nonce; and of the API, the doors CORS answers at —
+// Every page, for its nonce; of the API, the doors CORS answers at —
 // /api/attendance among them, because the phone posts the same body the web
-// form does, on purpose, so the outbox replay is byte-identical to the web's.
+// form does, on purpose, so the outbox replay is byte-identical to the web's —
+// and the three cookie doors the Origin lock guards.
 // Next's own files and anything with an extension never reach this.
-export const config = { matcher: ["/((?!api/|_next/|.*\\.[A-Za-z0-9]{2,12}$).*)", "/api/v1/:path*", "/api/attendance", "/api/files/:path*"] };
+export const config = { matcher: ["/((?!api/|_next/|.*\\.[A-Za-z0-9]{2,12}$).*)", "/api/v1/:path*", "/api/attendance", "/api/files/:path*", "/api/push", "/api/practice/:path*", "/api/auth/:path*"] };

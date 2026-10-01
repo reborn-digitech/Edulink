@@ -86,7 +86,18 @@ describe("the app's configuration", () => {
 
 describe("the private screens", () => {
   it("refuse screenshots and screen recording while up", () => {
-    for (const file of ["src/screens/teacher/marks.tsx", "src/screens/family/exams.tsx"]) {
+    // Marks and cards, and since 2026-10-01 every screen that shows a child's
+    // record, health, incidents, fees, attendance, or a message thread.
+    const guarded = [
+      "src/screens/teacher/marks.tsx", "src/screens/family/exams.tsx",
+      "src/screens/teacher/register.tsx", "src/screens/teacher/report-cards.tsx", "src/screens/teacher/messages.tsx", "src/screens/teacher/thread.tsx",
+      "src/screens/staff/messaging.tsx", "src/screens/staff/attendance.tsx", "src/screens/family/attendance.tsx",
+      "src/screens/family/health.tsx", "src/screens/staff/pupil-health.tsx", "src/screens/staff/pupil-record.tsx", "src/screens/family/record.tsx",
+      "src/screens/staff/incident.tsx", "src/screens/family/incidents.tsx", "src/screens/staff/incidents.tsx",
+      "src/screens/family/student-profile.tsx", "src/screens/staff/person.tsx", "src/screens/staff/staff-record.tsx",
+      "src/screens/staff/fee-pupil.tsx", "src/screens/family/fees.tsx", "src/screens/staff/safety.tsx",
+    ];
+    for (const file of guarded) {
       const text = read(file);
       expect({ file, guarded: /usePrivateScreen\(\)/.test(text) && /from "@\/lib\/private-screen"/.test(text) }).toEqual({ file, guarded: true });
     }

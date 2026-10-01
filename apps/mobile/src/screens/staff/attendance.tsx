@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Share, View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -26,6 +27,8 @@ export function shareCsv(file: OfficeCsvExport): void {
  * office may take itself, and the compliance files through the share sheet.
  */
 export function AdminAttendance({ onOpenRegister, onOpenHistory }: { onOpenRegister?: (classId: string) => void; onOpenHistory?: () => void }) {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const th = useTheme();
   const router = useRouter();

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useRouter } from "expo-router";
 import { inboxSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
@@ -14,6 +15,8 @@ import { relativeTime } from "./support";
  * family in it). A row opens the room or the thread.
  */
 export function Inbox() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
   const router = useRouter();

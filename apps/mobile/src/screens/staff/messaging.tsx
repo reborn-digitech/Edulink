@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -28,6 +29,8 @@ const EVENT_KEY = { absence: "messaging.eventAbsence", feeReminders: "messaging.
  * the registration forms stay on the web.
  */
 export function StaffMessaging() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();

@@ -3,7 +3,7 @@ import { getSession } from "@/lib/session";
 import { getCard } from "@/lib/report-cards";
 import { renderReportCardsPdf } from "@/lib/report-card-pdf";
 import { getT, getLocale } from "@/lib/i18n/server";
-import { apiFailure } from "@/lib/api-v1";
+import { apiFailure, budget, PDF_BUDGET } from "@/lib/api-v1";
 
 /** GET /api/v1/shared/report-cards/{cardId}/pdf — one card as a PDF for anyone who may read it. */
 export async function GET(_request: Request, { params }: { params: Promise<{ cardId: string }> }) {
@@ -16,6 +16,8 @@ export async function GET(_request: Request, { params }: { params: Promise<{ car
     if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
     const ctx = session.role === "PARENT" || session.role === "STUDENT" ? session : await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const { cardId } = await params;
+    const refused = await budget(`pdf:${session.user.id}`, PDF_BUDGET.limit, PDF_BUDGET.windowMs);
+    if (refused) return refused;
     const card = await getCard(ctx, cardId);
     if (!card) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
     const [t, locale] = await Promise.all([getT(), getLocale()]);

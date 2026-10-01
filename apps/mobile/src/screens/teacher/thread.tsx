@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { TextInput, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -16,6 +17,8 @@ import { whenLabel } from "./support";
  * and a reply box unless the thread is closed.
  */
 export function Thread() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const { threadId } = useLocalSearchParams<{ threadId?: string }>();
   const t = useT();
   const { locale } = useLocale();

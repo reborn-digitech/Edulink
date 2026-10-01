@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import { File, Paths } from "expo-file-system";
+import { Directory, File, Paths } from "expo-file-system";
 import * as Sharing from "expo-sharing";
 import { apiErrorSchema } from "@edulink/contracts";
 import { API_BASE, apiLocale, sessionToken } from "./api";
@@ -44,6 +44,32 @@ export const bytesApi = {
   },
 };
 
+/** Every file the share sheet is handed is named so sign-out can find it. */
+const SHARED_PREFIX = "relay-shared-";
+
+/**
+ * The files this person shared from the phone — a report card, a certificate,
+ * a class bundle — sit in the cache directory after the sheet closes, and the
+ * cache is the device's, not the account's. Sign-out removes them, so the
+ * next person on a shared phone cannot open the last person's cards from a
+ * file browser. Native only; the web target saved through the browser.
+ */
+export async function clearSharedFiles(): Promise<number> {
+  if (Platform.OS === "web") return 0;
+  let removed = 0;
+  try {
+    for (const entry of new Directory(Paths.cache).list()) {
+      if (entry instanceof File && entry.name.startsWith(SHARED_PREFIX)) {
+        entry.delete();
+        removed++;
+      }
+    }
+  } catch {
+    // A cache directory that cannot be read has nothing of ours to remove.
+  }
+  return removed;
+}
+
 /** Hand fetched bytes over. Resolves to null once the sheet is open (or the file saved on the web), else the sentence to show. */
 export async function shareBytes(got: { bytes: Uint8Array; mime: string }, fileName: string, fallbackError: string): Promise<string | null> {
   try {
@@ -51,7 +77,7 @@ export async function shareBytes(got: { bytes: Uint8Array; mime: string }, fileN
       saveOnWeb(got.bytes, got.mime, fileName);
       return null;
     }
-    const file = new File(Paths.cache, safeName(fileName));
+    const file = new File(Paths.cache, SHARED_PREFIX + safeName(fileName));
     file.write(got.bytes);
     await Sharing.shareAsync(file.uri, { mimeType: got.mime, UTI: got.mime === "application/pdf" ? "com.adobe.pdf" : undefined, dialogTitle: fileName });
     return null;

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { readBounded, WEBHOOK_BODY_LIMIT } from "@/lib/api-v1";
 import { db } from "@/lib/db";
 import { forSchool } from "@/lib/tenant-context";
 import { gatewayAccountFor } from "@/lib/fees";
@@ -57,7 +58,9 @@ function signedEventId(event: WebhookBody, kind: string, raw: string): string | 
 
 export async function POST(request: Request, { params }: { params: Promise<{ schoolId: string }> }) {
   const { schoolId } = await params;
-  const raw = await request.text();
+  // A webhook event is a few kilobytes; a body past 64 KB is nobody's event and is refused before it is held in memory.
+  const raw = await readBounded(request, WEBHOOK_BODY_LIMIT);
+  if (raw === null) return NextResponse.json({ code: "TOO_LARGE" }, { status: 413 });
   const signature = request.headers.get("x-razorpay-signature");
   const account = await forSchool(schoolId, () => gatewayAccountFor(schoolId)).catch(() => null);
   if (!account) return NextResponse.json({ code: "NO_GATEWAY" }, { status: 404 });

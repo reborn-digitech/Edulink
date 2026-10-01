@@ -7,7 +7,7 @@
  */
 import "fake-indexeddb/auto";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { countQueued, enqueue, flushQueue, listQueued, onQueueEvent, remove, type QueueEvent } from "@/lib/offline-queue";
+import { countQueued, enqueue, flushQueue, listQueued, onQueueEvent, remove, setOutboxOwner, type QueueEvent } from "@/lib/offline-queue";
 
 const fetchMock = vi.fn<typeof fetch>();
 
@@ -73,6 +73,27 @@ describe("the outbox", () => {
     expect(result).toEqual({ sent: 0, failed: 3, remaining: 2 });
     expect(rejected).toEqual([422]);
     expect((await listQueued()).map((i) => i.url).sort()).toEqual(["/api/attendance", "/api/v1/messages"]);
+  });
+
+  it("a row belongs to whoever queued it: it goes out under their session with their name on it, and the next person's sign-in drops it", async () => {
+    await setOutboxOwner("teacher-a");
+    await enqueue({ url: "/api/attendance", method: "POST", body: "{}", tag: "attendance:c1" });
+    fetchMock.mockResolvedValueOnce(new Response("{}", { status: 200 }));
+    expect(await flushQueue()).toMatchObject({ sent: 1 });
+    const [, init] = fetchMock.mock.calls[0]!;
+    expect((init as RequestInit).headers).toMatchObject({ "x-edulink-owner": "teacher-a" });
+
+    // Queued, then another person signs in on the same browser.
+    await enqueue({ url: "/api/attendance", method: "POST", body: "{}", tag: "attendance:c1" });
+    const seen = await setOutboxOwner("teacher-b");
+    expect(seen).toEqual({ dropped: 1, changed: true });
+    expect(await countQueued()).toBe(0);
+    fetchMock.mockClear();
+    expect(await flushQueue()).toEqual({ sent: 0, failed: 0, remaining: 0 });
+    expect(fetchMock).not.toHaveBeenCalled();
+    // Signing out drops nothing that is not there, and the same person again changes nothing.
+    expect(await setOutboxOwner(null)).toEqual({ dropped: 0, changed: true });
+    expect(await setOutboxOwner(null)).toEqual({ dropped: 0, changed: false });
   });
 
   it("a second flush while one is running does not double-send", async () => {

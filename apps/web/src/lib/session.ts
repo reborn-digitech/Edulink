@@ -144,7 +144,8 @@ export async function destroySession(): Promise<void> {
       data: { revokedAt: new Date() },
     });
   }
-  jar.delete(SESSION_COOKIE);
+  // Cleared with the attributes it was set with, so the clearing cookie is as hard to reach as the live one was.
+  jar.set(SESSION_COOKIE, "", { ...cookieOptions(0), maxAge: 0 });
 }
 
 /** Revoke one device. Ownership is checked here, not by the caller. */
@@ -264,6 +265,13 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
 
   if (!session) return null;
   if (session.revokedAt) return null;
+  // An outbox replay names the person who queued it (X-Edulink-Owner). A
+  // teacher's unsent register must not go out under whoever signed in next
+  // on the same browser; the outbox keeps its rows by owner, and this is the
+  // server's own refusal should a row slip past it. Not signed in, as far as
+  // that write is concerned.
+  const owner = (await headers()).get("x-edulink-owner");
+  if (owner && owner !== session.userId) return null;
   if (session.expiresAt.getTime() < Date.now()) return null;
   // However far it slid, a session ends six months after it began.
   if (absoluteEnd(session.createdAt) < Date.now()) return null;

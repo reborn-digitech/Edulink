@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { LEAVING_CONDUCTS, LEAVING_REASON_CODES, leavingResultSchema, type LeavingBody } from "@edulink/contracts";
@@ -35,6 +36,8 @@ export function leavingBodyFrom(form: { reason: Reason; conduct: Conduct | ""; d
  * everything typed here is printed on a paper they hand to the next school.
  */
 export function Person() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
   const router = useRouter();

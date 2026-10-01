@@ -47,9 +47,9 @@ describe("what is a page", () => {
     for (const p of ["/api/health", "/api/v1/me", "/api/files/a.png", "/_next/static/chunks/x.js", "/sw.js", "/manifest.webmanifest", "/icons/icon-192.png", "/favicon.ico"]) expect(isPage(p), p).toBe(false);
   });
 
-  it("the matcher sends the middleware every page and the three CORS doors, and nothing else under /api", () => {
-    expect(config.matcher).toHaveLength(4);
-    expect(config.matcher.slice(1)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*"]);
+  it("the matcher sends the middleware every page, the three CORS doors and the three locked cookie doors, and nothing else under /api", () => {
+    expect(config.matcher).toHaveLength(7);
+    expect(config.matcher.slice(1)).toEqual(["/api/v1/:path*", "/api/attendance", "/api/files/:path*", "/api/push", "/api/practice/:path*", "/api/auth/:path*"]);
   });
 });
 

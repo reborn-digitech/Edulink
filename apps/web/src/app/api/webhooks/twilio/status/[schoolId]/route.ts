@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { readBounded, WEBHOOK_BODY_LIMIT } from "@/lib/api-v1";
 import { readTwilioConfig } from "@/lib/env";
 import { recordProviderStatus, twilioSignatureValid } from "@/lib/messaging";
 
@@ -13,9 +14,11 @@ import { recordProviderStatus, twilioSignatureValid } from "@/lib/messaging";
  */
 export async function POST(request: Request, { params }: { params: Promise<{ schoolId: string }> }) {
   const { schoolId } = await params;
+  // The ceiling first, before anything is read or looked up.
+  const raw = await readBounded(request, WEBHOOK_BODY_LIMIT);
+  if (raw === null) return NextResponse.json({ code: "TOO_LARGE" }, { status: 413 });
   const config = readTwilioConfig();
   if (!config.ok) return NextResponse.json({ code: "NO_TWILIO" }, { status: 404 });
-  const raw = await request.text();
   const form = Object.fromEntries(new URLSearchParams(raw)) as Record<string, string>;
   const base = (process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const url = `${base}/api/webhooks/twilio/status/${schoolId}`;

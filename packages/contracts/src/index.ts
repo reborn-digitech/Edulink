@@ -18,7 +18,7 @@ import { z } from "zod";
 export const apiErrorSchema = z.object({
   error: z.string().min(1),
   code: z
-    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER"])
+    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER"])
     .optional(),
   issues: z.record(z.string()).optional(),
   retryAfterSeconds: z.number().int().positive().optional(),

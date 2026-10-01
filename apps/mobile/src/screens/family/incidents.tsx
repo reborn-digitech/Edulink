@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { familyChildrenSchema, familyIncidentsSchema } from "@edulink/contracts";
@@ -21,6 +22,8 @@ const PATH = "/api/v1/family/incidents";
  * child at a time.
  */
 export function FamilyIncidents() {
+  // A child's record, a register, a message: private while on screen (no screenshots or screen recording on the phone).
+  usePrivateScreen();
   const t = useT();
   const role = useRole();
   const router = useRouter();

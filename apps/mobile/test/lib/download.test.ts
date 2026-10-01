@@ -2,7 +2,7 @@ import { Platform } from "react-native";
 import * as Sharing from "expo-sharing";
 import { setApiLocale } from "@/lib/api";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
-import { __setDownloadFetch, bytesApi, safeName, shareBytes } from "@/lib/download";
+import { __setDownloadFetch, bytesApi, clearSharedFiles, safeName, shareBytes } from "@/lib/download";
 
 /** The bytes a PDF starts with, "%PDF". */
 const PDF = new Uint8Array([0x25, 0x50, 0x44, 0x46]);
@@ -73,16 +73,35 @@ describe("handing the file to the share sheet", () => {
     if (!got.ok) throw new Error(got.error);
     await expect(shareBytes(got, "Term 1: ZZ/Asha.pdf", "Could not share it")).resolves.toBeNull();
     const file = lastWritten();
-    expect(file?.uri).toBe("file:///cache/Term 1 ZZ Asha.pdf");
+    expect(file?.uri).toBe("file:///cache/relay-shared-Term 1 ZZ Asha.pdf");
     expect(file?.written).toEqual(PDF);
-    expect(Sharing.shareAsync).toHaveBeenCalledWith("file:///cache/Term 1 ZZ Asha.pdf", { mimeType: "application/pdf", UTI: "com.adobe.pdf", dialogTitle: "Term 1: ZZ/Asha.pdf" });
+    expect(Sharing.shareAsync).toHaveBeenCalledWith("file:///cache/relay-shared-Term 1 ZZ Asha.pdf", { mimeType: "application/pdf", UTI: "com.adobe.pdf", dialogTitle: "Term 1: ZZ/Asha.pdf" });
+  });
+
+  it("what was shared stays in the cache until sign-out removes it, and only the app's own files go", async () => {
+    Platform.OS = "ios";
+    const cache = (globalThis as { __cacheFiles?: Map<string, unknown> }).__cacheFiles!;
+    cache.clear();
+    answering(() => new Response(PDF, { status: 200, headers: { "content-type": "application/pdf" } }));
+    const got = await bytesApi.get("/api/v1/shared/report-cards/c1/pdf", "Could not share it");
+    if (!got.ok) throw new Error(got.error);
+    await shareBytes(got, "Term 1.pdf", "Could not share it");
+    await shareBytes(got, "Term 2.pdf", "Could not share it");
+    // Something else in the cache directory is not ours to remove.
+    const { File, Paths } = jest.requireMock("expo-file-system") as { File: new (...p: unknown[]) => { write(c: string): void }; Paths: { cache: { uri: string } } };
+    new File(Paths.cache, "image-cache.bin").write("x");
+    expect(cache.size).toBe(3);
+    expect(await clearSharedFiles()).toBe(2);
+    expect([...cache.keys()]).toEqual(["file:///cache/image-cache.bin"]);
+    Platform.OS = "web";
+    expect(await clearSharedFiles()).toBe(0);
   });
 
   it("a sheet that will not open is the fallback, and a file that is not a PDF carries no UTI", async () => {
     Platform.OS = "android";
     (Sharing.shareAsync as jest.Mock).mockRejectedValue(new Error("no sheet"));
     await expect(shareBytes({ bytes: PDF, mime: "application/zip" }, "cards.zip", "Could not share it")).resolves.toBe("Could not share it");
-    expect(Sharing.shareAsync).toHaveBeenCalledWith("file:///cache/cards.zip", { mimeType: "application/zip", UTI: undefined, dialogTitle: "cards.zip" });
+    expect(Sharing.shareAsync).toHaveBeenCalledWith("file:///cache/relay-shared-cards.zip", { mimeType: "application/zip", UTI: undefined, dialogTitle: "cards.zip" });
   });
 
   it("on the web target a blob link saves the file the way a browser does", async () => {

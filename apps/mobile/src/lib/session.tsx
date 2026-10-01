@@ -3,6 +3,7 @@ import type { Me, RoleCode, SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
 import { KEYS, keyStore } from "./storage";
 import { clearQueue } from "./outbox";
+import { clearSharedFiles } from "./download";
 import { unwrap } from "./query";
 import { unregisterPush } from "./push";
 
@@ -81,6 +82,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         // (they would replay under the next person's token) and a crash
         // report not yet sent (it would be posted as the next person's).
         await clearQueue();
+        await clearSharedFiles();
         await keyStore().remove(KEYS.crash);
         await keyStore().remove(KEYS.token);
         await keyStore().remove(KEYS.session);

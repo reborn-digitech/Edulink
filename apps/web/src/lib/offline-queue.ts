@@ -14,8 +14,10 @@
  */
 
 const DB_NAME = "edulink";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE = "outbox";
+const META = "meta";
+const OWNER_KEY = "owner";
 
 export type QueuedRequest = {
   id: string;
@@ -26,8 +28,80 @@ export type QueuedRequest = {
   attempts: number;
   /** Groups related items so the UI can show "3 pending" per class. */
   tag: string;
+  /**
+   * Who queued it: the signed-in person's id, or null for a row queued with
+   * no one signed in (a row from before the stamp, or the login page). A row
+   * replays only under its owner's session — the next person to sign in on
+   * the same browser inherits nothing — and the server refuses a replay that
+   * names someone else (X-Edulink-Owner).
+   */
+  owner: string | null;
   lastError?: string;
 };
+
+/* -------------------------------------------------------------------------- */
+/* Whose outbox this is                                                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The signed-in person, as the app shell tells the runtime on every page.
+ * Kept in the database's own meta store rather than in localStorage, so the
+ * service worker — which cannot read localStorage — drains the same rows.
+ */
+let currentOwner: string | null | undefined;
+
+/**
+ * Called by the runtime with the session's user id, or null when signed out.
+ * When the owner changes — a sign-out, or someone else signing in — the rows
+ * of every other owner are dropped and the private caches cleared, so what
+ * one person queued or read on a shared staff-room machine does not wait
+ * for, or show to, the next. Returns what was dropped so the caller can say.
+ */
+export async function setOutboxOwner(owner: string | null): Promise<{ dropped: number; changed: boolean }> {
+  const before = currentOwner === undefined ? await readOwner() : currentOwner;
+  currentOwner = owner;
+  const changed = before !== undefined && before !== owner;
+  try {
+    await metaTx("readwrite", (store) => store.put(owner, OWNER_KEY));
+  } catch {
+    // No IndexedDB: nothing is queued either.
+  }
+  let dropped = 0;
+  if (changed) {
+    try {
+      const all = await tx<QueuedRequest[]>("readonly", (store) => store.getAll() as IDBRequest<QueuedRequest[]>);
+      for (const item of all) {
+        if (item.owner !== owner) {
+          await remove(item.id);
+          dropped++;
+        }
+      }
+    } catch {
+      // Nothing to drop.
+    }
+    await clearPrivateCaches();
+  }
+  return { dropped, changed };
+}
+
+async function readOwner(): Promise<string | null | undefined> {
+  try {
+    const value = await metaTx<string | null | undefined>("readonly", (store) => store.get(OWNER_KEY) as IDBRequest<string | null | undefined>);
+    return value === undefined ? null : value;
+  } catch {
+    return undefined;
+  }
+}
+
+/** The service worker's API and page caches: one person's register must not be the next person's offline page. */
+export async function clearPrivateCaches(): Promise<void> {
+  if (typeof caches === "undefined") return;
+  try {
+    await Promise.all(["edulink-api", "edulink-pages"].map((name) => caches.delete(name)));
+  } catch {
+    // A browser without CacheStorage has nothing cached.
+  }
+}
 
 function openDb(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
@@ -43,24 +117,29 @@ function openDb(): Promise<IDBDatabase> {
         store.createIndex("tag", "tag");
         store.createIndex("createdAt", "createdAt");
       }
+      // Version 2: the owner beside the rows, for the worker to read.
+      if (!db.objectStoreNames.contains(META)) db.createObjectStore(META);
     };
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error ?? new Error("IndexedDB open failed"));
   });
 }
 
-function tx<T>(mode: IDBTransactionMode, run: (store: IDBObjectStore) => IDBRequest<T>): Promise<T> {
+function storeTx<T>(name: string, mode: IDBTransactionMode, run: (store: IDBObjectStore) => IDBRequest<T>): Promise<T> {
   return openDb().then(
     (db) =>
       new Promise<T>((resolve, reject) => {
-        const transaction = db.transaction(STORE, mode);
-        const request = run(transaction.objectStore(STORE));
+        const transaction = db.transaction(name, mode);
+        const request = run(transaction.objectStore(name));
         request.onsuccess = () => resolve(request.result);
         request.onerror = () => reject(request.error ?? new Error("IndexedDB request failed"));
         transaction.oncomplete = () => db.close();
       }),
   );
 }
+
+const tx = <T,>(mode: IDBTransactionMode, run: (store: IDBObjectStore) => IDBRequest<T>) => storeTx(STORE, mode, run);
+const metaTx = <T,>(mode: IDBTransactionMode, run: (store: IDBObjectStore) => IDBRequest<T>) => storeTx(META, mode, run);
 
 export function newClientId(): string {
   // crypto.randomUUID needs a secure context; the fallback keeps the app usable
@@ -71,16 +150,18 @@ export function newClientId(): string {
 
 let lastCreatedAt = 0;
 
-export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts">): Promise<string> {
+export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts" | "owner">): Promise<string> {
   // Strictly increasing, so two items queued in the same millisecond replay
   // in the order they were queued rather than in the order of their random ids
   // — a register and then the note about it, not the note first.
   lastCreatedAt = Math.max(Date.now(), lastCreatedAt + 1);
+  const owner = currentOwner === undefined ? (await readOwner()) ?? null : currentOwner;
   const record: QueuedRequest = {
     ...item,
     id: newClientId(),
     createdAt: lastCreatedAt,
     attempts: 0,
+    owner,
   };
   await tx("readwrite", (store) => store.put(record));
   notifyListeners({ type: "queued", item: record, remaining: await countQueued() });
@@ -88,9 +169,12 @@ export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "at
   return record.id;
 }
 
+/** The signed-in person's rows only; another owner's wait for their own session. */
 export async function listQueued(tag?: string): Promise<QueuedRequest[]> {
   const all = await tx<QueuedRequest[]>("readonly", (store) => store.getAll() as IDBRequest<QueuedRequest[]>);
-  return tag ? all.filter((item) => item.tag === tag) : all;
+  const owner = currentOwner === undefined ? (await readOwner()) ?? null : currentOwner;
+  const own = all.filter((item) => (item.owner ?? null) === owner);
+  return tag ? own.filter((item) => item.tag === tag) : own;
 }
 
 export async function countQueued(tag?: string): Promise<number> {
@@ -126,7 +210,7 @@ export async function flushQueue(): Promise<{ sent: number; failed: number; rema
       try {
         const response = await fetch(item.url, {
           method: item.method,
-          headers: { "content-type": "application/json", "x-edulink-replay": "1" },
+          headers: { "content-type": "application/json", "x-edulink-replay": "1", ...(item.owner ? { "x-edulink-owner": item.owner } : {}) },
           body: item.body,
         });
 

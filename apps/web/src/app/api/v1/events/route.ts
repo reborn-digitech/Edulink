@@ -38,9 +38,31 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
   return channels;
 }
 
+/**
+ * Open streams per session, so one tab cannot hold a hundred, and the
+ * session each stream was opened under, checked again every keep-alive:
+ * a stream once outlived "sign out everywhere" until its tab was closed.
+ */
+const open = new Map<string, number>();
+const STREAMS_PER_SESSION = 4;
+const RECHECK_EVERY_TICKS = 2;
+/** Keep-alive every 25 s; a test shortens it (EVENTS_KEEPALIVE_MS) to see the recheck happen. */
+const KEEPALIVE_MS = Number(process.env.EVENTS_KEEPALIVE_MS) > 0 ? Number(process.env.EVENTS_KEEPALIVE_MS) : 25_000;
+
 export async function GET(request: Request) {
   const ctx = await getSession();
   if (!ctx) return new Response(null, { status: 401 });
+  if ((open.get(ctx.sessionId) ?? 0) >= STREAMS_PER_SESSION) return new Response(null, { status: 429 });
+  open.set(ctx.sessionId, (open.get(ctx.sessionId) ?? 0) + 1);
+  // Once, whichever of abort, cancel and the session check comes first.
+  let released = false;
+  const release = () => {
+    if (released) return;
+    released = true;
+    const n = (open.get(ctx.sessionId) ?? 1) - 1;
+    if (n <= 0) open.delete(ctx.sessionId);
+    else open.set(ctx.sessionId, n);
+  };
 
   const channels = await channelsFor(ctx);
 
@@ -58,20 +80,34 @@ export async function GET(request: Request) {
       };
       send(`event: ready\ndata: ${JSON.stringify({ channels })}\n\n`);
       stop = subscribe(channels, (event) => send(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`));
-      ticker = setInterval(() => send(": keep-alive\n\n"), 25_000);
-      request.signal.addEventListener("abort", () => {
+      const close = () => {
         stop();
         if (ticker) clearInterval(ticker);
+        release();
         try {
           controller.close();
         } catch {
           /* already closed */
         }
-      });
+      };
+      let ticks = 0;
+      ticker = setInterval(() => {
+        send(": keep-alive\n\n");
+        if (++ticks % RECHECK_EVERY_TICKS !== 0) return;
+        // Still a live session? Revoked, expired or disabled, the stream ends here rather than with the tab.
+        void db.session.findFirst({ where: { id: ctx.sessionId, revokedAt: null, expiresAt: { gt: new Date() } }, select: { id: true } }).then((row) => {
+          if (!row) {
+            send(`event: session.ended\ndata: {}\n\n`);
+            close();
+          }
+        });
+      }, KEEPALIVE_MS);
+      request.signal.addEventListener("abort", close);
     },
     cancel() {
       stop();
       if (ticker) clearInterval(ticker);
+      release();
     },
   });
   return new Response(stream, {

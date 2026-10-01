@@ -1,4 +1,10 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+
+// Before the route module loads (imports are hoisted): a keep-alive every
+// 150 ms, so the session recheck happens within the test.
+vi.hoisted(() => {
+  process.env.EVENTS_KEEPALIVE_MS = "150";
+});
 import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { channel, publish } from "@/lib/realtime";
@@ -37,6 +43,8 @@ async function open() {
   // it is kept and awaited again rather than raced against a fresh one.
   let pending: Promise<ReadableStreamReadResult<Uint8Array>> | null = null;
   const next = async (timeoutMs: number): Promise<{ event: string; data: unknown } | "timeout"> => {
+    // One deadline for the call: a keep-alive (skipped below) must not start it over.
+    const deadline = Date.now() + timeoutMs;
     for (;;) {
       const idx = buffer.indexOf("\n\n");
       if (idx >= 0) {
@@ -48,7 +56,7 @@ async function open() {
         return { event, data: data ? JSON.parse(data) : null };
       }
       pending ??= reader.read();
-      const chunk = await Promise.race([pending, new Promise<"timeout">((r) => setTimeout(() => r("timeout"), timeoutMs))]);
+      const chunk = await Promise.race([pending, new Promise<"timeout">((r) => setTimeout(() => r("timeout"), Math.max(0, deadline - Date.now())))]);
       if (chunk === "timeout") return "timeout";
       pending = null;
       if (chunk.done) return "timeout";
@@ -111,6 +119,38 @@ describe("who hears what", () => {
       expect((got as { data: { studentMembershipId: string } }).data.studentMembershipId).toBe(child);
     } finally {
       stream.stop();
+    }
+  });
+
+  it("one session holds four streams, not a hundred, and a stream ends when its session is revoked", async () => {
+    __resetCookies();
+    const id = await createSession(teacherId, { schoolId, role: "TEACHER" });
+    const streams = [];
+    for (let i = 0; i < 4; i++) {
+      const s = await open();
+      expect(await s.next(2_000)).not.toBe("timeout");
+      streams.push(s);
+    }
+    try {
+      const fifth = await eventsGet(new Request("http://localhost/api/v1/events"));
+      expect(fifth.status).toBe(429);
+      // Closing one makes room for one.
+      streams.pop()!.stop();
+      await new Promise((r) => setTimeout(r, 50));
+      const again = await open();
+      streams.push(again);
+      expect(await again.next(2_000)).not.toBe("timeout");
+
+      // "Sign out everywhere": the stream hears it at the next keep-alive check, not when the tab closes.
+      await db.session.update({ where: { id }, data: { revokedAt: new Date() } });
+      let ended = false;
+      for (let i = 0; i < 10 && !ended; i++) {
+        const got = await again.next(1_000);
+        if (got !== "timeout" && got.event === "session.ended") ended = true;
+      }
+      expect(ended).toBe(true);
+    } finally {
+      for (const s of streams) s.stop();
     }
   });
 

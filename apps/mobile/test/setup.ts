@@ -78,18 +78,38 @@ jest.mock("expo-screen-capture", () => ({ usePreventScreenCapture: jest.fn(), pr
 // The PDF download writes to the cache and opens the share sheet: both are
 // fakes a test can read, for what was written and what was shared.
 jest.mock("expo-file-system", () => {
+  // A cache directory that remembers what was written, so a test can see a
+  // shared file appear and sign-out remove it.
+  const cache: Map<string, File> = new Map();
   class File {
     uri: string;
     written: Uint8Array | string | null = null;
     constructor(...parts: (string | { uri: string })[]) {
       this.uri = parts.map((p) => (typeof p === "string" ? p : p.uri)).join("/");
     }
+    get name() {
+      return this.uri.slice(this.uri.lastIndexOf("/") + 1);
+    }
     write(content: Uint8Array | string) {
       this.written = content;
+      cache.set(this.uri, this);
       (globalThis as { __lastWrittenFile?: File }).__lastWrittenFile = this;
     }
+    delete() {
+      cache.delete(this.uri);
+    }
   }
-  return { File, Paths: { cache: { uri: "file:///cache" } } };
+  class Directory {
+    uri: string;
+    constructor(...parts: (string | { uri: string })[]) {
+      this.uri = parts.map((p) => (typeof p === "string" ? p : p.uri)).join("/");
+    }
+    list() {
+      return [...cache.values()].filter((f) => f.uri.startsWith(this.uri + "/"));
+    }
+  }
+  (globalThis as { __cacheFiles?: Map<string, File> }).__cacheFiles = cache;
+  return { Directory, File, Paths: { cache: { uri: "file:///cache" } } };
 });
 jest.mock("expo-sharing", () => ({ isAvailableAsync: jest.fn(async () => true), shareAsync: jest.fn(async () => {}) }));
 
