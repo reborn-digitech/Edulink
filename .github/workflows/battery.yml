@@ -239,6 +239,14 @@ jobs:
       - name: API sweep · every endpoint as every role
         working-directory: apps/web
         run: npm run api:sweep
+      # The API sweep acts as every role and then removes what it wrote, and
+      # "rows it replaced went with them — run zz:fixtures" (its own last line):
+      # the admin's signature, the papers waiting for the head and more. The
+      # browser suites after it stand on the fixtures as built (run 36871181377
+      # found "No signature yet" and "Nothing is waiting for you").
+      - name: Fixtures again, after the API sweep
+        working-directory: apps/web
+        run: npm run zz:fixtures
       - name: Mobile contract tests · the app's client against the API
         working-directory: apps/web
         # Bearer tokens minted on the ZZ fixture, the way the API sweep mints its own.
