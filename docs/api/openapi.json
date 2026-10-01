@@ -33898,6 +33898,9 @@
                         },
                         "auditDays": {
                           "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "healthReadDays": {
+                          "$ref": "#/properties/config/properties/sessionDays"
                         }
                       },
                       "required": [
@@ -33907,7 +33910,8 @@
                         "uploadTicketDays",
                         "outboxDays",
                         "jobRunDays",
-                        "auditDays"
+                        "auditDays",
+                        "healthReadDays"
                       ],
                       "additionalProperties": false
                     },
@@ -33934,6 +33938,9 @@
                         },
                         "auditRows": {
                           "$ref": "#/properties/config/properties/sessionDays"
+                        },
+                        "healthReads": {
+                          "$ref": "#/properties/config/properties/sessionDays"
                         }
                       },
                       "required": [
@@ -33943,7 +33950,8 @@
                         "uploadTickets",
                         "outbox",
                         "jobRuns",
-                        "auditRows"
+                        "auditRows",
+                        "healthReads"
                       ],
                       "additionalProperties": false
                     }

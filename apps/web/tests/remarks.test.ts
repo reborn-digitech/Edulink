@@ -1,4 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import { getThread, listThreads, markThreadRead, replyToThread, createThread } from "@/lib/remarks";
@@ -338,6 +340,25 @@ describe("read state", () => {
     await markThreadRead(guardian, fresh);
     const afterRead = await getThread(owningTeacher, fresh);
     expect(afterRead.messages[0]!.readByOthers).toBe(true);
+  });
+
+  it("marks read twice without writing the reader twice (readBy stays a set)", async () => {
+    const { threadId: fresh } = await createThreadFixture("TEST thread — read twice");
+    await markThreadRead(guardian, fresh);
+    await markThreadRead(guardian, fresh);
+    const rows = await db.remarkMessage.findMany({ where: { threadId: fresh }, select: { readBy: true } });
+    const readBy = JSON.parse(rows[0]!.readBy) as string[];
+    expect(Array.isArray(readBy)).toBe(true);
+    expect(readBy.filter((id) => id === guardian.user.id)).toHaveLength(1);
+  });
+
+  it("the thread page marks read without a server action (no revalidatePath during render)", () => {
+    // Next 15 throws "revalidatePath during render" when a page awaits a server
+    // action that revalidates. The page writes through the library instead.
+    const page = readFileSync(join(process.cwd(), "src/app/(app)/remarks/[threadId]/page.tsx"), "utf8");
+    expect(page).toContain("markThreadRead(session, threadId)");
+    expect(page).not.toMatch(/from "\.\.\/actions"/);
+    expect(page).not.toContain("revalidatePath(");
   });
 });
 

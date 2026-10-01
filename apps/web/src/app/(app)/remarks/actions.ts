@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
 import { AccessError } from "@/lib/tenancy";
-import { createThread, replyToThread, markThreadRead } from "@/lib/remarks";
+import { createThread, replyToThread } from "@/lib/remarks";
 import { remarkReplySchema, remarkThreadSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 
 export type RemarkState = { ok: boolean; errors: FieldErrors; threadId?: string };
@@ -45,17 +45,5 @@ export async function sendReply(input: unknown): Promise<RemarkState> {
       return { ok: false, errors: { _form: (await getT())(error.key, error.vars) } };
     console.error("[sendReply]", error);
     return { ok: false, errors: { _form: (await getT())("remarks.couldNotSendTryAgain") } };
-  }
-}
-
-export async function markRead(threadId: string): Promise<void> {
-  const session = await getSession();
-  if (!session) return;
-  try {
-    await markThreadRead(session, threadId);
-    revalidatePath("/remarks");
-  } catch (error) {
-    // A read receipt failing must never break opening a thread.
-    if (!(error instanceof AccessError)) console.error("[markRead]", error);
   }
 }

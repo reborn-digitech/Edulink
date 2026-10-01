@@ -1,23 +1,25 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-01T02:27:12.239Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 3 WARN · 24 INFO
+Run: 2026-10-01T12:20:42.761Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 25 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
-## WARN (3)
+## WARN (4)
 
 | check | school | detail |
 |---|---|---|
 | report-card | ZZ Northgate School | 6 card(s) carry no subjects/scale snapshot and render with today's config |
 | fees-api | Saraswati Vidya Mandir | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 | fees-api | Sunrise Public School | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
+| usage-sample | ZZ Northgate School | 2026-10 messages: stored 0 vs recomputed 10 (computed 2026-10-01T02:02:15.579Z) |
 
-## INFO (24)
+## INFO (25)
 
 | check | school | detail |
 |---|---|---|
 | gig-earnings | platform | 0 contributed question(s) in the bank, 0 payment(s) recorded |
 | gig-seats | platform | 6 slot(s) offered |
+| user-minor | all | 147 dated account(s) checked, 0 out of step |
 | admission | Saraswati Vidya Mandir | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | Sunrise Public School | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | ZZ Northgate School | 6 of 7 applications carry no PEN — the field is optional on the form |
@@ -34,7 +36,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | cards-api | ZZ Northgate School | the sampled child has no report card to read |
 | board-api | Saraswati Vidya Mandir | 2026-10-01: 0 away, 0 lessons, 0 covered |
 | board-api | Sunrise Public School | 2026-10-01: 0 away, 0 lessons, 0 covered |
-| board-api | ZZ Northgate School | 2026-10-01: 1 away, 6 lessons, 1 covered |
+| board-api | ZZ Northgate School | 2026-10-01: 1 away, 6 lessons, 2 covered |
 | overview-api | Saraswati Vidya Mandir | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | Sunrise Public School | principal: attendance 91%, registers missing today 6 (holidays and empty classes are not excluded) |
 | overview-api | ZZ Northgate School | principal: attendance null%, registers missing today 8 (holidays and empty classes are not excluded) |

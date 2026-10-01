@@ -308,7 +308,7 @@ export type AppAdminCompetitions = z.infer<typeof appAdminCompetitionsSchema>;
 /** GET /api/v1/operator/retention — the sweep's day counts and what is waiting for tonight. */
 const retentionCount = z.number().int().min(0);
 export const operatorRetentionSchema = z.object({
-  config: z.object({ sessionDays: retentionCount, tokenDays: retentionCount, rateLimitDays: retentionCount, uploadTicketDays: retentionCount, outboxDays: retentionCount, jobRunDays: retentionCount, auditDays: retentionCount }),
-  pending: z.object({ sessions: retentionCount, tokens: retentionCount, rateLimits: retentionCount, uploadTickets: retentionCount, outbox: retentionCount, jobRuns: retentionCount, auditRows: retentionCount }),
+  config: z.object({ sessionDays: retentionCount, tokenDays: retentionCount, rateLimitDays: retentionCount, uploadTicketDays: retentionCount, outboxDays: retentionCount, jobRunDays: retentionCount, auditDays: retentionCount, healthReadDays: retentionCount }),
+  pending: z.object({ sessions: retentionCount, tokens: retentionCount, rateLimits: retentionCount, uploadTickets: retentionCount, outbox: retentionCount, jobRuns: retentionCount, auditRows: retentionCount, healthReads: retentionCount }),
 });
 export type OperatorRetention = z.infer<typeof operatorRetentionSchema>;

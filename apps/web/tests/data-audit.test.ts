@@ -370,17 +370,31 @@ d("STORED copies against their source rows", () => {
   });
 
   it("user: isMinor follows the date of birth", async () => {
+    // Exact: every writer of a date writes the flag with it, and accounts:tidy
+    // (refreshMinority, daily) moves it when the calendar does. The one drift
+    // allowed is an eighteenth birthday inside the job's own two-day window.
     const ids = schools.map((s) => s.id);
     const users = await db.user.findMany({ where: { birthdate: { not: null }, memberships: { some: { schoolId: { in: ids } } } }, select: { id: true, birthdate: true, isMinor: true } });
     const now = new Date();
+    const GRACE_MS = 2 * 86_400_000;
     let wrong = 0;
+    let pending = 0;
+    let example = "";
     for (const u of users) {
       const b = u.birthdate!;
       let age = now.getUTCFullYear() - b.getUTCFullYear();
       if (now.getUTCMonth() < b.getUTCMonth() || (now.getUTCMonth() === b.getUTCMonth() && now.getUTCDate() < b.getUTCDate())) age -= 1;
-      if (u.isMinor !== age < 18) wrong += 1;
+      if (u.isMinor === age < 18) continue;
+      const eighteenth = Date.UTC(b.getUTCFullYear() + 18, b.getUTCMonth(), b.getUTCDate());
+      if (u.isMinor && now.getTime() - eighteenth < GRACE_MS) pending += 1;
+      else {
+        wrong += 1;
+        example ||= u.id;
+      }
     }
-    if (wrong) note("user-minor", "WARN", "all", `${wrong} account(s) have isMinor out of step with the birthdate — it is stamped at creation and never recomputed`);
+    if (wrong) note("user-minor", "FAIL", "all", `${wrong} dated account(s) have isMinor out of step with the birthdate (e.g. user ${example}) — a writer stamped it wrong or accounts:tidy has not run for two days`);
+    if (pending) note("user-minor", "INFO", "all", `${pending} account(s) turned eighteen inside the last two days; tonight's accounts:tidy clears their flag`);
+    note("user-minor", "INFO", "all", `${users.length} dated account(s) checked, ${wrong} out of step`);
     expect(failsOf("user-minor")).toEqual([]);
   });
 
@@ -785,10 +799,17 @@ d("usage: the nightly sample against the rows it counts", () => {
       const stored = await db.usageSample.findUnique({ where: { schoolId_month: { schoolId: s.id, month } } });
       if (!stored) { note("usage-sample", "INFO", s.name, `no row for ${month} yet (usage:sample has not run)`); continue; }
       const fresh = await computeUsage(s.id, month, { sizes });
-      // A row is the night's picture; a day's enrolments or texts since are drift, not a contradiction. A row younger than a day must agree.
-      const young = Date.now() - stored.computedAt.getTime() < 24 * 3_600_000;
+      // A row is the night's picture, and anything the month gained since —
+      // a text sent at five in the morning after the two o'clock sample, a
+      // pupil admitted, a file attached — is drift, not a contradiction,
+      // however young the row (the sweep of 2026-10-01 sent ten texts after
+      // the sample and the "younger than a day must agree" rule failed on
+      // them). What cannot happen is a stored count ABOVE the recomputed one
+      // for a thing the month never loses: a text once sent stays sent.
       for (const key of ["pupils", "messages", "storageMb"] as const) {
-        if (stored[key] !== fresh[key]) note("usage-sample", young ? "FAIL" : "WARN", s.name, `${month} ${key}: stored ${stored[key]} vs recomputed ${fresh[key]} (computed ${stored.computedAt.toISOString()})`);
+        if (stored[key] === fresh[key]) continue;
+        const impossible = key === "messages" && stored[key] > fresh[key];
+        note("usage-sample", impossible ? "FAIL" : "WARN", s.name, `${month} ${key}: stored ${stored[key]} vs recomputed ${fresh[key]} (computed ${stored.computedAt.toISOString()})`);
       }
       // The audit's own sign-ins add sessions; the recomputed figure may only grow.
       if (fresh.activeUsers < stored.activeUsers) note("usage-sample", "WARN", s.name, `${month} activeUsers: stored ${stored.activeUsers} vs recomputed ${fresh.activeUsers}`);

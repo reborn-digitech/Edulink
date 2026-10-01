@@ -139,29 +139,35 @@ describe("the nightly recompute of who is a minor", () => {
   const ADULT = "zz.minor.adult.unit@riverside.test";
   const CHILD = "zz.minor.child.unit@riverside.test";
   const UNDATED = "zz.minor.undated.unit@riverside.test";
+  const YOUNG = "zz.minor.young.unit@riverside.test";
   afterAll(async () => {
-    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED] } } });
+    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED, YOUNG] } } });
   });
 
-  it("⚠ a pupil who has turned eighteen stops being a minor; one who has not, and one with no date, keep the flag", async () => {
+  it("⚠ a pupil who has turned eighteen stops being a minor; one who has not, and one with no date, keep the flag; a dated seventeen-year-old stamped adult becomes a minor", async () => {
     const now = new Date("2026-09-26T06:00:00Z");
     const eighteenToday = new Date(Date.UTC(2008, 8, 26));
     const seventeen = new Date(Date.UTC(2008, 8, 27));
-    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED] } } });
-    const [adult, child, undated] = await Promise.all([
+    await db.user.deleteMany({ where: { email: { in: [ADULT, CHILD, UNDATED, YOUNG] } } });
+    const [adult, child, undated, young] = await Promise.all([
       db.user.create({ data: { email: ADULT, name: "ZZ Minor Adult", prefs: "{}", birthdate: eighteenToday, isMinor: true }, select: { id: true } }),
       db.user.create({ data: { email: CHILD, name: "ZZ Minor Child", prefs: "{}", birthdate: seventeen, isMinor: true }, select: { id: true } }),
       db.user.create({ data: { email: UNDATED, name: "ZZ Minor Undated", prefs: "{}", birthdate: null, isMinor: true }, select: { id: true } }),
+      // Dated seventeen but stamped adult: the date wins here too.
+      db.user.create({ data: { email: YOUNG, name: "ZZ Minor Young", prefs: "{}", birthdate: seventeen, isMinor: false }, select: { id: true } }),
     ]);
+    // Scoped to these four: the cron fixes the whole server, a test only its own accounts.
+    const scope = { userIds: [adult.id, child.id, undated.id, young.id] };
 
-    const out = await refreshMinority(now);
-    expect(out.adults).toBeGreaterThanOrEqual(1);
+    const out = await refreshMinority(now, scope);
+    expect(out).toEqual({ adults: 1, minors: 1 });
     expect((await db.user.findUniqueOrThrow({ where: { id: adult.id } })).isMinor).toBe(false);
     expect((await db.user.findUniqueOrThrow({ where: { id: child.id } })).isMinor).toBe(true);
     expect((await db.user.findUniqueOrThrow({ where: { id: undated.id } })).isMinor).toBe(true);
+    expect((await db.user.findUniqueOrThrow({ where: { id: young.id } })).isMinor).toBe(true);
 
     // Idempotent: the same day again moves nobody planted here.
-    await refreshMinority(now);
+    expect(await refreshMinority(now, scope)).toEqual({ adults: 0, minors: 0 });
     expect((await db.user.findUniqueOrThrow({ where: { id: child.id } })).isMinor).toBe(true);
   });
 });

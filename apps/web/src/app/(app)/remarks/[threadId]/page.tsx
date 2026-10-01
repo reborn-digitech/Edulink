@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon, LockKeyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
-import { getThread } from "@/lib/remarks";
+import { getThread, markThreadRead } from "@/lib/remarks";
 import { getT } from "@/lib/i18n/server";
-import { markRead } from "../actions";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
 import { ReplyBox } from "./reply-box";
@@ -33,8 +32,14 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
     throw error;
   }
 
-  // Opening the thread is what marks it read.
-  await markRead(threadId);
+  // Opening the thread is what marks it read. The write goes straight to the
+  // library, not through a server action: an action calls revalidatePath, and
+  // revalidatePath during a render is an error in Next 15 (the dev overlay showed
+  // it on every open). The list is rendered per request, so it reads the new
+  // state without a revalidation; a failed receipt never breaks the thread.
+  await markThreadRead(session, threadId).catch((error: unknown) => {
+    if (!(error instanceof AccessError)) console.error("[markThreadRead]", error);
+  });
 
   const school = await db.school.findUnique({
     where: { id: thread.schoolId },

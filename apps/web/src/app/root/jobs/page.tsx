@@ -63,6 +63,7 @@ const RETENTION_LABEL: Record<RetentionKey, TranslationKey> = {
   outbox: "root.retentionOutbox",
   jobRuns: "root.retentionJobRuns",
   auditRows: "root.retentionAuditRows",
+  healthReads: "root.retentionHealthReads",
 };
 const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = {
   sessions: (c) => c.sessionDays,
@@ -72,6 +73,7 @@ const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = 
   outbox: (c) => c.outboxDays,
   jobRuns: (c) => c.jobRunDays,
   auditRows: (c) => c.auditDays,
+  healthReads: (c) => c.healthReadDays,
 };
 
 type Tone = "running" | "overdue" | "failed" | "ok";

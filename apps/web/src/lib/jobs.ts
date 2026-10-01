@@ -142,7 +142,7 @@ export const JOBS: Record<JobName, JobSpec> = {
       for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
       }
-      return { summary: { invitesExpired: invites.expired, adults: minors.adults, joinsExpired: requests.joins, claimsExpired: requests.claims }, perSchool };
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims }, perSchool };
     },
   },
   "digest:weekly": {

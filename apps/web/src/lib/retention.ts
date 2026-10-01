@@ -12,9 +12,11 @@ import { readRetentionConfig, type RetentionConfig } from "./env";
  * none of it. What it sweeps is the security context that accumulates
  * underneath: sessions long expired or revoked, sign-in tokens spent or
  * lapsed, rate-limit buckets whose window closed, upload tickets already
- * spent, the dev mailbox, a job's run history, and — the one deliberate
- * policy change — audit rows past a horizon the operator sets, two years by
- * default and never when RETENTION_AUDIT_DAYS is 0.
+ * spent, the dev mailbox, a job's run history, the record of which staff
+ * opened a pupil's health card (a year by default, RETENTION_HEALTH_READS_DAYS;
+ * the guardian is shown ninety days of it), and — the one deliberate policy
+ * change — audit rows past a horizon the operator sets, two years by default
+ * and never when RETENTION_AUDIT_DAYS is 0.
  *
  * COUNTS, NOT ROWS. A JobRun summary is a whole-server row outside the
  * tenant fence, so this returns numbers per table and, for the audit log,
@@ -36,8 +38,8 @@ import { readRetentionConfig, type RetentionConfig } from "./env";
  */
 export type RetentionScope = { userIds?: string[]; buckets?: string[]; outboxTo?: string; jobs?: string[]; schoolIds?: string[] };
 
-export type RetentionKey = "sessions" | "tokens" | "rateLimits" | "uploadTickets" | "outbox" | "jobRuns" | "auditRows";
-export const RETENTION_KEYS: RetentionKey[] = ["sessions", "tokens", "rateLimits", "uploadTickets", "outbox", "jobRuns", "auditRows"];
+export type RetentionKey = "sessions" | "tokens" | "rateLimits" | "uploadTickets" | "outbox" | "jobRuns" | "auditRows" | "healthReads";
+export const RETENTION_KEYS: RetentionKey[] = ["sessions", "tokens", "rateLimits", "uploadTickets", "outbox", "jobRuns", "auditRows", "healthReads"];
 export type RetentionCounts = Record<RetentionKey, number>;
 
 const DAY = 86_400_000;
@@ -53,6 +55,7 @@ export function cutoffs(now: Date, cfg: RetentionConfig) {
     jobRuns: daysAgo(now, cfg.jobRunDays),
     /** Null when the audit log is kept forever. */
     auditRows: cfg.auditDays > 0 ? daysAgo(now, cfg.auditDays) : null,
+    healthReads: daysAgo(now, cfg.healthReadDays),
   };
 }
 
@@ -79,6 +82,8 @@ const where = (at: ReturnType<typeof cutoffs>, scope: RetentionScope) => {
     uploadTickets: { ...user, consumedAt: { lt: at.uploadTickets } },
     outbox: { ...(scope.outboxTo ? { to: scope.outboxTo } : {}), createdAt: { lt: at.outbox } },
     auditRows: at.auditRows ? { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), createdAt: { lt: at.auditRows } } : null,
+    // School rows: a scoped test narrows them to its own school and its own reader.
+    healthReads: { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...(scope.userIds ? { readerUserId: { in: scope.userIds } } : {}), readAt: { lt: at.healthReads } },
   };
 };
 
@@ -86,7 +91,7 @@ const where = (at: ReturnType<typeof cutoffs>, scope: RetentionScope) => {
 export async function retentionPreview(now: Date = new Date(), config: RetentionConfig = readRetentionConfig().config, scope: RetentionScope = {}): Promise<{ config: RetentionConfig; pending: RetentionCounts }> {
   const at = cutoffs(now, config);
   const w = where(at, scope);
-  const [sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows] = await Promise.all([
+  const [sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads] = await Promise.all([
     db.session.count({ where: w.sessions }),
     db.authToken.count({ where: w.tokens }),
     db.rateLimit.count({ where: w.rateLimits }),
@@ -94,8 +99,9 @@ export async function retentionPreview(now: Date = new Date(), config: Retention
     db.outboundEmail.count({ where: w.outbox }),
     staleJobRunIds(at.jobRuns, scope).then((ids) => ids.length),
     w.auditRows ? db.auditLog.count({ where: w.auditRows }) : Promise.resolve(0),
+    db.healthCardRead.count({ where: w.healthReads }),
   ]);
-  return { config, pending: { sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows } };
+  return { config, pending: { sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads } };
 }
 
 /**
@@ -118,6 +124,8 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
     const bySchool = await db.auditLog.groupBy({ by: ["schoolId"], where: w.auditRows, _count: { _all: true } });
     for (const row of bySchool) if (row.schoolId && row._count._all > 0) perSchool[row.schoolId] = { auditRows: row._count._all };
   }
+  const readsBySchool = await db.healthCardRead.groupBy({ by: ["schoolId"], where: w.healthReads, _count: { _all: true } });
+  for (const row of readsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).healthReads = row._count._all;
   const summary: RetentionCounts = {
     sessions: (await db.session.deleteMany({ where: w.sessions })).count,
     tokens: (await db.authToken.deleteMany({ where: w.tokens })).count,
@@ -126,10 +134,11 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
     outbox: (await db.outboundEmail.deleteMany({ where: w.outbox })).count,
     jobRuns: 0,
     auditRows: 0,
+    healthReads: (await db.healthCardRead.deleteMany({ where: w.healthReads })).count,
   };
   const stale = await staleJobRunIds(at.jobRuns, scope);
   if (stale.length > 0) summary.jobRuns = (await db.jobRun.deleteMany({ where: { id: { in: stale } } })).count;
   if (w.auditRows) summary.auditRows = (await db.auditLog.deleteMany({ where: w.auditRows })).count;
-  await audit({ schoolId: null, actorUserId: null, action: "retention.sweep", meta: { ...summary, auditDays: config.auditDays } });
+  await audit({ schoolId: null, actorUserId: null, action: "retention.sweep", meta: { ...summary, auditDays: config.auditDays, healthReadDays: config.healthReadDays } });
   return { summary, perSchool };
 }

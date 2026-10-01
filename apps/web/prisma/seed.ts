@@ -15,7 +15,11 @@ import { addDaysToKey, todayKey, isTeachingDay } from "../src/lib/dates";
 
 const db = new PrismaClient();
 
-const PASSWORD = "copper-lantern-47-brook";
+/**
+ * The shared dev password. SEED_PASSWORD overrides it. Never printed: the seed
+ * runs in CI, whose log is readable by anyone who can see the run.
+ */
+const PASSWORD = process.env.SEED_PASSWORD || "copper-lantern-47-brook";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
 
 async function main() {
@@ -123,7 +127,7 @@ Seeded.
   Parent (children in BOTH schools)
              parent@example.com
 
-  Password for every account:  ${PASSWORD}
+  Password for every account:  ${process.env.SEED_PASSWORD ? "set from SEED_PASSWORD" : "the usual fixture value (prisma/seed.ts)"}, not shown
 
   Class join codes:
 ${riverside.classes.map((c) => `    ${c.joinCode}  ${c.name}`).join("\n")}

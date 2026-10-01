@@ -61,6 +61,7 @@ const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
  * Same dev password as `prisma/seed.ts`, so ZZ accounts log in by hand too.
  * ZZ_PASSWORD overrides it for the accounts this run CREATES; an account that
  * already exists keeps whatever hash it has (upsertUser never rewrites one).
+ * The value is never printed: this runs in CI, whose log anyone can read.
  */
 const PASSWORD = process.env.ZZ_PASSWORD ?? "copper-lantern-47-brook";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
@@ -2429,7 +2430,7 @@ async function main() {
   });
 
   console.log(`
-  ZZ fixtures ready. Password for every account below: ${PASSWORD}
+  ZZ fixtures ready. Password for every account below: ${process.env.ZZ_PASSWORD ? "set from ZZ_PASSWORD" : "the usual fixture value (prisma/seed.ts)"}, not shown
 
   ── ZZ Northgate School (populated) ──────────────────────────────────
      join code   ${northgate.school.code}

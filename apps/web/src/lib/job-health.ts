@@ -71,6 +71,7 @@ export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
   outbox: "root.jobCountOutbox",
   jobRuns: "root.jobCountJobRuns",
   auditRows: "root.jobCountAuditRows",
+  healthReads: "root.jobCountHealthReads",
 };
 
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };

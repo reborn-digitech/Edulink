@@ -37,7 +37,10 @@ export default async function ClaimsPage() {
       {claims.length === 0 ? (
         <EmptyState icon={<QrCodeIcon weight="duotone" className="size-8" />} title={t("fees.claimsEmpty")} />
       ) : (
-        <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
+        // `relative` makes the scroller the containing block of the header's
+        // sr-only label (position: absolute), which otherwise escapes the
+        // scroll and widens the whole page on a phone.
+        <div className="relative overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>
@@ -47,7 +50,9 @@ export default async function ClaimsPage() {
                 <th className="px-4 py-3 font-medium">{t("fees.claimColRef")}</th>
                 <th className="px-4 py-3 font-medium">{t("fees.claimColWhen")}</th>
                 <th className="px-4 py-3 font-medium">{t("fees.claimColBy")}</th>
-                <th className="px-4 py-3" />
+                <th className="px-4 py-3">
+                  <span className="sr-only">{t("fees.claimColDecide")}</span>
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">

@@ -65,11 +65,14 @@ export async function setMemberBirthdate(
     where: { id: member.userId },
     data: {
       birthdate: parsed.date,
-      // The minor flag follows the date for a pupil; an unknown date keeps
-      // the cautious default, which is what sign-up does too.
-      ...(member.role === "STUDENT"
-        ? { isMinor: parsed.date ? ageInYears(parsed.date) < 18 : true }
-        : {}),
+      // The minor flag follows the date, whoever the member is (the data audit
+      // checks it exactly); a pupil's unknown date keeps the cautious default,
+      // which is what sign-up does too, and anyone else's keeps their flag.
+      ...(parsed.date
+        ? { isMinor: ageInYears(parsed.date) < 18 }
+        : member.role === "STUDENT"
+          ? { isMinor: true }
+          : {}),
     },
   });
 
@@ -124,7 +127,7 @@ export async function setOwnBirthdate(ctx: ActiveContext, dateKey: string): Prom
     where: { id: ctx.user.id },
     data: {
       birthdate: parsed.date,
-      ...(ctx.role === "STUDENT" ? { isMinor: ageInYears(parsed.date) < 18 } : {}),
+      isMinor: ageInYears(parsed.date) < 18,
     },
   });
   await audit({
@@ -139,16 +142,24 @@ export async function setOwnBirthdate(ctx: ActiveContext, dateKey: string): Prom
 }
 
 /**
- * `User.isMinor` is a stored copy of "under eighteen by the date of birth",
- * written when the date is, and until now never again: every pupil turned
- * eighteen still counted as a child for the moderation, the push wording and
- * the feed. The daily `accounts:tidy` job runs this. Only the ageing direction
- * is taken here — a corrected date recomputes the flag on its own path — and
- * only for accounts with a date on record, so an adult who never gave one
- * keeps whatever their sign-up said.
+ * `User.isMinor` is a stored copy of "under eighteen by the date of birth" —
+ * read by the moderation, the push wording, the feed and the session in too
+ * many places to derive on every read. Every writer of a date writes the flag
+ * with it; the calendar alone moves it once a year, so the daily
+ * `accounts:tidy` job runs this. For an account with a date on record the
+ * date wins, in both directions: a pupil who turned eighteen stops counting
+ * as a child, and a dated account under eighteen that somehow says adult
+ * (a date written before the writers above followed it) is put right. An
+ * account with no date keeps whatever its sign-up said. The data audit's
+ * `user-minor` check is exact against this rule, allowing the job's two days.
+ *
+ * `scope.userIds` is for tests alone (the retention sweep's precedent): the
+ * cron fixes the whole server, a test only its own accounts.
  */
-export async function refreshMinority(now: Date = new Date()): Promise<{ adults: number }> {
+export async function refreshMinority(now: Date = new Date(), scope: { userIds?: string[] } = {}): Promise<{ adults: number; minors: number }> {
   const cutoff = new Date(Date.UTC(now.getUTCFullYear() - 18, now.getUTCMonth(), now.getUTCDate()));
-  const moved = await db.user.updateMany({ where: { isMinor: true, birthdate: { not: null, lte: cutoff } }, data: { isMinor: false } });
-  return { adults: moved.count };
+  const only = scope.userIds ? { id: { in: scope.userIds } } : {};
+  const adults = await db.user.updateMany({ where: { ...only, isMinor: true, birthdate: { not: null, lte: cutoff } }, data: { isMinor: false } });
+  const minors = await db.user.updateMany({ where: { ...only, isMinor: false, birthdate: { not: null, gt: cutoff } }, data: { isMinor: true } });
+  return { adults: adults.count, minors: minors.count };
 }

@@ -59,9 +59,15 @@ export type RetentionConfig = {
   jobRunDays: number;
   /** Days an audit row is kept; 0 keeps every row forever. */
   auditDays: number;
+  /**
+   * Days a "who opened the health card" row is kept. The guardian's list shows
+   * ninety days, so the floor is ninety; a year by default keeps a window for
+   * a dispute about who looked.
+   */
+  healthReadDays: number;
 };
 
-export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730 };
+export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365 };
 
 const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number; max: number }> = {
   sessionDays: { name: "RETENTION_SESSION_DAYS", min: 1, max: 365 },
@@ -71,6 +77,8 @@ const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number;
   outboxDays: { name: "RETENTION_OUTBOX_DAYS", min: 1, max: 3650 },
   jobRunDays: { name: "RETENTION_JOB_RUN_DAYS", min: 7, max: 3650 },
   auditDays: { name: "RETENTION_AUDIT_DAYS", min: 0, max: 36500 },
+  // Never under the guardian's ninety-day list (HEALTH_READS_DAYS in src/lib/health.ts).
+  healthReadDays: { name: "RETENTION_HEALTH_READS_DAYS", min: 90, max: 3650 },
 };
 
 /**

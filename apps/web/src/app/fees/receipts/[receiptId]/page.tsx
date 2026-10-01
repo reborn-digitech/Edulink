@@ -56,8 +56,11 @@ export default async function FeeReceiptPage({ params }: { params: Promise<{ rec
     { label: t("fees.receiptYear"), value: snapshot.year || dash },
   ];
 
+  // No shell, but still one <main id="main">: the root layout's skip link
+  // lands on it, and every line of the page sits inside a landmark (axe's
+  // landmark-one-main and region rules).
   return (
-    <div className="min-h-safe bg-bg px-4 py-6 print:bg-white print:p-0">
+    <main id="main" className="min-h-safe bg-bg px-4 py-6 print:bg-white print:p-0">
       <div className="mx-auto mb-4 flex max-w-[210mm] items-center justify-between gap-3 print:hidden">
         <Link href={backHref} className="text-sm font-medium text-fg-muted hover:text-fg">
           ← {t("fees.receiptBack")}
@@ -163,6 +166,6 @@ export default async function FeeReceiptPage({ params }: { params: Promise<{ rec
 
         <p className="mt-6 text-[0.7rem] leading-relaxed text-[#666]">{t("fees.receiptFooter", { school: snapshot.school.name })}</p>
       </article>
-    </div>
+    </main>
   );
 }
