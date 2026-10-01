@@ -96,7 +96,9 @@ describe("one school, for the operator", () => {
     expect(await screen.findByText("ZZ Northgate")).toBeTruthy();
     expect(screen.getByText("Join code NORTH-7X9K · Asia/Kolkata")).toBeTruthy();
     // Twice: in the invitations and, pending, under "Help the office" with its send-again door.
-    expect(screen.getAllByText("head@zz.test")).toHaveLength(2);
+    // That card is drawn from the support read, a query of its own that can
+    // land after the school's (CI's runner, 2026-10-01), so it is waited for.
+    await waitFor(() => expect(screen.getAllByText("head@zz.test")).toHaveLength(2));
     expect(screen.getByText(/^Principal · ZZ Head · 2 hours ago/)).toBeTruthy();
     expect(screen.getByText("Pending")).toBeTruthy();
     expect(screen.getByText("Accepted")).toBeTruthy();
