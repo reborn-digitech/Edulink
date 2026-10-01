@@ -10,6 +10,7 @@
  * killing a challenge, the web form's own two steps, and disabling. A ZZ
  * teacher is refused enrolment.
  */
+import { randomBytes } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { hashPassword, hashToken } from "@/lib/crypto";
@@ -128,6 +129,9 @@ function codeAt(secret: string, delta: number): string {
 }
 
 beforeAll(async () => {
+  // The secret is sealed with the gateway box. CI's .env is the example, with
+  // no key; the fees suites make a throwaway one the same way.
+  process.env.FEES_SECRET_KEY ??= randomBytes(32).toString("base64");
   adminEmail = `zz-totp-admin-${STAMP}@test.invalid`;
   teacherEmail = `zz-totp-teacher-${STAMP}@test.invalid`;
   const school = await db.school.create({
