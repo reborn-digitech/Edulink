@@ -8027,6 +8027,7 @@ export const en = {
     matchConfirmAll: "Confirm {count} matched",
     matchDone: "{count} confirmed.",
     /* Settings. */
+    matchClaimedOtherReference: "The family claimed this payment with a different reference; check the UTR before recording.",
     settingsTitle: "How families pay",
     settingsIntro: "Money goes to the school and only the school. Set the UPI id parents pay to, or enter the school's own gateway keys, or both. Relay holds none of it and takes no share.",
     upiTitle: "UPI id",

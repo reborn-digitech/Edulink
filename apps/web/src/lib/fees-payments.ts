@@ -530,17 +530,32 @@ export async function listClaims(ctx: ActiveContext, todayKeyInZone: string): Pr
   };
 }
 
-export async function confirmClaim(ctx: ActiveContext, paymentId: string): Promise<{ receiptId: string; serial: string }> {
+/**
+ * The office confirms a UPI payment against its statement. `fromStatement`
+ * is the bank import confirming an intent the family never claimed: the
+ * statement's line carried the intent's EL reference, so the line's own
+ * reference stands in for the UTR the family would have given — the same
+ * row becomes PAID, and no second payment is written for the same money.
+ */
+export async function confirmClaim(ctx: ActiveContext, paymentId: string, fromStatement?: { utr: string }): Promise<{ receiptId: string; serial: string }> {
   const caller = requireFeesOffice(ctx);
   const result = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const p = await tx.feePayment.findFirst({ where: { id: paymentId, schoolId: caller.schoolId, method: "UPI" }, select: { id: true, status: true, studentMembershipId: true, amountPaise: true } });
     if (!p) throw new AccessError("fees.notFound", "NOT_FOUND");
-    if (p.status !== "CLAIMED") throw new AccessError("fees.refuseNotClaimed");
-    const settled = await settle(tx, caller.schoolId, p.id, { confirmedByUserId: caller.userId });
-    return { ...settled, studentMembershipId: p.studentMembershipId, amountPaise: p.amountPaise };
+    const unclaimed = p.status === "INITIATED" && Boolean(fromStatement);
+    if (p.status !== "CLAIMED" && !unclaimed) throw new AccessError("fees.refuseNotClaimed");
+    let reference: string | undefined;
+    if (unclaimed) {
+      reference = fromStatement!.utr.trim().toUpperCase().slice(0, 60);
+      if (!reference) throw new AccessError("fees.refuseReference");
+      const dup = await tx.feePayment.findFirst({ where: { schoolId: caller.schoolId, reference, status: { in: ["CLAIMED", "PAID"] }, id: { not: p.id } }, select: { id: true } });
+      if (dup) throw new AccessError("fees.refuseUtrUsed");
+    }
+    const settled = await settle(tx, caller.schoolId, p.id, { confirmedByUserId: caller.userId, reference });
+    return { ...settled, studentMembershipId: p.studentMembershipId, amountPaise: p.amountPaise, fromStatement: unclaimed };
   });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimConfirm", targetType: "FeePayment", targetId: paymentId, meta: { serial: result.serial } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.userId, action: "fees.claimConfirm", targetType: "FeePayment", targetId: paymentId, meta: { serial: result.serial, ...(result.fromStatement ? { fromStatement: true } : {}) } });
   await tellFamilyReceived(caller.schoolId, result.studentMembershipId, paymentId, result.amountPaise, result.serial, result.receiptId);
   return { receiptId: result.receiptId, serial: result.serial };
 }

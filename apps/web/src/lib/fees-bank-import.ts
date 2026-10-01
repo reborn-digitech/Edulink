@@ -19,13 +19,17 @@ import type { ActiveContext } from "./session";
  * what the line itself carries:
  *
  *   1. its reference is the UTR a family CLAIMED a UPI payment with — the
- *      claim is confirmed, as the claims page would;
+ *      claim is confirmed, as the claims page would; or its narration
+ *      carries the EL reference of a UPI intent the family never claimed —
+ *      that intent is confirmed the same way, the line's reference as its
+ *      UTR, when the amounts agree;
  *   2. its reference is already on a payment in the ledger (the office
  *      keyed the cheque at the counter; the statement was imported once
  *      before) — nothing is written, the line says "already";
- *   3. its narration carries a pupil's student code, or the EL reference
- *      the family's UPI intent was started with — a payment is recorded for
- *      that pupil through the counter's one writer;
+ *   3. its narration carries a pupil's student code — a payment is
+ *      recorded for that pupil through the counter's one writer (a line
+ *      naming the EL reference of an intent CLAIMED under another UTR is
+ *      left for the office instead: the family's word against the bank's);
  *   4. none of those — the line is listed for the office to key by hand.
  *
  * THE PLATFORM RECORDS THAT MONEY MOVED; IT MOVES NOTHING (decision 0003).
@@ -116,8 +120,12 @@ const squash = (value: string) => value.toUpperCase().replace(/[^A-Z0-9]/g, "");
 export function referenceFromLine(reference: string, description: string): string {
   const own = squash(reference);
   if (own) return own.slice(0, 60);
-  const utr = /\b([A-Z0-9]{12,22})\b/i.exec(description.replace(/[^A-Za-z0-9 ]/g, " "));
-  if (utr && /\d/.test(utr[1]!)) return utr[1]!.toUpperCase();
+  // A UPI intent's EL reference is the family's note to the school, not the
+  // bank's reference for the credit; the UTR is the next token along.
+  for (const token of description.replace(/[^A-Za-z0-9 ]/g, " ").match(/\b[A-Z0-9]{12,22}\b/gi) ?? []) {
+    const upper = token.toUpperCase();
+    if (/\d/.test(upper) && !/^EL[0-9A-F]{12}$/.test(upper)) return upper;
+  }
   const chq = /(?:CHQ|CHEQUE|CLG)\D{0,12}(\d{6})\b/i.exec(description);
   return chq ? chq[1]! : "";
 }
@@ -186,7 +194,23 @@ export async function previewBankImport(ctx: ActiveContext, csv: string): Promis
     const narration = squash(`${description} ${rawRef}`);
     const intent = /EL[0-9A-F]{12}/.exec(narration);
     const waiting = intent ? byIntent.get(intent[0]) : undefined;
-    const pupil = waiting ? { id: waiting.studentMembershipId, name: nameOf(waiting.student.user) } : (codes.find((c) => narration.includes(c.code)) ?? null);
+    if (waiting?.status === "INITIATED") {
+      // The family's UPI intent, never claimed: the statement is the proof,
+      // and the intent itself is confirmed with the line's reference as its
+      // UTR — a counter payment beside it would count the same money twice.
+      const who = { paymentId: waiting.id, studentMembershipId: waiting.studentMembershipId, pupilName: nameOf(waiting.student.user) };
+      if (!reference || reference === intent![0]) return { ...base, ...who, outcome: "unmatched", problemKey: "fees.refuseReference" };
+      if (waiting.amountPaise !== amountPaise) return { ...base, ...who, outcome: "unmatched", problemKey: "fees.matchAmountDiffers" };
+      return { ...base, ...who, outcome: "claim", problemKey: null };
+    }
+    if (waiting?.status === "CLAIMED") {
+      // The family claimed this intent with a UTR this line does not carry
+      // (a line that carries it confirmed above). Which is right is for the
+      // office to look at: overwriting the family's UTR would lose their
+      // word, and a counter payment beside the claim would count it twice.
+      return { ...base, outcome: "unmatched", paymentId: waiting.id, studentMembershipId: waiting.studentMembershipId, pupilName: nameOf(waiting.student.user), problemKey: "fees.matchClaimedOtherReference" };
+    }
+    const pupil = codes.find((c) => narration.includes(c.code)) ?? null;
     if (!pupil) return unmatched("officeBulk.bankNoPupil");
     if (!reference) return { ...base, outcome: "unmatched", studentMembershipId: pupil.id, pupilName: pupil.name, problemKey: "fees.refuseReference" };
     return { ...base, outcome: "new", studentMembershipId: pupil.id, pupilName: pupil.name, problemKey: null };
@@ -212,7 +236,7 @@ export async function commitBankImport(ctx: ActiveContext, csv: string, describe
   for (const l of preview.lines) {
     try {
       if (l.outcome === "claim" && l.paymentId) {
-        await confirmClaim(ctx, l.paymentId);
+        await confirmClaim(ctx, l.paymentId, { utr: l.reference });
         result.confirmed += 1;
       } else if (l.outcome === "new" && l.studentMembershipId && l.amountPaise !== null && l.method) {
         await recordCounterPayment(ctx, {

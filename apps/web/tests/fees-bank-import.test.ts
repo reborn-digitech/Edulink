@@ -1,6 +1,7 @@
 /**
  * The bank statement, against the database: a UTR line confirms the UPI
- * claim it matches, a cheque line and a NEFT line are recorded for the
+ * claim it matches, a line carrying the EL reference of an intent the
+ * family never claimed confirms that intent (one row, never two), a cheque line and a NEFT line are recorded for the
  * pupil whose code is in the narration (CHEQUE and BANK, the statement's
  * reference on the receipt, the statement's date as the day paid), an
  * unknown line and a debit are listed for the office to key, and the same
@@ -13,7 +14,7 @@ import { PrismaClient } from "@prisma/client";
 import type { ActiveContext } from "@/lib/session";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 import { saveFeeSettings } from "@/lib/fees";
-import { claimUpiPayment, familyFees, recordCounterPayment, startUpiPayment } from "@/lib/fees-payments";
+import { claimUpiPayment, confirmClaim, familyFees, recordCounterPayment, startUpiPayment } from "@/lib/fees-payments";
 import { commitBankImport, methodFromNarration, parseStatementAmount, parseStatementDate, previewBankImport, referenceFromLine } from "@/lib/fees-bank-import";
 import { AccessError } from "@/lib/tenancy";
 
@@ -90,7 +91,7 @@ describe("reading a statement", () => {
     expect([parseStatementAmount("1,250.50"), parseStatementAmount("₹ 800"), parseStatementAmount("12.345"), parseStatementAmount("0"), parseStatementAmount("")]).toEqual([1_250_50, 800_00, null, null, null]);
     expect([parseStatementDate("02/09/2026"), parseStatementDate("2026-09-02"), parseStatementDate("2 Sep 26"), parseStatementDate("31/02/2026"), parseStatementDate("someday")]).toEqual(["2026-09-02", "2026-09-02", "2026-09-02", null, null]);
     expect([methodFromNarration("CLG CHQ 123", ""), methodFromNarration("UPI/123/x", ""), methodFromNarration("NEFT CR", "N1"), methodFromNarration("", "")]).toEqual(["CHEQUE", "UPI", "BANK", "BANK"]);
-    expect([referenceFromLine(" n26-ab ", "x"), referenceFromLine("", "NEFT N260912345678 RAVI"), referenceFromLine("", "CLG CHQ 004512 RAVI"), referenceFromLine("", "nothing here")]).toEqual(["N26AB", "N260912345678", "004512", ""]);
+    expect([referenceFromLine(" n26-ab ", "x"), referenceFromLine("", "NEFT N260912345678 RAVI"), referenceFromLine("", "CLG CHQ 004512 RAVI"), referenceFromLine("", "nothing here"), referenceFromLine("", "UPI/ELABCDEF123456/412345678901/RAVI")]).toEqual(["N26AB", "N260912345678", "004512", "", "412345678901"]);
   });
 
   it("previews each line: the UTR confirms the claim, the cheque and the NEFT record for the coded pupil, the cleared cheque is already there, the rest are for the office", async () => {
@@ -157,5 +158,74 @@ describe("recording it", () => {
     const over = await commitBankImport(admin(), `Date,Narration,Reference,Amount\n01/09/2026,NEFT ${CODE_A} TOO MUCH,N88${String(STAMP).slice(-12)},99999\n`, describeError);
     expect(over).toEqual({ recorded: 0, confirmed: 0, already: 0, unmatched: 0, failed: [{ line: 2, error: "fees.refuseOverpayment" }] });
     expect(await db.feePayment.count({ where: { schoolId, status: "PAID" } })).toBe(4);
+  });
+});
+
+describe("a UPI intent the family never claimed", () => {
+  let pupilC = "";
+  let term1 = "";
+  let term2 = "";
+  const UTR_C = `UTRC${String(STAMP).slice(-12)}`;
+  const line = (reference: string, utr: string, amount: string) => `Date,Description,Ref No,Credit\n${TODAY.slice(8, 10)}/${TODAY.slice(5, 7)}/${TODAY.slice(0, 4)},UPI/${reference}/ZZ PARENT,${utr},${amount}\n`;
+
+  beforeAll(async () => {
+    const pc = await db.user.create({ data: { name: "ZZ Bank PupilC", email: `zz-bank-pupilc-${STAMP}@test.invalid` }, select: { id: true } });
+    pupilC = (await db.membership.create({ data: { userId: pc.id, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: `ZZBKC${STAMP}`, gradeLevel: "3" }, select: { id: true } })).id;
+    await db.guardianship.create({ data: { parentUserId, studentMembershipId: pupilC, studentSchoolId: schoolId, status: "ACTIVE" } });
+    term1 = (await db.feeDemand.create({ data: { schoolId, studentMembershipId: pupilC, academicYearId: yearId, label: "Term 1", dueDate: new Date(`${TODAY}T00:00:00.000Z`), grossPaise: 3_000_00, netPaise: 3_000_00, status: "OPEN" }, select: { id: true } })).id;
+    term2 = (await db.feeDemand.create({ data: { schoolId, studentMembershipId: pupilC, academicYearId: yearId, label: "Term 2", dueDate: new Date(`${addDaysToKey(TODAY, 30)}T00:00:00.000Z`), grossPaise: 4_000_00, netPaise: 4_000_00, status: "OPEN" }, select: { id: true } })).id;
+  });
+
+  it("is confirmed by the statement line carrying its EL reference: one payment row, PAID with its receipt, the demand PAID, and a re-import records nothing", async () => {
+    const start = await startUpiPayment(parent(), { studentMembershipId: pupilC, demandIds: [term1] });
+    expect(await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId }, select: { status: true } })).toEqual({ status: "INITIATED" });
+    const csv = line(start.reference, UTR_C, "3000.00");
+
+    const preview = await previewBankImport(admin(), csv);
+    expect(preview.lines.map((l) => [l.outcome, l.paymentId, l.pupilName, l.reference, l.problemKey])).toEqual([["claim", start.paymentId, "ZZ Bank PupilC", UTR_C, null]]);
+
+    const first = await commitBankImport(admin(), csv, describeError);
+    expect(first).toEqual({ recorded: 0, confirmed: 1, already: 0, unmatched: 0, failed: [] });
+    const rows = await db.feePayment.findMany({ where: { schoolId, studentMembershipId: pupilC }, select: { id: true, status: true, method: true, reference: true, note: true, amountPaise: true, confirmedByUserId: true, receipt: { select: { serial: true } } } });
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ id: start.paymentId, status: "PAID", method: "UPI", reference: UTR_C, note: start.reference, amountPaise: 3_000_00, confirmedByUserId: adminUserId });
+    expect(rows[0]!.receipt?.serial).toBeTruthy();
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: term1 }, select: { paidPaise: true, status: true } })).toEqual({ paidPaise: 3_000_00, status: "PAID" });
+    expect(await db.auditLog.count({ where: { schoolId, action: "fees.claimConfirm", targetId: start.paymentId } })).toBe(1);
+
+    const second = await commitBankImport(admin(), csv, describeError);
+    expect(second).toEqual({ recorded: 0, confirmed: 0, already: 1, unmatched: 0, failed: [] });
+    expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilC } })).toBe(1);
+  });
+
+  it("is left for the office when the line's amount differs from the intent's", async () => {
+    const start = await startUpiPayment(parent(), { studentMembershipId: pupilC, demandIds: [term2] });
+    const csv = line(start.reference, `UTRD${String(STAMP).slice(-12)}`, "3999.00");
+    const preview = await previewBankImport(admin(), csv);
+    expect(preview.lines.map((l) => [l.outcome, l.paymentId, l.problemKey])).toEqual([["unmatched", start.paymentId, "fees.matchAmountDiffers"]]);
+    const result = await commitBankImport(admin(), csv, describeError);
+    expect(result).toEqual({ recorded: 0, confirmed: 0, already: 0, unmatched: 1, failed: [] });
+    expect(await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId }, select: { status: true, reference: true } })).toEqual({ status: "INITIATED", reference: null });
+    expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilC } })).toBe(2);
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: term2 }, select: { paidPaise: true, status: true } })).toEqual({ paidPaise: 0, status: "OPEN" });
+  });
+
+  it("a line naming an intent the family CLAIMED under another UTR is left for the office: the family's UTR stands and no second row is written", async () => {
+    const start = await startUpiPayment(parent(), { studentMembershipId: pupilC, demandIds: [term2] });
+    const theirs = `UTRX${String(STAMP).slice(-12)}`;
+    await claimUpiPayment(parent(), { paymentId: start.paymentId, utr: theirs });
+    const csv = line(start.reference, `UTRY${String(STAMP).slice(-12)}`, "4000.00");
+    const preview = await previewBankImport(admin(), csv);
+    expect(preview.lines.map((l) => [l.outcome, l.paymentId, l.pupilName, l.problemKey])).toEqual([["unmatched", start.paymentId, "ZZ Bank PupilC", "fees.matchClaimedOtherReference"]]);
+    const result = await commitBankImport(admin(), csv, describeError);
+    expect(result).toEqual({ recorded: 0, confirmed: 0, already: 0, unmatched: 1, failed: [] });
+    expect(await db.feePayment.findUniqueOrThrow({ where: { id: start.paymentId }, select: { status: true, reference: true } })).toEqual({ status: "CLAIMED", reference: theirs });
+    expect(await db.feePayment.count({ where: { schoolId, studentMembershipId: pupilC } })).toBe(3);
+    expect(await db.feeDemand.findUniqueOrThrow({ where: { id: term2 }, select: { paidPaise: true, status: true } })).toEqual({ paidPaise: 0, status: "OPEN" });
+  });
+
+  it("the office's own confirm still refuses an unclaimed intent without a statement", async () => {
+    const pending = await db.feePayment.findFirstOrThrow({ where: { schoolId, studentMembershipId: pupilC, status: "INITIATED" }, select: { id: true } });
+    await expect(confirmClaim(admin(), pending.id)).rejects.toThrow("fees.refuseNotClaimed");
   });
 });
