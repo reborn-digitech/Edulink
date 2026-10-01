@@ -5,7 +5,7 @@ import { searchEverything } from "@/lib/search";
 import { query } from "../shared/helpers";
 
 /** A person may search this often in a minute; a loop over the box would otherwise run five queries a keystroke. */
-export const SEARCH_BUDGET = { limit: 120, windowMs: 60 * 1000 };
+const SEARCH_BUDGET = { limit: 120, windowMs: 60 * 1000 };
 
 /**
  * GET /api/v1/search?q=&limit= — one search across people, posts, messages,

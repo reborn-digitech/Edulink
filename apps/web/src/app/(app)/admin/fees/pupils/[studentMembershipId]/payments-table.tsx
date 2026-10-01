@@ -86,7 +86,7 @@ export function PaymentsTable({ studentMembershipId, payments, timezone, office 
         const canRefund = office && (p.status === "PAID" || p.status === "REFUNDED") && p.refundedPaise < p.amountPaise;
         const editing = open?.paymentId === p.id ? open : null;
         return (
-          <li key={p.id} className="space-y-2 py-3">
+          <li key={p.id} className="space-y-2 py-3" data-testid="fee-payment-row" data-payment-id={p.id} data-status={p.status}>
             <div className="flex flex-wrap items-start justify-between gap-2 text-sm">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
@@ -104,7 +104,7 @@ export function PaymentsTable({ studentMembershipId, payments, timezone, office 
                   {p.receipt && (
                     <>
                       {" · "}
-                      <Link href={receiptHref(p.receipt.id)} className="font-medium text-accent-strong hover:underline">
+                      <Link href={receiptHref(p.receipt.id)} className="font-medium text-accent-strong hover:underline" data-testid="fee-payment-receipt">
                         {t("fees.receiptOpen")} {p.receipt.serial}
                       </Link>
                     </>

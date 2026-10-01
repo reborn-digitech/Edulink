@@ -88,7 +88,7 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
   }
 
   return (
-    <li className="space-y-3 py-3" data-testid="substitution-row">
+    <li className="space-y-3 py-3" data-testid="substitution-row" data-slot-id={lesson.slotId}>
       <div className="flex flex-wrap items-start gap-x-4 gap-y-1">
         <span className="w-28 shrink-0">
           <span className="block text-sm font-medium text-fg">{lesson.periodName ?? t("substitutions.period")}</span>
@@ -108,7 +108,7 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
             </Badge>
           </span>
         </span>
-        <span className="flex min-w-0 shrink-0 flex-wrap items-center gap-2">
+        <span className="flex min-w-0 flex-wrap items-center gap-2">
           {lesson.substitute ? (
             <>
               <Badge tone={lesson.substitute.declinedAt ? "danger" : "ok"} size="md" className="max-w-full">
@@ -159,9 +159,9 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
 
       {open && (
         <form onSubmit={assign} noValidate className="grid gap-2 sm:grid-cols-[minmax(0,24rem)_minmax(0,1fr)_auto] sm:items-end">
-          <SelectField label={t("substitutions.choose")} value={who} onChange={(e) => setWho(e.target.value)} className="[&_select]:min-h-10 [&_select]:py-2">
+          <SelectField label={t("substitutions.choose")} value={who} onChange={(e) => setWho(e.target.value)} className="[&_select]:min-h-10 [&_select]:py-2" data-testid="substitution-choose">
             {lesson.candidates.map((c) => (
-              <option key={c.membershipId} value={c.membershipId}>
+              <option key={c.membershipId} value={c.membershipId} data-free={c.free ? "1" : "0"}>
                 {candidateLabel(c)}
               </option>
             ))}
@@ -176,7 +176,7 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
             className="[&_input]:min-h-10 [&_input]:py-2"
           />
           <div className="flex items-center gap-2">
-            <Button type="submit" size="sm" loading={pending} disabled={lesson.candidates.length === 0} icon={<ArrowsLeftRightIcon weight="bold" />}>
+            <Button type="submit" size="sm" loading={pending} disabled={lesson.candidates.length === 0} icon={<ArrowsLeftRightIcon weight="bold" />} data-testid="substitution-assign">
               {t("substitutions.assign")}
             </Button>
             {lesson.substitute && (

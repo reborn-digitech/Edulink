@@ -117,7 +117,7 @@ export function DecideCard({
   }
 
   return (
-    <div className="rounded-[--radius-md] border border-border bg-surface p-4">
+    <div className="rounded-[--radius-md] border border-border bg-surface p-4" data-testid="leave-decide" data-leave-id={request.id}>
       <div className="flex flex-wrap items-start gap-3">
         <div className="min-w-0 flex-1">
           <PersonLink membershipId={request.applicantMembershipId} name={request.applicantName} className="block font-semibold text-fg" />
@@ -173,6 +173,7 @@ export function DecideCard({
           </span>
           <select
             value={cover}
+            data-testid="leave-cover"
             disabled={classesCovered === 0}
             onChange={(e) => setCover(e.target.value)}
             className="mt-1.5 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent disabled:opacity-60"
@@ -255,6 +256,7 @@ export function DecideCard({
           loading={pending}
           icon={<CheckIcon weight="bold" />}
           onClick={() => answer("APPROVED")}
+          data-testid="leave-approve"
         >
           {cover && classesCovered > 0 ? t("principal.approveAndCover") : t("principal.approve")}
         </Button>

@@ -107,7 +107,7 @@ export function DirectoryControls({
               navigate({ q: "" });
             }}
             aria-label={t("people.clearSearch")}
-            className="absolute right-2 top-1/2 grid size-9 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
+            className="absolute right-0 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
           >
             <XIcon weight="bold" className="size-4" />
           </button>

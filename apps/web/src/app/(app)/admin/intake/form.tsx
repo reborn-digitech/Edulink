@@ -171,7 +171,7 @@ export function IntakeForm({
         </div>
 
         {admitted.length > 0 && (
-          <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface">
+          <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface" tabIndex={0}>
             <table className="w-full text-sm" data-testid="intake-admitted">
               <thead className="bg-surface-muted text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>
@@ -375,6 +375,7 @@ export function IntakeForm({
         block
         size="lg"
         loading={pending}
+        data-testid="intake-admit"
         disabled={!preview || preview.valid.length === 0}
         icon={<UserPlusIcon weight="bold" />}
       >

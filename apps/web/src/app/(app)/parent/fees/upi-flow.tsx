@@ -128,7 +128,7 @@ export function UpiFlow({ studentMembershipId, demandIds, onClose }: { studentMe
           {phase.kind !== "claimed" && <p className="break-all font-mono text-[0.6875rem] leading-relaxed text-fg-subtle">{start.link}</p>}
 
           {phase.kind === "claimed" ? (
-            <p className="flex items-start gap-2 text-sm font-medium text-ok">
+            <p className="flex items-start gap-2 text-sm font-medium text-ok" data-testid="fees-upi-claimed">
               <CheckCircleIcon weight="fill" className="mt-0.5 size-4 shrink-0" />
               {t("fees.upiClaimed")}
             </p>
@@ -139,11 +139,12 @@ export function UpiFlow({ studentMembershipId, demandIds, onClose }: { studentMe
                 value={utr}
                 onChange={(e) => setUtr(e.target.value)}
                 error={utrError}
+                data-testid="fees-upi-utr"
                 inputMode="text"
                 autoComplete="off"
                 maxLength={22}
               />
-              <Button size="sm" onClick={() => void claim()} loading={phase.kind === "claiming"} disabled={utr.trim().length < 12}>
+              <Button size="sm" data-testid="fees-upi-claim" onClick={() => void claim()} loading={phase.kind === "claiming"} disabled={utr.trim().length < 12}>
                 {t("fees.upiClaim")}
               </Button>
             </div>

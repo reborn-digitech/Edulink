@@ -56,7 +56,7 @@ export function ClaimRow({ claim, timezone, staleAfterDays }: { claim: ClaimView
 
   return (
     <>
-      <tr className={rejecting ? "bg-surface-muted" : undefined}>
+      <tr className={rejecting ? "bg-surface-muted" : undefined} data-testid="claim-row" data-payment-id={claim.paymentId}>
         <td className="px-4 py-3">
           <Link href={pupilHref(claim.studentMembershipId)} className="font-medium text-fg hover:underline">
             {claim.pupilName}
@@ -75,7 +75,7 @@ export function ClaimRow({ claim, timezone, staleAfterDays }: { claim: ClaimView
         <td className="px-4 py-3 text-fg-muted">{claim.payer ?? "—"}</td>
         <td className="px-4 py-3 text-right">
           <span className="flex justify-end gap-1">
-            <Button size="sm" loading={pending} onClick={confirm} disabled={rejecting}>
+            <Button size="sm" loading={pending} onClick={confirm} disabled={rejecting} data-testid="claim-confirm">
               {t("fees.claimConfirm")}
             </Button>
             <Button size="sm" variant="ghost" onClick={() => { setError(null); setRejecting((r) => !r); }} disabled={pending}>

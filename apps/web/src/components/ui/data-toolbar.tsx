@@ -152,7 +152,7 @@ export function DataToolbar({
                   type="button"
                   onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }}
                   aria-label={labels.clearSearch}
-                  className="absolute right-1.5 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
+                  className="absolute right-0 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
                 >
                   <XIcon weight="bold" className="size-4" />
                 </button>

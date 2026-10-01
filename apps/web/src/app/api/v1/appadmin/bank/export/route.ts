@@ -5,7 +5,7 @@ import { exportResponse } from "@/lib/export-file";
 import { apiFailure, apiInvalid, budget } from "@/lib/api-v1";
 
 /** Twenty an hour a person: the whole bank is a few megabytes and a page of nothing else. */
-export const BANK_EXPORT_BUDGET = { limit: 20, windowMs: 60 * 60 * 1000 };
+const BANK_EXPORT_BUDGET = { limit: 20, windowMs: 60 * 60 * 1000 };
 
 /** GET /api/v1/appadmin/bank/export?subject=&grade=&format=csv|xlsx — the bank as the sheet the import reads. */
 export async function GET(request: Request) {

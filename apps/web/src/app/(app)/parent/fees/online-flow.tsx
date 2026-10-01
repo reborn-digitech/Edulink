@@ -187,7 +187,7 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
         </p>
       )}
       {phase.kind === "devbox" && (
-        <div className="space-y-2 text-sm text-fg-muted">
+        <div className="space-y-2 text-sm text-fg-muted" data-testid="fees-online-devbox" data-payment-id={phase.paymentId}>
           <p className="flex items-center gap-2">
             <Spinner className="size-4" />
             {t("fees.onlineChecking")}
@@ -201,7 +201,7 @@ export function OnlineFlow({ studentMembershipId, demandIds, resumePaymentId = n
         </div>
       )}
       {phase.kind === "paid" && (
-        <div className="space-y-2">
+        <div className="space-y-2" data-testid="fees-online-paid">
           <p className="flex items-center gap-2 text-sm font-medium text-ok">
             <CheckCircleIcon weight="fill" className="size-4 shrink-0" />
             {t("fees.onlineDone", { serial: phase.status.serial ?? "—" })}

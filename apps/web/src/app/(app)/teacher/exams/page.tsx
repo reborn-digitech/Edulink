@@ -101,7 +101,7 @@ export default async function TeacherExamsPage({
       )}
 
       {error && (
-        <Card>
+        <Card data-testid="marks-error">
           <CardBody className="flex items-center gap-2 text-sm text-danger">
             <WarningIcon weight="fill" className="size-4 shrink-0" />
             {error}
@@ -109,7 +109,7 @@ export default async function TeacherExamsPage({
         </Card>
       )}
       {saved && (
-        <Card>
+        <Card data-testid="marks-saved">
           <CardBody className="flex items-center gap-2 text-sm text-ok">
             <CheckCircleIcon weight="fill" className="size-4 shrink-0" />
             {t("exams.savedNote")}
@@ -211,7 +211,7 @@ export default async function TeacherExamsPage({
                 </ul>
                 <p className="text-xs text-fg-muted">{t("exams.blankMeansAbsent")}</p>
                 <MarksSheet pupils={grid.pupils} maxMarks={grid.maxMarks} paper={`${grid.seriesName} ${grid.subject}`} />
-                <Button type="submit">{t("exams.saveMarks")}</Button>
+                <Button type="submit" data-testid="marks-save">{t("exams.saveMarks")}</Button>
               </MarksForm>
             )}
           </CardBody>

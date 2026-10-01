@@ -69,22 +69,22 @@ export function TakePaymentForm({ studentMembershipId, openDemands, todayKey }: 
   }
 
   return (
-    <form onSubmit={submit} noValidate className="space-y-4">
+    <form onSubmit={submit} noValidate className="space-y-4" data-testid="fee-take-form">
       {error && (
-        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
+        <p role="alert" data-testid="fee-take-error" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium text-danger">
           {error}
         </p>
       )}
       <div className="grid gap-4 sm:grid-cols-2">
-        <TextField label={t("fees.takeAmount")} required inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <SelectField label={t("fees.takeMethod")} value={method} onChange={(e) => setMethod(e.target.value as FeeMethod)}>
+        <TextField label={t("fees.takeAmount")} required inputMode="decimal" data-testid="fee-take-amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <SelectField label={t("fees.takeMethod")} data-testid="fee-take-method" value={method} onChange={(e) => setMethod(e.target.value as FeeMethod)}>
           {COUNTER_METHODS.map((m) => (
             <option key={m} value={m}>
               {t(METHOD_KEY[m]!)}
             </option>
           ))}
         </SelectField>
-        <TextField label={t("fees.takeReference")} required={needsReference} hint={t("fees.takeReferenceHint")} maxLength={60} value={reference} onChange={(e) => setReference(e.target.value)} />
+        <TextField label={t("fees.takeReference")} data-testid="fee-take-reference" required={needsReference} hint={t("fees.takeReferenceHint")} maxLength={60} value={reference} onChange={(e) => setReference(e.target.value)} />
         <DateField label={t("fees.takeDate")} value={paidAtKey} max={todayKey} onChange={(e) => setPaidAtKey(e.target.value)} />
       </div>
       <TextAreaField label={t("fees.takeNote")} rows={2} maxLength={300} value={note} onChange={(e) => setNote(e.target.value)} placeholder={t("common.optional")} />
@@ -106,7 +106,7 @@ export function TakePaymentForm({ studentMembershipId, openDemands, todayKey }: 
         </fieldset>
       )}
 
-      <Button type="submit" block loading={pending}>
+      <Button type="submit" block loading={pending} data-testid="fee-take-go">
         {t("fees.takeGo")}
       </Button>
     </form>

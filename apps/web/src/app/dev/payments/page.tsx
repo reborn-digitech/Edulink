@@ -79,7 +79,7 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
       ) : (
         <ul className="space-y-3">
           {rows.map((row) => (
-            <li key={row.id}>
+            <li key={row.id} data-testid="dev-payment" data-order-id={row.gatewayOrderId} data-payment-id={row.id}>
               <Card>
                 <CardHeader
                   title={formatPaise(row.amountPaise, locale, { always: true })}
@@ -100,7 +100,7 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
                       <input type="hidden" name="schoolId" value={row.schoolId} />
                       <input type="hidden" name="orderId" value={row.gatewayOrderId} />
                       <input type="hidden" name="amountPaise" value={row.amountPaise} />
-                      <Button type="submit" size="sm">
+                      <Button type="submit" size="sm" data-testid="dev-payment-paid">
                         {t("fees.devPaymentsMarkPaid")}
                       </Button>
                     </form>

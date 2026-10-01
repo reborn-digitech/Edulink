@@ -269,7 +269,9 @@ export function Register({
               {dateLabel} · {roster.length} student{roster.length === 1 ? "" : "s"}
             </p>
           </div>
-          <SyncPill state={state} queued={queued} online={online} complete={complete} />
+          <span data-testid="register-sync" data-state={state}>
+            <SyncPill state={state} queued={queued} online={online} complete={complete} />
+          </span>
         </div>
 
         <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
@@ -383,6 +385,9 @@ function StudentRow({
         "flex flex-wrap items-center gap-3 rounded-[--radius-lg] border bg-surface p-2.5 pl-3 transition-colors",
         entry.status ? "border-border" : "border-dashed border-border-strong",
       )}
+      data-testid="register-row"
+      data-membership-id={entry.membershipId}
+      data-status={entry.status ?? ""}
     >
       <Avatar avatarKey={entry.avatarKey} name={entry.fullName} size="sm" />
 
@@ -446,6 +451,7 @@ function StudentRow({
               // the initial. Colour alone never carries the meaning.
               aria-label={statusLabel}
               title={t(meta.labelKey)}
+              data-testid={`register-mark-${status}`}
               className={cn(
                 "grid size-11 place-items-center rounded-[--radius-sm] text-sm font-bold",
                 "transition-[transform,background-color,color] duration-[--dur-fast]",

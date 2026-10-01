@@ -97,13 +97,13 @@ export function LeaveForm({
   return (
     <div className="space-y-5">
       {!open && (
-        <Button icon={<PaperPlaneTiltIcon weight="bold" />} onClick={() => setOpen(true)}>
+        <Button icon={<PaperPlaneTiltIcon weight="bold" />} onClick={() => setOpen(true)} data-testid="leave-open">
           {t("teacher.applyForLeave")}
         </Button>
       )}
 
       {open && (
-        <form onSubmit={submit} className="rounded-[--radius-lg] border border-border bg-surface p-5">
+        <form onSubmit={submit} className="rounded-[--radius-lg] border border-border bg-surface p-5" data-testid="leave-form">
           {error && (
             <p
               role="alert"
@@ -117,12 +117,14 @@ export function LeaveForm({
             <DateField
               label={t("teacher.firstDay")}
               required
+              data-testid="leave-from"
               value={from}
               onChange={(e) => setFrom(e.target.value)}
             />
             <DateField
               label={t("teacher.lastDay")}
               required
+              data-testid="leave-to"
               value={to}
               onChange={(e) => setTo(e.target.value)}
               />
@@ -159,6 +161,7 @@ export function LeaveForm({
               required
               rows={3}
               maxLength={1000}
+              data-testid="leave-reason"
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               className="mt-1.5 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 text-sm text-fg outline-none focus:border-accent"
@@ -174,6 +177,7 @@ export function LeaveForm({
             </span>
             <select
               value={nominee}
+              data-testid="leave-nominee"
               onChange={(e) => setNominee(e.target.value)}
               className="mt-1.5 min-h-12 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-[0.9375rem] text-fg outline-none focus:border-accent"
             >
@@ -187,7 +191,7 @@ export function LeaveForm({
           </label>
 
           <div className="mt-5 flex gap-2">
-            <Button type="submit" loading={pending} icon={<PaperPlaneTiltIcon weight="bold" />}>
+            <Button type="submit" loading={pending} icon={<PaperPlaneTiltIcon weight="bold" />} data-testid="leave-send">
               {t("teacher.sendToPrincipal")}
             </Button>
             {requests.length > 0 && (
@@ -205,6 +209,9 @@ export function LeaveForm({
             <li
               key={request.id}
               className="rounded-[--radius-md] border border-border bg-surface p-4"
+              data-testid="leave-request"
+              data-leave-id={request.id}
+              data-status={request.status}
             >
               <div className="flex flex-wrap items-start gap-3">
                 <div className="min-w-0 flex-1">

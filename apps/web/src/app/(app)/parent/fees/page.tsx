@@ -136,7 +136,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                     </thead>
                     <tbody className="divide-y divide-border">
                       {child.demands.map((d) => (
-                        <tr key={d.id} className={d.overdue ? "bg-danger-soft/40" : undefined}>
+                        <tr key={d.id} className={d.overdue ? "bg-danger-soft/40" : undefined} data-testid="fees-demand" data-demand-id={d.id} data-status={d.status}>
                           <td className="px-5 py-2.5 font-medium text-fg">{d.label}</td>
                           <td className="whitespace-nowrap px-3 py-2.5 text-fg-muted">{dueDate(d.dueDateKey)}</td>
                           <td className="px-3 py-2.5 text-right tabular-nums text-fg-muted">{money(d.grossPaise)}</td>
@@ -227,7 +227,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
               ) : (
                 <ul className="divide-y divide-border" data-testid="fees-payments">
                   {child.payments.map((p) => (
-                    <li key={p.id} className="flex flex-wrap items-center justify-between gap-3 px-5 py-3">
+                    <li key={p.id} className="flex flex-wrap items-center justify-between gap-3 px-5 py-3" data-testid="fees-payment" data-payment-id={p.id} data-status={p.status}>
                       <div className="min-w-0">
                         <p className="flex flex-wrap items-center gap-2 text-sm font-medium text-fg">
                           <span className="tabular-nums">{money(p.amountPaise)}</span>

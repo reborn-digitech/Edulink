@@ -14,6 +14,8 @@ const timed = withMetrics("me", async () => {
   }
 });
 
-export async function GET(request?: Request) {
-  return timed(request);
+// No request parameter: a route's first parameter must be the Request (next
+// build refuses `Request | undefined`), and the suites call this with none.
+export async function GET() {
+  return timed();
 }

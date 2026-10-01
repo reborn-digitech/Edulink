@@ -58,7 +58,7 @@ export function PayChooser({ studentMembershipId, demands, options, resumePaymen
           </label>
         </li>
         {demands.map((d) => (
-          <li key={d.id} className="px-3 py-2">
+          <li key={d.id} className="px-3 py-2" data-testid="fees-pay-demand" data-demand-id={d.id}>
             <label className="flex cursor-pointer items-center gap-3">
               <input type="checkbox" className="size-5 shrink-0 accent-[--accent]" checked={selected.has(d.id)} disabled={flow !== null} onChange={() => toggle(d.id)} />
               <span className="min-w-0 flex-1">
@@ -93,12 +93,12 @@ export function PayChooser({ studentMembershipId, demands, options, resumePaymen
       ) : (
         <div className="flex flex-wrap gap-2">
           {options.online && (
-            <Button icon={<CreditCardIcon weight="bold" />} disabled={disabled} onClick={() => setFlow({ kind: "online", demandIds: chosen() })}>
+            <Button icon={<CreditCardIcon weight="bold" />} disabled={disabled} data-testid="fees-pay-online" onClick={() => setFlow({ kind: "online", demandIds: chosen() })}>
               {t("fees.parentPayOnline")}
             </Button>
           )}
           {options.upi && (
-            <Button variant={options.online ? "secondary" : "primary"} icon={<DeviceMobileIcon weight="bold" />} disabled={disabled} onClick={() => setFlow({ kind: "upi", demandIds: chosen() })}>
+            <Button variant={options.online ? "secondary" : "primary"} icon={<DeviceMobileIcon weight="bold" />} disabled={disabled} data-testid="fees-pay-upi" onClick={() => setFlow({ kind: "upi", demandIds: chosen() })}>
               {t("fees.parentPayUpi")}
             </Button>
           )}
