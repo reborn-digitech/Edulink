@@ -54,6 +54,9 @@ for (const [role, hrefs, prefixes] of walked) {
             test.skip(true, `${href} is a prefix of this entry's pages, not a page`);
           }
           expect(response?.status(), `${href} answered ${response?.status()}`).toBeLessThan(400);
+          // A lost session is a redirect to the login page, which answers 200
+          // and has its own axe results: the walk is of the signed-in pages.
+          expect(new URL(page.url()).pathname, `${href} sent ${role} to the login page`).not.toBe("/login");
           const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "best-practice"]).analyze();
           const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
           const softer = results.violations.filter((v) => !serious.includes(v));

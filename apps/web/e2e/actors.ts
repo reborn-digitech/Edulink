@@ -41,10 +41,12 @@ export async function contextFor(
   ]);
   // A production build names the cookie with the __Host- prefix, which a
   // browser takes only as Secure; a dev server reads the plain name above.
-  // The same token under both, so the suite runs against either.
-  await context
-    .addCookies([{ name: `__Host-${name}`, value, url: url.origin, httpOnly: true, secure: true, sameSite: "Lax" }])
-    .catch(() => undefined);
+  // The same token under both, so the suite runs against either. By domain
+  // and path, not `url`: Chromium refuses a Secure cookie given with an
+  // http:// url ("Invalid cookie fields"), and a .catch here once swallowed
+  // that, so every page of CI's production-server run was the login page
+  // (run 36851296484). Chromium sends a Secure cookie to http://localhost.
+  await context.addCookies([{ name: `__Host-${name}`, value, domain: url.hostname, path: "/", httpOnly: true, secure: true, sameSite: "Lax" }]);
   await context.addInitScript((theme: string) => {
     try {
       window.localStorage.setItem("edulink.appearance", JSON.stringify({ theme, motion: "reduced" }));
