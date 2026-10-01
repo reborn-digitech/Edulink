@@ -1278,7 +1278,15 @@ export type CertificatesOpts = {
 
 export async function buildCertificates(school: { id: string; name: string; code: string }, adminUserId: string, opts: CertificatesOpts = {}) {
   const grade = opts.grade ?? "3";
-  const year = await db.academicYear.findFirstOrThrow({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true } });
+  // Find or create, as buildFees does: on CI's fresh database ZZ Southbank
+  // has no year of its own, and e16af4d0's call for Southbank found none
+  // (the first run after billing returned, 2026-10-01).
+  const year =
+    (await db.academicYear.findFirst({ where: { schoolId: school.id, isCurrent: true }, select: { id: true, name: true } })) ??
+    (await db.academicYear.create({
+      data: { schoolId: school.id, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true },
+      select: { id: true, name: true },
+    }));
   const templateSpecs: CertTemplateSpec[] = opts.templates ?? [
     { kind: "BONAFIDE", locale: "en" }, { kind: "CHARACTER", locale: "en" }, { kind: "STUDY", locale: "en" },
     { kind: "TC", locale: "mr" }, { kind: "NIRGAM", locale: "mr" },
