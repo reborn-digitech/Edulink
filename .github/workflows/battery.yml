@@ -163,9 +163,14 @@ jobs:
     needs: battery
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    # Set-up, the sweeps and the web suite take about 24 minutes; the phone's 887
-    # browser tests about 21 more on two workers (679 in 16 minutes when 40 cut them off).
-    timeout-minutes: 60
+    # Set-up, the sweeps and the web suite took about 24 minutes when the web
+    # suite was the axe walk and the viewport matrix; the phone's 887 browser
+    # tests about 21 more on two workers (679 in 16 minutes when 40 cut them off).
+    # On 2026-10-01 (run 36851296484) set-up, build and both sweeps took 13
+    # minutes, and the web suite is 497 tests — the axe walk's 354 alone took
+    # 21 — with the seven flows and the template, signature and rules specs
+    # after it: about 70 minutes in all, so 90.
+    timeout-minutes: 90
     services:
       postgres:
         image: postgres:16
