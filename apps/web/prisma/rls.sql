@@ -690,6 +690,17 @@ CREATE POLICY "Notification_self_delete" ON "Notification"
   USING (current_setting('app.user_id', true) <> ''
           AND "userId" = current_setting('app.user_id', true));
 
+  -- A notice that belongs to no school (an expert's, the operator's
+  -- answer): written for yourself, or by the operator. See the note
+  -- in scripts/gen-rls.ts above the Notification self policies.
+DROP POLICY IF EXISTS "Notification_no_school_insert" ON "Notification";
+CREATE POLICY "Notification_no_school_insert" ON "Notification"
+  FOR INSERT
+  WITH CHECK ("schoolId" IS NULL
+          AND current_setting('app.user_id', true) <> ''
+          AND ("userId" = current_setting('app.user_id', true)
+               OR current_setting('app.is_superuser', true) = '1'));
+
 -- ReviewRound
 ALTER TABLE "ReviewRound" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "ReviewRound" FORCE ROW LEVEL SECURITY;

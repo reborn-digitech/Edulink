@@ -40,7 +40,8 @@ export const SHARED: Endpoint[] = [
   { method: "GET", path: "/api/v1/shared/competitions", summary: "The school's and the platform's competitions", access: "signed-in", response: c.competitionsPageSchema },
   { method: "GET", path: "/api/v1/shared/competitions/{competitionId}", summary: "One competition, my entry, and the schools' board", access: "signed-in", response: c.competitionDetailSchema, sample: (f) => (f.competitionId ? `/api/v1/shared/competitions/${f.competitionId}` : null) },
   { method: "POST", path: "/api/v1/shared/competitions/{competitionId}/enter", summary: "A pupil enters a competition", access: ["STUDENT"], response: c.competitionEnterResultSchema, sample: (f) => (f.competitionId ? `/api/v1/shared/competitions/${f.competitionId}/enter` : null) },
-  { method: "POST", path: "/api/v1/shared/competitions/entries/{entryId}/consent", summary: "A guardian consents to their child's entry", access: ["PARENT"], response: c.okSchema, sample: () => null },
+  // Pupil 01's entry, which their parent has already said yes to: saying it again is a no-op (200).
+  { method: "POST", path: "/api/v1/shared/competitions/entries/{entryId}/consent", summary: "A guardian consents to their child's entry", access: ["PARENT"], response: c.okSchema, sample: (f) => (f.competitionEntryId ? `/api/v1/shared/competitions/entries/${f.competitionEntryId}/consent` : null) },
   // ---- enquiries ------------------------------------------------------------
   { method: "GET", path: "/api/v1/shared/enquiries", summary: "Enquiries I opened, and my school's inbox", access: "signed-in", response: c.enquiriesPageSchema },
   { method: "GET", path: "/api/v1/shared/enquiries/{enquiryId}", summary: "One enquiry thread", access: "signed-in", response: c.enquiryThreadSchema, sample: (f) => (f.enquiryId ? `/api/v1/shared/enquiries/${f.enquiryId}` : null) },
@@ -48,8 +49,9 @@ export const SHARED: Endpoint[] = [
   { method: "POST", path: "/api/v1/shared/enquiries/{enquiryId}/reply", summary: "Reply in an enquiry thread", access: "signed-in", request: c.enquiryReplyBodySchema, response: c.enquiryOpenedSchema, emptyBodyStatus: 422, sample: (f) => (f.enquiryId ? `/api/v1/shared/enquiries/${f.enquiryId}/reply` : null) },
   // ---- mentoring ------------------------------------------------------------
   { method: "GET", path: "/api/v1/shared/mentoring", summary: "My mentorships, and the requests waiting on the office", access: "signed-in", response: c.mentoringPageSchema },
-  { method: "GET", path: "/api/v1/shared/mentoring/{threadId}", summary: "One mentorship and its messages", access: "signed-in", response: c.mentoringThreadDetailSchema, sample: () => null },
-  { method: "POST", path: "/api/v1/shared/mentoring/{threadId}/messages", summary: "The mentor or the pupil writes", access: "signed-in", request: c.mentoringMessageBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
+  // Pupil 01's active mentorship (scripts/sweep-doors.ts): read by the office, the pupil's teacher, the pupil and their parent; another expert's is a 404. The write carries no sampleBody: a message is a row in a child's conversation with an outside adult.
+  { method: "GET", path: "/api/v1/shared/mentoring/{threadId}", summary: "One mentorship and its messages", access: "signed-in", response: c.mentoringThreadDetailSchema, sample: (f) => (f.mentorThreadId ? `/api/v1/shared/mentoring/${f.mentorThreadId}` : null) },
+  { method: "POST", path: "/api/v1/shared/mentoring/{threadId}/messages", summary: "The mentor or the pupil writes", access: "signed-in", request: c.mentoringMessageBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.mentorThreadId ? `/api/v1/shared/mentoring/${f.mentorThreadId}/messages` : null) },
   // ---- the year archive, the vacancies board ----------------------------------
   { method: "GET", path: "/api/v1/shared/archive", summary: "The closed years, one opened as this role sees it", access: SCHOOL_ROLES, response: c.archivePageSchema },
   { method: "GET", path: "/api/v1/shared/vacancies", summary: "The platform-wide board of open vacancies", access: ["TEACHER", "ADMIN", "PRINCIPAL"], response: c.vacanciesBoardSchema },
@@ -57,7 +59,8 @@ export const SHARED: Endpoint[] = [
   { method: "GET", path: "/api/v1/shared/expert/bookings", summary: "The expert's bookings", access: ["EXPERT"], response: c.expertBookingsSchema },
   { method: "GET", path: "/api/v1/shared/expert/availability", summary: "The windows the expert offers", access: ["EXPERT"], response: c.expertAvailabilitySchema },
   { method: "POST", path: "/api/v1/shared/expert/availability", summary: "Offer a window", access: ["EXPERT"], request: c.expertAddSlotSchema, response: c.okSchema, emptyBodyStatus: 422 },
-  { method: "DELETE", path: "/api/v1/shared/expert/availability/{slotId}", summary: "Withdraw an unbooked window", access: ["EXPERT"], response: c.okSchema, sample: () => null },
+  // A throwaway window of the sweep's expert, put back before each run (scripts/sweep-doors.ts): the expert withdraws it (200).
+  { method: "DELETE", path: "/api/v1/shared/expert/availability/{slotId}", summary: "Withdraw an unbooked window", access: ["EXPERT"], response: c.okSchema, sample: (f) => (f.goneExpertSlotId ? `/api/v1/shared/expert/availability/${f.goneExpertSlotId}` : null) },
   { method: "GET", path: "/api/v1/shared/expert/profile", summary: "The expert's own profile and impact", access: ["EXPERT"], response: c.expertProfileSchema },
   { method: "POST", path: "/api/v1/shared/expert/profile", summary: "Save the expert's own profile", access: ["EXPERT"], request: c.expertSaveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- the expert's standing: papers, free duty, the calendar feed (src/lib/expert-kyc.ts) ----
@@ -67,8 +70,9 @@ export const SHARED: Endpoint[] = [
   { method: "POST", path: "/api/v1/expert/kyc", summary: "Send identity papers: one to five file ids uploaded in the expert's own name, with a note for the operator; a waiting set is replaced", access: ["EXPERT"], request: c.expertKycSubmitBodySchema, response: c.expertKycSchema, emptyBodyStatus: 422, sample: "/api/v1/expert/kyc" },
   { method: "GET", path: "/api/v1/expert/free-duty", summary: "What the expert still owes free this period before a price may be asked (decision 0004)", access: ["EXPERT"], response: c.expertFreeDutySchema, sample: "/api/v1/expert/free-duty" },
   { method: "GET", path: "/api/v1/expert/calendar/token", summary: "The expert's calendar feed URL, or null until one is minted", access: ["EXPERT"], response: c.expertCalendarTokenSchema, sample: "/api/v1/expert/calendar/token" },
-  { method: "POST", path: "/api/v1/expert/calendar/token", summary: "Mint or rotate the calendar feed's token; the old URL stops answering at once", access: ["EXPERT"], response: c.expertCalendarTokenSchema, sample: () => null },
-  { method: "GET", path: "/api/v1/expert/calendar.ics", summary: "The expert's offered times and booked sessions as an iCalendar feed, by the token in the URL; school names and session kinds only, never a pupil", access: "anyone", response: c.expertCalendarFeedSchema, sample: () => null },
+  // The feed BEFORE the rotate, on purpose: the sweep reads the token as the run starts, the feed answers it (200), and the rotate then moves the ZZ expert's token on, which the next run reads afresh.
+  { method: "GET", path: "/api/v1/expert/calendar.ics", summary: "The expert's offered times and booked sessions as an iCalendar feed, by the token in the URL; school names and session kinds only, never a pupil", access: "anyone", response: c.expertCalendarFeedSchema, sample: (f) => (f.expertCalendarToken ? `/api/v1/expert/calendar.ics?token=${encodeURIComponent(f.expertCalendarToken)}` : null) },
+  { method: "POST", path: "/api/v1/expert/calendar/token", summary: "Mint or rotate the calendar feed's token; the old URL stops answering at once", access: ["EXPERT"], response: c.expertCalendarTokenSchema, sample: "/api/v1/expert/calendar/token" },
   // ---- uploads ----------------------------------------------------------------
   { method: "POST", path: "/api/v1/uploads", summary: "Upload one file (multipart `file`); read it back via /api/files/{fileId}", access: "signed-in", response: c.uploadResultSchema, emptyBodyStatus: 422 },
   // ---- the app itself: the kill switch, and reporting a problem ---------------

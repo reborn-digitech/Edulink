@@ -15,11 +15,13 @@ export const CORE: Endpoint[] = [
   { method: "GET", path: "/api/v1/me", summary: "Who I am, where I belong, what is active", access: "signed-in", response: c.meSchema },
   { method: "POST", path: "/api/v1/me/context", summary: "Switch the active school and role", access: "signed-in", request: c.switchContextSchema, response: c.meSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/me/sessions", summary: "My signed-in devices", access: "signed-in", response: c.sessionsListSchema },
-  { method: "DELETE", path: "/api/v1/me/sessions/{sessionId}", summary: "Sign a device out", access: "signed-in", response: c.okSchema },
+  // The sweep's sample is a session minted for its office actor alone (scripts/api-sweep.ts doorFixture): the ADMIN signs it out (200), every other role is told it is not theirs (404), and the run deletes it at the end.
+  { method: "DELETE", path: "/api/v1/me/sessions/{sessionId}", summary: "Sign a device out", access: "signed-in", response: c.okSchema, sample: (f) => (f.mySessionId ? `/api/v1/me/sessions/${f.mySessionId}` : null) },
   { method: "POST", path: "/api/v1/me/devices", summary: "Register this device for push", access: "signed-in", request: c.deviceRegisterSchema, response: c.okSchema, emptyBodyStatus: 422 },
   { method: "DELETE", path: "/api/v1/me/devices", summary: "Stop push to this device", access: "signed-in", request: c.deviceRemoveSchema, response: c.okSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/events", summary: "Live events for this session (server-sent events)", access: "signed-in", response: c.okSchema },
-  { method: "POST", path: "/api/v1/files/{fileId}/link", summary: "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it", access: "signed-in", response: c.fileLinkSchema },
+  // A signed link writes nothing. The sample is a document of the sweep parent's application: the parent and the office get a link (200), everyone else the 404 the file route gives.
+  { method: "POST", path: "/api/v1/files/{fileId}/link", summary: "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it", access: "signed-in", response: c.fileLinkSchema, sample: (f) => (f.fileId ? `/api/v1/files/${encodeURIComponent(f.fileId)}/link` : null) },
   // ---- writes the outbox replays -------------------------------------------
   { method: "POST", path: "/api/v1/marks", summary: "Save one exam sheet for one class", access: ["TEACHER", "ADMIN"], request: c.marksBatchSchema, response: c.marksSavedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/messages", summary: "Send one message into a room", access: "signed-in", request: c.conversationMessageSchema, response: c.messageSentSchema, emptyBodyStatus: 422 },

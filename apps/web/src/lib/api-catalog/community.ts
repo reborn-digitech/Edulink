@@ -11,10 +11,14 @@ import type { Endpoint } from "./types";
  * share its rate limits). Asking a school about admission or a vacancy is
  * the existing POST /api/v1/shared/enquiries.
  *
- * Writes carry no sampleBody and the thread/enquiry ones no sample: pairing,
- * asking, deciding, agreeing and closing are one-way doors on the ZZ fixture,
- * so the sweep proves the reads and the 422s and the suite
- * (tests/api-v1-community.test.ts) proves the rest with rows of its own.
+ * Writes carry no sampleBody: pairing, asking, deciding, agreeing and closing
+ * are one-way doors, so the sweep proves the reads and the 422s and the suite
+ * (tests/api-v1-community.test.ts) proves the rest with rows of its own. The
+ * thread and enquiry doors are sampled with rows in a state where the call
+ * changes nothing (scripts/sweep-doors.ts): deciding is the empty body's 422;
+ * agreeing names a mentorship already agreed to (a no-op, 200); closing an
+ * enquiry names one already closed (422). Ending a mentorship stays skipped,
+ * for the reason on its entry.
  */
 const EVERY_ROLE: c.RoleCode[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT"];
 
@@ -23,12 +27,16 @@ export const COMMUNITY: Endpoint[] = [
   { method: "GET", path: "/api/v1/community/mentoring/options", summary: "What mentoring set-up offers me: pairing lists (staff), the mentors I may ask (a pupil)", access: "signed-in", response: c.communityMentoringOptionsSchema },
   { method: "POST", path: "/api/v1/community/mentoring/pair", summary: "Pair a pupil with a published expert; the guardians are asked next", access: ["ADMIN", "TEACHER"], request: c.communityMentorPairSchema, response: c.communityMentorThreadSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/community/mentoring/ask", summary: "A pupil asks their school for a mentor", access: ["STUDENT"], request: c.communityMentorAskSchema, response: c.communityMentorThreadSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/decide", summary: "The office agrees to a pupil's request (asking the family) or declines with a reason", access: ["ADMIN", "PRINCIPAL"], request: c.communityMentorDecideSchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
-  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/consent", summary: "A guardian agrees to the mentoring going ahead", access: ["PARENT"], response: c.okSchema, sample: () => null },
+  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/decide", summary: "The office agrees to a pupil's request (asking the family) or declines with a reason", access: ["ADMIN", "PRINCIPAL"], request: c.communityMentorDecideSchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.mentorThreadId ? `/api/v1/community/mentoring/${f.mentorThreadId}/decide` : null) },
+  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/consent", summary: "A guardian agrees to the mentoring going ahead", access: ["PARENT"], response: c.okSchema, sample: (f) => (f.mentorThreadId ? `/api/v1/community/mentoring/${f.mentorThreadId}/consent` : null) },
+  // LEFT SKIPPED ON PURPOSE. Only a mentorship already ended makes the call harmless (a no-op), and an ended
+  // one is a 404 to its own expert by policy (the expert's reach ends with the engagement: EXPERT_READABLE in
+  // scripts/gen-rls.ts), where the sweep expects 403 from a role outside `access`; a live one would be ended.
+  // tests/api-v1-community.test.ts proves the door.
   { method: "POST", path: "/api/v1/community/mentoring/{threadId}/close", summary: "The school or a guardian ends a mentorship", access: ["ADMIN", "PRINCIPAL", "TEACHER", "PARENT"], response: c.okSchema, sample: () => null },
   // ---- /enquiries -----------------------------------------------------------
-  // Closing the fixture's enquiry is a one-way door; the suite covers it.
-  { method: "POST", path: "/api/v1/community/enquiries/{enquiryId}/close", summary: "The school's side closes an enquiry; nobody can reply after", access: ["ADMIN", "PRINCIPAL", "TEACHER"], response: c.okSchema },
+  // Closing is a one-way door, so the sample is the fixture's enquiry already closed, about the vacancy whose hiring contact is the sweep's teacher: the school's side is refused as closed (422), and the suite covers the close.
+  { method: "POST", path: "/api/v1/community/enquiries/{enquiryId}/close", summary: "The school's side closes an enquiry; nobody can reply after", access: ["ADMIN", "PRINCIPAL", "TEACHER"], response: c.okSchema, sample: (f) => (f.closedEnquiryId ? `/api/v1/community/enquiries/${f.closedEnquiryId}/close` : null) },
   // ---- /explore/[schoolId], /vacancies/[postingId] --------------------------
   {
     method: "GET",

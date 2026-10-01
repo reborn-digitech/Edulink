@@ -4,6 +4,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { sendExpertNotice } from "./email";
+import { notify } from "./notify";
 import { generateToken } from "./crypto";
 import { readJson } from "./json";
 import { DEFAULT_PREFS, type UserPrefs } from "./session";
@@ -125,11 +126,12 @@ export type KycDecision = { ok: true } | { ok: false; errorKey: TranslationKey }
 /**
  * The operator decides. VERIFIED sets `verifiedAt` (the marketplace badge);
  * REJECTED needs a reason and clears it. The expert is told either way — the
- * "kyc.decided" event — by mail in their own language: an in-app
- * notification is a school's row (its policy's WITH CHECK is the tenant
- * clause) and an expert's tenant set is empty, so the only writer that could
- * mint one is the owner connection the jobs run on, not a request. The
- * profile page says the same the next time it is opened.
+ * "kyc.decided" event — in the app and by mail, both in their own language.
+ * The in-app row has NO school: an expert's tenant set is empty, and a
+ * school-less notice addressed to the acting user is what the
+ * Notification_no_school_insert policy allows (scripts/gen-rls.ts) — before
+ * it, the tenant clause refused the row and the decision went by mail alone.
+ * The profile page says the same the next time it is opened.
  */
 export async function decideKyc(ctx: ActiveContext, profileId: string, input: { decision: "VERIFIED" | "REJECTED"; note?: string }, now: Date = new Date()): Promise<KycDecision> {
   if (!ctx.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
@@ -145,13 +147,20 @@ export async function decideKyc(ctx: ActiveContext, profileId: string, input: { 
   });
   // No schoolId: the operator's acts belong to no tenant's Safety Centre.
   await audit({ actorUserId: ctx.user.id, action: verified ? "expert.kyc.verify" : "expert.kyc.reject", targetType: "ExpertProfile", targetId: profile.id, meta: { name: profile.user.name, noted: Boolean(note) } });
+  const titleKey = verified ? "expert.kycVerifiedNotif" : "expert.kycRejectedNotif";
+  const bodyKey = verified ? "expert.kycVerifiedNotifBody" : "expert.kycRejectedNotifBody";
+  // Written under the expert's own binding (an id the database returned on the profile row), so the
+  // row is theirs on both sides of the policy: the INSERT's check, and the read-back Prisma's create
+  // asks for, which the operator's own binding would not pass. The decision stands whatever happens
+  // to the telling: a notice that fails is logged, as the mail is.
+  await forUser(profile.userId, () => notify({ userId: profile.userId, schoolId: null, kind: "EXPERT", titleKey, bodyKey, bodyVars: { note: note ?? "" }, url: "/expert/profile", meta: { event: "kyc.decided", decision: input.decision } })).catch((error) => console.error("[expert-kyc] kyc.decided notice failed", error));
   if (profile.user.email) {
     const t = translator(normaliseLocale(readJson<UserPrefs>(profile.user.prefs, DEFAULT_PREFS).locale));
     await sendExpertNotice({
       to: profile.user.email,
-      subject: t(verified ? "expert.kycVerifiedNotif" : "expert.kycRejectedNotif"),
-      heading: t(verified ? "expert.kycVerifiedNotif" : "expert.kycRejectedNotif"),
-      lines: [t(verified ? "expert.kycVerifiedNotifBody" : "expert.kycRejectedNotifBody", { note: note ?? "" }).trim()],
+      subject: t(titleKey),
+      heading: t(titleKey),
+      lines: [t(bodyKey, { note: note ?? "" }).trim()],
       cta: { label: t("expert.yourProfile"), path: "/expert/profile" },
     }).catch((error) => console.error("[expert-kyc] kyc.decided mail failed", error));
   }

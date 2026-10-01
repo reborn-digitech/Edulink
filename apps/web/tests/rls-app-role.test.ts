@@ -23,6 +23,10 @@ import { PrismaClient } from "@prisma/client";
  *      a pupil reads it too (the transfer flow, kept on purpose and asserted
  *      by name in rls:verify); a school that merely employs the same person,
  *      or that the child has left, reads nothing.
+ *   4. Notification with no school: an expert (whose tenant set is empty)
+ *      writes and reads their own; the operator writes one for them; nobody
+ *      writes one for somebody else, reads somebody else's, or uses the
+ *      clause to mint a notice into a school they are not bound to.
  *
  * Fixtures are written as the owner and every read below is a fresh app-role
  * transaction with the settings the app would have set. Skipped, and says so,
@@ -86,6 +90,8 @@ let pupilUserId: string;
 let guardianUserId: string;
 let strangerUserId: string;
 let operatorUserId: string;
+let expertUserId: string;
+let strangersNoticeId: string;
 let recordId: string;
 let visitId: string;
 let auditId: string;
@@ -108,6 +114,10 @@ beforeAll(async () => {
   guardianUserId = (await user("guardian", "ZZ Guardian")).id;
   strangerUserId = (await user("stranger", "ZZ Stranger")).id;
   operatorUserId = (await user("operator", "ZZ Operator", { isSuperuser: true })).id;
+  expertUserId = (await user("expert", "ZZ Expert")).id;
+  strangersNoticeId = (
+    await owner.notification.create({ data: { userId: strangerUserId, schoolId: null, kind: "SYSTEM", title: "ZZ the stranger's own" }, select: { id: true } })
+  ).id;
 
   const left = new Date(Date.now() - 86_400_000);
   const joined = new Date(Date.now() - 400 * 86_400_000);
@@ -222,6 +232,53 @@ describe.skipIf(!app)("as the app role", () => {
       );
       expect(closed.count).toBe(1);
       expect((await owner.operatorAccess.findUniqueOrThrow({ where: { id: visitId } })).endedAt).not.toBeNull();
+    });
+  });
+
+  describe("⚠ a notice that belongs to no school", () => {
+    /** A write the policy refuses throws "new row violates row-level security policy" (42501). */
+    const writeRefused = async (run: () => Promise<unknown>): Promise<boolean> => {
+      try {
+        await run();
+        return false;
+      } catch (error) {
+        const code = (error as { code?: string; meta?: { code?: string } }).meta?.code ?? (error as { code?: string }).code;
+        return code === "42501" || /row-level security|permission denied/.test(String(error));
+      }
+    };
+    const notice = (userId: string, schoolId: string | null, title: string) => ({ data: { userId, schoolId, kind: "EXPERT", title }, select: { id: true } });
+
+    it("an expert, with no school bound, writes one to themself and reads it back", async () => {
+      const made = await asApp({ userId: expertUserId }, (tx) => tx.notification.create(notice(expertUserId, null, "ZZ my own")));
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.notification.count({ where: { id: made.id } }))).toBe(1);
+    });
+
+    /**
+     * The operator's branch passes the INSERT's check, but a row addressed to somebody else is not the
+     * operator's to READ — and Prisma's `create` reads its row back (RETURNING), which the SELECT policy
+     * then refuses. So the write that returns nothing is the operator's, and decideKyc writes the KYC
+     * notice under the expert's own binding instead (src/lib/expert-kyc.ts), where both halves pass.
+     */
+    it("the operator writes one to the expert (the identity-papers answer), which the expert reads; reading it back is not the operator's", async () => {
+      const written = await asApp({ userId: operatorUserId, superuser: true }, (tx) => tx.notification.createMany({ data: [{ id: `zz-rls-op-${Date.now()}`, userId: expertUserId, schoolId: null, kind: "EXPERT", title: "ZZ your papers were checked" }] }));
+      expect(written.count).toBe(1);
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.notification.count({ where: { title: "ZZ your papers were checked" } }))).toBe(1);
+      expect(await asApp({ userId: operatorUserId, superuser: true }, (tx) => tx.notification.count({ where: { title: "ZZ your papers were checked" } }))).toBe(0);
+    });
+
+    it("⚠ the expert cannot read somebody else's", async () => {
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.notification.count({ where: { id: strangersNoticeId } }))).toBe(0);
+    });
+
+    it("⚠ nobody but the operator writes one to somebody else", async () => {
+      expect(await writeRefused(() => asApp({ userId: expertUserId }, (tx) => tx.notification.create(notice(strangerUserId, null, "ZZ forged"))))).toBe(true);
+      expect(await writeRefused(() => asApp({}, (tx) => tx.notification.create(notice(expertUserId, null, "ZZ from nobody"))))).toBe(true);
+    });
+
+    it("⚠ and the clause mints nothing into a school: a row naming one still needs that school bound", async () => {
+      expect(await writeRefused(() => asApp({ userId: expertUserId }, (tx) => tx.notification.create(notice(expertUserId, issuer, "ZZ into a school"))))).toBe(true);
+      expect(await writeRefused(() => asApp({ userId: operatorUserId, superuser: true }, (tx) => tx.notification.create(notice(expertUserId, issuer, "ZZ into a school"))))).toBe(true);
+      expect(await owner.notification.count({ where: { userId: { in: [expertUserId, strangerUserId] }, title: { in: ["ZZ forged", "ZZ from nobody", "ZZ into a school"] } } })).toBe(0);
     });
   });
 

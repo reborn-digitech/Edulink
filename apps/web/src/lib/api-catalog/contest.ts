@@ -10,15 +10,21 @@ import type { Endpoint } from "./types";
  * tests/api-v1-contest.test.ts.
  *
  * Sweep notes: a body-taking write answers 422 to the sweep's empty body, so
- * sampling it with the fixture's competition changes nothing. Writes on an
- * entry have no fixture entry to name and are not sampled; the content
- * team's endpoints refuse every school role (403) wherever they are sampled.
+ * sampling it with the fixture's competition (ZZ Northgate's own, open for
+ * entries: scripts/sweep-doors.ts) changes nothing. The withdrawal stays
+ * skipped, for the reason on its entry. The content team's endpoints refuse
+ * every school role (403) wherever they are sampled, before the id is read.
  */
 const competition = (f: { competitionId: string | null }, tail: string) => (f.competitionId ? `/api/v1/contest/competitions/${f.competitionId}${tail}` : null);
 
 export const CONTEST: Endpoint[] = [
   // ---- a pupil and a guardian ---------------------------------------------------
   { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/submit", summary: "A pupil hands in, or replaces, the https link to their work", access: ["STUDENT"], request: c.contestSubmitSchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/submit") },
+  // LEFT SKIPPED ON PURPOSE. The call deletes the entry, and an entry the sweep's pupil and parent may not
+  // withdraw (another child's) is invisible to the expert by policy, so the expert's answer is 404 where the
+  // sweep expects 403 from a role outside `access` (seen on 2026-10-01, the sample tried and taken back); the
+  // pupil's own entry would be deleted, leaving every role after the pupil a 404. tests/api-v1-contest.test.ts
+  // proves the door.
   { method: "DELETE", path: "/api/v1/contest/entries/{entryId}", summary: "The pupil withdraws their entry, or their guardian says not this time", access: ["STUDENT", "PARENT"], response: c.okSchema },
   // ---- a school admin organising one ---------------------------------------------
   { method: "POST", path: "/api/v1/contest/competitions", summary: "A school admin posts a competition, saved as a draft", access: ["ADMIN"], request: c.contestCreateSchema, response: c.contestCreatedSchema, emptyBodyStatus: 422 },
@@ -26,12 +32,13 @@ export const CONTEST: Endpoint[] = [
   { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/leaderboard", summary: "The organising school publishes or takes down the schools' leaderboard", access: ["ADMIN"], request: c.contestLeaderboardSchema, response: c.contestLeaderboardSetSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/leaderboard") },
   // ---- staff and results -----------------------------------------------------------
   { method: "GET", path: "/api/v1/contest/competitions/{competitionId}/entries", summary: "This school's entries in a competition and what they scored", access: ["ADMIN", "TEACHER"], response: c.contestEntriesSchema, sample: (f) => competition(f, "/entries") },
-  { method: "POST", path: "/api/v1/contest/entries/{entryId}/result", summary: "Staff record, change or clear an entry's score and place", access: ["ADMIN", "TEACHER"], request: c.contestResultSchema, response: c.contestResultSetSchema },
+  // An empty body is refused before the entry is read (422); an empty score and place is a valid body that CLEARS a result, so no sampleBody.
+  { method: "POST", path: "/api/v1/contest/entries/{entryId}/result", summary: "Staff record, change or clear an entry's score and place", access: ["ADMIN", "TEACHER"], request: c.contestResultSchema, response: c.contestResultSetSchema, emptyBodyStatus: 422, sample: (f) => (f.competitionEntryId ? `/api/v1/contest/entries/${f.competitionEntryId}/result` : null) },
   // ---- the content team ----------------------------------------------------------------
   { method: "POST", path: "/api/v1/appadmin/competitions/drafts", summary: "The content team posts a competition for every school, saved as a draft", access: "app-admin", request: c.contestPlatformCreateSchema, response: c.contestCreatedSchema, emptyBodyStatus: 422, sample: "/api/v1/appadmin/competitions/drafts" },
   { method: "POST", path: "/api/v1/appadmin/competitions/{competitionId}/status", summary: "The content team publishes, withdraws or re-drafts a platform competition", access: "app-admin", request: c.contestStatusSchema, response: c.contestStatusSetSchema, emptyBodyStatus: 422, sample: (f) => (f.competitionId ? `/api/v1/appadmin/competitions/${f.competitionId}/status` : null) },
   { method: "GET", path: "/api/v1/appadmin/bank", summary: "The practice question bank's chapters and their question counts", access: "app-admin", response: c.contestBankSchema },
-  { method: "GET", path: "/api/v1/appadmin/bank/{topicId}", summary: "One chapter of the question bank and every question in it", access: "app-admin", response: c.contestBankTopicSchema },
-  { method: "POST", path: "/api/v1/appadmin/bank/{topicId}/questions", summary: "Add a question to a chapter, translated to Hindi and Marathi on save", access: "app-admin", request: c.contestQuestionSchema, response: c.contestQuestionSavedSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/appadmin/bank/{topicId}/questions/{questionId}", summary: "Edit a question and re-translate it", access: "app-admin", request: c.contestQuestionSchema, response: c.contestQuestionSavedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/appadmin/bank/{topicId}", summary: "One chapter of the question bank and every question in it", access: "app-admin", response: c.contestBankTopicSchema, sample: (f) => (f.bankTopicId ? `/api/v1/appadmin/bank/${f.bankTopicId}` : null) },
+  { method: "POST", path: "/api/v1/appadmin/bank/{topicId}/questions", summary: "Add a question to a chapter, translated to Hindi and Marathi on save", access: "app-admin", request: c.contestQuestionSchema, response: c.contestQuestionSavedSchema, emptyBodyStatus: 422, sample: (f) => (f.bankTopicId ? `/api/v1/appadmin/bank/${f.bankTopicId}/questions` : null) },
+  { method: "POST", path: "/api/v1/appadmin/bank/{topicId}/questions/{questionId}", summary: "Edit a question and re-translate it", access: "app-admin", request: c.contestQuestionSchema, response: c.contestQuestionSavedSchema, emptyBodyStatus: 422, sample: (f) => (f.bankTopicId && f.bankQuestionId ? `/api/v1/appadmin/bank/${f.bankTopicId}/questions/${f.bankQuestionId}` : null) },
 ];

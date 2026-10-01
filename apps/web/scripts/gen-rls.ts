@@ -1173,6 +1173,15 @@ function generate(): string {
      * pinned to `app.user_id` on both sides. INSERT stays tenant-scoped:
      * reading, finishing and discarding your mail is yours; minting mail
      * into a school's tenant is not.
+     *
+     * ONE INSERT OUTSIDE ANY TENANT: a row with NO school. An expert's
+     * tenant set is empty, so the tenant clause refused every request-time
+     * notice addressed to them — the operator's answer to their identity
+     * papers went by mail alone. A school-less row is nobody's tenant to
+     * mint into, so it may be written when it is addressed to the acting
+     * user, or by the operator (`app.is_superuser`), whose acts belong to
+     * no school. A row that names a school still passes the tenant clause
+     * or nothing; reading it is the self-read clause above, as before.
      */
     if (table === "Notification") {
       const own = `current_setting('app.user_id', true) <> ''
@@ -1191,6 +1200,17 @@ function generate(): string {
         `CREATE POLICY "${table}_self_delete" ON "${table}"`,
         `  FOR DELETE`,
         `  USING (${own});`,
+        ``,
+        `  -- A notice that belongs to no school (an expert's, the operator's`,
+        `  -- answer): written for yourself, or by the operator. See the note`,
+        `  -- in scripts/gen-rls.ts above the Notification self policies.`,
+        `DROP POLICY IF EXISTS "${table}_no_school_insert" ON "${table}";`,
+        `CREATE POLICY "${table}_no_school_insert" ON "${table}"`,
+        `  FOR INSERT`,
+        `  WITH CHECK ("schoolId" IS NULL`,
+        `          AND current_setting('app.user_id', true) <> ''`,
+        `          AND ("userId" = current_setting('app.user_id', true)`,
+        `               OR current_setting('app.is_superuser', true) = '1'));`,
       );
     }
     /**

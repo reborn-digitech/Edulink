@@ -50,8 +50,8 @@ export const FAMILY: Endpoint[] = [
     summary: "One report card as it will be printed",
     access: ["STUDENT", "PARENT"],
     response: c.familyReportCardSchema,
-    // The fixture carries no card id; the sweep skips and says so.
-    sample: () => null,
+    // Pupil 01's published card: the pupil and their parent read it (200).
+    sample: (f) => (f.familyReportCardId ? `/api/v1/family/report-cards/${f.familyReportCardId}` : null),
   },
   { method: "GET", path: "/api/v1/family/reviews", summary: "Open teacher questionnaires waiting for this pupil or guardian", access: ["STUDENT", "PARENT"], response: c.familyReviewsSchema },
   { method: "POST", path: "/api/v1/family/reviews", summary: "Answer, or amend while open, one teacher's questionnaire", access: ["STUDENT", "PARENT"], request: c.familyReviewSubmitSchema, response: c.okSchema, emptyBodyStatus: 422 },
@@ -68,11 +68,12 @@ export const FAMILY: Endpoint[] = [
   { method: "GET", path: "/api/v1/family/fees/mine", summary: "A pupil's own dues, paid and next due date — only while the school lets pupils of their age see fees; never a way to pay", access: ["STUDENT"], response: c.pupilFeesSchema },
   { method: "GET", path: "/api/v1/family/agenda", summary: "The next fortnight for the pupil, or a guardian's child: exams, work due, sessions, meetings, closures and fee dates in date order, each with a link (?student=&days=14)", access: ["STUDENT", "PARENT"], request: c.familyAgendaQuerySchema, response: c.familyAgendaSchema },
   // ---- the family acting on the child's record (family-care.ts) ------------
-  // Ending the link is the act itself: no sample, the sweep proves the 422 and the 403s.
-  { method: "DELETE", path: "/api/v1/family/children/{membershipId}/link", summary: "The guardian ends their own link to this child; refused when it would leave the child with no guardian and nobody at the school to stand in. The office is told", access: ["PARENT"], request: c.familyUnlinkSchema, response: c.familyUnlinkedSchema, emptyBodyStatus: 422, sample: () => null },
+  // Ending the link is the act itself: no sampleBody. The sample is the parent's own child, and the empty body (no `confirm: true`) is refused (422) before the link is looked at.
+  { method: "DELETE", path: "/api/v1/family/children/{membershipId}/link", summary: "The guardian ends their own link to this child; refused when it would leave the child with no guardian and nobody at the school to stand in. The office is told", access: ["PARENT"], request: c.familyUnlinkSchema, response: c.familyUnlinkedSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/family/children/${f.studentMembershipId}/link` : null) },
   { method: "GET", path: "/api/v1/family/students/{membershipId}/absence-notes", summary: "The coming days the family said the pupil would be away, soonest first — a guardian's child, or the pupil's own", access: ["STUDENT", "PARENT"], response: c.absenceNotesSchema, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes` : null) },
   // One note per day, a second replacing the first, so the sweep's note is the same note every run.
   { method: "POST", path: "/api/v1/family/students/{membershipId}/absence-notes", summary: "Tell the school the pupil will be away on a day (today or up to sixty days ahead), with a coded reason; the register shows it and no absence notice is sent for that day", access: ["STUDENT", "PARENT"], request: c.absenceNoteCreateSchema, response: c.absenceNotesSchema, emptyBodyStatus: 422, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes` : null), sampleBody: (f) => ({ dateKey: f.todayKey, reason: "FAMILY", text: "ZZ Sweep: away for the day." }) },
-  { method: "DELETE", path: "/api/v1/family/students/{membershipId}/absence-notes/{noteId}", summary: "Its author takes a note back, before the day's register has marked the pupil", access: ["STUDENT", "PARENT"], response: c.absenceNotesSchema, sample: () => null },
+  // A throwaway note pupil 01 wrote for a fortnight ahead, put back before each run (scripts/sweep-doors.ts): the pupil takes it back (200) and the parent, after, finds it gone (404).
+  { method: "DELETE", path: "/api/v1/family/students/{membershipId}/absence-notes/{noteId}", summary: "Its author takes a note back, before the day's register has marked the pupil", access: ["STUDENT", "PARENT"], response: c.absenceNotesSchema, sample: (f) => (f.studentMembershipId && f.goneAbsenceNoteId ? `/api/v1/family/students/${f.studentMembershipId}/absence-notes/${f.goneAbsenceNoteId}` : null) },
   { method: "GET", path: "/api/v1/family/students/{membershipId}/health/reads", summary: "Who at the school opened the child's health card in the last ninety days: name, role and time, newest first", access: ["PARENT"], response: c.healthCardReadsSchema, sample: (f) => (f.studentMembershipId ? `/api/v1/family/students/${f.studentMembershipId}/health/reads` : null) },
 ];

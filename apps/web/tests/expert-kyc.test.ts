@@ -126,6 +126,11 @@ describe("expert KYC", () => {
     expect(told?.subject).toBe("Your identity papers were not accepted");
     expect(told?.text).toContain("ZZ the scan is unreadable");
     expect(told?.text).toContain("/expert/profile");
+    // …and in the app: one notice of their own that belongs to no school (an expert has none), keyed so the page can say it again in their language.
+    const notice = await db.notification.findMany({ where: { userId: id.expert }, select: { schoolId: true, kind: true, title: true, body: true, titleKey: true, bodyKey: true, url: true, readAt: true } });
+    expect(notice).toEqual([{ schoolId: null, kind: "EXPERT", title: "Your identity papers were not accepted", body: "The operator wrote: ZZ the scan is unreadable", titleKey: "expert.kycRejectedNotif", bodyKey: "expert.kycRejectedNotifBody", url: "/expert/profile", readAt: null }]);
+    // Nobody else is told: not the other expert, not the operator who decided.
+    expect(await db.notification.count({ where: { userId: { in: [id.other!, id.operator!] } } })).toBe(0);
   });
 
   it("verified sets the one badge the marketplace reads, and a later 'take off the list' puts the papers back in the queue rather than leaving the columns apart", async () => {
@@ -138,6 +143,7 @@ describe("expert KYC", () => {
     expect(row.verifiedAt).not.toBeNull();
     expect(row.verifiedBy).toBe(id.operator);
     expect(await db.outboundEmail.count({ where: { to: `zz-kyc-expert-${STAMP}@test.invalid`, subject: "Your identity has been verified" } })).toBe(1);
+    expect(await db.notification.count({ where: { userId: id.expert, schoolId: null, titleKey: "expert.kycVerifiedNotif", title: "Your identity has been verified" } })).toBe(1);
     expect(await db.auditLog.count({ where: { actorUserId: id.operator, action: { in: ["expert.kyc.verify", "expert.kyc.reject"] } } })).toBe(2);
 
     // The older door, the other way round: off the list clears the badge and the status returns to the queue with its papers.

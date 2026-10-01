@@ -45,6 +45,7 @@ import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
 import { createHash } from "node:crypto";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
+import { buildSweepDoors } from "./sweep-doors";
 
 /** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
 export function fakePen(membershipId: string): string {
@@ -2413,6 +2414,9 @@ async function main() {
   const experts = await buildExperts(ctx);
   const sessions = await buildGigSessions(northgate.school, southbank.school);
   console.log(`  Sessions: ${sessions.confirmed ? `pupil 01's confirmed seat ${sessions.confirmed}, one not held, a workshop with pupil 02, two open times, a teacher's half hour; one at Southbank` : "none (no published ZZ expert)"}`);
+  // The rows the API sweep's otherwise-skipped doors are sampled with (scripts/sweep-doors.ts), after the experts and Southbank they name.
+  const doors = await buildSweepDoors(db, northgate.school.id);
+  console.log(`  Sweep doors: ${doors.length ? doors.join(", ") : "none (Northgate's people not found)"}`);
   const operator = await buildOperator(ctx);
   const contentTeam = await buildContentTeam(ctx);
 

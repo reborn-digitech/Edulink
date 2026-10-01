@@ -30,6 +30,11 @@ export const ACCOUNT: Endpoint[] = [
   // ---- composing a post -------------------------------------------------------
   { method: "GET", path: "/api/v1/account/post-options", summary: "What the composer may offer me: classes, grades, whole school", access: ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"], response: c.accountPostOptionsSchema },
   // ---- an expert booking ------------------------------------------------------
+  // LEFT SKIPPED ON PURPOSE. A role that is never a side of a booking (the head, a pupil, a guardian) is
+  // answered 404 by design, never "not yours", so ids cannot be probed — and for the write, the empty
+  // body's 422 comes before the side is asked. The sweep expects 403 from every role outside `access`, so
+  // any sample here would be counted unexpected for three roles; widening `access` to make it pass would
+  // tell the phone's gate a pupil may open a booking. tests/api-v1-account.test.ts proves the three doors.
   { method: "GET", path: "/api/v1/account/bookings/{bookingId}", summary: "One expert booking and its conversation", access: BOOKING_SIDES, response: c.accountBookingSchema, sample: () => null },
   { method: "POST", path: "/api/v1/account/bookings/{bookingId}/messages", summary: "Write in a booking's conversation", access: BOOKING_SIDES, request: c.accountBookingMessageSchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
   { method: "POST", path: "/api/v1/account/bookings/{bookingId}/cancel", summary: "Cancel a booking (either side; the hour goes back on offer)", access: BOOKING_SIDES, response: c.okSchema, sample: () => null },

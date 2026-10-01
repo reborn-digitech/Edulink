@@ -151,6 +151,48 @@ export type SweepFixture = {
   myCoverId: string | null;
   /** A lesson plan template of the school, for the apply door. */
   planTemplateId: string | null;
+  /**
+   * The doors that were skipped for want of a sample (scripts/sweep-doors.ts builds their rows at ZZ
+   * Northgate). Each is chosen so the door answers without changing what the next run reads: a
+   * session minted for the office actor alone to sign out, an invitation already revoked, a series
+   * and a fee structure already archived, a vacancy and an enquiry already closed, a
+   * concession already revoked, an entry already consented — or a throwaway the sweep puts back
+   * before every run (an appraisal, a template, an absence note, an expert's window).
+   */
+  mySessionId: string | null;
+  revokedInviteId: string | null;
+  publishedExamSeriesId: string | null;
+  archivedExamSeriesId: string | null;
+  closedEnquiryId: string | null;
+  mentorThreadId: string | null;
+  /** Pupil 01's consented entry in the school's open competition. */
+  competitionEntryId: string | null;
+  /** The appraisal the head's PUT rewrites with exactly what it says (and that body), and the one the DELETE removes. */
+  appraisalId: string | null;
+  appraisal: Record<string, unknown> | null;
+  goneAppraisalId: string | null;
+  gonePlanTemplateId: string | null;
+  goneAbsenceNoteId: string | null;
+  goneExpertSlotId: string | null;
+  /** Pupil 01's published report card, which the pupil and their parent may read. */
+  familyReportCardId: string | null;
+  /** The sweep's expert's calendar feed token, read before the run rotates it. */
+  expertCalendarToken: string | null;
+  /** A period of the school day, and its name, times and kind as a body to send back unchanged. */
+  periodId: string | null;
+  period: Record<string, unknown> | null;
+  archivedFeeStructureId: string | null;
+  revokedConcessionId: string | null;
+  /** One of the sweep parent's own payments, for the family's poll; the fixture's cash payment when they have none. */
+  familyPaymentId: string | null;
+  /** A notice with no failed or undelivered message, so a resend queues nothing; null when every notice has one. */
+  quietBroadcastId: string | null;
+  /** For the operator's and the content team's doors, which refuse every sweep role before reading the id. */
+  expertProfileId: string | null;
+  notContentTeamUserId: string | null;
+  globalPostId: string | null;
+  bankTopicId: string | null;
+  bankQuestionId: string | null;
   todayKey: string;
 };
 

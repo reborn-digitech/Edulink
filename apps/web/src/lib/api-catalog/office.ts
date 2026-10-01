@@ -14,8 +14,8 @@ import type { Endpoint } from "./types";
 export const OFFICE: Endpoint[] = [
   // ---- invitations and intake -----------------------------------------------
   { method: "POST", path: "/api/v1/office/invites/preview", summary: "What a pasted list would invite, before anything is sent", access: ["ADMIN"], request: c.officeCsvBodySchema, response: c.officeInvitePreviewSchema, emptyBodyStatus: 422, sampleBody: () => ({ csv: "zz-sweep-preview@test.invalid" }) },
-  // Resending the fixture's invitation would email them and kill their link; the suite covers it.
-  { method: "POST", path: "/api/v1/office/invites/{inviteId}/resend", summary: "Send a pending invitation again with a fresh link", access: ["ADMIN"], response: c.okSchema },
+  // Resending the pending invitation would email the invitee and kill their link, so the sample is the fixture's invitation already revoked (scripts/sweep-doors.ts), which cannot be resent (422) and emails nobody; the suite covers the send.
+  { method: "POST", path: "/api/v1/office/invites/{inviteId}/resend", summary: "Send a pending invitation again with a fresh link", access: ["ADMIN"], response: c.okSchema, sample: (f) => (f.revokedInviteId ? `/api/v1/office/invites/${f.revokedInviteId}/resend` : null) },
   { method: "POST", path: "/api/v1/office/intake/preview", summary: "What an admission list would admit, before anybody is", access: ["ADMIN"], request: c.officeCsvBodySchema, response: c.officeIntakePreviewSchema, emptyBodyStatus: 422, sampleBody: () => ({ csv: "name\nZZ Sweep Preview" }) },
   // ---- the directory profile and the logo ----------------------------------
   { method: "POST", path: "/api/v1/office/directory", summary: "Save the school's directory profile: its words and the admissions contact", access: ["ADMIN"], request: c.officeDirectoryProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
@@ -37,12 +37,14 @@ export const OFFICE: Endpoint[] = [
   },
   { method: "GET", path: "/api/v1/office/attendance/export/enrolment", summary: "The enrolment summary an annual return asks for, as CSV text", access: ["ADMIN"], response: c.officeCsvExportSchema },
   // ---- the timetable ------------------------------------------------------------
-  { method: "POST", path: "/api/v1/office/timetable/periods/{periodId}", summary: "Change a period's name, times or kind", access: ["ADMIN"], request: c.officePeriodBodySchema, response: c.savedIdSchema, emptyBodyStatus: 422 },
-  { method: "POST", path: "/api/v1/office/timetable/periods/{periodId}/retire", summary: "Retire a period (its lessons are kept) or bring it back", access: ["ADMIN"], request: c.officePeriodRetireBodySchema, response: c.savedIdSchema, emptyBodyStatus: 422 },
+  // The first period of the day, sent back with its own name, times and kind: rewriting it unchanged is the 200, and the day re-sorts to the order it had.
+  { method: "POST", path: "/api/v1/office/timetable/periods/{periodId}", summary: "Change a period's name, times or kind", access: ["ADMIN"], request: c.officePeriodBodySchema, response: c.savedIdSchema, emptyBodyStatus: 422, sample: (f) => (f.periodId ? `/api/v1/office/timetable/periods/${f.periodId}` : null), sampleBody: (f) => f.period },
+  // No sampleBody: retiring a running period takes its column off ZZ Northgate's grid, and bringing one back that was never retired is refused (422), which the valid-body leg would count as a failure. The empty body's 422 is what the sweep proves.
+  { method: "POST", path: "/api/v1/office/timetable/periods/{periodId}/retire", summary: "Retire a period (its lessons are kept) or bring it back", access: ["ADMIN"], request: c.officePeriodRetireBodySchema, response: c.savedIdSchema, emptyBodyStatus: 422, sample: (f) => (f.periodId ? `/api/v1/office/timetable/periods/${f.periodId}/retire` : null) },
   { method: "POST", path: "/api/v1/office/timetable/slots/clear", summary: "Take the lesson out of one cell of a class's week", access: ["ADMIN"], request: c.officeSlotClearBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- exams ----------------------------------------------------------------------
-  // Archiving the fixture's series would take it off every page; the suite covers it.
-  { method: "POST", path: "/api/v1/office/exams/{seriesId}/archive", summary: "Send an exam series to the archive", access: ["ADMIN"], response: c.okSchema },
+  // Archiving a live series would take it off every page, so the sample is the fixture's series already archived (scripts/sweep-doors.ts): there is no live series by that id to archive (404), and the suite covers the archive.
+  { method: "POST", path: "/api/v1/office/exams/{seriesId}/archive", summary: "Send an exam series to the archive", access: ["ADMIN"], response: c.okSchema, sample: (f) => (f.archivedExamSeriesId ? `/api/v1/office/exams/${f.archivedExamSeriesId}/archive` : null) },
   // ---- notification housekeeping --------------------------------------------------
   { method: "POST", path: "/api/v1/office/notifications/housekeeping", summary: "How long this school's notices live", access: ["ADMIN"], request: c.officeHousekeepingBodySchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- the timetable in bulk (October 2026) ------------------------------------------

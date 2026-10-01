@@ -22,6 +22,7 @@ import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-cata
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
+import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep-doors";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -134,6 +135,74 @@ async function admissionFixture(s: string): Promise<Pick<SweepFixture, "admissio
   return { admissionCycleId: open?.id ?? null, admissionCycle: body, closedCycleId: closed?.id ?? null, admissionGrade: grade, admissionSlotId: submitted?.testSlotId ?? null, cancelledSlotId: cancelled?.id ?? null, applicationId: submitted?.id ?? null, offeredApplicationId: offered?.id ?? null, acceptedApplicationId: accepted?.id ?? null, admittedApplicationId: admitted?.id ?? null, waitlistedApplicationId: waitlisted?.id ?? null, withdrawnApplicationId: withdrawn?.id ?? null };
 }
 
+/**
+ * The doors that used to be skipped for want of a sample. scripts/sweep-doors.ts builds their rows
+ * (zz:fixtures) and puts the throwaways back (main, before the walk); this reads their ids, each only
+ * when the row is there and in the state its door needs, so a fixture not yet built is a skip rather
+ * than a 404 that passes. One write here: a session minted for the office actor alone, so the
+ * sign-out door signs out something real (200) and is a 404 to everyone whose session it is not.
+ */
+type DoorFields = "mySessionId" | "revokedInviteId" | "publishedExamSeriesId" | "archivedExamSeriesId" | "closedEnquiryId" | "mentorThreadId" | "competitionEntryId" | "appraisalId" | "appraisal" | "goneAppraisalId" | "gonePlanTemplateId" | "goneAbsenceNoteId" | "goneExpertSlotId" | "familyReportCardId" | "expertCalendarToken" | "periodId" | "period" | "archivedFeeStructureId" | "revokedConcessionId" | "familyPaymentId" | "quietBroadcastId" | "expertProfileId" | "notContentTeamUserId" | "globalPostId" | "bankTopicId" | "bankQuestionId" | "fileId";
+async function doorFixture(s: string, applicationId: string | null): Promise<Pick<SweepFixture, DoorFields>> {
+  const ids = SWEEP_DOOR_IDS;
+  const has = async (q: Promise<{ id: string } | null>) => (await q)?.id ?? null;
+  const office = await db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE", user: { email: "zz.admin@zz.test" } }, select: { userId: true } });
+  let mySessionId: string | null = null;
+  if (office) {
+    const spare = await db.session.create({ data: { userId: office.userId, tokenHash: createHash("sha256").update(randomBytes(32)).digest("hex"), activeSchoolId: s, activeRole: "ADMIN", userAgent: "api-sweep (to sign out)", expiresAt: new Date(Date.now() + 3_600_000) } });
+    minted.push(spare.id);
+    mySessionId = spare.id;
+  }
+  const pupil01 = await db.membership.findFirst({ where: { schoolId: s, role: "STUDENT", user: { email: "zz.pupil01@zz.test" } }, select: { id: true } });
+  const parent01 = await db.user.findUnique({ where: { email: "zz.parent01@zz.test" }, select: { id: true } });
+  const competition = await db.competition.findFirst({ where: { id: ids.competition, status: "PUBLISHED", registrationClosesAt: { gt: new Date() } }, select: { id: true } });
+  const entry = (studentEmail: string) => (competition ? db.competitionEntry.findFirst({ where: { competitionId: competition.id, schoolId: s, student: { user: { email: studentEmail } } }, select: { id: true } }) : Promise.resolve(null));
+  const appraisal = await has(db.staffAppraisal.findFirst({ where: { id: ids.appraisal, schoolId: s }, select: { id: true } }));
+  const period = await db.timetablePeriod.findFirst({ where: { schoolId: s, archivedAt: null }, orderBy: { position: "asc" }, select: { id: true, name: true, startMinute: true, endMinute: true, kind: true } });
+  const expert = await db.expertProfile.findFirst({ where: { user: { email: "zz.expert1@zz.test" } }, select: { id: true, calendarToken: true } });
+  // The first document of the sweep parent's sent application: the parent and the office may open it.
+  let fileId: string | null = null;
+  if (applicationId) {
+    const app = await db.application.findUnique({ where: { id: applicationId }, select: { documentsJson: true } });
+    try {
+      fileId = (JSON.parse(app?.documentsJson ?? "[]") as { fileId?: string }[])[0]?.fileId ?? null;
+    } catch {
+      fileId = null;
+    }
+  }
+  const myPayment = parent01 ? await db.feePayment.findFirst({ where: { schoolId: s, payerUserId: parent01.id }, orderBy: { createdAt: "asc" }, select: { id: true } }) : null;
+  const question = await db.quizQuestion.findFirst({ orderBy: { id: "asc" }, select: { id: true, topicId: true } });
+  return {
+    mySessionId,
+    revokedInviteId: await has(db.invite.findFirst({ where: { id: ids.revokedInvite, schoolId: s, status: "REVOKED" }, select: { id: true } })),
+    publishedExamSeriesId: await has(db.examSeries.findFirst({ where: { schoolId: s, publishedAt: { not: null }, archivedAt: null }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    archivedExamSeriesId: await has(db.examSeries.findFirst({ where: { id: ids.archivedExamSeries, schoolId: s, archivedAt: { not: null } }, select: { id: true } })),
+    closedEnquiryId: await has(db.enquiry.findFirst({ where: { id: ids.closedEnquiry, schoolId: s, status: "CLOSED" }, select: { id: true } })),
+    mentorThreadId: pupil01 ? await has(db.mentorThread.findFirst({ where: { schoolId: s, studentMembershipId: pupil01.id, status: "ACTIVE", expert: { user: { email: "zz.expert3@zz.test" } } }, select: { id: true } })) : null,
+    competitionEntryId: await has(entry("zz.pupil01@zz.test")),
+    appraisalId: appraisal,
+    appraisal: appraisal ? { ...SWEEP_APPRAISAL } : null,
+    goneAppraisalId: await has(db.staffAppraisal.findFirst({ where: { id: ids.goneAppraisal, schoolId: s }, select: { id: true } })),
+    gonePlanTemplateId: await has(db.lessonPlanTemplate.findFirst({ where: { id: ids.gonePlanTemplate, schoolId: s }, select: { id: true } })),
+    goneAbsenceNoteId: await has(db.absenceNote.findFirst({ where: { id: ids.goneAbsenceNote, schoolId: s }, select: { id: true } })),
+    goneExpertSlotId: await has(db.expertSlot.findFirst({ where: { id: ids.goneExpertSlot, bookedAt: null }, select: { id: true } })),
+    familyReportCardId: pupil01 ? await has(db.reportCard.findFirst({ where: { schoolId: s, studentMembershipId: pupil01.id, status: "PUBLISHED" }, orderBy: { createdAt: "asc" }, select: { id: true } })) : null,
+    expertCalendarToken: expert?.calendarToken ?? null,
+    periodId: period?.id ?? null,
+    period: period ? { name: period.name, startMinute: period.startMinute, endMinute: period.endMinute, kind: period.kind } : null,
+    archivedFeeStructureId: await has(db.feeStructure.findFirst({ where: { id: ids.archivedFeeStructure, schoolId: s, archivedAt: { not: null } }, select: { id: true } })),
+    revokedConcessionId: await has(db.feeConcession.findFirst({ where: { id: ids.revokedConcession, schoolId: s, revokedAt: { not: null } }, select: { id: true } })),
+    familyPaymentId: myPayment?.id ?? (await has(db.feePayment.findFirst({ where: { schoolId: s, status: "PAID" }, select: { id: true } }))),
+    quietBroadcastId: await has(db.broadcast.findFirst({ where: { schoolId: s, messages: { none: { status: { in: ["FAILED", "UNDELIVERED"] } } } }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    expertProfileId: expert?.id ?? null,
+    notContentTeamUserId: office?.userId ?? null,
+    globalPostId: await has(db.post.findFirst({ where: { schoolId: s, scope: "GLOBAL", status: "APPROVED" }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    bankTopicId: question?.topicId ?? null,
+    bankQuestionId: question?.id ?? null,
+    fileId,
+  };
+}
+
 async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
   const school = await db.school.findUniqueOrThrow({ where: { slug } });
   const s = school.id;
@@ -162,13 +231,14 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
       ?? (await db.enrollment.findFirst({ where: { classId: klass.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { studentMembershipId: true } })))
     : null;
   const lead = klass ? await db.classTeacher.findFirst({ where: { classId: klass.id, role: "LEAD" }, select: { teacherMembershipId: true } }) : null;
+  const admissions = await admissionFixture(s);
   return {
     schoolId: s,
     classId: klass?.id ?? null,
     studentMembershipId: student?.studentMembershipId ?? null,
     teacherMembershipId: lead?.teacherMembershipId ?? null,
     adminMembershipId: await first(db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE" }, select: { id: true } })),
-    examSeriesId: await first(db.examSeries.findFirst({ where: { schoolId: s }, select: { id: true } })),
+    examSeriesId: await first(db.examSeries.findFirst({ where: { schoolId: s, archivedAt: null }, select: { id: true } })),
     examSlotId: await first(db.examSlot.findFirst({ where: { schoolId: s }, select: { id: true } })),
     assignmentId: await first(db.assignment.findFirst({ where: { schoolId: s }, select: { id: true } })),
     postId: await first(db.post.findFirst({ where: { schoolId: s }, select: { id: true } })),
@@ -181,10 +251,14 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     otherFamilyClaimId: await waitingClaim(["zz-fixture-claim-other"]),
     conversationId: await first(db.conversation.findFirst({ where: { schoolId: s }, select: { id: true } })),
     remarkThreadId: await first(db.remarkThread.findFirst({ where: { schoolId: s }, select: { id: true } })),
-    // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date.
-    competitionId: await first(db.competition.findFirst({ where: { status: "PUBLISHED", registrationClosesAt: { gt: new Date() }, organizerSchoolId: null }, select: { id: true } })),
-    vacancyId: await first(db.jobPosting.findFirst({ where: { schoolId: s }, select: { id: true } })),
-    enquiryId: await first(db.enquiry.findFirst({ where: { schoolId: s }, select: { id: true } })),
+    // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date: the
+    // school's own (scripts/sweep-doors.ts; its dates move with each zz:fixtures), else a platform one still open.
+    competitionId: (await first(db.competition.findFirst({ where: { id: SWEEP_DOOR_IDS.competition, organizerSchoolId: s, status: "PUBLISHED", registrationClosesAt: { gt: new Date() } }, select: { id: true } })))
+      ?? (await first(db.competition.findFirst({ where: { status: "PUBLISHED", registrationClosesAt: { gt: new Date() }, organizerSchoolId: null }, select: { id: true } }))),
+    // A CLOSED vacancy, the fixture's first (its own staff still read it, and the close door refuses it): never an open one, which the close door would take off the board.
+    vacancyId: (await first(db.jobPosting.findFirst({ where: { id: SWEEP_DOOR_IDS.closedPosting, schoolId: s, status: "CLOSED" }, select: { id: true } }))) ?? (await first(db.jobPosting.findFirst({ where: { schoolId: s, status: "CLOSED" }, select: { id: true } }))),
+    // The fixture's open admission enquiry, by id; another of the school's otherwise.
+    enquiryId: (await first(db.enquiry.findFirst({ where: { id: SWEEP_DOOR_IDS.openEnquiry, schoolId: s, status: "OPEN" }, select: { id: true } }))) ?? (await first(db.enquiry.findFirst({ where: { schoolId: s }, select: { id: true } }))),
     meetingSlotId: await first(db.meetingSlot.findFirst({ where: { schoolId: s }, select: { id: true } })),
     inviteId: await first(db.invite.findFirst({ where: { schoolId: s }, select: { id: true } })),
     leaveRequestId: await first(db.leaveRequest.findFirst({ where: { schoolId: s }, select: { id: true } })),
@@ -192,10 +266,10 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     academicYearId: await first(db.academicYear.findFirst({ where: { schoolId: s }, select: { id: true } })),
     termId: await first(db.term.findFirst({ where: { schoolId: s }, select: { id: true } })),
     notificationId: await first(db.notification.findFirst({ where: { schoolId: s }, select: { id: true } })),
-    fileId: null,
     feeHeadId: await first(db.feeHead.findFirst({ where: { schoolId: s }, select: { id: true } })),
-    feeStructureId: await first(db.feeStructure.findFirst({ where: { schoolId: s, publishedAt: { not: null } }, select: { id: true } })),
-    feePaymentId: await first(db.feePayment.findFirst({ where: { schoolId: s, status: "PAID" }, select: { id: true } })),
+    feeStructureId: await first(db.feeStructure.findFirst({ where: { schoolId: s, publishedAt: { not: null }, archivedAt: null }, select: { id: true } })),
+    // The fixture's counter payment first (CASH, PAID): no UPI claim, so the confirm door can never receipt it.
+    feePaymentId: (await first(db.feePayment.findFirst({ where: { schoolId: s, status: "PAID", method: "CASH" }, orderBy: { createdAt: "asc" }, select: { id: true } }))) ?? (await first(db.feePayment.findFirst({ where: { schoolId: s, status: "PAID" }, select: { id: true } }))),
     feeReceiptId: await first(db.feeReceipt.findFirst({ where: { schoolId: s }, select: { id: true } })),
     broadcastId: await first(db.broadcast.findFirst({ where: { schoolId: s }, select: { id: true } })),
     // An OPEN one, so the sweep's note and close both have a door; zz:fixtures leaves one open on every run.
@@ -207,10 +281,13 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     ...(await substitutionFixture(s)),
     // A cover the sweep's head was asked to take today (zz-fixtures.ts `buildHeadCover`; the grade-3 lead teaches every staffed period, so no honest cover names them), so the acknowledge door answers 200 for the PRINCIPAL and 404 for the others; null skips both doors.
     myCoverId: await first(db.substitution.findFirst({ where: { schoolId: s, dateKey: new Date().toISOString().slice(0, 10), substitute: { role: "PRINCIPAL", user: { email: "zz.principal@zz.test" } } }, select: { id: true } })),
-    planTemplateId: await first(db.lessonPlanTemplate.findFirst({ where: { schoolId: s }, orderBy: { createdAt: "asc" }, select: { id: true } })),
+    // The fixture's template (scripts/sweep-doors.ts), not the throwaway the DELETE takes away.
+    planTemplateId: (await first(db.lessonPlanTemplate.findFirst({ where: { id: SWEEP_DOOR_IDS.planTemplate, schoolId: s }, select: { id: true } }))) ?? (await first(db.lessonPlanTemplate.findFirst({ where: { schoolId: s, id: { not: SWEEP_DOOR_IDS.gonePlanTemplate } }, orderBy: { createdAt: "asc" }, select: { id: true } }))),
     ...(await reportCardFixture(s)),
     ...(await certificateFixture(s)),
-    ...(await admissionFixture(s)),
+    ...admissions,
+    // The file the link door opens is a document of the sweep parent's application.
+    ...(await doorFixture(s, admissions.applicationId)),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }
@@ -230,7 +307,8 @@ async function actors(): Promise<Record<Role, string>> {
     ?? (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, orderBy: { id: "asc" }, select: { id: true, userId: true } }));
   const guardian = (await db.guardianship.findFirst({ where: { studentMembershipId: pupil.id, status: "ACTIVE", relation: { not: "SCHOOL" } }, orderBy: { id: "asc" }, select: { parentUserId: true } }))
     ?? (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { parentUserId: true } }));
-  const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });
+  // zz.expert1 by name, whose windows, sessions, calendar feed and closed enquiry the fixtures give the sweep; "the first ZZ expert" was row order.
+  const expert = (await db.expertProfile.findFirst({ where: { user: { email: "zz.expert1@zz.test" } }, select: { userId: true } })) ?? (await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } }));
   const out: Partial<Record<Role, string>> = {
     ADMIN: await mint(await byEmail("zz.admin@zz.test"), "ADMIN", school.id),
     PRINCIPAL: await mint(await byEmail("zz.principal@zz.test"), "PRINCIPAL", school.id),
@@ -533,6 +611,9 @@ async function main() {
   if (CROSS_MODE) return crossProbe(CROSS_MODE);
   const startedAt = new Date();
   const tokens = await actors();
+  // The rows whose doors remove them, put back first, so this run proves the removal and not the last run's 404.
+  const northgate = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" }, select: { id: true } });
+  await restoreSweepThrowaways(db, northgate.id);
   const fx = await fixture();
   await readCheckInClosure();
   for (const e of ENDPOINTS) {
