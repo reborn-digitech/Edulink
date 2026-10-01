@@ -31,6 +31,15 @@ export async function generateMetadata(): Promise<Metadata> {
  * running), and the statutory exports. Telling a family is one deliberate,
  * audited tap per child — never automatic, never bulk.
  */
+/**
+ * The four export buttons carry the longest labels on the page ("Download
+ * enrolment summary (Excel)", longer still in Hindi and Marathi); a Button
+ * keeps its label on one line, so at phone width in a wider face they ran
+ * 35 px past the card (CI run 36871181377, Linux Chromium's DejaVu Sans).
+ * These may wrap, keeping the 48 px floor.
+ */
+const EXPORT_BUTTON = "h-auto max-w-full whitespace-normal py-2.5 text-left";
+
 export default async function AdminAttendancePage({
   searchParams,
 }: {
@@ -240,19 +249,19 @@ export default async function AdminAttendancePage({
                 className="rounded-lg border border-border bg-surface px-3 py-2 text-fg"
               />
             </label>
-            <Button type="submit" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <Button type="submit" variant="secondary" className={EXPORT_BUTTON} icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportRegister")}
             </Button>
-            <Button type="submit" name="format" value="xlsx" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <Button type="submit" name="format" value="xlsx" variant="secondary" className={EXPORT_BUTTON} icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportRegisterXlsx")}
             </Button>
           </form>
 
           <form action="/admin/attendance/export/enrolment" method="get" className="flex flex-wrap gap-3">
-            <Button type="submit" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <Button type="submit" variant="secondary" className={EXPORT_BUTTON} icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportEnrolment")}
             </Button>
-            <Button type="submit" name="format" value="xlsx" variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <Button type="submit" name="format" value="xlsx" variant="secondary" className={EXPORT_BUTTON} icon={<DownloadSimpleIcon weight="bold" />}>
               {t("attendanceIntel.exportEnrolmentXlsx")}
             </Button>
           </form>
