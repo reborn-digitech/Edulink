@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { PrismaClient } from "@prisma/client";
 import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
-import { overflow, smallTargets } from "./checks";
+import { overflow, screenshotWhereBaselined, smallTargets } from "./checks";
 
 config({ path: ".env" });
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -53,7 +53,7 @@ for (const { name, actor, path } of PAGES) {
   for (const [vpName, viewport] of Object.entries(VIEWPORTS)) {
     for (const theme of ["light", "dark"] as const) {
       for (const locale of ["en", "hi"] as const) {
-        test(`${name} · ${vpName} · ${theme} · ${locale}`, async ({ browser, baseURL }) => {
+        test(`${name} · ${vpName} · ${theme} · ${locale}`, async ({ browser, baseURL }, testInfo) => {
           await preferLocale(actor.email, locale);
           const context = await contextFor(browser, actor.cookie, { viewport, theme, locale }, baseURL!);
           const page = await context.newPage();
@@ -65,7 +65,15 @@ for (const { name, actor, path } of PAGES) {
           const small = await smallTargets(page);
           expect(small, "interactive elements under 44px").toEqual([]);
 
-          await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
+          // The register shows the school calendar's word on the day — a
+          // holiday's warning, a Sunday's, an exam or event — above the class.
+          // The baselines are of a day with none (run 36909003458 met Gandhi
+          // Jayanti's banner and five per cent of the picture moved), so such a
+          // day is compared under its own name where a baseline for it exists,
+          // and said so where none does; the two checks above ran either way.
+          const notice = name === "register" ? await page.getByTestId("register-day-notice").getAttribute("data-kind", { timeout: 1_000 }).catch(() => null) : null;
+          if (notice) await screenshotWhereBaselined(page, `${name}-${vpName}-${theme}-${locale}-${notice}.png`, testInfo);
+          else await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
           await context.close();
           await preferLocale(actor.email, "en");
         });

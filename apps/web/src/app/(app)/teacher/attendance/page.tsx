@@ -333,6 +333,8 @@ function ClosedDayNotice({
     return (
       <div
         role="status"
+        data-testid="register-day-notice"
+        data-kind="not-teaching"
         className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
       >
         <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
@@ -346,7 +348,7 @@ function ClosedDayNotice({
 
   if (!calendar.closed) {
     return (
-      <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
+      <p data-testid="register-day-notice" data-kind="open" className="rounded-[--radius-md] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
         <span className="font-semibold text-fg">{names}</span> — {openDayNote(pretty)}
       </p>
     );
@@ -355,6 +357,8 @@ function ClosedDayNotice({
   return (
     <div
       role="status"
+      data-testid="register-day-notice"
+      data-kind="closed"
       className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
     >
       <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
