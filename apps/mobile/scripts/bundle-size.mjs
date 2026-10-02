@@ -33,6 +33,14 @@
  * three dictionaries' phone share, 1.05 MB, every key named in the phone's
  * source; contracts, 0.24 MB, 77 KB of it schemas the phone does not use that
  * only Expo's unstable tree shaking leaves out.
+ *
+ * On 2 Oct 2026 the owner was given the choice again (the compiler off for
+ * the office, operator and expert screens, about 275 KB; off everywhere,
+ * 4.71 MB; the ceiling raised; or the dictionaries fetched on first use) and
+ * raised the ceiling to 6 MB, the code untouched. The target stays at 4.5, so
+ * every run still names the number and the distance; what the ceiling costs
+ * is the weight of each over-the-air update, 1.36 MB gzipped at 5.31 MB, and
+ * the first open on a poor connection.
  */
 import { execSync } from "node:child_process";
 import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -41,7 +49,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const TARGET_MB = 4.5;
-const CEILING_MB = 5.5;
+const CEILING_MB = 6;
 const MB = 1024 * 1024;
 
 const out = mkdtempSync(join(tmpdir(), "edulink-bundle-"));
