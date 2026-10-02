@@ -47,6 +47,15 @@ export async function contextFor(
   // that, so every page of CI's production-server run was the login page
   // (run 36851296484). Chromium sends a Secure cookie to http://localhost.
   await context.addCookies([{ name: `__Host-${name}`, value, domain: url.hostname, path: "/", httpOnly: true, secure: true, sameSite: "Lax" }]);
+  // The pages that hear the event stream (the register, the substitution
+  // board, a remark thread) hold one EventSource open for as long as the tab
+  // is visible, and Playwright's "networkidle" counts that as traffic, so a
+  // goto of the board never settled and the axe walk timed out on
+  // /admin/substitutions (run 36959968186). The walk is of what the pages
+  // draw, not of what a colleague's action does to them (the live behaviour
+  // was checked by hand in two tabs); the stream is refused here, the browser
+  // retries it every few seconds, and the page is a page again.
+  await context.route("**/api/v1/events", (route) => route.abort("connectionrefused"));
   await context.addInitScript((theme: string) => {
     try {
       window.localStorage.setItem("edulink.appearance", JSON.stringify({ theme, motion: "reduced" }));

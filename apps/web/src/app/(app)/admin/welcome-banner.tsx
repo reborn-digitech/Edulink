@@ -25,12 +25,12 @@ export function WelcomeBanner({ schoolName, schoolCode }: { schoolName: string; 
         type="button"
         onClick={() => setDismissed(true)}
         aria-label={t("admin.dismissWelcome")}
-        className="absolute right-2 top-2 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
+        className="absolute right-1 top-1 grid size-11 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
       >
         <XIcon weight="bold" className="size-4" />
       </button>
 
-      <div className="flex items-start gap-3 pr-8">
+      <div className="flex items-start gap-3 pr-10">
         <span className="grid size-11 shrink-0 place-items-center rounded-full bg-ok text-white animate-confetti">
           <CheckCircleIcon weight="fill" className="size-7" />
         </span>

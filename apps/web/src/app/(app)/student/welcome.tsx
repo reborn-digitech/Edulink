@@ -32,12 +32,12 @@ export function StudentWelcome({ name, handle }: { name: string; handle: string 
           void dismissWelcome();
         }}
         aria-label={t("student.hideMessage")}
-        className="absolute right-2 top-2 grid size-9 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
+        className="absolute right-1 top-1 grid size-11 place-items-center rounded-full text-fg-muted hover:bg-surface/60 hover:text-fg"
       >
         <XIcon weight="bold" className="size-4" />
       </button>
 
-      <div className="flex items-start gap-3 pr-8">
+      <div className="flex items-start gap-3 pr-10">
         <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-accent-fg animate-confetti">
           <SparkleIcon weight="fill" className="size-6" />
         </span>

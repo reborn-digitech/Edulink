@@ -322,19 +322,22 @@ async function actors(): Promise<Record<Role, string>> {
 
 /**
  * Whether the fixture school is closed today by its own calendar — a day off
- * its teaching week, or a closing holiday. The staff self check-in refuses a
- * closed day by design, so on a Sunday in the school's zone the door answers
- * 403 to every permitted role and the sweep must expect that rather than 200.
+ * its teaching week, or a closing holiday. The staff self check-in and the
+ * substitution assignment (whose sample names today's lesson) refuse a closed
+ * day by design, so on a Sunday or a holiday in the school's zone those doors
+ * answer 403 to every permitted role and the sweep must expect that rather
+ * than 200 — run 178 on Gandhi Jayanti (2 October 2026) found the second.
  */
 const CLOSING_KINDS = (Object.keys(HOLIDAY_KIND_META) as HolidayKind[]).filter((k) => HOLIDAY_KIND_META[k].closesSchool);
 let checkInClosedToday = false;
+const CLOSED_DAY_DOORS = ["/api/v1/staff/attendance/check-in", "/api/v1/office/substitutions"];
 async function readCheckInClosure(slug = "zz-northgate-school"): Promise<void> {
   const school = await db.school.findUniqueOrThrow({ where: { slug }, select: { id: true, timezone: true, teachingDays: true } });
   const key = new Intl.DateTimeFormat("en-CA", { timeZone: school.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
   const week = parseTeachingDays(school.teachingDays);
   const closed = await db.holiday.findFirst({ where: { schoolId: school.id, startDateKey: { lte: key }, endDateKey: { gte: key }, kind: { in: CLOSING_KINDS } }, select: { id: true } });
   checkInClosedToday = !week.includes(new Date(`${key}T00:00:00Z`).getUTCDay()) || closed !== null;
-  if (checkInClosedToday) console.log(`· ${key} is a closed day for the fixture school: the staff check-in is expected to refuse`);
+  if (checkInClosedToday) console.log(`· ${key} is a closed day for the fixture school: the staff check-in and the substitution assignment are expected to refuse`);
 }
 
 function expected(e: Endpoint, role: Role | null): number | number[] {
@@ -346,7 +349,7 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
   const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
   if (!permitted) return 403;
-  if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
+  if (e.method === "POST" && CLOSED_DAY_DOORS.includes(e.path) && checkInClosedToday) return 403;
   if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : [200, 404];
   return e.emptyBodyStatus ?? [200, 404, 422];
 }
