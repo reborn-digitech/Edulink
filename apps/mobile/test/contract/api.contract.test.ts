@@ -76,18 +76,20 @@ describeIf("the app's client against /api/v1", () => {
   });
 });
 
-type Access = "anyone" | "signed-in" | "operator" | "app-admin" | string[];
+type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
 type Doc = { paths: Record<string, Record<string, { "x-access": Access }>> };
 
 describeIf("the role matrix, from the app's client", () => {
   const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
   const gets = [...new Set(callsInSource().filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
-  const allowed = (path: string, role: string | null): "2xx" | 401 | 403 => {
+  const allowed = (path: string, role: string | null): "2xx" | 401 | 403 | "2xx-or-403" => {
     const access = doc.paths[path]!.get!["x-access"];
     if (access === "anyone") return "2xx";
     if (role === null) return 401;
     // The operator's and the content team's endpoints: no school role opens them.
     if (access === "operator" || access === "app-admin") return 403;
+    // An account door is decided by the person's memberships, which a role token does not say.
+    if (access === "account") return "2xx-or-403";
     if (access === "signed-in" || access.includes(role)) return "2xx";
     return 403;
   };
@@ -103,8 +105,9 @@ describeIf("the role matrix, from the app's client", () => {
       for (const path of gets) {
         const res = await client(token).get(path);
         const want = allowed(path, role);
-        const got = res.ok || (want === "2xx" && res.status === 422) ? "2xx" : res.status;
-        if (got !== want) wrong.push(`${path}: wanted ${want}, got ${got}${res.ok ? "" : ` (${res.code})`}`);
+        const got = res.ok || ((want === "2xx" || want === "2xx-or-403") && res.status === 422) ? "2xx" : res.status;
+        const fine = want === "2xx-or-403" ? got === "2xx" || got === 403 : got === want;
+        if (!fine) wrong.push(`${path}: wanted ${want}, got ${got}${res.ok ? "" : ` (${res.code})`}`);
       }
       expect(wrong).toEqual([]);
     }, 60_000);

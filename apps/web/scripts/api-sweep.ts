@@ -341,6 +341,9 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   if (role === null) return e.access === "anyone" ? (e.emptyBodyStatus ?? 200) : 401;
   // The operator and the content team hold no school role: every role token is refused.
   if (e.access === "operator" || e.access === "app-admin") return 403;
+  // An account door is decided by the person's memberships, which a sweep
+  // actor holding one role cannot be read for from here: let through or refused.
+  if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
   const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
   if (!permitted) return 403;
   if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;

@@ -46925,17 +46925,14 @@
     },
     "/api/v1/account/totp/start": {
       "post": {
-        "summary": "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed. Decided by the account, not the session's role: an active ADMIN or PRINCIPAL membership at any school, or the operator (403 otherwise)",
-        "description": "Roles: ADMIN, PRINCIPAL.",
+        "summary": "Start two-step sign-in: a fresh secret and its otpauth:// link for the app; nothing guards the sign-in until confirmed. By the account: an active ADMIN or PRINCIPAL membership at any school, or the operator, whatever the session's role (403 otherwise)",
+        "description": "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.",
         "security": [
           {
             "bearer": []
           }
         ],
-        "x-access": [
-          "ADMIN",
-          "PRINCIPAL"
-        ],
+        "x-access": "account",
         "responses": {
           "200": {
             "description": "OK",

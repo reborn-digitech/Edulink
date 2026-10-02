@@ -18,6 +18,7 @@ const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 function describeAccess(e: Endpoint): string {
   if (e.access === "anyone") return "No session needed.";
   if (e.access === "signed-in") return "Any signed-in session.";
+  if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";
   return `Roles: ${e.access.join(", ")}.`;

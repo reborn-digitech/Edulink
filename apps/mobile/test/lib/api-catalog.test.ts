@@ -8,7 +8,7 @@ import { join, relative } from "node:path";
  * the document never drift": a screen that calls a path the catalog does not
  * know fails here, on the runner, before any server is involved.
  */
-type Doc = { paths: Record<string, Record<string, { "x-access": "anyone" | "signed-in" | "operator" | "app-admin" | string[] }>> };
+type Doc = { paths: Record<string, Record<string, { "x-access": "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[] }>> };
 const SRC = join(__dirname, "..", "..", "src");
 const DOC = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
 
