@@ -331,6 +331,8 @@ async function actors(): Promise<Record<Role, string>> {
  * than 200 — run 178 on Gandhi Jayanti (2 October 2026) found the second.
  */
 const CLOSED_DAY_DOORS = ["/api/v1/staff/attendance/check-in", "/api/v1/office/substitutions"];
+/** Whether this door, sent a good body today, is refused by the fixture school's calendar rather than let through. */
+const refusedOnClosedDay = (e: Endpoint): boolean => e.method === "POST" && CLOSED_DAY_DOORS.includes(e.path) && checkInClosedToday;
 const CLOSING_KINDS = (Object.keys(HOLIDAY_KIND_META) as HolidayKind[]).filter((k) => HOLIDAY_KIND_META[k].closesSchool);
 let checkInClosedToday = false;
 async function readCheckInClosure(slug = "zz-northgate-school"): Promise<void> {
@@ -351,7 +353,10 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
   const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
   if (!permitted) return 403;
-  if (e.method === "POST" && CLOSED_DAY_DOORS.includes(e.path) && checkInClosedToday) return 403;
+  // The check-in takes no body, so its empty-body probe meets the calendar;
+  // the substitution door's empty body is refused by the parser first (422),
+  // and its closed-day answer is what the valid-body probe expects below.
+  if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
   if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : [200, 404];
   return e.emptyBodyStatus ?? [200, 404, 422];
 }
@@ -676,7 +681,8 @@ async function main() {
       // the half of the contract an empty body cannot prove.
       if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || (Array.isArray(e.access) && e.access.includes(role)))) {
         const status = await hit(e, tokens[role], path, JSON.stringify(goodBody));
-        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: [200, 201], got: status, ok: status === 200 || status === 201 });
+        const want = refusedOnClosedDay(e) ? [403] : [200, 201];
+        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: want, got: status, ok: want.includes(status) });
       }
     }
   }
