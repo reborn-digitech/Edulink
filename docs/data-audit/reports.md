@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-02T10:51:41.948Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 74 INFO
+Run: 2026-10-02T12:52:53.134Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 160 WARN · 74 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -149,8 +149,8 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | report-card-items | ZZ Northgate School | 1 paper(s) on cards differ from the marks as they stand now — a published card is frozen; a draft regenerates when opened |
-| leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 232/251 |
-| leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 232/251 |
+| leaving-certificates | Saraswati Vidya Mandir | TC/2027/0001: snapshot 95/103, the register holds 234/253 |
+| leaving-certificates | Sunrise Public School | TC/2027/0001: snapshot 95/103, the register holds 234/253 |
 | inputs-pupils | Saraswati Vidya Mandir | 35 of 47 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Saraswati Vidya Mandir | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | Sunrise Public School | 35 of 47 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |

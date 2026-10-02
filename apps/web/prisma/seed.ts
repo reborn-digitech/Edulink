@@ -12,6 +12,7 @@ import { PrismaClient } from "@prisma/client";
 import { hash } from "@node-rs/argon2";
 import { classCode, schoolCode, slugify, studentCode } from "../src/lib/codes";
 import { addDaysToKey, todayKey, isTeachingDay } from "../src/lib/dates";
+import { refuseUnlessLocalDatabase } from "../scripts/local-db-guard.mjs";
 
 const db = new PrismaClient();
 
@@ -23,6 +24,10 @@ const PASSWORD = process.env.SEED_PASSWORD || "copper-lantern-47-brook";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
 
 async function main() {
+  // The seed deletes every school before it builds two: never against a
+  // database that is not on this machine (a `fly proxy` to production is
+  // "localhost" too — the server is asked where it answered).
+  await refuseUnlessLocalDatabase(db, "db:seed");
   console.log("Seeding EduLink…");
 
   // One hash, reused: argon2 is deliberately slow, and hashing 40 identical

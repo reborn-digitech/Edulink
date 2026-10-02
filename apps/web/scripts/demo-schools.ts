@@ -1044,7 +1044,7 @@ Not seeded: a review round (deliberately skipped as cheap only through the UI), 
 /* -------------------------------------------------------------------------- */
 
 async function main() {
-  refuseUnlessLocal();
+  await refuseUnlessLocal("demo:schools");
   const passwordHash = await hash(PASSWORD, ARGON);
   const ctx: Ctx = { passwordHash, setPassword: true };
 

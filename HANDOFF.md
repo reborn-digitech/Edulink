@@ -45,7 +45,7 @@ packages/i18n        en / hi / mr dictionaries; every user-facing sentence is a 
 packages/api-client  The bearer-token fetch wrapper the phone uses.
 packages/tokens      Design tokens shared by web and phone: palettes, role accents, and the light frame
                      (navy menu and bars, tinted canvas, role-colour wash) chosen 2026-09-30.
-docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 380 endpoints.
+docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 530 endpoints.
 ```
 
 **Data.** Postgres, Prisma, 111 models, 28 handwritten migrations. Every school-owned table carries
@@ -62,10 +62,13 @@ and a bearer on the phone, re-checked against the live membership on every reque
 lifetime. A parent session carries no school.
 
 **Jobs.** One registry in `src/lib/jobs.ts`, run by `npm run job -- <name>` from a crontab the app
-prints (`npm run cron:show`). Twelve jobs: notifications tidy, retention sweep, admission offer expiry,
-accounts tidy (expired invitations, who is a minor), weekly digest, scheduled departures, health
-digest, file reclaim, fee reminders, fee reconciliation, circular delivery, text sending. Each writes a
-JobRun row with a summary; the operator's page calls a job overdue by its own schedule.
+prints (`npm run cron:show`). Seventeen jobs: notifications tidy, retention sweep, admission offer
+expiry, accounts tidy (expired invitations, who is a minor), weekly digest, scheduled departures,
+health digest, file reclaim, fee reminders, fee reconciliation, circular delivery, text sending, the
+overdue-job watch (`jobs:watch`), the nightly plan-usage count (`usage:sample`), the question-bank
+statistics (`bank:stats`), session reminders (`gigs:remind`) and paid seats released for payout
+(`gigs:release`). Each writes a JobRun row with a summary; the operator's page calls a job overdue by
+its own schedule.
 
 **Transports.** Email, SMS, WhatsApp, push and the fee gateway each sit behind an env-selected
 transport (`*_TRANSPORT`), with a devbox transport for development that writes to a dev mailbox and a

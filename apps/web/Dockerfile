@@ -29,8 +29,21 @@ WORKDIR /repo
 COPY . .
 ARG APP_COMMIT=unknown
 ENV NEXT_TELEMETRY_DISABLED=1 APP_COMMIT=$APP_COMMIT
+# The browser's push key is fixed into the client bundle by `next build`: a
+# NEXT_PUBLIC_ value set only at runtime never reaches a browser, and the push
+# switch says push is not configured. Pass the PUBLIC half of the deployment's
+# pair (`--build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY=…`); the private half stays a
+# runtime secret. The server compares the two at boot (env.ts), so an image
+# built with another pair's key refuses to start rather than fail every push.
+# An ARG, not an ENV: the build sees it as an environment variable, and an
+# EMPTY one is unset first — Next inlines a NEXT_PUBLIC_ value even when it is
+# "", which would hide the runtime key from the server too. Built without it,
+# a deployed server says so at boot (env.ts) and serves without browser push.
+ARG NEXT_PUBLIC_VAPID_PUBLIC_KEY
 # The type check inside `next build` needs more than Node's default heap on an 8 GB box (~1.7 GB for tsc alone); 4 GB is what a 16 GB runner gives by default.
-RUN cd apps/web && npx prisma generate && NODE_OPTIONS=--max-old-space-size=4096 npx next build
+RUN cd apps/web && npx prisma generate \
+  && if [ -z "${NEXT_PUBLIC_VAPID_PUBLIC_KEY:-}" ]; then unset NEXT_PUBLIC_VAPID_PUBLIC_KEY; fi \
+  && NODE_OPTIONS=--max-old-space-size=4096 npx next build
 
 FROM node:24-bookworm-slim AS runtime
 WORKDIR /app
@@ -53,7 +66,7 @@ COPY --from=build --chown=app:app /repo/apps/web/.next/standalone ./
 COPY --from=build --chown=app:app /repo/apps/web/.next/static ./apps/web/.next/static
 COPY --from=build --chown=app:app /repo/apps/web/public ./apps/web/public
 COPY --from=build --chown=app:app /repo/apps/web/prisma ./apps/web/prisma
-COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
+COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/pg-url.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
 USER app
 WORKDIR /app/apps/web
 EXPOSE 3000

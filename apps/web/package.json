@@ -15,7 +15,7 @@
     "db:migrate": "node scripts/with-admin-db.mjs prisma migrate deploy && npm run db:grants",
     "db:migrate:new": "node scripts/with-admin-db.mjs prisma migrate dev --create-only",
     "db:seed": "node scripts/with-admin-db.mjs npx tsx prisma/seed.ts",
-    "db:reset": "node scripts/with-admin-db.mjs npx prisma db push --force-reset && npm run db:grants && npm run db:seed",
+    "db:reset": "node scripts/with-admin-db.mjs node scripts/local-db-guard.mjs db:reset && node scripts/with-admin-db.mjs npx prisma db push --force-reset && npm run db:grants && npm run db:seed",
     "db:studio": "prisma studio",
     "setup": "npm run db:push && npm run db:grants && npm run db:seed",
     "test": "vitest run",

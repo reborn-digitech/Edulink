@@ -1,6 +1,7 @@
 # Go-live: the web app and the phone app
 
-Written 2 October 2026 from the code at `a11a7aa4`. This runbook takes Shalaghar from nothing to a live web app
+Written 2 October 2026 from the code at `a11a7aa4`, and revised the same day after the code and the other runbooks
+were fixed where they disagreed (below). This runbook takes Shalaghar from nothing to a live web app
 on Fly.io and a phone app in both stores. Every step names who does it, what exactly, and how to tell it worked.
 Tick a box only when its check has passed. Write the date and your initials beside it.
 
@@ -27,34 +28,22 @@ The code was read for every step. Where an older runbook disagrees, the code win
   `devbox` until the template ids exist. `env.ts` refuses to boot a deployed server with `SMS_TRANSPORT=devbox`,
   and refuses a live transport with an empty `MESSAGE_TEMPLATE_IDS`. DLT registration is therefore a
   precondition of the first deploy, not a later step. WhatsApp may stay on devbox.
-- **There are 26 SMS bodies to register, not 21.** `npm run messages:templates` prints 7 templates in 3
-  languages (21 per channel; the messaging runbook's table omits `incident`). `src/lib/sms.ts` sends 5 more that
-  the script does not print: the password-reset code and the phone-confirm code (English), and the
-  phone-changed notice (en, hi, mr).
-- **Do not append the pool settings to `DATABASE_URL` yet.** `deploy.md` says to add
-  `?connection_limit=30&pool_timeout=20`. The release step's `db-grants.mjs` passes `DATABASE_URL` to `psql`,
-  which refuses it: `psql: error: invalid URI query parameter: "connection_limit"` (checked with psql 16).
-  The release would fail. Deploy without them until the script strips Prisma-only parameters.
 - **Do not put Cloudflare's proxy in front yet.** On Fly the rate limits key on `Fly-Client-IP`
   (`rate-limit.ts`). Behind Cloudflare's proxy that is Cloudflare's address, so every person behind one edge
   shares one login limit (10 per 15 minutes). Use DNS only until the code reads `CF-Connecting-IP`.
 - **A bucket is required, and nothing enforces it.** `fly.toml` runs two web machines and mounts no volume.
   With no `STORAGE_*` variables the app writes uploads to a disk the next deploy throws away, and `env.ts`
   reports nothing (only a half-set bucket is fatal).
-- **Browser push needs a Dockerfile change.** `push-toggle.tsx` reads `NEXT_PUBLIC_VAPID_PUBLIC_KEY` in the
-  browser. Next.js fixes that value at build time, and the Dockerfile's build stage has no such argument, so
-  the image's browsers get no key. The server boots; the browser's push switch says it is not configured.
-  Phone push is unaffected.
-- **The phone's over-the-air workflow would ship a localhost app.** `.github/workflows/ota.yml` runs
-  `eas update` with no `EXPO_PUBLIC_API_URL` and no `--environment`. `src/lib/api.ts` then falls back to
-  `http://localhost:3000`, which its release check lets through (loopback is allowed). Fix before the first OTA.
-- **Online fees are not "refused at boot".** Decision 0003 and `deploy.md` say `devbox` is refused when
-  deployed. The code makes it `off`: the server boots, online payment is unavailable, UPI and counter carry on.
-- **Sentry is already wired.** `deploy.md` lists it as open. `SENTRY_DSN` is read by `src/lib/metrics.ts`.
-- **The fixture guard cannot see a tunnel.** `refuseUnlessLocal()` (zz:fixtures, demo:schools) accepts any
-  database on `localhost`. A `fly proxy` to production is on `localhost`. `db:seed` has no guard at all.
 - **This replaces `docs/go-live-checklist.md`**, whose first-school step (`/register`) and Cloudflare line no
   longer match.
+
+Fixed since this runbook was first written, in the code or in the runbook concerned, and so no longer listed
+here: the SMS bodies to register are 26 (`messaging.md`); the scripts strip Prisma's pool parameters before
+psql sees a URL, so the pool settings can go on `DATABASE_URL` (`deploy.md`); the image takes the browser's
+push key as a build argument (3.3); `ota.yml` refuses to publish without the channel's API URL, and a phone
+release refuses a loopback base (6.6); a deployed server refuses `FEES_GATEWAY_TRANSPORT=devbox` at boot;
+Sentry is in `deploy.md`'s secrets table; the fixtures and the seed ask the server where it answered and refuse
+a `fly proxy` tunnel; `deploy.md` says when a rollback is an image swap and when it is a restore (8.2).
 
 ## Phase 0 — Before anything
 
@@ -245,10 +234,10 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 
 | Variable | Production | Fatal at boot when | How to make it |
 | --- | --- | --- | --- |
-| `DATABASE_URL` | required | unset | `postgresql://edulink_app:<password>@<host>:5432/edulink?sslmode=require`. No `connection_limit` yet (see above) |
+| `DATABASE_URL` | required | unset | `postgresql://edulink_app:<password>@<host>:5432/edulink?sslmode=require`; the pool settings `&connection_limit=30&pool_timeout=20` once Postgres has room for them (9.6) — the scripts strip them for psql |
 | `DATABASE_ADMIN_URL` | required | unset on the jobs process | the owner connection, same database. Used by the release step and the jobs process only |
 | `NEXT_PUBLIC_APP_URL` | required | unset, or `http://` | `https://<host>`, no trailing slash. Magic links, invitations, the SSO redirect and Twilio's callback signature are built from it |
-| `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | required | missing, wrong length, or not a pair | `npm run vapid`, one run. Never rotate casually |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | required | missing, wrong length, or not a pair (the public half built into the image is the one compared) | `npm run vapid`, one run. Never rotate casually. The public half is also a build argument (3.2, 3.3) |
 | `VAPID_SUBJECT` | required | the shipped placeholder, or not `mailto:`/`https:` | `mailto:<an address someone reads>` |
 | `EMAIL_TRANSPORT` | `smtp` | `devbox` when deployed | literal `smtp` |
 | `EMAIL_FROM`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS` | required | any missing or malformed | from the provider (0.6). `SMTP_PORT` 587 by default; 465 implies `SMTP_SECURE=true`; user and password go together |
@@ -262,7 +251,7 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 | `SUPPORT_EMAIL` | recommended | never | from 0.17. Shown on `/privacy` and `/delete-account` |
 | `SENTRY_DSN` | recommended | never | from 0.16 (Phase 5) |
 | `WHATSAPP_TRANSPORT`, `TWILIO_WHATSAPP_FROM` | leave out | never (warning only) | Phase 5 |
-| `FEES_GATEWAY_TRANSPORT` | leave out | never | `razorpay` once a school brings its own account (Phase 5). Left out, online fees are off |
+| `FEES_GATEWAY_TRANSPORT` | leave out | `devbox` | `razorpay` once a school brings its own account (Phase 5). Left out (or `off`), online fees are off |
 | `GATEWAY_PLATFORM_KEY_ID`, `GATEWAY_PLATFORM_SECRET_ENC`, `GATEWAY_PLATFORM_WEBHOOK_SECRET` | leave out | a key id set without the other two, or without `FEES_SECRET_KEY` | Phase 5 |
 | `SSO_GOOGLE_*`, `SSO_MICROSOFT_*`, `SSO_APPLE_*` | leave out | never (half-set is a warning) | only when a school asks (Phase 5) |
 | `HSTS_PRELOAD` | leave out | never | Phase 5, last |
@@ -300,8 +289,9 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 - [ ] **2.1 Open a terminal used for production and nothing else** — engineer
 
   **What.** In this terminal hold the two URLs without echoing them, and close it when done. Through a
-  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) the fixture scripts' guard cannot tell production from a
-  laptop, so in this terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`,
+  `localhost` tunnel (`fly proxy`, `fly mpg proxy`) `zz:fixtures`, `demo:schools`, `db:seed` and `db:reset` now
+  ask the server where it answered and refuse Fly's private network; the others cannot tell production from a
+  laptop. In this terminal never run `zz:fixtures`, `demo:schools`, `db:seed`, `db:reset`, `db:push`,
   `sweep`, `api:sweep`, `load:check`, `zz:token` or `zz:fleet`.
 
   ```bash
@@ -399,11 +389,14 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ
 
 - [ ] **3.2 Choose where the image comes from** — engineer
 
-  **What.** Option A: let CI publish it. Set the repository variable once; every green push to master then
-  lands as `ghcr.io/reborn-digitech/edulink-web:<sha7>`. Fly may not pull a private GHCR package
-  (`<confirm>`); making it public publishes the app's built code (owner's decision).
+  **What.** Option A: let CI publish it. Set the repository variables once; every green push to master then
+  lands as `ghcr.io/reborn-digitech/edulink-web:<sha7>`, built with the deployment's public push key. Without
+  that variable the image carries CI's throwaway key, and production refuses to boot on it ("not a pair").
+  Fly may not pull a private GHCR package (`<confirm>`); making it public publishes the app's built code
+  (owner's decision).
 
   ```bash
+  gh variable set NEXT_PUBLIC_VAPID_PUBLIC_KEY --body "<the public key from 1.2>" -R reborn-digitech/Edulink
   gh variable set PUBLISH_IMAGE --body true -R reborn-digitech/Edulink
   ```
 
@@ -420,8 +413,12 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ
 
   ```bash
   fly deploy -a edulink-web --image ghcr.io/reborn-digitech/edulink-web:<sha7>
-  fly deploy -a edulink-web --build-arg APP_COMMIT=$(git rev-parse --short HEAD)
+  fly deploy -a edulink-web --build-arg APP_COMMIT=$(git rev-parse --short HEAD) \
+    --build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY=<the public key>
   ```
+
+  A build without the push key still boots, says `[env] NEXT_PUBLIC_VAPID_PUBLIC_KEY: This build was made
+  without…` in the log, and serves browsers no push; rebuild with it.
 
   **Verify.** The output shows the release command `npm run db:migrate`, then `No pending migrations to apply.`
   (2.3 applied them) and `✓ Grants and policies restored, and edulink_app can read.`, then the machines start.
@@ -503,7 +500,7 @@ Nothing in this phase writes test data. Which scripts are safe here:
 | `npm run superuser`, `npm run appadmin`, `npm run expert:invite` (they write what they say) | `npm run api:sweep` (calls every door as every role and writes ZZ rows) |
 | `npm run quiz:import` (verifies first, idempotent) | `npm run load:check`, `npm run zz:fleet`, the k6 scripts in `ops/load` |
 | `npm run files:check` (reports only; `files:reclaim` deletes) | `npm run zz:fixtures`, `npm run zz:token`, `npm run demo:schools` |
-| `ops/backup.sh` (reads) | `npm run db:seed` (no guard at all), `db:reset`, `db:push` |
+| `ops/backup.sh` (reads) | `npm run db:seed`, `db:reset` (both refuse a tunnel now; never try), `db:push` |
 | `npm run sso:check` (reads the environment it is given) | `npm run data:audit` (mints sessions for real people and writes a report of real data into `docs/`): only on a restored copy (9.4) |
 
 - [ ] **4.1 The signed-out pages answer** — engineer
@@ -564,7 +561,7 @@ Nothing in this phase writes test data. Which scripts are safe here:
 
   **What.** Without copying production keys to a laptop. Email: sign out, `/login`, "Email me a link", to the
   owner's address. SMS: the owner adds their mobile number on `/account`; the confirm code is one of the
-  DLT-registered bodies. Push: after the Dockerfile change named at the top, the browser's push switch on
+  DLT-registered bodies. Push: with the image built with the public key (3.3), the browser's push switch on
   `/account`; the phone's push in Phase 6.
 
   **Verify.** The mail arrives and its link opens `https://<host>`. The code arrives on the handset (Twilio's
@@ -689,8 +686,8 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 - [ ] **6.1 Set the version and the identifiers** — engineer
 
   **What.** Apply 0.2. Set `expo.version` in `app.json` to the first store version: `<fill in>` (it is `0.1.0`
-  today). Add `"infoPlist": { "ITSAppUsesNonExemptEncryption": false }` under `ios` (standard HTTPS only;
-  `apps/mobile/store/privacy-answers.md` asks to confirm).
+  today). `app.config.ts` already sets `ios.infoPlist.ITSAppUsesNonExemptEncryption: false` (standard HTTPS
+  only; `apps/mobile/store/privacy-answers.md` asks to confirm).
 
   **Verify.** `npx expo config --type public` shows the version, the identifiers and the plist key.
 
@@ -726,10 +723,12 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
 - [ ] **6.4 Push credentials for both platforms** — engineer
 
-  **What.** iOS: `npx eas-cli@latest credentials -p ios` and let EAS create the APNs key. Android: not configured
-  today. Create a Firebase project, download `google-services.json`, add `"googleServicesFile": "./google-services.json"`
-  under `android` in `app.json`, and upload the FCM v1 service-account key with
-  `npx eas-cli@latest credentials -p android`. Without it an Android phone gets no push token.
+  **What.** iOS: `npx eas-cli@latest credentials -p ios` and let EAS create the APNs key. Android: create a
+  Firebase project with an Android app for `school.edulink.app`, download `google-services.json` (not into git),
+  and give it to the build as a file variable — `app.config.ts` sets `android.googleServicesFile` from it:
+  `npx eas-cli@latest env:create --environment production --name GOOGLE_SERVICES_JSON --type file --value ./google-services.json --visibility secret`.
+  Then upload the FCM v1 service-account key with `npx eas-cli@latest credentials -p android`
+  (`mobile-release.md` has the menu path). Without both an Android phone gets no push token.
 
   **Verify.** Both appear under the project's credentials on expo.dev. Push proved in 6.10.
 
@@ -750,10 +749,15 @@ production API URL is an EAS environment variable, never a file. Run EAS command
   **Verify.** `git status` shows no file under `keys/`. `npx expo config --type public` shows the code-signing
   metadata.
 
-- [ ] **6.6 Fix the update workflow's API URL** — engineer
+- [ ] **6.6 Give the update workflow its API URLs** — engineer
 
-  **What.** `.github/workflows/ota.yml` publishes with no `EXPO_PUBLIC_API_URL`. Add `--environment production`
-  (and a staging environment for the staging channel) to the `eas update` line, or set the variable in the step.
+  **What.** `.github/workflows/ota.yml` bundles each update with the channel's API URL from a repository
+  variable and `--environment production` (`preview` for staging), and refuses to run without it.
+
+  ```bash
+  gh variable set EXPO_PUBLIC_API_URL_PRODUCTION --body https://<host> -R reborn-digitech/Edulink
+  gh variable set EXPO_PUBLIC_API_URL_STAGING --body https://<staging host> -R reborn-digitech/Edulink
+  ```
 
   **Verify.** A staging update's bundle talks to the staging host (6.15).
 
@@ -921,8 +925,10 @@ production API URL is an EAS environment variable, never a file. Run EAS command
   older than it runs on a database that has it. The first production deploy is not affected; never roll back
   across that migration. A mistake is fixed by a new forward migration.
 
-  **Verify.** Before any rollback, read the migrations between the two commits:
-  `git diff --stat <old>..<new> -- apps/web/prisma/migrations`.
+  **Verify.** Before any rollback, ask the database what the target image does not know, and read each listed
+  migration for a `DROP` or `RENAME` (any one means restore from the pre-deploy snapshot, 8.4, not an image swap;
+  `deploy.md`, Rollback):
+  `docker run --rm -e DATABASE_URL="$PROD_OWNER_URL" ghcr.io/reborn-digitech/edulink-web:<target sha7> prisma migrate status`.
 
 - [ ] **8.3 A migration that failed half-way** — engineer
 
@@ -1024,8 +1030,8 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
 - [ ] **9.6 Size the database pool** — engineer
 
-  **What.** Once `db-grants.mjs` strips Prisma-only parameters: append `?connection_limit=30&pool_timeout=20`
-  to `DATABASE_URL`, and check Postgres allows `2 × 30 + 10 + 5 = 75` connections (`deploy.md`, capacity).
+  **What.** Append `?connection_limit=30&pool_timeout=20` to `DATABASE_URL` (the scripts strip them before
+  psql sees the URL), and check Postgres allows `2 × 30 + 10 + 5 = 75` connections (`deploy.md`, capacity).
 
   **Verify.** The next deploy's release step still ends with the grants line.
 
@@ -1050,8 +1056,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | Twilio, a DLT entity and header, 26 approved SMS bodies (0.7) | the first boot (`SMS_TRANSPORT=devbox` and an empty `MESSAGE_TEMPLATE_IDS` are fatal) | owner |
 | Managed Postgres 16 with PITR (0.4) | everything | owner, engineer |
 | An uploads bucket (0.5) | two web machines without losing uploads | owner, engineer |
-| `db-grants.mjs` strips `connection_limit` and `pool_timeout` | the pool of thirty per machine | engineer |
-| The Dockerfile passes `NEXT_PUBLIC_VAPID_PUBLIC_KEY` at build | browser push | engineer |
+| The image built with `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (3.2, 3.3) | browser push; with option A, the first boot | engineer |
 | The rate limits read `CF-Connecting-IP` | Cloudflare's proxy in front | engineer |
 | The company's Razorpay account with KYC (0.9) | paid workshop seats | owner |
 | The company's GST details on `/root/gigs` (0.10, 4.8) | recording any payout to an expert | owner, operator |
@@ -1065,7 +1070,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | Google Play organisation account (0.15) | Play testing and release | owner |
 | Firebase and `googleServicesFile` (6.4) | push on Android | engineer |
 | The update-signing key, made by the owner, in the first store build (6.5) | signed over-the-air updates | owner, engineer |
-| `ota.yml` passes the API URL (6.6) | the first over-the-air update | engineer |
+| The OTA API URL variables (6.6) | the first over-the-air update | engineer |
 | The Google button decided (6.7) | the store submission | owner, engineer |
 | A `mobile-v*` tag (6.14) | any over-the-air update | engineer |
 | A reviewer account at a review school (4.6, 6.13) | store review | owner, operator |

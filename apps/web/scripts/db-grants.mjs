@@ -29,6 +29,7 @@
  */
 import { execFileSync } from "node:child_process";
 import { readFileSync, existsSync } from "node:fs";
+import { libpqUrl } from "./pg-url.mjs";
 
 function readEnvFile() {
   const out = {};
@@ -42,8 +43,10 @@ function readEnvFile() {
 }
 
 const env = { ...readEnvFile(), ...process.env };
-const appUrl = env.DATABASE_URL;
-const adminUrl = env.DATABASE_ADMIN_URL ?? appUrl;
+// psql refuses Prisma's pool settings (`?connection_limit=30…`, deploy.md's
+// capacity advice) with "invalid URI query parameter"; both URLs lose them here.
+const appUrl = libpqUrl(env.DATABASE_URL);
+const adminUrl = libpqUrl(env.DATABASE_ADMIN_URL) ?? appUrl;
 
 if (!appUrl) {
   console.error("DATABASE_URL is not set. Nothing to grant to.");

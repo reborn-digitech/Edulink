@@ -11,11 +11,18 @@ The phone app ships two ways, and the difference is one question: did anything n
 
 ## Accounts and secrets this needs
 
-- An Expo account with an EAS project. `EAS_PROJECT_ID` as a repository variable and in the developer's shell (`app.config.ts` adds the updates URL only when it is set). `EXPO_TOKEN` as a repository secret.
-- Apple Developer: `ASC_APP_ID` and `APPLE_TEAM_ID` in `eas.json`'s submit profile; push certificates through `eas credentials`.
+- An Expo account with an EAS project. `EXPO_TOKEN` as a repository secret.
+- `EAS_PROJECT_ID` in three places, because `app.config.ts` reads it wherever the config is evaluated and adds the updates URL (and `extra.eas.projectId`) only when it is set: a repository variable (for `ota.yml`), the developer's shell, and **the EAS build workers**, as an EAS environment variable — a store build made without it has no updates URL and can never take an over-the-air update:
+  `eas env:create --environment production --name EAS_PROJECT_ID --value <id> --visibility plaintext` (and again with `--environment preview` for the staging profile's internal builds).
+- Apple Developer: `ASC_APP_ID` and `APPLE_TEAM_ID` in `eas.json`'s submit profile; push certificates through `eas credentials`. Export compliance is answered in the binary: `app.config.ts` sets `ios.infoPlist.ITSAppUsesNonExemptEncryption: false` (the app's only cryptography is standard HTTPS and the system keychain), so App Store Connect does not ask at every upload.
 - Google Play: a service-account JSON at `apps/mobile/play-service-account.json` (git-ignored) for `eas submit`; the app created in the console first with one manual upload.
-- The production API URL as an EAS environment variable, never in a file: `eas env:create --environment production --name EXPO_PUBLIC_API_URL --value https://…`. The release build refuses to start if it is not https (`src/lib/api.ts`).
+- **Android push** (expo-notifications reaches Android through Firebase Cloud Messaging; without both pieces Android gets no push and nothing says so):
+  1. A Firebase project with an Android app for the package `school.edulink.app`; download its `google-services.json` (not in git).
+  2. Give it to the build as an EAS file variable: `eas env:create --environment production --name GOOGLE_SERVICES_JSON --type file --value ./google-services.json --visibility secret` (and `--environment preview` for staging). On the worker the variable holds the file's path, and `app.config.ts` sets `android.googleServicesFile` from it — the exact key; unset, the key is left out.
+  3. The FCM V1 credentials for Expo's push service: in Firebase → Project settings → Service accounts, generate a private key (JSON), then `eas credentials` → Android → production → Google Service Account → "Manage your Google Service Account Key for Push Notifications (FCM V1)" → upload it.
+- The production API URL as an EAS environment variable, never in a file: `eas env:create --environment production --name EXPO_PUBLIC_API_URL --value https://…`. A release build for a phone refuses to start unless it is https — a loopback base included, since a phone's localhost is the phone (`src/lib/api.ts`; only the web target's release export may use the loopback, as the CI sweep does).
 - Staging's URL is in `eas.json`'s staging profile; change it there when the host exists (Phase 1's open item).
+- For over-the-air updates, the same URLs as repository variables: `EXPO_PUBLIC_API_URL_PRODUCTION` and `EXPO_PUBLIC_API_URL_STAGING` (Settings → Secrets and variables → Actions → Variables), each equal to what that channel's store build was made with. `ota.yml` refuses to run `eas update` without the channel's one, or with one that is not https.
 
 ## A store release
 
@@ -29,11 +36,13 @@ The phone app ships two ways, and the difference is one question: did anything n
 
 ## An over-the-air update
 
-Actions → "mobile over-the-air update" → channel (staging first, then production) and a one-line message. The workflow refuses unless the change is JS-only and the battery and the bundle gate pass. Verify on a staging device that the update was taken (`expo-updates` `updateId` shows in More → the app's version line once that line exists) before running it for production.
+Actions → "mobile over-the-air update" → channel (staging first, then production) and a one-line message. The workflow refuses unless the channel's API URL variable is set and https, the change is JS-only, and the battery and the bundle gate pass. It publishes with `EXPO_PUBLIC_API_URL` from that variable and `--environment production` (or `preview` for staging), so the update is bundled against the same API and EAS environment as the build it lands on. Verify on a staging device that the update was taken (`expo-updates` `updateId` shows in More → the app's version line once that line exists) before running it for production.
 
 ### Code signing the updates
 
-An over-the-air update is JavaScript the phone runs as the app; whoever can publish one on the channel can change what every phone does. Before the first production update, sign them: `npx expo-updates codesigning:generate --key-output-directory keys --certificate-output-directory certs --certificate-validity-duration-years 10 --certificate-common-name "Shalaghar"`, keep the private key out of git (it belongs with `EXPO_TOKEN`, in the repository's secrets and the release engineer's keychain), put the certificate path and `codeSigningMetadata: { keyid: "main", alg: "rsa-v1_5-sha256" }` under `updates` in `app.config.ts`, and pass `--private-key-path` to `eas update` in `.github/workflows/ota.yml`. A phone then refuses an update the key did not sign, even one published with a leaked Expo token. This is not configured yet: it needs the EAS project to exist first, and the key must be made on a machine the owner controls, not in a workflow.
+An over-the-air update is JavaScript the phone runs as the app; whoever can publish one on the channel can change what every phone does. Before the first production update, sign them: `npx expo-updates codesigning:generate --key-output-directory keys --certificate-output-directory certs --certificate-validity-duration-years 10 --certificate-common-name "Shalaghar"`, keep the private key out of git (it belongs with `EXPO_TOKEN`, in the repository's secrets and the release engineer's keychain), put the certificate path and `codeSigningMetadata: { keyid: "main", alg: "rsa-v1_5-sha256" }` under `updates` in `app.config.ts`, and pass `--private-key-path` to `eas update` in `.github/workflows/ota.yml`. A phone then refuses an update the key did not sign, even one published with a leaked Expo token.
+
+**The certificate must be in the first store build.** A phone checks updates against the certificate compiled into its binary: a build made without one accepts unsigned updates for as long as it is installed, and adding the certificate later protects only the builds made after it. So generate the key and put the certificate in `app.config.ts` *before* the first `eas build --profile production`, not before the first update. This is not configured yet: it needs the EAS project to exist first, and the key must be made on a machine the owner controls, not in a workflow.
 
 ## The kill switch
 

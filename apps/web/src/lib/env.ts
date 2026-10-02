@@ -440,7 +440,9 @@ export function readFeesSecretKey(): { ok: true; key: Buffer } | { ok: false; pr
  * local order ids and /dev/payments settles them, so the whole checkout runs
  * with no account anywhere; "razorpay" talks to the real API with each
  * school's own keys; "off" is what a deployed server gets when it names
- * neither — online payment unavailable, everything else unchanged.
+ * neither — online payment unavailable, everything else unchanged — and what
+ * anyone gets by naming it. A deployed server named "devbox" does not boot
+ * (checkEnv); were it asked anyway, it would answer "off".
  */
 export type FeesGatewayTransport = "devbox" | "razorpay" | "off";
 /** The company's own account for paid sessions, decided the same way; the variables are read in gig-gateway-env.ts. */
@@ -448,7 +450,9 @@ export function readGigGatewayTransport(): GigGatewayTransport {
   return readGigTransport(isDeployed());
 }
 export function readFeesGatewayTransport(): FeesGatewayTransport {
-  if (process.env.FEES_GATEWAY_TRANSPORT === "razorpay") return "razorpay";
+  const named = process.env.FEES_GATEWAY_TRANSPORT?.trim();
+  if (named === "razorpay") return "razorpay";
+  if (named === "off") return "off";
   // A deployed server never mints pretend orders: with no real transport
   // named, online payment is simply OFF — the settings page says so and the
   // checkout refuses — and UPI-id and counter payments carry on. Not a boot
@@ -551,6 +555,21 @@ export function checkEnv(): EnvProblem[] {
       message:
         `VAPID_SUBJECT is still the shipped placeholder (${PLACEHOLDER_SUBJECT}) — a .local address no push service can reach. Set it to an address somebody reads.`,
       fatal: true,
+    });
+  }
+
+  // The browser's half of the pair is fixed into the client bundle by `next
+  // build` (next.config.ts records whether it was there). An image built
+  // without it serves browsers no key even when the host sets one: the server
+  // pushes to phones, and the browser's switch says push is not configured.
+  // Said once at boot, never fatal — phones are unaffected. The marker is
+  // undefined outside a Next build (the tests), which says nothing.
+  if (isProd && process.env.VAPID_PRIVATE_KEY?.trim() && process.env.VAPID_PUBLIC_KEY_BUILT === "0") {
+    problems.push({
+      key: "NEXT_PUBLIC_VAPID_PUBLIC_KEY",
+      message:
+        "This build was made without NEXT_PUBLIC_VAPID_PUBLIC_KEY, so browsers get no push key and web push is off (phone push is unaffected). Rebuild the image with `--build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY=<the public key>` (docs/runbooks/deploy.md).",
+      fatal: false,
     });
   }
 
@@ -665,6 +684,20 @@ export function checkEnv(): EnvProblem[] {
       key: "MESSAGE_TEMPLATE_IDS",
       message: "A live SMS or WhatsApp transport is set and MESSAGE_TEMPLATE_IDS is empty: the templates were renamed on 2 October 2026 and must be registered again (docs/runbooks/messaging.md) before a text can be sent. Set the ids, or set the transport back to devbox.",
       fatal: isProd,
+    });
+  }
+
+  // Pretend fee orders on a real deployment: decision 0003 and deploy.md say
+  // a deployed server refuses devbox at boot, and it does — saying "devbox"
+  // there is a laptop's setting copied by mistake, not a choice. Unset (or
+  // "off") is allowed: online payment is off and UPI-id and counter
+  // payments carry on (readFeesGatewayTransport).
+  if (isProd && process.env.FEES_GATEWAY_TRANSPORT?.trim() === "devbox") {
+    problems.push({
+      key: "FEES_GATEWAY_TRANSPORT",
+      message:
+        'FEES_GATEWAY_TRANSPORT is "devbox" on a deployed server: devbox mints pretend fee orders that /dev/payments settles, and /dev is closed here. Set FEES_GATEWAY_TRANSPORT=razorpay for schools\' own accounts, or remove it (or set "off") to leave online fees off (decision 0003).',
+      fatal: true,
     });
   }
 

@@ -1,5 +1,5 @@
-import { afterEach, describe, expect, it } from "vitest";
-import { assertEnv, checkEnv } from "./env";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { assertEnv, checkEnv, readFeesGatewayTransport } from "./env";
 
 /**
  * Regression suite for a bug found by noticing a stray warning in test output:
@@ -31,9 +31,18 @@ const KEYS = [
   "FILE_LINK_SECRET",
   "MESSAGE_TEMPLATE_IDS",
   "WHATSAPP_TRANSPORT",
+  "FEES_GATEWAY_TRANSPORT",
+  "VAPID_PUBLIC_KEY_BUILT",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
+
+// The laptop's .env names the devbox fee transport, which a deployed
+// configuration may not carry (decision 0003): every case starts without it,
+// and the ones about it set it. afterEach puts the file's value back.
+beforeEach(() => {
+  delete (process.env as Record<string, string | undefined>).FEES_GATEWAY_TRANSPORT;
+});
 
 afterEach(() => {
   for (const key of KEYS) {
@@ -501,5 +510,97 @@ describe("⚠ checkEnv — the VAPID pair, checked as a pair", () => {
 
     set({ ...base, VAPID_SUBJECT: "https://edulink.example/contact" });
     expect(checkEnv().some((p) => p.key === "VAPID_SUBJECT")).toBe(false);
+  });
+});
+
+describe("⚠ checkEnv — pretend fee orders on a deployed server (decision 0003)", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+    VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+    VAPID_SUBJECT: "mailto:ops@edulink.example",
+    ...GOOD_SMTP,
+    ...GOOD_TWILIO,
+    ...GOOD_FILE_LINKS,
+    ...GOOD_TEMPLATE_IDS,
+  } as const;
+
+  it("⚠ FEES_GATEWAY_TRANSPORT=devbox refuses to boot a deployment, naming the variable", () => {
+    set({ ...deployed, FEES_GATEWAY_TRANSPORT: "devbox" });
+    const problem = checkEnv().find((p) => p.key === "FEES_GATEWAY_TRANSPORT");
+    expect(problem?.fatal).toBe(true);
+    expect(problem!.message).toMatch(/FEES_GATEWAY_TRANSPORT is "devbox"/);
+    expect(() => assertEnv()).toThrow(/FEES_GATEWAY_TRANSPORT/);
+    // Were it asked anyway, a deployed server never mints a pretend order.
+    expect(readFeesGatewayTransport()).toBe("off");
+  });
+
+  it("unset, \"off\" and \"razorpay\" all boot a deployment", () => {
+    set(deployed);
+    unset("FEES_GATEWAY_TRANSPORT");
+    expect(checkEnv()).toEqual([]);
+    expect(readFeesGatewayTransport()).toBe("off");
+    set({ FEES_GATEWAY_TRANSPORT: "off" });
+    expect(checkEnv()).toEqual([]);
+    expect(readFeesGatewayTransport()).toBe("off");
+    set({ FEES_GATEWAY_TRANSPORT: "razorpay" });
+    expect(checkEnv()).toEqual([]);
+    expect(readFeesGatewayTransport()).toBe("razorpay");
+  });
+
+  it("a laptop, and CI's production build on localhost, keep devbox — the checkout is tested through it", () => {
+    for (const env of [
+      { NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" },
+      // battery.yml's server jobs: `next start` (NODE_ENV=production) on http://localhost:3000.
+      { NODE_ENV: "production", NEXT_PUBLIC_APP_URL: "http://localhost:3000" },
+    ]) {
+      set({ ...deployed, ...env, FEES_GATEWAY_TRANSPORT: "devbox" });
+      expect(checkEnv().some((p) => p.key === "FEES_GATEWAY_TRANSPORT"), env.NODE_ENV).toBe(false);
+      expect(readFeesGatewayTransport()).toBe("devbox");
+    }
+    // Naming "off" turns it off anywhere.
+    set({ NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000", FEES_GATEWAY_TRANSPORT: "off" });
+    expect(readFeesGatewayTransport()).toBe("off");
+  });
+});
+
+describe("checkEnv — an image built without the browser's push key", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+    VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+    VAPID_SUBJECT: "mailto:ops@edulink.example",
+    ...GOOD_SMTP,
+    ...GOOD_TWILIO,
+    ...GOOD_FILE_LINKS,
+    ...GOOD_TEMPLATE_IDS,
+  } as const;
+
+  it("says so once at boot when deployed, and still boots — phones are unaffected", () => {
+    set({ ...deployed, VAPID_PUBLIC_KEY_BUILT: "0" });
+    const problems = checkEnv();
+    expect(problems).toHaveLength(1);
+    expect(problems[0]!.key).toBe("NEXT_PUBLIC_VAPID_PUBLIC_KEY");
+    expect(problems[0]!.fatal).toBe(false);
+    expect(problems[0]!.message).toMatch(/--build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY/);
+    expect(() => assertEnv()).not.toThrow();
+  });
+
+  it("is silent when the build had the key, on a laptop, with no private key, and outside a Next build", () => {
+    set({ ...deployed, VAPID_PUBLIC_KEY_BUILT: "1" });
+    expect(checkEnv()).toEqual([]);
+    set({ ...deployed, VAPID_PUBLIC_KEY_BUILT: "0", NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    expect(checkEnv().some((p) => p.key === "NEXT_PUBLIC_VAPID_PUBLIC_KEY")).toBe(false);
+    set({ ...deployed });
+    unset("VAPID_PUBLIC_KEY_BUILT");
+    expect(checkEnv()).toEqual([]);
   });
 });

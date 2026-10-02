@@ -56,10 +56,35 @@ describe("the session token", () => {
       process.env.EXPO_PUBLIC_API_URL = "https://api.example";
       // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
       expect(() => jest.isolateModules(() => require("@/lib/api"))).not.toThrow();
-      // The loopback never leaves the machine: a release export may point at it (the CI sweep does).
+      // A web export's loopback never leaves the machine: a release export of
+      // the web target may point at it (the CI sweep does).
       process.env.EXPO_PUBLIC_API_URL = "http://localhost:3000";
+      const onWeb = () =>
+        jest.isolateModules(() => {
+          // eslint-disable-next-line @typescript-eslint/no-require-imports -- the instance api.ts will import
+          const { Platform } = require("react-native") as typeof import("react-native");
+          const os = jest.replaceProperty(Platform, "OS", "web");
+          try {
+            // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
+            require("@/lib/api");
+          } finally {
+            os.restore();
+          }
+        });
+      expect(onWeb).not.toThrow();
+      // A phone's loopback is the phone: a store build or an over-the-air
+      // update made without EXPO_PUBLIC_API_URL falls back to localhost and
+      // must refuse to start rather than reach nothing (the OTA workflow once
+      // published exactly that).
       // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
-      expect(() => jest.isolateModules(() => require("@/lib/api"))).not.toThrow();
+      expect(() => jest.isolateModules(() => require("@/lib/api"))).toThrow(/is the phone itself/);
+      process.env.EXPO_PUBLIC_API_URL = "http://127.0.0.1:3000";
+      // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
+      expect(() => jest.isolateModules(() => require("@/lib/api"))).toThrow(/is the phone itself/);
+      delete process.env.EXPO_PUBLIC_API_URL;
+      // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
+      expect(() => jest.isolateModules(() => require("@/lib/api"))).toThrow(/without EXPO_PUBLIC_API_URL/);
+      expect(onWeb).not.toThrow();
       // A LAN address is the network, not the machine.
       process.env.EXPO_PUBLIC_API_URL = "http://192.168.1.10:3000";
       // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case

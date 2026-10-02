@@ -13,16 +13,29 @@ Two kinds, both required:
 
 ## The drill
 
-Run it before go-live and then quarterly. Restore into a **new** database,
-never the live one; prove the counts; then drop it or swap `DATABASE_URL` to
-it.
+Run it before go-live and then quarterly. Restore into a **new** database
+with a scratch name (`edulink_restore`), never the live one and never the
+laptop's dev database (`edulink_dev`); prove the counts; then drop it or swap
+`DATABASE_URL` to it. A dump of production holds children's records: restore
+it at the provider, not onto a laptop.
 
 ```bash
 DATABASE_ADMIN_URL=postgresql://owner@host/edulink BACKUP_DIR=./backups ops/backup.sh
-ops/restore.sh backups/edulink-<stamp>.dump edulink_restore
-cd apps/web && DATABASE_ADMIN_URL=postgresql://owner@host/edulink_restore node scripts/db-grants.mjs
-psql edulink_restore -c 'select count(*) from "School"'      # matches the live count
+TARGET_ADMIN_URL=postgresql://owner@host/edulink_restore \
+  ops/restore.sh backups/edulink-<stamp>.dump edulink_restore
+cd apps/web && DATABASE_ADMIN_URL=postgresql://owner@host/edulink_restore \
+  DATABASE_URL=postgresql://edulink_app:<password>@host/edulink_restore \
+  node scripts/db-grants.mjs
+psql postgresql://owner@host/edulink_restore -c 'select count(*) from "School"'   # matches the live count
 ```
+
+Both URLs, every time: `db-grants.mjs` grants to the role named in
+`DATABASE_URL` and then connects AS it to prove it can read. Given only the
+owner's URL it falls back to `.env`'s `DATABASE_URL` — the laptop's dev
+database — and its check proves nothing about the restore. `createdb` in
+`restore.sh` refuses a name that already exists, so a scratch name that is
+taken stops the drill rather than restoring over it. The scripts strip
+Prisma's pool parameters before libpq sees a URL (`apps/web/scripts/pg-url.mjs`).
 
 `db-grants.mjs` is the step people forget: a dump restores tables and rows,
 not the app role's grants or the row-level security policies, and a database

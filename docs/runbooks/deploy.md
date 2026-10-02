@@ -17,21 +17,34 @@ dies in the release step rather than serving.
 | `DATABASE_URL` | the **app** role: `edulink_app`, no BYPASSRLS, no ownership |
 | `DATABASE_ADMIN_URL` | the owner; used only by the release step and the jobs |
 | `NEXT_PUBLIC_APP_URL` | `https://app.example`; magic links and the SSO redirect URI are built from it |
-| `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | `npm run vapid` once; never rotate casually — every subscription is bound to the pair |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | `npm run vapid` once; never rotate casually — every subscription is bound to the pair. The public half is **also a build argument** (Release, step 2): `next build` fixes it into the browser's bundle, so a value set only on the host never reaches a browser (the server says so at boot and web push stays off; phones are unaffected). The server compares the built-in public half with the runtime private half at boot and refuses a mismatch |
 | `EMAIL_TRANSPORT=smtp` + `SMTP_*`, `EMAIL_FROM` | proven with `npm run email:test -- you@example.com` |
 | `SMS_TRANSPORT=twilio` + `TWILIO_*` | proven with `npm run sms:test -- +91…` |
 | `STORAGE_BUCKET` + `STORAGE_S3_*` | uploads in an S3-compatible bucket (R2, S3, B2); all five or none. Without them `STORAGE_DIR` on a mounted volume, one machine only |
 | `APP_COMMIT` | set by the build (`--build-arg APP_COMMIT=$(git rev-parse --short HEAD)`); `/api/health` reports it |
+| `SENTRY_DSN` | optional; the error tracker. `src/lib/metrics.ts` posts each unexpected error to Sentry's envelope endpoint by a plain fetch (no SDK) with the route, the error and the person's and school's ids as tags — never a body, header, cookie or query string. Without it errors go to the log only; `/root/metrics` shows which. Name Sentry in the privacy policy as a processor |
 | `SSO_*` | per provider; `npm run sso:check` before the first sign-in |
 | `FEES_SECRET_KEY` | `openssl rand -base64 32`; seals each school's gateway secrets at rest and the two-step sign-in secrets. Without it no school can save gateway keys and nobody can enrol in two-step sign-in (UPI-id and counter payments still work). Never rotate casually: every school re-enters its keys and every enrolment is redone. CI generates a throwaway; a deployment must set its own |
 | `FILE_LINK_SECRET` | `openssl rand -base64 32`; signs the five-minute links the phone opens files through. A deployment refuses to boot without it (env.ts); rotating it only expires the links in flight. CI generates a throwaway; a deployment must set its own |
-| `WHATSAPP_TRANSPORT=twilio` + `TWILIO_WHATSAPP_FROM` | WhatsApp to families through the same Twilio account; the sandbox number while testing. `MESSAGE_TEMPLATE_IDS` carries the DLT ids and WhatsApp content SIDs per template and language — `docs/runbooks/messaging.md`. Every template's wording changed with the name on 2 October 2026: register all 21 again before the first live send; a deployment with a live transport and no ids refuses to boot |
-| `FEES_GATEWAY_TRANSPORT=razorpay` | real orders at each school's *own* Razorpay account; `devbox` (the default) is refused when deployed. There is no platform gateway key — see decision 0003 |
+| `WHATSAPP_TRANSPORT=twilio` + `TWILIO_WHATSAPP_FROM` | WhatsApp to families through the same Twilio account; the sandbox number while testing. `MESSAGE_TEMPLATE_IDS` carries the DLT ids and WhatsApp content SIDs per template and language — `docs/runbooks/messaging.md`. Every template's wording changed with the name on 2 October 2026: register all 26 SMS bodies again before the first live send (21 from `npm run messages:templates` plus 5 that `src/lib/sms.ts` sends — see `messaging.md`); a deployment with a live transport and no ids refuses to boot |
+| `FEES_GATEWAY_TRANSPORT=razorpay` | real orders at each school's *own* Razorpay account. Unset (or `off`) on a deployed server: online fees are off, UPI-id and counter payments carry on. `devbox`, a laptop's setting, refuses to boot a deployed server (`env.ts`). There is no platform gateway key — see decision 0003 |
 
 ## Release
 
 1. CI green on `master` (the `battery` workflow, sweep included).
-2. Build the image from the repository root with the commit as a build arg.
+2. Build the image from the repository root with two build args, the commit
+   and the browser's push key (the public half of the pair the host holds):
+
+   ```bash
+   docker build -f apps/web/Dockerfile \
+     --build-arg APP_COMMIT=$(git rev-parse --short HEAD) \
+     --build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY=<the public key> \
+     -t edulink-web .
+   # or on Fly's builder: fly deploy --build-arg APP_COMMIT=… --build-arg NEXT_PUBLIC_VAPID_PUBLIC_KEY=…
+   ```
+
+   CI's `image` job does the same with a throwaway pair and checks the key
+   landed in the client bundle.
 3. Release step, before the new machines take traffic:
    `npm run db:migrate` — `prisma migrate deploy`, then `db-grants.mjs`, which
    re-applies `prisma/rls.sql` (every policy is dropped-if-exists and
@@ -43,13 +56,39 @@ dies in the release step rather than serving.
 
 Migrations are add-only for one release: a column or table goes in now, the
 code that stops reading the old one ships now, the drop ships next release.
-That is what makes the rollback below a plain image swap.
+That is what makes the rollback below a plain image swap — when it was kept.
 
 ## Rollback
 
-Redeploy the previous image. Because migrations are add-only, the previous
-code runs on the new schema. Rehearse it on staging before the first real
-release and note the time it took beside the restore drill in
+Redeploy the previous image. There are no down migrations, so the rule is:
+
+> **An image can be rolled back to only if every migration the database has
+> beyond that image's own folder is add-only.** The image's migrations are
+> always a prefix of the database's; what matters is what the extra ones did.
+> One that drops or renames a column or table leaves the older code reading
+> what is no longer there, and a rollback across it is a **restore from the
+> snapshot taken before that deploy** (`backup-restore.md`, point-in-time
+> recovery into a new database), not an image swap.
+
+`20261002100602_gig_company_collects` (`a11a7aa4`) dropped and renamed
+columns, so no image older than it runs on a database that has it: the last
+safe rollback point is that commit or later. Before any rollback, ask the
+database what the target image does not know:
+
+```bash
+docker run --rm -e DATABASE_URL="$OWNER_URL" ghcr.io/<owner>/edulink-web:<target sha> prisma migrate status
+```
+
+(`$OWNER_URL` through `fly proxy` on the laptop: add `--network host` on
+Linux, or use `host.docker.internal` in the URL on a Mac. It exits non-zero
+whenever the two differ; read its list, not its exit code.) Run against the
+target image, `prisma migrate status` reads that image's
+`prisma/migrations` and lists the migrations "applied to the database but
+missing from the local migrations folder". Read each one's `migration.sql`
+(`git show <new sha>:apps/web/prisma/migrations/<name>/migration.sql`): any
+`DROP` or `RENAME` among them means restore, not swap. None listed, or only
+`CREATE`/`ADD`, and the swap is safe. Rehearse it on staging before the first
+real release and note the time it took beside the restore drill in
 `backup-restore.md`.
 
 ## Scheduled jobs
@@ -79,7 +118,10 @@ release step, exactly as `fly.toml` runs it), serves it and checks
 image. With the repository variable `PUBLISH_IMAGE` set to `true` it also
 pushes `ghcr.io/<owner>/edulink-web:<sha>` and `:latest`, so a deploy is
 `fly deploy --image ghcr.io/<owner>/edulink-web:<sha>` rather than a remote
-build.
+build. Set the repository variable `NEXT_PUBLIC_VAPID_PUBLIC_KEY` to the
+deployment's public key first (it is public): the job builds the image with
+it, where otherwise it builds with a throwaway pair's — and a deployed server
+whose private key is not the built-in key's pair refuses to boot.
 
 ## Capacity
 
@@ -99,7 +141,11 @@ and 5.3 s with no error. The time is queueing, not per-request cost, so the
 settings for a fifty-school fleet are two `web` machines (`fly.toml` keeps
 two running) and a Prisma pool of thirty on each: append
 `?connection_limit=30&pool_timeout=20` to `DATABASE_URL` (the default is the
-machine's cores times two plus one, 5 on a shared-cpu-2x), and give Postgres
+machine's cores times two plus one, 5 on a shared-cpu-2x). Those parameters
+are Prisma's: psql and pg_dump refuse a URL that carries them, so every
+script that hands a URL to a libpq tool (the release step's `db-grants.mjs`,
+`ops/backup.sh`, `ops/restore.sh`) strips them first through
+`apps/web/scripts/pg-url.mjs`. Give Postgres
 `max_connections` room for both machines, the jobs machine and the release
 step (`2 × 30 + 10 + 5` is 75; a managed Postgres of the smallest size allows
 100). Before a launch, repeat the plan profile from a second machine with k6
@@ -142,8 +188,5 @@ more than a hundred families to go out.
 
 ## Open items before the first real school
 
-- **Error tracking.** The structured log line on every request error is in
-  `instrumentation.ts`; a Sentry DSN plugs into the same hook once the
-  account exists.
 - **Cloudflare in front**, with the rate limits in `rate-limit.ts` as the
   second line, not the first.

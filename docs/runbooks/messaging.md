@@ -15,9 +15,17 @@ Only the fixed templates in `message-templates.ts`, in the reader's language:
 | `feeDueSoon`, `feeOverdue` | `fees:remind` (daily 09:00) | a week before an instalment, on the day, a week and a month after |
 | `feeReceived` | every receipt | a payment posted at the counter, online or by UPI |
 | `circular` | a notice from `/admin/messaging/new` | when the office sends it |
+| `incident` | an incident staff record with the guardians to be told (web or phone) | when the record is saved (the `incidents` event) |
 | `test` | the office's own test button | on demand |
 
-Each school switches the four automatic events on or off, switches SMS and
+Seven templates in three languages: 21 bodies, which `npm run messages:templates`
+prints. Three account messages are sent as SMS outside this table, by
+`src/lib/sms.ts`, and are registered the same way: the password-reset code and
+the phone-confirm code (English only) and the notice to a number that was
+replaced (`sms.phoneChanged`, in English, Hindi and Marathi) — 5 more, so
+**26 SMS bodies** to register with DLT. WhatsApp carries only the 21.
+
+Each school switches the five automatic events on or off, switches SMS and
 WhatsApp on or off, and sets a monthly cap. A guardian switches SMS or
 WhatsApp off for themselves under their notification settings. WhatsApp is
 tried before SMS when both are open. Every attempt is a row in
@@ -31,8 +39,8 @@ person), no transport.
 > product's name (the sign-off is now "- Shalaghar", "- शालाघर", "- शाळाघर",
 > and the school line names Shalaghar), so any id registered under the old
 > wording no longer matches what the app sends and the operator drops the
-> text, billed. Register all 21 again (`npm run messages:templates` prints
-> them), then set `MESSAGE_TEMPLATE_IDS`; until the ids exist, leave the
+> text, billed. Register all 26 SMS bodies again (`npm run messages:templates`
+> prints 21; the other 5 are the account messages above), then set `MESSAGE_TEMPLATE_IDS`; until the ids exist, leave the
 > transports on `devbox` — a deployment with a live transport and no ids
 > refuses to boot.
 
@@ -41,7 +49,10 @@ person), no transport.
    a DLT platform (Jio, Airtel, Vodafone Idea or BSNL's portal — one is
    enough, they sync), and **every template must be registered verbatim**.
    Print them with `npm run messages:templates`; each language you will
-   send is a separate registration. Put the ids that come back in
+   send is a separate registration. Register the five account messages
+   from `src/lib/sms.ts` too (the reset and confirm codes in English, the
+   number-replaced notice in three languages) — a code that does not
+   arrive locks a person out of their account. Put the ids that come back in
    `MESSAGE_TEMPLATE_IDS` under `sms`. Twilio itself needs the DLT entity id
    and the header attached to the Messaging Service named in `TWILIO_FROM`.
 2. **WhatsApp.** `WHATSAPP_TRANSPORT=twilio` and `TWILIO_WHATSAPP_FROM`.

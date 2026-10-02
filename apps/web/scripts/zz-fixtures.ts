@@ -46,6 +46,7 @@ import { config } from "dotenv";
 import { createHash } from "node:crypto";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
 import { buildSweepDoors } from "./sweep-doors";
+import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 
 /** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
 export function fakePen(membershipId: string): string {
@@ -2373,8 +2374,13 @@ async function buildContentTeam(ctx: Ctx) {
 
 /* -------------------------------------------------------------------------- */
 
-/** The fixtures mint known passwords and a superuser: never against a database that is not on this machine, never on production. */
-export function refuseUnlessLocal(): void {
+/**
+ * The fixtures mint known passwords and a superuser: never against a database
+ * that is not on this machine, never on production. The URL's host is checked
+ * first, then the server itself is asked where it answered (a `fly proxy` to
+ * production is "localhost" too) — scripts/local-db-guard.mjs.
+ */
+export async function refuseUnlessLocal(what = "zz:fixtures"): Promise<void> {
   const url = process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL ?? "";
   let host = "";
   try { host = new URL(url).hostname; } catch { host = ""; }
@@ -2382,10 +2388,11 @@ export function refuseUnlessLocal(): void {
   if (process.env.NODE_ENV === "production" || !local) {
     throw new Error(`refusing to build fixtures: NODE_ENV=${process.env.NODE_ENV ?? "unset"}, database host "${host || "unknown"}" is not local`);
   }
+  await refuseUnlessLocalDatabase(db, what);
 }
 
 async function main() {
-  refuseUnlessLocal();
+  await refuseUnlessLocal();
   if (process.argv.includes("--teardown")) {
     await teardown();
     return;

@@ -39,6 +39,11 @@ const hsts = `max-age=63072000; includeSubDomains${process.env.HSTS_PRELOAD === 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // Whether the browser's push key was present when this build ran. A
+  // NEXT_PUBLIC_ value is fixed into the client bundle at build time, so a key
+  // set only on the host at runtime reaches the server and never a browser;
+  // env.ts reads this marker at boot to say so (the Dockerfile's build arg).
+  env: { VAPID_PUBLIC_KEY_BUILT: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY?.trim() ? "1" : "0" },
   // A self-contained server for the container: .next/standalone carries the
   // app and only the node_modules it traced. The root is the workspace, not
   // this package, so the traced files keep their apps/web paths.

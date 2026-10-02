@@ -5,7 +5,14 @@
  * naming a platform key there, which is why these names are read here, in a
  * module env.ts calls into but does not spell them out in.
  *
- *   GATEWAY_PLATFORM_KEY_ID          the Route-enabled key id (rzp_live_… / rzp_test_…)
+ * The company collects (the second amendment to decision 0004): a seat's
+ * fee is paid into this account, the commission and its GST are fixed at
+ * capture, and the expert is paid later from the company's own bank. So the
+ * account needs no Route and no linked accounts — the adapter
+ * (gig-gateway.ts) makes three calls, an order, a payment read and a refund,
+ * and the webhook hears payment.captured, payment.failed and refund.failed.
+ *
+ *   GATEWAY_PLATFORM_KEY_ID          the company's key id (rzp_live_… / rzp_test_…)
  *   GATEWAY_PLATFORM_SECRET_ENC      its secret, SEALED under FEES_SECRET_KEY by
  *                                    src/lib/secret-box.ts with the binding
  *                                    "gateway:platform:secret" — `npm run secret:seal`

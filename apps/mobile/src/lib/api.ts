@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import { createApiClient, type ApiClient } from "@edulink/api-client";
 import { KEYS, keyStore } from "./storage";
 
@@ -21,12 +22,20 @@ export const API_BASE = (process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:30
 // A release build talks to the API over TLS or not at all: a plain-http base
 // in a production bundle is a misconfiguration, and the app refuses to start
 // rather than send a session token in the clear. Development and the tests
-// (where __DEV__ is true) may point anywhere; a release export may point at
-// the loopback, which never leaves the machine — that is how the CI sweep
-// exports the web target against its own API.
+// (where __DEV__ is true) may point anywhere. A release export of the WEB
+// target may point at the loopback, which never leaves the machine — that is
+// how the CI sweep exports the web target against its own API. A release for
+// a PHONE may not: a phone's loopback is the phone, so a store build or an
+// over-the-air update made without EXPO_PUBLIC_API_URL (the fallback above)
+// would ship an app that reaches nothing. It refuses to start instead.
 const LOOPBACK = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/;
-if (!__DEV__ && !API_BASE.startsWith("https://") && !LOOPBACK.test(API_BASE)) {
-  throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build (got ${API_BASE})`);
+if (!__DEV__ && !API_BASE.startsWith("https://")) {
+  if (!LOOPBACK.test(API_BASE)) {
+    throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build (got ${API_BASE})`);
+  }
+  if (Platform.OS !== "web") {
+    throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build for a phone: ${API_BASE} is the phone itself — was the build or update made without EXPO_PUBLIC_API_URL?`);
+  }
 }
 
 /**

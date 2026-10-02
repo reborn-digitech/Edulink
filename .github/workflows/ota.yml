@@ -5,6 +5,21 @@ name: mobile over-the-air update
 # refuses one that touches a native module (that is a store release: bump the
 # version, build, tag mobile-vX.Y.Z). Needs the EXPO_TOKEN secret and an EAS
 # project id; until those exist this workflow is documented, not exercised.
+#
+# THE API URL IS BUNDLED INTO THE UPDATE. `eas update` builds the JavaScript
+# here, on this runner, so EXPO_PUBLIC_API_URL must be in eas update's
+# environment: without it src/lib/api.ts falls back to http://localhost:3000
+# and every phone that takes the update would talk to itself (a phone release
+# now refuses to start on a loopback base). It comes from a repository
+# variable per channel — Settings → Secrets and variables → Actions →
+# Variables:
+#   EXPO_PUBLIC_API_URL_PRODUCTION   https://<the production host>
+#   EXPO_PUBLIC_API_URL_STAGING      https://<the staging host> (eas.json's staging profile)
+# each equal to what the channel's store build was made with (the EAS
+# environment variable of the same name; docs/runbooks/mobile-release.md).
+# `--environment` loads that EAS environment's other variables the way the
+# build did: production for the production channel, preview for staging
+# (EAS's environments are development, preview and production).
 on:
   workflow_dispatch:
     inputs:
@@ -26,6 +41,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      # First, before anything is installed: no update without the API it
+      # talks to. Each channel reads its own variable and never falls back to
+      # the other's (a production update with staging's URL is as wrong as one
+      # with none). The choice is kept as OTA_API_URL and handed to eas
+      # update alone: the battery's tests expect the default base.
+      - name: The update knows its API
+        env:
+          URL_PRODUCTION: ${{ vars.EXPO_PUBLIC_API_URL_PRODUCTION }}
+          URL_STAGING: ${{ vars.EXPO_PUBLIC_API_URL_STAGING }}
+        run: |
+          if [ "${{ inputs.channel }}" = production ]; then
+            name=EXPO_PUBLIC_API_URL_PRODUCTION; url="$URL_PRODUCTION"; environment=production
+          else
+            name=EXPO_PUBLIC_API_URL_STAGING; url="$URL_STAGING"; environment=preview
+          fi
+          test -n "$url" || { echo "$name is not set: add it to the repository variables (the channel's https API origin). Refusing to publish an update that would talk to localhost."; exit 1; }
+          case "$url" in
+            https://*) ;;
+            *) echo "$name is \"$url\": a release talks to the API over https only."; exit 1 ;;
+          esac
+          echo "API for ${{ inputs.channel }}: $url (EAS environment $environment)"
+          echo "OTA_API_URL=$url" >> "$GITHUB_ENV"
+          echo "EAS_ENVIRONMENT=$environment" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -49,4 +87,5 @@ jobs:
         run: |
           test -n "$EXPO_TOKEN" || { echo "EXPO_TOKEN is not set: add the Expo account's token to the repository secrets"; exit 1; }
           test -n "$EAS_PROJECT_ID" || { echo "EAS_PROJECT_ID is not set: add the project id to the repository variables"; exit 1; }
-          npx eas-cli@latest update --channel "${{ inputs.channel }}" --message "${{ inputs.message }}" --non-interactive
+          test -n "$OTA_API_URL" || { echo "No API URL for this channel: refusing to run eas update"; exit 1; }
+          EXPO_PUBLIC_API_URL="$OTA_API_URL" npx eas-cli@latest update --channel "${{ inputs.channel }}" --environment "$EAS_ENVIRONMENT" --message "${{ inputs.message }}" --non-interactive

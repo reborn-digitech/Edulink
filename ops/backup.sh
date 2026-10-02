@@ -17,9 +17,21 @@ KEEP_DAYS="${KEEP_DAYS:-14}"
 STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 OUT="$BACKUP_DIR/edulink-$STAMP.dump"
 
+# pg_dump is libpq, which refuses Prisma's pool settings in a URL
+# (`?connection_limit=…`); the one helper the scripts share strips them.
+PG_URL="$(dirname "$0")/../apps/web/scripts/pg-url.mjs"
+if command -v node > /dev/null; then
+  DUMP_URL="$(node "$PG_URL" "$DATABASE_ADMIN_URL")"
+elif [[ "$DATABASE_ADMIN_URL" == *\?* ]]; then
+  echo "node is needed to strip Prisma's parameters from DATABASE_ADMIN_URL (apps/web/scripts/pg-url.mjs)" >&2
+  exit 1
+else
+  DUMP_URL="$DATABASE_ADMIN_URL"
+fi
+
 mkdir -p "$BACKUP_DIR"
 start=$(date +%s)
-pg_dump --format=custom --no-owner --no-privileges --file="$OUT" "$DATABASE_ADMIN_URL"
+pg_dump --format=custom --no-owner --no-privileges --file="$OUT" "$DUMP_URL"
 # A dump that cannot be listed is not a backup.
 pg_restore --list "$OUT" > /dev/null
 size=$(du -h "$OUT" | cut -f1)

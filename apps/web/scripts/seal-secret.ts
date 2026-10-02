@@ -6,10 +6,12 @@ import { createCipheriv, randomBytes } from "node:crypto";
  * in the environment rather than a row: the company's gateway secret for paid
  * seats (GATEWAY_PLATFORM_SECRET_ENC, binding "gateway:platform:secret").
  *
- *   npm run secret:seal -- gateway:platform:secret <the plain secret>
+ *   FEES_SECRET_KEY=… npm run secret:seal -- gateway:platform:secret <the plain secret>
  *
- * Prints the sealed value and nothing else; the plain secret is read from the
- * argument and never echoed. The box itself is "server-only" and cannot be
+ * The key is read from the shell environment, not from .env (nothing here
+ * loads that file): the deployment's key, set for this one command. Prints the
+ * sealed value and nothing else; the plain secret is read from the argument
+ * and never echoed. The box itself is "server-only" and cannot be
  * imported by a script, so the few lines are repeated here on purpose.
  */
 const [binding, plain] = process.argv.slice(2);
@@ -19,7 +21,7 @@ if (!binding || !plain) {
   process.exit(2);
 }
 if (!raw) {
-  console.error("FEES_SECRET_KEY is not set: generate one with `openssl rand -base64 32` and put it in .env first.");
+  console.error("FEES_SECRET_KEY is not set in this shell. The key is read from the shell environment, not from .env — the deployment's key, for this one command: `FEES_SECRET_KEY=… npm run secret:seal -- <binding> <secret>` (a new key: `openssl rand -base64 32`).");
   process.exit(2);
 }
 const key = Buffer.from(raw, "base64");
