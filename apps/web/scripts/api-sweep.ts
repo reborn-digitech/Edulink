@@ -362,7 +362,38 @@ async function hit(e: Endpoint, token: string | null, path: string, body?: strin
   const first = await hitOnce(e, token, path, body);
   if (first !== 0) return first;
   await new Promise((resolve) => setTimeout(resolve, 750));
-  return hitOnce(e, token, path, body);
+  const second = await hitOnce(e, token, path, body);
+  if (second === 0) await serverStillThere(`${e.method} ${e.path}`);
+  return second;
+}
+
+/**
+ * The server gone is not a result. The desktop app stops the dev server on
+ * its own now and then, and on 2 October 2026 a sweep marched through 468
+ * doors after it had, reporting "got 0" for each and spending twenty
+ * minutes to say one thing. After a door answers 0 twice the health probe
+ * is asked; if it does not answer, the run ends here with the door it
+ * stopped at and the flag that resumes from it, exit code 2, so a dead
+ * server costs seconds and reads as itself and not as 468 failures.
+ */
+export class ServerGone extends Error {
+  constructor(public readonly at: string) {
+    super(`the server at ${BASE} stopped answering at ${at}`);
+  }
+}
+
+async function serverStillThere(at: string): Promise<void> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5_000);
+  try {
+    const res = await fetch(BASE + "/api/health", { signal: controller.signal });
+    if (res.status === 200) return;
+  } catch {
+    /* no answer */
+  } finally {
+    clearTimeout(timer);
+  }
+  throw new ServerGone(at);
 }
 
 async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string): Promise<number> {
@@ -654,6 +685,12 @@ async function main() {
 
 main()
   .catch((e) => {
+    if (e instanceof ServerGone) {
+      const path = e.at.replace(/^\w+ /, "");
+      console.error(`✗ ${e.message}: nothing after it was tried. Restart the server (check ${BASE}/api/health) and rerun; to pick up from that door: npm run api:sweep -- --only=${path.replace(/^\/api\/v1/, "")}`);
+      process.exitCode = 2;
+      return;
+    }
     console.error(e);
     process.exitCode = 1;
   })

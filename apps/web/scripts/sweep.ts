@@ -60,10 +60,38 @@ async function hit(actor: Actor | null, path: string): Promise<{ status: number;
       const body = res.status === 200 ? await res.text() : "";
       return { status: res.status, body, loc: res.headers.get("location") };
     } catch (error) {
-      if (attempt >= 3) throw error;
+      if (attempt >= 3) {
+        // Three refusals of one page: the server, or the page? The health
+        // probe says which; a server that has gone ends the run with the
+        // page it stopped at (the desktop app stops the dev server on its
+        // own now and then), rather than one thrown error per page after.
+        await serverStillThere(path);
+        throw error;
+      }
       await new Promise((r) => setTimeout(r, 500 * attempt));
     }
   }
+}
+
+/** Thrown when the health probe fails after a page refused three times: the server is gone, not the page. */
+class ServerGone extends Error {
+  constructor(public readonly at: string) {
+    super(`the server at ${BASE} stopped answering at ${at}`);
+  }
+}
+
+async function serverStillThere(at: string): Promise<void> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5_000);
+  try {
+    const res = await fetch(BASE + "/api/health", { signal: controller.signal });
+    if (res.status === 200) return;
+  } catch {
+    /* no answer */
+  } finally {
+    clearTimeout(timer);
+  }
+  throw new ServerGone(at);
 }
 
 /**
@@ -2685,7 +2713,8 @@ async function main() {
 }
 
 main().catch(async (e) => {
-  console.error(e);
+  if (e instanceof ServerGone) console.error(`✗ ${e.message}: nothing after it was tried. Restart the server (check ${BASE}/api/health) and rerun.`);
+  else console.error(e);
   await db.session.deleteMany({ where: { userAgent: "sweep" } });
-  process.exit(1);
+  process.exit(e instanceof ServerGone ? 2 : 1);
 });
