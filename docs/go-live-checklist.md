@@ -1,5 +1,7 @@
 # Go-live checklist
 
+> Superseded on 2 October 2026 by `docs/runbooks/go-live.md`, which is step by step, names who does each step and how to verify it, and corrects two things below: the first school is onboarded by the operator through `/root/onboard`, not `/register`, and Cloudflare must not sit in front of Fly (the rate limiter trusts `Fly-Client-IP`, which would be Cloudflare's address). Kept for the record.
+
 Tick each line with the date and who did it. Nothing here is optional.
 
 ## Infrastructure
