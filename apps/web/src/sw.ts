@@ -20,9 +20,8 @@ declare const self: ServiceWorkerGlobalScope;
  * Caching strategy is chosen per resource by how bad stale data would be:
  *   * app shell / build assets — precached, immutable, hashed filenames
  *   * navigations              — network-first, falling back to /offline
- *   * API reads                — network-first with a short cache, so a phone
- *                                that loses signal still shows this morning's
- *                                register instead of a spinner
+ *   * API reads                — never cached (network only); the page cache
+ *                                and the outbox carry what offline needs
  *   * API writes               — never cached; they go through the outbox
  *   * images/fonts             — cache-first with expiry
  */
@@ -59,20 +58,18 @@ const serwist = new Serwist({
       handler: new NetworkOnly(),
     },
     {
+      /**
+       * API reads are NEVER cached by the worker since 2 October 2026. They
+       * were kept a day under NetworkFirst, for a phone that lost signal to
+       * show this morning's register; but the pages are server-rendered
+       * (the page cache below carries them), the outbox carries the writes
+       * that matter, and a day of one person's JSON on a shared classroom
+       * tablet was the privacy surface the campaign of 1 October named. A
+       * read with no network now fails as the fetch fails, and the page
+       * says so, rather than answering with what the last person saw.
+       */
       matcher: ({ url, request }) => url.pathname.startsWith("/api/") && request.method === "GET",
-      handler: new NetworkFirst({
-        cacheName: "edulink-api",
-        networkTimeoutSeconds: 4,
-        plugins: [
-          new ExpirationPlugin({ maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 }),
-          {
-            // A response the server said not to store (a PDF, a record, a
-            // session answer) is not kept for the next person on the device.
-            cacheWillUpdate: async ({ response }) =>
-              response.ok && !/no-store/i.test(response.headers.get("cache-control") ?? "") ? response : null,
-          },
-        ],
-      }),
+      handler: new NetworkOnly(),
     },
     {
       matcher: ({ request, url }) =>
@@ -252,6 +249,7 @@ self.addEventListener("message", (event) => {
   }
   // The page saw the person change (sign-out, or someone else signing in):
   // what the last person read must not be the next person's offline page.
+  // edulink-api is no longer written; deleting it clears what an earlier worker left.
   if (type === "CLEAR_PRIVATE") {
     event.waitUntil(Promise.all(["edulink-api", "edulink-pages"].map((name) => caches.delete(name))));
   }
