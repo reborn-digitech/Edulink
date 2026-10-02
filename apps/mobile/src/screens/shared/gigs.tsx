@@ -43,14 +43,18 @@ export function ReasonThen({ label, about, busy, onSubmit }: { label: string; ab
   );
 }
 
-export type SessionPaymentStatus = "INITIATED" | "PAID" | "HELD" | "RELEASED" | "REFUNDED" | "FAILED";
+/** The company collects (decision 0004, second amendment of 2 October 2026): HELD until delivered plus 48 h, DUE in the expert's open payout, PAID_OUT once the company has paid them. */
+export type SessionPaymentStatus = "INITIATED" | "PAID" | "HELD" | "DUE" | "PAID_OUT" | "REFUNDED" | "FAILED";
 export const PAYMENT_STATUS: Record<SessionPaymentStatus, { label: TranslationKey; tone: "muted" | "ok" | "warn" | "danger" | "accent" }> = {
   INITIATED: { label: "gigs.paymentStatusINITIATED", tone: "accent" },
   PAID: { label: "gigs.paymentStatusPAID", tone: "warn" },
   HELD: { label: "gigs.paymentStatusHELD", tone: "warn" },
-  RELEASED: { label: "gigs.paymentStatusRELEASED", tone: "ok" },
+  DUE: { label: "gigs.paymentStatusDUE", tone: "accent" },
+  PAID_OUT: { label: "gigs.paymentStatusPAID_OUT", tone: "ok" },
   REFUNDED: { label: "gigs.paymentStatusREFUNDED", tone: "muted" },
   FAILED: { label: "gigs.paymentStatusFAILED", tone: "danger" },
 };
+/** A seat the company collected for has a receipt once it is paid; a refunded one carries the refund line. */
+export const RECEIPT_STATUSES: SessionPaymentStatus[] = ["PAID", "HELD", "DUE", "PAID_OUT", "REFUNDED"];
 /** The thirty days an open free one-to-one offer counts within (the server's MENTORING_OFFER_DAYS). */
 export const MENTORING_OFFER_DAYS = 30;

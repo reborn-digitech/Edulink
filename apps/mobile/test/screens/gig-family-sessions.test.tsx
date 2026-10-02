@@ -1,4 +1,5 @@
 import { Linking } from "react-native";
+import * as Sharing from "expo-sharing";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { gigFamilySessionsSchema } from "@edulink/contracts";
 import { FamilySessions, POLL } from "@/screens/family/sessions";
@@ -14,7 +15,7 @@ const view = (bookings: unknown[], open: unknown[] = [OPEN], over: Record<string
   gigFamilySessionsSchema.parse({ freeCancelHours: 12, paymentsOn: true, children: [{ id: "m-child", name: "ZZ Asha", schoolName: "ZZ School", timeZone: "Asia/Kolkata", allowance: { ONE_TO_ONE: { allowed: 2, used: 1, left: 1 }, WORKSHOP: { allowed: 2, used: 0, left: 2 } }, bookings, open, ...over }] });
 /** A paid seat's order, as the booking hands it back under devbox. */
 const CHECKOUT = { paymentId: "sp1", bookingId: "b9", orderId: "order_devbox1", keyId: "devbox", amountPaise: 10000, currency: "INR", transport: "devbox", title: "ZZ Build a paper bridge", pupilName: "ZZ Asha", payerName: "ZZ Guardian", payerEmail: null };
-const STATUS = (status: string) => ({ paymentId: "sp1", bookingId: "b9", status, amountPaise: 10000, bookingStatus: status === "INITIATED" ? "PENDING_PAYMENT" : "CONFIRMED", refundedAt: null, reason: null, checkout: status === "INITIATED" ? CHECKOUT : null });
+const STATUS = (status: string) => ({ paymentId: "sp1", bookingId: "b9", status, amountPaise: 10000, receiptNumber: status === "INITIATED" ? null : "SG-R/2026-27/0001", bookingStatus: status === "INITIATED" ? "PENDING_PAYMENT" : "CONFIRMED", refundedAt: null, reason: null, checkout: status === "INITIATED" ? CHECKOUT : null });
 
 describe("sessions and workshops, for a family", () => {
   beforeEach(() => mockRouter.push.mockClear());
@@ -88,7 +89,7 @@ describe("sessions and workshops, for a family", () => {
 
   it("a seat waiting for payment is paid from its own row, a paid seat says so, and a refund is read", async () => {
     const { calls } = await mountStaff(<FamilySessions />, "PARENT", {
-      [`GET ${PATH}`]: () => json(view([seat({ id: "b9", kind: "WORKSHOP", status: "PENDING_PAYMENT", meetingUrl: null, paid: true, pricePaise: 10000, canPay: true }), seat({ id: "b8", kind: "WORKSHOP", status: "CANCELLED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp8", status: "REFUNDED", amountPaise: 10000, refundedAt: "2030-10-01T00:00:00.000Z" }, canCancel: false })])),
+      [`GET ${PATH}`]: () => json(view([seat({ id: "b9", kind: "WORKSHOP", status: "PENDING_PAYMENT", meetingUrl: null, paid: true, pricePaise: 10000, canPay: true }), seat({ id: "b8", kind: "WORKSHOP", title: "ZZ Refunded workshop", status: "CANCELLED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp8", status: "REFUNDED", amountPaise: 10000, refundedAt: "2030-10-01T00:00:00.000Z" }, canCancel: false })])),
       [`POST ${PATH}/b9/checkout`]: () => json({ checkout: CHECKOUT }),
       "GET /api/v1/gigs/payments/sp1": () => json(STATUS("INITIATED")),
     });
@@ -98,6 +99,19 @@ describe("sessions and workshops, for a family", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Pay ₹100: ZZ Ask an engineer" }));
     expect(await screen.findByText("Pay for the seat · ₹100")).toBeTruthy();
     expect(calls().filter((c) => c.line === `POST ${PATH}/b9/checkout`)).toHaveLength(1);
+  });
+
+  it("a paid seat's receipt is fetched as a PDF and handed to the share sheet; a refunded seat has one too", async () => {
+    const { calls } = await mountStaff(<FamilySessions />, "PARENT", {
+      [`GET ${PATH}`]: () => json(view([seat({ id: "b9", kind: "WORKSHOP", status: "CONFIRMED", paid: true, pricePaise: 10000, payment: { paymentId: "sp1", status: "HELD", amountPaise: 10000, refundedAt: null } }), seat({ id: "b8", kind: "WORKSHOP", title: "ZZ Refunded workshop", status: "CANCELLED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp8", status: "REFUNDED", amountPaise: 10000, refundedAt: "2030-10-01T00:00:00.000Z" }, canCancel: false })])),
+      "GET /api/v1/gigs/payments/sp1/receipt": () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }),
+    });
+    expect(await screen.findByText("₹100 paid")).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: /^Receipt: / })).toHaveLength(2);
+    await fireEvent.press(screen.getByRole("button", { name: "Receipt: ZZ Ask an engineer" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls().filter((c) => c.line === "GET /api/v1/gigs/payments/sp1/receipt")).toHaveLength(1);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/Receipt sp1\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" }));
   });
 
   it("a pupil asks, and is told a guardian must agree", async () => {

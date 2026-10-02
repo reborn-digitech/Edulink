@@ -726,11 +726,36 @@ export async function buildGigSessions(northgate: { id: string }, southbank: { i
   // A PAID seat for pupil 01 in the same workshop, bought by their guardian and on hold for the expert
   // (decision 0004 as amended): the row the sweep reads GET /gigs/payments/{paymentId} with. The slot
   // carries the price the seat was bought at; the expert's own gate is not asked for a fixture row.
+  // The company collects (decision 0004, second amendment of 2 October 2026): ₹100 gross, ₹15 commission, ₹2.70 GST on it, ₹82.30 to the expert.
+  // The fixture's receipt and invoice numbers sit in their own "ZZ" series, so a real capture on the same server never meets them.
+  const fy = (() => { const d = new Date(); const y = d.getUTCMonth() + 1 >= 4 ? d.getUTCFullYear() : d.getUTCFullYear() - 1; return `${y}-${String((y + 1) % 100).padStart(2, "0")}`; })();
   const payer = p1?.guardianships[0]?.parentUserId ?? null;
+  await db.expertPayout.deleteMany({ where: { expertUserId: expert.id, reference: { startsWith: "ZZFIXTURE" } } });
+  // Where the company pays the ZZ expert: a UPI id and the GST state, as the expert would type them on "Get paid".
+  await db.expertPayoutAccount.upsert({ where: { expertUserId: expert.id }, create: { expertUserId: expert.id, payeeName: "Meenakshi Rao", upiId: "zz.meenakshi@upi", gstStateCode: "27", status: "ACTIVE" }, update: { payeeName: "Meenakshi Rao", upiId: "zz.meenakshi@upi", bankAccountEnc: null, bankLast4: null, ifsc: null, gstStateCode: "27", gstin: null, status: "ACTIVE", note: null } });
   if (p1 && payer) {
     await db.gigSlot.update({ where: { id: b.id }, data: { pricePaise: 10000 } });
     const paidSeat = await db.gigBooking.create({ data: { schoolId: northgate.id, slotId: b.id, studentMembershipId: p1.id, providerUserId: expert.id, kind: "WORKSHOP", status: "CONFIRMED", bookedByUserId: payer, purpose: "ZZ A second workshop past the free two: paid for.", academicYearId: yearN, consentAt: new Date(), consentUserId: payer, paid: true }, select: { id: true } });
-    await db.sessionPayment.create({ data: { bookingId: paidSeat.id, slotId: b.id, payerUserId: payer, expertUserId: expert.id, amountPaise: 10000, commissionPaise: 1500, orderId: `order_zzfixture${paidSeat.id.slice(-10)}`, paymentId: `pay_zzfixture${paidSeat.id.slice(-10)}`, transferId: `trf_zzfixture${paidSeat.id.slice(-10)}`, status: "HELD" } });
+    await db.sessionPayment.create({ data: { bookingId: paidSeat.id, slotId: b.id, payerUserId: payer, expertUserId: expert.id, amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, receiptNumber: `ZZ-R/${fy}/0001`, receiptSerial: 1, orderId: `order_zzfixture${paidSeat.id.slice(-10)}`, paymentId: `pay_zzfixture${paidSeat.id.slice(-10)}`, paidAt: new Date(), status: "HELD" } });
+  }
+  // A workshop held last month whose seat the company has already paid the expert for, with the tax invoice for its commission:
+  // the rows the expert's earnings, the operator's "paid" list and the invoice PDF doors read.
+  const payer2 = p2?.guardianships[0]?.parentUserId ?? null;
+  if (p2 && payer2) {
+    const past = await slot(expert.id, "EXPERT", null, "WORKSHOP", "ZZ Paper bridges, the first workshop", at(-30), 60, 20, 1);
+    await db.gigSlot.update({ where: { id: past.id }, data: { pricePaise: 10000 } });
+    const paidOut = await db.gigBooking.create({ data: { schoolId: northgate.id, slotId: past.id, studentMembershipId: p2.id, providerUserId: expert.id, kind: "WORKSHOP", status: "DELIVERED", bookedByUserId: payer2, purpose: "ZZ A paid seat the company has settled with the expert.", academicYearId: yearN, consentAt: at(-31), consentUserId: payer2, closedAt: at(-30, 11), paid: true }, select: { id: true } });
+    const payout = await db.expertPayout.create({ data: { expertUserId: expert.id, netPaise: 8230, paymentsCount: 1, status: "PAID", reference: "ZZFIXTUREUTR0001", paidAt: at(-26), note: "ZZ fixture: paid from the company's bank" }, select: { id: true } });
+    await db.sessionPayment.create({ data: { bookingId: paidOut.id, slotId: past.id, payerUserId: payer2, expertUserId: expert.id, amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, receiptNumber: `ZZ-R/${fy}/0002`, receiptSerial: 2, orderId: `order_zzfixture${paidOut.id.slice(-10)}`, paymentId: `pay_zzfixture${paidOut.id.slice(-10)}`, paidAt: at(-31), holdUntil: at(-28, 11), dueAt: at(-27), paidOutAt: at(-26), status: "PAID_OUT", payoutId: payout.id } });
+    await db.gigInvoice.create({
+      data: {
+        number: `ZZ/${fy}/0001`, series: `ZZ/${fy}`, serial: 1, payoutId: payout.id, expertUserId: expert.id, issuedAt: at(-26), locale: "en",
+        taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, sacCode: "998599",
+        sellerJson: JSON.stringify({ name: "ZZ Shalaghar Fixtures Private Limited", gstin: "27AAACZ9999Z1Z5", address: "ZZ 1, Fixture Road, Pune 411001", stateCode: "27" }),
+        buyerJson: JSON.stringify({ name: "Meenakshi Rao", gstin: null, address: null, stateCode: "27" }),
+        linesJson: JSON.stringify([{ paymentId: "zz-fixture", title: "ZZ Paper bridges, the first workshop", date: at(-30).toISOString().slice(0, 10), grossPaise: 10000, commissionPaise: 1500, gstPaise: 270 }]),
+      },
+    });
   }
   await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Careers in applied science", at(14), 30, 1, 0);
   if (lead) await slot(lead.teacher.userId, "TEACHER", northgate.id, "ONE_TO_ONE", "ZZ Reading aloud, a half hour", at(5, 9), 30, 1, 0);

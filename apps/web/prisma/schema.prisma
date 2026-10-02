@@ -468,6 +468,7 @@ model User {
   seatPaymentsMade     SessionPayment[]          @relation("SessionPaymentPayer")
   seatPaymentsEarned   SessionPayment[]          @relation("SessionPaymentExpert")
   expertPayouts        ExpertPayout[]            @relation("ExpertPayoutOwner")
+  gigInvoices          GigInvoice[]              @relation("GigInvoiceBuyer")
 
   /// Two-step sign-in (TOTP, RFC 6238), for the office, the head and the
   /// operator. The secret is sealed under FEES_SECRET_KEY and bound to
@@ -4635,6 +4636,25 @@ model GigSettings {
   seatPriceMaxPaise          Int      @default(30000)
   /// The company's share of a paid seat, in whole percent; the gateway's fee comes out of it.
   commissionPercent          Int      @default(15)
+  /// GST on the company's commission, in whole percent (18 to begin). The seat fee itself carries
+  /// no GST here: the company collects it on the expert's behalf and invoices only its own share
+  /// (decision 0004, second amendment of 2 October 2026).
+  gstPercent                 Int      @default(18)
+  /// THE COMPANY AS THE SELLER ON ITS TAX INVOICES — the merchant of record for its commission.
+  /// A payout cannot be recorded paid until the legal name, the GSTIN and the state code are set;
+  /// src/lib/gig-payments.ts refuses by name. Frozen into every GigInvoice's sellerJson at issue.
+  companyLegalName           String?
+  companyGstin               String?
+  companyAddress             String?
+  /// Two-digit GST state code (27 Maharashtra). The expert's state against this one decides
+  /// CGST+SGST (the same state) or IGST (another).
+  companyStateCode           String?
+  /// The SAC the commission is invoiced under. 998599 ("other support services n.e.c.") is the
+  /// placeholder the owner chose on 2 October 2026; THE ACCOUNTANT MUST CONFIRM IT, as they must
+  /// the point of taxation and TCS under section 52 — see decision 0004's second amendment.
+  invoiceSacCode             String   @default("998599")
+  /// The series an invoice number begins with: SG/2026-27/0001; receipts SG-R/2026-27/0001.
+  invoicePrefix              String   @default("SG")
   updatedByUserId            String?
   updatedAt                  DateTime @updatedAt
 }
@@ -4824,34 +4844,47 @@ model GigBooking {
   @@index([studentMembershipId])
 }
 
-/// Where an expert is paid for a seat: their own linked account at the company's gateway (Razorpay
-/// Route), to which the gateway itself sends the seat's price less the commission. The platform never
-/// holds the money (decisions 0003 and 0004). NONE until the expert links one; PENDING while the
-/// gateway checks their papers; ACTIVE once it may receive a transfer. Linking needs KYC VERIFIED
-/// first (src/lib/expert-kyc.ts is the one truth for "verified"). No school: bound to the person.
+/// Where an expert is paid for a seat: THE PAYEE DETAILS THE COMPANY PAYS FROM ITS OWN BANK, typed
+/// by the expert on the "Get paid" card (decision 0004, second amendment of 2 October 2026: the
+/// company collects the seat fee, keeps its commission with a GST invoice, and pays the expert
+/// itself — no gateway linked account, no transfer). A UPI id, or a bank account sealed by
+/// src/lib/secret-box.ts under the binding `gig:payee:<expertUserId>` with its IFSC; the last
+/// four digits are kept in the clear for the operator's eye and the sealed number is NEVER
+/// returned by any API. The GST state code is the place of supply on the invoice; a GSTIN makes
+/// it a B2B invoice. NONE until the details are saved; ACTIVE once they are and KYC is VERIFIED
+/// (src/lib/expert-kyc.ts is the one truth for "verified"); SUSPENDED by the operator with a
+/// note. No school: bound to the person.
 model ExpertPayoutAccount {
-  expertUserId    String   @id
-  /// The gateway's id for the linked account (acc_…); "acc_devbox…" under the devbox transport.
-  linkedAccountId String?
-  /// NONE | PENDING | ACTIVE
-  status          String   @default("NONE")
-  /// The gateway's onboarding page for a PENDING account, when the API returned one.
-  onboardingUrl   String?
-  /// Why the gateway refused or suspended it, when it did.
-  note            String?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  expertUserId   String   @id
+  payeeName      String?
+  upiId          String?
+  bankAccountEnc String?
+  bankLast4      String?
+  ifsc           String?
+  /// Two-digit GST state code of the expert: the place of supply.
+  gstStateCode   String?
+  gstin          String?
+  /// NONE | ACTIVE | SUSPENDED
+  status         String   @default("NONE")
+  /// The operator's reason for a suspension.
+  note           String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   expert User @relation("ExpertPayoutAccountOwner", fields: [expertUserId], references: [id], onDelete: Cascade)
 }
 
-/// A guardian's payment for one paid workshop seat, through the company's gateway with a transfer to
-/// the expert's linked account held until the session is delivered plus 48 hours (decision 0004).
-/// INITIATED (the order is made) → PAID (captured) → HELD (the transfer is known, on hold) → RELEASED
-/// (paid out to the expert; `payoutId` names the settlement row) or REFUNDED (back to the guardian,
-/// the transfer reversed); FAILED is an order that failed or expired unpaid. One writer:
-/// src/lib/gig-payments.ts, and every change is audited. The family's and the expert's row, read by
-/// their own user ids; no school.
+/// A guardian's payment for one paid workshop seat, collected by the company on its own gateway
+/// account and held until the session is delivered plus 48 hours (decision 0004, second amendment
+/// of 2 October 2026). INITIATED (the order is made) → PAID (captured; the gross, the commission,
+/// the GST on the commission and the net are frozen, and the family's receipt number taken) → HELD
+/// (on hold for the expert) → DUE (the hold has run; `payoutId` names the expert's OPEN payout) →
+/// PAID_OUT (the company has paid the expert from its bank and recorded the reference) or REFUNDED
+/// (the gross back to the guardian through the gateway; no commission or GST is charged on it);
+/// FAILED is an order that failed or expired unpaid. One writer: src/lib/gig-payments.ts, and every
+/// change is audited. `netPaise` is a stored copy of amount − commission − gst, frozen with them at
+/// capture and checked by data:audit. The family's and the expert's row, read by their own user
+/// ids; no school.
 model SessionPayment {
   id              String    @id @default(cuid())
   bookingId       String    @unique
@@ -4860,17 +4893,28 @@ model SessionPayment {
   expertUserId    String
   amountPaise     Int
   commissionPaise Int
+  /// GST on the commission (GigSettings.gstPercent of commissionPaise), frozen at capture.
+  gstPaise        Int       @default(0)
+  /// amountPaise − commissionPaise − gstPaise, frozen at capture: what the expert is paid.
+  netPaise        Int       @default(0)
+  /// The family's receipt number, SG-R/2026-27/0001, taken under the settings-row lock at capture.
+  receiptNumber   String?   @unique
+  receiptSerial   Int?
   orderId         String    @unique
   paymentId       String?
-  transferId      String?
   refundId        String?
-  /// INITIATED | PAID | HELD | RELEASED | REFUNDED | FAILED
+  /// INITIATED | PAID | HELD | DUE | PAID_OUT | REFUNDED | FAILED
   status          String    @default("INITIATED")
-  /// When the hold may be released: delivered or missed plus 48 hours; a late cancellation, the end plus 48 hours.
+  /// When the gateway's capture was recorded: the date on the family's receipt.
+  paidAt          DateTime?
+  /// When the hold ends: delivered or missed plus 48 hours; a late cancellation, the end plus 48 hours.
   holdUntil       DateTime?
-  releasedAt      DateTime?
+  /// When the hold ran and the row joined a payout.
+  dueAt           DateTime?
+  /// When the company's transfer to the expert was recorded (the payout's paidAt).
+  paidOutAt       DateTime?
   refundedAt      DateTime?
-  /// RELEASE | REFUND — the gateway call still owed, when one failed and is to be tried again.
+  /// REFUND — the gateway call still owed, when it failed and is to be tried again.
   pendingAction   String?
   attempts        Int       @default(0)
   lastError       String?
@@ -4892,25 +4936,73 @@ model SessionPayment {
   @@index([pendingAction])
 }
 
-/// The transfers released to one expert in one run of gigs:release: the sum, the count, and the
-/// gateway's settlement id once its webhook names it. The expert reads their own; the operator every
-/// one. A record of what the gateway did, never a payment the platform made. No school.
+/// What the company owes one expert, and then paid them: the seats whose hold has run, gathered by
+/// gigs:release into the expert's one OPEN payout (netPaise summed, paymentsCount), and recorded
+/// PAID by the operator with the reference of the transfer the company made from its own bank
+/// (decision 0004, second amendment of 2 October 2026). Recording it issues the GigInvoice for the
+/// commission on those seats, in the same transaction. The expert reads their own; the operator
+/// every one. No school.
 model ExpertPayout {
-  id           String   @id @default(cuid())
-  expertUserId String
-  amountPaise  Int
-  transfers    Int
-  /// RELEASED | SETTLED (the gateway has paid the linked account) | FAILED
-  status       String   @default("RELEASED")
-  settlementId String?
-  note         String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id            String    @id @default(cuid())
+  expertUserId  String
+  /// The sum of the net of its payments, kept as what is owed and then what was sent.
+  netPaise      Int
+  paymentsCount Int
+  /// OPEN | PAID
+  status        String    @default("OPEN")
+  /// The UTR of the company's transfer, recorded once.
+  reference     String?   @unique
+  paidAt        DateTime?
+  paidByUserId  String?
+  note          String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   expert   User             @relation("ExpertPayoutOwner", fields: [expertUserId], references: [id], onDelete: Cascade)
   payments SessionPayment[]
+  invoice  GigInvoice?
 
   @@index([expertUserId, createdAt])
+  @@index([status])
+}
+
+/// THE COMPANY'S GST TAX INVOICE TO AN EXPERT for the commission on the seats of one payout: issued
+/// once, when the payout is recorded paid, numbered in a financial-year series (SG/2026-27/0001)
+/// under the GigSettings row lock inside the transaction that writes it — never reused, never a gap
+/// on a failed write. Every figure and both parties are frozen here, so a later change of the
+/// company's details or the expert's state does not rewrite history. CGST+SGST when the expert's
+/// state is the company's, IGST otherwise. Rendered as a PDF on read in the expert's language. The
+/// expert reads their own; the operator every one. No school.
+model GigInvoice {
+  id                String   @id @default(cuid())
+  number            String   @unique
+  /// The series (prefix/FY) and the serial within it, for the next number.
+  series            String
+  serial            Int
+  payoutId          String   @unique
+  expertUserId      String
+  issuedAt          DateTime @default(now())
+  /// en | hi | mr — the expert's language when it was issued.
+  locale            String   @default("en")
+  /// The commission total: the value the tax is on.
+  taxableValuePaise Int
+  cgstPaise         Int
+  sgstPaise         Int
+  igstPaise         Int
+  totalPaise        Int
+  sacCode           String
+  /// { legalName, gstin, address, stateCode } of the company, as it stood.
+  sellerJson        String
+  /// { name, gstin, stateCode } of the expert, as it stood.
+  buyerJson         String
+  /// One line per seat: { paymentId, title, date, grossPaise, commissionPaise, gstPaise }.
+  linesJson         String
+
+  payout ExpertPayout @relation(fields: [payoutId], references: [id], onDelete: Cascade)
+  expert User         @relation("GigInvoiceBuyer", fields: [expertUserId], references: [id], onDelete: Cascade)
+
+  @@unique([series, serial])
+  @@index([expertUserId, issuedAt])
 }
 
 /// A delivery from the company's gateway about a session payment, stored once by the id the signed

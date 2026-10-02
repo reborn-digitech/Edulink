@@ -5,7 +5,7 @@ import { formatPaise } from "@edulink/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
 import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
-import { retrySeatPayment, setPaymentsEnabled } from "@/lib/gig-payments";
+import { recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled, type CompanyInput, type PayoutRecordInput } from "@/lib/gig-payments";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -67,6 +67,34 @@ export async function retryPaymentAction(paymentId: string): Promise<Result> {
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
     return { ok: true, message: t("gigs.opRetried", { outcome: result.outcome }) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The company as the seller on its tax invoices (decision 0004, second amendment of 2 October 2026). */
+export async function saveCompanyAction(input: CompanyInput): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await saveCompanyDetails(ctx, input);
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t("gigs.opCompanySaved") };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The company has paid an expert from its bank: the reference recorded, every seat paid out, the invoice issued. */
+export async function recordPayoutAction(input: { payoutId: string; name: string } & PayoutRecordInput): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await recordPayout(ctx, input.payoutId, { reference: input.reference, paidAt: input.paidAt, note: input.note });
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t("gigs.opPayoutRecorded", { amount: formatPaise(result.payout.netPaise, await getLocale()), name: input.name, number: result.invoice.number }) };
   } catch (error) {
     return failure(error);
   }

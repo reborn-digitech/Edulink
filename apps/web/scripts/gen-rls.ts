@@ -88,6 +88,10 @@ const NO_SCHOOL_POLICY = new Set([
   "SessionPayment",
   "ExpertPayout",
   "GigGatewayEvent",
+  // The company's tax invoice to an expert for the commission on one payout
+  // (decision 0004, second amendment of 2 October 2026): the expert's row by
+  // their user id, the operator's to read every one; no school anywhere in it.
+  "GigInvoice",
   // A plan the operator offers: a name, four caps and a recorded price. The
   // office reads its own school's through the School row and the operator
   // reads and writes every one; nothing in it belongs to a school.

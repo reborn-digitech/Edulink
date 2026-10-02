@@ -105,7 +105,7 @@ describe("free duty (decision 0004)", () => {
     try {
       for (const key of ["starter", "seasoned"] as const) {
         await db.expertProfile.update({ where: { userId: id[key]! }, data: { kycStatus: "VERIFIED", verifiedAt: OCT_15 } });
-        await db.expertPayoutAccount.upsert({ where: { expertUserId: id[key]! }, create: { expertUserId: id[key]!, linkedAccountId: `acc_zz${key}${STAMP}`, status: "ACTIVE" }, update: { status: "ACTIVE" } });
+        await db.expertPayoutAccount.upsert({ where: { expertUserId: id[key]! }, create: { expertUserId: id[key]!, payeeName: `ZZ ${key}`, upiId: `zz.${key}${STAMP}@upi`, gstStateCode: "27", status: "ACTIVE" }, update: { payeeName: `ZZ ${key}`, upiId: `zz.${key}${STAMP}@upi`, gstStateCode: "27", status: "ACTIVE" } });
         const offer = await offerSlot(ctx(key, "EXPERT", null), slot({ title: `ZZ free one-to-one ${key} ${STAMP}` }), OCT_15);
         expect(offer.ok).toBe(true);
       }

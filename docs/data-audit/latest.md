@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-02T04:46:11.947Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 26 INFO
+Run: 2026-10-02T10:51:44.751Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 4 WARN · 27 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 
@@ -13,12 +13,13 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the c
 | fees-api | Sunrise Public School | 1 plan(s) belong to pupils off the roll — they count as onPlan and their dues drop out of the dues page |
 | usage-sample | ZZ Northgate School | 2026-10 messages: stored 0 vs recomputed 11 (computed 2026-10-01T02:02:15.579Z) |
 
-## INFO (26)
+## INFO (27)
 
 | check | school | detail |
 |---|---|---|
 | gig-earnings | platform | 0 contributed question(s) in the bank, 0 payment(s) recorded |
-| gig-seats | platform | 6 slot(s) offered |
+| gig-seats | platform | 7 slot(s) offered |
+| gig-money | platform | 2 seat payment(s), 1 payout(s), 1 invoice(s) |
 | user-minor | all | 147 dated account(s) checked, 0 out of step |
 | admission | Saraswati Vidya Mandir | 6 of 7 applications carry no PEN — the field is optional on the form |
 | admission | Sunrise Public School | 6 of 7 applications carry no PEN — the field is optional on the form |

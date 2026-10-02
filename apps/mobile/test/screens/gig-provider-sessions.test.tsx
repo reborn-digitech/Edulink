@@ -1,3 +1,4 @@
+import * as Sharing from "expo-sharing";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { gigProviderSchema } from "@edulink/contracts";
 import { ProviderSessions } from "@/screens/shared/provider-sessions";
@@ -13,8 +14,8 @@ const slot = (over: Record<string, unknown>) => ({ id: "s1", kind: "ONE_TO_ONE",
 /** The paid gate as the server reads it: every condition met but the mentoring offer. */
 export const GATE = { paymentsOn: true, kycVerified: true, payoutActive: true, mentoringOffer: false, dutyDone: true, oneToOnesOwed: 0, canCharge: false, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 15 };
 const view = (over: Record<string, unknown> = {}) => gigProviderSchema.parse({ enabled: true, kind: "EXPERT", timeZone: "Asia/Kolkata", duty: DUTY, gate: GATE, slots: [slot({})], ...over });
-const PAYOUT = { payout: { status: "NONE", linkedAccountId: null, onboardingUrl: null, note: null, transport: "devbox" }, gate: GATE };
-const EARNINGS = { heldPaise: 8500, releasedPaise: 0, refundedPaise: 0, rows: [{ paymentId: "sp1", bookingId: "b2", title: "ZZ Build a paper bridge", startsAt: "2030-10-10T10:00:00.000Z", schoolName: "ZZ School", amountPaise: 10000, commissionPaise: 1500, netPaise: 8500, status: "HELD", holdUntil: "2030-10-12T11:00:00.000Z", releasedAt: null, refundedAt: null, settlementId: null, reason: null }], payouts: [] };
+const PAYOUT = { payout: { status: "NONE", payeeName: null, upiId: null, bankLast4: null, ifsc: null, gstStateCode: null, gstin: null, note: null, kycVerified: true, transport: "devbox" }, gate: GATE };
+const EARNINGS = { heldPaise: 8230, duePaise: 0, paidOutPaise: 0, refundedPaise: 0, commissionPercent: 15, gstPercent: 18, rows: [{ paymentId: "sp1", bookingId: "b2", title: "ZZ Build a paper bridge", startsAt: "2030-10-10T10:00:00.000Z", schoolName: "ZZ School", amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, status: "HELD", holdUntil: "2030-10-12T11:00:00.000Z", dueAt: null, paidOutAt: null, refundedAt: null, payoutId: null, reason: null }], payouts: [], invoices: [] };
 /** The expert's two extra cards answer, so the provider screen under test is whole. */
 const SIDE = { "GET /api/v1/expert/payout": () => json(PAYOUT), "GET /api/v1/expert/earnings": () => json(EARNINGS) };
 
@@ -80,20 +81,41 @@ describe("a provider's sessions", () => {
     expect(await screen.findByText(/₹100 a seat past the free allowance/)).toBeTruthy();
     expect(screen.getByText("Paid seat")).toBeTruthy();
     expect(screen.getAllByText("○ A free one-to-one offered in the coming 30 days").length).toBeGreaterThan(0);
-    // Get paid: not linked yet, the button there since the papers are verified.
-    expect(await screen.findByText("Not linked")).toBeTruthy();
-    expect(screen.getByRole("button", { name: "Link my account" })).toBeTruthy();
-    // Earnings: the held seat, net of the commission.
-    expect(await screen.findByText("₹85 to you of ₹100", { exact: false })).toBeTruthy();
+    // Get paid: nothing saved yet, so the form is open.
+    expect(await screen.findByText("Not saved yet")).toBeTruthy();
+    expect(screen.getByLabelText("Name of the payee")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Save" })).toBeTruthy();
+    // Earnings: the held seat, net of the commission and the GST on it.
+    expect(await screen.findByText("₹82.30 to you of ₹100, after ₹15 commission and ₹2.70 GST on it", { exact: false })).toBeTruthy();
     expect(screen.getAllByText("On hold").length).toBeGreaterThan(0);
+    expect(screen.getByText("No invoice yet.")).toBeTruthy();
   });
 
-  it("linking the payout account under devbox makes it active at once", async () => {
-    const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, [`GET ${PATH}`]: () => json(view({ slots: [] })), "POST /api/v1/expert/payout/link": () => json({ ...PAYOUT, payout: { ...PAYOUT.payout, status: "ACTIVE", linkedAccountId: "acc_devbox1" } }) });
-    await fireEvent.press(await screen.findByRole("button", { name: "Link my account" }));
-    expect(await screen.findByText("Linked.")).toBeTruthy();
-    expect(screen.getByText("Linked and ready")).toBeTruthy();
-    expect(calls().filter((c) => c.line === "POST /api/v1/expert/payout/link")).toHaveLength(1);
+  it("saving the payee details sends the body the contract takes and shows the summary with the last four digits only", async () => {
+    const saved = { ...PAYOUT, payout: { ...PAYOUT.payout, status: "ACTIVE", payeeName: "Meenakshi Rao", bankLast4: "3456", ifsc: "HDFC0001234", gstStateCode: "27" } };
+    const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, [`GET ${PATH}`]: () => json(view({ slots: [] })), "POST /api/v1/expert/payout": () => json(saved) });
+    await fireEvent.changeText(await screen.findByLabelText("Name of the payee"), "Meenakshi Rao");
+    await fireEvent.changeText(screen.getByLabelText("Bank account number"), "1234 5678 9012 3456");
+    await fireEvent.changeText(screen.getByLabelText("IFSC code"), "hdfc0001234");
+    await fireEvent.changeText(screen.getByLabelText("GST state code"), "27");
+    await fireEvent.press(screen.getByRole("button", { name: "Save" }));
+    expect(await screen.findByText("Saved.")).toBeTruthy();
+    expect(screen.getByText("Ready to be paid")).toBeTruthy();
+    expect(screen.getByText(/Bank account ending 3456 · HDFC0001234/)).toBeTruthy();
+    expect(screen.queryByText(/1234 5678 9012 3456/)).toBeNull();
+    const call = calls().find((c) => c.line === "POST /api/v1/expert/payout");
+    expect(call?.body).toEqual({ payeeName: "Meenakshi Rao", upiId: null, bankAccount: "1234 5678 9012 3456", ifsc: "hdfc0001234", gstStateCode: "27", gstin: null });
+  });
+
+  it("an invoice is fetched as a PDF and handed to the share sheet", async () => {
+    const earnings = { ...EARNINGS, paidOutPaise: 8230, rows: [{ ...EARNINGS.rows[0], status: "PAID_OUT", paidOutAt: "2030-10-20T10:00:00.000Z", payoutId: "po1" }], payouts: [{ id: "po1", netPaise: 8230, paymentsCount: 1, status: "PAID", reference: "UTR123456789012", paidAt: "2030-10-20T10:00:00.000Z", createdAt: "2030-10-13T10:00:00.000Z", invoiceId: "inv1", invoiceNumber: "SG/2030-31/0001" }], invoices: [{ id: "inv1", number: "SG/2030-31/0001", issuedAt: "2030-10-20T10:00:00.000Z", taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, payoutId: "po1" }] };
+    const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, "GET /api/v1/expert/earnings": () => json(earnings), [`GET ${PATH}`]: () => json(view({ slots: [] })), "GET /api/v1/expert/invoices/inv1/pdf": () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }) });
+    expect(await screen.findByText(/SG\/2030-31\/0001 · .* · ₹17\.70/)).toBeTruthy();
+    expect(screen.getByText(/UTR123456789012/)).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Invoice PDF: SG/2030-31/0001" }));
+    await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
+    expect(calls().filter((c) => c.line === "GET /api/v1/expert/invoices/inv1/pdf")).toHaveLength(1);
+    expect(Sharing.shareAsync).toHaveBeenCalledWith(expect.stringMatching(/SG 2030-31 0001\.pdf$/), expect.objectContaining({ mimeType: "application/pdf" }));
   });
 
   it("a time and a seat are taken back with a reason", async () => {

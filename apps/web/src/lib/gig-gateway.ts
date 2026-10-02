@@ -6,34 +6,32 @@ import { open } from "./secret-box";
 
 /**
  * The COMPANY'S OWN gateway account, spoken to for paid sessions and for
- * nothing else (decision 0004, amended 2026-10-02; decision 0003 is
- * untouched and school fees never come here — tests/fees-invariants.test.ts
+ * nothing else (decision 0004, second amendment of 2 October 2026; decision
+ * 0003 is untouched and school fees never come here — tests/fees-invariants
  * holds gateway.ts to four calls, and this module is the one the decision
  * said would be its own).
  *
- * WHAT MOVES WHERE. A guardian pays the gateway for one workshop seat. The
- * order carries a TRANSFER to the expert's own linked account (Razorpay
- * Route) for the seat's price less the company's commission, ON HOLD; the
- * commission stays in the company's account and the gateway's fee comes out
- * of it. When the session is delivered plus 48 hours, the hold is released
- * and the gateway settles the expert directly. A refund reverses the transfer
- * and returns the whole seat price to the guardian's instrument. The company
- * never holds, pools or forwards a family's money: the gateway does the
- * split, and this adapter can make exactly the calls in ALLOWED_CALLS.
+ * WHAT MOVES WHERE. A guardian pays the gateway for one workshop seat, and
+ * the whole seat price settles to the COMPANY'S account: the company is the
+ * collecting party. No transfer, no linked account, no split — the gateway
+ * holds nothing back for the expert. The company keeps its commission and
+ * the GST on it (invoiced to the expert, src/lib/gig-payments.ts) and pays
+ * the expert the rest from its own bank, outside the gateway, once the
+ * session is delivered plus 48 hours; the operator records that transfer's
+ * reference. A refund returns the whole seat price to the guardian's
+ * instrument from the company's gateway balance. This adapter can make
+ * exactly the calls in ALLOWED_CALLS: an order, a payment read and a refund.
  *
  * NO SDK, as gateway.ts: HTTPS with Basic auth, one `fetch` inside `call`.
  *
  * TWO TRANSPORTS: "devbox" mints local ids and /dev/payments settles them
  * through the same door the webhook uses; "razorpay" talks to the real API
- * with the company's Route-enabled key. "off" (deployed, no key) refuses.
+ * with the company's key. "off" (deployed, no key) refuses.
  */
 export const ALLOWED_CALLS = [
   { method: "POST", path: "/v1/orders" },
-  { method: "GET", path: "/v1/payments/{paymentId}/transfers" },
-  { method: "PATCH", path: "/v1/transfers/{transferId}" },
+  { method: "GET", path: "/v1/payments/{paymentId}" },
   { method: "POST", path: "/v1/payments/{paymentId}/refund" },
-  { method: "POST", path: "/v2/accounts" },
-  { method: "GET", path: "/v2/accounts/{accountId}" },
 ] as const;
 
 const API_BASE = () => process.env.GATEWAY_PLATFORM_API_BASE?.trim().replace(/\/$/, "") || "https://api.razorpay.com";
@@ -73,12 +71,12 @@ export function webhookSecret(): string | null {
   return readGigGatewayRaw().webhookSecret || (mode === "devbox" ? DEVBOX_WEBHOOK_SECRET : null);
 }
 
-/** Ids as the gateway prints them (order_, pay_, trf_, rfnd_, acc_), turned back into the template they were made from. */
+/** Ids as the gateway prints them (order_, pay_, rfnd_), turned back into the template they were made from. */
 function templateOf(path: string): string {
-  return path.replace(/\/(order|pay|trf|rfnd|acc)_[A-Za-z0-9]+/g, (m) => (m.startsWith("/pay_") ? "/{paymentId}" : m.startsWith("/trf_") ? "/{transferId}" : m.startsWith("/acc_") ? "/{accountId}" : m.startsWith("/order_") ? "/{orderId}" : "/{refundId}"));
+  return path.replace(/\/(order|pay|rfnd)_[A-Za-z0-9]+/g, (m) => (m.startsWith("/pay_") ? "/{paymentId}" : m.startsWith("/order_") ? "/{orderId}" : "/{refundId}"));
 }
 
-async function call<T>(account: PlatformAccount, method: "GET" | "POST" | "PATCH", path: string, body?: Record<string, unknown>): Promise<T> {
+async function call<T>(account: PlatformAccount, method: "GET" | "POST", path: string, body?: Record<string, unknown>): Promise<T> {
   const template = templateOf(path);
   if (!ALLOWED_CALLS.some((c) => c.method === method && c.path === template)) throw new GigGatewayError(`gateway: ${method} ${template} is not an allowed call`);
   let response: Response;
@@ -110,92 +108,43 @@ async function call<T>(account: PlatformAccount, method: "GET" | "POST" | "PATCH
 const devboxId = (prefix: string) => `${prefix}_devbox${randomBytes(7).toString("hex")}`;
 
 /* -------------------------------------------------------------------------- */
-/* Orders with a held transfer                                                  */
+/* Orders, a payment read and refunds                                           */
 /* -------------------------------------------------------------------------- */
 
 export type SeatOrder = { orderId: string; amountPaise: number; currency: "INR" };
 
 /**
- * One order for the seat's whole price, with a transfer of the expert's share
- * to their linked account that the gateway holds until released. `receipt`
- * is our own payment id, so the order traces back from the dashboard.
+ * One plain order for the seat's whole price, to the company's own account.
+ * `receipt` is our own payment id, so the order traces back from the
+ * dashboard. Nothing in it names the expert: the split is the company's
+ * bookkeeping, not the gateway's.
  */
-export async function createSeatOrder(input: { amountPaise: number; expertSharePaise: number; linkedAccountId: string; receipt: string; notes?: Record<string, string> }): Promise<SeatOrder> {
+export async function createSeatOrder(input: { amountPaise: number; receipt: string; notes?: Record<string, string> }): Promise<SeatOrder> {
   if (!Number.isInteger(input.amountPaise) || input.amountPaise < 100) throw new GigGatewayError("gateway: an order needs a whole number of paise, at least ₹1");
-  if (!Number.isInteger(input.expertSharePaise) || input.expertSharePaise < 1 || input.expertSharePaise > input.amountPaise) throw new GigGatewayError("gateway: the expert's share must be within the seat's price");
   const account = platformAccount();
   if (!account) return { orderId: devboxId("order"), amountPaise: input.amountPaise, currency: "INR" };
-  const order = await call<{ id: string; amount: number }>(account, "POST", "/v1/orders", {
-    amount: input.amountPaise,
-    currency: "INR",
-    receipt: input.receipt,
-    notes: input.notes ?? {},
-    transfers: [{ account: input.linkedAccountId, amount: input.expertSharePaise, currency: "INR", on_hold: 1, notes: input.notes ?? {} }],
-  });
+  const order = await call<{ id: string; amount: number }>(account, "POST", "/v1/orders", { amount: input.amountPaise, currency: "INR", receipt: input.receipt, notes: input.notes ?? {} });
   return { orderId: order.id, amountPaise: order.amount, currency: "INR" };
 }
 
-export type HeldTransfer = { transferId: string; amountPaise: number; onHold: boolean; settlementId: string | null };
+export type SeatPaymentRead = { paymentId: string; orderId: string | null; amountPaise: number; status: string };
 
-/** The transfer the gateway made from a captured payment; devbox mints one from the payment id, so the same payment names the same transfer. */
-export async function transfersOf(paymentId: string, expertSharePaise: number): Promise<HeldTransfer[]> {
+/** What the gateway holds for one payment — for the operator's eye when a capture and the webhook disagree; devbox answers "captured". */
+export async function fetchSeatPayment(paymentId: string): Promise<SeatPaymentRead> {
   const account = platformAccount();
-  if (!account) return [{ transferId: `trf_devbox${paymentId.replace(/[^A-Za-z0-9]/g, "").slice(-16)}`, amountPaise: expertSharePaise, onHold: true, settlementId: null }];
-  const result = await call<{ items?: { id: string; amount: number; on_hold?: boolean; settlement_id?: string | null }[] }>(account, "GET", `/v1/payments/${encodeURIComponent(paymentId)}/transfers`);
-  return (result.items ?? []).map((t) => ({ transferId: t.id, amountPaise: t.amount, onHold: Boolean(t.on_hold), settlementId: t.settlement_id ?? null }));
-}
-
-/** Lets the gateway settle the expert: the hold comes off. */
-export async function releaseTransfer(transferId: string): Promise<{ transferId: string; onHold: boolean }> {
-  const account = platformAccount();
-  if (!account) return { transferId, onHold: false };
-  const t = await call<{ id: string; on_hold?: boolean }>(account, "PATCH", `/v1/transfers/${encodeURIComponent(transferId)}`, { on_hold: 0 });
-  return { transferId: t.id, onHold: Boolean(t.on_hold) };
+  if (!account) return { paymentId, orderId: null, amountPaise: 0, status: "captured" };
+  const p = await call<{ id: string; order_id?: string | null; amount: number; status: string }>(account, "GET", `/v1/payments/${encodeURIComponent(paymentId)}`);
+  return { paymentId: p.id, orderId: p.order_id ?? null, amountPaise: p.amount, status: p.status };
 }
 
 export type SeatRefund = { refundId: string; status: string; amountPaise: number };
 
-/** The whole seat price back to the guardian's instrument, the held transfer reversed with it. */
+/** The whole seat price back to the guardian's instrument, from the company's gateway balance. */
 export async function refundSeat(paymentId: string, amountPaise: number, notes?: Record<string, string>): Promise<SeatRefund> {
   const account = platformAccount();
   if (!account) return { refundId: devboxId("rfnd"), status: "processed", amountPaise };
-  const refund = await call<{ id: string; status: string; amount: number }>(account, "POST", `/v1/payments/${encodeURIComponent(paymentId)}/refund`, { amount: amountPaise, reverse_all: 1, notes: notes ?? {} });
+  const refund = await call<{ id: string; status: string; amount: number }>(account, "POST", `/v1/payments/${encodeURIComponent(paymentId)}/refund`, { amount: amountPaise, notes: notes ?? {} });
   return { refundId: refund.id, status: refund.status, amountPaise: refund.amount };
-}
-
-/* -------------------------------------------------------------------------- */
-/* Linked accounts                                                              */
-/* -------------------------------------------------------------------------- */
-
-export type LinkedAccount = { linkedAccountId: string; /** NONE | PENDING | ACTIVE as the gateway's status reads to us. */ status: "PENDING" | "ACTIVE"; onboardingUrl: string | null };
-
-const asStatus = (raw: string | undefined): "PENDING" | "ACTIVE" => (raw === "activated" ? "ACTIVE" : "PENDING");
-
-/**
- * An expert's linked account in the company's Route, made with what the
- * platform knows of them (their name and email — never a document; the
- * gateway asks for its own papers on its own page). Devbox: active at once.
- */
-export async function createLinkedAccount(input: { reference: string; name: string; email: string | null }): Promise<LinkedAccount> {
-  const account = platformAccount();
-  if (!account) return { linkedAccountId: devboxId("acc"), status: "ACTIVE", onboardingUrl: null };
-  const made = await call<{ id: string; status?: string; onboarding_url?: string }>(account, "POST", "/v2/accounts", {
-    email: input.email ?? undefined,
-    type: "route",
-    reference_id: input.reference,
-    legal_business_name: input.name.slice(0, 200),
-    business_type: "individual",
-    contact_name: input.name.slice(0, 200),
-  });
-  return { linkedAccountId: made.id, status: asStatus(made.status), onboardingUrl: made.onboarding_url ?? null };
-}
-
-/** Where the gateway's checks of a linked account stand. */
-export async function fetchLinkedAccount(linkedAccountId: string): Promise<LinkedAccount> {
-  const account = platformAccount();
-  if (!account) return { linkedAccountId, status: "ACTIVE", onboardingUrl: null };
-  const got = await call<{ id: string; status?: string; onboarding_url?: string }>(account, "GET", `/v2/accounts/${encodeURIComponent(linkedAccountId)}`);
-  return { linkedAccountId: got.id, status: asStatus(got.status), onboardingUrl: got.onboarding_url ?? null };
 }
 
 /* -------------------------------------------------------------------------- */

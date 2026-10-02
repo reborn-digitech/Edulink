@@ -9,7 +9,7 @@ import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
 import { isHttpsUrl } from "./app-admin";
 import { gigSettings, monthKey, type GigResult, type GigSettingsView } from "./gig-questions";
-import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refreshPayoutAccount, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
+import { HOLD_HOURS, UNPAID_SEAT_EXPIRY_MS, markCaptured, openCheckout, paymentSettings, paymentsOn, payoutAccountOf, refundSeatPayment, releaseDue, rupees, scheduleRelease, type PaymentSettings, type PayoutAccountView, type ReleaseRun, type SeatCheckout } from "./gig-payments";
 import type { ActiveContext } from "./session";
 
 /**
@@ -259,9 +259,9 @@ export type PaidGate = {
 
 /**
  * Whether an expert may put a price on a workshop seat, and why not. The
- * four conditions in the order they are shown: identity checked, an account
- * to be paid into, an open free one-to-one offer, and the period's free
- * one-to-ones given. The free workshop quota stays something the expert is
+ * four conditions in the order they are shown: identity checked, payee
+ * details for the company to pay (active, not suspended), an open free
+ * one-to-one offer, and the period's free one-to-ones given. The free workshop quota stays something the expert is
  * asked for and shown, not a gate: mentoring is the price of charging.
  */
 export async function paidGate(expertUserId: string, now: Date = new Date(), settings?: PaymentSettings): Promise<PaidGate> {
@@ -278,10 +278,10 @@ export async function paidGate(expertUserId: string, now: Date = new Date(), set
   return { ...gate, canCharge: gate.paymentsOn && gate.kycVerified && gate.payoutActive && gate.mentoringOffer && gate.dutyDone, seatPriceMinPaise: pay.seatPriceMinPaise, seatPriceMaxPaise: pay.seatPriceMaxPaise, commissionPercent: pay.commissionPercent };
 }
 
-/** The expert's "Get paid" card: where they are paid, asked after at the gateway while it waits, and the four conditions. */
+/** The expert's "Get paid" card: the payee details the company pays (the sealed account never among them), and the four conditions. */
 export async function expertPayoutStanding(ctx: ActiveContext, now: Date = new Date()): Promise<{ payout: PayoutAccountView; gate: PaidGate }> {
   if (ctx.role !== "EXPERT") throw new AccessError("access.notAnExpert");
-  const payout = await refreshPayoutAccount(ctx.user.id);
+  const payout = await payoutAccountOf(ctx.user.id);
   return { payout, gate: await paidGate(ctx.user.id, now) };
 }
 
@@ -829,9 +829,10 @@ export async function remindSessions(now: Date = new Date()): Promise<{ reminded
  * The job (gigs:release, hourly): a seat waiting for payment past the
  * checkout window is given back — the booking cancelled, the seat released,
  * the order voided, the family told — and then the money half runs
- * (gig-payments.ts releaseDue: holds that have ended released, refunds
- * that failed tried again). A seat whose money arrived in the meantime is
- * confirmed by the capture and is not here.
+ * (gig-payments.ts releaseDue: holds that have ended become DUE in the
+ * expert's open payout for the company to pay, refunds that failed are tried
+ * again). A seat whose money arrived in the meantime is confirmed by the
+ * capture and is not here.
  */
 export async function releaseSeatPayments(now: Date = new Date()): Promise<{ expired: number } & ReleaseRun> {
   const stale = await db.gigBooking.findMany({

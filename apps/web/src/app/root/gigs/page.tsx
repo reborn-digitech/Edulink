@@ -3,12 +3,13 @@ import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
 import { gigOverview } from "@/lib/gig-questions";
 import { sessionCounts } from "@/lib/gig-sessions";
-import { operatorPayouts } from "@/lib/gig-payments";
+import { operatorInvoices, operatorPayouts } from "@/lib/gig-payments";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { PaymentForm, PaymentsSwitch, RetryPayment, SettingsForm } from "./forms";
+import { CompanyForm, PaymentForm, PaymentsSwitch, PayoutForm, RetryPayment, SettingsForm } from "./forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.operatorTitle") };
@@ -21,14 +22,18 @@ export async function generateMetadata(): Promise<Metadata> {
  *
  * THE PAGE SENDS NOTHING. The operator pays each person from the company's
  * bank by UPI and types the transfer's reference here; the amount recorded
- * is the server's sum of what that person is owed, never a typed one.
+ * is the server's sum of what that person is owed, never a typed one. The
+ * same for an expert's paid seats (decision 0004, second amendment of
+ * 2 October 2026): the company collected the fee, keeps its commission with
+ * a GST invoice, and the operator records the transfer of the net here,
+ * which issues the invoice.
  */
 export default async function RootGigsPage() {
   const session = await requireSuperuser();
   const t = await getT();
   const locale = await getLocale();
   const money = (paise: number) => formatPaise(paise, locale);
-  const [o, sessions, payouts] = await Promise.all([gigOverview(session), sessionCounts(session), operatorPayouts(session)]);
+  const [o, sessions, payouts, invoices] = await Promise.all([gigOverview(session), sessionCounts(session), operatorPayouts(session), operatorInvoices(session)]);
   const s = o.settings;
   const day = (iso: string) => formatInZone(new Date(iso), "Asia/Kolkata", { dateStyle: "medium" });
 
@@ -106,15 +111,29 @@ export default async function RootGigsPage() {
       </Card>
 
       <Card>
+        <CardHeader title={t("gigs.opCompanyTitle")} description={t("gigs.opCompanyIntro")} />
+        <CardBody className="space-y-3" data-testid="gig-company-card">
+          {payouts.company.missing.length > 0 && (
+            <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg" data-testid="gig-company-missing">
+              {t("gigs.opCompanyMissing", { missing: payouts.company.missing.map((m) => t(`gigs.opMissing${m === "legalName" ? "LegalName" : m === "gstin" ? "Gstin" : "StateCode"}`)).join(", ") })}
+            </p>
+          )}
+          <CompanyForm initial={{ legalName: payouts.company.legalName ?? "", gstin: payouts.company.gstin ?? "", address: payouts.company.address ?? "", stateCode: payouts.company.stateCode ?? "", sacCode: payouts.company.sacCode, invoicePrefix: payouts.company.invoicePrefix, gstPercent: payouts.company.gstPercent }} />
+        </CardBody>
+      </Card>
+
+      <Card>
         <CardHeader title={t("gigs.opPayoutsTitle")} description={t("gigs.opPayoutsIntro")} />
         <CardBody className="space-y-4" data-testid="gig-payouts">
           <PaymentsSwitch on={payouts.paymentsEnabled} />
           <p className="text-xs text-fg-muted">{t("gigs.opTransport", { transport: payouts.transport })}</p>
-          <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <dl className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
             {[
               [t("gigs.opCommission"), payouts.commissionThisMonthPaise],
+              [t("gigs.opGst"), payouts.gstThisMonthPaise],
               [t("gigs.opHeld"), payouts.heldPaise],
-              [t("gigs.opReleased"), payouts.releasedThisMonthPaise],
+              [t("gigs.opDue"), payouts.duePaise],
+              [t("gigs.opPaidOut"), payouts.paidOutThisMonthPaise],
               [t("gigs.opRefunded"), payouts.refundedThisMonthPaise],
             ].map(([label, value]) => (
               <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
@@ -123,6 +142,42 @@ export default async function RootGigsPage() {
               </div>
             ))}
           </dl>
+          <div>
+            <p className="text-sm font-medium text-fg">{t("gigs.opToPayTitle")}</p>
+            <p className="text-xs text-fg-muted">{t("gigs.opToPayIntro")}</p>
+            {payouts.toPay.length === 0 ? (
+              <p className="mt-2 text-sm text-fg-muted" data-testid="gig-to-pay-none">
+                {t("gigs.opToPayNone")}
+              </p>
+            ) : (
+              <ul className="divide-y divide-border" data-testid="gig-to-pay">
+                {payouts.toPay.map((p) => {
+                  const payee = p.payee;
+                  const canRecord = payouts.company.missing.length === 0 && payee.status === "ACTIVE";
+                  return (
+                    <li key={p.id} className="grid gap-3 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                      <div className="min-w-0">
+                        <p className="break-words text-sm font-medium text-fg">
+                          {p.expertName} · {t("gigs.payoutLine", { amount: money(p.netPaise), count: p.paymentsCount })}
+                        </p>
+                        <p className="text-xs text-fg-muted">{day(p.createdAt)}</p>
+                        {payee.payeeName ? (
+                          <p className="mt-1 break-all font-mono text-xs text-fg">
+                            {payee.payeeName} · {payee.upiId ? t("gigs.payeeUpiLine", { upiId: payee.upiId }) : t("gigs.payeeBankLine", { last4: payee.bankLast4 ?? "", ifsc: payee.ifsc ?? "" })} · {t("gigs.opPayeeState", { code: payee.gstStateCode ?? "" })}
+                            {payee.gstin ? ` · ${t("gigs.opPayeeGstin", { gstin: payee.gstin })}` : ""}
+                          </p>
+                        ) : (
+                          <p className="mt-1 text-xs text-fg-muted">{t("gigs.opPayeeNone")}</p>
+                        )}
+                        {payee.status === "SUSPENDED" && <Badge tone="danger">{t("gigs.opPayeeSuspended")}</Badge>}
+                      </div>
+                      <PayoutForm payoutId={p.id} name={p.expertName} disabled={!canRecord} />
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
           <div>
             <p className="text-sm font-medium text-fg">{t("gigs.opFailures")}</p>
             {payouts.failures.length === 0 ? (
@@ -146,20 +201,37 @@ export default async function RootGigsPage() {
             )}
           </div>
           <div>
-            <p className="text-sm font-medium text-fg">{t("gigs.payoutsTitle")}</p>
-            {payouts.payouts.length === 0 ? (
+            <p className="text-sm font-medium text-fg">{t("gigs.opPaidTitle")}</p>
+            {payouts.paid.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("gigs.opPayoutsNone")}</p>
             ) : (
               <ul className="divide-y divide-border" data-testid="gig-payout-rows">
-                {payouts.payouts.map((p) => (
-                  <li key={p.id} className="py-2">
-                    <p className="text-sm font-medium text-fg">
-                      {p.expertName} · {t("gigs.payoutLine", { amount: money(p.amountPaise), count: p.transfers })}
-                    </p>
-                    <p className="text-xs text-fg-muted">
-                      {day(p.createdAt)} · {p.status}
-                      {p.settlementId ? ` · ${t("gigs.settlementRef", { ref: p.settlementId })}` : ""}
-                    </p>
+                {payouts.paid.map((p) => (
+                  <li key={p.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-medium text-fg">
+                        {p.expertName} · {t("gigs.payoutLine", { amount: money(p.netPaise), count: p.paymentsCount })}
+                      </p>
+                      <p className="text-xs text-fg-muted">
+                        {p.paidAt ? t("gigs.paidOutLine", { date: day(p.paidAt), reference: p.reference ?? "" }) : ""}
+                        {p.invoiceNumber ? ` · ${p.invoiceNumber}` : ""}
+                        {p.note ? ` · ${p.note}` : ""}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div>
+            <p className="text-sm font-medium text-fg">{t("gigs.opInvoicesTitle")}</p>
+            {invoices.invoices.length === 0 ? (
+              <p className="text-sm text-fg-muted">{t("gigs.opInvoicesNone")}</p>
+            ) : (
+              <ul className="divide-y divide-border" data-testid="gig-invoices">
+                {invoices.invoices.map((i) => (
+                  <li key={i.id} className="py-2 text-sm text-fg">
+                    {t("gigs.opInvoiceLine", { number: i.number, name: i.expertName, date: day(i.issuedAt), total: money(i.totalPaise) })}
                   </li>
                 ))}
               </ul>

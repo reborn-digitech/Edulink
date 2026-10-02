@@ -1661,6 +1661,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   ExpertSlot
 --   GigEarning
 --   GigGatewayEvent
+--   GigInvoice
 --   GigPayee
 --   GigPayment
 --   GigSettings

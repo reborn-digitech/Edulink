@@ -69,6 +69,10 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                             {b.payment && b.payment.status !== "INITIATED" && b.payment.status !== "FAILED" && (
                               <p className="text-xs text-fg-muted" data-testid="session-payment-line">
                                 {b.payment.status === "REFUNDED" ? t("gigs.refundLine", { amount: money(b.payment.amountPaise) }) : t("gigs.paymentLine", { amount: money(b.payment.amountPaise) })}
+                                {" · "}
+                                <a href={`/api/v1/gigs/payments/${b.payment.paymentId}/receipt`} target="_blank" rel="noreferrer noopener" className="underline" data-testid="session-receipt-link">
+                                  {t("gigs.receiptLink")}
+                                </a>
                               </p>
                             )}
                             {b.status === "CANCELLED" && b.paid && b.payment && (b.payment.status === "PAID" || b.payment.status === "HELD") && !b.lateCancel && <p className="text-xs text-fg-muted">{t("gigs.refundWaitingLine", { amount: money(b.payment.amountPaise) })}</p>}

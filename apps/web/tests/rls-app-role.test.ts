@@ -363,5 +363,15 @@ describe.skipIf(!app)("as the app role", () => {
       expect((await asApp({ schoolIds: [receiver] }, (tx) => tx.gigBooking.updateMany({ where: { id: paidBookingId, schoolId: receiver }, data: { consentUserId: guardianUserId } }))).count).toBe(1);
       expect(await refused(() => asApp({ userId: expertUserId }, (tx) => tx.gigBooking.updateMany({ where: { id: paidBookingId }, data: { consentUserId: expertUserId } })))).toBe(true);
     });
+
+    it("the company's payout and tax invoice to the expert are written with no school and read through the expert's own id — the job's, the operator's and the expert's standing", async () => {
+      const payout = await asApp({}, (tx) => tx.expertPayout.create({ data: { expertUserId, netPaise: 8230, paymentsCount: 1, status: "PAID", reference: `ZZRLS${Date.now()}` }, select: { id: true } }));
+      const invoice = await asApp({}, (tx) => tx.gigInvoice.create({ data: { number: `ZZRLS/2026-27/${Date.now() % 10000}`, series: "ZZRLS/2026-27", serial: Date.now() % 10000, payoutId: payout.id, expertUserId, taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, sacCode: "998599", sellerJson: "{}", buyerJson: "{}", linesJson: "[]" }, select: { id: true } }));
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.gigInvoice.count({ where: { id: invoice.id, expertUserId } }))).toBe(1);
+      expect(await asApp({ userId: strangerUserId }, (tx) => tx.gigInvoice.count({ where: { id: invoice.id, expertUserId: strangerUserId } }))).toBe(0);
+      expect(await asApp({ superuser: true }, (tx) => tx.gigInvoice.count({ where: { id: invoice.id } }))).toBe(1);
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.expertPayout.count({ where: { id: payout.id, expertUserId } }))).toBe(1);
+      await asApp({}, (tx) => tx.expertPayout.delete({ where: { id: payout.id } }));
+    });
   });
 });

@@ -83,7 +83,7 @@ export function SeatCheckout({ checkout, paymentId, onClose }: { checkout?: GigC
     const abort = new AbortController();
     const finish = (status: GigPaymentStatus | null) => {
       if (abort.signal.aborted) return;
-      if (status && (status.status === "PAID" || status.status === "HELD" || status.status === "RELEASED")) {
+      if (status && (status.status === "PAID" || status.status === "HELD" || status.status === "DUE" || status.status === "PAID_OUT")) {
         setPhase({ kind: "paid" });
         router.refresh();
       } else if (status?.status === "FAILED") {

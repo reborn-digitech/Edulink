@@ -180,6 +180,42 @@ d("STORED copies against their source rows", () => {
     expect(failsOf("gig-seats")).toEqual([]);
   });
 
+  it("gig-money: a seat payment's stored net is gross − commission − GST (zero on a refund); a payout's net and count are its payments'; an invoice's taxable value is its payout's commission", async () => {
+    // The company collects (decision 0004, second amendment of 2 October 2026): one writer, src/lib/gig-payments.ts, freezes the three figures at capture.
+    const payments = await db.sessionPayment.findMany({ select: { id: true, status: true, amountPaise: true, commissionPaise: true, gstPaise: true, netPaise: true, receiptNumber: true, payoutId: true } });
+    for (const p of payments) {
+      if (p.status === "INITIATED" || p.status === "FAILED") continue;
+      if (p.status === "REFUNDED" && (p.commissionPaise !== 0 || p.gstPaise !== 0 || p.netPaise !== 0)) note("gig-money", "FAIL", "platform", `refunded payment ${p.id} still carries commission ${p.commissionPaise}, GST ${p.gstPaise}, net ${p.netPaise}`);
+      if (p.netPaise !== p.amountPaise - p.commissionPaise - p.gstPaise) note("gig-money", "FAIL", "platform", `payment ${p.id}: net ${p.netPaise} ≠ gross ${p.amountPaise} − commission ${p.commissionPaise} − GST ${p.gstPaise}`);
+      if (!p.receiptNumber) note("gig-money", "WARN", "platform", `payment ${p.id} is ${p.status} with no receipt number — captured before receipts were numbered`);
+      if (p.status === "REFUNDED" && p.payoutId) note("gig-money", "FAIL", "platform", `refunded payment ${p.id} sits in payout ${p.payoutId}`);
+      if ((p.status === "DUE" || p.status === "PAID_OUT") && !p.payoutId) note("gig-money", "FAIL", "platform", `payment ${p.id} is ${p.status} with no payout`);
+    }
+    const payouts = await db.expertPayout.findMany({ select: { id: true, status: true, netPaise: true, paymentsCount: true, expertUserId: true, payments: { select: { status: true, netPaise: true, expertUserId: true, commissionPaise: true, gstPaise: true } }, invoice: { select: { id: true, taxableValuePaise: true, cgstPaise: true, sgstPaise: true, igstPaise: true, totalPaise: true } } } });
+    for (const x of payouts) {
+      const live = x.payments.filter((p) => p.status === "DUE" || p.status === "PAID_OUT");
+      const net = sum(live.map((p) => p.netPaise));
+      if (live.length > 0 && (net !== x.netPaise || live.length !== x.paymentsCount)) note("gig-money", "FAIL", "platform", `payout ${x.id} stores ${x.netPaise} for ${x.paymentsCount} seat(s) but holds ${net} over ${live.length}`);
+      if (x.payments.some((p) => p.expertUserId !== x.expertUserId)) note("gig-money", "FAIL", "platform", `payout ${x.id} holds another expert's seat`);
+      if (x.status === "PAID" && x.payments.some((p) => p.status !== "PAID_OUT")) note("gig-money", "FAIL", "platform", `payout ${x.id} is PAID with a seat not PAID_OUT`);
+      if (x.status === "PAID" && !x.invoice) note("gig-money", "FAIL", "platform", `payout ${x.id} is PAID with no invoice`);
+      if (x.status === "OPEN" && x.invoice) note("gig-money", "FAIL", "platform", `payout ${x.id} is OPEN with invoice ${x.invoice.id}`);
+      if (x.invoice && live.length > 0) {
+        const commission = sum(live.map((p) => p.commissionPaise));
+        const gst = sum(live.map((p) => p.gstPaise));
+        const inv = x.invoice;
+        if (inv.taxableValuePaise !== commission) note("gig-money", "FAIL", "platform", `invoice ${inv.id}: taxable ${inv.taxableValuePaise} ≠ the payout's commission ${commission}`);
+        if (inv.cgstPaise + inv.sgstPaise + inv.igstPaise !== gst) note("gig-money", "FAIL", "platform", `invoice ${inv.id}: tax ${inv.cgstPaise + inv.sgstPaise + inv.igstPaise} ≠ the payout's GST ${gst}`);
+        if (inv.totalPaise !== inv.taxableValuePaise + inv.cgstPaise + inv.sgstPaise + inv.igstPaise) note("gig-money", "FAIL", "platform", `invoice ${inv.id}: total ${inv.totalPaise} is not taxable plus tax`);
+        if (inv.igstPaise > 0 && (inv.cgstPaise > 0 || inv.sgstPaise > 0)) note("gig-money", "FAIL", "platform", `invoice ${inv.id} carries both IGST and CGST/SGST`);
+      }
+    }
+    const series = await db.gigInvoice.groupBy({ by: ["series"], _count: { _all: true }, _max: { serial: true } });
+    for (const g of series) if (g._max.serial !== g._count._all) note("gig-money", "WARN", "platform", `invoice series ${g.series} holds ${g._count._all} invoice(s) but its last serial is ${g._max.serial} — a gap or a reuse`);
+    note("gig-money", "INFO", "platform", `${payments.length} seat payment(s), ${payouts.length} payout(s), ${sum(payouts.map((x) => (x.invoice ? 1 : 0)))} invoice(s)`);
+    expect(failsOf("gig-money")).toEqual([]);
+  });
+
   it("pen-change: an applied request put its number on the account; a pending one still matches its snapshot", async () => {
     for (const s of schools) {
       const rows = await db.penChangeRequest.findMany({ where: { schoolId: s.id }, select: { id: true, status: true, fromPen: true, toPen: true, student: { select: { user: { select: { penNumber: true } } } } } });

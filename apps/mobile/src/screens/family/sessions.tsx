@@ -10,7 +10,8 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { BOOKING_STATUS, PROVIDER_KIND, SESSION_KIND, SESSIONS_KEY } from "@/screens/shared/gigs";
+import { bytesApi, shareBytes } from "@/lib/download";
+import { BOOKING_STATUS, PROVIDER_KIND, RECEIPT_STATUSES, SESSION_KIND, SESSIONS_KEY, type SessionPaymentStatus } from "@/screens/shared/gigs";
 import { money } from "@/screens/shared/fees";
 import { Chips, formatInstant, Note, openWeb, Pill } from "./shared";
 
@@ -45,7 +46,18 @@ export function FamilySessions() {
   const [rating, setRating] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<Record<string, string>>({});
   const [paying, setPaying] = useState<{ checkout: GigCheckout; startedAt: number } | null>(null);
+  const [receiptBusy, setReceiptBusy] = useState<string | null>(null);
   const byGuardian = role === "PARENT";
+  /** The family's receipt for a seat the company collected for: the PDF through the share sheet, as a certificate is. */
+  const openReceipt = async (paymentId: string) => {
+    setReceiptBusy(paymentId);
+    setError(null);
+    const fallback = t("common.somethingWrong");
+    const got = await bytesApi.get(`/api/v1/gigs/payments/${encodeURIComponent(paymentId)}/receipt`, fallback);
+    const failed = got.ok ? await shareBytes(got, `${t("gigs.rcptTitle")} ${paymentId}.pdf`, fallback) : got.error;
+    if (failed) setError(failed);
+    setReceiptBusy(null);
+  };
   /** A paid seat's order: opened on the web when the gateway's script is needed, watched from here either way. */
   const startPaying = (checkout: GigCheckout) => {
     setPaying({ checkout, startedAt: Date.now() });
@@ -140,6 +152,7 @@ export function FamilySessions() {
                         {b.payment.status === "REFUNDED" ? t("gigs.refundLine", { amount: money(b.payment.amountPaise, locale) }) : t("gigs.paymentLine", { amount: money(b.payment.amountPaise, locale) })}
                       </Text>
                     ) : null}
+                    {b.payment && RECEIPT_STATUSES.includes(b.payment.status as SessionPaymentStatus) ? <Button label={t("gigs.receiptLink")} variant="ghost" accessibilityLabel={[t("gigs.receiptLink"), b.title].join(": ")} busy={receiptBusy === b.payment.paymentId} onPress={() => void openReceipt(b.payment!.paymentId)} /> : null}
                     <Pill label={t(BOOKING_STATUS[b.status].label)} tone={BOOKING_STATUS[b.status].tone} />
                     {b.canPay ? <Button label={t("gigs.payNow", { amount: money(b.pricePaise, locale) })} accessibilityLabel={[t("gigs.payNow", { amount: money(b.pricePaise, locale) }), b.title].join(": ")} busy={running(seat(b.id, "checkout"))} onPress={() => act.mutate({ path: seat(b.id, "checkout"), done: "" })} /> : null}
                     {b.meetingUrl ? (
@@ -244,7 +257,7 @@ export function FamilySessions() {
   );
 }
 
-const SETTLED = new Set(["PAID", "HELD", "RELEASED", "REFUNDED", "FAILED"]);
+const SETTLED = new Set(["PAID", "HELD", "DUE", "PAID_OUT", "REFUNDED", "FAILED"]);
 
 /** A started seat payment: the phone asks after it every few seconds until it is paid, it failed, or a minute has passed. */
 function PayWatch({ flow, onDone, onClose }: { flow: { checkout: GigCheckout; startedAt: number }; onDone: () => void; onClose: () => void }) {
@@ -266,7 +279,7 @@ function PayWatch({ flow, onDone, onClose }: { flow: { checkout: GigCheckout; st
     },
   });
   const s = status.data;
-  const paid = Boolean(s && (s.status === "PAID" || s.status === "HELD" || s.status === "RELEASED"));
+  const paid = Boolean(s && (s.status === "PAID" || s.status === "HELD" || s.status === "DUE" || s.status === "PAID_OUT"));
   const settled = Boolean(s && SETTLED.has(s.status));
   const told = useRef(false);
   useEffect(() => {

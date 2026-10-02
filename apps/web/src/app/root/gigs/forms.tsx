@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { recordGigPaymentAction, retryPaymentAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
+import { recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
 
 export type Dial = { key: string; label: string; value: number; /** Shown in rupees, kept in paise. */ rupees?: boolean };
 
@@ -164,5 +164,99 @@ export function RetryPayment({ paymentId }: { paymentId: string }) {
         </span>
       )}
     </span>
+  );
+}
+
+export type CompanyFormValues = { legalName: string; gstin: string; address: string; stateCode: string; sacCode: string; invoicePrefix: string; gstPercent: number };
+
+/** The company on its invoices: legal name, GSTIN, address, state code, SAC, the series prefix and the GST rate on the commission. */
+export function CompanyForm({ initial }: { initial: CompanyFormValues }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [v, setV] = useState({ ...initial, gstPercent: String(initial.gstPercent) });
+  const [error, setError] = useState<string | null>(null);
+  const field = (key: keyof typeof v, label: string, extra: Record<string, unknown> = {}) => <TextField key={key} label={label} value={v[key]} autoComplete="off" onChange={(e) => setV((x) => ({ ...x, [key]: e.target.value }))} data-testid={`gig-company-${key}`} {...extra} />;
+  return (
+    <form
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+        const gstPercent = Number(v.gstPercent);
+        if (v.gstPercent.trim() === "" || !Number.isInteger(gstPercent)) return setError(t("gigs.refuseGstPercent"));
+        startTransition(async () => {
+          const result = await saveCompanyAction({ ...v, gstPercent });
+          if (!result.ok) return setError(result.error);
+          toast({ tone: "ok", title: result.message });
+          router.refresh();
+        });
+      }}
+      className="space-y-4"
+      data-typing="en"
+      data-testid="gig-company"
+    >
+      {error && (
+        <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
+          {error}
+        </p>
+      )}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {field("legalName", t("gigs.opCompanyName"), { maxLength: 160 })}
+        {field("gstin", t("gigs.opCompanyGstin"), { maxLength: 20 })}
+        {field("stateCode", t("gigs.opCompanyState"), { maxLength: 2, inputMode: "numeric" })}
+        {field("address", t("gigs.opCompanyAddress"), { maxLength: 400 })}
+        {field("sacCode", t("gigs.opCompanySac"), { maxLength: 8, inputMode: "numeric" })}
+        {field("invoicePrefix", t("gigs.opCompanyPrefix"), { maxLength: 8 })}
+        {field("gstPercent", t("gigs.opCompanyGst"), { maxLength: 3, inputMode: "numeric" })}
+      </div>
+      <Button type="submit" disabled={pending}>
+        {pending ? t("common.saving") : t("gigs.saveSettings")}
+      </Button>
+    </form>
+  );
+}
+
+/** One payout to an expert: the reference of the transfer the company has made from its bank, the date, a note. */
+export function PayoutForm({ payoutId, name, disabled }: { payoutId: string; name: string; disabled: boolean }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [reference, setReference] = useState("");
+  const [paidAt, setPaidAt] = useState("");
+  const [note, setNote] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  return (
+    <form
+      noValidate
+      onSubmit={(event) => {
+        event.preventDefault();
+        setError(null);
+        startTransition(async () => {
+          const result = await recordPayoutAction({ payoutId, name, reference, paidAt: paidAt ? new Date(`${paidAt}T12:00:00+05:30`).toISOString() : null, note: note || null });
+          if (!result.ok) return setError(result.error);
+          toast({ tone: "ok", title: result.message });
+          setReference("");
+          setNote("");
+          router.refresh();
+        });
+      }}
+      className="space-y-2"
+      data-typing="en"
+      data-testid="gig-payout-form"
+    >
+      <div className="grid gap-2 sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+        <TextField label={t("gigs.utr")} value={reference} maxLength={40} autoComplete="off" disabled={disabled} error={error ?? undefined} onChange={(e) => setReference(e.target.value)} data-testid="gig-payout-ref" />
+        <TextField label={t("gigs.opPayDate")} type="date" value={paidAt} disabled={disabled} onChange={(e) => setPaidAt(e.target.value)} />
+      </div>
+      <div className="flex flex-wrap items-end gap-2">
+        <TextField label={t("gigs.opPayNote")} className="min-w-0 flex-1" value={note} maxLength={300} autoComplete="off" disabled={disabled} onChange={(e) => setNote(e.target.value)} />
+        <Button type="submit" variant="secondary" disabled={pending || disabled} aria-label={t("gigs.opRecordPayoutFor", { name })} data-testid="gig-payout-record">
+          {pending ? t("common.saving") : t("gigs.opRecordPayout")}
+        </Button>
+      </div>
+    </form>
   );
 }
