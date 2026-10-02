@@ -146,3 +146,10 @@ afterAll(() => {
     throw new Error(`scripts/i18n-subset.cjs leaves out ${left.length} key(s) this file asked the translator for, and a release would show the key in place of the sentence: ${left.join(", ")}`);
   }
 });
+
+// The event stream. A screen that listens (the register, the substitution
+// board) opens GET /api/v1/events through expo/fetch, which under jest is this
+// machine's own fetch and would reach a dev server on :3000. Here it is a
+// stream that never says anything; a test that wants the stream to speak
+// injects its own (__setEventsFetch in src/lib/use-events.ts).
+jest.mock("expo/fetch", () => ({ fetch: async () => ({ ok: true, status: 200, body: new ReadableStream() }) }));

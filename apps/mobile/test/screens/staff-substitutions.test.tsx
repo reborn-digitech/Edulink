@@ -3,6 +3,7 @@ import { substitutionBoardSchema } from "@edulink/contracts";
 import { ToastProvider } from "@/components";
 import { Substitutions } from "@/screens/staff/substitutions";
 import { json, mountStaff, type Answers } from "./staff-harness";
+import { fakeEvents } from "./live-support";
 
 /** The screen's doors go into the app's own tabs; the router is the harness's, so a test can read where it went. */
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -199,5 +200,43 @@ describe("the substitution board", () => {
     expect(screen.getByText("Every lesson has its teacher. Mark someone absent or on leave on the staff register and their lessons appear here.")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Staff attendance" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/staff-attendance");
+  });
+});
+
+/**
+ * The board hears the event stream: a cover named or cleared by anyone in
+ * the school on this day (the server's `substitution.updated`) re-reads the
+ * board and says so for a moment; another day's change is not this board's.
+ */
+describe("the substitution board, live", () => {
+  afterEach(() => fakeEvents().reset());
+
+  it("a change to this day's board re-reads it and says 'The board changed and has been refreshed.'", async () => {
+    const live = fakeEvents();
+    let reads = 0;
+    const { calls } = await mountStaff(
+      compose(),
+      "ADMIN",
+      {
+        ...answers(),
+        [`GET ${PATH}`]: () => json(++reads === 1 ? BOARD : { ...BOARD, lessons: [{ ...BOARD.lessons[0]!, substitute: { membershipId: DEV, name: "ZZ Dev", note: null } }, ...BOARD.lessons.slice(1)] }),
+      },
+    );
+    await screen.findByText("Maths · ZZ 5A");
+    await live.opened();
+    expect(live.opens).toBe(1);
+    expect(screen.queryByText("The board changed and has been refreshed.")).toBeNull();
+
+    // Another day's board changing is not this one's.
+    live.event("substitution.updated", { dateKey: "2026-09-18", slotId: MATHS });
+    await new Promise((r) => setTimeout(r, 20));
+    expect(calls().filter((c) => c.line.startsWith(`GET ${PATH}`))).toHaveLength(1);
+
+    live.keepAlive();
+    live.event("substitution.updated", { dateKey: "2026-09-17", slotId: MATHS });
+    await screen.findByText("The board changed and has been refreshed.");
+    await waitFor(() => expect(calls().filter((c) => c.line.startsWith(`GET ${PATH}`))).toHaveLength(2));
+    await screen.findByText("Substitute: ZZ Dev");
+    expect(screen.queryByText("Substitute: ZZ Chitra")).toBeNull();
   });
 });

@@ -114,3 +114,13 @@ export function useRole(): RoleCode | null {
   const s = useSession();
   return s.status === "signed-in" ? s.me.active.role : null;
 }
+
+/**
+ * The session when there is a provider, else null: for a hook a screen may
+ * use under a test's bare providers (the events stream, which hands an
+ * ended session to `refresh` — /api/v1/me answers 401, the token goes, the
+ * gate sends the person to sign in).
+ */
+export function useSessionIfAny(): Session | null {
+  return useContext(Ctx);
+}

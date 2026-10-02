@@ -6,6 +6,7 @@ import { Register } from "@/screens/teacher/register";
 import { listQueued } from "@/lib/outbox";
 import { flushOutbox } from "@/lib/outbox-runner";
 import { callsTo, fakeApi, ID, json, offline, refusal, renderTeacher, resetOutbox, tap } from "./teacher-support";
+import { fakeEvents } from "./live-support";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -188,5 +189,73 @@ describe("the register", () => {
     expect(callsTo(fetch, "/api/v1/staff/attendance/register")[0]!.url.searchParams.get("date")).toBe("2026-09-08");
     expect(screen.getAllByRole("radio", { name: "Present" })[0]).toBeDisabled();
     expect(screen.queryByRole("button", { name: /Mark all/ })).toBeNull();
+  });
+});
+
+/**
+ * The register hears the event stream: a colleague's save re-reads the
+ * roster and says so for a moment; the device's own save (every clientId on
+ * the event is one this screen minted) is left alone; and a mark the server
+ * has not yet confirmed stays the teacher's through the re-read.
+ */
+describe("the register, live", () => {
+  afterEach(() => fakeEvents().reset());
+
+  it("a colleague's marks re-read the roster and say 'Updated by a colleague.'; the device's own event is ignored", async () => {
+    const live = fakeEvents();
+    mockRouter.params = { classId: ID.class1 };
+    let reads = 0;
+    const fetch = fakeApi({
+      "/api/v1/staff/attendance/register": () => json(++reads === 1 ? REGISTER : { ...REGISTER, roster: [{ ...REGISTER.roster[0]!, status: "ABSENT" }, REGISTER.roster[1]!] }),
+      "/api/attendance": () => json(SAVED),
+    });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    await live.opened();
+    expect(live.opens).toBe(1);
+    expect(screen.queryByText("Updated by a colleague.")).toBeNull();
+
+    // Another class's register changing is not this one's.
+    live.event("attendance.updated", { classId: ID.class2, dateKey: "2026-09-07", clientIds: ["zz-other-1"] });
+    await new Promise((r) => setTimeout(r, 20));
+    expect(callsTo(fetch, "/api/v1/staff/attendance/register")).toHaveLength(1);
+
+    live.keepAlive();
+    live.event("attendance.updated", { classId: ID.class1, dateKey: "2026-09-07", clientIds: ["zz-colleague-1"] });
+    await screen.findByText("Updated by a colleague.");
+    expect(callsTo(fetch, "/api/v1/staff/attendance/register")).toHaveLength(2);
+    await screen.findByText("Attendance complete");
+    expect(screen.getAllByRole("radio", { name: "Absent" })[0]).toBeChecked();
+
+    // The teacher's own tap: the event the server sends back carries the clientId this screen minted, and nothing is re-read.
+    await tap(screen.getAllByRole("radio", { name: "Late" })[1]!);
+    await waitFor(() => expect(screen.getByText("Saved")).toBeTruthy(), slow);
+    const sent = callsTo(fetch, "/api/attendance")[0]!.body as { marks: { clientId: string }[] };
+    live.event("attendance.updated", { classId: ID.class1, dateKey: "2026-09-07", clientIds: [sent.marks[0]!.clientId] });
+    await new Promise((r) => setTimeout(r, 20));
+    expect(callsTo(fetch, "/api/v1/staff/attendance/register")).toHaveLength(2);
+  });
+
+  it("a mark not yet confirmed by the server stays the teacher's through a colleague's re-read", async () => {
+    const live = fakeEvents();
+    mockRouter.params = { classId: ID.class1 };
+    let reads = 0;
+    fakeApi({
+      // The second read says the colleague marked both absent.
+      "/api/v1/staff/attendance/register": () => json(++reads === 1 ? REGISTER : { ...REGISTER, roster: REGISTER.roster.map((p) => ({ ...p, status: "ABSENT" })) }),
+      "/api/attendance": offline,
+    });
+    await renderTeacher(<Register />);
+    await screen.findByText("1 of 2 marked");
+    await live.opened();
+    // The teacher marks the first pupil late; the network is not there, so the mark waits in the outbox, unconfirmed.
+    await tap(screen.getAllByRole("radio", { name: "Late" })[0]!);
+    await waitFor(() => expect(screen.getByText("Saved on this device")).toBeTruthy(), slow);
+    live.event("attendance.updated", { classId: ID.class1, dateKey: "2026-09-07", clientIds: ["zz-colleague-2"] });
+    await screen.findByText("Updated by a colleague.");
+    // The first pupil is still the teacher's "Late"; the second is the colleague's "Absent".
+    expect(screen.getAllByRole("radio", { name: "Late" })[0]).toBeChecked();
+    expect(screen.getAllByRole("radio", { name: "Absent" })[0]).not.toBeChecked();
+    expect(screen.getAllByRole("radio", { name: "Absent" })[1]).toBeChecked();
   });
 });

@@ -3,11 +3,12 @@ import { Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { substitutionAssignedSchema, substitutionBoardSchema, type SubstitutionLesson } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
+import { Button, Card, Empty, Failed, Field, LiveNotice, Loading, Row, Screen, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { useEvents } from "@/lib/use-events";
 import { Pill } from "../family/shared";
 import { clock } from "../teacher/support";
 import { addDaysToKey, formatDateKey } from "./shared";
@@ -43,6 +44,24 @@ export function Substitutions() {
     queryFn: async () => substitutionBoardSchema.parse(unwrap(await api().get(`${PATH}${date ? `?date=${date}` : ""}`))),
   });
   const d = query.data;
+  /**
+   * The board's ear: a cover named, taken away, taken up or declined by
+   * anyone in the school on this day (the server publishes
+   * `substitution.updated` on the school channel) re-reads the board, so the
+   * office desk and the head's phone show one board. A card being worked
+   * keeps its choice and its note: the re-read brings new data, not new
+   * state. Back from the background, the board is re-read quietly.
+   */
+  const [changedAt, setChangedAt] = useState<number | null>(null);
+  useEvents(
+    ["substitution.updated"],
+    (event) => {
+      if (event.type !== "substitution.updated" || event.dateKey !== d?.dateKey) return;
+      void query.refetch();
+      setChangedAt(Date.now());
+    },
+    { enabled: !!d, onResume: () => void query.refetch() },
+  );
   const dayLabel = d ? formatDateKey(d.dateKey, locale, { weekday: "short", day: "numeric", month: "short" }) : "";
   return (
     <Screen title={t("substitutions.title")} description={t("substitutions.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -56,6 +75,7 @@ export function Substitutions() {
           {date !== null ? <Button label={t("substitutions.today")} variant="ghost" onPress={() => setDate(null)} /> : null}
         </View>
       ) : null}
+      <LiveNotice stamp={changedAt}>{t("substitutions.boardChanged")}</LiveNotice>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
