@@ -23,8 +23,9 @@ dies in the release step rather than serving.
 | `STORAGE_BUCKET` + `STORAGE_S3_*` | uploads in an S3-compatible bucket (R2, S3, B2); all five or none. Without them `STORAGE_DIR` on a mounted volume, one machine only |
 | `APP_COMMIT` | set by the build (`--build-arg APP_COMMIT=$(git rev-parse --short HEAD)`); `/api/health` reports it |
 | `SSO_*` | per provider; `npm run sso:check` before the first sign-in |
-| `FEES_SECRET_KEY` | `openssl rand -base64 32`; seals each school's gateway secrets at rest. Without it no school can save gateway keys (UPI-id and counter payments still work). Never rotate casually: every school re-enters its keys |
-| `WHATSAPP_TRANSPORT=twilio` + `TWILIO_WHATSAPP_FROM` | WhatsApp to families through the same Twilio account; the sandbox number while testing. `MESSAGE_TEMPLATE_IDS` carries the DLT ids and WhatsApp content SIDs per template and language — `docs/runbooks/messaging.md` |
+| `FEES_SECRET_KEY` | `openssl rand -base64 32`; seals each school's gateway secrets at rest and the two-step sign-in secrets. Without it no school can save gateway keys and nobody can enrol in two-step sign-in (UPI-id and counter payments still work). Never rotate casually: every school re-enters its keys and every enrolment is redone. CI generates a throwaway; a deployment must set its own |
+| `FILE_LINK_SECRET` | `openssl rand -base64 32`; signs the five-minute links the phone opens files through. A deployment refuses to boot without it (env.ts); rotating it only expires the links in flight. CI generates a throwaway; a deployment must set its own |
+| `WHATSAPP_TRANSPORT=twilio` + `TWILIO_WHATSAPP_FROM` | WhatsApp to families through the same Twilio account; the sandbox number while testing. `MESSAGE_TEMPLATE_IDS` carries the DLT ids and WhatsApp content SIDs per template and language — `docs/runbooks/messaging.md`. Every template's wording changed with the name on 2 October 2026: register all 21 again before the first live send; a deployment with a live transport and no ids refuses to boot |
 | `FEES_GATEWAY_TRANSPORT=razorpay` | real orders at each school's *own* Razorpay account; `devbox` (the default) is refused when deployed. There is no platform gateway key — see decision 0003 |
 
 ## Release

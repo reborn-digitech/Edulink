@@ -649,6 +649,19 @@ export function checkEnv(): EnvProblem[] {
   }
   const templateIds = readMessageTemplateIds();
   if (templateIds.problem) problems.push({ key: "MESSAGE_TEMPLATE_IDS", message: templateIds.problem, fatal: false });
+  // A live text transport with no registered template ids sends texts the
+  // operator drops and bills: every template's wording changed with the
+  // name on 2 October 2026 and must be registered again with DLT and
+  // WhatsApp before a live send. Fatal when deployed with a live transport
+  // and no ids at all; a laptop on devbox is not affected.
+  const liveTexts = smsTransport === "twilio" || readWhatsappTransport() === "twilio";
+  if (liveTexts && !templateIds.problem && Object.keys(templateIds.ids).length === 0) {
+    problems.push({
+      key: "MESSAGE_TEMPLATE_IDS",
+      message: "A live SMS or WhatsApp transport is set and MESSAGE_TEMPLATE_IDS is empty: the templates were renamed on 2 October 2026 and must be registered again (docs/runbooks/messaging.md) before a text can be sent. Set the ids, or set the transport back to devbox.",
+      fatal: isProd,
+    });
+  }
 
   // Fees: a key that is set must be a key. Nothing else is required — a
   // school on UPI id or the counter alone never touches a gateway, and a

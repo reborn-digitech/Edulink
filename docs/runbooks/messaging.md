@@ -27,6 +27,15 @@ person), no transport.
 
 ## One-time setup by the operator
 
+> **Renamed on 2 October 2026.** Every template's wording changed with the
+> product's name (the sign-off is now "- Shalaghar", "- शालाघर", "- शाळाघर",
+> and the school line names Shalaghar), so any id registered under the old
+> wording no longer matches what the app sends and the operator drops the
+> text, billed. Register all 21 again (`npm run messages:templates` prints
+> them), then set `MESSAGE_TEMPLATE_IDS`; until the ids exist, leave the
+> transports on `devbox` — a deployment with a live transport and no ids
+> refuses to boot.
+
 1. **SMS.** The existing `SMS_TRANSPORT=twilio` and `TWILIO_*` variables.
    For Indian numbers, the sender's entity and headers must be registered on
    a DLT platform (Jio, Airtel, Vodafone Idea or BSNL's portal — one is

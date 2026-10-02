@@ -29,6 +29,8 @@ const KEYS = [
   "TWILIO_FROM",
   "VAPID_SUBJECT",
   "FILE_LINK_SECRET",
+  "MESSAGE_TEMPLATE_IDS",
+  "WHATSAPP_TRANSPORT",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -69,6 +71,8 @@ const GOOD_SMTP = {
 /** A complete, healthy Twilio block. */
 /** A deployment signs the phone's file links with a key of its own since 2026-10-01. */
 const GOOD_FILE_LINKS = { FILE_LINK_SECRET: "f".repeat(40) };
+/** A deployment with a live text transport names its registered templates (2026-10-02). */
+const GOOD_TEMPLATE_IDS = { MESSAGE_TEMPLATE_IDS: JSON.stringify({ absence: { sms: { en: "1107000000000000000" } } }) };
 
 const GOOD_TWILIO = {
   TWILIO_ACCOUNT_SID: "AC" + "0123456789abcdef".repeat(2),
@@ -96,6 +100,7 @@ describe("checkEnv — VAPID", () => {
       ...GOOD_SMTP,
       ...GOOD_TWILIO,
       ...GOOD_FILE_LINKS,
+      ...GOOD_TEMPLATE_IDS,
     });
     expect(checkEnv()).toEqual([]);
   });
@@ -451,7 +456,7 @@ describe("⚠ checkEnv — the VAPID pair, checked as a pair", () => {
   });
 
   it("the matching pair passes, and length is still checked first", () => {
-    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, ...GOOD_FILE_LINKS, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, ...GOOD_FILE_LINKS, ...GOOD_TEMPLATE_IDS, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
     expect(checkEnv()).toEqual([]);
 
     // Without the file-link key a deployment does not boot: the phone's links would be refused.
@@ -463,6 +468,19 @@ describe("⚠ checkEnv — the VAPID pair, checked as a pair", () => {
     expect(problems.some((p) => p.key === "VAPID_PRIVATE_KEY")).toBe(true);
     // Not ALSO reported as a mismatch: one paste error, one message.
     expect(problems.some((p) => p.key === "VAPID" && /not a pair/.test(p.message))).toBe(false);
+  });
+
+  it("a live text transport with no template ids is fatal when deployed, and a laptop on devbox is not affected", () => {
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, ...GOOD_FILE_LINKS, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE, MESSAGE_TEMPLATE_IDS: "" });
+    const problem = checkEnv().find((p) => p.key === "MESSAGE_TEMPLATE_IDS");
+    expect(problem?.fatal).toBe(true);
+    expect(problem!.message).toMatch(/registered again/);
+    // With the ids set, nothing to say.
+    set({ MESSAGE_TEMPLATE_IDS: JSON.stringify({ absence: { sms: { en: "1107000000000000000" } } }) });
+    expect(checkEnv().some((p) => p.key === "MESSAGE_TEMPLATE_IDS")).toBe(false);
+    // devbox texts need no ids.
+    set({ SMS_TRANSPORT: "devbox", WHATSAPP_TRANSPORT: "devbox", MESSAGE_TEMPLATE_IDS: "", NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    expect(checkEnv().some((p) => p.key === "MESSAGE_TEMPLATE_IDS")).toBe(false);
   });
 
   it("⚠ refuses the shipped placeholder subject in production — nothing can reach a .local address", () => {
