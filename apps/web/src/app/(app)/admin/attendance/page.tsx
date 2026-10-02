@@ -111,9 +111,11 @@ export default async function AdminAttendancePage({
           description={t("attendanceIntel.trendHint")}
         />
         <CardBody>
-          <div className="flex items-end gap-2" role="img" aria-label={t("attendanceIntel.trendTitle")}>
+          {/* Eight columns of a percentage over a date: at 320 px, the narrowest phone, eight gaps of 8 px and the
+              labels' own widths ran 2 px past the screen; the gap is 4 px under sm and a column may shrink to its label. */}
+          <div className="flex items-end gap-1 sm:gap-2" role="img" aria-label={t("attendanceIntel.trendTitle")}>
             {trend.map((point, index) => (
-              <div key={index} className="flex flex-1 flex-col items-center gap-1">
+              <div key={index} className="flex min-w-0 flex-1 flex-col items-center gap-1">
                 <span className="text-xs font-semibold tabular-nums text-fg">
                   {point.percent === null ? "—" : `${point.percent}%`}
                 </span>
