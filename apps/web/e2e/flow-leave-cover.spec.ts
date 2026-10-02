@@ -71,7 +71,9 @@ test.afterAll(async () => {
   await db.leaveRequest.deleteMany({ where: { schoolId, id: { in: leave.map((l) => l.id) } } });
   if (day && applicant) await db.substitution.deleteMany({ where: { schoolId, dateKey: day, absentMembershipId: applicant.id } });
   await db.notification.deleteMany({ where: { schoolId, OR: [{ body: { contains: REASON } }, { meta: { contains: day ?? "never" }, kind: "SYSTEM", title: { contains: "cover" } }] } }).catch(() => undefined);
-  await db.session.deleteMany({ where: { userAgent: "e2e", userId: cover?.userId } });
+  // Only the cover's own minted session: with no cover (a failed set-up) a
+  // delete by user agent alone would sign out every other spec's actor.
+  if (cover?.userId) await db.session.deleteMany({ where: { userAgent: "e2e", userId: cover.userId } });
   await db.$disconnect();
 });
 
