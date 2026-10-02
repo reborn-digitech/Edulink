@@ -23,13 +23,15 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 import { config } from "dotenv";
+import { AUTHORED_IN_THE_APP } from "../src/lib/bank-source";
 
 config();
 
 const DIR = join(process.cwd(), "content", "quiz");
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
-/** The `source` of a question made in the app rather than imported: src/lib/app-admin.ts and src/lib/gig-questions.ts. */
-const AUTHORED_IN_THE_APP = new Set(["Relay content team", "teacher contribution"]);
+// The `source` tags of a question made in the app rather than imported (src/lib/app-admin.ts,
+// src/lib/bank-tools.ts, src/lib/gig-questions.ts) come from src/lib/bank-source.ts with the writers,
+// so a rename cannot leave this set behind and orphan every question written in the app.
 
 type Translation = { stem?: string; choices?: string[]; solution?: string };
 

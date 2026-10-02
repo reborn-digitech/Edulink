@@ -43,6 +43,7 @@ import { GET as cyclesGet } from "@/app/api/v1/office/admissions/cycles/route";
 import { GET as circularsGet } from "@/app/api/v1/office/circulars/route";
 import { GET as staffMonthGet } from "@/app/api/v1/office/staff-attendance/month/route";
 import { computeUsage, loadStoredSizes, monthKeyFor } from "@/lib/plans";
+import { AUTHORED_IN_THE_APP, CONTENT_TEAM_SOURCE_BEFORE_RENAME } from "@/lib/bank-source";
 
 const RUN = process.env.DATA_AUDIT === "1";
 const d = RUN ? describe : describe.skip;
@@ -839,5 +840,23 @@ d("population: what the demo data never fills", () => {
     note("population", "INFO", "all", `school tables with no rows: ${empty.join(", ") || "none"}`);
     note("population", "INFO", "all", `nullable columns never populated: ${never.join(", ") || "none"}`);
     expect(true).toBe(true);
+  });
+});
+
+d("bank: the provenance tag every in-app question carries", () => {
+  /**
+   * QuizQuestion.source is a provenance tag with one reader, scripts/import-quiz.ts,
+   * which deletes any question the content files no longer hold UNLESS the tag
+   * is one of AUTHORED_IN_THE_APP (src/lib/bank-source.ts). The tag named the
+   * product, and the product was renamed on 2 October 2026: a row still carrying
+   * the old name is a question the next import would silently delete, so it is a
+   * FAIL, not a WARN. Server-wide, not per school: the bank has no schoolId.
+   */
+  it("bank-source: no question carries the tag of a product name the importer no longer spares", async () => {
+    const stale = await db.quizQuestion.count({ where: { source: CONTENT_TEAM_SOURCE_BEFORE_RENAME } });
+    if (stale) note("bank-source", "FAIL", "server", `${stale} question(s) still carry "${CONTENT_TEAM_SOURCE_BEFORE_RENAME}", which scripts/import-quiz.ts would delete on its next run (migration bank_source_shalaghar rewrites them)`);
+    const kept = await db.quizQuestion.groupBy({ by: ["source"], where: { source: { in: [...AUTHORED_IN_THE_APP] } }, _count: { _all: true } });
+    note("bank-source", "INFO", "server", `in-app questions the importer spares: ${kept.map((k) => `${k._count._all} "${k.source}"`).join(", ") || "none"}`);
+    expect(failsOf("bank-source")).toEqual([]);
   });
 });

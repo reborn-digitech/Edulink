@@ -11,6 +11,7 @@ import { consume } from "./rate-limit";
 import { translateQuestion, translationConfigured, type QuestionText } from "./translate";
 import { dateKeyInZone, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
+import { TEACHER_CONTRIBUTION_SOURCE } from "./bank-source";
 
 /**
  * Gigs, the first of them: a teacher writes questions for the shared practice
@@ -491,7 +492,7 @@ export async function decideContribution(ctx: ActiveContext, contributionId: str
         if (await tx.quizQuestion.findFirst({ where: { topicId: current.topicId, stem: final.stem }, select: { id: true } })) throw new Refusal("gigs.refuseInBank");
         const question = await tx.quizQuestion.create({
           // `source` is a provenance tag, read by the importer and by nobody on a screen: see AUTHORED_IN_THE_APP in scripts/import-quiz.ts.
-          data: { topicId: current.topicId, difficulty: final.difficulty, stem: final.stem, choices: final.choices, answerIndex: final.answerIndex, solution: final.solution, source: "teacher contribution", licence: "proprietary", reviewedAt: now, reviewedBy: ctx.user.id },
+          data: { topicId: current.topicId, difficulty: final.difficulty, stem: final.stem, choices: final.choices, answerIndex: final.answerIndex, solution: final.solution, source: TEACHER_CONTRIBUTION_SOURCE, licence: "proprietary", reviewedAt: now, reviewedBy: ctx.user.id },
           select: { id: true },
         });
         await tx.quizQuestionTranslation.createMany({

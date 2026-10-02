@@ -6,6 +6,7 @@ import { AccessError } from "./tenancy";
 import { clampLevel, parseChoices, QUIZ_SUBJECTS } from "./quiz";
 import { translateQuestion } from "./translate";
 import { statsFor, type QuestionStatSummary } from "./bank-tools";
+import { CONTENT_TEAM_SOURCE } from "./bank-source";
 import type { ActiveContext } from "./session";
 
 /**
@@ -437,7 +438,8 @@ export async function createBankQuestion(
       choices: JSON.stringify(input.choices.map((c) => c.trim())),
       answerIndex: input.answerIndex,
       solution: input.solution.trim(),
-      source: "Relay content team",
+      // The provenance tag scripts/import-quiz.ts spares; one constant for every writer (bank-source.ts).
+      source: CONTENT_TEAM_SOURCE,
       licence: "proprietary",
       // Typed by a person who read it as they typed it — reviewed by author.
       reviewedAt: new Date(),

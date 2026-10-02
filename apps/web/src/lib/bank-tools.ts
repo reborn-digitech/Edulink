@@ -5,6 +5,7 @@ import { audit } from "./audit";
 import { assertAppAdmin } from "./app-admin";
 import { bankToCsv, normaliseStem, parseBankCsv, type BankCsvResult, type BankExportRow, type BankRow, type BankTranslationRow } from "./bank-csv";
 import { parseChoices, clampLevel } from "./quiz";
+import { CONTENT_TEAM_SOURCE } from "./bank-source";
 import type { ActiveContext } from "./session";
 
 /**
@@ -15,8 +16,8 @@ import type { ActiveContext } from "./session";
  * nightly bank:stats job writes from every school's answers (jobs.ts).
  */
 
-/** The `source` of a question that arrived through the sheet, kept distinct so scripts/import-quiz.ts never orphans it. */
-export const IMPORTED_SOURCE = "Relay content team";
+/** The `source` of a question that arrived through the sheet, kept distinct so scripts/import-quiz.ts never orphans it (one constant for every writer: bank-source.ts). */
+export const IMPORTED_SOURCE = CONTENT_TEAM_SOURCE;
 const DEFAULT_LICENCE = "proprietary";
 
 /* -------------------------------------------------------------------------- */

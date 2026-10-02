@@ -18,7 +18,7 @@ rather than planting its own rows. It covers the two demo schools and ZZ Northga
 levels: **FAIL** is a contradiction the code should never produce and fails the suite; **WARN** is drift a
 later edit causes by design, or a population gap; **INFO** is a figure worth reading.
 
-### What the 29 checks recompute
+### What the 30 checks recompute
 
 **Stored copies against their source rows**
 
@@ -58,6 +58,7 @@ later edit causes by design, or a population gap; **INFO** is a figure worth rea
 | `GET /api/v1/office/staff-attendance/month` | each member's present/late/half/absent on teaching days, and the percent formula |
 | `GET /api/v1/office/admissions/cycles` | counts per status and admitted/applied per grade |
 | population | school tables with no rows and nullable columns never populated in the audited schools |
+| bank-source | no bank question carries the provenance tag of the product's old name ("Relay content team"), which `quiz:import` would delete on its next run; the in-app tags the importer spares, counted |
 
 ### What the first run found and what was fixed
 

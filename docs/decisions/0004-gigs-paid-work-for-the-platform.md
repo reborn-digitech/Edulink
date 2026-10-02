@@ -44,7 +44,7 @@ Experts and teachers may do work through the platform that is first given free a
 4. **The person is the fence.** These tables carry no school: the bank is every school's, the reviewer is the content team and the payer is the company. A teacher reads and changes only their own questions; another teacher's is a 404 (the cross-person probe tries it). A teacher's UPI id is read by that teacher and by the operator, and is never written to the audit log.
 5. **A pupil's allowance and a slot's seats are counted where they cannot be raced.** A booking is one transaction under a lock on the pupil's own membership row: the year's seats are counted, the seat is claimed by an update that cannot take a slot past its seats, and the booking is written (`bookSeat`; `tests/gig-sessions.test.ts` sends three pupils after two seats and two asks after a pupil's last free one).
 6. **A minor does not book alone, and an outside adult reaches only the seat.** An expert reads their own bookings by their own user id and nothing of the school through them (`npm run rls:verify` asserts it); what they write to one the server writes under the school's binding after finding the booking to be theirs.
-7. **An import does not delete a teacher's work.** `quiz:import` removes from a chapter only the questions a file wrote; one made in the app (`source` "Relay content team" or "teacher contribution") is left.
+7. **An import does not delete a teacher's work.** `quiz:import` removes from a chapter only the questions a file wrote; one made in the app (`source` "Shalaghar content team" or "teacher contribution", the constants in `src/lib/bank-source.ts`; "Relay content team" until 2 October 2026, rewritten by the migration `bank_source_shalaghar`) is left.
 
 ## Before paid sessions
 
