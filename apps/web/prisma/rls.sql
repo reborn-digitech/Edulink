@@ -1653,10 +1653,14 @@ CREATE TRIGGER "OperatorAccess_close_only"
 
 -- Tables with no school policy, each because it holds no school-owned rows:
 --   AuthToken
+--   CommissionPartner
 --   Competition
+--   ExpertPayout
+--   ExpertPayoutAccount
 --   ExpertProfile
 --   ExpertSlot
 --   GigEarning
+--   GigGatewayEvent
 --   GigPayee
 --   GigPayment
 --   GigSettings
@@ -1673,6 +1677,7 @@ CREATE TRIGGER "OperatorAccess_close_only"
 --   QuizTopicTranslation
 --   RateLimit
 --   Session
+--   SessionPayment
 --   SsoIdentity
 --   TwoFactorChallenge
 --   User

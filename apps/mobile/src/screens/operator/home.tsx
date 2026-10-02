@@ -5,14 +5,16 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tansta
 import {
   operatorAuditSchema,
   operatorContentTeamSchema,
+  operatorDashboardSchema,
   operatorExpertsSchema,
   operatorOverviewSchema,
+  type OperatorDashboard,
   type OperatorExpertStandingBody,
   type OperatorExperts,
   type OperatorJob,
   type OperatorOverview,
 } from "@edulink/contracts";
-import type { TranslationKey } from "@edulink/i18n";
+import { formatPaise, type TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, SwitchRow, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { openFile } from "@/lib/open-file";
@@ -20,7 +22,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Chips } from "../staff/shared";
+import { Chips, openWeb } from "../staff/shared";
 import { Note, Pill, relativeTime } from "../family/shared";
 
 type Section = "schools" | "jobs" | "experts" | "team" | "log";
@@ -95,9 +97,15 @@ export function OperatorHome() {
     placeholderData: keepPreviousData,
     queryFn: async () => operatorOverviewSchema.parse(unwrap(await api().get(operatorOverviewPath(q, state)))),
   });
+  /** The dashboard (2026-10-02): the tiles and the schools due within a week, a read of its own so the list above is not held up by it. */
+  const dashboard = useQuery({
+    queryKey: ["operator", "dashboard"],
+    queryFn: async () => operatorDashboardSchema.parse(unwrap(await api().get("/api/v1/operator/dashboard"))),
+  });
   const d = query.data;
   const name = session.me ? (session.me.user.preferredName ?? session.me.user.name) : "";
   const addSchool = () => router.push("/(app)/operator-new-school" as never);
+  const openSchool = (schoolId: string) => router.push({ pathname: "/(app)/operator-school", params: { schoolId } } as never);
   return (
     <Screen title={t("root.serverAdministration")} description={t("root.operatorIntro")} refreshing={query.isRefetching} onRefresh={() => void qc.invalidateQueries({ queryKey: ["operator"] })}>
       <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], flexWrap: "wrap" }}>
@@ -130,6 +138,8 @@ export function OperatorHome() {
       />
       {section === "schools" ? (
         <>
+          {dashboard.isError ? <Failed message={dashboard.error.message} onRetry={() => void dashboard.refetch()} /> : null}
+          {dashboard.data ? <Dashboard d={dashboard.data} onOpen={openSchool} /> : null}
           <Field label={t("common.searchLabel")} placeholder={t("root.searchPlaceholder")} value={typed} onChangeText={setTyped} returnKeyType="search" autoCapitalize="none" autoCorrect={false} />
           <Chips
             label={t("root.stateFilter")}
@@ -151,7 +161,7 @@ export function OperatorHome() {
         <Schools
           d={d}
           narrowed={Boolean(q || state !== "live")}
-          onOpen={(schoolId) => router.push({ pathname: "/(app)/operator-school", params: { schoolId } } as never)}
+          onOpen={openSchool}
           onAdd={addSchool}
           onClear={() => {
             setTyped("");
@@ -163,6 +173,7 @@ export function OperatorHome() {
       {d && section === "jobs" ? (
         <>
           <Button label={t("root.metrics")} variant="secondary" onPress={() => router.push("/(app)/operator-metrics" as never)} />
+          <Button label={t("gigs.opPayoutsTitle")} variant="secondary" onPress={() => router.push("/(app)/operator-payouts" as never)} />
           <Jobs jobs={d.jobs} onRefresh={() => void query.refetch()} />
         </>
       ) : null}
@@ -171,6 +182,63 @@ export function OperatorHome() {
       {section === "log" ? <Log onAdd={addSchool} /> : null}
       <Button label={t("shell.signOut")} variant="ghost" onPress={() => void session.signOut()} />
     </Screen>
+  );
+}
+
+/**
+ * The web's dashboard tiles and its due-soon list: schools live, on trial,
+ * due within thirty days, past due and suspended; pupils, this month's
+ * texts and storage against the caps, jobs overdue, and what the partners
+ * are owed this month (recorded only — nothing is collected here). The
+ * guided onboarding stays on the web, where one form takes everything;
+ * the note says so and opens it.
+ */
+function Dashboard({ d, onOpen }: { d: OperatorDashboard; onOpen: (schoolId: string) => void }) {
+  const t = useT();
+  const th = useTheme();
+  const { locale } = useLocale();
+  const ofCap = (used: number, cap: number | null, unit = "") => (cap === null ? `${used}${unit}` : t("root.tileOfCap", { used: `${used}${unit}`, cap: `${cap}${unit}` }));
+  const dueLine = (days: number) => (days === 0 ? t("root.subscriptionDueToday") : days > 0 ? t("root.subscriptionDueIn", { days }) : t("root.subscriptionOverdue", { days: -days }));
+  const statusKey = (status: string | null) => (status ? t(`root.status${status}` as TranslationKey) : t("root.subscriptionNotRecorded"));
+  return (
+    <>
+      <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
+        <Stat label={t("root.tileTrial")} value={d.tiles.trial} />
+        <Stat label={t("root.tileDueSoon")} value={d.tiles.dueSoon} tone={d.tiles.dueSoon > 0 ? "warn" : "fg"} />
+        <Stat label={t("root.tilePastDue")} value={d.tiles.pastDue} tone={d.tiles.pastDue > 0 ? "danger" : "fg"} />
+        <Stat label={t("root.tileSuspended")} value={d.tiles.suspended} />
+        <Stat label={t("root.tilePupils")} value={d.tiles.pupils} />
+        <Stat label={t("root.tileMessages")} value={ofCap(d.tiles.messages, d.tiles.messageCap)} tone={d.tiles.messageCap !== null && d.tiles.messages > d.tiles.messageCap ? "danger" : "fg"} />
+        <Stat label={t("root.tileStorage")} value={ofCap(d.tiles.storageMb, d.tiles.storageCapMb, " MB")} tone={d.tiles.storageCapMb !== null && d.tiles.storageMb > d.tiles.storageCapMb ? "danger" : "fg"} />
+        <Stat label={t("root.tileJobsOverdue")} value={d.tiles.jobsOverdue} tone={d.tiles.jobsOverdue > 0 ? "danger" : "ok"} />
+        <Stat label={t("root.tileOwed")} value={formatPaise(d.tiles.owedThisMonthPaise, locale)} tone="accent" />
+      </View>
+      <Text variant="xs" tone="subtle">
+        {t("root.tilesNote")}
+      </Text>
+      <Card title={t("root.dueSoonTitle")}>
+        {d.dueSoon.length === 0 ? (
+          <Text variant="sm" tone="muted">
+            {t("root.dueSoonNone")}
+          </Text>
+        ) : (
+          d.dueSoon.map((s) => (
+            <Row
+              key={s.id}
+              icon="receipt"
+              title={s.name}
+              caption={`${s.dueAt} · ${dueLine(s.daysToDue)}`}
+              right={<Pill label={statusKey(s.status)} tone={s.daysToDue < 0 ? "danger" : "warn"} />}
+              onPress={() => onOpen(s.id)}
+            />
+          ))
+        )}
+      </Card>
+      <Note tone="accent">
+        <Text variant="sm">{t("root.onboardOnWeb")}</Text>
+        <Button label={t("root.onboardCta")} variant="secondary" onPress={() => openWeb("/root/onboard")} />
+      </Note>
+    </>
   );
 }
 

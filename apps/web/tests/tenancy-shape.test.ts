@@ -234,9 +234,14 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   GigPayment: "the operator's record of a transfer to a contributor — bound to the person",
   GigPayee: "a contributor's own UPI id — bound to the person",
   GigSlot: "a time a provider offers; an expert's is open to every school, a teacher's names its school in teacherSchoolId and is held to it in the library",
+  ExpertPayoutAccount: "an expert's own linked account at the company's gateway — bound to the person, no school",
+  SessionPayment: "a guardian's payment for one paid seat and the transfer held for the expert — the payer's and the expert's row, read by their user ids in src/lib/gig-payments.ts; the booking it pays for is the pupil's school's row",
+  ExpertPayout: "the transfers the gateway released to one expert in one run — bound to the person",
+  GigGatewayEvent: "a delivery from the company's gateway about a session payment, stored once by its id; no school, like GigGatewayEvent's cousin GatewayEvent carries one for school fees",
   QuestionStat: "the bank's own count of how a question is doing across every school, written by the nightly bank:stats job alone — belongs to a QuizQuestion, which belongs to no school",
   PlatformTakedown: "the platform's record of taking a shared post down for every school; postSchoolId names the publishing school for the restore, the row is nobody's tenant",
   Plan: "a plan the operator offers — a name, caps and a recorded price; the office reads its own through School.planId, and nothing in it belongs to a school",
+  CommissionPartner: "the operator's record of who brought a school in and what share they are owed (recorded, never paid here); a school points at it through School.commissionPartnerId, and nothing in it belongs to a school",
 };
 
 function modelBodies(): Map<string, string> {
@@ -260,7 +265,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(132);
+    ).toBe(137);
   });
 });
 

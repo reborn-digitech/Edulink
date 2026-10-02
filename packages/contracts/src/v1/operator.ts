@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { expertKycDocumentSchema, expertKycStatusSchema } from "./experts";
+import { operatorCommissionSchema, operatorContactSchema, operatorSubscriptionSchema } from "./operator-dashboard";
 
 /**
  * operator: the server operator's pages (the web's /root) and the content
@@ -225,6 +226,10 @@ export const operatorSchoolDetailSchema = z.object({
   ),
   /** Every time the school has been opened by the operator, newest first — the list the school reads too. */
   access: z.array(z.object({ id, operatorName: z.string(), reason: z.string(), startedAt: iso, live: z.boolean() })),
+  /** The commercial record (2026-10-02): where the subscription stands, who to call, which partner. Defaults so an older server's answer still parses. */
+  subscription: operatorSubscriptionSchema.default({ status: null, startsAt: null, dueAt: null, daysToDue: null, invoicedAt: null, invoiceRef: null, paidAt: null, paidRef: null }),
+  contact: operatorContactSchema.default({ name: null, role: null, phone: null, email: null }),
+  commission: operatorCommissionSchema.default(null),
 });
 export type OperatorSchoolDetail = z.infer<typeof operatorSchoolDetailSchema>;
 

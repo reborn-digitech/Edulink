@@ -2,7 +2,19 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { operatorPlansSchema, operatorSchoolDetailSchema, operatorSchoolSupportSchema, type OperatorInviteAdminBody, type OperatorSchoolDetail, type OperatorSchoolSupport, type OperatorSchoolUpdateBody } from "@edulink/contracts";
+import {
+  SUBSCRIPTION_STATUSES,
+  operatorPartnersSchema,
+  operatorPlansSchema,
+  operatorSchoolDetailSchema,
+  operatorSchoolSupportSchema,
+  type OperatorInviteAdminBody,
+  type OperatorSchoolDetail,
+  type OperatorSchoolSupport,
+  type OperatorSchoolUpdateBody,
+  type OperatorSubscriptionBody,
+  type SubscriptionStatus,
+} from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
@@ -228,6 +240,8 @@ export function OperatorSchool() {
         ) : (
           <>
             <Verification schoolId={schoolId} verifiedAt={school.verifiedAt} onDone={changed} />
+            <Subscription schoolId={schoolId} d={d} onDone={changed} />
+            <Contact schoolId={schoolId} contact={d.contact} onDone={changed} />
             <Invites schoolId={schoolId} invites={d.invites} onChanged={changed} />
             {support.isError ? <Failed message={support.error.message} onRetry={() => void support.refetch()} /> : null}
             {support.data ? (
@@ -694,6 +708,165 @@ function Usage({ usage }: { usage: OperatorSchoolSupport["usage"] }) {
           {t("root.usageNotSampled")}
         </Text>
       )}
+    </Card>
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* The commercial record: the subscription and the point of contact (2026-10-02) */
+/* ------------------------------------------------------------------------- */
+
+const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
+
+type SubscriptionForm = { status: string; startsAt: string; dueAt: string; invoicedAt: string; invoiceRef: string; paidAt: string; paidRef: string; partnerId: string };
+
+function subscriptionFormFrom(d: OperatorSchoolDetail): SubscriptionForm {
+  const s = d.subscription;
+  return { status: s.status ?? "", startsAt: s.startsAt ?? "", dueAt: s.dueAt ?? "", invoicedAt: s.invoicedAt ?? "", invoiceRef: s.invoiceRef ?? "", paidAt: s.paidAt ?? "", paidRef: s.paidRef ?? "", partnerId: d.commission?.partnerId ?? "" };
+}
+
+/** Only what changed, with the reason: the server keeps the rest and refuses a move the list does not allow. */
+export function subscriptionBody(initial: SubscriptionForm, form: SubscriptionForm, reason: string): OperatorSubscriptionBody {
+  const body: OperatorSubscriptionBody = { reason: reason.trim() };
+  if (form.status !== initial.status && form.status) body.status = form.status as SubscriptionStatus;
+  for (const key of ["startsAt", "dueAt", "invoicedAt", "paidAt"] as const) if (form[key].trim() !== initial[key]) body[key] = form[key].trim() || null;
+  for (const key of ["invoiceRef", "paidRef"] as const) if (form[key].trim() !== initial[key]) body[key] = form[key].trim() || null;
+  if (form.partnerId !== initial.partnerId) body.commissionPartnerId = form.partnerId || null;
+  return body;
+}
+
+/**
+ * The web's subscription card: where it stands, the dates, the invoice and
+ * the payment as recorded dates with references, the partner — and a
+ * reason, which every change must carry. Dates are typed as YYYY-MM-DD;
+ * one that is not a day is refused before the send. Recorded, never
+ * collected: nothing here moves money.
+ */
+function Subscription({ schoolId, d, onDone }: { schoolId: string; d: OperatorSchoolDetail; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const initial = subscriptionFormFrom(d);
+  const [form, setForm] = useState<SubscriptionForm>(initial);
+  const [reason, setReason] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const set = (key: keyof SubscriptionForm) => (value: string) => setForm((f) => ({ ...f, [key]: value }));
+  const partners = useQuery({
+    queryKey: ["operator", "partners"],
+    queryFn: async () => operatorPartnersSchema.parse(unwrap(await api().get("/api/v1/operator/partners"))),
+  });
+  const save = useMutation({
+    mutationFn: (body: OperatorSubscriptionBody) => send(api().post(`/api/v1/operator/schools/${schoolId}/subscription`, body), t("root.didNotWork")),
+    onSuccess: () => {
+      toast.show(t("root.subscriptionSaved"));
+      setReason("");
+      setError(null);
+      void qc.invalidateQueries({ queryKey: ["operator", "dashboard"] });
+      void qc.invalidateQueries({ queryKey: ["operator", "partners"] });
+      onDone();
+    },
+    onError: (e) => setError(e.message),
+  });
+  const body = subscriptionBody(initial, form, reason);
+  const changed = Object.keys(body).length > 1;
+  const badDate = (["startsAt", "dueAt", "invoicedAt", "paidAt"] as const).some((k) => form[k].trim() && !DAY_KEY.test(form[k].trim()));
+  const days = d.subscription.daysToDue;
+  const stopped = d.subscription.status === "ENDED" || d.subscription.status === "SUSPENDED";
+  const dueLine = days === null || stopped ? null : days === 0 ? t("root.subscriptionDueToday") : days > 0 ? t("root.subscriptionDueIn", { days }) : t("root.subscriptionOverdue", { days: -days });
+  const tone = days === null || stopped ? "muted" : days < 0 ? "danger" : days <= 30 ? "warn" : "ok";
+  const statusOptions = [{ value: "", label: t("root.subscriptionNotRecorded") }, ...SUBSCRIPTION_STATUSES.map((status) => ({ value: status, label: t(`root.status${status}` as TranslationKey) }))];
+  const partnerOptions = [{ value: "", label: t("root.commissionNoneOption") }, ...(partners.data?.items ?? []).map((p) => ({ value: p.id, label: `${p.name} · ${(p.percentTenths / 10).toLocaleString()}%` }))];
+  return (
+    <Card title={t("root.subscriptionTitle")}>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        <Pill label={d.subscription.status ? t(`root.status${d.subscription.status}` as TranslationKey) : t("root.subscriptionNone")} tone={tone} />
+        {dueLine ? <Pill label={dueLine} tone={tone} /> : null}
+        <Pill label={d.commission ? t("root.commissionLine", { partner: d.commission.partnerName, percent: (d.commission.percentTenths / 10).toLocaleString() }) : t("root.commissionNone")} tone="accent" />
+      </View>
+      <Text variant="xs" tone="muted">
+        {t("root.subscriptionExplainer")}
+      </Text>
+      {error ? (
+        <Text variant="sm" tone="danger" accessibilityRole="alert">
+          {error}
+        </Text>
+      ) : null}
+      <Chips label={t("root.subscriptionStatus")} value={form.status} options={statusOptions} onChange={set("status")} />
+      {partners.isError ? <Failed message={partners.error.message} onRetry={() => void partners.refetch()} /> : null}
+      {partners.data ? <Chips label={t("root.commissionPartner")} value={form.partnerId} options={partnerOptions} onChange={set("partnerId")} /> : null}
+      <View style={{ flexDirection: "row", gap: th.space[3] }}>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionStarts")} hint="YYYY-MM-DD" value={form.startsAt} onChangeText={set("startsAt")} keyboardType="numbers-and-punctuation" autoCapitalize="none" maxLength={10} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionDue")} hint="YYYY-MM-DD" value={form.dueAt} onChangeText={set("dueAt")} keyboardType="numbers-and-punctuation" autoCapitalize="none" maxLength={10} />
+        </View>
+      </View>
+      <View style={{ flexDirection: "row", gap: th.space[3] }}>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionInvoiced")} hint="YYYY-MM-DD" value={form.invoicedAt} onChangeText={set("invoicedAt")} keyboardType="numbers-and-punctuation" autoCapitalize="none" maxLength={10} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionInvoiceRef")} value={form.invoiceRef} onChangeText={set("invoiceRef")} autoCapitalize="characters" maxLength={120} />
+        </View>
+      </View>
+      <View style={{ flexDirection: "row", gap: th.space[3] }}>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionPaid")} hint="YYYY-MM-DD" value={form.paidAt} onChangeText={set("paidAt")} keyboardType="numbers-and-punctuation" autoCapitalize="none" maxLength={10} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.subscriptionPaidRef")} value={form.paidRef} onChangeText={set("paidRef")} autoCapitalize="characters" maxLength={120} />
+        </View>
+      </View>
+      <Field label={t("root.subscriptionReason")} hint={t("root.subscriptionReasonHint")} value={reason} onChangeText={setReason} maxLength={500} error={badDate ? t("refusal.useRealDateForm") : null} />
+      <Button label={t("root.subscriptionSave")} busy={save.isPending} disabled={!changed || !reason.trim() || badDate} onPress={() => save.mutate(body)} />
+    </Card>
+  );
+}
+
+/** The point of contact: four fields; the server keeps only what differs. */
+function Contact({ schoolId, contact, onDone }: { schoolId: string; contact: OperatorSchoolDetail["contact"]; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const toast = useToast();
+  const initial = { name: contact.name ?? "", role: contact.role ?? "", phone: contact.phone ?? "", email: contact.email ?? "" };
+  const [form, setForm] = useState(initial);
+  const [error, setError] = useState<string | null>(null);
+  const set = (key: keyof typeof initial) => (value: string) => setForm((f) => ({ ...f, [key]: value }));
+  const unchanged = (Object.keys(initial) as (keyof typeof initial)[]).every((k) => form[k].trim() === initial[k]);
+  const save = useMutation({
+    mutationFn: () => send(api().post(`/api/v1/operator/schools/${schoolId}/contact`, { name: form.name.trim() || null, role: form.role.trim() || null, phone: form.phone.trim() || null, email: form.email.trim() || null }), t("root.didNotWork")),
+    onSuccess: () => {
+      toast.show(t("root.contactSaved"));
+      setError(null);
+      void qc.invalidateQueries({ queryKey: ["operator", "dashboard"] });
+      onDone();
+    },
+    onError: (e) => setError(e.message),
+  });
+  return (
+    <Card title={t("root.contactTitle")}>
+      <Text variant="xs" tone="muted">
+        {t("root.contactExplainer")}
+      </Text>
+      {error ? (
+        <Text variant="sm" tone="danger" accessibilityRole="alert">
+          {error}
+        </Text>
+      ) : null}
+      <View style={{ flexDirection: "row", gap: th.space[3] }}>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.contactName")} value={form.name} onChangeText={set("name")} maxLength={120} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Field label={t("root.contactRole")} value={form.role} onChangeText={set("role")} maxLength={80} />
+        </View>
+      </View>
+      <Field label={t("root.contactPhone")} value={form.phone} onChangeText={set("phone")} keyboardType="phone-pad" maxLength={40} />
+      <Field label={t("root.pocEmail")} value={form.email} onChangeText={set("email")} keyboardType="email-address" autoCapitalize="none" autoCorrect={false} maxLength={320} />
+      <Button label={t("root.contactSave")} busy={save.isPending} disabled={unchanged} onPress={() => save.mutate()} />
     </Card>
   );
 }

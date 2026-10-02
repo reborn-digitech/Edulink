@@ -1,5 +1,7 @@
+import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
-import { operatorAuditSchema, operatorContentTeamSchema, operatorExpertsSchema, operatorOverviewSchema } from "@edulink/contracts";
+import { operatorAuditSchema, operatorContentTeamSchema, operatorDashboardSchema, operatorExpertsSchema, operatorOverviewSchema } from "@edulink/contracts";
+import { API_BASE } from "@/lib/api";
 import { OperatorHome } from "@/screens/operator/home";
 import { ToastProvider } from "@/components";
 import { gated, json, mountStaff, refused, type Answers } from "./staff-harness";
@@ -58,8 +60,22 @@ const AUDIT = operatorAuditSchema.parse({
   actions: ["superuser.school.create", "superuser.zz.custom"],
 });
 
+/** The dashboard's read (2026-10-02): the tiles and the two schools due within a week. */
+const DASHBOARD = operatorDashboardSchema.parse({
+  month: "2026-10",
+  tiles: { live: 2, trial: 1, dueSoon: 1, pastDue: 1, suspended: 0, pupils: 340, messages: 1200, messageCap: 7000, storageMb: 90, storageCapMb: null, jobsOverdue: 2, owedThisMonthPaise: 25_000 },
+  partners: [{ id: "cp1", name: "ZZ Partner", percentTenths: 125, schools: 2, owedThisMonthPaise: 25_000 }],
+  plans: [{ id: "p1", code: "starter", name: "Starter" }],
+  rows: [],
+  dueSoon: [
+    { id: "s3", name: "ZZ Hillside", dueAt: "2026-09-27", daysToDue: -5, status: "ACTIVE" },
+    { id: "s4", name: "ZZ Lakeside", dueAt: "2026-10-05", daysToDue: 3, status: "TRIAL" },
+  ],
+});
+
 const answers = (overrides: Answers = {}): Answers => ({
   "GET /api/v1/operator/overview": () => json(OVERVIEW),
+  "GET /api/v1/operator/dashboard": () => json(DASHBOARD),
   "GET /api/v1/operator/experts": () => json(EXPERTS),
   "GET /api/v1/operator/content-team": () => json(TEAM),
   "GET /api/v1/operator/audit": () => json(AUDIT),
@@ -96,6 +112,46 @@ describe("the operator's home", () => {
     expect(screen.getByText("1 invite pending")).toBeTruthy();
     expect(screen.getAllByText("Awaiting check").length).toBeGreaterThanOrEqual(2);
     expect(calls().some((c) => c.line === "GET /api/v1/operator/overview")).toBe(true);
+  });
+
+  it("the dashboard: the tiles, the schools due within a week opening their pages, and onboarding sent to the web", async () => {
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    await mount();
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByLabelText("On trial: 1")).toBeTruthy();
+    expect(screen.getByLabelText("Due within 30 days: 1")).toBeTruthy();
+    expect(screen.getByLabelText("Past due: 1")).toBeTruthy();
+    expect(screen.getByLabelText("Pupils on the platform: 340")).toBeTruthy();
+    expect(screen.getByLabelText("Texts this month: 1200 of 7000")).toBeTruthy();
+    expect(screen.getByLabelText("Storage: 90 MB")).toBeTruthy();
+    expect(screen.getByLabelText("Jobs overdue: 2")).toBeTruthy();
+    expect(screen.getByLabelText("Commission owed this month: ₹250")).toBeTruthy();
+    expect(screen.getByText("Due within a week")).toBeTruthy();
+    expect(screen.getByText("2026-09-27 · 5 days overdue")).toBeTruthy();
+    expect(screen.getByText("2026-10-05 · Due in 3 days")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: /^ZZ Hillside, 2026-09-27/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/operator-school", params: { schoolId: "s3" } });
+    expect(screen.getByText("Onboarding a school is done on the web, where one form takes everything at once.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Onboard a school" }));
+    expect(open).toHaveBeenCalledWith(`${API_BASE}/root/onboard`);
+    open.mockRestore();
+  });
+
+  it("nothing due within a week says so", async () => {
+    await mount({ "GET /api/v1/operator/dashboard": () => json({ ...DASHBOARD, dueSoon: [] }) });
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByText("Nothing falls due within a week.")).toBeTruthy();
+  });
+
+  it("a refused dashboard is an alert with a retry beside the list, which still loads", async () => {
+    let refuse = true;
+    const { calls } = await mount({ "GET /api/v1/operator/dashboard": () => (refuse ? json({ error: "ZZ dashboard down", code: "SERVER" }, 500) : json(DASHBOARD)) });
+    await screen.findByText("ZZ Northgate");
+    expect(await screen.findByText("ZZ dashboard down")).toBeTruthy();
+    refuse = false;
+    await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
+    expect(await screen.findByText("Due within a week")).toBeTruthy();
+    expect(calls().filter((c) => c.line === "GET /api/v1/operator/dashboard").length).toBe(2);
   });
 
   it("a school opens its own page and Add a school opens the form, both here; the state chips and the search ask the API", async () => {

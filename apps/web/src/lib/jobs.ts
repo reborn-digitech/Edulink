@@ -11,13 +11,14 @@ import { sendFeeReminders } from "./fees-reports";
 import { reconcileOnlinePayments } from "./fees-payments";
 import { drainQueue } from "./messaging";
 import { deliverQueuedCirculars } from "./circulars";
-import { remindSessions } from "./gig-sessions";
+import { releaseSeatPayments, remindSessions } from "./gig-sessions";
 import { expireOffers } from "./admissions";
 import { expireInvites } from "./invites";
 import { refreshMinority } from "./birthdate";
 import { expireRequests } from "./request-expiry";
 import { rebuildQuestionStats } from "./bank-tools";
 import { sampleUsage } from "./plans";
+import { remindSubscriptions } from "./subscriptions";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -43,7 +44,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "gigs:release" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -138,11 +139,16 @@ export const JOBS: Record<JobName, JobSpec> = {
       const minors = await refreshMinority();
       // Joins and guardian claims nobody decided in thirty days: see lib/request-expiry.ts.
       const requests = await expireRequests();
+      // Subscriptions due within a week or past due, told to the operators
+      // once per school per week (lib/subscriptions.ts): here rather than a
+      // job of its own, which would cost a name on the jobs page and a line
+      // in three dictionaries for one daily question.
+      const subscriptions = await remindSubscriptions();
       const perSchool: Record<string, Record<string, number>> = {};
       for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
       }
-      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims }, perSchool };
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims, subscriptionsDue: subscriptions.due, subscriptionsReminded: subscriptions.reminded }, perSchool };
     },
   },
   "digest:weekly": {
@@ -246,6 +252,21 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { reminded, perSchool } = await remindSessions();
       return { summary: { reminded }, perSchool };
+    },
+  },
+  "gigs:release": {
+    name: "gigs:release",
+    // Hourly, beside gigs:remind: a paid seat left unpaid for half an hour is
+    // given back, a hold that has run (delivered plus 48 hours) is released
+    // at the gateway, and a refund or release the gateway refused is tried
+    // again (decision 0004, amended 2026-10-02).
+    schedule: "50 * * * *",
+    describeKey: "root.jobDescGigsRelease",
+    maxRunMs: 10 * 60_000,
+    expectEveryMs: 3 * HOUR,
+    run: async () => {
+      const { expired, released, releasedPaise, refunded, attached, failed, payouts } = await releaseSeatPayments();
+      return { summary: { expired, released, releasedPaise, refunded, attached, failed, payouts } };
     },
   },
   "jobs:watch": {

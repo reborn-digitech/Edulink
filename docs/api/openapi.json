@@ -33135,6 +33135,129 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "subscription": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "TRIAL",
+                            "ACTIVE",
+                            "DUE",
+                            "SUSPENDED",
+                            "ENDED"
+                          ],
+                          "nullable": true
+                        },
+                        "startsAt": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                          "nullable": true
+                        },
+                        "dueAt": {
+                          "$ref": "#/properties/subscription/properties/startsAt"
+                        },
+                        "daysToDue": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "invoicedAt": {
+                          "$ref": "#/properties/subscription/properties/startsAt"
+                        },
+                        "invoiceRef": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "paidAt": {
+                          "$ref": "#/properties/subscription/properties/startsAt"
+                        },
+                        "paidRef": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "startsAt",
+                        "dueAt",
+                        "daysToDue",
+                        "invoicedAt",
+                        "invoiceRef",
+                        "paidAt",
+                        "paidRef"
+                      ],
+                      "additionalProperties": false,
+                      "default": {
+                        "status": null,
+                        "startsAt": null,
+                        "dueAt": null,
+                        "daysToDue": null,
+                        "invoicedAt": null,
+                        "invoiceRef": null,
+                        "paidAt": null,
+                        "paidRef": null
+                      }
+                    },
+                    "contact": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "role": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "phone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "email": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "role",
+                        "phone",
+                        "email"
+                      ],
+                      "additionalProperties": false,
+                      "default": {
+                        "name": null,
+                        "role": null,
+                        "phone": null,
+                        "email": null
+                      }
+                    },
+                    "commission": {
+                      "type": "object",
+                      "properties": {
+                        "partnerId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "partnerName": {
+                          "type": "string"
+                        },
+                        "percentTenths": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 1000
+                        }
+                      },
+                      "required": [
+                        "partnerId",
+                        "partnerName",
+                        "percentTenths"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true,
+                      "default": null
                     }
                   },
                   "required": [
@@ -35935,6 +36058,1465 @@
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/dashboard": {
+      "get": {
+        "summary": "The operator's dashboard: schools live, on trial, due within thirty days, past due and suspended; pupils, this month's texts and storage against the caps, overdue jobs, what each partner is owed (recorded only); every school with its plan, subscription, partner, contact and last activity, narrowed by q, state, plan and partner; and the schools due within a week",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "month": {
+                      "type": "string"
+                    },
+                    "tiles": {
+                      "type": "object",
+                      "properties": {
+                        "live": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "trial": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "dueSoon": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "pastDue": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "suspended": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "pupils": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "messages": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "messageCap": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/tiles/properties/live"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "storageMb": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "storageCapMb": {
+                          "allOf": [
+                            {
+                              "$ref": "#/properties/tiles/properties/live"
+                            }
+                          ],
+                          "nullable": true
+                        },
+                        "jobsOverdue": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        },
+                        "owedThisMonthPaise": {
+                          "$ref": "#/properties/tiles/properties/live"
+                        }
+                      },
+                      "required": [
+                        "live",
+                        "trial",
+                        "dueSoon",
+                        "pastDue",
+                        "suspended",
+                        "pupils",
+                        "messages",
+                        "messageCap",
+                        "storageMb",
+                        "storageCapMb",
+                        "jobsOverdue",
+                        "owedThisMonthPaise"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "partners": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "percentTenths": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 1000
+                          },
+                          "schools": {
+                            "$ref": "#/properties/tiles/properties/live"
+                          },
+                          "owedThisMonthPaise": {
+                            "$ref": "#/properties/tiles/properties/live"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "percentTenths",
+                          "schools",
+                          "owedThisMonthPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "plans": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/partners/items/properties/id"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "code",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/partners/items/properties/id"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "removedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "verifiedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/removedAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "pendingAdminInvites": {
+                            "$ref": "#/properties/tiles/properties/live"
+                          },
+                          "plan": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "$ref": "#/properties/partners/items/properties/id"
+                              },
+                              "code": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "priceMonthlyPaise": {
+                                "allOf": [
+                                  {
+                                    "$ref": "#/properties/tiles/properties/live"
+                                  }
+                                ],
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "code",
+                              "name",
+                              "priceMonthlyPaise"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "pupils": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/tiles/properties/live"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "subscription": {
+                            "type": "object",
+                            "properties": {
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "TRIAL",
+                                  "ACTIVE",
+                                  "DUE",
+                                  "SUSPENDED",
+                                  "ENDED"
+                                ],
+                                "nullable": true
+                              },
+                              "startsAt": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                                "nullable": true
+                              },
+                              "dueAt": {
+                                "$ref": "#/properties/rows/items/properties/subscription/properties/startsAt"
+                              },
+                              "daysToDue": {
+                                "type": "integer",
+                                "nullable": true
+                              },
+                              "invoicedAt": {
+                                "$ref": "#/properties/rows/items/properties/subscription/properties/startsAt"
+                              },
+                              "invoiceRef": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "paidAt": {
+                                "$ref": "#/properties/rows/items/properties/subscription/properties/startsAt"
+                              },
+                              "paidRef": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "status",
+                              "startsAt",
+                              "dueAt",
+                              "daysToDue",
+                              "invoicedAt",
+                              "invoiceRef",
+                              "paidAt",
+                              "paidRef"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "dueTone": {
+                            "type": "string",
+                            "enum": [
+                              "past",
+                              "soon",
+                              "later",
+                              "none"
+                            ]
+                          },
+                          "commission": {
+                            "type": "object",
+                            "properties": {
+                              "partnerId": {
+                                "$ref": "#/properties/partners/items/properties/id"
+                              },
+                              "partnerName": {
+                                "type": "string"
+                              },
+                              "percentTenths": {
+                                "$ref": "#/properties/partners/items/properties/percentTenths"
+                              }
+                            },
+                            "required": [
+                              "partnerId",
+                              "partnerName",
+                              "percentTenths"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "contact": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "role": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "phone": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "email": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "role",
+                              "phone",
+                              "email"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "lastActivityAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/removedAt"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "city",
+                          "removedAt",
+                          "verifiedAt",
+                          "pendingAdminInvites",
+                          "plan",
+                          "pupils",
+                          "subscription",
+                          "dueTone",
+                          "commission",
+                          "contact",
+                          "lastActivityAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "dueSoon": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/partners/items/properties/id"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "dueAt": {
+                            "$ref": "#/properties/rows/items/properties/subscription/properties/startsAt"
+                          },
+                          "daysToDue": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/subscription/properties/status"
+                              }
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "dueAt",
+                          "daysToDue",
+                          "status"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "month",
+                    "tiles",
+                    "partners",
+                    "plans",
+                    "rows",
+                    "dueSoon"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "live",
+                      "trial",
+                      "due",
+                      "soon",
+                      "suspended",
+                      "removed",
+                      "all"
+                    ],
+                    "default": "live"
+                  },
+                  "planId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "partnerId": {
+                    "$ref": "#/properties/planId"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/schools/{schoolId}/subscription": {
+      "post": {
+        "summary": "Change a school's subscription record with a reason: its status (a move the coded list allows), start and due dates, invoice sent and paid dates with references, and its commission partner — recorded, never collected; audited twice",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "TRIAL",
+                      "ACTIVE",
+                      "DUE",
+                      "SUSPENDED",
+                      "ENDED"
+                    ]
+                  },
+                  "startsAt": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  },
+                  "dueAt": {
+                    "$ref": "#/properties/startsAt"
+                  },
+                  "invoicedAt": {
+                    "$ref": "#/properties/startsAt"
+                  },
+                  "invoiceRef": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "paidAt": {
+                    "$ref": "#/properties/startsAt"
+                  },
+                  "paidRef": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "commissionPartnerId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "nullable": true
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "schoolId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/schools/{schoolId}/contact": {
+      "post": {
+        "summary": "The school's point of contact for the operator: name, role, phone, email; only the fields sent change; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "role": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "nullable": true
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "maxLength": 320,
+                    "nullable": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "schoolId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/partners": {
+      "get": {
+        "summary": "Every commission partner with their live schools and what each is owed this month: their share of the plan's recorded price over the schools whose subscription is active, computed on read",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "email": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "percentTenths": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 1000
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "schools": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "$ref": "#/properties/items/items/properties/id"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "subscriptionStatus": {
+                                  "type": "string",
+                                  "enum": [
+                                    "TRIAL",
+                                    "ACTIVE",
+                                    "DUE",
+                                    "SUSPENDED",
+                                    "ENDED"
+                                  ],
+                                  "nullable": true
+                                },
+                                "planName": {
+                                  "type": "string",
+                                  "nullable": true
+                                },
+                                "priceMonthlyPaise": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "name",
+                                "subscriptionStatus",
+                                "planName",
+                                "priceMonthlyPaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "owedThisMonthPaise": {
+                            "$ref": "#/properties/items/items/properties/schools/items/properties/priceMonthlyPaise"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "phone",
+                          "email",
+                          "percentTenths",
+                          "notes",
+                          "createdAt",
+                          "schools",
+                          "owedThisMonthPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a commission partner: a name, a share in tenths of a percent, a phone, an email, notes; 201 with the id; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "partnerId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "partnerId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "maxLength": 320,
+                    "nullable": true
+                  },
+                  "percentTenths": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
+                },
+                "required": [
+                  "name",
+                  "percentTenths"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/partners/{partnerId}": {
+      "patch": {
+        "summary": "Correct a partner; only the fields sent change; audited",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "maxLength": 320,
+                    "nullable": true
+                  },
+                  "percentTenths": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000
+                  },
+                  "notes": {
+                    "type": "string",
+                    "maxLength": 2000
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "partnerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/onboard": {
+      "post": {
+        "summary": "Onboard a school in one call: its details and slug, its plan, a subscription starting today and due a year on (or a thirty-day trial), its point of contact, its commission partner (an existing one or one made inline) and its first administrator's invitation; everything is checked before the first write and a refused invitation undoes the school; 201 with the id, join code and slug",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "schoolId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "partnerId": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/schoolId"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "schoolId",
+                    "code",
+                    "slug",
+                    "partnerId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "slug": {
+                    "anyOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "not": {}
+                          },
+                          {
+                            "type": "string",
+                            "maxLength": 48,
+                            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          ""
+                        ]
+                      }
+                    ]
+                  },
+                  "contactEmail": {
+                    "type": "string",
+                    "maxLength": 320
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "board": {
+                    "type": "string",
+                    "enum": [
+                      "CBSE",
+                      "CISCE",
+                      "MSBSHSE",
+                      "OTHER_STATE",
+                      "NIOS",
+                      "IB",
+                      "OTHER"
+                    ],
+                    "nullable": true
+                  },
+                  "city": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "region": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "country": {
+                    "type": "string",
+                    "maxLength": 120,
+                    "nullable": true
+                  },
+                  "gradeLow": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "nullable": true
+                  },
+                  "gradeHigh": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "nullable": true
+                  },
+                  "planId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "nullable": true
+                  },
+                  "trial": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "startsAt": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "dueAt": {
+                    "$ref": "#/properties/startsAt"
+                  },
+                  "contact": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "maxLength": 120,
+                        "nullable": true
+                      },
+                      "role": {
+                        "type": "string",
+                        "maxLength": 80,
+                        "nullable": true
+                      },
+                      "phone": {
+                        "type": "string",
+                        "maxLength": 40,
+                        "nullable": true
+                      },
+                      "email": {
+                        "type": "string",
+                        "maxLength": 320,
+                        "nullable": true
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "commission": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "partnerId": {
+                            "$ref": "#/properties/planId"
+                          }
+                        },
+                        "required": [
+                          "partnerId"
+                        ],
+                        "additionalProperties": false
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "newPartner": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 120
+                              },
+                              "phone": {
+                                "type": "string",
+                                "maxLength": 40,
+                                "nullable": true
+                              },
+                              "email": {
+                                "type": "string",
+                                "maxLength": 320,
+                                "nullable": true
+                              },
+                              "percentTenths": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 1000
+                              },
+                              "notes": {
+                                "type": "string",
+                                "maxLength": 2000
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "percentTenths"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "newPartner"
+                        ],
+                        "additionalProperties": false
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "adminEmail": {
+                    "type": "string",
+                    "maxLength": 320
+                  },
+                  "adminName": {
+                    "type": "string",
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "name",
+                  "contactEmail",
+                  "timezone",
+                  "adminEmail"
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -88573,6 +90155,9 @@
                     "freeCancelHours": {
                       "type": "integer"
                     },
+                    "paymentsOn": {
+                      "type": "boolean"
+                    },
                     "children": {
                       "type": "array",
                       "items": {
@@ -88666,6 +90251,7 @@
                                   "type": "string",
                                   "enum": [
                                     "PENDING_CONSENT",
+                                    "PENDING_PAYMENT",
                                     "CONFIRMED",
                                     "CANCELLED",
                                     "DELIVERED",
@@ -88684,7 +90270,50 @@
                                   "type": "integer",
                                   "nullable": true
                                 },
+                                "paid": {
+                                  "type": "boolean"
+                                },
+                                "pricePaise": {
+                                  "type": "integer"
+                                },
+                                "payment": {
+                                  "type": "object",
+                                  "properties": {
+                                    "paymentId": {
+                                      "$ref": "#/properties/children/items/properties/id"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "INITIATED",
+                                        "PAID",
+                                        "HELD",
+                                        "RELEASED",
+                                        "REFUNDED",
+                                        "FAILED"
+                                      ]
+                                    },
+                                    "amountPaise": {
+                                      "type": "integer"
+                                    },
+                                    "refundedAt": {
+                                      "type": "string",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "paymentId",
+                                    "status",
+                                    "amountPaise",
+                                    "refundedAt"
+                                  ],
+                                  "additionalProperties": false,
+                                  "nullable": true
+                                },
                                 "canConsent": {
+                                  "type": "boolean"
+                                },
+                                "canPay": {
                                   "type": "boolean"
                                 },
                                 "canCancel": {
@@ -88710,7 +90339,11 @@
                                 "meetingUrl",
                                 "lateCancel",
                                 "rating",
+                                "paid",
+                                "pricePaise",
+                                "payment",
                                 "canConsent",
+                                "canPay",
                                 "canCancel",
                                 "canRate",
                                 "canReportUnheld"
@@ -88750,6 +90383,12 @@
                                 "providerHeadline": {
                                   "type": "string",
                                   "nullable": true
+                                },
+                                "pricePaise": {
+                                  "type": "integer"
+                                },
+                                "freeSeat": {
+                                  "type": "boolean"
                                 }
                               },
                               "required": [
@@ -88761,7 +90400,9 @@
                                 "seatsLeft",
                                 "providerName",
                                 "providerKind",
-                                "providerHeadline"
+                                "providerHeadline",
+                                "pricePaise",
+                                "freeSeat"
                               ],
                               "additionalProperties": false
                             }
@@ -88782,6 +90423,7 @@
                   },
                   "required": [
                     "freeCancelHours",
+                    "paymentsOn",
                     "children"
                   ],
                   "additionalProperties": false
@@ -88862,17 +90504,81 @@
                       "type": "string",
                       "enum": [
                         "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
                         "CONFIRMED",
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
                         "UNHELD"
                       ]
+                    },
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "$ref": "#/properties/bookingId"
+                        },
+                        "bookingId": {
+                          "$ref": "#/properties/bookingId"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "bookingId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "transport",
+                        "title",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
                     "bookingId",
-                    "status"
+                    "status",
+                    "checkout"
                   ],
                   "additionalProperties": false
                 }
@@ -88980,12 +90686,77 @@
                       "type": "string",
                       "enum": [
                         "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
                         "CONFIRMED",
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
                         "UNHELD"
                       ]
+                    },
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "bookingId": {
+                          "$ref": "#/properties/checkout/properties/paymentId"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "bookingId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "transport",
+                        "title",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -89097,6 +90868,7 @@
                       "type": "string",
                       "enum": [
                         "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
                         "CONFIRMED",
                         "CANCELLED",
                         "DELIVERED",
@@ -89215,12 +90987,77 @@
                       "type": "string",
                       "enum": [
                         "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
                         "CONFIRMED",
                         "CANCELLED",
                         "DELIVERED",
                         "MISSED",
                         "UNHELD"
                       ]
+                    },
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "bookingId": {
+                          "$ref": "#/properties/checkout/properties/paymentId"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "bookingId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "transport",
+                        "title",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -89396,6 +91233,462 @@
         ]
       }
     },
+    "/api/v1/gigs/sessions/{bookingId}/checkout": {
+      "post": {
+        "summary": "The order for a paid seat waiting for the guardian's payment — the same order while it stands, a fresh one after a failed attempt; a handful an hour per person",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "bookingId": {
+                          "$ref": "#/properties/checkout/properties/paymentId"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "bookingId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "transport",
+                        "title",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "checkout"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/payments/{paymentId}": {
+      "get": {
+        "summary": "The payer's own seat payment: where it stands, and the checkout while it waits; the panel polls it",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "bookingId": {
+                      "$ref": "#/properties/paymentId"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "INITIATED",
+                        "PAID",
+                        "HELD",
+                        "RELEASED",
+                        "REFUNDED",
+                        "FAILED"
+                      ]
+                    },
+                    "amountPaise": {
+                      "type": "integer"
+                    },
+                    "bookingStatus": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING_CONSENT",
+                        "PENDING_PAYMENT",
+                        "CONFIRMED",
+                        "CANCELLED",
+                        "DELIVERED",
+                        "MISSED",
+                        "UNHELD"
+                      ]
+                    },
+                    "refundedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "reason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "$ref": "#/properties/paymentId"
+                        },
+                        "bookingId": {
+                          "$ref": "#/properties/paymentId"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "bookingId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "transport",
+                        "title",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "paymentId",
+                    "bookingId",
+                    "status",
+                    "amountPaise",
+                    "bookingStatus",
+                    "refundedAt",
+                    "reason",
+                    "checkout"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/payments/{paymentId}/confirm": {
+      "post": {
+        "summary": "The checkout's own confirmation, verified with the company's key secret (the webhook remains the record)",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "outcome": {
+                      "type": "string"
+                    },
+                    "bookingId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "outcome",
+                    "bookingId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "gatewayPaymentId": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "signature": {
+                    "type": "string",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "gatewayPaymentId",
+                  "signature"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/gigs/slots": {
       "get": {
         "summary": "A provider's offered times, who has a seat in each, and what they have given free against what is asked; a teacher whose school has not switched guidance on is told so",
@@ -89471,6 +91764,55 @@
                       "additionalProperties": false,
                       "nullable": true
                     },
+                    "gate": {
+                      "type": "object",
+                      "properties": {
+                        "paymentsOn": {
+                          "type": "boolean"
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "payoutActive": {
+                          "type": "boolean"
+                        },
+                        "mentoringOffer": {
+                          "type": "boolean"
+                        },
+                        "dutyDone": {
+                          "type": "boolean"
+                        },
+                        "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "canCharge": {
+                          "type": "boolean"
+                        },
+                        "seatPriceMinPaise": {
+                          "type": "integer"
+                        },
+                        "seatPriceMaxPaise": {
+                          "type": "integer"
+                        },
+                        "commissionPercent": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "paymentsOn",
+                        "kycVerified",
+                        "payoutActive",
+                        "mentoringOffer",
+                        "dutyDone",
+                        "oneToOnesOwed",
+                        "canCharge",
+                        "seatPriceMinPaise",
+                        "seatPriceMaxPaise",
+                        "commissionPercent"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "slots": {
                       "type": "array",
                       "items": {
@@ -89506,6 +91848,9 @@
                           "seatsTaken": {
                             "type": "integer"
                           },
+                          "pricePaise": {
+                            "type": "integer"
+                          },
                           "cancelled": {
                             "type": "boolean"
                           },
@@ -89533,12 +91878,16 @@
                                   "type": "string",
                                   "enum": [
                                     "PENDING_CONSENT",
+                                    "PENDING_PAYMENT",
                                     "CONFIRMED",
                                     "CANCELLED",
                                     "DELIVERED",
                                     "MISSED",
                                     "UNHELD"
                                   ]
+                                },
+                                "paid": {
+                                  "type": "boolean"
                                 },
                                 "rating": {
                                   "type": "integer",
@@ -89555,6 +91904,7 @@
                                 "schoolName",
                                 "purpose",
                                 "status",
+                                "paid",
                                 "rating",
                                 "feedback"
                               ],
@@ -89571,6 +91921,7 @@
                           "meetingUrl",
                           "seats",
                           "seatsTaken",
+                          "pricePaise",
                           "cancelled",
                           "started",
                           "bookings"
@@ -89584,6 +91935,7 @@
                     "kind",
                     "timeZone",
                     "duty",
+                    "gate",
                     "slots"
                   ],
                   "additionalProperties": false
@@ -89980,6 +92332,533 @@
         ]
       }
     },
+    "/api/v1/expert/payout": {
+      "get": {
+        "summary": "Where the expert is paid (their linked account at the company's gateway, asked after while it waits) and the four conditions before a workshop seat may be priced",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payout": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "PENDING",
+                            "ACTIVE"
+                          ]
+                        },
+                        "linkedAccountId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "onboardingUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "linkedAccountId",
+                        "onboardingUrl",
+                        "note",
+                        "transport"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "gate": {
+                      "type": "object",
+                      "properties": {
+                        "paymentsOn": {
+                          "type": "boolean"
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "payoutActive": {
+                          "type": "boolean"
+                        },
+                        "mentoringOffer": {
+                          "type": "boolean"
+                        },
+                        "dutyDone": {
+                          "type": "boolean"
+                        },
+                        "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "canCharge": {
+                          "type": "boolean"
+                        },
+                        "seatPriceMinPaise": {
+                          "type": "integer"
+                        },
+                        "seatPriceMaxPaise": {
+                          "type": "integer"
+                        },
+                        "commissionPercent": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "paymentsOn",
+                        "kycVerified",
+                        "payoutActive",
+                        "mentoringOffer",
+                        "dutyDone",
+                        "oneToOnesOwed",
+                        "canCharge",
+                        "seatPriceMinPaise",
+                        "seatPriceMaxPaise",
+                        "commissionPercent"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payout",
+                    "gate"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/expert/payout/link": {
+      "post": {
+        "summary": "Link the account the expert is paid into; KYC must be verified first; under devbox it is active at once, with the real gateway it waits on the gateway's checks and may hand back an onboarding page",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payout": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "PENDING",
+                            "ACTIVE"
+                          ]
+                        },
+                        "linkedAccountId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "onboardingUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "linkedAccountId",
+                        "onboardingUrl",
+                        "note",
+                        "transport"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "gate": {
+                      "type": "object",
+                      "properties": {
+                        "paymentsOn": {
+                          "type": "boolean"
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "payoutActive": {
+                          "type": "boolean"
+                        },
+                        "mentoringOffer": {
+                          "type": "boolean"
+                        },
+                        "dutyDone": {
+                          "type": "boolean"
+                        },
+                        "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "canCharge": {
+                          "type": "boolean"
+                        },
+                        "seatPriceMinPaise": {
+                          "type": "integer"
+                        },
+                        "seatPriceMaxPaise": {
+                          "type": "integer"
+                        },
+                        "commissionPercent": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "paymentsOn",
+                        "kycVerified",
+                        "payoutActive",
+                        "mentoringOffer",
+                        "dutyDone",
+                        "oneToOnesOwed",
+                        "canCharge",
+                        "seatPriceMinPaise",
+                        "seatPriceMaxPaise",
+                        "commissionPercent"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payout",
+                    "gate"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/expert/earnings": {
+      "get": {
+        "summary": "What the expert has on hold, has been paid out and was refunded, seat by seat and payout by payout, with the gateway's settlement reference once known",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "heldPaise": {
+                      "type": "integer"
+                    },
+                    "releasedPaise": {
+                      "type": "integer"
+                    },
+                    "refundedPaise": {
+                      "type": "integer"
+                    },
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "paymentId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "bookingId": {
+                            "$ref": "#/properties/rows/items/properties/paymentId"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "startsAt": {
+                            "type": "string"
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "commissionPaise": {
+                            "type": "integer"
+                          },
+                          "netPaise": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "INITIATED",
+                              "PAID",
+                              "HELD",
+                              "RELEASED",
+                              "REFUNDED",
+                              "FAILED"
+                            ]
+                          },
+                          "holdUntil": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "releasedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "refundedAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "settlementId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reason": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "paymentId",
+                          "bookingId",
+                          "title",
+                          "startsAt",
+                          "schoolName",
+                          "amountPaise",
+                          "commissionPaise",
+                          "netPaise",
+                          "status",
+                          "holdUntil",
+                          "releasedAt",
+                          "refundedAt",
+                          "settlementId",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "payouts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/rows/items/properties/paymentId"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "transfers": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "settlementId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amountPaise",
+                          "transfers",
+                          "status",
+                          "settlementId",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "heldPaise",
+                    "releasedPaise",
+                    "refundedPaise",
+                    "rows",
+                    "payouts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/gigs/school": {
       "get": {
         "summary": "The office reads every session of its pupils, without the meeting link, and whether its teachers may offer guidance",
@@ -90050,6 +92929,7 @@
                             "type": "string",
                             "enum": [
                               "PENDING_CONSENT",
+                              "PENDING_PAYMENT",
                               "CONFIRMED",
                               "CANCELLED",
                               "DELIVERED",
@@ -90059,6 +92939,9 @@
                           },
                           "purpose": {
                             "type": "string"
+                          },
+                          "paid": {
+                            "type": "boolean"
                           },
                           "canCancel": {
                             "type": "boolean"
@@ -90074,6 +92957,7 @@
                           "providerKind",
                           "status",
                           "purpose",
+                          "paid",
                           "canCancel"
                         ],
                         "additionalProperties": false
@@ -91686,6 +94570,372 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/operator/gigs/payouts": {
+      "get": {
+        "summary": "Paid seats: the kill switch, the month's commission, what the gateway holds for experts, what failed and waits to be tried again, and the payouts released",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentsEnabled": {
+                      "type": "boolean"
+                    },
+                    "transport": {
+                      "type": "string",
+                      "enum": [
+                        "devbox",
+                        "razorpay",
+                        "off"
+                      ]
+                    },
+                    "month": {
+                      "type": "string"
+                    },
+                    "commissionThisMonthPaise": {
+                      "type": "integer"
+                    },
+                    "heldPaise": {
+                      "type": "integer"
+                    },
+                    "releasedThisMonthPaise": {
+                      "type": "integer"
+                    },
+                    "refundedThisMonthPaise": {
+                      "type": "integer"
+                    },
+                    "failures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "paymentId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "expertName": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "action": {
+                            "type": "string",
+                            "enum": [
+                              "RELEASE",
+                              "REFUND",
+                              "ATTACH"
+                            ]
+                          },
+                          "lastError": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "attempts": {
+                            "type": "integer"
+                          },
+                          "since": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "paymentId",
+                          "expertName",
+                          "amountPaise",
+                          "action",
+                          "lastError",
+                          "attempts",
+                          "since"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "payouts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/failures/items/properties/paymentId"
+                          },
+                          "expertName": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "type": "integer"
+                          },
+                          "transfers": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "settlementId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "expertName",
+                          "amountPaise",
+                          "transfers",
+                          "status",
+                          "settlementId",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "paymentsEnabled",
+                    "transport",
+                    "month",
+                    "commissionThisMonthPaise",
+                    "heldPaise",
+                    "releasedThisMonthPaise",
+                    "refundedThisMonthPaise",
+                    "failures",
+                    "payouts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/payouts/switch": {
+      "post": {
+        "summary": "The kill switch for paid seats: off, and no price is stored, no order made, no hold released; refunds still go through",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentsEnabled": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "paymentsEnabled"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "on": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "on"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/payouts/{paymentId}/retry": {
+      "post": {
+        "summary": "Try a waiting release or refund at the gateway now, instead of at the job's next run",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "outcome": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "outcome"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   }

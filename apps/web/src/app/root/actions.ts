@@ -21,6 +21,8 @@ import {
   type SchoolDetails,
 } from "@/lib/superuser";
 import { assignPlan, createPlan, deletePlan, updatePlan, type PlanInput } from "@/lib/plans";
+import { createPartner, onboardSchool, setContact, setSubscription, updatePartner } from "@/lib/subscriptions";
+import type { OperatorContactBody, OperatorOnboardBody, OperatorPartnerBody, OperatorPartnerUpdateBody, OperatorSubscriptionBody } from "@edulink/contracts";
 
 /**
  * Operator actions.
@@ -322,6 +324,82 @@ export async function signOutAdminAction(schoolId: string, userId: string): Prom
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath(`/root/${schoolId}`);
     return { ok: true, sessionsEnded: result.sessionsEnded ?? 0 };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* The dashboard: subscriptions, contacts, partners, onboarding (2026-10-02)   */
+/* -------------------------------------------------------------------------- */
+
+export async function setSubscriptionAction(schoolId: string, input: OperatorSubscriptionBody): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await setSubscription(session, schoolId, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    revalidatePath("/root/partners");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function setContactAction(schoolId: string, input: OperatorContactBody): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await setContact(session, schoolId, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function createPartnerAction(input: OperatorPartnerBody): Promise<Result & { partnerId?: string }> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await createPartner(session, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/partners");
+    revalidatePath("/root");
+    return { ok: true, partnerId: result.partnerId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function updatePartnerAction(partnerId: string, input: OperatorPartnerUpdateBody): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await updatePartner(session, partnerId, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root/partners");
+    revalidatePath("/root");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The guided flow's one call: the lib checks everything before the first write and undoes the school if the invitation is refused. */
+export async function onboardSchoolAction(input: OperatorOnboardBody): Promise<Result & { slug?: string }> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await onboardSchool(session, input);
+    if (!result.ok) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath("/root/partners");
+    return { ok: true, schoolId: result.schoolId, code: result.code, slug: result.slug };
   } catch (error) {
     return failure(error);
   }

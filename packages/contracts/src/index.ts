@@ -209,5 +209,6 @@ export * from "./v1/decisions";
 export * from "./v1/office-bulk";
 export * from "./v1/teacher-head";
 export * from "./v1/operator-plans";
+export * from "./v1/operator-dashboard";
 export * from "./v1/experts";
 export * from "./v1/content";

@@ -1,6 +1,6 @@
 import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
-import { operatorPlansSchema, operatorSchoolDetailSchema, operatorSchoolSupportSchema } from "@edulink/contracts";
+import { operatorPartnersSchema, operatorPlansSchema, operatorSchoolDetailSchema, operatorSchoolSupportSchema } from "@edulink/contracts";
 import { OperatorSchool } from "@/screens/operator/school";
 import { ToastProvider } from "@/components";
 import { API_BASE } from "@/lib/api";
@@ -48,6 +48,16 @@ const DETAIL = operatorSchoolDetailSchema.parse({
     { id: "i2", email: "admin@zz.test", name: null, role: "ADMIN", status: "ACCEPTED", createdAt: ago(5 * 86_400_000), expiresAt: ago(-2 * 86_400_000) },
   ],
   access: [{ id: "x1", operatorName: "ZZ Operator", reason: "ZZ checking the register", startedAt: ago(3_600_000), live: false }],
+  // The commercial record (2026-10-02): a trial twelve days from its due date, a clerk to call, a partner at 12.5 %.
+  subscription: { status: "TRIAL", startsAt: "2026-09-14", dueAt: "2026-10-14", daysToDue: 12, invoicedAt: null, invoiceRef: null, paidAt: null, paidRef: null },
+  contact: { name: "ZZ Clerk", role: "Clerk", phone: "+910000000001", email: null },
+  commission: { partnerId: "cp1", partnerName: "ZZ Partner", percentTenths: 125 },
+});
+const PARTNERS = operatorPartnersSchema.parse({
+  items: [
+    { id: "cp1", name: "ZZ Partner", phone: null, email: null, percentTenths: 125, notes: "", createdAt: ago(30 * 86_400_000), schools: [], owedThisMonthPaise: 0 },
+    { id: "cp2", name: "ZZ Other", phone: null, email: null, percentTenths: 50, notes: "", createdAt: ago(30 * 86_400_000), schools: [], owedThisMonthPaise: 0 },
+  ],
 });
 const REMOVED = { ...DETAIL, school: { ...DETAIL.school, removedAt: ago(86_400_000) } };
 
@@ -82,7 +92,7 @@ const mount = (overrides: Answers = {}) =>
       <OperatorSchool />
     </ToastProvider>,
     "ADMIN",
-    { "GET /api/v1/operator/schools/s1": () => json(DETAIL), "GET /api/v1/operator/schools/s1/support": () => json(SUPPORT), "GET /api/v1/operator/plans": () => json(PLANS), ...overrides },
+    { "GET /api/v1/operator/schools/s1": () => json(DETAIL), "GET /api/v1/operator/schools/s1/support": () => json(SUPPORT), "GET /api/v1/operator/plans": () => json(PLANS), "GET /api/v1/operator/partners": () => json(PARTNERS), ...overrides },
     { me: OPERATOR },
   );
 
@@ -349,5 +359,60 @@ describe("help for the office, the plan and the usage (2026-10-01)", () => {
     expect(await screen.findByText("Not written yet — the nightly job has not run for this month.")).toBeTruthy();
     expect(screen.queryByText("Over cap")).toBeNull();
     expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1/support").length).toBe(1);
+  });
+
+  it("the subscription card: where it stands, the partner line; a change sends only what changed with its reason, and a refusal stays above the fields", async () => {
+    let refuse = false;
+    const { calls } = await mount({
+      "POST /api/v1/operator/schools/s1/subscription": () => (refuse ? json({ error: "That status cannot follow the current one.", code: "BAD_REQUEST" }, 422) : json({ ok: true })),
+    });
+    await screen.findByText("ZZ Northgate");
+    // Twice: the pill and the chip.
+    expect(screen.getAllByText("Trial")).toHaveLength(2);
+    expect(screen.getByText("Due in 12 days")).toBeTruthy();
+    // The pill and the partner chip.
+    expect(screen.getAllByText("ZZ Partner · 12.5%")).toHaveLength(2);
+    const save = screen.getByRole("button", { name: "Save subscription" });
+    expect(save).toBeDisabled();
+    await fireEvent.press(screen.getByRole("radio", { name: "Active" }));
+    await fireEvent.changeText(screen.getByLabelText("Paid on"), "2026-10-02");
+    await fireEvent.changeText(screen.getByLabelText("Payment reference"), " UTR-1 ");
+    // No reason yet: the button waits.
+    expect(save).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "seen on the statement");
+    await fireEvent.press(save);
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ status: "ACTIVE", paidAt: "2026-10-02", paidRef: "UTR-1", reason: "seen on the statement" }));
+    expect(await screen.findByText("Subscription saved")).toBeTruthy();
+    await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/operator/schools/s1").length).toBe(2));
+
+    refuse = true;
+    await fireEvent.press(screen.getByRole("radio", { name: "Ended" }));
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "no");
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    expect(await screen.findByText("That status cannot follow the current one.")).toBeTruthy();
+  });
+
+  it("the subscription card: a date that is not a day holds the button; the partner is changed from the partners read", async () => {
+    const { calls } = await mount({ "POST /api/v1/operator/schools/s1/subscription": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    await fireEvent.changeText(screen.getByLabelText("Due on"), "14/10/2026");
+    await fireEvent.changeText(screen.getByLabelText("Reason for the change"), "moved");
+    expect(screen.getByRole("button", { name: "Save subscription" })).toBeDisabled();
+    expect(screen.getByText("Use a real date in YYYY-MM-DD form.")).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Due on"), "2026-10-14");
+    await fireEvent.press(await screen.findByRole("radio", { name: "ZZ Other · 5%" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Save subscription" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/subscription")?.body).toEqual({ commissionPartnerId: "cp2", reason: "moved" }));
+  });
+
+  it("the point of contact: the fields hold what is recorded, the button waits for a change, and a save reads the page again", async () => {
+    const { calls } = await mount({ "POST /api/v1/operator/schools/s1/contact": () => json({ ok: true }) });
+    await screen.findByText("ZZ Northgate");
+    expect(screen.getByLabelText("Contact phone number").props.value).toBe("+910000000001");
+    expect(screen.getByRole("button", { name: "Save contact" })).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Contact role"), " Head clerk ");
+    await fireEvent.press(screen.getByRole("button", { name: "Save contact" }));
+    await waitFor(() => expect(calls().find((c) => c.line === "POST /api/v1/operator/schools/s1/contact")?.body).toEqual({ name: "ZZ Clerk", role: "Head clerk", phone: "+910000000001", email: null }));
+    expect(await screen.findByText("Contact saved")).toBeTruthy();
   });
 });

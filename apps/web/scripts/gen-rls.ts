@@ -76,10 +76,26 @@ const NO_SCHOOL_POLICY = new Set([
   // src/lib/gig-sessions.ts. What a PUPIL did with a slot, GigBooking, is the
   // pupil's school's row and is scoped normally.
   "GigSlot",
+  // Paid seats (decision 0004, amended 2026-10-02): an expert's linked account
+  // at the company's gateway, a guardian's payment for one seat with its
+  // transfer held for the expert, the transfers released to an expert, and
+  // the gateway's deliveries about them. The payer and the expert are the
+  // two people a row belongs to, and neither is reached through a school:
+  // src/lib/gig-payments.ts reads each by the user id on the row, and the
+  // operator reads every one. The booking the payment is for stays the
+  // pupil's school's row, scoped normally.
+  "ExpertPayoutAccount",
+  "SessionPayment",
+  "ExpertPayout",
+  "GigGatewayEvent",
   // A plan the operator offers: a name, four caps and a recorded price. The
   // office reads its own school's through the School row and the operator
   // reads and writes every one; nothing in it belongs to a school.
   "Plan",
+  // A commission partner: somebody who brings schools in and is owed a
+  // share of their plan price, recorded only. The operator's row, like
+  // Plan; a school points at it through School.commissionPartnerId.
+  "CommissionPartner",
 ]);
 
 /**

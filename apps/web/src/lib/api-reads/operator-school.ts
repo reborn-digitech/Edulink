@@ -4,8 +4,10 @@ import type { ActiveContext } from "@/lib/session";
 import type { OperatorAuditQuery } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError } from "@/lib/tenancy";
+import { db } from "@/lib/db";
 import { accessHistory, getSchool, listAdminInvites, listAppAdmins, listServerAudit } from "@/lib/superuser";
 import { actionKey } from "@/lib/safety-labels";
+import { subscriptionViews } from "@/lib/subscriptions";
 import { apiRefused } from "@/lib/api-reads/admin";
 
 /**
@@ -30,6 +32,9 @@ export async function operatorSchoolDetail(ctx: ActiveContext, schoolId: string)
   // operator read these rows directly, so opening this page records no visit —
   // the web's school page records none either; only looking inside does.
   const [invites, access] = await Promise.all([listAdminInvites(ctx, schoolId), accessHistory(schoolId, 20)]);
+  // The commercial record (2026-10-02): the subscription, the contact and the partner, from the same row.
+  const partner = school.commissionPartnerId ? await db.commissionPartner.findUnique({ where: { id: school.commissionPartnerId }, select: { id: true, name: true, percentTenths: true } }) : null;
+  const views = subscriptionViews({ ...school, commissionPartner: partner });
   return {
     school: {
       id: school.id,
@@ -52,6 +57,9 @@ export async function operatorSchoolDetail(ctx: ActiveContext, schoolId: string)
     },
     invites: invites.map((i) => ({ id: i.id, email: i.email, name: i.name, role: i.role, status: i.status, createdAt: iso(i.createdAt), expiresAt: iso(i.expiresAt) })),
     access: access.map((a) => ({ id: a.id, operatorName: a.operatorName, reason: a.reason, startedAt: iso(a.startedAt), live: a.live })),
+    subscription: views.subscription,
+    contact: views.contact,
+    commission: views.commission,
   };
 }
 
@@ -107,7 +115,7 @@ export async function operatorAuditPage(ctx: ActiveContext, query: OperatorAudit
  * a returned-but-not-awaited call carries straight past the catch — the 404
  * escaped as an unhandled AccessError. Thrown synchronously, apiFailure sees it.
  */
-const NOT_FOUND: TranslationKey[] = ["root.noSuchSchool", "root.noSuchExpert", "root.noSuchPlan"];
+const NOT_FOUND: TranslationKey[] = ["root.noSuchSchool", "root.noSuchExpert", "root.noSuchPlan", "root.noSuchPartner"];
 export function operatorRefused(result: { errorKey?: TranslationKey }): Promise<NextResponse> {
   if (result.errorKey && NOT_FOUND.includes(result.errorKey)) throw new AccessError(result.errorKey, "NOT_FOUND");
   return apiRefused({ errorKey: result.errorKey ?? "root.didNotWork" });

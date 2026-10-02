@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { AddressBookIcon, ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, ReceiptIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites, listSchoolAdmins } from "@/lib/superuser";
 import { listPlans, schoolUsage } from "@/lib/plans";
 import { PlanPanel } from "./plan-panel";
+import { ContactPanel, SubscriptionPanel } from "./subscription-panel";
+import { listPartners, schoolSubscription } from "@/lib/subscriptions";
 import { SupportPanel } from "./support-panel";
 import { UsageCard } from "../usage-card";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -33,7 +35,9 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
   if (!school) notFound();
 
   const invites = await listAdminInvites(session, schoolId);
-  const [admins, plans, usage] = school.removedAt ? [[], [], null] : await Promise.all([listSchoolAdmins(session, schoolId), listPlans(session), schoolUsage(schoolId)]);
+  const [admins, plans, usage, partners, record] = school.removedAt
+    ? [[], [], null, [], null]
+    : await Promise.all([listSchoolAdmins(session, schoolId), listPlans(session), schoolUsage(schoolId), listPartners(session), schoolSubscription(session, schoolId)]);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -42,7 +46,7 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"
       >
         <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("root.allSchools")}
+        {t("root.dashboard")}
       </Link>
 
       <div>
@@ -137,6 +141,31 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           />
         </CardBody>
       </Card>
+
+      {/* The commercial record (2026-10-02): where the subscription stands, the
+          invoice and the payment as dates the operator records, the partner —
+          and who to call. Recorded, never collected. */}
+      {record && (
+        <Card className={record.dueTone === "past" ? "border-danger/50" : record.dueTone === "soon" ? "border-warn/50" : undefined}>
+          <CardHeader
+            icon={<ReceiptIcon weight="duotone" className="size-5" />}
+            title={t("root.subscriptionTitle")}
+            description={[t("root.subscriptionExplainer"), record.commission ? t("root.commissionLine", { partner: record.commission.partnerName, percent: (record.commission.percentTenths / 10).toLocaleString() }) : t("root.commissionNone")].join(" ")}
+          />
+          <CardBody>
+            <SubscriptionPanel schoolId={school.id} subscription={record.subscription} partnerId={record.commission?.partnerId ?? null} partners={partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths }))} />
+          </CardBody>
+        </Card>
+      )}
+
+      {record && (
+        <Card>
+          <CardHeader icon={<AddressBookIcon weight="duotone" className="size-5" />} title={t("root.contactTitle")} description={t("root.contactExplainer")} />
+          <CardBody>
+            <ContactPanel schoolId={school.id} contact={record.contact} />
+          </CardBody>
+        </Card>
+      )}
 
       <Card>
         <CardHeader

@@ -283,8 +283,54 @@ model School {
   plan                 Plan?                 @relation(fields: [planId], references: [id], onDelete: SetNull)
   usageSamples         UsageSample[]
 
+  /// THE COMMERCIAL RECORD (2026-10-02), read and written by the operator
+  /// alone through src/lib/subscriptions.ts. The subscription's start and
+  /// due dates are days kept at UTC midnight; the status is one of the
+  /// SUBSCRIPTION_STATUSES in packages/contracts (null until the operator
+  /// records one); the invoice and payment are dates and references the
+  /// operator TYPES after the fact — nothing here collects a rupee
+  /// (decision 0003). Every change is an audit row with a reason.
+  subscriptionStartsAt   DateTime?
+  subscriptionDueAt      DateTime?
+  subscriptionStatus     String?
+  subscriptionInvoicedAt DateTime?
+  subscriptionInvoiceRef String?
+  subscriptionPaidAt     DateTime?
+  subscriptionPaidRef    String?
+  /// The school's point of contact for the operator — whoever picks up the
+  /// phone there. Free text; it is not a membership and opens no door.
+  pocName                String?
+  pocRole                String?
+  pocPhone               String?
+  pocEmail               String?
+  /// The partner who brought the school in and is owed a share of its plan
+  /// price; null is "no commission". SetNull so a partner can be removed
+  /// without touching a school.
+  commissionPartnerId    String?
+  commissionPartner      CommissionPartner? @relation(fields: [commissionPartnerId], references: [id], onDelete: SetNull)
+
   @@index([code])
   @@index([admissionsContactMembershipId])
+  @@index([subscriptionDueAt])
+}
+
+/// A commission partner: somebody who brings schools to the platform and is
+/// owed a share of what those schools pay. Operator-only and school-less,
+/// like Plan. `percentTenths` is the share as TENTHS OF A PERCENT — 125 is
+/// 12.5 % — so it is an integer and 0–1000 covers 0–100 %; what is owed is
+/// computed on read (percent × the plan's recorded price × the partner's
+/// ACTIVE schools) and never stored: nothing here moves money (decision 0003).
+model CommissionPartner {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String?
+  email         String?
+  percentTenths Int
+  notes         String   @default("")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  schools School[]
 }
 
 // ---------------------------------------------------------------------------
@@ -418,6 +464,10 @@ model User {
   gigPaymentsReceived  GigPayment[]              @relation("GigPaymentPayee")
   gigPayee             GigPayee?
   gigSlots             GigSlot[]                 @relation("GigSlotProvider")
+  payoutAccount        ExpertPayoutAccount?      @relation("ExpertPayoutAccountOwner")
+  seatPaymentsMade     SessionPayment[]          @relation("SessionPaymentPayer")
+  seatPaymentsEarned   SessionPayment[]          @relation("SessionPaymentExpert")
+  expertPayouts        ExpertPayout[]            @relation("ExpertPayoutOwner")
 
   /// Two-step sign-in (TOTP, RFC 6238), for the office, the head and the
   /// operator. The secret is sealed under FEES_SECRET_KEY and bound to
@@ -4576,6 +4626,15 @@ model GigSettings {
   /// A seat given up at least this many hours before the start is not counted against the pupil's allowance.
   freeCancelHours            Int      @default(12)
   workshopMaxSeats           Int      @default(30)
+  /// THE KILL SWITCH for paid sessions (decision 0004, amended 2026-10-02): off, and no price is
+  /// stored, no order is made and no transfer is released, whatever the gateway is set to. Read by
+  /// every paid path through src/lib/gig-payments.ts; turned by the operator alone.
+  paymentsEnabled            Boolean  @default(false)
+  /// A workshop seat's price must lie between these, in paise (₹50–300 to begin).
+  seatPriceMinPaise          Int      @default(5000)
+  seatPriceMaxPaise          Int      @default(30000)
+  /// The company's share of a paid seat, in whole percent; the gateway's fee comes out of it.
+  commissionPercent          Int      @default(15)
   updatedByUserId            String?
   updatedAt                  DateTime @updatedAt
 }
@@ -4698,7 +4757,10 @@ model GigSlot {
   /// writer (src/lib/gig-sessions.ts), which claims a seat with the booking and releases it when the
   /// booking is cancelled; checked by data:audit.
   seatsTaken      Int       @default(0)
-  /// What it costs a family past their allowance, in paise. Always 0 until paid sessions are built.
+  /// What a seat costs a family past their allowance, in paise. Always 0 on a one-to-one — mentoring is
+  /// never priced (decision 0004, amended 2026-10-02) — and on a workshop only while the expert passes
+  /// the paid gate in src/lib/gig-sessions.ts (KYC, a payout account, an open free one-to-one offer,
+  /// the period's free one-to-ones given).
   pricePaise      Int       @default(0)
   cancelledAt     DateTime?
   cancelReason    String?
@@ -4707,6 +4769,7 @@ model GigSlot {
 
   provider User         @relation("GigSlotProvider", fields: [providerUserId], references: [id], onDelete: Cascade)
   bookings GigBooking[]
+  payments SessionPayment[] @relation("SessionPaymentSlot")
 
   @@index([providerUserId, startsAt])
   @@index([startsAt])
@@ -4726,7 +4789,8 @@ model GigBooking {
   bookedByUserId      String
   /// What the pupil wants from it, in their own or their guardian's words.
   purpose             String
-  /// PENDING_CONSENT | CONFIRMED | CANCELLED | DELIVERED | MISSED (the pupil did not come) | UNHELD (the provider did not)
+  /// PENDING_CONSENT | PENDING_PAYMENT (a paid seat waiting for the guardian's payment) | CONFIRMED |
+  /// CANCELLED | DELIVERED | MISSED (the pupil did not come) | UNHELD (the provider did not)
   status              String
   /// The school year whose allowance it counts against.
   academicYearId      String?
@@ -4743,17 +4807,127 @@ model GigBooking {
   feedback            String?
   ratedAt             DateTime?
   remindedAt          DateTime?
+  /// A seat past the pupil's free allowance, bought by a guardian: it draws on no allowance, and its
+  /// money is the SessionPayment row. Set once, at booking.
+  paid                Boolean   @default(false)
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 
   school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   slot    GigSlot    @relation(fields: [slotId], references: [id], onDelete: Cascade)
   student Membership @relation("GigBookingStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  payment SessionPayment?
 
   @@unique([slotId, studentMembershipId])
   @@index([schoolId, studentMembershipId, kind])
   @@index([providerUserId, status])
   @@index([studentMembershipId])
+}
+
+/// Where an expert is paid for a seat: their own linked account at the company's gateway (Razorpay
+/// Route), to which the gateway itself sends the seat's price less the commission. The platform never
+/// holds the money (decisions 0003 and 0004). NONE until the expert links one; PENDING while the
+/// gateway checks their papers; ACTIVE once it may receive a transfer. Linking needs KYC VERIFIED
+/// first (src/lib/expert-kyc.ts is the one truth for "verified"). No school: bound to the person.
+model ExpertPayoutAccount {
+  expertUserId    String   @id
+  /// The gateway's id for the linked account (acc_…); "acc_devbox…" under the devbox transport.
+  linkedAccountId String?
+  /// NONE | PENDING | ACTIVE
+  status          String   @default("NONE")
+  /// The gateway's onboarding page for a PENDING account, when the API returned one.
+  onboardingUrl   String?
+  /// Why the gateway refused or suspended it, when it did.
+  note            String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  expert User @relation("ExpertPayoutAccountOwner", fields: [expertUserId], references: [id], onDelete: Cascade)
+}
+
+/// A guardian's payment for one paid workshop seat, through the company's gateway with a transfer to
+/// the expert's linked account held until the session is delivered plus 48 hours (decision 0004).
+/// INITIATED (the order is made) → PAID (captured) → HELD (the transfer is known, on hold) → RELEASED
+/// (paid out to the expert; `payoutId` names the settlement row) or REFUNDED (back to the guardian,
+/// the transfer reversed); FAILED is an order that failed or expired unpaid. One writer:
+/// src/lib/gig-payments.ts, and every change is audited. The family's and the expert's row, read by
+/// their own user ids; no school.
+model SessionPayment {
+  id              String    @id @default(cuid())
+  bookingId       String    @unique
+  slotId          String
+  payerUserId     String
+  expertUserId    String
+  amountPaise     Int
+  commissionPaise Int
+  orderId         String    @unique
+  paymentId       String?
+  transferId      String?
+  refundId        String?
+  /// INITIATED | PAID | HELD | RELEASED | REFUNDED | FAILED
+  status          String    @default("INITIATED")
+  /// When the hold may be released: delivered or missed plus 48 hours; a late cancellation, the end plus 48 hours.
+  holdUntil       DateTime?
+  releasedAt      DateTime?
+  refundedAt      DateTime?
+  /// RELEASE | REFUND — the gateway call still owed, when one failed and is to be tried again.
+  pendingAction   String?
+  attempts        Int       @default(0)
+  lastError       String?
+  payoutId        String?
+  /// Why it was refunded, failed or expired.
+  reason          String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  booking GigBooking    @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  slot    GigSlot       @relation("SessionPaymentSlot", fields: [slotId], references: [id], onDelete: Cascade)
+  payer   User          @relation("SessionPaymentPayer", fields: [payerUserId], references: [id], onDelete: Cascade)
+  expert  User          @relation("SessionPaymentExpert", fields: [expertUserId], references: [id], onDelete: Cascade)
+  payout  ExpertPayout? @relation(fields: [payoutId], references: [id], onDelete: SetNull)
+
+  @@index([expertUserId, status])
+  @@index([payerUserId, createdAt])
+  @@index([status, holdUntil])
+  @@index([pendingAction])
+}
+
+/// The transfers released to one expert in one run of gigs:release: the sum, the count, and the
+/// gateway's settlement id once its webhook names it. The expert reads their own; the operator every
+/// one. A record of what the gateway did, never a payment the platform made. No school.
+model ExpertPayout {
+  id           String   @id @default(cuid())
+  expertUserId String
+  amountPaise  Int
+  transfers    Int
+  /// RELEASED | SETTLED (the gateway has paid the linked account) | FAILED
+  status       String   @default("RELEASED")
+  settlementId String?
+  note         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  expert   User             @relation("ExpertPayoutOwner", fields: [expertUserId], references: [id], onDelete: Cascade)
+  payments SessionPayment[]
+
+  @@index([expertUserId, createdAt])
+}
+
+/// A delivery from the company's gateway about a session payment, stored once by the id the signed
+/// body states so a redelivery settles nothing twice (the same rule as GatewayEvent for school fees,
+/// which carries a school this one has not).
+model GigGatewayEvent {
+  id          String    @id @default(cuid())
+  provider    String
+  eventId     String
+  kind        String
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+  outcome     String?
+  payloadJson String
+
+  @@unique([provider, eventId])
+  @@index([receivedAt])
 }
 
 /// THE FAMILY SAYS THE CHILD WILL BE AWAY, before the register is taken.
