@@ -138,8 +138,12 @@ export type SweepFixture = {
   gigBookingId: string | null;
   gigUnheldBookingId: string | null;
   gigSlotId: string | null;
-  /** The sweep's parent's own paid seat payment, on hold (zz-fixtures.ts `buildGigSessions`): read by its payer, retried by the operator as a no-op. */
+  /** The sweep's parent's own paid seat payment, on hold (zz-fixtures.ts `buildGigSessions`): read by its payer (and its receipt), retried by the operator as a no-op. */
   gigPaymentId: string | null;
+  /** The fixture's PAID payout to the ZZ expert with its invoice (zz-fixtures.ts `buildGigSessions`): recording it again is refused as already paid; the invoice PDF is read by the expert. The ZZ expert's own user id, whose payee suspension the sweep's empty body answers 422. */
+  gigPaidPayoutId: string | null;
+  gigInvoiceId: string | null;
+  gigExpertUserId: string | null;
   /** A signed line on a certificate of a pupil who is NOT the sweep's pupil, for the cross-person probe. */
   otherPupilSignatureId: string | null;
   signaturePng: string | null;

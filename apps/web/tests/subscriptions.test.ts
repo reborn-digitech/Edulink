@@ -5,14 +5,17 @@
  * proved on ZZ schools made here (a status moves only as the list allows,
  * a due date before the start is refused, every change is an audit row
  * with its reason, what a partner is owed is percent × plan price over
- * ACTIVE schools only); the dashboard narrows by the chips and lists the
- * due-soon schools; the reminder tells the ZZ operator once and is muted
- * for a week; onboarding makes the school, its plan, contact, partner and
- * invitation in one call and refuses a taken slug before writing anything;
- * and every school role is 403 on every new handler. Every row is a ZZ
- * row of this file, deleted after, scoped by school.
+ * ACTIVE schools only, and an ACTIVE school on no plan is counted apart);
+ * the dashboard narrows by the chips and lists the due-soon schools; the
+ * reminder tells the ZZ operator once and is muted for a week; onboarding
+ * makes the school, its plan, contact, partner and invitation in one call
+ * and one transaction — it refuses a taken slug before writing anything,
+ * and a step that throws mid-way leaves no School or CommissionPartner row
+ * behind — with the invitation's mail sent after the commit; and every
+ * school role is 403 on every new handler. Every row is a ZZ row of this
+ * file, deleted after, scoped by school.
  */
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { okSchema, operatorDashboardSchema, operatorOnboardedSchema, operatorPartnerCreatedSchema, operatorPartnersSchema, operatorSchoolDetailSchema } from "@edulink/contracts";
 import { createSession } from "@/lib/session";
@@ -33,6 +36,7 @@ import {
   updatePartner,
 } from "@/lib/subscriptions";
 import { createPlan } from "@/lib/plans";
+import { inviteAdmin } from "@/lib/superuser";
 import { GET as dashboardGet } from "@/app/api/v1/operator/dashboard/route";
 import { POST as subscriptionPost } from "@/app/api/v1/operator/schools/[schoolId]/subscription/route";
 import { POST as contactPost } from "@/app/api/v1/operator/schools/[schoolId]/contact/route";
@@ -40,6 +44,15 @@ import { GET as partnersGet, POST as partnersPost } from "@/app/api/v1/operator/
 import { PATCH as partnerPatch } from "@/app/api/v1/operator/partners/[partnerId]/route";
 import { POST as onboardPost } from "@/app/api/v1/operator/onboard/route";
 import { GET as schoolGet } from "@/app/api/v1/operator/schools/[schoolId]/route";
+
+/**
+ * The real superuser module with inviteAdmin wrapped, so one test can make
+ * the invitation step throw mid-transaction; every other call passes through.
+ */
+vi.mock("@/lib/superuser", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/superuser")>();
+  return { ...actual, inviteAdmin: vi.fn(actual.inviteAdmin) };
+});
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -51,6 +64,7 @@ let schoolId = "";
 let soonSchoolId = "";
 let pastSchoolId = "";
 let endedSchoolId = "";
+let unpricedSchoolId = "";
 let onboardedSchoolId = "";
 let onboardedPartnerId = "";
 let operatorUserId = "";
@@ -90,6 +104,7 @@ beforeAll(async () => {
   soonSchoolId = await makeSchool("Soon", { planId, subscriptionStatus: "ACTIVE", subscriptionStartsAt: dayToDate(day(-360)), subscriptionDueAt: dayToDate(day(3)) });
   pastSchoolId = await makeSchool("Past", { planId, subscriptionStatus: "ACTIVE", subscriptionStartsAt: dayToDate(day(-400)), subscriptionDueAt: dayToDate(day(-5)) });
   endedSchoolId = await makeSchool("Ended", { subscriptionStatus: "ENDED", subscriptionDueAt: dayToDate(day(-2)) });
+  unpricedSchoolId = await makeSchool("Unpriced", { subscriptionStatus: "ACTIVE", subscriptionStartsAt: dayToDate(day(-30)), subscriptionDueAt: dayToDate(day(300)) });
   for (const role of ROLES) {
     const user = await db.user.create({ data: { name: `ZZ Subs ${role}`, email: `zz-subs-${role.toLowerCase()}-${STAMP}@test.invalid` }, select: { id: true } });
     roleUsers[role] = user.id;
@@ -100,12 +115,13 @@ beforeAll(async () => {
 afterAll(async () => {
   __resetCookies();
   const users = [operatorUserId, ...Object.values(roleUsers)];
-  const schools = [schoolId, soonSchoolId, pastSchoolId, endedSchoolId, onboardedSchoolId].filter(Boolean);
+  const schools = [schoolId, soonSchoolId, pastSchoolId, endedSchoolId, unpricedSchoolId, onboardedSchoolId].filter(Boolean);
   await db.session.deleteMany({ where: { userId: { in: users } } });
   await db.notification.deleteMany({ where: { userId: { in: users } } });
   await db.auditLog.deleteMany({ where: { OR: [{ schoolId: { in: schools } }, { actorUserId: { in: users } }, { targetId: { in: schools } }] } });
   await db.school.deleteMany({ where: { id: { in: schools } } });
   await db.school.deleteMany({ where: { name: { startsWith: `ZZ Subs Onboarded ${STAMP}` } } });
+  await db.outboundEmail.deleteMany({ where: { to: { contains: `-${STAMP}@test.invalid` } } });
   await db.commissionPartner.deleteMany({ where: { name: { startsWith: `ZZ Subs Partner ${STAMP}` } } });
   await db.plan.deleteMany({ where: { code: `zz-subs-${STAMP}` } });
   await db.user.deleteMany({ where: { id: { in: users } } });
@@ -198,13 +214,15 @@ describe("the record", () => {
     expect(await db.auditLog.count({ where: { action: "superuser.school.contact", targetId: schoolId } })).toBe(1);
   });
 
-  it("what a partner is owed is their share of the plan price over ACTIVE schools only, computed on read", async () => {
+  it("what a partner is owed is their share of the plan price over ACTIVE schools only, computed on read; an ACTIVE school on no plan is counted apart", async () => {
     await db.school.update({ where: { id: soonSchoolId }, data: { commissionPartnerId: partnerId } });
     await db.school.update({ where: { id: endedSchoolId }, data: { commissionPartnerId: partnerId, planId } });
+    await db.school.update({ where: { id: unpricedSchoolId }, data: { commissionPartnerId: partnerId } });
     const partner = (await listPartners(operator())).find((p) => p.id === partnerId)!;
-    expect(partner.schools.map((s) => s.id).sort()).toEqual([schoolId, soonSchoolId, endedSchoolId].sort());
-    // Main (ACTIVE, ₹1,000) and Soon (ACTIVE, ₹1,000) at 12.5 %; Ended is on the plan and owes nothing.
+    expect(partner.schools.map((s) => s.id).sort()).toEqual([schoolId, soonSchoolId, endedSchoolId, unpricedSchoolId].sort());
+    // Main (ACTIVE, ₹1,000) and Soon (ACTIVE, ₹1,000) at 12.5 %; Ended is on the plan and owes nothing; Unpriced is ACTIVE on no plan — nothing to take a share of, and said so.
     expect(partner.owedThisMonthPaise).toBe(25_000);
+    expect(partner.unpricedSchools).toBe(1);
   });
 });
 
@@ -219,7 +237,7 @@ describe("the dashboard", () => {
     expect(d.rows[2]).toMatchObject({ dueTone: "later", commission: { partnerId, percentTenths: 125 }, contact: { name: "ZZ Head Clerk", phone: "+910000000001" }, plan: { id: planId } });
     expect(d.rows[3]).toMatchObject({ dueTone: "none", subscription: { status: "ENDED" } });
     expect(d.dueSoon.map((s) => s.id)).toEqual([pastSchoolId, soonSchoolId]);
-    expect(d.partners.find((p) => p.id === partnerId)).toMatchObject({ schools: 3, owedThisMonthPaise: 25_000 });
+    expect(d.partners.find((p) => p.id === partnerId)).toMatchObject({ schools: 4, owedThisMonthPaise: 25_000, unpricedSchools: 1 });
 
     const due = await operatorDashboard(operator(), { schoolIds: mine, state: "due", now: NOW });
     expect(due.rows.map((r) => r.id)).toEqual([pastSchoolId]);
@@ -296,6 +314,29 @@ describe("onboarding", () => {
     for (const action of ["superuser.school.create", "superuser.school.plan", "superuser.invite.admin", "superuser.school.onboard"]) {
       expect(await db.auditLog.count({ where: { action, targetId: onboardedSchoolId, schoolId: null } }), action).toBe(1);
     }
+    // The school-bound rows went through the same transaction.
+    for (const action of ["superuser.school.plan", "superuser.invite.admin"]) {
+      expect(await db.auditLog.count({ where: { action, targetId: onboardedSchoolId, schoolId: onboardedSchoolId } }), action).toBe(1);
+    }
+    // The invitation's mail went after the commit.
+    expect(result.mailSent).toBe(true);
+    expect(await db.outboundEmail.count({ where: { to: `zz-subs-onb-admin-${STAMP}@test.invalid`, purpose: "INVITE" } })).toBe(1);
+  });
+
+  it("a step that throws mid-way rolls the whole transaction back: no school, no inline partner, no audit row", async () => {
+    vi.mocked(inviteAdmin).mockRejectedValueOnce(new Error("zz invite write failed"));
+    const name = `ZZ Subs Onboarded ${STAMP} Rolled`;
+    await expect(
+      onboardSchool(
+        operator(),
+        { name, slug: `zz-subs-rolled-${STAMP}`, contactEmail: `zz-subs-rolled-${STAMP}@test.invalid`, timezone: "Asia/Kolkata", planId, trial: true, commission: { newPartner: { name: `ZZ Subs Partner ${STAMP} Rolled`, percentTenths: 75 } }, adminEmail: `zz-subs-rolled-admin-${STAMP}@test.invalid` },
+        NOW,
+      ),
+    ).rejects.toThrow("zz invite write failed");
+    expect(await db.school.count({ where: { OR: [{ name }, { slug: `zz-subs-rolled-${STAMP}` }] } })).toBe(0);
+    expect(await db.commissionPartner.count({ where: { name: `ZZ Subs Partner ${STAMP} Rolled` } })).toBe(0);
+    expect(await db.auditLog.count({ where: { action: { in: ["superuser.school.create", "superuser.school.plan", "superuser.partner.create"] }, meta: { contains: name } } })).toBe(0);
+    expect(await db.outboundEmail.count({ where: { to: `zz-subs-rolled-admin-${STAMP}@test.invalid` } })).toBe(0);
   });
 });
 

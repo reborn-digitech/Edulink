@@ -36175,6 +36175,10 @@
                           },
                           "owedThisMonthPaise": {
                             "$ref": "#/properties/tiles/properties/live"
+                          },
+                          "unpricedSchools": {
+                            "$ref": "#/properties/tiles/properties/live",
+                            "default": 0
                           }
                         },
                         "required": [
@@ -36909,6 +36913,10 @@
                           },
                           "owedThisMonthPaise": {
                             "$ref": "#/properties/items/items/properties/schools/items/properties/priceMonthlyPaise"
+                          },
+                          "unpricedSchools": {
+                            "$ref": "#/properties/items/items/properties/schools/items/properties/priceMonthlyPaise",
+                            "default": 0
                           }
                         },
                         "required": [
@@ -37223,7 +37231,7 @@
     },
     "/api/v1/operator/onboard": {
       "post": {
-        "summary": "Onboard a school in one call: its details and slug, its plan, a subscription starting today and due a year on (or a thirty-day trial), its point of contact, its commission partner (an existing one or one made inline) and its first administrator's invitation; everything is checked before the first write and a refused invitation undoes the school; 201 with the id, join code and slug",
+        "summary": "Onboard a school in one call: its details and slug, its plan, a subscription starting today and due a year on (or a thirty-day trial), its point of contact, its commission partner (an existing one or one made inline) and its first administrator's invitation; everything is checked before the first write and the writes are one transaction, so a refused invitation leaves nothing behind and the invitation's mail goes after the commit; 201 with the id, join code and slug",
         "description": "The server operator.",
         "security": [
           {
@@ -90288,7 +90296,8 @@
                                         "INITIATED",
                                         "PAID",
                                         "HELD",
-                                        "RELEASED",
+                                        "DUE",
+                                        "PAID_OUT",
                                         "REFUNDED",
                                         "FAILED"
                                       ]
@@ -91413,13 +91422,18 @@
                         "INITIATED",
                         "PAID",
                         "HELD",
-                        "RELEASED",
+                        "DUE",
+                        "PAID_OUT",
                         "REFUNDED",
                         "FAILED"
                       ]
                     },
                     "amountPaise": {
                       "type": "integer"
+                    },
+                    "receiptNumber": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "bookingStatus": {
                       "type": "string",
@@ -91509,6 +91523,7 @@
                     "bookingId",
                     "status",
                     "amountPaise",
+                    "receiptNumber",
                     "bookingStatus",
                     "refundedAt",
                     "reason",
@@ -91673,6 +91688,95 @@
                   "signature"
                 ],
                 "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/gigs/payments/{paymentId}/receipt": {
+      "get": {
+        "summary": "The family's receipt for a paid seat as a PDF (application/pdf): the gross, who collected it on whose behalf, and the refund when there was one; a pupil reads the receipt for their own seat",
+        "description": "Roles: STUDENT, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
               }
             }
           }
@@ -92334,7 +92438,7 @@
     },
     "/api/v1/expert/payout": {
       "get": {
-        "summary": "Where the expert is paid (their linked account at the company's gateway, asked after while it waits) and the four conditions before a workshop seat may be priced",
+        "summary": "Where the company pays the expert — the payee details they saved, the sealed bank account never returned (its last four digits only) — and the four conditions before a workshop seat may be priced",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92359,21 +92463,40 @@
                           "type": "string",
                           "enum": [
                             "NONE",
-                            "PENDING",
-                            "ACTIVE"
+                            "ACTIVE",
+                            "SUSPENDED"
                           ]
                         },
-                        "linkedAccountId": {
+                        "payeeName": {
                           "type": "string",
                           "nullable": true
                         },
-                        "onboardingUrl": {
+                        "upiId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ifsc": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstStateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
                           "type": "string",
                           "nullable": true
                         },
                         "note": {
                           "type": "string",
                           "nullable": true
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
                         },
                         "transport": {
                           "type": "string",
@@ -92386,9 +92509,14 @@
                       },
                       "required": [
                         "status",
-                        "linkedAccountId",
-                        "onboardingUrl",
+                        "payeeName",
+                        "upiId",
+                        "bankLast4",
+                        "ifsc",
+                        "gstStateCode",
+                        "gstin",
                         "note",
+                        "kycVerified",
                         "transport"
                       ],
                       "additionalProperties": false
@@ -92492,11 +92620,9 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/expert/payout/link": {
+      },
       "post": {
-        "summary": "Link the account the expert is paid into; KYC must be verified first; under devbox it is active at once, with the real gateway it waits on the gateway's checks and may hand back an onboarding page",
+        "summary": "Save the payee details: a name, a UPI id or a bank account with its IFSC (the account sealed at rest), the GST state code and a GSTIN if any; active once KYC is verified",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92521,21 +92647,40 @@
                           "type": "string",
                           "enum": [
                             "NONE",
-                            "PENDING",
-                            "ACTIVE"
+                            "ACTIVE",
+                            "SUSPENDED"
                           ]
                         },
-                        "linkedAccountId": {
+                        "payeeName": {
                           "type": "string",
                           "nullable": true
                         },
-                        "onboardingUrl": {
+                        "upiId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ifsc": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstStateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
                           "type": "string",
                           "nullable": true
                         },
                         "note": {
                           "type": "string",
                           "nullable": true
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
                         },
                         "transport": {
                           "type": "string",
@@ -92548,9 +92693,14 @@
                       },
                       "required": [
                         "status",
-                        "linkedAccountId",
-                        "onboardingUrl",
+                        "payeeName",
+                        "upiId",
+                        "bankLast4",
+                        "ifsc",
+                        "gstStateCode",
+                        "gstin",
                         "note",
+                        "kycVerified",
                         "transport"
                       ],
                       "additionalProperties": false
@@ -92650,6 +92800,51 @@
                 "schema": {
                   "$ref": "#/components/schemas/ApiError"
                 }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "payeeName": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "upiId": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  },
+                  "bankAccount": {
+                    "type": "string",
+                    "maxLength": 30,
+                    "nullable": true
+                  },
+                  "ifsc": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "nullable": true
+                  },
+                  "gstStateCode": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "gstin": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "payeeName",
+                  "gstStateCode"
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -92658,7 +92853,7 @@
     },
     "/api/v1/expert/earnings": {
       "get": {
-        "summary": "What the expert has on hold, has been paid out and was refunded, seat by seat and payout by payout, with the gateway's settlement reference once known",
+        "summary": "What the expert has on hold, is owed, was paid and was refunded, seat by seat with the gross, the commission, the GST on it and the net; the payouts with the company's transfer reference; the invoices",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92679,10 +92874,19 @@
                     "heldPaise": {
                       "type": "integer"
                     },
-                    "releasedPaise": {
+                    "duePaise": {
+                      "type": "integer"
+                    },
+                    "paidOutPaise": {
                       "type": "integer"
                     },
                     "refundedPaise": {
+                      "type": "integer"
+                    },
+                    "commissionPercent": {
+                      "type": "integer"
+                    },
+                    "gstPercent": {
                       "type": "integer"
                     },
                     "rows": {
@@ -92713,6 +92917,9 @@
                           "commissionPaise": {
                             "type": "integer"
                           },
+                          "gstPaise": {
+                            "type": "integer"
+                          },
                           "netPaise": {
                             "type": "integer"
                           },
@@ -92722,7 +92929,8 @@
                               "INITIATED",
                               "PAID",
                               "HELD",
-                              "RELEASED",
+                              "DUE",
+                              "PAID_OUT",
                               "REFUNDED",
                               "FAILED"
                             ]
@@ -92731,7 +92939,11 @@
                             "type": "string",
                             "nullable": true
                           },
-                          "releasedAt": {
+                          "dueAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paidOutAt": {
                             "type": "string",
                             "nullable": true
                           },
@@ -92739,8 +92951,12 @@
                             "type": "string",
                             "nullable": true
                           },
-                          "settlementId": {
-                            "type": "string",
+                          "payoutId": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/paymentId"
+                              }
+                            ],
                             "nullable": true
                           },
                           "reason": {
@@ -92756,12 +92972,14 @@
                           "schoolName",
                           "amountPaise",
                           "commissionPaise",
+                          "gstPaise",
                           "netPaise",
                           "status",
                           "holdUntil",
-                          "releasedAt",
+                          "dueAt",
+                          "paidOutAt",
                           "refundedAt",
-                          "settlementId",
+                          "payoutId",
                           "reason"
                         ],
                         "additionalProperties": false
@@ -92775,30 +92993,96 @@
                           "id": {
                             "$ref": "#/properties/rows/items/properties/paymentId"
                           },
-                          "amountPaise": {
+                          "netPaise": {
                             "type": "integer"
                           },
-                          "transfers": {
+                          "paymentsCount": {
                             "type": "integer"
                           },
                           "status": {
                             "type": "string"
                           },
-                          "settlementId": {
+                          "reference": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paidAt": {
                             "type": "string",
                             "nullable": true
                           },
                           "createdAt": {
                             "type": "string"
+                          },
+                          "invoiceId": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/rows/items/properties/paymentId"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "invoiceNumber": {
+                            "type": "string",
+                            "nullable": true
                           }
                         },
                         "required": [
                           "id",
-                          "amountPaise",
-                          "transfers",
+                          "netPaise",
+                          "paymentsCount",
                           "status",
-                          "settlementId",
-                          "createdAt"
+                          "reference",
+                          "paidAt",
+                          "createdAt",
+                          "invoiceId",
+                          "invoiceNumber"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "invoices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/rows/items/properties/paymentId"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "issuedAt": {
+                            "type": "string"
+                          },
+                          "taxableValuePaise": {
+                            "type": "integer"
+                          },
+                          "cgstPaise": {
+                            "type": "integer"
+                          },
+                          "sgstPaise": {
+                            "type": "integer"
+                          },
+                          "igstPaise": {
+                            "type": "integer"
+                          },
+                          "totalPaise": {
+                            "type": "integer"
+                          },
+                          "payoutId": {
+                            "$ref": "#/properties/rows/items/properties/paymentId"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "number",
+                          "issuedAt",
+                          "taxableValuePaise",
+                          "cgstPaise",
+                          "sgstPaise",
+                          "igstPaise",
+                          "totalPaise",
+                          "payoutId"
                         ],
                         "additionalProperties": false
                       }
@@ -92806,10 +93090,14 @@
                   },
                   "required": [
                     "heldPaise",
-                    "releasedPaise",
+                    "duePaise",
+                    "paidOutPaise",
                     "refundedPaise",
+                    "commissionPercent",
+                    "gstPercent",
                     "rows",
-                    "payouts"
+                    "payouts",
+                    "invoices"
                   ],
                   "additionalProperties": false
                 }
@@ -92857,6 +93145,327 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/expert/invoices": {
+      "get": {
+        "summary": "The company's GST tax invoices to this expert for its commission, newest first",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "invoices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "payoutId": {
+                            "$ref": "#/properties/invoices/items/properties/id"
+                          },
+                          "expertUserId": {
+                            "$ref": "#/properties/invoices/items/properties/id"
+                          },
+                          "issuedAt": {
+                            "type": "string"
+                          },
+                          "locale": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "taxableValuePaise": {
+                            "type": "integer"
+                          },
+                          "cgstPaise": {
+                            "type": "integer"
+                          },
+                          "sgstPaise": {
+                            "type": "integer"
+                          },
+                          "igstPaise": {
+                            "type": "integer"
+                          },
+                          "totalPaise": {
+                            "type": "integer"
+                          },
+                          "sacCode": {
+                            "type": "string"
+                          },
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "gstin": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "address": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "stateCode": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "gstin",
+                              "address",
+                              "stateCode"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "buyer": {
+                            "$ref": "#/properties/invoices/items/properties/seller"
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "paymentId": {
+                                  "$ref": "#/properties/invoices/items/properties/id"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "date": {
+                                  "type": "string"
+                                },
+                                "grossPaise": {
+                                  "type": "integer"
+                                },
+                                "commissionPaise": {
+                                  "type": "integer"
+                                },
+                                "gstPaise": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "paymentId",
+                                "title",
+                                "date",
+                                "grossPaise",
+                                "commissionPaise",
+                                "gstPaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "payout": {
+                            "type": "object",
+                            "properties": {
+                              "netPaise": {
+                                "type": "integer"
+                              },
+                              "paymentsCount": {
+                                "type": "integer"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "paidAt": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "netPaise",
+                              "paymentsCount",
+                              "reference",
+                              "paidAt"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "number",
+                          "payoutId",
+                          "expertUserId",
+                          "issuedAt",
+                          "locale",
+                          "taxableValuePaise",
+                          "cgstPaise",
+                          "sgstPaise",
+                          "igstPaise",
+                          "totalPaise",
+                          "sacCode",
+                          "seller",
+                          "buyer",
+                          "lines",
+                          "payout"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "invoices"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/expert/invoices/{invoiceId}/pdf": {
+      "get": {
+        "summary": "One of the expert's own invoices as a PDF (application/pdf) in the language it was issued in; anybody else's is not found",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoiceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/gigs/school": {
@@ -94574,7 +95183,7 @@
     },
     "/api/v1/operator/gigs/payouts": {
       "get": {
-        "summary": "Paid seats: the kill switch, the month's commission, what the gateway holds for experts, what failed and waits to be tried again, and the payouts released",
+        "summary": "Paid seats: the kill switch, the company's details as the seller, the month's commission and GST, what is held and due, what failed and waits to be tried again, the payouts to pay now (with where to pay them) and those paid",
         "description": "The server operator.",
         "security": [
           {
@@ -94607,14 +95216,72 @@
                     "commissionThisMonthPaise": {
                       "type": "integer"
                     },
+                    "gstThisMonthPaise": {
+                      "type": "integer"
+                    },
                     "heldPaise": {
                       "type": "integer"
                     },
-                    "releasedThisMonthPaise": {
+                    "duePaise": {
+                      "type": "integer"
+                    },
+                    "paidOutThisMonthPaise": {
                       "type": "integer"
                     },
                     "refundedThisMonthPaise": {
                       "type": "integer"
+                    },
+                    "company": {
+                      "type": "object",
+                      "properties": {
+                        "legalName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "stateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "sacCode": {
+                          "type": "string"
+                        },
+                        "invoicePrefix": {
+                          "type": "string"
+                        },
+                        "gstPercent": {
+                          "type": "integer"
+                        },
+                        "missing": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "legalName",
+                              "gstin",
+                              "stateCode"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "legalName",
+                        "gstin",
+                        "address",
+                        "stateCode",
+                        "sacCode",
+                        "invoicePrefix",
+                        "gstPercent",
+                        "missing"
+                      ],
+                      "additionalProperties": false
                     },
                     "failures": {
                       "type": "array",
@@ -94635,9 +95302,8 @@
                           "action": {
                             "type": "string",
                             "enum": [
-                              "RELEASE",
                               "REFUND",
-                              "ATTACH"
+                              "HOLD"
                             ]
                           },
                           "lastError": {
@@ -94663,7 +95329,7 @@
                         "additionalProperties": false
                       }
                     },
-                    "payouts": {
+                    "toPay": {
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -94671,21 +95337,64 @@
                           "id": {
                             "$ref": "#/properties/failures/items/properties/paymentId"
                           },
+                          "expertUserId": {
+                            "$ref": "#/properties/failures/items/properties/paymentId"
+                          },
                           "expertName": {
                             "type": "string"
                           },
-                          "amountPaise": {
+                          "payee": {
+                            "type": "object",
+                            "properties": {
+                              "payeeName": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "upiId": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "bankLast4": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "ifsc": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "gstStateCode": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "gstin": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "NONE",
+                                  "ACTIVE",
+                                  "SUSPENDED"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "payeeName",
+                              "upiId",
+                              "bankLast4",
+                              "ifsc",
+                              "gstStateCode",
+                              "gstin",
+                              "status"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "netPaise": {
                             "type": "integer"
                           },
-                          "transfers": {
+                          "paymentsCount": {
                             "type": "integer"
-                          },
-                          "status": {
-                            "type": "string"
-                          },
-                          "settlementId": {
-                            "type": "string",
-                            "nullable": true
                           },
                           "createdAt": {
                             "type": "string"
@@ -94693,12 +95402,72 @@
                         },
                         "required": [
                           "id",
+                          "expertUserId",
                           "expertName",
-                          "amountPaise",
-                          "transfers",
-                          "status",
-                          "settlementId",
+                          "payee",
+                          "netPaise",
+                          "paymentsCount",
                           "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "paid": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "$ref": "#/properties/failures/items/properties/paymentId"
+                          },
+                          "expertUserId": {
+                            "$ref": "#/properties/failures/items/properties/paymentId"
+                          },
+                          "expertName": {
+                            "type": "string"
+                          },
+                          "netPaise": {
+                            "type": "integer"
+                          },
+                          "paymentsCount": {
+                            "type": "integer"
+                          },
+                          "reference": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paidAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "invoiceId": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/failures/items/properties/paymentId"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "invoiceNumber": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "expertUserId",
+                          "expertName",
+                          "netPaise",
+                          "paymentsCount",
+                          "reference",
+                          "paidAt",
+                          "invoiceId",
+                          "invoiceNumber",
+                          "note"
                         ],
                         "additionalProperties": false
                       }
@@ -94709,11 +95478,15 @@
                     "transport",
                     "month",
                     "commissionThisMonthPaise",
+                    "gstThisMonthPaise",
                     "heldPaise",
-                    "releasedThisMonthPaise",
+                    "duePaise",
+                    "paidOutThisMonthPaise",
                     "refundedThisMonthPaise",
+                    "company",
                     "failures",
-                    "payouts"
+                    "toPay",
+                    "paid"
                   ],
                   "additionalProperties": false
                 }
@@ -94765,7 +95538,7 @@
     },
     "/api/v1/operator/gigs/payouts/switch": {
       "post": {
-        "summary": "The kill switch for paid seats: off, and no price is stored, no order made, no hold released; refunds still go through",
+        "summary": "The kill switch for paid seats: off, and no price is stored, no order made, nothing becomes due; refunds still go through",
         "description": "The server operator.",
         "security": [
           {
@@ -94855,9 +95628,166 @@
         }
       }
     },
-    "/api/v1/operator/gigs/payouts/{paymentId}/retry": {
+    "/api/v1/operator/gigs/payouts/{payoutId}/pay": {
       "post": {
-        "summary": "Try a waiting release or refund at the gateway now, instead of at the job's next run",
+        "summary": "Record the company's transfer to an expert (the UTR, when, a note): the payout is paid, every seat in it paid out, and the GST tax invoice for the commission issued in the same transaction; refused until the company's GSTIN, state and legal name are set",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payout": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "netPaise": {
+                          "type": "integer"
+                        },
+                        "paymentsCount": {
+                          "type": "integer"
+                        },
+                        "reference": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "netPaise",
+                        "paymentsCount",
+                        "reference"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "invoice": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "$ref": "#/properties/payout/properties/id"
+                        },
+                        "number": {
+                          "type": "string"
+                        },
+                        "totalPaise": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "number",
+                        "totalPaise"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payout",
+                    "invoice"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reference": {
+                    "type": "string",
+                    "maxLength": 40
+                  },
+                  "paidAt": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "nullable": true
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "reference"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "payoutId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/gigs/payments/{paymentId}/retry": {
+      "post": {
+        "summary": "Try a waiting refund at the gateway now, instead of at the job's next run (a captured row never held is held)",
         "description": "The server operator.",
         "security": [
           {
@@ -94929,6 +95859,581 @@
         "parameters": [
           {
             "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/operator/gigs/company": {
+      "post": {
+        "summary": "The company as the seller on its tax invoices: legal name, GSTIN, address, state code, the SAC, the series prefix and the GST rate on the commission",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "object",
+                      "properties": {
+                        "legalName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "address": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "stateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "sacCode": {
+                          "type": "string"
+                        },
+                        "invoicePrefix": {
+                          "type": "string"
+                        },
+                        "gstPercent": {
+                          "type": "integer"
+                        },
+                        "missing": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "legalName",
+                              "gstin",
+                              "stateCode"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "legalName",
+                        "gstin",
+                        "address",
+                        "stateCode",
+                        "sacCode",
+                        "invoicePrefix",
+                        "gstPercent",
+                        "missing"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "company"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "legalName": {
+                    "type": "string",
+                    "maxLength": 160
+                  },
+                  "gstin": {
+                    "type": "string",
+                    "maxLength": 20
+                  },
+                  "address": {
+                    "type": "string",
+                    "maxLength": 400
+                  },
+                  "stateCode": {
+                    "type": "string",
+                    "maxLength": 2
+                  },
+                  "sacCode": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "invoicePrefix": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "gstPercent": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "legalName",
+                  "gstin",
+                  "address",
+                  "stateCode",
+                  "sacCode",
+                  "invoicePrefix",
+                  "gstPercent"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/invoices": {
+      "get": {
+        "summary": "Every GST tax invoice the company has issued to an expert, newest first",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "invoices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "payoutId": {
+                            "$ref": "#/properties/invoices/items/properties/id"
+                          },
+                          "expertUserId": {
+                            "$ref": "#/properties/invoices/items/properties/id"
+                          },
+                          "issuedAt": {
+                            "type": "string"
+                          },
+                          "locale": {
+                            "type": "string",
+                            "enum": [
+                              "en",
+                              "hi",
+                              "mr"
+                            ]
+                          },
+                          "taxableValuePaise": {
+                            "type": "integer"
+                          },
+                          "cgstPaise": {
+                            "type": "integer"
+                          },
+                          "sgstPaise": {
+                            "type": "integer"
+                          },
+                          "igstPaise": {
+                            "type": "integer"
+                          },
+                          "totalPaise": {
+                            "type": "integer"
+                          },
+                          "sacCode": {
+                            "type": "string"
+                          },
+                          "seller": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "gstin": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "address": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "stateCode": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "gstin",
+                              "address",
+                              "stateCode"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "buyer": {
+                            "$ref": "#/properties/invoices/items/properties/seller"
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "paymentId": {
+                                  "$ref": "#/properties/invoices/items/properties/id"
+                                },
+                                "title": {
+                                  "type": "string"
+                                },
+                                "date": {
+                                  "type": "string"
+                                },
+                                "grossPaise": {
+                                  "type": "integer"
+                                },
+                                "commissionPaise": {
+                                  "type": "integer"
+                                },
+                                "gstPaise": {
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "paymentId",
+                                "title",
+                                "date",
+                                "grossPaise",
+                                "commissionPaise",
+                                "gstPaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "payout": {
+                            "type": "object",
+                            "properties": {
+                              "netPaise": {
+                                "type": "integer"
+                              },
+                              "paymentsCount": {
+                                "type": "integer"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "paidAt": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "netPaise",
+                              "paymentsCount",
+                              "reference",
+                              "paidAt"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "expertName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "number",
+                          "payoutId",
+                          "expertUserId",
+                          "issuedAt",
+                          "locale",
+                          "taxableValuePaise",
+                          "cgstPaise",
+                          "sgstPaise",
+                          "igstPaise",
+                          "totalPaise",
+                          "sacCode",
+                          "seller",
+                          "buyer",
+                          "lines",
+                          "payout",
+                          "expertName"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "invoices"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/gigs/payees/{expertUserId}/suspend": {
+      "post": {
+        "summary": "Stop paying an expert, with a reason they can read, or lift the stop; a suspended payee cannot price a seat",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "payout": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ACTIVE",
+                            "SUSPENDED"
+                          ]
+                        },
+                        "payeeName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "upiId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ifsc": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstStateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "payeeName",
+                        "upiId",
+                        "bankLast4",
+                        "ifsc",
+                        "gstStateCode",
+                        "gstin",
+                        "note",
+                        "kycVerified",
+                        "transport"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "payout"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suspended": {
+                    "type": "boolean"
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "suspended"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "expertUserId",
             "in": "path",
             "required": true,
             "schema": {

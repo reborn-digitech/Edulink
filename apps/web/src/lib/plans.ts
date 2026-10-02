@@ -142,27 +142,36 @@ export async function deletePlan(session: ActiveContext, planId: string): Promis
  * like an admin invitation: the operator's own unattributed row, and a row
  * bound to the school so its Safety Centre says the plan changed. The
  * school's office and head are told through a notification.
+ *
+ * `client` is the module's `db` unless a caller holds this step inside its
+ * own transaction (the operator's onboarding, subscriptions.ts), in which
+ * case every read and write here goes through that transaction and the
+ * module's `db` is not touched — inside a tenant transaction its extension
+ * re-issues nothing, and the query would run outside the unit.
  */
-export async function assignPlan(session: ActiveContext, schoolId: string, planId: string | null): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+export async function assignPlan(session: ActiveContext, schoolId: string, planId: string | null, client: typeof db = db): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
-  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, planId: true } });
+  const school = await client.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, planId: true } });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
   if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
-  const plan = planId ? await db.plan.findUnique({ where: { id: planId }, select: { id: true, code: true, name: true } }) : null;
+  const plan = planId ? await client.plan.findUnique({ where: { id: planId }, select: { id: true, code: true, name: true } }) : null;
   if (planId && !plan) return { ok: false, errorKey: "root.noSuchPlan" };
   if (school.planId === (plan?.id ?? null)) return { ok: true };
 
-  await db.school.update({ where: { id: schoolId }, data: { planId: plan?.id ?? null, planSince: plan ? new Date() : null } });
+  await client.school.update({ where: { id: schoolId }, data: { planId: plan?.id ?? null, planSince: plan ? new Date() : null } });
 
+  const tx = client === db ? undefined : client;
   const meta = { schoolId, name: school.name, planId: plan?.id ?? null, planCode: plan?.code ?? null };
-  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.plan", targetType: "School", targetId: schoolId, meta });
-  await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.plan", targetType: "School", targetId: schoolId, meta: { planCode: plan?.code ?? null, planName: plan?.name ?? null } });
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.school.plan", targetType: "School", targetId: schoolId, meta }, tx);
+  await audit({ schoolId, actorUserId: session.user.id, action: "superuser.school.plan", targetType: "School", targetId: schoolId, meta: { planCode: plan?.code ?? null, planName: plan?.name ?? null } }, tx);
 
   // Told, best-effort: a notification that fails to write must not undo the plan.
+  // Through the caller's client, so a school still inside its creating
+  // transaction is read where it exists (and, having no office yet, tells nobody).
   try {
     const { notify } = await import("./notify");
     await forTenant({ schoolIds: [schoolId], userId: session.user.id, joinCode: null, isSuperuser: true }, async () => {
-      const office = await db.membership.findMany({
+      const office = await client.membership.findMany({
         where: { schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
         select: { userId: true },
         distinct: ["userId"],

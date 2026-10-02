@@ -53,6 +53,8 @@ export const operatorPartnerSchema = z.object({
   schools: z.array(z.object({ id, name: z.string(), subscriptionStatus: subscriptionStatusSchema.nullable(), planName: z.string().nullable(), priceMonthlyPaise: count.nullable() })),
   /** What the partner is owed this month: percent × plan price over the schools whose subscription is ACTIVE. Recorded only; nothing is paid here. */
   owedThisMonthPaise: count,
+  /** The partner's ACTIVE schools on no plan, or on a plan with no price, which the owed figure cannot count. Defaults to 0 so an older answer still parses. */
+  unpricedSchools: count.default(0),
 });
 export type OperatorPartner = z.infer<typeof operatorPartnerSchema>;
 
@@ -232,7 +234,7 @@ export const operatorDashboardSchema = z.object({
     owedThisMonthPaise: count,
   }),
   /** The partners and what each is owed this month. */
-  partners: z.array(z.object({ id, name: z.string(), percentTenths, schools: count, owedThisMonthPaise: count })),
+  partners: z.array(z.object({ id, name: z.string(), percentTenths, schools: count, owedThisMonthPaise: count, unpricedSchools: count.default(0) })),
   plans: z.array(z.object({ id, code: z.string(), name: z.string() })),
   /** The schools the query matches, due-first. */
   rows: z.array(operatorDashboardRowSchema),

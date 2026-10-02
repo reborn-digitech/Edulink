@@ -13,7 +13,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
-import { assertSuperuser, createSchool, inviteAdmin, type SchoolDetails } from "./superuser";
+import { assertSuperuser, createSchool, inviteAdmin, sendAdminInviteMail, type AdminInviteMail, type SchoolDetails } from "./superuser";
 import { assignPlan, monthKeyFor } from "./plans";
 import { addDaysToKey, todayKey } from "./dates";
 import { notify } from "./notify";
@@ -49,6 +49,9 @@ import type { ActiveContext } from "./session";
 /* -------------------------------------------------------------------------- */
 
 const DAY_MS = 86_400_000;
+
+/** The client a step writes through: the module's `db`, or the onboarding transaction's client (fees-payments.ts spells it the same way). */
+type Tx = typeof db;
 
 /** The moves the list allows; null (never recorded) may move to anything, and a status may stay. */
 export const SUBSCRIPTION_MOVES: Record<SubscriptionStatus, readonly SubscriptionStatus[]> = {
@@ -298,15 +301,16 @@ function checkPartner(input: Partial<OperatorPartnerBody>): Refusal | null {
   return null;
 }
 
-export async function createPartner(session: ActiveContext, input: OperatorPartnerBody): Promise<{ ok: true; partnerId: string } | Refusal> {
+/** `client` is the module's `db`, or the onboarding transaction's client when the partner is made inline there. */
+export async function createPartner(session: ActiveContext, input: OperatorPartnerBody, client: Tx = db): Promise<{ ok: true; partnerId: string } | Refusal> {
   assertSuperuser(session);
   const problem = checkPartner(input);
   if (problem) return problem;
-  const partner = await db.commissionPartner.create({
+  const partner = await client.commissionPartner.create({
     data: { name: input.name.trim(), phone: text(input.phone), email: text(input.email)?.toLowerCase() ?? null, percentTenths: input.percentTenths, notes: input.notes?.trim() ?? "" },
     select: { id: true },
   });
-  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.partner.create", targetType: "CommissionPartner", targetId: partner.id, meta: { name: input.name.trim(), percentTenths: input.percentTenths } });
+  await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.partner.create", targetType: "CommissionPartner", targetId: partner.id, meta: { name: input.name.trim(), percentTenths: input.percentTenths } }, client === db ? undefined : client);
   return { ok: true, partnerId: partner.id };
 }
 
@@ -338,6 +342,8 @@ export type PartnerRow = {
   createdAt: Date;
   schools: { id: string; name: string; subscriptionStatus: SubscriptionStatus | null; planName: string | null; priceMonthlyPaise: number | null }[];
   owedThisMonthPaise: number;
+  /** ACTIVE schools on no plan, or on a plan with no price: the owed figure cannot count them, and the card says so. */
+  unpricedSchools: number;
 };
 
 /** Every partner with their live schools and what each is owed this month — computed here, stored nowhere. */
@@ -358,8 +364,10 @@ export async function listPartners(session: ActiveContext): Promise<PartnerRow[]
       planName: s.plan?.name ?? null,
       priceMonthlyPaise: s.plan?.priceMonthlyPaise ?? null,
     }));
-    const owedThisMonthPaise = schools.filter((s) => s.subscriptionStatus === "ACTIVE").reduce((sum, s) => sum + commissionOwedPaise(p.percentTenths, s.priceMonthlyPaise), 0);
-    return { id: p.id, name: p.name, phone: p.phone, email: p.email, percentTenths: p.percentTenths, notes: p.notes, createdAt: p.createdAt, schools, owedThisMonthPaise };
+    const active = schools.filter((s) => s.subscriptionStatus === "ACTIVE");
+    const owedThisMonthPaise = active.reduce((sum, s) => sum + commissionOwedPaise(p.percentTenths, s.priceMonthlyPaise), 0);
+    const unpricedSchools = active.filter((s) => !s.priceMonthlyPaise).length;
+    return { id: p.id, name: p.name, phone: p.phone, email: p.email, percentTenths: p.percentTenths, notes: p.notes, createdAt: p.createdAt, schools, owedThisMonthPaise, unpricedSchools };
   });
 }
 
@@ -509,7 +517,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
   const { jobStatuses } = await import("./jobs");
   const jobsOverdue = (await jobStatuses(now)).filter((j) => j.overdue).length;
 
-  const partnerTiles = partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths, schools: p.schools.length, owedThisMonthPaise: p.owedThisMonthPaise }));
+  const partnerTiles = partners.map((p) => ({ id: p.id, name: p.name, percentTenths: p.percentTenths, schools: p.schools.length, owedThisMonthPaise: p.owedThisMonthPaise, unpricedSchools: p.unpricedSchools }));
   const plans = await db.plan.findMany({ orderBy: { createdAt: "asc" }, select: { id: true, code: true, name: true } });
 
   const dueSoon = live
@@ -545,7 +553,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
 /* Onboarding: one call                                                        */
 /* -------------------------------------------------------------------------- */
 
-export type OnboardResult = { ok: true; schoolId: string; code: string; slug: string; partnerId: string | null } | Refusal;
+export type OnboardResult = { ok: true; schoolId: string; code: string; slug: string; partnerId: string | null; mailSent: boolean } | Refusal;
 
 /**
  * The guided flow's one door: makes the school through createSchool, puts
@@ -554,15 +562,32 @@ export type OnboardResult = { ok: true; schoolId: string; code: string; slug: st
  * administrator through inviteAdmin — the same three functions the
  * separate pages call, so nothing is written twice over.
  *
- * NOT ONE DATABASE TRANSACTION, and deliberately said: the three functions
- * it reuses each take the module's client, and threading a transaction
- * through them would mean copying them. Instead everything that can be
- * refused is checked BEFORE the first write — the slug, the plan, the
- * partner, the dates, the administrator's address — and the one write that
- * can still fail after the school exists (the invitation's mail) undoes the
- * school and the inline partner, so a refusal leaves nothing behind. A
- * given slug is used exactly; a taken one is refused rather than numbered,
- * because the operator typed it on purpose.
+ * ONE TRANSACTION. The three functions take the transaction's client as
+ * their last parameter and write their audit rows through it, so the
+ * school, its slug, its record, the inline partner, the plan, the
+ * invitation and every audit row commit together or not at all: a refused
+ * step inside — a taken slug met at the index, a plan or partner gone
+ * between the check and the write, an invitation already waiting — rolls
+ * the lot back by throwing `Refused`, which is caught at the door and
+ * handed back as the step's own errorKey. What can be refused is still
+ * checked BEFORE the transaction opens, so the ordinary refusal costs no
+ * transaction at all. The operator creates a school that has no tenant
+ * yet, so the transaction is `$tenantTransaction` under the operator's
+ * own session — it binds the superuser key and no school, which is what
+ * every policy these writes meet asks for (createSchool's own path runs
+ * each statement the same way, one per query) — and NOT a bare
+ * `db.$transaction`, which on this extended client is not atomic
+ * (leave.ts has the demonstration).
+ *
+ * THE MAIL IS SENT AFTER THE COMMIT. A mail cannot be rolled back, so
+ * inviteAdmin hands it back unsent and it goes once the transaction has
+ * committed. If the transport refuses it then, the school exists with its
+ * pending invitation and the operator resends it from the school's page
+ * (resendAdminInvite); the result says `mailSent: false` and the failure is
+ * logged, rather than a 500 for a school that was made.
+ *
+ * A given slug is used exactly; a taken one is refused rather than
+ * numbered, because the operator typed it on purpose.
  */
 export async function onboardSchool(session: ActiveContext, input: OperatorOnboardBody, now: Date = new Date()): Promise<OnboardResult> {
   assertSuperuser(session);
@@ -598,77 +623,89 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
     gradeLow: input.gradeLow ?? null,
     gradeHigh: input.gradeHigh ?? null,
   };
-  const made = await createSchool(session, details);
-  if (!made.ok) return made;
-  const schoolId = made.schoolId;
 
-  let partnerId: string | null = null;
-  let partnerMadeHere = false;
-  const undo = async () => {
-    await db.school.delete({ where: { id: schoolId } }).catch(() => undefined);
-    if (partnerMadeHere && partnerId) await db.commissionPartner.delete({ where: { id: partnerId } }).catch(() => undefined);
-  };
+  /** A step's refusal, thrown to roll the transaction back and caught at the door. */
+  class Refused extends Error {
+    constructor(readonly refusal: Refusal) {
+      super(refusal.errorKey);
+    }
+  }
+  type Made = { schoolId: string; code: string; slug: string; partnerId: string | null; mail: AdminInviteMail | null };
 
+  let made: Made;
   try {
-    if (slug) {
-      try {
-        await db.school.update({ where: { id: schoolId }, data: { slug } });
-      } catch {
-        await undo();
-        return { ok: false, errorKey: "root.slugTaken" };
+    made = await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      const created = await createSchool(session, details, tx);
+      if (!created.ok) throw new Refused(created);
+      const schoolId = created.schoolId;
+
+      if (slug) {
+        // The index decides, not the check above: two operators typing one slug race here, and the loser is refused as taken.
+        try {
+          await tx.school.update({ where: { id: schoolId }, data: { slug } });
+        } catch {
+          throw new Refused({ ok: false, errorKey: "root.slugTaken" });
+        }
       }
-    }
-    if (input.commission && "partnerId" in input.commission) partnerId = input.commission.partnerId;
-    if (input.commission && "newPartner" in input.commission) {
-      const created = await createPartner(session, input.commission.newPartner);
-      if (!created.ok) {
-        await undo();
-        return created;
+      let partnerId: string | null = null;
+      if (input.commission && "partnerId" in input.commission) partnerId = input.commission.partnerId;
+      if (input.commission && "newPartner" in input.commission) {
+        const partner = await createPartner(session, input.commission.newPartner, tx);
+        if (!partner.ok) throw new Refused(partner);
+        partnerId = partner.partnerId;
       }
-      partnerId = created.partnerId;
-      partnerMadeHere = true;
-    }
-    await db.school.update({
-      where: { id: schoolId },
-      data: {
-        board: input.board ?? null,
-        subscriptionStatus: status,
-        subscriptionStartsAt: dayToDate(startsAt),
-        subscriptionDueAt: dayToDate(dueAt),
-        pocName: text(input.contact?.name),
-        pocRole: text(input.contact?.role),
-        pocPhone: text(input.contact?.phone),
-        pocEmail: text(input.contact?.email),
-        commissionPartnerId: partnerId,
-      },
+      await tx.school.update({
+        where: { id: schoolId },
+        data: {
+          board: input.board ?? null,
+          subscriptionStatus: status,
+          subscriptionStartsAt: dayToDate(startsAt),
+          subscriptionDueAt: dayToDate(dueAt),
+          pocName: text(input.contact?.name),
+          pocRole: text(input.contact?.role),
+          pocPhone: text(input.contact?.phone),
+          pocEmail: text(input.contact?.email),
+          commissionPartnerId: partnerId,
+        },
+      });
+      if (input.planId) {
+        const assigned = await assignPlan(session, schoolId, input.planId, tx);
+        if (!assigned.ok) throw new Refused({ ok: false, errorKey: assigned.errorKey ?? "root.didNotWork" });
+      }
+      const invited = await inviteAdmin(session, schoolId, { email: adminEmail, name: input.adminName || null, role: "ADMIN", mail: "after-commit" }, tx);
+      if (!invited.ok) throw new Refused({ ok: false, errorKey: invited.errorKey ?? "root.didNotWork" });
+
+      const row = await tx.school.findUniqueOrThrow({ where: { id: schoolId }, select: { slug: true } });
+      await audit(
+        {
+          schoolId: null,
+          actorUserId: session.user.id,
+          action: "superuser.school.onboard",
+          targetType: "School",
+          targetId: schoolId,
+          meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail },
+        },
+        tx,
+      );
+      return { schoolId, code: created.code, slug: row.slug, partnerId, mail: invited.mail ?? null };
     });
-    if (input.planId) {
-      const assigned = await assignPlan(session, schoolId, input.planId);
-      if (!assigned.ok) {
-        await undo();
-        return { ok: false, errorKey: assigned.errorKey ?? "root.didNotWork" };
-      }
-    }
-    const invited = await inviteAdmin(session, schoolId, { email: adminEmail, name: input.adminName || null, role: "ADMIN" });
-    if (!invited.ok) {
-      await undo();
-      return { ok: false, errorKey: invited.errorKey ?? "root.didNotWork" };
-    }
   } catch (error) {
-    await undo();
+    if (error instanceof Refused) return error.refusal;
     throw error;
   }
 
-  const row = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { slug: true } });
-  await audit({
-    schoolId: null,
-    actorUserId: session.user.id,
-    action: "superuser.school.onboard",
-    targetType: "School",
-    targetId: schoolId,
-    meta: { schoolId, name: input.name.trim(), slug: row.slug, planId: input.planId ?? null, status, startsAt, dueAt, partnerId, adminEmail },
-  });
-  return { ok: true, schoolId, code: made.code, slug: row.slug, partnerId };
+  // Committed. The mail goes now; a transport failure leaves the school standing with its invitation pending, to be resent.
+  let mailSent = false;
+  if (made.mail) {
+    try {
+      await sendAdminInviteMail(made.mail);
+      mailSent = true;
+    } catch (error) {
+      console.error("[subscriptions] onboarding invitation mail failed; the invitation is pending and can be resent", made.schoolId, error instanceof Error ? error.message : error);
+    }
+  }
+  return { ok: true, schoolId: made.schoolId, code: made.code, slug: made.slug, partnerId: made.partnerId, mailSent };
 }
 
 /* -------------------------------------------------------------------------- */

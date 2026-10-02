@@ -44,6 +44,8 @@ export default async function RootPage({
   const planId = d.plans.some((p) => p.id === rawPlan) ? rawPlan : "";
   const partnerId = d.partners.some((p) => p.id === rawPartner) ? rawPartner : "";
   const narrowed = Boolean(q || state !== "live" || planId || partnerId);
+  // ACTIVE schools the partners brought that are on no plan, or on a plan with no price: no figure to take a share of, so the owed sum leaves them out and says so.
+  const unpriced = d.partners.reduce((sum, p) => sum + p.unpricedSchools, 0);
   const money = (paise: number) => formatPaise(paise, locale);
   const percent = (tenths: number) => (tenths / 10).toLocaleString(undefined, { maximumFractionDigits: 1 });
 
@@ -106,6 +108,7 @@ export default async function RootPage({
                 </li>
               ))}
             </ul>
+            {unpriced > 0 && <p className="mt-2 text-xs text-fg-subtle">{unpriced === 1 ? t("root.partnerUnpricedOne") : t("root.partnerUnpricedMany", { count: unpriced })}</p>}
           </CardBody>
         </Card>
       )}

@@ -22,6 +22,15 @@ import { kycViews } from "./expert-kyc";
 import type { ExpertKyc } from "@edulink/contracts";
 
 /**
+ * The client a write goes through: the module's `db` by default, or the
+ * transaction client of a caller that holds several of these steps together
+ * (the operator's onboarding, subscriptions.ts). Inside such a transaction the
+ * module's `db` must not be touched — its extension re-issues nothing there
+ * and the query would run on another connection, outside the unit.
+ */
+type Tx = typeof db;
+
+/**
  * Whoever runs the server.
  *
  * THIS IS THE FIRST ACTOR IN THIS APP ABOVE A SCHOOL, and the README spent a
@@ -186,6 +195,7 @@ export type CreateResult =
 export async function createSchool(
   session: ActiveContext,
   details: SchoolDetails,
+  client: Tx = db,
 ): Promise<CreateResult> {
   assertSuperuser(session);
 
@@ -205,7 +215,7 @@ export async function createSchool(
     const slug = attempt === 0 ? baseSlug : `${baseSlug}-${attempt + 1}`;
 
     try {
-      await db.school.create({
+      await client.school.create({
         data: {
           id: schoolId,
           name,
@@ -234,14 +244,17 @@ export async function createSchool(
       // schoolId NULL, with the school named in meta. An operator's actions
       // belong to the operator, not to the tenant — so this appears in nobody's
       // Safety Centre. See NULL_SCHOOL_WRITABLE in scripts/gen-rls.ts.
-      await audit({
-        schoolId: null,
-        actorUserId: session.user.id,
-        action: "superuser.school.create",
-        targetType: "School",
-        targetId: schoolId,
-        meta: { schoolId, name, code },
-      });
+      await audit(
+        {
+          schoolId: null,
+          actorUserId: session.user.id,
+          action: "superuser.school.create",
+          targetType: "School",
+          targetId: schoolId,
+          meta: { schoolId, name, code },
+        },
+        client === db ? undefined : client,
+      );
 
       return { ok: true, schoolId, code };
     } catch (error) {
@@ -862,12 +875,25 @@ async function tellSchoolVerified(session: ActiveContext, schoolId: string, scho
  *
  * `createdByMembershipId` is null, which is correct and slightly unusual: a
  * superuser has no membership anywhere. The audit log carries who it really was.
+ *
+ * THE MAIL. Sent here, after the row, unless `input.mail` is "after-commit":
+ * a caller holding this step inside a transaction (the operator's onboarding)
+ * cannot send a mail that may need rolling back, so it gets the mail handed
+ * back in the result and sends it through `sendAdminInviteMail` once the
+ * transaction has committed.
  */
+export type AdminInviteMail = { to: string; url: string; schoolName: string };
+
+export async function sendAdminInviteMail(mail: AdminInviteMail): Promise<void> {
+  await sendTeacherInvite(mail.to, mail.url, mail.schoolName, "Shalaghar");
+}
+
 export async function inviteAdmin(
   session: ActiveContext,
   schoolId: string,
-  input: { email: string; name?: string | null; role?: "ADMIN" | "PRINCIPAL" },
-): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  input: { email: string; name?: string | null; role?: "ADMIN" | "PRINCIPAL"; mail?: "now" | "after-commit" },
+  client: Tx = db,
+): Promise<{ ok: boolean; errorKey?: TranslationKey; mail?: AdminInviteMail }> {
   assertSuperuser(session);
 
   const email = input.email.trim().toLowerCase();
@@ -884,7 +910,7 @@ export async function inviteAdmin(
   const own = session.user.email?.trim().toLowerCase();
   if (own && own === email) return { ok: false, errorKey: "root.didNotWork" };
 
-  const school = await db.school.findUnique({
+  const school = await client.school.findUnique({
     where: { id: schoolId },
     select: { id: true, name: true, removedAt: true },
   });
@@ -894,14 +920,14 @@ export async function inviteAdmin(
 
   const role = input.role ?? "ADMIN";
 
-  const already = await db.invite.findFirst({
+  const already = await client.invite.findFirst({
     where: { schoolId, email, status: "PENDING" },
     select: { id: true },
   });
   if (already) return { ok: false, errorKey: "root.inviteAlreadyWaiting" };
 
   const token = generateToken();
-  await db.invite.create({
+  await client.invite.create({
     data: {
       schoolId,
       role,
@@ -915,31 +941,39 @@ export async function inviteAdmin(
   });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "Shalaghar");
+  const mail: AdminInviteMail = { to: email, url: `${appUrl}/invite/${token}`, schoolName: school.name };
+  if (input.mail !== "after-commit") await sendAdminInviteMail(mail);
 
   // TWICE, ON PURPOSE. The unattributed row is the operator's own record and
   // is what /root/audit lists; the row bound to the school is what puts "the
   // Shalaghar team invited an administrator" in THAT school's Safety Centre —
   // the same standing as a takedown or a suspension. Until it was written the
   // school could not see the one operator action that hands out its keys.
-  await audit({
-    schoolId: null,
-    actorUserId: session.user.id,
-    action: "superuser.invite.admin",
-    targetType: "School",
-    targetId: schoolId,
-    meta: { schoolId, email, role },
-  });
-  await audit({
-    schoolId,
-    actorUserId: session.user.id,
-    action: "superuser.invite.admin",
-    targetType: "School",
-    targetId: schoolId,
-    meta: { email, role },
-  });
+  const tx = client === db ? undefined : client;
+  await audit(
+    {
+      schoolId: null,
+      actorUserId: session.user.id,
+      action: "superuser.invite.admin",
+      targetType: "School",
+      targetId: schoolId,
+      meta: { schoolId, email, role },
+    },
+    tx,
+  );
+  await audit(
+    {
+      schoolId,
+      actorUserId: session.user.id,
+      action: "superuser.invite.admin",
+      targetType: "School",
+      targetId: schoolId,
+      meta: { email, role },
+    },
+    tx,
+  );
 
-  return { ok: true };
+  return input.mail === "after-commit" ? { ok: true, mail } : { ok: true };
 }
 
 /** Pending admin/principal invitations for one school. */

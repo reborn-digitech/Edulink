@@ -390,7 +390,7 @@ export async function updatePartnerAction(partnerId: string, input: OperatorPart
   }
 }
 
-/** The guided flow's one call: the lib checks everything before the first write and undoes the school if the invitation is refused. */
+/** The guided flow's one call: the lib checks everything before the first write and makes the rest in one transaction, so a refused invitation leaves nothing behind; the invitation's mail goes after the commit. */
 export async function onboardSchoolAction(input: OperatorOnboardBody): Promise<Result & { slug?: string }> {
   try {
     const session = await requireApiUser();

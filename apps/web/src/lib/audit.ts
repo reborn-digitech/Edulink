@@ -34,14 +34,26 @@ import { writeJson } from "./json";
  * policy allows that for this table alone, and no school can see it. See the
  * NULL_SCHOOL_WRITABLE note in scripts/gen-rls.ts.
  */
-export async function audit(entry: {
-  schoolId?: string | null;
-  actorUserId?: string | null;
-  action: string;
-  targetType?: string;
-  targetId?: string;
-  meta?: Record<string, unknown>;
-}): Promise<string | null> {
+/**
+ * A transaction client the row may be written through instead of the module's
+ * `db`: only `$queryRaw` and `$executeRaw`, which is all the raw insert needs.
+ * Handed in by work that must keep its audit rows inside its own transaction —
+ * the operator's onboarding, where a refused step rolls the school and its
+ * record back together (subscriptions.ts).
+ */
+export type AuditTx = Pick<typeof db, "$queryRaw" | "$executeRaw">;
+
+export async function audit(
+  entry: {
+    schoolId?: string | null;
+    actorUserId?: string | null;
+    action: string;
+    targetType?: string;
+    targetId?: string;
+    meta?: Record<string, unknown>;
+  },
+  tx?: AuditTx,
+): Promise<string | null> {
   /**
    * Returns the row's id, or null when nothing was written. Almost every
    * caller ignores it; the app's problem report hands it back to the phone as
@@ -49,6 +61,7 @@ export async function audit(entry: {
    * left it with nothing to hand back.
    */
   try {
+    if (tx) return await auditInTransaction(entry, tx);
     /**
      * The IP is best-effort CONTEXT, not the record. `headers()` throws
      * outside a request scope — cron jobs, scripts, the simulation harness —
@@ -127,4 +140,57 @@ export async function audit(entry: {
     console.error("[audit] failed to record", entry.action, error);
     return null;
   }
+}
+
+/**
+ * The same row, written ON the caller's transaction so it commits and rolls
+ * back with the work it describes. The module's `db` is of no use here: inside
+ * a tenant transaction its extension re-issues nothing and the query would run
+ * on another connection, outside the transaction, against a school that does
+ * not exist yet.
+ *
+ * ALWAYS THE RAW INSERT, for the reason the unattributed path gives — no
+ * RETURNING, so no read-back through the policy — and for a school-bound row
+ * the tenant setting is widened to that school for the length of the insert
+ * and put back, the same narrowing `forSchool` does per query outside a
+ * transaction. The id is minted here, as below.
+ *
+ * NOT SWALLOWED. A failed statement aborts the Postgres transaction, so there
+ * is nothing left to protect by continuing; the throw reaches the caller's
+ * `$tenantTransaction` and the whole unit rolls back, which is the point.
+ */
+async function auditInTransaction(entry: Parameters<typeof audit>[0], tx: AuditTx): Promise<string> {
+  let ip: string | null = null;
+  try {
+    ip = await headers().then((hdrs) => clientAddress(hdrs));
+  } catch {
+    ip = null;
+  }
+  const meta = writeJson(entry.meta ?? {});
+  const id = randomUUID();
+  const schoolId = entry.schoolId ?? null;
+  const before = schoolId
+    ? await tx.$queryRaw<{ ids: string | null }[]>`
+        SELECT current_setting('app.school_ids', true) AS ids
+      `
+    : null;
+  if (schoolId) {
+    const current = before?.[0]?.ids ?? "";
+    const widened = [...current.split(",").filter(Boolean), schoolId].join(",");
+    await tx.$executeRaw`
+      SELECT set_config('app.school_ids', ${widened}, true)
+    `;
+  }
+  await tx.$executeRaw`
+    INSERT INTO "AuditLog" ("id", "schoolId", "actorUserId", "action", "targetType", "targetId", "meta", "ip", "createdAt")
+    VALUES (${id}, ${schoolId}, ${entry.actorUserId ?? null}, ${entry.action},
+            ${entry.targetType ?? null}, ${entry.targetId ?? null}, ${meta}, ${ip},
+            ${new Date().toISOString()}::timestamp)
+  `;
+  if (schoolId) {
+    await tx.$executeRaw`
+      SELECT set_config('app.school_ids', ${before?.[0]?.ids ?? ""}, true)
+    `;
+  }
+  return id;
 }
