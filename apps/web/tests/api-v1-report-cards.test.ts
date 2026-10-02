@@ -40,6 +40,7 @@ let term1 = "";
 let term2 = "";
 let adminMembershipId = "";
 const paperIds: Record<string, string> = {};
+let seriesIds = { ut: "", mid: "" };
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
@@ -88,8 +89,13 @@ beforeAll(async () => {
   yearId = (await db.academicYear.create({ data: { schoolId, name: `ZZ 2026–27 ${suffix}`, startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true }, select: { id: true } })).id;
   term1 = (await db.term.create({ data: { schoolId, academicYearId: yearId, name: `ZZ Term 1 ${suffix}`, startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2026-10-31T00:00:00Z"), position: 1 }, select: { id: true } })).id;
   term2 = (await db.term.create({ data: { schoolId, academicYearId: yearId, name: `ZZ Term 2 ${suffix}`, startDate: new Date("2026-11-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), position: 2 }, select: { id: true } })).id;
-  const ut = await db.examSeries.create({ data: { schoolId, name: "ZZ Unit test 1", gradeLevel: "7", kind: "UNIT_TEST", termId: term1, publishedAt: new Date(), createdByMembershipId: adminMembershipId }, select: { id: true } });
-  const mid = await db.examSeries.create({ data: { schoolId, name: "ZZ Mid-term", gradeLevel: "7", kind: "MID_TERM", termId: term1, publishedAt: new Date(), createdByMembershipId: adminMembershipId }, select: { id: true } });
+  // The unit test is made before the mid-term, a second apart: a term's
+  // card reads its series in the order they were made, and two creates back
+  // to back can land in the same millisecond (a tie is its own case below).
+  const made = Date.now() - 60_000;
+  const ut = await db.examSeries.create({ data: { schoolId, name: "ZZ Unit test 1", gradeLevel: "7", kind: "UNIT_TEST", termId: term1, publishedAt: new Date(), createdByMembershipId: adminMembershipId, createdAt: new Date(made) }, select: { id: true } });
+  const mid = await db.examSeries.create({ data: { schoolId, name: "ZZ Mid-term", gradeLevel: "7", kind: "MID_TERM", termId: term1, publishedAt: new Date(), createdByMembershipId: adminMembershipId, createdAt: new Date(made + 1_000) }, select: { id: true } });
+  seriesIds = { ut: ut.id, mid: mid.id };
   paperIds.utMaths = await paper(ut.id, "Mathematics", 25, "2026-07-20", 1);
   paperIds.utEnglish = await paper(ut.id, "English", 25, "2026-07-21", 2);
   paperIds.midMaths = await paper(mid.id, "Mathematics", 80, "2026-09-20", 1);
@@ -207,6 +213,22 @@ describe("a term card", () => {
     expect(sB.map((s) => [s.percent, s.letter])).toEqual([[40, "D"], [48, "C"]]);
     expect(sB[0]!.parts.map((p) => p.weight)).toEqual([100, null]);
     expect(rowB.overallLetter).toBe("D");
+  });
+
+  it("two series made in the same millisecond keep each one's papers together on the card, not interleaved by position", async () => {
+    await as("TEACHER");
+    const { createdAt } = await db.examSeries.findUniqueOrThrow({ where: { id: seriesIds.ut }, select: { createdAt: true } });
+    const before = await db.examSeries.findUniqueOrThrow({ where: { id: seriesIds.mid }, select: { createdAt: true } });
+    await db.examSeries.update({ where: { id: seriesIds.mid }, data: { createdAt } });
+    try {
+      const res = await generatePost(json(`/api/v1/teaching/classes/${classId}/report-cards/generate`, { title: "ignored", assignmentIds: [], termId: term1 }), params({ classId }));
+      expect(await res.json()).toEqual({ created: 0, updated: 2, skippedPublished: 0 });
+      const row = await db.reportCard.findUniqueOrThrow({ where: { id: cardA }, select: { items: { where: { kind: "SCHOLASTIC" }, orderBy: { position: "asc" }, select: { subject: true } } } });
+      // Each series holds Mathematics then English; interleaved by position it read M, M, E, E.
+      expect(row.items.map((i) => i.subject)).toEqual(["Mathematics", "English", "Mathematics", "English"]);
+    } finally {
+      await db.examSeries.update({ where: { id: seriesIds.mid }, data: { createdAt: before.createdAt } });
+    }
   });
 
   it("takes the class teacher's co-scholastic grades, refuses an unknown area or grade and another teacher, keeps them through a regeneration, and locks them on publishing", async () => {

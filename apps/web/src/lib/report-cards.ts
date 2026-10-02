@@ -261,8 +261,10 @@ export async function assessmentsFor(
     .sort(
       (a, b) =>
         a._seriesAt - b._seriesAt ||
+        a.seriesId.localeCompare(b.seriesId) ||
         a.dateKey.localeCompare(b.dateKey) ||
-        a._position - b._position,
+        a._position - b._position ||
+        a.assignmentId.localeCompare(b.assignmentId),
     )
     .map((row) => {
       const { _seriesAt, _position, ...rest } = row;
@@ -362,7 +364,7 @@ export async function generateCards(
       title: true,
       category: true,
       pointsMilli: true,
-      examSlot: { select: { subject: true, position: true, series: { select: { name: true, kind: true, termId: true, createdAt: true } } } },
+      examSlot: { select: { subject: true, position: true, series: { select: { id: true, name: true, kind: true, termId: true, createdAt: true } } } },
     },
   });
   if (assignments.length === 0) {
@@ -374,7 +376,16 @@ export async function generateCards(
     const order = new Map(pickedIds.map((id, index) => [id, index]));
     assignments.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
   } else {
-    assignments.sort((a, b) => a.examSlot!.series.createdAt.getTime() - b.examSlot!.series.createdAt.getTime() || a.examSlot!.position - b.examSlot!.position);
+    // Two series made in the same millisecond (an import, a copy, a test)
+    // would otherwise interleave their papers by position; the series id
+    // keeps each series together, and the paper id makes the order total.
+    assignments.sort(
+      (a, b) =>
+        a.examSlot!.series.createdAt.getTime() - b.examSlot!.series.createdAt.getTime() ||
+        a.examSlot!.series.id.localeCompare(b.examSlot!.series.id) ||
+        a.examSlot!.position - b.examSlot!.position ||
+        a.id.localeCompare(b.id),
+    );
   }
 
   /**
