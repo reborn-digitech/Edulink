@@ -1,5 +1,6 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
+import { isCloudflareAddress } from "./cloudflare";
 import { db } from "./db";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -295,8 +296,24 @@ export const INVITE_ACCEPTS = { limit: 10, windowMs: 60 * 60_000 };
  * Fly-Client-IP; a generic proxy APPENDS to X-Forwarded-For, so the last
  * entry is the hop it saw and the first is whatever the client chose to
  * send — which was, for a while, the entry every per-address limit keyed on.
+ *
+ * Behind Cloudflare's proxy that hop is a Cloudflare edge, shared by everyone
+ * routed through it. With TRUST_CLOUDFLARE=1, and only when the hop really is
+ * inside Cloudflare's published ranges, the caller is CF-Connecting-IP instead
+ * (cloudflare.ts) — a request that reaches the origin directly with the header
+ * set keys on its own address, as before.
  */
 export function clientAddress(hdrs: Headers): string | null {
+  const peer = proxyHop(hdrs);
+  if (peer && trustCloudflare() && isCloudflareAddress(peer)) {
+    const cf = hdrs.get("cf-connecting-ip")?.trim();
+    if (cf) return cf;
+  }
+  return peer;
+}
+
+/** The address the proxy in front of the app saw connect to it. */
+function proxyHop(hdrs: Headers): string | null {
   // Fly-Client-IP is Fly's word, and only Fly's: anywhere else a client
   // could send the header itself and key every per-address limit on a
   // string of its choosing. Trusted on Fly (FLY_APP_NAME is set by the
@@ -315,6 +332,10 @@ export function clientAddress(hdrs: Headers): string | null {
 
 function trustFlyHeader(): boolean {
   return Boolean(process.env.FLY_APP_NAME) || process.env.TRUST_FLY_CLIENT_IP === "1";
+}
+
+function trustCloudflare(): boolean {
+  return process.env.TRUST_CLOUDFLARE === "1";
 }
 
 export async function callerKey(): Promise<string | null> {

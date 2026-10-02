@@ -189,4 +189,8 @@ more than a hundred families to go out.
 ## Open items before the first real school
 
 - **Cloudflare in front**, with the rate limits in `rate-limit.ts` as the
-  second line, not the first.
+  second line, not the first. Proxied only with `TRUST_CLOUDFLARE=1` set on
+  Fly, or every caller behind one Cloudflare edge shares one login limit; the
+  flag believes `CF-Connecting-IP` only from Cloudflare's published ranges
+  (`src/lib/cloudflare.ts`), so the origin's public address cannot be used to
+  choose a key.

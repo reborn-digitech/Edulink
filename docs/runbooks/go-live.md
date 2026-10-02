@@ -27,10 +27,15 @@ The code was read for every step. Where an older runbook disagrees, the code win
 - **Texts cannot stay on devbox in production.** `docs/runbooks/messaging.md` says to leave the transports on
   `devbox` until the template ids exist. `env.ts` refuses to boot a deployed server with `SMS_TRANSPORT=devbox`,
   and refuses a live transport with an empty `MESSAGE_TEMPLATE_IDS`. DLT registration is therefore a
-  precondition of the first deploy, not a later step. WhatsApp may stay on devbox.
-- **Do not put Cloudflare's proxy in front yet.** On Fly the rate limits key on `Fly-Client-IP`
-  (`rate-limit.ts`). Behind Cloudflare's proxy that is Cloudflare's address, so every person behind one edge
-  shares one login limit (10 per 15 minutes). Use DNS only until the code reads `CF-Connecting-IP`.
+  precondition of the first deploy, not a later step. WhatsApp may stay on devbox. The owner decided on
+  2 October 2026 to keep this rule rather than allow devbox SMS behind a flag: a password-reset code that
+  never arrives locks a person out, so the platform does not go live without real texts.
+- **Cloudflare's proxy in front needs `TRUST_CLOUDFLARE=1`.** On Fly the rate limits key on `Fly-Client-IP`
+  (`rate-limit.ts`). Behind Cloudflare's proxy that is Cloudflare's address, so without the flag every person
+  behind one edge shares one login limit (10 per 15 minutes). With it, a request whose `Fly-Client-IP` is inside
+  Cloudflare's published ranges (`src/lib/cloudflare.ts`) is keyed on `CF-Connecting-IP`; one that reaches Fly
+  directly is keyed on its own address whatever headers it sends. Set the flag in the same change that turns the
+  proxy on, not before.
 - **A bucket is required, and nothing enforces it.** `fly.toml` runs two web machines and mounts no volume.
   With no `STORAGE_*` variables the app writes uploads to a disk the next deploy throws away, and `env.ts`
   reports nothing (only a half-set bucket is fatal).
@@ -261,6 +266,7 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 | `ANTHROPIC_API_KEY` | owner's decision | never | turns on machine drafts of question translations (`translate.ts`); it sends question text to Anthropic. Leave out unless the owner decides |
 | `TZ`, `NODE_ENV`, `PORT` | in `fly.toml` | — | do not set as secrets |
 | `APP_COMMIT` | build argument | — | stamped by the image build, not a secret |
+| `TRUST_CLOUDFLARE` | only with Cloudflare's proxy on | never | `1` keys the rate limits on `CF-Connecting-IP` for requests arriving from Cloudflare's ranges (3.8) |
 | `TRUST_FLY_CLIENT_IP`, `JOBS_RUNNER`, `HOSTNAME`, `API_CORS_ORIGINS`, `APP_DEEP_LINK_SCHEME`, `EVENTS_KEEPALIVE_MS`, `*_API_BASE`, `STORAGE_DIR`, `SEED_PASSWORD` | leave out | — | Fly sets `FLY_APP_NAME`, which already trusts `Fly-Client-IP`; the jobs runner sets its own `JOBS_RUNNER`, `HOSTNAME` and `PORT`; the rest are for tests and development |
 
 - [ ] **1.4 Stage the secrets on Fly** — engineer
@@ -464,8 +470,13 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ
 - [ ] **3.8 Point the domain at Fly and get a certificate** — engineer
 
   **What.** At the DNS host, records for the host from 0.1 (an A and AAAA from `fly ips list`, or a CNAME to
-  `edulink-web.fly.dev`). If the DNS host is Cloudflare, set the record to **DNS only**, not proxied (see the
-  top of this runbook).
+  `edulink-web.fly.dev`). If the DNS host is Cloudflare, start with the record **DNS only** until the
+  certificate is issued; to proxy it afterwards, set `fly secrets set TRUST_CLOUDFLARE=1 -a edulink-web` in the
+  same change and Cloudflare's SSL mode to Full (strict) (see the top of this runbook).
+
+  **Verify (proxied only).** Sign in from two networks: each keeps its own login limit, and
+  `select ip from "Session" order by "createdAt" desc limit 2` shows the two callers' addresses, not
+  Cloudflare's.
 
   ```bash
   fly certs add <host> -a edulink-web
@@ -1057,7 +1068,6 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | Managed Postgres 16 with PITR (0.4) | everything | owner, engineer |
 | An uploads bucket (0.5) | two web machines without losing uploads | owner, engineer |
 | The image built with `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (3.2, 3.3) | browser push; with option A, the first boot | engineer |
-| The rate limits read `CF-Connecting-IP` | Cloudflare's proxy in front | engineer |
 | The company's Razorpay account with KYC (0.9) | paid workshop seats | owner |
 | The company's GST details on `/root/gigs` (0.10, 4.8) | recording any payout to an expert | owner, operator |
 | The accountant's answers to decision 0004 (0.11) | the first real tax invoice; paid seats on | accountant |
