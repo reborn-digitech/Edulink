@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireSuperuser } from "@/lib/tenancy";
 import { failOnlinePayment, settleOnlinePayment } from "@/lib/fees-payments";
+import { markOrderFailed } from "@/lib/gig-payments";
+import { settleSeatPayment } from "@/lib/gig-sessions";
 
 /**
  * The devbox gateway's two buttons. Each goes through the SAME door the real
@@ -36,6 +38,28 @@ export async function failAction(formData: FormData): Promise<void> {
   const orderId = String(formData.get("orderId") ?? "");
   if (!schoolId || !orderId) redirect("/dev/payments?outcome=bad-request");
   await failOnlinePayment(schoolId, orderId, "devbox: failed by the operator");
+  revalidatePath("/dev/payments");
+  redirect("/dev/payments?outcome=failed");
+}
+
+/** A paid workshop seat: the same door the sessions webhook uses (settleSeatPayment), no school bound. */
+export async function markSeatPaidAction(formData: FormData): Promise<void> {
+  gate();
+  await requireSuperuser();
+  const orderId = String(formData.get("orderId") ?? "");
+  const amountPaise = Number(formData.get("amountPaise") ?? 0);
+  if (!orderId || !Number.isInteger(amountPaise) || amountPaise <= 0) redirect("/dev/payments?outcome=bad-request");
+  const result = await settleSeatPayment({ orderId, gatewayPaymentId: `pay_devbox${Date.now()}`, amountPaise });
+  revalidatePath("/dev/payments");
+  redirect(`/dev/payments?outcome=${encodeURIComponent(result.outcome)}`);
+}
+
+export async function failSeatAction(formData: FormData): Promise<void> {
+  gate();
+  await requireSuperuser();
+  const orderId = String(formData.get("orderId") ?? "");
+  if (!orderId) redirect("/dev/payments?outcome=bad-request");
+  await markOrderFailed(orderId, "devbox: failed by the operator");
   revalidatePath("/dev/payments");
   redirect("/dev/payments?outcome=failed");
 }

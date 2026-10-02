@@ -138,6 +138,8 @@ export type SweepFixture = {
   gigBookingId: string | null;
   gigUnheldBookingId: string | null;
   gigSlotId: string | null;
+  /** The sweep's parent's own paid seat payment, on hold (zz-fixtures.ts `buildGigSessions`): read by its payer, retried by the operator as a no-op. */
+  gigPaymentId: string | null;
   /** A signed line on a certificate of a pupil who is NOT the sweep's pupil, for the cross-person probe. */
   otherPupilSignatureId: string | null;
   signaturePng: string | null;

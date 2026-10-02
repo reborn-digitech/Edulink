@@ -245,6 +245,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", primary: true, prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true },
     { href: "/expert/sessions", labelKey: "nav.sessions", icon: "calendar", primary: true, prefix: true },
+    { href: "/expert/earnings", labelKey: "gigs.earningsTitle", icon: "chartLine", prefix: true, group: "running" },
     { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "running" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],

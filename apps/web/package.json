@@ -33,6 +33,7 @@
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
     "api:sweep": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/api-sweep.ts",
     "zz:token": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-token.ts",
+    "secret:seal": "tsx --tsconfig scripts/tsconfig.json scripts/seal-secret.ts",
     "api:docs": "tsx --tsconfig scripts/tsconfig.json scripts/gen-openapi.ts",
     "load:check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/load-check.ts",
     "e2e": "playwright test",

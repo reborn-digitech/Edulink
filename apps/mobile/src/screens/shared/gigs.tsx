@@ -11,11 +11,12 @@ import { useTheme } from "@/lib/theme";
  * query key every one of them invalidates, and the small "a reason, then the
  * act" control used wherever a seat or a time is cancelled.
  */
-export type BookingStatus = "PENDING_CONSENT" | "CONFIRMED" | "CANCELLED" | "DELIVERED" | "MISSED" | "UNHELD";
+export type BookingStatus = "PENDING_CONSENT" | "PENDING_PAYMENT" | "CONFIRMED" | "CANCELLED" | "DELIVERED" | "MISSED" | "UNHELD";
 export type SessionKind = "ONE_TO_ONE" | "WORKSHOP";
 
 export const BOOKING_STATUS: Record<BookingStatus, { label: TranslationKey; tone: "muted" | "ok" | "warn" | "danger" | "accent" }> = {
   PENDING_CONSENT: { label: "gigs.bookingStatusPENDING_CONSENT", tone: "accent" },
+  PENDING_PAYMENT: { label: "gigs.bookingStatusPENDING_PAYMENT", tone: "warn" },
   CONFIRMED: { label: "gigs.bookingStatusCONFIRMED", tone: "ok" },
   CANCELLED: { label: "gigs.bookingStatusCANCELLED", tone: "muted" },
   DELIVERED: { label: "gigs.bookingStatusDELIVERED", tone: "ok" },
@@ -41,3 +42,15 @@ export function ReasonThen({ label, about, busy, onSubmit }: { label: string; ab
     </View>
   );
 }
+
+export type SessionPaymentStatus = "INITIATED" | "PAID" | "HELD" | "RELEASED" | "REFUNDED" | "FAILED";
+export const PAYMENT_STATUS: Record<SessionPaymentStatus, { label: TranslationKey; tone: "muted" | "ok" | "warn" | "danger" | "accent" }> = {
+  INITIATED: { label: "gigs.paymentStatusINITIATED", tone: "accent" },
+  PAID: { label: "gigs.paymentStatusPAID", tone: "warn" },
+  HELD: { label: "gigs.paymentStatusHELD", tone: "warn" },
+  RELEASED: { label: "gigs.paymentStatusRELEASED", tone: "ok" },
+  REFUNDED: { label: "gigs.paymentStatusREFUNDED", tone: "muted" },
+  FAILED: { label: "gigs.paymentStatusFAILED", tone: "danger" },
+};
+/** The thirty days an open free one-to-one offer counts within (the server's MENTORING_OFFER_DAYS). */
+export const MENTORING_OFFER_DAYS = 30;

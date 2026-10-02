@@ -5,6 +5,7 @@ import { formatPaise } from "@edulink/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
 import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
+import { retrySeatPayment, setPaymentsEnabled } from "@/lib/gig-payments";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -38,6 +39,34 @@ export async function recordGigPaymentAction(input: { userId: string; utr: strin
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
     return { ok: true, message: t("gigs.paymentRecorded", { amount: formatPaise(result.payment.amountPaise, await getLocale()) }) };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The kill switch for paid seats: every path reads it (decision 0004, amended 2026-10-02). */
+export async function switchPaymentsAction(on: boolean): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await setPaymentsEnabled(ctx, on);
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t("gigs.opSwitched") };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** A waiting release or refund tried at the gateway now. */
+export async function retryPaymentAction(paymentId: string): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await retrySeatPayment(ctx, paymentId);
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return { ok: true, message: t("gigs.opRetried", { outcome: result.outcome }) };
   } catch (error) {
     return failure(error);
   }

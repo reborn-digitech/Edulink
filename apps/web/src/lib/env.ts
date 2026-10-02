@@ -1,5 +1,6 @@
 import "server-only";
 import type { createECDH as CreateECDH } from "node:crypto";
+import { checkGigGatewayEnv, readGigGatewayTransport as readGigTransport, type GigGatewayTransport } from "./gig-gateway-env";
 
 /**
  * node:crypto fetched at call time rather than imported: with a middleware in
@@ -442,6 +443,10 @@ export function readFeesSecretKey(): { ok: true; key: Buffer } | { ok: false; pr
  * neither — online payment unavailable, everything else unchanged.
  */
 export type FeesGatewayTransport = "devbox" | "razorpay" | "off";
+/** The company's own account for paid sessions, decided the same way; the variables are read in gig-gateway-env.ts. */
+export function readGigGatewayTransport(): GigGatewayTransport {
+  return readGigTransport(isDeployed());
+}
 export function readFeesGatewayTransport(): FeesGatewayTransport {
   if (process.env.FEES_GATEWAY_TRANSPORT === "razorpay") return "razorpay";
   // A deployed server never mints pretend orders: with no real transport
@@ -671,6 +676,11 @@ export function checkEnv(): EnvProblem[] {
     const feesKey = readFeesSecretKey();
     if (!feesKey.ok) problems.push({ key: "FEES_SECRET_KEY", message: feesKey.problem, fatal: isProd });
   }
+
+  // The company's own gateway account for paid sessions (decision 0004):
+  // a key id named is a promise of its sealed secret and a webhook secret.
+  // The names live in gig-gateway-env.ts, not here — see its header.
+  for (const problem of checkGigGatewayEnv(isDeployed())) problems.push(problem);
 
   // The same promise as the SMTP block: saying "twilio" and meaning it.
   if (smsTransport === "twilio") {

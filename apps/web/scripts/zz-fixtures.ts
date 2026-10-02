@@ -721,8 +721,17 @@ export async function buildGigSessions(northgate: { id: string }, southbank: { i
     const d = await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Olympiad maths, one to one", at(-3), 30, 1, 1);
     await seat(northgate.id, d.id, p1.id, expert.id, "ONE_TO_ONE", "UNHELD", by, yearN, "ZZ Help with last year's paper.");
   }
-  const b = await slot(expert.id, "EXPERT", null, "WORKSHOP", "ZZ Bridges: build one from paper", at(10), 60, 20, p2 ? 1 : 0);
+  const b = await slot(expert.id, "EXPERT", null, "WORKSHOP", "ZZ Bridges: build one from paper", at(10), 60, 20, (p2 ? 1 : 0) + (p1?.guardianships[0] ? 1 : 0));
   if (p2) await seat(northgate.id, b.id, p2.id, expert.id, "WORKSHOP", "CONFIRMED", p2.guardianships[0]?.parentUserId ?? expert.id, yearN, "ZZ She builds things from card at home.");
+  // A PAID seat for pupil 01 in the same workshop, bought by their guardian and on hold for the expert
+  // (decision 0004 as amended): the row the sweep reads GET /gigs/payments/{paymentId} with. The slot
+  // carries the price the seat was bought at; the expert's own gate is not asked for a fixture row.
+  const payer = p1?.guardianships[0]?.parentUserId ?? null;
+  if (p1 && payer) {
+    await db.gigSlot.update({ where: { id: b.id }, data: { pricePaise: 10000 } });
+    const paidSeat = await db.gigBooking.create({ data: { schoolId: northgate.id, slotId: b.id, studentMembershipId: p1.id, providerUserId: expert.id, kind: "WORKSHOP", status: "CONFIRMED", bookedByUserId: payer, purpose: "ZZ A second workshop past the free two: paid for.", academicYearId: yearN, consentAt: new Date(), consentUserId: payer, paid: true }, select: { id: true } });
+    await db.sessionPayment.create({ data: { bookingId: paidSeat.id, slotId: b.id, payerUserId: payer, expertUserId: expert.id, amountPaise: 10000, commissionPaise: 1500, orderId: `order_zzfixture${paidSeat.id.slice(-10)}`, paymentId: `pay_zzfixture${paidSeat.id.slice(-10)}`, transferId: `trf_zzfixture${paidSeat.id.slice(-10)}`, status: "HELD" } });
+  }
   await slot(expert.id, "EXPERT", null, "ONE_TO_ONE", "ZZ Careers in applied science", at(14), 30, 1, 0);
   if (lead) await slot(lead.teacher.userId, "TEACHER", northgate.id, "ONE_TO_ONE", "ZZ Reading aloud, a half hour", at(5, 9), 30, 1, 0);
   const southPupil = await db.membership.findFirst({ where: { schoolId: southbank.id, role: "STUDENT", status: "ACTIVE", leftAt: null }, orderBy: { id: "asc" }, select: { id: true, userId: true } });

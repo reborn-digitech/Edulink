@@ -1,6 +1,6 @@
 # 0004 — Gigs: work done for the platform, and what each pupil gets free
 
-Status: accepted (2026-09-30). Governs `apps/web/src/lib/gig-questions.ts`, the `Gig*` and `QuestionContribution` tables, and the `/api/v1/gigs`, `/api/v1/appadmin/contributions` and `/api/v1/operator/gigs` areas. Decision 0003 is unchanged and still governs school fees.
+Status: accepted (2026-09-30), amended 2026-10-02 (paid seats; see "Amendment of 2 October 2026" below). Governs `apps/web/src/lib/gig-questions.ts`, `gig-sessions.ts`, `gig-payments.ts` and `gig-gateway.ts`, the `Gig*`, `QuestionContribution`, `ExpertPayoutAccount`, `SessionPayment` and `ExpertPayout` tables, and the `/api/v1/gigs`, `/api/v1/expert/payout`, `/api/v1/expert/earnings`, `/api/v1/appadmin/contributions` and `/api/v1/operator/gigs` areas. Decision 0003 is unchanged and still governs school fees.
 
 ## Decision
 
@@ -13,8 +13,8 @@ Experts and teachers may do work through the platform that is first given free a
 | Who bears a pupil's free sessions | **The providers.** Each owes a standing free quota as the price of being listed; the company subsidises nothing. |
 | Where a session happens | **The provider's own meeting link.** The platform books, asks the guardian's consent, reminds, records delivery and takes payment. |
 | A pupil's free allowance | 2 one-to-ones and 2 workshop seats a year. |
-| An expert's free duty | The first 10 one-to-ones and 2 workshops; then 2 free one-to-ones a month and 1 free workshop a quarter. |
-| Price and commission | The expert sets a price within ₹150–600 for thirty minutes and ₹50–300 a workshop seat; 15 % commission, the gateway's fees paid out of it. |
+| An expert's free duty | ~~The first 10 one-to-ones and 2 workshops; then 2 free one-to-ones a month and 1 free workshop a quarter.~~ **Amended 2026-10-02:** keeps an open free one-to-one mentoring offer and has delivered the period's free one-to-ones (the counters above: the first 10, then 2 a month); the free workshops stay asked and shown, not a gate. |
+| Price and commission | ~~The expert sets a price within ₹150–600 for thirty minutes and~~ **Amended 2026-10-02: a one-to-one is never priced.** A workshop seat is ₹50–300 (the operator's band); 15 % commission, the gateway's fees paid out of it. |
 | When an expert is paid, and cancelling | Held until the session is marked delivered plus 48 hours; free cancellation to 12 hours before; an expert's no-show is refunded in full, a pupil's is not. |
 | Teachers' guidance | Their own school's pupils only, two half-hours a month asked, switched on by the school. |
 | **Questions for the bank** | **₹10 a question, paid only when the content team or the operator adds it to the question bank.** A teacher's first 20 added are unpaid; at most 200 a month are paid per teacher; all inside a monthly budget the operator sets (₹5,000 to begin). When a teacher's month or the budget is used up, adding waits for next month: nothing is added unpaid by surprise. Questions are sent in English, Hindi and Marathi, with a machine draft of the two offered for the teacher to correct. The operator pays monthly by UPI from the company's bank and records the reference. |
@@ -32,7 +32,7 @@ Experts and teachers may do work through the platform that is first given free a
 - A provider's free duty is counted and shown to them; nothing yet enforces it, there being nothing yet to charge for.
 - A confirmed seat in a session that starts within a day is reminded once to the pupil and their guardians, and the provider once for the slot, by the hourly job `gigs:remind`.
 
-**Not built:** paying for a session past the allowance (the gateway split, prices, the hold and release, refunds).
+**Built (2026-10-02): paid workshop seats** — see the amendment below for the rule, and `apps/web/src/lib/gig-payments.ts` for the money.
 
 **On the phone (2026-09-30).** Sessions is one route for every role: a pupil or a guardian books and answers, an expert (for whom it is a fourth tab) or a teacher offers, marks and cancels, and the office reads, cancels and turns the guidance switch. A teacher's questions are two screens, the list with their standing and where they are paid, and the question itself in three languages. The content team's review and the operator's dials and payments stay on the web.
 
@@ -46,7 +46,20 @@ Experts and teachers may do work through the platform that is first given free a
 6. **A minor does not book alone, and an outside adult reaches only the seat.** An expert reads their own bookings by their own user id and nothing of the school through them (`npm run rls:verify` asserts it); what they write to one the server writes under the school's binding after finding the booking to be theirs.
 7. **An import does not delete a teacher's work.** `quiz:import` removes from a chapter only the questions a file wrote; one made in the app (`source` "Shalaghar content team" or "teacher contribution", the constants in `src/lib/bank-source.ts`; "Relay content team" until 2 October 2026, rewritten by the migration `bank_source_shalaghar`) is left.
 
-## Before paid sessions
+## Amendment of 2 October 2026 — paid seats, and mentoring as the price of charging
+
+The owner decided on 2 October 2026 to build paid sessions now, behind an env switch and the devbox transport, the lawyer's opinion and the company's gateway account being the owner's to obtain. The rule that governs it, and what it changes in the table above:
+
+- **One-to-one mentoring is always free, and is the condition of charging, not the thing charged for.** The ₹150–600 one-to-one price line is struck: a one-to-one slot can never carry a price (`offerSlot` refuses it with `gigs.refuseOneToOnePriced`), whoever offers it.
+- **An expert may price a workshop seat only while** (a) their KYC is VERIFIED (`expert-kyc.ts` is the one truth), (b) they have an ACTIVE payout account — their own linked account at the company's gateway, linked after KYC — (c) they keep an open free one-to-one offer (a `GigSlot` or `ExpertSlot` window of kind one-to-one, free, in the coming 30 days), and (d) they have delivered the period's free one-to-ones per the free-duty counters. **The free duty becomes "keeps an open free mentoring offer and has delivered their free one-to-ones for the period"**; the free workshop quota stays asked of the expert and shown to them, and no longer gates a price. Each condition refuses by name (`paidGate` in `gig-sessions.ts`), and the expert's sessions page shows the four as a checklist.
+- **A workshop seat is ₹50–300** (`GigSettings.seatPriceMinPaise`/`seatPriceMaxPaise`, the operator's dials) with **15 % commission** (`commissionPercent`), the gateway's fee paid out of the commission.
+- **A pupil's free allowance is used first.** Past it a guardian pays at booking; a pupil's own ask on a paid seat waits for the guardian's consent AND payment (`PENDING_CONSENT` → `PENDING_PAYMENT` → `CONFIRMED`). An unpaid seat is given back after half an hour by the job.
+- **The money travels as decision 0003 would have it for the platform's own account:** one order at the company's Razorpay account carrying a Route transfer of the seat price less the commission to the expert's linked account, `on_hold`; the hold is released by the hourly job `gigs:release` once the seat is DELIVERED (or MISSED) plus 48 hours, grouped into one `ExpertPayout` per expert per run, the gateway's settlement id recorded when its webhook names it; free cancellation to 12 hours before (a full refund through the gateway with the transfer reversed); an expert's no-show (UNHELD) refunds in full; a pupil's no-show (MISSED) and a late cancellation pay the expert. Every state change is an audit row; the pupil's school's office is told as it is for a free seat.
+- **The kill switch** `GigSettings.paymentsEnabled`, the operator's on `/root/gigs`, is read by every paid path: off, no price is stored, no order made, no hold released; refunds still go through. On a deployed server with no `GATEWAY_PLATFORM_KEY_ID` the transport is "off" and the same holds.
+- **The company's gateway account** is `GATEWAY_PLATFORM_KEY_ID`, `GATEWAY_PLATFORM_SECRET_ENC` (sealed under `FEES_SECRET_KEY` by `npm run secret:seal`) and `GATEWAY_PLATFORM_WEBHOOK_SECRET`, read in `gig-gateway-env.ts` and spoken to only by `gig-gateway.ts`, whose own allow-list is the six Route calls (an order with a transfer, a payment's transfers, a transfer's release, a refund with reversal, a linked account made and read). `gateway.ts` and `tests/fees-invariants.test.ts` are untouched: school fees never come here.
+- **Untested against a real account:** the Route linked-account onboarding (what `POST /v2/accounts` answers, whether an onboarding page is returned, which webhook says "activated") and the real transfer/settlement webhooks. Everything is exercised under the devbox transport and the fake webhook signature (`tests/gig-payments.test.ts`).
+
+## Before paid sessions were built (kept as written on 2026-09-30)
 
 - A **new decision** for the gateway split, with its own invariants (the fees test forbids transfer and route calls in `gateway.ts` and model names beginning Platform, Wallet, Escrow, Nodal, Settlement or Payout; the gig gateway is its own module).
 - A **lawyer's opinion** on three things: that a split by a licensed aggregator keeps the company outside the payment-aggregator directions; how section 28 of the Right to Education Act bears on teachers' free guidance and on paid question-writing; and contracts with the guardians of minors.

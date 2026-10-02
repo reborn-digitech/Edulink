@@ -7,7 +7,7 @@ const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), param
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
 
 const PATH = "/api/v1/gigs/school";
-const BOOKING = { id: "b1", pupilName: "ZZ Asha", kind: "ONE_TO_ONE", title: "ZZ Ask an engineer", startsAt: "2030-10-07T10:00:00.000Z", providerName: "ZZ Dr Rao", providerKind: "EXPERT", status: "CONFIRMED", purpose: "ZZ How do bridges stand?", canCancel: true };
+const BOOKING = { id: "b1", pupilName: "ZZ Asha", kind: "ONE_TO_ONE", title: "ZZ Ask an engineer", startsAt: "2030-10-07T10:00:00.000Z", providerName: "ZZ Dr Rao", providerKind: "EXPERT", status: "CONFIRMED", purpose: "ZZ How do bridges stand?", paid: false, canCancel: true };
 const view = (over: Record<string, unknown> = {}) => gigSchoolSessionsSchema.parse({ guidanceOn: true, canSwitch: true, timeZone: "Asia/Kolkata", bookings: [BOOKING, { ...BOOKING, id: "b2", pupilName: "ZZ Bela", status: "DELIVERED", canCancel: false }], ...over });
 
 describe("the office's sessions", () => {

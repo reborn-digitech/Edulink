@@ -9,6 +9,8 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Chips, formatInstant, Note, Pill } from "@/screens/family/shared";
+import { money } from "@/screens/shared/fees";
+import { EarningsCard, GetPaidCard, PaidGateList } from "@/screens/expert/earnings";
 import { BOOKING_STATUS, ReasonThen, SESSION_KIND, type SessionKind } from "./gigs";
 
 /**
@@ -20,6 +22,10 @@ import { BOOKING_STATUS, ReasonThen, SESSION_KIND, type SessionKind } from "./gi
  *
  * The date and the hour are typed as the person's own wall clock, which the
  * phone knows; the server is sent the instant.
+ *
+ * An expert also sees the paid side (decision 0004 as amended): a seat's
+ * price on a workshop, allowed only past the four conditions shown as a
+ * checklist; where they are paid; and their earnings.
  */
 const KEY = ["gigs", "slots"] as const;
 type Job = { path: string; body?: Record<string, unknown>; done: string; reset?: boolean };
@@ -39,6 +45,7 @@ export function ProviderSessions() {
   const [minutes, setMinutes] = useState("60");
   const [seats, setSeats] = useState("20");
   const [link, setLink] = useState("");
+  const [price, setPrice] = useState("");
 
   const query = useQuery({ queryKey: KEY, queryFn: async () => gigProviderSchema.parse(unwrap(await api().get("/api/v1/gigs/slots"))) });
   const act = useMutation({
@@ -54,6 +61,7 @@ export function ProviderSessions() {
         setTitle("");
         setDate("");
         setTime("");
+        setPrice("");
       }
       void qc.invalidateQueries({ queryKey: KEY });
     },
@@ -70,9 +78,11 @@ export function ProviderSessions() {
       setError(t("gigs.refuseSlotTime"));
       return;
     }
-    act.mutate({ path: "/api/v1/gigs/slots", body: { kind, title, startsAt: at.toISOString(), meetingUrl: link, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats) } : {}) }, done: t("gigs.offered"), reset: true });
+    const rupees = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
+    act.mutate({ path: "/api/v1/gigs/slots", body: { kind, title, startsAt: at.toISOString(), meetingUrl: link, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats), ...(rupees > 0 ? { pricePaise: rupees } : {}) } : {}) }, done: t("gigs.offered"), reset: true });
   };
   const d = query.data;
+  const gate = d?.gate ?? null;
   const when = (iso: string) => formatInstant(iso, locale, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, d?.timeZone);
 
   return (
@@ -120,10 +130,22 @@ export function ProviderSessions() {
               <>
                 <Field label={t("gigs.slotMinutes")} value={minutes} onChangeText={setMinutes} keyboardType="number-pad" />
                 <Field label={t("gigs.slotSeats")} value={seats} onChangeText={setSeats} keyboardType="number-pad" />
+                {gate ? <Field label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: money(gate.seatPriceMinPaise, locale), max: money(gate.seatPriceMaxPaise, locale), percent: gate.commissionPercent })} value={price} onChangeText={setPrice} keyboardType="decimal-pad" editable={gate.canCharge} /> : null}
               </>
             ) : null}
             <Field label={t("gigs.slotLink")} hint={t("gigs.slotLinkHint")} value={link} onChangeText={setLink} autoCapitalize="none" keyboardType="url" maxLength={500} />
             <Button label={t("gigs.offer")} busy={running("/api/v1/gigs/slots")} onPress={offer} />
+            {gate ? (
+              <View style={{ gap: th.space[1], padding: th.space[3], borderRadius: th.radius.md, backgroundColor: th.surfaceMuted }}>
+                <Text variant="sm" bold>
+                  {t("gigs.gateTitle")}
+                </Text>
+                <Text variant="xs" tone="muted">
+                  {t("gigs.gateIntro")}
+                </Text>
+                <PaidGateList gate={gate} />
+              </View>
+            ) : null}
           </Card>
 
           <Card title={t("gigs.yourSlots")}>
@@ -138,7 +160,7 @@ export function ProviderSessions() {
                     {s.title}
                   </Text>
                   <Text variant="xs" tone="muted">
-                    {[t(SESSION_KIND[s.kind]), when(s.startsAt), t("gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats })].join(" · ")}
+                    {[t(SESSION_KIND[s.kind]), when(s.startsAt), t("gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats }), s.pricePaise > 0 ? t("gigs.seatPrice", { amount: money(s.pricePaise, locale) }) : null].filter(Boolean).join(" · ")}
                   </Text>
                   {s.cancelled ? <Pill label={t("gigs.slotIsCancelled")} /> : null}
                   {!s.cancelled && !s.started ? <ReasonThen label={t("gigs.cancelSlot")} about={s.title} busy={running(`/api/v1/gigs/slots/${s.id}/cancel`)} onSubmit={(reason) => act.mutate({ path: `/api/v1/gigs/slots/${s.id}/cancel`, body: { reason }, done: t("gigs.slotCancelled") })} /> : null}
@@ -150,14 +172,17 @@ export function ProviderSessions() {
                       <Text variant="xs" tone="muted">
                         {b.purpose}
                       </Text>
-                      <Pill label={t(BOOKING_STATUS[b.status].label)} tone={BOOKING_STATUS[b.status].tone} />
+                      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[1] }}>
+                        {b.paid ? <Pill label={t("gigs.paidSeat")} tone="accent" /> : null}
+                        <Pill label={t(BOOKING_STATUS[b.status].label)} tone={BOOKING_STATUS[b.status].tone} />
+                      </View>
                       {b.status === "CONFIRMED" && s.started ? (
                         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
                           <Button label={t("gigs.markDelivered")} accessibilityLabel={[t("gigs.markDelivered"), b.pupilName].join(": ")} busy={running(`/api/v1/gigs/sessions/${b.id}/close`) && act.variables?.body?.outcome === "DELIVERED"} onPress={() => act.mutate({ path: `/api/v1/gigs/sessions/${b.id}/close`, body: { outcome: "DELIVERED" }, done: t("gigs.marked") })} />
                           <Button label={t("gigs.markMissed")} variant="secondary" accessibilityLabel={[t("gigs.markMissed"), b.pupilName].join(": ")} onPress={() => act.mutate({ path: `/api/v1/gigs/sessions/${b.id}/close`, body: { outcome: "MISSED" }, done: t("gigs.marked") })} />
                         </View>
                       ) : null}
-                      {(b.status === "CONFIRMED" || b.status === "PENDING_CONSENT") && !s.started ? (
+                      {(b.status === "CONFIRMED" || b.status === "PENDING_CONSENT" || b.status === "PENDING_PAYMENT") && !s.started ? (
                         <ReasonThen label={t("gigs.cancelSeat")} about={b.pupilName} busy={running(`/api/v1/gigs/sessions/${b.id}/cancel`)} onSubmit={(reason) => act.mutate({ path: `/api/v1/gigs/sessions/${b.id}/cancel`, body: { reason }, done: t("gigs.slotCancelled") })} />
                       ) : null}
                       {b.rating !== null ? (
@@ -171,6 +196,12 @@ export function ProviderSessions() {
               ))
             )}
           </Card>
+          {d.kind === "EXPERT" ? (
+            <>
+              <GetPaidCard />
+              <EarningsCard />
+            </>
+          ) : null}
         </>
       ) : null}
     </Screen>

@@ -5,12 +5,15 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
+import { formatPaise } from "@edulink/i18n";
+import type { PaidGate } from "@/lib/gig-sessions";
 import { cancelSeatAction, cancelSlotAction, closeSeatAction, offerSlotAction } from "@/app/(app)/sessions/actions";
 
-/** A provider offers a time: a one-to-one of thirty minutes, or (an expert) a workshop with its length and seats. */
-export function OfferForm({ workshops, maxSeats }: { workshops: boolean; maxSeats: number }) {
+/** A provider offers a time: a one-to-one of thirty minutes, or (an expert) a workshop with its length, seats and — past the paid gate — a seat's price. */
+export function OfferForm({ workshops, maxSeats, gate = null }: { workshops: boolean; maxSeats: number; gate?: PaidGate | null }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -20,7 +23,9 @@ export function OfferForm({ workshops, maxSeats }: { workshops: boolean; maxSeat
   const [minutes, setMinutes] = useState("60");
   const [seats, setSeats] = useState("20");
   const [meetingUrl, setMeetingUrl] = useState("");
+  const [price, setPrice] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const rupeesTyped = price.trim() === "" ? 0 : Math.round(Number(price) * 100);
 
   return (
     <form
@@ -32,11 +37,12 @@ export function OfferForm({ workshops, maxSeats }: { workshops: boolean; maxSeat
         const at = new Date(starts);
         if (!starts || Number.isNaN(at.getTime())) return setError(t("gigs.refuseSlotTime"));
         startTransition(async () => {
-          const result = await offerSlotAction({ kind, title, startsAt: at.toISOString(), meetingUrl, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats) } : {}) });
+          const result = await offerSlotAction({ kind, title, startsAt: at.toISOString(), meetingUrl, ...(kind === "WORKSHOP" ? { minutes: Number(minutes), seats: Number(seats), ...(gate && rupeesTyped > 0 ? { pricePaise: rupeesTyped } : {}) } : {}) });
           if (!result.ok) return setError(result.error);
           toast({ tone: "ok", title: t("gigs.offered") });
           setTitle("");
           setStarts("");
+          setPrice("");
           router.refresh();
         });
       }}
@@ -63,6 +69,11 @@ export function OfferForm({ workshops, maxSeats }: { workshops: boolean; maxSeat
           <div className="grid grid-cols-2 gap-3" data-typing="en">
             <TextField label={t("gigs.slotMinutes")} inputMode="numeric" value={minutes} onChange={(e) => setMinutes(e.target.value)} data-testid="slot-minutes" />
             <TextField label={t("gigs.slotSeats")} hint={["2", String(maxSeats)].join("–")} inputMode="numeric" value={seats} onChange={(e) => setSeats(e.target.value)} data-testid="slot-seats" />
+          </div>
+        )}
+        {kind === "WORKSHOP" && gate && (
+          <div className="sm:col-span-2" data-typing="en">
+            <TextField label={t("gigs.priceLabel")} hint={t("gigs.priceHint", { min: formatPaise(gate.seatPriceMinPaise, locale), max: formatPaise(gate.seatPriceMaxPaise, locale), percent: gate.commissionPercent })} inputMode="decimal" value={price} disabled={!gate.canCharge} onChange={(e) => setPrice(e.target.value)} data-testid="slot-price" />
           </div>
         )}
         <div className="sm:col-span-2" data-typing="en">

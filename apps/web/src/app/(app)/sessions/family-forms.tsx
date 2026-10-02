@@ -5,11 +5,30 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextAreaField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import { useT } from "@/lib/i18n";
-import { bookSeatAction, cancelSeatAction, consentAction, rateAction, unheldAction } from "./actions";
+import { useLocale, useT } from "@/lib/i18n";
+import { formatPaise } from "@edulink/i18n";
+import type { GigCheckout } from "@edulink/contracts";
+import { SeatCheckout } from "@/components/gigs/seat-checkout";
+import { bookSeatAction, cancelSeatAction, consentAction, rateAction, seatCheckoutAction, unheldAction } from "./actions";
 
-/** A seat in an open time: what the pupil wants from it, then the ask (a pupil) or the booking (a guardian). */
-export function BookSeat({ slotId, childId, byGuardian, title }: { slotId: string; childId: string; byGuardian: boolean; title: string }) {
+/** A checkout the phone started, picked up on the web where the gateway's script runs. */
+export function ResumeCheckout({ paymentId }: { paymentId: string }) {
+  const router = useRouter();
+  const [open, setOpen] = useState(true);
+  if (!open) return null;
+  return (
+    <SeatCheckout
+      paymentId={paymentId}
+      onClose={() => {
+        setOpen(false);
+        router.replace("/sessions");
+      }}
+    />
+  );
+}
+
+/** A seat in an open time: what the pupil wants from it, then the ask (a pupil) or the booking (a guardian) — and, for a paid seat, the payment. */
+export function BookSeat({ slotId, childId, byGuardian, title, priceLabel = null }: { slotId: string; childId: string; byGuardian: boolean; title: string; /** "Pay ₹100" when this pupil's seat would be a paid one; null for a free seat. */ priceLabel?: string | null }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -17,8 +36,20 @@ export function BookSeat({ slotId, childId, byGuardian, title }: { slotId: strin
   const [open, setOpen] = useState(false);
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const verb = byGuardian ? t("gigs.bookSeat") : t("gigs.askSeat");
+  const [checkout, setCheckout] = useState<GigCheckout | null>(null);
+  const verb = byGuardian ? (priceLabel ?? t("gigs.bookSeat")) : t("gigs.askSeat");
 
+  if (checkout)
+    return (
+      <SeatCheckout
+        checkout={checkout}
+        onClose={() => {
+          setCheckout(null);
+          setOpen(false);
+          router.refresh();
+        }}
+      />
+    );
   if (!open)
     return (
       <Button type="button" variant="secondary" size="sm" onClick={() => setOpen(true)} aria-label={[verb, title].join(": ")} data-testid="session-book-open">
@@ -34,6 +65,7 @@ export function BookSeat({ slotId, childId, byGuardian, title }: { slotId: strin
         startTransition(async () => {
           const result = await bookSeatAction({ slotId, studentMembershipId: childId, purpose });
           if (!result.ok) return setError(result.error);
+          if (result.checkout) return setCheckout(result.checkout);
           toast({ tone: "ok", title: result.status === "CONFIRMED" ? t("gigs.booked") : t("gigs.asked") });
           setOpen(false);
           router.refresh();
@@ -51,14 +83,16 @@ export function BookSeat({ slotId, childId, byGuardian, title }: { slotId: strin
 }
 
 /** What a family may still do with a seat: agree or decline, give it up, say it was not held, or rate it. */
-export function SeatActions({ bookingId, title, canConsent, canCancel, canRate, canReportUnheld, confirmed, lateHours }: { bookingId: string; title: string; canConsent: boolean; canCancel: boolean; canRate: boolean; canReportUnheld: boolean; confirmed: boolean; lateHours: number }) {
+export function SeatActions({ bookingId, title, canConsent, canPay = false, payAmount = 0, canCancel, canRate, canReportUnheld, confirmed, lateHours }: { bookingId: string; title: string; canConsent: boolean; canPay?: boolean; payAmount?: number; canCancel: boolean; canRate: boolean; canReportUnheld: boolean; confirmed: boolean; lateHours: number }) {
   const t = useT();
+  const locale = useLocale();
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [rating, setRating] = useState("5");
   const [feedback, setFeedback] = useState("");
+  const [checkout, setCheckout] = useState<GigCheckout | null>(null);
   const act = (work: () => Promise<{ ok: true } | { ok: false; error: string }>, done: string | ((r: unknown) => string)) => {
     setError(null);
     startTransition(async () => {
@@ -68,7 +102,34 @@ export function SeatActions({ bookingId, title, canConsent, canCancel, canRate, 
       router.refresh();
     });
   };
-  if (!canConsent && !canCancel && !canRate && !canReportUnheld) return null;
+  if (!canConsent && !canPay && !canCancel && !canRate && !canReportUnheld) return null;
+  if (checkout)
+    return (
+      <SeatCheckout
+        checkout={checkout}
+        onClose={() => {
+          setCheckout(null);
+          router.refresh();
+        }}
+      />
+    );
+  // A paid seat agreed to hands back the order: the panel opens in place of the toast.
+  const consentPaid = () =>
+    startTransition(async () => {
+      setError(null);
+      const result = await consentAction(bookingId, true);
+      if (!result.ok) return setError(result.error);
+      if (result.checkout) return setCheckout(result.checkout);
+      toast({ tone: "ok", title: t("gigs.consented") });
+      router.refresh();
+    });
+  const pay = () =>
+    startTransition(async () => {
+      setError(null);
+      const result = await seatCheckoutAction(bookingId);
+      if (!result.ok) return setError(result.error);
+      setCheckout(result.checkout);
+    });
 
   return (
     <div className="w-full space-y-2" data-testid="session-actions">
@@ -78,9 +139,14 @@ export function SeatActions({ bookingId, title, canConsent, canCancel, canRate, 
         </p>
       )}
       <div className="flex flex-wrap items-center gap-2">
+        {canPay && (
+          <Button type="button" size="sm" disabled={pending} onClick={pay} aria-label={[t("gigs.payNow", { amount: formatPaise(payAmount, locale) }), title].join(": ")} data-testid="session-pay">
+            {t("gigs.payNow", { amount: formatPaise(payAmount, locale) })}
+          </Button>
+        )}
         {canConsent && (
           <>
-            <Button type="button" size="sm" disabled={pending} onClick={() => act(() => consentAction(bookingId, true), t("gigs.consented"))} aria-label={[t("gigs.consentYes"), title].join(": ")} data-testid="session-consent-yes">
+            <Button type="button" size="sm" disabled={pending} onClick={consentPaid} aria-label={[t("gigs.consentYes"), title].join(": ")} data-testid="session-consent-yes">
               {t("gigs.consentYes")}
             </Button>
             <Button type="button" size="sm" variant="secondary" disabled={pending} onClick={() => act(() => consentAction(bookingId, false), t("gigs.declined"))} aria-label={[t("gigs.consentNo"), title].join(": ")} data-testid="session-consent-no">

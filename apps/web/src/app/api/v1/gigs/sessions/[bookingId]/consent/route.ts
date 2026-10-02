@@ -13,7 +13,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ boo
     if (!parsed.success) return apiInvalid(parsed);
     const result = await consentToBooking(ctx, bookingId, parsed.data.approve);
     if (!result.ok) return refused(result.errorKey, result.vars);
-    return ok(gigBookingStatusSetSchema.parse({ status: result.status }));
+    return ok(gigBookingStatusSetSchema.parse({ status: result.status, checkout: result.checkout }));
   } catch (error) {
     return apiFailure(error, "api/v1/gigs/sessions/[bookingId]/consent");
   }

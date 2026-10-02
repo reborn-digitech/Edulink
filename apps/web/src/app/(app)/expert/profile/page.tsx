@@ -4,11 +4,13 @@ import { ChartLineUpIcon, ListChecksIcon, SealCheckIcon, StarIcon, UserIcon } fr
 import { requireExpert, AccessError } from "@/lib/tenancy";
 import { getOwnProfile, ownImpact } from "@/lib/experts";
 import { calendarTokenUrl, readKyc } from "@/lib/expert-kyc";
+import { expertPayoutStanding } from "@/lib/gig-sessions";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProfileForm } from "./profile-form";
 import { KycCard } from "./kyc-card";
 import { CalendarCard } from "./calendar-card";
+import { GetPaidCard } from "./get-paid-card";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -33,12 +35,13 @@ export default async function ExpertProfilePage() {
   const t = await getT();
   const session = await requireExpert();
 
-  let profile, impact, kyc, calendar;
+  let profile, impact, kyc, calendar, payout;
   try {
     profile = await getOwnProfile(session);
     impact = await ownImpact(session);
     kyc = await readKyc(session);
     calendar = await calendarTokenUrl(session);
+    payout = await expertPayoutStanding(session);
   } catch (error) {
     // An EXPERT session with no ExpertProfile row should not exist, but a 500
     // is the wrong way to find out. Same answer the other pages give.
@@ -135,6 +138,8 @@ export default async function ExpertProfilePage() {
       </Card>
 
       <KycCard initial={kyc} />
+
+      <GetPaidCard initial={payout} />
 
       <CalendarCard initialUrl={calendar.url} />
 

@@ -72,7 +72,7 @@ async function reportCardFixture(s: string): Promise<{ reportCardId: string | nu
 const SWEEP_PNG = `data:image/png;base64,${fixturePng(32, 16).toString("base64")}`;
 
 /** The ZZ certificates: an active template (and its body to send back), a retired one, an issued certificate, one still to revoke, and a printed code. */
-async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null; gigContributionId: string | null; gigWithdrawnContributionId: string | null; gigBookingId: string | null; gigUnheldBookingId: string | null; gigSlotId: string | null }> {
+async function certificateFixture(s: string): Promise<{ certificateTemplateId: string | null; certificateTemplate: Record<string, unknown> | null; retiredTemplateId: string | null; certificateId: string | null; revocableCertificateId: string | null; certificateCode: string | null; cancelledCertificateRequestId: string | null; declinedCertificateRequestId: string | null; penNumber: string | null; penChangeId: string | null; penChangeToPen: string | null; recordChangeId: string | null; paperSignatureId: string | null; otherPupilSignatureId: string | null; signaturePng: string | null; gigContributionId: string | null; gigWithdrawnContributionId: string | null; gigBookingId: string | null; gigUnheldBookingId: string | null; gigSlotId: string | null; gigPaymentId: string | null }> {
   const [active, retired, issued, revocable] = await Promise.all([
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: true, kind: "BONAFIDE" }, orderBy: { createdAt: "asc" } }),
     db.certificateTemplate.findFirst({ where: { schoolId: s, active: false }, orderBy: { createdAt: "asc" }, select: { id: true } }),
@@ -104,10 +104,12 @@ async function certificateFixture(s: string): Promise<{ certificateTemplateId: s
   const gigSeats = await db.gigBooking.findMany({ where: { schoolId: s, slot: { title: { startsWith: "ZZ " } }, status: { in: ["CONFIRMED", "UNHELD"] } }, orderBy: { id: "asc" }, select: { id: true, slotId: true, status: true, student: { select: { user: { select: { email: true } } } } } });
   const gigSeat = gigSeats.find((b) => b.status === "CONFIRMED" && b.student.user.email === "zz.pupil01@zz.test") ?? gigSeats.find((b) => b.status === "CONFIRMED") ?? null;
   const gigUnheld = gigSeats.find((b) => b.status === "UNHELD") ?? null;
+  // A paid seat's payment on hold, paid by the sweep's parent (zz-fixtures.ts `buildGigSessions`).
+  const gigPayment = await db.sessionPayment.findFirst({ where: { status: "HELD", payer: { email: "zz.parent01@zz.test" }, booking: { schoolId: s } }, orderBy: { id: "asc" }, select: { id: true } });
   const paperSignature = await db.paperSignature.findFirst({ where: { schoolId: s, status: { not: "PENDING" }, slot: { in: ["LEFT", "RIGHT"] } }, orderBy: { id: "asc" }, select: { id: true } });
   // A signed line on another pupil's certificate (zz-fixtures.ts `buildSignatures`): what the sweep's pupil and parent must be refused.
   const otherPupilSignature = await db.paperSignature.findFirst({ where: { schoolId: s, paperKind: "CERTIFICATE", status: "SIGNED", slot: "LEFT", paperId: { in: (await db.issuedCertificate.findMany({ where: { schoolId: s, student: { user: { email: { not: "zz.pupil01@zz.test" } } } }, select: { id: true } })).map((c) => c.id) } }, orderBy: { id: "asc" }, select: { id: true } });
-  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG, gigContributionId: gig("SUBMITTED"), gigWithdrawnContributionId: gig("WITHDRAWN"), gigBookingId: gigSeat?.id ?? null, gigUnheldBookingId: gigUnheld?.id ?? null, gigSlotId: gigSeat?.slotId ?? null };
+  return { certificateTemplateId: active?.id ?? null, certificateTemplate: body, retiredTemplateId: retired?.id ?? null, certificateId: issued?.id ?? null, revocableCertificateId: revocable?.id ?? null, certificateCode: issued?.code ?? null, cancelledCertificateRequestId: cancelled?.id ?? null, declinedCertificateRequestId: declined?.id ?? null, penNumber: pen?.penNumber ?? null, penChangeId: penChange?.id ?? null, penChangeToPen: penChange?.toPen ?? null, recordChangeId: recordChange?.id ?? null, paperSignatureId: paperSignature?.id ?? null, otherPupilSignatureId: otherPupilSignature?.id ?? null, signaturePng: SWEEP_PNG, gigContributionId: gig("SUBMITTED"), gigWithdrawnContributionId: gig("WITHDRAWN"), gigBookingId: gigSeat?.id ?? null, gigUnheldBookingId: gigUnheld?.id ?? null, gigSlotId: gigSeat?.slotId ?? null, gigPaymentId: gigPayment?.id ?? null };
 }
 
 /** The ZZ admissions: the open cycle and its body, the closed one, the sweep parent's application (the same guardian `actors()` picks) and one in each settled state. */
@@ -328,9 +330,9 @@ async function actors(): Promise<Record<Role, string>> {
  * answer 403 to every permitted role and the sweep must expect that rather
  * than 200 — run 178 on Gandhi Jayanti (2 October 2026) found the second.
  */
+const CLOSED_DAY_DOORS = ["/api/v1/staff/attendance/check-in", "/api/v1/office/substitutions"];
 const CLOSING_KINDS = (Object.keys(HOLIDAY_KIND_META) as HolidayKind[]).filter((k) => HOLIDAY_KIND_META[k].closesSchool);
 let checkInClosedToday = false;
-const CLOSED_DAY_DOORS = ["/api/v1/staff/attendance/check-in", "/api/v1/office/substitutions"];
 async function readCheckInClosure(slug = "zz-northgate-school"): Promise<void> {
   const school = await db.school.findUniqueOrThrow({ where: { slug }, select: { id: true, timezone: true, teachingDays: true } });
   const key = new Intl.DateTimeFormat("en-CA", { timeZone: school.timezone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());

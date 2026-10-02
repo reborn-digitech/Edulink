@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { recordGigPaymentAction, saveGigSettingsAction } from "./actions";
+import { recordGigPaymentAction, retryPaymentAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
 
 export type Dial = { key: string; label: string; value: number; /** Shown in rupees, kept in paise. */ rupees?: boolean };
 
@@ -91,5 +91,78 @@ export function PaymentForm({ userId, name, disabled }: { userId: string; name: 
         </Button>
       </div>
     </form>
+  );
+}
+
+/** Paid seats on or off: one button, the opposite of what stands. */
+export function PaymentsSwitch({ on }: { on: boolean }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  return (
+    <div className="flex flex-wrap items-center gap-3" data-testid="gig-payments-switch" data-on={on ? "yes" : "no"}>
+      <span className="text-sm font-medium text-fg">{on ? t("gigs.opSwitchOn") : t("gigs.opSwitchOff")}</span>
+      <Button
+        type="button"
+        size="sm"
+        variant={on ? "danger" : "primary"}
+        disabled={pending}
+        onClick={() =>
+          startTransition(async () => {
+            setError(null);
+            const result = await switchPaymentsAction(!on);
+            if (!result.ok) return setError(result.error);
+            toast({ tone: "ok", title: result.message });
+            router.refresh();
+          })
+        }
+        data-testid="gig-payments-toggle"
+      >
+        {on ? t("gigs.opTurnOff") : t("gigs.opTurnOn")}
+      </Button>
+      {error && (
+        <span role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </span>
+      )}
+    </div>
+  );
+}
+
+/** A waiting release or refund, tried now. */
+export function RetryPayment({ paymentId }: { paymentId: string }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  return (
+    <span className="inline-flex items-center gap-2">
+      <Button
+        type="button"
+        size="sm"
+        variant="secondary"
+        disabled={pending}
+        onClick={() =>
+          startTransition(async () => {
+            setError(null);
+            const result = await retryPaymentAction(paymentId);
+            if (!result.ok) return setError(result.error);
+            toast({ tone: "ok", title: result.message });
+            router.refresh();
+          })
+        }
+        data-testid="gig-payment-retry"
+      >
+        {t("gigs.opRetry")}
+      </Button>
+      {error && (
+        <span role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </span>
+      )}
+    </span>
   );
 }

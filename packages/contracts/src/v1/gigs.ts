@@ -176,7 +176,120 @@ export const gigPaymentSchema = z.object({ payment: z.object({ id, amountPaise: 
 /* ---------------------------------------------------------------------- */
 
 export const gigSessionKindSchema = z.enum(["ONE_TO_ONE", "WORKSHOP"]);
-export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"]);
+export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"]);
+export type GigBookingStatus = z.infer<typeof gigBookingStatusSchema>;
+
+/* ---- paid seats (decision 0004, amended 2026-10-02) ---- */
+
+export const gigGatewayTransportSchema = z.enum(["devbox", "razorpay", "off"]);
+export const gigPayoutStatusSchema = z.enum(["NONE", "PENDING", "ACTIVE"]);
+export const gigSessionPaymentStatusSchema = z.enum(["INITIATED", "PAID", "HELD", "RELEASED", "REFUNDED", "FAILED"]);
+
+/** Whether an expert may price a workshop seat, condition by condition, and the band and share the operator set. */
+export const gigPaidGateSchema = z.object({
+  paymentsOn: z.boolean(),
+  kycVerified: z.boolean(),
+  payoutActive: z.boolean(),
+  mentoringOffer: z.boolean(),
+  dutyDone: z.boolean(),
+  oneToOnesOwed: z.number().int(),
+  canCharge: z.boolean(),
+  seatPriceMinPaise: z.number().int(),
+  seatPriceMaxPaise: z.number().int(),
+  commissionPercent: z.number().int(),
+});
+export type GigPaidGate = z.infer<typeof gigPaidGateSchema>;
+
+/** The order a guardian pays: the gateway's order and key, what it is for, and which transport the panel should use. */
+export const gigCheckoutSchema = z.object({
+  paymentId: id,
+  bookingId: id,
+  orderId: z.string(),
+  keyId: z.string(),
+  amountPaise: z.number().int(),
+  currency: z.literal("INR"),
+  transport: gigGatewayTransportSchema,
+  title: z.string(),
+  pupilName: z.string(),
+  payerName: z.string(),
+  payerEmail: z.string().nullable(),
+});
+export type GigCheckout = z.infer<typeof gigCheckoutSchema>;
+
+/** GET /api/v1/gigs/payments/{paymentId} — the payer's own payment, with the checkout while it waits. */
+export const gigPaymentStatusSchema = z.object({
+  paymentId: id,
+  bookingId: id,
+  status: gigSessionPaymentStatusSchema,
+  amountPaise: z.number().int(),
+  bookingStatus: gigBookingStatusSchema,
+  refundedAt: z.string().nullable(),
+  reason: z.string().nullable(),
+  checkout: gigCheckoutSchema.nullable(),
+});
+export type GigPaymentStatus = z.infer<typeof gigPaymentStatusSchema>;
+
+/** POST /api/v1/gigs/sessions/{bookingId}/checkout — the order for a seat waiting for payment, the same one while it stands. */
+export const gigCheckoutMadeSchema = z.object({ checkout: gigCheckoutSchema });
+
+/** POST /api/v1/gigs/payments/{paymentId}/confirm — the checkout's handler signature, a fallback for a slow webhook. */
+export const gigCheckoutConfirmBodySchema = z.object({ gatewayPaymentId: z.string().max(80), signature: z.string().max(200) });
+export const gigCheckoutConfirmedSchema = z.object({ outcome: z.string(), bookingId: id.nullable() });
+
+/** GET /api/v1/expert/payout — where the expert is paid, and the four conditions. */
+export const expertPayoutSchema = z.object({
+  payout: z.object({ status: gigPayoutStatusSchema, linkedAccountId: z.string().nullable(), onboardingUrl: z.string().nullable(), note: z.string().nullable(), transport: gigGatewayTransportSchema }),
+  gate: gigPaidGateSchema,
+});
+export type ExpertPayout = z.infer<typeof expertPayoutSchema>;
+
+/** GET /api/v1/expert/earnings — seat by seat and payout by payout. */
+export const expertEarningsSchema = z.object({
+  heldPaise: z.number().int(),
+  releasedPaise: z.number().int(),
+  refundedPaise: z.number().int(),
+  rows: z.array(
+    z.object({
+      paymentId: id,
+      bookingId: id,
+      title: z.string(),
+      startsAt: z.string(),
+      schoolName: z.string(),
+      amountPaise: z.number().int(),
+      commissionPaise: z.number().int(),
+      netPaise: z.number().int(),
+      status: gigSessionPaymentStatusSchema,
+      holdUntil: z.string().nullable(),
+      releasedAt: z.string().nullable(),
+      refundedAt: z.string().nullable(),
+      settlementId: z.string().nullable(),
+      reason: z.string().nullable(),
+    }),
+  ),
+  payouts: z.array(z.object({ id, amountPaise: z.number().int(), transfers: z.number().int(), status: z.string(), settlementId: z.string().nullable(), createdAt: z.string() })),
+});
+export type ExpertEarnings = z.infer<typeof expertEarningsSchema>;
+
+/** GET /api/v1/operator/gigs/payouts — the switch, the month's commission, what is on hold, what failed, and the payouts made. */
+export const gigPayoutsSchema = z.object({
+  paymentsEnabled: z.boolean(),
+  transport: gigGatewayTransportSchema,
+  month: z.string(),
+  commissionThisMonthPaise: z.number().int(),
+  heldPaise: z.number().int(),
+  releasedThisMonthPaise: z.number().int(),
+  refundedThisMonthPaise: z.number().int(),
+  failures: z.array(z.object({ paymentId: id, expertName: z.string(), amountPaise: z.number().int(), action: z.enum(["RELEASE", "REFUND", "ATTACH"]), lastError: z.string().nullable(), attempts: z.number().int(), since: z.string() })),
+  payouts: z.array(z.object({ id, expertName: z.string(), amountPaise: z.number().int(), transfers: z.number().int(), status: z.string(), settlementId: z.string().nullable(), createdAt: z.string() })),
+});
+export type GigPayouts = z.infer<typeof gigPayoutsSchema>;
+
+/** POST /api/v1/operator/gigs/payouts/switch — the kill switch. */
+export const gigPaymentsSwitchBodySchema = z.object({ on: z.boolean() });
+export const gigPaymentsSwitchedSchema = z.object({ paymentsEnabled: z.boolean() });
+
+/** POST /api/v1/operator/gigs/payouts/{paymentId}/retry — a waiting release or refund tried now. */
+export const gigPayoutRetriedSchema = z.object({ outcome: z.string() });
 export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER"]);
 const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.number().int(), left: z.number().int() });
 
@@ -184,6 +297,8 @@ const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.numb
 export const gigFamilySessionsSchema = z.object({
   /** A confirmed seat given up inside this many hours of the start still counts against the allowance. */
   freeCancelHours: z.number().int(),
+  /** The operator's switch: a priced seat past the allowance can be bought. */
+  paymentsOn: z.boolean(),
   children: z.array(
     z.object({
       id,
@@ -206,13 +321,18 @@ export const gigFamilySessionsSchema = z.object({
           meetingUrl: z.string().nullable(),
           lateCancel: z.boolean(),
           rating: z.number().int().nullable(),
+          /** Bought past the allowance, and where its money stands. */
+          paid: z.boolean(),
+          pricePaise: z.number().int(),
+          payment: z.object({ paymentId: id, status: gigSessionPaymentStatusSchema, amountPaise: z.number().int(), refundedAt: z.string().nullable() }).nullable(),
           canConsent: z.boolean(),
+          canPay: z.boolean(),
           canCancel: z.boolean(),
           canRate: z.boolean(),
           canReportUnheld: z.boolean(),
         }),
       ),
-      open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable() })),
+      open: z.array(z.object({ id, kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), endsAt: z.string(), seatsLeft: z.number().int(), providerName: z.string(), providerKind: gigProviderKindSchema, providerHeadline: z.string().nullable(), pricePaise: z.number().int(), freeSeat: z.boolean() })),
     }),
   ),
 });
@@ -220,11 +340,11 @@ export type GigFamilySessions = z.infer<typeof gigFamilySessionsSchema>;
 
 /** POST /api/v1/gigs/sessions/book — a pupil asks for a seat (it waits for a guardian), or a guardian takes one for their child. */
 export const gigBookBodySchema = z.object({ slotId: id, studentMembershipId: id.nullable().optional(), purpose: z.string().max(500) });
-export const gigBookedSchema = z.object({ bookingId: id, status: gigBookingStatusSchema });
+export const gigBookedSchema = z.object({ bookingId: id, status: gigBookingStatusSchema, /** A paid seat a guardian took: the order to pay now. */ checkout: gigCheckoutSchema.nullable() });
 
 /** POST /api/v1/gigs/sessions/{bookingId}/consent — a guardian's yes or no to their child's ask. */
 export const gigConsentBodySchema = z.object({ approve: z.boolean() });
-export const gigBookingStatusSetSchema = z.object({ status: gigBookingStatusSchema });
+export const gigBookingStatusSetSchema = z.object({ status: gigBookingStatusSchema, /** A paid seat agreed to: the order the guardian pays now. */ checkout: gigCheckoutSchema.nullable().optional() });
 
 /** POST /api/v1/gigs/sessions/{bookingId}/cancel — a seat given up; the reason may be empty for the family and is needed from anybody else. */
 export const gigCancelBodySchema = z.object({ reason: z.string().max(300) });
@@ -242,6 +362,8 @@ export const gigProviderSchema = z.object({
   kind: gigProviderKindSchema,
   timeZone: z.string(),
   duty: z.object({ deliveredOneToOnes: z.number().int(), heldWorkshops: z.number().int(), oneToOnesThisMonth: z.number().int(), workshopsThisQuarter: z.number().int(), startOneToOnes: z.number().int(), startWorkshops: z.number().int(), monthlyOneToOnes: z.number().int(), quarterlyWorkshops: z.number().int() }).nullable(),
+  /** An expert's standing to price a workshop seat; null for a teacher. */
+  gate: gigPaidGateSchema.nullable(),
   slots: z.array(
     z.object({
       id,
@@ -252,16 +374,17 @@ export const gigProviderSchema = z.object({
       meetingUrl: z.string(),
       seats: z.number().int(),
       seatsTaken: z.number().int(),
+      pricePaise: z.number().int(),
       cancelled: z.boolean(),
       started: z.boolean(),
-      bookings: z.array(z.object({ id, pupilName: z.string(), schoolName: z.string(), purpose: z.string(), status: gigBookingStatusSchema, rating: z.number().int().nullable(), feedback: z.string().nullable() })),
+      bookings: z.array(z.object({ id, pupilName: z.string(), schoolName: z.string(), purpose: z.string(), status: gigBookingStatusSchema, paid: z.boolean(), rating: z.number().int().nullable(), feedback: z.string().nullable() })),
     }),
   ),
 });
 export type GigProvider = z.infer<typeof gigProviderSchema>;
 
 /** POST /api/v1/gigs/slots — offer a time: a one-to-one of thirty minutes, or a workshop with its length and seats. */
-/** `pricePaise` is the gate paid sessions will pass through: refused while free duty remains (decision 0004), and refused after it until paid sessions exist (decision 0003). Omitted or 0 is a free time. */
+/** `pricePaise` prices a workshop seat past a pupil's allowance, behind the four conditions of the paid gate (decision 0004 as amended); a one-to-one is refused any price. Omitted or 0 is a free time. */
 export const gigSlotBodySchema = z.object({ kind: gigSessionKindSchema, title: z.string().max(200), startsAt: z.string().max(40), minutes: z.number().int().optional(), meetingUrl: z.string().max(600), seats: z.number().int().optional(), pricePaise: z.number().int().min(0).max(10_000_000).optional() });
 export const gigSlotMadeSchema = z.object({ slotId: id });
 
@@ -273,7 +396,7 @@ export const gigSchoolSessionsSchema = z.object({
   guidanceOn: z.boolean(),
   canSwitch: z.boolean(),
   timeZone: z.string(),
-  bookings: z.array(z.object({ id, pupilName: z.string(), kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), providerName: z.string(), providerKind: gigProviderKindSchema, status: gigBookingStatusSchema, purpose: z.string(), canCancel: z.boolean() })),
+  bookings: z.array(z.object({ id, pupilName: z.string(), kind: gigSessionKindSchema, title: z.string(), startsAt: z.string(), providerName: z.string(), providerKind: gigProviderKindSchema, status: gigBookingStatusSchema, purpose: z.string(), paid: z.boolean(), canCancel: z.boolean() })),
 });
 
 /** POST /api/v1/gigs/school/guidance — the school lets its teachers offer free guidance to its own pupils, or stops. */

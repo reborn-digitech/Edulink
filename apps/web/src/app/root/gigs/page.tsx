@@ -3,11 +3,12 @@ import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
 import { gigOverview } from "@/lib/gig-questions";
 import { sessionCounts } from "@/lib/gig-sessions";
+import { operatorPayouts } from "@/lib/gig-payments";
 import { formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { PaymentForm, SettingsForm } from "./forms";
+import { PaymentForm, PaymentsSwitch, RetryPayment, SettingsForm } from "./forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.operatorTitle") };
@@ -27,8 +28,9 @@ export default async function RootGigsPage() {
   const t = await getT();
   const locale = await getLocale();
   const money = (paise: number) => formatPaise(paise, locale);
-  const [o, sessions] = await Promise.all([gigOverview(session), sessionCounts(session)]);
+  const [o, sessions, payouts] = await Promise.all([gigOverview(session), sessionCounts(session), operatorPayouts(session)]);
   const s = o.settings;
+  const day = (iso: string) => formatInZone(new Date(iso), "Asia/Kolkata", { dateStyle: "medium" });
 
   return (
     <div className="space-y-6">
@@ -100,6 +102,69 @@ export default async function RootGigsPage() {
               { key: "workshopMaxSeats", label: t("gigs.setMaxSeats"), value: s.workshopMaxSeats },
             ]}
           />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader title={t("gigs.opPayoutsTitle")} description={t("gigs.opPayoutsIntro")} />
+        <CardBody className="space-y-4" data-testid="gig-payouts">
+          <PaymentsSwitch on={payouts.paymentsEnabled} />
+          <p className="text-xs text-fg-muted">{t("gigs.opTransport", { transport: payouts.transport })}</p>
+          <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {[
+              [t("gigs.opCommission"), payouts.commissionThisMonthPaise],
+              [t("gigs.opHeld"), payouts.heldPaise],
+              [t("gigs.opReleased"), payouts.releasedThisMonthPaise],
+              [t("gigs.opRefunded"), payouts.refundedThisMonthPaise],
+            ].map(([label, value]) => (
+              <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+                <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
+                <dd className="text-lg font-bold tabular-nums text-fg">{money(Number(value))}</dd>
+              </div>
+            ))}
+          </dl>
+          <div>
+            <p className="text-sm font-medium text-fg">{t("gigs.opFailures")}</p>
+            {payouts.failures.length === 0 ? (
+              <p className="text-sm text-fg-muted" data-testid="gig-failures-none">
+                {t("gigs.opFailuresNone")}
+              </p>
+            ) : (
+              <ul className="divide-y divide-border" data-testid="gig-failures">
+                {payouts.failures.map((f) => (
+                  <li key={f.paymentId} className="flex flex-wrap items-center justify-between gap-2 py-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm text-fg">
+                        {f.expertName} · {money(f.amountPaise)} · {t(`gigs.opAction${f.action}`)} · {t("gigs.opAttempts", { count: f.attempts })}
+                      </p>
+                      {f.lastError && <p className="break-all font-mono text-xs text-fg-muted">{f.lastError}</p>}
+                    </div>
+                    <RetryPayment paymentId={f.paymentId} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div>
+            <p className="text-sm font-medium text-fg">{t("gigs.payoutsTitle")}</p>
+            {payouts.payouts.length === 0 ? (
+              <p className="text-sm text-fg-muted">{t("gigs.opPayoutsNone")}</p>
+            ) : (
+              <ul className="divide-y divide-border" data-testid="gig-payout-rows">
+                {payouts.payouts.map((p) => (
+                  <li key={p.id} className="py-2">
+                    <p className="text-sm font-medium text-fg">
+                      {p.expertName} · {t("gigs.payoutLine", { amount: money(p.amountPaise), count: p.transfers })}
+                    </p>
+                    <p className="text-xs text-fg-muted">
+                      {day(p.createdAt)} · {p.status}
+                      {p.settlementId ? ` · ${t("gigs.settlementRef", { ref: p.settlementId })}` : ""}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </CardBody>
       </Card>
 

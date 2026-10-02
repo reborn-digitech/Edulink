@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { formatInZone } from "@/lib/dates";
-import { failAction, markPaidAction } from "./actions";
+import { failAction, failSeatAction, markPaidAction, markSeatPaidAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -52,6 +52,8 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
     for (const p of pending) rows.push({ ...p, gatewayOrderId: p.gatewayOrderId!, schoolId: school.id, schoolName: school.name });
   }
   rows.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  // Paid workshop seats waiting at the company's own (pretend) gateway: no school binding, the rows are nobody's tenant.
+  const seats = await db.sessionPayment.findMany({ where: { status: "INITIATED" }, orderBy: { createdAt: "desc" }, take: 50, select: { id: true, orderId: true, amountPaise: true, createdAt: true, bookingId: true, slot: { select: { title: true } } } });
 
   return (
     <main id="main" className="mx-auto max-w-3xl px-4 py-10">
@@ -73,6 +75,47 @@ export default async function DevPaymentsPage({ searchParams }: { searchParams: 
           <code>{outcome}</code>
         </p>
       )}
+
+      <section className="mb-8 space-y-3" data-testid="dev-session-orders">
+        <h2 className="text-lg font-semibold text-fg">{t("gigs.devSessionsTitle")}</h2>
+        <p className="text-sm text-fg-muted">{t("gigs.devSessionsIntro")}</p>
+        {seats.length === 0 ? (
+          <p className="text-sm text-fg-muted">{t("gigs.devSessionsNone")}</p>
+        ) : (
+          <ul className="space-y-3">
+            {seats.map((row) => (
+              <li key={row.id} data-testid="dev-session-order" data-order-id={row.orderId} data-payment-id={row.id}>
+                <Card>
+                  <CardHeader title={formatPaise(row.amountPaise, locale, { always: true })} description={[row.slot.title, formatInZone(row.createdAt, "Asia/Kolkata")].join(" · ")} action={<Badge tone="accent" size="sm">{t("gigs.paymentStatusINITIATED")}</Badge>} />
+                  <CardBody className="space-y-3">
+                    <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-xs text-fg-muted">
+                      <dt>order</dt>
+                      <dd className="font-mono text-fg">{row.orderId}</dd>
+                      <dt>booking</dt>
+                      <dd className="font-mono text-fg">{row.bookingId}</dd>
+                    </dl>
+                    <div className="flex flex-wrap gap-2">
+                      <form action={markSeatPaidAction}>
+                        <input type="hidden" name="orderId" value={row.orderId} />
+                        <input type="hidden" name="amountPaise" value={row.amountPaise} />
+                        <Button type="submit" size="sm" data-testid="dev-session-paid">
+                          {t("fees.devPaymentsMarkPaid")}
+                        </Button>
+                      </form>
+                      <form action={failSeatAction}>
+                        <input type="hidden" name="orderId" value={row.orderId} />
+                        <Button type="submit" size="sm" variant="danger">
+                          {t("fees.devPaymentsFail")}
+                        </Button>
+                      </form>
+                    </div>
+                  </CardBody>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       {rows.length === 0 ? (
         <EmptyState title={t("fees.devPaymentsNoOrders")} description={t("fees.devPaymentsNoOrdersBody")} />

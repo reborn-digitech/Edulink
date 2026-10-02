@@ -7,13 +7,14 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
-import { BookSeat, SeatActions } from "./family-forms";
+import { formatPaise } from "@edulink/i18n";
+import { BookSeat, ResumeCheckout, SeatActions } from "./family-forms";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.sessionsTitle"), robots: { index: false, follow: false } };
 }
 
-const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
+const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
 
 /**
  * Sessions and workshops, for a pupil and for a guardian: the free allowance
@@ -21,17 +22,21 @@ const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger">
  * one is confirmed), and the times open to book. A pupil's own ask waits for
  * a guardian, who answers it here.
  */
-export default async function SessionsPage() {
+export default async function SessionsPage({ searchParams }: { searchParams: Promise<{ checkout?: string }> }) {
   const ctx = await requireUser();
   if (ctx.role !== "STUDENT" && ctx.role !== "PARENT") redirect("/");
   const t = await getT();
   const locale = await getLocale();
-  const { children, freeCancelHours } = await familySessions(ctx);
+  const { children, freeCancelHours, paymentsOn } = await familySessions(ctx);
   const byGuardian = ctx.role === "PARENT";
+  // A checkout the phone started: the gateway's script runs here, on the web, on the phone's own order.
+  const { checkout: resume } = await searchParams;
+  const money = (paise: number) => formatPaise(paise, locale);
 
   return (
     <div className="space-y-6">
       <PageHeader title={t("gigs.sessionsTitle")} description={t("gigs.sessionsIntro")} />
+      {byGuardian && resume && <ResumeCheckout paymentId={resume} />}
       {children.map((c) => {
         const when = (iso: string) => formatInZone(new Date(iso), c.timeZone, { dateStyle: "medium", timeStyle: "short" }, locale);
         return (
@@ -59,7 +64,14 @@ export default async function SessionsPage() {
                             <p className="text-xs text-fg-muted">
                               {t(`gigs.kind${b.kind}`)} · {when(b.startsAt)} · {t("gigs.withProvider", { name: b.providerName })}
                               {b.lateCancel ? ` · ${t("gigs.lateCancelNote")}` : ""}
+                              {b.paid ? ` · ${t("gigs.paidSeat")}` : ""}
                             </p>
+                            {b.payment && b.payment.status !== "INITIATED" && b.payment.status !== "FAILED" && (
+                              <p className="text-xs text-fg-muted" data-testid="session-payment-line">
+                                {b.payment.status === "REFUNDED" ? t("gigs.refundLine", { amount: money(b.payment.amountPaise) }) : t("gigs.paymentLine", { amount: money(b.payment.amountPaise) })}
+                              </p>
+                            )}
+                            {b.status === "CANCELLED" && b.paid && b.payment && (b.payment.status === "PAID" || b.payment.status === "HELD") && !b.lateCancel && <p className="text-xs text-fg-muted">{t("gigs.refundWaitingLine", { amount: money(b.payment.amountPaise) })}</p>}
                           </div>
                           <Badge tone={TONE[b.status]}>{t(`gigs.bookingStatus${b.status}`)}</Badge>
                         </div>
@@ -71,7 +83,7 @@ export default async function SessionsPage() {
                             <span className="ml-2 text-xs text-fg-muted">{t("gigs.linkHint")}</span>
                           </p>
                         )}
-                        <SeatActions bookingId={b.id} title={b.title} canConsent={b.canConsent} canCancel={b.canCancel} canRate={b.canRate} canReportUnheld={b.canReportUnheld} confirmed={b.status === "CONFIRMED"} lateHours={freeCancelHours} />
+                        <SeatActions bookingId={b.id} title={b.title} canConsent={b.canConsent} canPay={b.canPay} payAmount={b.pricePaise} canCancel={b.canCancel} canRate={b.canRate} canReportUnheld={b.canReportUnheld} confirmed={b.status === "CONFIRMED"} lateHours={freeCancelHours} />
                       </li>
                     ))}
                   </ul>
@@ -94,8 +106,13 @@ export default async function SessionsPage() {
                             {s.kind === "WORKSHOP" ? ` · ${t("gigs.seatsLeft", { count: s.seatsLeft })}` : ""}
                           </p>
                           {s.providerHeadline && <p className="text-xs text-fg-muted">{s.providerHeadline}</p>}
+                          {s.pricePaise > 0 && (
+                            <p className="text-xs font-medium text-fg" data-testid="session-open-price">
+                              {s.freeSeat ? t("gigs.seatFree") : t("gigs.seatPrice", { amount: money(s.pricePaise) })}
+                            </p>
+                          )}
                         </div>
-                        <BookSeat slotId={s.id} childId={c.id} byGuardian={byGuardian} title={s.title} />
+                        <BookSeat slotId={s.id} childId={c.id} byGuardian={byGuardian} title={s.title} priceLabel={s.pricePaise > 0 && !s.freeSeat && paymentsOn ? t("gigs.payNow", { amount: money(s.pricePaise) }) : null} />
                       </li>
                     ))}
                   </ul>

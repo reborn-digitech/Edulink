@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     if (!parsed.success) return apiInvalid(parsed);
     const result = await bookSeat(ctx, parsed.data);
     if (!result.ok) return refused(result.errorKey, result.vars);
-    return ok(gigBookedSchema.parse({ bookingId: result.bookingId, status: result.status }), 201);
+    return ok(gigBookedSchema.parse({ bookingId: result.bookingId, status: result.status, checkout: result.checkout }), 201);
   } catch (error) {
     return apiFailure(error, "api/v1/gigs/sessions/book");
   }

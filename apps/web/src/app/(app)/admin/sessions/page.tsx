@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("gigs.officeTitle"), robots: { index: false, follow: false } };
 }
 
-const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
+const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
 
 /**
  * The office's view of sessions: every one its pupils have asked for or
@@ -47,6 +47,7 @@ export default async function AdminSessionsPage() {
                       </p>
                       <p className="text-xs text-fg-muted">
                         {t(`gigs.kind${b.kind}`)} · {when(b.startsAt)} · {t("gigs.withProvider", { name: b.providerName })} ({t(`gigs.provider${b.providerKind}`)})
+                        {b.paid ? ` · ${t("gigs.paidSeat")}` : ""}
                       </p>
                       <p className="break-words text-xs text-fg-muted">{b.purpose}</p>
                     </div>

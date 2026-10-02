@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getT } from "@/lib/i18n/server";
 import { AccessError } from "@/lib/tenancy";
 import { requireApiSession } from "@/lib/api-reads/shared";
-import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
+import { bookSeat, cancelBooking, cancelSlot, closeBooking, consentToBooking, offerSlot, rateBooking, reportUnheld, seatCheckout, setTeacherGuidance, type SlotInput } from "@/lib/gig-sessions";
 import type { GigResult } from "@/lib/gig-questions";
 
 /**
@@ -53,6 +53,10 @@ export async function cancelSlotAction(slotId: string, reason: string) {
 }
 export async function closeSeatAction(bookingId: string, outcome: "DELIVERED" | "MISSED") {
   return run(async () => closeBooking(await requireApiSession(), bookingId, outcome));
+}
+/** The order for a seat waiting for the guardian's payment: the panel was closed, or the gateway was down at booking. */
+export async function seatCheckoutAction(bookingId: string) {
+  return run(async () => seatCheckout(await requireApiSession(), bookingId));
 }
 export async function guidanceAction(on: boolean) {
   return run(async () => setTeacherGuidance(await requireApiSession(), on));

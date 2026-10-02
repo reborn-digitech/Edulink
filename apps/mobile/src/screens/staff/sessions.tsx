@@ -73,7 +73,7 @@ export function OfficeSessions() {
                     {[b.pupilName, b.title].join(" · ")}
                   </Text>
                   <Text variant="xs" tone="muted">
-                    {[t(SESSION_KIND[b.kind]), when(b.startsAt), [t("gigs.withProvider", { name: b.providerName }), `(${t(PROVIDER_KIND[b.providerKind])})`].join(" ")].join(" · ")}
+                    {[t(SESSION_KIND[b.kind]), when(b.startsAt), [t("gigs.withProvider", { name: b.providerName }), `(${t(PROVIDER_KIND[b.providerKind])})`].join(" "), b.paid ? t("gigs.paidSeat") : null].filter(Boolean).join(" · ")}
                   </Text>
                   <Text variant="xs" tone="muted">
                     {b.purpose}

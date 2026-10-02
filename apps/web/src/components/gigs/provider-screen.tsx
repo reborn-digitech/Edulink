@@ -6,9 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import type { ActiveContext } from "@/lib/session";
+import { formatPaise } from "@edulink/i18n";
 import { CancelWithReason, CloseSeat, OfferForm } from "./provider-forms";
+import { PaidGateList } from "./paid-gate";
 
-const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
+const TONE: Record<BookingStatus, "info" | "ok" | "neutral" | "warn" | "danger"> = { PENDING_CONSENT: "info", PENDING_PAYMENT: "warn", CONFIRMED: "ok", CANCELLED: "neutral", DELIVERED: "ok", MISSED: "warn", UNHELD: "danger" };
 
 /**
  * A provider's side of sessions, the same for an expert and a teacher: what
@@ -22,6 +24,7 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
   const [view, settings] = await Promise.all([mySlots(ctx), gigSettings()]);
   const when = (iso: string) => formatInZone(new Date(iso), view.timeZone, { dateStyle: "medium", timeStyle: "short" }, locale);
   const d = view.duty;
+  const gate = view.gate;
 
   return (
     <div className="space-y-6">
@@ -44,8 +47,15 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
           </div>
           <Card>
             <CardHeader title={t("gigs.offerTitle")} />
-            <CardBody>
-              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} />
+            <CardBody className="space-y-4">
+              <OfferForm workshops={view.kind === "EXPERT"} maxSeats={settings.workshopMaxSeats} gate={gate} />
+              {gate && (
+                <div className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3" data-testid="paid-gate">
+                  <p className="text-sm font-medium text-fg">{t("gigs.gateTitle")}</p>
+                  <p className="mb-2 text-xs text-fg-muted">{t("gigs.gateIntro")}</p>
+                  <PaidGateList gate={gate} />
+                </div>
+              )}
             </CardBody>
           </Card>
           <Card>
@@ -62,6 +72,7 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                           <p className="break-words text-sm font-medium text-fg">{s.title}</p>
                           <p className="text-xs text-fg-muted">
                             {t(`gigs.kind${s.kind}`)} · {when(s.startsAt)} · {t("gigs.seatsOf", { taken: s.seatsTaken, seats: s.seats })}
+                            {s.pricePaise > 0 ? ` · ${t("gigs.seatPrice", { amount: formatPaise(s.pricePaise, locale) })}` : ""}
                           </p>
                         </div>
                         {s.cancelled ? <Badge tone="neutral">{t("gigs.slotIsCancelled")}</Badge> : !s.started && <CancelWithReason id={s.id} what="slot" title={s.title} />}
@@ -75,10 +86,17 @@ export async function ProviderScreen({ ctx }: { ctx: ActiveContext }) {
                                   <span className="font-medium">{b.pupilName}</span> · {b.schoolName}
                                   <span className="block text-xs text-fg-muted">{b.purpose}</span>
                                 </p>
-                                <Badge tone={TONE[b.status]}>{t(`gigs.bookingStatus${b.status}`)}</Badge>
+                                <span className="inline-flex flex-wrap gap-1">
+                                  {b.paid && (
+                                    <Badge tone="accent" size="sm">
+                                      {t("gigs.paidSeat")}
+                                    </Badge>
+                                  )}
+                                  <Badge tone={TONE[b.status]}>{t(`gigs.bookingStatus${b.status}`)}</Badge>
+                                </span>
                               </div>
                               {b.status === "CONFIRMED" && s.started && <CloseSeat bookingId={b.id} pupilName={b.pupilName} />}
-                              {(b.status === "CONFIRMED" || b.status === "PENDING_CONSENT") && !s.started && <CancelWithReason id={b.id} what="seat" title={b.pupilName} />}
+                              {(b.status === "CONFIRMED" || b.status === "PENDING_CONSENT" || b.status === "PENDING_PAYMENT") && !s.started && <CancelWithReason id={b.id} what="seat" title={b.pupilName} />}
                               {b.rating !== null && (
                                 <p className="text-xs text-fg-muted">
                                   {t("gigs.ratingGiven", { rating: b.rating })}

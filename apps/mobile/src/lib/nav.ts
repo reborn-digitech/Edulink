@@ -271,6 +271,7 @@ export const HIDDEN_SCREENS = [
   "operator-school",
   "operator-new-school",
   "operator-metrics",
+  "operator-payouts",
   "fees",
   "fees-dues",
   "fee-pupil",

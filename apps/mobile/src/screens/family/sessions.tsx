@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Linking, View } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { gigFamilySessionsSchema } from "@edulink/contracts";
+import { gigCheckoutSchema, gigFamilySessionsSchema, gigPaymentStatusSchema, type GigCheckout } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
-import { api, errorText } from "@/lib/api";
+import { API_BASE, api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { BOOKING_STATUS, PROVIDER_KIND, SESSION_KIND, SESSIONS_KEY } from "@/screens/shared/gigs";
-import { Chips, formatInstant, Note, Pill } from "./shared";
+import { money } from "@/screens/shared/fees";
+import { Chips, formatInstant, Note, openWeb, Pill } from "./shared";
 
 /**
  * Sessions and workshops, for a pupil and for a guardian — the web's
@@ -18,8 +20,16 @@ import { Chips, formatInstant, Note, Pill } from "./shared";
  * (with the provider's meeting link only while one is confirmed), and the
  * times open to book. A pupil's own ask waits for a guardian, who answers it
  * here. Times are read in the school's zone.
+ *
+ * A PAID SEAT (decision 0004 as amended) past the allowance: the booking, or
+ * a guardian's consent, hands back an order, and the pay step is the fees
+ * pattern — with a real gateway the phone opens the web's sessions page on
+ * the same order, where the gateway's script runs, and watches the payment
+ * from here; under devbox it watches alone until /dev/payments marks it.
  */
 type Job = { path: string; body?: Record<string, unknown>; done: string | ((data: unknown) => string) };
+/** How often and how long the phone asks after a started payment; a test shortens both. */
+export const POLL = { intervalMs: 2000, maxMs: 60_000 };
 
 export function FamilySessions() {
   const t = useT();
@@ -34,20 +44,36 @@ export function FamilySessions() {
   const [purpose, setPurpose] = useState("");
   const [rating, setRating] = useState<Record<string, string>>({});
   const [feedback, setFeedback] = useState<Record<string, string>>({});
+  const [paying, setPaying] = useState<{ checkout: GigCheckout; startedAt: number } | null>(null);
   const byGuardian = role === "PARENT";
+  /** A paid seat's order: opened on the web when the gateway's script is needed, watched from here either way. */
+  const startPaying = (checkout: GigCheckout) => {
+    setPaying({ checkout, startedAt: Date.now() });
+    if (checkout.transport === "razorpay") {
+      const path = `/sessions?checkout=${encodeURIComponent(checkout.paymentId)}`;
+      WebBrowser.openBrowserAsync(`${API_BASE}${path}`).catch(() => openWeb(path));
+    }
+  };
 
   const query = useQuery({ queryKey: SESSIONS_KEY, queryFn: async () => gigFamilySessionsSchema.parse(unwrap(await api().get("/api/v1/gigs/sessions"))) });
   const act = useMutation({
     mutationFn: async (job: Job) => {
       const result = await api().post(job.path, job.body);
       if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      // A booking, a consent or a checkout that hands back an order: the pay step opens instead of a line.
+      const checkout = (result.data as { checkout?: unknown } | null)?.checkout;
+      if (checkout) return { checkout: gigCheckoutSchema.parse(checkout) };
       return typeof job.done === "string" ? job.done : job.done(result.data);
     },
     onSuccess: (said) => {
       setError(null);
-      setDone(said);
       setAsking(null);
       setPurpose("");
+      if (typeof said === "string") setDone(said);
+      else {
+        setDone(null);
+        startPaying(said.checkout);
+      }
       void qc.invalidateQueries({ queryKey: SESSIONS_KEY });
     },
     onError: (e) => {
@@ -71,6 +97,16 @@ export function FamilySessions() {
       ) : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
+      {paying ? (
+        <PayWatch
+          flow={paying}
+          onDone={() => void qc.invalidateQueries({ queryKey: SESSIONS_KEY })}
+          onClose={() => {
+            setPaying(null);
+            void qc.invalidateQueries({ queryKey: SESSIONS_KEY });
+          }}
+        />
+      ) : null}
       {d && d.children.length === 0 ? <Empty title={t("gigs.noSeats")} body={t("gigs.sessionsIntro")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} /> : null}
       {d?.children.map((c) => {
         const when = (iso: string) => formatInstant(iso, locale, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, c.timeZone);
@@ -97,9 +133,15 @@ export function FamilySessions() {
                       {b.title}
                     </Text>
                     <Text variant="xs" tone="muted">
-                      {[t(SESSION_KIND[b.kind]), when(b.startsAt), t("gigs.withProvider", { name: b.providerName }), b.lateCancel ? t("gigs.lateCancelNote") : null].filter(Boolean).join(" · ")}
+                      {[t(SESSION_KIND[b.kind]), when(b.startsAt), t("gigs.withProvider", { name: b.providerName }), b.lateCancel ? t("gigs.lateCancelNote") : null, b.paid ? t("gigs.paidSeat") : null].filter(Boolean).join(" · ")}
                     </Text>
+                    {b.payment && b.payment.status !== "INITIATED" && b.payment.status !== "FAILED" ? (
+                      <Text variant="xs" tone="muted">
+                        {b.payment.status === "REFUNDED" ? t("gigs.refundLine", { amount: money(b.payment.amountPaise, locale) }) : t("gigs.paymentLine", { amount: money(b.payment.amountPaise, locale) })}
+                      </Text>
+                    ) : null}
                     <Pill label={t(BOOKING_STATUS[b.status].label)} tone={BOOKING_STATUS[b.status].tone} />
+                    {b.canPay ? <Button label={t("gigs.payNow", { amount: money(b.pricePaise, locale) })} accessibilityLabel={[t("gigs.payNow", { amount: money(b.pricePaise, locale) }), b.title].join(": ")} busy={running(seat(b.id, "checkout"))} onPress={() => act.mutate({ path: seat(b.id, "checkout"), done: "" })} /> : null}
                     {b.meetingUrl ? (
                       <>
                         <Button label={t("gigs.joinLink")} accessibilityLabel={[t("gigs.joinLink"), b.title].join(": ")} onPress={() => void Linking.openURL(b.meetingUrl!).catch(() => setError(t("common.somethingWrong")))} />
@@ -151,7 +193,7 @@ export function FamilySessions() {
               ) : (
                 c.open.map((s) => {
                   const key = [c.id, s.id].join(":");
-                  const verb = byGuardian ? t("gigs.bookSeat") : t("gigs.askSeat");
+                  const verb = byGuardian ? (s.pricePaise > 0 && !s.freeSeat && d.paymentsOn ? t("gigs.payNow", { amount: money(s.pricePaise, locale) }) : t("gigs.bookSeat")) : t("gigs.askSeat");
                   return (
                     <View key={s.id} style={{ gap: th.space[2], paddingVertical: th.space[2], borderTopWidth: 1, borderTopColor: th.border }}>
                       <Text variant="base" bold>
@@ -160,6 +202,11 @@ export function FamilySessions() {
                       <Text variant="xs" tone="muted">
                         {[t(SESSION_KIND[s.kind]), when(s.startsAt), [t("gigs.withProvider", { name: s.providerName }), `(${t(PROVIDER_KIND[s.providerKind])})`].join(" "), s.kind === "WORKSHOP" ? t("gigs.seatsLeft", { count: s.seatsLeft }) : null].filter(Boolean).join(" · ")}
                       </Text>
+                      {s.pricePaise > 0 ? (
+                        <Text variant="xs" bold>
+                          {s.freeSeat ? t("gigs.seatFree") : t("gigs.seatPrice", { amount: money(s.pricePaise, locale) })}
+                        </Text>
+                      ) : null}
                       {s.providerHeadline ? (
                         <Text variant="xs" tone="muted">
                           {s.providerHeadline}
@@ -194,5 +241,77 @@ export function FamilySessions() {
         );
       })}
     </Screen>
+  );
+}
+
+const SETTLED = new Set(["PAID", "HELD", "RELEASED", "REFUNDED", "FAILED"]);
+
+/** A started seat payment: the phone asks after it every few seconds until it is paid, it failed, or a minute has passed. */
+function PayWatch({ flow, onDone, onClose }: { flow: { checkout: GigCheckout; startedAt: number }; onDone: () => void; onClose: () => void }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const [timedOut, setTimedOut] = useState(false);
+  const status = useQuery({
+    queryKey: ["gigs", "payment", flow.checkout.paymentId],
+    queryFn: async () => gigPaymentStatusSchema.parse(unwrap(await api().get(`/api/v1/gigs/payments/${flow.checkout.paymentId}`))),
+    staleTime: 0,
+    gcTime: 0,
+    refetchInterval: (q) => {
+      if (q.state.data && SETTLED.has(q.state.data.status)) return false;
+      if (Date.now() - flow.startedAt > POLL.maxMs) {
+        setTimedOut(true);
+        return false;
+      }
+      return POLL.intervalMs;
+    },
+  });
+  const s = status.data;
+  const paid = Boolean(s && (s.status === "PAID" || s.status === "HELD" || s.status === "RELEASED"));
+  const settled = Boolean(s && SETTLED.has(s.status));
+  const told = useRef(false);
+  useEffect(() => {
+    if (paid && !told.current) {
+      told.current = true;
+      onDone();
+    }
+  }, [paid, onDone]);
+  return (
+    <Card title={`${t("gigs.payTitle")} · ${money(flow.checkout.amountPaise, locale)}`}>
+      {paid ? (
+        <Note tone="ok">
+          <Text variant="sm" bold tone="ok" accessibilityLiveRegion="polite">
+            {t("gigs.payDone")}
+          </Text>
+        </Note>
+      ) : s && settled ? (
+        <Note tone="danger">
+          <Text variant="sm" bold tone="danger" accessibilityLiveRegion="polite">
+            {s.reason ?? t("gigs.payFailed")}
+          </Text>
+        </Note>
+      ) : timedOut ? (
+        <Note tone="warn">
+          <Text variant="sm" tone="warn" accessibilityLiveRegion="polite">
+            {t("gigs.payNotYet")}
+          </Text>
+        </Note>
+      ) : (
+        <Text variant="sm" tone="muted" accessibilityLiveRegion="polite">
+          {s ? t("gigs.payChecking") : t("gigs.payOpening")}
+        </Text>
+      )}
+      {flow.checkout.transport !== "razorpay" && !settled ? (
+        <Note tone="accent">
+          <Text variant="xs" tone="accent">
+            {t("gigs.payDevbox")} /dev/payments
+          </Text>
+        </Note>
+      ) : null}
+      <Text variant="xs" tone="muted">
+        {t("gigs.payeeNote")}
+      </Text>
+      {status.isError ? <Failed message={status.error.message} onRetry={() => void status.refetch()} /> : null}
+      <Button label={settled || timedOut ? t("common.back") : t("common.cancel")} variant="secondary" onPress={onClose} />
+    </Card>
   );
 }

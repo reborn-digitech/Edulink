@@ -27,6 +27,12 @@ import { PrismaClient } from "@prisma/client";
  *      writes and reads their own; the operator writes one for them; nobody
  *      writes one for somebody else, reads somebody else's, or uses the
  *      clause to mint a notice into a school they are not bound to.
+ *   5. A paid seat (decision 0004 as amended): the expert, with no school
+ *      bound, reaches the booking they are paid for through their own user
+ *      id and not a stranger's; the payment row itself, which belongs to no
+ *      school (NO_SCHOOL_POLICY), is written and read with a user bound and
+ *      nothing else — the webhook and the release job hold no school — so
+ *      who may read it is src/lib/gig-payments.ts's by the ids on the row.
  *
  * Fixtures are written as the owner and every read below is a fresh app-role
  * transaction with the settings the app would have set. Skipped, and says so,
@@ -92,6 +98,9 @@ let strangerUserId: string;
 let operatorUserId: string;
 let expertUserId: string;
 let strangersNoticeId: string;
+let paidBookingId: string;
+let paidSlotId: string;
+let strangersBookingId: string;
 let recordId: string;
 let visitId: string;
 let auditId: string;
@@ -148,6 +157,13 @@ beforeAll(async () => {
       select: { id: true },
     })
   ).id;
+
+  // A paid workshop seat at the receiving school, the expert's, and a stranger's seat beside it.
+  const receiverMembership = await owner.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: receiver }, select: { id: true } });
+  paidSlotId = (await owner.gigSlot.create({ data: { providerUserId: expertUserId, providerKind: "EXPERT", kind: "WORKSHOP", title: "ZZ rls paid workshop", startsAt: new Date(Date.now() + 86_400_000), endsAt: new Date(Date.now() + 90_000_000), meetingUrl: "https://meet.zz.test/rls", seats: 10, seatsTaken: 2, pricePaise: 10000 }, select: { id: true } })).id;
+  paidBookingId = (await owner.gigBooking.create({ data: { schoolId: receiver, slotId: paidSlotId, studentMembershipId: receiverMembership.id, providerUserId: expertUserId, kind: "WORKSHOP", status: "CONFIRMED", bookedByUserId: guardianUserId, purpose: "ZZ a paid seat", paid: true }, select: { id: true } })).id;
+  const strangerSlotId = (await owner.gigSlot.create({ data: { providerUserId: strangerUserId, providerKind: "EXPERT", kind: "WORKSHOP", title: "ZZ rls stranger workshop", startsAt: new Date(Date.now() + 2 * 86_400_000), endsAt: new Date(Date.now() + 2 * 86_400_000 + 3_600_000), meetingUrl: "https://meet.zz.test/rls2", seats: 10, seatsTaken: 1 }, select: { id: true } })).id;
+  strangersBookingId = (await owner.gigBooking.create({ data: { schoolId: receiver, slotId: strangerSlotId, studentMembershipId: receiverMembership.id, providerUserId: strangerUserId, kind: "WORKSHOP", status: "CONFIRMED", bookedByUserId: guardianUserId, purpose: "ZZ a stranger's seat" }, select: { id: true } })).id;
 
   visitId = (
     await owner.operatorAccess.create({
@@ -324,6 +340,28 @@ describe.skipIf(!app)("as the app role", () => {
       expect(
         await refused(() => asApp({ schoolIds: [receiver] }, (tx) => tx.schoolRecord.deleteMany({ where: { id: recordId } }))),
       ).toBe(true);
+    });
+  });
+
+  describe("⚠ a paid seat is reached through the person, not a school", () => {
+    const seat = (settings: Settings, id: string) => asApp(settings, (tx) => tx.gigBooking.count({ where: { id } }));
+
+    it("the expert, with no school bound, reads the booking they are paid for and not a stranger's", async () => {
+      expect(await seat({ userId: expertUserId }, paidBookingId)).toBe(1);
+      expect(await seat({ userId: expertUserId }, strangersBookingId)).toBe(0);
+      expect(await seat({ userId: strangerUserId }, paidBookingId)).toBe(0);
+      expect(await seat({ schoolIds: [receiver] }, paidBookingId)).toBe(1);
+      expect(await seat({ schoolIds: [employer] }, paidBookingId)).toBe(0);
+    });
+
+    it("the payment row is written and read with a user bound and no school — the webhook's and the job's standing", async () => {
+      const made = await asApp({ userId: guardianUserId }, (tx) => tx.sessionPayment.create({ data: { bookingId: paidBookingId, slotId: paidSlotId, payerUserId: guardianUserId, expertUserId, amountPaise: 10000, commissionPaise: 1500, orderId: `order_zzrls${Date.now()}`, status: "INITIATED" }, select: { id: true } }));
+      expect(await asApp({ userId: expertUserId }, (tx) => tx.sessionPayment.count({ where: { id: made.id, expertUserId } }))).toBe(1);
+      expect(await asApp({ userId: guardianUserId }, (tx) => tx.sessionPayment.count({ where: { id: made.id, payerUserId: guardianUserId } }))).toBe(1);
+      expect((await asApp({}, (tx) => tx.sessionPayment.updateMany({ where: { id: made.id }, data: { status: "HELD" } }))).count).toBe(1);
+      // The booking behind it, written under the school's binding as gig-payments.ts does, and not without one.
+      expect((await asApp({ schoolIds: [receiver] }, (tx) => tx.gigBooking.updateMany({ where: { id: paidBookingId, schoolId: receiver }, data: { consentUserId: guardianUserId } }))).count).toBe(1);
+      expect(await refused(() => asApp({ userId: expertUserId }, (tx) => tx.gigBooking.updateMany({ where: { id: paidBookingId }, data: { consentUserId: expertUserId } })))).toBe(true);
     });
   });
 });

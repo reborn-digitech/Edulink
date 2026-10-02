@@ -237,7 +237,9 @@ function scan(): Finding[] {
       // the channel the header already excludes — and none is read through a
       // locale. They were counted only because the server-action rule reads
       // the same `message:` key; the release's kill-switch variables added
-      // three more and made the accident visible.
+      // three more and made the accident visible. gig-gateway-env.ts is the
+      // same boot check for the company's gateway, kept out of env.ts only
+      // so the fees invariant's regex on its variable names stays true.
       //
       // …and the text-message registry. message-templates.ts holds every
       // sentence a family can be sent BY SMS OR WHATSAPP, in English, Hindi
@@ -254,7 +256,7 @@ function scan(): Finding[] {
       // …and the filings library, whose strings are the UDISE+ bulk sheet's
       // and the boards' own column headings and code legends — the portal
       // reads them, not a person, and a translated heading would not upload.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts"),
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();
