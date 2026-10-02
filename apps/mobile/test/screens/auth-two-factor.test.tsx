@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createApiClient } from "@edulink/api-client";
 import { renderApp, untilRendered } from "../utils";
 import { __setApiClient } from "@/lib/api";
+import { __resetVersionCheck } from "@/lib/version";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider } from "@/lib/session";
 import SignIn from "@/app/(auth)/index";
@@ -121,5 +122,22 @@ describe("two-step sign-in on the phone", () => {
     expect(calls()[0]?.body).toMatchObject({ challenge: CHALLENGE });
     await fireEvent.press(screen.getByRole("button", { name: "Back to sign-in" }));
     expect(mockRouter.back).toHaveBeenCalled();
+  });
+});
+
+describe("the Google button on the sign-in screen", () => {
+  const VERSION = { minimum: { ios: "0.0.0", android: "0.0.0" }, latest: { ios: "0.0.0", android: "0.0.0" }, storeUrls: { ios: null, android: null }, message: null };
+  afterEach(() => __resetVersionCheck());
+
+  it("is not offered when the server has no Google sign-in configured, or cannot say", async () => {
+    const { calls } = await mountSignedOut(<SignIn />, { "GET /api/v1/app/version": () => json({ ...VERSION, ssoProviders: [] }) });
+    await waitFor(() => expect(calls().map((c) => c.line)).toContain("GET /api/v1/app/version"));
+    expect(screen.queryByRole("button", { name: "Continue with Google" })).toBeNull();
+    expect(screen.getByRole("button", { name: "Email me a link" })).toBeTruthy();
+  });
+
+  it("is offered once the server names Google among its providers", async () => {
+    await mountSignedOut(<SignIn />, { "GET /api/v1/app/version": () => json({ ...VERSION, ssoProviders: ["google"] }) });
+    expect(await screen.findByRole("button", { name: "Continue with Google" })).toBeTruthy();
   });
 });

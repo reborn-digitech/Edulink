@@ -22,7 +22,8 @@ import type { ActiveContext } from "./session";
  * chose to report — as a notification to the school's admins.
  */
 
-export type AppVersionPolicy = z.infer<typeof appVersionSchema>;
+/** The release half of GET /api/v1/app/version; the route adds the sign-in providers (sso.ts). */
+export type AppVersionPolicy = Omit<z.infer<typeof appVersionSchema>, "ssoProviders">;
 export type AppReportBody = z.infer<typeof appReportBodySchema>;
 
 /**

@@ -101,6 +101,20 @@ export async function checkVersionThrottled(now = Date.now()): Promise<VersionCh
   return checkVersion();
 }
 
+/**
+ * The sign-in providers the server has configured, from the same answer as
+ * the kill switch (reused when the gate already has it). None when the server
+ * cannot be asked or is too old to say: the sign-in screen then offers no
+ * provider button, rather than one that leads nowhere.
+ */
+export async function ssoProviders(): Promise<VersionPolicy["ssoProviders"]> {
+  if (last.policy) return last.policy.ssoProviders;
+  const res = await api().get("/api/v1/app/version");
+  if (!res.ok) return [];
+  const parsed = appVersionSchema.safeParse(res.data);
+  return parsed.success ? parsed.data.ssoProviders : [];
+}
+
 /** Tests start each case from a phone that has never asked. */
 export function __resetVersionCheck(): void {
   lastChecked = 0;

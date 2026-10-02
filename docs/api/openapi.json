@@ -31553,6 +31553,18 @@
                     "message": {
                       "type": "string",
                       "nullable": true
+                    },
+                    "ssoProviders": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "google",
+                          "microsoft",
+                          "apple"
+                        ]
+                      },
+                      "default": []
                     }
                   },
                   "required": [

@@ -3,14 +3,16 @@ import { AppState, Platform } from "react-native";
 import * as Application from "expo-application";
 import * as Updates from "expo-updates";
 import { __setApiClient } from "@/lib/api";
-import { __resetVersionCheck, appBuild, appVersion, checkVersion, checkVersionThrottled, compareVersions, deviceInfo, evaluate, osLabel, useVersionGate, VERSION_CHECK_INTERVAL_MS } from "@/lib/version";
+import { __resetVersionCheck, appBuild, appVersion, checkVersion, checkVersionThrottled, compareVersions, deviceInfo, evaluate, osLabel, ssoProviders, useVersionGate, VERSION_CHECK_INTERVAL_MS, type VersionPolicy } from "@/lib/version";
 
 jest.mock("expo-constants", () => ({ __esModule: true, default: { expoConfig: { version: "0.2.0" } } }));
 
 const app = (Application as unknown as { __state: { nativeApplicationVersion: string | null; nativeBuildVersion: string | null } }).__state;
 const updates = (Updates as unknown as { __state: { updateId: string | null } }).__state;
 
-const POLICY = { minimum: { ios: "0.1.0", android: "0.1.0" }, latest: { ios: "0.3.0", android: "0.3.1" }, storeUrls: { ios: "https://apps.apple.com/app/id1", android: null }, message: null };
+/** What a server older than the ssoProviders field answers. */
+const OLD_ANSWER = { minimum: { ios: "0.1.0", android: "0.1.0" }, latest: { ios: "0.3.0", android: "0.3.1" }, storeUrls: { ios: "https://apps.apple.com/app/id1", android: null }, message: null };
+const POLICY: VersionPolicy = { ...OLD_ANSWER, ssoProviders: [] };
 
 type Result = { ok: true; data: unknown } | { ok: false; status: number; error: string; code?: string };
 function fakeClient(answer: () => Result) {
@@ -77,11 +79,27 @@ describe("the app's version", () => {
   });
 
   it("asks the server and reads the answer through the contract", async () => {
-    const get = fakeClient(() => ({ ok: true, data: { ...POLICY, minimum: { ios: "0.2.0", android: "0.2.0" } } }));
-    expect(await checkVersion()).toEqual({ state: "update-required", policy: { ...POLICY, minimum: { ios: "0.2.0", android: "0.2.0" } } });
+    const get = fakeClient(() => ({ ok: true, data: { ...OLD_ANSWER, minimum: { ios: "0.2.0", android: "0.2.0" } } }));
+    // An answer without ssoProviders (a server older than the field) reads as none.
+    expect(await checkVersion()).toEqual({ state: "update-required", policy: { ...POLICY, minimum: { ios: "0.2.0", android: "0.2.0" }, ssoProviders: [] } });
     expect(get).toHaveBeenCalledWith("/api/v1/app/version");
     fakeClient(() => ({ ok: true, data: POLICY }));
     expect((await checkVersion()).state).toBe("ok");
+  });
+
+  it("names the configured sign-in providers; none when the server cannot say, and the gate's answer is reused", async () => {
+    let get = fakeClient(() => ({ ok: true, data: { ...POLICY, ssoProviders: ["google"] } }));
+    expect(await ssoProviders()).toEqual(["google"]);
+    expect(get).toHaveBeenCalledWith("/api/v1/app/version");
+    fakeClient(() => ({ ok: true, data: OLD_ANSWER }));
+    expect(await ssoProviders()).toEqual([]);
+    fakeClient(() => ({ ok: false, status: 0, error: "Network request failed", code: "SERVER" }));
+    expect(await ssoProviders()).toEqual([]);
+    fakeClient(() => ({ ok: true, data: { ...POLICY, ssoProviders: ["google"] } }));
+    await checkVersion();
+    get = fakeClient(() => ({ ok: true, data: POLICY }));
+    expect(await ssoProviders()).toEqual(["google"]);
+    expect(get).not.toHaveBeenCalled();
   });
 
   it("never blocks because the check failed: no network, a refusal or a strange shape are unknown", async () => {

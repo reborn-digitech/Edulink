@@ -723,6 +723,12 @@ export const appVersionSchema = z.object({
   storeUrls: z.object({ ios: z.string().nullable(), android: z.string().nullable() }),
   /** An operator's sentence for the update screen, or null for the standard one. */
   message: z.string().nullable(),
+  /**
+   * The sign-in providers this server has configured (SSO_<PROVIDER>_*), so the
+   * phone offers only a button that works. Defaults to none: an older server's
+   * answer hides them rather than showing a dead one.
+   */
+  ssoProviders: z.array(z.enum(["google", "microsoft", "apple"])).default([]),
 });
 
 /** "Report a problem" from the app, and the app's own crash report on its next start. */

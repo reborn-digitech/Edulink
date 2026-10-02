@@ -102,8 +102,27 @@ describe("GET /api/v1/app/version", () => {
       latest: { ios: "0.0.0", android: "0.0.0" },
       storeUrls: { ios: null, android: null },
       message: null,
+      ssoProviders: [],
     });
     expect(res.headers.get("cache-control")).toBe("no-store");
+  });
+
+  it("names the sign-in providers configured here, so the phone offers no dead button", async () => {
+    clearRelease();
+    const saved = { id: env.SSO_GOOGLE_CLIENT_ID, secret: env.SSO_GOOGLE_CLIENT_SECRET };
+    try {
+      delete env.SSO_GOOGLE_CLIENT_ID;
+      delete env.SSO_GOOGLE_CLIENT_SECRET;
+      expect((await (await versionGet()).json()).ssoProviders).toEqual([]);
+      env.SSO_GOOGLE_CLIENT_ID = "zz-client.apps.googleusercontent.com";
+      env.SSO_GOOGLE_CLIENT_SECRET = "zz-secret";
+      expect((await (await versionGet()).json()).ssoProviders).toEqual(["google"]);
+    } finally {
+      if (saved.id === undefined) delete env.SSO_GOOGLE_CLIENT_ID;
+      else env.SSO_GOOGLE_CLIENT_ID = saved.id;
+      if (saved.secret === undefined) delete env.SSO_GOOGLE_CLIENT_SECRET;
+      else env.SSO_GOOGLE_CLIENT_SECRET = saved.secret;
+    }
   });
 
   it("an operator's values come through, and the latest defaults to the minimum", async () => {
@@ -120,6 +139,7 @@ describe("GET /api/v1/app/version", () => {
       latest: { ios: "1.5.2", android: "1.3" },
       storeUrls: { ios: "https://apps.apple.com/app/id123", android: null },
       message: "Please update before Monday.",
+      ssoProviders: [],
     });
     expect(res.headers.get("cache-control")).toBe("no-store");
   });

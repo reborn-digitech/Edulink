@@ -5,7 +5,7 @@ import { UpdateRequired } from "@/screens/shared/update-required";
 import { renderApp } from "../utils";
 
 /** The update screen on its own, no router and no root layout: what it says, and where its one button goes. */
-const POLICY = { minimum: { ios: "0.2.0", android: "0.2.0" }, latest: { ios: "0.3.0", android: "0.3.1" }, storeUrls: { ios: "https://apps.apple.com/app/id1", android: "https://play.google.com/store/apps/details?id=zz" }, message: null };
+const POLICY = { minimum: { ios: "0.2.0", android: "0.2.0" }, latest: { ios: "0.3.0", android: "0.3.1" }, storeUrls: { ios: "https://apps.apple.com/app/id1", android: "https://play.google.com/store/apps/details?id=zz" }, message: null, ssoProviders: [] as ("google" | "microsoft" | "apple")[] };
 
 describe("the update screen", () => {
   const os = Platform.OS;

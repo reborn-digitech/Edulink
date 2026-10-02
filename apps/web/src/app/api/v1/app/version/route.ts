@@ -1,6 +1,7 @@
 import { appVersionSchema } from "@edulink/contracts";
 import { appVersionPolicy } from "@/lib/app-release";
 import { apiFailure, ok } from "@/lib/api-v1";
+import { enabledProviders } from "@/lib/sso";
 
 /**
  * GET /api/v1/app/version — the kill switch, open to anyone.
@@ -8,11 +9,12 @@ import { apiFailure, ok } from "@/lib/api-v1";
  * No session, because the phone asks before it has one, and no caching
  * (`ok` sets no-store), because the whole point is that an operator's change
  * to APP_MIN_VERSION_* reaches the next start of every phone rather than the
- * one after a cache expires.
+ * one after a cache expires. It also says which sign-in providers are
+ * configured, which the phone's sign-in screen asks before it offers one.
  */
 export async function GET() {
   try {
-    return ok(appVersionSchema.parse(appVersionPolicy()));
+    return ok(appVersionSchema.parse({ ...appVersionPolicy(), ssoProviders: enabledProviders() }));
   } catch (error) {
     return apiFailure(error, "api/v1/app/version");
   }
