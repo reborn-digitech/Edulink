@@ -349,6 +349,29 @@ jobs:
             sleep 1
           done
           curl -sf http://localhost:3000/api/health
+      - name: Inter, the face the pages' widths are measured in
+        # The pages are set in the system's face (globals.css --font-sans:
+        # ui-sans-serif, system-ui, …, Roboto, …, Arial, sans-serif), which on
+        # the runner is DejaVu Sans — wider than any phone's face, so the walk
+        # and the matrix measured widths no phone draws and compared pictures no
+        # phone shows. Inter (public/fonts/inter, OFL, the face the certificates
+        # ship) goes in the user's font directory and fontconfig is told to
+        # prefer it for sans-serif and system-ui, so Chromium sets the pages in
+        # it — as the mobile-e2e job installs Roboto for the phone's.
+        run: |
+          mkdir -p ~/.fonts ~/.config/fontconfig
+          cp apps/web/public/fonts/inter/*.ttf ~/.fonts/
+          cat > ~/.config/fontconfig/fonts.conf <<'EOF'
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+          <fontconfig>
+            <alias binding="strong"><family>sans-serif</family><prefer><family>Inter</family></prefer></alias>
+            <alias binding="strong"><family>system-ui</family><prefer><family>Inter</family></prefer></alias>
+          </fontconfig>
+          EOF
+          fc-cache -f
+          fc-match sans-serif
+          fc-match system-ui
       - name: Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
