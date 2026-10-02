@@ -33,7 +33,7 @@ export function PaidGateList({ gate }: { gate: GigPaidGate }) {
     [gate.dutyDone, gate.dutyDone ? t("gigs.gateDuty") : t("gigs.gateDutyOwed", { count: gate.oneToOnesOwed })],
   ];
   return (
-    <View style={{ gap: th.space[1] }} accessibilityRole="list">
+    <View style={{ gap: th.space[1] }}>
       {!gate.paymentsOn ? (
         <Text variant="sm" tone="muted">
           {t("gigs.gateOff")}
