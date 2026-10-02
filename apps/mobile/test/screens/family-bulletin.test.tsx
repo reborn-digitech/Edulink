@@ -100,7 +100,9 @@ describe("the bulletin", () => {
     const R2 = "/api/v1/shared/bulletin/comments/h2/review";
     const { fetch } = await renderFamily(withToasts, ME_STUDENT, { [PATH]: () => page([POST], null, 2), [HELD]: () => ({ items: HELD_ITEMS }), [R1]: () => ({ ok: true }), [R2]: () => ({ ok: true }) });
     expect(await screen.findByText("Comments waiting (2)")).toBeTruthy();
-    expect(screen.getByText("ZZ Which day is it?")).toBeTruthy();
+    // The heading's count is the page's; the comments themselves are a second fetch, and on a slow runner the
+    // heading was drawn before they came (run 36950234257, "Unable to find an element with text").
+    expect(await screen.findByText("ZZ Which day is it?")).toBeTruthy();
     expect(screen.getByText("Shared feed")).toBeTruthy();
     expect(screen.getByText("Reply")).toBeTruthy();
     await press(screen.getByRole("button", { name: /^On: ZZ Science fair/ }));
