@@ -36,9 +36,10 @@ The code was read for every step. Where an older runbook disagrees, the code win
   Cloudflare's published ranges (`src/lib/cloudflare.ts`) is keyed on `CF-Connecting-IP`; one that reaches Fly
   directly is keyed on its own address whatever headers it sends. Set the flag in the same change that turns the
   proxy on, not before.
-- **A bucket is required, and nothing enforces it.** `fly.toml` runs two web machines and mounts no volume.
-  With no `STORAGE_*` variables the app writes uploads to a disk the next deploy throws away, and `env.ts`
-  reports nothing (only a half-set bucket is fatal).
+- **A bucket is required, and the server enforces it.** `fly.toml` runs two web machines and mounts no
+  volume, so without the five `STORAGE_*` bucket variables uploads would land on a disk the next deploy
+  throws away. A deployed server on Fly with no bucket refuses to boot (`env.ts`); elsewhere it boots without
+  one only when `STORAGE_DIR` is an absolute path, i.e. one machine with a mounted volume.
 - **This replaces `docs/go-live-checklist.md`**, whose first-school step (`/register`) and Cloudflare line no
   longer match.
 
@@ -251,7 +252,7 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 | `MESSAGE_TEMPLATE_IDS` | required | empty while SMS or WhatsApp is live | one-line JSON: `{"absence":{"sms":{"en":"1107…","hi":"…","mr":"…"},"whatsapp":{"en":"HX…"}},…}` by template key and language. Malformed JSON is only a warning: check it with `node -e 'JSON.parse(process.argv[1])' "$VALUE"` |
 | `FILE_LINK_SECRET` | required | shorter than 32 characters | `openssl rand -base64 48` |
 | `FEES_SECRET_KEY` | set it | set but not 32 bytes | `openssl rand -base64 32` |
-| `STORAGE_BUCKET`, `STORAGE_S3_ENDPOINT`, `STORAGE_S3_REGION`, `STORAGE_S3_ACCESS_KEY_ID`, `STORAGE_S3_SECRET_ACCESS_KEY` | required for two machines | some set and some not, or an `http://` endpoint | from 0.5. R2's region is `auto`. Optional: `STORAGE_S3_PREFIX`, `STORAGE_S3_PATH_STYLE` |
+| `STORAGE_BUCKET`, `STORAGE_S3_ENDPOINT`, `STORAGE_S3_REGION`, `STORAGE_S3_ACCESS_KEY_ID`, `STORAGE_S3_SECRET_ACCESS_KEY` | required | none set on Fly (or off Fly with a relative `STORAGE_DIR`), some set and some not, or an `http://` endpoint | from 0.5. R2's region is `auto`. Optional: `STORAGE_S3_PREFIX`, `STORAGE_S3_PATH_STYLE` |
 | `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` | `+91` | never | the default is `+91`; set it explicitly |
 | `SUPPORT_EMAIL` | recommended | never | from 0.17. Shown on `/privacy` and `/delete-account` |
 | `SENTRY_DSN` | recommended | never | from 0.16 (Phase 5) |
@@ -1066,7 +1067,7 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 | An SMTP provider with the domain's mail records (0.6) | the first boot (`EMAIL_TRANSPORT=devbox` is fatal) | owner, engineer |
 | Twilio, a DLT entity and header, 26 approved SMS bodies (0.7) | the first boot (`SMS_TRANSPORT=devbox` and an empty `MESSAGE_TEMPLATE_IDS` are fatal) | owner |
 | Managed Postgres 16 with PITR (0.4) | everything | owner, engineer |
-| An uploads bucket (0.5) | two web machines without losing uploads | owner, engineer |
+| An uploads bucket (0.5) | the first boot (a deployed server on Fly refuses to start without one) | owner, engineer |
 | The image built with `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (3.2, 3.3) | browser push; with option A, the first boot | engineer |
 | The company's Razorpay account with KYC (0.9) | paid workshop seats | owner |
 | The company's GST details on `/root/gigs` (0.10, 4.8) | recording any payout to an expert | owner, operator |

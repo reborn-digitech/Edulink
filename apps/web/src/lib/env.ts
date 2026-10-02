@@ -582,6 +582,27 @@ export function checkEnv(): EnvProblem[] {
   const storage = readStorageConfig();
   for (const problem of storage.problems) problems.push({ ...problem, fatal: isProd });
 
+  // No bucket at all on a deployed server: uploads go to a disk, and nothing
+  // said so. On Fly the disk is each machine's own — fly.toml keeps two web
+  // machines and mounts no volume — so a file uploaded through one is missing
+  // on the other and gone at the next deploy; a volume would not help, since
+  // Fly volumes are per machine. Elsewhere, ONE machine with a mounted volume
+  // is a real choice, and it is made by naming the volume: an absolute
+  // STORAGE_DIR. The image's default ./storage is the container's own layer.
+  if (isProd && !storage.bucket && storage.problems.length === 0) {
+    const onFly = Boolean(process.env.FLY_APP_NAME);
+    const onVolume = (process.env.STORAGE_DIR?.trim() ?? "").startsWith("/");
+    if (onFly || !onVolume) {
+      problems.push({
+        key: "STORAGE_BUCKET",
+        message: onFly
+          ? "No upload bucket on a deployed server: on Fly each web machine has its own disk and a deploy replaces it, so logos, photos and attachments would vanish. Set the five STORAGE_* bucket variables (docs/runbooks/deploy.md)."
+          : `No upload bucket on a deployed server, and STORAGE_DIR (${storage.dir}) is not a mounted volume: uploads would be lost when the container is replaced. Set the five STORAGE_* bucket variables, or — on ONE machine with a persistent volume — set STORAGE_DIR to the volume's absolute path.`,
+        fatal: true,
+      });
+    }
+  }
+
   // The jobs runner without the owner connection would run every job under
   // the app role, and every cross-tenant sweep would quietly find nothing.
   if (process.env.JOBS_RUNNER === "1") {

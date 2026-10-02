@@ -33,6 +33,13 @@ const KEYS = [
   "WHATSAPP_TRANSPORT",
   "FEES_GATEWAY_TRANSPORT",
   "VAPID_PUBLIC_KEY_BUILT",
+  "STORAGE_DIR",
+  "FLY_APP_NAME",
+  "STORAGE_BUCKET",
+  "STORAGE_S3_ENDPOINT",
+  "STORAGE_S3_REGION",
+  "STORAGE_S3_ACCESS_KEY_ID",
+  "STORAGE_S3_SECRET_ACCESS_KEY",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -40,8 +47,14 @@ const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
 // The laptop's .env names the devbox fee transport, which a deployed
 // configuration may not carry (decision 0003): every case starts without it,
 // and the ones about it set it. afterEach puts the file's value back.
+// The same for uploads: a deployed server with no bucket refuses to boot
+// unless STORAGE_DIR names a mounted volume, and the cases about other things
+// stand on one (the .env's ./storage would not). The bucket cases set their own.
 beforeEach(() => {
-  delete (process.env as Record<string, string | undefined>).FEES_GATEWAY_TRANSPORT;
+  const env = process.env as Record<string, string | undefined>;
+  delete env.FEES_GATEWAY_TRANSPORT;
+  for (const k of ["FLY_APP_NAME", "STORAGE_BUCKET", "STORAGE_S3_ENDPOINT", "STORAGE_S3_REGION", "STORAGE_S3_ACCESS_KEY_ID", "STORAGE_S3_SECRET_ACCESS_KEY"]) delete env[k];
+  env.STORAGE_DIR = "/data/uploads";
 });
 
 afterEach(() => {
@@ -602,5 +615,74 @@ describe("checkEnv — an image built without the browser's push key", () => {
     set({ ...deployed });
     unset("VAPID_PUBLIC_KEY_BUILT");
     expect(checkEnv()).toEqual([]);
+  });
+});
+
+describe("⚠ checkEnv — a deployed server with nowhere lasting to put uploads", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+    VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+    VAPID_SUBJECT: "mailto:ops@edulink.example",
+    ...GOOD_SMTP,
+    ...GOOD_TWILIO,
+    ...GOOD_FILE_LINKS,
+    ...GOOD_TEMPLATE_IDS,
+  } as const;
+  const BUCKET = {
+    STORAGE_BUCKET: "zz-uploads",
+    STORAGE_S3_ENDPOINT: "https://s3.ap-south-1.amazonaws.com",
+    STORAGE_S3_REGION: "ap-south-1",
+    STORAGE_S3_ACCESS_KEY_ID: "ZZKEY",
+    STORAGE_S3_SECRET_ACCESS_KEY: "zz-secret",
+  } as const;
+
+  it("⚠ on Fly with no bucket refuses to boot, even with an absolute STORAGE_DIR (two machines, no shared disk)", () => {
+    set({ ...deployed, FLY_APP_NAME: "shalaghar", STORAGE_DIR: "/data/uploads" });
+    const problem = checkEnv().find((p) => p.key === "STORAGE_BUCKET");
+    expect(problem?.fatal).toBe(true);
+    expect(problem!.message).toMatch(/on Fly each web machine has its own disk/);
+    expect(() => assertEnv()).toThrow(/STORAGE_BUCKET/);
+  });
+
+  it("⚠ off Fly with no bucket and the default ./storage refuses to boot, naming both ways out", () => {
+    set({ ...deployed, STORAGE_DIR: "./storage" });
+    const problem = checkEnv().find((p) => p.key === "STORAGE_BUCKET");
+    expect(problem?.fatal).toBe(true);
+    expect(problem!.message).toMatch(/STORAGE_DIR to the volume's absolute path/);
+    unset("STORAGE_DIR");
+    expect(checkEnv().find((p) => p.key === "STORAGE_BUCKET")?.fatal).toBe(true);
+  });
+
+  it("off Fly, one machine with a volume named by an absolute STORAGE_DIR boots", () => {
+    set({ ...deployed, STORAGE_DIR: "/data/uploads" });
+    expect(checkEnv()).toEqual([]);
+  });
+
+  it("a complete bucket boots on Fly and off it", () => {
+    set({ ...deployed, ...BUCKET, FLY_APP_NAME: "shalaghar", STORAGE_DIR: "./storage" });
+    expect(checkEnv()).toEqual([]);
+    unset("FLY_APP_NAME");
+    expect(checkEnv()).toEqual([]);
+  });
+
+  it("a half-set bucket is still reported as the missing variables, not twice", () => {
+    set({ ...deployed, ...BUCKET, FLY_APP_NAME: "shalaghar" });
+    unset("STORAGE_S3_REGION");
+    expect(checkEnv().map((p) => p.key)).toEqual(["STORAGE_S3_REGION"]);
+  });
+
+  it("a laptop, and CI's production server on localhost, keep the disk", () => {
+    for (const env of [
+      { NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" },
+      { NODE_ENV: "production", NEXT_PUBLIC_APP_URL: "http://localhost:3000" },
+    ]) {
+      set({ ...deployed, ...env, STORAGE_DIR: "./storage" });
+      expect(checkEnv().some((p) => p.key === "STORAGE_BUCKET"), env.NODE_ENV).toBe(false);
+    }
   });
 });
