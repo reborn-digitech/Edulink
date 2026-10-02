@@ -15,7 +15,13 @@ import "server-only";
  */
 
 export type RealtimeEvent =
-  | { type: "attendance.updated"; classId: string; dateKey: string }
+  /**
+   * clientIds: the idempotency keys of the marks applied, so the register
+   * that sent them can tell its own save from a colleague's and leave its
+   * roster alone (a refetch under a teacher's hand would read as the page
+   * fighting them). Opaque random ids, minted on the device; nothing in them.
+   */
+  | { type: "attendance.updated"; classId: string; dateKey: string; clientIds?: string[] }
   | { type: "attendance.session.finalized"; classId: string; dateKey: string }
   | { type: "grade.updated"; studentMembershipId: string; assignmentId: string }
   | { type: "assignment.published"; classId: string; assignmentId: string }
@@ -23,7 +29,9 @@ export type RealtimeEvent =
   | { type: "conversation.message"; conversationId: string }
   | { type: "post.status"; postId: string; status: string }
   | { type: "notification"; userId: string }
-  | { type: "checklist.updated"; schoolId: string };
+  | { type: "checklist.updated"; schoolId: string }
+  /** The board for a day changed: a cover named, taken away, taken up or declined. On the school channel and the substitute's own. */
+  | { type: "substitution.updated"; dateKey: string; slotId: string };
 
 type Subscriber = {
   channels: Set<string>;

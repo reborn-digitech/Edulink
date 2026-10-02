@@ -86,7 +86,7 @@ export async function saveAttendanceBatch(opts: {
    * back. Nothing about which marks apply changes: the replay and stale-mark
    * rules below are the same, only now they run on `tx`.
    */
-  const { rejected, session, applied, skipped, newlyAbsent } = await db.$tenantTransaction(async (raw: unknown) => {
+  const { rejected, session, applied, skipped, newlyAbsent, appliedClientIds } = await db.$tenantTransaction(async (raw: unknown) => {
     const tx = raw as RegisterTx;
 
     // Only students actually enrolled in THIS class, in THIS school, may be
@@ -118,7 +118,7 @@ export async function saveAttendanceBatch(opts: {
     // empty one — must not leave one behind: the audit found eighteen registers
     // "taken" that held no marks at all. The rejections are still reported.
     if (valid.length === 0) {
-      return { rejected, session: null, applied: 0, skipped: 0, newlyAbsent: [] };
+      return { rejected, session: null, applied: 0, skipped: 0, newlyAbsent: [], appliedClientIds: [] };
     }
 
     // The session row is the unit that makes (class, date) unique. upsert rather
@@ -144,6 +144,8 @@ export async function saveAttendanceBatch(opts: {
     let applied = 0;
     let skipped = 0;
     const newlyAbsent: { studentMembershipId: string; status: AttendanceStatus }[] = [];
+    // Handed to the live event so the register that sent them knows the save was its own.
+    const appliedClientIds: string[] = [];
 
     for (const mark of valid) {
       const previous = byStudent.get(mark.studentMembershipId);
@@ -191,6 +193,7 @@ export async function saveAttendanceBatch(opts: {
       });
 
       applied++;
+      appliedClientIds.push(mark.clientId);
 
       // Told on every change INTO an absence: present → late, and also late →
       // absent, which used to slip through as "already not present".
@@ -201,7 +204,7 @@ export async function saveAttendanceBatch(opts: {
       }
     }
 
-    return { rejected, session, applied, skipped, newlyAbsent };
+    return { rejected, session, applied, skipped, newlyAbsent, appliedClientIds };
   });
 
   if (applied > 0 && session) {
@@ -209,6 +212,7 @@ export async function saveAttendanceBatch(opts: {
       type: "attendance.updated",
       classId,
       dateKey,
+      clientIds: appliedClientIds,
     });
 
     await audit({

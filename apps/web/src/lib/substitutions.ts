@@ -5,6 +5,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
+import { channel, publish } from "./realtime";
 import { closedOn } from "./holidays";
 import { approvedLeaveBetween } from "./leave";
 import { readJsonArray } from "./json";
@@ -85,6 +86,17 @@ const SLOT_SELECT = {
 
 /** A lesson counts as covered when someone is named and has not declined; a declined cover is the office's to reassign. */
 const isCovered = (l: Lesson) => Boolean(l.substitute && !l.substitute.declinedAt);
+
+/**
+ * The live word that the board for a day changed, after the row is written:
+ * the office and the head hear it on the school channel and refresh the
+ * board they have open; the teachers named (the one covering, and the one
+ * released by a reassignment) hear it on their own staff channel.
+ */
+function boardChanged(schoolId: string, dateKey: string, slotId: string, staffMembershipIds: (string | null | undefined)[]): void {
+  const channels = [channel.school(schoolId), ...staffMembershipIds.filter((id): id is string => Boolean(id)).map((id) => channel.staff(id))];
+  publish(channels, { type: "substitution.updated", dateKey, slotId });
+}
 
 /** The board for a day: today when none is asked for. */
 export async function substitutionBoard(ctx: ActiveContext, date?: string | null): Promise<Board> {
@@ -231,6 +243,7 @@ export async function assignSubstitute(ctx: ActiveContext, input: z.infer<typeof
     await notify({ userId: previous.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverReleased", titleVars: vars, bodyKey: "notifTitle.coverReleasedBody", bodyVars: vars, url: "/teacher", meta: { slotId: slot.id, dateKey: input.dateKey } });
   }
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.assign", targetType: "TimetableSlot", targetId: slot.id, meta: { dateKey: input.dateKey, substituteMembershipId: sub.id, replaced: Boolean(previous) } });
+  boardChanged(caller.schoolId, input.dateKey, slot.id, [sub.id, existing?.substituteMembershipId]);
   return { changed: true };
 }
 
@@ -239,13 +252,14 @@ export async function clearSubstitution(ctx: ActiveContext, input: z.infer<typeo
   const caller = office(ctx);
   const existing = await db.substitution.findFirst({
     where: { slotId: input.slotId, dateKey: input.dateKey, schoolId: caller.schoolId },
-    select: { id: true, substitute: { select: { userId: true } }, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: { subject: true, class: { select: { name: true } }, period: { select: { name: true } } } } },
+    select: { id: true, substituteMembershipId: true, substitute: { select: { userId: true } }, absent: { select: { user: { select: { name: true, preferredName: true } } } }, slot: { select: { subject: true, class: { select: { name: true } }, period: { select: { name: true } } } } },
   });
   if (!existing) return { changed: false };
   await db.substitution.delete({ where: { id: existing.id } });
   const vars = { subject: existing.slot.subject, className: existing.slot.class.name, period: existing.slot.period.name, date: input.dateKey, name: nameOf(existing.absent.user) };
   await notify({ userId: existing.substitute.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverReleased", titleVars: vars, bodyKey: "notifTitle.coverReleasedBody", bodyVars: vars, url: "/teacher", meta: { slotId: input.slotId, dateKey: input.dateKey } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.clear", targetType: "TimetableSlot", targetId: input.slotId, meta: { dateKey: input.dateKey } });
+  boardChanged(caller.schoolId, input.dateKey, input.slotId, [existing.substituteMembershipId]);
   return { changed: true };
 }
 
@@ -315,6 +329,7 @@ export async function acknowledgeCover(ctx: ActiveContext, coverId: string): Pro
   if (cover.acknowledgedAt && !cover.declinedAt) return { changed: false, state: "ACKNOWLEDGED" };
   await db.substitution.update({ where: { id: cover.id }, data: { acknowledgedAt: new Date(), declinedAt: null, declineReason: null } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.acknowledge", targetType: "Substitution", targetId: cover.id, meta: { slotId: cover.slotId, dateKey: cover.dateKey, afterDecline: Boolean(cover.declinedAt) } });
+  boardChanged(caller.schoolId, cover.dateKey, cover.slotId, [caller.membershipId]);
   return { changed: true, state: "ACKNOWLEDGED" };
 }
 
@@ -340,6 +355,7 @@ export async function declineCover(ctx: ActiveContext, coverId: string, reason: 
   const url = `/admin/substitutions?date=${cover.dateKey}`;
   await Promise.all(office.map((m) => notify({ userId: m.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "notifTitle.coverDeclined", titleVars: vars, bodyKey: "notifTitle.coverDeclinedBody", bodyVars: vars, url, meta: { event: "cover.declined", coverId: cover.id, slotId: cover.slotId, dateKey: cover.dateKey } })));
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "substitutions.decline", targetType: "Substitution", targetId: cover.id, meta: { slotId: cover.slotId, dateKey: cover.dateKey, told: office.length } });
+  boardChanged(caller.schoolId, cover.dateKey, cover.slotId, [caller.membershipId]);
   return { changed: true, state: "DECLINED" };
 }
 

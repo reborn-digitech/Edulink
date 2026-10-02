@@ -8,6 +8,7 @@ import { getT } from "@/lib/i18n/server";
 import { Avatar } from "@/components/ui/avatar";
 import { PersonLink } from "@/components/person-link";
 import { ReplyBox } from "./reply-box";
+import { ThreadLive } from "./thread-live";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
@@ -49,6 +50,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
 
   return (
     <div className="mx-auto flex max-w-2xl flex-col">
+      <ThreadLive threadId={thread.id} />
       <Link
         href="/remarks"
         className="mb-4 inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg"

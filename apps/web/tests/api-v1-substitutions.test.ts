@@ -16,6 +16,7 @@ import { GET as mineGet } from "@/app/api/v1/staff/substitutions/me/route";
 import { GET as weekGet, POST as weekPost } from "@/app/api/v1/office/school-week/route";
 import { GET as todayGet } from "@/app/api/v1/staff/today/route";
 import { closedOn } from "@/lib/holidays";
+import { channel, subscribe, type RealtimeEvent } from "@/lib/realtime";
 import { addDaysToKey, parseTeachingDays, todayKey, weekdayOfKey } from "@/lib/dates";
 
 const db = new PrismaClient();
@@ -127,12 +128,17 @@ describe("the board", () => {
 
   it("assigns — the same person again a no-op, a clash refused, the absent teacher refused, the wrong day refused — clears, and the substitute sees the covers on their Today", async () => {
     await as("ADMIN");
+    // The office's open board hears each change on the school channel; a no-op says nothing.
+    const heard: RealtimeEvent[] = [];
+    const unsubscribe = subscribe([channel.school(schoolId)], (event) => heard.push(event));
     const assign = (body: unknown) => assignPost(json("/api/v1/office/substitutions", body));
     let res = await assign({ dateKey: today, slotId: slotP1, substituteMembershipId: teacherB });
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ changed: true });
+    expect(heard).toEqual([{ type: "substitution.updated", dateKey: today, slotId: slotP1 }]);
     res = await assign({ dateKey: today, slotId: slotP1, substituteMembershipId: teacherB });
     expect(await res.json()).toEqual({ changed: false });
+    expect(heard).toHaveLength(1);
     expect((await assign({ dateKey: today, slotId: slotP1, substituteMembershipId: teacherC })).status).toBe(403);
     expect((await assign({ dateKey: today, slotId: slotP1, substituteMembershipId: teacherA })).status).toBe(403);
     expect((await assign({ dateKey: addDaysToKey(today, 1), slotId: slotP1, substituteMembershipId: teacherB })).status).toBe(403);
@@ -162,10 +168,14 @@ describe("the board", () => {
     await expect((await mineGet(get("/api/v1/staff/substitutions/me"))).json().then((v) => v.items)).resolves.toEqual([]);
 
     await as("PRINCIPAL");
+    heard.length = 0;
     res = await clearPost(json("/api/v1/office/substitutions/clear", { dateKey: today, slotId: slotP2 }));
     expect(await res.json()).toEqual({ changed: true });
+    expect(heard).toEqual([{ type: "substitution.updated", dateKey: today, slotId: slotP2 }]);
     res = await clearPost(json("/api/v1/office/substitutions/clear", { dateKey: today, slotId: slotP2 }));
     expect(await res.json()).toEqual({ changed: false });
+    expect(heard).toHaveLength(1);
+    unsubscribe();
     board = await (await boardGet(get("/api/v1/office/substitutions"))).json();
     expect(board).toMatchObject({ covered: 1, uncovered: 1 });
     await as("B");

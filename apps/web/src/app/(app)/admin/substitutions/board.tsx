@@ -10,7 +10,9 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { useEvents } from "@/lib/use-events";
 import { formatTimeRange } from "@/lib/school-day";
+import { LiveNotice } from "@/components/live-notice";
 import { assignSubstituteAction, clearSubstitutionAction } from "./actions";
 
 /**
@@ -20,6 +22,31 @@ import { assignSubstituteAction, clearSubstitutionAction } from "./actions";
  * chooser on "Change". Every write is one lesson at a time — the board is
  * worked at eleven with the bell about to go, not saved in a batch.
  */
+/**
+ * The board's ear: a cover named, taken away, taken up or declined by
+ * anyone in the school on this day (src/lib/substitutions.ts publishes
+ * `substitution.updated` on the school channel) re-reads the page, so two
+ * people at the office desk see one board. Rendered by the page whether or
+ * not there are lessons yet, since the first cover of the day is the one
+ * that makes a board. A row being edited keeps its chooser and its note:
+ * the refresh brings new props, not new state.
+ */
+export function BoardLive({ dateKey }: { dateKey: string }) {
+  const t = useT();
+  const router = useRouter();
+  const [changedAt, setChangedAt] = useState<number | null>(null);
+  useEvents(
+    (event) => {
+      if (event.type !== "substitution.updated" || event.dateKey !== dateKey) return;
+      router.refresh();
+      setChangedAt(Date.now());
+    },
+    // Back from a hidden tab: the board is re-read, quietly.
+    { types: ["substitution.updated"], onResume: () => router.refresh() },
+  );
+  return <LiveNotice stamp={changedAt}>{t("substitutions.boardChanged")}</LiveNotice>;
+}
+
 export function Board({ board }: { board: SubstitutionBoard }) {
   return (
     <ul className="divide-y divide-border">
@@ -35,8 +62,13 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  // A declined cover opens the picker at once: the lesson is the office's to give to someone else.
-  const [open, setOpen] = useState(lesson.substitute === null || Boolean(lesson.substitute.declinedAt));
+  // "Change" on a covered lesson opens the chooser by hand. An uncovered or
+  // declined lesson shows it whatever was pressed: derived from the lesson,
+  // not copied into state at mount, so a cover cleared by this row or by a
+  // colleague (the board refreshes live) hands the chooser straight back.
+  const [opened, setOpened] = useState(false);
+  const open = opened || lesson.substitute === null || Boolean(lesson.substitute.declinedAt);
+  const setOpen = setOpened;
   const [who, setWho] = useState(lesson.substitute?.membershipId ?? lesson.candidates[0]?.membershipId ?? "");
   const [note, setNote] = useState(lesson.substitute?.note ?? "");
   const [error, setError] = useState<string | null>(null);

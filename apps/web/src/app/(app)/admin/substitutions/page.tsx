@@ -11,7 +11,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { getLocale, getT } from "@/lib/i18n/server";
-import { Board } from "./board";
+import { Board, BoardLive } from "./board";
 import { DayPicker } from "./day-picker";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -77,6 +77,8 @@ export default async function SubstitutionsPage({ searchParams }: { searchParams
               )}
             </div>
           </div>
+
+          <BoardLive dateKey={date} />
 
           {board.closed ? (
             <p className="flex items-center gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft px-3 py-2 text-sm text-warn">

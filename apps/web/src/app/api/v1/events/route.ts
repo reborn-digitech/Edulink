@@ -62,6 +62,7 @@ const KEEPALIVE_MS = Number(process.env.EVENTS_KEEPALIVE_MS) > 0 ? Number(proces
 export async function GET(request: Request) {
   const ctx = await getSession();
   if (!ctx) return new Response(null, { status: 401 });
+  if (request.signal.aborted) return new Response(null, { status: 204 });
   if ((open.get(ctx.sessionId) ?? 0) >= STREAMS_PER_SESSION) return new Response(null, { status: 429 });
   open.set(ctx.sessionId, (open.get(ctx.sessionId) ?? 0) + 1);
   // Once, whichever of abort, cancel and the session check comes first.
@@ -74,7 +75,24 @@ export async function GET(request: Request) {
     else open.set(ctx.sessionId, n);
   };
 
+  /**
+   * THE ABORT LISTENER GOES ON BEFORE THE NEXT AWAIT. A page that opens the
+   * stream and closes it at once — React's development double-mount does
+   * exactly that, and so does a tab closed while the page loads — aborts
+   * the request while `channelsFor` is still reading the database. A
+   * listener attached only once the stream started never heard that abort,
+   * the slot was never released, and four such opens locked the session out
+   * of live updates (429) until the server restarted. Until the stream
+   * starts, closing is only letting the slot go; `start` upgrades it.
+   */
+  let close: () => void = release;
+  request.signal.addEventListener("abort", () => close());
+
   const channels = await channelsFor(ctx);
+  if (request.signal.aborted) {
+    close();
+    return new Response(null, { status: 204 });
+  }
 
   const encoder = new TextEncoder();
   let stop = () => {};
@@ -90,7 +108,7 @@ export async function GET(request: Request) {
       };
       send(`event: ready\ndata: ${JSON.stringify({ channels })}\n\n`);
       stop = subscribe(channels, (event) => send(`event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`));
-      const close = () => {
+      close = () => {
         stop();
         if (ticker) clearInterval(ticker);
         release();
@@ -112,12 +130,11 @@ export async function GET(request: Request) {
           }
         });
       }, KEEPALIVE_MS);
-      request.signal.addEventListener("abort", close);
+      // Aborted between the check above and here: the listener ran the old, slot-only close.
+      if (request.signal.aborted) close();
     },
     cancel() {
-      stop();
-      if (ticker) clearInterval(ticker);
-      release();
+      close();
     },
   });
   return new Response(stream, {

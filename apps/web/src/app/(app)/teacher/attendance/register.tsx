@@ -16,6 +16,8 @@ import { cn } from "@/lib/cn";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { enqueue, newClientId, countQueued } from "@/lib/offline-queue";
 import { useT } from "@/lib/i18n";
+import { useEvents } from "@/lib/use-events";
+import { LiveNotice } from "@/components/live-notice";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { RegisterAbsenceNote } from "@edulink/contracts";
 
@@ -78,6 +80,70 @@ export function Register({
   // Marks the user has changed but not yet sent, keyed by membershipId.
   const dirty = useRef(new Map<string, { status: AttendanceStatus; note: string | null; clientId: string; markedAt: string }>());
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /* ---- a colleague's marks, live ----
+   *
+   * The events stream says the register for this class and day changed. If
+   * every clientId on the event is one this tab minted, the save was ours
+   * and the roster already shows it. Otherwise the marks are refetched and
+   * laid over the roster — except where this tab has a mark of its own that
+   * is not yet confirmed by the server (unsent, in flight, or queued in the
+   * outbox): the teacher's own hand wins over a stale read every time.
+   */
+  const minted = useRef(new Set<string>());
+  const unconfirmed = useRef(new Map<string, string>());
+  const refetching = useRef<{ again: boolean } | null>(null);
+  const [colleagueAt, setColleagueAt] = useState<number | null>(null);
+  // The roster as last rendered, for a refetch to merge against and compare with.
+  const rosterRef = useRef(roster);
+  useEffect(() => {
+    rosterRef.current = roster;
+  });
+
+  const refetch = useCallback(async () => {
+    if (refetching.current) {
+      refetching.current.again = true;
+      return;
+    }
+    refetching.current = { again: false };
+    try {
+      do {
+        refetching.current.again = false;
+        const response = await fetch(`/api/attendance?classId=${encodeURIComponent(classId)}&date=${encodeURIComponent(dateKey)}`, { cache: "no-store" });
+        if (!response.ok) return;
+        const fresh = (await response.json()) as { roster: RosterEntry[] };
+        const current = rosterRef.current;
+        const mine = new Map(current.map((entry) => [entry.membershipId, entry]));
+        const merged = fresh.roster.map((entry) => {
+          const own = mine.get(entry.membershipId);
+          const held = own && (dirty.current.has(entry.membershipId) || unconfirmed.current.has(entry.membershipId));
+          return held ? { ...entry, status: own.status, note: own.note } : entry;
+        });
+        const changed =
+          merged.length !== current.length ||
+          merged.some((entry, i) => entry.membershipId !== current[i]!.membershipId || entry.status !== current[i]!.status || entry.note !== current[i]!.note);
+        if (!changed) continue;
+        setRoster(merged);
+        // Said only when something on the page moved: a re-read that found nothing new is silent.
+        setColleagueAt(Date.now());
+      } while (refetching.current.again);
+    } catch {
+      // Offline or a dropped read: the roster stays as it was, as it would without the stream.
+    } finally {
+      refetching.current = null;
+    }
+  }, [classId, dateKey]);
+
+  useEvents(
+    (event) => {
+      if (event.type !== "attendance.updated" || event.classId !== classId || event.dateKey !== dateKey) return;
+      const ids = event.clientIds ?? [];
+      const ours = ids.length > 0 && ids.every((id) => minted.current.has(id));
+      if (!ours) void refetch();
+    },
+    // Back from a hidden tab: whatever colleagues marked meanwhile is read now.
+    { types: ["attendance.updated"], onResume: () => void refetch() },
+  );
 
   useEffect(() => {
     const update = () => setOnline(navigator.onLine);
@@ -167,6 +233,10 @@ export function Register({
       }
 
       const result = (await response.json()) as { applied: number; rejected: unknown[] };
+      // Confirmed: a later refetch may show these pupils as the server has them, unless re-marked since.
+      for (const sent of marks) {
+        if (unconfirmed.current.get(sent.studentMembershipId) === sent.clientId) unconfirmed.current.delete(sent.studentMembershipId);
+      }
       setState("saved");
       if (result.rejected.length > 0) {
         toast({
@@ -213,10 +283,13 @@ export function Register({
       ),
     );
 
+    const clientId = newClientId();
+    minted.current.add(clientId);
+    unconfirmed.current.set(membershipId, clientId);
     dirty.current.set(membershipId, {
       status,
       note: note !== undefined ? note : (previous?.note ?? null),
-      clientId: newClientId(),
+      clientId,
       markedAt: new Date().toISOString(),
     });
 
@@ -234,10 +307,13 @@ export function Register({
       current.map((entry) => (entry.status ? entry : { ...entry, status: "PRESENT" as const })),
     );
     for (const entry of unmarked) {
+      const clientId = newClientId();
+      minted.current.add(clientId);
+      unconfirmed.current.set(entry.membershipId, clientId);
       dirty.current.set(entry.membershipId, {
         status: "PRESENT",
         note: entry.note,
-        clientId: newClientId(),
+        clientId,
         markedAt: stamp,
       });
     }
@@ -251,6 +327,7 @@ export function Register({
         setRoster(snapshot);
         for (const entry of unmarked) {
           dirty.current.delete(entry.membershipId);
+          unconfirmed.current.delete(entry.membershipId);
         }
       },
     });
@@ -273,6 +350,9 @@ export function Register({
             <SyncPill state={state} queued={queued} online={online} complete={complete} />
           </span>
         </div>
+        <LiveNotice stamp={colleagueAt} className="mt-1.5">
+          {t("teacher.updatedByColleague")}
+        </LiveNotice>
 
         <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
           {ATTENDANCE_STATUSES.map((status) => (

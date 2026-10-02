@@ -163,6 +163,28 @@ describe("who hears what", () => {
     }
   });
 
+  it("a stream aborted while it is still being set up lets its slot go: four such opens do not lock the session out", async () => {
+    __resetCookies();
+    await createSession(teacherId, { schoolId, role: "TEACHER" });
+    // The development double-mount, and a tab closed mid-load: the request is
+    // aborted before the handler has finished reading who hears what.
+    const aborted = [];
+    for (let i = 0; i < 4; i++) {
+      const controller = new AbortController();
+      const pending = eventsGet(new Request("http://localhost/api/v1/events", { signal: controller.signal }));
+      controller.abort();
+      aborted.push(pending);
+    }
+    for (const res of await Promise.all(aborted)) expect([204, 200]).toContain(res.status);
+    await new Promise((r) => setTimeout(r, 50));
+    const stream = await open();
+    try {
+      expect(await stream.next(2_000)).not.toBe("timeout");
+    } finally {
+      stream.stop();
+    }
+  });
+
   it("a teacher hears their own classes and threads, not the whole school; the office hears the school", async () => {
     __resetCookies();
     await createSession(teacherId, { schoolId, role: "TEACHER" });
@@ -193,6 +215,10 @@ describe("who hears what", () => {
       expect(channels).toContain(channel.school(schoolId));
       publish([channel.class("zz-other-class"), channel.school(schoolId)], { type: "attendance.updated", classId: "zz-other-class", dateKey: "2026-09-24" });
       expect((await office.next(2_000) as { event: string }).event).toBe("attendance.updated");
+      // The board's event, as src/lib/substitutions.ts publishes it: the school channel, so the office's open board hears it.
+      publish([channel.school(schoolId), channel.staff("zz-sub")], { type: "substitution.updated", dateKey: "2026-09-24", slotId: "zz-slot" });
+      const board = await office.next(2_000);
+      expect(board).toMatchObject({ event: "substitution.updated", data: { dateKey: "2026-09-24", slotId: "zz-slot" } });
     } finally {
       office.stop();
     }
