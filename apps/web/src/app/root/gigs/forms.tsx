@@ -6,9 +6,14 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { useT } from "@/lib/i18n";
-import { recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
+import { linkAllExpertsAction, recordGigPaymentAction, recordPayoutAction, retryPaymentAction, saveCompanyAction, saveGigSettingsAction, switchPaymentsAction } from "./actions";
 
-export type Dial = { key: string; label: string; value: number; /** Shown in rupees, kept in paise. */ rupees?: boolean };
+export type Dial = {
+  key: string;
+  label: string;
+  value: number;
+  /** Shown in rupees, kept in paise. */ rupees?: boolean;
+};
 
 /** A group of the operator's dials, whole numbers, saved together; the dials of the other groups are left as they are. */
 export function SettingsForm({ dials, testId }: { dials: Dial[]; testId: string }) {
@@ -94,8 +99,8 @@ export function PaymentForm({ userId, name, disabled }: { userId: string; name: 
   );
 }
 
-/** Paid seats on or off: one button, the opposite of what stands. */
-export function PaymentsSwitch({ on }: { on: boolean }) {
+/** Paid seats on or off: one button, the opposite of what stands; on waits for Route to be ready (the server refuses it too). */
+export function PaymentsSwitch({ on, canTurnOn = true }: { on: boolean; canTurnOn?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -108,7 +113,7 @@ export function PaymentsSwitch({ on }: { on: boolean }) {
         type="button"
         size="sm"
         variant={on ? "danger" : "primary"}
-        disabled={pending}
+        disabled={pending || (!on && !canTurnOn)}
         onClick={() =>
           startTransition(async () => {
             setError(null);
@@ -131,7 +136,44 @@ export function PaymentsSwitch({ on }: { on: boolean }) {
   );
 }
 
-/** A waiting release or refund, tried now. */
+/** The operator's bulk link: every expert ready for Razorpay Route, and every open review asked after. */
+export function LinkAllExperts({ disabled }: { disabled: boolean }) {
+  const t = useT();
+  const router = useRouter();
+  const { toast } = useToast();
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+  return (
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <Button
+        type="button"
+        size="sm"
+        variant="secondary"
+        disabled={pending || disabled}
+        loading={pending}
+        onClick={() =>
+          startTransition(async () => {
+            setError(null);
+            const result = await linkAllExpertsAction();
+            if (!result.ok) return setError(result.error);
+            toast({ tone: "ok", title: result.message });
+            router.refresh();
+          })
+        }
+        data-testid="gig-route-link-all"
+      >
+        {t("gigs.opRouteLinkAll")}
+      </Button>
+      {error && (
+        <span role="alert" className="text-sm font-medium text-danger">
+          {error}
+        </span>
+      )}
+    </span>
+  );
+}
+
+/** A waiting release, transfer or refund, tried now. */
 export function RetryPayment({ paymentId }: { paymentId: string }) {
   const t = useT();
   const router = useRouter();
@@ -167,7 +209,15 @@ export function RetryPayment({ paymentId }: { paymentId: string }) {
   );
 }
 
-export type CompanyFormValues = { legalName: string; gstin: string; address: string; stateCode: string; sacCode: string; invoicePrefix: string; gstPercent: number };
+export type CompanyFormValues = {
+  legalName: string;
+  gstin: string;
+  address: string;
+  stateCode: string;
+  sacCode: string;
+  invoicePrefix: string;
+  gstPercent: number;
+};
 
 /** The company on its invoices: legal name, GSTIN, address, state code, SAC, the series prefix and the GST rate on the commission. */
 export function CompanyForm({ initial }: { initial: CompanyFormValues }) {
@@ -175,7 +225,10 @@ export function CompanyForm({ initial }: { initial: CompanyFormValues }) {
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
-  const [v, setV] = useState({ ...initial, gstPercent: String(initial.gstPercent) });
+  const [v, setV] = useState({
+    ...initial,
+    gstPercent: String(initial.gstPercent),
+  });
   const [error, setError] = useState<string | null>(null);
   const field = (key: keyof typeof v, label: string, extra: Record<string, unknown> = {}) => <TextField key={key} label={label} value={v[key]} autoComplete="off" onChange={(e) => setV((x) => ({ ...x, [key]: e.target.value }))} data-testid={`gig-company-${key}`} {...extra} />;
   return (
@@ -205,11 +258,20 @@ export function CompanyForm({ initial }: { initial: CompanyFormValues }) {
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {field("legalName", t("gigs.opCompanyName"), { maxLength: 160 })}
         {field("gstin", t("gigs.opCompanyGstin"), { maxLength: 20 })}
-        {field("stateCode", t("gigs.opCompanyState"), { maxLength: 2, inputMode: "numeric" })}
+        {field("stateCode", t("gigs.opCompanyState"), {
+          maxLength: 2,
+          inputMode: "numeric",
+        })}
         {field("address", t("gigs.opCompanyAddress"), { maxLength: 400 })}
-        {field("sacCode", t("gigs.opCompanySac"), { maxLength: 8, inputMode: "numeric" })}
+        {field("sacCode", t("gigs.opCompanySac"), {
+          maxLength: 8,
+          inputMode: "numeric",
+        })}
         {field("invoicePrefix", t("gigs.opCompanyPrefix"), { maxLength: 8 })}
-        {field("gstPercent", t("gigs.opCompanyGst"), { maxLength: 3, inputMode: "numeric" })}
+        {field("gstPercent", t("gigs.opCompanyGst"), {
+          maxLength: 3,
+          inputMode: "numeric",
+        })}
       </div>
       <Button type="submit" disabled={pending}>
         {pending ? t("common.saving") : t("gigs.saveSettings")}
@@ -235,7 +297,13 @@ export function PayoutForm({ payoutId, name, disabled }: { payoutId: string; nam
         event.preventDefault();
         setError(null);
         startTransition(async () => {
-          const result = await recordPayoutAction({ payoutId, name, reference, paidAt: paidAt ? new Date(`${paidAt}T12:00:00+05:30`).toISOString() : null, note: note || null });
+          const result = await recordPayoutAction({
+            payoutId,
+            name,
+            reference,
+            paidAt: paidAt ? new Date(`${paidAt}T12:00:00+05:30`).toISOString() : null,
+            note: note || null,
+          });
           if (!result.ok) return setError(result.error);
           toast({ tone: "ok", title: result.message });
           setReference("");

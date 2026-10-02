@@ -101,13 +101,14 @@ describe("sessions and workshops, for a family", () => {
     expect(calls().filter((c) => c.line === `POST ${PATH}/b9/checkout`)).toHaveLength(1);
   });
 
-  it("a paid seat's receipt is fetched as a PDF and handed to the share sheet; a refunded seat has one too", async () => {
+  it("a paid seat's receipt is fetched as a PDF and handed to the share sheet; a refunded seat and one released to the expert have one too", async () => {
     const { calls } = await mountStaff(<FamilySessions />, "PARENT", {
-      [`GET ${PATH}`]: () => json(view([seat({ id: "b9", kind: "WORKSHOP", status: "CONFIRMED", paid: true, pricePaise: 10000, payment: { paymentId: "sp1", status: "HELD", amountPaise: 10000, refundedAt: null } }), seat({ id: "b8", kind: "WORKSHOP", title: "ZZ Refunded workshop", status: "CANCELLED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp8", status: "REFUNDED", amountPaise: 10000, refundedAt: "2030-10-01T00:00:00.000Z" }, canCancel: false })])),
+      [`GET ${PATH}`]: () => json(view([seat({ id: "b9", kind: "WORKSHOP", status: "CONFIRMED", paid: true, pricePaise: 10000, payment: { paymentId: "sp1", status: "HELD", amountPaise: 10000, refundedAt: null } }), seat({ id: "b8", kind: "WORKSHOP", title: "ZZ Refunded workshop", status: "CANCELLED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp8", status: "REFUNDED", amountPaise: 10000, refundedAt: "2030-10-01T00:00:00.000Z" }, canCancel: false }), seat({ id: "b7", kind: "WORKSHOP", title: "ZZ Released workshop", status: "DELIVERED", meetingUrl: null, paid: true, pricePaise: 10000, payment: { paymentId: "sp7", status: "RELEASED", amountPaise: 10000, refundedAt: null }, canCancel: false })])),
       "GET /api/v1/gigs/payments/sp1/receipt": () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }),
     });
-    expect(await screen.findByText("₹100 paid")).toBeTruthy();
-    expect(screen.getAllByRole("button", { name: /^Receipt: / })).toHaveLength(2);
+    expect(await screen.findAllByText("₹100 paid")).toHaveLength(2);
+    expect(screen.getAllByRole("button", { name: /^Receipt: / })).toHaveLength(3);
+    expect(screen.getByRole("button", { name: "Receipt: ZZ Released workshop" })).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Receipt: ZZ Ask an engineer" }));
     await waitFor(() => expect(Sharing.shareAsync).toHaveBeenCalled());
     expect(calls().filter((c) => c.line === "GET /api/v1/gigs/payments/sp1/receipt")).toHaveLength(1);

@@ -4844,43 +4844,72 @@ model GigBooking {
   @@index([studentMembershipId])
 }
 
-/// Where an expert is paid for a seat: THE PAYEE DETAILS THE COMPANY PAYS FROM ITS OWN BANK, typed
-/// by the expert on the "Get paid" card (decision 0004, second amendment of 2 October 2026: the
-/// company collects the seat fee, keeps its commission with a GST invoice, and pays the expert
-/// itself — no gateway linked account, no transfer). A UPI id, or a bank account sealed by
-/// src/lib/secret-box.ts under the binding `gig:payee:<expertUserId>` with its IFSC; the last
-/// four digits are kept in the clear for the operator's eye and the sealed number is NEVER
-/// returned by any API. The GST state code is the place of supply on the invoice; a GSTIN makes
-/// it a B2B invoice. NONE until the details are saved; ACTIVE once they are and KYC is VERIFIED
-/// (src/lib/expert-kyc.ts is the one truth for "verified"); SUSPENDED by the operator with a
-/// note. No school: bound to the person.
+/// Where an expert is paid for a seat: THE EXPERT'S RAZORPAY ROUTE LINKED ACCOUNT, and the details
+/// it was made from, typed by the expert on the "Get paid" card (decision 0004, third amendment of
+/// 2 October 2026: the guardian pays the company's gateway account, the gateway holds the expert's
+/// share as a transfer on hold to this linked account and settles it to the expert's bank when
+/// gigs:release lets it go). A bank account sealed by src/lib/secret-box.ts under the binding
+/// `gig:payee:<expertUserId>` with its IFSC, and the PAN sealed under `gig:payee:<expertUserId>:pan`;
+/// the last four of each kept in the clear for the eye, the sealed values NEVER returned by any API
+/// and opened only to be sent to the gateway. The address, the phone and the GST state go to the
+/// gateway too; the GST state code is also the place of supply on the invoice, a GSTIN makes it
+/// B2B. Onboarding is four gateway calls (account, stakeholder, Route product, its bank details),
+/// each id stored as it is made so a failed step resumes where it stopped. `routeStatus` is the
+/// gateway's activation status: NONE | REQUESTED | NEEDS_CLARIFICATION | UNDER_REVIEW | ACTIVATED
+/// | SUSPENDED. ACTIVE (the view's word) exactly when KYC is VERIFIED, the Route product ACTIVATED
+/// and the bank details the gateway holds are the ones saved here (`routeSubmittedKey`); SUSPENDED
+/// by the operator with a note. `upiId` is kept from the company-collects days and not used for a
+/// seat. No school: bound to the person.
 model ExpertPayoutAccount {
-  expertUserId   String   @id
-  payeeName      String?
-  upiId          String?
-  bankAccountEnc String?
-  bankLast4      String?
-  ifsc           String?
+  expertUserId      String    @id
+  payeeName         String?
+  upiId             String?
+  bankAccountEnc    String?
+  bankLast4         String?
+  ifsc              String?
   /// Two-digit GST state code of the expert: the place of supply.
-  gstStateCode   String?
-  gstin          String?
+  gstStateCode      String?
+  gstin             String?
   /// NONE | ACTIVE | SUSPENDED
-  status         String   @default("NONE")
+  status            String    @default("NONE")
   /// The operator's reason for a suspension.
-  note           String?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  note              String?
+  /// The PAN, sealed; sent to the gateway as the stakeholder's KYC.
+  panEnc            String?
+  panLast4          String?
+  /// The registered address the gateway asks of a linked account, and a phone it can reach.
+  addressLine       String?
+  city              String?
+  postalCode        String?
+  phone             String?
+  /// The gateway's ids, each stored as the step that made it succeeds.
+  linkedAccountId   String?   @unique
+  stakeholderId     String?
+  routeProductId    String?
+  /// NONE | REQUESTED | NEEDS_CLARIFICATION | UNDER_REVIEW | ACTIVATED | SUSPENDED
+  routeStatus       String    @default("NONE")
+  /// JSON [{ field, reason }] — what the gateway still asks for, as it last said.
+  routeRequirements String    @default("[]")
+  /// A digest of the bank details last sent to the gateway; a later edit makes them differ until resent.
+  routeSubmittedKey String?
+  routeCheckedAt    DateTime?
+  /// The gateway's last refusal of a step, for the expert and the operator to read.
+  routeError        String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   expert User @relation("ExpertPayoutAccountOwner", fields: [expertUserId], references: [id], onDelete: Cascade)
 }
 
-/// A guardian's payment for one paid workshop seat, collected by the company on its own gateway
-/// account and held until the session is delivered plus 48 hours (decision 0004, second amendment
-/// of 2 October 2026). INITIATED (the order is made) → PAID (captured; the gross, the commission,
-/// the GST on the commission and the net are frozen, and the family's receipt number taken) → HELD
-/// (on hold for the expert) → DUE (the hold has run; `payoutId` names the expert's OPEN payout) →
-/// PAID_OUT (the company has paid the expert from its bank and recorded the reference) or REFUNDED
-/// (the gross back to the guardian through the gateway; no commission or GST is charged on it);
+/// A guardian's payment for one paid workshop seat. TWO PATHS, frozen on the row as `path`:
+/// ROUTE (decision 0004, third amendment of 2 October 2026; every new seat) — the order carries a
+/// transfer of the net to the expert's linked account ON HOLD, so the gateway, not the company,
+/// holds the expert's share: INITIATED → PAID (captured; the gross, the commission, the GST on the
+/// commission and the net frozen, the family's receipt number taken) → HELD (the transfer is known,
+/// `transferId`) → RELEASED (the hold was taken off once the session was delivered plus 48 hours;
+/// the gateway settles the expert; `payoutId` names the run's payout and its invoice) or REFUNDED
+/// (the gross back with the transfer reversed). COMPANY (the second amendment's rows, kept
+/// readable; none is made now) — HELD → DUE → PAID_OUT by the operator's recorded transfer.
 /// FAILED is an order that failed or expired unpaid. One writer: src/lib/gig-payments.ts, and every
 /// change is audited. `netPaise` is a stored copy of amount − commission − gst, frozen with them at
 /// capture and checked by data:audit. The family's and the expert's row, read by their own user
@@ -4903,8 +4932,14 @@ model SessionPayment {
   orderId         String    @unique
   paymentId       String?
   refundId        String?
-  /// INITIATED | PAID | HELD | DUE | PAID_OUT | REFUNDED | FAILED
+  /// INITIATED | PAID | HELD | RELEASED | DUE | PAID_OUT | REFUNDED | FAILED
   status          String    @default("INITIATED")
+  /// ROUTE — the gateway holds the expert's share as a transfer on hold; COMPANY — the second amendment's rows.
+  path            String    @default("ROUTE")
+  /// The gateway's transfer of the net to the expert's linked account (ROUTE).
+  transferId      String?   @unique
+  /// When the transfer's hold was taken off (ROUTE).
+  releasedAt      DateTime?
   /// When the gateway's capture was recorded: the date on the family's receipt.
   paidAt          DateTime?
   /// When the hold ends: delivered or missed plus 48 hours; a late cancellation, the end plus 48 hours.
@@ -4914,7 +4949,7 @@ model SessionPayment {
   /// When the company's transfer to the expert was recorded (the payout's paidAt).
   paidOutAt       DateTime?
   refundedAt      DateTime?
-  /// REFUND — the gateway call still owed, when it failed and is to be tried again.
+  /// REFUND | RELEASE | TRANSFER — the gateway call still owed, when it failed and is to be tried again.
   pendingAction   String?
   attempts        Int       @default(0)
   lastError       String?
@@ -4936,11 +4971,13 @@ model SessionPayment {
   @@index([pendingAction])
 }
 
-/// What the company owes one expert, and then paid them: the seats whose hold has run, gathered by
-/// gigs:release into the expert's one OPEN payout (netPaise summed, paymentsCount), and recorded
-/// PAID by the operator with the reference of the transfer the company made from its own bank
-/// (decision 0004, second amendment of 2 October 2026). Recording it issues the GigInvoice for the
-/// commission on those seats, in the same transaction. The expert reads their own; the operator
+/// One expert's seats settled together, with the GST tax invoice for the commission on them. ROUTE
+/// (decision 0004, third amendment of 2 October 2026): one RELEASED payout per expert per run of
+/// gigs:release, made after the transfers' holds were taken off — the gateway pays the expert, so
+/// there is no reference to record, and `paidAt` is the release. COMPANY (the second amendment,
+/// kept readable): the seats whose hold had run gathered into the expert's one OPEN payout and
+/// recorded PAID by the operator with the UTR of the company's own transfer. Either way the invoice
+/// is issued in the transaction that settles the payout. The expert reads their own; the operator
 /// every one. No school.
 model ExpertPayout {
   id            String    @id @default(cuid())
@@ -4948,9 +4985,9 @@ model ExpertPayout {
   /// The sum of the net of its payments, kept as what is owed and then what was sent.
   netPaise      Int
   paymentsCount Int
-  /// OPEN | PAID
+  /// OPEN | PAID (COMPANY) | RELEASED (ROUTE)
   status        String    @default("OPEN")
-  /// The UTR of the company's transfer, recorded once.
+  /// The UTR of the company's transfer, recorded once (COMPANY); null for a ROUTE payout.
   reference     String?   @unique
   paidAt        DateTime?
   paidByUserId  String?

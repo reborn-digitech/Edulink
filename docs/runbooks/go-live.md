@@ -126,10 +126,12 @@ Apple, Google, Razorpay, the lawyer.
 - [ ] **0.9 The company's Razorpay account (not needed to go live)** — owner
 
   **What.** A Razorpay account in the company's name with KYC complete, for paid workshop seats (decision
-  0004, second amendment: the company collects). A few days to a week (estimate). Schools' fees never use it
-  (decision 0003).
+  0004, third amendment: Razorpay Route, each expert's share held by Razorpay until the session is held), and
+  **Route switched on for it** — ask Razorpay for Route on the account as a marketplace for workshops by
+  verified experts; it is approved separately from the account (time not published). A few days to a week for
+  the account (estimate). Schools' fees never use it (decision 0003). Until Route is on, every session is free.
 
-  **Verify.** Razorpay shows the account activated and live keys available.
+  **Verify.** Razorpay shows the account activated, live keys available, and Route enabled in the dashboard.
 
 - [ ] **0.10 The company's GST details** — owner
 
@@ -633,11 +635,23 @@ In this order. Each item is switched on, proved, and then the next begins.
   ```
 
   In Razorpay's dashboard add a webhook to `https://<host>/api/webhooks/gateway/sessions` for
-  `payment.captured`, `payment.failed` and `refund.failed`, with the same webhook secret.
+  `payment.captured`, `payment.failed`, `refund.failed`, `transfer.processed`, `transfer.failed`,
+  `product.route.under_review`, `product.route.needs_clarification` and `product.route.activated`, with the
+  same webhook secret.
+
+  **First in Razorpay's test mode.** With the test key and a test webhook against a staging host: one expert
+  presses "Link with Razorpay" on their profile, the account reaches *activated* (the card says so), the
+  operator turns paid seats on, a test family buys a seat, the order carries the transfer on hold (Razorpay's
+  Route dashboard shows it *on hold*), the operator marks it delivered, and after 48 hours the hourly job
+  releases it (the dashboard shows the hold off; the seat reads "Released to your bank"). Then the same with
+  live keys.
 
   **Verify.** The sealed value looks like `v2.<nonce>.<body>.<tag>`. After the restart, no `[env]` line names
-  `GATEWAY_PLATFORM`. Paid seats stay off until 0.11 and 0.12 are answered; when they are, the operator turns
-  the switch on and buys one ₹50 seat with their own family account, then refunds it, before any school sees it.
+  `GATEWAY_PLATFORM`. On `/root/gigs` the "Razorpay Route status" card ticks the gateway, the webhook and the
+  company; the fourth tick comes with the first expert Razorpay activates ("Link every ready expert" sends
+  them all). The switch cannot be turned on before all four (`gigs.refuseRouteNotReady`). Paid seats stay
+  off until 0.11 and 0.12 are answered; when they are, the operator turns the switch on and buys one ₹50 seat
+  with their own family account, then refunds it, before any school sees it.
 
 - [ ] **5.2 Online fees for a school (when one asks)** — engineer, operator
 

@@ -3,16 +3,21 @@ import { createHash } from "node:crypto";
 import { readBounded, WEBHOOK_BODY_LIMIT } from "@/lib/api-v1";
 import { db } from "@/lib/db";
 import { verifySessionsWebhook, webhookSecret } from "@/lib/gig-gateway";
-import { markOrderFailed, markSeatRefundFailed } from "@/lib/gig-payments";
+import { markOrderFailed, markRouteProduct, markSeatRefundFailed, markTransferFailed, markTransferProcessed } from "@/lib/gig-payments";
 import { settleSeatPayment } from "@/lib/gig-sessions";
 import { writeJson } from "@/lib/json";
 
 /**
  * POST /api/webhooks/gateway/sessions — the COMPANY'S gateway telling us what
- * happened to a paid seat (decision 0004, second amendment of 2 October
- * 2026): a capture, a failed attempt or a failed refund — the company
- * collects the whole seat price itself, so there is no transfer and no
- * linked account for the gateway to speak of. The school
+ * happened to a paid seat (decision 0004, third amendment of 2 October
+ * 2026: Razorpay Route): a capture, a failed attempt, a failed refund, and
+ * the held transfer of the expert's share — made (transfer.processed names
+ * it, and the seat is held) or failed (the share sits with the company until
+ * the operator's retry makes it again). Subscribe the webhook to
+ * payment.captured, payment.failed, refund.failed, transfer.processed and
+ * transfer.failed, and to product.route.under_review, needs_clarification and
+ * activated, which move an expert's linked account through the gateway's
+ * review (the hourly job asks after it as well). The school
  * fees webhook (/api/webhooks/razorpay/{schoolId}) is a different door with
  * a different secret: a school's account is the school's, this one is the
  * company's, and neither can forge the other's.
@@ -28,12 +33,12 @@ import { writeJson } from "@/lib/json";
  * non-2xx would only make the gateway retry the same thing. 404 when this
  * server has no gateway, 401 for a bad signature.
  */
-type WebhookBody = { event?: string; id?: string; created_at?: number; payload?: Record<string, { entity?: Record<string, unknown> }> };
+type WebhookBody = { event?: string; id?: string; account_id?: string; created_at?: number; payload?: Record<string, { entity?: Record<string, unknown>; data?: unknown }> };
 
 function signedEventId(event: WebhookBody, kind: string, raw: string): string | null {
   if (typeof event.id === "string" && event.id.trim()) return event.id.trim().slice(0, 120);
   if (!event.event) return null;
-  const entity = (event.payload?.payment?.entity ?? event.payload?.refund?.entity) as { id?: unknown } | undefined;
+  const entity = (event.payload?.payment?.entity ?? event.payload?.refund?.entity ?? event.payload?.transfer?.entity ?? event.payload?.merchant_product?.entity) as { id?: unknown } | undefined;
   const entityId = typeof entity?.id === "string" ? entity.id : null;
   const stamp = typeof event.created_at === "number" ? String(event.created_at) : "";
   if (entityId) return `${kind}:${entityId}:${stamp}`.slice(0, 120);
@@ -63,10 +68,20 @@ export async function POST(request: Request) {
   let outcome = "ignored";
   const payment = event.payload?.payment?.entity as { id?: string; order_id?: string; amount?: number; error_description?: string } | undefined;
   const refund = event.payload?.refund?.entity as { id?: string; error_description?: string; status_details?: { description?: string } } | undefined;
+  const transfer = event.payload?.transfer?.entity as { id?: string; source?: string; error?: { description?: string } } | undefined;
+  const product = event.payload?.merchant_product as { entity?: { id?: string; merchant_id?: string; activation_status?: string }; data?: { requirements?: { field_reference?: string; reason_code?: string }[] } } | undefined;
+  const isSource = (s: string | undefined): s is string => Boolean(s && (s.startsWith("pay_") || s.startsWith("order_")));
   if (kind === "payment.captured" && payment?.id && payment.order_id && typeof payment.amount === "number") {
     outcome = (await settleSeatPayment({ orderId: payment.order_id, gatewayPaymentId: payment.id, amountPaise: payment.amount })).outcome;
   } else if (kind === "payment.failed" && payment?.order_id) {
     outcome = (await markOrderFailed(payment.order_id, payment.error_description ?? "failed at the gateway")) ? "failed" : "ignored";
+  } else if (kind === "transfer.processed" && transfer?.id && isSource(transfer.source)) {
+    outcome = (await markTransferProcessed({ transferId: transfer.id, source: transfer.source })) ? "transfer-known" : "ignored";
+  } else if ((kind === "transfer.failed" || kind === "transfers.failed") && isSource(transfer?.source)) {
+    outcome = (await markTransferFailed({ source: transfer.source, reason: transfer.error?.description ?? "the transfer failed at the gateway" })) ? "transfer-failed" : "ignored";
+  } else if (kind.startsWith("product.route.") && product?.entity?.id) {
+    const accountId = product.entity.merchant_id ?? event.account_id;
+    if (accountId) outcome = (await markRouteProduct({ accountId, productId: product.entity.id, status: product.entity.activation_status ?? kind.slice("product.route.".length), requirements: Array.isArray(product.data?.requirements) ? product.data.requirements : [] })) ? "route-status" : "ignored";
   } else if (kind === "refund.failed" && refund?.id) {
     outcome = (await markSeatRefundFailed(refund.id, refund.error_description ?? refund.status_details?.description ?? "failed at the gateway")) ? "refund-failed" : "ignored";
   }

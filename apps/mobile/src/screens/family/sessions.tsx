@@ -257,7 +257,7 @@ export function FamilySessions() {
   );
 }
 
-const SETTLED = new Set(["PAID", "HELD", "DUE", "PAID_OUT", "REFUNDED", "FAILED"]);
+const SETTLED = new Set(["PAID", "HELD", "RELEASED", "DUE", "PAID_OUT", "REFUNDED", "FAILED"]);
 
 /** A started seat payment: the phone asks after it every few seconds until it is paid, it failed, or a minute has passed. */
 function PayWatch({ flow, onDone, onClose }: { flow: { checkout: GigCheckout; startedAt: number }; onDone: () => void; onClose: () => void }) {

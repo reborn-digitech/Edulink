@@ -5,7 +5,7 @@ import { formatPaise } from "@edulink/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { requireApiOperator, AccessError } from "@/lib/tenancy";
 import { gigSettings, recordGigPayment, saveGigSettings, type GigSettingsView } from "@/lib/gig-questions";
-import { recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled, type CompanyInput, type PayoutRecordInput } from "@/lib/gig-payments";
+import { type CompanyInput, linkAllExperts, type PayoutRecordInput, recordPayout, retrySeatPayment, saveCompanyDetails, setPaymentsEnabled } from "@/lib/gig-payments";
 
 type Result = { ok: true; message: string } | { ok: false; error: string };
 
@@ -20,7 +20,10 @@ async function failure(error: unknown): Promise<{ ok: false; error: string }> {
 export async function saveGigSettingsAction(patch: Partial<GigSettingsView>): Promise<Result> {
   try {
     const ctx = await requireApiOperator();
-    const result = await saveGigSettings(ctx, { ...(await gigSettings()), ...patch });
+    const result = await saveGigSettings(ctx, {
+      ...(await gigSettings()),
+      ...patch,
+    });
     const t = await getT();
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
@@ -38,7 +41,12 @@ export async function recordGigPaymentAction(input: { userId: string; utr: strin
     const t = await getT();
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
-    return { ok: true, message: t("gigs.paymentRecorded", { amount: formatPaise(result.payment.amountPaise, await getLocale()) }) };
+    return {
+      ok: true,
+      message: t("gigs.paymentRecorded", {
+        amount: formatPaise(result.payment.amountPaise, await getLocale()),
+      }),
+    };
   } catch (error) {
     return failure(error);
   }
@@ -58,7 +66,28 @@ export async function switchPaymentsAction(on: boolean): Promise<Result> {
   }
 }
 
-/** A waiting release or refund tried at the gateway now. */
+/** Every expert ready for Razorpay Route linked, every open review asked after (decision 0004, third amendment). */
+export async function linkAllExpertsAction(): Promise<Result> {
+  try {
+    const ctx = await requireApiOperator();
+    const result = await linkAllExperts(ctx);
+    const t = await getT();
+    if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
+    revalidatePath("/root/gigs");
+    return {
+      ok: true,
+      message: t("gigs.opRouteLinked", {
+        activated: result.run.activated,
+        pending: result.run.pending,
+        refused: result.run.refused,
+      }),
+    };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** A waiting release, transfer or refund tried at the gateway now. */
 export async function retryPaymentAction(paymentId: string): Promise<Result> {
   try {
     const ctx = await requireApiOperator();
@@ -66,7 +95,10 @@ export async function retryPaymentAction(paymentId: string): Promise<Result> {
     const t = await getT();
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
-    return { ok: true, message: t("gigs.opRetried", { outcome: result.outcome }) };
+    return {
+      ok: true,
+      message: t("gigs.opRetried", { outcome: result.outcome }),
+    };
   } catch (error) {
     return failure(error);
   }
@@ -90,11 +122,22 @@ export async function saveCompanyAction(input: CompanyInput): Promise<Result> {
 export async function recordPayoutAction(input: { payoutId: string; name: string } & PayoutRecordInput): Promise<Result> {
   try {
     const ctx = await requireApiOperator();
-    const result = await recordPayout(ctx, input.payoutId, { reference: input.reference, paidAt: input.paidAt, note: input.note });
+    const result = await recordPayout(ctx, input.payoutId, {
+      reference: input.reference,
+      paidAt: input.paidAt,
+      note: input.note,
+    });
     const t = await getT();
     if (!result.ok) return { ok: false, error: t(result.errorKey, result.vars) };
     revalidatePath("/root/gigs");
-    return { ok: true, message: t("gigs.opPayoutRecorded", { amount: formatPaise(result.payout.netPaise, await getLocale()), name: input.name, number: result.invoice.number }) };
+    return {
+      ok: true,
+      message: t("gigs.opPayoutRecorded", {
+        amount: formatPaise(result.payout.netPaise, await getLocale()),
+        name: input.name,
+        number: result.invoice.number,
+      }),
+    };
   } catch (error) {
     return failure(error);
   }

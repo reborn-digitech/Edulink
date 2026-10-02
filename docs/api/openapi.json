@@ -90308,6 +90308,7 @@
                                         "INITIATED",
                                         "PAID",
                                         "HELD",
+                                        "RELEASED",
                                         "DUE",
                                         "PAID_OUT",
                                         "REFUNDED",
@@ -91434,6 +91435,7 @@
                         "INITIATED",
                         "PAID",
                         "HELD",
+                        "RELEASED",
                         "DUE",
                         "PAID_OUT",
                         "REFUNDED",
@@ -92450,7 +92452,7 @@
     },
     "/api/v1/expert/payout": {
       "get": {
-        "summary": "Where the company pays the expert — the payee details they saved, the sealed bank account never returned (its last four digits only) — and the four conditions before a workshop seat may be priced",
+        "summary": "The expert's payee details — the sealed bank account and PAN never returned (the last four of each only) — where their Razorpay Route linked account stands, and the four conditions before a workshop seat may be priced",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92495,6 +92497,26 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "panLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "phone": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "gstStateCode": {
                           "type": "string",
                           "nullable": true
@@ -92517,6 +92539,72 @@
                             "razorpay",
                             "off"
                           ]
+                        },
+                        "route": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REQUESTED",
+                                "NEEDS_CLARIFICATION",
+                                "UNDER_REVIEW",
+                                "ACTIVATED",
+                                "SUSPENDED"
+                              ]
+                            },
+                            "requirements": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "field": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "linked": {
+                              "type": "boolean"
+                            },
+                            "needsResend": {
+                              "type": "boolean"
+                            },
+                            "readyToLink": {
+                              "type": "boolean"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "checkedAt": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "error": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "status",
+                            "requirements",
+                            "linked",
+                            "needsResend",
+                            "readyToLink",
+                            "locked",
+                            "checkedAt",
+                            "error"
+                          ],
+                          "additionalProperties": false
                         }
                       },
                       "required": [
@@ -92525,11 +92613,17 @@
                         "upiId",
                         "bankLast4",
                         "ifsc",
+                        "panLast4",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "phone",
                         "gstStateCode",
                         "gstin",
                         "note",
                         "kycVerified",
-                        "transport"
+                        "transport",
+                        "route"
                       ],
                       "additionalProperties": false
                     },
@@ -92634,7 +92728,7 @@
         }
       },
       "post": {
-        "summary": "Save the payee details: a name, a UPI id or a bank account with its IFSC (the account sealed at rest), the GST state code and a GSTIN if any; active once KYC is verified",
+        "summary": "Save what the linked account is made from: the name on the PAN and bank, the bank account and IFSC and the PAN (both sealed at rest; blank keeps the saved one), an address, a mobile, the GST state and a GSTIN if any; once linked, the name, PAN and address are refused",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92679,6 +92773,26 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "panLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "phone": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "gstStateCode": {
                           "type": "string",
                           "nullable": true
@@ -92701,6 +92815,72 @@
                             "razorpay",
                             "off"
                           ]
+                        },
+                        "route": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REQUESTED",
+                                "NEEDS_CLARIFICATION",
+                                "UNDER_REVIEW",
+                                "ACTIVATED",
+                                "SUSPENDED"
+                              ]
+                            },
+                            "requirements": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "field": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "linked": {
+                              "type": "boolean"
+                            },
+                            "needsResend": {
+                              "type": "boolean"
+                            },
+                            "readyToLink": {
+                              "type": "boolean"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "checkedAt": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "error": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "status",
+                            "requirements",
+                            "linked",
+                            "needsResend",
+                            "readyToLink",
+                            "locked",
+                            "checkedAt",
+                            "error"
+                          ],
+                          "additionalProperties": false
                         }
                       },
                       "required": [
@@ -92709,11 +92889,17 @@
                         "upiId",
                         "bankLast4",
                         "ifsc",
+                        "panLast4",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "phone",
                         "gstStateCode",
                         "gstin",
                         "note",
                         "kycVerified",
-                        "transport"
+                        "transport",
+                        "route"
                       ],
                       "additionalProperties": false
                     },
@@ -92827,11 +93013,6 @@
                     "type": "string",
                     "maxLength": 80
                   },
-                  "upiId": {
-                    "type": "string",
-                    "maxLength": 300,
-                    "nullable": true
-                  },
                   "bankAccount": {
                     "type": "string",
                     "maxLength": 30,
@@ -92841,6 +93022,27 @@
                     "type": "string",
                     "maxLength": 20,
                     "nullable": true
+                  },
+                  "pan": {
+                    "type": "string",
+                    "maxLength": 12,
+                    "nullable": true
+                  },
+                  "addressLine": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "city": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "postalCode": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "phone": {
+                    "type": "string",
+                    "maxLength": 20
                   },
                   "gstStateCode": {
                     "type": "string",
@@ -92854,6 +93056,10 @@
                 },
                 "required": [
                   "payeeName",
+                  "addressLine",
+                  "city",
+                  "postalCode",
+                  "phone",
                   "gstStateCode"
                 ],
                 "additionalProperties": false
@@ -92863,9 +93069,297 @@
         }
       }
     },
+    "/api/v1/expert/payout/link": {
+      "post": {
+        "summary": "Make, resume or bring up to date the expert's Razorpay Route linked account (account, stakeholder with the PAN, Route requested, bank details), or ask where Razorpay's review stands; refused by name until KYC is verified and every detail saved; a dozen an hour per expert",
+        "description": "Roles: EXPERT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "EXPERT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "outcome": {
+                      "type": "string",
+                      "enum": [
+                        "activated",
+                        "pending",
+                        "needs-clarification",
+                        "refused"
+                      ]
+                    },
+                    "payout": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "NONE",
+                            "ACTIVE",
+                            "SUSPENDED"
+                          ]
+                        },
+                        "payeeName": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "upiId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "bankLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "ifsc": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "panLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "phone": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstStateCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gstin": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "note": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        },
+                        "route": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REQUESTED",
+                                "NEEDS_CLARIFICATION",
+                                "UNDER_REVIEW",
+                                "ACTIVATED",
+                                "SUSPENDED"
+                              ]
+                            },
+                            "requirements": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "field": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "linked": {
+                              "type": "boolean"
+                            },
+                            "needsResend": {
+                              "type": "boolean"
+                            },
+                            "readyToLink": {
+                              "type": "boolean"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "checkedAt": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "error": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "status",
+                            "requirements",
+                            "linked",
+                            "needsResend",
+                            "readyToLink",
+                            "locked",
+                            "checkedAt",
+                            "error"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "status",
+                        "payeeName",
+                        "upiId",
+                        "bankLast4",
+                        "ifsc",
+                        "panLast4",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "phone",
+                        "gstStateCode",
+                        "gstin",
+                        "note",
+                        "kycVerified",
+                        "transport",
+                        "route"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "gate": {
+                      "type": "object",
+                      "properties": {
+                        "paymentsOn": {
+                          "type": "boolean"
+                        },
+                        "kycVerified": {
+                          "type": "boolean"
+                        },
+                        "payoutActive": {
+                          "type": "boolean"
+                        },
+                        "mentoringOffer": {
+                          "type": "boolean"
+                        },
+                        "dutyDone": {
+                          "type": "boolean"
+                        },
+                        "oneToOnesOwed": {
+                          "type": "integer"
+                        },
+                        "canCharge": {
+                          "type": "boolean"
+                        },
+                        "seatPriceMinPaise": {
+                          "type": "integer"
+                        },
+                        "seatPriceMaxPaise": {
+                          "type": "integer"
+                        },
+                        "commissionPercent": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "paymentsOn",
+                        "kycVerified",
+                        "payoutActive",
+                        "mentoringOffer",
+                        "dutyDone",
+                        "oneToOnesOwed",
+                        "canCharge",
+                        "seatPriceMinPaise",
+                        "seatPriceMaxPaise",
+                        "commissionPercent"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "outcome",
+                    "payout",
+                    "gate"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/expert/earnings": {
       "get": {
-        "summary": "What the expert has on hold, is owed, was paid and was refunded, seat by seat with the gross, the commission, the GST on it and the net; the payouts with the company's transfer reference; the invoices",
+        "summary": "What the expert has on hold, released to their bank by Razorpay (or, for seats from before Route, due and paid by the company) and refunded, seat by seat with the gross, the commission, the GST on it and the net; the payouts; the invoices",
         "description": "Roles: EXPERT.",
         "security": [
           {
@@ -92884,6 +93378,9 @@
                   "type": "object",
                   "properties": {
                     "heldPaise": {
+                      "type": "integer"
+                    },
+                    "releasedPaise": {
                       "type": "integer"
                     },
                     "duePaise": {
@@ -92941,6 +93438,7 @@
                               "INITIATED",
                               "PAID",
                               "HELD",
+                              "RELEASED",
                               "DUE",
                               "PAID_OUT",
                               "REFUNDED",
@@ -92952,6 +93450,10 @@
                             "nullable": true
                           },
                           "dueAt": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "releasedAt": {
                             "type": "string",
                             "nullable": true
                           },
@@ -92989,6 +93491,7 @@
                           "status",
                           "holdUntil",
                           "dueAt",
+                          "releasedAt",
                           "paidOutAt",
                           "refundedAt",
                           "payoutId",
@@ -93102,6 +93605,7 @@
                   },
                   "required": [
                     "heldPaise",
+                    "releasedPaise",
                     "duePaise",
                     "paidOutPaise",
                     "refundedPaise",
@@ -95195,7 +95699,7 @@
     },
     "/api/v1/operator/gigs/payouts": {
       "get": {
-        "summary": "Paid seats: the kill switch, the company's details as the seller, the month's commission and GST, what is held and due, what failed and waits to be tried again, the payouts to pay now (with where to pay them) and those paid",
+        "summary": "Paid seats: the switch and whether Razorpay Route is ready for it, each expert's linked account, the company's details as the seller, the month's commission, GST and releases, what is held, what failed and waits to be tried again, any hand-recorded payout still to pay, and those settled",
         "description": "The server operator.",
         "security": [
           {
@@ -95221,6 +95725,132 @@
                         "razorpay",
                         "off"
                       ]
+                    },
+                    "route": {
+                      "type": "object",
+                      "properties": {
+                        "gatewaySet": {
+                          "type": "boolean"
+                        },
+                        "webhookSet": {
+                          "type": "boolean"
+                        },
+                        "companySet": {
+                          "type": "boolean"
+                        },
+                        "activated": {
+                          "type": "integer"
+                        },
+                        "inReview": {
+                          "type": "integer"
+                        },
+                        "needsAttention": {
+                          "type": "integer"
+                        },
+                        "readyToLink": {
+                          "type": "integer"
+                        },
+                        "ready": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "gatewaySet",
+                        "webhookSet",
+                        "companySet",
+                        "activated",
+                        "inReview",
+                        "needsAttention",
+                        "readyToLink",
+                        "ready"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "routeAccounts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "expertUserId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "expertName": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "NONE",
+                              "REQUESTED",
+                              "NEEDS_CLARIFICATION",
+                              "UNDER_REVIEW",
+                              "ACTIVATED",
+                              "SUSPENDED"
+                            ]
+                          },
+                          "linked": {
+                            "type": "boolean"
+                          },
+                          "needsResend": {
+                            "type": "boolean"
+                          },
+                          "readyToLink": {
+                            "type": "boolean"
+                          },
+                          "kycVerified": {
+                            "type": "boolean"
+                          },
+                          "suspended": {
+                            "type": "boolean"
+                          },
+                          "requirements": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "field": {
+                                  "type": "string"
+                                },
+                                "reason": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "field",
+                                "reason"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "error": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "checkedAt": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "expertUserId",
+                          "expertName",
+                          "status",
+                          "linked",
+                          "needsResend",
+                          "readyToLink",
+                          "kycVerified",
+                          "suspended",
+                          "requirements",
+                          "error",
+                          "checkedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "releasedThisMonthPaise": {
+                      "type": "integer"
                     },
                     "month": {
                       "type": "string"
@@ -95301,9 +95931,7 @@
                         "type": "object",
                         "properties": {
                           "paymentId": {
-                            "type": "string",
-                            "minLength": 1,
-                            "maxLength": 64
+                            "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                           },
                           "expertName": {
                             "type": "string"
@@ -95315,7 +95943,9 @@
                             "type": "string",
                             "enum": [
                               "REFUND",
-                              "HOLD"
+                              "HOLD",
+                              "RELEASE",
+                              "TRANSFER"
                             ]
                           },
                           "lastError": {
@@ -95347,10 +95977,10 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "$ref": "#/properties/failures/items/properties/paymentId"
+                            "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                           },
                           "expertUserId": {
-                            "$ref": "#/properties/failures/items/properties/paymentId"
+                            "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                           },
                           "expertName": {
                             "type": "string"
@@ -95430,13 +96060,20 @@
                         "type": "object",
                         "properties": {
                           "id": {
-                            "$ref": "#/properties/failures/items/properties/paymentId"
+                            "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                           },
                           "expertUserId": {
-                            "$ref": "#/properties/failures/items/properties/paymentId"
+                            "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                           },
                           "expertName": {
                             "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PAID",
+                              "RELEASED"
+                            ]
                           },
                           "netPaise": {
                             "type": "integer"
@@ -95455,7 +96092,7 @@
                           "invoiceId": {
                             "allOf": [
                               {
-                                "$ref": "#/properties/failures/items/properties/paymentId"
+                                "$ref": "#/properties/routeAccounts/items/properties/expertUserId"
                               }
                             ],
                             "nullable": true
@@ -95473,6 +96110,7 @@
                           "id",
                           "expertUserId",
                           "expertName",
+                          "status",
                           "netPaise",
                           "paymentsCount",
                           "reference",
@@ -95488,6 +96126,9 @@
                   "required": [
                     "paymentsEnabled",
                     "transport",
+                    "route",
+                    "routeAccounts",
+                    "releasedThisMonthPaise",
                     "month",
                     "commissionThisMonthPaise",
                     "gstThisMonthPaise",
@@ -95550,7 +96191,7 @@
     },
     "/api/v1/operator/gigs/payouts/switch": {
       "post": {
-        "summary": "The kill switch for paid seats: off, and no price is stored, no order made, nothing becomes due; refunds still go through",
+        "summary": "The switch for paid seats: on is refused until Razorpay Route is ready (a gateway, the webhook's secret, the company's details, one linked account activated); off, every session is free, nothing is released, refunds still go through",
         "description": "The server operator.",
         "security": [
           {
@@ -95642,7 +96283,7 @@
     },
     "/api/v1/operator/gigs/payouts/{payoutId}/pay": {
       "post": {
-        "summary": "Record the company's transfer to an expert (the UTR, when, a note): the payout is paid, every seat in it paid out, and the GST tax invoice for the commission issued in the same transaction; refused until the company's GSTIN, state and legal name are set",
+        "summary": "For a payout from before Route only: record the company's transfer to an expert (the UTR, when, a note): the payout is paid, every seat in it paid out, and the GST tax invoice for the commission issued in the same transaction; refused until the company's GSTIN, state and legal name are set",
         "description": "The server operator.",
         "security": [
           {
@@ -95797,9 +96438,103 @@
         ]
       }
     },
+    "/api/v1/operator/gigs/route/link": {
+      "post": {
+        "summary": "Link every expert ready for Razorpay Route and not yet activated, and ask after every review still open",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "run": {
+                      "type": "object",
+                      "properties": {
+                        "tried": {
+                          "type": "integer"
+                        },
+                        "activated": {
+                          "type": "integer"
+                        },
+                        "pending": {
+                          "type": "integer"
+                        },
+                        "refused": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "tried",
+                        "activated",
+                        "pending",
+                        "refused"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "run"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/operator/gigs/payments/{paymentId}/retry": {
       "post": {
-        "summary": "Try a waiting refund at the gateway now, instead of at the job's next run (a captured row never held is held)",
+        "summary": "Try the waiting gateway call now, instead of at the job's next run: a refund, a release of the hold, or a failed transfer made again on hold (a captured row never held is held)",
         "description": "The server operator.",
         "security": [
           {
@@ -96331,6 +97066,26 @@
                           "type": "string",
                           "nullable": true
                         },
+                        "panLast4": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "addressLine": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "city": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "postalCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "phone": {
+                          "type": "string",
+                          "nullable": true
+                        },
                         "gstStateCode": {
                           "type": "string",
                           "nullable": true
@@ -96353,6 +97108,72 @@
                             "razorpay",
                             "off"
                           ]
+                        },
+                        "route": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "NONE",
+                                "REQUESTED",
+                                "NEEDS_CLARIFICATION",
+                                "UNDER_REVIEW",
+                                "ACTIVATED",
+                                "SUSPENDED"
+                              ]
+                            },
+                            "requirements": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "field": {
+                                    "type": "string"
+                                  },
+                                  "reason": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "field",
+                                  "reason"
+                                ],
+                                "additionalProperties": false
+                              }
+                            },
+                            "linked": {
+                              "type": "boolean"
+                            },
+                            "needsResend": {
+                              "type": "boolean"
+                            },
+                            "readyToLink": {
+                              "type": "boolean"
+                            },
+                            "locked": {
+                              "type": "boolean"
+                            },
+                            "checkedAt": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "error": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "status",
+                            "requirements",
+                            "linked",
+                            "needsResend",
+                            "readyToLink",
+                            "locked",
+                            "checkedAt",
+                            "error"
+                          ],
+                          "additionalProperties": false
                         }
                       },
                       "required": [
@@ -96361,11 +97182,17 @@
                         "upiId",
                         "bankLast4",
                         "ifsc",
+                        "panLast4",
+                        "addressLine",
+                        "city",
+                        "postalCode",
+                        "phone",
                         "gstStateCode",
                         "gstin",
                         "note",
                         "kycVerified",
-                        "transport"
+                        "transport",
+                        "route"
                       ],
                       "additionalProperties": false
                     }

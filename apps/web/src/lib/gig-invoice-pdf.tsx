@@ -180,7 +180,11 @@ function InvoicePage({ inv }: { inv: InvoiceView }) {
         <Text style={styles.words}>{inWords(inv.totalPaise, locale, t)}</Text>
       </View>
       <Text style={styles.note}>{t("gigs.invDeducted", { total: money(inv.totalPaise, locale), net: money(inv.payout.netPaise, locale), count: inv.payout.paymentsCount })}</Text>
-      {inv.payout.reference ? <Text style={styles.note}>{t("gigs.invPaidLine", { reference: inv.payout.reference, date: inv.payout.paidAt ? day(inv.payout.paidAt) : "—" })}</Text> : null}
+      {inv.payout.reference ? (
+        <Text style={styles.note}>{t("gigs.invPaidLine", { reference: inv.payout.reference, date: inv.payout.paidAt ? day(inv.payout.paidAt) : "—" })}</Text>
+      ) : inv.payout.paidAt ? (
+        <Text style={styles.note}>{t("gigs.invReleasedLine", { date: day(inv.payout.paidAt) })}</Text>
+      ) : null}
       <Text style={styles.footer} fixed>
         {t("gigs.invFooter")}
       </Text>

@@ -2,6 +2,7 @@ import * as Sharing from "expo-sharing";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { gigProviderSchema } from "@edulink/contracts";
 import { ProviderSessions } from "@/screens/shared/provider-sessions";
+import { EARNINGS, GATE, PAYOUT, SAVED_PAYEE } from "./gig-fixtures";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -11,13 +12,9 @@ const PATH = "/api/v1/gigs/slots";
 const DUTY = { deliveredOneToOnes: 3, heldWorkshops: 1, oneToOnesThisMonth: 1, workshopsThisQuarter: 0, startOneToOnes: 10, startWorkshops: 2, monthlyOneToOnes: 2, quarterlyWorkshops: 1 };
 const booking = (over: Record<string, unknown>) => ({ id: "b1", pupilName: "ZZ Asha", schoolName: "ZZ School", purpose: "ZZ How do bridges stand?", status: "CONFIRMED", paid: false, rating: null, feedback: null, ...over });
 const slot = (over: Record<string, unknown>) => ({ id: "s1", kind: "ONE_TO_ONE", title: "ZZ Ask an engineer", startsAt: "2030-10-07T10:00:00.000Z", endsAt: "2030-10-07T10:30:00.000Z", meetingUrl: "https://meet.zz.test/a", seats: 1, seatsTaken: 1, pricePaise: 0, cancelled: false, started: false, bookings: [booking({})], ...over });
-/** The paid gate as the server reads it: every condition met but the mentoring offer. */
-export const GATE = { paymentsOn: true, kycVerified: true, payoutActive: true, mentoringOffer: false, dutyDone: true, oneToOnesOwed: 0, canCharge: false, seatPriceMinPaise: 5000, seatPriceMaxPaise: 30000, commissionPercent: 15 };
 const view = (over: Record<string, unknown> = {}) => gigProviderSchema.parse({ enabled: true, kind: "EXPERT", timeZone: "Asia/Kolkata", duty: DUTY, gate: GATE, slots: [slot({})], ...over });
-const PAYOUT = { payout: { status: "NONE", payeeName: null, upiId: null, bankLast4: null, ifsc: null, gstStateCode: null, gstin: null, note: null, kycVerified: true, transport: "devbox" }, gate: GATE };
-const EARNINGS = { heldPaise: 8230, duePaise: 0, paidOutPaise: 0, refundedPaise: 0, commissionPercent: 15, gstPercent: 18, rows: [{ paymentId: "sp1", bookingId: "b2", title: "ZZ Build a paper bridge", startsAt: "2030-10-10T10:00:00.000Z", schoolName: "ZZ School", amountPaise: 10000, commissionPaise: 1500, gstPaise: 270, netPaise: 8230, status: "HELD", holdUntil: "2030-10-12T11:00:00.000Z", dueAt: null, paidOutAt: null, refundedAt: null, payoutId: null, reason: null }], payouts: [], invoices: [] };
 /** The expert's two extra cards answer, so the provider screen under test is whole. */
-const SIDE = { "GET /api/v1/expert/payout": () => json(PAYOUT), "GET /api/v1/expert/earnings": () => json(EARNINGS) };
+const SIDE = { "GET /api/v1/expert/payout": () => json(PAYOUT()), "GET /api/v1/expert/earnings": () => json(EARNINGS()) };
 
 describe("a provider's sessions", () => {
   beforeEach(() => mockRouter.push.mockClear());
@@ -82,7 +79,7 @@ describe("a provider's sessions", () => {
     expect(screen.getByText("Paid seat")).toBeTruthy();
     expect(screen.getAllByText("○ A free one-to-one offered in the coming 30 days").length).toBeGreaterThan(0);
     // Get paid: nothing saved yet, so the form is open.
-    expect(await screen.findByText("Not saved yet")).toBeTruthy();
+    expect(await screen.findByText("Not linked yet")).toBeTruthy();
     expect(screen.getByLabelText("Name of the payee")).toBeTruthy();
     expect(screen.getByRole("button", { name: "Save" })).toBeTruthy();
     // Earnings: the held seat, net of the commission and the GST on it.
@@ -92,23 +89,33 @@ describe("a provider's sessions", () => {
   });
 
   it("saving the payee details sends the body the contract takes and shows the summary with the last four digits only", async () => {
-    const saved = { ...PAYOUT, payout: { ...PAYOUT.payout, status: "ACTIVE", payeeName: "Meenakshi Rao", bankLast4: "3456", ifsc: "HDFC0001234", gstStateCode: "27" } };
+    const saved = PAYOUT(SAVED_PAYEE, { readyToLink: true });
     const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, [`GET ${PATH}`]: () => json(view({ slots: [] })), "POST /api/v1/expert/payout": () => json(saved) });
-    await fireEvent.changeText(await screen.findByLabelText("Name of the payee"), "Meenakshi Rao");
+    await fireEvent.changeText(await screen.findByLabelText("Name of the payee"), "ZZ Meenakshi Rao");
+    await fireEvent.changeText(screen.getByLabelText("PAN number"), "abcde1234f");
     await fireEvent.changeText(screen.getByLabelText("Bank account number"), "1234 5678 9012 3456");
     await fireEvent.changeText(screen.getByLabelText("IFSC code"), "hdfc0001234");
+    await fireEvent.changeText(screen.getByLabelText("Address (house, street, area)"), "ZZ 12 Lake Road");
+    await fireEvent.changeText(screen.getByLabelText("Town or city"), "ZZ Pune");
+    await fireEvent.changeText(screen.getByLabelText("PIN code"), "411001");
+    await fireEvent.changeText(screen.getByLabelText("Mobile number"), "9800000001");
     await fireEvent.changeText(screen.getByLabelText("GST state code"), "27");
     await fireEvent.press(screen.getByRole("button", { name: "Save" }));
     expect(await screen.findByText("Saved.")).toBeTruthy();
-    expect(screen.getByText("Ready to be paid")).toBeTruthy();
+    expect(screen.getByText("Not linked yet")).toBeTruthy();
+    expect(screen.getByText("Not linked with Razorpay yet")).toBeTruthy();
     expect(screen.getByText(/Bank account ending 3456 · HDFC0001234/)).toBeTruthy();
+    expect(screen.getByText("PAN ending 234F")).toBeTruthy();
+    expect(screen.getByText("ZZ 12 Lake Road, ZZ Pune, 411001")).toBeTruthy();
     expect(screen.queryByText(/1234 5678 9012 3456/)).toBeNull();
+    expect(screen.queryByText(/ABCDE1234F/i)).toBeNull();
+    expect(screen.getByRole("button", { name: "Link with Razorpay" })).not.toBeDisabled();
     const call = calls().find((c) => c.line === "POST /api/v1/expert/payout");
-    expect(call?.body).toEqual({ payeeName: "Meenakshi Rao", upiId: null, bankAccount: "1234 5678 9012 3456", ifsc: "hdfc0001234", gstStateCode: "27", gstin: null });
+    expect(call?.body).toEqual({ payeeName: "ZZ Meenakshi Rao", bankAccount: "1234 5678 9012 3456", ifsc: "hdfc0001234", pan: "abcde1234f", addressLine: "ZZ 12 Lake Road", city: "ZZ Pune", postalCode: "411001", phone: "9800000001", gstStateCode: "27", gstin: null });
   });
 
   it("an invoice is fetched as a PDF and handed to the share sheet", async () => {
-    const earnings = { ...EARNINGS, paidOutPaise: 8230, rows: [{ ...EARNINGS.rows[0], status: "PAID_OUT", paidOutAt: "2030-10-20T10:00:00.000Z", payoutId: "po1" }], payouts: [{ id: "po1", netPaise: 8230, paymentsCount: 1, status: "PAID", reference: "UTR123456789012", paidAt: "2030-10-20T10:00:00.000Z", createdAt: "2030-10-13T10:00:00.000Z", invoiceId: "inv1", invoiceNumber: "SG/2030-31/0001" }], invoices: [{ id: "inv1", number: "SG/2030-31/0001", issuedAt: "2030-10-20T10:00:00.000Z", taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, payoutId: "po1" }] };
+    const earnings = EARNINGS({ paidOutPaise: 8230, payouts: [{ id: "po1", netPaise: 8230, paymentsCount: 1, status: "PAID", reference: "UTR123456789012", paidAt: "2030-10-20T10:00:00.000Z", createdAt: "2030-10-13T10:00:00.000Z", invoiceId: "inv1", invoiceNumber: "SG/2030-31/0001" }], invoices: [{ id: "inv1", number: "SG/2030-31/0001", issuedAt: "2030-10-20T10:00:00.000Z", taxableValuePaise: 1500, cgstPaise: 135, sgstPaise: 135, igstPaise: 0, totalPaise: 1770, payoutId: "po1" }] }, { status: "PAID_OUT", paidOutAt: "2030-10-20T10:00:00.000Z", payoutId: "po1" });
     const { calls } = await mountStaff(<ProviderSessions />, "EXPERT", { ...SIDE, "GET /api/v1/expert/earnings": () => json(earnings), [`GET ${PATH}`]: () => json(view({ slots: [] })), "GET /api/v1/expert/invoices/inv1/pdf": () => new Response(new Uint8Array([0x25, 0x50, 0x44, 0x46]), { status: 200, headers: { "content-type": "application/pdf" } }) });
     expect(await screen.findByText(/SG\/2030-31\/0001 · .* · ₹17\.70/)).toBeTruthy();
     expect(screen.getByText(/UTR123456789012/)).toBeTruthy();

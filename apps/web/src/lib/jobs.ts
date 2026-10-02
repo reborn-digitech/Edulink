@@ -257,17 +257,18 @@ export const JOBS: Record<JobName, JobSpec> = {
   "gigs:release": {
     name: "gigs:release",
     // Hourly, beside gigs:remind: a paid seat left unpaid for half an hour is
-    // given back, a hold that has run (delivered plus 48 hours) becomes due in
-    // the expert's open payout for the company to pay from its bank, and a
-    // refund the gateway refused is tried again (decision 0004, second
-    // amendment of 2 October 2026).
+    // given back; a seat whose hold has run (delivered plus 48 hours) has its
+    // transfer's hold taken off at Razorpay, which settles the expert, and the
+    // run's released seats are invoiced per expert; a refund or a release the
+    // gateway refused is tried again; linked accounts under review are asked
+    // after (decision 0004, third amendment of 2 October 2026).
     schedule: "50 * * * *",
     describeKey: "root.jobDescGigsRelease",
     maxRunMs: 10 * 60_000,
     expectEveryMs: 3 * HOUR,
     run: async () => {
-      const { expired, due, duePaise, refunded, held, failed, payoutsOpened } = await releaseSeatPayments();
-      return { summary: { expired, due, duePaise, refunded, held, failed, payoutsOpened } };
+      const { expired, released, releasedPaise, invoiced, due, duePaise, refunded, held, failed, payoutsOpened, linksChecked } = await releaseSeatPayments();
+      return { summary: { expired, released, releasedPaise, invoiced, due, duePaise, refunded, held, failed, payoutsOpened, linksChecked } };
     },
   },
   "jobs:watch": {

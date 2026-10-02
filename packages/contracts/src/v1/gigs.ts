@@ -179,13 +179,29 @@ export const gigSessionKindSchema = z.enum(["ONE_TO_ONE", "WORKSHOP"]);
 export const gigBookingStatusSchema = z.enum(["PENDING_CONSENT", "PENDING_PAYMENT", "CONFIRMED", "CANCELLED", "DELIVERED", "MISSED", "UNHELD"]);
 export type GigBookingStatus = z.infer<typeof gigBookingStatusSchema>;
 
-/* ---- paid seats (decision 0004, amended 2026-10-02) ---- */
+/* ---- paid seats (decision 0004, third amendment 2026-10-02: Razorpay Route, the expert's share on hold) ---- */
 
 export const gigGatewayTransportSchema = z.enum(["devbox", "razorpay", "off"]);
-/** Where an expert is paid: NONE until the payee details are saved and KYC verified, ACTIVE then, SUSPENDED by the operator. */
+/** Where an expert is paid: ACTIVE once KYC is verified and Razorpay has activated their linked account with the bank details saved; NONE until then; SUSPENDED by the operator. */
 export const gigPayoutStatusSchema = z.enum(["NONE", "ACTIVE", "SUSPENDED"]);
-/** INITIATED → PAID → HELD → DUE (in the expert's open payout) → PAID_OUT (the company paid the expert); or REFUNDED; FAILED. */
-export const gigSessionPaymentStatusSchema = z.enum(["INITIATED", "PAID", "HELD", "DUE", "PAID_OUT", "REFUNDED", "FAILED"]);
+/** INITIATED → PAID → HELD (the gateway holds the expert's share) → RELEASED (the hold taken off; the gateway settles the expert); or REFUNDED; FAILED. DUE and PAID_OUT are the company-collects rows of the second amendment. */
+export const gigSessionPaymentStatusSchema = z.enum(["INITIATED", "PAID", "HELD", "RELEASED", "DUE", "PAID_OUT", "REFUNDED", "FAILED"]);
+/** The gateway's activation status of an expert's Route linked account. */
+export const gigRouteStatusSchema = z.enum(["NONE", "REQUESTED", "NEEDS_CLARIFICATION", "UNDER_REVIEW", "ACTIVATED", "SUSPENDED"]);
+export const gigRouteRequirementSchema = z.object({ field: z.string(), reason: z.string() });
+/** Where an expert's linked account stands, as the gateway last said. */
+export const gigRouteViewSchema = z.object({
+  status: gigRouteStatusSchema,
+  requirements: z.array(gigRouteRequirementSchema),
+  linked: z.boolean(),
+  /** The bank details saved differ from those the gateway holds: send them again before a seat can be sold. */
+  needsResend: z.boolean(),
+  readyToLink: z.boolean(),
+  /** Name, PAN and address are with the gateway and are refused here. */
+  locked: z.boolean(),
+  checkedAt: z.string().nullable(),
+  error: z.string().nullable(),
+});
 
 /** Whether an expert may price a workshop seat, condition by condition, and the band and share the operator set. */
 export const gigPaidGateSchema = z.object({
@@ -240,13 +256,18 @@ export const gigCheckoutMadeSchema = z.object({ checkout: gigCheckoutSchema });
 export const gigCheckoutConfirmBodySchema = z.object({ gatewayPaymentId: z.string().max(80), signature: z.string().max(200) });
 export const gigCheckoutConfirmedSchema = z.object({ outcome: z.string(), bookingId: id.nullable() });
 
-/** The expert's payee details as every read returns them: the sealed bank account NEVER, its last four digits only. */
+/** The expert's payee details as every read returns them: the sealed bank account and PAN NEVER, the last four of each only. */
 export const gigPayeeViewSchema = z.object({
   status: gigPayoutStatusSchema,
   payeeName: z.string().nullable(),
   upiId: z.string().nullable(),
   bankLast4: z.string().nullable(),
   ifsc: z.string().nullable(),
+  panLast4: z.string().nullable(),
+  addressLine: z.string().nullable(),
+  city: z.string().nullable(),
+  postalCode: z.string().nullable(),
+  phone: z.string().nullable(),
   /** Two-digit GST state code: the place of supply on the company's invoice. */
   gstStateCode: z.string().nullable(),
   gstin: z.string().nullable(),
@@ -254,6 +275,7 @@ export const gigPayeeViewSchema = z.object({
   note: z.string().nullable(),
   kycVerified: z.boolean(),
   transport: gigGatewayTransportSchema,
+  route: gigRouteViewSchema,
 });
 export type GigPayeeView = z.infer<typeof gigPayeeViewSchema>;
 
@@ -261,12 +283,27 @@ export type GigPayeeView = z.infer<typeof gigPayeeViewSchema>;
 export const expertPayoutSchema = z.object({ payout: gigPayeeViewSchema, gate: gigPaidGateSchema });
 export type ExpertPayout = z.infer<typeof expertPayoutSchema>;
 
-/** POST /api/v1/expert/payout — the payee details: a name, a UPI id or a bank account with its IFSC, the GST state, a GSTIN if any. */
-export const expertPayeeBodySchema = z.object({ payeeName: z.string().max(80), upiId: z.string().max(300).nullable().optional(), bankAccount: z.string().max(30).nullable().optional(), ifsc: z.string().max(20).nullable().optional(), gstStateCode: z.string().max(2), gstin: z.string().max(20).nullable().optional() });
+/** POST /api/v1/expert/payout — what the linked account is made from: the name on the PAN and bank, the bank account and IFSC, the PAN (blank keeps the saved one), an address, a mobile, the GST state, a GSTIN if any. */
+export const expertPayeeBodySchema = z.object({
+  payeeName: z.string().max(80),
+  bankAccount: z.string().max(30).nullable().optional(),
+  ifsc: z.string().max(20).nullable().optional(),
+  pan: z.string().max(12).nullable().optional(),
+  addressLine: z.string().max(120),
+  city: z.string().max(80),
+  postalCode: z.string().max(8),
+  phone: z.string().max(20),
+  gstStateCode: z.string().max(2),
+  gstin: z.string().max(20).nullable().optional(),
+});
+/** POST /api/v1/expert/payout/link — make, resume or bring up to date the expert's linked account at the gateway. */
+export const expertRouteLinkedSchema = z.object({ outcome: z.enum(["activated", "pending", "needs-clarification", "refused"]), payout: gigPayeeViewSchema, gate: gigPaidGateSchema });
 
 /** GET /api/v1/expert/earnings — seat by seat with the three figures, payout by payout, and the invoices. */
 export const expertEarningsSchema = z.object({
   heldPaise: z.number().int(),
+  /** Released to the gateway, which settles it to the expert's bank. */
+  releasedPaise: z.number().int(),
   duePaise: z.number().int(),
   paidOutPaise: z.number().int(),
   refundedPaise: z.number().int(),
@@ -286,6 +323,7 @@ export const expertEarningsSchema = z.object({
       status: gigSessionPaymentStatusSchema,
       holdUntil: z.string().nullable(),
       dueAt: z.string().nullable(),
+      releasedAt: z.string().nullable(),
       paidOutAt: z.string().nullable(),
       refundedAt: z.string().nullable(),
       payoutId: id.nullable(),
@@ -332,9 +370,15 @@ export const gigCompanySavedSchema = z.object({ company: gigCompanySchema });
 
 /** GET /api/v1/operator/gigs/payouts — the switch, the company, the month's commission and GST, what is held and due, what failed, what is to pay now and what was paid. */
 export const gigPayoutPayeeSchema = z.object({ payeeName: z.string().nullable(), upiId: z.string().nullable(), bankLast4: z.string().nullable(), ifsc: z.string().nullable(), gstStateCode: z.string().nullable(), gstin: z.string().nullable(), status: gigPayoutStatusSchema });
+/** Whether paid seats may be turned on: a gateway, the webhook's secret, the company's invoice details, one linked account activated. */
+export const gigRouteReadinessSchema = z.object({ gatewaySet: z.boolean(), webhookSet: z.boolean(), companySet: z.boolean(), activated: z.number().int(), inReview: z.number().int(), needsAttention: z.number().int(), readyToLink: z.number().int(), ready: z.boolean() });
+export const gigRouteAccountSchema = z.object({ expertUserId: id, expertName: z.string(), status: gigRouteStatusSchema, linked: z.boolean(), needsResend: z.boolean(), readyToLink: z.boolean(), kycVerified: z.boolean(), suspended: z.boolean(), requirements: z.array(gigRouteRequirementSchema), error: z.string().nullable(), checkedAt: z.string().nullable() });
 export const gigPayoutsSchema = z.object({
   paymentsEnabled: z.boolean(),
   transport: gigGatewayTransportSchema,
+  route: gigRouteReadinessSchema,
+  routeAccounts: z.array(gigRouteAccountSchema),
+  releasedThisMonthPaise: z.number().int(),
   month: z.string(),
   commissionThisMonthPaise: z.number().int(),
   gstThisMonthPaise: z.number().int(),
@@ -343,9 +387,9 @@ export const gigPayoutsSchema = z.object({
   paidOutThisMonthPaise: z.number().int(),
   refundedThisMonthPaise: z.number().int(),
   company: gigCompanySchema,
-  failures: z.array(z.object({ paymentId: id, expertName: z.string(), amountPaise: z.number().int(), action: z.enum(["REFUND", "HOLD"]), lastError: z.string().nullable(), attempts: z.number().int(), since: z.string() })),
+  failures: z.array(z.object({ paymentId: id, expertName: z.string(), amountPaise: z.number().int(), action: z.enum(["REFUND", "HOLD", "RELEASE", "TRANSFER"]), lastError: z.string().nullable(), attempts: z.number().int(), since: z.string() })),
   toPay: z.array(z.object({ id, expertUserId: id, expertName: z.string(), payee: gigPayoutPayeeSchema, netPaise: z.number().int(), paymentsCount: z.number().int(), createdAt: z.string() })),
-  paid: z.array(z.object({ id, expertUserId: id, expertName: z.string(), netPaise: z.number().int(), paymentsCount: z.number().int(), reference: z.string().nullable(), paidAt: z.string().nullable(), invoiceId: id.nullable(), invoiceNumber: z.string().nullable(), note: z.string().nullable() })),
+  paid: z.array(z.object({ id, expertUserId: id, expertName: z.string(), status: z.enum(["PAID", "RELEASED"]), netPaise: z.number().int(), paymentsCount: z.number().int(), reference: z.string().nullable(), paidAt: z.string().nullable(), invoiceId: id.nullable(), invoiceNumber: z.string().nullable(), note: z.string().nullable() })),
 });
 export type GigPayouts = z.infer<typeof gigPayoutsSchema>;
 
@@ -356,6 +400,9 @@ export const gigPaymentsSwitchedSchema = z.object({ paymentsEnabled: z.boolean()
 /** POST /api/v1/operator/gigs/payouts/{payoutId}/pay — the company's transfer recorded: the UTR, when, a note; the invoice is issued with it. */
 export const gigPayoutPayBodySchema = z.object({ reference: z.string().max(40), paidAt: z.string().max(40).nullable().optional(), note: z.string().max(300).nullable().optional() });
 export const gigPayoutPaidSchema = z.object({ payout: z.object({ id, netPaise: z.number().int(), paymentsCount: z.number().int(), reference: z.string() }), invoice: z.object({ id, number: z.string(), totalPaise: z.number().int() }) });
+
+/** POST /api/v1/operator/gigs/route/link — every ready expert linked, every open review asked after. */
+export const gigRouteLinkAllSchema = z.object({ run: z.object({ tried: z.number().int(), activated: z.number().int(), pending: z.number().int(), refused: z.number().int() }) });
 
 /** POST /api/v1/operator/gigs/payees/{expertUserId}/suspend — the operator stops paying an expert with a reason, or lifts the stop. */
 export const gigPayeeSuspendBodySchema = z.object({ suspended: z.boolean(), note: z.string().max(300).nullable().optional() });

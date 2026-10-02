@@ -105,7 +105,9 @@ describe("free duty (decision 0004)", () => {
     try {
       for (const key of ["starter", "seasoned"] as const) {
         await db.expertProfile.update({ where: { userId: id[key]! }, data: { kycStatus: "VERIFIED", verifiedAt: OCT_15 } });
-        await db.expertPayoutAccount.upsert({ where: { expertUserId: id[key]! }, create: { expertUserId: id[key]!, payeeName: `ZZ ${key}`, upiId: `zz.${key}${STAMP}@upi`, gstStateCode: "27", status: "ACTIVE" }, update: { payeeName: `ZZ ${key}`, upiId: `zz.${key}${STAMP}@upi`, gstStateCode: "27", status: "ACTIVE" } });
+        // A linked account Razorpay has activated (decision 0004, third amendment): what the gate reads as a way to be paid.
+        const linked = { payeeName: `ZZ ${key}`, gstStateCode: "27", status: "ACTIVE", linkedAccountId: `acc_zzduty${key}${STAMP}`, routeStatus: "ACTIVATED" };
+        await db.expertPayoutAccount.upsert({ where: { expertUserId: id[key]! }, create: { expertUserId: id[key]!, ...linked }, update: linked });
         const offer = await offerSlot(ctx(key, "EXPERT", null), slot({ title: `ZZ free one-to-one ${key} ${STAMP}` }), OCT_15);
         expect(offer.ok).toBe(true);
       }
