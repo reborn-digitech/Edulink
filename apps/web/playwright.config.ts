@@ -4,8 +4,8 @@ import { defineConfig } from "@playwright/test";
  * The viewport matrix and the accessibility gate, against a running server.
  *
  * Not a webServer block on purpose: locally the dev server is already up on
- * :3000, and in CI the sweep job starts `next start` first and points BASE at
- * it. Sessions come from e2e/global-setup.ts, which mints them straight in
+ * :3000, and in CI the web-e2e job starts `next start` first and points BASE
+ * at it. Sessions come from e2e/global-setup.ts, which mints them straight in
  * the database the way the sweep does — no passwords are typed anywhere.
  *
  * Screenshots are compared only where a baseline exists for this platform;
@@ -37,5 +37,16 @@ export default defineConfig({
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },
-  projects: [{ name: "chromium", use: { browserName: "chromium" } }],
+  /**
+   * Two projects, both Chromium, cut by file: `axe` is the accessibility walk
+   * alone (354 pages, about 21 minutes on CI), `pages` is every other spec —
+   * the viewport matrix, the record, the flows, the editors. CI runs them as
+   * two parallel jobs (`--project axe`, `--project pages`); a bare
+   * `npx playwright test` still runs everything, one worker, as before. The
+   * screenshot path has no project name in it, so the baselines did not move.
+   */
+  projects: [
+    { name: "axe", testMatch: /axe\.spec\.ts$/, use: { browserName: "chromium" } },
+    { name: "pages", testIgnore: /axe\.spec\.ts$/, use: { browserName: "chromium" } },
+  ],
 });
