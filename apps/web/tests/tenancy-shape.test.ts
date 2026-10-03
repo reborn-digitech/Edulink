@@ -57,6 +57,9 @@ const DIRECT = [
   "StaffAttendance",
   /** A module of the school version the school has switched on (3 Oct 2026): the school's row, one per module that is on. */
   "SchoolModule",
+  /** The alumni module (3 Oct 2026): a former pupil's directory entry and the office's flags, and the office's notes to a batch — the school's rows. */
+  "AlumniProfile",
+  "AlumniNote",
   /** A family's word that a child will be away, and who read a child's health card: the school's rows, written and read through the family rules (2026-10-01). */
   "AbsenceNote",
   "HealthCardRead",
@@ -192,6 +195,54 @@ const DIRECT = [
   "GuardianClaim",
   /** A school's month of usage — pupils, texts, storage, people active — written by the nightly usage:sample job; the operator also reads every school's (SUPERUSER_READABLE in gen-rls.ts). */
   "UsageSample",
+  /** The inventory module (3 Oct 2026): categories, vendors, items and their stock at each place, the movements, the asset register and its events, the bills, and staff asks — the school's rows. */
+  "InventoryCategory",
+  "Vendor",
+  "InventoryItem",
+  "InventoryStock",
+  "StockMovement",
+  "Asset",
+  "AssetEvent",
+  "PurchaseRecord",
+  "InventoryRequest",
+  /** The payroll module (3 Oct 2026): the statutory settings, structures and their components, salaries (PAN and bank sealed), the monthly runs, payslips, the files cut from a run, and advances — the school's rows. */
+  "PayrollSettings",
+  "SalaryStructure",
+  "SalaryComponent",
+  "StaffSalary",
+  "PayrollRun",
+  "Payslip",
+  "PayrollExport",
+  "StaffAdvance",
+  /** The library module (3 Oct 2026): the school's rules, its books and copies, who borrows, loans, the reservation queue and fines — the school's rows, read by families through the library's own rules. */
+  "LibrarySettings",
+  "LibraryTitle",
+  "LibraryCopy",
+  "LibraryMember",
+  "LibraryIssue",
+  "LibraryReservation",
+  "LibraryFine",
+  /** The hostel module (3 Oct 2026): houses, rooms, beds, leave, roll calls, the mess and the visitor book — the school's rows, read by a boarder's family through the hostel's own rules. */
+  "Hostel",
+  "HostelRoom",
+  "HostelAllotment",
+  "HostelLeave",
+  "HostelRollCall",
+  "HostelRollCallEntry",
+  "MessMenu",
+  "MessAttendance",
+  "HostelVisitor",
+  /** The transport module (3 Oct 2026): routes, stops, buses, who drives which, who rides where, the day's trips, the bus's positions, the roster ticks, a guardian's alert switch and a driver's location consent — the school's rows; a family reads its own child's through lib/transport.ts. */
+  "TransportRoute",
+  "TransportStop",
+  "Bus",
+  "BusAssignment",
+  "TransportAllotment",
+  "Trip",
+  "TripPosition",
+  "TripBoarding",
+  "TransportAlertPref",
+  "TransportConsent",
 ];
 
 /**
@@ -268,7 +319,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(139);
+    ).toBe(184); // 139 + AlumniProfile, AlumniNote (alumni module, 3 Oct 2026) + 16 library and hostel models (LibrarySettings, LibraryTitle, LibraryCopy, LibraryMember, LibraryIssue, LibraryReservation, LibraryFine, Hostel, HostelRoom, HostelAllotment, HostelLeave, HostelRollCall, HostelRollCallEntry, MessMenu, MessAttendance, HostelVisitor) + 10 transport models (TransportRoute, TransportStop, Bus, BusAssignment, TransportAllotment, Trip, TripPosition, TripBoarding, TransportAlertPref, TransportConsent) + 17 inventory and payroll models (InventoryCategory, Vendor, InventoryItem, InventoryStock, StockMovement, Asset, AssetEvent, PurchaseRecord, InventoryRequest, PayrollSettings, SalaryStructure, SalaryComponent, StaffSalary, PayrollRun, Payslip, PayrollExport, StaffAdvance)
   });
 });
 

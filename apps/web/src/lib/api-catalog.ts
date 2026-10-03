@@ -31,6 +31,12 @@ import { CERTIFICATES } from "./api-catalog/certificates";
 import { ADMISSIONS } from "./api-catalog/admissions";
 import { FILINGS } from "./api-catalog/filings";
 import { GIGS } from "./api-catalog/gigs";
+import { TRANSPORT } from "./api-catalog/transport";
+import { ALUMNI } from "./api-catalog/alumni";
+import { INVENTORY } from "./api-catalog/inventory";
+import { PAYROLL } from "./api-catalog/payroll";
+import { LIBRARY } from "./api-catalog/library";
+import { HOSTEL } from "./api-catalog/hostel";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL];

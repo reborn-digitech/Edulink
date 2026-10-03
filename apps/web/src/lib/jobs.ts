@@ -19,6 +19,7 @@ import { expireRequests } from "./request-expiry";
 import { rebuildQuestionStats } from "./bank-tools";
 import { sampleUsage } from "./plans";
 import { remindSubscriptions } from "./subscriptions";
+import { remindDueTomorrow } from "./library";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -44,7 +45,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "gigs:release" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile" | "messages:send" | "circulars:deliver" | "gigs:remind" | "gigs:release" | "retention:sweep" | "admissions:expire-offers" | "accounts:tidy" | "jobs:watch" | "usage:sample" | "bank:stats" | "library:remind";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -311,6 +312,21 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { questions, buckets, removed } = await rebuildQuestionStats();
       return { summary: { questions, buckets, removed } };
+    },
+  },
+  "library:remind": {
+    name: "library:remind",
+    // 17:00 in the process's zone: the library module's "due tomorrow" push
+    // (3 Oct 2026), after school and before the bag is packed for the
+    // morning. Once per loan per day (LibraryIssue.remindedOn), only at
+    // schools with the library switched on.
+    schedule: "0 17 * * *",
+    describeKey: "root.jobDescLibraryRemind",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { sent, perSchool } = await remindDueTomorrow();
+      return { summary: { sent }, perSchool };
     },
   },
 };

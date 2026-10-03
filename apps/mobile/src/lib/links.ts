@@ -7,6 +7,12 @@ export type ScreenTarget = { pathname: string; params?: Record<string, string> }
 
 /** Web paths that are one app screen, whatever the role — the role's route file picks the component. */
 const FLAT: Record<string, string> = {
+  // Inventory and payroll (3 Oct 2026): the notices of a payslip, an advance and an ask to the stores land here.
+  "/account/payslips": "/(app)/payslips",
+  "/admin/payroll": "/(app)/payroll",
+  "/admin/payroll/advances": "/(app)/payroll",
+  "/admin/inventory": "/(app)/inventory",
+  "/admin/inventory/requests": "/(app)/inventory",
   "/teacher": "/(app)",
   "/parent": "/(app)",
   "/student": "/(app)",
@@ -112,6 +118,9 @@ const FLAT: Record<string, string> = {
   "/admin/sessions": "/(app)/sessions",
   "/teacher/contributions": "/(app)/contributions",
   "/teacher/contributions/new": "/(app)/contribution",
+  // Transport (3 Oct 2026): the family's "bus is near" lands on the child's bus; the driver's home is the home.
+  "/parent/transport": "/(app)/transport",
+  "/driver": "/(app)",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */

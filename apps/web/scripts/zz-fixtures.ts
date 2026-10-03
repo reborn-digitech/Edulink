@@ -46,6 +46,10 @@ import { config } from "dotenv";
 import { createHash } from "node:crypto";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
 import { buildSweepDoors } from "./sweep-doors";
+import { buildInventory, buildPayroll } from "./zz-fixtures-inventory-payroll";
+import { buildLibraryHostel } from "./zz-library-hostel";
+import { buildTransport } from "./zz-transport";
+import { buildAlumni } from "./zz-alumni";
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2523,6 +2527,17 @@ async function main() {
     domain: DOMAIN, prefix: "zz.", driver: "ZZ Ganesh Pawar", librarian: "ZZ Meera Joshi", warden: "ZZ Sudhir Patil",
     alumnus: { name: "ZZ Kavya Shinde", email: `zz.alumni01@${DOMAIN}`, classId: grade10.id, grade: "10", birthdate: new Date("2010-03-12T00:00:00Z") },
   });
+  // Transport (3 Oct 2026): a route, a bus, zz.driver01 on it, pupils 01 and 02 riding, yesterday's trip ended, today's waiting.
+  const transport = await buildTransport(db, northgate.school);
+  // Alumni (3 Oct 2026): zz.alumni01's room with her former teacher and two tagged posts; zz.alumni02, an adult, in the directory as a mentor.
+  const alumni = await buildAlumni(db, northgate.school);
+  // Library and hostel (3 Oct 2026): 20 titles, 30 copies, two loans (pupil 01's overdue), a queue, two fines; ZZ Tilak House with pupils 01–03, a leave, last night's roll call, a menu.
+  const libraryHostel = await buildLibraryHostel(db, northgate.school);
+
+  // Inventory and payroll (3 Oct 2026): the stores, the asset register and one locked payroll month at Northgate (zz-fixtures-inventory-payroll.ts).
+  const stores = await buildInventory(db, northgate.school, northgate.admin.id);
+  const payroll = await buildPayroll(db, northgate.school, northgate.admin.id);
+  console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },
@@ -2567,6 +2582,10 @@ async function main() {
      substitutes ${subs.covered + headCover.covered} lesson(s) covered today (zz.subject1 absent, a free colleague on their first lesson, zz.principal on the next) — /admin/substitutions
      calendar    ${calendar.entries} entries for 2026–27 (holidays, the mid-term exam span, the annual day); ${rolls.numbered} roll numbers — /admin/calendar
      modules     ${moduleCount} of ${SCHOOL_MODULES.length} on; zz.driver01, zz.librarian, zz.warden@${DOMAIN}; alumnus zz.alumni01@${DOMAIN} (left grade 10 in April 2026${moduleRoles.alumnus ? "" : ", alumnus row NOT found"}) — /driver, /library, /hostel, /alumni
+     alumni      ${alumni ? `zz.alumni01 writes to her grade-10 teacher${alumni.room ? "" : " (no class teacher found: no room)"}, ${alumni.posts} tagged posts; zz.alumni02@${DOMAIN} (left 2018) in the directory as a mentor` : "NOT built (alumnus, admin or grade 10 missing)"} — /alumni, /alumni/directory, /admin/alumni
+     library     ${libraryHostel ? `${libraryHostel.titles} titles, ${libraryHostel.copies} copies; zz.pupil01 five days overdue, zz.pupil02 first in the queue for title 1, a fine due and one settled` : "NOT built (pupils 01–03, librarian, warden or admin missing)"} — /library, /student/library, /parent/library
+     hostel      ${libraryHostel ? `ZZ Tilak House, ${libraryHostel.rooms} rooms, zz.pupil01–03 boarding, last night's roll call taken, a leave approved and back` : "NOT built"} — /hostel, /admin/hostel, /parent/hostel
+     transport   ${transport ? `${transport.route}: ${transport.stops} stops, bus MH 12 ZZ 1001 with zz.driver01, ${transport.riders} pupils riding, yesterday's morning trip ended (${transport.positions} positions), today's (${transport.today}) waiting` : "NOT built (driver or pupils missing)"} — /admin/transport, /driver, /parent/transport
      also        invite ${invite.status} for zz.invite1@${DOMAIN}; a remark thread (zz.teacher1 ↔ zz.parent01 about zz.pupil01); practice assignment for grade 6${practice.topic ? ` on "${practice.topic}"` : " (no bank imported: none)"}
 
   ── ZZ Southbank School (small) ──────────────────────────────────────

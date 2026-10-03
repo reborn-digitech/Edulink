@@ -72,6 +72,7 @@ export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
   jobRuns: "root.jobCountJobRuns",
   auditRows: "root.jobCountAuditRows",
   healthReads: "root.jobCountHealthReads",
+  tripPositions: "root.jobCountTripPositions",
 };
 
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };

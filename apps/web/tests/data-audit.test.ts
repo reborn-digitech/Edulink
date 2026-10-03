@@ -903,3 +903,75 @@ d("bank: the provenance tag every in-app question carries", () => {
     expect(failsOf("bank-source")).toEqual([]);
   });
 });
+
+d("modules: inventory and payroll (3 October 2026)", () => {
+  /**
+   * The stored copies the two modules keep, each recomputed from its rows:
+   * a place's stock from its movements (and never below nothing), a bill's
+   * total from its lines, a payslip's gross, deductions, employer's share
+   * and net from its lines (net = gross − deductions), a run's totals from
+   * its slips, and a LOCKED run's slips against the digest taken at the
+   * lock — a locked run never changes.
+   */
+  it("inventory-stock: every place's stock is the sum of its movements, never below nothing", async () => {
+    for (const s of schools) {
+      const rows = await db.inventoryStock.findMany({ where: { schoolId: s.id }, select: { itemId: true, location: true, quantity: true, item: { select: { code: true } } } });
+      const sums = await db.stockMovement.groupBy({ by: ["itemId", "location"], where: { schoolId: s.id }, _sum: { delta: true } });
+      const byKey = new Map(sums.map((x) => [`${x.itemId}|${x.location}`, x._sum.delta ?? 0]));
+      for (const r of rows) {
+        const want = byKey.get(`${r.itemId}|${r.location}`) ?? 0;
+        if (r.quantity !== want) note("inventory-stock", "FAIL", s.name, `${r.item.code} at ${r.location}: stored ${r.quantity}, movements add to ${want}`);
+        if (r.quantity < 0) note("inventory-stock", "FAIL", s.name, `${r.item.code} at ${r.location} is ${r.quantity}`);
+      }
+      for (const [key, sum] of byKey) if (!rows.some((r) => `${r.itemId}|${r.location}` === key) && sum !== 0) note("inventory-stock", "FAIL", s.name, `movements at ${key} add to ${sum} with no stock row`);
+      if (rows.length) note("inventory-stock", "INFO", s.name, `${rows.length} stock rows checked`);
+    }
+    expect(failsOf("inventory-stock")).toEqual([]);
+  });
+
+  it("inventory-purchase: a bill's total is the sum of its lines", async () => {
+    for (const s of schools) {
+      const bills = await db.purchaseRecord.findMany({ where: { schoolId: s.id }, select: { invoiceRef: true, linesJson: true, totalPaise: true } });
+      for (const b of bills) {
+        const lines = JSON.parse(b.linesJson) as { quantity: number; unitPaise: number; totalPaise: number }[];
+        const sumLines = lines.reduce((a, l) => a + l.quantity * l.unitPaise, 0);
+        if (sumLines !== b.totalPaise) note("inventory-purchase", "FAIL", s.name, `${b.invoiceRef}: stored ${b.totalPaise}, lines add to ${sumLines}`);
+        for (const l of lines) if (l.totalPaise !== l.quantity * l.unitPaise) note("inventory-purchase", "FAIL", s.name, `${b.invoiceRef}: a line's total ${l.totalPaise} ≠ ${l.quantity} × ${l.unitPaise}`);
+      }
+    }
+    expect(failsOf("inventory-purchase")).toEqual([]);
+  });
+
+  it("payroll-slip: each slip's figures are its lines', and net = gross − deductions", async () => {
+    const { totalsOf } = await import("@/lib/payroll-rules");
+    for (const s of schools) {
+      const slips = await db.payslip.findMany({ where: { schoolId: s.id }, select: { staffName: true, linesJson: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, run: { select: { month: true } } } });
+      for (const p of slips) {
+        const want = totalsOf(JSON.parse(p.linesJson));
+        if (p.netPaise !== p.grossPaise - p.deductionsPaise) note("payroll-slip", "FAIL", s.name, `${p.run.month} ${p.staffName}: net ${p.netPaise} ≠ ${p.grossPaise} − ${p.deductionsPaise}`);
+        for (const k of ["grossPaise", "deductionsPaise", "employerPaise", "netPaise"] as const) if (p[k] !== want[k]) note("payroll-slip", "FAIL", s.name, `${p.run.month} ${p.staffName}: stored ${k} ${p[k]}, lines add to ${want[k]}`);
+      }
+      if (slips.length) note("payroll-slip", "INFO", s.name, `${slips.length} payslips checked`);
+    }
+    expect(failsOf("payroll-slip")).toEqual([]);
+  });
+
+  it("payroll-run: a run's totals are its slips', and a locked run's slips are as they were at the lock", async () => {
+    const { slipDigest } = await import("@/lib/payroll-rules");
+    for (const s of schools) {
+      const runs = await db.payrollRun.findMany({ where: { schoolId: s.id }, select: { id: true, month: true, status: true, headcount: true, grossPaise: true, deductionsPaise: true, employerPaise: true, netPaise: true, lockDigest: true } });
+      for (const r of runs) {
+        const slips = await db.payslip.findMany({ where: { runId: r.id } });
+        const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => slips.reduce((a, x) => a + x[k], 0);
+        if (r.headcount !== slips.length) note("payroll-run", "FAIL", s.name, `${r.month}: headcount ${r.headcount}, ${slips.length} slips`);
+        for (const k of ["grossPaise", "deductionsPaise", "employerPaise", "netPaise"] as const) if (r[k] !== sum(k)) note("payroll-run", "FAIL", s.name, `${r.month}: stored ${k} ${r[k]}, slips add to ${sum(k)}`);
+        if (r.status === "LOCKED") {
+          if (!r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} is locked with no digest`);
+          else if (slipDigest(slips) !== r.lockDigest) note("payroll-run", "FAIL", s.name, `${r.month} changed after it was locked`);
+        }
+      }
+      if (runs.length) note("payroll-run", "INFO", s.name, `${runs.length} runs (${runs.filter((r) => r.status === "LOCKED").length} locked) checked`);
+    }
+    expect(failsOf("payroll-run")).toEqual([]);
+  });
+});

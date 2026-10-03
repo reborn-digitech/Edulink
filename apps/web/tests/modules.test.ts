@@ -21,7 +21,7 @@ import { APP_SEGMENTS, gateRequest, modulePagePermitted } from "@/lib/role-gate"
 import { ModuleOffError } from "@/lib/access-error";
 import { AccessError, assertClassAccess } from "@/lib/tenancy";
 import { apiFailure } from "@/lib/api-v1";
-import { setModule, enabledModules } from "@/lib/modules";
+import { setModule, enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { recordDeparture, undoDeparture } from "@/lib/school-record";
 import { resolveContext } from "@/lib/resolve-context";
 import { createPost } from "@/lib/bulletin";
@@ -104,6 +104,20 @@ describe("a module role's doors", () => {
     const body = (await me.json()) as { active: { role: string }; modules: string[] };
     expect(body.active.role).toBe("DRIVER");
     expect(body.modules).toEqual([...SCHOOL_MODULES]);
+  });
+
+  it("a family's modules are the union over the children's schools: a guardian of the Vale pupil sees Vale's ALUMNI, nobody else's", async () => {
+    // A guardian's session names no school (4 Oct 2026): the shell and /me read the children's schools instead.
+    const guardian = await db.user.create({ data: { name: `ZZ Mod Guardian`, email: `zz-mod-guardian-${STAMP}@test.invalid` }, select: { id: true } });
+    const stranger = await db.user.create({ data: { name: `ZZ Mod Stranger`, email: `zz-mod-stranger-${STAMP}@test.invalid` }, select: { id: true } });
+    await db.guardianship.create({ data: { parentUserId: guardian.id, studentMembershipId: ids.pupilMembership, studentSchoolId: ids.vale, relation: "PARENT", status: "ACTIVE" } });
+    try {
+      expect(await enabledModulesForFamily(guardian.id)).toEqual(["ALUMNI"]);
+      expect(await enabledModulesForFamily(stranger.id)).toEqual([]);
+    } finally {
+      await db.guardianship.deleteMany({ where: { parentUserId: guardian.id } });
+      await db.user.deleteMany({ where: { id: { in: [guardian.id, stranger.id] } } });
+    }
   });
 
   it("refuse a module role every door the catalog does not name it on, and an uncatalogued path", async () => {

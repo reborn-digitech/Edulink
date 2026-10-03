@@ -62,6 +62,17 @@
       ],
       "expo-localization",
       [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Shalaghar uses your location only while you run a school bus trip, to show the bus to families.",
+          "locationAlwaysAndWhenInUsePermission": false,
+          "locationAlwaysPermission": false,
+          "isIosBackgroundLocationEnabled": true,
+          "isAndroidBackgroundLocationEnabled": false,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      [
         "expo-notifications",
         {
           "color": "#f0a33a"

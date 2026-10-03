@@ -33,6 +33,24 @@ export const enabledModules = cache(async (schoolId: string | null | undefined):
   return SCHOOL_MODULES.filter((m) => on.has(m));
 });
 
+/**
+ * A guardian's session names no school, so a module entry on a family's menu
+ * is decided by the children's schools (4 Oct 2026): the union of what any
+ * child's school has on. The page itself still checks the one child's school
+ * (assertModuleOn) when it is opened. Read once per request.
+ */
+export const enabledModulesForFamily = cache(async (userId: string): Promise<SchoolModuleCode[]> => {
+  const children = await db.guardianship.findMany({
+    where: { parentUserId: userId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } },
+    select: { student: { select: { schoolId: true } } },
+  });
+  const schoolIds = [...new Set(children.map((c) => c.student.schoolId))];
+  if (schoolIds.length === 0) return [];
+  const rows = await db.schoolModule.findMany({ where: { schoolId: { in: schoolIds } }, select: { module: true } });
+  const on = new Set(rows.map((r) => r.module));
+  return SCHOOL_MODULES.filter((m) => on.has(m));
+});
+
 export async function isModuleOn(schoolId: string | null | undefined, module: SchoolModuleCode): Promise<boolean> {
   return (await enabledModules(schoolId)).includes(module);
 }

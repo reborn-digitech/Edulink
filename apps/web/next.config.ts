@@ -37,6 +37,18 @@ const csp = contentSecurityPolicy({ dev: isDev });
 const hsts = `max-age=63072000; includeSubDomains${process.env.HSTS_PRELOAD === "1" ? "; preload" : ""}`;
 
 const nextConfig: NextConfig = {
+  /**
+   * The type check and the lint are their own steps, not the build's. `next
+   * build` runs both inside a worker whose heap is Node's default and cannot
+   * be raised from NODE_OPTIONS, and at 184 models and 668 endpoints that
+   * worker ran out of memory on the type check (4 Oct 2026, "Ineffective
+   * mark-compacts near heap limit" at 4,085 MB with --max-old-space-size=8192
+   * set). The battery, CI and the image build all run `tsc --noEmit` (web and
+   * scripts, 4 GB heap) and `eslint .` before `next build`, so nothing is
+   * unchecked; the build only stops checking it twice.
+   */
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   reactStrictMode: true,
   poweredByHeader: false,
   // Whether the browser's push key was present when this build ran. A

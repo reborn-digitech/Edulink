@@ -43,7 +43,7 @@ env:
   # 165: "jobs:watch" joined the job names on 2026-10-01.
   # 166: "usage:sample" (the nightly plan-usage count) joined them on 2026-10-01.
   # 167: "bank:stats" (the nightly question-stat count for the content team) joined them on 2026-10-01.
-  I18N_FLOOR: "167"
+  I18N_FLOOR: "168"
 
 # Every job names its runner image: ubuntu-latest moves to Ubuntu 26.04 on
 # 19 October 2026 and no run of this battery on 26 has been seen — the
@@ -273,6 +273,10 @@ jobs:
           export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
           export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
           export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
+          export EDULINK_TOKEN_DRIVER="$(npm run --silent zz:token -- DRIVER)"
+          export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
+          export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
+          export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
           pnpm --filter @edulink/mobile test:contract
           npm run --silent zz:token -- --purge
       - name: Server log
@@ -523,6 +527,10 @@ jobs:
           export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
           export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
           export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
+          export EDULINK_TOKEN_DRIVER="$(npm run --silent zz:token -- DRIVER)"
+          export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
+          export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
+          export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
           export EDULINK_TOKEN_OPERATOR="$(npm run --silent zz:token -- OPERATOR)"
           export EDULINK_TOKEN_APPADMIN="$(npm run --silent zz:token -- APPADMIN)"
           pnpm --filter @edulink/mobile e2e

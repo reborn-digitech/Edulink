@@ -31,7 +31,16 @@ export type RealtimeEvent =
   | { type: "notification"; userId: string }
   | { type: "checklist.updated"; schoolId: string }
   /** The board for a day changed: a cover named, taken away, taken up or declined. On the school channel and the substitute's own. */
-  | { type: "substitution.updated"; dateKey: string; slotId: string };
+  | { type: "substitution.updated"; dateKey: string; slotId: string }
+  /**
+   * Transport (3 Oct 2026): where a bus is (at most one every 15 s per trip),
+   * a trip started or ended, and a bus near a pupil's stop. On the school
+   * channel for the office and the head, and on the riding pupils' own
+   * channels for their families. The BUS's position — never a child's.
+   */
+  | { type: "transport.position"; tripId: string; lat: number; lng: number; at: string }
+  | { type: "transport.trip"; tripId: string; status: string }
+  | { type: "transport.near"; tripId: string; studentMembershipId: string };
 
 type Subscriber = {
   channels: Set<string>;

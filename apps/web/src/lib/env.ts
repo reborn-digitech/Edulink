@@ -66,9 +66,16 @@ export type RetentionConfig = {
    * a dispute about who looked.
    */
   healthReadDays: number;
+  /**
+   * Days a bus's position from a driver's phone is kept (transport, 3 Oct
+   * 2026). A month by default: long enough for a family's or the office's
+   * question about last week's run, short enough that where a bus went is
+   * not kept as a history of the driver's days.
+   */
+  tripPositionDays: number;
 };
 
-export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365 };
+export const RETENTION_DEFAULTS: RetentionConfig = { sessionDays: 7, tokenDays: 7, rateLimitDays: 1, uploadTicketDays: 30, outboxDays: 30, jobRunDays: 90, auditDays: 730, healthReadDays: 365, tripPositionDays: 30 };
 
 const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number; max: number }> = {
   sessionDays: { name: "RETENTION_SESSION_DAYS", min: 1, max: 365 },
@@ -80,6 +87,7 @@ const RETENTION_VARS: Record<keyof RetentionConfig, { name: string; min: number;
   auditDays: { name: "RETENTION_AUDIT_DAYS", min: 0, max: 36500 },
   // Never under the guardian's ninety-day list (HEALTH_READS_DAYS in src/lib/health.ts).
   healthReadDays: { name: "RETENTION_HEALTH_READS_DAYS", min: 90, max: 3650 },
+  tripPositionDays: { name: "RETENTION_TRIP_POSITIONS_DAYS", min: 1, max: 3650 },
 };
 
 /**

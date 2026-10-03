@@ -96,6 +96,7 @@ export const messageSentSchema = z.object({ messageId: z.string() });
 
 export * from "./v1/auth";
 export * from "./v1/modules";
+export * from "./v1/alumni";
 export * from "./v1/admin";
 export * from "./v1/staff";
 export * from "./v1/family";
@@ -122,6 +123,8 @@ export * from "./v1/certificates";
 export * from "./v1/admissions";
 export * from "./v1/filings";
 export * from "./v1/family-money";
+export * from "./v1/transport";
+export * from "./v1/transport-map";
 
 /* -------------------------------------------------------------------------- */
 /* Global search — GET /api/v1/search                                          */
@@ -214,3 +217,7 @@ export * from "./v1/operator-plans";
 export * from "./v1/operator-dashboard";
 export * from "./v1/experts";
 export * from "./v1/content";
+export * from "./v1/inventory";
+export * from "./v1/payroll";
+export * from "./v1/library";
+export * from "./v1/hostel";

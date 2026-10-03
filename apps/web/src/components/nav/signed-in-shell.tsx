@@ -12,7 +12,7 @@ import { unreadConversationCount } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
 import type { Role } from "@/lib/constants";
 import { NAV } from "@/lib/nav";
-import { enabledModules } from "@/lib/modules";
+import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 
 /**
  * The signed-in chrome, for a session that HAS a role.
@@ -90,11 +90,11 @@ export async function SignedInShell({
   /**
    * A module's entries exist only while the school has it switched on
    * (3 Oct 2026): an entry carrying `module` is hidden otherwise, for every
-   * role. A parent's session names no school, so a module entry on a
-   * family's menu is the module builder's to decide by the child's school.
+   * role. A parent's session names no school, so a family's menu entries
+   * follow the children's schools instead (4 Oct 2026).
    */
   if (NAV[role].some((item) => item.module)) {
-    const on = await enabledModules(session.schoolId);
+    const on = role === "PARENT" ? await enabledModulesForFamily(session.user.id) : await enabledModules(session.schoolId);
     for (const item of NAV[role]) if (item.module && !on.includes(item.module)) hiddenHrefs.push(item.href);
   }
   if (role === "STUDENT" || role === "PARENT") {

@@ -106,6 +106,10 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.guidance", icon: "calendar", group: "school", screen: "/(app)/sessions" },
     { labelKey: "nav.contributions", icon: "clipboard", group: "running", screen: "/(app)/contributions" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
+    // My own payslips while the school runs payroll in the app (3 Oct 2026).
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
+    // My loans and the catalogue (the library module, 3 Oct 2026).
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -124,6 +128,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "school", screen: "/(app)/hostel", module: "HOSTEL" },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -135,6 +142,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.health", icon: "heart", group: "daily", screen: "/(app)/health" },
     { labelKey: "nav.certificates", icon: "fileText", group: "daily", screen: "/(app)/certificates" },
     { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
+    // The child's bus (transport, 3 Oct 2026): route, stop, and the bus on a map during a trip; a family's module entries follow the children's schools (/me's modules, 4 Oct 2026).
+    { labelKey: "transport.parentTitle", icon: "bus", group: "daily", screen: "/(app)/transport", module: "TRANSPORT" },
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "joinRequests.parentClaimsNav", icon: "userPlus", group: "daily", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
@@ -147,6 +156,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
+    // The library and the hostel (3 Oct 2026). No `module`: a parent's /me names no school, so each screen says when the child's school has it off.
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "daily", screen: "/(app)/library" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "daily", screen: "/(app)/hostel" },
   ],
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
@@ -170,6 +182,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
     { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
+    // Transport (3 Oct 2026): the office's routes, buses, seats and the day's trips on a map, on the web.
+    { labelKey: "transport.title", icon: "bus", group: "running", web: "/admin/transport", module: "TRANSPORT" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
     { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
     { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
@@ -185,6 +199,16 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
+    // The alumni module (3 Oct 2026): the office's page on the web, and the directory here.
+    { labelKey: "modules.alumniName", icon: "graduationCap", group: "running", web: "/admin/alumni", module: "ALUMNI" },
+    { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
+    // Inventory and payroll (3 Oct 2026): the office's summaries, read-only here, and its own payslips.
+    { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
+    { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
+    // The library desk and the hostel at a glance (3 Oct 2026), on the web.
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library", module: "LIBRARY" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "running", web: "/admin/hostel", module: "HOSTEL" },
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -208,6 +232,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.certificates", icon: "fileText", group: "running", screen: "/(app)/staff-certificates" },
     { labelKey: "nav.admissions", icon: "users", group: "running", screen: "/(app)/admissions" },
     { labelKey: "nav.filings", icon: "fileText", group: "running", screen: "/(app)/filings" },
+    // Transport (3 Oct 2026): the head reads the day's trips on the web.
+    { labelKey: "transport.title", icon: "bus", group: "running", web: "/admin/transport", module: "TRANSPORT" },
     { labelKey: "joinRequests.navLabel", icon: "userPlus", group: "running", screen: "/(app)/joins" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
@@ -218,18 +244,39 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.sessions", icon: "calendar", group: "school", screen: "/(app)/sessions" },
     { labelKey: "nav.reportCards", icon: "clipboard", group: "running", screen: "/(app)/report-card-rules" },
     { labelKey: "nav.signatures", icon: "pencil", group: "running", screen: "/(app)/signatures" },
+    // The payroll summary and the stores, read; the head's own payslips (3 Oct 2026).
+    { labelKey: "payroll.title", icon: "receipt", group: "running", screen: "/(app)/payroll", module: "PAYROLL" },
+    { labelKey: "inventory.title", icon: "archive", group: "running", screen: "/(app)/inventory", module: "INVENTORY" },
+    { labelKey: "payroll.myTitle", icon: "receipt", group: "running", screen: "/(app)/payslips", module: "PAYROLL" },
+    // The library's reports and the hostel at a glance (3 Oct 2026), on the web.
+    { labelKey: "modules.libraryName", icon: "bookOpen", group: "running", web: "/library/reports", module: "LIBRARY" },
+    { labelKey: "modules.hostelName", icon: "bed", group: "running", web: "/admin/hostel", module: "HOSTEL" },
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   DRIVER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
-  LIBRARIAN: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
-  WARDEN: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  LIBRARIAN: [
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    // The desk is the home tab; the catalogue, fines and reports are the web's (the library module, 3 Oct 2026).
+    { labelKey: "library.tabCatalogue", icon: "bookOpen", group: "daily", web: "/library/catalogue", module: "LIBRARY" },
+    { labelKey: "library.tabFines", icon: "receipt", group: "daily", web: "/library/fines", module: "LIBRARY" },
+    { labelKey: "library.tabReports", icon: "chartLine", group: "running", web: "/library/reports", module: "LIBRARY" },
+  ],
+  WARDEN: [
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    // Roll call, leave and visitors are the home tab; rooms, the menu and incidents are the web's (the hostel module, 3 Oct 2026).
+    { labelKey: "hostel.tabRooms", icon: "bed", group: "daily", web: "/hostel/rooms", module: "HOSTEL" },
+    { labelKey: "hostel.tabMenu", icon: "clipboard", group: "running", web: "/hostel/menu", module: "HOSTEL" },
+    { labelKey: "hostel.tabIncidents", icon: "firstAid", group: "running", web: "/hostel/incidents", module: "HOSTEL" },
+  ],
   ALUMNUS: [
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin", module: "ALUMNI" },
     // The leaving record lives on the web's /record; the phone's record screen is the family's form.
     { labelKey: "modules.alumniRecord", icon: "fileText", group: "school", web: "/record" },
+    // The directory a former pupil may join (the alumni module).
+    { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
 };
@@ -241,6 +288,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
  * list against the files on disk.
  */
 export const HIDDEN_SCREENS = [
+  "inventory",
+  "payroll",
+  "payslips",
   "notifications",
   "report",
   "marks",
@@ -347,6 +397,13 @@ export const HIDDEN_SCREENS = [
   "my-appraisals",
   "trends",
   "moderation",
+  // The alumni module (3 Oct 2026): the directory, opened from the alumnus's home and More.
+  "alumni-directory",
+  // Transport (3 Oct 2026): the family's bus screen.
+  "transport",
+  // The library and hostel modules (3 Oct 2026): a member's library and a boarder's hostel.
+  "library",
+  "hostel",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off is left out. */

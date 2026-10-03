@@ -5,7 +5,7 @@ import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, ty
 import { AccessError } from "@/lib/tenancy";
 import { ModuleOffError } from "@/lib/access-error";
 import { MODULE_META } from "@/lib/module-meta";
-import { enabledModules } from "@/lib/modules";
+import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
@@ -211,8 +211,8 @@ export async function meBody(ctx: ActiveContext) {
     },
     active: { schoolId: ctx.schoolId, role: ctx.role as Role | null, membershipId: ctx.membershipId },
     contexts,
-    // The ACTIVE school's switched-on modules; the phone hides a module's tabs by them.
-    modules: await enabledModules(ctx.schoolId),
+    // The ACTIVE school's switched-on modules, or for a guardian the union over the children's schools; the phone hides a module's tabs by them.
+    modules: ctx.role === "PARENT" ? await enabledModulesForFamily(ctx.user.id) : await enabledModules(ctx.schoolId),
   });
 }
 

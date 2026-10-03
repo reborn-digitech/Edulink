@@ -64,6 +64,7 @@ const RETENTION_LABEL: Record<RetentionKey, TranslationKey> = {
   jobRuns: "root.retentionJobRuns",
   auditRows: "root.retentionAuditRows",
   healthReads: "root.retentionHealthReads",
+  tripPositions: "root.retentionTripPositions",
 };
 const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = {
   sessions: (c) => c.sessionDays,
@@ -74,6 +75,7 @@ const RETENTION_DAYS_OF: Record<RetentionKey, (c: RetentionConfig) => number> = 
   jobRuns: (c) => c.jobRunDays,
   auditRows: (c) => c.auditDays,
   healthReads: (c) => c.healthReadDays,
+  tripPositions: (c) => c.tripPositionDays,
 };
 
 type Tone = "running" | "overdue" | "failed" | "ok";

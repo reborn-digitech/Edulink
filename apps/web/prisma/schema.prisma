@@ -310,6 +310,56 @@ model School {
   commissionPartner      CommissionPartner? @relation(fields: [commissionPartnerId], references: [id], onDelete: SetNull)
   /// The optional parts of the school version this school has switched on (one row each; absence = off).
   modules                SchoolModule[]
+  /// Inventory and assets, and HR and payroll (the INVENTORY and PAYROLL modules).
+  inventoryCategories    InventoryCategory[]
+  vendors                Vendor[]
+  inventoryItems         InventoryItem[]
+  inventoryStock         InventoryStock[]
+  stockMovements         StockMovement[]
+  assets                 Asset[]
+  assetEvents            AssetEvent[]
+  purchaseRecords        PurchaseRecord[]
+  inventoryRequests      InventoryRequest[]
+  payrollSettings        PayrollSettings?
+  salaryStructures       SalaryStructure[]
+  salaryComponents       SalaryComponent[]
+  staffSalaries          StaffSalary[]
+  payrollRuns            PayrollRun[]
+  payslips               Payslip[]
+  payrollExports         PayrollExport[]
+  staffAdvances          StaffAdvance[]
+  /// The transport module's rows (3 Oct 2026): routes and stops, buses, who drives which, who rides where, the day's trips.
+  transportRoutes        TransportRoute[]
+  transportStops         TransportStop[]
+  buses                  Bus[]
+  busAssignments         BusAssignment[]
+  transportAllotments    TransportAllotment[]
+  trips                  Trip[]
+  tripPositions          TripPosition[]
+  tripBoardings          TripBoarding[]
+  transportAlertPrefs    TransportAlertPref[]
+  transportConsents      TransportConsent[]
+  /// The alumni module's rows (3 Oct 2026): directory entries, the office's flags, notes to a batch.
+  alumniProfiles         AlumniProfile[]
+  alumniNotes            AlumniNote[]
+
+  /// The library and hostel modules' rows (3 Oct 2026).
+  librarySettings       LibrarySettings?
+  libraryTitles         LibraryTitle[]
+  libraryCopies         LibraryCopy[]
+  libraryMembers        LibraryMember[]
+  libraryIssues         LibraryIssue[]
+  libraryReservations   LibraryReservation[]
+  libraryFines          LibraryFine[]
+  hostels               Hostel[]
+  hostelRooms           HostelRoom[]
+  hostelAllotments      HostelAllotment[]
+  hostelLeaves          HostelLeave[]
+  hostelRollCalls       HostelRollCall[]
+  hostelRollCallEntries HostelRollCallEntry[]
+  messMenus             MessMenu[]
+  messAttendance        MessAttendance[]
+  hostelVisitors        HostelVisitor[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -596,6 +646,22 @@ model Membership {
   absenceNotes           AbsenceNote[]        @relation("AbsenceNoteStudent")
   healthCardReads        HealthCardRead[]     @relation("HealthCardReadStudent")
   appraisals             StaffAppraisal[]      @relation("StaffAppraisalSubject")
+  stockReceived          StockMovement[]      @relation("StockMovementTo")
+  assetsHeld             Asset[]              @relation("AssetCustodian")
+  inventoryRequests      InventoryRequest[]   @relation("InventoryRequester")
+  salaries               StaffSalary[]        @relation("StaffSalaryOf")
+  payslips               Payslip[]            @relation("PayslipOf")
+  salaryAdvances         StaffAdvance[]       @relation("StaffAdvanceOf")
+  /// Transport (3 Oct 2026): the buses this DRIVER drives or attends, and the route and stop this pupil rides.
+  busesDriven            BusAssignment[]       @relation("BusAssignmentDriver")
+  busesAttended          BusAssignment[]       @relation("BusAssignmentAttendant")
+  transportAllotments    TransportAllotment[]  @relation("TransportAllotmentStudent")
+  /// An ALUMNUS membership's directory entry and the office's flags (alumni module, 3 Oct 2026).
+  alumniProfile          AlumniProfile?
+
+  /// The library's borrower row and the hostel's beds (3 Oct 2026).
+  libraryMember    LibraryMember?    @relation("LibraryMemberOf")
+  hostelAllotments HostelAllotment[] @relation("HostelAllotmentStudent")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -3392,6 +3458,12 @@ model Conversation {
   /// could not give under a double tap. Null on rooms made before the key
   /// existed; they are keyed the first time they are found again.
   pairKey       String?  @unique
+  /// CLOSED BY STAFF (the alumni module, 3 Oct 2026): a teacher, the head or
+  /// the office may close a room a former pupil opened; the alumnus cannot
+  /// write in it again until staff write (which reopens it) or reopen it.
+  /// Null for an open room, which is every room before the alumni module.
+  closedAt       DateTime?
+  closedByUserId String?
 
   school       School                    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   participants ConversationParticipant[]
@@ -3992,6 +4064,8 @@ model Incident {
   closedAt               DateTime?
   closedByUserId         String?
   createdAt              DateTime  @default(now())
+  /// The hostel the incident happened in, when a warden recorded it (the hostel module's tag, 3 Oct 2026); null otherwise.
+  hostelId               String?
   updatedAt              DateTime  @updatedAt
 
   school     School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
@@ -4002,6 +4076,7 @@ model Incident {
   @@index([schoolId, status, occurredAt])
   @@index([schoolId, studentMembershipId, occurredAt])
   @@index([reportedByMembershipId])
+  @@index([schoolId, hostelId, occurredAt])
 }
 
 /// A follow-up on an incident: the nurse's note, the call to the family, the
@@ -5314,4 +5389,1122 @@ model SchoolModule {
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   @@unique([schoolId, module])
+}
+
+/// A FORMER PUPIL'S PLACE IN THE ALUMNI MODULE (3 Oct 2026), one per ALUMNUS
+/// membership, made the first time there is something to keep: the alumnus
+/// opting in to the directory, or the office muting them or marking them a
+/// mentor. No row is the default — not listed, not muted, not a mentor.
+///
+/// The batch (the year they left) and their last class are NOT stored here:
+/// they are read from the ALUMNUS membership's joinedAt (the leaving date) and
+/// the SchoolRecord of the closed STUDENT membership, so there is no second
+/// copy to drift.
+///
+/// THE DIRECTORY IS CONSENT. `listed` is the alumnus's own act and nothing is
+/// shown to anyone while it is false; a minor cannot set it (decision 0002's
+/// minors' policy); leaving the directory clears what they wrote. Mute and
+/// mentor are the office's (audited alumni.mute / alumni.mentor).
+model AlumniProfile {
+  id             String    @id @default(cuid())
+  schoolId       String
+  membershipId   String    @unique
+  userId         String
+  listed         Boolean   @default(false)
+  listedAt       DateTime?
+  /// What the alumnus wrote for the directory, each short and optional.
+  city           String?
+  occupation     String?
+  /// One of ALUMNI_CONTACT_PREFS in packages/contracts.
+  contactPref    String    @default("OFFICE")
+  /// A mentor appears marked in the directory; the office's flag.
+  mentor         Boolean   @default(false)
+  mentorAt       DateTime?
+  mentorByUserId String?
+  /// Muted by the office: the alumnus may not open or write in a room, comment or post.
+  mutedAt        DateTime?
+  mutedByUserId  String?
+  muteReason     String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, listed])
+}
+
+/// A NOTE FROM THE SCHOOL TO ITS ALUMNI (3 Oct 2026): the office writes to one
+/// batch (the year they left) or to every alumnus; each is told by a
+/// notification, and the note stays on their alumni home. `recipientCount`
+/// is what the send reached, frozen with it (written once, by the send).
+model AlumniNote {
+  id             String   @id @default(cuid())
+  schoolId       String
+  /// The year of leaving the note is for; null for every alumnus.
+  batchYear      Int?
+  title          String
+  body           String
+  sentByUserId   String
+  recipientCount Int      @default(0)
+  createdAt      DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Transport (the owner's decision of 3 October 2026): an optional module
+// (SchoolModule TRANSPORT). The office defines routes and stops, buses, who
+// drives which bus on which route, and which pupil rides from which stop;
+// the DRIVER's phone is the bus's GPS between Start and End of a trip, and a
+// family sees the bus — never the child — on a map. No GPS hardware is sold
+// or required; a state that mandates a certified tracking device is not
+// satisfied by this. Every location row here is the BUS's (TripPosition) or a
+// stop's; no allotment or boarding row carries a location (decision 0002).
+// ---------------------------------------------------------------------------
+
+/// A bus route: the stops it calls at, in order. MORNING runs the stops in
+/// order to the school, EVENING in reverse from it, BOTH makes two trips a
+/// day. Archived (active false) rather than deleted, since its trips stay.
+model TransportRoute {
+  id        String   @id @default(cuid())
+  schoolId  String
+  name      String
+  /// MORNING | EVENING | BOTH
+  direction String   @default("BOTH")
+  active    Boolean  @default(true)
+  note      String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  stops       TransportStop[]
+  assignments BusAssignment[]
+  allotments  TransportAllotment[]
+
+  @@index([schoolId, active])
+}
+
+/// One stop on a route: where it is (a public place, never a home address
+/// by design of the form), when the bus is due there, and how near counts as
+/// "at the stop" for the start offer and the family's alert.
+model TransportStop {
+  id            String   @id @default(cuid())
+  schoolId      String
+  routeId       String
+  /// 1, 2, 3 … in the morning's order; the evening runs them backwards.
+  order         Int
+  name          String
+  lat           Float
+  lng           Float
+  /// Minutes after midnight, school time, on the morning and the evening trip; null on a route that does not run that way.
+  morningMinute Int?
+  eveningMinute Int?
+  /// The geofence, in metres.
+  radiusM       Int      @default(150)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  school     School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  route      TransportRoute       @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  allotments TransportAllotment[]
+
+  @@index([schoolId])
+  @@index([routeId, order])
+}
+
+/// A bus the school runs or hires: its registration plate is the one thing a family is shown about it.
+model Bus {
+  id           String   @id @default(cuid())
+  schoolId     String
+  registration String
+  capacity     Int
+  note         String   @default("")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  school      School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  assignments BusAssignment[]
+
+  @@unique([schoolId, registration])
+}
+
+/// Which bus runs which route, driven by whom (a DRIVER membership) and
+/// with which attendant (also a DRIVER membership, optional), from one
+/// school day to another (toDateKey null: until changed). Ending one sets
+/// toDateKey; nothing is deleted, so a past trip still names its bus.
+model BusAssignment {
+  id                    String   @id @default(cuid())
+  schoolId              String
+  busId                 String
+  routeId               String
+  driverMembershipId    String
+  attendantMembershipId String?
+  fromDateKey           String
+  toDateKey             String?
+  createdByUserId       String?
+  createdAt             DateTime @default(now())
+
+  school    School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  bus       Bus            @relation(fields: [busId], references: [id], onDelete: Cascade)
+  route     TransportRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  driver    Membership     @relation("BusAssignmentDriver", fields: [driverMembershipId], references: [id], onDelete: Cascade)
+  attendant Membership?    @relation("BusAssignmentAttendant", fields: [attendantMembershipId], references: [id], onDelete: Cascade)
+  trips     Trip[]
+
+  @@index([schoolId, fromDateKey])
+  @@index([driverMembershipId])
+  @@index([attendantMembershipId])
+  @@index([routeId])
+  @@index([busId])
+}
+
+/// A pupil's seat: the route and the stop, whether they are picked up there
+/// in the morning (boards) and set down there in the evening (alights), from
+/// one day to another. No location of the child's: the stop is the route's.
+/// `feeHeadId` names the fees module's transport head when the school keeps
+/// one; nothing here charges anything (decision 0003).
+model TransportAllotment {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  routeId             String
+  stopId              String
+  boards              Boolean  @default(true)
+  alights             Boolean  @default(true)
+  fromDateKey         String
+  toDateKey           String?
+  feeHeadId           String?
+  createdByUserId     String?
+  createdAt           DateTime @default(now())
+
+  school    School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student   Membership     @relation("TransportAllotmentStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  route     TransportRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+  stop      TransportStop  @relation(fields: [stopId], references: [id], onDelete: Restrict)
+  boardings TripBoarding[]
+
+  @@index([schoolId, routeId])
+  @@index([studentMembershipId])
+  @@index([stopId])
+}
+
+/// One run of one assignment on one day in one direction. SCHEDULED until
+/// the driver starts it, LIVE until they end it, then ENDED. MISSED is never
+/// stored: a SCHEDULED trip ten minutes past its first stop's time is read as
+/// missed (lib/transport.ts), and `missedNotifiedAt` is when the office was
+/// told, once. `lowBatteryAt` is the driver's phone saying its battery ran low.
+model Trip {
+  id                    String    @id @default(cuid())
+  schoolId              String
+  assignmentId          String
+  dateKey               String
+  /// MORNING | EVENING
+  direction             String
+  /// SCHEDULED | LIVE | ENDED
+  status                String    @default("SCHEDULED")
+  startedAt             DateTime?
+  startedByMembershipId String?
+  /// Started away from the first stop: the driver's reason, kept.
+  startReason           String?
+  endedAt               DateTime?
+  endedByMembershipId   String?
+  lowBatteryAt          DateTime?
+  missedNotifiedAt      DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  school     School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  assignment BusAssignment  @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  positions  TripPosition[]
+  boardings  TripBoarding[]
+
+  @@unique([assignmentId, dateKey, direction])
+  @@index([schoolId, dateKey])
+}
+
+/// Where the BUS was, from the driver's phone, every 10–15 seconds of a
+/// LIVE trip. Kept RETENTION_TRIP_POSITIONS_DAYS (30 by default) by the
+/// retention sweep. Unique on the instant, so a batch replayed from the
+/// phone's outbox lands once.
+model TripPosition {
+  id        String   @id @default(cuid())
+  schoolId  String
+  tripId    String
+  at        DateTime
+  lat       Float
+  lng       Float
+  /// Metres per second and metres, as the phone reported them.
+  speed     Float?
+  accuracy  Float?
+  createdAt DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  trip   Trip   @relation(fields: [tripId], references: [id], onDelete: Cascade)
+
+  @@unique([tripId, at])
+  @@index([at])
+  @@index([schoolId, at])
+}
+
+/// A pupil on one trip: when the driver ticked them on and off, and when
+/// the family was told the bus was near. No location.
+model TripBoarding {
+  id                   String    @id @default(cuid())
+  schoolId             String
+  tripId               String
+  allotmentId          String
+  boardedAt            DateTime?
+  alightedAt           DateTime?
+  markedByMembershipId String?
+  nearNotifiedAt       DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  school    School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  trip      Trip               @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  allotment TransportAllotment @relation(fields: [allotmentId], references: [id], onDelete: Cascade)
+
+  @@unique([tripId, allotmentId])
+  @@index([schoolId])
+  @@index([allotmentId])
+}
+
+/// A guardian's "tell me when the bus is near" for one child: on unless a row says off.
+model TransportAlertPref {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  userId              String
+  nearAlerts          Boolean  @default(true)
+  updatedAt           DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, userId])
+  @@index([schoolId])
+}
+
+/// A driver's yes to the location sentence, shown once before the first
+/// trip: their phone's location is collected between Start and End only.
+/// `textKey` is the sentence they were shown, so a changed sentence asks again.
+model TransportConsent {
+  id           String   @id @default(cuid())
+  schoolId     String
+  membershipId String   @unique
+  textKey      String
+  consentedAt  DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId])
+}
+
+/// THE LIBRARY MODULE (module LIBRARY, role LIBRARIAN; the owner's decision of
+/// 3 October 2026). The school's rules for lending: one row per school, made
+/// the first time anyone reads them, written by the office. A fine is never
+/// money the platform takes (decision 0003): with `fineHeadId` set it becomes a
+/// demand on the pupil's fee ledger under that head; without it, it is a due
+/// the office settles at its own counter and records here.
+model LibrarySettings {
+  id                 String    @id @default(cuid())
+  schoolId           String    @unique
+  /// How many books a pupil may hold at once, and for how many days.
+  pupilLimit         Int       @default(2)
+  pupilLoanDays      Int       @default(14)
+  /// The same for staff.
+  staffLimit         Int       @default(5)
+  staffLoanDays      Int       @default(30)
+  /// How many times one loan may be renewed at the desk.
+  maxRenewals        Int       @default(2)
+  /// The overdue fine for each day past the due date, in paise; 0 charges none.
+  finePerDayPaise    Int       @default(100)
+  /// The fee head a pupil's fine is charged under; null: fines are counter dues.
+  fineHeadId         String?
+  /// When the running stock-take began; null while none is running.
+  stockTakeStartedAt DateTime?
+  updatedByUserId    String?
+  updatedAt          DateTime  @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+}
+
+/// A book the library holds, once per title; its copies are the physical books.
+model LibraryTitle {
+  id        String   @id @default(cuid())
+  schoolId  String
+  /// ISBN-10 or ISBN-13, digits (and a final X) only; null when the book has none.
+  isbn      String?
+  title     String
+  author    String   @default("")
+  publisher String   @default("")
+  year      Int?
+  subject   String   @default("")
+  /// One of LIBRARY_LANGUAGES in packages/contracts.
+  language  String   @default("OTHER")
+  /// One of LIBRARY_CATEGORIES in packages/contracts.
+  category  String   @default("GENERAL")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  copies       LibraryCopy[]
+  reservations LibraryReservation[]
+
+  @@unique([schoolId, isbn])
+  @@index([schoolId, title])
+}
+
+/// One physical book, known by the accession number written in it.
+model LibraryCopy {
+  id        String    @id @default(cuid())
+  schoolId  String
+  titleId   String
+  accession String
+  rack      String    @default("")
+  /// AVAILABLE | ISSUED | LOST | WITHDRAWN | REPAIR. ISSUED is set and cleared
+  /// only by an issue and its return, under a conditional update, so two desks
+  /// cannot lend one book twice.
+  status    String    @default("AVAILABLE")
+  /// Seen during the running stock-take (seenAt ≥ LibrarySettings.stockTakeStartedAt).
+  seenAt    DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  school School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  title  LibraryTitle   @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  issues LibraryIssue[]
+
+  @@unique([schoolId, accession])
+  @@index([titleId, status])
+}
+
+/// A person who borrows: one per school membership (a pupil's, or a member of
+/// staff's), made at their first loan or reservation. The card number is what
+/// the desk scans; the limits come from the school's settings by kind.
+model LibraryMember {
+  id           String   @id @default(cuid())
+  schoolId     String
+  membershipId String   @unique
+  /// PUPIL | STAFF, from the membership's role when the row was made.
+  kind         String
+  cardNumber   String
+  createdAt    DateTime @default(now())
+
+  school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership   Membership           @relation("LibraryMemberOf", fields: [membershipId], references: [id], onDelete: Cascade)
+  issues       LibraryIssue[]
+  reservations LibraryReservation[]
+  fines        LibraryFine[]
+
+  @@unique([schoolId, cardNumber])
+}
+
+/// A loan: a copy lent to a member until `dueOn` (a day in the school's zone).
+model LibraryIssue {
+  id               String    @id @default(cuid())
+  schoolId         String
+  copyId           String
+  memberId         String
+  issuedAt         DateTime  @default(now())
+  dueOn            String
+  returnedAt       DateTime?
+  renewedCount     Int       @default(0)
+  issuedByUserId   String
+  returnedByUserId String?
+  /// The day the last "due tomorrow" reminder and overdue notice went, so each goes once.
+  remindedOn       String?
+  noticedOn        String?
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  copy   LibraryCopy   @relation(fields: [copyId], references: [id], onDelete: Cascade)
+  member LibraryMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  fines  LibraryFine[]
+
+  @@index([schoolId, returnedAt, dueOn])
+  @@index([memberId, returnedAt])
+  @@index([copyId, returnedAt])
+}
+
+/// A member's place in the queue for a title. `readyAt` and `readyCopyId`: a
+/// returned copy is held for the first in the queue, and lent to nobody else
+/// while it waits. Fulfilled by the loan, or cancelled.
+model LibraryReservation {
+  id             String    @id @default(cuid())
+  schoolId       String
+  titleId        String
+  memberId       String
+  placedAt       DateTime  @default(now())
+  placedByUserId String
+  readyAt        DateTime?
+  readyCopyId    String?
+  fulfilledAt    DateTime?
+  cancelledAt    DateTime?
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  title  LibraryTitle  @relation(fields: [titleId], references: [id], onDelete: Cascade)
+  member LibraryMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@index([titleId, placedAt])
+  @@index([memberId])
+}
+
+/// A fine on one loan: OVERDUE (written by the return), DAMAGE or LOST (raised
+/// at the desk). One of each reason per loan. Whether it is paid is read from
+/// the fee demand it raised (`demandId`), or from `settledAt` when the school
+/// keeps library dues at its own counter — never stored twice.
+model LibraryFine {
+  id              String    @id @default(cuid())
+  schoolId        String
+  issueId         String
+  memberId        String
+  paise           Int
+  /// OVERDUE | DAMAGE | LOST
+  reason          String
+  raisedByUserId  String
+  createdAt       DateTime  @default(now())
+  waivedAt        DateTime?
+  waivedByUserId  String?
+  waivedReason    String?
+  /// The FeeDemand this fine raised on the pupil's ledger; null for a counter due.
+  demandId        String?
+  settledAt       DateTime?
+  settledByUserId String?
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  issue  LibraryIssue  @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  member LibraryMember @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@unique([issueId, reason])
+  @@index([schoolId, createdAt])
+}
+
+/// THE HOSTEL MODULE (module HOSTEL, role WARDEN; 3 October 2026). One
+/// boarding house of the school, with the warden who runs it.
+model Hostel {
+  id                 String   @id @default(cuid())
+  schoolId           String
+  name               String
+  /// BOYS | GIRLS | MIXED
+  kind               String
+  /// The WARDEN membership in charge; any warden of the school may take its roll call.
+  wardenMembershipId String?
+  capacity           Int      @default(0)
+  /// Whether the warden marks who ate at each meal (off by default).
+  messAttendance     Boolean  @default(false)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  school    School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  rooms     HostelRoom[]
+  rollCalls HostelRollCall[]
+  menu      MessMenu[]
+
+  @@unique([schoolId, name])
+}
+
+model HostelRoom {
+  id       String @id @default(cuid())
+  schoolId String
+  hostelId String
+  number   String
+  floor    String @default("")
+  beds     Int
+  /// DORMITORY | SHARED | SINGLE | SICK_BAY
+  kind     String @default("SHARED")
+
+  school     School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  hostel     Hostel            @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+  allotments HostelAllotment[]
+
+  @@unique([hostelId, number])
+}
+
+/// A pupil's bed, from a day to a day. The two keys are set only while ACTIVE
+/// and are unique, so one pupil holds one bed and one bed one pupil, whoever
+/// presses at once.
+model HostelAllotment {
+  id               String   @id @default(cuid())
+  schoolId         String
+  membershipId     String
+  roomId           String
+  bed              Int
+  fromDate         String
+  toDate           String?
+  /// ACTIVE | ENDED
+  status           String   @default("ACTIVE")
+  activePupilKey   String?  @unique
+  activeBedKey     String?  @unique
+  /// The hostel fee's demand on the pupil's ledger, which the fees module owns; this only links it.
+  feeDemandId      String?
+  allottedByUserId String
+  endedByUserId    String?
+  createdAt        DateTime @default(now())
+
+  school   School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student  Membership            @relation("HostelAllotmentStudent", fields: [membershipId], references: [id], onDelete: Cascade)
+  room     HostelRoom            @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  leaves   HostelLeave[]
+  entries  HostelRollCallEntry[]
+  visitors HostelVisitor[]
+  meals    MessAttendance[]
+
+  @@index([schoolId, status])
+  @@index([membershipId, status])
+  @@index([roomId, status])
+}
+
+/// Leave from the hostel. A minor pupil's ask waits for a guardian's consent
+/// (AWAITING_CONSENT) before the warden sees it to decide; a guardian's own
+/// ask is their consent. The gate writes outAt and inAt; `late` is set when
+/// the pupil came back after `toAt`.
+model HostelLeave {
+  id                String    @id @default(cuid())
+  schoolId          String
+  allotmentId       String
+  membershipId      String
+  /// HOME | LOCAL | MEDICAL
+  kind              String
+  fromAt            DateTime
+  toAt              DateTime
+  destination       String
+  reason            String    @default("")
+  /// AWAITING_CONSENT | PENDING | APPROVED | DECLINED | CANCELLED
+  status            String
+  requestedByUserId String
+  consentAt         DateTime?
+  consentUserId     String?
+  decidedAt         DateTime?
+  decidedByUserId   String?
+  decisionNote      String?
+  outAt             DateTime?
+  outByUserId       String?
+  inAt              DateTime?
+  inByUserId        String?
+  late              Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  allotment HostelAllotment @relation(fields: [allotmentId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, status, fromAt])
+  @@index([allotmentId])
+}
+
+/// One roll call: a hostel, a day, MORNING or NIGHT — once. `clientId` is the
+/// phone's, so a replay of the same sheet from the outbox is the same call.
+model HostelRollCall {
+  id            String   @id @default(cuid())
+  schoolId      String
+  hostelId      String
+  dateKey       String
+  /// MORNING | NIGHT
+  slot          String
+  takenByUserId String
+  takenAt       DateTime @default(now())
+  clientId      String?
+
+  school  School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  hostel  Hostel                @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+  entries HostelRollCallEntry[]
+
+  @@unique([hostelId, dateKey, slot])
+}
+
+model HostelRollCallEntry {
+  id           String @id @default(cuid())
+  schoolId     String
+  rollCallId   String
+  allotmentId  String
+  membershipId String
+  /// PRESENT | ON_LEAVE | ABSENT
+  status       String
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  rollCall  HostelRollCall  @relation(fields: [rollCallId], references: [id], onDelete: Cascade)
+  allotment HostelAllotment @relation(fields: [allotmentId], references: [id], onDelete: Cascade)
+
+  @@unique([rollCallId, allotmentId])
+  @@index([membershipId])
+}
+
+/// What the mess serves: one row per hostel, weekday (1 = Monday … 7 = Sunday) and meal.
+model MessMenu {
+  id       String @id @default(cuid())
+  schoolId String
+  hostelId String
+  weekday  Int
+  /// BREAKFAST | LUNCH | SNACKS | DINNER
+  meal     String
+  items    String
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  hostel Hostel @relation(fields: [hostelId], references: [id], onDelete: Cascade)
+
+  @@unique([hostelId, weekday, meal])
+}
+
+/// Who ate at a meal, where the hostel has mess attendance switched on.
+model MessAttendance {
+  id             String  @id @default(cuid())
+  schoolId       String
+  allotmentId    String
+  dateKey        String
+  meal           String
+  present        Boolean
+  markedByUserId String
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  allotment HostelAllotment @relation(fields: [allotmentId], references: [id], onDelete: Cascade)
+
+  @@unique([allotmentId, dateKey, meal])
+  @@index([schoolId, dateKey])
+}
+
+/// The visitor book: who came to see a boarder, when they came and went, and who let them in.
+model HostelVisitor {
+  id              String    @id @default(cuid())
+  schoolId        String
+  allotmentId     String
+  name            String
+  relation        String
+  note            String    @default("")
+  inAt            DateTime  @default(now())
+  outAt           DateTime?
+  allowedByUserId String
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  allotment HostelAllotment @relation(fields: [allotmentId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, inAt])
+}
+
+/// INVENTORY AND ASSETS (module INVENTORY, 3 October 2026; src/lib/inventory.ts).
+/// A category groups items and assets and carries the depreciation rate its
+/// assets take unless they carry their own, in basis points a year.
+model InventoryCategory {
+  id                 String   @id @default(cuid())
+  schoolId           String
+  name               String
+  depreciationRateBp Int?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  school School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  items  InventoryItem[]
+  assets Asset[]
+
+  @@unique([schoolId, name])
+}
+
+/// Who the school buys from. Free details; the bill's own name is kept on the purchase record.
+model Vendor {
+  id        String   @id @default(cuid())
+  schoolId  String
+  name      String
+  phone     String?
+  gstin     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school    School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  purchases PurchaseRecord[]
+  assets    Asset[]
+
+  @@unique([schoolId, name])
+}
+
+/// Something the stores keep, by a code unique in the school. kind CONSUMABLE | ASSET.
+model InventoryItem {
+  id           String    @id @default(cuid())
+  schoolId     String
+  categoryId   String?
+  code         String
+  name         String
+  unit         String
+  reorderLevel Int       @default(0)
+  kind         String    @default("CONSUMABLE")
+  archivedAt   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  school    School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  category  InventoryCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  stock     InventoryStock[]
+  movements StockMovement[]
+  assets    Asset[]
+  requests  InventoryRequest[]
+
+  @@unique([schoolId, code])
+}
+
+/// How many of an item are at one place. A STORED COPY of the sum of the
+/// item's movements there, written only by inventory.ts in the same
+/// transaction as the movement, and never below zero (data:audit
+/// "inventory-stock" recomputes it).
+model InventoryStock {
+  id        String   @id @default(cuid())
+  schoolId  String
+  itemId    String
+  location  String
+  quantity  Int      @default(0)
+  updatedAt DateTime @updatedAt
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  item   InventoryItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([itemId, location])
+  @@index([schoolId])
+}
+
+/// One change to the stock at a location: PURCHASE | ISSUE | RETURN | ADJUST |
+/// WRITE_OFF, `delta` signed (an issue is negative). An issue names who or
+/// where it went: a member of staff, a room, a department.
+model StockMovement {
+  id               String   @id @default(cuid())
+  schoolId         String
+  itemId           String
+  kind             String
+  delta            Int
+  location         String
+  toMembershipId   String?
+  toRoom           String?
+  toDepartment     String?
+  reference        String?
+  note             String   @default("")
+  purchaseRecordId String?
+  requestId        String?
+  byUserId         String?
+  at               DateTime @default(now())
+
+  school   School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  item     InventoryItem   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  to       Membership?     @relation("StockMovementTo", fields: [toMembershipId], references: [id], onDelete: SetNull)
+  purchase PurchaseRecord? @relation(fields: [purchaseRecordId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, at])
+  @@index([itemId, location])
+  @@index([toMembershipId])
+}
+
+/// Something the school owns that lasts, under a tag number unique in the
+/// school, with ONE custodian at most. status IN_USE | IN_STORE | REPAIR |
+/// DISPOSED; depreciation is worked out on read from the cost, the date, the
+/// method and the rate (never stored).
+model Asset {
+  id                    String    @id @default(cuid())
+  schoolId              String
+  itemId                String?
+  categoryId            String?
+  vendorId              String?
+  tagNumber             String
+  name                  String
+  purchaseDate          DateTime?
+  costPaise             Int       @default(0)
+  warrantyUntil         DateTime?
+  location              String
+  custodianMembershipId String?
+  status                String    @default("IN_STORE")
+  condition             String    @default("GOOD")
+  /// STRAIGHT_LINE | WDV | NONE
+  depreciationMethod    String    @default("STRAIGHT_LINE")
+  /// Null takes the category's rate, else the default.
+  depreciationRateBp    Int?
+  lastAuditedAt         DateTime?
+  disposedAt            DateTime?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  school    School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  item      InventoryItem?     @relation(fields: [itemId], references: [id], onDelete: SetNull)
+  category  InventoryCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  vendor    Vendor?            @relation(fields: [vendorId], references: [id], onDelete: SetNull)
+  custodian Membership?        @relation("AssetCustodian", fields: [custodianMembershipId], references: [id], onDelete: SetNull)
+  events    AssetEvent[]
+
+  @@unique([schoolId, tagNumber])
+  @@index([custodianMembershipId])
+}
+
+/// What happened to an asset: CREATED | ASSIGNED | MOVED | REPAIR | REPAIRED | AUDITED | DISPOSED.
+model AssetEvent {
+  id       String   @id @default(cuid())
+  schoolId String
+  assetId  String
+  kind     String
+  note     String   @default("")
+  byUserId String?
+  at       DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  asset  Asset  @relation(fields: [assetId], references: [id], onDelete: Cascade)
+
+  @@index([assetId, at])
+  @@index([schoolId])
+}
+
+/// A bill the school paid OUTSIDE THE APP (decision 0003): who, when, the
+/// invoice's reference, its lines as JSON, and the total — a STORED COPY of
+/// the sum of the lines (data:audit "inventory-purchase"). The scanned bill
+/// is an upload the office and the head read (files.ts).
+model PurchaseRecord {
+  id              String   @id @default(cuid())
+  schoolId        String
+  vendorId        String?
+  vendorName      String
+  dateKey         String
+  invoiceRef      String
+  location        String
+  linesJson       String   @default("[]")
+  totalPaise      Int
+  billFileId      String?
+  note            String   @default("")
+  createdByUserId String?
+  createdAt       DateTime @default(now())
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  vendor    Vendor?         @relation(fields: [vendorId], references: [id], onDelete: SetNull)
+  movements StockMovement[]
+
+  @@index([schoolId, dateKey])
+}
+
+/// A member of staff's ask for something from the stores: PENDING |
+/// FULFILLED | DECLINED | CANCELLED. Fulfilling an ask that names an item
+/// issues it to them.
+model InventoryRequest {
+  id                    String    @id @default(cuid())
+  schoolId              String
+  requesterMembershipId String
+  itemId                String?
+  itemText              String    @default("")
+  quantity              Int
+  note                  String    @default("")
+  status                String    @default("PENDING")
+  decidedByUserId       String?
+  decidedAt             DateTime?
+  decisionNote          String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  school    School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  requester Membership     @relation("InventoryRequester", fields: [requesterMembershipId], references: [id], onDelete: Cascade)
+  item      InventoryItem? @relation(fields: [itemId], references: [id], onDelete: SetNull)
+
+  @@index([schoolId, status])
+  @@index([requesterMembershipId])
+}
+
+/// HR AND PAYROLL (module PAYROLL, 3 October 2026; src/lib/payroll.ts). The
+/// school's statutory switches and the codes the portals know it by; the
+/// rates themselves are the coded table in packages/contracts (payroll.ts).
+model PayrollSettings {
+  id                  String   @id @default(cuid())
+  schoolId            String   @unique
+  pfEnabled           Boolean  @default(true)
+  pfOnFullBasic       Boolean  @default(false)
+  esiEnabled          Boolean  @default(true)
+  /// MH | NONE
+  ptState             String   @default("MH")
+  employerName        String   @default("")
+  pfEstablishmentCode String   @default("")
+  esiEmployerCode     String   @default("")
+  updatedByUserId     String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+}
+
+/// A named set of salary components ("Teaching staff", "Support staff").
+model SalaryStructure {
+  id         String    @id @default(cuid())
+  schoolId   String
+  name       String
+  archivedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  school     School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  components SalaryComponent[]
+  salaries   StaffSalary[]
+
+  @@unique([schoolId, name])
+}
+
+/// One line of a structure: a code from SALARY_COMPONENT_CODES, its kind
+/// (fixed by the code), a formula FIXED | PERCENT_OF_BASIC | PERCENT_OF_GROSS
+/// and its value (paise, or basis points). Statutory lines are worked out by
+/// the coded rules, whatever the value says.
+model SalaryComponent {
+  id          String  @id @default(cuid())
+  schoolId    String
+  structureId String
+  code        String
+  label       String  @default("")
+  kind        String
+  formula     String  @default("FIXED")
+  value       Int     @default(0)
+  statutory   Boolean @default(false)
+  position    Int     @default(0)
+
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  structure SalaryStructure @relation(fields: [structureId], references: [id], onDelete: Cascade)
+
+  @@unique([structureId, code])
+  @@index([schoolId])
+}
+
+/// A member of staff's salary from a date; a revision is a new row from its
+/// own date, so a past month is paid as it was. The PAN and the bank account
+/// are SEALED (secret-box, bound to the school and membership) with their
+/// last four beside them; only the bank advice and the TDS summary open them,
+/// into the file, audited.
+model StaffSalary {
+  id                String   @id @default(cuid())
+  schoolId          String
+  membershipId      String
+  structureId       String
+  effectiveFromKey  String
+  basicPaise        Int
+  overridesJson     String   @default("{}")
+  pfUan             String?
+  esiNumber         String?
+  panSealed         String?
+  panLast4          String?
+  bankAccountSealed String?
+  bankLast4         String?
+  bankIfsc          String?
+  bankName          String?
+  /// BANK | CASH | CHEQUE
+  paymentMode       String   @default("BANK")
+  updatedByUserId   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  school     School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership      @relation("StaffSalaryOf", fields: [membershipId], references: [id], onDelete: Cascade)
+  structure  SalaryStructure @relation(fields: [structureId], references: [id], onDelete: Restrict)
+
+  @@unique([membershipId, effectiveFromKey])
+  @@index([schoolId])
+}
+
+/// A month's payroll: DRAFT while the office reviews, LOCKED after — and
+/// then nothing in it changes. The totals are a STORED COPY of the sum of its
+/// slips, and lockDigest the SHA-256 of the slips as locked (data:audit
+/// "payroll-run" recomputes both).
+model PayrollRun {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  month               String
+  status              String    @default("DRAFT")
+  headcount           Int       @default(0)
+  grossPaise          Int       @default(0)
+  deductionsPaise     Int       @default(0)
+  employerPaise       Int       @default(0)
+  netPaise            Int       @default(0)
+  lockDigest          String?
+  sharedWithPrincipal Boolean   @default(false)
+  createdByUserId     String?
+  lockedByUserId      String?
+  lockedAt            DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  slips   Payslip[]
+  exports PayrollExport[]
+
+  @@unique([schoolId, month])
+}
+
+/// One person's month. Each component's paise in linesJson; gross,
+/// deductions, employer and net are STORED COPIES of the lines (net = gross −
+/// deductions, data:audit "payroll-slip"), frozen with the run at lock.
+model Payslip {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  runId               String
+  membershipId        String
+  staffName           String
+  department          String
+  designation         String?
+  daysInMonth         Int
+  /// Loss of pay drawn from the staff register and approved unpaid leave, in half days.
+  lopHalfDays         Int      @default(0)
+  /// The office's own figure in half days, which wins over the register's when set.
+  lopOverrideHalfDays Int?
+  linesJson           String   @default("[]")
+  grossPaise          Int      @default(0)
+  deductionsPaise     Int      @default(0)
+  employerPaise       Int      @default(0)
+  netPaise            Int      @default(0)
+  arrearsPaise        Int      @default(0)
+  tdsOverridePaise    Int?
+  notes               String   @default("")
+  paymentMode         String   @default("BANK")
+  bankLast4           String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  run        PayrollRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+  membership Membership @relation("PayslipOf", fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@unique([runId, membershipId])
+  @@index([schoolId])
+  @@index([membershipId])
+}
+
+/// A file cut from a LOCKED run: PF_ECR | ESI | BANK_ADVICE | PT | TDS_SUMMARY.
+/// The file itself is not kept — a bank advice holds account numbers in the
+/// clear — it is cut again, the same bytes, from the frozen slips; this row
+/// is its reference: the name, the SHA-256 of the bytes, rows and total.
+model PayrollExport {
+  id              String   @id @default(cuid())
+  schoolId        String
+  runId           String
+  kind            String
+  fileName        String
+  sha256          String
+  rows            Int
+  totalPaise      Int
+  createdByUserId String?
+  createdAt       DateTime @default(now())
+
+  school School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  run    PayrollRun @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+  @@index([schoolId])
+}
+
+/// An advance against salary: asked by the member of staff (REQUESTED) or
+/// recorded by the office; RECORDED is recovered in instalments as ADVANCE
+/// lines of the runs that follow (what is recovered is read from the locked
+/// slips, never stored). The money itself is handed over outside the app.
+model StaffAdvance {
+  id                   String    @id @default(cuid())
+  schoolId             String
+  membershipId         String
+  amountPaise          Int
+  reason               String
+  status               String    @default("REQUESTED")
+  monthlyRecoveryPaise Int?
+  decidedByUserId      String?
+  decidedAt            DateTime?
+  decisionNote         String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership @relation("StaffAdvanceOf", fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, status])
+  @@index([membershipId])
 }

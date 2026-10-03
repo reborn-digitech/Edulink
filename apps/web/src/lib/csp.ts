@@ -11,8 +11,9 @@
  * WHAT IT CLOSES BESIDES: any script, style, font, image or fetch to a host
  * that is not this one; framing by any other site; forms posting anywhere
  * but here; plugins. The app serves every asset itself — no font host, no
- * CDN, no analytics — so 'self' is the honest allow-list, with one named
- * exception: the school's own gateway's checkout.
+ * CDN, no analytics — so 'self' is the honest allow-list, with two named
+ * exceptions: the school's own gateway's checkout, and OpenStreetMap's map
+ * tiles as images for the transport module's bus map.
  *
  * STYLES KEEP 'unsafe-inline': React writes style attributes, and a style
  * cannot run code. Dev needs 'unsafe-eval' and a websocket for Turbopack's
@@ -33,7 +34,8 @@ export function contentSecurityPolicy(opts: { nonce?: string; dev: boolean }): s
     "default-src 'self'",
     `script-src ${script.join(" ")}`,
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:",
+    // OpenStreetMap's tiles, for the transport module's bus map (components/transport/bus-map.tsx): images only, no script.
+    "img-src 'self' data: blob: https://tile.openstreetmap.org",
     "media-src 'self' blob:",
     "font-src 'self' data:",
     `connect-src 'self' https://api.razorpay.com https://checkout.razorpay.com https://lumberjack.razorpay.com${dev ? " ws: wss:" : ""}`,

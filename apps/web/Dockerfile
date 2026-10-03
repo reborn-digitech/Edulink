@@ -40,7 +40,8 @@ ENV NEXT_TELEMETRY_DISABLED=1 APP_COMMIT=$APP_COMMIT
 # "", which would hide the runtime key from the server too. Built without it,
 # a deployed server says so at boot (env.ts) and serves without browser push.
 ARG NEXT_PUBLIC_VAPID_PUBLIC_KEY
-# The type check inside `next build` needs more than Node's default heap on an 8 GB box (~1.7 GB for tsc alone); 4 GB is what a 16 GB runner gives by default.
+# `next build` no longer type-checks or lints (next.config.ts, 4 Oct 2026: its worker ran out of heap at 184 models);
+# the battery job runs tsc and eslint before this image is built, so the tree here has passed both. 4 GB is for the build itself.
 RUN cd apps/web && npx prisma generate \
   && if [ -z "${NEXT_PUBLIC_VAPID_PUBLIC_KEY:-}" ]; then unset NEXT_PUBLIC_VAPID_PUBLIC_KEY; fi \
   && NODE_OPTIONS=--max-old-space-size=4096 npx next build

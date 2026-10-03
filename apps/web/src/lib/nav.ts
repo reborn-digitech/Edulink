@@ -100,6 +100,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
+    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
+    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "running", module: "TRANSPORT" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
@@ -108,6 +110,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
+    // The school's former pupils by batch, notes to a batch, the feed's setting (the alumni module, 3 Oct 2026).
+    { href: "/admin/alumni", labelKey: "modules.alumniName", icon: "graduationCap", prefix: true, group: "running", module: "ALUMNI" },
     // The office can now write to anyone at the school, so the inbox is theirs too.
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
@@ -121,6 +125,14 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    // Inventory and assets, and HR and payroll (3 Oct 2026): the office runs both; the head reads payroll's summary.
+    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    // The library desk and its rules, and the hostel at a glance (3 Oct 2026): the office lends, sets the rules and makes the houses.
+    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
+    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
   ],
   // A principal READS and DECIDES. No register, no gradebook, no class setup —
   // those belong to the teacher and the admin respectively, and handing all
@@ -156,6 +168,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/circulars", labelKey: "nav.circulars", icon: "megaphone", prefix: true, group: "running" },
     // The sick-room and incident log: the whole school's, and the record pages under /incidents.
     { href: "/admin/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "running", also: ["/incidents"] },
+    // Transport (3 Oct 2026): routes, buses, drivers, seats and today's trips on a map; the head reads.
+    { href: "/admin/transport", labelKey: "transport.title", icon: "bus", prefix: true, group: "running", module: "TRANSPORT" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
@@ -166,6 +180,14 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    // The payroll summary (no one's slip unless the office shares a run) and the stores, read; the head's own payslips and things.
+    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    // The library's lists and reports, and the hostel at a glance (3 Oct 2026), read.
+    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
+    { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
@@ -195,6 +217,11 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/guidance", labelKey: "nav.guidance", icon: "calendar", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    // My own payslips and what the stores issued to me (3 Oct 2026), while the school has the module on.
+    { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    // My loans, dues and reservations, and the catalogue (the library module, 3 Oct 2026).
+    { href: "/teacher/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
   ],
   STUDENT: [
     { href: "/student", labelKey: "nav.today", icon: "house", primary: true },
@@ -219,6 +246,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
+    { href: "/student/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
+    { href: "/student/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
   ],
   PARENT: [
     { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
@@ -235,6 +265,9 @@ export const NAV: Record<Role, NavItem[]> = {
     // The child's health and emergency card: the family writes it, the teachers read it.
     { href: "/parent/health", labelKey: "nav.health", icon: "heart", prefix: true, group: "daily" },
     { href: "/parent/incidents", labelKey: "nav.incidents", icon: "firstAidKit", prefix: true, group: "daily" },
+    // The child's bus: route, stop, and the bus on a map during a trip (transport, 3 Oct 2026).
+    // A family's module entries follow the children's schools (enabledModulesForFamily, 4 Oct 2026).
+    { href: "/parent/transport", labelKey: "transport.parentTitle", icon: "bus", prefix: true, group: "daily", module: "TRANSPORT" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
     // Hidden by the shell until somebody asks to be linked to one of their children.
     { href: "/parent/claims", labelKey: "joinRequests.parentClaimsNav", icon: "userPlus", prefix: true, group: "daily" },
@@ -247,6 +280,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
+    // The library and the hostel (3 Oct 2026): a child's loans and dues; a boarder's room, roll call and leave to consent to.
+    { href: "/parent/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
+    { href: "/parent/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
   ],
   // An expert sees their own work and nothing resembling a school's internals.
   EXPERT: [
@@ -272,16 +308,32 @@ export const NAV: Record<Role, NavItem[]> = {
   LIBRARIAN: [
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    // The desk's pages (the library module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
+    { href: "/library/catalogue", labelKey: "library.tabCatalogue", icon: "books", primary: true, prefix: true, module: "LIBRARY", also: ["/library/titles"] },
+    { href: "/library/overdue", labelKey: "library.tabOverdue", icon: "clock", primary: true, prefix: true, module: "LIBRARY" },
+    { href: "/library/reservations", labelKey: "library.tabReservations", icon: "calendar", primary: true, prefix: true, module: "LIBRARY" },
+    { href: "/library/fines", labelKey: "library.tabFines", icon: "receipt", prefix: true, group: "daily", module: "LIBRARY" },
+    { href: "/library/stocktake", labelKey: "library.tabStockTake", icon: "checks", prefix: true, group: "running", module: "LIBRARY" },
+    { href: "/library/reports", labelKey: "library.tabReports", icon: "chartLine", prefix: true, group: "running", module: "LIBRARY" },
   ],
   WARDEN: [
     { href: "/hostel", labelKey: "modules.hostelName", icon: "bed", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    // The warden's pages (the hostel module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
+    { href: "/hostel/rollcall", labelKey: "hostel.tabRollCall", icon: "checks", primary: true, prefix: true, module: "HOSTEL" },
+    { href: "/hostel/leave", labelKey: "hostel.tabLeave", icon: "calendar", primary: true, prefix: true, module: "HOSTEL" },
+    { href: "/hostel/rooms", labelKey: "hostel.tabRooms", icon: "bed", primary: true, prefix: true, module: "HOSTEL", also: ["/hostel/health"] },
+    { href: "/hostel/visitors", labelKey: "hostel.tabVisitors", icon: "users", prefix: true, group: "daily", module: "HOSTEL" },
+    { href: "/hostel/menu", labelKey: "hostel.tabMenu", icon: "clipboard", prefix: true, group: "running", module: "HOSTEL" },
+    { href: "/hostel/incidents", labelKey: "hostel.tabIncidents", icon: "firstAidKit", prefix: true, group: "running", module: "HOSTEL" },
   ],
   // A former pupil: the school's feed to read and its staff to write to, nothing else; the alumni builder adds the rest.
   ALUMNUS: [
     { href: "/alumni", labelKey: "modules.alumniName", icon: "graduationCap", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true, module: "ALUMNI" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true, module: "ALUMNI" },
+    // The directory a former pupil may join (the alumni module): under their home, so the home's prefix already lets them in.
+    { href: "/alumni/directory", labelKey: "alumni.directoryTitle", icon: "users", primary: true, module: "ALUMNI" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
 };
