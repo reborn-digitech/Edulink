@@ -11,6 +11,8 @@ import { forSchool } from "./tenant-context";
 import { assertAppAdmin } from "./app-admin";
 import { consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
+import { assertAlumnusMay } from "./alumni";
+import { authorTagsAt, batchYearOf, type AuthorTag } from "./alumni-tags";
 import { isModuleRole, type PostCategory, type PostScope, type PostStatus, type ReactionKind, type Role } from "./constants";
 
 /**
@@ -49,6 +51,8 @@ export type FeedPost = {
   authorName: string;
   authorAvatar: string | null;
   authorRole: Role | null;
+  /** The year an ALUMNUS author left: the feed's "Alumni · 2026" tag; null for everyone else. */
+  authorBatch: number | null;
   className: string | null;
   commentCount: number;
   reactions: Record<ReactionKind, number>;
@@ -369,7 +373,7 @@ export async function listFeed(
     where,
     include: {
       author: { select: { name: true, preferredName: true, avatarKey: true } },
-      authorship: { select: { id: true, role: true } },
+      authorship: { select: { id: true, role: true, joinedAt: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
@@ -408,6 +412,8 @@ export async function listFeed(
       authorName: post.author.preferredName ?? post.author.name,
       authorAvatar: post.author.avatarKey,
       authorRole: (post.authorship?.role as Role | undefined) ?? null,
+      // The "Alumni · 2026" tag: the year a former pupil left (alumni-tags.ts).
+      authorBatch: post.authorship?.role === "ALUMNUS" ? batchYearOf(post.authorship.joinedAt) : null,
       authorMembershipId: post.authorship?.id ?? null,
       className: post.class?.name ?? null,
       commentCount: post._count.comments,
@@ -457,7 +463,7 @@ export async function getPost(session: ActiveContext, postId: string) {
     },
     include: {
       author: { select: { id: true, name: true, preferredName: true, avatarKey: true } },
-      authorship: { select: { role: true } },
+      authorship: { select: { role: true, joinedAt: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
@@ -502,6 +508,9 @@ export async function getPost(session: ActiveContext, postId: string) {
       })
     : [];
   const membershipByUser = new Map(memberships.map((m) => [m.userId, m.id]));
+  // Each commenter's tag at the post's school — Student, Alumni with the year, or a staff role (alumni-tags.ts).
+  const tagByUser: Map<string, AuthorTag> = await authorTagsAt(post.schoolId, authorIds);
+  const authorBatch = post.authorship?.role === "ALUMNUS" ? batchYearOf(post.authorship.joinedAt) : null;
   // Whether THIS reader may acknowledge: decided on the scoped session, because
   // a guardian's own session carries no school — comparing the raw session's
   // schoolId with the post's, as the page and the phone once did, left the
@@ -517,7 +526,7 @@ export async function getPost(session: ActiveContext, postId: string) {
       .filter(() => session.role === "ADMIN" || (session.role === "TEACHER" && teachesPostClass))
       .map((c) => c.id),
   );
-  return { ...post, membershipByUser, canAck, reviewableCommentIds };
+  return { ...post, membershipByUser, tagByUser, authorBatch, canAck, reviewableCommentIds };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -555,8 +564,12 @@ export async function createPost(
     requiresAck?: boolean;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
-  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
-  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+  // A module role writes nothing here (3 Oct 2026) — but an ALUMNUS posts
+  // when the school lets its alumni (alumni.ts): school-wide, held for the office.
+  if (session.role === "ALUMNUS") {
+    if (!session.schoolId || input.scope !== "SCHOOL") throw new AccessError("access.wrongRoleForThisAction");
+    await assertAlumnusMay(session, session.schoolId, "post");
+  } else if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   const { schoolId, membershipId, role, user } = session;
   if (!schoolId || !role) throw new AccessError("access.noActiveSchoolSelected");
 
@@ -588,7 +601,7 @@ export async function createPost(
    * and a staff account spamming is a compromised account, which thirty an
    * hour still caps. The window rides the same RateLimit table sign-in uses.
    */
-  const postLimit = role === "STUDENT" ? 5 : 30;
+  const postLimit = role === "STUDENT" || role === "ALUMNUS" ? 5 : 30;
   const limiter = await consume(`post:${membershipId ?? user.id}`, postLimit, 60 * 60 * 1000);
   if (!limiter.allowed) {
     throw new AccessError("access.youArePostingALot", "FORBIDDEN", {
@@ -619,8 +632,8 @@ export async function createPost(
     // Allowed, but it goes to an admin rather than a class teacher.
   }
 
-  // The single safety decision.
-  const status: PostStatus = role === "STUDENT" ? "PENDING" : "APPROVED";
+  // The single safety decision. A former pupil's post waits for the office too.
+  const status: PostStatus = role === "STUDENT" || role === "ALUMNUS" ? "PENDING" : "APPROVED";
 
   const post = await db.post.create({
     data: {
@@ -1057,8 +1070,9 @@ export async function toggleReaction(
   postId: string,
   kind: ReactionKind,
 ): Promise<{ added: boolean }> {
-  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
-  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+  // A module role reacts to nothing — but an ALUMNUS may, on their old school's own posts, while the school lets its alumni comment (alumni.ts).
+  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", "react");
+  else if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1071,7 +1085,7 @@ export async function toggleReaction(
     },
     select: { id: true, schoolId: true },
   });
-  if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId)) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   const existing = await db.reaction.findUnique({
     where: { postId_userId_kind: { postId, userId: session.user.id, kind } },
@@ -1095,8 +1109,9 @@ export async function addComment(
   body: string,
   parentCommentId?: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
-  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
-  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+  // A module role comments on nothing — but an ALUMNUS may, on their old school's own posts, while the school lets its alumni comment (alumni.ts).
+  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", "comment");
+  else if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1109,7 +1124,7 @@ export async function addComment(
     },
     select: { id: true, authorUserId: true, schoolId: true, title: true, scope: true, classId: true },
   });
-  if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId)) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
   /**
    * The same ceiling createPost puts on posts, a little higher because a
@@ -1158,7 +1173,8 @@ export async function addComment(
    * one-tap report remains for everything else.
    */
   const isGlobal = visible.scope === "GLOBAL";
-  const status = session.role === "STUDENT" || isGlobal ? "PENDING" : "APPROVED";
+  // A minor alumnus is still a minor (decision 0002): their words are held as a pupil's are.
+  const status = session.role === "STUDENT" || (session.role === "ALUMNUS" && session.user.isMinor) || isGlobal ? "PENDING" : "APPROVED";
 
   /**
    * Which school reviews it. A school post's comment belongs to the post's

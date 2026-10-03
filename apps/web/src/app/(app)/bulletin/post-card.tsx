@@ -43,6 +43,8 @@ type Post = {
   authorName: string;
   authorAvatar: string | null;
   authorRole: Role | null;
+  /** The year an ALUMNUS author left: the "Alumni · 2026" tag (3 Oct 2026). */
+  authorBatch?: number | null;
   /** The author's membership at this school, when they still hold one — the
    * door to their profile. Null on the global feed and for a leaver. */
   authorMembershipId?: string | null;
@@ -151,8 +153,8 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
                 <span className="font-semibold text-fg">{post.authorName}</span>
               )}
               {post.authorRole && (
-                <Badge tone="neutral" size="sm">
-                  {t(ROLE_META[post.authorRole].labelKey)}
+                <Badge tone={post.authorRole === "ALUMNUS" ? "accent" : "neutral"} size="sm">
+                  {post.authorRole === "ALUMNUS" && post.authorBatch ? t("alumni.tag", { year: post.authorBatch }) : t(ROLE_META[post.authorRole].labelKey)}
                 </Badge>
               )}
             </p>

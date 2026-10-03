@@ -13,6 +13,7 @@ import { formatInZone, relativeTime } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/cn";
 import { ROLE_META } from "@/lib/constants";
+import { CloseConversationButton } from "../../../alumni/close-conversation";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -111,7 +112,14 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
         </ol>
       )}
 
-      <ConversationReplyBox conversationId={conversation.id} className="mt-6" />
+      {/* A room with a former pupil (the alumni module): staff may close it; closed, the alumnus reads and does not write. */}
+      {(conversation.canClose || conversation.closedAt) && (
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[--radius-md] bg-surface-muted p-3 text-sm text-fg-muted">
+          {conversation.closedAt && <p>{conversation.canClose ? t("alumni.closedStaffNotice") : t("alumni.closedNotice")}</p>}
+          {conversation.canClose && <CloseConversationButton conversationId={conversation.id} closed={conversation.closedAt !== null} />}
+        </div>
+      )}
+      {(!conversation.closedAt || conversation.canClose) && <ConversationReplyBox conversationId={conversation.id} className="mt-6" />}
     </div>
   );
 }

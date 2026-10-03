@@ -5,6 +5,8 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { publish, channel } from "./realtime";
 import { readJsonArray } from "./json";
+import { assertAlumnusMay, roomHasAlumnus } from "./alumni";
+import { assertModuleOn, isModuleOn } from "./modules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -142,6 +144,10 @@ export async function peopleToMessage(
       schoolId,
       status: "ACTIVE",
       leftAt: null,
+      // Not the school's former pupils (the alumni module): they write to
+      // staff and staff answer in that room; a school's leavers listed here
+      // would outnumber its roll, ahead of it in the picker's order.
+      role: { not: "ALUMNUS" },
       userId: { not: ctx.user.id },
       user: { disabledAt: null, ...nameFilter },
     },
@@ -244,6 +250,11 @@ export async function openConversation(
   const them = await roleOfAt(otherUserId, schoolId);
   if (!them) throw new AccessError("access.personNotAtSchool", "NOT_FOUND");
   if (!mayConverse(me, them)) throw new AccessError("access.cannotMessageThisPerson");
+  // A former pupil (the alumni module, 3 Oct 2026): reached, and reaching
+  // out, only while the school has alumni on; never while the office has
+  // muted them. Opening a NEW room is rate-limited below.
+  if (them === "ALUMNUS") await assertModuleOn(schoolId, "ALUMNI");
+  await assertAlumnusMay(ctx, schoolId, "reach");
 
   // ONE ROOM PER PAIR IS THE DATABASE'S PROMISE, not this function's. The
   // key is unique; two opens a moment apart both try to create, one wins,
@@ -270,6 +281,8 @@ export async function openConversation(
     await db.conversation.updateMany({ where: { id: existing.id, pairKey: null }, data: { pairKey } }).catch(() => {});
     return { conversationId: existing.id, created: false };
   }
+
+  await assertAlumnusMay(ctx, schoolId, "open");
 
   let conversation: { id: string };
   try {
@@ -341,6 +354,8 @@ export type ConversationSummary = {
 export async function listConversations(ctx: ActiveContext): Promise<ConversationSummary[]> {
   const schoolIds = await conversationSchools(ctx);
   if (schoolIds.length === 0) return [];
+  // An alumnus's rooms are hidden while the school has alumni off — kept, not deleted.
+  if (ctx.role === "ALUMNUS" && !(await isModuleOn(ctx.schoolId, "ALUMNI"))) return [];
 
   const rows = await db.conversation.findMany({
     where: { schoolId: { in: schoolIds }, participants: { some: { userId: ctx.user.id } } },
@@ -395,6 +410,7 @@ export async function listConversations(ctx: ActiveContext): Promise<Conversatio
 export async function unreadConversationCount(ctx: ActiveContext): Promise<number> {
   const schoolIds = await conversationSchools(ctx);
   if (schoolIds.length === 0) return 0;
+  if (ctx.role === "ALUMNUS" && !(await isModuleOn(ctx.schoolId, "ALUMNI"))) return 0;
   const mine = await db.conversationParticipant.findMany({
     where: { userId: ctx.user.id, schoolId: { in: schoolIds } },
     select: {
@@ -428,6 +444,12 @@ export async function getConversation(ctx: ActiveContext, conversationId: string
   // Read receipts: the newest moment anyone else opened the room.
   const othersReadAt = others.map((p) => p.lastReadAt).filter((d): d is Date => d !== null);
   const lastReadByOthers = othersReadAt.length ? new Date(Math.max(...othersReadAt.map((d) => d.getTime()))) : null;
+  // Staff may close a room a former pupil writes in (the alumni module).
+  const canClose =
+    isStaffRole(ctx.role) &&
+    roles.includes("ALUMNUS") &&
+    (await isModuleOn(conversation.schoolId, "ALUMNI")) &&
+    (await roomHasAlumnus(conversation.schoolId, others.map((p) => p.userId)));
 
   return {
     id: conversation.id,
@@ -450,6 +472,8 @@ export async function getConversation(ctx: ActiveContext, conversationId: string
       authorAvatar: m.author.avatarKey,
       readByOthers: lastReadByOthers !== null && m.createdAt <= lastReadByOthers,
     })),
+    closedAt: conversation.closedAt,
+    canClose,
   };
 }
 
@@ -477,6 +501,15 @@ export async function sendConversationMessage(
     const landed = await findLanded(conversationId, opts.clientId);
     if (landed) return { messageId: landed };
   }
+
+  // A room staff closed (the alumni module): the former pupil reads but does
+  // not write; a member of staff writing in it opens it again.
+  if (conversation.closedAt) {
+    if (!isStaffRole(ctx.role)) throw new AccessError("alumni.refuseClosed");
+    await db.conversation.update({ where: { id: conversationId }, data: { closedAt: null, closedByUserId: null } });
+    await audit({ schoolId: conversation.schoolId, actorUserId: ctx.user.id, action: "conversation.reopen", targetType: "Conversation", targetId: conversationId, meta: { byMessage: true } });
+  }
+  await assertAlumnusMay(ctx, conversation.schoolId, "message");
 
   // `$tenantTransaction`, never `$transaction`: the plain form opens a
   // transaction nothing has bound `app.school_ids` on, and the policy then

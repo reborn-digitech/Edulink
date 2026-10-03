@@ -4,7 +4,6 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
 import { bulletinCommentResultSchema, bulletinPostDetailSchema, bulletinReactResultSchema, okSchema, type bulletinReactionKindSchema } from "@edulink/contracts";
-import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { Avatar } from "@/components/avatar";
 import { api, errorText } from "@/lib/api";
@@ -15,6 +14,7 @@ import { useTheme } from "@/lib/theme";
 import { AUDIENCE, CATEGORY, Media, Reactions, Tags } from "./bulletin";
 import { Confirm, Note, param, Pill, relativeTime, useAuthHeaders } from "./shared";
 import { CommentReview } from "./comment-review";
+import { authorTag } from "@/screens/alumni/tag";
 
 type Detail = z.infer<typeof bulletinPostDetailSchema>;
 type Comment = Detail["comments"][number];
@@ -171,7 +171,7 @@ export function PostDetail() {
                   <Text variant="sm" bold>
                     {d.author.name}
                   </Text>
-                  {d.author.role ? <Pill label={t(`role.${d.author.role.toLowerCase()}` as TranslationKey)} /> : null}
+                  {d.author.role ? <Pill label={authorTag(t, d.author.role, d.author.batch)} /> : null}
                 </View>
                 <Text variant="xs" tone="muted">
                   {meta}
@@ -318,7 +318,7 @@ function CommentView({ comment, reply, canReply, onReply }: { comment: Comment; 
       <Avatar avatarKey={comment.author.avatarKey} name={comment.author.name} size={reply ? 24 : 32} />
       <View style={{ flex: 1, gap: 2 }}>
         <Text variant="xs" tone="muted">
-          {`${name} · ${relativeTime(comment.createdAt, locale)}`}
+          {[name, comment.author.role ? authorTag(t, comment.author.role, comment.author.batch) : null, relativeTime(comment.createdAt, locale)].filter(Boolean).join(" · ")}
         </Text>
         <Text variant="sm">{comment.body}</Text>
         {held ? (

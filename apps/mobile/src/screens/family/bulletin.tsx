@@ -14,6 +14,7 @@ import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
 import { Chips, Note, Pill, relativeTime, useAuthHeaders } from "./shared";
 import { HeldComments } from "./comment-review";
+import { authorTag } from "@/screens/alumni/tag";
 
 type Feed = z.infer<typeof bulletinFeedSchema>;
 type Post = Feed["items"][number];
@@ -183,7 +184,7 @@ function PostCard({ post, headers, onReact, onOpen }: { post: Post; headers: Rec
           <Text variant="sm" bold>
             {post.authorName}
           </Text>
-          {post.authorRole ? <Pill label={t(`role.${post.authorRole.toLowerCase()}` as TranslationKey)} /> : null}
+          {post.authorRole ? <Pill label={authorTag(t, post.authorRole, post.authorBatch)} /> : null}
         </View>
         <Text variant="xs" tone="muted">
           {meta}

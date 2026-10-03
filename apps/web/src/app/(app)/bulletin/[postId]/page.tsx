@@ -66,7 +66,8 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
   // A child's comment is held for review inside a school; on a GLOBAL post
   // everybody's is — see addComment, which owns this rule. The flag only
   // shapes the hint text, so it must tell the same truth.
-  const willBeHeld = session.role === "STUDENT" || post.scope === "GLOBAL";
+  // A minor alumnus is held as a pupil is (alumni.ts, bulletin.ts addComment).
+  const willBeHeld = session.role === "STUDENT" || (session.role === "ALUMNUS" && session.user.isMinor) || post.scope === "GLOBAL";
 
   // The reach report, for the people who chase it up: the office, the head
   // and the class teachers of the post's own school. A teacher of no class,
@@ -111,8 +112,8 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                 className="font-semibold text-fg"
               />
               {post.authorship?.role && (
-                <Badge tone="neutral" size="sm">
-                  {t(ROLE_META[post.authorship.role as Role].labelKey)}
+                <Badge tone={post.authorship.role === "ALUMNUS" ? "accent" : "neutral"} size="sm">
+                  {post.authorship.role === "ALUMNUS" && post.authorBatch ? t("alumni.tag", { year: post.authorBatch }) : t(ROLE_META[post.authorship.role as Role].labelKey)}
                 </Badge>
               )}
             </p>
@@ -250,6 +251,16 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                         name={mine ? t("common.you") : (entry.author.preferredName ?? entry.author.name)}
                         className="font-semibold text-fg"
                       />{" "}
+                      {/* The commenter's tag at this school (3 Oct 2026): Student, Alumni with the year, or a staff role. */}
+                      {(() => {
+                        const tag = post.tagByUser.get(entry.author.id);
+                        if (!tag) return null;
+                        return (
+                          <Badge tone={tag.role === "ALUMNUS" ? "accent" : "neutral"} size="sm" className="mx-1 align-middle">
+                            {tag.role === "ALUMNUS" && tag.batch ? t("alumni.tag", { year: tag.batch }) : t(ROLE_META[tag.role].labelKey)}
+                          </Badge>
+                        );
+                      })()}
                       · {relativeTime(entry.createdAt)}
                     </p>
                     <p className="mt-0.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">

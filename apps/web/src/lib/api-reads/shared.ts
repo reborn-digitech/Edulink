@@ -204,11 +204,12 @@ export async function readPost(ctx: ActiveContext, postId: string) {
       avatarKey: post.author.avatarKey,
       membershipId: post.membershipByUser.get(post.author.id) ?? null,
       role: (post.authorship?.role as Role | undefined) ?? null,
+      batch: post.authorBatch,
     },
     reactions,
     myReactions,
     // addComment owns the rule: a pupil's comment is held, and on the cross-school feed everybody's is.
-    commentsWillBeHeld: ctx.role === "STUDENT" || post.scope === "GLOBAL",
+    commentsWillBeHeld: ctx.role === "STUDENT" || (ctx.role === "ALUMNUS" && ctx.user.isMinor) || post.scope === "GLOBAL",
     comments: post.comments.map((entry) => ({
       id: entry.id,
       body: entry.body,
@@ -222,6 +223,9 @@ export async function readPost(ctx: ActiveContext, postId: string) {
         name: entry.author.preferredName ?? entry.author.name,
         avatarKey: entry.author.avatarKey,
         membershipId: post.membershipByUser.get(entry.author.id) ?? null,
+        // The tag (3 Oct 2026): Student, Alumni with the year, or a staff role.
+        role: post.tagByUser.get(entry.author.id)?.role ?? null,
+        batch: post.tagByUser.get(entry.author.id)?.batch ?? null,
       },
     })),
     ackReport: ackGroups,

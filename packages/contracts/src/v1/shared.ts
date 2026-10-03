@@ -54,6 +54,8 @@ export const bulletinFeedPostSchema = z.object({
   authorName: z.string(),
   authorAvatar: z.string().nullable(),
   authorRole: roleSchema.nullable(),
+  /** The year an ALUMNUS author left the school: the feed's "Alumni · 2026" tag (3 Oct 2026); null for everyone else. */
+  authorBatch: z.number().int().nullable().optional(),
   className: z.string().nullable(),
   commentCount: count,
   reactions: z.record(count),
@@ -113,7 +115,15 @@ export const bulletinCommentSchema = z.object({
   mine: z.boolean(),
   /** True on a held comment the reader may approve or remove. */
   canReview: z.boolean(),
-  author: z.object({ id: z.string(), name: z.string(), avatarKey: z.string().nullable(), membershipId: z.string().nullable() }),
+  author: z.object({
+    id: z.string(),
+    name: z.string(),
+    avatarKey: z.string().nullable(),
+    membershipId: z.string().nullable(),
+    /** The commenter's tag at the post's school (3 Oct 2026): Student, Alumni with the batch, or a staff role; null when unknown. */
+    role: roleSchema.nullable().optional(),
+    batch: z.number().int().nullable().optional(),
+  }),
 });
 
 export const bulletinAckGroupSchema = z.object({
@@ -153,6 +163,8 @@ export const bulletinPostDetailSchema = z.object({
     avatarKey: z.string().nullable(),
     membershipId: z.string().nullable(),
     role: roleSchema.nullable(),
+    /** The year an ALUMNUS author left: the "Alumni · 2026" tag (3 Oct 2026). */
+    batch: z.number().int().nullable().optional(),
   }),
   reactions: z.record(count),
   myReactions: z.array(z.string()),
@@ -286,6 +298,10 @@ export const inboxConversationDetailSchema = z.object({
       readByOthers: z.boolean(),
     }),
   ),
+  /** Closed by staff in a room a former pupil writes in (the alumni module, 3 Oct 2026); null while open. */
+  closedAt: isoOrNull.optional(),
+  /** Whether the reader may close or reopen it: staff, in a room with an alumnus. */
+  canClose: z.boolean().optional(),
 });
 
 /** GET /api/v1/shared/threads/{threadId} — opening it marks it read, as the page does. */

@@ -15,6 +15,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ con
       inboxConversationDetailSchema.parse({
         ...conversation,
         myLastReadAt: conversation.myLastReadAt?.toISOString() ?? null,
+        closedAt: conversation.closedAt?.toISOString() ?? null,
         messages: conversation.messages.map((m) => ({ ...m, createdAt: m.createdAt.toISOString() })),
       }),
     );
