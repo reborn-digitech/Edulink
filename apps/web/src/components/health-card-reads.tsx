@@ -8,6 +8,7 @@ const ROLE_KEY: Record<HealthCardReads["reads"][number]["readerRole"], Translati
   ADMIN: "familyCare.readsRoleADMIN",
   PRINCIPAL: "familyCare.readsRolePRINCIPAL",
   TEACHER: "familyCare.readsRoleTEACHER",
+  WARDEN: "familyCare.readsRoleWARDEN",
 };
 
 /**

@@ -16,7 +16,7 @@ import { HealthCardForm, HealthCardView, HealthChecks, SavedNote } from "../shar
 import { ChildLeftBanner, ChildSwitcher, childQuery, formatInstant, param } from "./shared";
 
 const PATH = "/api/v1/family/health";
-const ROLE_KEY: Record<"ADMIN" | "PRINCIPAL" | "TEACHER", TranslationKey> = { ADMIN: "familyCare.readsRoleADMIN", PRINCIPAL: "familyCare.readsRolePRINCIPAL", TEACHER: "familyCare.readsRoleTEACHER" };
+const ROLE_KEY: Record<"ADMIN" | "PRINCIPAL" | "TEACHER" | "WARDEN", TranslationKey> = { ADMIN: "familyCare.readsRoleADMIN", PRINCIPAL: "familyCare.readsRolePRINCIPAL", TEACHER: "familyCare.readsRoleTEACHER", WARDEN: "familyCare.readsRoleWARDEN" };
 
 /**
  * A child's health and emergency card for the guardian — the web's

@@ -84,7 +84,8 @@ export type RegisterAbsenceNote = z.infer<typeof registerAbsenceNoteSchema>;
 export const healthCardReadSchema = z.object({
   id: z.string(),
   readerName: z.string(),
-  readerRole: z.enum(["ADMIN", "PRINCIPAL", "TEACHER"]),
+  /** WARDEN since 3 Oct 2026: the hostel's warden reads a boarder's card from the hostel screens, and the family sees that too. */
+  readerRole: z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "WARDEN"]),
   readAt: iso,
 });
 

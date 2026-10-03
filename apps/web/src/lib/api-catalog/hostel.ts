@@ -1,0 +1,46 @@
+import * as c from "@edulink/contracts";
+import type { Endpoint } from "./types";
+import { HOSTEL_FIXTURE, HOSTEL_FIXTURE_MENU, HOSTEL_FIXTURE_ROOMS } from "./library-hostel-fixture";
+
+/**
+ * hostel: the hostel module (module HOSTEL, role WARDEN; 3 Oct 2026). The
+ * office makes the houses; the office and the warden make rooms, allot beds,
+ * take the roll call, decide leave, keep the gate, the visitor book and the
+ * menu; the head reads. A boarder and their guardian read the room, tonight's
+ * roll call, leave and the menu under /family/hostel, where a guardian
+ * consents to the child's own ask. Every door answers MODULE_OFF while the
+ * school has the hostel off (a guardian's, whose session has no school, in
+ * the handler). Samples name the ZZ hostel's fixed ids.
+ */
+export const HOSTEL: Endpoint[] = [
+  { method: "GET", path: "/api/v1/hostel/hostels", summary: "The houses, their rooms and who sleeps where.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", response: c.hostelsSchema },
+  { method: "POST", path: "/api/v1/hostel/hostels", summary: "The office makes or changes a house.", access: ["ADMIN"], module: "HOSTEL", request: c.hostelSaveSchema, response: c.hostelsSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/hostel/rooms", summary: "A room made or changed.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelRoomSaveSchema, response: c.hostelsSchema, emptyBodyStatus: 422, sampleBody: () => ({ id: HOSTEL_FIXTURE.room(1), hostelId: HOSTEL_FIXTURE.hostel, ...HOSTEL_FIXTURE_ROOMS[0] }) },
+  { method: "GET", path: "/api/v1/hostel/boarders", summary: "Every boarder with their bed.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", request: c.hostelBoardersQuerySchema, response: c.hostelBoardersSchema },
+  { method: "POST", path: "/api/v1/hostel/allotments", summary: "A pupil to a bed from a day.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelAllotSchema, response: c.hostelBoarderSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/hostel/allotments/{allotmentId}/end", summary: "The bed given up from a day.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelAllotmentEndSchema, response: c.hostelBoarderSchema, emptyBodyStatus: 422, sample: `/api/v1/hostel/allotments/${HOSTEL_FIXTURE.allotment(3)}/end` },
+  { method: "GET", path: "/api/v1/hostel/rollcall", summary: "A roll call's sheet: as taken, or ready to take.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", request: c.hostelRollCallQuerySchema, response: c.hostelRollCallSheetSchema, sample: `/api/v1/hostel/rollcall?hostelId=${HOSTEL_FIXTURE.hostel}` },
+  { method: "POST", path: "/api/v1/hostel/rollcall", summary: "Take a roll call, once per hostel, day and slot; the same sheet replayed is the same call.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelRollCallTakeSchema, response: c.hostelRollCallResultSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/hostel/leave", summary: "Leave: open, today's, or all.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", request: c.hostelLeaveListQuerySchema, response: c.hostelLeaveListSchema },
+  // Pupil 01's leave, approved and come back: approving it again is the same.
+  { method: "POST", path: "/api/v1/hostel/leave/{leaveId}/decide", summary: "Approve or decline leave; a minor's only after a guardian's consent.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelLeaveDecideSchema, response: c.hostelLeaveRowSchema, emptyBodyStatus: 422, sample: `/api/v1/hostel/leave/${HOSTEL_FIXTURE.returnedLeave}/decide`, sampleBody: () => ({ approve: true, note: "" }) },
+  // The same leave, out and back already: the gate's doors are no-ops on it.
+  { method: "POST", path: "/api/v1/hostel/leave/{leaveId}/out", summary: "The gate: out on approved leave.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", response: c.hostelLeaveRowSchema, sample: `/api/v1/hostel/leave/${HOSTEL_FIXTURE.returnedLeave}/out` },
+  { method: "POST", path: "/api/v1/hostel/leave/{leaveId}/in", summary: "The gate: back in; late is flagged.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", response: c.hostelLeaveRowSchema, sample: `/api/v1/hostel/leave/${HOSTEL_FIXTURE.returnedLeave}/in` },
+  { method: "GET", path: "/api/v1/hostel/visitors", summary: "The visitor book for a day.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", request: c.hostelVisitorsQuerySchema, response: c.hostelVisitorsSchema },
+  { method: "POST", path: "/api/v1/hostel/visitors", summary: "A visitor signed in.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelVisitorCreateSchema, response: c.hostelVisitorsSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/hostel/visitors/{visitorId}/out", summary: "A visitor signed out.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", response: c.hostelVisitorsSchema, sample: `/api/v1/hostel/visitors/${HOSTEL_FIXTURE.visitorOut}/out` },
+  { method: "GET", path: "/api/v1/hostel/menu", summary: "The mess menu: every house's for staff, the boarder's own for the family.", access: ["WARDEN", "ADMIN", "PRINCIPAL", "STUDENT", "PARENT"], module: "HOSTEL", request: c.messMenuQuerySchema, response: c.messMenuSchema },
+  { method: "POST", path: "/api/v1/hostel/menu", summary: "A house's week of meals.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.messMenuSaveSchema, response: c.messMenuSchema, emptyBodyStatus: 422, sampleBody: () => ({ hostelId: HOSTEL_FIXTURE.hostel, entries: HOSTEL_FIXTURE_MENU }) },
+  { method: "POST", path: "/api/v1/hostel/mess", summary: "Who ate at a meal, where the house marks it.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.messAttendanceSaveSchema, response: c.messAttendanceResultSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/hostel/incidents", summary: "The incident log, as far as it happened in a hostel.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", response: c.hostelIncidentsSchema },
+  { method: "POST", path: "/api/v1/hostel/incidents", summary: "The warden records an incident in the school's log, tagged with the hostel.", access: ["WARDEN", "ADMIN"], module: "HOSTEL", request: c.hostelIncidentCreateSchema, response: c.hostelIncidentsSchema, emptyBodyStatus: 422 },
+  // Pupil 01's bed; the read is a row the family's "who read this" lists, as every staff read is.
+  { method: "GET", path: "/api/v1/hostel/boarders/{allotmentId}/health", summary: "What the warden needs from a boarder's health card; the read is shown to the family.", access: ["WARDEN"], module: "HOSTEL", response: c.hostelBoarderHealthSchema, sample: `/api/v1/hostel/boarders/${HOSTEL_FIXTURE.allotment(1)}/health` },
+  { method: "GET", path: "/api/v1/hostel/overview", summary: "Occupancy, leave today, absentees at roll call, visitors.", access: ["WARDEN", "ADMIN", "PRINCIPAL"], module: "HOSTEL", response: c.hostelOverviewSchema },
+  { method: "GET", path: "/api/v1/family/hostel", summary: "A boarder's room, tonight's roll call, leave and today's menu.", access: ["STUDENT", "PARENT"], module: "HOSTEL", request: c.familyHostelQuerySchema, response: c.familyHostelSchema },
+  { method: "POST", path: "/api/v1/family/hostel/leave", summary: "Ask for leave: a guardian's ask is their consent; a minor's waits for one.", access: ["STUDENT", "PARENT"], module: "HOSTEL", request: c.familyHostelLeaveCreateSchema, response: c.hostelLeaveRowSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/family/hostel/leave/{leaveId}/consent", summary: "A guardian's yes or no to their child's own ask.", access: ["PARENT"], module: "HOSTEL", request: c.familyHostelConsentSchema, response: c.hostelLeaveRowSchema, emptyBodyStatus: 422, sample: `/api/v1/family/hostel/leave/${HOSTEL_FIXTURE.returnedLeave}/consent` },
+  // Pupil 01's cancelled ask: cancelling again is the same, for the pupil and their guardian.
+  { method: "POST", path: "/api/v1/family/hostel/leave/{leaveId}/cancel", summary: "Take a leave ask back before going out.", access: ["STUDENT", "PARENT"], module: "HOSTEL", response: c.hostelLeaveRowSchema, sample: `/api/v1/family/hostel/leave/${HOSTEL_FIXTURE.cancelledLeave}/cancel` },
+];

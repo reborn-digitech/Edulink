@@ -101,7 +101,7 @@ export async function healthCardReadsFor(ctx: ActiveContext, studentMembershipId
     studentMembershipId,
     childName: link.student.user.preferredName ?? link.student.user.name,
     days: HEALTH_READS_DAYS,
-    reads: rows.map((r) => ({ id: r.id, readerName: names.get(r.readerUserId) ?? "", readerRole: r.readerRole as "ADMIN" | "PRINCIPAL" | "TEACHER", readAt: r.readAt.toISOString() })),
+    reads: rows.map((r) => ({ id: r.id, readerName: names.get(r.readerUserId) ?? "", readerRole: r.readerRole as "ADMIN" | "PRINCIPAL" | "TEACHER" | "WARDEN", readAt: r.readAt.toISOString() })),
   };
 }
 

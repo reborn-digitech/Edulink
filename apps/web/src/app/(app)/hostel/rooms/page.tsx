@@ -1,0 +1,204 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BedIcon, HouseLineIcon, PlusIcon } from "@phosphor-icons/react/ssr";
+import { HOSTEL_KINDS, HOSTEL_ROOM_KINDS } from "@edulink/contracts";
+import { getT } from "@/lib/i18n/server";
+import { hostelsView, pupilsWithoutBed } from "@/lib/hostel";
+import { todayKey } from "@/lib/dates";
+import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, inputClass, wardenContext } from "@/components/hostel/parts";
+import { allotAction, endAllotmentAction, saveHostelAction, saveRoomAction } from "../actions";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("hostel.tabRooms"), robots: { index: false, follow: false } };
+}
+
+const small = "mt-1 block min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg";
+
+/**
+ * Houses, rooms and beds: who sleeps where, a free bed for a pupil, a bed
+ * given up. The office makes the houses and puts a warden in charge; the
+ * office and the warden make rooms and allot.
+ */
+export default async function HostelRoomsPage({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
+  const { ctx, t, on, canWrite, timeZone } = await wardenContext();
+  const { ok, error } = await searchParams;
+  if (!on) return <WardenFrame t={t} on={false} current="rooms" title={t("hostel.tabRooms")}>{null}</WardenFrame>;
+  const [view, pupils] = await Promise.all([hostelsView(ctx), canWrite ? pupilsWithoutBed(ctx) : Promise.resolve([])]);
+  const today = todayKey(timeZone);
+  const back = "/hostel/rooms";
+  const freeBeds = view.hostels.flatMap((h) => h.rooms.flatMap((r) => Array.from({ length: r.beds }, (_, k) => k + 1).filter((bed) => !r.boarders.some((b) => b.bed === bed)).map((bed) => ({ value: `${r.id}:${bed}`, label: t("hostel.bedOption", { hostel: h.name, room: r.number, bed }) }))));
+  return (
+    <WardenFrame t={t} on current="rooms" title={t("hostel.tabRooms")} description={t("hostel.roomsIntro")} ok={ok} error={error}>
+      {canWrite && pupils.length > 0 && freeBeds.length > 0 ? (
+        <Card>
+          <CardHeader icon={<BedIcon weight="duotone" className="size-5" />} title={t("hostel.allotTitle")} description={t("hostel.allotHint")} />
+          <CardBody>
+            <form action={allotAction} className="grid gap-3 sm:grid-cols-3">
+              <input type="hidden" name="back" value={back} />
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.pupil")}
+                <select name="membershipId" required className={inputClass}>
+                  {pupils.map((p) => (
+                    <option key={p.membershipId} value={p.membershipId}>
+                      {p.name}
+                      {p.className ? ` (${p.className})` : ""}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.bed")}
+                <select name="bed" required className={inputClass}>
+                  {freeBeds.map((b) => (
+                    <option key={b.value} value={b.value}>
+                      {b.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.fromDate")}
+                <input type="date" name="fromDate" required defaultValue={today} className={inputClass} />
+              </label>
+              <div className="sm:col-span-3">
+                <Button type="submit">{t("hostel.allotButton")}</Button>
+              </div>
+            </form>
+          </CardBody>
+        </Card>
+      ) : null}
+
+      {view.hostels.map((h) => (
+        <Card key={h.id}>
+          <CardHeader icon={<HouseLineIcon weight="duotone" className="size-5" />} title={h.name} description={[t(HOSTEL_KIND_KEY[h.kind]), t("hostel.occupancy", { occupied: h.occupied, beds: h.beds }), h.wardenName ? t("hostel.wardenIs", { name: h.wardenName }) : null].filter(Boolean).join(" · ")} />
+          <CardBody className="space-y-4">
+            {h.rooms.map((r) => (
+              <div key={r.id} className="rounded-[--radius-md] border border-border p-3">
+                <p className="text-sm font-semibold text-fg">
+                  {t("hostel.roomShort", { room: r.number })} <span className="font-normal text-fg-muted">· {t(ROOM_KIND_KEY[r.kind])} · {t("hostel.occupancy", { occupied: r.occupied, beds: r.beds })}</span>
+                </p>
+                {r.boarders.length > 0 ? (
+                  <ul className="mt-2 space-y-1.5">
+                    {r.boarders.map((b) => (
+                      <li key={b.allotmentId} className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                        <span className="text-fg">
+                          {t("hostel.bedN", { bed: b.bed })}: {b.name}
+                          {b.className ? <span className="text-fg-muted"> ({b.className})</span> : null}
+                          {b.onLeave ? <span className="text-warn"> · {t("hostel.rollON_LEAVE")}</span> : null}
+                        </span>
+                        <span className="flex flex-wrap items-center gap-2">
+                          {ctx.role === "WARDEN" ? (
+                            <Link href={`/hostel/health/${b.allotmentId}`} className="text-xs font-medium text-accent-strong hover:underline">
+                              {t("hostel.healthCard")}
+                            </Link>
+                          ) : null}
+                          {canWrite ? (
+                            <form action={endAllotmentAction} className="flex items-center gap-1.5">
+                              <input type="hidden" name="allotmentId" value={b.allotmentId} />
+                              <input type="hidden" name="back" value={back} />
+                              <label className="sr-only" htmlFor={`to-${b.allotmentId}`}>
+                                {t("hostel.toDate")}
+                              </label>
+                              <input id={`to-${b.allotmentId}`} type="date" name="toDate" required defaultValue={today} className="min-h-11 rounded-[--radius-md] border border-border bg-surface px-2 text-sm text-fg" />
+                              <Button type="submit" size="sm" variant="ghost">
+                                {t("hostel.endBed")}
+                              </Button>
+                            </form>
+                          ) : null}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
+            {canWrite ? (
+              <form action={saveRoomAction} className="grid gap-2 border-t border-border pt-4 sm:grid-cols-5">
+                <input type="hidden" name="back" value={back} />
+                <input type="hidden" name="hostelId" value={h.id} />
+                <label className="text-xs text-fg-muted">
+                  {t("hostel.roomNumber")}
+                  <input name="number" required maxLength={20} className={small} />
+                </label>
+                <label className="text-xs text-fg-muted">
+                  {t("hostel.floor")}
+                  <input name="floor" maxLength={20} className={small} />
+                </label>
+                <label className="text-xs text-fg-muted">
+                  {t("hostel.beds")}
+                  <input name="beds" type="number" min={1} max={100} required defaultValue={2} className={small} />
+                </label>
+                <label className="text-xs text-fg-muted">
+                  {t("hostel.roomKind")}
+                  <select name="kind" defaultValue="SHARED" className={small}>
+                    {HOSTEL_ROOM_KINDS.map((k) => (
+                      <option key={k} value={k}>
+                        {t(ROOM_KIND_KEY[k])}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <div className="flex items-end">
+                  <Button type="submit" size="sm" variant="secondary">
+                    <PlusIcon weight="bold" className="size-4" aria-hidden />
+                    {t("hostel.addRoom")}
+                  </Button>
+                </div>
+              </form>
+            ) : null}
+          </CardBody>
+        </Card>
+      ))}
+
+      {view.canManage ? (
+        <Card>
+          <CardHeader icon={<HouseLineIcon weight="duotone" className="size-5" />} title={t("hostel.newHostel")} description={t("hostel.newHostelHint")} />
+          <CardBody>
+            <form action={saveHostelAction} className="grid gap-3 sm:grid-cols-2">
+              <input type="hidden" name="back" value={back} />
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.hostelName")}
+                <input name="name" required maxLength={80} className={inputClass} />
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.hostelKind")}
+                <select name="kind" required className={inputClass}>
+                  {HOSTEL_KINDS.map((k) => (
+                    <option key={k} value={k}>
+                      {t(HOSTEL_KIND_KEY[k])}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.capacity")}
+                <input name="capacity" type="number" min={0} max={5000} required defaultValue={0} className={inputClass} />
+              </label>
+              <label className="text-sm font-medium text-fg">
+                {t("hostel.wardenInCharge")}
+                <select name="wardenMembershipId" className={inputClass}>
+                  <option value="">{t("hostel.noWarden")}</option>
+                  {view.wardens.map((w) => (
+                    <option key={w.membershipId} value={w.membershipId}>
+                      {w.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-2">
+                <input type="checkbox" name="messAttendance" className="size-4" />
+                {t("hostel.messAttendanceOn")}
+              </label>
+              <div className="sm:col-span-2">
+                <Button type="submit">{t("hostel.saveHostel")}</Button>
+              </div>
+            </form>
+          </CardBody>
+        </Card>
+      ) : null}
+    </WardenFrame>
+  );
+}
