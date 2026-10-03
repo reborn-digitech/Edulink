@@ -256,7 +256,9 @@ function scan(): Finding[] {
       // …and the filings library, whose strings are the UDISE+ bulk sheet's
       // and the boards' own column headings and code legends — the portal
       // reads them, not a person, and a translated heading would not upload.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts"),
+      // …and the inventory and payroll files' headings (module-file-headings.ts):
+      // the ESIC sheet's and a bank's bulk-upload columns and the auditor's, the same case.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

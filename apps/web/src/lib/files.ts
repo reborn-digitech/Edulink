@@ -34,7 +34,7 @@ import { kycOwningFile } from "./expert-kyc";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
-  | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc"; public: false }
+  | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase"; public: false }
   | { allowed: false; reason: "not-found" | "unauthenticated" | "forbidden" };
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
@@ -127,6 +127,14 @@ export async function authorizeFileRead(
   const kyc = await kycOwningFile(fileId);
   if (kyc) {
     if (kyc.userId === user.id || user.isSuperuser) return { allowed: true, kind: "kyc", public: false };
+    return DENY;
+  }
+
+  // ---- 2d. a purchase record's scanned bill (the INVENTORY module): the
+  // office and the head of the school whose bill it is, nobody else.
+  const bill = await db.purchaseRecord.findFirst({ where: { billFileId: fileId }, select: { schoolId: true } });
+  if (bill) {
+    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === bill.schoolId) return { allowed: true, kind: "purchase", public: false };
     return DENY;
   }
 

@@ -106,6 +106,8 @@ async function referencedFileIds(): Promise<Map<string, string>> {
   for (const row of assignments) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
   for (const row of submissions) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
   for (const row of posts) for (const m of readMedia(row.media)) claim(m.fileId, row.schoolId);
+  // A purchase record's scanned bill (the INVENTORY module).
+  for (const row of await db.purchaseRecord.findMany({ where: { billFileId: { not: null } }, select: { schoolId: true, billFileId: true } })) if (row.billFileId) claim(row.billFileId, row.schoolId);
 
   return ids;
 }

@@ -11,7 +11,11 @@ import {
   CertificateIcon,
   CaretRightIcon,
   UserMinusIcon,
+  ReceiptIcon,
+  PackageIcon,
 } from "@phosphor-icons/react/ssr";
+import { SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
+import { enabledModules } from "@/lib/modules";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getSession, listContexts, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
@@ -83,6 +87,9 @@ export default async function AccountPage({
   const isHandle = user.email?.endsWith(`@${HANDLE_DOMAIN}`) ?? false;
 
   const showRecord = await hasRecord(session);
+  // The person's own payslips and the things the stores issued them (the PAYROLL and INVENTORY modules), for staff at a school that has them on.
+  const isStaff = Boolean(live.schoolId && live.role && (SCHOOL_STAFF_ROLES as readonly string[]).includes(live.role));
+  const staffModules = isStaff ? await enabledModules(live.schoolId) : [];
   // Two-step sign-in is offered to the office, the head and the operator alone.
   const twoFactor = await twoFactorStatus(session.user.id);
 
@@ -232,6 +239,35 @@ export default async function AccountPage({
             action={
               <Button asChild size="sm" variant="secondary">
                 <Link href="/record">{t("account.recordAction")}</Link>
+              </Button>
+            }
+          />
+        </Card>
+      )}
+
+      {staffModules.includes("PAYROLL") && (
+        <Card>
+          <CardHeader
+            icon={<ReceiptIcon weight="duotone" className="size-5" />}
+            title={t("payroll.myTitle")}
+            description={t("payroll.accountCard")}
+            action={
+              <Button asChild size="sm" variant="secondary">
+                <Link href="/account/payslips">{t("payroll.open")}</Link>
+              </Button>
+            }
+          />
+        </Card>
+      )}
+      {staffModules.includes("INVENTORY") && (
+        <Card>
+          <CardHeader
+            icon={<PackageIcon weight="duotone" className="size-5" />}
+            title={t("inventory.myTitle")}
+            description={t("inventory.accountCard")}
+            action={
+              <Button asChild size="sm" variant="secondary">
+                <Link href="/account/items">{t("inventory.open")}</Link>
               </Button>
             }
           />
