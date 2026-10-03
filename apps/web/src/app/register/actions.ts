@@ -1,5 +1,6 @@
 "use server";
 
+import { writeDefaultModules } from "@/lib/modules";
 import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
 import { hashPassword, passwordProblems, generateToken, hashToken } from "@/lib/crypto";
@@ -157,6 +158,8 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           status: "ACTIVE",
         },
       });
+      // Every school starts with ALUMNI on (3 Oct 2026); the rest wait for the admin.
+      await writeDefaultModules(createdSchool.id, tx);
 
       await tx.authToken.create({
         data: {

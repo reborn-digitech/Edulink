@@ -1,7 +1,7 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { cache } from "react";
-import { getSession } from "../session";
+import { sessionForLocale } from "../session";
 import { normaliseLocale, LOCALE_COOKIE, type Locale } from "./locales";
 import { translator, type Translate } from "./dictionary";
 import { relativeTime } from "../dates";
@@ -24,7 +24,8 @@ import { relativeTime } from "../dates";
  * the same render resolve it once.
  */
 export const getLocale = cache(async (): Promise<Locale> => {
-  const session = await getSession();
+  // Not getSession: a request the module gate refuses is still answered in its person's language.
+  const session = await sessionForLocale();
   if (session) return normaliseLocale(session.user.prefs.locale);
   const jar = await cookies();
   return normaliseLocale(jar.get(LOCALE_COOKIE)?.value);

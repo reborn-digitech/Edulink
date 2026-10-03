@@ -1,7 +1,7 @@
 import { okSchema, staffRecordSaveSchema, staffRecordViewSchema } from "@edulink/contracts";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { setStaffRecord, staffRecordFor, STAFF_ROLES } from "@/lib/staff-records";
+import { setStaffRecord, staffRecordFor, SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { apiRefused } from "@/lib/api-reads/admin";
 
@@ -11,7 +11,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ mem
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const { membershipId } = await params;
     const member = await db.membership.findFirst({
-      where: { id: membershipId, schoolId: ctx.schoolId, role: { in: [...STAFF_ROLES] } },
+      where: { id: membershipId, schoolId: ctx.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] } },
       select: { role: true, user: { select: { name: true } } },
     });
     const record = member ? await staffRecordFor(ctx, membershipId) : null;

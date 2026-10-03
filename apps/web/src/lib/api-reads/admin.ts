@@ -29,7 +29,7 @@ import { accessHistory } from "@/lib/superuser";
 import { readOwnProfileSettings, listContactCandidates } from "@/lib/school-profile";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
 import { listOurPostings } from "@/lib/vacancies";
-import { leaveBalancesFor, STAFF_ROLES } from "@/lib/staff-records";
+import { leaveBalancesFor, SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 
 /**
@@ -179,7 +179,8 @@ export async function adminPeople(
   const where: Prisma.MembershipWhereInput = {
     schoolId: ctx.schoolId,
     ...(filters.status === "LEFT" ? { leftAt: { not: null } } : { status: filters.status, leftAt: null }),
-    ...(roleFilter ? { role: roleFilter } : {}),
+    // Everyone but the alumni, who have a chip of their own: a school's leavers would otherwise outnumber its roll (3 Oct 2026).
+    ...(roleFilter ? { role: roleFilter } : { role: { not: "ALUMNUS" } }),
     ...(classFilter
       ? {
           OR: [
@@ -710,7 +711,7 @@ export async function adminLeave(ctx: Scoped) {
 
 export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: string; subject?: string }) {
   const allStaff = await db.membership.findMany({
-    where: { schoolId: ctx.schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
+    where: { schoolId: ctx.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
     select: {
       id: true,
       role: true,
@@ -723,7 +724,7 @@ export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: stri
   });
   allStaff.sort((a, b) => (a.user.preferredName ?? a.user.name).localeCompare(b.user.preferredName ?? b.user.name, undefined, { sensitivity: "base" }));
 
-  const roleFilter = filters.role && (STAFF_ROLES as readonly string[]).includes(filters.role) ? filters.role : null;
+  const roleFilter = filters.role && (SCHOOL_STAFF_ROLES as readonly string[]).includes(filters.role) ? filters.role : null;
   const subjectCounts = new Map<string, number>();
   for (const member of allStaff) for (const subject of readJsonArray<string>(member.subjects)) subjectCounts.set(subject, (subjectCounts.get(subject) ?? 0) + 1);
   const subjectFilter = filters.subject && subjectCounts.has(filters.subject) ? filters.subject : null;
@@ -768,7 +769,7 @@ export async function adminStaff(ctx: Scoped, filters: { q?: string; role?: stri
       balance: balances.get(m.id) ?? null,
     })),
     total: allStaff.length,
-    roleCounts: STAFF_ROLES.map((role) => ({ role, count: allStaff.filter((m) => m.role === role).length })).filter((o) => o.count > 0),
+    roleCounts: SCHOOL_STAFF_ROLES.map((role) => ({ role, count: allStaff.filter((m) => m.role === role).length })).filter((o) => o.count > 0),
     subjectOptions: [...subjectCounts.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([subject, count]) => ({ subject, count })),
   };
 }

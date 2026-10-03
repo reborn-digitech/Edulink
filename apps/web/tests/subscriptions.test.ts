@@ -57,7 +57,8 @@ vi.mock("@/lib/superuser", async (importOriginal) => {
 const db = new PrismaClient();
 const STAMP = Date.now();
 const DAY = 86_400_000;
-const NOW = new Date("2026-10-02T06:00:00.000Z");
+// The audit rows the reminder leaves are stamped with the real clock, so the test's clock is the real one too (rounded to the hour), else a 7-day mute window counted from a fixed date fails once the date has passed.
+const NOW = new Date(Math.floor(Date.now() / 3_600_000) * 3_600_000);
 const day = (offset: number) => new Date(NOW.getTime() + offset * DAY).toISOString().slice(0, 10);
 
 let schoolId = "";
@@ -143,10 +144,11 @@ describe("the arithmetic", () => {
   });
 
   it("days to due are whole days by calendar; the tone is red past, amber within thirty, none for a stopped clock", () => {
-    expect(daysToDue(dayToDate("2026-10-05"), NOW)).toBe(3);
-    expect(daysToDue(dayToDate("2026-10-02"), NOW)).toBe(0);
-    expect(daysToDue(dayToDate("2026-09-30"), NOW)).toBe(-2);
-    expect(daysToDue(null, NOW)).toBeNull();
+    const at = new Date("2026-10-02T06:00:00.000Z"); // a pure function: a fixed clock is right here
+    expect(daysToDue(dayToDate("2026-10-05"), at)).toBe(3);
+    expect(daysToDue(dayToDate("2026-10-02"), at)).toBe(0);
+    expect(daysToDue(dayToDate("2026-09-30"), at)).toBe(-2);
+    expect(daysToDue(null, at)).toBeNull();
     expect(dueTone(-1, "ACTIVE")).toBe("past");
     expect(dueTone(0, "ACTIVE")).toBe("soon");
     expect(dueTone(30, "TRIAL")).toBe("soon");

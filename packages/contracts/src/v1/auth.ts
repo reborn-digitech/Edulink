@@ -1,11 +1,17 @@
 import { z } from "zod";
 import { localeSchema } from "../locale";
+import { schoolModuleSchema } from "./modules";
 
 /**
  * Signing in from the phone. Every sign-in answers with the same session
  * shape; the app stores the token in secure storage and sends it as a bearer.
  */
-export const roleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT"]);
+/**
+ * DRIVER, LIBRARIAN, WARDEN and ALUMNUS came with the per-school modules
+ * (3 October 2026): each is a Membership at a school, as a teacher is, and
+ * reaches only what its module names (see ./modules.ts).
+ */
+export const roleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"]);
 export type RoleCode = z.infer<typeof roleSchema>;
 
 export const passwordLoginSchema = z.object({
@@ -67,6 +73,13 @@ export const meSchema = z.object({
   }),
   active: z.object({ schoolId: z.string().nullable(), role: roleSchema.nullable(), membershipId: z.string().nullable() }),
   contexts: z.array(z.object({ schoolId: z.string().nullable(), schoolName: z.string().nullable(), role: roleSchema })),
+  /**
+   * The modules the ACTIVE school has switched on; empty with no school on the
+   * session. The phone hides a module's tabs and menu entries by it. Defaults
+   * to none, so an answer from a server older than the field hides them
+   * rather than showing doors that answer MODULE_OFF.
+   */
+  modules: z.array(schoolModuleSchema).default([]),
 });
 export type Me = z.infer<typeof meSchema>;
 

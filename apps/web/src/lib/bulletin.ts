@@ -11,7 +11,7 @@ import { forSchool } from "./tenant-context";
 import { assertAppAdmin } from "./app-admin";
 import { consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
-import type { PostCategory, PostScope, PostStatus, ReactionKind, Role } from "./constants";
+import { isModuleRole, type PostCategory, type PostScope, type PostStatus, type ReactionKind, type Role } from "./constants";
 
 /**
  * Bulletin board.
@@ -191,6 +191,8 @@ function visibilityWhere(
  */
 function audienceWhere(role: Role | null, grades: string[]): Prisma.PostWhereInput[] {
   if (role === "ADMIN") return [];
+  // A module role (an alumnus reading the school's feed, 3 Oct 2026) reads what is for everyone, and nothing aimed at a group.
+  if (isModuleRole(role)) return [{ audience: "ALL" }, { audienceGrade: null }];
   if (role === "TEACHER" || role === "PRINCIPAL") {
     // A circular to families is the class teacher's to chase, so a staff
     // member reads every post that asks for an acknowledgement, whoever it
@@ -553,6 +555,8 @@ export async function createPost(
     requiresAck?: boolean;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
+  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
+  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   const { schoolId, membershipId, role, user } = session;
   if (!schoolId || !role) throw new AccessError("access.noActiveSchoolSelected");
 
@@ -1053,6 +1057,8 @@ export async function toggleReaction(
   postId: string,
   kind: ReactionKind,
 ): Promise<{ added: boolean }> {
+  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
+  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1089,6 +1095,8 @@ export async function addComment(
   body: string,
   parentCommentId?: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
+  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
+  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1415,6 +1423,8 @@ export async function reportContent(
  * tap felt uncertain must read as success, the same stance reportContent takes.
  */
 export async function acknowledgePost(session: ActiveContext, postId: string): Promise<void> {
+  // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
+  if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);

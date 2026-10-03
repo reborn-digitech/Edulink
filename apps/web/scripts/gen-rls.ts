@@ -371,8 +371,13 @@ const SUPERUSER_NULL_READABLE = new Set(["AuditLog"]);
  * Superuser AUDIT rows are written with schoolId NULL through NULL_SCHOOL_WRITABLE
  * above, with the school named in `meta`. They therefore appear in no school's
  * Safety Centre — an operator's actions belong to the operator, not to a tenant.
+ *
+ *   - SchoolModule (3 October 2026), because a school is made with its ALUMNI
+ *     module on, in the same act as the School row and before it has a tenant
+ *     anybody is bound to. Which parts of the product a school has switched on
+ *     is about the school, not about a person in it: no child's row is here.
  */
-const SUPERUSER_TABLES = new Set(["School", "Invite"]);
+const SUPERUSER_TABLES = new Set(["School", "Invite", "SchoolModule"]);
 
 /**
  * The operator's own visitor book, and the only APPEND-ONLY table in this

@@ -11,6 +11,8 @@ import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
 import { unreadConversationCount } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
 import type { Role } from "@/lib/constants";
+import { NAV } from "@/lib/nav";
+import { enabledModules } from "@/lib/modules";
 
 /**
  * The signed-in chrome, for a session that HAS a role.
@@ -85,6 +87,16 @@ export async function SignedInShell({
    * is the opposite of what a questionnaire needs.
    */
   const hiddenHrefs: string[] = [];
+  /**
+   * A module's entries exist only while the school has it switched on
+   * (3 Oct 2026): an entry carrying `module` is hidden otherwise, for every
+   * role. A parent's session names no school, so a module entry on a
+   * family's menu is the module builder's to decide by the child's school.
+   */
+  if (NAV[role].some((item) => item.module)) {
+    const on = await enabledModules(session.schoolId);
+    for (const item of NAV[role]) if (item.module && !on.includes(item.module)) hiddenHrefs.push(item.href);
+  }
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");
   }

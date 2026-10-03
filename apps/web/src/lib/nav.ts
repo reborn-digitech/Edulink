@@ -1,5 +1,6 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
+import type { SchoolModuleCode } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -35,6 +36,14 @@ export type NavItem = {
    * rather than one long one. Primaries carry no group.
    */
   group?: NavGroup;
+  /**
+   * The module this entry belongs to (3 Oct 2026). The shell hides it while the
+   * school has the module off (signed-in-shell.tsx), and for a module role the
+   * session's gate stops granting the page through it (role-gate.ts). A
+   * module builder adds an entry with this field — for the office, the head,
+   * a teacher, a family or the module's own role — and nothing else.
+   */
+  module?: SchoolModuleCode;
 };
 
 export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
@@ -249,6 +258,32 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "running" },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
+  /*
+   * THE MODULE ROLES (3 Oct 2026). Each starts with its home, which says
+   * whether the school has switched the module on, and the account. A module
+   * builder adds the role's screens here with `module` set; the home itself
+   * carries no module, so it stays to say "switched off" when it is.
+   * Anything not listed is a page this role cannot open (role-gate.ts).
+   */
+  DRIVER: [
+    { href: "/driver", labelKey: "modules.transportName", icon: "bus", primary: true, prefix: true },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  ],
+  LIBRARIAN: [
+    { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", primary: true, prefix: true },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  ],
+  WARDEN: [
+    { href: "/hostel", labelKey: "modules.hostelName", icon: "bed", primary: true, prefix: true },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  ],
+  // A former pupil: the school's feed to read and its staff to write to, nothing else; the alumni builder adds the rest.
+  ALUMNUS: [
+    { href: "/alumni", labelKey: "modules.alumniName", icon: "graduationCap", primary: true, prefix: true },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true, module: "ALUMNI" },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true, module: "ALUMNI" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  ],
 };
 
 /** The one action each role does most. Becomes the floating action button. */
@@ -271,6 +306,10 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   PRINCIPAL: null,
   STUDENT: null,
   PARENT: null,
+  DRIVER: null,
+  LIBRARIAN: null,
+  WARDEN: null,
+  ALUMNUS: null,
   EXPERT: {
     href: "/expert/availability",
     labelKey: "action.offerTime",
@@ -319,6 +358,10 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
     { href: "/expert/availability", labelKey: "action.offerTime", icon: "calendar", descriptionKey: "action.offerTimeHint" },
     { href: "/expert/profile", labelKey: "action.editProfile", icon: "user", descriptionKey: "action.editProfileHint" },
   ],
+  DRIVER: [],
+  LIBRARIAN: [],
+  WARDEN: [],
+  ALUMNUS: [],
 };
 
 export function isActive(pathname: string, item: NavItem): boolean {

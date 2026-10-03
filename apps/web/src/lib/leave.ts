@@ -70,8 +70,10 @@ export async function applyForLeave(
   input: ApplyInput,
 ): Promise<LeaveResult> {
   // A principal may apply too — they are staff, and somebody has to be able to
-  // approve it. The approval side refuses self-approval separately.
-  if ((ctx.role !== "TEACHER" && ctx.role !== "PRINCIPAL") || !ctx.schoolId || !ctx.membershipId) {
+  // approve it. The approval side refuses self-approval separately. A driver,
+  // the library's desk and a warden are staff too (3 Oct 2026); their pages
+  // come with their modules.
+  if ((ctx.role !== "TEACHER" && ctx.role !== "PRINCIPAL" && ctx.role !== "DRIVER" && ctx.role !== "LIBRARIAN" && ctx.role !== "WARDEN") || !ctx.schoolId || !ctx.membershipId) {
     throw new AccessError("access.onlyTeachingStaffCanApplyForLeave");
   }
 

@@ -223,9 +223,10 @@ describe("a transfer by invitation", () => {
     expect(records).toHaveLength(1);
     expect(records[0]!.schoolName).toBe(OLD_SCHOOL);
 
-    // And the old school is closed to them while the new one is open.
+    // And the old school's roll is closed to them while the new one is open; the old school keeps them as an alumnus (3 Oct 2026).
     const memberships = await db.membership.findMany({ where: { userId: pupilUserId } });
-    expect(memberships.find((m) => m.schoolId === oldSchoolId)!.leftAt).not.toBeNull();
+    expect(memberships.find((m) => m.schoolId === oldSchoolId && m.role === "STUDENT")!.leftAt).not.toBeNull();
+    expect(memberships.find((m) => m.schoolId === oldSchoolId && m.role === "ALUMNUS")!.leftAt).toBeNull();
     expect(memberships.find((m) => m.schoolId === newSchoolId)!.leftAt).toBeNull();
   });
 });

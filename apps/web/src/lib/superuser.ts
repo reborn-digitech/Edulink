@@ -1,4 +1,5 @@
 import "server-only";
+import { writeDefaultModules } from "./modules";
 import { cache } from "react";
 import type { Prisma } from "@prisma/client";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -240,6 +241,8 @@ export async function createSchool(
           verifiedAt: new Date(),
         },
       });
+      // Every school starts with ALUMNI on (3 Oct 2026); the operator may write it for a school with no tenant yet (SUPERUSER_TABLES).
+      await writeDefaultModules(schoolId, client);
 
       // schoolId NULL, with the school named in meta. An operator's actions
       // belong to the operator, not to the tenant — so this appears in nobody's

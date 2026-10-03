@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import type { RoleCode } from "@edulink/contracts";
+import { MODULE_ROLES, type ModuleRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | RoleCode[];
 
@@ -34,6 +34,21 @@ export type Endpoint = {
   path: `/api/v1/${string}`;
   summary: string;
   access: Access;
+  /**
+   * THE MODULE THIS DOOR BELONGS TO (3 October 2026). A school that has not
+   * switched it on answers 403 with code MODULE_OFF, for every role, before
+   * the handler runs: the session's gate (src/lib/role-gate.ts) reads this
+   * field. Published as `x-module`; the phone hides the door's screens by
+   * /api/v1/me's `modules`.
+   */
+  module?: SchoolModuleCode;
+  /**
+   * The module roles (DRIVER, LIBRARIAN, WARDEN, ALUMNUS) a "signed-in" door
+   * also opens to. "signed-in" means every role BUT those four, which reach
+   * only what names them — here, or in an `access` list. Published as
+   * `x-limited-roles`. See `permits` below.
+   */
+  limitedRoles?: ModuleRoleCode[];
   request?: ZodTypeAny;
   response: ZodTypeAny;
   /** For the sweep: the status a permitted role gets with an empty body. */
@@ -209,3 +224,14 @@ export type SweepFixture = {
   todayKey: string;
 };
 
+/**
+ * Whether `role` may pass this door at all — the one reading of `access` and
+ * `limitedRoles` that the session's gate, the API sweep and the docs share.
+ * "anyone", "account", "operator" and "app-admin" are decided by the handler
+ * from the person rather than the role, so every role passes the gate there.
+ */
+export function permits(e: Pick<Endpoint, "access" | "limitedRoles">, role: RoleCode): boolean {
+  if (e.access === "anyone" || e.access === "account" || e.access === "operator" || e.access === "app-admin") return true;
+  if (e.access === "signed-in") return !(MODULE_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as ModuleRoleCode);
+  return e.access.includes(role);
+}

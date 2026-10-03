@@ -36,7 +36,8 @@ import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoi
 import {
   attachTeacher, buildAdmissions, buildCertificates, buildCircular, buildCompetitionEntry, buildDepartures, buildExams, buildFeeAdjustments, buildFees, buildHealth, buildHolidays, buildIncidents,
   buildInvite, buildMessaging, buildPracticeAssignment, buildRemarkThread, buildReport, buildRollNumbers, buildStaffAttendance, buildStaffRecords, buildSubstitutions, buildSyllabus, buildTimetable,
-  CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal } from "./zz-fixtures";
+  CALENDAR_2025_26, CALENDAR_2026_27, CLASS_COLOURS, closedDays, db, enrol, link, setTag, staffDates, teachingDaysBetween, THIS_YEAR, upsertClass, upsertMembership, upsertSchool, upsertUser, type Ctx, fakePen, refuseUnlessLocal, switchModulesOn } from "./zz-fixtures";
+import { SCHOOL_MODULES } from "@edulink/contracts";
 
 setTag("");
 
@@ -202,6 +203,8 @@ type Built = {
   deshmukh: { membershipId: string; userId: string; classId: string; teacher: Person };
   years: { prev: { id: string; name: string }; current: { id: string; name: string }; next: { id: string; name: string } };
   counts: Record<string, number | string>;
+  /** The module roles at Sunrise (3 Oct 2026): a driver, the library's desk, a warden; and each school's leaver, now its alumnus. */
+  moduleStaff?: { email: string; name: string; role: string; look: string }[];
 };
 
 function pupilName(spec: SchoolSpec, index: number): string {
@@ -930,6 +933,7 @@ function rosterMarkdown(input: { sunrise: Built; saraswati: Built; sunita: { id:
       ...b.formTeachers.map((t, i) => [t.user.email, t.user.name, `Teacher · form, Grade ${GRADES[i]}`, `/teacher, /teacher/classes/${b.classes[i]!.id}, /teacher/attendance?classId=${b.classes[i]!.id}, /bulletin`]),
       ...b.subjectTeachers.map((t) => [t.user.email, t.user.name, "Teacher · subject only", `/teacher (timetable, no form class)`]),
       [b.spare.user.email, b.spare.user.name, "Teacher · unattached", `/teacher (empty state), /vacancies (has applied to the other school), /enquiries`],
+      ...(b.moduleStaff ?? []).map((m) => [m.email, m.name, m.role, m.look]),
     ];
     return rows.map((r) => `| ${r.join(" | ")} |`).join("\n");
   };
@@ -1076,6 +1080,20 @@ async function main() {
       leaver: { email: `${spec.key}.pupil49@${DOMAIN}`, name: spec.leaver.name, classId: g8.id, grade: "8", birthdate: birthdateFor("8", 8), joinedOn: new Date("2026-06-15T00:00:00Z"), leftOn: new Date("2026-08-31T00:00:00Z"), destination: spec.leaver.destination, note: spec.leaver.note, conduct: "GOOD" },
       scheduled: { membershipId: b.pupils.find((p) => p.grade === "8" && p.seat === 7)!.membershipId, leaveOnKey: "2027-04-30", reason: "TRANSFERRED", destination: spec.scheduledDestination, note: en ? "Parents asked for the TC to be ready by the first week of May." : "पालकांनी मे महिन्याच्या पहिल्या आठवड्यापर्यंत दाखला तयार ठेवण्यास सांगितले.", conduct: "GOOD" },
     });
+    // The modules (3 Oct 2026): Sunrise has every module on and one person in each module role; Saraswati keeps the default (ALUMNI). Each school's leaver is its alumnus.
+    b.moduleStaff = [{ email: `${spec.key}.pupil49@${DOMAIN}`, name: spec.leaver.name, role: "Alumnus (left grade 8)", look: "/alumni, /bulletin, /remarks, /record" }];
+    if (spec.key === "sunrise") {
+      await switchModulesOn(b.school, SCHOOL_MODULES, admin);
+      for (const m of [
+        { email: `${spec.key}.driver01@${DOMAIN}`, name: "Ramesh Gaikwad", role: "DRIVER", label: "Driver", title: "Bus driver, route 1", look: "/driver" },
+        { email: `${spec.key}.librarian@${DOMAIN}`, name: "Shalini Apte", role: "LIBRARIAN", label: "Librarian", title: "Librarian", look: "/library" },
+        { email: `${spec.key}.warden@${DOMAIN}`, name: "Prakash More", role: "WARDEN", label: "Warden", title: "Hostel warden", look: "/hostel" },
+      ]) {
+        const user = await upsertUser(ctx, m.email, m.name);
+        await upsertMembership(user.id, b.school.id, m.role, { title: m.title });
+        b.moduleStaff.push({ email: m.email, name: m.name, role: m.label, look: m.look });
+      }
+    }
     const registers = await buildRegisters(b, closed);
     const fees = await buildFees(b.school, admin, { grades: GRADES, payers: 2, clientTag: `demo-${spec.key}` });
     const adjustments = await buildFeeAdjustments(b.school, admin, {

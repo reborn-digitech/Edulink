@@ -295,7 +295,9 @@ async function authenticate(ctx: ActiveContext, input: MergeInput): Promise<Auth
       loginName: toDisplayLoginName(other.email),
       certificates,
       children,
-      schools: memberships.map((m) => ({
+      // An ALUMNUS row rides with the pupil's own (left) membership at the same
+      // school (alumni-membership.ts): one school, said once.
+      schools: memberships.filter((m) => m.role !== "ALUMNUS" || !memberships.some((o) => o.schoolId === m.schoolId && o.role === "STUDENT")).map((m) => ({
         schoolId: m.schoolId,
         schoolName: names.get(m.schoolId) ?? "A school",
         role: m.role,
@@ -331,7 +333,7 @@ export async function previewMerge(ctx: ActiveContext, input: MergeInput): Promi
 /* -------------------------------------------------------------------------- */
 
 type MergeTx = {
-  membership: { updateMany(args: unknown): Promise<{ count: number }> };
+  membership: { updateMany(args: unknown): Promise<{ count: number }>; findMany(args: unknown): Promise<{ schoolId: string }[]> };
   schoolRecord: { updateMany(args: unknown): Promise<{ count: number }> };
   guardianship: {
     findMany(args: unknown): Promise<{ id: string; studentMembershipId: string }[]>;
@@ -390,10 +392,13 @@ export async function mergeAccounts(ctx: ActiveContext, input: MergeInput): Prom
       db.$tenantTransaction(async (rawTx) => {
         const tx = rawTx as MergeTx;
 
-        const schools = await tx.membership.updateMany({
+        // Counted by school, not by row: a former pupil's STUDENT and ALUMNUS memberships are one school.
+        const movedSchools = new Set((await tx.membership.findMany({ where: { userId: other.userId }, select: { schoolId: true } })).map((m) => m.schoolId));
+        const moved = await tx.membership.updateMany({
           where: { userId: other.userId },
           data: { userId: keeperId },
         });
+        const schools = { count: moved.count > 0 ? movedSchools.size : 0 };
 
         const certificates = await tx.schoolRecord.updateMany({
           where: { studentUserId: other.userId },

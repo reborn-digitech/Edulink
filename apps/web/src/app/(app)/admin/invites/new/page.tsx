@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { InviteForm } from "./form";
-import { SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { INVITABLE_ROLES, type InvitableRole } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,8 +21,8 @@ export default async function NewInvitePage({
   const ctx = await requireRole("ADMIN");
   const { role } = await searchParams;
 
-  const initialRole: SchoolRole = SCHOOL_ROLES.includes(role as SchoolRole)
-    ? (role as SchoolRole)
+  const initialRole: InvitableRole = (INVITABLE_ROLES as readonly string[]).includes(role ?? "")
+    ? (role as InvitableRole)
     : "TEACHER";
 
   const [classes, school] = await Promise.all([

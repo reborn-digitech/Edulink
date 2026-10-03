@@ -1,6 +1,6 @@
 import { Pressable, View } from "react-native";
 import { usePathname, useRouter } from "expo-router";
-import type { RoleCode } from "@edulink/contracts";
+import { MODULE_ROLES, type RoleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Icon, Row, Screen, Text } from "@/components";
 import { Avatar } from "@/components/avatar";
@@ -53,7 +53,7 @@ export function More() {
         <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
       </Pressable>
       {role
-        ? menuFor(role).map(({ group, items }) => (
+        ? menuFor(role, me.modules ?? []).map(({ group, items }) => (
             <Card key={group} title={t(MENU_GROUP_KEY[group])}>
               {items.map((item) => (
                 <MenuRow key={item.labelKey} item={item} />
@@ -91,7 +91,8 @@ export function More() {
       </Card>
       <View style={{ gap: th.space[2] }}>
         {/* One search across the school, for every role with a school; an expert has none to search. */}
-        {role && role !== "EXPERT" ? <Button label={t("search.title")} variant="secondary" onPress={() => router.push("/(app)/search")} /> : null}
+        {/* Not for a module role (a driver, the library's desk, a warden, an alumnus): the search door is not theirs. */}
+        {role && role !== "EXPERT" && !MODULE_ROLES.includes(role as (typeof MODULE_ROLES)[number]) ? <Button label={t("search.title")} variant="secondary" onPress={() => router.push("/(app)/search")} /> : null}
         <Button label={t("shell.notifications")} variant="secondary" onPress={() => router.push("/(app)/notifications")} />
         <Button label={t("report.title")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report", params: { from: pathname } })} />
         <Button label={t("shell.signOut")} variant="danger" onPress={() => void session.signOut()} />

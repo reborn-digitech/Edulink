@@ -61,7 +61,7 @@ export function leaveKindLabel(t: (key: TranslationKey) => string, kind: string)
 
 export function roleLabel(t: (key: TranslationKey) => string, role: string, plural = false): string {
   const r = role.toLowerCase();
-  if (!["admin", "principal", "teacher", "student", "parent", "expert"].includes(r)) return role;
+  if (!["admin", "principal", "teacher", "student", "parent", "expert", "driver", "librarian", "warden", "alumnus"].includes(r)) return role;
   return t(`role.${r}${plural ? "Plural" : ""}` as TranslationKey);
 }
 

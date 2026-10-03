@@ -197,7 +197,8 @@ export async function joinWithAccount(session: ActiveContext, rawCode: string, t
     db.guardianship.count({ where: { parentUserId: session.user.id, status: "ACTIVE" } }),
     forSchool(lookup.schoolId, () =>
       db.membership.findFirst({
-        where: { userId: session.user.id, schoolId: lookup.schoolId, role: { not: "STUDENT" }, status: { not: "REMOVED" } },
+        // A post here, not a former pupil's alumni row: an alumnus comes back to the roll by the same code (alumni-membership.ts).
+        where: { userId: session.user.id, schoolId: lookup.schoolId, role: { notIn: ["STUDENT", "ALUMNUS"] }, status: { not: "REMOVED" } },
         select: { id: true },
       }),
     ),

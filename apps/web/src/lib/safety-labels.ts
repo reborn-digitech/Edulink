@@ -453,6 +453,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "appadmin.translation.review": "audit.appadminTranslationReview",
   "post.platformTakedown": "audit.postPlatformTakedown",
   "post.platformRestore": "audit.postPlatformRestore",
+  "school.module.on": "audit.schoolModuleOn",
+  "school.module.off": "audit.schoolModuleOff",
 };
 
 export function actionKey(action: string): TranslationKey | null {

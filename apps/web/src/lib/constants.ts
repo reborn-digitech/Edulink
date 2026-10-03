@@ -19,7 +19,7 @@ import type { TranslationKey } from "./i18n/dictionary";
  * out of SCHOOL_ROLES is what stops any of the membership machinery trying to
  * enrol them somewhere.
  */
-export const ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT"] as const;
+export const ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const;
 export type Role = (typeof ROLES)[number];
 
 /**
@@ -31,8 +31,42 @@ export type Role = (typeof ROLES)[number];
  * it and decides who may be away. Neither can do the other's job, which is why
  * this is two roles and not a seniority flag on one.
  */
-export const SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"] as const;
+export const SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const;
 export type SchoolRole = (typeof SCHOOL_ROLES)[number];
+
+/**
+ * THE FOUR ROLES THAT CAME WITH THE MODULES (3 October 2026): a bus driver or
+ * attendant, the library's desk, a hostel's warden, and a former pupil. Each
+ * is a Membership like a teacher's, and each is LIMITED: it reaches only the
+ * doors its module names, whatever a library function would let a role it has
+ * never heard of do. The gate is `role-gate.ts`, read by `getSession`: on an
+ * /api/v1 door the catalog does not open to the role it answers 403, and on
+ * a school page outside the role's own nav the session carries no school.
+ *
+ * Everything written before them branches on the four roles below, and many
+ * of those branches fall through to "an admin sees everything" for a role
+ * they do not name — which is why the gate is a default-deny and not a list
+ * of the places to patch.
+ */
+export const MODULE_ROLES = ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const;
+export type ModuleRole = (typeof MODULE_ROLES)[number];
+export function isModuleRole(role: string | null | undefined): role is ModuleRole {
+  return role !== null && role !== undefined && (MODULE_ROLES as readonly string[]).includes(role);
+}
+
+/** The school roles every feature before the modules was written for. */
+export const CORE_SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"] as const;
+export function isCoreSchoolRole(role: string | null | undefined): role is (typeof CORE_SCHOOL_ROLES)[number] {
+  return role !== null && role !== undefined && (CORE_SCHOOL_ROLES as readonly string[]).includes(role);
+}
+
+/**
+ * Who the office may invite. Every school role but the ALUMNUS, who is never
+ * invited: a former pupil's alumni membership is made by their departure
+ * (`school-record.ts` recordDeparture) and by nothing else.
+ */
+export const INVITABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN"] as const;
+export type InvitableRole = (typeof INVITABLE_ROLES)[number];
 
 export const MEMBERSHIP_STATUSES = ["PENDING", "ACTIVE", "SUSPENDED"] as const;
 export type MembershipStatus = (typeof MEMBERSHIP_STATUSES)[number];
@@ -348,6 +382,10 @@ export const ROLE_META: Record<
   STUDENT: { labelKey: "role.student", pluralKey: "role.studentPlural", accent: "student" },
   PARENT: { labelKey: "role.parent", pluralKey: "role.parentPlural", accent: "parent" },
   EXPERT: { labelKey: "role.expert", pluralKey: "role.expertPlural", accent: "teacher" },
+  DRIVER: { labelKey: "role.driver", pluralKey: "role.driverPlural", accent: "driver" },
+  LIBRARIAN: { labelKey: "role.librarian", pluralKey: "role.librarianPlural", accent: "librarian" },
+  WARDEN: { labelKey: "role.warden", pluralKey: "role.wardenPlural", accent: "warden" },
+  ALUMNUS: { labelKey: "role.alumnus", pluralKey: "role.alumnusPlural", accent: "alumnus" },
 };
 
 /** Where each role lands after login. */
@@ -358,6 +396,10 @@ export const ROLE_HOME: Record<Role, string> = {
   STUDENT: "/student",
   PARENT: "/parent",
   EXPERT: "/expert",
+  DRIVER: "/driver",
+  LIBRARIAN: "/library",
+  WARDEN: "/hostel",
+  ALUMNUS: "/alumni",
 };
 
 /* -------------------------------------------------------------------------- */

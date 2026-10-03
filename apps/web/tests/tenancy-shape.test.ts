@@ -55,6 +55,8 @@ const DIRECT = [
   "PostRead",
   /** The staff register: a staff member's day, the school's row. */
   "StaffAttendance",
+  /** A module of the school version the school has switched on (3 Oct 2026): the school's row, one per module that is on. */
+  "SchoolModule",
   /** A family's word that a child will be away, and who read a child's health card: the school's rows, written and read through the family rules (2026-10-01). */
   "AbsenceNote",
   "HealthCardRead",
@@ -266,7 +268,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(138);
+    ).toBe(139);
   });
 });
 

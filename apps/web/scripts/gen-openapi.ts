@@ -17,11 +17,11 @@ const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 
 function describeAccess(e: Endpoint): string {
   if (e.access === "anyone") return "No session needed.";
-  if (e.access === "signed-in") return "Any signed-in session.";
+  if (e.access === "signed-in") return e.limitedRoles?.length ? `Any signed-in session but a module role's; of those, ${e.limitedRoles.join(", ")}.` : "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).";
   if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";
-  return `Roles: ${e.access.join(", ")}.`;
+  return `Roles: ${e.access.join(", ")}.${e.module ? ` Only while the school has ${e.module} switched on.` : ""}`;
 }
 
 function build() {
@@ -34,6 +34,9 @@ function build() {
       // The catalog's access list as data, so the phone's contract suite can
       // predict every role's status for every endpoint the app calls.
       "x-access": e.access,
+      // The module roles a signed-in door also opens to, and the module a door belongs to (403 MODULE_OFF while the school has it off).
+      ...(e.limitedRoles?.length ? { "x-limited-roles": e.limitedRoles } : {}),
+      ...(e.module ? { "x-module": e.module } : {}),
       responses: {
         "200": { description: "OK", content: { "application/json": { schema: zodToJsonSchema(e.response, { target: "openApi3" }) } } },
         "401": { description: "No or invalid session", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },
@@ -59,7 +62,7 @@ function build() {
           required: ["error"],
           properties: {
             error: { type: "string" },
-            code: { type: "string", enum: ["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER"] },
+            code: { type: "string", enum: ["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER", "MODULE_OFF"] },
             issues: { type: "object", additionalProperties: { type: "string" } },
             retryAfterSeconds: { type: "integer" },
           },

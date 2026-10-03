@@ -30,7 +30,13 @@ const TOKENS = {
   ADMIN: process.env.EDULINK_TOKEN_ADMIN,
   PRINCIPAL: process.env.EDULINK_TOKEN_PRINCIPAL,
   EXPERT: process.env.EDULINK_TOKEN_EXPERT,
+  // The module roles (3 Oct 2026), minted by `npm run zz:token -- DRIVER` and so on; skipped where CI mints none.
+  DRIVER: process.env.EDULINK_TOKEN_DRIVER,
+  LIBRARIAN: process.env.EDULINK_TOKEN_LIBRARIAN,
+  WARDEN: process.env.EDULINK_TOKEN_WARDEN,
+  ALUMNUS: process.env.EDULINK_TOKEN_ALUMNUS,
 };
+const MODULE_ROLES = ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"];
 const describeIf = BASE ? describe : describe.skip;
 
 function client(token: string | null) {
@@ -77,20 +83,23 @@ describeIf("the app's client against /api/v1", () => {
 });
 
 type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
-type Doc = { paths: Record<string, Record<string, { "x-access": Access }>> };
+type Doc = { paths: Record<string, Record<string, { "x-access": Access; "x-limited-roles"?: string[] }>> };
 
 describeIf("the role matrix, from the app's client", () => {
   const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
   const gets = [...new Set(callsInSource().filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
   const allowed = (path: string, role: string | null): "2xx" | 401 | 403 | "2xx-or-403" => {
-    const access = doc.paths[path]!.get!["x-access"];
+    const op = doc.paths[path]!.get!;
+    const access = op["x-access"];
     if (access === "anyone") return "2xx";
     if (role === null) return 401;
     // The operator's and the content team's endpoints: no school role opens them.
     if (access === "operator" || access === "app-admin") return 403;
     // An account door is decided by the person's memberships, which a role token does not say.
     if (access === "account") return "2xx-or-403";
-    if (access === "signed-in" || access.includes(role)) return "2xx";
+    // "signed-in" is every role but a module role's, which passes only where x-limited-roles names it.
+    if (access === "signed-in") return !MODULE_ROLES.includes(role) || (op["x-limited-roles"] ?? []).includes(role) ? "2xx" : 403;
+    if (access.includes(role)) return "2xx";
     return 403;
   };
   const actors: [string | null, string | null][] = [[null, null], ...Object.entries(TOKENS).filter(([, t]) => t).map(([r, t]) => [r, t!] as [string, string])];

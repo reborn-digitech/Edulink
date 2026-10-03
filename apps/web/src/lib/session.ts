@@ -8,6 +8,8 @@ import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
 import { forOwnSchools } from "./tenant-context";
 import { readJson } from "./json";
 import { bearerToken } from "./bearer";
+import { gateRequest } from "./role-gate";
+import { ROUTE_HEADER } from "./route-header";
 export { bearerToken };
 
 /**
@@ -248,7 +250,7 @@ export async function createApiSession(
  */
 const SEEN_THROTTLE_MS = 60 * 60_000;
 
-export const getSession = cache(async (): Promise<ActiveContext | null> => {
+const readSession = cache(async (): Promise<ActiveContext | null> => {
   const jar = await cookies();
   let token = jar.get(SESSION_COOKIE)?.value ?? null;
   let viaBearer = false;
@@ -331,7 +333,32 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
     }
   }
 
-  return {
+  // THE MODULE GATE (role-gate.ts): a driver, the library's desk, a warden or
+  // an alumnus reaches only the doors and pages its module names, and a door
+  // of a module the school has not switched on is refused for everyone. An
+  // /api/v1 refusal is thrown from here, before the handler has the session;
+  // a page outside a module role's own is served as if the session had no
+  // school, which every page gate answers by sending the person to choose.
+  let refusal: unknown = null;
+  try {
+    const verdict = await gateRequest((await headers()).get(ROUTE_HEADER), { role, schoolId });
+    if (verdict === "no-context") {
+      schoolId = null;
+      role = null;
+      membershipId = null;
+    }
+  } catch (error) {
+    // Kept beside the context rather than thrown from here: the refusal's
+    // sentence is written in the person's own language, which is read from
+    // this same session (i18n/server.ts), and a cached rejection would take
+    // that read down with it. `getSession` throws it; nothing is served.
+    refusal = error;
+    schoolId = null;
+    role = null;
+    membershipId = null;
+  }
+
+  const ctx: ActiveContext = {
     sessionId: session.id,
     membershipId,
     schoolId,
@@ -348,7 +375,33 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
       prefs: readJson<UserPrefs>(session.user.prefs, DEFAULT_PREFS),
     },
   };
+  if (refusal) refused.set(ctx, refusal);
+  return ctx;
 });
+
+/** The gate's refusal for a resolved session, if the request was refused (role-gate.ts). */
+const refused = new WeakMap<ActiveContext, unknown>();
+
+/**
+ * Resolves the current session — and throws the module gate's refusal
+ * (role-gate.ts: an /api/v1 door a module role may not pass, or a module
+ * the school has off), which every handler's `apiFailure` answers 403.
+ * The read itself is `cache`d, once per request.
+ */
+export async function getSession(): Promise<ActiveContext | null> {
+  const ctx = await readSession();
+  if (ctx && refused.has(ctx)) throw refused.get(ctx);
+  return ctx;
+}
+
+/**
+ * The session for choosing the language a request is answered in, refusal
+ * or not: a refused request is still answered in its person's language.
+ * i18n/server.ts alone.
+ */
+export async function sessionForLocale(): Promise<ActiveContext | null> {
+  return readSession();
+}
 
 /** Switches the active role/school on the current session. */
 export async function setActiveContext(

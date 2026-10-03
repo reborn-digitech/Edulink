@@ -100,7 +100,8 @@ export function FamilyBulletin() {
   const ourFeed = <Button label={t("bulletin.ourBulletin")} variant="secondary" onPress={() => setScope("school")} />;
   return (
     <Screen title={scope === "school" ? t("bulletin.title") : t("bulletin.globalFeed")} description={scope === "school" ? (first?.schoolName ?? undefined) : t("bulletin.globalIntro")} refreshing={active.isRefetching && !active.isFetchingNextPage} onRefresh={() => void active.refetch()}>
-      {role !== null && role !== "EXPERT" ? (
+      {/* Every school's shared posts are not a module role's to read: an alumnus reads their old school's feed. */}
+      {role !== null && role !== "EXPERT" && role !== "ALUMNUS" && role !== "DRIVER" && role !== "LIBRARIAN" && role !== "WARDEN" ? (
         <Chips
           label={t("bulletin.filter")}
           value={scope}
@@ -136,7 +137,7 @@ export function FamilyBulletin() {
             title={t("bulletin.emptyTitle")}
             body={t("bulletin.emptyBody")}
             action={
-              role === "PARENT" ? (
+              !canPost ? (
                 <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />
               ) : (
                 <Button label={newPostLabel} variant="secondary" onPress={compose} />

@@ -6,11 +6,12 @@
  * palette than a TypeScript object. This package mirrors it for the phone,
  * and a test in the web app reads globals.css and refuses a drift, so the two
  * cannot disagree for longer than one test run. Colours are hex; sizes are in
- * points (the web's rem × 16); the role accents are the four families the
- * web keys on data-role, in both themes.
+ * points (the web's rem × 16); the role accents are the eight families the
+ * web keys on data-role, in both themes (the last four, the module roles,
+ * since 3 October 2026).
  */
 export type Theme = "light" | "dark";
-export type RoleFamily = "teacher" | "student" | "parent" | "admin";
+export type RoleFamily = "teacher" | "student" | "parent" | "admin" | "driver" | "librarian" | "warden" | "alumnus";
 
 export type Palette = {
   bg: string;
@@ -71,12 +72,20 @@ export const accents: Record<Theme, Record<RoleFamily, Accent>> = {
     student: { accent: "#15803d", accentStrong: "#166534", accentSoft: "#f0fdf4", accentRing: "#4ade80", accentFg: "#ffffff" },
     parent: { accent: "#7e22ce", accentStrong: "#6b21a8", accentSoft: "#faf5ff", accentRing: "#c084fc", accentFg: "#ffffff" },
     admin: { accent: "#475569", accentStrong: "#334155", accentSoft: "#f8fafc", accentRing: "#94a3b8", accentFg: "#ffffff" },
+    driver: { accent: "#c2410c", accentStrong: "#9a3412", accentSoft: "#fff7ed", accentRing: "#fb923c", accentFg: "#ffffff" },
+    librarian: { accent: "#0f766e", accentStrong: "#115e59", accentSoft: "#f0fdfa", accentRing: "#2dd4bf", accentFg: "#ffffff" },
+    warden: { accent: "#4338ca", accentStrong: "#3730a3", accentSoft: "#eef2ff", accentRing: "#818cf8", accentFg: "#ffffff" },
+    alumnus: { accent: "#a16207", accentStrong: "#854d0e", accentSoft: "#fefce8", accentRing: "#facc15", accentFg: "#ffffff" },
   },
   dark: {
     teacher: { accent: "#60a5fa", accentStrong: "#93c5fd", accentSoft: "#10203a", accentRing: "#3b82f6", accentFg: "#06121f" },
     student: { accent: "#4ade80", accentStrong: "#86efac", accentSoft: "#0f2a1c", accentRing: "#22c55e", accentFg: "#04140b" },
     parent: { accent: "#c084fc", accentStrong: "#d8b4fe", accentSoft: "#221037", accentRing: "#a855f7", accentFg: "#14061f" },
     admin: { accent: "#94a3b8", accentStrong: "#cbd5e1", accentSoft: "#1e2635", accentRing: "#64748b", accentFg: "#0b0e15" },
+    driver: { accent: "#fb923c", accentStrong: "#fdba74", accentSoft: "#2b1608", accentRing: "#f97316", accentFg: "#1a0a02" },
+    librarian: { accent: "#2dd4bf", accentStrong: "#5eead4", accentSoft: "#0b2826", accentRing: "#14b8a6", accentFg: "#031513" },
+    warden: { accent: "#818cf8", accentStrong: "#a5b4fc", accentSoft: "#1a1c3d", accentRing: "#6366f1", accentFg: "#0c0d24" },
+    alumnus: { accent: "#facc15", accentStrong: "#fde047", accentSoft: "#2a2306", accentRing: "#eab308", accentFg: "#1a1500" },
   },
 };
 
@@ -122,6 +131,14 @@ export function familyFor(role: string | null | undefined): RoleFamily {
     case "ADMIN":
     case "PRINCIPAL":
       return "admin";
+    case "DRIVER":
+      return "driver";
+    case "LIBRARIAN":
+      return "librarian";
+    case "WARDEN":
+      return "warden";
+    case "ALUMNUS":
+      return "alumnus";
     default:
       return "teacher";
   }

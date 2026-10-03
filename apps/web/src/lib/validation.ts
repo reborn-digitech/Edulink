@@ -5,7 +5,7 @@ import {
   POST_CATEGORIES,
   POST_SCOPES,
   REACTION_KINDS,
-  SCHOOL_ROLES,
+  INVITABLE_ROLES,
 } from "./constants";
 import { isDateKey, isValidTimeZone } from "./dates";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
@@ -131,7 +131,8 @@ export const resetSchema = z.object({
 /* -------------------------------------------------------------------------- */
 
 export const inviteSchema = z.object({
-  role: z.enum(SCHOOL_ROLES),
+  // Never ALUMNUS: a former pupil's alumni membership is made by their departure alone.
+  role: z.enum(INVITABLE_ROLES),
   email: emailSchema.optional().or(z.literal("")),
   name: trimmed(0, 120).optional(),
   classId: z.string().cuid().optional().or(z.literal("")),
@@ -139,7 +140,7 @@ export const inviteSchema = z.object({
 });
 
 export const bulkInviteSchema = z.object({
-  role: z.enum(SCHOOL_ROLES),
+  role: z.enum(INVITABLE_ROLES),
   /** Raw CSV text. Parsed and validated row-by-row by parseInviteCsv. */
   csv: z.string().min(1, "refusal.pasteOneRow").max(500_000, "refusal.fileTooLarge"),
 });

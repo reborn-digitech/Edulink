@@ -114,4 +114,8 @@ export const ADMIN: Endpoint[] = [
   // Deciding the fixture's request is a one-way door, so no sampleBody: the sweep's empty body is refused (422) before the request is looked at, and the suite covers the decision.
   { method: "POST", path: "/api/v1/admin/leave/{leaveId}/decide", summary: "Approve or decline a leave request, arranging cover", access: ["ADMIN", "PRINCIPAL"], request: c.leaveDecideBodySchema, response: c.leaveDecidedSchema, emptyBodyStatus: 422, sample: (f) => (f.leaveRequestId ? `/api/v1/admin/leave/${f.leaveRequestId}/decide` : null) },
   { method: "GET", path: "/api/v1/admin/staff", summary: "The staff roster with records and leave balances", access: ["ADMIN", "PRINCIPAL"], request: c.adminStaffQuerySchema, response: c.adminStaffSchema },
+  // ---- /admin/settings/modules (3 Oct 2026) ---------------------------------
+  { method: "GET", path: "/api/v1/admin/modules", summary: "Every optional module and whether this school has it on", access: ["ADMIN", "PRINCIPAL"], response: c.schoolModulesSchema },
+  // Switching ALUMNI on where it is on already: a no-op, so the sweep's valid body changes nothing at Northgate (zz-fixtures switches every module on).
+  { method: "POST", path: "/api/v1/admin/modules", summary: "Switch one module on or off; the answer is every module as it now stands", access: ["ADMIN"], request: c.schoolModuleSwitchSchema, response: c.schoolModulesSchema, emptyBodyStatus: 422, sampleBody: () => ({ module: "ALUMNI", on: true }) },
 ];

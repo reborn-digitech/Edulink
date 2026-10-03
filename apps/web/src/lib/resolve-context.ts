@@ -57,11 +57,22 @@ async function resolveContextForUser(
     }
   }
 
-  const memberships = await db.membership.findMany({
+  const all = await db.membership.findMany({
     where: { userId, status: "ACTIVE", leftAt: null },
     select: { role: true, schoolId: true },
     orderBy: { joinedAt: "asc" },
   });
+  /**
+   * AN ALUMNUS ROW IS A WAY BACK, NOT A WAY IN (3 Oct 2026). A pupil who left
+   * keeps an ALUMNUS membership at the old school; one who moved to another
+   * school on the platform is a STUDENT there as well. Counting the alumnus
+   * row would send every transferred pupil to the chooser at every sign-in,
+   * so it is set aside: the person lands where they are now, and reaches
+   * the old school from the chooser. Only somebody with nothing else lands
+   * on their alumni home.
+   */
+  const memberships = all.filter((m) => m.role !== "ALUMNUS");
+  const alumni = all.filter((m) => m.role === "ALUMNUS");
 
   const guardianships = await db.guardianship.count({
     where: { parentUserId: userId, status: "ACTIVE" },
@@ -111,6 +122,10 @@ async function resolveContextForUser(
   // superuser check because an operator's own appadmin flag is inherited, not
   // their front door.
   if (operator?.isAppAdmin) return { role: null, schoolId: null, redirectTo: "/appadmin" };
+
+  // Left every school, and at least one keeps a place for them as an alumnus.
+  if (alumni.length > 1) return { role: null, schoolId: null, redirectTo: "/switch" };
+  if (alumni[0]) return { role: "ALUMNUS", schoolId: alumni[0].schoolId, redirectTo: ROLE_HOME.ALUMNUS };
 
   /**
    * AN ALUMNUS BELONGS TO NOTHING AND IS NOT NEW, which is the distinction this

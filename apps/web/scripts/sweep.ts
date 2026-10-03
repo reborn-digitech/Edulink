@@ -2571,8 +2571,19 @@ async function main() {
     update: { publishedAt: new Date() },
   });
 
+  // The four module roles (3 Oct 2026): a ZZ person in each, at this school, for the length of the walk — their homes, their account, and an alumnus's feed and inbox.
+  const moduleRoleUsers: string[] = [];
+  const moduleRoleActor = async (role: Role): Promise<Actor> => {
+    const email = `zz.sweep.${role.toLowerCase()}@edulink.test`;
+    const user = await db.user.upsert({ where: { email }, create: { email, name: `ZZ Sweep ${role.toLowerCase()}`, prefs: "{}", isTestFixture: true }, update: { isTestFixture: true } });
+    moduleRoleUsers.push(user.id);
+    await db.membership.upsert({ where: { userId_schoolId_role: { userId: user.id, schoolId: riverside.id, role } }, create: { userId: user.id, schoolId: riverside.id, role, status: "ACTIVE" }, update: { status: "ACTIVE", leftAt: null } });
+    return mint(email, role, riverside.id, `nav-${role.toLowerCase()}`);
+  };
+
   try {
     await everyNavLink(riverside.id, async (role) => {
+      if (role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS") return moduleRoleActor(role);
       if (role === "ADMIN") return admin;
       if (role === "TEACHER") return teacher;
       if (role === "STUDENT") return student;
@@ -2592,6 +2603,8 @@ async function main() {
     await db.expertProfile.deleteMany({ where: { userId: sweepExpertUser.id } });
     await db.session.deleteMany({ where: { userId: sweepExpertUser.id } });
     await db.user.deleteMany({ where: { id: sweepExpertUser.id } });
+    // The module-role people go with their memberships and sessions (both cascade from User).
+    if (moduleRoleUsers.length) await db.user.deleteMany({ where: { id: { in: moduleRoleUsers }, email: { startsWith: "zz.sweep." } } });
   }
 
   await mentorshipThread(riverside.id, parent, admin, otherAdmin);

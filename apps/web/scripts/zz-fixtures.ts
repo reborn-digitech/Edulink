@@ -46,6 +46,8 @@ import { config } from "dotenv";
 import { createHash } from "node:crypto";
 import { classCode, schoolCode, studentCode } from "../src/lib/codes";
 import { buildSweepDoors } from "./sweep-doors";
+import { openAlumnus } from "../src/lib/alumni-membership";
+import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 
 /** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
@@ -268,7 +270,7 @@ export async function upsertSchool(input: {
 }) {
   const existing = await db.school.findUnique({ where: { slug: input.slug } });
   if (existing) return existing;
-  return db.school.create({
+  const made = await db.school.create({
     data: {
       name: input.name,
       slug: input.slug,
@@ -287,6 +289,9 @@ export async function upsertSchool(input: {
       verifiedAt: new Date(),
     },
   });
+  // Every school starts with ALUMNI on, as createSchool and registration write it (3 Oct 2026).
+  await db.schoolModule.createMany({ data: DEFAULT_SCHOOL_MODULES.map((module) => ({ schoolId: made.id, module })), skipDuplicates: true });
+  return made;
 }
 
 export async function upsertClass(
@@ -550,6 +555,53 @@ async function buildNorthgate(ctx: Ctx) {
     school, unclaimed, claimedParents, teachers, subjectTeachers, idleTeachers,
     admin, principal, timetable,
   };
+}
+
+/* -------------------------------------------------------------------------- */
+/* the modules and their roles (3 Oct 2026)                                    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Switches modules on for a fixture school, as its admin would: Northgate has
+ * every module on, so the sweeps reach every module's doors; Southbank keeps
+ * the default (ALUMNI alone), which is where a MODULE_OFF refusal is tried
+ * (tests/modules.test.ts).
+ */
+export async function switchModulesOn(school: { id: string }, modules: readonly string[] = SCHOOL_MODULES, byUserId: string | null = null) {
+  await db.schoolModule.createMany({ data: modules.map((module) => ({ schoolId: school.id, module, enabledByUserId: byUserId })), skipDuplicates: true });
+  return db.schoolModule.count({ where: { schoolId: school.id } });
+}
+
+/**
+ * One person in each module role (3 Oct 2026): a bus driver, the library's
+ * desk and a warden as staff memberships, and an alumnus — a pupil who left
+ * last April, whose closed STUDENT membership and leaving record sit beside
+ * the open ALUMNUS one, exactly as recordDeparture leaves them. `tag` keeps
+ * the demo schools' names apart from Northgate's.
+ */
+export async function buildModuleRoles(
+  ctx: Ctx,
+  school: { id: string; name: string },
+  adminMembershipId: string,
+  spec: { domain: string; prefix: string; driver: string; librarian: string; warden: string; alumnus: { name: string; email: string; classId: string; grade: string; birthdate: Date } },
+) {
+  const staff = [
+    { email: `${spec.prefix}driver01@${spec.domain}`, name: spec.driver, role: "DRIVER", title: "Bus driver, route 1" },
+    { email: `${spec.prefix}librarian@${spec.domain}`, name: spec.librarian, role: "LIBRARIAN", title: "Librarian" },
+    { email: `${spec.prefix}warden@${spec.domain}`, name: spec.warden, role: "WARDEN", title: "Hostel warden" },
+  ];
+  const made: Record<string, string> = {};
+  for (const p of staff) {
+    const user = await upsertUser(ctx, p.email, p.name);
+    const membership = await upsertMembership(user.id, school.id, p.role, { title: p.title });
+    made[p.role] = membership.id;
+  }
+  const departed = await buildDepartures(ctx, school, adminMembershipId, {
+    leaver: { email: spec.alumnus.email, name: spec.alumnus.name, classId: spec.alumnus.classId, grade: spec.alumnus.grade, birthdate: spec.alumnus.birthdate, joinedOn: new Date("2020-06-15T04:00:00Z"), leftOn: new Date("2026-04-30T06:30:00Z"), destination: "Junior college, Pune", note: "Finished grade 10.", conduct: "GOOD" },
+    scheduled: null,
+  });
+  const alumnus = await db.membership.findFirst({ where: { schoolId: school.id, role: "ALUMNUS", user: { email: spec.alumnus.email } }, select: { id: true } });
+  return { driver: made.DRIVER!, librarian: made.LIBRARIAN!, warden: made.WARDEN!, alumnus: alumnus?.id ?? null, leaverRecordId: departed.recordId };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1895,6 +1947,8 @@ export async function buildDepartures(
   const enrolment = await db.enrollment.findUnique({ where: { classId_studentMembershipId: { classId: leaver.classId, studentMembershipId: membership.id } }, select: { id: true } });
   if (!enrolment) await db.enrollment.create({ data: { classId: leaver.classId, schoolId: school.id, studentMembershipId: membership.id, status: "REMOVED", enrolledAt: leaver.joinedOn, removedAt: leaver.leftOn } });
   if (!membership.leftAt) await db.membership.update({ where: { id: membership.id }, data: { leftAt: leaver.leftOn } });
+  // The leaver stays connected as an alumnus, as recordDeparture makes them (alumni-membership.ts).
+  await openAlumnus(db as unknown as Parameters<typeof openAlumnus>[0], user.id, school.id, membership.leftAt ?? leaver.leftOn);
   let record = await db.schoolRecord.findUnique({ where: { studentMembershipId: membership.id }, select: { id: true } });
   if (!record) {
     const klass = await db.class.findUniqueOrThrow({ where: { id: leaver.classId }, select: { name: true, section: true } });
@@ -2462,6 +2516,13 @@ async function main() {
   console.log(`  Sweep doors: ${doors.length ? doors.join(", ") : "none (Northgate's people not found)"}`);
   const operator = await buildOperator(ctx);
   const contentTeam = await buildContentTeam(ctx);
+  // The modules: every one on at Northgate, the four module roles there; Southbank and Banyan keep the default (ALUMNI).
+  const moduleCount = await switchModulesOn(northgate.school, SCHOOL_MODULES, northgate.admin.id);
+  const grade10 = await db.class.findFirstOrThrow({ where: { schoolId: northgate.school.id, gradeLevel: "10", archivedAt: null }, select: { id: true } });
+  const moduleRoles = await buildModuleRoles(ctx, northgate.school, adminMembership.id, {
+    domain: DOMAIN, prefix: "zz.", driver: "ZZ Ganesh Pawar", librarian: "ZZ Meera Joshi", warden: "ZZ Sudhir Patil",
+    alumnus: { name: "ZZ Kavya Shinde", email: `zz.alumni01@${DOMAIN}`, classId: grade10.id, grade: "10", birthdate: new Date("2010-03-12T00:00:00Z") },
+  });
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },
@@ -2505,6 +2566,7 @@ async function main() {
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered + headCover.covered} lesson(s) covered today (zz.subject1 absent, a free colleague on their first lesson, zz.principal on the next) — /admin/substitutions
      calendar    ${calendar.entries} entries for 2026–27 (holidays, the mid-term exam span, the annual day); ${rolls.numbered} roll numbers — /admin/calendar
+     modules     ${moduleCount} of ${SCHOOL_MODULES.length} on; zz.driver01, zz.librarian, zz.warden@${DOMAIN}; alumnus zz.alumni01@${DOMAIN} (left grade 10 in April 2026${moduleRoles.alumnus ? "" : ", alumnus row NOT found"}) — /driver, /library, /hostel, /alumni
      also        invite ${invite.status} for zz.invite1@${DOMAIN}; a remark thread (zz.teacher1 ↔ zz.parent01 about zz.pupil01); practice assignment for grade 6${practice.topic ? ` on "${practice.topic}"` : " (no bank imported: none)"}
 
   ── ZZ Southbank School (small) ──────────────────────────────────────

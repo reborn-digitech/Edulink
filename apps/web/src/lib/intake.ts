@@ -1,4 +1,5 @@
 import "server-only";
+import { closeAlumnus } from "./alumni-membership";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
@@ -323,6 +324,8 @@ export async function admitPupils(
             if (prior) {
               await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId } });
               await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId } });
+              // Back on the roll, so no longer an alumnus here (alumni-membership.ts).
+              await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], previous.userId, schoolId);
             }
             const membership = prior
               ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: newCode, joinedAt: new Date() }, select: { id: true } })

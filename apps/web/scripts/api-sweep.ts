@@ -19,6 +19,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
+import { permits } from "../src/lib/api-catalog/types";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
@@ -322,6 +323,12 @@ async function actors(): Promise<Record<Role, string>> {
     PARENT: await mint(guardian.parentUserId, "PARENT", null),
   };
   if (expert) out.EXPERT = await mint(expert.userId, "EXPERT", null);
+  // The module roles (3 Oct 2026), each at Northgate, which zz-fixtures gives every module: a driver, the library's desk, a warden and an alumnus.
+  const moduleActors: [Role, string][] = [["DRIVER", "zz.driver01@zz.test"], ["LIBRARIAN", "zz.librarian@zz.test"], ["WARDEN", "zz.warden@zz.test"], ["ALUMNUS", "zz.alumni01@zz.test"]];
+  for (const [role, email] of moduleActors) {
+    const member = await db.membership.findFirst({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+    if (member) out[role] = await mint(member.userId, role, school.id);
+  }
   return out as Record<Role, string>;
 }
 
@@ -354,7 +361,8 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // An account door is decided by the person's memberships, which a sweep
   // actor holding one role cannot be read for from here: let through or refused.
   if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
-  const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
+  // "signed-in" is every role but the four module roles, which pass only where `limitedRoles` names them (catalog types.ts).
+  const permitted = permits(e, role);
   if (!permitted) return 403;
   // The check-in takes no body, so its empty-body probe meets the calendar;
   // the substitution door's empty body is refused by the parser first (422),
@@ -497,7 +505,7 @@ async function crossProbe(mode: "school" | "person") {
       const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
       if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
       for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
-        if (Array.isArray(e.access) && !e.access.includes(role)) continue; // a role the door refuses anyway proves nothing here
+        if (!permits(e, role)) continue; // a role the door refuses anyway proves nothing here
         await check(e, role, path, body, "another school's ids");
       }
     }
@@ -682,7 +690,7 @@ async function main() {
       results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: want, got, ok });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
-      if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || (Array.isArray(e.access) && e.access.includes(role)))) {
+      if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && permits(e, role)) {
         const status = await hit(e, tokens[role], path, JSON.stringify(goodBody));
         const want = refusedOnClosedDay(e) ? [403] : [200, 201];
         results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: want, got: status, ok: want.includes(status) });

@@ -14,7 +14,7 @@ import { TeachingWeekForm } from "./teaching-week-form";
 import { SelfReadAgeForm } from "./self-read-age-form";
 import { parseTeachingDays } from "@/lib/dates";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
-import { BroomIcon, CalendarCheckIcon, EyeIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, CalendarCheckIcon, EyeIcon, PuzzlePieceIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -72,6 +72,20 @@ export default async function SettingsPage() {
             {school.code}
           </code>{" "}
           {t("settings.codeSuffix")}</>} />
+
+      {/* The optional modules (3 Oct 2026) have their own page: one switch each. */}
+      <Card>
+        <CardHeader
+          icon={<PuzzlePieceIcon weight="duotone" className="size-5" />}
+          title={t("modules.settingsCardTitle")}
+          description={t("modules.settingsCardBody")}
+        />
+        <CardBody>
+          <Link href="/admin/settings/modules" className="font-semibold text-accent-strong underline underline-offset-4">
+            {t("modules.open")}
+          </Link>
+        </CardBody>
+      </Card>
 
       <Card>
         <CardHeader

@@ -308,6 +308,8 @@ model School {
   /// without touching a school.
   commissionPartnerId    String?
   commissionPartner      CommissionPartner? @relation(fields: [commissionPartnerId], references: [id], onDelete: SetNull)
+  /// The optional parts of the school version this school has switched on (one row each; absence = off).
+  modules                SchoolModule[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -5286,4 +5288,30 @@ model PlatformTakedown {
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@index([takenDownAt])
+}
+
+/// A module of the school version this school has switched on: TRANSPORT,
+/// LIBRARY, HOSTEL, INVENTORY, PAYROLL or ALUMNI (SCHOOL_MODULES in
+/// packages/contracts). ONE ROW PER MODULE THAT IS ON; switching off deletes
+/// the row, so absence is "off" and there is no third state to read wrong.
+/// ALUMNI is written for every school at creation (and for the schools that
+/// existed by the migration of 3 October 2026). A table rather than a JSON
+/// column on School so that who switched it on and when are columns the
+/// audit can be checked against, and a module's own settings have a home
+/// that is the school's row under its own policy. The admin switches; every
+/// switch is an audit row (school.module.on / school.module.off).
+model SchoolModule {
+  id              String   @id @default(cuid())
+  schoolId        String
+  /// One of SCHOOL_MODULES.
+  module          String
+  enabledAt       DateTime @default(now())
+  /// Null for the rows the platform writes (a new school's ALUMNI, the migration's backfill).
+  enabledByUserId String?
+  /// The module's own settings, as JSON, for its builder to define; null until it has any.
+  settingsJson    String?
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, module])
 }

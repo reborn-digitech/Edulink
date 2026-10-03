@@ -30,6 +30,10 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 | sunrise.subject1@demo.relay.test | Farida Sheikh | Teacher · subject only | /teacher (timetable, no form class) |
 | sunrise.subject2@demo.relay.test | Rohit Patil | Teacher · subject only | /teacher (timetable, no form class) |
 | sunrise.spare1@demo.relay.test | Anjum Qureshi | Teacher · unattached | /teacher (empty state), /vacancies (has applied to the other school), /enquiries |
+| sunrise.pupil49@demo.relay.test | Ayaan Bhatt | Alumnus (left grade 8) | /alumni, /bulletin, /remarks, /record |
+| sunrise.driver01@demo.relay.test | Ramesh Gaikwad | Driver | /driver |
+| sunrise.librarian@demo.relay.test | Shalini Apte | Librarian | /library |
+| sunrise.warden@demo.relay.test | Prakash More | Warden | /hostel |
 
 ## Staff — Saraswati Vidya Mandir
 
@@ -46,6 +50,7 @@ Re-running the script is safe; it adds nothing the second time and resets every 
 | svm.subject1@demo.relay.test | Sheetal Ahire | Teacher · subject only | /teacher (timetable, no form class) |
 | svm.subject2@demo.relay.test | Ganesh Tambe | Teacher · subject only | /teacher (timetable, no form class) |
 | svm.spare1@demo.relay.test | Rupali Chavan | Teacher · unattached | /teacher (empty state), /vacancies (has applied to the other school), /enquiries |
+| svm.pupil49@demo.relay.test | Siddhesh Thakare | Alumnus (left grade 8) | /alumni, /bulletin, /remarks, /record |
 
 ## Pupils
 

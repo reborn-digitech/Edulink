@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
+import { ROUTE_HEADER } from "@/lib/route-header";
 
 /**
  * CORS for /api/v1 and for the files it names (/api/files), and only there,
@@ -30,7 +31,7 @@ function page(request: NextRequest): NextResponse {
   crypto.getRandomValues(bytes);
   const nonce = btoa(String.fromCharCode(...bytes));
   const policy = contentSecurityPolicy({ nonce, dev: process.env.NODE_ENV === "development" });
-  const headers = new Headers(request.headers);
+  const headers = routed(request);
   headers.set(NONCE_HEADER, nonce);
   headers.set("Content-Security-Policy", policy);
   const response = NextResponse.next({ request: { headers } });
@@ -52,8 +53,21 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (isPage(pathname)) return page(request);
   if (CORS_PATHS.test(pathname)) return cors(request);
-  if (LOCKED_PATHS.test(pathname)) return originLock(request) ?? NextResponse.next();
-  return NextResponse.next();
+  if (LOCKED_PATHS.test(pathname)) return originLock(request) ?? NextResponse.next({ request: { headers: routed(request) } });
+  return NextResponse.next({ request: { headers: routed(request) } });
+}
+
+/**
+ * The request's headers with the route the session's role gate reads
+ * (lib/route-header.ts), written here and never taken from the client: a
+ * module role (a driver, the library's desk, a warden, an alumnus) reaches
+ * only the doors and pages its module names, and the gate needs to know
+ * which one this is.
+ */
+function routed(request: NextRequest): Headers {
+  const headers = new Headers(request.headers);
+  headers.set(ROUTE_HEADER, `${request.method} ${request.nextUrl.pathname}`);
+  return headers;
 }
 
 /**
@@ -93,7 +107,7 @@ function cors(request: NextRequest) {
   }
   const refused = originLock(request, allowed);
   if (refused) return refused;
-  const response = NextResponse.next();
+  const response = NextResponse.next({ request: { headers: routed(request) } });
   if (allowed) {
     response.headers.set("Access-Control-Allow-Origin", origin);
     response.headers.set("Vary", "Origin");

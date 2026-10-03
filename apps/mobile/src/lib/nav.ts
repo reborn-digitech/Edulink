@@ -1,4 +1,4 @@
-import type { RoleCode } from "@edulink/contracts";
+import type { RoleCode, SchoolModuleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 
 /**
@@ -7,7 +7,12 @@ import type { TranslationKey } from "@edulink/i18n";
  * the app's own (expo-router), named after the web's paths so a notification
  * URL the server already writes maps across (see lib/links.ts).
  */
-export type Tab = { name: string; labelKey: TranslationKey; icon: string };
+/**
+ * `module` (3 Oct 2026): the tab exists only while the active school has that
+ * module on (/api/v1/me's `modules`); the layout hides it otherwise. A module
+ * builder adds a role's tabs and More entries with this field, as on the web.
+ */
+export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode };
 
 export const TABS: Record<RoleCode, Tab[]> = {
   TEACHER: [
@@ -47,6 +52,15 @@ export const TABS: Record<RoleCode, Tab[]> = {
     // Sessions and workshops with pupils (gigs): a primary of the expert's on the web, and their fourth tab here. For every other role it is a More entry.
     { name: "sessions", labelKey: "nav.sessions", icon: "users" },
   ],
+  // The module roles (3 Oct 2026): a home that says whether the module is on; a module builder adds the rest.
+  DRIVER: [{ name: "index", labelKey: "modules.transportName", icon: "bus" }],
+  LIBRARIAN: [{ name: "index", labelKey: "modules.libraryName", icon: "bookOpen" }],
+  WARDEN: [{ name: "index", labelKey: "modules.hostelName", icon: "bed" }],
+  // A former pupil reads the school's feed and writes to its staff.
+  ALUMNUS: [
+    { name: "index", labelKey: "modules.alumniName", icon: "graduationCap" },
+    { name: "messages", labelKey: "nav.messages", icon: "chat", module: "ALUMNI" },
+  ],
 };
 
 /** Every screen name any role has a tab for; the tab layout declares them all and hides the rest per role. */
@@ -61,7 +75,7 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  * repeated here: the bar already has them.
  */
 export type MenuGroup = "daily" | "school" | "running";
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 export const MENU_GROUP_KEY: Record<MenuGroup, TranslationKey> = { daily: "nav.groupDaily", school: "nav.groupSchool", running: "nav.groupRunning" };
 export const MENU_GROUPS: MenuGroup[] = ["daily", "school", "running"];
@@ -209,6 +223,15 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
+  DRIVER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  LIBRARIAN: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  WARDEN: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  ALUMNUS: [
+    { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin", module: "ALUMNI" },
+    // The leaving record lives on the web's /record; the phone's record screen is the family's form.
+    { labelKey: "modules.alumniRecord", icon: "fileText", group: "school", web: "/record" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+  ],
 };
 
 /**
@@ -326,9 +349,15 @@ export const HIDDEN_SCREENS = [
   "moderation",
 ] as const;
 
-/** The More sheet's entries for a role, grouped in the web's order. */
-export function menuFor(role: RoleCode): { group: MenuGroup; items: MenuItem[] }[] {
-  return MENU_GROUPS.map((group) => ({ group, items: MENU[role].filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
+/** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off is left out. */
+export function menuFor(role: RoleCode, modules?: readonly string[]): { group: MenuGroup; items: MenuItem[] }[] {
+  const shown = MENU[role].filter((item) => !item.module || !modules || modules.includes(item.module));
+  return MENU_GROUPS.map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
+}
+
+/** Whether a tab is drawn: always, unless it belongs to a module the school has off. */
+export function tabShown(tab: Tab, modules: readonly string[]): boolean {
+  return !tab.module || modules.includes(tab.module);
 }
 
 /**

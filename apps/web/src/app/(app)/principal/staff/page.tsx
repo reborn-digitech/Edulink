@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IdentificationCardIcon, NotebookIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { leaveBalancesFor, STAFF_ROLES } from "@/lib/staff-records";
+import { leaveBalancesFor, SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { readJsonArray } from "@/lib/json";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -47,7 +47,7 @@ export default async function PrincipalStaffPage({
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
 
   const allStaff = await db.membership.findMany({
-    where: { schoolId: ctx.schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
+    where: { schoolId: ctx.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
     select: {
       id: true,
       role: true,
@@ -62,7 +62,7 @@ export default async function PrincipalStaffPage({
 
   // The roster narrows by name, by role and by subject — a head looking
   // for "who else teaches Maths" scanned thirty cards for it.
-  const roleFilter = rawRole && (STAFF_ROLES as readonly string[]).includes(rawRole) ? rawRole : null;
+  const roleFilter = rawRole && (SCHOOL_STAFF_ROLES as readonly string[]).includes(rawRole) ? rawRole : null;
   const subjectCounts = new Map<string, number>();
   for (const member of allStaff) for (const subject of readJsonArray<string>(member.subjects)) subjectCounts.set(subject, (subjectCounts.get(subject) ?? 0) + 1);
   const subjectOptions = [...subjectCounts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
@@ -95,7 +95,7 @@ export default async function PrincipalStaffPage({
               value: roleFilter ?? "",
               options: [
                 { value: "", label: t("vacancies.filterAll"), count: allStaff.length },
-                ...STAFF_ROLES.map((role) => ({ value: role, label: t(ROLE_META[role].labelKey), count: allStaff.filter((m) => m.role === role).length })).filter((o) => o.count > 0),
+                ...SCHOOL_STAFF_ROLES.map((role) => ({ value: role, label: t(ROLE_META[role].labelKey), count: allStaff.filter((m) => m.role === role).length })).filter((o) => o.count > 0),
               ],
             },
             ...(subjectOptions.length > 1

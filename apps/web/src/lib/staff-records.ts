@@ -28,7 +28,16 @@ import { closedDayKeys, listHolidays } from "./holidays";
  * days, not four, the way a school counts them.
  */
 
+/** The teaching and office staff: who covers a lesson, who is appraised. */
 export const STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN"] as const;
+/**
+ * EVERYONE WHO WORKS AT THE SCHOOL: the teaching and office staff and, since
+ * the modules (3 Oct 2026), a driver, the library's desk and a warden. The
+ * staff register, the staff list and records, and leave are theirs; covering
+ * a lesson, an appraisal, signing a paper and two-step sign-in are not, and
+ * keep STAFF_ROLES. The alumnus is not staff.
+ */
+export const SCHOOL_STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN"] as const;
 const COUNTED_KINDS = ["CASUAL", "SICK"];
 
 export type StaffRecordView = {
@@ -133,7 +142,7 @@ export async function staffRecordFor(ctx: ActiveContext, membershipId: string): 
   const office = ctx.role === "ADMIN" || ctx.role === "PRINCIPAL";
   if (!own && !office) return null;
   const member = await db.membership.findFirst({
-    where: { id: membershipId, schoolId: ctx.schoolId, role: { in: [...STAFF_ROLES] } },
+    where: { id: membershipId, schoolId: ctx.schoolId, role: { in: [...SCHOOL_STAFF_ROLES] } },
     select: { id: true, staffRecord: true },
   });
   if (!member) return null;
@@ -148,7 +157,7 @@ export async function setStaffRecord(
   if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanEditStaffRecords");
   const schoolId = ctx.schoolId;
   const member = await db.membership.findFirst({
-    where: { id: membershipId, schoolId, role: { in: [...STAFF_ROLES] } },
+    where: { id: membershipId, schoolId, role: { in: [...SCHOOL_STAFF_ROLES] } },
     select: { id: true, userId: true },
   });
   if (!member) return { ok: false, errorKey: "staff.notStaffHere" };

@@ -1,10 +1,9 @@
 import "server-only";
 import { ROLE_HOME } from "./constants";
-import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { redirect } from "next/navigation";
 import { db } from "./db";
 import { getSession, type ActiveContext } from "./session";
-import type { Role } from "./constants";
+import { isModuleRole, type Role } from "./constants";
 
 /**
  * The authorization chokepoint.
@@ -20,27 +19,11 @@ import type { Role } from "./constants";
  * in the WHERE clause. A row from another tenant simply does not come back.
  */
 
-/**
- * ⚠ THE MESSAGE IS A KEY, and the constructor's type is what enforces it.
- *
- * These refusals are minted 200+ places deep in the libs and read by whoever
- * asked, in whatever language they read. So a throw site names WHAT went wrong
- * as a `TranslationKey` and the action boundary owns the words — the compiler
- * refuses a new English sentence here the same way it refuses a missing
- * dictionary entry. `message` still carries the key, so logs and `toThrow`
- * assertions read it directly; `key` is the typed alias boundaries use.
- */
-export class AccessError extends Error {
-  constructor(
-    readonly key: TranslationKey,
-    readonly code: "UNAUTHENTICATED" | "FORBIDDEN" | "NOT_FOUND" = "FORBIDDEN",
-    /** For the few refusals that carry a number or a name into the sentence. */
-    readonly vars?: Record<string, string | number>,
-  ) {
-    super(key);
-    this.name = "AccessError";
-  }
-}
+// The class lives in its own file, with nothing imported, so that the session's
+// role gate (role-gate.ts, read by session.ts, which this file imports) can
+// throw it without a cycle. Every import of it from here still works.
+export { AccessError } from "./access-error";
+import { AccessError } from "./access-error";
 
 /* -------------------------------------------------------------------------- */
 /* Session gates                                                               */
@@ -193,6 +176,17 @@ export async function requireExpert(): Promise<ActiveContext & { expertProfileId
 /* -------------------------------------------------------------------------- */
 
 /**
+ * The three asserts below fall through to "the whole school" for any role
+ * that is not a teacher or a pupil — right for the office and the head, and
+ * wrong for a driver, the library's desk, a warden or an alumnus, who reach
+ * no class, pupil or piece of work through them (3 Oct 2026). The session's
+ * gate already keeps those roles off these doors; this is the second lock.
+ */
+function refuseModuleRole(role: Role): void {
+  if (isModuleRole(role)) throw new AccessError("access.wrongRoleForThisAction");
+}
+
+/**
  * A class the caller may act on.
  *
  * Admins get any class in their school. Teachers get only classes they are
@@ -204,6 +198,7 @@ export async function assertClassAccess(
   classId: string,
   opts: { write?: boolean } = {},
 ) {
+  refuseModuleRole(ctx.role);
   const klass = await db.class.findFirst({
     where: {
       id: classId,
@@ -228,6 +223,7 @@ export async function assertStudentAccess(
   ctx: { schoolId: string; membershipId: string; role: Role },
   studentMembershipId: string,
 ) {
+  refuseModuleRole(ctx.role);
   const student = await db.membership.findFirst({
     where: {
       id: studentMembershipId,
@@ -278,6 +274,7 @@ export async function assertAssignmentAccess(
   ctx: { schoolId: string; membershipId: string; role: Role },
   assignmentId: string,
 ) {
+  refuseModuleRole(ctx.role);
   const assignment = await db.assignment.findFirst({
     where: {
       id: assignmentId,

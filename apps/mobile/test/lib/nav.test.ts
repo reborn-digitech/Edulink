@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { en } from "@edulink/i18n/en";
-import { ALL_TAB_SCREENS, HIDDEN_SCREENS, MENU, menuFor, QUICK, TABS } from "@/lib/nav";
+import { ALL_TAB_SCREENS, HIDDEN_SCREENS, MENU, menuFor, QUICK, TABS, tabShown } from "@/lib/nav";
 
 const flat = JSON.stringify(en);
 const hasKey = (key: string) => flat.includes(`"${key.split(".").pop()!}":`);
@@ -82,5 +82,22 @@ describe("the quick actions", () => {
         expect({ role, key: a.labelKey, present: hasKey(a.labelKey) && hasKey(a.hintKey) }).toEqual({ role, key: a.labelKey, present: true });
       }
     }
+  });
+});
+
+describe("the modules (3 Oct 2026)", () => {
+  it("gives every module role a home tab, and draws a module's tab only while the school has it on", () => {
+    for (const role of ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const) expect(TABS[role][0]!.name).toBe("index");
+    const messages = TABS.ALUMNUS.find((tab) => tab.name === "messages")!;
+    expect(tabShown(messages, ["ALUMNI"])).toBe(true);
+    expect(tabShown(messages, [])).toBe(false);
+    expect(tabShown(TABS.TEACHER[0]!, [])).toBe(true);
+  });
+
+  it("leaves a module's More entries out while the school has it off, and lists them all without a list", () => {
+    const labels = (modules?: string[]) => menuFor("ALUMNUS", modules).flatMap((g) => g.items.map((i) => i.labelKey));
+    expect(labels(["ALUMNI"])).toContain("nav.bulletin");
+    expect(labels([])).not.toContain("nav.bulletin");
+    expect(labels()).toContain("nav.bulletin");
   });
 });

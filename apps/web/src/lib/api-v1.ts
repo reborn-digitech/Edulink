@@ -3,6 +3,9 @@ import { NextResponse } from "next/server";
 import type { z } from "zod";
 import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
+import { ModuleOffError } from "@/lib/access-error";
+import { MODULE_META } from "@/lib/module-meta";
+import { enabledModules } from "@/lib/modules";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
@@ -28,6 +31,11 @@ import { kindOfStatus, recordError, reportError } from "@/lib/metrics";
  */
 export async function apiFailure(error: unknown, where: string): Promise<NextResponse> {
   const t = await getT();
+  // A module the school has not switched on: 403, said as MODULE_OFF, naming the module in the reader's language.
+  if (error instanceof ModuleOffError) {
+    recordError(kindOfStatus(403));
+    return envelope({ error: t("modules.refuseOff", { module: t(MODULE_META[error.module].nameKey) }), code: "MODULE_OFF" }, 403);
+  }
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
     const code: ApiError["code"] = status === 401 ? "UNAUTHORIZED" : status === 404 ? "NOT_FOUND" : "FORBIDDEN";
@@ -203,6 +211,8 @@ export async function meBody(ctx: ActiveContext) {
     },
     active: { schoolId: ctx.schoolId, role: ctx.role as Role | null, membershipId: ctx.membershipId },
     contexts,
+    // The ACTIVE school's switched-on modules; the phone hides a module's tabs by them.
+    modules: await enabledModules(ctx.schoolId),
   });
 }
 

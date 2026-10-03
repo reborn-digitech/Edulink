@@ -5,7 +5,7 @@ import { inboxSchema, notificationsSchema } from "@edulink/contracts";
 import { Icon, Loading, TabLabel } from "@/components";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
-import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS } from "@/lib/nav";
+import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS, tabShown } from "@/lib/nav";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -46,7 +46,9 @@ export default function AppLayout() {
     if (consolesFor(session.me).length > 0) return <Stack screenOptions={{ headerShown: false }} />;
     return <ChooseContext />;
   }
-  const tabs = TABS[role];
+  // A tab of a module the active school has off is not drawn (3 Oct 2026).
+  const modules = session.status === "signed-in" ? (session.me.modules ?? []) : [];
+  const tabs = TABS[role].filter((tab) => tabShown(tab, modules));
   return (
     <Tabs
       // "Back" from a screen opened from More goes to More, not to the first tab.

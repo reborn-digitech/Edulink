@@ -82,6 +82,12 @@ export default async function globalSetup() {
   const expert = await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } });
   if (expert) sessions.EXPERT = { role: "EXPERT", cookie: await mint(expert.userId, "EXPERT", null) };
 
+  // The module roles (3 Oct 2026), each a Northgate membership (zz-fixtures.ts buildModuleRoles), so the axe walk opens their homes.
+  for (const [role, email] of [["DRIVER", "zz.driver01@zz.test"], ["LIBRARIAN", "zz.librarian@zz.test"], ["WARDEN", "zz.warden@zz.test"], ["ALUMNUS", "zz.alumni01@zz.test"]] as const) {
+    const member = await db.membership.findFirst({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+    if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, school.id) };
+  }
+
   // The content team and the operator: the fixture's flagged accounts, with no school and no role, as they really sign in.
   const platform = async (key: string, email: string) => {
     const user = await db.user.findUnique({ where: { email }, select: { id: true } });

@@ -1,4 +1,5 @@
 import "server-only";
+import { closeAlumnus } from "./alumni-membership";
 import type {
   AdmissionStatus,
   ApplicationSave,
@@ -888,6 +889,8 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
     if (prior) {
       await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId: caller.schoolId } });
       await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId: caller.schoolId } });
+      // Back on the roll, so no longer an alumnus here (alumni-membership.ts).
+      if (existingUserId) await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], existingUserId, caller.schoolId);
     }
     const membership = prior
       ? await tx.membership.update({ where: { id: prior.id }, data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: code, joinedAt: new Date() }, select: { id: true } })

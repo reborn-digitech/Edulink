@@ -1,4 +1,5 @@
 import "server-only";
+import { closeAlumnus, openAlumnus } from "./alumni-membership";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { forOwnSchools, forSchool } from "./tenant-context";
@@ -263,6 +264,10 @@ export async function recordDeparture(
       data: { leftAt },
     });
 
+    // The pupil stays connected to the school as an ALUMNUS: a second
+    // membership, opened in the same transaction as the leaving (3 Oct 2026).
+    await openAlumnus(t as unknown as Parameters<typeof openAlumnus>[0], membership.userId, schoolId, leftAt);
+
     // Their enrolments end with them, on their last day. REMOVED rather than
     // deleted, exactly as `cohort.ts` does it, so last term's marks still have
     // a class to belong to.
@@ -424,14 +429,17 @@ export async function cancelScheduledDeparture(
  * notifications are indistinguishable from a hand-recorded one. A row whose
  * pupil already left by hand in the meantime is dropped as stale.
  */
-export async function runDueDepartures(now: Date = new Date()): Promise<{
+export async function runDueDepartures(now: Date = new Date(), scope: { schoolIds?: string[] } = {}): Promise<{
   executed: number;
   skippedStale: number;
   /** Due, but nobody to act: the school has no active admin. The row STAYS and is retried nightly — and counted here, per school, so /root/jobs/schools can say which school is silently accumulating a leaver nobody executes. It used to be a console.error and nothing else. */
   stuck: number;
   perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }>;
 }> {
+  // A test passes its own schools: with a far-future clock and no scope the
+  // job once executed the demo schools' scheduled leavers (3 Oct 2026).
   const due = await db.scheduledDeparture.findMany({
+    where: scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : undefined,
     include: { school: { select: { id: true, timezone: true } } },
     orderBy: { leaveOnKey: "asc" },
   });
@@ -748,7 +756,7 @@ export async function undoDeparture(
 
   const membership = await db.membership.findFirst({
     where: { id: membershipId, schoolId, role: "STUDENT" },
-    select: { id: true, leftAt: true },
+    select: { id: true, leftAt: true, userId: true },
   });
   if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
   if (!membership.leftAt) return { ok: false, errorKey: "refusal.notLeft" };
@@ -757,6 +765,8 @@ export async function undoDeparture(
     const t = tx as TenantTx;
     await t.schoolRecord.deleteMany({ where: { studentMembershipId: membership.id, schoolId } });
     await t.membership.update({ where: { id: membership.id }, data: { leftAt: null } });
+    // Back on the roll, so no longer an alumnus here.
+    await closeAlumnus(t as unknown as Parameters<typeof closeAlumnus>[0], membership.userId, schoolId);
   });
 
   await audit({

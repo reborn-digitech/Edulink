@@ -8,7 +8,7 @@
      data-theme="light|dark"      colour scheme
      data-contrast="normal|high"  WCAG 2.2 AAA-leaning contrast boost
      data-font="default|dyslexic" typeface + tracking + line-height
-     data-role="admin|teacher|student|parent"  accent family
+     data-role="admin|teacher|student|parent|driver|librarian|warden|alumnus"  accent family
 
    School branding overrides --accent-* at runtime via an inline style block,
    so a school's colour wins over the role accent without a rebuild. (§7)
@@ -207,6 +207,34 @@
   --accent-ring: #64748b;
   --accent-fg: #0b0e15;
 }
+[data-theme="light"]:not([data-contrast="high"]) [data-role="driver"] [data-chrome] {
+  --accent: #fb923c;
+  --accent-strong: #fdba74;
+  --accent-soft: #2b1608;
+  --accent-ring: #f97316;
+  --accent-fg: #1a0a02;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="librarian"] [data-chrome] {
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --accent-soft: #0b2826;
+  --accent-ring: #14b8a6;
+  --accent-fg: #031513;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="warden"] [data-chrome] {
+  --accent: #818cf8;
+  --accent-strong: #a5b4fc;
+  --accent-soft: #1a1c3d;
+  --accent-ring: #6366f1;
+  --accent-fg: #0c0d24;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="alumnus"] [data-chrome] {
+  --accent: #facc15;
+  --accent-strong: #fde047;
+  --accent-soft: #2a2306;
+  --accent-ring: #eab308;
+  --accent-fg: #1a1500;
+}
 [data-theme="light"]:not([data-contrast="high"]) [data-wash] {
   background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, var(--bg)) 0, var(--bg) 260px);
 }
@@ -243,6 +271,35 @@
   --accent-strong: #334155;
   --accent-soft: #f8fafc;
   --accent-ring: #94a3b8;
+  --accent-fg: #ffffff;
+}
+/* The four module roles (3 Oct 2026): a bus's orange, the library's teal, the hostel's indigo, the alumni's gold. */
+[data-role="driver"] {
+  --accent: #c2410c;
+  --accent-strong: #9a3412;
+  --accent-soft: #fff7ed;
+  --accent-ring: #fb923c;
+  --accent-fg: #ffffff;
+}
+[data-role="librarian"] {
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --accent-soft: #f0fdfa;
+  --accent-ring: #2dd4bf;
+  --accent-fg: #ffffff;
+}
+[data-role="warden"] {
+  --accent: #4338ca;
+  --accent-strong: #3730a3;
+  --accent-soft: #eef2ff;
+  --accent-ring: #818cf8;
+  --accent-fg: #ffffff;
+}
+[data-role="alumnus"] {
+  --accent: #a16207;
+  --accent-strong: #854d0e;
+  --accent-soft: #fefce8;
+  --accent-ring: #facc15;
   --accent-fg: #ffffff;
 }
 
@@ -286,6 +343,38 @@
   --accent-soft: #1e2635;
   --accent-ring: #64748b;
   --accent-fg: #0b0e15;
+}
+[data-theme="dark"][data-role="driver"],
+[data-theme="dark"] [data-role="driver"] {
+  --accent: #fb923c;
+  --accent-strong: #fdba74;
+  --accent-soft: #2b1608;
+  --accent-ring: #f97316;
+  --accent-fg: #1a0a02;
+}
+[data-theme="dark"][data-role="librarian"],
+[data-theme="dark"] [data-role="librarian"] {
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --accent-soft: #0b2826;
+  --accent-ring: #14b8a6;
+  --accent-fg: #031513;
+}
+[data-theme="dark"][data-role="warden"],
+[data-theme="dark"] [data-role="warden"] {
+  --accent: #818cf8;
+  --accent-strong: #a5b4fc;
+  --accent-soft: #1a1c3d;
+  --accent-ring: #6366f1;
+  --accent-fg: #0c0d24;
+}
+[data-theme="dark"][data-role="alumnus"],
+[data-theme="dark"] [data-role="alumnus"] {
+  --accent: #facc15;
+  --accent-strong: #fde047;
+  --accent-soft: #2a2306;
+  --accent-ring: #eab308;
+  --accent-fg: #1a1500;
 }
 }
 

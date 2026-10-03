@@ -332,13 +332,15 @@ describe("merging", () => {
     expect(records[0]!.schoolName).toBe(ORIGIN_NAME);
     expect(records[0]!.attendanceMarked).toBe(1);
 
-    // Both schools are on one account, and the old one is still marked left.
+    // Both schools are on one account, and the old one is still marked left —
+    // with the alumnus row the departure opened beside it, moved too (3 Oct 2026).
     const memberships = await db.membership.findMany({
       where: { userId: newUserId },
-      select: { schoolId: true, leftAt: true },
+      select: { schoolId: true, leftAt: true, role: true },
     });
-    expect(memberships).toHaveLength(2);
-    expect(memberships.find((m) => m.schoolId === originId)!.leftAt).not.toBeNull();
+    expect(memberships).toHaveLength(3);
+    expect(memberships.find((m) => m.schoolId === originId && m.role === "STUDENT")!.leftAt).not.toBeNull();
+    expect(memberships.find((m) => m.schoolId === originId && m.role === "ALUMNUS")!.leftAt).toBeNull();
     expect(memberships.find((m) => m.schoolId === destinationId)!.leftAt).toBeNull();
 
     // The membership row is the same row — so the register, the marks and the

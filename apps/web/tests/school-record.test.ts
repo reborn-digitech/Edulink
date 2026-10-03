@@ -679,10 +679,10 @@ describe("a last day in the future schedules, and the job executes it the mornin
     // Not due yet: nothing happens.
     // The job reads every school's schedule, and other suites leave rows of their own in the same database:
     // what is asserted is this school's line of the run, never the run's totals.
-    expect((await runDueDepartures(new Date("2999-03-31T12:00:00Z"))).perSchool[riversideId]).toBeUndefined();
+    expect((await runDueDepartures(new Date("2999-03-31T12:00:00Z"), { schoolIds: [riversideId] })).perSchool[riversideId]).toBeUndefined();
     expect((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).leftAt).toBeNull();
     // The morning after the last day, it runs.
-    const result = await runDueDepartures(new Date("2999-04-01T02:00:00Z"));
+    const result = await runDueDepartures(new Date("2999-04-01T02:00:00Z"), { schoolIds: [riversideId] });
     expect(result.executed).toBeGreaterThanOrEqual(1);
     // The run tells its work per school, for /root/jobs/schools.
     expect(result.perSchool[riversideId]).toEqual({ executed: 1 });
@@ -694,7 +694,7 @@ describe("a last day in the future schedules, and the job executes it the mornin
 
     // A schedule whose pupil was already recorded by hand is dropped as stale.
     await db.scheduledDeparture.create({ data: { schoolId: riversideId, membershipId: pupilMembershipId, leaveOnKey: "2999-04-02", reason: "LEFT" } });
-    const stale = await runDueDepartures(new Date("2999-04-10T02:00:00Z"));
+    const stale = await runDueDepartures(new Date("2999-04-10T02:00:00Z"), { schoolIds: [riversideId] });
     expect(stale.skippedStale).toBeGreaterThanOrEqual(1);
     expect(stale.perSchool[riversideId]).toEqual({ stale: 1 });
     expect(await db.scheduledDeparture.count({ where: { membershipId: pupilMembershipId } })).toBe(0);
@@ -722,7 +722,7 @@ describe("a last day in the future schedules, and the job executes it the mornin
       data: { schoolId: school.id, membershipId: membership.id, leaveOnKey: "2999-04-01", reason: "LEFT" },
     });
     try {
-      const out = await runDueDepartures(new Date("2999-04-10T02:00:00Z"));
+      const out = await runDueDepartures(new Date("2999-04-10T02:00:00Z"), { schoolIds: [riversideId, school.id] });
       expect(out.stuck).toBe(1);
       expect(out.perSchool[school.id]).toEqual({ stuck: 1 });
       // The intent is preserved, not dropped: the row survives to be retried.

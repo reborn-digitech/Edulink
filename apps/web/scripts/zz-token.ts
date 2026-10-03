@@ -19,13 +19,14 @@ async function main() {
     process.stderr.write(`purged ${gone.count}\n`);
     return;
   }
-  if (!role) throw new Error("usage: zz-token <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|OPERATOR|APPADMIN> | --purge");
+  if (!role) throw new Error("usage: zz-token <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|OPERATOR|APPADMIN> | --purge");
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   let userId: string;
   let schoolId: string | null = school.id;
   if (role === "ADMIN" || role === "PRINCIPAL") {
     userId = (await db.user.findUniqueOrThrow({ where: { email: role === "ADMIN" ? "zz.admin@zz.test" : "zz.principal@zz.test" } })).id;
-  } else if (role === "TEACHER" || role === "STUDENT") {
+  } else if (role === "TEACHER" || role === "STUDENT" || role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS") {
+    // The module roles (3 Oct 2026) are Northgate memberships like a teacher's: zz.driver01, zz.librarian, zz.warden, zz.alumni01 (zz-fixtures.ts buildModuleRoles).
     userId = (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null }, select: { userId: true } })).userId;
   } else if (role === "PARENT") {
     userId = (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, select: { parentUserId: true } })).parentUserId;

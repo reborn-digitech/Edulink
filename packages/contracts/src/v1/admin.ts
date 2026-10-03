@@ -14,8 +14,9 @@ const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
 const id = z.string().min(1).max(64);
 const trimmed = (min: number, max: number) => z.string().trim().min(min).max(max);
 
-const schoolRoleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"]);
-const staffRoleSchema = z.enum(["TEACHER", "PRINCIPAL", "ADMIN"]);
+const schoolRoleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"]);
+/** Staff for the staff register, leave and the staff list: the module roles that work at the school, not the alumnus. */
+const staffRoleSchema = z.enum(["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN"]);
 const examKindSchema = z.enum(["UNIT_TEST", "MID_TERM", "FINAL"]);
 const holidayKindSchema = z.enum(["HOLIDAY", "EXAM", "EVENT"]);
 const periodKindSchema = z.enum(["LESSON", "BREAK"]);
@@ -163,8 +164,11 @@ export const adminInvitesSchema = z.object({
 });
 export type AdminInvites = z.infer<typeof adminInvitesSchema>;
 
+/** Who the office may invite: every school role but the alumnus, who is made only by a departure. */
+const invitableRoleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN"]);
+
 export const inviteCreateBodySchema = z.object({
-  role: schoolRoleSchema,
+  role: invitableRoleSchema,
   /** A pasted list or CSV: one email per line, optionally "name, email, subjects". */
   csv: z.string().min(1).max(500_000),
   classId: id.optional(),

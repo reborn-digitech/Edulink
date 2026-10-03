@@ -41,7 +41,8 @@
               "NOT_FOUND",
               "CONFLICT",
               "RATE_LIMITED",
-              "SERVER"
+              "SERVER",
+              "MODULE_OFF"
             ]
           },
           "issues": {
@@ -99,7 +100,11 @@
                                 "TEACHER",
                                 "STUDENT",
                                 "PARENT",
-                                "EXPERT"
+                                "EXPERT",
+                                "DRIVER",
+                                "LIBRARIAN",
+                                "WARDEN",
+                                "ALUMNUS"
                               ],
                               "nullable": true
                             }
@@ -353,7 +358,11 @@
                                 "TEACHER",
                                 "STUDENT",
                                 "PARENT",
-                                "EXPERT"
+                                "EXPERT",
+                                "DRIVER",
+                                "LIBRARIAN",
+                                "WARDEN",
+                                "ALUMNUS"
                               ],
                               "nullable": true
                             }
@@ -506,7 +515,11 @@
                             "TEACHER",
                             "STUDENT",
                             "PARENT",
-                            "EXPERT"
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         }
@@ -650,7 +663,11 @@
                                 "TEACHER",
                                 "STUDENT",
                                 "PARENT",
-                                "EXPERT"
+                                "EXPERT",
+                                "DRIVER",
+                                "LIBRARIAN",
+                                "WARDEN",
+                                "ALUMNUS"
                               ],
                               "nullable": true
                             }
@@ -808,7 +825,11 @@
                             "TEACHER",
                             "STUDENT",
                             "PARENT",
-                            "EXPERT"
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         }
@@ -908,13 +929,19 @@
     "/api/v1/auth/logout": {
       "post": {
         "summary": "Revoke this session",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -984,13 +1011,19 @@
     "/api/v1/me": {
       "get": {
         "summary": "Who I am, where I belong, what is active",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1066,7 +1099,11 @@
                             "TEACHER",
                             "STUDENT",
                             "PARENT",
-                            "EXPERT"
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         },
@@ -1106,6 +1143,21 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "modules": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "TRANSPORT",
+                          "LIBRARY",
+                          "HOSTEL",
+                          "INVENTORY",
+                          "PAYROLL",
+                          "ALUMNI"
+                        ]
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -1164,13 +1216,19 @@
     "/api/v1/me/context": {
       "post": {
         "summary": "Switch the active school and role",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1246,7 +1304,11 @@
                             "TEACHER",
                             "STUDENT",
                             "PARENT",
-                            "EXPERT"
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         },
@@ -1286,6 +1348,21 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "modules": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "TRANSPORT",
+                          "LIBRARY",
+                          "HOSTEL",
+                          "INVENTORY",
+                          "PAYROLL",
+                          "ALUMNI"
+                        ]
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -1359,7 +1436,11 @@
                       "TEACHER",
                       "STUDENT",
                       "PARENT",
-                      "EXPERT"
+                      "EXPERT",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN",
+                      "ALUMNUS"
                     ]
                   }
                 },
@@ -1377,13 +1458,19 @@
     "/api/v1/me/sessions": {
       "get": {
         "summary": "My signed-in devices",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1481,13 +1568,19 @@
     "/api/v1/me/sessions/{sessionId}": {
       "delete": {
         "summary": "Sign a device out",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1567,13 +1660,19 @@
     "/api/v1/me/devices": {
       "post": {
         "summary": "Register this device for push",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1673,13 +1772,19 @@
       },
       "delete": {
         "summary": "Stop push to this device",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1770,13 +1875,19 @@
     "/api/v1/events": {
       "get": {
         "summary": "Live events for this session (server-sent events)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -1846,7 +1957,7 @@
     "/api/v1/files/{fileId}/link": {
       "post": {
         "summary": "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -2064,13 +2175,16 @@
     "/api/v1/messages": {
       "post": {
         "summary": "Send one message into a room",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2768,7 +2882,11 @@
                             "ADMIN",
                             "PRINCIPAL",
                             "TEACHER",
-                            "STUDENT"
+                            "STUDENT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         },
@@ -2881,7 +2999,11 @@
                       "ADMIN",
                       "PRINCIPAL",
                       "TEACHER",
-                      "STUDENT"
+                      "STUDENT",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN",
+                      "ALUMNUS"
                     ]
                   },
                   "status": {
@@ -3099,7 +3221,11 @@
                       "ADMIN",
                       "PRINCIPAL",
                       "TEACHER",
-                      "STUDENT"
+                      "STUDENT",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN",
+                      "ALUMNUS"
                     ]
                   },
                   "q": {
@@ -3273,7 +3399,10 @@
                       "ADMIN",
                       "PRINCIPAL",
                       "TEACHER",
-                      "STUDENT"
+                      "STUDENT",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN"
                     ]
                   },
                   "csv": {
@@ -10231,7 +10360,10 @@
                     "enum": [
                       "TEACHER",
                       "PRINCIPAL",
-                      "ADMIN"
+                      "ADMIN",
+                      "DRIVER",
+                      "LIBRARIAN",
+                      "WARDEN"
                     ]
                   },
                   "subject": {
@@ -10239,6 +10371,246 @@
                     "maxLength": 80
                   }
                 },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/modules": {
+      "get": {
+        "summary": "Every optional module and whether this school has it on",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "modules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "module": {
+                            "type": "string",
+                            "enum": [
+                              "TRANSPORT",
+                              "LIBRARY",
+                              "HOSTEL",
+                              "INVENTORY",
+                              "PAYROLL",
+                              "ALUMNI"
+                            ]
+                          },
+                          "on": {
+                            "type": "boolean"
+                          },
+                          "enabledAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "module",
+                          "on",
+                          "enabledAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "modules"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Switch one module on or off; the answer is every module as it now stands",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "modules": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "module": {
+                            "type": "string",
+                            "enum": [
+                              "TRANSPORT",
+                              "LIBRARY",
+                              "HOSTEL",
+                              "INVENTORY",
+                              "PAYROLL",
+                              "ALUMNI"
+                            ]
+                          },
+                          "on": {
+                            "type": "boolean"
+                          },
+                          "enabledAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "module",
+                          "on",
+                          "enabledAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "modules"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "module": {
+                    "type": "string",
+                    "enum": [
+                      "TRANSPORT",
+                      "LIBRARY",
+                      "HOSTEL",
+                      "INVENTORY",
+                      "PAYROLL",
+                      "ALUMNI"
+                    ]
+                  },
+                  "on": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "module",
+                  "on"
+                ],
                 "additionalProperties": false
               }
             }
@@ -24423,13 +24795,16 @@
     "/api/v1/shared/bulletin": {
       "get": {
         "summary": "The school feed, filtered and cursor paged",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -24589,7 +24964,11 @@
                               "TEACHER",
                               "STUDENT",
                               "PARENT",
-                              "EXPERT"
+                              "EXPERT",
+                              "DRIVER",
+                              "LIBRARIAN",
+                              "WARDEN",
+                              "ALUMNUS"
                             ],
                             "nullable": true
                           },
@@ -24744,7 +25123,7 @@
       },
       "post": {
         "summary": "Compose a post (media ids from POST /api/v1/uploads)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -25147,13 +25526,16 @@
     "/api/v1/shared/bulletin/{postId}": {
       "get": {
         "summary": "One post with its comments and reactions",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -25310,7 +25692,11 @@
                             "TEACHER",
                             "STUDENT",
                             "PARENT",
-                            "EXPERT"
+                            "EXPERT",
+                            "DRIVER",
+                            "LIBRARIAN",
+                            "WARDEN",
+                            "ALUMNUS"
                           ],
                           "nullable": true
                         }
@@ -25531,7 +25917,7 @@
     "/api/v1/shared/bulletin/{postId}/react": {
       "post": {
         "summary": "Toggle a reaction on a post",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -25642,7 +26028,7 @@
     "/api/v1/shared/bulletin/{postId}/comments": {
       "post": {
         "summary": "Comment on a post; a pupil's is held for review",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -26620,13 +27006,19 @@
     "/api/v1/shared/inbox": {
       "get": {
         "summary": "Conversations and remark threads in one list",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -26673,7 +27065,11 @@
                                     "TEACHER",
                                     "STUDENT",
                                     "PARENT",
-                                    "EXPERT"
+                                    "EXPERT",
+                                    "DRIVER",
+                                    "LIBRARIAN",
+                                    "WARDEN",
+                                    "ALUMNUS"
                                   ],
                                   "nullable": true
                                 }
@@ -26840,13 +27236,16 @@
     "/api/v1/shared/conversations/{conversationId}": {
       "get": {
         "summary": "A conversation's messages; opening it marks it read",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -26888,7 +27287,11 @@
                               "TEACHER",
                               "STUDENT",
                               "PARENT",
-                              "EXPERT"
+                              "EXPERT",
+                              "DRIVER",
+                              "LIBRARIAN",
+                              "WARDEN",
+                              "ALUMNUS"
                             ],
                             "nullable": true
                           }
@@ -27022,13 +27425,16 @@
     "/api/v1/shared/conversations": {
       "post": {
         "summary": "Open (or find) the room with one person at one school",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -27123,7 +27529,7 @@
     "/api/v1/shared/threads/{threadId}": {
       "get": {
         "summary": "A remark thread about a pupil; opening it marks it read",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -27318,7 +27724,7 @@
     "/api/v1/shared/threads/{threadId}/reply": {
       "post": {
         "summary": "Reply in a remark thread",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -27422,7 +27828,7 @@
     "/api/v1/shared/people": {
       "get": {
         "summary": "Who I may write to at a school",
-        "description": "Roles: ADMIN, PRINCIPAL, TEACHER, STUDENT, PARENT.",
+        "description": "Roles: ADMIN, PRINCIPAL, TEACHER, STUDENT, PARENT, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -27433,7 +27839,8 @@
           "PRINCIPAL",
           "TEACHER",
           "STUDENT",
-          "PARENT"
+          "PARENT",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -27492,7 +27899,11 @@
                               "TEACHER",
                               "STUDENT",
                               "PARENT",
-                              "EXPERT"
+                              "EXPERT",
+                              "DRIVER",
+                              "LIBRARIAN",
+                              "WARDEN",
+                              "ALUMNUS"
                             ]
                           },
                           "detail": {
@@ -27568,13 +27979,19 @@
     "/api/v1/shared/notifications": {
       "get": {
         "summary": "My notifications, newest first, cursor paged",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -27693,13 +28110,19 @@
     "/api/v1/shared/notifications/{notificationId}/read": {
       "post": {
         "summary": "Mark one of my notifications read",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -27779,13 +28202,19 @@
     "/api/v1/shared/notifications/read-all": {
       "post": {
         "summary": "Mark all my notifications read",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -27853,7 +28282,7 @@
     "/api/v1/shared/competitions": {
       "get": {
         "summary": "The school's and the platform's competitions",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -28084,7 +28513,7 @@
     "/api/v1/shared/competitions/{competitionId}": {
       "get": {
         "summary": "One competition, my entry, and the schools' board",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -28570,7 +28999,7 @@
     "/api/v1/shared/enquiries": {
       "get": {
         "summary": "Enquiries I opened, and my school's inbox",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -28693,7 +29122,7 @@
       },
       "post": {
         "summary": "Ask a school about admission or a vacancy",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -28803,7 +29232,7 @@
     "/api/v1/shared/enquiries/{enquiryId}": {
       "get": {
         "summary": "One enquiry thread",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -28955,7 +29384,7 @@
     "/api/v1/shared/enquiries/{enquiryId}/reply": {
       "post": {
         "summary": "Reply in an enquiry thread",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -29059,7 +29488,7 @@
     "/api/v1/shared/mentoring": {
       "get": {
         "summary": "My mentorships, and the requests waiting on the office",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -29222,7 +29651,7 @@
     "/api/v1/shared/mentoring/{threadId}": {
       "get": {
         "summary": "One mentorship and its messages",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -29378,7 +29807,7 @@
     "/api/v1/shared/mentoring/{threadId}/messages": {
       "post": {
         "summary": "The mentor or the pupil writes",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -31407,7 +31836,7 @@
     "/api/v1/uploads": {
       "post": {
         "summary": "Upload one file (multipart `file`); read it back via /api/files/{fileId}",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -31624,7 +32053,7 @@
     "/api/v1/app/report": {
       "post": {
         "summary": "Report a problem from the app, or the app's own crash report; answers a reference the person can quote",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -31773,7 +32202,7 @@
     "/api/v1/search": {
       "get": {
         "summary": "One search across the people, posts, messages, papers and pages the caller may already see; `q` two to eighty characters",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -40375,7 +40804,7 @@
     "/api/v1/community/mentoring/options": {
       "get": {
         "summary": "What mentoring set-up offers me: pairing lists (staff), the mentors I may ask (a pupil)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -41610,7 +42039,7 @@
     "/api/v1/community/link-child": {
       "get": {
         "summary": "The children this account is already linked to, and its claims still waiting or declined",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -41740,7 +42169,7 @@
       },
       "post": {
         "summary": "Ask to be linked to a child by student code and date of birth (rate-limited per caller and per code); the claim waits for the office or a guardian the child already has",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -46698,13 +47127,19 @@
     "/api/v1/account": {
       "get": {
         "summary": "My account: names, how I sign in, my preferences",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -46905,13 +47340,19 @@
     "/api/v1/account/prefs": {
       "post": {
         "summary": "Save preferences; a key left out stays as it was",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47067,13 +47508,19 @@
     "/api/v1/account/locale": {
       "post": {
         "summary": "Change my language (prefs.locale)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47169,13 +47616,19 @@
     "/api/v1/account/avatar": {
       "post": {
         "summary": "Set my avatar to one of the preset drawings",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47266,13 +47719,19 @@
     "/api/v1/account/devices/sign-out": {
       "post": {
         "summary": "Sign one of my other devices out (this one is a 403)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47363,13 +47822,19 @@
     "/api/v1/account/devices/sign-out-others": {
       "post": {
         "summary": "Sign every other device out",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47459,13 +47924,19 @@
     "/api/v1/account/mobile/code": {
       "post": {
         "summary": "Text a code to a new mobile number; nothing is saved yet (429 with Retry-After at the limit)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47560,13 +48031,19 @@
     "/api/v1/account/mobile/confirm": {
       "post": {
         "summary": "The code that came back puts the number on the account",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47657,13 +48134,19 @@
     "/api/v1/account/mobile": {
       "delete": {
         "summary": "Take my mobile number off the account",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47755,13 +48238,19 @@
     "/api/v1/account/email/code": {
       "post": {
         "summary": "Email a code to a new address; nothing changes yet (429 with Retry-After at the limit)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47855,13 +48344,19 @@
     "/api/v1/account/email/confirm": {
       "post": {
         "summary": "The code that came back moves the address; the old one is told",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -47980,7 +48475,11 @@
                         "TEACHER",
                         "STUDENT",
                         "PARENT",
-                        "EXPERT"
+                        "EXPERT",
+                        "DRIVER",
+                        "LIBRARIAN",
+                        "WARDEN",
+                        "ALUMNUS"
                       ]
                     },
                     "classes": {
@@ -48436,13 +48935,19 @@
     "/api/v1/account/totp": {
       "get": {
         "summary": "Two-step sign-in: whether it is on for me, and whether I may turn it on",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -48609,13 +49114,19 @@
     "/api/v1/account/totp/confirm": {
       "post": {
         "summary": "One right code from the app turns two-step sign-in on and answers the eight recovery codes, this once",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -48708,13 +49219,19 @@
     "/api/v1/account/totp/disable": {
       "post": {
         "summary": "A code from the app, or a recovery code, turns two-step sign-in off",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's; of those, DRIVER, LIBRARIAN, WARDEN, ALUMNUS.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": "signed-in",
+        "x-limited-roles": [
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "ALUMNUS"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -50574,7 +51091,7 @@
     "/api/v1/join/lookup": {
       "post": {
         "summary": "What a school or class code is: the school's name, and the class's for a class code (422 with the sentence on `code`; 429 with Retry-After once the caller has guessed too often)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -50680,7 +51197,7 @@
     "/api/v1/join": {
       "post": {
         "summary": "Ask to join the school (and class) a code names, as a pupil on this account; the request waits for the office or the class's teacher and nothing of the school opens until then",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -50786,7 +51303,7 @@
     "/api/v1/join/requests": {
       "get": {
         "summary": "My own requests to join: waiting, not accepted (with what the school said), or expired after thirty days, newest first",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -62243,7 +62760,7 @@
     "/api/v1/shared/bulletin/{postId}/ack": {
       "post": {
         "summary": "The one tap a circular asks for: seen and understood (idempotent)",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []
@@ -87175,7 +87692,7 @@
     "/api/v1/shared/schools/{schoolId}/admissions": {
       "get": {
         "summary": "What a family sees on a school's page: the open cycle with its grades, seats left, documents and notice, and the reader's own applications there",
-        "description": "Any signed-in session.",
+        "description": "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).",
         "security": [
           {
             "bearer": []

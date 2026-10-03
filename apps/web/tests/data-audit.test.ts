@@ -496,8 +496,10 @@ d("STORED copies against their source rows", () => {
     for (const s of schools) {
       const bad = await db.quizMastery.count({ where: { schoolId: s.id, correctCount: { gt: db.quizMastery.fields.seenCount } } });
       if (bad) note("quiz", "FAIL", s.name, `${bad} mastery row(s) have more right answers than questions seen`);
-      // A mastery row is written with the first answer, so an attempt that was opened and never answered has none by design.
-      const orphan = await db.$queryRaw<{ n: bigint }[]>`select count(*)::bigint n from (select distinct a."studentMembershipId", a."topicId" from "QuizAttempt" a where a."schoolId" = ${s.id} and exists (select 1 from "QuizResponse" r where r."attemptId" = a.id) and not exists (select 1 from "QuizMastery" m where m."studentMembershipId" = a."studentMembershipId" and m."topicId" = a."topicId")) x`;
+      // A mastery row is written with the first ANSWER, so an attempt that was opened and never answered has none by design — and
+      // a solution revealed before any answer leaves a response row with no chosen index (revealSolution), which is not an answer
+      // either: a demo pupil did exactly that on 3 Oct 2026 and the check read it as an orphan.
+      const orphan = await db.$queryRaw<{ n: bigint }[]>`select count(*)::bigint n from (select distinct a."studentMembershipId", a."topicId" from "QuizAttempt" a where a."schoolId" = ${s.id} and exists (select 1 from "QuizResponse" r where r."attemptId" = a.id and r."chosenIndex" is not null) and not exists (select 1 from "QuizMastery" m where m."studentMembershipId" = a."studentMembershipId" and m."topicId" = a."topicId")) x`;
       if (Number(orphan[0]?.n ?? 0)) note("quiz", "FAIL", s.name, `${orphan[0]?.n} pupil/topic pair(s) have answered attempts but no mastery row`);
       const unanswered = await db.$queryRaw<{ n: bigint }[]>`select count(*)::bigint n from "QuizAttempt" a where a."schoolId" = ${s.id} and not exists (select 1 from "QuizResponse" r where r."attemptId" = a.id)`;
       if (Number(unanswered[0]?.n ?? 0)) note("quiz", "INFO", s.name, `${unanswered[0]?.n} attempt(s) were opened and never answered`);

@@ -69,6 +69,11 @@ import { ImageIcon } from "phosphor-react-native/src/icons/Image";
 import { ReceiptIcon } from "phosphor-react-native/src/icons/Receipt";
 import { ChatsCircleIcon } from "phosphor-react-native/src/icons/ChatsCircle";
 import { FirstAidIcon } from "phosphor-react-native/src/icons/FirstAid";
+import { BusIcon } from "phosphor-react-native/src/icons/Bus";
+import { BookOpenIcon } from "phosphor-react-native/src/icons/BookOpen";
+import { BedIcon } from "phosphor-react-native/src/icons/Bed";
+import { GraduationCapIcon } from "phosphor-react-native/src/icons/GraduationCap";
+import { PuzzlePieceIcon } from "phosphor-react-native/src/icons/PuzzlePiece";
 
 /**
  * The web's nav icon names (lib/nav.ts) in Phosphor — the same family the web
@@ -122,6 +127,12 @@ const MAP = {
   chats: ChatsCircleIcon,
   firstAid: FirstAidIcon,
   circle: CircleIcon,
+  // The module roles' homes (3 Oct 2026), named as on the web: transport, the library, the hostel, the alumni; and a module switched off.
+  bus: BusIcon,
+  bookOpen: BookOpenIcon,
+  bed: BedIcon,
+  graduationCap: GraduationCapIcon,
+  puzzle: PuzzlePieceIcon,
 } as const;
 
 export type IconName = keyof typeof MAP;

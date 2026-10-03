@@ -1594,6 +1594,15 @@ CREATE POLICY "LessonPlanTemplate_tenant_isolation" ON "LessonPlanTemplate"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- SchoolModule
+ALTER TABLE "SchoolModule" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SchoolModule" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SchoolModule_tenant_isolation" ON "SchoolModule";
+DROP POLICY IF EXISTS "SchoolModule_readable" ON "SchoolModule";
+CREATE POLICY "SchoolModule_tenant_isolation" ON "SchoolModule"
+  USING (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'))
+  WITH CHECK (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1'));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

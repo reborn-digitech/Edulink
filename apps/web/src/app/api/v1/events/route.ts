@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { getSession, type ActiveContext } from "@/lib/session";
 import { channel, subscribe } from "@/lib/realtime";
-import { teacherClassIds } from "@/lib/tenancy";
+import { AccessError, teacherClassIds } from "@/lib/tenancy";
 
 /**
  * GET /api/v1/events — server-sent events for this session.
@@ -44,7 +44,10 @@ async function channelsFor(ctx: ActiveContext): Promise<string[]> {
     for (const classId of await teacherClassIds(ctx.schoolId, ctx.membershipId)) channels.push(channel.class(classId));
     return channels;
   }
-  if (ctx.schoolId && ctx.membershipId) channels.push(channel.school(ctx.schoolId));
+  // The office and the head hear the school. Named, not "everyone else": a
+  // driver, the library's desk, a warden or an alumnus hears their own
+  // channel only until their module says otherwise.
+  if ((ctx.role === "ADMIN" || ctx.role === "PRINCIPAL") && ctx.schoolId && ctx.membershipId) channels.push(channel.school(ctx.schoolId));
   return channels;
 }
 
@@ -60,7 +63,12 @@ const RECHECK_EVERY_TICKS = 2;
 const KEEPALIVE_MS = Number(process.env.EVENTS_KEEPALIVE_MS) > 0 ? Number(process.env.EVENTS_KEEPALIVE_MS) : 25_000;
 
 export async function GET(request: Request) {
-  const ctx = await getSession();
+  // The session's gate may refuse a module role here (role-gate.ts): a 403, not a 500.
+  const ctx = await getSession().catch((error: unknown) => {
+    if (error instanceof AccessError) return "refused" as const;
+    throw error;
+  });
+  if (ctx === "refused") return new Response(null, { status: 403 });
   if (!ctx) return new Response(null, { status: 401 });
   if (request.signal.aborted) return new Response(null, { status: 204 });
   if ((open.get(ctx.sessionId) ?? 0) >= STREAMS_PER_SESSION) return new Response(null, { status: 429 });

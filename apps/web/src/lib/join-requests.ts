@@ -1,4 +1,5 @@
 import "server-only";
+import { closeAlumnus } from "./alumni-membership";
 import { db } from "./db";
 import { studentCode } from "./codes";
 import { ageInYears } from "./dates";
@@ -286,7 +287,8 @@ export async function decideJoin(session: ActiveContext, requestId: string, deci
   if (decision === "APPROVE") {
     const [guards, post] = await Promise.all([
       db.guardianship.count({ where: { parentUserId: request.userId, status: "ACTIVE" } }),
-      db.membership.findFirst({ where: { userId: request.userId, schoolId: scope.schoolId, role: { not: "STUDENT" }, status: { not: "REMOVED" } }, select: { id: true } }),
+      // A post here, not a former pupil's alumni row (alumni-membership.ts).
+      db.membership.findFirst({ where: { userId: request.userId, schoolId: scope.schoolId, role: { notIn: ["STUDENT", "ALUMNUS"] }, status: { not: "REMOVED" } }, select: { id: true } }),
     ]);
     if (guards > 0) throw new AccessError("join.thisIsAParentsAccount");
     if (post) throw new AccessError("join.youWorkHere");
@@ -371,6 +373,8 @@ async function admit(schoolId: string, userId: string, classId: string | null): 
           where: { id: existing.id },
           data: { status: "ACTIVE", leftAt: null, suspendedAt: null, suspendedReason: null, studentCode: studentCode() },
         });
+        // A pupil back on the roll is no longer an alumnus here (alumni-membership.ts).
+        await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], userId, schoolId);
         id = existing.id;
       } else {
         const made = await tx.membership.create({

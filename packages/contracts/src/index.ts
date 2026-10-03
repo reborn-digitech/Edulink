@@ -18,7 +18,8 @@ import { z } from "zod";
 export const apiErrorSchema = z.object({
   error: z.string().min(1),
   code: z
-    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER"])
+    // MODULE_OFF is a 403 from a door whose module the school has not switched on.
+    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "TOO_LARGE", "SERVER", "MODULE_OFF"])
     .optional(),
   issues: z.record(z.string()).optional(),
   retryAfterSeconds: z.number().int().positive().optional(),
@@ -94,6 +95,7 @@ export const marksSavedSchema = z.object({ saved: z.number().int(), cleared: z.n
 export const messageSentSchema = z.object({ messageId: z.string() });
 
 export * from "./v1/auth";
+export * from "./v1/modules";
 export * from "./v1/admin";
 export * from "./v1/staff";
 export * from "./v1/family";

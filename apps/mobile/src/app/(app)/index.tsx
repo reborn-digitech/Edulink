@@ -6,6 +6,7 @@ import { StudentHome } from "@/screens/family/student-home";
 import { PrincipalHome } from "@/screens/staff/principal-home";
 import { AdminHome } from "@/screens/staff/admin-home";
 import { ExpertHome } from "@/screens/expert/home";
+import { ModuleRoleHome } from "@/screens/modules/role-home";
 
 /** The home tab: each role's "today", "overview", "dashboard" or "bookings" — the same page the web opens first. */
 export default function Home() {
@@ -19,5 +20,10 @@ export default function Home() {
   if (role === "PRINCIPAL") return <PrincipalHome />;
   if (role === "ADMIN") return <AdminHome />;
   if (role === "EXPERT") return <ExpertHome />;
+  // The module roles (3 Oct 2026), one line each so each module's builder replaces only its own.
+  if (role === "DRIVER") return <ModuleRoleHome role="DRIVER" />;
+  if (role === "LIBRARIAN") return <ModuleRoleHome role="LIBRARIAN" />;
+  if (role === "WARDEN") return <ModuleRoleHome role="WARDEN" />;
+  if (role === "ALUMNUS") return <ModuleRoleHome role="ALUMNUS" />;
   return null;
 }

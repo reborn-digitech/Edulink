@@ -9,7 +9,7 @@ import { parseInviteCsv } from "@/lib/csv";
 import { sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { resendInviteFor } from "@/lib/invites";
-import { INVITE_TTL_DAYS, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { INVITE_TTL_DAYS, INVITABLE_ROLES, type InvitableRole } from "@/lib/constants";
 import { INVITE_EMAILS_DAILY } from "@/lib/rate-limit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { InviteCsvResult } from "@/lib/csv";
@@ -65,10 +65,11 @@ export async function createInvites(input: {
     throw error;
   }
 
-  if (!SCHOOL_ROLES.includes(input.role as SchoolRole)) {
+  // Never ALUMNUS: a former pupil's alumni membership is made by their departure alone.
+  if (!(INVITABLE_ROLES as readonly string[]).includes(input.role)) {
     return { ok: false, errorKey: "invites.unknownRole", outcomes: [], problems: [], sent: 0 };
   }
-  const role = input.role as SchoolRole;
+  const role = input.role as InvitableRole;
 
   const text = (input.csv ?? "").trim();
   if (!text) {

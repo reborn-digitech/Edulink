@@ -74,7 +74,8 @@ export default async function DirectoryPage({
     ...(status === "LEFT"
       ? { leftAt: { not: null } }
       : { status, leftAt: null }),
-    ...(roleFilter ? { role: roleFilter } : {}),
+    // Everyone but the alumni, who have a chip of their own: a school's leavers would otherwise outnumber its roll (3 Oct 2026).
+    ...(roleFilter ? { role: roleFilter } : { role: { not: "ALUMNUS" } }),
     ...(classFilter
       ? {
           OR: [

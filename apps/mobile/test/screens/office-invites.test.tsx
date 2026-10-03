@@ -142,3 +142,16 @@ describe("inviting people", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/people/invites").length).toBe(2));
   });
 });
+
+describe("inviting a module role's staff (3 Oct 2026)", () => {
+  it("offers a driver, the library's desk and a warden, never an alumnus, and no class for them", async () => {
+    await mount();
+    await screen.findByText("ZZ Newcomer");
+    expect(await screen.findByRole("radio", { name: "ZZ Class A" })).toBeTruthy();
+    for (const name of ["Driver", "Librarian", "Warden"]) expect(screen.getByRole("radio", { name })).toBeTruthy();
+    expect(screen.queryByRole("radio", { name: "Alumnus" })).toBeNull();
+    await fireEvent.press(screen.getByRole("radio", { name: "Driver" }));
+    expect(screen.getByRole("radio", { name: "Driver" })).toBeChecked();
+    expect(screen.queryByRole("radio", { name: "ZZ Class A" })).toBeNull();
+  });
+});

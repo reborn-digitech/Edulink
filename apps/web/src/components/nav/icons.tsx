@@ -32,6 +32,10 @@ import {
   ArchiveIcon,
   type Icon,
   TranslateIcon,
+  BusIcon,
+  BookOpenIcon,
+  BedIcon,
+  GraduationCapIcon,
 } from "@phosphor-icons/react";
 
 /**
@@ -69,6 +73,11 @@ const ICONS: Record<string, Icon> = {
   trophy: TrophyIcon,
   buildings: BuildingsIcon,
   star: StarIcon,
+  // The module roles' homes (3 Oct 2026): transport, the library, the hostel, the alumni.
+  bus: BusIcon,
+  bookOpen: BookOpenIcon,
+  bed: BedIcon,
+  graduationCap: GraduationCapIcon,
 };
 
 export function NavIcon({

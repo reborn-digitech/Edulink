@@ -5,7 +5,7 @@ import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { approvedLeaveBetween } from "./leave";
 import { closedOn } from "./holidays";
-import { STAFF_ROLES } from "./staff-records";
+import { SCHOOL_STAFF_ROLES } from "./staff-records";
 import { dateKeyInZone, isDateKey, isTeachingDay, parseTeachingDays, todayKey, zonedStartOfDay } from "./dates";
 import { MONTH_KEY, shiftMonth } from "./attendance-history";
 import type { ActiveContext } from "./session";
@@ -38,7 +38,7 @@ function office(ctx: ActiveContext): Office {
   return ctx as Office;
 }
 function staff(ctx: ActiveContext): Staff {
-  if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(STAFF_ROLES as readonly string[]).includes(ctx.role)) throw new AccessError("staffAttendance.refuseNotStaff");
+  if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !(SCHOOL_STAFF_ROLES as readonly string[]).includes(ctx.role)) throw new AccessError("staffAttendance.refuseNotStaff");
   return ctx as Staff;
 }
 
@@ -57,7 +57,7 @@ async function schoolOf(schoolId: string) {
 /** The staff on the roll; with `since`, also those who left on or after that instant, so a month keeps the row of someone who left during it. */
 async function staffMembers(schoolId: string, since?: Date) {
   return db.membership.findMany({
-    where: { schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", ...(since ? { OR: [{ leftAt: null }, { leftAt: { gte: since } }] } : { leftAt: null }) },
+    where: { schoolId, role: { in: [...SCHOOL_STAFF_ROLES] }, status: "ACTIVE", ...(since ? { OR: [{ leftAt: null }, { leftAt: { gte: since } }] } : { leftAt: null }) },
     select: { id: true, role: true, leftAt: true, user: { select: { name: true, preferredName: true, avatarKey: true } } },
     orderBy: [{ role: "asc" }, { user: { name: "asc" } }],
   });

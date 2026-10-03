@@ -12,11 +12,14 @@ import { useTheme } from "@/lib/theme";
 import { Pill } from "../family/shared";
 import { Chips, formatDateKey, problemLine, roleLabel } from "./shared";
 
-type InviteRole = "TEACHER" | "STUDENT" | "ADMIN" | "PRINCIPAL";
+// The module roles' staff too (3 Oct 2026); never the alumnus, whom only a departure makes.
+type InviteRole = "TEACHER" | "STUDENT" | "ADMIN" | "PRINCIPAL" | "DRIVER" | "LIBRARIAN" | "WARDEN";
 type Created = ReturnType<typeof inviteCreatedSchema.parse>;
 export type InviteBody = { role: InviteRole; csv: string; classId?: string };
 
-const ROLES: InviteRole[] = ["TEACHER", "STUDENT", "ADMIN", "PRINCIPAL"];
+const ROLES: InviteRole[] = ["TEACHER", "STUDENT", "ADMIN", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN"];
+/** A class is offered to the roles that have one: a driver, the library's desk and a warden are put in none. */
+const takesClass = (role: InviteRole) => role !== "DRIVER" && role !== "LIBRARIAN" && role !== "WARDEN";
 const EXAMPLE = "name,email,subjects\nPriya Raman,priya@school.org,Maths;Science\nTom Fielding,tom@school.org,English";
 
 /**
@@ -102,7 +105,7 @@ export function InvitePeople() {
       ) : (
         <Card>
           <Chips label={t("invites.inviteAs")} value={role} options={ROLES.map((r) => ({ value: r, label: roleLabel(t, r) }))} onChange={setRole} />
-          {classOptions.length > 0 ? (
+          {classOptions.length > 0 && takesClass(role) ? (
             <>
               <Chips label={role === "STUDENT" ? t("invites.addToClass") : t("invites.assignToClass")} value={classId} options={[{ value: "", label: t("invites.noClass") }, ...classOptions]} onChange={setClassId} />
               <Text variant="xs" tone="subtle">
@@ -129,7 +132,7 @@ export function InvitePeople() {
               label={fresh.valid.length === 1 ? t("invites.sendOne") : t("invites.sendMany", { count: fresh.valid.length })}
               icon={<Icon name="paperPlane" size={20} color={th.accentFg} />}
               busy={send.isPending}
-              onPress={() => send.mutate({ role, csv, ...(classId ? { classId } : {}) })}
+              onPress={() => send.mutate({ role, csv, ...(classId && takesClass(role) ? { classId } : {}) })}
             />
           ) : fresh ? null : (
             <Button label={t("invites.checkList")} disabled={!csv.trim()} busy={check.isPending} onPress={() => check.mutate(csv)} />

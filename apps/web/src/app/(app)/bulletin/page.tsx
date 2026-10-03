@@ -10,7 +10,7 @@ import { EmptyState } from "@/components/ui/states";
 import { PostCard } from "./post-card";
 import { BulkReview } from "./bulk-review";
 import { FeedFilters } from "./feed-filters";
-import { POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
+import { isModuleRole, POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -110,13 +110,16 @@ export default async function BulletinPage({
         {/* Two doors, one row, sized to the phone: the old stacked
             full-width buttons put the first post a screen and a half down. */}
         <div className="flex items-center gap-2">
-          <Button asChild variant="secondary" size="sm" icon={<GlobeIcon weight="bold" />}>
-            <Link href="/bulletin/global">{t("bulletin.globalFeed")}</Link>
-          </Button>
+          {/* A module role (an alumnus) reads its own school's feed only. */}
+          {!isModuleRole(session.role) && (
+            <Button asChild variant="secondary" size="sm" icon={<GlobeIcon weight="bold" />}>
+              <Link href="/bulletin/global">{t("bulletin.globalFeed")}</Link>
+            </Button>
+          )}
           {/* Guardians read; they do not post — no membership, no compose. A
               visible button that dead-ends on "pick a school" is worse than
               no button. */}
-          {session.role !== "PARENT" && (
+          {session.role !== "PARENT" && !isModuleRole(session.role) && (
             <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
               <Link href="/bulletin/new">
                 {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost")}
@@ -213,7 +216,7 @@ export default async function BulletinPage({
                   : t("bulletin.emptyBody")
           }
           action={
-            !showPending && session.role !== "PARENT" ? (
+            !showPending && session.role !== "PARENT" && !isModuleRole(session.role) ? (
               <Button asChild>
                 <Link href="/bulletin/new">
                   {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.writeFirst")}
