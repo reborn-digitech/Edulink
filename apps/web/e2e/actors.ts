@@ -24,7 +24,7 @@ export function sessions(): Sessions {
 export async function contextFor(
   browser: Browser,
   cookie: string,
-  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi" | "mr"; live?: boolean },
+  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi" | "mr"; live?: boolean; javaScriptEnabled?: boolean },
   baseURL: string,
 ): Promise<BrowserContext> {
   const url = new URL(baseURL);
@@ -36,6 +36,8 @@ export async function contextFor(
     reducedMotion: "reduce",
     isMobile: opts.viewport.width < 768,
     hasTouch: opts.viewport.width < 768,
+    // Off only for a spec about what the HTML alone paints (first-paint.spec.ts).
+    javaScriptEnabled: opts.javaScriptEnabled ?? true,
   });
   await context.addCookies([
     { name, value, domain: url.hostname, path: "/", httpOnly: true, sameSite: "Lax" },

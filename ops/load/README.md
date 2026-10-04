@@ -99,6 +99,20 @@ What the numbers say, and what to measure against next time:
   dev server through the gzip proxy, with the scripts still arriving until
   11–13 s), and no web font is fetched. Quote LCP from a devtools-throttled
   run, or the simulated one beside its `observedLargestContentfulPaint`.
+- **A devtools-throttled run is bimodal: run it five times** (LOAD-12,
+  5 October). About one Lighthouse run in three, on every page tried (/login,
+  /register, /privacy, /parent, and a copy of /login with every script
+  removed), shows FCP = LCP at 2.67–2.69 s instead of 1.42–1.50 s. The
+  renderer paints the whole server HTML at about 1.65 s, and Chrome's paint
+  holding on Lighthouse's about:blank-to-page navigation keeps the frame off
+  screen until the same absolute moment whatever the page holds. With
+  `--chrome-flags="--headless=new --disable-features=PaintHolding"` 18 of 18
+  runs read 1.43–1.50 s, and Playwright-driven Chromium and Chrome with the
+  same throttling read 1.44–1.54 s in 47 of 48 runs (one 1.88 s, none at
+  2.67). Quote the median of five runs, or pass that flag. The page side is
+  held by `apps/web/e2e/first-paint.spec.ts`: with JavaScript off, /login's
+  heading, sentence and form, /register's heading and fields and /parent's
+  heading and first sentence are in the shell and painted, none hidden.
 - **Page sweep on prod**: 862 of 862 as expected, median 61 ms, p95 105 ms.
 
 Deployment settings that follow (`docs/runbooks/go-live.md` Phase 3 and 9.6,

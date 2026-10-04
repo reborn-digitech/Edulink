@@ -24,6 +24,9 @@ on the ZZ fixture (`npm run zz:fixtures` first).
   cannot fill stopping the save, and one template saved, read back from the database
   and removed ("ZZ e2e template …", ZZ Northgate's).
 
+- `first-paint.spec.ts` — /login, /register and /parent opened with JavaScript off: the
+  heading, the sentence under it and the form are in the server's shell and painted (no
+  `hidden`, no opacity 0, no streamed segment), so nothing waits for hydration (LOAD-12).
 - `signatures.spec.ts` — a signature signed in the box and kept, a paper that waits opened
   and signed by the head, and no way offered to sign a line that is somebody else's.
 - `report-card-rules.spec.ts` — the rules' four sections: the scale drawn as it is typed,
