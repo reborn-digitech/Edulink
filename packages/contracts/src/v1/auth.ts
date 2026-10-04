@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { localeSchema } from "../locale";
 import { institutionKindSchema, schoolModuleSchema } from "./modules";
+import { streamSchema } from "./streams";
+import { dutySchema } from "./duties";
 
 /**
  * Signing in from the phone. Every sign-in answers with the same session
@@ -98,6 +100,17 @@ export const meSchema = z.object({
    * session. An older server says nothing, which reads as a school.
    */
   institutionKind: institutionKindSchema.nullable().default(null),
+  /**
+   * The ACTIVE college's streams (5 Oct 2026), STREAMS order; empty at a school
+   * or with no school. An older server says nothing, which reads as none.
+   */
+  streams: z.array(streamSchema).default([]),
+  /**
+   * The duties on the ACTIVE membership (5 Oct 2026) — a FACULTY's or HOD's
+   * lab in-charge, squad, NSS and so on; empty for every other role. The phone
+   * hides a duty's tabs and cards without it.
+   */
+  duties: z.array(dutySchema).default([]),
 });
 export type Me = z.infer<typeof meSchema>;
 

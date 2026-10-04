@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { INSTITUTION_KINDS } from "@edulink/contracts";
+import { INSTITUTION_KINDS, STREAMS } from "@edulink/contracts";
 import {
   ATTENDANCE_STATUSES,
   GUARDIAN_RELATIONS,
@@ -87,6 +87,8 @@ export const registerSchoolSchema = z.object({
   school: schoolDetailsSchema,
   /** What kind of institution is registering (4 Oct 2026): a school when left out. */
   kind: z.enum(INSTITUTION_KINDS).default("SCHOOL"),
+  /** A college's streams (5 Oct 2026): at least one for a college (the action refuses none), ignored for a school. */
+  streams: z.array(z.enum(STREAMS)).max(STREAMS.length).default([]),
   admin: adminAccountSchema,
   acceptedTerms: z.literal(true, {
     // ⚠ A KEY, not a sentence — the consuming action translates it.

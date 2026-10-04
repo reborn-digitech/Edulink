@@ -1,6 +1,6 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
-import type { SchoolModuleCode } from "@edulink/contracts";
+import type { DutyCode, SchoolModuleCode } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -44,6 +44,13 @@ export type NavItem = {
    * a teacher, a family or the module's own role — and nothing else.
    */
   module?: SchoolModuleCode;
+  /**
+   * The duty this entry belongs to (5 Oct 2026): a FACULTY's or HOD's lab
+   * in-charge, squad, NSS… (packages/contracts v1/duties.ts). The shell hides
+   * it from a member without the duty, and the session's gate stops granting
+   * the page through it (role-gate.ts `modulePagePermitted`).
+   */
+  duty?: DutyCode;
 };
 
 export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
@@ -449,6 +456,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
+    // Duties (5 Oct 2026): the anti-ragging squad's register, for a member who holds the duty; the other duties' pages follow it.
+    { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
   ],
   HOD: [
     { href: "/hod", labelKey: "role.hod", icon: "treeStructure", primary: true, prefix: true },
@@ -467,6 +476,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
+    // Duties (5 Oct 2026): the anti-ragging squad's register, for an HOD who holds the duty.
+    { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
   ],
   EXAM_CONTROLLER: [
     { href: "/exam-cell", labelKey: "role.examController", icon: "exam", primary: true, prefix: true },

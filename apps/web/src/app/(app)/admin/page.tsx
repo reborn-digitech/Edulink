@@ -33,6 +33,8 @@ import { cn } from "@/lib/cn";
 import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
 import { PageHeader } from "@/components/ui/page-header";
+import { StreamHome } from "@/components/college/stream-home";
+import { isCollegeKind } from "@edulink/contracts";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -53,7 +55,7 @@ export default async function AdminDashboard({
   const [school, jobStory] = await Promise.all([
     db.school.findUniqueOrThrow({
       where: { id: ctx.schoolId },
-      select: { name: true, code: true, timezone: true },
+      select: { name: true, code: true, timezone: true, kind: true },
     }),
     schoolJobStory(ctx),
   ]);
@@ -125,6 +127,9 @@ export default async function AdminDashboard({
           <Link href="/admin/invites/new">{t("admin.invitePeople")}</Link>
         </Button>
       </div>
+
+      {/* A college's streams, its tiles in their order and what is not built yet (5 Oct 2026). */}
+      {isCollegeKind(school.kind) && <StreamHome schoolId={ctx.schoolId} role="ADMIN" t={t} />}
 
       {/*
         ---------------- the school year ----------------

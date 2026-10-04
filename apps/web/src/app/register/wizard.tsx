@@ -15,7 +15,8 @@ import {
 } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
-import { INSTITUTION_KINDS } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind } from "@edulink/contracts";
+import { StreamPicker } from "@/components/college/stream-picker";
 import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { INDIA } from "@/lib/places";
@@ -60,6 +61,8 @@ type Draft = {
   timezone: string;
   /** A school, a junior college, a college or an autonomous college (4 Oct 2026). */
   kind: string;
+  /** A college's streams (5 Oct 2026): at least one for a college. */
+  streams: string[];
   adminName: string;
   adminEmail: string;
 };
@@ -78,6 +81,7 @@ const EMPTY: Draft = {
   gradeHigh: "",
   timezone: "UTC",
   kind: "SCHOOL",
+  streams: [],
   adminName: "",
   adminEmail: "",
 };
@@ -180,6 +184,8 @@ export function RegisterWizard() {
       if (draft.website && !/^https?:\/\/\S+\.\S+/.test(draft.website.trim())) {
         next.website = t("register.websiteScheme");
       }
+      // A college says which streams it teaches (5 Oct 2026).
+      if (isCollegeKind(draft.kind) && (draft.streams ?? []).length === 0) next.streams = t("streams.refuseNone");
     }
 
     if (index === 1) {
@@ -224,6 +230,7 @@ export function RegisterWizard() {
           timezone: draft.timezone,
         },
         kind: draft.kind,
+        streams: isCollegeKind(draft.kind) ? (draft.streams ?? []) : [],
         admin: {
           name: draft.adminName.trim(),
           email: draft.adminEmail.trim().toLowerCase(),
@@ -245,6 +252,7 @@ export function RegisterWizard() {
           "admin.email": "adminEmail",
           "admin.password": "password",
           acceptedTerms: "accepted",
+          streams: "streams",
         };
         setErrors(
           Object.fromEntries(
@@ -254,7 +262,7 @@ export function RegisterWizard() {
         // Send the user back to the step that owns the failing field, rather
         // than showing an error they cannot see or fix from here.
         const keys = Object.keys(result.errors);
-        if (keys.some((k) => k.startsWith("school."))) setStep(0);
+        if (keys.some((k) => k.startsWith("school.") || k === "streams")) setStep(0);
         else if (keys.some((k) => k.startsWith("admin."))) setStep(1);
         toast({
           tone: "danger",
@@ -383,6 +391,8 @@ export function RegisterWizard() {
                 </option>
               ))}
             </SelectField>
+            {/* A college's streams (5 Oct 2026), chosen beside the kind: its modules, regulators and duties follow them. */}
+            {isCollegeKind(draft.kind) && <StreamPicker value={draft.streams ?? []} onChange={(next) => set("streams", next)} error={errors.streams} />}
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField

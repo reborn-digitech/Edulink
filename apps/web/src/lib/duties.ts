@@ -1,0 +1,80 @@
+import "server-only";
+import { cache } from "react";
+import { DUTIES, isCollegeKind, isDutyRole, parseDuties, type DutyCode, type MemberDuties } from "@edulink/contracts";
+import { db } from "./db";
+import { audit } from "./audit";
+import { AccessError, NotACollegeError } from "./access-error";
+import { RuleRefusal } from "./rule-refusal";
+import type { ActiveContext } from "./session";
+import { presetOf } from "./streams";
+
+/**
+ * DUTIES ON A COLLEGE TEACHER'S ROLE (the owner's decision of 5 October
+ * 2026): packages/contracts v1/duties.ts has the list and why. One writer,
+ * `setDuties` (the registrar, audited `people.duties.set`); the rest read.
+ *
+ * WHAT A BUILDER CALLS:
+ *   - nothing, for an /api/v1 door: give its catalog entry `duties: [...]`
+ *     beside `access` and the session's gate (role-gate.ts) refuses a FACULTY
+ *     or HOD without one of them, 403, before the handler runs;
+ *   - `requireDuty(ctx, duty)` in a library function, which throws the same
+ *     refusal unless the caller is a FACULTY or HOD holding it — call it for
+ *     those two roles after the function has let the office and the head
+ *     through on their own account;
+ *   - `hasDuty(ctx, duty)` / `myDuties(ctx)` to decide what a page draws, and
+ *     `duty:` on a NAV entry or a phone tab to hide it without the duty.
+ */
+
+/** The duties on one membership, DUTIES order; [] for an unknown id. Read once per request. */
+export const dutiesOfMembership = cache(async (membershipId: string | null | undefined): Promise<DutyCode[]> => {
+  if (!membershipId) return [];
+  const row = await db.membership.findUnique({ where: { id: membershipId }, select: { role: true, dutiesJson: true } });
+  return row && isDutyRole(row.role) ? parseDuties(row.dutiesJson) : [];
+});
+
+/** The session's own duties: a FACULTY's or HOD's, [] for every other role. */
+export async function myDuties(ctx: Pick<ActiveContext, "role" | "membershipId">): Promise<DutyCode[]> {
+  return isDutyRole(ctx.role) ? dutiesOfMembership(ctx.membershipId) : [];
+}
+
+export async function hasDuty(ctx: Pick<ActiveContext, "role" | "membershipId">, duty: DutyCode): Promise<boolean> {
+  return (await myDuties(ctx)).includes(duty);
+}
+
+/** Throws a 403 (AccessError `duties.refuseNoDuty`) unless the caller is a FACULTY or HOD holding `duty`. */
+export async function requireDuty(ctx: Pick<ActiveContext, "role" | "membershipId">, duty: DutyCode): Promise<void> {
+  if (!(await hasDuty(ctx, duty))) throw new AccessError("duties.refuseNoDuty");
+}
+
+/** The duties this college offers its teachers: the union over its streams (STREAM_PRESETS[…].duties). */
+export async function offeredDuties(schoolId: string | null | undefined): Promise<DutyCode[]> {
+  return [...(await presetOf(schoolId)).duties];
+}
+
+/**
+ * THE REGISTRAR SETS A TEACHER'S DUTIES: the whole list ([] clears). The
+ * office's alone, at a college, on an active FACULTY or HOD of this college;
+ * every duty must be one the college's streams offer. Idempotent: the same
+ * list changes nothing and writes no audit row.
+ */
+export async function setDuties(ctx: ActiveContext, membershipId: string, duties: readonly string[]): Promise<MemberDuties> {
+  if (!ctx.schoolId) throw new AccessError("access.noActiveSchoolSelected");
+  if (ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
+  const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { kind: true } });
+  if (!isCollegeKind(school.kind)) throw new NotACollegeError("duties.refuseNotACollege");
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null }, select: { id: true, role: true, dutiesJson: true } });
+  if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+  if (!isDutyRole(member.role)) throw new RuleRefusal("duties.refuseNotTeacher", 422, undefined, "duties");
+  const offered = await offeredDuties(ctx.schoolId);
+  if (duties.some((d) => !(DUTIES as readonly string[]).includes(d))) throw new RuleRefusal("duties.refuseUnknown", 422, undefined, "duties");
+  const notOffered = duties.filter((d) => !offered.includes(d as DutyCode));
+  if (notOffered.length) throw new RuleRefusal("duties.refuseNotOffered", 422, undefined, "duties");
+  const set = new Set(duties);
+  const next = DUTIES.filter((d) => set.has(d));
+  const before = parseDuties(member.dutiesJson);
+  const answer: MemberDuties = { membershipId: member.id, role: member.role, duties: next, offered };
+  if (before.length === next.length && before.every((d, i) => d === next[i])) return answer;
+  await db.membership.update({ where: { id: member.id }, data: { dutiesJson: JSON.stringify(next) } });
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "people.duties.set", targetType: "Membership", targetId: member.id, meta: { from: before, to: next } });
+  return answer;
+}

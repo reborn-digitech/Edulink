@@ -1,6 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import { defaultModulesForKind, isCollegeKind, modulesForKind, SCHOOL_MODULES, type InstitutionKind, type SchoolModuleCode } from "@edulink/contracts";
+import { defaultModulesForKind, isCollegeKind, modulesForKind, presetUnion, SCHOOL_MODULES, STREAMS, type InstitutionKind, type SchoolModuleCode } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError, ModuleOffError, NotACollegeError } from "./access-error";
@@ -179,7 +179,17 @@ export async function switchModuleFor(schoolId: string, actorUserId: string, mod
  * it in the same breath: the operator's createSchool, a school's own
  * registration and the fixture scripts. `client` is the transaction the
  * school was made in, when there is one.
+ *
+ * A college's STREAMS (5 Oct 2026) add their preset's `modulesOn`, the union
+ * over every stream (STREAM_PRESETS in packages/contracts v1/streams.ts):
+ * EXAMS, ADMISSIONS, SCHOLARSHIPS and IQAC for every stream, PLACEMENT for a
+ * professional one, INVENTORY for engineering and pharmacy. Only at the
+ * making: a change of streams later switches nothing.
  */
-export async function writeDefaultModules(schoolId: string, client: Pick<typeof db, "schoolModule"> = db, kind: string = "SCHOOL"): Promise<void> {
-  await client.schoolModule.createMany({ data: defaultModulesForKind(kind).map((module) => ({ schoolId, module })), skipDuplicates: true });
+export async function writeDefaultModules(schoolId: string, client: Pick<typeof db, "schoolModule"> = db, kind: string = "SCHOOL", streams: readonly string[] = []): Promise<void> {
+  // No stream (a fixture or a test that makes a college by hand): the kind's defaults alone, as before the streams.
+  const known = STREAMS.filter((s) => streams.includes(s));
+  const fromStreams = isCollegeKind(kind) && known.length > 0 ? presetUnion(known).modulesOn : [];
+  const modules = SCHOOL_MODULES.filter((m) => defaultModulesForKind(kind).includes(m) || (fromStreams.includes(m) && modulesForKind(kind).includes(m)));
+  await client.schoolModule.createMany({ data: modules.map((module) => ({ schoolId, module })), skipDuplicates: true });
 }

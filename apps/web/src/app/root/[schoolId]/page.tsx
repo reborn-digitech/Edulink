@@ -10,7 +10,8 @@ import { listPartners, schoolSubscription } from "@/lib/subscriptions";
 import { SupportPanel } from "./support-panel";
 import { ModulesPanel } from "./modules-panel";
 import { operatorSchoolModules } from "@/lib/operator-college";
-import { collegeTierOf, isCollegeKind } from "@edulink/contracts";
+import { collegeTierOf, isCollegeKind, parseStreams } from "@edulink/contracts";
+import { institutionKindLabel, streamLabel } from "@/lib/institution";
 import { UsageCard } from "../usage-card";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -80,6 +81,12 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
             </>
           )}
         </p>
+        {/* A college's kind and streams (5 Oct 2026), as chosen at onboarding; the registrar may change the streams. */}
+        {isCollegeKind(school.kind) && (
+          <p className="mt-1 text-sm text-fg-muted" data-testid="college-streams">
+            {institutionKindLabel(school.kind, t)} · {parseStreams(school.streamsJson).map((s) => streamLabel(s, t)).join(" · ") || t("streams.noneChosen")}
+          </p>
+        )}
       </div>
 
       {/* A removed school keeps its page — the operator may still need to read

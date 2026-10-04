@@ -22,7 +22,7 @@ function describeAccess(e: Endpoint): string {
   if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";
-  return `Roles: ${e.access.join(", ")}.${e.module ? ` Only while the school has ${e.module} switched on.` : ""}`;
+  return `Roles: ${e.access.join(", ")}.${e.duties?.length ? ` A FACULTY or HOD only holding ${e.duties.join(" or ")}.` : ""}${e.module ? ` Only while the school has ${e.module} switched on.` : ""}`;
 }
 
 function build() {
@@ -38,6 +38,8 @@ function build() {
       // The module roles a signed-in door also opens to, and the module a door belongs to (403 MODULE_OFF while the school has it off).
       ...(e.limitedRoles?.length ? { "x-limited-roles": e.limitedRoles } : {}),
       ...(e.module ? { "x-module": e.module } : {}),
+      // The duties a FACULTY or HOD must hold to pass (5 Oct 2026); the phone's contract matrix reads it with the actor's /me duties.
+      ...(e.duties?.length ? { "x-duties": e.duties } : {}),
       // A college's door (filed in a college module's catalog file): at a school it may answer 403 MODULE_OFF, module or none (LOAD-6).
       ...(COLLEGE_DOORS.has(e) ? { "x-college": true } : {}),
       responses: {

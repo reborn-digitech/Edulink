@@ -19,6 +19,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { formatDateKey } from "@/lib/dates";
 import { componentsStateText, mentoringLinkText, weeksTaughtText } from "@/lib/count-copy";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { DutyCards } from "@/components/college/duty-cards";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -45,6 +46,8 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
     <div className="space-y-6">
       <PageHeader title={t("academics.facultyHomeTitle", { name: home.name })} description={[home.departmentName, home.term?.name].filter(Boolean).join(" · ") || t("academics.facultyHomeIntro")} />
       <ModuleFlash t={t} params={params} />
+      {/* My duties (5 Oct 2026): the HOD's own card is on /hod. */}
+      {ctx.role === "FACULTY" && <DutyCards ctx={ctx} t={t} />}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("academics.statToday")} value={home.today.lectures.length} />
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />

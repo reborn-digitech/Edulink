@@ -112,12 +112,13 @@ describeIf("the role matrix, from the app's client", () => {
     it(`${role ?? "signed out"}: every GET the app makes answers as the catalog says`, async () => {
       // Where this actor stands: its school's modules and kind (a guardian: the children's schools'), from its own /me.
       const me = token ? await client(token).get("/api/v1/me") : null;
-      const tenant = me?.ok ? tenantFromMe(meSchema.parse(me.data)) : null;
+      const parsedMe = me?.ok ? meSchema.parse(me.data) : null;
+      const tenant = parsedMe ? tenantFromMe(parsedMe) : null;
       const wrong: string[] = [];
       for (const path of gets) {
         const op = doc.paths[path]!.get!;
         const res = await client(token).get(path);
-        const want = allowed(op, role, MODULE_ROLES);
+        const want = allowed(op, role, MODULE_ROLES, parsedMe?.duties ?? []);
         const verdict = judge(want, moduleOff(op, want, tenant), res);
         if (verdict) wrong.push(`${path}: ${verdict}`);
       }

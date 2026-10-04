@@ -11,7 +11,9 @@
  *   the child's school and MODULE_OFF is allowed, not required ("may");
  * - a college's door (x-college: filed in a college module's catalog file,
  *   module or none) may answer 403 MODULE_OFF to an actor who is not at a
- *   college ("may").
+ *   college ("may");
+ * - a door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD
+ *   only holding one of them — the actor's own /me `duties`.
  *
  * Kept out of the contract test itself so the phone's ordinary battery can
  * hold these rules against the committed document without a server
@@ -20,7 +22,7 @@
 import { isCollegeKind, type Me } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
-export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean };
+export type Op = { "x-access": Access; "x-limited-roles"?: string[]; "x-module"?: string; "x-college"?: boolean; "x-duties"?: string[] };
 export type Doc = { paths: Record<string, Record<string, Op>> };
 export type Want = "2xx" | 401 | 403 | "2xx-or-403";
 export type Off = "must" | "may" | "no";
@@ -35,7 +37,7 @@ export type Answer = { ok: boolean; status?: number; code?: string };
  * permitted role may also answer 422 — the door wanted a query the bare path
  * does not carry — which `judge` treats as a door that opened.
  */
-export function allowed(op: Op, role: string | null, limitedRoles: readonly string[]): Want {
+export function allowed(op: Op, role: string | null, limitedRoles: readonly string[], duties: readonly string[] = []): Want {
   const access = op["x-access"];
   if (access === "anyone") return "2xx";
   if (role === null) return 401;
@@ -44,8 +46,11 @@ export function allowed(op: Op, role: string | null, limitedRoles: readonly stri
   // An account door is decided by the person's memberships, which a role token does not say.
   if (access === "account") return "2xx-or-403";
   // "signed-in" is every role but a limited role's (module, college staff, recruiter), which passes only where x-limited-roles names it.
-  if (access === "signed-in") return !limitedRoles.includes(role) || (op["x-limited-roles"] ?? []).includes(role) ? "2xx" : 403;
-  return access.includes(role) ? "2xx" : 403;
+  const byRole = access === "signed-in" ? !limitedRoles.includes(role) || (op["x-limited-roles"] ?? []).includes(role) : access.includes(role);
+  if (!byRole) return 403;
+  // A door naming duties (x-duties, 5 Oct 2026) opens to a FACULTY or HOD only holding one: the actor's /me `duties`.
+  if (op["x-duties"]?.length && (role === "FACULTY" || role === "HOD") && !op["x-duties"].some((d) => duties.includes(d))) return 403;
+  return "2xx";
 }
 
 /** The actor's standing from its own /api/v1/me: no school and no school among its contexts (an expert, a recruiter) is null. */

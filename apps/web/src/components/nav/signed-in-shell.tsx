@@ -13,6 +13,7 @@ import { listThreads } from "@/lib/remarks";
 import type { Role } from "@/lib/constants";
 import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
+import { myDuties } from "@/lib/duties";
 
 /**
  * The signed-in chrome, for a session that HAS a role.
@@ -96,6 +97,11 @@ export async function SignedInShell({
   if (NAV[role].some((item) => item.module)) {
     const on = role === "PARENT" ? await enabledModulesForFamily(session.user.id) : await enabledModules(session.schoolId);
     for (const item of NAV[role]) if (item.module && !on.includes(item.module)) hiddenHrefs.push(item.href);
+  }
+  // A duty's entries (5 Oct 2026) exist only for a FACULTY or HOD who holds the duty (lib/duties.ts).
+  if (NAV[role].some((item) => item.duty)) {
+    const mine = await myDuties(session);
+    for (const item of NAV[role]) if (item.duty && !mine.includes(item.duty) && !hiddenHrefs.includes(item.href)) hiddenHrefs.push(item.href);
   }
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");

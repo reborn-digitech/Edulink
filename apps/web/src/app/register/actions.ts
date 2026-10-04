@@ -1,6 +1,7 @@
 "use server";
 
 import { writeDefaultModules } from "@/lib/modules";
+import { checkStreams, streamsToStore } from "@/lib/streams";
 import { randomUUID } from "node:crypto";
 import { db } from "@/lib/db";
 import { hashPassword, passwordProblems, generateToken, hashToken } from "@/lib/crypto";
@@ -39,7 +40,11 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
   }
 
-  const { school, admin, kind } = parsed.data;
+  const { school, admin, kind, streams } = parsed.data;
+
+  // A college says which streams it teaches (5 Oct 2026): none is refused here, on the field the wizard draws.
+  const streamsRefusal = checkStreams(kind, streams);
+  if (streamsRefusal) return { ok: false, errors: { streams: (await getT())(streamsRefusal) } };
 
   /**
    * ⚠ REGISTERING A SCHOOL MINTS A TENANT AND ITS ADMIN IN ONE PRESS, and an
@@ -139,6 +144,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           brandPrimary: school.brandPrimary || null,
           onboardingState: writeJson({ createdSchool: true }),
           kind,
+          streamsJson: streamsToStore(kind, streams),
         },
       });
 
@@ -159,8 +165,8 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           status: "ACTIVE",
         },
       });
-      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct); the rest wait for the admin.
-      await writeDefaultModules(createdSchool.id, tx, kind);
+      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct) and its streams' preset (5 Oct); the rest wait for the admin.
+      await writeDefaultModules(createdSchool.id, tx, kind, streams);
 
       await tx.authToken.create({
         data: {
@@ -210,7 +216,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     action: "school.create",
     targetType: "School",
     targetId: created.schoolId,
-    meta: { name: school.name, code: created.code, kind },
+    meta: { name: school.name, code: created.code, kind, streams: JSON.parse(streamsToStore(kind, streams)) },
   });
 
   await createSession(created.userId, { schoolId: created.schoolId, role: "ADMIN" });

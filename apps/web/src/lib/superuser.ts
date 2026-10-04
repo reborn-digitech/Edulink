@@ -1,5 +1,6 @@
 import "server-only";
 import { writeDefaultModules } from "./modules";
+import { checkStreams, streamsToStore } from "./streams";
 import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
 import { cache } from "react";
 import type { Prisma } from "@prisma/client";
@@ -178,6 +179,8 @@ export type SchoolDetails = {
   brandPrimary?: string | null;
   /** What kind of institution (4 Oct 2026): a school when left out. Set when the tenant is made; a correction does not change it. */
   kind?: InstitutionKind;
+  /** A college's streams (5 Oct 2026): at least one for a college, ignored for a school; set when the tenant is made, changed afterwards by the registrar (lib/streams.ts). */
+  streams?: readonly string[];
 };
 
 /** ⚠ `errorKey`, not a sentence — the leave.ts pattern; the action boundary
@@ -211,6 +214,9 @@ export async function createSchool(
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
   // A server action's argument is the browser's word: the kind is one of the four or it is refused.
   if (details.kind !== undefined && !(INSTITUTION_KINDS as readonly string[]).includes(details.kind)) return { ok: false, errorKey: "institution.refuseUnknownKind" };
+  // A college comes with its streams (5 Oct 2026): none, or a word off the list, is refused before anything is written.
+  const streamsRefusal = checkStreams(details.kind ?? "SCHOOL", details.streams);
+  if (streamsRefusal) return { ok: false, errorKey: streamsRefusal };
 
   const baseSlug = slugify(name);
   const location = normaliseLocation(details);
@@ -245,10 +251,11 @@ export async function createSchool(
           // queue is for schools that registered themselves.
           verifiedAt: new Date(),
           kind: details.kind ?? "SCHOOL",
+          streamsJson: streamsToStore(details.kind ?? "SCHOOL", details.streams),
         },
       });
-      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct); the operator may write it for a school with no tenant yet (SUPERUSER_TABLES).
-      await writeDefaultModules(schoolId, client, details.kind ?? "SCHOOL");
+      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct) and its streams' preset (5 Oct); the operator may write it for a school with no tenant yet (SUPERUSER_TABLES).
+      await writeDefaultModules(schoolId, client, details.kind ?? "SCHOOL", details.streams ?? []);
 
       // schoolId NULL, with the school named in meta. An operator's actions
       // belong to the operator, not to the tenant — so this appears in nobody's
@@ -260,7 +267,7 @@ export async function createSchool(
           action: "superuser.school.create",
           targetType: "School",
           targetId: schoolId,
-          meta: { schoolId, name, code, kind: details.kind ?? "SCHOOL" },
+          meta: { schoolId, name, code, kind: details.kind ?? "SCHOOL", streams: JSON.parse(streamsToStore(details.kind ?? "SCHOOL", details.streams)) },
         },
         client === db ? undefined : client,
       );

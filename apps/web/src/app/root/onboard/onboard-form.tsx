@@ -3,7 +3,8 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
-import { INSTITUTION_KINDS, isCollegeKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody, type StreamCode } from "@edulink/contracts";
+import { StreamPicker } from "@/components/college/stream-picker";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
@@ -39,6 +40,8 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
   const today = dayKey(new Date());
 
   const [school, setSchool] = useState({ name: "", slug: "", contactEmail: "", timezone: "Asia/Kolkata", board: "", city: "", region: "", country: INDIA, gradeLow: "", gradeHigh: "", kind: "SCHOOL", university: "", aishe: "" });
+  // A college's streams (5 Oct 2026), chosen beside the kind.
+  const [streams, setStreams] = useState<StreamCode[]>([]);
   const [planId, setPlanId] = useState("");
   const [trial, setTrial] = useState(false);
   const [datesTyped, setDatesTyped] = useState(false);
@@ -63,7 +66,7 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
   }
 
   const percentTenths = Math.round(Number(newPartner.percent || "0") * 10);
-  const ready = school.name.trim().length >= 2 && school.contactEmail.trim() && school.timezone.trim() && admin.email.trim() && dates.startsAt && dates.dueAt && (mode !== "new" || (newPartner.name.trim() && newPartner.percent.trim()));
+  const ready = school.name.trim().length >= 2 && school.contactEmail.trim() && school.timezone.trim() && admin.email.trim() && dates.startsAt && dates.dueAt && (mode !== "new" || (newPartner.name.trim() && newPartner.percent.trim())) && (!isCollegeKind(school.kind) || streams.length > 0);
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -81,7 +84,7 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
       gradeHigh: school.gradeHigh || null,
       kind: school.kind as InstitutionKind,
       // A college's two references (4 Oct 2026), sent only for a college.
-      ...(isCollegeKind(school.kind) ? { affiliatingUniversity: school.university.trim() || null, aisheCode: school.aishe.trim().toUpperCase() || null } : {}),
+      ...(isCollegeKind(school.kind) ? { affiliatingUniversity: school.university.trim() || null, aisheCode: school.aishe.trim().toUpperCase() || null, streams } : {}),
       planId: planId || null,
       trial,
       startsAt: dates.startsAt,
@@ -121,6 +124,8 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
             </option>
           ))}
         </SelectField>
+        {/* The streams (5 Oct 2026), beside affiliated or autonomous: the college's modules, regulators and duties follow them. */}
+        {isCollegeKind(school.kind) && <StreamPicker value={streams} onChange={setStreams} />}
         {isCollegeKind(school.kind) && (
           <div className="grid gap-4 sm:grid-cols-2">
             <TextField label={t("college.fieldUniversity")} value={school.university} onChange={(e) => setS("university")(e.target.value)} maxLength={200} />

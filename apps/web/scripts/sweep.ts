@@ -15,7 +15,7 @@ import { join, resolve } from "node:path";
 import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
-import { MODULE_OF_ROLE } from "@edulink/contracts";
+import { isDutyRole, MODULE_OF_ROLE, parseDuties } from "@edulink/contracts";
 
 config();
 
@@ -1034,12 +1034,12 @@ async function staffingAndDuty(schoolId: string) {
  * College, where their pages are, and the module roles at ZZ Northgate,
  * which has their modules on.
  */
-type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[] };
+type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[]; /** A FACULTY's or HOD's duties (5 Oct 2026): an entry carrying `duty` is shown only to its holder. */ duties?: readonly string[] };
 
 async function everyNavLink(walkers: NavWalker[]) {
   for (const w of walkers) {
     const role = w.role;
-    const shown = NAV[role].filter((item) => !item.module || w.modulesOn.includes(item.module));
+    const shown = NAV[role].filter((item) => (!item.module || w.modulesOn.includes(item.module)) && (!item.duty || (w.duties ?? []).includes(item.duty)));
     const hrefs = [
       ...shown.map((item) => item.href),
       ...QUICK_ACTIONS[role].map((action) => action.href),
@@ -2648,7 +2648,7 @@ async function main() {
    */
   const zzWalker = async (slug: string, role: Role, email: string, extra: Partial<NavWalker> = {}): Promise<NavWalker | null> => {
     const at = await db.school.findUnique({ where: { slug }, select: { id: true } });
-    const member = at ? await db.membership.findFirst({ where: { schoolId: at.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { id: true } }) : null;
+    const member = at ? await db.membership.findFirst({ where: { schoolId: at.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { id: true, dutiesJson: true } }) : null;
     if (!at || !member) {
       skip(`the nav walk of ${role} at ${slug}`, `${email} is not an active ${role} there (npm run zz:fixtures)`);
       return null;
@@ -2659,7 +2659,7 @@ async function main() {
     // suite running at the time, so the run's clean-up of "the notices it caused" leaves theirs alone.
     const person = await db.user.findUnique({ where: { email }, select: { id: true } });
     if (person) touched.delete(person.id);
-    return { role, actor, modulesOn: await modulesAt(at.id), where, ...extra };
+    return { role, actor, modulesOn: await modulesAt(at.id), where, duties: isDutyRole(role) ? parseDuties(member.dutiesJson) : [], ...extra };
   };
 
   // The recruiter (4 Oct 2026): an outside account like the expert's, made for the walk and taken away again.

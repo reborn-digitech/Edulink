@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { GLOBAL_FEED_KIND_CHOICES, institutionKindSchema } from "./modules";
+import { streamListSchema, streamSchema } from "./streams";
 
 /**
  * college: the shapes of the college foundation's doors (the owner's plan of
@@ -54,6 +55,8 @@ export const nirfCategorySchema = z.enum(NIRF_CATEGORIES);
 /** GET /api/v1/admin/college-profile — the college's regulator references, as the office keeps them. */
 export const collegeProfileSchema = z.object({
   kind: institutionKindSchema,
+  /** The college's streams (5 Oct 2026), STREAMS order. */
+  streams: z.array(streamSchema).default([]),
   affiliatingUniversity: z.string().nullable(),
   aisheCode: z.string().nullable(),
   aicteApprovalRef: z.string().nullable(),
@@ -68,6 +71,8 @@ export type CollegeProfile = z.infer<typeof collegeProfileSchema>;
 const ref = (max: number) => z.string().trim().max(max).nullable().optional();
 /** POST /api/v1/admin/college-profile — a key left out stays as it was; null clears it. */
 export const collegeProfileSetSchema = z.object({
+  /** The college's streams, the whole list (5 Oct 2026): at least one; audited as college.streams.set. */
+  streams: streamListSchema.optional(),
   affiliatingUniversity: ref(200),
   /** AISHE's code: a letter, a hyphen and digits (C-12345, S-1234, U-0123). */
   aisheCode: z.string().trim().regex(/^[CSU]-\d{3,7}$/).nullable().optional(),

@@ -2,6 +2,9 @@ import "server-only";
 import {
   academicsSettingsSchema,
   defaultAttendanceThreshold,
+  defaultRegulatorFor,
+  STREAMS,
+  type StreamCode,
   exitPointSchema,
   gradeRowSchema,
   outcomeSchema,
@@ -38,6 +41,7 @@ import { syncGradeLevel } from "./grade-level";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
+import { streamsOf } from "./streams";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { classCode } from "./codes";
@@ -240,6 +244,10 @@ export async function saveProgramme(ctx: ActiveContext, input: z.infer<typeof pr
   if (!d) throw new RuleRefusal("academics.refuseUnknownDepartment", 422, undefined, "departmentId");
   const years = input.exitPoints.map((e) => e.afterYear);
   if (new Set(years).size !== years.length || years.some((y) => y > input.durationYears)) throw new RuleRefusal("academics.refuseExitPoints", 422, undefined, "exitPoints");
+  // THE STREAM (5 Oct 2026): one of the college's own, and the regulator defaults from it when none is sent.
+  if (input.stream && !(await streamsOf(c.schoolId)).includes(input.stream)) throw new RuleRefusal("streams.refuseNotOurs", 422, undefined, "stream");
+  const regulator = input.regulator ?? (input.stream ? defaultRegulatorFor(input.stream) : null);
+  if (!regulator) throw new RuleRefusal("streams.refuseNoRegulator", 422, undefined, "regulator");
   const data = {
     departmentId: input.departmentId,
     code: input.code.toUpperCase(),
@@ -247,8 +255,9 @@ export async function saveProgramme(ctx: ActiveContext, input: z.infer<typeof pr
     level: input.level,
     durationYears: input.durationYears,
     intake: input.intake,
-    regulator: input.regulator,
-    attendanceThreshold: input.attendanceThreshold ?? defaultAttendanceThreshold(input.regulator),
+    regulator,
+    ...(input.stream !== undefined ? { stream: input.stream } : {}),
+    attendanceThreshold: input.attendanceThreshold ?? defaultAttendanceThreshold(regulator),
     exitPoints: writeJson([...input.exitPoints].sort((a, b) => a.afterYear - b.afterYear)),
   };
   const row = await refuseTaken(async () => {
@@ -259,7 +268,7 @@ export async function saveProgramme(ctx: ActiveContext, input: z.infer<typeof pr
     }
     return db.programme.create({ data: { schoolId: c.schoolId, ...data }, select: { id: true } });
   });
-  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.programme.save", targetType: "Programme", targetId: row.id, meta: { code: data.code, threshold: data.attendanceThreshold } });
+  await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.programme.save", targetType: "Programme", targetId: row.id, meta: { code: data.code, threshold: data.attendanceThreshold, regulator, stream: input.stream ?? null } });
   return row;
 }
 
@@ -432,7 +441,7 @@ export async function academicsStructure(ctx: ActiveContext): Promise<AcademicsS
       faculty: staff.filter((s) => s.departmentId === d.id).length,
       students: programmes.filter((p) => p.departmentId === d.id).reduce((n, p) => n + (seatsBy.get(p.id) ?? 0), 0),
     })),
-    programmes: programmes.map((p) => ({ id: p.id, departmentId: p.departmentId, code: p.code, name: p.name, level: p.level as "UG", durationYears: p.durationYears, intake: p.intake, regulator: p.regulator as "UGC", attendanceThreshold: p.attendanceThreshold, exitPoints: readExitPoints(p.exitPoints) })),
+    programmes: programmes.map((p) => ({ id: p.id, departmentId: p.departmentId, code: p.code, name: p.name, level: p.level as "UG", durationYears: p.durationYears, intake: p.intake, regulator: p.regulator as "UGC", attendanceThreshold: p.attendanceThreshold, exitPoints: readExitPoints(p.exitPoints), stream: (STREAMS as readonly string[]).includes(p.stream ?? "") ? (p.stream as StreamCode) : null })),
     programmeOutcomes: pos.map((o) => ({ programmeId: o.programmeId, code: o.code, text: o.text })),
     schemes: schemes.map((s) => ({ id: s.id, programmeId: s.programmeId, name: s.name, effectiveYear: s.effectiveYear, gradingTable: readGradingTable(s.gradingTable), passingRules: readPassingRules(s.passingRules) })),
     courses: courses.map((k) => ({ id: k.id, schemeId: k.schemeId, code: k.code, name: k.name, semester: k.semester, creditsL: k.creditsL, creditsT: k.creditsT, creditsP: k.creditsP, credits: creditsOf(k), kind: k.kind as "CORE", outcomes: readOutcomes(k.outcomes), mapping: mapBy.get(k.id) ?? [] })),

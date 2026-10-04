@@ -56,6 +56,7 @@ import { buildCollegeExams } from "./zz-exams";
 import { buildIqac } from "./zz-iqac";
 import { buildCollegeOffice } from "./zz-college-office";
 import { buildPlacement } from "./zz-placement";
+import { buildStreamFixtures } from "./zz-streams";
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2563,6 +2564,9 @@ async function main() {
   // The IQAC desk (4 Oct 2026), last of the college builders so its predictor reads their rows: Vidya's NAAC cycle computed, three qualitative scores, the registers, committees, surveys, grievances, an AQAR filed and the disclosure published (zz-iqac.ts).
   const iqac = await buildIqac(db);
   console.log(iqac ? `  IQAC at ZZ Vidya College: CGPA ${iqac.cgpa.toFixed(2)} over ${iqac.metrics} metrics scored, ${iqac.research} research items, ${iqac.activities} activities, ${iqac.filings} filing(s) — /iqac, /student/voice, /public/disclosure/zz-vidya-college` : "  IQAC at ZZ Vidya College: NOT built (the college or its people are missing)");
+  // The streams (5 Oct 2026): Vidya's programmes given their stream; the colleges' streams and zz.faculty01's duties are zz-college.ts's.
+  const streamFx = await buildStreamFixtures(db);
+  console.log(streamFx ? `  Streams: ZZ Vidya College ARTS + SCIENCE + COMMERCE (${streamFx.programmes} programmes given a stream), ZZ Shastri ENGINEERING; zz.faculty01 LAB_INCHARGE + ANTI_RAGGING_SQUAD — /duties/anti-ragging` : "  Streams: NOT built (ZZ Vidya College is missing)");
   console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
 
   const studentCount = await db.membership.count({

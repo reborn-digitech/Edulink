@@ -6,6 +6,8 @@ import { AccessError } from "@/lib/tenancy";
 import { ModuleOffError } from "@/lib/access-error";
 import { MODULE_META } from "@/lib/module-meta";
 import { enabledModules, enabledModulesForFamily, institutionKindOf } from "@/lib/modules";
+import { streamsOf } from "@/lib/streams";
+import { myDuties } from "@/lib/duties";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
@@ -239,6 +241,9 @@ export async function meBody(ctx: ActiveContext) {
     modules: ctx.role === "PARENT" ? await enabledModulesForFamily(ctx.user.id) : await enabledModules(ctx.schoolId),
     // What kind of institution the active school is (4 Oct 2026); null with none on the session.
     institutionKind: await institutionKindOf(ctx.schoolId),
+    // The active college's streams and the active membership's duties (5 Oct 2026); empty at a school and for every role but FACULTY and HOD.
+    streams: await streamsOf(ctx.schoolId),
+    duties: await myDuties(ctx),
   });
 }
 

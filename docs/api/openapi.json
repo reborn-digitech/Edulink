@@ -1239,6 +1239,45 @@
                       ],
                       "nullable": true,
                       "default": null
+                    },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ARTS",
+                          "SCIENCE",
+                          "COMMERCE",
+                          "MANAGEMENT",
+                          "ENGINEERING",
+                          "PHARMACY",
+                          "LAW",
+                          "EDUCATION",
+                          "HEALTH_SCIENCES",
+                          "ARCHITECTURE",
+                          "AGRICULTURE",
+                          "VOCATIONAL"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "duties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "LAB_INCHARGE",
+                          "CLINICAL_COORDINATOR",
+                          "PRACTICE_TEACHING_COORDINATOR",
+                          "STUDIO_COORDINATOR",
+                          "NSS_OFFICER",
+                          "NCC_OFFICER",
+                          "ANTI_RAGGING_SQUAD",
+                          "RESEARCH_DEAN",
+                          "EXAM_SQUAD"
+                        ]
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -1483,6 +1522,45 @@
                       ],
                       "nullable": true,
                       "default": null
+                    },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ARTS",
+                          "SCIENCE",
+                          "COMMERCE",
+                          "MANAGEMENT",
+                          "ENGINEERING",
+                          "PHARMACY",
+                          "LAW",
+                          "EDUCATION",
+                          "HEALTH_SCIENCES",
+                          "ARCHITECTURE",
+                          "AGRICULTURE",
+                          "VOCATIONAL"
+                        ]
+                      },
+                      "default": []
+                    },
+                    "duties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "LAB_INCHARGE",
+                          "CLINICAL_COORDINATOR",
+                          "PRACTICE_TEACHING_COORDINATOR",
+                          "STUDIO_COORDINATOR",
+                          "NSS_OFFICER",
+                          "NCC_OFFICER",
+                          "ANTI_RAGGING_SQUAD",
+                          "RESEARCH_DEAN",
+                          "EXAM_SQUAD"
+                        ]
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -33805,6 +33883,27 @@
                       "COLLEGE",
                       "AUTONOMOUS_COLLEGE"
                     ]
+                  },
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12
                   }
                 },
                 "required": [
@@ -34334,6 +34433,27 @@
                       "COLLEGE",
                       "AUTONOMOUS_COLLEGE"
                     ]
+                  },
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12
                   }
                 },
                 "additionalProperties": false
@@ -38332,6 +38452,27 @@
                         ]
                       }
                     ]
+                  },
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12
                   },
                   "planId": {
                     "type": "string",
@@ -125528,6 +125669,27 @@
                         "AUTONOMOUS_COLLEGE"
                       ]
                     },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ARTS",
+                          "SCIENCE",
+                          "COMMERCE",
+                          "MANAGEMENT",
+                          "ENGINEERING",
+                          "PHARMACY",
+                          "LAW",
+                          "EDUCATION",
+                          "HEALTH_SCIENCES",
+                          "ARCHITECTURE",
+                          "AGRICULTURE",
+                          "VOCATIONAL"
+                        ]
+                      },
+                      "default": []
+                    },
                     "affiliatingUniversity": {
                       "type": "string",
                       "nullable": true
@@ -125667,6 +125829,27 @@
                         "AUTONOMOUS_COLLEGE"
                       ]
                     },
+                    "streams": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "ARTS",
+                          "SCIENCE",
+                          "COMMERCE",
+                          "MANAGEMENT",
+                          "ENGINEERING",
+                          "PHARMACY",
+                          "LAW",
+                          "EDUCATION",
+                          "HEALTH_SCIENCES",
+                          "ARCHITECTURE",
+                          "AGRICULTURE",
+                          "VOCATIONAL"
+                        ]
+                      },
+                      "default": []
+                    },
                     "affiliatingUniversity": {
                       "type": "string",
                       "nullable": true
@@ -125784,6 +125967,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "streams": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "ARTS",
+                        "SCIENCE",
+                        "COMMERCE",
+                        "MANAGEMENT",
+                        "ENGINEERING",
+                        "PHARMACY",
+                        "LAW",
+                        "EDUCATION",
+                        "HEALTH_SCIENCES",
+                        "ARCHITECTURE",
+                        "AGRICULTURE",
+                        "VOCATIONAL"
+                      ]
+                    },
+                    "maxItems": 12
+                  },
                   "affiliatingUniversity": {
                     "type": "string",
                     "maxLength": 200,
@@ -126523,6 +126727,11 @@
                               "PCI",
                               "BCI",
                               "NCTE",
+                              "COA",
+                              "NMC",
+                              "ICAR",
+                              "DCI",
+                              "INC",
                               "OTHER"
                             ]
                           },
@@ -126561,6 +126770,25 @@
                               ],
                               "additionalProperties": false
                             }
+                          },
+                          "stream": {
+                            "type": "string",
+                            "enum": [
+                              "ARTS",
+                              "SCIENCE",
+                              "COMMERCE",
+                              "MANAGEMENT",
+                              "ENGINEERING",
+                              "PHARMACY",
+                              "LAW",
+                              "EDUCATION",
+                              "HEALTH_SCIENCES",
+                              "ARCHITECTURE",
+                              "AGRICULTURE",
+                              "VOCATIONAL"
+                            ],
+                            "nullable": true,
+                            "default": null
                           }
                         },
                         "required": [
@@ -127564,8 +127792,31 @@
                       "PCI",
                       "BCI",
                       "NCTE",
+                      "COA",
+                      "NMC",
+                      "ICAR",
+                      "DCI",
+                      "INC",
                       "OTHER"
                     ]
+                  },
+                  "stream": {
+                    "type": "string",
+                    "enum": [
+                      "ARTS",
+                      "SCIENCE",
+                      "COMMERCE",
+                      "MANAGEMENT",
+                      "ENGINEERING",
+                      "PHARMACY",
+                      "LAW",
+                      "EDUCATION",
+                      "HEALTH_SCIENCES",
+                      "ARCHITECTURE",
+                      "AGRICULTURE",
+                      "VOCATIONAL"
+                    ],
+                    "nullable": true
                   },
                   "attendanceThreshold": {
                     "type": "integer",
@@ -127614,7 +127865,6 @@
                   "level",
                   "durationYears",
                   "intake",
-                  "regulator",
                   "exitPoints"
                 ],
                 "additionalProperties": false
@@ -181175,6 +181425,27 @@
                               "AUTONOMOUS_COLLEGE"
                             ]
                           },
+                          "streams": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "ARTS",
+                                "SCIENCE",
+                                "COMMERCE",
+                                "MANAGEMENT",
+                                "ENGINEERING",
+                                "PHARMACY",
+                                "LAW",
+                                "EDUCATION",
+                                "HEALTH_SCIENCES",
+                                "ARCHITECTURE",
+                                "AGRICULTURE",
+                                "VOCATIONAL"
+                              ]
+                            },
+                            "default": []
+                          },
                           "isTestFixture": {
                             "type": "boolean"
                           },
@@ -182226,6 +182497,368 @@
             }
           }
         ]
+      }
+    },
+    "/api/v1/admin/people/{membershipId}/duties": {
+      "post": {
+        "summary": "The registrar sets a FACULTY's or HOD's duties, the whole list ([] clears); each must be one the college's streams offer (idempotent; audited people.duties.set)",
+        "description": "Roles: ADMIN. Only while the school has ACADEMICS switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "x-module": "ACADEMICS",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "membershipId": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "string",
+                      "enum": [
+                        "FACULTY",
+                        "HOD"
+                      ]
+                    },
+                    "duties": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "LAB_INCHARGE",
+                          "CLINICAL_COORDINATOR",
+                          "PRACTICE_TEACHING_COORDINATOR",
+                          "STUDIO_COORDINATOR",
+                          "NSS_OFFICER",
+                          "NCC_OFFICER",
+                          "ANTI_RAGGING_SQUAD",
+                          "RESEARCH_DEAN",
+                          "EXAM_SQUAD"
+                        ]
+                      }
+                    },
+                    "offered": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/duties/items"
+                      }
+                    }
+                  },
+                  "required": [
+                    "membershipId",
+                    "role",
+                    "duties",
+                    "offered"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "LAB_INCHARGE",
+                        "CLINICAL_COORDINATOR",
+                        "PRACTICE_TEACHING_COORDINATOR",
+                        "STUDIO_COORDINATOR",
+                        "NSS_OFFICER",
+                        "NCC_OFFICER",
+                        "ANTI_RAGGING_SQUAD",
+                        "RESEARCH_DEAN",
+                        "EXAM_SQUAD"
+                      ]
+                    },
+                    "maxItems": 9
+                  }
+                },
+                "required": [
+                  "duties"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "membershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/duties/anti-ragging": {
+      "get": {
+        "summary": "The anti-ragging register: the hostel squad's rounds, the complaints to the anti-ragging committee (that they exist, their state and due day, never their words or who filed them) and the committee; a FACULTY or HOD on the squad, the office and the head",
+        "description": "Roles: ADMIN, PRINCIPAL, FACULTY, HOD. A FACULTY or HOD only holding ANTI_RAGGING_SQUAD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "FACULTY",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-duties": [
+          "ANTI_RAGGING_SQUAD"
+        ],
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "today": {
+                      "type": "string"
+                    },
+                    "hostelOn": {
+                      "type": "boolean"
+                    },
+                    "committee": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "members": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "members"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "rounds": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "hostelName": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "members": {
+                            "type": "string"
+                          },
+                          "flagged": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "hostelName",
+                          "at",
+                          "members",
+                          "flagged"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "complaints": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "filedOn": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "OPEN",
+                              "ACKNOWLEDGED",
+                              "RESOLVED",
+                              "ESCALATED"
+                            ]
+                          },
+                          "dueOn": {
+                            "type": "string"
+                          },
+                          "overdue": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "filedOn",
+                          "status",
+                          "dueOn",
+                          "overdue"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "summary": {
+                      "type": "object",
+                      "properties": {
+                        "rounds30": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "flagged30": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "open": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "overdue": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "rounds30",
+                        "flagged30",
+                        "open",
+                        "overdue"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "today",
+                    "hostelOn",
+                    "committee",
+                    "rounds",
+                    "complaints",
+                    "summary"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

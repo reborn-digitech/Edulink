@@ -17,5 +17,6 @@ import { COLLEGE_ADMISSIONS } from "../src/lib/api-catalog/college-admissions";
 import { SCHOLARSHIPS } from "../src/lib/api-catalog/scholarships";
 import { ACCOUNTS_DESK } from "../src/lib/api-catalog/accounts";
 import { COLLEGE_CAMPUS } from "../src/lib/api-catalog/college-campus";
+import { DUTY_DOORS } from "../src/lib/api-catalog/duties";
 
-export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS]);
+export const COLLEGE_DOORS: ReadonlySet<Endpoint> = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...DUTY_DOORS]);

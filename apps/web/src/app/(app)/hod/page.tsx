@@ -20,6 +20,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { formatDateKey } from "@/lib/dates";
 import { componentsStateText, mentoringSummaryText, weeksTaughtText } from "@/lib/count-copy";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { DutyCards } from "@/components/college/duty-cards";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,6 +49,8 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
     <div className="space-y-6">
       <PageHeader title={t("academics.hodHomeTitle", { department: home.department.name })} description={home.term?.name ?? t("academics.noTermBody")} />
       <ModuleFlash t={t} params={params} />
+      {/* My duties (5 Oct 2026). */}
+      <DutyCards ctx={ctx} t={t} />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />
         <StatTile label={t("academics.statBehind")} value={home.offerings.filter((o) => o.behind).length} tone={home.offerings.some((o) => o.behind) ? "warn" : "ok"} />

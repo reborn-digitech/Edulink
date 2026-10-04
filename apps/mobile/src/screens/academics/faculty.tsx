@@ -7,6 +7,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { CollegeRoleHome } from "@/screens/college/role-home";
+import { DutyCard } from "@/screens/college/duties";
 import { LECTURE_KIND_KEY, clock } from "./words";
 
 /**
@@ -65,6 +66,8 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
               ))}
             </Card>
           ) : null}
+          {/* My duties (5 Oct 2026): a FACULTY's here; an HOD's on the department home. */}
+          {asTeaching ? null : <DutyCard />}
           <Button label={t("academics.mentoringLink", { n: h.mentoringGroups })} variant="secondary" onPress={() => router.push("/(app)/academics-mentoring" as never)} />
           {payroll ? <Button label={t("payroll.myTitle")} variant="secondary" onPress={() => router.push("/(app)/payslips" as never)} /> : null}
         </>

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { institutionKindSchema, schoolModuleSchema, type InstitutionKind } from "./modules";
 import { subscriptionStatusSchema } from "./operator-dashboard";
+import { streamSchema } from "./streams";
 
 /**
  * operator-college: the operator's college console (4 October 2026) — the
@@ -75,6 +76,8 @@ export const operatorCollegeRowSchema = z.object({
   name: z.string(),
   city: z.string().nullable(),
   kind: institutionKindSchema,
+  /** The college's streams (5 Oct 2026), STREAMS order; empty until chosen. */
+  streams: z.array(streamSchema).default([]),
   isTestFixture: z.boolean(),
   affiliatingUniversity: z.string().nullable(),
   aisheCode: z.string().nullable(),

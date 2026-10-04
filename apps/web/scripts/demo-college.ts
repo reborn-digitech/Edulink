@@ -187,7 +187,7 @@ async function buildCollege(): Promise<College> {
   // A demo tenant is not a test fixture (B-28, 4 Oct 2026): Sunrise and Saraswati Vidya Mandir never were, and the
   // demo college as one was hidden from the operator's /root/colleges while the recruiter's form offered it. The ZZ
   // tenants are the fixtures; the demo ones are what a prospect is shown, so they list like a real customer.
-  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day("2028-12-31"), nirfCategory: "COLLEGE", isTestFixture: false };
+  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day("2028-12-31"), nirfCategory: "COLLEGE", isTestFixture: false, streamsJson: JSON.stringify(["ARTS", "SCIENCE", "COMMERCE"]) };
   if (existing) {
     await db.school.update({ where: { id: existing.id }, data: profile });
     return existing;
@@ -271,7 +271,7 @@ async function buildAcademics(college: College, people: People) {
   for (const p of PROGRAMMES) {
     const hod = p.code === "BSCPHY" ? staff.hodPhy : staff.hodCom;
     const dept = await db.department.upsert({ where: { schoolId_code: { schoolId: s, code: p.dept.code } }, create: { schoolId: s, code: p.dept.code, name: p.dept.name, hodMembershipId: hod.id, condoneFloorPercent: 65 }, update: { hodMembershipId: hod.id }, select: { id: true } });
-    const programme = await db.programme.upsert({ where: { schoolId_code: { schoolId: s, code: p.code } }, create: { schoolId: s, departmentId: dept.id, code: p.code, name: p.name, level: "UG", durationYears: 3, intake: p.intake, regulator: "UGC", attendanceThreshold: 75, exitPoints: EXITS }, update: {}, select: { id: true } });
+    const programme = await db.programme.upsert({ where: { schoolId_code: { schoolId: s, code: p.code } }, create: { schoolId: s, departmentId: dept.id, code: p.code, name: p.name, level: "UG", durationYears: 3, intake: p.intake, regulator: "UGC", stream: p.code === "BCOM" ? "COMMERCE" : "SCIENCE", attendanceThreshold: 75, exitPoints: EXITS }, update: { stream: p.code === "BCOM" ? "COMMERCE" : "SCIENCE" }, select: { id: true } });
     for (const [code, text] of p.pos) await db.programmeOutcome.upsert({ where: { programmeId_code: { programmeId: programme.id, code } }, create: { schoolId: s, programmeId: programme.id, code, text }, update: {} });
     const scheme = await db.scheme.upsert({ where: { programmeId_name: { programmeId: programme.id, name: "SPPU NEP 2024" } }, create: { schoolId: s, programmeId: programme.id, name: "SPPU NEP 2024", effectiveYear: 2024, gradingTable: JSON.stringify(GRADES), passingRules: JSON.stringify(RULES) }, update: {}, select: { id: true } });
     programmes[p.code] = { id: programme.id, schemeId: scheme.id, deptId: dept.id };

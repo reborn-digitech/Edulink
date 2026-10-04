@@ -15,7 +15,9 @@ import {
   SignOutIcon,
   UsersThreeIcon,
   TrashIcon,
+  ShieldStarIcon,
 } from "@phosphor-icons/react";
+import type { DutyCode } from "@edulink/contracts";
 import { useToast } from "@/components/ui/toast";
 import { cancelLeavingAction, reinstate, undoLeaving } from "./actions";
 import { PausePanel } from "./row-actions";
@@ -27,11 +29,12 @@ import { BirthdatePanel } from "./birthdate-panel";
 import { LegalNamePanel } from "./legal-name-panel";
 import { FirstSignInPanel } from "./first-signin-panel";
 import { StaffRecordPanel, type StaffRecordInitial } from "./staff-record-panel";
+import { DutiesPanel } from "./duties-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "legalName" | "firstSignin" | "staff" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "legalName" | "firstSignin" | "staff" | "duties" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -56,6 +59,7 @@ export function DirectoryMenu({
   handleOnly,
   leavingOnKey,
   staffRecord,
+  duties,
   suspended,
   hasLeft,
 }: {
@@ -75,6 +79,8 @@ export function DirectoryMenu({
   leavingOnKey?: string | null;
   /** Staff rows carry the office's record; undefined for pupils. */
   staffRecord?: StaffRecordInitial;
+  /** A college teacher's duties (5 Oct 2026): what they hold and what the college's streams offer; undefined for everyone else. */
+  duties?: { held: DutyCode[]; offered: DutyCode[] };
   suspended: boolean;
   hasLeft: boolean;
 }) {
@@ -180,6 +186,12 @@ export function DirectoryMenu({
                   onClick={() => show("subjects")}
                 >
                   {t("reviews.editSubjects")}
+                </MenuItem>
+              )}
+
+              {duties && !hasLeft && (
+                <MenuItem icon={<ShieldStarIcon className="size-4" />} onClick={() => show("duties")}>
+                  {t("duties.menuAction")}
                 </MenuItem>
               )}
 
@@ -291,6 +303,9 @@ export function DirectoryMenu({
       )}
       {panel === "legalName" && legalName !== undefined && (
         <LegalNamePanel membershipId={membershipId} name={name} initial={legalName} onClose={() => setPanel(null)} />
+      )}
+      {panel === "duties" && duties && (
+        <DutiesPanel membershipId={membershipId} name={name} initial={duties.held} offered={duties.offered} onClose={() => setPanel(null)} />
       )}
       {panel === "staff" && staffRecord && (
         <StaffRecordPanel membershipId={membershipId} name={name} initial={staffRecord} onClose={() => setPanel(null)} />

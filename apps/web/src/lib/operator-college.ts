@@ -1,6 +1,7 @@
 import "server-only";
 import {
   COLLEGE_KINDS,
+  parseStreams,
   deadlineApplies,
   deadlineWindows,
   modulesForKind,
@@ -72,6 +73,7 @@ const COLLEGE_SELECT = {
   name: true,
   city: true,
   kind: true,
+  streamsJson: true,
   timezone: true,
   isTestFixture: true,
   affiliatingUniversity: true,
@@ -164,6 +166,8 @@ export async function listColleges(session: ActiveContext, opts: CollegesOpts = 
       name: s.name,
       city: s.city,
       kind: s.kind as InstitutionKind,
+      // The college's streams (5 Oct 2026), chosen at onboarding.
+      streams: parseStreams(s.streamsJson),
       isTestFixture: s.isTestFixture,
       affiliatingUniversity: s.affiliatingUniversity,
       aisheCode: s.aisheCode,

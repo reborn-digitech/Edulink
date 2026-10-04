@@ -1,4 +1,4 @@
-import type { RoleCode, SchoolModuleCode } from "@edulink/contracts";
+import type { DutyCode, RoleCode, SchoolModuleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 
 /**
@@ -12,7 +12,11 @@ import type { TranslationKey } from "@edulink/i18n";
  * module on (/api/v1/me's `modules`); the layout hides it otherwise. A module
  * builder adds a role's tabs and More entries with this field, as on the web.
  */
-export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode };
+/**
+ * `duty` (5 Oct 2026): the tab or entry exists only for a FACULTY or HOD who
+ * holds that duty (/api/v1/me's `duties`), as the web's NAV entries with `duty`.
+ */
+export type Tab = { name: string; labelKey: TranslationKey; icon: string; module?: SchoolModuleCode; duty?: DutyCode };
 
 export const TABS: Record<RoleCode, Tab[]> = {
   TEACHER: [
@@ -109,7 +113,7 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  * repeated here: the bar already has them.
  */
 export type MenuGroup = "daily" | "school" | "running";
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
  * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
@@ -402,6 +406,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { labelKey: "collegeOffice.eResourcesTitle", icon: "globe", group: "school", screen: "/(app)/e-resources", module: "LIBRARY" },
+    // Duties (5 Oct 2026): the anti-ragging register, for a member of the squad.
+    { labelKey: "duties.antiRagging.title", icon: "shield", group: "running", screen: "/(app)/anti-ragging", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
@@ -411,6 +417,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { labelKey: "collegeOffice.eResourcesTitle", icon: "globe", group: "school", screen: "/(app)/e-resources", module: "LIBRARY" },
+    // Duties (5 Oct 2026): the anti-ragging register, for an HOD on the squad.
+    { labelKey: "duties.antiRagging.title", icon: "shield", group: "running", screen: "/(app)/anti-ragging", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
   ],
   EXAM_CONTROLLER: COLLEGE_STAFF_MENU,
   IQAC: COLLEGE_STAFF_MENU,
@@ -564,17 +572,19 @@ export const HIDDEN_SCREENS = [
   "recruiter-drive",
   // The library's e-resources at a college (campaign 2026-10-04, G-3): FACULTY and HOD from More, a student from the library screen.
   "e-resources",
+  // Duties (5 Oct 2026): the anti-ragging register, from More and the duty card on the faculty's home.
+  "anti-ragging",
 ] as const;
 
-/** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off is left out. */
-export function menuFor(role: RoleCode, modules?: readonly string[]): { group: MenuGroup; items: MenuItem[] }[] {
-  const shown = MENU[role].filter((item) => !item.module || !modules || modules.includes(item.module));
+/** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */
+export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = []): { group: MenuGroup; items: MenuItem[] }[] {
+  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)));
   return MENU_GROUPS.map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
 
-/** Whether a tab is drawn: always, unless it belongs to a module the school has off. */
-export function tabShown(tab: Tab, modules: readonly string[]): boolean {
-  return !tab.module || modules.includes(tab.module);
+/** Whether a tab is drawn: always, unless it belongs to a module the school has off or a duty the person does not hold. */
+export function tabShown(tab: Tab, modules: readonly string[], duties: readonly string[] = []): boolean {
+  return (!tab.module || modules.includes(tab.module)) && (!tab.duty || duties.includes(tab.duty));
 }
 
 /**

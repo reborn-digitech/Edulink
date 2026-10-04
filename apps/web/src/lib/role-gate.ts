@@ -47,6 +47,12 @@ import { assertModuleOn, enabledModules } from "./modules";
  * ACADEMICS, EXAM_CONTROLLER EXAMS, IQAC IQAC, TPO PLACEMENT); ACCOUNTS and
  * RECRUITER hang on none, so nothing of theirs is closed by a switch.
  *
+ * THE DUTIES (5 October 2026): a catalog entry with `duties` lets a FACULTY or
+ * HOD through only holding one of them on their membership (getSession reads
+ * Membership.dutiesJson and passes it here as `duties`); a NAV entry with
+ * `duty` opens its page only to the holder. Both roles are limited roles, so
+ * the rule sits beside rule 1.
+ *
  * The four roles that existed before are not checked against `access` here:
  * their handlers do that and the API sweep proves it, and this file is not
  * the place to change what they are answered.
@@ -82,7 +88,7 @@ export function endpointFor(method: string, path: string, catalog: readonly Endp
  * a pupil's record, sign-in — are the person's own and are not gated here.
  */
 export const APP_SEGMENTS = [
-  "accounts", "admin", "alumni", "archive", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver",
+  "accounts", "admin", "alumni", "archive", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver", "duties",
   "enquiries", "exam-cell", "exams", "expert", "experts", "explore", "faculty", "hod", "hostel", "incidents", "iqac", "joins",
   "library", "mentoring", "notifications", "parent", "people", "placement", "principal", "recruiter", "remarks",
   "report-cards", "reports", "reviews", "sessions", "student", "teacher", "timetable", "vacancies",
@@ -108,8 +114,10 @@ async function ownModuleOn(role: LimitedRole, schoolId: string | null): Promise<
  * Whether a module role may open this page: anything outside the school's
  * working surface; on it, its home, the notices, and the NAV entries whose
  * module the school has on — none of the NAV while its own module is off.
+ * A NAV entry carrying `duty` (5 Oct 2026) opens only to a member holding it:
+ * `duties` are the session's own (a FACULTY's or HOD's).
  */
-export function modulePagePermitted(role: Role, path: string, modulesOn: readonly string[]): boolean {
+export function modulePagePermitted(role: Role, path: string, modulesOn: readonly string[], duties: readonly string[] = []): boolean {
   const segment = path.split("/")[1] ?? "";
   if (!(APP_SEGMENTS as readonly string[]).includes(segment)) return true;
   const home = ROLE_HOME[role];
@@ -119,7 +127,7 @@ export function modulePagePermitted(role: Role, path: string, modulesOn: readonl
     const own = MODULE_OF_ROLE[role];
     if (own && !modulesOn.includes(own)) return false;
   }
-  return NAV[role].some((item) => (!item.module || modulesOn.includes(item.module)) && isActive(path, item));
+  return NAV[role].some((item) => (!item.module || modulesOn.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && isActive(path, item));
 }
 
 /**
@@ -141,7 +149,7 @@ export function ownPageModuleOff(role: Role, path: string, modulesOn: readonly s
  * page must be served as if the session had no school, "not-found" for the
  * role's own menu page whose module is off here, and "pass" otherwise.
  */
-export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
+export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null; duties?: readonly string[] }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
   // FAIL CLOSED (campaign S-11). No stamp means the middleware did not run — a path its matcher
   // skips, such as one ending in ".ab", still reaches a page — and a stamp whose path does not
   // decode ("!") cannot be gated. Either way a limited role is served as if it had no school,
@@ -157,7 +165,9 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
     if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module)) return "pass";
     const e = endpointFor(method, path, catalog);
     if (isLimitedRole(ctx.role)) {
-      if (!e || !permits(e, ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+      // A door naming `duties` (5 Oct 2026) lets a FACULTY or HOD through only with one of them; its own sentence says so.
+      if (!e || !permits({ access: e.access, limitedRoles: e.limitedRoles }, ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+      if (!permits(e, ctx.role, ctx.duties ?? [])) throw new AccessError("duties.refuseNoDuty");
       const own = MODULE_OF_ROLE[ctx.role];
       if (own && !isPersonDoor(path) && !(await ownModuleOn(ctx.role, ctx.schoolId))) throw new ModuleOffError(own);
     }
@@ -167,7 +177,7 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   if (path.startsWith("/api/")) return "pass";
   if (isLimitedRole(ctx.role)) {
     const on = await enabledModules(ctx.schoolId);
-    if (!modulePagePermitted(ctx.role, path, on)) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";
+    if (!modulePagePermitted(ctx.role, path, on, ctx.duties ?? [])) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";
   }
   return "pass";
 }

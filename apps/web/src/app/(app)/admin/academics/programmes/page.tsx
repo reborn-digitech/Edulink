@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { BooksIcon, GraduationCapIcon, ListChecksIcon, TargetIcon } from "@phosphor-icons/react/ssr";
-import { EXIT_AWARDS, PROGRAMME_LEVELS, REGULATORS, COURSE_KINDS } from "@edulink/contracts";
+import { EXIT_AWARDS, PROGRAMME_LEVELS, REGULATORS, COURSE_KINDS, defaultRegulatorFor } from "@edulink/contracts";
+import { streamsOf } from "@/lib/streams";
+import { streamLabel } from "@/lib/institution";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -28,6 +30,8 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
   const params = await searchParams;
   const s = await academicsStructure(ctx);
   const dept = new Map(s.departments.map((d) => [d.id, d.name]));
+  // The college's streams (5 Oct 2026): a new programme picks one, and its regulator defaults from it.
+  const streams = await streamsOf(ctx.schoolId);
   return (
     <div className="space-y-6">
       <OfficeTop t={t} current="programmes" params={params} />
@@ -43,7 +47,7 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
                 return (
                   <li key={p.id} className="space-y-2 py-3">
                     <p>
-                      <span className="font-semibold text-fg">{p.code}</span> {p.name} <span className="text-fg-muted">· {t(LEVEL_KEY[p.level]!)} · {dept.get(p.departmentId)} · {t("academics.yearsIntake", { years: p.durationYears, intake: p.intake })} · {p.regulator}</span>{" "}
+                      <span className="font-semibold text-fg">{p.code}</span> {p.name} <span className="text-fg-muted">· {t(LEVEL_KEY[p.level]!)} · {dept.get(p.departmentId)} · {t("academics.yearsIntake", { years: p.durationYears, intake: p.intake })} · {p.regulator}{p.stream ? ` · ${streamLabel(p.stream, t)}` : ""}</span>{" "}
                       <Badge tone="info">{t("academics.thresholdBadge", { threshold: p.attendanceThreshold })}</Badge>
                     </p>
                     {p.exitPoints.length ? <p className="text-fg-muted">{t("academics.exitsLine", { exits: p.exitPoints.map((e) => t("academics.exitAfter", { year: e.afterYear, award: t(AWARD_KEY[e.award]!), credits: e.credits })).join(" · ") })}</p> : null}
@@ -73,7 +77,14 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
               </SelectField>
               <TextField label={t("academics.fieldYears")} name="durationYears" type="number" min={1} max={6} defaultValue={3} />
               <TextField label={t("academics.fieldIntake")} name="intake" type="number" min={0} max={5000} defaultValue={60} />
-              <SelectField label={t("academics.fieldRegulator")} name="regulator" defaultValue="UGC">
+              {streams.length ? (
+                <SelectField label={t("streams.programmeField")} name="stream" defaultValue={streams.length === 1 ? streams[0] : ""} hint={t("streams.programmeFieldHint")}>
+                  <option value="">{t("academics.none")}</option>
+                  {streams.map((st) => <option key={st} value={st}>{`${streamLabel(st, t)} · ${defaultRegulatorFor(st)}`}</option>)}
+                </SelectField>
+              ) : null}
+              <SelectField label={t("academics.fieldRegulator")} name="regulator" defaultValue={streams.length ? "" : "UGC"}>
+                {streams.length ? <option value="">{t("streams.regulatorFromStream")}</option> : null}
                 {REGULATORS.map((r) => <option key={r} value={r}>{r}</option>)}
               </SelectField>
               <TextField label={t("academics.fieldThreshold")} name="attendanceThreshold" type="number" min={1} max={100} hint={t("academics.fieldThresholdHint")} />

@@ -95,7 +95,7 @@ export async function saveProgrammeAction(form: FormData): Promise<void> {
       return award ? [{ afterYear: Number(y), award, credits: Number(y) * 40 }] : [];
     });
     const threshold = field(form, "attendanceThreshold");
-    await saveProgramme(await requireApiUser(), programmeSaveSchema.parse({ id: field(form, "id") || undefined, departmentId: field(form, "departmentId"), code: field(form, "code"), name: field(form, "name"), level: field(form, "level"), durationYears: intField(form, "durationYears"), intake: intField(form, "intake"), regulator: field(form, "regulator"), attendanceThreshold: threshold ? Number(threshold) : undefined, exitPoints: exits }));
+    await saveProgramme(await requireApiUser(), programmeSaveSchema.parse({ id: field(form, "id") || undefined, departmentId: field(form, "departmentId"), code: field(form, "code"), name: field(form, "name"), level: field(form, "level"), durationYears: intField(form, "durationYears"), intake: intField(form, "intake"), regulator: field(form, "regulator") || undefined, stream: field(form, "stream") || undefined, attendanceThreshold: threshold ? Number(threshold) : undefined, exitPoints: exits }));
     return "academics.saved";
   });
 }

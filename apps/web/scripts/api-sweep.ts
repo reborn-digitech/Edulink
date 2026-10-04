@@ -31,7 +31,7 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { permits } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
-import { isCollegeKind } from "@edulink/contracts";
+import { isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
@@ -54,6 +54,10 @@ const SESSION_MS = 86_400_000;
 /** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
 type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean };
 const tenantOf: Partial<Record<Role, Tenant>> = {};
+/** Each actor's duties (5 Oct 2026): a FACULTY's or HOD's from their membership, [] for the rest — a door naming `duties` expects 403 without one. */
+const dutiesOf: Partial<Record<Role, string[]>> = {};
+/** permits() as this actor: the role, and the duties the sweep's actor of that role holds. */
+const actorPermits = (e: Endpoint, role: Role): boolean => permits(e, role, dutiesOf[role] ?? []);
 async function tenantAt(schoolId: string): Promise<Tenant> {
   const [school, rows] = await Promise.all([db.school.findUnique({ where: { id: schoolId }, select: { kind: true } }), db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })]);
   return { schoolId, modules: new Set(rows.map((r) => r.module)), college: isCollegeKind(school?.kind ?? "SCHOOL") };
@@ -405,8 +409,9 @@ async function actors(): Promise<Record<Role, string>> {
     for (const role of ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as Role[]) tenantOf[role] = college;
     const collegeActors: [Role, string][] = [["FACULTY", "zz.faculty01@zz.test"], ["HOD", "zz.hod01@zz.test"], ["EXAM_CONTROLLER", "zz.examctrl@zz.test"], ["IQAC", "zz.iqac@zz.test"], ["TPO", "zz.tpo@zz.test"], ["ACCOUNTS", "zz.accounts@zz.test"]];
     for (const [role, email] of collegeActors) {
-      const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+      const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true, dutiesJson: true } });
       if (member) out[role] = await mint(member.userId, role, vidya.id);
+      if (member && isDutyRole(role)) dutiesOf[role] = parseDuties(member.dutiesJson);
     }
   }
   const recruiter = await db.recruiterProfile.findFirst({ where: { user: { email: "zz.recruiter01@zz.test" }, disabledAt: null }, select: { userId: true } });
@@ -444,7 +449,7 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // actor holding one role cannot be read for from here: let through or refused.
   if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
   // "signed-in" is every role but the limited ones (the module roles, the college's staff roles, the recruiter), which pass only where `limitedRoles` names them (catalog types.ts).
-  const permitted = permits(e, role);
+  const permitted = actorPermits(e, role);
   if (!permitted) return 403;
   // The check-in takes no body, so its empty-body probe meets the calendar;
   // the substitution door's empty body is refused by the parser first (422),
@@ -623,7 +628,7 @@ async function crossProbe(mode: "school" | "person") {
         const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
         if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
         for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
-          if (!permits(e, role)) continue; // a role the door refuses anyway proves nothing here
+          if (!actorPermits(e, role)) continue; // a role the door refuses anyway (or the actor lacks its duty) proves nothing here
           await check(e, role, path, body, "another school's ids");
         }
         continue;
@@ -644,7 +649,7 @@ async function crossProbe(mode: "school" | "person") {
       if (plan.kind === "none") { skipped.push(`${key} (no id in the path)`); continue; }
       if (plan.kind === "skip") { skipped.push(`${key} (${plan.reason})`); continue; }
       // The fixture tenant's own actors, and those who hold no school (a guardian, an expert, a recruiter).
-      const roles = (ROLES as readonly Role[]).filter((r) => tokens[r] && permits(e, r) && ((tenantOf[r]?.schoolId ?? null) === null || tenantOf[r]!.schoolId === plan.homeId));
+      const roles = (ROLES as readonly Role[]).filter((r) => tokens[r] && actorPermits(e, r) && ((tenantOf[r]?.schoolId ?? null) === null || tenantOf[r]!.schoolId === plan.homeId));
       if (roles.length === 0) { skipped.push(`${key} (no actor of ${plan.homeSlug} may call it)`); continue; }
       for (const t of plan.targets) {
         if (t.reason !== null) { skipped.push(`${key} at ${t.slug} (${t.reason})`); continue; }
@@ -961,12 +966,12 @@ async function main() {
       if (e.path === "/api/v1/auth/logout" && role) continue; // would revoke the sweep's own session
       const want = expected(e, role);
       // A permitted role at a school with the door's module off is answered by the gate (SWEEPS-4).
-      const off = role && permits(e, role) && e.access !== "operator" && e.access !== "app-admin" ? moduleOff(e, role) : "no";
+      const off = role && actorPermits(e, role) && e.access !== "operator" && e.access !== "app-admin" ? moduleOff(e, role) : "no";
       const got = await hit(e, role ? tokens[role] : null, path);
       results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: wanted(want, off), got: got.status, ok: judge(want, off, got) });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
-      if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && permits(e, role)) {
+      if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && actorPermits(e, role)) {
         const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
         const want = refusedOnClosedDay(e) ? [403] : [200, 201];
         results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: wanted(want, off), got: answer.status, ok: judge(want, off, answer) });

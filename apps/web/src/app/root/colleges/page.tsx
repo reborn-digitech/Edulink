@@ -4,7 +4,7 @@ import { formatPaise } from "@edulink/i18n";
 import type { OperatorCollegeRow } from "@edulink/contracts";
 import { requireSuperuser } from "@/lib/tenancy";
 import { listColleges } from "@/lib/operator-college";
-import { institutionKindLabel } from "@/lib/institution";
+import { institutionKindLabel, streamLabel } from "@/lib/institution";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { PageHeader } from "@/components/ui/page-header";
@@ -130,6 +130,8 @@ function CollegeCard({ college, t, money }: { college: OperatorCollegeRow; t: Tr
       />
       <CardBody className="space-y-4">
         <dl className="grid gap-3 sm:grid-cols-2">
+          {/* The streams chosen at onboarding (5 Oct 2026); the registrar may change them on the college profile. */}
+          <Fact label={t("streams.label")}>{college.streams.length ? college.streams.map((s) => streamLabel(s, t)).join(" · ") : t("streams.noneChosen")}</Fact>
           <Fact label={t("college.fieldUniversity")}>{college.affiliatingUniversity ?? none}</Fact>
           <Fact label={t("college.fieldAishe")}>{college.aisheCode ?? none}</Fact>
           <Fact label={t("operatorCollege.regulators")}>{regulators.length ? regulators.join(" · ") : none}</Fact>

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { streamSchema } from "./streams";
 
 /**
  * THE COLLEGE'S ACADEMICS (module ACADEMICS, roles FACULTY and HOD; the
@@ -22,13 +23,22 @@ const code = z.string().trim().min(1).max(20).regex(/^[A-Za-z0-9][A-Za-z0-9\-/.]
 
 export const PROGRAMME_LEVELS = ["UG", "PG", "DIPLOMA"] as const;
 export const programmeLevelSchema = z.enum(PROGRAMME_LEVELS);
-/** The regulator a programme answers to; its attendance rule follows (AICTE and UGC 75 %, PCI 80 %, BCI 70 %). */
-export const REGULATORS = ["AICTE", "UGC", "PCI", "BCI", "NCTE", "OTHER"] as const;
+/**
+ * The regulator a programme answers to; its attendance rule follows (AICTE and UGC 75 %, PCI 80 %, BCI 70 %).
+ * The streams (5 Oct 2026, ./streams.ts) added the Council of Architecture (COA), the National Medical
+ * Commission (NMC), the Indian Council of Agricultural Research (ICAR), the Dental Council of India (DCI)
+ * and the Indian Nursing Council (INC); a new programme defaults to its stream's first regulator.
+ */
+export const REGULATORS = ["AICTE", "UGC", "PCI", "BCI", "NCTE", "COA", "NMC", "ICAR", "DCI", "INC", "OTHER"] as const;
 export const regulatorSchema = z.enum(REGULATORS);
 export type Regulator = z.infer<typeof regulatorSchema>;
-/** The attendance threshold a new programme starts with, by regulator: pharmacy 80, law 70, everyone else the UGC's 75. The office may change it per programme. */
+/**
+ * The attendance threshold a new programme starts with, by regulator: pharmacy 80, nursing 80 (INC's
+ * syllabus asks 80 % in theory and practical), law 70, everyone else 75 (UGC, AICTE, NCTE, COA, NMC,
+ * ICAR, DCI). The office may change it per programme.
+ */
 export function defaultAttendanceThreshold(regulator: string): number {
-  return regulator === "PCI" ? 80 : regulator === "BCI" ? 70 : 75;
+  return regulator === "PCI" || regulator === "INC" ? 80 : regulator === "BCI" ? 70 : 75;
 }
 export const COURSE_KINDS = ["CORE", "ELECTIVE", "MINOR", "HONOURS", "OPEN"] as const;
 export const courseKindSchema = z.enum(COURSE_KINDS);
@@ -97,7 +107,7 @@ export const academicsSettingsSchema = z.object({
 export type AcademicsSettings = z.infer<typeof academicsSettingsSchema>;
 
 export const departmentSchema = z.object({ id: cuid, code: z.string(), name: z.string(), hodMembershipId: cuid.nullable(), hodName: z.string().nullable(), condoneFloorPercent: z.number().int(), faculty: z.number().int(), students: z.number().int() });
-export const programmeSchema = z.object({ id: cuid, departmentId: cuid, code: z.string(), name: z.string(), level: programmeLevelSchema, durationYears: z.number().int(), intake: z.number().int(), regulator: regulatorSchema, attendanceThreshold: z.number().int(), exitPoints: z.array(exitPointSchema) });
+export const programmeSchema = z.object({ id: cuid, departmentId: cuid, code: z.string(), name: z.string(), level: programmeLevelSchema, durationYears: z.number().int(), intake: z.number().int(), regulator: regulatorSchema, attendanceThreshold: z.number().int(), exitPoints: z.array(exitPointSchema), /** The college stream the programme belongs to (5 Oct 2026); null until the registrar picks one. Optional so an older server's answer still parses. */ stream: streamSchema.nullable().default(null) });
 export const schemeSchema = z.object({ id: cuid, programmeId: cuid, name: z.string(), effectiveYear: z.number().int(), gradingTable: z.array(gradeRowSchema), passingRules: passingRulesSchema });
 export const courseSchema = z.object({ id: cuid, schemeId: cuid, code: z.string(), name: z.string(), semester: z.number().int(), creditsL: z.number().int(), creditsT: z.number().int(), creditsP: z.number().int(), credits: z.number().int(), kind: courseKindSchema, outcomes: z.array(outcomeSchema), mapping: z.array(z.object({ coCode: z.string(), poCode: z.string(), level: z.number().int().min(1).max(3) })) });
 export const termSchema = z.object({ id: cuid, name: z.string(), academicYear: z.string(), startsOn: dateKey, endsOn: dateKey, registrationOpensOn: dateKey, registrationClosesOn: dateKey, registrationOpen: z.boolean() });
@@ -136,7 +146,10 @@ export const programmeSaveSchema = z.object({
   level: programmeLevelSchema,
   durationYears: z.number().int().min(1).max(6),
   intake: z.number().int().min(0).max(5000),
-  regulator: regulatorSchema,
+  /** Left out: the stream's default regulator (defaultRegulatorFor in ./streams.ts); one of the two must be given. */
+  regulator: regulatorSchema.optional(),
+  /** The college stream (5 Oct 2026): one of the college's own; null clears it. */
+  stream: streamSchema.nullable().optional(),
   /** Left out: the regulator's default (defaultAttendanceThreshold). */
   attendanceThreshold: z.number().int().min(1).max(100).optional(),
   exitPoints: z.array(exitPointSchema).max(6),

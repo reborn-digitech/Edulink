@@ -633,6 +633,8 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
     gradeLow: input.gradeLow ?? null,
     gradeHigh: input.gradeHigh ?? null,
     kind: input.kind ?? "SCHOOL",
+    // A college's streams (5 Oct 2026), chosen beside the kind: createSchool refuses a college with none and applies their preset's modules.
+    streams: input.streams ?? [],
   };
 
   /** A step's refusal, thrown to roll the transaction back and caught at the door. */

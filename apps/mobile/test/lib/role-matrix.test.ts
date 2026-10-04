@@ -94,4 +94,16 @@ describe("the contract matrix's module and college rules (LOAD-6)", () => {
     expect(verdict(path, "PARENT", guardian, MODULE_OFF)).toBeNull();
     expect(verdict(path, "PARENT", guardian, OK)).toBeNull();
   });
+  it("a duty's door (x-duties, 5 Oct 2026) opens to a FACULTY or HOD holding the duty, and to the office and the head without one", () => {
+    const path = "/api/v1/duties/anti-ragging";
+    expect(op(path)["x-duties"]).toEqual(["ANTI_RAGGING_SQUAD"]);
+    expect(allowed(op(path), "FACULTY", LIMITED, ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"])).toBe("2xx");
+    expect(allowed(op(path), "FACULTY", LIMITED, ["LAB_INCHARGE"])).toBe(403);
+    expect(allowed(op(path), "HOD", LIMITED)).toBe(403);
+    expect(allowed(op(path), "ADMIN", LIMITED)).toBe("2xx");
+    expect(allowed(op(path), "STUDENT", LIMITED, ["ANTI_RAGGING_SQUAD"])).toBe(403);
+    // The squad member at Vidya: a 200 is right; the HOD without the duty: a 403 is right, a 200 wrong.
+    expect(judge(allowed(op(path), "FACULTY", LIMITED, ["ANTI_RAGGING_SQUAD"]), moduleOff(op(path), "2xx", vidya), OK)).toBeNull();
+    expect(judge(allowed(op(path), "HOD", LIMITED), "no", OK)).toBe("wanted 403, got 2xx");
+  });
 });

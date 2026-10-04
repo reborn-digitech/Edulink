@@ -753,6 +753,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "hostel.squadRound": "audit.hostelSquadRound",
   "transport.routeCollege": "audit.transportRouteCollege",
   "calendar.import": "audit.calendarImport",
+  // Streams and duties (5 Oct 2026).
+  "college.streams.set": "audit.collegeStreamsSet",
+  "people.duties.set": "audit.peopleDutiesSet",
 };
 
 export function actionKey(action: string): TranslationKey | null {

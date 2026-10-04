@@ -48,7 +48,8 @@ export default function AppLayout() {
   }
   // A tab of a module the active school has off is not drawn (3 Oct 2026).
   const modules = session.status === "signed-in" ? (session.me.modules ?? []) : [];
-  const tabs = TABS[role].filter((tab) => tabShown(tab, modules));
+  // …and a duty's tab only for whoever holds it (5 Oct 2026).
+  const tabs = TABS[role].filter((tab) => tabShown(tab, modules, session.status === "signed-in" ? (session.me.duties ?? []) : []));
   return (
     <Tabs
       // "Back" from a screen opened from More goes to More, not to the first tab.

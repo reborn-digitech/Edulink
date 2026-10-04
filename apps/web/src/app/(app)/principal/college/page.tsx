@@ -26,6 +26,7 @@ import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { StreamHome } from "@/components/college/stream-home";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("collegeHub.title") };
@@ -64,6 +65,9 @@ export default async function PrincipalCollegePage() {
         title={t("collegeHub.title")}
         description={[c.school.name, c.school.affiliatingUniversity, c.term ? c.term.name : t("collegeHub.noTerm")].filter(Boolean).join(" · ")}
       />
+
+      {/* The college's streams, its tiles in their order and what is not built yet (5 Oct 2026); the head's, so the office reads its own on /admin. */}
+      {ctx.role === "PRINCIPAL" && <StreamHome schoolId={ctx.schoolId} role="PRINCIPAL" t={t} />}
 
       {/* ---------------- what waits for the head ---------------- */}
       <Card>

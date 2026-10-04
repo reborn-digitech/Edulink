@@ -8,6 +8,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { CollegeRoleHome } from "@/screens/college/role-home";
+import { DutyCard } from "@/screens/college/duties";
 import { Notice } from "../staff/shared";
 import { GROUND_KEY } from "./words";
 
@@ -44,6 +45,8 @@ export function HodHomeScreen() {
       {home.isPending ? <Loading /> : null}
       {home.isError ? <Failed message={home.error.message} onRetry={() => void home.refetch()} /> : null}
       {h && !h.department ? <Text tone="muted">{t("academics.noDepartmentBody")}</Text> : null}
+      {/* My duties (5 Oct 2026). */}
+      <DutyCard />
       {h?.department ? (
         <>
           <Card>

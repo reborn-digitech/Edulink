@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { NAAC_GRADES, NIRF_CATEGORIES, type CollegeProfile } from "@edulink/contracts";
+import { NAAC_GRADES, NIRF_CATEGORIES, type CollegeProfile, type StreamCode } from "@edulink/contracts";
+import { StreamChips, StreamPicker } from "@/components/college/stream-picker";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
@@ -24,6 +25,8 @@ export function CollegeProfileForm({ profile, canWrite }: { profile: CollegeProf
     naacValidUntil: profile.naacValidUntil ?? "",
     nirfCategory: profile.nirfCategory ?? "",
   });
+  // The college's streams (5 Oct 2026): the registrar changes them here; at least one stays.
+  const [streams, setStreams] = useState<StreamCode[]>(profile.streams ?? []);
   const set = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setForm((f) => ({ ...f, [key]: e.target.value }));
   function save(event: React.FormEvent) {
     event.preventDefault();
@@ -36,6 +39,7 @@ export function CollegeProfileForm({ profile, canWrite }: { profile: CollegeProf
         naacGrade: form.naacGrade || null,
         naacValidUntil: form.naacValidUntil || null,
         nirfCategory: form.nirfCategory || null,
+        streams,
       });
       if (!result.ok) {
         toast({ tone: "danger", title: result.error ?? t("common.tryAgain") });
@@ -47,6 +51,7 @@ export function CollegeProfileForm({ profile, canWrite }: { profile: CollegeProf
   }
   return (
     <form onSubmit={save} className="space-y-4" noValidate>
+      {canWrite ? <StreamPicker value={streams} onChange={setStreams} error={streams.length === 0 ? t("streams.refuseNone") : undefined} /> : <StreamChips streams={streams} />}
       <TextField label={t("college.fieldUniversity")} value={form.affiliatingUniversity} onChange={set("affiliatingUniversity")} disabled={!canWrite} maxLength={200} />
       <div className="grid gap-4 sm:grid-cols-2">
         <TextField label={t("college.fieldAishe")} value={form.aisheCode} onChange={set("aisheCode")} disabled={!canWrite} hint={t("college.fieldAisheHint")} maxLength={10} />

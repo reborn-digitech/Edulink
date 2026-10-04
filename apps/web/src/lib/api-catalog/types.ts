@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import { LIMITED_ROLES, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
+import { LIMITED_ROLES, type DutyCode, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | RoleCode[];
 
@@ -52,6 +52,15 @@ export type Endpoint = {
    * `x-limited-roles`. See `permits` below.
    */
   limitedRoles?: LimitedRoleCode[];
+  /**
+   * THE DUTIES THIS DOOR ASKS OF A COLLEGE TEACHER (5 October 2026): a
+   * FACULTY or HOD passes it only holding one of these on their membership
+   * (Membership.dutiesJson, packages/contracts v1/duties.ts); every other role
+   * is decided by `access` as before. The session's gate (role-gate.ts) reads
+   * it before the handler runs, `permits` and the API sweep's expected()
+   * read it with the actor's duties, and the docs publish it as `x-duties`.
+   */
+  duties?: DutyCode[];
   request?: ZodTypeAny;
   response: ZodTypeAny;
   /**
@@ -237,9 +246,15 @@ export type SweepFixture = {
  * `limitedRoles` that the session's gate, the API sweep and the docs share.
  * "anyone", "account", "operator" and "app-admin" are decided by the handler
  * from the person rather than the role, so every role passes the gate there.
+ *
+ * `duties` (5 Oct 2026) are the caller's own (a FACULTY's or HOD's, [] for
+ * anyone else): a door that names `duties` lets those two roles through only
+ * with one of them. Left out, the caller holds none.
  */
-export function permits(e: Pick<Endpoint, "access" | "limitedRoles">, role: RoleCode): boolean {
+export function permits(e: Pick<Endpoint, "access" | "limitedRoles" | "duties">, role: RoleCode, duties: readonly string[] = []): boolean {
   if (e.access === "anyone" || e.access === "account" || e.access === "operator" || e.access === "app-admin") return true;
-  if (e.access === "signed-in") return !(LIMITED_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as LimitedRoleCode);
-  return e.access.includes(role);
+  const byRole = e.access === "signed-in" ? !(LIMITED_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as LimitedRoleCode) : e.access.includes(role);
+  if (!byRole) return false;
+  if (e.duties?.length && (role === "FACULTY" || role === "HOD")) return e.duties.some((d) => duties.includes(d));
+  return true;
 }

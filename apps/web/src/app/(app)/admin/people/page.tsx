@@ -18,6 +18,8 @@ import { isDeliverableEmail } from "@/lib/login-name";
 import { TabBar } from "@/components/ui/tabs";
 import { isCollegeRole, ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import { isCollegeKind } from "@/lib/institution";
+import { isDutyRole, parseDuties } from "@edulink/contracts";
+import { offeredDuties } from "@/lib/duties";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
@@ -53,6 +55,8 @@ export default async function DirectoryPage({
   // The role chips by the institution's kind (4 Oct 2026): a college's six staff roles at a college, TEACHER elsewhere.
   const kindRow = await db.school.findUnique({ where: { id: ctx.schoolId }, select: { kind: true } });
   const roleChips = SCHOOL_ROLES.filter((r) => (isCollegeKind(kindRow?.kind) ? r !== "TEACHER" : !isCollegeRole(r)));
+  // The duties a college's streams offer its teachers (5 Oct 2026): the row menu's editor on a FACULTY or HOD.
+  const dutiesOffered = isCollegeKind(kindRow?.kind) ? await offeredDuties(ctx.schoolId) : [];
   // Anything other than the literal "SUSPENDED" means the ordinary view. Not a
   // pass-through of `params.status` into the query — this is user input, and it
   // lands in a WHERE clause.
@@ -296,6 +300,12 @@ export default async function DirectoryPage({
                             {subjects.join(", ")}
                           </p>
                         )}
+                        {/* A college teacher's duties (5 Oct 2026), on the person's card. */}
+                        {isDutyRole(role) && parseDuties(member.dutiesJson).length > 0 && (
+                          <p className="mt-0.5 truncate text-xs text-fg-subtle" data-testid="duties">
+                            {t("duties.cardLine", { duties: parseDuties(member.dutiesJson).map((d) => t(`duties.${d}.name`)).join(", ") })}
+                          </p>
+                        )}
                         {member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-fg-muted">
                             {t("people.leftAgo", {
@@ -400,6 +410,7 @@ export default async function DirectoryPage({
                                   appointedSubject: member.staffRecord?.appointedSubject ?? "",
                                 }
                           }
+                          duties={isDutyRole(role) && isCollegeKind(kindRow?.kind) ? { held: parseDuties(member.dutiesJson), offered: dutiesOffered } : undefined}
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
                         />

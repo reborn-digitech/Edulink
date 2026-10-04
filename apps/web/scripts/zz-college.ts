@@ -17,6 +17,10 @@ import { schoolCode } from "../src/lib/codes";
  *   grants: nothing, until she does); and zz.calumni01, an adult who left in
  *   2025 and holds an ALUMNUS row there.
  *
+ *   Streams (5 Oct 2026): Vidya ARTS, SCIENCE and COMMERCE; Shastri
+ *   ENGINEERING. Duties: zz.faculty01 LAB_INCHARGE and ANTI_RAGGING_SQUAD,
+ *   zz.faculty.s1 LAB_INCHARGE; nobody else holds one.
+ *
  *   ZZ Shastri Autonomous College (zz-shastri-college), kind
  *   AUTONOMOUS_COLLEGE, ACADEMICS and EXAMS on (and ALUMNI, as every tenant
  *   starts): an office (zz.cadmin.s), one faculty member (zz.faculty.s1) and
@@ -58,7 +62,7 @@ async function member(db: PrismaClient, userId: string, schoolId: string, role: 
   return db.membership.create({ data: { userId, schoolId, role, status: "ACTIVE", ...extra }, select: { id: true } });
 }
 
-async function college(db: PrismaClient, spec: { name: string; slug: string; kind: string; city: string; modules: readonly string[] }) {
+async function college(db: PrismaClient, spec: { name: string; slug: string; kind: string; city: string; modules: readonly string[]; streams: readonly string[] }) {
   const existing = await db.school.findUnique({ where: { slug: spec.slug }, select: { id: true, name: true, code: true } });
   const school =
     existing ??
@@ -81,10 +85,12 @@ async function college(db: PrismaClient, spec: { name: string; slug: string; kin
         naacGrade: spec.kind === "AUTONOMOUS_COLLEGE" ? "A+" : "B++",
         naacValidUntil: new Date("2029-03-31T00:00:00Z"),
         nirfCategory: "COLLEGE",
+        streamsJson: JSON.stringify(spec.streams),
       },
       select: { id: true, name: true, code: true },
     }));
-  if (existing) await db.school.update({ where: { id: existing.id }, data: { kind: spec.kind, isTestFixture: true } });
+  // The streams (5 Oct 2026) are the fixture's: set on every run, as the kind is.
+  if (existing) await db.school.update({ where: { id: existing.id }, data: { kind: spec.kind, isTestFixture: true, streamsJson: JSON.stringify(spec.streams) } });
   await db.schoolModule.createMany({ data: spec.modules.map((module) => ({ schoolId: school.id, module })), skipDuplicates: true });
   return school;
 }
@@ -100,8 +106,9 @@ export type CollegeFixtures = {
 };
 
 export async function buildColleges(db: PrismaClient, passwordHash: string): Promise<CollegeFixtures> {
-  const vidya = await college(db, { name: "ZZ Vidya College", slug: "zz-vidya-college", kind: "COLLEGE", city: "Pune", modules: [...SCHOOL_VERSION_MODULES, ...COLLEGE_MODULES] });
-  const shastri = await college(db, { name: "ZZ Shastri Autonomous College", slug: "zz-shastri-college", kind: "AUTONOMOUS_COLLEGE", city: "Nashik", modules: ["ALUMNI", "ACADEMICS", "EXAMS"] });
+  // The streams (5 Oct 2026): Vidya teaches arts, science and commerce; Shastri is an engineering college.
+  const vidya = await college(db, { name: "ZZ Vidya College", slug: "zz-vidya-college", kind: "COLLEGE", city: "Pune", modules: [...SCHOOL_VERSION_MODULES, ...COLLEGE_MODULES], streams: ["ARTS", "SCIENCE", "COMMERCE"] });
+  const shastri = await college(db, { name: "ZZ Shastri Autonomous College", slug: "zz-shastri-college", kind: "AUTONOMOUS_COLLEGE", city: "Nashik", modules: ["ALUMNI", "ACADEMICS", "EXAMS"], streams: ["ENGINEERING"] });
 
   const roles: Record<string, string> = {};
   const staff: [string, string, string, string][] = [
@@ -153,6 +160,12 @@ export async function buildColleges(db: PrismaClient, passwordHash: string): Pro
   await member(db, sAdmin.id, shastri.id, "ADMIN", { title: "Registrar" });
   const sFaculty = await person(db, passwordHash, { email: `zz.faculty.s1@${DOMAIN}`, name: "ZZ Dr Rohit Mahajan" });
   roles[`zz.faculty.s1@${DOMAIN}`] = (await member(db, sFaculty.id, shastri.id, "FACULTY", { title: "Associate professor, Commerce" })).id;
+  // DUTIES (5 Oct 2026), the fixture's, set on every run: zz.faculty01 on Vidya's anti-ragging squad and in charge of a lab
+  // (science offers it); zz.faculty02 and zz.hod01 hold none, so the sweep's HOD is refused a duty's door; Shastri's
+  // faculty member is a lab in-charge (engineering offers it).
+  await db.membership.update({ where: { id: roles[`zz.faculty01@${DOMAIN}`]! }, data: { dutiesJson: JSON.stringify(["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"]) } });
+  await db.membership.update({ where: { id: roles[`zz.faculty.s1@${DOMAIN}`]! }, data: { dutiesJson: JSON.stringify(["LAB_INCHARGE"]) } });
+  await db.membership.updateMany({ where: { schoolId: { in: [vidya.id, shastri.id] }, id: { notIn: [roles[`zz.faculty01@${DOMAIN}`]!, roles[`zz.faculty.s1@${DOMAIN}`]!] }, dutiesJson: { not: "[]" } }, data: { dutiesJson: "[]" } });
   const sStudent = await person(db, passwordHash, { email: `zz.cstudent.s1@${DOMAIN}`, name: "ZZ Tanvi Kale", birthdate: new Date("2006-09-09T00:00:00Z"), isMinor: false });
   await member(db, sStudent.id, shastri.id, "STUDENT", { gradeLevel: "12" });
 

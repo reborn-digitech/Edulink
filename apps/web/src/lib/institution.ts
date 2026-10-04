@@ -1,4 +1,4 @@
-import { INSTITUTION_KINDS, isCollegeKind, type InstitutionKind } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind, STREAMS, type InstitutionKind } from "@edulink/contracts";
 import type { Translate } from "./i18n/dictionary";
 
 export { INSTITUTION_KINDS, isCollegeKind, type InstitutionKind };
@@ -28,4 +28,13 @@ export function institutionNoun(kind: string | null | undefined, t: Translate): 
 /** The kind's name as a label: "School", "Junior college", "College", "Autonomous college". */
 export function institutionKindLabel(kind: string | null | undefined, t: Translate): string {
   return t(`institution.kind.${asKind(kind)}`);
+}
+
+/**
+ * A college stream's name (5 Oct 2026): "Arts", "Engineering", "Health
+ * sciences"… from `streams.<CODE>.name`; an unknown word is returned as it
+ * came, so a list never drops one silently. Client-safe, as the two above.
+ */
+export function streamLabel(code: string, t: Translate): string {
+  return (STREAMS as readonly string[]).includes(code) ? t(`streams.${code as (typeof STREAMS)[number]}.name`) : code;
 }

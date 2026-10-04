@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { institutionKindSchema } from "./modules";
+import { streamListSchema } from "./streams";
 import { expertKycDocumentSchema, expertKycStatusSchema } from "./experts";
 import { operatorCommissionSchema, operatorContactSchema, operatorSubscriptionSchema } from "./operator-dashboard";
 
@@ -182,6 +183,8 @@ export const operatorSchoolDetailsBodySchema = z.object({
   timezone: z.string().trim().min(1).max(64),
   /** What kind of institution (4 Oct 2026); a school when left out. Read when the tenant is made, not on a correction. */
   kind: institutionKindSchema.optional(),
+  /** A college's streams (5 Oct 2026), at least one for a college; ignored for a school and on a correction (the registrar changes them on the college profile). */
+  streams: streamListSchema.optional(),
 });
 export type OperatorSchoolDetailsBody = z.infer<typeof operatorSchoolDetailsBodySchema>;
 

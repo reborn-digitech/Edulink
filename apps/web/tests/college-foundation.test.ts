@@ -11,7 +11,8 @@
  * refused a class outright; a school is offered the school version's six
  * modules and refused a college's, a college all twelve; the autonomous
  * switch is the kind; the invitable roles follow the kind; and a recruiter
- * registers itself, lands on its own home and reaches no school door.
+ * registers itself, lands on its own home and reaches no school door; and
+ * (5 Oct 2026) the registrar changes the college's streams on its profile.
  */
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
@@ -33,6 +34,8 @@ import { GET as recruiterMeGet } from "@/app/api/v1/recruiter/me/route";
 import { GET as recruiterDrivesGet } from "@/app/api/v1/recruiter/drives/route";
 import { GET as recruiterCollegesGet } from "@/app/api/v1/recruiter/colleges/route";
 import { GET as feedGet } from "@/app/api/v1/shared/bulletin/route";
+import { POST as profilePost } from "@/app/api/v1/admin/college-profile/route";
+import { collegeProfile, setCollegeProfile } from "@/lib/college-profile";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -219,5 +222,30 @@ describe("the recruiter", () => {
     await db.recruiterProfile.update({ where: { userId: user.id }, data: { disabledAt: new Date() } });
     const landing = await resolveContext(user.id);
     expect(landing.role).toBeNull();
+  });
+});
+
+describe("the college profile's streams (5 Oct 2026)", () => {
+  it("are the registrar's to change: at least one, audited once as college.streams.set, refused at a school", async () => {
+    await as(ids.cAdmin, "ADMIN", ids.college, null);
+    const admin = (await getSession())!;
+    expect((await collegeProfile(admin)).streams).toEqual([]);
+    expect(await setCollegeProfile(admin, { streams: ["SCIENCE", "ARTS"] })).toEqual({ changed: ["streams"] });
+    expect((await collegeProfile(admin)).streams).toEqual(["ARTS", "SCIENCE"]);
+    // The same list again changes nothing; the references and the streams together write one row each.
+    expect(await setCollegeProfile(admin, { streams: ["ARTS", "SCIENCE"] })).toEqual({ changed: [] });
+    expect(await setCollegeProfile(admin, { streams: ["ARTS", "SCIENCE", "COMMERCE"], affiliatingUniversity: "ZZ University" })).toEqual({ changed: ["affiliatingUniversity", "streams"] });
+    const rows = await db.auditLog.findMany({ where: { schoolId: ids.college, action: "college.streams.set" }, orderBy: { createdAt: "asc" }, select: { meta: true } });
+    expect(rows.map((r) => JSON.parse(String(r.meta)))).toEqual([{ from: [], to: ["ARTS", "SCIENCE"] }, { from: ["ARTS", "SCIENCE"], to: ["ARTS", "SCIENCE", "COMMERCE"] }]);
+    expect(actionKey("college.streams.set")).toBe("audit.collegeStreamsSet");
+    // None is refused (422 on the field), and the references sent with it are not written either.
+    await expect(setCollegeProfile(admin, { streams: [], aisheCode: "C-12345" })).rejects.toMatchObject({ key: "streams.refuseNone", status: 422 });
+    expect((await collegeProfile(admin)).aisheCode).toBeNull();
+    __setHeaders({ "x-edulink-route": "POST /api/v1/admin/college-profile" });
+    const refused = await profilePost(new Request("http://localhost/api/v1/admin/college-profile", { method: "POST", body: JSON.stringify({ streams: [] }) }));
+    expect(refused.status).toBe(422);
+    // A school has no streams to keep.
+    await as(ids.sAdmin, "ADMIN", ids.school, null);
+    await expect(setCollegeProfile((await getSession())!, { streams: ["ARTS"] })).rejects.toMatchObject({ key: "college.refuseNotACollege" });
   });
 });

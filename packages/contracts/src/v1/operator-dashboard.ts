@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { institutionKindSchema } from "./modules";
+import { streamListSchema } from "./streams";
 import { schoolBoardSchema } from "./filings";
 
 /**
@@ -167,6 +168,8 @@ export const operatorOnboardBodySchema = z.object({
   /** A college's affiliating university and AISHE code (the operator's college console, 4 Oct 2026); kept for a college only, the code as AISHE issues it (C-12345). */
   affiliatingUniversity: optionalText(200),
   aisheCode: z.string().trim().regex(/^[CSU]-\d{3,7}$/).nullable().optional().or(z.literal("")),
+  /** A college's streams (5 Oct 2026), chosen beside affiliated or autonomous: at least one for a college, none for a school. */
+  streams: streamListSchema.optional(),
   planId: id.nullable().optional(),
   trial: z.boolean().default(false),
   startsAt: day.optional(),

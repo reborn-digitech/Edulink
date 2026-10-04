@@ -195,6 +195,14 @@ model School {
   /// global posts this tenant's people read (the admin's "schools / colleges /
   /// both" on the feed settings page). Every kind by default.
   globalFeedKinds       String    @default("[\"SCHOOL\",\"JUNIOR_COLLEGE\",\"COLLEGE\",\"AUTONOMOUS_COLLEGE\"]")
+  /// A COLLEGE'S STREAMS (5 Oct 2026): a JSON array of STREAMS codes
+  /// (packages/contracts v1/streams.ts), chosen with the kind at onboarding and
+  /// changed by the registrar on the college profile (audited
+  /// college.streams.set); empty for a school and a junior college. What the
+  /// college starts with and is offered — modules, regulators, filings,
+  /// duties, its homes' tiles — is the union of the streams' presets
+  /// (lib/streams.ts).
+  streamsJson           String    @default("[]")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -683,6 +691,15 @@ model Membership {
   /// answer that must not be editable from an ordinary write path.
   suspendedAt     DateTime?
   suspendedReason String?
+
+  /// DUTIES ON THE ROLE (5 Oct 2026): a JSON array of DUTIES codes
+  /// (packages/contracts v1/duties.ts) the registrar gives a FACULTY or HOD —
+  /// lab in-charge, anti-ragging squad, NSS officer… — each one the college's
+  /// streams offer; empty for every other role. The session's gate opens a
+  /// catalog door carrying `duties` to a FACULTY or HOD only with one of them
+  /// (role-gate.ts). Written by setDuties alone (lib/duties.ts, audited
+  /// people.duties.set).
+  dutiesJson      String    @default("[]")
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
@@ -7168,8 +7185,12 @@ model Programme {
   level               String
   durationYears       Int
   intake              Int       @default(0)
-  /// AICTE | UGC | PCI | BCI | NCTE | OTHER (REGULATORS)
+  /// AICTE | UGC | PCI | BCI | NCTE | COA | NMC | ICAR | DCI | INC | OTHER (REGULATORS)
   regulator           String
+  /// The college stream this programme belongs to (STREAMS, 5 Oct 2026); its
+  /// default regulator and threshold follow it. Null until chosen; backfilled
+  /// from a single-stream college's stream where the regulator agrees.
+  stream              String?
   attendanceThreshold Int       @default(75)
   /// JSON [{ afterYear, award, credits }]
   exitPoints          String    @default("[]")

@@ -8,6 +8,8 @@ import { ModuleOff } from "@/components/module-off";
 import { INPUT, NUM, TD, TH } from "@/components/module-flash";
 import { OfficeTop } from "@/components/academics/parts";
 import { academicsStructure } from "@/lib/academics";
+import { streamsOf } from "@/lib/streams";
+import { wordsFor } from "@/lib/stream-words";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "./shared";
 import { saveDepartmentAction, saveSettingsAction, setFacultyDepartmentAction } from "./actions";
@@ -24,6 +26,8 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
   const params = await searchParams;
   const s = await academicsStructure(ctx);
   const deptName = new Map(s.departments.map((d) => [d.id, d.name]));
+  // The words that differ by stream (5 Oct 2026): a law college's departments are its faculties.
+  const w = wordsFor(await streamsOf(ctx.schoolId), t);
   return (
     <div className="space-y-6">
       <OfficeTop t={t} current="setup" params={params} />
@@ -45,7 +49,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
       </Card>
 
       <Card>
-        <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={t("academics.departmentsTitle")} description={t("academics.departmentsBody")} />
+        <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={w("department", true)} description={t("academics.departmentsBody")} />
         <CardBody className="space-y-4">
           {s.departments.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.departmentsNone")} description={t("academics.departmentsNoneBody")} />

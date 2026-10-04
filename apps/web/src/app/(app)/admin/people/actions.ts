@@ -17,6 +17,8 @@ import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
 import { cancelScheduledDeparture, undoDeparture } from "@/lib/school-record";
 import { setMemberBirthdate } from "@/lib/birthdate";
 import { correctLegalName } from "@/lib/legal-name";
+import { setDuties } from "@/lib/duties";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import type { GuardianRelation } from "@/lib/constants";
 
 /**
@@ -238,6 +240,23 @@ export async function cancelLeavingAction(membershipId: string): Promise<Result>
     revalidatePath("/admin/people");
     return { ok: true };
   } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * A college teacher's duties (5 Oct 2026): the registrar's, from the row's
+ * menu — the whole list, each one the college's streams offer. Audited
+ * people.duties.set by the library.
+ */
+export async function setDutiesAction(membershipId: string, duties: string[]): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    await setDuties(ctx, membershipId, duties);
+    revalidatePath("/admin/people");
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars };
     return failure(error);
   }
 }

@@ -47,6 +47,7 @@ import { SCHOLARSHIPS } from "./api-catalog/scholarships";
 import { ACCOUNTS_DESK } from "./api-catalog/accounts";
 import { COLLEGE_CAMPUS } from "./api-catalog/college-campus";
 import { OPERATOR_COLLEGE } from "./api-catalog/operator-college";
+import { DUTY_DOORS } from "./api-catalog/duties";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS];

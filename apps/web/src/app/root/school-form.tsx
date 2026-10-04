@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
-import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind, type InstitutionKind } from "@edulink/contracts";
+import { StreamPicker } from "@/components/college/stream-picker";
 import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { INDIA } from "@/lib/places";
@@ -55,7 +56,7 @@ export function SchoolForm({
     gradeHigh: initial?.gradeHigh ?? "",
     timezone: initial?.timezone ?? "Asia/Kolkata",
     brandPrimary: initial?.brandPrimary ?? "",
-    ...(schoolId ? {} : { kind: "SCHOOL" as InstitutionKind }),
+    ...(schoolId ? {} : { kind: "SCHOOL" as InstitutionKind, streams: [] }),
   });
 
   function set<K extends keyof SchoolDetails>(key: K, value: SchoolDetails[K]) {
@@ -114,6 +115,8 @@ export function SchoolForm({
             ))}
           </SelectField>
         )}
+        {/* A college's streams (5 Oct 2026), chosen with the kind; afterwards the registrar changes them on the college profile. */}
+        {!schoolId && isCollegeKind(form.kind) && <StreamPicker value={form.streams ?? []} onChange={(next) => set("streams", next)} />}
         <TextField
           label={t("root.contactEmail")}
           type="email"

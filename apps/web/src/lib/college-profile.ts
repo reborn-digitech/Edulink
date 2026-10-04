@@ -6,6 +6,7 @@ import {
   isCollegeKind,
   NAAC_GRADES,
   NIRF_CATEGORIES,
+  parseStreams,
   type CollegeProfile,
   type CollegeProfileSet,
   type GlobalFeedKindChoice,
@@ -16,6 +17,7 @@ import { audit } from "./audit";
 import { AccessError, NotACollegeError } from "./access-error";
 import { readJsonArray } from "./json";
 import type { ActiveContext } from "./session";
+import { setStreams } from "./streams";
 
 /**
  * A COLLEGE'S PROFILE AND THE FEED'S KIND FILTER (4 October 2026): the two
@@ -45,10 +47,12 @@ export async function collegeProfile(ctx: ActiveContext): Promise<CollegeProfile
   assertOffice(ctx, false);
   const s = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
-    select: { kind: true, affiliatingUniversity: true, aisheCode: true, aicteApprovalRef: true, ugcApprovalRef: true, naacGrade: true, naacValidUntil: true, nirfCategory: true },
+    select: { kind: true, streamsJson: true, affiliatingUniversity: true, aisheCode: true, aicteApprovalRef: true, ugcApprovalRef: true, naacGrade: true, naacValidUntil: true, nirfCategory: true },
   });
   return {
     kind: s.kind as InstitutionKind,
+    // The college's streams (5 Oct 2026); a school's list is empty.
+    streams: isCollegeKind(s.kind) ? parseStreams(s.streamsJson) : [],
     affiliatingUniversity: s.affiliatingUniversity,
     aisheCode: s.aisheCode,
     aicteApprovalRef: s.aicteApprovalRef,
@@ -80,11 +84,16 @@ export async function setCollegeProfile(ctx: ActiveContext, input: CollegeProfil
     nirfCategory: input.nirfCategory,
   };
   const changed = Object.entries(data).filter(([, v]) => v !== undefined).map(([k]) => k);
-  if (changed.length === 0) return { changed };
+  if (changed.length === 0 && input.streams === undefined) return { changed };
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { kind: true } });
   if (!isCollegeKind(school.kind)) throw new NotACollegeError("college.refuseNotACollege");
+  // The streams (5 Oct 2026) first, with their own refusal and audit row (college.streams.set): a list
+  // that cannot stand leaves the references unwritten too.
+  if (input.streams !== undefined && (await setStreams(ctx, input.streams)).changed) changed.push("streams");
+  const references = changed.filter((k) => k !== "streams");
+  if (references.length === 0) return { changed };
   await db.school.update({ where: { id: ctx.schoolId }, data });
-  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "college.profile.update", targetType: "School", targetId: ctx.schoolId, meta: { fields: changed } });
+  await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "college.profile.update", targetType: "School", targetId: ctx.schoolId, meta: { fields: references } });
   return { changed };
 }
 
