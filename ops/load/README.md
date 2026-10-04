@@ -92,3 +92,47 @@ took ten minutes a batch. Migrations `20260915120000_user_fk_indexes` and
 `20260915130000_membership_fk_indexes` add all forty-eight; with them the
 fleet teardown deletes children first in bulk and takes 2.7 minutes.
 
+
+## The college profile (4 October 2026)
+
+`college.js` (k6) and `college-check.ts` (no k6) drive a college's day at
+once: faculty marking lectures through `POST /api/v1/academics/lectures/{id}/attendance`
+with clientId batches (every fifth batch resends the previous one, as the
+phone's outbox does), students reading `/api/v1/academics/mine` and
+`/api/v1/exam-cell/mine`, guardians reading `/api/v1/student/ledger`, one TPO
+reading an open drive's eligibility and one IQAC reading the predictor.
+
+```bash
+cd apps/web && node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json \
+  ../../ops/load/college-check.ts --faculty 10 --students 100 --parents 40 --seconds 60
+```
+
+Only `zz-` colleges (ZZ Vidya College by default). Marks are all PRESENT, so no
+defaulter notice fans out; students whose marks the exam cell has frozen are
+not sent. Every lecture mark the run touched is put back as it was found, rows
+it created and its own audit rows are deleted, and its sessions are removed. A
+guardian refused by design (an adult child without the MONEY grant) is named in
+the preflight and left out. The fixture college is small (one faculty member
+with lectures, four students, one readable guardian), so workers cycle over
+them: the server does a large college's work per request, the database holds
+a small college's rows.
+
+One production process on the 18-core laptop (Postgres and the load generator
+on the same machine), 60 s per profile, faculty + students + guardians:
+
+| Profile | mark p50 / p95 | academics/mine p95 | exam-cell/mine p95 | ledger p95 | TPO / IQAC p95 | errors |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2 + 10 + 5 | 109 / 161 ms | 134 ms | 94 ms | 52 ms | 102 / 105 ms | 0 |
+| 4 + 25 + 10 | 153 / 229 ms | 184 ms | 135 ms | 77 ms | 117 / 148 ms | 0 |
+| 6 + 50 + 20 | 1.0 / 1.5 s | 1.1 s | 838 ms | 407 ms | 760 / 917 ms | 0 |
+| 10 + 100 + 40 | 3.8 / 4.3 s | 3.6 s | 2.7 s | 1.2 s | 2.4 / 2.6 s | 0 |
+| 30 + 500 + 200 | 24.6 / 28.0 s | 23.4 s | 18.0 s | 8.2 s | 15.5 / 16.8 s | 0 |
+
+The process saturates at about 45–50 of these API requests a second; the
+database never was the limit (at most four connections active, no `P2028`).
+A CPU profile under the 6 + 50 + 20 profile put 39 % of the main thread in one
+function of Prisma's client, the reducer that builds a model's field map with
+an object spread on every model-method access (`library.js`, `lo()`): with 295
+fields on `School` and 141 on `Membership` one `db.school.findFirst` access
+costs 0.86 ms of CPU before any query is sent. See the campaign report of
+4 October 2026 for the page-render profile and the recommendations.
