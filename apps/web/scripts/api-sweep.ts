@@ -30,14 +30,7 @@ import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { permits } from "../src/lib/api-catalog/types";
-import { ACADEMICS } from "../src/lib/api-catalog/academics";
-import { EXAMS } from "../src/lib/api-catalog/exams";
-import { IQAC } from "../src/lib/api-catalog/iqac";
-import { PLACEMENT } from "../src/lib/api-catalog/placement";
-import { COLLEGE_ADMISSIONS } from "../src/lib/api-catalog/college-admissions";
-import { SCHOLARSHIPS } from "../src/lib/api-catalog/scholarships";
-import { ACCOUNTS_DESK } from "../src/lib/api-catalog/accounts";
-import { COLLEGE_CAMPUS } from "../src/lib/api-catalog/college-campus";
+import { COLLEGE_DOORS } from "./college-doors";
 import { isCollegeKind } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
@@ -72,8 +65,7 @@ async function familyTenant(parentUserId: string): Promise<Tenant> {
   return { schoolId: null, modules: new Set(rows.map((r) => r.module)), college: schools.some((s) => isCollegeKind(s.kind)) };
 }
 
-/** The college's catalog files: a door filed there is a college's, which a school answers 403 MODULE_OFF (W-17). */
-const COLLEGE_DOORS = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS]);
+// The college's catalog files (scripts/college-doors.ts): a door filed there is a college's, which a school answers 403 MODULE_OFF (W-17).
 
 /**
  * Whether a permitted role's answer may, or must, be the module gate's 403 MODULE_OFF (SWEEPS-4):

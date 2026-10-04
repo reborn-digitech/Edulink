@@ -44,6 +44,10 @@ primary_region = "bom"
     method = "GET"
     path = "/api/health"
 
+# 4 GB, not 1 (LOAD-8, 4 Oct 2026): one process held 1.1 GB after start and
+# 3.1-3.6 GB under the college load profiles. One process per machine of two
+# vCPUs; scale with `fly scale count web=N` (up to four web machines at
+# connection_limit=15 before Postgres's 100 connections need a pooler).
 [[vm]]
   size = "shared-cpu-2x"
-  memory = "1gb"
+  memory = "4gb"

@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { zodToJsonSchema } from "zod-to-json-schema";
 import { ENDPOINTS, type Endpoint } from "../src/lib/api-catalog";
+import { COLLEGE_DOORS } from "./college-doors";
 
 const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 
@@ -37,6 +38,8 @@ function build() {
       // The module roles a signed-in door also opens to, and the module a door belongs to (403 MODULE_OFF while the school has it off).
       ...(e.limitedRoles?.length ? { "x-limited-roles": e.limitedRoles } : {}),
       ...(e.module ? { "x-module": e.module } : {}),
+      // A college's door (filed in a college module's catalog file): at a school it may answer 403 MODULE_OFF, module or none (LOAD-6).
+      ...(COLLEGE_DOORS.has(e) ? { "x-college": true } : {}),
       responses: {
         "200": { description: "OK", content: { "application/json": { schema: zodToJsonSchema(e.response, { target: "openApi3" }) } } },
         "401": { description: "No or invalid session", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },

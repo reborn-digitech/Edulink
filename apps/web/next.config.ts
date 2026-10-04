@@ -51,6 +51,20 @@ const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: true,
   poweredByHeader: false,
+  /**
+   * No gzip in Node: the proxy compresses (recommendation 4 of the load wave,
+   * 4 Oct 2026). gzip of one 845 KB page cost 16.6 ms of the main thread, the
+   * thread a production process saturates first, and +20 ms per page at
+   * concurrency one. The deployment the go-live runbook describes is Fly's
+   * `http_service`, whose proxy compresses every response that carries no
+   * Content-Encoding (zstd, br or gzip by the client's Accept-Encoding;
+   * docs.fly.io/reference/content-encoding), so the bytes on the wire are
+   * unchanged. A host without such a proxy must add one line to its own
+   * (nginx `gzip on;` with `gzip_types`, Caddy `encode zstd gzip`; deploy.md)
+   * or set this back to true. `next dev` and a local `next start` therefore
+   * serve identity bodies: compare transfer sizes behind a proxy only.
+   */
+  compress: false,
   // Whether the browser's push key was present when this build ran. A
   // NEXT_PUBLIC_ value is fixed into the client bundle at build time, so a key
   // set only on the host at runtime reaches the server and never a browser;

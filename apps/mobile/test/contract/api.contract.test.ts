@@ -17,10 +17,16 @@ import { LIMITED_ROLES, meSchema, sessionsListSchema } from "@edulink/contracts"
  * anyone. A permitted role may also answer 422 — the endpoint wanted a query
  * the bare path does not carry (a class id, a paper) — which is the sweep's
  * rule too: an input problem is a door that opened. Run from the app's own client.
+ *
+ * MODULES AND COLLEGES (LOAD-6, 4 Oct 2026). Each actor's own /api/v1/me says
+ * which modules its school has on and whether it is a college; a door whose
+ * x-module is off there must answer 403 MODULE_OFF, and a college's door
+ * (x-college) at a school may — the API sweep's rule, in ./role-matrix.ts.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { callsInSource } from "../lib/api-catalog.test";
+import { allowed, judge, moduleOff, tenantFromMe, type Doc } from "./role-matrix";
 
 const BASE = process.env.EDULINK_API_BASE;
 const TOKENS = {
@@ -47,6 +53,8 @@ const TOKENS = {
 /** Every role behind the default-deny gate: a "signed-in" door opens to one only where x-limited-roles names it. */
 const MODULE_ROLES: string[] = [...LIMITED_ROLES];
 const describeIf = BASE ? describe : describe.skip;
+/** One actor's walk: two seconds on `next start`, about a minute on `next dev`, which compiles each door on first call; raise it there. */
+const WALK_MS = Number(process.env.EDULINK_CONTRACT_WALK_MS) || 60_000;
 
 function client(token: string | null) {
   return createApiClient({ baseUrl: BASE ?? "http://localhost:3000", getToken: () => token, getLocale: () => "en" });
@@ -91,26 +99,9 @@ describeIf("the app's client against /api/v1", () => {
   });
 });
 
-type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | string[];
-type Doc = { paths: Record<string, Record<string, { "x-access": Access; "x-limited-roles"?: string[] }>> };
-
 describeIf("the role matrix, from the app's client", () => {
   const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
   const gets = [...new Set(callsInSource().filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
-  const allowed = (path: string, role: string | null): "2xx" | 401 | 403 | "2xx-or-403" => {
-    const op = doc.paths[path]!.get!;
-    const access = op["x-access"];
-    if (access === "anyone") return "2xx";
-    if (role === null) return 401;
-    // The operator's and the content team's endpoints: no school role opens them.
-    if (access === "operator" || access === "app-admin") return 403;
-    // An account door is decided by the person's memberships, which a role token does not say.
-    if (access === "account") return "2xx-or-403";
-    // "signed-in" is every role but a limited role's (module, college staff, recruiter), which passes only where x-limited-roles names it.
-    if (access === "signed-in") return !MODULE_ROLES.includes(role) || (op["x-limited-roles"] ?? []).includes(role) ? "2xx" : 403;
-    if (access.includes(role)) return "2xx";
-    return 403;
-  };
   const actors: [string | null, string | null][] = [[null, null], ...Object.entries(TOKENS).filter(([, t]) => t).map(([r, t]) => [r, t!] as [string, string])];
 
   it("has endpoints to walk", () => {
@@ -119,15 +110,18 @@ describeIf("the role matrix, from the app's client", () => {
 
   for (const [role, token] of actors) {
     it(`${role ?? "signed out"}: every GET the app makes answers as the catalog says`, async () => {
+      // Where this actor stands: its school's modules and kind (a guardian: the children's schools'), from its own /me.
+      const me = token ? await client(token).get("/api/v1/me") : null;
+      const tenant = me?.ok ? tenantFromMe(meSchema.parse(me.data)) : null;
       const wrong: string[] = [];
       for (const path of gets) {
+        const op = doc.paths[path]!.get!;
         const res = await client(token).get(path);
-        const want = allowed(path, role);
-        const got = res.ok || ((want === "2xx" || want === "2xx-or-403") && res.status === 422) ? "2xx" : res.status;
-        const fine = want === "2xx-or-403" ? got === "2xx" || got === 403 : got === want;
-        if (!fine) wrong.push(`${path}: wanted ${want}, got ${got}${res.ok ? "" : ` (${res.code})`}`);
+        const want = allowed(op, role, MODULE_ROLES);
+        const verdict = judge(want, moduleOff(op, want, tenant), res);
+        if (verdict) wrong.push(`${path}: ${verdict}`);
       }
       expect(wrong).toEqual([]);
-    }, 60_000);
+    }, WALK_MS);
   }
 });

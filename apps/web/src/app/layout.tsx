@@ -8,7 +8,9 @@ import { AppRuntime } from "@/components/app-runtime";
 import { I18nProvider } from "@/lib/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
-import { dictionaryFor } from "@/lib/i18n/dictionary";
+import { dictionaryAsset } from "@/lib/i18n/asset";
+import { robotsFor } from "@/lib/robots";
+import { ROUTE_HEADER } from "@/lib/route-header";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -44,7 +46,8 @@ export async function generateMetadata(): Promise<Metadata> {
     type: "website",
     siteName: t("brand.name"),
   },
-  robots: { index: true, follow: true },
+  // Indexed only on the public pages (lib/robots.ts, campaign LOAD-5): every signed-in page is noindex by default.
+  robots: robotsFor((await headers()).get(ROUTE_HEADER)),
 };
 }
 
@@ -78,10 +81,14 @@ export const viewport: Viewport = {
  */
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const [locale, t, session] = await Promise.all([getLocale(), getT(), getSession()]);
+  // The dictionary travels as a cached static file, not inside the page (lib/i18n/delivery.ts, campaign LOAD-4).
+  const dictionary = dictionaryAsset(locale).href;
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <ThemeScript nonce={(await headers()).get(NONCE_HEADER) ?? undefined} />
+        {/* Fetched by the provider with fetch(): as="fetch" and crossOrigin "anonymous" are what let it reuse this preload. */}
+        <link rel="preload" href={dictionary} as="fetch" crossOrigin="anonymous" />
       </head>
       {/* suppressHydrationWarning for the BODY ATTRIBUTES only (it does not
           cascade): browser extensions — Grammarly stamps data-gr-ext-installed
@@ -94,7 +101,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           {t("shell.skipToContent")}
         </a>
-        <I18nProvider locale={locale} dictionary={dictionaryFor(locale)}>
+        <I18nProvider locale={locale} href={dictionary}>
           <ToastProvider>
             <AppRuntime owner={session?.user.id ?? null} />
             {children}

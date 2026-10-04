@@ -95,7 +95,7 @@ async function condonedBy(schoolId: string, termId: string): Promise<(studentId:
  * as asked. One function for the student's page, the family's, the
  * defaulter lists, the condonation desk and the exams module.
  */
-export async function attendanceRows(schoolId: string, termId: string, filter: { studentMembershipId?: string; offeringIds?: string[]; departmentId?: string } = {}): Promise<(CourseAttendance & { studentMembershipId: string; name: string; departmentId: string })[]> {
+export async function attendanceRows(schoolId: string, termId: string, filter: { studentMembershipId?: string; studentMembershipIds?: string[]; offeringIds?: string[]; departmentId?: string } = {}): Promise<(CourseAttendance & { studentMembershipId: string; name: string; departmentId: string })[]> {
   const term = await db.academicTerm.findUniqueOrThrow({ where: { id: termId }, select: { endsOn: true } });
   const regs = await db.courseRegistration.findMany({
     where: {
@@ -103,6 +103,7 @@ export async function attendanceRows(schoolId: string, termId: string, filter: {
       termId,
       status: "REGISTERED",
       ...(filter.studentMembershipId ? { studentMembershipId: filter.studentMembershipId } : {}),
+      ...(filter.studentMembershipIds ? { studentMembershipId: { in: filter.studentMembershipIds } } : {}),
       ...(filter.offeringIds ? { offeringId: { in: filter.offeringIds } } : {}),
       ...(filter.departmentId ? { offering: { course: { scheme: { programme: { departmentId: filter.departmentId } } } } } : {}),
     },
@@ -126,7 +127,7 @@ export async function attendanceRows(schoolId: string, termId: string, filter: {
   const offeringIds = [...new Set(rows.map((r) => r.offeringId))];
   const tz = (await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } })).timezone;
   const [counts, condoned, remaining] = await Promise.all([
-    countsBy(offeringIds, filter.studentMembershipId ? [filter.studentMembershipId] : undefined),
+    countsBy(offeringIds, filter.studentMembershipId ? [filter.studentMembershipId] : filter.studentMembershipIds),
     condonedBy(schoolId, termId),
     remainingBy(schoolId, offeringIds, addDaysToKey(todayKey(tz), 1), term.endsOn),
   ]);
@@ -262,7 +263,7 @@ export async function myLectures(ctx: ActiveContext, date?: string): Promise<z.i
 
 /** Who may mark a lecture: its faculty member (unless someone stands in), the one standing in, or the department's HOD. */
 async function lectureFor(c: Caller, lectureId: string, mode: "read" | "mark") {
-  const lecture = await db.lecture.findFirst({ where: { id: lectureId, schoolId: c.schoolId }, select: { ...LECTURE_SELECT, cancelledAt: true } });
+  const lecture = await db.lecture.findFirst({ where: { id: lectureId, schoolId: c.schoolId }, select: { ...LECTURE_SELECT, cancelledAt: true, offering: { select: { ...LECTURE_SELECT.offering.select, termId: true } } } });
   if (!lecture) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   const own = lecture.substituteMembershipId ? lecture.substituteMembershipId === c.membershipId : lecture.offering.facultyMembershipId === c.membershipId;
   const hod = c.role === "HOD" && (await hodDepartment(c))?.id === lecture.offering.course.scheme.programme.departmentId;
@@ -297,51 +298,72 @@ export async function lectureSheet(ctx: ActiveContext, lectureId: string): Promi
  * answers what stands and writes nothing. Students not registered on the
  * offering are refused; a lecture in the future cannot be marked. A student
  * the mark first takes under the line is told (once a week at most).
+ *
+ * COST (load campaign LOAD-2, 4 October 2026). This is the busiest write of a
+ * college's day, and every query outside a transaction is a transaction of its
+ * own with the tenant settings (db.ts), so the replay check, the registration
+ * and freeze checks, the earlier marks, the writes and the counts run in ONE
+ * tenant transaction, the writes as one insert and at most one update per
+ * status whatever the batch's size. Only an ABSENT can take a student under
+ * the line (a PRESENT or LATE never lowers a percentage, and a mark never moves
+ * a threshold), so the percentages are read only for this batch's absentees,
+ * once, after the write; where each stood before is that figure with this
+ * lecture's earlier mark put back. A batch of all-present reads no percentage.
  */
 export async function markLecture(ctx: ActiveContext, lectureId: string, input: { clientId: string; entries: { studentMembershipId: string; status: "PRESENT" | "ABSENT" | "LATE" }[] }): Promise<{ lectureId: string; present: number; absent: number; late: number; replay: boolean; noticesSent: number }> {
   const c = await academicsCaller(ctx, ["FACULTY", "HOD"]);
   const { lecture } = await lectureFor(c, lectureId, "mark");
-  const counts = async (replay: boolean, noticesSent = 0) => {
-    const rows = await db.lectureAttendance.groupBy({ by: ["status"], where: { lectureId }, _count: { _all: true } });
+  // One mark per student; a student named twice keeps the last, as the one-by-one upserts did.
+  const statusOf = new Map(input.entries.map((e) => [e.studentMembershipId, e.status]));
+  const students = [...statusOf.keys()];
+  const absentees = students.filter((s) => statusOf.get(s) === "ABSENT");
+  type Tx = typeof db;
+  const counts = async (tx: Tx) => {
+    const rows = await tx.lectureAttendance.groupBy({ by: ["status"], where: { lectureId }, _count: { _all: true } });
     const n = (s: string) => rows.find((r) => r.status === s)?._count._all ?? 0;
-    return { lectureId, present: n("PRESENT"), absent: n("ABSENT"), late: n("LATE"), replay, noticesSent };
+    return { present: n("PRESENT"), absent: n("ABSENT"), late: n("LATE") };
   };
-  if (await db.lectureAttendance.findFirst({ where: { lectureId, clientId: input.clientId }, select: { id: true } })) return counts(true);
-  if (lecture.cancelledAt) throw new RuleRefusal("academics.refuseCancelled", 409);
-  if (lecture.dateKey > todayKey(c.timeZone)) throw new RuleRefusal("academics.refuseFutureLecture", 409);
-  const offering = await db.courseOffering.findUniqueOrThrow({ where: { id: lecture.offeringId }, select: { termId: true } });
-  const registered = new Set((await db.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED" }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
-  if (input.entries.some((e) => !registered.has(e.studentMembershipId))) throw new RuleRefusal("academics.refuseNotRegistered", 422, undefined, "entries");
-  const students = input.entries.map((e) => e.studentMembershipId);
-  // Frozen once the exam cell has decided the term's eligibility from it (campaign S-22): when the
-  // term's regular session has moved past its forms, or a student here has a form past draft, whose
-  // eligibility was snapshotted at submission. A later change would leave the decision and the
-  // register disagreeing; a correction after that is the condonation's, not the register's.
-  const decided = await db.examForm.findFirst({
-    where: { schoolId: c.schoolId, session: { termId: offering.termId, kind: "REGULAR" }, OR: [{ studentMembershipId: { in: students }, status: { not: "DRAFT" } }, { session: { status: { in: ["CONDUCT", "ASSESSMENT", "PUBLISHED", "CLOSED"] } } }] },
-    select: { id: true },
-  });
-  if (decided) throw new RuleRefusal("academics.refuseAttendanceFrozen", 409);
-  const before = new Map((await attendanceRows(c.schoolId, offering.termId, { offeringIds: [lecture.offeringId] })).filter((r) => students.includes(r.studentMembershipId)).map((r) => [r.studentMembershipId, r]));
-  await db.$tenantTransaction(async (raw) => {
-    const tx = raw as typeof db;
-    for (const e of input.entries) {
-      await tx.lectureAttendance.upsert({
-        where: { lectureId_studentMembershipId: { lectureId, studentMembershipId: e.studentMembershipId } },
-        create: { schoolId: c.schoolId, lectureId, studentMembershipId: e.studentMembershipId, status: e.status, markedByMembershipId: c.membershipId, clientId: input.clientId },
-        update: { status: e.status, markedByMembershipId: c.membershipId, markedAt: new Date(), clientId: input.clientId },
-      });
+  const written = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as Tx;
+    if (await tx.lectureAttendance.findFirst({ where: { lectureId, clientId: input.clientId }, select: { id: true } })) return { replay: true as const, tally: await counts(tx), prior: new Map<string, string>() };
+    if (lecture.cancelledAt) throw new RuleRefusal("academics.refuseCancelled", 409);
+    if (lecture.dateKey > todayKey(c.timeZone)) throw new RuleRefusal("academics.refuseFutureLecture", 409);
+    const registered = new Set((await tx.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED", studentMembershipId: { in: students } }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
+    if (students.some((s) => !registered.has(s))) throw new RuleRefusal("academics.refuseNotRegistered", 422, undefined, "entries");
+    // Frozen once the exam cell has decided the term's eligibility from it (campaign S-22): when the
+    // term's regular session has moved past its forms, or a student here has a form past draft, whose
+    // eligibility was snapshotted at submission. A later change would leave the decision and the
+    // register disagreeing; a correction after that is the condonation's, not the register's.
+    const decided = await tx.examForm.findFirst({
+      where: { schoolId: c.schoolId, session: { termId: lecture.offering.termId, kind: "REGULAR" }, OR: [{ studentMembershipId: { in: students }, status: { not: "DRAFT" } }, { session: { status: { in: ["CONDUCT", "ASSESSMENT", "PUBLISHED", "CLOSED"] } } }] },
+      select: { id: true },
+    });
+    if (decided) throw new RuleRefusal("academics.refuseAttendanceFrozen", 409);
+    const prior = new Map((await tx.lectureAttendance.findMany({ where: { lectureId, studentMembershipId: { in: students } }, select: { studentMembershipId: true, status: true } })).map((r) => [r.studentMembershipId, r.status]));
+    const fresh = students.filter((s) => !prior.has(s));
+    const created = fresh.length ? (await tx.lectureAttendance.createMany({ data: fresh.map((s) => ({ schoolId: c.schoolId, lectureId, studentMembershipId: s, status: statusOf.get(s)!, markedByMembershipId: c.membershipId, clientId: input.clientId })), skipDuplicates: true })).count : 0;
+    // Rows that already stood — and, should another device have written one since the read above, those too.
+    const toUpdate = created === fresh.length ? students.filter((s) => prior.has(s)) : students;
+    const markedAt = new Date();
+    for (const status of ["PRESENT", "ABSENT", "LATE"] as const) {
+      const ids = toUpdate.filter((s) => statusOf.get(s) === status);
+      if (ids.length) await tx.lectureAttendance.updateMany({ where: { lectureId, studentMembershipId: { in: ids } }, data: { status, markedByMembershipId: c.membershipId, markedAt, clientId: input.clientId } });
     }
+    return { replay: false as const, tally: await counts(tx), prior };
   });
+  if (written.replay) return { lectureId, ...written.tally, replay: true, noticesSent: 0 };
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.lecture.mark", targetType: "Lecture", targetId: lectureId, meta: { entries: input.entries.length, absent: input.entries.filter((e) => e.status === "ABSENT").length, dateKey: lecture.dateKey } });
-  const after = (await attendanceRows(c.schoolId, offering.termId, { offeringIds: [lecture.offeringId] })).filter((r) => students.includes(r.studentMembershipId));
+  if (!absentees.length) return { lectureId, ...written.tally, replay: false, noticesSent: 0 };
+  const after = await attendanceRows(c.schoolId, lecture.offering.termId, { offeringIds: [lecture.offeringId], studentMembershipIds: absentees });
   // Told when this mark first takes them under the line: above it (or unmarked) before, under it now.
-  const crossed = after.filter((r) => !r.eligible && (() => {
-    const b = before.get(r.studentMembershipId);
-    return !b || b.percent === null || b.eligible;
-  })());
+  const crossed = after.filter((r) => {
+    if (r.eligible) return false;
+    const was = written.prior.get(r.studentMembershipId);
+    const percentBefore = percentOf(r.attended + (was && ATTENDED.includes(was) ? 1 : 0), r.held - (was ? 0 : 1));
+    return percentBefore === null || isEligible(percentBefore, r.threshold, r.condoned);
+  });
   const noticesSent = await sendDefaulterNotices(c.schoolId, crossed);
-  return counts(false, noticesSent);
+  return { lectureId, ...written.tally, replay: false, noticesSent };
 }
 
 /* ------------------------------------------------------------ condonation */

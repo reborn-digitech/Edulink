@@ -22,6 +22,8 @@ COPY apps/mobile/package.json apps/mobile/
 COPY packages/i18n/package.json packages/i18n/
 COPY packages/contracts/package.json packages/contracts/
 COPY packages/api-client/package.json packages/api-client/
+# patchedDependencies in package.json (LOAD-3: Prisma's per-access field map) must be present for a frozen install.
+COPY patches ./patches
 RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
@@ -46,6 +48,15 @@ RUN cd apps/web && npx prisma generate \
   && if [ -z "${NEXT_PUBLIC_VAPID_PUBLIC_KEY:-}" ]; then unset NEXT_PUBLIC_VAPID_PUBLIC_KEY; fi \
   && NODE_OPTIONS=--max-old-space-size=4096 npx next build
 
+# MEMORY: give each container at least 4 GB (LOAD-8, 4 Oct 2026). One server
+# process measured 1.1 GB resident after start, 1.4-2.5 GB under the school
+# load profiles and 3.1-3.6 GB under the college profiles, back to 1.4 GB idle,
+# with no leak over 25 minutes; a 1-2 GB limit is killed at the first busy
+# hour. One process per container (`node server.js`), one container per two
+# vCPUs: the process saturates one core's main thread and uses one to two more
+# for GC and libuv (195-294 % CPU at saturation). Scale with containers, each
+# with `connection_limit=15` on DATABASE_URL (docs/runbooks/go-live.md 3.4, 9.6).
+# No compression here: the proxy in front compresses (next.config.ts `compress`).
 FROM node:24-bookworm-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0 NEXT_TELEMETRY_DISABLED=1

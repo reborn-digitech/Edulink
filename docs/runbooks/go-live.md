@@ -242,7 +242,7 @@ the server with `Refusing to start: N environment problem(s).` and the key names
 
 | Variable | Production | Fatal at boot when | How to make it |
 | --- | --- | --- | --- |
-| `DATABASE_URL` | required | unset | `postgresql://edulink_app:<password>@<host>:5432/edulink?sslmode=require`; the pool settings `&connection_limit=30&pool_timeout=20` once Postgres has room for them (9.6) — the scripts strip them for psql |
+| `DATABASE_URL` | required | unset | `postgresql://edulink_app:<password>@<host>:5432/edulink?sslmode=require`; the pool settings `&connection_limit=15&pool_timeout=20` from the first deploy (9.6: processes × 15 under Postgres's `max_connections`) — the scripts strip them for psql |
 | `DATABASE_ADMIN_URL` | required | unset on the jobs process | the owner connection, same database. Used by the release step and the jobs process only |
 | `NEXT_PUBLIC_APP_URL` | required | unset, or `http://` | `https://<host>`, no trailing slash. Magic links, invitations, the SSO redirect and Twilio's callback signature are built from it |
 | `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY` | required | missing, wrong length, or not a pair (the public half built into the image is the one compared) | `npm run vapid`, one run. Never rotate casually. The public half is also a build argument (3.2, 3.3) |
@@ -383,7 +383,31 @@ and one-off scripts connect as the owner. Never run `db:seed`, `db:reset` or `db
 
 `fly.toml`: app `edulink-web`, region `bom`, release command `npm run db:migrate`, rolling deploys, two process
 groups (`web` serves on 3000; `jobs` runs `node scripts/jobs-runner.mjs` on loopback 3999), `min_machines_running = 2`,
-a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ=Asia/Kolkata`.
+a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 4 GB, `TZ=Asia/Kolkata`.
+
+**Size, from the load wave of 4 October 2026** (`ops/load/README.md`, one `next start` process on a laptop):
+
+- **Memory: at least 4 GB per machine.** One process held 1.1 GB after start, 1.4–2.5 GB under the school
+  profiles and 3.1–3.6 GB under the college profiles, and fell back to 1.4 GB idle with no leak over 25 minutes.
+  The 1 GB `fly.toml` carried before that run would be killed in the first busy hour. `fly.toml` now asks for
+  4 GB (`[[vm]] memory = "4gb"`, the most a `shared-cpu-2x` takes, `<confirm>` in Fly's machine sizes).
+- **Processes: one per machine, one machine per two vCPUs.** A process saturates one core's main thread (39 %
+  of it in Prisma's client, 26 % of a page render in Next's flight of the dictionary) and uses one to two more
+  for GC and libuv (195–294 % CPU at saturation), while the database stayed idle (at most five of 37 pooled
+  connections active, no `P2028`). More capacity is more machines (`fly scale count web=N`), never a bigger
+  pool. A shared vCPU is throttled under sustained load; if Fly's metrics show the web machines pinned at
+  their CPU quota through the school day, move them to `performance-2x` (2 dedicated vCPUs, 4 GB) rather than
+  adding shared machines (`<confirm>` prices).
+- **Pool: `connection_limit=15` on every process** (9.6). Every web machine and the jobs machine is a process:
+  `processes × 15 + 10 (the jobs machine's owner pool of cores × 2 + 1 = 5, the release step, scripts) + 3 (Postgres's reserved)` must stay at or under
+  `max_connections`. At 100 that is five processes: four web machines and the jobs one. Past that, a
+  transaction pooler or a bigger Postgres first.
+- **Compression: at the proxy, not in Node.** `next.config.ts` sets `compress: false`, because Fly's proxy
+  compresses every response from an `http_service` that carries no `Content-Encoding` (zstd, br or gzip by the
+  client's `Accept-Encoding`, `docs.fly.io/reference/content-encoding`); there is no `fly.toml` line to add,
+  the `[http_service]` above is the line. gzip of one 845 KB page cost the Node process 16.6 ms of its main
+  thread. With Cloudflare's proxy in front as well, Cloudflare compresses what reaches it uncompressed and
+  passes Fly's encoding through; nothing to set. Checked in 3.6.
 
 - [ ] **3.1 Confirm CI is green on the commit to deploy** — engineer
 
@@ -438,10 +462,15 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ
 
   ```bash
   fly scale count web=2 jobs=1 -a edulink-web
+  fly scale show -a edulink-web
   fly status -a edulink-web
   ```
 
-  **Verify.** Two `web` machines with checks passing and one `jobs` machine, all `started`.
+  Two web machines are the start, not the ceiling: each is one process for two vCPUs with 4 GB (Phase 3's
+  sizing). Add web machines up to four before the pool needs a pooler (9.6).
+
+  **Verify.** Two `web` machines with checks passing and one `jobs` machine, all `started`; `fly scale show`
+  lists `shared-cpu-2x` with `4096` MB for both groups.
 
 - [ ] **3.5 Read the boot lines** — engineer
 
@@ -462,6 +491,19 @@ a health check on `/api/health` every 30 seconds, `shared-cpu-2x` with 1 GB, `TZ
 
   **Verify.** `{"ok":true,"database":"ok","databaseMs":…,"uptimeSeconds":…,"commit":"<sha7>"}`, the commit
   being the one deployed.
+
+  Then the proxy's compression (Node sends identity bodies since 4 October 2026) and the event stream through it:
+
+  ```bash
+  curl -s -o /dev/null -D - -H 'Accept-Encoding: zstd, br, gzip' https://edulink-web.fly.dev/login | grep -i '^content-encoding'
+  read -rs TOKEN   # a minted ZZ session on staging, never a person's; press Return
+  curl -sN -m 40 -H "Authorization: Bearer $TOKEN" -H 'Accept-Encoding: gzip' https://edulink-web.fly.dev/api/v1/events | head -c 300
+  ```
+
+  **Verify.** The first prints `content-encoding: zstd` (or `br`, `gzip`). The second prints the stream's first
+  event or keep-alive within the keep-alive interval rather than nothing until the 40 s timeout; if it waits,
+  the proxy is holding a compressed stream back: set `compress: true` again in `next.config.ts` (Node then
+  encodes, and Fly passes an encoded response through untouched) and redeploy. Untested on Fly.
 
 - [ ] **3.7 The jobs process started its schedule** — engineer
 
@@ -1045,21 +1087,34 @@ production API URL is an EAS environment variable, never a file. Run EAS command
 
 - [ ] **9.5 Compare load and speed with the baselines** — engineer
 
-  **What.** Read `/root/metrics` p95 and Fly's metrics daily. The 1 October 2026 numbers, one process on a laptop
-  (`deploy.md`): light profile register p95 111 ms and overview 178 ms; moderate 732 ms and 1,010 ms; plan profile
-  (30 teachers, 200 guardians) 4.5 s and 5.3 s, no errors. Targets (`ops/load/README.md`): register p95 under
-  300 ms, overview p95 under 800 ms. Lighthouse on the phone preset (the same campaign, local production build):
-  performance 90 to 94, accessibility 100, LCP 3.0 to 3.6 s. A load run belongs on a staging deployment with the
-  ZZ fixture, from a second machine, never on production.
+  **What.** Read `/root/metrics` p95 and Fly's metrics daily. The baselines are the 4 October 2026 numbers, one
+  process on a laptop (`ops/load/README.md`, "Baselines"): ZZ Northgate light profile (2 teachers, 5 guardians)
+  register p95 151 ms and overview 296 ms; moderate (10 + 40) 974 ms and 1,912 ms; plan (30 + 200) 8.8 s and
+  9.6 s; no errors (1 October was 111 / 178 ms, 732 / 1,010 ms and 4.5 / 5.3 s: the schema's growth halved one
+  process's capacity, LOAD-1). The college day at ZZ Vidya holds a lecture-mark p95 under 230 ms up to 4 faculty,
+  25 students and 10 guardians per process and saturates at about 45–50 API requests a second. Targets: register
+  p95 under 300 ms, overview p95 under 800 ms. Lighthouse on the phone preset (local production build):
+  performance 82 to 90, accessibility 100, LCP 3.5 to 4.5 s. Memory per web machine under 3.6 GB. A load run
+  belongs on a staging deployment with the ZZ fixture, from a second machine, never on production.
 
   **Verify.** Production's p95 at the first school's busiest hour is under the targets, or a decision is written.
 
 - [ ] **9.6 Size the database pool** — engineer
 
-  **What.** Append `?connection_limit=30&pool_timeout=20` to `DATABASE_URL` (the scripts strip them before
-  psql sees the URL), and check Postgres allows `2 × 30 + 10 + 5 = 75` connections (`deploy.md`, capacity).
+  **What.** `DATABASE_URL` carries `?connection_limit=15&pool_timeout=20` from 1.3 (the scripts strip them
+  before psql sees the URL). Check Postgres's `max_connections` covers every process:
+  `processes × 15 + 10 + 3`, with two web machines and the jobs machine `3 × 15 + 13 = 58`, with four web
+  machines `5 × 15 + 13 = 88` (`deploy.md`, capacity). Do not raise the limit to buy speed: the load wave of
+  4 October 2026 never had more than five connections active at once out of 37, while the Node process was
+  saturated; a bigger pool only lets fewer processes fit.
 
-  **Verify.** The next deploy's release step still ends with the grants line.
+  ```bash
+  psql "$PROD_OWNER_URL" -tAc "show max_connections"
+  psql "$PROD_OWNER_URL" -tAc "select count(*) from pg_stat_activity where usename = 'edulink_app'"
+  ```
+
+  **Verify.** The next deploy's release step still ends with the grants line; `max_connections` is at least the
+  sum above; the app role's connections at the busiest hour stay under `web machines × 15`.
 
 - [ ] **9.7 Confirm production holds only real things** — engineer
 

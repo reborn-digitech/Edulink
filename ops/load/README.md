@@ -26,6 +26,74 @@ cd apps/web && npm run load:check -- --base http://localhost:3100 --teachers 30 
 Both need a database with the seed and the ZZ fixture. Sessions minted for a
 run are deleted at its end.
 
+## Baselines (4 October 2026): compare the next campaign against these
+
+Tree 8210ba1e, `next build` then one `next start` process, Prisma's default
+pool (37 = 2 × 18 cores + 1, no `connection_limit`), Postgres and the load
+generator on the same machine: an Apple M5 Max laptop, 18 cores, 128 GB,
+Node 24.21. 60 s per profile, workers firing without pause. Run the same
+profiles on the same kind of machine before calling a change a regression;
+raw logs are in the campaign's `loadlogs/`.
+
+**ZZ Northgate** (`npm run load:check -- --base http://localhost:3000 --teachers T --parents P --seconds 60`):
+
+| Profile (teachers + guardians) | register POST p50 / p95 / p99 | overview GET p50 / p95 / p99 | n (POST / GET) | errors | RSS peak | CPU mean / peak | DB active peak | 1 Oct p95 (register / overview) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| light 2 + 5 | 72 / 151 / 293 ms | 251 / 296 / 404 ms | 58 / 240 | 0 | 1,414 MB | 54 % / 234 % | 5 | 111 / 178 ms |
+| moderate 10 + 40 | 868 / 974 / 1,743 ms | 1,866 / 1,912 / 1,963 ms | 210 / 840 | 0 | 1,687 MB | 171 % / 356 % | 2 | 732 / 1,010 ms |
+| plan 30 + 200 | 7.5 / 8.8 / 9.3 s | 7.8 / 9.6 / 9.8 s | 210 / 1,469 | 0 | 2,508 MB | 283 % / 485 % | 2 | 4.5 / 5.3 s |
+
+**The fleet**, 50 × 5,000-pupil schools (`npm run zz:fleet`, then `--fleet zz-load-`; built in 3.0 min, torn down in 2.9):
+
+| Profile | register p50 / p95 | overview p50 / p95 | n (POST / GET) | errors | RSS peak | CPU mean | DB active peak |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2 + 5 | 81 / 211 ms | 239 / 258 ms | 58 / 245 | 0 | 1,894 MB | 40 % | 1 |
+| 10 + 40 | 808 / 844 ms | 1,807 / 1,847 ms | 220 / 880 | 0 | 2,061 MB | 175 % | 3 |
+| 30 + 200 | 6.8 / 8.4 s | 7.5 / 8.6 s | 210 / 1,508 | 0 | 2,476 MB | 294 % | 3 |
+
+**ZZ Vidya College** (`college-check.ts`, faculty + students + guardians, plus one TPO and one IQAC; the full table is under "The college profile" below):
+
+| Profile | lecture mark p50 / p95 | slowest read p95 | req/s | errors | RSS peak |
+| --- | --- | --- | --- | --- | --- |
+| 2 + 10 + 5 | 109 / 161 ms | academics/mine 134 ms | 16 | 0 | 3,137 MB |
+| 4 + 25 + 10 | 153 / 229 ms | academics/mine 184 ms | 35 | 0 | 3,408 MB |
+| 6 + 50 + 20 | 1.0 / 1.5 s | academics/mine 1.1 s | 48 | 0 | 3,512 MB |
+| 10 + 100 + 40 | 3.8 / 4.3 s | academics/mine 3.6 s | 53 | 0 | 3,635 MB |
+| 30 + 500 + 200 | 24.6 / 28.0 s | academics/mine 23.4 s | 63 | 0 | 3,642 MB |
+
+What the numbers say, and what to measure against next time:
+
+- **Per-request cost does not grow with the school** (fleet ≈ Northgate), and
+  **the database is not the limit**: at most five connections active of 37,
+  no `P2028`, Postgres idle, while the process sat at one pinned core plus
+  GC and libuv. One process holds the targets (register p95 < 300 ms, page
+  p95 < 800 ms) to about 2–4 continuous teachers or faculty plus 5–25 readers,
+  renders at most 23–25 `/parent` a second (61 ms unloaded) and takes about
+  45–50 API requests a second.
+- **One process's capacity halved between 1 and 4 October** (LOAD-1), with
+  the schema at 277 models (`School` 295 fields, `Membership` 141): 39 % of the
+  main thread in one Prisma client reducer that rebuilds a model's field map
+  on every model access (0.86 ms per `db.school` access; LOAD-3), and 26 % of
+  a page render in Next's flight of the 680 KB English dictionary every page
+  carries (LOAD-4). A fix to either should show here first.
+- **Memory**: 1.1 GB after start, 2.5 GB at the school plan profile, 3.6 GB
+  under the college profiles, 1.4 GB idle again; no leak over 25 minutes.
+  Containers get at least 4 GB (`apps/web/Dockerfile`, `fly.toml`).
+- **Lighthouse 12.8.2, phone preset**, eight pages: performance 82–90 (1 Oct
+  90–94), accessibility 100, best practices 100, LCP 3.5–4.5 s (1 Oct
+  3.0–3.6 s), documents 231–246 KB gzipped. Since 4 October `next.config.ts`
+  sets `compress: false` (the proxy compresses), so a local `next start`
+  serves identity bodies: put a compressing proxy in front before comparing
+  transfer sizes or Lighthouse scores with these, e.g. Caddy with a `:3100`
+  site block holding `encode zstd gzip` and `reverse_proxy localhost:3000`
+  (untested here).
+- **Page sweep on prod**: 862 of 862 as expected, median 61 ms, p95 105 ms.
+
+Deployment settings that follow (`docs/runbooks/go-live.md` Phase 3 and 9.6,
+`deploy.md` capacity): scale with processes, one per two vCPUs and 4 GB each,
+`connection_limit=15` on each, `processes × 15 + 13` under Postgres's
+`max_connections`; compression at the proxy.
+
 ## The fleet run (15 September 2026)
 
 The plan's one-school profile answers "can a school of 800 use this"; the

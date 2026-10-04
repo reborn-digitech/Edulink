@@ -137,18 +137,43 @@ The concurrent-user run of 2026-10-01 (one process, this laptop, Postgres on
 the same machine): the light profile met its targets (register p95 111 ms,
 overview 178 ms), the moderate one did not (732 ms, 1,010 ms) and the plan
 profile of 30 teachers and 200 guardians firing without pause sat at 4.5 s
-and 5.3 s with no error. The time is queueing, not per-request cost, so the
-settings for a fifty-school fleet are two `web` machines (`fly.toml` keeps
-two running) and a Prisma pool of thirty on each: append
-`?connection_limit=30&pool_timeout=20` to `DATABASE_URL` (the default is the
-machine's cores times two plus one, 5 on a shared-cpu-2x). Those parameters
-are Prisma's: psql and pg_dump refuse a URL that carries them, so every
-script that hands a URL to a libpq tool (the release step's `db-grants.mjs`,
-`ops/backup.sh`, `ops/restore.sh`) strips them first through
-`apps/web/scripts/pg-url.mjs`. Give Postgres
-`max_connections` room for both machines, the jobs machine and the release
-step (`2 × 30 + 10 + 5` is 75; a managed Postgres of the smallest size allows
-100). Before a launch, repeat the plan profile from a second machine with k6
+and 5.3 s with no error. The time is queueing, not per-request cost.
+
+The production-build wave of 2026-10-04 (`ops/load/README.md`, "Baselines")
+found one process at about half that capacity after the schema doubled (plan
+profile 8.8 s and 9.6 s), the college day saturating at about 45–50 API
+requests a second, and the cause on the Node main thread, not the database:
+at most five of 37 pooled connections were ever active, no `P2028`, while one
+core was pinned. So the settings are:
+
+- **More processes, not a bigger pool.** One `node server.js` per machine,
+  one machine per two vCPUs, at least 4 GB each (`fly.toml` asks for 4 GB;
+  one process reached 3.6 GB under the college profiles). Start at two `web`
+  machines (`fly.toml` keeps two running) and add machines when the p95
+  climbs; the bucket adapter keeps every process stateless.
+- **A pool of fifteen per process:** append
+  `?connection_limit=15&pool_timeout=20` to `DATABASE_URL` (the default is the
+  machine's cores times two plus one, 5 on a shared-cpu-2x). Those parameters
+  are Prisma's: psql and pg_dump refuse a URL that carries them, so every
+  script that hands a URL to a libpq tool (the release step's `db-grants.mjs`,
+  `ops/backup.sh`, `ops/restore.sh`) strips them first through
+  `apps/web/scripts/pg-url.mjs`. Give Postgres `max_connections` room for
+  every process, the jobs machine's owner pool and the release step:
+  `processes × 15 + 10 + 3` (two web and the jobs machine: 58; four web and
+  the jobs machine: 88; a managed Postgres of the smallest size allows 100, so
+  past four web machines put a transaction pooler in front first).
+- **Compression at the proxy.** `next.config.ts` sets `compress: false`: gzip
+  of one 845 KB page took 16.6 ms of the process's main thread. Fly's proxy
+  compresses every `http_service` response that has no `Content-Encoding`, so
+  on Fly there is nothing to add. Off Fly, the proxy in front must do it:
+  nginx `gzip on; gzip_proxied any; gzip_types text/html text/css
+  application/javascript application/json text/x-component;` (the event
+  stream already sends `X-Accel-Buffering: no`), or Caddy `encode zstd gzip`
+  inside the site block before `reverse_proxy localhost:3000`. Untested: nginx
+  and Caddy with this app; check that `/api/v1/events` still streams (go-live
+  3.6).
+
+Before a launch, repeat the plan profile from a second machine with k6
 against the deployed app, not from the laptop that also runs the database.
 
 ## Uploads

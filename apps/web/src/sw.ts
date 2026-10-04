@@ -80,6 +80,20 @@ const serwist = new Serwist({
       }),
     },
     {
+      /**
+       * The dictionaries (lib/i18n/delivery.ts, campaign LOAD-4): a page no
+       * longer carries its words, it names /i18n/<locale>.<hash>.json and
+       * comes alive once that file is in — so a page served from the page
+       * cache below while offline needs it here too. Named by the hash of its
+       * content, a copy never goes stale; a new dictionary is a new name.
+       */
+      matcher: ({ request, url }) => request.method === "GET" && url.pathname.startsWith("/i18n/"),
+      handler: new CacheFirst({
+        cacheName: "edulink-i18n",
+        plugins: [new ExpirationPlugin({ maxEntries: 6 })],
+      }),
+    },
+    {
       matcher: ({ request }) => request.destination === "font" || request.destination === "style",
       handler: new StaleWhileRevalidate({ cacheName: "edulink-static" }),
     },

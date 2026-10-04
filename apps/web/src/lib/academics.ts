@@ -80,8 +80,9 @@ export async function zoneOf(schoolId: string): Promise<string> {
 /** The caller, in one of `roles`, at an institution with ACADEMICS on — or refused. */
 export async function academicsCaller(ctx: ActiveContext, roles: readonly Role[]): Promise<Caller> {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  await assertModuleOn(ctx.schoolId, "ACADEMICS");
-  return { schoolId: ctx.schoolId, userId: ctx.user.id, membershipId: ctx.membershipId, role: ctx.role, timeZone: await zoneOf(ctx.schoolId) };
+  // Side by side rather than one after the other (load campaign LOAD-2): every academics door starts here.
+  const [, timeZone] = await Promise.all([assertModuleOn(ctx.schoolId, "ACADEMICS"), zoneOf(ctx.schoolId)]);
+  return { schoolId: ctx.schoolId, userId: ctx.user.id, membershipId: ctx.membershipId, role: ctx.role, timeZone };
 }
 
 export const nameOf = (u: { name: string; preferredName: string | null } | null | undefined) => (u ? (u.preferredName ?? u.name) : "");

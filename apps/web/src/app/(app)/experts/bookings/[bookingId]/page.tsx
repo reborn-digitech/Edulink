@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
-import { requireApiUser, AccessError } from "@/lib/tenancy";
+import { requireUser, AccessError } from "@/lib/tenancy";
 import { getBooking } from "@/lib/experts";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,7 +23,9 @@ export default async function BookingPage({
   params: Promise<{ bookingId: string }>;
 }) {
   const t = await getT();
-  const ctx = await requireApiUser();
+  // The page gate, which redirects: the action gate (requireApiUser) threw here, so every expired
+  // link answered the layout's 307 and logged an error-level AccessError beside it (load campaign LOAD-7).
+  const ctx = await requireUser();
   const { bookingId } = await params;
 
   let booking;
