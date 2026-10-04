@@ -62,7 +62,10 @@ const nextConfig: NextConfig = {
    * unchanged. A host without such a proxy must add one line to its own
    * (nginx `gzip on;` with `gzip_types`, Caddy `encode zstd gzip`; deploy.md)
    * or set this back to true. `next dev` and a local `next start` therefore
-   * serve identity bodies: compare transfer sizes behind a proxy only.
+   * serve identity bodies: compare transfer sizes behind a proxy only. The
+   * one exception is the dictionary file, which /i18n/[file] sends already
+   * compressed (brotli or gzip, once per process; LOAD-11), so even a host
+   * with no proxy sends 176–273 KB rather than 0.7–1.3 MB for it.
    */
   compress: false,
   // Whether the browser's push key was present when this build ran. A

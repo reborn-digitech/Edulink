@@ -12,7 +12,7 @@ overrides:
 
 patchedDependencies:
   '@prisma/client@6.19.3':
-    hash: 2spwna3solx4arae6h4of2rsne
+    hash: cosbtbwm4oxhtl5s5xamnhaohm
     path: patches/@prisma__client@6.19.3.patch
 
 importers:
@@ -231,7 +231,7 @@ importers:
         version: 2.1.10(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@prisma/client':
         specifier: ^6.19.3
-        version: 6.19.3(patch_hash=2spwna3solx4arae6h4of2rsne)(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
+        version: 6.19.3(patch_hash=cosbtbwm4oxhtl5s5xamnhaohm)(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)
       '@react-pdf/renderer':
         specifier: ^4.9.0
         version: 4.9.0(react@19.2.8)
@@ -246,7 +246,7 @@ importers:
         version: 4.4.0
       next:
         specifier: ^15.5.22
-        version: 15.5.25(@babel/core@7.29.7)(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 15.5.25(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       nodemailer:
         specifier: ^10.0.13
         version: 10.0.13
@@ -286,7 +286,7 @@ importers:
         version: 1.58.2
       '@serwist/next':
         specifier: ^9.5.12
-        version: 9.5.12(next@15.5.25(@babel/core@7.29.7)(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(typescript@5.9.3)
+        version: 9.5.12(next@15.5.25(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(typescript@5.9.3)
       '@tailwindcss/postcss':
         specifier: ^4.3.3
         version: 4.3.3
@@ -8366,7 +8366,7 @@ snapshots:
     dependencies:
       playwright: 1.58.2
 
-  '@prisma/client@6.19.3(patch_hash=2spwna3solx4arae6h4of2rsne)(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)':
+  '@prisma/client@6.19.3(patch_hash=cosbtbwm4oxhtl5s5xamnhaohm)(prisma@6.19.3(typescript@5.9.3))(typescript@5.9.3)':
     optionalDependencies:
       prisma: 6.19.3(typescript@5.9.3)
       typescript: 5.9.3
@@ -8738,7 +8738,9 @@ snapshots:
       metro-runtime: 0.84.6
     transitivePeerDependencies:
       - '@babel/core'
+      - bufferutil
       - supports-color
+      - utf-8-validate
 
   '@react-native/normalize-colors@0.74.89': {}
 
@@ -8942,7 +8944,7 @@ snapshots:
     transitivePeerDependencies:
       - browserslist
 
-  '@serwist/next@9.5.12(next@15.5.25(@babel/core@7.29.7)(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(typescript@5.9.3)':
+  '@serwist/next@9.5.12(next@15.5.25(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)(typescript@5.9.3)':
     dependencies:
       '@serwist/build': 9.5.12(browserslist@4.28.9)(typescript@5.9.3)
       '@serwist/utils': 9.5.12(browserslist@4.28.9)
@@ -8951,7 +8953,7 @@ snapshots:
       browserslist: 4.28.9
       glob: 13.0.6
       kolorist: 1.8.0
-      next: 15.5.25(@babel/core@7.29.7)(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next: 15.5.25(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react: 19.2.8
       semver: 7.8.5
       serwist: 9.5.12(browserslist@4.28.9)(typescript@5.9.3)
@@ -12815,7 +12817,7 @@ snapshots:
     dependencies:
       content-type: 2.1.0
 
-  next@15.5.25(@babel/core@7.29.7)(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  next@15.5.25(@playwright/test@1.58.2)(@types/node@20.19.43)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@next/env': 15.5.25
       '@swc/helpers': 0.5.15
@@ -12823,7 +12825,7 @@ snapshots:
       postcss: 8.5.28
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
-      styled-jsx: 5.1.6(@babel/core@7.29.7)(react@19.2.8)
+      styled-jsx: 5.1.6(react@19.2.8)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.5.25
       '@next/swc-darwin-x64': 15.5.25
@@ -13912,12 +13914,10 @@ snapshots:
 
   structured-headers@0.4.1: {}
 
-  styled-jsx@5.1.6(@babel/core@7.29.7)(react@19.2.8):
+  styled-jsx@5.1.6(react@19.2.8):
     dependencies:
       client-only: 0.0.1
       react: 19.2.8
-    optionalDependencies:
-      '@babel/core': 7.29.7
 
   styleq@0.1.3: {}
 

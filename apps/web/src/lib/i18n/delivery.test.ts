@@ -1,4 +1,6 @@
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { brotliDecompressSync, gunzipSync } from "node:zlib";
 import * as React from "react";
 import { createElement, type ReactNode } from "react";
 import { renderToString } from "react-dom/server";
@@ -7,7 +9,7 @@ import { describe, expect, it, vi } from "vitest";
 vi.mock("next/navigation", () => ({ useRouter: () => ({ refresh() {} }) }));
 vi.mock("@/app/account/actions", () => ({ setLocale: async () => ({ ok: true }) }));
 
-import { dictionaryAsset } from "./asset";
+import { dictionaryAsset, encodedDictionary, pickDictionaryEncoding } from "./asset";
 import { DICTIONARY_FILE } from "./delivery";
 import { dictionaryFor } from "./dictionary";
 import { I18nProvider, loadDictionary, useT } from "./provider";
@@ -70,6 +72,71 @@ describe("GET /i18n/<file>", () => {
 
   it.each(["xx.0000000000000000.json", "en.json", "en.c940f6985c664a36.js", "../en.0000000000000000.json"])("refuses %s", async (file) => {
     expect((await get(file)).status).toBe(404);
+  });
+});
+
+describe("GET /i18n/<file> precompressed (campaign LOAD-11)", () => {
+  // `compress: false` leaves compression to the proxy; this route compresses its one large body itself, once per process.
+  const get = (file: string, acceptEncoding?: string) =>
+    GET(new Request(`http://localhost/i18n/${file}`, { headers: acceptEncoding === undefined ? {} : { "accept-encoding": acceptEncoding } }), { params: Promise.resolve({ file }) });
+  const decode = { identity: (b: Buffer) => b, gzip: gunzipSync, br: brotliDecompressSync } as const;
+
+  it.each(codes)("answers %s in identity, gzip and brotli with the same words, address, ETag and cache", async (locale) => {
+    const asset = dictionaryAsset(locale);
+    const file = asset.href.slice("/i18n/".length);
+    const answers = [
+      { encoding: "identity", response: await get(file) },
+      { encoding: "gzip", response: await get(file, "gzip, deflate") },
+      { encoding: "br", response: await get(file, "gzip, deflate, br, zstd") },
+    ] as const;
+    // The name's hash is the hash of the uncompressed words, whatever travels.
+    expect(createHash("sha256").update(asset.json).digest("hex").slice(0, 16)).toBe(asset.hash);
+    for (const { encoding, response } of answers) {
+      expect(response.status).toBe(200);
+      expect(response.headers.get("content-encoding")).toBe(encoding === "identity" ? null : encoding);
+      expect(response.headers.get("vary")).toBe("Accept-Encoding");
+      expect(response.headers.get("etag")).toBe(`W/"${asset.hash}"`);
+      expect(response.headers.get("cache-control")).toBe("public, max-age=31536000, immutable");
+      expect(response.headers.get("content-type")).toMatch(/^application\/json/);
+      const bytes = Buffer.from(await response.arrayBuffer());
+      const words = decode[encoding](bytes).toString("utf8");
+      expect(words).toBe(asset.json);
+      if (encoding !== "identity") expect(bytes.length).toBeLessThan(Buffer.byteLength(asset.json) / 2);
+    }
+  });
+
+  it("compresses once per language and encoding, then hands out the same bytes", async () => {
+    const first = encodedDictionary("mr", "br");
+    expect(encodedDictionary("mr", "br")).toBe(first);
+    expect(encodedDictionary("mr", "gzip")).not.toBe(first);
+    const again = await get(dictionaryAsset("mr").href.slice("/i18n/".length), "br");
+    expect(Buffer.from(await again.arrayBuffer()).equals(Buffer.from(await first))).toBe(true);
+  });
+
+  it("compresses an older name too, still uncached", async () => {
+    const response = await get("hi.0000000000000000.json", "gzip");
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    expect(response.headers.get("content-encoding")).toBe("gzip");
+    expect(JSON.parse(gunzipSync(Buffer.from(await response.arrayBuffer())).toString("utf8"))).toEqual(dictionaryFor("hi"));
+  });
+
+  it.each([
+    [null, "identity"],
+    ["", "identity"],
+    ["identity", "identity"],
+    ["deflate", "identity"],
+    ["gzip", "gzip"],
+    ["GZIP;q=0.5", "gzip"],
+    ["br;q=0, gzip", "gzip"],
+    ["gzip;q=0, br;q=0", "identity"],
+    ["br", "br"],
+    ["gzip, br;q=0.1", "br"],
+    ["*", "br"],
+    ["br;q=0, *", "gzip"],
+    ["*;q=0", "identity"],
+    ["gzip;q=bogus", "identity"],
+  ] as const)("Accept-Encoding %j picks %s", (header, encoding) => {
+    expect(pickDictionaryEncoding(header)).toBe(encoding);
   });
 });
 

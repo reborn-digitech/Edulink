@@ -87,6 +87,18 @@ What the numbers say, and what to measure against next time:
   transfer sizes or Lighthouse scores with these, e.g. Caddy with a `:3100`
   site block holding `encode zstd gzip` and `reverse_proxy localhost:3000`
   (untested here).
+- **Read Lighthouse's LCP on localhost with care** (LOAD-10, 5 October). The
+  phone preset *simulates* throttling from an unthrottled load, and its LCP
+  estimate counts every request that finished before the LCP it observed. A
+  local `next start` delivers every script before the first paint, so the
+  estimate charges all of them (150–300 KB) to the text that is the LCP
+  element and reads 3.3–4.5 s with a "render delay" of 2.9–4.1 s, equal to
+  the time to interactive. Measured with real throttling
+  (`--throttling-method=devtools`) the same paragraph paints in the first
+  frame: LCP equals FCP on /login, /parent and /teacher (1.47–1.50 s on the
+  dev server through the gzip proxy, with the scripts still arriving until
+  11–13 s), and no web font is fetched. Quote LCP from a devtools-throttled
+  run, or the simulated one beside its `observedLargestContentfulPaint`.
 - **Page sweep on prod**: 862 of 862 as expected, median 61 ms, p95 105 ms.
 
 Deployment settings that follow (`docs/runbooks/go-live.md` Phase 3 and 9.6,
