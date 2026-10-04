@@ -40,7 +40,7 @@ export default async function ParentAttendancePage({
       ? requested
       : children[0]!.studentMembershipId;
 
-  const link = await assertGuardianAccess(session.user.id, selectedId);
+  const link = await assertGuardianAccess(session.user.id, selectedId, "ATTENDANCE");
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
   const teachingDays = parseTeachingDays((await db.school.findUnique({ where: { id: student.schoolId }, select: { teachingDays: true } }))?.teachingDays);
