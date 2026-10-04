@@ -79,7 +79,14 @@ export function describeAvatar(key: string | null | undefined, t: Translate): st
 
 /** "ZZ Head" → "ZH"; one word gives its first two letters' first; nothing gives "?". */
 export function initials(name: string): string {
-  const words = name.trim().split(/\s+/).filter(Boolean);
+  // A bracketed note ("ZZ Apte (parent)") is not part of the name, and a word
+  // counts from its first letter or digit: the initials were "Z(" (B-25).
+  const words = name
+    .replace(/\([^)]*\)?/g, " ")
+    .trim()
+    .split(/\s+/)
+    .map((w) => w.replace(/^[^\p{L}\p{N}]+/u, ""))
+    .filter(Boolean);
   if (words.length === 0) return "?";
   const letters = words.length === 1 ? [...words[0]!].slice(0, 1) : [[...words[0]!][0]!, [...words[words.length - 1]!][0]!];
   return letters.join("").toUpperCase();

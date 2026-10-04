@@ -111,11 +111,36 @@ describe("the teacher's Today", () => {
     expect(screen.getByText("Ask an admin to add you to a class, and your day will appear here.")).toBeTruthy();
   });
 
-  it("a closed school says so, and every register taken is celebrated", async () => {
+  it("a closed school says so, and an older server's closed day is no school, not every register taken", async () => {
     fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, lessons: { ...TODAY.lessons, closed: true, closedName: "ZZ Holiday", items: [] }, formClasses: { ...TODAY.formClasses, registersLeft: 0 } }) });
     await renderTeacher(<TeacherHome />);
     await screen.findByText("School is closed today — ZZ Holiday.");
-    expect(screen.getByText("Every attendance is marked for today.")).toBeTruthy();
+    expect(screen.getByText("No school today — ZZ Holiday.")).toBeTruthy();
+    expect(screen.queryByText("Every attendance is marked for today.")).toBeNull();
+  });
+
+  it("on a Sunday (noSchool from the server) there is no '0 left' and no 'all done', only that there is no school (B-11)", async () => {
+    fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, dateKey: "2026-10-04", noSchool: { holidayName: null }, lessons: { ...TODAY.lessons, items: [] }, formClasses: { ...TODAY.formClasses, registersLeft: 0 } }) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("No school today.");
+    expect(screen.queryByLabelText("Attendance left: 0")).toBeNull();
+    expect(screen.queryByText("Every attendance is marked for today.")).toBeNull();
+    expect(screen.queryByRole("button", { name: /ZZ 5A, 24 students · To do/ })).toBeNull();
+    // The rest of the day still reads: the marking pile is not tied to the calendar.
+    expect(screen.getByLabelText("To grade: 2")).toBeTruthy();
+  });
+
+  it("on a closing holiday the server names, the sentence names it", async () => {
+    fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, noSchool: { holidayName: "ZZ Gandhi Jayanti" }, formClasses: { ...TODAY.formClasses, registersLeft: 0 } }) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("No school today — ZZ Gandhi Jayanti.");
+  });
+
+  it("on an open day the server's null noSchool changes nothing", async () => {
+    fakeApi({ "/api/v1/staff/today": () => json({ ...TODAY, noSchool: null }) });
+    await renderTeacher(<TeacherHome />);
+    await screen.findByText("1 still to take.");
+    expect(screen.queryByText("No school today.")).toBeNull();
   });
 
   it("a refusal is an alert with a retry that asks again", async () => {

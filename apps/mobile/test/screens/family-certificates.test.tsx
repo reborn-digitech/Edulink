@@ -192,3 +192,53 @@ describe("the family's requests", () => {
     expect(screen.getByText("Ask for a bonafide, a study or a character certificate and the office will issue it from your record.")).toBeTruthy();
   });
 });
+
+describe("a former pupil's papers (ALUMNUS, campaign 2026-10-04, G-6)", () => {
+  const ME_ALUMNUS = {
+    user: { id: "u-alum", name: "ZZ Alumnus", preferredName: null, email: "alum@zz.test", avatarKey: null, isMinor: false, locale: "en" },
+    active: { schoolId: "s1", role: "ALUMNUS", membershipId: "m-alum" },
+    contexts: [{ schoolId: "s1", schoolName: "ZZ School", role: "ALUMNUS" }],
+  };
+  const ALUMNI_VIEW = {
+    items: [
+      request(REQ1, "PENDING", { kind: "TC", purpose: "ZZ admission abroad", feePaise: 5000, feePaid: false }),
+      request(REQ2, "ISSUED", { kind: "BONAFIDE", purpose: "ZZ bank", certificateId: CERT, serial: "BC/2026-27/0009", decidedAt: "2026-09-14T05:00:00.000Z", feePaise: 2500, feePaid: true }),
+    ],
+    kinds: ["TC", "BONAFIDE"],
+  };
+
+  it("says 'Papers from the school', reads no issued list, and shows each ask with its fee due or paid", async () => {
+    const { fetch } = await renderFamily(compose(), ME_ALUMNUS, { [PATH]: refused(403, "ZZ not yours"), [REQUESTS]: () => ALUMNI_VIEW });
+    expect(await screen.findByText("Papers from the school")).toBeTruthy();
+    expect(screen.getByText(/^Ask for a paper again/)).toBeTruthy();
+    expect(await screen.findByText("Fee ₹50, to be paid at the office")).toBeTruthy();
+    expect(screen.getByText("Fee ₹25 paid")).toBeTruthy();
+    expect(calls(fetch, PATH)).toHaveLength(0);
+    expect(screen.queryByRole("alert")).toBeNull();
+    // The issued paper opens as any other does (its PDF behind GET /shared/certificates/{id}/pdf).
+    await press(screen.getByRole("button", { name: "Open the certificate" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/certificate", params: { id: CERT } });
+  });
+
+  it("sends an ask for a paper again with no child on the query", async () => {
+    const { fetch } = await renderFamily(compose(), ME_ALUMNUS, { [REQUESTS]: (init) => (init?.method === "POST" ? request(REQ3, "PENDING", { kind: "TC" }) : ALUMNI_VIEW) });
+    await screen.findByText("Ask for a certificate");
+    await press(screen.getByRole("radio", { name: "Transfer certificate" }));
+    await type(screen.getByLabelText("What it is for"), "ZZ a copy for the university");
+    await press(screen.getByRole("button", { name: "Send the request" }));
+    const posts = () => calls(fetch, REQUESTS).filter((c) => c.init?.method === "POST");
+    await waitFor(() => expect(posts()).toHaveLength(1));
+    expect(posts()[0]!.url.searchParams.get("childId")).toBeNull();
+    expect(bodyOf(posts()[0]!)).toEqual({ kind: "TC", purpose: "ZZ a copy for the university" });
+    expect(await screen.findByText("Request sent. The office has been told.")).toBeTruthy();
+  });
+
+  it("takes a pending ask back", async () => {
+    const { fetch } = await renderFamily(compose(), ME_ALUMNUS, { [REQUESTS]: () => ALUMNI_VIEW, [`${REQUESTS}/${REQ1}/cancel`]: () => request(REQ1, "CANCELLED", { kind: "TC" }) });
+    await screen.findByText("Your requests");
+    await press(screen.getByRole("button", { name: "Take it back" }));
+    await press(screen.getByRole("button", { name: "Take it back" }));
+    await waitFor(() => expect(calls(fetch, `${REQUESTS}/${REQ1}/cancel`)).toHaveLength(1));
+    expect(await screen.findByText("Request taken back.")).toBeTruthy();
+  });
+});

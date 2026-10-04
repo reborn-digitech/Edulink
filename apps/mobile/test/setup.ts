@@ -26,6 +26,7 @@ jest.mock("expo-notifications", () => ({
   getPermissionsAsync: jest.fn(async () => ({ granted: false })),
   requestPermissionsAsync: jest.fn(async () => ({ granted: false })),
   getExpoPushTokenAsync: jest.fn(async () => ({ data: "ExponentPushToken[test]" })),
+  unregisterForNotificationsAsync: jest.fn(async () => {}),
   addNotificationResponseReceivedListener: jest.fn(() => ({ remove: () => {} })),
 }));
 // isDevice is a getter over shared state, because the interop copies a plain
@@ -90,6 +91,9 @@ jest.mock("expo-file-system", () => {
     get name() {
       return this.uri.slice(this.uri.lastIndexOf("/") + 1);
     }
+    get exists() {
+      return cache.has(this.uri);
+    }
     write(content: Uint8Array | string) {
       this.written = content;
       cache.set(this.uri, this);
@@ -108,8 +112,12 @@ jest.mock("expo-file-system", () => {
       return [...cache.values()].filter((f) => f.uri.startsWith(this.uri + "/"));
     }
   }
+  // The app has been launched before on this phone: the install marker
+  // (lib/install-platform.native.ts) is there, so a stored token is kept. A
+  // test of a fresh install deletes it.
+  new File("file:///document", "edulink-installed").write("1");
   (globalThis as { __cacheFiles?: Map<string, File> }).__cacheFiles = cache;
-  return { Directory, File, Paths: { cache: { uri: "file:///cache" } } };
+  return { Directory, File, Paths: { cache: { uri: "file:///cache" }, document: { uri: "file:///document" } } };
 });
 jest.mock("expo-sharing", () => ({ isAvailableAsync: jest.fn(async () => true), shareAsync: jest.fn(async () => {}) }));
 
@@ -153,3 +161,16 @@ afterAll(() => {
 // stream that never says anything; a test that wants the stream to speak
 // injects its own (__setEventsFetch in src/lib/use-events.ts).
 jest.mock("expo/fetch", () => ({ fetch: async () => ({ ok: true, status: 200, body: new ReadableStream() }) }));
+
+// Somebody is signed in (the outbox's owner, lib/outbox.ts): a screen test
+// renders a screen the way a signed-in person sees it, without the session
+// provider that sets the owner in the app, and what it queues is theirs to
+// send. The tests of the owner rule itself (test/security/outbox-owner.test.tsx)
+// set and clear the owner as the session does.
+// Each test starts with an empty outbox in memory (the phone's is SQLite, which jest has not got).
+beforeEach(() => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const outbox = require("@/lib/outbox") as typeof import("@/lib/outbox");
+  outbox.__setOutboxStore(outbox.memoryOutbox());
+  outbox.setOutboxOwner({ userId: "zz-test-person", schoolId: "s1", membershipId: "m1" });
+});

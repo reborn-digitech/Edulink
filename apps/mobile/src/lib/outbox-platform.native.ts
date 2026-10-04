@@ -14,8 +14,17 @@ export function platformOutbox(): OutboxStore {
       dbPromise = import("expo-sqlite").then(async (sqlite) => {
         const db = (await sqlite.openDatabaseAsync("edulink-outbox.db")) as unknown as Db;
         await db.execAsync(
-          "CREATE TABLE IF NOT EXISTS outbox (id TEXT PRIMARY KEY, url TEXT NOT NULL, method TEXT NOT NULL, body TEXT NOT NULL, tag TEXT NOT NULL, createdAt INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, lastError TEXT)",
+          "CREATE TABLE IF NOT EXISTS outbox (id TEXT PRIMARY KEY, url TEXT NOT NULL, method TEXT NOT NULL, body TEXT NOT NULL, tag TEXT NOT NULL, createdAt INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, lastError TEXT, owner TEXT, schoolId TEXT, membershipId TEXT)",
         );
+        // A database from before the owner stamp (PH-1): the columns are
+        // added, and its rows read with no owner, which is never sent.
+        for (const column of ["owner", "schoolId", "membershipId"]) {
+          try {
+            await db.execAsync(`ALTER TABLE outbox ADD COLUMN ${column} TEXT`);
+          } catch {
+            // Already there.
+          }
+        }
         return db;
       });
     }
@@ -25,14 +34,14 @@ export function platformOutbox(): OutboxStore {
     async all() {
       const db = await open();
       return db.getAllAsync<QueuedRequest & { lastError: string | null }>("SELECT * FROM outbox ORDER BY createdAt ASC").then((rows) =>
-        rows.map((r) => ({ ...r, lastError: r.lastError ?? undefined })),
+        rows.map((r) => ({ ...r, lastError: r.lastError ?? undefined, owner: r.owner ?? null, schoolId: r.schoolId ?? null, membershipId: r.membershipId ?? null })),
       );
     },
     async put(item) {
       const db = await open();
       await db.runAsync(
-        "INSERT OR REPLACE INTO outbox (id, url, method, body, tag, createdAt, attempts, lastError) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        item.id, item.url, item.method, item.body, item.tag, item.createdAt, item.attempts, item.lastError ?? null,
+        "INSERT OR REPLACE INTO outbox (id, url, method, body, tag, createdAt, attempts, lastError, owner, schoolId, membershipId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        item.id, item.url, item.method, item.body, item.tag, item.createdAt, item.attempts, item.lastError ?? null, item.owner, item.schoolId, item.membershipId,
       );
     },
     async remove(id) {

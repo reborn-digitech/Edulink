@@ -144,4 +144,17 @@ describe("the driver's home (transport, 3 Oct 2026)", () => {
     await mountStaff(<DriverHome />, "DRIVER", { "GET /api/v1/transport/today": () => json(day([])) }, { me: meWith(["TRANSPORT"]) });
     expect(await screen.findByText("No trips for you today")).toBeTruthy();
   });
+
+  it("on a Sunday says there is no school, not that trips are missing or missed (B-11)", async () => {
+    await mountStaff(<DriverHome />, "DRIVER", { "GET /api/v1/transport/today": () => json({ ...day([]), dateKey: "2026-10-04", noSchool: { holidayName: null } }) }, { me: meWith(["TRANSPORT"]) });
+    expect(await screen.findByText("No school today.")).toBeTruthy();
+    expect(screen.getByText("No trips run on a day the school is shut.")).toBeTruthy();
+    expect(screen.queryByText("No trips for you today")).toBeNull();
+    expect(screen.queryByRole("button", { name: "Start trip" })).toBeNull();
+  });
+
+  it("on a closing holiday names it", async () => {
+    await mountStaff(<DriverHome />, "DRIVER", { "GET /api/v1/transport/today": () => json({ ...day([]), noSchool: { holidayName: "ZZ Gandhi Jayanti" } }) }, { me: meWith(["TRANSPORT"]) });
+    expect(await screen.findByText("No school today — ZZ Gandhi Jayanti.")).toBeTruthy();
+  });
 });

@@ -127,7 +127,8 @@ describe("the guardian's applications on the overview", () => {
     expect(screen.queryByText("ZZ Nila")).toBeNull();
     await press(screen.getByRole("button", { name: /^ZZ Kabir/ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/my-application", params: { id: "czz00000000000000000app1" } });
-    await press(screen.getByRole("button", { name: "Applications" }));
+    // The card's link says "See all", not its own title again (B-25).
+    await press(screen.getByRole("button", { name: "See all: Applications" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/my-applications");
   });
 

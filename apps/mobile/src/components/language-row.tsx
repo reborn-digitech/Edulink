@@ -4,8 +4,13 @@ import { Text } from "./text";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
-/** The three languages, each named in itself, as a radio group. */
-export function LanguageRow() {
+/**
+ * The three languages, each named in itself, as a radio group. `onChosen`
+ * hears a choice the person made (not the first draw): a signed-in screen
+ * passes the save to the account there, so the server's own sentences — a
+ * refusal, a module that is off — come back in the same language (B-24).
+ */
+export function LanguageRow({ onChosen }: { onChosen?: (code: (typeof LOCALES)[number]["code"]) => void } = {}) {
   const { locale, setLocale } = useLocale();
   const t = useT();
   const th = useTheme();
@@ -20,7 +25,10 @@ export function LanguageRow() {
             accessibilityState={{ checked: on }}
             aria-checked={on}
             accessibilityLabel={l.english}
-            onPress={() => setLocale(l.code)}
+            onPress={() => {
+              setLocale(l.code);
+              if (!on) onChosen?.(l.code);
+            }}
             style={{ flex: 1, minHeight: th.tap, alignItems: "center", justifyContent: "center", borderRadius: th.radius.sm, backgroundColor: on ? th.surface : undefined }}
           >
             <Text variant="sm" bold={on} tone={on ? "fg" : "muted"}>

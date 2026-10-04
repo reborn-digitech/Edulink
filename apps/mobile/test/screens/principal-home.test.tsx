@@ -159,3 +159,51 @@ describe("the principal's dashboard", () => {
     await waitFor(() => expect(screen.getByRole("alert")).toHaveTextContent("Network request failed"));
   });
 });
+
+describe("the college at a glance on the head's home (G-4, campaign 2026-10-04)", () => {
+  const GLANCE = {
+    school: { name: "ZZ Vidya College", affiliatingUniversity: "ZZ University" },
+    today: "2026-10-04",
+    term: { id: "t1", name: "ZZ Odd term" },
+    faculty: { total: 3, present: 2, onLeave: 1, absent: 0, unmarked: 0, closed: false },
+    fees: { year: "2026-27", demandPaise: 7_850_000, collectedPaise: 1_825_000, outstandingPaise: 6_025_000, defaulters: 2 },
+    scholarships: null,
+    hostel: null,
+    grievances: { open: 2, overdue: 1 },
+    incidentsOpen: 0,
+    predictor: { cgpa: 2.91, grade: "B+", nextGrade: "A", distance: 0.1 },
+    lectures: [{ departmentId: "d1", name: "ZZ Physics", lectures: 4, marked: 3, presentPercent: 81 }],
+    approvals: [
+      { key: "lateRegistration", count: 1, href: "/admin/academics/registration" },
+      { key: "grace", count: 0, href: "/exam-cell" },
+    ],
+  };
+  const college = (role: "PRINCIPAL") => ({
+    user: { id: "u1", name: "ZZ Head", preferredName: null, email: "head@zz.test", avatarKey: null, isMinor: false, locale: "en" },
+    active: { schoolId: "s1", role, membershipId: "m1" },
+    contexts: [{ schoolId: "s1", schoolName: "ZZ Vidya College", role, institutionKind: "COLLEGE" }],
+    modules: ["ACADEMICS"],
+    institutionKind: "COLLEGE",
+  });
+
+  it("at a college: what waits for the head first, each opened on the web, then the numbers", async () => {
+    const { Linking } = jest.requireActual<typeof import("react-native")>("react-native");
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW), "GET /api/v1/principal/college": () => json(GLANCE) }, { me: college("PRINCIPAL") });
+    expect(await screen.findByText("Waiting for your word")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: /1 late registrations asked by the office/ }));
+    expect(open).toHaveBeenCalledWith(expect.stringMatching(/\/admin\/academics\/registration$/));
+    // A queue at zero is not listed.
+    expect(screen.queryByText(/grace-mark proposals/)).toBeNull();
+    expect(screen.getByLabelText("Faculty present: 2 of 3")).toBeTruthy();
+    expect(screen.getByText("Faculty present: 1 on leave, 0 absent, 0 not marked")).toBeTruthy();
+    open.mockRestore();
+  });
+
+  it("at a school: no college card and no request for one", async () => {
+    const { calls } = await mountStaff(<PrincipalHome />, "PRINCIPAL", { "GET /api/v1/staff/principal/overview": () => json(OVERVIEW) });
+    expect(await screen.findByText("ZZ Class A")).toBeTruthy();
+    expect(screen.queryByText("Waiting for your word")).toBeNull();
+    expect(calls().some((c) => c.line.startsWith("GET /api/v1/principal/college"))).toBe(false);
+  });
+});

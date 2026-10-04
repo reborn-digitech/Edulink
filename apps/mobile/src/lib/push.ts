@@ -27,6 +27,23 @@ export async function registerForPush(): Promise<{ registered: boolean; reason?:
   }
 }
 
+/**
+ * When a session ends on the server (a 401: expired, revoked from the web),
+ * the phone can no longer tell the server to forget its token. It stops
+ * receiving remote notices on the device itself instead, so the last
+ * person's notices do not keep arriving on a phone nobody is signed in to;
+ * the next sign-in's registerForPush registers the device afresh (PH-2,
+ * campaign 2026-10-04).
+ */
+export async function forgetPushOnDevice(): Promise<void> {
+  if (Platform.OS === "web") return;
+  try {
+    await Notifications.unregisterForNotificationsAsync();
+  } catch {
+    /* no registration to undo */
+  }
+}
+
 /** On sign-out: the device stops receiving this person's notices. */
 export async function unregisterPush(): Promise<void> {
   if (Platform.OS === "web") return;

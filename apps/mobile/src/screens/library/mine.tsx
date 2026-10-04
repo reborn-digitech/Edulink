@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { familyChildrenSchema, libraryCatalogueSchema, libraryMineSchema, libraryReservationSchema } from "@edulink/contracts";
+import { familyChildrenSchema, isCollegeKind, libraryCatalogueSchema, libraryMineSchema, libraryReservationSchema } from "@edulink/contracts";
 import { formatPaise } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
@@ -123,6 +123,10 @@ export function MyLibraryScreen() {
           />
         ))}
       </Card>
+      {role === "STUDENT" && session.status === "signed-in" && isCollegeKind(session.me.institutionKind) ? (
+        // A college student's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
+        <Button label={t("collegeOffice.eResourcesTitle")} variant="secondary" onPress={() => router.push("/(app)/e-resources" as never)} />
+      ) : null}
     </Screen>
   );
 }

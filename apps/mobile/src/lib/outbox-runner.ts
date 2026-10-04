@@ -11,7 +11,8 @@ import { flushQueue, type QueuedRequest } from "./outbox";
  * succeeding (the surest sign the network is there). Every replayed request
  * goes out through the same bearer client as a live one, plus the header
  * `X-Edulink-Replay: 1` the web's service worker sends, so the server can tell
- * a replay from a fresh tap in its logs.
+ * a replay from a fresh tap in its logs, and `X-Edulink-Owner` naming who
+ * queued it.
  */
 type Method = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -30,7 +31,7 @@ function replayClient(): ApiClient {
       baseUrl: API_BASE,
       getToken: () => keyStore().get(KEYS.token),
       fetch: (input, init) => {
-        const headers = { ...((init?.headers as Record<string, string> | undefined) ?? {}), "X-Edulink-Replay": "1" };
+        const headers = { ...((init?.headers as Record<string, string> | undefined) ?? {}), "X-Edulink-Replay": "1", ...(sending?.owner ? { "X-Edulink-Owner": sending.owner } : {}) };
         return (replayFetch ?? globalThis.fetch)(input, { ...init, headers });
       },
     });
@@ -38,7 +39,15 @@ function replayClient(): ApiClient {
   return client;
 }
 
-/** The transport flushQueue is given: one queued item, sent as it was queued. */
+/** The row on its way out: its owner rides as X-Edulink-Owner (flushQueue sends one at a time). */
+let sending: QueuedRequest | null = null;
+
+/**
+ * The transport flushQueue is given: one queued item, sent as it was queued,
+ * naming the person who queued it (X-Edulink-Owner, the web outbox's header
+ * since 13674f8): the server answers 401 to a bearer of anyone else, and a
+ * 401 keeps the row.
+ */
 export async function sendQueued(item: QueuedRequest): Promise<{ status: number }> {
   let body: unknown;
   try {
@@ -46,8 +55,13 @@ export async function sendQueued(item: QueuedRequest): Promise<{ status: number 
   } catch {
     body = undefined;
   }
-  const result = await replayClient().request(item.method as Method, item.url, body);
-  return { status: result.ok ? 200 : result.status };
+  sending = item;
+  try {
+    const result = await replayClient().request(item.method as Method, item.url, body);
+    return { status: result.ok ? 200 : result.status };
+  } finally {
+    sending = null;
+  }
 }
 
 /** Send everything waiting, oldest first. Safe to call from anywhere, any time. */

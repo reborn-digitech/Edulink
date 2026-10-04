@@ -75,14 +75,19 @@ function ChildAttendance() {
               <Stat key={status} label={t(ATTENDANCE[status].label)} value={summary.counts[status]} tone={summary.counts[status] === 0 ? "fg" : status === "ABSENT" ? "danger" : status === "LATE" ? "warn" : "fg"} />
             ))}
           </View>
-          <Text variant="xs" tone="muted">
-            {summary.total === 0 ? t("parent.noRecords") : t("parent.thereOfDays", { there: summary.counts.PRESENT + summary.counts.LATE, total: summary.total })}
-          </Text>
+          {/* With nothing recorded the card's empty state says so once; the two lines above it said it twice more (B-25). */}
+          {summary.total > 0 ? (
+            <Text variant="xs" tone="muted">
+              {t("parent.thereOfDays", { there: summary.counts.PRESENT + summary.counts.LATE, total: summary.total })}
+            </Text>
+          ) : null}
 
           <Card title={t("parent.dayByDay")}>
-            <Text variant="sm" tone="muted">
-              {summary.total === 0 ? t("parent.nothingRecordedYet") : summary.total === 1 ? t("parent.daysRecordedOne") : t("parent.daysRecordedMany", { count: summary.total })}
-            </Text>
+            {summary.total > 0 ? (
+              <Text variant="sm" tone="muted">
+                {summary.total === 1 ? t("parent.daysRecordedOne") : t("parent.daysRecordedMany", { count: summary.total })}
+              </Text>
+            ) : null}
             {days.length === 0 ? (
               <Empty title={t("parent.noAttendanceYet")} body={t("parent.nothingInMonth", { name, month: monthLabel })} action={<Button label={t("parent.previousMonth")} variant="secondary" onPress={() => setMonth(d.previousMonth)} />} />
             ) : (

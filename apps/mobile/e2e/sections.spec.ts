@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { allRoutesFor, contextFor, rawKeys, rolesWithTokens, settle } from "./actors";
+import { ALL_ROLES, allRoutesFor, contextFor, moduleOffReason, rawKeys, rolesWithTokens, settle } from "./actors";
 
 /**
  * Every section the web's NAV gives a role is a screen on the phone: the
@@ -11,7 +11,7 @@ import { allRoutesFor, contextFor, rawKeys, rolesWithTokens, settle } from "./ac
  * dictionary where its sentence should be, which is what a release shows for
  * a key left out of the phone's share of the dictionaries.
  */
-const actors = rolesWithTokens();
+const actors = rolesWithTokens(ALL_ROLES);
 
 if (actors.length === 0) {
   test.skip("no role tokens in the environment (EDULINK_TOKEN_*)", () => {});
@@ -21,6 +21,8 @@ for (const { role, token } of actors) {
   test.describe(`${role} · every section`, () => {
     for (const route of allRoutesFor(role)) {
       test(`${route}`, async ({ browser }) => {
+        const off = await moduleOffReason(role, route, token);
+        test.skip(off !== null, off ?? "");
         const context = await contextFor(browser, token, { theme: "light", locale: "en" });
         const page = await context.newPage();
         const response = await page.goto(route, { waitUntil: "networkidle" });

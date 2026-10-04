@@ -50,7 +50,10 @@ const config: ExpoConfig = {
       ITSAppUsesNonExemptEncryption: false,
     },
   },
-  ...(googleServicesFile ? { android: { ...appJson.android, googleServicesFile } } : {}),
+  // No Android auto-backup (PH-9, campaign 2026-10-04): the outbox's SQLite
+  // file holds queued registers with pupil ids and message bodies, and a
+  // cloud backup would carry it to whatever device restores it.
+  android: { ...appJson.android, allowBackup: false, ...(googleServicesFile ? { googleServicesFile } : {}) },
   ...(webOutput ? { web: { ...appJson.web, output: webOutput } } : {}),
   ...(projectId
     ? {

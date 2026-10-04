@@ -60,7 +60,8 @@ export function FamilyApplicationsCard() {
   const items = query.data?.items ?? [];
   if (items.length === 0) return null;
   return (
-    <Card title={t("admissions.myApplications")} action={<Button variant="ghost" label={t("nav.applications")} onPress={() => router.push("/(app)/my-applications" as never)} />}>
+    // "See all", not the card's own title again: the link read "Applications · Applications" (B-25).
+    <Card title={t("admissions.myApplications")} action={<Button variant="ghost" label={t("teacher.seeAll")} accessibilityLabel={`${t("teacher.seeAll")}: ${t("admissions.myApplications")}`} onPress={() => router.push("/(app)/my-applications" as never)} />}>
       {items.slice(0, 3).map((a) => (
         <Row key={a.id} title={a.childName} caption={`${a.schoolName} · ${t(nextStepKey(a))}`} right={<StagePill status={a.status} />} onPress={() => router.push({ pathname: "/(app)/my-application", params: { id: a.id } } as never)} />
       ))}

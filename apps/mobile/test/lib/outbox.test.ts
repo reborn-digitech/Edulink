@@ -1,3 +1,4 @@
+import { waitFor } from "@testing-library/react-native";
 import { __setOutboxStore, countQueued, enqueue, flushQueue, listQueued, memoryOutbox, onQueueEvent, type QueueEvent } from "@/lib/outbox";
 
 describe("the outbox", () => {
@@ -41,6 +42,8 @@ describe("the outbox", () => {
     let release!: () => void;
     const first = flushQueue(() => new Promise((r) => (release = () => r({ status: 200 }))));
     expect(await flushQueue(async () => ({ status: 200 }))).toEqual({ sent: 0, failed: 0, remaining: 1 });
+    // The first flush reaches its send once the expired rows are looked at.
+    await waitFor(() => expect(release).toBeDefined());
     release();
     expect(await first).toEqual({ sent: 1, failed: 0, remaining: 0 });
   });

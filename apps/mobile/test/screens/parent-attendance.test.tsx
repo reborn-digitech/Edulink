@@ -44,6 +44,9 @@ describe("a child's attendance", () => {
     const empty = { ...MONTH, summary: { ...SUMMARY, counts: { PRESENT: 0, LATE: 0, ABSENT: 0, EXCUSED: 0 }, total: 0, percent: null, recent: [] }, days: [] };
     await renderFamily(<FamilyAttendance />, ME_PARENT, { [PATH]: () => empty });
     expect(await screen.findByText("No attendance recorded yet")).toBeTruthy();
+    // Once, not three times (B-25): "No records" and "Nothing recorded yet" were said above it too.
+    expect(screen.queryByText("No records")).toBeNull();
+    expect(screen.queryByText("Nothing recorded yet")).toBeNull();
   });
 
   it("a refusal is an alert with a retry", async () => {

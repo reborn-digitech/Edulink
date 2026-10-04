@@ -21,6 +21,8 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
   const router = useRouter();
   const session = useSession();
   const on = session.status === "signed-in" && (session.me.modules ?? []).includes("ACADEMICS");
+  // My payslips (G-1, campaign 2026-10-04): the door names the college's staff now; shown while payroll is on.
+  const payroll = session.status === "signed-in" && (session.me.modules ?? []).includes("PAYROLL");
   const home = useQuery({ queryKey: ["academics", "faculty-home"], enabled: on, queryFn: async () => facultyHomeSchema.parse(unwrap(await api().get("/api/v1/academics/faculty-home"))) });
   if (!on) return <CollegeRoleHome role={asTeaching ? "HOD" : "FACULTY"} />;
   const h = home.data;
@@ -64,7 +66,7 @@ export function FacultyHomeScreen({ asTeaching = false }: { asTeaching?: boolean
             </Card>
           ) : null}
           <Button label={t("academics.mentoringLink", { n: h.mentoringGroups })} variant="secondary" onPress={() => router.push("/(app)/academics-mentoring" as never)} />
-          <Button label={t("payroll.myTitle")} variant="secondary" onPress={() => router.push("/(app)/payslips" as never)} />
+          {payroll ? <Button label={t("payroll.myTitle")} variant="secondary" onPress={() => router.push("/(app)/payslips" as never)} /> : null}
         </>
       ) : null}
     </Screen>

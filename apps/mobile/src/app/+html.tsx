@@ -1,17 +1,21 @@
 import { ScrollViewStyleReset } from "expo-router/html";
 import type { PropsWithChildren } from "react";
+import { API_BASE } from "@/lib/api";
+import { contentSecurityPolicy } from "@/lib/csp";
 
 /**
  * The HTML shell of the web target (expo-router renders every route into it
  * at export time). A title, because a page without one fails the
  * accessibility gate on all 36 screens and is what a tab and a screen reader
- * announce; the viewport and colour-scheme lines are Expo's defaults.
+ * announce; the viewport and colour-scheme lines are Expo's defaults. The
+ * Content-Security-Policy (lib/csp.ts) comes first, before any script.
  */
 export default function Root({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
+        <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy(API_BASE, process.env.NODE_ENV !== "production")} />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="color-scheme" content="light dark" />

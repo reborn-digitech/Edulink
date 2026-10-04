@@ -7,6 +7,7 @@ import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, SwitchRow, Te
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
+import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 
 /**
@@ -16,6 +17,9 @@ import { useTheme } from "@/lib/theme";
  * survey for an alumnus, the teachers' survey for faculty — each answered 4
  * to 0 and sent once; and, for a student, a grievance to the committee with
  * its fifteen-working-day limit and the way to the Ombudsperson after it.
+ * A guardian (PARENT, campaign 2026-10-04, G-5) answers the parent survey of
+ * their child's college here, with no grievance line (the server says
+ * `canFileGrievance: false` and sends none).
  */
 type Survey = Voice["surveys"][number];
 type Grievance = Voice["grievances"][number];
@@ -140,10 +144,11 @@ function GrievanceRow({ g }: { g: Grievance }) {
 export function VoiceScreen() {
   const t = useT();
   const router = useRouter();
+  const guardian = useRole() === "PARENT";
   const query = useQuery({ queryKey: KEY, queryFn: async () => voiceSchema.parse(unwrap(await api().get("/api/v1/voice"))) });
   const d = query.data;
   return (
-    <Screen title={t("iqac.voiceTitle")} description={t("iqac.voiceIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={guardian ? t("iqac.navParentVoice") : t("iqac.voiceTitle")} description={guardian ? t("iqac.parentVoiceIntro") : t("iqac.voiceIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -156,7 +161,7 @@ export function VoiceScreen() {
           ) : (
             d.surveys.map((s) => <SurveyCard key={s.id} survey={s} />)
           )}
-          {d.canFileGrievance ? (
+          {d.canFileGrievance && !guardian ? (
             <>
               <GrievanceForm />
               <Text variant="lg" bold>

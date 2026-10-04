@@ -5,6 +5,7 @@ import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { NoSchool } from "@/screens/shared/no-school";
 import { contextPlace } from "@/lib/institution";
+import { useSwitchContext } from "@/lib/outbox-held";
 
 /**
  * "Choose where to go": a person who belongs to more than one school, or is
@@ -15,6 +16,7 @@ import { contextPlace } from "@/lib/institution";
 export function ChooseContext({ consoles = [], onConsole }: { consoles?: ("operator" | "appadmin")[]; onConsole?: (which: "operator" | "appadmin") => void }) {
   const t = useT();
   const session = useSession();
+  const switchTo = useSwitchContext();
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   if (session.status !== "signed-in") return null;
@@ -36,7 +38,7 @@ export function ChooseContext({ consoles = [], onConsole }: { consoles?: ("opera
                 setBusy(key);
                 setError(null);
                 try {
-                  await session.switchContext({ schoolId: c.schoolId, role: c.role as RoleCode });
+                  await switchTo({ schoolId: c.schoolId, role: c.role as RoleCode });
                 } catch (e) {
                   setError(e instanceof Error ? e.message : t("common.tryAgain"));
                 } finally {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Platform, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { expertEarningsSchema, expertPayoutSchema, expertRouteLinkedSchema, type ExpertPayout, type GigPaidGate } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
@@ -12,6 +12,14 @@ import { useTheme } from "@/lib/theme";
 import { formatInstant, Note, Pill } from "@/screens/family/shared";
 import { money } from "@/screens/shared/fees";
 import { MENTORING_OFFER_DAYS, PAYMENT_STATUS } from "@/screens/shared/gigs";
+
+/**
+ * The town's autofill hint (B-23, campaign 2026-10-04): Android's own word on
+ * a phone; on the web target the HTML token, since "postal-address-locality"
+ * is no autocomplete value a browser knows (axe's autocomplete-valid). iOS
+ * reads textContentType instead.
+ */
+const CITY_AUTOCOMPLETE = Platform.select({ android: "postal-address-locality" as const, web: "address-level2" as unknown as "postal-address-locality", default: undefined });
 
 /**
  * The expert's side of paid seats (decision 0004, third amendment of
@@ -226,7 +234,7 @@ export function GetPaidCard() {
               <Field label={t("gigs.payeeBankAccount")} hint={payout.bankLast4 ? t("gigs.payeeKeepBlank") : undefined} value={form.bankAccount} onChangeText={set("bankAccount")} maxLength={30} keyboardType="number-pad" autoComplete="off" placeholder={payout.bankLast4 ? `•••• ${payout.bankLast4}` : undefined} />
               <Field label={t("gigs.payeeIfsc")} value={form.ifsc} onChangeText={set("ifsc")} maxLength={20} autoCapitalize="characters" autoComplete="off" />
               <Field label={t("gigs.payeeAddress")} value={form.addressLine} onChangeText={set("addressLine")} maxLength={100} autoComplete="street-address" editable={!locked} />
-              <Field label={t("gigs.payeeCity")} value={form.city} onChangeText={set("city")} maxLength={60} autoComplete="postal-address-locality" editable={!locked} />
+              <Field label={t("gigs.payeeCity")} value={form.city} onChangeText={set("city")} maxLength={60} autoComplete={CITY_AUTOCOMPLETE} textContentType="addressCity" editable={!locked} />
               <Field label={t("gigs.payeePostalCode")} value={form.postalCode} onChangeText={set("postalCode")} maxLength={6} keyboardType="number-pad" autoComplete="postal-code" editable={!locked} />
               <Field label={t("gigs.payeeMobile")} value={form.phone} onChangeText={set("phone")} maxLength={14} keyboardType="phone-pad" autoComplete="tel" />
               <Field label={t("gigs.payeeState")} hint={t("gigs.payeeStateHint")} value={form.gstStateCode} onChangeText={set("gstStateCode")} maxLength={2} keyboardType="number-pad" editable={!locked} />

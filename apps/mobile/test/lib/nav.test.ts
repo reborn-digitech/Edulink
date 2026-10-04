@@ -1,6 +1,7 @@
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { en } from "@edulink/i18n/en";
+import { dictionaryFor, translatorFor } from "@edulink/i18n";
 import { ALL_TAB_SCREENS, HIDDEN_SCREENS, MENU, menuFor, QUICK, TABS, tabShown } from "@/lib/nav";
 
 const flat = JSON.stringify(en);
@@ -16,6 +17,17 @@ describe("the tab bar per role", () => {
         expect({ key: tab.labelKey, present: hasKey(tab.labelKey) }).toEqual({ key: tab.labelKey, present: true });
       }
     }
+  });
+
+  it("labels every tab in a word or two in each language, so none is cut off at 390 px (B-14)", () => {
+    // "Head of department" (18) and "Training and placement officer" (30) were cut off on the bar;
+    // the longest that fit on the walk of 4 October 2026 was 17 ("आईक्यूएसी समन्वयक").
+    const long: string[] = [];
+    for (const locale of ["en", "hi", "mr"] as const) {
+      const t = translatorFor(dictionaryFor(locale));
+      for (const [role, tabs] of Object.entries(TABS)) for (const tab of tabs) if (t(tab.labelKey).length > 17) long.push(`${locale} ${role} ${t(tab.labelKey)}`);
+    }
+    expect(long).toEqual([]);
   });
 
   it("names every tab screen any role has, once", () => {

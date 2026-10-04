@@ -2,11 +2,13 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import type { Me, RoleCode, SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
 import { KEYS, keyStore } from "./storage";
-import { clearQueue } from "./outbox";
+import { clearQueue, setOutboxOwner } from "./outbox";
 import { clearSharedFiles } from "./download";
 import { Image } from "expo-image";
 import { unwrap } from "./query";
-import { unregisterPush } from "./push";
+import { forgetPushOnDevice, unregisterPush } from "./push";
+import { runSessionEnd } from "./session-end";
+import { claimFreshInstall } from "./install-platform";
 
 /**
  * Who is signed in, from the phone's point of view.
@@ -32,22 +34,85 @@ type Session = SessionState & {
 
 const Ctx = createContext<Session | null>(null);
 
+/** What the keychain may still hold from an install that was deleted: everything of the person, not the preferences. */
+const PERSON_KEYS = [KEYS.token, KEYS.session, KEYS.crash, KEYS.ssoVerifier, KEYS.lock] as const;
+
+let installChecked: Promise<void> | null = null;
+/**
+ * Once per launch, before the token is read: on the first launch since an
+ * install, whatever the keychain kept from a deleted install is forgotten
+ * (PH-5), so a reinstall starts signed out rather than as the last person.
+ */
+function forgetPreviousInstall(): Promise<void> {
+  if (!installChecked) {
+    installChecked = claimFreshInstall().then(async (fresh) => {
+      if (!fresh) return;
+      for (const key of PERSON_KEYS) await keyStore().remove(key).catch(() => undefined);
+    });
+  }
+  return installChecked;
+}
+/** Tests launch the app afresh. */
+export function __resetInstallCheck(): void {
+  installChecked = null;
+}
+
+/**
+ * Everything of the person on this phone, gone, whichever way the session
+ * ended (PH-2, campaign 2026-10-04): the files they shared, the bulletin's
+ * photographs in expo-image's cache, a crash report not yet sent (it would
+ * be posted as the next person's), the device's push registration, and the
+ * token. The preferences stay. What keeps running for them (the driver's
+ * trip tracking, PH-3) is stopped before this, by runSessionEnd, while the
+ * outbox still stamps its last rows as theirs. The outbox is not here: Sign out drops the
+ * person's rows, and a 401 holds them for the same person (lib/outbox.ts).
+ * Each step on its own, so one that throws cannot leave the token behind.
+ */
+async function forgetPerson(): Promise<void> {
+  const steps: (() => Promise<unknown>)[] = [
+    clearSharedFiles,
+    // The bulletin's photographs sit in expo-image's disk cache (decision
+    // 0002, gap 2, the part that stayed open): gone with the person too.
+    // The web target has no disk cache to clear.
+    () => Image.clearDiskCache(),
+    () => Image.clearMemoryCache(),
+    forgetPushOnDevice,
+  ];
+  for (const step of steps) {
+    try {
+      await step();
+    } catch {
+      // Best effort; the keys below go regardless.
+    }
+  }
+  for (const key of PERSON_KEYS) await keyStore().remove(key).catch(() => undefined);
+}
+
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<SessionState>({ status: "loading", me: null });
 
   const loadMe = useCallback(async () => {
+    await forgetPreviousInstall();
     const token = await keyStore().get(KEYS.token);
     if (!token) {
+      setOutboxOwner(null);
       setState({ status: "signed-out", me: null });
       return;
     }
     const result = await api().get<Me>("/api/v1/me");
     if (result.ok) {
+      // The outbox learns who is here before anything can flush it.
+      setOutboxOwner({ userId: result.data.user.id, schoolId: result.data.active.schoolId, membershipId: result.data.active.membershipId });
       setState({ status: "signed-in", me: result.data });
       return;
     }
     if (result.status === 401) {
-      await keyStore().remove(KEYS.token);
+      // The session ended on the server. The phone is left as clean as Sign
+      // out leaves it, but the person's queued rows are held, not sent to
+      // anyone else (PH-1): they go when the same person signs in again.
+      await runSessionEnd();
+      setOutboxOwner(null);
+      await forgetPerson();
       setState({ status: "signed-out", me: null });
       return;
     }
@@ -77,24 +142,25 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         await loadMe();
       },
       async signOut() {
-        await unregisterPush();
-        await api().post("/api/v1/auth/logout");
-        // What this person left on the phone goes with them: queued writes
-        // (they would replay under the next person's token) and a crash
-        // report not yet sent (it would be posted as the next person's).
-        await clearQueue();
-        await clearSharedFiles();
-        // The bulletin's photographs sit in expo-image's disk cache (decision
-        // 0002, gap 2, the part that stayed open): gone with the person too.
         try {
-          await Image.clearDiskCache();
-          await Image.clearMemoryCache();
+          // While the token is still good: the server forgets this device's
+          // push token, then the session.
+          await unregisterPush();
+          await api().post("/api/v1/auth/logout");
         } catch {
-          // The web target has no disk cache to clear.
+          // Offline: the phone still forgets the person below.
         }
-        await keyStore().remove(KEYS.crash);
-        await keyStore().remove(KEYS.token);
-        await keyStore().remove(KEYS.session);
+        // Tracking stops before the queue goes, so the last positions it
+        // sends on stopping are dropped with the rest.
+        await runSessionEnd();
+        try {
+          // What this person queued and did not send goes with them.
+          await clearQueue();
+        } catch {
+          // The outbox's database refused: signing out still goes on.
+        }
+        setOutboxOwner(null);
+        await forgetPerson();
         setState({ status: "signed-out", me: null });
       },
     }),

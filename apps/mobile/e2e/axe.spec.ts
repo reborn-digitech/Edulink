@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
-import { THEMES, allRoutesFor, contextFor, rolesWithTokens, settle } from "./actors";
+import { ALL_ROLES, THEMES, allRoutesFor, contextFor, moduleOffReason, rolesWithTokens, settle } from "./actors";
 
 /**
  * The accessibility gate on the web target: every route of the role's tab
@@ -9,7 +9,7 @@ import { THEMES, allRoutesFor, contextFor, rolesWithTokens, settle } from "./act
  * and minor ones are printed, not failed — the number should fall, not be
  * hidden. The page must also have answered under 400.
  */
-const actors = rolesWithTokens();
+const actors = rolesWithTokens(ALL_ROLES);
 
 if (actors.length === 0) {
   test.skip("no role tokens in the environment (EDULINK_TOKEN_TEACHER, _PARENT, _STUDENT, _ADMIN, _PRINCIPAL, _EXPERT)", () => {});
@@ -20,6 +20,8 @@ for (const { role, token } of actors) {
     test.describe(`${role} · ${theme}`, () => {
       for (const route of allRoutesFor(role)) {
         test(`${route}`, async ({ browser }) => {
+          const off = await moduleOffReason(role, route, token);
+          test.skip(off !== null, off ?? "");
           const context = await contextFor(browser, token, { theme, locale: "en" });
           const page = await context.newPage();
           const response = await page.goto(route, { waitUntil: "networkidle" });

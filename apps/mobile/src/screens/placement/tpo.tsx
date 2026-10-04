@@ -2,7 +2,7 @@ import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { placementSummarySchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat } from "@/components";
+import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -37,6 +37,10 @@ export function TpoHome() {
             <Stat label={t("placement.tilePlaced")} value={s.table.placed} tone="ok" />
             <Stat label={t("placement.tileMedian")} value={s.table.medianSalaryRupees === null ? "—" : lpa(s.table.medianSalaryRupees, t)} />
           </View>
+          {/* B-29: a season whose batch has nobody finishing reads as broken beside a drive's eligible count; say why. */}
+          <Text variant="sm" tone="subtle">
+            {s.table.finalYear === 0 ? t("placement.tileFinalYearNone", { batch: s.batchYear }) : t("placement.tileFinalYearHint", { batch: s.batchYear })}
+          </Text>
           <Card title={t("placement.waitingTitle")}>
             <Row title={t("placement.waitingRequirements", { count: s.requirementsWaiting })} />
             <Row title={t("placement.waitingInternships", { count: s.internshipsWaiting })} />

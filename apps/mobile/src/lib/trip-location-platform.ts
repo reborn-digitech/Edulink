@@ -1,5 +1,6 @@
 import { POSITION_INTERVAL_SECONDS } from "@edulink/contracts";
 import { addFix, fixOf, sendBatch, setBattery } from "./trip-positions";
+import { onSessionEnd } from "./session-end";
 
 /**
  * The web target's half of lib/trip-location-platform.native.ts: the
@@ -11,6 +12,11 @@ import { addFix, fixOf, sendBatch, setBattery } from "./trip-positions";
 export type Here = { lat: number; lng: number; accuracy: number | null };
 
 let watchId: number | null = null;
+
+// Tracking goes when the person goes (PH-3, campaign 2026-10-04): Sign out,
+// or a session the server ended, stops the service and its notification
+// even with the driver's screen gone.
+onSessionEnd(() => stopTracking());
 let activeTrip: string | null = null;
 
 type Geo = Pick<Geolocation, "getCurrentPosition" | "watchPosition" | "clearWatch">;

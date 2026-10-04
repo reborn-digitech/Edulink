@@ -36,6 +36,10 @@ describe("avatars", () => {
     expect(screen.getByText("ZT")).toBeTruthy();
     expect(initials("asha")).toBe("A");
     expect(initials("  ")).toBe("?");
+    // B-25: a bracketed note is not the surname, and punctuation is not a letter.
+    expect(initials("ZZ Apte (parent)")).toBe("ZA");
+    expect(initials("“Asha” Rao")).toBe("AR");
+    expect(initials("(guardian)")).toBe("?");
   });
 
   it("inside a control that names itself, the drawing is not announced again", async () => {

@@ -30,6 +30,9 @@ export function TeacherHome() {
   const form = data?.formClasses ?? null;
   // A cover from the office is a day, even for a teacher with no lesson of their own.
   const nothingAtAll = data && !form && data.lessons.items.length === 0 && data.marksTodo.length === 0 && !(data.covers && data.covers.length > 0);
+  // A Sunday or a closing holiday is no school, never "0 left" or "every register taken" (B-11); an older server says it only through the timetable's closed day.
+  const noSchool = data ? (data.noSchool ?? (data.lessons.closed ? { holidayName: data.lessons.closedName } : null)) : null;
+  const noSchoolLine = noSchool ? (noSchool.holidayName ? t("common.noSchoolTodayHoliday", { name: noSchool.holidayName }) : t("common.noSchoolToday")) : null;
 
   return (
     <Screen title={t("teacher.today")} description={data ? `${data.schoolName} · ${dayLabel(data.dateKey, locale)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -52,14 +55,21 @@ export function TeacherHome() {
       {data && !nothingAtAll ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>
-            {form ? <Stat label={t("teacher.registersLeft")} value={form.registersLeft} tone={form.registersLeft > 0 ? "warn" : "ok"} /> : null}
+            {form && !noSchool ? <Stat label={t("teacher.registersLeft")} value={form.registersLeft} tone={form.registersLeft > 0 ? "warn" : "ok"} /> : null}
             {form ? <Stat label={t("teacher.toGrade")} value={form.toGrade} /> : null}
             <Stat label={t("teacher.acrossTheWeek")} value={data.lessons.classesTaughtThisWeek} />
             {data.lessons.coveringToday > 0 ? <Stat label={t("teacher.covering")} value={data.lessons.coveringToday} tone="accent" /> : null}
           </View>
           <QuickActions actions={QUICK.TEACHER ?? []} onOpen={(href) => router.push(href as never)} />
 
-          {form ? (
+          {form && noSchoolLine ? (
+            <Card title={t("teacher.registers")}>
+              <Text variant="sm" tone="muted" accessibilityLiveRegion="polite">
+                {noSchoolLine}
+              </Text>
+            </Card>
+          ) : null}
+          {form && !noSchoolLine ? (
             <Card title={t("teacher.registers")}>
               <Text variant="sm" tone={form.registersLeft === 0 ? "ok" : "muted"}>
                 {form.registersLeft === 0 ? t("teacher.everyRegisterTaken") : form.registersLeft === 1 ? t("teacher.stillToTakeOne") : t("teacher.stillToTakeMany", { count: form.registersLeft })}

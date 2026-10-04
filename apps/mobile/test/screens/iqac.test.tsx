@@ -90,6 +90,35 @@ describe("a student's voice on the phone (the IQAC module, 4 Oct 2026)", () => {
   });
 });
 
+describe("a guardian's parent survey on the phone (campaign 2026-10-04, G-5)", () => {
+  beforeEach(() => mockRouter.push.mockClear());
+  const PARENT_SURVEY = { id: "ps1", kind: "PARENT", title: "ZZ Parent survey 2026", closesOn: "2026-10-31", answered: false, questions: [{ code: "P01", label: "How well does the college tell you about your child's progress?" }] };
+  const guardianMe = { ...me("PARENT"), active: { schoolId: null, role: "PARENT", membershipId: null }, contexts: [{ schoolId: null, schoolName: null, role: "PARENT" }], modules: ["IQAC"] };
+
+  it("sees the parent survey with the guardian's intro, answers it once, and is offered no grievance line", async () => {
+    const { calls } = await mountStaff(<VoiceScreen />, "PARENT", {
+      "GET /api/v1/voice": () => json(voice({ surveys: [PARENT_SURVEY], grievances: [], canFileGrievance: false })),
+      "POST /api/v1/voice/surveys/ps1": () => json(voice({ surveys: [{ ...PARENT_SURVEY, answered: true }], grievances: [], canFileGrievance: false })),
+    }, { me: guardianMe });
+    expect(await screen.findByText("ZZ Parent survey 2026")).toBeTruthy();
+    expect(screen.getByText("Surveys")).toBeTruthy();
+    expect(screen.getByText("The surveys your child's college asks guardians to answer. Your answers carry no name.")).toBeTruthy();
+    expect(screen.getByText(/^Parent survey · /)).toBeTruthy();
+    expect(screen.queryByText("Raise a grievance")).toBeNull();
+    expect(screen.queryByText("Feedback and grievances")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Fully" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Send my answers" }));
+    expect(await screen.findByText("Answered, thank you.")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/voice/surveys/ps1")?.body).toEqual({ answers: { P01: 4 } });
+  });
+
+  it("keeps the grievance line away from a guardian even if a server offered it", async () => {
+    await mountStaff(<VoiceScreen />, "PARENT", { "GET /api/v1/voice": () => json(voice({ surveys: [PARENT_SURVEY], canFileGrievance: true })) }, { me: guardianMe });
+    expect(await screen.findByText("ZZ Parent survey 2026")).toBeTruthy();
+    expect(screen.queryByText("Raise a grievance")).toBeNull();
+  });
+});
+
 describe("the IQAC coordinator's home on the phone (4 Oct 2026)", () => {
   const overview = {
     cycle: { id: "c1", framework: "AFFILIATED_UG", institutionType: "COLLEGE", windowFrom: "2022-06-01", windowTo: "2027-05-31", status: "OPEN", cgpa: 2.84, grade: "B++", computedAt: "2026-10-04T05:00:00.000Z", metricCount: 64, scoredCount: 48 },

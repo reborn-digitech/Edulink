@@ -1,4 +1,4 @@
-import { screenFor } from "@/lib/links";
+import { screenFor, webLinkOrNull } from "@/lib/links";
 
 describe("notification URLs map to screens", () => {
   it("the ones the server writes", () => {
@@ -68,5 +68,15 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/teacher/worksheets/print")).toBeNull();
     expect(screenFor("/root/s9/inside")).toBeNull();
     expect(screenFor("/record/u1")).toBeNull();
+  });
+});
+
+describe("a typed link fit to open (PH-7)", () => {
+  it("opens http and https only", () => {
+    expect(webLinkOrNull(" https://example.org/notes.pdf ")).toBe("https://example.org/notes.pdf");
+    expect(webLinkOrNull("http://example.org/x")).toBe("http://example.org/x");
+    for (const bad of ["javascript:alert(1)", "intent://scan/#Intent;scheme=zxing;end", "sms:+911234567890", "tel:100", "edulink://(app)/fees", "file:///etc/hosts", "not a url", "", null, undefined]) {
+      expect(webLinkOrNull(bad)).toBeNull();
+    }
   });
 });

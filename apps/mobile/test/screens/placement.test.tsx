@@ -182,6 +182,12 @@ describe("the TPO on the phone (4 Oct 2026)", () => {
     expect(screen.getByText("ZZ Analyst d1")).toBeTruthy();
   });
 
+  it("says why the season reads 0 when nobody's programme ends in the batch (B-29)", async () => {
+    const table = { batchYear: 2027, finalYear: 0, placed: 0, higherStudies: 0, entrepreneurs: 0, placementIndex: null, medianSalaryRupees: null, offers: 0, byCompany: [], byProgramme: [], byCategory: [], bands: [], bySector: [], offersPerStudent: null };
+    await mountStaff(<TpoHome />, "TPO", { "GET /api/v1/placement/summary": () => json({ batchYear: 2027, table, drives: [drive("d1")], requirementsWaiting: 0, internshipsWaiting: 0, unverifiedCompanies: 0, canEdit: true }) }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText(/No student's programme ends in 2027/)).toBeTruthy();
+  });
+
   it("is the college role home, saying so, while placement is off", async () => {
     await mountStaff(<TpoHome />, "TPO", {}, { me: atCollege("TPO", ["ALUMNI", "ACADEMICS"]) });
     expect(await screen.findByText("Placement is not switched on")).toBeTruthy();

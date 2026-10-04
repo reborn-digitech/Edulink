@@ -88,7 +88,16 @@ export function DriverHome() {
           ) : null}
         </Card>
       ) : null}
-      {d && d.trips.length === 0 ? <Empty icon="bus" title={t("transport.noDriverTrips")} body={t("transport.noDriverTripsBody")} action={<Button label={t("transport.refresh")} variant="secondary" onPress={() => void query.refetch()} />} /> : null}
+      {d?.noSchool && d.trips.length === 0 ? (
+        // A Sunday or a closing holiday (B-11): no trip runs, so none is "missed" and none waits to start.
+        <Empty
+          icon="bus"
+          title={d.noSchool.holidayName ? t("common.noSchoolTodayHoliday", { name: d.noSchool.holidayName }) : t("common.noSchoolToday")}
+          body={t("transport.noTripsClosedDay")}
+          action={<Button label={t("transport.refresh")} variant="secondary" onPress={() => void query.refetch()} />}
+        />
+      ) : null}
+      {d && !d.noSchool && d.trips.length === 0 ? <Empty icon="bus" title={t("transport.noDriverTrips")} body={t("transport.noDriverTripsBody")} action={<Button label={t("transport.refresh")} variant="secondary" onPress={() => void query.refetch()} />} /> : null}
       <View style={{ gap: th.space[3] }}>
         {d?.trips.map((trip) => (
           <TripCard key={trip.id} trip={trip} consentNeeded={d.consent.needed} onChanged={refresh} />

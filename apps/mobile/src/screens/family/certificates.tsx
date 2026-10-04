@@ -6,6 +6,7 @@ import { certificateRequestSchema, certificatesListSchema, familyCertificateRequ
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
+import { formatPaise } from "@edulink/i18n";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
@@ -24,6 +25,11 @@ const REQUESTS = "/api/v1/family/certificate-requests";
  * serial once issued, the reason once declined, and a way to take a
  * pending one back. A guardian asks for one child at a time (the switcher's
  * children come from /family/children as the record's do).
+ *
+ * A former pupil (ALUMNUS, campaign 2026-10-04, G-6) sees "Papers from the
+ * school": no issued list (that door is the pupil's and the guardian's), the
+ * ask for a paper again, and their asks — each with the fee the office set,
+ * paid at the office, and the paper itself once issued.
  */
 export function FamilyCertificates() {
   const t = useT();
@@ -40,8 +46,11 @@ export function FamilyCertificates() {
   const [refusal, setRefusal] = useState<Refusal | null>(null);
   const [cancelling, setCancelling] = useState<string | null>(null);
   const guardian = role === "PARENT";
+  const alumnus = role === "ALUMNUS";
   const query = useQuery({
     queryKey: ["family", "certificates"],
+    // Not until the role is known: an alumnus never asks for the pupil's and guardian's issued list.
+    enabled: role !== null && !alumnus,
     queryFn: async () => certificatesListSchema.parse(unwrap(await api().get("/api/v1/family/certificates"))),
   });
   const children = useQuery({
@@ -87,12 +96,12 @@ export function FamilyCertificates() {
   const pupilCount = new Set(items.map((c) => c.studentMembershipId)).size;
   const kindLabel = (k: string) => (k in CERTIFICATE_KIND ? t(CERTIFICATE_KIND[k as CertificateKind]) : k);
   const refresh = () => {
-    void query.refetch();
+    if (!alumnus) void query.refetch();
     void requests.refetch();
   };
   return (
-    <Screen title={t("certificates.myTitle")} description={t("certificates.myIntro")} refreshing={query.isRefetching || requests.isRefetching} onRefresh={refresh}>
-      {query.isPending ? <Loading /> : null}
+    <Screen title={alumnus ? t("certificateRequests.alumniTitle") : t("certificates.myTitle")} description={alumnus ? t("certificateRequests.alumniIntro") : t("certificates.myIntro")} refreshing={query.isRefetching || requests.isRefetching} onRefresh={refresh}>
+      {(alumnus ? requests.isPending : query.isPending) ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {query.data ? (
         items.length === 0 ? (
@@ -196,6 +205,11 @@ function RequestRow({ request: r, kindLabel, confirming, busy, onCancel, onConfi
       {r.revokedAt ? (
         <Text variant="sm" tone="danger">
           {t("certificateRequests.revokedOn", { date: formatDateKey(r.revokedAt.slice(0, 10), locale) })}
+        </Text>
+      ) : null}
+      {typeof r.feePaise === "number" && r.feePaise > 0 && r.status !== "CANCELLED" && r.status !== "DECLINED" ? (
+        <Text variant="sm" tone={r.feePaid ? "ok" : "warn"}>
+          {t(r.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(r.feePaise, locale) })}
         </Text>
       ) : null}
       {r.status === "ISSUED" && r.serial ? (

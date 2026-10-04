@@ -5,6 +5,7 @@ import { academicsChangedResultSchema, courseFileSchema, internalMarksResultSche
 import { Button, Card, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api, API_BASE } from "@/lib/api";
 import { unwrap } from "@/lib/query";
+import { webLinkOrNull } from "@/lib/links";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Chips, Notice } from "../staff/shared";
@@ -55,14 +56,18 @@ function FileView({ f }: { f: CourseFile }) {
       </Card>
       <Card title={t("academics.itemsTitle")}>
         {f.items.length === 0 ? <Text tone="muted">{t("academics.itemsNone")}</Text> : null}
-        {f.items.map((i) => (
-          <Row
-            key={i.id}
-            title={i.title}
-            caption={[t(ITEM_KEY[i.kind]!), i.coCodes.join(", ")].filter(Boolean).join(" · ")}
-            onPress={i.url ? () => void Linking.openURL(i.url!) : i.fileId ? () => void Linking.openURL(`${API_BASE}/api/files/${encodeURIComponent(i.fileId!)}`) : undefined}
-          />
-        ))}
+        {f.items.map((i) => {
+          // Only a web link opens; a stored intent:, sms: or javascript: link opens nothing (PH-7).
+          const link = webLinkOrNull(i.url);
+          return (
+            <Row
+              key={i.id}
+              title={i.title}
+              caption={[t(ITEM_KEY[i.kind]!), i.coCodes.join(", ")].filter(Boolean).join(" · ")}
+              onPress={link ? () => void Linking.openURL(link) : i.fileId ? () => void Linking.openURL(`${API_BASE}/api/files/${encodeURIComponent(i.fileId!)}`) : undefined}
+            />
+          );
+        })}
       </Card>
       {f.attainment.cos.length ? (
         <Card title={t("academics.attainmentTitle")}>

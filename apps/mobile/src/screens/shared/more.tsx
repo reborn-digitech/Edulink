@@ -11,6 +11,9 @@ import { menuFor, MENU_GROUP_KEY, type MenuItem } from "@/lib/nav";
 import { contextPlace } from "@/lib/institution";
 import { LanguageRow } from "@/components/language-row";
 import { openWeb } from "@/screens/family/shared";
+import { useHeldBySchool, useSwitchContext } from "@/lib/outbox-held";
+import { useQueryClient } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 /**
  * More: everything the web's rail and More sheet list for this role that
@@ -27,6 +30,17 @@ export function More() {
   const router = useRouter();
   const pathname = usePathname();
   const session = useSession();
+  const switchTo = useSwitchContext();
+  const held = useHeldBySchool();
+  const qc = useQueryClient();
+  // The language goes to the account too (B-24, campaign 2026-10-04): the server answers in prefs.locale,
+  // so a refusal read after switching here came back in the old language. Then every screen reads afresh.
+  const saveLocale = (code: string) =>
+    void api()
+      .post("/api/v1/account/locale", { locale: code })
+      .then((r) => {
+        if (r.ok) void qc.invalidateQueries();
+      });
   if (session.status !== "signed-in") return null;
   const { me } = session;
   const role = me.active.role;
@@ -78,19 +92,22 @@ export function More() {
         ) : null}
         {me.contexts.map((c) => {
           const active = c.schoolId === me.active.schoolId && c.role === me.active.role;
+          // What was saved there and not sent waits for the person to come back (PH-6).
+          const waiting = active ? 0 : (held.get(c.schoolId) ?? 0);
+          const roleName = t(`role.${c.role.toLowerCase()}` as TranslationKey);
           return (
             <Row
               key={`${c.schoolId}:${c.role}`}
               title={contextPlace(c, t) ?? t("account.belongNone")}
-              caption={t(`role.${c.role.toLowerCase()}` as TranslationKey)}
+              caption={waiting > 0 ? `${roleName} · ${t("shell.outboxCount", { count: waiting })}` : roleName}
               right={active ? <Text variant="xs" tone="accent" bold>{t("account.hereNow")}</Text> : null}
-              onPress={active ? undefined : () => void session.switchContext({ schoolId: c.schoolId, role: c.role as RoleCode })}
+              onPress={active ? undefined : () => void switchTo({ schoolId: c.schoolId, role: c.role as RoleCode })}
             />
           );
         })}
       </Card>
       <Card title={t("language.groupLabel")}>
-        <LanguageRow />
+        <LanguageRow onChosen={saveLocale} />
       </Card>
       <View style={{ gap: th.space[2] }}>
         {/* One search across the school, for every role with a school; an expert has none to search. */}

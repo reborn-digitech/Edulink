@@ -142,3 +142,40 @@ describe("an altered phone", () => {
     expect(layout).not.toMatch(/signOut|router\.replace\("\/\(auth\)"\)[^\n]*rooted/);
   });
 });
+
+describe("what the phone keeps out of reach (campaign 2026-10-04)", () => {
+  it("turns Android auto-backup off, so the outbox's database is not copied to a cloud backup (PH-9)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports -- the config module as Expo reads it
+    const config = (require("../../app.config") as { default: { android?: { allowBackup?: boolean } } }).default;
+    expect(config.android?.allowBackup).toBe(false);
+  });
+
+  it("gives the web target a Content-Security-Policy before any script (PH-8)", () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { contentSecurityPolicy, HYDRATE_SCRIPT_HASH } = require("@/lib/csp") as typeof import("@/lib/csp");
+    const policy = contentSecurityPolicy("https://api.example/", false);
+    const script = policy.split("; ").find((d) => d.startsWith("script-src "))!;
+    expect(script).not.toMatch(/unsafe-inline|unsafe-eval|\*/);
+    expect(policy).toContain("connect-src 'self' https://api.example;");
+    expect(policy).toContain("object-src 'none'");
+    // The hash is of the one inline script an export writes: expo-router's hydration flag.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { createHash } = require("node:crypto") as typeof import("node:crypto");
+    expect(HYDRATE_SCRIPT_HASH).toBe(`sha256-${createHash("sha256").update("globalThis.__EXPO_ROUTER_HYDRATE__=true;").digest("base64")}`);
+    expect(contentSecurityPolicy("http://localhost:3000", true)).toContain("connect-src 'self' http://localhost:3000 ws: wss:");
+    const html = read("src/app/+html.tsx");
+    expect(html.indexOf("Content-Security-Policy")).toBeGreaterThan(-1);
+    expect(html.indexOf("Content-Security-Policy")).toBeLessThan(html.indexOf("<ScrollViewStyleReset"));
+  });
+});
+
+describe("autofill hints the web target renders (B-23, campaign 2026-10-04)", () => {
+  // The HTML autocomplete tokens (WHATWG "autofill field names"): react-native-web writes the prop
+  // to the input as it is, and a phone-only word such as "postal-address-locality" fails axe's
+  // autocomplete-valid there. A phone-only hint goes through Platform.select with the web's token.
+  const HTML_TOKENS = new Set(["off", "on", "name", "honorific-prefix", "given-name", "additional-name", "family-name", "honorific-suffix", "nickname", "email", "username", "new-password", "current-password", "one-time-code", "organization-title", "organization", "street-address", "address-line1", "address-line2", "address-line3", "address-level1", "address-level2", "address-level3", "address-level4", "country", "country-name", "postal-code", "language", "bday", "bday-day", "bday-month", "bday-year", "sex", "tel", "tel-country-code", "tel-national", "url", "photo"]);
+  it("every literal autoComplete is one the browser knows", () => {
+    const bad = sources.flatMap((s) => [...s.text.matchAll(/autoComplete="([^"]+)"/g)].map((m) => ({ file: s.file, value: m[1]! }))).filter((x) => !HTML_TOKENS.has(x.value));
+    expect(bad).toEqual([]);
+  });
+});

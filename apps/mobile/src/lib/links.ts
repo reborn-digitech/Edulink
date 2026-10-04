@@ -165,3 +165,20 @@ export function screenFor(url: string): ScreenTarget | null {
   if (p.startsWith("/report-cards/") && seg[2]) return { pathname: "/(app)/exams", params: { cardId: seg[2] } };
   return null;
 }
+
+/**
+ * A link somebody typed into the server (a course file's URL, PH-7 of the
+ * campaign of 4 October 2026), fit to hand to Linking.openURL: http or https
+ * only. Any other scheme — intent:, sms:, tel:, another app's deep link, or
+ * javascript: on the web target — is null, and the row opens nothing.
+ */
+export function webLinkOrNull(url: string | null | undefined): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+  try {
+    const parsed = new URL(trimmed);
+    return parsed.protocol === "https:" || parsed.protocol === "http:" ? trimmed : null;
+  } catch {
+    return null;
+  }
+}

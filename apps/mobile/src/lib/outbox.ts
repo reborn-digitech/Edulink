@@ -19,7 +19,32 @@ export type QueuedRequest = {
   createdAt: number;
   attempts: number;
   lastError?: string;
+  /**
+   * Who queued it and where (campaign 2026-10-04, PH-1 and PH-6): the
+   * signed-in person's user id, and the school and membership that were
+   * active. A row goes out only under the same person at the same school,
+   * with X-Edulink-Owner naming them, which the server refuses for anyone
+   * else. Null on a row queued with nobody signed in, or before the stamp:
+   * such a row is never sent and is dropped after HOLD_DAYS.
+   */
+  owner: string | null;
+  schoolId: string | null;
+  membershipId: string | null;
 };
+
+/** Who is signed in, as the session tells the outbox. */
+export type OutboxOwner = { userId: string; schoolId: string | null; membershipId: string | null };
+
+/**
+ * How long a row that cannot be sent now is kept: another person's (their
+ * session ended without Sign out — expired, or revoked from the web — and
+ * someone else signed in), or the same person's at another school. On a
+ * phone that is the teacher's own, the common case is the same person
+ * signing in again within the week, and the register goes then; past that
+ * the row is dropped unsent, as Sign out drops one at once.
+ */
+export const HOLD_DAYS = 7;
+const HOLD_MS = HOLD_DAYS * 86_400_000;
 
 export type OutboxStore = {
   all(): Promise<QueuedRequest[]>;
@@ -40,6 +65,27 @@ export function memoryOutbox(): OutboxStore {
       items.delete(id);
     },
   };
+}
+
+let owner: OutboxOwner | null = null;
+
+/**
+ * Called by the session whenever it learns who is signed in (and with null
+ * when nobody is): new rows are stamped with it, and a flush sends only its
+ * rows. Nothing is dropped here — a session that ended by 401 leaves its
+ * rows for the same person to send on signing in again.
+ */
+export function setOutboxOwner(next: OutboxOwner | null): void {
+  owner = next ? { userId: next.userId, schoolId: next.schoolId ?? null, membershipId: next.membershipId ?? null } : null;
+}
+
+export function outboxOwner(): OutboxOwner | null {
+  return owner;
+}
+
+/** This person's row at the school they are at now: the only kind a flush sends. */
+function sendableNow(item: QueuedRequest): boolean {
+  return owner !== null && item.owner === owner.userId && (item.schoolId ?? null) === owner.schoolId;
 }
 
 let store: OutboxStore | null = null;
@@ -74,52 +120,102 @@ function emit(event: QueueEvent) {
 
 let lastCreatedAt = 0;
 
-export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts">): Promise<string> {
+export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts" | "owner" | "schoolId" | "membershipId">): Promise<string> {
   lastCreatedAt = Math.max(Date.now(), lastCreatedAt + 1);
-  const record: QueuedRequest = { ...item, id: newClientId(), createdAt: lastCreatedAt, attempts: 0 };
+  const record: QueuedRequest = {
+    ...item,
+    id: newClientId(),
+    createdAt: lastCreatedAt,
+    attempts: 0,
+    owner: owner?.userId ?? null,
+    schoolId: owner?.schoolId ?? null,
+    membershipId: owner?.membershipId ?? null,
+  };
   await current().put(record);
-  emit({ type: "queued", item: record, remaining: (await current().all()).length });
+  emit({ type: "queued", item: record, remaining: await countQueued() });
   return record.id;
 }
 
 /**
- * Everything queued, gone — on sign-out. A queued write belongs to the person
- * who made it; left behind on a shared phone it would replay under the next
- * person's token. Nothing is sent: what was not sent while they were signed
- * in is theirs to redo, and the screen said it was waiting.
+ * The signing-out person's rows, gone — on sign-out — with any row nobody
+ * owns. A queued write belongs to the person who made it. Nothing is sent:
+ * what was not sent while they were signed in is theirs to redo, and the
+ * screen said it was waiting. Another person's held rows are not this
+ * person's to delete; they keep their HOLD_DAYS.
  */
 export async function clearQueue(): Promise<number> {
-  const items = await current().all();
+  const items = (await current().all()).filter((i) => i.owner === null || i.owner === owner?.userId);
   for (const item of items) await current().remove(item.id);
-  if (items.length) emit({ type: "flushed", sent: 0, failed: 0, remaining: 0 });
+  if (items.length) emit({ type: "flushed", sent: 0, failed: 0, remaining: await countQueued() });
   return items.length;
 }
 
+async function everything(): Promise<QueuedRequest[]> {
+  return (await current().all()).sort((a, b) => a.createdAt - b.createdAt);
+}
+
+/** What waits to send for the person signed in, at the school they are at: what a badge counts. */
 export async function listQueued(tag?: string): Promise<QueuedRequest[]> {
-  const all = (await current().all()).sort((a, b) => a.createdAt - b.createdAt);
-  return tag ? all.filter((i) => i.tag === tag) : all;
+  const mine = (await everything()).filter(sendableNow);
+  return tag ? mine.filter((i) => i.tag === tag) : mine;
 }
 
 export async function countQueued(tag?: string): Promise<number> {
   return (await listQueued(tag)).length;
 }
 
+/**
+ * The signed-in person's rows queued at another school, by school id: held,
+ * not sent, until they switch back (PH-6). A register queued at school A
+ * replayed under school B's context would be refused and lost.
+ */
+export async function heldElsewhere(): Promise<Map<string | null, number>> {
+  const held = new Map<string | null, number>();
+  if (!owner) return held;
+  for (const item of await everything()) {
+    if (item.owner !== owner.userId || sendableNow(item)) continue;
+    const key = item.schoolId ?? null;
+    held.set(key, (held.get(key) ?? 0) + 1);
+  }
+  return held;
+}
+
+/** Rows that cannot be sent now and are older than HOLD_DAYS: dropped unsent. */
+async function dropExpired(now: number): Promise<number> {
+  let dropped = 0;
+  for (const item of await everything()) {
+    if (!sendableNow(item) && now - item.createdAt > HOLD_MS) {
+      await current().remove(item.id);
+      dropped++;
+    }
+  }
+  return dropped;
+}
+
 let flushing = false;
 
 /**
- * Sends everything queued, oldest first. `send` is the transport — the api
- * client's request with the replay header — injected so the suite can prove
- * the policy without a network.
+ * Sends the signed-in person's rows for the school they are at, oldest
+ * first; nothing at all with nobody signed in. Another person's rows and
+ * this person's rows of another school stay where they are (until
+ * HOLD_DAYS). `send` is the transport — the api client's request with the
+ * replay and owner headers — injected so the suite can prove the policy
+ * without a network.
  */
 export async function flushQueue(
   send: (item: QueuedRequest) => Promise<{ status: number }>,
+  now: number = Date.now(),
 ): Promise<{ sent: number; failed: number; remaining: number }> {
   if (flushing) return { sent: 0, failed: 0, remaining: await countQueued() };
   flushing = true;
   let sent = 0;
   let failed = 0;
   try {
+    await dropExpired(now);
     for (const item of await listQueued()) {
+      // The person can change mid-flush (Sign out, a 401, someone else
+      // signing in): what was theirs a moment ago is not sent under the next.
+      if (!sendableNow(item)) continue;
       let status = 0;
       let error = "";
       try {

@@ -55,7 +55,11 @@ export function Screen({
       <PageTitle title={title} />
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
       {scroll ? (
-        <ScrollView keyboardShouldPersistTaps="handled" refreshControl={onRefresh ? <RefreshControl refreshing={Boolean(refreshing)} onRefresh={onRefresh} tintColor={t.accent} /> : undefined}>
+        // On the web target the page's scroller takes the keyboard's focus, so a screen whose content holds
+        // nothing focusable (a desk home of figures) can still be scrolled from the keyboard: axe's
+        // scrollable-region-focusable, serious, on the IQAC, placement and accounts homes once a suite walked them
+        // (B-22, campaign 2026-10-04). A phone scrolls by touch and is left as it was.
+        <ScrollView focusable={Platform.OS === "web"} keyboardShouldPersistTaps="handled" refreshControl={onRefresh ? <RefreshControl refreshing={Boolean(refreshing)} onRefresh={onRefresh} tintColor={t.accent} /> : undefined}>
           {header}
           {body}
         </ScrollView>

@@ -3,6 +3,7 @@ import * as TaskManager from "expo-task-manager";
 import * as Battery from "expo-battery";
 import { POSITION_INTERVAL_SECONDS } from "@edulink/contracts";
 import { addFix, fixOf, sendBatch, setBattery } from "./trip-positions";
+import { onSessionEnd } from "./session-end";
 
 /**
  * The phone as the bus's GPS during a trip (transport, 3 Oct 2026) — and
@@ -36,6 +37,11 @@ TaskManager.defineTask<{ locations?: Location.LocationObject[] }>(TRIP_TASK, asy
 });
 
 export type Here = { lat: number; lng: number; accuracy: number | null };
+
+// Tracking goes when the person goes (PH-3, campaign 2026-10-04): Sign out,
+// or a session the server ended, stops the service and its notification
+// even with the driver's screen gone.
+onSessionEnd(() => stopTracking());
 
 /** "While using the app", asked for once; false when the driver said no. */
 export async function locationAllowed(): Promise<boolean> {

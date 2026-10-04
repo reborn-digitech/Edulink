@@ -13,6 +13,7 @@ import { FilingsCard } from "./filings";
 import { OfficePenChangesCard, OfficeRecordChangesCard } from "../shared/pupil-record";
 import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
 import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
+import { CollegeGlanceCard } from "../college/glance";
 
 /**
  * The head's dashboard: what can still be fixed today first — attendance
@@ -39,6 +40,8 @@ export function PrincipalHome() {
     : undefined;
   return (
     <Screen title={t("principal.dashboard")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+      {/* At a college: the college at a glance and the approvals waiting, first (campaign 2026-10-04, G-4). */}
+      <CollegeGlanceCard />
       <WindowPicker value={span} onChange={setSpan} />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
