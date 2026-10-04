@@ -1,0 +1,94 @@
+import * as c from "@edulink/contracts";
+import type { Endpoint } from "./types";
+import { PLACEMENT_FIXTURE as F } from "./placement-fixture";
+
+/**
+ * placement: the placement module (module PLACEMENT, roles TPO and RECRUITER;
+ * the owner's college plan of 4 October 2026). The cell (the TPO) writes;
+ * the office and the principal read; the IQAC reads the table; the HOD and
+ * faculty supervise internships and guide projects; a student keeps a
+ * profile, applies (which is the consent) and answers offers; a guardian
+ * reads offers and internships with the PLACEMENT grant. Every role is
+ * checked before the body, so the wrong role is answered 403 and not 422.
+ *
+ * THE RECRUITER'S DOORS carry no `module`: a recruiter's session has no
+ * college, and each door finds the drive first — bound to the recruiter's
+ * company, live, at a college with PLACEMENT on (403 MODULE_OFF otherwise) —
+ * and answers 404 for anything else, a closed drive included. The doors a
+ * recruiter shares with the cell (results, offers, joining) name both roles.
+ *
+ * The alumni doors are the college's additions to the alumni module and
+ * carry `module: "ALUMNI"`; the referral also needs PLACEMENT (checked in the
+ * library). Samples name the ZZ Vidya College rows of
+ * lib/api-catalog/placement-fixture.ts. No sampleBody on a door whose valid
+ * body is an act (an application, a result, an offer, a gift).
+ */
+const P = { module: "PLACEMENT" } as const;
+const A = { module: "ALUMNI" } as const;
+const CELL_READ: c.RoleCode[] = ["TPO", "ADMIN", "PRINCIPAL"];
+
+export const PLACEMENT: Endpoint[] = [
+  // ---- the cell
+  { ...P, method: "GET", path: "/api/v1/placement/summary", summary: "The cell's home: this season's table, the drives, what is waiting (requirements, internships, unverified companies)", access: CELL_READ, response: c.placementSummarySchema },
+  { ...P, method: "GET", path: "/api/v1/placement/settings", summary: "The season's batch, the dream ratio, whether a gender rule is allowed", access: CELL_READ, response: c.placementSettingsViewSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/settings", summary: "The TPO sets the season's batch, the dream ratio and the gender switch (audited)", access: ["TPO"], request: c.placementSettingsSchema, response: c.placementSettingsViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/placement/students", summary: "The roll with each student's record (CGPA, live backlogs, attendance, programme, batch), season choices and offers", access: CELL_READ, response: c.placementStudentsSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/students/{membershipId}/dream", summary: "The TPO grants or withdraws a student's dream flag (idempotent; audited)", access: ["TPO"], request: c.dreamFlagSaveSchema, response: c.placementChangedSchema, emptyBodyStatus: 422, sample: () => null },
+  { ...P, method: "GET", path: "/api/v1/placement/companies", summary: "The companies the college works with: identifier, sectors, verification, its first visit year and drives", access: CELL_READ, response: c.companyListSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/companies", summary: "The TPO adds a company by GSTIN or CIN (format-checked, never looked up); a registered one is linked, not made twice", access: ["TPO"], request: c.companySaveSchema, response: c.companyViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/placement/companies/{companyId}/verify", summary: "The TPO's word that a company is checked, once for every college (idempotent; audited)", access: ["TPO"], response: c.companyViewSchema, sample: `/api/v1/placement/companies/${F.company}/verify` },
+  { ...P, method: "GET", path: "/api/v1/placement/requirements", summary: "The recruiters' requirements addressed to this college, with the drive made of each", access: CELL_READ, response: c.requirementListSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/requirements/{requirementId}/accept", summary: "The TPO turns a requirement into a DRAFT drive; refused for an unverified company; the same drive a second time", access: ["TPO"], response: c.driveViewSchema, sample: `/api/v1/placement/requirements/${F.requirement}/accept` },
+  { ...P, method: "GET", path: "/api/v1/placement/drives", summary: "The college's drives and the pooled drives it is a guest of", access: CELL_READ, response: c.driveListSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/drives", summary: "The TPO opens a drive: company, package, bond, rounds, schedule, venues, the eligibility rule, a pooled drive's guests (audited)", access: ["TPO"], request: c.driveSaveSchema, response: c.driveViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/placement/drives/{driveId}", summary: "One drive: the eligible count, the applications the reader's college may see, each with its rounds and offer", access: CELL_READ, response: c.driveViewSchema, sample: `/api/v1/placement/drives/${F.openDrive}` },
+  { ...P, method: "POST", path: "/api/v1/placement/drives/{driveId}", summary: "The host's TPO edits a drive or moves it on; a status never goes back, the rule is fixed once shortlisting starts, a closed drive changes no more", access: ["TPO"], request: c.driveUpdateSchema, response: c.driveViewSchema, emptyBodyStatus: 200, sample: `/api/v1/placement/drives/${F.openDrive}`, sampleBody: () => ({}) },
+  { ...P, method: "GET", path: "/api/v1/placement/drives/{driveId}/eligibility", summary: "Who of the reader's college qualifies, and every failed condition of those who do not (computed, never typed)", access: CELL_READ, response: c.driveEligibilitySchema, sample: `/api/v1/placement/drives/${F.openDrive}/eligibility` },
+  { ...P, method: "POST", path: "/api/v1/placement/drives/{driveId}/invite", summary: "Tell the reader's college's eligible students about an OPEN drive, and nobody else; those who applied are not told again", access: ["TPO"], response: c.inviteResultSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/drives/{driveId}/remind", summary: "Remind the drive's live applicants of the reader's college before the next round", access: ["TPO"], response: c.inviteResultSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/drives/{driveId}/results", summary: "A round's outcomes (round 0 the shortlist), by the host's TPO or the bound recruiter; only consented applicants, round n only for those through n − 1; each told by push", access: ["TPO", "RECRUITER"], request: c.roundResultsSaveSchema, response: c.roundResultsResultSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/placement/drives/{driveId}/offers", summary: "An offer with its letter (an upload ticket), by the host's TPO or the bound recruiter; the one-offer rule and the dream exception", access: ["TPO", "RECRUITER"], request: c.offerSaveSchema, response: c.offerViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/placement/offers/{offerId}/joined", summary: "The day an accepted offer's student joined, by the host's TPO or the bound recruiter", access: ["TPO", "RECRUITER"], request: c.offerJoinedSchema, response: c.offerViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/placement/analytics", summary: "The placement table for the season and the three years before it (NBA's index, NIRF's median, rates by programme and category, bands, sectors) and the published season rows", access: [...CELL_READ, "IQAC"], request: c.placementAnalyticsQuerySchema, response: c.placementAnalyticsSchema },
+  { ...P, method: "GET", path: "/api/v1/placement/analytics/export", summary: "A sheet as CSV (text/csv): NBA (three years of N, X, Y, Z and the index), NIRF (median salary, companies and counts) or the batch's offers (audited)", access: [...CELL_READ, "IQAC"], request: c.placementExportQuerySchema, response: c.okSchema, sample: "/api/v1/placement/analytics/export?kind=NBA" },
+  { ...P, method: "POST", path: "/api/v1/placement/season", summary: "The TPO publishes a batch's table as it stands (the season row's one writer; republishing replaces it)", access: ["TPO"], request: c.seasonPublishSchema, response: c.seasonViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/placement/internships", summary: "Internships under the AICTE policy: the college's for the TPO, HOD, office and principal; a faculty member's supervisees", access: ["TPO", "HOD", "FACULTY", "ADMIN", "PRINCIPAL"], response: c.internshipListSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/internships/{internshipId}/decide", summary: "The TPO or the HOD approves a proposed internship naming its supervising faculty, or refuses it with a reason", access: ["TPO", "HOD"], request: c.internshipDecideSchema, response: c.internshipViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/placement/internships/{internshipId}/evaluate", summary: "The industry grade, the faculty visit, the viva; the credits last (TPO or HOD alone; report, grade, viva and a family business's declaration first; never past the policy's 20)", access: ["TPO", "HOD", "FACULTY"], request: c.internshipEvaluateSchema, response: c.internshipViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/placement/projects", summary: "Students' projects: the college's for the HOD, a faculty member's own as guide", access: ["HOD", "FACULTY"], response: c.projectListSchema },
+  { ...P, method: "POST", path: "/api/v1/placement/projects", summary: "The HOD sets up a project with its students and guide (a faculty member, one they guide themselves)", access: ["HOD", "FACULTY"], request: c.projectSaveSchema, response: c.projectViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/placement/projects/{projectId}/review", summary: "The guide records a review; the final one carries the marks", access: ["HOD", "FACULTY"], request: c.projectReviewSchema, response: c.projectViewSchema, emptyBodyStatus: 422 },
+  // ---- the student
+  { ...P, method: "GET", path: "/api/v1/student/placement", summary: "The student's placement: profile and record, every drive with eligibility and why not, applications, rounds, offers, internships and credits, the aptitude bank, alumni mentors' free one-to-ones", access: ["STUDENT"], response: c.studentPlacementSchema },
+  { ...P, method: "POST", path: "/api/v1/student/placement/profile", summary: "Skills, certifications, projects and the season's choices; the first save is the consent to the cell processing the record", access: ["STUDENT"], request: c.placementProfileSaveSchema, response: c.placementProfileSchema, emptyBodyStatus: 422 },
+  { ...P, method: "GET", path: "/api/v1/student/placement/resume", summary: "The student's resume as a PDF (application/pdf), rendered from the record and the profile in their language", access: ["STUDENT"], response: c.okSchema },
+  { ...P, method: "POST", path: "/api/v1/student/placement/drives/{driveId}/apply", summary: "Apply to an OPEN drive; applying IS the consent to share the profile and the record with its company for this drive; refused 409 naming every failed condition", access: ["STUDENT"], request: c.driveApplySchema, response: c.applicationViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/student/placement/drives/{driveId}/withdraw", summary: "Withdraw an application, ending the consent; refused once an offer is made", access: ["STUDENT"], response: c.applicationViewSchema },
+  { ...P, method: "POST", path: "/api/v1/student/placement/offers/{offerId}", summary: "Accept or decline an offer; a second acceptance only for a dream offer, which declines the first", access: ["STUDENT"], request: c.offerAnswerSchema, response: c.offerViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/student/internships", summary: "Propose an internship in a window after semester 2, 4 or 6", access: ["STUDENT"], request: c.internshipProposeSchema, response: c.internshipViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/student/internships/{internshipId}/diary", summary: "A day in the internship's diary, within its dates, while it is approved", access: ["STUDENT"], request: c.internshipDiarySchema, response: c.internshipViewSchema, emptyBodyStatus: 422 },
+  { ...P, method: "POST", path: "/api/v1/student/internships/{internshipId}/files", summary: "The report (an upload ticket; moves it to SUBMITTED) or a family business's parent's declaration", access: ["STUDENT"], request: c.internshipFileSchema, response: c.internshipViewSchema, emptyBodyStatus: 422 },
+  // ---- the family
+  { ...P, method: "GET", path: "/api/v1/family/placement", summary: "A child's offers and internships: always for a minor, with the PLACEMENT grant for an adult at a college", access: ["PARENT"], request: c.familyPlacementQuerySchema, response: c.familyPlacementSchema },
+  // ---- the recruiter (no module: no college on the session; each door finds its drive first)
+  { method: "GET", path: "/api/v1/recruiter/company", summary: "The recruiter's company and colleagues", access: ["RECRUITER"], response: c.recruiterCompanySchema },
+  { method: "POST", path: "/api/v1/recruiter/company", summary: "Register the recruiter's company by GSTIN or CIN with its point of contact; a company already on the platform is refused (a colleague adds you)", access: ["RECRUITER"], request: c.companySaveSchema, response: c.recruiterCompanySchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/recruiter/company/colleagues", summary: "Add another recruiter account, by its address, to the company", access: ["RECRUITER"], request: c.recruiterColleagueSchema, response: c.recruiterCompanySchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/recruiter/colleges", summary: "The placement directory: colleges with PLACEMENT on, names and towns only", access: ["RECRUITER"], response: c.recruiterCollegesSchema },
+  { method: "GET", path: "/api/v1/recruiter/requirements", summary: "The company's requirements and the colleges they went to", access: ["RECRUITER"], response: c.requirementListSchema },
+  { method: "POST", path: "/api/v1/recruiter/requirements", summary: "A requirement to one college or several; each college's TPO is told", access: ["RECRUITER"], request: c.requirementSaveSchema, response: c.requirementViewSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/recruiter/drives", summary: "The live drives of the recruiter's company, each with its eligible count and consented applicants; nothing of a closed one", access: ["RECRUITER"], response: c.recruiterDrivesSchema },
+  { method: "GET", path: "/api/v1/recruiter/drives/{driveId}", summary: "One live drive of the company: the eligible count, and the applicants who consented, with the record they shared; 404 once it closes", access: ["RECRUITER"], response: c.recruiterDriveSchema, sample: `/api/v1/recruiter/drives/${F.openDrive}` },
+  { method: "GET", path: "/api/v1/recruiter/drives/{driveId}/export", summary: "The consented applicants as CSV (text/csv), watermarked with the recruiter's name and company; audited in the college's log", access: ["RECRUITER"], response: c.okSchema, sample: `/api/v1/recruiter/drives/${F.openDrive}/export` },
+  { method: "GET", path: "/api/v1/recruiter/drives/{driveId}/resume/{membershipId}", summary: "A consented applicant's resume as a PDF (application/pdf), watermarked; audited", access: ["RECRUITER"], response: c.okSchema, sample: () => null },
+  { method: "POST", path: "/api/v1/recruiter/drives/{driveId}/feedback", summary: "The recruiter's rating of the drive and word on the college's preparation", access: ["RECRUITER"], request: c.recruiterFeedbackSchema, response: c.recruiterDriveSchema, emptyBodyStatus: 422 },
+  // ---- alumni, the college's additions
+  { ...A, method: "GET", path: "/api/v1/alumni/college", summary: "An alumnus's college additions: mentoring slots, referrals, gifts, meets, open drives to refer into, the alumni survey while one is open", access: ["ALUMNUS"], response: c.alumniCollegeSchema },
+  { ...A, method: "POST", path: "/api/v1/alumni/college/mentor-slots", summary: "A mentor offers a free one-to-one to the college's students (never priced)", access: ["ALUMNUS"], request: c.alumniMentorSlotSaveSchema, response: c.mentorSlotSchema.nullable(), emptyBodyStatus: 422 },
+  { ...A, method: "POST", path: "/api/v1/alumni/college/referrals", summary: "Refer an opening, into a drive or as a company; the TPO is told", access: ["ALUMNUS"], request: c.alumniReferralSaveSchema, response: c.alumniReferralViewSchema, emptyBodyStatus: 422 },
+  { ...A, method: "POST", path: "/api/v1/alumni/college/company", summary: "An alumnus who recruits names their company by GSTIN or CIN; null clears it", access: ["ALUMNUS"], request: c.alumniCompanyLinkSaveSchema, response: c.alumniCompanyLinkResultSchema, emptyBodyStatus: 422 },
+  { ...A, method: "POST", path: "/api/v1/alumni/college/meets/{meetId}", summary: "Register for a meet, or cancel", access: ["ALUMNUS"], request: c.alumniMeetGoingSchema, response: c.alumniMeetViewSchema.nullable(), emptyBodyStatus: 422, sample: `/api/v1/alumni/college/meets/${F.meet}` },
+  { ...A, method: "GET", path: "/api/v1/admin/alumni/college", summary: "The office's side: gifts, meets, referrals and the batch table for the AQAR", access: ["ADMIN", "PRINCIPAL", "TPO"], response: c.alumniCollegeAdminSchema },
+  { ...A, method: "POST", path: "/api/v1/admin/alumni/gifts", summary: "The office records a gift with the receipt the college issued outside the app (decision 0003)", access: ["ADMIN"], request: c.alumniGiftSaveSchema, response: c.alumniGiftViewSchema, emptyBodyStatus: 422 },
+  { ...A, method: "POST", path: "/api/v1/admin/alumni/meets", summary: "The office sets a meet or reunion: on the calendar as an EVENT, the batch told", access: ["ADMIN"], request: c.alumniMeetSaveSchema, response: c.alumniMeetViewSchema, emptyBodyStatus: 422 },
+];
