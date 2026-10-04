@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/fees/plans — a class or named pupils onto a published structure; their dues are generated, refusals named. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = feeAssignBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(feeAssignResultSchema.parse(await assignPlans(ctx, parsed.data)));

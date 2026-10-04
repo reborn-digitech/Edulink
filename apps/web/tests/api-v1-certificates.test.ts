@@ -120,7 +120,8 @@ describe("templates", () => {
     expect(view.presets).toHaveLength(15);
     expect(view.presets.map((p: { key: string }) => p.key)).toContain("NIRGAM-mr");
     // Thirty-eight before the two codes left the list: a certificate carries no code that opens anything.
-    expect(view.placeholders).toHaveLength(36);
+    // 36 a school's, and the seven [[college.*]] a college's paper names (4 Oct 2026), which print a dash at a school.
+    expect(view.placeholders).toHaveLength(43);
     expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("pupil.studentCode");
     expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("school.code");
     expect(view.placeholders.find((p: { key: string }) => p.key === "pupil.name").label).toBe("विद्यार्थ्याचे नाव");

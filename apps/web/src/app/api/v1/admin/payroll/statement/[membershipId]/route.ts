@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/statement/{membershipId}?year= — a member of staff's yearly earnings statement. */
 export async function GET(request: Request, { params }: { params: Promise<{ membershipId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { membershipId } = await params;
     const year = new URL(request.url).searchParams.get("year") ?? undefined;
     return ok(payrollStatementSchema.parse(await statementFor(ctx, membershipId, year)));

@@ -8,7 +8,7 @@ type Params = { params: Promise<{ titleId: string }> };
 /** GET /api/v1/library/titles/{titleId} — One title: its copies and queue for the desk, the reader's own place in the queue. */
 export async function GET(request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN");
+    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "FACULTY", "HOD");
     const p = await params;
     const parsed = libraryMineQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);

@@ -6,7 +6,7 @@ import { apiFailure, ok } from "@/lib/api-v1";
 /** POST /api/v1/fees/structures/{structureId}/archive */
 export async function POST(_request: Request, { params }: { params: Promise<{ structureId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { structureId } = await params;
     await archiveStructure(ctx, structureId);
     return ok(feeOkSchema.parse({ ok: true }));

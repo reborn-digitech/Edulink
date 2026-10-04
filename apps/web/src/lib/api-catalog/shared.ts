@@ -2,6 +2,21 @@ import * as c from "@edulink/contracts";
 import type { Endpoint } from "./types";
 
 const SCHOOL_ROLES: c.RoleCode[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT"];
+/**
+ * The college's six staff roles (4 Oct 2026) read, post, react and comment on
+ * their own institution's feed as a teacher does (bulletin.ts reads them as
+ * TEACHER there); the alumnus reads, reacts and comments under its school's
+ * setting.
+ */
+const FEED_ROLES: c.LimitedRoleCode[] = ["ALUMNUS", ...c.COLLEGE_ROLES];
+/**
+ * WHO READS THE GLOBAL FEED (4 Oct 2026, global-feed.ts `globalReader`):
+ * every role of a school or a college — the module roles and the college's
+ * staff as staff, the alumnus and the student by the age on their own row, a
+ * guardian through their children (an adult student's through the MESSAGES
+ * grant) — and never an expert or a recruiter, who belong to no school.
+ */
+const GLOBAL_FEED_ROLES: c.RoleCode[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", ...c.COLLEGE_ROLES];
 
 /**
  * shared: the pages every role reads, and the expert's own. Access says who
@@ -11,12 +26,12 @@ const SCHOOL_ROLES: c.RoleCode[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", 
  */
 export const SHARED: Endpoint[] = [
   // ---- bulletin -------------------------------------------------------------
-  { method: "GET", path: "/api/v1/shared/bulletin", summary: "The school feed, filtered and cursor paged", access: "signed-in", limitedRoles: ["ALUMNUS"], response: c.bulletinFeedSchema, sample: "/api/v1/shared/bulletin?limit=20" },
-  { method: "POST", path: "/api/v1/shared/bulletin", summary: "Compose a post (media ids from POST /api/v1/uploads)", access: "signed-in", request: c.bulletinCreatePostSchema, response: c.bulletinPostCreatedSchema, emptyBodyStatus: 422 },
-  { method: "GET", path: "/api/v1/shared/bulletin/global", summary: "Every school's shared posts, cursor paged", access: SCHOOL_ROLES, response: c.globalFeedSchema },
-  { method: "GET", path: "/api/v1/shared/bulletin/{postId}", summary: "One post with its comments and reactions", access: "signed-in", limitedRoles: ["ALUMNUS"], response: c.bulletinPostDetailSchema, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}` : null) },
-  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/react", summary: "Toggle a reaction on a post", access: "signed-in", limitedRoles: ["ALUMNUS"], request: c.bulletinReactBodySchema, response: c.bulletinReactResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/react` : null) },
-  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/comments", summary: "Comment on a post; a pupil's is held for review (an alumnus while the school lets its alumni comment)", access: "signed-in", limitedRoles: ["ALUMNUS"], request: c.bulletinCommentBodySchema, response: c.bulletinCommentResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/comments` : null) },
+  { method: "GET", path: "/api/v1/shared/bulletin", summary: "The school feed, filtered and cursor paged", access: "signed-in", limitedRoles: FEED_ROLES, response: c.bulletinFeedSchema, sample: "/api/v1/shared/bulletin?limit=20" },
+  { method: "POST", path: "/api/v1/shared/bulletin", summary: "Compose a post (media ids from POST /api/v1/uploads)", access: "signed-in", limitedRoles: [...c.COLLEGE_ROLES], request: c.bulletinCreatePostSchema, response: c.bulletinPostCreatedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/shared/bulletin/global", summary: "Every school's and college's shared posts, cursor paged: the reader's institution's kind filter applied, the hides of every school the reader belongs to, nothing the platform took down", access: GLOBAL_FEED_ROLES, response: c.globalFeedSchema },
+  { method: "GET", path: "/api/v1/shared/bulletin/{postId}", summary: "One post with its comments and reactions", access: "signed-in", limitedRoles: FEED_ROLES, response: c.bulletinPostDetailSchema, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/react", summary: "Toggle a reaction on a post", access: "signed-in", limitedRoles: FEED_ROLES, request: c.bulletinReactBodySchema, response: c.bulletinReactResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/react` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/comments", summary: "Comment on a post; a pupil's is held for review (an alumnus while the school lets its alumni comment)", access: "signed-in", limitedRoles: FEED_ROLES, request: c.bulletinCommentBodySchema, response: c.bulletinCommentResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/comments` : null) },
   { method: "POST", path: "/api/v1/shared/bulletin/{postId}/review", summary: "Approve or reject a pending pupil post", access: ["TEACHER", "ADMIN"], request: c.bulletinReviewBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/review` : null) },
   { method: "GET", path: "/api/v1/shared/bulletin/comments/held", summary: "The held comments the reader may approve or remove, oldest first", access: ["TEACHER", "ADMIN"], response: c.bulletinHeldCommentsSchema },
   { method: "POST", path: "/api/v1/shared/bulletin/comments/{commentId}/review", summary: "Approve or remove a held comment; removing needs a reason the author is told", access: ["TEACHER", "ADMIN"], request: c.bulletinCommentReviewBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.heldCommentId ? `/api/v1/shared/bulletin/comments/${f.heldCommentId}/review` : null) },
@@ -26,16 +41,16 @@ export const SHARED: Endpoint[] = [
   { method: "POST", path: "/api/v1/shared/joins/{requestId}/decide", summary: "Let somebody who typed a code in, or decline with an optional sentence for them: the office, or a teacher of the class the code named", access: ["TEACHER", "ADMIN"], request: c.joinDecisionBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.joinRequestId ? `/api/v1/shared/joins/${f.joinRequestId}/decide` : null), probe: { body: () => ({ decision: "DECLINE" }) } },
   { method: "POST", path: "/api/v1/shared/claims/{claimId}/decide", summary: "Make a claimant a child's guardian, or decline with an optional sentence for them: the office, or a guardian the child already has", access: ["ADMIN", "PRINCIPAL", "PARENT"], request: c.joinDecisionBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.guardianClaimId ? `/api/v1/shared/claims/${f.guardianClaimId}/decide` : null), probe: { body: () => ({ decision: "DECLINE" }) } },
   // ---- inbox ----------------------------------------------------------------
-  { method: "GET", path: "/api/v1/shared/inbox", summary: "Conversations and remark threads in one list", access: "signed-in", limitedRoles: ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"], response: c.inboxSchema },
-  { method: "GET", path: "/api/v1/shared/conversations/{conversationId}", summary: "A conversation's messages; opening it marks it read", access: "signed-in", limitedRoles: ["ALUMNUS"], response: c.inboxConversationDetailSchema, sample: (f) => (f.conversationId ? `/api/v1/shared/conversations/${f.conversationId}` : null) },
-  { method: "POST", path: "/api/v1/shared/conversations", summary: "Open (or find) the room with one person at one school", access: "signed-in", limitedRoles: ["ALUMNUS"], request: c.inboxOpenConversationSchema, response: c.inboxConversationOpenedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/shared/inbox", summary: "Conversations and remark threads in one list", access: "signed-in", limitedRoles: c.ALL_LIMITED_ROLES, response: c.inboxSchema },
+  { method: "GET", path: "/api/v1/shared/conversations/{conversationId}", summary: "A conversation's messages; opening it marks it read", access: "signed-in", limitedRoles: ["ALUMNUS", "FACULTY", "HOD"], response: c.inboxConversationDetailSchema, sample: (f) => (f.conversationId ? `/api/v1/shared/conversations/${f.conversationId}` : null) },
+  { method: "POST", path: "/api/v1/shared/conversations", summary: "Open (or find) the room with one person at one school", access: "signed-in", limitedRoles: ["ALUMNUS", "FACULTY", "HOD"], request: c.inboxOpenConversationSchema, response: c.inboxConversationOpenedSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/shared/threads/{threadId}", summary: "A remark thread about a pupil; opening it marks it read", access: "signed-in", response: c.inboxThreadDetailSchema, sample: (f) => (f.remarkThreadId ? `/api/v1/shared/threads/${f.remarkThreadId}` : null) },
   { method: "POST", path: "/api/v1/shared/threads/{threadId}/reply", summary: "Reply in a remark thread", access: "signed-in", request: c.inboxThreadReplyBodySchema, response: c.inboxThreadReplyResultSchema, emptyBodyStatus: 422, sample: (f) => (f.remarkThreadId ? `/api/v1/shared/threads/${f.remarkThreadId}/reply` : null) },
   { method: "GET", path: "/api/v1/shared/people", summary: "Who I may write to at a school", access: ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "ALUMNUS"], response: c.inboxPeopleSchema },
   // ---- notifications --------------------------------------------------------
-  { method: "GET", path: "/api/v1/shared/notifications", summary: "My notifications, newest first, cursor paged", access: "signed-in", limitedRoles: ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"], response: c.notificationsSchema, sample: "/api/v1/shared/notifications?limit=20" },
-  { method: "POST", path: "/api/v1/shared/notifications/{notificationId}/read", summary: "Mark one of my notifications read", access: "signed-in", limitedRoles: ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"], response: c.okSchema, sample: (f) => (f.notificationId ? `/api/v1/shared/notifications/${f.notificationId}/read` : null) },
-  { method: "POST", path: "/api/v1/shared/notifications/read-all", summary: "Mark all my notifications read", access: "signed-in", limitedRoles: ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"], response: c.notificationsReadAllSchema },
+  { method: "GET", path: "/api/v1/shared/notifications", summary: "My notifications, newest first, cursor paged", access: "signed-in", limitedRoles: c.ALL_LIMITED_ROLES, response: c.notificationsSchema, sample: "/api/v1/shared/notifications?limit=20" },
+  { method: "POST", path: "/api/v1/shared/notifications/{notificationId}/read", summary: "Mark one of my notifications read", access: "signed-in", limitedRoles: c.ALL_LIMITED_ROLES, response: c.okSchema, sample: (f) => (f.notificationId ? `/api/v1/shared/notifications/${f.notificationId}/read` : null) },
+  { method: "POST", path: "/api/v1/shared/notifications/read-all", summary: "Mark all my notifications read", access: "signed-in", limitedRoles: c.ALL_LIMITED_ROLES, response: c.notificationsReadAllSchema },
   // ---- competitions ---------------------------------------------------------
   { method: "GET", path: "/api/v1/shared/competitions", summary: "The school's and the platform's competitions", access: "signed-in", response: c.competitionsPageSchema },
   { method: "GET", path: "/api/v1/shared/competitions/{competitionId}", summary: "One competition, my entry, and the schools' board", access: "signed-in", response: c.competitionDetailSchema, sample: (f) => (f.competitionId ? `/api/v1/shared/competitions/${f.competitionId}` : null) },

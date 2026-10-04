@@ -38,13 +38,19 @@ import { FEE_HEAD_KINDS } from "./constants";
 
 export type FeeCaller = { schoolId: string; userId: string; role: string | null; membershipId: string | null };
 
+/**
+ * The office — and, at a college, the ACCOUNTS desk (4 Oct 2026), which keeps
+ * the same ledger by its role rather than by a module. ACCOUNTS is offered
+ * only to a college (invitableRolesFor), so a school's ledger has no such
+ * keeper.
+ */
 function office(ctx: ActiveContext): FeeCaller {
-  if (ctx.role !== "ADMIN" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("fees.refuseOffice");
+  if ((ctx.role !== "ADMIN" && ctx.role !== "ACCOUNTS") || !ctx.schoolId || !ctx.membershipId) throw new AccessError("fees.refuseOffice");
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId };
 }
 
 export function officeOrHead(ctx: ActiveContext): FeeCaller {
-  if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId || !ctx.membershipId) throw new AccessError("fees.refuseOffice");
+  if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL" && ctx.role !== "ACCOUNTS") || !ctx.schoolId || !ctx.membershipId) throw new AccessError("fees.refuseOffice");
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId };
 }
 export { office as requireFeesOffice };
@@ -478,7 +484,8 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
     if (removable.length) await tx.feeDemand.deleteMany({ where: { id: { in: removable } } });
     return { written: 0, kept: existing.length - removable.length };
   }
-  const concessions: ConcessionRow[] = await tx.feeConcession.findMany({ where: { schoolId, studentMembershipId, academicYearId, revokedAt: null }, select: { headId: true, kind: true, value: true } });
+  // A college's concession above the office's limit waits for the principal (college-fees.ts): only an APPROVED one is applied.
+  const concessions: ConcessionRow[] = await tx.feeConcession.findMany({ where: { schoolId, studentMembershipId, academicYearId, revokedAt: null, approvalStatus: "APPROVED" }, select: { headId: true, kind: true, value: true } });
   const wanted = new Set(plan.structure.instalments.map((i) => i.id));
   let written = 0;
   let kept = 0;

@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/inventory/assets?status=&location= — the register, depreciation worked out to today. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const params = new URL(request.url).searchParams;
     const parsed = assetsQuerySchema.safeParse({ status: params.get("status") ?? undefined, location: params.get("location") ?? undefined });
     if (!parsed.success) return apiInvalid(parsed);
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/admin/inventory/assets — a new asset under a tag of its own. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = assetSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(assetSchema.parse(await createAsset(ctx, parsed.data)));

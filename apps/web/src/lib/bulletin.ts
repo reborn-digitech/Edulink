@@ -1,4 +1,6 @@
 import "server-only";
+import { audienceTokensFor, isTargetToken, targetToken } from "./college-audience";
+import type { AudienceTarget } from "@edulink/contracts";
 import { queueCircularDelivery, recordPostRead } from "./circulars";
 import type { Prisma } from "@prisma/client";
 import { db } from "./db";
@@ -13,7 +15,7 @@ import { consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import { assertAlumnusMay } from "./alumni";
 import { authorTagsAt, batchYearOf, type AuthorTag } from "./alumni-tags";
-import { isModuleRole, type PostCategory, type PostScope, type PostStatus, type ReactionKind, type Role } from "./constants";
+import { isCollegeRole, isModuleRole, type PostCategory, type PostScope, type PostStatus, type ReactionKind, type Role } from "./constants";
 
 /**
  * Bulletin board.
@@ -82,6 +84,20 @@ export const CATEGORY_HASHTAGS: Record<PostCategory, string> = {
   LEARNING: "#LearningAndAcademics",
   UPDATES: "#UpdatesAndEngagement",
 };
+
+
+/**
+ * A COLLEGE'S STAFF ON THE FEED (4 October 2026): faculty, the HOD, the exam
+ * controller, IQAC, placement and accounts read, post, react and comment on
+ * their own college's feed exactly as a teacher does on a school's — the
+ * catalog opens those doors to them (api-catalog/shared.ts FEED_ROLES) and
+ * every function the doors reach reads them as TEACHER here, so nothing below
+ * needs a seventh branch. Reviewing a pupil's post or comment stays the
+ * TEACHER's and the ADMIN's: those functions do not call this.
+ */
+function asFeedReader(session: ActiveContext): ActiveContext {
+  return isCollegeRole(session.role) ? { ...session, role: "TEACHER" } : session;
+}
 
 /** "ZZ Northgate School" → "#ZZNorthgateSchool". Empty when nothing survives. */
 export function schoolHashtag(name: string): string {
@@ -193,10 +209,10 @@ function visibilityWhere(
  * families out of a Grade 9 teenager's feed. Staff keep seeing TEACHERS posts
  * plus everything untargeted; admins are filtered nowhere.
  */
-function audienceWhere(role: Role | null, grades: string[]): Prisma.PostWhereInput[] {
+function audienceWhere(role: Role | null, gradesAndTargets: string[]): Prisma.PostWhereInput[] {
   if (role === "ADMIN") return [];
   // A module role (an alumnus reading the school's feed, 3 Oct 2026) reads what is for everyone, and nothing aimed at a group.
-  if (isModuleRole(role)) return [{ audience: "ALL" }, { audienceGrade: null }];
+  if (isModuleRole(role)) return [{ audience: "ALL" }, { audienceGrade: null }, { audienceTarget: null }];
   if (role === "TEACHER" || role === "PRINCIPAL") {
     // A circular to families is the class teacher's to chase, so a staff
     // member reads every post that asks for an acknowledgement, whoever it
@@ -204,9 +220,13 @@ function audienceWhere(role: Role | null, grades: string[]): Prisma.PostWhereInp
     return [{ OR: [{ audience: { in: ["ALL", "TEACHERS"] } }, { requiresAck: true }] }];
   }
   const audiences = role === "PARENT" ? ["ALL", "PARENTS"] : ["ALL", "STUDENTS"];
+  // A college notice's programme, department, division or batch (college-audience.ts): the reader's tokens ride with their grades.
+  const grades = gradesAndTargets.filter((g) => !isTargetToken(g));
+  const targets = gradesAndTargets.filter(isTargetToken);
   return [
     { audience: { in: audiences } },
     { OR: [{ audienceGrade: null }, { audienceGrade: { in: grades } }] },
+    { OR: [{ audienceTarget: null }, { audienceTarget: { in: targets } }] },
   ];
 }
 
@@ -224,7 +244,7 @@ async function gradesFor(session: ActiveContext): Promise<string[]> {
       where: { studentMembershipId: membershipId, status: "ACTIVE", class: { schoolId } },
       select: { class: { select: { gradeLevel: true } } },
     });
-    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
+    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null)), ...(await audienceTokensFor(session))];
   }
   if (role === "PARENT") {
     const rows = await db.enrollment.findMany({
@@ -237,7 +257,7 @@ async function gradesFor(session: ActiveContext): Promise<string[]> {
       },
       select: { class: { select: { gradeLevel: true } } },
     });
-    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null))];
+    return [...new Set(rows.map((r) => r.class.gradeLevel).filter((g): g is string => g !== null)), ...(await audienceTokensFor(session))];
   }
   return [];
 }
@@ -348,6 +368,7 @@ export async function listFeed(
     q?: string;
   } = {},
 ): Promise<FeedPost[]> {
+  session = asFeedReader(session);
   session = await scoped(session, { schoolId: opts.schoolId });
   if (!session.schoolId) return [];
 
@@ -432,6 +453,7 @@ export async function listFeed(
 
 /** How many student posts are waiting on this person specifically. */
 export async function pendingCount(session: ActiveContext): Promise<number> {
+  session = asFeedReader(session);
   if (!session.schoolId) return 0;
   if (session.role === "ADMIN") {
     return db.post.count({ where: { schoolId: session.schoolId, status: "PENDING" } });
@@ -451,6 +473,7 @@ export async function pendingCount(session: ActiveContext): Promise<number> {
 }
 
 export async function getPost(session: ActiveContext, postId: string) {
+  session = asFeedReader(session);
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -561,9 +584,12 @@ export async function createPost(
     font?: string;
     audience?: PostAudience;
     audienceGrade?: string;
+    /** A college's notice for one programme, department, division or batch (college-audience.ts). */
+    audienceTarget?: AudienceTarget | null;
     requiresAck?: boolean;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
+  session = asFeedReader(session);
   // A module role writes nothing here (3 Oct 2026) — but an ALUMNUS posts
   // when the school lets its alumni (alumni.ts): school-wide, held for the office.
   if (session.role === "ALUMNUS") {
@@ -585,6 +611,8 @@ export async function createPost(
       ? input.audienceGrade?.trim() || null
       : null;
   const requiresAck = isStaff && input.requiresAck === true;
+  // A college's target narrows a school-wide notice; checked to be this college's programme, department, division or batch.
+  const audienceTarget = isStaff && input.scope === "SCHOOL" && audience !== "TEACHERS" && input.audienceTarget ? await targetToken(schoolId, input.audienceTarget) : null;
 
   // GLOBAL (cross-school) posting is not built. Refuse rather than silently
   // downgrading it to a school post, which would put a child's work somewhere
@@ -650,6 +678,7 @@ export async function createPost(
       media: writeJson(input.media),
       audience,
       audienceGrade,
+      audienceTarget,
       requiresAck,
       status,
       reviewedAt: status === "APPROVED" ? new Date() : null,
@@ -1070,9 +1099,10 @@ export async function toggleReaction(
   postId: string,
   kind: ReactionKind,
 ): Promise<{ added: boolean }> {
-  // A module role reacts to nothing — but an ALUMNUS may, on their old school's own posts, while the school lets its alumni comment (alumni.ts).
-  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", "react");
-  else if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+  session = asFeedReader(session);
+  // A module role reacts to nothing — but an ALUMNUS may, on their old school's own posts while the school lets its
+  // alumni comment (alumni.ts), and on the global feed's posts as any reader of it may (4 Oct 2026); checked below.
+  if (isModuleRole(session.role) && session.role !== "ALUMNUS") throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1083,9 +1113,11 @@ export async function toggleReaction(
         { OR: [visibilityWhere(session, classIds, grades), GLOBAL_POST_READABLE] },
       ],
     },
-    select: { id: true, schoolId: true },
+    select: { id: true, schoolId: true, scope: true },
   });
-  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId)) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId && visible.scope !== "GLOBAL")) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  // On a global post the old school's feed setting does not apply; the module and the office's mute still do.
+  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", visible.scope === "GLOBAL" ? "reach" : "react");
 
   const existing = await db.reaction.findUnique({
     where: { postId_userId_kind: { postId, userId: session.user.id, kind } },
@@ -1109,9 +1141,11 @@ export async function addComment(
   body: string,
   parentCommentId?: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
-  // A module role comments on nothing — but an ALUMNUS may, on their old school's own posts, while the school lets its alumni comment (alumni.ts).
-  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", "comment");
-  else if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
+  session = asFeedReader(session);
+  // A module role comments on nothing — but an ALUMNUS may, on their old school's own posts while the school lets its
+  // alumni comment (alumni.ts), and on the global feed's posts as any reader of it may (4 Oct 2026), held there as
+  // every global comment is; checked below.
+  if (isModuleRole(session.role) && session.role !== "ALUMNUS") throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
@@ -1124,7 +1158,9 @@ export async function addComment(
     },
     select: { id: true, authorUserId: true, schoolId: true, title: true, scope: true, classId: true },
   });
-  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId)) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  if (!visible || (session.role === "ALUMNUS" && visible.schoolId !== session.schoolId && visible.scope !== "GLOBAL")) throw new AccessError("access.postNotFound", "NOT_FOUND");
+  // On a global post the old school's feed setting does not apply; the module and the office's mute still do.
+  if (session.role === "ALUMNUS") await assertAlumnusMay(session, session.schoolId ?? "", visible.scope === "GLOBAL" ? "reach" : "comment");
 
   /**
    * The same ceiling createPost puts on posts, a little higher because a
@@ -1361,6 +1397,7 @@ export async function reportContent(
   session: ActiveContext,
   input: { targetType: "POST" | "COMMENT" | "USER"; targetId: string; reason: string; detail?: string },
 ): Promise<void> {
+  session = asFeedReader(session);
   const limiter = await consume(`report:${session.user.id}`, REPORTS_PER_HOUR, 60 * 60 * 1000);
   if (!limiter.allowed) {
     throw new AccessError("access.youAreReportingALot", "FORBIDDEN", {
@@ -1439,6 +1476,7 @@ export async function reportContent(
  * tap felt uncertain must read as success, the same stance reportContent takes.
  */
 export async function acknowledgePost(session: ActiveContext, postId: string): Promise<void> {
+  session = asFeedReader(session);
   // READ ONLY for a module role (an alumnus reads the school's feed, 3 Oct 2026): no post, comment, reaction or acknowledgement.
   if (isModuleRole(session.role)) throw new AccessError("access.wrongRoleForThisAction");
   session = await scoped(session, { postId });
@@ -1569,6 +1607,7 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
 
 /** Classes this person may post to. */
 export async function postableClasses(session: ActiveContext) {
+  session = asFeedReader(session);
   const ids = await classIdsFor(session);
   if (ids.length === 0) return [];
   return db.class.findMany({

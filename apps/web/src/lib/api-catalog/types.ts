@@ -25,7 +25,7 @@
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
-import { MODULE_ROLES, type ModuleRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
+import { LIMITED_ROLES, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | RoleCode[];
 
@@ -43,12 +43,15 @@ export type Endpoint = {
    */
   module?: SchoolModuleCode;
   /**
-   * The module roles (DRIVER, LIBRARIAN, WARDEN, ALUMNUS) a "signed-in" door
-   * also opens to. "signed-in" means every role BUT those four, which reach
-   * only what names them — here, or in an `access` list. Published as
+   * The limited roles a "signed-in" door also opens to: the module roles
+   * (DRIVER, LIBRARIAN, WARDEN, ALUMNUS), the college's six staff roles
+   * (FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS) and the RECRUITER —
+   * LIMITED_ROLES in packages/contracts. "signed-in" means every role BUT
+   * those, which reach only what names them — here, or in an `access` list.
+   * The person's own doors name ALL_LIMITED_ROLES. Published as
    * `x-limited-roles`. See `permits` below.
    */
-  limitedRoles?: ModuleRoleCode[];
+  limitedRoles?: LimitedRoleCode[];
   request?: ZodTypeAny;
   response: ZodTypeAny;
   /** For the sweep: the status a permitted role gets with an empty body. */
@@ -232,6 +235,6 @@ export type SweepFixture = {
  */
 export function permits(e: Pick<Endpoint, "access" | "limitedRoles">, role: RoleCode): boolean {
   if (e.access === "anyone" || e.access === "account" || e.access === "operator" || e.access === "app-admin") return true;
-  if (e.access === "signed-in") return !(MODULE_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as ModuleRoleCode);
+  if (e.access === "signed-in") return !(LIMITED_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as LimitedRoleCode);
   return e.access.includes(role);
 }

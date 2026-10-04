@@ -4,7 +4,7 @@ import { cache } from "react";
 import { db } from "./db";
 import { clientAddress } from "./rate-limit";
 import { generateToken, hashToken } from "./crypto";
-import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
+import { isOutsideRole, SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
 import { forOwnSchools } from "./tenant-context";
 import { readJson } from "./json";
 import { bearerToken } from "./bearer";
@@ -300,7 +300,8 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
   // stored against either — POST /api/v1/me/context used to accept any string
   // for a PARENT — must not become the school this session reads for, or
   // the channel the events stream subscribes it to.
-  let schoolId: string | null = role && role !== "PARENT" && role !== "EXPERT" ? session.activeSchoolId : null;
+  // …nor an expert or a recruiter (4 Oct 2026), who belong to no school at all.
+  let schoolId: string | null = role && role !== "PARENT" && !isOutsideRole(role) ? session.activeSchoolId : null;
 
   // Nothing is bound here, deliberately. This function used to push the schools
   // it had just resolved into a store its callers would read, and in a route
@@ -409,7 +410,11 @@ export async function setActiveContext(
   userId: string,
   next: { schoolId: string | null; role: Role | null },
 ): Promise<boolean> {
-  if (next.role && next.role !== "PARENT") {
+  if (next.role === "RECRUITER") {
+    // A recruiter has no membership anywhere (4 Oct 2026): their account is the RecruiterProfile, and it must be live.
+    const profile = await db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } });
+    if (!profile || profile.disabledAt) return false;
+  } else if (next.role && next.role !== "PARENT") {
     if (!next.schoolId) return false;
     const ok = await db.membership.findFirst({
       where: {
@@ -435,7 +440,7 @@ export async function setActiveContext(
   // A parent's context names no school, whatever the body said: a school id
   // stored here was read back by getSession and handed to the events stream,
   // which subscribed the parent to that school's grades and registers.
-  const schoolId = next.role && next.role !== "PARENT" && next.role !== "EXPERT" ? next.schoolId : null;
+  const schoolId = next.role && next.role !== "PARENT" && !isOutsideRole(next.role) ? next.schoolId : null;
 
   await db.session.update({
     where: { id: sessionId },

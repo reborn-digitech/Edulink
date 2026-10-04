@@ -697,7 +697,7 @@ async function familyAllotment(ctx: ActiveContext, childId?: string | null): Pro
   if (ctx.role === "PARENT") {
     const child = childId ?? (await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true } }))?.studentMembershipId;
     if (!child) throw new AccessError("access.notYourChild", "NOT_FOUND");
-    await assertGuardianAccess(ctx.user.id, child);
+    await assertGuardianAccess(ctx.user.id, child, "HOSTEL_TRANSPORT");
     membershipId = child;
   } else if (ctx.role === "STUDENT" && ctx.membershipId) {
     membershipId = ctx.membershipId;
@@ -750,6 +750,8 @@ export async function familyHostel(ctx: ActiveContext, childId?: string | null, 
 export async function requestLeave(ctx: ActiveContext, input: FamilyHostelLeaveCreate, now: Date = new Date()): Promise<HostelLeaveRow> {
   const fam = await familyAllotment(ctx, input.childId);
   if (!fam.allotment) throw new AccessError("hostel.refuseNotBoarding");
+  // A college's rule (4 Oct 2026): a hostel that does not allow night-outs refuses one.
+  if (input.kind === "NIGHT_OUT" && !(await forSchool(fam.schoolId, () => db.hostelRoom.findUnique({ where: { id: fam.allotment!.roomId }, select: { hostel: { select: { nightOutAllowed: true } } } })))?.hostel.nightOutAllowed) throw new AccessError("collegeOffice.refuseNightOut");
   const fromAt = new Date(input.fromAt);
   const toAt = new Date(input.toAt);
   if (fromAt.getTime() < now.getTime() - 86_400_000 || toAt.getTime() - fromAt.getTime() > 60 * 86_400_000 || toAt <= fromAt) throw new AccessError("hostel.refuseLeaveDates");
@@ -774,7 +776,7 @@ export async function consentLeave(ctx: ActiveContext, leaveId: string, approve:
   if (ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
   const l = await db.hostelLeave.findUnique({ where: { id: leaveId }, select: { id: true, schoolId: true, membershipId: true, status: true, consentUserId: true, allotment: { include: ALLOTMENT_INCLUDE } } });
   if (!l) throw new AccessError("hostel.refuseNoLeave", "NOT_FOUND");
-  await assertGuardianAccess(ctx.user.id, l.membershipId).catch(() => {
+  await assertGuardianAccess(ctx.user.id, l.membershipId, "HOSTEL_TRANSPORT").catch(() => {
     throw new AccessError("hostel.refuseNoLeave", "NOT_FOUND");
   });
   await assertModuleOn(l.schoolId, "HOSTEL");
@@ -795,7 +797,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
   const l = await db.hostelLeave.findUnique({ where: { id: leaveId }, select: { id: true, schoolId: true, membershipId: true, status: true, outAt: true } });
   if (!l) throw new AccessError("hostel.refuseNoLeave", "NOT_FOUND");
   if (ctx.role === "PARENT") {
-    await assertGuardianAccess(ctx.user.id, l.membershipId).catch(() => {
+    await assertGuardianAccess(ctx.user.id, l.membershipId, "HOSTEL_TRANSPORT").catch(() => {
       throw new AccessError("hostel.refuseNoLeave", "NOT_FOUND");
     });
   } else if (!(ctx.role === "STUDENT" && ctx.membershipId === l.membershipId)) throw new AccessError("hostel.refuseNoLeave", "NOT_FOUND");

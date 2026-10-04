@@ -17,7 +17,7 @@ const OUT = resolve(process.cwd(), "../../docs/api/openapi.json");
 
 function describeAccess(e: Endpoint): string {
   if (e.access === "anyone") return "No session needed.";
-  if (e.access === "signed-in") return e.limitedRoles?.length ? `Any signed-in session but a module role's; of those, ${e.limitedRoles.join(", ")}.` : "Any signed-in session but a module role's (DRIVER, LIBRARIAN, WARDEN, ALUMNUS).";
+  if (e.access === "signed-in") return e.limitedRoles?.length ? `Any signed-in session but a limited role's; of those, ${e.limitedRoles.join(", ")}.` : "Any signed-in session but a limited role's (the module roles DRIVER, LIBRARIAN, WARDEN, ALUMNUS; the college's FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS; and RECRUITER).";
   if (e.access === "account") return "Decided by the person's memberships, not the session's role; the handler answers 403 otherwise.";
   if (e.access === "operator") return "The server operator.";
   if (e.access === "app-admin") return "The content team.";

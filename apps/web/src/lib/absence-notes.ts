@@ -34,7 +34,7 @@ type Filer = { schoolId: string; studentMembershipId: string; studentName: strin
 
 async function admit(ctx: ActiveContext, studentMembershipId: string): Promise<Filer> {
   if (ctx.role === "PARENT") {
-    const link = await assertGuardianAccess(ctx.user.id, studentMembershipId);
+    const link = await assertGuardianAccess(ctx.user.id, studentMembershipId, "ATTENDANCE");
     if (link.student.leftAt) throw new AccessError("access.notAllowed");
     return { schoolId: link.student.schoolId, studentMembershipId, studentName: link.student.user.preferredName ?? link.student.user.name, timezone: link.student.school.timezone, authorRole: "PARENT" };
   }

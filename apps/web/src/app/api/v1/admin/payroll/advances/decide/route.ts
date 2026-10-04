@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** POST /api/v1/admin/payroll/advances/decide — record or decline an ask. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = advanceDecideSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(staffAdvanceSchema.parse(await decideAdvance(ctx, parsed.data)));

@@ -83,7 +83,8 @@ const refused = (error: unknown): GigResult<never> | null => (error instanceof R
 /* Who is who                                                                  */
 /* -------------------------------------------------------------------------- */
 
-type Provider = { userId: string; kind: "EXPERT" | "TEACHER"; schoolId: string | null; timeZone?: string };
+/** ALUMNUS (4 Oct 2026): a college's alumnus mentor, whose free one-to-ones are written by src/lib/placement-alumni.ts and held to the college like a teacher's. */
+type Provider = { userId: string; kind: "EXPERT" | "TEACHER" | "ALUMNUS"; schoolId: string | null; timeZone?: string };
 
 /** An expert on the list, or a teacher whose school has switched guidance on. Null for a teacher whose school has not. */
 async function providerOrOff(ctx: ActiveContext): Promise<Provider | null> {
@@ -110,6 +111,8 @@ async function provider(ctx: ActiveContext): Promise<Provider> {
 function offerer(ctx: ActiveContext): Provider {
   if (ctx.role === "EXPERT") return { userId: ctx.user.id, kind: "EXPERT", schoolId: null };
   if (ctx.role === "TEACHER" && ctx.schoolId) return { userId: ctx.user.id, kind: "TEACHER", schoolId: ctx.schoolId };
+  // An alumnus mentor marks and cancels what they offered (placement-alumni.ts writes the slot, never priced).
+  if (ctx.role === "ALUMNUS" && ctx.schoolId) return { userId: ctx.user.id, kind: "ALUMNUS", schoolId: ctx.schoolId };
   throw new AccessError("access.wrongRoleForThisAction");
 }
 
@@ -384,7 +387,8 @@ export async function mySlots(ctx: ActiveContext, now: Date = new Date()): Promi
   };
   return {
     enabled: true,
-    kind: me.kind,
+    // providerOrOff answers an expert or a teacher; an alumnus mentor's times are placement-alumni.ts's.
+    kind: me.kind === "EXPERT" ? "EXPERT" : "TEACHER",
     timeZone: me.timeZone ?? "Asia/Kolkata",
     duty,
     gate: me.kind === "EXPERT" ? await paidGate(me.userId, now) : null,
@@ -465,20 +469,20 @@ export async function closeBooking(ctx: ActiveContext, bookingId: string, outcom
 /* The family's side                                                           */
 /* -------------------------------------------------------------------------- */
 
-export type OpenSlot = { id: string; kind: SessionKind; title: string; startsAt: string; endsAt: string; seatsLeft: number; providerName: string; providerKind: "EXPERT" | "TEACHER"; providerHeadline: string | null; /** What a seat costs past the pupil's allowance; 0 is free. */ pricePaise: number; /** This pupil still has a free seat of this kind, so the price is not asked. */ freeSeat: boolean };
+export type OpenSlot = { id: string; kind: SessionKind; title: string; startsAt: string; endsAt: string; seatsLeft: number; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; providerHeadline: string | null; /** What a seat costs past the pupil's allowance; 0 is free. */ pricePaise: number; /** This pupil still has a free seat of this kind, so the price is not asked. */ freeSeat: boolean };
 
 /** The times a pupil could take a seat in: published experts' and their own school's teachers', not begun, not full, not already theirs. */
 async function openFor(c: Child, now: Date, allowance: Allowance): Promise<OpenSlot[]> {
   const slots = await db.gigSlot.findMany({
-    where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: "TEACHER", teacherSchoolId: c.schoolId }], ...(await readerIsFixture(c.schoolId) ? {} : { provider: { isTestFixture: false } }) },
+    where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: { in: ["TEACHER", "ALUMNUS"] }, teacherSchoolId: c.schoolId }], ...(await readerIsFixture(c.schoolId) ? {} : { provider: { isTestFixture: false } }) },
     orderBy: { startsAt: "asc" },
     take: 300,
     select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, pricePaise: true, providerKind: true, providerUserId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true } } } } },
   });
   const mine = new Set((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE } }, select: { slotId: true } })).map((b) => b.slotId));
   return slots
-    .filter((s) => s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind === "TEACHER" || Boolean(s.provider.expertProfile?.publishedAt)) && s.providerUserId !== c.userId)
-    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: allowance[s.kind as SessionKind].left > 0 }));
+    .filter((s) => s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt)) && s.providerUserId !== c.userId)
+    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: allowance[s.kind as SessionKind].left > 0 }));
 }
 
 export type FamilyBooking = {
@@ -488,7 +492,7 @@ export type FamilyBooking = {
   startsAt: string;
   endsAt: string;
   providerName: string;
-  providerKind: "EXPERT" | "TEACHER";
+  providerKind: "EXPERT" | "TEACHER" | "ALUMNUS";
   purpose: string;
   status: BookingStatus;
   /** The provider's room, only while the seat is confirmed and the session is not long over. */
@@ -539,7 +543,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
           startsAt: b.slot.startsAt.toISOString(),
           endsAt: b.slot.endsAt.toISOString(),
           providerName: b.slot.provider.name,
-          providerKind: b.slot.providerKind as "EXPERT" | "TEACHER",
+          providerKind: b.slot.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS",
           purpose: b.purpose,
           status,
           meetingUrl: status === "CONFIRMED" && now.getTime() < b.slot.endsAt.getTime() + 2 * HOUR ? b.slot.meetingUrl : null,
@@ -561,7 +565,7 @@ export async function familySessions(ctx: ActiveContext, now: Date = new Date())
 }
 
 async function tellProvider(schoolId: string, slot: { providerUserId: string; providerKind: string; title: string }, titleKey: TranslationKey, vars: Record<string, string | number>, body?: string): Promise<void> {
-  await forSchool(schoolId, () => notify({ userId: slot.providerUserId, schoolId, kind: noteKind(slot.providerKind), titleKey, titleVars: { title: slot.title, ...vars }, body, url: slot.providerKind === "EXPERT" ? "/expert/sessions" : "/teacher/guidance" })).catch((error) => console.error("[gig-sessions] provider notice failed", error));
+  await forSchool(schoolId, () => notify({ userId: slot.providerUserId, schoolId, kind: noteKind(slot.providerKind), titleKey, titleVars: { title: slot.title, ...vars }, body, url: slot.providerKind === "EXPERT" ? "/expert/sessions" : slot.providerKind === "ALUMNUS" ? "/alumni/college" : "/teacher/guidance" })).catch((error) => console.error("[gig-sessions] provider notice failed", error));
 }
 /** The office is told when an outside adult is to meet one of its pupils. */
 async function tellOffice(c: Child, slot: { title: string; providerKind: string }, providerName: string): Promise<void> {
@@ -584,7 +588,7 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
   const purpose = input.purpose.trim().slice(0, 500);
   if (purpose.length < 10) return { ok: false, errorKey: "gigs.needPurpose" };
   const slot = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { id: true, kind: true, title: true, startsAt: true, cancelledAt: true, pricePaise: true, providerKind: true, providerUserId: true, teacherSchoolId: true, provider: { select: { name: true, expertProfile: { select: { publishedAt: true } } } } } });
-  const open = slot && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt));
+  const open = slot && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" || slot.providerKind === "ALUMNUS" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt));
   if (!slot || !open) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
   if (slot.startsAt <= now) return { ok: false, errorKey: "gigs.refuseStarted" };
   const settings = await gigSettings();
@@ -857,7 +861,7 @@ export async function releaseSeatPayments(now: Date = new Date()): Promise<{ exp
 /* The school's office                                                         */
 /* -------------------------------------------------------------------------- */
 
-export type SchoolBooking = { id: string; pupilName: string; kind: SessionKind; title: string; startsAt: string; providerName: string; providerKind: "EXPERT" | "TEACHER"; status: BookingStatus; purpose: string; /** Bought past the allowance; the amount is the family's and the expert's, not the office's. */ paid: boolean; canCancel: boolean };
+export type SchoolBooking = { id: string; pupilName: string; kind: SessionKind; title: string; startsAt: string; providerName: string; providerKind: "EXPERT" | "TEACHER" | "ALUMNUS"; status: BookingStatus; purpose: string; /** Bought past the allowance; the amount is the family's and the expert's, not the office's. */ paid: boolean; canCancel: boolean };
 
 /** The office reads every session of its pupils, without the meeting link, and whether its teachers may offer guidance. */
 export async function schoolSessions(ctx: ActiveContext, now: Date = new Date()): Promise<{ guidanceOn: boolean; canSwitch: boolean; timeZone: string; bookings: SchoolBooking[] }> {
@@ -873,7 +877,7 @@ export async function schoolSessions(ctx: ActiveContext, now: Date = new Date())
     guidanceOn: school.teacherGuidanceOn,
     canSwitch: ctx.role === "ADMIN" || ctx.role === "PRINCIPAL",
     timeZone: school.timezone,
-    bookings: rows.map((b) => ({ id: b.id, pupilName: b.student.user.preferredName ?? b.student.user.name, kind: b.kind as SessionKind, title: b.slot.title, startsAt: b.slot.startsAt.toISOString(), providerName: b.slot.provider.name, providerKind: b.slot.providerKind as "EXPERT" | "TEACHER", status: b.status as BookingStatus, purpose: b.purpose, paid: b.paid, canCancel: LIVE.includes(b.status as BookingStatus) && b.slot.startsAt > now })),
+    bookings: rows.map((b) => ({ id: b.id, pupilName: b.student.user.preferredName ?? b.student.user.name, kind: b.kind as SessionKind, title: b.slot.title, startsAt: b.slot.startsAt.toISOString(), providerName: b.slot.provider.name, providerKind: b.slot.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", status: b.status as BookingStatus, purpose: b.purpose, paid: b.paid, canCancel: LIVE.includes(b.status as BookingStatus) && b.slot.startsAt > now })),
   };
 }
 

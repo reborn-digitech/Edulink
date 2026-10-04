@@ -37,6 +37,10 @@ async function resolveContextForUser(
   preferredRole?: string | null,
   preferredSchoolId?: string | null,
 ): Promise<{ role: Role | null; schoolId: string | null; redirectTo: string }> {
+  if (preferredRole === "RECRUITER") {
+    const profile = await db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } });
+    if (profile && !profile.disabledAt) return { role: "RECRUITER", schoolId: null, redirectTo: ROLE_HOME.RECRUITER };
+  }
   if (preferredRole && preferredRole !== "PARENT" && preferredSchoolId) {
     const membership = await db.membership.findFirst({
       where: {
@@ -86,9 +90,12 @@ async function resolveContextForUser(
     where: { userId },
     select: { id: true },
   });
+  // A recruiter is the same shape (4 Oct 2026): no Membership, no Guardianship, its own home. A disabled one has no way in.
+  const recruiterProfile = await db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } });
+  const isRecruiter = recruiterProfile !== null && recruiterProfile.disabledAt === null;
 
   const total =
-    memberships.length + (guardianships > 0 ? 1 : 0) + (expertProfile ? 1 : 0);
+    memberships.length + (guardianships > 0 ? 1 : 0) + (expertProfile ? 1 : 0) + (isRecruiter ? 1 : 0);
 
   // More than one way in? Let them choose rather than guessing wrong.
   if (total > 1) return { role: null, schoolId: null, redirectTo: "/switch" };
@@ -105,6 +112,7 @@ async function resolveContextForUser(
   // No school on the session, deliberately: an expert's schools are derived from
   // their confirmed bookings on every request, never carried on the cookie.
   if (expertProfile) return { role: "EXPERT", schoolId: null, redirectTo: "/expert" };
+  if (isRecruiter) return { role: "RECRUITER", schoolId: null, redirectTo: ROLE_HOME.RECRUITER };
 
   // Runs the server, teaches nowhere. Checked LAST, after every school-shaped
   // way in, because somebody who is both an operator and a teacher should land

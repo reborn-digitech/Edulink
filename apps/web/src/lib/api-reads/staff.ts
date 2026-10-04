@@ -35,7 +35,7 @@ import { classWeek, teacherWeek, timetableClasses, weekStartKey } from "@/lib/ti
 import { normaliseLanguage } from "@/lib/quiz";
 import { assignmentsForClass, classGapAlerts, classPracticeHeatmap, classWeekly } from "@/lib/practice-insights";
 import { teacherSlots } from "@/lib/meetings";
-import { myLeave } from "@/lib/leave";
+import { COVER_ROLES, myLeave } from "@/lib/leave";
 import { leaveBalanceFor, staffRecordFor } from "@/lib/staff-records";
 import { schoolReviewDashboard, teacherReviewAggregate } from "@/lib/reviews";
 import { mayEditOwnBirthdate, setOwnBirthdate } from "@/lib/birthdate";
@@ -572,7 +572,7 @@ export async function staffLeave(ctx: Staff): Promise<StaffLeave> {
   const [requests, staff, balance] = await Promise.all([
     myLeave(ctx),
     db.membership.findMany({
-      where: { schoolId: ctx.schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null, id: { not: ctx.membershipId } },
+      where: { schoolId: ctx.schoolId, role: { in: [...COVER_ROLES] }, status: "ACTIVE", leftAt: null, id: { not: ctx.membershipId } },
       select: { id: true, user: { select: { name: true, preferredName: true } } },
       orderBy: { joinedAt: "asc" },
     }),

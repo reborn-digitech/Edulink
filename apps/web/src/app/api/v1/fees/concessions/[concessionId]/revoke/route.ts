@@ -6,7 +6,7 @@ import { apiFailure, ok } from "@/lib/api-v1";
 /** POST /api/v1/fees/concessions/{concessionId}/revoke */
 export async function POST(_request: Request, { params }: { params: Promise<{ concessionId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { concessionId } = await params;
     await revokeConcession(ctx, concessionId);
     return ok(feeOkSchema.parse({ ok: true }));

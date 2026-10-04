@@ -8,6 +8,7 @@ export { formatBytes } from "./json";
 import type { ActiveContext } from "./session";
 import { applicationOwningFile } from "./admissions";
 import { kycOwningFile } from "./expert-kyc";
+import { parentMaySee } from "./student-consent";
 
 /**
  * Per-file read authorisation.
@@ -34,7 +35,7 @@ import { kycOwningFile } from "./expert-kyc";
 
 export type FileAccess =
   | { allowed: true; kind: "logo"; public: true }
-  | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase"; public: false }
+  | { allowed: true; kind: "assignment" | "submission" | "post" | "application" | "kyc" | "purchase" | "academics" | "scholarship" | "placement" | "iqac"; public: false }
   | { allowed: false; reason: "not-found" | "unauthenticated" | "forbidden" };
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
@@ -130,11 +131,102 @@ export async function authorizeFileRead(
     return DENY;
   }
 
+  // ---- 2c-college. a college admission's scrutiny document (the ADMISSIONS
+  // module, 4 Oct 2026): the office and the principal of that college. A
+  // scholarship claim's document: the student who added it, and the
+  // college's office, accounts desk and principal.
+  const collegeApp = await db.collegeApplication.findFirst({ where: { documentsJson: { contains: ref } }, select: { schoolId: true } });
+  if (collegeApp) {
+    if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === collegeApp.schoolId) return { allowed: true, kind: "application", public: false };
+    return DENY;
+  }
+  const claim = await db.scholarshipClaim.findFirst({ where: { documentsJson: { contains: ref } }, select: { schoolId: true, student: { select: { userId: true } } } });
+  if (claim) {
+    if (claim.student.userId === user.id) return { allowed: true, kind: "scholarship", public: false };
+    if ((role === "ADMIN" || role === "PRINCIPAL" || role === "ACCOUNTS") && schoolId === claim.schoolId) return { allowed: true, kind: "scholarship", public: false };
+    return DENY;
+  }
+
   // ---- 2d. a purchase record's scanned bill (the INVENTORY module): the
   // office and the head of the school whose bill it is, nobody else.
   const bill = await db.purchaseRecord.findFirst({ where: { billFileId: fileId }, select: { schoolId: true } });
   if (bill) {
     if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === bill.schoolId) return { allowed: true, kind: "purchase", public: false };
+    return DENY;
+  }
+
+  // ---- 2e. the college's academics (4 Oct 2026). A condonation's document:
+  // the student who asked, the HOD of their programme's department, the
+  // principal and the office. A course file's resource or question paper:
+  // its faculty member and their department, the office and the head, and
+  // (a resource, never a question paper or model answer) a student
+  // registered on the offering.
+  const condonation = await db.attendanceCondonation.findFirst({ where: { documentFileId: fileId }, select: { schoolId: true, student: { select: { userId: true, academicSeat: { select: { programme: { select: { department: { select: { hodMembershipId: true } } } } } } } } } });
+  if (condonation) {
+    if (condonation.student.userId === user.id) return { allowed: true, kind: "academics", public: false };
+    if (schoolId !== condonation.schoolId) return DENY;
+    if (role === "ADMIN" || role === "PRINCIPAL") return { allowed: true, kind: "academics", public: false };
+    if (role === "HOD" && membershipId && condonation.student.academicSeat?.programme.department.hodMembershipId === membershipId) return { allowed: true, kind: "academics", public: false };
+    return DENY;
+  }
+  const courseItem = await db.courseFileItem.findFirst({ where: { fileId }, select: { schoolId: true, kind: true, courseFile: { select: { offeringId: true, offering: { select: { facultyMembershipId: true, course: { select: { scheme: { select: { programme: { select: { departmentId: true } } } } } } } } } } } });
+  if (courseItem) {
+    if (schoolId !== courseItem.schoolId || !membershipId) return DENY;
+    if (role === "ADMIN" || role === "PRINCIPAL") return { allowed: true, kind: "academics", public: false };
+    const offering = courseItem.courseFile.offering;
+    if ((role === "FACULTY" || role === "HOD") && offering.facultyMembershipId === membershipId) return { allowed: true, kind: "academics", public: false };
+    if (role === "FACULTY" || role === "HOD") {
+      const dept = offering.course.scheme.programme.departmentId;
+      const member = await db.departmentFaculty.findFirst({ where: { membershipId, departmentId: dept }, select: { id: true } });
+      const head = role === "HOD" ? await db.department.findFirst({ where: { id: dept, hodMembershipId: membershipId }, select: { id: true } }) : null;
+      if (member || head) return { allowed: true, kind: "academics", public: false };
+    }
+    if (role === "STUDENT" && !["QUESTION_PAPER", "MODEL_ANSWER"].includes(courseItem.kind)) {
+      const registered = await db.courseRegistration.findFirst({ where: { offeringId: courseItem.courseFile.offeringId, studentMembershipId: membershipId, status: "REGISTERED" }, select: { id: true } });
+      if (registered) return { allowed: true, kind: "academics", public: false };
+    }
+    return DENY;
+  }
+
+  // ---- 2f. placement (4 Oct 2026). An offer letter: the student it is for,
+  // a guardian who may see their PLACEMENT (always, for a minor), the host
+  // college's cell (the TPO, the office, the principal) and a recruiter bound
+  // to the drive's company while the drive is live. An internship's report or
+  // a parent's declaration: the student, such a guardian, the supervising
+  // faculty member, and the college's TPO, HOD, office and principal.
+  const letter = await db.offer.findFirst({ where: { letterFileId: fileId }, select: { schoolId: true, studentMembershipId: true, student: { select: { userId: true } }, drive: { select: { companyId: true, status: true } } } });
+  if (letter) {
+    if (letter.student.userId === user.id) return { allowed: true, kind: "placement", public: false };
+    if ((role === "TPO" || role === "ADMIN" || role === "PRINCIPAL") && schoolId === letter.schoolId) return { allowed: true, kind: "placement", public: false };
+    if (role === "RECRUITER" && ["OPEN", "SHORTLISTING", "ROUNDS", "OFFERS"].includes(letter.drive.status)) {
+      const bound = await db.companyRecruiter.findFirst({ where: { companyId: letter.drive.companyId, userId: user.id, removedAt: null }, select: { id: true } });
+      if (bound) return { allowed: true, kind: "placement", public: false };
+    }
+    if (await placementGuardian(user.id, letter.studentMembershipId)) return { allowed: true, kind: "placement", public: false };
+    return DENY;
+  }
+  const internship = await db.internship.findFirst({ where: { OR: [{ reportFileId: fileId }, { parentDeclarationFileId: fileId }] }, select: { schoolId: true, studentMembershipId: true, facultyMembershipId: true, student: { select: { userId: true } } } });
+  if (internship) {
+    if (internship.student.userId === user.id) return { allowed: true, kind: "placement", public: false };
+    if (schoolId === internship.schoolId && (role === "TPO" || role === "HOD" || role === "ADMIN" || role === "PRINCIPAL")) return { allowed: true, kind: "placement", public: false };
+    if (schoolId === internship.schoolId && role === "FACULTY" && membershipId && internship.facultyMembershipId === membershipId) return { allowed: true, kind: "placement", public: false };
+    if (await placementGuardian(user.id, internship.studentMembershipId)) return { allowed: true, kind: "placement", public: false };
+    return DENY;
+  }
+
+  // ---- 2g. the IQAC's documents (4 Oct 2026): evidence, minutes, a research
+  // item's paper, an activity's report, a grievance's attachment, a portal's
+  // acknowledgement — every file the IQAC module registered (IqacFile). The
+  // college's IQAC desk (IQAC, the office, the principal) and the person who
+  // uploaded it, and an HOD for research and activity papers; nobody else,
+  // so a student's grievance attachment never reaches a teacher.
+  const iqacFile = await db.iqacFile.findUnique({ where: { fileId }, select: { schoolId: true, uploadedByUserId: true, purpose: true } });
+  if (iqacFile) {
+    if (iqacFile.uploadedByUserId === user.id) return { allowed: true, kind: "iqac", public: false };
+    // A research paper or an activity's report is the department's record too: its HOD reads it.
+    if (role === "HOD" && schoolId === iqacFile.schoolId && (iqacFile.purpose === "RESEARCH" || iqacFile.purpose === "ACTIVITY")) return { allowed: true, kind: "iqac", public: false };
+    // A grievance's attachment is the office's and the head's alone, as its words are.
+    if ((role === "ADMIN" || role === "PRINCIPAL" || (role === "IQAC" && iqacFile.purpose !== "GRIEVANCE")) && schoolId === iqacFile.schoolId) return { allowed: true, kind: "iqac", public: false };
     return DENY;
   }
 
@@ -329,4 +421,10 @@ export function readMedia(raw: string | null | undefined): MediaItem[] {
   return readJsonArray<MediaItem>(raw).filter(
     (m) => typeof m?.fileId === "string" && m.fileId.length > 0,
   );
+}
+
+/** An active guardian of the student who may see their placement (placement, 4 Oct 2026). */
+async function placementGuardian(userId: string, studentMembershipId: string): Promise<boolean> {
+  const link = await db.guardianship.findFirst({ where: { parentUserId: userId, studentMembershipId, status: "ACTIVE" }, select: { id: true } });
+  return link !== null && (await parentMaySee(studentMembershipId, "PLACEMENT"));
 }

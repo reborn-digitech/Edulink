@@ -7,7 +7,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** GET /api/v1/fees/structures — the year's structures with totals and pupil counts. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const parsed = feeStructuresQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(feeStructuresSchema.parse(await feesStructuresRead(ctx, parsed.data)));
@@ -19,7 +19,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/fees/structures — a draft structure: instalments, each with head lines in paise. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = feeStructureBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const { gradeLevel, ...rest } = parsed.data;

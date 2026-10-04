@@ -9,7 +9,7 @@ import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { readJson, readJsonArray, type MediaItem } from "@/lib/json";
 import { NOTIFICATION_KINDS, POST_CATEGORIES, type NotificationKind, type PostCategory, type PostStatus, type Role } from "@/lib/constants";
 import { ackReport, getPost, heldCommentCount, heldComments, listFeed, parentBulletinSchools, pendingCount, type AckGroup } from "@/lib/bulletin";
-import { listGlobalFeed } from "@/lib/global-feed";
+import { globalReader, listGlobalFeed } from "@/lib/global-feed";
 import { conversationSchools, listConversations, peopleToMessage } from "@/lib/conversations";
 import { listThreads } from "@/lib/remarks";
 import { getCompetition, leaderboard, listCompetitions, pendingConsents } from "@/lib/competitions";
@@ -132,8 +132,8 @@ export async function readGlobalFeed(
     const hasChild = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, select: { id: true } });
     if (!hasChild) throw new AccessError("access.wrongRoleForThisAction");
   } else {
-    const allowed: Role[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"];
-    if (!ctx.role || !allowed.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+    // Every role of a school or a college reads it; an expert or a recruiter does not (global-feed.ts globalReader).
+    if (!globalReader(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
     if (!ctx.schoolId || !ctx.membershipId) throw new AccessError("access.noActiveSchoolSelected");
   }
   const posts = await listGlobalFeed(ctx, { category: opts.category, q: opts.q, tag: opts.tag });

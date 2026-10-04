@@ -16,7 +16,7 @@ export async function GET() {
 /** POST /api/v1/library/reservations — A place in a title's queue: for oneself, a child, or (the desk) a member. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN");
+    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "FACULTY", "HOD");
     const parsed = libraryReservationCreateSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const b = parsed.data;

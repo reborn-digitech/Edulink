@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { INSTITUTION_KINDS } from "@edulink/contracts";
 import {
   ATTENDANCE_STATUSES,
   GUARDIAN_RELATIONS,
@@ -84,6 +85,8 @@ export const adminAccountSchema = z.object({
 
 export const registerSchoolSchema = z.object({
   school: schoolDetailsSchema,
+  /** What kind of institution is registering (4 Oct 2026): a school when left out. */
+  kind: z.enum(INSTITUTION_KINDS).default("SCHOOL"),
   admin: adminAccountSchema,
   acceptedTerms: z.literal(true, {
     // ⚠ A KEY, not a sentence — the consuming action translates it.

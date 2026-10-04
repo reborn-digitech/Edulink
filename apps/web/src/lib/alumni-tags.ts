@@ -21,7 +21,7 @@ export function batchYearOf(joinedAt: Date): number {
 export type AuthorTag = { role: Role; batch: number | null };
 
 /** When a person holds more than one live row at a school, the one their words speak from. */
-const RANK: Role[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "LIBRARIAN", "WARDEN", "DRIVER", "ALUMNUS"];
+const RANK: Role[] = ["ADMIN", "PRINCIPAL", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "TEACHER", "FACULTY", "STUDENT", "LIBRARIAN", "WARDEN", "DRIVER", "ALUMNUS"];
 
 /**
  * Each user's tag at `schoolId`: their live membership there, the highest of

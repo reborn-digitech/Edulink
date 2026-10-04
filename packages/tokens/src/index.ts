@@ -7,11 +7,13 @@
  * and a test in the web app reads globals.css and refuses a drift, so the two
  * cannot disagree for longer than one test run. Colours are hex; sizes are in
  * points (the web's rem × 16); the role accents are the eight families the
- * web keys on data-role, in both themes (the last four, the module roles,
- * since 3 October 2026).
+ * web keys on data-role, in both themes (four more, the module roles,
+ * since 3 October 2026, and seven, the college's roles, since 4 October).
  */
 export type Theme = "light" | "dark";
-export type RoleFamily = "teacher" | "student" | "parent" | "admin" | "driver" | "librarian" | "warden" | "alumnus";
+export type RoleFamily = "teacher" | "student" | "parent" | "admin" | "driver" | "librarian" | "warden" | "alumnus"
+  // The college's seven roles (4 Oct 2026).
+  | "faculty" | "hod" | "exam_controller" | "iqac" | "tpo" | "accounts" | "recruiter";
 
 export type Palette = {
   bg: string;
@@ -76,6 +78,13 @@ export const accents: Record<Theme, Record<RoleFamily, Accent>> = {
     librarian: { accent: "#0f766e", accentStrong: "#115e59", accentSoft: "#f0fdfa", accentRing: "#2dd4bf", accentFg: "#ffffff" },
     warden: { accent: "#4338ca", accentStrong: "#3730a3", accentSoft: "#eef2ff", accentRing: "#818cf8", accentFg: "#ffffff" },
     alumnus: { accent: "#a16207", accentStrong: "#854d0e", accentSoft: "#fefce8", accentRing: "#facc15", accentFg: "#ffffff" },
+    faculty: { accent: "#0369a1", accentStrong: "#075985", accentSoft: "#f0f9ff", accentRing: "#38bdf8", accentFg: "#ffffff" },
+    hod: { accent: "#be123c", accentStrong: "#9f1239", accentSoft: "#fff1f2", accentRing: "#fb7185", accentFg: "#ffffff" },
+    exam_controller: { accent: "#b91c1c", accentStrong: "#991b1b", accentSoft: "#fef2f2", accentRing: "#f87171", accentFg: "#ffffff" },
+    iqac: { accent: "#a21caf", accentStrong: "#86198f", accentSoft: "#fdf4ff", accentRing: "#e879f9", accentFg: "#ffffff" },
+    tpo: { accent: "#4d7c0f", accentStrong: "#3f6212", accentSoft: "#f7fee7", accentRing: "#a3e635", accentFg: "#ffffff" },
+    accounts: { accent: "#0e7490", accentStrong: "#155e75", accentSoft: "#ecfeff", accentRing: "#22d3ee", accentFg: "#ffffff" },
+    recruiter: { accent: "#6d28d9", accentStrong: "#5b21b6", accentSoft: "#f5f3ff", accentRing: "#a78bfa", accentFg: "#ffffff" },
   },
   dark: {
     teacher: { accent: "#60a5fa", accentStrong: "#93c5fd", accentSoft: "#10203a", accentRing: "#3b82f6", accentFg: "#06121f" },
@@ -86,6 +95,13 @@ export const accents: Record<Theme, Record<RoleFamily, Accent>> = {
     librarian: { accent: "#2dd4bf", accentStrong: "#5eead4", accentSoft: "#0b2826", accentRing: "#14b8a6", accentFg: "#031513" },
     warden: { accent: "#818cf8", accentStrong: "#a5b4fc", accentSoft: "#1a1c3d", accentRing: "#6366f1", accentFg: "#0c0d24" },
     alumnus: { accent: "#facc15", accentStrong: "#fde047", accentSoft: "#2a2306", accentRing: "#eab308", accentFg: "#1a1500" },
+    faculty: { accent: "#38bdf8", accentStrong: "#7dd3fc", accentSoft: "#082032", accentRing: "#0ea5e9", accentFg: "#03131f" },
+    hod: { accent: "#fb7185", accentStrong: "#fda4af", accentSoft: "#2d0a12", accentRing: "#f43f5e", accentFg: "#1f0309" },
+    exam_controller: { accent: "#f87171", accentStrong: "#fca5a5", accentSoft: "#2c0b0b", accentRing: "#ef4444", accentFg: "#1f0404" },
+    iqac: { accent: "#e879f9", accentStrong: "#f0abfc", accentSoft: "#2a0a2e", accentRing: "#d946ef", accentFg: "#1c041f" },
+    tpo: { accent: "#a3e635", accentStrong: "#bef264", accentSoft: "#1a2606", accentRing: "#84cc16", accentFg: "#0f1702" },
+    accounts: { accent: "#22d3ee", accentStrong: "#67e8f9", accentSoft: "#072a30", accentRing: "#06b6d4", accentFg: "#021618" },
+    recruiter: { accent: "#a78bfa", accentStrong: "#c4b5fd", accentSoft: "#1e1238", accentRing: "#8b5cf6", accentFg: "#0f0722" },
   },
 };
 
@@ -139,6 +155,20 @@ export function familyFor(role: string | null | undefined): RoleFamily {
       return "warden";
     case "ALUMNUS":
       return "alumnus";
+    case "FACULTY":
+      return "faculty";
+    case "HOD":
+      return "hod";
+    case "EXAM_CONTROLLER":
+      return "exam_controller";
+    case "IQAC":
+      return "iqac";
+    case "TPO":
+      return "tpo";
+    case "ACCOUNTS":
+      return "accounts";
+    case "RECRUITER":
+      return "recruiter";
     default:
       return "teacher";
   }

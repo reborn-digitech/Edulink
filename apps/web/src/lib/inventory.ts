@@ -61,8 +61,12 @@ type Office = ActiveContext & { schoolId: string; membershipId: string; role: Ro
 type Tx = typeof db;
 
 /** The office: the admin writes, the head reads. The module must be on. */
+/** The office, and at a college the accounts desk: who writes here. */
+const keeps = (role: string | null) => role === "ADMIN" || role === "ACCOUNTS";
+
 async function office(ctx: ActiveContext, write: boolean): Promise<Office> {
-  const roles: Role[] = write ? ["ADMIN"] : ["ADMIN", "PRINCIPAL"];
+  // At a college the ACCOUNTS desk keeps this with the office (4 Oct 2026); the principal reads.
+  const roles: Role[] = write ? ["ADMIN", "ACCOUNTS"] : ["ADMIN", "PRINCIPAL", "ACCOUNTS"];
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "INVENTORY");
   return ctx as Office;
@@ -130,7 +134,7 @@ export async function inventorySetup(ctx: ActiveContext): Promise<InventorySetup
     vendors,
     locations,
     staff,
-    canEdit: caller.role === "ADMIN",
+    canEdit: keeps(caller.role),
   };
 }
 
@@ -194,7 +198,7 @@ function itemView(r: ItemRow): InventoryItemView {
 export async function listItems(ctx: ActiveContext, opts: { archived?: boolean } = {}): Promise<{ items: InventoryItemView[]; canEdit: boolean }> {
   const caller = await office(ctx, false);
   const rows = await db.inventoryItem.findMany({ where: { schoolId: caller.schoolId, ...(opts.archived ? {} : { archivedAt: null }) }, orderBy: [{ name: "asc" }], select: ITEM_SELECT });
-  return { items: rows.map(itemView), canEdit: caller.role === "ADMIN" };
+  return { items: rows.map(itemView), canEdit: keeps(caller.role) };
 }
 
 export async function saveItem(ctx: ActiveContext, input: InventoryItemSave): Promise<InventoryItemView> {
@@ -404,7 +408,7 @@ async function purchaseViews(rows: { id: string; vendorId: string | null; vendor
 export async function listPurchases(ctx: ActiveContext): Promise<{ purchases: PurchaseRecordView[]; canEdit: boolean }> {
   const caller = await office(ctx, false);
   const rows = await db.purchaseRecord.findMany({ where: { schoolId: caller.schoolId }, orderBy: [{ dateKey: "desc" }, { createdAt: "desc" }], take: 300 });
-  return { purchases: await purchaseViews(rows), canEdit: caller.role === "ADMIN" };
+  return { purchases: await purchaseViews(rows), canEdit: keeps(caller.role) };
 }
 
 /**
@@ -537,7 +541,7 @@ export async function listAssets(ctx: ActiveContext, filter: { status?: AssetSta
   const rows = await db.asset.findMany({ where: { schoolId: caller.schoolId, ...(filter.status ? { status: filter.status } : {}), ...(filter.location ? { location: filter.location } : {}) }, orderBy: { tagNumber: "asc" }, take: 2000, select: ASSET_SELECT });
   const assets = rows.map((r) => assetView(r, asOf, tz));
   const live = assets.filter((a) => a.status !== "DISPOSED");
-  return { assets, asOf, costPaise: live.reduce((a, x) => a + x.costPaise, 0), bookValuePaise: live.reduce((a, x) => a + x.bookValuePaise, 0), canEdit: caller.role === "ADMIN" };
+  return { assets, asOf, costPaise: live.reduce((a, x) => a + x.costPaise, 0), bookValuePaise: live.reduce((a, x) => a + x.bookValuePaise, 0), canEdit: keeps(caller.role) };
 }
 
 async function assetByTag(schoolId: string, tag: string): Promise<AssetRow> {
@@ -555,7 +559,7 @@ export async function assetDetail(ctx: ActiveContext, tag: string): Promise<{ as
   return {
     asset: assetView(row, todayKey(tz), tz),
     events: events.map((e) => ({ id: e.id, kind: e.kind as "CREATED", note: e.note, byName: e.byUserId ? (users.get(e.byUserId) ?? "") : "", at: e.at.toISOString() })),
-    canEdit: caller.role === "ADMIN",
+    canEdit: keeps(caller.role),
   };
 }
 
@@ -698,7 +702,7 @@ export async function listRequests(ctx: ActiveContext): Promise<{ requests: Inve
   const rows = await db.inventoryRequest.findMany({ where: { schoolId: caller.schoolId }, orderBy: [{ status: "desc" }, { createdAt: "desc" }], take: 300, select: REQUEST_SELECT });
   // Waiting ones first, then the rest newest first.
   const waiting = rows.filter((r) => r.status === "PENDING");
-  return { requests: [...waiting, ...rows.filter((r) => r.status !== "PENDING")].map(requestView), canEdit: caller.role === "ADMIN" };
+  return { requests: [...waiting, ...rows.filter((r) => r.status !== "PENDING")].map(requestView), canEdit: keeps(caller.role) };
 }
 
 export async function askForItem(ctx: ActiveContext, input: { itemCode: string | null; itemText: string; quantity: number; note: string }): Promise<InventoryRequestView> {
@@ -764,7 +768,7 @@ export async function inventorySummary(ctx: ActiveContext): Promise<InventorySum
     bookValuePaise: live.reduce((a, x) => a + x.bookValuePaise, 0),
     recentMovements: await movementViews(moves),
     openRequests: requests.map(requestView),
-    canEdit: caller.role === "ADMIN",
+    canEdit: keeps(caller.role),
   };
 }
 

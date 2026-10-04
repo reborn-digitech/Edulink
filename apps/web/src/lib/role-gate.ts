@@ -2,7 +2,7 @@ import "server-only";
 import { ENDPOINTS } from "./api-catalog";
 import { permits, type Endpoint } from "./api-catalog/types";
 import { MODULE_OF_ROLE } from "@edulink/contracts";
-import { isModuleRole, ROLE_HOME, type ModuleRole, type Role } from "./constants";
+import { isLimitedRole, ROLE_HOME, type LimitedRole, type Role } from "./constants";
 import { NAV, isActive } from "./nav";
 import { AccessError, ModuleOffError } from "./access-error";
 import { assertModuleOn, enabledModules } from "./modules";
@@ -39,6 +39,13 @@ import { assertModuleOn, enabledModules } from "./modules";
  * the person's own doors (PERSON_DOORS) — it still belongs to the school,
  * and its home says the module is off.
  *
+ * THE COLLEGE'S SEVEN (4 October 2026) are behind the same two rules: the six
+ * college staff roles (FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS) and
+ * the RECRUITER are LIMITED_ROLES with the four module roles, and pass only
+ * what names them. Their own module is MODULE_OF_ROLE's (FACULTY and HOD
+ * ACADEMICS, EXAM_CONTROLLER EXAMS, IQAC IQAC, TPO PLACEMENT); ACCOUNTS and
+ * RECRUITER hang on none, so nothing of theirs is closed by a switch.
+ *
  * The four roles that existed before are not checked against `access` here:
  * their handlers do that and the API sweep proves it, and this file is not
  * the place to change what they are answered.
@@ -74,10 +81,10 @@ export function endpointFor(method: string, path: string, catalog: readonly Endp
  * a pupil's record, sign-in — are the person's own and are not gated here.
  */
 export const APP_SEGMENTS = [
-  "admin", "alumni", "archive", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver",
-  "enquiries", "exams", "expert", "experts", "explore", "hostel", "incidents", "joins", "library", "mentoring",
-  "notifications", "parent", "people", "principal", "remarks", "report-cards", "reports", "reviews", "sessions",
-  "student", "teacher", "timetable", "vacancies",
+  "accounts", "admin", "alumni", "archive", "attachments", "attendance", "bulletin", "certificates", "competitions", "driver",
+  "enquiries", "exam-cell", "exams", "expert", "experts", "explore", "faculty", "hod", "hostel", "incidents", "iqac", "joins",
+  "library", "mentoring", "notifications", "parent", "people", "placement", "principal", "recruiter", "remarks",
+  "report-cards", "reports", "reviews", "sessions", "student", "teacher", "timetable", "vacancies",
 ] as const;
 
 /** Pages every module role may open besides its home and its NAV: the notices. */
@@ -90,9 +97,10 @@ const MODULE_ROLE_PAGES = ["/notifications"];
 const PERSON_DOORS = ["/api/v1/me", "/api/v1/account", "/api/v1/auth/", "/api/v1/shared/notifications", "/api/v1/events", "/api/v1/shared/inbox"];
 const isPersonDoor = (path: string) => PERSON_DOORS.some((p) => path === p || path.startsWith(p.endsWith("/") ? p : `${p}/`));
 
-/** Whether the school on the session has this module role's own module on. */
-async function ownModuleOn(role: ModuleRole, schoolId: string | null): Promise<boolean> {
-  return (await enabledModules(schoolId)).includes(MODULE_OF_ROLE[role]);
+/** Whether the school on the session has this limited role's own module on; a role that hangs on no module (ACCOUNTS, RECRUITER) always has. */
+async function ownModuleOn(role: LimitedRole, schoolId: string | null): Promise<boolean> {
+  const own = MODULE_OF_ROLE[role];
+  return !own || (await enabledModules(schoolId)).includes(own);
 }
 
 /**
@@ -106,7 +114,10 @@ export function modulePagePermitted(role: Role, path: string, modulesOn: readonl
   const home = ROLE_HOME[role];
   if (path === home || path.startsWith(`${home}/`)) return true;
   if (MODULE_ROLE_PAGES.some((p) => path === p || path.startsWith(`${p}/`))) return true;
-  if (isModuleRole(role) && !modulesOn.includes(MODULE_OF_ROLE[role])) return false;
+  if (isLimitedRole(role)) {
+    const own = MODULE_OF_ROLE[role];
+    if (own && !modulesOn.includes(own)) return false;
+  }
   return NAV[role].some((item) => (!item.module || modulesOn.includes(item.module)) && isActive(path, item));
 }
 
@@ -122,16 +133,17 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
   const path = route.slice(space + 1);
   if (path.startsWith("/api/v1/")) {
     // Nothing to look up for the older roles while no door names a module.
-    if (!isModuleRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module)) return "pass";
+    if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module)) return "pass";
     const e = endpointFor(method, path, catalog);
-    if (isModuleRole(ctx.role)) {
+    if (isLimitedRole(ctx.role)) {
       if (!e || !permits(e, ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-      if (!isPersonDoor(path) && !(await ownModuleOn(ctx.role, ctx.schoolId))) throw new ModuleOffError(MODULE_OF_ROLE[ctx.role]);
+      const own = MODULE_OF_ROLE[ctx.role];
+      if (own && !isPersonDoor(path) && !(await ownModuleOn(ctx.role, ctx.schoolId))) throw new ModuleOffError(own);
     }
     if (e?.module && ctx.schoolId) await assertModuleOn(ctx.schoolId, e.module);
     return "pass";
   }
   if (path.startsWith("/api/")) return "pass";
-  if (isModuleRole(ctx.role) && !modulePagePermitted(ctx.role, path, await enabledModules(ctx.schoolId))) return "no-context";
+  if (isLimitedRole(ctx.role) && !modulePagePermitted(ctx.role, path, await enabledModules(ctx.schoolId))) return "no-context";
   return "pass";
 }

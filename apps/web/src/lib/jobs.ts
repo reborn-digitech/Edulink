@@ -145,11 +145,14 @@ export const JOBS: Record<JobName, JobSpec> = {
       // job of its own, which would cost a name on the jobs page and a line
       // in three dictionaries for one daily question.
       const subscriptions = await remindSubscriptions();
+      // The regulators' windows opening within a fortnight, told to each college's IQAC and office once per window (lib/operator-college.ts), here for the same reason.
+      const { remindRegulatorDeadlines } = await import("./operator-college");
+      const regulators = await remindRegulatorDeadlines();
       const perSchool: Record<string, Record<string, number>> = {};
       for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
       }
-      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims, subscriptionsDue: subscriptions.due, subscriptionsReminded: subscriptions.reminded }, perSchool };
+      return { summary: { invitesExpired: invites.expired, adults: minors.adults, minors: minors.minors, joinsExpired: requests.joins, claimsExpired: requests.claims, subscriptionsDue: subscriptions.due, subscriptionsReminded: subscriptions.reminded, regulatorWindows: regulators.windows, regulatorReminded: regulators.reminded }, perSchool };
     },
   },
   "digest:weekly": {

@@ -8,13 +8,15 @@ import { notifyGuardians } from "./notify";
 import { stayAttendance } from "./school-record";
 import { markRequestIssued, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
-import { allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, placeholderKeys, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
+import { allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, placeholderKeys, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { normaliseLocale } from "@edulink/i18n";
 import { paperSignatures, signOnIssue } from "./signatures";
 import { translator, type TranslationKey } from "./i18n/dictionary";
+import { collegeFacts } from "./college-records";
+import { isCollegeKind } from "./institution";
 
 /**
  * Certificates: the office designs a template once and issues it many times.
@@ -123,7 +125,9 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
   const sample = samplePupil(school, locale);
   // The dictionary's keys cannot hold a dot, so "pupil.name" is looked up as "pupil_name".
   const placeholders = PLACEHOLDER_KEYS.map((key) => ({ key, label: words(`certificatePlaceholders.${key.replace(".", "_")}`), sample: sample[key] ?? BLANK }));
-  return { templates: rows.map(templateView), presets: allPresets(), placeholders };
+  // A college is offered its own presets beside the school's (4 Oct 2026).
+  const college = isCollegeKind((await db.school.findUnique({ where: { id: caller.schoolId }, select: { kind: true } }))?.kind ?? "SCHOOL");
+  return { templates: rows.map(templateView), presets: college ? [...allPresets(), ...allCollegePresets()] : allPresets(), placeholders };
 }
 
 /** Create, or replace by id. The name is unique per school; a template issued from may still be reworded, because issued documents keep their own wording. */
@@ -213,6 +217,7 @@ async function factsFor(schoolId: string, studentMembershipId: string, issue: Pu
     gradeLevel: klass?.gradeLevel ?? pupil.gradeLevel ?? null,
     school: { name: school.name, code: school.code, address: [school.addressLine, school.city, school.region, school.postalCode].filter(Boolean).join(", ") || null },
     yearName: year?.name ?? null,
+    college: await collegeFacts(schoolId, studentMembershipId),
     leaving: leftOnKey || departure || scheduled
       ? {
           leftOnKey,
@@ -472,6 +477,9 @@ const KIND_LABEL_KEY: Record<CertificateKind, TranslationKey> = {
   CHARACTER: "certificates.kindCharacter",
   STUDY: "certificates.kindStudy",
   CUSTOM: "certificates.kindCustom",
+  MIGRATION: "certificateDefaults.titleMigration",
+  PROVISIONAL: "certificateDefaults.titleProvisional",
+  COURSE_COMPLETION: "certificateDefaults.titleCourseCompletion",
 };
 
 function kindLabel(kind: CertificateKind, locale: string): string {

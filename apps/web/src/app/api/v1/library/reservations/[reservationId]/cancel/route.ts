@@ -8,7 +8,7 @@ type Params = { params: Promise<{ reservationId: string }> };
 /** POST /api/v1/library/reservations/{reservationId}/cancel — Leave the queue: the member, their guardian or the desk. */
 export async function POST(_request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN");
+    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "FACULTY", "HOD");
     const p = await params;
     return ok(libraryReservationSchema.parse(await cancelReservation(ctx, p.reservationId)));
   } catch (error) {

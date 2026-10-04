@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/advances — asks waiting first, then what is recorded. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     return ok(staffAdvancesSchema.parse(await listAdvances(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/payroll/advances");
@@ -17,7 +17,7 @@ export async function GET() {
 /** POST /api/v1/admin/payroll/advances — record an advance handed over outside the app. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = advanceRecordSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(staffAdvanceSchema.parse(await recordAdvance(ctx, parsed.data)));

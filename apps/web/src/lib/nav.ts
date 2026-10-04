@@ -68,6 +68,18 @@ export type QuickAction = {
   on?: string[];
 };
 
+/**
+ * What every college staff role's menu carries after its home (4 Oct 2026):
+ * the college's feed (bulletin.ts reads them as a teacher there), the global
+ * feed, and the account.
+ */
+const COLLEGE_STAFF_COMMON: NavItem[] = [
+  { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
+  { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+  // My own leave (the integration builder, 4 Oct 2026): the teacher's form and balance under /account.
+  { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+];
+
 export const NAV: Record<Role, NavItem[]> = {
   ADMIN: [
     { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
@@ -133,12 +145,28 @@ export const NAV: Record<Role, NavItem[]> = {
     // The library desk and its rules, and the hostel at a glance (3 Oct 2026): the office lends, sets the rules and makes the houses.
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
     { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
+    // The college's academics (4 Oct 2026): structure, offerings, timetable, registration, attendance and condonations.
+    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "running", module: "ACADEMICS" },
+    // The college office (4 Oct 2026): admissions from the CET rounds, the accounts desk, and the library, hostel and bus at a college.
+    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "running", module: "ADMISSIONS" },
+    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/admin/college-campus", labelKey: "collegeOffice.campusTitle", icon: "buildings", prefix: true, group: "running", module: "ACADEMICS" },
+    // The college exam cell (4 Oct 2026): the office reads sessions, forms, results and analytics.
+    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "running", module: "EXAMS" },
+    // Placement (4 Oct 2026): the office reads the cell's pages at a college with PLACEMENT on.
+    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "running", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): the accreditation desk, the committees and minutes, the faculty records.
+    { href: "/iqac", labelKey: "iqac.navHome", icon: "medal", prefix: true, group: "running", module: "IQAC" },
+    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "running", module: "IQAC" },
+    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
+    // The college at a glance (the integration builder, 4 Oct 2026): the head's dashboard, which the office reads too; ACADEMICS stands for "is a college".
+    { href: "/principal/college", labelKey: "collegeHub.title", icon: "chartLine", group: "running", module: "ACADEMICS" },
   ],
   // A principal READS and DECIDES. No register, no gradebook, no class setup —
   // those belong to the teacher and the admin respectively, and handing all
   // three to one role is how "principal" quietly becomes "can do anything".
   PRINCIPAL: [
-    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true, also: ["/attendance/history"] },
+    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true, also: ["/attendance/history", "/principal/college"] },
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true, also: ["/principal/staff"] },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
@@ -188,6 +216,19 @@ export const NAV: Record<Role, NavItem[]> = {
     // The library's lists and reports, and the hostel at a glance (3 Oct 2026), read.
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
     { href: "/admin/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "running", module: "HOSTEL", also: ["/hostel"] },
+    // The college's academics, read; late registrations and forwarded condonations decided (4 Oct 2026).
+    { href: "/admin/academics", labelKey: "academics.title", icon: "graduationCap", prefix: true, group: "running", module: "ACADEMICS" },
+    // The college's money and admissions, read; concessions above the office's limit approved (4 Oct 2026).
+    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/admin/college-admissions", labelKey: "collegeOffice.admissionsTitle", icon: "userPlus", prefix: true, group: "running", module: "ADMISSIONS" },
+    // The college exam cell (4 Oct 2026): results and analytics to read, grace proposals to decide.
+    { href: "/exam-cell", labelKey: "examCell.title", icon: "exam", prefix: true, group: "running", module: "EXAMS" },
+    // Placement (4 Oct 2026): the principal reads the cell's pages.
+    { href: "/placement", labelKey: "placement.navCell", icon: "briefcase", prefix: true, group: "running", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): the accreditation file to read and sign off, the committees, the faculty records.
+    { href: "/principal/accreditation", labelKey: "iqac.navAccreditation", icon: "medal", prefix: true, group: "running", module: "IQAC", also: ["/iqac"] },
+    { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "running", module: "IQAC" },
+    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
@@ -246,9 +287,24 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    // What a student lets their guardians see (4 Oct 2026): an adult at a college decides. Under ACADEMICS, which every
+    // college has on and no school is offered, so a school's pupils are not shown a page that only says "they see it all".
+    { href: "/student/consent", labelKey: "consent.title", icon: "users", prefix: true, group: "running", module: "ACADEMICS" },
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { href: "/student/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
     { href: "/student/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
+    // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
+    { href: "/student/academics", labelKey: "academics.studentTitle", icon: "graduationCap", prefix: true, group: "daily", module: "ACADEMICS", also: ["/student/registration"] },
+    // A college student's money net of scholarships, the scholarships, and their own account (4 Oct 2026; ACADEMICS stands for "a college").
+    { href: "/student/money", labelKey: "collegeOffice.moneyTitle", icon: "wallet", prefix: true, group: "school", module: "ACADEMICS" },
+    { href: "/student/scholarships", labelKey: "collegeOffice.navScholarships", icon: "receipt", prefix: true, group: "school", module: "SCHOLARSHIPS" },
+    { href: "/student/account", labelKey: "collegeOffice.accountTitle", icon: "shield", prefix: true, group: "running", module: "ACADEMICS" },
+    // A college student's exams (4 Oct 2026): the form, hall ticket, results, grade cards, backlogs, credits.
+    { href: "/student/exams", labelKey: "examCell.mineTitle", icon: "exam", prefix: true, group: "school", module: "EXAMS" },
+    // Placement (4 Oct 2026): my profile, drives, offers, internships and practice.
+    { href: "/student/placement", labelKey: "placement.navStudent", icon: "briefcase", prefix: true, group: "school", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): course feedback, the satisfaction survey, a grievance to the committee.
+    { href: "/student/voice", labelKey: "iqac.navVoice", icon: "chat", prefix: true, group: "school", module: "IQAC" },
   ],
   PARENT: [
     { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
@@ -283,6 +339,14 @@ export const NAV: Record<Role, NavItem[]> = {
     // The library and the hostel (3 Oct 2026): a child's loans and dues; a boarder's room, roll call and leave to consent to.
     { href: "/parent/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
     { href: "/parent/hostel", labelKey: "modules.hostelName", icon: "bed", prefix: true, group: "school", module: "HOSTEL" },
+    // A college child's lecture attendance: a minor's always, an adult's with ATTENDANCE granted (4 Oct 2026).
+    { href: "/parent/academics", labelKey: "academics.familyTitle", icon: "graduationCap", prefix: true, group: "daily", module: "ACADEMICS" },
+    // A college child's results (4 Oct 2026): a minor's always, an adult's under the RESULTS grant.
+    { href: "/parent/results", labelKey: "examCell.parentTitle", icon: "exam", prefix: true, group: "school", module: "EXAMS" },
+    // Placement (4 Oct 2026): a child's offers and internships (an adult's with the PLACEMENT grant).
+    { href: "/parent/placement", labelKey: "placement.navParent", icon: "briefcase", prefix: true, group: "school", module: "PLACEMENT" },
+    // A college child's ledger net of the scholarship (the integration builder, 4 Oct 2026): ACADEMICS stands for "is a college".
+    { href: "/parent/money", labelKey: "collegeOffice.moneyTitle", icon: "wallet", prefix: true, group: "school", module: "ACADEMICS" },
   ],
   // An expert sees their own work and nothing resembling a school's internals.
   EXPERT: [
@@ -304,10 +368,15 @@ export const NAV: Record<Role, NavItem[]> = {
   DRIVER: [
     { href: "/driver", labelKey: "modules.transportName", icon: "bus", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    // Every school's shared posts (4 Oct 2026): the module staff read the global feed as staff.
+    { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
   ],
   LIBRARIAN: [
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
     // The desk's pages (the library module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/library/catalogue", labelKey: "library.tabCatalogue", icon: "books", primary: true, prefix: true, module: "LIBRARY", also: ["/library/titles"] },
     { href: "/library/overdue", labelKey: "library.tabOverdue", icon: "clock", primary: true, prefix: true, module: "LIBRARY" },
@@ -315,10 +384,15 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/library/fines", labelKey: "library.tabFines", icon: "receipt", prefix: true, group: "daily", module: "LIBRARY" },
     { href: "/library/stocktake", labelKey: "library.tabStockTake", icon: "checks", prefix: true, group: "running", module: "LIBRARY" },
     { href: "/library/reports", labelKey: "library.tabReports", icon: "chartLine", prefix: true, group: "running", module: "LIBRARY" },
+    // At a college (4 Oct 2026): e-resources, the ISBN list and the criterion-4 numbers; the library's line of the no-dues.
+    { href: "/library/college", labelKey: "collegeOffice.libraryTitle", icon: "books", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/accounts/no-dues", labelKey: "collegeOffice.navNoDues", icon: "checks", prefix: true, group: "daily", module: "ACADEMICS" },
   ],
   WARDEN: [
     { href: "/hostel", labelKey: "modules.hostelName", icon: "bed", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
     // The warden's pages (the hostel module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/hostel/rollcall", labelKey: "hostel.tabRollCall", icon: "checks", primary: true, prefix: true, module: "HOSTEL" },
     { href: "/hostel/leave", labelKey: "hostel.tabLeave", icon: "calendar", primary: true, prefix: true, module: "HOSTEL" },
@@ -326,6 +400,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hostel/visitors", labelKey: "hostel.tabVisitors", icon: "users", prefix: true, group: "daily", module: "HOSTEL" },
     { href: "/hostel/menu", labelKey: "hostel.tabMenu", icon: "clipboard", prefix: true, group: "running", module: "HOSTEL" },
     { href: "/hostel/incidents", labelKey: "hostel.tabIncidents", icon: "firstAidKit", prefix: true, group: "running", module: "HOSTEL" },
+    // At a college (4 Oct 2026): the anti-ragging squad's rounds, room changes and the criterion-5 numbers; the hostel's line of the no-dues.
+    { href: "/hostel/squad", labelKey: "collegeOffice.squadTitle", icon: "shield", prefix: true, group: "running", module: "ACADEMICS" },
+    { href: "/accounts/no-dues", labelKey: "collegeOffice.navNoDues", icon: "checks", prefix: true, group: "daily", module: "ACADEMICS" },
   ],
   // A former pupil: the school's feed to read and its staff to write to, nothing else; the alumni builder adds the rest.
   ALUMNUS: [
@@ -334,6 +411,90 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true, module: "ALUMNI" },
     // The directory a former pupil may join (the alumni module): under their home, so the home's prefix already lets them in.
     { href: "/alumni/directory", labelKey: "alumni.directoryTitle", icon: "users", primary: true, module: "ALUMNI" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
+    // The college's alumni additions (placement, 4 Oct 2026): ACADEMICS stands for "is a college", as it does for the consent page.
+    { href: "/alumni/college", labelKey: "placement.navAlumni", icon: "handshake", primary: true, module: "ACADEMICS" },
+    // IQAC (4 Oct 2026): the alumni survey, under the alumnus's own home.
+    { href: "/alumni/survey", labelKey: "iqac.navAlumniSurvey", icon: "star", prefix: true, group: "running", module: "IQAC" },
+  ],
+  /*
+   * THE COLLEGE'S SEVEN (4 Oct 2026). Each starts with its home, which says
+   * whether the college has the role's module on (and carries no module, so
+   * it stays to say so), the college's feed, the global feed and the account.
+   * Each module's builder adds the role's screens here with `module` set.
+   * Anything not listed is a page this role cannot open (role-gate.ts).
+   */
+  FACULTY: [
+    { href: "/faculty", labelKey: "role.faculty", icon: "chalkboard", primary: true, prefix: true },
+    // Messages (the integration builder, 4 Oct 2026): former pupils write to their faculty, who answer here as a teacher does.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    ...COLLEGE_STAFF_COMMON,
+    // Exam duties (4 Oct 2026): invigilation, papers to set, bundles to assess, remuneration.
+    { href: "/faculty/exams", labelKey: "examCell.dutiesTitle", icon: "exam", prefix: true, group: "daily", module: "EXAMS" },
+    // Placement (4 Oct 2026): the internships I supervise and the projects I guide.
+    { href: "/faculty/supervision", labelKey: "placement.supervisionTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): my research items, my record, my course feedback.
+    { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+  ],
+  HOD: [
+    { href: "/hod", labelKey: "role.hod", icon: "treeStructure", primary: true, prefix: true },
+    // Messages (the integration builder, 4 Oct 2026): former pupils write to their faculty, who answer here as a teacher does.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    // An HOD teaches too: their lectures, offerings and mentoring are the faculty pages (the college's academics, 4 Oct 2026).
+    { href: "/faculty", labelKey: "academics.myTeaching", icon: "chalkboard", prefix: true, group: "daily", module: "ACADEMICS" },
+    ...COLLEGE_STAFF_COMMON,
+    // The lab's line of the no-dues (the college office, 4 Oct 2026).
+    { href: "/accounts/no-dues", labelKey: "collegeOffice.navNoDues", icon: "checks", prefix: true, group: "running", module: "ACADEMICS" },
+    // Exam duties (4 Oct 2026): an HOD invigilates, sets and assesses as faculty do.
+    { href: "/faculty/exams", labelKey: "examCell.dutiesTitle", icon: "exam", prefix: true, group: "daily", module: "EXAMS" },
+    // Placement (4 Oct 2026): projects and internships of the department.
+    { href: "/hod/projects", labelKey: "placement.hodProjectsTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
+    // IQAC (4 Oct 2026): the department's research, activities and course feedback.
+    { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+  ],
+  EXAM_CONTROLLER: [
+    { href: "/exam-cell", labelKey: "role.examController", icon: "exam", primary: true, prefix: true },
+    ...COLLEGE_STAFF_COMMON,
+  ],
+  IQAC: [
+    { href: "/iqac", labelKey: "role.iqac", icon: "medal", primary: true, prefix: true },
+    ...COLLEGE_STAFF_COMMON,
+    // Placement (4 Oct 2026): the placement table for the predictor and the filings.
+    { href: "/placement/analytics", labelKey: "placement.tabAnalytics", icon: "chartLine", prefix: true, group: "running", module: "PLACEMENT" },
+    // The IQAC desk's own pages (4 Oct 2026), and the faculty records it reads.
+    { href: "/iqac/predictor", labelKey: "iqac.navPredictor", icon: "chartLine", prefix: true, group: "daily", module: "IQAC" },
+    { href: "/iqac/documents", labelKey: "iqac.navDocuments", icon: "clipboard", prefix: true, group: "daily", module: "IQAC" },
+    { href: "/iqac/surveys", labelKey: "iqac.navSurveys", icon: "star", prefix: true, group: "daily", module: "IQAC" },
+    { href: "/iqac/registers", labelKey: "iqac.navRegisters", icon: "books", prefix: true, group: "running", module: "IQAC" },
+    { href: "/iqac/grievances", labelKey: "iqac.navGrievances", icon: "shield", prefix: true, group: "running", module: "IQAC" },
+    { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "users", prefix: true, group: "running", module: "IQAC" },
+  ],
+  TPO: [
+    { href: "/placement", labelKey: "role.tpo", icon: "briefcase", primary: true, prefix: true },
+    ...COLLEGE_STAFF_COMMON,
+    // The cell's pages (the placement module, 4 Oct 2026); the home above carries no module, so it stays to say "switched off".
+    { href: "/placement/drives", labelKey: "placement.tabDrives", icon: "briefcase", primary: true, prefix: true, module: "PLACEMENT" },
+    { href: "/placement/students", labelKey: "placement.tabStudents", icon: "users", primary: true, prefix: true, module: "PLACEMENT" },
+    { href: "/placement/companies", labelKey: "placement.tabCompanies", icon: "handshake", primary: true, prefix: true, module: "PLACEMENT" },
+    { href: "/placement/internships", labelKey: "placement.tabInternships", icon: "clipboard", prefix: true, group: "daily", module: "PLACEMENT" },
+    { href: "/placement/analytics", labelKey: "placement.tabAnalytics", icon: "chartLine", prefix: true, group: "running", module: "PLACEMENT" },
+  ],
+  ACCOUNTS: [
+    { href: "/accounts", labelKey: "role.accounts", icon: "wallet", primary: true, prefix: true },
+    ...COLLEGE_STAFF_COMMON,
+    // The accounts desk's pages (4 Oct 2026; under its home), and the fee ledger, payroll and purchases it keeps with the office.
+    { href: "/accounts/structures", labelKey: "collegeOffice.navStructures", icon: "receipt", primary: true, prefix: true },
+    { href: "/accounts/scholarships", labelKey: "collegeOffice.navScholarships", icon: "wallet", primary: true, prefix: true, module: "SCHOLARSHIPS" },
+    { href: "/accounts/no-dues", labelKey: "collegeOffice.navNoDues", icon: "checks", primary: true, prefix: true },
+    { href: "/accounts/concessions", labelKey: "collegeOffice.navConcessions", icon: "clipboard", prefix: true, group: "daily" },
+    { href: "/accounts/students", labelKey: "collegeOffice.navStudents", icon: "users", prefix: true, group: "daily" },
+    { href: "/admin/fees", labelKey: "collegeOffice.navFeeLedger", icon: "receipt", prefix: true, group: "running" },
+    { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+  ],
+  // An outside account like the expert: its home, and its account. A college reaches it only through a drive (the placement module).
+  RECRUITER: [
+    { href: "/recruiter", labelKey: "role.recruiter", icon: "handshake", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
 };
@@ -362,6 +523,13 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
   LIBRARIAN: null,
   WARDEN: null,
   ALUMNUS: null,
+  FACULTY: null,
+  HOD: null,
+  EXAM_CONTROLLER: null,
+  IQAC: null,
+  TPO: null,
+  ACCOUNTS: null,
+  RECRUITER: null,
   EXPERT: {
     href: "/expert/availability",
     labelKey: "action.offerTime",
@@ -414,6 +582,13 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   LIBRARIAN: [],
   WARDEN: [],
   ALUMNUS: [],
+  FACULTY: [],
+  HOD: [],
+  EXAM_CONTROLLER: [],
+  IQAC: [],
+  TPO: [],
+  ACCOUNTS: [],
+  RECRUITER: [],
 };
 
 export function isActive(pathname: string, item: NavItem): boolean {

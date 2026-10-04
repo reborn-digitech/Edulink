@@ -35,7 +35,7 @@ async function childOf(ctx: ActiveContext, studentMembershipId?: string | null):
   const { children } = await listContexts(ctx.user.id);
   const selectedId = studentMembershipId ?? children.find((c) => !c.leftAt)?.studentMembershipId ?? children[0]?.studentMembershipId;
   if (!selectedId) throw new AccessError("access.notAllowed");
-  const link = await assertGuardianAccess(ctx.user.id, selectedId);
+  const link = await assertGuardianAccess(ctx.user.id, selectedId, "MONEY");
   return { link, children };
 }
 

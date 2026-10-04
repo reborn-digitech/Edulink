@@ -1,5 +1,6 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { collegeTierOf, isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { forTenant } from "./tenant-context";
@@ -151,11 +152,13 @@ export async function deletePlan(session: ActiveContext, planId: string): Promis
  */
 export async function assignPlan(session: ActiveContext, schoolId: string, planId: string | null, client: typeof db = db): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
-  const school = await client.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, planId: true } });
+  const school = await client.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, planId: true, kind: true } });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
   if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
   const plan = planId ? await client.plan.findUnique({ where: { id: planId }, select: { id: true, code: true, name: true } }) : null;
   if (planId && !plan) return { ok: false, errorKey: "root.noSuchPlan" };
+  // The college tiers (4 Oct 2026) are priced a student a year and offered to a college only.
+  if (plan && collegeTierOf(plan.code) && !isCollegeKind(school.kind)) return { ok: false, errorKey: "operatorCollege.refuseTierNotCollege" };
   if (school.planId === (plan?.id ?? null)) return { ok: true };
 
   await client.school.update({ where: { id: schoolId }, data: { planId: plan?.id ?? null, planSince: plan ? new Date() : null } });

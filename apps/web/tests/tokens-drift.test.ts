@@ -36,10 +36,10 @@ describe("the tokens package mirrors globals.css", () => {
       expect(palette.dark[key as keyof typeof palette.dark], `dark --${cssName}`).toBe(dark[cssName]);
     }
   });
-  it("the eight role accents in both themes, and the default accent is the teacher's", () => {
+  it("the fifteen role accents in both themes, and the default accent is the teacher's", () => {
     const root = block(/^:root\s*\{/m);
     for (const [cssName, key] of Object.entries(ACCENT)) expect(accents.light.teacher[key as keyof typeof accents.light.teacher], `root --${cssName}`).toBe(root[cssName]);
-    for (const family of ["teacher", "student", "parent", "admin", "driver", "librarian", "warden", "alumnus"] as const) {
+    for (const family of ["teacher", "student", "parent", "admin", "driver", "librarian", "warden", "alumnus", "faculty", "hod", "exam_controller", "iqac", "tpo", "accounts", "recruiter"] as const) {
       const light = block(new RegExp(`^\\[data-role="${family}"\\]\\s*\\{`, "m"));
       const dark = block(new RegExp(`^\\[data-theme="dark"\\]\\[data-role="${family}"\\],\\n\\[data-theme="dark"\\] \\[data-role="${family}"\\]\\s*\\{`, "m"));
       for (const [cssName, key] of Object.entries(ACCENT)) {
@@ -60,7 +60,7 @@ describe("the frame of a light page mirrors globals.css too", () => {
     const chrome = block(new RegExp(LIGHT + "\\[data-chrome\\]\\s*\\{", "m"));
     for (const [cssName, key] of Object.entries(FRAME_KEYS)) expect(frame.light[key], `frame --${cssName}`).toBe(chrome[cssName]);
     for (const [cssName, key] of Object.entries(ACCENT)) expect(frameAccents.light.teacher[key as keyof typeof accents.light.teacher], `frame --${cssName}`).toBe(chrome[cssName]);
-    for (const family of ["student", "parent", "admin", "driver", "librarian", "warden", "alumnus"] as const) {
+    for (const family of ["student", "parent", "admin", "driver", "librarian", "warden", "alumnus", "faculty", "hod", "exam_controller", "iqac", "tpo", "accounts", "recruiter"] as const) {
       const rule = block(new RegExp(LIGHT + `\\[data-role="${family}"\\] \\[data-chrome\\]\\s*\\{`, "m"));
       for (const [cssName, key] of Object.entries(ACCENT)) expect(frameAccents.light[family][key as keyof typeof accents.light.teacher], `frame ${family} --${cssName}`).toBe(rule[cssName]);
     }

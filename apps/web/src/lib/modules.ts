@@ -1,6 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import { DEFAULT_SCHOOL_MODULES, SCHOOL_MODULES, type SchoolModuleCode } from "@edulink/contracts";
+import { defaultModulesForKind, isCollegeKind, modulesForKind, SCHOOL_MODULES, type InstitutionKind, type SchoolModuleCode } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError, ModuleOffError } from "./access-error";
@@ -22,7 +22,10 @@ export { MODULE_META, SCHOOL_MODULES, type SchoolModuleCode };
  *   - `assertModuleOn(schoolId, "X")` in a server action or a lib function a
  *     page calls, which throws the same refusal;
  *   - `isModuleOn` / `enabledModules` to decide what a page draws, and
- *     <ModuleOff> (components/module-off.tsx) for the page itself when off.
+ *     <ModuleOff> (components/module-off.tsx) for the page itself when off;
+ *   - `institutionKindOf` / `isAutonomous` for what kind of institution the
+ *     tenant is (4 Oct 2026): a college is offered the college's six modules
+ *     (ACADEMICS, EXAMS, IQAC, PLACEMENT, ADMISSIONS, SCHOLARSHIPS) as well.
  */
 
 /** The modules a school has on, in SCHOOL_MODULES order. Read once per request. */
@@ -51,6 +54,27 @@ export const enabledModulesForFamily = cache(async (userId: string): Promise<Sch
   return SCHOOL_MODULES.filter((m) => on.has(m));
 });
 
+/**
+ * What kind of institution a tenant is (School.kind: SCHOOL, JUNIOR_COLLEGE,
+ * COLLEGE, AUTONOMOUS_COLLEGE), or null with no school. Read once per request.
+ */
+export const institutionKindOf = cache(async (schoolId: string | null | undefined): Promise<InstitutionKind | null> => {
+  if (!schoolId) return null;
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { kind: true } });
+  return (school?.kind as InstitutionKind | undefined) ?? null;
+});
+
+/**
+ * THE AUTONOMOUS SWITCH (4 October 2026): an autonomous college sets its own
+ * syllabus and conducts its own exams, so the EXAMS module runs full conduct
+ * there and imports the university's results everywhere else. The exams
+ * builder reads this and nothing else; it is the tenant's kind, set when the
+ * college is made, not a module or a setting.
+ */
+export async function isAutonomous(schoolId: string | null | undefined): Promise<boolean> {
+  return (await institutionKindOf(schoolId)) === "AUTONOMOUS_COLLEGE";
+}
+
 export async function isModuleOn(schoolId: string | null | undefined, module: SchoolModuleCode): Promise<boolean> {
   return (await enabledModules(schoolId)).includes(module);
 }
@@ -60,12 +84,33 @@ export async function assertModuleOn(schoolId: string | null | undefined, module
   if (!(await isModuleOn(schoolId, module))) throw new ModuleOffError(module);
 }
 
-/** Every module with whether it is on and since when: the admin's page and GET /api/v1/admin/modules. */
-export async function schoolModules(ctx: ActiveContext): Promise<{ module: SchoolModuleCode; on: boolean; enabledAt: Date | null }[]> {
+/**
+ * Every module this institution is offered, with whether it is on and since
+ * when: the admin's page and GET /api/v1/admin/modules. A school (and a junior
+ * college) is offered the school version's six; a college all twelve.
+ */
+export async function schoolModules(ctx: ActiveContext): Promise<{ module: SchoolModuleCode; on: boolean; enabledAt: Date | null; byPlatform: boolean }[]> {
   if (!ctx.schoolId || (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL")) throw new AccessError("access.wrongRoleForThisAction");
-  const rows = await db.schoolModule.findMany({ where: { schoolId: ctx.schoolId }, select: { module: true, enabledAt: true } });
+  const [rows, kind] = await Promise.all([
+    db.schoolModule.findMany({ where: { schoolId: ctx.schoolId }, select: { module: true, enabledAt: true, enabledByUserId: true } }),
+    institutionKindOf(ctx.schoolId),
+  ]);
   const byModule = new Map(rows.map((r) => [r.module, r.enabledAt]));
-  return SCHOOL_MODULES.map((module) => ({ module, on: byModule.has(module), enabledAt: byModule.get(module) ?? null }));
+  // "Switched on by the platform" (4 Oct 2026): the switch's author belongs to no role here — the operator, on the institution's behalf.
+  const enablers = [...new Set(rows.map((r) => r.enabledByUserId).filter((id): id is string => Boolean(id)))];
+  const members = enablers.length ? new Set((await db.membership.findMany({ where: { schoolId: ctx.schoolId, userId: { in: enablers } }, select: { userId: true } })).map((m) => m.userId)) : new Set<string>();
+  const platform = new Set(rows.filter((r) => r.enabledByUserId && !members.has(r.enabledByUserId)).map((r) => r.module));
+  return modulesForKind(kind).map((module) => ({ module, on: byModule.has(module), enabledAt: byModule.get(module) ?? null, byPlatform: platform.has(module) }));
+}
+
+/**
+ * A module a kind of institution always has on (4 Oct 2026): ACADEMICS at a
+ * college — departments, courses and lectures are what a college is. Its
+ * card on the modules page says so and offers no switch; `setModule`
+ * refuses to switch it off.
+ */
+export function isAlwaysOn(module: SchoolModuleCode, kind: string | null | undefined): boolean {
+  return module === "ACADEMICS" && isCollegeKind(kind);
 }
 
 /**
@@ -79,8 +124,26 @@ export async function schoolModules(ctx: ActiveContext): Promise<{ module: Schoo
  */
 export async function setModule(ctx: ActiveContext, module: SchoolModuleCode, on: boolean): Promise<{ changed: boolean }> {
   if (!ctx.schoolId || ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
+  return switchModuleFor(ctx.schoolId, ctx.user.id, module, on);
+}
+
+/**
+ * The one path a module is switched by after the institution is made: the
+ * admin's `setModule` above, and the operator's on the institution's behalf
+ * (operator-college.ts, which asserts the superuser and binds the school
+ * first). The same refusals for both; the operator's audit row in the
+ * school's log carries `byOperator: true` (4 Oct 2026), and its
+ * enabledByUserId is the operator, which is how the modules page says
+ * "switched on by the platform".
+ */
+export async function switchModuleFor(schoolId: string, actorUserId: string, module: SchoolModuleCode, on: boolean, opts: { byOperator?: boolean } = {}): Promise<{ changed: boolean }> {
   if (!(SCHOOL_MODULES as readonly string[]).includes(module)) throw new AccessError("access.wrongRoleForThisAction");
-  const schoolId = ctx.schoolId;
+  const ctx = { user: { id: actorUserId } };
+  // A college's six are a college's: a school is not offered them, and switching one on there is refused.
+  const kind = await institutionKindOf(schoolId);
+  if (on && !modulesForKind(kind).includes(module)) throw new AccessError("modules.refuseNotForKind");
+  // A college cannot run without its academics (the academics builder, 4 Oct 2026): ACADEMICS stays on.
+  if (!on && isAlwaysOn(module, kind)) throw new AccessError("academics.refuseAlwaysOn");
   if (on) {
     const existing = await db.schoolModule.findUnique({ where: { schoolId_module: { schoolId, module } }, select: { id: true } });
     if (existing) return { changed: false };
@@ -94,16 +157,17 @@ export async function setModule(ctx: ActiveContext, module: SchoolModuleCode, on
     const gone = await db.schoolModule.deleteMany({ where: { schoolId, module } });
     if (gone.count === 0) return { changed: false };
   }
-  await audit({ schoolId, actorUserId: ctx.user.id, action: on ? "school.module.on" : "school.module.off", targetType: "School", targetId: schoolId, meta: { module } });
+  await audit({ schoolId, actorUserId: ctx.user.id, action: on ? "school.module.on" : "school.module.off", targetType: "School", targetId: schoolId, meta: opts.byOperator ? { module, byOperator: true } : { module } });
   return { changed: true };
 }
 
 /**
- * The rows a NEW school starts with (ALUMNI), written by whoever makes the
- * school in the same breath: the operator's createSchool, a school's own
+ * The rows a NEW institution starts with — ALUMNI for a school, ALUMNI and
+ * ACADEMICS for a college (defaultModulesForKind) — written by whoever makes
+ * it in the same breath: the operator's createSchool, a school's own
  * registration and the fixture scripts. `client` is the transaction the
  * school was made in, when there is one.
  */
-export async function writeDefaultModules(schoolId: string, client: Pick<typeof db, "schoolModule"> = db): Promise<void> {
-  await client.schoolModule.createMany({ data: DEFAULT_SCHOOL_MODULES.map((module) => ({ schoolId, module })), skipDuplicates: true });
+export async function writeDefaultModules(schoolId: string, client: Pick<typeof db, "schoolModule"> = db, kind: string = "SCHOOL"): Promise<void> {
+  await client.schoolModule.createMany({ data: defaultModulesForKind(kind).map((module) => ({ schoolId, module })), skipDuplicates: true });
 }

@@ -49,6 +49,13 @@ export const HEAD_KIND_KEY: Record<string, TranslationKey> = {
   EXAM: "fees.headKindExam",
   ACTIVITY: "fees.headKindActivity",
   OTHER: "fees.headKindOther",
+  // A college's heads (4 Oct 2026).
+  DEVELOPMENT: "collegeOffice.headDEVELOPMENT",
+  LIBRARY: "collegeOffice.headLIBRARY",
+  LABORATORY: "collegeOffice.headLABORATORY",
+  HOSTEL: "collegeOffice.headHOSTEL",
+  MESS: "collegeOffice.headMESS",
+  CAUTION_DEPOSIT: "collegeOffice.headCAUTION_DEPOSIT",
 };
 
 export const CONCESSION_KIND_KEY: Record<string, TranslationKey> = {

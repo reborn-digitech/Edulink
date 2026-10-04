@@ -108,6 +108,9 @@ async function referencedFileIds(): Promise<Map<string, string>> {
   for (const row of posts) for (const m of readMedia(row.media)) claim(m.fileId, row.schoolId);
   // A purchase record's scanned bill (the INVENTORY module).
   for (const row of await db.purchaseRecord.findMany({ where: { billFileId: { not: null } }, select: { schoolId: true, billFileId: true } })) if (row.billFileId) claim(row.billFileId, row.schoolId);
+  // A condonation's document and a course file's resources (the college's academics, 4 Oct 2026).
+  for (const row of await db.attendanceCondonation.findMany({ where: { documentFileId: { not: null } }, select: { schoolId: true, documentFileId: true } })) if (row.documentFileId) claim(row.documentFileId, row.schoolId);
+  for (const row of await db.courseFileItem.findMany({ where: { fileId: { not: null } }, select: { schoolId: true, fileId: true } })) if (row.fileId) claim(row.fileId, row.schoolId);
 
   return ids;
 }

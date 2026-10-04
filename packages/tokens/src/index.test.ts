@@ -25,6 +25,7 @@ describe("@edulink/tokens", () => {
     expect(familyFor("EXPERT")).toBe("teacher");
     expect(familyFor(null)).toBe("teacher");
     expect(["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"].map(familyFor)).toEqual(["driver", "librarian", "warden", "alumnus"]);
+    expect(["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER"].map(familyFor)).toEqual(["faculty", "hod", "exam_controller", "iqac", "tpo", "accounts", "recruiter"]);
   });
   it("radii are the web's rems in points and the tap target is 48", () => {
     expect(radius).toEqual({ sm: 8, md: 14, lg: 20, xl: 28 });

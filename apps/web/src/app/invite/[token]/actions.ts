@@ -382,7 +382,8 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
             update: { status: "ACTIVE", removedAt: null },
           });
           await syncGradeLevel(tx, [membership.id]);
-        } else if (invite.role === "TEACHER") {
+        } else if (invite.role === "TEACHER" || invite.role === "FACULTY" || invite.role === "HOD") {
+          // A college's faculty and HOD teach a class as a teacher does (4 Oct 2026).
           await tx.classTeacher.upsert({
             where: {
               classId_teacherMembershipId: {

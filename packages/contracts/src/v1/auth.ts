@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { localeSchema } from "../locale";
-import { schoolModuleSchema } from "./modules";
+import { institutionKindSchema, schoolModuleSchema } from "./modules";
 
 /**
  * Signing in from the phone. Every sign-in answers with the same session
@@ -9,9 +9,15 @@ import { schoolModuleSchema } from "./modules";
 /**
  * DRIVER, LIBRARIAN, WARDEN and ALUMNUS came with the per-school modules
  * (3 October 2026): each is a Membership at a school, as a teacher is, and
- * reaches only what its module names (see ./modules.ts).
+ * reaches only what its module names (see ./modules.ts). The college's seven
+ * came on 4 October 2026: FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO and
+ * ACCOUNTS are Memberships at a college behind the same gate; RECRUITER is an
+ * outside account like EXPERT, with no school of its own.
  */
-export const roleSchema = z.enum(["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"]);
+export const roleSchema = z.enum([
+  "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
+  "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER",
+]);
 export type RoleCode = z.infer<typeof roleSchema>;
 
 export const passwordLoginSchema = z.object({
@@ -72,7 +78,13 @@ export const meSchema = z.object({
     isAppAdmin: z.boolean().default(false),
   }),
   active: z.object({ schoolId: z.string().nullable(), role: roleSchema.nullable(), membershipId: z.string().nullable() }),
-  contexts: z.array(z.object({ schoolId: z.string().nullable(), schoolName: z.string().nullable(), role: roleSchema })),
+  /**
+   * `institutionKind` per context (4 Oct 2026): what kind of institution that
+   * context's school is, so a picker can say "ZZ Vidya College · College";
+   * null with no school. Optional, so an older server's answer (and a test's
+   * fixture) without it reads as before: the bare name.
+   */
+  contexts: z.array(z.object({ schoolId: z.string().nullable(), schoolName: z.string().nullable(), role: roleSchema, institutionKind: institutionKindSchema.nullable().optional() })),
   /**
    * The modules the ACTIVE school has switched on; empty with no school on the
    * session. The phone hides a module's tabs and menu entries by it. Defaults
@@ -80,6 +92,12 @@ export const meSchema = z.object({
    * rather than showing doors that answer MODULE_OFF.
    */
   modules: z.array(schoolModuleSchema).default([]),
+  /**
+   * What kind of institution the ACTIVE school is (4 Oct 2026): SCHOOL,
+   * JUNIOR_COLLEGE, COLLEGE or AUTONOMOUS_COLLEGE; null with no school on the
+   * session. An older server says nothing, which reads as a school.
+   */
+  institutionKind: institutionKindSchema.nullable().default(null),
 });
 export type Me = z.infer<typeof meSchema>;
 

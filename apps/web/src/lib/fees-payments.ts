@@ -312,7 +312,7 @@ export type CheckoutStart = {
 };
 
 async function familyIntent(parentUserId: string, input: { studentMembershipId: string; demandIds: string[] }) {
-  const link = await assertGuardianAccess(parentUserId, input.studentMembershipId);
+  const link = await assertGuardianAccess(parentUserId, input.studentMembershipId, "MONEY");
   const schoolId = link.student.school.id;
   if (!input.demandIds.length) throw new AccessError("fees.refuseNothingDue");
   const demands = await db.feeDemand.findMany({ where: { schoolId, studentMembershipId: input.studentMembershipId, id: { in: input.demandIds }, status: { in: ["OPEN", "PART"] } } });
@@ -819,7 +819,7 @@ export type ReceiptView = { id: string; serial: string; issuedAt: Date; reversed
 export async function receiptFor(ctx: ActiveContext, receiptId: string): Promise<ReceiptView | null> {
   const r = await db.feeReceipt.findUnique({ where: { id: receiptId }, include: { payment: { select: { status: true, reversalReason: true, studentMembershipId: true, refunds: { where: { status: "DONE" }, select: { amountPaise: true } } } } } });
   if (!r) return null;
-  const office = ctx.role === "ADMIN" && ctx.schoolId === r.schoolId;
+  const office = (ctx.role === "ADMIN" || ctx.role === "ACCOUNTS") && ctx.schoolId === r.schoolId;
   let guardian = false;
   if (!office && ctx.role === "PARENT") {
     const link = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, studentMembershipId: r.payment.studentMembershipId, status: "ACTIVE" }, select: { id: true } });

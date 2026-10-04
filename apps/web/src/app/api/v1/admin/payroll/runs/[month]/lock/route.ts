@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** POST /api/v1/admin/payroll/runs/{month}/lock — freeze the run ({ confirm: true }). */
 export async function POST(request: Request, { params }: { params: Promise<{ month: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = payrollRunLockSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const { month } = await params;

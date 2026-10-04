@@ -13,7 +13,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
  */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = feeBankImportBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const t = await getT();

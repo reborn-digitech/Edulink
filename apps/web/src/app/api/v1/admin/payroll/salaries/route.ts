@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/salaries — every member of staff's salary; the sealed numbers as their last four only. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     return ok(staffSalariesSchema.parse(await listSalaries(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/payroll/salaries");
@@ -17,7 +17,7 @@ export async function GET() {
 /** POST /api/v1/admin/payroll/salaries — one person's salary from a date; PAN and account sealed on arrival. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = staffSalarySaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(staffSalarySchema.parse(await saveSalary(ctx, parsed.data)));

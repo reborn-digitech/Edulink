@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll — the summary: settings, runs, cost by month and department, headcount (the office and the head). */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     return ok(payrollSummarySchema.parse(await payrollSummary(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/payroll");

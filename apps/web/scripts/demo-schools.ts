@@ -29,7 +29,7 @@
  * Runs on the ADMIN connection, like the ZZ script: it creates schools.
  */
 import { hash } from "@node-rs/argon2";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { classCode, studentCode } from "../src/lib/codes";
 import { bandFor, combineTerms, DEFAULT_REPORT_CARD_CONFIG, meanPercent, meanPoints, shownPercent } from "../src/lib/report-card-rules";
@@ -1174,7 +1174,9 @@ async function main() {
   const doc = rosterMarkdown({ sunrise, saraswati, sunita, expert: { threadId: experts.threadId, bookings: experts.bookings, mentee: { name: experts.mentee.name, grade: experts.mentee.grade }, anjali: experts.anjali }, vacancies, admissionEnquiries, circulars: { sunrise: String(sunrise.counts.circular), saraswati: String(saraswati.counts.circular) }, globalPostId: globalPost.postId });
   const docPath = join(process.cwd(), "..", "..", "docs", "demo-schools.md");
   await mkdir(join(process.cwd(), "..", "..", "docs"), { recursive: true });
-  await writeFile(docPath, doc);
+  // The college's section is written by `npm run demo:college` between its markers; a rewrite of the schools' roster keeps it.
+  const college = (await readFile(docPath, "utf8").catch(() => "")).match(/<!-- demo-college:begin -->[\s\S]*?<!-- demo-college:end -->\n?/)?.[0];
+  await writeFile(docPath, college ? `${doc.trimEnd()}\n\n${college}` : doc);
 
   const line = (b: Built) => `
   ── ${b.school.name} ──────────────────────────────────────────
@@ -1228,9 +1230,12 @@ ${Object.entries(counts).map(([k, v]) => `     ${k.padEnd(22)} ${v}`).join("\n")
 `);
 }
 
-main()
-  .catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-  })
-  .finally(() => db.$disconnect());
+// Only when run as a script: `demo-college.ts` imports PASSWORD and must not build the schools as a side effect of the import.
+if (process.argv[1]?.endsWith("demo-schools.ts")) {
+  main()
+    .catch((error) => {
+      console.error(error);
+      process.exitCode = 1;
+    })
+    .finally(() => db.$disconnect());
+}

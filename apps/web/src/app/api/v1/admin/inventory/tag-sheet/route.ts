@@ -8,7 +8,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/inventory/tag-sheet?location= — printable asset tags with QR codes (application/pdf). Audited. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const refused = await budget(`pdf:${ctx.user.id}`, PDF_BUDGET.limit, PDF_BUDGET.windowMs);
     if (refused) return refused;
     const location = new URL(request.url).searchParams.get("location")?.trim().slice(0, 60) || undefined;

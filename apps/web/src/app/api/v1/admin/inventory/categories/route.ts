@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** POST /api/v1/admin/inventory/categories — make or rewrite a category; answers the whole setup. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = inventoryCategorySaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     await saveCategory(ctx, parsed.data);

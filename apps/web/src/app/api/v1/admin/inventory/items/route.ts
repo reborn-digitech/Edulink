@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/inventory/items — every item with its stock at each place. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     return ok(inventoryItemsSchema.parse(await listItems(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/inventory/items");
@@ -17,7 +17,7 @@ export async function GET() {
 /** POST /api/v1/admin/inventory/items — an item by its code, made or rewritten. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = inventoryItemSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(inventoryItemSchema.parse(await saveItem(ctx, parsed.data)));

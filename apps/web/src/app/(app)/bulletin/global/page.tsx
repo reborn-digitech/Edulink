@@ -12,7 +12,7 @@ import { FeedFilters } from "../feed-filters";
 import { PostMedia } from "../media";
 import { ReactionRow } from "../reactions";
 import { CATEGORY_KEYS } from "../categories";
-import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
+import { COLLEGE_ROLES, POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -46,7 +46,9 @@ export default async function GlobalFeedPage({
   const ctx =
     who.role === "PARENT"
       ? await requireParent()
-      : await requireRole("ADMIN", "PRINCIPAL", "TEACHER", "STUDENT");
+      : // Every role of a school or a college reads it (4 Oct 2026, global-feed.ts globalReader); the
+        // gate (role-gate.ts) lets a limited role reach this page only where its NAV names the feed.
+        await requireRole("ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS", ...COLLEGE_ROLES);
   const isAdmin = ctx.role === "ADMIN";
 
   const { category: rawCategory, q: rawQ, tag: rawTag } = await searchParams;

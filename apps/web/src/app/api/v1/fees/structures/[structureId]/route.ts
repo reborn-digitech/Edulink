@@ -7,7 +7,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** GET /api/v1/fees/structures/{structureId} — one structure in full, with the classes it could be assigned to. */
 export async function GET(_request: Request, { params }: { params: Promise<{ structureId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const { structureId } = await params;
     return ok(feeStructureDetailSchema.parse(await feesStructureRead(ctx, structureId)));
   } catch (error) {
@@ -18,7 +18,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ str
 /** POST /api/v1/fees/structures/{structureId} — rewrite a DRAFT; a published one is refused with a sentence. */
 export async function POST(request: Request, { params }: { params: Promise<{ structureId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { structureId } = await params;
     const parsed = feeStructureBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { RocketLaunchIcon } from "@phosphor-icons/react";
-import { SCHOOL_BOARDS, type OperatorOnboardBody } from "@edulink/contracts";
+import { INSTITUTION_KINDS, isCollegeKind, SCHOOL_BOARDS, type InstitutionKind, type OperatorOnboardBody } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
@@ -38,7 +38,7 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
   const [error, setError] = useState<string | null>(null);
   const today = dayKey(new Date());
 
-  const [school, setSchool] = useState({ name: "", slug: "", contactEmail: "", timezone: "Asia/Kolkata", board: "", city: "", region: "", country: INDIA, gradeLow: "", gradeHigh: "" });
+  const [school, setSchool] = useState({ name: "", slug: "", contactEmail: "", timezone: "Asia/Kolkata", board: "", city: "", region: "", country: INDIA, gradeLow: "", gradeHigh: "", kind: "SCHOOL", university: "", aishe: "" });
   const [planId, setPlanId] = useState("");
   const [trial, setTrial] = useState(false);
   const [datesTyped, setDatesTyped] = useState(false);
@@ -79,6 +79,9 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
       country: school.country || null,
       gradeLow: school.gradeLow || null,
       gradeHigh: school.gradeHigh || null,
+      kind: school.kind as InstitutionKind,
+      // A college's two references (4 Oct 2026), sent only for a college.
+      ...(isCollegeKind(school.kind) ? { affiliatingUniversity: school.university.trim() || null, aisheCode: school.aishe.trim().toUpperCase() || null } : {}),
       planId: planId || null,
       trial,
       startsAt: dates.startsAt,
@@ -110,6 +113,20 @@ export function OnboardForm({ plans, partners }: { plans: PlanOption[]; partners
       <fieldset className="space-y-4">
         <legend className="text-sm font-semibold text-fg">{t("root.theSchool")}</legend>
         <TextField label={t("root.name")} required value={school.name} onChange={(e) => setS("name")(e.target.value)} hint={t("root.nameHint")} maxLength={200} />
+        {/* A school, a junior college, a college or an autonomous college (4 Oct 2026): a college is offered the college modules and roles. */}
+        <SelectField label={t("institution.kindLabel")} value={school.kind} onChange={(e) => setS("kind")(e.target.value)} hint={t("institution.kindHint")}>
+          {INSTITUTION_KINDS.map((k) => (
+            <option key={k} value={k}>
+              {t(`institution.kind.${k}`)}
+            </option>
+          ))}
+        </SelectField>
+        {isCollegeKind(school.kind) && (
+          <div className="grid gap-4 sm:grid-cols-2">
+            <TextField label={t("college.fieldUniversity")} value={school.university} onChange={(e) => setS("university")(e.target.value)} maxLength={200} />
+            <TextField label={t("college.fieldAishe")} value={school.aishe} onChange={(e) => setS("aishe")(e.target.value)} hint={t("college.fieldAisheHint")} maxLength={12} autoCapitalize="characters" />
+          </div>
+        )}
         <div className="grid gap-4 sm:grid-cols-2">
           <TextField label={t("root.slug")} value={school.slug} onChange={(e) => setS("slug")(e.target.value)} hint={t("root.slugHint")} maxLength={48} autoCapitalize="none" />
           <TextField label={t("root.contactEmail")} type="email" required value={school.contactEmail} onChange={(e) => setS("contactEmail")(e.target.value)} />

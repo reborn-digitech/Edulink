@@ -29,7 +29,8 @@ export const LIBRARY_LANGUAGES = ["EN", "HI", "MR", "SA", "UR", "OTHER"] as cons
 export const libraryLanguageSchema = z.enum(LIBRARY_LANGUAGES);
 export const LIBRARY_CATEGORIES = ["GENERAL", "FICTION", "NON_FICTION", "REFERENCE", "TEXTBOOK", "PERIODICAL", "CHILDREN"] as const;
 export const libraryCategorySchema = z.enum(LIBRARY_CATEGORIES);
-export const LIBRARY_MEMBER_KINDS = ["PUPIL", "STAFF"] as const;
+/** STUDENT_COLLEGE and FACULTY borrow on a college's own terms (4 Oct 2026; LibrarySettings faculty… and collegeStudent… columns). */
+export const LIBRARY_MEMBER_KINDS = ["PUPIL", "STAFF", "STUDENT_COLLEGE", "FACULTY"] as const;
 export const libraryMemberKindSchema = z.enum(LIBRARY_MEMBER_KINDS);
 
 /**

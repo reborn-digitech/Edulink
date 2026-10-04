@@ -11,15 +11,19 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Pill } from "../family/shared";
 import { Chips, formatDateKey, problemLine, roleLabel } from "./shared";
+import { useSession } from "@/lib/session";
+import { isCollegeKind } from "@edulink/contracts";
 
-// The module roles' staff too (3 Oct 2026); never the alumnus, whom only a departure makes.
-type InviteRole = "TEACHER" | "STUDENT" | "ADMIN" | "PRINCIPAL" | "DRIVER" | "LIBRARIAN" | "WARDEN";
+// The module roles' staff too (3 Oct 2026), and a college's six staff roles (4 Oct 2026); never the alumnus, whom only a departure makes, nor the recruiter, who registers.
+type InviteRole = "TEACHER" | "STUDENT" | "ADMIN" | "PRINCIPAL" | "DRIVER" | "LIBRARIAN" | "WARDEN" | "FACULTY" | "HOD" | "EXAM_CONTROLLER" | "IQAC" | "TPO" | "ACCOUNTS";
 type Created = ReturnType<typeof inviteCreatedSchema.parse>;
 export type InviteBody = { role: InviteRole; csv: string; classId?: string };
 
-const ROLES: InviteRole[] = ["TEACHER", "STUDENT", "ADMIN", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN"];
-/** A class is offered to the roles that have one: a driver, the library's desk and a warden are put in none. */
-const takesClass = (role: InviteRole) => role !== "DRIVER" && role !== "LIBRARIAN" && role !== "WARDEN";
+const SCHOOL_INVITES: InviteRole[] = ["TEACHER", "STUDENT", "ADMIN", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN"];
+/** A college invites its six staff roles and no TEACHER, as the web's invitableRolesFor (4 Oct 2026). */
+const COLLEGE_INVITES: InviteRole[] = ["FACULTY", "HOD", "STUDENT", "ADMIN", "PRINCIPAL", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "DRIVER", "LIBRARIAN", "WARDEN"];
+/** A class is offered to the roles that have one: a teacher, a college's faculty or HOD, a pupil, the office. */
+const takesClass = (role: InviteRole) => ["TEACHER", "FACULTY", "HOD", "STUDENT", "ADMIN", "PRINCIPAL"].includes(role);
 const EXAMPLE = "name,email,subjects\nPriya Raman,priya@school.org,Maths;Science\nTom Fielding,tom@school.org,English";
 
 /**
@@ -38,7 +42,11 @@ export function InvitePeople() {
   const { locale } = useLocale();
   const params = useLocalSearchParams<{ role?: string; classId?: string }>();
   const listRef = useRef<TextInput>(null);
-  const [role, setRole] = useState<InviteRole>(ROLES.includes(params.role as InviteRole) ? (params.role as InviteRole) : "TEACHER");
+  const session = useSession();
+  const ROLES = isCollegeKind(session.status === "signed-in" ? session.me.institutionKind : null) ? COLLEGE_INVITES : SCHOOL_INVITES;
+  const [chosen, setRole] = useState<InviteRole>(ROLES.includes(params.role as InviteRole) ? (params.role as InviteRole) : ROLES[0]!);
+  // The kind arrives with /api/v1/me: a choice the institution does not offer reads as its first role.
+  const role = ROLES.includes(chosen) ? chosen : ROLES[0]!;
   const [classId, setClassId] = useState(typeof params.classId === "string" ? params.classId : "");
   const [csv, setCsv] = useState("");
   const [preview, setPreview] = useState<{ csv: string; data: OfficeInvitePreview } | null>(null);

@@ -9,7 +9,7 @@ import { parseInviteCsv } from "@/lib/csv";
 import { sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { resendInviteFor } from "@/lib/invites";
-import { INVITE_TTL_DAYS, INVITABLE_ROLES, type InvitableRole } from "@/lib/constants";
+import { INVITE_TTL_DAYS, INVITABLE_ROLES, invitableRolesFor, type InvitableRole } from "@/lib/constants";
 import { INVITE_EMAILS_DAILY } from "@/lib/rate-limit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { InviteCsvResult } from "@/lib/csv";
@@ -70,6 +70,11 @@ export async function createInvites(input: {
     return { ok: false, errorKey: "invites.unknownRole", outcomes: [], problems: [], sent: 0 };
   }
   const role = input.role as InvitableRole;
+  // A college invites its six staff roles and no TEACHER; a school the other way round (4 Oct 2026).
+  const kindRow = await db.school.findUnique({ where: { id: ctx.schoolId }, select: { kind: true } });
+  if (!invitableRolesFor(kindRow?.kind).includes(role)) {
+    return { ok: false, errorKey: "invites.unknownRole", outcomes: [], problems: [], sent: 0 };
+  }
 
   const text = (input.csv ?? "").trim();
   if (!text) {

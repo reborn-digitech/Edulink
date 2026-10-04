@@ -19,7 +19,8 @@ const paise = z.number().int().min(0);
 const trimmed = (min: number, max: number) => z.string().trim().min(min).max(max);
 const ok = z.object({ ok: z.literal(true) });
 
-export const feeHeadKindSchema = z.enum(["TUITION", "TRANSPORT", "EXAM", "ACTIVITY", "OTHER"]);
+/** A college adds DEVELOPMENT … CAUTION_DEPOSIT (v1/college-office.ts COLLEGE_FEE_HEAD_KINDS, 4 Oct 2026). */
+export const feeHeadKindSchema = z.enum(["TUITION", "TRANSPORT", "EXAM", "ACTIVITY", "OTHER", "DEVELOPMENT", "LIBRARY", "LABORATORY", "HOSTEL", "MESS", "CAUTION_DEPOSIT"]);
 export const feeMethodSchema = z.enum(["ONLINE", "UPI", "CASH", "CHEQUE", "BANK"]);
 export const feeCounterMethodSchema = z.enum(["CASH", "CHEQUE", "BANK", "UPI"]);
 export const feeDemandStatusSchema = z.enum(["OPEN", "PART", "PAID", "WAIVED", "CANCELLED", "CARRIED"]);

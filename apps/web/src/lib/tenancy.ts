@@ -3,7 +3,9 @@ import { ROLE_HOME } from "./constants";
 import { redirect } from "next/navigation";
 import { db } from "./db";
 import { getSession, type ActiveContext } from "./session";
-import { isModuleRole, type Role } from "./constants";
+import { isLimitedRole, isTeachingRole, type Role } from "./constants";
+import { isCollegeKind, type StudentConsentGrant } from "@edulink/contracts";
+import { parentMaySee } from "./student-consent";
 
 /**
  * The authorization chokepoint.
@@ -181,9 +183,16 @@ export async function requireExpert(): Promise<ActiveContext & { expertProfileId
  * wrong for a driver, the library's desk, a warden or an alumnus, who reach
  * no class, pupil or piece of work through them (3 Oct 2026). The session's
  * gate already keeps those roles off these doors; this is the second lock.
+ *
+ * A COLLEGE'S FACULTY AND HOD ARE TEACHERS HERE (4 Oct 2026): scoped to the
+ * classes they are assigned, exactly as a TEACHER is, once a door names them
+ * (`isTeachingRole`); the academics builder adds the HOD's department read.
+ * The college's other four staff roles — the exam controller, IQAC, placement
+ * and accounts — and the recruiter are refused like the module roles: none
+ * of them may fall through to "the whole school".
  */
 function refuseModuleRole(role: Role): void {
-  if (isModuleRole(role)) throw new AccessError("access.wrongRoleForThisAction");
+  if (isLimitedRole(role) && !isTeachingRole(role)) throw new AccessError("access.wrongRoleForThisAction");
 }
 
 /**
@@ -203,7 +212,7 @@ export async function assertClassAccess(
     where: {
       id: classId,
       schoolId: ctx.schoolId, // <- tenant boundary, always present
-      ...(ctx.role === "TEACHER"
+      ...(isTeachingRole(ctx.role)
         ? { teachers: { some: { teacherMembershipId: ctx.membershipId } } }
         : {}),
     },
@@ -229,7 +238,7 @@ export async function assertStudentAccess(
       id: studentMembershipId,
       schoolId: ctx.schoolId,
       role: "STUDENT",
-      ...(ctx.role === "TEACHER"
+      ...(isTeachingRole(ctx.role)
         ? {
             // Only students in a class this teacher actually teaches.
             enrollments: {
@@ -248,8 +257,20 @@ export async function assertStudentAccess(
   return student;
 }
 
-/** A child the signed-in parent actually guards. */
-export async function assertGuardianAccess(parentUserId: string, studentMembershipId: string) {
+/**
+ * A child the signed-in parent actually guards.
+ *
+ * AND, FOR AN ADULT AT A COLLEGE, WHAT THE CHILD HAS LET THEM SEE (4 Oct
+ * 2026; src/lib/student-consent.ts). A door names the grant its page is
+ * about — ATTENDANCE, RESULTS, MONEY, HOSTEL_TRANSPORT, PLACEMENT, MESSAGES —
+ * and a guardian of a student who is not a minor at a COLLEGE or an
+ * AUTONOMOUS_COLLEGE passes only while that grant is on. A door that names
+ * none is refused for such a student outright: default-deny, so a family page
+ * written before colleges existed shows an adult's guardian nothing until it
+ * says which grant it is. A minor's guardian, and every guardian at a school
+ * or a junior college, passes as before.
+ */
+export async function assertGuardianAccess(parentUserId: string, studentMembershipId: string, grant?: StudentConsentGrant) {
   const link = await db.guardianship.findFirst({
     where: {
       parentUserId,
@@ -259,14 +280,17 @@ export async function assertGuardianAccess(parentUserId: string, studentMembersh
     include: {
       student: {
         include: {
-          user: { select: { id: true, name: true, preferredName: true, avatarKey: true, birthdate: true } },
-          school: { select: { id: true, name: true, timezone: true, brandPrimary: true, logoPath: true } },
+          user: { select: { id: true, name: true, preferredName: true, avatarKey: true, birthdate: true, isMinor: true } },
+          school: { select: { id: true, name: true, timezone: true, brandPrimary: true, logoPath: true, kind: true } },
         },
       },
     },
   });
 
   if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
+  if (isCollegeKind(link.student.school.kind) && !link.student.user.isMinor) {
+    if (!grant || !(await parentMaySee(studentMembershipId, grant))) throw new AccessError("consent.refuseNotGranted");
+  }
   return link;
 }
 
@@ -279,7 +303,7 @@ export async function assertAssignmentAccess(
     where: {
       id: assignmentId,
       schoolId: ctx.schoolId,
-      ...(ctx.role === "TEACHER"
+      ...(isTeachingRole(ctx.role)
         ? { class: { teachers: { some: { teacherMembershipId: ctx.membershipId } } } }
         : {}),
       ...(ctx.role === "STUDENT"
@@ -353,7 +377,8 @@ export async function assertRemarkAccess(
     },
     select: { id: true },
   });
-  if (guardian) return thread;
+  // An adult at a college decides whether their guardian is in the room (MESSAGES, student-consent.ts).
+  if (guardian && (await parentMaySee(thread.studentMembershipId, "MESSAGES"))) return thread;
 
   throw new AccessError("access.threadNotFound", "NOT_FOUND");
 }

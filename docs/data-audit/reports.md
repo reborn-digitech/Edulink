@@ -1,13 +1,34 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-03T20:59:57.211Z · schools: Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 161 WARN · 72 INFO
+Run: 2026-10-04T01:02:02.453Z · schools: Saraswati Arts and Science College, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 220 WARN · 95 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
-## WARN (161)
+## WARN (220)
 
 | check | school | detail |
 |---|---|---|
+| udise-students | Saraswati Arts and Science College | ADITYA PATIL was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | ADITYA PATIL goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | SAKSHI JADHAV was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | SAKSHI JADHAV goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | OMKAR SHINDE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | OMKAR SHINDE goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | PRANAV KULKARNI was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | PRANAV KULKARNI goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | RUTUJA PAWAR was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | RUTUJA PAWAR goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | class 2/: roll number 1 appears twice |
+| udise-students | Saraswati Arts and Science College | TEJAS MORE was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | TEJAS MORE goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | class 2/: roll number 2 appears twice |
+| udise-students | Saraswati Arts and Science College | SNEHAL GAIKWAD was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | SNEHAL GAIKWAD goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | class 2/: roll number 3 appears twice |
+| udise-students | Saraswati Arts and Science College | YASH CHAVAN was here last year but has no published annual card — appeared/result/marks go out blank |
+| udise-students | Saraswati Arts and Science College | YASH CHAVAN goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | POOJA BHOSALE goes out with blank SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
+| udise-students | Saraswati Arts and Science College | KUNAL DESHMUKH goes out with blank MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4) |
 | udise-students | Saraswati Vidya Mandir | AAROHI SONAWANE was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | BHUSHAN JADHAV was here last year but has no published annual card — appeared/result/marks go out blank |
 | udise-students | Saraswati Vidya Mandir | CHAITANYA KALE was here last year but has no published annual card — appeared/result/marks go out blank |
@@ -58,53 +79,57 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-students | Sunrise Public School | KRISH SHARMA goes out with blank MOBILE NUMBER |
 | udise-students | Sunrise Public School | MYRA REDDY goes out with blank GENDER, MOBILE NUMBER |
 | udise-students | Sunrise Public School | KABIR REDDY goes out with blank GENDER, MOBILE NUMBER |
-| udise-students | ZZ Northgate School | ZZ FALGUNI FERNANDES goes out with blank GENDER |
+| udise-students | ZZ Northgate School | ZZ DIVYA DESAI goes out with blank MOBILE NUMBER |
+| udise-students | ZZ Northgate School | ZZ ESHAN ENGINEER goes out with blank MOBILE NUMBER |
+| udise-students | ZZ Northgate School | ZZ FALGUNI FERNANDES goes out with blank GENDER, MOBILE NUMBER |
 | udise-students | ZZ Northgate School | ZZ GAURAV GOKHALE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ HARINI HEGDE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ ISHAAN IYENGAR goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ JYOTI JOSHI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ KABIR KULKARNI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ LALITA LIMAYE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ JYOTI JOSHI goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ KABIR KULKARNI goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ LALITA LIMAYE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ MANAV MHATRE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ NANDINI NAIK goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ OMKAR APTE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ PALLAVI BHATT goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ QADIR CHAVAN goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ RITIKA DESAI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ PALLAVI BHATT goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ QADIR CHAVAN goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ RITIKA DESAI goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ SAHIL ENGINEER goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ TANVI FERNANDES goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ UDAY GOKHALE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ VAISHALI HEGDE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ WASIM IYENGAR goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ YAMINI JOSHI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ WASIM IYENGAR goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ YAMINI JOSHI goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ ZOYA KULKARNI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ ARJUN LIMAYE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ BHOOMI MHATRE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ CHIRAG NAIK goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ DEEPA APTE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ EKTA BHATT goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ CHIRAG NAIK goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ DEEPA APTE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ EKTA BHATT goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ FARHAN CHAVAN goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ GITANJALI DESAI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ HEMANT ENGINEER goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ INDIRA FERNANDES goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ JATIN GOKHALE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ KAVYA HEGDE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ INDIRA FERNANDES goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ JATIN GOKHALE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ KAVYA HEGDE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ LOKESH IYENGAR goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ MEERA JOSHI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ NIKHIL KULKARNI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ OJAS LIMAYE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ PRIYANKA MHATRE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ RAHUL NAIK goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ OJAS LIMAYE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ PRIYANKA MHATRE goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ RAHUL NAIK goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ SNEHA APTE goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ TARUN BHATT goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
 | udise-students | ZZ Northgate School | ZZ URVASHI CHAVAN goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ VIKRAM DESAI goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ WAHEEDA ENGINEER goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
-| udise-students | ZZ Northgate School | ZZ YASH FERNANDES goes out with blank GENDER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ VIKRAM DESAI goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ WAHEEDA ENGINEER goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-students | ZZ Northgate School | ZZ YASH FERNANDES goes out with blank GENDER, MOBILE NUMBER, SOCIAL CATEGORY (General-1, SC-2, ST-3, OBC-4), Admission Number |
+| udise-enrolment | Saraswati Arts and Science College | 10 pupil(s) file under "Not on record" for category |
 | udise-enrolment | Saraswati Vidya Mandir | 7 pupil(s) have no gender on record and sit in the third column of every table |
 | udise-enrolment | Sunrise Public School | 7 pupil(s) have no gender on record and sit in the third column of every table |
 | udise-enrolment | ZZ Northgate School | 42 pupil(s) file under "Not on record" for category |
 | udise-enrolment | ZZ Northgate School | 43 pupil(s) have no gender on record and sit in the third column of every table |
+| udise-teachers | Saraswati Arts and Science College | DR ANIL DESHPANDE goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
 | udise-teachers | Saraswati Vidya Mandir | VANDANA PATHAK goes out with blank 3.2.8(a) |
 | udise-teachers | Saraswati Vidya Mandir | MANISHA KALE goes out with blank 3.2.8(a) |
 | udise-teachers | Saraswati Vidya Mandir | PRASHANT GAIKWAD goes out with blank 3.2.8(a) |
@@ -126,37 +151,71 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | udise-teachers | Sunrise Public School | ROHIT PATIL goes out with blank 3.2.8(a) |
 | udise-teachers | Sunrise Public School | ANJUM QURESHI goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ ROHAN IYER goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
+| udise-teachers | ZZ Northgate School | ZZ SUNITA KALE goes out with blank 3.2.8(a) |
+| udise-teachers | ZZ Northgate School | ZZ IMRAN SHAIKH goes out with blank 3.2.8(a) |
+| udise-teachers | ZZ Northgate School | ZZ LEELA MENON goes out with blank 3.2.8(a) |
+| udise-teachers | ZZ Northgate School | ZZ VIKAS RANE goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ REKHA BHAGAT goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ TANMAY GODSE goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ NASREEN MIRZA goes out with blank 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ PRAKASH SALUNKHE goes out with blank 3.2.8(a) |
-| udise-teachers | ZZ Northgate School | ZZ DEEPAK AHER goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
 | udise-teachers | ZZ Northgate School | ZZ KIRAN VAIDYA goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
-| board-sheets | Saraswati Vidya Mandir | NUPUR AHIRE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Saraswati Vidya Mandir | KALYANI SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| udise-teachers | ZZ Northgate School | ZZ DEEPAK AHER goes out with blank 3.2.2, 3.2.3, 3.2.5, 3.2.12, 3.2.14, 3.2.8(a) |
+| board-sheets | Saraswati Arts and Science College | SNEHAL GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | OMKAR SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | ADITYA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | YASH CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | SAKSHI JADHAV has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | RUTUJA PAWAR has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | TEJAS MORE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | PRANAV KULKARNI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Arts and Science College | no affiliation or index number on the filing identity — both board sheets carry a blank first column |
 | board-sheets | Saraswati Vidya Mandir | HARSHAD GAIKWAD has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | NUPUR AHIRE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | GAYATRI THAKARE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | MANDAR BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Saraswati Vidya Mandir | KALYANI SHINDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Saraswati Vidya Mandir | PRATHAMESH NIKAM has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | YASHVI BHOSALE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | Sunrise Public School | MYRA REDDY has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | IRA JADHAV has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | KRISH SHARMA has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | DARSH DESHPANDE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | Sunrise Public School | AARNA PATIL has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ TARUN BHATT has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ YASH FERNANDES has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| board-sheets | ZZ Northgate School | ZZ URVASHI CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ VIKRAM DESAI has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ URVASHI CHAVAN has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ WAHEEDA ENGINEER has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
+| board-sheets | ZZ Northgate School | ZZ TARUN BHATT has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
 | board-sheets | ZZ Northgate School | ZZ SNEHA APTE has no name in the school's script — the Maharashtra pre-list goes out with blank Devanagari columns |
-| report-card-items | ZZ Northgate School | 1 paper(s) on cards differ from the marks as they stand now — a published card is frozen; a draft regenerates when opened |
+| leaving-certificates | Saraswati Arts and Science College | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
 | leaving-certificates | ZZ Northgate School | 1 pupil(s) left with no departure record — no leaving certificate exists for them |
+| inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
+| inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a guardian with a number they proved — feeds texts and reminders |
+| inputs-pupils | Saraswati Arts and Science College | 9 of 10 pupils lack a guardian at all — feeds circulars, fee reminders, the PEN change approval |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack father's and mother's names — feeds certificates ("child of"), UDISE+, the board sheets |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack category (coded) — feeds UDISE+ SOCIAL CATEGORY, the enrolment tables, the board sheets |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack religion (coded) — feeds UDISE+ MINORITY GROUP |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack mother tongue, from the list — feeds UDISE+ MOTHER TONGUE, MSBSHSE |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack address and PIN — feeds UDISE+ PRESENT ADDRESS and PINCODE, certificates |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack BPL and EWS answered — feeds UDISE+ BPL, EWS and RTE columns |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack UDISE+ PEN — feeds CBSE and MSBSHSE PEN, the TC, finding the pupil by number |
+| inputs-pupils | Saraswati Arts and Science College | 10 of 10 pupils lack household (occupations, income) — feeds RTE and EWS verification |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack a staff record — feeds the DCF teacher profile, leave balances |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack date of birth (record or account) — feeds DCF 3.2.3 |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack service start — feeds DCF 3.2.14 falls back to the day they joined this school |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack joined this school — feeds DCF 3.2.15 falls back to the account's join date |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack gender, category, qualifications, appointment (coded) — feeds DCF 3.2.2–3.2.12 |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
+| inputs-staff | Saraswati Arts and Science College | 2 of 2 staff lack leave entitlement — feeds the leave balance on the desk |
+| inputs-school | Saraswati Arts and Science College | the current year has no terms — no series gets a term, no term card can be built |
 | inputs-pupils | Saraswati Vidya Mandir | 36 of 48 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Saraswati Vidya Mandir | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | Sunrise Public School | 36 of 48 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-staff | Sunrise Public School | 11 of 11 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 | inputs-pupils | ZZ Northgate School | 43 of 48 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
+| inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack a pupil record — feeds every certificate field, every filing column |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack father's and mother's names — feeds certificates ("child of"), UDISE+, the board sheets |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack admission number — feeds UDISE+ Admission Number, CBSE Admission No., MSBSHSE GR no., the TC |
 | inputs-pupils | ZZ Northgate School | 43 of 48 pupils lack admission date — feeds UDISE+ ADMISSION DATE falls back to the day the account joined |
@@ -168,15 +227,17 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 46 of 48 pupils lack name in the school's script — feeds the MSBSHSE pre-list's Devanagari columns |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack UDISE+ PEN — feeds CBSE and MSBSHSE PEN, the TC, finding the pupil by number |
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
-| inputs-staff | ZZ Northgate School | 8 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
+| inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (72)
+## INFO (95)
 
 | check | school | detail |
 |---|---|---|
+| udise-students | Saraswati Arts and Science College | 10 pupils checked cell by cell across 18 coded columns |
 | udise-students | Saraswati Vidya Mandir | 48 pupils checked cell by cell across 18 coded columns |
 | udise-students | Sunrise Public School | 48 pupils checked cell by cell across 18 coded columns |
 | udise-students | ZZ Northgate School | 48 pupils checked cell by cell across 18 coded columns |
+| register-csv | Saraswati Arts and Science College | no register to export |
 | register-csv | Saraswati Vidya Mandir | grade 5: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Saraswati Vidya Mandir | grade 6: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Saraswati Vidya Mandir | grade 7: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
@@ -189,12 +250,18 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | register-csv | Sunrise Public School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | no register to export |
+| staff-csv | Saraswati Arts and Science College | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | ZZ Northgate School | 4 staff have no leave entitlement on their record — the desk sees no balance for them |
+| report-card-items | Saraswati Arts and Science College | 0 card papers checked against their grades |
 | report-card-items | Saraswati Vidya Mandir | 128 card papers checked against their grades |
 | report-card-items | Sunrise Public School | 128 card papers checked against their grades |
-| report-card-items | ZZ Northgate School | 60 card papers checked against their grades |
+| report-card-items | ZZ Northgate School | 48 card papers checked against their grades |
 | certificates | Saraswati Vidya Mandir | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
 | certificates | Sunrise Public School | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
+| insights | Saraswati Arts and Science College | FY BCom A: 2 pupil(s) have no marks in the window and are outside the class average |
+| insights | Saraswati Arts and Science College | SY BCom A: 3 pupil(s) have no marks in the window and are outside the class average |
+| insights | Saraswati Arts and Science College | SY BSc Physics A: 5 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 10 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 5 · A: 8 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Vidya Mandir | Grade 7 · A: 8 pupil(s) have no marks in the window and are outside the class average |
@@ -210,13 +277,25 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | insights | ZZ Northgate School | ZZ Grade 7 · A: 6 pupil(s) have no marks in the window and are outside the class average |
 | insights | ZZ Northgate School | ZZ Grade 8 · A: 6 pupil(s) have no marks in the window and are outside the class average |
 | insights | ZZ Northgate School | ZZ Grade 9 · A: 6 pupil(s) have no marks in the window and are outside the class average |
+| progress-report | Saraswati Arts and Science College | no pupil with marks |
 | progress-report | Saraswati Vidya Mandir | the report prints no school logo (School.logoPath is blank) |
 | progress-report | Sunrise Public School | the report prints no school logo (School.logoPath is blank) |
-| progress-report | ZZ Northgate School | the report prints no school logo (School.logoPath is blank) |
+| progress-report | ZZ Northgate School | no pupil with marks |
+| year-archive | Saraswati Arts and Science College | 2025–26: 8 on roll, 0 leavers, 0 badges archived |
 | year-archive | Saraswati Vidya Mandir | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | Sunrise Public School | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
 | retention | platform | tonight would take sessions 10, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0 |
+| inputs-school | Saraswati Arts and Science College | school has no UDISE code — every UDISE+ sheet's first column and file name |
+| inputs-school | Saraswati Arts and Science College | school has no board — which board sheet applies |
+| inputs-school | Saraswati Arts and Science College | school has no affiliation or index number — CBSE and MSBSHSE first column |
+| inputs-school | Saraswati Arts and Science College | school has no district and block — the filing identity the DCF prints |
+| inputs-school | Saraswati Arts and Science College | school has no management type — the DCF's management code |
+| inputs-school | Saraswati Arts and Science College | school has no medium — MSBSHSE first-language coding |
+| inputs-school | Saraswati Arts and Science College | school has no logo — certificates, receipts and progress reports print no logo |
+| inputs-school | Saraswati Arts and Science College | school has no report card rules — cards use the default bands and layout |
+| inputs-school | Saraswati Arts and Science College | 3 class(es) have no section — the UDISE+ sheet invents "A" |
+| inputs-school | Saraswati Arts and Science College | 10 pupil(s) have no health card |
 | inputs-pupils | Saraswati Vidya Mandir | 7 of 48 pupils lack gender — feeds UDISE+ GENDER, the enrolment tables' boys/girls, the board sheets |
 | inputs-pupils | Saraswati Vidya Mandir | 18 of 48 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
 | inputs-pupils | Saraswati Vidya Mandir | 18 of 48 pupils lack a guardian with a number they proved — feeds texts and reminders |
@@ -234,6 +313,9 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-school | Sunrise Public School | school has no logo — certificates, receipts and progress reports print no logo |
 | inputs-school | Sunrise Public School | 6 timetable slot(s) have no teacher |
 | inputs-school | Sunrise Public School | 44 pupil(s) have no health card |
+| inputs-pupils | ZZ Northgate School | 23 of 48 pupils lack a contact number, the guardian's or the record's — feeds UDISE+ MOBILE NUMBER |
+| inputs-pupils | ZZ Northgate School | 23 of 48 pupils lack a guardian with a number they proved — feeds texts and reminders |
+| inputs-pupils | ZZ Northgate School | 23 of 48 pupils lack a guardian at all — feeds circulars, fee reminders, the PEN change approval |
 | inputs-pupils | ZZ Northgate School | 1 of 48 pupils lack previous school's TC — feeds the admission register's TC column, for pupils who came from another school |
 | inputs-staff | ZZ Northgate School | 4 of 12 staff lack a staff record — feeds the DCF teacher profile, leave balances |
 | inputs-staff | ZZ Northgate School | 4 of 12 staff lack date of birth (record or account) — feeds DCF 3.2.3 |
@@ -245,4 +327,4 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-school | ZZ Northgate School | school has no logo — certificates, receipts and progress reports print no logo |
 | inputs-school | ZZ Northgate School | 8 timetable slot(s) have no teacher |
 | inputs-school | ZZ Northgate School | 42 pupil(s) on the roll have no fee plan this year — no demand, no dues, no receipt |
-| inputs-school | ZZ Northgate School | 44 pupil(s) have no health card |
+| inputs-school | ZZ Northgate School | 45 pupil(s) have no health card |

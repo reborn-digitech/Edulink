@@ -7,7 +7,7 @@
  * so a drift between the OpenAPI document and the client fails here first.
  */
 import { createApiClient } from "@edulink/api-client";
-import { meSchema, sessionsListSchema } from "@edulink/contracts";
+import { LIMITED_ROLES, meSchema, sessionsListSchema } from "@edulink/contracts";
 
 /**
  * The role matrix: every parameterless GET the app's screens call, as every
@@ -35,8 +35,17 @@ const TOKENS = {
   LIBRARIAN: process.env.EDULINK_TOKEN_LIBRARIAN,
   WARDEN: process.env.EDULINK_TOKEN_WARDEN,
   ALUMNUS: process.env.EDULINK_TOKEN_ALUMNUS,
+  // The college's seven (4 Oct 2026), minted by `npm run zz:token -- FACULTY` and so on (ZZ Vidya College; the recruiter with no school).
+  FACULTY: process.env.EDULINK_TOKEN_FACULTY,
+  HOD: process.env.EDULINK_TOKEN_HOD,
+  EXAM_CONTROLLER: process.env.EDULINK_TOKEN_EXAM_CONTROLLER,
+  IQAC: process.env.EDULINK_TOKEN_IQAC,
+  TPO: process.env.EDULINK_TOKEN_TPO,
+  ACCOUNTS: process.env.EDULINK_TOKEN_ACCOUNTS,
+  RECRUITER: process.env.EDULINK_TOKEN_RECRUITER,
 };
-const MODULE_ROLES = ["DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"];
+/** Every role behind the default-deny gate: a "signed-in" door opens to one only where x-limited-roles names it. */
+const MODULE_ROLES: string[] = [...LIMITED_ROLES];
 const describeIf = BASE ? describe : describe.skip;
 
 function client(token: string | null) {
@@ -97,7 +106,7 @@ describeIf("the role matrix, from the app's client", () => {
     if (access === "operator" || access === "app-admin") return 403;
     // An account door is decided by the person's memberships, which a role token does not say.
     if (access === "account") return "2xx-or-403";
-    // "signed-in" is every role but a module role's, which passes only where x-limited-roles names it.
+    // "signed-in" is every role but a limited role's (module, college staff, recruiter), which passes only where x-limited-roles names it.
     if (access === "signed-in") return !MODULE_ROLES.includes(role) || (op["x-limited-roles"] ?? []).includes(role) ? "2xx" : 403;
     if (access.includes(role)) return "2xx";
     return 403;

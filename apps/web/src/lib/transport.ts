@@ -36,6 +36,10 @@ import type { ExportFile } from "./export-file";
 import type { ActiveContext } from "./session";
 import { atMinute, etaRange, isMissed, passTimes, withinFence, minuteLabel } from "./transport-geo";
 
+import { isCollegeKind } from "./institution";
+
+/** The staff of a college who may hold a seat on a route (4 Oct 2026). */
+const COLLEGE_RIDER_STAFF = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "ADMIN", "PRINCIPAL", "LIBRARIAN", "WARDEN", "DRIVER"] as const;
 /**
  * TRANSPORT (the owner's decision of 3 October 2026), an optional module.
  *
@@ -379,15 +383,19 @@ export async function allotPupils(ctx: ActiveContext, input: TransportAllotInput
   const schoolId = office.schoolId;
   const { timezone } = await schoolZone(schoolId);
   const from = input.fromDateKey ?? todayKey(timezone);
-  const stop = await db.transportStop.findFirst({ where: { id: input.stopId, schoolId, routeId: input.routeId }, select: { id: true, route: { select: { active: true } } } });
+  const stop = await db.transportStop.findFirst({ where: { id: input.stopId, schoolId, routeId: input.routeId }, select: { id: true, route: { select: { active: true, kind: true } } } });
   if (!stop) throw new AccessError("transport.refuseStopNotOnRoute");
   if (!stop.route.active) throw new AccessError("transport.refuseArchived");
+  // A campus shuttle on a loop (4 Oct 2026) keeps no roster: anyone rides it.
+  if (stop.route.kind === "LOOP") throw new AccessError("collegeOffice.refuseLoopRoster");
   if (input.feeHeadId) {
     const head = await db.feeHead.findFirst({ where: { id: input.feeHeadId, schoolId, kind: "TRANSPORT", retiredAt: null }, select: { id: true } });
     if (!head) throw new AccessError("transport.refuseFeeHead");
   }
   const ids = [...new Set(input.studentMembershipIds)];
-  const pupils = await db.membership.count({ where: { id: { in: ids }, schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } });
+  // At a college, staff ride too (4 Oct 2026): a member of staff may hold a seat as a student does.
+  const college = isCollegeKind((await db.school.findUnique({ where: { id: schoolId }, select: { kind: true } }))?.kind ?? "SCHOOL");
+  const pupils = await db.membership.count({ where: { id: { in: ids }, schoolId, role: college ? { in: ["STUDENT", ...COLLEGE_RIDER_STAFF] } : "STUDENT", status: "ACTIVE", leftAt: null } });
   if (pupils !== ids.length) throw new AccessError("transport.refuseNotPupil");
   const result = await db.$tenantTransaction(async (raw: unknown) => {
     const tx = raw as Prisma.TransactionClient;
@@ -862,6 +870,8 @@ export async function markBoarding(ctx: ActiveContext, tripId: string, body: Tri
   const d = await driverOf(ctx);
   const trip = await driversTrip(d, tripId);
   if (trip.status !== "LIVE") throw new AccessError("transport.refuseNotLive");
+  // A loop's trips carry no boardings (4 Oct 2026): there is no roster to tick.
+  if ((await db.transportRoute.findUnique({ where: { id: trip.assignment.routeId }, select: { kind: true } }))?.kind === "LOOP") throw new AccessError("collegeOffice.refuseLoopBoarding");
   const riders = await ridersOf(d.schoolId, trip.assignment.routeId, trip.dateKey, trip.direction);
   const seat = riders.find((r) => r.id === body.allotmentId);
   if (!seat) throw new AccessError("transport.refuseNotOnTrip");
@@ -906,7 +916,7 @@ async function childOf(ctx: ActiveContext, childId?: string | null): Promise<{ s
     if (!first) throw new AccessError("access.notYourChild", "NOT_FOUND");
     id = first.studentMembershipId;
   }
-  const link = await assertGuardianAccess(ctx.user.id, id);
+  const link = await assertGuardianAccess(ctx.user.id, id, "HOSTEL_TRANSPORT");
   return { studentMembershipId: id, name: personName(link.student.user), schoolId: link.student.school.id, schoolName: link.student.school.name };
 }
 
@@ -1002,7 +1012,7 @@ export async function familyTransport(ctx: ActiveContext, childId?: string | nul
 /** A guardian switches the near-stop alert for one of their children. Audited only when it changes. */
 export async function setNearAlerts(ctx: ActiveContext, childId: string, nearAlerts: boolean): Promise<{ nearAlerts: boolean }> {
   if (ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
-  const link = await assertGuardianAccess(ctx.user.id, childId);
+  const link = await assertGuardianAccess(ctx.user.id, childId, "HOSTEL_TRANSPORT");
   const schoolId = link.student.school.id;
   await assertModuleOn(schoolId, "TRANSPORT");
   const before = await db.transportAlertPref.findUnique({ where: { studentMembershipId_userId: { studentMembershipId: childId, userId: ctx.user.id } }, select: { nearAlerts: true } });

@@ -39,7 +39,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
   }
 
-  const { school, admin } = parsed.data;
+  const { school, admin, kind } = parsed.data;
 
   /**
    * ⚠ REGISTERING A SCHOOL MINTS A TENANT AND ITS ADMIN IN ONE PRESS, and an
@@ -138,6 +138,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           timezone: school.timezone,
           brandPrimary: school.brandPrimary || null,
           onboardingState: writeJson({ createdSchool: true }),
+          kind,
         },
       });
 
@@ -158,8 +159,8 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           status: "ACTIVE",
         },
       });
-      // Every school starts with ALUMNI on (3 Oct 2026); the rest wait for the admin.
-      await writeDefaultModules(createdSchool.id, tx);
+      // Every school starts with ALUMNI on (3 Oct 2026), a college with ACADEMICS too (4 Oct); the rest wait for the admin.
+      await writeDefaultModules(createdSchool.id, tx, kind);
 
       await tx.authToken.create({
         data: {
@@ -207,7 +208,7 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     action: "school.create",
     targetType: "School",
     targetId: created.schoolId,
-    meta: { name: school.name, code: created.code },
+    meta: { name: school.name, code: created.code, kind },
   });
 
   await createSession(created.userId, { schoolId: created.schoolId, role: "ADMIN" });

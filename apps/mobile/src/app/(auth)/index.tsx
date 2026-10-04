@@ -101,6 +101,8 @@ export default function SignIn() {
         <Button label={t("login.emailMeALink")} variant="secondary" onPress={() => router.push("/(auth)/magic-link")} />
         {google ? <Button label={t("login.ssoContinue", { provider: "Google" })} variant="secondary" onPress={() => void continueWith("google")} /> : null}
         <Button label={t("firstSignin.title")} variant="ghost" onPress={() => router.push("/(auth)/first-signin")} />
+        {/* A recruiter registers itself (4 Oct 2026): an outside account that reaches a college only through a drive. */}
+        <Button label={t("recruiter.loginLink")} variant="ghost" onPress={() => router.push("/(auth)/recruiter-register" as never)} />
       </View>
       <LanguageRow />
       <Text variant="xs" tone="subtle" style={{ textAlign: "center", marginTop: th.space[4] }}>

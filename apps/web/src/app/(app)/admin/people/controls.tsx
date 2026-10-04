@@ -24,9 +24,12 @@ export function DirectoryControls({
   leftCount,
   suspendedCount,
   classes,
+  roles,
 }: {
   query: string;
   role: SchoolRole | null;
+  /** The role chips this institution shows (4 Oct 2026): a college's six staff roles at a college only; every school role when left out. */
+  roles?: readonly SchoolRole[];
   classId: string;
   sort: string;
   status: "ACTIVE" | "SUSPENDED" | "LEFT";
@@ -147,7 +150,7 @@ export function DirectoryControls({
         <FilterChip active={!role} onClick={() => navigate({ role: "" })}>
           {t("people.everyone")}
         </FilterChip>
-        {SCHOOL_ROLES.map((r) => (
+        {(roles ?? SCHOOL_ROLES).map((r) => (
           <FilterChip key={r} active={role === r} onClick={() => navigate({ role: r })}>
             {t(ROLE_META[r].pluralKey)}
           </FilterChip>

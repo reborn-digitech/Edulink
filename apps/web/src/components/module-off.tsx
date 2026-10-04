@@ -10,25 +10,26 @@ import type { Translate } from "@/lib/i18n/dictionary";
  *
  *   if (!(await isModuleOn(ctx.schoolId, "LIBRARY"))) return <ModuleOff module="LIBRARY" t={t} />;
  */
-export function ModuleOff({ module, t }: { module: SchoolModuleCode; t: Translate }) {
+export function ModuleOff({ module, t, college = false }: { module: SchoolModuleCode; t: Translate; college?: boolean }) {
   const name = t(MODULE_META[module].nameKey);
   return (
     <EmptyState
       icon={<PuzzlePieceIcon weight="duotone" className="size-8" />}
       title={t("modules.offTitle", { module: name })}
-      description={t("modules.offBody", { module: name })}
+      // A college's pages say "college" (4 Oct 2026): pass `college` from institutionKindOf.
+      description={t(college ? "modules.offBodyCollege" : "modules.offBody", { module: name })}
     />
   );
 }
 
 /** The placeholder a module role's home shows while the module is on and its screens are still being built. */
-export function ModuleComing({ module, t }: { module: SchoolModuleCode; t: Translate }) {
+export function ModuleComing({ module, t, college = false }: { module: SchoolModuleCode; t: Translate; college?: boolean }) {
   const name = t(MODULE_META[module].nameKey);
   return (
     <EmptyState
       icon={<HourglassMediumIcon weight="duotone" className="size-8" />}
       title={t("modules.comingTitle", { module: name })}
-      description={t("modules.comingBody", { module: name })}
+      description={t(college ? "modules.comingBodyCollege" : "modules.comingBody", { module: name })}
     />
   );
 }

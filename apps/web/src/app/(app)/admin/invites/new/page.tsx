@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { InviteForm } from "./form";
-import { INVITABLE_ROLES, type InvitableRole } from "@/lib/constants";
+import { invitableRolesFor, type InvitableRole } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,10 +21,6 @@ export default async function NewInvitePage({
   const ctx = await requireRole("ADMIN");
   const { role } = await searchParams;
 
-  const initialRole: InvitableRole = (INVITABLE_ROLES as readonly string[]).includes(role ?? "")
-    ? (role as InvitableRole)
-    : "TEACHER";
-
   const [classes, school] = await Promise.all([
     db.class.findMany({
       where: { schoolId: ctx.schoolId, archivedAt: null },
@@ -33,9 +29,12 @@ export default async function NewInvitePage({
     }),
     db.school.findUniqueOrThrow({
       where: { id: ctx.schoolId },
-      select: { code: true, name: true },
+      select: { code: true, name: true, kind: true },
     }),
   ]);
+  // A college offers its six staff roles and no TEACHER (4 Oct 2026); its first choice is FACULTY.
+  const roles = invitableRolesFor(school.kind);
+  const initialRole: InvitableRole = roles.includes(role as InvitableRole) ? (role as InvitableRole) : roles.includes("TEACHER") ? "TEACHER" : "FACULTY";
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -53,6 +52,7 @@ export default async function NewInvitePage({
       <InviteForm
         className="mt-7"
         initialRole={initialRole}
+        roles={roles}
         classes={classes}
         schoolCode={school.code}
       />

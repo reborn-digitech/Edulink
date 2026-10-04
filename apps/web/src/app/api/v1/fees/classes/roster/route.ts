@@ -8,7 +8,7 @@ import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 /** GET /api/v1/fees/classes/roster?classId — a class's pupils with their plan and totals. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const parsed = feeClassRosterQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });

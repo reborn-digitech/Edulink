@@ -61,10 +61,42 @@ export const TABS: Record<RoleCode, Tab[]> = {
     { name: "index", labelKey: "modules.alumniName", icon: "graduationCap" },
     { name: "messages", labelKey: "nav.messages", icon: "chat", module: "ALUMNI" },
   ],
+  // The college's seven (4 Oct 2026): a home that says whether the role's module is on; each module's builder adds the rest.
+  // The bars (the integration's phone helper, 4 Oct 2026): the web NAV's primaries — the home and the college's feed
+  // (GET /api/v1/shared/bulletin names the six in limitedRoles) — and, for FACULTY and HOD, the academics screen
+  // their doors name (mentoring; an HOD's own teaching). No Messages tab: a conversation's doors open to no college role.
+  FACULTY: [
+    { name: "index", labelKey: "role.faculty", icon: "chalkboard" },
+    { name: "academics-mentoring", labelKey: "academics.mentoringTitle", icon: "chat", module: "ACADEMICS" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  HOD: [
+    { name: "index", labelKey: "role.hod", icon: "users" },
+    { name: "teaching", labelKey: "academics.myTeaching", icon: "chalkboard", module: "ACADEMICS" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  EXAM_CONTROLLER: [
+    { name: "index", labelKey: "role.examController", icon: "clipboard" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  IQAC: [
+    { name: "index", labelKey: "role.iqac", icon: "medal" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  TPO: [
+    { name: "index", labelKey: "role.tpo", icon: "chartLine" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  ACCOUNTS: [
+    { name: "index", labelKey: "role.accounts", icon: "receipt" },
+    { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+  ],
+  // An outside account like the expert: its home, and its account in More.
+  RECRUITER: [{ name: "index", labelKey: "role.recruiter", icon: "handshake" }],
 };
 
 /** Every screen name any role has a tab for; the tab layout declares them all and hides the rest per role. */
-export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "assignments", "practice", "people", "leave", "availability", "mentoring", "sessions", "more"] as const;
+export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "assignments", "practice", "people", "leave", "availability", "mentoring", "sessions", "teaching", "academics-mentoring", "bulletin", "more"] as const;
 
 /**
  * The rest of the web's NAV for each role — what the web's rail and More
@@ -76,6 +108,15 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  */
 export type MenuGroup = "daily" | "school" | "running";
 export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+
+/**
+ * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
+ * /api/v1/staff/leave name the six since the integration). The college's feed is a tab of theirs now.
+ */
+const COLLEGE_STAFF_MENU: MenuItem[] = [
+  { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+  { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
+];
 
 export const MENU_GROUP_KEY: Record<MenuGroup, TranslationKey> = { daily: "nav.groupDaily", school: "nav.groupSchool", running: "nav.groupRunning" };
 export const MENU_GROUPS: MenuGroup[] = ["daily", "school", "running"];
@@ -123,6 +164,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.incidents", icon: "firstAid", group: "daily", screen: "/(app)/family-incidents" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
+    // What an adult student at a college lets their guardians see (4 Oct 2026); under ACADEMICS, which only a college has.
+    { labelKey: "consent.title", icon: "users", group: "running", screen: "/(app)/consent", module: "ACADEMICS" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
@@ -131,6 +174,19 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // The library and the hostel (3 Oct 2026): my loans and the catalogue; my room, tonight's roll call and leave.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "school", screen: "/(app)/library", module: "LIBRARY" },
     { labelKey: "modules.hostelName", icon: "bed", group: "school", screen: "/(app)/hostel", module: "HOSTEL" },
+    // My courses, lectures, attendance, internal marks and registration (the college's academics, 4 Oct 2026).
+    { labelKey: "academics.studentTitle", icon: "graduationCap", group: "daily", screen: "/(app)/academics", module: "ACADEMICS" },
+    { labelKey: "academics.registrationTitle", icon: "clipboard", group: "daily", screen: "/(app)/registration", module: "ACADEMICS" },
+    // A college student's money net of scholarships, the scholarships and their own account (the college office, 4 Oct 2026; ACADEMICS stands for "a college").
+    { labelKey: "collegeOffice.moneyTitle", icon: "receipt", group: "daily", screen: "/(app)/money", module: "ACADEMICS" },
+    { labelKey: "collegeOffice.navScholarships", icon: "receipt", group: "daily", screen: "/(app)/scholarships", module: "SCHOLARSHIPS" },
+    { labelKey: "collegeOffice.accountTitle", icon: "user", group: "running", screen: "/(app)/student-account", module: "ACADEMICS" },
+    // The IQAC module (4 Oct 2026): course feedback, the satisfaction survey and a grievance.
+    { labelKey: "iqac.navVoice", icon: "star", group: "school", screen: "/(app)/voice", module: "IQAC" },
+    // A college student's exams (the exam cell, 4 Oct 2026): the form, hall ticket, results, grade cards, backlogs, credits.
+    { labelKey: "examCell.mineTitle", icon: "chartLine", group: "daily", screen: "/(app)/college-exams", module: "EXAMS" },
+    // Placement (4 Oct 2026): drives, offers, internships, the aptitude bank.
+    { labelKey: "placement.navStudent", icon: "briefcase", group: "school", screen: "/(app)/placement", module: "PLACEMENT" },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -159,6 +215,12 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // The library and the hostel (3 Oct 2026). No `module`: a parent's /me names no school, so each screen says when the child's school has it off.
     { labelKey: "modules.libraryName", icon: "bookOpen", group: "daily", screen: "/(app)/library" },
     { labelKey: "modules.hostelName", icon: "bed", group: "daily", screen: "/(app)/hostel" },
+    // A college child's lecture attendance (4 Oct 2026): /me's modules are the children's schools' for a family.
+    { labelKey: "academics.familyTitle", icon: "graduationCap", group: "daily", screen: "/(app)/academics", module: "ACADEMICS" },
+    // A college child's results (the exam cell, 4 Oct 2026): a minor's always, an adult's under the RESULTS grant.
+    { labelKey: "examCell.parentTitle", icon: "chartLine", group: "daily", screen: "/(app)/college-exams", module: "EXAMS" },
+    // A child's offers and internships (placement, 4 Oct 2026), on the web; the page says when the grant is off.
+    { labelKey: "placement.navParent", icon: "briefcase", group: "school", web: "/parent/placement" },
   ],
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
@@ -256,9 +318,14 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
-  DRIVER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
+  DRIVER: [
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    // My own leave (4 Oct 2026): GET/POST /api/v1/staff/leave name the three module staff roles.
+    { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
+  ],
   LIBRARIAN: [
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     // The desk is the home tab; the catalogue, fines and reports are the web's (the library module, 3 Oct 2026).
     { labelKey: "library.tabCatalogue", icon: "bookOpen", group: "daily", web: "/library/catalogue", module: "LIBRARY" },
     { labelKey: "library.tabFines", icon: "receipt", group: "daily", web: "/library/fines", module: "LIBRARY" },
@@ -266,6 +333,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   ],
   WARDEN: [
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    { labelKey: "nav.leave", icon: "calendar", group: "running", screen: "/(app)/leave" },
     // Roll call, leave and visitors are the home tab; rooms, the menu and incidents are the web's (the hostel module, 3 Oct 2026).
     { labelKey: "hostel.tabRooms", icon: "bed", group: "daily", web: "/hostel/rooms", module: "HOSTEL" },
     { labelKey: "hostel.tabMenu", icon: "clipboard", group: "running", web: "/hostel/menu", module: "HOSTEL" },
@@ -278,7 +346,30 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     // The directory a former pupil may join (the alumni module).
     { labelKey: "alumni.directoryTitle", icon: "users", group: "school", screen: "/(app)/alumni-directory", module: "ALUMNI" },
     { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
+    // The IQAC module (4 Oct 2026): the alumni survey.
+    { labelKey: "iqac.navAlumniSurvey", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
   ],
+  // The college's staff keep their account and their leave here; the college's feed is their tab (4 Oct 2026).
+  // The teachers' survey (the IQAC module, 4 Oct 2026).
+  FACULTY: [
+    ...COLLEGE_STAFF_MENU,
+    { labelKey: "iqac.navVoice", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
+    // The college's academics (4 Oct 2026): the home tab is the day; mentoring is a tab of theirs.
+    // Exam duties (the exam cell, 4 Oct 2026): invigilation, papers to set, bundles, remuneration.
+    { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
+  ],
+  HOD: [
+    ...COLLEGE_STAFF_MENU,
+    { labelKey: "iqac.navVoice", icon: "star", group: "running", screen: "/(app)/voice", module: "IQAC" },
+    // The college's academics (4 Oct 2026): the home tab is the department; an HOD's own teaching is a tab, mentoring is here.
+    { labelKey: "academics.mentoringTitle", icon: "chat", group: "daily", screen: "/(app)/academics-mentoring", module: "ACADEMICS" },
+    { labelKey: "examCell.dutiesTitle", icon: "clipboard", group: "daily", screen: "/(app)/exam-duties", module: "EXAMS" },
+  ],
+  EXAM_CONTROLLER: COLLEGE_STAFF_MENU,
+  IQAC: COLLEGE_STAFF_MENU,
+  TPO: COLLEGE_STAFF_MENU,
+  ACCOUNTS: COLLEGE_STAFF_MENU,
+  RECRUITER: [{ labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" }],
 };
 
 /**
@@ -288,6 +379,17 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
  * list against the files on disk.
  */
 export const HIDDEN_SCREENS = [
+  // The exam cell (4 Oct 2026): a student's (or a guardian's child's) exams, a faculty member's duties.
+  "college-exams",
+  "exam-duties",
+  // The IQAC module (4 Oct 2026): the surveys open to me and the grievance line.
+  "voice",
+  // The college office (4 Oct 2026): a college student's money, scholarships and own account.
+  "money",
+  "scholarships",
+  "student-account",
+  // The college foundation (4 Oct 2026): an adult student's grants to their guardians.
+  "consent",
   "inventory",
   "payroll",
   "payslips",
@@ -296,7 +398,6 @@ export const HIDDEN_SCREENS = [
   "marks",
   "exams",
   "meetings",
-  "bulletin",
   "timetable",
   "staff",
   "calendar",
@@ -404,6 +505,14 @@ export const HIDDEN_SCREENS = [
   // The library and hostel modules (3 Oct 2026): a member's library and a boarder's hostel.
   "library",
   "hostel",
+  // The college's academics (4 Oct 2026): a lecture to mark, a course I teach, a student's (or a guardian's) academics, registration (mentoring and an HOD's own teaching are tabs; ALL_TAB_SCREENS).
+  "lecture",
+  "offering",
+  "academics",
+  "registration",
+  // The placement module (4 Oct 2026): a student's placement, and one drive of a recruiter's company.
+  "placement",
+  "recruiter-drive",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off is left out. */

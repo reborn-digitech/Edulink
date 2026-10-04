@@ -28,16 +28,18 @@ import { closedDayKeys, listHolidays } from "./holidays";
  * days, not four, the way a school counts them.
  */
 
-/** The teaching and office staff: who covers a lesson, who is appraised. */
-export const STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN"] as const;
+/** The teaching and office staff: who covers a lesson, who is appraised — and a college's faculty and HOD (4 Oct 2026). */
+export const STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "FACULTY", "HOD"] as const;
 /**
  * EVERYONE WHO WORKS AT THE SCHOOL: the teaching and office staff and, since
  * the modules (3 Oct 2026), a driver, the library's desk and a warden. The
  * staff register, the staff list and records, and leave are theirs; covering
  * a lesson, an appraisal, signing a paper and two-step sign-in are not, and
- * keep STAFF_ROLES. The alumnus is not staff.
+ * keep STAFF_ROLES. The alumnus is not staff. A college's six staff roles
+ * (4 Oct 2026) work there too: the register, records, leave and payroll are
+ * theirs as well.
  */
-export const SCHOOL_STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN"] as const;
+export const SCHOOL_STAFF_ROLES = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const;
 const COUNTED_KINDS = ["CASUAL", "SICK"];
 
 export type StaffRecordView = {

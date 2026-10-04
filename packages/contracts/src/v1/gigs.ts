@@ -410,7 +410,8 @@ export const gigPayeeSuspendedSchema = z.object({ payout: gigPayeeViewSchema });
 
 /** POST /api/v1/operator/gigs/payments/{paymentId}/retry — a waiting refund tried now. */
 export const gigPayoutRetriedSchema = z.object({ outcome: z.string() });
-export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER"]);
+/** ALUMNUS (4 Oct 2026): a college's alumnus mentor, offering free one-to-ones to its students (src/lib/placement-alumni.ts). */
+export const gigProviderKindSchema = z.enum(["EXPERT", "TEACHER", "ALUMNUS"]);
 const gigAllowanceRowSchema = z.object({ allowed: z.number().int(), used: z.number().int(), left: z.number().int() });
 
 /** GET /api/v1/gigs/sessions — for a pupil, or for each of a guardian's children: the free allowance, their seats, and what is open to book. */

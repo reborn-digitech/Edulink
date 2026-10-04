@@ -118,6 +118,10 @@ describe("the rule", () => {
     expect(mayConverse("ADMIN", "PARENT")).toBe(true);
     expect(mayConverse("TEACHER", "STUDENT")).toBe(true);
     expect(mayConverse("STUDENT", "TEACHER")).toBe(true);
+    // A college's faculty and HOD converse as teachers (4 Oct 2026): an alumnus writes to former faculty, who may answer.
+    expect(mayConverse("ALUMNUS", "FACULTY")).toBe(true);
+    expect(mayConverse("HOD", "STUDENT")).toBe(true);
+    expect(mayConverse("ACCOUNTS", "STUDENT")).toBe(false);
     expect(mayConverse("PARENT", "PRINCIPAL")).toBe(true);
     // ⚠ The safeguarding line. A child never gets an unobserved channel to
     // another child or to somebody else's parent.

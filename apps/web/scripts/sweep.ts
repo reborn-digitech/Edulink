@@ -2581,9 +2581,16 @@ async function main() {
     return mint(email, role, riverside.id, `nav-${role.toLowerCase()}`);
   };
 
+  // The recruiter (4 Oct 2026): an outside account like the expert's, made for the walk and taken away again.
+  const sweepRecruiterEmail = "zz.sweep.recruiter@edulink.test";
+  const sweepRecruiter = await db.user.upsert({ where: { email: sweepRecruiterEmail }, create: { email: sweepRecruiterEmail, name: "ZZ Sweep recruiter", prefs: "{}", isTestFixture: true }, update: { isTestFixture: true } });
+  await db.recruiterProfile.upsert({ where: { userId: sweepRecruiter.id }, create: { userId: sweepRecruiter.id, companyName: "ZZ Sweep Company" }, update: { disabledAt: null } });
+
   try {
     await everyNavLink(riverside.id, async (role) => {
-      if (role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS") return moduleRoleActor(role);
+      // The college's six staff roles (4 Oct 2026) at this school too: their homes say the module is off, their feed and account open.
+      if (role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS" || role === "FACULTY" || role === "HOD" || role === "EXAM_CONTROLLER" || role === "IQAC" || role === "TPO" || role === "ACCOUNTS") return moduleRoleActor(role);
+      if (role === "RECRUITER") return mint(sweepRecruiterEmail, "RECRUITER", null, "nav-recruiter");
       if (role === "ADMIN") return admin;
       if (role === "TEACHER") return teacher;
       if (role === "STUDENT") return student;
@@ -2605,6 +2612,8 @@ async function main() {
     await db.user.deleteMany({ where: { id: sweepExpertUser.id } });
     // The module-role people go with their memberships and sessions (both cascade from User).
     if (moduleRoleUsers.length) await db.user.deleteMany({ where: { id: { in: moduleRoleUsers }, email: { startsWith: "zz.sweep." } } });
+    // The recruiter's profile and sessions cascade from the User row.
+    await db.user.deleteMany({ where: { id: sweepRecruiter.id, email: { startsWith: "zz.sweep." } } });
   }
 
   await mentorshipThread(riverside.id, parent, admin, otherAdmin);

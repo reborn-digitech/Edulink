@@ -4,6 +4,7 @@ import { Button, Card, Row, Screen, Text } from "@/components";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { NoSchool } from "@/screens/shared/no-school";
+import { contextPlace } from "@/lib/institution";
 
 /**
  * "Choose where to go": a person who belongs to more than one school, or is
@@ -28,7 +29,7 @@ export function ChooseContext({ consoles = [], onConsole }: { consoles?: ("opera
           return (
             <Row
               key={key}
-              title={c.schoolName ?? t("account.belongNone")}
+              title={contextPlace(c, t) ?? t("account.belongNone")}
               caption={t(`role.${c.role.toLowerCase()}` as never)}
               right={busy === key ? <Text variant="xs" tone="muted">{t("common.saving")}</Text> : null}
               onPress={async () => {

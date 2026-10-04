@@ -8,7 +8,7 @@
      data-theme="light|dark"      colour scheme
      data-contrast="normal|high"  WCAG 2.2 AAA-leaning contrast boost
      data-font="default|dyslexic" typeface + tracking + line-height
-     data-role="admin|teacher|student|parent|driver|librarian|warden|alumnus"  accent family
+     data-role="admin|teacher|student|parent|driver|librarian|warden|alumnus|faculty|hod|exam_controller|iqac|tpo|accounts|recruiter"  accent family
 
    School branding overrides --accent-* at runtime via an inline style block,
    so a school's colour wins over the role accent without a rebuild. (§7)
@@ -235,6 +235,55 @@
   --accent-ring: #eab308;
   --accent-fg: #1a1500;
 }
+[data-theme="light"]:not([data-contrast="high"]) [data-role="faculty"] [data-chrome] {
+  --accent: #38bdf8;
+  --accent-strong: #7dd3fc;
+  --accent-soft: #082032;
+  --accent-ring: #0ea5e9;
+  --accent-fg: #03131f;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="hod"] [data-chrome] {
+  --accent: #fb7185;
+  --accent-strong: #fda4af;
+  --accent-soft: #2d0a12;
+  --accent-ring: #f43f5e;
+  --accent-fg: #1f0309;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="exam_controller"] [data-chrome] {
+  --accent: #f87171;
+  --accent-strong: #fca5a5;
+  --accent-soft: #2c0b0b;
+  --accent-ring: #ef4444;
+  --accent-fg: #1f0404;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="iqac"] [data-chrome] {
+  --accent: #e879f9;
+  --accent-strong: #f0abfc;
+  --accent-soft: #2a0a2e;
+  --accent-ring: #d946ef;
+  --accent-fg: #1c041f;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="tpo"] [data-chrome] {
+  --accent: #a3e635;
+  --accent-strong: #bef264;
+  --accent-soft: #1a2606;
+  --accent-ring: #84cc16;
+  --accent-fg: #0f1702;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="accounts"] [data-chrome] {
+  --accent: #22d3ee;
+  --accent-strong: #67e8f9;
+  --accent-soft: #072a30;
+  --accent-ring: #06b6d4;
+  --accent-fg: #021618;
+}
+[data-theme="light"]:not([data-contrast="high"]) [data-role="recruiter"] [data-chrome] {
+  --accent: #a78bfa;
+  --accent-strong: #c4b5fd;
+  --accent-soft: #1e1238;
+  --accent-ring: #8b5cf6;
+  --accent-fg: #0f0722;
+}
 [data-theme="light"]:not([data-contrast="high"]) [data-wash] {
   background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 22%, var(--bg)) 0, var(--bg) 260px);
 }
@@ -300,6 +349,56 @@
   --accent-strong: #854d0e;
   --accent-soft: #fefce8;
   --accent-ring: #facc15;
+  --accent-fg: #ffffff;
+}
+/* The college's seven roles (4 Oct 2026): faculty sky, the HOD rose, the exam cell red, IQAC fuchsia, placement lime, accounts cyan, the recruiter violet. */
+[data-role="faculty"] {
+  --accent: #0369a1;
+  --accent-strong: #075985;
+  --accent-soft: #f0f9ff;
+  --accent-ring: #38bdf8;
+  --accent-fg: #ffffff;
+}
+[data-role="hod"] {
+  --accent: #be123c;
+  --accent-strong: #9f1239;
+  --accent-soft: #fff1f2;
+  --accent-ring: #fb7185;
+  --accent-fg: #ffffff;
+}
+[data-role="exam_controller"] {
+  --accent: #b91c1c;
+  --accent-strong: #991b1b;
+  --accent-soft: #fef2f2;
+  --accent-ring: #f87171;
+  --accent-fg: #ffffff;
+}
+[data-role="iqac"] {
+  --accent: #a21caf;
+  --accent-strong: #86198f;
+  --accent-soft: #fdf4ff;
+  --accent-ring: #e879f9;
+  --accent-fg: #ffffff;
+}
+[data-role="tpo"] {
+  --accent: #4d7c0f;
+  --accent-strong: #3f6212;
+  --accent-soft: #f7fee7;
+  --accent-ring: #a3e635;
+  --accent-fg: #ffffff;
+}
+[data-role="accounts"] {
+  --accent: #0e7490;
+  --accent-strong: #155e75;
+  --accent-soft: #ecfeff;
+  --accent-ring: #22d3ee;
+  --accent-fg: #ffffff;
+}
+[data-role="recruiter"] {
+  --accent: #6d28d9;
+  --accent-strong: #5b21b6;
+  --accent-soft: #f5f3ff;
+  --accent-ring: #a78bfa;
   --accent-fg: #ffffff;
 }
 
@@ -375,6 +474,62 @@
   --accent-soft: #2a2306;
   --accent-ring: #eab308;
   --accent-fg: #1a1500;
+}
+[data-theme="dark"][data-role="faculty"],
+[data-theme="dark"] [data-role="faculty"] {
+  --accent: #38bdf8;
+  --accent-strong: #7dd3fc;
+  --accent-soft: #082032;
+  --accent-ring: #0ea5e9;
+  --accent-fg: #03131f;
+}
+[data-theme="dark"][data-role="hod"],
+[data-theme="dark"] [data-role="hod"] {
+  --accent: #fb7185;
+  --accent-strong: #fda4af;
+  --accent-soft: #2d0a12;
+  --accent-ring: #f43f5e;
+  --accent-fg: #1f0309;
+}
+[data-theme="dark"][data-role="exam_controller"],
+[data-theme="dark"] [data-role="exam_controller"] {
+  --accent: #f87171;
+  --accent-strong: #fca5a5;
+  --accent-soft: #2c0b0b;
+  --accent-ring: #ef4444;
+  --accent-fg: #1f0404;
+}
+[data-theme="dark"][data-role="iqac"],
+[data-theme="dark"] [data-role="iqac"] {
+  --accent: #e879f9;
+  --accent-strong: #f0abfc;
+  --accent-soft: #2a0a2e;
+  --accent-ring: #d946ef;
+  --accent-fg: #1c041f;
+}
+[data-theme="dark"][data-role="tpo"],
+[data-theme="dark"] [data-role="tpo"] {
+  --accent: #a3e635;
+  --accent-strong: #bef264;
+  --accent-soft: #1a2606;
+  --accent-ring: #84cc16;
+  --accent-fg: #0f1702;
+}
+[data-theme="dark"][data-role="accounts"],
+[data-theme="dark"] [data-role="accounts"] {
+  --accent: #22d3ee;
+  --accent-strong: #67e8f9;
+  --accent-soft: #072a30;
+  --accent-ring: #06b6d4;
+  --accent-fg: #021618;
+}
+[data-theme="dark"][data-role="recruiter"],
+[data-theme="dark"] [data-role="recruiter"] {
+  --accent: #a78bfa;
+  --accent-strong: #c4b5fd;
+  --accent-soft: #1e1238;
+  --accent-ring: #8b5cf6;
+  --accent-fg: #0f0722;
 }
 }
 

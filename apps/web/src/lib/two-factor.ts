@@ -67,7 +67,9 @@ export function twoFactorCookieOptions() {
   };
 }
 
-const ELIGIBLE_ROLES = ["ADMIN", "PRINCIPAL"];
+// A college's exam controller, IQAC, placement officer and accounts office hold the results, the filings, the
+// recruiters' access and the money's paperwork (4 Oct 2026): they may turn two-step sign-in on too.
+const ELIGIBLE_ROLES = ["ADMIN", "PRINCIPAL", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
 
 /** The office, the head, or the operator. */
 export async function twoFactorEligible(userId: string): Promise<boolean> {
@@ -78,7 +80,11 @@ export async function twoFactorEligible(userId: string): Promise<boolean> {
     where: { userId, status: "ACTIVE", leftAt: null, role: { in: ELIGIBLE_ROLES } },
     select: { id: true },
   });
-  return membership !== null;
+  if (membership !== null) return true;
+  // A recruiter holds no membership, and reads students' records through the drives of its company
+  // (placement, 4 Oct 2026): an active recruiter account may turn two-step sign-in on too.
+  const recruiter = await db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } });
+  return recruiter !== null && recruiter.disabledAt === null;
 }
 
 export type TwoFactorStatus = {

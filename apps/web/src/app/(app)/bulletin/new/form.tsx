@@ -26,9 +26,12 @@ const MAX_VIDEO_BYTES = 100 * 1024 * 1024;
 /** Matches the `.max(10)` on `postSchema.media`, which is what actually enforces it. */
 const MAX_PICTURES = 10;
 
+const TARGET_GROUP_KEY = { PROGRAMME: "collegeHub.groupProgramme", DEPARTMENT: "collegeHub.groupDepartment", DIVISION: "collegeHub.groupDivision", BATCH: "collegeHub.groupBatch" } as const;
+
 export function ComposeForm({
   classes,
   grades,
+  targets = [],
   role,
   allowSchoolWide,
   className,
@@ -38,6 +41,8 @@ export function ComposeForm({
 }: {
   classes: { id: string; name: string }[];
   grades: string[];
+  /** A college's programmes, departments, divisions and batches a staff notice may be narrowed to (4 Oct 2026). */
+  targets?: { value: string; label: string; group: "PROGRAMME" | "DEPARTMENT" | "DIVISION" | "BATCH" }[];
   role: Role;
   allowSchoolWide: boolean;
   className?: string;
@@ -62,6 +67,7 @@ export function ComposeForm({
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [audience, setAudience] = useState<"ALL" | "PARENTS" | "TEACHERS" | "STUDENTS">("ALL");
   const [audienceGrade, setAudienceGrade] = useState("");
+  const [audienceTarget, setAudienceTarget] = useState("");
   const [requiresAck, setRequiresAck] = useState(false);
   const [title, setTitle] = useState(initialTitle ?? "");
   const [body, setBody] = useState("");
@@ -202,6 +208,7 @@ export function ComposeForm({
       payload.set("classId", scope === "CLASS" ? classId : "");
       payload.set("audience", scope === "SCHOOL" ? audience : "ALL");
       payload.set("audienceGrade", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceGrade : "");
+      payload.set("audienceTarget", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceTarget : "");
       payload.set("requiresAck", requiresAck ? "on" : "");
       payload.set("title", title.trim());
       payload.set("body", body.trim());
@@ -355,6 +362,26 @@ export function ComposeForm({
                   {t("practice.classN", { n: grade })}
                 </option>
               ))}
+            </SelectField>
+          )}
+          {audience !== "TEACHERS" && targets.length > 0 && (
+            <SelectField
+              label={t("collegeHub.targetLabel")}
+              value={audienceTarget}
+              onChange={(e) => setAudienceTarget(e.target.value)}
+            >
+              <option value="">{t("collegeHub.targetAny")}</option>
+              {(["PROGRAMME", "DEPARTMENT", "DIVISION", "BATCH"] as const).map((group) =>
+                targets.some((x) => x.group === group) ? (
+                  <optgroup key={group} label={t(TARGET_GROUP_KEY[group])}>
+                    {targets.filter((x) => x.group === group).map((x) => (
+                      <option key={x.value} value={x.value}>
+                        {x.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                ) : null,
+              )}
             </SelectField>
           )}
         </div>

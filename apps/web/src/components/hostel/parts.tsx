@@ -17,7 +17,7 @@ import { Flash } from "@/components/library/parts";
  * from their NAV), and the words for the coded lists.
  */
 
-export const LEAVE_KIND_KEY: Record<HostelLeaveRow["kind"], TranslationKey> = { HOME: "hostel.kindHOME", LOCAL: "hostel.kindLOCAL", MEDICAL: "hostel.kindMEDICAL" };
+export const LEAVE_KIND_KEY: Record<HostelLeaveRow["kind"], TranslationKey> = { HOME: "hostel.kindHOME", LOCAL: "hostel.kindLOCAL", MEDICAL: "hostel.kindMEDICAL", NIGHT_OUT: "collegeOffice.kindNIGHT_OUT" };
 export const LEAVE_STATUS_KEY: Record<HostelLeaveRow["status"], TranslationKey> = { AWAITING_CONSENT: "hostel.statusAWAITING_CONSENT", PENDING: "hostel.statusPENDING", APPROVED: "hostel.statusAPPROVED", DECLINED: "hostel.statusDECLINED", CANCELLED: "hostel.statusCANCELLED" };
 export const ROLL_STATUS_KEY: Record<"PRESENT" | "ON_LEAVE" | "ABSENT" | "NOT_TAKEN", TranslationKey> = { PRESENT: "hostel.rollPRESENT", ON_LEAVE: "hostel.rollON_LEAVE", ABSENT: "hostel.rollABSENT", NOT_TAKEN: "hostel.rollNOT_TAKEN" };
 export const SLOT_KEY: Record<"MORNING" | "NIGHT", TranslationKey> = { MORNING: "hostel.slotMORNING", NIGHT: "hostel.slotNIGHT" };

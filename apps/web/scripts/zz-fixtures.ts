@@ -50,8 +50,14 @@ import { buildInventory, buildPayroll } from "./zz-fixtures-inventory-payroll";
 import { buildLibraryHostel } from "./zz-library-hostel";
 import { buildTransport } from "./zz-transport";
 import { buildAlumni } from "./zz-alumni";
+import { buildColleges } from "./zz-college";
+import { buildAcademics } from "./zz-academics";
+import { buildCollegeExams } from "./zz-exams";
+import { buildIqac } from "./zz-iqac";
+import { buildCollegeOffice } from "./zz-college-office";
+import { buildPlacement } from "./zz-placement";
 import { openAlumnus } from "../src/lib/alumni-membership";
-import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES } from "@edulink/contracts";
+import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
 
 /** A fictitious eleven-digit PEN for seed data, deterministic per membership so re-runs agree. The government issues real ones; the app never generates any. */
@@ -572,7 +578,10 @@ async function buildNorthgate(ctx: Ctx) {
  * (tests/modules.test.ts).
  */
 export async function switchModulesOn(school: { id: string }, modules: readonly string[] = SCHOOL_MODULES, byUserId: string | null = null) {
-  await db.schoolModule.createMany({ data: modules.map((module) => ({ schoolId: school.id, module, enabledByUserId: byUserId })), skipDuplicates: true });
+  // Only what the institution's kind is offered (4 Oct 2026): a school asked for "every module" gets the school version's six, not the college's.
+  const kind = (await db.school.findUnique({ where: { id: school.id }, select: { kind: true } }))?.kind;
+  const offered = modulesForKind(kind);
+  await db.schoolModule.createMany({ data: modules.filter((module) => (offered as readonly string[]).includes(module)).map((module) => ({ schoolId: school.id, module, enabledByUserId: byUserId })), skipDuplicates: true });
   return db.schoolModule.count({ where: { schoolId: school.id } });
 }
 
@@ -2537,6 +2546,23 @@ async function main() {
   // Inventory and payroll (3 Oct 2026): the stores, the asset register and one locked payroll month at Northgate (zz-fixtures-inventory-payroll.ts).
   const stores = await buildInventory(db, northgate.school, northgate.admin.id);
   const payroll = await buildPayroll(db, northgate.school, northgate.admin.id);
+  // The college foundation (4 Oct 2026): ZZ Vidya College with every module and a person in every college role, ZZ Shastri Autonomous College, and a recruiter.
+  const colleges = await buildColleges(db, ctx.passwordHash);
+  // The college's academics (4 Oct 2026): Vidya's departments, scheme, courses, this term, PHY101's twenty lectures, a condonation and locked internal marks (zz-academics.ts).
+  const academics = await buildAcademics(db);
+  if (academics) console.log(`  Academics at ZZ Vidya College: ${academics.lectures} PHY101 lectures, internal marks ${academics.locked ? "locked" : "open"}`);
+  // The college exam cell (4 Oct 2026): Vidya's last-term sitting published with a backlog, a revaluation and a grade card; this term's taking forms; Shastri's in conduct with a sealed paper (zz-exams.ts).
+  const collegeExams = await buildCollegeExams(db);
+  console.log(collegeExams ? `  Exam cell: ${collegeExams.published} results published at ZZ Vidya College, ${collegeExams.forms} forms, Shastri's question paper ${collegeExams.sealed ? "sealed" : "NOT sealed (no FEES_SECRET_KEY)"} — /exam-cell, /student/exams, /faculty/exams` : "  Exam cell: NOT built (the colleges or their academics are missing)");
+  // The college office (4 Oct 2026): fee structures by category, demands and a paid term, scholarship claims, a CAP round with applications in each state, a no-dues with the library line open, college certificates, the library, hostel and bus at a college (zz-college-office.ts).
+  const office = await buildCollegeOffice(db);
+  console.log(office ? `  College office at ZZ Vidya College: ${office.demands} demands for ${office.students - 1} students, ${office.claims} scholarship claims, ${office.applications} applications — /accounts, /admin/college-admissions, /student/money` : "  College office at ZZ Vidya College: NOT built (the college, its people or its programme are missing)");
+  // Placement (4 Oct 2026): ZZ Zeta Analytics checked with zz.recruiter01 bound, this season's open drive and last season's closed one with zz.calumni01's offer, an internship, a project, the alumna as a mentor, the aptitude bank (zz-placement.ts).
+  const placement = await buildPlacement(db);
+  console.log(placement ? `  Placement at ZZ Vidya College: ${placement.drives} drives (one OPEN, one CLOSED), season ${placement.season}, ${placement.bank} new bank questions${placement.backlogForStudent03 ? "" : " — zz.cstudent03 has no live backlog yet (the exam cell's fixture), so the open drive shows them eligible"} — /placement, /recruiter, /student/placement` : "  Placement at ZZ Vidya College: NOT built (the college or its people are missing)");
+  // The IQAC desk (4 Oct 2026), last of the college builders so its predictor reads their rows: Vidya's NAAC cycle computed, three qualitative scores, the registers, committees, surveys, grievances, an AQAR filed and the disclosure published (zz-iqac.ts).
+  const iqac = await buildIqac(db);
+  console.log(iqac ? `  IQAC at ZZ Vidya College: CGPA ${iqac.cgpa.toFixed(2)} over ${iqac.metrics} metrics scored, ${iqac.research} research items, ${iqac.activities} activities, ${iqac.filings} filing(s) — /iqac, /student/voice, /public/disclosure/zz-vidya-college` : "  IQAC at ZZ Vidya College: NOT built (the college or its people are missing)");
   console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
 
   const studentCount = await db.membership.count({
@@ -2581,12 +2607,27 @@ async function main() {
      admissions  ${admissions.cycles} cycles (one open for grades 3 and 6 with a test, one closed), ${admissions.slots} sittings (one cancelled), ${admissions.applications} applications from zz.parent01 in every state and one walk-in — /admin/admissions, /parent/applications
      substitutes ${subs.covered + headCover.covered} lesson(s) covered today (zz.subject1 absent, a free colleague on their first lesson, zz.principal on the next) — /admin/substitutions
      calendar    ${calendar.entries} entries for 2026–27 (holidays, the mid-term exam span, the annual day); ${rolls.numbered} roll numbers — /admin/calendar
-     modules     ${moduleCount} of ${SCHOOL_MODULES.length} on; zz.driver01, zz.librarian, zz.warden@${DOMAIN}; alumnus zz.alumni01@${DOMAIN} (left grade 10 in April 2026${moduleRoles.alumnus ? "" : ", alumnus row NOT found"}) — /driver, /library, /hostel, /alumni
+     modules     ${moduleCount} of ${SCHOOL_VERSION_MODULES.length} on; zz.driver01, zz.librarian, zz.warden@${DOMAIN}; alumnus zz.alumni01@${DOMAIN} (left grade 10 in April 2026${moduleRoles.alumnus ? "" : ", alumnus row NOT found"}) — /driver, /library, /hostel, /alumni
      alumni      ${alumni ? `zz.alumni01 writes to her grade-10 teacher${alumni.room ? "" : " (no class teacher found: no room)"}, ${alumni.posts} tagged posts; zz.alumni02@${DOMAIN} (left 2018) in the directory as a mentor` : "NOT built (alumnus, admin or grade 10 missing)"} — /alumni, /alumni/directory, /admin/alumni
      library     ${libraryHostel ? `${libraryHostel.titles} titles, ${libraryHostel.copies} copies; zz.pupil01 five days overdue, zz.pupil02 first in the queue for title 1, a fine due and one settled` : "NOT built (pupils 01–03, librarian, warden or admin missing)"} — /library, /student/library, /parent/library
      hostel      ${libraryHostel ? `ZZ Tilak House, ${libraryHostel.rooms} rooms, zz.pupil01–03 boarding, last night's roll call taken, a leave approved and back` : "NOT built"} — /hostel, /admin/hostel, /parent/hostel
      transport   ${transport ? `${transport.route}: ${transport.stops} stops, bus MH 12 ZZ 1001 with zz.driver01, ${transport.riders} pupils riding, yesterday's morning trip ended (${transport.positions} positions), today's (${transport.today}) waiting` : "NOT built (driver or pupils missing)"} — /admin/transport, /driver, /parent/transport
      also        invite ${invite.status} for zz.invite1@${DOMAIN}; a remark thread (zz.teacher1 ↔ zz.parent01 about zz.pupil01); practice assignment for grade 6${practice.topic ? ` on "${practice.topic}"` : " (no bank imported: none)"}
+
+  ── ZZ Vidya College (kind COLLEGE, every module on) ─────────────────
+     join code   ${colleges.vidya.code}
+     office      zz.cadmin@${DOMAIN} (registrar), zz.cprincipal@${DOMAIN}
+     staff       zz.faculty01, zz.faculty02, zz.hod01, zz.examctrl, zz.iqac, zz.tpo, zz.accounts @${DOMAIN} — /faculty, /hod, /exam-cell, /iqac, /placement, /accounts
+     students    zz.cstudent01 (17, a minor), zz.cstudent02 (20), zz.cstudent03 (19) @${DOMAIN} — /student/consent
+     guardian    zz.cparent01@${DOMAIN}: of cstudent01 (sees everything) and cstudent02 (sees only what she grants; nothing yet)
+     alumnus     zz.calumni01@${DOMAIN}, left in 2025
+
+  ── ZZ Shastri Autonomous College (kind AUTONOMOUS_COLLEGE) ──────────
+     join code   ${colleges.shastri.code}; ACADEMICS, EXAMS and ALUMNI on, the rest off
+     people      zz.cadmin.s, zz.faculty.s1, zz.cstudent.s1 @${DOMAIN}
+
+  ── Recruiter (no college) ───────────────────────────────────────────
+     zz.recruiter01@${DOMAIN} (ZZ Zeta Analytics) — /recruiter
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

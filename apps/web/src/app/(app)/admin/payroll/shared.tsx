@@ -13,7 +13,7 @@ import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
  * admin.
  */
 export async function payrollGate(adminOnly = false) {
-  const ctx = adminOnly ? await requireRole("ADMIN") : await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = adminOnly ? await requireRole("ADMIN", "ACCOUNTS") : await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const [t, locale, on] = await Promise.all([getT(), getLocale(), isModuleOn(ctx.schoolId, "PAYROLL")]);
   return { ctx, t, locale, on, canEdit: ctx.role === "ADMIN" };
 }

@@ -1,6 +1,6 @@
 import { Pressable, View } from "react-native";
 import { usePathname, useRouter } from "expo-router";
-import { MODULE_ROLES, type RoleCode } from "@edulink/contracts";
+import { isLimitedRoleCode, type RoleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Icon, Row, Screen, Text } from "@/components";
 import { Avatar } from "@/components/avatar";
@@ -8,6 +8,7 @@ import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { menuFor, MENU_GROUP_KEY, type MenuItem } from "@/lib/nav";
+import { contextPlace } from "@/lib/institution";
 import { LanguageRow } from "@/components/language-row";
 import { openWeb } from "@/screens/family/shared";
 
@@ -29,7 +30,9 @@ export function More() {
   if (session.status !== "signed-in") return null;
   const { me } = session;
   const role = me.active.role;
-  const school = me.contexts.find((c) => c.schoolId === me.active.schoolId && c.role === me.active.role)?.schoolName ?? null;
+  const here = me.contexts.find((c) => c.schoolId === me.active.schoolId && c.role === me.active.role);
+  // A college reads with its kind ("ZZ Vidya College · College"), a school as its name (4 Oct 2026).
+  const school = here ? contextPlace(here, t) : null;
   const name = me.user.preferredName ?? me.user.name;
   const description = [role ? t(`role.${role.toLowerCase()}` as TranslationKey) : null, school].filter(Boolean).join(" · ");
   return (
@@ -78,7 +81,7 @@ export function More() {
           return (
             <Row
               key={`${c.schoolId}:${c.role}`}
-              title={c.schoolName ?? t("account.belongNone")}
+              title={contextPlace(c, t) ?? t("account.belongNone")}
               caption={t(`role.${c.role.toLowerCase()}` as TranslationKey)}
               right={active ? <Text variant="xs" tone="accent" bold>{t("account.hereNow")}</Text> : null}
               onPress={active ? undefined : () => void session.switchContext({ schoolId: c.schoolId, role: c.role as RoleCode })}
@@ -92,7 +95,8 @@ export function More() {
       <View style={{ gap: th.space[2] }}>
         {/* One search across the school, for every role with a school; an expert has none to search. */}
         {/* Not for a module role (a driver, the library's desk, a warden, an alumnus): the search door is not theirs. */}
-        {role && role !== "EXPERT" && !MODULE_ROLES.includes(role as (typeof MODULE_ROLES)[number]) ? <Button label={t("search.title")} variant="secondary" onPress={() => router.push("/(app)/search")} /> : null}
+        {/* …nor for a college staff role or a recruiter (4 Oct 2026): the gate opens the search door to no limited role. */}
+        {role && role !== "EXPERT" && !isLimitedRoleCode(role) ? <Button label={t("search.title")} variant="secondary" onPress={() => router.push("/(app)/search")} /> : null}
         <Button label={t("shell.notifications")} variant="secondary" onPress={() => router.push("/(app)/notifications")} />
         <Button label={t("report.title")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report", params: { from: pathname } })} />
         <Button label={t("shell.signOut")} variant="danger" onPress={() => void session.signOut()} />

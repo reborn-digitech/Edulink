@@ -18,7 +18,8 @@ export const HOSTEL_KINDS = ["BOYS", "GIRLS", "MIXED"] as const;
 export const hostelKindSchema = z.enum(HOSTEL_KINDS);
 export const HOSTEL_ROOM_KINDS = ["DORMITORY", "SHARED", "SINGLE", "SICK_BAY"] as const;
 export const hostelRoomKindSchema = z.enum(HOSTEL_ROOM_KINDS);
-export const HOSTEL_LEAVE_KINDS = ["HOME", "LOCAL", "MEDICAL"] as const;
+/** NIGHT_OUT: a night away, entered in the night-out register; a college may switch night-outs off (Hostel.nightOutAllowed, 4 Oct 2026). */
+export const HOSTEL_LEAVE_KINDS = ["HOME", "LOCAL", "MEDICAL", "NIGHT_OUT"] as const;
 export const hostelLeaveKindSchema = z.enum(HOSTEL_LEAVE_KINDS);
 export type HostelLeaveKind = z.infer<typeof hostelLeaveKindSchema>;
 export const HOSTEL_LEAVE_STATUSES = ["AWAITING_CONSENT", "PENDING", "APPROVED", "DECLINED", "CANCELLED"] as const;

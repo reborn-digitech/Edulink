@@ -4,6 +4,7 @@ import {
   AddressBookIcon,
   ChatCircleDotsIcon,
   FileTextIcon,
+  GlobeIcon,
   MegaphoneIcon,
   NotePencilIcon,
   PauseCircleIcon,
@@ -69,6 +70,13 @@ export default async function AlumniHome() {
             <Link href="/bulletin">
               <MegaphoneIcon weight="duotone" className="size-5" aria-hidden />
               {t("modules.alumniFeed")}
+            </Link>
+          </Button>
+          {/* Every school's and college's shared posts (4 Oct 2026): an alumnus reads the global feed too. */}
+          <Button asChild variant="secondary">
+            <Link href="/bulletin/global">
+              <GlobeIcon weight="duotone" className="size-5" aria-hidden />
+              {t("alumni.homeGlobalFeed")}
             </Link>
           </Button>
           <Button asChild variant="secondary">

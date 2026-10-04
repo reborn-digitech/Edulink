@@ -1,16 +1,17 @@
 import "server-only";
 import { NextResponse } from "next/server";
 import type { z } from "zod";
-import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError } from "@edulink/contracts";
+import { apiErrorSchema, sessionResponseSchema as apiSessionSchema, meSchema, type ApiError, type InstitutionKind } from "@edulink/contracts";
 import { AccessError } from "@/lib/tenancy";
 import { ModuleOffError } from "@/lib/access-error";
 import { MODULE_META } from "@/lib/module-meta";
-import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
+import { enabledModules, enabledModulesForFamily, institutionKindOf } from "@/lib/modules";
 import type { ActiveContext } from "@/lib/session";
 import { createApiSession, listContexts, bearerToken, getSession } from "@/lib/session";
 import { resolveContext } from "@/lib/resolve-context";
 import type { Role } from "@/lib/constants";
 import { db } from "@/lib/db";
+import { forOwnSchools } from "@/lib/tenant-context";
 import { audit } from "@/lib/audit";
 import { clientAddress, consume } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
@@ -197,6 +198,14 @@ export async function meBody(ctx: ActiveContext) {
     parentSchools.add(child.schoolId);
     contexts.push({ schoolId: child.schoolId, schoolName: child.schoolName, role: "PARENT" });
   }
+  // Each context's kind of institution (4 Oct 2026), so the phone's picker reads "ZZ Vidya College · College":
+  // read under this person's own schools, as listContexts reads their names.
+  const contextSchoolIds = [...new Set(contexts.map((c) => c.schoolId).filter((id): id is string => Boolean(id)))];
+  const kinds = new Map(
+    contextSchoolIds.length === 0
+      ? []
+      : (await forOwnSchools(ctx.user.id, contextSchoolIds, () => db.school.findMany({ where: { id: { in: contextSchoolIds } }, select: { id: true, kind: true } }))).map((s) => [s.id, s.kind as InstitutionKind]),
+  );
   return meSchema.parse({
     user: {
       id: ctx.user.id,
@@ -210,9 +219,11 @@ export async function meBody(ctx: ActiveContext) {
       isAppAdmin: ctx.user.isAppAdmin,
     },
     active: { schoolId: ctx.schoolId, role: ctx.role as Role | null, membershipId: ctx.membershipId },
-    contexts,
+    contexts: contexts.map((c) => ({ ...c, institutionKind: c.schoolId ? (kinds.get(c.schoolId) ?? null) : null })),
     // The ACTIVE school's switched-on modules, or for a guardian the union over the children's schools; the phone hides a module's tabs by them.
     modules: ctx.role === "PARENT" ? await enabledModulesForFamily(ctx.user.id) : await enabledModules(ctx.schoolId),
+    // What kind of institution the active school is (4 Oct 2026); null with none on the session.
+    institutionKind: await institutionKindOf(ctx.schoolId),
   });
 }
 

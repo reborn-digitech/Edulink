@@ -44,6 +44,19 @@ const ENGLISH = flatten(en);
  * into `hi.ts` during a hurried addition and never actually translated.
  */
 const SHARED_WITH_ENGLISH = new Set([
+  /**
+   * The exam cell's marks of the grade card (4 Oct 2026): SGPA and CGPA are
+   * what every Indian university's marksheet prints in Latin letters in any
+   * language, PRN is the university's own name for the permanent registration
+   * number on its forms, and ATKT ("allowed to keep terms") is how Maharashtra's
+   * universities print a result with backlogs. The sentences around them are
+   * translated.
+   */
+  "examCell.sgpaLabel",
+  "examCell.pdfSgpa",
+  "examCell.pdfCgpa",
+  "examCell.pdfPrn",
+  "examCell.resultATKT",
   "login.emailPlaceholder",
   /** Paper sizes are names the printer dialog shows in Latin letters everywhere. */
   "reportCardConfig.paperA4",

@@ -10,7 +10,8 @@ const iso = z.string().datetime();
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
 const count = z.number().int().min(0);
 
-export const certificateKindSchema = z.enum(["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM"]);
+/** A college adds MIGRATION, PROVISIONAL and COURSE_COMPLETION (4 Oct 2026). */
+export const certificateKindSchema = z.enum(["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"]);
 export type CertificateKind = z.infer<typeof certificateKindSchema>;
 export const documentLocaleSchema = z.enum(["en", "hi", "mr"]);
 

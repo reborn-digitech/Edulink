@@ -50,6 +50,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               that column, so a finished feature stood behind a door with no
               handle.
             */}
+            {/* The colleges beside the schools (4 Oct 2026): their health, the regulators' calendar, the recruiters. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/root/colleges">{t("operatorCollege.nav")}</Link>
+            </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/experts">{t("root.experts")}</Link>
             </Button>
@@ -58,6 +62,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/gigs">{t("gigs.operatorNav")}</Link>
+            </Button>
+            {/* The global feed's take-down (4 Oct 2026): the operator is the actor above a school, and its desk is the moderation page. */}
+            <Button asChild variant="ghost" size="sm">
+              <Link href="/appadmin/moderation">{t("root.globalFeedModeration")}</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
               <Link href="/root/audit">{t("root.serverLog")}</Link>

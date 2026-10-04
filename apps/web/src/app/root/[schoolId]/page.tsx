@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AddressBookIcon, ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, ReceiptIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { AddressBookIcon, ArrowLeftIcon, BuildingsIcon, ChartBarIcon, EraserIcon, LifebuoyIcon, PuzzlePieceIcon, ReceiptIcon, ShieldCheckIcon, TagIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites, listSchoolAdmins } from "@/lib/superuser";
 import { listPlans, schoolUsage } from "@/lib/plans";
@@ -8,6 +8,9 @@ import { PlanPanel } from "./plan-panel";
 import { ContactPanel, SubscriptionPanel } from "./subscription-panel";
 import { listPartners, schoolSubscription } from "@/lib/subscriptions";
 import { SupportPanel } from "./support-panel";
+import { ModulesPanel } from "./modules-panel";
+import { operatorSchoolModules } from "@/lib/operator-college";
+import { collegeTierOf, isCollegeKind } from "@edulink/contracts";
 import { UsageCard } from "../usage-card";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -38,6 +41,9 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
   const [admins, plans, usage, partners, record] = school.removedAt
     ? [[], [], null, [], null]
     : await Promise.all([listSchoolAdmins(session, schoolId), listPlans(session), schoolUsage(schoolId), listPartners(session), schoolSubscription(session, schoolId)]);
+  // The institution's modules, switchable on its behalf (4 Oct 2026); the college tiers offered to a college only.
+  const modules = school.removedAt ? null : await operatorSchoolModules(session, schoolId);
+  const offered = plans.filter((p) => isCollegeKind(school.kind) || !collegeTierOf(p.code));
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -174,9 +180,18 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
           description={school.planSince ? `${t("root.planSinceAgo", { when: relativeTime(school.planSince) })} · ${t("root.planExplainer")}` : t("root.planExplainer")}
         />
         <CardBody>
-          <PlanPanel schoolId={school.id} planId={school.planId} plans={plans.map((p) => ({ id: p.id, code: p.code, name: p.name }))} />
+          <PlanPanel schoolId={school.id} planId={school.planId} plans={offered.map((p) => ({ id: p.id, code: p.code, name: p.name }))} />
         </CardBody>
       </Card>
+
+      {modules && (
+        <Card>
+          <CardHeader icon={<PuzzlePieceIcon weight="duotone" className="size-5" />} title={t("operatorCollege.modulesTitle")} description={t("operatorCollege.modulesIntro")} />
+          <CardBody>
+            <ModulesPanel schoolId={school.id} modules={modules.modules} />
+          </CardBody>
+        </Card>
+      )}
 
       {usage && (
         <Card>

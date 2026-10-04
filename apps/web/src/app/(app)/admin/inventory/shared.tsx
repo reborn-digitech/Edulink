@@ -12,7 +12,7 @@ import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
  * the tabs, and what the last form came back with.
  */
 export async function inventoryGate() {
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const [t, locale, on] = await Promise.all([getT(), getLocale(), isModuleOn(ctx.schoolId, "INVENTORY")]);
   return { ctx, t, locale, on, canEdit: ctx.role === "ADMIN" };
 }

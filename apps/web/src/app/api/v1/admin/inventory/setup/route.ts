@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/inventory/setup — categories, vendors, places and staff, for the office's forms. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     return ok(inventorySetupSchema.parse(await inventorySetup(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/inventory/setup");

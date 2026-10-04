@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/fees/structures/{structureId}/self-enrol {open} — open a published structure to families, or close it again. */
 export async function POST(request: Request, { params }: { params: Promise<{ structureId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { structureId } = await params;
     const parsed = feeStructureSelfEnrolBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

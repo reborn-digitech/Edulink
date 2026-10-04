@@ -117,14 +117,14 @@ jobs:
 
       - name: Typecheck
         working-directory: apps/web
-        run: NODE_OPTIONS=--max-old-space-size=4096 npx tsc --noEmit && NODE_OPTIONS=--max-old-space-size=4096 npx tsc --noEmit -p scripts/tsconfig.json
+        run: NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit && NODE_OPTIONS=--max-old-space-size=8192 npx tsc --noEmit -p scripts/tsconfig.json
       - name: Packages
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
       - name: Mobile battery · tsc, eslint, jest with the lib coverage gate, the Maestro flow check
         # Jest's own process holds every suite's result and the coverage map;
         # at 178 suites it crossed the runner's ~2 GB default heap 151 suites in
         # (run 36846750919, "JavaScript heap out of memory"). A Mac's default
-        # is larger. Four, as the web's tsc has.
+        # is larger. Four (the web's tsc moved to eight with the college tables).
         env:
           NODE_OPTIONS: --max-old-space-size=4096
         run: pnpm --filter @edulink/mobile battery
@@ -277,6 +277,13 @@ jobs:
           export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
           export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
           export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
+          export EDULINK_TOKEN_FACULTY="$(npm run --silent zz:token -- FACULTY)"
+          export EDULINK_TOKEN_HOD="$(npm run --silent zz:token -- HOD)"
+          export EDULINK_TOKEN_EXAM_CONTROLLER="$(npm run --silent zz:token -- EXAM_CONTROLLER)"
+          export EDULINK_TOKEN_IQAC="$(npm run --silent zz:token -- IQAC)"
+          export EDULINK_TOKEN_TPO="$(npm run --silent zz:token -- TPO)"
+          export EDULINK_TOKEN_ACCOUNTS="$(npm run --silent zz:token -- ACCOUNTS)"
+          export EDULINK_TOKEN_RECRUITER="$(npm run --silent zz:token -- RECRUITER)"
           pnpm --filter @edulink/mobile test:contract
           npm run --silent zz:token -- --purge
       - name: Server log
@@ -531,6 +538,13 @@ jobs:
           export EDULINK_TOKEN_LIBRARIAN="$(npm run --silent zz:token -- LIBRARIAN)"
           export EDULINK_TOKEN_WARDEN="$(npm run --silent zz:token -- WARDEN)"
           export EDULINK_TOKEN_ALUMNUS="$(npm run --silent zz:token -- ALUMNUS)"
+          export EDULINK_TOKEN_FACULTY="$(npm run --silent zz:token -- FACULTY)"
+          export EDULINK_TOKEN_HOD="$(npm run --silent zz:token -- HOD)"
+          export EDULINK_TOKEN_EXAM_CONTROLLER="$(npm run --silent zz:token -- EXAM_CONTROLLER)"
+          export EDULINK_TOKEN_IQAC="$(npm run --silent zz:token -- IQAC)"
+          export EDULINK_TOKEN_TPO="$(npm run --silent zz:token -- TPO)"
+          export EDULINK_TOKEN_ACCOUNTS="$(npm run --silent zz:token -- ACCOUNTS)"
+          export EDULINK_TOKEN_RECRUITER="$(npm run --silent zz:token -- RECRUITER)"
           export EDULINK_TOKEN_OPERATOR="$(npm run --silent zz:token -- OPERATOR)"
           export EDULINK_TOKEN_APPADMIN="$(npm run --silent zz:token -- APPADMIN)"
           pnpm --filter @edulink/mobile e2e

@@ -9,6 +9,8 @@ import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+import { isCollegeKind } from "@edulink/contracts";
+import { institutionKindOf } from "@/lib/modules";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,6 +59,23 @@ export default async function NewPostPage({
         .map((c) => c.gradeLevel!)
         .sort((a, b) => Number(a) - Number(b) || a.localeCompare(b));
 
+  // A college narrows a notice to a programme, a department, a division or a batch (the office builder's
+  // audienceTarget; the composer's picker, the integration builder, 4 Oct 2026). Staff only, as the grade is.
+  const college = !isStudent && isCollegeKind(await institutionKindOf(session.schoolId));
+  const targets: { value: string; label: string; group: "PROGRAMME" | "DEPARTMENT" | "DIVISION" | "BATCH" }[] = [];
+  if (college) {
+    const [programmes, departments, divisions, batches] = await Promise.all([
+      db.programme.findMany({ where: { schoolId: session.schoolId, archivedAt: null }, select: { id: true, code: true, name: true }, orderBy: { code: "asc" } }),
+      db.department.findMany({ where: { schoolId: session.schoolId }, select: { id: true, name: true }, orderBy: { name: "asc" } }),
+      db.division.findMany({ where: { schoolId: session.schoolId, class: { archivedAt: null } }, select: { id: true, class: { select: { name: true } } }, orderBy: { class: { name: "asc" } } }),
+      db.studentProgramme.findMany({ where: { schoolId: session.schoolId, status: "ACTIVE" }, select: { entryYear: true }, distinct: ["entryYear"], orderBy: { entryYear: "desc" } }),
+    ]);
+    for (const p of programmes) targets.push({ value: `PROGRAMME:${p.id}`, label: [p.code, p.name].join(" · "), group: "PROGRAMME" });
+    for (const d of departments) targets.push({ value: `DEPARTMENT:${d.id}`, label: d.name, group: "DEPARTMENT" });
+    for (const d of divisions) targets.push({ value: `DIVISION:${d.id}`, label: d.class.name, group: "DIVISION" });
+    for (const b of batches) targets.push({ value: `BATCH:${b.entryYear}`, label: t("collegeHub.batchOf", { year: b.entryYear }), group: "BATCH" });
+  }
+
   if (isStudent && classes.length === 0) {
     return (
       <EmptyState
@@ -89,7 +108,8 @@ export default async function NewPostPage({
         initialCategory={POST_CATEGORIES.includes(prefill.category as PostCategory) ? (prefill.category as PostCategory) : undefined}
         className="mt-7"
         classes={classes}
-        grades={grades}
+        grades={college ? [] : grades}
+        targets={targets}
         role={session.role}
         // Students cannot post school-wide without an admin reviewing it, and
         // admins are the only ones who should be addressing the whole school

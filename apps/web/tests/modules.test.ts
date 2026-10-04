@@ -14,7 +14,7 @@ import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { SCHOOL_MODULES } from "@edulink/contracts";
+import { SCHOOL_MODULES, SCHOOL_VERSION_MODULES } from "@edulink/contracts";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { APP_SEGMENTS, gateRequest, modulePagePermitted } from "@/lib/role-gate";
@@ -195,7 +195,8 @@ describe("the admin's switch", () => {
   it("lists every module to the office and the head; only the admin switches, once, with an audit row each way", async () => {
     await as(ids.hillPrincipal, "PRINCIPAL", ids.hill, "GET /api/v1/admin/modules");
     const listed = (await (await modulesGet()).json()) as { modules: { module: string; on: boolean }[] };
-    expect(listed.modules.map((m) => m.module)).toEqual([...SCHOOL_MODULES]);
+    // A school is offered the school version's six (4 Oct 2026); a college all twelve (tests/college-foundation.test.ts).
+    expect(listed.modules.map((m) => m.module)).toEqual([...SCHOOL_VERSION_MODULES]);
     expect(listed.modules.every((m) => m.on)).toBe(true);
     await as(ids.hillPrincipal, "PRINCIPAL", ids.hill, "POST /api/v1/admin/modules");
     expect((await modulesPost(json("/api/v1/admin/modules", { module: "LIBRARY", on: false }))).status).toBe(403);

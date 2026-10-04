@@ -19,7 +19,11 @@ import type { TranslationKey } from "./i18n/dictionary";
  * out of SCHOOL_ROLES is what stops any of the membership machinery trying to
  * enrol them somewhere.
  */
-export const ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const;
+export const ROLES = [
+  "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT", "EXPERT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
+  // The college's seven (4 Oct 2026): six staff Memberships, and the recruiter — an outside account like EXPERT.
+  "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER",
+] as const;
 export type Role = (typeof ROLES)[number];
 
 /**
@@ -31,7 +35,10 @@ export type Role = (typeof ROLES)[number];
  * it and decides who may be away. Neither can do the other's job, which is why
  * this is two roles and not a seniority flag on one.
  */
-export const SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as const;
+export const SCHOOL_ROLES = [
+  "ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS",
+  "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS",
+] as const;
 export type SchoolRole = (typeof SCHOOL_ROLES)[number];
 
 /**
@@ -54,6 +61,50 @@ export function isModuleRole(role: string | null | undefined): role is ModuleRol
   return role !== null && role !== undefined && (MODULE_ROLES as readonly string[]).includes(role);
 }
 
+/**
+ * THE COLLEGE'S SIX STAFF ROLES (4 October 2026): FACULTY (a college teacher;
+ * TEACHER stays for schools and junior colleges), HOD, EXAM_CONTROLLER, IQAC,
+ * TPO and ACCOUNTS. Memberships at a college, behind the same default-deny
+ * gate as the module roles (role-gate.ts): each passes only the doors that
+ * name it. Mirrors COLLEGE_ROLES in packages/contracts.
+ */
+export const COLLEGE_ROLES = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const;
+export type CollegeRole = (typeof COLLEGE_ROLES)[number];
+export function isCollegeRole(role: string | null | undefined): role is CollegeRole {
+  return role !== null && role !== undefined && (COLLEGE_ROLES as readonly string[]).includes(role);
+}
+
+/**
+ * EVERY ROLE BEHIND THE DEFAULT-DENY GATE: the four module roles, the
+ * college's six, and the RECRUITER (an outside account with no school, which
+ * reaches a college only through a placement drive). role-gate.ts refuses
+ * such a role every /api/v1 door that does not name it, and every school page
+ * outside its own home and NAV.
+ */
+export const LIMITED_ROLES = [...MODULE_ROLES, ...COLLEGE_ROLES, "RECRUITER"] as const;
+export type LimitedRole = (typeof LIMITED_ROLES)[number];
+export function isLimitedRole(role: string | null | undefined): role is LimitedRole {
+  return role !== null && role !== undefined && (LIMITED_ROLES as readonly string[]).includes(role);
+}
+
+/**
+ * The roles that TEACH: a school's teacher, and a college's faculty and head
+ * of department. The class, pupil and assignment assertions (tenancy.ts) and
+ * the feed (bulletin.ts) scope FACULTY and HOD exactly as a TEACHER — to the
+ * classes they are assigned — once a door names them; the academics builder
+ * gives the HOD the department's read on top.
+ */
+export const TEACHING_ROLES = ["TEACHER", "FACULTY", "HOD"] as const;
+export function isTeachingRole(role: string | null | undefined): role is (typeof TEACHING_ROLES)[number] {
+  return role !== null && role !== undefined && (TEACHING_ROLES as readonly string[]).includes(role);
+}
+
+/** The roles with no school of their own, which a session carries with no school: the expert and the recruiter (and a guardian, by Guardianship). */
+export const OUTSIDE_ROLES = ["EXPERT", "RECRUITER"] as const;
+export function isOutsideRole(role: string | null | undefined): boolean {
+  return role === "EXPERT" || role === "RECRUITER";
+}
+
 /** The school roles every feature before the modules was written for. */
 export const CORE_SCHOOL_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT"] as const;
 export function isCoreSchoolRole(role: string | null | undefined): role is (typeof CORE_SCHOOL_ROLES)[number] {
@@ -65,8 +116,18 @@ export function isCoreSchoolRole(role: string | null | undefined): role is (type
  * invited: a former pupil's alumni membership is made by their departure
  * (`school-record.ts` recordDeparture) and by nothing else.
  */
-export const INVITABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN"] as const;
+export const INVITABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", ...COLLEGE_ROLES] as const;
 export type InvitableRole = (typeof INVITABLE_ROLES)[number];
+/**
+ * The invitable roles an institution of this kind is offered: a college's six
+ * staff roles at a college only, and the school's TEACHER everywhere but a
+ * college (a junior college keeps its teachers; a college's teacher is FACULTY).
+ * RECRUITER is never invited: it registers itself (src/lib/recruiters.ts).
+ */
+export function invitableRolesFor(kind: string | null | undefined): InvitableRole[] {
+  const college = kind === "COLLEGE" || kind === "AUTONOMOUS_COLLEGE";
+  return INVITABLE_ROLES.filter((role) => (college ? role !== "TEACHER" : !isCollegeRole(role)));
+}
 
 export const MEMBERSHIP_STATUSES = ["PENDING", "ACTIVE", "SUSPENDED"] as const;
 export type MembershipStatus = (typeof MEMBERSHIP_STATUSES)[number];
@@ -208,7 +269,7 @@ export const NOTIFICATION_KIND_KEY: Record<NotificationKind, TranslationKey> = {
 /* -------------------------------------------------------------------------- */
 
 /** A grouping for reports, not behaviour: every head is charged the same way. */
-export const FEE_HEAD_KINDS = ["TUITION", "TRANSPORT", "EXAM", "ACTIVITY", "OTHER"] as const;
+export const FEE_HEAD_KINDS = ["TUITION", "TRANSPORT", "EXAM", "ACTIVITY", "OTHER", "DEVELOPMENT", "LIBRARY", "LABORATORY", "HOSTEL", "MESS", "CAUTION_DEPOSIT"] as const;
 export type FeeHeadKind = (typeof FEE_HEAD_KINDS)[number];
 
 /** ONLINE is the school's gateway; UPI is the school's own UPI id, confirmed by the office; the rest are taken at the counter. */
@@ -256,7 +317,7 @@ export const ENQUIRY_KINDS = ["ADMISSION", "JOB"] as const;
 export type EnquiryKind = (typeof ENQUIRY_KINDS)[number];
 
 /** Who may be named as a school's admissions or hiring contact. */
-export const CONTACTABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER"] as const;
+export const CONTACTABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER", "FACULTY", "HOD"] as const;
 
 /**
  * What an expert is offering, which is not one thing.
@@ -386,6 +447,13 @@ export const ROLE_META: Record<
   LIBRARIAN: { labelKey: "role.librarian", pluralKey: "role.librarianPlural", accent: "librarian" },
   WARDEN: { labelKey: "role.warden", pluralKey: "role.wardenPlural", accent: "warden" },
   ALUMNUS: { labelKey: "role.alumnus", pluralKey: "role.alumnusPlural", accent: "alumnus" },
+  FACULTY: { labelKey: "role.faculty", pluralKey: "role.facultyPlural", accent: "faculty" },
+  HOD: { labelKey: "role.hod", pluralKey: "role.hodPlural", accent: "hod" },
+  EXAM_CONTROLLER: { labelKey: "role.examController", pluralKey: "role.examControllerPlural", accent: "exam_controller" },
+  IQAC: { labelKey: "role.iqac", pluralKey: "role.iqacPlural", accent: "iqac" },
+  TPO: { labelKey: "role.tpo", pluralKey: "role.tpoPlural", accent: "tpo" },
+  ACCOUNTS: { labelKey: "role.accounts", pluralKey: "role.accountsPlural", accent: "accounts" },
+  RECRUITER: { labelKey: "role.recruiter", pluralKey: "role.recruiterPlural", accent: "recruiter" },
 };
 
 /** Where each role lands after login. */
@@ -400,6 +468,15 @@ export const ROLE_HOME: Record<Role, string> = {
   LIBRARIAN: "/library",
   WARDEN: "/hostel",
   ALUMNUS: "/alumni",
+  // The college's seven (4 Oct 2026). The exam controller's is /exam-cell, not /exams: /exams is the school's
+  // page of marks and date sheets that pupils and parents read, and a home's prefix would open all of it.
+  FACULTY: "/faculty",
+  HOD: "/hod",
+  EXAM_CONTROLLER: "/exam-cell",
+  IQAC: "/iqac",
+  TPO: "/placement",
+  ACCOUNTS: "/accounts",
+  RECRUITER: "/recruiter",
 };
 
 /* -------------------------------------------------------------------------- */

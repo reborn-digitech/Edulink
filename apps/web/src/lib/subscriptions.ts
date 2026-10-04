@@ -1,4 +1,5 @@
 import "server-only";
+import { collegeTierOf, isCollegeKind, tierMonthPaise, type InstitutionKind } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
   SUBSCRIPTION_STATUSES,
@@ -353,16 +354,19 @@ export async function listPartners(session: ActiveContext): Promise<PartnerRow[]
     orderBy: { name: "asc" },
     select: {
       ...PARTNER_SELECT,
-      schools: { where: { removedAt: null }, orderBy: { name: "asc" }, select: { id: true, name: true, subscriptionStatus: true, plan: { select: { name: true, priceMonthlyPaise: true } } } },
+      schools: { where: { removedAt: null }, orderBy: { name: "asc" }, select: { id: true, name: true, subscriptionStatus: true, plan: { select: { code: true, name: true, priceMonthlyPaise: true } } } },
     },
   });
+  // A college tier is priced a student a year (4 Oct 2026): its month is a twelfth of the tier times this month's roll from the nightly sample, computed here and stored nowhere.
+  const tiered = partners.flatMap((p) => p.schools.filter((s) => collegeTierOf(s.plan?.code)).map((s) => s.id));
+  const roll = tiered.length ? new Map((await db.usageSample.findMany({ where: { schoolId: { in: tiered }, month: monthKeyFor("UTC") }, select: { schoolId: true, pupils: true } })).map((u) => [u.schoolId, u.pupils])) : new Map<string, number>();
   return partners.map((p) => {
     const schools = p.schools.map((s) => ({
       id: s.id,
       name: s.name,
       subscriptionStatus: isSubscriptionStatus(s.subscriptionStatus) ? s.subscriptionStatus : null,
       planName: s.plan?.name ?? null,
-      priceMonthlyPaise: s.plan?.priceMonthlyPaise ?? null,
+      priceMonthlyPaise: collegeTierOf(s.plan?.code) ? tierMonthPaise(s.plan?.code, roll.get(s.id) ?? 0) || null : (s.plan?.priceMonthlyPaise ?? null),
     }));
     const active = schools.filter((s) => s.subscriptionStatus === "ACTIVE");
     const owedThisMonthPaise = active.reduce((sum, s) => sum + commissionOwedPaise(p.percentTenths, s.priceMonthlyPaise), 0);
@@ -414,6 +418,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
       select: {
         ...SUBSCRIPTION_SELECT,
         city: true,
+        kind: true,
         code: true,
         gradeLow: true,
         gradeHigh: true,
@@ -440,6 +445,7 @@ export async function operatorDashboard(session: ActiveContext, opts: DashboardO
       id: s.id,
       name: s.name,
       city: s.city,
+      kind: s.kind as InstitutionKind,
       code: s.code,
       gradeLow: s.gradeLow,
       gradeHigh: s.gradeHigh,
@@ -612,6 +618,10 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
   if (dayToDate(dueAt).getTime() <= dayToDate(startsAt).getTime()) return { ok: false, errorKey: "root.subscriptionDatesOrder" };
   const status: SubscriptionStatus = input.trial ? "TRIAL" : "ACTIVE";
   if (input.contact?.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.contact.email.trim())) return { ok: false, errorKey: "root.emailLooksWrong" };
+  // A college's two references from the guided flow (4 Oct 2026): kept for a college only, the AISHE code as AISHE issues it.
+  const college = isCollegeKind(input.kind);
+  const aisheCode = college ? text(input.aisheCode) : null;
+  if (aisheCode && !/^[CSU]-\d{3,7}$/.test(aisheCode)) return { ok: false, errorKey: "college.profileCheck" };
 
   const details: SchoolDetails = {
     name: input.name,
@@ -622,6 +632,7 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
     country: input.country ?? null,
     gradeLow: input.gradeLow ?? null,
     gradeHigh: input.gradeHigh ?? null,
+    kind: input.kind ?? "SCHOOL",
   };
 
   /** A step's refusal, thrown to roll the transaction back and caught at the door. */
@@ -667,6 +678,7 @@ export async function onboardSchool(session: ActiveContext, input: OperatorOnboa
           pocPhone: text(input.contact?.phone),
           pocEmail: text(input.contact?.email),
           commissionPartnerId: partnerId,
+          ...(college ? { affiliatingUniversity: text(input.affiliatingUniversity), aisheCode } : {}),
         },
       });
       if (input.planId) {

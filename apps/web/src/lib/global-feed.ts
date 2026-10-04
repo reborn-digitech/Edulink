@@ -5,7 +5,10 @@ import { AccessError } from "./tenancy";
 import { readJsonArray, type MediaItem } from "./json";
 import { CATEGORY_HASHTAGS, schoolHashtag, searchWhere } from "./bulletin";
 import type { ActiveContext } from "./session";
-import type { PostCategory } from "./constants";
+import { isCollegeRole, isTeachingRole, type PostCategory, type Role } from "./constants";
+import { forOwnSchools, forUser } from "./tenant-context";
+import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
+import { parentMaySee } from "./student-consent";
 
 /**
  * The global feed — the one surface where a school reads another school's post.
@@ -18,15 +21,9 @@ import type { PostCategory } from "./constants";
  * reasons and class-private notices. So the global feed is a separate module
  * against a separately-widened policy clause, and the school feed is untouched.
  *
- * THE MODERATION PROBLEM, AND THE ANSWER. There is no role in this app above a
- * school: ROLES is ADMIN, TEACHER, STUDENT, PARENT and all four are scoped to
- * one school. A global feed therefore has nobody who could moderate it on
- * everyone's behalf, and inventing that actor is a much larger decision than a
- * feed — it means someone outside every school with read access to content from
- * all of them.
- *
- * So no such actor is invented. Instead the authority is split along the line
- * that already exists:
+ * THE MODERATION PROBLEM, AND THE ANSWER. Every school role is scoped to one
+ * school, so no school can moderate the feed on everyone's behalf. The
+ * authority is split along the line that already exists:
  *
  *   PUBLISHING is a write inside the owning school. Only that school's admin
  *   can promote one of their own already-APPROVED posts, and `schoolId` stays
@@ -38,10 +35,35 @@ import type { PostCategory } from "./constants";
  *   hide any global post from their OWN people, and that hide is a tenant-scoped
  *   row invisible to everybody else.
  *
- * Neither school can reach into the other. What is missing — a way to take a
- * post down for everyone — is missing ON PURPOSE and is written up in the README
- * rather than papered over: it needs the actor above a school that does not
- * exist yet.
+ * Neither school can reach into the other. THE ACTOR ABOVE A SCHOOL IS THE
+ * PLATFORM, and it is the one that takes a post down for everyone: the
+ * operator (or the content team the operator appoints) takes a GLOBAL post
+ * down with a reason from /appadmin/moderation — reached from the operator's
+ * console — or POST /api/v1/appadmin/moderation/{postId}/takedown, and puts
+ * it back the same way (bulletin.ts platformTakedown / platformRestore, the
+ * PlatformTakedown row). The post's status becomes TAKEN_DOWN, which the
+ * global clause no longer admits, so it is gone from every tenant at once;
+ * the publishing school's office and the author are told the reason, and the
+ * act is in that school's audit log with the platform as actor
+ * (`post.platformTakedown`). This was "missing on purpose" until 2 October
+ * 2026, when the actor existed; it is not missing any more.
+ *
+ * WHO READS IT (4 October 2026, `globalReader`). Every role of a school or a
+ * college: the office, the head, a teacher and the module and college staff
+ * roles read as staff; a pupil and an alumnus read under the age on their own
+ * User row (a minor's comment is held, as every global comment is, by their
+ * own school); a guardian reads through their children — an adult student's
+ * only through the MESSAGES grant (student-consent.ts). An expert and a
+ * recruiter belong to no school and do not reach it. A PERSON READS IT ONCE:
+ * a pupil or an alumnus with rows at several schools (left two, moved to a
+ * third) reads one feed whose hide set is the union of every school they
+ * belong to, as a guardian's is the union of their children's.
+ *
+ * WHICH KINDS (4 October 2026). Each tenant's admin chooses whether its
+ * people read posts from schools, colleges or both (School.globalFeedKinds);
+ * a post carries its publisher's kind, stamped at publish beside its name
+ * (Post.globalSchoolKind). A reader who belongs to several reads only the
+ * kinds every one of them allows — curation narrows, it never widens.
  */
 
 export type GlobalPost = {
@@ -77,8 +99,10 @@ export async function listGlobalFeed(
   session: ActiveContext,
   opts: { includeHidden?: boolean; category?: PostCategory; q?: string; tag?: string } = {},
 ): Promise<GlobalPost[]> {
+  if (!globalReader(session.role)) return [];
   const schoolId = session.schoolId;
-  const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+  // Who sees a hidden post marked rather than not at all: the office, and a teacher of the school that hid it.
+  const isStaff = session.role === "ADMIN" || isTeachingRole(session.role);
 
   /**
    * A GUARDIAN READS THROUGH THEIR CHILDREN'S SCHOOLS. A parent binds no
@@ -95,23 +119,34 @@ export async function listGlobalFeed(
    * child's school never looked at it. Their guardianship schools are
    * already their tenant set, so these hide rows are theirs to read.
    */
-  const hideScopeSchoolIds: string[] = schoolId
-    ? [schoolId]
-    : session.role === "PARENT"
-      ? (
-          await db.guardianship.findMany({
-            where: { parentUserId: session.user.id, status: "ACTIVE" },
-            select: { studentSchoolId: true },
-            distinct: ["studentSchoolId"],
-          })
-        ).map((g) => g.studentSchoolId)
-      : [];
+  const hideScopeSchoolIds: string[] =
+    session.role === "PARENT" && !schoolId
+      ? await familyReadingSchools(session.user.id)
+      : (session.role === "ALUMNUS" || session.role === "STUDENT") && schoolId
+        ? await personSchools(session.user.id, schoolId)
+        : schoolId
+          ? [schoolId]
+          : [];
+  // A guardian whose every child is an adult at a college who has not granted MESSAGES reads nothing.
+  if (hideScopeSchoolIds.length === 0) return [];
 
-  const [posts, hides] = await Promise.all([
+  // The hides and the kind settings of every school in the scope: the person's own schools, widened to exactly those.
+  const { hides, kinds } = await forOwnSchools(session.user.id, hideScopeSchoolIds, async () => {
+    const [hideRows, schools] = await Promise.all([
+      db.globalPostHide.findMany({ where: { schoolId: { in: hideScopeSchoolIds } }, select: { postId: true } }),
+      db.school.findMany({ where: { id: { in: hideScopeSchoolIds } }, select: { globalFeedKinds: true } }),
+    ]);
+    return { hides: hideRows, kinds: allowedKinds(schools.map((s) => s.globalFeedKinds)) };
+  });
+  if (kinds.length === 0) return [];
+
+  const [posts] = await Promise.all([
     db.post.findMany({
       where: {
         scope: "GLOBAL",
         status: "APPROVED",
+        // The kind filter: a post published before kinds were stamped is a school's.
+        OR: [{ globalSchoolKind: { in: kinds } }, ...(kinds.includes("SCHOOL") ? [{ globalSchoolKind: null }] : [])],
         ...(opts.category ? { category: opts.category } : {}),
         ...(opts.q ? { AND: [searchWhere(opts.q)] } : {}),
         // Same rule as the school feed: a tag is a quoted JSON member.
@@ -136,12 +171,6 @@ export async function listGlobalFeed(
       orderBy: [{ pinnedAt: "desc" }, { createdAt: "desc" }],
       take: 100,
     }),
-    hideScopeSchoolIds.length > 0
-      ? db.globalPostHide.findMany({
-          where: { schoolId: { in: hideScopeSchoolIds } },
-          select: { postId: true },
-        })
-      : Promise.resolve([]),
   ]);
 
   const hidden = new Set(hides.map((h) => h.postId));
@@ -187,6 +216,52 @@ export async function listGlobalFeed(
     });
 }
 
+/**
+ * HOW THE GLOBAL FEED READS A ROLE (4 October 2026), every role named:
+ * "staff" for the office, the head, a teacher, the module staff (driver,
+ * library, warden) and the college's six staff roles; "pupil" for a pupil and
+ * an alumnus, whose minor rules come from their own User row; "family" for a
+ * guardian; null — no feed — for an expert, a recruiter or no role.
+ */
+export function globalReader(role: Role | null | undefined): "staff" | "pupil" | "family" | null {
+  if (!role) return null;
+  if (role === "ADMIN" || role === "PRINCIPAL" || role === "TEACHER" || role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || isCollegeRole(role)) return "staff";
+  if (role === "STUDENT" || role === "ALUMNUS") return "pupil";
+  if (role === "PARENT") return "family";
+  return null;
+}
+
+/** The kinds every one of these settings allows; an unreadable setting allows every kind. */
+function allowedKinds(settings: string[]): InstitutionKind[] {
+  let kinds: InstitutionKind[] = [...INSTITUTION_KINDS];
+  for (const raw of settings) {
+    const set = readJsonArray<string>(raw);
+    const named = set.filter((k): k is InstitutionKind => (INSTITUTION_KINDS as readonly string[]).includes(k));
+    if (named.length > 0 || raw.trim() === "[]") kinds = kinds.filter((k) => named.includes(k));
+  }
+  return kinds;
+}
+
+/** The schools a pupil or an alumnus belongs to now, the session's first: a person with several rows reads one feed. */
+async function personSchools(userId: string, sessionSchoolId: string): Promise<string[]> {
+  const rows = await forUser(userId, () => db.membership.findMany({ where: { userId, status: "ACTIVE", leftAt: null }, select: { schoolId: true } }));
+  return [...new Set([sessionSchoolId, ...rows.map((r) => r.schoolId)])];
+}
+
+/**
+ * The schools a guardian reads the feed through: each child's, except an
+ * adult's at a college who has not granted MESSAGES (student-consent.ts).
+ */
+async function familyReadingSchools(userId: string): Promise<string[]> {
+  const links = await db.guardianship.findMany({ where: { parentUserId: userId, status: "ACTIVE" }, select: { studentMembershipId: true, studentSchoolId: true } });
+  const schools = new Set<string>();
+  for (const link of links) {
+    if (schools.has(link.studentSchoolId)) continue;
+    if (await parentMaySee(link.studentMembershipId, "MESSAGES")) schools.add(link.studentSchoolId);
+  }
+  return [...schools];
+}
+
 /** "Aarav Sharma" → "Aarav"; a single word stays as it is. */
 export function firstNameOf(name: string): string {
   return name.trim().split(/\s+/)[0] ?? name;
@@ -217,7 +292,7 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
       title: true,
       body: true,
       category: true,
-      school: { select: { name: true } },
+      school: { select: { name: true, kind: true } },
     },
   });
   if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
@@ -245,7 +320,8 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
 
   await db.post.update({
     where: { id: post.id },
-    data: { scope: "GLOBAL", globalSchoolName: post.school?.name ?? null, body },
+    // The kind crosses with the name, for the readers' kind filter (4 Oct 2026).
+    data: { scope: "GLOBAL", globalSchoolName: post.school?.name ?? null, globalSchoolKind: post.school?.kind ?? "SCHOOL", body },
   });
 
   await audit({

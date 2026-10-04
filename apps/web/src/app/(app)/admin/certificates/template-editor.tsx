@@ -23,7 +23,7 @@ type Preset = CertificateTemplatesView["presets"][number];
 type Template = CertificateTemplatesView["templates"][number];
 type RowDraft = { key: string; label: string; value: string };
 
-const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM"];
+const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
 const LOCALES: ("en" | "hi" | "mr")[] = ["en", "hi", "mr"];
 const LAYOUT_TOGGLES: (keyof Pick<CertificateLayout, "showLogo" | "showAddress" | "useBrandColour">)[] = ["showLogo", "showAddress", "useBrandColour"];
 const TOKEN = /\[\[\s*([a-z]+\.[A-Za-z]+)\s*\]\]/g;

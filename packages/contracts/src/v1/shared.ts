@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { roleSchema } from "./auth";
 import { expertRatingSchema } from "./experts";
+import { audienceTargetSchema } from "./college-office";
 
 /**
  * shared: the pages every role reads — the bulletin, the inbox, notifications,
@@ -188,6 +189,8 @@ export const bulletinCreatePostSchema = z.object({
   media: z.array(bulletinMediaItemSchema).max(10).default([]),
   audience: bulletinAudienceSchema.default("ALL"),
   audienceGrade: z.string().trim().max(20).optional(),
+  /** A college's notice for one programme, department, division or batch (4 Oct 2026; refused at a school). */
+  audienceTarget: audienceTargetSchema.optional(),
   requiresAck: z.boolean().default(false),
 });
 export const bulletinPostCreatedSchema = z.object({ postId: z.string(), status: bulletinStatusSchema });

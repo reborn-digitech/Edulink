@@ -9,7 +9,7 @@ type Params = { params: Promise<{ tag: string }> };
 /** GET /api/v1/admin/inventory/assets/{tag} — one asset and what has happened to it. */
 export async function GET(_request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const { tag } = await params;
     return ok(assetDetailSchema.parse(await assetDetail(ctx, decodeURIComponent(tag))));
   } catch (error) {
@@ -20,7 +20,7 @@ export async function GET(_request: Request, { params }: Params) {
 /** POST /api/v1/admin/inventory/assets/{tag} — assign, move, repair, audit or dispose of it. */
 export async function POST(request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { tag } = await params;
     const parsed = assetActionSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

@@ -4,7 +4,8 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { TextField } from "@/components/ui/field";
+import { SelectField, TextField } from "@/components/ui/field";
+import { INSTITUTION_KINDS, type InstitutionKind } from "@edulink/contracts";
 import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { INDIA } from "@/lib/places";
@@ -54,6 +55,7 @@ export function SchoolForm({
     gradeHigh: initial?.gradeHigh ?? "",
     timezone: initial?.timezone ?? "Asia/Kolkata",
     brandPrimary: initial?.brandPrimary ?? "",
+    ...(schoolId ? {} : { kind: "SCHOOL" as InstitutionKind }),
   });
 
   function set<K extends keyof SchoolDetails>(key: K, value: SchoolDetails[K]) {
@@ -102,6 +104,16 @@ export function SchoolForm({
           onChange={(e) => set("name", e.target.value)}
           hint={t("root.nameHint")}
         />
+        {/* The kind is chosen when the tenant is made (4 Oct 2026) and not corrected here: a college's modules and roles hang on it. */}
+        {!schoolId && (
+          <SelectField label={t("institution.kindLabel")} value={form.kind ?? "SCHOOL"} onChange={(e) => set("kind", e.target.value as InstitutionKind)} hint={t("institution.kindHint")}>
+            {INSTITUTION_KINDS.map((k) => (
+              <option key={k} value={k}>
+                {t(`institution.kind.${k}`)}
+              </option>
+            ))}
+          </SelectField>
+        )}
         <TextField
           label={t("root.contactEmail")}
           type="email"

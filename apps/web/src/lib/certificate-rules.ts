@@ -16,7 +16,9 @@ export type Words = (key: string, vars?: Record<string, string | number>) => str
 const englishWords: Words = (key, vars) => translatorFor(dictionaryFor("en"))(key as TranslationKey, vars);
 export const wordsFor = (locale: WordsLocale): Words => (key, vars) => translatorFor(dictionaryFor(locale))(key as TranslationKey, vars);
 
-export const CERTIFICATE_KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM"];
+export const CERTIFICATE_KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
+/** The kinds only a college issues (4 Oct 2026). */
+export const COLLEGE_CERTIFICATE_KINDS: CertificateKind[] = ["MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
 
 export const PLACEHOLDER_KEYS = [
   "pupil.name", "pupil.dob", "pupil.dobWords", "pupil.age",
@@ -26,6 +28,8 @@ export const PLACEHOLDER_KEYS = [
   "class.name", "class.grade", "school.name", "school.address", "year.name",
   "record.leftOn", "record.leftOnWords", "record.reason", "record.conduct", "record.destination", "record.attendance", "record.lastClass",
   "issue.date", "issue.dateWords", "issue.serial", "issue.purpose", "issue.remark",
+  // A college's (4 Oct 2026; college-records.ts collegeFacts): a dash at a school.
+  "college.programme", "college.prn", "college.yearOfEntry", "college.yearOfPassing", "college.result", "college.apaarId", "college.abcId",
 ] as const;
 /**
  * NOT IN THE LIST, ON PURPOSE: the pupil's student code and the school's join
@@ -107,10 +111,10 @@ export function parseRows(raw: string | null | undefined): CertificateRow[] {
   }
 }
 
-const SERIAL_PREFIX: Record<CertificateKind, string> = { TC: "TC", NIRGAM: "NU", BONAFIDE: "BC", CHARACTER: "CC", STUDY: "SC", CUSTOM: "CERT" };
+const SERIAL_PREFIX: Record<CertificateKind, string> = { TC: "TC", NIRGAM: "NU", BONAFIDE: "BC", CHARACTER: "CC", STUDY: "SC", CUSTOM: "CERT", MIGRATION: "MC", PROVISIONAL: "PC", COURSE_COMPLETION: "CCC" };
 
 export function kindTitle(kind: CertificateKind, words: Words): string {
-  const key = { TC: "titleTc", NIRGAM: "titleNirgam", BONAFIDE: "titleBonafide", CHARACTER: "titleCharacter", STUDY: "titleStudy", CUSTOM: "titleCustom" }[kind];
+  const key = { TC: "titleTc", NIRGAM: "titleNirgam", BONAFIDE: "titleBonafide", CHARACTER: "titleCharacter", STUDY: "titleStudy", CUSTOM: "titleCustom", MIGRATION: "titleMigration", PROVISIONAL: "titleProvisional", COURSE_COMPLETION: "titleCourseCompletion" }[kind];
   return words(`certificateDefaults.${key}`);
 }
 
@@ -174,6 +178,28 @@ export function allPresets(): (Omit<CertificateTemplateSave, "active"> & { key: 
   return (["en", "hi", "mr"] as const).flatMap((locale) => presetsFor(locale));
 }
 
+/**
+ * A COLLEGE'S PRESETS (4 Oct 2026): a bonafide naming the programme and PRN,
+ * and the migration, provisional and course-completion certificates, whose
+ * year of passing and result come from the exams module's published result.
+ */
+export function collegePresetsFor(locale: WordsLocale, words: Words = wordsFor(locale)): (Omit<CertificateTemplateSave, "active"> & { key: string })[] {
+  const layout = defaultLayoutFor(words);
+  const d = (key: string) => words(`certificateDefaults.${key}`);
+  const base = [row(words, "rowName", "[[pupil.name]]"), row(words, "rowProgramme", "[[college.programme]]"), row(words, "rowPrn", "[[college.prn]]"), row(words, "rowYearOfEntry", "[[college.yearOfEntry]]")];
+  const passing = [...base, row(words, "rowYearOfPassing", "[[college.yearOfPassing]]"), row(words, "rowResult", "[[college.result]]")];
+  return [
+    { key: `COLLEGE-BONAFIDE-${locale}`, kind: "BONAFIDE", name: d("collegeBonafideName"), locale, title: kindTitle("BONAFIDE", words), intro: d("collegeBonafideIntro"), rows: [...base, row(words, "rowYear", "[[year.name]]")], outro: d("bonafideOutro"), layout, serialPrefix: SERIAL_PREFIX.BONAFIDE },
+    { key: `MIGRATION-${locale}`, kind: "MIGRATION", name: kindTitle("MIGRATION", words), locale, title: kindTitle("MIGRATION", words), intro: d("migrationIntro"), rows: [...passing, row(words, "rowLeftOn", "[[record.leftOn]]")], outro: d("migrationOutro"), layout, serialPrefix: SERIAL_PREFIX.MIGRATION },
+    { key: `PROVISIONAL-${locale}`, kind: "PROVISIONAL", name: kindTitle("PROVISIONAL", words), locale, title: kindTitle("PROVISIONAL", words), intro: d("provisionalIntro"), rows: passing, outro: d("provisionalOutro"), layout, serialPrefix: SERIAL_PREFIX.PROVISIONAL },
+    { key: `COURSE_COMPLETION-${locale}`, kind: "COURSE_COMPLETION", name: kindTitle("COURSE_COMPLETION", words), locale, title: kindTitle("COURSE_COMPLETION", words), intro: d("courseCompletionIntro"), rows: passing, outro: d("courseCompletionOutro"), layout, serialPrefix: SERIAL_PREFIX.COURSE_COMPLETION },
+  ];
+}
+
+export function allCollegePresets(): (Omit<CertificateTemplateSave, "active"> & { key: string })[] {
+  return (["en", "hi", "mr"] as const).flatMap((locale) => collegePresetsFor(locale));
+}
+
 export type PupilFacts = {
   name: string;
   studentCode: string | null;
@@ -189,6 +215,8 @@ export type PupilFacts = {
   yearName: string | null;
   leaving: { leftOnKey: string | null; reason: string | null; conduct: string | null; destination: string | null; attendance: string | null; lastClass: string | null } | null;
   issue: { dateKey: string; serial: string; purpose: string | null; remark: string | null };
+  /** A college student's programme, PRN, years and result (college-records.ts); absent at a school. */
+  college?: { programme: string | null; prn: string | null; yearOfEntry: string | null; yearOfPassing: string | null; result: string | null; apaarId: string | null; abcId: string | null } | null;
 };
 
 /** Every placeholder's value for one pupil, in the document's language. */
@@ -248,8 +276,18 @@ export function dataFor(facts: PupilFacts, locale: WordsLocale, words: Words = w
     "issue.serial": facts.issue.serial,
     "issue.purpose": facts.issue.purpose,
     "issue.remark": facts.issue.remark,
+    "college.programme": facts.college?.programme ?? null,
+    "college.prn": facts.college?.prn ?? null,
+    "college.yearOfEntry": facts.college?.yearOfEntry ?? null,
+    "college.yearOfPassing": facts.college?.yearOfPassing ?? null,
+    "college.result": facts.college?.result ? (RESULT_WORD[facts.college.result] ? words(RESULT_WORD[facts.college.result]!) : facts.college.result) : null,
+    "college.apaarId": facts.college?.apaarId ?? null,
+    "college.abcId": facts.college?.abcId ?? null,
   };
 }
+
+/** The exams module's class or status as the paper prints it. */
+const RESULT_WORD: Record<string, string> = { DISTINCTION: "certificateDefaults.resultDistinction", FIRST: "certificateDefaults.resultFirst", HIGHER_SECOND: "certificateDefaults.resultHigherSecond", SECOND: "certificateDefaults.resultSecond", PASS: "certificateDefaults.resultPass" };
 
 /** The pupil-record fields a certificate needs before it can be issued without gaps. */
 export const REQUIRED_RECORD_FIELDS = ["fatherName", "motherName", "placeOfBirth", "nationality", "motherTongue", "addressLine", "city", "admissionNumber", "admissionDate"] as const;

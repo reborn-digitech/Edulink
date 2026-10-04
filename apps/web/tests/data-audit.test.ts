@@ -975,3 +975,204 @@ d("modules: inventory and payroll (3 October 2026)", () => {
     expect(failsOf("payroll-run")).toEqual([]);
   });
 });
+
+d("modules: the college's academics (4 October 2026)", () => {
+  /**
+   * The one stored derived value of the academics module: an offering's
+   * internal totals, frozen into InternalLock by the HOD's lock (one writer,
+   * lockInternal). Recomputed here from the marks and the components'
+   * maxima and weights with the same arithmetic (lockTotals); after a lock
+   * nothing may change, so a difference is a write that got past the 409.
+   * Read at the audited schools and at ZZ Vidya College, where the fixture
+   * locks PHY101. Attendance percentages and outcome attainment are computed
+   * on read and stored nowhere, so they need no check.
+   */
+  it("academics-internal-lock: a locked offering's totals are its marks × weights, out of the scheme's internal total", async () => {
+    const { lockTotals } = await import("@/lib/academics-assessment");
+    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
+    const audited = [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
+    for (const s of audited) {
+      const locks = await db.internalLock.findMany({ where: { schoolId: s.id }, select: { offeringId: true, outOf: true, totalsJson: true, offering: { select: { course: { select: { code: true, scheme: { select: { passingRules: true } } } } } } } });
+      for (const l of locks) {
+        const stored = JSON.parse(l.totalsJson) as { studentMembershipId: string; totalHundredths: number }[];
+        const components = await db.internalComponent.findMany({ where: { offeringId: l.offeringId }, select: { id: true, maxMarks: true, weight: true, marks: { select: { studentMembershipId: true, marksTenths: true } } } });
+        const want = lockTotals(components, stored.map((x) => x.studentMembershipId));
+        for (const w of want) {
+          const got = stored.find((x) => x.studentMembershipId === w.studentMembershipId)!;
+          if (got.totalHundredths !== w.totalHundredths) note("academics-internal-lock", "FAIL", s.name, `${l.offering.course.code}: stored ${got.totalHundredths / 100}, marks give ${w.totalHundredths / 100}`);
+        }
+        const weights = components.reduce((a, c) => a + c.weight, 0);
+        if (weights !== l.outOf) note("academics-internal-lock", "FAIL", s.name, `${l.offering.course.code}: weights add to ${weights}, locked out of ${l.outOf}`);
+        if (stored.some((x) => x.totalHundredths > l.outOf * 100)) note("academics-internal-lock", "FAIL", s.name, `${l.offering.course.code}: a total above ${l.outOf}`);
+      }
+      if (locks.length) note("academics-internal-lock", "INFO", s.name, `${locks.length} locked offerings checked`);
+    }
+    expect(failsOf("academics-internal-lock")).toEqual([]);
+  });
+
+  /**
+   * ONE PRN (the integration builder, 4 Oct 2026). The office's record
+   * (PupilRecord.prn, written by the admission and by the seat page) is the
+   * truth; the academic seat's prn (StudentProgramme.prn) is its copy, written
+   * in the same transaction. A seat whose PRN differs from its record's is a
+   * write that went round the one writer.
+   */
+  it("college-prn: the seat's PRN is the record's", async () => {
+    const colleges = await db.school.findMany({ where: { kind: { in: ["COLLEGE", "AUTONOMOUS_COLLEGE"] }, OR: [{ slug: { startsWith: "zz-" } }, { id: { in: schools.map((s) => s.id) } }, { slug: "saraswati-college" }] }, select: { id: true, name: true } });
+    for (const s of colleges) {
+      const seats = await db.studentProgramme.findMany({ where: { schoolId: s.id }, select: { prn: true, student: { select: { studentCode: true, pupilRecord: { select: { prn: true } } } } } });
+      let checked = 0;
+      for (const seat of seats) {
+        const record = seat.student.pupilRecord;
+        if (!record) continue;
+        checked += 1;
+        if (record.prn !== null && seat.prn !== record.prn) note("college-prn", "FAIL", s.name, `${seat.student.studentCode ?? "a student"}: seat ${seat.prn ?? "none"}, record ${record.prn}`);
+        if (record.prn === null && seat.prn !== null) note("college-prn", "WARN", s.name, `${seat.student.studentCode ?? "a student"}: the seat holds ${seat.prn} and the record none`);
+      }
+      if (checked) note("college-prn", "INFO", s.name, `${checked} seats checked against their records`);
+    }
+    expect(failsOf("college-prn")).toEqual([]);
+  });
+});
+
+d("modules: the college exam cell (4 October 2026)", () => {
+  /**
+   * The exam cell's stored copies, each recomputed from its rows, at the
+   * audited schools and the two ZZ colleges: a term result's SGPA is
+   * Σ credits × points ÷ Σ credits of the run's own course rows (the regular
+   * courses; every course in a backlog-only sitting) — its one writer is the
+   * run; and an autonomous college's printing list counts the seats in its
+   * hall, with the spare on top.
+   */
+  async function examSchools() {
+    const colleges = await db.school.findMany({ where: { slug: { in: ["zz-vidya-college", "zz-shastri-college"] } }, select: { id: true, name: true } });
+    return [...schools.map((s) => ({ id: s.id, name: s.name })), ...colleges.filter((c) => !schools.some((s) => s.id === c.id))];
+  }
+
+  it("exam-sgpa: a term result's SGPA is its course rows' Σ credits × points ÷ Σ credits", async () => {
+    const { sgpaCourses } = await import("@/lib/exam-cell-marks");
+    const { sgpaHundredths } = await import("@/lib/exam-cell-rules");
+    for (const s of await examSchools()) {
+      const terms = await db.termResult.findMany({ where: { schoolId: s.id }, select: { runId: true, studentMembershipId: true, sgpaHundredths: true, creditsAttemptedTenths: true, creditsEarnedTenths: true } });
+      for (const term of terms) {
+        const rows = await db.courseResult.findMany({ where: { runId: term.runId, studentMembershipId: term.studentMembershipId }, select: { kind: true, creditsTenths: true, pointsTenths: true, status: true } });
+        const over = sgpaCourses(rows);
+        const want = sgpaHundredths(over);
+        if (term.sgpaHundredths !== want) note("exam-sgpa", "FAIL", s.name, `run ${term.runId} student ${term.studentMembershipId}: stored ${term.sgpaHundredths}, rows give ${want}`);
+        const attempted = over.reduce((a, r) => a + r.creditsTenths, 0);
+        const earned = over.filter((r) => r.status === "PASS").reduce((a, r) => a + r.creditsTenths, 0);
+        if (term.creditsAttemptedTenths !== attempted || term.creditsEarnedTenths !== earned) note("exam-sgpa", "FAIL", s.name, `run ${term.runId} student ${term.studentMembershipId}: credits ${term.creditsEarnedTenths}/${term.creditsAttemptedTenths}, rows give ${earned}/${attempted}`);
+      }
+      if (terms.length) note("exam-sgpa", "INFO", s.name, `${terms.length} term results checked`);
+    }
+    expect(failsOf("exam-sgpa")).toEqual([]);
+  });
+
+  it("exam-printing: a printing list counts its hall's seats, with the spare on top", async () => {
+    for (const s of await examSchools()) {
+      const lists = await db.printingList.findMany({ where: { schoolId: s.id }, select: { examRoomId: true, seated: true, spare: true, count: true, room: { select: { name: true, _count: { select: { seats: true } } } } } });
+      for (const l of lists) {
+        if (l.seated !== l.room._count.seats) note("exam-printing", "WARN", s.name, `${l.room.name}: list says ${l.seated} seated, the hall seats ${l.room._count.seats} now (seating rebuilt after the list)`);
+        if (l.count !== (l.seated > 0 ? l.seated + l.spare : 0)) note("exam-printing", "FAIL", s.name, `${l.room.name}: count ${l.count} ≠ ${l.seated} + ${l.spare}`);
+      }
+      if (lists.length) note("exam-printing", "INFO", s.name, `${lists.length} printing lists checked`);
+    }
+    expect(failsOf("exam-printing")).toEqual([]);
+  });
+});
+
+d("modules: the IQAC desk (4 October 2026)", () => {
+  /**
+   * The IQAC module's stored copies, each recomputed from its rows: a NAAC
+   * cycle's CGPA (one writer, writeCycleCgpa) against the CGPA of the latest
+   * score of every metric; a filing's hash against its body, and the figures
+   * a regenerated filing gives against the ones it printed (drift is a WARN:
+   * the college's records moved on after it filed); a grievance's due date
+   * against fifteen working days from its filing; the disclosure's hash
+   * against its snapshot; that no anonymous survey's response names its
+   * respondent; and a faculty record's PAN against payroll's copy (a WARN:
+   * two sealed copies the office keeps). Read at the audited schools and at
+   * ZZ Vidya College, where the fixture keeps a cycle and a filed AQAR.
+   */
+  const audited = async () => {
+    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
+    return [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
+  };
+  const sha = async (text: string) => (await import("node:crypto")).createHash("sha256").update(text).digest("hex");
+
+  it("iqac-cgpa: a cycle's stored CGPA is the CGPA of its latest metric scores", async () => {
+    const { cgpaFromRows } = await import("@/lib/iqac");
+    for (const s of await audited()) {
+      const cycles = await db.accreditationCycle.findMany({ where: { schoolId: s.id }, select: { id: true, framework: true, cgpa: true } });
+      for (const c of cycles) {
+        const want = await cgpaFromRows(c.id, c.framework);
+        if (c.cgpa !== null && Math.abs(c.cgpa - want) > 0.001) note("iqac-cgpa", "FAIL", s.name, `cycle ${c.id}: stored ${c.cgpa}, scores give ${want}`);
+      }
+      if (cycles.length) note("iqac-cgpa", "INFO", s.name, `${cycles.length} NAAC cycle(s) checked`);
+    }
+    expect(failsOf("iqac-cgpa")).toEqual([]);
+  });
+
+  it("iqac-filing: a filing's hash is its body's, and regenerating it from the rows gives the figures it printed", async () => {
+    const { buildFiling } = await import("@/lib/iqac-filings");
+    for (const s of await audited()) {
+      const filings = await db.collegeFiling.findMany({ where: { schoolId: s.id }, select: { id: true, kind: true, year: true, cycleId: true, body: true, hash: true, figuresJson: true } });
+      for (const f of filings) {
+        if ((await sha(f.body)) !== f.hash) note("iqac-filing", "FAIL", s.name, `${f.kind} ${f.year}: the body no longer matches its hash`);
+        const again = await buildFiling(s.id, f.kind as never, f.year, f.cycleId);
+        const stored = JSON.parse(f.figuresJson) as Record<string, number>;
+        const moved = Object.keys({ ...stored, ...again.figures }).filter((k) => stored[k] !== again.figures[k]);
+        if (moved.length) note("iqac-filing", "WARN", s.name, `${f.kind} ${f.year}: the records moved on since it was generated (${moved.slice(0, 5).map((k) => `${k} ${stored[k]}→${again.figures[k]}`).join(", ")})`);
+      }
+      if (filings.length) note("iqac-filing", "INFO", s.name, `${filings.length} filing(s) regenerated and compared`);
+    }
+    expect(failsOf("iqac-filing")).toEqual([]);
+  });
+
+  it("iqac-grievance: a grievance is due fifteen working days after it was filed; an anonymous survey names nobody; the disclosure is its snapshot", async () => {
+    const { addWorkingDays } = await import("@/lib/iqac-rules");
+    for (const s of await audited()) {
+      const grievances = await db.grievance.findMany({ where: { schoolId: s.id }, select: { id: true, filedAt: true, dueOn: true } });
+      for (const g of grievances) {
+        const filed = new Date(g.filedAt.getTime() + 5.5 * 3_600_000).toISOString().slice(0, 10);
+        if (g.dueOn !== addWorkingDays(filed, 15)) note("iqac-grievance", "FAIL", s.name, `grievance ${g.id}: due ${g.dueOn}, fifteen working days from ${filed} is ${addWorkingDays(filed, 15)}`);
+      }
+      const named = await db.surveyResponse.count({ where: { schoolId: s.id, respondentMembershipId: { not: null }, survey: { kind: { not: "COURSE_FEEDBACK" } } } });
+      if (named) note("iqac-grievance", "FAIL", s.name, `${named} response(s) to an anonymous survey carry a membership id`);
+      const page = await db.disclosurePage.findUnique({ where: { schoolId: s.id }, select: { snapshotJson: true, hash: true } });
+      if (page && (await sha(page.snapshotJson)) !== page.hash) note("iqac-grievance", "FAIL", s.name, "the published disclosure no longer matches its hash");
+      const records = await db.facultyRecord.findMany({ where: { schoolId: s.id, panLast4: { not: null } }, select: { membershipId: true, panLast4: true } });
+      for (const r of records) {
+        const salary = await db.staffSalary.findFirst({ where: { membershipId: r.membershipId, panLast4: { not: null } }, orderBy: { effectiveFromKey: "desc" }, select: { panLast4: true } });
+        if (salary && salary.panLast4 !== r.panLast4) note("iqac-grievance", "WARN", s.name, `faculty record ${r.membershipId}: PAN ending ${r.panLast4}, payroll's ends ${salary.panLast4}`);
+      }
+      if (grievances.length) note("iqac-grievance", "INFO", s.name, `${grievances.length} grievance(s) checked`);
+    }
+    expect(failsOf("iqac-grievance")).toEqual([]);
+  });
+});
+
+d("modules: placement (4 October 2026)", () => {
+  /**
+   * The placement module keeps one stored copy of derived figures: the
+   * season row (PlacementSeason), the table as the cell published it. Each is
+   * recomputed from the offers and the profiles (src/lib/placement-analytics.ts
+   * `seasonDrift`): FAIL when nothing changed since it was published, WARN
+   * when an offer or a profile changed afterwards (republish to bring it in
+   * step). An internship's credits never pass the AICTE maximum.
+   */
+  it("placement-season: a published season is what the offers and profiles give; internship credits stay within the policy", async () => {
+    const { seasonDrift } = await import("@/lib/placement-analytics");
+    const { AICTE_INTERNSHIP_BTECH } = await import("@edulink/contracts");
+    const vidya = await db.school.findMany({ where: { slug: "zz-vidya-college" }, select: { id: true, name: true } });
+    const audited = [...schools.map((s) => ({ id: s.id, name: s.name })), ...vidya.filter((v) => !schools.some((s) => s.id === v.id))];
+    for (const s of audited) {
+      const seasons = await db.placementSeason.count({ where: { schoolId: s.id } });
+      for (const f of await seasonDrift(s.id)) note("placement-season", f.level, s.name, `batch ${f.batchYear}: ${f.detail}`);
+      const credited = await db.internship.groupBy({ by: ["studentMembershipId"], where: { schoolId: s.id, status: "CREDITED" }, _sum: { credits: true } });
+      for (const c of credited) if ((c._sum.credits ?? 0) > AICTE_INTERNSHIP_BTECH.creditsMax) note("placement-season", "FAIL", s.name, `student ${c.studentMembershipId}: ${c._sum.credits} internship credits, past the policy's ${AICTE_INTERNSHIP_BTECH.creditsMax}`);
+      if (seasons || credited.length) note("placement-season", "INFO", s.name, `${seasons} season row(s) and ${credited.length} students' internship credits checked`);
+    }
+    expect(failsOf("placement-season")).toEqual([]);
+  });
+});

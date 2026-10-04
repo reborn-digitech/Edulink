@@ -14,7 +14,8 @@ import { TeachingWeekForm } from "./teaching-week-form";
 import { SelfReadAgeForm } from "./self-read-age-form";
 import { parseTeachingDays } from "@/lib/dates";
 import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
-import { BroomIcon, CalendarCheckIcon, EyeIcon, PuzzlePieceIcon } from "@phosphor-icons/react/ssr";
+import { BroomIcon, CalendarCheckIcon, CertificateIcon, EyeIcon, GlobeIcon, PuzzlePieceIcon } from "@phosphor-icons/react/ssr";
+import { isCollegeKind } from "@/lib/institution";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -53,6 +54,7 @@ export default async function SettingsPage() {
       timezone: true,
       teachingDays: true,
       selfReadAge: true,
+      kind: true,
     },
     }),
     readOwnProfileSettings(ctx),
@@ -86,6 +88,28 @@ export default async function SettingsPage() {
           </Link>
         </CardBody>
       </Card>
+
+      {/* The global feed's kind filter (4 Oct 2026): schools', colleges' or both institutions' posts. */}
+      <Card>
+        <CardHeader icon={<GlobeIcon weight="duotone" className="size-5" />} title={t("feedKinds.cardTitle")} description={t("feedKinds.settingsCardBody")} />
+        <CardBody>
+          <Link href="/admin/settings/feed" className="font-semibold text-accent-strong underline underline-offset-4">
+            {t("feedKinds.open")}
+          </Link>
+        </CardBody>
+      </Card>
+
+      {/* A college's regulator references (4 Oct 2026); a school has none. */}
+      {isCollegeKind(school.kind) && (
+        <Card>
+          <CardHeader icon={<CertificateIcon weight="duotone" className="size-5" />} title={t("college.profileCardTitle")} description={t("college.profileSettingsBody")} />
+          <CardBody>
+            <Link href="/admin/settings/college" className="font-semibold text-accent-strong underline underline-offset-4">
+              {t("college.profileOpen")}
+            </Link>
+          </CardBody>
+        </Card>
+      )}
 
       <Card>
         <CardHeader

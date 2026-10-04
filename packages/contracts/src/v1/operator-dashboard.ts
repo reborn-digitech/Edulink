@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { institutionKindSchema } from "./modules";
 import { schoolBoardSchema } from "./filings";
 
 /**
@@ -161,6 +162,11 @@ export const operatorOnboardBodySchema = z.object({
   country: optionalText(120),
   gradeLow: optionalText(20),
   gradeHigh: optionalText(20),
+  /** A school, a junior college, a college or an autonomous college (4 Oct 2026); a school when left out. */
+  kind: institutionKindSchema.optional(),
+  /** A college's affiliating university and AISHE code (the operator's college console, 4 Oct 2026); kept for a college only, the code as AISHE issues it (C-12345). */
+  affiliatingUniversity: optionalText(200),
+  aisheCode: z.string().trim().regex(/^[CSU]-\d{3,7}$/).nullable().optional().or(z.literal("")),
   planId: id.nullable().optional(),
   trial: z.boolean().default(false),
   startsAt: day.optional(),
@@ -198,6 +204,8 @@ export const operatorDashboardRowSchema = z.object({
   id,
   name: z.string(),
   city: z.string().nullable(),
+  /** What kind of institution (4 Oct 2026); an older server says nothing, which reads as a school. */
+  kind: institutionKindSchema.default("SCHOOL"),
   removedAt: iso.nullable(),
   verifiedAt: iso.nullable(),
   pendingAdminInvites: count,

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { institutionKindLabel } from "@/lib/institution";
 import { BuildingsIcon, HandshakeIcon, RocketLaunchIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { formatPaise } from "@edulink/i18n";
 import { requireSuperuser } from "@/lib/tenancy";
@@ -207,7 +208,10 @@ function SchoolRow({ row, t, relativeTime, percent }: { row: DashboardRow; t: Tr
         <Link href={`/root/${row.id}`} className="font-medium text-fg hover:underline">
           {row.name}
         </Link>
-        <p className="text-xs text-fg-muted">{row.city || t("root.noAddress")}</p>
+        {/* The kind by name (4 Oct 2026): a college reads as a college in the operator's list. */}
+        <p className="text-xs text-fg-muted">
+          {institutionKindLabel(row.kind, t)} · {row.city || t("root.noAddress")}
+        </p>
       </td>
       <td className="py-2 pr-3">
         <div className="flex flex-wrap gap-1">

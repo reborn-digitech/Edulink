@@ -22,6 +22,10 @@ export const DECISION_KIND_KEY: Record<DecisionKind, TranslationKey> = {
   certificate: "decisions.kindCertificate",
   join: "decisions.kindJoin",
   admission: "decisions.kindAdmission",
+  grace: "decisions.kindGrace",
+  condonation: "decisions.kindCondonation",
+  concession: "decisions.kindConcession",
+  lateRegistration: "decisions.kindLateRegistration",
 };
 
 /** The first and last day keys of a YYYY-MM month. */

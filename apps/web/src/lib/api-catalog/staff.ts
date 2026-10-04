@@ -36,8 +36,8 @@ export const STAFF: Endpoint[] = [
   { method: "POST", path: "/api/v1/staff/meetings", summary: "Offer a run of meeting slots", access: ["TEACHER"], request: c.publishSlotsSchema, response: c.slotsPublishedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/staff/meetings/cancel", summary: "Withdraw one of my slots", access: ["TEACHER"], request: c.cancelSlotSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- /teacher/leave -------------------------------------------------------
-  { method: "GET", path: "/api/v1/staff/leave", summary: "My leave balance and requests", access: ["TEACHER", "PRINCIPAL"], response: c.staffLeaveSchema },
-  { method: "POST", path: "/api/v1/staff/leave", summary: "Apply for leave", access: ["TEACHER", "PRINCIPAL"], request: c.applyLeaveSchema, response: c.leaveAppliedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/staff/leave", summary: "My leave balance and requests (the module roles and the college's six staff roles too)", access: ["TEACHER", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"], response: c.staffLeaveSchema },
+  { method: "POST", path: "/api/v1/staff/leave", summary: "Apply for leave", access: ["TEACHER", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"], request: c.applyLeaveSchema, response: c.leaveAppliedSchema, emptyBodyStatus: 422 },
   // ---- /teacher/profile -----------------------------------------------------
   { method: "GET", path: "/api/v1/staff/profile", summary: "The teacher's own profile", access: ["TEACHER"], response: c.staffProfileSchema },
   { method: "POST", path: "/api/v1/staff/profile", summary: "Save my preferred name, bio, avatar and date of birth", access: ["TEACHER"], request: c.saveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },

@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 /** GET /api/v1/fees/export/collections?fromKey&toKey — the collection register between two days, as CSV text. Audited. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = feeExportQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const file = await collectionsExport(ctx, parsed.data);

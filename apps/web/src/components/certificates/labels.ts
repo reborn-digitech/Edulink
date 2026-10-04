@@ -15,6 +15,9 @@ export const CERTIFICATE_KIND_KEY: Record<CertificateKind, TranslationKey> = {
   CHARACTER: "certificates.kindCharacter",
   STUDY: "certificates.kindStudy",
   CUSTOM: "certificates.kindCustom",
+  MIGRATION: "certificateDefaults.titleMigration",
+  PROVISIONAL: "certificateDefaults.titleProvisional",
+  COURSE_COMPLETION: "certificateDefaults.titleCourseCompletion",
 };
 
 /** "हिन्दी", not "Hindi": a document's language named in itself. */

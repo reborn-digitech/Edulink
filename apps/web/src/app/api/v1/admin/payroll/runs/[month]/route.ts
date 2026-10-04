@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/runs/{month} — the run; its slips for the head only once shared. */
 export async function GET(_request: Request, { params }: { params: Promise<{ month: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const { month } = await params;
     return ok(payrollRunSchema.parse(await runView(ctx, month)));
   } catch (error) {

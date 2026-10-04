@@ -124,6 +124,10 @@ export const QUIZ_SUBJECTS = [
   "GEOGRAPHY",
   "CIVICS",
   "ECONOMICS",
+  // The placement bank (4 Oct 2026): aptitude, reasoning and coding for a college's students, on the same engine (PLACEMENT_PREP_SUBJECTS in packages/contracts).
+  "APTITUDE",
+  "REASONING",
+  "CODING",
 ] as const;
 export type QuizSubject = (typeof QUIZ_SUBJECTS)[number];
 
@@ -143,6 +147,9 @@ export const SUBJECT_KEY: Record<QuizSubject, TranslationKey> = {
   GEOGRAPHY: "subject.GEOGRAPHY",
   CIVICS: "subject.CIVICS",
   ECONOMICS: "subject.ECONOMICS",
+  APTITUDE: "subject.APTITUDE",
+  REASONING: "subject.REASONING",
+  CODING: "subject.CODING",
 };
 
 /**

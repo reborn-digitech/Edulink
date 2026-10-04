@@ -18,7 +18,7 @@ import { readSpreadsheet, SPREADSHEET_ACCEPT } from "@/lib/spreadsheet-client";
 import { createInvites, type CreateInvitesState } from "../actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
-import { ROLE_META, INVITABLE_ROLES, isModuleRole, type InvitableRole } from "@/lib/constants";
+import { ROLE_META, INVITABLE_ROLES, isModuleRole, isTeachingRole, type InvitableRole } from "@/lib/constants";
 
 /**
  * Bulk invite composer.
@@ -29,11 +29,14 @@ import { ROLE_META, INVITABLE_ROLES, isModuleRole, type InvitableRole } from "@/
  */
 export function InviteForm({
   initialRole,
+  roles,
   classes,
   schoolCode,
   className,
 }: {
   initialRole: InvitableRole;
+  /** The roles this institution invites (invitableRolesFor its kind); every invitable role when left out. */
+  roles?: readonly InvitableRole[];
   classes: { id: string; name: string }[];
   schoolCode: string;
   className?: string;
@@ -183,14 +186,14 @@ export function InviteForm({
         value={role}
         onChange={(e) => setRole(e.target.value as InvitableRole)}
       >
-        {INVITABLE_ROLES.map((r) => (
+        {(roles ?? INVITABLE_ROLES).map((r) => (
           <option key={r} value={r}>
             {t(ROLE_META[r].labelKey)}
           </option>
         ))}
       </SelectField>
 
-      {classes.length > 0 && !isModuleRole(role) && (
+      {classes.length > 0 && !isModuleRole(role) && (role === "STUDENT" || isTeachingRole(role) || role === "ADMIN" || role === "PRINCIPAL") && (
         <SelectField
           label={role === "STUDENT" ? t("invites.addToClass") : t("invites.assignToClass")}
           value={classId}

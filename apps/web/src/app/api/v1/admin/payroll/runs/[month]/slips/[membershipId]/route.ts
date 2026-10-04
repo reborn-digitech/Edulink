@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** POST /api/v1/admin/payroll/runs/{month}/slips/{membershipId} — the office's review of one slip in a DRAFT run. */
 export async function POST(request: Request, { params }: { params: Promise<{ month: string; membershipId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = payslipEditSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const { month, membershipId } = await params;

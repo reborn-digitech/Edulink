@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/inventory/movements?itemCode=&month= — newest first. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const params = new URL(request.url).searchParams;
     const parsed = stockMovementsQuerySchema.safeParse({ itemCode: params.get("itemCode") ?? undefined, month: params.get("month") ?? undefined });
     if (!parsed.success) return apiInvalid(parsed);
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/admin/inventory/movements — an issue, a return, an adjustment or a write-off; never below nothing. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = stockMovementSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(stockMovementSchema.parse(await recordMovement(ctx, parsed.data)));

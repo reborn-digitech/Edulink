@@ -64,6 +64,16 @@ export type LeaveResult = {
   id?: string;
 };
 
+/**
+ * Who may ask to be away: the staff who are not the office (an ADMIN decides
+ * leave rather than asking for it here). The college's six joined on 4 October
+ * 2026 — faculty and the HOD stand in for each other as teachers do, so they are
+ * also COVER_ROLES; the exam cell, IQAC, placement and accounts desks are not.
+ */
+export const LEAVE_APPLICANT_ROLES = ["TEACHER", "PRINCIPAL", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const;
+/** Who may be named to cover a colleague's absence (the picker, the nominee check, the suggestions). */
+export const COVER_ROLES = ["TEACHER", "PRINCIPAL", "FACULTY", "HOD"] as const;
+
 /** A member of staff asks to be away. */
 export async function applyForLeave(
   ctx: ActiveContext,
@@ -73,7 +83,8 @@ export async function applyForLeave(
   // approve it. The approval side refuses self-approval separately. A driver,
   // the library's desk and a warden are staff too (3 Oct 2026); their pages
   // come with their modules.
-  if ((ctx.role !== "TEACHER" && ctx.role !== "PRINCIPAL" && ctx.role !== "DRIVER" && ctx.role !== "LIBRARIAN" && ctx.role !== "WARDEN") || !ctx.schoolId || !ctx.membershipId) {
+  // The college's six staff roles (4 Oct 2026) apply from /account/leave and the phone.
+  if (!ctx.role || !(LEAVE_APPLICANT_ROLES as readonly string[]).includes(ctx.role) || !ctx.schoolId || !ctx.membershipId) {
     throw new AccessError("access.onlyTeachingStaffCanApplyForLeave");
   }
 
@@ -777,7 +788,7 @@ async function resolveNominee(
     where: {
       id: membershipId,
       schoolId: ctx.schoolId!,
-      role: { in: ["TEACHER", "PRINCIPAL", "ADMIN"] },
+      role: { in: [...COVER_ROLES, "ADMIN"] },
       status: "ACTIVE",
       leftAt: null,
     },
@@ -874,7 +885,7 @@ export async function coverCandidates(
     db.membership.findMany({
       where: {
         schoolId: ctx.schoolId,
-        role: { in: ["TEACHER", "PRINCIPAL"] },
+        role: { in: [...COVER_ROLES] },
         status: "ACTIVE",
         leftAt: null,
         id: { not: applicantMembershipId },

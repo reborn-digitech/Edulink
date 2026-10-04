@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
 /** GET /api/v1/library/mine — A member's own library, or a guardian's child's: loans, dues, queue. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD");
     const parsed = libraryMineQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const q = parsed.data;

@@ -13,8 +13,10 @@ import {
   UserMinusIcon,
   ReceiptIcon,
   PackageIcon,
+  CalendarBlankIcon,
 } from "@phosphor-icons/react/ssr";
 import { SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
+import { LEAVE_APPLICANT_ROLES } from "@/lib/leave";
 import { enabledModules } from "@/lib/modules";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -245,6 +247,20 @@ export default async function AccountPage({
         </Card>
       )}
 
+      {live.role && (LEAVE_APPLICANT_ROLES as readonly string[]).includes(live.role) && live.role !== "TEACHER" && live.role !== "PRINCIPAL" && (
+        <Card>
+          <CardHeader
+            icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
+            title={t("teacher.leave")}
+            description={t("collegeHub.leaveCard")}
+            action={
+              <Button asChild size="sm" variant="secondary">
+                <Link href="/account/leave">{t("collegeHub.leaveOpen")}</Link>
+              </Button>
+            }
+          />
+        </Card>
+      )}
       {staffModules.includes("PAYROLL") && (
         <Card>
           <CardHeader

@@ -33,6 +33,7 @@ import { dayToDate } from "./fees";
 import { parseCsv } from "./csv";
 import { writeJson } from "./json";
 import { getT } from "./i18n/server";
+import { isCollegeKind } from "./institution";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -70,14 +71,14 @@ import type { Role } from "./constants";
 const DESK: readonly Role[] = ["LIBRARIAN", "ADMIN"];
 const DESK_READ: readonly Role[] = ["LIBRARIAN", "ADMIN", "PRINCIPAL"];
 /** The roles whose membership may borrow: the pupil and every member of staff. */
-const MEMBER_ROLES: readonly Role[] = ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "WARDEN", "DRIVER"];
-const READER_ROLES: readonly Role[] = ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN"];
+const MEMBER_ROLES: readonly Role[] = ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "WARDEN", "DRIVER", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
+const READER_ROLES: readonly Role[] = ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "FACULTY", "HOD"];
 const LENT = ["AVAILABLE", "ISSUED", "REPAIR"];
 
 type Tx = typeof db;
 type Desk = { schoolId: string; userId: string; role: Role; membershipId: string; timeZone: string };
 
-export const LIBRARY_DEFAULTS = { pupilLimit: 2, pupilLoanDays: 14, staffLimit: 5, staffLoanDays: 30, maxRenewals: 2, finePerDayPaise: 100, fineHeadId: null as string | null, stockTakeStartedAt: null as Date | null };
+export const LIBRARY_DEFAULTS = { pupilLimit: 2, pupilLoanDays: 14, staffLimit: 5, staffLoanDays: 30, maxRenewals: 2, finePerDayPaise: 100, fineHeadId: null as string | null, stockTakeStartedAt: null as Date | null, facultyLimit: 10, facultyLoanDays: 90, collegeStudentLimit: 4, collegeStudentLoanDays: 15, bookBankExtra: 2 };
 type Settings = typeof LIBRARY_DEFAULTS;
 
 async function zoneOf(schoolId: string): Promise<string> {
@@ -95,11 +96,36 @@ async function deskOf(ctx: ActiveContext, mode: "write" | "read" = "write"): Pro
 export async function librarySettings(schoolId: string): Promise<Settings> {
   const row = await db.librarySettings.findUnique({ where: { schoolId } });
   if (!row) return { ...LIBRARY_DEFAULTS };
-  return { pupilLimit: row.pupilLimit, pupilLoanDays: row.pupilLoanDays, staffLimit: row.staffLimit, staffLoanDays: row.staffLoanDays, maxRenewals: row.maxRenewals, finePerDayPaise: row.finePerDayPaise, fineHeadId: row.fineHeadId, stockTakeStartedAt: row.stockTakeStartedAt };
+  return { pupilLimit: row.pupilLimit, pupilLoanDays: row.pupilLoanDays, staffLimit: row.staffLimit, staffLoanDays: row.staffLoanDays, maxRenewals: row.maxRenewals, finePerDayPaise: row.finePerDayPaise, fineHeadId: row.fineHeadId, stockTakeStartedAt: row.stockTakeStartedAt, facultyLimit: row.facultyLimit, facultyLoanDays: row.facultyLoanDays, collegeStudentLimit: row.collegeStudentLimit, collegeStudentLoanDays: row.collegeStudentLoanDays, bookBankExtra: row.bookBankExtra };
 }
 
-const limitOf = (s: Settings, kind: string) => (kind === "PUPIL" ? s.pupilLimit : s.staffLimit);
-const loanDaysOf = (s: Settings, kind: string) => (kind === "PUPIL" ? s.pupilLoanDays : s.staffLoanDays);
+/**
+ * A member's kind decides their limit and loan length. At a college (4 Oct
+ * 2026) a student borrows as STUDENT_COLLEGE and faculty (and heads of
+ * department) as FACULTY, each on the college's own terms; everyone else is a
+ * PUPIL or STAFF as at a school. A pupil's kind — PUPIL or STUDENT_COLLEGE —
+ * is the one whose fines go to the fee ledger and whose guardians are told.
+ */
+const limitOf = (s: Settings, kind: string) => (kind === "PUPIL" ? s.pupilLimit : kind === "STUDENT_COLLEGE" ? s.collegeStudentLimit : kind === "FACULTY" ? s.facultyLimit : s.staffLimit);
+const loanDaysOf = (s: Settings, kind: string) => (kind === "PUPIL" ? s.pupilLoanDays : kind === "STUDENT_COLLEGE" ? s.collegeStudentLoanDays : kind === "FACULTY" ? s.facultyLoanDays : s.staffLoanDays);
+export const isPupilKind = (kind: string) => kind === "PUPIL" || kind === "STUDENT_COLLEGE";
+
+/** The kind a new borrower row takes, by the person's role and the institution's kind. */
+async function memberKindFor(schoolId: string, role: string): Promise<string> {
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { kind: true } });
+  if (!isCollegeKind(school?.kind ?? "SCHOOL")) return role === "STUDENT" ? "PUPIL" : "STAFF";
+  return role === "STUDENT" ? "STUDENT_COLLEGE" : role === "FACULTY" || role === "HOD" ? "FACULTY" : "STAFF";
+}
+
+/**
+ * THE BOOK BANK: a college student holding a scholarship this year (a claim
+ * applied for, sanctioned or paid) may take `bookBankExtra` more books.
+ */
+async function bookBankExtraFor(s: Settings, member: { kind: string; membershipId: string }): Promise<number> {
+  if (member.kind !== "STUDENT_COLLEGE" || s.bookBankExtra <= 0) return 0;
+  const claim = await db.scholarshipClaim.findFirst({ where: { studentMembershipId: member.membershipId, status: { in: ["APPLIED", "SANCTIONED", "DISBURSED"] } }, select: { id: true } });
+  return claim ? s.bookBankExtra : 0;
+}
 
 /** Whole days from `a` to `b`, two date keys. */
 export function daysBetween(a: string, b: string): number {
@@ -169,7 +195,7 @@ async function personAt(schoolId: string, membershipId: string): Promise<PersonR
 async function memberOf(schoolId: string, person: PersonRow): Promise<MemberRow> {
   const existing = await db.libraryMember.findUnique({ where: { membershipId: person.id }, select: { id: true, membershipId: true, kind: true, cardNumber: true } });
   if (existing) return existing;
-  const kind = person.role === "STUDENT" ? "PUPIL" : "STAFF";
+  const kind = await memberKindFor(schoolId, person.role);
   for (let attempt = 0; attempt < 6; attempt += 1) {
     const last = await db.libraryMember.findFirst({ where: { schoolId, cardNumber: { startsWith: "L" } }, orderBy: { cardNumber: "desc" }, select: { cardNumber: true } });
     const n = (Number(last?.cardNumber.slice(1)) || 0) + 1 + attempt;
@@ -185,12 +211,12 @@ async function memberOf(schoolId: string, person: PersonRow): Promise<MemberRow>
 }
 
 async function summaryOf(person: PersonRow, member: MemberRow | null, s: Settings): Promise<LibraryMemberSummary> {
-  const kind = member?.kind ?? (person.role === "STUDENT" ? "PUPIL" : "STAFF");
+  const kind = member?.kind ?? (await memberKindFor(person.schoolId, person.role));
   const [onLoan, fines] = member
     ? await Promise.all([db.libraryIssue.count({ where: { memberId: member.id, returnedAt: null } }), db.libraryFine.findMany({ where: { memberId: member.id, waivedAt: null, settledAt: null }, select: FINE_SELECT })])
     : [0, []];
   const owed = (await finesOf(fines)).reduce((a, f) => a + (f.status === "DUE" ? f.paise : 0), 0);
-  return { membershipId: person.id, name: nameOf(person), kind: kind as "PUPIL" | "STAFF", className: person.enrollments[0]?.class.name ?? null, cardNumber: member?.cardNumber ?? null, onLoan, limit: limitOf(s, kind), owedPaise: owed };
+  return { membershipId: person.id, name: nameOf(person), kind: kind as LibraryMemberSummary["kind"], className: person.enrollments[0]?.class.name ?? null, cardNumber: member?.cardNumber ?? null, onLoan, limit: limitOf(s, kind) + (member ? await bookBankExtraFor(s, member) : 0), owedPaise: owed };
 }
 
 /** People of the school the desk may lend to, by name, pupil code or library card. */
@@ -633,7 +659,7 @@ async function tellMember(schoolId: string, member: { kind: string; membership: 
   const keys = NOTICE_KEYS[what];
   const own = member.membership.role === "STUDENT" ? "/student/library" : member.membership.role === "TEACHER" ? "/teacher/library" : "/notifications";
   await notify({ userId: member.membership.userId, schoolId, kind: "SYSTEM", titleKey: keys.title, titleVars: vars, bodyKey: keys.self, bodyVars: vars, url: own });
-  if (member.kind !== "PUPIL") return;
+  if (!isPupilKind(member.kind)) return;
   await notifyGuardians(member.membership.id, (childName) => ({ schoolId, kind: "SYSTEM", titleKey: keys.title, titleVars: vars, bodyKey: keys.child, bodyVars: { ...vars, name: childName }, url: `/parent/library?child=${member.membership.id}` }));
 }
 
@@ -738,11 +764,12 @@ export async function issueCopy(ctx: ActiveContext, input: { accession: string; 
   const member = await memberOf(desk.schoolId, person);
   const today = todayKey(desk.timeZone);
   const dueOn = addDaysToKey(today, loanDaysOf(s, member.kind));
+  const bookBank = await bookBankExtraFor(s, member);
   const outcome = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     await tx.$queryRaw`SELECT 1 FROM "LibraryTitle" WHERE "id" = ${copy.titleId} FOR UPDATE`;
     const holding = await tx.libraryIssue.count({ where: { memberId: member.id, returnedAt: null } });
-    const limit = limitOf(s, member.kind);
+    const limit = limitOf(s, member.kind) + bookBank;
     if (holding >= limit) return { refused: "library.refuseLimit" as const, vars: { limit } as Record<string, string | number> };
     const hold = await tx.libraryReservation.findFirst({ where: { readyCopyId: copy.id, readyAt: { not: null }, fulfilledAt: null, cancelledAt: null }, select: { id: true, memberId: true, member: { select: { membership: { select: { user: { select: { name: true, preferredName: true } } } } } } } });
     if (hold && hold.memberId !== member.id) return { refused: "library.refuseHeld" as const, vars: { name: hold.member.membership.user.preferredName ?? hold.member.membership.user.name } as Record<string, string | number> };
@@ -767,7 +794,7 @@ export async function issueCopy(ctx: ActiveContext, input: { accession: string; 
  * Inside the caller's transaction, so the fine and its demand stand together.
  */
 async function chargeFine(tx: Tx, schoolId: string, memberKind: string, membershipId: string, s: Settings, paise: number, label: string, today: string): Promise<string | null> {
-  if (memberKind !== "PUPIL" || !s.fineHeadId || paise <= 0) return null;
+  if (!isPupilKind(memberKind) || !s.fineHeadId || paise <= 0) return null;
   const [head, year] = await Promise.all([tx.feeHead.findFirst({ where: { id: s.fineHeadId, schoolId, retiredAt: null }, select: { id: true, code: true, name: true } }), currentAcademicYear(schoolId)]);
   if (!head || !year) return null;
   const demand = await tx.feeDemand.create({

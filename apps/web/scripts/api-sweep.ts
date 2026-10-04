@@ -329,6 +329,18 @@ async function actors(): Promise<Record<Role, string>> {
     const member = await db.membership.findFirst({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
     if (member) out[role] = await mint(member.userId, role, school.id);
   }
+  // The college's six staff roles (4 Oct 2026), each at ZZ Vidya College (zz-college.ts), which has every module on;
+  // and the recruiter, an outside account with no school. A Northgate sample is another tenant's row to them: 404.
+  const vidya = await db.school.findUnique({ where: { slug: "zz-vidya-college" }, select: { id: true } });
+  if (vidya) {
+    const collegeActors: [Role, string][] = [["FACULTY", "zz.faculty01@zz.test"], ["HOD", "zz.hod01@zz.test"], ["EXAM_CONTROLLER", "zz.examctrl@zz.test"], ["IQAC", "zz.iqac@zz.test"], ["TPO", "zz.tpo@zz.test"], ["ACCOUNTS", "zz.accounts@zz.test"]];
+    for (const [role, email] of collegeActors) {
+      const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+      if (member) out[role] = await mint(member.userId, role, vidya.id);
+    }
+  }
+  const recruiter = await db.recruiterProfile.findFirst({ where: { user: { email: "zz.recruiter01@zz.test" }, disabledAt: null }, select: { userId: true } });
+  if (recruiter) out.RECRUITER = await mint(recruiter.userId, "RECRUITER", null);
   return out as Record<Role, string>;
 }
 
@@ -361,7 +373,7 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // An account door is decided by the person's memberships, which a sweep
   // actor holding one role cannot be read for from here: let through or refused.
   if (e.access === "account") return e.method === "GET" ? [200, 403, 404] : [200, 403, 404, 422];
-  // "signed-in" is every role but the four module roles, which pass only where `limitedRoles` names them (catalog types.ts).
+  // "signed-in" is every role but the limited ones (the module roles, the college's staff roles, the recruiter), which pass only where `limitedRoles` names them (catalog types.ts).
   const permitted = permits(e, role);
   if (!permitted) return 403;
   // The check-in takes no body, so its empty-body probe meets the calendar;

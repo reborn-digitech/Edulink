@@ -24,7 +24,7 @@ export const BOOKING_STATUS: Record<BookingStatus, { label: TranslationKey; tone
   UNHELD: { label: "gigs.bookingStatusUNHELD", tone: "danger" },
 };
 export const SESSION_KIND: Record<SessionKind, TranslationKey> = { ONE_TO_ONE: "gigs.kindONE_TO_ONE", WORKSHOP: "gigs.kindWORKSHOP" };
-export const PROVIDER_KIND: Record<"EXPERT" | "TEACHER", TranslationKey> = { EXPERT: "gigs.providerEXPERT", TEACHER: "gigs.providerTEACHER" };
+export const PROVIDER_KIND: Record<"EXPERT" | "TEACHER" | "ALUMNUS", TranslationKey> = { EXPERT: "gigs.providerEXPERT", TEACHER: "gigs.providerTEACHER", ALUMNUS: "gigs.providerALUMNUS" };
 
 export const SESSIONS_KEY = ["gigs", "sessions"] as const;
 

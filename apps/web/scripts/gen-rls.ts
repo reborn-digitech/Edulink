@@ -61,6 +61,11 @@ const NO_SCHOOL_POLICY = new Set([
   // school-owned and is scoped normally.
   "ExpertProfile",
   "ExpertSlot",
+  // A recruiter is an outside account like an expert (4 Oct 2026): belongs to
+  // no college, reaches one only through a placement drive. The person is the
+  // fence (src/lib/recruiters.ts); the drive the placement module binds is a
+  // college's row and is scoped normally.
+  "RecruiterProfile",
   // Gigs are work done for the platform itself (decision 0004): the bank is
   // every school's, the reviewer is the content team and the payer is the
   // company, so there is no school to key a policy on. The person is the
@@ -100,6 +105,14 @@ const NO_SCHOOL_POLICY = new Set([
   // share of their plan price, recorded only. The operator's row, like
   // Plan; a school points at it through School.commissionPartnerId.
   "CommissionPartner",
+  // Placement (4 Oct 2026): a company that recruits is the same row for every
+  // college, a recruiter's binding to it is the person's, and a requirement is
+  // the company's ask addressed to colleges by id. src/lib/placement*.ts is the
+  // fence, keyed on the session's own user id or the cell's own school; what
+  // a college does with a company — its drives — is the college's row.
+  "Company",
+  "CompanyRecruiter",
+  "Requirement",
 ]);
 
 /**
@@ -548,6 +561,17 @@ const GLOBALLY_READABLE: Record<string, string> = {
            SELECT 1 FROM "Enquiry" e
             WHERE e."id" = "EnquiryMessage"."enquiryId"
               AND e."fromUserId" = current_setting('app.user_id', true))`,
+  /**
+   * A COLLEGE'S AICTE MANDATORY DISCLOSURE (the IQAC module, 4 October 2026),
+   * which AICTE requires every approved institution to publish: readable by
+   * anyone — a signed-out applicant on /public/disclosure/<slug> — while the
+   * college has it published, and by nobody outside the college the moment
+   * the IQAC unpublishes. What crosses is a frozen snapshot of institutional
+   * figures and the faculty list AICTE asks for (names, designation,
+   * qualification, experience): no student, no PAN, no contact detail. Read
+   * only, like every clause in this map; the college writes its own row.
+   */
+  DisclosurePage: `"publishedAt" IS NOT NULL`,
 };
 
 /**
@@ -725,6 +749,123 @@ const EXPERT_WRITES: Record<string, { name: string; command: "INSERT" | "UPDATE"
     check: `${mine}
           AND "expertUserId" = current_setting('app.user_id', true)`,
   }],
+};
+
+/**
+ * PLACEMENT (4 October 2026): the two ways a college's placement rows cross
+ * to somebody the tenant clause does not name. Both READ ONLY — clauses in
+ * the FOR SELECT policy, never in a WITH CHECK — like the global feed's.
+ *
+ * 1. A RECRUITER, whose tenant set is EMPTY (an outside account like an
+ *    expert), reaches a college's rows through a drive of a company it is
+ *    bound to (CompanyRecruiter, no school, the person is the fence) and
+ *    nothing else, keyed on its own user id:
+ *
+ *      Drive            the drive, while it is OPEN, SHORTLISTING, ROUNDS or
+ *                       OFFERS — never in DRAFT and never once CLOSED
+ *      DriveApplication an application to such a drive that CONSENTED and
+ *                       was not withdrawn: no name before consent
+ *      PlacementProfile the profile of such an applicant
+ *      RoundResult      the results of such an applicant in such a drive
+ *      Offer            the offers of such an applicant in such a drive
+ *
+ *    and, to anybody signed in, THE PLACEMENT DIRECTORY: a college's School
+ *    row (the prospectus — name, town — and not the college) while it has
+ *    PLACEMENT on, and that SchoolModule row, so a recruiter can address a
+ *    requirement, a host cell can invite guests to a pooled drive and a guest
+ *    can read its host's name. Like the published-profile arm above, it is a
+ *    school making itself known by its own act (switching placement on).
+ *
+ *    Closing a drive closes every clause at once: nothing to revoke. What a
+ *    recruiter WRITES (round results, offers, feedback) the server writes
+ *    under the drive's school's binding (`forSchool`) after
+ *    src/lib/placement-recruiter.ts has found the drive live and theirs,
+ *    the construction an expert's notice to a school uses.
+ *
+ * 2. A POOLED DRIVE is the host college's row; its guest colleges are named
+ *    in `poolSchoolIds`. The guests' cells and students read the drive (not
+ *    in DRAFT); the host reads its guests' applications to it that carry
+ *    consent, and those applicants' profiles while the drive is not closed —
+ *    the host's consent list; a guest reads the round results and offers the
+ *    host recorded for its own applicants. A guest's application stays the
+ *    guest's row, written by its own student.
+ *
+ * NO CYCLES: Drive's clauses read CompanyRecruiter (no policy) and its own
+ * columns; DriveApplication's read Drive; the rest read DriveApplication and
+ * Drive; School reads SchoolModule, whose clause reads nothing. Nothing here
+ * reads Membership, and nothing Drive or DriveApplication reads reads School.
+ */
+const recruiterBound = (companyRef: string) => `EXISTS (
+             SELECT 1 FROM "CompanyRecruiter" cr
+              WHERE cr."companyId" = ${companyRef}
+                AND cr."userId" = current_setting('app.user_id', true)
+                AND cr."removedAt" IS NULL)`;
+const liveForRecruiter = (driveRef: string) => `${driveRef}."status" IN ('OPEN', 'SHORTLISTING', 'ROUNDS', 'OFFERS')
+              AND ${recruiterBound(`${driveRef}."companyId"`)}`;
+const consentedToLiveDrive = (driveIdRef: string, membershipRef: string) => `EXISTS (
+           SELECT 1 FROM "DriveApplication" a
+             JOIN "Drive" d ON d."id" = a."driveId"
+            WHERE a."driveId" = ${driveIdRef}
+              AND a."studentMembershipId" = ${membershipRef}
+              AND a."consentAt" IS NOT NULL
+              AND a."withdrawnAt" IS NULL
+              AND ${liveForRecruiter("d")})`;
+const tenantIds = `string_to_array(current_setting('app.school_ids', true), ',')`;
+const guestOwnApplicant = (table: string) => `EXISTS (
+           SELECT 1 FROM "DriveApplication" ga
+            WHERE ga."driveId" = "${table}"."driveId"
+              AND ga."studentMembershipId" = "${table}"."studentMembershipId"
+              AND ga."schoolId" = ANY (${tenantIds}))`;
+
+const PLACEMENT_READABLE: Record<string, string> = {
+  Drive: `(${mine}
+          AND ${liveForRecruiter(`"Drive"`)})
+          OR ("kind" = 'POOLED' AND "status" <> 'DRAFT'
+              AND jsonb_exists_any("poolSchoolIds"::jsonb, ${tenantIds}))`,
+  DriveApplication: `(${mine}
+          AND "consentAt" IS NOT NULL AND "withdrawnAt" IS NULL
+          AND EXISTS (
+           SELECT 1 FROM "Drive" d
+            WHERE d."id" = "DriveApplication"."driveId"
+              AND ${liveForRecruiter("d")}))
+          OR ("consentAt" IS NOT NULL
+              AND EXISTS (
+               SELECT 1 FROM "Drive" hd
+                WHERE hd."id" = "DriveApplication"."driveId"
+                  AND hd."kind" = 'POOLED'
+                  AND hd."schoolId" = ANY (${tenantIds})))`,
+  PlacementProfile: `(${mine}
+          AND EXISTS (
+           SELECT 1 FROM "DriveApplication" a
+             JOIN "Drive" d ON d."id" = a."driveId"
+            WHERE a."studentMembershipId" = "PlacementProfile"."studentMembershipId"
+              AND a."consentAt" IS NOT NULL
+              AND a."withdrawnAt" IS NULL
+              AND ${liveForRecruiter("d")}))
+          OR EXISTS (
+           SELECT 1 FROM "DriveApplication" pa
+             JOIN "Drive" pd ON pd."id" = pa."driveId"
+            WHERE pa."studentMembershipId" = "PlacementProfile"."studentMembershipId"
+              AND pa."consentAt" IS NOT NULL
+              AND pa."withdrawnAt" IS NULL
+              AND pd."kind" = 'POOLED'
+              AND pd."status" <> 'CLOSED'
+              AND pd."schoolId" = ANY (${tenantIds}))`,
+  RoundResult: `(${mine}
+          AND ${consentedToLiveDrive(`"RoundResult"."driveId"`, `"RoundResult"."studentMembershipId"`)})
+          OR ${guestOwnApplicant("RoundResult")}`,
+  Offer: `(${mine}
+          AND ${consentedToLiveDrive(`"Offer"."driveId"`, `"Offer"."studentMembershipId"`)})
+          OR ${guestOwnApplicant("Offer")}`,
+  School: `${mine}
+          AND "kind" IN ('COLLEGE', 'AUTONOMOUS_COLLEGE')
+          AND "removedAt" IS NULL
+          AND EXISTS (
+           SELECT 1 FROM "SchoolModule" sm
+            WHERE sm."schoolId" = "School"."id"
+              AND sm."module" = 'PLACEMENT')`,
+  SchoolModule: `${mine}
+          AND "module" = 'PLACEMENT'`,
 };
 
 /**
@@ -928,6 +1069,8 @@ function generate(): string {
     if (addresseeClause) alsoReadable.push(`(${addresseeClause})`);
     const expertClause = EXPERT_READABLE[table];
     if (expertClause) alsoReadable.push(`(${expertClause})`);
+    const placementClause = PLACEMENT_READABLE[table];
+    if (placementClause) alsoReadable.push(`(${placementClause})`);
     if (SUPERUSER_NULL_READABLE.has(table)) {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
@@ -970,6 +1113,15 @@ function generate(): string {
         `  -- …and a PENDING invitation addressed to the caller's own VERIFIED`,
         `  -- email — what lets /join offer the invitation instead of "go back`,
         `  -- to your inbox". See ADDRESSEE_READABLE in scripts/gen-rls.ts.`,
+      );
+    }
+    if (placementClause) {
+      usingNote.push(
+        `  -- …and, READ ONLY, a placement drive's rows across the fence: to the`,
+        `  -- RECRUITER bound to the drive's company while the drive is live (no`,
+        `  -- name before the student consents, nothing once it closes), and a`,
+        `  -- POOLED drive between its host and its guest colleges. See`,
+        `  -- PLACEMENT_READABLE in scripts/gen-rls.ts.`,
       );
     }
     if (expertClause) {

@@ -16,6 +16,13 @@ export const MODULE_KEYS: Record<SchoolModuleCode, { name: TranslationKey; what:
   INVENTORY: { name: "modules.inventoryName", what: "modules.inventoryWhat" },
   PAYROLL: { name: "modules.payrollName", what: "modules.payrollWhat" },
   ALUMNI: { name: "modules.alumniName", what: "modules.alumniWhat" },
+  // The college's six (4 Oct 2026).
+  ACADEMICS: { name: "modules.academicsName", what: "modules.academicsWhat" },
+  EXAMS: { name: "modules.examsName", what: "modules.examsWhat" },
+  IQAC: { name: "modules.iqacName", what: "modules.iqacWhat" },
+  PLACEMENT: { name: "modules.placementName", what: "modules.placementWhat" },
+  ADMISSIONS: { name: "modules.admissionsName", what: "modules.admissionsWhat" },
+  SCHOLARSHIPS: { name: "modules.scholarshipsName", what: "modules.scholarshipsWhat" },
 };
 
 /**

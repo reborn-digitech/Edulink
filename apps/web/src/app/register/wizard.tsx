@@ -15,6 +15,7 @@ import {
 } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
+import { INSTITUTION_KINDS } from "@edulink/contracts";
 import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { INDIA } from "@/lib/places";
@@ -57,6 +58,8 @@ type Draft = {
   gradeLow: string;
   gradeHigh: string;
   timezone: string;
+  /** A school, a junior college, a college or an autonomous college (4 Oct 2026). */
+  kind: string;
   adminName: string;
   adminEmail: string;
 };
@@ -74,6 +77,7 @@ const EMPTY: Draft = {
   gradeLow: "",
   gradeHigh: "",
   timezone: "UTC",
+  kind: "SCHOOL",
   adminName: "",
   adminEmail: "",
 };
@@ -219,6 +223,7 @@ export function RegisterWizard() {
           gradeHigh: draft.gradeHigh.trim(),
           timezone: draft.timezone,
         },
+        kind: draft.kind,
         admin: {
           name: draft.adminName.trim(),
           email: draft.adminEmail.trim().toLowerCase(),
@@ -369,6 +374,15 @@ export function RegisterWizard() {
               onBlur={() => validateStep(0)}
               hint={t("register.schoolNameHint")}
             />
+
+            {/* What kind of institution (4 Oct 2026): a college is offered the college modules and roles. */}
+            <SelectField label={t("institution.kindLabel")} value={draft.kind} onChange={(e) => set("kind", e.target.value)} hint={t("institution.kindHint")}>
+              {INSTITUTION_KINDS.map((k) => (
+                <option key={k} value={k}>
+                  {t(`institution.kind.${k}`)}
+                </option>
+              ))}
+            </SelectField>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField

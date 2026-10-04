@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/runs/{month}/export/{kind} — pf-ecr, esi, bank-advice, pt or tds, cut from a LOCKED run. Audited. */
 export async function GET(_request: Request, { params }: { params: Promise<{ month: string; kind: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { month, kind } = await params;
     const code = PAYROLL_EXPORT_KINDS.find((k) => PAYROLL_EXPORT_SLUG[k] === kind);
     if (!code) throw new AccessError("access.entryNotFound", "NOT_FOUND");

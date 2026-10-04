@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/runs/{month}/slips/{membershipId}/pdf — one slip as a PDF in its owner's language; the head only from a shared run. */
 export async function GET(_request: Request, { params }: { params: Promise<{ month: string; membershipId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     const refused = await budget(`pdf:${ctx.user.id}`, PDF_BUDGET.limit, PDF_BUDGET.windowMs);
     if (refused) return refused;
     const { month, membershipId } = await params;

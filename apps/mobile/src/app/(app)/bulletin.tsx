@@ -8,10 +8,10 @@ function RouteInner() {
   return <FamilyBulletin />;
 }
 
-/** Not a tab: "‹ Back" above the title. */
+/** A tab for the college's staff (4 Oct 2026); for everyone else "‹ Back" above the title. */
 export default function Route() {
   return (
-    <BackTo fallback="/(app)/more">
+    <BackTo fallback="/(app)/more" unlessTab="bulletin">
       <RouteInner />
     </BackTo>
   );

@@ -39,7 +39,9 @@ import type { Role } from "./constants";
  * day they leave — `standingAt` re-checks a live membership on every write.
  */
 
-const STAFF: readonly Role[] = ["TEACHER", "ADMIN", "PRINCIPAL"];
+// A college's FACULTY and HOD teach as a TEACHER does and converse as one (the integration builder, 4 Oct 2026): an
+// alumnus may write to former faculty (CONTACTABLE_ROLES), and they must be able to answer.
+const STAFF: readonly Role[] = ["TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD"];
 
 export function isStaffRole(role: Role | null | undefined): boolean {
   return role !== null && role !== undefined && STAFF.includes(role);

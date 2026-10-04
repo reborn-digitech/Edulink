@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { isModuleOn } from "@/lib/modules";
+import { institutionKindOf, isModuleOn } from "@/lib/modules";
+import { isCollegeKind } from "@/lib/institution";
 import { alumniForOffice } from "@/lib/alumni";
 import { getT } from "@/lib/i18n/server";
 import { formatInZone } from "@/lib/dates";
@@ -45,9 +46,17 @@ export default async function AdminAlumniPage({ searchParams }: { searchParams: 
         title={t("modules.alumniName")}
         description={t("alumni.adminIntro")}
         actions={
-          <Button asChild variant="secondary" size="sm">
-            <Link href="/alumni/directory">{t("alumni.directoryOpen")}</Link>
-          </Button>
+          <>
+            <Button asChild variant="secondary" size="sm">
+              <Link href="/alumni/directory">{t("alumni.directoryOpen")}</Link>
+            </Button>
+            {/* The college's alumni additions (placement, 4 Oct 2026): gifts, meets, referrals, the batch table for the AQAR. */}
+            {isCollegeKind(await institutionKindOf(ctx.schoolId)) ? (
+              <Button asChild variant="secondary" size="sm">
+                <Link href="/admin/alumni/college">{t("placement.adminAlumniTitle")}</Link>
+              </Button>
+            ) : null}
+          </>
         }
       />
 

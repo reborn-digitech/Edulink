@@ -20,8 +20,17 @@ import { postSchema, reactionSchema, reportSchema, fieldErrors, type FieldErrors
 import { storeAttachments, discard, AttachmentError } from "@/lib/uploads";
 import type { MediaItem } from "@/lib/json";
 import type { PostStatus } from "@/lib/constants";
+import { audienceTargetSchema, type AudienceTarget } from "@edulink/contracts";
 
 export type PostState = { ok: boolean; errors: FieldErrors; postId?: string; status?: PostStatus };
+
+/** "PROGRAMME:<id>" from the composer's picker as the bulletin's target; anything else is no target. createPost checks the id is this college's. */
+function targetOf(raw: string): AudienceTarget | null {
+  const at = raw.indexOf(":");
+  if (at < 1) return null;
+  const parsed = audienceTargetSchema.safeParse({ kind: raw.slice(0, at), id: raw.slice(at + 1) });
+  return parsed.success ? parsed.data : null;
+}
 
 /** Matches the `.max(10)` on `postSchema.media`, which is what enforces it. */
 const MAX_PICTURES = 10;
@@ -125,6 +134,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
       media,
       audience: parsed.data.audience,
       audienceGrade: parsed.data.audienceGrade || undefined,
+      audienceTarget: targetOf(String(formData.get("audienceTarget") ?? "")),
       requiresAck: parsed.data.requiresAck,
     });
     revalidatePath("/bulletin");

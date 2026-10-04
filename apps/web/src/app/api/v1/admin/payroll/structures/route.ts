@@ -7,7 +7,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** GET /api/v1/admin/payroll/structures — the structures and their components. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
     return ok(salaryStructuresSchema.parse(await listStructures(ctx)));
   } catch (error) {
     return moduleFailure(error, "api/v1/admin/payroll/structures");
@@ -17,7 +17,7 @@ export async function GET() {
 /** POST /api/v1/admin/payroll/structures — a structure whole. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const parsed = salaryStructureSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(salaryStructureSchema.parse(await saveStructure(ctx, parsed.data)));

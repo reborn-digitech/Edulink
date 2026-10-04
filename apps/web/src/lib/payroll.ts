@@ -85,8 +85,12 @@ import type { Role } from "./constants";
 type Office = ActiveContext & { schoolId: string; membershipId: string; role: Role };
 type Tx = typeof db;
 
+/** The office, and at a college the accounts desk: who writes here. */
+const keeps = (role: string | null) => role === "ADMIN" || role === "ACCOUNTS";
+
 async function office(ctx: ActiveContext, write: boolean): Promise<Office> {
-  const roles: Role[] = write ? ["ADMIN"] : ["ADMIN", "PRINCIPAL"];
+  // At a college the ACCOUNTS desk keeps this with the office (4 Oct 2026); the principal reads.
+  const roles: Role[] = write ? ["ADMIN", "ACCOUNTS"] : ["ADMIN", "PRINCIPAL", "ACCOUNTS"];
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "PAYROLL");
   return ctx as Office;
@@ -141,7 +145,7 @@ function structureView(r: StructureRow): SalaryStructureView {
 export async function listStructures(ctx: ActiveContext): Promise<{ structures: SalaryStructureView[]; canEdit: boolean }> {
   const caller = await office(ctx, false);
   const rows = await db.salaryStructure.findMany({ where: { schoolId: caller.schoolId }, orderBy: [{ archivedAt: "asc" }, { name: "asc" }], select: STRUCTURE_SELECT });
-  return { structures: rows.map(structureView), canEdit: caller.role === "ADMIN" };
+  return { structures: rows.map(structureView), canEdit: keeps(caller.role) };
 }
 
 /**
@@ -489,18 +493,18 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
   assertMonth(month);
   const run = await runRow(caller.schoolId, month);
   if (!run) throw new AccessError("access.entryNotFound", "NOT_FOUND");
-  const mayReadSlips = caller.role === "ADMIN" || run.sharedWithPrincipal;
+  const mayReadSlips = keeps(caller.role) || run.sharedWithPrincipal;
   const monthStart = new Date(`${month}-01T00:00:00Z`);
   const [slips, exports, lockedBy, roll] = await Promise.all([
     mayReadSlips ? db.payslip.findMany({ where: { runId: run.id }, orderBy: { staffName: "asc" }, select: SLIP_SELECT }) : Promise.resolve([] as SlipRow[]),
     db.payrollExport.findMany({ where: { runId: run.id }, orderBy: { createdAt: "desc" }, take: 50, select: { kind: true, fileName: true, rows: true, totalPaise: true, createdAt: true, createdByUserId: true } }),
     run.lockedByUserId ? db.user.findUnique({ where: { id: run.lockedByUserId }, select: { name: true, preferredName: true } }) : Promise.resolve(null),
-    caller.role === "ADMIN" ? rollFor(caller.schoolId, monthStart) : Promise.resolve([]),
+    keeps(caller.role) ? rollFor(caller.schoolId, monthStart) : Promise.resolve([]),
   ]);
   const salaries = mayReadSlips ? await salariesFor(caller.schoolId, slips.map((s) => s.membershipId), month) : new Map<string, SalaryRow>();
   const exporters = new Map((await db.user.findMany({ where: { id: { in: [...new Set(exports.map((e) => e.createdByUserId).filter((x): x is string => Boolean(x)))] } }, select: { id: true, name: true, preferredName: true } })).map((u) => [u.id, nameOf(u)]));
   const inRun = new Set(slips.map((s) => s.membershipId));
-  const withSalary = caller.role === "ADMIN" ? await salariesFor(caller.schoolId, roll.map((r) => r.id), month) : new Map<string, SalaryRow>();
+  const withSalary = keeps(caller.role) ? await salariesFor(caller.schoolId, roll.map((r) => r.id), month) : new Map<string, SalaryRow>();
   return {
     month: run.month,
     status: run.status as PayrollRunView["status"],
@@ -511,8 +515,8 @@ export async function runView(ctx: ActiveContext, month: string): Promise<Payrol
     totals: { headcount: run.headcount, grossPaise: run.grossPaise, deductionsPaise: run.deductionsPaise, employerPaise: run.employerPaise, netPaise: run.netPaise },
     slips: mayReadSlips ? slips.map((s) => slipView(s, salaries.get(s.membershipId))) : null,
     exports: exports.map((e) => ({ kind: e.kind as PayrollExportKind, fileName: e.fileName, rows: e.rows, totalPaise: e.totalPaise, createdAt: e.createdAt.toISOString(), byName: e.createdByUserId ? (exporters.get(e.createdByUserId) ?? "") : "" })),
-    missingSalary: caller.role === "ADMIN" && run.status === "DRAFT" ? roll.filter((r) => !withSalary.has(r.id) && !inRun.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })) : [],
-    canEdit: caller.role === "ADMIN" && run.status === "DRAFT",
+    missingSalary: keeps(caller.role) && run.status === "DRAFT" ? roll.filter((r) => !withSalary.has(r.id) && !inRun.has(r.id)).map((r) => ({ membershipId: r.id, name: nameOf(r.user) })) : [],
+    canEdit: keeps(caller.role) && run.status === "DRAFT",
   };
 }
 
@@ -828,8 +832,8 @@ export async function payrollSummary(ctx: ActiveContext): Promise<PayrollSummary
     costByMonth: locked.slice(0, 12).reverse().map((r) => ({ month: r.month, grossPaise: r.grossPaise, employerPaise: r.employerPaise, netPaise: r.netPaise, headcount: r.headcount })),
     costByDepartment: byDept.map((d) => ({ department: d.department, grossPaise: d._sum.grossPaise ?? 0, employerPaise: d._sum.employerPaise ?? 0, headcount: d._count._all })).sort((a, b) => b.grossPaise - a.grossPaise),
     latestLockedMonth: latest?.month ?? null,
-    advancesWaiting: caller.role === "ADMIN" ? waiting : 0,
-    canEdit: caller.role === "ADMIN",
+    advancesWaiting: keeps(caller.role) ? waiting : 0,
+    canEdit: keeps(caller.role),
   };
 }
 

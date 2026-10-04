@@ -16,7 +16,8 @@ import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { isDeliverableEmail } from "@/lib/login-name";
 import { TabBar } from "@/components/ui/tabs";
-import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { isCollegeRole, ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { isCollegeKind } from "@/lib/institution";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
@@ -49,6 +50,9 @@ export default async function DirectoryPage({
     ? (params.role as SchoolRole)
     : null;
   const sort = params.sort === "recent" ? "recent" : "name";
+  // The role chips by the institution's kind (4 Oct 2026): a college's six staff roles at a college, TEACHER elsewhere.
+  const kindRow = await db.school.findUnique({ where: { id: ctx.schoolId }, select: { kind: true } });
+  const roleChips = SCHOOL_ROLES.filter((r) => (isCollegeKind(kindRow?.kind) ? r !== "TEACHER" : !isCollegeRole(r)));
   // Anything other than the literal "SUSPENDED" means the ordinary view. Not a
   // pass-through of `params.status` into the query — this is user input, and it
   // lands in a WHERE clause.
@@ -200,6 +204,7 @@ export default async function DirectoryPage({
         suspendedCount={suspendedCount}
         leftCount={leftCount}
         classes={classes}
+        roles={roleChips}
       />
 
       {status === "SUSPENDED" && (

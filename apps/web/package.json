@@ -10,7 +10,7 @@
     "build": "NODE_OPTIONS=--max-old-space-size=4096 next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit",
+    "typecheck": "NODE_OPTIONS=--max-old-space-size=8192 tsc --noEmit",
     "db:push": "node scripts/with-admin-db.mjs prisma db push",
     "db:migrate": "node scripts/with-admin-db.mjs prisma migrate deploy && npm run db:grants",
     "db:migrate:new": "node scripts/with-admin-db.mjs prisma migrate dev --create-only",
@@ -53,6 +53,7 @@
     "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts",
     "zz:fixtures": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts",
     "demo:schools": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-schools.ts",
+    "demo:college": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college.ts",
     "zz:fleet": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-load-fleet.ts",
     "db:grants": "node scripts/db-grants.mjs",
     "superuser": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-superuser.ts",
@@ -60,7 +61,7 @@
     "guardians:backfill": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/backfill-standin-guardians.ts",
     "i18n": "tsx scripts/i18n-audit.ts",
     "data:audit": "DATA_AUDIT=1 vitest run tests/data-audit.test.ts tests/data-audit-reports.test.ts",
-    "battery": "npm run typecheck && NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit -p scripts/tsconfig.json && eslint . && vitest run && npm run rls:verify && npm run quiz:verify && npm run i18n && npm run sweep",
+    "battery": "npm run typecheck && NODE_OPTIONS=--max-old-space-size=8192 tsc --noEmit -p scripts/tsconfig.json && eslint . && vitest run && npm run rls:verify && npm run quiz:verify && npm run i18n && npm run sweep",
     "brand:assets": "tsx scripts/brand-assets.ts"
   },
   "dependencies": {

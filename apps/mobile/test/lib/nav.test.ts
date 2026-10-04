@@ -101,3 +101,38 @@ describe("the modules (3 Oct 2026)", () => {
     expect(labels()).toContain("nav.bulletin");
   });
 });
+
+describe("the college's roles (4 Oct 2026)", () => {
+  it("gives each of the seven a home tab and More with the account; the six staff roles read the college's feed", () => {
+    for (const role of ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS", "RECRUITER"] as const) {
+      expect(TABS[role][0]!.name).toBe("index");
+      expect(MENU[role].some((item) => item.screen === "/(app)/account")).toBe(true);
+    }
+    // The college's feed is a tab of the six staff roles (the integration, 4 Oct 2026), and my own leave is in their More.
+    for (const role of ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const) {
+      expect(TABS[role].some((tab) => tab.name === "bulletin")).toBe(true);
+      expect(MENU[role].some((item) => item.screen === "/(app)/leave")).toBe(true);
+    }
+    expect(TABS.RECRUITER.some((tab) => tab.name === "bulletin")).toBe(false);
+    expect(MENU.RECRUITER.some((item) => item.screen === "/(app)/bulletin" || item.screen === "/(app)/leave")).toBe(false);
+  });
+
+  it("gives faculty mentoring and an HOD their own teaching as tabs, each only while ACADEMICS is on", () => {
+    const shown = (role: "FACULTY" | "HOD", modules: string[]) => TABS[role].filter((tab) => tabShown(tab, modules)).map((tab) => tab.name);
+    expect(shown("FACULTY", ["ACADEMICS"])).toEqual(["index", "academics-mentoring", "bulletin"]);
+    expect(shown("FACULTY", [])).toEqual(["index", "bulletin"]);
+    expect(shown("HOD", ["ACADEMICS"])).toEqual(["index", "teaching", "bulletin"]);
+    expect(shown("HOD", [])).toEqual(["index", "bulletin"]);
+  });
+
+  it("puts my own leave in More for the three module staff roles, whose door names them", () => {
+    for (const role of ["DRIVER", "LIBRARIAN", "WARDEN"] as const) expect(MENU[role].some((item) => item.screen === "/(app)/leave")).toBe(true);
+    expect(MENU.ALUMNUS.some((item) => item.screen === "/(app)/leave")).toBe(false);
+  });
+
+  it("shows a student what their family sees only at a college (ACADEMICS on)", () => {
+    const labels = (modules: string[]) => menuFor("STUDENT", modules).flatMap((g) => g.items.map((i) => i.labelKey));
+    expect(labels(["ACADEMICS"])).toContain("consent.title");
+    expect(labels(["ALUMNI"])).not.toContain("consent.title");
+  });
+});

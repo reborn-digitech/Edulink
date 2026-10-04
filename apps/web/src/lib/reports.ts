@@ -77,7 +77,7 @@ export type ProgressReport = {
  */
 async function assertReportAccess(session: ActiveContext, studentMembershipId: string) {
   if (session.role === "PARENT") {
-    await assertGuardianAccess(session.user.id, studentMembershipId);
+    await assertGuardianAccess(session.user.id, studentMembershipId, "RESULTS");
     return;
   }
 

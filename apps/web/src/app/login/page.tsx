@@ -149,6 +149,13 @@ export default async function LoginPage({
               {t("login.registerHere")}
             </Link>
           </p>
+          {/* A recruiter registers itself (4 Oct 2026): an outside account that reaches a college only through a drive. */}
+          <p className="mt-2 text-center text-sm text-fg-muted">
+            {t("recruiter.loginPrefix")}{" "}
+            <Link href="/register/recruiter" className="font-semibold text-accent-strong underline underline-offset-4">
+              {t("recruiter.loginLink")}
+            </Link>
+          </p>
 
           {/*
             THE ONE PAGE THAT MOST NEEDS THIS, and it was the one page without

@@ -88,6 +88,17 @@ export default async function globalSetup() {
     if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, school.id) };
   }
 
+  // The college's six staff roles (4 Oct 2026) at ZZ Vidya College, and the recruiter with no school (zz-college.ts), so the axe walk opens their homes.
+  const vidya = await db.school.findUnique({ where: { slug: "zz-vidya-college" }, select: { id: true } });
+  if (vidya) {
+    for (const [role, email] of [["FACULTY", "zz.faculty01@zz.test"], ["HOD", "zz.hod01@zz.test"], ["EXAM_CONTROLLER", "zz.examctrl@zz.test"], ["IQAC", "zz.iqac@zz.test"], ["TPO", "zz.tpo@zz.test"], ["ACCOUNTS", "zz.accounts@zz.test"]] as const) {
+      const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+      if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, vidya.id) };
+    }
+  }
+  const recruiter = await db.recruiterProfile.findFirst({ where: { user: { email: "zz.recruiter01@zz.test" }, disabledAt: null }, select: { userId: true } });
+  if (recruiter) sessions.RECRUITER = { role: "RECRUITER", email: "zz.recruiter01@zz.test", cookie: await mint(recruiter.userId, "RECRUITER", null) };
+
   // The content team and the operator: the fixture's flagged accounts, with no school and no role, as they really sign in.
   const platform = async (key: string, email: string) => {
     const user = await db.user.findUnique({ where: { email }, select: { id: true } });

@@ -2,14 +2,14 @@ import { NextResponse } from "next/server";
 import { apiErrorSchema, applyLeaveSchema, leaveAppliedSchema, staffLeaveSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
 import { staffLeave } from "@/lib/api-reads/staff";
-import { applyForLeave } from "@/lib/leave";
+import { applyForLeave, LEAVE_APPLICANT_ROLES } from "@/lib/leave";
 import { getT } from "@/lib/i18n/server";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 
 /** GET /api/v1/staff/leave — my leave: the balance, every request, and the colleagues I could nominate to cover. */
 export async function GET() {
   try {
-    const ctx = await requireApiRole("TEACHER", "PRINCIPAL");
+    const ctx = await requireApiRole(...LEAVE_APPLICANT_ROLES);
     return ok(staffLeaveSchema.parse(await staffLeave(ctx)));
   } catch (error) {
     return apiFailure(error, "api/v1/staff/leave");
@@ -24,7 +24,7 @@ export async function GET() {
  */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("TEACHER", "PRINCIPAL");
+    const ctx = await requireApiRole(...LEAVE_APPLICANT_ROLES);
     const parsed = applyLeaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const result = await applyForLeave(ctx, parsed.data);

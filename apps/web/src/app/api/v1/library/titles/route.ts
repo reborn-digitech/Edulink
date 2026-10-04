@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** GET /api/v1/library/titles — The catalogue, searched by title, author, subject or ISBN. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN");
+    const ctx = await requireApiRoles("STUDENT", "PARENT", "TEACHER", "ADMIN", "PRINCIPAL", "LIBRARIAN", "FACULTY", "HOD");
     const parsed = libraryCatalogueQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const q = parsed.data;

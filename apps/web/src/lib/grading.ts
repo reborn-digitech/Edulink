@@ -858,7 +858,7 @@ export async function getStudentWork(session: ActiveContext) {
  * asserted, not assumed.
  */
 export async function childWork(parentUserId: string, studentMembershipId: string) {
-  const link = await assertGuardianAccess(parentUserId, studentMembershipId);
+  const link = await assertGuardianAccess(parentUserId, studentMembershipId, "RESULTS");
   const schoolId = link.student.school.id;
   const childName = link.student.user.preferredName ?? link.student.user.name;
 

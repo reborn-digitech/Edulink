@@ -42,13 +42,18 @@ export const DECISION_ACTIONS: Record<DecisionKind, readonly string[]> = {
   certificate: ["certificate.issue", "certificate.requestDecline", "paper.sign", "paper.sign.decline"],
   join: ["student.join", "student.join.decline"],
   admission: ["admissions.offer", "admissions.decide", "admissions.admit"],
+  // The college (4 Oct 2026): the principal's word on what the regulations reserve for the head.
+  grace: ["exam.grace.approve", "exam.grace.refuse"],
+  condonation: ["academics.condonation.approve", "academics.condonation.refuse"],
+  concession: ["college.fees.concessionApprove", "college.fees.concessionRefuse"],
+  lateRegistration: ["academics.late.approve", "academics.late.refuse"],
 };
 
 const KIND_OF_ACTION = new Map<string, DecisionKind>(
   DECISION_KINDS.flatMap((kind) => DECISION_ACTIONS[kind].map((action) => [action, kind] as const)),
 );
 
-const DECLINES = new Set(["leave.decline", "pupilRecord.change.decline", "certificate.requestDecline", "paper.sign.decline", "student.join.decline"]);
+const DECLINES = new Set(["leave.decline", "pupilRecord.change.decline", "certificate.requestDecline", "paper.sign.decline", "student.join.decline", "exam.grace.refuse", "academics.condonation.refuse", "college.fees.concessionRefuse", "academics.late.refuse"]);
 
 type Row = { id: string; action: string; targetType: string | null; targetId: string | null; meta: string; createdAt: Date };
 
@@ -168,6 +173,21 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
   const applicationIds = ids("Application");
   const cardSetIds = ids("REPORT_CARD_SET");
   const classIds = [...new Set(cardSetIds.map((id) => id.slice(0, id.indexOf("|"))).filter(Boolean))];
+  const graceIds = ids("ExamGrace");
+  const condonationIds = ids("AttendanceCondonation");
+  const concessionIds = ids("FeeConcession");
+  const lateIds = ids("LateRegistration");
+  const studentOf = { select: { user: { select: { name: true, preferredName: true } } } } as const;
+  // The college's four (4 Oct 2026): one query per target type, as above.
+  const [graces, condonations, concessions, lates] = await Promise.all([
+    graceIds.length ? db.examGrace.findMany({ where: { id: { in: graceIds }, schoolId }, select: { id: true, courseId: true, graceMilli: true, student: studentOf } }) : [],
+    condonationIds.length ? db.attendanceCondonation.findMany({ where: { id: { in: condonationIds }, schoolId }, select: { id: true, student: studentOf } }) : [],
+    concessionIds.length ? db.feeConcession.findMany({ where: { id: { in: concessionIds }, schoolId }, select: { id: true, student: studentOf } }) : [],
+    lateIds.length ? db.lateRegistration.findMany({ where: { id: { in: lateIds }, schoolId }, select: { id: true, student: studentOf } }) : [],
+  ]);
+  const graceCourses = graces.length ? new Map((await db.course.findMany({ where: { id: { in: [...new Set(graces.map((g) => g.courseId))] }, schoolId }, select: { id: true, code: true } })).map((c) => [c.id, c.code])) : new Map<string, string>();
+  const graceById = new Map(graces.map((g) => [g.id, g]));
+  const studentNameOf = new Map<string, string>([...condonations, ...concessions, ...lates].map((r) => [r.id, personName(r.student.user, t)]));
 
   const [leaves, covers, pens, memberships, certificates, certificateRequests, joins, applications, classes] = await Promise.all([
     leaveIds.length
@@ -294,6 +314,31 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
         if (row.action === "admissions.offer") sentence = t("decisions.admissionOffered", { name });
         else if (row.action === "admissions.admit") sentence = t("decisions.admissionAdmitted", { name });
         else sentence = t("decisions.admissionDecided", { name, status: t(APPLICATION_STATUS_KEY[String(meta.to)] ?? "admissions.statusSubmitted") });
+        break;
+      }
+      case "exam.grace.approve":
+      case "exam.grace.refuse": {
+        const g = graceById.get(id);
+        const vars = { name: personName(g?.student.user, t), course: (g && graceCourses.get(g.courseId)) ?? "—", marks: g ? g.graceMilli / 1000 : Number(meta.graceMilli ?? 0) / 1000 };
+        sentence = row.action === "exam.grace.approve" ? t("decisions.graceApproved", vars) : t("decisions.graceRefused", vars);
+        break;
+      }
+      case "academics.condonation.approve":
+      case "academics.condonation.refuse": {
+        const name = studentNameOf.get(id) ?? t("decisions.someone");
+        sentence = row.action === "academics.condonation.approve" ? t("decisions.condonationApproved", { name }) : t("decisions.condonationRefused", { name });
+        break;
+      }
+      case "college.fees.concessionApprove":
+      case "college.fees.concessionRefuse": {
+        const name = studentNameOf.get(id) ?? t("decisions.someone");
+        sentence = row.action === "college.fees.concessionApprove" ? t("decisions.concessionApproved", { name }) : t("decisions.concessionRefused", { name });
+        break;
+      }
+      case "academics.late.approve":
+      case "academics.late.refuse": {
+        const name = studentNameOf.get(id) ?? t("decisions.someone");
+        sentence = row.action === "academics.late.approve" ? t("decisions.lateRegistrationApproved", { name }) : t("decisions.lateRegistrationRefused", { name });
         break;
       }
       default:

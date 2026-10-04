@@ -6,7 +6,7 @@ import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 /** POST /api/v1/fees/claims/{paymentId}/reject — not on the statement; the family is told why. */
 export async function POST(request: Request, { params }: { params: Promise<{ paymentId: string }> }) {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "ACCOUNTS");
     const { paymentId } = await params;
     const parsed = feeReasonBodySchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

@@ -36,6 +36,12 @@ import {
   BookOpenIcon,
   BedIcon,
   GraduationCapIcon,
+  GlobeIcon,
+  ExamIcon,
+  MedalIcon,
+  WalletIcon,
+  TreeStructureIcon,
+  HandshakeIcon,
 } from "@phosphor-icons/react";
 
 /**
@@ -78,6 +84,13 @@ const ICONS: Record<string, Icon> = {
   bookOpen: BookOpenIcon,
   bed: BedIcon,
   graduationCap: GraduationCapIcon,
+  // The global feed, and the college roles' homes (4 Oct 2026): the HOD's department, the exam cell, IQAC, accounts, the recruiter.
+  globe: GlobeIcon,
+  treeStructure: TreeStructureIcon,
+  exam: ExamIcon,
+  medal: MedalIcon,
+  wallet: WalletIcon,
+  handshake: HandshakeIcon,
 };
 
 export function NavIcon({

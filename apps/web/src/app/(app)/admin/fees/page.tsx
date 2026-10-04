@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FeesOverviewPage() {
   const t = await getT();
   const locale = await getLocale();
-  const ctx = await requireRole("ADMIN", "PRINCIPAL");
+  const ctx = await requireRole("ADMIN", "PRINCIPAL", "ACCOUNTS");
   const office = ctx.role === "ADMIN";
   const o = await feeOverview(ctx);
   const money = (paise: number) => formatPaise(paise, locale);

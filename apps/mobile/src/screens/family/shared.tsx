@@ -65,9 +65,9 @@ export const ATTENDANCE = {
 export type ExamKind = "UNIT_TEST" | "MID_TERM" | "FINAL";
 export const EXAM_KIND: Record<ExamKind, TranslationKey> = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" };
 
-export type CertificateKind = "TC" | "NIRGAM" | "BONAFIDE" | "CHARACTER" | "STUDY" | "CUSTOM";
+export type CertificateKind = "TC" | "NIRGAM" | "BONAFIDE" | "CHARACTER" | "STUDY" | "CUSTOM" | "MIGRATION" | "PROVISIONAL" | "COURSE_COMPLETION";
 /** A certificate kind's name in the reader's language — the kinds a template is designed for and a family asks for. */
-export const CERTIFICATE_KIND: Record<CertificateKind, TranslationKey> = { TC: "certificates.kindTc", NIRGAM: "certificates.kindNirgam", BONAFIDE: "certificates.kindBonafide", CHARACTER: "certificates.kindCharacter", STUDY: "certificates.kindStudy", CUSTOM: "certificates.kindCustom" };
+export const CERTIFICATE_KIND: Record<CertificateKind, TranslationKey> = { TC: "certificates.kindTc", NIRGAM: "certificates.kindNirgam", BONAFIDE: "certificates.kindBonafide", CHARACTER: "certificates.kindCharacter", STUDY: "certificates.kindStudy", CUSTOM: "certificates.kindCustom", MIGRATION: "certificateDefaults.titleMigration", PROVISIONAL: "certificateDefaults.titleProvisional", COURSE_COMPLETION: "certificateDefaults.titleCourseCompletion" };
 export type CertificateRequestStatus = "PENDING" | "ISSUED" | "DECLINED" | "CANCELLED";
 /** A request's status as a label key and a pill tone. */
 /** A request as it stands: answered with a paper since withdrawn, it is withdrawn, whatever its own status says. */
