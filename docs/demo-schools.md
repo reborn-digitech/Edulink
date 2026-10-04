@@ -131,3 +131,38 @@ Sunita's pages: /parent (switch between the children with `?child=<membershipId>
 | Pupil records with coded category and religion, caste, parents' occupations, income, the previous school's TC; staff records with dates of birth and of joining service; roll numbers in every class | /admin/records, /admin/filings, /student/record |
 
 Not seeded: a review round (deliberately skipped as cheap only through the UI), online payments.
+
+<!-- demo-college:begin -->
+## Saraswati Arts and Science College (the demo college)
+
+Built by `npm run demo:college` (from `apps/web`; idempotent, run it again to put things back; it does not need `demo:schools` first). Slug `saraswati-college`, join code `SARAS-CMRK-TX6R`, kind COLLEGE, Pune, affiliated to Savitribai Phule Pune University, AISHE C-41873 (made up), NAAC A until 31 December 2028. Every module the college is offered is on. The password is the demo schools' shared one, `Relay-Demo-2026`, for every account below. Sign in by hand, or for a browser check mint a session: `npm run zz:token -- ROLE email@demo.relay.test` (then `--purge`).
+
+What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay Bhide); BSc Physics and BCom on the SPPU NEP 2024 scheme with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SY BSc Physics A, SY BCom A and FY BCom A; seven offerings on a Mon–Sat grid with lecture registers from 7 September to 3 October 2026; internal marks countersigned and locked on PHY301 and COM301, PHY302's unit test waiting for a countersign; the Summer 2026 sitting with the university's result file imported and run 1 published (SGPA for every second-year student, one ATKT and its backlog); Sahyadri Data Labs Pvt Ltd (GSTIN checked by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumna's accepted offer and the 2025 season; a NAAC cycle (affiliated UG, 2022–27) computed by the IQAC desk, with faculty records, research, activities and three committees; fee structures by programme, year and category, a demand per semester for every student, four odd semesters paid by bank and one scholarship claim sanctioned.
+
+| Account | Name | Role | Home | What to look at |
+|---|---|---|---|---|
+| sac.registrar@demo.relay.test | Smita Kulkarni | Admin (registrar) | /admin | /admin/academics (programmes, terms, divisions, timetable), /admin/college-admissions, /accounts, /exam-cell, /placement |
+| sac.principal@demo.relay.test | Dr Anil Deshpande | PRINCIPAL | /principal | /principal/accreditation (the NAAC cycle), /exam-cell (results), /accounts/concessions |
+| sac.hod.physics@demo.relay.test | Dr Vasudha Paranjpe | HOD | /hod | /hod/defaulters (Rutuja under 75 % in PHY301), /faculty (teaches PHY302, marks waiting for a countersign) |
+| sac.hod.commerce@demo.relay.test | Dr Sanjay Bhide | HOD | /hod | /hod (Commerce: COM301 locked), /faculty (teaches COM302 and COM102) |
+| sac.faculty1@demo.relay.test | Dr Neelima Gadgil | FACULTY | /faculty | PHY301: four weeks of registers, internal marks locked |
+| sac.faculty2@demo.relay.test | Prof Rahul Shirole | FACULTY | /faculty | MAT301's registers |
+| sac.faculty3@demo.relay.test | Prof Ashwini Mane | FACULTY | /faculty | COM301 (locked) and COM101 (the first years) |
+| sac.exams@demo.relay.test | Prakash Joglekar | EXAM_CONTROLLER | /exam-cell | Summer 2026 sitting: result file imported, run 1 published, one ATKT and its backlog |
+| sac.iqac@demo.relay.test | Dr Meghana Phadke | IQAC | /iqac | /iqac/predictor (the NAAC cycle's metrics and CGPA), /iqac/registers |
+| sac.tpo@demo.relay.test | Nitin Kale | TPO | /placement | /placement/drives (the OPEN drive with two applicants), /placement/companies, /placement/analytics (2025 season) |
+| sac.accounts@demo.relay.test | Sushma Rane | ACCOUNTS | /accounts | /accounts (collection, defaulters), /accounts/structures, /accounts/scholarships |
+| sac.student01@demo.relay.test | Aditya Patil | Student, SY BSc Physics (OPEN) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 7.00; applied to the open drive (/student/placement); odd semester paid |
+| sac.student02@demo.relay.test | Sakshi Jadhav | Student, SY BSc Physics (OBC) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 8.00; OBC post-matric scholarship sanctioned (/student/scholarships, /student/money) |
+| sac.student03@demo.relay.test | Omkar Shinde | Student, SY BSc Physics (OPEN) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 8.33; odd semester paid |
+| sac.student04@demo.relay.test | Pranav Kulkarni | Student, SY BSc Physics (OPEN) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 8.00 |
+| sac.student05@demo.relay.test | Rutuja Pawar | Student, SY BSc Physics (OBC) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 5.00; ATKT in PHY202 with a backlog; under 75 % in PHY301; not eligible for the open drive |
+| sac.student06@demo.relay.test | Tejas More | Student, SY BCom (OPEN) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 8.43; applied to the open drive (/student/placement); odd semester paid |
+| sac.student07@demo.relay.test | Snehal Gaikwad | Student, SY BCom (OBC) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 7.43 |
+| sac.student08@demo.relay.test | Yash Chavan | Student, SY BCom (OPEN) | /student | /student/academics, /student/exams, /student/money; last term's SGPA 8.14 |
+| sac.student09@demo.relay.test | Pooja Bhosale | Student, FY BCom (OPEN) | /student | /student/academics, /student/exams, /student/money; a minor of 17; her guardian sees everything; odd semester paid |
+| sac.student10@demo.relay.test | Kunal Deshmukh | Student, FY BCom (OPEN) | /student | /student/academics, /student/exams, /student/money |
+| sac.parent09@demo.relay.test | Ravindra Bhosale | Parent of Pooja Bhosale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees |
+| sac.alumni01@demo.relay.test | Shreya Wagh | Alumna (BCom, left May 2025) | /alumni | /alumni/college (placed through last season's drive, a mentor), the directory |
+| recruiter.sahyadri@demo.relay.test | Kiran Mehendale | Recruiter, Sahyadri Data Labs Pvt Ltd (no membership) | /recruiter | the OPEN drive and its two consented applicants |
+<!-- demo-college:end -->

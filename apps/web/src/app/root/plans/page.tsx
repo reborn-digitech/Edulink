@@ -6,6 +6,11 @@ import { EmptyState } from "@/components/ui/states";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { getT } from "@/lib/i18n/server";
 import { PlanForm, PlanRowCard } from "./plan-form";
+import { AddTierButton } from "./tier-button";
+import { COLLEGE_TIERS } from "@edulink/contracts";
+import { formatPaise } from "@edulink/i18n";
+import { getLocale } from "@/lib/i18n/server";
+import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -23,6 +28,7 @@ export default async function PlansPage() {
   const t = await getT();
   const session = await requireSuperuser();
   const plans = await listPlans(session);
+  const locale = await getLocale();
 
   return (
     <div className="space-y-5">
@@ -39,6 +45,27 @@ export default async function PlansPage() {
           ))}
         </ul>
       )}
+
+      {/* The college tiers (4 Oct 2026): coded prices a student a year, offered to a college only; one plan row each, added once. */}
+      <Card>
+        <CardHeader icon={<GraduationCapIcon weight="duotone" className="size-5" />} title={t("operatorCollege.tiersTitle")} description={t("operatorCollege.tiersIntro")} />
+        <CardBody>
+          <ul className="space-y-2">
+            {COLLEGE_TIERS.map((tier) => {
+              const listed = plans.find((p) => p.code === tier.code);
+              return (
+                <li key={tier.code} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border px-3 py-2 text-sm">
+                  <span>
+                    <span className="font-medium text-fg">{t(tier.code === "college-affiliated" ? "operatorCollege.tierAffiliated" : "operatorCollege.tierAutonomous")}</span>
+                    <span className="block text-xs text-fg-muted">{t("operatorCollege.tierPrice", { amount: formatPaise(tier.perStudentYearPaise, locale) })}</span>
+                  </span>
+                  {listed ? <span className="text-xs text-fg-muted">{t("operatorCollege.tierListed", { code: tier.code, count: listed.schools })}</span> : <AddTierButton code={tier.code} />}
+                </li>
+              );
+            })}
+          </ul>
+        </CardBody>
+      </Card>
 
       <Card>
         <CardHeader icon={<TagIcon weight="duotone" className="size-5" />} title={t("root.planAdd")} description={t("root.planCapHint")} />

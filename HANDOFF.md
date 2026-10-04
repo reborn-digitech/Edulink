@@ -35,6 +35,22 @@ What a school can do with it today, all verified end to end:
 - **Operations**: an operator console that can look inside a school (audited, the school is told),
   school onboarding, job health, backups, a go-live checklist.
 
+**Colleges (3–4 October 2026).** A tenant's `kind` may be COLLEGE or AUTONOMOUS_COLLEGE (JUNIOR_COLLEGE
+for classes 11–12). A college has seven more roles — FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS
+and the outside RECRUITER — and six more modules behind the same default-deny gate: ACADEMICS (always on:
+departments, programmes, schemes, registration, lecture attendance against the 75 % rule, internal marks
+locked by the HOD), EXAMS (forms with eligibility and no-dues, logistics, double-entry or imported marks,
+results with SGPA and CGPA, revaluation, backlogs, grade cards; full conduct at an autonomous college),
+IQAC (the NAAC predictor from the college's own rows, SSR/AQAR/NIRF/AISHE documents, surveys, grievances,
+committees), PLACEMENT (drives on computed eligibility, the recruiter portal, internships, the three-year
+table), ADMISSIONS (CET rounds to the seat) and SCHOLARSHIPS (claims on the ledger; no money moves). The
+principal reads the whole college at `/principal/college` and decides grace, forwarded condonations,
+concessions above the office's limit and late registrations, each in the decision log; the operator sees
+colleges by kind with their health and the regulators' calendar. `tests/college-year.test.ts` walks one
+student from admission to the alumnus row. The map — modules, roles, the functions each module exposes,
+the stored values and their audit checks, what is untested — is docs/college.md; the demo college is
+`npm run demo:college`.
+
 ## 2. Architecture
 
 ```

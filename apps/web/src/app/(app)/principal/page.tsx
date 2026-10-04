@@ -10,6 +10,9 @@ import {
   StarIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { redirect } from "next/navigation";
+import { isCollegeKind } from "@edulink/contracts";
+import { institutionKindOf } from "@/lib/modules";
 import {
   ATTENDANCE_CONCERN_PERCENT,
   classInsights,
@@ -57,6 +60,8 @@ export default async function PrincipalDashboard({
 }) {
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
+  // A college's head reads the college's own dashboard (the integration builder, 4 Oct 2026).
+  if (isCollegeKind(await institutionKindOf(ctx.schoolId))) redirect("/principal/college");
   const { days } = await searchParams;
 
   // Clamped rather than trusted: this lands in a date range and then a query.
