@@ -1,0 +1,32 @@
+import * as c from "@edulink/contracts";
+import type { Endpoint } from "./types";
+import { OFFICE_FIXTURE } from "./college-office-fixture";
+
+/**
+ * college-admissions: the college's admissions (module ADMISSIONS; 4 October
+ * 2026) — rounds with the seat matrix, the CET Cell's allotment list imported,
+ * the vacancy report, applications through scrutiny, the anti-ragging
+ * undertaking, the offer and the admission fee recorded, the seat, the
+ * cancellation with the refund the slab allows recorded, the admission
+ * register. The school's admissions doors (admissions.ts) are untouched.
+ * No sampleBody on a door whose valid body is an act (an import, an
+ * application, an admission). Samples name ZZ Vidya's fixed ids
+ * (college-office-fixture.ts).
+ */
+export const COLLEGE_ADMISSIONS: Endpoint[] = [
+  { method: "GET", path: "/api/v1/college/admissions/rounds", summary: "The college's admission rounds with their seats, allotments, applications and admissions", access: ["ADMIN", "PRINCIPAL"], module: "ADMISSIONS", response: c.admissionRoundsSchema },
+  { method: "POST", path: "/api/v1/college/admissions/rounds", summary: "Open (or correct) a round: CAP 1–3, institute-level or merit, with the seat matrix by category", access: ["ADMIN"], module: "ADMISSIONS", request: c.admissionRoundSaveSchema, response: c.collegeSavedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/college/admissions/rounds/{roundId}/import", summary: "Import the CET Cell's allotment list for the round, pasted in the Cell's column order; the same list twice adds nothing", access: ["ADMIN"], module: "ADMISSIONS", request: c.capImportBodySchema, response: c.capImportResultSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/rounds/${OFFICE_FIXTURE.round}/import` },
+  { method: "GET", path: "/api/v1/college/admissions/rounds/{roundId}/vacancy", summary: "Seats against admissions by category for the round's intake: the vacancy report", access: ["ADMIN", "PRINCIPAL"], module: "ADMISSIONS", response: c.vacancyReportSchema, sample: `/api/v1/college/admissions/rounds/${OFFICE_FIXTURE.round}/vacancy` },
+  { method: "GET", path: "/api/v1/college/admissions/applications", summary: "Applications, by round and status", access: ["ADMIN", "PRINCIPAL"], module: "ADMISSIONS", request: c.collegeApplicationsQuerySchema, response: c.collegeApplicationsSchema },
+  { method: "POST", path: "/api/v1/college/admissions/applications", summary: "An application from an imported allotment row (the same row twice is the same application) or, in a merit round, typed by the office", access: ["ADMIN"], module: "ADMISSIONS", request: c.collegeApplicationCreateSchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/college/admissions/applications/{applicationId}", summary: "One application with its scrutiny checklist", access: ["ADMIN", "PRINCIPAL", "ACCOUNTS"], module: "ADMISSIONS", response: c.collegeApplicationSchema, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationScrutiny}` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/documents", summary: "A document's file and its scrutiny; verified needs a file", access: ["ADMIN"], module: "ADMISSIONS", request: c.collegeDocumentBodySchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationScrutiny}/documents` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/undertaking", summary: "Record the anti-ragging undertaking as given by the student or a parent (the UGC portal remains the legal record)", access: ["ADMIN"], module: "ADMISSIONS", request: c.antiRaggingBodySchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationAdmitted}/undertaking`, sampleBody: () => ({ by: "STUDENT" }) },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/offer", summary: "Offer the seat: scrutiny complete and both undertakings recorded; the admission fee is the category's first-year first term", access: ["ADMIN"], module: "ADMISSIONS", request: c.collegeOfferBodySchema, response: c.collegeApplicationSchema, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationAdmitted}/offer` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/fee", summary: "The admission fee as the college's counter or bank received it (recorded, never collected here)", access: ["ADMIN", "ACCOUNTS"], module: "ADMISSIONS", request: c.admissionFeeBodySchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationAdmitted}/fee` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/admit", summary: "The seat: account, membership, record, programme enrolment, academic seat and fee plan in one transaction", access: ["ADMIN"], module: "ADMISSIONS", request: c.collegeAdmitBodySchema, response: c.collegeAdmittedSchema, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationAdmitted}/admit` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/cancel", summary: "Cancel the seat; the refund the authority's slab allows is recorded, not paid", access: ["ADMIN"], module: "ADMISSIONS", request: c.collegeCancelBodySchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationCancelled}/cancel` },
+  { method: "POST", path: "/api/v1/college/admissions/applications/{applicationId}/refund", summary: "The college's bank paid the refund: its reference closes the case", access: ["ADMIN", "ACCOUNTS"], module: "ADMISSIONS", request: c.collegeRefundBodySchema, response: c.collegeApplicationSchema, emptyBodyStatus: 422, sample: `/api/v1/college/admissions/applications/${OFFICE_FIXTURE.applicationCancelled}/refund`, sampleBody: () => ({ reference: "ZZ-REFUND-0001" }) },
+  { method: "GET", path: "/api/v1/college/admissions/register", summary: "The admission register of an intake as the university inspects it, as CSV text", access: ["ADMIN", "PRINCIPAL"], module: "ADMISSIONS", request: c.admissionRegisterQuerySchema, response: c.officeCsvExportSchema, sample: `/api/v1/college/admissions/register?intakeYear=${OFFICE_FIXTURE.intakeYear}` },
+];
