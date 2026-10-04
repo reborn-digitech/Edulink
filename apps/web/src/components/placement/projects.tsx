@@ -3,7 +3,7 @@ import type { ProjectView } from "@edulink/contracts";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TextField } from "@/components/ui/field";
+import { DateField, TextField } from "@/components/ui/field";
 import { reviewProjectAction } from "@/app/(app)/placement/actions";
 
 /** Students' projects with their reviews; the guide records the next review, the final one with the marks. */
@@ -34,7 +34,7 @@ export function ProjectList({ projects, t, back, myMembershipId }: { projects: P
               <form action={reviewProjectAction} className="grid gap-2 sm:grid-cols-[10rem_1fr_6rem_auto_auto] sm:items-end">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="projectId" value={p.id} />
-                <TextField label={t("placement.fieldDay")} name="on" type="date" required />
+                <DateField label={t("placement.fieldDay")} name="on" required />
                 <TextField label={t("placement.fieldReview")} name="note" required maxLength={2000} />
                 <TextField label={t("placement.fieldMarks")} name="marks" type="number" min="0" max="100" />
                 <label className="flex items-center gap-2 text-xs">

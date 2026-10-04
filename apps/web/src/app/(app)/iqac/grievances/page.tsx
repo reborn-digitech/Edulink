@@ -4,6 +4,7 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { grievanceDesk } from "@/lib/iqac";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { formatMonthKey } from "@/lib/dates";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -50,7 +51,7 @@ export default async function GrievancesPage({ searchParams }: { searchParams: P
       <IqacFlash ok={ok} error={error} />
       <Card>
         <CardHeader
-          title={t("iqac.summaryTitle", { month: s.month })}
+          title={t("iqac.summaryTitle", { month: formatMonthKey(s.month, locale) })}
           action={
             <form method="get" className="flex items-end gap-2">
               <TextField name="month" type="month" label={t("iqac.monthField")} defaultValue={s.month} />

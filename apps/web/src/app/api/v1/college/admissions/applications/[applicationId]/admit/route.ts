@@ -1,7 +1,8 @@
 import { collegeAdmitBodySchema, collegeAdmittedSchema } from "@edulink/contracts";
 import { requireApiRoles } from "@/lib/api-roles";
 import { admitStudent } from "@/lib/college-admissions";
-import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { moduleFailure } from "@/lib/rule-refusal";
 
 type Params = { params: Promise<{ applicationId: string }> };
 
@@ -15,6 +16,6 @@ export async function POST(request: Request, { params }: Params) {
     const b = parsed.data;
     return ok(collegeAdmittedSchema.parse(await admitStudent(ctx, applicationId, b)));
   } catch (error) {
-    return apiFailure(error, "api/v1/college/admissions/applications/[applicationId]/admit");
+    return moduleFailure(error, "api/v1/college/admissions/applications/[applicationId]/admit");
   }
 }

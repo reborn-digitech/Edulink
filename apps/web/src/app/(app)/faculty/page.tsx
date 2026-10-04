@@ -15,7 +15,10 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { facultyHome } from "@/lib/academics-homes";
 import { loadState } from "@/lib/academics-rules";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { formatDateKey } from "@/lib/dates";
+import { componentsStateText, mentoringLinkText, weeksTaughtText } from "@/lib/count-copy";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -32,6 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FacultyHomePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
+  const locale = await getLocale();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const params = await searchParams;
@@ -48,7 +52,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
         <StatTile label={t("academics.statToModerate")} value={home.toModerate.length} tone={home.toModerate.length ? "warn" : "neutral"} />
       </div>
       <Card>
-        <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={t("academics.todayTitle", { date: home.today.dateKey })} description={t("academics.todayBody")} />
+        <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={t("academics.todayTitle", { date: formatDateKey(home.today.dateKey, { weekday: "long", day: "numeric", month: "long" }, locale) })} description={t("academics.todayBody")} />
         <CardBody>
           {home.today.closed ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.closedToday")} description={t("academics.closedTodayBody")} />
@@ -81,7 +85,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
           {home.offerings.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.myOfferingsNone")} description={t("academics.myOfferingsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -100,15 +104,15 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
                       </td>
                       <td className={NUM}>{o.registered}</td>
                       <td className={TD}>
-                        {t("academics.weeksTaught", { taught: o.taught, planned: o.planned })} {o.behind ? <Badge tone="danger">{t("academics.behind")}</Badge> : null}
+                        {weeksTaughtText(t, o.taught, o.planned)} {o.behind ? <Badge tone="danger">{t("academics.behind")}</Badge> : null}
                       </td>
-                      <td className={TD}>{o.locked ? <Badge tone="ok">{t("academics.lockedBadge")}</Badge> : t("academics.componentsState", { components: o.components, moderated: o.moderated, released: o.released })}</td>
+                      <td className={TD}>{o.locked ? <Badge tone="ok">{t("academics.lockedBadge")}</Badge> : componentsStateText(t, o)}</td>
                       <td className={NUM}>{o.defaulters}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>
@@ -131,7 +135,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
           <Button asChild variant="secondary">
             <Link href="/faculty/mentoring">
               <ChatsCircleIcon weight="duotone" className="size-5" aria-hidden />
-              {t("academics.mentoringLink", { n: home.mentoringGroups })}
+              {mentoringLinkText(t, home.mentoringGroups)}
             </Link>
           </Button>
           <Button asChild variant="secondary">

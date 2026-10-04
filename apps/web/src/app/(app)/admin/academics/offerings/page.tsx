@@ -12,6 +12,7 @@ import { TermPicker } from "@/components/academics/term-picker";
 import { academicsStructure, listOfferings } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, one, type SearchParams } from "../shared";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.tabOfferings") };
@@ -33,7 +34,7 @@ export default async function OfferingsPage({ searchParams }: { searchParams: Se
           {o.offerings.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.offeringsNone")} description={t("academics.offeringsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -60,7 +61,7 @@ export default async function OfferingsPage({ searchParams }: { searchParams: Se
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {canEdit && o.termId ? <OfferingForm t={t} s={s} termId={o.termId} back="/admin/academics/offerings" /> : null}
         </CardBody>

@@ -200,6 +200,8 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
     admin.email,
     `${APP_URL}/verify?token=${verifyToken}`,
     school.name,
+    // The language the form was filled in, which the new account was just given.
+    locale,
   ).catch((error) => console.error("[register] verification email failed", error));
 
   await audit({

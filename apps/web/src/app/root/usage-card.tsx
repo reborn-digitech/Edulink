@@ -1,7 +1,9 @@
 import { StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { formatMonthKey } from "@/lib/dates";
 import type { OfficeUsage } from "@/lib/plans";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * One school's month against its plan, as four tiles — each cap beside its
@@ -10,6 +12,7 @@ import type { OfficeUsage } from "@/lib/plans";
  */
 export async function UsageCard({ usage }: { usage: OfficeUsage }) {
   const t = await getT();
+  const locale = await getLocale();
   const c = usage.counts;
   const tile = (label: string, value: number | undefined, cap: number | null, over: boolean, unit = "") => (
     <StatTile
@@ -22,7 +25,7 @@ export async function UsageCard({ usage }: { usage: OfficeUsage }) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2 text-sm text-fg-muted">
-        <span className="font-mono text-xs font-semibold text-fg">{usage.month}</span>
+        <span className="text-xs font-semibold text-fg">{formatMonthKey(usage.month, locale)}</span>
         {usage.plan ? <Badge size="sm" tone="accent">{usage.plan.name}</Badge> : <Badge size="sm">{t("root.planNone")}</Badge>}
         {c && (usage.over.pupils || usage.over.messages || usage.over.storageMb ? <Badge size="sm" tone="danger">{t("root.usageOverCap")}</Badge> : <Badge size="sm" tone="ok">{t("root.usageWithinCap")}</Badge>)}
       </div>
@@ -34,7 +37,7 @@ export async function UsageCard({ usage }: { usage: OfficeUsage }) {
       </div>
       {!c && <p className="text-xs text-fg-muted">{t("root.usageRunNow")}</p>}
       {usage.history.length > 0 && (
-        <div className="overflow-x-auto">
+        <TableScroll>
           <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-fg-muted">{t("root.usageHistory")}</p>
           <table className="w-full text-sm">
             <thead>
@@ -49,7 +52,7 @@ export async function UsageCard({ usage }: { usage: OfficeUsage }) {
             <tbody>
               {usage.history.map((h) => (
                 <tr key={h.month} className="border-t border-border">
-                  <td className="py-1 pr-3 font-mono text-xs">{h.month}</td>
+                  <td className="py-1 pr-3 text-xs">{formatMonthKey(h.month, locale)}</td>
                   <td className="py-1 pr-3 text-right tabular-nums">{h.pupils}</td>
                   <td className="py-1 pr-3 text-right tabular-nums">{h.messages}</td>
                   <td className="py-1 pr-3 text-right tabular-nums">{h.storageMb} MB</td>
@@ -58,7 +61,7 @@ export async function UsageCard({ usage }: { usage: OfficeUsage }) {
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       )}
     </div>
   );

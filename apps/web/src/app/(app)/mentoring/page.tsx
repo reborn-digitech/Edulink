@@ -117,8 +117,10 @@ export default async function MentoringPage({
         <ul className="space-y-3">
           {shown.map((thread) => (
             <li key={thread.id}>
-              <Card interactive>
-                <Link href={`/mentoring/${thread.id}`} className="block">
+              {/* The pupil's name links to their page, so the card cannot be one <a> around it: a link inside a link is
+                  invalid HTML and failed hydration on every /mentoring render (the walk of 4 October). The thread's
+                  link is the purpose line, stretched over the card by its ::after; the name sits above it. */}
+              <Card interactive className="relative">
                   <CardBody className="space-y-2 pt-5">
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge
@@ -136,15 +138,20 @@ export default async function MentoringPage({
                           : t(MENTOR_STATUS_KEY[thread.status] ?? "mentoring.statusActive")}
                       </Badge>
                       <span className="text-sm font-semibold text-fg">
-                        <PersonLink membershipId={thread.studentMembershipId} name={thread.studentName} /> &amp; {thread.expertName}
+                        <span className="relative z-10"><PersonLink membershipId={thread.studentMembershipId} name={thread.studentName} /></span> &amp; {thread.expertName}
                       </span>
                       {thread.unread > 0 && (
                         <Badge tone="accent" size="sm">{t("mentoring.newCount", { count: thread.unread })}</Badge>
                       )}
                     </div>
-                    <p className="text-[0.9375rem] text-fg-muted">{thread.purpose}</p>
+                    <Link
+                      href={`/mentoring/${thread.id}`}
+                      className="block text-[0.9375rem] text-fg-muted after:absolute after:inset-0 after:rounded-[--radius-lg] after:content-['']"
+                    >
+                      <span className="sr-only">{thread.studentName} &amp; {thread.expertName}: </span>
+                      {thread.purpose}
+                    </Link>
                   </CardBody>
-                </Link>
               </Card>
             </li>
           ))}

@@ -10,6 +10,7 @@ import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { reportCardPresetLabel } from "@/lib/coded-defaults";
 import { saveRules, saveTermWeight } from "./actions";
 import { RulesPreview } from "./rules-preview";
 import { FontSelect } from "@/components/font-select";
@@ -340,7 +341,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
                 <SelectField label={t("reportCardConfig.preset")} value={preset} onChange={(e) => choosePreset(e.target.value)} className="max-w-sm" data-testid="rules-preset">
                   {view.presets.map((p) => (
                     <option key={p.key} value={p.key}>
-                      {p.name}
+                      {reportCardPresetLabel(p, t)}
                     </option>
                   ))}
                   <option value="custom">{t("reportCardConfig.presetCustom")}</option>

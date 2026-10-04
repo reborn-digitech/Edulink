@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CertificateIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
 import type { CertificateKind } from "@edulink/contracts";
 import { formatDate } from "@/lib/dates";
+import { certificateNameLabel } from "@/lib/certificate-names";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
@@ -16,7 +17,7 @@ type Item = { id: string; kind: CertificateKind; serial: string; title: string; 
  * the school no longer stands behind it. `showPupil` names the child for a
  * guardian with more than one.
  */
-export async function FamilyCertificateList({ items, showPupil, from }: { items: Item[]; showPupil: boolean; from: string }) {
+export async function FamilyCertificateList({ items, showPupil, from, pdfOnly = false }: { items: Item[]; showPupil: boolean; from: string; /** A former pupil reads the PDF only: the certificate page is not theirs to open (G-6). */ pdfOnly?: boolean }) {
   const t = await getT();
   if (items.length === 0) {
     return <EmptyState className="border-0 bg-transparent py-6" icon={<CertificateIcon weight="duotone" className="size-6" />} title={t("certificates.noMine")} description={t("certificates.noMineBody")} />;
@@ -28,7 +29,7 @@ export async function FamilyCertificateList({ items, showPupil, from }: { items:
         <li key={item.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
           <div className="min-w-0 flex-1 basis-56">
             <p className="flex flex-wrap items-center gap-2">
-              <span className="font-semibold text-fg">{item.title}</span>
+              <span className="font-semibold text-fg">{certificateNameLabel(item.title, t)}</span>
               {item.revokedAt && (
                 <Badge tone="danger" size="sm">
                   {t("certificates.revoke")}
@@ -40,9 +41,11 @@ export async function FamilyCertificateList({ items, showPupil, from }: { items:
             </p>
           </div>
           <span className="flex shrink-0 flex-wrap items-center gap-3">
-            <Link href={`/certificates/${item.id}?from=${encodeURIComponent(from)}`} className={link}>
-              {t("certificates.open")}
-            </Link>
+            {pdfOnly ? null : (
+              <Link href={`/certificates/${item.id}?from=${encodeURIComponent(from)}`} className={link}>
+                {t("certificates.open")}
+              </Link>
+            )}
             <a href={`/api/v1/shared/certificates/${item.id}/pdf`} target="_blank" rel="noopener" className={link}>
               <DownloadSimpleIcon weight="bold" className="size-4" aria-hidden="true" />
               {t("certificates.downloadPdf")}

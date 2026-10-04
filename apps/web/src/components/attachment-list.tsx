@@ -148,6 +148,9 @@ export function AttachmentList({
             multiple
             accept="image/png,image/jpeg,image/webp,image/gif,application/pdf"
             className="sr-only"
+            // The button above names and opens it; the input itself stays out of the tab order and the tree (axe `label`).
+            tabIndex={-1}
+            aria-hidden="true"
             onChange={(e) => {
               if (e.target.files?.length) upload(e.target.files);
               e.target.value = "";

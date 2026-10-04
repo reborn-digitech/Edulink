@@ -13,12 +13,13 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import {
   CYCLE_STATUS_KEY,
   CYCLE_STATUS_TONE,
 } from "@/components/admissions/labels";
 import { CycleRowActions } from "./cycle-row-actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("admissions.metaTitle") };
@@ -33,6 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AdmissionsPage() {
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const t = await getT();
+  const locale = await getLocale();
   const view = await cyclesView(ctx);
   // Designing a cycle and deleting families' forms are the admin's; the head opens, closes and decides.
   const canSetUp = ctx.role === "ADMIN";
@@ -113,11 +115,11 @@ export default async function AdmissionsPage() {
                   description={[
                     cycle.academicYearName,
                     cycle.opensAt
-                      ? `${t("admissions.opensAt")}: ${formatDateKey(cycle.opensAt)}`
+                      ? `${t("admissions.opensAt")}: ${formatDateKey(cycle.opensAt, undefined, locale)}`
                       : null,
                     cycle.closesAt
                       ? t("admissions.closesOn", {
-                          date: formatDateKey(cycle.closesAt),
+                          date: formatDateKey(cycle.closesAt, undefined, locale),
                         })
                       : null,
                     cycle.testRequired ? t("admissions.testRequired") : null,
@@ -138,7 +140,7 @@ export default async function AdmissionsPage() {
                 />
                 <CardBody>
                   {/* Reachable by keyboard: a region that scrolls sideways has to take focus to be scrolled. */}
-                  <div className="overflow-x-auto" tabIndex={0}>
+                  <TableScroll>
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -172,7 +174,7 @@ export default async function AdmissionsPage() {
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </TableScroll>
                   {cycle.documents.length > 0 && (
                     <p className="mt-3 text-xs text-fg-muted">
                       {t("admissions.documentsAsked", {

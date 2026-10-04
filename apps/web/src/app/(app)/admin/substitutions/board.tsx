@@ -10,6 +10,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { periodLabel } from "@/lib/coded-defaults";
 import { useEvents } from "@/lib/use-events";
 import { formatTimeRange } from "@/lib/school-day";
 import { LiveNotice } from "@/components/live-notice";
@@ -123,7 +124,7 @@ function LessonRow({ dateKey, lesson }: { dateKey: string; lesson: SubstitutionL
     <li className="space-y-3 py-3" data-testid="substitution-row" data-slot-id={lesson.slotId}>
       <div className="flex flex-wrap items-start gap-x-4 gap-y-1">
         <span className="w-28 shrink-0">
-          <span className="block text-sm font-medium text-fg">{lesson.periodName ?? t("substitutions.period")}</span>
+          <span className="block text-sm font-medium text-fg">{lesson.periodName ? periodLabel(lesson.periodName, t) : t("substitutions.period")}</span>
           {time && <span className="block text-xs tabular-nums text-fg-muted">{time}</span>}
         </span>
         <span className="min-w-0 flex-1">

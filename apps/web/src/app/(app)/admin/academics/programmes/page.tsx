@@ -13,6 +13,7 @@ import { academicsStructure } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
 import { saveCourseAction, saveMappingAction, saveOutcomesAction, saveProgrammeAction, saveSchemeAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.tabProgrammes") };
@@ -135,7 +136,7 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
           {s.courses.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.coursesNone")} description={t("academics.coursesNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -175,7 +176,7 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {canEdit && s.schemes.length ? (
             <form action={saveCourseAction} className="grid gap-3 sm:grid-cols-4">

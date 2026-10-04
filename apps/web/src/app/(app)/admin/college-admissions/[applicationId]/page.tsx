@@ -15,7 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { APP_STATUS_KEY, CATEGORY_KEY, DOC_KEY, Flash, Hidden, NotCollege, QUOTA_KEY, Table, money } from "@/components/college-office/parts";
-import { admissionFeeAction, admitAction, cancelAdmissionAction, documentAction, offerAction, refundAction, undertakingAction } from "../../../accounts/actions";
+import { admissionFeeAction, admitAction, cancelAdmissionAction, documentAction, offerAction, refundAction, supernumeraryAction, undertakingAction } from "../../../accounts/actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -58,8 +58,21 @@ export default async function ApplicationPage({ params, searchParams }: { params
           {a.cetApplicationId ? <span className="text-sm text-fg-muted">{t("collegeOffice.colCetId")}: {a.cetApplicationId}</span> : null}
           {a.meritRank ? <span className="text-sm text-fg-muted">{t("collegeOffice.colMerit")}: {a.meritRank}</span> : null}
           {a.admittedMembershipId ? <span className="text-sm text-ok">{t("collegeOffice.admittedOn")}</span> : null}
+          {a.supernumeraryAt ? <Badge tone="info">{t("collegeOffice.supernumeraryApproved", { reason: a.supernumeraryReason ?? "—" })}</Badge> : null}
         </CardBody>
       </Card>
+      {ctx.role === "PRINCIPAL" && !a.supernumeraryAt && (open || a.status === "FEE_DUE") ? (
+        <Card>
+          <CardHeader title={t("collegeOffice.supernumeraryTitle")} description={t("collegeOffice.supernumeraryIntro")} />
+          <CardBody>
+            <form action={supernumeraryAction} className="flex flex-wrap items-end gap-3">
+              <Hidden fields={{ back, applicationId: a.id }} />
+              <TextField name="reason" required minLength={3} maxLength={300} label={t("collegeOffice.supernumeraryReason")} />
+              <Button type="submit" variant="secondary">{t("collegeOffice.supernumeraryApprove")}</Button>
+            </form>
+          </CardBody>
+        </Card>
+      ) : null}
       <Card>
         <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("collegeOffice.scrutinyTitle")} description={a.scrutinyComplete ? t("collegeOffice.scrutinyComplete") : t("collegeOffice.scrutinyIntro")} />
         <CardBody>

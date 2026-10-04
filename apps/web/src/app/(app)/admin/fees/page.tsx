@@ -17,6 +17,7 @@ import { METHOD_KEY, PAY_STATUS_KEY, PAY_STATUS_TONE, receiptHref } from "./labe
 import { CarryForwardForm } from "./carry-forward-form";
 import { ExportLinks } from "./export-links";
 import { BankImportCard } from "./bank-import-card";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -154,7 +155,7 @@ export default async function FeesOverviewPage() {
             {o.byGrade.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("fees.noStructures")}</p>
             ) : (
-              <div className="overflow-x-auto" tabIndex={0}>
+              <TableScroll>
                 <table className="w-full text-sm">
                   <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                     <tr>
@@ -179,7 +180,7 @@ export default async function FeesOverviewPage() {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </TableScroll>
             )}
           </CardBody>
         </Card>

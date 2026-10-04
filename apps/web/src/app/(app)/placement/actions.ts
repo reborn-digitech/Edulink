@@ -14,6 +14,7 @@ import {
   internshipDiarySchema,
   internshipEvaluateSchema,
   internshipProposeSchema,
+  offerSaveSchema,
   placementProfileSaveSchema,
   placementSettingsSchema,
   projectReviewSchema,
@@ -50,9 +51,10 @@ import {
   withdrawApplication,
 } from "@/lib/placement";
 import { publishSeason } from "@/lib/placement-analytics";
+import { guardianConsentToApplication } from "@/lib/placement-student";
 import { addDiaryEntry, attachInternshipFile, decideInternship, evaluateInternship, proposeInternship } from "@/lib/placement-internships";
 import { createProject, reviewProject } from "@/lib/placement-projects";
-import { addColleague, postRequirement, recruiterActor, recruiterActorForOffer, recruiterFeedback, registerCompany } from "@/lib/placement-recruiter";
+import { addColleague, answerInvitation, postRequirement, recruiterActor, recruiterActorForOffer, recruiterFeedback, registerCompany, removeColleague } from "@/lib/placement-recruiter";
 import { createMeet, linkMyCompany, offerMentorSlot, recordGift, referOpening, registerForMeet } from "@/lib/placement-alumni";
 import { closeBooking } from "@/lib/gig-sessions";
 
@@ -253,11 +255,12 @@ export async function resultsAction(formData: FormData): Promise<void> {
 export async function offerAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
     const driveId = str(formData, "driveId");
-    const pkg = lakh(formData, "package");
-    if (!Number.isFinite(pkg)) throw new FormError();
+    // The door's own schema first (campaign S-19): a negative or absurd package skews the NIRF
+    // median and the dream rule, and the letter is stored only for an offer that will be made.
+    const input = parsed(offerSaveSchema.safeParse({ studentMembershipId: str(formData, "studentMembershipId"), packageRupees: lakh(formData, "package"), letterFileId: null }));
     const actor = ctx.role === "RECRUITER" ? await recruiterActor(ctx, driveId) : await cellActor(ctx, driveId);
     const storedFileId = await oneFile(formData, "letter");
-    const o = await recordOffer(actor, { studentMembershipId: str(formData, "studentMembershipId"), packageRupees: pkg, letterFileId: null }, { storedFileId });
+    const o = await recordOffer(actor, input, { storedFileId });
     return { key: "placement.offerRecorded", vars: { name: o.studentName } };
   });
 }
@@ -396,7 +399,30 @@ export async function registerCompanyAction(formData: FormData): Promise<void> {
 export async function addColleagueAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
     await addColleague(ctx, str(formData, "email"));
-    return "placement.colleagueAdded";
+    return "placement.colleagueInvited";
+  });
+}
+
+/** A guardian's consent to a minor's drive application, from /parent/placement (campaign S-6). */
+export async function guardianConsentAction(formData: FormData): Promise<void> {
+  await run(formData, async (ctx) => {
+    await guardianConsentToApplication(ctx, str(formData, "applicationId"), str(formData, "childId"));
+    return "placement.consentGiven";
+  });
+}
+
+export async function answerInvitationAction(formData: FormData): Promise<void> {
+  await run(formData, async (ctx) => {
+    const accept = str(formData, "accept") === "1";
+    await answerInvitation(ctx, str(formData, "companyId"), accept);
+    return accept ? "placement.invitationAccepted" : "placement.invitationDeclined";
+  });
+}
+
+export async function removeColleagueAction(formData: FormData): Promise<void> {
+  await run(formData, async (ctx) => {
+    await removeColleague(ctx, str(formData, "email"));
+    return "placement.colleagueRemoved";
   });
 }
 

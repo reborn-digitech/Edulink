@@ -11,7 +11,7 @@ import { OpenRoundForm } from "./open-round-form";
 import { CloseRoundButton } from "./close-button";
 import { AUDIENCE_KEY } from "@/lib/review-questions";
 import { ReviewDashboard } from "@/components/reviews/review-dashboard";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,6 +30,7 @@ export default async function AdminReviewsPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
   const { status: rawStatus } = await searchParams;
   const status = rawStatus === "closed" ? "CLOSED" : rawStatus === "all" ? undefined : "OPEN";
@@ -108,7 +109,7 @@ export default async function AdminReviewsPage({
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-medium text-fg">
-                    {t(AUDIENCE_KEY[round.audience])} · {t("reviews.openUntil", { date: formatDateKey(round.closesDateKey) })}
+                    {t(AUDIENCE_KEY[round.audience])} · {t("reviews.openUntil", { date: formatDateKey(round.closesDateKey, undefined, locale) })}
                   </span>
                   <span className="block text-xs text-fg-muted">
                     {t("reviews.teachersN", { count: round.teacherCount })} ·{" "}

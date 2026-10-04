@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { CellFrame, DRIVE_KIND_KEY, DRIVE_STATUS_KEY, ROUND_KIND_KEY, TABLE, TD, TH, cellContext, packageRange, reasons, statusBadge } from "@/components/placement/parts";
 import { Applicants, JoinedForms, OfferForm, ResultsForm } from "@/components/placement/rounds";
 import { inviteAction, moveDriveAction, remindAction, saveRuleAction } from "../../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -128,7 +129,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
       <Card>
         <CardHeader icon={<FunnelIcon weight="duotone" className="size-5" />} title={t("placement.eligibilityTitle")} description={t("placement.eligibilityIntro")} />
         <CardBody className="p-0">
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className={TABLE}>
               <thead>
                 <tr className="border-b border-border">
@@ -151,7 +152,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
           {d.canEdit && ["DRAFT", "OPEN"].includes(d.status) ? (
             <form action={saveRuleAction} className="grid gap-3 border-t border-border p-5 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={here} />

@@ -6,7 +6,7 @@ import { db } from "@/lib/db";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { generateToken, hashToken } from "@/lib/crypto";
 import { parseInviteCsv } from "@/lib/csv";
-import { sendTeacherInvite } from "@/lib/email";
+import { localeForAddress, sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { resendInviteFor } from "@/lib/invites";
 import { INVITE_TTL_DAYS, INVITABLE_ROLES, invitableRolesFor, type InvitableRole } from "@/lib/constants";
@@ -143,7 +143,7 @@ export async function createInvites(input: {
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
-    select: { name: true },
+    select: { name: true, locale: true },
   });
   const inviterName = ctx.user.preferredName ?? ctx.user.name;
 
@@ -206,6 +206,8 @@ export async function createInvites(input: {
         `${APP_URL}/invite/${token}`,
         school.name,
         inviterName,
+        // Their own language if the address already has an account, else the school's.
+        await localeForAddress(row.email, school.locale),
       );
 
       outcomes.push({ email: row.email, name: row.name, status: "sent" });

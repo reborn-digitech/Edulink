@@ -6,7 +6,7 @@ import { isModuleOn } from "@/lib/modules";
 import { dayTrips, listAllotments, transportOverview } from "@/lib/transport";
 import { minuteLabel } from "@/lib/transport-geo";
 import { db } from "@/lib/db";
-import { formatInZone } from "@/lib/dates";
+import { formatDateKey, formatInZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { PageHeader } from "@/components/ui/page-header";
@@ -195,8 +195,8 @@ export default async function TransportPage({ searchParams }: { searchParams: Pr
                           )}
                         </p>
                         <p className="text-xs text-fg-muted">
-                          {t("transport.sinceDate", { date: a.fromDateKey })}
-                          {a.toDateKey && <> · {t("transport.untilDate", { date: a.toDateKey })}</>}
+                          {t("transport.sinceDate", { date: formatDateKey(a.fromDateKey, { day: "numeric", month: "numeric", year: "numeric" }) })}
+                          {a.toDateKey && <> · {t("transport.untilDate", { date: formatDateKey(a.toDateKey, { day: "numeric", month: "numeric", year: "numeric" }) })}</>}
                         </p>
                       </div>
                       <span className="flex items-center gap-2">

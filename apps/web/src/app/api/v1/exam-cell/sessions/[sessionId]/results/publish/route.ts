@@ -9,7 +9,8 @@ type Params = { params: Promise<{ sessionId: string }> };
 /** POST /api/v1/exam-cell/sessions/{sessionId}/results/publish — Publish a run: the one before is superseded and kept; backlogs and credits follow. */
 export async function POST(request: Request, { params }: Params) {
   try {
-    const ctx = await requireApiRoles("EXAM_CONTROLLER");
+    // The principal publishes a run that changes a published result (exam-cell-marks.ts publishRun).
+    const ctx = await requireApiRoles("EXAM_CONTROLLER", "PRINCIPAL");
     const p = await params;
     const parsed = examResultPublishSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

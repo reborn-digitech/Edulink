@@ -9,6 +9,8 @@ import { termsOf } from "@/lib/exam-cell-academics";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DateField } from "@/components/ui/field";
+import { DateTimeField } from "@/components/ui/date-time-field";
 import { CellOff, FORM_STATUS_KEY, Hidden, Labelled, SessionFrame, inputClass, localInput, money, when } from "@/components/exam-cell/parts";
 import { decideFormAction, generateFormsAction, sessionStatusAction, submitFormAction, updateSessionAction } from "../../actions";
 
@@ -140,12 +142,8 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                 </select>
               </Labelled>
               <input type="hidden" name="feeHeadId" value={s.feeHeadId ?? ""} />
-              <Labelled label={t("examCell.fieldOpens")}>
-                <input type="datetime-local" name="formOpensAt" defaultValue={localInput(s.formOpensAt)} className={inputClass} />
-              </Labelled>
-              <Labelled label={t("examCell.fieldCloses")}>
-                <input type="datetime-local" name="formClosesAt" defaultValue={localInput(s.formClosesAt)} className={inputClass} />
-              </Labelled>
+              <DateTimeField label={t("examCell.fieldOpens")} name="formOpensAt" defaultValue={localInput(s.formOpensAt)} defaultTime="00:00" />
+              <DateTimeField label={t("examCell.fieldCloses")} name="formClosesAt" defaultValue={localInput(s.formClosesAt)} defaultTime="23:59" />
               <Labelled label={t("examCell.fieldFeePerCourse")}>
                 <input name="feePerCourse" defaultValue={String(s.feePerCoursePaise / 100)} className={inputClass} />
               </Labelled>
@@ -158,9 +156,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
               <Labelled label={t("examCell.fieldRevalFee")}>
                 <input name="revalFee" defaultValue={String(s.revalFeePaise / 100)} className={inputClass} />
               </Labelled>
-              <Labelled label={t("examCell.fieldLateFrom")}>
-                <input type="date" name="slabFrom1" defaultValue={slab?.fromDateKey ?? ""} className={inputClass} />
-              </Labelled>
+              <DateField label={t("examCell.fieldLateFrom")} name="slabFrom1" defaultValue={slab?.fromDateKey ?? ""} />
               <Labelled label={t("examCell.fieldLateFee")}>
                 <input name="slabFee1" defaultValue={slab ? String(slab.paise / 100) : ""} className={inputClass} />
               </Labelled>

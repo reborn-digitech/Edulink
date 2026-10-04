@@ -16,6 +16,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { BulkSelectProvider, SelectSchool } from "./bulk-select";
 import { CopyChip } from "./copy-chip";
 import { UsageSummary } from "./usage-summary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -162,7 +163,7 @@ export default async function RootPage({
           <Card>
             <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={t("root.schoolsTable")} />
             <CardBody>
-              <div className="overflow-x-auto">
+              <TableScroll>
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -184,7 +185,7 @@ export default async function RootPage({
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </TableScroll>
             </CardBody>
           </Card>
         </BulkSelectProvider>

@@ -92,7 +92,7 @@ export async function ReachReport({ reach, office, timezone }: { reach: Circular
             {group.outstanding.length === 0 ? (
               <p className="mt-1 text-xs text-ok">{t("circulars.everyoneReached")}</p>
             ) : (
-              <div className="mt-2 overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
+              <div className="relative mt-2 overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
                 <table className="w-full text-sm">
                   <caption className="sr-only">
                     {group.className || t("circulars.audienceTeachers")} · {t("circulars.outstanding")}

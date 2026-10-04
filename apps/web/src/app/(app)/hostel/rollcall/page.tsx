@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { randomUUID } from "node:crypto";
 import { HOSTEL_ROLL_SLOTS, HOSTEL_ROLL_STATUSES } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
+import { formatDateKey } from "@/lib/dates";
 import { hostelsView, rollCallSheet } from "@/lib/hostel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -57,7 +58,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
       </form>
       {sheet ? (
         <Card>
-          <CardHeader title={t("hostel.sheetTitle", { hostel: sheet.hostelName, slot: t(SLOT_KEY[sheet.slot]), date: sheet.dateKey })} description={sheet.taken ? t("hostel.rollTakenAt", { at: when(sheet.taken.at, timeZone, locale), name: sheet.taken.byName }) : t("hostel.rollHint")} />
+          <CardHeader title={t("hostel.sheetTitle", { hostel: sheet.hostelName, slot: t(SLOT_KEY[sheet.slot]), date: formatDateKey(sheet.dateKey, { weekday: "short", day: "numeric", month: "numeric", year: "numeric" }, locale) })} description={sheet.taken ? t("hostel.rollTakenAt", { at: when(sheet.taken.at, timeZone, locale), name: sheet.taken.byName }) : t("hostel.rollHint")} />
           <CardBody>
             {sheet.entries.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("hostel.noBoarders")}</p>

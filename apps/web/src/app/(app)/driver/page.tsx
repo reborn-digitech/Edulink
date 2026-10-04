@@ -6,7 +6,7 @@ import { isModuleOn } from "@/lib/modules";
 import { driverToday } from "@/lib/transport";
 import { minuteLabel } from "@/lib/transport-geo";
 import { db } from "@/lib/db";
-import { formatInZone } from "@/lib/dates";
+import { formatDateKey, formatInZone } from "@/lib/dates";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -44,7 +44,7 @@ export default async function Page() {
   const time = (iso: string | null) => (iso ? formatInZone(new Date(iso), school.timezone, { hour: "2-digit", minute: "2-digit" }, locale) : "");
   return (
     <div className="space-y-5">
-      <PageHeader title={t("transport.driverTitle")} description={day.dateKey} />
+      <PageHeader title={t("transport.driverTitle")} description={formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} />
       {day.consent.needed && (
         <Card data-testid="transport-consent-card">
           <CardHeader icon={<ShieldCheckIcon weight="duotone" className="size-5" />} title={t("transport.consentTitle")} />
@@ -59,7 +59,16 @@ export default async function Page() {
         {t("transport.webDriverNote")}
       </p>
       {day.trips.length === 0 ? (
-        <EmptyState icon={<BusIcon weight="duotone" className="size-8" />} title={t("transport.noDriverTrips")} description={t("transport.noDriverTripsBody")} />
+        day.noSchool ? (
+          // A Sunday or a closing holiday: no trip runs, and the page says why (B-11).
+          <EmptyState
+            icon={<BusIcon weight="duotone" className="size-8" />}
+            title={day.noSchool.holidayName ? t("common.noSchoolTodayHoliday", { name: day.noSchool.holidayName }) : t("common.noSchoolToday")}
+            description={t("transport.noTripsClosedDay")}
+          />
+        ) : (
+          <EmptyState icon={<BusIcon weight="duotone" className="size-8" />} title={t("transport.noDriverTrips")} description={t("transport.noDriverTripsBody")} />
+        )
       ) : (
         day.trips.map((trip) => (
           <Card key={trip.id} data-testid="driver-trip">

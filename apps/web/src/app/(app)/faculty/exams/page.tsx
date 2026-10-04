@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FileField } from "@/components/ui/file-field";
 import { CellOff, DUTY_STATUS_KEY, Flash, Hidden, Labelled, PAPER_STATUS_KEY, REMUNERATION_KEY, money, when } from "@/components/exam-cell/parts";
 import { submitPaperAction } from "../../exam-cell/actions";
 
@@ -54,9 +55,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                 {p.status !== "MODERATED" ? (
                   <form action={submitPaperAction} className="grid gap-2 sm:grid-cols-2">
                     <Hidden fields={{ paperId: p.id, back }} />
-                    <Labelled label={t("examCell.paperFile")}>
-                      <input type="file" name="file" accept="application/pdf" required className="text-sm" />
-                    </Labelled>
+                    <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required />
                     <Labelled label={t("examCell.coMap")}>
                       <textarea name="coMap" required rows={3} placeholder={t("examCell.coMapPlaceholder")} className="w-full rounded-[--radius-md] border border-border bg-surface p-2 text-sm" />
                     </Labelled>

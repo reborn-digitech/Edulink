@@ -18,7 +18,7 @@ import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { pupilRecordFor } from "@/lib/pupil-records";
 import { CompleteRecordCard } from "@/components/certificates/complete-record-card";
 import { db } from "@/lib/db";
-import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
+import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -28,6 +28,7 @@ import { StudentWelcome } from "./welcome";
 import { welcomeFor } from "@/lib/student-welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
+import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -54,13 +55,12 @@ export default async function StudentHome() {
   const timezone = membership.school.timezone;
   const today = todayKey(timezone);
 
-  const [attendance, streak, todayRecord, upcoming, examMarks, week, recordMissing] = await Promise.all([
+  const [attendance, streak, todayMark, upcoming, examMarks, week, recordMissing] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
     currentStreakFor(ctx.schoolId, ctx.membershipId, today),
-    db.attendanceRecord.findFirst({
-      where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
-      select: { status: true },
-    }),
+    // The mark, and whether there is school today at all: on a Sunday or a
+    // holiday the tile says so instead of "your teacher hasn't taken it yet".
+    todayAttendanceFor(ctx.schoolId, ctx.membershipId, today),
     // The same rule as the Assignments page's "To do": published homework the
     // pupil has not handed in — exam sittings excluded, undated ones included
     // last. Two lists that disagreed about what was due was the confusion
@@ -92,9 +92,14 @@ export default async function StudentHome() {
    * whole week happily. The same gap the teacher's page had the day before,
    * reported by the same person testing; the same shape of fix.
    */
+  const todayRecord = todayMark.record;
   const weekday = weekdayOfKey(today);
   const dayColumn = week.days.find((day) => day.weekday === weekday);
-  const closedToday = dayColumn?.closed ?? false;
+  const closedToday = (dayColumn?.closed ?? false) || !todayMark.open;
+  const holidayName = todayMark.holidayName ?? dayColumn?.closedName ?? null;
+  const noSchoolSentence = holidayName
+    ? t("common.noSchoolTodayHoliday", { name: holidayName })
+    : t("common.noSchoolToday");
   const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
   const lessonsToday = closedToday
     ? []
@@ -131,7 +136,9 @@ export default async function StudentHome() {
           value={
             todayRecord
               ? t(ATTENDANCE_META[todayRecord.status as AttendanceStatus].labelKey)
-              : t("student.notYet")
+              : closedToday
+                ? t("student.noSchool")
+                : t("student.notYet")
           }
           tone={
             !todayRecord
@@ -143,7 +150,7 @@ export default async function StudentHome() {
                   : "danger"
           }
           icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          hint={todayRecord ? t("student.registerTaken") : t("student.registerNotTakenYet")}
+          hint={todayRecord ? t("student.registerTaken") : closedToday ? noSchoolSentence : t("student.registerNotTakenYet")}
         />
         <StatTile
           label={t("student.streak")}
@@ -175,7 +182,7 @@ export default async function StudentHome() {
           title={t("student.todayLessons")}
           description={
             closedToday
-              ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+              ? noSchoolSentence
               : t("student.todayLessonsBody")
           }
           action={
@@ -188,7 +195,7 @@ export default async function StudentHome() {
           {lessonsToday.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
               {closedToday
-                ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+                ? noSchoolSentence
                 : t("teacher.noLessonsToday")}
             </p>
           ) : (
@@ -198,7 +205,7 @@ export default async function StudentHome() {
                 return (
                   <li key={slot.id} className="flex items-center gap-3 py-2.5">
                     <span className="w-28 shrink-0">
-                      <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                      <span className="block text-sm font-medium text-fg">{period ? periodLabel(period.name, t) : null}</span>
                       <span className="block text-xs tabular-nums text-fg-muted">
                         {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
                       </span>

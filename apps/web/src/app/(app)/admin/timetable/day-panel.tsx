@@ -19,6 +19,7 @@ import { savePeriod, retirePeriod, bringBackPeriod, seedSuggestedDay } from "./a
 import type { PeriodRow } from "@/lib/timetable";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { periodLabel } from "@/lib/coded-defaults";
 
 /**
  * Step one: what time is this school open, and where are the bells.
@@ -65,7 +66,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
         toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotRetire") });
         return;
       }
-      toast({ tone: "ok", title: t("timetable.retired", { name: period.name }) });
+      toast({ tone: "ok", title: t("timetable.retired", { name: periodLabel(period.name, t) }) });
       router.refresh();
     });
   }
@@ -77,7 +78,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
         toast({ tone: "danger", title: actionError(t, result, "timetable.couldNotBringBack") });
         return;
       }
-      toast({ tone: "ok", title: t("timetable.broughtBack", { name: period.name }) });
+      toast({ tone: "ok", title: t("timetable.broughtBack", { name: periodLabel(period.name, t) }) });
       router.refresh();
     });
   }
@@ -138,7 +139,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
               className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
             >
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium text-fg">{period.name}</span>
+                <span className="block truncate text-sm font-medium text-fg">{periodLabel(period.name, t)}</span>
                 <span className="block text-xs tabular-nums text-fg-muted">
                   {formatTimeRange(period.startMinute, period.endMinute)}
                   {period.kind === "BREAK" && t("timetable.breakSuffix")}
@@ -183,7 +184,7 @@ export function DayPanel({ periods }: { periods: PeriodRow[] }) {
             {retired.map((period) => (
               <li key={period.id} className="flex items-center gap-3 text-sm">
                 <span className="min-w-0 flex-1 truncate text-fg-muted">
-                  {period.name} · {formatTimeRange(period.startMinute, period.endMinute)}
+                  {periodLabel(period.name, t)} · {formatTimeRange(period.startMinute, period.endMinute)}
                 </span>
                 <Button size="sm" variant="ghost" onClick={() => restore(period)} disabled={pending}>
                   {t("timetable.bringBack")}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CellFrame, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
 import { dreamAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -24,7 +25,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
       <Card>
         <CardHeader icon={<StudentIcon weight="duotone" className="size-5" />} title={t("placement.studentsTitle", { count: students.length })} />
         <CardBody className="p-0">
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className={TABLE}>
               <thead>
                 <tr className="border-b border-border">
@@ -77,7 +78,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
         </CardBody>
       </Card>
     </CellFrame>

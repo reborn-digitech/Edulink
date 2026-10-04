@@ -4,8 +4,10 @@ import { listUsage } from "@/lib/plans";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { formatMonthKey } from "@/lib/dates";
 import type { ActiveContext } from "@/lib/session";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * This month's usage across every live school, on the operator's front
@@ -14,6 +16,7 @@ import type { ActiveContext } from "@/lib/session";
  */
 export async function UsageSummary({ session }: { session: ActiveContext }) {
   const t = await getT();
+  const locale = await getLocale();
   const usage = await listUsage(session);
   const cell = (value: number | undefined, cap: number | null, over: boolean, unit = "") => (
     <td className={`py-1.5 pr-3 text-right tabular-nums ${over ? "font-semibold text-danger" : ""}`}>
@@ -25,7 +28,7 @@ export async function UsageSummary({ session }: { session: ActiveContext }) {
     <Card>
       <CardHeader
         icon={<ChartBarIcon weight="duotone" className="size-5" />}
-        title={[t("root.usage"), usage.month].join(" · ")}
+        title={[t("root.usage"), formatMonthKey(usage.month, locale)].join(" · ")}
         description={[
           usage.sampled === 1 ? t("root.usageSampledOne") : t("root.usageSampledMany", { count: usage.sampled }),
           usage.overCap === 1 ? t("root.usageOverCountOne") : t("root.usageOverCountMany", { count: usage.overCap }),
@@ -40,7 +43,7 @@ export async function UsageSummary({ session }: { session: ActiveContext }) {
         {usage.items.length === 0 ? (
           <p className="text-sm text-fg-muted">{t("root.usageNoSchools")}</p>
         ) : (
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -75,7 +78,7 @@ export async function UsageSummary({ session }: { session: ActiveContext }) {
               </tbody>
             </table>
             {usage.sampled === 0 && <p className="mt-2 text-xs text-fg-muted">{t("root.usageNotSampled")} {t("root.usageRunNow")}</p>}
-          </div>
+          </TableScroll>
         )}
       </CardBody>
     </Card>

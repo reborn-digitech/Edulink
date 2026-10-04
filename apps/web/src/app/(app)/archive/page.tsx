@@ -32,6 +32,7 @@ import { formatInZone } from "@/lib/dates";
 import { cn } from "@/lib/cn";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -406,7 +407,7 @@ async function TeacherYear({
         {data.classes.length === 0 ? (
           <p className="rounded-[--radius-md] bg-surface-muted p-4 text-sm text-fg-muted">{t("archive.classesNone")}</p>
         ) : (
-          <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface">
+          <TableScroll className="rounded-[--radius-lg] border border-border bg-surface">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -427,7 +428,7 @@ async function TeacherYear({
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
         )}
       </Section>
     </div>

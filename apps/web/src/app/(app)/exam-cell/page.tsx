@@ -11,6 +11,9 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
+import { DateField } from "@/components/ui/field";
+import { DateTimeField } from "@/components/ui/date-time-field";
+import { FileField } from "@/components/ui/file-field";
 import { CellOff, Flash, Hidden, Labelled, SESSION_STATUS_KEY, KIND_KEY, day, inputClass } from "@/components/exam-cell/parts";
 import { createSessionAction, decideGraceAction, signatureAction } from "./actions";
 
@@ -149,12 +152,8 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
                     ))}
                   </select>
                 </Labelled>
-                <Labelled label={t("examCell.fieldOpens")}>
-                  <input type="datetime-local" name="formOpensAt" className={inputClass} />
-                </Labelled>
-                <Labelled label={t("examCell.fieldCloses")}>
-                  <input type="datetime-local" name="formClosesAt" className={inputClass} />
-                </Labelled>
+                <DateTimeField label={t("examCell.fieldOpens")} name="formOpensAt" defaultTime="00:00" />
+                <DateTimeField label={t("examCell.fieldCloses")} name="formClosesAt" defaultTime="23:59" />
                 <Labelled label={t("examCell.fieldFeePerCourse")}>
                   <input name="feePerCourse" inputMode="decimal" className={inputClass} />
                 </Labelled>
@@ -167,9 +166,7 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
                 <Labelled label={t("examCell.fieldRevalFee")}>
                   <input name="revalFee" inputMode="decimal" className={inputClass} />
                 </Labelled>
-                <Labelled label={t("examCell.fieldLateFrom")}>
-                  <input type="date" name="slabFrom1" className={inputClass} />
-                </Labelled>
+                <DateField label={t("examCell.fieldLateFrom")} name="slabFrom1" />
                 <Labelled label={t("examCell.fieldLateFee")}>
                   <input name="slabFee1" inputMode="decimal" className={inputClass} />
                 </Labelled>
@@ -188,9 +185,7 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
           <CardBody>
             <form action={signatureAction} className="flex flex-wrap items-end gap-3">
               <Hidden fields={{ back: "/exam-cell" }} />
-              <Labelled label={t("examCell.signatureFile")}>
-                <input type="file" name="image" accept="image/png" required className="text-sm" />
-              </Labelled>
+              <FileField label={t("examCell.signatureFile")} name="image" accept="image/png" required />
               <Button type="submit" variant="secondary">
                 {t("examCell.signatureSave")}
               </Button>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { AWARD_KEY, KIND_KEY } from "./parts";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { isoToDisplayDate } from "@/lib/dates";
 
 /**
  * A term's registration as a form: core courses ticked and fixed, the rest
@@ -21,7 +22,7 @@ export function RegistrationForm({ t, view, action, hidden = {} }: { t: Translat
         {p.prn ? ` · ${t("academics.prnLine", { prn: p.prn })}` : ""}
       </p>
       <p className="flex flex-wrap items-center gap-2 text-sm">
-        {view.open ? <Badge tone="ok">{view.lateUntil ? t("academics.lateOpenUntil", { until: view.lateUntil }) : t("academics.windowOpen", { to: view.term.registrationClosesOn })}</Badge> : <Badge tone="neutral">{t("academics.windowShut", { from: view.term.registrationOpensOn, to: view.term.registrationClosesOn })}</Badge>}
+        {view.open ? <Badge tone="ok">{view.lateUntil ? t("academics.lateOpenUntil", { until: isoToDisplayDate(view.lateUntil) }) : t("academics.windowOpen", { to: isoToDisplayDate(view.term.registrationClosesOn) })}</Badge> : <Badge tone="neutral">{t("academics.windowShut", { from: isoToDisplayDate(view.term.registrationOpensOn), to: isoToDisplayDate(view.term.registrationClosesOn) })}</Badge>}
         <span className="text-fg-muted">{t("academics.creditsBand", { chosen: view.chosenCredits, min: view.minCredits, max: view.maxCredits })}</span>
       </p>
       {view.offerings.length === 0 ? (

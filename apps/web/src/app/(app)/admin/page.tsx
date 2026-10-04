@@ -22,6 +22,7 @@ import { unstaffedLessons } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
 import { registersDue } from "@/lib/attendance";
 import { todayKey, formatDateKey } from "@/lib/dates";
+import { milestoneOffers } from "@/lib/milestones";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { Button } from "@/components/ui/button";
@@ -104,6 +105,8 @@ export default async function AdminDashboard({
   // run out) — finishing and closing both live on the calendar page.
   const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
+  // B-18: the closing actions are offered here only once they are due (lib/milestones.ts).
+  const offers = milestoneOffers({ todayKey: dateKey, runningTerm, terms, yearEndKey: academicYear ? academicYear.endDate.toISOString().slice(0, 10) : null });
   // The gap between a drawn timetable and a staffed one — the office's cue to
   // hire, shown only when there is a hole and there are classes to have one.
   const staffing = classCount > 0 ? await unstaffedLessons(ctx.schoolId) : { slots: 0, classes: 0 };
@@ -172,14 +175,16 @@ export default async function AdminDashboard({
             {/* The year's milestone CTAs, shared with the principal's page:
                 finish the running term, finish the year. Both are links —
                 the calendar page carries the confirmations. */}
-            {runningTerm && (
+            {runningTerm && offers.finishTerm && (
               <Button asChild variant="secondary" size="sm">
                 <Link href="/admin/calendar#terms">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
               </Button>
             )}
-            <Button asChild variant="secondary" size="sm">
-              <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
-            </Button>
+            {offers.finishYear && (
+              <Button asChild variant="secondary" size="sm">
+                <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+              </Button>
+            )}
             <Button asChild variant="ghost" size="sm">
               <Link href="/admin/calendar#calendar-heading">{t("admin.updateCalendar")}</Link>
             </Button>

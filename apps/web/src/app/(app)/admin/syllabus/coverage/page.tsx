@@ -9,6 +9,7 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,7 +74,7 @@ export default async function SyllabusCoveragePage() {
               }
             />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[44rem] text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -121,7 +122,7 @@ export default async function SyllabusCoveragePage() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

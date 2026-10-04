@@ -14,6 +14,7 @@ import { inventorySetup, listAssets, listItems } from "@/lib/inventory";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
 import { createAssetAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /** The auditor's file, built by a route handler rather than a page, so a plain link. */
 const REGISTER_FILE = "/admin/inventory/export/fixed-assets";
@@ -66,7 +67,7 @@ export default async function InventoryAssets({ searchParams }: { searchParams: 
           {register.assets.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("inventory.assetsNone")} description={t("inventory.assetsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[46rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -95,7 +96,7 @@ export default async function InventoryAssets({ searchParams }: { searchParams: 
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

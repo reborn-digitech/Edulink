@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BriefcaseIcon, BuildingsIcon, ClipboardTextIcon, PlusIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
+import { waitingCompaniesText } from "@/lib/count-copy";
 import { placementHome } from "@/lib/placement-analytics";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,7 +30,8 @@ export default async function PlacementHome({ searchParams }: { searchParams: Pr
   return (
     <CellFrame t={t} on college={college} current="home" title={t("placement.homeTitle")} description={t("placement.homeIntro", { batch: home.batchYear })} ok={ok} error={error}>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <StatTile label={t("placement.tileFinalYear")} value={tb.finalYear} />
+        {/* B-29: the tile counts the season's batch, not a drive's eligible list; with nobody finishing that year it says why it is 0. */}
+        <StatTile label={t("placement.tileFinalYear")} value={tb.finalYear} hint={tb.finalYear === 0 ? t("placement.tileFinalYearNone", { batch: home.batchYear }) : t("placement.tileFinalYearHint", { batch: home.batchYear })} />
         <StatTile label={t("placement.tilePlaced")} value={tb.placed} tone="ok" />
         <StatTile label={t("placement.tileMedian")} value={tb.medianSalaryRupees === null ? "—" : lpa(tb.medianSalaryRupees, t)} />
         <StatTile label={t("placement.tileIndex")} value={tb.placementIndex === null ? "—" : tb.placementIndex.toFixed(2)} hint={t("placement.tileIndexHint")} />
@@ -39,7 +41,7 @@ export default async function PlacementHome({ searchParams }: { searchParams: Pr
         <CardBody className="flex flex-wrap gap-4 text-sm">
           <Link className={LINK} href="/placement/companies">{t("placement.waitingRequirements", { count: home.requirementsWaiting })}</Link>
           <Link className={LINK} href="/placement/internships">{t("placement.waitingInternships", { count: home.internshipsWaiting })}</Link>
-          <Link className={LINK} href="/placement/companies">{t("placement.waitingCompanies", { count: home.unverifiedCompanies })}</Link>
+          <Link className={LINK} href="/placement/companies">{waitingCompaniesText(t, home.unverifiedCompanies)}</Link>
         </CardBody>
       </Card>
       <Card>

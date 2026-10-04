@@ -7,7 +7,7 @@ import { pendingReviews, type PendingReview } from "@/lib/reviews";
 import { EmptyState } from "@/components/ui/states";
 import { RateCard } from "./rate-card";
 import { formatDateKey } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function MyReviewsPage() {
   const t = await getT();
+  const locale = await getLocale();
 
   /* A parent's session deliberately carries NO active school — they act
    * across their children's schools — so requireRole's school demand would
@@ -65,7 +66,7 @@ export default async function MyReviewsPage() {
                 roundId={entry.roundId}
                 teacherMembershipId={entry.teacherMembershipId}
                 teacherName={entry.teacherName}
-                closesDateKey={formatDateKey(entry.closesDateKey)}
+                closesDateKey={formatDateKey(entry.closesDateKey, undefined, locale)}
                 initial={entry.myScores}
               />
             </li>

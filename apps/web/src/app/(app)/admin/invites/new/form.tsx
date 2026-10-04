@@ -228,6 +228,10 @@ export function InviteForm({
             type="file"
             accept={SPREADSHEET_ACCEPT}
             className="sr-only"
+            // The button above is the control and names it; this input is only what the button opens, so it is out of
+            // the tab order and the accessibility tree, as the signature pad's is (axe `label`, critical, 4 Oct 2026).
+            tabIndex={-1}
+            aria-hidden="true"
             onChange={(e) => {
               const file = e.target.files?.[0];
               if (file) void readFile(file);

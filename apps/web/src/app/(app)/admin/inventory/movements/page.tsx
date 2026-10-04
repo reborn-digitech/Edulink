@@ -12,6 +12,7 @@ import { formatDateKey, formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
 import { recordMovementAction, stockTakeAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.tabMovements") };
@@ -55,7 +56,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
           {movements.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("inventory.movementsNone")} description={t("inventory.movementsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[44rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -80,7 +81,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>
@@ -143,7 +144,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
               {location ? (
                 <form action={stockTakeAction} className="space-y-3">
                   <input type="hidden" name="location" value={location} />
-                  <div className="overflow-x-auto" tabIndex={0}>
+                  <TableScroll>
                     <table className="w-full min-w-[30rem] text-sm">
                       <thead>
                         <tr className="border-b border-border">
@@ -167,7 +168,7 @@ export default async function InventoryMovements({ searchParams }: { searchParam
                         })}
                       </tbody>
                     </table>
-                  </div>
+                  </TableScroll>
                   <p className="text-xs text-fg-muted">{t("inventory.stockTakeBlank")}</p>
                   <TextField label={t("inventory.fieldNote")} name="note" maxLength={300} />
                   <Button type="submit">{t("inventory.stockTakeSave", { location })}</Button>

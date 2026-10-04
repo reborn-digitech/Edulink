@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CertificateIcon, ListChecksIcon, PlusIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { templatesView } from "@/lib/certificates";
+import { certificateNameLabel } from "@/lib/certificate-names";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -83,7 +84,7 @@ export default async function CertificatesPage() {
                   <div className="min-w-0 flex-1 basis-56">
                     <p className="flex flex-wrap items-center gap-2">
                       <Link href={`/admin/certificates/${template.id}`} className="font-semibold text-fg hover:underline">
-                        {template.name}
+                        {certificateNameLabel(template.name, t)}
                       </Link>
                       {template.active ? (
                         <Badge tone="ok" size="sm">{t("certificates.active")}</Badge>
@@ -95,7 +96,7 @@ export default async function CertificatesPage() {
                       {[t(CERTIFICATE_KIND_KEY[template.kind]), localeName(template.locale), `${t("certificates.serialPrefix")}: ${template.serialPrefix}`, t("certificates.issued", { count: template.issuedCount })].join(" · ")}
                     </p>
                   </div>
-                  {canDesign && <TemplateRowActions templateId={template.id} name={template.name} active={template.active} />}
+                  {canDesign && <TemplateRowActions templateId={template.id} name={certificateNameLabel(template.name, t)} active={template.active} />}
                 </li>
               ))}
             </ul>

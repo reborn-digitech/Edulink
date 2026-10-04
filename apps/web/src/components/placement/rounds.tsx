@@ -3,9 +3,10 @@ import { ROUND_OUTCOMES, type DriveApplicationView, type DriveRound } from "@edu
 import type { Translate } from "@/lib/i18n/dictionary";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { joinedAction, offerAction, resultsAction } from "@/app/(app)/placement/actions";
 import { OUTCOME_KEY, ROUND_KIND_KEY, TABLE, TD, TH, applicationBadge, lpa, offerLine } from "./parts";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * A drive's applicants and what is recorded about them — the host cell's
@@ -22,7 +23,7 @@ export function Applicants({ applications, t, showCollege }: { applications: Dri
         {applications.length === 0 ? (
           <p className="px-5 pb-5 text-sm text-fg-muted">{t("placement.noApplicants")}</p>
         ) : (
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className={TABLE}>
               <thead>
                 <tr className="border-b border-border">
@@ -51,7 +52,7 @@ export function Applicants({ applications, t, showCollege }: { applications: Dri
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
         )}
       </CardBody>
     </Card>
@@ -156,7 +157,7 @@ export function JoinedForms({ applications, back, t }: { applications: DriveAppl
               <div className="font-medium">{a.studentName}</div>
               <div className="text-xs text-fg-muted">{lpa(a.offer!.packageRupees, t)}</div>
             </div>
-            <TextField label={t("placement.fieldJoinedOn")} name="joinedOn" type="date" required />
+            <DateField label={t("placement.fieldJoinedOn")} name="joinedOn" required />
             <Button type="submit" size="sm" variant="secondary">
               {t("placement.recordJoined")}
             </Button>

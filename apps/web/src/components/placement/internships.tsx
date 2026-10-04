@@ -4,7 +4,7 @@ import type { Translate } from "@/lib/i18n/dictionary";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SelectField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { decideInternshipAction, evaluateInternshipAction } from "@/app/(app)/placement/actions";
 import { INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK } from "./parts";
 
@@ -99,7 +99,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                     </option>
                   ))}
                 </SelectField>
-                <TextField label={t("placement.fieldVisit")} name="facultyVisitOn" type="date" defaultValue={i.facultyVisitAt?.slice(0, 10) ?? ""} />
+                <DateField label={t("placement.fieldVisit")} name="facultyVisitOn" defaultValue={i.facultyVisitAt?.slice(0, 10) ?? ""} />
                 <TextField label={t("placement.fieldViva")} name="vivaMarks" type="number" min="0" max="100" defaultValue={i.vivaMarks ?? ""} />
                 {canDecide ? <TextField label={t("placement.fieldCredits")} name="credits" type="number" min="1" max={rule.creditsMax} /> : <span />}
                 <Button type="submit" size="sm" variant="secondary" className="sm:justify-self-start">

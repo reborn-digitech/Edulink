@@ -19,7 +19,7 @@ import { formatTimeRange } from "@/lib/school-day";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
-import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
+import { getAttendanceSummary, currentStreakFor, todayAttendanceFor } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
@@ -41,6 +41,7 @@ import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { ownWorkScope } from "@/lib/grading";
 import { getT, getLocale } from "@/lib/i18n/server";
+import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -105,10 +106,20 @@ export default async function ParentDashboard({
    * lessons TODAY holds. Same card, the child's name on it, switching with
    * the child switcher because it is computed off the selected child.
    */
-  const week = await childWeek(session, selectedId, { weekOf: today, todayKey: today });
+  const [week, todayMark] = await Promise.all([
+    childWeek(session, selectedId, { weekOf: today, todayKey: today }),
+    // The child's mark today, and whether there is school today at all: on a
+    // Sunday or a holiday the card says so instead of "not marked yet".
+    todayAttendanceFor(student.schoolId, selectedId, today),
+  ]);
+  const todayRecord = todayMark.record;
   const weekday = weekdayOfKey(today);
   const dayColumn = week.days.find((day) => day.weekday === weekday);
-  const closedToday = dayColumn?.closed ?? false;
+  const closedToday = (dayColumn?.closed ?? false) || !todayMark.open;
+  const holidayName = todayMark.holidayName ?? dayColumn?.closedName ?? null;
+  const noSchoolSentence = holidayName
+    ? t("common.noSchoolTodayHoliday", { name: holidayName })
+    : t("common.noSchoolToday");
   const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
   const lessonsToday = closedToday
     ? []
@@ -120,13 +131,9 @@ export default async function ParentDashboard({
             (periodOrder.get(b.periodId)?.position ?? 0),
         );
 
-  const [attendance, streak, todayRecord, allHomework, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
+  const [attendance, streak, allHomework, upcoming, threads, awaitingConsent, recordMissing] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
     currentStreakFor(student.schoolId, selectedId, today),
-    db.attendanceRecord.findFirst({
-      where: { studentMembershipId: selectedId, session: { dateKey: today } },
-      select: { status: true, note: true },
-    }),
     // Homework only: an exam paper is also stored as a Grade, but its marks
     // belong to the exam card below, and the tile's "pieces" are the ongoing
     // work a parent monitors. Every marked piece, for the average the tile
@@ -301,7 +308,7 @@ export default async function ParentDashboard({
                 </p>
               ) : (
                 <p className="mt-0.5 font-semibold text-fg-muted">
-                  {t("parent.notTakenYet")}
+                  {closedToday ? noSchoolSentence : t("parent.notTakenYet")}
                 </p>
               )}
               {todayRecord?.note && (
@@ -363,7 +370,7 @@ export default async function ParentDashboard({
           title={t("parent.todayLessons", { name: childName })}
           description={
             closedToday
-              ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+              ? noSchoolSentence
               : t("parent.todayLessonsBody")
           }
           action={
@@ -376,7 +383,7 @@ export default async function ParentDashboard({
           {lessonsToday.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">
               {closedToday
-                ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+                ? noSchoolSentence
                 : t("teacher.noLessonsToday")}
             </p>
           ) : (
@@ -386,7 +393,7 @@ export default async function ParentDashboard({
                 return (
                   <li key={slot.id} className="flex items-center gap-3 py-2.5">
                     <span className="w-28 shrink-0">
-                      <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                      <span className="block text-sm font-medium text-fg">{period ? periodLabel(period.name, t) : null}</span>
                       <span className="block text-xs tabular-nums text-fg-muted">
                         {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
                       </span>

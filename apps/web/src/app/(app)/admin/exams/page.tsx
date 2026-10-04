@@ -9,11 +9,12 @@ import { formatDateKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { EXAM_KINDS, EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
+import { TableScroll } from "@/components/ui/table-scroll";
 import {
   createSeriesAction,
   addSlotAction,
@@ -41,6 +42,7 @@ export default async function AdminExamsPage({
 }) {
   const ctx = await requireRole("ADMIN");
   const t = await getT();
+  const locale = await getLocale();
   const { error, kind: rawKind, grade: rawGrade, state: rawState } = await searchParams;
   // The same toggle the reader's marks page has: unit tests, mid-term, final —
   // plus the two the office actually narrows by: which grade, and whether
@@ -224,7 +226,7 @@ export default async function AdminExamsPage({
             />
             <CardBody className="space-y-4">
               {s.slots.length > 0 && (
-                <div className="overflow-x-auto">
+                <TableScroll>
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -239,7 +241,7 @@ export default async function AdminExamsPage({
                       {s.slots.map((slot) => (
                         <tr key={slot.id} className="border-b border-border last:border-b-0">
                           <td className="py-2.5 pr-3 font-medium text-fg">{slot.subject}</td>
-                          <td className="py-2.5 pr-3 text-fg">{formatDateKey(slot.dateKey)}</td>
+                          <td className="py-2.5 pr-3 text-fg">{formatDateKey(slot.dateKey, undefined, locale)}</td>
                           <td className="py-2.5 pr-3 text-fg-muted">
                             {slot.startMinute !== null
                               ? `${hhmm(slot.startMinute)}${slot.endMinute !== null ? `–${hhmm(slot.endMinute)}` : ""}`
@@ -265,7 +267,7 @@ export default async function AdminExamsPage({
                       ))}
                     </tbody>
                   </table>
-                </div>
+                </TableScroll>
               )}
 
               <form action={addSlotAction} className="grid gap-3 sm:grid-cols-5">

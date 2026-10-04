@@ -18,6 +18,7 @@ export async function checkInAction(): Promise<CheckInActionResult> {
     const ctx = await requireApiUser();
     const result = await checkIn(ctx);
     revalidatePath("/teacher/attendance/me");
+    revalidatePath("/account/attendance");
     revalidatePath("/admin/staff-attendance");
     return { ok: true, late: result.late, checkedInAt: result.checkedInAt.toISOString() };
   } catch (error) {

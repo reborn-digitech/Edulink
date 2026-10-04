@@ -16,7 +16,8 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
 import { requestStatus } from "@/components/certificates/request-list";
-import { declineRequestAction } from "../actions";
+import { declineRequestAction, setRequestFeeAction } from "../actions";
+import { formatPaise } from "@edulink/i18n";
 
 /**
  * The queue above the issue form: what families have asked for, pending
@@ -33,6 +34,20 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
   const [declining, setDeclining] = useState<string | null>(null);
   const [reason, setReason] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [fees, setFees] = useState<Record<string, string>>({});
+
+  /** G-6: the office sets what a paper costs; a demand on the pupil's ledger, paid at the office. */
+  function setFee(id: string) {
+    startTransition(async () => {
+      const result = await setRequestFeeAction(id, fees[id] ?? "");
+      if (!result.ok) {
+        toast({ tone: "danger", title: actionError(t, result, "common.tryAgain") });
+        return;
+      }
+      toast({ tone: "ok", title: t("certificateRequests.feeSet") });
+      router.refresh();
+    });
+  }
 
   function open(id: string) {
     setDeclining((current) => (current === id ? null : id));
@@ -97,7 +112,7 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
                         {item.purpose ? ` — ${item.purpose}` : ""}
                       </p>
                       <p className="mt-0.5 text-xs text-fg-muted">
-                        {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
+                        {[item.requestedByName, t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null, item.feePaise ? t(item.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(item.feePaise) }) : null]
                           .filter(Boolean)
                           .join(" · ")}
                       </p>
@@ -115,6 +130,28 @@ export function RequestQueue({ items, pending }: { items: CertificateRequestView
                       </span>
                     )}
                   </div>
+                  {(isPending || item.status === "ISSUED") && !item.feePaid && (
+                    <form
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        setFee(item.id);
+                      }}
+                      className="flex flex-wrap items-end gap-3"
+                      data-testid={`fee-form-${item.id}`}
+                    >
+                      <TextField
+                        label={t("certificateRequests.feeAmount")}
+                        inputMode="decimal"
+                        autoComplete="off"
+                        value={fees[item.id] ?? (item.feePaise ? (item.feePaise / 100).toFixed(2) : "")}
+                        onChange={(e) => setFees((f) => ({ ...f, [item.id]: e.target.value }))}
+                        className="w-40"
+                      />
+                      <Button type="submit" variant="secondary" size="sm" loading={busy}>
+                        {t("certificateRequests.setFee")}
+                      </Button>
+                    </form>
+                  )}
                   {isPending && declining === item.id && (
                     <form
                       onSubmit={(event) => {

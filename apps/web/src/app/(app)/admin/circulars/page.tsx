@@ -10,6 +10,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -62,7 +63,7 @@ export default async function AdminCircularsPage() {
           }
         />
       ) : (
-        <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
+        <TableScroll className="rounded-[--radius-lg] border border-border bg-surface shadow-sm">
           <table className="w-full text-sm" data-testid="circulars-list">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>
@@ -112,7 +113,7 @@ export default async function AdminCircularsPage() {
               })}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       )}
     </div>
   );

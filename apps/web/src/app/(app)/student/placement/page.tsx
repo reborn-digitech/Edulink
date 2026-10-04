@@ -11,7 +11,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
+import { DateField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { Flash, INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK, OUTCOME_KEY, ROUND_KIND_KEY, applicationBadge, offerLine, packageRange, reasons, statusBadge } from "@/components/placement/parts";
 import { answerOfferAction, applyAction, diaryAction, internshipFileAction, proposeInternshipAction, saveProfileAction, withdrawAction } from "@/app/(app)/placement/actions";
@@ -128,7 +128,8 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
                   </form>
                 ) : null
               ) : !a.offer ? (
-                <form action={withdrawAction}>
+                <form action={withdrawAction} className="space-y-2">
+                  {!a.consentAt ? <p className="text-xs text-fg-muted">{t("placement.awaitingGuardian")}</p> : null}
                   <input type="hidden" name="back" value={BACK} />
                   <input type="hidden" name="driveId" value={d.id} />
                   <Button type="submit" size="sm" variant="ghost">{t("placement.withdraw")}</Button>
@@ -185,7 +186,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
                 <form action={diaryAction} className="grid gap-2 sm:grid-cols-[10rem_6rem_1fr_auto] sm:items-end">
                   <input type="hidden" name="back" value={BACK} />
                   <input type="hidden" name="internshipId" value={i.id} />
-                  <TextField label={t("placement.fieldDay")} name="on" type="date" min={i.from} max={i.to} required />
+                  <DateField label={t("placement.fieldDay")} name="on" min={i.from} max={i.to} required />
                   <TextField label={t("placement.fieldHours")} name="hours" type="number" step="0.5" min="0.5" max="16" required />
                   <TextField label={t("placement.fieldDiary")} name="text" required maxLength={2000} />
                   <Button type="submit" size="sm" variant="secondary">{t("placement.addDiary")}</Button>
@@ -214,8 +215,8 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
             <SelectField label={t("placement.fieldWindow")} name="windowSemester" defaultValue="6">
               {INTERNSHIP_WINDOWS.map((w) => <option key={w} value={w}>{t("placement.windowN", { semester: w })}</option>)}
             </SelectField>
-            <TextField label={t("placement.fieldFrom")} name="from" type="date" required />
-            <TextField label={t("placement.fieldTo")} name="to" type="date" required />
+            <DateField label={t("placement.fieldFrom")} name="from" required />
+            <DateField label={t("placement.fieldTo")} name="to" required />
             <TextField label={t("placement.fieldHoursTotal")} name="hours" type="number" min="1" max="2000" required />
             <TextField label={t("placement.fieldIndustrySupervisor")} name="supervisorName" required maxLength={120} />
             <Button type="submit" className="sm:col-span-3 sm:justify-self-start">{t("placement.proposeInternship")}</Button>

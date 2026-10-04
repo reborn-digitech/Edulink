@@ -3,8 +3,10 @@ import { normaliseLocale } from "@/lib/i18n/locales";
 import { cn } from "@/lib/cn";
 import { formatTimeRange, weekdayName, weekdayShortName } from "@/lib/school-day";
 import { formatDateKey } from "@/lib/dates";
+import { periodLabel } from "@/lib/coded-defaults";
 import type { WeekGrid, SlotView, PeriodRow, DayColumn } from "@/lib/timetable";
 import { PersonLink } from "@/components/person-link";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * A week, rendered twice.
@@ -140,10 +142,10 @@ export function SlotBody({
   );
 }
 
-function PeriodLabel({ period }: { period: PeriodRow }) {
+function PeriodLabel({ period, t }: { period: PeriodRow; t: Translate }) {
   return (
     <>
-      <span className="block text-sm font-medium text-fg">{period.name}</span>
+      <span className="block text-sm font-medium text-fg">{periodLabel(period.name, t)}</span>
       <span className="block text-xs tabular-nums text-fg-muted">
         {formatTimeRange(period.startMinute, period.endMinute)}
       </span>
@@ -240,11 +242,11 @@ export function WeekGridView({
                       )}
                     >
                       <span className="w-24 shrink-0">
-                        <PeriodLabel period={period} />
+                        <PeriodLabel period={period} t={t} />
                       </span>
                       <span className="min-w-0 flex-1">
                         {period.kind === "BREAK" ? (
-                          <span className="text-sm text-fg-muted">{period.name}</span>
+                          <span className="text-sm text-fg-muted">{periodLabel(period.name, t)}</span>
                         ) : entries.length === 0 ? (
                           <span className="text-sm text-fg-muted">{empty}</span>
                         ) : (
@@ -271,7 +273,7 @@ export function WeekGridView({
       </div>
 
       {/* ---------------- desktop: the grid ---------------- */}
-      <div className="hidden overflow-x-auto md:block">
+      <TableScroll className="hidden md:block">
         <table className="w-full min-w-[46rem] border-separate border-spacing-1">
           <caption className="sr-only">{t("timetable.weeklyTimetable")}</caption>
           <thead>
@@ -288,7 +290,9 @@ export function WeekGridView({
                   className={cn(
                     "rounded-[--radius-sm] p-2 text-left align-bottom",
                     day.isToday && "bg-accent-soft",
-                    day.closed && "opacity-60",
+                    // A shut day is told by its heading ("School shut") and a dashed, empty-looking cell, never by
+                    // fading: opacity took the muted text under 4.5:1 (axe color-contrast, 17 nodes at 1280 px).
+                    day.closed && "bg-surface-muted/40",
                   )}
                 >
                   <abbr title={weekdayName(day.weekday, locale)} className="no-underline lg:hidden">
@@ -305,7 +309,7 @@ export function WeekGridView({
             {periods.map((period) => (
               <tr key={period.id}>
                 <th scope="row" className="p-2 text-left align-top">
-                  <PeriodLabel period={period} />
+                  <PeriodLabel period={period} t={t} />
                 </th>
                 {days.map((day) => {
                   const entries = index.get(slotKey(day.weekday, period.id)) ?? [];
@@ -315,7 +319,7 @@ export function WeekGridView({
                         key={day.weekday}
                         className="rounded-[--radius-sm] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
                       >
-                        {period.name}
+                        {periodLabel(period.name, t)}
                       </td>
                     );
                   }
@@ -325,7 +329,7 @@ export function WeekGridView({
                       className={cn(
                         "rounded-[--radius-sm] p-2 align-top",
                         entries.length > 0 ? "bg-surface-muted" : "bg-surface-muted/40",
-                        day.closed && "opacity-50",
+                        day.closed && "border border-dashed border-border bg-transparent",
                       )}
                     >
                       {entries.length === 0 ? (
@@ -355,7 +359,7 @@ export function WeekGridView({
             {t("timetable.noPeriodsSetUp")}
           </p>
         )}
-      </div>
+      </TableScroll>
     </>
   );
 }

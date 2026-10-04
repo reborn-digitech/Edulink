@@ -3,7 +3,7 @@ import { requireApiRoles } from "@/lib/api-roles";
 import { cellActor, recordRoundResults } from "@/lib/placement";
 import { recruiterActor } from "@/lib/placement-recruiter";
 import { moduleFailure } from "@/lib/rule-refusal";
-import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, budget, NOTICE_WRITE_BUDGET, ok, readJson } from "@/lib/api-v1";
 
 type Params = { params: Promise<{ driveId: string }> };
 
@@ -11,6 +11,8 @@ type Params = { params: Promise<{ driveId: string }> };
 export async function POST(request: Request, { params }: Params) {
   try {
     const ctx = await requireApiRoles("TPO", "RECRUITER");
+    const refused = await budget(`notice-write:${ctx.user.id}`, NOTICE_WRITE_BUDGET.limit, NOTICE_WRITE_BUDGET.windowMs);
+    if (refused) return refused;
     const p = await params;
     const parsed = roundResultsSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

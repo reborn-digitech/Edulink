@@ -12,6 +12,7 @@ import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { PersonLink } from "@/components/person-link";
+import { isoToDisplayDate } from "@/lib/dates";
 
 type ClassTeacherRow = {
   id: string;
@@ -342,7 +343,7 @@ label={t("classes.lastDay")}
                   <span className="block truncate text-sm font-medium text-fg">{cover.name}</span>
                   <span className="block text-xs text-fg-muted">
                     {cover.toDateKey !== cover.fromDateKey
-                      ? t("calendar.rangeTo", { from: cover.fromDateKey, to: cover.toDateKey })
+                      ? t("calendar.rangeTo", { from: isoToDisplayDate(cover.fromDateKey), to: isoToDisplayDate(cover.toDateKey) })
                       : cover.fromDateKey}
                     {cover.reason ? ` · ${cover.reason}` : ""}
                   </span>

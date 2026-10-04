@@ -16,6 +16,7 @@ import { getLocale, getT } from "@/lib/i18n/server";
 import { PayChooser } from "./pay-chooser";
 import { PlanChooser } from "./plan-chooser";
 import { FEE_CALENDAR_KIND_KEY, FEE_CALENDAR_STATUS_KEY, FEE_DEMAND_STATUS_KEY, FEE_METHOD_KEY, FEE_PAYMENT_STATUS_KEY, calendarTone, demandTone, paymentTone } from "./labels";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -120,7 +121,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                   <EmptyState className="border-0 bg-transparent py-6" title={t("fees.parentNothingDue")} />
                 </div>
               ) : (
-                <div className="overflow-x-auto" tabIndex={0}>
+                <TableScroll>
                   <table className="w-full text-sm" data-testid="fees-demands">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -160,7 +161,7 @@ export default async function ParentFeesPage({ searchParams }: { searchParams: P
                       ))}
                     </tbody>
                   </table>
-                </div>
+                </TableScroll>
               )}
             </CardBody>
           </Card>

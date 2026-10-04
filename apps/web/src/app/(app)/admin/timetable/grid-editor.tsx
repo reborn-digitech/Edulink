@@ -12,7 +12,9 @@ import { saveLesson, removeLesson, duplicateDay } from "./actions";
 import type { PeriodRow, SlotView } from "@/lib/timetable";
 import { actionError } from "@/lib/action-error";
 import { useLocale, useT } from "@/lib/i18n";
+import { periodLabel } from "@/lib/coded-defaults";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The grid an admin builds.
@@ -128,14 +130,14 @@ export function GridEditor({
                     <CellButton
                       slot={slot}
                       label={t("timetable.cellLabel", {
-                        period: period.name,
+                        period: periodLabel(period.name, t),
                         day: weekdayName(weekday, locale),
                       })}
                       t={t}
                       onClick={() => setOpen({ weekday, periodId: period.id })}
                       lead={
                         <span className="w-24 shrink-0">
-                          <span className="block text-xs font-medium text-fg">{period.name}</span>
+                          <span className="block text-xs font-medium text-fg">{periodLabel(period.name, t)}</span>
                           <span className="block text-xs tabular-nums text-fg-muted">
                             {formatTimeRange(period.startMinute, period.endMinute)}
                           </span>
@@ -151,7 +153,7 @@ export function GridEditor({
       </div>
 
       {/* ---------------- desktop: the grid ---------------- */}
-      <div className="hidden overflow-x-auto md:block">
+      <TableScroll className="hidden md:block">
         <table className="w-full min-w-[46rem] border-separate border-spacing-1">
           <caption className="sr-only">
             {t("timetable.clickCellCaption", { name: className })}
@@ -177,7 +179,7 @@ export function GridEditor({
             {periods.map((period) => (
               <tr key={period.id}>
                 <th scope="row" className="p-2 text-left align-top">
-                  <span className="block text-sm font-medium text-fg">{period.name}</span>
+                  <span className="block text-sm font-medium text-fg">{periodLabel(period.name, t)}</span>
                   <span className="block text-xs tabular-nums text-fg-muted">
                     {formatTimeRange(period.startMinute, period.endMinute)}
                   </span>
@@ -188,14 +190,14 @@ export function GridEditor({
                       key={weekday}
                       className="rounded-[--radius-sm] bg-surface-muted/60 p-2 align-top text-xs text-fg-muted"
                     >
-                      {period.name}
+                      {periodLabel(period.name, t)}
                     </td>
                   ) : (
                     <td key={weekday} className="p-0 align-top">
                       <CellButton
                         slot={index.get(`${weekday}:${period.id}`)}
                         label={t("timetable.cellLabel", {
-                          period: period.name,
+                          period: periodLabel(period.name, t),
                           day: weekdayName(weekday, locale),
                         })}
                         t={t}
@@ -208,7 +210,7 @@ export function GridEditor({
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
 
       {/* ---------------- copy a day ---------------- */}
       <div className="flex flex-wrap items-end gap-3 rounded-[--radius-sm] border border-border p-3">
@@ -418,7 +420,7 @@ function LessonDialog({
         className="w-full max-w-md rounded-[--radius-lg] border border-border bg-surface p-5 shadow-lg animate-pop"
       >
         <h2 id="lesson-title" className="text-lg font-bold text-fg">
-          {weekdayName(cell.weekday, locale)}, {period.name}
+          {weekdayName(cell.weekday, locale)}, {periodLabel(period.name, t)}
         </h2>
         <p className="mt-1 text-sm text-fg-muted">
           {className} · {formatTimeRange(period.startMinute, period.endMinute)}

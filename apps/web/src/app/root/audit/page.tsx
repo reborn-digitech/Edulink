@@ -217,7 +217,7 @@ export default async function ServerAuditPage({
           {pages > 1 && (
             <nav aria-label={t("root.serverLog")} className="flex items-center justify-between text-sm">
               {page > 1 ? (
-                <Link href={pageHref(page - 1)} className="inline-flex items-center gap-1 font-medium text-accent-strong hover:underline">
+                <Link href={pageHref(page - 1)} className="inline-flex min-h-11 items-center gap-1 font-medium text-accent-strong hover:underline">
                   <CaretLeftIcon weight="bold" className="size-4" />
                   {t("root.auditPrev")}
                 </Link>
@@ -228,7 +228,7 @@ export default async function ServerAuditPage({
                 {page} / {pages}
               </span>
               {page < pages ? (
-                <Link href={pageHref(page + 1)} className="inline-flex items-center gap-1 font-medium text-accent-strong hover:underline">
+                <Link href={pageHref(page + 1)} className="inline-flex min-h-11 items-center gap-1 font-medium text-accent-strong hover:underline">
                   {t("root.auditNext")}
                   <CaretRightIcon weight="bold" className="size-4" />
                 </Link>

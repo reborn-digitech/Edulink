@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { ADMISSION_STATUS_KEY, ADMISSION_STATUS_TONE } from "@/components/admissions/labels";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { EnquireForm } from "../enquire-form";
 
@@ -31,6 +31,7 @@ export default async function SchoolProfilePage({
   params: Promise<{ schoolId: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const relative = await getRelativeTime();
   const ctx = await requireUser();
   if (!ctx.role) redirect("/switch");
@@ -202,7 +203,7 @@ export default async function SchoolProfilePage({
               {admissions.open.grades.map((g) => (
                 <li key={g.grade}>{`${t("admissions.grade")} ${g.grade} · ${t("admissions.seatsLeft", { remaining: g.remaining, seats: g.seats })}`}</li>
               ))}
-              {admissions.open.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(admissions.open.closesAt) })}</li>}
+              {admissions.open.closesAt && <li>{t("admissions.closesOn", { date: formatDateKey(admissions.open.closesAt, undefined, locale) })}</li>}
               {admissions.open.documents.length > 0 && <li>{t("admissions.documentsAsked", { names: admissions.open.documents.map((d) => d.name).join(", ") })}</li>}
               {admissions.open.testRequired && <li>{t("admissions.testAsked")}</li>}
             </ul>

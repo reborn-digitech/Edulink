@@ -14,6 +14,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { BankImportLine, BankImportPreview } from "@/lib/fees-bank-import";
 import { METHOD_KEY } from "./labels";
 import { commitBankImportAction, previewBankImportAction } from "./bank-import-actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 const EXAMPLE = "Date,Description,Reference,Credit\n01/09/2026,NEFT STU-7K2M-9QDX RAVI,N245261234567890,12500.00\n02/09/2026,CLG CHQ 004512 STU-3PX8-Q2MN,004512,8000";
 
@@ -102,7 +103,7 @@ export function BankImportCard() {
             <Badge tone="neutral">{t("officeBulk.bankCountAlready", { count: preview.counts.already })}</Badge>
             <Badge tone={preview.counts.unmatched > 0 ? "warn" : "neutral"}>{t("officeBulk.bankCountUnmatched", { count: preview.counts.unmatched })}</Badge>
           </p>
-          <div className="overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
+          <TableScroll className="rounded-[--radius-md] border border-border">
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>
@@ -129,7 +130,7 @@ export function BankImportCard() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
           {matched > 0 ? (
             <Button loading={pending} onClick={commit}>
               {t("officeBulk.bankCommit")} ({matched})

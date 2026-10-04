@@ -30,6 +30,10 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
+import { isCollegeKind } from "@edulink/contracts";
+import { institutionKindOf } from "@/lib/modules";
+import { practiceListing } from "@/lib/practice-list";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -47,10 +51,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PracticePage({
   searchParams,
 }: {
-  searchParams: Promise<{ subject?: string; grade?: string }>;
+  searchParams: Promise<{ subject?: string; grade?: string; page?: string }>;
 }) {
   const ctx = await requireRole("STUDENT");
-  const { subject, grade } = await searchParams;
+  const { subject, grade, page: pageParam } = await searchParams;
   const t = await getT();
   const subjectName = (code: string) => {
     const key = SUBJECT_KEY[code as QuizSubject];
@@ -63,36 +67,25 @@ export default async function PracticePage({
   // `subject` into the query once made the subject row list only the selected
   // subject — one entry, which the `length > 1` guard below then hid, so
   // choosing a subject deleted the only way back out of it.
-  const [topics, enrolledGrade, resume, weekly, revision, assigned] = await Promise.all([
+  const [topics, enrolledGrade, resume, weekly, revision, assigned, kind] = await Promise.all([
     listTopics(ctx, { language }),
     enrolledGradeLevel(ctx),
     continueCard(ctx, language),
     weeklyPracticeCount(ctx),
     revisionQueue(ctx, { language }),
     assignmentsForStudent(ctx, language),
+    institutionKindOf(ctx.schoolId),
   ]);
-  const subjects = [...new Set(topics.map((t) => t.subject))];
-  const grades = [...new Set(topics.map((t) => t.classLevel))].sort((a, b) => a - b);
-  const subjectsIn = (grade: number) =>
-    [...new Set(topics.filter((t) => t.classLevel === grade).map((t) => t.subject))];
   // No explicit choice defaults to the child's OWN grade — a Grade 5 pupil
   // should land on Grade 5 chapters, not on Class 3 civics. "all" is the
-  // explicit way out, so the All chip still works once the default exists.
-  const gradeNum =
-    grade === "all"
-      ? null
-      : grade
-        ? Number(grade)
-        : enrolledGrade && grades.includes(enrolledGrade)
-          ? enrolledGrade
-          : null;
-  const shown = topics.filter(
-    (topic) =>
-      (!subject || topic.subject === subject) && (!gradeNum || topic.classLevel === gradeNum),
-  );
-  // The subject row lists the SELECTED class's own lineup — Class 11 shows
-  // Biology, Class 4 does not — from unfiltered rows (see the comment above).
-  const subjectsShown = gradeNum ? subjectsIn(gradeNum) : subjects;
+  // explicit way out. The subject row lists the SELECTED class's own lineup
+  // from unfiltered rows. A college student gets no class chips and the
+  // placement banks first, and every list is paged (B-13, lib/practice-list.ts).
+  const college = isCollegeKind(kind ?? "SCHOOL");
+  const listing = practiceListing(topics, { college, subject, grade, enrolledGrade, page: pageParam });
+  const { grades, gradeNum, shown } = listing;
+  const subjectsShown = listing.subjects;
+  const pageHref = (n: number) => `/student/practice?${subject ? `subject=${subject}&` : ""}grade=${gradeNum ?? "all"}&page=${n}`;
 
   return (
     <div className="space-y-6">
@@ -288,8 +281,8 @@ export default async function PracticePage({
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
                         <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                          {subjectName(topic.subject)} ·{" "}
-                          {t("practice.classN", { n: topic.classLevel })}
+                          {subjectName(topic.subject)}
+                          {college ? null : <> · {t("practice.classN", { n: topic.classLevel })}</>}
                         </p>
                         <p className="mt-0.5 font-semibold text-fg">{topic.name}</p>
                       </div>
@@ -335,6 +328,18 @@ export default async function PracticePage({
               </li>
             ))}
           </ul>
+
+          {listing.pages > 1 && (
+            <nav aria-label={t("people.pageOf", { page: listing.page, pages: listing.pages })} className="flex items-center justify-between gap-3">
+              <Button asChild={listing.page > 1} variant="secondary" size="sm" disabled={listing.page === 1}>
+                {listing.page > 1 ? <Link href={pageHref(listing.page - 1)}>{t("people.previous")}</Link> : <span>{t("people.previous")}</span>}
+              </Button>
+              <span className="text-sm text-fg-muted">{t("people.pageOf", { page: listing.page, pages: listing.pages })}</span>
+              <Button asChild={listing.page < listing.pages} variant="secondary" size="sm" disabled={listing.page >= listing.pages}>
+                {listing.page < listing.pages ? <Link href={pageHref(listing.page + 1)}>{t("people.next")}</Link> : <span>{t("people.next")}</span>}
+              </Button>
+            </nav>
+          )}
         </>
       )}
     </div>

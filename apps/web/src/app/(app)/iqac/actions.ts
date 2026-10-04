@@ -25,7 +25,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { AttachmentError, discard, storeAttachments } from "@/lib/uploads";
 import { db } from "@/lib/db";
-import {
+import { makeSurveyLink,
   actOnGrievance,
   addActivity,
   addMeeting,
@@ -226,6 +226,15 @@ export async function atrAction(formData: FormData) {
     }),
   );
 }
+/** G-5: one signed link for one respondent of an employer's or a parent's survey, shown back to the desk to send. */
+export async function surveyLinkAction(formData: FormData) {
+  await run(formData, async (ctx) => {
+    const link = await makeSurveyLink(ctx, str(formData, "surveyId"));
+    const origin = process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, "") || "";
+    return { key: "iqac.linkMade" as const, vars: { url: `${origin}${link.path}` } };
+  });
+}
+
 export async function transcribeAction(formData: FormData) {
   await run(formData, async (ctx) => {
     await transcribeResponse(ctx, str(formData, "surveyId"), { answers: answersOf(formData), source: str(formData, "source") });

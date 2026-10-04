@@ -19,10 +19,12 @@ export async function POST(request: Request) {
     const parsed = deviceRegisterSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const { expoPushToken, platform, device } = parsed.data;
+    // Bound to the session that registered it (campaign PH-4): revoking this one device from the web
+    // removes its token, and a token whose session has ended is not sent to.
     await db.deviceToken.upsert({
       where: { expoPushToken },
-      create: { userId: ctx.user.id, expoPushToken, platform, device: device ?? null },
-      update: { userId: ctx.user.id, platform, device: device ?? null, failureCount: 0, lastUsedAt: new Date() },
+      create: { userId: ctx.user.id, expoPushToken, platform, device: device ?? null, sessionId: ctx.sessionId },
+      update: { userId: ctx.user.id, platform, device: device ?? null, failureCount: 0, lastUsedAt: new Date(), sessionId: ctx.sessionId },
     });
     return ok({ ok: true });
   } catch (error) {

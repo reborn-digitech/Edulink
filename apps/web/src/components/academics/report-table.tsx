@@ -4,6 +4,7 @@ import { EmptyState } from "@/components/ui/states";
 import { NUM, TD, TH } from "@/components/module-flash";
 import { StandingBadge } from "./parts";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 type Rows = z.infer<typeof attendanceReportSchema>["rows"];
 
@@ -11,7 +12,7 @@ type Rows = z.infer<typeof attendanceReportSchema>["rows"];
 export function AttendanceReportTable({ t, rows, formatAt }: { t: Translate; rows: Rows; formatAt: (iso: string) => string }) {
   if (rows.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.reportNone")} description={t("academics.reportNoneBody")} />;
   return (
-    <div className="overflow-x-auto">
+    <TableScroll>
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border">
@@ -38,6 +39,6 @@ export function AttendanceReportTable({ t, rows, formatAt }: { t: Translate; row
           ))}
         </tbody>
       </table>
-    </div>
+    </TableScroll>
   );
 }

@@ -1,5 +1,6 @@
 import { inventoryRequestAskSchema, inventoryRequestSchema } from "@edulink/contracts";
 import { requireApiRole } from "@/lib/tenancy";
+import { SCHOOL_STAFF_ROLES } from "@/lib/staff-records";
 import { apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { askForItem } from "@/lib/inventory";
 import { moduleFailure } from "@/lib/rule-refusal";
@@ -7,7 +8,7 @@ import { moduleFailure } from "@/lib/rule-refusal";
 /** POST /api/v1/account/inventory/requests — ask the office for an item. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiRole("TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN");
+    const ctx = await requireApiRole(...SCHOOL_STAFF_ROLES);
     const parsed = inventoryRequestAskSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(inventoryRequestSchema.parse(await askForItem(ctx, parsed.data)));

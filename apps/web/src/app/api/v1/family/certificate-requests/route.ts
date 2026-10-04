@@ -1,12 +1,19 @@
 import { certificateRequestSaveSchema, certificateRequestSchema, familyCertificateRequestsSchema, familyRecordQuerySchema } from "@edulink/contracts";
 import { requireApiReader } from "@/lib/api-reads/family";
+import { requireApiRoles } from "@/lib/api-roles";
+import { getSession } from "@/lib/session";
 import { familyRequests, requestCertificate } from "@/lib/certificate-requests";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
+
+/** The pupil, a guardian, or — for a paper asked for again — the former pupil (G-6). */
+async function asker() {
+  return (await getSession())?.role === "ALUMNUS" ? requireApiRoles("ALUMNUS") : requireApiReader();
+}
 
 /** GET /api/v1/family/certificate-requests?childId= — mine, with the kinds on offer. */
 export async function GET(request: Request) {
   try {
-    const ctx = await requireApiReader();
+    const ctx = await asker();
     const parsed = familyRecordQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(familyCertificateRequestsSchema.parse(await familyRequests(ctx, parsed.data.childId)));
@@ -18,7 +25,7 @@ export async function GET(request: Request) {
 /** POST /api/v1/family/certificate-requests?childId= — ask. */
 export async function POST(request: Request) {
   try {
-    const ctx = await requireApiReader();
+    const ctx = await asker();
     const query = familyRecordQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!query.success) return apiInvalid(query);
     const parsed = certificateRequestSaveSchema.safeParse(await readJson(request));

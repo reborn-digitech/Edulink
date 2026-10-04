@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
 import { BAND_KEY, CellFrame, LINK, SECTOR_KEY, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
 import { publishSeasonAction, saveSettingsAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -36,7 +37,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
       <Card>
         <CardHeader icon={<ChartBarIcon weight="duotone" className="size-5" />} title={t("placement.yearsTitle")} description={t("placement.yearsIntro")} />
         <CardBody className="p-0">
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className={TABLE}>
               <thead>
                 <tr className="border-b border-border">
@@ -68,7 +69,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
           <div className="flex flex-wrap gap-4 border-t border-border p-5 text-sm">
             <a className={LINK} href={ex("NBA")}>
               <DownloadSimpleIcon className="mr-1 inline size-4" aria-hidden />

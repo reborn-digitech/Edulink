@@ -6,6 +6,7 @@ import { listCompanies, placementColleges, placementSettings } from "@/lib/place
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
+import { DateTimeField } from "@/components/ui/date-time-field";
 import { EmptyState } from "@/components/ui/states";
 import { CellFrame, DRIVE_KIND_KEY, GENDER_KEY, ROUND_KIND_KEY, cellContext } from "@/components/placement/parts";
 import { openDriveAction } from "../../actions";
@@ -58,7 +59,7 @@ export default async function NewDrivePage({ searchParams }: { searchParams: Pro
               <TextField label={t("placement.fieldPackageMin")} name="packageMin" type="number" step="0.1" min="0" required hint={t("placement.fieldPackageHint")} />
               <TextField label={t("placement.fieldPackageMax")} name="packageMax" type="number" step="0.1" min="0" required />
               <TextField label={t("placement.fieldBond")} name="bond" maxLength={300} />
-              <TextField label={t("placement.fieldFirstAt")} name="firstAt" type="datetime-local" />
+              <DateTimeField label={t("placement.fieldFirstAt")} name="firstAt" defaultTime="10:00" />
               <TextAreaField label={t("placement.fieldJd")} name="jd" maxLength={6000} className="sm:col-span-2" />
             </CardBody>
           </Card>

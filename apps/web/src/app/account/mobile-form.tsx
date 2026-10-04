@@ -205,7 +205,8 @@ export function MobileForm({
         autoComplete="current-password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        hint={t("account.currentPasswordHint")}
+        // No hint: the email form directly above in the same card says why the password is asked and that other
+        // devices are signed out, and the page printed that sentence twice (the walk of 4 October, B-26).
       />
 
       <div className="flex flex-wrap items-center gap-2">

@@ -12,6 +12,7 @@ import { academicsStructure } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
 import { createDivisionAction, saveRoomAction, saveTermAction } from "../actions";
+import { isoToDisplayDate } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.tabTerms") };
@@ -36,8 +37,8 @@ export default async function TermsPage({ searchParams }: { searchParams: Search
               {s.terms.map((term) => (
                 <li key={term.id} className="flex flex-wrap items-center gap-2 py-2">
                   <span className="font-semibold text-fg">{term.name}</span>
-                  <span className="text-fg-muted">{t("academics.termLine", { year: term.academicYear, from: term.startsOn, to: term.endsOn })}</span>
-                  <span className="text-fg-muted">{t("academics.windowLine", { from: term.registrationOpensOn, to: term.registrationClosesOn })}</span>
+                  <span className="text-fg-muted">{t("academics.termLine", { year: term.academicYear, from: isoToDisplayDate(term.startsOn), to: isoToDisplayDate(term.endsOn) })}</span>
+                  <span className="text-fg-muted">{t("academics.windowLine", { from: isoToDisplayDate(term.registrationOpensOn), to: isoToDisplayDate(term.registrationClosesOn) })}</span>
                   {term.registrationOpen ? <Badge tone="ok">{t("academics.registrationOpen")}</Badge> : <Badge tone="neutral">{t("academics.registrationClosed")}</Badge>}
                 </li>
               ))}

@@ -11,6 +11,8 @@ import { requireRole } from "@/lib/tenancy";
 import { isModuleOn } from "@/lib/modules";
 import { courseFile } from "@/lib/academics-coursefile";
 import { getT } from "@/lib/i18n/server";
+import { weeksTaughtText } from "@/lib/count-copy";
+import { isoToDisplayDate } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.courseFileTitle") };
@@ -26,7 +28,7 @@ export default async function StudentCourseFilePage({ params }: { params: Promis
     <div className="space-y-6">
       <PageHeader title={[file.courseCode, file.courseName].join(" · ")} description={file.facultyName ?? undefined} />
       <Card>
-        <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("academics.planTitle")} description={t("academics.weeksTaught", { taught: file.taught, planned: file.plan.length })} />
+        <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("academics.planTitle")} description={weeksTaughtText(t, file.taught, file.plan.length)} />
         <CardBody className="space-y-3">
           {file.outcomes.length ? <ul className="list-inside list-disc text-sm text-fg-muted">{file.outcomes.map((o) => <li key={o.code}>{`${o.code} — ${o.text}`}</li>)}</ul> : null}
           {file.plan.length === 0 ? (
@@ -35,7 +37,7 @@ export default async function StudentCourseFilePage({ params }: { params: Promis
             <ol className="space-y-1 text-sm">
               {file.plan.map((w) => (
                 <li key={w.week}>
-                  <span className="tabular-nums text-fg-muted">{t("academics.weekN", { n: w.week })}</span> {w.topic} {w.taughtOn ? <Badge tone="ok">{t("academics.taughtOn", { date: w.taughtOn })}</Badge> : null}
+                  <span className="tabular-nums text-fg-muted">{t("academics.weekN", { n: w.week })}</span> {w.topic} {w.taughtOn ? <Badge tone="ok">{t("academics.taughtOn", { date: isoToDisplayDate(w.taughtOn) })}</Badge> : null}
                 </li>
               ))}
             </ol>

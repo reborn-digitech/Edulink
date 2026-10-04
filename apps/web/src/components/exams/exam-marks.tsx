@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatDateKey } from "@/lib/dates";
 import { EXAM_KIND_KEY } from "@/lib/constants";
 import type { ExamMarks } from "@/lib/exams";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 
 /**
  * One pupil's exam marks, series by series. Rendered in full on the Exams
@@ -23,6 +23,7 @@ export async function ExamMarksCards({
   showStudent?: boolean;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const series = compact ? marks.series.slice(-1) : marks.series;
   if (series.length === 0) return null;
 
@@ -62,7 +63,7 @@ export async function ExamMarksCards({
                   >
                     <span className="min-w-0">
                       <span className="block font-medium text-fg">{paper.subject}</span>
-                      <span className="block text-xs text-fg-muted">{formatDateKey(paper.dateKey)}</span>
+                      <span className="block text-xs text-fg-muted">{formatDateKey(paper.dateKey, undefined, locale)}</span>
                     </span>
                     <span className="tabular-nums">
                       {paper.marks === null ? (

@@ -55,7 +55,9 @@ export function CardHeader({
           {description && <p className="mt-0.5 text-sm text-fg-muted">{description}</p>}
         </div>
       </div>
-      {action && <div className="max-w-full shrink-0">{action}</div>}
+      {/* A bare text link as the action ("Items", "Asks", "See all") is a control, not a link in running text: it gets
+          the 44 px row every other control has (the walk of 4 October measured 36×18 on /admin/inventory). */}
+      {action && <div className="max-w-full shrink-0 [&>a]:inline-flex [&>a]:min-h-11 [&>a]:items-center">{action}</div>}
     </div>
   );
 }

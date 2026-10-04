@@ -17,7 +17,7 @@ import { requestPasswordReset, resetPassword } from "@/lib/passwords";
 import { consume, retryHintKey, RESET_REQUESTS } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
-import { sendMagicLink } from "@/lib/email";
+import { localeForUser, sendMagicLink } from "@/lib/email";
 import { audit } from "@/lib/audit";
 import { resolveContext } from "@/lib/resolve-context";
 import { MAGIC_LINK_TTL_MINUTES } from "@/lib/constants";
@@ -153,7 +153,7 @@ export async function requestMagicLink(input: unknown): Promise<LoginState> {
         expiresAt: new Date(Date.now() + MAGIC_LINK_TTL_MINUTES * 60_000),
       },
     });
-    await sendMagicLink(email, `${APP_URL}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES);
+    await sendMagicLink(email, `${APP_URL}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES, await localeForUser(userId));
   });
 
   return { ok: true, errors: {} };

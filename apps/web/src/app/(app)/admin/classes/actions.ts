@@ -8,8 +8,8 @@ import { requireApiRole, assertClassAccess, AccessError } from "@/lib/tenancy";
 import { classSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { classCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
-import { gradesInRange } from "@/lib/superuser";
 import { syncStandinsForClass } from "@/lib/standin-guardian";
+import { createClassIn } from "@/lib/classes";
 
 /**
  * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy.
@@ -66,76 +66,15 @@ export async function createClass(input: unknown): Promise<ClassState> {
   const parsed = classSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
-  const { name, subject, gradeLevel, section, room, color } = parsed.data;
-
-  // The grade must be one the school actually teaches. Checked rather than
-  // trusted: the form offers a dropdown built from the school's range, and a
-  // dropdown is a suggestion until the server agrees with it.
-  const school = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
-    select: { gradeLow: true, gradeHigh: true },
-  });
-  const offered = gradesInRange(school.gradeLow, school.gradeHigh);
-  if (gradeLevel && offered.length > 0 && !offered.includes(gradeLevel)) {
-    return {
-      ok: false,
-      errors: {},
-      errorKeys: { gradeLevel: "classes.gradeOutOfRange" },
-      errorVars: { gradeLevel: { low: school.gradeLow ?? "", high: school.gradeHigh ?? "" } },
-    };
+  // The rules live in lib/classes.ts (LIFECYCLE-11), so a script or a door makes a class the same way.
+  const made = await createClassIn(ctx.schoolId, ctx.user.id, parsed.data);
+  if (!made.ok) {
+    return { ok: false, errors: {}, errorKeys: { [made.field]: made.errorKey }, ...(made.vars ? { errorVars: { [made.field]: made.vars } } : {}) };
   }
-
-  const duplicate = await db.class.findFirst({
-    where: { schoolId: ctx.schoolId, name, archivedAt: null },
-    select: { id: true },
-  });
-  if (duplicate) {
-    return {
-      ok: false,
-      errors: {},
-      errorKeys: { name: "classes.duplicateName" },
-    };
-  }
-
-  // joinCode is globally unique; retry on the (very unlikely) collision rather
-  // than pre-checking, which would still race.
-  let created: { id: string; joinCode: string } | null = null;
-  for (let attempt = 0; attempt < 5; attempt++) {
-    const code = classCode();
-    const clash = await db.class.findUnique({ where: { joinCode: code }, select: { id: true } });
-    if (clash) continue;
-    created = await db.class.create({
-      data: {
-        schoolId: ctx.schoolId,
-        name,
-        subject: subject || null,
-        gradeLevel: gradeLevel || null,
-        section: section || null,
-        room: room || null,
-        color: color || null,
-        joinCode: code,
-      },
-      select: { id: true, joinCode: true },
-    });
-    break;
-  }
-
-  if (!created) {
-    return { ok: false, errors: {}, errorKeys: { _form: "classes.couldNotAllocateCode" } };
-  }
-
-  await audit({
-    schoolId: ctx.schoolId,
-    actorUserId: ctx.user.id,
-    action: "class.create",
-    targetType: "Class",
-    targetId: created.id,
-    meta: { name },
-  });
 
   revalidatePath("/admin/classes");
   revalidatePath("/admin");
-  return { ok: true, errors: {}, classId: created.id, joinCode: created.joinCode };
+  return { ok: true, errors: {}, classId: made.classId, joinCode: made.joinCode };
 }
 
 /** Assigns or unassigns a teacher. Both ids are re-checked against the school. */

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
-import { getSession, listContexts } from "@/lib/session";
+import { notFound, redirect } from "next/navigation";
+import { getSession, isModuleOffPage, listContexts } from "@/lib/session";
 import { hasRecord } from "@/lib/student-record";
 import { SignedInShell } from "@/components/nav/signed-in-shell";
 import { db } from "@/lib/db";
@@ -23,6 +23,9 @@ import { myClaims } from "@/lib/guardian-claims";
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const session = await getSession();
   if (!session) redirect("/login");
+  // A librarian's or a warden's own menu page behind a module this school has off — the college no-dues at a
+  // school (B-12): not here, rather than "Where would you like to go?".
+  if (isModuleOffPage(session)) notFound();
 
   // Signed in but with no usable context. Several very different reasons, and
   // telling them apart is the whole point: a brand-new parent needs a join code,

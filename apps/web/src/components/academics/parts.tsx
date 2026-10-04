@@ -7,6 +7,7 @@ import { TabBar } from "@/components/ui/tabs";
 import { ModuleFlash, NUM, TD, TH } from "@/components/module-flash";
 import { formatTimeRange, weekdayName, weekdayShortName } from "@/lib/school-day";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The pieces the college's academics pages share (4 October 2026): the
@@ -63,7 +64,7 @@ export function projectionText(t: Translate, a: Pick<CourseAttendance, "canMiss"
 export function AttendanceTable({ t, rows, withProjection = true }: { t: Translate; rows: CourseAttendance[]; withProjection?: boolean }) {
   if (rows.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.attendanceNone")} description={t("academics.attendanceNoneBody")} />;
   return (
-    <div className="overflow-x-auto">
+    <TableScroll>
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border">
@@ -90,7 +91,7 @@ export function AttendanceTable({ t, rows, withProjection = true }: { t: Transla
           ))}
         </tbody>
       </table>
-    </div>
+    </TableScroll>
   );
 }
 

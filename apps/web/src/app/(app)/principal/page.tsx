@@ -22,7 +22,8 @@ import {
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { EmptyState } from "@/components/ui/states";
-import { formatDateKey } from "@/lib/dates";
+import { formatDateKey, todayKey } from "@/lib/dates";
+import { milestoneOffers } from "@/lib/milestones";
 import { WindowPicker } from "./window-picker";
 import { schoolReviewDashboard } from "@/lib/reviews";
 import { ReviewDashboard } from "@/components/reviews/review-dashboard";
@@ -90,6 +91,8 @@ export default async function PrincipalDashboard({
     }),
   ]);
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
+  // B-18: the closing actions are offered here only once they are due (lib/milestones.ts).
+  const offers = milestoneOffers({ todayKey: todayKey(school.timezone), runningTerm, terms, yearEndKey: academicYear ? academicYear.endDate.toISOString().slice(0, 10) : null });
   // How far the chapters have got against how far the year has: one number
   // and the count of classes behind it. A school with no lists yet shows
   // nothing here rather than a card promising a figure.
@@ -103,6 +106,14 @@ export default async function PrincipalDashboard({
   const concerns = insights.filter(
     (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
   );
+  // B-11: a closed day expects no register, and a window with no marks has
+  // no class "at or above" anything — both are said plainly instead.
+  const noSchoolSentence = summary.openToday
+    ? null
+    : summary.holidayToday
+      ? t("common.noSchoolTodayHoliday", { name: summary.holidayToday })
+      : t("common.noSchoolToday");
+  const noAttendanceYet = summary.classesWithAttendance === 0;
 
   return (
     <div className="space-y-6">
@@ -140,14 +151,16 @@ export default async function PrincipalDashboard({
             </Button>
           ) : (
             <>
-              {runningTerm && (
+              {runningTerm && offers.finishTerm && (
                 <Button asChild variant="secondary" size="sm">
                   <Link href="/admin/calendar#terms">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
                 </Button>
               )}
-              <Button asChild variant="secondary" size="sm">
-                <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
-              </Button>
+              {offers.finishYear && (
+                <Button asChild variant="secondary" size="sm">
+                  <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+                </Button>
+              )}
             </>
           )}
         </CardBody>
@@ -160,8 +173,9 @@ export default async function PrincipalDashboard({
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("principal.registersMissing")}
-          value={String(summary.registersMissingToday)}
-          tone={summary.registersMissingToday > 0 ? "warn" : "ok"}
+          value={noSchoolSentence ? "—" : String(summary.registersMissingToday)}
+          tone={noSchoolSentence ? "neutral" : summary.registersMissingToday > 0 ? "warn" : "ok"}
+          hint={noSchoolSentence ?? undefined}
         />
         <StatTile
           label={t("principal.attendance")}
@@ -176,10 +190,11 @@ export default async function PrincipalDashboard({
             </>
           }
           tone={
-            summary.attendancePercent !== null &&
-            summary.attendancePercent < ATTENDANCE_CONCERN_PERCENT
-              ? "warn"
-              : "ok"
+            summary.attendancePercent === null
+              ? "neutral"
+              : summary.attendancePercent < ATTENDANCE_CONCERN_PERCENT
+                ? "warn"
+                : "ok"
           }
         />
         <StatTile label={t("principal.pupils")} value={String(summary.pupils)} />
@@ -265,7 +280,9 @@ export default async function PrincipalDashboard({
           description={
             concerns.length > 0
               ? t("principal.belowLine", { percent: ATTENDANCE_CONCERN_PERCENT })
-              : t("principal.nothingBelowLine")
+              : noAttendanceYet
+                ? undefined
+                : t("principal.nothingBelowLine")
           }
           action={
             <Link
@@ -284,7 +301,9 @@ export default async function PrincipalDashboard({
             />
           ) : concerns.length === 0 ? (
             <p className="text-sm text-fg-muted">
-              {t("principal.everyClassAbove", { percent: ATTENDANCE_CONCERN_PERCENT })}
+              {noAttendanceYet
+                ? t("principal.noAttendanceInWindow")
+                : t("principal.everyClassAbove", { percent: ATTENDANCE_CONCERN_PERCENT })}
             </p>
           ) : (
             <ul className="space-y-2">

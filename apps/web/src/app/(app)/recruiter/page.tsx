@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { Flash, LINK, ROUND_KIND_KEY, SECTOR_KEY, lpa, packageRange, statusBadge } from "@/components/placement/parts";
-import { addColleagueAction, postRequirementAction, registerCompanyAction } from "@/app/(app)/placement/actions";
+import { addColleagueAction, answerInvitationAction, postRequirementAction, registerCompanyAction, removeColleagueAction } from "@/app/(app)/placement/actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,12 +34,43 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
   const t = await getT();
   const ctx = await requireRecruiter();
   const { ok, error } = await searchParams;
-  const [{ company, colleagues }, { drives }, { requirements }, { colleges }] = await Promise.all([recruiterCompany(ctx), recruiterDrives(ctx), myRequirements(ctx), recruiterColleges(ctx)]);
+  // Nothing of a college's until the address is proved (campaign S-4): the banner, and only that.
+  if (!ctx.recruiter.emailVerified) {
+    return (
+      <div className="space-y-6">
+        <PageHeader title={t("recruiter.homeTitle", { company: ctx.recruiter.companyName })} description={t("recruiter.homeIntro")} />
+        <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.refuseUnverified")}</p>
+      </div>
+    );
+  }
+  const [{ company, colleagues, invitations }, { drives }, { requirements }, { colleges }] = await Promise.all([recruiterCompany(ctx), recruiterDrives(ctx), myRequirements(ctx), recruiterColleges(ctx)]);
   return (
     <div className="space-y-6">
       <PageHeader title={t("recruiter.homeTitle", { company: company?.name ?? ctx.recruiter.companyName })} description={t("recruiter.homeIntro")} />
       {!ctx.recruiter.emailVerified && <p className="rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm text-fg">{t("recruiter.verifyEmail")}</p>}
       <Flash ok={ok} error={error} />
+      {invitations.length ? (
+        <Card>
+          <CardHeader icon={<UsersIcon weight="duotone" className="size-5" />} title={t("placement.invitationsTitle")} />
+          <CardBody className="space-y-3 text-sm">
+            {invitations.map((i) => (
+              <div key={i.companyId} className="flex flex-wrap items-center justify-between gap-2">
+                <span>{t("placement.invitationFrom", { company: i.companyName })}</span>
+                <div className="flex gap-2">
+                  {(["1", "0"] as const).map((accept) => (
+                    <form key={accept} action={answerInvitationAction}>
+                      <input type="hidden" name="back" value={BACK} />
+                      <input type="hidden" name="companyId" value={i.companyId} />
+                      <input type="hidden" name="accept" value={accept} />
+                      <Button type="submit" size="sm" variant={accept === "1" ? "primary" : "secondary"}>{t(accept === "1" ? "placement.acceptInvitation" : "placement.declineInvitation")}</Button>
+                    </form>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </CardBody>
+        </Card>
+      ) : null}
       {!company ? (
         <Card>
           <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={t("placement.registerCompany")} description={t("placement.registerCompanyIntro")} />
@@ -68,12 +99,21 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
             <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={company.name} description={`${company.identifier} · ${company.sectors.map((s) => t(SECTOR_KEY[s] ?? "placement.sectorOTHER")).join(", ")}`} action={company.verifiedAt ? <Badge tone="ok">{t("placement.verified")}</Badge> : <Badge tone="warn">{t("placement.unverified")}</Badge>} />
             <CardBody className="space-y-3 text-sm">
               <p className="text-fg-muted">{company.verifiedAt ? t("placement.companyVerifiedNote") : t("placement.companyUnverifiedNote")}</p>
-              {colleagues.length ? (
-                <p className="flex items-center gap-2">
-                  <UsersIcon className="size-4" aria-hidden />
-                  {colleagues.map((c) => c.name).join(", ")}
-                </p>
-              ) : null}
+              {colleagues.map((c) => (
+                <div key={c.email} className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="flex items-center gap-2">
+                    <UsersIcon className="size-4" aria-hidden />
+                    {c.name}
+                  </span>
+                  {c.email ? (
+                    <form action={removeColleagueAction}>
+                      <input type="hidden" name="back" value={BACK} />
+                      <input type="hidden" name="email" value={c.email} />
+                      <Button type="submit" size="sm" variant="ghost">{t("common.remove")}</Button>
+                    </form>
+                  ) : null}
+                </div>
+              ))}
               <form action={addColleagueAction} className="flex flex-wrap items-end gap-2">
                 <input type="hidden" name="back" value={BACK} />
                 <TextField label={t("placement.fieldColleagueEmail")} name="email" type="email" required maxLength={200} />

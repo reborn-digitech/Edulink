@@ -18,10 +18,11 @@ import {
 import { parseRupees } from "@edulink/i18n";
 import { AttachmentError, storeAttachments } from "@/lib/uploads";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
+import { RuleRefusal } from "@/lib/rule-refusal";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
-import { admitStudent, cancelAdmission, createApplication, importAllotments, offerSeat, recordAdmissionFee, recordRefund, recordUndertaking, saveRound, setDocument } from "@/lib/college-admissions";
+import { admitStudent, approveSupernumerary, cancelAdmission, createApplication, importAllotments, offerSeat, recordAdmissionFee, recordRefund, recordUndertaking, saveRound, setDocument } from "@/lib/college-admissions";
 import { billMess, createCollegeStructure, decideConcession, grantCollegeConcession, raiseDemands, raiseRouteFees, saveOfficeSettings } from "@/lib/college-fees";
 import { addClaimDocument, createClaim, updateClaim } from "@/lib/scholarships";
 import { clearLine } from "@/lib/no-dues";
@@ -76,6 +77,8 @@ async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Don
     done = await work(ctx);
   } catch (error) {
     if (error instanceof AccessError) redirect(withMessage(back, "error", t(error.key, error.vars)));
+    // A rule's refusal (a seat past the limits, LIFECYCLE-4) is a sentence for the desk, not a crash.
+    if (error instanceof RuleRefusal) redirect(withMessage(back, "error", t(error.key, error.vars)));
     if (error instanceof FormError) redirect(withMessage(back, "error", t("common.checkTheForm")));
     throw error;
   }
@@ -128,7 +131,7 @@ export async function documentAction(formData: FormData): Promise<void> {
         throw error;
       }
     }
-    await setDocument(ctx, str(formData, "applicationId"), { doc: str(formData, "doc") as never, ...(fileId ? { fileId } : {}), ...(status ? { status: status as "PENDING" | "VERIFIED" | "REJECTED" } : {}), ...(str(formData, "note") ? { note: str(formData, "note") } : {}) });
+    await setDocument(ctx, str(formData, "applicationId"), { doc: str(formData, "doc") as never, ...(status ? { status: status as "PENDING" | "VERIFIED" | "REJECTED" } : {}), ...(str(formData, "note") ? { note: str(formData, "note") } : {}) }, { fileId: fileId ?? null });
     return "collegeOffice.documentSaved";
   });
 }
@@ -158,6 +161,13 @@ export async function admitAction(formData: FormData): Promise<void> {
   await run(formData, async (ctx) => {
     const r = await admitStudent(ctx, str(formData, "applicationId"), { ...(str(formData, "prn") ? { prn: str(formData, "prn") } : {}), ...(str(formData, "apaarId") ? { apaarId: str(formData, "apaarId") } : {}), ...(str(formData, "abcId") ? { abcId: str(formData, "abcId") } : {}) });
     return { key: "collegeOffice.admitted", vars: { code: r.studentCode } };
+  });
+}
+
+export async function supernumeraryAction(formData: FormData): Promise<void> {
+  await run(formData, async (ctx) => {
+    await approveSupernumerary(ctx, str(formData, "applicationId"), { reason: str(formData, "reason") });
+    return "collegeOffice.supernumeraryDone";
   });
 }
 

@@ -11,6 +11,7 @@ import { academicsStructure } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "./shared";
 import { saveDepartmentAction, saveSettingsAction, setFacultyDepartmentAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.title") };
@@ -49,7 +50,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
           {s.departments.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.departmentsNone")} description={t("academics.departmentsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -65,11 +66,11 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                 <tbody className="divide-y divide-border">
                   {s.departments.map((d) => (
                     <tr key={d.id}>
-                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldCode")} className={`${INPUT} w-24`} name="code" defaultValue={d.code} required /> : d.code}</td>
-                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldName")} className={INPUT} name="name" defaultValue={d.name} required /> : d.name}</td>
+                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldCode")} className={`${INPUT} min-w-24`} name="code" defaultValue={d.code} required /> : d.code}</td>
+                      <td className={TD}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldName")} className={`${INPUT} min-w-44`} name="name" defaultValue={d.name} required /> : d.name}</td>
                       <td className={TD}>
                         {canEdit ? (
-                          <select form={`dept-${d.id}`} aria-label={t("academics.fieldHod")} className={INPUT} name="hodMembershipId" defaultValue={d.hodMembershipId ?? ""}>
+                          <select form={`dept-${d.id}`} aria-label={t("academics.fieldHod")} className={`${INPUT} min-w-44`} name="hodMembershipId" defaultValue={d.hodMembershipId ?? ""}>
                             <option value="">{t("academics.none")}</option>
                             {s.faculty.map((f) => (
                               <option key={f.membershipId} value={f.membershipId}>{f.name}</option>
@@ -77,7 +78,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                           </select>
                         ) : (d.hodName ?? "—")}
                       </td>
-                      <td className={NUM}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldFloor")} className={`${INPUT} w-20 text-right`} name="condoneFloorPercent" type="number" min={0} max={100} defaultValue={d.condoneFloorPercent} /> : `${d.condoneFloorPercent}%`}</td>
+                      <td className={NUM}>{canEdit ? <input form={`dept-${d.id}`} aria-label={t("academics.fieldFloor")} className={`${INPUT} min-w-20 text-right`} name="condoneFloorPercent" type="number" min={0} max={100} defaultValue={d.condoneFloorPercent} /> : `${d.condoneFloorPercent}%`}</td>
                       <td className={NUM}>{d.faculty}</td>
                       <td className={NUM}>{d.students}</td>
                       {canEdit ? (
@@ -92,7 +93,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {canEdit ? (
             <form action={saveDepartmentAction} className="grid gap-3 sm:grid-cols-4">

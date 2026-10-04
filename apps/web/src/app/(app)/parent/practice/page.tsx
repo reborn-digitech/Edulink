@@ -93,7 +93,7 @@ export default async function ParentPracticePage({
                   icon={<BrainIcon weight="duotone" className="size-5" />}
                   title={subjectName(subjectKey)}
                 />
-                <CardBody className="overflow-x-auto p-0">
+                <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">

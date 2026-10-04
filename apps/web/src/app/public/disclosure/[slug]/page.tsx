@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/brand";
 import { publishedDisclosure } from "@/lib/iqac-filings";
 import { getT } from "@/lib/i18n/server";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +57,7 @@ export default async function DisclosurePage({ params }: { params: Promise<{ slu
                   </dl>
                 ) : null}
                 {s.table ? (
-                  <div className="overflow-x-auto">
+                  <TableScroll>
                     <table className="w-full text-left text-sm">
                       <thead className="text-fg-muted">
                         <tr>
@@ -79,7 +80,7 @@ export default async function DisclosurePage({ params }: { params: Promise<{ slu
                         ))}
                       </tbody>
                     </table>
-                  </div>
+                  </TableScroll>
                 ) : null}
                 {s.paragraphs?.map((p, j) => (
                   <p key={j} className="text-sm">

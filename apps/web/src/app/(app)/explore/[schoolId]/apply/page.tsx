@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { ApplyForm } from "./apply-form";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -34,6 +34,7 @@ export default async function ApplyPage({
   const ctx = await requireUser();
   if (ctx.role !== "PARENT") redirect("/switch");
   const t = await getT();
+  const locale = await getLocale();
   const { schoolId } = await params;
   const school = await readSchoolProfile(ctx, schoolId);
   if (!school) notFound();
@@ -79,7 +80,7 @@ export default async function ApplyPage({
               {open.closesAt && (
                 <li>
                   {t("admissions.closesOn", {
-                    date: formatDateKey(open.closesAt),
+                    date: formatDateKey(open.closesAt, undefined, locale),
                   })}
                 </li>
               )}

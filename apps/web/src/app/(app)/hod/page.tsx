@@ -16,7 +16,10 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { hodHome } from "@/lib/academics-homes";
 import { academicsStructure, lectureSubstitutions } from "@/lib/academics";
-import { getT } from "@/lib/i18n/server";
+import { getLocale, getT } from "@/lib/i18n/server";
+import { formatDateKey } from "@/lib/dates";
+import { componentsStateText, mentoringSummaryText, weeksTaughtText } from "@/lib/count-copy";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,6 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HodHomePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("HOD");
   const t = await getT();
+  const locale = await getLocale();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const params = await searchParams;
@@ -47,8 +51,13 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />
         <StatTile label={t("academics.statBehind")} value={home.offerings.filter((o) => o.behind).length} tone={home.offerings.some((o) => o.behind) ? "warn" : "ok"} />
-        <StatTile label={t("academics.statDefaulters")} value={<Link className={LINK} href="/hod/defaulters">{home.defaulters}</Link>} tone={home.defaulters ? "warn" : "ok"} />
-        <StatTile label={t("academics.statCondonations")} value={<Link className={LINK} href="/hod/condonations">{home.condonationsWaiting}</Link>} tone={home.condonationsWaiting ? "warn" : "neutral"} />
+        {/* The whole tile is the link: a bare number was a 15×28 px target (the walk of 4 October). */}
+        <Link href="/hod/defaulters" className="block rounded-[--radius-lg] hover:shadow-md">
+          <StatTile className="h-full" label={t("academics.statDefaulters")} value={home.defaulters} tone={home.defaulters ? "warn" : "ok"} />
+        </Link>
+        <Link href="/hod/condonations" className="block rounded-[--radius-lg] hover:shadow-md">
+          <StatTile className="h-full" label={t("academics.statCondonations")} value={home.condonationsWaiting} tone={home.condonationsWaiting ? "warn" : "neutral"} />
+        </Link>
       </div>
       <Card>
         <CardHeader icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />} title={t("academics.deptOfferingsTitle")} description={t("academics.deptOfferingsBody")} />
@@ -56,7 +65,7 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
           {home.offerings.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.offeringsNone")} description={t("academics.offeringsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -75,15 +84,15 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
                       </td>
                       <td className={TD}>{o.facultyName ?? <Badge tone="warn">{t("academics.unstaffed")}</Badge>}</td>
                       <td className={TD}>
-                        {t("academics.weeksTaught", { taught: o.taught, planned: o.planned })} {o.behind ? <Badge tone="danger">{t("academics.behind")}</Badge> : null}
+                        {weeksTaughtText(t, o.taught, o.planned)} {o.behind ? <Badge tone="danger">{t("academics.behind")}</Badge> : null}
                       </td>
-                      <td className={TD}>{o.locked ? <Badge tone="ok">{t("academics.lockedBadge")}</Badge> : t("academics.componentsState", { components: o.components, moderated: o.moderated, released: o.released })}</td>
+                      <td className={TD}>{o.locked ? <Badge tone="ok">{t("academics.lockedBadge")}</Badge> : componentsStateText(t, o)}</td>
                       <td className={NUM}>{o.defaulters}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {home.term ? <OfferingForm t={t} s={s} termId={home.term.id} back="/hod" departmentId={home.department.id} /> : null}
         </CardBody>
@@ -110,7 +119,7 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
         </CardBody>
       </Card>
       <Card>
-        <CardHeader icon={<ArrowsClockwiseIcon weight="duotone" className="size-5" />} title={t("academics.boardTitle", { date: board.dateKey })} description={t("academics.boardBody")} />
+        <CardHeader icon={<ArrowsClockwiseIcon weight="duotone" className="size-5" />} title={t("academics.boardTitle", { date: formatDateKey(board.dateKey, { weekday: "long", day: "numeric", month: "long" }, locale) })} description={t("academics.boardBody")} />
         <CardBody>
           <SubstitutionBoard t={t} board={board} canAssign back="/hod" />
         </CardBody>
@@ -133,7 +142,7 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
                 <p className="text-fg-muted">{t("collegeHub.openBacklogs", { count: home.results.openBacklogs })}</p>
               </>
             ) : null}
-            <p className="text-fg-muted">{t("academics.mentoringSummary", { groups: home.mentoringGroups, mentees: home.mentees })}</p>
+            <p className="text-fg-muted">{mentoringSummaryText(t, home.mentoringGroups, home.mentees)}</p>
           </CardBody>
         </Card>
         <Card>

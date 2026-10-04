@@ -25,6 +25,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("collegeHub.title") };
@@ -138,7 +139,7 @@ export default async function PrincipalCollegePage() {
             {g.lectures.every((d) => d.lectures === 0) ? (
               <p className="text-sm text-fg-muted">{t("collegeHub.lecturesNone")}</p>
             ) : (
-              <div className="overflow-x-auto">
+              <TableScroll>
                 <table className="w-full text-sm">
                   <thead>
                     <tr>
@@ -157,7 +158,7 @@ export default async function PrincipalCollegePage() {
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </TableScroll>
             )}
           </CardBody>
         </Card>
@@ -182,7 +183,7 @@ export default async function PrincipalCollegePage() {
         <CardHeader icon={<ChartLineUpIcon weight="duotone" className="size-5" />} title={t("collegeHub.resultsTitle")} description={c.results.termName ? t("collegeHub.resultsBody", { term: c.results.termName }) : t("collegeHub.resultsNone")} action={c.modules.includes("EXAMS") ? <Button asChild size="sm" variant="secondary"><Link href="/exam-cell/analytics">{t("collegeHub.openAnalytics")}</Link></Button> : undefined} />
         <CardBody className="space-y-4">
           {c.results.byDepartment.length > 0 ? (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr>
@@ -203,7 +204,7 @@ export default async function PrincipalCollegePage() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           ) : null}
           {c.results.analytics?.firstYear.appeared ? (
             <p className="text-sm text-fg-muted">{t("collegeHub.firstYear", { appeared: c.results.analytics.firstYear.appeared, api: c.results.analytics.firstYear.api ?? "—", success: c.results.analytics.firstYear.successRatePercent ?? "—" })}</p>
@@ -300,7 +301,7 @@ export default async function PrincipalCollegePage() {
           {c.money.finance.length === 0 ? (
             <EmptyState title={t("collegeHub.financeNone")} description={t("collegeHub.moneyBody")} action={<Button asChild size="sm" variant="secondary"><Link href="/accounts">{t("collegeHub.openAccounts")}</Link></Button>} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr>
@@ -325,7 +326,7 @@ export default async function PrincipalCollegePage() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {c.money.payrollByDepartment && c.money.payrollByDepartment.length > 0 ? (
             <p className="text-sm text-fg-muted">{t("collegeHub.payrollLine", { month: c.money.latestPayrollMonth ?? "—", list: c.money.payrollByDepartment.map((d) => `${d.department || "—"} ${money(d.grossPaise + d.employerPaise)}`).join(" · ") })}</p>

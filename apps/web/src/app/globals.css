@@ -726,6 +726,16 @@
     outline: 4px solid currentColor;
     outline-offset: 3px;
   }
+  /* A field that drops the outline (`outline-none` and only a border colour
+     on focus — thirty-odd hand-written inputs, the exam cell's among them)
+     still shows where the caret is: a ring, which any field's own
+     `focus:ring-*` replaces. Zero specificity, so every utility wins. And a
+     time or date box takes focus inside its own parts, where :focus-visible
+     never matched the box itself (the walk of 4 October, B-27). */
+  :where(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), select, textarea):focus-visible,
+  :where(input[type="time"], input[type="date"], input[type="datetime-local"], input[type="month"]):focus {
+    box-shadow: 0 0 0 3px var(--accent-ring);
+  }
 
   ::selection {
     background: var(--accent);

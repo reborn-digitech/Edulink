@@ -17,11 +17,13 @@ import { isModuleOn } from "@/lib/modules";
 import { courseFile } from "@/lib/academics-coursefile";
 import { internalSheet } from "@/lib/academics-assessment";
 import { attendanceReport } from "@/lib/academics-attendance";
-import { formatInZone } from "@/lib/dates";
+import { formatInZone, isoToDisplayDate } from "@/lib/dates";
 import { db } from "@/lib/db";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { coverageLineText } from "@/lib/count-copy";
 import type { ActiveContext } from "@/lib/session";
 import { addItemAction, lockAction, moderateAction, releaseAction, reviewAction, saveComponentAction, saveMarksAction, savePlanAction } from "../../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.offeringTitle") };
@@ -71,7 +73,7 @@ function FileTab({ t, file }: { t: T; file: Awaited<ReturnType<typeof courseFile
   return (
     <>
       <Card>
-        <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("academics.planTitle")} description={t("academics.coverageLine", { taught: file.taught, planned: file.plan.length, expected: file.expected, elapsed: file.termElapsedPercent })} />
+        <CardHeader icon={<FileTextIcon weight="duotone" className="size-5" />} title={t("academics.planTitle")} description={coverageLineText(t, { taught: file.taught, planned: file.plan.length, expected: file.expected, elapsed: file.termElapsedPercent })} />
         <CardBody className="space-y-4">
           {file.behind ? <Badge tone="danger">{t("academics.behindBody")}</Badge> : null}
           {file.outcomes.length ? <ul className="list-inside list-disc text-sm text-fg-muted">{file.outcomes.map((o) => <li key={o.code}>{`${o.code} — ${o.text}`}</li>)}</ul> : null}
@@ -79,7 +81,7 @@ function FileTab({ t, file }: { t: T; file: Awaited<ReturnType<typeof courseFile
             <ol className="space-y-1 text-sm">
               {file.plan.map((w) => (
                 <li key={w.week}>
-                  <span className="tabular-nums text-fg-muted">{t("academics.weekN", { n: w.week })}</span> {w.topic} <span className="text-fg-muted">{w.coCodes.join(", ")}</span> {w.taughtOn ? <Badge tone="ok">{t("academics.taughtOn", { date: w.taughtOn })}</Badge> : null}
+                  <span className="tabular-nums text-fg-muted">{t("academics.weekN", { n: w.week })}</span> {w.topic} <span className="text-fg-muted">{w.coCodes.join(", ")}</span> {w.taughtOn ? <Badge tone="ok">{t("academics.taughtOn", { date: isoToDisplayDate(w.taughtOn) })}</Badge> : null}
                 </li>
               ))}
             </ol>
@@ -134,7 +136,7 @@ function FileTab({ t, file }: { t: T; file: Awaited<ReturnType<typeof courseFile
           {file.attainment.cos.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.attainmentNone")} description={t("academics.attainmentNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -157,7 +159,7 @@ function FileTab({ t, file }: { t: T; file: Awaited<ReturnType<typeof courseFile
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {file.attainment.pos.length ? <p className="text-sm text-fg-muted">{file.attainment.pos.map((p) => `${p.code} ${p.attainment ?? "—"}`).join(" · ")}</p> : null}
           <p className="text-sm text-fg-muted">{t("collegeHub.indirectFromSurvey")}</p>
@@ -236,7 +238,7 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
           </form>
         ) : null}
         {sheet.students.length && sheet.components.length ? (
-          <div className="overflow-x-auto">
+          <TableScroll>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
@@ -260,7 +262,7 @@ async function MarksTab({ t, offeringId, ctx }: { t: T; offeringId: string; ctx:
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
         ) : null}
         {sheet.canEnter && sheet.components.some((k) => !k.released) && sheet.students.length ? (
           <form action={saveMarksAction} className="space-y-3">

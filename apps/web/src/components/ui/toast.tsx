@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
   type ReactNode,
+  type Context,
 } from "react";
 import { cn } from "@/lib/cn";
 import { useT } from "@/lib/i18n";
@@ -42,7 +43,10 @@ type ToastContextValue = {
   dismiss: (id: string) => void;
 };
 
-const ToastContext = createContext<ToastContextValue | null>(null);
+// On globalThis for the reason lib/i18n/provider.tsx gives: a dev recompile must not leave the provider and a reader on two contexts.
+const TOAST_KEY = Symbol.for("edulink.toast.context");
+const ToastContext: Context<ToastContextValue | null> = ((globalThis as Record<symbol, unknown>)[TOAST_KEY] as Context<ToastContextValue | null> | undefined) ??
+  ((globalThis as Record<symbol, unknown>)[TOAST_KEY] = createContext<ToastContextValue | null>(null)) as Context<ToastContextValue | null>;
 
 export function useToast(): ToastContextValue {
   const ctx = useContext(ToastContext);

@@ -22,6 +22,7 @@ import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import type { IntakeOutcome } from "@/lib/intake";
 import { FIRST_SIGNIN_TTL_DAYS } from "@/lib/first-signin-constants";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 const EXAMPLE =
   "name,date of birth,class,guardian email,guardian name,relation,student code\n" +
@@ -171,7 +172,7 @@ export function IntakeForm({
         </div>
 
         {admitted.length > 0 && (
-          <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface" tabIndex={0}>
+          <TableScroll className="rounded-[--radius-lg] border border-border bg-surface">
             <table className="w-full text-sm" data-testid="intake-admitted">
               <thead className="bg-surface-muted text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>
@@ -215,7 +216,7 @@ export function IntakeForm({
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
         )}
 
         {(others.length > 0 || state.problems.length > 0) && (

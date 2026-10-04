@@ -8,6 +8,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { TextField } from "@/components/ui/field";
 import { PageHeader } from "@/components/ui/page-header";
+import { TableScroll } from "@/components/ui/table-scroll";
 import { ModuleOff } from "@/components/module-off";
 import { ModuleFlash, LINK, NUM, TD, TH } from "@/components/module-flash";
 import { requireUser } from "@/lib/tenancy";
@@ -61,6 +62,7 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
           {mine.slips.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("payroll.mySlipsNone")} description={t("payroll.mySlipsNoneBody")} />
           ) : (
+            <TableScroll>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">
@@ -88,6 +90,7 @@ export default async function MyPayslipsPage({ searchParams }: { searchParams: P
                 ))}
               </tbody>
             </table>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

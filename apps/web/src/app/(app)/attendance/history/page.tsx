@@ -23,6 +23,7 @@ import { getT, getLocale } from "@/lib/i18n/server";
 import { cn } from "@/lib/cn";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -194,7 +195,7 @@ export default async function AttendanceHistoryPage({
         />
         {history.days.length > 0 && (
           <CardBody className="p-0">
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full min-w-max border-collapse text-sm">
                 <thead>
                   <tr className="border-b border-border text-xs text-fg-muted">
@@ -261,7 +262,7 @@ export default async function AttendanceHistoryPage({
                   </tr>
                 </tfoot>
               </table>
-            </div>
+            </TableScroll>
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border px-4 py-3">
               <p className="text-xs text-fg-muted">{t("attendanceHistory.legend")}</p>
               {ctx.role === "ADMIN" && (

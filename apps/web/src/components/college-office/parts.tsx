@@ -6,6 +6,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { formatDateKey } from "@/lib/dates";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The college office's shared pieces (4 Oct 2026): money and days as the
@@ -48,7 +49,7 @@ export function NotCollege({ t }: { t: Translate }) {
 /** A plain, scrollable table; the header row is the column names. */
 export function Table({ head, children, testId }: { head: string[]; children: ReactNode; testId?: string }) {
   return (
-    <div className="overflow-x-auto" data-testid={testId}>
+    <TableScroll data-testid={testId}>
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-border text-xs uppercase tracking-wide text-fg-muted">
@@ -61,7 +62,7 @@ export function Table({ head, children, testId }: { head: string[]; children: Re
         </thead>
         <tbody className="divide-y divide-border">{children}</tbody>
       </table>
-    </div>
+    </TableScroll>
   );
 }
 

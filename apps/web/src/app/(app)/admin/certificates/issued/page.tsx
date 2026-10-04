@@ -12,6 +12,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
 import { getT } from "@/lib/i18n/server";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("certificates.issuedTitle") };
@@ -57,7 +58,7 @@ export default async function IssuedCertificatesPage({ searchParams }: { searchP
           {items.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-6" icon={<ListChecksIcon weight="duotone" className="size-6" />} title={t("certificates.noIssued")} description={t("certificates.noIssuedBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[40rem] text-sm" data-testid="issued-certificates">
                 <thead>
                   <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -98,7 +99,7 @@ export default async function IssuedCertificatesPage({ searchParams }: { searchP
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

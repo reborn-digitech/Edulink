@@ -9,7 +9,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ cert
   try {
     const session = await getSession();
     if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
-    const ctx = session.role === "PARENT" || session.role === "STUDENT" ? session : await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
+    // A former pupil reads the papers of their own stay as an alumnus (G-6); mayRead in certificates.ts holds them to those.
+    const ctx = session.role === "PARENT" || session.role === "STUDENT" || session.role === "ALUMNUS" ? session : await requireApiRole("TEACHER", "ADMIN", "PRINCIPAL");
     const { certificateId } = await params;
     const refused = await budget(`pdf:${session.user.id}`, PDF_BUDGET.limit, PDF_BUDGET.windowMs);
     if (refused) return refused;

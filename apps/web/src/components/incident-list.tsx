@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { TabBar } from "@/components/ui/tabs";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 const STATUSES = ["OPEN", "CLOSED", "ALL"] as const;
 type Status = (typeof STATUSES)[number];
@@ -94,7 +95,7 @@ export async function IncidentLog({ ctx, basePath, params, teacher }: { ctx: Act
           description={teacher ? t("incidents.noneTeacherBody") : t("incidents.noneBody")}
         />
       ) : (
-        <div className="overflow-x-auto rounded-[--radius-lg] border border-border bg-surface shadow-sm" tabIndex={0}>
+        <TableScroll className="rounded-[--radius-lg] border border-border bg-surface shadow-sm">
           <table className="w-full text-sm" data-testid="incident-log">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>
@@ -150,7 +151,7 @@ export async function IncidentLog({ ctx, basePath, params, teacher }: { ctx: Act
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       )}
 
       {pages > 1 && (

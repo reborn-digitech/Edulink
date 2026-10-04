@@ -63,14 +63,15 @@ export function OpenRoundForm({
       <h2 className="text-sm font-semibold text-fg">{t("reviews.openRound")}</h2>
 
       <fieldset className="mt-3">
-        <legend className="flex w-full items-baseline justify-between text-xs font-medium text-fg">
+        <legend className="flex w-full items-center justify-between text-xs font-medium text-fg">
           {t("reviews.chooseTeachers")}
           <button
             type="button"
             onClick={() =>
               setChosen(allChosen ? new Set() : new Set(teachers.map((x) => x.membershipId)))
             }
-            className="text-xs font-semibold text-accent hover:underline"
+            // min-h-11/min-w-11: a 44 px target in every language; Marathi's "सर्व" was 17×16 (the walk of 4 October).
+            className="inline-flex min-h-11 min-w-11 items-center justify-end text-xs font-semibold text-accent hover:underline"
           >
             {t("reviews.allTeachers")}
           </button>

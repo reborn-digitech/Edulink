@@ -4,6 +4,7 @@ import { exportResponse } from "@/lib/export-file";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { accountsReport } from "@/lib/accounts";
 import { reconciliationSheet } from "@/lib/scholarships";
+import { budget, EXPORT_BUDGET } from "@/lib/api-v1";
 
 const REPORTS = ["collection", "defaulters", "receivable", "income-expense", "finance-table"] as const;
 
@@ -16,6 +17,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ repo
   const t = await getT();
   try {
     const ctx = await requireApiUser();
+    const refused = await budget(`export:${ctx.user.id}`, EXPORT_BUDGET.limit, EXPORT_BUDGET.windowMs);
+    if (refused) return refused;
     const { report } = await params;
     if (report === "reconciliation") {
       const url = new URL(request.url);

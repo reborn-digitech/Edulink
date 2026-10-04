@@ -8,7 +8,7 @@ import { formatDateKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { saveMarksAction } from "./actions";
 import { MarksForm } from "./marks-form";
@@ -33,6 +33,7 @@ export default async function TeacherExamsPage({
 }) {
   const ctx = await requireRole("TEACHER", "ADMIN");
   const t = await getT();
+  const locale = await getLocale();
   const { classId: requestedClass, slotId: requestedSlot, error, saved } = await searchParams;
 
   const classes = await examClassesFor(ctx);
@@ -133,7 +134,7 @@ export default async function TeacherExamsPage({
                 selectedSlot?.id === slot.id ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted"
               }`}
             >
-              {slot.seriesName} · {slot.subject} · {formatDateKey(slot.dateKey)}
+              {slot.seriesName} · {slot.subject} · {formatDateKey(slot.dateKey, undefined, locale)}
             </Link>
           ))}
         </nav>

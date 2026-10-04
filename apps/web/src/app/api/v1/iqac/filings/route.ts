@@ -1,7 +1,7 @@
 import { collegeFilingGenerateSchema, collegeFilingsSchema } from "@edulink/contracts";
 import { requireApiRoles } from "@/lib/api-roles";
 import { generateFiling, listFilings } from "@/lib/iqac-filings";
-import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, budget, HEAVY_READ_BUDGET, ok, readJson } from "@/lib/api-v1";
 import { moduleFailure } from "@/lib/rule-refusal";
 
 /** GET /api/v1/iqac/filings — The filings generated, each with its fingerprint, status and figures. */
@@ -18,6 +18,8 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRoles("IQAC", "ADMIN");
+    const refused = await budget(`heavy:${ctx.user.id}`, HEAVY_READ_BUDGET.limit, HEAVY_READ_BUDGET.windowMs);
+    if (refused) return refused;
     const parsed = collegeFilingGenerateSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const b = parsed.data;

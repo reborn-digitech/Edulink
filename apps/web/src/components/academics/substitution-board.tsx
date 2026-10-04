@@ -7,10 +7,11 @@ import { INPUT } from "@/components/module-flash";
 import { setSubstituteAction } from "@/app/(app)/admin/academics/actions";
 import { clock } from "./parts";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { isoToDisplayDate } from "@/lib/dates";
 
 /** The day's lectures whose faculty member is away, and who stands in: the office for any, an HOD for their department's. */
 export function SubstitutionBoard({ t, board, canAssign, back }: { t: Translate; board: z.infer<typeof lectureSubstitutionsSchema>; canAssign: boolean; back: string }) {
-  if (board.lectures.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.boardEmpty")} description={t("academics.boardEmptyBody", { date: board.dateKey })} />;
+  if (board.lectures.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.boardEmpty")} description={t("academics.boardEmptyBody", { date: isoToDisplayDate(board.dateKey) })} />;
   return (
     <ul className="divide-y divide-border text-sm">
       {board.lectures.map((l) => (

@@ -119,7 +119,7 @@ export function TermResultCard({ result, t, title, actions }: { result: TermResu
   return (
     <Card>
       <CardHeader title={title} description={[[t("examCell.sgpaLabel"), result.sgpa?.toFixed(2) ?? "—"].join(" "), t("examCell.creditsOf", { earned: result.creditsEarned, of: result.creditsAttempted }), t(TERM_STATUS_KEY[result.status]!), result.cls ? t(CLASS_KEY[result.cls]!) : null].filter(Boolean).join(" · ")} />
-      <CardBody className="overflow-x-auto p-0">
+      <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
         <table className="w-full text-sm">
           <thead className="bg-surface-muted text-left text-xs text-fg-muted">
             <tr>

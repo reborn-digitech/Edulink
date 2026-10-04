@@ -10,6 +10,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { audienceLabel, BROADCAST_STATUS_KEY, CHANNEL_KEY, SKIP_KEY, STATUS_KEY, STATUS_TONE, word } from "../labels";
 import { ResendButton } from "./resend-button";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,7 +69,7 @@ export default async function BroadcastPage({ params }: { params: Promise<{ broa
           {messages.length === 0 ? (
             <p className="py-4 text-center text-sm text-fg-muted">{t("messaging.detailEmpty")}</p>
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                   <tr>
@@ -95,7 +96,7 @@ export default async function BroadcastPage({ params }: { params: Promise<{ broa
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

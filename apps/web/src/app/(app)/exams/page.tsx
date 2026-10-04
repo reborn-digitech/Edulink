@@ -13,7 +13,7 @@ import { formatDateKey, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { TabBar } from "@/components/ui/tabs";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -42,6 +42,7 @@ export default async function ExamsPage({
 }) {
   const session = await requireUser();
   const t = await getT();
+  const locale = await getLocale();
   const { tab: rawTab, kind: rawKind } = await searchParams;
   // The Indian-year toggle: a term is two unit tests and a mid-term or a
   // final, and a parent asking "how did the half-yearly go" should not have
@@ -209,7 +210,7 @@ export default async function ExamsPage({
                     .filter(Boolean)
                     .join(" · ")}
                 />
-                <CardBody className="overflow-x-auto p-0" tabIndex={0}>
+                <CardBody className="relative overflow-x-auto p-0" tabIndex={0}>
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -222,7 +223,7 @@ export default async function ExamsPage({
                     <tbody>
                       {sheet.slots.map((slot) => (
                         <tr key={slot.id} className="border-b border-border last:border-b-0">
-                          <td className="px-4 py-2.5 text-fg">{formatDateKey(slot.dateKey)}</td>
+                          <td className="px-4 py-2.5 text-fg">{formatDateKey(slot.dateKey, undefined, locale)}</td>
                           <td className="px-4 py-2.5 font-medium text-fg">{slot.subject}</td>
                           <td className="px-4 py-2.5 text-fg-muted">
                             {slot.startMinute !== null
@@ -278,7 +279,7 @@ export default async function ExamsPage({
                               <span className="block truncate text-sm font-medium text-fg">{card.title}</span>
                               {card.publishedAt && (
                                 <span className="block text-xs text-fg-muted">
-                                  {formatDateKey(card.publishedAt.toISOString().slice(0, 10))}
+                                  {formatDateKey(card.publishedAt.toISOString().slice(0, 10), undefined, locale)}
                                 </span>
                               )}
                             </span>

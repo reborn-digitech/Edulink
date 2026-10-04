@@ -10,6 +10,7 @@ import { inventorySummary } from "@/lib/inventory";
 import { formatInZone } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "./shared";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.title") };
@@ -43,7 +44,7 @@ export default async function InventoryOverview({ searchParams }: { searchParams
               {s.lowStock.map((i) => (
                 <li key={i.id} className="flex items-center justify-between gap-3 py-2 text-sm">
                   <span className="font-medium text-fg">{i.name} <span className="text-fg-muted">· {i.code}</span></span>
-                  <span className="tabular-nums text-warn">{t("inventory.onHandOf", { onHand: i.onHand, unit: i.unit, level: i.reorderLevel })}</span>
+                  <span className="tabular-nums text-warn">{t("inventory.stockLine", { onHand: i.onHand, unit: i.unit, level: i.reorderLevel })}</span>
                 </li>
               ))}
             </ul>
@@ -74,7 +75,7 @@ export default async function InventoryOverview({ searchParams }: { searchParams
           {s.recentMovements.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("inventory.movementsNone")} description={t("inventory.movementsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[36rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -97,7 +98,7 @@ export default async function InventoryOverview({ searchParams }: { searchParams
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

@@ -128,7 +128,7 @@ export default async function ParentTimetablePage({
       ) : (
         <Card>
           <CardHeader
-            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday)}`}
+            title={isThisWeek ? t("parent.thisWeek") : `${t("parent.week")} ${formatDateKey(monday, undefined, locale)}`}
             description={t("parent.coverNote")}
           />
           <CardBody>

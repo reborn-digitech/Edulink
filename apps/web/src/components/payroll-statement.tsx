@@ -6,6 +6,7 @@ import { EmptyState } from "@/components/ui/states";
 import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { CODE_LABEL_KEY } from "@/lib/payroll-rules";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * A yearly earnings statement (April to March) from the locked runs: month
@@ -38,7 +39,7 @@ export function PayrollStatementView({ s, t, locale, yearHref }: { s: PayrollSta
           <EmptyState className="border-0 bg-transparent py-4" title={t("payroll.statementNone")} description={t("payroll.statementNoneBody")} />
         ) : (
           <>
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[32rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -65,7 +66,7 @@ export function PayrollStatementView({ s, t, locale, yearHref }: { s: PayrollSta
                   </tr>
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border">

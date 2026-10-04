@@ -8,6 +8,7 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export const dynamic = "force-dynamic";
 
@@ -72,7 +73,7 @@ export default async function MetricsPage() {
               {m.requests.length === 0 ? (
                 <p className="text-sm text-fg-muted">{t("root.metricsNothingYet")}</p>
               ) : (
-                <div className="overflow-x-auto">
+                <TableScroll>
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -103,7 +104,7 @@ export default async function MetricsPage() {
                       ))}
                     </tbody>
                   </table>
-                </div>
+                </TableScroll>
               )}
             </CardBody>
           </Card>

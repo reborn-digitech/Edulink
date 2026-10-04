@@ -12,6 +12,7 @@ import { inventorySetup, listItems } from "@/lib/inventory";
 import { getT } from "@/lib/i18n/server";
 import { inventoryGate, InventoryTop } from "../shared";
 import { saveItemAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("inventory.tabItems") };
@@ -32,7 +33,7 @@ export default async function InventoryItems({ searchParams }: { searchParams: P
           {items.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("inventory.itemsNone")} description={t("inventory.itemsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[40rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -62,7 +63,7 @@ export default async function InventoryItems({ searchParams }: { searchParams: P
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

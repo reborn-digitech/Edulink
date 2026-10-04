@@ -8,6 +8,7 @@ import { sessionView } from "@/lib/exam-cell";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DateTimeField } from "@/components/ui/date-time-field";
 import { CellOff, DUTY_STATUS_KEY, Hidden, Labelled, MALPRACTICE_KEY, REMUNERATION_KEY, SessionFrame, inputClass, money, when } from "@/components/exam-cell/parts";
 import { assignInvigilatorAction, buildSeatingAction, decideMalpracticeAction, dutyDoneAction, issueTicketsAction, reportMalpracticeAction, saveRemunerationAction, saveRoomAction, saveScheduleAction, swapInvigilatorAction } from "../../../actions";
 
@@ -125,9 +126,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                     ))}
                 </select>
               </Labelled>
-              <Labelled label={t("examCell.when")}>
-                <input type="datetime-local" name="at" required className={inputClass} />
-              </Labelled>
+              <DateTimeField label={t("examCell.when")} name="at" defaultTime="10:00" required className="w-full sm:w-auto sm:min-w-[20rem]" />
               <Labelled label={t("examCell.duration")}>
                 <input name="durationMin" type="number" min={30} max={360} defaultValue={180} className={inputClass} />
               </Labelled>

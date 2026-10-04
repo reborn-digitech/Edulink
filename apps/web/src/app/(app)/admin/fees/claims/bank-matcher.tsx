@@ -12,6 +12,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import type { BankMatch } from "@/lib/fees-payments";
 import { MATCH_PROBLEM_KEY } from "../labels";
 import { applyMatchesAction, matchBankAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * Paste the bank statement, see which rows match a waiting claim by UTR
@@ -88,7 +89,7 @@ export function BankMatcher() {
 
       {matches && (
         <div className="space-y-3">
-          <div className="overflow-x-auto rounded-[--radius-md] border border-border" tabIndex={0}>
+          <TableScroll className="rounded-[--radius-md] border border-border">
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                 <tr>
@@ -118,7 +119,7 @@ export function BankMatcher() {
                 ))}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
           <Button loading={pending} disabled={matchedIds.length === 0} onClick={apply}>
             {t("fees.matchConfirmAll", { count: matchedIds.length })}
           </Button>

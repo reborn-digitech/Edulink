@@ -24,7 +24,7 @@ export function sessions(): Sessions {
 export async function contextFor(
   browser: Browser,
   cookie: string,
-  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi"; live?: boolean },
+  opts: { viewport: { width: number; height: number }; theme: "light" | "dark"; locale: "en" | "hi" | "mr"; live?: boolean },
   baseURL: string,
 ): Promise<BrowserContext> {
   const url = new URL(baseURL);
@@ -32,7 +32,7 @@ export async function contextFor(
   const context = await browser.newContext({
     viewport: opts.viewport,
     colorScheme: opts.theme,
-    locale: opts.locale === "hi" ? "hi-IN" : "en-IN",
+    locale: `${opts.locale}-IN`,
     reducedMotion: "reduce",
     isMobile: opts.viewport.width < 768,
     hasTouch: opts.viewport.width < 768,

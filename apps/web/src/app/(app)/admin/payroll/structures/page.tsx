@@ -14,6 +14,7 @@ import { getT } from "@/lib/i18n/server";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { payrollGate, PayrollTop } from "../shared";
 import { saveStructureAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("payroll.tabStructures") };
@@ -28,7 +29,7 @@ function StructureForm({ t, s }: { t: Translate; s: SalaryStructureView | null }
     <form action={saveStructureAction} className="space-y-3">
       {s ? <input type="hidden" name="id" value={s.id} /> : null}
       <TextField label={t("payroll.fieldStructureName")} name="name" required maxLength={80} defaultValue={s?.name ?? ""} />
-      <div className="overflow-x-auto" tabIndex={0}>
+      <TableScroll>
         <table className="w-full min-w-[36rem] text-sm">
           <tbody className="divide-y divide-border">
             {SALARY_COMPONENT_CODES.map((code) => {
@@ -67,7 +68,7 @@ function StructureForm({ t, s }: { t: Translate; s: SalaryStructureView | null }
             })}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
       <p className="text-xs text-fg-muted">{t("payroll.structureHint")}</p>
       {s ? (
         <label className="flex items-center gap-2 text-sm">

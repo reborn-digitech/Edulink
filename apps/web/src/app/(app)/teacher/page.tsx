@@ -16,11 +16,13 @@ import { EXAM_KIND_KEY } from "@/lib/constants";
 import { teacherWeek } from "@/lib/timetable";
 import { myCovers } from "@/lib/substitutions";
 import { registersDue } from "@/lib/attendance";
+import { schoolDayOn } from "@/lib/holidays";
 import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getLocale } from "@/lib/i18n/server";
+import { periodLabel } from "@/lib/coded-defaults";
 import { PageHeader } from "@/components/ui/page-header";
 import { CoverAnswer } from "./cover-answer";
 
@@ -69,7 +71,7 @@ export default async function TeacherHome() {
                         {row.className} · {row.subject}
                       </span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {row.seriesName} · {t(EXAM_KIND_KEY[row.kind])} · {formatDateKey(row.dateKey)}
+                        {row.seriesName} · {t(EXAM_KIND_KEY[row.kind])} · {formatDateKey(row.dateKey, undefined, locale)}
                       </span>
                     </span>
                     <span className="shrink-0 text-xs font-semibold tabular-nums text-warn">
@@ -101,7 +103,7 @@ export default async function TeacherHome() {
           {covers.map((cover) => (
             <li key={cover.slotId} className="flex flex-wrap items-center gap-3 py-2.5 sm:flex-nowrap">
               <span className="w-28 shrink-0">
-                <span className="block text-sm font-medium text-fg">{cover.periodName}</span>
+                <span className="block text-sm font-medium text-fg">{cover.periodName ? periodLabel(cover.periodName, t) : null}</span>
                 <span className="block text-xs tabular-nums text-fg-muted">
                   {cover.startMinute !== null && cover.endMinute !== null ? formatTimeRange(cover.startMinute, cover.endMinute) : null}
                 </span>
@@ -137,7 +139,14 @@ export default async function TeacherHome() {
   const week = await teacherWeek(ctx, ctx.membershipId, { weekOf: dateKey, todayKey: dateKey });
   const weekday = weekdayOfKey(dateKey);
   const today = week.days.find((day) => day.weekday === weekday);
-  const closed = today?.closed ?? false;
+  // The school's own answer for today — a Sunday is not a column of the
+  // week at all, so `today?.closed` alone read a Sunday as an open day.
+  const schoolDay = await schoolDayOn(ctx.schoolId, dateKey);
+  const closed = (today?.closed ?? false) || !schoolDay.open;
+  const holidayName = schoolDay.holidayName ?? today?.closedName ?? null;
+  const noSchoolSentence = holidayName
+    ? t("common.noSchoolTodayHoliday", { name: holidayName })
+    : t("common.noSchoolToday");
   const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
   const lessons = closed
     ? []
@@ -160,7 +169,7 @@ export default async function TeacherHome() {
         title={t("teacher.yourLessons")}
         description={
           closed
-            ? t("teacher.closedToday", { name: today?.closedName ?? "" })
+            ? noSchoolSentence
             : t("teacher.lessonsInPeriodOrder")
         }
         action={
@@ -173,7 +182,7 @@ export default async function TeacherHome() {
         {lessons.length === 0 ? (
           <p className="py-4 text-center text-sm text-fg-muted">
             {closed
-              ? t("teacher.closedToday", { name: today?.closedName ?? "" })
+              ? noSchoolSentence
               : t("teacher.noLessonsToday")}
           </p>
         ) : (
@@ -183,7 +192,7 @@ export default async function TeacherHome() {
               return (
                 <li key={slot.id} className="flex items-center gap-3 py-2.5">
                   <span className="w-28 shrink-0">
-                    <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                    <span className="block text-sm font-medium text-fg">{period ? periodLabel(period.name, t) : null}</span>
                     <span className="block text-xs tabular-nums text-fg-muted">
                       {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
                     </span>
@@ -308,6 +317,9 @@ export default async function TeacherHome() {
 
   const missing = new Set(registers.missing);
   const outstanding = classes.filter((c) => missing.has(c.id));
+  // A closed day expects no register: nothing is "left", nothing is "all
+  // done", and no class is offered as one to take (B-11).
+  const registersOpen = registers.open;
 
   return (
     <div className="space-y-6">
@@ -323,10 +335,10 @@ export default async function TeacherHome() {
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <StatTile
           label={t("teacher.registersLeft")}
-          value={outstanding.length}
-          tone={outstanding.length === 0 ? "ok" : "warn"}
+          value={registersOpen ? outstanding.length : "—"}
+          tone={!registersOpen ? "neutral" : outstanding.length === 0 ? "ok" : "warn"}
           icon={<ChecksIcon weight="duotone" className="size-5" />}
-          hint={outstanding.length === 0 ? t("teacher.allDoneNice") : t("teacher.tapBelowTakeOne")}
+          hint={!registersOpen ? noSchoolSentence : outstanding.length === 0 ? t("teacher.allDoneNice") : t("teacher.tapBelowTakeOne")}
         />
         <StatTile
           label={t("teacher.classes")}
@@ -352,7 +364,9 @@ export default async function TeacherHome() {
           icon={<ChecksIcon weight="duotone" className="size-5" />}
           title={t("teacher.registers")}
           description={
-            outstanding.length === 0
+            !registersOpen
+              ? noSchoolSentence
+              : outstanding.length === 0
               ? t("teacher.everyRegisterTaken")
               : outstanding.length === 1
                 ? t("teacher.stillToTakeOne")
@@ -382,15 +396,17 @@ export default async function TeacherHome() {
                         {klass._count.enrollments === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: klass._count.enrollments })}
                       </span>
                     </span>
-                    <span
-                      className={
-                        taken
-                          ? "shrink-0 rounded-full bg-ok-soft px-2.5 py-1 text-xs font-semibold text-ok"
-                          : "shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn"
-                      }
-                    >
-                      {taken ? t("teacher.done") : t("teacher.takeIt")}
-                    </span>
+                    {(taken || registersOpen) && (
+                      <span
+                        className={
+                          taken
+                            ? "shrink-0 rounded-full bg-ok-soft px-2.5 py-1 text-xs font-semibold text-ok"
+                            : "shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn"
+                        }
+                      >
+                        {taken ? t("teacher.done") : t("teacher.takeIt")}
+                      </span>
+                    )}
                     <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
                   </Link>
                 </li>

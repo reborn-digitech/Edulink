@@ -15,6 +15,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { DayPicker } from "./day-picker";
 import { RegisterForm, SettingsForm } from "./register-form";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -151,7 +152,7 @@ export default async function StaffAttendancePage({ searchParams }: { searchPara
           {month.rows.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-6" title={t("staffAttendance.nobody")} description={t("staffAttendance.nobodyBody")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[40rem] text-sm">
                 <thead>
                   <tr className="border-b border-border text-left text-xs uppercase tracking-wide text-fg-muted">
@@ -183,7 +184,7 @@ export default async function StaffAttendancePage({ searchParams }: { searchPara
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
 
           <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">

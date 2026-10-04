@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { getT } from "@/lib/i18n/server";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,7 +74,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
           <Card>
             <CardHeader icon={<ChartLineUpIcon weight="duotone" className="size-5" />} title={t("trends.termsTitle")} description={t("trends.termsHint")} />
             <CardBody className="p-0">
-              <div className="overflow-x-auto" tabIndex={0}>
+              <TableScroll>
                 <table className="w-full text-sm">
                   <thead>
                     <tr>
@@ -104,7 +105,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </TableScroll>
             </CardBody>
           </Card>
 
@@ -185,7 +186,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
               {view.cohorts.length === 0 ? (
                 <p className="px-3 py-6 text-center text-sm text-fg-muted">{t("trends.noMarks")}</p>
               ) : (
-                <div className="overflow-x-auto" tabIndex={0}>
+                <TableScroll>
                   <table className="w-full text-sm">
                     <thead>
                       <tr>
@@ -210,7 +211,7 @@ export default async function PrincipalTrendsPage({ searchParams }: { searchPara
                       )}
                     </tbody>
                   </table>
-                </div>
+                </TableScroll>
               )}
             </CardBody>
           </Card>

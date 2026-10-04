@@ -7,6 +7,7 @@ import { ArrowUUpLeftIcon, EnvelopeOpenIcon } from "@phosphor-icons/react";
 import type { CertificateRequestStatus, CertificateRequestView } from "@edulink/contracts";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { formatDate } from "@/lib/dates";
+import { formatPaise } from "@edulink/i18n";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
@@ -34,7 +35,7 @@ export const requestStatus = (item: { status: CertificateRequestStatus; revokedA
  * office's reason; a pending one can be taken back, after one question,
  * because the office may already be looking at it.
  */
-export function CertificateRequestList({ items, from }: { items: CertificateRequestView[]; from: string }) {
+export function CertificateRequestList({ items, from, pdfOnly = false }: { items: CertificateRequestView[]; from: string; /** A former pupil opens the PDF, not the certificate page (G-6). */ pdfOnly?: boolean }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -73,14 +74,14 @@ export function CertificateRequestList({ items, from }: { items: CertificateRequ
               </p>
               <p className="mt-0.5 text-sm text-fg">{item.purpose}</p>
               <p className="mt-0.5 text-xs text-fg-muted">
-                {[t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null]
+                {[t("certificateRequests.askedOn", { date: formatDate(new Date(item.createdAt)) }), item.status === "ISSUED" && item.serial ? t("certificateRequests.issuedAs", { serial: item.serial }) : null, item.revokedAt ? t("certificateRequests.revokedOn", { date: formatDate(new Date(item.revokedAt)) }) : null, item.status === "DECLINED" && item.declineReason ? t("certificateRequests.declinedBecause", { reason: item.declineReason }) : null, item.feePaise ? t(item.feePaid ? "certificateRequests.feePaidLine" : "certificateRequests.feeDue", { amount: formatPaise(item.feePaise) }) : null]
                   .filter(Boolean)
                   .join(" · ")}
               </p>
             </div>
             <span className="flex shrink-0 flex-wrap items-center gap-3">
               {item.status === "ISSUED" && item.certificateId && (
-                <Link href={`/certificates/${item.certificateId}?from=${encodeURIComponent(from)}`} className={link}>
+                <Link href={pdfOnly ? `/api/v1/shared/certificates/${item.certificateId}/pdf` : `/certificates/${item.certificateId}?from=${encodeURIComponent(from)}`} className={link} {...(pdfOnly ? { target: "_blank", rel: "noopener" } : {})}>
                   {t("certificateRequests.openCertificate")}
                 </Link>
               )}

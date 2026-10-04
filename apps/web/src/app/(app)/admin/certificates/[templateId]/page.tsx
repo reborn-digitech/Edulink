@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/tenancy";
 import { templatePalette, templatesView } from "@/lib/certificates";
+import { certificateNameLabel } from "@/lib/certificate-names";
 import { PageHeader } from "@/components/ui/page-header";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
@@ -24,7 +25,7 @@ export default async function EditTemplatePage({ params }: { params: Promise<{ t
   return (
     <div className="mx-auto max-w-6xl space-y-6">
       <PageHeader
-        title={template.name}
+        title={certificateNameLabel(template.name, t)}
         description={[t(CERTIFICATE_KIND_KEY[template.kind]), localeName(template.locale), t("certificates.issued", { count: template.issuedCount })].join(" · ")}
         meta={template.active ? <Badge tone="ok" size="sm">{t("certificates.active")}</Badge> : <Badge tone="neutral" size="sm">{t("certificates.archive")}</Badge>}
         back={{ href: "/admin/certificates", label: t("certificates.title") }}

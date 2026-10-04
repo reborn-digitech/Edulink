@@ -5,7 +5,9 @@ import { certificateIssueSchema, certificateRequestDeclineSchema, certificateRev
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { archiveTemplate, issueCertificate, revokeCertificate, saveTemplate } from "@/lib/certificates";
-import { declineRequest } from "@/lib/certificate-requests";
+import { declineRequest, setRequestFee } from "@/lib/certificate-requests";
+import { RuleRefusal } from "@/lib/rule-refusal";
+import { parseRupees } from "@edulink/i18n";
 
 /**
  * The office's writes on certificates — a template saved or retired, a
@@ -20,6 +22,7 @@ export type CertificateActionResult = { ok: boolean; errorKey?: TranslationKey; 
 
 function failure(error: unknown): CertificateActionResult {
   if (error instanceof AccessError) return { ok: false, errorKey: error.key, errorVars: error.vars };
+  if (error instanceof RuleRefusal) return { ok: false, errorKey: error.key, errorVars: error.vars };
   console.error("[certificates]", error);
   return { ok: false, errorKey: "common.tryAgain" };
 }
@@ -99,6 +102,22 @@ export async function declineRequestAction(requestId: string, reason: string): P
     await declineRequest(ctx, requestId, parsed.data.reason);
     revalidatePath("/admin/certificates/issue");
     revalidatePath("/parent/certificates");
+    revalidatePath("/student/certificates");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The office sets what a paper costs, in rupees as typed (G-6); a demand on the pupil's ledger, paid at the office. */
+export async function setRequestFeeAction(requestId: string, rupees: string): Promise<CertificateActionResult> {
+  try {
+    const ctx = await requireApiUser();
+    const paise = parseRupees(rupees);
+    if (typeof requestId !== "string" || !requestId || paise === null || paise < 100) return { ok: false, errorKey: "common.checkTheForm" };
+    await setRequestFee(ctx, requestId, paise);
+    revalidatePath("/admin/certificates/issue");
+    revalidatePath("/alumni/papers");
     revalidatePath("/student/certificates");
     return { ok: true };
   } catch (error) {

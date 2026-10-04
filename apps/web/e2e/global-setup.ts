@@ -10,7 +10,17 @@ import { config } from "dotenv";
  * no password is typed here. Every session carries userAgent "e2e" and a
  * one-hour expiry; `teardown` below removes them.
  */
-export type Actor = { role: string; cookie: string; email?: string; classId?: string; slotId?: string; pupilId?: string; askedAboutPupilId?: string };
+export type Actor = {
+  role: string;
+  cookie: string;
+  email?: string;
+  classId?: string;
+  slotId?: string;
+  pupilId?: string;
+  askedAboutPupilId?: string;
+  /** The modules the actor's school has on (SchoolModule rows), so the axe walk opens only the entries the menu shows. Absent for an actor with no school. */
+  modules?: string[];
+};
 export type Sessions = Record<string, Actor>;
 
 config({ path: ".env" });
@@ -58,6 +68,12 @@ export default async function globalSetup() {
   const slot =
     (await db.examSlot.findFirst({ where: { seriesId: series.id }, select: { id: true } })) ??
     (await db.examSlot.create({ data: { schoolId: school.id, seriesId: series.id, subject: "Mathematics", dateKey: "2026-09-01", pointsMilli: 50_000 }, select: { id: true } }));
+  // The series' term, as exams.ts derives it (syncSeriesTerm): the term its earliest paper falls in. Written straight to
+  // the database, the series had none, and data:audit's exam-sitting check failed after every Playwright run (W-15).
+  const earliest = await db.examSlot.findFirst({ where: { seriesId: series.id }, orderBy: [{ dateKey: "asc" }, { position: "asc" }], select: { dateKey: true } });
+  const at = earliest ? new Date(`${earliest.dateKey}T00:00:00.000Z`) : null;
+  const term = at ? await db.term.findFirst({ where: { schoolId: school.id, startDate: { lte: at }, endDate: { gte: at } }, select: { id: true } }) : null;
+  await db.examSeries.update({ where: { id: series.id }, data: { termId: term?.id ?? null } });
   sessions.TEACHER = { role: "TEACHER", email: lead.teacher.user.email ?? undefined, cookie: await mint(lead.teacher.userId, "TEACHER", school.id), classId: lead.class.id, slotId: slot.id };
 
   // A NAMED pupil and that pupil's own parent, as the API sweep signs in (bc8e649). "The first active pupil" and
@@ -96,6 +112,15 @@ export default async function globalSetup() {
       if (member) sessions[role] = { role, email, cookie: await mint(member.userId, role, vidya.id) };
     }
   }
+  // The college's office, head and a student at ZZ Vidya (B-21): the walk of 4 October found the college pages' sideways
+  // scroll, unfocusable tables and squeezed inputs because no gate opened them as these three. Keyed apart from the school's
+  // ADMIN, PRINCIPAL and STUDENT; `role` is the real role, whose NAV they walk.
+  if (vidya) {
+    for (const [key, role, email] of [["COLLEGE_ADMIN", "ADMIN", "zz.cadmin@zz.test"], ["COLLEGE_PRINCIPAL", "PRINCIPAL", "zz.cprincipal@zz.test"], ["COLLEGE_STUDENT", "STUDENT", "zz.cstudent02@zz.test"]] as const) {
+      const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
+      if (member) sessions[key] = { role, email, cookie: await mint(member.userId, role, vidya.id) };
+    }
+  }
   const recruiter = await db.recruiterProfile.findFirst({ where: { user: { email: "zz.recruiter01@zz.test" }, disabledAt: null }, select: { userId: true } });
   if (recruiter) sessions.RECRUITER = { role: "RECRUITER", email: "zz.recruiter01@zz.test", cookie: await mint(recruiter.userId, "RECRUITER", null) };
 
@@ -106,6 +131,16 @@ export default async function globalSetup() {
   };
   await platform("APPADMIN", "zz.appadmin@zz.test");
   await platform("OPERATOR", "zz.operator@zz.test");
+
+  // Each school actor's modules, read once: Northgate's for the school's, Vidya's for the college's.
+  const modulesOf = new Map<string, string[]>();
+  for (const actor of Object.values(sessions)) {
+    const session = await db.session.findFirst({ where: { tokenHash: createHash("sha256").update(actor.cookie.split("=")[1]!).digest("hex") }, select: { activeSchoolId: true } });
+    const schoolId = session?.activeSchoolId;
+    if (!schoolId) continue;
+    if (!modulesOf.has(schoolId)) modulesOf.set(schoolId, (await db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })).map((m) => m.module));
+    actor.modules = modulesOf.get(schoolId);
+  }
 
   writeFileSync(join(__dirname, ".sessions.json"), JSON.stringify(sessions, null, 2));
   await db.$disconnect();

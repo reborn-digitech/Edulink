@@ -11,6 +11,7 @@ import { actionError } from "@/lib/action-error";
 import { formatDateKey, formatInZone } from "@/lib/dates";
 import { useLocale, useT } from "@/lib/i18n";
 import { recordHealthCheckAction, saveHealthCardAction } from "@/app/(app)/parent/health/actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /**
  * The pupil's health and emergency card, as the guardian's page and the
@@ -266,7 +267,7 @@ export function HealthChecksList({ checks }: { checks: HealthCardView["checks"] 
   if (checks.length === 0) return <p className="text-sm text-fg-muted">{t("health.noChecks")}</p>;
   const dash = "—";
   return (
-    <div className="overflow-x-auto" tabIndex={0}>
+    <TableScroll>
       <table className="w-full text-sm">
         <thead>
           <tr className="text-left text-xs font-semibold uppercase text-fg-muted">
@@ -298,7 +299,7 @@ export function HealthChecksList({ checks }: { checks: HealthCardView["checks"] 
           ))}
         </tbody>
       </table>
-    </div>
+    </TableScroll>
   );
 }
 

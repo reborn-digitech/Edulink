@@ -13,6 +13,7 @@ import { payrollSummary } from "@/lib/payroll";
 import { getT } from "@/lib/i18n/server";
 import { monthName, payrollGate, PayrollTop } from "./shared";
 import { draftRunAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("payroll.title") };
@@ -57,7 +58,7 @@ export default async function PayrollOverview({ searchParams }: { searchParams: 
           {s.runs.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("payroll.runsNone")} description={canEdit ? t("payroll.runsNoneBody") : t("payroll.runsNoneHead")} />
           ) : (
-            <div className="overflow-x-auto" tabIndex={0}>
+            <TableScroll>
               <table className="w-full min-w-[40rem] text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -84,7 +85,7 @@ export default async function PayrollOverview({ searchParams }: { searchParams: 
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

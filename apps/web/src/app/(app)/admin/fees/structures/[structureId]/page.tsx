@@ -14,6 +14,7 @@ import { StructureEditor } from "../editor";
 import { StructureButtons } from "./structure-buttons";
 import { AssignCard } from "./assign-card";
 import { pupilHref } from "../../labels";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -141,7 +142,7 @@ export default async function StructurePage({ params, searchParams }: { params: 
             {roster.pupils.length === 0 ? (
               <p className="py-4 text-center text-sm text-fg-muted">{t("fees.duesEmpty")}</p>
             ) : (
-              <div className="overflow-x-auto" tabIndex={0}>
+              <TableScroll>
                 <table className="w-full text-sm">
                   <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                     <tr>
@@ -171,7 +172,7 @@ export default async function StructurePage({ params, searchParams }: { params: 
                     ))}
                   </tbody>
                 </table>
-              </div>
+              </TableScroll>
             )}
           </CardBody>
         </Card>

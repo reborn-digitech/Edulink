@@ -14,6 +14,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -122,7 +123,7 @@ export default async function ClassAnalyticsPage({ params, searchParams }: { par
           {view.exams.length === 0 ? (
             <p className="py-6 text-center text-sm text-fg-muted">{t("classAnalytics.noExams")}</p>
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
                   <tr>
@@ -153,7 +154,7 @@ export default async function ClassAnalyticsPage({ params, searchParams }: { par
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
         </CardBody>
       </Card>

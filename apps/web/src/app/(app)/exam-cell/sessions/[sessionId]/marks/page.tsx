@@ -51,7 +51,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
       {sheet ? (
         <Card>
           <CardHeader title={[sheet.code, sheet.name].join(" ")} description={t("examCell.sheetHint", { external: marks(sheet.externalMaxMilli), internal: marks(sheet.internalMaxMilli) })} />
-          <CardBody className="overflow-x-auto p-0">
+          <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
             <form action={enterMarksAction}>
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <table className="w-full text-sm">

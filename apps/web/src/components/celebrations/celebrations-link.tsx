@@ -3,7 +3,7 @@ import { CakeIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
 import { celebrationsFor } from "@/lib/birthdays";
 import { formatDateKey } from "@/lib/dates";
 import type { ActiveContext } from "@/lib/session";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 
 /**
  * One door to the Celebrations page, worn on a pupil's Today and a teacher's
@@ -13,6 +13,7 @@ import { getT } from "@/lib/i18n/server";
  */
 export async function CelebrationsLink({ session }: { session: ActiveContext }) {
   const t = await getT();
+  const locale = await getLocale();
   // The month first; when the month is quiet, the next one anywhere in the
   // half-year — "nothing this month" is true but a dead card, and the day
   // somebody's birthday is 33 days away is exactly when a class starts
@@ -38,10 +39,10 @@ export async function CelebrationsLink({ session }: { session: ActiveContext }) 
         <span className="block truncate text-xs text-fg-muted">
           {next
             ? later
-              ? t("celebrations.nextLater", { name: next.name, date: formatDateKey(next.dateKey) })
+              ? t("celebrations.nextLater", { name: next.name, date: formatDateKey(next.dateKey, undefined, locale) })
               : t("celebrations.nextUp", {
                   name: next.name,
-                  date: formatDateKey(next.dateKey),
+                  date: formatDateKey(next.dateKey, undefined, locale),
                   count: upcoming.length,
                 })
             : t("celebrations.noneSoon")}

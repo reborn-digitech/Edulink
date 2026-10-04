@@ -11,6 +11,7 @@ import { academicsStructure, listSeats } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, one, type SearchParams } from "../shared";
 import { saveSeatAction } from "../actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("academics.tabStudents") };
@@ -33,7 +34,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Sea
           {seats.seats.length === 0 ? (
             <EmptyState className="border-0 bg-transparent py-4" title={t("academics.seatsNone")} description={t("academics.seatsNoneBody")} />
           ) : (
-            <div className="overflow-x-auto">
+            <TableScroll>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-border">
@@ -60,7 +61,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Sea
                   ))}
                 </tbody>
               </table>
-            </div>
+            </TableScroll>
           )}
           {canEdit && s.programmes.length && s.schemes.length ? (
             <form action={saveSeatAction} className="grid gap-3 sm:grid-cols-3">

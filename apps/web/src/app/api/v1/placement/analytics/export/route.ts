@@ -2,12 +2,14 @@ import { placementExportQuerySchema } from "@edulink/contracts";
 import { requireApiRoles } from "@/lib/api-roles";
 import { placementExport } from "@/lib/placement-analytics";
 import { moduleFailure } from "@/lib/rule-refusal";
-import { apiInvalid } from "@/lib/api-v1";
+import { apiInvalid, budget, EXPORT_BUDGET } from "@/lib/api-v1";
 
 /** GET /api/v1/placement/analytics/export — A sheet as CSV: NBA, NIRF or the batch's offers. */
 export async function GET(request: Request) {
   try {
     const ctx = await requireApiRoles("TPO", "ADMIN", "PRINCIPAL", "IQAC");
+    const refused = await budget(`export:${ctx.user.id}`, EXPORT_BUDGET.limit, EXPORT_BUDGET.windowMs);
+    if (refused) return refused;
     const parsed = placementExportQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const q = parsed.data;

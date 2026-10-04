@@ -137,6 +137,17 @@ export function AppShell({
               {t("shell.serverAdmin")}
             </Link>
           )}
+          {/* The role's one action, on a desk: in the rail rather than floating over the page, where at 1280 px it
+              sat on the second class's "Take it" (the walk of 4 October, B-19). The phone keeps the floating button. */}
+          {action && (
+            <Link
+              href={action.href}
+              className="mb-2 flex items-center gap-2 rounded-[--radius-md] bg-accent px-3 py-2.5 text-sm font-semibold text-accent-fg shadow-sm hover:brightness-110 active:brightness-95"
+            >
+              <NavIcon name={action.icon} className="size-5" weight="bold" />
+              <span className="flex-1">{t(action.labelKey)}</span>
+            </Link>
+          )}
           {/* The bell lived only in the phone's top bar; on a desk, the
               unread count had nowhere to show. */}
           <Link
@@ -248,14 +259,14 @@ export function AppShell({
       {action && (
         // A landmark of its own: the button floats outside <main>, and a
         // screen reader's region list should still find it by name.
-        <nav aria-label={t("shell.quickAction")} className="contents">
+        <nav aria-label={t("shell.quickAction")} className="contents lg:hidden">
         <Link
           href={action.href}
           className={cn(
             "fixed bottom-[calc(env(safe-area-inset-bottom,0px)+5.25rem)] right-4 z-40",
             "flex h-14 items-center gap-2 rounded-full bg-accent px-5 font-semibold text-accent-fg shadow-lg",
             "transition-transform duration-[--dur-fast] active:scale-95",
-            "lg:bottom-8 lg:right-8 print:hidden",
+            "lg:hidden print:hidden",
           )}
         >
           <NavIcon name={action.icon} className="size-5" weight="bold" />

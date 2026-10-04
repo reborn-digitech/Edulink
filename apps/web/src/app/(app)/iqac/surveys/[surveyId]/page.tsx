@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { CheckboxField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, day, keyed } from "@/components/iqac/parts";
-import { atrAction, transcribeAction } from "../../actions";
+import { atrAction, surveyLinkAction, transcribeAction } from "../../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -101,6 +101,17 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
           )}
         </CardBody>
       </Card>
+      {desk && (r.survey.kind === "EMPLOYER" || r.survey.kind === "PARENT") && r.survey.status === "OPEN" ? (
+        <Card>
+          <CardBody className="pt-5">
+            <form action={surveyLinkAction}>
+              <input type="hidden" name="back" value={back} />
+              <input type="hidden" name="surveyId" value={surveyId} />
+              <Button type="submit" variant="secondary">{t("iqac.linkMake")}</Button>
+            </form>
+          </CardBody>
+        </Card>
+      ) : null}
       {desk && (r.survey.kind === "EMPLOYER" || r.survey.kind === "PARENT") ? (
         <Card>
           <CardHeader title={t("iqac.transcribeTitle")} />

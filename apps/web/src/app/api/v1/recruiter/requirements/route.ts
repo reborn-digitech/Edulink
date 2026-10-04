@@ -2,7 +2,7 @@ import { requirementListSchema, requirementSaveSchema, requirementViewSchema } f
 import { requireApiRoles } from "@/lib/api-roles";
 import { myRequirements, postRequirement } from "@/lib/placement-recruiter";
 import { moduleFailure } from "@/lib/rule-refusal";
-import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, budget, FANOUT_BUDGET, ok, readJson } from "@/lib/api-v1";
 
 /** GET /api/v1/recruiter/requirements — The company's requirements. */
 export async function GET() {
@@ -18,6 +18,8 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRoles("RECRUITER");
+    const refused = await budget(`fanout:${ctx.user.id}`, FANOUT_BUDGET.limit, FANOUT_BUDGET.windowMs);
+    if (refused) return refused;
     const parsed = requirementSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     const b = parsed.data;

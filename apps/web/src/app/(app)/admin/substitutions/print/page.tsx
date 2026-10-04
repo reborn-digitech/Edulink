@@ -7,6 +7,7 @@ import { substitutionBoard } from "@/lib/substitutions";
 import { formatDateKey, isDateKey, todayKey } from "@/lib/dates";
 import { formatTimeRange } from "@/lib/school-day";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { periodLabel } from "@/lib/coded-defaults";
 import { PrintButton } from "./print-button";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -75,7 +76,7 @@ export default async function SubstitutionsPrintPage({ searchParams }: { searchP
                 {board.lessons.map((lesson) => (
                   <tr key={lesson.slotId} className="break-inside-avoid">
                     <td className={cell}>
-                      <span className="block font-medium">{lesson.periodName ?? t("substitutions.period")}</span>
+                      <span className="block font-medium">{lesson.periodName ? periodLabel(lesson.periodName, t) : t("substitutions.period")}</span>
                       {lesson.startMinute !== null && lesson.endMinute !== null && (
                         <span className="block text-xs tabular-nums text-fg-muted print:text-black/70">{formatTimeRange(lesson.startMinute, lesson.endMinute)}</span>
                       )}

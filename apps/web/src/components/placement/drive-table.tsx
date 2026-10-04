@@ -2,11 +2,12 @@ import Link from "next/link";
 import type { DriveSummary } from "@edulink/contracts";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { DRIVE_KIND_KEY, LINK, TABLE, TD, TH, packageRange, statusBadge } from "./parts";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 /** The drives as a table: title (to the drive), company, kind and host, package, status, applicants and offers. */
 export function DriveTable({ drives, t, hrefOf = (d) => `/placement/drives/${d.id}` }: { drives: DriveSummary[]; t: Translate; hrefOf?: (d: DriveSummary) => string }) {
   return (
-    <div className="overflow-x-auto">
+    <TableScroll>
       <table className={TABLE}>
         <thead>
           <tr className="border-b border-border">
@@ -42,6 +43,6 @@ export function DriveTable({ drives, t, hrefOf = (d) => `/placement/drives/${d.i
           ))}
         </tbody>
       </table>
-    </div>
+    </TableScroll>
   );
 }

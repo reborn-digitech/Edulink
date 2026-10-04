@@ -12,6 +12,7 @@ import { FEE_HEAD_KINDS, type FeeHeadKind } from "@/lib/constants";
 import { useT } from "@/lib/i18n";
 import { HEAD_KIND_KEY } from "../labels";
 import { retireHeadAction, saveHeadAction } from "./actions";
+import { TableScroll } from "@/components/ui/table-scroll";
 
 export type HeadRow = { id: string; name: string; code: string; kind: FeeHeadKind; sortOrder: number; retired: boolean; inUse: boolean };
 
@@ -78,7 +79,7 @@ export function HeadList({ heads }: { heads: HeadRow[] }) {
       {heads.length === 0 ? (
         <p className="py-4 text-center text-sm text-fg-muted">{t("fees.headsEmpty")}</p>
       ) : (
-        <div className="overflow-x-auto" tabIndex={0}>
+        <TableScroll>
           <table className="w-full text-sm">
             <thead className="text-left text-xs uppercase tracking-wide text-fg-muted">
               <tr>
@@ -120,7 +121,7 @@ export function HeadList({ heads }: { heads: HeadRow[] }) {
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       )}
 
       {draft ? (

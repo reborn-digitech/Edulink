@@ -2,12 +2,14 @@ import { accountsReportQuerySchema, officeCsvExportSchema } from "@edulink/contr
 import { requireApiRoles } from "@/lib/api-roles";
 import { accountsReport } from "@/lib/accounts";
 import { getT } from "@/lib/i18n/server";
-import { apiFailure, apiInvalid, ok } from "@/lib/api-v1";
+import { apiFailure, apiInvalid, budget, EXPORT_BUDGET, ok } from "@/lib/api-v1";
 
 /** GET /api/v1/accounts/reports — The auditor's schedules: collection, defaulters, receivable ageing, income and expense, the finance table, as CSV text. */
 export async function GET(request: Request) {
   try {
     const ctx = await requireApiRoles("ACCOUNTS", "ADMIN", "PRINCIPAL");
+    const refused = await budget(`export:${ctx.user.id}`, EXPORT_BUDGET.limit, EXPORT_BUDGET.windowMs);
+    if (refused) return refused;
     const parsed = accountsReportQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const q = parsed.data;
