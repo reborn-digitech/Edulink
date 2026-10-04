@@ -122,7 +122,9 @@ export async function courseFileFor(c: Caller, offeringId: string): Promise<Cour
     expected: cov.expected,
     behind: plan.length > 0 && cov.behind,
     termElapsedPercent: Math.round(elapsed * 100),
-    items: items.map((i) => ({ id: i.id, kind: i.kind as "RESOURCE", title: i.title, url: i.url, fileId: i.fileId, coCodes: readCodes(i.coCodes), createdAt: i.createdAt.toISOString() })),
+    // Only a web link is handed on: a row stored before the schema refused other schemes (javascript:,
+    // intent:, another app's deep link) is read as no link (campaign S-21, PH-7).
+    items: items.map((i) => ({ id: i.id, kind: i.kind as "RESOURCE", title: i.title, url: i.url && WEB_LINK.test(i.url) ? i.url : null, fileId: i.fileId, coCodes: readCodes(i.coCodes), createdAt: i.createdAt.toISOString() })),
     review: file?.reviewedAt ? { at: file.reviewedAt.toISOString(), byName: reviewer ? nameOf(reviewer) : null, note: file.reviewNote ?? "" } : null,
     attainment: c.role === "STUDENT" ? { targetPercent: ATTAINMENT_TARGET_PERCENT, cos: [], pos: [] } : await attainmentForOffering(offeringId),
     canEdit: isFaculty || isHod,
@@ -149,6 +151,9 @@ export async function saveCoursePlan(ctx: ActiveContext, offeringId: string, inp
 }
 
 /** A resource, notes, a question paper or a model answer: a stored file (an upload ticket of the caller's, spent here, or a file the web page just stored) or a link. */
+/** A link a reader may follow: http or https, nothing else. */
+const WEB_LINK = /^https?:\/\//i;
+
 export async function addCourseFileItem(ctx: ActiveContext, offeringId: string, input: { kind: string; title: string; url: string | null; fileId: string | null; coCodes: string[] }, stored: { fileId?: string | null } = {}): Promise<{ id: string }> {
   const c = await academicsCaller(ctx, ["FACULTY", "HOD"]);
   const { o, isFaculty, isHod } = await fileAccess(c, offeringId);
@@ -163,6 +168,7 @@ export async function addCourseFileItem(ctx: ActiveContext, offeringId: string, 
     fileId = input.fileId;
   }
   if (!fileId && !input.url) throw new RuleRefusal("academics.refuseNoFileOrLink", 422, undefined, "url");
+  if (!fileId && input.url && !WEB_LINK.test(input.url)) throw new RuleRefusal("academics.refuseNoFileOrLink", 422, undefined, "url");
   const file = await db.courseFile.upsert({ where: { offeringId }, create: { schoolId: c.schoolId, offeringId }, update: {}, select: { id: true } });
   const row = await db.courseFileItem.create({ data: { schoolId: c.schoolId, courseFileId: file.id, kind: input.kind, title: input.title, url: fileId ? null : input.url, fileId, coCodes: writeJson(input.coCodes), createdByUserId: c.userId }, select: { id: true } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.coursefile.item", targetType: "CourseFileItem", targetId: row.id, meta: { offeringId, kind: input.kind, file: Boolean(fileId) } });

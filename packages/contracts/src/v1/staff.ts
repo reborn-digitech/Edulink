@@ -82,6 +82,13 @@ const calendarNoticeSchema = z.object({
 export const staffTodaySchema = z.object({
   dateKey,
   schoolName: z.string(),
+  /**
+   * Set on a day the school is shut (not one of its teaching days, or a
+   * closing holiday, named when there is one): no register is due, so
+   * `formClasses.registersLeft` is 0 and is not "all done" (B-11). Null or
+   * absent on an open day and from older servers.
+   */
+  noSchool: z.object({ holidayName: z.string().nullable() }).nullable().optional(),
   /** Papers sat and not yet fully marked. */
   marksTodo: z.array(
     z.object({

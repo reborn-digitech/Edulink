@@ -2,10 +2,12 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import type { CertificateIssueInput, CertificateKind, CertificateLayout, CertificateRow, CertificateTemplateSave, CertificateTemplatesView, IssuedCertificateView } from "./certificate-types";
 import { db } from "./db";
+import { forJoinCode } from "./tenant-context";
+import { consentApplies } from "./student-consent";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
-import { stayAttendance } from "./school-record";
+import { lockTcRegister, registerMax, stayAttendance } from "./school-record";
 import { markRequestIssued, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
 import { allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, placeholderKeys, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
@@ -263,9 +265,26 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
     const tx = raw as typeof db;
     // The year's row is the lock: two issues at once take numbers in turn.
     await tx.$queryRaw`SELECT "id" FROM "AcademicYear" WHERE "id" = ${year.id} FOR UPDATE`;
-    const last = await tx.issuedCertificate.findFirst({ where: { schoolId: caller.schoolId, academicYearId: year.id, serial: { startsWith: `${prefix}/` } }, orderBy: { number: "desc" }, select: { number: true } });
-    const number = (last?.number ?? 0) + 1;
-    const serial = `${prefix}/${year.name}/${String(number).padStart(4, "0")}`;
+    const { serial, number, academicYearId } = await (async () => {
+      if (prefix !== "TC") {
+        const last = await tx.issuedCertificate.findFirst({ where: { schoolId: caller.schoolId, academicYearId: year.id, serial: { startsWith: `${prefix}/` } }, orderBy: { number: "desc" }, select: { number: true } });
+        const n = (last?.number ?? 0) + 1;
+        return { serial: `${prefix}/${year.name}/${String(n).padStart(4, "0")}`, number: n, academicYearId: year.id };
+      }
+      // THE TC REGISTER (school-record.ts, LIFECYCLE-6): one series with the leaving records. A transfer
+      // certificate for a pupil whose departure is recorded prints that record's serial, unless another
+      // paper already carries it; anything else takes the next number across both papers.
+      await lockTcRegister(tx, caller.schoolId);
+      const record = template.kind === "TC" ? await tx.schoolRecord.findFirst({ where: { schoolId: caller.schoolId, studentMembershipId: input.studentMembershipId, serial: { startsWith: "TC/" } }, select: { serial: true } }) : null;
+      const shared = record?.serial && !(await tx.issuedCertificate.findFirst({ where: { schoolId: caller.schoolId, serial: record.serial }, select: { id: true } })) ? record.serial : null;
+      if (shared) {
+        const yearName = shared.slice("TC/".length, shared.lastIndexOf("/"));
+        const sharedYear = yearName === year.name ? year.id : ((await tx.academicYear.findFirst({ where: { schoolId: caller.schoolId, name: yearName }, select: { id: true } }))?.id ?? null);
+        return { serial: shared, number: Number(shared.slice(shared.lastIndexOf("/") + 1)), academicYearId: sharedYear };
+      }
+      const n = (await registerMax(tx, caller.schoolId, `TC/${year.name}/`)) + 1;
+      return { serial: `TC/${year.name}/${String(n).padStart(4, "0")}`, number: n, academicYearId: year.id };
+    })();
     const data = { ...dataFor({ ...facts, issue: { ...facts.issue, serial } }, locale, words) };
     const intro = fill(template.intro, data);
     const rows = fillRows(parseRows(template.rowsJson), data);
@@ -279,7 +298,7 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
         studentMembershipId: input.studentMembershipId,
         // The name as this paper prints it, kept with the paper.
         studentName: facts.name,
-        academicYearId: year.id,
+        academicYearId,
         kind: template.kind,
         locale,
         serial,
@@ -303,7 +322,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
   if (input.requestId) await markRequestIssued(caller.schoolId, input.requestId, issued.id);
   // The issuer's own signature on the lines that are theirs, a wait on the lines that are somebody else's, and the seal.
   await signOnIssue(ctx, { kind: "CERTIFICATE", id: issued.id, schoolId: caller.schoolId, title: issued.title, studentName: facts.name }, parseLayout(template.layoutJson, words));
-  await notifyGuardians(input.studentMembershipId, (childName) => ({
+  // An adult at a college: the paper is theirs, and their guardian is neither told nor shown it (mayRead; campaign S-2).
+  if (!(await consentApplies(input.studentMembershipId))) await notifyGuardians(input.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
     kind: "SYSTEM",
     titleKey: "pupilRecord.certificateIssued",
@@ -336,6 +356,8 @@ async function mayRead(ctx: ActiveContext, cert: { schoolId: string; studentMemb
   if (!ctx.schoolId || ctx.schoolId !== cert.schoolId) return false;
   if (ctx.role === "ADMIN" || ctx.role === "PRINCIPAL") return true;
   if (ctx.role === "STUDENT") return ctx.membershipId === cert.studentMembershipId;
+  // A former pupil, as an alumnus of this school: the papers of their own stay (G-6).
+  if (ctx.role === "ALUMNUS") return Boolean(await db.membership.findFirst({ where: { id: cert.studentMembershipId, userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true } }));
   if (ctx.role === "TEACHER" && ctx.membershipId) {
     const teaches = await db.classTeacher.findFirst({ where: { schoolId: ctx.schoolId, teacherMembershipId: ctx.membershipId, class: { enrollments: { some: { studentMembershipId: cert.studentMembershipId, status: "ACTIVE" } } } }, select: { id: true } });
     return Boolean(teaches);
@@ -414,9 +436,14 @@ export async function listCertificates(ctx: ActiveContext, membershipId?: string
 export async function familyCertificates(ctx: ActiveContext) {
   let ids: string[] = [];
   if (ctx.role === "PARENT") {
-    ids = (await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, select: { studentMembershipId: true } })).map((g) => g.studentMembershipId);
+    // Not an adult's at a college: mayRead refuses their guardian each paper, so the list does too (campaign S-2).
+    const all = (await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, select: { studentMembershipId: true } })).map((g) => g.studentMembershipId);
+    for (const id of all) if (!(await consentApplies(id))) ids.push(id);
   } else if (ctx.role === "STUDENT" && ctx.membershipId) {
     ids = [ctx.membershipId];
+  } else if (ctx.role === "ALUMNUS" && ctx.schoolId) {
+    // A former pupil: the papers of their stay at this school (G-6).
+    ids = (await db.membership.findMany({ where: { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true } })).map((m) => m.id);
   } else {
     throw new AccessError("access.notAllowed");
   }
@@ -435,7 +462,7 @@ export async function revokeCertificate(ctx: ActiveContext, certificateId: strin
   await db.issuedCertificate.update({ where: { id: cert.id }, data: { revokedAt: new Date(), revokedReason: reason.trim().slice(0, 200) } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.revoke", targetType: "IssuedCertificate", targetId: cert.id, meta: { serial: cert.serial } });
   // The family holds the paper: they are told it no longer stands, as they were told when it was issued.
-  await notifyGuardians(cert.studentMembershipId, (childName) => ({
+  if (!(await consentApplies(cert.studentMembershipId))) await notifyGuardians(cert.studentMembershipId, (childName) => ({
     schoolId: caller.schoolId,
     kind: "SYSTEM",
     titleKey: "pupilRecord.certificateRevoked",
@@ -454,7 +481,9 @@ export async function verifyByCode(code: string) {
   if (!/^[A-Z0-9]{6,16}$/.test(clean)) return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
   // No join to the school: a signed-out connection reads the certificate row alone, and the
   // document's own snapshot carries the school's name as it was when the paper was printed.
-  const cert = await db.issuedCertificate.findUnique({ where: { code: clean }, select: { kind: true, serial: true, locale: true, issuedAt: true, revokedAt: true, dataJson: true } });
+  // Bound by the code itself (IssuedCertificate is CODE_READABLE in gen-rls.ts): with no
+  // tenant and no code bound the policy shows nothing, and every printed QR read "not valid".
+  const cert = await forJoinCode(clean, () => db.issuedCertificate.findUnique({ where: { code: clean }, select: { kind: true, serial: true, locale: true, issuedAt: true, revokedAt: true, dataJson: true } }));
   if (!cert) return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
   let schoolName: string | null = null;
   try {

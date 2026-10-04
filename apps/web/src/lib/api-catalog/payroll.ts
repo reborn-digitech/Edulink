@@ -17,7 +17,8 @@ import type { Endpoint, SweepFixture } from "./types";
 export const ZZ_PAYROLL_MONTH = "2026-08";
 /** What zz:fixtures sets, sent back unchanged by the sweep. */
 export const ZZ_PAYROLL_SETTINGS: c.PayrollSettings = { pfEnabled: true, pfOnFullBasic: false, esiEnabled: true, ptState: "MH", employerName: "ZZ Northgate School Trust", pfEstablishmentCode: "MHBAN0012345000", esiEmployerCode: "31000123450000999" };
-const STAFF: c.RoleCode[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN"];
+/** Every member of staff, a college's six included (lib/staff-records.ts SCHOOL_STAFF_ROLES; campaign 2026-10-04, G-1): their own doors only. */
+const STAFF: c.RoleCode[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", ...c.COLLEGE_ROLES];
 const M = { module: "PAYROLL" as const };
 const RUN = `/api/v1/admin/payroll/runs/${ZZ_PAYROLL_MONTH}`;
 const teacher = (rest: string) => (f: SweepFixture) => (f.teacherMembershipId ? `${RUN}/slips/${f.teacherMembershipId}${rest}` : null);

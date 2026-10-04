@@ -10856,6 +10856,20 @@
                     "schoolName": {
                       "type": "string"
                     },
+                    "noSchool": {
+                      "type": "object",
+                      "properties": {
+                        "holidayName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "holidayName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "marksTodo": {
                       "type": "array",
                       "items": {
@@ -64634,7 +64648,7 @@
     "/api/v1/staff/attendance/me": {
       "get": {
         "summary": "My own days this month, today's state and whether I may still check in (?month=)",
-        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS.",
         "security": [
           {
             "bearer": []
@@ -64642,8 +64656,17 @@
         ],
         "x-access": [
           "TEACHER",
+          "PRINCIPAL",
           "ADMIN",
-          "PRINCIPAL"
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "responses": {
           "200": {
@@ -64867,7 +64890,7 @@
     "/api/v1/staff/attendance/check-in": {
       "post": {
         "summary": "\"I'm in\": present, or late after the school's grace; a second time in the day is a no-op that answers what stands; never on a closed day",
-        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS.",
         "security": [
           {
             "bearer": []
@@ -64875,8 +64898,17 @@
         ],
         "x-access": [
           "TEACHER",
+          "PRINCIPAL",
           "ADMIN",
-          "PRINCIPAL"
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "responses": {
           "200": {
@@ -73086,8 +73118,8 @@
     },
     "/api/v1/shared/certificates/{certificateId}": {
       "get": {
-        "summary": "One issued certificate as it will be printed, for its pupil, a guardian, its class teacher or the office",
-        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "summary": "One issued certificate as it will be printed, for its pupil (or the former pupil as an alumnus), a guardian, its class teacher or the office",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -73098,7 +73130,8 @@
           "PARENT",
           "TEACHER",
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -73506,7 +73539,7 @@
     "/api/v1/shared/certificates/{certificateId}/pdf": {
       "get": {
         "summary": "The same certificate as a PDF (application/pdf) in the language it was issued in",
-        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL.",
+        "description": "Roles: STUDENT, PARENT, TEACHER, ADMIN, PRINCIPAL, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -73517,7 +73550,8 @@
           "PARENT",
           "TEACHER",
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -78271,8 +78305,8 @@
     },
     "/api/v1/family/certificate-requests": {
       "get": {
-        "summary": "The pupil's own certificate requests, or a child's (?childId=), with the kinds the school offers",
-        "description": "Roles: STUDENT, PARENT.",
+        "summary": "The pupil's own certificate requests, or a child's (?childId=), or a former pupil's as an alumnus (G-6), with the kinds the school offers",
+        "description": "Roles: STUDENT, PARENT, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -78280,7 +78314,8 @@
         ],
         "x-access": [
           "STUDENT",
-          "PARENT"
+          "PARENT",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -78362,6 +78397,14 @@
                             ],
                             "nullable": true,
                             "default": null
+                          },
+                          "feePaise": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "feePaid": {
+                            "type": "boolean",
+                            "nullable": true
                           },
                           "createdAt": {
                             "$ref": "#/properties/items/items/properties/decidedAt"
@@ -78461,8 +78504,8 @@
         }
       },
       "post": {
-        "summary": "Ask the office for a certificate: the kind and what it is for (?childId= for a guardian); the same kind while one is pending is the same ask",
-        "description": "Roles: STUDENT, PARENT.",
+        "summary": "Ask the office for a certificate: the kind and what it is for (?childId= for a guardian; an alumnus asks for a paper again, G-6); the same kind while one is pending is the same ask",
+        "description": "Roles: STUDENT, PARENT, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -78470,7 +78513,8 @@
         ],
         "x-access": [
           "STUDENT",
-          "PARENT"
+          "PARENT",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -78547,6 +78591,14 @@
                       ],
                       "nullable": true,
                       "default": null
+                    },
+                    "feePaise": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "feePaid": {
+                      "type": "boolean",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"
@@ -78654,7 +78706,7 @@
     "/api/v1/family/certificate-requests/{requestId}/cancel": {
       "post": {
         "summary": "Take a pending ask back; a settled one is answered as it stands",
-        "description": "Roles: STUDENT, PARENT.",
+        "description": "Roles: STUDENT, PARENT, ALUMNUS.",
         "security": [
           {
             "bearer": []
@@ -78662,7 +78714,8 @@
         ],
         "x-access": [
           "STUDENT",
-          "PARENT"
+          "PARENT",
+          "ALUMNUS"
         ],
         "responses": {
           "200": {
@@ -78739,6 +78792,14 @@
                       ],
                       "nullable": true,
                       "default": null
+                    },
+                    "feePaise": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "feePaid": {
+                      "type": "boolean",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"
@@ -78910,6 +78971,14 @@
                             ],
                             "nullable": true,
                             "default": null
+                          },
+                          "feePaise": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "feePaid": {
+                            "type": "boolean",
+                            "nullable": true
                           },
                           "createdAt": {
                             "$ref": "#/properties/items/items/properties/decidedAt"
@@ -79101,6 +79170,14 @@
                       "nullable": true,
                       "default": null
                     },
+                    "feePaise": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "feePaid": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
                     "createdAt": {
                       "$ref": "#/properties/decidedAt"
                     }
@@ -79181,6 +79258,200 @@
                 },
                 "required": [
                   "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/office/certificate-requests/{requestId}/fee": {
+      "post": {
+        "summary": "The office sets what a paper costs (a copy for a former pupil, usually): a demand on the pupil's ledger under the first OTHER head, paid outside the platform; the same amount again changes nothing, a paid fee is not changed (409)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "studentMembershipId": {
+                      "type": "string"
+                    },
+                    "studentName": {
+                      "type": "string"
+                    },
+                    "className": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "TC",
+                        "NIRGAM",
+                        "BONAFIDE",
+                        "CHARACTER",
+                        "STUDY",
+                        "CUSTOM",
+                        "MIGRATION",
+                        "PROVISIONAL",
+                        "COURSE_COMPLETION"
+                      ]
+                    },
+                    "purpose": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "ISSUED",
+                        "DECLINED",
+                        "CANCELLED"
+                      ]
+                    },
+                    "requestedByName": {
+                      "type": "string"
+                    },
+                    "certificateId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "declineReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "decidedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "revokedAt": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/decidedAt"
+                        }
+                      ],
+                      "nullable": true,
+                      "default": null
+                    },
+                    "feePaise": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "feePaid": {
+                      "type": "boolean",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/decidedAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "studentMembershipId",
+                    "studentName",
+                    "className",
+                    "kind",
+                    "purpose",
+                    "status",
+                    "requestedByName",
+                    "certificateId",
+                    "serial",
+                    "declineReason",
+                    "decidedAt",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amountPaise": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 10000000
+                  }
+                },
+                "required": [
+                  "amountPaise"
                 ],
                 "additionalProperties": false
               }
@@ -100815,6 +101086,20 @@
                       ],
                       "additionalProperties": false
                     },
+                    "noSchool": {
+                      "type": "object",
+                      "properties": {
+                        "holidayName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "holidayName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
                     "trips": {
                       "type": "array",
                       "items": {
@@ -107915,7 +108200,7 @@
     "/api/v1/account/inventory": {
       "get": {
         "summary": "What the stores issued to me and I still hold, the assets I am custodian of, my asks, and the items I may ask for",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has INVENTORY switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has INVENTORY switched on.",
         "security": [
           {
             "bearer": []
@@ -107927,7 +108212,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
         "responses": {
@@ -108144,7 +108435,7 @@
     "/api/v1/account/inventory/requests": {
       "post": {
         "summary": "Ask the office for an item (by its code, or in words when the stores do not keep it)",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has INVENTORY switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has INVENTORY switched on.",
         "security": [
           {
             "bearer": []
@@ -108156,7 +108447,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
         "responses": {
@@ -108313,7 +108610,7 @@
     "/api/v1/account/inventory/requests/cancel": {
       "post": {
         "summary": "Take back one of my own waiting asks",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has INVENTORY switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has INVENTORY switched on.",
         "security": [
           {
             "bearer": []
@@ -108325,7 +108622,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "INVENTORY",
         "responses": {
@@ -112615,7 +112918,7 @@
     "/api/v1/account/payslips": {
       "get": {
         "summary": "My locked payslips, the structure I am paid on (not anyone else's), my advances and the years I have a statement for",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -112627,7 +112930,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -112891,7 +113200,7 @@
     "/api/v1/account/payslips/statement": {
       "get": {
         "summary": "My yearly earnings statement (?year=2026-27)",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -112903,7 +113212,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -113080,7 +113395,7 @@
     "/api/v1/account/payslips/{month}/pdf": {
       "get": {
         "summary": "My payslip for a locked month as a PDF (application/pdf), in my language",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -113092,7 +113407,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -113174,7 +113495,7 @@
     "/api/v1/account/advances": {
       "post": {
         "summary": "Ask the office for an advance against salary; one waiting ask at a time",
-        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN. Only while the school has PAYROLL switched on.",
+        "description": "Roles: TEACHER, PRINCIPAL, ADMIN, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS. Only while the school has PAYROLL switched on.",
         "security": [
           {
             "bearer": []
@@ -113186,7 +113507,13 @@
           "ADMIN",
           "DRIVER",
           "LIBRARIAN",
-          "WARDEN"
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS"
         ],
         "x-module": "PAYROLL",
         "responses": {
@@ -125705,6 +126032,351 @@
         }
       }
     },
+    "/api/v1/principal/college": {
+      "get": {
+        "summary": "The college at a glance (faculty present, fees, scholarships, hostel, grievances, incidents, the predictor, today's lectures by department) and the approvals waiting with the page each is decided on; 404 at a school",
+        "description": "Roles: PRINCIPAL, ADMIN. Only while the school has ACADEMICS switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PRINCIPAL",
+          "ADMIN"
+        ],
+        "x-module": "ACADEMICS",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "school": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "affiliatingUniversity": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "affiliatingUniversity"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "today": {
+                      "type": "string"
+                    },
+                    "term": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "faculty": {
+                      "type": "object",
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        },
+                        "present": {
+                          "type": "integer"
+                        },
+                        "onLeave": {
+                          "type": "integer"
+                        },
+                        "absent": {
+                          "type": "integer"
+                        },
+                        "unmarked": {
+                          "type": "integer"
+                        },
+                        "closed": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "total",
+                        "present",
+                        "onLeave",
+                        "absent",
+                        "unmarked",
+                        "closed"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "fees": {
+                      "type": "object",
+                      "properties": {
+                        "year": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "demandPaise": {
+                          "type": "integer"
+                        },
+                        "collectedPaise": {
+                          "type": "integer"
+                        },
+                        "outstandingPaise": {
+                          "type": "integer"
+                        },
+                        "defaulters": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "year",
+                        "demandPaise",
+                        "collectedPaise",
+                        "outstandingPaise",
+                        "defaulters"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "scholarships": {
+                      "type": "object",
+                      "properties": {
+                        "applied": {
+                          "type": "integer"
+                        },
+                        "sanctioned": {
+                          "type": "integer"
+                        },
+                        "disbursed": {
+                          "type": "integer"
+                        },
+                        "disbursedPaise": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "applied",
+                        "sanctioned",
+                        "disbursed",
+                        "disbursedPaise"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "hostel": {
+                      "type": "object",
+                      "properties": {
+                        "occupancyPercent": {
+                          "type": "number"
+                        },
+                        "occupied": {
+                          "type": "integer"
+                        },
+                        "beds": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "occupancyPercent",
+                        "occupied",
+                        "beds"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "grievances": {
+                      "type": "object",
+                      "properties": {
+                        "open": {
+                          "type": "integer"
+                        },
+                        "overdue": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "open",
+                        "overdue"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "incidentsOpen": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "predictor": {
+                      "type": "object",
+                      "properties": {
+                        "cgpa": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "grade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "nextGrade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "distance": {
+                          "type": "number",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "cgpa",
+                        "grade",
+                        "nextGrade",
+                        "distance"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "lectures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "departmentId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "lectures": {
+                            "type": "integer"
+                          },
+                          "marked": {
+                            "type": "integer"
+                          },
+                          "presentPercent": {
+                            "type": "number",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "departmentId",
+                          "name",
+                          "lectures",
+                          "marked",
+                          "presentPercent"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "approvals": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string",
+                            "enum": [
+                              "leave",
+                              "condonation",
+                              "concession",
+                              "grace",
+                              "lateRegistration",
+                              "signoff",
+                              "payroll"
+                            ]
+                          },
+                          "count": {
+                            "type": "integer"
+                          },
+                          "href": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "count",
+                          "href"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "school",
+                    "today",
+                    "term",
+                    "faculty",
+                    "fees",
+                    "scholarships",
+                    "hostel",
+                    "grievances",
+                    "incidentsOpen",
+                    "predictor",
+                    "lectures",
+                    "approvals"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/academics/structure": {
       "get": {
         "summary": "The college's academic structure: departments, programmes, schemes, courses with outcomes, terms, rooms, divisions, bells, faculty",
@@ -137538,18 +138210,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "allOf": [
-                                  {
-                                    "$ref": "#/properties/rule/properties/genders/items"
-                                  }
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -137558,9 +138218,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -138254,18 +138912,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "allOf": [
-                                  {
-                                    "$ref": "#/properties/rule/properties/genders/items"
-                                  }
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -138274,9 +138920,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -138993,18 +139637,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "allOf": [
-                                  {
-                                    "$ref": "#/properties/rule/properties/genders/items"
-                                  }
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -139013,9 +139645,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -139544,18 +140174,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "allOf": [
-                                  {
-                                    "$ref": "#/properties/rule/properties/genders/items"
-                                  }
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -139564,9 +140182,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -143164,7 +143780,36 @@
                                 "nullable": true
                               },
                               "record": {
-                                "$ref": "#/properties/record"
+                                "type": "object",
+                                "properties": {
+                                  "cgpa": {
+                                    "$ref": "#/properties/record/properties/cgpa"
+                                  },
+                                  "liveBacklogs": {
+                                    "$ref": "#/properties/record/properties/liveBacklogs"
+                                  },
+                                  "attendancePct": {
+                                    "$ref": "#/properties/record/properties/attendancePct"
+                                  },
+                                  "programmeId": {
+                                    "$ref": "#/properties/record/properties/programmeId"
+                                  },
+                                  "programmeName": {
+                                    "$ref": "#/properties/record/properties/programmeName"
+                                  },
+                                  "batchYear": {
+                                    "$ref": "#/properties/record/properties/batchYear"
+                                  }
+                                },
+                                "required": [
+                                  "cgpa",
+                                  "liveBacklogs",
+                                  "attendancePct",
+                                  "programmeId",
+                                  "programmeName",
+                                  "batchYear"
+                                ],
+                                "additionalProperties": false
                               },
                               "skills": {
                                 "type": "array",
@@ -143968,19 +144613,6 @@
                         "batchYear": {
                           "type": "integer",
                           "nullable": true
-                        },
-                        "gender": {
-                          "type": "string",
-                          "enum": [
-                            "M",
-                            "F",
-                            "T"
-                          ],
-                          "nullable": true
-                        },
-                        "category": {
-                          "type": "string",
-                          "nullable": true
                         }
                       },
                       "required": [
@@ -143989,9 +144621,7 @@
                         "attendancePct",
                         "programmeId",
                         "programmeName",
-                        "batchYear",
-                        "gender",
-                        "category"
+                        "batchYear"
                       ],
                       "additionalProperties": false
                     },
@@ -144290,19 +144920,6 @@
                         "batchYear": {
                           "type": "integer",
                           "nullable": true
-                        },
-                        "gender": {
-                          "type": "string",
-                          "enum": [
-                            "M",
-                            "F",
-                            "T"
-                          ],
-                          "nullable": true
-                        },
-                        "category": {
-                          "type": "string",
-                          "nullable": true
                         }
                       },
                       "required": [
@@ -144311,9 +144928,7 @@
                         "attendancePct",
                         "programmeId",
                         "programmeName",
-                        "batchYear",
-                        "gender",
-                        "category"
+                        "batchYear"
                       ],
                       "additionalProperties": false
                     },
@@ -145721,6 +146336,30 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "awaitingConsent": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "applicationId": {
+                            "type": "string"
+                          },
+                          "driveTitle": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "applicationId",
+                          "driveTitle",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -145791,6 +146430,364 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/family/placement/applications/{applicationId}/consent": {
+      "post": {
+        "summary": "A guardian's consent to a minor's drive application: only then does the company see the record",
+        "description": "Roles: PARENT. Only while the school has PLACEMENT switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "x-module": "PLACEMENT",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "offers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "driveId": {
+                            "type": "string"
+                          },
+                          "driveTitle": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "packageRupees": {
+                            "type": "integer"
+                          },
+                          "hasLetter": {
+                            "type": "boolean"
+                          },
+                          "letterFileId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "acceptedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "declinedAt": {
+                            "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          },
+                          "joinedAt": {
+                            "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          },
+                          "dreamException": {
+                            "type": "boolean"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "driveId",
+                          "driveTitle",
+                          "companyName",
+                          "studentMembershipId",
+                          "studentName",
+                          "packageRupees",
+                          "hasLetter",
+                          "letterFileId",
+                          "acceptedAt",
+                          "declinedAt",
+                          "joinedAt",
+                          "dreamException",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "internships": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "studentName": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "INDUSTRY",
+                              "RESEARCH",
+                              "FAMILY_BUSINESS"
+                            ]
+                          },
+                          "from": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "to": {
+                            "$ref": "#/properties/internships/items/properties/from"
+                          },
+                          "hours": {
+                            "type": "integer"
+                          },
+                          "credits": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "windowSemester": {
+                            "type": "integer"
+                          },
+                          "supervisorName": {
+                            "type": "string"
+                          },
+                          "facultyMembershipId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "facultyName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "diary": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "on": {
+                                  "$ref": "#/properties/internships/items/properties/from"
+                                },
+                                "hours": {
+                                  "type": "number"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "on",
+                                "hours",
+                                "text"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "hasReport": {
+                            "type": "boolean"
+                          },
+                          "reportFileId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "industryGrade": {
+                            "type": "string",
+                            "enum": [
+                              "O",
+                              "A",
+                              "B",
+                              "C",
+                              "D",
+                              "F"
+                            ],
+                            "nullable": true
+                          },
+                          "facultyVisitAt": {
+                            "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          },
+                          "vivaMarks": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PROPOSED",
+                              "APPROVED",
+                              "SUBMITTED",
+                              "EVALUATED",
+                              "CREDITED",
+                              "REFUSED"
+                            ]
+                          },
+                          "needsDeclaration": {
+                            "type": "boolean"
+                          },
+                          "hasDeclaration": {
+                            "type": "boolean"
+                          },
+                          "declarationFileId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "creditedAt": {
+                            "$ref": "#/properties/offers/items/properties/acceptedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "studentMembershipId",
+                          "studentName",
+                          "companyName",
+                          "kind",
+                          "from",
+                          "to",
+                          "hours",
+                          "credits",
+                          "windowSemester",
+                          "supervisorName",
+                          "facultyMembershipId",
+                          "facultyName",
+                          "diary",
+                          "hasReport",
+                          "reportFileId",
+                          "industryGrade",
+                          "facultyVisitAt",
+                          "vivaMarks",
+                          "status",
+                          "needsDeclaration",
+                          "hasDeclaration",
+                          "declarationFileId",
+                          "creditedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "awaitingConsent": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "applicationId": {
+                            "type": "string"
+                          },
+                          "driveTitle": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "applicationId",
+                          "driveTitle",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "offers",
+                    "internships"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "maxLength": 40
+                  }
+                },
+                "required": [
+                  "childId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/api/v1/recruiter/company": {
@@ -145895,6 +146892,26 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "invitations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "companyId",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -146049,6 +147066,26 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "invitations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "companyId",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -146158,7 +147195,7 @@
     },
     "/api/v1/recruiter/company/colleagues": {
       "post": {
-        "summary": "Add another recruiter account, by its address, to the company",
+        "summary": "Invite another recruiter account, by its address, to the company; it counts once they accept, and the answer is the same for any address",
         "description": "Roles: RECRUITER.",
         "security": [
           {
@@ -146258,6 +147295,428 @@
                         ],
                         "additionalProperties": false
                       }
+                    },
+                    "invitations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "companyId",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "colleagues"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "email"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/recruiter/company/invitations/{companyId}": {
+      "post": {
+        "summary": "Accept or decline a colleague's invitation to a company",
+        "description": "Roles: RECRUITER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "RECRUITER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "sectors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "IT_SOFTWARE",
+                              "CORE_ENGINEERING",
+                              "BFSI",
+                              "CONSULTING",
+                              "MANUFACTURING",
+                              "PHARMA_HEALTH",
+                              "FMCG_RETAIL",
+                              "EDTECH",
+                              "GOVT_PSU",
+                              "STARTUP",
+                              "OTHER"
+                            ]
+                          }
+                        },
+                        "pointOfContact": {
+                          "type": "string"
+                        },
+                        "verifiedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "recruiters": {
+                          "type": "integer"
+                        },
+                        "firstVisitYear": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "drives": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "identifier",
+                        "sectors",
+                        "pointOfContact",
+                        "verifiedAt",
+                        "recruiters",
+                        "firstVisitYear",
+                        "drives"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "colleagues": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "email"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "invitations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "companyId",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "company",
+                    "colleagues"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "accept": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "accept"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/recruiter/company/colleagues/remove": {
+      "post": {
+        "summary": "Take a recruiter, or oneself, off the company; its drives close to them at once",
+        "description": "Roles: RECRUITER.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "RECRUITER"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "company": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "identifier": {
+                          "type": "string"
+                        },
+                        "sectors": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "IT_SOFTWARE",
+                              "CORE_ENGINEERING",
+                              "BFSI",
+                              "CONSULTING",
+                              "MANUFACTURING",
+                              "PHARMA_HEALTH",
+                              "FMCG_RETAIL",
+                              "EDTECH",
+                              "GOVT_PSU",
+                              "STARTUP",
+                              "OTHER"
+                            ]
+                          }
+                        },
+                        "pointOfContact": {
+                          "type": "string"
+                        },
+                        "verifiedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "recruiters": {
+                          "type": "integer"
+                        },
+                        "firstVisitYear": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "drives": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "identifier",
+                        "sectors",
+                        "pointOfContact",
+                        "verifiedAt",
+                        "recruiters",
+                        "firstVisitYear",
+                        "drives"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "colleagues": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "email"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "invitations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "companyId",
+                          "companyName"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "default": []
                     }
                   },
                   "required": [
@@ -147464,19 +148923,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "type": "string",
-                                "enum": [
-                                  "M",
-                                  "F",
-                                  "T"
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -147485,9 +148931,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -148077,19 +149521,6 @@
                               "batchYear": {
                                 "type": "integer",
                                 "nullable": true
-                              },
-                              "gender": {
-                                "type": "string",
-                                "enum": [
-                                  "M",
-                                  "F",
-                                  "T"
-                                ],
-                                "nullable": true
-                              },
-                              "category": {
-                                "type": "string",
-                                "nullable": true
                               }
                             },
                             "required": [
@@ -148098,9 +149529,7 @@
                               "attendancePct",
                               "programmeId",
                               "programmeName",
-                              "batchYear",
-                              "gender",
-                              "category"
+                              "batchYear"
                             ],
                             "additionalProperties": false
                           },
@@ -154456,15 +155885,16 @@
     },
     "/api/v1/exam-cell/sessions/{sessionId}/results/publish": {
       "post": {
-        "summary": "Publish a run: the one before is superseded and kept; backlogs and credits follow.",
-        "description": "Roles: EXAM_CONTROLLER. Only while the school has EXAMS switched on.",
+        "summary": "Publish a run: the one before is superseded and kept; backlogs and credits follow. A run that changes a published result is the principal's to publish.",
+        "description": "Roles: EXAM_CONTROLLER, PRINCIPAL. Only while the school has EXAMS switched on.",
         "security": [
           {
             "bearer": []
           }
         ],
         "x-access": [
-          "EXAM_CONTROLLER"
+          "EXAM_CONTROLLER",
+          "PRINCIPAL"
         ],
         "x-module": "EXAMS",
         "responses": {
@@ -164782,6 +166212,361 @@
         ]
       }
     },
+    "/api/v1/iqac/surveys/{surveyId}/links": {
+      "post": {
+        "summary": "One signed link for one respondent of an employer's or a parent's survey: answered once, signed out, dead once the survey closes (G-5)",
+        "description": "Roles: IQAC, ADMIN. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN"
+        ],
+        "x-module": "IQAC",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "token",
+                    "path"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "surveyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/public/surveys/{token}": {
+      "get": {
+        "summary": "An employer's or a parent's survey through its signed link: title, questions, whether this link has answered; a forged, closed or wrong link is 404; rate-limited per address",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "SSS",
+                        "COURSE_FEEDBACK",
+                        "EXIT",
+                        "ALUMNI",
+                        "EMPLOYER",
+                        "PARENT",
+                        "TEACHER"
+                      ]
+                    },
+                    "closesOn": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "answered": {
+                      "type": "boolean"
+                    },
+                    "questions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "label"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "kind",
+                    "closesOn",
+                    "answered",
+                    "questions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Answer through the signed link, once (409 the second time); anonymous",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "SSS",
+                        "COURSE_FEEDBACK",
+                        "EXIT",
+                        "ALUMNI",
+                        "EMPLOYER",
+                        "PARENT",
+                        "TEACHER"
+                      ]
+                    },
+                    "closesOn": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "answered": {
+                      "type": "boolean"
+                    },
+                    "questions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "label"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "kind",
+                    "closesOn",
+                    "answered",
+                    "questions"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "answers": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 4
+                    }
+                  }
+                },
+                "required": [
+                  "answers"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/iqac/surveys/{surveyId}/transcribe": {
       "post": {
         "summary": "Type in an employer's or a parent's paper form",
@@ -167365,7 +169150,7 @@
     "/api/v1/voice": {
       "get": {
         "summary": "The surveys open to me (the SSS, my offerings' course feedback and the exit survey for a student; the alumni survey for an alumnus; the teachers' survey for faculty) and a student's own grievances",
-        "description": "Roles: STUDENT, ALUMNUS, FACULTY, HOD. Only while the school has IQAC switched on.",
+        "description": "Roles: STUDENT, ALUMNUS, FACULTY, HOD, PARENT. Only while the school has IQAC switched on.",
         "security": [
           {
             "bearer": []
@@ -167375,7 +169160,8 @@
           "STUDENT",
           "ALUMNUS",
           "FACULTY",
-          "HOD"
+          "HOD",
+          "PARENT"
         ],
         "x-module": "IQAC",
         "responses": {
@@ -167574,7 +169360,7 @@
     "/api/v1/voice/surveys/{surveyId}": {
       "post": {
         "summary": "Answer a survey once (409 the second time); an anonymous survey keeps no name",
-        "description": "Roles: STUDENT, ALUMNUS, FACULTY, HOD. Only while the school has IQAC switched on.",
+        "description": "Roles: STUDENT, ALUMNUS, FACULTY, HOD, PARENT. Only while the school has IQAC switched on.",
         "security": [
           {
             "bearer": []
@@ -167584,7 +169370,8 @@
           "STUDENT",
           "ALUMNUS",
           "FACULTY",
-          "HOD"
+          "HOD",
+          "PARENT"
         ],
         "x-module": "IQAC",
         "responses": {
@@ -169120,6 +170907,13 @@
                           "refundRecordedAt": {
                             "$ref": "#/properties/items/items/properties/antiRaggingStudentAt"
                           },
+                          "supernumeraryAt": {
+                            "$ref": "#/properties/items/items/properties/antiRaggingStudentAt"
+                          },
+                          "supernumeraryReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
                           "createdAt": {
                             "$ref": "#/properties/items/items/properties/antiRaggingStudentAt"
                           }
@@ -169433,6 +171227,13 @@
                     },
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
@@ -169810,6 +171611,13 @@
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     }
@@ -170098,6 +171906,13 @@
                     },
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
@@ -170433,6 +172248,13 @@
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     }
@@ -170745,6 +172567,13 @@
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     }
@@ -171053,6 +172882,13 @@
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
                     }
@@ -171311,6 +173147,323 @@
         ]
       }
     },
+    "/api/v1/college/admissions/applications/{applicationId}/supernumerary": {
+      "post": {
+        "summary": "The principal gives a seat beyond the round's seats by category or the programme's intake, with the reason; an offer or admission past them is otherwise refused 409",
+        "description": "Roles: PRINCIPAL. Only while the school has ADMISSIONS switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PRINCIPAL"
+        ],
+        "x-module": "ADMISSIONS",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "roundId": {
+                      "type": "string"
+                    },
+                    "roundName": {
+                      "type": "string"
+                    },
+                    "programmeId": {
+                      "type": "string"
+                    },
+                    "number": {
+                      "type": "integer"
+                    },
+                    "applicantName": {
+                      "type": "string"
+                    },
+                    "birthdateKey": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                      "nullable": true
+                    },
+                    "category": {
+                      "type": "string",
+                      "enum": [
+                        "OPEN",
+                        "SC",
+                        "ST",
+                        "OBC",
+                        "VJNT",
+                        "SBC",
+                        "EWS",
+                        "NRI",
+                        "INSTITUTE",
+                        "MANAGEMENT"
+                      ]
+                    },
+                    "quota": {
+                      "type": "string",
+                      "enum": [
+                        "CAP",
+                        "INSTITUTE",
+                        "MANAGEMENT",
+                        "NRI",
+                        "MINORITY",
+                        "TFWS"
+                      ]
+                    },
+                    "gender": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "phone": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "email": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cetApplicationId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "meritRank": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "doc": {
+                            "type": "string",
+                            "enum": [
+                              "caste",
+                              "income",
+                              "domicile",
+                              "gap",
+                              "migration",
+                              "marksheets"
+                            ]
+                          },
+                          "required": {
+                            "type": "boolean"
+                          },
+                          "fileId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PENDING",
+                              "VERIFIED",
+                              "REJECTED"
+                            ]
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "doc",
+                          "required",
+                          "fileId",
+                          "status",
+                          "note"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "scrutinyComplete": {
+                      "type": "boolean"
+                    },
+                    "antiRaggingStudentAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "antiRaggingParentAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "APPLIED",
+                        "SCRUTINY",
+                        "OFFERED",
+                        "FEE_DUE",
+                        "ADMITTED",
+                        "CANCELLED",
+                        "REFUNDED"
+                      ]
+                    },
+                    "admissionFeePaise": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "nullable": true
+                    },
+                    "admissionFeePaidAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "admittedMembershipId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "admittedAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "cancelledAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "cancelReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "refundPaise": {
+                      "allOf": [
+                        {
+                          "$ref": "#/properties/admissionFeePaise"
+                        }
+                      ],
+                      "nullable": true
+                    },
+                    "refundSlab": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "refundRecordedAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "createdAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "roundId",
+                    "roundName",
+                    "programmeId",
+                    "number",
+                    "applicantName",
+                    "birthdateKey",
+                    "category",
+                    "quota",
+                    "gender",
+                    "phone",
+                    "email",
+                    "cetApplicationId",
+                    "meritRank",
+                    "documents",
+                    "scrutinyComplete",
+                    "antiRaggingStudentAt",
+                    "antiRaggingParentAt",
+                    "status",
+                    "admissionFeePaise",
+                    "admissionFeePaidAt",
+                    "admittedMembershipId",
+                    "admittedAt",
+                    "cancelledAt",
+                    "cancelReason",
+                    "refundPaise",
+                    "refundSlab",
+                    "refundRecordedAt",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "applicationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/api/v1/college/admissions/applications/{applicationId}/cancel": {
       "post": {
         "summary": "Cancel the seat; the refund the authority's slab allows is recorded, not paid",
@@ -171506,6 +173659,13 @@
                     },
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
@@ -171822,6 +173982,13 @@
                     },
                     "refundRecordedAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryAt": {
+                      "$ref": "#/properties/antiRaggingStudentAt"
+                    },
+                    "supernumeraryReason": {
+                      "type": "string",
+                      "nullable": true
                     },
                     "createdAt": {
                       "$ref": "#/properties/antiRaggingStudentAt"

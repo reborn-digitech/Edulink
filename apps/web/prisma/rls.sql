@@ -86,6 +86,7 @@ CREATE POLICY "School_readable" ON "School"
               AND mt."expertUserId" = current_setting('app.user_id', true)
               AND mt."status" = 'ACTIVE')))
          OR (current_setting('app.user_id', true) <> ''
+          AND current_setting('app.directory', true) = '1'
           AND "kind" IN ('COLLEGE', 'AUTONOMOUS_COLLEGE')
           AND "removedAt" IS NULL
           AND EXISTS (
@@ -1449,8 +1450,18 @@ ALTER TABLE "IssuedCertificate" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "IssuedCertificate_tenant_isolation" ON "IssuedCertificate";
 DROP POLICY IF EXISTS "IssuedCertificate_readable" ON "IssuedCertificate";
 CREATE POLICY "IssuedCertificate_tenant_isolation" ON "IssuedCertificate"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "IssuedCertificate_readable" ON "IssuedCertificate"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "code" = current_setting('app.join_code', true)
+        );
 
 -- AdmissionCycle
 ALTER TABLE "AdmissionCycle" ENABLE ROW LEVEL SECURITY;
@@ -2623,7 +2634,8 @@ CREATE POLICY "PlacementProfile_readable" ON "PlacementProfile"
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = d."companyId"
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL)))
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL)))
           OR EXISTS (
            SELECT 1 FROM "DriveApplication" pa
              JOIN "Drive" pd ON pd."id" = pa."driveId"
@@ -2660,7 +2672,8 @@ CREATE POLICY "Drive_readable" ON "Drive"
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = "Drive"."companyId"
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL))
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL))
           OR ("kind" = 'POOLED' AND "status" <> 'DRAFT'
               AND jsonb_exists_any("poolSchoolIds"::jsonb, string_to_array(current_setting('app.school_ids', true), ','))))
         );
@@ -2694,12 +2707,15 @@ CREATE POLICY "DriveApplication_readable" ON "DriveApplication"
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = d."companyId"
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL)))
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL)))
           OR ("consentAt" IS NOT NULL
+              AND "withdrawnAt" IS NULL
               AND EXISTS (
                SELECT 1 FROM "Drive" hd
                 WHERE hd."id" = "DriveApplication"."driveId"
                   AND hd."kind" = 'POOLED'
+                  AND hd."status" <> 'CLOSED'
                   AND hd."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))))
         );
 
@@ -2735,12 +2751,16 @@ CREATE POLICY "RoundResult_readable" ON "RoundResult"
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = d."companyId"
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL)))
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL)))
           OR EXISTS (
            SELECT 1 FROM "DriveApplication" ga
+             JOIN "Drive" gd ON gd."id" = ga."driveId"
             WHERE ga."driveId" = "RoundResult"."driveId"
               AND ga."studentMembershipId" = "RoundResult"."studentMembershipId"
-              AND ga."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))))
+              AND ga."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND gd."kind" = 'POOLED'
+              AND jsonb_exists(gd."poolSchoolIds"::jsonb, ga."schoolId")))
         );
 
 -- Offer
@@ -2775,12 +2795,16 @@ CREATE POLICY "Offer_readable" ON "Offer"
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = d."companyId"
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL)))
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL)))
           OR EXISTS (
            SELECT 1 FROM "DriveApplication" ga
+             JOIN "Drive" gd ON gd."id" = ga."driveId"
             WHERE ga."driveId" = "Offer"."driveId"
               AND ga."studentMembershipId" = "Offer"."studentMembershipId"
-              AND ga."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))))
+              AND ga."schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+              AND gd."kind" = 'POOLED'
+              AND jsonb_exists(gd."poolSchoolIds"::jsonb, ga."schoolId")))
         );
 
 -- Internship

@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { contentSecurityPolicy, isPage, NONCE_HEADER } from "@/lib/csp";
-import { ROUTE_HEADER } from "@/lib/route-header";
+import { ROUTE_HEADER, routeStamp } from "@/lib/route-header";
 
 /**
  * CORS for /api/v1 and for the files it names (/api/files), and only there,
@@ -66,7 +66,8 @@ export function middleware(request: NextRequest) {
  */
 function routed(request: NextRequest): Headers {
   const headers = new Headers(request.headers);
-  headers.set(ROUTE_HEADER, `${request.method} ${request.nextUrl.pathname}`);
+  // Decoded and normalised as the router serves it (route-header.ts routePath; campaign S-11).
+  headers.set(ROUTE_HEADER, routeStamp(request.method, request.nextUrl.pathname));
   return headers;
 }
 

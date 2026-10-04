@@ -60,6 +60,17 @@ export type JobWork = {
   perSchool?: Record<string, Record<string, number>>;
 };
 
+/**
+ * WHAT A RUN IS HANDED (LIFECYCLE-10, 4 Oct 2026): the clock, and — for a
+ * dry run on a test's own tenants or a simulated year — a scope. Every job is
+ * given both; a job whose worker cannot narrow to a key says so in
+ * `narrows`, and `runJob` refuses a scope naming a key it would ignore, so a
+ * scoped run never quietly reaches every tenant (the retention sweep's
+ * LIFECYCLE-1 lesson).
+ */
+export type JobScope = { schoolIds?: string[]; userIds?: string[] };
+export type JobRunOptions = { now: Date; scope?: JobScope };
+
 export type JobSpec = {
   name: JobName;
   /** Five-field crontab schedule. */
@@ -70,7 +81,9 @@ export type JobSpec = {
   maxRunMs: number;
   /** The job is OVERDUE when the last success is older than this. */
   expectEveryMs: number;
-  run: () => Promise<JobWork>;
+  /** The scope keys this job's worker honours; an empty list means it cannot be narrowed. */
+  narrows: readonly (keyof JobScope)[];
+  run: (opts: JobRunOptions) => Promise<JobWork>;
 };
 
 const HOUR = 3_600_000;
@@ -83,8 +96,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescTidy",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { autoRead, expired, perSchool } = await tidyAllNotifications();
+    narrows: ["userIds"],
+    run: async ({ now, scope }) => {
+      const { autoRead, expired, perSchool } = await tidyAllNotifications(now, scope?.userIds ? { onlyUserIds: scope.userIds } : {});
       return { summary: { autoRead, expired }, perSchool };
     },
   },
@@ -94,8 +108,10 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescRetention",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { summary, perSchool } = await sweepExpired();
+    narrows: ["schoolIds", "userIds"],
+    run: async ({ now, scope }) => {
+      // The sweep's own guard decides what a scope with a future clock may touch (retention.ts).
+      const { summary, perSchool } = await sweepExpired(now, undefined, scope ?? {});
       return { summary, perSchool };
     },
   },
@@ -107,8 +123,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescExpireOffers",
     maxRunMs: 30 * 60_000,
     expectEveryMs: 3 * HOUR,
-    run: async () => {
-      const { summary, perSchool } = await expireOffers();
+    narrows: [],
+    run: async ({ now }) => {
+      const { summary, perSchool } = await expireOffers(now);
       return { summary, perSchool };
     },
   },
@@ -121,8 +138,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescUsage",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { summary, perSchool } = await sampleUsage();
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { summary, perSchool } = await sampleUsage(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
       return { summary, perSchool };
     },
   },
@@ -135,19 +153,25 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescAccountsTidy",
     maxRunMs: 30 * 60_000,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const invites = await expireInvites();
-      const minors = await refreshMinority();
+    narrows: ["schoolIds", "userIds"],
+    run: async ({ now, scope }) => {
+      const schools = scope?.schoolIds ? { schoolIds: scope.schoolIds } : {};
+      // A scope by school narrows the minority refresh to the people of those schools, never to everybody.
+      const userIds = scope?.userIds ?? (scope?.schoolIds ? [...new Set((await db.membership.findMany({ where: { schoolId: { in: scope.schoolIds } }, select: { userId: true } })).map((m) => m.userId))] : undefined);
+      const invites = await expireInvites(now, schools);
+      const minors = await refreshMinority(now, userIds ? { userIds } : {});
       // Joins and guardian claims nobody decided in thirty days: see lib/request-expiry.ts.
-      const requests = await expireRequests();
+      const requests = await expireRequests(now, schools);
       // Subscriptions due within a week or past due, told to the operators
       // once per school per week (lib/subscriptions.ts): here rather than a
       // job of its own, which would cost a name on the jobs page and a line
       // in three dictionaries for one daily question.
-      const subscriptions = await remindSubscriptions();
+      // A test-fixture tenant is never reminded (isTestFixture: false in the worker): a fixture
+      // can exercise the reminder only by lifting its flag for the call, as zz-lifecycle.ts does (LIFECYCLE-9).
+      const subscriptions = await remindSubscriptions(now, schools);
       // The regulators' windows opening within a fortnight, told to each college's IQAC and office once per window (lib/operator-college.ts), here for the same reason.
       const { remindRegulatorDeadlines } = await import("./operator-college");
-      const regulators = await remindRegulatorDeadlines();
+      const regulators = await remindRegulatorDeadlines(now, schools);
       const perSchool: Record<string, Record<string, number>> = {};
       for (const [schoolId, counts] of [...Object.entries(invites.perSchool), ...Object.entries(requests.perSchool)]) {
         perSchool[schoolId] = { ...perSchool[schoolId], ...counts };
@@ -161,8 +185,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescDigest",
     maxRunMs: 2 * HOUR,
     expectEveryMs: 8 * DAY,
-    run: async () => {
-      const { sent, skipped, quiet, perSchool } = await sendWeeklyDigests();
+    narrows: ["userIds"],
+    run: async ({ scope }) => {
+      const { sent, skipped, quiet, perSchool } = await sendWeeklyDigests(scope?.userIds ? { onlyParentUserIds: scope.userIds } : {});
       return { summary: { sent, skipped, quiet }, perSchool };
     },
   },
@@ -172,8 +197,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescDepartures",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { executed, skippedStale, stuck, perSchool } = await runDueDepartures();
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      const { executed, skippedStale, stuck, perSchool } = await runDueDepartures(now, scope?.schoolIds ? { schoolIds: scope.schoolIds } : {});
       return { summary: { executed, skippedStale, stuck }, perSchool };
     },
   },
@@ -185,8 +211,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescHealth",
     maxRunMs: 15 * 60_000,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { emailed, overdue, failed, attention, quiet } = await sendOperatorHealthDigest();
+    narrows: [],
+    run: async ({ now }) => {
+      const { emailed, overdue, failed, attention, quiet } = await sendOperatorHealthDigest(now);
       return { summary: { emailed, overdue, failed, attention, quiet } };
     },
   },
@@ -196,6 +223,7 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescReclaim",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
+    narrows: [],
     run: async () => {
       const report = await reclaimOrphans({ dryRun: false });
       // Counts only — the report lists keys, which are not for a log line.
@@ -216,8 +244,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescFeesRemind",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { sent, perSchool } = await sendFeeReminders();
+    narrows: [],
+    run: async ({ now }) => {
+      const { sent, perSchool } = await sendFeeReminders(now);
       return { summary: { sent }, perSchool };
     },
   },
@@ -227,8 +256,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescFeesReconcile",
     maxRunMs: 30 * 60_000,
     expectEveryMs: 3 * HOUR,
-    run: async () => {
-      const { checked, settled, expired, perSchool } = await reconcileOnlinePayments();
+    narrows: [],
+    run: async ({ now }) => {
+      const { checked, settled, expired, perSchool } = await reconcileOnlinePayments(now);
       return { summary: { checked, settled, expired }, perSchool };
     },
   },
@@ -240,6 +270,7 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescCirculars",
     maxRunMs: 10 * 60_000,
     expectEveryMs: 15 * 60_000,
+    narrows: [],
     run: async () => {
       const { delivered, recipients, perSchool } = await deliverQueuedCirculars();
       return { summary: { delivered, recipients }, perSchool };
@@ -253,8 +284,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescGigsRemind",
     maxRunMs: 10 * 60_000,
     expectEveryMs: 3 * HOUR,
-    run: async () => {
-      const { reminded, perSchool } = await remindSessions();
+    narrows: [],
+    run: async ({ now }) => {
+      const { reminded, perSchool } = await remindSessions(now);
       return { summary: { reminded }, perSchool };
     },
   },
@@ -270,8 +302,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescGigsRelease",
     maxRunMs: 10 * 60_000,
     expectEveryMs: 3 * HOUR,
-    run: async () => {
-      const { expired, released, releasedPaise, invoiced, due, duePaise, refunded, held, failed, payoutsOpened, linksChecked } = await releaseSeatPayments();
+    narrows: [],
+    run: async ({ now }) => {
+      const { expired, released, releasedPaise, invoiced, due, duePaise, refunded, held, failed, payoutsOpened, linksChecked } = await releaseSeatPayments(now);
       return { summary: { expired, released, releasedPaise, invoiced, due, duePaise, refunded, held, failed, payoutsOpened, linksChecked } };
     },
   },
@@ -284,8 +317,9 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescWatch",
     maxRunMs: 5 * 60_000,
     expectEveryMs: HOUR,
-    run: async () => {
-      const { overdue, alerted, muted, operators, emailed } = await watchJobs();
+    narrows: [],
+    run: async ({ now }) => {
+      const { overdue, alerted, muted, operators, emailed } = await watchJobs({ now });
       return { summary: { overdue, alerted, muted, operators, emailed } };
     },
   },
@@ -297,6 +331,7 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescMessages",
     maxRunMs: 10 * 60_000,
     expectEveryMs: 15 * 60_000,
+    narrows: [],
     run: async () => {
       const { sent, failed, perSchool } = await drainQueue();
       return { summary: { sent, failed }, perSchool };
@@ -312,6 +347,7 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescBankStats",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
+    narrows: [],
     run: async () => {
       const { questions, buckets, removed } = await rebuildQuestionStats();
       return { summary: { questions, buckets, removed } };
@@ -327,8 +363,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescLibraryRemind",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: async () => {
-      const { sent, perSchool } = await remindDueTomorrow();
+    narrows: ["schoolIds"],
+    run: async ({ now, scope }) => {
+      if (!scope?.schoolIds) {
+        const { sent, perSchool } = await remindDueTomorrow(now);
+        return { summary: { sent }, perSchool };
+      }
+      let sent = 0;
+      const perSchool: Record<string, Record<string, number>> = {};
+      for (const schoolId of scope.schoolIds) {
+        const one = await remindDueTomorrow(now, { schoolId });
+        sent += one.sent;
+        Object.assign(perSchool, one.perSchool);
+      }
       return { summary: { sent }, perSchool };
     },
   },
@@ -345,8 +392,28 @@ export type RunOutcome =
   | { status: "failed"; runId: string; ms: number; error: string }
   | { status: "skipped"; reason: "running"; since: Date };
 
-export async function runJob(name: JobName, now: Date = new Date()): Promise<RunOutcome> {
+/**
+ * One run of a job. `now` reaches the worker (LIFECYCLE-10), so a job can be
+ * run on a simulated day. A `scope` narrows it to tenants or people: refused
+ * when it names a key the job cannot honour, and run without the JobRun row
+ * and its lock, because a dry run on a test's tenants is not the job having
+ * run for the server and must not read as its last success on /root/jobs.
+ */
+export async function runJob(name: JobName, now: Date = new Date(), scope?: JobScope): Promise<RunOutcome> {
   const spec = JOBS[name];
+  if (scope) {
+    const named = (Object.keys(scope) as (keyof JobScope)[]).filter((k) => scope[k] !== undefined);
+    const ignored = named.filter((k) => !spec.narrows.includes(k));
+    if (named.length === 0 || ignored.length > 0) throw new Error(`${name} cannot be narrowed by ${ignored.join(", ") || "an empty scope"}; it would run for every tenant`);
+    const started = Date.now();
+    try {
+      const work = await spec.run({ now, scope });
+      const summary: Record<string, unknown> = work.perSchool && Object.keys(work.perSchool).length > 0 ? { ...work.summary, perSchool: work.perSchool } : { ...work.summary };
+      return { status: "done", runId: "", ms: Date.now() - started, summary };
+    } catch (error) {
+      return { status: "failed", runId: "", ms: Date.now() - started, error: error instanceof Error ? `${error.name}: ${error.message}` : String(error) };
+    }
+  }
 
   const live = await db.jobRun.findFirst({
     where: { job: name, finishedAt: null },
@@ -370,7 +437,7 @@ export async function runJob(name: JobName, now: Date = new Date()): Promise<Run
   });
   const started = Date.now();
   try {
-    const work = await spec.run();
+    const work = await spec.run({ now });
     // One stored object: the counts, with the per-school map under its own
     // key when there is one — so the record of a run is a single row, and a
     // reader that only wants the line can drop `perSchool` and have it.

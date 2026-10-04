@@ -15,7 +15,7 @@
  * the college with IQAC off; and another college's faculty member is
  * refused this college's rows.
  */
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { createHash } from "node:crypto";
 import { PrismaClient } from "@prisma/client";
 import { NAAC_FRAMEWORKS } from "@edulink/contracts";
@@ -45,6 +45,8 @@ import { POST as submitPost } from "@/app/api/v1/iqac/filings/[filingId]/submit/
 import { POST as signoffPost } from "@/app/api/v1/iqac/filings/[filingId]/signoff/route";
 import { POST as disclosurePost } from "@/app/api/v1/iqac/disclosure/route";
 import { GET as overviewGet } from "@/app/api/v1/iqac/overview/route";
+import { GET as evidenceGet } from "@/app/api/v1/iqac/evidence/route";
+import { GET as financeTableGet } from "@/app/api/v1/accounts/finance-table/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -230,6 +232,17 @@ describe("the student's voice", () => {
     const r = await body<{ suppressed: boolean; overall: number | null }>(await surveyGet(get("/x"), params({ surveyId })));
     expect(r.suppressed).toBe(true);
     expect(r.overall).toBeNull();
+    // The predictor's SSS mean keeps the same floor, and is read only from a closed survey so it
+    // cannot move answer by answer (campaign S-17).
+    const { gatherFacts } = await import("@/lib/iqac-facts");
+    const mean = async () => (await gatherFacts(ids.quill, "2022-07-01", "2027-06-30", {})).facts.sssMean ?? null;
+    expect(await mean()).toBeNull();
+    await db.survey.update({ where: { id: surveyId }, data: { closedAt: new Date() } });
+    expect(await mean()).toBeNull();
+    await db.surveyResponse.createMany({ data: [1, 2, 3, 4].map((n) => ({ schoolId: ids.quill, surveyId, respondentHash: `zz-floor-${n}-${STAMP}`, answersJson: JSON.stringify(answers) })) });
+    expect(await mean()).toBe(3);
+    await db.surveyResponse.deleteMany({ where: { surveyId, respondentHash: { startsWith: "zz-floor-" } } });
+    await db.survey.update({ where: { id: surveyId }, data: { closedAt: null } });
   });
 
   it("dates a grievance fifteen working days on, and sends it to the Ombudsperson only after", async () => {
@@ -246,6 +259,15 @@ describe("the student's voice", () => {
     const esc = await escalatePost(json("/x", { note: "ZZ Past the limit" }), params({ grievanceId: g.id }));
     expect(esc.status).toBe(200);
     expect((await db.grievance.findUniqueOrThrow({ where: { id: g.id }, select: { status: true } })).status).toBe("ESCALATED");
+    // A grievance's attachment is not in the IQAC's evidence list, where its title is the kind and its uploader the student (campaign S-9).
+    const fileId = `zz-grv-${STAMP}`;
+    await db.uploadTicket.create({ data: { userId: ids.s2, fileId, mime: "application/pdf", size: 1000 } });
+    expect((await grievancePost(json("/api/v1/voice/grievances", { kind: "HARASSMENT", text: "ZZ Something I want the committee to see.", fileId }))).status).toBe(200);
+    expect(await db.iqacFile.count({ where: { fileId } })).toBe(1);
+    await as(ids.iqac, ids.quill, "IQAC");
+    const evidence = await body<{ items: { fileId: string; title: string; by: string }[] }>(await evidenceGet());
+    expect(evidence.items.map((i) => i.fileId)).not.toContain(fileId);
+    expect(evidence.items.some((i) => i.by === "ZZ Iqac Student2" || i.title === "HARASSMENT")).toBe(false);
     // The IQAC reads that a ragging grievance exists, not its words; the office acts.
     await as(ids.admin, ids.quill, "ADMIN");
     expect((await actPost(json("/x", { action: "RESOLVE", note: "ZZ done" }), params({ grievanceId: g.id }))).status).toBe(409);
@@ -272,6 +294,20 @@ describe("the filings", () => {
     expect((await db.collegeFiling.findUniqueOrThrow({ where: { id: f.id }, select: { status: true } })).status).toBe("SIGNED_OFF");
   });
 
+  it("a past year's filing reads the same figures when it is built again years later (LIFECYCLE-8)", async () => {
+    const year = new Date().getUTCFullYear() - 1;
+    const now = await buildFiling(ids.quill, "AQAR", year, ids.cycle);
+    const nirf = await buildFiling(ids.quill, "NIRF", year, ids.cycle);
+    vi.useFakeTimers({ toFake: ["Date"], now: Date.now() + 3 * 365 * 86_400_000 });
+    try {
+      // The teachers' experience once moved with the calendar (2.4.3 read 20.98, then 6.34).
+      expect((await buildFiling(ids.quill, "AQAR", year, ids.cycle)).figures).toEqual(now.figures);
+      expect((await buildFiling(ids.quill, "NIRF", year, ids.cycle)).figures).toEqual(nirf.figures);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("publishes the disclosure for a signed-out reader, and takes it down", async () => {
     await as(ids.iqac, ids.quill, "IQAC");
     expect((await disclosurePost(json("/x", { publish: true }))).status).toBe(200);
@@ -280,6 +316,30 @@ describe("the filings", () => {
     expect(JSON.stringify(doc)).not.toMatch(/Student\d/);
     expect((await disclosurePost(json("/x", { publish: false }))).status).toBe(200);
     expect(await publishedDisclosure(`zz-iqac-quill-${STAMP}`)).toBeNull();
+  });
+});
+
+describe("the tables the IQAC files from", () => {
+  it("reads the three-year finance table, as the catalog says (campaign W-8)", async () => {
+    await as(ids.iqac, ids.quill, "IQAC");
+    const res = await financeTableGet(get("/api/v1/accounts/finance-table"));
+    expect(res.status).toBe(200);
+    expect(Array.isArray((await body<{ years: unknown[] }>(res)).years)).toBe(true);
+    // A faculty member does not.
+    await as(ids.f1, ids.quill, "FACULTY");
+    expect((await financeTableGet(get("/api/v1/accounts/finance-table"))).status).toBe(403);
+  });
+
+  it("counts the heavy doors per person: a filing cut from live rows past the hour's budget is 429 with Retry-After (campaign S-18)", async () => {
+    await as(ids.iqac, ids.quill, "IQAC");
+    const { HEAVY_READ_BUDGET } = await import("@/lib/api-v1");
+    const bucket = `heavy:${ids.iqac}`;
+    await db.rateLimit.upsert({ where: { bucket }, create: { bucket, hits: HEAVY_READ_BUDGET.limit, windowEndsAt: new Date(Date.now() + 3_600_000) }, update: { hits: HEAVY_READ_BUDGET.limit, windowEndsAt: new Date(Date.now() + 3_600_000) } });
+    const refused = await filingsPost(json("/api/v1/iqac/filings", {}));
+    expect(refused.status).toBe(429);
+    expect(Number(refused.headers.get("retry-after"))).toBeGreaterThan(0);
+    await db.rateLimit.deleteMany({ where: { bucket } });
+    expect((await filingsPost(json("/api/v1/iqac/filings", {}))).status).toBe(422);
   });
 });
 

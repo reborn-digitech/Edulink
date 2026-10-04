@@ -3,7 +3,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { generateToken, hashToken } from "./crypto";
-import { sendParentLinkInvite } from "./email";
+import { localeForAddress, sendParentLinkInvite } from "./email";
 import { GUARDIAN_RELATIONS, INVITE_TTL_DAYS, type GuardianRelation } from "./constants";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
@@ -74,7 +74,7 @@ export async function inviteParent(
   if (pending) return { ok: false, errorKey: "invites.alreadyInvited" };
 
   const [school, inviter] = await Promise.all([
-    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true } }),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, locale: true } }),
     db.membership.findUniqueOrThrow({
       where: { id: ctx.membershipId! },
       select: { user: { select: { name: true, preferredName: true } } },
@@ -104,6 +104,8 @@ export async function inviteParent(
     childName,
     school.name,
     inviter.user.preferredName ?? inviter.user.name,
+    // The family's own language when the address is already an account, else the school's.
+    await localeForAddress(email, school.locale),
   );
 
   await audit({

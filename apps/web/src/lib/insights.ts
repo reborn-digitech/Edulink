@@ -507,6 +507,16 @@ export type SchoolSummary = {
   registersMissingToday: number;
   pendingLeave: number;
   concerns: number;
+  /** False on a day the school is shut (not a teaching day, or a closing holiday). */
+  openToday: boolean;
+  /** The closing holiday's name on such a day, when one is declared. */
+  holidayToday: string | null;
+  /**
+   * Classes with at least one mark in the window. Zero means no attendance
+   * was taken at all, and "every class is at or above the line" would be a
+   * sentence made of nothing (B-11).
+   */
+  classesWithAttendance: number;
 };
 
 export async function schoolSummary(
@@ -550,5 +560,8 @@ export async function schoolSummary(
     concerns: insights.filter(
       (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
     ).length,
+    openToday: due.open,
+    holidayToday: due.holidayName,
+    classesWithAttendance: insights.filter((k) => k.attendance.marks > 0).length,
   };
 }

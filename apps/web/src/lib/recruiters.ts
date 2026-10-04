@@ -6,6 +6,7 @@ import { audit } from "./audit";
 import { generateToken, hashPassword, hashToken, passwordProblems } from "./crypto";
 import { sendVerifyEmail } from "./email";
 import { writeJson } from "./json";
+import { normaliseLocale } from "./i18n/locales";
 import { consumeByCaller, SIGNUPS } from "./rate-limit";
 import { EMAIL_VERIFY_TTL_HOURS } from "./constants";
 import { getSession, type ActiveContext } from "./session";
@@ -86,7 +87,7 @@ export async function registerRecruiter(input: RecruiterRegister, locale: string
   }
 
   // Outside the transaction: a mail provider's hiccup must not undo an account; the link can be asked for again.
-  await sendVerifyEmail(email, `${APP_URL}/verify?token=${verifyToken}`, companyName).catch((error) => console.error("[recruiters] verification email failed", error));
+  await sendVerifyEmail(email, `${APP_URL}/verify?token=${verifyToken}`, companyName, normaliseLocale(locale)).catch((error) => console.error("[recruiters] verification email failed", error));
   await audit({ schoolId: null, actorUserId: userId, action: "recruiter.register", targetType: "User", targetId: userId, meta: { companyName } });
   return { ok: true, userId };
 }

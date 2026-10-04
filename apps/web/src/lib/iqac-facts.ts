@@ -2,7 +2,7 @@ import "server-only";
 import { IQAC_ENTERED_INPUTS, type IqacEnteredInput } from "@edulink/contracts";
 import { db } from "./db";
 import { readJsonArray } from "./json";
-import type { Facts } from "./iqac-rules";
+import { SURVEY_MIN_RESPONSES, type Facts } from "./iqac-rules";
 
 /**
  * WHERE THE PREDICTOR'S FACTS COME FROM (the IQAC module, 4 October 2026).
@@ -186,11 +186,15 @@ export async function gatherFacts(schoolId: string, windowFrom: string, windowTo
   const atrBySurvey = new Map(atrs.map((a) => [a.surveyId, a]));
   const closed = answered.filter((s) => s.closedAt || s.closesOn < now.toISOString().slice(0, 10));
   set("feedbackProcess", [answered.length > 0, closed.length > 0, answered.some((s) => atrBySurvey.has(s.id)), answered.some((s) => atrBySurvey.get(s.id)?.publishedAt)].filter(Boolean).length, { evidence: answered.map((s) => ({ type: "Survey", id: s.id, label: s.title })) });
-  const sss = answered.filter((s) => s.kind === "SSS").sort((a, b) => b.closesOn.localeCompare(a.closesOn))[0];
+  // The SSS mean is the survey's anonymity floor's as much as its counts are (campaign S-17): only a
+  // CLOSED survey — so the figure cannot move answer by answer, which would let two readings a
+  // response apart difference out one student's answers — and only with SURVEY_MIN_RESPONSES or more.
+  const sss = closed.filter((s) => s.kind === "SSS").sort((a, b) => b.closesOn.localeCompare(a.closesOn))[0];
   if (sss) {
     const responses = await db.surveyResponse.findMany({ where: { surveyId: sss.id }, select: { answersJson: true } });
     const all = responses.flatMap((r) => Object.values(JSON.parse(r.answersJson) as Record<string, number>)).filter((v) => typeof v === "number");
-    set("sssMean", all.length ? Math.round((all.reduce((a, b) => a + b, 0) / all.length) * 100) / 100 : null, { module: "SSS", evidence: [{ type: "Survey", id: sss.id, label: sss.title }] });
+    const enough = responses.length >= SURVEY_MIN_RESPONSES && all.length > 0;
+    set("sssMean", enough ? Math.round((all.reduce((a, b) => a + b, 0) / all.length) * 100) / 100 : null, { module: "SSS", evidence: [{ type: "Survey", id: sss.id, label: sss.title }] });
   } else set("sssMean", null, { module: "SSS" });
   const iqacMeetings = meetings.filter((m) => m.committee.kind === "IQAC");
   const filedNirf = filings.some((f) => f.kind === "NIRF");

@@ -78,6 +78,8 @@ const COLLEGE_STAFF_COMMON: NavItem[] = [
   { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   // My own leave (the integration builder, 4 Oct 2026): the teacher's form and balance under /account.
   { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+  // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
+  { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
 ];
 
 export const NAV: Record<Role, NavItem[]> = {
@@ -347,6 +349,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/placement", labelKey: "placement.navParent", icon: "briefcase", prefix: true, group: "school", module: "PLACEMENT" },
     // A college child's ledger net of the scholarship (the integration builder, 4 Oct 2026): ACADEMICS stands for "is a college".
     { href: "/parent/money", labelKey: "collegeOffice.moneyTitle", icon: "wallet", prefix: true, group: "school", module: "ACADEMICS" },
+    // The parent survey of a child's college, answered here (G-5, 4 Oct 2026).
+    { href: "/parent/voice", labelKey: "iqac.navParentVoice", icon: "star", group: "school", module: "IQAC" },
   ],
   // An expert sees their own work and nothing resembling a school's internals.
   EXPERT: [
@@ -369,6 +373,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/driver", labelKey: "modules.transportName", icon: "bus", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
+    { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
     // Every school's shared posts (4 Oct 2026): the module staff read the global feed as staff.
     { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
   ],
@@ -376,6 +382,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
+    { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
     { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
     // The desk's pages (the library module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/library/catalogue", labelKey: "library.tabCatalogue", icon: "books", primary: true, prefix: true, module: "LIBRARY", also: ["/library/titles"] },
@@ -392,6 +400,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hostel", labelKey: "modules.hostelName", icon: "bed", primary: true, prefix: true },
     { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
     { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
+    // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
+    { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
     { href: "/bulletin/global", labelKey: "bulletin.globalFeed", icon: "globe", group: "daily" },
     // The warden's pages (the hostel module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/hostel/rollcall", labelKey: "hostel.tabRollCall", icon: "checks", primary: true, prefix: true, module: "HOSTEL" },
@@ -416,6 +426,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/alumni/college", labelKey: "placement.navAlumni", icon: "handshake", primary: true, module: "ACADEMICS" },
     // IQAC (4 Oct 2026): the alumni survey, under the alumnus's own home.
     { href: "/alumni/survey", labelKey: "iqac.navAlumniSurvey", icon: "star", prefix: true, group: "running", module: "IQAC" },
+    // A paper asked for again — a TC copy, a bonafide, a transcript — with the fee the office sets (G-6, 4 Oct 2026).
+    { href: "/alumni/papers", labelKey: "certificateRequests.alumniTitle", icon: "receipt", group: "running" },
   ],
   /*
    * THE COLLEGE'S SEVEN (4 Oct 2026). Each starts with its home, which says
@@ -435,6 +447,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/supervision", labelKey: "placement.supervisionTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): my research items, my record, my course feedback.
     { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+    // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
+    { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
   ],
   HOD: [
     { href: "/hod", labelKey: "role.hod", icon: "treeStructure", primary: true, prefix: true },
@@ -451,6 +465,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hod/projects", labelKey: "placement.hodProjectsTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): the department's research, activities and course feedback.
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+    // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
+    { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
   ],
   EXAM_CONTROLLER: [
     { href: "/exam-cell", labelKey: "role.examController", icon: "exam", primary: true, prefix: true },

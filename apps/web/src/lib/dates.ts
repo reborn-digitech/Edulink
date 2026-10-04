@@ -479,3 +479,14 @@ export function displayDateToIso(input: string | null | undefined): string | nul
   if (asDate.toISOString().slice(0, 10) !== iso) return null;
   return iso;
 }
+
+/**
+ * A month key ("2026-10") as its heading in the reader's words — "October
+ * 2026", "ऑक्टोबर 2026". Pages printed the raw key ("Usage · 2026-10", B-15);
+ * a month is a label, so it takes the reader's locale, digits stay Latin.
+ * Anything that is not YYYY-MM is returned as given.
+ */
+export function formatMonthKey(monthKey: string, locale?: string): string {
+  if (!/^\d{4}-\d{2}$/.test(monthKey)) return monthKey;
+  return formatDateKey(`${monthKey}-01`, { month: "long", year: "numeric" }, locale);
+}

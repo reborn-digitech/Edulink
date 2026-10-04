@@ -11,8 +11,8 @@ import type { Endpoint } from "./types";
  *
  * Sweep notes: a body-taking write answers 422 to the sweep's empty body, so
  * sampling it with the fixture's competition (ZZ Northgate's own, open for
- * entries: scripts/sweep-doors.ts) changes nothing. The withdrawal stays
- * skipped, for the reason on its entry. The content team's endpoints refuse
+ * entries: scripts/sweep-doors.ts) changes nothing. The withdrawal names an
+ * entry nobody made, for the reason on its entry. The content team's endpoints refuse
  * every school role (403) wherever they are sampled, before the id is read.
  */
 const competition = (f: { competitionId: string | null }, tail: string) => (f.competitionId ? `/api/v1/contest/competitions/${f.competitionId}${tail}` : null);
@@ -20,12 +20,11 @@ const competition = (f: { competitionId: string | null }, tail: string) => (f.co
 export const CONTEST: Endpoint[] = [
   // ---- a pupil and a guardian ---------------------------------------------------
   { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/submit", summary: "A pupil hands in, or replaces, the https link to their work", access: ["STUDENT"], request: c.contestSubmitSchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/submit") },
-  // LEFT SKIPPED ON PURPOSE. The call deletes the entry, and an entry the sweep's pupil and parent may not
-  // withdraw (another child's) is invisible to the expert by policy, so the expert's answer is 404 where the
-  // sweep expects 403 from a role outside `access` (seen on 2026-10-01, the sample tried and taken back); the
-  // pupil's own entry would be deleted, leaving every role after the pupil a 404. tests/api-v1-contest.test.ts
-  // proves the door.
-  { method: "DELETE", path: "/api/v1/contest/entries/{entryId}", summary: "The pupil withdraws their entry, or their guardian says not this time", access: ["STUDENT", "PARENT"], response: c.okSchema },
+  // An entry NOBODY MADE (SWEEPS-1, 4 Oct 2026). The call deletes the entry, so a real one would be gone after
+  // the pupil's turn; this id is refused 403 to every role outside `access` (withdrawEntry asks the role before
+  // it reads the id, which it did not on 2026-10-01, when the expert's 404 stopped the sample) and 404 to the
+  // pupil and the guardian, and nothing is deleted. tests/api-v1-contest.test.ts proves the withdrawal itself.
+  { method: "DELETE", path: "/api/v1/contest/entries/{entryId}", summary: "The pupil withdraws their entry, or their guardian says not this time", access: ["STUDENT", "PARENT"], response: c.okSchema, sample: "/api/v1/contest/entries/zz-sweep-no-such-entry" },
   // ---- a school admin organising one ---------------------------------------------
   { method: "POST", path: "/api/v1/contest/competitions", summary: "A school admin posts a competition, saved as a draft", access: ["ADMIN"], request: c.contestCreateSchema, response: c.contestCreatedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/contest/competitions/{competitionId}/status", summary: "The organising school publishes, withdraws or re-drafts its competition", access: ["ADMIN"], request: c.contestStatusSchema, response: c.contestStatusSetSchema, emptyBodyStatus: 422, sample: (f) => competition(f, "/status") },

@@ -2,14 +2,14 @@ import "server-only";
 import { SCHOLARSHIP_SCHEME_TABLE, type CollegeCategory, type ScholarshipScheme, type StudentLedger } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./access-error";
+import { assertCollege } from "./modules";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { assignPlansAs, createStructure, dateToDay, dayToDate, publishStructure, regenerateDemands } from "./fees";
-import { collegeDesk, collegeStudent, kindOf, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, standingOf, yearKeyOf } from "./college-office";
-import { isCollegeKind } from "./institution";
+import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, officeUserIds, standingOf, yearKeyOf } from "./college-office";
 import { assertGuardianAccess } from "./tenancy";
 import { forSchool } from "./tenant-context";
 import { getT } from "./i18n/server";
@@ -302,13 +302,13 @@ export async function officeLedger(ctx: ActiveContext, studentMembershipId: stri
  */
 export async function myLedger(ctx: ActiveContext, childId?: string): Promise<StudentLedger> {
   if (ctx.role === "STUDENT" && ctx.membershipId && ctx.schoolId) {
-    if (!isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+    await assertCollege(ctx.schoolId);
     return ledgerFor(ctx.membershipId);
   }
   if (ctx.role === "PARENT") {
     const link = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE", ...(childId ? { studentMembershipId: childId } : {}) }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true, studentSchoolId: true } });
     if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
-    if (!isCollegeKind(await kindOf(link.studentSchoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+    await assertCollege(link.studentSchoolId);
     await assertGuardianAccess(ctx.user.id, link.studentMembershipId, "MONEY");
     // A guardian's session carries no school: the child's college's rows are read under its binding.
     return forSchool(link.studentSchoolId, () => ledgerFor(link.studentMembershipId));

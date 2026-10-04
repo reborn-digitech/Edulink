@@ -45,7 +45,7 @@ import { GET as familyGet } from "@/app/api/v1/academics/family/route";
 import { GET as mineGet } from "@/app/api/v1/academics/mine/route";
 import { POST as modulesPost } from "@/app/api/v1/admin/modules/route";
 import { GET as studentsGet } from "@/app/api/v1/academics/students/route";
-import { GET as offeringsGet } from "@/app/api/v1/academics/offerings/route";
+import { GET as offeringsGet, POST as offeringsPost } from "@/app/api/v1/academics/offerings/route";
 import { GET as timetableGet } from "@/app/api/v1/academics/timetable/route";
 import { GET as substitutionsGet } from "@/app/api/v1/academics/substitutions/route";
 import { GET as attendanceGet } from "@/app/api/v1/academics/attendance/route";
@@ -290,6 +290,21 @@ describe("internal assessment", () => {
     expect((await lockPost(json("/x", {}), params("offeringId", id.o1!))).status).toBe(403);
   });
 
+  it("will not let an HOD take another department's offering or mentoring group by pointing it at their own (campaign S-7, S-8)", async () => {
+    // Physics' offering, pointed at a law course and a law teacher by law's HOD: refused, unchanged.
+    await as("hodB", "HOD");
+    const taken = await offeringsPost(json("/api/v1/academics/offerings", { id: id.o3, termId: id.term, courseId: id.c4, divisionId: null, facultyMembershipId: m.facB, lectureHours: 3, tutorialHours: 0, practicalHours: 0, roomId: null, capacity: null }));
+    expect(taken.status).toBe(403);
+    expect(await db.courseOffering.findUniqueOrThrow({ where: { id: id.o3! }, select: { courseId: true, facultyMembershipId: true } })).toEqual({ courseId: id.c3, facultyMembershipId: m.facA2 });
+    // Physics' mentoring group, handed by law's HOD to a law teacher: refused, the mentor unchanged.
+    await as("hodA", "HOD");
+    const group = await body<{ id: string }>(await groupPost(json("/api/v1/academics/mentoring/groups", { termId: id.term, facultyMembershipId: m.facA, name: "ZZ Physics mentees", studentMembershipIds: [m.s1] })));
+    await as("hodB", "HOD");
+    expect((await groupPost(json("/api/v1/academics/mentoring/groups", { id: group.id, termId: id.term, facultyMembershipId: m.facB, name: "ZZ taken", studentMembershipIds: [m.s1] }))).status).toBe(403);
+    expect((await db.mentoringGroup.findUniqueOrThrow({ where: { id: group.id }, select: { facultyMembershipId: true } })).facultyMembershipId).toBe(m.facA);
+    await db.mentoringGroup.delete({ where: { id: group.id } });
+  });
+
   it("locks the totals, refuses every change after with 409, and the stored totals are the marks recomputed", async () => {
     await as("hodA", "HOD");
     expect((await lockPost(json("/x", {}), params("offeringId", id.o1!))).status).toBe(200);
@@ -354,5 +369,37 @@ describe("every read answers its readers", () => {
     // A student of another offering reads no course file of this one.
     await as("s3", "STUDENT");
     expect((await courseFileGet(get("/x"), params("offeringId", id.o1!))).status).toBe(403);
+  });
+});
+
+describe("a course file's links", () => {
+  it("are web links only: javascript:, intent: and another app's scheme are refused, and a stored one is read as no link (campaign S-21, PH-7)", async () => {
+    const { courseFileItemSaveSchema } = await import("@edulink/contracts");
+    const { POST: itemPost } = await import("@/app/api/v1/academics/offerings/[offeringId]/course-file/items/route");
+    for (const url of ["javascript:alert(1)", "intent://x#Intent;end", "sms:+911234567890", "file:///etc/passwd"]) {
+      expect(courseFileItemSaveSchema.safeParse({ kind: "RESOURCE", title: "ZZ link", url, fileId: null, coCodes: [] }).success).toBe(false);
+    }
+    expect(courseFileItemSaveSchema.safeParse({ kind: "RESOURCE", title: "ZZ link", url: "https://example.org/notes", fileId: null, coCodes: [] }).success).toBe(true);
+    await as("facA", "FACULTY");
+    expect((await itemPost(json("/x", { kind: "RESOURCE", title: "ZZ bad", url: "javascript:alert(1)", fileId: null, coCodes: [] }), params("offeringId", id.o1!))).status).toBe(422);
+    // A row written before the rule: the course file hands no link on.
+    const file = await db.courseFile.upsert({ where: { offeringId: id.o1! }, update: {}, create: { schoolId: id.college!, offeringId: id.o1! }, select: { id: true } });
+    const old = await db.courseFileItem.create({ data: { schoolId: id.college!, courseFileId: file.id, kind: "RESOURCE", title: "ZZ old link", url: "javascript:alert(1)", coCodes: "[]", createdByUserId: u.facA! }, select: { id: true } });
+    const read = await body<{ items: { id: string; url: string | null }[] }>(await courseFileGet(get("/x"), params("offeringId", id.o1!)));
+    expect(read.items.find((i) => i.id === old.id)?.url).toBeNull();
+  });
+});
+
+describe("attendance once the exam cell has decided eligibility", () => {
+  it("refuses a re-mark after the student's exam form is submitted, whose eligibility was snapshotted (campaign S-22)", async () => {
+    const lecture = await db.lecture.create({ data: { schoolId: id.college!, offeringId: id.o1!, dateKey: addDaysToKey(TODAY, -20), startMinute: 700, endMinute: 750 }, select: { id: true } });
+    await as("facA", "FACULTY");
+    const mark = (clientId: string, status: string) => markPost(json(`/x`, { clientId, entries: [{ studentMembershipId: m.s2, status }] }), params("lectureId", lecture.id));
+    expect((await mark("zz-frozen-0001", "PRESENT")).status).toBe(200);
+    const session = await db.examSession.create({ data: { schoolId: id.college!, name: `ZZ Acad session ${STAMP}`, termId: id.term!, status: "FORMS" }, select: { id: true } });
+    await db.examForm.create({ data: { schoolId: id.college!, sessionId: session.id, studentMembershipId: m.s2!, status: "SUBMITTED", submittedAt: new Date() } });
+    expect((await mark("zz-frozen-0002", "ABSENT")).status).toBe(409);
+    expect((await db.lectureAttendance.findFirstOrThrow({ where: { lectureId: lecture.id, studentMembershipId: m.s2! }, select: { status: true } })).status).toBe("PRESENT");
+    await db.examSession.delete({ where: { id: session.id } });
   });
 });

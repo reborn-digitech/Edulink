@@ -197,9 +197,13 @@ describe("a driver's trip", () => {
   it("tells the office of a missed start once, however many read the day", async () => {
     const head = await as(ids.principal, "PRINCIPAL", ids.school);
     await dayTrips(head);
+    const once = await db.notification.count({ where: { userId: ids.admin, titleKey: "transport.notifMissedTitle" } });
     await dayTrips(head);
-    const told = await db.notification.count({ where: { userId: ids.admin, titleKey: "transport.notifMissedTitle" } });
-    expect(told).toBe(1);
+    // Once per missed trip, however many read the day: after the evening stops' times (about 16:00 IST) the
+    // evening trip is missed too, so the count is the morning's alone only before then — the test once read 2 at night.
+    expect(once).toBeGreaterThanOrEqual(1);
+    expect(once).toBeLessThanOrEqual(2);
+    expect(await db.notification.count({ where: { userId: ids.admin, titleKey: "transport.notifMissedTitle" } })).toBe(once);
   });
 
   it("starts at the first stop, or elsewhere only with a reason, and only once", async () => {

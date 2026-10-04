@@ -127,8 +127,9 @@ export async function financeTable(schoolId: string, years = 3) {
   return { years: out };
 }
 
+/** The three-year finance table, for the desk and for the IQAC that files it (NAAC criterion 4, the AICTE disclosure; campaign W-8): totals only, no student. */
 export async function financeTableFor(ctx: ActiveContext, years = 3) {
-  const d = await collegeDesk(ctx, MONEY_READ);
+  const d = await collegeDesk(ctx, [...MONEY_READ, "IQAC"]);
   return financeTable(d.schoolId, years);
 }
 

@@ -313,6 +313,15 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
   const registered = new Set((await db.courseRegistration.findMany({ where: { offeringId: lecture.offeringId, status: "REGISTERED" }, select: { studentMembershipId: true } })).map((r) => r.studentMembershipId));
   if (input.entries.some((e) => !registered.has(e.studentMembershipId))) throw new RuleRefusal("academics.refuseNotRegistered", 422, undefined, "entries");
   const students = input.entries.map((e) => e.studentMembershipId);
+  // Frozen once the exam cell has decided the term's eligibility from it (campaign S-22): when the
+  // term's regular session has moved past its forms, or a student here has a form past draft, whose
+  // eligibility was snapshotted at submission. A later change would leave the decision and the
+  // register disagreeing; a correction after that is the condonation's, not the register's.
+  const decided = await db.examForm.findFirst({
+    where: { schoolId: c.schoolId, session: { termId: offering.termId, kind: "REGULAR" }, OR: [{ studentMembershipId: { in: students }, status: { not: "DRAFT" } }, { session: { status: { in: ["CONDUCT", "ASSESSMENT", "PUBLISHED", "CLOSED"] } } }] },
+    select: { id: true },
+  });
+  if (decided) throw new RuleRefusal("academics.refuseAttendanceFrozen", 409);
   const before = new Map((await attendanceRows(c.schoolId, offering.termId, { offeringIds: [lecture.offeringId] })).filter((r) => students.includes(r.studentMembershipId)).map((r) => [r.studentMembershipId, r]));
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;

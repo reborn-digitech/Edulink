@@ -357,7 +357,7 @@ export const internalMarksResultSchema = z.object({ saved: z.number().int(), ski
 
 export const coursePlanWeekSchema = z.object({ week: z.number().int().min(1).max(30), topic: z.string().trim().min(1).max(200), coCodes: z.array(z.string().trim().min(1).max(8)).max(12), taughtOn: dateKey.nullable() });
 export const courseFileSaveSchema = z.object({ plan: z.array(coursePlanWeekSchema).max(30) });
-export const courseFileItemSaveSchema = z.object({ kind: courseFileItemKindSchema, title: z.string().trim().min(2).max(160), url: z.string().trim().url().max(500).nullable(), fileId: z.string().trim().min(8).max(80).nullable(), coCodes: z.array(z.string().trim().min(1).max(8)).max(12) });
+export const courseFileItemSaveSchema = z.object({ kind: courseFileItemKindSchema, title: z.string().trim().min(2).max(160), url: z.string().trim().url().max(500).refine((u) => /^https?:\/\//i.test(u), "http").nullable(), fileId: z.string().trim().min(8).max(80).nullable(), coCodes: z.array(z.string().trim().min(1).max(8)).max(12) });
 export const courseFileReviewSchema = z.object({ note: z.string().trim().max(400) });
 /** Course-outcome attainment, computed on read: direct from internal marks, indirect from the exit survey (the IQAC module; null until it is filled). */
 export const attainmentSchema = z.object({

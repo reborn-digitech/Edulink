@@ -155,8 +155,10 @@ export async function decideKyc(ctx: ActiveContext, profileId: string, input: { 
   // to the telling: a notice that fails is logged, as the mail is.
   await forUser(profile.userId, () => notify({ userId: profile.userId, schoolId: null, kind: "EXPERT", titleKey, bodyKey, bodyVars: { note: note ?? "" }, url: "/expert/profile", meta: { event: "kyc.decided", decision: input.decision } })).catch((error) => console.error("[expert-kyc] kyc.decided notice failed", error));
   if (profile.user.email) {
-    const t = translator(normaliseLocale(readJson<UserPrefs>(profile.user.prefs, DEFAULT_PREFS).locale));
+    const locale = normaliseLocale(readJson<UserPrefs>(profile.user.prefs, DEFAULT_PREFS).locale);
+    const t = translator(locale);
     await sendExpertNotice({
+      locale,
       to: profile.user.email,
       subject: t(titleKey),
       heading: t(titleKey),

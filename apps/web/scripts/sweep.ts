@@ -14,7 +14,8 @@ import { mkdir, writeFile, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
-import { ROLES, type Role } from "@/lib/constants";
+import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
+import { MODULE_OF_ROLE } from "@edulink/contracts";
 
 config();
 
@@ -53,11 +54,13 @@ async function mint(email: string, role: string | null, schoolId: string | null,
 async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null }> {
   for (let attempt = 1; ; attempt++) {
     try {
+      const started = performance.now();
       const res = await fetch(BASE + path, {
         headers: actor ? { cookie: actor.cookie } : {},
         redirect: "manual",
       });
       const body = res.status === 200 ? await res.text() : "";
+      timings.push({ who: actor?.label ?? "anonymous", path, status: res.status, ms: Math.round(performance.now() - started) });
       return { status: res.status, body, loc: res.headers.get("location") };
     } catch (error) {
       if (attempt >= 3) {
@@ -128,6 +131,8 @@ async function serverStillThere(at: string): Promise<void> {
  * fine and stay: none of them is prose the app translates.
  */
 const results: { role: string; path: string; status: number; expected: number; ok: boolean; note: string }[] = [];
+/** Every page fetch's time, for the slowest twenty at the end (SWEEPS-3). */
+const timings: { who: string; path: string; status: number; ms: number }[] = [];
 
 /**
  * Checks this run did NOT make, and why.
@@ -1015,21 +1020,83 @@ async function staffingAndDuty(schoolId: string) {
  * Dynamic hrefs are skipped: there are none today, and one added later would
  * need a real id, which the rest of this file already does per feature.
  */
-async function everyNavLink(schoolId: string, actorFor: (role: Role) => Promise<Actor | null>) {
-  for (const role of ROLES) {
-    const actor = await actorFor(role);
-    if (!actor) continue;
+/**
+ * ⚠ THE MENU THE PERSON IS SHOWN, NOT EVERY ENTRY THERE IS (SWEEPS-2 and W-9,
+ * 4 Oct 2026). The shell hides an entry whose `module` the school has off
+ * (signed-in-shell.tsx: a guardian's by the children's schools), and the gate
+ * keeps a module or college role whose OWN module is off to its home
+ * (role-gate.ts). The walk used to ask for every entry regardless, and went
+ * red twenty times on its own questions — /principal/college for a school's
+ * office, a college role's pages at a school — where a real broken link would
+ * have hidden among them. Now each walker carries the modules its school has
+ * on; a hidden entry is not asked for, and an entry the gate would refuse is
+ * said out loud as a skip. The college's roles are walked at ZZ Vidya
+ * College, where their pages are, and the module roles at ZZ Northgate,
+ * which has their modules on.
+ */
+type NavWalker = { role: Role; actor: Actor; modulesOn: readonly string[]; where: string; expect?: Record<string, number>; also?: string[] };
 
+async function everyNavLink(walkers: NavWalker[]) {
+  for (const w of walkers) {
+    const role = w.role;
+    const shown = NAV[role].filter((item) => !item.module || w.modulesOn.includes(item.module));
     const hrefs = [
-      ...NAV[role].map((item) => item.href),
+      ...shown.map((item) => item.href),
       ...QUICK_ACTIONS[role].map((action) => action.href),
       ...(PRIMARY_ACTION[role] ? [PRIMARY_ACTION[role]!.href] : []),
+      ...(w.also ?? []),
     ].filter((href) => !href.includes("["));
+    // A limited role whose own module is off keeps its home, the notices and the person's own pages (role-gate.ts modulePagePermitted).
+    const own = isLimitedRole(role) ? (MODULE_OF_ROLE as Partial<Record<string, string>>)[role] : undefined;
+    const ownOff = own !== undefined && !w.modulesOn.includes(own);
+    const home = ROLE_HOME[role];
+    const keptWhenOff = (href: string) => href === home || href.startsWith(`${home}/`) || href.startsWith("/notifications") || href.startsWith("/account");
 
     for (const href of [...new Set(hrefs)]) {
-      await check(actor, href, 200, `⚠ ${role} is shown this link`);
+      if (ownOff && !keptWhenOff(href)) {
+        skip(`${role} ${href} at ${w.where}`, `the role's own module ${own} is off there: the gate keeps only its home`);
+        continue;
+      }
+      await check(w.actor, href, w.expect?.[href] ?? 200, `⚠ ${role} is shown this link at ${w.where}`);
     }
   }
+}
+
+/** The modules a school has on, as the shell reads them. */
+async function modulesAt(schoolId: string): Promise<string[]> {
+  return (await db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })).map((r) => r.module);
+}
+
+/** A guardian's menu follows the children's schools (enabledModulesForFamily). */
+async function modulesForFamily(email: string): Promise<string[]> {
+  const links = await db.guardianship.findMany({ where: { parent: { email }, status: "ACTIVE" }, select: { studentSchoolId: true } });
+  const rows = await db.schoolModule.findMany({ where: { schoolId: { in: [...new Set(links.map((l) => l.studentSchoolId))] } }, select: { module: true } });
+  return [...new Set(rows.map((r) => r.module))];
+}
+
+/** The slowest twenty pages by their slowest fetch, with the median and the number of fetches (SWEEPS-3). */
+function printSlowest(): void {
+  if (timings.length === 0) return;
+  const all = timings.map((t) => t.ms).sort((a, b) => a - b);
+  const at = (q: number) => all[Math.min(all.length - 1, Math.floor(q * all.length))]!;
+  const byPage = new Map<string, { ms: number[]; worst: (typeof timings)[number] }>();
+  for (const t of timings) {
+    const row = byPage.get(t.path);
+    if (!row) byPage.set(t.path, { ms: [t.ms], worst: t });
+    else {
+      row.ms.push(t.ms);
+      if (t.ms > row.worst.ms) row.worst = t;
+    }
+  }
+  const rows = [...byPage].map(([path, r]) => {
+    const sorted = [...r.ms].sort((a, b) => a - b);
+    return { path, max: sorted[sorted.length - 1]!, median: sorted[Math.floor(sorted.length / 2)]!, fetches: sorted.length, worst: r.worst };
+  });
+  rows.sort((a, b) => b.max - a.max);
+  console.log(`timings: ${timings.length} fetches, median ${at(0.5)} ms, p95 ${at(0.95)} ms, max ${all[all.length - 1]} ms. Slowest twenty pages:`);
+  console.log(`${"max ms".padStart(7)} ${"median".padStart(7)} ${"n".padStart(3)}  ${"status".padEnd(6)} ${"as".padEnd(22)} page`);
+  for (const r of rows.slice(0, 20)) console.log(`${String(r.max).padStart(7)} ${String(r.median).padStart(7)} ${String(r.fetches).padStart(3)}  ${String(r.worst.status).padEnd(6)} ${r.worst.who.padEnd(22)} ${r.path}`);
+  console.log("-".repeat(96));
 }
 
 
@@ -2571,14 +2638,28 @@ async function main() {
     update: { publishedAt: new Date() },
   });
 
-  // The four module roles (3 Oct 2026): a ZZ person in each, at this school, for the length of the walk — their homes, their account, and an alumnus's feed and inbox.
-  const moduleRoleUsers: string[] = [];
-  const moduleRoleActor = async (role: Role): Promise<Actor> => {
-    const email = `zz.sweep.${role.toLowerCase()}@edulink.test`;
-    const user = await db.user.upsert({ where: { email }, create: { email, name: `ZZ Sweep ${role.toLowerCase()}`, prefs: "{}", isTestFixture: true }, update: { isTestFixture: true } });
-    moduleRoleUsers.push(user.id);
-    await db.membership.upsert({ where: { userId_schoolId_role: { userId: user.id, schoolId: riverside.id, role } }, create: { userId: user.id, schoolId: riverside.id, role, status: "ACTIVE" }, update: { status: "ACTIVE", leftAt: null } });
-    return mint(email, role, riverside.id, `nav-${role.toLowerCase()}`);
+  /**
+   * The module roles and the college (SWEEPS-2, 4 Oct 2026). The four module roles were ZZ people made at
+   * Riverside for the walk, where only ALUMNI is on, so they saw their homes say "switched off" and nothing
+   * else; the six college staff roles likewise, at a school. Now the module roles are ZZ Northgate's own
+   * fixture people, where transport, the library and the hostel are on, and the college's roles — the six
+   * staff, the registrar (ADMIN), the principal, a student and a former student — are ZZ Vidya College's.
+   * No membership is made at Riverside for them any more.
+   */
+  const zzWalker = async (slug: string, role: Role, email: string, extra: Partial<NavWalker> = {}): Promise<NavWalker | null> => {
+    const at = await db.school.findUnique({ where: { slug }, select: { id: true } });
+    const member = at ? await db.membership.findFirst({ where: { schoolId: at.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { id: true } }) : null;
+    if (!at || !member) {
+      skip(`the nav walk of ${role} at ${slug}`, `${email} is not an active ${role} there (npm run zz:fixtures)`);
+      return null;
+    }
+    const where = slug.replace(/^zz-/, "");
+    const actor = await mint(email, role, at.id, `nav-${role.toLowerCase()}@${where}`);
+    // A walk of menu links reads and causes no notice; these fixture people share their notices with every other
+    // suite running at the time, so the run's clean-up of "the notices it caused" leaves theirs alone.
+    const person = await db.user.findUnique({ where: { email }, select: { id: true } });
+    if (person) touched.delete(person.id);
+    return { role, actor, modulesOn: await modulesAt(at.id), where, ...extra };
   };
 
   // The recruiter (4 Oct 2026): an outside account like the expert's, made for the walk and taken away again.
@@ -2587,31 +2668,42 @@ async function main() {
   await db.recruiterProfile.upsert({ where: { userId: sweepRecruiter.id }, create: { userId: sweepRecruiter.id, companyName: "ZZ Sweep Company" }, update: { disabledAt: null } });
 
   try {
-    await everyNavLink(riverside.id, async (role) => {
-      // The college's six staff roles (4 Oct 2026) at this school too: their homes say the module is off, their feed and account open.
-      if (role === "DRIVER" || role === "LIBRARIAN" || role === "WARDEN" || role === "ALUMNUS" || role === "FACULTY" || role === "HOD" || role === "EXAM_CONTROLLER" || role === "IQAC" || role === "TPO" || role === "ACCOUNTS") return moduleRoleActor(role);
-      if (role === "RECRUITER") return mint(sweepRecruiterEmail, "RECRUITER", null, "nav-recruiter");
-      if (role === "ADMIN") return admin;
-      if (role === "TEACHER") return teacher;
-      if (role === "STUDENT") return student;
-      if (role === "PARENT") return parent;
-      if (role === "PRINCIPAL") {
-        return principalHost?.user.email
-          ? mint(principalHost.user.email, "PRINCIPAL", riverside.id, "nav-principal")
-          : null;
-      }
+    const riversideModules = await modulesAt(riverside.id);
+    const walkers: (NavWalker | null)[] = [
+      { role: "ADMIN", actor: admin, modulesOn: riversideModules, where: "riverside" },
+      { role: "TEACHER", actor: teacher, modulesOn: riversideModules, where: "riverside" },
+      { role: "STUDENT", actor: student, modulesOn: riversideModules, where: "riverside" },
+      { role: "PARENT", actor: parent, modulesOn: await modulesForFamily("parent@example.com"), where: "riverside" },
+      principalHost?.user.email ? { role: "PRINCIPAL", actor: await mint(principalHost.user.email, "PRINCIPAL", riverside.id, "nav-principal"), modulesOn: riversideModules, where: "riverside" } : null,
       // The seed has no expert, and this is the exact role whose nav pointed at
       // a 404 for months. Skipping it would recreate the blind spot that let
       // that happen, so one is made and taken away again.
-      return mint(SWEEP_EXPERT_EMAIL, "EXPERT", null, "nav-expert");
-    });
+      { role: "EXPERT", actor: await mint(SWEEP_EXPERT_EMAIL, "EXPERT", null, "nav-expert"), modulesOn: [], where: "no school" },
+      { role: "RECRUITER", actor: await mint(sweepRecruiterEmail, "RECRUITER", null, "nav-recruiter"), modulesOn: [], where: "no school" },
+      // The module roles at ZZ Northgate (zz-fixtures.ts buildModuleRoles), whose modules are on there.
+      await zzWalker("zz-northgate-school", "DRIVER", "zz.driver01@zz.test"),
+      await zzWalker("zz-northgate-school", "LIBRARIAN", "zz.librarian@zz.test"),
+      await zzWalker("zz-northgate-school", "WARDEN", "zz.warden@zz.test"),
+      await zzWalker("zz-northgate-school", "ALUMNUS", "zz.alumni01@zz.test"),
+      // The college at ZZ Vidya College (zz-college.ts), every module on.
+      await zzWalker("zz-vidya-college", "FACULTY", "zz.faculty01@zz.test"),
+      await zzWalker("zz-vidya-college", "HOD", "zz.hod01@zz.test"),
+      await zzWalker("zz-vidya-college", "EXAM_CONTROLLER", "zz.examctrl@zz.test"),
+      await zzWalker("zz-vidya-college", "IQAC", "zz.iqac@zz.test"),
+      await zzWalker("zz-vidya-college", "TPO", "zz.tpo@zz.test"),
+      await zzWalker("zz-vidya-college", "ACCOUNTS", "zz.accounts@zz.test"),
+      await zzWalker("zz-vidya-college", "ADMIN", "zz.cadmin@zz.test"),
+      // A college's head is sent from the school dashboard to the college's (principal/page.tsx), which is asked for too.
+      await zzWalker("zz-vidya-college", "PRINCIPAL", "zz.cprincipal@zz.test", { expect: { "/principal": 307 }, also: ["/principal/college"] }),
+      await zzWalker("zz-vidya-college", "STUDENT", "zz.cstudent02@zz.test"),
+      await zzWalker("zz-vidya-college", "ALUMNUS", "zz.calumni01@zz.test"),
+    ];
+    await everyNavLink(walkers.filter((w): w is NavWalker => w !== null));
   } finally {
     if (madePrincipal) await db.membership.deleteMany({ where: { id: madePrincipal.id } });
     await db.expertProfile.deleteMany({ where: { userId: sweepExpertUser.id } });
     await db.session.deleteMany({ where: { userId: sweepExpertUser.id } });
     await db.user.deleteMany({ where: { id: sweepExpertUser.id } });
-    // The module-role people go with their memberships and sessions (both cascade from User).
-    if (moduleRoleUsers.length) await db.user.deleteMany({ where: { id: { in: moduleRoleUsers }, email: { startsWith: "zz.sweep." } } });
     // The recruiter's profile and sessions cascade from the User row.
     await db.user.deleteMany({ where: { id: sweepRecruiter.id, email: { startsWith: "zz.sweep." } } });
   }
@@ -2722,6 +2814,7 @@ async function main() {
     for (const line of skipped) console.log(`  skip  ${line}`);
     console.log("-".repeat(96));
   }
+  printSlowest();
   console.log(
     `${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected` +
       (skipped.length > 0 ? `, ${skipped.length} skipped.` : "."),

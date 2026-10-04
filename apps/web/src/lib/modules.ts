@@ -3,7 +3,8 @@ import { cache } from "react";
 import { defaultModulesForKind, isCollegeKind, modulesForKind, SCHOOL_MODULES, type InstitutionKind, type SchoolModuleCode } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
-import { AccessError, ModuleOffError } from "./access-error";
+import { AccessError, ModuleOffError, NotACollegeError } from "./access-error";
+import type { TranslationKey } from "./i18n/dictionary";
 import type { ActiveContext } from "./session";
 import { MODULE_META } from "./module-meta";
 
@@ -82,6 +83,17 @@ export async function isModuleOn(schoolId: string | null | undefined, module: Sc
 /** Throws ModuleOffError (a 403 with code MODULE_OFF at the API) unless the school has `module` on. */
 export async function assertModuleOn(schoolId: string | null | undefined, module: SchoolModuleCode): Promise<void> {
   if (!(await isModuleOn(schoolId, module))) throw new ModuleOffError(module);
+}
+
+/**
+ * A college's door at any other kind of tenant (W-17, 4 Oct 2026): throws
+ * NotACollegeError — 403 MODULE_OFF at the API, the module gate's answer —
+ * unless `schoolId` is a college. No school (a guardian's session) is not a
+ * college either; a guardian's read passes the CHILD'S school. `key` keeps the
+ * sentence the desk already said.
+ */
+export async function assertCollege(schoolId: string | null | undefined, key?: TranslationKey): Promise<void> {
+  if (!isCollegeKind((await institutionKindOf(schoolId)) ?? "SCHOOL")) throw new NotACollegeError(key);
 }
 
 /**

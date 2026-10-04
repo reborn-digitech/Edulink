@@ -148,7 +148,14 @@ export async function buildIqac(db: PrismaClient): Promise<IqacFixtures> {
   }
 
   // Last year's AQAR, signed off and filed.
-  if (!(await db.collegeFiling.findUnique({ where: { id: F.aqar }, select: { id: true } }))) {
+  const filed = await db.collegeFiling.findUnique({ where: { id: F.aqar }, select: { id: true, figuresJson: true } });
+  if (filed) {
+    // A fixture AQAR built before a filing read its own year's clock (LIFECYCLE-8, 4 Oct 2026) carries figures
+    // of the day it was built; rebuilt once so data:audit's iqac-filing check compares like with like. A real
+    // filed AQAR is never rewritten — this is the fixture's own row.
+    const built = await buildFiling(sid, "AQAR", year - 1, F.cycle);
+    if (JSON.stringify(built.figures) !== filed.figuresJson) await db.collegeFiling.update({ where: { id: F.aqar }, data: { body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures) } });
+  } else {
     const built = await buildFiling(sid, "AQAR", year - 1, F.cycle);
     await db.collegeFiling.create({ data: { id: F.aqar, schoolId: sid, kind: "AQAR", cycleId: F.cycle, year: year - 1, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), status: "FILED", checked: true, principalNote: "ZZ Approved for submission.", submittedAt: new Date(Date.now() - 3 * DAY), signedOffAt: new Date(Date.now() - 2 * DAY), signedOffByUserId: principal.userId, generatedByUserId: iqac.userId } });
   }

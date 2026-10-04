@@ -245,6 +245,28 @@ export async function closedOn(
   };
 }
 
+/**
+ * Is there school on this day, in the one shape every home reads.
+ *
+ * `open` is false on a day outside School.teachingDays (a Sunday, for a
+ * Monday-to-Saturday school) and on a day a closing holiday covers;
+ * `holidayName` names that holiday so a home can say "No school today —
+ * Diwali" rather than leave the reason to be guessed. A home that asks this
+ * says "no school today" on a closed day instead of "all done", "not marked
+ * yet", "missed start" or a percentage made of nothing (B-11, 4 Oct 2026).
+ */
+export async function schoolDayOn(
+  schoolId: string,
+  dateKey: string,
+): Promise<{ open: boolean; holidayName: string | null }> {
+  const day = await closedOn(schoolId, dateKey);
+  const closing = day.entries.find((entry) => HOLIDAY_KIND_META[entry.kind as HolidayKind]?.closesSchool);
+  return {
+    open: day.teachingDay && !day.closed,
+    holidayName: closing?.name ?? null,
+  };
+}
+
 /* -------------------------------------------------------------------------- */
 /* Writes — admin only                                                         */
 /* -------------------------------------------------------------------------- */

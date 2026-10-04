@@ -5,6 +5,7 @@ import { MODULE_OF_ROLE } from "@edulink/contracts";
 import { isLimitedRole, ROLE_HOME, type LimitedRole, type Role } from "./constants";
 import { NAV, isActive } from "./nav";
 import { AccessError, ModuleOffError } from "./access-error";
+import { routePath } from "./route-header";
 import { assertModuleOn, enabledModules } from "./modules";
 
 /**
@@ -122,15 +123,35 @@ export function modulePagePermitted(role: Role, path: string, modulesOn: readonl
 }
 
 /**
+ * A page the role's own menu lists, behind a module this school has off — the
+ * library desk's line of the no-dues (/accounts/no-dues, ACADEMICS) at a
+ * school. The menu hides the entry; typed in, it used to be served as if the
+ * session had no school, and the librarian landed on "Where would you like to
+ * go?" (the walk of 4 October, B-12). It is answered as a page that is not
+ * here (404) instead: nothing of it is drawn, and nothing suggests a choice
+ * of school would open it.
+ */
+export function ownPageModuleOff(role: Role, path: string, modulesOn: readonly string[]): boolean {
+  return NAV[role].some((item) => !!item.module && !modulesOn.includes(item.module) && isActive(path, item));
+}
+
+/**
  * What the gate makes of one request. Throws the API refusals (AccessError,
  * ModuleOffError — apiFailure answers them 403); returns "no-context" when a
- * page must be served as if the session had no school, and "pass" otherwise.
+ * page must be served as if the session had no school, "not-found" for the
+ * role's own menu page whose module is off here, and "pass" otherwise.
  */
-export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context"> {
-  if (!route) return "pass";
+export async function gateRequest(route: string | null, ctx: { role: Role | null; schoolId: string | null }, catalog: readonly Endpoint[] = ENDPOINTS): Promise<"pass" | "no-context" | "not-found"> {
+  // FAIL CLOSED (campaign S-11). No stamp means the middleware did not run — a path its matcher
+  // skips, such as one ending in ".ab", still reaches a page — and a stamp whose path does not
+  // decode ("!") cannot be gated. Either way a limited role is served as if it had no school,
+  // which every page gate answers by sending it to choose; the older roles pass as before.
+  if (!route) return isLimitedRole(ctx.role) ? "no-context" : "pass";
   const space = route.indexOf(" ");
   const method = route.slice(0, space);
-  const path = route.slice(space + 1);
+  const raw = route.slice(space + 1);
+  const path = raw === "!" ? null : routePath(raw);
+  if (path === null) return isLimitedRole(ctx.role) ? "no-context" : "pass";
   if (path.startsWith("/api/v1/")) {
     // Nothing to look up for the older roles while no door names a module.
     if (!isLimitedRole(ctx.role) && !routesOf(catalog).some((r) => r.e.module)) return "pass";
@@ -144,6 +165,9 @@ export async function gateRequest(route: string | null, ctx: { role: Role | null
     return "pass";
   }
   if (path.startsWith("/api/")) return "pass";
-  if (isLimitedRole(ctx.role) && !modulePagePermitted(ctx.role, path, await enabledModules(ctx.schoolId))) return "no-context";
+  if (isLimitedRole(ctx.role)) {
+    const on = await enabledModules(ctx.schoolId);
+    if (!modulePagePermitted(ctx.role, path, on)) return ownPageModuleOff(ctx.role, path, on) ? "not-found" : "no-context";
+  }
   return "pass";
 }

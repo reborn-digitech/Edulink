@@ -6,7 +6,7 @@ import { notify } from "./notify";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn, isModuleOn } from "./modules";
-import { forSchool } from "./tenant-context";
+import { forPlacementDirectory, forSchool, forUser } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { toCsvValue } from "./csv";
 import { applicationViews, companyViews, eligibilityAt, nameOf, placementColleges, poolIdsOf, readRounds, readSchedule, requirementViews, type DriveActor } from "./placement";
@@ -42,19 +42,27 @@ type Recruiter = { userId: string; name: string; companyIds: string[] };
 
 export async function recruiterOf(ctx: ActiveContext): Promise<Recruiter> {
   if (ctx.role !== "RECRUITER") throw new AccessError("access.wrongRoleForThisAction");
-  const profile = await db.recruiterProfile.findUnique({ where: { userId: ctx.user.id }, select: { disabledAt: true } });
+  const profile = await db.recruiterProfile.findUnique({ where: { userId: ctx.user.id }, select: { disabledAt: true, user: { select: { emailVerifiedAt: true } } } });
   if (!profile || profile.disabledAt) throw new AccessError("recruiter.refuseDisabled");
-  const bindings = await db.companyRecruiter.findMany({ where: { userId: ctx.user.id, removedAt: null }, select: { companyId: true } });
+  // A self-registered account is signed in at once; nothing of a college's — the directory, a
+  // company, a drive, a student's name — is shown until the address is proved (campaign S-4).
+  if (!profile.user.emailVerifiedAt) throw new AccessError("recruiter.refuseUnverified");
+  // Oldest binding first, so "the recruiter's company" (companyIds[0]) is the same on every call (S-16).
+  // Accepted bindings only: an invitation a colleague sent reads nothing until it is accepted (S-16).
+  const bindings = await db.companyRecruiter.findMany({ where: { userId: ctx.user.id, removedAt: null, acceptedAt: { not: null } }, orderBy: { addedAt: "asc" }, select: { companyId: true } });
   return { userId: ctx.user.id, name: ctx.user.name, companyIds: bindings.map((b) => b.companyId) };
 }
 
 export async function recruiterCompany(ctx: ActiveContext) {
   const me = await recruiterOf(ctx);
+  const pending = await db.companyRecruiter.findMany({ where: { userId: me.userId, removedAt: null, acceptedAt: null }, orderBy: { addedAt: "asc" }, select: { company: { select: { id: true, name: true } } } });
+  const invitations = pending.map((p) => ({ companyId: p.company.id, companyName: p.company.name }));
   const companyId = me.companyIds[0];
-  if (!companyId) return { company: null, colleagues: [] };
+  if (!companyId) return { company: null, colleagues: [], invitations };
   const [company] = await companyViews(null, { ids: [companyId] });
-  const colleagues = await db.companyRecruiter.findMany({ where: { companyId, removedAt: null, userId: { not: me.userId } }, select: { user: { select: { name: true, preferredName: true, email: true } } } });
-  return { company: company ?? null, colleagues: colleagues.map((c) => ({ name: nameOf(c.user), email: c.user.email })) };
+  // The colleagues who accepted: an invitation names nobody back to the one who sent it (S-16).
+  const colleagues = await db.companyRecruiter.findMany({ where: { companyId, removedAt: null, acceptedAt: { not: null }, userId: { not: me.userId } }, orderBy: { addedAt: "asc" }, select: { user: { select: { name: true, preferredName: true, email: true } } } });
+  return { company: company ?? null, colleagues: colleagues.map((c) => ({ name: nameOf(c.user), email: c.user.email })), invitations };
 }
 
 /**
@@ -71,23 +79,63 @@ export async function registerCompany(ctx: ActiveContext, input: CompanySave) {
   const company = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     const c = await tx.company.create({ data: { name: input.name, identifier: input.identifier, sectors: writeJson(input.sectors), pointOfContact: input.pointOfContact, createdByUserId: me.userId }, select: { id: true } });
-    await tx.companyRecruiter.create({ data: { companyId: c.id, userId: me.userId } });
+    await tx.companyRecruiter.create({ data: { companyId: c.id, userId: me.userId, acceptedAt: new Date() } });
     return c;
   });
   await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.register", targetType: "Company", targetId: company.id, meta: { identifier: input.identifier } });
   return recruiterCompany(ctx);
 }
 
-/** A bound recruiter adds a colleague: another RECRUITER account, by its address. Idempotent. */
+/**
+ * A bound recruiter INVITES a colleague: another RECRUITER account, by its
+ * address (campaign S-16). The binding counts only once that recruiter accepts
+ * it (acceptInvitation); until then it reads nothing, and the answer is the
+ * same whether or not the address is a recruiter's, so the door tells nobody
+ * who has an account (S-20). Idempotent.
+ */
 export async function addColleague(ctx: ActiveContext, email: string) {
   const me = await recruiterOf(ctx);
   const companyId = me.companyIds[0];
   if (!companyId) throw new RuleRefusal("placement.refuseNoCompany", 409);
   const other = await db.user.findUnique({ where: { email: email.trim().toLowerCase() }, select: { id: true, recruiterProfile: { select: { disabledAt: true } } } });
-  if (!other || !other.recruiterProfile || other.recruiterProfile.disabledAt) throw new RuleRefusal("placement.refuseNotRecruiter", 422, undefined, "email");
-  await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId, userId: other.id } }, update: { removedAt: null }, create: { companyId, userId: other.id } });
-  await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.colleague", targetType: "Company", targetId: companyId, meta: { added: other.id } });
+  if (other && other.id !== me.userId && other.recruiterProfile && !other.recruiterProfile.disabledAt) {
+    const had = await db.companyRecruiter.findUnique({ where: { companyId_userId: { companyId, userId: other.id } }, select: { removedAt: true, acceptedAt: true } });
+    if (!had || had.removedAt) {
+      await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId, userId: other.id } }, update: { removedAt: null, acceptedAt: null, addedByUserId: me.userId, addedAt: new Date() }, create: { companyId, userId: other.id, addedByUserId: me.userId } });
+      const company = await db.company.findUniqueOrThrow({ where: { id: companyId }, select: { name: true } });
+      // A notice that belongs to no school is written bound to its reader, as the expert's are.
+      await forUser(other.id, () => notify({ userId: other.id, schoolId: null, kind: "SYSTEM", titleKey: "placement.notifColleagueInvite", titleVars: { company: company.name, name: me.name }, url: "/recruiter" })).catch((error) => console.error("[placement] invitation notice failed", error));
+      await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.colleague", targetType: "Company", targetId: companyId, meta: { invited: other.id } });
+    }
+  }
   return recruiterCompany(ctx);
+}
+
+/** The invited recruiter's answer: accepted, the company's drives are theirs to read; declined, the invitation is gone. One company per account. */
+export async function answerInvitation(ctx: ActiveContext, companyId: string, accept: boolean) {
+  const me = await recruiterOf(ctx);
+  const row = await db.companyRecruiter.findUnique({ where: { companyId_userId: { companyId, userId: me.userId } }, select: { id: true, removedAt: true, acceptedAt: true } });
+  if (!row || row.removedAt || row.acceptedAt) throw new AccessError("placement.noSuchCompany", "NOT_FOUND");
+  if (accept && me.companyIds.length > 0) throw new RuleRefusal("placement.refuseHaveCompany", 409);
+  await db.companyRecruiter.update({ where: { id: row.id }, data: accept ? { acceptedAt: new Date() } : { removedAt: new Date() } });
+  await audit({ schoolId: null, actorUserId: me.userId, action: accept ? "placement.company.colleagueAccept" : "placement.company.colleagueDecline", targetType: "Company", targetId: companyId });
+  return recruiterCompany(ctx);
+}
+
+/**
+ * Takes a recruiter off the company — a colleague who left, or oneself. The
+ * binding is kept with its removedAt, so the company's drives stop being read
+ * through it at once (the policy's recruiterBound). An address that is no
+ * colleague changes nothing and says nothing.
+ */
+export async function removeColleague(ctx: ActiveContext, email: string) {
+  const me = await recruiterOf(ctx);
+  const companyId = me.companyIds[0];
+  if (!companyId) throw new RuleRefusal("placement.refuseNoCompany", 409);
+  const other = await db.user.findUnique({ where: { email: email.trim().toLowerCase() }, select: { id: true } });
+  const removed = other ? await db.companyRecruiter.updateMany({ where: { companyId, userId: other.id, removedAt: null }, data: { removedAt: new Date() } }) : { count: 0 };
+  if (removed.count > 0) await audit({ schoolId: null, actorUserId: me.userId, action: "placement.company.colleagueRemove", targetType: "Company", targetId: companyId, meta: { removed: other!.id } });
+  return other?.id === me.userId ? { company: null, colleagues: [], invitations: [] } : recruiterCompany(ctx);
 }
 
 /** The placement directory: colleges with PLACEMENT on, names and towns only. */
@@ -128,11 +176,15 @@ export async function myRequirements(ctx: ActiveContext) {
 async function boundDrive(me: Recruiter, driveId: string) {
   const d = await db.drive.findFirst({
     where: { id: driveId, companyId: { in: me.companyIds }, status: { in: [...RECRUITER_LIVE_STATUSES] } },
-    include: { company: { select: { name: true, verifiedAt: true, sectors: true } }, school: { select: { name: true } } },
+    include: { company: { select: { name: true, verifiedAt: true, sectors: true } } },
   });
   if (!d) throw new AccessError("placement.noSuchDrive", "NOT_FOUND");
   await assertModuleOn(d.schoolId, "PLACEMENT");
-  return d;
+  // The college's name through the placement directory (campaign S-13), nothing else of its row;
+  // read apart from the drive so a college that has just switched placement off is a 404, not a 500.
+  const school = await forPlacementDirectory(() => db.school.findUnique({ where: { id: d.schoolId }, select: { name: true } }));
+  if (!school) throw new AccessError("placement.noSuchDrive", "NOT_FOUND");
+  return { ...d, school };
 }
 
 /** The drive's eligible count: the host's students and, for a pooled drive, each guest's — each computed under that college's binding; only the number leaves. */
@@ -169,12 +221,16 @@ export async function recruiterDrives(ctx: ActiveContext) {
   if (me.companyIds.length === 0) return { drives: [], company };
   const rows = await db.drive.findMany({
     where: { companyId: { in: me.companyIds }, status: { in: [...RECRUITER_LIVE_STATUSES] } },
-    include: { company: { select: { name: true, verifiedAt: true, sectors: true } }, school: { select: { name: true } } },
+    include: { company: { select: { name: true, verifiedAt: true, sectors: true } } },
     orderBy: { createdAt: "desc" },
   });
+  // The colleges' names through the placement directory (campaign S-13); a college no longer in it is skipped.
+  const names = new Map((await forPlacementDirectory(() => db.school.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.schoolId))] } }, select: { id: true, name: true } }))).map((x) => [x.id, x.name]));
   const out = [];
-  for (const d of rows) {
-    if (!(await isModuleOn(d.schoolId, "PLACEMENT"))) continue;
+  for (const row of rows) {
+    const name = names.get(row.schoolId);
+    if (name === undefined || !(await isModuleOn(row.schoolId, "PLACEMENT"))) continue;
+    const d = { ...row, school: { name } };
     const applicantCount = await db.driveApplication.count({ where: { driveId: d.id, consentAt: { not: null }, withdrawnAt: null } });
     out.push({ ...driveHead(d), eligibleCount: await eligibleCount(d), applicantCount });
   }

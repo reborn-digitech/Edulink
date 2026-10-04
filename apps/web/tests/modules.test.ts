@@ -18,6 +18,7 @@ import { SCHOOL_MODULES, SCHOOL_VERSION_MODULES } from "@edulink/contracts";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { APP_SEGMENTS, gateRequest, modulePagePermitted } from "@/lib/role-gate";
+import { routeStamp } from "@/lib/route-header";
 import { ModuleOffError } from "@/lib/access-error";
 import { AccessError, assertClassAccess } from "@/lib/tenancy";
 import { apiFailure } from "@/lib/api-v1";
@@ -178,6 +179,27 @@ describe("a module role's pages", () => {
     await as(ids.hillDriver, "DRIVER", ids.hill, "GET /driver");
     const home = await getSession();
     expect({ role: home?.role, schoolId: home?.schoolId }).toEqual({ role: "DRIVER", schoolId: ids.hill });
+  });
+
+  it("fails closed: a request the middleware never stamped, and a path stamped encoded, carry no school for a module role (campaign S-11)", async () => {
+    // No stamp: a dotted last segment ("/admin/people/x.ab") skips the middleware's matcher yet still reaches a page.
+    await expect(gateRequest(null, { role: "DRIVER", schoolId: ids.hill })).resolves.toBe("no-context");
+    await expect(gateRequest(null, { role: "ADMIN", schoolId: ids.hill })).resolves.toBe("pass");
+    // The middleware stamps the DECODED path, as a production router serves "/%61dmin/people".
+    expect(routeStamp("GET", "/%61dmin/people")).toBe("GET /admin/people");
+    expect(routeStamp("GET", "//admin//people/")).toBe("GET /admin/people");
+    expect(routeStamp("GET", "/admin/%2e%2e/driver")).toBe("GET !");
+    expect(routeStamp("GET", "/admin%2Fpeople")).toBe("GET !");
+    expect(routeStamp("GET", "/%E0%A4")).toBe("GET !");
+    await expect(gateRequest(routeStamp("GET", "/%61dmin/people"), { role: "DRIVER", schoolId: ids.hill })).resolves.toBe("no-context");
+    // …and should a raw stamp arrive, the gate decodes it itself; an unreadable one is refused a module role.
+    await expect(gateRequest("GET /%61dmin/people", { role: "DRIVER", schoolId: ids.hill })).resolves.toBe("no-context");
+    await expect(gateRequest("GET !", { role: "DRIVER", schoolId: ids.hill })).resolves.toBe("no-context");
+    await expect(gateRequest("GET /%61pi/v1/admin/overview", { role: "DRIVER", schoolId: ids.hill })).rejects.toBeInstanceOf(AccessError);
+    await expect(gateRequest("GET /driver", { role: "DRIVER", schoolId: ids.hill })).resolves.toBe("pass");
+    // Through getSession: the same driver on the encoded path is served with no school.
+    await as(ids.hillDriver, "DRIVER", ids.hill, "GET /%61dmin/people");
+    expect((await getSession())?.schoolId).toBeNull();
   });
 
   it("names every top-level segment of app/(app) in APP_SEGMENTS, and nothing else", () => {

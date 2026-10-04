@@ -5,6 +5,9 @@
  *   npm run api:sweep                       against NEXT_PUBLIC_APP_URL (default :3000)
  *   npm run api:sweep -- --only=/shared/joins   only the endpoints whose path contains the text:
  *                                               a check of one change, not the sweep's count
+ *   npm run api:sweep -- --clean-since=<ISO> [--clean-until=<ISO>]
+ *                                               no sweep: take away what a run that never reached its own
+ *                                               clean-up wrote to the ZZ fixture schools in that window (W-13)
  *
  * Sessions are minted on ZZ Northgate exactly as the page sweep mints its
  * own, sent as bearer tokens (not cookies — the point is the phone's door),
@@ -14,12 +17,28 @@
  * role and 403 for the rest; signed out is 401 for anything not open to
  * anyone. An endpoint with a path parameter and no sample is skipped and
  * listed, so the gap is visible rather than silent.
+ *
+ * MODULES AND COLLEGES (SWEEPS-4 and W-17, 4 Oct 2026). A door whose module
+ * the actor's school has off answers 403 MODULE_OFF for every role, and that
+ * is what is expected there; a college's door (one filed in the college's
+ * catalog files) at a school may answer 403 MODULE_OFF, the one answer a
+ * college-only door gives a school. Every call is timed, and the slowest
+ * twenty doors are printed at the end (SWEEPS-3).
  */
 import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
 import { permits } from "../src/lib/api-catalog/types";
+import { ACADEMICS } from "../src/lib/api-catalog/academics";
+import { EXAMS } from "../src/lib/api-catalog/exams";
+import { IQAC } from "../src/lib/api-catalog/iqac";
+import { PLACEMENT } from "../src/lib/api-catalog/placement";
+import { COLLEGE_ADMISSIONS } from "../src/lib/api-catalog/college-admissions";
+import { SCHOLARSHIPS } from "../src/lib/api-catalog/scholarships";
+import { ACCOUNTS_DESK } from "../src/lib/api-catalog/accounts";
+import { COLLEGE_CAMPUS } from "../src/lib/api-catalog/college-campus";
+import { isCollegeKind } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
@@ -28,13 +47,65 @@ import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 const minted: string[] = [];
-const results: { endpoint: string; role: string; expected: number | number[]; got: number; ok: boolean }[] = [];
+const results: { endpoint: string; role: string; expected: number | number[] | string; got: number; ok: boolean }[] = [];
 const skipped: string[] = [];
+
+/**
+ * 24 HOURS, NOT ONE (W-13, 4 Oct 2026). The catalog is some 16,000 calls now,
+ * two to four hours on `next dev`; a one-hour session expired mid-run and every
+ * call after it would have been a false 401 — the page sweep learned the same
+ * and mints for a day. The run deletes its sessions at the end either way.
+ */
+const SESSION_MS = 86_400_000;
+
+/** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
+type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean };
+const tenantOf: Partial<Record<Role, Tenant>> = {};
+async function tenantAt(schoolId: string): Promise<Tenant> {
+  const [school, rows] = await Promise.all([db.school.findUnique({ where: { id: schoolId }, select: { kind: true } }), db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })]);
+  return { schoolId, modules: new Set(rows.map((r) => r.module)), college: isCollegeKind(school?.kind ?? "SCHOOL") };
+}
+async function familyTenant(parentUserId: string): Promise<Tenant> {
+  const children = await db.guardianship.findMany({ where: { parentUserId, status: "ACTIVE" }, select: { studentSchoolId: true } });
+  const ids = [...new Set(children.map((c) => c.studentSchoolId))];
+  const [schools, rows] = await Promise.all([db.school.findMany({ where: { id: { in: ids } }, select: { kind: true } }), db.schoolModule.findMany({ where: { schoolId: { in: ids } }, select: { module: true } })]);
+  return { schoolId: null, modules: new Set(rows.map((r) => r.module)), college: schools.some((s) => isCollegeKind(s.kind)) };
+}
+
+/** The college's catalog files: a door filed there is a college's, which a school answers 403 MODULE_OFF (W-17). */
+const COLLEGE_DOORS = new Set<Endpoint>([...ACADEMICS, ...EXAMS, ...IQAC, ...PLACEMENT, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS]);
+
+/**
+ * Whether a permitted role's answer may, or must, be the module gate's 403 MODULE_OFF (SWEEPS-4):
+ * "must" where the actor's school has the door's module off (the gate answers before the handler);
+ * "may" for a college's door at a school, and for a guardian, whose session names no school and whose
+ * answer is the handler's for the child's school; "no" otherwise.
+ */
+function moduleOff(e: Endpoint, role: Role): "must" | "may" | "no" {
+  const t = tenantOf[role];
+  if (!t) return "no";
+  if (e.module && !t.modules.has(e.module)) return t.schoolId ? "must" : "may";
+  if (!t.college && COLLEGE_DOORS.has(e)) return "may";
+  return "no";
+}
+
+/** One call's answer: the status, the envelope's code on a 403, and how long it took. */
+type Answer = { status: number; code: string | null; ms: number };
+/** Every call's time, for the slowest doors at the end (SWEEPS-3). */
+const timings: { door: string; ms: number }[] = [];
+
+/** Whether `got` is what `want` allows, with the module gate's answer where `off` says. */
+function judge(want: number | number[], off: "must" | "may" | "no", got: Answer): boolean {
+  const isModuleOff = got.status === 403 && got.code === "MODULE_OFF";
+  if (off === "must") return isModuleOff;
+  return (Array.isArray(want) ? want.includes(got.status) : want === got.status) || (off === "may" && isModuleOff);
+}
+const wanted = (want: number | number[], off: "must" | "may" | "no"): number | number[] | string => (off === "must" ? "403 MODULE_OFF" : off === "may" ? `${JSON.stringify(want)} or 403 MODULE_OFF` : want);
 
 async function mint(userId: string, role: Role, schoolId: string | null): Promise<string> {
   const token = randomBytes(32).toString("base64url");
   const s = await db.session.create({
-    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "api-sweep", expiresAt: new Date(Date.now() + 3_600_000) },
+    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "api-sweep", expiresAt: new Date(Date.now() + SESSION_MS) },
   });
   minted.push(s.id);
   return token;
@@ -155,7 +226,7 @@ async function doorFixture(s: string, applicationId: string | null): Promise<Pic
   const office = await db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE", user: { email: "zz.admin@zz.test" } }, select: { userId: true } });
   let mySessionId: string | null = null;
   if (office) {
-    const spare = await db.session.create({ data: { userId: office.userId, tokenHash: createHash("sha256").update(randomBytes(32)).digest("hex"), activeSchoolId: s, activeRole: "ADMIN", userAgent: "api-sweep (to sign out)", expiresAt: new Date(Date.now() + 3_600_000) } });
+    const spare = await db.session.create({ data: { userId: office.userId, tokenHash: createHash("sha256").update(randomBytes(32)).digest("hex"), activeSchoolId: s, activeRole: "ADMIN", userAgent: "api-sweep (to sign out)", expiresAt: new Date(Date.now() + SESSION_MS) } });
     minted.push(spare.id);
     mySessionId = spare.id;
   }
@@ -218,7 +289,9 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
    * first: a request lives thirty days, and a fixture built in August must still be waiting in October.
    * Null when the fixtures have not made it.
    */
-  const again = { status: "PENDING", createdAt: new Date(), decidedAt: null, declineReason: null };
+  // An hour back, not now: a row "created" during the run is one the run's own clean-up takes away (sweepAway), and the
+  // fixture's waiting join and claim went with every run until zz:fixtures made them again.
+  const again = { status: "PENDING", createdAt: new Date(Date.now() - 3_600_000), decidedAt: null, declineReason: null };
   const waitingJoin = async (ids: string[]) => {
     await db.joinRequest.updateMany({ where: { id: { in: ids }, schoolId: s }, data: again });
     return first(db.joinRequest.findFirst({ where: { id: { in: ids }, schoolId: s }, select: { id: true } }));
@@ -315,6 +388,9 @@ async function actors(): Promise<Record<Role, string>> {
     ?? (await db.guardianship.findFirstOrThrow({ where: { studentSchoolId: school.id, status: "ACTIVE" }, orderBy: { id: "asc" }, select: { parentUserId: true } }));
   // zz.expert1 by name, whose windows, sessions, calendar feed and closed enquiry the fixtures give the sweep; "the first ZZ expert" was row order.
   const expert = (await db.expertProfile.findFirst({ where: { user: { email: "zz.expert1@zz.test" } }, select: { userId: true } })) ?? (await db.expertProfile.findFirst({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } }));
+  const northgate = await tenantAt(school.id);
+  for (const role of ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "DRIVER", "LIBRARIAN", "WARDEN", "ALUMNUS"] as Role[]) tenantOf[role] = northgate;
+  tenantOf.PARENT = await familyTenant(guardian.parentUserId);
   const out: Partial<Record<Role, string>> = {
     ADMIN: await mint(await byEmail("zz.admin@zz.test"), "ADMIN", school.id),
     PRINCIPAL: await mint(await byEmail("zz.principal@zz.test"), "PRINCIPAL", school.id),
@@ -333,6 +409,8 @@ async function actors(): Promise<Record<Role, string>> {
   // and the recruiter, an outside account with no school. A Northgate sample is another tenant's row to them: 404.
   const vidya = await db.school.findUnique({ where: { slug: "zz-vidya-college" }, select: { id: true } });
   if (vidya) {
+    const college = await tenantAt(vidya.id);
+    for (const role of ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as Role[]) tenantOf[role] = college;
     const collegeActors: [Role, string][] = [["FACULTY", "zz.faculty01@zz.test"], ["HOD", "zz.hod01@zz.test"], ["EXAM_CONTROLLER", "zz.examctrl@zz.test"], ["IQAC", "zz.iqac@zz.test"], ["TPO", "zz.tpo@zz.test"], ["ACCOUNTS", "zz.accounts@zz.test"]];
     for (const [role, email] of collegeActors) {
       const member = await db.membership.findFirst({ where: { schoolId: vidya.id, role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true } });
@@ -380,7 +458,8 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // the substitution door's empty body is refused by the parser first (422),
   // and its closed-day answer is what the valid-body probe expects below.
   if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
-  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : [200, 404];
+  // A GET's emptyBodyStatus is the permitted actor's answer to the sample as it stands (catalog types.ts).
+  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (e.emptyBodyStatus ?? [200, 404]);
   return e.emptyBodyStatus ?? [200, 404, 422];
 }
 
@@ -391,12 +470,12 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
  * four failed sweeps in a row. One retry after a short pause; a second 0
  * is reported as the result, so a door that is really shut still shows.
  */
-async function hit(e: Endpoint, token: string | null, path: string, body?: string): Promise<number> {
+async function hit(e: Endpoint, token: string | null, path: string, body?: string): Promise<Answer> {
   const first = await hitOnce(e, token, path, body);
-  if (first !== 0) return first;
+  if (first.status !== 0) return first;
   await new Promise((resolve) => setTimeout(resolve, 750));
   const second = await hitOnce(e, token, path, body);
-  if (second === 0) await serverStillThere(`${e.method} ${e.path}`);
+  if (second.status === 0) await serverStillThere(`${e.method} ${e.path}`);
   return second;
 }
 
@@ -429,9 +508,15 @@ async function serverStillThere(at: string): Promise<void> {
   throw new ServerGone(at);
 }
 
-async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string): Promise<number> {
+async function hitOnce(e: Endpoint, token: string | null, path: string, body?: string): Promise<Answer> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8_000);
+  const started = performance.now();
+  const done = (status: number, code: string | null = null): Answer => {
+    const ms = Math.round(performance.now() - started);
+    timings.push({ door: `${e.method} ${e.path}`, ms });
+    return { status, code, ms };
+  };
   try {
     const res = await fetch(BASE + path, {
       method: e.method,
@@ -439,14 +524,40 @@ async function hitOnce(e: Endpoint, token: string | null, path: string, body?: s
       body: e.method === "GET" ? undefined : (body ?? "{}"),
       signal: controller.signal,
     });
-    if (e.path === "/api/v1/events") controller.abort(); // a stream: the status is the answer
-    return res.status;
+    if (e.path === "/api/v1/events") {
+      controller.abort(); // a stream: the status is the answer
+      return done(res.status);
+    }
+    // A refusal's envelope says which: MODULE_OFF is the module gate's (and a college's door at a school).
+    let code: string | null = null;
+    if (res.status === 403) code = ((await res.json().catch(() => null)) as { code?: string } | null)?.code ?? null;
+    else await res.arrayBuffer().catch(() => null);
+    return done(res.status, code);
   } catch (err) {
-    if ((err as { name?: string }).name === "AbortError") return 200; // the stream opened
-    return 0;
+    // The stream opened — the events door alone. Any other door that ran past the timer gave NO answer, which
+    // is retried and then reported as 0: it used to count as 200, and a slow refusal passed as a door let through.
+    if ((err as { name?: string }).name === "AbortError" && e.path === "/api/v1/events") return done(200);
+    return done(0);
   } finally {
     clearTimeout(timer);
   }
+}
+
+/** The slowest twenty doors by their slowest call, with the median and the number of calls (SWEEPS-3). */
+function printSlowest(): void {
+  if (timings.length === 0) return;
+  const all = timings.map((t) => t.ms).sort((a, b) => a - b);
+  const at = (q: number) => all[Math.min(all.length - 1, Math.floor(q * all.length))]!;
+  const byDoor = new Map<string, number[]>();
+  for (const t of timings) byDoor.set(t.door, [...(byDoor.get(t.door) ?? []), t.ms]);
+  const rows = [...byDoor].map(([door, ms]) => {
+    const sorted = [...ms].sort((a, b) => a - b);
+    return { door, max: sorted[sorted.length - 1]!, median: sorted[Math.floor(sorted.length / 2)]!, calls: sorted.length };
+  });
+  rows.sort((a, b) => b.max - a.max);
+  console.log(`\ntimings: ${timings.length} calls, median ${at(0.5)} ms, p95 ${at(0.95)} ms, max ${all[all.length - 1]} ms. Slowest twenty doors:`);
+  console.log(`${"max ms".padStart(7)} ${"median".padStart(7)} ${"calls".padStart(5)}  door`);
+  for (const r of rows.slice(0, 20)) console.log(`${String(r.max).padStart(7)} ${String(r.median).padStart(7)} ${String(r.calls).padStart(5)}  ${r.door}`);
 }
 
 /**
@@ -501,26 +612,55 @@ async function crossProbe(mode: "school" | "person") {
   };
   if (mode === "school") {
     const fx = await fixture(CROSS_SCHOOL);
+    const swapper = fixtureSwapper();
+    /** The fixed-path doors tried with another tenant's rows in place of the fixture's (W-14), named so the count can be read. */
+    const swapped: string[] = [];
     for (const e of ENDPOINTS) {
+      const key = `${e.method} ${e.path}`;
+      if (e.access === "anyone") { skipped.push(`${key} (public)`); continue; }
+      // A door that names a probe is a school's, wherever it is filed: the queue of people waiting is under /shared.
+      if (!e.probe && PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${key} (platform-wide)`); continue; }
+      if (CROSS_SCHOOL_BY_DESIGN[key]) { byDesign.push(`${key}: ${CROSS_SCHOOL_BY_DESIGN[key]}`); continue; }
       // The probe's own path where the ordinary sweep has none (a door with no body, whose call is the act).
       const pathOf = e.probe?.path ?? (typeof e.sample === "function" ? e.sample : null);
-      if (!pathOf) continue; // a fixed path carries no id to swap
-      if (e.access === "anyone") { skipped.push(`${e.method} ${e.path} (public)`); continue; }
-      // A door that names a probe is a school's, wherever it is filed: the queue of people waiting is under /shared.
-      if (!e.probe && PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${e.method} ${e.path} (platform-wide)`); continue; }
-      const key = `${e.method} ${e.path}`;
-      if (CROSS_SCHOOL_BY_DESIGN[key]) { byDesign.push(`${key}: ${CROSS_SCHOOL_BY_DESIGN[key]}`); continue; }
-      const path = pathOf(fx);
-      if (path === null || /\{\w+\}/.test(path)) { skipped.push(key); continue; }
-      if (path === pathOf(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
-      // A valid body, so the refusal is the fence's and not the parser's.
-      const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
-      if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
-      for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
-        if (!permits(e, role)) continue; // a role the door refuses anyway proves nothing here
-        await check(e, role, path, body, "another school's ids");
+      if (pathOf) {
+        const path = pathOf(fx);
+        if (path === null || /\{\w+\}/.test(path)) { skipped.push(`${key} (${CROSS_SCHOOL} has no row for its sample)`); continue; }
+        if (path === pathOf(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
+        // A valid body, so the refusal is the fence's and not the parser's.
+        const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
+        if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
+        for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
+          if (!permits(e, role)) continue; // a role the door refuses anyway proves nothing here
+          await check(e, role, path, body, "another school's ids");
+        }
+        continue;
+      }
+      /**
+       * A FIXED PATH (W-14, 4 Oct 2026). Ninety-seven doors — every college module's and the school
+       * modules' fixed-id ones — were left out here without a word, because their sample is a string
+       * carrying the fixture's ids (src/lib/api-catalog/*-fixture.ts) rather than a function of the
+       * fixture. Each such id is looked up (its table and its tenant) and swapped for a row of the same
+       * table at another tenant: Southbank for Northgate's, the other two colleges (ZZ Shastri, the demo
+       * college) for a college's. The actors of the fixture's own tenant then call it, and anyone who
+       * holds no school. A door that cannot be swapped is skipped with the reason.
+       */
+      if (typeof e.sample !== "string" && /\{/.test(e.path)) { skipped.push(`${key} (no sample)`); continue; }
+      const fixed = typeof e.sample === "string" ? e.sample : e.path;
+      const body = e.sampleBody ? e.sampleBody(homeFx) : null;
+      const plan = await swapper.plan(fixed, body);
+      if (plan.kind === "none") { skipped.push(`${key} (no id in the path)`); continue; }
+      if (plan.kind === "skip") { skipped.push(`${key} (${plan.reason})`); continue; }
+      // The fixture tenant's own actors, and those who hold no school (a guardian, an expert, a recruiter).
+      const roles = (ROLES as readonly Role[]).filter((r) => tokens[r] && permits(e, r) && ((tenantOf[r]?.schoolId ?? null) === null || tenantOf[r]!.schoolId === plan.homeId));
+      if (roles.length === 0) { skipped.push(`${key} (no actor of ${plan.homeSlug} may call it)`); continue; }
+      for (const t of plan.targets) {
+        if (t.reason !== null) { skipped.push(`${key} at ${t.slug} (${t.reason})`); continue; }
+        swapped.push(`${key} at ${t.slug}`);
+        for (const role of roles) await check(e, role, t.path, t.body, `${t.slug}'s ids`, t.needles);
       }
     }
+    console.log(`· ${swapped.length} fixed-path probes with another tenant's rows (W-14)`);
   } else {
     // A guardian asks for a child that is not theirs; a teacher for a pupil in a class they do not teach.
     // The guardian the PARENT actor IS (actors(), above): pupil 01's. "The first guardianship" could be another
@@ -619,13 +759,116 @@ async function crossProbe(mode: "school" | "person") {
   for (const d of tried) console.log(`· tried: ${d}`);
   for (const b of byDesign) console.log(`· by design: ${b}`);
   for (const o of ownData) console.log(`· own data: ${o}`);
+  // Every door not tried says why (W-14); the doors with no id at all are only counted.
+  const noId = skipped.filter((x) => x.endsWith("(no id in the path)"));
+  for (const x of skipped.filter((y) => !y.endsWith("(no id in the path)"))) console.log(`· skipped: ${x}`);
+  if (noId.length) console.log(`· skipped: ${noId.length} doors with no id in the path to swap`);
+  printSlowest();
   console.log(`cross-${mode}: ${results.length - failed.length}/${results.length} doors stayed shut, ${failed.filter((r) => r.got !== 0 && r.got < 500).length} opened, ${failed.filter((r) => r.got === 0 || r.got >= 500).length} unanswered, ${skipped.length} skipped.`);
   if (failed.length > 0) process.exitCode = 1;
+}
+
+/** The colleges a college's fixture id is swapped into, and the school a school's is (`--other`). */
+const CROSS_COLLEGES = ["zz-vidya-college", "zz-shastri-college", "saraswati-college"];
+/** A fixture id: `c`, the `zz…` prefix that names its kind, digits (src/lib/api-catalog/*-fixture.ts). */
+const FIXTURE_ID = /\bc(zz[a-z]+)\d+\b/g;
+type SwapTarget = { slug: string; path: string; body: Record<string, unknown> | null; needles: string[]; reason: null } | { slug: string; reason: string };
+type SwapPlan = { kind: "none" } | { kind: "skip"; reason: string } | { kind: "swap"; homeId: string; homeSlug: string; targets: SwapTarget[] };
+
+/**
+ * Finds what a fixed sample's ids are — the table and the tenant of each, read
+ * as the owner, a table per kind of id found once — and the same table's row at
+ * the other tenants. An id found only after the "?" filters a list, which may
+ * rightly answer 200 with nothing in it: such a probe is a breach only if the
+ * answer carries the other tenant's id.
+ */
+function fixtureSwapper() {
+  type Model = { name: string; tenant: boolean };
+  const models: Model[] = Prisma.dmmf.datamodel.models
+    .filter((m) => m.fields.some((f) => f.name === "id" && f.type === "String"))
+    .map((m) => ({ name: m.name, tenant: m.fields.some((f) => f.name === "schoolId") }));
+  type Delegate = { findFirst: (args: unknown) => Promise<{ id: string; schoolId?: string | null } | null> };
+  const delegate = (name: string) => (db as unknown as Record<string, Delegate>)[name[0]!.toLowerCase() + name.slice(1)];
+  const modelOfKind = new Map<string, Model>();
+  const located = new Map<string, { model: Model; schoolId: string | null } | null>();
+  const slugs = new Map<string, { id: string; college: boolean } | null>();
+  const school = async (slug: string) => {
+    if (!slugs.has(slug)) {
+      const row = await db.school.findUnique({ where: { slug }, select: { id: true, kind: true } });
+      slugs.set(slug, row ? { id: row.id, college: isCollegeKind(row.kind) } : null);
+    }
+    return slugs.get(slug)!;
+  };
+  const locate = async (id: string) => {
+    if (located.has(id)) return located.get(id)!;
+    const kind = id.match(/^c(zz[a-z]+)/)![1]!;
+    const known = modelOfKind.get(kind);
+    let found: { model: Model; schoolId: string | null } | null = null;
+    for (const model of known ? [known] : models) {
+      try {
+        const row = await delegate(model.name)?.findFirst({ where: { id }, select: model.tenant ? { id: true, schoolId: true } : { id: true } });
+        if (row) {
+          found = { model, schoolId: model.tenant ? (row.schoolId ?? null) : null };
+          modelOfKind.set(kind, model);
+          break;
+        }
+      } catch {
+        /* not this table */
+      }
+    }
+    located.set(id, found);
+    return found;
+  };
+  const otherRow = async (model: Model, schoolId: string) => {
+    try {
+      return (await delegate(model.name)?.findFirst({ where: { schoolId }, select: { id: true }, orderBy: { id: "asc" } }))?.id ?? null;
+    } catch {
+      return null;
+    }
+  };
+  return {
+    async plan(path: string, body: Record<string, unknown> | null): Promise<SwapPlan> {
+      const bodyText = body ? JSON.stringify(body) : "";
+      const ids = [...new Set([...`${path} ${bodyText}`.matchAll(FIXTURE_ID)].map((m) => m[0]))];
+      if (ids.length === 0) return { kind: "none" };
+      const found = new Map<string, { model: Model; schoolId: string | null }>();
+      for (const id of ids) {
+        const at = await locate(id);
+        if (!at) return { kind: "skip", reason: `${id} is in no table: the fixture has not made it` };
+        found.set(id, at);
+      }
+      const homes = [...new Set([...found.values()].map((f) => f.schoolId).filter((x): x is string => x !== null))];
+      if (homes.length === 0) return { kind: "skip", reason: `only rows shared across tenants (${[...new Set([...found.values()].map((f) => f.model.name))].join(", ")})` };
+      if (homes.length > 1) return { kind: "skip", reason: "ids of two tenants in one sample" };
+      const home = await db.school.findUniqueOrThrow({ where: { id: homes[0]! }, select: { slug: true, kind: true } });
+      const others = isCollegeKind(home.kind) ? CROSS_COLLEGES.filter((x) => x !== home.slug) : [home.slug === CROSS_SCHOOL ? "zz-northgate-school" : CROSS_SCHOOL];
+      const targets: SwapTarget[] = [];
+      for (const slug of others) {
+        const other = await school(slug);
+        if (!other) { targets.push({ slug, reason: "no such tenant here" }); continue; }
+        const swap = new Map<string, string>();
+        let missing: string | null = null;
+        for (const [id, at] of found) {
+          if (at.schoolId === null) continue; // a shared row (a company) stays itself
+          const twin = await otherRow(at.model, other.id);
+          if (!twin) { missing = `no ${at.model.name} at ${slug}`; break; }
+          swap.set(id, twin);
+        }
+        if (missing) { targets.push({ slug, reason: missing }); continue; }
+        const apply = (text: string) => [...swap].reduce((acc, [from, to]) => acc.split(from).join(to), text);
+        const [route, query = ""] = path.split("?");
+        const strict = [...swap.keys()].some((id) => route!.includes(id) || bodyText.includes(id));
+        targets.push({ slug, path: apply(path), body: body ? (JSON.parse(apply(bodyText)) as Record<string, unknown>) : null, needles: strict || !query ? [] : [...swap.values()], reason: null });
+      }
+      return { kind: "swap", homeId: homes[0]!, homeSlug: home.slug, targets };
+    },
+  };
 }
 
 async function hitText(e: Endpoint, token: string | null, path: string, body?: string): Promise<{ status: number; text: string }> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8_000);
+  const started = performance.now();
   try {
     const res = await fetch(BASE + path, { method: e.method, headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(e.method === "GET" ? {} : { "content-type": "application/json" }) }, body: e.method === "GET" ? undefined : (body ?? "{}"), signal: controller.signal });
     return { status: res.status, text: await res.text() };
@@ -633,6 +876,7 @@ async function hitText(e: Endpoint, token: string | null, path: string, body?: s
     return { status: 0, text: "" };
   } finally {
     clearTimeout(timer);
+    timings.push({ door: `${e.method} ${e.path}`, ms: Math.round(performance.now() - started) });
   }
 }
 
@@ -652,29 +896,56 @@ async function hitText(e: Endpoint, token: string | null, path: string, body?: s
  * stood, and this cannot tell the two apart. So a run still ends with
  * zz:fixtures, as the rules say, and the last line here says so.
  */
-async function sweepAway(startedAt: Date) {
-  const schools = (await db.school.findMany({ where: { isTestFixture: true }, select: { id: true } })).map((s) => s.id);
+async function sweepAway(startedAt: Date, until?: Date) {
+  // The ZZ fixture schools alone (W-13): the demo college is a test fixture too, and no sweep writes there.
+  const schools = (await db.school.findMany({ where: { isTestFixture: true, slug: { startsWith: "zz-" } }, select: { id: true } })).map((s) => s.id);
   if (schools.length === 0) return;
   const models = Prisma.dmmf.datamodel.models.filter((m) => m.fields.some((f) => f.name === "schoolId") && m.fields.some((f) => f.name === "createdAt"));
   let remaining = models.map((m) => m.name);
   let removed = 0;
+  const byModel = new Map<string, number>();
   for (let pass = 0; pass < 4 && remaining.length > 0; pass++) {
     const next: string[] = [];
     for (const name of remaining) {
       const delegate = (db as unknown as Record<string, { deleteMany: (args: unknown) => Promise<{ count: number }> }>)[name[0]!.toLowerCase() + name.slice(1)];
       if (!delegate) continue;
       try {
-        removed += (await delegate.deleteMany({ where: { schoolId: { in: schools }, createdAt: { gte: startedAt } } })).count;
+        const count = (await delegate.deleteMany({ where: { schoolId: { in: schools }, createdAt: until ? { gte: startedAt, lt: until } : { gte: startedAt } } })).count;
+        removed += count;
+        if (count) byModel.set(name, (byModel.get(name) ?? 0) + count);
       } catch {
         next.push(name);
       }
     }
     remaining = next;
   }
+  if (byModel.size) console.log(`  by table: ${[...byModel].sort((a, b) => b[1] - a[1]).map(([m, n]) => `${m} ${n}`).join(", ")}`);
   console.log(`swept away ${removed} rows the run wrote to the fixture schools${remaining.length ? ` (could not: ${remaining.join(", ")})` : ""}; rows it replaced went with them — run zz:fixtures.`);
 }
 
+/** `--clean-since=<ISO>` (and `--clean-until=<ISO>`, default now): no sweep, only the clean-up of that window (W-13). */
+const CLEAN_SINCE = process.argv.find((a) => a.startsWith("--clean-since="))?.slice(14) ?? null;
+const CLEAN_UNTIL = process.argv.find((a) => a.startsWith("--clean-until="))?.slice(14) ?? null;
+
+/**
+ * THE CLEAN-UP OF A RUN THAT NEVER REACHED ITS OWN (W-13, 4 Oct 2026). A sweep
+ * stopped by hand, or by the server going away, leaves what it wrote; this
+ * takes away exactly what `sweepAway` would have — rows of the ZZ fixture
+ * schools created in the window — and the sweep's own sessions minted in it
+ * that have since expired (a live run's are left alone). Nothing is called.
+ */
+async function cleanWindow(sinceText: string, untilText: string | null): Promise<void> {
+  const since = new Date(sinceText);
+  const until = untilText ? new Date(untilText) : new Date();
+  if (Number.isNaN(since.getTime()) || Number.isNaN(until.getTime()) || since >= until) throw new Error(`--clean-since=${sinceText}${untilText ? ` --clean-until=${untilText}` : ""}: not a window (ISO dates, since before until)`);
+  console.log(`· cleaning the ZZ fixture schools of rows created from ${since.toISOString()} to ${until.toISOString()}`);
+  await sweepAway(since, until);
+  const sessions = await db.session.deleteMany({ where: { userAgent: { in: ["api-sweep", "api-sweep (to sign out)"] }, createdAt: { gte: since, lt: until }, expiresAt: { lt: new Date() } } });
+  console.log(`deleted ${sessions.count} expired api-sweep sessions minted in the window.`);
+}
+
 async function main() {
+  if (CLEAN_SINCE) return cleanWindow(CLEAN_SINCE, CLEAN_UNTIL);
   if (CROSS_MODE) return crossProbe(CROSS_MODE);
   const startedAt = new Date();
   const tokens = await actors();
@@ -697,15 +968,16 @@ async function main() {
     for (const role of roles) {
       if (e.path === "/api/v1/auth/logout" && role) continue; // would revoke the sweep's own session
       const want = expected(e, role);
+      // A permitted role at a school with the door's module off is answered by the gate (SWEEPS-4).
+      const off = role && permits(e, role) && e.access !== "operator" && e.access !== "app-admin" ? moduleOff(e, role) : "no";
       const got = await hit(e, role ? tokens[role] : null, path);
-      const ok = Array.isArray(want) ? want.includes(got) : want === got;
-      results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: want, got, ok });
+      results.push({ endpoint: `${e.method} ${e.path}`, role: role ?? "anonymous", expected: wanted(want, off), got: got.status, ok: judge(want, off, got) });
       // With a valid body, a permitted role must get through (200), which is
       // the half of the contract an empty body cannot prove.
       if (goodBody && role && e.method !== "GET" && (e.access === "signed-in" || Array.isArray(e.access)) && permits(e, role)) {
-        const status = await hit(e, tokens[role], path, JSON.stringify(goodBody));
+        const answer = await hit(e, tokens[role], path, JSON.stringify(goodBody));
         const want = refusedOnClosedDay(e) ? [403] : [200, 201];
-        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: want, got: status, ok: want.includes(status) });
+        results.push({ endpoint: `${e.method} ${e.path} (valid body)`, role, expected: wanted(want, off), got: answer.status, ok: judge(want, off, answer) });
       }
     }
   }
@@ -713,6 +985,7 @@ async function main() {
   for (const r of failed) console.log(`✗ ${r.endpoint} as ${r.role}: expected ${JSON.stringify(r.expected)}, got ${r.got}`);
   for (const s of skipped) console.log(`· skipped (no sample): ${s}`);
   console.log(`${results.length - failed.length}/${results.length} as expected, ${failed.length} unexpected, ${skipped.length} skipped.`);
+  printSlowest();
   if (failed.length) process.exitCode = 1;
   await sweepAway(startedAt);
 }

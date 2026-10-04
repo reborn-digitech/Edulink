@@ -44,6 +44,7 @@ import { POST as ticketsPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]
 import { GET as ticketPdf } from "@/app/api/v1/exam-cell/hall-tickets/[ticketId]/pdf/route";
 import { GET as marksGet, POST as marksPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/marks/route";
 import { POST as correctPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/marks/correct/route";
+import { POST as importPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/marks/import/route";
 import { POST as gracePost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/grace/route";
 import { POST as graceDecidePost } from "@/app/api/v1/exam-cell/grace/[graceId]/decide/route";
 import { POST as runPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/results/run/route";
@@ -58,6 +59,7 @@ import { POST as papersPost } from "@/app/api/v1/exam-cell/sessions/[sessionId]/
 import { POST as paperSubmitPost } from "@/app/api/v1/exam-cell/papers/[paperId]/submit/route";
 import { GET as paperOpenGet } from "@/app/api/v1/exam-cell/papers/[paperId]/open/route";
 import { POST as documentsPost } from "@/app/api/v1/exam-cell/documents/route";
+import { POST as creditsPushPost } from "@/app/api/v1/exam-cell/credits/push/route";
 
 const dues = vi.hoisted(() => ({ blocked: new Set<string>() }));
 vi.mock("@/lib/no-dues", () => ({
@@ -233,6 +235,8 @@ describe("the exam cell (module EXAMS)", () => {
     await as("S2", ids.aff!, "STUDENT");
     const owing = await submitPost(json("/x", {}), p("formId", ids.form_s2!));
     expect(owing.status).toBe(409);
+    // The refusal names the desk that still holds a line (LIFECYCLE-3).
+    expect((await body<{ error: string }>(owing)).error).toContain("Library");
     expect((await db.examForm.findUniqueOrThrow({ where: { id: ids.form_s2! } })).noDues).toBe(false);
     dues.blocked.delete(ids.s2!);
     expect((await submitPost(json("/x", {}), p("formId", ids.form_s2!))).status).toBe(200);
@@ -280,8 +284,15 @@ describe("the exam cell (module EXAMS)", () => {
     await as("Controller", ids.aff!, "EXAM_CONTROLLER");
     const enter = (who: "Controller" | "Admin", course: string, entries: [string, number][]) => marksPost(json("/x", { courseId: course, entries: entries.map(([studentMembershipId, marks]) => ({ studentMembershipId, marks, absent: false })) }), p("sessionId", ids.session!));
     expect((await body<{ pending: number }>(await enter("Controller", ids.c1!, [[ids.s1!, 50], [ids.s2!, 24]]))).pending).toBe(2);
+    // The double entry is blind (campaign S-23): the controller reads their own figure, the second entrant only that one exists.
+    type Sheet = { rows: { studentMembershipId: string; entry1: { milli: number | null; by: string } | null }[] };
+    const entry1Of = async () => (await body<Sheet>(await marksGet(get(`/x?courseId=${ids.c1}`), p("sessionId", ids.session!)))).rows.find((r) => r.studentMembershipId === ids.s1)!.entry1;
+    expect((await entry1Of())?.milli).toBe(50_000);
     await as("Admin", ids.aff!, "ADMIN");
+    expect(await entry1Of()).toMatchObject({ milli: null, by: "ZZ Ex Controller" });
     const second = await body<{ matched: number; mismatched: number }>(await enter("Admin", ids.c1!, [[ids.s1!, 45], [ids.s2!, 24]]));
+    // Both entered: both figures shown, which settling the mismatch needs.
+    expect((await entry1Of())?.milli).toBe(50_000);
     expect(second).toMatchObject({ matched: 1, mismatched: 1 });
     expect((await body<{ mismatches: number }>(await marksGet(get(`/x?courseId=${ids.c1}`), p("sessionId", ids.session!)))).mismatches).toBe(1);
     expect((await body<{ matched: number; mismatched: number }>(await enter("Admin", ids.c1!, [[ids.s1!, 50]]))).matched).toBe(2);
@@ -328,6 +339,19 @@ describe("the exam cell (module EXAMS)", () => {
     expect(r.rows.find((x) => x.studentMembershipId === ids.s2)).toMatchObject({ sgpa: 4, status: "PASS", cls: "PASS" });
     expect((await publishPost(json("/x", { runId: ids.run1 }), p("sessionId", ids.session!))).status).toBe(200);
     expect((await db.creditPush.findUniqueOrThrow({ where: { studentMembershipId_termId: { studentMembershipId: ids.s1!, termId: ids.term! } } })).creditsTenths).toBe(70);
+    // The push reads what was sent before whether the bank is connected (W-12): another college's term is 404, a bad id 422.
+    const stub = process.env.ABC_STUB_SEND;
+    delete process.env.ABC_STUB_SEND;
+    try {
+      expect((await creditsPushPost(json("/x", { termId: "cnotaterm0000000000000000" }))).status).toBe(404);
+      expect((await creditsPushPost(json("/x", { termId: "x" }))).status).toBe(422);
+      expect((await creditsPushPost(json("/x", { termId: ids.term }))).status).toBe(409);
+      process.env.ABC_STUB_SEND = "1";
+      expect((await creditsPushPost(json("/x", { termId: ids.term }))).status).toBe(200);
+    } finally {
+      if (stub === undefined) delete process.env.ABC_STUB_SEND;
+      else process.env.ABC_STUB_SEND = stub;
+    }
   });
 
   it("makes a change after publication a new mark row and a new run, keeping the published one as superseded", async () => {
@@ -342,7 +366,15 @@ describe("the exam cell (module EXAMS)", () => {
     ]);
     expect((await runPost(json("/x", {}), p("sessionId", ids.session!))).status).toBe(422);
     const run2 = await body<{ id: string }>(await runPost(json("/x", { reason: "ZZ correction to Optics" }), p("sessionId", ids.session!)));
+    // A run that changes a published result is the principal's to publish, never the controller's alone (campaign S-10).
+    const alone = await publishPost(json("/x", { runId: run2.id }), p("sessionId", ids.session!));
+    expect(alone.status).toBe(403);
+    expect((await db.resultRun.findUniqueOrThrow({ where: { id: run2.id } })).status).toBe("DRAFT");
+    expect(await db.notification.count({ where: { userId: users.Principal, schoolId: ids.aff!, url: { contains: "/results" } } })).toBeGreaterThan(0);
+    await as("Principal", ids.aff!, "PRINCIPAL");
     expect((await publishPost(json("/x", { runId: run2.id }), p("sessionId", ids.session!))).status).toBe(200);
+    expect((await db.resultRun.findUniqueOrThrow({ where: { id: run2.id } })).publishedByUserId).toBe(users.Principal);
+    await as("Controller", ids.aff!, "EXAM_CONTROLLER");
     const runs = await db.resultRun.findMany({ where: { sessionId: ids.session! }, orderBy: { number: "asc" } });
     expect(runs.map((x) => x.status)).toEqual(["SUPERSEDED", "PUBLISHED"]);
     // S1's Optics is now 20 + 70 = 90 % → O (10): (24 + 40) ÷ 7 = 9.14.
@@ -364,7 +396,9 @@ describe("the exam cell (module EXAMS)", () => {
     const optics = () => db.courseResult.findFirstOrThrow({ where: { runId: published.id, studentMembershipId: ids.s2!, courseId: ids.c2! } });
     expect((await optics()).externalMilli).toBe(30000);
     const run3 = await body<{ id: string }>(await runPost(json("/x", { reason: "ZZ revaluation of Optics" }), p("sessionId", ids.session!)));
-    await publishPost(json("/x", { runId: run3.id }), p("sessionId", ids.session!));
+    await as("Principal", ids.aff!, "PRINCIPAL");
+    expect((await publishPost(json("/x", { runId: run3.id }), p("sessionId", ids.session!))).status).toBe(200);
+    await as("Controller", ids.aff!, "EXAM_CONTROLLER");
     // 18 + 40 = 58 % → B (6): (3×4 + 4×6) ÷ 7 = 5.14; the run before keeps its 4.
     expect((await db.termResult.findUniqueOrThrow({ where: { runId_studentMembershipId: { runId: run3.id, studentMembershipId: ids.s2! } } })).sgpaHundredths).toBe(514);
     expect((await optics()).externalMilli).toBe(30000);
@@ -413,6 +447,9 @@ describe("the exam cell (module EXAMS)", () => {
     const made = await body<{ id: string }>(await sessionsPost(json("/api/v1/exam-cell/sessions", { name: `ZZ Autonomous ${STAMP}`, kind: "REGULAR", termId: ids.autoTerm, feePerCoursePaise: 0, feePerBacklogPaise: 0, photocopyFeePaise: 0, revalFeePaise: 0, lateFeeSlabs: [] })));
     ids.autoSession = made.id;
     expect((await conductGet(get("/x"), p("sessionId", made.id))).status).toBe(200);
+    // An autonomous college pastes no "university file": its marks are entered twice (campaign S-10).
+    const imported = await importPost(json("/x", { text: "PRN,Course,External\nX,Y,50" }), p("sessionId", made.id));
+    expect(imported.status).toBe(403);
   });
 
   it("keeps a question paper sealed, opened only into the response, every opening logged and audited", async () => {

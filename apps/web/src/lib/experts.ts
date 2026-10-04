@@ -6,7 +6,7 @@ import { randomBytes, createHash } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
-import { sendExpertInvite } from "./email";
+import { localeForAddress, sendExpertInvite } from "./email";
 import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
@@ -107,11 +107,12 @@ export async function inviteExpert(
   const to = input.email?.trim();
   if (to) {
     const app = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const school = await db.school.findUnique({ where: { id: session.schoolId }, select: { name: true } });
+    const school = await db.school.findUnique({ where: { id: session.schoolId }, select: { name: true, locale: true } });
     await sendExpertInvite(
       to,
       `${app}/expert/invite/${created.token}`,
-      `${school?.name ?? "A school"} on Shalaghar would like you as a visiting expert.`,
+      school?.name ?? null,
+      await localeForAddress(to, school?.locale),
     ).catch((error) => console.error("[expert-invite] email failed", error));
   }
   return created;

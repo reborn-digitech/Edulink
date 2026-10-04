@@ -74,6 +74,13 @@ export async function saveMentoringGroup(ctx: ActiveContext, input: { id?: strin
   if (c.role === "HOD") {
     const dept = await hodDepartment(c);
     if (!dept || (await departmentOfMember(c.schoolId, mentor.id)) !== dept.id) throw new AccessError("academics.refuseOtherDepartment");
+    // The group being rewritten must be the department's already (its mentor theirs, or the HOD
+    // themself), not only the mentor it is handed to: the notes go with the group (campaign S-8).
+    if (input.id) {
+      const existing = await db.mentoringGroup.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { facultyMembershipId: true } });
+      if (!existing) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+      if (existing.facultyMembershipId !== c.membershipId && (await departmentOfMember(c.schoolId, existing.facultyMembershipId)) !== dept.id) throw new AccessError("academics.refuseOtherDepartment");
+    }
   }
   const ids = [...new Set(input.studentMembershipIds)];
   if (ids.length > settings.menteesPerMentor) throw new RuleRefusal("academics.refuseTooManyMentees", 422, { max: settings.menteesPerMentor }, "studentMembershipIds");

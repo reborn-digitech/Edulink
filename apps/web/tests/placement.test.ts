@@ -52,6 +52,15 @@ import { GET as recruiterExportGet } from "@/app/api/v1/recruiter/drives/[driveI
 import { POST as recruiterCompanyPost } from "@/app/api/v1/recruiter/company/route";
 import { POST as mentorSlotPost } from "@/app/api/v1/alumni/college/mentor-slots/route";
 import { GET as familyGet } from "@/app/api/v1/family/placement/route";
+import { POST as familyConsentPost } from "@/app/api/v1/family/placement/applications/[applicationId]/consent/route";
+import { GET as analyticsGet } from "@/app/api/v1/placement/analytics/route";
+import { GET as analyticsExportGet } from "@/app/api/v1/placement/analytics/export/route";
+import { GET as recruiterCompanyGet } from "@/app/api/v1/recruiter/company/route";
+import { POST as colleaguesPost } from "@/app/api/v1/recruiter/company/colleagues/route";
+import { POST as colleagueRemovePost } from "@/app/api/v1/recruiter/company/colleagues/remove/route";
+import { POST as invitationPost } from "@/app/api/v1/recruiter/company/invitations/[companyId]/route";
+import { cellActor, recordOffer } from "@/lib/placement";
+import { GET as recruiterCollegesGet } from "@/app/api/v1/recruiter/colleges/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -65,7 +74,7 @@ const params = <K extends string>(p: Record<K, string>) => ({ params: Promise.re
 async function body<T = Record<string, unknown>>(res: Response): Promise<T> {
   return (await res.json()) as T;
 }
-type Who = "TPO" | "GUEST_TPO" | "BARE_TPO" | "S1" | "S2" | "S3" | "G1" | "RECRUITER" | "STRANGER_RECRUITER" | "FACULTY" | "HOD" | "ALUMNUS" | "PARENT";
+type Who = "TPO" | "GUEST_TPO" | "BARE_TPO" | "S1" | "S2" | "S3" | "G1" | "RECRUITER" | "STRANGER_RECRUITER" | "FACULTY" | "HOD" | "ALUMNUS" | "PARENT" | "IQAC" | "MINOR" | "MINOR_PARENT";
 async function as(who: Who) {
   __resetCookies();
   __setHeaders({});
@@ -83,6 +92,9 @@ async function as(who: Who) {
     HOD: [ids.hodUser!, ids.host!, "HOD"],
     ALUMNUS: [ids.alumnusUser!, ids.host!, "ALUMNUS"],
     PARENT: [ids.parentUser!, null, "PARENT"],
+    IQAC: [ids.iqacUser!, ids.host!, "IQAC"],
+    MINOR: [ids.minorUser!, ids.host!, "STUDENT"],
+    MINOR_PARENT: [ids.minorParentUser!, null, "PARENT"],
   };
   const [userId, schoolId, role] = at[who];
   await createSession(userId, { schoolId, role: role as never });
@@ -116,6 +128,8 @@ beforeAll(async () => {
   const prog = await db.programme.create({ data: { schoolId: ids.host!, departmentId: dept.id, code: `ZPP${SUFFIX}`, name: "ZZ BTech Computer", level: "UG", durationYears: 4, regulator: "AICTE" }, select: { id: true } });
   ids.programme = prog.id;
   const scheme = await db.scheme.create({ data: { schoolId: ids.host!, programmeId: prog.id, name: "ZZ 2023 scheme", effectiveYear: 2023 }, select: { id: true } });
+  // S1's gender and caste category, as the office keeps them: the cell reads them live, a recruiter never (campaign S-3).
+  await db.pupilRecord.create({ data: { schoolId: ids.host!, studentMembershipId: ids.s1!, gender: "M", category: "OBC" } });
   for (const s of ["s1", "s2", "s3"]) await db.studentProgramme.create({ data: { schoolId: ids.host!, studentMembershipId: ids[s]!, programmeId: prog.id, schemeId: scheme.id, entryYear: 2023 } });
   const session = await db.examSession.create({ data: { schoolId: ids.host!, name: "ZZ Winter 2025", kind: "REGULAR", termId: `zz-term-${STAMP}`, status: "PUBLISHED" }, select: { id: true } });
   const run = await db.resultRun.create({ data: { schoolId: ids.host!, sessionId: session.id, number: 1, status: "PUBLISHED", computedByUserId: ids.adminUser!, publishedAt: new Date() }, select: { id: true } });
@@ -127,12 +141,21 @@ beforeAll(async () => {
   // The recruiters: one bound to the company, one bound to none.
   ids.recruiterUser = (await mkUser("recruiter")).id;
   ids.strangerUser = (await mkUser("stranger")).id;
+  // Both addresses proved: a recruiter reads nothing of a college's before that (campaign S-4).
+  await db.user.updateMany({ where: { id: { in: [ids.recruiterUser, ids.strangerUser] } }, data: { emailVerifiedAt: new Date() } });
+  // The IQAC, who files from the placement table (B-01); a seventeen-year-old on the roll and their guardian (S-6).
+  ids.iqacUser = (await mkUser("iqac")).id;
+  await member(ids.iqacUser, ids.host!, "IQAC");
+  ids.minorUser = (await db.user.create({ data: { name: "ZZ Pl minor", email: MAIL("minor"), isMinor: true, birthdate: new Date(Date.now() - 17 * 365 * 86_400_000) }, select: { id: true } })).id;
+  ids.minor = (await member(ids.minorUser, ids.host!, "STUDENT")).id;
+  ids.minorParentUser = (await mkUser("minor-parent")).id;
+  await db.guardianship.create({ data: { parentUserId: ids.minorParentUser, studentMembershipId: ids.minor, studentSchoolId: ids.host!, status: "ACTIVE" } });
   await db.recruiterProfile.createMany({ data: [{ userId: ids.recruiterUser, companyName: "ZZ Pl Co" }, { userId: ids.strangerUser, companyName: "ZZ Other" }] });
   const first14 = `27AAZPL${SUFFIX.slice(0, 4)}Z1Z`;
   ids.gstin = `${first14}${gstinCheckChar(first14)}`;
   const company = await db.company.create({ data: { name: `ZZ Pl Co ${STAMP}`, identifier: ids.gstin, sectors: JSON.stringify(["IT_SOFTWARE"]), pointOfContact: "ZZ", verifiedAt: new Date() }, select: { id: true } });
   ids.company = company.id;
-  await db.companyRecruiter.create({ data: { companyId: company.id, userId: ids.recruiterUser } });
+  await db.companyRecruiter.create({ data: { companyId: company.id, userId: ids.recruiterUser, acceptedAt: new Date() } });
   // An alumnus mentor at the host.
   const alum = await mkUser("alumnus");
   ids.alumnusUser = alum.id;
@@ -191,6 +214,12 @@ describe("consent, the recruiter and the closed drive", () => {
   it("shows the bound recruiter the count and no name until a student applies", async () => {
     await as("TPO");
     expect((await drivePost(json(`/api/v1/placement/drives/${ids.drive}`, { status: "OPEN" }), params({ driveId: ids.drive! }))).status).toBe(200);
+    // A save that changes nothing is a 200 no-op, not "someone changed this drive" (W-10), and writes no audit row.
+    const audited = await db.auditLog.count({ where: { targetId: ids.drive! } });
+    const same = await drivePost(json(`/api/v1/placement/drives/${ids.drive}`, {}), params({ driveId: ids.drive! }));
+    expect(same.status).toBe(200);
+    expect((await body<{ status: string }>(same)).status).toBe("OPEN");
+    expect(await db.auditLog.count({ where: { targetId: ids.drive! } })).toBe(audited);
     await as("RECRUITER");
     const before = await body<{ eligibleCount: number; applicants: unknown[] }>(await recruiterDriveGet(get(`/api/v1/recruiter/drives/${ids.drive}`), params({ driveId: ids.drive! })));
     expect(before.eligibleCount).toBe(2);
@@ -207,6 +236,11 @@ describe("consent, the recruiter and the closed drive", () => {
     const after = await body<{ applicants: { studentName: string; record: { cgpa: number } }[] }>(await recruiterDriveGet(get(`/api/v1/recruiter/drives/${ids.drive}`), params({ driveId: ids.drive! })));
     expect(after.applicants.map((a) => a.studentName)).toEqual(["ZZ Pl s1"]);
     expect(after.applicants[0]!.record.cgpa).toBe(8);
+    // Gender and caste category are never shared with the company, in the answer or on the frozen row.
+    expect(Object.keys(after.applicants[0]!.record)).not.toContain("gender");
+    expect(Object.keys(after.applicants[0]!.record)).not.toContain("category");
+    const frozen = await db.driveApplication.findFirstOrThrow({ where: { driveId: ids.drive!, studentMembershipId: ids.s1! }, select: { recordJson: true } });
+    expect(frozen.recordJson).not.toMatch(/gender|category|OBC/);
     // The download carries the recruiter's name, and the college's log has it.
     const sheet = await recruiterExportGet(get(`/api/v1/recruiter/drives/${ids.drive}/export`), params({ driveId: ids.drive! }));
     const text = await sheet.text();
@@ -291,6 +325,55 @@ describe("consent, the recruiter and the closed drive", () => {
   });
 });
 
+describe("the campaign of 4 October 2026", () => {
+  it("lets the IQAC read the placement table and its exports, which its own menu links to (B-01)", async () => {
+    await as("IQAC");
+    expect((await analyticsGet(get("/api/v1/placement/analytics"))).status).toBe(200);
+    expect((await analyticsExportGet(get("/api/v1/placement/analytics/export?kind=NBA"))).status).toBe(200);
+    // …and nothing of a drive or a student.
+    expect((await eligibilityGet(get("/x"), params({ driveId: ids.drive! }))).status).toBe(403);
+  });
+
+  it("keeps a live drive's company once anyone has applied, and refuses a company not on the platform (S-5)", async () => {
+    await as("TPO");
+    const other = await db.company.create({ data: { name: `ZZ Pl Other ${STAMP}`, identifier: `U72200MH2020PTC${SUFFIX}`, sectors: "[]", pointOfContact: "ZZ" }, select: { id: true } });
+    expect((await drivePost(json("/x", { companyId: other.id }), params({ driveId: ids.drive! }))).status).toBe(409);
+    expect((await drivePost(json("/x", { companyId: "zz-no-such-company" }), params({ driveId: ids.drive! }))).status).toBe(422);
+    expect((await db.drive.findUniqueOrThrow({ where: { id: ids.drive! }, select: { companyId: true } })).companyId).toBe(ids.company);
+  });
+
+  it("refuses an offer's package outside the schema whichever door makes it (S-19)", async () => {
+    await as("TPO");
+    const ctx = (await getSession())!;
+    await expect(recordOffer(await cellActor(ctx, ids.drive!), { studentMembershipId: ids.s2!, packageRupees: -5, letterFileId: null })).rejects.toMatchObject({ key: "placement.refusePackage" });
+    await expect(recordOffer(await cellActor(ctx, ids.drive!), { studentMembershipId: ids.s2!, packageRupees: 2_000_000_000, letterFileId: null })).rejects.toMatchObject({ key: "placement.refusePackage" });
+  });
+
+  it("binds a colleague only once they accept, answers the same for any address, and takes a colleague off (S-16, S-20)", async () => {
+    const strangerEmail = MAIL("stranger");
+    await as("RECRUITER");
+    const unknown = await colleaguesPost(json("/x", { email: "zz-nobody-at-all@test.invalid" }));
+    const invited = await colleaguesPost(json("/x", { email: strangerEmail }));
+    expect([unknown.status, invited.status]).toEqual([200, 200]);
+    // The answer names no one back: the colleague list is the accepted ones.
+    expect((await body<{ colleagues: { email: string }[] }>(invited)).colleagues.map((c) => c.email)).not.toContain(strangerEmail);
+    await as("STRANGER_RECRUITER");
+    expect((await body<{ drives: unknown[] }>(await recruiterDrivesGet())).drives).toEqual([]);
+    expect(await asApp({ userId: ids.strangerUser! }, (tx) => tx.drive.count({ where: { companyId: ids.company } }))).toBe(0);
+    const pending = await body<{ invitations: { companyId: string }[] }>(await recruiterCompanyGet());
+    expect(pending.invitations.map((i) => i.companyId)).toEqual([ids.company]);
+    expect((await invitationPost(json("/x", { accept: true }), params({ companyId: ids.company! }))).status).toBe(200);
+    expect((await body<{ drives: { id: string }[] }>(await recruiterDrivesGet())).drives.map((d) => d.id)).toContain(ids.drive);
+    // Taken off: the company's drives close to them at once.
+    await as("RECRUITER");
+    expect((await colleagueRemovePost(json("/x", { email: strangerEmail }))).status).toBe(200);
+    await as("STRANGER_RECRUITER");
+    expect((await body<{ drives: unknown[] }>(await recruiterDrivesGet())).drives).toEqual([]);
+    expect((await recruiterDriveGet(get("/x"), params({ driveId: ids.drive! }))).status).toBe(404);
+  });
+
+});
+
 describe("pooled drives", () => {
   it("are read by the guest college and its students, who apply from their own college", async () => {
     await as("TPO");
@@ -317,6 +400,34 @@ describe("pooled drives", () => {
     await as("TPO");
     const view = await body<{ applications: { studentName: string; schoolName: string }[] }>(await driveGet(get("/x"), params({ driveId: ids.pooled! })));
     expect(view.applications).toEqual([expect.objectContaining({ studentName: "ZZ Pl g1", schoolName: expect.stringContaining("Guest") })]);
+  });
+});
+
+describe("a minor's drive application", () => {
+  it("holds a minor's application from the company until a guardian consents (S-6)", async () => {
+    await db.studentProgramme.create({ data: { schoolId: ids.host!, studentMembershipId: ids.minor!, programmeId: ids.programme!, schemeId: (await db.scheme.findFirstOrThrow({ where: { programmeId: ids.programme! }, select: { id: true } })).id, entryYear: 2023 } });
+    await as("MINOR");
+    expect((await applyPost(json("/x", { consent: true }), params({ driveId: ids.pooled! }))).status).toBe(200);
+    const app = await db.driveApplication.findFirstOrThrow({ where: { driveId: ids.pooled!, studentMembershipId: ids.minor! }, select: { id: true, consentAt: true } });
+    expect(app.consentAt).toBeNull();
+    await as("RECRUITER");
+    const before = await body<{ applicants: { studentMembershipId: string }[] }>(await recruiterDriveGet(get("/x"), params({ driveId: ids.pooled! })));
+    expect(before.applicants.map((a) => a.studentMembershipId)).not.toContain(ids.minor);
+    // The guardian is asked, and consents.
+    expect(await db.notification.count({ where: { userId: ids.minorParentUser!, url: { contains: "/parent/placement" } } })).toBe(1);
+    await as("MINOR_PARENT");
+    const fam = await body<{ awaitingConsent: { applicationId: string }[] }>(await familyGet(get(`/api/v1/family/placement?childId=${ids.minor}`)));
+    expect(fam.awaitingConsent.map((w) => w.applicationId)).toEqual([app.id]);
+    // Somebody else's guardian cannot.
+    await as("PARENT");
+    expect((await familyConsentPost(json("/x", { childId: ids.minor }), params({ applicationId: app.id }))).status).toBe(404);
+    await as("MINOR_PARENT");
+    expect((await familyConsentPost(json("/x", { childId: ids.minor }), params({ applicationId: app.id }))).status).toBe(200);
+    await as("RECRUITER");
+    const after = await body<{ applicants: { studentMembershipId: string }[] }>(await recruiterDriveGet(get("/x"), params({ driveId: ids.pooled! })));
+    expect(after.applicants.map((a) => a.studentMembershipId)).toContain(ids.minor);
+    // Out of the pooled drive again, so the policy tests below see the guest's applicant alone.
+    await db.driveApplication.delete({ where: { id: app.id } });
   });
 });
 
@@ -485,5 +596,45 @@ describe.skipIf(!APP_URL)("as the app role, PLACEMENT_READABLE holds in the data
     expect(hostWrites.count).toBe(0);
     // A college that is neither reads nothing of it.
     expect(await asApp({ schoolIds: [ids.bare!] }, (tx) => tx.drive.count({ where: { id: ids.pooled } }))).toBe(0);
+  });
+
+  it("hides a guest's WITHDRAWN application from the host, as the profile already was (campaign S-14)", async () => {
+    const g = await owner.driveApplication.findFirstOrThrow({ where: { driveId: ids.pooled, studentMembershipId: ids.g1 }, select: { id: true } });
+    await owner.driveApplication.update({ where: { id: g.id }, data: { withdrawnAt: new Date() } });
+    expect(await asApp({ schoolIds: [ids.host!] }, (tx) => tx.driveApplication.count({ where: { driveId: ids.pooled } }))).toBe(0);
+    await owner.driveApplication.update({ where: { id: g.id }, data: { withdrawnAt: null } });
+    expect(await asApp({ schoolIds: [ids.host!] }, (tx) => tx.driveApplication.count({ where: { driveId: ids.pooled } }))).toBe(1);
+  });
+
+  it("will not let a forged application row read another college's offers (campaign S-15)", async () => {
+    // The guest's own tenant clause lets it write a row naming any drive and student; the unique
+    // (drive, student) index already stands in the way while the real row exists, so the forged row is
+    // modelled by moving the real one under the guest for a moment: the HOST's on-campus drive, the host's student.
+    expect(await owner.offer.count({ where: { driveId: ids.drive, studentMembershipId: ids.s1 } })).toBeGreaterThan(0);
+    const real = await owner.driveApplication.findFirstOrThrow({ where: { driveId: ids.drive, studentMembershipId: ids.s1 }, select: { id: true, schoolId: true } });
+    await owner.driveApplication.update({ where: { id: real.id }, data: { schoolId: ids.guest! } });
+    try {
+      expect(await asApp({ schoolIds: [ids.guest!] }, (tx) => tx.offer.count({ where: { driveId: ids.drive } }))).toBe(0);
+      expect(await asApp({ schoolIds: [ids.guest!] }, (tx) => tx.roundResult.count({ where: { driveId: ids.drive } }))).toBe(0);
+    } finally {
+      await owner.driveApplication.update({ where: { id: real.id }, data: { schoolId: real.schoolId } });
+    }
+  });
+
+  it("shows another college's School row only inside the placement directory, and then as the directory reads it (campaign S-13)", async () => {
+    const r = ids.recruiterUser!;
+    // Outside the directory a recruiter's session reads no college's row at all: not its join code, not its contacts.
+    expect(await asApp({ userId: r }, (tx) => tx.school.findMany({ where: { id: ids.host }, select: { code: true, pocPhone: true, feeUpiId: true } }))).toEqual([]);
+    // Inside it (app.directory, set only by forPlacementDirectory), the row is there for a name and a town.
+    const inDirectory = await app!.$transaction(async (tx) => {
+      await tx.$executeRaw`SELECT set_config('app.school_ids', '', true)`;
+      await tx.$executeRaw`SELECT set_config('app.user_id', ${r}, true)`;
+      await tx.$executeRaw`SELECT set_config('app.directory', '1', true)`;
+      return tx.school.findMany({ where: { id: ids.host }, select: { name: true } });
+    });
+    expect(inDirectory).toHaveLength(1);
+    // And the library's directory read still lists the college by name for the recruiter.
+    await as("RECRUITER");
+    expect((await body<{ colleges: { id: string }[] }>(await recruiterCollegesGet())).colleges.map((c) => c.id)).toContain(ids.host);
   });
 });

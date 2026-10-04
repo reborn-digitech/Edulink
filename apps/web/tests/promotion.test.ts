@@ -119,7 +119,7 @@ afterAll(async () => {
   await db.enrollment.deleteMany({ where: { classId: { in: ids } } });
   await db.classTeacher.deleteMany({ where: { classId: { in: ids } } });
   await db.notification.deleteMany({ where: { user: { email: { in: EMAILS } } } });
-  await db.schoolRecord.deleteMany({ where: { studentMembershipId: { in: pupils } } });
+  await db.schoolRecord.deleteMany({ where: { OR: [{ studentMembershipId: { in: pupils } }, { formerMembershipId: { in: pupils } }] } });
   await db.membership.deleteMany({ where: { user: { email: { in: EMAILS } } } });
   await db.user.deleteMany({ where: { email: { in: EMAILS } } });
   await db.class.deleteMany({ where: { id: { in: ids } } });

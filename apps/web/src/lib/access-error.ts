@@ -32,8 +32,29 @@ export class AccessError extends Error {
  * log line).
  */
 export class ModuleOffError extends AccessError {
-  constructor(readonly module: SchoolModuleCode) {
-    super("modules.refuseOff", "MODULE_OFF", { module });
+  constructor(
+    readonly module: SchoolModuleCode,
+    /** The sentence, when it is not "this school has not switched on {module}": a college's door at a school says so (NotACollegeError). */
+    key: TranslationKey = "modules.refuseOff",
+  ) {
+    super(key, "MODULE_OFF", { module });
     this.name = "ModuleOffError";
+  }
+}
+
+/**
+ * A COLLEGE'S DOOR, PAGE OR WRITE AT ANY OTHER KIND OF TENANT (W-17, 4 Oct
+ * 2026). One answer, the module gate's own: 403 MODULE_OFF, naming ACADEMICS
+ * — the module every college has on and no school is offered — so the phone
+ * and the sweep read "college-only" the way they read "switched off". Before,
+ * a school was answered three ways (MODULE_OFF, 403 FORBIDDEN "This is for a
+ * college.", 404 "this is for a college"), and a guardian, whose session has
+ * no school, got 404 where the pupil got MODULE_OFF. The sentence stays the
+ * one each desk already said. Thrown by `assertCollege` (modules.ts).
+ */
+export class NotACollegeError extends ModuleOffError {
+  constructor(key: TranslationKey = "collegeOffice.refuseNotCollege") {
+    super("ACADEMICS", key);
+    this.name = "NotACollegeError";
   }
 }

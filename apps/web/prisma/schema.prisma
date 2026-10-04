@@ -2211,7 +2211,9 @@ model Session {
   expiresAt  DateTime
   revokedAt  DateTime?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  /// The phones that registered for push under this session (campaign PH-4).
+  devices DeviceToken[]
 
   @@index([userId, revokedAt])
   /// The retention sweep finds expired rows by this alone.
@@ -2332,10 +2334,17 @@ model DeviceToken {
   failureCount  Int      @default(0)
   createdAt     DateTime @default(now())
   lastUsedAt    DateTime @default(now())
+  /// The session the phone registered under (campaign PH-4): revoking that one
+  /// session from the web removes the token, and a token whose session has
+  /// ended or expired is not sent to. Null for a token registered before
+  /// this column, which keeps the old behaviour until it next registers.
+  sessionId     String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session Session? @relation(fields: [sessionId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@index([sessionId])
 }
 
 model PushSubscription {
@@ -3425,9 +3434,21 @@ model SchoolRecord {
   schoolId            String
   /// The pupil. See the note above: this is what lets the record travel.
   studentUserId       String
-  /// One per membership, so re-recording a departure corrects rather than
-  /// duplicates, and so undoing one can find it.
-  studentMembershipId String @unique
+  /// One LIVE record per membership, so re-recording a departure corrects
+  /// rather than duplicates, and so undoing one can find it. Null once the
+  /// record is closed (see supersededAt).
+  studentMembershipId String? @unique
+  /// LIFECYCLE-7 (4 Oct 2026): a departure undone, recorded again, or followed
+  /// by readmission CLOSES its record instead of deleting it, so the TC
+  /// register keeps every serial it printed and never hands one out twice. A
+  /// closed record lets go of the membership (studentMembershipId null: the
+  /// one-per-membership index then holds live records only, no certificate
+  /// prints the old leaving day and a guardian no longer reads it) and keeps
+  /// which membership it was in formerMembershipId.
+  formerMembershipId  String?
+  supersededAt        DateTime?
+  /// READMITTED | UNDONE | RERECORDED
+  supersededReason    String?
 
   /// FROZEN AT ISSUE. A school may rename itself; a certificate it signed in
   /// 2026 does not silently start saying something else.
@@ -3467,11 +3488,12 @@ model SchoolRecord {
 
   school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   student    User       @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
-  membership Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  membership Membership? @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
   @@unique([schoolId, serial])
   @@index([studentUserId])
   @@index([schoolId, leftAt])
+  @@index([formerMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -4739,6 +4761,10 @@ model CertificateRequest {
   declineReason       String?
   decidedByUserId     String?
   decidedAt           DateTime?
+  /// G-6: a former student's paper may carry a fee the office sets; it is a
+  /// demand on the ledger of the student membership, paid outside the platform.
+  feePaise            Int?
+  feeDemandId         String?
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 
@@ -6923,6 +6949,12 @@ model CollegeApplication {
   refundSlab           String?
   refundRecordedAt     DateTime?
   refundReference      String?
+  /// LIFECYCLE-4: a seat over the round's category seats or the programme's
+  /// intake, which the principal approved as supernumerary, with why. An
+  /// application without it is refused once the seats are taken.
+  supernumeraryAt       DateTime?
+  supernumeraryByUserId String?
+  supernumeraryReason   String?
   createdByUserId      String?
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
@@ -8313,6 +8345,12 @@ model CompanyRecruiter {
   userId    String
   addedAt   DateTime  @default(now())
   removedAt DateTime?
+  /// Campaign S-16 (4 Oct 2026): a colleague's binding counts only once that
+  /// recruiter accepts it; until then it is an invitation and reads nothing.
+  /// The registering recruiter's own binding is accepted when made.
+  acceptedAt DateTime?
+  /// Who added this recruiter (null for the one who registered the company).
+  addedByUserId String?
 
   company Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
   user    User    @relation("CompanyRecruiterOf", fields: [userId], references: [id], onDelete: Cascade)

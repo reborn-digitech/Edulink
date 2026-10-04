@@ -19,6 +19,7 @@ import { dayToDate } from "./fees";
 import { currentAcademicYear } from "./academic-year";
 import { writeJson, readJsonArray } from "./json";
 import { getT } from "./i18n/server";
+import type { TranslationKey } from "./i18n/dictionary";
 import { RuleRefusal } from "./rule-refusal";
 import { noDuesFor } from "./no-dues";
 import { SCHOOL_STAFF_ROLES } from "./staff-records";
@@ -281,7 +282,11 @@ export async function submitForm(ctx: ActiveContext, formId: string): Promise<Ex
   if (!eligible || !dues.completed) {
     await db.examForm.updateMany({ where: { id: form.id, status: "DRAFT" }, data: { eligibilityJson: snapshot, eligible, noDues: dues.completed } });
     await audit({ schoolId, actorUserId: ctx.user.id, action: "exam.form.refuse", targetType: "ExamForm", targetId: form.id, meta: { at: "submit", eligible, noDues: dues.completed } });
-    throw new RuleRefusal(!eligible ? "examCell.refuseNotEligible" : "examCell.refuseNoDues", 409);
+    if (!eligible) throw new RuleRefusal("examCell.refuseNotEligible", 409);
+    // Say which desk still holds a line, so the student knows whom to see (LIFECYCLE-3).
+    const tr = await getT();
+    const desks = dues.lines.filter((l) => !l.cleared).map((l) => tr(`collegeOffice.desk${l.desk}` as TranslationKey));
+    throw new RuleRefusal("examCell.refuseNoDuesDesks", 409, { desks: desks.join(", ") });
   }
   const fee = formFee(courses, s);
   const late = lateFeeOn(parseSlabs(s.lateFeeSlabsJson), today);

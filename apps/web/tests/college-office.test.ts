@@ -27,6 +27,7 @@ import { POST as undertakingPost } from "@/app/api/v1/college/admissions/applica
 import { POST as offerPost } from "@/app/api/v1/college/admissions/applications/[applicationId]/offer/route";
 import { POST as feePost } from "@/app/api/v1/college/admissions/applications/[applicationId]/fee/route";
 import { POST as admitPost } from "@/app/api/v1/college/admissions/applications/[applicationId]/admit/route";
+import { POST as supernumeraryPost } from "@/app/api/v1/college/admissions/applications/[applicationId]/supernumerary/route";
 import { POST as structuresPost } from "@/app/api/v1/accounts/fee-structures/route";
 import { POST as raisePost } from "@/app/api/v1/accounts/demands/raise/route";
 import { POST as concessionPost } from "@/app/api/v1/accounts/concessions/route";
@@ -37,6 +38,12 @@ import { GET as myLedgerGet } from "@/app/api/v1/student/ledger/route";
 import { GET as overviewGet } from "@/app/api/v1/accounts/overview/route";
 import { GET as noDuesGet, POST as noDuesPost } from "@/app/api/v1/accounts/no-dues/[studentMembershipId]/route";
 import { GET as feeOverviewGet } from "@/app/api/v1/fees/overview/route";
+import { POST as schoolConcessionPost } from "@/app/api/v1/fees/concessions/route";
+import { GET as familyFeesGet } from "@/app/api/v1/fees/family/route";
+import { POST as counterPost } from "@/app/api/v1/fees/payments/route";
+import { POST as reversePost } from "@/app/api/v1/fees/payments/[paymentId]/reverse/route";
+import { GET as receiptGet } from "@/app/api/v1/fees/receipts/[receiptId]/route";
+import { GET as familyCertRequestsGet, POST as familyCertRequestsPost } from "@/app/api/v1/family/certificate-requests/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -106,6 +113,7 @@ afterAll(async () => {
   await db.notification.deleteMany({ where: { schoolId: { in: [ids.college, ids.bare, ids.school] } } });
   const admittedUsers = await db.membership.findMany({ where: { schoolId: ids.college, role: "STUDENT", id: { notIn: [ids.s1, ids.s2] } }, select: { userId: true } });
   await db.school.deleteMany({ where: { id: { in: [ids.college, ids.bare, ids.school] } } });
+  await db.uploadTicket.deleteMany({ where: { fileId: { endsWith: `-${STAMP}` } } });
   await db.user.deleteMany({ where: { OR: [{ email: { contains: `-${STAMP}@test.invalid` } }, { id: { in: admittedUsers.map((u) => u.userId) } }] } });
   await db.$disconnect();
 });
@@ -124,12 +132,14 @@ describe("the gates", () => {
     await expect(gateRequest("GET /api/v1/accounts/overview", { role: "ACCOUNTS", schoolId: ids.college })).resolves.toBe("pass");
   });
 
-  it("gives an ACCOUNTS member at a school nothing college — the desk's doors answer not found — while the role still keeps the fee ledger", async () => {
+  it("gives an ACCOUNTS member at a school nothing college — the desk's doors answer 403 MODULE_OFF, the module gate's answer (W-17) — while the role still keeps the fee ledger", async () => {
     await as(ids.schoolAccounts, ids.school, "ACCOUNTS");
     const overview = await overviewGet();
-    expect(overview.status).toBe(404);
+    expect(overview.status).toBe(403);
+    expect((await body(overview)).code).toBe("MODULE_OFF");
     const raise = await raisePost(json("/api/v1/accounts/demands/raise", {}));
-    expect(raise.status).toBe(404);
+    expect(raise.status).toBe(403);
+    expect((await body(raise)).code).toBe("MODULE_OFF");
     expect((await feeOverviewGet()).status).not.toBe(403);
     // ACCOUNTS is limited: a door that does not name it refuses before the body.
     await expect(gateRequest("GET /api/v1/library/titles", { role: "ACCOUNTS", schoolId: ids.college })).rejects.toThrow();
@@ -176,6 +186,18 @@ describe("fee structures by category, and the ledger", () => {
     expect((await db.feeDemand.findFirstOrThrow({ where: { studentMembershipId: ids.s2 }, orderBy: { dueDate: "asc" } })).netPaise).toBe(1_450_000 - 625_000);
   });
 
+  it("refuses the school's concession door at a college, for ACCOUNTS and ADMIN alike: it has no limit and no principal (campaign S-1)", async () => {
+    const before = await db.feeConcession.count({ where: { schoolId: ids.college } });
+    for (const [userId, role] of [[ids.accounts, "ACCOUNTS"], [ids.admin, "ADMIN"]] as const) {
+      await as(userId, ids.college, role);
+      const res = await schoolConcessionPost(json("/api/v1/fees/concessions", { studentMembershipId: ids.s2, kind: "PERCENT", value: 10000, reason: "ZZ the whole fee" }));
+      expect(res.status).toBe(403);
+      expect((await body(res)).error).toContain("Accounts");
+    }
+    expect(await db.feeConcession.count({ where: { schoolId: ids.college } })).toBe(before);
+    expect((await db.feeDemand.findFirstOrThrow({ where: { studentMembershipId: ids.s2 }, orderBy: { dueDate: "asc" } })).netPaise).toBe(1_450_000 - 625_000);
+  });
+
   it("shows the family what it owes net of the state's share, and a lapse puts it back with a notification", async () => {
     await as(ids.accounts, ids.college, "ACCOUNTS");
     // s2 is OPEN: an OBC scheme is not open to her.
@@ -203,6 +225,31 @@ describe("fee structures by category, and the ledger", () => {
 });
 
 describe("a guardian's view of an adult's money", () => {
+  it("the older family doors ask for MONEY too: fees, a receipt and its notice, and certificate requests are the adult's (campaign S-2)", async () => {
+    await as(ids.accounts, ids.college, "ACCOUNTS");
+    const paid = await body<{ paymentId: string; receiptId: string }>(await counterPost(json("/api/v1/fees/payments", { studentMembershipId: ids.s1, amountPaise: 100, method: "CASH", clientId: `zz-s2-${STAMP}` })));
+    expect(paid.receiptId).toBeTruthy();
+    // No notice of the payment to a guardian the student has not let see their money.
+    expect(await db.notification.count({ where: { userId: ids.parent, kind: "FEES" } })).toBe(0);
+    await as(ids.parent, null, "PARENT");
+    expect((await familyFeesGet(get(`/api/v1/fees/family?childId=${ids.s1}`))).status).toBe(403);
+    const unnamed = await body<{ children: { studentMembershipId: string }[]; child: unknown }>(await familyFeesGet(get("/api/v1/fees/family")));
+    expect(unnamed.children.map((c) => c.studentMembershipId)).not.toContain(ids.s1);
+    expect(unnamed.child).toBeNull();
+    expect((await receiptGet(get(`/api/v1/fees/receipts/${paid.receiptId}`), params("receiptId", paid.receiptId))).status).toBe(404);
+    expect((await familyCertRequestsGet(get(`/api/v1/family/certificate-requests?childId=${ids.s1}`))).status).toBe(403);
+    expect((await familyCertRequestsGet(get("/api/v1/family/certificate-requests"))).status).toBe(403);
+    expect((await familyCertRequestsPost(json(`/api/v1/family/certificate-requests?childId=${ids.s1}`, { kind: "BONAFIDE", purpose: "ZZ bank account" }))).status).toBe(403);
+    expect(await db.certificateRequest.count({ where: { studentMembershipId: ids.s1 } })).toBe(0);
+    // Granted, the money doors open (the next test reads the ledger); certificate papers stay the adult's.
+    await db.studentConsent.create({ data: { schoolId: ids.college, studentMembershipId: ids.s1, grant: "MONEY" } });
+    expect((await familyFeesGet(get(`/api/v1/fees/family?childId=${ids.s1}`))).status).toBe(200);
+    expect((await receiptGet(get(`/api/v1/fees/receipts/${paid.receiptId}`), params("receiptId", paid.receiptId))).status).toBe(200);
+    await db.studentConsent.deleteMany({ where: { studentMembershipId: ids.s1, grant: "MONEY" } });
+    await as(ids.accounts, ids.college, "ACCOUNTS");
+    expect((await reversePost(json("/x", { reason: "ZZ test payment" }), params("paymentId", paid.paymentId))).status).toBe(200);
+  });
+
   it("is refused until the student grants MONEY, then reads the same ledger under the child's college", async () => {
     await as(ids.parent, null, "PARENT");
     expect((await myLedgerGet(get(`/api/v1/student/ledger?childId=${ids.s1}`))).status).toBe(403);
@@ -245,6 +292,29 @@ describe("no-dues", () => {
     await as(ids.accounts, ids.college, "ACCOUNTS");
     expect((await noDuesGet(get(`/x?event=LEAVING`), params("studentMembershipId", ids.s2))).status).toBe(200);
   });
+
+  it("an exam form counts only the instalments already due; leaving counts every one (LIFECYCLE-3)", async () => {
+    const u = await db.user.create({ data: { name: "ZZ Office Student3", email: `zz-office-student3-${STAMP}@test.invalid`, isMinor: false, birthdate: new Date("2006-03-01T00:00:00Z") }, select: { id: true } });
+    const s3 = (await db.membership.create({ data: { userId: u.id, schoolId: ids.college, role: "STUDENT", status: "ACTIVE", studentCode: `ZOS3${STAMP}` }, select: { id: true } })).id;
+    const day = (offset: number) => new Date(`${new Date(Date.now() + offset * 86_400_000).toISOString().slice(0, 10)}T00:00:00.000Z`);
+    const demand = (label: string, dueDate: Date, paid: boolean) => db.feeDemand.create({ data: { schoolId: ids.college, studentMembershipId: s3, academicYearId: ids.year, label, dueDate, grossPaise: 600_000, netPaise: 600_000, paidPaise: paid ? 600_000 : 0, status: paid ? "PAID" : "OPEN" }, select: { id: true } });
+    const odd = await demand("ZZ odd semester", day(-100), true);
+    await demand("ZZ even semester", day(60), false);
+    // The odd semester is paid and the even one is not yet due: nothing is owed today.
+    const form = await noDuesFor(s3, "EXAM_FORM");
+    expect(form.lines.find((l) => l.desk === "ACCOUNTS")).toMatchObject({ owedPaise: 0, cleared: true });
+    expect(form.completed).toBe(true);
+    // Leaving the college still asks for every instalment.
+    expect((await noDuesFor(s3, "LEAVING")).lines.find((l) => l.desk === "ACCOUNTS")).toMatchObject({ owedPaise: 600_000, cleared: false });
+    // An instalment past its date and unpaid stops the form, for its own amount only.
+    await db.feeDemand.update({ where: { id: odd.id }, data: { paidPaise: 100_000, status: "PART" } });
+    const owing = await noDuesFor(s3, "EXAM_FORM");
+    expect(owing.lines.find((l) => l.desk === "ACCOUNTS")).toMatchObject({ owedPaise: 500_000, cleared: false });
+    // Due today counts as due.
+    await db.feeDemand.update({ where: { id: odd.id }, data: { paidPaise: 600_000, status: "PAID" } });
+    await demand("ZZ due today", day(0), false);
+    expect((await noDuesFor(s3, "EXAM_FORM", new Date(Date.now()))).lines.find((l) => l.desk === "ACCOUNTS")?.owedPaise).toBe(600_000);
+  });
 });
 
 describe("admissions", () => {
@@ -275,12 +345,19 @@ describe("admissions", () => {
     expect((await body(await appsPost(json("/x", { roundId, capAllotmentId: row.id })))).id).toBe(app.id);
     // Verified with no scan is refused.
     expect((await docPost(json("/x", { doc: "caste", status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(403);
-    for (const doc of ["caste", "income", "domicile"]) expect((await docPost(json("/x", { doc, fileId: `zz-scan-${doc}`, status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(200);
+    // A scan is an upload of the desk's own: an id it did not upload, another college's file, is refused (campaign S-12).
+    const planted = await db.uploadTicket.create({ data: { userId: ids.principal, fileId: `zz-scan-other-${STAMP}`, mime: "application/pdf", size: 10 } });
+    expect((await docPost(json("/x", { doc: "caste", fileId: planted.fileId, status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(403);
+    expect((await docPost(json("/x", { doc: "caste", fileId: "zz-never-uploaded", status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(403);
+    await db.uploadTicket.createMany({ data: ["caste", "income", "domicile", "marks"].map((doc) => ({ userId: ids.admin, fileId: `zz-scan-${doc}-${STAMP}`, mime: "application/pdf", size: 10 })) });
+    for (const doc of ["caste", "income", "domicile"]) expect((await docPost(json("/x", { doc, fileId: `zz-scan-${doc}-${STAMP}`, status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(200);
+    // The same scan named again on the same line is no second spend.
+    expect((await docPost(json("/x", { doc: "caste", fileId: `zz-scan-caste-${STAMP}`, status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(200);
     await undertakingPost(json("/x", { by: "STUDENT" }), params("applicationId", app.id));
     await undertakingPost(json("/x", { by: "PARENT" }), params("applicationId", app.id));
     // Mark sheets still pending: no offer.
     expect((await offerPost(json("/x", {}), params("applicationId", app.id))).status).toBe(403);
-    await docPost(json("/x", { doc: "marksheets", fileId: "zz-scan-marks", status: "VERIFIED" }), params("applicationId", app.id));
+    expect((await docPost(json("/x", { doc: "marksheets", fileId: `zz-scan-marks-${STAMP}`, status: "VERIFIED" }), params("applicationId", app.id))).status).toBe(200);
     const offered = await body<{ status: string; admissionFeePaise: number }>(await offerPost(json("/x", {}), params("applicationId", app.id)));
     expect(offered).toMatchObject({ status: "FEE_DUE", admissionFeePaise: 825_000 });
   });
@@ -313,6 +390,38 @@ describe("admissions", () => {
     expect(vac.rows.find((r) => r.category === "OBC")).toMatchObject({ admitted: 1, vacant: 0 });
     // Admitting again answers as it stands.
     expect((await body(await admitPost(json("/x", {}), params("applicationId", app.id)))).studentMembershipId).toBe(done.studentMembershipId);
+  });
+
+  it("refuses an admission past the round's seats or the programme's intake 409 with the limit named, until the principal approves it as supernumerary (LIFECYCLE-4)", async () => {
+    // OBC had one seat in this round, and the admission above took it.
+    const make = (n: number, category: string) => db.collegeApplication.create({ data: { schoolId: ids.college, roundId, programmeId: ids.programme, number: n, applicantName: `ZZ Over ${n}`, category, quota: "CAP", status: "FEE_DUE" }, select: { id: true } });
+    const over = await make(901, "OBC");
+    await as(ids.admin, ids.college, "ADMIN");
+    const users = await db.user.count();
+    const refused = await admitPost(json("/x", {}), params("applicationId", over.id));
+    expect(refused.status).toBe(409);
+    expect((await body<{ error: string }>(refused)).error).toContain("OBC");
+    expect(await db.user.count()).toBe(users);
+    // The office cannot give the seat beyond the limit; the principal can, with a reason.
+    expect((await supernumeraryPost(json("/x", { reason: "ZZ ward of a serviceman" }), params("applicationId", over.id))).status).toBe(403);
+    await as(ids.principal, ids.college, "PRINCIPAL");
+    expect((await supernumeraryPost(json("/x", {}), params("applicationId", over.id))).status).toBe(422);
+    const approved = await body<{ supernumeraryAt: string | null; supernumeraryReason: string }>(await supernumeraryPost(json("/x", { reason: "ZZ ward of a serviceman" }), params("applicationId", over.id)));
+    expect(approved.supernumeraryAt).not.toBeNull();
+    expect(approved.supernumeraryReason).toBe("ZZ ward of a serviceman");
+    expect(await db.auditLog.count({ where: { schoolId: ids.college, action: "college.admissions.supernumerary", targetId: over.id } })).toBe(1);
+    await as(ids.admin, ids.college, "ADMIN");
+    expect((await admitPost(json("/x", {}), params("applicationId", over.id))).status).toBe(200);
+    // The programme's intake is a limit too: with an intake of 1, an OPEN seat still free in the round is refused.
+    await db.programme.update({ where: { id: ids.programme }, data: { intake: 1 } });
+    const open = await make(902, "OPEN");
+    const full = await admitPost(json("/x", {}), params("applicationId", open.id));
+    expect(full.status).toBe(409);
+    expect((await body<{ error: string }>(full)).error).toContain("ZZ BSc Physics");
+    // An offer is held to the same limits.
+    const offerApp = await db.collegeApplication.create({ data: { schoolId: ids.college, roundId, programmeId: ids.programme, number: 903, applicantName: "ZZ Over 903", category: "OPEN", quota: "CAP", status: "SCRUTINY", antiRaggingStudentAt: new Date(), antiRaggingParentAt: new Date(), documentsJson: JSON.stringify({ domicile: { required: true, fileId: "f1", status: "VERIFIED", note: null }, marksheets: { required: true, fileId: "f2", status: "VERIFIED", note: null } }) }, select: { id: true } });
+    expect((await offerPost(json("/x", {}), params("applicationId", offerApp.id))).status).toBe(409);
+    await db.programme.update({ where: { id: ids.programme }, data: { intake: 0 } });
   });
 
   it("measures the refund by the slab from the last date of admission; the caution deposit comes back whole", () => {

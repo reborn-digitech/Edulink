@@ -233,6 +233,9 @@ export const collegeApplicationSchema = z.object({
   refundPaise: paise.nullable(),
   refundSlab: z.string().nullable(),
   refundRecordedAt: isoOrNull,
+  /** LIFECYCLE-4: the principal's approval of a seat beyond the round's seats or the intake. */
+  supernumeraryAt: isoOrNull.optional(),
+  supernumeraryReason: z.string().nullable().optional(),
   createdAt: iso,
 });
 export type CollegeApplicationView = z.infer<typeof collegeApplicationSchema>;
@@ -258,6 +261,7 @@ export const collegeDocumentBodySchema = z.object({ doc: scrutinyDocumentSchema,
 export const antiRaggingBodySchema = z.object({ by: z.enum(["STUDENT", "PARENT"]) });
 export const admissionFeeBodySchema = z.object({ amountPaise: z.number().int().min(100).max(10_000_000_000), method: z.enum(["CASH", "CHEQUE", "BANK", "UPI"]), reference: trimmed(3, 80) });
 export const collegeOfferBodySchema = z.object({ feeStructureId: id.optional() });
+export const collegeSupernumeraryBodySchema = z.object({ reason: trimmed(3, 300) });
 export const collegeAdmitBodySchema = z.object({ prn: z.string().trim().max(40).optional(), apaarId: z.string().trim().regex(/^\d{12}$/).optional(), abcId: z.string().trim().regex(/^\d{12}$/).optional() });
 export const collegeAdmittedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string(), enrolmentId: z.string(), demands: z.number().int(), receiptSerial: z.string().nullable() });
 export const collegeCancelBodySchema = z.object({ reason: trimmed(3, 300), /** The formally notified last date of admission the slab is measured from. */ lastDateKey: dateKey });

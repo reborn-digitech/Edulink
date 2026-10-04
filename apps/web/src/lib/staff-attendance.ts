@@ -75,6 +75,26 @@ async function leaveDays(ctx: Staff, from: string, to: string): Promise<Map<stri
   return byDay;
 }
 
+/**
+ * My own approved leave by day, for my own page: no other person's leave is
+ * read. approvedLeaveBetween reads the whole school's and is open to the
+ * office and the teachers only, which refused every other member of staff
+ * their own month (campaign 2026-10-04, G-2).
+ */
+async function ownLeaveDays(caller: Staff, from: string, to: string): Promise<Map<string, Set<string>>> {
+  const rows = await db.leaveRequest.findMany({
+    where: { schoolId: caller.schoolId, teacherMembershipId: caller.membershipId, status: "APPROVED", fromDateKey: { lte: to }, toDateKey: { gte: from } },
+    select: { fromDateKey: true, toDateKey: true },
+  });
+  const byDay = new Map<string, Set<string>>();
+  for (const r of rows) {
+    for (let d = r.fromDateKey < from ? from : r.fromDateKey; d <= (r.toDateKey > to ? to : r.toDateKey); d = nextDay(d)) {
+      (byDay.get(d) ?? byDay.set(d, new Set()).get(d)!).add(caller.membershipId);
+    }
+  }
+  return byDay;
+}
+
 function nextDay(dateKey: string): string {
   const d = new Date(`${dateKey}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + 1);
@@ -276,7 +296,7 @@ export async function myStaffAttendance(ctx: ActiveContext, month?: string): Pro
   const [rows, closedDays, leave, todayRow, todayClosure] = await Promise.all([
     db.staffAttendance.findMany({ where: { membershipId: caller.membershipId, dateKey: { gte: days[0]!, lte: days[days.length - 1]! } } }),
     closedDaysIn(caller.schoolId, days, week),
-    leaveDays(caller, days[0]!, days[days.length - 1]!),
+    ownLeaveDays(caller, days[0]!, days[days.length - 1]!),
     db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: caller.membershipId, dateKey: today } }, select: { status: true } }),
     closedOn(caller.schoolId, today),
   ]);

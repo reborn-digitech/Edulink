@@ -17,6 +17,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./access-error";
+import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { readJson, writeJson } from "./json";
 import { ageInYears, isDateKey, todayKey } from "./dates";
@@ -262,6 +263,62 @@ export async function vacancyReport(ctx: ActiveContext, roundId: string) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Seats: the limits an offer and an admission respect (LIFECYCLE-4)           */
+/* -------------------------------------------------------------------------- */
+
+type SeatCheckClient = Pick<typeof db, "collegeApplication" | "admissionRound" | "programme">;
+
+/**
+ * THE SEATS ARE LIMITS. The campaign of 4 October admitted seven to a BCom
+ * whose round had six seats and whose intake was six; vacancyReport only
+ * reported it. An offer and an admission are now refused 409, with the
+ * limit named, when either is reached:
+ *   - the round's seat matrix, by the applicant's category, counted as
+ *     vacancyReport counts it (every round of the intake year, and of the
+ *     round's programme when it names one) — only when the round has a
+ *     matrix at all, so a round typed without seats limits nothing;
+ *   - the programme's sanctioned intake for the year, when one is set.
+ * A seat beyond them is the principal's to give: `approveSupernumerary`
+ * records who, when and why on the application (a decision in the head's
+ * log), and a supernumerary seat counts against neither limit. Counted
+ * inside the admission's transaction under one lock per college, so two
+ * admissions at once cannot both take the last seat.
+ */
+async function assertSeatFree(client: SeatCheckClient, schoolId: string, a: { id: string; roundId: string; programmeId: string; category: string; supernumeraryAt: Date | null }): Promise<void> {
+  if (a.supernumeraryAt) return;
+  const round = await client.admissionRound.findFirst({ where: { id: a.roundId, schoolId }, select: { name: true, intakeYear: true, programmeId: true, seatsJson: true } });
+  if (!round) return;
+  const taken = { schoolId, status: "ADMITTED", supernumeraryAt: null, id: { not: a.id }, round: { intakeYear: round.intakeYear } } as const;
+  const seats = seatsOf(round.seatsJson);
+  if (Object.values(seats).some((n) => n > 0)) {
+    const limit = seats[a.category] ?? 0;
+    const admitted = await client.collegeApplication.count({ where: { ...taken, category: a.category, ...(round.programmeId ? { programmeId: round.programmeId } : {}) } });
+    if (admitted >= limit) throw new RuleRefusal("collegeOffice.refuseSeatsFull", 409, { round: round.name, category: a.category, seats: limit });
+  }
+  const programme = await client.programme.findFirst({ where: { id: a.programmeId, schoolId }, select: { name: true, intake: true } });
+  if (programme && programme.intake > 0) {
+    const admitted = await client.collegeApplication.count({ where: { ...taken, programmeId: a.programmeId } });
+    if (admitted >= programme.intake) throw new RuleRefusal("collegeOffice.refuseIntakeFull", 409, { programme: programme.name, intake: programme.intake, year: round.intakeYear });
+  }
+}
+
+/**
+ * The principal gives a seat beyond the limits (see assertSeatFree), with
+ * the reason the register will carry: a supernumerary seat the regulations
+ * allow (a foreign national, a ward of a serviceman, an orphan, a
+ * TFWS seat). Idempotent; audited as a decision.
+ */
+export async function approveSupernumerary(ctx: ActiveContext, id: string, input: { reason: string }): Promise<CollegeApplicationView> {
+  const d = await desk(ctx, ["PRINCIPAL"]);
+  const a = await officeApp(d, id);
+  if (a.supernumeraryAt) return applicationView(a);
+  if (!["APPLIED", "SCRUTINY", "OFFERED", "FEE_DUE"].includes(a.status)) throw new AccessError("collegeOffice.refuseStep");
+  const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { supernumeraryAt: new Date(), supernumeraryByUserId: d.userId, supernumeraryReason: input.reason.trim().slice(0, 300) }, include: APP_INCLUDE });
+  await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.supernumerary", targetType: "CollegeApplication", targetId: a.id, meta: { category: a.category, programmeId: a.programmeId } });
+  return applicationView(updated);
+}
+
+/* -------------------------------------------------------------------------- */
 /* Applications                                                                */
 /* -------------------------------------------------------------------------- */
 
@@ -304,6 +361,8 @@ export function applicationView(a: AppRow): CollegeApplicationView {
     refundPaise: a.refundPaise,
     refundSlab: a.refundSlab,
     refundRecordedAt: a.refundRecordedAt?.toISOString() ?? null,
+    supernumeraryAt: a.supernumeraryAt?.toISOString() ?? null,
+    supernumeraryReason: a.supernumeraryReason,
     createdAt: a.createdAt.toISOString(),
   };
 }
@@ -389,14 +448,23 @@ export async function createApplication(
 const OPEN_STEPS: readonly string[] = ["APPLIED", "SCRUTINY", "OFFERED"];
 
 /** A document's file and its scrutiny. VERIFIED needs a file; the first touch moves the application into scrutiny. */
-export async function setDocument(ctx: ActiveContext, id: string, input: { doc: ScrutinyDocument; fileId?: string | null; status?: "PENDING" | "VERIFIED" | "REJECTED"; note?: string }): Promise<CollegeApplicationView> {
+export async function setDocument(ctx: ActiveContext, id: string, input: { doc: ScrutinyDocument; fileId?: string | null; status?: "PENDING" | "VERIFIED" | "REJECTED"; note?: string }, stored: { fileId?: string | null } = {}): Promise<CollegeApplicationView> {
   const d = await desk(ctx);
   const a = await officeApp(d, id);
   if (!OPEN_STEPS.includes(a.status)) throw new AccessError("collegeOffice.refuseStep");
   const docs = docsOf(a.documentsJson);
   const current: Doc = docs[input.doc] ?? { required: input.doc === "gap" || input.doc === "migration", fileId: null, status: "PENDING", note: null };
   if (!docs[input.doc] && input.doc !== "gap" && input.doc !== "migration") throw new AccessError("collegeOffice.refuseDocument");
-  const next: Doc = { ...current, fileId: input.fileId === undefined ? current.fileId : input.fileId, status: input.status ?? current.status, note: input.note?.trim() || current.note };
+  // A scan named by id must be one this desk member just uploaded (an unspent ticket of theirs), or
+  // one the web form stored in this call: files.ts lets this college's office read whatever id sits on
+  // an application, so a planted id was a read of somebody else's file (campaign S-12).
+  let fileId = input.fileId === undefined ? current.fileId : input.fileId;
+  if (stored.fileId) fileId = stored.fileId;
+  else if (input.fileId && input.fileId !== current.fileId) {
+    const spent = await db.uploadTicket.updateMany({ where: { fileId: input.fileId, userId: d.userId, consumedAt: null }, data: { consumedAt: new Date() } });
+    if (spent.count === 0) throw new AccessError("collegeOffice.refuseFile");
+  }
+  const next: Doc = { ...current, fileId, status: input.status ?? current.status, note: input.note?.trim() || current.note };
   if (next.status === "VERIFIED" && !next.fileId) throw new AccessError("collegeOffice.refuseVerifyWithoutFile");
   docs[input.doc] = next;
   const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { documentsJson: writeJson(docs), status: a.status === "APPLIED" ? "SCRUTINY" : a.status }, include: APP_INCLUDE });
@@ -439,6 +507,7 @@ export async function offerSeat(ctx: ActiveContext, id: string, input: { feeStru
   if (!OPEN_STEPS.includes(a.status)) throw new AccessError("collegeOffice.refuseStep");
   if (!scrutinyComplete(docsOf(a.documentsJson))) throw new AccessError("collegeOffice.refuseScrutiny");
   if (!a.antiRaggingStudentAt || !a.antiRaggingParentAt) throw new AccessError("collegeOffice.refuseUndertaking");
+  await assertSeatFree(db, d.schoolId, a);
   const structure = await structureFor(d.schoolId, a.programmeId, a.category, input.feeStructureId);
   if (input.feeStructureId && !structure) throw new AccessError("collegeOffice.refuseStructure");
   const first = structure?.instalments[0];
@@ -493,6 +562,9 @@ export async function admitStudent(ctx: ActiveContext, id: string, input: { prn?
 
   const minted = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
+    // The last seat is taken by one admission at a time (LIFECYCLE-4).
+    await tx.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`college-seats:${d.schoolId}`}))`;
+    await assertSeatFree(tx, d.schoolId, a);
     const user = await tx.user.create({ data: { name: a.applicantName, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate: a.birthdate, isMinor: age === null ? false : age < 18, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
     const membership = await tx.membership.create({ data: { userId: user.id, schoolId: d.schoolId, role: "STUDENT", status: "ACTIVE", studentCode: code }, select: { id: true } });
     // One APAAR id and one ABC id per person: a number already on another student of the college undoes the whole admission.

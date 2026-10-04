@@ -4,6 +4,7 @@ import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
 import { ageInYears, parseDateOnly } from "./dates";
+import { adultCutoff } from "./adulthood";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -157,7 +158,7 @@ export async function setOwnBirthdate(ctx: ActiveContext, dateKey: string): Prom
  * cron fixes the whole server, a test only its own accounts.
  */
 export async function refreshMinority(now: Date = new Date(), scope: { userIds?: string[] } = {}): Promise<{ adults: number; minors: number }> {
-  const cutoff = new Date(Date.UTC(now.getUTCFullYear() - 18, now.getUTCMonth(), now.getUTCDate()));
+  const cutoff = adultCutoff(now);
   const only = scope.userIds ? { id: { in: scope.userIds } } : {};
   const adults = await db.user.updateMany({ where: { ...only, isMinor: true, birthdate: { not: null, lte: cutoff } }, data: { isMinor: false } });
   const minors = await db.user.updateMany({ where: { ...only, isMinor: false, birthdate: { not: null, gt: cutoff } }, data: { isMinor: true } });

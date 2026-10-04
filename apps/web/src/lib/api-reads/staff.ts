@@ -25,7 +25,7 @@ import type { Role } from "@/lib/constants";
 import { AccessError, assertClassAccess, teacherClassIds } from "@/lib/tenancy";
 import { addDaysToKey, todayKey, weekdayOfKey } from "@/lib/dates";
 import { myCovers } from "@/lib/substitutions";
-import { closedOn } from "@/lib/holidays";
+import { closedOn, schoolDayOn } from "@/lib/holidays";
 import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getAttendanceSummary, getRegister } from "@/lib/attendance";
 import { EXAM_CATEGORY, dateSheetsFor, examClassesFor, marksGrid, marksTodoFor } from "@/lib/exams";
@@ -78,9 +78,9 @@ async function classIdsFor(ctx: Staff): Promise<string[]> {
 /* /teacher                                                                   */
 /* ------------------------------------------------------------------------- */
 
-export async function staffToday(ctx: Staff): Promise<StaffToday> {
+export async function staffToday(ctx: Staff, now: Date = new Date()): Promise<StaffToday> {
   const school = await schoolZone(ctx.schoolId);
-  const dateKey = todayKey(school.timezone);
+  const dateKey = todayKey(school.timezone, now);
 
   const marksTodo = await marksTodoFor(ctx, dateKey);
   const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
@@ -119,7 +119,10 @@ export async function staffToday(ctx: Staff): Promise<StaffToday> {
   };
 
   const covers = (await myCovers(ctx, dateKey)).items.map((c) => ({ slotId: c.slotId, periodName: c.periodName, startMinute: c.startMinute, endMinute: c.endMinute, subject: c.subject, classId: c.classId, className: c.className, room: c.room, absentName: c.absentName, note: c.note }));
-  const base = { dateKey, schoolName: school.name, marksTodo: marksTodo.map((row) => ({ ...row })), lessons: lessonsBlock, covers };
+  // A Sunday or a closing holiday is no school, not "every register taken" (B-11).
+  const day = await schoolDayOn(ctx.schoolId, dateKey);
+  const noSchool = day.open ? null : { holidayName: day.holidayName };
+  const base = { dateKey, schoolName: school.name, noSchool, marksTodo: marksTodo.map((row) => ({ ...row })), lessons: lessonsBlock, covers };
   if (classIds.length === 0) return { ...base, formClasses: null };
 
   const [classes, sessionsToday, dueSoon, ungraded] = await Promise.all([
@@ -130,7 +133,7 @@ export async function staffToday(ctx: Staff): Promise<StaffToday> {
     }),
     db.attendanceSession.findMany({ where: { schoolId: ctx.schoolId, dateKey, classId: { in: classIds } }, select: { classId: true } }),
     db.assignment.findMany({
-      where: { schoolId: ctx.schoolId, classId: { in: classIds }, publishedAt: { not: null }, dueAt: { gte: new Date() } },
+      where: { schoolId: ctx.schoolId, classId: { in: classIds }, publishedAt: { not: null }, dueAt: { gte: now } },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
       orderBy: { dueAt: "asc" },
       take: 4,
@@ -142,7 +145,7 @@ export async function staffToday(ctx: Staff): Promise<StaffToday> {
     ...base,
     formClasses: {
       classes: classes.map((k) => ({ id: k.id, name: k.name, color: k.color, students: k._count.enrollments, registerTaken: done.has(k.id) })),
-      registersLeft: classes.filter((k) => !done.has(k.id)).length,
+      registersLeft: noSchool ? 0 : classes.filter((k) => !done.has(k.id)).length,
       toGrade: ungraded,
       dueSoon: dueSoon.map((a) => ({ id: a.id, title: a.title, dueAt: iso(a.dueAt), className: a.class.name })),
     },

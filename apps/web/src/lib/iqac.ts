@@ -1,5 +1,5 @@
 import "server-only";
-import { createHash, createHmac, hkdfSync, randomBytes } from "node:crypto";
+import { createHash, createHmac, hkdfSync, randomBytes, timingSafeEqual } from "node:crypto";
 import {
   NAAC_FRAMEWORKS,
   REGULATOR_CALENDAR,
@@ -31,6 +31,7 @@ import type {
   actionTakenSaveSchema,
 } from "@edulink/contracts";
 import { db } from "./db";
+import { forSchool } from "./tenant-context";
 import { AccessError } from "./tenancy";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn, isModuleOn } from "./modules";
@@ -141,7 +142,9 @@ export async function uploadEvidence(ctx: ActiveContext, input: { fileId: string
 
 export async function listEvidence(ctx: ActiveContext) {
   const desk = await iqacActor(ctx, DESK_READ);
-  const rows = await db.iqacFile.findMany({ where: { schoolId: desk.schoolId }, orderBy: { createdAt: "desc" }, take: 200, select: { fileId: true, title: true, createdAt: true, uploadedByUserId: true } });
+  // Never a grievance's attachment: its title is the kind (RAGGING, HARASSMENT) and its uploader the
+  // student who filed it, which the grievance desk keeps from the IQAC (campaign S-9).
+  const rows = await db.iqacFile.findMany({ where: { schoolId: desk.schoolId, purpose: { not: "GRIEVANCE" } }, orderBy: { createdAt: "desc" }, take: 200, select: { fileId: true, title: true, createdAt: true, uploadedByUserId: true } });
   const users = await db.user.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.uploadedByUserId))] } }, select: { id: true, name: true } });
   const name = new Map(users.map((u) => [u.id, u.name]));
   return { items: rows.map((r) => ({ fileId: r.fileId, title: r.title, uploadedAt: r.createdAt.toISOString(), by: name.get(r.uploadedByUserId) ?? "" })) };
@@ -250,7 +253,7 @@ async function recompute(desk: Desk, cycleId: string, now = new Date()): Promise
       const spec = FORMULAS[m.formula!];
       const ev = evaluate(m.formula!, gathered.facts);
       const inputs = spec.inputs.map((k) => ({ key: k, value: gathered.facts[k] ?? null, source: gathered.source[k] ?? "MISSING", reason: gathered.reasons[k] ?? null }));
-      const rows = spec.inputs.flatMap((k) => gathered.evidence[k] ?? []).slice(0, 50);
+      const rows = uniqueEvidence(spec.inputs.flatMap((k) => gathered.evidence[k] ?? [])).slice(0, 50);
       return { schoolId: desk.schoolId, cycleId, metricCode: m.code, kind: "QN", runId, value: ev.value, score: ev.score, provisional: true, evidenceJson: JSON.stringify({ rows, files: [], inputs }), computedAt: now };
     });
   await db.metricScore.createMany({ data });
@@ -378,10 +381,27 @@ function whyOf(t: Translate, m: { kind: string; formula: string | null }, row: S
 function readEvidence(raw: string): { rows: EvidenceRow[]; files: string[]; inputs: { key: string; value: number | null; source: FactSource; reason: FactReason | null }[] } {
   try {
     const v = JSON.parse(raw) as Partial<{ rows: EvidenceRow[]; files: string[]; inputs: { key: string; value: number | null; source: FactSource; reason: FactReason | null }[] }>;
-    return { rows: v.rows ?? [], files: v.files ?? [], inputs: v.inputs ?? [] };
+    return { rows: uniqueEvidence(v.rows ?? []), files: v.files ?? [], inputs: v.inputs ?? [] };
   } catch {
     return { rows: [], files: [], inputs: [] };
   }
+}
+
+/**
+ * One line per row of evidence. A metric whose formula reads two facts drawn
+ * from the same rows ("placed" over "outgoing", both the placement table's
+ * batches) listed each batch twice, and the predictor drew two list items
+ * with one key, 18 times a page (the walk of 4 October). Read as well as
+ * written, so a cycle computed before this still shows once.
+ */
+export function uniqueEvidence<R extends { type: string; id: string }>(rows: R[]): R[] {
+  const seen = new Set<string>();
+  return rows.filter((r) => {
+    const key = `${r.type}:${r.id}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function reasonText(t: Translate, reason: FactReason | null): string | null {
@@ -787,6 +807,7 @@ async function eligibleSurveys(actor: Desk, today: string): Promise<SurveyRow[]>
 }
 
 export async function myVoice(ctx: ActiveContext) {
+  if (ctx.role === "PARENT") return parentVoice(ctx);
   const actor = await iqacActor(ctx, VOICE_ROLES);
   const t = await getT();
   const today = todayKey(await zoneOf(actor.schoolId));
@@ -803,6 +824,7 @@ export async function myVoice(ctx: ActiveContext) {
 
 /** One answer per person per survey; an anonymous survey stores no membership id at all. */
 export async function answerSurvey(ctx: ActiveContext, surveyId: string, answers: Record<string, number>) {
+  if (ctx.role === "PARENT") return answerAsParent(ctx, surveyId, answers);
   const actor = await iqacActor(ctx, VOICE_ROLES);
   const today = todayKey(await zoneOf(actor.schoolId));
   const survey = (await eligibleSurveys(actor, today)).find((s) => s.id === surveyId);
@@ -819,6 +841,124 @@ export async function answerSurvey(ctx: ActiveContext, surveyId: string, answers
   // No audit row names the respondent of an anonymous survey: the log would undo the anonymity.
   if (!ANONYMOUS(survey.kind)) await audit({ schoolId: actor.schoolId, actorUserId: actor.userId, action: "iqac.survey.answer", targetType: "Survey", targetId: surveyId, meta: {} });
   return myVoice(ctx);
+}
+
+/* -------------------------------------------------------------------------- */
+/* The parents' and the employers' voice (G-5, 4 Oct 2026)                      */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * PARENT and EMPLOYER were survey kinds nobody could answer: the voice doors
+ * took students, alumni and faculty, and both kinds were "transcribed by the
+ * desk". Now a guardian answers the open PARENT surveys of each college or
+ * school a child of theirs is at, through the same voice doors (a guardian
+ * belongs to no school, so the surveys are those of the children's schools,
+ * with IQAC on); and anyone the desk hands a link — an employer, a parent
+ * without an account — answers one survey once through a signed link,
+ * signed out, rate-limited at the door. Both are anonymous as the kinds are:
+ * the respondent hash is keyed as the members' is and no name is kept.
+ */
+const LINK_KINDS: readonly SurveyKind[] = ["EMPLOYER", "PARENT"];
+
+async function parentSchools(ctx: ActiveContext): Promise<string[]> {
+  const rows = await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, select: { studentSchoolId: true }, distinct: ["studentSchoolId"] });
+  const out: string[] = [];
+  for (const r of rows) if (await isModuleOn(r.studentSchoolId, "IQAC")) out.push(r.studentSchoolId);
+  return out;
+}
+
+async function openParentSurveys(ctx: ActiveContext): Promise<SurveyRow[]> {
+  const out: SurveyRow[] = [];
+  for (const schoolId of await parentSchools(ctx)) {
+    const today = todayKey(await zoneOf(schoolId));
+    out.push(...(await db.survey.findMany({ where: { schoolId, kind: "PARENT", opensOn: { lte: today }, closesOn: { gte: today }, closedAt: null }, orderBy: { closesOn: "asc" }, select: SURVEY_SELECT })));
+  }
+  return out;
+}
+
+async function parentVoice(ctx: ActiveContext) {
+  const t = await getT();
+  const surveys = await openParentSurveys(ctx);
+  const hashes = surveys.map((s) => respondentHash(s.id, `parent:${ctx.user.id}`, s.salt));
+  const answered = new Set(surveys.length ? (await db.surveyResponse.findMany({ where: { surveyId: { in: surveys.map((s) => s.id) }, respondentHash: { in: hashes } }, select: { surveyId: true } })).map((r) => r.surveyId) : []);
+  return {
+    surveys: surveys.map((s) => ({ id: s.id, kind: s.kind as SurveyKind, title: s.title, closesOn: s.closesOn, answered: answered.has(s.id), questions: readJsonArray<string>(s.questionsJson).map((code) => ({ code, label: questionLabel(t, s.kind, code) })) })),
+    grievances: [],
+    canFileGrievance: false,
+  };
+}
+
+async function answerAsParent(ctx: ActiveContext, surveyId: string, answers: Record<string, number>) {
+  const survey = (await openParentSurveys(ctx)).find((s) => s.id === surveyId);
+  if (!survey) throw new AccessError("iqac.refuseNotYourSurvey", "NOT_FOUND");
+  const clean = checkedAnswers(readJsonArray<string>(survey.questionsJson), answers);
+  try {
+    await db.surveyResponse.create({ data: { schoolId: survey.schoolId, surveyId, respondentHash: respondentHash(survey.id, `parent:${ctx.user.id}`, survey.salt), respondentMembershipId: null, answersJson: JSON.stringify(clean), source: "parent" } });
+  } catch {
+    throw new RuleRefusal("iqac.refuseAnswered", 409);
+  }
+  return parentVoice(ctx);
+}
+
+/** The link's signing key: derived from the operator's key and the survey's salt, so closing the survey (which wipes the salt) kills every link. */
+function linkKey(salt: string): Buffer {
+  const read = readFeesSecretKey();
+  return read.ok ? Buffer.from(hkdfSync("sha256", read.key, Buffer.from(salt || "closed"), Buffer.from("iqac-survey-link"), 32)) : Buffer.from(`link:${salt || "closed"}`);
+}
+const linkSig = (salt: string, schoolId: string, surveyId: string, nonce: string) => createHmac("sha256", linkKey(salt)).update(`${schoolId}.${surveyId}.${nonce}`).digest("base64url");
+
+/** The desk makes one link for one respondent of an EMPLOYER or PARENT survey: one answer per link. */
+export async function makeSurveyLink(ctx: ActiveContext, surveyId: string): Promise<{ token: string; path: string }> {
+  const desk = await iqacActor(ctx, DESK_WRITE);
+  const s = await db.survey.findFirst({ where: { id: surveyId, schoolId: desk.schoolId }, select: { id: true, kind: true, salt: true, closedAt: true } });
+  if (!s) throw new AccessError("iqac.refuseNoItem", "NOT_FOUND");
+  if (!LINK_KINDS.includes(s.kind as SurveyKind)) throw new RuleRefusal("iqac.refuseLinkKind", 422);
+  if (s.closedAt || !s.salt) throw new RuleRefusal("iqac.refuseLinkClosed", 409);
+  const nonce = randomBytes(12).toString("base64url");
+  const token = `${desk.schoolId}.${s.id}.${nonce}.${linkSig(s.salt, desk.schoolId, s.id, nonce)}`;
+  await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.survey.link", targetType: "Survey", targetId: s.id, meta: { kind: s.kind } });
+  return { token, path: `/survey/${token}` };
+}
+
+type LinkedSurvey = { survey: SurveyRow; nonce: string };
+
+/** A link read back: the survey it was signed for, open today, or null for anything else (a forged, closed or wrong link reads the same). */
+async function linkedSurvey(token: string): Promise<LinkedSurvey | null> {
+  const parts = token.split(".");
+  if (parts.length !== 4 || parts.some((p) => !/^[A-Za-z0-9_-]{8,64}$/.test(p))) return null;
+  const [schoolId, surveyId, nonce, sig] = parts as [string, string, string, string];
+  return forSchool(schoolId, async () => {
+    const survey = await db.survey.findFirst({ where: { id: surveyId, schoolId }, select: SURVEY_SELECT });
+    if (!survey || !LINK_KINDS.includes(survey.kind as SurveyKind) || !survey.salt) return null;
+    const want = Buffer.from(linkSig(survey.salt, schoolId, surveyId, nonce));
+    const got = Buffer.from(sig);
+    if (want.length !== got.length || !timingSafeEqual(want, got)) return null;
+    if (statusOf(survey, todayKey(await zoneOf(schoolId))) !== "OPEN") return null;
+    return { survey, nonce };
+  });
+}
+
+/** What a signed-out respondent sees: the survey's title and questions, and whether this link has been answered. */
+export async function linkSurveyView(token: string, t: Translate): Promise<{ title: string; kind: SurveyKind; closesOn: string; answered: boolean; questions: { code: string; label: string }[] } | null> {
+  const linked = await linkedSurvey(token);
+  if (!linked) return null;
+  const { survey, nonce } = linked;
+  const answered = await forSchool(survey.schoolId, () => db.surveyResponse.findFirst({ where: { surveyId: survey.id, respondentHash: respondentHash(survey.id, `link:${nonce}`, survey.salt) }, select: { id: true } }));
+  return { title: survey.title, kind: survey.kind as SurveyKind, closesOn: survey.closesOn, answered: Boolean(answered), questions: readJsonArray<string>(survey.questionsJson).map((code) => ({ code, label: questionLabel(t, survey.kind, code) })) };
+}
+
+/** A signed-out respondent answers once through their link. */
+export async function answerByLink(token: string, answers: Record<string, number>, t: Translate) {
+  const linked = await linkedSurvey(token);
+  if (!linked) throw new AccessError("iqac.refuseNotYourSurvey", "NOT_FOUND");
+  const { survey, nonce } = linked;
+  const clean = checkedAnswers(readJsonArray<string>(survey.questionsJson), answers);
+  try {
+    await forSchool(survey.schoolId, () => db.surveyResponse.create({ data: { schoolId: survey.schoolId, surveyId: survey.id, respondentHash: respondentHash(survey.id, `link:${nonce}`, survey.salt), respondentMembershipId: null, answersJson: JSON.stringify(clean), source: "link" } }));
+  } catch {
+    throw new RuleRefusal("iqac.refuseAnswered", 409);
+  }
+  return (await linkSurveyView(token, t))!;
 }
 
 /* -------------------------------------------------------------------------- */

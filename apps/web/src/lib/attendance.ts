@@ -5,7 +5,7 @@ import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import { formatDateKey } from "./dates";
-import { closedOn } from "./holidays";
+import { schoolDayOn } from "./holidays";
 import { absenceNotesOn } from "./absence-notes";
 import type { AttendanceStatus } from "./constants";
 
@@ -277,9 +277,8 @@ export async function registersDue(
   schoolId: string,
   dateKey: string,
   opts: { classIds?: string[] } = {},
-): Promise<{ open: boolean; expected: string[]; taken: string[]; missing: string[] }> {
-  const day = await closedOn(schoolId, dateKey);
-  const open = day.teachingDay && !day.closed;
+): Promise<{ open: boolean; holidayName: string | null; expected: string[]; taken: string[]; missing: string[] }> {
+  const { open, holidayName } = await schoolDayOn(schoolId, dateKey);
 
   const classes = await db.class.findMany({
     where: {
@@ -292,7 +291,7 @@ export async function registersDue(
     orderBy: { name: "asc" },
   });
   const expected = open ? classes.map((c) => c.id) : [];
-  if (expected.length === 0) return { open, expected, taken: [], missing: [] };
+  if (expected.length === 0) return { open, holidayName, expected, taken: [], missing: [] };
 
   const sessions = await db.attendanceSession.findMany({
     where: { schoolId, dateKey, classId: { in: expected } },
@@ -302,10 +301,35 @@ export async function registersDue(
 
   return {
     open,
+    holidayName,
     expected,
     taken: [...taken],
     missing: expected.filter((id) => !taken.has(id)),
   };
+}
+
+/**
+ * One pupil's mark today, for the pupil's and the family's homes, with
+ * whether there is school today at all.
+ *
+ * Without the second half, a Sunday or a holiday read as "not marked yet"
+ * — a register the family was told to expect that nobody was ever going to
+ * take (B-11). A mark taken on a closed day out of habit is still shown:
+ * it exists, and hiding it would be the opposite lie.
+ */
+export async function todayAttendanceFor(
+  schoolId: string,
+  studentMembershipId: string,
+  dateKey: string,
+): Promise<{ open: boolean; holidayName: string | null; record: { status: string; note: string | null } | null }> {
+  const [day, record] = await Promise.all([
+    schoolDayOn(schoolId, dateKey),
+    db.attendanceRecord.findFirst({
+      where: { schoolId, studentMembershipId, session: { dateKey } },
+      select: { status: true, note: true },
+    }),
+  ]);
+  return { ...day, record };
 }
 
 /** Roster plus any marks already recorded for the day, and the family's absence note for the day beside each pupil who filed one. */

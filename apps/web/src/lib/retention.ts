@@ -75,19 +75,35 @@ async function staleJobRunIds(cutoff: Date, scope: RetentionScope): Promise<stri
   return stale.map((r) => r.id);
 }
 
+/** Whether a scope names anything at all: the nightly job's is empty, a test's or a walk's is not. */
+export const isScoped = (scope: RetentionScope): boolean => Object.values(scope).some((v) => v !== undefined);
+
+/**
+ * Each table's rows to take, or NULL to leave the table alone. A SCOPED sweep
+ * touches only the tables its scope narrows by their own key (campaign
+ * LIFECYCLE-1): `{ schoolIds }` alone used to pass the future-clock guard and
+ * then take every session, token, rate limit, ticket, e-mail and job run in the
+ * database, because none of those tables carries a school. Now sessions,
+ * tokens and tickets need `userIds`, rate limits `buckets`, the outbox
+ * `outboxTo`, job runs `jobs`, the audit log and the bus positions
+ * `schoolIds`, the health reads either. The unscoped nightly sweep is as it was.
+ */
 const where = (at: ReturnType<typeof cutoffs>, scope: RetentionScope) => {
+  const scoped = isScoped(scope);
   const user = scope.userIds ? { userId: { in: scope.userIds } } : {};
+  const narrowed = <T>(by: boolean, rows: T): T | null => (!scoped || by ? rows : null);
   return {
-    sessions: { ...user, OR: [{ expiresAt: { lt: at.sessions } }, { revokedAt: { lt: at.sessions } }] },
-    tokens: { ...user, OR: [{ expiresAt: { lt: at.tokens } }, { consumedAt: { lt: at.tokens } }] },
-    rateLimits: { ...(scope.buckets ? { bucket: { in: scope.buckets } } : {}), windowEndsAt: { lt: at.rateLimits } },
-    uploadTickets: { ...user, consumedAt: { lt: at.uploadTickets } },
-    outbox: { ...(scope.outboxTo ? { to: scope.outboxTo } : {}), createdAt: { lt: at.outbox } },
-    auditRows: at.auditRows ? { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), createdAt: { lt: at.auditRows } } : null,
+    sessions: narrowed(!!scope.userIds, { ...user, OR: [{ expiresAt: { lt: at.sessions } }, { revokedAt: { lt: at.sessions } }] }),
+    tokens: narrowed(!!scope.userIds, { ...user, OR: [{ expiresAt: { lt: at.tokens } }, { consumedAt: { lt: at.tokens } }] }),
+    rateLimits: narrowed(!!scope.buckets, { ...(scope.buckets ? { bucket: { in: scope.buckets } } : {}), windowEndsAt: { lt: at.rateLimits } }),
+    uploadTickets: narrowed(!!scope.userIds, { ...user, consumedAt: { lt: at.uploadTickets } }),
+    outbox: narrowed(!!scope.outboxTo, { ...(scope.outboxTo ? { to: scope.outboxTo } : {}), createdAt: { lt: at.outbox } }),
+    jobRuns: narrowed(!!scope.jobs, true),
+    auditRows: at.auditRows ? narrowed(!!scope.schoolIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), createdAt: { lt: at.auditRows } }) : null,
     // School rows: a scoped test narrows them to its own school and its own reader.
-    healthReads: { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...(scope.userIds ? { readerUserId: { in: scope.userIds } } : {}), readAt: { lt: at.healthReads } },
+    healthReads: narrowed(!!scope.schoolIds || !!scope.userIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), ...(scope.userIds ? { readerUserId: { in: scope.userIds } } : {}), readAt: { lt: at.healthReads } }),
     // A bus's positions (transport): a scoped test narrows them to its own school.
-    tripPositions: { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), at: { lt: at.tripPositions } },
+    tripPositions: narrowed(!!scope.schoolIds, { ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}), at: { lt: at.tripPositions } }),
   };
 };
 
@@ -95,16 +111,17 @@ const where = (at: ReturnType<typeof cutoffs>, scope: RetentionScope) => {
 export async function retentionPreview(now: Date = new Date(), config: RetentionConfig = readRetentionConfig().config, scope: RetentionScope = {}): Promise<{ config: RetentionConfig; pending: RetentionCounts }> {
   const at = cutoffs(now, config);
   const w = where(at, scope);
+  const none = Promise.resolve(0);
   const [sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions] = await Promise.all([
-    db.session.count({ where: w.sessions }),
-    db.authToken.count({ where: w.tokens }),
-    db.rateLimit.count({ where: w.rateLimits }),
-    db.uploadTicket.count({ where: w.uploadTickets }),
-    db.outboundEmail.count({ where: w.outbox }),
-    staleJobRunIds(at.jobRuns, scope).then((ids) => ids.length),
-    w.auditRows ? db.auditLog.count({ where: w.auditRows }) : Promise.resolve(0),
-    db.healthCardRead.count({ where: w.healthReads }),
-    db.tripPosition.count({ where: w.tripPositions }),
+    w.sessions ? db.session.count({ where: w.sessions }) : none,
+    w.tokens ? db.authToken.count({ where: w.tokens }) : none,
+    w.rateLimits ? db.rateLimit.count({ where: w.rateLimits }) : none,
+    w.uploadTickets ? db.uploadTicket.count({ where: w.uploadTickets }) : none,
+    w.outbox ? db.outboundEmail.count({ where: w.outbox }) : none,
+    w.jobRuns ? staleJobRunIds(at.jobRuns, scope).then((ids) => ids.length) : none,
+    w.auditRows ? db.auditLog.count({ where: w.auditRows }) : none,
+    w.healthReads ? db.healthCardRead.count({ where: w.healthReads }) : none,
+    w.tripPositions ? db.tripPosition.count({ where: w.tripPositions }) : none,
   ]);
   return { config, pending: { sessions, tokens, rateLimits, uploadTickets, outbox, jobRuns, auditRows, healthReads, tripPositions } };
 }
@@ -119,7 +136,8 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
   // Only a test does that, and a test sweeps its own fixtures: unscoped, it
   // is refused. This guard exists because its absence once emptied a
   // development database's audit log and sessions in a single test run.
-  if (now.getTime() > Date.now() + DAY && Object.keys(scope).length === 0) {
+  // A scope keeps a future clock to the tables it narrows by their own keys (where(), LIFECYCLE-1).
+  if (now.getTime() > Date.now() + DAY && !isScoped(scope)) {
     throw new Error(`retention: refusing an unscoped sweep with a clock ${Math.round((now.getTime() - Date.now()) / DAY)} days in the future`);
   }
   const at = cutoffs(now, config);
@@ -129,22 +147,26 @@ export async function sweepExpired(now: Date = new Date(), config: RetentionConf
     const bySchool = await db.auditLog.groupBy({ by: ["schoolId"], where: w.auditRows, _count: { _all: true } });
     for (const row of bySchool) if (row.schoolId && row._count._all > 0) perSchool[row.schoolId] = { auditRows: row._count._all };
   }
-  const readsBySchool = await db.healthCardRead.groupBy({ by: ["schoolId"], where: w.healthReads, _count: { _all: true } });
-  for (const row of readsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).healthReads = row._count._all;
-  const positionsBySchool = await db.tripPosition.groupBy({ by: ["schoolId"], where: w.tripPositions, _count: { _all: true } });
-  for (const row of positionsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).tripPositions = row._count._all;
+  if (w.healthReads) {
+    const readsBySchool = await db.healthCardRead.groupBy({ by: ["schoolId"], where: w.healthReads, _count: { _all: true } });
+    for (const row of readsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).healthReads = row._count._all;
+  }
+  if (w.tripPositions) {
+    const positionsBySchool = await db.tripPosition.groupBy({ by: ["schoolId"], where: w.tripPositions, _count: { _all: true } });
+    for (const row of positionsBySchool) if (row._count._all > 0) (perSchool[row.schoolId] ??= {}).tripPositions = row._count._all;
+  }
   const summary: RetentionCounts = {
-    sessions: (await db.session.deleteMany({ where: w.sessions })).count,
-    tokens: (await db.authToken.deleteMany({ where: w.tokens })).count,
-    rateLimits: (await db.rateLimit.deleteMany({ where: w.rateLimits })).count,
-    uploadTickets: (await db.uploadTicket.deleteMany({ where: w.uploadTickets })).count,
-    outbox: (await db.outboundEmail.deleteMany({ where: w.outbox })).count,
+    sessions: w.sessions ? (await db.session.deleteMany({ where: w.sessions })).count : 0,
+    tokens: w.tokens ? (await db.authToken.deleteMany({ where: w.tokens })).count : 0,
+    rateLimits: w.rateLimits ? (await db.rateLimit.deleteMany({ where: w.rateLimits })).count : 0,
+    uploadTickets: w.uploadTickets ? (await db.uploadTicket.deleteMany({ where: w.uploadTickets })).count : 0,
+    outbox: w.outbox ? (await db.outboundEmail.deleteMany({ where: w.outbox })).count : 0,
     jobRuns: 0,
     auditRows: 0,
-    healthReads: (await db.healthCardRead.deleteMany({ where: w.healthReads })).count,
-    tripPositions: (await db.tripPosition.deleteMany({ where: w.tripPositions })).count,
+    healthReads: w.healthReads ? (await db.healthCardRead.deleteMany({ where: w.healthReads })).count : 0,
+    tripPositions: w.tripPositions ? (await db.tripPosition.deleteMany({ where: w.tripPositions })).count : 0,
   };
-  const stale = await staleJobRunIds(at.jobRuns, scope);
+  const stale = w.jobRuns ? await staleJobRunIds(at.jobRuns, scope) : [];
   if (stale.length > 0) summary.jobRuns = (await db.jobRun.deleteMany({ where: { id: { in: stale } } })).count;
   if (w.auditRows) summary.auditRows = (await db.auditLog.deleteMany({ where: w.auditRows })).count;
   await audit({ schoolId: null, actorUserId: null, action: "retention.sweep", meta: { ...summary, auditDays: config.auditDays, healthReadDays: config.healthReadDays, tripPositionDays: config.tripPositionDays } });

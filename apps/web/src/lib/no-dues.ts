@@ -2,14 +2,16 @@ import "server-only";
 import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./access-error";
+import { assertCollege } from "./modules";
 import { audit } from "./audit";
 import { readJson, writeJson } from "./json";
 import { currentAcademicYear } from "./academic-year";
 import { ledgerFor } from "./college-fees";
 import { cautionPaidOn } from "./college-admissions";
-import { collegeStudent, kindOf, nameOf } from "./college-office";
+import { collegeStudent, nameOf } from "./college-office";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import { todayKey } from "./dates";
 
 /**
  * NO-DUES (the college office, 4 October 2026): before an exam form, on
@@ -30,7 +32,9 @@ import type { Role } from "./constants";
  * library's fines the library's, so one debt is cleared by one desk.
  *
  * WHICH LINES AN EVENT ASKS FOR: an exam form the accounts, the library's
- * fines and the hostel's dues (books and the bed do not stop a form); leaving
+ * fines and the hostel's dues (books and the bed do not stop a form), and of
+ * the ledger's demands only those already due on the school's today — the
+ * December instalment does not stop an October form (LIFECYCLE-3); leaving
  * the hostel the hostel alone, bed included; leaving the college all four
  * with everything out counted. The hostel's line appears only for a student
  * who has boarded, the lab's only for one the stores have issued to.
@@ -91,10 +95,10 @@ async function cycleKeyFor(schoolId: string, event: NoDuesEvent): Promise<string
 
 const outstanding = (d: { status: string; netPaise: number; paidPaise: number }) => (d.status === "OPEN" || d.status === "PART" ? Math.max(0, d.netPaise - d.paidPaise) : 0);
 
-/** The four desks' live state for one student. */
-async function liveState(schoolId: string, studentMembershipId: string) {
+/** The four desks' live state for one student; `dueBy` (a UTC-midnight day) counts only demands due on or before it. */
+async function liveState(schoolId: string, studentMembershipId: string, dueBy: Date | null = null) {
   const [demands, member, allotments, movements, hostelHeads] = await Promise.all([
-    db.feeDemand.findMany({ where: { schoolId, studentMembershipId, status: { in: ["OPEN", "PART"] } }, select: { id: true, status: true, netPaise: true, paidPaise: true, linesJson: true } }),
+    db.feeDemand.findMany({ where: { schoolId, studentMembershipId, status: { in: ["OPEN", "PART"] }, ...(dueBy ? { dueDate: { lte: dueBy } } : {}) }, select: { id: true, status: true, netPaise: true, paidPaise: true, linesJson: true } }),
     db.libraryMember.findUnique({ where: { membershipId: studentMembershipId }, select: { id: true, fines: { where: { waivedAt: null, settledAt: null }, select: { paise: true, demandId: true } }, issues: { where: { returnedAt: null }, select: { id: true } } } }),
     db.hostelAllotment.findMany({ where: { schoolId, membershipId: studentMembershipId }, select: { status: true, feeDemandId: true } }),
     db.stockMovement.groupBy({ by: ["itemId"], where: { schoolId, toMembershipId: studentMembershipId, kind: { in: ["ISSUE", "RETURN"] } }, _sum: { delta: true } }),
@@ -141,11 +145,13 @@ const DESKS_FOR: Record<NoDuesEvent, NoDuesDesk[]> = {
  * when every line does. A student at a school (not a college) has nothing to
  * clear and is answered completed with no lines.
  */
-export async function noDuesFor(studentMembershipId: string, event: NoDuesEvent): Promise<NoDuesResult> {
-  const m = await db.membership.findFirst({ where: { id: studentMembershipId, role: "STUDENT" }, select: { id: true, schoolId: true } });
+export async function noDuesFor(studentMembershipId: string, event: NoDuesEvent, now: Date = new Date()): Promise<NoDuesResult> {
+  const m = await db.membership.findFirst({ where: { id: studentMembershipId, role: "STUDENT" }, select: { id: true, schoolId: true, school: { select: { kind: true, timezone: true } } } });
   if (!m) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
-  if (!isCollegeKind(await kindOf(m.schoolId))) return { studentMembershipId, event, lines: [], completed: true, completedAt: null };
-  const [live, cycleKey] = await Promise.all([liveState(m.schoolId, m.id), cycleKeyFor(m.schoolId, event)]);
+  if (!isCollegeKind(m.school.kind)) return { studentMembershipId, event, lines: [], completed: true, completedAt: null };
+  // An exam form asks what is owed today; leaving and the hostel ask for everything.
+  const dueBy = event === "EXAM_FORM" ? new Date(`${todayKey(m.school.timezone, now)}T00:00:00.000Z`) : null;
+  const [live, cycleKey] = await Promise.all([liveState(m.schoolId, m.id, dueBy), cycleKeyFor(m.schoolId, event)]);
   const row = await db.noDuesClearance.findUnique({ where: { studentMembershipId_event_cycleKey: { studentMembershipId: m.id, event, cycleKey } }, select: { clearsJson: true, completedAt: true } });
   const clears = readJson<Partial<Record<NoDuesDesk, HandClear>>>(row?.clearsJson, {});
   const lines: NoDuesLine[] = DESKS_FOR[event]
@@ -163,7 +169,7 @@ export async function noDuesFor(studentMembershipId: string, event: NoDuesEvent)
 
 async function deskStudent(ctx: ActiveContext, studentMembershipId: string, roles: readonly Role[]) {
   if (!ctx.schoolId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  if (!isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(ctx.schoolId);
   return collegeStudent(ctx.schoolId, studentMembershipId);
 }
 
@@ -193,7 +199,7 @@ export async function noDuesView(ctx: ActiveContext, studentMembershipId: string
 /** The student's own clearances, every event. */
 export async function myNoDues(ctx: ActiveContext): Promise<{ items: NoDuesView[] }> {
   if (ctx.role !== "STUDENT" || !ctx.membershipId || !ctx.schoolId) throw new AccessError("access.wrongRoleForThisAction");
-  if (!isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(ctx.schoolId);
   const s = await collegeStudent(ctx.schoolId, ctx.membershipId);
   return { items: await Promise.all(NO_DUES_EVENTS.map(async (e) => view(await noDuesFor(s.id, e), nameOf(s.user)))) };
 }
@@ -225,7 +231,7 @@ export async function clearLine(ctx: ActiveContext, studentMembershipId: string,
 /** The desk's list: active students with an uncleared line for the event, the lines named. */
 export async function noDuesList(ctx: ActiveContext, event: NoDuesEvent): Promise<{ items: { studentMembershipId: string; studentName: string; completed: boolean; uncleared: NoDuesDesk[] }[] }> {
   if (!ctx.schoolId || !ctx.role || !ANY_DESK.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  if (!isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(ctx.schoolId);
   const students = await db.membership.findMany({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, user: { select: { name: true, preferredName: true } } }, take: 3000 });
   const items = [];
   for (const s of students) {

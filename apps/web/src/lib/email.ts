@@ -2,6 +2,10 @@ import "server-only";
 import { createTransport, type Transporter } from "nodemailer";
 import { db } from "./db";
 import { readSmtpConfig } from "./env";
+import { readJson } from "./json";
+import { translator } from "./i18n/dictionary";
+import { normaliseLocale, type Locale } from "./i18n/locales";
+import type { en } from "@edulink/i18n/en";
 
 /**
  * Email transport.
@@ -86,22 +90,83 @@ export async function sendEmail(message: Message): Promise<void> {
 /* Templates                                                                   */
 /* -------------------------------------------------------------------------- */
 
-function layout(heading: string, bodyHtml: string, cta?: { label: string; url: string }) {
-  return `<!doctype html><html><body style="margin:0;padding:24px;background:#f6f7fb;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#101420">
+/**
+ * EVERY EMAIL IS WRITTEN IN ITS READER'S LANGUAGE, the way a text message and a
+ * notification already were (messaging.ts, notify.ts). Each sender takes the
+ * locale; the caller decides it with one of the two helpers below, and the
+ * rule they encode is the one admissions.ts set for the offer letter:
+ *
+ *  - the recipient's own `prefs.locale` when the address belongs to an account;
+ *  - otherwise the SCHOOL'S language (`School.locale`), for the invitation to
+ *    somebody who has no account yet. Not the inviter's: the office clerk who
+ *    reads the app in English says nothing about the family she invites, while
+ *    the school's setting is the one choice made for its whole community.
+ *
+ * The words are dictionary keys under `email.*` in en, hi and mr; the subject,
+ * the plain text and the HTML are built from the same sentences, so the three
+ * cannot drift into saying different things.
+ */
+function localeFromPrefs(prefs: string | null | undefined, fallback?: string | null): Locale {
+  const saved = readJson<{ locale?: string }>(prefs ?? null, {}).locale;
+  return normaliseLocale(saved ?? fallback ?? null);
+}
+
+/** The language of a known person: their saved choice, else the fallback, else English. */
+export async function localeForUser(userId: string, fallback?: string | null): Promise<Locale> {
+  const user = await db.user.findUnique({ where: { id: userId }, select: { prefs: true } });
+  return localeFromPrefs(user?.prefs, fallback);
+}
+
+/**
+ * The language for an address that may or may not be somebody's yet — an
+ * invitation. `User` carries no school policy, so this reads the same under
+ * any binding.
+ */
+export async function localeForAddress(email: string, fallback?: string | null): Promise<Locale> {
+  const user = await db.user.findUnique({ where: { email: email.trim().toLowerCase() }, select: { prefs: true } });
+  return localeFromPrefs(user?.prefs, fallback);
+}
+
+type Vars = Record<string, string | number>;
+
+/** The words of one email in one language: `say` for subjects and plain text, `html` for the body. */
+function wordsIn(locale: Locale) {
+  const t = translator(locale);
+  return {
+    say: (key: EmailKey, vars?: Vars) => t(`email.${key}`, vars),
+    /**
+     * The sentence escaped, then its values escaped and dropped in — bold when
+     * named in `strong`. Escaping is not optional: school names and children's
+     * names go in here. (§6)
+     */
+    html: (key: EmailKey, vars: Vars = {}, strong: string[] = []) =>
+      escapeHtml(t(`email.${key}`)).replace(/\{(\w+)\}/g, (whole, name: string) => {
+        if (!(name in vars)) return whole;
+        const value = escapeHtml(String(vars[name]));
+        return strong.includes(name) ? `<strong>${value}</strong>` : value;
+      }),
+  };
+}
+
+type EmailKey = keyof (typeof en)["email"];
+
+function layout(locale: Locale, heading: string, bodyHtml: string, cta?: { label: string; url: string }) {
+  const { say } = wordsIn(locale);
+  return `<!doctype html><html lang="${locale}"><body style="margin:0;padding:24px;background:#f6f7fb;font-family:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#101420">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
     <table role="presentation" width="100%" style="max-width:520px;background:#fff;border-radius:18px;padding:32px;box-shadow:0 1px 3px rgba(16,20,32,.06)">
       <tr><td>
-        <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">Shalaghar</div>
+        <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">${escapeHtml(say("brand"))}</div>
         <h1 style="font-size:22px;line-height:1.25;margin:16px 0 12px">${escapeHtml(heading)}</h1>
         <div style="font-size:15px;line-height:1.6;color:#57607a">${bodyHtml}</div>
         ${
           cta
             ? `<div style="margin:28px 0 8px"><a href="${escapeAttr(cta.url)}" style="display:inline-block;background:#2563eb;color:#fff;text-decoration:none;padding:14px 24px;border-radius:12px;font-weight:600;font-size:15px">${escapeHtml(cta.label)}</a></div>
-               <p style="font-size:13px;color:#7b849c;word-break:break-all">Or paste this link:<br>${escapeHtml(cta.url)}</p>`
+               <p style="font-size:13px;color:#7b849c;word-break:break-all">${escapeHtml(say("orPaste"))}<br>${escapeHtml(cta.url)}</p>`
             : ""
         }
         <hr style="border:none;border-top:1px solid #e0e5ef;margin:28px 0 16px">
-        <p style="font-size:12px;color:#7b849c;margin:0">If you were not expecting this email you can safely ignore it. Nothing will change.</p>
+        <p style="font-size:12px;color:#7b849c;margin:0">${escapeHtml(say("footer"))}</p>
       </td></tr>
     </table>
   </td></tr></table>
@@ -121,16 +186,23 @@ function escapeAttr(value: string): string {
   return escapeHtml(value);
 }
 
-export async function sendMagicLink(to: string, url: string, minutes: number) {
+/** The six digits, large, in the HTML body of a code email. */
+function codeBlock(code: string): string {
+  return `<p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>`;
+}
+
+export async function sendMagicLink(to: string, url: string, minutes: number, locale: Locale) {
+  const { say, html } = wordsIn(locale);
   await sendEmail({
     to,
     purpose: "MAGIC_LINK",
-    subject: "Your Shalaghar sign-in link",
-    text: `Sign in to Shalaghar: ${url}\n\nThis link expires in ${minutes} minutes and can only be used once.`,
+    subject: say("magicSubject"),
+    text: `${say("magicCta")}: ${url}\n\n${say("magicExpires", { minutes })}`,
     html: layout(
-      "Here is your sign-in link",
-      `<p>Tap the button below to sign in. The link expires in <strong>${minutes} minutes</strong> and works once.</p>`,
-      { label: "Sign in to Shalaghar", url },
+      locale,
+      say("magicHeading"),
+      `<p>${html("magicTap")} ${html("magicExpires", { minutes }, ["minutes"])}</p>`,
+      { label: say("magicCta"), url },
     ),
   });
 }
@@ -144,35 +216,35 @@ export async function sendMagicLink(to: string, url: string, minutes: number) {
  * first. A link would be the nicer email on its own; two flows that must stay in
  * step is the worse system.
  */
-export async function sendResetCode(to: string, code: string, minutes: number) {
+export async function sendResetCode(to: string, code: string, minutes: number, locale: Locale) {
+  const { say, html } = wordsIn(locale);
   await sendEmail({
     to,
-    subject: `${code} is your Shalaghar code`,
-    text:
-      `${code} is your code to set a new Shalaghar password.\n\n` +
-      `It works once and expires in ${minutes} minutes.\n\n` +
-      `If you did not ask for it, you can ignore this email — nothing has changed.`,
+    subject: say("codeSubject", { code }),
+    text: `${code}\n\n${say("resetLead")} ${say("codeExpiry", { minutes })}\n\n${say("resetIgnore")}`,
     html: layout(
-      "Set a new password",
-      `<p>Use this code to set a new password. It works once and expires in ${minutes} minutes.</p>
-       <p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>
-       <p>If you did not ask for it, ignore this email — nothing has changed, and nobody can use the code without it.</p>`,
+      locale,
+      say("resetHeading"),
+      `<p>${html("resetLead")} ${html("codeExpiry", { minutes })}</p>
+       ${codeBlock(code)}
+       <p>${html("resetIgnore")}</p>`,
     ),
     purpose: "PASSWORD_RESET",
   });
 }
 
-export async function sendVerifyEmail(to: string, url: string, schoolName: string) {
+/** `name` is the school's — or, for a recruiter's account, the company's. */
+export async function sendVerifyEmail(to: string, url: string, name: string, locale: Locale) {
+  const { say, html } = wordsIn(locale);
   await sendEmail({
     to,
     purpose: "EMAIL_VERIFY",
-    subject: `Confirm your email for ${schoolName}`,
-    text: `Confirm your email to finish setting up ${schoolName} on Shalaghar: ${url}`,
-    html: layout(
-      `Confirm your email for ${schoolName}`,
-      `<p>One tap and your school is ready to set up.</p>`,
-      { label: "Confirm my email", url },
-    ),
+    subject: say("verifySubject", { name }),
+    text: `${say("verifyBody", { name })}\n\n${say("verifyCta")}: ${url}`,
+    html: layout(locale, say("verifySubject", { name }), `<p>${html("verifyBody", { name }, ["name"])}</p>`, {
+      label: say("verifyCta"),
+      url,
+    }),
   });
 }
 
@@ -191,21 +263,19 @@ export async function sendVerifyEmail(to: string, url: string, schoolName: strin
  * things an account can be reached at, which is what `MobileForm` and
  * `EmailForm` being the same two steps is worth.
  */
-export async function sendEmailChangeCode(to: string, code: string, minutes: number) {
+export async function sendEmailChangeCode(to: string, code: string, minutes: number, locale: Locale) {
+  const { say, html } = wordsIn(locale);
   await sendEmail({
     to,
     purpose: "EMAIL_CHANGE",
-    subject: `${code} is your Shalaghar code`,
-    text:
-      `${code} is your code to confirm this email address on Shalaghar.\n\n` +
-      `It works once and expires in ${minutes} minutes.\n\n` +
-      `If you did not ask for it, ignore this email — nothing will change, and ` +
-      `this address has not been added to any account.`,
+    subject: say("codeSubject", { code }),
+    text: `${code}\n\n${say("changeLead")} ${say("codeExpiry", { minutes })}\n\n${say("changeIgnore")}`,
     html: layout(
-      "Confirm this email address",
-      `<p>Use this code to confirm this address on your Shalaghar account. It works once and expires in ${minutes} minutes.</p>
-       <p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>
-       <p>If you did not ask for it, ignore this email. Nothing will change, and this address has not been added to any account.</p>`,
+      locale,
+      say("changeHeading"),
+      `<p>${html("changeLead")} ${html("codeExpiry", { minutes })}</p>
+       ${codeBlock(code)}
+       <p>${html("changeIgnore")}</p>`,
     ),
   });
 }
@@ -228,41 +298,48 @@ export async function sendEmailChangeCode(to: string, code: string, minutes: num
  * `isDeliverableEmail`. There is no previous owner to warn, and the domain does
  * not route.
  */
-export async function sendEmailChangedNotice(to: string, newEmail: string) {
+export async function sendEmailChangedNotice(to: string, newEmail: string, locale: Locale) {
+  const { say, html } = wordsIn(locale);
   await sendEmail({
     to,
     purpose: "EMAIL_CHANGE",
-    subject: "The email on your Shalaghar account was changed",
-    text:
-      `The email address on your Shalaghar account was changed to ${newEmail}.\n\n` +
-      `Sign-in and password-reset messages will go there from now on.\n\n` +
-      `If you did not do this, contact your school straight away — whoever made ` +
-      `the change can now reset the password on this account.`,
+    subject: say("changedSubject"),
+    text: `${say("changedBody", { email: newEmail })}\n\n${say("changedFromNow")}\n\n${say("changedNotYou")}`,
     html: layout(
-      "Your Shalaghar email was changed",
-      `<p>The email address on your Shalaghar account was changed to <strong>${escapeHtml(newEmail)}</strong>.</p>
-       <p>Sign-in and password-reset messages will go there from now on.</p>
-       <p><strong>If you did not do this</strong>, contact your school straight away — whoever made the change can now reset the password on this account.</p>`,
+      locale,
+      say("changedHeading"),
+      `<p>${html("changedBody", { email: newEmail }, ["email"])}</p>
+       <p>${html("changedFromNow")}</p>
+       <p><strong>${html("changedNotYou")}</strong></p>`,
     ),
   });
 }
 
+/**
+ * An invitation to join a school — a teacher's, and the operator's to a
+ * school's first administrator or principal, which is why the words name no
+ * role. `inviterName` null means the platform itself ("the Shalaghar team").
+ */
 export async function sendTeacherInvite(
   to: string,
   url: string,
   schoolName: string,
-  inviterName: string,
+  inviterName: string | null,
+  locale: Locale,
 ) {
+  const { say, html } = wordsIn(locale);
+  const vars = { inviter: inviterName ?? say("platformInviter"), school: schoolName };
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `${inviterName} invited you to ${schoolName} on Shalaghar`,
-    text: `${inviterName} invited you to join ${schoolName} on Shalaghar.\n\nAccept: ${url}`,
+    subject: say("inviteSubject", vars),
+    text: `${say("inviteBody", vars)}\n\n${say("inviteSteps")}\n\n${say("inviteCta")}: ${url}`,
     html: layout(
-      `You are invited to ${schoolName}`,
-      `<p><strong>${escapeHtml(inviterName)}</strong> has invited you to join <strong>${escapeHtml(schoolName)}</strong> on Shalaghar as a teacher.</p>
-       <p>Accepting takes about a minute: set a password, add your subjects, and your classes are waiting.</p>`,
-      { label: "Accept invitation", url },
+      locale,
+      say("inviteHeading", vars),
+      `<p>${html("inviteBody", vars, ["inviter", "school"])}</p>
+       <p>${html("inviteSteps")}</p>`,
+      { label: say("inviteCta"), url },
     ),
   });
 }
@@ -272,40 +349,43 @@ export async function sendTeacherInvite(
  * email — the invite form collected an address and quietly never used it,
  * which the three-school simulation flagged as a promise the control never
  * kept. The link stays copyable on screen; when an address was given, this
- * now travels too.
+ * now travels too. `schoolName` null when the school's row could not be read.
  */
-export async function sendExpertInvite(
-  to: string,
-  url: string,
-  inviterLine: string,
-) {
+export async function sendExpertInvite(to: string, url: string, schoolName: string | null, locale: Locale) {
+  const { say, html } = wordsIn(locale);
+  const line = schoolName ? say("expertLine", { school: schoolName }) : say("expertLineAnySchool");
+  const lineHtml = schoolName ? html("expertLine", { school: schoolName }, ["school"]) : html("expertLineAnySchool");
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `You are invited to Shalaghar as an expert`,
-    text: `${inviterLine}\n\nAccept: ${url}\n\nYour profile is reviewed before any school can see or book you.`,
+    subject: say("expertSubject"),
+    text: `${line}\n\n${say("expertSteps")}\n\n${say("inviteCta")}: ${url}`,
     html: layout(
-      `You are invited as an expert`,
-      `<p>${escapeHtml(inviterLine)}</p>
-       <p>Accepting takes a minute: say what you do, set a password, and the platform team reviews your profile before any school can see or book you.</p>`,
-      { label: "Accept invitation", url },
+      locale,
+      say("expertHeading"),
+      `<p>${lineHtml}</p>
+       <p>${html("expertSteps")}</p>`,
+      { label: say("inviteCta"), url },
     ),
   });
 }
 
 /**
- * The operator's health digest — sent ONLY when something needs a person.
- * English like every transactional email here, and like the crontab whose
- * jobs it reports on.
+ * The operator's health digest — sent ONLY when something needs a person. The
+ * callers compose the subject and body in English, like the crontab whose jobs
+ * it reports on, and pass "en"; the frame around them takes the locale like
+ * every other email, so a caller that composes in the operator's language can
+ * pass theirs.
  */
-export async function sendHealthDigestEmail(to: string, subject: string, text: string, bodyHtml: string) {
+export async function sendHealthDigestEmail(to: string, subject: string, text: string, bodyHtml: string, locale: Locale) {
+  const { say } = wordsIn(locale);
   await sendEmail({
     to,
     purpose: "HEALTH",
     subject,
     text,
-    html: layout("The platform needs a person", bodyHtml, {
-      label: "Open the jobs page",
+    html: layout(locale, say("healthHeading"), bodyHtml, {
+      label: say("healthCta"),
       url: `${APP}/root/jobs`,
     }),
   });
@@ -322,17 +402,21 @@ export async function sendParentLinkInvite(
   childName: string,
   schoolName: string,
   inviterName: string,
+  locale: Locale,
 ) {
+  const { say, html } = wordsIn(locale);
+  const vars = { child: childName, school: schoolName, inviter: inviterName };
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `${schoolName} has linked you to ${childName} on Shalaghar`,
-    text: `${inviterName} at ${schoolName} has linked you to ${childName} on Shalaghar, so you can see their attendance, homework and marks.\n\nAccept: ${url}`,
+    subject: say("linkSubject", vars),
+    text: `${say("linkBody", vars)}\n\n${say("linkSees")}\n\n${say("linkCta")}: ${url}`,
     html: layout(
-      `See ${escapeHtml(childName)}'s day at ${escapeHtml(schoolName)}`,
-      `<p><strong>${escapeHtml(inviterName)}</strong> at <strong>${escapeHtml(schoolName)}</strong> has linked you to <strong>${escapeHtml(childName)}</strong> on Shalaghar.</p>
-       <p>Accept and you will see their attendance, homework, exam marks and teachers' messages. If you were not expecting this, ignore it — nothing is shared until you accept.</p>`,
-      { label: "Accept the link", url },
+      locale,
+      say("linkHeading", vars),
+      `<p>${html("linkBody", vars, ["inviter", "school", "child"])}</p>
+       <p>${html("linkSees")}</p>`,
+      { label: say("linkCta"), url },
     ),
   });
 }
@@ -340,18 +424,20 @@ export async function sendParentLinkInvite(
 /**
  * An admission offer. The words arrive already in the family's language
  * (admissions.ts picks them from the dictionary), because the reader of an
- * offer is one known person; this only lays them out. Sent whether or not
- * there is an account behind the address — a walk-in family gets the same
- * sentences with no button, because there is no page of theirs to open.
+ * offer is one known person; this only lays them out, in the frame of the same
+ * `locale`. Sent whether or not there is an account behind the address — a
+ * walk-in family gets the same sentences with no button, because there is no
+ * page of theirs to open.
  */
-export async function sendAdmissionOffer(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null }) {
+export async function sendAdmissionOffer(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null; locale: Locale }) {
   await sendEmail({
     to: input.to,
     purpose: "ADMISSION",
     subject: input.subject,
     text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
     html: layout(
-      escapeHtml(input.heading),
+      input.locale,
+      input.heading,
       input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
       input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
     ),
@@ -363,17 +449,21 @@ export async function sendParentClaimNotice(
   childName: string,
   schoolName: string,
   url: string,
+  locale: Locale,
 ) {
+  const { say, html } = wordsIn(locale);
+  const vars = { child: childName, school: schoolName };
   await sendEmail({
     to,
     purpose: "PARENT_CLAIM",
-    subject: `You are now linked to ${childName}`,
-    text: `You are linked to ${childName} at ${schoolName}. View their dashboard: ${url}`,
+    subject: say("claimSubject", vars),
+    text: `${say("claimBody", vars)}\n\n${say("claimControl")}\n\n${say("claimCta")}: ${url}`,
     html: layout(
-      `You are linked to ${escapeHtml(childName)}`,
-      `<p>You can now see attendance, grades and teacher remarks for <strong>${escapeHtml(childName)}</strong> at <strong>${escapeHtml(schoolName)}</strong>.</p>
-       <p>You control what you are notified about, and you can unlink at any time from your settings.</p>`,
-      { label: "Open my dashboard", url },
+      locale,
+      say("claimHeading", vars),
+      `<p>${html("claimBody", vars, ["child", "school"])}</p>
+       <p>${html("claimControl")}</p>`,
+      { label: say("claimCta"), url },
     ),
   });
 }
@@ -382,16 +472,18 @@ export async function sendParentClaimNotice(
  * A notice to an expert, who belongs to no school: the operator's answer to
  * their identity papers (src/lib/expert-kyc.ts). An in-app notification is a
  * school's row and an expert's tenant set is empty, so for them the mail is
- * the channel; the words come translated into their own language.
+ * the channel; the words come translated into their own language, and
+ * `locale` is that language for the frame.
  */
-export async function sendExpertNotice(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null }) {
+export async function sendExpertNotice(input: { to: string; subject: string; heading: string; lines: string[]; cta: { label: string; path: string } | null; locale: Locale }) {
   await sendEmail({
     to: input.to,
     purpose: "EXPERT_KYC",
     subject: input.subject,
     text: `${input.lines.join("\n\n")}${input.cta ? `\n\n${input.cta.label}: ${APP}${input.cta.path}` : ""}`,
     html: layout(
-      escapeHtml(input.heading),
+      input.locale,
+      input.heading,
       input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       "),
       input.cta ? { label: input.cta.label, url: `${APP}${input.cta.path}` } : undefined,
     ),

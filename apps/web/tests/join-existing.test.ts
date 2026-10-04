@@ -150,11 +150,13 @@ describe("joining with a code on an existing account", () => {
     await joinAndBeLetIn();
     expect((await db.membership.findUniqueOrThrow({ where: { id: m.id } })).leftAt).toBeNull();
     expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(0);
+    // Withdrawn by closing, not deleting: its serial stays on the TC register (LIFECYCLE-7).
+    expect(await db.schoolRecord.count({ where: { formerMembershipId: m.id, supersededReason: "READMITTED" } })).toBe(1);
 
     // And leaving again writes one fresh certificate, not a unique-index error.
     expect((await recordDeparture(admin, m.id, { reason: "TRANSFERRED" })).ok).toBe(true);
     expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(1);
-    await db.schoolRecord.deleteMany({ where: { studentMembershipId: m.id } });
+    await db.schoolRecord.deleteMany({ where: { OR: [{ studentMembershipId: m.id }, { formerMembershipId: m.id }] } });
     await db.membership.update({ where: { id: m.id }, data: { leftAt: null } });
   });
 

@@ -9,6 +9,7 @@ import { AccessError } from "./tenancy";
 import { forSchool, forUser } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
 import { syncGradeLevel } from "./grade-level";
+import { closeLeavingRecord } from "./school-record";
 import type { ActiveContext } from "./session";
 import { COOL_OFF_DAYS, coolOffCutoff, statusNow, stillWaiting, waitingCutoff } from "./request-expiry";
 
@@ -367,7 +368,8 @@ async function admit(schoolId: string, userId: string, classId: string | null): 
       if (existing && existing.status === "ACTIVE" && !existing.leftAt) {
         id = existing.id;
       } else if (existing) {
-        await tx.schoolRecord.deleteMany({ where: { studentMembershipId: existing.id, schoolId } });
+        // Closed, not deleted: the old departure's serial stays on the TC register (LIFECYCLE-7).
+        await closeLeavingRecord(tx, schoolId, existing.id, "READMITTED");
         await tx.scheduledDeparture.deleteMany({ where: { membershipId: existing.id, schoolId } });
         await tx.membership.update({
           where: { id: existing.id },

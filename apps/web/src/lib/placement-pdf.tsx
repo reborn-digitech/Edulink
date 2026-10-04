@@ -3,7 +3,7 @@ import path from "node:path";
 import React from "react";
 import { Document, Font, Page, StyleSheet, Text, View, renderToBuffer } from "@react-pdf/renderer";
 import { dictionaryFor, translatorFor, type Locale, type TranslationKey } from "@edulink/i18n";
-import type { PlacementRecord } from "@edulink/contracts";
+import type { SharedPlacementRecord } from "@edulink/contracts";
 
 /**
  * A student's resume as a PDF (the placement module, 4 October 2026), in the
@@ -52,7 +52,8 @@ export type ResumeDocument = {
   locale: Locale;
   name: string;
   collegeName: string;
-  record: PlacementRecord;
+  /** The record as shared: never gender or category (campaign S-3). */
+  record: SharedPlacementRecord;
   skills: string[];
   certifications: string[];
   projects: { title: string; note: string }[];

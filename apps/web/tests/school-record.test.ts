@@ -239,7 +239,7 @@ async function wipePupil(): Promise<void> {
     select: { id: true },
   });
   const ids = memberships.map((m) => m.id);
-  await db.schoolRecord.deleteMany({ where: { studentMembershipId: { in: ids } } });
+  await db.schoolRecord.deleteMany({ where: { OR: [{ studentMembershipId: { in: ids } }, { formerMembershipId: { in: ids } }] } });
   await db.reportCard.deleteMany({ where: { studentMembershipId: { in: ids } } });
   await db.attendanceRecord.deleteMany({ where: { studentMembershipId: { in: ids } } });
   await db.enrollment.deleteMany({ where: { studentMembershipId: { in: ids } } });

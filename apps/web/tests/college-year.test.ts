@@ -134,6 +134,9 @@ describe("a college year at ZZ Vidya College, role to role", () => {
     expect(after.divisionId).toBe(A.division(1));
     expect(after.prn).toBe(PRN);
     expect((await db.pupilRecord.findUniqueOrThrow({ where: { studentMembershipId: id.student } })).prn).toBe(PRN);
+    // The membership's grade is the division's class's (one writer, syncGradeLevel; LIFECYCLE-5).
+    const division = await db.division.findUniqueOrThrow({ where: { id: A.division(1) }, select: { class: { select: { gradeLevel: true } } } });
+    expect((await db.membership.findUniqueOrThrow({ where: { id: id.student! }, select: { gradeLevel: true } })).gradeLevel).toBe(division.class.gradeLevel);
   });
 
   it("registers: the scheme's core courses and the walk's course, inside the window", async () => {

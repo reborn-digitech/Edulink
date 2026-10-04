@@ -581,9 +581,13 @@ export const certificateRequestSchema = z.object({
    * ISSUED request whose paper was revoked is shown as withdrawn.
    */
   revokedAt: iso.nullable().default(null),
+  /** G-6: the fee the office set on this paper (a demand on the pupil's ledger, paid outside the platform), and whether it is paid; null when there is none. */
+  feePaise: z.number().int().nullable().optional(),
+  feePaid: z.boolean().nullable().optional(),
   createdAt: iso,
 });
 export type CertificateRequestView = z.infer<typeof certificateRequestSchema>;
+export const certificateRequestFeeSchema = z.object({ amountPaise: z.number().int().min(100).max(10_000_000) });
 
 /** GET /api/v1/family/certificate-requests — mine (or my children's), with the kinds the school offers. */
 export const familyCertificateRequestsSchema = z.object({

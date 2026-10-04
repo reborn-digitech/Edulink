@@ -15,7 +15,7 @@ import { notify, notifyGuardians } from "./notify";
 import { readJson, writeJson } from "./json";
 import { toCsv } from "./csv";
 import { isDateKey } from "./dates";
-import { assertModuleOn } from "./modules";
+import { assertCollege, assertModuleOn } from "./modules";
 import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
 import { recordCounterPayment } from "./fees-payments";
@@ -23,8 +23,7 @@ import { dateToDay } from "./fees";
 import { assertGuardianAccess } from "./tenancy";
 import { parentMaySee } from "./student-consent";
 import { claimReceivable, expectedShare } from "./college-fees";
-import { collegeDesk, collegeStudent, kindOf, MONEY_READ, MONEY_WRITE, nameOf, rupeesCell, standingOf, yearKeyOf } from "./college-office";
-import { isCollegeKind } from "./institution";
+import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, rupeesCell, standingOf, yearKeyOf } from "./college-office";
 import type { ActiveContext } from "./session";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
 
@@ -227,7 +226,7 @@ function schemeRows(category: string | null, incomeRupees: number | null, forStu
 }
 
 export async function schemesView(ctx: ActiveContext) {
-  if (!ctx.schoolId || !isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(ctx.schoolId);
   return { schemes: schemeRows(null, null, false), source: { ...SCHOLARSHIP_SOURCE } };
 }
 
@@ -252,7 +251,7 @@ export async function myScholarships(ctx: ActiveContext, childId?: string) {
 }
 
 async function scholarshipsOf(who: { studentMembershipId: string; schoolId: string }) {
-  if (!isCollegeKind(await kindOf(who.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(who.schoolId);
   await assertModuleOn(who.schoolId, "SCHOLARSHIPS");
   const year = await currentAcademicYear(who.schoolId);
   const [standing, record, claims, m] = await Promise.all([

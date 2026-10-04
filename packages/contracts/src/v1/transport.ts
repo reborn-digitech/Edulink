@@ -274,6 +274,12 @@ export const driverTodaySchema = z.object({
   dateKey: z.string(),
   /** The location sentence, once: `needed` until the driver has said yes to this one. */
   consent: z.object({ needed: z.boolean(), textKey: z.string(), consentedAt: iso.nullable() }),
+  /**
+   * Set on a day the school is shut (not one of its teaching days, or a
+   * closing holiday, named when there is one): no trip runs and none is
+   * waiting to start or read as missed. Null or absent on an open day.
+   */
+  noSchool: z.object({ holidayName: z.string().nullable() }).nullable().optional(),
   trips: z.array(
     tripDetailSchema.extend({
       /** Startable now: SCHEDULED (or read as MISSED), today, and the driver has no other trip live. */

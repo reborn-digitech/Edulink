@@ -3,6 +3,7 @@ import { isCollegeKind, STUDENT_CONSENT_GRANTS, type StudentConsentGrant } from 
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./access-error";
+import { isMinorOn } from "./adulthood";
 import type { ActiveContext } from "./session";
 
 export { STUDENT_CONSENT_GRANTS, type StudentConsentGrant };
@@ -34,18 +35,31 @@ export { STUDENT_CONSENT_GRANTS, type StudentConsentGrant };
 
 type ConsentSubject = { schoolId: string; isMinor: boolean; kind: string };
 
-/** The facts that decide whether a grant is needed at all, for one student membership; null when there is no such student. */
-async function subjectOf(studentMembershipId: string): Promise<ConsentSubject | null> {
+/**
+ * The facts that decide whether a grant is needed at all, for one student
+ * membership; null when there is no such student. Adulthood is decided from
+ * the date of birth on the school's own calendar day at the moment of reading
+ * (LIFECYCLE-2): the stored `isMinor` is refreshed by the night's job, which
+ * left a guardian reading an adult's results until the next night's run. An
+ * account with no date keeps the stored flag.
+ */
+async function subjectOf(studentMembershipId: string, now: Date = new Date()): Promise<ConsentSubject | null> {
   const m = await db.membership.findFirst({
     where: { id: studentMembershipId, role: "STUDENT" },
-    select: { schoolId: true, user: { select: { isMinor: true } }, school: { select: { kind: true } } },
+    select: { schoolId: true, user: { select: { isMinor: true, birthdate: true } }, school: { select: { kind: true, timezone: true } } },
   });
-  return m ? { schoolId: m.schoolId, isMinor: m.user.isMinor, kind: m.school.kind } : null;
+  if (!m) return null;
+  return { schoolId: m.schoolId, isMinor: isMinorToday(m.user, m.school.timezone, now), kind: m.school.kind };
+}
+
+/** A minor today on the school's calendar, from the date of birth when there is one, else the stored flag. */
+export function isMinorToday(user: { birthdate: Date | null; isMinor: boolean }, timeZone: string, now: Date = new Date()): boolean {
+  return user.birthdate ? isMinorOn(user.birthdate, now, timeZone) : user.isMinor;
 }
 
 /** Whether the grants apply to this student at all: an adult at a college. */
-export async function consentApplies(studentMembershipId: string): Promise<boolean> {
-  const subject = await subjectOf(studentMembershipId);
+export async function consentApplies(studentMembershipId: string, now: Date = new Date()): Promise<boolean> {
+  const subject = await subjectOf(studentMembershipId, now);
   return subject !== null && isCollegeKind(subject.kind) && !subject.isMinor;
 }
 
@@ -55,8 +69,8 @@ export async function consentApplies(studentMembershipId: string): Promise<boole
  * only while the student has granted it. Does NOT check that the caller is the
  * student's guardian — the door's guardianship check does that first.
  */
-export async function parentMaySee(studentMembershipId: string, grant: StudentConsentGrant): Promise<boolean> {
-  const subject = await subjectOf(studentMembershipId);
+export async function parentMaySee(studentMembershipId: string, grant: StudentConsentGrant, now: Date = new Date()): Promise<boolean> {
+  const subject = await subjectOf(studentMembershipId, now);
   if (!subject) return false;
   if (!isCollegeKind(subject.kind) || subject.isMinor) return true;
   const row = await db.studentConsent.findUnique({

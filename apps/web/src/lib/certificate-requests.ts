@@ -1,7 +1,11 @@
 import "server-only";
 import type { CertificateKind, CertificateRequestSave, CertificateRequestStatus, CertificateRequestView } from "@edulink/contracts";
 import { db } from "./db";
-import { AccessError } from "./tenancy";
+import { AccessError, assertGuardianAccess } from "./tenancy";
+import { consentApplies } from "./student-consent";
+import { RuleRefusal } from "./rule-refusal";
+import { todayKey } from "./dates";
+import { translator } from "./i18n/dictionary";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import type { ActiveContext } from "./session";
@@ -32,14 +36,29 @@ function office(ctx: ActiveContext): ActiveContext & { schoolId: string } {
   return ctx as ActiveContext & { schoolId: string };
 }
 
-/** Whose pupil this is to ask for: the pupil themselves, or an active guardian of the child. Anyone else: 404. */
+/** Whose pupil this is to ask for: the pupil themselves, a former pupil (as an alumnus), or an active guardian of the child. Anyone else: 404. */
 async function asker(ctx: ActiveContext, childId?: string): Promise<{ studentMembershipId: string; schoolId: string }> {
   if (ctx.role === "STUDENT" && ctx.membershipId && ctx.schoolId) return { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId };
+  // G-6 (4 Oct 2026): a former student asks for a paper again — a TC copy, a
+  // bonafide or a no-objection for higher studies, a transcript named in the
+  // purpose — through the pupil membership the school's record is kept on.
+  if (ctx.role === "ALUMNUS" && ctx.schoolId) {
+    const pupil = await db.membership.findFirst({ where: { userId: ctx.user.id, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true } });
+    if (!pupil) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
+    return { studentMembershipId: pupil.id, schoolId: ctx.schoolId };
+  }
   if (ctx.role === "PARENT") {
-    // The child named, or — as the record form does — the first child when none is.
-    const guardianship = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, status: "ACTIVE", ...(childId ? { studentMembershipId: childId } : {}) }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true, studentSchoolId: true } });
-    if (!guardianship) throw new AccessError("access.notYourChild", "NOT_FOUND");
-    return { studentMembershipId: guardianship.studentMembershipId, schoolId: guardianship.studentSchoolId };
+    // The child named, or — as the record form does — the first child when none is. An adult
+    // at a college asks for their own papers: their guardian is refused, as the certificate
+    // itself is refused them (assertGuardianAccess with no grant is default-deny; campaign S-2).
+    if (childId) {
+      const link = await assertGuardianAccess(ctx.user.id, childId);
+      return { studentMembershipId: link.studentMembershipId, schoolId: link.student.schoolId };
+    }
+    const guardianships = await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE" }, orderBy: { createdAt: "asc" }, select: { studentMembershipId: true, studentSchoolId: true } });
+    if (guardianships.length === 0) throw new AccessError("access.notYourChild", "NOT_FOUND");
+    for (const g of guardianships) if (!(await consentApplies(g.studentMembershipId))) return { studentMembershipId: g.studentMembershipId, schoolId: g.studentSchoolId };
+    throw new AccessError("consent.refuseNotGranted");
   }
   throw new AccessError("access.wrongRoleForThisAction");
 }
@@ -49,12 +68,14 @@ const INCLUDE = {
   certificate: { select: { serial: true, revokedAt: true } },
 } as const;
 
-type Row = { id: string; studentMembershipId: string; kind: string; purpose: string; status: string; requestedByUserId: string; certificateId: string | null; declineReason: string | null; decidedAt: Date | null; createdAt: Date; student: { user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] }; certificate: { serial: string; revokedAt: Date | null } | null };
+type Row = { id: string; studentMembershipId: string; kind: string; purpose: string; status: string; requestedByUserId: string; certificateId: string | null; declineReason: string | null; decidedAt: Date | null; createdAt: Date; feePaise: number | null; feeDemandId: string | null; student: { user: { name: string; preferredName: string | null }; enrollments: { class: { name: string } }[] }; certificate: { serial: string; revokedAt: Date | null } | null };
 
 async function view(rows: Row[]): Promise<CertificateRequestView[]> {
   const byIds = [...new Set(rows.map((r) => r.requestedByUserId))];
   const users = byIds.length ? await db.user.findMany({ where: { id: { in: byIds } }, select: { id: true, name: true, preferredName: true } }) : [];
   const names = new Map(users.map((u) => [u.id, u.preferredName ?? u.name]));
+  const feeIds = rows.map((r) => r.feeDemandId).filter((x): x is string => Boolean(x));
+  const paid = new Set(feeIds.length ? (await db.feeDemand.findMany({ where: { id: { in: feeIds }, status: { in: ["PAID", "WAIVED"] } }, select: { id: true } })).map((d) => d.id) : []);
   return rows.map((r) => ({
     id: r.id,
     studentMembershipId: r.studentMembershipId,
@@ -69,6 +90,8 @@ async function view(rows: Row[]): Promise<CertificateRequestView[]> {
     declineReason: r.declineReason,
     decidedAt: r.decidedAt?.toISOString() ?? null,
     revokedAt: r.certificate?.revokedAt?.toISOString() ?? null,
+    feePaise: r.feePaise,
+    feePaid: r.feeDemandId ? paid.has(r.feeDemandId) : null,
     createdAt: r.createdAt.toISOString(),
   }));
 }
@@ -112,8 +135,8 @@ export async function familyRequests(ctx: ActiveContext, childId?: string): Prom
 export async function cancelRequest(ctx: ActiveContext, requestId: string): Promise<CertificateRequestView> {
   const row = await db.certificateRequest.findFirst({ where: { id: requestId }, include: INCLUDE });
   if (!row) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
-  await asker(ctx, ctx.role === "PARENT" ? row.studentMembershipId : undefined);
-  if (ctx.role === "STUDENT" && row.studentMembershipId !== ctx.membershipId) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
+  const who = await asker(ctx, ctx.role === "PARENT" ? row.studentMembershipId : undefined);
+  if (ctx.role !== "PARENT" && row.studentMembershipId !== who.studentMembershipId) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
   if (row.status !== "PENDING") return (await view([row]))[0]!;
   const updated = await db.certificateRequest.update({ where: { id: requestId }, data: { status: "CANCELLED", decidedAt: new Date(), decidedByUserId: ctx.user.id }, include: INCLUDE });
   await audit({ schoolId: row.schoolId, actorUserId: ctx.user.id, action: "certificate.requestCancel", targetType: "CertificateRequest", targetId: requestId, meta: { kind: row.kind } });
@@ -151,6 +174,45 @@ export async function declineRequest(ctx: ActiveContext, requestId: string, reas
   return (await view([updated]))[0]!;
 }
 
+/**
+ * G-6 (4 Oct 2026): the office sets the fee a paper costs — a copy asked for
+ * by a former student, usually. It is a demand on the ledger of the pupil
+ * membership, under the school's first head of the kind OTHER, due today,
+ * paid at the office or the bank and never through the platform (decision
+ * 0003); the asker reads the amount and whether it is paid on the request.
+ * The same amount again changes nothing; another amount replaces it while
+ * nothing is paid on it; a fee partly or wholly paid is not changed.
+ */
+export async function setRequestFee(ctx: ActiveContext, requestId: string, amountPaise: number): Promise<CertificateRequestView> {
+  const caller = office(ctx);
+  if (caller.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
+  const row = await db.certificateRequest.findFirst({ where: { id: requestId, schoolId: caller.schoolId }, include: INCLUDE });
+  if (!row) throw new AccessError("certificateRequests.notFound", "NOT_FOUND");
+  if (row.feePaise === amountPaise && row.feeDemandId) return (await view([row]))[0]!;
+  if (row.status === "DECLINED" || row.status === "CANCELLED") throw new RuleRefusal("certificateRequests.refuseFeeSettled", 409);
+  const existing = row.feeDemandId ? await db.feeDemand.findFirst({ where: { id: row.feeDemandId, schoolId: caller.schoolId }, select: { id: true, paidPaise: true, status: true } }) : null;
+  if (existing && (existing.paidPaise > 0 || existing.status !== "OPEN")) throw new RuleRefusal("certificateRequests.refuseFeePaid", 409);
+  const [head, year, school] = await Promise.all([
+    db.feeHead.findFirst({ where: { schoolId: caller.schoolId, kind: "OTHER", retiredAt: null }, orderBy: { sortOrder: "asc" }, select: { id: true, code: true, name: true } }),
+    db.academicYear.findFirst({ where: { schoolId: caller.schoolId, isCurrent: true }, select: { id: true } }),
+    db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } }),
+  ]);
+  if (!head) throw new RuleRefusal("certificateRequests.refuseNoFeeHead", 409);
+  if (!year) throw new RuleRefusal("fees.refuseNoYear", 409);
+  const t = translator("en");
+  const label = t("certificateRequests.feeLabel", { kind: row.kind });
+  const lines = JSON.stringify([{ headId: head.id, code: head.code, name: head.name, grossPaise: amountPaise, concessionPaise: 0 }]);
+  const updated = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    const demand = existing
+      ? await tx.feeDemand.update({ where: { id: existing.id }, data: { grossPaise: amountPaise, netPaise: amountPaise, linesJson: lines }, select: { id: true } })
+      : await tx.feeDemand.create({ data: { schoolId: caller.schoolId, studentMembershipId: row.studentMembershipId, academicYearId: year.id, instalmentId: null, label, dueDate: new Date(`${todayKey(school.timezone)}T00:00:00.000Z`), grossPaise: amountPaise, concessionPaise: 0, netPaise: amountPaise, linesJson: lines, status: "OPEN" }, select: { id: true } });
+    return tx.certificateRequest.update({ where: { id: row.id }, data: { feePaise: amountPaise, feeDemandId: demand.id }, include: INCLUDE });
+  });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.requestFee", targetType: "CertificateRequest", targetId: row.id, meta: { kind: row.kind, amountPaise } });
+  return (await view([updated]))[0]!;
+}
+
 /** Called by issueCertificate: the ask is answered by the paper. A request already settled is left as it stands. */
 export async function markRequestIssued(schoolId: string, requestId: string, certificateId: string): Promise<void> {
   const row = await db.certificateRequest.findFirst({ where: { id: requestId, schoolId }, select: { id: true, status: true } });
@@ -172,8 +234,11 @@ async function tellFamily(schoolId: string, studentMembershipId: string, askerUs
     told.add(pupil.userId);
     await notify({ userId: pupil.userId, schoolId, kind: "SYSTEM", ...message, url: "/student/certificates" });
   }
-  await notifyGuardians(studentMembershipId, () => ({ schoolId, kind: "SYSTEM", ...message, url: "/parent/certificates" }));
-  const guardians = await db.guardianship.findMany({ where: { studentMembershipId, status: "ACTIVE" }, select: { parentUserId: true } });
-  for (const g of guardians) told.add(g.parentUserId);
+  // An adult at a college: their guardians are not told about their papers (campaign S-2).
+  if (!(await consentApplies(studentMembershipId))) {
+    await notifyGuardians(studentMembershipId, () => ({ schoolId, kind: "SYSTEM", ...message, url: "/parent/certificates" }));
+    const guardians = await db.guardianship.findMany({ where: { studentMembershipId, status: "ACTIVE" }, select: { parentUserId: true } });
+    for (const g of guardians) told.add(g.parentUserId);
+  }
   if (!told.has(askerUserId)) await notify({ userId: askerUserId, schoolId, kind: "SYSTEM", ...message });
 }

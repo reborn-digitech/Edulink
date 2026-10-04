@@ -41,7 +41,7 @@ export const DECISION_ACTIONS: Record<DecisionKind, readonly string[]> = {
   record: ["pupilRecord.change.apply", "pupilRecord.change.decline"],
   certificate: ["certificate.issue", "certificate.requestDecline", "paper.sign", "paper.sign.decline"],
   join: ["student.join", "student.join.decline"],
-  admission: ["admissions.offer", "admissions.decide", "admissions.admit"],
+  admission: ["admissions.offer", "admissions.decide", "admissions.admit", "college.admissions.supernumerary"],
   // The college (4 Oct 2026): the principal's word on what the regulations reserve for the head.
   grace: ["exam.grace.approve", "exam.grace.refuse"],
   condonation: ["academics.condonation.approve", "academics.condonation.refuse"],
@@ -177,6 +177,7 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
   const condonationIds = ids("AttendanceCondonation");
   const concessionIds = ids("FeeConcession");
   const lateIds = ids("LateRegistration");
+  const collegeApplicationIds = ids("CollegeApplication");
   const studentOf = { select: { user: { select: { name: true, preferredName: true } } } } as const;
   // The college's four (4 Oct 2026): one query per target type, as above.
   const [graces, condonations, concessions, lates] = await Promise.all([
@@ -188,6 +189,9 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
   const graceCourses = graces.length ? new Map((await db.course.findMany({ where: { id: { in: [...new Set(graces.map((g) => g.courseId))] }, schoolId }, select: { id: true, code: true } })).map((c) => [c.id, c.code])) : new Map<string, string>();
   const graceById = new Map(graces.map((g) => [g.id, g]));
   const studentNameOf = new Map<string, string>([...condonations, ...concessions, ...lates].map((r) => [r.id, personName(r.student.user, t)]));
+  const collegeApplicantOf = new Map(
+    (collegeApplicationIds.length ? await db.collegeApplication.findMany({ where: { id: { in: collegeApplicationIds }, schoolId }, select: { id: true, applicantName: true } }) : []).map((a) => [a.id, a.applicantName]),
+  );
 
   const [leaves, covers, pens, memberships, certificates, certificateRequests, joins, applications, classes] = await Promise.all([
     leaveIds.length
@@ -333,6 +337,10 @@ async function resolveSentences(schoolId: string, rows: Row[], t: Translate, loc
       case "college.fees.concessionRefuse": {
         const name = studentNameOf.get(id) ?? t("decisions.someone");
         sentence = row.action === "college.fees.concessionApprove" ? t("decisions.concessionApproved", { name }) : t("decisions.concessionRefused", { name });
+        break;
+      }
+      case "college.admissions.supernumerary": {
+        sentence = t("decisions.supernumeraryApproved", { name: collegeApplicantOf.get(id) ?? t("decisions.someone") });
         break;
       }
       case "academics.late.approve":

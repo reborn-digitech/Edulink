@@ -11,7 +11,7 @@ import { AccessError } from "./tenancy";
 import { forTenant } from "./tenant-context";
 import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
-import { sendMagicLink, sendTeacherInvite } from "./email";
+import { localeForAddress, localeForUser, sendMagicLink, sendTeacherInvite } from "./email";
 import { revokeAllAccess } from "./session";
 import { MAGIC_LINK_TTL_MINUTES } from "./constants";
 import { notify } from "./notify";
@@ -891,10 +891,10 @@ async function tellSchoolVerified(session: ActiveContext, schoolId: string, scho
  * back in the result and sends it through `sendAdminInviteMail` once the
  * transaction has committed.
  */
-export type AdminInviteMail = { to: string; url: string; schoolName: string };
+export type AdminInviteMail = { to: string; url: string; schoolName: string; /** The school's language, for an address with no account yet. */ schoolLocale: string };
 
 export async function sendAdminInviteMail(mail: AdminInviteMail): Promise<void> {
-  await sendTeacherInvite(mail.to, mail.url, mail.schoolName, "Shalaghar");
+  await sendTeacherInvite(mail.to, mail.url, mail.schoolName, null, await localeForAddress(mail.to, mail.schoolLocale));
 }
 
 export async function inviteAdmin(
@@ -921,7 +921,7 @@ export async function inviteAdmin(
 
   const school = await client.school.findUnique({
     where: { id: schoolId },
-    select: { id: true, name: true, removedAt: true },
+    select: { id: true, name: true, removedAt: true, locale: true },
   });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
   // A removed school must not quietly grow a new administrator.
@@ -950,7 +950,7 @@ export async function inviteAdmin(
   });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  const mail: AdminInviteMail = { to: email, url: `${appUrl}/invite/${token}`, schoolName: school.name };
+  const mail: AdminInviteMail = { to: email, url: `${appUrl}/invite/${token}`, schoolName: school.name, schoolLocale: school.locale };
   if (input.mail !== "after-commit") await sendAdminInviteMail(mail);
 
   // TWICE, ON PURPOSE. The unattributed row is the operator's own record and
@@ -1752,7 +1752,7 @@ async function tellSchoolOffice(
  */
 export async function resendAdminInvite(session: ActiveContext, schoolId: string, inviteId: string): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   assertSuperuser(session);
-  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true } });
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true, removedAt: true, locale: true } });
   if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
   if (school.removedAt) return { ok: false, errorKey: "root.schoolWasRemoved" };
   const invite = await db.invite.findFirst({
@@ -1764,7 +1764,7 @@ export async function resendAdminInvite(session: ActiveContext, schoolId: string
   const token = generateToken();
   await db.invite.update({ where: { id: invite.id }, data: { tokenHash: hashToken(token), expiresAt: new Date(Date.now() + INVITE_TTL_DAYS * 86_400_000) } });
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendTeacherInvite(invite.email, `${appUrl}/invite/${token}`, school.name, "Shalaghar");
+  await sendTeacherInvite(invite.email, `${appUrl}/invite/${token}`, school.name, null, await localeForAddress(invite.email, school.locale));
 
   await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { schoolId, name: school.name, email: invite.email, role: invite.role } });
   await audit({ schoolId, actorUserId: session.user.id, action: "superuser.invite.resend", targetType: "Invite", targetId: invite.id, meta: { email: invite.email, role: invite.role } });
@@ -1796,7 +1796,7 @@ export async function sendAdminResetLink(session: ActiveContext, schoolId: strin
     data: { userId: found.user.id, email, purpose: "MAGIC_LINK", tokenHash: hashToken(token), expiresAt: new Date(Date.now() + MAGIC_LINK_TTL_MINUTES * 60_000) },
   });
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendMagicLink(email, `${appUrl}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES);
+  await sendMagicLink(email, `${appUrl}/magic?token=${token}`, MAGIC_LINK_TTL_MINUTES, await localeForUser(found.user.id));
 
   await audit({ schoolId: null, actorUserId: session.user.id, action: "superuser.admin.signInLink", targetType: "User", targetId: found.user.id, meta: { schoolId, name: found.schoolName, email } });
   await audit({ schoolId, actorUserId: session.user.id, action: "superuser.admin.signInLink", targetType: "User", targetId: found.user.id, meta: { email, role: found.user.role } });

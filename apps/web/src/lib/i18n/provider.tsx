@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo, type Context } from "react";
 import { DEFAULT_LOCALE, type Locale } from "./locales";
 import { translatorFor, type Dictionary, type Translate } from "./core";
 
@@ -21,7 +21,20 @@ import { translatorFor, type Dictionary, type Translate } from "./core";
 
 type I18n = { locale: Locale; dictionary: Dictionary | null };
 
-const I18nContext = createContext<I18n>({ locale: DEFAULT_LOCALE, dictionary: null });
+/**
+ * ONE CONTEXT OBJECT PER PROCESS, not per module instance. The dev server
+ * re-evaluates a module when it recompiles (another file changed, a route
+ * compiled for the first time), and a request in flight then had the root
+ * layout's provider from one instance of this file and the shell's `useT`
+ * from another: the server drew "role.admin" where the client drew the
+ * dictionary's sentence, and React threw the page away and rendered it again
+ * ("Hydration failed", /admin, /account/leave, the walk of 4 October). Kept on
+ * globalThis, both instances read the same context. A production server
+ * evaluates the file once, so there it changes nothing.
+ */
+const KEY = Symbol.for("edulink.i18n.context");
+const I18nContext: Context<I18n> = ((globalThis as Record<symbol, unknown>)[KEY] as Context<I18n> | undefined) ??
+  ((globalThis as Record<symbol, unknown>)[KEY] = createContext<I18n>({ locale: DEFAULT_LOCALE, dictionary: null })) as Context<I18n>;
 
 export function I18nProvider({
   locale,

@@ -166,6 +166,33 @@ describe("context and devices", () => {
 
     expect((await deviceDelete(json("/api/v1/me/devices", { expoPushToken: tok }))).status).toBe(200);
   });
+
+  it("forgets a phone's push token when that one session is revoked from another device, and sends nothing to a token whose session ended (campaign PH-4)", async () => {
+    const lost = (await (await loginPost(json("/api/v1/auth/login", { identifier: email, password: PASSWORD, device: "Lost phone" }))).json()) as { token: string; sessionId: string };
+    const kept = (await (await loginPost(json("/api/v1/auth/login", { identifier: email, password: PASSWORD, device: "Kept phone" }))).json()) as { token: string; sessionId: string };
+    const lostTok = `ExponentPushToken[zz-lost-${STAMP}]`;
+    const keptTok = `ExponentPushToken[zz-kept-${STAMP}]`;
+    asBearer(lost.token);
+    expect((await devicePost(json("/api/v1/me/devices", { expoPushToken: lostTok, platform: "ios" }))).status).toBe(200);
+    asBearer(kept.token);
+    expect((await devicePost(json("/api/v1/me/devices", { expoPushToken: keptTok, platform: "android" }))).status).toBe(200);
+    expect((await db.deviceToken.findUniqueOrThrow({ where: { expoPushToken: lostTok } })).sessionId).toBe(lost.sessionId);
+    // The kept phone revokes the lost one: its token goes, the kept phone's stays.
+    expect((await sessionDelete(new Request("http://localhost/x", { method: "DELETE" }), { params: Promise.resolve({ sessionId: lost.sessionId }) })).status).toBe(200);
+    expect(await db.deviceToken.count({ where: { expoPushToken: lostTok } })).toBe(0);
+    expect(await db.deviceToken.count({ where: { expoPushToken: keptTok } })).toBe(1);
+    // A session that simply expired: its phone is not sent to.
+    await db.session.update({ where: { id: kept.sessionId }, data: { expiresAt: new Date(Date.now() - 1000) } });
+    const calls: { to: string }[][] = [];
+    const fakeFetch = vi.fn(async (_url: string | URL | Request, init?: RequestInit) => {
+      calls.push(JSON.parse(String(init?.body)));
+      return new Response(JSON.stringify({ data: [{ status: "ok" }] }), { status: 200 });
+    }) as unknown as typeof fetch;
+    await sendExpoPush(userId, { title: "Hi", body: "There" }, fakeFetch);
+    expect(calls.flat().map((m) => m.to)).not.toContain(keptTok);
+    await db.deviceToken.deleteMany({ where: { expoPushToken: keptTok } });
+    asBearer(token);
+  });
 });
 
 describe("one-time codes", () => {

@@ -25,7 +25,11 @@ export async function sendExpoPush(
   message: ExpoPushMessage,
   fetchImpl: typeof fetch = fetch,
 ): Promise<ExpoPushResult> {
-  const tokens = await db.deviceToken.findMany({ where: { userId }, select: { id: true, expoPushToken: true, failureCount: true } });
+  // Only phones whose session is still alive (campaign PH-4): a session that expired or was revoked
+  // leaves its token behind until the phone registers again, and a notice is not sent to it. A token
+  // from before the session link (sessionId null) is sent to as it always was.
+  const now = new Date();
+  const tokens = await db.deviceToken.findMany({ where: { userId, OR: [{ sessionId: null }, { session: { revokedAt: null, expiresAt: { gt: now } } }] }, select: { id: true, expoPushToken: true, failureCount: true } });
   const result: ExpoPushResult = { delivered: 0, failed: 0, retired: 0, skipped: false };
   if (tokens.length === 0) return result;
 

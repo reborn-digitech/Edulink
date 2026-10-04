@@ -7,23 +7,62 @@
  *   npm run zz:token -- ALUMNUS zz.alumni02@zz.test   that person in that role
  *
  * Sessions carry userAgent "zz-token", expire in an hour, and the API sweep's
- * cleanup does not touch them; delete them with `--purge`.
+ * cleanup does not touch them.
+ *
+ * PURGE ONLY WHAT YOU MINTED (SWEEPS-6, 4 Oct 2026). `--purge` used to delete
+ * every zz-token session — another agent's too, while it was using it. Now
+ * each mint records its token's hash in apps/web/.zz-token/<tag>.hashes
+ * (gitignored), and the purge deletes those sessions alone and empties the
+ * file; the tag is `--tag=<name>` (or ZZ_TOKEN_TAG), "default" otherwise, so
+ * two callers who each name a tag never purge each other's. Or name the
+ * tokens themselves — exact across any number of separate invocations:
+ *
+ *   npm run zz:token -- --tag=walk TEACHER       mint, recorded under "walk"
+ *   npm run zz:token -- --purge --tag=walk       delete the sessions minted under "walk"
+ *   npm run zz:token -- --purge <token> [...]     delete exactly these tokens' sessions
+ *   npm run zz:token -- --purge --all            the old behaviour: every zz-token session
  */
 import { createHash, randomBytes } from "node:crypto";
+import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
-async function main() {
-  const role = process.argv[2];
-  if (role === "--purge") {
+const HASH_DIR = join(__dirname, "..", ".zz-token");
+const flags = process.argv.slice(2).filter((a) => a.startsWith("--"));
+const words = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+const tag = (flags.find((a) => a.startsWith("--tag="))?.slice(6) ?? process.env.ZZ_TOKEN_TAG ?? "default").replace(/[^\w.-]/g, "_") || "default";
+const hashFile = join(HASH_DIR, `${tag}.hashes`);
+const hashOf = (token: string) => createHash("sha256").update(token).digest("hex");
+
+async function purge() {
+  if (flags.includes("--all")) {
     const gone = await db.session.deleteMany({ where: { userAgent: "zz-token" } });
-    process.stderr.write(`purged ${gone.count}\n`);
+    process.stderr.write(`purged ${gone.count} (every zz-token session)\n`);
     return;
   }
-  if (!role) throw new Error("usage: zz-token <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|FACULTY|HOD|EXAM_CONTROLLER|IQAC|TPO|ACCOUNTS|RECRUITER|OPERATOR|APPADMIN> [email] | --purge");
+  // Tokens named on the line: exactly those. Otherwise the hashes this tag recorded.
+  let hashes = words.map(hashOf);
+  const fromFile = hashes.length === 0;
+  if (fromFile) {
+    try {
+      hashes = readFileSync(hashFile, "utf8").split("\n").filter((h) => /^[0-9a-f]{64}$/.test(h));
+    } catch {
+      hashes = [];
+    }
+  }
+  const gone = hashes.length ? await db.session.deleteMany({ where: { userAgent: "zz-token", tokenHash: { in: hashes } } }) : { count: 0 };
+  if (fromFile) writeFileSync(hashFile, "");
+  process.stderr.write(`purged ${gone.count} (${fromFile ? `minted under tag "${tag}"` : `${hashes.length} token(s) named`}; --all for every zz-token session)\n`);
+}
+
+async function main() {
+  if (flags.includes("--purge")) return purge();
+  const role = words[0];
+  if (!role) throw new Error("usage: zz-token [--tag=<name>] <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|DRIVER|LIBRARIAN|WARDEN|ALUMNUS|FACULTY|HOD|EXAM_CONTROLLER|IQAC|TPO|ACCOUNTS|RECRUITER|OPERATOR|APPADMIN> [email] | --purge [--tag=<name> | <token>… | --all]");
   // A second argument names the ZZ person: their membership in that role, wherever it is.
-  const email = process.argv[3];
+  const email = words[1];
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   let userId: string;
   let schoolId: string | null = school.id;
@@ -62,8 +101,11 @@ async function main() {
   const activeRole = role === "OPERATOR" || role === "APPADMIN" ? null : role;
   const token = randomBytes(32).toString("base64url");
   await db.session.create({
-    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole, userAgent: "zz-token", expiresAt: new Date(Date.now() + 3_600_000) },
+    data: { userId, tokenHash: hashOf(token), activeSchoolId: schoolId, activeRole, userAgent: "zz-token", expiresAt: new Date(Date.now() + 3_600_000) },
   });
+  // Recorded for this tag's purge (never the token itself: a hash opens nothing).
+  mkdirSync(HASH_DIR, { recursive: true });
+  appendFileSync(hashFile, hashOf(token) + "\n");
   process.stdout.write(token + "\n");
 }
 

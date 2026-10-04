@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-04T01:02:02.453Z · schools: Saraswati Arts and Science College, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 220 WARN · 95 INFO
+Run: 2026-10-04T15:31:04.312Z · schools: Saraswati Arts and Science College, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 220 WARN · 99 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -229,7 +229,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (95)
+## INFO (99)
 
 | check | school | detail |
 |---|---|---|
@@ -259,6 +259,10 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | report-card-items | ZZ Northgate School | 48 card papers checked against their grades |
 | certificates | Saraswati Vidya Mandir | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
 | certificates | Sunrise Public School | CC/2026–27/0001 (CHARACTER) went out with "—" for record.conduct |
+| tc-register | Saraswati Arts and Science College | 0 leaving record(s) and 0 TC certificate(s) over 0 year(s) |
+| tc-register | Saraswati Vidya Mandir | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
+| tc-register | Sunrise Public School | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
+| tc-register | ZZ Northgate School | 1 leaving record(s) and 0 TC certificate(s) over 1 year(s) |
 | insights | Saraswati Arts and Science College | FY BCom A: 2 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Arts and Science College | SY BCom A: 3 pupil(s) have no marks in the window and are outside the class average |
 | insights | Saraswati Arts and Science College | SY BSc Physics A: 5 pupil(s) have no marks in the window and are outside the class average |

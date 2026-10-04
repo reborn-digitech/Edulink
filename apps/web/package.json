@@ -54,6 +54,7 @@
     "zz:fixtures": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts",
     "demo:schools": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-schools.ts",
     "demo:college": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/demo-college.ts",
+    "zz:lifecycle": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-lifecycle.ts",
     "zz:fleet": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-load-fleet.ts",
     "db:grants": "node scripts/db-grants.mjs",
     "superuser": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/make-superuser.ts",

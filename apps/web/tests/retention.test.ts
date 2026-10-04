@@ -99,6 +99,23 @@ describe("retention:sweep", () => {
   it("refuses an unscoped sweep with a clock in the future — the guard that keeps a test from sweeping the server", async () => {
     await expect(sweepExpired(NOW)).rejects.toThrow(/refusing an unscoped sweep/);
     await expect(sweepExpired(NOW, undefined, {})).rejects.toThrow(/days in the future/);
+    await expect(sweepExpired(NOW, undefined, { schoolIds: undefined })).rejects.toThrow(/days in the future/);
+  });
+
+  it("keeps a scoped sweep to the tables its scope narrows: { schoolIds } alone takes no session, token, limit, ticket, e-mail or job run anywhere (campaign LIFECYCLE-1)", async () => {
+    const preview = await retentionPreview(NOW, undefined, { schoolIds: [schoolId] });
+    expect(preview.pending).toMatchObject({ sessions: 0, tokens: 0, rateLimits: 0, uploadTickets: 0, outbox: 0, jobRuns: 0 });
+    // The school's own rows are still its to sweep.
+    expect(preview.pending.healthReads).toBeGreaterThan(0);
+    // Swept for real with a school that has nothing: every table no school key narrows is left alone.
+    const before = await remaining();
+    const { summary } = await sweepExpired(NOW, undefined, { schoolIds: [`zz-none-${STAMP}`] });
+    expect(summary).toMatchObject({ sessions: 0, tokens: 0, rateLimits: 0, uploadTickets: 0, outbox: 0, jobRuns: 0, auditRows: 0, healthReads: 0, tripPositions: 0 });
+    expect(await remaining()).toEqual(before);
+    // A user-narrowed preview takes that user's sessions and nothing of the schools'.
+    const mine = await retentionPreview(NOW, undefined, { userIds: [userId] });
+    expect(mine.pending.sessions).toBeGreaterThan(0);
+    expect(mine.pending).toMatchObject({ auditRows: 0, tripPositions: 0, rateLimits: 0, outbox: 0, jobRuns: 0 });
   });
 
   it("spares the audit log when its horizon is 0, and takes nothing else twice", async () => {

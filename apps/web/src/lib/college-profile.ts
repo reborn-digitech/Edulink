@@ -13,7 +13,7 @@ import {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
-import { AccessError } from "./access-error";
+import { AccessError, NotACollegeError } from "./access-error";
 import { readJsonArray } from "./json";
 import type { ActiveContext } from "./session";
 
@@ -82,7 +82,7 @@ export async function setCollegeProfile(ctx: ActiveContext, input: CollegeProfil
   const changed = Object.entries(data).filter(([, v]) => v !== undefined).map(([k]) => k);
   if (changed.length === 0) return { changed };
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { kind: true } });
-  if (!isCollegeKind(school.kind)) throw new AccessError("college.refuseNotACollege");
+  if (!isCollegeKind(school.kind)) throw new NotACollegeError("college.refuseNotACollege");
   await db.school.update({ where: { id: ctx.schoolId }, data });
   await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "college.profile.update", targetType: "School", targetId: ctx.schoolId, meta: { fields: changed } });
   return { changed };

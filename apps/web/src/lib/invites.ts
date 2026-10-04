@@ -1,7 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { generateToken, hashToken } from "./crypto";
-import { sendTeacherInvite } from "./email";
+import { localeForAddress, sendTeacherInvite } from "./email";
 import { audit } from "./audit";
 import { INVITE_TTL_DAYS } from "./constants";
 import type { ActiveContext } from "./session";
@@ -21,7 +21,7 @@ export async function resendInviteFor(
 ): Promise<{ ok: true } | { ok: false; errorKey: TranslationKey }> {
   const invite = await db.invite.findFirst({
     where: { id: inviteId, schoolId: ctx.schoolId, status: "PENDING" },
-    include: { school: { select: { name: true } } },
+    include: { school: { select: { name: true, locale: true } } },
   });
   if (!invite?.email) return { ok: false, errorKey: "invites.cannotResend" };
 
@@ -34,7 +34,7 @@ export async function resendInviteFor(
     },
   });
 
-  await sendTeacherInvite(invite.email, `${APP_URL}/invite/${token}`, invite.school.name, ctx.user.preferredName ?? ctx.user.name);
+  await sendTeacherInvite(invite.email, `${APP_URL}/invite/${token}`, invite.school.name, ctx.user.preferredName ?? ctx.user.name, await localeForAddress(invite.email, invite.school.locale));
 
   await audit({
     schoolId: ctx.schoolId,
@@ -55,10 +55,12 @@ export async function resendInviteFor(
  * yet" counted every invitation that had quietly lapsed. Counts are per school,
  * never a name or an address.
  */
-export async function expireInvites(now: Date = new Date()): Promise<{ expired: number; perSchool: Record<string, { invitesExpired: number }> }> {
-  const due = await db.invite.groupBy({ by: ["schoolId"], where: { status: "PENDING", expiresAt: { lt: now } }, _count: { _all: true } });
+export async function expireInvites(now: Date = new Date(), scope: { schoolIds?: string[] } = {}): Promise<{ expired: number; perSchool: Record<string, { invitesExpired: number }> }> {
+  // `scope.schoolIds` is for a test or a simulated year (LIFECYCLE-10): the cron expires every school's.
+  const where = { status: "PENDING", expiresAt: { lt: now }, ...(scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : {}) };
+  const due = await db.invite.groupBy({ by: ["schoolId"], where, _count: { _all: true } });
   if (due.length === 0) return { expired: 0, perSchool: {} };
-  const moved = await db.invite.updateMany({ where: { status: "PENDING", expiresAt: { lt: now } }, data: { status: "EXPIRED" } });
+  const moved = await db.invite.updateMany({ where, data: { status: "EXPIRED" } });
   const perSchool: Record<string, { invitesExpired: number }> = {};
   for (const g of due) perSchool[g.schoolId] = { invitesExpired: g._count._all };
   return { expired: moved.count, perSchool };

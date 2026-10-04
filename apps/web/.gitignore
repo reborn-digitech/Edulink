@@ -12,6 +12,9 @@ storage/
 # the walk's throwaway sign-in list
 zz-logins.txt
 
+# zz:token's record of the session hashes each tag minted, so its purge deletes only those (SWEEPS-6)
+.zz-token/
+
 # e2e: per-platform screenshot baselines other than CI's Linux set, and run output
 e2e/.sessions.json
 e2e/results/

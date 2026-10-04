@@ -80,13 +80,14 @@ async function programmeTable(schoolId: string, year: number) {
   });
 }
 
-async function facultyTable(schoolId: string) {
+/** Faculty as they stood at `asOf`: experience is counted to that instant, so a past year's filing reads the same every time it is built. */
+async function facultyTable(schoolId: string, asOf: Date = new Date()) {
   const [people, records] = await Promise.all([
     db.membership.findMany({ where: { schoolId, role: { in: ["FACULTY", "HOD", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, orderBy: { user: { name: "asc" } }, select: { id: true, role: true, joinedAt: true, user: { select: { name: true } } } }),
     db.facultyRecord.findMany({ where: { schoolId } }),
   ]);
   const rec = new Map(records.map((r) => [r.membershipId, r]));
-  const now = Date.now();
+  const now = asOf.getTime();
   return people.map((p) => {
     const r = rec.get(p.id);
     const joined = r?.joinedOn ? Date.parse(`${r.joinedOn}T00:00:00Z`) : p.joinedAt.getTime();
@@ -125,13 +126,18 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
   const cycle = cycleId ? await db.accreditationCycle.findFirst({ where: { id: cycleId, schoolId }, select: { id: true, framework: true, windowFrom: true, windowTo: true, enteredJson: true } }) : await db.accreditationCycle.findFirst({ where: { schoolId }, orderBy: { createdAt: "desc" }, select: { id: true, framework: true, windowFrom: true, windowTo: true, enteredJson: true } });
   const entered = readEntered(cycle?.enteredJson);
   const footer = `${p.name} · ${L.generatedFrom}`;
+  // THE FILING'S OWN CLOCK (LIFECYCLE-8): every fact reader is handed the end of
+  // the window the filing covers, never the day it is built, so an AQAR built in
+  // May and rebuilt by the data audit years later reads the same figures — the
+  // teachers' experience, the latest year counted, which surveys had closed.
+  const asOf = new Date(`${kind === "SSR" && cycle ? cycle.windowTo : w.to}T23:59:59.999Z`);
 
   if (kind === "SSR" || kind === "AQAR") {
     const fw = frameworkOf(cycle?.framework ?? (p.kind === "AUTONOMOUS_COLLEGE" ? "AUTONOMOUS" : "AFFILIATED_UG"));
     // The SSR reads the cycle's five years; the AQAR the one academic year.
     const from = kind === "SSR" && cycle ? cycle.windowFrom : w.from;
     const to = kind === "SSR" && cycle ? cycle.windowTo : w.to;
-    const gathered = await gatherFacts(schoolId, from, to, entered);
+    const gathered = await gatherFacts(schoolId, from, to, entered, asOf);
     const qls = cycle ? await db.metricScore.findMany({ where: { cycleId: cycle.id, kind: "QL" }, orderBy: { computedAt: "asc" }, select: { metricCode: true, score: true, note: true, evidenceJson: true } }) : [];
     const ql = new Map(qls.map((q) => [q.metricCode, q]));
     const figures: Record<string, number> = {};
@@ -161,12 +167,12 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
   }
 
   if (kind === "AICTE_DISCLOSURE") {
-    const doc = await disclosureDocument(schoolId, year);
+    const doc = await disclosureDocument(schoolId, year, asOf);
     return { format: "PDF", body: JSON.stringify(doc.document), figures: doc.figures };
   }
 
   if (kind === "IIQA") {
-    const gathered = await gatherFacts(schoolId, `${year - 4}-06-01`, w.to, entered);
+    const gathered = await gatherFacts(schoolId, `${year - 4}-06-01`, w.to, entered, asOf);
     const aqars = await db.collegeFiling.findMany({ where: { schoolId, kind: "AQAR" }, select: { year: true }, distinct: ["year"] });
     const figures = { students: gathered.facts.studentsLatest ?? 0, fullTimeTeachers: gathered.facts.fullTimeTeachers ?? 0, programmes: gathered.facts.programmes ?? 0, aqarsFiled: aqars.length };
     const rows: (string | number)[][] = [...profileRows(p).map(([k, v]) => [L.institution, k, v]), [L.programmes, L.programmes, figures.programmes], [L.students, L.students, figures.students], [L.faculty, L.fullTimeTeachers, figures.fullTimeTeachers], [FILING_TITLE.AQAR, L.year, aqars.map((a) => yearLabel(a.year)).join("; ") || L.notRecorded], [L.sssMean, L.sssMean, gathered.facts.sssMean ?? L.notRecorded]];
@@ -174,8 +180,8 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
   }
 
   if (kind === "NIRF") {
-    const gathered = await gatherFacts(schoolId, `${year - 2}-06-01`, w.to, entered);
-    const nf = await nirfFacts(schoolId, gathered);
+    const gathered = await gatherFacts(schoolId, `${year - 2}-06-01`, w.to, entered, asOf);
+    const nf = await nirfFacts(schoolId, gathered, asOf);
     const subs = nirfSubs(nf);
     const seasons = await db.placementSeason.findMany({ where: { schoolId, batchYear: { gte: year - 2, lte: year + 1 } }, orderBy: { batchYear: "asc" }, select: { batchYear: true, finalYear: true, placed: true, higherStudies: true, medianSalaryRupees: true } });
     const rows: (string | number)[][] = [
@@ -199,7 +205,7 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
 
   if (kind === "AISHE") {
     const programmes = await programmeTable(schoolId, year);
-    const faculty = await facultyTable(schoolId);
+    const faculty = await facultyTable(schoolId, asOf);
     const nonTeaching = await db.membership.count({ where: { schoolId, role: { in: ["ADMIN", "ACCOUNTS", "LIBRARIAN", "WARDEN", "DRIVER", "EXAM_CONTROLLER", "TPO"] }, status: "ACTIVE", leftAt: null } });
     const yl = yearLabel(year);
     const claims = await db.scholarshipClaim.groupBy({ by: ["scheme"], where: { schoolId, academicYear: yl, status: { in: ["SANCTIONED", "DISBURSED"] } }, _count: { _all: true } });
@@ -226,11 +232,11 @@ export async function buildFiling(schoolId: string, kind: CollegeFilingKind, yea
 }
 
 /** The AICTE disclosure, for the filing and the public page: no student, no PAN, no contact detail. */
-export async function disclosureDocument(schoolId: string, year: number): Promise<{ document: FilingDocument; figures: Record<string, number> }> {
+export async function disclosureDocument(schoolId: string, year: number, asOf: Date = new Date()): Promise<{ document: FilingDocument; figures: Record<string, number> }> {
   const p = await schoolProfile(schoolId);
   const [programmes, faculty, committees, seasons] = await Promise.all([
     programmeTable(schoolId, year),
-    facultyTable(schoolId),
+    facultyTable(schoolId, asOf),
     db.committee.findMany({ where: { schoolId, kind: { in: ["GRIEVANCE", "ANTI_RAGGING", "ICC", "IQAC", "GOVERNING_BODY", "CDC"] } }, orderBy: { kind: "asc" }, select: { kind: true, name: true, membersJson: true } }),
     db.placementSeason.findMany({ where: { schoolId, batchYear: { gte: year - 2, lte: year + 1 } }, orderBy: { batchYear: "asc" }, select: { batchYear: true, finalYear: true, placed: true, higherStudies: true, medianSalaryRupees: true } }),
   ]);

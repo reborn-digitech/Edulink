@@ -28,7 +28,7 @@ import { assertModuleOn, isModuleOn } from "./modules";
 import { notify } from "./notify";
 import { channel, publish } from "./realtime";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
-import { closedOn } from "./holidays";
+import { closedOn, schoolDayOn } from "./holidays";
 import { toCsv } from "./csv";
 import { translator } from "./i18n/dictionary";
 import { normaliseLocale } from "@edulink/i18n";
@@ -517,12 +517,16 @@ const tripInclude = {
 } as const;
 type LoadedTrip = Prisma.TripGetPayload<{ include: typeof tripInclude }>;
 
-/** The status a trip reads as now: MISSED for a SCHEDULED trip ten minutes past its first stop's time. */
-function readStatus(trip: { status: string; dateKey: string; direction: string }, stops: StopRow[], timezone: string, now: Date): { status: TripStatus; scheduledMinute: number | null; scheduledStart: Date | null } {
+/**
+ * The status a trip reads as now: MISSED for a SCHEDULED trip ten minutes past its first stop's time —
+ * on a day the school is open only. On a Sunday or a closing holiday no bus was due, so a waiting row
+ * (a fixture's, or one made before the holiday was declared) is not a missed start (B-11).
+ */
+function readStatus(trip: { status: string; dateKey: string; direction: string }, stops: StopRow[], timezone: string, now: Date, schoolOpen = true): { status: TripStatus; scheduledMinute: number | null; scheduledStart: Date | null } {
   const ordered = tripStops(stops, trip.direction as TripDirection);
   const scheduledMinute = ordered[0]?.scheduledMinute ?? null;
   const scheduledStart = scheduledMinute === null ? null : atMinute(zonedStartOfDay(trip.dateKey, timezone), scheduledMinute);
-  const missed = isMissed({ status: trip.status, scheduledStart, now, graceMinutes: TRIP_MISSED_AFTER_MINUTES });
+  const missed = schoolOpen && isMissed({ status: trip.status, scheduledStart, now, graceMinutes: TRIP_MISSED_AFTER_MINUTES });
   return { status: missed ? "MISSED" : (trip.status as TripStatus), scheduledMinute, scheduledStart };
 }
 
@@ -581,12 +585,12 @@ async function tellOfficeOfMissed(schoolId: string, missed: { id: string; bus: s
 }
 
 /** The day's trips for one school, as rows; today's are made first, and a newly missed start is said to the office. */
-async function readDay(schoolId: string, dateKey: string, filter: Prisma.TripWhereInput = {}): Promise<{ rows: TripRow[]; loaded: LoadedTrip[] }> {
+async function readDay(schoolId: string, dateKey: string, filter: Prisma.TripWhereInput = {}, now: Date = new Date()): Promise<{ rows: TripRow[]; loaded: LoadedTrip[]; day: { open: boolean; holidayName: string | null } }> {
   const { timezone } = await schoolZone(schoolId);
-  const today = todayKey(timezone);
+  const today = todayKey(timezone, now);
+  const day = await schoolDayOn(schoolId, dateKey);
   if (dateKey === today) await ensureTrips(schoolId, dateKey);
   const trips = await db.trip.findMany({ where: { schoolId, dateKey, ...filter }, include: tripInclude, orderBy: [{ direction: "asc" }, { createdAt: "asc" }] });
-  const now = new Date();
   const last = await lastPositions(trips.map((t) => t.id));
   const counts = await Promise.all(
     trips.map(async (t) => {
@@ -597,7 +601,7 @@ async function readDay(schoolId: string, dateKey: string, filter: Prisma.TripWhe
   );
   const missed: { id: string; bus: string; route: string; minute: number | null }[] = [];
   const rows = trips.map((t, i) => {
-    const read = readStatus(t, t.assignment.route.stops, timezone, now);
+    const read = readStatus(t, t.assignment.route.stops, timezone, now, day.open);
     if (read.status === "MISSED" && !t.missedNotifiedAt && t.dateKey === today) missed.push({ id: t.id, bus: t.assignment.bus.registration, route: t.assignment.route.name, minute: read.scheduledMinute });
     return {
       id: t.id,
@@ -619,7 +623,7 @@ async function readDay(schoolId: string, dateKey: string, filter: Prisma.TripWhe
     } satisfies TripRow;
   });
   await tellOfficeOfMissed(schoolId, missed);
-  return { rows, loaded: trips };
+  return { rows, loaded: trips, day };
 }
 
 /** The office's and the head's day: every trip, live, waiting, ended and missed. */
@@ -677,15 +681,21 @@ export async function tripDetail(ctx: ActiveContext, tripId: string): Promise<Tr
 
 const mine = (d: Driver): Prisma.TripWhereInput => ({ assignment: { OR: [{ driverMembershipId: d.membershipId }, { attendantMembershipId: d.membershipId }] } });
 
-export async function driverToday(ctx: ActiveContext): Promise<DriverToday> {
+export async function driverToday(ctx: ActiveContext, now: Date = new Date()): Promise<DriverToday> {
   const d = await driverOf(ctx);
   const { timezone } = await schoolZone(d.schoolId);
-  const today = todayKey(timezone);
-  const [{ rows, loaded }, consent, liveElsewhere] = await Promise.all([
-    readDay(d.schoolId, today, mine(d)),
+  const today = todayKey(timezone, now);
+  const [{ rows: allRows, loaded: allLoaded, day }, consent, liveElsewhere] = await Promise.all([
+    readDay(d.schoolId, today, mine(d), now),
     db.transportConsent.findUnique({ where: { membershipId: d.membershipId }, select: { textKey: true, consentedAt: true } }),
     db.trip.count({ where: { schoolId: d.schoolId, status: "LIVE", ...mine(d) } }),
   ]);
+  // On a closed day no trip is waiting to run: a SCHEDULED row left from a
+  // fixture or made before the holiday was declared is not the driver's day.
+  // A trip actually driven (LIVE or ENDED) stays — it happened.
+  const keep = allLoaded.map((t) => day.open || t.status !== "SCHEDULED");
+  const loaded = allLoaded.filter((_, i) => keep[i]);
+  const rows = allRows.filter((_, i) => keep[i]);
   const trips = await Promise.all(
     loaded.map(async (t, i) => {
       const detail = await detailOf(d.schoolId, t, rows[i]!);
@@ -694,7 +704,7 @@ export async function driverToday(ctx: ActiveContext): Promise<DriverToday> {
     }),
   );
   const agreed = consent?.textKey === CONSENT_TEXT_KEY;
-  return { dateKey: today, consent: { needed: !agreed, textKey: CONSENT_TEXT_KEY, consentedAt: agreed ? consent!.consentedAt.toISOString() : null }, trips };
+  return { dateKey: today, consent: { needed: !agreed, textKey: CONSENT_TEXT_KEY, consentedAt: agreed ? consent!.consentedAt.toISOString() : null }, noSchool: day.open ? null : { holidayName: day.holidayName }, trips };
 }
 
 /** The driver's yes to the location sentence: once; saying it again changes nothing. */

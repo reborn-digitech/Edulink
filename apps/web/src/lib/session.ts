@@ -150,12 +150,18 @@ export async function destroySession(): Promise<void> {
   jar.set(SESSION_COOKIE, "", { ...cookieOptions(0), maxAge: 0 });
 }
 
-/** Revoke one device. Ownership is checked here, not by the caller. */
+/**
+ * Revoke one device. Ownership is checked here, not by the caller. The phone's
+ * push registration made under that session goes with it (campaign PH-4): a
+ * lost phone signed out from the web stops showing the person's notices on its
+ * lock screen. "Sign out everywhere" (revokeAllAccess) still clears them all.
+ */
 export async function revokeSession(sessionId: string, ownerUserId: string): Promise<boolean> {
   const result = await db.session.updateMany({
     where: { id: sessionId, userId: ownerUserId, revokedAt: null },
     data: { revokedAt: new Date() },
   });
+  await db.deviceToken.deleteMany({ where: { sessionId, userId: ownerUserId } });
   return result.count > 0;
 }
 
@@ -341,9 +347,18 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
   // a page outside a module role's own is served as if the session had no
   // school, which every page gate answers by sending the person to choose.
   let refusal: unknown = null;
+  let moduleOffPage = false;
   try {
     const verdict = await gateRequest((await headers()).get(ROUTE_HEADER), { role, schoolId });
     if (verdict === "no-context") {
+      schoolId = null;
+      role = null;
+      membershipId = null;
+    }
+    // The role's own menu page behind a module this school has off (B-12): no school either, and the
+    // signed-in layout answers 404 for it rather than sending the person to choose (isModuleOffPage).
+    if (verdict === "not-found") {
+      moduleOffPage = true;
       schoolId = null;
       role = null;
       membershipId = null;
@@ -377,8 +392,16 @@ const readSession = cache(async (): Promise<ActiveContext | null> => {
     },
   };
   if (refusal) refused.set(ctx, refusal);
+  if (moduleOffPage) moduleOffPages.add(ctx);
   return ctx;
 });
+
+const moduleOffPages = new WeakSet<ActiveContext>();
+
+/** Whether this request is a limited role's own menu page whose module the school has off (role-gate.ts `ownPageModuleOff`). */
+export function isModuleOffPage(ctx: ActiveContext): boolean {
+  return moduleOffPages.has(ctx);
+}
 
 /** The gate's refusal for a resolved session, if the request was refused (role-gate.ts). */
 const refused = new WeakMap<ActiveContext, unknown>();

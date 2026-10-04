@@ -89,8 +89,11 @@ export async function marksSheet(ctx: ActiveContext, sessionId: string, courseId
       ticket: f.ticket?.number ?? null,
       internalMilli: latest?.internalMilli ?? locked ?? null,
       internalLocked: locked !== undefined,
-      entry1: first?.entry1ByUserId ? { milli: first.entry1Milli, absent: first.entry1Absent, by: names.get(first.entry1ByUserId) ?? "—" } : null,
-      entry2: first?.entry2ByUserId ? { milli: first.entry2Milli, absent: first.entry2Absent, by: names.get(first.entry2ByUserId) ?? "—" } : null,
+      // BLIND until both have entered (campaign S-23): an entry's value is shown to its own author
+      // alone while the other entry is missing, so the second entrant cannot copy the first. Once
+      // both stand, both are shown, which is what settling a mismatch needs.
+      entry1: first?.entry1ByUserId ? (both || first.entry1ByUserId === ctx.user.id ? { milli: first.entry1Milli, absent: first.entry1Absent, by: names.get(first.entry1ByUserId) ?? "—" } : { milli: null, absent: false, by: names.get(first.entry1ByUserId) ?? "—" }) : null,
+      entry2: first?.entry2ByUserId ? (both || first.entry2ByUserId === ctx.user.id ? { milli: first.entry2Milli, absent: first.entry2Absent, by: names.get(first.entry2ByUserId) ?? "—" } : { milli: null, absent: false, by: names.get(first.entry2ByUserId) ?? "—" }) : null,
       externalMilli: latest?.matched ? latest.externalMilli : null,
       absent: Boolean(latest?.matched && latest.absent),
       matched: Boolean(latest?.matched),
@@ -174,6 +177,9 @@ export async function enterMarks(ctx: ActiveContext, sessionId: string, input: {
  */
 export async function importMarks(ctx: ActiveContext, sessionId: string, textIn: string): Promise<{ created: number; updated: number; unchanged: number; unmatched: { line: number; key: string; reason: string }[] }> {
   const cell = await cellOf(ctx);
+  // The university's file is an affiliated college's: at an autonomous college one controller's
+  // paste would stand as matched marks with no second entrant, over the HOD's internal lock (campaign S-10).
+  if (cell.autonomous) throw new AccessError("examCell.refuseImportAutonomous");
   const s = await sessionOf(cell, sessionId);
   if (!statusAtLeast(s.status, "CONDUCT")) throw new RuleRefusal("examCell.refuseMarksNow", 409);
   const t = await getT();
@@ -450,6 +456,11 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
     return run.id;
   });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.run", targetType: "ResultRun", targetId: runId, meta: { ...summary, reason: reason ?? null } });
+  // A run that changes a published result waits for the principal (publishRun), who is told.
+  if (published) {
+    const principals = await db.membership.findMany({ where: { schoolId: cell.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
+    await Promise.all(principals.map((p) => notify({ userId: p.userId, schoolId: cell.schoolId, kind: "SYSTEM", titleKey: "examCell.notifyRepublishAsk", body: reason?.trim() ?? "", url: `/exam-cell/sessions/${s.id}/results` }).catch(() => undefined)));
+  }
   return { ok: true, id: runId, count: summary.students };
 }
 
@@ -461,11 +472,18 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
  * and the students are told.
  */
 export async function publishRun(ctx: ActiveContext, sessionId: string, runId: string): Promise<ExamActionResult> {
-  const cell = await cellOf(ctx);
+  // THE SECOND SIGNATORY (campaign S-10). The first publication is the controller's. After it, a
+  // run carries corrections or revaluations one controller made alone, so it is published by the
+  // principal — the run row's publishedByUserId is that approval — and not by the controller.
+  const cell = await cellOf(ctx, "read");
+  if (!cell.canWrite && cell.role !== "PRINCIPAL") throw new AccessError("access.wrongRoleForThisAction");
   const s = await sessionOf(cell, sessionId);
   const run = await db.resultRun.findFirst({ where: { id: runId, sessionId: s.id } });
   if (!run) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (run.status === "PUBLISHED") return { ok: true, id: run.id, count: null };
+  if (await everPublished(s.id)) {
+    if (cell.role !== "PRINCIPAL") throw new AccessError("examCell.refuseRepublishPrincipal");
+  } else if (!cell.canWrite) throw new AccessError("access.wrongRoleForThisAction");
   if (run.status !== "DRAFT") throw new RuleRefusal("examCell.refuseRunSuperseded", 409);
   const [courseRows, termRows] = await Promise.all([db.courseResult.findMany({ where: { runId: run.id } }), db.termResult.findMany({ where: { runId: run.id } })]);
   const ids = await studentIdsOf(cell.schoolId, termRows.map((r) => r.studentMembershipId));

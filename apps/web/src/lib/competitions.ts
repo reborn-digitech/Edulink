@@ -432,6 +432,8 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
  * a no today is not a no forever.
  */
 export async function withdrawEntry(session: ActiveContext, entryId: string): Promise<void> {
+  // The role before the id (SWEEPS-1, 4 Oct 2026): anyone but the child or a guardian is refused 403 whatever entry they name.
+  if (session.role !== "PARENT" && session.role !== "STUDENT") throw new AccessError("access.onlyTheChildOrTheirGuardianCan");
   const entry = await db.competitionEntry.findUnique({ where: { id: entryId } });
   if (!entry) throw new AccessError("access.entryNotFound", "NOT_FOUND");
 

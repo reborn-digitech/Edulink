@@ -6,7 +6,7 @@
  * downloaded by the guardian, refused to a stranger, checked by its printed
  * code, and revoked.
  */
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies } from "../tests/stubs/next-headers";
@@ -45,6 +45,42 @@ let pupilA = "";
 let pupilB = "";
 let classId = "";
 let teacherMembershipId = "";
+
+/**
+ * The public check exactly as a stranger holding the paper reaches it: the
+ * route's module graph loaded afresh with the APPLICATION role's connection
+ * and no session, so row-level security is in force. Every other call in this
+ * file runs as the owner (tests/setup.ts), which bypasses RLS — and that is how
+ * this check once passed here while every printed QR answered "not valid"
+ * (campaign 2026-10-04, C-1). Falls back to the owner's route, and says so,
+ * only where the configuration has a single role.
+ */
+async function verifySignedOut(code: string): Promise<Record<string, unknown>> {
+  const appUrl = process.env.DATABASE_APP_URL;
+  const adminUrl = process.env.DATABASE_ADMIN_URL;
+  const twoRoles = !!appUrl && !!adminUrl && new URL(appUrl).username !== new URL(adminUrl).username;
+  __resetCookies();
+  if (!twoRoles) {
+    console.warn("verifySignedOut: one database role configured; the check ran as the owner");
+    return (await verifyGet(get(`/api/v1/public/certificates/${code}`), params({ code }))).json();
+  }
+  type Disconnectable = { $disconnect(): Promise<void> } | undefined;
+  const globals = globalThis as unknown as { prisma?: { $disconnect(): Promise<void> } };
+  const ownerClient = globals.prisma;
+  const ownerUrl = process.env.DATABASE_URL;
+  globals.prisma = undefined;
+  process.env.DATABASE_URL = appUrl;
+  vi.resetModules();
+  try {
+    const fresh = await import("@/app/api/v1/public/certificates/[code]/route");
+    return await (await fresh.GET(get(`/api/v1/public/certificates/${code}`), params({ code }))).json();
+  } finally {
+    // The client the fresh module graph made, as the app role: closed, and the owner's put back.
+    await (globals.prisma as Disconnectable)?.$disconnect();
+    globals.prisma = ownerClient;
+    process.env.DATABASE_URL = ownerUrl;
+  }
+}
 
 const get = (path: string) => new Request(`http://localhost${path}`);
 const json = (path: string, body: unknown) => new Request(`http://localhost${path}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
@@ -346,12 +382,14 @@ describe("issuing", () => {
     expect((await sharedGet(get(`/api/v1/shared/certificates/${certA}`), params({ certificateId: certA }))).status).toBe(401);
 
     const code = (await db.issuedCertificate.findUniqueOrThrow({ where: { id: certA }, select: { code: true } })).code;
-    let check = await (await verifyGet(get(`/api/v1/public/certificates/${code}`), params({ code }))).json();
+    let check = await verifySignedOut(code);
     // The KIND'S label, not the template's filled title, which may carry the pupil's name.
     expect(check).toMatchObject({ valid: true, kind: "BONAFIDE", title: "Bonafide certificate", serial: "BC/2026–27/0001", schoolName: `ZZ Cert School ${STAMP}`, revokedAt: null });
     expect(Object.keys(check)).not.toContain("studentName");
     expect(JSON.stringify(check)).not.toContain("Aarav");
-    expect(await (await verifyGet(get("/api/v1/public/certificates/NOSUCHCODE"), params({ code: "NOSUCHCODE" }))).json()).toMatchObject({ valid: false, serial: null });
+    expect(await verifySignedOut("NOSUCHCODE")).toMatchObject({ valid: false, serial: null });
+    // In lower case with spaces, as a person types it off the paper.
+    expect(await verifySignedOut(` ${code.toLowerCase()} `)).toMatchObject({ valid: true, serial: "BC/2026–27/0001" });
 
     await as("TEACHER");
     expect((await revokePost(json(`/api/v1/office/certificates/${certA}/revoke`, { reason: "Wrong pupil" }), params({ certificateId: certA }))).status).toBe(403);
@@ -364,7 +402,7 @@ describe("issuing", () => {
     const again = await revokePost(json(`/api/v1/office/certificates/${certA}/revoke`, { reason: "Again" }), params({ certificateId: certA }));
     expect(again.status).toBe(200);
     expect((await again.json()).revokedReason).toBe("Wrong pupil");
-    check = await (await verifyGet(get(`/api/v1/public/certificates/${code}`), params({ code }))).json();
+    check = await verifySignedOut(code);
     expect(check.valid).toBe(false);
     expect(check.revokedAt).not.toBeNull();
     const audits = await db.auditLog.findMany({ where: { schoolId, action: { in: ["certificate.issue", "certificate.revoke", "certificate.template"] } }, select: { action: true, meta: true } });

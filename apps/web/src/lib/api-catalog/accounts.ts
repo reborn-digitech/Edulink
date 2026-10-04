@@ -9,7 +9,8 @@ import { OFFICE_FIXTURE } from "./college-office-fixture";
  * principal's approval above the office's limit, the ledger net of the
  * scholarship receivable, no-dues, leaving, mess and route fees, the
  * overview, the auditor's schedules and the finance table. A college's doors
- * answer 404 at a school. No money moves (decision 0003).
+ * answer 403 MODULE_OFF at a school, the module gate's answer (assertCollege,
+ * W-17). No money moves (decision 0003).
  */
 export const ACCOUNTS_DESK: Endpoint[] = [
   { method: "GET", path: "/api/v1/accounts/overview", summary: "Collection against demand by programme and term, defaulters, the scholarship receivable by age, income and expense", access: ["ACCOUNTS", "ADMIN", "PRINCIPAL"], response: c.accountsOverviewSchema },

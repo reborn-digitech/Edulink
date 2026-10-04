@@ -28,6 +28,7 @@ import { normaliseLocale } from "./i18n/locales";
 import { readJson } from "./json";
 import type { ActiveContext } from "./session";
 import { syncGradeLevel } from "./grade-level";
+import { closeLeavingRecord } from "./school-record";
 
 /**
  * Admissions: the whole road from a family's form to a seat on the roll.
@@ -750,12 +751,13 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
     // In the applicant's own language when they have an account that says, else the school's.
     const applicant = a.applicantUserId ? await db.user.findUnique({ where: { id: a.applicantUserId }, select: { prefs: true } }) : null;
     const prefs = applicant ? readJson<{ locale?: string }>(applicant.prefs, {}) : {};
-    const w = wordsFor(normaliseLocale(prefs.locale ?? school.locale) as "en" | "hi" | "mr");
+    const locale = normaliseLocale(prefs.locale ?? school.locale);
+    const w = wordsFor(locale);
     const vars = { name: a.childName, school: school.name, grade: a.gradeApplied };
     const lines = [w("admissions.emailBody", vars)];
     if (input.expiresOn) lines.push(w("admissions.respondBy", { date: input.expiresOn }));
     lines.push(a.applicantUserId ? w("admissions.emailOpen") : w("admissions.emailContactOffice"));
-    await sendAdmissionOffer({ to: a.applicantEmail, subject: w("admissions.emailSubject", vars), heading: w("admissions.emailHeading", vars), lines, cta: a.applicantUserId ? { label: w("admissions.emailCta"), path: `/parent/applications/${applicationId}` } : null }).catch((error) => console.error("[admissions] offer email failed", error));
+    await sendAdmissionOffer({ to: a.applicantEmail, subject: w("admissions.emailSubject", vars), heading: w("admissions.emailHeading", vars), lines, cta: a.applicantUserId ? { label: w("admissions.emailCta"), path: `/parent/applications/${applicationId}` } : null, locale }).catch((error) => console.error("[admissions] offer email failed", error));
   }
   return applicationView(ctx, applicationId);
 }
@@ -885,9 +887,9 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
       : await tx.user.create({ data: { name: a.childName, preferredName: null, email: `${handle}@${HANDLE_DOMAIN}`, passwordHash: null, birthdate, isMinor: age === null ? true : age < 18, penNumber: a.penNumber, prefs: writeJson({ theme: "system", locale }) }, select: { id: true } });
     // A pupil who once left this school and comes back through the PEN takes their old membership up again: one row per person and school, as the schema says.
     const prior = existingUserId ? await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: existingUserId, schoolId: caller.schoolId, role: "STUDENT" } }, select: { id: true } }) : null;
-    // Back on the roll: the departure record and its scheduled leaving go, as the join-code path does, so no certificate prints the old leaving date.
+    // Back on the roll: the departure record is closed (kept on the TC register, LIFECYCLE-7) and its scheduled leaving goes, as the join-code path does, so no certificate prints the old leaving date.
     if (prior) {
-      await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId: caller.schoolId } });
+      await closeLeavingRecord(tx, caller.schoolId, prior.id, "READMITTED");
       await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId: caller.schoolId } });
       // Back on the roll, so no longer an alumnus here (alumni-membership.ts).
       if (existingUserId) await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], existingUserId, caller.schoolId);

@@ -243,3 +243,25 @@ describe("the month's file and the days it counts", () => {
     await db.holiday.deleteMany({ where: { schoolId, name: "ZZ Closing Day" } });
   });
 });
+
+describe("every member of staff checks in (campaign 2026-10-04, G-2)", () => {
+  it("a college's faculty member and the bus driver check in and read their own days; the principal's 'faculty present' no longer waits on the office", async () => {
+    const mk = (who: string) => db.user.create({ data: { name: `ZZ Satt ${who}`, email: `zz-satt-${who.toLowerCase().replace(/ /g, "-")}-${STAMP}@test.invalid` }, select: { id: true } });
+    const [faculty, driver] = await Promise.all([mk("Faculty"), mk("Driver")]);
+    await db.membership.createMany({ data: [{ userId: faculty.id, schoolId, role: "FACULTY", status: "ACTIVE" }, { userId: driver.id, schoolId, role: "DRIVER", status: "ACTIVE" }] });
+    try {
+      for (const [userId, role] of [[faculty.id, "FACULTY"], [driver.id, "DRIVER"]] as const) {
+        __resetCookies();
+        await createSession(userId, { schoolId, role });
+        const res = await checkInPost();
+        expect({ role, status: res.status }).toEqual({ role, status: 200 });
+        const me = await meGet(get("/api/v1/staff/attendance/me"));
+        expect({ role, status: me.status }).toEqual({ role, status: 200 });
+        const body = (await me.json()) as { todayStatus: string | null };
+        expect(["PRESENT", "LATE"]).toContain(body.todayStatus);
+      }
+    } finally {
+      await db.session.deleteMany({ where: { userId: { in: [faculty.id, driver.id] } } });
+    }
+  });
+});

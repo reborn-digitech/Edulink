@@ -11,6 +11,7 @@ import type { GatewayAccount } from "./gateway";
 import type { ActiveContext } from "./session";
 import type { FeeConcessionKind, FeeHeadKind } from "./constants";
 import { FEE_HEAD_KINDS } from "./constants";
+import { isCollegeKind } from "./institution";
 
 /**
  * Fees: what a school asks its families for.
@@ -608,6 +609,11 @@ export async function grantConcession(
   input: { studentMembershipId: string; academicYearId?: string; headId: string | null; kind: FeeConcessionKind; value: number; reason: string },
 ): Promise<string> {
   const caller = office(ctx);
+  // A college's concessions go through accounts/concessions (college-fees.ts), which records the
+  // sanctioning authority and holds one above the office's limit for the principal. This school
+  // door has neither, so at a college it would grant any concession at once (campaign S-1).
+  const kind = (await db.school.findUnique({ where: { id: caller.schoolId }, select: { kind: true } }))?.kind;
+  if (isCollegeKind(kind)) throw new AccessError("fees.refuseCollegeConcession");
   const pupil = await db.membership.findFirst({ where: { id: input.studentMembershipId, schoolId: caller.schoolId, role: "STUDENT" }, select: { id: true } });
   if (!pupil) throw new AccessError("fees.notFound", "NOT_FOUND");
   const year = input.academicYearId

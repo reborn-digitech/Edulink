@@ -18,6 +18,7 @@ import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 import { syncGradeLevel } from "./grade-level";
+import { closeLeavingRecord } from "./school-record";
 
 /**
  * Admissions intake: a school's list of new pupils becomes pupils.
@@ -320,9 +321,9 @@ export async function admitPupils(
             const tx = rawTx as typeof db;
             // A pupil who once left this school takes their old membership up again: one row per person and school.
             const prior = await tx.membership.findUnique({ where: { userId_schoolId_role: { userId: previous.userId, schoolId, role: "STUDENT" } }, select: { id: true } });
-            // Back on the roll: the departure record and its scheduled leaving go, so no certificate prints the old leaving date.
+            // Back on the roll: the departure record is closed (kept on the TC register, LIFECYCLE-7) and its scheduled leaving goes, so no certificate prints the old leaving date.
             if (prior) {
-              await tx.schoolRecord.deleteMany({ where: { studentMembershipId: prior.id, schoolId } });
+              await closeLeavingRecord(tx, schoolId, prior.id, "READMITTED");
               await tx.scheduledDeparture.deleteMany({ where: { membershipId: prior.id, schoolId } });
               // Back on the roll, so no longer an alumnus here (alumni-membership.ts).
               await closeAlumnus(tx as unknown as Parameters<typeof closeAlumnus>[0], previous.userId, schoolId);

@@ -15,7 +15,8 @@ import type { Endpoint } from "./types";
  * tests/inventory.test.ts instead.
  */
 export const ZZ_ASSET_TAG = "ZZ-A-0001";
-const STAFF: c.RoleCode[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN"];
+/** Every member of staff, a college's six included (lib/staff-records.ts SCHOOL_STAFF_ROLES; campaign 2026-10-04, G-1): their own doors only. */
+const STAFF: c.RoleCode[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", ...c.COLLEGE_ROLES];
 const M = { module: "INVENTORY" as const };
 
 export const INVENTORY: Endpoint[] = [

@@ -4,6 +4,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { AccessError, assertGuardianAccess } from "./tenancy";
+import { parentMaySee } from "./student-consent";
 import { forSchool } from "./tenant-context";
 import { currentAcademicYear } from "./academic-year";
 import { isDateKey, todayKey } from "./dates";
@@ -260,7 +261,7 @@ async function tellFamilyReceived(schoolId: string, studentMembershipId: string,
     url: `/fees/receipts/${receiptId}`,
     meta: { paymentId, receiptId },
     text: { templateKey: "feeReceived", vars: { child: childName, amount: rupees(amountPaise), serial }, purpose: "fees:received" },
-  }));
+  }), "MONEY");
 }
 
 /** ₹1,250.50 for a notification body — the i18n money helper is client-side; this is the same output, server-side. */
@@ -586,7 +587,7 @@ export async function rejectClaim(ctx: ActiveContext, paymentId: string, reason:
     body: why,
     url: "/parent/fees",
     meta: { paymentId: p.id },
-  }));
+  }), "MONEY");
 }
 
 export type BankMatch = { row: number; utr: string; amountPaise: number | null; paymentId: string | null; pupilName: string | null; problem: "no-utr" | "no-amount" | "no-claim" | "amount-differs" | null };
@@ -704,7 +705,7 @@ export async function requestRefund(ctx: ActiveContext, input: { paymentId: stri
     bodyVars: { amount: rupees(input.amountPaise) },
     url: "/parent/fees",
     meta: { paymentId: p.id, refundId: refund.id },
-  }));
+  }), "MONEY");
   return { refundId: refund.id, status };
 }
 
@@ -761,7 +762,7 @@ export async function markRefundFailed(schoolId: string, gatewayRefundId: string
       bodyVars: { amount: rupees(done.refund.amountPaise) },
       url: "/parent/fees",
       meta: { paymentId: done.payment.id, refundId: done.refund.id },
-    })).catch(() => {});
+    }), "MONEY").catch(() => {});
   });
   return "refund-failed";
 }
@@ -823,7 +824,8 @@ export async function receiptFor(ctx: ActiveContext, receiptId: string): Promise
   let guardian = false;
   if (!office && ctx.role === "PARENT") {
     const link = await db.guardianship.findFirst({ where: { parentUserId: ctx.user.id, studentMembershipId: r.payment.studentMembershipId, status: "ACTIVE" }, select: { id: true } });
-    guardian = Boolean(link);
+    // An adult college student's receipts are theirs until they grant MONEY (campaign S-2).
+    guardian = Boolean(link) && (await parentMaySee(r.payment.studentMembershipId, "MONEY"));
   }
   if (!office && !guardian) return null;
   return {
@@ -864,8 +866,14 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
     include: { student: { include: { user: { select: { name: true, preferredName: true } }, school: { select: { id: true, name: true, timezone: true, feeUpiId: true, feeUpiPayee: true, feeBankNote: true } } } } },
     orderBy: { createdAt: "asc" },
   });
-  const children = links.filter((l) => !l.student.leftAt).map((l) => ({ studentMembershipId: l.studentMembershipId, name: l.student.user.preferredName ?? l.student.user.name, schoolId: l.student.school.id, schoolName: l.student.school.name }));
-  const link = links.find((l) => l.studentMembershipId === (childId ?? children[0]?.studentMembershipId));
+  // Only the children whose money this guardian may see: an adult at a college keeps their fees,
+  // receipts and payments to themself until they grant MONEY (student-consent.ts; campaign S-2).
+  // A child named who is not among them is refused as the ledger refuses it, never shown.
+  const visible: typeof links = [];
+  for (const l of links) if (await parentMaySee(l.studentMembershipId, "MONEY")) visible.push(l);
+  if (childId && !visible.some((l) => l.studentMembershipId === childId) && links.some((l) => l.studentMembershipId === childId)) throw new AccessError("consent.refuseNotGranted");
+  const children = visible.filter((l) => !l.student.leftAt).map((l) => ({ studentMembershipId: l.studentMembershipId, name: l.student.user.preferredName ?? l.student.user.name, schoolId: l.student.school.id, schoolName: l.student.school.name }));
+  const link = visible.find((l) => l.studentMembershipId === (childId ?? children[0]?.studentMembershipId));
   if (!link) return { children, child: null };
   const school = link.student.school;
   const schoolId = school.id;

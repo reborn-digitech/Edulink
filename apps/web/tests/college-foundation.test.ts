@@ -30,6 +30,8 @@ import { resolveContext } from "@/lib/resolve-context";
 import { actionKey } from "@/lib/safety-labels";
 import { NAV } from "@/lib/nav";
 import { GET as recruiterMeGet } from "@/app/api/v1/recruiter/me/route";
+import { GET as recruiterDrivesGet } from "@/app/api/v1/recruiter/drives/route";
+import { GET as recruiterCollegesGet } from "@/app/api/v1/recruiter/colleges/route";
 import { GET as feedGet } from "@/app/api/v1/shared/bulletin/route";
 
 const db = new PrismaClient();
@@ -199,6 +201,17 @@ describe("the recruiter", () => {
     // No school door: the feed is refused at the gate.
     await expect(gateRequest("GET /api/v1/shared/bulletin", { role: "RECRUITER", schoolId: null })).rejects.toBeInstanceOf(AccessError);
     await expect(gateRequest("GET /api/v1/me", { role: "RECRUITER", schoolId: null })).resolves.toBe("pass");
+    // Signed in at once, but nothing of a college's until the address is proved (campaign S-4).
+    const drives = await recruiterDrivesGet();
+    expect(drives.status).toBe(403);
+    expect(((await drives.json()) as { error: string }).error).toContain("Confirm your email");
+    expect((await recruiterCollegesGet()).status).toBe(403);
+    await db.user.update({ where: { id: made.userId }, data: { emailVerifiedAt: new Date() } });
+    expect((await recruiterDrivesGet()).status).toBe(200);
+    // Signed out, the recruiter's own door answers 401 like every other, so the phone signs out (campaign W-11).
+    __resetCookies();
+    __setHeaders({});
+    expect((await recruiterMeGet()).status).toBe(401);
   });
 
   it("is shut out everywhere once disabled", async () => {

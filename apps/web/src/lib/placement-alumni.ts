@@ -4,8 +4,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
-import { assertModuleOn, institutionKindOf, isModuleOn } from "./modules";
-import { isCollegeKind } from "./institution";
+import { assertCollege, assertModuleOn, isModuleOn } from "./modules";
 import { isHttpsUrl } from "./app-admin";
 import { todayKey } from "./dates";
 import { nameOf } from "./placement";
@@ -41,7 +40,7 @@ import type { ActiveContext } from "./session";
 async function alumnusAtCollege(ctx: ActiveContext) {
   if (ctx.role !== "ALUMNUS" || !ctx.schoolId || !ctx.membershipId) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "ALUMNI");
-  if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) throw new AccessError("placement.refuseNotCollege");
+  await assertCollege(ctx.schoolId, "placement.refuseNotCollege");
   const row = await db.membership.findFirst({ where: { id: ctx.membershipId, schoolId: ctx.schoolId, userId: ctx.user.id, role: "ALUMNUS", status: "ACTIVE", leftAt: null }, select: { id: true, joinedAt: true } });
   if (!row) throw new AccessError("access.wrongRoleForThisAction");
   const profile = await db.alumniProfile.findUnique({ where: { membershipId: row.id }, select: { mentor: true, mutedAt: true } });
@@ -53,7 +52,7 @@ async function officeOf(ctx: ActiveContext, write: boolean) {
   const allowed = write ? ["ADMIN"] : ["ADMIN", "PRINCIPAL", "TPO"];
   if (!ctx.schoolId || !ctx.role || !allowed.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "ALUMNI");
-  if (!isCollegeKind(await institutionKindOf(ctx.schoolId))) throw new AccessError("placement.refuseNotCollege");
+  await assertCollege(ctx.schoolId, "placement.refuseNotCollege");
   return { schoolId: ctx.schoolId, userId: ctx.user.id };
 }
 

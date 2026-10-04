@@ -476,6 +476,8 @@ export async function attendanceSheetData(ctx: ActiveContext, examRoomId: string
 /** Credits waiting for the Academic Bank, sent. The transport is a stub (ABC_STUB_SEND=1 marks SENT with a made-up reference); a student with no APAAR id FAILS. */
 export async function pushCredits(ctx: ActiveContext, termId?: string): Promise<ExamActionResult> {
   const cell = await cellOf(ctx);
+  // What was sent is checked before whether the bank is connected (W-12): a term that is not the college's is 404 either way.
+  if (termId && !(await db.academicTerm.findFirst({ where: { id: termId, schoolId: cell.schoolId }, select: { id: true } }))) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (process.env.ABC_STUB_SEND !== "1") throw new RuleRefusal("examCell.refuseAbcNotConnected", 409);
   const rows = await db.creditPush.findMany({ where: { schoolId: cell.schoolId, status: { in: ["PENDING", "FAILED"] }, ...(termId ? { termId } : {}) }, select: { id: true, studentMembershipId: true, apaarId: true } });
   const ids = await studentIdsOf(cell.schoolId, rows.map((r) => r.studentMembershipId));

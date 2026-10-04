@@ -35,7 +35,9 @@ export async function apiFailure(error: unknown, where: string): Promise<NextRes
   // A module the school has not switched on: 403, said as MODULE_OFF, naming the module in the reader's language.
   if (error instanceof ModuleOffError) {
     recordError(kindOfStatus(403));
-    return envelope({ error: t("modules.refuseOff", { module: t(MODULE_META[error.module].nameKey) }), code: "MODULE_OFF" }, 403);
+    // …or a college's door at a school (NotACollegeError), which says so in its own sentence.
+    const sentence = error.key === "modules.refuseOff" ? t("modules.refuseOff", { module: t(MODULE_META[error.module].nameKey) }) : t(error.key);
+    return envelope({ error: sentence, code: "MODULE_OFF" }, 403);
   }
   if (error instanceof AccessError) {
     const status = error.code === "UNAUTHENTICATED" ? 401 : error.code === "NOT_FOUND" ? 404 : 403;
@@ -117,6 +119,19 @@ export async function budget(bucket: string, limit: number, windowMs: number): P
 export const PDF_BUDGET = { limit: 120, windowMs: 60 * 60 * 1000 };
 /** Class bundles are a page per pupil; a handful an hour is a whole school's worth. */
 export const PDF_BUNDLE_BUDGET = { limit: 20, windowMs: 60 * 60 * 1000 };
+/**
+ * The college batch's heavier doors (campaign S-18), per person an hour. An
+ * export or a report sheet: a desk downloads a few a day. A write that tells
+ * many people (a requirement to thirty colleges, a colleague's invitation): a
+ * recruiter's working day is a handful. Round results and offers, which tell
+ * each student: a drive day's worth. A read that recomputes across a roll
+ * (eligibility for every drive, no-dues for every student, the predictor,
+ * a filing cut from live rows): a page opened every half-minute.
+ */
+export const EXPORT_BUDGET = { limit: 60, windowMs: 60 * 60 * 1000 };
+export const FANOUT_BUDGET = { limit: 30, windowMs: 60 * 60 * 1000 };
+export const NOTICE_WRITE_BUDGET = { limit: 240, windowMs: 60 * 60 * 1000 };
+export const HEAVY_READ_BUDGET = { limit: 120, windowMs: 60 * 60 * 1000 };
 
 export class BodyTooLarge extends Error {
   constructor() {

@@ -184,7 +184,10 @@ type College = { id: string; name: string; code: string };
 
 async function buildCollege(): Promise<College> {
   const existing = await db.school.findUnique({ where: { slug: SLUG }, select: { id: true, name: true, code: true } });
-  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day("2028-12-31"), nirfCategory: "COLLEGE" };
+  // A demo tenant is not a test fixture (B-28, 4 Oct 2026): Sunrise and Saraswati Vidya Mandir never were, and the
+  // demo college as one was hidden from the operator's /root/colleges while the recruiter's form offered it. The ZZ
+  // tenants are the fixtures; the demo ones are what a prospect is shown, so they list like a real customer.
+  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day("2028-12-31"), nirfCategory: "COLLEGE", isTestFixture: false };
   if (existing) {
     await db.school.update({ where: { id: existing.id }, data: profile });
     return existing;
@@ -193,7 +196,6 @@ async function buildCollege(): Promise<College> {
     data: {
       name: "Saraswati Arts and Science College",
       slug: SLUG,
-      isTestFixture: true,
       code: schoolCode("Saraswati Arts and Science College"),
       city: "Pune",
       region: "Maharashtra",
@@ -573,7 +575,7 @@ async function buildPlacement(college: College, people: People, academics: Acade
     update: {},
     select: { id: true },
   });
-  await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: company.id, userId: people.recruiterUserId } }, create: { companyId: company.id, userId: people.recruiterUserId }, update: { removedAt: null } });
+  await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: company.id, userId: people.recruiterUserId } }, create: { companyId: company.id, userId: people.recruiterUserId, acceptedAt: new Date() }, update: { removedAt: null, acceptedAt: new Date() } });
   await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: s, companyId: company.id } }, create: { schoolId: s, companyId: company.id, firstVisitYear: 2025 }, update: {} });
 
   // This season: the recruiter's requirement to the college, and the OPEN drive the TPO made of it.

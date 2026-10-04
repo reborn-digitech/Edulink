@@ -38,6 +38,7 @@ export function isSendableEndpoint(endpoint: string): boolean {
 }
 import type { NotificationKind } from "./constants";
 import type { MessageTemplateKey } from "./message-templates";
+import { parentMaySee, type StudentConsentGrant } from "./student-consent";
 
 /**
  * Notification delivery: in-app row + Web Push, honouring per-user channel
@@ -180,11 +181,22 @@ export async function notify(input: NotifyInput): Promise<void> {
  */
 type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never;
 
-/** Fan a notification out to every active guardian of a student. */
+/**
+ * Fan a notification out to every active guardian of a student.
+ *
+ * `grant`, when the notice is about something an adult college student keeps
+ * to themself until they grant it (student-consent.ts) — money, results,
+ * attendance: the guardians are told only while `parentMaySee` says so. A
+ * receipt's amount by text to a guardian the student never let see their fees
+ * was the leak (campaign S-2). A minor's guardian, and every guardian at a
+ * school, is told as before.
+ */
 export async function notifyGuardians(
   studentMembershipId: string,
   build: (childName: string) => DistributiveOmit<NotifyInput, "userId">,
+  grant?: StudentConsentGrant,
 ): Promise<void> {
+  if (grant && !(await parentMaySee(studentMembershipId, grant))) return;
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId, status: "ACTIVE" },
     include: {

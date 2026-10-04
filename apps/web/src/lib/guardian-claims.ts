@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { sendParentClaimNotice } from "./email";
+import { localeForUser, sendParentClaimNotice } from "./email";
 import { AccessError } from "./tenancy";
 import { forSchool, forUser } from "./tenant-context";
 import { syncStandinGuardian } from "./standin-guardian";
@@ -331,7 +331,7 @@ export async function decideClaim(session: ActiveContext, claimId: string, decis
       url: "/parent",
     }).catch((error) => console.error("[decideClaim] notice failed", error));
     if (claim.claimant.email) {
-      await sendParentClaimNotice(claim.claimant.email, childName, claim.school.name, `${APP_URL}/parent`).catch((error) => console.error("[decideClaim] email failed", error));
+      await sendParentClaimNotice(claim.claimant.email, childName, claim.school.name, `${APP_URL}/parent`, await localeForUser(claim.claimantUserId)).catch((error) => console.error("[decideClaim] email failed", error));
     }
   });
 }

@@ -129,7 +129,7 @@ export async function placementSummary(schoolId: string): Promise<{ on: boolean;
 const seasonView = (s: { batchYear: number; placed: number; higherStudies: number; entrepreneurs: number; medianSalaryRupees: number | null; computedAt: Date }) => ({ batchYear: s.batchYear, placed: s.placed, higherStudies: s.higherStudies, entrepreneurs: s.entrepreneurs, medianSalaryRupees: s.medianSalaryRupees, computedAt: s.computedAt.toISOString() });
 
 export async function placementAnalytics(ctx: ActiveContext, batchYear?: number) {
-  const cell = await cellOf(ctx, "read");
+  const cell = await cellOf(ctx, "analytics");
   const tables = await placementTables(cell.schoolId, 4, batchYear);
   const seasons = await db.placementSeason.findMany({ where: { schoolId: cell.schoolId }, orderBy: { batchYear: "desc" } });
   return { tables, seasons: seasons.map(seasonView) };
@@ -175,7 +175,7 @@ const csv = (rows: (string | number | null)[][]) => `${rows.map((r) => r.map((c)
  * companies with their offers), and every offer of a batch.
  */
 export async function placementExport(ctx: ActiveContext, kind: "NBA" | "NIRF" | "OFFERS", batchYear?: number): Promise<{ filename: string; csv: string }> {
-  const cell = await cellOf(ctx, "read");
+  const cell = await cellOf(ctx, "analytics");
   const tables = await placementTables(cell.schoolId, 3, batchYear);
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "placement.export", targetType: "School", targetId: cell.schoolId, meta: { kind, batchYear: tables[0]?.batchYear } });
   if (kind === "NBA") {

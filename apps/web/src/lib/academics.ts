@@ -34,6 +34,7 @@ import type {
   timetableSlotSaveSchema,
 } from "@edulink/contracts";
 import { db } from "./db";
+import { syncGradeLevel } from "./grade-level";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
@@ -514,6 +515,8 @@ export async function saveSeat(ctx: ActiveContext, input: z.infer<typeof seatSav
         update: { status: "ACTIVE", removedAt: null, rollNumber: input.rollNumber },
       });
     }
+    // Membership.gradeLevel is the live class's grade, written by one helper from every path that moves an enrolment (LIFECYCLE-5).
+    if (division || oldDivision) await syncGradeLevel(tx, [input.studentMembershipId]);
   });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "academics.seat.save", targetType: "Membership", targetId: input.studentMembershipId, meta: { programmeId: input.programmeId, semester: input.semester, divisionId: input.divisionId, roll: input.rollNumber } });
   return { changed: true };
@@ -633,8 +636,12 @@ export async function saveOffering(ctx: ActiveContext, input: z.infer<typeof off
   let before: { facultyMembershipId: string | null } | null = null;
   const row = await refuseTaken(async () => {
     if (input.id) {
-      before = await db.courseOffering.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { facultyMembershipId: true } });
-      if (!before) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+      const existing = await db.courseOffering.findFirst({ where: { id: input.id, schoolId: c.schoolId }, select: { facultyMembershipId: true, course: { select: { scheme: { select: { programme: { select: { departmentId: true } } } } } } } });
+      if (!existing) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+      // The offering being rewritten must be the HOD's department's too, not only the course it is
+      // pointed at: otherwise another department's offering, its marks and lectures, change hands (campaign S-7).
+      if (c.role === "HOD" && (await hodDepartment(c))?.id !== existing.course.scheme.programme.departmentId) throw new AccessError("academics.refuseOtherDepartment");
+      before = { facultyMembershipId: existing.facultyMembershipId };
       if (await db.internalLock.findUnique({ where: { offeringId: input.id }, select: { id: true } })) throw new RuleRefusal("academics.refuseLocked", 409);
       return db.courseOffering.update({ where: { id: input.id }, data, select: { id: true } });
     }

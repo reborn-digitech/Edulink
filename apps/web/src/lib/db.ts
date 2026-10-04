@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import {
+  inPlacementDirectory,
   isInTenantTransaction,
   markInTransaction,
   tenantOverride,
@@ -95,6 +96,9 @@ function createClient() {
             // absent for the same reason as the two above: the clause compares
             // against '1', so anything else keeps it shut.
             await tx.$executeRaw`SELECT set_config('app.is_superuser', ${isSuperuser ? "1" : "0"}, true)`;
+            // Only inside forPlacementDirectory: the one clause that reads it is
+            // the School policy's placement-directory arm (campaign S-13).
+            if (inPlacementDirectory()) await tx.$executeRaw`SELECT set_config('app.directory', '1', true)`;
             // Re-issued ON the transaction client, not merely alongside it.
             // `query(args)` here would already be in flight on whatever
             // connection the pool handed it — a different one — so the setting
@@ -131,6 +135,9 @@ function createClient() {
           }
           if (isSuperuser) {
             await tx.$executeRaw`SELECT set_config('app.is_superuser', '1', true)`;
+          }
+          if (inPlacementDirectory()) {
+            await tx.$executeRaw`SELECT set_config('app.directory', '1', true)`;
           }
           return markInTransaction(() => work(tx));
         }, opts);

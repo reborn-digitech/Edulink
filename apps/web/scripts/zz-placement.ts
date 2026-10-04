@@ -116,7 +116,7 @@ export async function buildPlacement(db: PrismaClient): Promise<{ drives: number
     create: { id: F.company, name: "ZZ Zeta Analytics", identifier: gstin("27AAZCZ0001Z1Z"), sectors: JSON.stringify(["IT_SOFTWARE", "CONSULTING"]), pointOfContact: "ZZ Nikhil Rao, talent@zeta.zz.test", createdByUserId: recruiter.id, verifiedAt: new Date(), verifiedByUserId: tpo.userId },
     update: { verifiedAt: new Date(), verifiedByUserId: tpo.userId },
   });
-  await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: zeta.id, userId: recruiter.id } }, create: { companyId: zeta.id, userId: recruiter.id }, update: { removedAt: null } });
+  await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: zeta.id, userId: recruiter.id } }, create: { companyId: zeta.id, userId: recruiter.id, acceptedAt: new Date() }, update: { removedAt: null, acceptedAt: new Date() } });
   await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId, companyId: zeta.id } }, create: { schoolId, companyId: zeta.id, firstVisitYear: 2025 }, update: { firstVisitYear: 2025 } });
   const sahyadri = await db.company.upsert({
     where: { identifier: "U29100MH2015PTC000001" },

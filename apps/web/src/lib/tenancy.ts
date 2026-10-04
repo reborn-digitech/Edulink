@@ -5,7 +5,7 @@ import { db } from "./db";
 import { getSession, type ActiveContext } from "./session";
 import { isLimitedRole, isTeachingRole, type Role } from "./constants";
 import { isCollegeKind, type StudentConsentGrant } from "@edulink/contracts";
-import { parentMaySee } from "./student-consent";
+import { isMinorToday, parentMaySee } from "./student-consent";
 
 /**
  * The authorization chokepoint.
@@ -46,7 +46,8 @@ export async function requireUser(): Promise<ActiveContext> {
  */
 export async function requireApiUser(): Promise<ActiveContext> {
   const session = await getSession();
-  if (!session) throw new AccessError("access.pleaseLogInAgain");
+  // UNAUTHENTICATED, as every other door says it (campaign W-11): the phone signs out on a 401, never on a 403.
+  if (!session) throw new AccessError("access.pleaseLogInAgain", "UNAUTHENTICATED");
   return session;
 }
 
@@ -288,7 +289,7 @@ export async function assertGuardianAccess(parentUserId: string, studentMembersh
   });
 
   if (!link) throw new AccessError("access.notYourChild", "NOT_FOUND");
-  if (isCollegeKind(link.student.school.kind) && !link.student.user.isMinor) {
+  if (isCollegeKind(link.student.school.kind) && !isMinorToday(link.student.user, link.student.school.timezone)) {
     if (!grant || !(await parentMaySee(studentMembershipId, grant))) throw new AccessError("consent.refuseNotGranted");
   }
   return link;

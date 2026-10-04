@@ -799,7 +799,8 @@ const recruiterBound = (companyRef: string) => `EXISTS (
              SELECT 1 FROM "CompanyRecruiter" cr
               WHERE cr."companyId" = ${companyRef}
                 AND cr."userId" = current_setting('app.user_id', true)
-                AND cr."removedAt" IS NULL)`;
+                AND cr."removedAt" IS NULL
+                AND cr."acceptedAt" IS NOT NULL)`;
 const liveForRecruiter = (driveRef: string) => `${driveRef}."status" IN ('OPEN', 'SHORTLISTING', 'ROUNDS', 'OFFERS')
               AND ${recruiterBound(`${driveRef}."companyId"`)}`;
 const consentedToLiveDrive = (driveIdRef: string, membershipRef: string) => `EXISTS (
@@ -811,11 +812,18 @@ const consentedToLiveDrive = (driveIdRef: string, membershipRef: string) => `EXI
               AND a."withdrawnAt" IS NULL
               AND ${liveForRecruiter("d")})`;
 const tenantIds = `string_to_array(current_setting('app.school_ids', true), ',')`;
+// A guest reads the host's results and offers for ITS applicant to a POOLED drive it is a guest of
+// (campaign S-15): the application row alone is any school member's to write, so without the
+// drive's own pool naming the reader's school a forged row named another college's drive and
+// student and read their offers.
 const guestOwnApplicant = (table: string) => `EXISTS (
            SELECT 1 FROM "DriveApplication" ga
+             JOIN "Drive" gd ON gd."id" = ga."driveId"
             WHERE ga."driveId" = "${table}"."driveId"
               AND ga."studentMembershipId" = "${table}"."studentMembershipId"
-              AND ga."schoolId" = ANY (${tenantIds}))`;
+              AND ga."schoolId" = ANY (${tenantIds})
+              AND gd."kind" = 'POOLED'
+              AND jsonb_exists(gd."poolSchoolIds"::jsonb, ga."schoolId"))`;
 
 const PLACEMENT_READABLE: Record<string, string> = {
   Drive: `(${mine}
@@ -829,10 +837,12 @@ const PLACEMENT_READABLE: Record<string, string> = {
             WHERE d."id" = "DriveApplication"."driveId"
               AND ${liveForRecruiter("d")}))
           OR ("consentAt" IS NOT NULL
+              AND "withdrawnAt" IS NULL
               AND EXISTS (
                SELECT 1 FROM "Drive" hd
                 WHERE hd."id" = "DriveApplication"."driveId"
                   AND hd."kind" = 'POOLED'
+                  AND hd."status" <> 'CLOSED'
                   AND hd."schoolId" = ANY (${tenantIds})))`,
   PlacementProfile: `(${mine}
           AND EXISTS (
@@ -857,7 +867,10 @@ const PLACEMENT_READABLE: Record<string, string> = {
   Offer: `(${mine}
           AND ${consentedToLiveDrive(`"Offer"."driveId"`, `"Offer"."studentMembershipId"`)})
           OR ${guestOwnApplicant("Offer")}`,
+  // Only inside forPlacementDirectory (src/lib/tenant-context.ts), whose reads select a name
+  // and a town: the policy cannot narrow columns, so it is narrowed to them (campaign S-13).
   School: `${mine}
+          AND current_setting('app.directory', true) = '1'
           AND "kind" IN ('COLLEGE', 'AUTONOMOUS_COLLEGE')
           AND "removedAt" IS NULL
           AND EXISTS (
@@ -945,6 +958,11 @@ const CODE_READABLE: Record<string, string> = {
   // An expert accepting an invitation has no school and no membership; the
   // token is the only thing they hold. Same read-only bootstrap as Invite.
   ExpertInvite: "tokenHash",
+  // The code printed on a certificate, checked by anyone holding the paper —
+  // a landlord, a bank, another school — signed out. Equality on a 50-bit code
+  // the caller already holds, read-only, one row; verifyByCode binds it with
+  // forJoinCode and returns the kind, serial and school only, never the pupil.
+  IssuedCertificate: "code",
 };
 
 function models(): string[] {

@@ -170,6 +170,16 @@ export const placementRecordSchema = z.object({
   category: z.string().nullable(),
 });
 export type PlacementRecord = z.infer<typeof placementRecordSchema>;
+/**
+ * The record as SHARED on an application — with the drive's company, a pooled
+ * drive's host, and anyone reading the application — without gender and
+ * caste category: the cell reads those live for a gender-limited rule and
+ * the category-wise analytics, but the student never consented to hand them
+ * to a recruiter, and the CSV and the resume already leave them out
+ * (campaign S-3).
+ */
+export const sharedPlacementRecordSchema = placementRecordSchema.omit({ gender: true, category: true });
+export type SharedPlacementRecord = z.infer<typeof sharedPlacementRecordSchema>;
 
 /** A drive's eligibility rule. Empty lists mean "any". */
 export const eligibilityRuleSchema = z.object({
@@ -321,8 +331,8 @@ export const applicationViewSchema = z.object({
   status: applicationStatusSchema,
   /** The round the candidate is in, for ROUND. */
   round: z.number().int().nullable(),
-  /** The record the student consented to share, frozen at applying. */
-  record: placementRecordSchema,
+  /** The record the student consented to share, frozen at applying — never gender or category. */
+  record: sharedPlacementRecordSchema,
   skills: z.array(z.string()),
   results: z.array(roundResultViewSchema),
   offer: offerViewSchema.nullable(),
@@ -587,14 +597,33 @@ export const driveApplySchema = z.object({ consent: z.literal(true) });
 export const offerAnswerSchema = z.object({ accept: z.boolean() });
 
 /** GET /api/v1/family/placement?childId= — a guardian's view: offers and internships, with the PLACEMENT grant for an adult. */
-export const familyPlacementSchema = z.object({ name: z.string(), offers: z.array(offerViewSchema), internships: z.array(internshipViewSchema) });
+export const familyPlacementSchema = z.object({
+  name: z.string(),
+  offers: z.array(offerViewSchema),
+  internships: z.array(internshipViewSchema),
+  /** A minor's applications that wait for this guardian's consent before the company sees anything (campaign S-6). */
+  awaitingConsent: z.array(z.object({ applicationId: z.string(), driveTitle: z.string(), companyName: z.string() })).default([]),
+});
+/** POST /api/v1/family/placement/applications/{applicationId}/consent — a guardian's consent to a minor's drive application. */
+export const familyPlacementConsentSchema = z.object({ childId: z.string().max(40) });
 
 /* -------------------------------------------------------------------------- */
 /* The recruiter                                                               */
 /* -------------------------------------------------------------------------- */
 
-export const recruiterCompanySchema = z.object({ company: companyViewSchema.nullable(), colleagues: z.array(z.object({ name: z.string(), email: z.string() })) });
+/**
+ * The recruiter's company, the colleagues who accepted it, and the companies
+ * that invited this recruiter and wait for an answer (campaign S-16: a binding
+ * counts only once the invited recruiter accepts it).
+ */
+export const recruiterCompanySchema = z.object({
+  company: companyViewSchema.nullable(),
+  colleagues: z.array(z.object({ name: z.string(), email: z.string() })),
+  invitations: z.array(z.object({ companyId: z.string(), companyName: z.string() })).default([]),
+});
 export const recruiterColleagueSchema = z.object({ email: z.string().trim().email().max(200) });
+/** POST /api/v1/recruiter/company/invitations/{companyId} — accept or decline a colleague's invitation. */
+export const recruiterInvitationAnswerSchema = z.object({ accept: z.boolean() });
 export const recruiterCollegesSchema = z.object({ colleges: z.array(z.object({ id: z.string(), name: z.string(), city: z.string().nullable() })) });
 
 /** What a bound recruiter reads of a drive: the eligible count always, names only of those who consented, and nothing once it closes. */

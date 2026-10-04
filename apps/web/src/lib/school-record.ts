@@ -51,8 +51,11 @@ import type { ActiveContext } from "./session";
 type TenantTx = {
   schoolRecord: {
     create(args: unknown): Promise<{ id: string }>;
-    deleteMany(args: unknown): Promise<unknown>;
+    updateMany(args: unknown): Promise<{ count: number }>;
+    findFirst(args: unknown): Promise<{ serial: string | null } | null>;
   };
+  issuedCertificate: { findFirst(args: unknown): Promise<{ serial: string; number?: number } | null> };
+  $queryRaw(query: TemplateStringsArray, ...values: unknown[]): Promise<unknown>;
   membership: { update(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
   guardianship: { updateMany(args: unknown): Promise<unknown> };
@@ -174,16 +177,18 @@ export async function recordDeparture(
   }
   if (membership.leftAt) return { ok: false, errorKey: "refusal.alreadyLeft" };
 
-  if (leftAt < membership.joinedAt) {
-    // A certificate saying somebody left before they arrived is the kind of
-    // thing nobody notices until a receiving school asks about it.
-    return { ok: false, errorKey: "refusal.leaveBeforeJoin" };
-  }
-
   const school = await db.school.findUniqueOrThrow({
     where: { id: schoolId },
     select: { name: true, timezone: true },
   });
+  // Compared as days in the school's zone: leaving on the day one joined is a
+  // real (if short) stay, and a leaving day typed as a date arrives at noon UTC
+  // while the joining is an instant that afternoon.
+  if (dateKeyInZone(leftAt, school.timezone) < dateKeyInZone(membership.joinedAt, school.timezone)) {
+    // A certificate saying somebody left before they arrived is the kind of
+    // thing nobody notices until a receiving school asks about it.
+    return { ok: false, errorKey: "refusal.leaveBeforeJoin" };
+  }
   // The leaving DAY is the instant read in the school's zone: a departure
   // recorded at 21:00 UTC is the next day in Kolkata, and that is the day
   // the certificate prints and the register stops at.
@@ -214,7 +219,7 @@ export async function recordDeparture(
       ? `${klass.name} ${klass.section}`
       : klass.name
     : null;
-  const serial = await nextSerial(schoolId, leftAt);
+  const serialYearName = (await serialYear(schoolId, leftAt)).name;
 
   // `$tenantTransaction`, never `$transaction`. The plain form opens a
   // transaction that nothing has bound `app.school_ids` on, so every statement
@@ -222,11 +227,15 @@ export async function recordDeparture(
   // as zero rows rather than an error. See db.ts.
   const record = await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
-    // A certificate from an earlier stay — a pupil who left, came back and is
-    // leaving again — is replaced, not tripped over: one per membership, and
-    // this one covers the whole stay (joinedAt is the first day, the counts
-    // are cumulative).
-    await t.schoolRecord.deleteMany({ where: { studentMembershipId: membership.id, schoolId } });
+    // A live record from an earlier stay — one written before readmission
+    // closed records — is closed, not deleted: its serial stays on the
+    // register (LIFECYCLE-7). This one covers the whole stay (joinedAt is the
+    // first day, the counts are cumulative).
+    await closeLeavingRecord(t, schoolId, membership.id, "RERECORDED");
+    // The number comes from the one TC register, under its lock (LIFECYCLE-6):
+    // the TC certificate already issued for this departure lends its serial,
+    // otherwise the next number of the year across both papers.
+    const serial = await registerSerialFor(t, schoolId, membership.id, serialYearName);
     const created = await t.schoolRecord.create({
       data: {
         schoolId,
@@ -437,7 +446,12 @@ export async function runDueDepartures(now: Date = new Date(), scope: { schoolId
   perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }>;
 }> {
   // A test passes its own schools: with a far-future clock and no scope the
-  // job once executed the demo schools' scheduled leavers (3 Oct 2026).
+  // job once executed the demo schools' scheduled leavers (3 Oct 2026). Now
+  // refused, as the retention sweep refuses one (LIFECYCLE-10): a clock more
+  // than a day ahead runs only on the schools it names.
+  if (!scope.schoolIds && now.getTime() - Date.now() > 86_400_000) {
+    throw new Error(`departures: refusing an unscoped run with a clock ${Math.round((now.getTime() - Date.now()) / 86_400_000)} days in the future`);
+  }
   const due = await db.scheduledDeparture.findMany({
     where: scope.schoolIds ? { schoolId: { in: scope.schoolIds } } : undefined,
     include: { school: { select: { id: true, timezone: true } } },
@@ -563,20 +577,77 @@ async function serialYear(schoolId: string, leftAt: Date): Promise<{ name: strin
 }
 
 /**
- * The school's own numbering: TC/<year name>/<n>, n counting from one each
- * year, per school. Read the highest issued and add one; the unique index on
- * (schoolId, serial) turns a race into a retry, not a duplicate.
+ * THE TC REGISTER (LIFECYCLE-6, 4 Oct 2026). The school's own numbering,
+ * TC/<year name>/<n> with n counting from one each year, is ONE series for
+ * the two papers a departure can carry: the leaving record written here and a
+ * certificate the office issues from a template whose prefix is TC
+ * (certificates.ts). Two counters, one per table, once printed
+ * TC/2027–28/0001 on two different pupils' papers.
+ *
+ * WHY THE RECORD AND THE CERTIFICATE SHARE A NUMBER rather than each taking
+ * its own: a TC number names a departure, and the two papers are that
+ * departure written twice (the record's own document and the template's).
+ * So the TC certificate issued to a pupil who has a leaving record prints the
+ * record's serial, and a record written after a TC certificate was issued
+ * takes the certificate's; only a paper with no partner draws a fresh number.
+ * Numbers are drawn under one advisory lock per school, so the record and the
+ * certificate cannot take the same number at once. `data:audit`'s
+ * tc-register check holds it: no serial on papers of two pupils, numbers 1..n.
  */
+export async function lockTcRegister(t: { $queryRaw(query: TemplateStringsArray, ...values: unknown[]): Promise<unknown> }, schoolId: string): Promise<void> {
+  await t.$queryRaw`SELECT 1 FROM pg_advisory_xact_lock(hashtext(${`tc-register:${schoolId}`}))`;
+}
+
+/** The highest number the register holds under `prefix` ("TC/2026–27/"), across the leaving records and the issued certificates. */
+export async function registerMax(t: Pick<TenantTx, "schoolRecord" | "issuedCertificate"> | typeof db, schoolId: string, prefix: string): Promise<number> {
+  const c = t as Pick<TenantTx, "schoolRecord" | "issuedCertificate">;
+  const [record, certificate] = await Promise.all([
+    c.schoolRecord.findFirst({ where: { schoolId, serial: { startsWith: prefix } }, orderBy: { serial: "desc" }, select: { serial: true } }),
+    c.issuedCertificate.findFirst({ where: { schoolId, serial: { startsWith: prefix } }, orderBy: { serial: "desc" }, select: { serial: true } }),
+  ]);
+  const n = (serial: string | null | undefined) => (serial ? Number(serial.slice(prefix.length)) || 0 : 0);
+  return Math.max(n(record?.serial), n(certificate?.serial));
+}
+
+/** The serial a new leaving record takes, inside the caller's transaction: the departure's live TC certificate's, else the next free number. */
+async function registerSerialFor(t: TenantTx, schoolId: string, membershipId: string, yearName: string): Promise<string> {
+  await lockTcRegister(t, schoolId);
+  const cert = await t.issuedCertificate.findFirst({
+    where: { schoolId, studentMembershipId: membershipId, kind: "TC", revokedAt: null, serial: { startsWith: "TC/" } },
+    orderBy: { issuedAt: "desc" },
+    select: { serial: true },
+  });
+  if (cert && !(await t.schoolRecord.findFirst({ where: { schoolId, serial: cert.serial }, select: { serial: true } }))) return cert.serial;
+  const prefix = `TC/${yearName}/`;
+  return `${prefix}${String((await registerMax(t, schoolId, prefix)) + 1).padStart(4, "0")}`;
+}
+
+/**
+ * Closes a membership's live leaving record instead of deleting it
+ * (LIFECYCLE-7): readmission, an undone departure and a departure recorded
+ * again all keep the serial on the register. The closed row lets go of the
+ * membership, so the next departure writes a new live one and no certificate
+ * or guardian reads the old leaving day.
+ */
+export async function closeLeavingRecord(
+  t: { schoolRecord: { updateMany(args: unknown): Promise<{ count: number }> } },
+  schoolId: string,
+  membershipId: string,
+  reason: "READMITTED" | "UNDONE" | "RERECORDED",
+  at: Date = new Date(),
+): Promise<number> {
+  const closed = await t.schoolRecord.updateMany({
+    where: { schoolId, studentMembershipId: membershipId },
+    data: { studentMembershipId: null, formerMembershipId: membershipId, supersededAt: at, supersededReason: reason },
+  });
+  return closed.count;
+}
+
+/** The next number of a year, outside a transaction (the legacy numbering's fallback). */
 async function nextSerial(schoolId: string, leftAt: Date): Promise<string> {
   const { name } = await serialYear(schoolId, leftAt);
   const prefix = `TC/${name}/`;
-  const last = await db.schoolRecord.findFirst({
-    where: { schoolId, serial: { startsWith: prefix } },
-    orderBy: { serial: "desc" },
-    select: { serial: true },
-  });
-  const n = last?.serial ? Number(last.serial.slice(prefix.length)) + 1 : 1;
-  return `${prefix}${String(n).padStart(4, "0")}`;
+  return `${prefix}${String((await registerMax(db, schoolId, prefix)) + 1).padStart(4, "0")}`;
 }
 
 /**
@@ -589,10 +660,10 @@ async function numberLegacyRows(schoolId: string, recordId: string, leftAt: Date
   const year = await serialYear(schoolId, leftAt);
   const prefix = `TC/${year.name}/`;
   const [last, unnumbered] = await Promise.all([
-    db.schoolRecord.findFirst({ where: { schoolId, serial: { startsWith: prefix } }, orderBy: { serial: "desc" }, select: { serial: true } }),
+    registerMax(db, schoolId, prefix),
     db.schoolRecord.findMany({ where: { schoolId, serial: null }, orderBy: [{ leftAt: "asc" }, { createdAt: "asc" }], select: { id: true, leftAt: true } }),
   ]);
-  let n = last?.serial ? Number(last.serial.slice(prefix.length)) : 0;
+  let n = last;
   let mine: string | null = null;
   for (const row of unnumbered) {
     const key = dateKeyInZone(row.leftAt, year.timezone);
@@ -663,7 +734,7 @@ export async function certificateFor(ctx: ActiveContext, recordId: string): Prom
   // what the school still holds. The family's reading changes nothing.
   if (asOffice && row.serial === null) {
     const m = await db.membership.findUnique({
-      where: { id: row.studentMembershipId },
+      where: { id: row.studentMembershipId ?? row.formerMembershipId ?? "" },
       select: { pupilRecord: { select: { admissionNumber: true } }, user: { select: { name: true, birthdate: true } } },
     });
     const serial = await numberLegacyRows(row.schoolId, row.id, row.leftAt);
@@ -763,7 +834,8 @@ export async function undoDeparture(
 
   await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
-    await t.schoolRecord.deleteMany({ where: { studentMembershipId: membership.id, schoolId } });
+    // Closed, not deleted: a serial the office may already have printed stays on the register (LIFECYCLE-7).
+    await closeLeavingRecord(t, schoolId, membership.id, "UNDONE");
     await t.membership.update({ where: { id: membership.id }, data: { leftAt: null } });
     // Back on the roll, so no longer an alumnus here.
     await closeAlumnus(t as unknown as Parameters<typeof closeAlumnus>[0], membership.userId, schoolId);
@@ -857,7 +929,8 @@ export async function recordsForStudentUser(
   studentUserId: string,
 ): Promise<SchoolRecordView[]> {
   const rows = await db.schoolRecord.findMany({
-    where: { studentUserId },
+    // Live records only: a closed one (an undone departure, or a stay followed by readmission) stays on the register, not on the pupil's journey.
+    where: { studentUserId, supersededAt: null },
     orderBy: { leftAt: "desc" },
     select: RECORD_SELECT,
     take: 20,
@@ -911,7 +984,7 @@ export async function departuresFrom(ctx: ActiveContext): Promise<
   }
 
   const rows = await db.schoolRecord.findMany({
-    where: { schoolId: ctx.schoolId },
+    where: { schoolId: ctx.schoolId, supersededAt: null },
     orderBy: { leftAt: "desc" },
     select: {
       ...RECORD_SELECT,
@@ -921,9 +994,9 @@ export async function departuresFrom(ctx: ActiveContext): Promise<
     take: 200,
   });
 
-  return rows.map((row) => ({
-    ...toView(row, ctx.schoolId),
-    studentName: row.student.preferredName ?? row.student.name,
-    studentMembershipId: row.studentMembershipId,
-  }));
+  return rows.flatMap((row) =>
+    row.studentMembershipId
+      ? [{ ...toView(row, ctx.schoolId), studentName: row.student.preferredName ?? row.student.name, studentMembershipId: row.studentMembershipId }]
+      : [],
+  );
 }

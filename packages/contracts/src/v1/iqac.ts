@@ -323,6 +323,9 @@ export const voiceSchema = z.object({
   grievances: z.array(z.object({ id: z.string(), kind: grievanceKindSchema, text: z.string(), status: grievanceStatusSchema, filedAt: z.string().datetime(), dueOn: dateKey, overdue: z.boolean(), response: z.string(), escalatedAt: z.string().datetime().nullable() })),
   canFileGrievance: z.boolean(),
 });
+/** G-5: a signed link for one respondent of an employer's or a parent's survey, and what a signed-out respondent reads through it. */
+export const surveyLinkSchema = z.object({ token: z.string(), path: z.string() });
+export const publicSurveySchema = z.object({ title: z.string(), kind: surveyKindSchema, closesOn: dateKey, answered: z.boolean(), questions: z.array(z.object({ code: z.string(), label: z.string() })) });
 export const grievanceFileSchema = z.object({ kind: grievanceKindSchema, text: z.string().trim().min(10).max(4000), fileId: z.string().max(200).nullable().default(null), anonymousToStaff: z.boolean().default(false) });
 export const grievanceActionSchema = z.object({ action: z.enum(["ACKNOWLEDGE", "RESOLVE", "ESCALATE"]), note: z.string().trim().min(2).max(4000) });
 export const grievanceDeskSchema = z.object({

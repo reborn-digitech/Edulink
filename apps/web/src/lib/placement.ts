@@ -15,18 +15,20 @@ import {
   type OfferView,
   type PlacementProfileSave,
   type PlacementRecord,
+  type SharedPlacementRecord,
   type PlacementSettings,
   type RoundResultsSave,
   type RequirementView,
 } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
-import { notify } from "./notify";
+import { notify, notifyGuardians } from "./notify";
+import { isMinorToday } from "./student-consent";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn, institutionKindOf, isModuleOn } from "./modules";
 import { isCollegeKind } from "./institution";
-import { forSchool } from "./tenant-context";
+import { forPlacementDirectory, forSchool } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { EMPTY_RECORD, placementRecords } from "./placement-record";
@@ -75,10 +77,12 @@ export type Cell = { schoolId: string; userId: string; role: Role; membershipId:
 
 const CELL_WRITE: readonly Role[] = ["TPO"];
 const CELL_READ: readonly Role[] = ["TPO", "ADMIN", "PRINCIPAL"];
+/** The placement table and its exports, which the IQAC files from (NAAC criterion 5, NBA, NIRF): never a student's row. */
+const CELL_ANALYTICS: readonly Role[] = [...CELL_READ, "IQAC"];
 
-/** The cell at the session's college, with PLACEMENT on. `read` lets the office and the principal in. */
-export async function cellOf(ctx: ActiveContext, mode: "write" | "read" = "write"): Promise<Cell> {
-  const roles = mode === "write" ? CELL_WRITE : CELL_READ;
+/** The cell at the session's college, with PLACEMENT on. `read` lets the office and the principal in; `analytics` the IQAC too (campaign B-01). */
+export async function cellOf(ctx: ActiveContext, mode: "write" | "read" | "analytics" = "write"): Promise<Cell> {
+  const roles = mode === "write" ? CELL_WRITE : mode === "analytics" ? CELL_ANALYTICS : CELL_READ;
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
   await assertModuleOn(ctx.schoolId, "PLACEMENT");
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId, canEdit: CELL_WRITE.includes(ctx.role) };
@@ -209,6 +213,10 @@ export async function driveEligibility(ctx: ActiveContext, driveId: string) {
 export const readRounds = (raw: string): DriveRound[] => readJson<DriveRound[]>(raw, []).filter((r) => r && typeof r.n === "number");
 export const readSchedule = (raw: string): { label: string; at: string }[] => readJson<{ label: string; at: string }[]>(raw, []).filter((r) => r && typeof r.label === "string");
 export const readRecord = (raw: string): PlacementRecord => ({ ...EMPTY_RECORD, ...readJson<Partial<PlacementRecord>>(raw, {}) });
+/** What an application shares: the record without gender and category (campaign S-3). Applied when freezing and again when reading, for rows frozen before. */
+export function sharedRecord(record: PlacementRecord): SharedPlacementRecord {
+  return { cgpa: record.cgpa, liveBacklogs: record.liveBacklogs, attendancePct: record.attendancePct, programmeId: record.programmeId, programmeName: record.programmeName, batchYear: record.batchYear };
+}
 
 /** The next dated thing in a drive: a round or a schedule line still ahead. */
 function nextAtOf(rounds: DriveRound[], schedule: { at: string }[], now: Date): string | null {
@@ -282,7 +290,7 @@ export async function applicationViews(driveId: string, filter: { schoolId?: str
       consentAt: a.consentAt?.toISOString() ?? null,
       status,
       round,
-      record: readRecord(a.recordJson),
+      record: sharedRecord(readRecord(a.recordJson)),
       skills: skillsOf.get(a.studentMembershipId) ?? [],
       results: mine.map((r) => ({ round: r.round, outcome: r.outcome as "PASSED", feedback: filter.sharedFeedbackOnly && !r.feedbackShared ? null : r.feedback, feedbackShared: r.feedbackShared, at: r.updatedAt.toISOString() })),
       offer,
@@ -292,7 +300,8 @@ export async function applicationViews(driveId: string, filter: { schoolId?: str
 
 async function schoolNames(ids: readonly string[]): Promise<Map<string, string>> {
   if (ids.length === 0) return new Map();
-  const rows = await db.school.findMany({ where: { id: { in: [...new Set(ids)] } }, select: { id: true, name: true } });
+  // A pooled drive's host and guests, a requirement's colleges: the directory's names (campaign S-13).
+  const rows = await forPlacementDirectory(() => db.school.findMany({ where: { id: { in: [...new Set(ids)] } }, select: { id: true, name: true } }));
   return new Map(rows.map((r) => [r.id, r.name]));
 }
 
@@ -430,6 +439,14 @@ export async function verifyCompany(ctx: ActiveContext, companyId: string) {
   const cell = await cellOf(ctx);
   const c = await db.company.findUnique({ where: { id: companyId }, select: { id: true, verifiedAt: true } });
   if (!c) throw new AccessError("placement.noSuchCompany", "NOT_FOUND");
+  // Verification counts for every college, so only a cell the company has engaged may give it:
+  // the cell added it, it sent this college a requirement, or it has a drive here (campaign S-4).
+  const [linked, asked, drive] = await Promise.all([
+    db.companyTenantLink.findUnique({ where: { schoolId_companyId: { schoolId: cell.schoolId, companyId } }, select: { schoolId: true } }),
+    db.requirement.findFirst({ where: { companyId, targetSchoolIds: { contains: `"${cell.schoolId}"` } }, select: { id: true } }),
+    db.drive.findFirst({ where: { companyId, schoolId: cell.schoolId }, select: { id: true } }),
+  ]);
+  if (!linked && !asked && !drive) throw new AccessError("placement.noSuchCompany", "NOT_FOUND");
   if (!c.verifiedAt) {
     const changed = await db.company.updateMany({ where: { id: companyId, verifiedAt: null }, data: { verifiedAt: new Date(), verifiedByUserId: cell.userId } });
     if (changed.count > 0) await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "placement.company.verify", targetType: "Company", targetId: companyId });
@@ -493,12 +510,15 @@ export async function acceptRequirement(ctx: ActiveContext, requirementId: strin
 
 /** The colleges a pooled drive may invite: other colleges with PLACEMENT on (the placement directory). */
 export async function placementColleges(exceptSchoolId?: string | null): Promise<{ id: string; name: string; city: string | null }[]> {
-  const rows = await db.school.findMany({
-    where: { kind: { in: ["COLLEGE", "AUTONOMOUS_COLLEGE"] }, removedAt: null, modules: { some: { module: "PLACEMENT" } }, ...(exceptSchoolId ? { id: { not: exceptSchoolId } } : {}) },
-    select: { id: true, name: true, city: true },
-    orderBy: { name: "asc" },
-    take: 500,
-  });
+  // The directory: id, name and town, never the row (campaign S-13).
+  const rows = await forPlacementDirectory(() =>
+    db.school.findMany({
+      where: { kind: { in: ["COLLEGE", "AUTONOMOUS_COLLEGE"] }, removedAt: null, modules: { some: { module: "PLACEMENT" } }, ...(exceptSchoolId ? { id: { not: exceptSchoolId } } : {}) },
+      select: { id: true, name: true, city: true },
+      orderBy: { name: "asc" },
+      take: 500,
+    }),
+  );
   return rows;
 }
 
@@ -564,26 +584,33 @@ export async function updateDrive(ctx: ActiveContext, driveId: string, input: Dr
   await checkDriveInput(cell, merged, settings);
   if (input.rule && !["DRAFT", "OPEN"].includes(d.status)) throw new RuleRefusal("placement.refuseRuleAfterOpen", 409, undefined, "rule");
   if (input.status && (ORDER.get(input.status)! < ORDER.get(d.status as DriveStatus)!)) throw new RuleRefusal("placement.refuseStatusBack", 409, undefined, "status");
+  // The company is what every applicant consented to share with: it is checked as openDrive checks
+  // it, and once anyone has applied it does not change (campaign S-5).
+  if (input.companyId && input.companyId !== d.companyId) {
+    if (!(await db.company.findUnique({ where: { id: input.companyId }, select: { id: true } }))) throw new RuleRefusal("placement.refuseUnknownCompany", 422, undefined, "companyId");
+    if (await db.driveApplication.findFirst({ where: { driveId }, select: { id: true } })) throw new RuleRefusal("placement.refuseCompanyChange", 409, undefined, "companyId");
+  }
   const closing = input.status === "CLOSED";
-  const changed = await db.drive.updateMany({
-    where: { id: driveId, schoolId: cell.schoolId, status: d.status },
-    data: {
-      ...(input.companyId ? { companyId: input.companyId } : {}),
-      ...(input.kind ? { kind: input.kind } : {}),
-      ...(input.title !== undefined ? { title: input.title } : {}),
-      ...(input.jd !== undefined ? { jd: input.jd } : {}),
-      ...(input.packageMinRupees !== undefined ? { packageMinRupees: input.packageMinRupees } : {}),
-      ...(input.packageMaxRupees !== undefined ? { packageMaxRupees: input.packageMaxRupees } : {}),
-      ...(input.bond !== undefined ? { bond: input.bond } : {}),
-      ...(input.rounds ? { rounds: writeJson(input.rounds) } : {}),
-      ...(input.schedule ? { schedule: writeJson(input.schedule) } : {}),
-      ...(input.venues !== undefined ? { venues: input.venues } : {}),
-      ...(input.rule ? { eligibilityRule: writeJson(input.rule) } : {}),
-      ...(input.poolSchoolIds ? { poolSchoolIds: writeJson(input.poolSchoolIds) } : {}),
-      ...(input.status ? { status: input.status } : {}),
-      ...(closing ? { closedAt: new Date() } : {}),
-    },
-  });
+  const data = {
+    ...(input.companyId ? { companyId: input.companyId } : {}),
+    ...(input.kind ? { kind: input.kind } : {}),
+    ...(input.title !== undefined ? { title: input.title } : {}),
+    ...(input.jd !== undefined ? { jd: input.jd } : {}),
+    ...(input.packageMinRupees !== undefined ? { packageMinRupees: input.packageMinRupees } : {}),
+    ...(input.packageMaxRupees !== undefined ? { packageMaxRupees: input.packageMaxRupees } : {}),
+    ...(input.bond !== undefined ? { bond: input.bond } : {}),
+    ...(input.rounds ? { rounds: writeJson(input.rounds) } : {}),
+    ...(input.schedule ? { schedule: writeJson(input.schedule) } : {}),
+    ...(input.venues !== undefined ? { venues: input.venues } : {}),
+    ...(input.rule ? { eligibilityRule: writeJson(input.rule) } : {}),
+    ...(input.poolSchoolIds ? { poolSchoolIds: writeJson(input.poolSchoolIds) } : {}),
+    ...(input.status ? { status: input.status } : {}),
+    ...(closing ? { closedAt: new Date() } : {}),
+  };
+  // A save that changes nothing is a 200 no-op (W-10): Prisma answers an updateMany with no data
+  // as zero rows without asking the database, which once read as somebody else's edit.
+  if (Object.keys(data).length === 0) return driveView(ctx, driveId);
+  const changed = await db.drive.updateMany({ where: { id: driveId, schoolId: cell.schoolId, status: d.status }, data });
   if (changed.count === 0) throw new RuleRefusal("placement.refuseChangedMeanwhile", 409);
   if (Object.keys(input).length > 0) await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: closing ? "placement.drive.close" : "placement.drive.update", targetType: "Drive", targetId: driveId, meta: { status: input.status ?? d.status, fields: Object.keys(input) } });
   return driveView(ctx, driveId);
@@ -710,6 +737,8 @@ export async function spendTicket(userId: string, fileId: string | null | undefi
 export async function recordOffer(actor: DriveActor, input: { studentMembershipId: string; packageRupees: number; letterFileId: string | null }, opts: { storedFileId?: string | null } = {}): Promise<OfferView> {
   const d = actor.drive;
   if (!(RECRUITER_LIVE_STATUSES as readonly string[]).includes(d.status)) throw new RuleRefusal("placement.refuseNotLive", 409);
+  // The package is the schema's (offerSaveSchema) whichever door calls: never negative, never absurd (S-19).
+  if (!Number.isInteger(input.packageRupees) || input.packageRupees < 0 || input.packageRupees > 1_000_000_000) throw new RuleRefusal("placement.refusePackage", 422, undefined, "packageRupees");
   const [app] = await liveApplicants(d.id, [input.studentMembershipId]);
   if (!app) throw new RuleRefusal("placement.refuseNotApplicant", 422, undefined, "studentMembershipId");
   const rejected = await db.roundResult.findFirst({ where: { driveId: d.id, studentMembershipId: input.studentMembershipId, outcome: { in: ["REJECTED", "ABSENT"] } }, select: { id: true } });
@@ -861,10 +890,19 @@ export async function applyToDrive(ctx: ActiveContext, driveId: string): Promise
   const existing = await db.driveApplication.findUnique({ where: { driveId_studentMembershipId: { driveId, studentMembershipId: me.membershipId } }, select: { id: true, withdrawnAt: true } });
   if (existing && !existing.withdrawnAt) throw new RuleRefusal("placement.refuseApplied", 409);
   const now = new Date();
+  // A MINOR's applying is not yet consent to share (campaign S-6): the application waits with no
+  // consentAt — which every recruiter clause and door requires — until a guardian consents
+  // (guardianConsentToApplication), as a minor's paid seat waits in PENDING_CONSENT.
+  const who = await db.membership.findUniqueOrThrow({ where: { id: me.membershipId }, select: { user: { select: { birthdate: true, isMinor: true } }, school: { select: { timezone: true } } } });
+  const minor = isMinorToday(who.user, who.school.timezone, now);
+  const consentAt = minor ? null : now;
   const app = existing
-    ? await db.driveApplication.update({ where: { id: existing.id }, data: { withdrawnAt: null, consentAt: now, appliedAt: now, recordJson: writeJson(row.record) }, select: { id: true } })
-    : await db.driveApplication.create({ data: { schoolId: me.schoolId, driveId, studentMembershipId: me.membershipId, studentUserId: me.userId, schoolName: school.name, consentAt: now, recordJson: writeJson(row.record) }, select: { id: true } });
-  await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "placement.apply", targetType: "DriveApplication", targetId: app.id, meta: { driveId, consent: true } });
+    ? await db.driveApplication.update({ where: { id: existing.id }, data: { withdrawnAt: null, consentAt, appliedAt: now, recordJson: writeJson(sharedRecord(row.record)) }, select: { id: true } })
+    : await db.driveApplication.create({ data: { schoolId: me.schoolId, driveId, studentMembershipId: me.membershipId, studentUserId: me.userId, schoolName: school.name, consentAt, recordJson: writeJson(sharedRecord(row.record)) }, select: { id: true } });
+  await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: "placement.apply", targetType: "DriveApplication", targetId: app.id, meta: { driveId, consent: !minor, guardianConsent: minor ? "pending" : null } });
+  if (minor) {
+    await notifyGuardians(me.membershipId, (name) => ({ schoolId: me.schoolId, kind: "SYSTEM", titleKey: "placement.notifGuardianConsentAsk", titleVars: { name, drive: d.title }, url: `/parent/placement?child=${me.membershipId}` })).catch((error) => console.error("[placement] consent notice failed", error));
+  }
   return (await applicationViews(driveId, { schoolId: me.schoolId })).find((a) => a.id === app.id)!;
 }
 

@@ -111,6 +111,7 @@ export const NO_TENANT: RequestTenant = {
 const globalForTenant = globalThis as unknown as {
   __edulinkTenantOverride?: AsyncLocalStorage<RequestTenant>;
   __edulinkOpenTransaction?: AsyncLocalStorage<true>;
+  __edulinkPlacementDirectory?: AsyncLocalStorage<true>;
 };
 
 const override = (globalForTenant.__edulinkTenantOverride ??=
@@ -131,6 +132,29 @@ const override = (globalForTenant.__edulinkTenantOverride ??=
  */
 const openTransaction = (globalForTenant.__edulinkOpenTransaction ??=
   new AsyncLocalStorage<true>());
+
+/**
+ * THE PLACEMENT DIRECTORY (campaign S-13). Another college's School row is
+ * readable by a signed-in person only while it has PLACEMENT on — the
+ * prospectus a recruiter addresses a requirement to, a pooled drive's host
+ * and guests — and only inside this wrapper, which sets `app.directory`. Row
+ * security cannot narrow columns, so the policy is narrowed to the few reads
+ * that ask for it, and those select a name and a town: the join code, the
+ * contacts, the UPI id and the subscription of a placement college are no
+ * longer within reach of any other query a recruiter's session runs.
+ * Composes with the tenant: it adds the directory, it does not replace who
+ * is asking.
+ */
+const directory = (globalForTenant.__edulinkPlacementDirectory ??=
+  new AsyncLocalStorage<true>());
+
+export function forPlacementDirectory<T>(work: () => Promise<T>): Promise<T> {
+  return directory.run(true, async () => await work());
+}
+
+export function inPlacementDirectory(): boolean {
+  return directory.getStore() === true;
+}
 
 /** What a caller explicitly asked for, if anything. `db.ts` prefers this. */
 export function tenantOverride(): RequestTenant | undefined {

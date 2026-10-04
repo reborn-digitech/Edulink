@@ -23,6 +23,7 @@ import {
   sendEmailChangeCode,
   sendEmailChangedNotice,
   sendVerifyEmail,
+  localeForUser,
 } from "./email";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import {
@@ -377,7 +378,7 @@ export async function requestPasswordReset(rawIdentifier: string): Promise<Reset
       if (channel === "PHONE") {
         await sendResetSms(destination, code, RESET_TTL_MINUTES);
       } else {
-        await sendResetEmail(destination, code, RESET_TTL_MINUTES);
+        await sendResetEmail(destination, code, RESET_TTL_MINUTES, await localeForUser(account.userId));
       }
 
       await audit({
@@ -872,7 +873,7 @@ export async function startEmailChange(
     },
   });
 
-  await sendEmailChangeCode(email, code, RESET_TTL_MINUTES);
+  await sendEmailChangeCode(email, code, RESET_TTL_MINUTES, await localeForUser(userId));
   await audit({ actorUserId: userId, action: "account.email.code" });
 
   return { ok: true, sentTo: email };
@@ -976,7 +977,7 @@ export async function confirmEmailChange(
    * arrives late.
    */
   if (isDeliverableEmail(previous?.email)) {
-    await sendEmailChangedNotice(previous!.email!, email);
+    await sendEmailChangedNotice(previous!.email!, email, await localeForUser(userId));
   }
 
   await audit({ actorUserId: userId, action: "account.email.confirm" });
@@ -1134,7 +1135,7 @@ export async function resendVerification(
     },
   });
 
-  await sendVerifyEmail(user.email!, `${APP_URL}/verify?token=${fresh}`, schoolName);
+  await sendVerifyEmail(user.email!, `${APP_URL}/verify?token=${fresh}`, schoolName, await localeForUser(userId));
   await audit({ actorUserId: userId, action: "auth.email.verify.resent" });
 
   return { ok: true };

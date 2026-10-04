@@ -36,8 +36,22 @@ export function __setHeaders(values: Record<string, string>): void {
   requestHeaders = new Headers(values);
 }
 
+/**
+ * Every real request the app gates reaches it through the middleware, which
+ * stamps the route (lib/route-header.ts); a request with NO stamp is one the
+ * middleware never saw, and the gate fails closed on it for a limited role
+ * (campaign S-11). A test calls a handler directly, with no middleware, so
+ * the stand-in stamps the neutral "GET /" — a path outside the app's working
+ * surface, which the gate passes — unless the test sets its own route. A test
+ * of the unstamped case calls gateRequest(null) itself.
+ */
+const NEUTRAL_ROUTE = "GET /";
+
 export async function headers(): Promise<Headers> {
-  return requestHeaders;
+  if (requestHeaders.has("x-edulink-route")) return requestHeaders;
+  const stamped = new Headers(requestHeaders);
+  stamped.set("x-edulink-route", NEUTRAL_ROUTE);
+  return stamped;
 }
 
 export async function cookies() {

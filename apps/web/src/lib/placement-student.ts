@@ -3,6 +3,9 @@ import { PLACEMENT_PREP_SUBJECTS, type StudentPlacement } from "@edulink/contrac
 import { db } from "./db";
 import { assertGuardianAccess } from "./tenancy";
 import { AccessError } from "./access-error";
+import { RuleRefusal } from "./rule-refusal";
+import { audit } from "./audit";
+import { notify } from "./notify";
 import { assertModuleOn } from "./modules";
 import { listTopics, normaliseLanguage } from "./quiz";
 import { todayKey } from "./dates";
@@ -114,5 +117,34 @@ export async function familyPlacement(ctx: ActiveContext, childId: string | null
   if (!id) throw new AccessError("access.notYourChild", "NOT_FOUND");
   const link = await assertGuardianAccess(ctx.user.id, id, "PLACEMENT");
   await assertModuleOn(link.student.schoolId, "PLACEMENT");
-  return { name: link.student.user.preferredName ?? link.student.user.name, offers: await myOffers(id), internships: await childInternships(id) };
+  return { name: link.student.user.preferredName ?? link.student.user.name, offers: await myOffers(id), internships: await childInternships(id), awaitingConsent: await awaitingConsent(id) };
+}
+
+/** A minor's applications to open drives that wait for a guardian's consent (campaign S-6). */
+async function awaitingConsent(studentMembershipId: string) {
+  const rows = await db.driveApplication.findMany({ where: { studentMembershipId, consentAt: null, withdrawnAt: null, drive: { status: "OPEN" } }, orderBy: { appliedAt: "asc" }, select: { id: true, drive: { select: { title: true, company: { select: { name: true } } } } } });
+  return rows.map((r) => ({ applicationId: r.id, driveTitle: r.drive.title, companyName: r.drive.company.name }));
+}
+
+/**
+ * A guardian's consent to a minor's drive application (campaign S-6): from
+ * now the record is shared with the drive's company, as an adult's is the
+ * moment they apply. Only while the drive is open and the application stands;
+ * a second consent changes nothing. The student is told.
+ */
+export async function guardianConsentToApplication(ctx: ActiveContext, applicationId: string, childId: string) {
+  if (ctx.role !== "PARENT") throw new AccessError("access.wrongRoleForThisAction");
+  const link = await assertGuardianAccess(ctx.user.id, childId, "PLACEMENT");
+  await assertModuleOn(link.student.schoolId, "PLACEMENT");
+  const app = await db.driveApplication.findFirst({ where: { id: applicationId, studentMembershipId: childId }, select: { id: true, schoolId: true, consentAt: true, withdrawnAt: true, drive: { select: { status: true, title: true } } } });
+  if (!app) throw new AccessError("placement.noSuchDrive", "NOT_FOUND");
+  if (!app.consentAt) {
+    if (app.withdrawnAt || app.drive.status !== "OPEN") throw new RuleRefusal("placement.refuseConsentNotWaiting", 409);
+    const flipped = await db.driveApplication.updateMany({ where: { id: app.id, consentAt: null, withdrawnAt: null }, data: { consentAt: new Date() } });
+    if (flipped.count > 0) {
+      await audit({ schoolId: app.schoolId, actorUserId: ctx.user.id, action: "placement.guardianConsent", targetType: "DriveApplication", targetId: app.id, meta: { studentMembershipId: childId } });
+      await notify({ userId: link.student.user.id, schoolId: app.schoolId, kind: "SYSTEM", titleKey: "placement.notifGuardianConsented", titleVars: { drive: app.drive.title }, url: "/student/placement" }).catch(() => undefined);
+    }
+  }
+  return familyPlacement(ctx, childId);
 }

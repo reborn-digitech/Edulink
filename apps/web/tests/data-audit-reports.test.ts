@@ -479,7 +479,8 @@ d("report cards, certificates and the leaving certificate", () => {
       for (const [serial, n] of serials) if (n > 1) note("certificates", "FAIL", s.name, `serial ${serial} issued ${n} times`);
       // Gaps in a series: numbers skipped between the first and the last.
       const byPrefix = new Map<string, number[]>();
-      for (const c of certs) { const k = `${c.template?.serialPrefix ?? "?"}/${c.academicYear?.name ?? "?"}`; byPrefix.set(k, [...(byPrefix.get(k) ?? []), c.number]); }
+      // The TC series is the register shared with the leaving records; the tc-register check reads it whole.
+      for (const c of certs) { if (c.serial.startsWith("TC/")) continue; const k = `${c.template?.serialPrefix ?? "?"}/${c.academicYear?.name ?? "?"}`; byPrefix.set(k, [...(byPrefix.get(k) ?? []), c.number]); }
       for (const [k, nums] of byPrefix) { const max = Math.max(...nums); const missingNums = []; for (let i = 1; i <= max; i += 1) if (!nums.includes(i)) missingNums.push(i); if (missingNums.length) note("certificates", "WARN", s.name, `series ${k} skips number(s) ${missingNums.join(", ")}`); }
     }
     expect(failsOf("certificates")).toEqual([]);
@@ -487,12 +488,18 @@ d("report cards, certificates and the leaving certificate", () => {
 
   it("leaving certificates: the departure record agrees with the membership and its own counts", async () => {
     for (const s of schools) {
-      const recs = await db.schoolRecord.findMany({ where: { schoolId: s.id }, select: { id: true, serial: true, joinedAt: true, leftAt: true, attendanceMarked: true, attendancePresent: true, reportCardCount: true, studentMembershipId: true, membership: { select: { leftAt: true, joinedAt: true, status: true } } } });
+      const recs = await db.schoolRecord.findMany({ where: { schoolId: s.id }, select: { id: true, serial: true, joinedAt: true, leftAt: true, attendanceMarked: true, attendancePresent: true, reportCardCount: true, studentMembershipId: true, formerMembershipId: true, supersededAt: true, membership: { select: { leftAt: true, joinedAt: true, status: true } } } });
       const serials = new Set<string>();
       for (const r of recs) {
         if (r.serial) { if (serials.has(r.serial)) note("leaving-certificates", "FAIL", s.name, `serial ${r.serial} twice`); serials.add(r.serial); }
-        if (r.leftAt < r.joinedAt) note("leaving-certificates", "FAIL", s.name, `${r.serial ?? r.id}: left before joining`);
+        // Calendar days in the school's zone (school-record.ts): leaving on the day one joined is a stay.
+        if (r.leftAt.toISOString().slice(0, 10) < r.joinedAt.toISOString().slice(0, 10)) note("leaving-certificates", "FAIL", s.name, `${r.serial ?? r.id}: left before joining`);
         if (r.attendancePresent > r.attendanceMarked) note("leaving-certificates", "FAIL", s.name, `${r.serial ?? r.id}: present ${r.attendancePresent} exceeds marked ${r.attendanceMarked}`);
+        // A closed record (LIFECYCLE-7) has let go of the membership and says when and from which one; its snapshot is of a stay that has since gone on.
+        const closedShape = r.supersededAt !== null && r.formerMembershipId !== null && r.studentMembershipId === null;
+        const liveShape = r.supersededAt === null && r.formerMembershipId === null && r.studentMembershipId !== null;
+        if (!closedShape && !liveShape) note("leaving-certificates", "FAIL", s.name, `${r.serial ?? r.id}: neither live nor closed (membership ${r.studentMembershipId}, former ${r.formerMembershipId}, superseded ${r.supersededAt?.toISOString() ?? "—"})`);
+        if (!r.membership || !r.studentMembershipId) continue;
         if (r.membership.leftAt && r.membership.leftAt.toISOString().slice(0, 10) !== r.leftAt.toISOString().slice(0, 10)) note("leaving-certificates", "FAIL", s.name, `${r.serial ?? r.id}: record left ${r.leftAt.toISOString().slice(0, 10)}, membership left ${r.membership.leftAt.toISOString().slice(0, 10)}`);
         const marked = await db.attendanceRecord.count({ where: { schoolId: s.id, studentMembershipId: r.studentMembershipId } });
         const present = await db.attendanceRecord.count({ where: { schoolId: s.id, studentMembershipId: r.studentMembershipId, status: { in: ["PRESENT", "LATE"] } } });
@@ -505,6 +512,36 @@ d("report cards, certificates and the leaving certificate", () => {
       if (leaversNoRecord) note("leaving-certificates", "WARN", s.name, `${leaversNoRecord} pupil(s) left with no departure record — no leaving certificate exists for them`);
     }
     expect(failsOf("leaving-certificates")).toEqual([]);
+  });
+
+  it("tc-register: one TC series per school and year across the leaving records and the issued certificates, and no serial on two pupils' papers", async () => {
+    for (const s of schools) {
+      // LIFECYCLE-6/7: the record and a TC certificate share the register (school-record.ts); a closed record keeps its number.
+      const [recs, certs] = await Promise.all([
+        db.schoolRecord.findMany({ where: { schoolId: s.id, serial: { startsWith: "TC/" } }, select: { serial: true, studentMembershipId: true, formerMembershipId: true } }),
+        db.issuedCertificate.findMany({ where: { schoolId: s.id, serial: { startsWith: "TC/" } }, select: { serial: true, studentMembershipId: true } }),
+      ]);
+      const holder = new Map<string, string>();
+      for (const r of recs) if (r.serial) holder.set(r.serial, r.studentMembershipId ?? r.formerMembershipId ?? "?");
+      for (const c of certs) {
+        const other = holder.get(c.serial);
+        if (other !== undefined && other !== c.studentMembershipId) note("tc-register", "FAIL", s.name, `${c.serial} is printed on a leaving record and on a certificate of two different pupils`);
+      }
+      const byYear = new Map<string, Set<number>>();
+      for (const serial of [...recs.map((r) => r.serial ?? ""), ...certs.map((c) => c.serial)]) {
+        const cut = serial.lastIndexOf("/");
+        const year = serial.slice(0, cut);
+        byYear.set(year, (byYear.get(year) ?? new Set()).add(Number(serial.slice(cut + 1))));
+      }
+      for (const [year, nums] of byYear) {
+        const max = Math.max(...nums);
+        const gaps: number[] = [];
+        for (let i = 1; i <= max; i += 1) if (!nums.has(i)) gaps.push(i);
+        if (gaps.length) note("tc-register", "WARN", s.name, `${year} skips number(s) ${gaps.join(", ")}`);
+      }
+      note("tc-register", "INFO", s.name, `${recs.length} leaving record(s) and ${certs.length} TC certificate(s) over ${byYear.size} year(s)`);
+    }
+    expect(failsOf("tc-register")).toEqual([]);
   });
 });
 

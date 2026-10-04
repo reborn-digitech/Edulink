@@ -1,8 +1,7 @@
 import "server-only";
-import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./access-error";
-import { assertModuleOn } from "./modules";
+import { assertCollege, assertModuleOn } from "./modules";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import type { SchoolModuleCode } from "@edulink/contracts";
@@ -40,7 +39,7 @@ export async function kindOf(schoolId: string): Promise<string> {
  */
 export async function collegeDesk(ctx: ActiveContext, roles: readonly Role[], module?: SchoolModuleCode): Promise<Desk> {
   if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !roles.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  if (!isCollegeKind(await kindOf(ctx.schoolId))) throw new AccessError("collegeOffice.refuseNotCollege", "NOT_FOUND");
+  await assertCollege(ctx.schoolId);
   if (module) await assertModuleOn(ctx.schoolId, module);
   return { schoolId: ctx.schoolId, userId: ctx.user.id, role: ctx.role, membershipId: ctx.membershipId, ctx };
 }

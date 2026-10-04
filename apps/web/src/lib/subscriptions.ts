@@ -798,7 +798,7 @@ export async function remindSubscriptions(now: Date = new Date(), scope: { schoo
         const body = tEn(past ? "notifBody.subscriptionPastDue" : "notifBody.subscriptionDue", vars);
         const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         try {
-          await sendHealthDigestEmail(op.email, subject, body, `<p>${esc(body)}</p>`);
+          await sendHealthDigestEmail(op.email, subject, body, `<p>${esc(body)}</p>`, "en");
           emailed++;
         } catch (error) {
           console.error("[accounts:tidy] subscription mail", error instanceof Error ? error.message : error);

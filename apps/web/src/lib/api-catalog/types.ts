@@ -54,7 +54,12 @@ export type Endpoint = {
   limitedRoles?: LimitedRoleCode[];
   request?: ZodTypeAny;
   response: ZodTypeAny;
-  /** For the sweep: the status a permitted role gets with an empty body. */
+  /**
+   * For the sweep: the status a permitted role gets with an empty body. On a
+   * GET (which sends none) it is the status a permitted sweep actor gets for
+   * the sample as it stands — an autonomous college's conduct read by the
+   * affiliated college's controller is a 403 (SWEEPS-1, 4 Oct 2026).
+   */
   emptyBodyStatus?: number;
   /**
    * For the sweep: the path with its parameters filled from the ZZ fixture.

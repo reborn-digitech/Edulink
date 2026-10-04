@@ -316,7 +316,8 @@ export async function sendOperatorHealthDigest(now: Date = new Date()): Promise<
     select: { email: true },
   });
   for (const op of operators) {
-    await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml);
+    // Composed in English, the operator mail's language (see the overdue watch below), so the frame is too.
+    await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml, "en");
   }
   return { emailed: operators.length, ...counts, quiet: false };
 }
@@ -403,7 +404,7 @@ export async function watchJobs(opts: { now?: Date; statuses?: JobStatus[]; oper
         const subject = `Shalaghar: ${tEn("notifTitle.jobOverdue", { job: job.name })}`;
         const text = when ? tEn("notifBody.jobOverdue", { job: job.name, when, hours }) : tEn("notifBody.jobOverdueNever", { job: job.name, hours });
         const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`);
+        await sendHealthDigestEmail(op.email, subject, text, `<p>${esc(text)}</p>`, "en");
         emailed++;
       }
     }
