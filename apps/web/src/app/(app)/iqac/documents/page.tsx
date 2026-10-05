@@ -60,6 +60,11 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
   const now = new Date();
   const year = now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
   const back = "/iqac/documents";
+  // A figure's words where the councils' pages have them (an NBA report's "students"), else its metric number (the AQAR's "2.1.1").
+  const figureLabel = (k: string) => {
+    const said = tt(`councilFilings.figure.${k}`);
+    return said === `councilFilings.figure.${k}` ? k : said;
+  };
   return (
     <div className="space-y-5">
       <PageHeader title={t("iqac.documentsTitle")} description={t("iqac.documentsIntro")} />
@@ -71,7 +76,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         <CardBody>
           <ul className="grid gap-3 sm:grid-cols-2" data-testid="filing-cards">
             {[...council.items].sort((a, b) => Number(b.applies) - Number(a.applies)).map((item) => (
-              <li key={item.kind} data-testid={`filing-card-${item.kind}`} data-applies={item.applies ? "1" : "0"} className={`space-y-2 rounded-[--radius-md] border border-border p-3 text-sm ${item.applies ? "" : "opacity-60"}`}>
+              <li key={item.kind} data-testid={`filing-card-${item.kind}`} data-applies={item.applies ? "1" : "0"} className={`space-y-2 rounded-[--radius-md] border p-3 text-sm ${item.applies ? "border-border" : "border-dashed border-border bg-surface-muted text-fg-muted"}`}>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-medium">{tt("iqac.filingKind." + item.kind)}</span>
                   {item.applies ? <Badge tone="ok">{t("councilFilings.yours")}</Badge> : null}
@@ -93,7 +98,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         <CardBody>
           <ul className="space-y-3 text-sm" data-testid="councils-not-built">
             {council.notBuilt.map((n) => (
-              <li key={n.stream} className={`space-y-1 ${n.here ? "" : "opacity-60"}`}>
+              <li key={n.stream} className={`space-y-1 ${n.here ? "" : "text-fg-muted"}`}>
                 <div className="flex flex-wrap items-center gap-2 font-medium">
                   <span>{t("councilFilings.notBuiltLine", { stream: tt(`streams.${n.stream}.name`), councils: n.councils.join(", ") })}</span>
                   {n.here ? <Badge tone="warn">{t("councilFilings.yourStream")}</Badge> : null}
@@ -109,7 +114,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         </CardBody>
       </Card>
       {filings.canGenerate ? (
-        <Card>
+        <Card id="generate">
           <CardHeader title={t("iqac.generateTitle")} />
           <CardBody>
             <form action={generateFilingAction} className="grid gap-3 sm:grid-cols-4 sm:items-end">
@@ -146,7 +151,16 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         </Card>
       ) : null}
       {filings.items.length === 0 ? (
-        <EmptyState title={t("iqac.noFilings")} />
+        <EmptyState
+          title={t("iqac.noFilings")}
+          action={
+            filings.canGenerate ? (
+              <Button asChild size="sm" variant="secondary">
+                <a href="#generate">{t("iqac.generateTitle")}</a>
+              </Button>
+            ) : undefined
+          }
+        />
       ) : (
         <div className="space-y-3">
           {filings.items.map((f) => (
@@ -160,7 +174,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
                 <p className="text-fg-muted">
                   {Object.entries(f.figures)
                     .slice(0, 12)
-                    .map(([k, v]) => `${k}: ${v}`)
+                    .map(([k, v]) => `${figureLabel(k)}: ${v}`)
                     .join(" · ")}
                 </p>
                 {f.principalNote ? <p>{t("iqac.principalNoteLabel", { note: f.principalNote })}</p> : null}

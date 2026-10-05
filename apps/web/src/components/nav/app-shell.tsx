@@ -21,6 +21,10 @@ export type ShellUser = {
   avatarKey: string | null;
   role: Role;
   schoolName: string;
+  /** A college's streams, in the reader's words (5 Oct 2026): a chip beside the name; empty at a school. */
+  streams?: string[];
+  /** At a college (5 Oct 2026) the office is "College office" in the rail, not "School admin". */
+  college?: boolean;
   contextCount: number;
   /**
    * Whoever runs the server, signed in as somebody INSIDE a school.
@@ -103,7 +107,14 @@ export function AppShell({
           <Logo size={28} />
           <div className="min-w-0">
             <p className="truncate text-sm font-bold text-fg">{user.schoolName}</p>
-            <p className="text-xs text-fg-muted">{t(ROLE_META[user.role].labelKey)}</p>
+            <p className="text-xs text-fg-muted">
+              <span className="shrink-0">{t(user.college && user.role === "ADMIN" ? "role.collegeAdmin" : ROLE_META[user.role].labelKey)}</span>
+            </p>
+            {user.streams?.length ? (
+              <p className="flex min-w-0">
+                <StreamChip streams={user.streams} t={t} />
+              </p>
+            ) : null}
           </div>
         </div>
 
@@ -196,7 +207,10 @@ export function AppShell({
       <header data-chrome className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/90 px-4 pt-safe backdrop-blur-md lg:hidden print:hidden">
         <Link href={items[0]!.href} className="flex min-w-0 items-center gap-2">
           <Logo size={26} />
-          <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
+          <span className="flex min-w-0 flex-col">
+            <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
+            {user.streams?.length ? <StreamChip streams={user.streams} t={t} /> : null}
+          </span>
         </Link>
         <div className="flex items-center gap-1">
           {secondary.length > 0 && (
@@ -402,5 +416,26 @@ export function SignOutButton() {
         {t("shell.signOut")}
       </button>
     </form>
+  );
+}
+
+/**
+ * The college's streams beside its name (5 Oct 2026): one quiet chip, the
+ * streams joined, cut with an ellipsis where the bar is narrow (the full list
+ * is its title; a screen reader hears "Streams:" first). Nothing at a school;
+ * the rail gives it a line of its own under the role.
+ */
+function StreamChip({ streams, t }: { streams?: string[]; t: Translate }) {
+  if (!streams?.length) return null;
+  const all = streams.join(" · ");
+  return (
+    <span
+      data-testid="stream-chip"
+      title={t("streams.chipLabel", { streams: all })}
+      className="min-w-0 truncate rounded-full border border-border bg-surface-muted px-1.5 text-[0.6875rem] font-medium leading-4 text-fg-muted"
+    >
+      <span className="sr-only">{t("streams.label")}: </span>
+      {all}
+    </span>
   );
 }

@@ -1,5 +1,8 @@
-import type { DutyCode, RoleCode, SchoolModuleCode } from "@edulink/contracts";
+import { DUTY_STREAMS, type DutyCode, type RoleCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
+
+/** The streams that keep labs and a practical record (those that offer a lab in-charge, 5 Oct 2026). */
+const LAB_STREAMS: readonly StreamCode[] = DUTY_STREAMS.LAB_INCHARGE === "ALL" ? [] : DUTY_STREAMS.LAB_INCHARGE;
 
 /**
  * The bottom tab bar per role: the web NAV's primaries, at most four plus
@@ -116,7 +119,8 @@ export const ALL_TAB_SCREENS = ["index", "attendance", "classes", "messages", "a
  * repeated here: the bar already has them.
  */
 export type MenuGroup = "daily" | "school" | "running";
-export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
+/** `streams` (5 Oct 2026): hidden at a college whose recorded streams include none of them (the practical record at a law college); none recorded keeps it. */
+export type MenuItem = { labelKey: TranslationKey; icon: string; group: MenuGroup; module?: SchoolModuleCode; duty?: DutyCode; streams?: readonly StreamCode[] } & ({ screen: string; web?: undefined } | { web: string; screen?: undefined });
 
 /**
  * What every college staff role's More carries (4 Oct 2026): the account, and my own leave (GET/POST
@@ -422,7 +426,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
-    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS" },
+    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
@@ -443,7 +447,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "duties.corps.nccTitle", icon: "flag", group: "running", screen: "/(app)/ncc", module: "IQAC", duty: "NCC_OFFICER" },
     { labelKey: "duties.research.title", icon: "medal", group: "running", screen: "/(app)/research-desk", module: "IQAC", duty: "RESEARCH_DEAN" },
     { labelKey: "duties.examSquad.title", icon: "eye", group: "running", screen: "/(app)/exam-squad", module: "EXAMS", duty: "EXAM_SQUAD" },
-    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS" },
+    { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
   ],
   EXAM_CONTROLLER: [
     ...COLLEGE_STAFF_MENU,
@@ -651,8 +655,8 @@ export const HIDDEN_SCREENS = [
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */
-export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = []): { group: MenuGroup; items: MenuItem[] }[] {
-  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)));
+export function menuFor(role: RoleCode, modules?: readonly string[], duties: readonly string[] = [], streams: readonly string[] = []): { group: MenuGroup; items: MenuItem[] }[] {
+  const shown = MENU[role].filter((item) => (!item.module || !modules || modules.includes(item.module)) && (!item.duty || duties.includes(item.duty)) && (!item.streams || streams.length === 0 || item.streams.some((s) => streams.includes(s))));
   return MENU_GROUPS.map((group) => ({ group, items: shown.filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
 

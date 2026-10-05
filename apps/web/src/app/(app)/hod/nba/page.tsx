@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import type { CouncilView } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
 import { AccessError } from "@/lib/access-error";
@@ -54,7 +55,15 @@ export default async function HodNbaPage({ searchParams }: { searchParams: Promi
       <PageHeader title={t("councilFilings.hodTitle")} description={t("councilFilings.hodIntro")} />
       <IqacFlash ok={query.ok} error={query.error} />
       {!view ? (
-        <EmptyState title={t("councilFilings.hodNotApplicable")} description={refusal ?? t("councilFilings.hodNotApplicableBody")} />
+        <EmptyState
+          title={t("councilFilings.hodNotApplicable")}
+          description={refusal ?? t("councilFilings.hodNotApplicableBody")}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/hod">{t("role.hod")}</Link>
+            </Button>
+          }
+        />
       ) : (
         <>
           <Card>

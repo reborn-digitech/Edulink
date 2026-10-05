@@ -1,6 +1,6 @@
 import { screen, userEvent, waitFor } from "@testing-library/react-native";
 import type { RoleCode } from "@edulink/contracts";
-import { WardenHome } from "@/screens/hostel/warden";
+import { WardenHome, shiftDateKey } from "@/screens/hostel/warden";
 import { __setOutboxStore, listQueued, memoryOutbox } from "@/lib/outbox";
 import { __setReplayFetch, __stopOutboxRunner } from "@/lib/outbox-runner";
 import { json, me, mountStaff, offline } from "./staff-harness";
@@ -138,6 +138,55 @@ describe("the warden's hostel on the phone (3 Oct 2026)", () => {
     expect(calls().find((c) => c.line === "POST /api/v1/hostel/visitors")?.body).toEqual({ allotmentId: A1, name: "ZZ Uncle", relation: "uncle" });
     await userEvent.setup().press(await screen.findByRole("button", { name: "Sign them out" }));
     expect(await screen.findByText("Signed out.")).toBeTruthy();
+  });
+
+  it("shows tonight at the gate: the curfew, who is away and due back by when, and signs one out and back in (5 Oct 2026)", async () => {
+    const row = (state: string, extra: Record<string, unknown> = {}) => ({ leaveId: "czz00000000000000000leav1", name: "ZZ Asha", hostelName: "ZZ Tilak House", roomNumber: "101", kind: "LOCAL", fromAt: "2026-10-04T11:30:00.000Z", toAt: "2026-10-04T14:30:00.000Z", backBy: "2026-10-04T15:30:00.000Z", curfew: true, outAt: null, inAt: null, state, ...extra });
+    let leaves = [row("NOT_OUT")];
+    const { calls } = await mountStaff(
+      <WardenHome />,
+      "WARDEN",
+      {
+        "GET /api/v1/hostel/hostels": () => json(hostels()),
+        "GET /api/v1/hostel/rollcall": () => json(sheet(false)),
+        "GET /api/v1/hostel/night": () => json({ dateKey: "2026-10-04", college: true, hostels: [{ id: HOSTEL, name: "ZZ Tilak House", curfewMinute: 1290, nightOutAllowed: false }], leaves }),
+        "POST /api/v1/hostel/leave/czz00000000000000000leav1/out": () => {
+          leaves = [row("OUT", { outAt: "2026-10-04T11:35:00.000Z" })];
+          return json(leave("APPROVED", { outAt: "2026-10-04T11:35:00.000Z" }));
+        },
+        "POST /api/v1/hostel/leave/czz00000000000000000leav1/in": () => json(leave("APPROVED", { outAt: "2026-10-04T11:35:00.000Z", inAt: "2026-10-04T15:00:00.000Z" })),
+      },
+      { me: meWith(["HOSTEL"]) },
+    );
+    await userEvent.setup().press(await screen.findByRole("radio", { name: "Tonight" }));
+    expect(await screen.findByText("Curfew 21:30 · No night-outs")).toBeTruthy();
+    expect(screen.getByText("Not gone out")).toBeTruthy();
+    expect(screen.getByText(/^Due back by the curfew, /)).toBeTruthy();
+    await userEvent.setup().press(screen.getByRole("button", { name: "Sign out at the gate" }));
+    expect(await screen.findByText("ZZ Asha signed out.")).toBeTruthy();
+    await userEvent.setup().press(await screen.findByRole("button", { name: "Sign back in" }));
+    expect(await screen.findByText("ZZ Asha is back.")).toBeTruthy();
+    await userEvent.setup().press(screen.getByRole("button", { name: "The night before" }));
+    await waitFor(() => expect(calls().some((c) => c.line.includes("/api/v1/hostel/night?date=2026-10-03"))).toBe(true));
+  });
+
+  it("says nobody is away tonight and offers the leave list", async () => {
+    await mountStaff(
+      <WardenHome />,
+      "WARDEN",
+      { "GET /api/v1/hostel/hostels": () => json(hostels()), "GET /api/v1/hostel/rollcall": () => json(sheet(false)), "GET /api/v1/hostel/night": () => json({ dateKey: "2026-10-04", college: false, hostels: [], leaves: [] }), "GET /api/v1/hostel/leave": () => json({ items: [] }) },
+      { me: meWith(["HOSTEL"]) },
+    );
+    await userEvent.setup().press(await screen.findByRole("radio", { name: "Tonight" }));
+    expect(await screen.findByText("Nobody is away")).toBeTruthy();
+    expect(screen.getByText("A school's hostel keeps no curfew: a return is late only after the leave's end.")).toBeTruthy();
+    await userEvent.setup().press(screen.getByRole("button", { name: "Leave and the gate" }));
+    expect(await screen.findByText("No leave here.")).toBeTruthy();
+  });
+
+  it("counts date keys across a month's end", () => {
+    expect(shiftDateKey("2026-10-01", -1)).toBe("2026-09-30");
+    expect(shiftDateKey("2026-12-31", 1)).toBe("2027-01-01");
   });
 
   it("says when the office has made no hostel", async () => {

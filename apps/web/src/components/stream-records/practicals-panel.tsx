@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { DateField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { TableScroll } from "@/components/ui/table-scroll";
-import { INPUT, LINK, NUM, TD, TH } from "@/components/module-flash";
+import { INPUT, NUM, TD, TH } from "@/components/module-flash";
 import { formatDateKey } from "@/lib/dates";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { savePracticalsAction, signPracticalsAction } from "@/app/(app)/admin/stream-records/actions";
@@ -22,7 +22,7 @@ import { savePracticalsAction, signPracticalsAction } from "@/app/(app)/admin/st
  */
 export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: PracticalSheet; t: Translate; locale: string; base: string; today: string }) {
   if (sheet.offerings.length === 0) {
-    return <EmptyState icon={<FlaskIcon weight="duotone" className="size-6" />} title={t("streamRecords.practicals.noneTitle")} description={t("streamRecords.practicals.noneBody")} action={<Link className={LINK} href={base.startsWith("/admin") ? "/admin/academics" : "/faculty"}>{t("streamRecords.practicals.noneAction")}</Link>} />;
+    return <EmptyState icon={<FlaskIcon weight="duotone" className="size-6" />} title={t("streamRecords.practicals.noneTitle")} description={t("streamRecords.practicals.noneBody")} action={<Button asChild size="sm" variant="secondary"><Link href={base.startsWith("/admin") ? "/admin/academics/offerings" : "/faculty"}>{t(base.startsWith("/admin") ? "streamRecords.batches.toAcademics" : "streamRecords.practicals.noneAction")}</Link></Button>} />;
   }
   const offering = sheet.offerings.find((o) => o.offeringId === sheet.offeringId) ?? null;
   const experiments = [...new Set(sheet.records.map((r) => r.experimentNo))].sort((a, b) => a - b);

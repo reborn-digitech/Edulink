@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/states";
 import { notFound } from "next/navigation";
 import { ChalkboardTeacherIcon, FlaskIcon, GavelIcon, HandHeartIcon } from "@phosphor-icons/react/ssr";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
-import { LINK } from "@/components/module-flash";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
@@ -46,10 +47,10 @@ export default async function StreamRecordsPage() {
               <StatTile label={t("streamRecords.statSigned")} value={s.practical.signed} tone="ok" />
               <StatTile label={t("streamRecords.statUnsigned")} value={s.practical.unsigned} tone={s.practical.unsigned ? "warn" : "neutral"} />
             </div>
-            <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              <Link className={LINK} href="/admin/stream-records/lab-batches">{t("streamRecords.openBatches")}</Link>
-              <Link className={LINK} href="/admin/stream-records/practicals">{t("streamRecords.openPracticals")}</Link>
-            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="secondary"><Link href="/admin/stream-records/lab-batches">{t("streamRecords.openBatches")}</Link></Button>
+              <Button asChild size="sm" variant="secondary"><Link href="/admin/stream-records/practicals">{t("streamRecords.openPracticals")}</Link></Button>
+            </div>
           </CardBody>
         </Card>
       ) : null}
@@ -64,10 +65,10 @@ export default async function StreamRecordsPage() {
               <StatTile label={t("streamRecords.statLawStudents")} value={s.lawInternships.students} />
               <StatTile label={t("streamRecords.statMeetingBci")} value={`${s.lawInternships.meetingMinimum} / ${s.lawInternships.students}`} tone={s.lawInternships.meetingMinimum < s.lawInternships.students ? "warn" : "ok"} />
             </div>
-            <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              <Link className={LINK} href="/admin/stream-records/moot-courts">{t("streamRecords.openMoots")}</Link>
-              <Link className={LINK} href="/placement/internships">{t("streamRecords.openInternships")}</Link>
-            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="secondary"><Link href="/admin/stream-records/moot-courts">{t("streamRecords.openMoots")}</Link></Button>
+              <Button asChild size="sm" variant="secondary"><Link href="/placement/internships">{t("streamRecords.openInternships")}</Link></Button>
+            </div>
           </CardBody>
         </Card>
       ) : null}
@@ -82,9 +83,9 @@ export default async function StreamRecordsPage() {
               <StatTile label={t("streamRecords.statObserved")} value={`${s.teachingPractice.lessonsObserved} / ${s.teachingPractice.lessonsPlanned}`} />
               <StatTile label={t("streamRecords.statMeetingNcte")} value={`${s.teachingPractice.meetingMinimum} / ${s.teachingPractice.students}`} tone={s.teachingPractice.meetingMinimum < s.teachingPractice.students ? "warn" : "ok"} />
             </div>
-            <p className="text-sm">
-              <Link className={LINK} href="/duties/teaching-practice">{t("streamRecords.openPractice")}</Link>
-            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="secondary"><Link href="/duties/teaching-practice">{t("streamRecords.openPractice")}</Link></Button>
+            </div>
           </CardBody>
         </Card>
       ) : null}
@@ -99,15 +100,27 @@ export default async function StreamRecordsPage() {
               <StatTile label={t("streamRecords.statNccEnrolled")} value={s.corps.ncc.enrolled} />
               <StatTile label={t("streamRecords.statCamps")} value={s.corps.nss.camps + s.corps.ncc.camps} />
             </div>
-            <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              <Link className={LINK} href="/duties/nss">{t("streamRecords.openNss")}</Link>
-              <Link className={LINK} href="/duties/ncc">{t("streamRecords.openNcc")}</Link>
-            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="secondary"><Link href="/duties/nss">{t("streamRecords.openNss")}</Link></Button>
+              <Button asChild size="sm" variant="secondary"><Link href="/duties/ncc">{t("streamRecords.openNcc")}</Link></Button>
+            </div>
           </CardBody>
         </Card>
       ) : null}
 
-      {!s.labs && !s.law && !s.education && !corpsOn ? <p className="text-sm text-fg-muted">{t("streamRecords.noneForStreams")}</p> : null}
+      {!s.labs && !s.law && !s.education && !corpsOn ? (
+        <EmptyState
+          title={t("streamRecords.title")}
+          description={t("streamRecords.noneForStreams")}
+          action={
+            ctx.role === "ADMIN" ? (
+              <Button asChild size="sm" variant="secondary">
+                <Link href="/admin/settings/college">{t("streams.homeEdit")}</Link>
+              </Button>
+            ) : undefined
+          }
+        />
+      ) : null}
     </div>
   );
 }

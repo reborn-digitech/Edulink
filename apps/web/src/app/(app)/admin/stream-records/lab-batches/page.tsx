@@ -9,7 +9,6 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
-import { LINK } from "@/components/module-flash";
 import { RecordsFlash } from "@/components/stream-records/flash";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
@@ -42,7 +41,7 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
       <RecordsFlash t={t} params={params} />
       {!data.offered ? <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted">{t("streamRecords.batches.notOffered")}</p> : null}
       {data.divisions.length === 0 ? (
-        <EmptyState icon={<UsersThreeIcon weight="duotone" className="size-6" />} title={t("streamRecords.batches.noDivisions")} description={t("streamRecords.batches.noDivisionsBody")} action={<Link className={LINK} href="/admin/academics">{t("streamRecords.batches.toAcademics")}</Link>} />
+        <EmptyState icon={<UsersThreeIcon weight="duotone" className="size-6" />} title={t("streamRecords.batches.noDivisions")} description={t("streamRecords.batches.noDivisionsBody")} action={<Button asChild size="sm" variant="secondary"><Link href="/admin/academics/terms">{t("streamRecords.batches.toAcademics")}</Link></Button>} />
       ) : (
         data.divisions.map((d) => (
           <Card key={d.divisionId} data-division={d.divisionId}>

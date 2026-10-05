@@ -10,6 +10,8 @@ import { NUM, TD, TH } from "@/components/module-flash";
 import { dutyPageContext } from "@/components/stream-records/duty-page";
 import { researchDesk } from "@/lib/duty-desks";
 import { getT } from "@/lib/i18n/server";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("duties.research.title") };
@@ -86,7 +88,19 @@ export default async function ResearchDeskPage() {
             <p className="text-sm text-fg-muted">{d.byYear.map((y) => t("duties.research.yearLine", { year: y.year, publications: y.publications, projects: y.projects, lakhs: y.amountLakhs })).join(" · ")}</p>
           ) : null}
           {d.items.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("duties.research.noItems")} description={t("duties.research.noItemsBody")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("duties.research.noItems")}
+              description={t("duties.research.noItemsBody")}
+              action={
+                // The office keeps the faculty record (5 Oct 2026, the UX pass): its way on; the dean reads.
+                ctx.role === "ADMIN" ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/admin/faculty-records">{t("iqac.navFacultyRecords")}</Link>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <ul className="divide-y divide-border text-sm">
               {d.items.map((i) => (

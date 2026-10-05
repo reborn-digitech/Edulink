@@ -9,7 +9,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
 import { LINK, NUM, TD, TH } from "@/components/module-flash";
 import { ModuleFlash } from "@/components/module-flash";
-import { LECTURE_KIND_KEY, LOAD_KEY, clock } from "@/components/academics/parts";
+import { LOAD_KEY, clock, lectureKindLabel } from "@/components/academics/parts";
+import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
@@ -36,6 +37,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function FacultyHomePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("FACULTY", "HOD");
   const t = await getT();
+  // The college's own word for a lecture and a lab (5 Oct 2026).
+  const streams = await streamsOf(ctx.schoolId);
   const locale = await getLocale();
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
@@ -67,7 +70,7 @@ export default async function FacultyHomePage({ searchParams }: { searchParams: 
                 <li key={l.lectureId} className="flex flex-wrap items-center justify-between gap-2 py-2">
                   <span>
                     <span className="tabular-nums text-fg-muted">{clock(l.startMinute, l.endMinute)}</span> <span className="font-medium text-fg">{l.courseCode}</span>{" "}
-                    <span className="text-fg-muted">{[t(LECTURE_KIND_KEY[l.kind]!), l.divisionName, l.roomName].filter(Boolean).join(" · ")}</span>
+                    <span className="text-fg-muted">{[lectureKindLabel(l.kind, t, streams), l.divisionName, l.roomName].filter(Boolean).join(" · ")}</span>
                     {l.substitute ? <> <Badge tone="info">{t("academics.standingIn")}</Badge></> : null}
                   </span>
                   <span className="flex items-center gap-2">

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import type { CourseAttendance, Condonation, TimetableCell } from "@edulink/contracts";
+import type { CourseAttendance, Condonation, StreamCode, TimetableCell } from "@edulink/contracts";
+import { tv } from "@/lib/stream-words";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
@@ -25,6 +26,20 @@ export const FLAG_KEY: Record<string, TranslationKey> = { NONE: "academics.flagN
 export const ITEM_KEY: Record<string, TranslationKey> = { RESOURCE: "academics.itemRESOURCE", NOTES: "academics.itemNOTES", QUESTION_PAPER: "academics.itemQUESTION_PAPER", MODEL_ANSWER: "academics.itemMODEL_ANSWER", LINK: "academics.itemLINK" };
 export const LEVEL_KEY: Record<string, TranslationKey> = { UG: "academics.levelUG", PG: "academics.levelPG", DIPLOMA: "academics.levelDIPLOMA" };
 export const ROOM_KEY: Record<string, TranslationKey> = { CLASSROOM: "academics.roomCLASSROOM", LAB: "academics.roomLAB", SEMINAR: "academics.roomSEMINAR", OTHER: "academics.roomOTHER" };
+/**
+ * A lecture's or a room's kind in the college's own words (5 Oct 2026): an
+ * architecture college's lecture is a studio, a pharmacy college's lab a
+ * practical (STREAM_PRESETS[…].vocabulary through `tv`); a college of several
+ * streams, or none recorded, keeps the general word.
+ */
+export function lectureKindLabel(kind: string, t: Translate, streams: readonly StreamCode[] = []): string {
+  if (kind === "LECTURE") return tv("lecture", streams, t);
+  if (kind === "LAB") return tv("lab", streams, t);
+  return t(LECTURE_KIND_KEY[kind] ?? "academics.lectureLECTURE");
+}
+export function roomKindLabel(kind: string, t: Translate, streams: readonly StreamCode[] = []): string {
+  return kind === "LAB" ? tv("lab", streams, t) : t(ROOM_KEY[kind] ?? "academics.roomOTHER");
+}
 export const AWARD_KEY: Record<string, TranslationKey> = { CERTIFICATE: "academics.awardCERTIFICATE", DIPLOMA: "academics.awardDIPLOMA", DEGREE: "academics.awardDEGREE", HONOURS_DEGREE: "academics.awardHONOURS_DEGREE" };
 export const LOAD_KEY: Record<string, TranslationKey> = { UNDER: "academics.loadUNDER", WITHIN: "academics.loadWITHIN", OVER: "academics.loadOVER" };
 
@@ -107,7 +122,7 @@ export function CondonationBadge({ t, c }: { t: Translate; c: Pick<Condonation, 
 }
 
 /** The week as a list per day (a grid is too wide for a phone; the web's narrow screens read this too). */
-export function WeekList({ t, locale, weekdays, cells, linkFor }: { t: Translate; locale: string; weekdays: number[]; cells: TimetableCell[]; linkFor?: (c: TimetableCell) => string }) {
+export function WeekList({ t, locale, weekdays, cells, linkFor, streams = [] }: { t: Translate; locale: string; weekdays: number[]; cells: TimetableCell[]; linkFor?: (c: TimetableCell) => string; streams?: readonly StreamCode[] }) {
   if (cells.length === 0) return <EmptyState className="border-0 bg-transparent py-4" title={t("academics.timetableNone")} description={t("academics.timetableNoneBody")} />;
   return (
     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -127,7 +142,7 @@ export function WeekList({ t, locale, weekdays, cells, linkFor }: { t: Translate
                     <span className="tabular-nums text-fg-muted">{clock(c.startMinute, c.endMinute)}</span>{" "}
                     {linkFor ? <Link className="font-medium text-accent-strong underline underline-offset-2" href={linkFor(c)}>{c.courseCode}</Link> : <span className="font-medium text-fg">{c.courseCode}</span>}{" "}
                     <span className="text-fg-muted">
-                      {[t(LECTURE_KIND_KEY[c.kind]!), c.divisionName, c.labBatchName ? t("streamRecords.batchN", { name: c.labBatchName }) : null, c.roomName, c.facultyName].filter(Boolean).join(" · ")}
+                      {[lectureKindLabel(c.kind, t, streams), c.divisionName, c.labBatchName ? t("streamRecords.batchN", { name: c.labBatchName }) : null, c.roomName, c.facultyName].filter(Boolean).join(" · ")}
                     </span>
                   </li>
                 ))}

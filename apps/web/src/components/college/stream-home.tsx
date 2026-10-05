@@ -6,6 +6,7 @@ import { streamPreset, streamsOf } from "@/lib/streams";
 import { enabledModules } from "@/lib/modules";
 import { streamLabel } from "@/lib/institution";
 import { HOME_TILE_META, tileHref } from "@/lib/stream-tiles";
+import { homeFigures, type HomeFigure } from "@/lib/stream-home";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { cn } from "@/lib/cn";
 
@@ -17,10 +18,14 @@ import { cn } from "@/lib/cn";
  * education…), and a banner for any record a stream asks for that the app
  * does not keep yet. A tile whose module is off says so; one whose page is not
  * built says "coming". A college with no stream chosen is asked to choose.
+ * Each live tile carries one line of its numbers (lib/stream-home.ts, counted
+ * on read), and a college whose streams offer NSS sees the unit's year.
  */
 export async function StreamHome({ schoolId, role, t }: { schoolId: string; role: "ADMIN" | "PRINCIPAL"; t: Translate }) {
   const [streams, modulesOn] = await Promise.all([streamsOf(schoolId), enabledModules(schoolId)]);
   const preset = streamPreset(streams);
+  const figures = await homeFigures(schoolId, { tiles: preset.homeTiles, modulesOn, streams });
+  const say = (f: HomeFigure) => t(f.key, { ...f.values, ...Object.fromEntries(Object.entries(f.words ?? {}).map(([k, key]) => [k, t(key)])) });
   return (
     <section className="space-y-3" aria-label={t("streams.homeTitle")} data-testid="stream-home">
       <Card>
@@ -40,17 +45,24 @@ export async function StreamHome({ schoolId, role, t }: { schoolId: string; role
               const meta = HOME_TILE_META[tile];
               const href = tileHref(tile, role);
               const off = meta.module ? !modulesOn.includes(meta.module) : false;
-              const note = !href ? t("streams.tileComing") : off ? t("streams.tileOff") : null;
+              // A switched-off tile tells the office where to switch it on, and opens that page for the registrar (5 Oct 2026).
+              const note = !href ? t("streams.tileComing") : off ? t(role === "ADMIN" ? "streams.tileOffSwitch" : "streams.tileOff") : null;
+              const figure = !note ? figures.tiles[tile] : undefined;
               const body = (
                 <>
                   <span className="block text-sm font-semibold text-fg">{t(meta.labelKey)}</span>
                   {note ? <span className="block text-xs text-fg-muted">{note}</span> : null}
+                  {figure ? <span className="mt-0.5 block text-xs tabular-nums text-fg-muted" data-figure>{say(figure)}</span> : null}
                 </>
               );
               return (
                 <li key={tile} data-tile={tile}>
-                  {href && !off ? (
-                    <Link href={href} className="block rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 transition-colors hover:bg-surface-muted">
+                  {href && off && role === "ADMIN" ? (
+                    <Link href="/admin/settings/modules" className="block min-h-11 rounded-[--radius-md] border border-dashed border-border px-3 py-2.5 transition-colors hover:bg-surface-muted">
+                      {body}
+                    </Link>
+                  ) : href && !off ? (
+                    <Link href={href} className="block min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 py-2.5 transition-colors hover:bg-surface-muted">
                       {body}
                     </Link>
                   ) : (
@@ -60,6 +72,7 @@ export async function StreamHome({ schoolId, role, t }: { schoolId: string; role
               );
             })}
           </ul>
+          {figures.nss && figures.nss.enrolled + figures.nss.hours > 0 ? <p className="mt-3 text-xs tabular-nums text-fg-muted" data-testid="stream-home-nss">{t("streams.figure.nss", figures.nss)}</p> : null}
         </CardBody>
       </Card>
       {preset.notBuilt.length > 0 && (

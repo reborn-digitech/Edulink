@@ -133,7 +133,7 @@ export default async function AcademicsSetupPage({ searchParams }: { searchParam
                   {canEdit ? (
                     <form action={setFacultyDepartmentAction} className="flex items-center gap-2">
                       <input type="hidden" name="membershipId" value={f.membershipId} />
-                      <select aria-label={t("academics.fieldDepartment")} className={INPUT} name="departmentId" defaultValue={f.departmentId ?? ""}>
+                      <select aria-label={w("department")} className={INPUT} name="departmentId" defaultValue={f.departmentId ?? ""}>
                         <option value="">{t("academics.none")}</option>
                         {s.departments.map((d) => (
                           <option key={d.id} value={d.id}>{d.name}</option>

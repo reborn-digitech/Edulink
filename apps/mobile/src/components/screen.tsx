@@ -9,6 +9,8 @@ import { Text } from "./text";
 import { PageTitle } from "./page-title";
 import { Icon } from "./icon";
 import { useBack } from "./chrome";
+import { useSessionIfAny } from "@/lib/session";
+import type { TranslationKey } from "@edulink/i18n";
 
 /**
  * The page: safe area, the ground colour with the role's colour washing
@@ -37,6 +39,7 @@ export function Screen({
         {title}
       </Text>
       ) : null}
+      {title ? <StreamChip /> : null}
       {description ? (
         <Text variant="sm" tone="muted">
           {description}
@@ -114,5 +117,36 @@ function BackButton({ onBack }: { onBack: () => void }) {
         {tr("common.back")}
       </Text>
     </Pressable>
+  );
+}
+
+/**
+ * The college's streams under every page's title (5 Oct 2026), as the web's
+ * shell draws them beside the college's name: the college's name and one
+ * quiet chip, the streams joined. Nothing at a school, at a college with no
+ * stream recorded, or before the session is read.
+ */
+function StreamChip() {
+  const t = useTheme();
+  const tr = useT();
+  const session = useSessionIfAny();
+  const me = session?.status === "signed-in" ? session.me : null;
+  const streams = me?.streams ?? [];
+  if (!me || streams.length === 0) return null;
+  const names = streams.map((code) => tr(`streams.${code}.name` as TranslationKey)).join(" · ");
+  const place = me.contexts.find((c) => c.schoolId === me.active.schoolId)?.schoolName;
+  return (
+    <View testID="stream-chip" accessible accessibilityLabel={[place, tr("streams.chipLabel", { streams: names })].filter(Boolean).join(", ")} style={{ flexDirection: "row", alignItems: "center", flexWrap: "wrap", gap: t.space[2] }}>
+      {place ? (
+        <Text variant="xs" tone="muted" numberOfLines={1} style={{ flexShrink: 1 }}>
+          {place}
+        </Text>
+      ) : null}
+      <View style={{ borderWidth: 1, borderColor: t.border, backgroundColor: t.surfaceMuted, borderRadius: t.radius.xl, paddingHorizontal: t.space[2], flexShrink: 1 }}>
+        <Text variant="xs" tone="muted" numberOfLines={1}>
+          {names}
+        </Text>
+      </View>
+    </View>
   );
 }

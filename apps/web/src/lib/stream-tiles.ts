@@ -25,7 +25,10 @@ export const HOME_TILE_META: Record<HomeTileCode, HomeTile> = {
   scholarships: { labelKey: "streams.tile.scholarships", href: "/accounts/scholarships", module: "SCHOLARSHIPS" },
   iqac: { labelKey: "streams.tile.iqac", href: "/iqac", principalHref: "/principal/accreditation", module: "IQAC" },
   library: { labelKey: "streams.tile.library", href: "/library", module: "LIBRARY" },
-  labs: { labelKey: "streams.tile.labs", href: "/admin/inventory", module: "INVENTORY" },
+  // The lab in-charge's desk, which the office and the head read (5 Oct 2026, the UX pass): the labs with their stock,
+  // the batches, the practical record to sign and the breakages, under ACADEMICS — an engineering college with the
+  // stores off read "Switched off" here while its batches and practicals were kept.
+  labs: { labelKey: "streams.tile.labs", href: "/duties/lab", module: "ACADEMICS" },
   placement: { labelKey: "streams.tile.placement", href: "/placement", module: "PLACEMENT" },
   internships: { labelKey: "streams.tile.internships", href: "/placement/internships", module: "PLACEMENT" },
   // The NBA SAR (the filings builder, 5 Oct 2026): its figures and worksheet on the IQAC's documents.

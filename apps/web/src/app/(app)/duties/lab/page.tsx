@@ -8,7 +8,7 @@ import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { ModuleOff } from "@/components/module-off";
-import { LINK, NUM, TD, TH } from "@/components/module-flash";
+import { NUM, TD, TH } from "@/components/module-flash";
 import { RecordsFlash } from "@/components/stream-records/flash";
 import { dutyPageContext } from "@/components/stream-records/duty-page";
 import { labDesk } from "@/lib/duty-desks";
@@ -36,6 +36,8 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
   const params = await searchParams;
   const d = await labDesk(ctx);
   const holder = ctx.role === "FACULTY" || ctx.role === "HOD";
+  // The office's way on from an empty card (5 Oct 2026, the UX pass): it marks the labs and splits the batches.
+  const office = ctx.role === "ADMIN" || ctx.role === "PRINCIPAL";
   const canBreak = d.inventoryOn && (holder || ctx.role === "ADMIN") && d.labs.length > 0;
   return (
     <div className="space-y-6">
@@ -52,7 +54,18 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
         <CardHeader icon={<FlaskIcon weight="duotone" className="size-5" />} title={t("duties.lab.labsTitle")} description={t(d.inventoryOn ? "duties.lab.labsBody" : "duties.lab.labsNoStores")} />
         <CardBody>
           {d.labs.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("duties.lab.noLabs")} description={t("duties.lab.noLabsBody")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("duties.lab.noLabs")}
+              description={t("duties.lab.noLabsBody")}
+              action={
+                office ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/admin/academics/terms">{t("streamRecords.batches.toAcademics")}</Link>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <div className="grid gap-4 lg:grid-cols-2">
               {d.labs.map((lab) => (
@@ -88,7 +101,14 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
         <CardHeader icon={<UsersThreeIcon weight="duotone" className="size-5" />} title={t("duties.lab.batchesTitle")} description={t("duties.lab.batchesBody")} />
         <CardBody>
           {d.divisions.length === 0 ? (
-            <p className="text-sm text-fg-muted">{t("duties.lab.noBatches")}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <p className="text-sm text-fg-muted">{t("duties.lab.noBatches")}</p>
+              {office ? (
+                <Button asChild size="sm" variant="secondary">
+                  <Link href="/admin/stream-records/lab-batches">{t("streamRecords.openBatches")}</Link>
+                </Button>
+              ) : null}
+            </div>
           ) : (
             <ul className="space-y-3 text-sm">
               {d.divisions.map((div) => (
@@ -133,9 +153,9 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
               ))}
             </ul>
           )}
-          <p className="mt-3 text-sm">
-            <Link className={LINK} href={holder ? (ctx.role === "HOD" ? "/hod/practicals" : "/faculty/practicals") : "/admin/stream-records/practicals"}>{t("duties.lab.openRecord")}</Link>
-          </p>
+          <Button asChild size="sm" variant="secondary" className="mt-3">
+            <Link href={holder ? (ctx.role === "HOD" ? "/hod/practicals" : "/faculty/practicals") : "/admin/stream-records/practicals"}>{t("duties.lab.openRecord")}</Link>
+          </Button>
         </CardBody>
       </Card>
 
@@ -147,11 +167,11 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
               <table className="w-full text-sm">
                 <thead>
                   <tr>
-                    <th className={TH}>{t("duties.lab.colWhen")}</th>
-                    <th className={TH}>{t("duties.lab.colItem")}</th>
-                    <th className={TH}>{t("duties.lab.colLab")}</th>
-                    <th className={`${TH} text-right`}>{t("duties.lab.colQuantity")}</th>
-                    <th className={TH}>{t("duties.lab.colNote")}</th>
+                    <th scope="col" className={TH}>{t("duties.lab.colWhen")}</th>
+                    <th scope="col" className={TH}>{t("duties.lab.colItem")}</th>
+                    <th scope="col" className={TH}>{t("duties.lab.colLab")}</th>
+                    <th scope="col" className={`${TH} text-right`}>{t("duties.lab.colQuantity")}</th>
+                    <th scope="col" className={TH}>{t("duties.lab.colNote")}</th>
                   </tr>
                 </thead>
                 <tbody>

@@ -373,6 +373,8 @@ export const mr: Dictionary = {
 
   role: {
     admin: "शाळा प्रशासक",
+    // A college's office in the rail (5 Oct 2026): the registrar is no school admin.
+    collegeAdmin: "महाविद्यालय कार्यालय",
     adminPlural: "प्रशासक",
     principal: "मुख्याध्यापक",
     principalPlural: "मुख्याध्यापक",
@@ -14815,7 +14817,27 @@ export const mr: Dictionary = {
     homeView: "महाविद्यालय प्रोफाइल पाहा",
     tileComing: "लवकरच",
     tileOff: "बंद आहे",
+    tileOffSwitch: "बंद आहे. कार्यालय ते मॉड्यूल्समध्ये सुरू करते.",
     comingTitle: "अजून अ‍ॅपमध्ये नाही",
+    // The figures under the registrar's and the principal's tiles, and the streams' chip in the header (5 Oct 2026, S5).
+    figure: {
+      people: "विद्यार्थी {students} · प्राध्यापक {faculty}",
+      academics: "अभ्यासक्रम {programmes} · तुकड्या {divisions}",
+      exams: "सुरू असलेली सत्रे: {count}",
+      admissions: "निर्णयासाठी अर्ज: {count}",
+      scholarships: "प्रलंबित दावे: {count}",
+      iqac: "या तिमाहीत देय अहवाल: {count}",
+      library: "दिलेली पुस्तके: {count}",
+      labs: "बॅच {batches} · स्वाक्षरी झालेली प्रात्यक्षिके {signed} / {records}",
+      placement: "सुरू ड्राइव्ह: {count}",
+      internships: "सुरू इंटर्नशिप: {count}",
+      nba: "स्व-मूल्यांकन अहवाल {year}: {state}",
+      nbaNone: "अजून स्व-मूल्यांकन अहवाल तयार झालेला नाही",
+      mootCourt: "या वर्षीची मूट कोर्ट: {count}",
+      teachingPractice: "नियुक्त्या {postings} · पाहिलेले पाठ {observed} / {planned}",
+      nss: "या वर्षी NSS: नोंदणी {enrolled} · तास {hours}",
+    },
+    chipLabel: "शाखा: {streams}",
     tile: {
       people: "लोक",
       academics: "शैक्षणिक",

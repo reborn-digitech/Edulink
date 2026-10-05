@@ -32,7 +32,25 @@ const all = sessions();
 const keys = Object.keys(all).filter((key) => NAV[all[key]!.role as Role]);
 const shown = (key: string) => {
   const actor = all[key]!;
-  return NAV[actor.role as Role].filter((item) => !item.module || !actor.modules || actor.modules.includes(item.module));
+  // As the shell shows them (5 Oct 2026): the module on, the duty held, and at a college with streams one of the entry's.
+  return NAV[actor.role as Role].filter(
+    (item) =>
+      (!item.module || !actor.modules || actor.modules.includes(item.module)) &&
+      (!item.duty || (actor.duties ?? []).includes(item.duty)) &&
+      (!item.streams || !actor.streams?.length || item.streams.some((s) => actor.streams!.includes(s))),
+  );
+};
+
+/**
+ * The streams' pages no menu entry leads to (5 Oct 2026): the office's and the head's records and the duties' desks
+ * they read, the councils' returns behind the IQAC's documents, and the HOD's NBA report. The walk of 5 October found
+ * their empty states with no way on and their links under 44 px; the gate keeps them.
+ */
+const STREAM_PAGES: Record<string, string[]> = {
+  COLLEGE_ADMIN: ["/admin/stream-records/lab-batches", "/admin/stream-records/moot-courts", "/admin/stream-records/practicals", "/duties/lab", "/duties/nss", "/duties/ncc", "/duties/research", "/duties/exam-squad", "/duties/anti-ragging", "/iqac/documents/nba", "/iqac/documents/bci"],
+  COLLEGE_PRINCIPAL: ["/admin/stream-records", "/admin/stream-records/lab-batches", "/duties/lab", "/iqac/documents"],
+  IQAC: ["/iqac/documents/pci", "/iqac/documents/ncte"],
+  HOD: ["/hod/nba"],
 };
 
 /**
@@ -54,7 +72,7 @@ const walked: [role: string, hrefs: string[], prefixes: Set<string>][] = [
     const action = PRIMARY_ACTION[all[key]!.role as Role];
     return [
       key,
-      Array.from(new Set([...items.flatMap((item) => [item.href, ...(item.also ?? [])]), ...(action ? [action.href] : [])])),
+      Array.from(new Set([...items.flatMap((item) => [item.href, ...(item.also ?? [])]), ...(action ? [action.href] : []), ...(STREAM_PAGES[key] ?? [])])),
       new Set(items.flatMap((item) => item.also ?? []).filter((href) => !items.some((item) => item.href === href))),
     ];
   }),

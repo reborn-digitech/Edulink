@@ -14,6 +14,7 @@ import { db } from "@/lib/db";
 import { formatDateKey } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { squadVisitAction } from "../actions";
+import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("duties.examSquad.title") };
@@ -51,7 +52,19 @@ export default async function ExamSquadPage({ searchParams }: { searchParams: Pr
         <CardHeader icon={<ExamIcon weight="duotone" className="size-5" />} title={t("duties.examSquad.papersTitle")} description={t("duties.examSquad.papersBody")} />
         <CardBody className="space-y-4">
           {d.papers.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("duties.examSquad.noPapers")} description={t("duties.examSquad.noPapersBody")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("duties.examSquad.noPapers")}
+              description={t("duties.examSquad.noPapersBody")}
+              action={
+                // The exam cell schedules the papers (5 Oct 2026, the UX pass): its way on for those who open it.
+                ctx.role === "ADMIN" || ctx.role === "PRINCIPAL" || ctx.role === "EXAM_CONTROLLER" ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/exam-cell">{t("examCell.title")}</Link>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <ul className="divide-y divide-border text-sm">
               {d.papers.map((p) => (

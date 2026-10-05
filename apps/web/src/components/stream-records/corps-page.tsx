@@ -52,7 +52,18 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
         <CardHeader icon={<UsersThreeIcon weight="duotone" className="size-5" />} title={t("duties.corps.enrolledTitle")} description={t("duties.corps.enrolledBody", { hours: d.hoursPerYear })} />
         <CardBody className="space-y-4">
           {d.enrolled.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("duties.corps.noneEnrolled")} description={t(d.canEdit ? "duties.corps.noneEnrolledBody" : "duties.corps.noneEnrolledRead")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("duties.corps.noneEnrolled")}
+              description={t(d.canEdit ? "duties.corps.noneEnrolledBody" : "duties.corps.noneEnrolledRead")}
+              action={
+                d.canEdit && notEnrolled.length > 0 ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <a href="#enrol-form">{t("duties.corps.enrol")}</a>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <TableScroll label={t("duties.corps.enrolledTitle")}>
               <table className="w-full text-sm">
@@ -91,7 +102,7 @@ export async function CorpsPage({ corps, searchParams }: { corps: CorpsCode; sea
             </TableScroll>
           )}
           {d.canEdit && notEnrolled.length > 0 ? (
-            <form action={enrolCorpsAction} className="space-y-3 border-t border-border pt-4">
+            <form id="enrol-form" action={enrolCorpsAction} className="space-y-3 border-t border-border pt-4">
               <input type="hidden" name="corps" value={corps} />
               <details>
                 <summary className="min-h-11 cursor-pointer py-2 text-sm font-medium text-accent-strong">{t("duties.corps.chooseToEnrol", { count: notEnrolled.length })}</summary>

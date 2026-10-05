@@ -9,7 +9,8 @@ import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
 import { ModuleFlash } from "@/components/module-flash";
-import { LECTURE_KIND_KEY, MARK_KEY, clock } from "@/components/academics/parts";
+import { MARK_KEY, clock, lectureKindLabel } from "@/components/academics/parts";
+import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { isModuleOn } from "@/lib/modules";
 import { lectureSheet } from "@/lib/academics-attendance";
@@ -36,7 +37,7 @@ export default async function LecturePage({ params, searchParams }: { params: Pr
   const clientId = `web-${randomBytes(9).toString("hex")}`;
   return (
     <div className="space-y-6">
-      <PageHeader title={[l.courseCode, l.courseName].join(" · ")} description={[l.dateKey, clock(l.startMinute, l.endMinute), t(LECTURE_KIND_KEY[l.kind]!), l.divisionName, l.roomName].filter(Boolean).join(" · ")} />
+      <PageHeader title={[l.courseCode, l.courseName].join(" · ")} description={[l.dateKey, clock(l.startMinute, l.endMinute), lectureKindLabel(l.kind, t, await streamsOf(ctx.schoolId)), l.divisionName, l.roomName].filter(Boolean).join(" · ")} />
       <ModuleFlash t={t} params={await searchParams} />
       <Card>
         <CardHeader icon={<CheckSquareIcon weight="duotone" className="size-5" />} title={t("academics.registerTitle", { n: sheet.entries.length })} description={t("academics.registerBody", { threshold: sheet.threshold })} />

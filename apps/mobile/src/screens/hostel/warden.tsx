@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { hostelLeaveListSchema, hostelLeaveRowSchema, hostelRollCallSheetSchema, hostelsSchema, hostelVisitorsSchema, type HostelRollCallSheet, type HostelRollStatus } from "@edulink/contracts";
+import { hostelLeaveListSchema, hostelLeaveRowSchema, hostelNightSchema, hostelRollCallSheetSchema, hostelsSchema, hostelVisitorsSchema, type HostelNight, type HostelRollCallSheet, type HostelRollStatus } from "@edulink/contracts";
+import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -14,14 +15,16 @@ import { OutboxBadge, postOrQueue, useOutboxRunner } from "../teacher/support";
 import { ModuleRoleHome } from "../modules/role-home";
 import { LEAVE_KIND_KEY, LEAVE_STATUS_KEY, ROLL_KEY, whenOf } from "./words";
 
-type Mode = "roll" | "leave" | "visitors";
+type Mode = "roll" | "leave" | "night" | "visitors";
 
 /**
  * The warden's hostel on the phone (module HOSTEL, 3 Oct 2026) — the
  * WARDEN's home, the web's /hostel: tonight's roll call (saved on the device
  * first and sent through the outbox, so a corridor with no signal still
  * keeps the call), leave to decide and the gate's out and in, and the
- * visitor book. Rooms, the menu and incidents are the web's /hostel pages.
+ * visitor book, and tonight at the gate (5 Oct 2026: the web's /hostel/night —
+ * who is away tonight, due back by when, signed out and in from the row).
+ * Rooms, the menu and incidents are the web's /hostel pages.
  * Switched off, the home says so.
  */
 export function WardenHome() {
@@ -51,10 +54,11 @@ export function WardenHome() {
             options={[
               { value: "roll", label: t("hostel.tabRollCall") },
               { value: "leave", label: t("hostel.tabLeave") },
+              { value: "night", label: t("collegeDesks.nightTab") },
               { value: "visitors", label: t("hostel.tabVisitors") },
             ]}
           />
-          {mode === "roll" ? <RollCall hostelId={chosen} /> : mode === "leave" ? <Leave /> : <Visitors hostelId={chosen} />}
+          {mode === "roll" ? <RollCall hostelId={chosen} /> : mode === "leave" ? <Leave /> : mode === "night" ? <Night onLeave={() => setMode("leave")} /> : <Visitors hostelId={chosen} />}
         </>
       ) : null}
     </Screen>
@@ -162,6 +166,84 @@ function Leave() {
         </Card>
       ))}
     </>
+  );
+}
+
+const NIGHT_STATE: Record<HostelNight["leaves"][number]["state"], { key: TranslationKey; tone: "ok" | "warn" | "danger" | "muted" }> = {
+  OVERDUE: { key: "collegeDesks.nightStateOVERDUE", tone: "danger" },
+  OUT: { key: "collegeDesks.nightStateOUT", tone: "muted" },
+  NOT_OUT: { key: "collegeDesks.nightStateNOT_OUT", tone: "muted" },
+  BACK_LATE: { key: "collegeDesks.nightStateBACK_LATE", tone: "warn" },
+  BACK: { key: "collegeDesks.nightStateBACK", tone: "ok" },
+};
+const hhmm = (minute: number) => `${String(Math.floor(minute / 60)).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`;
+/** A date key a day either side, as the calendar counts (no clock, no zone). */
+export function shiftDateKey(key: string, days: number): string {
+  const [y, m, d] = key.split("-").map(Number);
+  const at = new Date(Date.UTC(y!, m! - 1, d! + days));
+  return at.toISOString().slice(0, 10);
+}
+
+/**
+ * Tonight at the gate (5 Oct 2026), the web's /hostel/night: the hostels'
+ * curfew and night-out rule, then every approved leave covering the night with
+ * when each is due back and where it stands; a boarder not yet gone out is
+ * signed out from the row, one out or overdue is signed back in. The night
+ * before and after are a press away; the server decides "tonight".
+ */
+function Night({ onLeave }: { onLeave: () => void }) {
+  const t = useT();
+  const { locale } = useLocale();
+  const th = useTheme();
+  const qc = useQueryClient();
+  const [date, setDate] = useState<string | null>(null);
+  const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  const night = useQuery({ queryKey: ["hostel", "night", date], queryFn: async () => hostelNightSchema.parse(unwrap(await api().get(`/api/v1/hostel/night${date ? `?date=${date}` : ""}`))) });
+  const gate = useMutation({
+    mutationFn: async (input: { id: string; what: "out" | "in" }) => hostelLeaveRowSchema.parse(unwrap(await api().post(input.what === "out" ? `/api/v1/hostel/leave/${input.id}/out` : `/api/v1/hostel/leave/${input.id}/in`, {}))),
+    onSuccess: (l, input) => {
+      setNotice({ tone: "ok", text: input.what === "out" ? t("hostel.wentOut", { name: l.name }) : l.late ? t("hostel.cameBackLate", { name: l.name }) : t("hostel.cameBack", { name: l.name }) });
+      void qc.invalidateQueries({ queryKey: ["hostel"] });
+    },
+    onError: (e: Error) => setNotice({ tone: "danger", text: e.message }),
+  });
+  if (night.isPending) return <Loading />;
+  if (night.isError) return <Failed message={night.error.message} onRetry={() => void night.refetch()} />;
+  const n = night.data;
+  return (
+    <View style={{ gap: th.space[3] }}>
+      <Text variant="sm" tone="muted">{t("collegeDesks.nightIntro")}</Text>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        <Button label={t("collegeDesks.nightPrev")} variant="ghost" onPress={() => setDate(shiftDateKey(n.dateKey, -1))} />
+        <Button label={t("collegeDesks.nightNext")} variant="ghost" onPress={() => setDate(shiftDateKey(n.dateKey, 1))} />
+        {date ? <Button label={t("collegeDesks.nightToday")} variant="ghost" onPress={() => setDate(null)} /> : null}
+      </View>
+      {notice ? <Notice text={notice.text} tone={notice.tone} /> : null}
+      <Card title={t("collegeDesks.nightRulesTitle")}>
+        {n.college ? null : <Text variant="sm" tone="muted">{t("collegeDesks.nightNoCurfew")}</Text>}
+        {n.hostels.map((h) => (
+          <Row key={h.id} title={h.name} caption={[n.college ? t("collegeDesks.nightCurfew", { time: hhmm(h.curfewMinute) }) : null, t(h.nightOutAllowed ? "collegeDesks.nightOutsAllowed" : "collegeDesks.nightOutsNotAllowed")].filter(Boolean).join(" · ")} />
+        ))}
+      </Card>
+      <Card title={`${t("collegeDesks.nightTitle")} · ${n.dateKey}`}>
+        {n.leaves.length === 0 ? <Empty icon="calendar" title={t("collegeDesks.nightNone")} body={t("collegeDesks.nightNoneBody", { date: n.dateKey })} action={<Button label={t("collegeDesks.nightOpenLeave")} variant="secondary" onPress={onLeave} />} /> : null}
+        {n.leaves.map((l) => (
+          <View key={l.leaveId} style={{ gap: th.space[1] }}>
+            <Row
+              title={`${l.name} · ${l.hostelName} ${l.roomNumber} · ${t(LEAVE_KIND_KEY[l.kind])}`}
+              caption={[
+                t(l.curfew ? "collegeDesks.nightBackByCurfew" : "collegeDesks.nightBackBy", { time: whenOf(l.backBy, locale) }),
+                l.outAt ? t("hostel.outAt", { at: whenOf(l.outAt, locale) }) : null,
+                l.inAt ? t("hostel.inAt", { at: whenOf(l.inAt, locale) }) : null,
+              ].filter(Boolean).join(" · ")}
+            />
+            <Text variant="sm" tone={NIGHT_STATE[l.state].tone}>{t(NIGHT_STATE[l.state].key)}</Text>
+            {l.state === "NOT_OUT" ? <Button label={t("hostel.signOut")} variant="secondary" disabled={gate.isPending} onPress={() => gate.mutate({ id: l.leaveId, what: "out" })} /> : null}
+            {l.state === "OUT" || l.state === "OVERDUE" ? <Button label={t("hostel.signIn")} variant="secondary" disabled={gate.isPending} onPress={() => gate.mutate({ id: l.leaveId, what: "in" })} /> : null}
+          </View>
+        ))}
+      </Card>
+    </View>
   );
 }
 

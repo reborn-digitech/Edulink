@@ -66,7 +66,14 @@ export default async function CouncilPage({ params, searchParams }: { params: Pr
         <Link href="/iqac/documents">{t("councilFilings.backToDocuments")}</Link>
       </Button>
       {refusal || !view ? (
-        <EmptyState title={refusal ?? t("councilFilings.refuseNotApplicable")} />
+        <EmptyState
+          title={refusal ?? t("councilFilings.refuseNotApplicable")}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/iqac/documents">{t("councilFilings.backToDocuments")}</Link>
+            </Button>
+          }
+        />
       ) : (
         <>
           <Card>

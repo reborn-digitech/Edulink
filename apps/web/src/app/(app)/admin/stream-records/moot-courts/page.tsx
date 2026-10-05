@@ -48,7 +48,18 @@ export default async function MootCourtsPage({ searchParams }: { searchParams: P
         <CardHeader icon={<GavelIcon weight="duotone" className="size-5" />} title={t("streamRecords.moots.listTitle")} />
         <CardBody>
           {data.items.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("streamRecords.moots.none")} description={t(data.canEdit ? "streamRecords.moots.noneBody" : "streamRecords.moots.noneRead")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("streamRecords.moots.none")}
+              description={t(data.canEdit ? "streamRecords.moots.noneBody" : "streamRecords.moots.noneRead")}
+              action={
+                data.canEdit && ctx.role === "ADMIN" ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <a href="#moot-form">{t("streamRecords.moots.addTitle")}</a>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <ul className="divide-y divide-border">
               {data.items.map((m) => (
@@ -79,7 +90,7 @@ export default async function MootCourtsPage({ searchParams }: { searchParams: P
         <Card>
           <CardHeader title={t("streamRecords.moots.addTitle")} description={t("streamRecords.moots.addBody")} />
           <CardBody>
-            <form action={saveMootCourtAction} className="space-y-4">
+            <form id="moot-form" action={saveMootCourtAction} className="space-y-4">
               <div className="grid gap-3 sm:grid-cols-3">
                 <TextField name="name" label={t("streamRecords.moots.fieldName")} required minLength={2} maxLength={160} />
                 <DateField name="at" label={t("streamRecords.moots.fieldDay")} required defaultValue={today} />

@@ -103,7 +103,7 @@ const FILING_STATUS_KEY: Record<"DRAFT" | "AWAITING_SIGNOFF" | "SIGNED_OFF" | "R
 };
 
 /** The filings the phone has words for; a kind added since (a council's return) reads as its code until it has them. */
-const FILING_KIND_KEY: Partial<Record<CollegeFilingKind, TranslationKey>> = {
+const FILING_KIND_KEY: Record<CollegeFilingKind, TranslationKey> = {
   SSR: "iqac.filingKind.SSR",
   AQAR: "iqac.filingKind.AQAR",
   IIQA: "iqac.filingKind.IIQA",
@@ -111,9 +111,14 @@ const FILING_KIND_KEY: Partial<Record<CollegeFilingKind, TranslationKey>> = {
   AISHE: "iqac.filingKind.AISHE",
   AICTE_DISCLOSURE: "iqac.filingKind.AICTE_DISCLOSURE",
   AFFILIATION_RETURN: "iqac.filingKind.AFFILIATION_RETURN",
+  // The councils' returns (5 Oct 2026): pharmacy, law, education and an engineering department's NBA report.
+  PCI_INSPECTION: "iqac.filingKind.PCI_INSPECTION",
+  BCI_RETURN: "iqac.filingKind.BCI_RETURN",
+  NCTE_RETURN: "iqac.filingKind.NCTE_RETURN",
+  NBA_SAR: "iqac.filingKind.NBA_SAR",
 };
 
 export function filingKindLabel(kind: CollegeFilingKind, t: (key: TranslationKey) => string): string {
-  const key = FILING_KIND_KEY[kind];
+  const key = FILING_KIND_KEY[kind] as TranslationKey | undefined;
   return key ? t(key) : kind.replace(/_/g, " ");
 }

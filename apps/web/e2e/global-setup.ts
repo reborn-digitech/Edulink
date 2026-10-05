@@ -20,6 +20,10 @@ export type Actor = {
   askedAboutPupilId?: string;
   /** The modules the actor's school has on (SchoolModule rows), so the axe walk opens only the entries the menu shows. Absent for an actor with no school. */
   modules?: string[];
+  /** A FACULTY's or HOD's duties (5 Oct 2026), so the axe walk opens only the duty entries the menu shows. */
+  duties?: string[];
+  /** The college's streams (5 Oct 2026): an entry for other streams (the practical record at a law college) is hidden. */
+  streams?: string[];
 };
 export type Sessions = Record<string, Actor>;
 
@@ -135,11 +139,18 @@ export default async function globalSetup() {
   // Each school actor's modules, read once: Northgate's for the school's, Vidya's for the college's.
   const modulesOf = new Map<string, string[]>();
   for (const actor of Object.values(sessions)) {
-    const session = await db.session.findFirst({ where: { tokenHash: createHash("sha256").update(actor.cookie.split("=")[1]!).digest("hex") }, select: { activeSchoolId: true } });
+    const session = await db.session.findFirst({ where: { tokenHash: createHash("sha256").update(actor.cookie.split("=")[1]!).digest("hex") }, select: { activeSchoolId: true, activeRole: true, userId: true } });
     const schoolId = session?.activeSchoolId;
     if (!schoolId) continue;
     if (!modulesOf.has(schoolId)) modulesOf.set(schoolId, (await db.schoolModule.findMany({ where: { schoolId }, select: { module: true } })).map((m) => m.module));
     actor.modules = modulesOf.get(schoolId);
+    // The streams and the duties (5 Oct 2026): the shell hides another stream's entries and a duty the person does not hold.
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { streamsJson: true } });
+    actor.streams = JSON.parse(school?.streamsJson ?? "[]") as string[];
+    if (session.activeRole) {
+      const membership = await db.membership.findFirst({ where: { userId: session.userId, schoolId, role: session.activeRole, status: "ACTIVE", leftAt: null }, select: { dutiesJson: true } });
+      actor.duties = JSON.parse(membership?.dutiesJson ?? "[]") as string[];
+    }
   }
 
   writeFileSync(join(__dirname, ".sessions.json"), JSON.stringify(sessions, null, 2));

@@ -9,7 +9,8 @@ import { PageHeader } from "@/components/ui/page-header";
 import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { LINK, ModuleFlash, NUM, TD, TH } from "@/components/module-flash";
-import { AttendanceTable, CondonationBadge, GROUND_KEY, INTERNAL_KIND_KEY, WeekList, clock, LECTURE_KIND_KEY } from "@/components/academics/parts";
+import { AttendanceTable, CondonationBadge, GROUND_KEY, INTERNAL_KIND_KEY, WeekList, clock, lectureKindLabel } from "@/components/academics/parts";
+import { streamsOf } from "@/lib/streams";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
@@ -29,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function StudentAcademicsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const ctx = await requireRole("STUDENT");
-  const [t, locale] = await Promise.all([getT(), getLocale()]);
+  const [t, locale, streams] = await Promise.all([getT(), getLocale(), streamsOf(ctx.schoolId)]);
   const [on, kind] = await Promise.all([isModuleOn(ctx.schoolId, "ACADEMICS"), institutionKindOf(ctx.schoolId)]);
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={isCollegeKind(kind)} />;
   const a = await studentAcademics(ctx);
@@ -48,7 +49,7 @@ export default async function StudentAcademicsPage({ searchParams }: { searchPar
             <ul className="space-y-1 text-sm">
               {a.today.map((c) => (
                 <li key={c.slotId}>
-                  <span className="tabular-nums text-fg-muted">{clock(c.startMinute, c.endMinute)}</span> <span className="font-medium text-fg">{c.courseCode}</span> <span className="text-fg-muted">{[t(LECTURE_KIND_KEY[c.kind]!), c.roomName, c.facultyName].filter(Boolean).join(" · ")}</span>
+                  <span className="tabular-nums text-fg-muted">{clock(c.startMinute, c.endMinute)}</span> <span className="font-medium text-fg">{c.courseCode}</span> <span className="text-fg-muted">{[lectureKindLabel(c.kind, t, streams), c.roomName, c.facultyName].filter(Boolean).join(" · ")}</span>
                 </li>
               ))}
             </ul>
@@ -130,7 +131,7 @@ export default async function StudentAcademicsPage({ searchParams }: { searchPar
       <Card>
         <CardHeader icon={<CalendarCheckIcon weight="duotone" className="size-5" />} title={t("academics.myWeek")} description={t("academics.myWeekBody")} />
         <CardBody>
-          <WeekList t={t} locale={locale} weekdays={a.week.weekdays} cells={a.week.cells} linkFor={(c) => `/student/academics/${c.offeringId}`} />
+          <WeekList t={t} locale={locale} weekdays={a.week.weekdays} cells={a.week.cells} streams={streams} linkFor={(c) => `/student/academics/${c.offeringId}`} />
         </CardBody>
       </Card>
       <Card>

@@ -26,6 +26,8 @@ export function EmptyState({
 }) {
   return (
     <div
+      // Found by the walks' inspector (an empty state with no way on is a finding, 5 Oct 2026).
+      data-empty-state="true"
       className={cn(
         "flex flex-col items-center justify-center rounded-[--radius-lg] border border-dashed border-border bg-surface/60 px-6 py-12 text-center",
         className,

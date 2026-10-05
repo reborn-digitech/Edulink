@@ -14,6 +14,8 @@ import type { Role } from "@/lib/constants";
 import { NAV } from "@/lib/nav";
 import { enabledModules, enabledModulesForFamily } from "@/lib/modules";
 import { myDuties } from "@/lib/duties";
+import { streamsOf } from "@/lib/streams";
+import { isCollegeKind, streamLabel } from "@/lib/institution";
 
 /**
  * The signed-in chrome, for a session that HAS a role.
@@ -47,13 +49,17 @@ export async function SignedInShell({
   const contexts = await listContexts(session.user.id);
   const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);
 
-  const [schoolName, unreadCount] = await Promise.all([
+  let college = false;
+  const [schoolName, unreadCount, streams] = await Promise.all([
     session.schoolId
       ? db.school
-          .findUnique({ where: { id: session.schoolId }, select: { name: true } })
+          .findUnique({ where: { id: session.schoolId }, select: { name: true, kind: true } })
           // The product's name is a word in each language (Shalaghar, शालाघर,
           // शाळाघर), so it comes from the dictionary like everything else.
-          .then((s) => s?.name ?? t("brand.name"))
+          .then((s) => {
+            college = isCollegeKind(s?.kind);
+            return s?.name ?? t("brand.name");
+          })
       : // No school on the session: a parent's slot describes where they are,
         // but an EXPERT also has no school and is not looking at their
         // children — a walkthrough found the expert sidebar headed "Your
@@ -61,6 +67,8 @@ export async function SignedInShell({
         // own name is the only honest title.
         Promise.resolve(role === "PARENT" ? t("shell.yourChildren") : t("brand.name")),
     db.notification.count({ where: { userId: session.user.id, readAt: null } }),
+    // A college's streams (5 Oct 2026): a chip beside its name on every page; [] at a school or with none chosen.
+    session.schoolId ? streamsOf(session.schoolId) : Promise.resolve([]),
   ]);
 
   /**
@@ -102,6 +110,10 @@ export async function SignedInShell({
   if (NAV[role].some((item) => item.duty)) {
     const mine = await myDuties(session);
     for (const item of NAV[role]) if (item.duty && !mine.includes(item.duty) && !hiddenHrefs.includes(item.href)) hiddenHrefs.push(item.href);
+  }
+  // A stream's entries (5 Oct 2026) at a college whose recorded streams include none of the entry's (none recorded: kept).
+  if (streams.length > 0) {
+    for (const item of NAV[role]) if (item.streams && !item.streams.some((s) => streams.includes(s)) && !hiddenHrefs.includes(item.href)) hiddenHrefs.push(item.href);
   }
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");
@@ -147,6 +159,8 @@ export async function SignedInShell({
         avatarKey: session.user.avatarKey,
         role,
         schoolName,
+        streams: streams.map((code) => streamLabel(code, t)),
+        college,
         contextCount,
         isSuperuser: session.user.isSuperuser,
       }}

@@ -1,6 +1,6 @@
 import type { Role } from "./constants";
 import type { TranslationKey } from "./i18n/dictionary";
-import type { DutyCode, SchoolModuleCode } from "@edulink/contracts";
+import { DUTY_STREAMS, type DutyCode, type SchoolModuleCode, type StreamCode } from "@edulink/contracts";
 
 /**
  * Navigation model.
@@ -51,7 +51,17 @@ export type NavItem = {
    * the page through it (role-gate.ts `modulePagePermitted`).
    */
   duty?: DutyCode;
+  /**
+   * The streams this entry is for (5 Oct 2026): the shell hides it at a
+   * college whose recorded streams include none of them — the practical
+   * record at a law or an arts-only college. A college with no stream recorded
+   * and a school keep it, as before; the page itself still opens.
+   */
+  streams?: readonly StreamCode[];
 };
+
+/** The streams that keep labs and a practical record (those that offer a lab in-charge). */
+const LAB_STREAMS: readonly StreamCode[] = DUTY_STREAMS.LAB_INCHARGE === "ALL" ? [] : DUTY_STREAMS.LAB_INCHARGE;
 
 export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
   daily: "nav.groupDaily",
@@ -469,7 +479,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // Duties (5 Oct 2026): the anti-ragging squad's register, for a member who holds the duty; the other duties' pages follow it.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
     // The practical record of the offerings I teach with practicals (stream records, 5 Oct 2026).
-    { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS" },
+    { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
@@ -502,7 +512,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // Duties (5 Oct 2026): the anti-ragging squad's register, for an HOD who holds the duty.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
     // The practical record of the department's offerings with practicals (stream records, 5 Oct 2026).
-    { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS" },
+    { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },

@@ -1,7 +1,8 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import type { RoleCode } from "@edulink/contracts";
 import { VoiceScreen } from "@/screens/iqac/voice";
-import { IqacHome } from "@/screens/iqac/home";
+import { IqacHome, filingKindLabel } from "@/screens/iqac/home";
+import { en } from "@edulink/i18n/en";
 import { json, me, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -150,8 +151,8 @@ describe("the IQAC coordinator's home on the phone (4 Oct 2026)", () => {
     expect(screen.getByText("With the principal")).toBeTruthy();
     expect(screen.getByText("AISHE data capture · 2025-26")).toBeTruthy();
     expect(screen.getByText("Filed")).toBeTruthy();
-    // A kind the phone has no words for yet reads as its code, never a raw key.
-    expect(screen.getByText("NBA SAR · 2025-26")).toBeTruthy();
+    // The councils' kinds (5 Oct 2026) read in words, as the web names them.
+    expect(screen.getByText("NBA self-assessment report · 2025-26")).toBeTruthy();
     expect(calls().some((c) => c.line === "GET /api/v1/iqac/filings")).toBe(true);
   });
 
@@ -170,5 +171,17 @@ describe("the IQAC coordinator's home on the phone (4 Oct 2026)", () => {
   it("falls back to the foundation's home while the college has IQAC off", async () => {
     await mountStaff(<IqacHome />, "IQAC", {}, { me: atCollege("IQAC", ["ACADEMICS"]) });
     await waitFor(() => expect(screen.getByText(/is not switched on/)).toBeTruthy());
+  });
+});
+
+describe("the councils' filing kinds on the phone (5 Oct 2026)", () => {
+  it("names the four new kinds in words rather than printing the code", () => {
+    const t = (key: string) => key.split(".").reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], en) as string;
+    for (const kind of ["PCI_INSPECTION", "BCI_RETURN", "NCTE_RETURN", "NBA_SAR"] as const) {
+      const label = filingKindLabel(kind, t as never);
+      expect(label).toBeTruthy();
+      expect(label).not.toContain("_");
+      expect(label).not.toBe(kind.replace(/_/g, " "));
+    }
   });
 });

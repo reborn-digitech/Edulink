@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { OfficeTop, ROOM_KEY } from "@/components/academics/parts";
+import { OfficeTop, roomKindLabel } from "@/components/academics/parts";
 import { academicsStructure } from "@/lib/academics";
 import { getT } from "@/lib/i18n/server";
 import { academicsGate, type SearchParams } from "../shared";
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Terms with their registration windows, rooms and labs with their capacity, and the divisions of each programme. */
 export default async function TermsPage({ searchParams }: { searchParams: SearchParams }) {
-  const { ctx, t, on, college, canEdit } = await academicsGate();
+  const { ctx, t, on, college, canEdit, streams } = await academicsGate();
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const s = await academicsStructure(ctx);
@@ -69,7 +69,7 @@ export default async function TermsPage({ searchParams }: { searchParams: Search
             <ul className="flex flex-wrap gap-2 text-sm">
               {s.rooms.map((r) => (
                 <li key={r.id} className="rounded-[--radius-md] border border-border px-3 py-1.5">
-                  <span className="font-medium text-fg">{r.name}</span> <span className="text-fg-muted">· {t(ROOM_KEY[r.kind]!)} · {t("academics.seats", { n: r.capacity })}</span>
+                  <span className="font-medium text-fg">{r.name}</span> <span className="text-fg-muted">· {roomKindLabel(r.kind, t, streams)} · {t("academics.seats", { n: r.capacity })}</span>
                 </li>
               ))}
             </ul>
@@ -79,7 +79,7 @@ export default async function TermsPage({ searchParams }: { searchParams: Search
               <TextField label={t("academics.fieldName")} name="name" required maxLength={60} />
               <TextField label={t("academics.fieldCapacity")} name="capacity" type="number" min={1} max={2000} defaultValue={60} />
               <SelectField label={t("academics.fieldRoomKind")} name="kind" defaultValue="CLASSROOM">
-                {ROOM_KINDS.map((k) => <option key={k} value={k}>{t(ROOM_KEY[k]!)}</option>)}
+                {ROOM_KINDS.map((k) => <option key={k} value={k}>{roomKindLabel(k, t, streams)}</option>)}
               </SelectField>
               <div className="self-end">
                 <Button type="submit">{t("academics.addRoom")}</Button>

@@ -398,6 +398,8 @@ export const en = {
   /* ---------------------------------------------------------------------- */
   role: {
     admin: "School admin",
+    // A college's office in the rail (5 Oct 2026): the registrar is no school admin.
+    collegeAdmin: "College office",
     adminPlural: "Admins",
     principal: "Principal",
     principalPlural: "Principals",
@@ -15289,7 +15291,27 @@ export const en = {
     homeView: "See the college profile",
     tileComing: "Coming",
     tileOff: "Switched off",
+    tileOffSwitch: "Switched off. The office switches it on under Modules.",
     comingTitle: "Not in the app yet",
+    // The figures under the registrar's and the principal's tiles, and the streams' chip in the header (5 Oct 2026, S5).
+    figure: {
+      people: "Students {students} · Faculty {faculty}",
+      academics: "Programmes {programmes} · Divisions {divisions}",
+      exams: "Sessions running: {count}",
+      admissions: "Applications to decide: {count}",
+      scholarships: "Claims waiting: {count}",
+      iqac: "Filings due this quarter: {count}",
+      library: "Books out: {count}",
+      labs: "Batches {batches} · Practicals signed {signed} of {records}",
+      placement: "Drives open: {count}",
+      internships: "Internships under way: {count}",
+      nba: "SAR {year}: {state}",
+      nbaNone: "No SAR generated yet",
+      mootCourt: "Moot courts this year: {count}",
+      teachingPractice: "Postings {postings} · Lessons observed {observed} of {planned}",
+      nss: "NSS this year: enrolled {enrolled} · hours {hours}",
+    },
+    chipLabel: "Streams: {streams}",
     tile: {
       people: "People",
       academics: "Academics",

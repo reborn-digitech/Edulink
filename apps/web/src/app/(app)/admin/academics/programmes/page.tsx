@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BooksIcon, GraduationCapIcon, ListChecksIcon, TargetIcon } from "@phosphor-icons/react/ssr";
 import { EXIT_AWARDS, PROGRAMME_LEVELS, REGULATORS, COURSE_KINDS, defaultRegulatorFor } from "@edulink/contracts";
 import { streamsOf } from "@/lib/streams";
+import { tv } from "@/lib/stream-words";
 import { streamLabel } from "@/lib/institution";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -67,7 +68,7 @@ export default async function ProgrammesPage({ searchParams }: { searchParams: S
           )}
           {canEdit && s.departments.length ? (
             <form action={saveProgrammeAction} className="grid gap-3 sm:grid-cols-3">
-              <SelectField label={t("academics.fieldDepartment")} name="departmentId" required>
+              <SelectField label={tv("department", streams, t)} name="departmentId" required>
                 {s.departments.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
               </SelectField>
               <TextField label={t("academics.fieldCode")} name="code" required maxLength={20} />

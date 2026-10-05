@@ -70,7 +70,7 @@ export function More() {
         <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
       </Pressable>
       {role
-        ? menuFor(role, me.modules ?? [], me.duties ?? []).map(({ group, items }) => (
+        ? menuFor(role, me.modules ?? [], me.duties ?? [], me.streams ?? []).map(({ group, items }) => (
             <Card key={group} title={t(MENU_GROUP_KEY[group])}>
               {items.map((item) => (
                 <MenuRow key={item.labelKey} item={item} />

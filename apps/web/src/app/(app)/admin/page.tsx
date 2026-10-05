@@ -61,6 +61,9 @@ export default async function AdminDashboard({
   ]);
 
   const dateKey = todayKey(school.timezone);
+  // A college's office (5 Oct 2026, the stream walk): the school's checklist, registers, exam series and "no teachers
+  // yet" spoke of classes, pupils and teachers a college does not have; its streams' tiles above carry its day.
+  const college = isCollegeKind(school.kind);
   const [examSeriesCount, examPublishedCount, reportCardsPublished] = await Promise.all([
     db.examSeries.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
     db.examSeries.count({ where: { schoolId: ctx.schoolId, archivedAt: null, publishedAt: { not: null } } }),
@@ -129,7 +132,7 @@ export default async function AdminDashboard({
       </div>
 
       {/* A college's streams, its tiles in their order and what is not built yet (5 Oct 2026). */}
-      {isCollegeKind(school.kind) && <StreamHome schoolId={ctx.schoolId} role="ADMIN" t={t} />}
+      {college && <StreamHome schoolId={ctx.schoolId} role="ADMIN" t={t} />}
 
       {/*
         ---------------- the school year ----------------
@@ -198,7 +201,7 @@ export default async function AdminDashboard({
       )}
 
       {/* ---------------- setup checklist ---------------- */}
-      {!checklist.complete ? (
+      {college ? null : !checklist.complete ? (
         <Card>
           <CardHeader
             icon={<ConfettiIcon weight="duotone" className="size-5" />}
@@ -298,6 +301,7 @@ export default async function AdminDashboard({
           where it looks for it. */}
       <CelebrationsLink session={ctx} />
 
+      {college ? null : (
       <div className="grid gap-3 sm:grid-cols-2">
         <Card className={attendanceTaken !== null && attendanceTaken < 100 ? "border-warn/40" : undefined}>
           <Link href="/admin/attendance" className="flex items-center gap-3 p-4">
@@ -333,9 +337,10 @@ export default async function AdminDashboard({
           </Link>
         </Card>
       </div>
+      )}
 
       {/* ---------------- exams & report cards ---------------- */}
-      {classCount > 0 && (
+      {!college && classCount > 0 && (
         <Card>
           <CardHeader
             icon={<ExamIcon weight="duotone" className="size-5" />}
@@ -365,7 +370,7 @@ export default async function AdminDashboard({
           vacancy, and the answer is to hire — so this card names the gap and
           points at both doors: the timetable, to fill it from existing staff,
           and the vacancies board, to advertise for someone new. */}
-      {staffing.slots > 0 && (
+      {!college && staffing.slots > 0 && (
         <Card className="border-warn/40">
           <CardHeader
             icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
@@ -435,7 +440,7 @@ export default async function AdminDashboard({
       )}
 
       {/* ---------------- next steps ---------------- */}
-      {teacherCount === 0 && (
+      {!college && teacherCount === 0 && (
         <EmptyState
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
           title={t("admin.noTeachersYet")}

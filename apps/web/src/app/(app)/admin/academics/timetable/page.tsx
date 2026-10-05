@@ -7,7 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SelectField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
-import { LECTURE_KIND_KEY, OfficeTop, WeekList, clock } from "@/components/academics/parts";
+import { OfficeTop, WeekList, clock, lectureKindLabel } from "@/components/academics/parts";
 import { TermPicker } from "@/components/academics/term-picker";
 import { academicsStructure, academicsTimetable, listOfferings } from "@/lib/academics";
 import { labDivisions } from "@/lib/stream-records";
@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * room too small, refused when an hour is added.
  */
 export default async function TimetablePage({ searchParams }: { searchParams: SearchParams }) {
-  const { ctx, t, locale, on, college, canEdit } = await academicsGate();
+  const { ctx, t, locale, on, college, canEdit, streams } = await academicsGate();
   if (!on) return <ModuleOff module="ACADEMICS" t={t} college={college} />;
   const params = await searchParams;
   const divisionId = one(params.division);
@@ -50,7 +50,7 @@ export default async function TimetablePage({ searchParams }: { searchParams: Se
       <Card>
         <CardHeader icon={<CalendarDotsIcon weight="duotone" className="size-5" />} title={t("academics.timetableTitle")} description={t("academics.timetableBody")} />
         <CardBody className="space-y-5">
-          {s.periods.length === 0 ? <EmptyState className="border-0 bg-transparent py-4" title={t("academics.noBells")} description={t("academics.noBellsBody")} /> : <WeekList t={t} locale={locale} weekdays={grid.weekdays} cells={grid.cells} />}
+          {s.periods.length === 0 ? <EmptyState className="border-0 bg-transparent py-4" title={t("academics.noBells")} description={t("academics.noBellsBody")} /> : <WeekList t={t} locale={locale} weekdays={grid.weekdays} cells={grid.cells} streams={streams} />}
           {canEdit && o.termId && o.offerings.length && s.periods.length ? (
             <form action={saveSlotAction} className="grid gap-3 sm:grid-cols-5">
               <input type="hidden" name="termId" value={o.termId} />
@@ -64,7 +64,7 @@ export default async function TimetablePage({ searchParams }: { searchParams: Se
                 {s.periods.map((p) => <option key={p.id} value={p.id}>{`${p.name} · ${clock(p.startMinute, p.endMinute)}`}</option>)}
               </SelectField>
               <SelectField label={t("academics.fieldLectureKind")} name="kind" defaultValue="LECTURE">
-                {LECTURE_KINDS.map((k) => <option key={k} value={k}>{t(LECTURE_KIND_KEY[k]!)}</option>)}
+                {LECTURE_KINDS.map((k) => <option key={k} value={k}>{lectureKindLabel(k, t, streams)}</option>)}
               </SelectField>
               <SelectField label={t("academics.fieldRoom")} name="roomId" defaultValue="">
                 <option value="">{t("academics.offeringRoom")}</option>

@@ -8,7 +8,6 @@ import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { ModuleOff } from "@/components/module-off";
-import { INPUT } from "@/components/module-flash";
 import { RecordsFlash } from "@/components/stream-records/flash";
 import { dutyPageContext } from "@/components/stream-records/duty-page";
 import { teachingPracticeDesk } from "@/lib/teaching-practice";
@@ -65,7 +64,7 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
             </ul>
           )}
           {d.canManage ? (
-            <form action={practiceSchoolAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
+            <form id="practice-school-form" action={practiceSchoolAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
               <TextField name="name" label={t("duties.teachingPractice.fieldSchool")} required minLength={2} maxLength={160} />
               <TextField name="udise" label={t("duties.teachingPractice.fieldUdise")} inputMode="numeric" pattern="\d{11}" maxLength={11} hint={t("duties.teachingPractice.udiseHint")} />
               <TextField name="contact" label={t("duties.teachingPractice.fieldContact")} maxLength={200} />
@@ -81,7 +80,19 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
         <CardHeader icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />} title={t("duties.teachingPractice.postingsTitle")} description={t("duties.teachingPractice.postingsBody")} />
         <CardBody className="space-y-4">
           {d.postings.length === 0 ? (
-            <EmptyState className="border-0 bg-transparent py-4" title={t("duties.teachingPractice.noPostings")} description={t(d.canManage ? "duties.teachingPractice.noPostingsBody" : "duties.teachingPractice.noPostingsRead")} />
+            <EmptyState
+              className="border-0 bg-transparent py-4"
+              title={t("duties.teachingPractice.noPostings")}
+              description={t(d.canManage ? "duties.teachingPractice.noPostingsBody" : "duties.teachingPractice.noPostingsRead")}
+              action={
+                // The way on (5 Oct 2026, the UX pass): to the posting form, or first to a practice school.
+                d.canManage ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <a href={d.schools.length > 0 && d.students.length > 0 ? "#posting-form" : "#practice-school-form"}>{t(d.schools.length > 0 && d.students.length > 0 ? "duties.teachingPractice.addPosting" : "duties.teachingPractice.addSchool")}</a>
+                  </Button>
+                ) : undefined
+              }
+            />
           ) : (
             <ul className="divide-y divide-border">
               {d.postings.map((p) => (
@@ -110,7 +121,7 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
                           <option key={g} value={g}>{g}</option>
                         ))}
                       </SelectField>
-                      <input name="note" className={`${INPUT} min-h-11 max-w-sm flex-1`} maxLength={1000} aria-label={t("duties.teachingPractice.fieldNote")} placeholder={t("duties.teachingPractice.fieldNote")} />
+                      <TextField name="note" label={t("duties.teachingPractice.fieldNote")} maxLength={1000} className="max-w-sm flex-1" />
                       <Button type="submit" size="sm" variant="secondary">{t("duties.teachingPractice.observe")}</Button>
                     </form>
                   ) : null}
@@ -119,7 +130,7 @@ export default async function TeachingPracticePage({ searchParams }: { searchPar
             </ul>
           )}
           {d.canManage && d.schools.length > 0 && d.students.length > 0 ? (
-            <form action={practicePostingAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-2 lg:grid-cols-5">
+            <form id="posting-form" action={practicePostingAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-2 lg:grid-cols-5">
               <SelectField name="studentMembershipId" label={t("duties.teachingPractice.fieldStudent")} required>
                 {d.students.map((s) => (
                   <option key={s.membershipId} value={s.membershipId}>{`${s.name} (${s.programmeCode})`}</option>

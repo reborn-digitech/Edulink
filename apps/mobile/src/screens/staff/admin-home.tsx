@@ -15,6 +15,7 @@ import { CertificateRequestsCard } from "./certificate-issue";
 import { FilingsCard } from "./filings";
 import { OfficePenChangesCard, OfficeRecordChangesCard } from "../shared/pupil-record";
 import { formatDateKey, pct } from "./shared";
+import { StreamTilesCard } from "../college/stream-tiles";
 
 /**
  * Where a checklist step's page lives in the app. The steps carry the web's
@@ -40,6 +41,8 @@ export function AdminHome() {
   const d = query.data;
   return (
     <Screen title={t("nav.overview")} description={d ? `${d.school.name} · ${t("admin.schoolCode")} ${d.school.code}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+      {/* At a college: its streams, the tiles they bring with the year's figures, and what is not built yet (5 Oct 2026). */}
+      <StreamTilesCard role="ADMIN" />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? <Overview d={d} /> : null}
