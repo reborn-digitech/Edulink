@@ -40,6 +40,7 @@
  * tenant yet cannot be written through the app's row-level-security role.
  */
 import { PrismaClient } from "@prisma/client";
+import { removeEmptyRegisters, removeSweepRegister } from "./zz-cleanup";
 import { fixturePng } from "./png";
 import { hash } from "@node-rs/argon2";
 import { config } from "dotenv";
@@ -59,6 +60,9 @@ import { buildPlacement } from "./zz-placement";
 import { buildStreamFixtures } from "./zz-streams";
 import { buildStreamRecords } from "./zz-stream-records";
 import { buildCouncilFilings } from "./zz-council-filings";
+import { buildCollegeExtras } from "./zz-college-extras";
+import { buildCollegeHomework } from "./zz-college-homework";
+import { buildPlanItems } from "./zz-plan-items";
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2478,6 +2482,11 @@ async function main() {
   // of the directories real schools read.
   await db.school.updateMany({ where: { name: { startsWith: "ZZ " }, isTestFixture: false }, data: { isTestFixture: true } });
   await db.user.updateMany({ where: { OR: [{ email: { endsWith: "@zz.test" } }, { email: { startsWith: "zz." } }, { name: { startsWith: "ZZ " } }], isTestFixture: false }, data: { isTestFixture: true } });
+  // What a walk or a sweep left that no fixture should hold, at the ZZ schools alone, school by school (zz-cleanup.ts):
+  // registers with no marks (R-25) and the API sweep's fixed-day register at Northgate (R-51).
+  const emptied = await removeEmptyRegisters(db);
+  const sweepRegister = await removeSweepRegister(db);
+  console.log(`  Clean-up: ${emptied.removed} register(s) with no marks at ${emptied.schools} ZZ school(s)${emptied.removed ? ` (${Object.entries(emptied.bySchool).map(([slug, n]) => `${slug} ${n}`).join(", ")})` : ""}; the sweep's fixed-day register ${sweepRegister ? "removed" : "not there"}`);
 
   const northgate = await buildNorthgate(ctx);
   const fees = await buildFees(northgate.school, northgate.admin.id);
@@ -2576,6 +2585,17 @@ async function main() {
   // criteria written (zz-council-filings.ts). KEEP IT AFTER the stream records' builder, which makes that department.
   const councilFx = await buildCouncilFilings(db);
   console.log(councilFx ? `  Council filings: ZZ Shastri's NBA SAR drafted (${councilFx.computed} marks from the records + ${councilFx.self} self-assessed) — /iqac/documents/nba` : "  Council filings: NOT built (ZZ Shastri's engineering department is missing: run the stream records first)");
+  // The risks batch's college builds (package 5B, 5 Oct 2026): a pre-placement talk for the open drive and one held, a soft-skills
+  // training with sessions and marks, the gate reader with its badges, the NAAC peer-team visit file (zz-college-extras.ts).
+  // KEEP IT AFTER the placement and IQAC builders, whose drive, cycle and AQAR it names.
+  const extras = await buildCollegeExtras(db);
+  console.log(extras ? `  College extras at ZZ Vidya College: ${extras.talks} talks, a training of ${extras.sessions} sessions (${extras.completed} completed), the gate reader${extras.deviceSealed ? "" : " (key NOT sealed: FEES_SECRET_KEY unset)"}, the NAAC visit file with ${extras.visitLines} evidence lines — /placement/talks, /placement/training, /admin/attendance-devices, /iqac/visits` : "  College extras at ZZ Vidya College: NOT built (the college or its people are missing)");
+  // Homework at a college (R-48, risks batch 5A, 5 Oct 2026): PHY101's lab report with two hand-ins and a mark, the PHY103 elective's reading, a draft (zz-college-homework.ts). KEEP IT AFTER the academics.
+  const homework = await buildCollegeHomework(db);
+  console.log(homework ? `  College homework: ZZ Vidya College ${homework.work} pieces of work (one a draft, one on the elective with no class), ${homework.handedIn} hand-ins, ${homework.marked} marked — /faculty/work, /student/assignments` : "  College homework: NOT built (ZZ Vidya College or its academics are missing)");
+  // The plan items of risks batch 5A (5 Oct 2026): Vidya's reading-room register today, its student council with two notices, the appointment letter templates and zz.faculty02's letter (zz-plan-items.ts). KEEP IT AFTER the college office (Vidya's current year).
+  const planItems = await buildPlanItems(db);
+  console.log(planItems ? `  Plan items at ZZ Vidya College: ${planItems.visits} reading-room visits today (one still inside), "ZZ Student Council" of ${planItems.councilMembers} with ${planItems.notices} notices (one waiting for review), ${planItems.templates} appointment letter templates${planItems.letter ? `, zz.faculty02's letter ${planItems.letter}` : " (no current year: no letter)"} — /library/reading-room, /bulletin/council, /admin/certificates/appointments, /account/letters` : "  Plan items: NOT built (ZZ Vidya College or its people are missing)");
   console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
 
   const studentCount = await db.membership.count({

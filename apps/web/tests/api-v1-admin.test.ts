@@ -292,7 +292,12 @@ describe("as the admin", () => {
       expect(thursday.counts.classes).toBe(2);
       // Still 0 of 1: the empty class is not a register anybody can take.
       expect(thursday.attendanceTakenPercent).toBe(0);
-      await db.attendanceSession.create({ data: { schoolId, classId, dateKey: "2025-07-17" } });
+      // A register only a device has started (no taker) is still due from its teacher.
+      const started = await db.attendanceSession.create({ data: { schoolId, classId, dateKey: "2025-07-17" }, select: { id: true } });
+      const deviceOnly = await adminOverview(ctx, new Date("2025-07-17T12:00:00Z"));
+      expect(deviceOnly.counts.registersTakenToday).toBe(0);
+      expect(deviceOnly.attendanceTakenPercent).toBe(0);
+      await db.attendanceSession.update({ where: { id: started.id }, data: { takenByMembershipId: teacherMembershipId, takenAt: new Date() } });
       const taken = await adminOverview(ctx, new Date("2025-07-17T12:00:00Z"));
       expect(taken.counts.registersTakenToday).toBe(1);
       expect(taken.attendanceTakenPercent).toBe(100);

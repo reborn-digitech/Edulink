@@ -16,6 +16,7 @@ import { config } from "dotenv";
 import { NAV, PRIMARY_ACTION, QUICK_ACTIONS } from "@/lib/nav";
 import { isLimitedRole, ROLE_HOME, type Role } from "@/lib/constants";
 import { isDutyRole, MODULE_OF_ROLE, parseDuties } from "@edulink/contracts";
+import { warmPlan, warmUp } from "./sweep-warm";
 
 config();
 
@@ -1908,9 +1909,6 @@ async function main() {
   const otherAdmin = await mint("sam@oakfield.school", "ADMIN", oakfield.id, "oakfield-admin");
   const parent = await mint("parent@example.com", "PARENT", null, "parent");
 
-  // The uptime probe: signed out, 200, and it must say the database answered.
-  await check(null, "/api/health", 200, "the uptime probe answers signed out");
-
   // Students may have no email (self-joined), so mint straight off the user row.
   const studentUser = studentMembership!.user;
   touched.add(studentUser.id);
@@ -1927,6 +1925,19 @@ async function main() {
     },
   });
   const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}; __Host-edulink_session=${studentToken}`, sessionId: "" };
+
+  // The warm pass before anything is counted (R-29, sweep-warm.ts): the cheap pages once, every answer thrown away.
+  const warmed = await warmUp(BASE, warmPlan([
+    { label: admin.label, cookie: admin.cookie, home: ROLE_HOME.ADMIN },
+    { label: teacher.label, cookie: teacher.cookie, home: ROLE_HOME.TEACHER },
+    { label: otherAdmin.label, cookie: otherAdmin.cookie, home: ROLE_HOME.ADMIN },
+    { label: parent.label, cookie: parent.cookie, home: ROLE_HOME.PARENT },
+    { label: student.label, cookie: student.cookie, home: ROLE_HOME.STUDENT },
+  ]));
+  console.log(`· warmed the server: ${warmed.answered} cheap pages in ${(warmed.ms / 1000).toFixed(1)} s, not counted`);
+
+  // The uptime probe: signed out, 200, and it must say the database answered.
+  await check(null, "/api/health", 200, "the uptime probe answers signed out");
 
   // Real ids for the dynamic routes.
   const klass = await db.class.findFirst({ where: { schoolId: riverside.id, archivedAt: null } });

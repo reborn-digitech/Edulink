@@ -60,11 +60,20 @@ import { buildFiling } from "../src/lib/iqac-filings";
 import { addWorkingDays } from "../src/lib/iqac-rules";
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
+import { demoCalendar, describeCalendar, refuseAnotherYear, registerDays } from "./demo-calendar";
 
 const DOMAIN = "demo.relay.test";
 const SLUG = "saraswati-college";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
 const day = (key: string) => new Date(`${key}T00:00:00Z`);
+/**
+ * DATED FROM THE RUN'S DAY (G4-29, 5 Oct 2026): every date below was written for 2026–27 and goes through the
+ * calendar (scripts/demo-calendar.ts), which moves it by whole years to the academic year of the run's day; the
+ * registers are the four weeks before the run's week, inside the odd term. On 5 October 2026 every value is the
+ * literal as written. `DEMO_TODAY=YYYY-MM-DD` pins the day; `--calendar` prints it and writes nothing.
+ */
+const CAL = demoCalendar();
+const { y: Y, key: K, at: T, iso: TI } = CAL;
 const mail = (local: string) => `${local}@${DOMAIN}`;
 
 /* -------------------------------------------------------------------------- */
@@ -80,29 +89,29 @@ const STAFF: { key: StaffKey; email: string; name: string; role: string; title: 
   { key: "f1", email: mail("sac.faculty1"), name: "Dr Neelima Gadgil", role: "FACULTY", title: "Assistant professor, Physics", home: "/faculty", look: "PHY301: four weeks of registers, internal marks locked" },
   { key: "f2", email: mail("sac.faculty2"), name: "Prof Rahul Shirole", role: "FACULTY", title: "Assistant professor, Physics", home: "/faculty", look: "MAT301's registers" },
   { key: "f3", email: mail("sac.faculty3"), name: "Prof Ashwini Mane", role: "FACULTY", title: "Assistant professor, Commerce", home: "/faculty", look: "COM301 (locked) and COM101 (the first years)" },
-  { key: "exams", email: mail("sac.exams"), name: "Prakash Joglekar", role: "EXAM_CONTROLLER", title: "Controller of examinations", home: "/exam-cell", look: "Summer 2026 sitting: result file imported, run 1 published, one ATKT and its backlog" },
-  { key: "iqac", email: mail("sac.iqac"), name: "Dr Meghana Phadke", role: "IQAC", title: "IQAC coordinator", home: "/iqac", look: "/iqac/predictor (the NAAC cycle's metrics and CGPA), /iqac/registers, /iqac/surveys (the closed Student Satisfaction Survey 2025–26, ten responses, its action-taken report), /iqac/grievances (two resolved), /iqac/documents (the 2025 AQAR, filed and signed off)" },
-  { key: "tpo", email: mail("sac.tpo"), name: "Nitin Kale", role: "TPO", title: "Training and placement officer", home: "/placement", look: "/placement/drives (the OPEN drive with two applicants), /placement/companies, /placement/analytics (2025 season)" },
+  { key: "exams", email: mail("sac.exams"), name: "Prakash Joglekar", role: "EXAM_CONTROLLER", title: "Controller of examinations", home: "/exam-cell", look: `Summer ${Y(2026)} sitting: result file imported, run 1 published, one ATKT and its backlog` },
+  { key: "iqac", email: mail("sac.iqac"), name: "Dr Meghana Phadke", role: "IQAC", title: "IQAC coordinator", home: "/iqac", look: `/iqac/predictor (the NAAC cycle's metrics and CGPA), /iqac/registers, /iqac/surveys (the closed Student Satisfaction Survey ${CAL.ay(-1)}, ten responses, its action-taken report), /iqac/grievances (two resolved), /iqac/documents (the ${Y(2025)} AQAR, filed and signed off)` },
+  { key: "tpo", email: mail("sac.tpo"), name: "Nitin Kale", role: "TPO", title: "Training and placement officer", home: "/placement", look: `/placement/drives (the OPEN drive with two applicants), /placement/companies, /placement/analytics (${Y(2025)} season)` },
   { key: "accounts", email: mail("sac.accounts"), name: "Sushma Rane", role: "ACCOUNTS", title: "Accounts officer", home: "/accounts", look: "/accounts (collection, defaulters), /accounts/structures, /accounts/scholarships" },
 ];
 
 type StudentSpec = { n: number; name: string; gender: "M" | "F"; birth: string; programme: "BSCPHY" | "BCOM"; year: 1 | 2; category: "OPEN" | "OBC"; paidOdd: boolean };
 /** Five second-year BSc Physics, three second-year BCom, two first-year BCom (Pooja is seventeen). */
 const STUDENTS: StudentSpec[] = [
-  { n: 1, name: "Aditya Patil", gender: "M", birth: "2006-08-14", programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: true },
-  { n: 2, name: "Sakshi Jadhav", gender: "F", birth: "2007-01-22", programme: "BSCPHY", year: 2, category: "OBC", paidOdd: false },
-  { n: 3, name: "Omkar Shinde", gender: "M", birth: "2006-11-03", programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: true },
-  { n: 4, name: "Pranav Kulkarni", gender: "M", birth: "2007-03-09", programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: false },
-  { n: 5, name: "Rutuja Pawar", gender: "F", birth: "2006-12-18", programme: "BSCPHY", year: 2, category: "OBC", paidOdd: false },
-  { n: 6, name: "Tejas More", gender: "M", birth: "2006-09-25", programme: "BCOM", year: 2, category: "OPEN", paidOdd: true },
-  { n: 7, name: "Snehal Gaikwad", gender: "F", birth: "2007-02-11", programme: "BCOM", year: 2, category: "OBC", paidOdd: false },
-  { n: 8, name: "Yash Chavan", gender: "M", birth: "2006-10-30", programme: "BCOM", year: 2, category: "OPEN", paidOdd: false },
-  { n: 9, name: "Pooja Bhosale", gender: "F", birth: "2009-05-10", programme: "BCOM", year: 1, category: "OPEN", paidOdd: true },
-  { n: 10, name: "Kunal Deshmukh", gender: "M", birth: "2008-04-02", programme: "BCOM", year: 1, category: "OPEN", paidOdd: false },
+  { n: 1, name: "Aditya Patil", gender: "M", birth: K("2006-08-14"), programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: true },
+  { n: 2, name: "Sakshi Jadhav", gender: "F", birth: K("2007-01-22"), programme: "BSCPHY", year: 2, category: "OBC", paidOdd: false },
+  { n: 3, name: "Omkar Shinde", gender: "M", birth: K("2006-11-03"), programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: true },
+  { n: 4, name: "Pranav Kulkarni", gender: "M", birth: K("2007-03-09"), programme: "BSCPHY", year: 2, category: "OPEN", paidOdd: false },
+  { n: 5, name: "Rutuja Pawar", gender: "F", birth: K("2006-12-18"), programme: "BSCPHY", year: 2, category: "OBC", paidOdd: false },
+  { n: 6, name: "Tejas More", gender: "M", birth: K("2006-09-25"), programme: "BCOM", year: 2, category: "OPEN", paidOdd: true },
+  { n: 7, name: "Snehal Gaikwad", gender: "F", birth: K("2007-02-11"), programme: "BCOM", year: 2, category: "OBC", paidOdd: false },
+  { n: 8, name: "Yash Chavan", gender: "M", birth: K("2006-10-30"), programme: "BCOM", year: 2, category: "OPEN", paidOdd: false },
+  { n: 9, name: "Pooja Bhosale", gender: "F", birth: K("2009-05-10"), programme: "BCOM", year: 1, category: "OPEN", paidOdd: true },
+  { n: 10, name: "Kunal Deshmukh", gender: "M", birth: K("2008-04-02"), programme: "BCOM", year: 1, category: "OPEN", paidOdd: false },
 ];
 const studentEmail = (n: number) => mail(`sac.student${String(n).padStart(2, "0")}`);
 const GUARDIAN = { email: mail("sac.parent09"), name: "Ravindra Bhosale", phone: "+919822071009", of: 9 };
-const ALUMNA = { email: mail("sac.alumni01"), name: "Shreya Wagh", birth: "2003-06-20", joined: "2022-07-01T04:00:00Z", left: "2025-05-31T06:30:00Z" };
+const ALUMNA = { email: mail("sac.alumni01"), name: "Shreya Wagh", birth: K("2003-06-20"), joined: TI("2022-07-01T04:00:00Z"), left: TI("2025-05-31T06:30:00Z") };
 const RECRUITER = { email: mail("recruiter.sahyadri"), name: "Kiran Mehendale", company: "Sahyadri Data Labs Pvt Ltd" };
 
 /* -------------------------------------------------------------------------- */
@@ -155,8 +164,8 @@ const PROGRAMMES: { code: "BSCPHY" | "BCOM"; name: string; dept: { code: string;
     ],
   },
 ];
-const CURRENT_TERM = { name: "Odd term 2026–27", academicYear: "2026–27", startsOn: "2026-07-01", endsOn: "2026-11-30", registrationOpensOn: "2026-06-20", registrationClosesOn: "2026-07-15" };
-const PAST_TERM = { name: "Even term 2025–26", academicYear: "2025–26", startsOn: "2025-12-01", endsOn: "2026-04-30", registrationOpensOn: "2025-11-20", registrationClosesOn: "2025-12-10" };
+const CURRENT_TERM = CAL.currentTerm;
+const PAST_TERM = CAL.pastTerm;
 const DIVISIONS: { key: string; name: string; programme: "BSCPHY" | "BCOM"; year: 1 | 2 }[] = [
   { key: "SYB", name: "SY BSc Physics A", programme: "BSCPHY", year: 2 },
   { key: "SYC", name: "SY BCom A", programme: "BCOM", year: 2 },
@@ -172,12 +181,12 @@ const OFFERINGS: [string, string, StaffKey, string, [number, number][]][] = [
   ["COM101", "FYC", "f3", "Room 22", [[2, 4], [4, 4]]],
   ["COM102", "FYC", "hodCom", "Room 22", [[1, 4], [3, 4], [5, 4]]],
 ];
-/** The four weeks of registers before the first run: Monday 7 September to Saturday 3 October 2026. Fixed, so a later run writes the same lectures. */
-const REGISTER_FROM = "2026-09-07";
-const REGISTER_TO = "2026-10-03";
-const COUNTERSIGNED_AT = new Date("2026-09-30T10:00:00Z");
-const LOCKED_AT = new Date("2026-10-01T10:00:00Z");
-const PUBLISHED_AT = new Date("2026-05-22T06:30:00Z");
+/** The four weeks of registers before the run's week, inside the odd term (demo-calendar.ts): Monday 7 September to Saturday 3 October 2026 for a run in the week of 5 October 2026. A run in the same week writes the same lectures. */
+const REGISTER_FROM = CAL.registerFrom;
+const REGISTER_TO = CAL.registerTo;
+const COUNTERSIGNED_AT = T("2026-09-30T10:00:00Z");
+const LOCKED_AT = T("2026-10-01T10:00:00Z");
+const PUBLISHED_AT = T("2026-05-22T06:30:00Z");
 
 /* -------------------------------------------------------------------------- */
 
@@ -189,7 +198,7 @@ async function buildCollege(): Promise<College> {
   // A demo tenant is not a test fixture (B-28, 4 Oct 2026): Sunrise and Saraswati Vidya Mandir never were, and the
   // demo college as one was hidden from the operator's /root/colleges while the recruiter's form offered it. The ZZ
   // tenants are the fixtures; the demo ones are what a prospect is shown, so they list like a real customer.
-  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day("2028-12-31"), nirfCategory: "COLLEGE", isTestFixture: false, streamsJson: JSON.stringify(["ARTS", "SCIENCE", "COMMERCE"]) };
+  const profile = { kind: "COLLEGE", affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-41873", naacGrade: "A", naacValidUntil: day(K("2028-12-31")), nirfCategory: "COLLEGE", isTestFixture: false, streamsJson: JSON.stringify(["ARTS", "SCIENCE", "COMMERCE"]) };
   if (existing) {
     await db.school.update({ where: { id: existing.id }, data: profile });
     return existing;
@@ -229,7 +238,7 @@ async function buildPeople(ctx: Ctx, college: College) {
     const user = await upsertUser(ctx, studentEmail(s.n), s.name, { birthdate, isMinor });
     await db.user.update({ where: { id: user.id }, data: { birthdate, isMinor } });
     const m = await upsertMembership(user.id, college.id, "STUDENT", { gradeLevel: String(s.year) });
-    const entry = s.year === 2 ? 2025 : 2026;
+    const entry = s.year === 2 ? Y(2025) : Y(2026);
     await db.membership.updateMany({ where: { id: m.id, studentCode: null }, data: { studentCode: `SAC-${entry}-${String(s.n).padStart(2, "0")}` } });
     students.push({ ...s, id: m.id, userId: user.id });
   }
@@ -246,7 +255,7 @@ async function buildPeople(ctx: Ctx, college: College) {
   const alumnus = await db.membership.findUniqueOrThrow({ where: { userId_schoolId_role: { userId: alumna.id, schoolId: college.id, role: "ALUMNUS" } }, select: { id: true } });
   await db.alumniProfile.upsert({
     where: { membershipId: alumnus.id },
-    create: { schoolId: college.id, membershipId: alumnus.id, userId: alumna.id, listed: true, listedAt: new Date("2025-08-01T06:00:00Z"), city: "Pune", occupation: "Analyst, Sahyadri Data Labs", mentor: true, mentorAt: new Date("2025-09-01T06:00:00Z"), mentorByUserId: staff.registrar.userId },
+    create: { schoolId: college.id, membershipId: alumnus.id, userId: alumna.id, listed: true, listedAt: T("2025-08-01T06:00:00Z"), city: "Pune", occupation: "Analyst, Sahyadri Data Labs", mentor: true, mentorAt: T("2025-09-01T06:00:00Z"), mentorByUserId: staff.registrar.userId },
     update: {},
   });
 
@@ -309,14 +318,14 @@ async function buildAcademics(college: College, people: People) {
   const divisions: Record<string, { id: string; classId: string }> = {};
   for (const d of DIVISIONS) {
     const klass = (await db.class.findFirst({ where: { schoolId: s, name: d.name }, select: { id: true } })) ?? (await db.class.create({ data: { schoolId: s, name: d.name, gradeLevel: String(d.year), subject: d.programme, joinCode: classCode() }, select: { id: true } }));
-    const division = await db.division.upsert({ where: { classId: klass.id }, create: { schoolId: s, classId: klass.id, programmeId: programmes[d.programme]!.id, yearOfStudy: d.year, academicYear: "2026–27" }, update: {}, select: { id: true } });
+    const division = await db.division.upsert({ where: { classId: klass.id }, create: { schoolId: s, classId: klass.id, programmeId: programmes[d.programme]!.id, yearOfStudy: d.year, academicYear: CAL.ay(0) }, update: {}, select: { id: true } });
     divisions[d.key] = { id: division.id, classId: klass.id };
   }
   const divisionOf = (st: StudentSpec) => DIVISIONS.find((d) => d.programme === st.programme && d.year === st.year)!.key;
   for (const st of students) {
     const key = divisionOf(st);
     const roll = students.filter((x) => divisionOf(x) === key).findIndex((x) => x.n === st.n) + 1;
-    const entryYear = st.year === 2 ? 2025 : 2026;
+    const entryYear = st.year === 2 ? Y(2025) : Y(2026);
     const seat = { programmeId: programmes[st.programme]!.id, schemeId: programmes[st.programme]!.schemeId, entryYear, yearOfStudy: st.year, semester: st.year === 2 ? 3 : 1, divisionId: divisions[key]!.id, prn: `SAC${entryYear}${String(st.n).padStart(3, "0")}`, status: "ACTIVE" };
     await db.studentProgramme.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, ...seat }, update: {} });
     await db.enrollment.upsert({ where: { classId_studentMembershipId: { classId: divisions[key]!.classId, studentMembershipId: st.id } }, create: { schoolId: s, classId: divisions[key]!.classId, studentMembershipId: st.id, rollNumber: roll }, update: {} });
@@ -337,17 +346,13 @@ async function buildAcademics(college: College, people: People) {
     }
     const roster = students.filter((st) => divisionOf(st) === divKey);
     for (const st of roster) {
-      await db.courseRegistration.upsert({ where: { offeringId_studentMembershipId: { offeringId: offering.id, studentMembershipId: st.id } }, create: { schoolId: s, studentMembershipId: st.id, offeringId: offering.id, termId: current.id, kind: "CORE", byUserId: staff.registrar.userId, registeredAt: new Date("2026-07-05T05:00:00Z") }, update: {} });
+      await db.courseRegistration.upsert({ where: { offeringId_studentMembershipId: { offeringId: offering.id, studentMembershipId: st.id } }, create: { schoolId: s, studentMembershipId: st.id, offeringId: offering.id, termId: current.id, kind: "CORE", byUserId: staff.registrar.userId, registeredAt: T("2026-07-05T05:00:00Z") }, update: {} });
     }
     offerings[code] = { id: offering.id, teacher, roster, slots };
   }
 
   // Four weeks of lecture registers. Most students miss one lecture in eleven; Rutuja misses every third PHY301 lecture (under 75 %).
-  const days: string[] = [];
-  for (let t = day(REGISTER_FROM).getTime(); t <= day(REGISTER_TO).getTime(); t += 86_400_000) {
-    const key = new Date(t).toISOString().slice(0, 10);
-    if (new Date(t).getUTCDay() !== 0) days.push(key);
-  }
+  const days = registerDays({ registerFrom: REGISTER_FROM, registerTo: REGISTER_TO });
   let lectures = 0;
   for (const [code, o] of Object.entries(offerings)) {
     let index = 0;
@@ -410,8 +415,8 @@ async function buildOffice(college: College, people: People, academics: Academic
   const yearRow = async (name: string, from: string, to: string, data: { isCurrent: boolean; closedAt: Date | null }) =>
     (await db.academicYear.findUnique({ where: { schoolId_name: { schoolId: s, name } }, select: { id: true, name: true } })) ??
     (await db.academicYear.create({ data: { schoolId: s, name, startDate: day(from), endDate: day(to), ...data }, select: { id: true, name: true } }));
-  await yearRow("2025–26", "2025-06-01", "2026-05-31", { isCurrent: false, closedAt: new Date("2026-06-01T00:00:00Z") });
-  const year = await yearRow("2026–27", "2026-06-01", "2027-05-31", { isCurrent: true, closedAt: null });
+  await yearRow(CAL.ay(-1), K("2025-06-01"), K("2026-05-31"), { isCurrent: false, closedAt: T("2026-06-01T00:00:00Z") });
+  const year = await yearRow(CAL.ay(0), K("2026-06-01"), K("2027-05-31"), { isCurrent: true, closedAt: null });
 
   const head: Record<string, string> = {};
   for (const [code, name, kind, sortOrder] of [["TUI", "Tuition", "TUITION", 1], ["DEV", "Development", "DEVELOPMENT", 2], ["EXM", "Examination", "EXAM", 3], ["LIB", "Library", "LIBRARY", 4], ["CAU", "Caution deposit", "CAUTION_DEPOSIT", 5]] as const) {
@@ -433,12 +438,12 @@ async function buildOffice(college: College, people: People, academics: Academic
       found ??
       (await db.feeStructure.create({
         data: {
-          schoolId: s, academicYearId: year.id, name, publishedAt: new Date("2026-06-10T06:00:00Z"), programmeId: academics.programmes[st.programme]!.id, yearOfStudy: st.year, category: st.category,
-          approvalRef: `FRA/2026-27/${st.programme}/${st.year}/${st.category}`, lateFeeSlabsJson: JSON.stringify([{ afterDays: 15, paise: 50_000 }, { afterDays: 30, paise: 100_000 }]),
+          schoolId: s, academicYearId: year.id, name, publishedAt: T("2026-06-10T06:00:00Z"), programmeId: academics.programmes[st.programme]!.id, yearOfStudy: st.year, category: st.category,
+          approvalRef: `FRA/${CAL.ayHyphen(0)}/${st.programme}/${st.year}/${st.category}`, lateFeeSlabsJson: JSON.stringify([{ afterDays: 15, paise: 50_000 }, { afterDays: 30, paise: 100_000 }]),
           instalments: {
             create: [
-              { schoolId: s, label: "Odd semester", sortOrder: 0, dueDate: day("2026-07-15"), lines: { create: st.lines.map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: c === "CAU" ? p : Math.round(p / 2) })) } },
-              { schoolId: s, label: "Even semester", sortOrder: 1, dueDate: day("2026-12-15"), lines: { create: st.lines.filter(([c]) => c !== "CAU").map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: Math.round(p / 2) })) } },
+              { schoolId: s, label: "Odd semester", sortOrder: 0, dueDate: day(K("2026-07-15")), lines: { create: st.lines.map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: c === "CAU" ? p : Math.round(p / 2) })) } },
+              { schoolId: s, label: "Even semester", sortOrder: 1, dueDate: day(K("2026-12-15")), lines: { create: st.lines.filter(([c]) => c !== "CAU").map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: Math.round(p / 2) })) } },
             ],
           },
         },
@@ -450,7 +455,7 @@ async function buildOffice(college: College, people: People, academics: Academic
   // Each student: the admission record (category, quota, year of entry), the record's college columns, a plan and a demand per term.
   for (const st of students) {
     const programmeId = academics.programmes[st.programme]!.id;
-    const entry = st.year === 2 ? 2025 : 2026;
+    const entry = st.year === 2 ? Y(2025) : Y(2026);
     await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: st.id, programmeId } }, create: { schoolId: s, studentMembershipId: st.id, programmeId, yearOfEntry: entry, category: st.category, quota: "CAP" }, update: {} });
     const record = { prn: `SAC${entry}${String(st.n).padStart(3, "0")}`, admissionCategory: st.category, admissionQuota: "CAP", yearOfEntry: entry, admissionNumber: `${entry}/${String(st.n).padStart(4, "0")}`, admissionDate: day(`${entry}-07-02`), gender: st.gender, annualIncome: st.category === "OBC" ? 95_000 : 650_000, city: "Pune" };
     await db.pupilRecord.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, ...record }, update: {} });
@@ -470,7 +475,7 @@ async function buildOffice(college: College, people: People, academics: Academic
     const reference = `UTR2026071${String(st.n).padStart(4, "0")}`;
     const y = await db.academicYear.update({ where: { id: year.id }, data: { feeReceiptNext: { increment: 1 } }, select: { feeReceiptNext: true } });
     const number = y.feeReceiptNext - 1;
-    const paidAt = new Date(`2026-07-${String(5 + st.n).padStart(2, "0")}T06:00:00Z`);
+    const paidAt = T(`2026-07-${String(5 + st.n).padStart(2, "0")}T06:00:00Z`);
     const payment = await db.feePayment.create({ data: { schoolId: s, studentMembershipId: st.id, amountPaise: odd.netPaise, method: "BANK", status: "PAID", clientId, reference, collectedByUserId: staff.accounts.userId, paidAt, intentJson: JSON.stringify([odd.id]) }, select: { id: true } });
     await db.feeAllocation.create({ data: { schoolId: s, paymentId: payment.id, demandId: odd.id, amountPaise: odd.netPaise } });
     await db.feeReceipt.create({ data: { schoolId: s, paymentId: payment.id, academicYearId: year.id, number, serial: `RCPT/${year.name}/${String(number).padStart(6, "0")}`, issuedAt: paidAt, snapshotJson: JSON.stringify({ school: college.name, pupil: st.name, lines: [{ label: odd.label, amountPaise: odd.netPaise }], method: "BANK", reference }) } });
@@ -480,12 +485,12 @@ async function buildOffice(college: College, people: People, academics: Academic
   // Sakshi's OBC post-matric claim, sanctioned on MahaDBT: the receivable on her ledger.
   const sakshi = students.find((x) => x.n === 2)!;
   await db.scholarshipClaim.upsert({
-    where: { studentMembershipId_scheme_academicYear: { studentMembershipId: sakshi.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27" } },
-    create: { schoolId: s, studentMembershipId: sakshi.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27", portalApplicationId: "MDBT2026PUN0045821", appliedAt: day("2026-08-03"), expectedPaise: 1_100_000, sanctionedPaise: 1_100_000, sanctionedAt: day("2026-09-18"), status: "SANCTIONED", createdByUserId: staff.accounts.userId },
+    where: { studentMembershipId_scheme_academicYear: { studentMembershipId: sakshi.id, scheme: "OBC_POST_MATRIC", academicYear: CAL.ayHyphen(0) } },
+    create: { schoolId: s, studentMembershipId: sakshi.id, scheme: "OBC_POST_MATRIC", academicYear: CAL.ayHyphen(0), portalApplicationId: "MDBT2026PUN0045821", appliedAt: day(K("2026-08-03")), expectedPaise: 1_100_000, sanctionedPaise: 1_100_000, sanctionedAt: day(K("2026-09-18")), status: "SANCTIONED", createdByUserId: staff.accounts.userId },
     update: {},
   });
   // The alumna's admission record, completed.
-  await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: people.alumna.studentId, programmeId: academics.programmes.BCOM!.id } }, create: { schoolId: s, studentMembershipId: people.alumna.studentId, programmeId: academics.programmes.BCOM!.id, yearOfEntry: 2022, category: "OPEN", quota: "CAP", status: "COMPLETED" }, update: {} });
+  await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: people.alumna.studentId, programmeId: academics.programmes.BCOM!.id } }, create: { schoolId: s, studentMembershipId: people.alumna.studentId, programmeId: academics.programmes.BCOM!.id, yearOfEntry: Y(2022), category: "OPEN", quota: "CAP", status: "COMPLETED" }, update: {} });
   return { yearId: year.id, examHeadId: head.EXM! };
 }
 
@@ -497,29 +502,29 @@ async function buildExams(college: College, people: People, academics: Academics
   const s = college.id;
   const ctrl = people.staff.exams;
   const sitters = people.students.filter((st) => st.year === 2);
-  const name = "Summer 2026 (even term 2025–26)";
+  const name = `Summer ${Y(2026)} (even term ${CAL.ay(-1)})`;
   const session = await db.examSession.upsert({
     where: { schoolId_name: { schoolId: s, name } },
-    create: { schoolId: s, name, kind: "REGULAR", termId: academics.pastTermId, formOpensAt: new Date("2026-03-01T04:00:00Z"), formClosesAt: new Date("2026-03-20T18:00:00Z"), feePerCoursePaise: 25_000, feePerBacklogPaise: 30_000, photocopyFeePaise: 10_000, revalFeePaise: 40_000, feeHeadId: examHeadId, status: "PUBLISHED", createdByUserId: ctrl.userId },
+    create: { schoolId: s, name, kind: "REGULAR", termId: academics.pastTermId, formOpensAt: T("2026-03-01T04:00:00Z"), formClosesAt: T("2026-03-20T18:00:00Z"), feePerCoursePaise: 25_000, feePerBacklogPaise: 30_000, photocopyFeePaise: 10_000, revalFeePaise: 40_000, feeHeadId: examHeadId, status: "PUBLISHED", createdByUserId: ctrl.userId },
     update: {},
     select: { id: true },
   });
   const pastCourses = (programme: string) => Object.entries(academics.courses).filter(([, c]) => c.programme === programme && c.semester === 2).map(([code, c]) => ({ code, ...c }));
   // The date sheet: one paper a day from 20 April.
   for (const [i, c] of [...pastCourses("BSCPHY"), ...pastCourses("BCOM")].entries()) {
-    await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: session.id, courseId: c.id } }, create: { schoolId: s, sessionId: session.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(2026, 3, 20 + i, 4, 30)), durationMin: 180 }, update: {} });
+    await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: session.id, courseId: c.id } }, create: { schoolId: s, sessionId: session.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(Y(2026), 3, 20 + i, 4, 30)), durationMin: 180 }, update: {} });
   }
   // Forms, approved and locked, and a hall ticket each.
   for (const [k, st] of sitters.entries()) {
     const mine = pastCourses(st.programme);
     const form = await db.examForm.upsert({
       where: { sessionId_studentMembershipId: { sessionId: session.id, studentMembershipId: st.id } },
-      create: { schoolId: s, sessionId: session.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 25_000, status: "APPROVED", submittedAt: new Date("2026-03-06T06:00:00Z"), decidedAt: new Date("2026-03-07T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: new Date("2026-04-01T06:00:00Z") },
+      create: { schoolId: s, sessionId: session.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 25_000, status: "APPROVED", submittedAt: T("2026-03-06T06:00:00Z"), decidedAt: T("2026-03-07T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: T("2026-04-01T06:00:00Z") },
       update: {},
       select: { id: true },
     });
     const number = `HT${String(k + 1).padStart(4, "0")}`;
-    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: session.id, formId: form.id, studentMembershipId: st.id, number, code: `SACHT26S${String(k + 1).padStart(4, "0")}`, issuedByUserId: ctrl.userId, issuedAt: new Date("2026-04-10T06:00:00Z") }, update: {} });
+    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: session.id, formId: form.id, studentMembershipId: st.id, number, code: `SACHT26S${String(k + 1).padStart(4, "0")}`, issuedByUserId: ctrl.userId, issuedAt: T("2026-04-10T06:00:00Z") }, update: {} });
   }
 
   // The university's result file, imported: internal of 40 and external of 60. Rutuja falls short in PHY202's external (an ATKT and a backlog).
@@ -573,46 +578,46 @@ async function buildPlacement(college: College, people: People, academics: Acade
   const identifier = `${first14}${gstinCheckChar(first14)}`;
   const company = await db.company.upsert({
     where: { identifier },
-    create: { name: RECRUITER.company, identifier, sectors: JSON.stringify(["IT_SOFTWARE", "CONSULTING"]), pointOfContact: `${RECRUITER.name}, ${RECRUITER.email}`, createdByUserId: people.recruiterUserId, verifiedAt: new Date("2026-08-20T06:00:00Z"), verifiedByUserId: staff.tpo.userId },
+    create: { name: RECRUITER.company, identifier, sectors: JSON.stringify(["IT_SOFTWARE", "CONSULTING"]), pointOfContact: `${RECRUITER.name}, ${RECRUITER.email}`, createdByUserId: people.recruiterUserId, verifiedAt: T("2026-08-20T06:00:00Z"), verifiedByUserId: staff.tpo.userId },
     update: {},
     select: { id: true },
   });
   await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: company.id, userId: people.recruiterUserId } }, create: { companyId: company.id, userId: people.recruiterUserId, acceptedAt: new Date() }, update: { removedAt: null, acceptedAt: new Date() } });
-  await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: s, companyId: company.id } }, create: { schoolId: s, companyId: company.id, firstVisitYear: 2025 }, update: {} });
+  await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: s, companyId: company.id } }, create: { schoolId: s, companyId: company.id, firstVisitYear: Y(2025) }, update: {} });
 
   // This season: the recruiter's requirement to the college, and the OPEN drive the TPO made of it.
   const rule = { cgpaMin: 6, noLiveBacklogs: true, programmeIds: [academics.programmes.BSCPHY!.id, academics.programmes.BCOM!.id], batchYear: null, genders: [] };
-  const rounds = [{ n: 1, kind: "APTITUDE", note: "", at: "2026-10-20T05:00:00.000Z" }, { n: 2, kind: "TECHNICAL_INTERVIEW", note: "", at: null }];
+  const rounds = [{ n: 1, kind: "APTITUDE", note: "", at: TI("2026-10-20T05:00:00.000Z") }, { n: 2, kind: "TECHNICAL_INTERVIEW", note: "", at: null }];
   const role = "Graduate trainee — data analytics";
   const requirement =
     (await db.requirement.findFirst({ where: { companyId: company.id, role }, select: { id: true } })) ??
     (await db.requirement.create({ data: { companyId: company.id, byUserId: people.recruiterUserId, role, packageRupees: 450_000, locations: "Pune", eligibilityAsked: JSON.stringify(rule), rounds: JSON.stringify(rounds.map((r) => ({ kind: r.kind, note: "" }))), datesProposed: "Third week of October", targetSchoolIds: JSON.stringify([s]) }, select: { id: true } }));
-  const openTitle = "Graduate trainee — data analytics 2027";
+  const openTitle = `Graduate trainee — data analytics ${Y(2027)}`;
   const open =
     (await db.drive.findFirst({ where: { schoolId: s, title: openTitle }, select: { id: true } })) ??
-    (await db.drive.create({ data: { schoolId: s, companyId: company.id, requirementId: requirement.id, kind: "ON_CAMPUS", title: openTitle, jd: "Clean, analyse and present client data; Excel, SQL and a little Python. Training for the first three months.", packageMinRupees: 420_000, packageMaxRupees: 480_000, rounds: JSON.stringify(rounds), schedule: JSON.stringify([{ label: "Pre-placement talk", at: "2026-10-12T05:30:00.000Z" }]), venues: "Seminar hall, first floor", eligibilityRule: JSON.stringify(rule), status: "OPEN", invitedAt: new Date("2026-09-28T06:00:00Z"), createdByUserId: staff.tpo.userId }, select: { id: true } }));
+    (await db.drive.create({ data: { schoolId: s, companyId: company.id, requirementId: requirement.id, kind: "ON_CAMPUS", title: openTitle, jd: "Clean, analyse and present client data; Excel, SQL and a little Python. Training for the first three months.", packageMinRupees: 420_000, packageMaxRupees: 480_000, rounds: JSON.stringify(rounds), schedule: JSON.stringify([{ label: "Pre-placement talk", at: TI("2026-10-12T05:30:00.000Z") }]), venues: "Seminar hall, first floor", eligibilityRule: JSON.stringify(rule), status: "OPEN", invitedAt: T("2026-09-28T06:00:00Z"), createdByUserId: staff.tpo.userId }, select: { id: true } }));
   // Two applicants, with the record they consented to share; Rutuja is kept out by her live backlog.
   for (const n of [1, 6]) {
     const st = students.find((x) => x.n === n)!;
-    const record = { cgpa: sgpa[n] === null || sgpa[n] === undefined ? null : sgpa[n]! / 100, liveBacklogs: 0, attendancePct: 90, programmeId: academics.programmes[st.programme]!.id, programmeName: PROGRAMMES.find((p) => p.code === st.programme)!.name, batchYear: 2028, gender: st.gender, category: st.category };
-    await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: open.id, studentMembershipId: st.id } }, create: { schoolId: s, driveId: open.id, studentMembershipId: st.id, studentUserId: st.userId, schoolName: college.name, appliedAt: new Date("2026-10-01T09:00:00Z"), consentAt: new Date("2026-10-01T09:00:00Z"), recordJson: JSON.stringify(record) }, update: {} });
-    await db.placementProfile.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, skills: JSON.stringify(n === 1 ? ["Python", "Excel", "Data analysis"] : ["Tally", "Excel", "SQL"]), certifications: JSON.stringify(n === 1 ? ["NPTEL Python for Data Science"] : ["GST practitioner basics"]), projects: JSON.stringify([{ title: n === 1 ? "Rainfall data of Pune, 1990–2020" : "Cash-flow model for a family shop", note: "" }]), consentAt: new Date("2026-10-01T09:00:00Z") }, update: {} });
+    const record = { cgpa: sgpa[n] === null || sgpa[n] === undefined ? null : sgpa[n]! / 100, liveBacklogs: 0, attendancePct: 90, programmeId: academics.programmes[st.programme]!.id, programmeName: PROGRAMMES.find((p) => p.code === st.programme)!.name, batchYear: Y(2028), gender: st.gender, category: st.category };
+    await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: open.id, studentMembershipId: st.id } }, create: { schoolId: s, driveId: open.id, studentMembershipId: st.id, studentUserId: st.userId, schoolName: college.name, appliedAt: T("2026-10-01T09:00:00Z"), consentAt: T("2026-10-01T09:00:00Z"), recordJson: JSON.stringify(record) }, update: {} });
+    await db.placementProfile.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, skills: JSON.stringify(n === 1 ? ["Python", "Excel", "Data analysis"] : ["Tally", "Excel", "SQL"]), certifications: JSON.stringify(n === 1 ? ["NPTEL Python for Data Science"] : ["GST practitioner basics"]), projects: JSON.stringify([{ title: n === 1 ? "Rainfall data of Pune, 1990–2020" : "Cash-flow model for a family shop", note: "" }]), consentAt: T("2026-10-01T09:00:00Z") }, update: {} });
   }
 
   // Last season: the closed drive, the alumna through it with an accepted offer, and the 2025 season from the placement table.
-  const closedTitle = "Graduate trainee — finance operations 2025";
+  const closedTitle = `Graduate trainee — finance operations ${Y(2025)}`;
   const closed =
     (await db.drive.findFirst({ where: { schoolId: s, title: closedTitle }, select: { id: true } })) ??
-    (await db.drive.create({ data: { schoolId: s, companyId: company.id, kind: "ON_CAMPUS", title: closedTitle, packageMinRupees: 420_000, packageMaxRupees: 420_000, rounds: JSON.stringify([{ n: 1, kind: "TECHNICAL_INTERVIEW", note: "", at: "2025-01-22T05:30:00.000Z" }]), eligibilityRule: JSON.stringify({ cgpaMin: 6, noLiveBacklogs: true, programmeIds: [], batchYear: 2025, genders: [] }), status: "CLOSED", invitedAt: new Date("2025-01-06T05:30:00Z"), closedAt: new Date("2025-02-28T05:30:00Z"), recruiterRating: 4, recruiterFeedback: "Good grounding in accounts; confident in the interview.", createdByUserId: staff.tpo.userId, createdAt: new Date("2025-01-03T05:30:00Z") }, select: { id: true } }));
+    (await db.drive.create({ data: { schoolId: s, companyId: company.id, kind: "ON_CAMPUS", title: closedTitle, packageMinRupees: 420_000, packageMaxRupees: 420_000, rounds: JSON.stringify([{ n: 1, kind: "TECHNICAL_INTERVIEW", note: "", at: TI("2025-01-22T05:30:00.000Z") }]), eligibilityRule: JSON.stringify({ cgpaMin: 6, noLiveBacklogs: true, programmeIds: [], batchYear: Y(2025), genders: [] }), status: "CLOSED", invitedAt: T("2025-01-06T05:30:00Z"), closedAt: T("2025-02-28T05:30:00Z"), recruiterRating: 4, recruiterFeedback: "Good grounding in accounts; confident in the interview.", createdByUserId: staff.tpo.userId, createdAt: T("2025-01-03T05:30:00Z") }, select: { id: true } }));
   const graduate = people.alumna.studentId;
-  await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, studentUserId: people.alumna.userId, schoolName: college.name, appliedAt: new Date("2025-01-09T05:30:00Z"), consentAt: new Date("2025-01-09T05:30:00Z"), recordJson: JSON.stringify({ cgpa: 8.1, liveBacklogs: 0, attendancePct: 91, programmeId: academics.programmes.BCOM!.id, programmeName: "BCom", batchYear: 2025, gender: "F", category: "OPEN" }) }, update: {} });
+  await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, studentUserId: people.alumna.userId, schoolName: college.name, appliedAt: T("2025-01-09T05:30:00Z"), consentAt: T("2025-01-09T05:30:00Z"), recordJson: JSON.stringify({ cgpa: 8.1, liveBacklogs: 0, attendancePct: 91, programmeId: academics.programmes.BCOM!.id, programmeName: "BCom", batchYear: Y(2025), gender: "F", category: "OPEN" }) }, update: {} });
   for (const round of [0, 1]) {
     await db.roundResult.upsert({ where: { driveId_round_studentMembershipId: { driveId: closed.id, round, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, round, studentMembershipId: graduate, outcome: "PASSED", byUserId: people.recruiterUserId }, update: {} });
   }
-  await db.offer.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, packageRupees: 420_000, acceptedAt: new Date("2025-02-12T05:30:00Z"), joinedAt: new Date("2025-07-01T04:00:00Z"), byUserId: people.recruiterUserId, createdAt: new Date("2025-02-06T05:30:00Z") }, update: {} });
-  if (!(await db.placementSeason.findUnique({ where: { schoolId_batchYear: { schoolId: s, batchYear: 2025 } }, select: { id: true } }))) {
-    const t = await placementTable(s, 2025);
-    await db.placementSeason.create({ data: { schoolId: s, batchYear: 2025, finalYear: t.finalYear, placed: t.placed, higherStudies: t.higherStudies, entrepreneurs: t.entrepreneurs, offers: t.offers, medianSalaryRupees: t.medianSalaryRupees, computedByUserId: staff.tpo.userId } });
+  await db.offer.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, packageRupees: 420_000, acceptedAt: T("2025-02-12T05:30:00Z"), joinedAt: T("2025-07-01T04:00:00Z"), byUserId: people.recruiterUserId, createdAt: T("2025-02-06T05:30:00Z") }, update: {} });
+  if (!(await db.placementSeason.findUnique({ where: { schoolId_batchYear: { schoolId: s, batchYear: Y(2025) } }, select: { id: true } }))) {
+    const t = await placementTable(s, Y(2025));
+    await db.placementSeason.create({ data: { schoolId: s, batchYear: Y(2025), finalYear: t.finalYear, placed: t.placed, higherStudies: t.higherStudies, entrepreneurs: t.entrepreneurs, offers: t.offers, medianSalaryRupees: t.medianSalaryRupees, computedByUserId: staff.tpo.userId } });
   }
   return { companyId: company.id, openDriveId: open.id };
 }
@@ -626,39 +631,39 @@ async function buildIqac(college: College, people: People, academics: Academics)
   const { staff } = people;
   const deptOf = (p: "BSCPHY" | "BCOM") => academics.programmes[p]!.deptId;
   const records: [StaffKey, string, string, boolean, number, string, "BSCPHY" | "BCOM"][] = [
-    ["hodPhy", "ASSOCIATE_PROFESSOR", "PHD", true, 9, "2011-06-20", "BSCPHY"],
-    ["f1", "ASSISTANT_PROFESSOR", "PHD", true, 2, "2018-07-01", "BSCPHY"],
-    ["f2", "ASSISTANT_PROFESSOR", "PG", true, 0, "2023-07-10", "BSCPHY"],
-    ["hodCom", "ASSOCIATE_PROFESSOR", "PHD", false, 6, "2009-06-15", "BCOM"],
-    ["f3", "ASSISTANT_PROFESSOR", "PG", true, 1, "2020-07-01", "BCOM"],
+    ["hodPhy", "ASSOCIATE_PROFESSOR", "PHD", true, 9, K("2011-06-20"), "BSCPHY"],
+    ["f1", "ASSISTANT_PROFESSOR", "PHD", true, 2, K("2018-07-01"), "BSCPHY"],
+    ["f2", "ASSISTANT_PROFESSOR", "PG", true, 0, K("2023-07-10"), "BSCPHY"],
+    ["hodCom", "ASSOCIATE_PROFESSOR", "PHD", false, 6, K("2009-06-15"), "BCOM"],
+    ["f3", "ASSISTANT_PROFESSOR", "PG", true, 1, K("2020-07-01"), "BCOM"],
   ];
   for (const [key, designation, highestQualification, netSetQualified, experienceBeforeYears, joinedOn, dept] of records) {
     await db.facultyRecord.upsert({ where: { membershipId: staff[key].id }, create: { schoolId: s, membershipId: staff[key].id, designation, appointment: "REGULAR", highestQualification, netSetQualified, experienceBeforeYears, joinedOn, departmentId: deptOf(dept), apiScoreJson: JSON.stringify({ teaching: 80, research: 35, service: 15 }), updatedByUserId: staff.registrar.userId }, update: {} });
   }
   const research: [string, string, string, number, number | null, StaffKey | null, "BSCPHY" | "BCOM"][] = [
-    ["PUBLICATION", "Low-cost Michelson interferometer for undergraduate labs", "UGC_CARE", 2026, null, "f1", "BSCPHY"],
-    ["PUBLICATION", "Thermal conductivity of laterite soils of the Western Ghats", "SCOPUS", 2025, null, "hodPhy", "BSCPHY"],
-    ["PROJECT", "Rooftop solar monitoring for the campus (state grant)", "NONE", 2025, 8.5, "hodPhy", "BSCPHY"],
-    ["PUBLICATION", "GST compliance among small traders in Pune", "UGC_CARE", 2025, null, "f3", "BCOM"],
+    ["PUBLICATION", "Low-cost Michelson interferometer for undergraduate labs", "UGC_CARE", Y(2026), null, "f1", "BSCPHY"],
+    ["PUBLICATION", "Thermal conductivity of laterite soils of the Western Ghats", "SCOPUS", Y(2025), null, "hodPhy", "BSCPHY"],
+    ["PROJECT", "Rooftop solar monitoring for the campus (state grant)", "NONE", Y(2025), 8.5, "hodPhy", "BSCPHY"],
+    ["PUBLICATION", "GST compliance among small traders in Pune", "UGC_CARE", Y(2025), null, "f3", "BCOM"],
   ];
   for (const [kind, title, indexing, year, amountLakhs, by, dept] of research) {
     if (await db.researchItem.findFirst({ where: { schoolId: s, title }, select: { id: true } })) continue;
     await db.researchItem.create({ data: { schoolId: s, kind, title, indexing, year, amountLakhs, facultyMembershipId: by ? staff[by].id : null, departmentId: deptOf(dept), createdByUserId: staff.iqac.userId } });
   }
   const activities: [string, string, string, number, StaffKey[]][] = [
-    ["NSS", "NSS village camp at Khanapur", "2026-01-12", 50, []],
-    ["EXTENSION", "Science day at the Zilla Parishad school, Warje", "2026-02-28", 35, []],
-    ["FDP", "FDP on outcome-based education", "2026-06-15", 5, ["hodPhy", "f1", "f2", "hodCom", "f3"]],
-    ["VALUE_ADDED_COURSE", "Tally and GST (value-added course)", "2026-08-10", 40, []],
+    ["NSS", "NSS village camp at Khanapur", K("2026-01-12"), 50, []],
+    ["EXTENSION", "Science day at the Zilla Parishad school, Warje", K("2026-02-28"), 35, []],
+    ["FDP", "FDP on outcome-based education", K("2026-06-15"), 5, ["hodPhy", "f1", "f2", "hodCom", "f3"]],
+    ["VALUE_ADDED_COURSE", "Tally and GST (value-added course)", K("2026-08-10"), 40, []],
   ];
   for (const [kind, title, at, participants, ids] of activities) {
     if (await db.activity.findFirst({ where: { schoolId: s, title }, select: { id: true } })) continue;
     await db.activity.create({ data: { schoolId: s, kind, title, at, participants, participantIdsJson: JSON.stringify(ids.map((k) => staff[k].id)), createdByUserId: staff.iqac.userId } });
   }
   const committees: [string, string, { name: string; role: string; membershipId: string | null }[], string, string][] = [
-    ["GRIEVANCE", "Students' Grievance Redressal Committee", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Sanjay Bhide", role: "Member", membershipId: staff.hodCom.id }, { name: "Student representative", role: "Special invitee", membershipId: null }], "2026-08-20", "Reviewed the term's two cases; both closed within the limit."],
-    ["ANTI_RAGGING", "Anti-ragging Committee", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Smita Kulkarni", role: "Member", membershipId: staff.registrar.id }], "2026-07-10", "Undertakings collected from every first-year student; squad rota fixed."],
-    ["IQAC", "Internal Quality Assurance Cell", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Meghana Phadke", role: "Coordinator", membershipId: staff.iqac.id }, { name: "Dr Vasudha Paranjpe", role: "Member", membershipId: staff.hodPhy.id }], "2026-09-05", "Reviewed the feedback analysis and the action taken; the AQAR plan agreed."],
+    ["GRIEVANCE", "Students' Grievance Redressal Committee", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Sanjay Bhide", role: "Member", membershipId: staff.hodCom.id }, { name: "Student representative", role: "Special invitee", membershipId: null }], K("2026-08-20"), "Reviewed the term's two cases; both closed within the limit."],
+    ["ANTI_RAGGING", "Anti-ragging Committee", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Smita Kulkarni", role: "Member", membershipId: staff.registrar.id }], K("2026-07-10"), "Undertakings collected from every first-year student; squad rota fixed."],
+    ["IQAC", "Internal Quality Assurance Cell", [{ name: "Dr Anil Deshpande", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Meghana Phadke", role: "Coordinator", membershipId: staff.iqac.id }, { name: "Dr Vasudha Paranjpe", role: "Member", membershipId: staff.hodPhy.id }], K("2026-09-05"), "Reviewed the feedback analysis and the action taken; the AQAR plan agreed."],
   ];
   let iqacMeeting = "";
   for (const [kind, name, members, at, actionTaken] of committees) {
@@ -671,22 +676,22 @@ async function buildIqac(college: College, people: People, academics: Academics)
   // /iqac/documents each said "nothing yet" while the committee's minutes spoke of the term's two cases). Last year's
   // satisfaction survey, closed with every student's answers and its action taken; the two grievances the minutes
   // name, both closed within the fifteen working days; written before the cycle is computed so the predictor reads them.
-  const SSS_TITLE = "Student Satisfaction Survey 2025–26";
+  const SSS_TITLE = `Student Satisfaction Survey ${CAL.ay(-1)}`;
   const sss =
     (await db.survey.findFirst({ where: { schoolId: s, kind: "SSS", title: SSS_TITLE }, select: { id: true } })) ??
-    (await db.survey.create({ data: { schoolId: s, kind: "SSS", title: SSS_TITLE, opensOn: "2026-03-02", closesOn: "2026-03-31", questionsJson: JSON.stringify(Array.from({ length: 20 }, (_, i) => `Q${String(i + 1).padStart(2, "0")}`)), salt: "demo-college-sss-2025", createdByUserId: staff.iqac.userId }, select: { id: true } }));
+    (await db.survey.create({ data: { schoolId: s, kind: "SSS", title: SSS_TITLE, opensOn: K("2026-03-02"), closesOn: K("2026-03-31"), questionsJson: JSON.stringify(Array.from({ length: 20 }, (_, i) => `Q${String(i + 1).padStart(2, "0")}`)), salt: "demo-college-sss-2025", createdByUserId: staff.iqac.userId }, select: { id: true } }));
   for (const st of people.students) {
     const respondent = respondentHash(sss.id, st.id, "demo-college-sss-2025");
     const base = st.n % 3 === 0 ? 3 : 4;
     const answers = Object.fromEntries(Array.from({ length: 20 }, (_, i) => [`Q${String(i + 1).padStart(2, "0")}`, Math.max(1, base - (i % 4 === 0 ? 1 : 0))]));
-    await db.surveyResponse.upsert({ where: { surveyId_respondentHash: { surveyId: sss.id, respondentHash: respondent } }, create: { schoolId: s, surveyId: sss.id, respondentHash: respondent, answersJson: JSON.stringify(answers), createdAt: new Date("2026-03-20T06:00:00Z") }, update: {} });
+    await db.surveyResponse.upsert({ where: { surveyId_respondentHash: { surveyId: sss.id, respondentHash: respondent } }, create: { schoolId: s, surveyId: sss.id, respondentHash: respondent, answersJson: JSON.stringify(answers), createdAt: T("2026-03-20T06:00:00Z") }, update: {} });
   }
   // Closed as the desk closes one: the salt wiped, so nobody can work back from a hash to a student.
-  await db.survey.updateMany({ where: { id: sss.id, closedAt: null }, data: { closedAt: new Date("2026-04-01T06:00:00Z"), salt: "" } });
-  await db.actionTakenReport.upsert({ where: { surveyId: sss.id }, create: { schoolId: s, surveyId: sss.id, text: "Library hours extended to 8 pm before the semester examinations; two remedial tutorials a week in Mathematical Physics.", publishedAt: new Date("2026-04-15T06:00:00Z"), createdByUserId: staff.iqac.userId }, update: {} });
+  await db.survey.updateMany({ where: { id: sss.id, closedAt: null }, data: { closedAt: T("2026-04-01T06:00:00Z"), salt: "" } });
+  await db.actionTakenReport.upsert({ where: { surveyId: sss.id }, create: { schoolId: s, surveyId: sss.id, text: "Library hours extended to 8 pm before the semester examinations; two remedial tutorials a week in Mathematical Physics.", publishedAt: T("2026-04-15T06:00:00Z"), createdByUserId: staff.iqac.userId }, update: {} });
   const grievances: [number, string, string, string, string, string][] = [
-    [3, "ACADEMIC", "The practical batch for PHY302 clashes with the Mathematics elective on Wednesdays.", "2026-07-20", "The timetable committee moved the practical to Thursday afternoon.", "2026-07-29"],
-    [7, "FEES", "My scholarship is not shown against the odd-semester demand.", "2026-07-27", "The accounts office recorded the sanction against the demand; the net due is corrected.", "2026-08-05"],
+    [3, "ACADEMIC", "The practical batch for PHY302 clashes with the Mathematics elective on Wednesdays.", K("2026-07-20"), "The timetable committee moved the practical to Thursday afternoon.", K("2026-07-29")],
+    [7, "FEES", "My scholarship is not shown against the odd-semester demand.", K("2026-07-27"), "The accounts office recorded the sanction against the demand; the net due is corrected.", K("2026-08-05")],
   ];
   for (const [n, kind, text, filed, response, resolved] of grievances) {
     if (await db.grievance.findFirst({ where: { schoolId: s, text }, select: { id: true } })) continue;
@@ -695,10 +700,10 @@ async function buildIqac(college: College, people: People, academics: Academics)
   }
 
   // The cycle: the affiliated framework over 2022–27, two figures the platform does not hold entered by the desk.
-  const entered = JSON.stringify({ SANCTIONED_POSTS: { value: 8, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] }, BANDWIDTH_MBPS: { value: 200, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] } });
+  const entered = JSON.stringify({ SANCTIONED_POSTS: { value: 8, byUserId: staff.iqac.userId, at: TI("2026-09-01T06:00:00.000Z"), fileIds: [] }, BANDWIDTH_MBPS: { value: 200, byUserId: staff.iqac.userId, at: TI("2026-09-01T06:00:00.000Z"), fileIds: [] } });
   const cycle =
     (await db.accreditationCycle.findFirst({ where: { schoolId: s, framework: "AFFILIATED_UG" }, select: { id: true } })) ??
-    (await db.accreditationCycle.create({ data: { schoolId: s, framework: "AFFILIATED_UG", institutionType: "COLLEGE", windowFrom: "2022-06-01", windowTo: "2027-05-31", status: "OPEN", enteredJson: entered, createdByUserId: staff.iqac.userId }, select: { id: true } }));
+    (await db.accreditationCycle.create({ data: { schoolId: s, framework: "AFFILIATED_UG", institutionType: "COLLEGE", windowFrom: K("2022-06-01"), windowTo: K("2027-05-31"), status: "OPEN", enteredJson: entered, createdByUserId: staff.iqac.userId }, select: { id: true } }));
   // Computed once, by the IQAC library, after every other module's rows exist; the scores are an append-only trend, so a re-run leaves them.
   if ((await db.metricScore.count({ where: { cycleId: cycle.id } })) === 0) {
     await recomputeAsSystem(s, cycle.id, staff.iqac.userId);
@@ -706,12 +711,12 @@ async function buildIqac(college: College, people: People, academics: Academics)
   }
   // Last year's AQAR, cut from the rows by the filings library, signed off by the principal and filed (the desk's
   // /iqac/documents showed "No filing generated yet"). Built once; data:audit's iqac-filing check re-cuts it.
-  if (!(await db.collegeFiling.findFirst({ where: { schoolId: s, kind: "AQAR", year: 2025 }, select: { id: true } }))) {
-    const built = await buildFiling(s, "AQAR", 2025, cycle.id);
-    await db.collegeFiling.create({ data: { schoolId: s, kind: "AQAR", cycleId: cycle.id, year: 2025, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), status: "FILED", checked: true, principalNote: "Approved for submission to the NAAC portal.", generatedAt: new Date("2026-09-08T06:00:00Z"), submittedAt: new Date("2026-09-10T06:00:00Z"), signedOffAt: new Date("2026-09-12T06:00:00Z"), signedOffByUserId: staff.principal.userId, generatedByUserId: staff.iqac.userId } });
+  if (!(await db.collegeFiling.findFirst({ where: { schoolId: s, kind: "AQAR", year: Y(2025) }, select: { id: true } }))) {
+    const built = await buildFiling(s, "AQAR", Y(2025), cycle.id);
+    await db.collegeFiling.create({ data: { schoolId: s, kind: "AQAR", cycleId: cycle.id, year: Y(2025), format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), status: "FILED", checked: true, principalNote: "Approved for submission to the NAAC portal.", generatedAt: T("2026-09-08T06:00:00Z"), submittedAt: T("2026-09-10T06:00:00Z"), signedOffAt: T("2026-09-12T06:00:00Z"), signedOffByUserId: staff.principal.userId, generatedByUserId: staff.iqac.userId } });
   }
   // Generated before it was sent and signed (a first run of this script stamped it the day it ran).
-  await db.collegeFiling.updateMany({ where: { schoolId: s, kind: "AQAR", year: 2025, generatedAt: { gt: new Date("2026-09-10T06:00:00Z") } }, data: { generatedAt: new Date("2026-09-08T06:00:00Z") } });
+  await db.collegeFiling.updateMany({ where: { schoolId: s, kind: "AQAR", year: Y(2025), generatedAt: { gt: T("2026-09-10T06:00:00Z") } }, data: { generatedAt: T("2026-09-08T06:00:00Z") } });
   return { cycleId: cycle.id };
 }
 
@@ -794,16 +799,18 @@ function roster(college: College, sgpa: Record<number, number | null>): string {
   return `<!-- demo-college:begin -->
 ## Saraswati Arts and Science College (the demo college)
 
-Built by \`npm run demo:college\` (from \`apps/web\`; idempotent, run it again to put things back; it does not need \`demo:schools\` first). Slug \`${SLUG}\`, join code \`${college.code}\`, kind COLLEGE, Pune, affiliated to Savitribai Phule Pune University, AISHE C-41873 (made up), NAAC A until 31 December 2028. Every module the college is offered is on. The password is the demo schools' shared one, \`${PASSWORD}\`, for every account below. Sign in by hand, or for a browser check mint a session: \`npm run zz:token -- ROLE email@${DOMAIN}\` (then \`--purge\`).
+Built by \`npm run demo:college\` (from \`apps/web\`; idempotent, run it again to put things back; it does not need \`demo:schools\` first). Slug \`${SLUG}\`, join code \`${college.code}\`, kind COLLEGE, Pune, affiliated to Savitribai Phule Pune University, AISHE C-41873 (made up), NAAC A until 31 December ${Y(2028)}. Every module the college is offered is on. The password is the demo schools' shared one, \`${PASSWORD}\`, for every account below. Sign in by hand, or for a browser check mint a session: \`npm run zz:token -- ROLE email@${DOMAIN}\` (then \`--purge\`).
 
-What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay Bhide); BSc Physics and BCom on the SPPU NEP 2024 scheme with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SY BSc Physics A, SY BCom A and FY BCom A; seven offerings on a Mon–Sat grid with lecture registers from 7 September to 3 October 2026; internal marks countersigned and locked on PHY301 and COM301, PHY302's unit test waiting for a countersign; the Summer 2026 sitting with the university's result file imported and run 1 published (SGPA for every second-year student, one ATKT and its backlog); ${RECRUITER.company} (GSTIN checked by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumna's accepted offer and the 2025 season; a NAAC cycle (affiliated UG, 2022–27) computed by the IQAC desk, with faculty records, research, activities and three committees; the IQAC's own rows: the Student Satisfaction Survey 2025–26 closed with ten responses (the salt wiped, as the desk closes one) and its action-taken report, two RESOLVED grievances (a timetable clash and a scholarship not shown on a demand, both closed within fifteen working days, as the grievance committee's minutes say), and the 2025 AQAR built by the filings library, sent, signed off by the principal and FILED; fee structures by programme, year and category, a demand per semester for every student, four odd semesters paid by bank and one scholarship claim sanctioned.
+Dates (G4-29): the college is dated from the day the script runs (\`scripts/demo-calendar.ts\`). The academic year is the one whose odd term began most recently; its odd term (1 July to 30 November) is current and the even term before it past; every other date moves with them by whole years; the registers are the four Monday-to-Saturday weeks before the run's week, inside the odd term. From December to June the college shows the odd term just ended, since its offerings are odd-semester ones. A run over a college built for another academic year is refused (the script promotes nobody); \`--calendar\` prints the dates and writes nothing; \`DEMO_TODAY=YYYY-MM-DD\` pins the day.
+
+What is in it: Physics (head Dr Vasudha Paranjpe) and Commerce (head Dr Sanjay Bhide); BSc Physics and BCom on the SPPU NEP 2024 scheme with programme and course outcomes; the ${CAL.currentTerm.name.toLowerCase()} (current) and the ${CAL.pastTerm.name.toLowerCase()}; divisions SY BSc Physics A, SY BCom A and FY BCom A; seven offerings on a Mon–Sat grid with lecture registers from ${REGISTER_FROM} to ${REGISTER_TO} (dated from the run's day, demo-calendar.ts); internal marks countersigned and locked on PHY301 and COM301, PHY302's unit test waiting for a countersign; the Summer ${Y(2026)} sitting with the university's result file imported and run 1 published (SGPA for every second-year student, one ATKT and its backlog); ${RECRUITER.company} (GSTIN checked by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumna's accepted offer and the ${Y(2025)} season; a NAAC cycle (affiliated UG, ${Y(2022)}–${Y(2027) % 100}) computed by the IQAC desk, with faculty records, research, activities and three committees; the IQAC's own rows: the Student Satisfaction Survey ${CAL.ay(-1)} closed with ten responses (the salt wiped, as the desk closes one) and its action-taken report, two RESOLVED grievances (a timetable clash and a scholarship not shown on a demand, both closed within fifteen working days, as the grievance committee's minutes say), and the ${Y(2025)} AQAR built by the filings library, sent, signed off by the principal and FILED; fee structures by programme, year and category, a demand per semester for every student, four odd semesters paid by bank and one scholarship claim sanctioned.
 
 | Account | Name | Role | Home | What to look at |
 |---|---|---|---|---|
 ${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role} | ${p.home} | ${p.look} |`).join("\n")}
 ${STUDENTS.map(studentLine).join("\n")}
 | ${GUARDIAN.email} | ${GUARDIAN.name} | Parent of Pooja Bhosale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees |
-| ${ALUMNA.email} | ${ALUMNA.name} | Alumna (BCom, left May 2025) | /alumni | /alumni/college (placed through last season's drive, a mentor), the directory |
+| ${ALUMNA.email} | ${ALUMNA.name} | Alumna (BCom, left May ${Y(2025)}) | /alumni | /alumni/college (placed through last season's drive, a mentor), the directory |
 | ${RECRUITER.email} | ${RECRUITER.name} | Recruiter, ${RECRUITER.company} (no membership) | /recruiter | the OPEN drive and its two consented applicants |
 <!-- demo-college:end -->
 `;
@@ -820,7 +827,10 @@ async function writeRoster(block: string): Promise<string> {
 }
 
 async function main() {
+  // The calendar this run would write, and nothing else (G4-29).
+  if (process.argv.includes("--calendar")) return void console.log(describeCalendar(CAL));
   await refuseUnlessLocal("demo:college");
+  await refuseAnotherYear(db, SLUG, CAL);
   const ctx: Ctx = { passwordHash: await hash(PASSWORD, ARGON), setPassword: true };
   const college = await buildCollege();
   const people = await buildPeople(ctx, college);
@@ -846,8 +856,8 @@ async function main() {
      students    sac.student01..10@${DOMAIN} — 5 SY BSc Physics, 3 SY BCom, 2 FY BCom (sac.student09 a minor; guardian ${GUARDIAN.email})
      alumna      ${ALUMNA.email}; recruiter ${RECRUITER.email} (no membership)
      academics   ${counts.offerings} offerings this term, ${counts.lectures} lectures with ${counts.lectureMarks} marks, ${counts.internalLocks} offerings' internal marks locked
-     exams       Summer 2026 sitting published: ${counts.termResults} term results, ${counts.backlogs} backlog
-     placement   ${counts.openDrives} OPEN drive (${placement.openDriveId}) with ${counts.applications - 1} applicants; 2025 season from last year's closed drive
+     exams       Summer ${Y(2026)} sitting published: ${counts.termResults} term results, ${counts.backlogs} backlog
+     placement   ${counts.openDrives} OPEN drive (${placement.openDriveId}) with ${counts.applications - 1} applicants; ${Y(2025)} season from last year's closed drive
      IQAC        NAAC cycle ${iqac.cycleId}, CGPA ${counts.cycleCgpa}
      fees        ${counts.feeStructures} structures, ${counts.feeDemands} demands, ${counts.feeReceipts} receipts, ${counts.scholarshipClaims} scholarship claim
 

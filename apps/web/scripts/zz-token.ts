@@ -26,6 +26,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
+import { assertFixtureEmail } from "./fixture-email";
 
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
 
@@ -68,7 +69,7 @@ async function main() {
   let schoolId: string | null = school.id;
   const COLLEGE_ROLES = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
   if (email && role !== "PARENT" && role !== "EXPERT" && role !== "RECRUITER" && role !== "OPERATOR" && role !== "APPADMIN") {
-    if (!email.endsWith("@zz.test") && !email.endsWith("@demo.relay.test")) throw new Error("only ZZ and demo people");
+    assertFixtureEmail(email);
     const member = await db.membership.findFirstOrThrow({ where: { role, status: "ACTIVE", leftAt: null, user: { email } }, select: { userId: true, schoolId: true } });
     userId = member.userId;
     schoolId = member.schoolId;
@@ -78,7 +79,8 @@ async function main() {
     userId = (await db.membership.findFirstOrThrow({ where: { schoolId: college.id, role, status: "ACTIVE", leftAt: null }, select: { userId: true }, orderBy: { joinedAt: "asc" } })).userId;
     schoolId = college.id;
   } else if (role === "RECRUITER") {
-    // An outside account, like the expert: no school (4 Oct 2026).
+    // An outside account, like the expert: no school (4 Oct 2026). A named recruiter is a ZZ or demo one only (A3-S-15).
+    if (email) assertFixtureEmail(email);
     userId = (await db.recruiterProfile.findFirstOrThrow({ where: { user: { email: email ?? "zz.recruiter01@zz.test" } }, select: { userId: true } })).userId;
     schoolId = null;
   } else if (role === "ADMIN" || role === "PRINCIPAL") {
@@ -88,7 +90,7 @@ async function main() {
     userId = (await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role, status: "ACTIVE", leftAt: null }, select: { userId: true } })).userId;
   } else if (role === "PARENT" && email) {
     // A named guardian (5 Oct 2026): the demo college's parent, or any ZZ guardian, with no school chosen.
-    if (!email.endsWith("@zz.test") && !email.endsWith("@demo.relay.test")) throw new Error("only ZZ and demo people");
+    assertFixtureEmail(email);
     userId = (await db.guardianship.findFirstOrThrow({ where: { parent: { email }, status: "ACTIVE" }, select: { parentUserId: true } })).parentUserId;
     schoolId = null;
   } else if (role === "PARENT") {

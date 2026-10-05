@@ -973,6 +973,12 @@ const CODE_READABLE: Record<string, string> = {
   // the caller already holds, read-only, one row; verifyByCode binds it with
   // forJoinCode and returns the kind, serial and school only, never the pupil.
   IssuedCertificate: "code",
+  // A college's grade card, transcript or degree certificate, checked the same
+  // way by its printed code alone (A3-journeys-21, 5 October 2026): the code
+  // is unique across tenants, examDocumentByCode binds it with forJoinCode and
+  // returns the kind, serial, the college's name from the paper's own
+  // snapshot and the dates, never the student.
+  ExamDocument: "code",
 };
 
 function models(): string[] {

@@ -65,16 +65,24 @@ import { placementTable } from "../src/lib/placement-analytics";
 import { seasonBatchFor } from "../src/lib/placement-rules";
 import { iqacHash, recomputeAsSystem } from "../src/lib/iqac";
 import { buildFiling, disclosureDocument } from "../src/lib/iqac-filings";
-import { defaultFilingYear } from "../src/lib/council-filings";
 import { computeSlip, daysInMonthOf, slipDigest } from "../src/lib/payroll-rules";
 import { db, link, refuseUnlessLocal, switchModulesOn, upsertMembership, upsertUser, type Ctx } from "./zz-fixtures";
 import { PASSWORD } from "./demo-schools";
+import { demoCalendar, describeCalendar, refuseAnotherYear, registerDays } from "./demo-calendar";
 
 const DOMAIN = "demo.relay.test";
 const SLUG = "saraswati-tech";
 const NAME = "Saraswati Institute of Technology";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
 const day = (key: string) => new Date(`${key}T00:00:00Z`);
+/**
+ * DATED FROM THE RUN'S DAY (G4-29, 5 Oct 2026): every date below was written for 2026–27 and goes through the
+ * calendar (scripts/demo-calendar.ts), which moves it by whole years to the academic year of the run's day; the
+ * registers are the four weeks before the run's week, inside the odd term. On 5 October 2026 every value is the
+ * literal as written. `DEMO_TODAY=YYYY-MM-DD` pins the day; `--calendar` prints it and writes nothing.
+ */
+const CAL = demoCalendar();
+const { y: Y, key: K, at: T, iso: TI } = CAL;
 const mail = (local: string) => `${local}@${DOMAIN}`;
 const pad = (n: number, w = 2) => String(n).padStart(w, "0");
 
@@ -87,15 +95,15 @@ type StaffSpec = { key: StaffKey; email: string; name: string; role: string; tit
 const STAFF: StaffSpec[] = [
   { key: "registrar", email: mail("sit.registrar"), name: "Madhavi Ranade", role: "ADMIN", title: "Registrar", home: "/admin", look: "/admin (the engineering home), /admin/academics, /admin/stream-records (lab batches, practicals), /admin/people (duties on the row menu), /accounts, /admin/inventory", basic: 4_800_000 },
   { key: "principal", email: mail("sit.principal"), name: "Dr Shrikant Gokhale", role: "PRINCIPAL", title: "Principal", home: "/principal", look: "/principal/college, /principal/accreditation (the autonomous NAAC cycle), /exam-cell, /iqac/documents (the NBA SAR to sign off once sent)", basic: 9_500_000 },
-  { key: "hodComp", email: mail("sit.hod.comp"), name: "Dr Anagha Kelkar", role: "HOD", title: "Head, Department of Computer Engineering", home: "/hod", look: "/hod/nba?year=2026 (this year's SAR draft, three criteria written; the page opens on last year's, empty), /hod/practicals, /duties/research (holds RESEARCH_DEAN), /faculty (teaches CE302)", duties: ["RESEARCH_DEAN"], basic: 8_200_000 },
+  { key: "hodComp", email: mail("sit.hod.comp"), name: "Dr Anagha Kelkar", role: "HOD", title: "Head, Department of Computer Engineering", home: "/hod", look: `/hod/nba?year=${Y(2026)} (this year's SAR draft, three criteria written; the page opens on last year's, empty), /hod/practicals, /duties/research (holds RESEARCH_DEAN), /faculty (teaches CE302)`, duties: ["RESEARCH_DEAN"], basic: 8_200_000 },
   { key: "hodMech", email: mail("sit.hod.mech"), name: "Dr Vikas Phadnis", role: "HOD", title: "Head, Department of Mechanical Engineering", home: "/hod", look: "/hod (Mechanical), /hod/practicals, /faculty (teaches ME301 in SE Mechanical A)", basic: 8_000_000 },
   { key: "f1", email: mail("sit.faculty1"), name: "Prof Nikhil Bapat", role: "FACULTY", title: "Assistant professor, Computer Engineering", home: "/faculty", look: "CE301 in SE Computer A (internal marks locked) and CE102; /duties/lab (LAB_INCHARGE, Computer Lab 1: stock, the breakage, rows to sign), /faculty/practicals", duties: ["LAB_INCHARGE"], basic: 5_600_000 },
   { key: "f2", email: mail("sit.faculty2"), name: "Prof Rasika Dixit", role: "FACULTY", title: "Assistant professor, Computer Engineering", home: "/faculty", look: "CE301 in SE Computer B and CE101; the CE301 paper set and sealed (/faculty/exams); /duties/anti-ragging and /duties/nss (ANTI_RAGGING_SQUAD, NSS_OFFICER)", duties: ["ANTI_RAGGING_SQUAD", "NSS_OFFICER"], basic: 5_400_000 },
   { key: "f3", email: mail("sit.faculty3"), name: "Prof Sameer Kulkarni", role: "FACULTY", title: "Assistant professor, Mechanical Engineering", home: "/faculty", look: "ME302 in both SE Mechanical divisions (A's unit test waiting for a countersign), the ME302 paper assigned; /duties/lab (LAB_INCHARGE, Strength of Materials Lab)", duties: ["LAB_INCHARGE"], basic: 5_500_000 },
-  { key: "f4", email: mail("sit.faculty4"), name: "Prof Pallavi Sathe", role: "FACULTY", title: "Assistant professor, Mechanical Engineering", home: "/faculty", look: "ME301 in SE Mechanical B; /duties/exam-squad (EXAM_SQUAD: the Winter 2026 papers ahead)", duties: ["EXAM_SQUAD"], basic: 5_200_000 },
-  { key: "exams", email: mail("sit.exams"), name: "Dr Hemant Joshi", role: "EXAM_CONTROLLER", title: "Controller of examinations", home: "/exam-cell", look: "Winter 2026 in CONDUCT (the sealed CE301 paper, the ME302 paper assigned, hall tickets); Summer 2026 published (marks by double entry, grade cards, one ATKT)", basic: 6_800_000 },
-  { key: "iqac", email: mail("sit.iqac"), name: "Dr Swati Marathe", role: "IQAC", title: "IQAC coordinator", home: "/iqac", look: "/iqac/predictor (the autonomous cycle), /iqac/documents (the engineering filings, the NBA SAR draft, the AICTE disclosure published), /iqac/documents/nba?year=2026 (the SAR draft with its figures)", basic: 6_500_000 },
-  { key: "tpo", email: mail("sit.tpo"), name: "Rahul Wagh", role: "TPO", title: "Training and placement officer", home: "/placement", look: "/placement/drives (Deccan Robotics' OPEN drive, two applicants), /placement/internships (the SUMMER internship), /placement/analytics (2025 season)", basic: 4_500_000 },
+  { key: "f4", email: mail("sit.faculty4"), name: "Prof Pallavi Sathe", role: "FACULTY", title: "Assistant professor, Mechanical Engineering", home: "/faculty", look: `ME301 in SE Mechanical B; /duties/exam-squad (EXAM_SQUAD: the Winter ${Y(2026)} papers ahead)`, duties: ["EXAM_SQUAD"], basic: 5_200_000 },
+  { key: "exams", email: mail("sit.exams"), name: "Dr Hemant Joshi", role: "EXAM_CONTROLLER", title: "Controller of examinations", home: "/exam-cell", look: `Winter ${Y(2026)} in CONDUCT (the sealed CE301 paper, the ME302 paper assigned, hall tickets); Summer ${Y(2026)} published (marks by double entry, grade cards, one ATKT)`, basic: 6_800_000 },
+  { key: "iqac", email: mail("sit.iqac"), name: "Dr Swati Marathe", role: "IQAC", title: "IQAC coordinator", home: "/iqac", look: `/iqac/predictor (the autonomous cycle), /iqac/documents (the engineering filings, the NBA SAR draft, the AICTE disclosure published), /iqac/documents/nba?year=${Y(2026)} (the SAR draft with its figures)`, basic: 6_500_000 },
+  { key: "tpo", email: mail("sit.tpo"), name: "Rahul Wagh", role: "TPO", title: "Training and placement officer", home: "/placement", look: `/placement/drives (Deccan Robotics' OPEN drive, two applicants), /placement/internships (the SUMMER internship), /placement/analytics (${Y(2025)} season)`, basic: 4_500_000 },
   { key: "accounts", email: mail("sit.accounts"), name: "Kavita Deshmukh", role: "ACCOUNTS", title: "Accounts officer", home: "/accounts", look: "/accounts (collection, defaulters), /accounts/structures (FRA approvals), /accounts/scholarships, /admin/payroll (September locked)", basic: 4_200_000 },
   { key: "librarian", email: mail("sit.librarian"), name: "Sunanda Apte", role: "LIBRARIAN", title: "Librarian", home: "/library", look: "the catalogue (engineering titles), one book out with Rohan", basic: 3_800_000 },
   { key: "warden", email: mail("sit.warden"), name: "Ganesh Pawar", role: "WARDEN", title: "Warden, Visvesvaraya Hostel", home: "/hostel", look: "four boarders (one a minor), the anti-ragging squad's round", basic: 3_200_000 },
@@ -106,23 +114,23 @@ type Prog = "BECOMP" | "BEMECH";
 type StudentSpec = { n: number; name: string; gender: "M" | "F"; birth: string; programme: Prog; year: 1 | 2; div: string; category: "OPEN" | "OBC"; paidOdd: boolean };
 /** Six second-year Computer (two divisions), four second-year Mechanical (two divisions), two first-year Computer (both seventeen). */
 const STUDENTS: StudentSpec[] = [
-  { n: 1, name: "Aarya Kulkarni", gender: "F", birth: "2006-08-11", programme: "BECOMP", year: 2, div: "SECA", category: "OPEN", paidOdd: true },
-  { n: 2, name: "Rohan Deshpande", gender: "M", birth: "2007-01-19", programme: "BECOMP", year: 2, div: "SECA", category: "OBC", paidOdd: false },
-  { n: 3, name: "Ishita Patil", gender: "F", birth: "2006-10-02", programme: "BECOMP", year: 2, div: "SECA", category: "OPEN", paidOdd: true },
-  { n: 4, name: "Siddharth Joshi", gender: "M", birth: "2006-12-27", programme: "BECOMP", year: 2, div: "SECB", category: "OPEN", paidOdd: true },
-  { n: 5, name: "Neha Gaikwad", gender: "F", birth: "2007-03-15", programme: "BECOMP", year: 2, div: "SECB", category: "OPEN", paidOdd: false },
-  { n: 6, name: "Varun Shinde", gender: "M", birth: "2006-09-08", programme: "BECOMP", year: 2, div: "SECB", category: "OBC", paidOdd: false },
-  { n: 7, name: "Aditya Pawar", gender: "M", birth: "2006-07-21", programme: "BEMECH", year: 2, div: "SEMA", category: "OPEN", paidOdd: true },
-  { n: 8, name: "Shruti More", gender: "F", birth: "2007-02-03", programme: "BEMECH", year: 2, div: "SEMA", category: "OBC", paidOdd: false },
-  { n: 9, name: "Omkar Jadhav", gender: "M", birth: "2006-11-30", programme: "BEMECH", year: 2, div: "SEMB", category: "OPEN", paidOdd: false },
-  { n: 10, name: "Pratik Bhosale", gender: "M", birth: "2007-04-18", programme: "BEMECH", year: 2, div: "SEMB", category: "OPEN", paidOdd: true },
-  { n: 11, name: "Anushka Kale", gender: "F", birth: "2009-02-14", programme: "BECOMP", year: 1, div: "FECA", category: "OPEN", paidOdd: true },
-  { n: 12, name: "Yash Thorat", gender: "M", birth: "2009-06-30", programme: "BECOMP", year: 1, div: "FECA", category: "OPEN", paidOdd: false },
+  { n: 1, name: "Aarya Kulkarni", gender: "F", birth: K("2006-08-11"), programme: "BECOMP", year: 2, div: "SECA", category: "OPEN", paidOdd: true },
+  { n: 2, name: "Rohan Deshpande", gender: "M", birth: K("2007-01-19"), programme: "BECOMP", year: 2, div: "SECA", category: "OBC", paidOdd: false },
+  { n: 3, name: "Ishita Patil", gender: "F", birth: K("2006-10-02"), programme: "BECOMP", year: 2, div: "SECA", category: "OPEN", paidOdd: true },
+  { n: 4, name: "Siddharth Joshi", gender: "M", birth: K("2006-12-27"), programme: "BECOMP", year: 2, div: "SECB", category: "OPEN", paidOdd: true },
+  { n: 5, name: "Neha Gaikwad", gender: "F", birth: K("2007-03-15"), programme: "BECOMP", year: 2, div: "SECB", category: "OPEN", paidOdd: false },
+  { n: 6, name: "Varun Shinde", gender: "M", birth: K("2006-09-08"), programme: "BECOMP", year: 2, div: "SECB", category: "OBC", paidOdd: false },
+  { n: 7, name: "Aditya Pawar", gender: "M", birth: K("2006-07-21"), programme: "BEMECH", year: 2, div: "SEMA", category: "OPEN", paidOdd: true },
+  { n: 8, name: "Shruti More", gender: "F", birth: K("2007-02-03"), programme: "BEMECH", year: 2, div: "SEMA", category: "OBC", paidOdd: false },
+  { n: 9, name: "Omkar Jadhav", gender: "M", birth: K("2006-11-30"), programme: "BEMECH", year: 2, div: "SEMB", category: "OPEN", paidOdd: false },
+  { n: 10, name: "Pratik Bhosale", gender: "M", birth: K("2007-04-18"), programme: "BEMECH", year: 2, div: "SEMB", category: "OPEN", paidOdd: true },
+  { n: 11, name: "Anushka Kale", gender: "F", birth: K("2009-02-14"), programme: "BECOMP", year: 1, div: "FECA", category: "OPEN", paidOdd: true },
+  { n: 12, name: "Yash Thorat", gender: "M", birth: K("2009-06-30"), programme: "BECOMP", year: 1, div: "FECA", category: "OPEN", paidOdd: false },
 ];
 const MINORS = new Set([11, 12]);
 const studentEmail = (n: number) => mail(`sit.student${pad(n)}`);
 const GUARDIAN = { email: mail("sit.parent11"), name: "Suresh Kale", phone: "+919822081011", of: 11 };
-const ALUMNUS = { email: mail("sit.alumni01"), name: "Kedar Limaye", birth: "2003-04-12", joined: "2021-08-02T04:00:00Z", left: "2025-05-31T06:30:00Z" };
+const ALUMNUS = { email: mail("sit.alumni01"), name: "Kedar Limaye", birth: K("2003-04-12"), joined: TI("2021-08-02T04:00:00Z"), left: TI("2025-05-31T06:30:00Z") };
 const RECRUITER = { email: mail("sit.recruiter"), name: "Meera Iyer", company: "Deccan Robotics Pvt Ltd" };
 const BOARDERS = [4, 7, 9, 12];
 const RIDERS = [1, 3, 11];
@@ -176,8 +184,8 @@ const PROGRAMMES: { code: Prog; name: string; dept: { code: "COMP" | "MECH"; nam
     ],
   },
 ];
-const CURRENT_TERM = { name: "Odd term 2026–27", academicYear: "2026–27", startsOn: "2026-07-01", endsOn: "2026-11-30", registrationOpensOn: "2026-06-20", registrationClosesOn: "2026-07-15" };
-const PAST_TERM = { name: "Even term 2025–26", academicYear: "2025–26", startsOn: "2025-12-01", endsOn: "2026-04-30", registrationOpensOn: "2025-11-20", registrationClosesOn: "2025-12-10" };
+const CURRENT_TERM = CAL.currentTerm;
+const PAST_TERM = CAL.pastTerm;
 const DIVISIONS: { key: string; name: string; programme: Prog; year: 1 | 2; room: string }[] = [
   { key: "SECA", name: "SE Computer A", programme: "BECOMP", year: 2, room: "Room 101" },
   { key: "SECB", name: "SE Computer B", programme: "BECOMP", year: 2, room: "Room 102" },
@@ -202,12 +210,12 @@ const OFFERINGS: [string, string, StaffKey, [number, number][], { A?: [number, n
   ["CE101", "FECA", "f2", [[1, 3], [3, 3]], {}],
   ["CE102", "FECA", "f1", [[2, 3], [4, 3]], { A: [5, 3] }],
 ];
-const REGISTER_FROM = "2026-09-07";
-const REGISTER_TO = "2026-10-03";
-const COUNTERSIGNED_AT = new Date("2026-09-30T10:00:00Z");
-const LOCKED_AT = new Date("2026-10-01T10:00:00Z");
-const PUBLISHED_AT = new Date("2026-05-25T06:30:00Z");
-const PAYROLL_MONTH = "2026-09";
+const REGISTER_FROM = CAL.registerFrom;
+const REGISTER_TO = CAL.registerTo;
+const COUNTERSIGNED_AT = T("2026-09-30T10:00:00Z");
+const LOCKED_AT = T("2026-10-01T10:00:00Z");
+const PUBLISHED_AT = T("2026-05-25T06:30:00Z");
+const PAYROLL_MONTH = `${Y(2026)}-09`;
 
 type Member = { id: string; userId: string };
 type College = { id: string; name: string; code: string };
@@ -222,9 +230,9 @@ async function buildCollege(): Promise<College> {
     affiliatingUniversity: "Savitribai Phule Pune University",
     aisheCode: "C-41902",
     // The AICTE approval with this session's extension of approval (made up, in the shape AICTE's letters carry).
-    aicteApprovalRef: "F.No. Western/1-9318274/2026/EOA, 30 April 2026",
+    aicteApprovalRef: `F.No. Western/1-9318274/${Y(2026)}/EOA, 30 April ${Y(2026)}`,
     naacGrade: "A",
-    naacValidUntil: day("2029-03-31"),
+    naacValidUntil: day(K("2029-03-31")),
     nirfCategory: "ENGINEERING",
     isTestFixture: false,
     streamsJson: JSON.stringify(["ENGINEERING"]),
@@ -255,7 +263,7 @@ async function buildPeople(ctx: Ctx, college: College) {
     const user = await upsertUser(ctx, studentEmail(s.n), s.name, { birthdate, isMinor });
     await db.user.update({ where: { id: user.id }, data: { birthdate, isMinor } });
     const m = await upsertMembership(user.id, college.id, "STUDENT", { gradeLevel: String(s.year) });
-    const entry = s.year === 2 ? 2025 : 2026;
+    const entry = s.year === 2 ? Y(2025) : Y(2026);
     await db.membership.updateMany({ where: { id: m.id, studentCode: null }, data: { studentCode: `SIT-${entry}-${pad(s.n)}` } });
     students.push({ ...s, id: m.id, userId: user.id });
   }
@@ -272,7 +280,7 @@ async function buildPeople(ctx: Ctx, college: College) {
   const alumnusRow = await db.membership.findUniqueOrThrow({ where: { userId_schoolId_role: { userId: alumnus.id, schoolId: college.id, role: "ALUMNUS" } }, select: { id: true } });
   await db.alumniProfile.upsert({
     where: { membershipId: alumnusRow.id },
-    create: { schoolId: college.id, membershipId: alumnusRow.id, userId: alumnus.id, listed: true, listedAt: new Date("2025-08-01T06:00:00Z"), city: "Pune", occupation: "Embedded software engineer, Deccan Robotics", mentor: true, mentorAt: new Date("2025-09-01T06:00:00Z"), mentorByUserId: staff.registrar.userId },
+    create: { schoolId: college.id, membershipId: alumnusRow.id, userId: alumnus.id, listed: true, listedAt: T("2025-08-01T06:00:00Z"), city: "Pune", occupation: "Embedded software engineer, Deccan Robotics", mentor: true, mentorAt: T("2025-09-01T06:00:00Z"), mentorByUserId: staff.registrar.userId },
     update: {},
   });
 
@@ -333,12 +341,12 @@ async function buildAcademics(college: College, people: People) {
   const divisions: Record<string, { id: string; classId: string }> = {};
   for (const d of DIVISIONS) {
     const klass = (await db.class.findFirst({ where: { schoolId: s, name: d.name }, select: { id: true } })) ?? (await db.class.create({ data: { schoolId: s, name: d.name, gradeLevel: String(d.year), subject: d.programme, joinCode: classCode() }, select: { id: true } }));
-    const division = await db.division.upsert({ where: { classId: klass.id }, create: { schoolId: s, classId: klass.id, programmeId: programmes[d.programme]!.id, yearOfStudy: d.year, academicYear: "2026–27" }, update: {}, select: { id: true } });
+    const division = await db.division.upsert({ where: { classId: klass.id }, create: { schoolId: s, classId: klass.id, programmeId: programmes[d.programme]!.id, yearOfStudy: d.year, academicYear: CAL.ay(0) }, update: {}, select: { id: true } });
     divisions[d.key] = { id: division.id, classId: klass.id };
   }
   const rollOf = (st: StudentSpec) => students.filter((x) => x.div === st.div).findIndex((x) => x.n === st.n) + 1;
   for (const st of students) {
-    const entryYear = st.year === 2 ? 2025 : 2026;
+    const entryYear = st.year === 2 ? Y(2025) : Y(2026);
     const seat = { programmeId: programmes[st.programme]!.id, schemeId: programmes[st.programme]!.schemeId, entryYear, yearOfStudy: st.year, semester: st.year === 2 ? 3 : 1, divisionId: divisions[st.div]!.id, prn: `SIT${entryYear}${pad(st.n, 3)}`, status: "ACTIVE" };
     await db.studentProgramme.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, ...seat }, update: {} });
     await db.enrollment.upsert({ where: { classId_studentMembershipId: { classId: divisions[st.div]!.classId, studentMembershipId: st.id } }, create: { schoolId: s, classId: divisions[st.div]!.classId, studentMembershipId: st.id, rollNumber: rollOf(st) }, update: {} });
@@ -381,15 +389,14 @@ async function buildAcademics(college: College, people: People) {
     }
     const roster = students.filter((st) => st.div === divKey);
     for (const st of roster) {
-      await db.courseRegistration.upsert({ where: { offeringId_studentMembershipId: { offeringId: offering.id, studentMembershipId: st.id } }, create: { schoolId: s, studentMembershipId: st.id, offeringId: offering.id, termId: current.id, kind: "CORE", byUserId: staff.registrar.userId, registeredAt: new Date("2026-07-05T05:00:00Z") }, update: {} });
+      await db.courseRegistration.upsert({ where: { offeringId_studentMembershipId: { offeringId: offering.id, studentMembershipId: st.id } }, create: { schoolId: s, studentMembershipId: st.id, offeringId: offering.id, termId: current.id, kind: "CORE", byUserId: staff.registrar.userId, registeredAt: T("2026-07-05T05:00:00Z") }, update: {} });
     }
     offerings.push({ key: `${code}|${divKey}`, code, div: divKey, id: offering.id, teacher, teacherKey, roster, slots });
   }
 
   // Four weeks of registers. A LAB hour is its batch's: its lecture names the batch and registers only the batch's students.
   // Most students miss one hour in eleven; Pratik misses every third ME302 lecture (under 75 %).
-  const days: string[] = [];
-  for (let t = day(REGISTER_FROM).getTime(); t <= day(REGISTER_TO).getTime(); t += 86_400_000) if (new Date(t).getUTCDay() !== 0) days.push(new Date(t).toISOString().slice(0, 10));
+  const days = registerDays({ registerFrom: REGISTER_FROM, registerTo: REGISTER_TO });
   const labDays: Record<string, string[]> = {};
   for (const o of offerings) {
     let index = 0;
@@ -481,8 +488,8 @@ async function buildOffice(college: College, people: People, academics: Academic
   const yearRow = async (name: string, from: string, to: string, data: { isCurrent: boolean; closedAt: Date | null }) =>
     (await db.academicYear.findUnique({ where: { schoolId_name: { schoolId: s, name } }, select: { id: true, name: true } })) ??
     (await db.academicYear.create({ data: { schoolId: s, name, startDate: day(from), endDate: day(to), ...data }, select: { id: true, name: true } }));
-  await yearRow("2025–26", "2025-06-01", "2026-05-31", { isCurrent: false, closedAt: new Date("2026-06-01T00:00:00Z") });
-  const year = await yearRow("2026–27", "2026-06-01", "2027-05-31", { isCurrent: true, closedAt: null });
+  await yearRow(CAL.ay(-1), K("2025-06-01"), K("2026-05-31"), { isCurrent: false, closedAt: T("2026-06-01T00:00:00Z") });
+  const year = await yearRow(CAL.ay(0), K("2026-06-01"), K("2027-05-31"), { isCurrent: true, closedAt: null });
 
   const head: Record<string, string> = {};
   for (const [code, name, kind, sortOrder] of [["TUI", "Tuition", "TUITION", 1], ["DEV", "Development", "DEVELOPMENT", 2], ["EXM", "Examination", "EXAM", 3], ["LAB", "Laboratory", "LABORATORY", 4], ["CAU", "Caution deposit", "CAUTION_DEPOSIT", 5]] as const) {
@@ -505,12 +512,12 @@ async function buildOffice(college: College, people: People, academics: Academic
       found ??
       (await db.feeStructure.create({
         data: {
-          schoolId: s, academicYearId: year.id, name, publishedAt: new Date("2026-06-10T06:00:00Z"), programmeId: academics.programmes[st.programme]!.id, yearOfStudy: st.year, category: st.category,
-          approvalRef: `FRA/2026-27/SIT/${st.programme}/${st.year}/${st.category}`, lateFeeSlabsJson: JSON.stringify([{ afterDays: 15, paise: 100_000 }, { afterDays: 30, paise: 200_000 }]),
+          schoolId: s, academicYearId: year.id, name, publishedAt: T("2026-06-10T06:00:00Z"), programmeId: academics.programmes[st.programme]!.id, yearOfStudy: st.year, category: st.category,
+          approvalRef: `FRA/${CAL.ayHyphen(0)}/SIT/${st.programme}/${st.year}/${st.category}`, lateFeeSlabsJson: JSON.stringify([{ afterDays: 15, paise: 100_000 }, { afterDays: 30, paise: 200_000 }]),
           instalments: {
             create: [
-              { schoolId: s, label: "Odd semester", sortOrder: 0, dueDate: day("2026-07-15"), lines: { create: st.lines.map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: c === "CAU" ? p : Math.round(p / 2) })) } },
-              { schoolId: s, label: "Even semester", sortOrder: 1, dueDate: day("2026-12-15"), lines: { create: st.lines.filter(([c]) => c !== "CAU").map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: Math.round(p / 2) })) } },
+              { schoolId: s, label: "Odd semester", sortOrder: 0, dueDate: day(K("2026-07-15")), lines: { create: st.lines.map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: c === "CAU" ? p : Math.round(p / 2) })) } },
+              { schoolId: s, label: "Even semester", sortOrder: 1, dueDate: day(K("2026-12-15")), lines: { create: st.lines.filter(([c]) => c !== "CAU").map(([c, p]) => ({ schoolId: s, headId: head[c]!, amountPaise: Math.round(p / 2) })) } },
             ],
           },
         },
@@ -521,7 +528,7 @@ async function buildOffice(college: College, people: People, academics: Academic
 
   for (const st of students) {
     const programmeId = academics.programmes[st.programme]!.id;
-    const entry = st.year === 2 ? 2025 : 2026;
+    const entry = st.year === 2 ? Y(2025) : Y(2026);
     await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: st.id, programmeId } }, create: { schoolId: s, studentMembershipId: st.id, programmeId, yearOfEntry: entry, category: st.category, quota: "CAP" }, update: {} });
     const record = { prn: `SIT${entry}${pad(st.n, 3)}`, admissionCategory: st.category, admissionQuota: "CAP", yearOfEntry: entry, admissionNumber: `${entry}/E${pad(st.n, 4)}`, admissionDate: day(`${entry}-08-05`), gender: st.gender, annualIncome: st.category === "OBC" ? 180_000 : 900_000, city: "Pune" };
     await db.pupilRecord.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, ...record }, update: {} });
@@ -540,7 +547,7 @@ async function buildOffice(college: College, people: People, academics: Academic
     const reference = `UTR2026072${pad(st.n, 4)}`;
     const y = await db.academicYear.update({ where: { id: year.id }, data: { feeReceiptNext: { increment: 1 } }, select: { feeReceiptNext: true } });
     const number = y.feeReceiptNext - 1;
-    const paidAt = new Date(`2026-07-${pad(2 + st.n)}T06:00:00Z`);
+    const paidAt = T(`2026-07-${pad(2 + st.n)}T06:00:00Z`);
     const payment = await db.feePayment.create({ data: { schoolId: s, studentMembershipId: st.id, amountPaise: odd.netPaise, method: "BANK", status: "PAID", clientId, reference, collectedByUserId: staff.accounts.userId, paidAt, intentJson: JSON.stringify([odd.id]) }, select: { id: true } });
     await db.feeAllocation.create({ data: { schoolId: s, paymentId: payment.id, demandId: odd.id, amountPaise: odd.netPaise } });
     await db.feeReceipt.create({ data: { schoolId: s, paymentId: payment.id, academicYearId: year.id, number, serial: `RCPT/${year.name}/${pad(number, 6)}`, issuedAt: paidAt, snapshotJson: JSON.stringify({ school: college.name, pupil: st.name, lines: [{ label: odd.label, amountPaise: odd.netPaise }], method: "BANK", reference }) } });
@@ -550,11 +557,11 @@ async function buildOffice(college: College, people: People, academics: Academic
   // Rohan's OBC post-matric claim, sanctioned on MahaDBT: the state's half of the tuition, the receivable on his ledger.
   const rohan = students.find((x) => x.n === 2)!;
   await db.scholarshipClaim.upsert({
-    where: { studentMembershipId_scheme_academicYear: { studentMembershipId: rohan.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27" } },
-    create: { schoolId: s, studentMembershipId: rohan.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27", portalApplicationId: "MDBT2026PUN0071344", appliedAt: day("2026-08-04"), expectedPaise: 5_600_000, sanctionedPaise: 5_600_000, sanctionedAt: day("2026-09-21"), status: "SANCTIONED", createdByUserId: staff.accounts.userId },
+    where: { studentMembershipId_scheme_academicYear: { studentMembershipId: rohan.id, scheme: "OBC_POST_MATRIC", academicYear: CAL.ayHyphen(0) } },
+    create: { schoolId: s, studentMembershipId: rohan.id, scheme: "OBC_POST_MATRIC", academicYear: CAL.ayHyphen(0), portalApplicationId: "MDBT2026PUN0071344", appliedAt: day(K("2026-08-04")), expectedPaise: 5_600_000, sanctionedPaise: 5_600_000, sanctionedAt: day(K("2026-09-21")), status: "SANCTIONED", createdByUserId: staff.accounts.userId },
     update: {},
   });
-  await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: people.alumnus.studentId, programmeId: academics.programmes.BECOMP!.id } }, create: { schoolId: s, studentMembershipId: people.alumnus.studentId, programmeId: academics.programmes.BECOMP!.id, yearOfEntry: 2021, category: "OPEN", quota: "CAP", status: "COMPLETED" }, update: {} });
+  await db.programmeEnrolment.upsert({ where: { studentMembershipId_programmeId: { studentMembershipId: people.alumnus.studentId, programmeId: academics.programmes.BECOMP!.id } }, create: { schoolId: s, studentMembershipId: people.alumnus.studentId, programmeId: academics.programmes.BECOMP!.id, yearOfEntry: Y(2021), category: "OPEN", quota: "CAP", status: "COMPLETED" }, update: {} });
   return { yearId: year.id, examHeadId: head.EXM! };
 }
 
@@ -585,26 +592,26 @@ async function buildExams(college: College, people: People, academics: Academics
   const sitters = people.students.filter((st) => st.year === 2);
 
   /* ---- last term: Summer 2026, the cell's own marks by double entry, published, grade cards */
-  const name = "Summer 2026 (even term 2025–26)";
+  const name = `Summer ${Y(2026)} (even term ${CAL.ay(-1)})`;
   const session = await db.examSession.upsert({
     where: { schoolId_name: { schoolId: s, name } },
-    create: { schoolId: s, name, kind: "REGULAR", termId: academics.pastTermId, formOpensAt: new Date("2026-03-01T04:00:00Z"), formClosesAt: new Date("2026-03-20T18:00:00Z"), feePerCoursePaise: 50_000, feePerBacklogPaise: 60_000, photocopyFeePaise: 20_000, revalFeePaise: 50_000, feeHeadId: examHeadId, status: "PUBLISHED", createdByUserId: ctrl.userId },
+    create: { schoolId: s, name, kind: "REGULAR", termId: academics.pastTermId, formOpensAt: T("2026-03-01T04:00:00Z"), formClosesAt: T("2026-03-20T18:00:00Z"), feePerCoursePaise: 50_000, feePerBacklogPaise: 60_000, photocopyFeePaise: 20_000, revalFeePaise: 50_000, feeHeadId: examHeadId, status: "PUBLISHED", createdByUserId: ctrl.userId },
     update: {},
     select: { id: true },
   });
   const pastCourses = (programme: Prog) => Object.entries(academics.courses).filter(([, c]) => c.programme === programme && c.semester === 2).map(([code, c]) => ({ code, ...c }));
   for (const [i, c] of [...pastCourses("BECOMP"), ...pastCourses("BEMECH")].entries()) {
-    await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: session.id, courseId: c.id } }, create: { schoolId: s, sessionId: session.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(2026, 3, 20 + i, 4, 30)), durationMin: 180 }, update: {} });
+    await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: session.id, courseId: c.id } }, create: { schoolId: s, sessionId: session.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(Y(2026), 3, 20 + i, 4, 30)), durationMin: 180 }, update: {} });
   }
   for (const [k, st] of sitters.entries()) {
     const mine = pastCourses(st.programme);
     const form = await db.examForm.upsert({
       where: { sessionId_studentMembershipId: { sessionId: session.id, studentMembershipId: st.id } },
-      create: { schoolId: s, sessionId: session.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 50_000, status: "APPROVED", submittedAt: new Date("2026-03-06T06:00:00Z"), decidedAt: new Date("2026-03-07T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: new Date("2026-04-01T06:00:00Z") },
+      create: { schoolId: s, sessionId: session.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 50_000, status: "APPROVED", submittedAt: T("2026-03-06T06:00:00Z"), decidedAt: T("2026-03-07T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: T("2026-04-01T06:00:00Z") },
       update: {},
       select: { id: true },
     });
-    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: session.id, formId: form.id, studentMembershipId: st.id, number: `HT${pad(k + 1, 4)}`, code: `SITHT26S${pad(k + 1, 4)}`, issuedByUserId: ctrl.userId, issuedAt: new Date("2026-04-10T06:00:00Z") }, update: {} });
+    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: session.id, formId: form.id, studentMembershipId: st.id, number: `HT${pad(k + 1, 4)}`, code: `SITHT26S${pad(k + 1, 4)}`, issuedByUserId: ctrl.userId, issuedAt: T("2026-04-10T06:00:00Z") }, update: {} });
   }
   // The cell's marks: entry one by the controller, entry two by the registrar, matched; internal of 40, external of 60.
   // Omkar falls short in ME201's external (an ATKT and a backlog).
@@ -619,7 +626,7 @@ async function buildExams(college: College, people: People, academics: Academics
       const [internal, external] = marksOf(k, j, st, c.code);
       await db.examMark.upsert({
         where: { sessionId_courseId_studentMembershipId_version: { sessionId: session.id, courseId: c.id, studentMembershipId: st.id, version: 1 } },
-        create: { schoolId: s, sessionId: session.id, courseId: c.id, studentMembershipId: st.id, internalMilli: internal * 1000, externalMilli: external * 1000, matched: true, source: "DOUBLE_ENTRY", version: 1, entry1Milli: external * 1000, entry1ByUserId: ctrl.userId, entry1At: new Date("2026-05-12T06:00:00Z"), entry2Milli: external * 1000, entry2ByUserId: second.userId, entry2At: new Date("2026-05-13T06:00:00Z"), enteredByUserId: ctrl.userId },
+        create: { schoolId: s, sessionId: session.id, courseId: c.id, studentMembershipId: st.id, internalMilli: internal * 1000, externalMilli: external * 1000, matched: true, source: "DOUBLE_ENTRY", version: 1, entry1Milli: external * 1000, entry1ByUserId: ctrl.userId, entry1At: T("2026-05-12T06:00:00Z"), entry2Milli: external * 1000, entry2ByUserId: second.userId, entry2At: T("2026-05-13T06:00:00Z"), enteredByUserId: ctrl.userId },
         update: {},
       });
       const out = courseOutcome({ internalMilli: internal * 1000, externalMilli: external * 1000, absent: false, graceMilli: 0 }, rules, table);
@@ -655,18 +662,18 @@ async function buildExams(college: College, people: People, academics: Academics
         cls: c.status === "PASS" ? classFor(c.sgpa, rules.classBands) : null,
         yearOfPassing: null,
       };
-      const last = await db.examDocument.findFirst({ where: { schoolId: s, kind: "GRADE_CARD", yearLabel: "2025–26" }, orderBy: { number: "desc" }, select: { number: true } });
+      const last = await db.examDocument.findFirst({ where: { schoolId: s, kind: "GRADE_CARD", yearLabel: CAL.ay(-1) }, orderBy: { number: "desc" }, select: { number: true } });
       const number = (last?.number ?? 0) + 1;
-      await db.examDocument.create({ data: { schoolId: s, studentMembershipId: c.st.id, kind: "GRADE_CARD", sessionId: session.id, runId: run.id, yearLabel: "2025–26", number, serial: `GC/2025–26/${pad(number, 4)}`, code: checkCode(randomBytes(10)), studentName: c.st.name, dataJson: JSON.stringify(data), issuedByUserId: ctrl.userId, issuedAt: new Date(PUBLISHED_AT.getTime() + (i + 1) * 60_000 + 2 * 86_400_000) } });
+      await db.examDocument.create({ data: { schoolId: s, studentMembershipId: c.st.id, kind: "GRADE_CARD", sessionId: session.id, runId: run.id, yearLabel: CAL.ay(-1), number, serial: `GC/${CAL.ay(-1)}/${pad(number, 4)}`, code: checkCode(randomBytes(10)), studentName: c.st.name, dataJson: JSON.stringify(data), issuedByUserId: ctrl.userId, issuedAt: new Date(PUBLISHED_AT.getTime() + (i + 1) * 60_000 + 2 * 86_400_000) } });
     }
     gradeCards += 1;
   }
 
   /* ---- this term: Winter 2026, in CONDUCT, the autonomous cell's own papers */
-  const wname = "Winter 2026 (odd term 2026–27)";
+  const wname = `Winter ${Y(2026)} (odd term ${CAL.ay(0)})`;
   const winter = await db.examSession.upsert({
     where: { schoolId_name: { schoolId: s, name: wname } },
-    create: { schoolId: s, name: wname, kind: "REGULAR", termId: academics.currentTermId, formOpensAt: new Date("2026-09-01T04:00:00Z"), formClosesAt: new Date("2026-09-20T18:00:00Z"), feePerCoursePaise: 50_000, feePerBacklogPaise: 60_000, photocopyFeePaise: 20_000, revalFeePaise: 50_000, feeHeadId: examHeadId, status: "CONDUCT", createdByUserId: ctrl.userId },
+    create: { schoolId: s, name: wname, kind: "REGULAR", termId: academics.currentTermId, formOpensAt: T("2026-09-01T04:00:00Z"), formClosesAt: T("2026-09-20T18:00:00Z"), feePerCoursePaise: 50_000, feePerBacklogPaise: 60_000, photocopyFeePaise: 20_000, revalFeePaise: 50_000, feeHeadId: examHeadId, status: "CONDUCT", createdByUserId: ctrl.userId },
     update: { status: "CONDUCT" },
     select: { id: true },
   });
@@ -674,29 +681,29 @@ async function buildExams(college: College, people: People, academics: Academics
   const papers = [...thisTerm("BECOMP", 3), ...thisTerm("BEMECH", 3), ...thisTerm("BECOMP", 1)];
   const schedules: Record<string, string> = {};
   for (const [i, c] of papers.entries()) {
-    schedules[c.code] = (await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: winter.id, courseId: c.id } }, create: { schoolId: s, sessionId: winter.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(2026, 10, 16 + i, 4, 30)), durationMin: 180 }, update: {}, select: { id: true } })).id;
+    schedules[c.code] = (await db.examSchedule.upsert({ where: { sessionId_courseId: { sessionId: winter.id, courseId: c.id } }, create: { schoolId: s, sessionId: winter.id, courseId: c.id, courseCode: c.code, courseName: c.name, at: new Date(Date.UTC(Y(2026), 10, 16 + i, 4, 30)), durationMin: 180 }, update: {}, select: { id: true } })).id;
     await db.examRoom.upsert({ where: { scheduleId_name: { scheduleId: schedules[c.code]!, name: "Main Hall" } }, create: { schoolId: s, sessionId: winter.id, scheduleId: schedules[c.code]!, name: "Main Hall", capacity: 60 }, update: {} });
   }
   for (const [k, st] of people.students.entries()) {
     const mine = thisTerm(st.programme, st.year === 2 ? 3 : 1);
     const form = await db.examForm.upsert({
       where: { sessionId_studentMembershipId: { sessionId: winter.id, studentMembershipId: st.id } },
-      create: { schoolId: s, sessionId: winter.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 50_000, status: "APPROVED", submittedAt: new Date("2026-09-08T06:00:00Z"), decidedAt: new Date("2026-09-10T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: new Date("2026-09-25T06:00:00Z") },
+      create: { schoolId: s, sessionId: winter.id, studentMembershipId: st.id, coursesJson: JSON.stringify(mine.map((c) => ({ courseId: c.id, kind: "REGULAR" }))), eligibilityJson: JSON.stringify({ eligible: true, courses: [], noDues: [] }), eligible: true, noDues: true, feePaise: mine.length * 50_000, status: "APPROVED", submittedAt: T("2026-09-08T06:00:00Z"), decidedAt: T("2026-09-10T06:00:00Z"), decidedByUserId: ctrl.userId, lockedAt: T("2026-09-25T06:00:00Z") },
       update: {},
       select: { id: true },
     });
-    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: winter.id, formId: form.id, studentMembershipId: st.id, number: `HT${pad(k + 1, 4)}`, code: `SITHT26W${pad(k + 1, 4)}`, issuedByUserId: ctrl.userId, issuedAt: new Date("2026-10-01T06:00:00Z") }, update: {} });
+    await db.hallTicket.upsert({ where: { formId: form.id }, create: { schoolId: s, sessionId: winter.id, formId: form.id, studentMembershipId: st.id, number: `HT${pad(k + 1, 4)}`, code: `SITHT26W${pad(k + 1, 4)}`, issuedByUserId: ctrl.userId, issuedAt: T("2026-10-01T06:00:00Z") }, update: {} });
   }
   // CE301's paper: set by Prof Rasika Dixit, SEALED at once (secret-box bound to the row, as submitPaper seals it);
   // ME302's assigned to Prof Sameer Kulkarni, not yet set.
   const ce301 = await db.questionPaper.upsert({ where: { scheduleId_setterMembershipId: { scheduleId: schedules.CE301!, setterMembershipId: people.staff.f2.id } }, create: { schoolId: s, sessionId: winter.id, scheduleId: schedules.CE301!, setterMembershipId: people.staff.f2.id, assignedByUserId: ctrl.userId }, update: {}, select: { id: true, sealedBody: true } });
   let sealed = Boolean(ce301.sealedBody);
   if (!sealed) {
-    const pdf = paperPdf("CE301 Data Structures, Winter 2026: Q1 (CO1, 10 marks) Implement a stack with an array.");
+    const pdf = paperPdf(`CE301 Data Structures, Winter ${Y(2026)}: Q1 (CO1, 10 marks) Implement a stack with an array.`);
     try {
       const { seal } = await import("../src/lib/secret-box");
       const sealedBody = seal(pdf.toString("base64"), `${s}|QuestionPaper|${ce301.id}`);
-      await db.questionPaper.update({ where: { id: ce301.id }, data: { status: "SUBMITTED", sealedBody, fileName: "ce301-winter-2026.pdf", mime: "application/pdf", sizeBytes: pdf.length, sha256: createHash("sha256").update(pdf).digest("hex"), coMapJson: JSON.stringify([{ question: "Q1", co: "CO1", marks: 10 }, { question: "Q2", co: "CO2", marks: 15 }, { question: "Q3", co: "CO3", marks: 15 }]), submittedAt: new Date("2026-10-02T09:00:00Z") } });
+      await db.questionPaper.update({ where: { id: ce301.id }, data: { status: "SUBMITTED", sealedBody, fileName: `ce301-winter-${Y(2026)}.pdf`, mime: "application/pdf", sizeBytes: pdf.length, sha256: createHash("sha256").update(pdf).digest("hex"), coMapJson: JSON.stringify([{ question: "Q1", co: "CO1", marks: 10 }, { question: "Q2", co: "CO2", marks: 15 }, { question: "Q3", co: "CO3", marks: 15 }]), submittedAt: T("2026-10-02T09:00:00Z") } });
       sealed = true;
     } catch (e) {
       console.warn(`  CE301's paper left ASSIGNED: sealing is not available here (${(e as Error).message})`);
@@ -719,48 +726,48 @@ async function buildPlacement(college: College, people: People, academics: Acade
   const identifier = `${first14}${gstinCheckChar(first14)}`;
   const company = await db.company.upsert({
     where: { identifier },
-    create: { name: RECRUITER.company, identifier, sectors: JSON.stringify(["IT_SOFTWARE", "MANUFACTURING"]), pointOfContact: `${RECRUITER.name}, ${RECRUITER.email}`, createdByUserId: people.recruiterUserId, verifiedAt: new Date("2026-08-24T06:00:00Z"), verifiedByUserId: staff.tpo.userId },
+    create: { name: RECRUITER.company, identifier, sectors: JSON.stringify(["IT_SOFTWARE", "MANUFACTURING"]), pointOfContact: `${RECRUITER.name}, ${RECRUITER.email}`, createdByUserId: people.recruiterUserId, verifiedAt: T("2026-08-24T06:00:00Z"), verifiedByUserId: staff.tpo.userId },
     update: {},
     select: { id: true },
   });
   await db.companyRecruiter.upsert({ where: { companyId_userId: { companyId: company.id, userId: people.recruiterUserId } }, create: { companyId: company.id, userId: people.recruiterUserId, acceptedAt: new Date() }, update: { removedAt: null, acceptedAt: new Date() } });
-  await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: s, companyId: company.id } }, create: { schoolId: s, companyId: company.id, firstVisitYear: 2024 }, update: {} });
+  await db.companyTenantLink.upsert({ where: { schoolId_companyId: { schoolId: s, companyId: company.id } }, create: { schoolId: s, companyId: company.id, firstVisitYear: Y(2024) }, update: {} });
 
   const rule = { cgpaMin: 6.5, noLiveBacklogs: true, programmeIds: [academics.programmes.BECOMP!.id, academics.programmes.BEMECH!.id], batchYear: null, genders: [] };
-  const rounds = [{ n: 1, kind: "APTITUDE", note: "", at: "2026-10-22T05:00:00.000Z" }, { n: 2, kind: "TECHNICAL_INTERVIEW", note: "", at: null }];
+  const rounds = [{ n: 1, kind: "APTITUDE", note: "", at: TI("2026-10-22T05:00:00.000Z") }, { n: 2, kind: "TECHNICAL_INTERVIEW", note: "", at: null }];
   const role = "Graduate engineer trainee — embedded systems";
   const requirement =
     (await db.requirement.findFirst({ where: { companyId: company.id, role }, select: { id: true } })) ??
     (await db.requirement.create({ data: { companyId: company.id, byUserId: people.recruiterUserId, role, packageRupees: 650_000, locations: "Pune, Chakan", eligibilityAsked: JSON.stringify(rule), rounds: JSON.stringify(rounds.map((r) => ({ kind: r.kind, note: "" }))), datesProposed: "Fourth week of October", targetSchoolIds: JSON.stringify([s]) }, select: { id: true } }));
-  const openTitle = "Graduate engineer trainee — embedded systems 2028";
+  const openTitle = `Graduate engineer trainee — embedded systems ${Y(2028)}`;
   const open =
     (await db.drive.findFirst({ where: { schoolId: s, title: openTitle }, select: { id: true } })) ??
-    (await db.drive.create({ data: { schoolId: s, companyId: company.id, requirementId: requirement.id, kind: "ON_CAMPUS", title: openTitle, jd: "Firmware for motor controllers in C; test rigs in Python. Six months' training on the shop floor at Chakan.", packageMinRupees: 600_000, packageMaxRupees: 700_000, rounds: JSON.stringify(rounds), schedule: JSON.stringify([{ label: "Pre-placement talk", at: "2026-10-14T05:30:00.000Z" }]), venues: "Seminar hall, Block B", eligibilityRule: JSON.stringify(rule), status: "OPEN", invitedAt: new Date("2026-09-29T06:00:00Z"), createdByUserId: staff.tpo.userId }, select: { id: true } }));
+    (await db.drive.create({ data: { schoolId: s, companyId: company.id, requirementId: requirement.id, kind: "ON_CAMPUS", title: openTitle, jd: "Firmware for motor controllers in C; test rigs in Python. Six months' training on the shop floor at Chakan.", packageMinRupees: 600_000, packageMaxRupees: 700_000, rounds: JSON.stringify(rounds), schedule: JSON.stringify([{ label: "Pre-placement talk", at: TI("2026-10-14T05:30:00.000Z") }]), venues: "Seminar hall, Block B", eligibilityRule: JSON.stringify(rule), status: "OPEN", invitedAt: T("2026-09-29T06:00:00Z"), createdByUserId: staff.tpo.userId }, select: { id: true } }));
   for (const n of [1, 7]) {
     const st = students.find((x) => x.n === n)!;
-    const record = { cgpa: sgpa[n] === null || sgpa[n] === undefined ? null : sgpa[n]! / 100, liveBacklogs: 0, attendancePct: 91, programmeId: academics.programmes[st.programme]!.id, programmeName: PROGRAMMES.find((p) => p.code === st.programme)!.name, batchYear: 2028, gender: st.gender, category: st.category };
-    await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: open.id, studentMembershipId: st.id } }, create: { schoolId: s, driveId: open.id, studentMembershipId: st.id, studentUserId: st.userId, schoolName: college.name, appliedAt: new Date("2026-10-02T09:00:00Z"), consentAt: new Date("2026-10-02T09:00:00Z"), recordJson: JSON.stringify(record) }, update: {} });
-    await db.placementProfile.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, skills: JSON.stringify(n === 1 ? ["C", "Python", "Data structures"] : ["SolidWorks", "C", "Arduino"]), certifications: JSON.stringify(n === 1 ? ["NPTEL Programming in C"] : ["CSWA (SolidWorks associate)"]), projects: JSON.stringify([{ title: n === 1 ? "Line-following robot's controller" : "Gearbox test rig", note: "" }]), consentAt: new Date("2026-10-02T09:00:00Z") }, update: {} });
+    const record = { cgpa: sgpa[n] === null || sgpa[n] === undefined ? null : sgpa[n]! / 100, liveBacklogs: 0, attendancePct: 91, programmeId: academics.programmes[st.programme]!.id, programmeName: PROGRAMMES.find((p) => p.code === st.programme)!.name, batchYear: Y(2028), gender: st.gender, category: st.category };
+    await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: open.id, studentMembershipId: st.id } }, create: { schoolId: s, driveId: open.id, studentMembershipId: st.id, studentUserId: st.userId, schoolName: college.name, appliedAt: T("2026-10-02T09:00:00Z"), consentAt: T("2026-10-02T09:00:00Z"), recordJson: JSON.stringify(record) }, update: {} });
+    await db.placementProfile.upsert({ where: { studentMembershipId: st.id }, create: { schoolId: s, studentMembershipId: st.id, skills: JSON.stringify(n === 1 ? ["C", "Python", "Data structures"] : ["SolidWorks", "C", "Arduino"]), certifications: JSON.stringify(n === 1 ? ["NPTEL Programming in C"] : ["CSWA (SolidWorks associate)"]), projects: JSON.stringify([{ title: n === 1 ? "Line-following robot's controller" : "Gearbox test rig", note: "" }]), consentAt: T("2026-10-02T09:00:00Z") }, update: {} });
   }
 
   // Last season: the alumnus through the closed drive with an accepted offer, and the 2025 season from the table.
-  const closedTitle = "Graduate engineer trainee 2025";
+  const closedTitle = `Graduate engineer trainee ${Y(2025)}`;
   const closed =
     (await db.drive.findFirst({ where: { schoolId: s, title: closedTitle }, select: { id: true } })) ??
-    (await db.drive.create({ data: { schoolId: s, companyId: company.id, kind: "ON_CAMPUS", title: closedTitle, packageMinRupees: 580_000, packageMaxRupees: 580_000, rounds: JSON.stringify([{ n: 1, kind: "TECHNICAL_INTERVIEW", note: "", at: "2025-01-20T05:30:00.000Z" }]), eligibilityRule: JSON.stringify({ cgpaMin: 6.5, noLiveBacklogs: true, programmeIds: [], batchYear: 2025, genders: [] }), status: "CLOSED", invitedAt: new Date("2025-01-06T05:30:00Z"), closedAt: new Date("2025-02-28T05:30:00Z"), recruiterRating: 5, recruiterFeedback: "Strong in C and in the lab; ready for the shop floor.", createdByUserId: staff.tpo.userId, createdAt: new Date("2025-01-03T05:30:00Z") }, select: { id: true } }));
+    (await db.drive.create({ data: { schoolId: s, companyId: company.id, kind: "ON_CAMPUS", title: closedTitle, packageMinRupees: 580_000, packageMaxRupees: 580_000, rounds: JSON.stringify([{ n: 1, kind: "TECHNICAL_INTERVIEW", note: "", at: TI("2025-01-20T05:30:00.000Z") }]), eligibilityRule: JSON.stringify({ cgpaMin: 6.5, noLiveBacklogs: true, programmeIds: [], batchYear: Y(2025), genders: [] }), status: "CLOSED", invitedAt: T("2025-01-06T05:30:00Z"), closedAt: T("2025-02-28T05:30:00Z"), recruiterRating: 5, recruiterFeedback: "Strong in C and in the lab; ready for the shop floor.", createdByUserId: staff.tpo.userId, createdAt: T("2025-01-03T05:30:00Z") }, select: { id: true } }));
   const graduate = people.alumnus.studentId;
-  await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, studentUserId: people.alumnus.userId, schoolName: college.name, appliedAt: new Date("2025-01-09T05:30:00Z"), consentAt: new Date("2025-01-09T05:30:00Z"), recordJson: JSON.stringify({ cgpa: 8.4, liveBacklogs: 0, attendancePct: 92, programmeId: academics.programmes.BECOMP!.id, programmeName: "BE Computer Engineering", batchYear: 2025, gender: "M", category: "OPEN" }) }, update: {} });
+  await db.driveApplication.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, studentUserId: people.alumnus.userId, schoolName: college.name, appliedAt: T("2025-01-09T05:30:00Z"), consentAt: T("2025-01-09T05:30:00Z"), recordJson: JSON.stringify({ cgpa: 8.4, liveBacklogs: 0, attendancePct: 92, programmeId: academics.programmes.BECOMP!.id, programmeName: "BE Computer Engineering", batchYear: Y(2025), gender: "M", category: "OPEN" }) }, update: {} });
   for (const round of [0, 1]) await db.roundResult.upsert({ where: { driveId_round_studentMembershipId: { driveId: closed.id, round, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, round, studentMembershipId: graduate, outcome: "PASSED", byUserId: people.recruiterUserId }, update: {} });
-  await db.offer.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, packageRupees: 580_000, acceptedAt: new Date("2025-02-10T05:30:00Z"), joinedAt: new Date("2025-07-01T04:00:00Z"), byUserId: people.recruiterUserId, createdAt: new Date("2025-02-05T05:30:00Z") }, update: {} });
-  if (!(await db.placementSeason.findUnique({ where: { schoolId_batchYear: { schoolId: s, batchYear: 2025 } }, select: { id: true } }))) {
-    const t = await placementTable(s, 2025);
-    await db.placementSeason.create({ data: { schoolId: s, batchYear: 2025, finalYear: t.finalYear, placed: t.placed, higherStudies: t.higherStudies, entrepreneurs: t.entrepreneurs, offers: t.offers, medianSalaryRupees: t.medianSalaryRupees, computedByUserId: staff.tpo.userId } });
+  await db.offer.upsert({ where: { driveId_studentMembershipId: { driveId: closed.id, studentMembershipId: graduate } }, create: { schoolId: s, driveId: closed.id, studentMembershipId: graduate, packageRupees: 580_000, acceptedAt: T("2025-02-10T05:30:00Z"), joinedAt: T("2025-07-01T04:00:00Z"), byUserId: people.recruiterUserId, createdAt: T("2025-02-05T05:30:00Z") }, update: {} });
+  if (!(await db.placementSeason.findUnique({ where: { schoolId_batchYear: { schoolId: s, batchYear: Y(2025) } }, select: { id: true } }))) {
+    const t = await placementTable(s, Y(2025));
+    await db.placementSeason.create({ data: { schoolId: s, batchYear: Y(2025), finalYear: t.finalYear, placed: t.placed, higherStudies: t.higherStudies, entrepreneurs: t.entrepreneurs, offers: t.offers, medianSalaryRupees: t.medianSalaryRupees, computedByUserId: staff.tpo.userId } });
   }
 
   // Ishita's summer internship after semester 2, at the recruiter's company: guided by her lab teacher, credited.
   const ishita = students.find((x) => x.n === 3)!;
   if (!(await db.internship.findFirst({ where: { schoolId: s, studentMembershipId: ishita.id, kind: "SUMMER" }, select: { id: true } }))) {
-    await db.internship.create({ data: { schoolId: s, studentMembershipId: ishita.id, companyId: company.id, companyName: RECRUITER.company, kind: "SUMMER", fromKey: "2026-05-18", toKey: "2026-06-26", hours: 240, credits: 2, windowSemester: 2, supervisorName: "Meera Iyer", facultyMembershipId: staff.f1.id, diary: JSON.stringify([{ on: "2026-05-18", hours: 6, text: "Induction; the motor controller's test bench." }, { on: "2026-06-10", hours: 7, text: "Wrote the PWM driver's unit tests." }]), industryGrade: "A", facultyVisitAt: new Date("2026-06-12T06:00:00Z"), vivaMarks: 42, status: "CREDITED", decidedByUserId: staff.hodComp.userId, decidedAt: new Date("2026-05-10T06:00:00Z"), creditedAt: new Date("2026-07-08T06:00:00Z"), creditedByUserId: staff.hodComp.userId } });
+    await db.internship.create({ data: { schoolId: s, studentMembershipId: ishita.id, companyId: company.id, companyName: RECRUITER.company, kind: "SUMMER", fromKey: K("2026-05-18"), toKey: K("2026-06-26"), hours: 240, credits: 2, windowSemester: 2, supervisorName: "Meera Iyer", facultyMembershipId: staff.f1.id, diary: JSON.stringify([{ on: K("2026-05-18"), hours: 6, text: "Induction; the motor controller's test bench." }, { on: K("2026-06-10"), hours: 7, text: "Wrote the PWM driver's unit tests." }]), industryGrade: "A", facultyVisitAt: T("2026-06-12T06:00:00Z"), vivaMarks: 42, status: "CREDITED", decidedByUserId: staff.hodComp.userId, decidedAt: T("2026-05-10T06:00:00Z"), creditedAt: T("2026-07-08T06:00:00Z"), creditedByUserId: staff.hodComp.userId } });
   }
   return { companyId: company.id, openDriveId: open.id };
 }
@@ -774,31 +781,31 @@ async function buildIqac(college: College, people: People, academics: Academics)
   const { staff } = people;
   const deptOf = (p: Prog) => academics.programmes[p]!.deptId;
   const records: [StaffKey, string, string, boolean, number, string, Prog][] = [
-    ["principal", "PRINCIPAL", "PHD", true, 14, "2012-06-15", "BECOMP"],
-    ["hodComp", "PROFESSOR", "PHD", true, 11, "2013-07-01", "BECOMP"],
-    ["f1", "ASSISTANT_PROFESSOR", "PG", true, 3, "2019-07-15", "BECOMP"],
-    ["f2", "ASSISTANT_PROFESSOR", "PHD", true, 2, "2020-08-01", "BECOMP"],
-    ["hodMech", "ASSOCIATE_PROFESSOR", "PHD", false, 9, "2014-06-20", "BEMECH"],
-    ["f3", "ASSISTANT_PROFESSOR", "PG", true, 4, "2018-07-02", "BEMECH"],
-    ["f4", "ASSISTANT_PROFESSOR", "PG", false, 1, "2022-07-11", "BEMECH"],
+    ["principal", "PRINCIPAL", "PHD", true, 14, K("2012-06-15"), "BECOMP"],
+    ["hodComp", "PROFESSOR", "PHD", true, 11, K("2013-07-01"), "BECOMP"],
+    ["f1", "ASSISTANT_PROFESSOR", "PG", true, 3, K("2019-07-15"), "BECOMP"],
+    ["f2", "ASSISTANT_PROFESSOR", "PHD", true, 2, K("2020-08-01"), "BECOMP"],
+    ["hodMech", "ASSOCIATE_PROFESSOR", "PHD", false, 9, K("2014-06-20"), "BEMECH"],
+    ["f3", "ASSISTANT_PROFESSOR", "PG", true, 4, K("2018-07-02"), "BEMECH"],
+    ["f4", "ASSISTANT_PROFESSOR", "PG", false, 1, K("2022-07-11"), "BEMECH"],
   ];
   for (const [key, designation, highestQualification, netSetQualified, experienceBeforeYears, joinedOn, dept] of records) {
     await db.facultyRecord.upsert({ where: { membershipId: staff[key].id }, create: { schoolId: s, membershipId: staff[key].id, designation, appointment: "REGULAR", highestQualification, netSetQualified, experienceBeforeYears, joinedOn, departmentId: deptOf(dept), apiScoreJson: JSON.stringify({ teaching: 85, research: key === "hodComp" || key === "f2" ? 60 : 30, service: 20 }), updatedByUserId: staff.registrar.userId }, update: {} });
   }
   const research: [string, string, string, number, number | null, StaffKey, Prog][] = [
-    ["PUBLICATION", "Lock-free queues for embedded controllers", "SCOPUS", 2026, null, "hodComp", "BECOMP"],
-    ["PUBLICATION", "Teaching data structures with visual traces", "UGC_CARE", 2025, null, "f2", "BECOMP"],
-    ["PROJECT", "Low-cost vibration monitor for small foundries (AICTE RPS)", "NONE", 2025, 14.5, "hodMech", "BEMECH"],
-    ["PATENT", "A clamp for torsion specimens of varying diameter", "NONE", 2026, null, "f3", "BEMECH"],
+    ["PUBLICATION", "Lock-free queues for embedded controllers", "SCOPUS", Y(2026), null, "hodComp", "BECOMP"],
+    ["PUBLICATION", "Teaching data structures with visual traces", "UGC_CARE", Y(2025), null, "f2", "BECOMP"],
+    ["PROJECT", "Low-cost vibration monitor for small foundries (AICTE RPS)", "NONE", Y(2025), 14.5, "hodMech", "BEMECH"],
+    ["PATENT", "A clamp for torsion specimens of varying diameter", "NONE", Y(2026), null, "f3", "BEMECH"],
   ];
   for (const [kind, title, indexing, year, amountLakhs, by, dept] of research) {
     if (await db.researchItem.findFirst({ where: { schoolId: s, title }, select: { id: true } })) continue;
     await db.researchItem.create({ data: { schoolId: s, kind, title, indexing, year, amountLakhs, facultyMembershipId: staff[by].id, departmentId: deptOf(dept), createdByUserId: staff.iqac.userId } });
   }
   const committees: [string, string, { name: string; role: string; membershipId: string | null }[], string, string][] = [
-    ["ANTI_RAGGING", "Anti-ragging Committee and Squad", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Prof Rasika Dixit", role: "Squad member", membershipId: staff.f2.id }, { name: "Ganesh Pawar", role: "Warden", membershipId: staff.warden.id }], "2026-08-05", "Undertakings collected from every first-year student; the squad's night rounds of the hostel fixed."],
-    ["GRIEVANCE", "Students' Grievance Redressal Committee", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Vikas Phadnis", role: "Member", membershipId: staff.hodMech.id }], "2026-09-02", "No case pending."],
-    ["IQAC", "Internal Quality Assurance Cell", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Swati Marathe", role: "Coordinator", membershipId: staff.iqac.id }, { name: "Dr Anagha Kelkar", role: "Member", membershipId: staff.hodComp.id }], "2026-09-12", "The NBA SAR for Computer Engineering assigned to the department; the autonomous cycle's metrics reviewed."],
+    ["ANTI_RAGGING", "Anti-ragging Committee and Squad", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Prof Rasika Dixit", role: "Squad member", membershipId: staff.f2.id }, { name: "Ganesh Pawar", role: "Warden", membershipId: staff.warden.id }], K("2026-08-05"), "Undertakings collected from every first-year student; the squad's night rounds of the hostel fixed."],
+    ["GRIEVANCE", "Students' Grievance Redressal Committee", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Vikas Phadnis", role: "Member", membershipId: staff.hodMech.id }], K("2026-09-02"), "No case pending."],
+    ["IQAC", "Internal Quality Assurance Cell", [{ name: "Dr Shrikant Gokhale", role: "Chair", membershipId: staff.principal.id }, { name: "Dr Swati Marathe", role: "Coordinator", membershipId: staff.iqac.id }, { name: "Dr Anagha Kelkar", role: "Member", membershipId: staff.hodComp.id }], K("2026-09-12"), "The NBA SAR for Computer Engineering assigned to the department; the autonomous cycle's metrics reviewed."],
   ];
   for (const [kind, name, members, at, actionTaken] of committees) {
     const committee = (await db.committee.findFirst({ where: { schoolId: s, kind, name }, select: { id: true } })) ?? (await db.committee.create({ data: { schoolId: s, kind, name, membersJson: JSON.stringify(members) }, select: { id: true } }));
@@ -807,26 +814,27 @@ async function buildIqac(college: College, people: People, academics: Academics)
   // The NSS unit: three students enrolled by the officer and the unit's first activity, with its hours.
   for (const n of NSS) {
     const st = people.students.find((x) => x.n === n)!;
-    await db.corpsEnrolment.upsert({ where: { corps_studentMembershipId: { corps: "NSS", studentMembershipId: st.id } }, create: { schoolId: s, corps: "NSS", studentMembershipId: st.id, unit: "SIT NSS Unit 1", enrolledOn: "2026-08-10", createdByUserId: staff.f2.userId }, update: {} });
+    await db.corpsEnrolment.upsert({ where: { corps_studentMembershipId: { corps: "NSS", studentMembershipId: st.id } }, create: { schoolId: s, corps: "NSS", studentMembershipId: st.id, unit: "SIT NSS Unit 1", enrolledOn: K("2026-08-10"), createdByUserId: staff.f2.userId }, update: {} });
   }
   const nssTitle = "Tree plantation and a water audit at Phursungi";
   if (!(await db.activity.findFirst({ where: { schoolId: s, title: nssTitle }, select: { id: true } }))) {
-    await db.activity.create({ data: { schoolId: s, kind: "NSS", title: nssTitle, at: "2026-09-19", participants: 3, participantIdsJson: JSON.stringify(NSS.map((n) => people.students.find((x) => x.n === n)!.id)), hours: 6, camp: false, createdByUserId: staff.f2.userId } });
+    await db.activity.create({ data: { schoolId: s, kind: "NSS", title: nssTitle, at: K("2026-09-19"), participants: 3, participantIdsJson: JSON.stringify(NSS.map((n) => people.students.find((x) => x.n === n)!.id)), hours: 6, camp: false, createdByUserId: staff.f2.userId } });
   }
 
   // The cycle: NAAC's AUTONOMOUS framework over 2023–28, two figures the platform does not hold entered by the desk; computed once.
-  const entered = JSON.stringify({ SANCTIONED_POSTS: { value: 12, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] }, BANDWIDTH_MBPS: { value: 500, byUserId: staff.iqac.userId, at: "2026-09-01T06:00:00.000Z", fileIds: [] } });
+  const entered = JSON.stringify({ SANCTIONED_POSTS: { value: 12, byUserId: staff.iqac.userId, at: TI("2026-09-01T06:00:00.000Z"), fileIds: [] }, BANDWIDTH_MBPS: { value: 500, byUserId: staff.iqac.userId, at: TI("2026-09-01T06:00:00.000Z"), fileIds: [] } });
   const cycle =
     (await db.accreditationCycle.findFirst({ where: { schoolId: s, framework: "AUTONOMOUS" }, select: { id: true } })) ??
-    (await db.accreditationCycle.create({ data: { schoolId: s, framework: "AUTONOMOUS", institutionType: "AUTONOMOUS_COLLEGE", windowFrom: "2023-06-01", windowTo: "2028-05-31", status: "OPEN", enteredJson: entered, createdByUserId: staff.iqac.userId }, select: { id: true } }));
+    (await db.accreditationCycle.create({ data: { schoolId: s, framework: "AUTONOMOUS", institutionType: "AUTONOMOUS_COLLEGE", windowFrom: K("2023-06-01"), windowTo: K("2028-05-31"), status: "OPEN", enteredJson: entered, createdByUserId: staff.iqac.userId }, select: { id: true } }));
   if ((await db.metricScore.count({ where: { cycleId: cycle.id } })) === 0) await recomputeAsSystem(s, cycle.id, staff.iqac.userId);
 
   // The NBA SAR for Computer Engineering: this academic year's (its students, faculty and offerings are this year's),
   // three qualitative criteria written by the HOD, generated as a DRAFT and rebuilt in place on every run while one.
-  const year = defaultFilingYear() + 1;
+  // This academic year's draft: the calendar's year (G4-29), which on a real run is defaultFilingYear() + 1 from July.
+  const year = Y(2026);
   const deptId = deptOf("BECOMP");
   const NOTES: Record<string, { score: number; note: string }> = {
-    "1": { score: 50, note: "Vision and mission displayed in every laboratory and on the website; the PEOs reviewed by the department advisory board on 12 August 2026 with two recruiters and an alumnus." },
+    "1": { score: 50, note: `Vision and mission displayed in every laboratory and on the website; the PEOs reviewed by the department advisory board on 12 August ${Y(2026)} with two recruiters and an alumnus.` },
     "6": { score: 62, note: "Computer Lab 1 with 24 machines and batches of up to twenty; the oscilloscopes and trainer kits are on the asset register; a breakage log kept by the lab in-charge." },
     "9": { score: 40, note: "A mentor for every twenty students; the anti-ragging squad's rounds and the grievance committee's minutes are on record; NSS unit active." },
   };
@@ -877,7 +885,7 @@ async function buildCampus(college: College, people: People) {
   const card = await db.libraryMember.upsert({ where: { membershipId: rohan.id }, create: { schoolId: s, membershipId: rohan.id, kind: "PUPIL", cardNumber: "SIT-L0002" }, update: {}, select: { id: true } });
   const copy = await db.libraryCopy.findUniqueOrThrow({ where: { schoolId_accession: { schoolId: s, accession: "SIT-00001" } }, select: { id: true } });
   if (!(await db.libraryIssue.findFirst({ where: { schoolId: s, copyId: copy.id }, select: { id: true } }))) {
-    await db.libraryIssue.create({ data: { schoolId: s, copyId: copy.id, memberId: card.id, issuedAt: new Date("2026-09-28T06:00:00Z"), dueOn: "2026-10-12", issuedByUserId: staff.librarian.userId } });
+    await db.libraryIssue.create({ data: { schoolId: s, copyId: copy.id, memberId: card.id, issuedAt: T("2026-09-28T06:00:00Z"), dueOn: K("2026-10-12"), issuedByUserId: staff.librarian.userId } });
     await db.libraryCopy.update({ where: { id: copy.id }, data: { status: "ISSUED" } });
   }
 
@@ -890,10 +898,10 @@ async function buildCampus(college: College, people: People) {
     if (await db.hostelAllotment.findFirst({ where: { schoolId: s, membershipId: st.id, status: "ACTIVE" }, select: { id: true } })) continue;
     const roomId = roomIds[i < 2 ? 0 : 1]!;
     const bed = (i % 2) + 1;
-    await db.hostelAllotment.create({ data: { schoolId: s, membershipId: st.id, roomId, bed, fromDate: "2026-07-01", status: "ACTIVE", activePupilKey: st.id, activeBedKey: `${roomId}:${bed}`, allottedByUserId: staff.registrar.userId } });
+    await db.hostelAllotment.create({ data: { schoolId: s, membershipId: st.id, roomId, bed, fromDate: K("2026-07-01"), status: "ACTIVE", activePupilKey: st.id, activeBedKey: `${roomId}:${bed}`, allottedByUserId: staff.registrar.userId } });
   }
   if (!(await db.hostelSquadRound.findFirst({ where: { schoolId: s, hostelId: hostel.id }, select: { id: true } }))) {
-    await db.hostelSquadRound.create({ data: { schoolId: s, hostelId: hostel.id, at: new Date("2026-09-25T16:30:00Z"), members: "Prof Rasika Dixit, Ganesh Pawar", note: "First-year rooms visited after dinner; nothing to report.", flagged: false, loggedByUserId: staff.f2.userId } });
+    await db.hostelSquadRound.create({ data: { schoolId: s, hostelId: hostel.id, at: T("2026-09-25T16:30:00Z"), members: "Prof Rasika Dixit, Ganesh Pawar", note: "First-year rooms visited after dinner; nothing to report.", flagged: false, loggedByUserId: staff.f2.userId } });
   }
 
   // Transport: Route 1 from Hadapsar, three stops, one bus driven by the driver, three riders.
@@ -908,12 +916,12 @@ async function buildCampus(college: College, people: People) {
     for (const [i, [name, lat, lng, morning, evening]] of STOPS.entries()) await db.transportStop.create({ data: { schoolId: s, routeId: route.id, order: i + 1, name, lat, lng, morningMinute: morning, eveningMinute: evening, radiusM: 150 } });
   }
   const bus = await db.bus.upsert({ where: { schoolId_registration: { schoolId: s, registration: "MH 12 SIT 4021" } }, create: { schoolId: s, registration: "MH 12 SIT 4021", capacity: 42, note: "The institute's own bus." }, update: {}, select: { id: true } });
-  if (!(await db.busAssignment.findFirst({ where: { schoolId: s, busId: bus.id, routeId: route.id }, select: { id: true } }))) await db.busAssignment.create({ data: { schoolId: s, busId: bus.id, routeId: route.id, driverMembershipId: staff.driver.id, fromDateKey: "2026-07-01", createdByUserId: staff.registrar.userId } });
+  if (!(await db.busAssignment.findFirst({ where: { schoolId: s, busId: bus.id, routeId: route.id }, select: { id: true } }))) await db.busAssignment.create({ data: { schoolId: s, busId: bus.id, routeId: route.id, driverMembershipId: staff.driver.id, fromDateKey: K("2026-07-01"), createdByUserId: staff.registrar.userId } });
   const stops = await db.transportStop.findMany({ where: { routeId: route.id }, orderBy: { order: "asc" }, select: { id: true } });
   for (const [i, n] of RIDERS.entries()) {
     const st = student(n);
     if (await db.transportAllotment.findFirst({ where: { schoolId: s, studentMembershipId: st.id, routeId: route.id }, select: { id: true } })) continue;
-    await db.transportAllotment.create({ data: { schoolId: s, studentMembershipId: st.id, routeId: route.id, stopId: stops[i % 2]!.id, fromDateKey: "2026-07-01", createdByUserId: staff.registrar.userId } });
+    await db.transportAllotment.create({ data: { schoolId: s, studentMembershipId: st.id, routeId: route.id, stopId: stops[i % 2]!.id, fromDateKey: K("2026-07-01"), createdByUserId: staff.registrar.userId } });
   }
 
   // Inventory: the labs' equipment. One purchase into each lab, the stock the sum of its movements, the assets by
@@ -932,7 +940,7 @@ async function buildCampus(college: College, people: People) {
   ] as const) {
     if (await db.purchaseRecord.findFirst({ where: { schoolId: s, invoiceRef: ref }, select: { id: true } })) continue;
     await db.$transaction(async (tx) => {
-      const bill = await tx.purchaseRecord.create({ data: { schoolId: s, vendorId: vendor.id, vendorName: vendor.name, dateKey: "2026-07-20", invoiceRef: ref, location, linesJson: JSON.stringify(lines), totalPaise: lines.reduce((a, l) => a + l.totalPaise, 0), note: "Odd-term lab stock.", createdByUserId: staff.registrar.userId }, select: { id: true } });
+      const bill = await tx.purchaseRecord.create({ data: { schoolId: s, vendorId: vendor.id, vendorName: vendor.name, dateKey: K("2026-07-20"), invoiceRef: ref, location, linesJson: JSON.stringify(lines), totalPaise: lines.reduce((a, l) => a + l.totalPaise, 0), note: "Odd-term lab stock.", createdByUserId: staff.registrar.userId }, select: { id: true } });
       for (const [itemId, qty] of moves) {
         await tx.stockMovement.create({ data: { schoolId: s, itemId, kind: "PURCHASE", delta: qty, location, purchaseRecordId: bill.id, reference: ref, byUserId: staff.registrar.userId, note: "" } });
         await tx.inventoryStock.upsert({ where: { itemId_location: { itemId, location } }, create: { schoolId: s, itemId, location, quantity: qty }, update: { quantity: { increment: qty } } });
@@ -946,9 +954,9 @@ async function buildCampus(college: College, people: People) {
     });
   }
   for (const [tagNumber, name, itemId, location, costPaise, purchaseDate, custodian] of [
-    ["SIT-A-0001", "Digital storage oscilloscope, 50 MHz (bench 1)", scope.id, LABS.BECOMP, 4_200_000, "2024-07-10", staff.f1.id],
-    ["SIT-A-0002", "Digital storage oscilloscope, 50 MHz (bench 2)", scope.id, LABS.BECOMP, 4_200_000, "2024-07-10", staff.f1.id],
-    ["SIT-A-0003", "Universal testing machine, 400 kN", utm.id, LABS.BEMECH, 285_000_000, "2019-12-02", staff.f3.id],
+    ["SIT-A-0001", "Digital storage oscilloscope, 50 MHz (bench 1)", scope.id, LABS.BECOMP, 4_200_000, K("2024-07-10"), staff.f1.id],
+    ["SIT-A-0002", "Digital storage oscilloscope, 50 MHz (bench 2)", scope.id, LABS.BECOMP, 4_200_000, K("2024-07-10"), staff.f1.id],
+    ["SIT-A-0003", "Universal testing machine, 400 kN", utm.id, LABS.BEMECH, 285_000_000, K("2019-12-02"), staff.f3.id],
   ] as const) {
     const existing = await db.asset.findUnique({ where: { schoolId_tagNumber: { schoolId: s, tagNumber } }, select: { id: true } });
     if (existing) continue;
@@ -976,7 +984,7 @@ async function buildCampus(college: College, people: People) {
     await db.salaryComponent.createMany({ data: STRUCTURE.map((c, i) => ({ schoolId: s, structureId: structure.id, code: c.code, label: "", kind: COMPONENT_KIND[c.code], formula: c.formula, value: c.value, statutory: STATUTORY_CODES.includes(c.code), position: i })) });
   }
   for (const [i, p] of STAFF.entries()) {
-    await db.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: staff[p.key].id, effectiveFromKey: "2026-04-01" } }, create: { schoolId: s, membershipId: staff[p.key].id, effectiveFromKey: "2026-04-01", structureId: structure.id, basicPaise: p.basic, pfUan: `10120${pad(i + 1, 7)}`, paymentMode: "CASH" }, update: {} });
+    await db.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: staff[p.key].id, effectiveFromKey: K("2026-04-01") } }, create: { schoolId: s, membershipId: staff[p.key].id, effectiveFromKey: K("2026-04-01"), structureId: structure.id, basicPaise: p.basic, pfUan: `10120${pad(i + 1, 7)}`, paymentMode: "CASH" }, update: {} });
   }
   if (!(await db.payrollRun.findUnique({ where: { schoolId_month: { schoolId: s, month: PAYROLL_MONTH } }, select: { id: true } }))) {
     const comps = STRUCTURE.map((c) => ({ code: c.code, label: "", formula: c.formula, value: c.value }));
@@ -986,7 +994,7 @@ async function buildCampus(college: College, people: People) {
     });
     const sum = (k: "grossPaise" | "deductionsPaise" | "employerPaise" | "netPaise") => slips.reduce((a, x) => a + x[k], 0);
     await db.$transaction(async (tx) => {
-      const r = await tx.payrollRun.create({ data: { schoolId: s, month: PAYROLL_MONTH, status: "LOCKED", headcount: slips.length, grossPaise: sum("grossPaise"), deductionsPaise: sum("deductionsPaise"), employerPaise: sum("employerPaise"), netPaise: sum("netPaise"), lockDigest: slipDigest(slips), sharedWithPrincipal: true, createdByUserId: staff.accounts.userId, lockedByUserId: staff.accounts.userId, lockedAt: new Date("2026-09-30T11:00:00Z") }, select: { id: true } });
+      const r = await tx.payrollRun.create({ data: { schoolId: s, month: PAYROLL_MONTH, status: "LOCKED", headcount: slips.length, grossPaise: sum("grossPaise"), deductionsPaise: sum("deductionsPaise"), employerPaise: sum("employerPaise"), netPaise: sum("netPaise"), lockDigest: slipDigest(slips), sharedWithPrincipal: true, createdByUserId: staff.accounts.userId, lockedByUserId: staff.accounts.userId, lockedAt: T("2026-09-30T11:00:00Z") }, select: { id: true } });
       await tx.payslip.createMany({ data: slips.map((x) => ({ ...x, runId: r.id })) });
     });
   }
@@ -1084,21 +1092,23 @@ function roster(college: College, sgpa: Record<number, number | null>, sar: { ye
     if (NSS.includes(st.n)) notes.push("NSS volunteer");
     if (MINORS.has(st.n)) notes.push(st.n === GUARDIAN.of ? "a minor of 17; her guardian sees everything" : "a minor of 17");
     if (st.paidOdd) notes.push("odd semester paid");
-    return `| ${studentEmail(st.n)} | ${st.name} | Student, ${divName(st.div)} (${st.category}) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter 2026)${notes.length ? `; ${notes.join("; ")}` : ""} |`;
+    return `| ${studentEmail(st.n)} | ${st.name} | Student, ${divName(st.div)} (${st.category}) | /student | /student/academics (lab batch, practicals), /student/exams (hall ticket for Winter ${Y(2026)})${notes.length ? `; ${notes.join("; ")}` : ""} |`;
   };
   return `<!-- demo-college-engineering:begin -->
 ## Saraswati Institute of Technology (the demo engineering college)
 
-Built by \`npm run demo:college-engineering\` (from \`apps/web\`; \`scripts/demo-college-engineering.ts\`, a second script beside the arts college's; idempotent, run it again to put things back). Slug \`${SLUG}\`, join code \`${college.code}\`, kind AUTONOMOUS_COLLEGE, streams ENGINEERING, Pune, affiliated to Savitribai Phule Pune University for the degree and autonomous in conduct, AISHE C-41902 and an AICTE extension-of-approval reference (both made up), NAAC A until 31 March 2029. Every module a college is offered is on: the eight the ENGINEERING preset turns on and the four the roster's librarian, warden, driver and payroll need. The password is the demo schools' shared one, \`${PASSWORD}\`. For a browser check mint a session: \`npm run zz:token -- ROLE email@${DOMAIN}\` (then \`--purge\`).
+Built by \`npm run demo:college-engineering\` (from \`apps/web\`; \`scripts/demo-college-engineering.ts\`, a second script beside the arts college's; idempotent, run it again to put things back). Slug \`${SLUG}\`, join code \`${college.code}\`, kind AUTONOMOUS_COLLEGE, streams ENGINEERING, Pune, affiliated to Savitribai Phule Pune University for the degree and autonomous in conduct, AISHE C-41902 and an AICTE extension-of-approval reference (both made up), NAAC A until 31 March ${Y(2029)}. Every module a college is offered is on: the eight the ENGINEERING preset turns on and the four the roster's librarian, warden, driver and payroll need. The password is the demo schools' shared one, \`${PASSWORD}\`. For a browser check mint a session: \`npm run zz:token -- ROLE email@${DOMAIN}\` (then \`--purge\`).
 
-What is in it: Computer Engineering (head Dr Anagha Kelkar) and Mechanical Engineering (head Dr Vikas Phadnis); BE programmes (AICTE, four years) on the institute's autonomous scheme "${SCHEME}" with programme and course outcomes; the odd term 2026–27 (current) and the even term 2025–26; divisions SE Computer A and B, SE Mechanical A and B and FE Computer A; lab batches A and B (capacity 20) in every second-year division and A in the first year's; ten offerings on a Mon–Sat grid, each lab course with one LAB hour per batch in Computer Lab 1 or the Strength of Materials Lab; registers from 7 September to 3 October 2026, the LAB hours registered for their batch only; a practical record for every lab student (experiment 1 signed by the department's lab in-charge, CE301 experiment 2 in SE Computer A waiting for a signature); internal marks locked on CE301 in SE Computer A, ME302's unit test in SE Mechanical A waiting for a countersign; Winter 2026 in CONDUCT with hall tickets, the CE301 paper set by Prof Rasika Dixit and sealed, ME302's assigned to Prof Sameer Kulkarni; Summer 2026 published from marks the cell entered by double entry, a grade card for each of the ten who sat, one ATKT; ${RECRUITER.company} (verified by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumnus's offer and the 2025 season, a SUMMER internship credited; NAAC's autonomous cycle (2023–28) computed; the NBA SAR for Computer Engineering for ${sar.year}–${String((sar.year + 1) % 100).padStart(2, "0")} as a draft (${sar.computed} marks from the records and ${sar.self} self-assessed by the HOD on three criteria, of 1,000); the AICTE mandatory disclosure published at /public/disclosure/${SLUG}; fee structures under the FRA, a demand per semester, six odd semesters paid by bank, one scholarship claim sanctioned; Visvesvaraya Hostel (boys) with four boarders and the squad's night round; Route 1 with three riders; lab stock, three assets and one breadboard written off as a breakage; a salary for each of the fifteen staff and September's payroll locked; duties: a LAB_INCHARGE per department (Prof Nikhil Bapat, Prof Sameer Kulkarni), ANTI_RAGGING_SQUAD and NSS_OFFICER (Prof Rasika Dixit, three students enrolled, one activity), RESEARCH_DEAN (Dr Anagha Kelkar), EXAM_SQUAD (Prof Pallavi Sathe).
+Dates (G4-29): the college is dated from the day the script runs (\`scripts/demo-calendar.ts\`). The academic year is the one whose odd term began most recently; its odd term (1 July to 30 November) is current and the even term before it past; every other date moves with them by whole years; the registers are the four Monday-to-Saturday weeks before the run's week, inside the odd term. From December to June the college shows the odd term just ended, since its offerings are odd-semester ones. A run over a college built for another academic year is refused (the script promotes nobody); \`--calendar\` prints the dates and writes nothing; \`DEMO_TODAY=YYYY-MM-DD\` pins the day.
+
+What is in it: Computer Engineering (head Dr Anagha Kelkar) and Mechanical Engineering (head Dr Vikas Phadnis); BE programmes (AICTE, four years) on the institute's autonomous scheme "${SCHEME}" with programme and course outcomes; the ${CAL.currentTerm.name.toLowerCase()} (current) and the ${CAL.pastTerm.name.toLowerCase()}; divisions SE Computer A and B, SE Mechanical A and B and FE Computer A; lab batches A and B (capacity 20) in every second-year division and A in the first year's; ten offerings on a Mon–Sat grid, each lab course with one LAB hour per batch in Computer Lab 1 or the Strength of Materials Lab; registers from ${REGISTER_FROM} to ${REGISTER_TO} (dated from the run's day, demo-calendar.ts), the LAB hours registered for their batch only; a practical record for every lab student (experiment 1 signed by the department's lab in-charge, CE301 experiment 2 in SE Computer A waiting for a signature); internal marks locked on CE301 in SE Computer A, ME302's unit test in SE Mechanical A waiting for a countersign; Winter ${Y(2026)} in CONDUCT with hall tickets, the CE301 paper set by Prof Rasika Dixit and sealed, ME302's assigned to Prof Sameer Kulkarni; Summer ${Y(2026)} published from marks the cell entered by double entry, a grade card for each of the ten who sat, one ATKT; ${RECRUITER.company} (verified by the TPO) with an OPEN drive and two applicants, last season's closed drive with the alumnus's offer and the ${Y(2025)} season, a SUMMER internship credited; NAAC's autonomous cycle (${Y(2023)}–${Y(2028) % 100}) computed; the NBA SAR for Computer Engineering for ${sar.year}–${String((sar.year + 1) % 100).padStart(2, "0")} as a draft (${sar.computed} marks from the records and ${sar.self} self-assessed by the HOD on three criteria, of 1,000); the AICTE mandatory disclosure published at /public/disclosure/${SLUG}; fee structures under the FRA, a demand per semester, six odd semesters paid by bank, one scholarship claim sanctioned; Visvesvaraya Hostel (boys) with four boarders and the squad's night round; Route 1 with three riders; lab stock, three assets and one breadboard written off as a breakage; a salary for each of the fifteen staff and September's payroll locked; duties: a LAB_INCHARGE per department (Prof Nikhil Bapat, Prof Sameer Kulkarni), ANTI_RAGGING_SQUAD and NSS_OFFICER (Prof Rasika Dixit, three students enrolled, one activity), RESEARCH_DEAN (Dr Anagha Kelkar), EXAM_SQUAD (Prof Pallavi Sathe).
 
 | Account | Name | Role | Home | What to look at |
 |---|---|---|---|---|
 ${STAFF.map((p) => `| ${p.email} | ${p.name} | ${p.role === "ADMIN" ? "Admin (registrar)" : p.role}${p.duties?.length ? ` · ${p.duties.join(", ")}` : ""} | ${p.home} | ${p.look} |`).join("\n")}
 ${STUDENTS.map(studentLine).join("\n")}
 | ${GUARDIAN.email} | ${GUARDIAN.name} | Parent of Anushka Kale (a minor) | /parent | /parent/academics, /parent/results, /parent/fees, the bus (Route 1) |
-| ${ALUMNUS.email} | ${ALUMNUS.name} | Alumnus (BE Computer, left May 2025) | /alumni | /alumni/college (placed through last season's drive, a mentor) |
+| ${ALUMNUS.email} | ${ALUMNUS.name} | Alumnus (BE Computer, left May ${Y(2025)}) | /alumni | /alumni/college (placed through last season's drive, a mentor) |
 | ${RECRUITER.email} | ${RECRUITER.name} | Recruiter, ${RECRUITER.company} (no membership) | /recruiter | the OPEN drive and its two consented applicants |
 <!-- demo-college-engineering:end -->
 `;
@@ -1115,7 +1125,10 @@ async function writeRoster(block: string): Promise<string> {
 }
 
 async function main() {
+  // The calendar this run would write, and nothing else (G4-29).
+  if (process.argv.includes("--calendar")) return void console.log(describeCalendar(CAL));
   await refuseUnlessLocal("demo:college-engineering");
+  await refuseAnotherYear(db, SLUG, CAL);
   const ctx: Ctx = { passwordHash: await hash(PASSWORD, ARGON), setPassword: true };
   const college = await buildCollege();
   const people = await buildPeople(ctx, college);
@@ -1141,7 +1154,7 @@ async function main() {
      students    sit.student01..12@${DOMAIN} — 6 SE Computer (A, B), 4 SE Mechanical (A, B), 2 FE Computer (both 17; guardian ${GUARDIAN.email})
      alumnus     ${ALUMNUS.email}; recruiter ${RECRUITER.email} (no membership)
      academics   ${counts.offerings} offerings, ${counts.labBatches} lab batches, ${counts.lectures} lectures (${counts.labLectures} LAB hours by batch) with ${counts.lectureMarks} marks, ${counts.practicalRecords} practical records (${counts.practicalSigned} signed)
-     exams       Winter 2026 in CONDUCT (${counts.sealedPapers} paper sealed${exams.sealed ? "" : " — sealing unavailable"}); Summer 2026 published: ${counts.termResults} term results, ${counts.gradeCards} grade cards, ${counts.backlogs} backlog
+     exams       Winter ${Y(2026)} in CONDUCT (${counts.sealedPapers} paper sealed${exams.sealed ? "" : " — sealing unavailable"}); Summer ${Y(2026)} published: ${counts.termResults} term results, ${counts.gradeCards} grade cards, ${counts.backlogs} backlog
      IQAC        autonomous cycle ${iqac.cycleId}, CGPA ${counts.cycleCgpa}; NBA SAR ${iqac.sarYear} draft: ${iqac.sarComputed} computed + ${iqac.sarSelf} self-assessed
      placement   OPEN drive ${placement.openDriveId}; 1 SUMMER internship credited
 

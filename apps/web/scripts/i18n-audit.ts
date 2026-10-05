@@ -258,7 +258,15 @@ function scan(): Finding[] {
       // reads them, not a person, and a translated heading would not upload.
       // …and the inventory and payroll files' headings (module-file-headings.ts):
       // the ESIC sheet's and a bank's bulk-upload columns and the auditor's, the same case.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts"),
+      // …and the Tally export (tally-export.ts): the envelope's tag values
+      // ("Import Data", "Vouchers") are Tally's own import grammar and the
+      // narrations are what Tally, an English program, shows the accountant
+      // beside the ledger names it already fixes; the file is read by Tally.
+      // …and the peer-team visit file (peer-visits.ts), whose five flagged
+      // strings are joins of a framework code, a year, a filing status code
+      // and a metric id ("SSR 2025 · FILED", "NBA 2026"): codes the page
+      // shows beside its translated headings, like filing-codes.ts.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts") && !f.endsWith("/lib/gig-gateway-env.ts") && !f.endsWith("/lib/message-templates.ts") && !f.endsWith("/lib/filing-codes.ts") && !f.endsWith("/lib/filings.ts") && !f.endsWith("/lib/module-file-headings.ts") && !f.endsWith("/lib/tally-export.ts") && !f.endsWith("/lib/peer-visits.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

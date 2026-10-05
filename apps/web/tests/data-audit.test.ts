@@ -44,6 +44,7 @@ import { GET as circularsGet } from "@/app/api/v1/office/circulars/route";
 import { GET as staffMonthGet } from "@/app/api/v1/office/staff-attendance/month/route";
 import { computeUsage, loadStoredSizes, monthKeyFor } from "@/lib/plans";
 import { AUTHORED_IN_THE_APP, CONTENT_TEAM_SOURCE_BEFORE_RENAME } from "@/lib/bank-source";
+import { admittedWithoutPayment } from "./data-audit-admission-fee";
 
 const RUN = process.env.DATA_AUDIT === "1";
 const d = RUN ? describe : describe.skip;
@@ -1148,6 +1149,32 @@ d("modules: the IQAC desk (4 October 2026)", () => {
     expect(failsOf("iqac-scenario")).toEqual([]);
   });
 
+  // The attendance devices (R-2, risks batch, 5 Oct 2026): AttendanceDevice.keyLast4 is a stored copy of the sealed
+  // key's last four with one writer (attendance-devices.ts issueDeviceKey); the key is opened here and compared.
+  // A device whose key does not open (FEES_SECRET_KEY changed, or the row was moved) is a FAIL: it can punch nothing.
+  it("punch-key: a device's last four are its sealed key's, and the key opens", async () => {
+    const { open, sealingAvailable } = await import("@/lib/secret-box");
+    if (!sealingAvailable()) {
+      note("punch-key", "INFO", "server", "FEES_SECRET_KEY is not set: device keys not opened");
+      return;
+    }
+    for (const s of await audited()) {
+      const devices = await db.attendanceDevice.findMany({ where: { schoolId: s.id, keySealed: { not: "" } }, select: { id: true, name: true, keySealed: true, keyLast4: true } });
+      for (const d of devices) {
+        let key: string | null = null;
+        try {
+          key = open(d.keySealed, `punch:${s.id}:${d.id}`);
+        } catch {
+          key = null;
+        }
+        if (key === null) note("punch-key", "FAIL", s.name, `device ${d.name}: its key does not open`);
+        else if (key.slice(-4) !== d.keyLast4) note("punch-key", "FAIL", s.name, `device ${d.name}: stored last four ${d.keyLast4}, the key ends ${key.slice(-4)}`);
+      }
+      if (devices.length) note("punch-key", "INFO", s.name, `${devices.length} device key(s) opened and checked`);
+    }
+    expect(failsOf("punch-key")).toEqual([]);
+  });
+
   // The councils' returns (5 Oct 2026) are checked the same way: an NBA SAR is rebuilt for its own department.
   it("iqac-filing: a filing's hash is its body's, and regenerating it from the rows gives the figures it printed", async () => {
     const { buildFiling } = await import("@/lib/iqac-filings");
@@ -1209,6 +1236,23 @@ d("modules: placement (4 October 2026)", () => {
       if (seasons || credited.length) note("placement-season", "INFO", s.name, `${seasons} season row(s) and ${credited.length} students' internship credits checked`);
     }
     expect(failsOf("placement-season")).toEqual([]);
+  });
+});
+
+d("modules: college admissions (G4-18, 5 October 2026)", () => {
+  /**
+   * The admission fee is written to the ledger after the admission's own transaction (college-admissions.ts,
+   * kept on 4 October): FAIL when an admitted seat had its fee recorded as received, with a fee structure, and
+   * no payment row carries the admission's clientId (tests/data-audit-admission-fee.ts). Read at the audited
+   * schools (the demo colleges among them); ZZ Vidya's fixture seat is written by hand, not admitted, and is not read.
+   */
+  it("admission-fee: an admitted seat with its fee recorded has its payment row", async () => {
+    for (const s of schools) {
+      const { checked, gaps } = await admittedWithoutPayment(db, s.id);
+      for (const g of gaps) note("admission-fee", "FAIL", s.name, `application ${g.number} (${g.applicantName}): admitted with ₹${(g.feePaise / 100).toFixed(2)} recorded as received and no payment row`);
+      if (checked) note("admission-fee", "INFO", s.name, `${checked} admitted seat(s) with a fee checked for their payment row`);
+    }
+    expect(failsOf("admission-fee")).toEqual([]);
   });
 });
 

@@ -23,7 +23,16 @@ import { errorsLastHour, overallP95 } from "@/lib/metrics";
  */
 export const dynamic = "force-dynamic";
 
-const started = Date.now();
+/**
+ * THE PROCESS'S AGE, NOT THE MODULE'S (R-30, 5 Oct 2026, risks batch). This
+ * was `Date.now() - started` with `started` taken when this module was
+ * evaluated, and `next dev` evaluates a route's module again whenever a file in
+ * its import graph changes (db.ts, session.ts, metrics.ts and theirs) or after
+ * it has sat unused: the streams sweep saw 14,478 s fall to 4,447 s with no
+ * restart, and on 5 Oct an edit to db.ts took it to 0 while the server's
+ * process (same pid, 39 minutes old) went on. `process.uptime()` is the
+ * process's own clock, which only a real restart resets.
+ */
 
 export async function GET() {
   const t0 = Date.now();
@@ -45,7 +54,7 @@ export async function GET() {
     ok: database === "ok",
     database,
     databaseMs,
-    uptimeSeconds: Math.round((Date.now() - started) / 1000),
+    uptimeSeconds: Math.round(process.uptime()),
     commit: process.env.APP_COMMIT ?? null,
     ...(metrics ? { metrics } : {}),
   };

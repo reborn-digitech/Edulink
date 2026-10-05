@@ -24,6 +24,13 @@
  * catalog files) at a school may answer 403 MODULE_OFF, the one answer a
  * college-only door gives a school. Every call is timed, and the slowest
  * twenty doors are printed at the end (SWEEPS-3).
+ *
+ * BY DESIGN, NOT BY A LIST (G4-2, decided 5 Oct 2026: keep 404 and MODULE_OFF): the module gate's answer is
+ * judged from the door's own `module` (published as `x-module`) against the actor's school's modules, and a
+ * college's door at a school from the catalog file it is filed in (`COLLEGE_DOORS`, published as `x-college`),
+ * so a new door is classified where it is catalogued and no path or count is kept here; a 404 for another
+ * tenant's sample is what a GET's `[200, 404]` already allows. Path prefixes are not used: the college's doors
+ * share them with the school's (`/library/eresources` is a college's, `/library/titles` a school's).
  */
 import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
@@ -37,6 +44,9 @@ import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
 import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep-doors";
 import { inOwnWindow } from "./sweep-window";
+import { crossPlan, FIXTURE_ID, PLATFORM_WIDE } from "./cross-sampler";
+import { PLACEMENT_FIXTURE } from "../src/lib/api-catalog/placement-fixture";
+import { keepSessionsAlive, purgeSessionsOnSignal, sweepSessionExpiry } from "./sweep-sessions";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -45,12 +55,12 @@ const results: { endpoint: string; role: string; expected: number | number[] | s
 const skipped: string[] = [];
 
 /**
- * 24 HOURS, NOT ONE (W-13, 4 Oct 2026). The catalog is some 16,000 calls now,
- * two to four hours on `next dev`; a one-hour session expired mid-run and every
- * call after it would have been a false 401 — the page sweep learned the same
- * and mints for a day. The run deletes its sessions at the end either way.
+ * TWO HOURS, RENEWED WHILE THE RUN LIVES (A3-S-15, 5 Oct 2026; was 24 hours, W-13). The catalog is some 16,000
+ * calls, two to four hours on `next dev`, and a one-hour session expired mid-run; a day-long one outlived a run
+ * stopped by hand. Now each session lasts two hours, `keepSessionsAlive` renews the run's own every twenty
+ * minutes, a signal deletes them (`purgeSessionsOnSignal`), and the `finally` at the end deletes them as before
+ * (scripts/sweep-sessions.ts).
  */
-const SESSION_MS = 86_400_000;
 
 /** Where each actor stands: its school's modules and whether that school is a college (a guardian: the children's schools). Filled by `actors()`. */
 type Tenant = { schoolId: string | null; modules: Set<string>; college: boolean };
@@ -102,7 +112,7 @@ const wanted = (want: number | number[], off: "must" | "may" | "no"): number | n
 async function mint(userId: string, role: Role, schoolId: string | null): Promise<string> {
   const token = randomBytes(32).toString("base64url");
   const s = await db.session.create({
-    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "api-sweep", expiresAt: new Date(Date.now() + SESSION_MS) },
+    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "api-sweep", expiresAt: sweepSessionExpiry() },
   });
   minted.push(s.id);
   return token;
@@ -223,7 +233,7 @@ async function doorFixture(s: string, applicationId: string | null): Promise<Pic
   const office = await db.membership.findFirst({ where: { schoolId: s, role: "ADMIN", status: "ACTIVE", user: { email: "zz.admin@zz.test" } }, select: { userId: true } });
   let mySessionId: string | null = null;
   if (office) {
-    const spare = await db.session.create({ data: { userId: office.userId, tokenHash: createHash("sha256").update(randomBytes(32)).digest("hex"), activeSchoolId: s, activeRole: "ADMIN", userAgent: "api-sweep (to sign out)", expiresAt: new Date(Date.now() + SESSION_MS) } });
+    const spare = await db.session.create({ data: { userId: office.userId, tokenHash: createHash("sha256").update(randomBytes(32)).digest("hex"), activeSchoolId: s, activeRole: "ADMIN", userAgent: "api-sweep (to sign out)", expiresAt: sweepSessionExpiry() } });
     minted.push(spare.id);
     mySessionId = spare.id;
   }
@@ -275,6 +285,16 @@ async function doorFixture(s: string, applicationId: string | null): Promise<Pic
     bankQuestionId: question?.id ?? null,
     fileId,
   };
+}
+
+/**
+ * The placement fixture at ZZ Vidya College (scripts/zz-placement.ts), the same for whichever school the fixture is
+ * read: zz.cstudent02's consented, live application in the open drive and their membership (R-30). Null when
+ * zz:fixtures has not built the placement rows.
+ */
+async function placementFixture(): Promise<Pick<SweepFixture, "placementApplicationId" | "placementApplicantMembershipId">> {
+  const app = await db.driveApplication.findFirst({ where: { driveId: PLACEMENT_FIXTURE.openDrive, consentAt: { not: null }, withdrawnAt: null, student: { user: { email: "zz.cstudent02@zz.test" } } }, select: { id: true, studentMembershipId: true } });
+  return { placementApplicationId: app?.id ?? null, placementApplicantMembershipId: app?.studentMembershipId ?? null };
 }
 
 async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
@@ -364,6 +384,7 @@ async function fixture(slug = "zz-northgate-school"): Promise<SweepFixture> {
     ...admissions,
     // The file the link door opens is a document of the sweep parent's application.
     ...(await doorFixture(s, admissions.applicationId)),
+    ...(await placementFixture()),
     todayKey: new Date().toISOString().slice(0, 10),
   };
 }
@@ -579,7 +600,6 @@ const CROSS_MODE = (process.argv.find((a) => a.startsWith("--cross="))?.slice(8)
 /** `--only=a,b`: the endpoints whose catalog path contains any of these. */
 const ONLY = process.argv.find((a) => a.startsWith("--only="))?.slice(7).split(",").filter(Boolean) ?? null;
 const CROSS_SCHOOL = process.argv.find((a) => a.startsWith("--other="))?.slice(8) ?? "zz-southbank-school";
-const PLATFORM_WIDE = [/^\/api\/v1\/shared\//, /^\/api\/v1\/competitions/, /^\/api\/v1\/contest/, /^\/api\/v1\/vacancies/, /^\/api\/v1\/expert/, /^\/api\/v1\/operator/, /^\/api\/v1\/appadmin/, /^\/api\/v1\/auth\//, /^\/api\/v1\/me\b/, /^\/api\/v1\/account/];
 
 /** Doors that answer for another school ON PURPOSE, with what they give away. */
 const CROSS_SCHOOL_BY_DESIGN: Record<string, string> = {
@@ -613,24 +633,30 @@ async function crossProbe(mode: "school" | "person") {
     const swapper = fixtureSwapper();
     /** The fixed-path doors tried with another tenant's rows in place of the fixture's (W-14), named so the count can be read. */
     const swapped: string[] = [];
+    /** The doors reached with another school's ids in the body or on the query string (R-30, scripts/cross-sampler.ts), named so the count can be read. */
+    const byBodyOrQuery: string[] = [];
     for (const e of ENDPOINTS) {
       const key = `${e.method} ${e.path}`;
-      if (e.access === "anyone") { skipped.push(`${key} (public)`); continue; }
-      // A door that names a probe is a school's, wherever it is filed: the queue of people waiting is under /shared.
-      if (!e.probe && PLATFORM_WIDE.some((re) => re.test(e.path))) { skipped.push(`${key} (platform-wide)`); continue; }
+      // What to send is decided by crossPlan alone (scripts/cross-sampler.ts), which a dry count reads the same way.
+      const cross = crossPlan(e, homeFx, fx);
+      if (cross.kind === "public") { skipped.push(`${key} (public)`); continue; }
+      if (cross.kind === "platform-wide") { skipped.push(`${key} (platform-wide)`); continue; }
       if (CROSS_SCHOOL_BY_DESIGN[key]) { byDesign.push(`${key}: ${CROSS_SCHOOL_BY_DESIGN[key]}`); continue; }
-      // The probe's own path where the ordinary sweep has none (a door with no body, whose call is the act).
-      const pathOf = e.probe?.path ?? (typeof e.sample === "function" ? e.sample : null);
-      if (pathOf) {
-        const path = pathOf(fx);
-        if (path === null || /\{\w+\}/.test(path)) { skipped.push(`${key} (${CROSS_SCHOOL} has no row for its sample)`); continue; }
-        if (path === pathOf(homeFx)) { skipped.push(`${key} (no id in the path)`); continue; }
+      if (cross.kind === "no-row") { skipped.push(`${key} (${CROSS_SCHOOL} has no row for its sample)`); continue; }
+      if (cross.kind === "none") { skipped.push(`${key} (no id in the path)`); continue; }
+      if (cross.kind === "body-not-ids") { skipped.push(`${key} (its body differs at ${CROSS_SCHOOL} in more than ids)`); continue; }
+      if (cross.kind === "query-incomplete") { skipped.push(`${key} (its query needs more than ${CROSS_SCHOOL}'s id)`); continue; }
+      if (cross.kind === "no-sample") { skipped.push(`${key} (no sample)`); continue; }
+      // The other school's ids in the path (the probe's own, or the sample's), in the body, or on the query string.
+      if (cross.kind === "path" || cross.kind === "body" || cross.kind === "query") {
         // A valid body, so the refusal is the fence's and not the parser's.
-        const body = e.probe?.body ? e.probe.body(fx) : e.sampleBody ? e.sampleBody(fx) : null;
+        const body = cross.kind === "query" ? null : cross.body;
         if (e.probe) tried.push(`${key}${body ? " (valid body)" : ""}`);
+        if (cross.kind !== "path") byBodyOrQuery.push(`${key} (${cross.kind === "body" ? `${cross.swapped} id(s) in the body` : "the query"})`);
+        const label = cross.kind === "path" ? "another school's ids" : cross.kind === "body" ? "another school's ids in the body" : "another school's ids on the query";
         for (const role of (ROLES as readonly Role[]).filter((r) => tokens[r])) {
           if (!actorPermits(e, role)) continue; // a role the door refuses anyway (or the actor lacks its duty) proves nothing here
-          await check(e, role, path, body, "another school's ids");
+          await check(e, role, cross.path, body, label, cross.kind === "query" ? cross.needles : []);
         }
         continue;
       }
@@ -643,9 +669,7 @@ async function crossProbe(mode: "school" | "person") {
        * college) for a college's. The actors of the fixture's own tenant then call it, and anyone who
        * holds no school. A door that cannot be swapped is skipped with the reason.
        */
-      if (typeof e.sample !== "string" && /\{/.test(e.path)) { skipped.push(`${key} (no sample)`); continue; }
-      const fixed = typeof e.sample === "string" ? e.sample : e.path;
-      const body = e.sampleBody ? e.sampleBody(homeFx) : null;
+      const { fixed, body } = cross;
       const plan = await swapper.plan(fixed, body);
       if (plan.kind === "none") { skipped.push(`${key} (no id in the path)`); continue; }
       if (plan.kind === "skip") { skipped.push(`${key} (${plan.reason})`); continue; }
@@ -659,6 +683,8 @@ async function crossProbe(mode: "school" | "person") {
       }
     }
     console.log(`· ${swapped.length} fixed-path probes with another tenant's rows (W-14)`);
+    for (const d of byBodyOrQuery) console.log(`· by body or query: ${d}`);
+    console.log(`· ${byBodyOrQuery.length} doors with no id in the path probed with ${CROSS_SCHOOL}'s ids in the body or the query (R-30)`);
   } else {
     // A guardian asks for a child that is not theirs; a teacher for a pupil in a class they do not teach.
     // The guardian the PARENT actor IS (actors(), above): pupil 01's. "The first guardianship" could be another
@@ -768,8 +794,6 @@ async function crossProbe(mode: "school" | "person") {
 
 /** The colleges a college's fixture id is swapped into, and the school a school's is (`--other`). */
 const CROSS_COLLEGES = ["zz-vidya-college", "zz-shastri-college", "saraswati-college"];
-/** A fixture id: `c`, the `zz…` prefix that names its kind, digits (src/lib/api-catalog/*-fixture.ts). */
-const FIXTURE_ID = /\bc(zz[a-z]+)\d+\b/g;
 type SwapTarget = { slug: string; path: string; body: Record<string, unknown> | null; needles: string[]; reason: null } | { slug: string; reason: string };
 type SwapPlan = { kind: "none" } | { kind: "skip"; reason: string } | { kind: "swap"; homeId: string; homeSlug: string; targets: SwapTarget[] };
 
@@ -944,6 +968,9 @@ async function cleanWindow(sinceText: string, untilText: string | null): Promise
 
 async function main() {
   if (CLEAN_SINCE) return cleanWindow(CLEAN_SINCE, CLEAN_UNTIL);
+  // The run's own sessions: renewed while it lives, deleted if it is stopped by a signal (A3-S-15).
+  keepSessionsAlive(() => db.session.updateMany({ where: { id: { in: minted } }, data: { expiresAt: sweepSessionExpiry() } }));
+  purgeSessionsOnSignal(() => db.session.deleteMany({ where: { id: { in: minted } } }));
   // The cross probes write too (an application, a guardian's PEN decision): their window is swept like the main run's (STREAMS-8).
   if (CROSS_MODE) return inOwnWindow(() => crossProbe(CROSS_MODE), sweepAway);
   const startedAt = new Date();

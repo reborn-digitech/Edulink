@@ -57,7 +57,7 @@ function build() {
   }
   return {
     openapi: "3.0.3",
-    info: { title: "EduLink API", version: "1", description: "The phone's door into the same library the web app uses. Bearer sessions; JSON in and out; bodies validated with the schemas in packages/contracts." },
+    info: { title: "EduLink API", version: "1", description: "The phone's door into the same library the web app uses. Bearer sessions; JSON in and out; bodies validated with the schemas in packages/contracts. Page-only by design, with no door: /suspended and /switch (web screens about the session itself; the phone reads the same facts from GET /api/v1/me and its own sign-in answer) and MODULE_META (the web's module names and descriptions, compiled into the web app; the phone keeps its own and reads which modules are on from GET /api/v1/me). Writes kept on the web by design, with no door: merging two accounts and deleting a school (irreversible acts across accounts or tenants that need the web's confirmation screens), the operator's removal of schools and moderation inside a school (the operator console's, not a school phone's), and a pupil's first-sign-in code (printed on paper at the office)." },
     servers: [{ url: "https://app.example", description: "production" }, { url: "http://localhost:3000", description: "local" }],
     components: {
       securitySchemes: { bearer: { type: "http", scheme: "bearer" } },
