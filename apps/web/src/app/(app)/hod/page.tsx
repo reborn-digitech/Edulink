@@ -21,6 +21,7 @@ import { formatDateKey } from "@/lib/dates";
 import { componentsStateText, mentoringSummaryText, weeksTaughtText } from "@/lib/count-copy";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { DutyCards } from "@/components/college/duty-cards";
+import { NbaCard } from "@/components/iqac/nba-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -51,6 +52,8 @@ export default async function HodHomePage({ searchParams }: { searchParams: Prom
       <ModuleFlash t={t} params={params} />
       {/* My duties (5 Oct 2026). */}
       <DutyCards ctx={ctx} t={t} />
+      {/* The department's NBA report, at an engineering college (5 Oct 2026). */}
+      <NbaCard ctx={ctx} t={t} />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <StatTile label={t("academics.statOfferings")} value={home.offerings.length} />
         <StatTile label={t("academics.statBehind")} value={home.offerings.filter((o) => o.behind).length} tone={home.offerings.some((o) => o.behind) ? "warn" : "ok"} />

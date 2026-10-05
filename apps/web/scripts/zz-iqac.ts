@@ -1,4 +1,5 @@
 import type { PrismaClient } from "@prisma/client";
+import { applicableFilings, parseStreams } from "@edulink/contracts";
 import { IQAC_FIXTURE as F } from "../src/lib/api-catalog/iqac-fixture";
 import { ACADEMICS_FIXTURE } from "../src/lib/api-catalog/academics-fixture";
 import { recomputeAsSystem, respondentHash, scoreQualitativeAs, iqacHash } from "../src/lib/iqac";
@@ -22,7 +23,8 @@ import { addWorkingDays } from "../src/lib/iqac-rules";
  *   answers (below five, so its totals stay hidden). One grievance open
  *   (zz.cstudent02) and one resolved in time (zz.cstudent03). Last year's
  *   AQAR generated, signed off by zz.cprincipal and filed. The AICTE
- *   disclosure published at /public/disclosure/zz-vidya-college.
+ *   disclosure published only where the college's streams bring it (5 Oct
+ *   2026): Vidya is arts, science and commerce, so its page is taken down.
  *
  * Every row has a fixed id (src/lib/api-catalog/iqac-fixture.ts). Re-run
  * safe: rows are upserted by id; scores already given are not given again.
@@ -160,10 +162,16 @@ export async function buildIqac(db: PrismaClient): Promise<IqacFixtures> {
     await db.collegeFiling.create({ data: { id: F.aqar, schoolId: sid, kind: "AQAR", cycleId: F.cycle, year: year - 1, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), status: "FILED", checked: true, principalNote: "ZZ Approved for submission.", submittedAt: new Date(Date.now() - 3 * DAY), signedOffAt: new Date(Date.now() - 2 * DAY), signedOffByUserId: principal.userId, generatedByUserId: iqac.userId } });
   }
 
-  // The AICTE disclosure, published.
-  const { document } = await disclosureDocument(sid, year);
-  const snapshotJson = JSON.stringify(document);
-  await db.disclosurePage.upsert({ where: { schoolId: sid }, create: { schoolId: sid, schoolSlug: school.slug, publishedAt: new Date(), snapshotJson, hash: iqacHash(snapshotJson) }, update: { schoolSlug: school.slug, publishedAt: new Date(), snapshotJson, hash: iqacHash(snapshotJson) } });
+  // The AICTE disclosure, published — only where the college's streams bring it (5 Oct 2026): Vidya teaches arts,
+  // science and commerce, so its page is taken down and the desk is answered 404 for it.
+  const streams = parseStreams((await db.school.findUniqueOrThrow({ where: { id: sid }, select: { streamsJson: true } })).streamsJson);
+  if (applicableFilings(streams).includes("AICTE_DISCLOSURE")) {
+    const { document } = await disclosureDocument(sid, year);
+    const snapshotJson = JSON.stringify(document);
+    await db.disclosurePage.upsert({ where: { schoolId: sid }, create: { schoolId: sid, schoolSlug: school.slug, publishedAt: new Date(), snapshotJson, hash: iqacHash(snapshotJson) }, update: { schoolSlug: school.slug, publishedAt: new Date(), snapshotJson, hash: iqacHash(snapshotJson) } });
+  } else {
+    await db.disclosurePage.updateMany({ where: { schoolId: sid }, data: { publishedAt: null } });
+  }
 
   const cycle = await db.accreditationCycle.findUniqueOrThrow({ where: { id: F.cycle }, select: { cgpa: true } });
   const metrics = (await db.metricScore.groupBy({ by: ["metricCode"], where: { cycleId: F.cycle } })).length;

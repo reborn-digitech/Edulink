@@ -28,9 +28,10 @@ export const HOME_TILE_META: Record<HomeTileCode, HomeTile> = {
   labs: { labelKey: "streams.tile.labs", href: "/admin/inventory", module: "INVENTORY" },
   placement: { labelKey: "streams.tile.placement", href: "/placement", module: "PLACEMENT" },
   internships: { labelKey: "streams.tile.internships", href: "/placement/internships", module: "PLACEMENT" },
-  nba: { labelKey: "streams.tile.nba", href: null },
-  mootCourt: { labelKey: "streams.tile.mootCourt", href: null },
-  teachingPractice: { labelKey: "streams.tile.teachingPractice", href: null },
+  // The NBA SAR (the filings builder, 5 Oct 2026): its figures and worksheet on the IQAC's documents.
+  nba: { labelKey: "streams.tile.nba", href: "/iqac/documents/nba", module: "IQAC" },
+  mootCourt: { labelKey: "streams.tile.mootCourt", href: "/admin/stream-records/moot-courts", module: "ACADEMICS" },
+  teachingPractice: { labelKey: "streams.tile.teachingPractice", href: "/duties/teaching-practice", module: "ACADEMICS" },
   clinicalPostings: { labelKey: "streams.tile.clinicalPostings", href: null },
   studios: { labelKey: "streams.tile.studios", href: null },
   fieldWork: { labelKey: "streams.tile.fieldWork", href: null },

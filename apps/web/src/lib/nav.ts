@@ -170,6 +170,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
     // The college at a glance (the integration builder, 4 Oct 2026): the head's dashboard, which the office reads too; ACADEMICS stands for "is a college".
     { href: "/principal/college", labelKey: "collegeHub.title", icon: "chartLine", group: "running", module: "ACADEMICS" },
+    // Stream records (5 Oct 2026): lab batches, the practical record, moot courts, and the year's figures of each stream's records.
+    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS" },
   ],
   // A principal READS and DECIDES. No register, no gradebook, no class setup —
   // those belong to the teacher and the admin respectively, and handing all
@@ -238,6 +240,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/principal/accreditation", labelKey: "iqac.navAccreditation", icon: "medal", prefix: true, group: "running", module: "IQAC", also: ["/iqac"] },
     { href: "/admin/committees", labelKey: "iqac.navCommittees", icon: "users", prefix: true, group: "running", module: "IQAC" },
     { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
+    // Stream records (5 Oct 2026), read: the year's figures, batches, the practical record, moots; the duties' desks open from it.
+    { href: "/admin/stream-records", labelKey: "streamRecords.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS" },
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
@@ -413,6 +417,10 @@ export const NAV: Record<Role, NavItem[]> = {
     // The warden's pages (the hostel module, 3 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/hostel/rollcall", labelKey: "hostel.tabRollCall", icon: "checks", primary: true, prefix: true, module: "HOSTEL" },
     { href: "/hostel/leave", labelKey: "hostel.tabLeave", icon: "calendar", primary: true, prefix: true, module: "HOSTEL" },
+    // The night-out register and the curfew at the gate (5 Oct 2026).
+    { href: "/hostel/night", labelKey: "collegeDesks.nightTab", icon: "calendar", prefix: true, group: "daily", module: "HOSTEL" },
+    // A proposal to end a boarder's place, decided by the principal (5 Oct 2026).
+    { href: "/hostel/expulsions", labelKey: "collegeDesks.expulsionsTab", icon: "shield", prefix: true, group: "running", module: "HOSTEL" },
     { href: "/hostel/rooms", labelKey: "hostel.tabRooms", icon: "bed", primary: true, prefix: true, module: "HOSTEL", also: ["/hostel/health"] },
     { href: "/hostel/visitors", labelKey: "hostel.tabVisitors", icon: "users", prefix: true, group: "daily", module: "HOSTEL" },
     { href: "/hostel/menu", labelKey: "hostel.tabMenu", icon: "clipboard", prefix: true, group: "running", module: "HOSTEL" },
@@ -454,10 +462,23 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/supervision", labelKey: "placement.supervisionTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): my research items, my record, my course feedback.
     { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+    // My public page for the college's website, my own opt-in (5 Oct 2026).
+    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for a member who holds the duty; the other duties' pages follow it.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // The practical record of the offerings I teach with practicals (stream records, 5 Oct 2026).
+    { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS" },
+    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
+    { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
+    { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
+    { href: "/duties/nss", labelKey: "duties.corps.nssTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NSS_OFFICER" },
+    { href: "/duties/ncc", labelKey: "duties.corps.nccTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NCC_OFFICER" },
+    { href: "/duties/research", labelKey: "duties.research.title", icon: "books", prefix: true, group: "running", module: "IQAC", duty: "RESEARCH_DEAN" },
+    { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS", duty: "EXAM_SQUAD" },
+    { href: "/duties/clinical", labelKey: "duties.CLINICAL_COORDINATOR.name", icon: "firstAidKit", prefix: true, group: "running", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    { href: "/duties/studio", labelKey: "duties.STUDIO_COORDINATOR.name", icon: "palette", prefix: true, group: "running", module: "ACADEMICS", duty: "STUDIO_COORDINATOR" },
   ],
   HOD: [
     { href: "/hod", labelKey: "role.hod", icon: "treeStructure", primary: true, prefix: true },
@@ -474,14 +495,29 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hod/projects", labelKey: "placement.hodProjectsTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
     // IQAC (4 Oct 2026): the department's research, activities and course feedback.
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
+    // My public page for the college's website, my own opt-in (5 Oct 2026); under /faculty, which an HOD's teaching opens.
+    { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for an HOD who holds the duty.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // The practical record of the department's offerings with practicals (stream records, 5 Oct 2026).
+    { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS" },
+    // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
+    { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
+    { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
+    { href: "/duties/nss", labelKey: "duties.corps.nssTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NSS_OFFICER" },
+    { href: "/duties/ncc", labelKey: "duties.corps.nccTitle", icon: "handHeart", prefix: true, group: "running", module: "IQAC", duty: "NCC_OFFICER" },
+    { href: "/duties/research", labelKey: "duties.research.title", icon: "books", prefix: true, group: "running", module: "IQAC", duty: "RESEARCH_DEAN" },
+    { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS", duty: "EXAM_SQUAD" },
+    { href: "/duties/clinical", labelKey: "duties.CLINICAL_COORDINATOR.name", icon: "firstAidKit", prefix: true, group: "running", module: "ACADEMICS", duty: "CLINICAL_COORDINATOR" },
+    { href: "/duties/studio", labelKey: "duties.STUDIO_COORDINATOR.name", icon: "palette", prefix: true, group: "running", module: "ACADEMICS", duty: "STUDIO_COORDINATOR" },
   ],
   EXAM_CONTROLLER: [
     { href: "/exam-cell", labelKey: "role.examController", icon: "exam", primary: true, prefix: true },
     ...COLLEGE_STAFF_COMMON,
+    // The exam flying squad's visits and the cases (5 Oct 2026), read.
+    { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS" },
   ],
   IQAC: [
     { href: "/iqac", labelKey: "role.iqac", icon: "medal", primary: true, prefix: true },

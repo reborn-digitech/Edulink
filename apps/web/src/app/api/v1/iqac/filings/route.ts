@@ -14,7 +14,7 @@ export async function GET() {
   }
 }
 
-/** POST /api/v1/iqac/filings — Generate a filing from the live records (SSR, AQAR, IIQA, NIRF, AISHE, the AICTE disclosure, the affiliation return). */
+/** POST /api/v1/iqac/filings — Generate a filing from the live records: one the college's streams bring (SSR, AQAR, IIQA, NIRF, AISHE, the AICTE disclosure, the affiliation return, the PCI, BCI and NCTE returns, an engineering department's NBA SAR). */
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRoles("IQAC", "ADMIN");

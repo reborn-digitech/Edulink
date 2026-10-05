@@ -135,10 +135,20 @@ export type StreamPreset = {
 const BASE_MODULES: readonly SchoolModuleCode[] = ["ALUMNI", "ACADEMICS", "EXAMS", "ADMISSIONS", "SCHOLARSHIPS", "IQAC"];
 /** …and a professional stream (a council other than the UGC) adds the placement cell. */
 const PROFESSIONAL_MODULES: readonly SchoolModuleCode[] = [...BASE_MODULES, "PLACEMENT"];
-/** The NAAC documents, NIRF and AISHE: every college files them. */
-const BASE_FILINGS: readonly CollegeFilingKind[] = ["SSR", "AQAR", "IIQA", "NIRF", "AISHE"];
-/** …and a college under AICTE its mandatory disclosure and the affiliation return. */
-const AICTE_FILINGS: readonly CollegeFilingKind[] = [...BASE_FILINGS, "AICTE_DISCLOSURE", "AFFILIATION_RETURN"];
+/**
+ * The NAAC documents, NIRF, AISHE and the affiliating university's return: every
+ * college files them (every affiliated college returns intake, faculty and results
+ * to its university whatever its council — the coordinator's correction of 5 Oct
+ * 2026 to the filings builder's reading, which had tied the return to AICTE).
+ */
+const BASE_FILINGS: readonly CollegeFilingKind[] = ["SSR", "AQAR", "IIQA", "NIRF", "AISHE", "AFFILIATION_RETURN"];
+/**
+ * …and a college under AICTE its mandatory disclosure.
+ * The councils' own returns (the filings builder, 5 Oct 2026): ENGINEERING adds
+ * NBA's SAR, PHARMACY the PCI inspection data, LAW the BCI return, EDUCATION the
+ * NCTE return (v1/council-filings.ts).
+ */
+const AICTE_FILINGS: readonly CollegeFilingKind[] = [...BASE_FILINGS, "AICTE_DISCLOSURE"];
 /** The tiles every college's home starts with, before its streams'. */
 export const BASE_HOME_TILES: readonly HomeTileCode[] = ["people", "academics", "exams", "admissions", "scholarships", "iqac"];
 
@@ -150,10 +160,10 @@ const SPEC: Record<StreamCode, PresetSpec> = {
   SCIENCE: { modulesOn: BASE_MODULES, regulators: ["UGC"], filings: BASE_FILINGS, homeTiles: ["labs", "library"], vocabulary: {}, notBuilt: [] },
   COMMERCE: { modulesOn: BASE_MODULES, regulators: ["UGC"], filings: BASE_FILINGS, homeTiles: ["library"], vocabulary: {}, notBuilt: [] },
   MANAGEMENT: { modulesOn: PROFESSIONAL_MODULES, regulators: ["AICTE", "UGC"], filings: AICTE_FILINGS, homeTiles: ["placement", "internships"], vocabulary: {}, notBuilt: [] },
-  ENGINEERING: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["AICTE"], filings: AICTE_FILINGS, homeTiles: ["labs", "placement", "nba"], vocabulary: {}, notBuilt: [] },
-  PHARMACY: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["PCI", "AICTE"], filings: AICTE_FILINGS, homeTiles: ["labs", "placement"], vocabulary: { lab: "practical" }, notBuilt: [] },
-  LAW: { modulesOn: PROFESSIONAL_MODULES, regulators: ["BCI", "UGC"], filings: BASE_FILINGS, homeTiles: ["mootCourt", "internships"], vocabulary: { department: "faculty" }, notBuilt: [] },
-  EDUCATION: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NCTE"], filings: BASE_FILINGS, homeTiles: ["teachingPractice"], vocabulary: {}, notBuilt: [] },
+  ENGINEERING: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["AICTE"], filings: [...AICTE_FILINGS, "NBA_SAR"], homeTiles: ["labs", "placement", "nba"], vocabulary: {}, notBuilt: [] },
+  PHARMACY: { modulesOn: [...PROFESSIONAL_MODULES, "INVENTORY"], regulators: ["PCI", "AICTE"], filings: [...AICTE_FILINGS, "PCI_INSPECTION"], homeTiles: ["labs", "placement"], vocabulary: { lab: "practical" }, notBuilt: [] },
+  LAW: { modulesOn: PROFESSIONAL_MODULES, regulators: ["BCI", "UGC"], filings: [...BASE_FILINGS, "BCI_RETURN"], homeTiles: ["mootCourt", "internships"], vocabulary: { department: "faculty" }, notBuilt: [] },
+  EDUCATION: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NCTE"], filings: [...BASE_FILINGS, "NCTE_RETURN"], homeTiles: ["teachingPractice"], vocabulary: {}, notBuilt: [] },
   HEALTH_SCIENCES: { modulesOn: PROFESSIONAL_MODULES, regulators: ["NMC", "DCI", "INC"], filings: BASE_FILINGS, homeTiles: ["clinicalPostings", "labs"], vocabulary: {}, notBuilt: ["CLINICAL_POSTINGS", "LOGBOOKS", "HOSPITAL"] },
   ARCHITECTURE: { modulesOn: PROFESSIONAL_MODULES, regulators: ["COA"], filings: BASE_FILINGS, homeTiles: ["studios"], vocabulary: { lecture: "studio" }, notBuilt: ["STUDIOS", "JURIES"] },
   AGRICULTURE: { modulesOn: PROFESSIONAL_MODULES, regulators: ["ICAR"], filings: BASE_FILINGS, homeTiles: ["fieldWork", "labs"], vocabulary: {}, notBuilt: ["FARM", "FIELD_WORK"] },

@@ -5,7 +5,7 @@ import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { iqacOverview } from "@/lib/iqac";
-import { disclosureState } from "@/lib/iqac-filings";
+import { disclosureApplies, disclosureState } from "@/lib/iqac-filings";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { PageHeader } from "@/components/ui/page-header";
@@ -45,7 +45,8 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
       </div>
     );
   }
-  const [o, disclosure, school] = await Promise.all([iqacOverview(ctx), disclosureState(ctx), db.school.findUnique({ where: { id: ctx.schoolId }, select: { name: true } })]);
+  // The AICTE disclosure is drawn only where the college's streams bring it (5 Oct 2026).
+  const [o, disclosure, school] = await Promise.all([iqacOverview(ctx), (await disclosureApplies(ctx.schoolId)) ? disclosureState(ctx) : Promise.resolve(null), db.school.findUnique({ where: { id: ctx.schoolId }, select: { name: true } })]);
   const canEdit = ctx.role !== "PRINCIPAL";
   const year = new Date().getUTCFullYear();
   return (
@@ -157,37 +158,39 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
         </CardBody>
       </Card>
 
-      <Card>
-        <CardHeader icon={<GlobeIcon weight="duotone" className="size-5" />} title={t("iqac.disclosureTitle")} description={t("iqac.disclosureIntro")} />
-        <CardBody className="flex flex-wrap items-center gap-3 text-sm">
-          <span>{disclosure.publishedAt ? t("iqac.disclosurePublished", { date: day(disclosure.publishedAt.slice(0, 10), locale), url: disclosure.url }) : t("iqac.disclosureOff")}</span>
-          {disclosure.publishedAt ? (
-            <Button asChild size="sm" variant="secondary">
-              <Link href={disclosure.url}>{t("iqac.view")}</Link>
-            </Button>
-          ) : null}
-          {canEdit ? (
-            <>
-              <form action={disclosureAction}>
-                <input type="hidden" name="back" value="/iqac" />
-                <input type="hidden" name="publish" value="1" />
-                <Button type="submit" size="sm">
-                  {t("iqac.publishButton")}
-                </Button>
-              </form>
-              {disclosure.publishedAt ? (
+      {disclosure ? (
+        <Card>
+          <CardHeader icon={<GlobeIcon weight="duotone" className="size-5" />} title={t("iqac.disclosureTitle")} description={t("iqac.disclosureIntro")} />
+          <CardBody className="flex flex-wrap items-center gap-3 text-sm">
+            <span>{disclosure.publishedAt ? t("iqac.disclosurePublished", { date: day(disclosure.publishedAt.slice(0, 10), locale), url: disclosure.url }) : t("iqac.disclosureOff")}</span>
+            {disclosure.publishedAt ? (
+              <Button asChild size="sm" variant="secondary">
+                <Link href={disclosure.url}>{t("iqac.view")}</Link>
+              </Button>
+            ) : null}
+            {canEdit ? (
+              <>
                 <form action={disclosureAction}>
                   <input type="hidden" name="back" value="/iqac" />
-                  <input type="hidden" name="publish" value="0" />
-                  <Button type="submit" size="sm" variant="ghost">
-                    {t("iqac.unpublishButton")}
+                  <input type="hidden" name="publish" value="1" />
+                  <Button type="submit" size="sm">
+                    {t("iqac.publishButton")}
                   </Button>
                 </form>
-              ) : null}
-            </>
-          ) : null}
-        </CardBody>
-      </Card>
+                {disclosure.publishedAt ? (
+                  <form action={disclosureAction}>
+                    <input type="hidden" name="back" value="/iqac" />
+                    <input type="hidden" name="publish" value="0" />
+                    <Button type="submit" size="sm" variant="ghost">
+                      {t("iqac.unpublishButton")}
+                    </Button>
+                  </form>
+                ) : null}
+              </>
+            ) : null}
+          </CardBody>
+        </Card>
+      ) : null}
 
       {ctx.role !== "IQAC" ? null : (
         <Card>

@@ -96,13 +96,22 @@ export const facultyAppointmentSchema = z.enum(FACULTY_APPOINTMENTS);
 /** The Income Tax Department's PAN: five letters, four digits, a letter. */
 export const PAN_PATTERN = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
 
-export const COLLEGE_FILING_KINDS = ["SSR", "AQAR", "IIQA", "NIRF", "AISHE", "AICTE_DISCLOSURE", "AFFILIATION_RETURN"] as const;
+/**
+ * The college's filings. The first seven are every college's (the NAAC
+ * documents, NIRF, AISHE) or an AICTE college's (the disclosure and the
+ * affiliation return); the four after them (5 Oct 2026) are a council's own:
+ * the PCI inspection data for pharmacy, the BCI return for law, the NCTE
+ * return for teacher education, and NBA's self-assessment report for an
+ * engineering department. Which apply to a college is read from its streams
+ * (`applicableFilings` in v1/council-filings.ts).
+ */
+export const COLLEGE_FILING_KINDS = ["SSR", "AQAR", "IIQA", "NIRF", "AISHE", "AICTE_DISCLOSURE", "AFFILIATION_RETURN", "PCI_INSPECTION", "BCI_RETURN", "NCTE_RETURN", "NBA_SAR"] as const;
 export const collegeFilingKindSchema = z.enum(COLLEGE_FILING_KINDS);
 export type CollegeFilingKind = z.infer<typeof collegeFilingKindSchema>;
 export const COLLEGE_FILING_STATUSES = ["DRAFT", "AWAITING_SIGNOFF", "SIGNED_OFF", "RETURNED", "FILED"] as const;
 export const collegeFilingStatusSchema = z.enum(COLLEGE_FILING_STATUSES);
-/** Which filings the principal signs off before they go: the NAAC documents. */
-export const SIGNED_FILINGS: readonly CollegeFilingKind[] = ["SSR", "AQAR", "IIQA"];
+/** Which filings the principal signs off before they go: the NAAC documents, and an engineering department's NBA SAR (5 Oct 2026). */
+export const SIGNED_FILINGS: readonly CollegeFilingKind[] = ["SSR", "AQAR", "IIQA", "NBA_SAR"];
 
 export const CYCLE_STATUSES = ["OPEN", "SUBMITTED", "CLOSED"] as const;
 
@@ -374,7 +383,8 @@ export const facultyRecordsSchema = z.object({ items: z.array(facultyRecordSchem
 
 /* Filings -------------------------------------------------------------------- */
 
-export const collegeFilingGenerateSchema = z.object({ kind: collegeFilingKindSchema, year: z.number().int().min(2000).max(2100), cycleId: z.string().max(64).nullable().default(null) });
+/** `departmentId`: the engineering department an NBA SAR is for (one SAR per department per year); every other kind is the college's and ignores it. */
+export const collegeFilingGenerateSchema = z.object({ kind: collegeFilingKindSchema, year: z.number().int().min(2000).max(2100), cycleId: z.string().max(64).nullable().default(null), departmentId: z.string().max(64).nullable().default(null) });
 export const collegeFilingSchema = z.object({
   id: z.string(),
   kind: collegeFilingKindSchema,
@@ -387,6 +397,8 @@ export const collegeFilingSchema = z.object({
   principalNote: z.string(),
   signedOffAt: z.string().datetime().nullable(),
   figures: z.record(z.string(), z.number()),
+  /** An NBA SAR's department; null for a college-wide filing (5 Oct 2026). */
+  departmentId: z.string().nullable().default(null),
 });
 export const collegeFilingsSchema = z.object({ items: z.array(collegeFilingSchema), canGenerate: z.boolean(), canSignOff: z.boolean() });
 export const collegeFilingSignoffSchema = z.object({ decision: z.enum(["SIGN", "RETURN"]), note: z.string().trim().max(4000).default("") });
@@ -415,3 +427,26 @@ export const myFacultyProfileSchema = z
   .nullable();
 
 export type Voice = z.infer<typeof voiceSchema>;
+
+/**
+ * A FACULTY MEMBER'S PUBLIC PROFILE (5 Oct 2026; integration decision 10): the snapshot a teacher publishes for the
+ * college's website, linked from the published disclosure. Codes, not words — the page says them in its reader's
+ * language. No contact detail, no PAN, no student.
+ */
+export const facultyProfileSnapshotSchema = z.object({
+  name: z.string(),
+  collegeName: z.string(),
+  departmentName: z.string().nullable(),
+  designation: z.string(),
+  qualification: z.string(),
+  netSetQualified: z.boolean(),
+  experienceYears: z.number(),
+  research: z.array(z.object({ kind: z.string(), title: z.string(), year: z.number().int(), indexing: z.string() })),
+});
+export type FacultyProfileSnapshot = z.infer<typeof facultyProfileSnapshotSchema>;
+/** GET /api/v1/faculty/profile — my record's public page: whether there is a record to publish, the preview, and whether it is up. */
+export const myFacultyPublicProfileSchema = z.object({ hasRecord: z.boolean(), publishedAt: z.string().datetime().nullable(), preview: facultyProfileSnapshotSchema.nullable(), url: z.string().nullable() });
+/** POST /api/v1/faculty/profile — publish (or refresh) my page, or take it down. */
+export const facultyProfilePublishSchema = z.object({ publish: z.boolean() });
+/** GET /api/v1/public/faculty/{slug} — a college's published profiles, signed out. */
+export const publicFacultySchema = z.object({ collegeName: z.string().nullable(), profiles: z.array(facultyProfileSnapshotSchema.extend({ id: z.string(), publishedAt: z.string().datetime() })) });

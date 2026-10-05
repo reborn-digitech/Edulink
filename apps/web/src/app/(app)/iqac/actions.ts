@@ -171,7 +171,8 @@ export async function saveInputsAction(formData: FormData) {
 
 export async function generateFilingAction(formData: FormData) {
   await run(formData, async (ctx) => {
-    await generateFiling(ctx, parsed(collegeFilingGenerateSchema.safeParse({ kind: str(formData, "kind"), year: Number(str(formData, "year")), cycleId: str(formData, "cycleId") || null })));
+    // `departmentId`: an NBA SAR's engineering department (5 Oct 2026); every other kind ignores it.
+    await generateFiling(ctx, parsed(collegeFilingGenerateSchema.safeParse({ kind: str(formData, "kind"), year: Number(str(formData, "year")), cycleId: str(formData, "cycleId") || null, departmentId: str(formData, "departmentId") || null })));
     return "iqac.generated";
   });
 }

@@ -572,6 +572,16 @@ const GLOBALLY_READABLE: Record<string, string> = {
    * only, like every clause in this map; the college writes its own row.
    */
   DisclosurePage: `"publishedAt" IS NOT NULL`,
+  /**
+   * A FACULTY MEMBER'S PUBLIC PROFILE (5 October 2026), the page a teacher
+   * chooses to publish and the college's published disclosure links: readable
+   * by anyone, signed out, while it exists — a row is the publication, and
+   * taking the page down deletes it. What crosses is the teacher's own
+   * snapshot (name, designation, department, qualification, experience, the
+   * research register's titles): no contact detail, no PAN, no student. Read
+   * only; the college writes its own rows, through the teacher's own action.
+   */
+  FacultyPublicProfile: `"publishedAt" IS NOT NULL`,
 };
 
 /**

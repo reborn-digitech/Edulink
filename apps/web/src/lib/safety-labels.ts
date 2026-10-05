@@ -590,6 +590,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "iqac.filing.signoff": "audit.iqacFilingSignoff",
   "iqac.filing.return": "audit.iqacFilingReturn",
   "iqac.filing.filed": "audit.iqacFilingFiled",
+  "iqac.worksheet.save": "audit.iqacWorksheetSave",
   "iqac.disclosure.publish": "audit.iqacDisclosurePublish",
   "iqac.disclosure.unpublish": "audit.iqacDisclosureUnpublish",
   "academics.settings": "audit.academicsSettings",
@@ -756,6 +757,36 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   // Streams and duties (5 Oct 2026).
   "college.streams.set": "audit.collegeStreamsSet",
   "people.duties.set": "audit.peopleDutiesSet",
+  // Stream records and the duties' desks (S2, 5 Oct 2026).
+  "streamRecords.labBatches.split": "audit.streamRecordsLabBatchesSplit",
+  "streamRecords.labBatches.move": "audit.streamRecordsLabBatchesMove",
+  "streamRecords.practical.save": "audit.streamRecordsPracticalSave",
+  "streamRecords.practical.sign": "audit.streamRecordsPracticalSign",
+  "streamRecords.moot.save": "audit.streamRecordsMootSave",
+  "duties.lab.breakage": "audit.dutiesLabBreakage",
+  "duties.examSquad.visit": "audit.dutiesExamSquadVisit",
+  "duties.teachingPractice.school": "audit.dutiesTeachingPracticeSchool",
+  "duties.teachingPractice.posting": "audit.dutiesTeachingPracticePosting",
+  "duties.teachingPractice.observe": "audit.dutiesTeachingPracticeObserve",
+  "duties.corps.enrol": "audit.dutiesCorpsEnrol",
+  "duties.corps.leave": "audit.dutiesCorpsLeave",
+  "duties.corps.activity": "audit.dutiesCorpsActivity",
+  // The principal's last two approvals (S3, 5 Oct 2026): a refund outside the slab, a hostel expulsion.
+  "college.admissions.refundException.ask": "audit.collegeAdmissionsRefundExceptionAsk",
+  "college.admissions.refundException.approve": "audit.collegeAdmissionsRefundExceptionApprove",
+  "college.admissions.refundException.refuse": "audit.collegeAdmissionsRefundExceptionRefuse",
+  "hostel.expulsion.propose": "audit.hostelExpulsionPropose",
+  "hostel.expulsion.approve": "audit.hostelExpulsionApprove",
+  "hostel.expulsion.refuse": "audit.hostelExpulsionRefuse",
+  "hostel.expulsion.withdraw": "audit.hostelExpulsionWithdraw",
+  // A faculty member's public page (S3, 5 Oct 2026).
+  "faculty.profile.publish": "audit.facultyProfilePublish",
+  "faculty.profile.unpublish": "audit.facultyProfileUnpublish",
+  "faculty.profile.takedown": "audit.facultyProfileTakedown",
+  // The student's identity card (S3, 5 Oct 2026): every print, by whom.
+  "idCard.print": "audit.idCardPrint",
+  // A family's yes or no on a permission slip (S3, 5 Oct 2026).
+  "circular.slip.answer": "audit.circularSlipAnswer",
 };
 
 export function actionKey(action: string): TranslationKey | null {

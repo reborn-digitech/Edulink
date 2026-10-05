@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, createHmac, hkdfSync, randomBytes, timingSafeEqual } from "node:crypto";
 import {
+  applicableFilings,
   NAAC_FRAMEWORKS,
   REGULATOR_CALENDAR,
   NIRF_PARAMETERS,
@@ -45,6 +46,7 @@ import { seal, sealingAvailable } from "./secret-box";
 import { readFeesSecretKey } from "./env";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import { streamsOf } from "./streams";
 import {
   FORMULAS,
   SURVEY_MIN_RESPONSES,
@@ -1159,10 +1161,11 @@ async function facultyRecordsUnchecked(schoolId: string) {
 /* The home                                                                    */
 /* -------------------------------------------------------------------------- */
 
-function calendarFor(today: string, filedKinds: Set<string>, t: Translate): IqacOverview["calendar"] {
+/** `applies`: the filings the college's streams bring (5 Oct 2026) — a law college is not shown AICTE's extension. */
+function calendarFor(today: string, filedKinds: Set<string>, t: Translate, applies: readonly string[]): IqacOverview["calendar"] {
   const y = Number(today.slice(0, 4));
   const m = Number(today.slice(5, 7));
-  return REGULATOR_CALENDAR.map((c) => {
+  return REGULATOR_CALENDAR.filter((c) => applies.includes(c.filing)).map((c) => {
     // The window's next (or current) occurrence: a range crossing the year end starts in the earlier year.
     const crosses = c.toMonth < c.fromMonth;
     let startYear = y;
@@ -1208,7 +1211,7 @@ export async function iqacOverview(ctx: ActiveContext): Promise<IqacOverview> {
     nextBand: predictor?.nextBand ?? null,
     cheapest: predictor?.cheapest ?? [],
     counts: { research, activities, committees, openSurveys, openGrievances: grievances.length, overdueGrievances: grievances.filter((g) => g.dueOn < today).length, filings: filings.length, awaitingSignoff: filings.filter((f) => f.status === "AWAITING_SIGNOFF").length },
-    calendar: calendarFor(today, filedKinds, t),
+    calendar: calendarFor(today, filedKinds, t, applicableFilings(await streamsOf(desk.schoolId))),
     nirf: { partial, coveredMarks, parameters: parameters.map((p) => ({ code: p.code, name: p.name, weight: p.weight, marks: p.marks, note: p.note })) },
     disclosurePublishedAt: disclosure?.publishedAt?.toISOString() ?? null,
   };

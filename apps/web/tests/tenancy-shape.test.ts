@@ -53,6 +53,10 @@ const DIRECT = [
   "IncidentNote",
   /** A circular opened by a reader: denormalised schoolId like PostAck beside it. */
   "PostRead",
+  /** The S3 fixes (5 Oct 2026): a family's yes or no to a permission slip, a hostel expulsion waiting for the principal, a faculty member's published profile (also opened to anyone in gen-rls.ts, as DisclosurePage is). */
+  "PostConsent",
+  "HostelExpulsion",
+  "FacultyPublicProfile",
   /** The staff register: a staff member's day, the school's row. */
   "StaffAttendance",
   /** A module of the school version the school has switched on (3 Oct 2026): the school's row, one per module that is on. */
@@ -338,6 +342,18 @@ const DIRECT = [
   "CollegeFiling",
   "IqacFile",
   "DisclosurePage",
+  /** Stream records and the duties' desks (5 Oct 2026): lab batches and their members, the practical record, moot courts, practice schools, postings and lesson observations, NSS/NCC enrolments, the exam squad's visits. */
+  "LabBatch",
+  "LabBatchMember",
+  "PracticalRecord",
+  "MootCourt",
+  "PracticeSchool",
+  "TeachingPracticePosting",
+  "LessonObservation",
+  "CorpsEnrolment",
+  "ExamSquadVisit",
+  /** The councils' worksheets behind the BCI, NCTE and NBA returns (5 Oct 2026, filings by stream). */
+  "FilingWorksheet",
 ];
 
 /**
@@ -418,7 +434,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(277); // + 28 academics models (AcademicsSettings, Department, DepartmentFaculty, Programme, ProgrammeOutcome, Scheme, Course, CourseOutcomeMap, AcademicTerm, Room, Division, StudentProgramme, CourseOffering, OfferingSlot, CourseRegistration, LateRegistration, Lecture, LectureAttendance, AttendanceCondonation, DefaulterNotice, InternalComponent, InternalMark, InternalLock, CourseFile, CourseFileItem, MentoringGroup, MentoringMember, MentoringNote; 4 Oct 2026), already counted in 277; + 14 IQAC models (AccreditationCycle, MetricScore, ResearchItem, Activity, Committee, CommitteeMeeting, Survey, SurveyResponse, ActionTakenReport, Grievance, FacultyRecord, CollegeFiling, IqacFile, DisclosurePage; 4 Oct 2026), already in the schema when the office builder counted 277; + 9 college office models (ProgrammeEnrolment, AdmissionRound, CapAllotment, CollegeApplication, ScholarshipClaim, NoDuesClearance, CollegeOfficeSettings, LibraryEResource, HostelSquadRound; 4 Oct 2026), counted with every model then in the schema; + 17 placement models (Company, CompanyRecruiter, Requirement not tenant-scoped; 14 tenant-scoped; 4 Oct 2026), counted with the academics and office models then in the schema; + 23 college exam cell models (4 Oct 2026); 184 + StudentConsent, RecruiterProfile (college foundation, 4 Oct 2026); 139 + AlumniProfile, AlumniNote (alumni module, 3 Oct 2026) + 16 library and hostel models (LibrarySettings, LibraryTitle, LibraryCopy, LibraryMember, LibraryIssue, LibraryReservation, LibraryFine, Hostel, HostelRoom, HostelAllotment, HostelLeave, HostelRollCall, HostelRollCallEntry, MessMenu, MessAttendance, HostelVisitor) + 10 transport models (TransportRoute, TransportStop, Bus, BusAssignment, TransportAllotment, Trip, TripPosition, TripBoarding, TransportAlertPref, TransportConsent) + 17 inventory and payroll models (InventoryCategory, Vendor, InventoryItem, InventoryStock, StockMovement, Asset, AssetEvent, PurchaseRecord, InventoryRequest, PayrollSettings, SalaryStructure, SalaryComponent, StaffSalary, PayrollRun, Payslip, PayrollExport, StaffAdvance)
+    ).toBe(290); // + PostConsent, HostelExpulsion, FacultyPublicProfile (the S3 fixes, 5 Oct 2026); + FilingWorksheet (the councils' returns, 5 Oct 2026); + 9 stream-record models (LabBatch, LabBatchMember, PracticalRecord, MootCourt, PracticeSchool, TeachingPracticePosting, LessonObservation, CorpsEnrolment, ExamSquadVisit; 5 Oct 2026); + 28 academics models (AcademicsSettings, Department, DepartmentFaculty, Programme, ProgrammeOutcome, Scheme, Course, CourseOutcomeMap, AcademicTerm, Room, Division, StudentProgramme, CourseOffering, OfferingSlot, CourseRegistration, LateRegistration, Lecture, LectureAttendance, AttendanceCondonation, DefaulterNotice, InternalComponent, InternalMark, InternalLock, CourseFile, CourseFileItem, MentoringGroup, MentoringMember, MentoringNote; 4 Oct 2026), already counted in 277; + 14 IQAC models (AccreditationCycle, MetricScore, ResearchItem, Activity, Committee, CommitteeMeeting, Survey, SurveyResponse, ActionTakenReport, Grievance, FacultyRecord, CollegeFiling, IqacFile, DisclosurePage; 4 Oct 2026), already in the schema when the office builder counted 277; + 9 college office models (ProgrammeEnrolment, AdmissionRound, CapAllotment, CollegeApplication, ScholarshipClaim, NoDuesClearance, CollegeOfficeSettings, LibraryEResource, HostelSquadRound; 4 Oct 2026), counted with every model then in the schema; + 17 placement models (Company, CompanyRecruiter, Requirement not tenant-scoped; 14 tenant-scoped; 4 Oct 2026), counted with the academics and office models then in the schema; + 23 college exam cell models (4 Oct 2026); 184 + StudentConsent, RecruiterProfile (college foundation, 4 Oct 2026); 139 + AlumniProfile, AlumniNote (alumni module, 3 Oct 2026) + 16 library and hostel models (LibrarySettings, LibraryTitle, LibraryCopy, LibraryMember, LibraryIssue, LibraryReservation, LibraryFine, Hostel, HostelRoom, HostelAllotment, HostelLeave, HostelRollCall, HostelRollCallEntry, MessMenu, MessAttendance, HostelVisitor) + 10 transport models (TransportRoute, TransportStop, Bus, BusAssignment, TransportAllotment, Trip, TripPosition, TripBoarding, TransportAlertPref, TransportConsent) + 17 inventory and payroll models (InventoryCategory, Vendor, InventoryItem, InventoryStock, StockMovement, Asset, AssetEvent, PurchaseRecord, InventoryRequest, PayrollSettings, SalaryStructure, SalaryComponent, StaffSalary, PayrollRun, Payslip, PayrollExport, StaffAdvance)
   });
 });
 

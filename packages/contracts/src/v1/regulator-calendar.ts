@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { REGULATOR_CALENDAR, type RegulatorCalendarCode } from "./naac";
 import type { InstitutionKind } from "./modules";
+import type { StreamCode } from "./streams";
+import { streamsBringing } from "./council-filings";
 
 /**
  * THE REGULATORS' CALENDAR ACROSS TENANTS (the operator's college console,
@@ -29,6 +31,16 @@ import type { InstitutionKind } from "./modules";
  * professional programme), "NAAC" only where it holds a NAAC grade or keeps
  * the IQAC module on — or null for every college of those kinds.
  *
+ * BY STREAM (5 Oct 2026): a row may name `streams`, and then applies only to a
+ * college teaching one of them, so a law college is not reminded of AICTE's
+ * extension of approval. The AICTE extension and the affiliation return name
+ * the streams whose preset brings their filing (`streamsBringing`, the same
+ * gate as the IQAC's documents page); the CET Cell's CAP names the
+ * professional streams it admits to. Where a college's streams are known they
+ * decide in place of `needs: "AICTE"` (the approval reference was the old
+ * stand-in for "an AICTE programme"); a college with none recorded is judged
+ * as before.
+ *
  * Sources: NAAC's AQAR guidelines (naac.gov.in); AISHE's data-capture portal
  * (aishe.gov.in); NIRF (nirfindia.org); AICTE's approval process handbook
  * (aicte-india.org); the affiliating university's own notices (SPPU, the
@@ -53,7 +65,12 @@ export type RegulatorDeadline = {
   needs: "AICTE" | "NAAC" | null;
   remind: readonly RegulatorRemindRole[];
   source: string;
+  /** The streams the row is for; null for every college of `kinds` (5 Oct 2026). */
+  streams: readonly StreamCode[] | null;
 };
+
+/** The State CET Cell's centralised admission rounds: the professional streams it admits to (cetcell.mahacet.org). */
+const CAP_STREAMS: readonly StreamCode[] = ["MANAGEMENT", "ENGINEERING", "PHARMACY", "LAW", "EDUCATION", "HEALTH_SCIENCES", "ARCHITECTURE", "AGRICULTURE"];
 
 const BOTH_COLLEGES: readonly InstitutionKind[] = ["COLLEGE", "AUTONOMOUS_COLLEGE"];
 const AFFILIATED: readonly InstitutionKind[] = ["COLLEGE"];
@@ -65,23 +82,26 @@ function iqacMonths(code: RegulatorCalendarCode): { fromMonth: number; toMonth: 
 }
 
 export const REGULATOR_DEADLINES: readonly RegulatorDeadline[] = [
-  { code: "AQAR", ...iqacMonths("AQAR"), kinds: BOTH_COLLEGES, needs: "NAAC", remind: ["IQAC", "ADMIN"], source: "https://naac.gov.in/" },
-  { code: "AISHE", ...iqacMonths("AISHE"), kinds: BOTH_COLLEGES, needs: null, remind: ["IQAC", "ADMIN"], source: "https://aishe.gov.in/" },
-  { code: "NIRF", ...iqacMonths("NIRF"), kinds: BOTH_COLLEGES, needs: null, remind: ["IQAC", "ADMIN"], source: "https://www.nirfindia.org/" },
-  { code: "AICTE_EOA", ...iqacMonths("AICTE_EOA"), kinds: BOTH_COLLEGES, needs: "AICTE", remind: ["IQAC", "ADMIN"], source: "https://www.aicte-india.org/" },
-  { code: "AFFILIATION", ...iqacMonths("AFFILIATION"), kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/" },
-  { code: "UNIVERSITY_EXAMS_WINTER", fromMonth: 10, toMonth: 12, kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/" },
-  { code: "UNIVERSITY_EXAMS_SUMMER", fromMonth: 3, toMonth: 5, kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/" },
-  { code: "CET_CAP", fromMonth: 6, toMonth: 8, kinds: BOTH_COLLEGES, needs: "AICTE", remind: ["ADMIN"], source: "https://cetcell.mahacet.org/" },
+  { code: "AQAR", ...iqacMonths("AQAR"), kinds: BOTH_COLLEGES, needs: "NAAC", remind: ["IQAC", "ADMIN"], source: "https://naac.gov.in/", streams: null },
+  { code: "AISHE", ...iqacMonths("AISHE"), kinds: BOTH_COLLEGES, needs: null, remind: ["IQAC", "ADMIN"], source: "https://aishe.gov.in/", streams: null },
+  { code: "NIRF", ...iqacMonths("NIRF"), kinds: BOTH_COLLEGES, needs: null, remind: ["IQAC", "ADMIN"], source: "https://www.nirfindia.org/", streams: null },
+  { code: "AICTE_EOA", ...iqacMonths("AICTE_EOA"), kinds: BOTH_COLLEGES, needs: "AICTE", remind: ["IQAC", "ADMIN"], source: "https://www.aicte-india.org/", streams: streamsBringing("AICTE_DISCLOSURE") },
+  { code: "AFFILIATION", ...iqacMonths("AFFILIATION"), kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/", streams: streamsBringing("AFFILIATION_RETURN") },
+  { code: "UNIVERSITY_EXAMS_WINTER", fromMonth: 10, toMonth: 12, kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/", streams: null },
+  { code: "UNIVERSITY_EXAMS_SUMMER", fromMonth: 3, toMonth: 5, kinds: AFFILIATED, needs: null, remind: ["ADMIN"], source: "https://www.unipune.ac.in/", streams: null },
+  { code: "CET_CAP", fromMonth: 6, toMonth: 8, kinds: BOTH_COLLEGES, needs: "AICTE", remind: ["ADMIN"], source: "https://cetcell.mahacet.org/", streams: CAP_STREAMS },
 ];
 
-/** What the calendar needs to know of a college to say whether a row applies. */
-export type RegulatorSubject = { kind: string; aicteApprovalRef: string | null; naacGrade: string | null; iqacOn: boolean };
+/** What the calendar needs to know of a college to say whether a row applies; `streams` as School.streamsJson holds them (absent or empty: none recorded). */
+export type RegulatorSubject = { kind: string; aicteApprovalRef: string | null; naacGrade: string | null; iqacOn: boolean; streams?: readonly string[] };
 
 export function deadlineApplies(row: RegulatorDeadline, college: RegulatorSubject): boolean {
   if (!(row.kinds as readonly string[]).includes(college.kind)) return false;
+  if (row.needs === "NAAC" && !(Boolean(college.naacGrade) || college.iqacOn)) return false;
+  const streams = college.streams ?? [];
+  // The streams, where known, decide (a law college is not reminded of AICTE's extension); the approval reference is the old stand-in.
+  if (streams.length > 0) return row.streams === null || row.streams.some((s) => streams.includes(s));
   if (row.needs === "AICTE") return Boolean(college.aicteApprovalRef?.trim());
-  if (row.needs === "NAAC") return Boolean(college.naacGrade) || college.iqacOn;
   return true;
 }
 

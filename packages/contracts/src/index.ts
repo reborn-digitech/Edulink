@@ -234,3 +234,5 @@ export * from "./v1/operator-college";
 export * from "./v1/principal-college";
 export * from "./v1/streams";
 export * from "./v1/duties";
+export * from "./v1/council-filings";
+export * from "./v1/stream-records";

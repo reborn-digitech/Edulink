@@ -273,10 +273,11 @@ async function collegeSubjects(where: { fixtures?: boolean; schoolIds?: string[]
   const schools = await db.school.findMany({
     where: { kind: { in: [...COLLEGE_KINDS] }, removedAt: null, ...(where.schoolIds ? { id: { in: where.schoolIds } } : where.fixtures ? {} : { isTestFixture: false }) },
     orderBy: { name: "asc" },
-    select: { id: true, name: true, kind: true, timezone: true, aicteApprovalRef: true, naacGrade: true },
+    select: { id: true, name: true, kind: true, timezone: true, aicteApprovalRef: true, naacGrade: true, streamsJson: true },
   });
   const iqac = new Set((await db.schoolModule.findMany({ where: { schoolId: { in: schools.map((s) => s.id) }, module: "IQAC" }, select: { schoolId: true } })).map((r) => r.schoolId));
-  return schools.map((s) => ({ ...s, iqacOn: iqac.has(s.id) }));
+  // The streams (5 Oct 2026) decide which rows apply where they are recorded: a law college is not reminded of AICTE's extension.
+  return schools.map(({ streamsJson, ...s }) => ({ ...s, streams: parseStreams(streamsJson), iqacOn: iqac.has(s.id) }));
 }
 
 const daysBetween = (from: string, to: string) => Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / 86_400_000);

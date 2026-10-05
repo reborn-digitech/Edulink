@@ -57,6 +57,8 @@ import { buildIqac } from "./zz-iqac";
 import { buildCollegeOffice } from "./zz-college-office";
 import { buildPlacement } from "./zz-placement";
 import { buildStreamFixtures } from "./zz-streams";
+import { buildStreamRecords } from "./zz-stream-records";
+import { buildCouncilFilings } from "./zz-council-filings";
 import { openAlumnus } from "../src/lib/alumni-membership";
 import { SCHOOL_MODULES, DEFAULT_SCHOOL_MODULES, SCHOOL_VERSION_MODULES, modulesForKind } from "@edulink/contracts";
 import { refuseUnlessLocalDatabase } from "./local-db-guard.mjs";
@@ -2561,12 +2563,19 @@ async function main() {
   // Placement (4 Oct 2026): ZZ Zeta Analytics checked with zz.recruiter01 bound, this season's open drive and last season's closed one with zz.calumni01's offer, an internship, a project, the alumna as a mentor, the aptitude bank (zz-placement.ts).
   const placement = await buildPlacement(db);
   console.log(placement ? `  Placement at ZZ Vidya College: ${placement.drives} drives (one OPEN, one CLOSED), season ${placement.season}, ${placement.bank} new bank questions${placement.backlogForStudent03 ? "" : " — zz.cstudent03 has no live backlog yet (the exam cell's fixture), so the open drive shows them eligible"} — /placement, /recruiter, /student/placement` : "  Placement at ZZ Vidya College: NOT built (the college or its people are missing)");
-  // The IQAC desk (4 Oct 2026), last of the college builders so its predictor reads their rows: Vidya's NAAC cycle computed, three qualitative scores, the registers, committees, surveys, grievances, an AQAR filed and the disclosure published (zz-iqac.ts).
+  // The IQAC desk (4 Oct 2026), last of the college builders so its predictor reads their rows: Vidya's NAAC cycle computed, three qualitative scores, the registers, committees, surveys, grievances, an AQAR filed and the disclosure published where the streams bring it — not at Vidya since 5 Oct 2026 (zz-iqac.ts).
   const iqac = await buildIqac(db);
-  console.log(iqac ? `  IQAC at ZZ Vidya College: CGPA ${iqac.cgpa.toFixed(2)} over ${iqac.metrics} metrics scored, ${iqac.research} research items, ${iqac.activities} activities, ${iqac.filings} filing(s) — /iqac, /student/voice, /public/disclosure/zz-vidya-college` : "  IQAC at ZZ Vidya College: NOT built (the college or its people are missing)");
+  console.log(iqac ? `  IQAC at ZZ Vidya College: CGPA ${iqac.cgpa.toFixed(2)} over ${iqac.metrics} metrics scored, ${iqac.research} research items, ${iqac.activities} activities, ${iqac.filings} filing(s) — /iqac, /student/voice (no AICTE disclosure: Vidya's streams do not bring it)` : "  IQAC at ZZ Vidya College: NOT built (the college or its people are missing)");
   // The streams (5 Oct 2026): Vidya's programmes given their stream; the colleges' streams and zz.faculty01's duties are zz-college.ts's.
   const streamFx = await buildStreamFixtures(db);
   console.log(streamFx ? `  Streams: ZZ Vidya College ARTS + SCIENCE + COMMERCE (${streamFx.programmes} programmes given a stream), ZZ Shastri ENGINEERING; zz.faculty01 LAB_INCHARGE + ANTI_RAGGING_SQUAD — /duties/anti-ragging` : "  Streams: NOT built (ZZ Vidya College is missing)");
+  // Stream records and the duties' desks (S2, 5 Oct 2026): Vidya's lab batch, practical record, NSS unit and a squad visit, zz.faculty01's duties widened; Shastri's BTech division in two lab batches with a practical record each (zz-stream-records.ts).
+  const streamRecords = await buildStreamRecords(db);
+  console.log(streamRecords ? `  Stream records: ZZ Vidya College ${streamRecords.vidyaRecords} practical rows, ${streamRecords.nssEnrolled} NSS volunteers, zz.faculty01 now LAB_INCHARGE + NSS_OFFICER + NCC_OFFICER + ANTI_RAGGING_SQUAD + RESEARCH_DEAN + EXAM_SQUAD; ZZ Shastri ${streamRecords.shastriBatches} lab batches, ${streamRecords.shastriRecords} practical rows — /duties/lab, /admin/stream-records` : "  Stream records: NOT built (the colleges or their academics are missing)");
+  // The councils' returns (5 Oct 2026, the filings builder): ZZ Shastri's mechanical department's NBA SAR, drafted with three
+  // criteria written (zz-council-filings.ts). KEEP IT AFTER the stream records' builder, which makes that department.
+  const councilFx = await buildCouncilFilings(db);
+  console.log(councilFx ? `  Council filings: ZZ Shastri's NBA SAR drafted (${councilFx.computed} marks from the records + ${councilFx.self} self-assessed) — /iqac/documents/nba` : "  Council filings: NOT built (ZZ Shastri's engineering department is missing: run the stream records first)");
   console.log(`  Inventory: ${stores.items} items, ${stores.movements} movements, ${stores.assets} assets${stores.made ? "" : " (already there)"}; payroll: ${payroll.salaries} salaries, ${payroll.slips} payslips, ${payroll.month} locked${payroll.made ? "" : " (already there)"}`);
 
   const studentCount = await db.membership.count({

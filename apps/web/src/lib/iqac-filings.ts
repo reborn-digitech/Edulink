@@ -1,5 +1,6 @@
 import "server-only";
 import {
+  COUNCIL_FILINGS,
   FILING_TEXT as L,
   FILING_TITLE,
   SIGNED_FILINGS,
@@ -32,6 +33,11 @@ import type { ActiveContext } from "./session";
  * (drift since the filing is a WARN — the college's records moved on — and a
  * body that no longer matches its hash is a FAIL).
  *
+ * BY STREAM (5 Oct 2026): which of them a college files is read from its
+ * streams (council-filings.ts `assertFilingApplies`), and the councils'
+ * returns — PCI, BCI, NCTE and NBA's SAR — are built there and frozen here
+ * the same way.
+ *
  * WHAT IS UNTESTED: every one of these against its portal. The AISHE and
  * NIRF sheets follow the data each format asks for, not a template the
  * portal accepts as an upload; the coordinator types them in.
@@ -41,15 +47,15 @@ export type FilingSection = { heading: string; rows?: [string, string][]; table?
 export type FilingDocument = { title: string; subtitle: string; school: string; sections: FilingSection[]; footer: string };
 export type BuiltFiling = { format: "PDF" | "CSV"; body: string; figures: Record<string, number> };
 
-const yearLabel = (y: number) => `${y}-${String((y + 1) % 100).padStart(2, "0")}`;
-const windowOf = (y: number) => ({ from: `${y}-06-01`, to: `${y + 1}-05-31` });
+export const yearLabel = (y: number) => `${y}-${String((y + 1) % 100).padStart(2, "0")}`;
+export const windowOf = (y: number) => ({ from: `${y}-06-01`, to: `${y + 1}-05-31` });
 const or = (v: string | number | null | undefined) => (v === null || v === undefined || v === "" ? L.notRecorded : String(v));
 
-async function schoolProfile(schoolId: string) {
+export async function schoolProfile(schoolId: string) {
   return db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, slug: true, kind: true, affiliatingUniversity: true, aisheCode: true, aicteApprovalRef: true, ugcApprovalRef: true, naacGrade: true, naacValidUntil: true, nirfCategory: true } });
 }
 
-function profileRows(p: Awaited<ReturnType<typeof schoolProfile>>): [string, string][] {
+export function profileRows(p: Awaited<ReturnType<typeof schoolProfile>>): [string, string][] {
   return [
     [L.name, p.name],
     [L.kind, p.kind],
@@ -120,7 +126,13 @@ const csvOf = (head: string[], rows: (string | number)[][]) => [head, ...rows].m
  * Build a filing from the rows as they stand: the one function the generator
  * and the data audit share, so "regenerate and compare" compares like with like.
  */
-export async function buildFiling(schoolId: string, kind: CollegeFilingKind, year: number, cycleId: string | null): Promise<BuiltFiling> {
+export async function buildFiling(schoolId: string, kind: CollegeFilingKind, year: number, cycleId: string | null, departmentId: string | null = null): Promise<BuiltFiling> {
+  // The councils' returns (5 Oct 2026): PCI, BCI, NCTE and an engineering department's NBA SAR (council-filings.ts).
+  if ((COUNCIL_FILINGS as readonly string[]).includes(kind)) {
+    const { councilDocument } = await import("./council-filings");
+    const built = await councilDocument(schoolId, kind, year, departmentId);
+    return { format: "PDF", body: JSON.stringify(built.document), figures: built.figures };
+  }
   const p = await schoolProfile(schoolId);
   const w = windowOf(year);
   const cycle = cycleId ? await db.accreditationCycle.findFirst({ where: { id: cycleId, schoolId }, select: { id: true, framework: true, windowFrom: true, windowTo: true, enteredJson: true } }) : await db.accreditationCycle.findFirst({ where: { schoolId }, orderBy: { createdAt: "desc" }, select: { id: true, framework: true, windowFrom: true, windowTo: true, enteredJson: true } });
@@ -264,9 +276,9 @@ export async function disclosureDocument(schoolId: string, year: number, asOf: D
 /* The desk's doors                                                            */
 /* -------------------------------------------------------------------------- */
 
-const FILING_SELECT = { id: true, kind: true, year: true, format: true, generatedAt: true, hash: true, status: true, checked: true, principalNote: true, signedOffAt: true, figuresJson: true } as const;
-type FilingRow = { id: string; kind: string; year: number; format: string; generatedAt: Date; hash: string; status: string; checked: boolean; principalNote: string; signedOffAt: Date | null; figuresJson: string };
-const filingView = (f: FilingRow) => ({ id: f.id, kind: f.kind as CollegeFilingKind, year: f.year, format: f.format as "PDF" | "CSV", generatedAt: f.generatedAt.toISOString(), hash: f.hash, status: f.status as never, checked: f.checked, principalNote: f.principalNote, signedOffAt: f.signedOffAt?.toISOString() ?? null, figures: JSON.parse(f.figuresJson) as Record<string, number> });
+const FILING_SELECT = { id: true, kind: true, year: true, format: true, generatedAt: true, hash: true, status: true, checked: true, principalNote: true, signedOffAt: true, figuresJson: true, departmentId: true } as const;
+type FilingRow = { id: string; kind: string; year: number; format: string; generatedAt: Date; hash: string; status: string; checked: boolean; principalNote: string; signedOffAt: Date | null; figuresJson: string; departmentId: string | null };
+const filingView = (f: FilingRow) => ({ id: f.id, kind: f.kind as CollegeFilingKind, year: f.year, format: f.format as "PDF" | "CSV", generatedAt: f.generatedAt.toISOString(), hash: f.hash, status: f.status as never, checked: f.checked, principalNote: f.principalNote, signedOffAt: f.signedOffAt?.toISOString() ?? null, figures: JSON.parse(f.figuresJson) as Record<string, number>, departmentId: f.departmentId });
 
 export async function listFilings(ctx: ActiveContext) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN", "PRINCIPAL"]);
@@ -274,17 +286,33 @@ export async function listFilings(ctx: ActiveContext) {
   return { items: rows.map(filingView), canGenerate: desk.role === "IQAC" || desk.role === "ADMIN", canSignOff: desk.role === "PRINCIPAL" };
 }
 
-export async function generateFiling(ctx: ActiveContext, input: { kind: CollegeFilingKind; year: number; cycleId: string | null }) {
+export async function generateFiling(ctx: ActiveContext, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null }) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN"]);
   await generateFilingAs(desk, input);
   return listFilings(ctx);
 }
 
-export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingKind; year: number; cycleId: string | null }): Promise<string> {
+/**
+ * Generate one filing. The college's streams must bring the kind (5 Oct 2026:
+ * a law college is answered 404 for the AICTE disclosure). An NBA SAR is one
+ * per engineering department and year: a draft or a returned one is rebuilt
+ * in place (its id kept), and one with the principal, signed off or filed is
+ * not made again (409).
+ */
+export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null }): Promise<string> {
+  const { assertFilingApplies, nbaDepartments } = await import("./council-filings");
+  await assertFilingApplies(desk.schoolId, input.kind);
   if (input.cycleId && !(await db.accreditationCycle.findFirst({ where: { id: input.cycleId, schoolId: desk.schoolId }, select: { id: true } }))) throw new AccessError("iqac.refuseNoCycle", "NOT_FOUND");
-  const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId);
-  const row = await db.collegeFiling.create({ data: { schoolId: desk.schoolId, kind: input.kind, cycleId: input.cycleId, year: input.year, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), generatedByUserId: desk.userId }, select: { id: true } });
-  await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.filing.generate", targetType: "CollegeFiling", targetId: row.id, meta: { kind: input.kind, year: input.year } });
+  const departmentId = input.kind === "NBA_SAR" ? (input.departmentId ?? null) : null;
+  if (input.kind === "NBA_SAR" && (!departmentId || !(await nbaDepartments(desk.schoolId)).some((d) => d.id === departmentId))) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
+  const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId, departmentId);
+  const data = { cycleId: input.cycleId, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), generatedByUserId: desk.userId };
+  const sar = departmentId ? await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: "NBA_SAR", year: input.year, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, status: true } }) : null;
+  if (sar && sar.status !== "DRAFT" && sar.status !== "RETURNED") throw new RuleRefusal("councilFilings.refuseSarTaken", 409);
+  const row = sar
+    ? await db.collegeFiling.update({ where: { id: sar.id }, data: { ...data, status: "DRAFT", generatedAt: new Date() }, select: { id: true } })
+    : await db.collegeFiling.create({ data: { schoolId: desk.schoolId, kind: input.kind, year: input.year, departmentId, ...data }, select: { id: true } });
+  await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.filing.generate", targetType: "CollegeFiling", targetId: row.id, meta: { kind: input.kind, year: input.year, ...(departmentId ? { departmentId } : {}) } });
   return row.id;
 }
 
@@ -343,8 +371,15 @@ export async function markFiled(ctx: ActiveContext, filingId: string, fileId: st
 /* The public disclosure                                                       */
 /* -------------------------------------------------------------------------- */
 
+/** Whether the college's streams bring the AICTE disclosure (5 Oct 2026): a page that draws the disclosure's card asks first. */
+export async function disclosureApplies(schoolId: string): Promise<boolean> {
+  const { filingsOf } = await import("./council-filings");
+  return (await filingsOf(schoolId)).includes("AICTE_DISCLOSURE");
+}
+
 export async function disclosureState(ctx: ActiveContext) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN", "PRINCIPAL"]);
+  if (!(await disclosureApplies(desk.schoolId))) throw new AccessError("councilFilings.refuseNotApplicable", "NOT_FOUND");
   const [row, school] = await Promise.all([db.disclosurePage.findUnique({ where: { schoolId: desk.schoolId }, select: { publishedAt: true } }), db.school.findUniqueOrThrow({ where: { id: desk.schoolId }, select: { slug: true } })]);
   return { publishedAt: row?.publishedAt?.toISOString() ?? null, slug: school.slug, url: `/public/disclosure/${school.slug}` };
 }
@@ -352,6 +387,7 @@ export async function disclosureState(ctx: ActiveContext) {
 /** Publish (a fresh snapshot from the rows) or take the page down. The office's and the IQAC's. */
 export async function setDisclosure(ctx: ActiveContext, publish: boolean, now = new Date()) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN"]);
+  if (!(await disclosureApplies(desk.schoolId))) throw new AccessError("councilFilings.refuseNotApplicable", "NOT_FOUND");
   const school = await db.school.findUniqueOrThrow({ where: { id: desk.schoolId }, select: { slug: true } });
   if (publish) {
     const year = now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
@@ -367,6 +403,8 @@ export async function setDisclosure(ctx: ActiveContext, publish: boolean, now = 
 
 /** For the signed-out page: the published snapshot by the college's slug, or null. Reads one row the policy opens to anyone. */
 export async function publishedDisclosure(slug: string): Promise<FilingDocument | null> {
+  // The gate by stream is on publishing (setDisclosure); a signed-out reader cannot read the college's row to
+  // ask again, so a page published before a change of streams stands until the desk takes it down (5 Oct 2026).
   const row = await db.disclosurePage.findFirst({ where: { schoolSlug: slug, publishedAt: { not: null } }, select: { snapshotJson: true } });
   return row ? (JSON.parse(row.snapshotJson) as FilingDocument) : null;
 }
