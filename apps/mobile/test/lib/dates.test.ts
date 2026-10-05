@@ -4,7 +4,7 @@ import { formatDate, formatDateRange, formatDateTime, formatDayWithWeekday, form
 
 /**
  * The phone's one date formatter (A3-journeys-31): dd/mm/yyyy for a day,
- * dd/mm/yyyy HH:mm for an instant, as the web's apps/web/src/lib/dates.ts
+ * dd/mm/yyyy, h:mm AM for an instant (the web's 12-hour clock), as the web's apps/web/src/lib/dates.ts
  * prints a day. Before it, the fees and exams screens printed "Jul 15, 2026"
  * and "Oct 25, 3:07 PM", and a dozen headings printed the raw "2026-10-05".
  */
@@ -15,15 +15,17 @@ describe("the date formatter", () => {
     expect(formatDate("2026-12-31", "America/Los_Angeles")).toBe("31/12/2026");
   });
 
-  it("prints an instant's day and time in the school's zone, 24-hour", () => {
+  it("prints an instant's day and time in the school's zone, 12-hour with AM or PM as the web does", () => {
     expect(formatDate("2026-10-25T20:30:00.000Z", "Asia/Kolkata")).toBe("26/10/2026");
-    expect(formatDateTime("2026-10-25T09:37:00.000Z", "Asia/Kolkata")).toBe("25/10/2026 15:07");
-    expect(formatDateTime("2026-10-25T18:30:00.000Z", "Asia/Kolkata")).toBe("26/10/2026 00:00");
-    expect(formatDateTime(new Date(2026, 9, 10, 16, 5))).toBe("10/10/2026 16:05");
+    expect(formatDateTime("2026-10-25T09:37:00.000Z", "Asia/Kolkata")).toBe("25/10/2026, 3:07 PM");
+    expect(formatDateTime("2026-10-25T18:30:00.000Z", "Asia/Kolkata")).toBe("26/10/2026, 12:00 AM");
+    expect(formatDateTime("2026-10-25T06:30:00.000Z", "Asia/Kolkata")).toBe("25/10/2026, 12:00 PM");
+    expect(formatDateTime("2026-10-25T03:30:00.000Z", "Asia/Kolkata")).toBe("25/10/2026, 9:00 AM");
+    expect(formatDateTime(new Date(2026, 9, 10, 16, 5))).toBe("10/10/2026, 4:05 PM");
   });
 
   it("reads a zone the runtime does not know in the device's own instead of failing", () => {
-    expect(formatDateTime(new Date(2026, 9, 10, 16, 5), "Not/AZone")).toBe("10/10/2026 16:05");
+    expect(formatDateTime(new Date(2026, 9, 10, 16, 5), "Not/AZone")).toBe("10/10/2026, 4:05 PM");
   });
 
   it("gives back what it cannot read, and an empty string for a bad Date", () => {
@@ -38,7 +40,8 @@ describe("the date formatter", () => {
     expect(formatDayWithWeekday("2026-10-05")).toBe("Mon, 05/10/2026");
     expect(formatDayWithWeekday("2026-10-05", "mr")).toMatch(/^\S+, 05\/10\/2026$/);
     expect(formatDayWithWeekday("2026-10-05", "mr")).not.toMatch(/[०-९]/);
-    expect(formatWith("2026-10-25T09:37:00.000Z", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, "hi", "Asia/Kolkata")).toBe("25/10/2026 15:07");
+    expect(formatWith("2026-10-25T09:37:00.000Z", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }, "hi", "Asia/Kolkata")).toMatch(/^25\/10\/2026, 3:07 (pm|PM)$/);
+    expect(formatWith("2026-10-25T09:37:00.000Z", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit", hourCycle: "h23" }, "en", "Asia/Kolkata")).toBe("25/10/2026, 15:07");
   });
 
   it("leaves a label that is not a date to Intl, with Latin digits", () => {
@@ -46,6 +49,7 @@ describe("the date formatter", () => {
     expect(formatMonth("2026-09-01", "en", true)).toBe("Sep 2026");
     expect(formatMonth("2026-09-01", "mr")).toMatch(/2026$/);
     expect(formatWith("2026-10-25T09:37:00.000Z", { hour: "2-digit", minute: "2-digit", hourCycle: "h23" }, "en", "Asia/Kolkata")).toBe("15:07");
+    expect(formatWith("2026-10-25T09:37:00.000Z", { hour: "numeric", minute: "2-digit" }, "en", "Asia/Kolkata").replace(/\s/g, " ")).toBe("3:07 PM");
     expect(weekdayName(1)).toBe("Monday");
     expect(weekdayName(0, "en", "short")).toBe("Sun");
     expect(latn("en")).toBe("en");

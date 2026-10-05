@@ -5,7 +5,8 @@
  * the way the country writes it on a form, day/month/year with slashes, so
  * any format asked for a DAY answers in that one shape — "23/08/2026" — and
  * the other options become a prefix or a suffix: a weekday ("Sun,
- * 23/08/2026"), a time ("23/08/2026 09:00", 24-hour). Options without a full
+ * 23/08/2026"), a time ("23/08/2026, 9:00 AM", 12-hour as the web prints it).
+ * Options without a full
  * date are labels and are left to Intl: a month heading ("August 2026"), a
  * lone weekday atop a column, a time on its own. The phone had three shapes
  * at once — "Jul 15, 2026" from Intl's US default, "2026-10-05" printed raw
@@ -56,7 +57,8 @@ function parts(at: Date, opts: Opts, locale: string, timeZone: string | undefine
     month: "2-digit",
     year: "numeric",
     ...(opts.weekday ? { weekday: opts.weekday } : {}),
-    ...(wantsTime(opts) ? { hour: "2-digit", minute: "2-digit", hourCycle: "h23" } : {}),
+    // The web's clock: Intl's own for the language (12-hour with AM/PM in en), unless a caller asked for one.
+    ...(wantsTime(opts) ? { hour: "numeric", minute: "2-digit", ...(opts.hour12 !== undefined ? { hour12: opts.hour12 } : {}), ...(opts.hourCycle ? { hourCycle: opts.hourCycle } : {}) } : {}),
   };
   try {
     return new Intl.DateTimeFormat(latn(locale), { ...shape, ...(timeZone ? { timeZone } : {}) }).formatToParts(at);
@@ -80,12 +82,13 @@ export function formatWith(value: string | Date, opts: Opts, locale = "en", time
     const get = (type: Intl.DateTimeFormatPartTypes) => p.find((x) => x.type === type)?.value ?? "";
     const date = `${get("day").padStart(2, "0")}/${get("month").padStart(2, "0")}/${get("year")}`;
     const weekday = opts.weekday ? `${get("weekday")}, ` : "";
-    // h23 can still say "24" at midnight in some engines; a clock reads 00.
-    const time = wantsTime(opts) ? ` ${get("hour").replace(/^24$/, "00").padStart(2, "0")}:${get("minute").padStart(2, "0")}` : "";
+    // As the web's assemble() writes it: "23/08/2026, 9:00 AM". A caller that asked for a 24-hour clock gets "00" for midnight, never "24".
+    const dayPeriod = get("dayPeriod");
+    const time = wantsTime(opts) ? `, ${get("hour").replace(/^24$/, "00")}:${get("minute").padStart(2, "0")}${dayPeriod ? ` ${dayPeriod}` : ""}` : "";
     return `${weekday}${date}${time}`;
   }
-  // A time on its own is on the same 24-hour clock as a date's ("15:15", not "3:15 PM").
-  const label: Opts = wantsTime(opts) && opts.hour12 === undefined && opts.hourCycle === undefined ? { ...opts, hourCycle: "h23" } : opts;
+  // A time on its own is on the same clock as a date's ("3:15 PM"), as on the web; a screen that passes hour12 or hourCycle keeps its own.
+  const label: Opts = opts;
   try {
     return new Intl.DateTimeFormat(latn(locale), { ...label, ...(zone ? { timeZone: zone } : {}) }).format(read.at);
   } catch {
@@ -98,7 +101,7 @@ export function formatDate(value: string | Date, timeZone?: string): string {
   return formatWith(value, { day: "numeric", month: "numeric", year: "numeric" }, "en", timeZone);
 }
 
-/** "05/10/2026 15:07" for an instant, in the school's zone when given, else the device's. */
+/** "05/10/2026, 3:07 PM" for an instant, in the school's zone when given, else the device's. */
 export function formatDateTime(value: string | Date, timeZone?: string): string {
   return formatWith(value, { day: "numeric", month: "numeric", year: "numeric", hour: "numeric", minute: "numeric" }, "en", timeZone);
 }

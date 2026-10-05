@@ -28,7 +28,7 @@ describe("the helpers", () => {
   it("read a typed day and time in the device's zone, and refuse what is not one", () => {
     expect(instantOf("2026-10-10 16:00")).toBe(new Date(2026, 9, 10, 16, 0).toISOString());
     expect(instantOf("10/10/2026 16:00")).toBe(new Date(2026, 9, 10, 16, 0).toISOString());
-    expect(whenOf(new Date(2026, 9, 10, 16, 0).toISOString(), "mr")).toBe("10/10/2026 16:00");
+    expect(whenOf(new Date(2026, 9, 10, 16, 0).toISOString(), "mr")).toBe("10/10/2026, 4:00 PM");
     expect(instantOf("2026-02-30 16:00")).toBeNull();
     expect(instantOf("tomorrow")).toBeNull();
     expect(whenOf("not a date", "en")).toBe("not a date");
@@ -75,7 +75,7 @@ describe("a boarder's hostel on the phone (3 Oct 2026)", () => {
     const levels = screen.getAllByRole("header").map((h) => [String(h.props.children), h.props["aria-level"]]);
     expect(levels[0]).toEqual(["Hostel", 1]);
     expect(levels.slice(1).every(([, level]) => level === 2)).toBe(true);
-    expect(screen.getAllByText(/^10\/10\/2026 \d\d:\d\d to 12\/10\/2026 \d\d:\d\d/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/^10\/10\/2026, \d{1,2}:\d\d (AM|PM) to 12\/10\/2026, \d{1,2}:\d\d (AM|PM)/).length).toBeGreaterThan(0);
     expect(screen.getAllByText("25/10/2026 16:00")).toHaveLength(2);
   });
 

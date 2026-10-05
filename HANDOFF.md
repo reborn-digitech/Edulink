@@ -1,6 +1,6 @@
 # Shalaghar — handoff
 
-Written 2026-09-28 at commit `ff57b2d`; numbers refreshed 2026-10-05 after the audit's fix wave (on 3a5b1da1). This is the short map. The working rules a session must follow are in
+Written 2026-09-28 at commit `ff57b2d`; numbers refreshed 2026-10-05 at the close of the audit (on 62236666). This is the short map. The working rules a session must follow are in
 [CLAUDE.md](CLAUDE.md), which Claude Code reads on its own. The long operator's manual is
 [apps/web/README.md](apps/web/README.md); the decisions are in [docs/decisions](docs/decisions);
 the audits are in [docs/data-audit](docs/data-audit) and [docs/security](docs/security).
@@ -66,6 +66,16 @@ agriculture are listed and say what is not built. The demo autonomous engineerin
 lifecycle walk takes `--college engineering`. The section "Streams" of docs/college.md has the preset
 table, the desks, the records and the filings per stream.
 
+**Accreditation insights and the simulator (5 October 2026).** Every accreditation page tells the IQAC, the
+principal and an HOD how to move the grade up: for NAAC (both manuals) the cheapest steps to the next band
+with the cost of each and a call to action, for the NBA SAR per engineering department and for NIRF. The
+engine is pure (`src/lib/accreditation-insights.ts`, over the predictor's own formulas, so no formula exists
+twice) and a client-side simulator at `/iqac/simulator` (and `/hod/nba/simulator`) lets the same people change
+the figures and see the grade, with saved, compared scenarios (`IqacScenario`, a hundred a college, a
+`data:audit` check). Nine doors, the phone reads the insights and the NAAC scenarios and changes nothing. The
+NIRF rank-band table is the platform's own reading and must be checked before it is relied on. The section
+"Accreditation insights and the simulator" of docs/college.md has the detail and the decisions.
+
 ## 2. Architecture
 
 ```
@@ -125,7 +135,7 @@ cd apps/mobile && npx expo start --web   # phone's web target on :8081, needs th
 The verification chain a change is expected to pass, in order:
 
 1. `npm run typecheck`, scripts tsc, `eslint .`
-2. `npx vitest run` (3,631 tests in 332 files on 5 October 2026, 68 skipped; two audit suites are gated behind `DATA_AUDIT=1`)
+2. `npx vitest run` (3,563 tests passed in 330 files on 5 October 2026, 68 skipped; two audit suites are gated behind `DATA_AUDIT=1`)
 3. `npm run rls:verify` after any schema or policy change; `npm run api:docs` after any catalog or contract change
 4. `npm run i18n -- --max 113` (the count of hardcoded English; a job name counts as a string)
 5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,736 tests in 216 suites on 5 October 2026 with coverage and the gates, Maestro check)
@@ -156,6 +166,16 @@ notices it caused its actors, so a run leaves the fixtures as it found them.
 - **Shared passwords** remain on thirteen local test accounts and on every `@demo.relay.test`
   account. Scramble them when demos end.
 - **Untracked on purpose**: `pitch/`, `apps/web/.Rhistory`, `.claude/launch.json`.
+- **The audit of 5 October 2026** is in [docs/audit-2026-10-05](docs/audit-2026-10-05): an inventory of every
+  feature, role, screen and door with the parity table, then three layers run over it (security, the critical
+  journeys clicked through in a browser and on the phone's web target, and states and accessibility) and one
+  prioritised list of 86 findings (0 critical, 6 high, 25 medium, 50 low, 5 info). Closed in three fix commits
+  (the Critical and High, the UI alignment pass, the functional, validation, permission and parity fixes): 77
+  fixed, 3 partly fixed, 1 declined (homework for college faculty, R-48), 5 open. `00-overview.md` is the entry
+  point and carries the commits, what stays open and how to rerun each layer; `08-remaining-risks.md` holds the
+  decisions for the owner. Not run after the fixes: `api:sweep`, the page sweep, `next build`, the full axe walk,
+  the Linux e2e baselines (controls are now 48 px and every card is rounded, so they need a CI dispatch with
+  `update_snapshots`).
 
 Recent history, newest first: seven derived-value fixes (ff57b2d); sweep reads the fixture school's
 calendar (c5a63c2); two Sunday-fragile tests (94ed3d6); nine audit fixes and the `accounts:tidy` job

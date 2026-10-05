@@ -40,10 +40,23 @@ By layer (ids as filed, severities as rated here, before the merge):
 
 (The medium column is 26 before the merge and 25 after it: A3-journeys-6 was medium and joins the high row A3-states-2.)
 
+By status after the fixes (set in the Status column below; counted at the closing commit, 5 October 2026 22:30):
+
+| Severity | fixed | partly fixed | wontfix (declined, logged) | open | Total |
+| --- | --- | --- | --- | --- | --- |
+| critical | 0 | 0 | 0 | 0 | 0 |
+| high | 6 | 0 | 0 | 0 | 6 |
+| medium | 25 | 0 | 0 | 0 | 25 |
+| low | 44 | 2 | 1 | 3 | 50 |
+| info | 2 | 1 | 0 | 2 | 5 |
+| **Total** | **77** | **3** | **1** | **5** | **86** |
+
+Every row was `open` when this file was written (commit dc215602); the Status cells below are the current truth.
+
 ## How to read this file
 
 - **Severity** follows the audit's scale. Critical: data loss, a fence crossed, or a core journey blocked for everyone. High: a journey blocked for a role, a permission hole, a 500 on a menu page. Medium: wrong data or a broken step with a workaround, a parity gap on a core journey. Low: cosmetic, a validation message, a minor inconsistency. Info: a note. No layer found a critical.
-- **Status** is `open` for every row. A fix builder sets it to `fixed` (with the commit in `09-changelog.md`), `wontfix` or `by design` and says why in the row. Re-read this file before editing it: builders and the writer share it.
+- **Status** was `open` for every row when this file was written; it is now `fixed`, `partly fixed`, `wontfix` or still `open` (see the status table above). A fix builder sets it to `fixed` (with the commit in `09-changelog.md`), `wontfix` or `by design` and says why in the row. Re-read this file before editing it: builders and the writer share it.
 - **Layer and evidence**: the layer's report is `scratchpad/reports/audit3-<layer>.md`; evidence paths are those the layer names, under `scratchpad/audit3j/` (journeys), `scratchpad/audit3/` (states) and `scratchpad/audit3-sec/` (security). All paths are relative to the session scratchpad.
 - **Reproduced**: S and J rows were reproduced alone unless the row says "by code"; I rows are all static readings (none was clicked); E rows were reproduced alone unless the row says otherwise. Each row's detail is in its layer's document.
 - **Fix owner** by area: Web pages (the `src/app` pages, components, CSS), Web library (`src/lib`, the doors, validation, the contracts), Phone (`apps/mobile`), Security, Docs.
@@ -190,7 +203,7 @@ Everything else is as the layer filed it. The journeys layer's own summary reads
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | A3-journeys-23 | low | IQAC | phone | Every insight on the phone is "Open on the web"; another role's step (2.6.3, Exam controller) opens `/exam-cell`, which redirects the IQAC to `/switch`; the web shows "Ask: … — Exam controller" with no link. | journeys · steps.jsonl | Phone | fixed |
 | A3-journeys-29 | low | PARENT | phone | On the hostel screen "Do not consent" renders at the bottom of the leave list, away from the Night-out row it refuses; all headings are level 1; the leave hint shows "2026-10-10 16:00". | journeys · shots/phone-parent-hostel.png | Phone | fixed |
-| A3-journeys-31 | low | several | phone, web | Dates are formatted three ways: US style on the phone ("Jul 15, 2026"), ISO on faculty, warden and TPO screens ("2026-10-05"), dd/mm/yyyy on the web. | journeys · steps.jsonl | Phone | fixed (the phone prints times 24-hour, the web 12-hour) |
+| A3-journeys-31 | low | several | phone, web | Dates are formatted three ways: US style on the phone ("Jul 15, 2026"), ISO on faculty, warden and TPO screens ("2026-10-05"), dd/mm/yyyy on the web. | journeys · steps.jsonl | Phone | fixed (dates; and the time convention: the phone prints "05/10/2026, 3:07 PM" like the web, changed in the closing commit, 09-changelog.md; typed time fields stay 24-hour) |
 | A3-journeys-32 | low | TEACHER | phone | The phone register still reads "Saved on this device" after the outbox sent; radios have no group naming the pupil; the first offline status was "Ready". | journeys · steps.jsonl | Phone | fixed |
 | A3-journeys-37 | low | DRIVER | phone | The trip banner says "Sending the bus's location" after starting without permission, and "End this trip?" does not mention a pupil never ticked. | journeys · steps.jsonl | Phone | fixed |
 | A3-S-12 | low | ACCOUNTS, FACULTY, WARDEN | phone | Five new sensitive screens do not call `usePrivateScreen()`: accounts look-up, anti-ragging, exam squad, warden, alumni-college. By code. | security · audit3-security.md | Phone | fixed |

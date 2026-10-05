@@ -164,6 +164,68 @@ takes a `ctx`.
 the functions above), the principal's decision log (`DECISION_KINDS` gains grace, condonation, concession,
 lateRegistration), the operator's college console (see below).
 
+## Accreditation insights and the simulator (5 October 2026)
+
+**What the engine is.** `src/lib/accreditation-insights.ts` is a pure module over the predictor's own formulas
+(it imports only the contracts, `iqac-rules.ts` and `council-rules.ts`, and a test holds that), so no formula
+exists twice. For NAAC (affiliated and autonomous) it takes the facts the predictor reads and answers: the
+CGPA and band, for every metric below the top of its scale the smallest whole number of lever steps to its
+next score (`stepFor`) and to the top, the points each step adds as the net CGPA change over the whole
+framework (two more teachers at ZZ Vidya raise 2.4.1 and lower the CGPA by 0.017, so that step is not a
+gain), the greedy cheapest path to the next band and the band after (`pathToBand`, quantitative steps first,
+qualitative ones only when those run out), and the qualitative metrics still unscored as "score this with
+evidence". For the NBA SAR it gives a lever per computed item and the smallest change worth a mark
+(`nbaMarks()` in `council-rules.ts` is now the one place the SAR's computed items are summed; `nbaFacts`
+computes through it). For NIRF it gives `nirfScore` (the parameters, the partial and projected score, a rank
+band) and the move per published parameter. Every step carries a coded call to action
+(`INSIGHT_CTAS`, twenty, in `packages/contracts/src/v1/iqac-insights.ts`): a web link, shown as a 44 px link to
+the roles who make that change and as "Ask: page, who" to everyone else. Every section says that the platform
+does not score for NAAC, NBA or NIRF. "What you did last" reads the audit log (22 action prefixes mapped to
+CTAs) and flags what happened after the last recompute (NAAC) or the last SAR draft (NBA).
+
+**Where it shows.** An "Actionable insights" section on `/iqac/predictor` (anchors `#insights`, `#metric-x-y-z`,
+`#entered`), `/principal/accreditation`, `/hod/nba`, `/iqac/documents/nba` and the new `/iqac/documents/nirf`,
+and a summary card on `/iqac`. On the phone the IQAC and the principal read the insights screen (the paths,
+the ranked metrics, each CTA opening the web page through `openWeb`) and a read-only list of NAAC scenarios;
+the IQAC home carries a card, More two entries, and the principal's college card an insights line. The phone
+changes no figure and saves no scenario.
+
+**The simulator.** `/iqac/simulator`, client side over the same functions: every fact the framework reads as a
+number field and a slider starting at today's figure, the qualitative scores 0 to 4 in steps of a quarter,
+the CGPA, band and distance live, NIRF's inputs and estimate beside it, reset to today. `?kind=nba` is the SAR
+simulator for the desk at an engineering college and `/hod/nba/simulator` is the HOD's own department. A part
+is held to its whole (`FormulaSpec.whole` on twelve NAAC pairs, `NIRF_WHOLES`, `NBA_WHOLES`; the nine
+percentages allowed to exceed are listed with reasons in `MAY_EXCEED`).
+
+**Scenarios.** `IqacScenario` (tenant table, migration `20261005114955_iqac_scenarios`, RLS) holds a named
+set of figures, saved by the IQAC or the principal (NAAC and NBA) or an HOD (NBA, own department). `writeScenario`
+is the one writer: it recomputes the result itself, refuses a fact the framework does not read, a
+non-qualitative code, a mark above its item, a closed cycle and more than a hundred scenarios (counted and
+inserted in one transaction under an advisory lock), and audits `iqac.scenario.save` and `.remove`. A scenario
+is listed with its lead over today, compared side by side with the deltas, shown as insights, loaded and
+removed. `data:audit` has a check `iqac-scenario` that recomputes each stored result from its figures. The
+fixture is one saved scenario at ZZ Vidya.
+
+**The doors.** Nine, all module IQAC with the role checked before the body and the heavy-read budget:
+`GET /api/v1/iqac/insights` (IQAC, ADMIN, PRINCIPAL), `GET /iqac/insights/nba` (also HOD, 404 unless the college
+teaches engineering), `GET /iqac/insights/nirf`, `GET` and `POST /iqac/scenarios`, `DELETE /iqac/scenarios/{id}`,
+`GET /iqac/scenarios/compare`, `GET /iqac/simulate` and `GET /iqac/simulate/nba`. No open cycle answers 404.
+
+**Decisions the owner must confirm** (08-remaining-risks.md, R-40 to R-47):
+1. **The NIRF band table is the platform's reading, not NIRF's.** `NIRF_BANDS` (top 100 at 57, 101 to 150 at 54,
+   151 to 200 at 51, 201 to 300 at 47) comes from memory of past college lists and has not been checked against
+   the published scores; the estimate also scales the partial score up as if the unpublished parameters scored
+   at the same rate, which flatters a college strong on the published ones (ZZ Vidya projects to "the top 100"
+   from 40 covered marks). Check it against NIRF's published scores before anyone relies on it.
+2. **Levers move one figure at a time** in the insights (one more professor does not also raise the ratio's
+   other side); the simulator moves figures together.
+3. **A change to NAAC's weights makes `data:audit` fail on old scenarios, on purpose.** A stored result is
+   recomputed on read and the audit holds the stored copy equal to it; re-save or retire the old scenarios when
+   the weights change.
+4. Smaller choices recorded as kept: the points are the net change over the whole framework; quantitative steps
+   come before qualitative; CTAs are links only for the roles who make the change; scenarios are capped at a
+   hundred per college.
+
 ## The year, role to role
 
 `tests/college-year.test.ts` walks one student through it at ZZ Vidya College: the office admits (record,
@@ -244,6 +306,9 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   Still not built: the phone's permission-slip composer. The phone warden's night view is built
   (`screens/hostel/warden.tsx`), and since the audit of 5 October the card's QR opens a staff-only web
   `/id-check` page and carries a signed card id instead of the guardian-claim code.
+- Accreditation insights: both simulator pages in a browser (sliders, reset, save, load, compare, remove), the
+  HOD's NBA pages as a real HOD (ZZ Shastri has none), the NIRF band table against NIRF's published scores,
+  the phone's insights and scenarios screens against a live server, Hindi and Marathi read by a speaker.
 - Streams: every council return against its council's real portal or inspection form (the NBA Tier-II marks
   and bands should be checked against nbaind.org's current SAR); the PCI, BCI and NCTE pages with data on a
   live server (no ZZ or demo college has those streams). The NBA SAR reads its own year since S4B-1 (students

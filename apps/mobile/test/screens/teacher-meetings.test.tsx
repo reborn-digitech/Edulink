@@ -24,7 +24,8 @@ describe("the teacher's meetings", () => {
     gate.open(() => json(MEETINGS));
     await screen.findByText(/^Booked for ZZ Asha by ZZ Meera — “About maths”$/);
     // 09:30Z is 3 pm in Kolkata; the row names the slot's start and end in that zone.
-    expect(screen.getByText("Fri, 11/09/2026 15:00 – 15:15 · Room 4")).toBeTruthy();
+    // The web's clock: 12-hour with AM or PM (Intl puts a narrow no-break space before it in a time on its own).
+    expect(screen.getByText(/^Fri, 11\/09\/2026, 3:00 PM – 3:15\sPM · Room 4$/)).toBeTruthy();
     expect(screen.getByLabelText("Booked: 1")).toBeTruthy();
     expect(screen.getByLabelText("Still open: 1")).toBeTruthy();
     expect(screen.getAllByText("Still open").length).toBeGreaterThanOrEqual(1);
