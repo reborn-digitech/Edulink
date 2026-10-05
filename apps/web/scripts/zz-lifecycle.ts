@@ -35,6 +35,30 @@
  * left half-walked by a crash is refused, by name, with the teardown to run.
  * `--teardown` deletes child tables first (the foreign-key graph read from
  * Postgres), never a cascade from School, and proves no row is left.
+ *
+ * `--college engineering` (5 Oct 2026, the streams batch) walks a third tenant
+ * ON ITS OWN: ZZ Lifecycle Engineering College (slug zz-lifecycle-engineering,
+ * kind AUTONOMOUS_COLLEGE, streams ["ENGINEERING"], accounts zzlc.e.*@zz.test),
+ * and neither the school nor the arts college. The same college year runs
+ * (collegeYear, runTerm, capAdmissions… are parameterised by the world's
+ * CollegeSpec) with two four-year BE programmes (Computer Engineering BECOMP,
+ * Mechanical Engineering BEMECH, AICTE, eight semesters), so the first
+ * graduation is in the fourth year (2029–30). Beside the arts college's year it
+ * walks what the stream brings: lab batches split each term after registration
+ * (size 4 for an intake of six or seven, so two batches a division), one course
+ * per semester per programme with practical credits and a LAB hour per batch
+ * whose lectures are marked for the batch only (and one negative check that a
+ * mark for a student outside the batch is refused), the practical record
+ * written by the offering's teacher and signed by the department's
+ * LAB_INCHARGE, the autonomous exam session's own conduct (date sheet, setters,
+ * sealed papers, moderation, one opening by the controller, halls, seating, hall
+ * tickets, printing lists, assessment bundles, external marks by double entry
+ * of the controller and the registrar instead of the university's file), and
+ * each year's NBA SAR for the Computer Engineering department (generated,
+ * self-assessed by its HOD, regenerated, submitted, signed off, filed).
+ * Without the flag the walk is exactly as before. `--college engineering
+ * --teardown` tears down the engineering tenant only; the plain `--teardown`
+ * leaves zzlc.e.* accounts alone.
  */
 import Module from "node:module";
 import { join, resolve } from "node:path";
@@ -108,8 +132,15 @@ const RUN_AUDIT = !argv.includes("--no-audit");
 const OUT = resolve(argOf("--out") ?? join(tmpdir(), "zz-lifecycle"));
 const SCHOOL_SLUG = "zz-lifecycle-school";
 const COLLEGE_SLUG = "zz-lifecycle-college";
-const SLUGS = [SCHOOL_SLUG, COLLEGE_SLUG];
-const MAIL = (local: string) => `zzlc.${local}@zz.test`;
+const ENGINEERING_SLUG = "zz-lifecycle-engineering";
+const COLLEGE_MODE = argOf("--college") ?? "arts";
+if (COLLEGE_MODE !== "arts" && COLLEGE_MODE !== "engineering") throw new Error(`--college takes "engineering" (or "arts", the default), not "${COLLEGE_MODE}"`);
+/** The engineering walk: its college alone, no school, no arts college. */
+const ENGINEERING = COLLEGE_MODE === "engineering";
+const SLUGS = ENGINEERING ? [ENGINEERING_SLUG] : [SCHOOL_SLUG, COLLEGE_SLUG];
+/** Every account the walk makes: zzlc.* for the school and the arts college, zzlc.e.* for the engineering college. */
+const MAIL_PREFIX = ENGINEERING ? "zzlc.e." : "zzlc.";
+const MAIL = (local: string) => `${MAIL_PREFIX}${local}@zz.test`;
 
 /* -------------------------------------------------------------------------- */
 /* libraries, loaded after the redirection                                     */
@@ -173,6 +204,10 @@ async function loadLibs() {
     internships: await import("@/lib/placement-internships"),
     placementAnalytics: await import("@/lib/placement-analytics"),
     operatorCollege: await import("@/lib/operator-college"),
+    streamRecords: await import("@/lib/stream-records"),
+    duties: await import("@/lib/duties"),
+    councilFilings: await import("@/lib/council-filings"),
+    secretBox: await import("@/lib/secret-box"),
   };
 }
 type Libs = Awaited<ReturnType<typeof loadLibs>>;
@@ -978,53 +1013,182 @@ async function alumniYear(schoolId: string, office: Actor, teacher: Actor) {
 /* THE COLLEGE                                                                 */
 /* ========================================================================== */
 
+type ProgrammeSpec = { code: string; name: string; short: string; dept: string; deptName: string; prefix: string; regulator: string; stream: string | null };
+type PersonSpec = { local: string; name: string; title: string };
+/** What differs between the walk's two colleges; everything else is the one college year. */
+type CollegeSpec = {
+  slug: string;
+  name: string;
+  codeSeed: string;
+  kind: "COLLEGE" | "AUTONOMOUS_COLLEGE";
+  streams: string[] | null;
+  aisheCode: string;
+  nirfCategory: string;
+  brand: string;
+  receiptPrefix: string;
+  /** CAP application ids and PRNs: LC2026PHY001 / LE2026COMP001. */
+  idPrefix: string;
+  /** Applicants' phones: one base per college, so two walked colleges never share a number. */
+  phoneBase: string;
+  accession: string;
+  durationYears: number;
+  /** Division names by year of study. */
+  yearNames: string[];
+  scheme: string;
+  exitPoints: { afterYear: number; award: string; credits: number }[];
+  totalCredits: number;
+  programmes: [ProgrammeSpec, ProgrammeSpec];
+  hods: [PersonSpec, PersonSpec];
+  faculty: [PersonSpec, PersonSpec, PersonSpec];
+  library: { title: string; author: string; publisher: string; year: number; subject: string };
+  company: { name: string; first14: string };
+  /** The stream's records: lab batches, a practical course a semester, the practical record. */
+  labs: boolean;
+  /** An autonomous college conducts its own examinations: papers, seating, double entry. */
+  autonomous: boolean;
+  /** Each year's NBA SAR for the first programme's department. */
+  nba: boolean;
+};
+
+const ARTS_COLLEGE: CollegeSpec = {
+  slug: COLLEGE_SLUG,
+  name: "ZZ Lifecycle College",
+  codeSeed: "Lifecycle College",
+  kind: "COLLEGE",
+  streams: null,
+  aisheCode: "C-99071",
+  nirfCategory: "COLLEGE",
+  brand: "#7c3aed",
+  receiptPrefix: "LCC",
+  idPrefix: "LC",
+  phoneBase: "+91982207",
+  accession: "LCC",
+  durationYears: 3,
+  yearNames: ["FY", "SY", "TY"],
+  scheme: "SPPU NEP 2024",
+  exitPoints: [{ afterYear: 1, award: "CERTIFICATE", credits: 16 }, { afterYear: 2, award: "DIPLOMA", credits: 32 }, { afterYear: 3, award: "DEGREE", credits: 48 }],
+  totalCredits: 48,
+  programmes: [
+    { code: "BSCPHY", name: "BSc Physics", short: "BSc Phy", dept: "PHY", deptName: "Department of Physics", prefix: "PHY", regulator: "UGC", stream: null },
+    { code: "BCOM", name: "BCom", short: "BCom", dept: "COM", deptName: "Department of Commerce", prefix: "COM", regulator: "UGC", stream: null },
+  ],
+  hods: [
+    { local: "c.hod.phy", name: "ZZ Dr Asha Paranjpe", title: "Head, Physics" },
+    { local: "c.hod.com", name: "ZZ Dr Mohan Bhide", title: "Head, Commerce" },
+  ],
+  faculty: [
+    { local: "c.faculty1", name: "ZZ Dr Neelam Gadgil", title: "Assistant professor, Physics" },
+    { local: "c.faculty2", name: "ZZ Prof Rahul Shirole", title: "Assistant professor, Physics" },
+    { local: "c.faculty3", name: "ZZ Prof Ashwini Mane", title: "Assistant professor, Commerce" },
+  ],
+  library: { title: "Concepts of Physics", author: "ZZ H C Verma", publisher: "ZZ Bharati", year: 2010, subject: "Physics" },
+  company: { name: "ZZ Lifecycle Analytics Pvt Ltd", first14: "27AAZCL1234C1Z" },
+  labs: false,
+  autonomous: false,
+  nba: false,
+};
+
+const ENGINEERING_COLLEGE: CollegeSpec = {
+  slug: ENGINEERING_SLUG,
+  name: "ZZ Lifecycle Engineering College",
+  codeSeed: "Lifecycle Engineering College",
+  kind: "AUTONOMOUS_COLLEGE",
+  streams: ["ENGINEERING"],
+  aisheCode: "C-99072",
+  nirfCategory: "ENGINEERING",
+  brand: "#b45309",
+  receiptPrefix: "LCE",
+  idPrefix: "LE",
+  phoneBase: "+91982208",
+  accession: "LCE",
+  durationYears: 4,
+  yearNames: ["FE", "SE", "TE", "BE"],
+  scheme: "Autonomous BE 2024",
+  exitPoints: [{ afterYear: 1, award: "CERTIFICATE", credits: 18 }, { afterYear: 2, award: "DIPLOMA", credits: 36 }, { afterYear: 4, award: "DEGREE", credits: 72 }],
+  // Eight semesters of two courses (4 credits each, one of them with a practical credit): 9 a semester.
+  totalCredits: 72,
+  programmes: [
+    { code: "BECOMP", name: "BE Computer Engineering", short: "BE Comp", dept: "COMP", deptName: "Department of Computer Engineering", prefix: "CE", regulator: "AICTE", stream: "ENGINEERING" },
+    { code: "BEMECH", name: "BE Mechanical Engineering", short: "BE Mech", dept: "MECH", deptName: "Department of Mechanical Engineering", prefix: "ME", regulator: "AICTE", stream: "ENGINEERING" },
+  ],
+  hods: [
+    { local: "c.hod.comp", name: "ZZ Dr Sameer Deshpande", title: "Head, Computer Engineering" },
+    { local: "c.hod.mech", name: "ZZ Dr Rekha Kulkarni", title: "Head, Mechanical Engineering" },
+  ],
+  faculty: [
+    { local: "c.faculty1", name: "ZZ Prof Amol Inamdar", title: "Assistant professor, Computer Engineering" },
+    { local: "c.faculty2", name: "ZZ Prof Swati Gore", title: "Assistant professor, Computer Engineering" },
+    { local: "c.faculty3", name: "ZZ Prof Vikram Salunke", title: "Assistant professor, Mechanical Engineering" },
+  ],
+  library: { title: "Data Structures Using C", author: "ZZ Reema Thareja", publisher: "ZZ OUP", year: 2014, subject: "Computer Engineering" },
+  company: { name: "ZZ Lifecycle Engineering Systems Pvt Ltd", first14: "27AAZCE5678C1Z" },
+  labs: true,
+  autonomous: true,
+  nba: true,
+};
+
+/** The college this run walks. */
+const SPEC: CollegeSpec = ENGINEERING ? ENGINEERING_COLLEGE : ARTS_COLLEGE;
+const PROGRAMMES = SPEC.programmes;
+/** The years of study, 1..duration. */
+const YEARS_OF_STUDY = Array.from({ length: SPEC.durationYears }, (_, i) => i + 1);
+const FINAL_YEAR = SPEC.durationYears;
+
+type ProgrammeRow = { id: string; schemeId: string; deptId: string; dept: string; name: string; short: string };
 type CollegeWorld = {
   id: string;
   registrar: Actor;
   principal: Actor;
-  hod: Record<"PHY" | "COM", Actor>;
-  faculty: Actor[]; // f1, f2 (Physics), f3 (Commerce)
+  hod: Record<string, Actor>; // department code → head
+  faculty: Actor[]; // f1, f2 (the first programme's department), f3 (the second's)
   controller: Actor;
   iqac: Actor;
   tpo: Actor;
   accounts: Actor;
   librarian: Actor;
-  programmes: Record<"BSCPHY" | "BCOM", { id: string; schemeId: string; deptId: string; dept: "PHY" | "COM"; name: string; short: string }>;
-  courses: Map<string, { id: string; code: string; programme: "BSCPHY" | "BCOM"; semester: number; slot: 0 | 1 }>;
+  programmes: Record<string, ProgrammeRow>;
+  courses: Map<string, { id: string; code: string; programme: string; semester: number; slot: 0 | 1 }>;
   heads: Record<string, string>;
   periods: string[];
   guardianUserId: string | null;
   minorEmail: string;
+  /** Department code → its LAB room (engineering only). */
+  labRooms: Record<string, string>;
 };
 
-const PROGRAMMES = [
-  { code: "BSCPHY" as const, name: "BSc Physics", short: "BSc Phy", dept: "PHY" as const, deptName: "Department of Physics", prefix: "PHY" },
-  { code: "BCOM" as const, name: "BCom", short: "BCom", dept: "COM" as const, deptName: "Department of Commerce", prefix: "COM" },
-];
 const GRADING = [
   { grade: "O", points: 10, minPercent: 90 }, { grade: "A+", points: 9, minPercent: 80 }, { grade: "A", points: 8, minPercent: 70 }, { grade: "B+", points: 7, minPercent: 60 },
   { grade: "B", points: 6, minPercent: 50 }, { grade: "C", points: 5, minPercent: 45 }, { grade: "P", points: 4, minPercent: 40 }, { grade: "F", points: 0, minPercent: 0 },
 ];
-const RULES = { minPercentPerCourse: 40, atktLimit: 4, totalCredits: 48, internalMax: 40, externalMax: 60, minTermCredits: 4, maxTermCredits: 26 };
+const RULES = { minPercentPerCourse: 40, atktLimit: 4, totalCredits: SPEC.totalCredits, internalMax: 40, externalMax: 60, minTermCredits: 4, maxTermCredits: 26 };
 const INTAKE = 6;
+/** Lab batches of at most four: an intake of six or seven gives two batches a division. */
+const LAB_BATCH_SIZE = 4;
+/** The course of a semester that carries the practical credit (engineering): the second one, code …02. */
+const LAB_SLOT = 1 as const;
+/** The weekday of each batch's LAB hour: batch A on Monday, B on Friday, a third on Wednesday. */
+const LAB_WEEKDAYS = [1, 5, 3];
 
 async function setupCollege(): Promise<CollegeWorld> {
   TENANT = "college";
   setClock(`${FIRST_YEAR}-05-20`);
-  const existing = await dbx.school.findUnique({ where: { slug: COLLEGE_SLUG }, select: { id: true } });
+  const existing = await dbx.school.findUnique({ where: { slug: SPEC.slug }, select: { id: true } });
   const college =
     existing ??
     (await dbx.school.create({
-      data: { name: "ZZ Lifecycle College", slug: COLLEGE_SLUG, kind: "COLLEGE", isTestFixture: true, code: (await import("@/lib/codes")).schoolCode("Lifecycle College"), city: "Pune", region: "Maharashtra", country: "India", contactEmail: MAIL("c.office"), timezone: "Asia/Kolkata", locale: "en", brandPrimary: "#7c3aed", verifiedAt: now(), affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: "C-99071", naacGrade: "B+", naacValidUntil: ist("2030-12-31"), nirfCategory: "COLLEGE", feeReceiptPrefix: "LCC" },
+      data: { name: SPEC.name, slug: SPEC.slug, kind: SPEC.kind, isTestFixture: true, code: (await import("@/lib/codes")).schoolCode(SPEC.codeSeed), city: "Pune", region: "Maharashtra", country: "India", contactEmail: MAIL("c.office"), timezone: "Asia/Kolkata", locale: "en", brandPrimary: SPEC.brand, verifiedAt: now(), affiliatingUniversity: "Savitribai Phule Pune University", aisheCode: SPEC.aisheCode, naacGrade: "B+", naacValidUntil: ist("2030-12-31"), nirfCategory: SPEC.nirfCategory, feeReceiptPrefix: SPEC.receiptPrefix, ...(SPEC.streams ? { streamsJson: JSON.stringify(SPEC.streams) } : {}) },
       select: { id: true },
     }));
   schoolIdsMine = [...new Set([...schoolIdsMine, college.id])];
-  await dbx.schoolModule.createMany({ data: L.contracts.modulesForKind("COLLEGE").map((module: string) => ({ schoolId: college.id, module })), skipDuplicates: true });
+  await dbx.schoolModule.createMany({ data: L.contracts.modulesForKind(SPEC.kind).map((module: string) => ({ schoolId: college.id, module })), skipDuplicates: true });
   const s = college.id;
+  const [P0, P1] = PROGRAMMES;
   const registrar = await staff(s, "c.registrar", "ZZ Smita Gadre", "ADMIN", "Registrar");
   const principal = await staff(s, "c.principal", "ZZ Dr Vinay Bapat", "PRINCIPAL", "Principal");
-  const hod = { PHY: await staff(s, "c.hod.phy", "ZZ Dr Asha Paranjpe", "HOD", "Head, Physics"), COM: await staff(s, "c.hod.com", "ZZ Dr Mohan Bhide", "HOD", "Head, Commerce") };
-  const faculty = [await staff(s, "c.faculty1", "ZZ Dr Neelam Gadgil", "FACULTY", "Assistant professor, Physics"), await staff(s, "c.faculty2", "ZZ Prof Rahul Shirole", "FACULTY", "Assistant professor, Physics"), await staff(s, "c.faculty3", "ZZ Prof Ashwini Mane", "FACULTY", "Assistant professor, Commerce")];
+  const hod: Record<string, Actor> = {};
+  for (const [i, h] of SPEC.hods.entries()) hod[PROGRAMMES[i]!.dept] = await staff(s, h.local, h.name, "HOD", h.title);
+  const faculty: Actor[] = [];
+  for (const f of SPEC.faculty) faculty.push(await staff(s, f.local, f.name, "FACULTY", f.title));
   const controller = await staff(s, "c.exams", "ZZ Prakash Joglekar", "EXAM_CONTROLLER", "Controller of examinations");
   const iqac = await staff(s, "c.iqac", "ZZ Dr Meghana Phadke", "IQAC", "IQAC coordinator");
   const tpo = await staff(s, "c.tpo", "ZZ Nitin Sathe", "TPO", "Training and placement officer");
@@ -1032,35 +1196,42 @@ async function setupCollege(): Promise<CollegeWorld> {
   const librarian = await staff(s, "c.librarian", "ZZ Vidya Kher", "LIBRARIAN", "Librarian");
   await staff(s, "c.warden", "ZZ Sanjay More", "WARDEN", "Warden");
   await staff(s, "c.driver", "ZZ Ganesh Shelar", "DRIVER", "Driver");
-  const W: CollegeWorld = { id: s, registrar, principal, hod, faculty, controller, iqac, tpo, accounts, librarian, programmes: {} as CollegeWorld["programmes"], courses: new Map(), heads: {}, periods: [], guardianUserId: null, minorEmail: "" };
+  const W: CollegeWorld = { id: s, registrar, principal, hod, faculty, controller, iqac, tpo, accounts, librarian, programmes: {}, courses: new Map(), heads: {}, periods: [], guardianUserId: null, minorEmail: "", labRooms: {} };
   const A = registrar.ctx;
 
   if (!(await dbx.department.findFirst({ where: { schoolId: s } }))) {
     for (const p of PROGRAMMES) {
-      const dept = await step("ADMIN", "academics.saveDepartment", () => L.academics.saveDepartment(A, { code: p.dept, name: p.deptName, hodMembershipId: hod[p.dept].membershipId, condoneFloorPercent: 65 } as never));
+      const dept = await step("ADMIN", "academics.saveDepartment", () => L.academics.saveDepartment(A, { code: p.dept, name: p.deptName, hodMembershipId: hod[p.dept]!.membershipId, condoneFloorPercent: 65 } as never));
       const deptId = (dept as Any)?.id;
-      const prog = await step("ADMIN", "academics.saveProgramme", () => L.academics.saveProgramme(A, { departmentId: deptId, code: p.code, name: p.name, level: "UG", durationYears: 3, intake: INTAKE, regulator: "UGC", attendanceThreshold: 75, exitPoints: [{ afterYear: 1, award: "CERTIFICATE", credits: 16 }, { afterYear: 2, award: "DIPLOMA", credits: 32 }, { afterYear: 3, award: "DEGREE", credits: 48 }] } as never));
+      const prog = await step("ADMIN", "academics.saveProgramme", () => L.academics.saveProgramme(A, { departmentId: deptId, code: p.code, name: p.name, level: "UG", durationYears: SPEC.durationYears, intake: INTAKE, regulator: p.regulator, ...(p.stream ? { stream: p.stream } : {}), attendanceThreshold: 75, exitPoints: SPEC.exitPoints } as never));
       const progId = (prog as Any)?.id;
-      const scheme = await step("ADMIN", "academics.saveScheme", () => L.academics.saveScheme(A, { programmeId: progId, name: "SPPU NEP 2024", effectiveYear: 2024, gradingTable: GRADING, passingRules: RULES } as never));
+      const scheme = await step("ADMIN", "academics.saveScheme", () => L.academics.saveScheme(A, { programmeId: progId, name: SPEC.scheme, effectiveYear: 2024, gradingTable: GRADING, passingRules: RULES } as never));
       const schemeId = (scheme as Any)?.id;
-      for (let sem = 1; sem <= 6; sem += 1) {
+      for (let sem = 1; sem <= SPEC.durationYears * 2; sem += 1) {
         for (const k of [1, 2]) {
-          await step("ADMIN", "academics.saveCourse", () => L.academics.saveCourse(A, { schemeId, code: `${p.prefix}${sem}0${k}`, name: `${p.name} ${sem}.${k}`, semester: sem, creditsL: 3, creditsT: 1, creditsP: 0, kind: "CORE", outcomes: [{ code: "CO1", text: "Explain the course's ideas." }, { code: "CO2", text: "Apply them to problems." }] } as never));
+          // At an engineering college the semester's second course carries the practical credit (a LAB hour a batch).
+          const practical = SPEC.labs && k === LAB_SLOT + 1 ? 1 : 0;
+          await step("ADMIN", "academics.saveCourse", () => L.academics.saveCourse(A, { schemeId, code: `${p.prefix}${sem}0${k}`, name: `${p.name} ${sem}.${k}`, semester: sem, creditsL: 3, creditsT: 1, creditsP: practical, kind: "CORE", outcomes: [{ code: "CO1", text: "Explain the course's ideas." }, { code: "CO2", text: "Apply them to problems." }] } as never));
         }
       }
     }
     // Faculty in their departments.
     const depts = await dbx.department.findMany({ where: { schoolId: s }, select: { id: true, code: true } });
     const dep = (code: string) => depts.find((d: Any) => d.code === code)?.id;
-    for (const [f, code] of [[faculty[0]!, "PHY"], [faculty[1]!, "PHY"], [faculty[2]!, "COM"]] as const) await step("ADMIN", "academics.setFacultyDepartment", () => L.academics.setFacultyDepartment(A, { membershipId: f.membershipId!, departmentId: dep(code)! } as never));
+    for (const [f, code] of [[faculty[0]!, P0.dept], [faculty[1]!, P0.dept], [faculty[2]!, P1.dept]] as const) await step("ADMIN", "academics.setFacultyDepartment", () => L.academics.setFacultyDepartment(A, { membershipId: f.membershipId!, departmentId: dep(code)! } as never));
     // The college day: the suggested bells.
     await step("ADMIN", "timetable.applySuggestedDay", () => L.timetable.applySuggestedDay(A));
     // Fee heads.
     for (const [code, name, kind] of [["TUI", "Tuition", "TUITION"], ["DEV", "Development", "DEVELOPMENT"], ["EXM", "Examination", "EXAM"]] as const) await step("ACCOUNTS", "fees.saveHead", () => L.fees.saveHead(accounts.ctx, { name, code, kind, sortOrder: 0 } as never));
     // Payroll, the library and placement's company, once.
-    await setupPayroll(accounts, [registrar, principal, hod.PHY, hod.COM, ...faculty, controller, iqac, tpo, accounts, librarian]);
+    await setupPayroll(accounts, [registrar, principal, hod[P0.dept]!, hod[P1.dept]!, ...faculty, controller, iqac, tpo, accounts, librarian]);
     await step("ADMIN", "library.saveLibrarySettings", () => L.library.saveLibrarySettings(A, { pupilLimit: 3, pupilLoanDays: 14, staffLimit: 5, staffLoanDays: 30, maxRenewals: 1, finePerDayPaise: 200, fineHeadId: null } as never));
-    await step("LIBRARIAN", "library.createTitle", () => L.library.createTitle(librarian.ctx, { isbn: null, title: "Concepts of Physics", author: "ZZ H C Verma", publisher: "ZZ Bharati", year: 2010, subject: "Physics", language: "EN", category: "GENERAL", copies: Array.from({ length: 6 }, (_, c) => ({ accession: `LCC-${c + 1}`, rack: "P1" })) } as never));
+    await step("LIBRARIAN", "library.createTitle", () => L.library.createTitle(librarian.ctx, { isbn: null, title: SPEC.library.title, author: SPEC.library.author, publisher: SPEC.library.publisher, year: SPEC.library.year, subject: SPEC.library.subject, language: "EN", category: "GENERAL", copies: Array.from({ length: 6 }, (_, c) => ({ accession: `${SPEC.accession}-${c + 1}`, rack: "P1" })) } as never));
+    if (SPEC.labs) {
+      // A lab per department, and one FACULTY of each department holds LAB_INCHARGE (set by the registrar, as /admin/people does).
+      for (const [p, name] of [[P0, "ZZ Computer Lab"], [P1, "ZZ Workshop Lab"]] as const) await step("ADMIN", "academics.saveRoom (lab)", () => L.academics.saveRoom(A, { name: `${name} (${p.dept})`, capacity: 30, kind: "LAB" } as never));
+      for (const f of [faculty[0]!, faculty[2]!]) await step("ADMIN", "duties.setDuties LAB_INCHARGE", () => L.duties.setDuties(A, f.membershipId!, ["LAB_INCHARGE"]));
+    }
     await redate();
   }
   for (const p of PROGRAMMES) {
@@ -1069,6 +1240,7 @@ async function setupCollege(): Promise<CollegeWorld> {
     W.programmes[p.code] = { id: prog.id, schemeId: prog.schemes[0]?.id, deptId: prog.departmentId, dept: p.dept, name: p.name, short: p.short };
     const cs = await dbx.course.findMany({ where: { schemeId: prog.schemes[0]?.id }, select: { id: true, code: true, semester: true } });
     for (const c of cs) W.courses.set(c.code, { id: c.id, code: c.code, programme: p.code, semester: c.semester, slot: c.code.endsWith("1") ? 0 : 1 });
+    if (SPEC.labs) W.labRooms[p.dept] = (await dbx.room.findFirst({ where: { schoolId: s, name: { endsWith: `(${p.dept})` }, kind: "LAB" }, select: { id: true } }))?.id;
   }
   W.periods = (await dbx.timetablePeriod.findMany({ where: { schoolId: s, kind: "LESSON", archivedAt: null }, orderBy: { position: "asc" }, select: { id: true } })).map((p: Any) => p.id);
   for (const [code] of [["TUI"], ["DEV"], ["EXM"]]) W.heads[code!] = (await dbx.feeHead.findFirst({ where: { schoolId: s, code }, select: { id: true } }))?.id;
@@ -1078,15 +1250,17 @@ async function setupCollege(): Promise<CollegeWorld> {
 }
 
 /** Who teaches a course, and who countersigns their marks: a colleague of the department who neither teaches it nor entered its marks. */
-function teachersOf(W: CollegeWorld, programme: "BSCPHY" | "BCOM", slot: 0 | 1): { teacher: Actor; moderator: Actor; hod: Actor } {
-  if (programme === "BSCPHY") return slot === 0 ? { teacher: W.faculty[0]!, moderator: W.faculty[1]!, hod: W.hod.PHY } : { teacher: W.faculty[1]!, moderator: W.faculty[0]!, hod: W.hod.PHY };
-  return slot === 0 ? { teacher: W.faculty[2]!, moderator: W.hod.COM, hod: W.hod.COM } : { teacher: W.hod.COM, moderator: W.faculty[2]!, hod: W.hod.COM };
+function teachersOf(W: CollegeWorld, programme: string, slot: 0 | 1): { teacher: Actor; moderator: Actor; hod: Actor } {
+  const [P0, P1] = PROGRAMMES;
+  if (programme === P0.code) return slot === 0 ? { teacher: W.faculty[0]!, moderator: W.faculty[1]!, hod: W.hod[P0.dept]! } : { teacher: W.faculty[1]!, moderator: W.faculty[0]!, hod: W.hod[P0.dept]! };
+  const head = W.hod[P1.dept]!;
+  return slot === 0 ? { teacher: W.faculty[2]!, moderator: head, hod: head } : { teacher: head, moderator: W.faculty[2]!, hod: head };
 }
 
-type Seat = { membershipId: string; programme: "BSCPHY" | "BCOM"; yearOfStudy: number; prn: string; userId: string };
+type Seat = { membershipId: string; programme: string; yearOfStudy: number; prn: string; userId: string };
 async function seatsOf(W: CollegeWorld): Promise<Seat[]> {
   const rows = await dbx.studentProgramme.findMany({ where: { schoolId: W.id, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } }, select: { studentMembershipId: true, programmeId: true, yearOfStudy: true, prn: true, student: { select: { userId: true } } } });
-  const codeOf = (pid: string) => (W.programmes.BSCPHY.id === pid ? "BSCPHY" : "BCOM") as "BSCPHY" | "BCOM";
+  const codeOf = (pid: string) => Object.entries(W.programmes).find(([, p]) => p.id === pid)?.[0] ?? PROGRAMMES[1].code;
   return rows.map((r: Any) => ({ membershipId: r.studentMembershipId, programme: codeOf(r.programmeId), yearOfStudy: r.yearOfStudy, prn: r.prn, userId: r.student.userId }));
 }
 
@@ -1111,18 +1285,18 @@ async function collegeYear(W: CollegeWorld, y: number, idx: number) {
   if (!odd || !even) return;
   // Fee structures for every programme, year of study and category, approved by the authority.
   for (const p of PROGRAMMES) {
-    for (const yos of [1, 2, 3]) {
+    for (const yos of YEARS_OF_STUDY) {
       for (const category of ["OPEN", "OBC"] as const) {
-        const tui = (category === "OPEN" ? 1_600_000 : 800_000) + (p.code === "BSCPHY" ? 400_000 : 0);
-        await step("ACCOUNTS", "collegeFees.createCollegeStructure", () => L.cfees.createCollegeStructure(W.accounts.ctx, { academicYearId: yearId, programmeId: W.programmes[p.code].id, yearOfStudy: yos, category, approvalRef: `FRA/${yk}/${p.code}/${yos}/${category}`, name: `${p.short} Y${yos} ${category} ${yn}`, terms: [{ label: "Odd semester", dueDateKey: `${y}-07-15`, lines: [{ headId: W.heads.TUI, amountPaise: tui / 2 }, { headId: W.heads.DEV, amountPaise: 200_000 }] }, { label: "Even semester", dueDateKey: `${y}-12-15`, lines: [{ headId: W.heads.TUI, amountPaise: tui / 2 }, { headId: W.heads.DEV, amountPaise: 200_000 }] }], lateFeeSlabs: [] } as never));
+        const tui = (category === "OPEN" ? 1_600_000 : 800_000) + (p.code === PROGRAMMES[0].code ? 400_000 : 0);
+        await step("ACCOUNTS", "collegeFees.createCollegeStructure", () => L.cfees.createCollegeStructure(W.accounts.ctx, { academicYearId: yearId, programmeId: W.programmes[p.code]!.id, yearOfStudy: yos, category, approvalRef: `FRA/${yk}/${p.code}/${yos}/${category}`, name: `${p.short} Y${yos} ${category} ${yn}`, terms: [{ label: "Odd semester", dueDateKey: `${y}-07-15`, lines: [{ headId: W.heads.TUI, amountPaise: tui / 2 }, { headId: W.heads.DEV, amountPaise: 200_000 }] }, { label: "Even semester", dueDateKey: `${y}-12-15`, lines: [{ headId: W.heads.TUI, amountPaise: tui / 2 }, { headId: W.heads.DEV, amountPaise: 200_000 }] }], lateFeeSlabs: [] } as never));
       }
     }
   }
   // This year's divisions, one per programme and year of study.
   const divisions = new Map<string, { id: string; classId: string }>();
   for (const p of PROGRAMMES) {
-    for (const yos of [1, 2, 3]) {
-      const d = await step("ADMIN", "academics.createDivision", () => L.academics.createDivision(A.ctx, { programmeId: W.programmes[p.code].id, yearOfStudy: yos, name: `${["FY", "SY", "TY"][yos - 1]} ${p.short} A ${yn}`, academicYear: yk } as never));
+    for (const yos of YEARS_OF_STUDY) {
+      const d = await step("ADMIN", "academics.createDivision", () => L.academics.createDivision(A.ctx, { programmeId: W.programmes[p.code]!.id, yearOfStudy: yos, name: `${SPEC.yearNames[yos - 1]} ${p.short} A ${yn}`, academicYear: yk } as never));
       if (d) divisions.set(`${p.code}|${yos}`, d);
     }
   }
@@ -1136,11 +1310,11 @@ async function collegeYear(W: CollegeWorld, y: number, idx: number) {
   for (const st of seats) {
     const fresh = await dbx.studentProgramme.findUnique({ where: { studentMembershipId: st.membershipId }, select: { entryYear: true, yearOfStudy: true, divisionId: true } });
     const yos = y - fresh.entryYear + 1;
-    if (yos > 3) continue;
+    if (yos > FINAL_YEAR) continue;
     const div = divisions.get(`${st.programme}|${yos}`);
     if (!div || fresh.divisionId === div.id) continue;
     const roll = (await dbx.studentProgramme.count({ where: { divisionId: div.id } })) + 1;
-    await step("ADMIN", "academics.saveSeat (new year)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: st.membershipId, programmeId: W.programmes[st.programme].id, schemeId: W.programmes[st.programme].schemeId, entryYear: fresh.entryYear, yearOfStudy: yos, semester: yos * 2 - 1, divisionId: div.id, rollNumber: roll, prn: null } as never));
+    await step("ADMIN", "academics.saveSeat (new year)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: st.membershipId, programmeId: W.programmes[st.programme]!.id, schemeId: W.programmes[st.programme]!.schemeId, entryYear: fresh.entryYear, yearOfStudy: yos, semester: yos * 2 - 1, divisionId: div.id, rollNumber: roll, prn: null } as never));
   }
   await redate();
 
@@ -1186,12 +1360,13 @@ async function collegeYear(W: CollegeWorld, y: number, idx: number) {
   // The IQAC: the cycle recomputed with this year's rows, the AQAR built, sent for sign-off, signed, filed.
   setClock(`${y + 1}-05-25`, 11);
   await iqacYear(W, y, idx);
+  if (SPEC.nba) await nbaYear(W, y);
   // Placement's season for the graduating batch.
   setClock(`${y + 1}-05-20`, 11);
   await step("TPO", "placement.publishSeason", () => L.placementAnalytics.publishSeason(W.tpo.ctx, y + 1));
   // Graduation: the final year leaves with no dues and opens the alumnus row.
   setClock(`${y + 1}-05-24`, 12);
-  for (const st of (await seatsOf(W)).filter((x) => x.yearOfStudy === 3)) {
+  for (const st of (await seatsOf(W)).filter((x) => x.yearOfStudy === FINAL_YEAR)) {
     const nd = await L.noDues.noDuesFor(st.membershipId, "LEAVING");
     if (!nd.completed) {
       for (const line of nd.lines ?? []) {
@@ -1246,14 +1421,15 @@ async function payCollegeFees(W: CollegeWorld, yearId: string, label: string) {
 async function capAdmissions(W: CollegeWorld, y: number, idx: number, divisions: Map<string, { id: string; classId: string }>) {
   const A = W.registrar;
   for (const p of PROGRAMMES) {
-    // Year 1, BCom: the CET Cell allots seven where the round has six seats and the programme an intake of six (does anything stop the seventh?).
-    const rows = idx === 0 && p.code === "BCOM" ? INTAKE + 1 : INTAKE;
-    const round = await step("ADMIN", "collegeAdmissions.saveRound", () => L.cadm.saveRound(A.ctx, { programmeId: W.programmes[p.code].id, intakeYear: y, kind: "CAP_1", name: `CAP 1 ${y} ${p.short}`, opensOn: `${y}-06-01`, closesOn: `${y}-06-20`, seats: { OPEN: 4, OBC: 2 } }));
+    // Year 1, the second programme (BCom; BE Mechanical): the CET Cell allots seven where the round has six seats and the programme an intake of six (does anything stop the seventh?).
+    const second = p.code === PROGRAMMES[1].code;
+    const rows = idx === 0 && second ? INTAKE + 1 : INTAKE;
+    const round = await step("ADMIN", "collegeAdmissions.saveRound", () => L.cadm.saveRound(A.ctx, { programmeId: W.programmes[p.code]!.id, intakeYear: y, kind: "CAP_1", name: `CAP 1 ${y} ${p.short}`, opensOn: `${y}-06-01`, closesOn: `${y}-06-20`, seats: { OPEN: 4, OBC: 2 } }));
     if (!round) continue;
     const sheet = ["Sr. No.,Application ID,Name,Gender,Category,Seat Type,Choice Code,Merit No"];
     for (let n = 1; n <= rows; n += 1) {
       const cat = n % 3 === 0 ? "OBC" : "OPEN";
-      sheet.push(`${n},LC${y}${p.dept}${pad(n, 3)},${nameOf(y * 3 + n + (p.code === "BCOM" ? 50 : 0))},${n % 2 ? "M" : "F"},${cat},G${cat}S,${p.code},${100 + n}`);
+      sheet.push(`${n},${SPEC.idPrefix}${y}${p.dept}${pad(n, 3)},${nameOf(y * 3 + n + (second ? 50 : 0))},${n % 2 ? "M" : "F"},${cat},G${cat}S,${p.code},${100 + n}`);
     }
     const imported = await step("ADMIN", "collegeAdmissions.importAllotments", () => L.cadm.importAllotments(A.ctx, round.id, sheet.join("\n")));
     if (imported && imported.refused.length) noteBreak("ADMIN", "collegeAdmissions.importAllotments", JSON.stringify(imported.refused[0]));
@@ -1261,10 +1437,10 @@ async function capAdmissions(W: CollegeWorld, y: number, idx: number, divisions:
     let n = 0;
     for (const al of allotments) {
       n += 1;
-      // The first FY BSc Physics student of year 1 is seventeen, with a guardian: 18 on 15 January of the first year.
-      const minor = idx === 0 && p.code === "BSCPHY" && n === 1;
+      // The first first-year student of the first programme in year 1 is seventeen, with a guardian: 18 on 15 January of the first year.
+      const minor = idx === 0 && p.code === PROGRAMMES[0].code && n === 1;
       const birth = minor ? `${y - 18 + 1}-01-15` : `${y - 18}-${pad((n % 12) + 1)}-${pad(5 + n)}`;
-      const app = await step("ADMIN", "collegeAdmissions.createApplication", () => L.cadm.createApplication(A.ctx, { roundId: round.id, capAllotmentId: al.id, birthdateKey: birth, gender: n % 2 ? "M" : "F", phone: `+91982207${pad(y % 100)}${pad(n, 2)}` } as never));
+      const app = await step("ADMIN", "collegeAdmissions.createApplication", () => L.cadm.createApplication(A.ctx, { roundId: round.id, capAllotmentId: al.id, birthdateKey: birth, gender: n % 2 ? "M" : "F", phone: `${SPEC.phoneBase}${pad(y % 100)}${pad(n, 2)}` } as never));
       if (!app) continue;
       const appId = (app as Any).id;
       for (const d of (app as Any).documents ?? []) {
@@ -1287,19 +1463,19 @@ async function capAdmissions(W: CollegeWorld, y: number, idx: number, divisions:
           continue;
         }
         note(`seat refused at the offer as the limits say (${key})`);
-        if (!(idx === 0 && p.code === "BCOM")) continue;
+        if (!(idx === 0 && second)) continue;
         await step("PRINCIPAL", "collegeAdmissions.approveSupernumerary", () => L.cadm.approveSupernumerary(W.principal.ctx, appId, { reason: "ZZ ward of a serviceman" }));
         offered = await step("ADMIN", "collegeAdmissions.offerSeat (supernumerary)", () => L.cadm.offerSeat(A.ctx, appId));
         if (!offered) continue;
       }
       const fee = (offered as Any)?.admissionFeePaise ?? 0;
       if (fee > 0) await step("ADMIN", "collegeAdmissions.recordAdmissionFee", () => L.cadm.recordAdmissionFee(A.ctx, appId, { amountPaise: fee, method: "BANK", reference: `UTRADM${y}${p.dept}${n}` }));
-      const prn = `LC${y}${p.dept}${pad(n, 3)}`;
+      const prn = `${SPEC.idPrefix}${y}${p.dept}${pad(n, 3)}`;
       const admitted = await step("ADMIN", "collegeAdmissions.admitStudent", () => L.cadm.admitStudent(A.ctx, appId, { prn }));
       if (!admitted) continue;
       await redate();
       const div = divisions.get(`${p.code}|1`);
-      if (div) await step("ADMIN", "academics.saveSeat (FY)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: admitted.studentMembershipId, programmeId: W.programmes[p.code].id, schemeId: W.programmes[p.code].schemeId, entryYear: y, yearOfStudy: 1, semester: 1, divisionId: div.id, rollNumber: n, prn: null } as never));
+      if (div) await step("ADMIN", "academics.saveSeat (FY)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: admitted.studentMembershipId, programmeId: W.programmes[p.code]!.id, schemeId: W.programmes[p.code]!.schemeId, entryYear: y, yearOfStudy: 1, semester: 1, divisionId: div.id, rollNumber: n, prn: null } as never));
       if (minor) {
         const parent = await person(W.minorEmail, "ZZ Ravindra Bhosale (guardian)");
         await L.fx.link(parent.id, admitted.studentMembershipId, W.id);
@@ -1309,13 +1485,228 @@ async function capAdmissions(W: CollegeWorld, y: number, idx: number, divisions:
         await dbx.user.update({ where: { id: u.userId }, data: { email: MAIL(`c.minor${y}`) } });
       }
     }
-    if (idx === 0 && p.code === "BCOM") {
+    if (idx === 0 && second) {
       const admittedCount = await dbx.collegeApplication.count({ where: { roundId: round.id, status: "ADMITTED", supernumeraryAt: null } });
       const extra = await dbx.collegeApplication.count({ where: { roundId: round.id, status: "ADMITTED", supernumeraryAt: { not: null } } });
-      note(`BCom year 1: ${admittedCount} admitted within the limits and ${extra} supernumerary`);
-      if (admittedCount > INTAKE) noteBreak("ADMIN", "collegeAdmissions.admitStudent (intake)", `OVERBOOKING: ${admittedCount} admitted to BCom in a round of 6 seats and an intake of ${INTAKE}; neither limit refused the seventh`);
+      note(`${p.short} year 1: ${admittedCount} admitted within the limits and ${extra} supernumerary`);
+      if (admittedCount > INTAKE) noteBreak("ADMIN", "collegeAdmissions.admitStudent (intake)", `OVERBOOKING: ${admittedCount} admitted to ${p.short} in a round of 6 seats and an intake of ${INTAKE}; neither limit refused the seventh`);
     }
   }
+}
+
+/* ------------------------------------------------ engineering: labs, practicals, conduct, the SAR */
+
+type Offering = { id: string; code: string; programme: string; yos: number; slot: 0 | 1; divisionId: string; period: string; lab: boolean };
+
+/**
+ * After registration, the registrar splits each division that has a practical
+ * course into batches of LAB_BATCH_SIZE (re-splitting in the even term keeps
+ * the batches' ids), and gives the practical offering a LAB hour per batch in
+ * the department's lab: batch A on Monday, B on Friday, at the division's own
+ * period (so a teacher's divisions never share an hour).
+ */
+async function labBatchesForTerm(W: CollegeWorld, offerings: Offering[]) {
+  const A = W.registrar;
+  for (const o of offerings.filter((x) => x.lab)) {
+    const split = await step("ADMIN", "streamRecords.splitLabBatches", () => L.streamRecords.splitLabBatches(A.ctx, { divisionId: o.divisionId, size: LAB_BATCH_SIZE }));
+    if (!split) continue;
+    const batches = (split.divisions.find((d) => d.divisionId === o.divisionId)?.batches ?? []) as { id: string; name: string; members: unknown[] }[];
+    if (batches.length !== 2) note(`${o.code}: ${batches.length} lab batch(es) of ${batches.map((b) => b.members.length).join("+")} (two expected for an intake of six or seven)`);
+    const dept = PROGRAMMES.find((p) => p.code === o.programme)!.dept;
+    for (const [b, batch] of batches.entries()) {
+      await step("ADMIN", "academics.saveTimetableSlot (LAB, batch)", () => L.academics.saveTimetableSlot(A.ctx, { offeringId: o.id, weekday: LAB_WEEKDAYS[b % LAB_WEEKDAYS.length]!, periodId: o.period, kind: "LAB", roomId: W.labRooms[dept] ?? null, labBatchId: batch.id } as never));
+    }
+  }
+}
+
+/** The one negative check of the batches: a mark for a student outside the lecture's batch is refused (422 streamRecords.refuseNotInBatch). */
+let batchRefusalChecked = false;
+async function outsideBatchCheck(teacher: Actor, lectureId: string, outsider: string | null) {
+  if (!outsider) return;
+  batchRefusalChecked = true;
+  try {
+    await L.lectures.markLecture(teacher.ctx, lectureId, { clientId: `lce-outside-${lectureId}`, entries: [{ studentMembershipId: outsider, status: "PRESENT" }] } as never);
+    noteBreak(teacher.ctx.role!, "lectures.markLecture (a student outside the batch)", "a mark for a student outside the lecture's lab batch was accepted");
+  } catch (e) {
+    const key = (e as { key?: string }).key;
+    if (key === "streamRecords.refuseNotInBatch") note(`negative check, as intended: markLecture refused a student outside the lab batch (${errorText(e)})`);
+    else noteBreak(teacher.ctx.role!, "lectures.markLecture (a student outside the batch)", `refused, but not for the batch: ${errorText(e)}`);
+  }
+}
+
+/** Two experiments a term for every registered student of the practical course, by its teacher; then signed by the department's LAB_INCHARGE (a colleague who does not teach it). */
+async function practicalRecords(W: CollegeWorld, y: number, which: "odd" | "even", offerings: Offering[]) {
+  const labs = offerings.filter((o) => o.lab);
+  if (!labs.length) return;
+  const days = which === "odd" ? [`${y}-08-14`, `${y}-09-18`] : [`${y + 1}-01-16`, `${y + 1}-02-19`];
+  setClock(which === "odd" ? `${y}-10-05` : `${y + 1}-03-05`, 16);
+  for (const o of labs) {
+    const { teacher } = teachersOf(W, o.programme, o.slot);
+    const regs: string[] = (await dbx.courseRegistration.findMany({ where: { offeringId: o.id, status: "REGISTERED" }, orderBy: { studentMembershipId: "asc" }, select: { studentMembershipId: true } })).map((r: Any) => r.studentMembershipId as string);
+    if (!regs.length) continue;
+    for (const [e, day] of days.entries()) {
+      await step(teacher.ctx.role!, "streamRecords.savePracticals", () => L.streamRecords.savePracticals(teacher.ctx, { offeringId: o.id, experimentNo: e + 1, title: `Experiment ${e + 1}: ${o.code}`, performedOn: day, entries: regs.map((id, j) => ({ studentMembershipId: id, marks: 6 + ((j + e + y) % 5) })) }));
+    }
+  }
+  await redate();
+  setClock(which === "odd" ? `${y}-10-08` : `${y + 1}-03-08`, 12);
+  for (const o of labs) {
+    const incharge = o.programme === PROGRAMMES[0].code ? W.faculty[0]! : W.faculty[2]!;
+    const ids = (await dbx.practicalRecord.findMany({ where: { offeringId: o.id, signedAt: null }, select: { id: true } })).map((r: Any) => r.id as string);
+    if (!ids.length) continue;
+    const signed = await step("FACULTY", "streamRecords.signPracticals (lab in-charge)", () => L.streamRecords.signPracticals(incharge.ctx, ids));
+    if (signed && signed.count !== ids.length) noteBreak("FACULTY", "streamRecords.signPracticals (lab in-charge)", `${signed.count} of ${ids.length} rows signed`);
+  }
+  await redate();
+}
+
+/** A small, valid one-page PDF that says what it is: the sealed paper's contents (as scripts/zz-exams.ts makes it). */
+function fixturePdf(): Buffer {
+  const text = "ZZ lifecycle question paper: Q1 (CO1, 30 marks) Q2 (CO2, 30 marks).";
+  const stream = `BT /F1 12 Tf 50 750 Td (${text}) Tj ET`;
+  const objects = [
+    "<< /Type /Catalog /Pages 2 0 R >>",
+    "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+    "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>",
+    `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`,
+    "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+  ];
+  let out = "%PDF-1.4\n";
+  const offsets: number[] = [];
+  objects.forEach((o, i) => {
+    offsets.push(out.length);
+    out += `${i + 1} 0 obj\n${o}\nendobj\n`;
+  });
+  const xref = out.length;
+  out += `xref\n0 ${objects.length + 1}\n0000000000 65535 f \n${offsets.map((o) => `${String(o).padStart(10, "0")} 00000 n \n`).join("")}`;
+  out += `trailer\n<< /Size ${objects.length + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+  return Buffer.from(out, "latin1");
+}
+const PAPER_PDF = fixturePdf();
+let sealingNoted = false;
+
+/** The exam days of a session: two papers a day (10:00 and 14:30 IST), Sundays skipped. */
+function examSlots(firstDay: string, n: number): Date[] {
+  const out: Date[] = [];
+  let d = firstDay;
+  while (out.length < n) {
+    if (weekday(d) !== 0) {
+      out.push(ist(d, 10));
+      if (out.length < n) out.push(ist(d, 14, 30));
+    }
+    d = addDays(d, 1);
+  }
+  return out;
+}
+const dayOf = (at: Date) => new RealDate(at.getTime() + 330 * 60_000).toISOString().slice(0, 10);
+
+/**
+ * THE AUTONOMOUS COLLEGE'S OWN CONDUCT, before the sitting: the date sheet
+ * (every course on an approved form, regular and backlog), a setter for each
+ * paper (its teacher), the paper submitted SEALED by the setter, moderated by
+ * the controller, a hall per paper, the seating, the hall tickets and the
+ * printing lists.
+ */
+async function conductBefore(W: CollegeWorld, y: number, which: "odd" | "even", sessionId: string) {
+  const C = W.controller;
+  setClock(which === "odd" ? `${y}-10-30` : `${y + 1}-03-20`, 11);
+  const approved = await dbx.examForm.findMany({ where: { sessionId, status: "APPROVED" }, select: { coursesJson: true } });
+  const ids = [...new Set(approved.flatMap((f: Any) => (JSON.parse(f.coursesJson) as { courseId: string }[]).map((c) => c.courseId)))];
+  const courses = [...W.courses.values()].filter((c) => ids.includes(c.id)).sort((a, b) => a.code.localeCompare(b.code));
+  const slots = examSlots(which === "odd" ? `${y}-11-21` : `${y + 1}-04-21`, courses.length);
+  for (const [i, c] of courses.entries()) await step("EXAM_CONTROLLER", "examCell.saveSchedule", () => L.cell.saveSchedule(C.ctx, sessionId, { courseId: c.id, at: slots[i]!.toISOString(), durationMin: 180 }));
+  const schedules = await dbx.examSchedule.findMany({ where: { sessionId }, orderBy: { at: "asc" }, select: { id: true, courseId: true, courseCode: true } });
+  const papers: { id: string; setter: Actor; code: string }[] = [];
+  for (const sch of schedules) {
+    const course = [...W.courses.values()].find((c) => c.id === sch.courseId);
+    if (!course) continue;
+    const { teacher } = teachersOf(W, course.programme, course.slot);
+    const a = await step("EXAM_CONTROLLER", "examCellAfter.assignPaper", () => L.cellAfter.assignPaper(C.ctx, sessionId, { scheduleId: sch.id, setterMembershipId: teacher.membershipId! }));
+    if (a?.id) papers.push({ id: a.id, setter: teacher, code: sch.courseCode });
+    await step("EXAM_CONTROLLER", "examCell.saveRoom", () => L.cell.saveRoom(C.ctx, sessionId, { scheduleId: sch.id, name: "ZZ Exam Hall 1", capacity: 40 }));
+  }
+  await redate();
+  // The setters' papers, sealed at once (secret-box under FEES_SECRET_KEY, which with-admin-db loads from .env).
+  setClock(which === "odd" ? `${y}-11-04` : `${y + 1}-03-25`, 17);
+  if (!L.secretBox.sealingAvailable()) {
+    if (!sealingNoted) note("sealing is not available (FEES_SECRET_KEY unset): no paper was submitted, so none is moderated or opened");
+    sealingNoted = true;
+  } else {
+    for (const p of papers) {
+      await step(p.setter.ctx.role!, "examCellAfter.submitPaper (sealed)", () => L.cellAfter.submitPaper(p.setter.ctx, p.id, { fileName: `${p.code}-${which}-${y}.pdf`, mime: "application/pdf", dataBase64: PAPER_PDF.toString("base64"), coMap: [{ question: "Q1", co: "CO1", marks: 30 }, { question: "Q2", co: "CO2", marks: 30 }] }));
+    }
+    await redate();
+    setClock(which === "odd" ? `${y}-11-09` : `${y + 1}-03-30`, 12);
+    for (const p of papers) await step("EXAM_CONTROLLER", "examCellAfter.moderatePaper", () => L.cellAfter.moderatePaper(C.ctx, p.id, "Moderated: the questions cover CO1 and CO2 evenly."));
+  }
+  // Halls, seats, tickets, the printing lists.
+  setClock(which === "odd" ? `${y}-11-12` : `${y + 1}-04-02`, 11);
+  const seated = await step("EXAM_CONTROLLER", "examCell.buildSeating", () => L.cell.buildSeating(C.ctx, sessionId));
+  if (seated && seated.count) noteBreak("EXAM_CONTROLLER", "examCell.buildSeating", `${seated.count} candidate(s) found no seat in a hall of 40`);
+  await step("EXAM_CONTROLLER", "examCell.issueHallTickets", () => L.cell.issueHallTickets(C.ctx, sessionId));
+  await step("EXAM_CONTROLLER", "examCellAfter.buildPrintingLists", () => L.cellAfter.buildPrintingLists(C.ctx, sessionId, 2));
+  await redate();
+}
+
+/** The sitting: each paper opened once by the controller on its morning (and checked against what the setter sealed); then the answer books in bundles to an assessor, returned. */
+async function conductDuring(W: CollegeWorld, sessionId: string) {
+  const C = W.controller;
+  const schedules = await dbx.examSchedule.findMany({ where: { sessionId }, orderBy: { at: "asc" }, select: { id: true, at: true, courseId: true, courseCode: true, papers: { select: { id: true, sealedBody: true } }, _count: { select: { seats: true } } } });
+  for (const sch of schedules) {
+    const at = sch.at instanceof RealDate ? sch.at : new RealDate(sch.at);
+    const istHour = new RealDate(at.getTime() + 330 * 60_000).getUTCHours();
+    setClock(dayOf(at), istHour >= 14 ? 14 : 9, 0);
+    for (const p of sch.papers) {
+      if (!p.sealedBody) continue;
+      const opened = await step("EXAM_CONTROLLER", "examCellAfter.openPaper", () => L.cellAfter.openPaper(C.ctx, p.id));
+      if (opened && !opened.bytes.equals(PAPER_PDF)) noteBreak("EXAM_CONTROLLER", "examCellAfter.openPaper", `${sch.courseCode}: the opened paper is not what the setter sealed`);
+    }
+  }
+  await redate();
+  const last = schedules.at(-1);
+  if (!last) return;
+  const lastDay = dayOf(last.at instanceof RealDate ? last.at : new RealDate(last.at));
+  setClock(addDays(lastDay, 1), 11);
+  await step("EXAM_CONTROLLER", "examCell.setSessionStatus ASSESSMENT", () => L.cell.setSessionStatus(C.ctx, sessionId, "ASSESSMENT" as never));
+  const allotted: string[] = [];
+  for (const sch of schedules) {
+    const course = [...W.courses.values()].find((c) => c.id === sch.courseId);
+    if (!course) continue;
+    const { moderator } = teachersOf(W, course.programme, course.slot);
+    const a = await step("EXAM_CONTROLLER", "examCellAfter.saveAllocation", () => L.cellAfter.saveAllocation(C.ctx, sessionId, { scheduleId: sch.id, assessorMembershipId: moderator.membershipId!, bundle: `${sch.courseCode}-B1`, count: Math.max(1, sch._count.seats) }));
+    if (a?.id) allotted.push(a.id);
+  }
+  await redate();
+  setClock(addDays(lastDay, 4), 16);
+  for (const id of allotted) await step("EXAM_CONTROLLER", "examCellAfter.returnAllocation", () => L.cellAfter.returnAllocation(C.ctx, id));
+  await redate();
+}
+
+/** The year's NBA SAR for the first programme's department: generated by the IQAC, self-assessed by its HOD, regenerated, submitted, signed off by the principal, filed. */
+const SAR_MARKS: { year: string; computed: number; self: number; total: number; status: string }[] = [];
+async function nbaYear(W: CollegeWorld, y: number) {
+  const Q = W.iqac;
+  const P0 = PROGRAMMES[0];
+  const departmentId = W.programmes[P0.code]?.deptId;
+  const hod = W.hod[P0.dept];
+  if (!departmentId || !hod) return;
+  const made = await step("IQAC", "iqacFilings.generateFiling NBA_SAR", () => L.iqacFilings.generateFiling(Q.ctx, { kind: "NBA_SAR", year: y, cycleId: null, departmentId }));
+  if (!made) return;
+  const items = L.contracts.NBA_SAR_ITEMS.filter((i) => !i.computed).map((i, j) => ({ code: i.code, answer: null, score: Math.round(i.marks * (0.55 + ((j + y) % 4) * 0.05)), note: `ZZ ${P0.short}, ${yearName(y)}: the department's account of ${i.text.toLowerCase()}.` }));
+  await step("HOD", "councilFilings.saveWorksheet NBA_SAR", () => L.councilFilings.saveWorksheet(hod.ctx, "NBA_SAR", { year: y, departmentId, items }));
+  await step("IQAC", "iqacFilings.generateFiling NBA_SAR (regenerated)", () => L.iqacFilings.generateFiling(Q.ctx, { kind: "NBA_SAR", year: y, cycleId: null, departmentId }));
+  const f = await dbx.collegeFiling.findFirst({ where: { schoolId: W.id, kind: "NBA_SAR", year: y, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, figuresJson: true } });
+  if (!f) return noteBreak("IQAC", "iqacFilings.generateFiling NBA_SAR", "no filing row after generating");
+  await step("IQAC", "iqacFilings.submitFiling NBA_SAR", () => L.iqacFilings.submitFiling(Q.ctx, f.id));
+  await step("PRINCIPAL", "iqacFilings.signOffFiling NBA_SAR", () => L.iqacFilings.signOffFiling(W.principal.ctx, f.id, { decision: "SIGN", note: "Signed." } as never));
+  await step("IQAC", "iqacFilings.markFiled NBA_SAR", () => L.iqacFilings.markFiled(Q.ctx, f.id, null));
+  const fig = JSON.parse(f.figuresJson ?? "{}") as { computedMarks?: number; selfMarks?: number };
+  const status = (await dbx.collegeFiling.findUnique({ where: { id: f.id }, select: { status: true } }))?.status ?? "?";
+  const hundredths = (x: number) => Math.round(x * 100) / 100;
+  const row = { year: yearName(y), computed: hundredths(fig.computedMarks ?? 0), self: hundredths(fig.selfMarks ?? 0), total: hundredths((fig.computedMarks ?? 0) + (fig.selfMarks ?? 0)), status };
+  SAR_MARKS.push(row);
+  note(`NBA SAR ${P0.dept} ${row.year}: ${row.computed} computed + ${row.self} self-assessed = ${row.total} of 1000, ${status}`);
+  writeFileSync(join(OUT, "sar.json"), JSON.stringify(SAR_MARKS, null, 2));
 }
 
 async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, which: "odd" | "even", divisions: Map<string, { id: string; classId: string }>, yearId: string, claimId: string | null) {
@@ -1326,10 +1717,10 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
 
   /* offerings and the timetable, before registration */
   setClock(which === "odd" ? `${y}-06-18` : `${y}-11-18`, 11);
-  const offerings: { id: string; code: string; programme: "BSCPHY" | "BCOM"; yos: number; slot: 0 | 1 }[] = [];
+  const offerings: Offering[] = [];
   let di = 0;
   for (const p of PROGRAMMES) {
-    for (const yos of [1, 2, 3]) {
+    for (const yos of YEARS_OF_STUDY) {
       const div = divisions.get(`${p.code}|${yos}`);
       const sem = which === "odd" ? yos * 2 - 1 : yos * 2;
       di += 1;
@@ -1337,13 +1728,15 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
       // A division nobody sits in this year (the college fills up over its first three years) gets no offerings.
       if (!(await dbx.studentProgramme.count({ where: { divisionId: div.id, status: "ACTIVE" } }))) continue;
       for (const slot of [0, 1] as const) {
-        const code = `${p.code === "BSCPHY" ? "PHY" : "COM"}${sem}0${slot + 1}`;
+        const code = `${p.prefix}${sem}0${slot + 1}`;
         const course = W.courses.get(code);
         if (!course) continue;
         const { teacher } = teachersOf(W, p.code, slot);
-        const o = await step("ADMIN", "academics.saveOffering", () => L.academics.saveOffering(A.ctx, { termId, courseId: course.id, divisionId: div.id, facultyMembershipId: teacher.membershipId, lectureHours: 3, tutorialHours: 1, practicalHours: 0, roomId: null, capacity: null } as never));
+        // The practical course (engineering): two practical hours a week, a LAB hour for each batch (set after registration, below).
+        const lab = SPEC.labs && slot === LAB_SLOT;
+        const o = await step("ADMIN", "academics.saveOffering", () => L.academics.saveOffering(A.ctx, { termId, courseId: course.id, divisionId: div.id, facultyMembershipId: teacher.membershipId, lectureHours: 3, tutorialHours: 1, practicalHours: lab ? 2 : 0, roomId: null, capacity: null } as never));
         if (!o) continue;
-        offerings.push({ id: (o as Any).id, code, programme: p.code, yos, slot });
+        offerings.push({ id: (o as Any).id, code, programme: p.code, yos, slot, divisionId: div.id, period: W.periods[(di - 1) % W.periods.length]!, lab });
         // Tuesday for the first course, Thursday for the second, in the division's own bell.
         await step("ADMIN", "academics.saveTimetableSlot", () => L.academics.saveTimetableSlot(A.ctx, { offeringId: (o as Any).id, weekday: slot === 0 ? 2 : 4, periodId: W.periods[(di - 1) % W.periods.length]!, kind: "LECTURE", roomId: null } as never));
       }
@@ -1355,7 +1748,10 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
     for (const st of await seatsOf(W)) {
       const sp = await dbx.studentProgramme.findUnique({ where: { studentMembershipId: st.membershipId }, select: { entryYear: true, yearOfStudy: true, semester: true, divisionId: true } });
       if (sp.semester === sp.yearOfStudy * 2) continue;
-      await step("ADMIN", "academics.saveSeat (even semester)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: st.membershipId, programmeId: W.programmes[st.programme].id, schemeId: W.programmes[st.programme].schemeId, entryYear: sp.entryYear, yearOfStudy: sp.yearOfStudy, semester: sp.yearOfStudy * 2, divisionId: sp.divisionId, rollNumber: null, prn: null } as never));
+      // saveSeat writes the roll it is given, null included. The arts walk has always sent null here (its rolls go blank in the even term,
+      // which nothing there reads); at an engineering college the even term's re-split of the lab batches goes by roll, so the roll is kept.
+      const roll = SPEC.labs ? ((await dbx.enrollment.findFirst({ where: { studentMembershipId: st.membershipId, status: "ACTIVE", class: { division: { is: { id: sp.divisionId } } } }, select: { rollNumber: true } }))?.rollNumber ?? null) : null;
+      await step("ADMIN", "academics.saveSeat (even semester)", () => L.academics.saveSeat(A.ctx, { studentMembershipId: st.membershipId, programmeId: W.programmes[st.programme]!.id, schemeId: W.programmes[st.programme]!.schemeId, entryYear: sp.entryYear, yearOfStudy: sp.yearOfStudy, semester: sp.yearOfStudy * 2, divisionId: sp.divisionId, rollNumber: roll, prn: null } as never));
     }
   }
   setClock(which === "odd" ? `${y}-06-25` : `${y}-11-25`, 11);
@@ -1366,6 +1762,8 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
     await step("ADMIN", "registration.saveRegistration", () => L.registration.saveRegistration(A.ctx, { termId, offeringIds: mine, studentMembershipId: st.membershipId }));
   }
   await redate();
+  /* engineering: the divisions split into lab batches, and the practical course's LAB hour for each batch */
+  if (SPEC.labs) await labBatchesForTerm(W, offerings);
 
   /* leave: a faculty member in August or January */
   setClock(which === "odd" ? `${y}-08-10` : `${y + 1}-01-08`, 9);
@@ -1375,22 +1773,29 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
     if (applied && applied.ok && applied.id) await step("PRINCIPAL", "leave.decideLeave", () => L.leave.decideLeave(W.principal.ctx, applied.id!, "APPROVED", {}));
   }
 
-  /* lectures: Tuesdays and Thursdays, every one marked by its teacher */
-  const lowAttendance = which === "even" ? seats.find((x) => x.yearOfStudy === 2 && x.programme === "BCOM") : undefined;
+  /* lectures: Tuesdays and Thursdays, every one marked by its teacher (and at engineering, the batches' LAB hours on Mondays and Fridays) */
+  const lowAttendance = which === "even" ? seats.find((x) => x.yearOfStudy === 2 && x.programme === PROGRAMMES[1].code) : undefined;
+  const lectureDays = SPEC.labs ? [2, 4, ...LAB_WEEKDAYS] : [2, 4];
   let k = 0;
   for (const day of daysBetween(termStart, lectureEnd)) {
     const wd = weekday(day);
-    if (wd !== 2 && wd !== 4) continue;
+    if (!lectureDays.includes(wd)) continue;
     setClock(day, 9, 5);
     const ensured = await step("SYSTEM", "academics.ensureLecturesForDay", () => L.academics.ensureLecturesForDay(s, day));
     if (!ensured || ensured.closed) continue;
-    const lectures = await dbx.lecture.findMany({ where: { schoolId: s, dateKey: day, offering: { termId } }, select: { id: true, offeringId: true } });
+    const lectures = await dbx.lecture.findMany({ where: { schoolId: s, dateKey: day, offering: { termId } }, select: { id: true, offeringId: true, labBatchId: true } });
     setClock(day, 15, 30);
     for (const lec of lectures) {
       const o = offerings.find((x) => x.id === lec.offeringId);
       if (!o) continue;
       const { teacher } = teachersOf(W, o.programme, o.slot);
-      const regs = await dbx.courseRegistration.findMany({ where: { offeringId: o.id, status: "REGISTERED" }, select: { studentMembershipId: true } });
+      let regs = await dbx.courseRegistration.findMany({ where: { offeringId: o.id, status: "REGISTERED" }, select: { studentMembershipId: true } });
+      if (lec.labBatchId) {
+        // A batch's LAB hour: the batch's students only (markLecture refuses anyone else — checked once, below).
+        const members = new Set((await dbx.labBatchMember.findMany({ where: { batchId: lec.labBatchId }, select: { studentMembershipId: true } })).map((m: Any) => m.studentMembershipId));
+        if (!batchRefusalChecked) await outsideBatchCheck(teacher, lec.id, regs.map((r: Any) => r.studentMembershipId).find((id: string) => !members.has(id)) ?? null);
+        regs = regs.filter((r: Any) => members.has(r.studentMembershipId));
+      }
       if (!regs.length) continue;
       k += 1;
       const entries = regs.map((r: Any, j: number) => {
@@ -1444,7 +1849,7 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
       if (ask) {
         const askId = (ask as Any).id;
         const hodDecision = (elig.percent ?? 0) >= 65 ? "APPROVE" : "FORWARD";
-        await step("HOD", "lectures.decideCondonation", () => L.lectures.decideCondonation(W.hod.COM.ctx, askId, { decision: hodDecision, note: "Seen the certificate." } as never));
+        await step("HOD", "lectures.decideCondonation", () => L.lectures.decideCondonation(W.hod[PROGRAMMES[1].dept]!.ctx, askId, { decision: hodDecision, note: "Seen the certificate." } as never));
         if (hodDecision === "FORWARD") await step("PRINCIPAL", "lectures.decideCondonation", () => L.lectures.decideCondonation(W.principal.ctx, askId, { decision: "APPROVE", note: "Condoned on medical grounds." } as never));
       }
     }
@@ -1460,12 +1865,12 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
       if (c?.status === "SANCTIONED") await step("ACCOUNTS", "scholarships.updateClaim DISBURSE", () => L.scholarships.updateClaim(W.accounts.ctx, claimId, { action: "DISBURSE", amountPaise: c.expectedPaise, on: simKey, reference: `PFMS${y}${claimId.slice(-6)}` } as never));
     }
     // The college library: a final-year student borrows in January and returns late in February.
-    const ty = (await seatsOf(W)).find((x) => x.yearOfStudy === 3);
+    const ty = (await seatsOf(W)).find((x) => x.yearOfStudy === FINAL_YEAR);
     if (ty) {
       setClock(`${y + 1}-01-12`, 12);
-      await step("LIBRARIAN", "library.issueCopy (college)", () => L.library.issueCopy(W.librarian.ctx, { accession: "LCC-1", membershipId: ty.membershipId }));
+      await step("LIBRARIAN", "library.issueCopy (college)", () => L.library.issueCopy(W.librarian.ctx, { accession: `${SPEC.accession}-1`, membershipId: ty.membershipId }));
       setClock(`${y + 1}-02-05`, 12);
-      const back = await step("LIBRARIAN", "library.returnCopy (college, late)", () => L.library.returnCopy(W.librarian.ctx, { accession: "LCC-1" }));
+      const back = await step("LIBRARIAN", "library.returnCopy (college, late)", () => L.library.returnCopy(W.librarian.ctx, { accession: `${SPEC.accession}-1` }));
       const fine = (back as Any)?.fine;
       if (fine) await step("ADMIN", "library.settleFine", () => L.library.settleFine(A.ctx, fine.id));
     }
@@ -1478,7 +1883,10 @@ async function runTerm(W: CollegeWorld, y: number, idx: number, termId: string, 
     await placementYear(W, y);
   }
 
-  /* the exam cell: forms, conduct, the university's file, the run, publication, grade cards */
+  /* engineering: the practical record of the term, written by the course's teacher and signed by the department's lab in-charge */
+  if (SPEC.labs) await practicalRecords(W, y, which, offerings);
+
+  /* the exam cell: forms, conduct (the university's file, or the autonomous college's own papers and double entry), the run, publication, grade cards */
   await examSession(W, y, idx, termId, which);
   await redate();
 
@@ -1527,13 +1935,18 @@ async function examSession(W: CollegeWorld, y: number, idx: number, termId: stri
     const amount = examDue.reduce((a: number, d: Any) => a + d.netPaise - d.paidPaise, 0);
     if (amount >= 100) await step("ACCOUNTS", "fees.recordCounterPayment (exam fee)", () => L.payments.recordCounterPayment(W.accounts.ctx, { studentMembershipId: f.studentMembershipId, amountPaise: amount, method: "CASH", reference: null, note: null, demandIds: examDue.map((d: Any) => d.id), clientId: `lcc-exam-${sessionId}-${f.studentMembershipId}`, paidAtKey: null } as never, now()));
   }
+  // An autonomous college sets, seals, moderates and seats its own papers before the sitting.
+  if (SPEC.autonomous) await conductBefore(W, y, which, sessionId);
   setClock(which === "odd" ? `${y}-11-20` : `${y + 1}-04-20`, 9);
   await step("EXAM_CONTROLLER", "examCell.setSessionStatus CONDUCT", () => L.cell.setSessionStatus(C.ctx, sessionId, "CONDUCT" as never));
+  if (SPEC.autonomous) await conductDuring(W, sessionId);
 
   // The university's result file: PRN, course, internal left blank (the HOD's lock is used), external. In even years one student fails one course in the odd session (an ATKT and a backlog).
+  // An autonomous college enters the same external marks itself, twice: the controller, then the registrar (double entry).
   setClock(which === "odd" ? `${y}-12-10` : `${y + 1}-05-08`, 11);
   const approved = await dbx.examForm.findMany({ where: { sessionId, status: "APPROVED" }, select: { studentMembershipId: true, coursesJson: true } });
   const lines = ["PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL"];
+  const byCourse = new Map<string, { studentMembershipId: string; marks: number; absent: boolean }[]>();
   let failer: string | null = null;
   for (const [j, f] of approved.entries()) {
     const rec = await dbx.pupilRecord.findUnique({ where: { studentMembershipId: f.studentMembershipId }, select: { prn: true } });
@@ -1541,11 +1954,21 @@ async function examSession(W: CollegeWorld, y: number, idx: number, termId: stri
       const code = [...W.courses.values()].find((x) => x.id === c.courseId)?.code ?? "?";
       const fail = which === "odd" && idx % 2 === 0 && j === 0 && c.kind === "REGULAR" && code.endsWith("01") && failer === null;
       if (fail) failer = f.studentMembershipId;
-      lines.push(`${rec?.prn ?? ""},,${code},,${fail ? 12 : 30 + ((j * 7 + code.charCodeAt(4)) % 26)}`);
+      const external = fail ? 12 : 30 + ((j * 7 + code.charCodeAt(4)) % 26);
+      lines.push(`${rec?.prn ?? ""},,${code},,${external}`);
+      byCourse.set(c.courseId, [...(byCourse.get(c.courseId) ?? []), { studentMembershipId: f.studentMembershipId, marks: external, absent: false }]);
     }
   }
-  const imp = await step("EXAM_CONTROLLER", "examCellMarks.importMarks", () => L.cellMarks.importMarks(C.ctx, sessionId, lines.join("\n")));
-  if (imp && imp.unmatched.length) noteBreak("EXAM_CONTROLLER", "examCellMarks.importMarks unmatched", JSON.stringify(imp.unmatched.slice(0, 2)));
+  if (SPEC.autonomous) {
+    for (const [courseId, entries] of byCourse) {
+      await step("EXAM_CONTROLLER", "examCellMarks.enterMarks (first entry)", () => L.cellMarks.enterMarks(C.ctx, sessionId, { courseId, entries }));
+      const second = await step("ADMIN", "examCellMarks.enterMarks (second entry)", () => L.cellMarks.enterMarks(W.registrar.ctx, sessionId, { courseId, entries }));
+      if (second && (second.mismatched || second.pending)) noteBreak("ADMIN", "examCellMarks.enterMarks (second entry)", `the same marks entered twice left ${second.mismatched} mismatched and ${second.pending} pending of ${entries.length}`);
+    }
+  } else {
+    const imp = await step("EXAM_CONTROLLER", "examCellMarks.importMarks", () => L.cellMarks.importMarks(C.ctx, sessionId, lines.join("\n")));
+    if (imp && imp.unmatched.length) noteBreak("EXAM_CONTROLLER", "examCellMarks.importMarks unmatched", JSON.stringify(imp.unmatched.slice(0, 2)));
+  }
   const run = await step("EXAM_CONTROLLER", "examCellMarks.runResults", () => L.cellMarks.runResults(C.ctx, sessionId));
   const draft = await dbx.resultRun.findFirst({ where: { sessionId, status: "DRAFT" }, select: { id: true } });
   if (run && draft) await step("EXAM_CONTROLLER", "examCellMarks.publishRun", () => L.cellMarks.publishRun(C.ctx, sessionId, draft.id));
@@ -1624,18 +2047,18 @@ async function placementYear(W: CollegeWorld, y: number) {
   setClock(`${y}-08-01`, 11);
   await step("TPO", "placement.savePlacementSettings", () => L.placement.savePlacementSettings(T.ctx, { seasonBatchYear: y + 1, dreamRatio: 1.5, allowGenderRule: false } as never));
   // The company, once: a GSTIN built with its check character.
-  let company = await dbx.company.findFirst({ where: { name: "ZZ Lifecycle Analytics Pvt Ltd" }, select: { id: true, verifiedAt: true } }).catch(() => null);
+  let company = await dbx.company.findFirst({ where: { name: SPEC.company.name }, select: { id: true, verifiedAt: true } }).catch(() => null);
   if (!company) {
-    const first14 = "27AAZCL1234C1Z";
+    const first14 = SPEC.company.first14;
     const identifier = first14 + L.contracts.gstinCheckChar(first14);
-    const made = await step("TPO", "placement.addCompany", () => L.placement.addCompany(T.ctx, { name: "ZZ Lifecycle Analytics Pvt Ltd", identifier, sectors: ["IT_SOFTWARE"], pointOfContact: "ZZ HR desk, hr@lifecycle.example.test" } as never));
+    const made = await step("TPO", "placement.addCompany", () => L.placement.addCompany(T.ctx, { name: SPEC.company.name, identifier, sectors: ["IT_SOFTWARE"], pointOfContact: "ZZ HR desk, hr@lifecycle.example.test" } as never));
     const id = (made as Any)?.id ?? (made as Any)?.companyId;
     if (id) await step("TPO", "placement.verifyCompany", () => L.placement.verifyCompany(T.ctx, id));
     company = id ? { id } : null;
   }
   if (!company) return;
   setClock(`${y}-09-01`, 11);
-  if (!(await seatsOf(W)).some((x) => x.yearOfStudy === 3)) {
+  if (!(await seatsOf(W)).some((x) => x.yearOfStudy === FINAL_YEAR)) {
     note(`no final-year students yet (the college's first intake was ${FIRST_YEAR}): no drive for batch ${y + 1}`);
     return internshipYear(W, y);
   }
@@ -1646,7 +2069,7 @@ async function placementYear(W: CollegeWorld, y: number) {
   const invited = await step("TPO", "placement.inviteEligible", () => L.placement.inviteEligible(T.ctx, driveId));
   if (invited && (invited as Any).eligible === 0) noteBreak("TPO", "placement.inviteEligible", `no eligible student for batch ${y + 1}`);
   setClock(`${y}-09-05`, 11);
-  const ty = (await seatsOf(W)).filter((x) => x.yearOfStudy === 3);
+  const ty = (await seatsOf(W)).filter((x) => x.yearOfStudy === FINAL_YEAR);
   const applied: string[] = [];
   for (const st of ty.slice(0, 4)) {
     const stu = await asMember(st.membershipId);
@@ -1683,7 +2106,7 @@ async function internshipYear(W: CollegeWorld, y: number) {
   const prop = await step("STUDENT", "internships.proposeInternship", () => L.internships.proposeInternship(stu.ctx, { companyName: "ZZ Lifecycle Analytics", kind: "INDUSTRY", from: `${y + 1}-05-02`, to: `${y + 1}-05-20`, hours: 120, windowSemester: 4, supervisorName: "ZZ Supervisor" } as never));
   const iid = (prop as Any)?.id;
   if (!iid) return;
-  const hod = W.hod[W.programmes[sy.programme].dept];
+  const hod = W.hod[W.programmes[sy.programme]!.dept]!;
   const fac = teachersOf(W, sy.programme, 0).teacher;
   await step("HOD", "internships.decideInternship", () => L.internships.decideInternship(hod.ctx, iid, { approve: true, facultyMembershipId: fac.membershipId, reason: "" } as never));
   setClock(`${y + 1}-05-10`, 18);
@@ -1742,7 +2165,7 @@ async function platformYear(y: number, idx: number) {
     await dbx.school.updateMany({ where: { id: { in: schoolIdsMine } }, data: { isTestFixture: false } });
     try {
       const r = await step("SYSTEM", "subscriptions.remindSubscriptions", () => L.subs.remindSubscriptions(now(), { schoolIds: schoolIdsMine, operatorIds: [op.userId] }));
-      if (r && (r as Any).reminded !== 2) noteBreak("SYSTEM", "subscriptions.remindSubscriptions", `reminded ${(r as Any).reminded} of 2 due: ${JSON.stringify(r).slice(0, 200)}`);
+      if (r && (r as Any).reminded !== schoolIdsMine.length) noteBreak("SYSTEM", "subscriptions.remindSubscriptions", `reminded ${(r as Any).reminded} of ${schoolIdsMine.length} due: ${JSON.stringify(r).slice(0, 200)}`);
     } finally {
       await dbx.school.updateMany({ where: { id: { in: schoolIdsMine } }, data: { isTestFixture: true } });
     }
@@ -1782,12 +2205,14 @@ async function retentionYear(y: number, users: string[]) {
 
 type Invariant = { name: string; ok: boolean; detail: string };
 
-async function invariants(S: SchoolWorld, C: CollegeWorld, y: number): Promise<Invariant[]> {
+async function invariants(S: SchoolWorld | null, C: CollegeWorld, y: number): Promise<Invariant[]> {
   const out: Invariant[] = [];
   const add = (name: string, failures: string[], detail = "") => out.push({ name, ok: failures.length === 0, detail: failures.length ? failures.slice(0, 5).join("; ") + (failures.length > 5 ? ` … (${failures.length})` : "") : detail });
 
   // 1. Every pupil on the roll is in exactly one live class (school) / one ACTIVE enrolment (college).
-  for (const [label, sid, archivedMatters] of [["school", S.id, true], ["college", C.id, false]] as const) {
+  // The engineering walk has no school: its checks are the college's alone.
+  const tenants = [...(S ? [["school", S.id, true] as const] : []), ["college", C.id, false] as const];
+  for (const [label, sid, archivedMatters] of tenants) {
     const active = await dbx.membership.findMany({ where: { schoolId: sid, role: "STUDENT", status: "ACTIVE", leftAt: null }, select: { id: true, enrollments: { where: { status: "ACTIVE", ...(archivedMatters ? { class: { archivedAt: null } } : {}) }, select: { classId: true } } } });
     const bad = active.filter((m: Any) => m.enrollments.length !== 1).map((m: Any) => `${m.id} in ${m.enrollments.length}`);
     add(`${label}: every pupil on the roll in exactly one class`, bad, `${active.length} pupils`);
@@ -1884,8 +2309,8 @@ async function invariants(S: SchoolWorld, C: CollegeWorld, y: number): Promise<I
       if (led.totals.netDuePaise !== want) ledgerFail.push(`college ledger ${st.id}: ledgerFor netDue ${led.totals.netDuePaise}, rows ${outstanding} − receivable ${pool} = ${want}`);
     }
   }
-  const sy = await dbx.academicYear.findFirst({ where: { schoolId: S.id, name: yearName(y) }, select: { id: true } });
-  if (sy) {
+  const sy = S ? await dbx.academicYear.findFirst({ where: { schoolId: S.id, name: yearName(y) }, select: { id: true } }) : null;
+  if (S && sy) {
     const today = L.dates.todayKey("Asia/Kolkata");
     for (const st of await dbx.membership.findMany({ where: { schoolId: S.id, role: "STUDENT" }, select: { id: true } })) {
       const led = (await L.fees.pupilLedger(S.id, st.id, { academicYearId: sy.id, todayKey: today })) as Any;
@@ -1940,12 +2365,27 @@ async function invariants(S: SchoolWorld, C: CollegeWorld, y: number): Promise<I
   add("tenancy: no row of either tenant references the other's rows", cross, "every FK between tenant tables checked");
 
   // 9. The register of year 1 is still readable through the year archive.
-  const first = await dbx.academicYear.findFirst({ where: { schoolId: S.id, name: yearName(FIRST_YEAR), closedAt: { not: null } }, select: { id: true } });
-  if (first) {
+  const first = S ? await dbx.academicYear.findFirst({ where: { schoolId: S.id, name: yearName(FIRST_YEAR), closedAt: { not: null } }, select: { id: true } }) : null;
+  if (S && first) {
     const arc = await L.archive.schoolYearArchive(S.admin.ctx, first.id);
     const raw = await dbx.attendanceRecord.count({ where: { schoolId: S.id, session: { dateKey: { gte: `${FIRST_YEAR}-06-01`, lte: `${FIRST_YEAR + 1}-04-30` } } } });
     baselineYear1 ??= raw;
     add("archive: year 1's register read in this year equals its rows (and the rows of year 1 never shrink)", arc.attendance.marked === raw && raw === baselineYear1 ? [] : [`archive ${arc.attendance.marked}, rows ${raw}, at year 1 ${baselineYear1}`], `${raw} marks`);
+  }
+
+  // 10. Engineering: a LAB hour's marks are its batch's students only; every practical row is signed; every paper sealed, moderated and opened once.
+  if (SPEC.labs) {
+    const stray = (await dbx.$queryRawUnsafe(`SELECT count(*)::int AS n FROM "LectureAttendance" a JOIN "Lecture" l ON l.id = a."lectureId" WHERE l."schoolId" = $1 AND l."labBatchId" IS NOT NULL AND NOT EXISTS (SELECT 1 FROM "LabBatchMember" m WHERE m."batchId" = l."labBatchId" AND m."studentMembershipId" = a."studentMembershipId")`, C.id)) as { n: number }[];
+    const batchMarks = (await dbx.$queryRawUnsafe(`SELECT count(*)::int AS n FROM "LectureAttendance" a JOIN "Lecture" l ON l.id = a."lectureId" WHERE l."schoolId" = $1 AND l."labBatchId" IS NOT NULL`, C.id)) as { n: number }[];
+    add("labs: a batch's LAB hour holds marks of the batch's students only", stray[0]!.n ? [`${stray[0]!.n} mark(s) of students outside the lecture's batch`] : [], `${batchMarks[0]!.n} batch marks`);
+    const unsigned = await dbx.practicalRecord.count({ where: { schoolId: C.id, signedAt: null } });
+    const records = await dbx.practicalRecord.count({ where: { schoolId: C.id } });
+    add("practical record: every row signed", unsigned ? [`${unsigned} of ${records} rows unsigned`] : [], `${records} rows`);
+  }
+  if (SPEC.autonomous) {
+    const papers = await dbx.questionPaper.findMany({ where: { schoolId: C.id }, select: { status: true, sealedBody: true, accessLogJson: true, schedule: { select: { courseCode: true, session: { select: { name: true } } } } } });
+    const bad = L.secretBox.sealingAvailable() ? papers.filter((p: Any) => p.status !== "MODERATED" || !p.sealedBody || JSON.parse(p.accessLogJson || "[]").length !== 1).map((p: Any) => `${p.schedule.session.name} ${p.schedule.courseCode}: ${p.status}, sealed ${Boolean(p.sealedBody)}, opened ${JSON.parse(p.accessLogJson || "[]").length}`) : [];
+    add("papers: every paper sealed, moderated and opened exactly once", bad, `${papers.length} papers`);
   }
   return out;
 }
@@ -2007,13 +2447,16 @@ function runAudit(label: string): { fail: number; warn: number; info: number; se
 /* TEARDOWN                                                                    */
 /* ========================================================================== */
 
+/** The walk's own accounts by email: zzlc.e.* for the engineering walk; zzlc.* but not zzlc.e.* for the school and the arts college. */
+const WALK_ACCOUNTS = ENGINEERING ? { email: { startsWith: MAIL_PREFIX, endsWith: "@zz.test" } } : { email: { startsWith: MAIL_PREFIX, endsWith: "@zz.test" }, NOT: { email: { startsWith: "zzlc.e." } } };
+
 async function teardown() {
   const schools = await dbx.school.findMany({ where: { slug: { in: SLUGS } }, select: { id: true, slug: true } });
   const ids = schools.map((s: Any) => s.id);
   // The people: anyone with a membership here and none elsewhere, the guardians of these pupils who have none elsewhere, and every zzlc. account.
   const members = await dbx.membership.findMany({ where: { schoolId: { in: ids } }, select: { userId: true } });
   const guardians = await dbx.guardianship.findMany({ where: { studentSchoolId: { in: ids } }, select: { parentUserId: true } });
-  const named = await dbx.user.findMany({ where: { email: { startsWith: "zzlc.", endsWith: "@zz.test" } }, select: { id: true } });
+  const named = await dbx.user.findMany({ where: WALK_ACCOUNTS, select: { id: true } });
   const candidates = [...new Set([...members.map((m: Any) => m.userId), ...guardians.map((g: Any) => g.parentUserId), ...named.map((u: Any) => u.id)])];
   const elsewhere = await dbx.membership.findMany({ where: { userId: { in: candidates }, schoolId: { notIn: ids } }, select: { userId: true } });
   const keep = new Set(elsewhere.map((m: Any) => m.userId));
@@ -2055,7 +2498,7 @@ async function teardown() {
   }
   // Rows without a schoolId that point at these tenants or people.
   deleted += (await dbx.guardianship.deleteMany({ where: { OR: [{ studentSchoolId: { in: ids } }, { parentUserId: { in: doomed } }] } })).count;
-  const company = await dbx.company.findMany({ where: { name: "ZZ Lifecycle Analytics Pvt Ltd" }, select: { id: true } }).catch(() => []);
+  const company = await dbx.company.findMany({ where: { name: SPEC.company.name }, select: { id: true } }).catch(() => []);
   if (company.length) {
     await dbx.companyRecruiter.deleteMany({ where: { companyId: { in: company.map((c: Any) => c.id) } } }).catch(() => undefined);
     await dbx.requirement.deleteMany({ where: { companyId: { in: company.map((c: Any) => c.id) } } }).catch(() => undefined);
@@ -2084,7 +2527,7 @@ async function teardown() {
     const r = (await dbx.$queryRawUnsafe(`SELECT count(*)::int AS n FROM "${t}" WHERE "schoolId" = ANY($1::text[])`, ids)) as { n: number }[];
     if (r[0]!.n) left.push(`${t}: ${r[0]!.n}`);
   }
-  const users2 = await dbx.user.count({ where: { OR: [{ id: { in: doomed } }, { email: { startsWith: "zzlc.", endsWith: "@zz.test" } }] } });
+  const users2 = await dbx.user.count({ where: { OR: [{ id: { in: doomed } }, WALK_ACCOUNTS] } });
   if (users2) left.push(`users: ${users2}`);
   const schoolsLeft = await dbx.school.count({ where: { slug: { in: SLUGS } } });
   if (schoolsLeft) left.push(`schools: ${schoolsLeft}`);
@@ -2095,6 +2538,35 @@ async function teardown() {
 /* ========================================================================== */
 /* MAIN                                                                        */
 /* ========================================================================== */
+
+/** What the engineering walk holds of the stream's records and the autonomous conduct, read from the rows. */
+async function engineeringCounts(schoolId: string) {
+  const n = async (sql: string) => ((await dbx.$queryRawUnsafe(sql, schoolId)) as { n: number }[])[0]!.n;
+  const papers = await dbx.questionPaper.findMany({ where: { schoolId }, select: { status: true, sealedBody: true, accessLogJson: true } });
+  return {
+    labBatches: await dbx.labBatch.count({ where: { schoolId } }),
+    labBatchMembers: await dbx.labBatchMember.count({ where: { schoolId } }),
+    labSlots: await dbx.offeringSlot.count({ where: { schoolId, kind: "LAB", labBatchId: { not: null } } }),
+    batchLectures: await dbx.lecture.count({ where: { schoolId, labBatchId: { not: null } } }),
+    batchMarks: await n(`SELECT count(*)::int AS n FROM "LectureAttendance" a JOIN "Lecture" l ON l.id = a."lectureId" WHERE l."schoolId" = $1 AND l."labBatchId" IS NOT NULL`),
+    practicalRecords: await dbx.practicalRecord.count({ where: { schoolId } }),
+    practicalSigned: await dbx.practicalRecord.count({ where: { schoolId, signedAt: { not: null } } }),
+    labInchargeSigned: await n(`SELECT count(*)::int AS n FROM "PracticalRecord" r JOIN "CourseOffering" o ON o.id = r."offeringId" WHERE r."schoolId" = $1 AND r."signedByMembershipId" IS NOT NULL AND r."signedByMembershipId" IS DISTINCT FROM o."facultyMembershipId"`),
+    examSchedules: await dbx.examSchedule.count({ where: { schoolId } }),
+    papers: papers.length,
+    papersSealed: papers.filter((p: Any) => p.sealedBody).length,
+    papersModerated: papers.filter((p: Any) => p.status === "MODERATED").length,
+    paperOpenings: papers.reduce((a: number, p: Any) => a + JSON.parse(p.accessLogJson || "[]").length, 0),
+    seats: await dbx.seating.count({ where: { schoolId } }),
+    hallTickets: await dbx.hallTicket.count({ where: { schoolId } }),
+    printingLists: await dbx.printingList.count({ where: { schoolId } }),
+    bundlesReturned: await dbx.assessmentAllocation.count({ where: { schoolId, status: "RETURNED" } }),
+    doubleEntryMarks: await dbx.examMark.count({ where: { schoolId, source: "DOUBLE_ENTRY", matched: true } }),
+    nbaSarFiled: await dbx.collegeFiling.count({ where: { schoolId, kind: "NBA_SAR", status: "FILED" } }),
+    aqarFiled: await dbx.collegeFiling.count({ where: { schoolId, kind: "AQAR", status: "FILED" } }),
+    graduates: await dbx.membership.count({ where: { schoolId, role: "ALUMNUS" } }),
+  };
+}
 
 type YearRow = { year: string; seconds: number; rowsWritten: number; audit: string; invariantFailures: string[]; breaks: number; retention: Record<string, number> | null };
 
@@ -2115,17 +2587,17 @@ async function main() {
   const done = new Set<number>();
   for (let y = FIRST_YEAR; y < FIRST_YEAR + YEARS; y += 1) {
     const closed = await dbx.academicYear.count({ where: { school: { slug: { in: SLUGS } }, name: yearName(y), closedAt: { not: null } } });
-    if (closed === 2) done.add(y);
+    if (closed === SLUGS.length) done.add(y);
   }
   const todo = Array.from({ length: YEARS }, (_, i) => FIRST_YEAR + i).filter((y) => !done.has(y));
   const firstTodo = todo[0];
   if (firstTodo !== undefined && done.size > 0 && todo.some((y) => y < Math.max(...done))) throw new Error("the walked years are not a prefix; run --teardown");
   if (firstTodo !== undefined) {
     // A year with anything in it but not closed by both is a crash's half-walk: refused, by name.
-    const half = await dbx.academicTerm.count({ where: { school: { slug: COLLEGE_SLUG }, academicYear: yearName(firstTodo) } });
-    const halfSchool = await dbx.term.count({ where: { school: { slug: SCHOOL_SLUG }, academicYear: { name: yearName(firstTodo) } } });
+    const half = await dbx.academicTerm.count({ where: { school: { slug: SPEC.slug }, academicYear: yearName(firstTodo) } });
+    const halfSchool = ENGINEERING ? 0 : await dbx.term.count({ where: { school: { slug: SCHOOL_SLUG }, academicYear: { name: yearName(firstTodo) } } });
     if (half || halfSchool) {
-      console.error(`\n  ${yearName(firstTodo)} is half-walked (terms exist, the year is not closed by both tenants). Run: npm run zz:lifecycle -- --teardown\n`);
+      console.error(`\n  ${yearName(firstTodo)} is half-walked (terms exist, the year is not closed by ${ENGINEERING ? "the tenant" : "both tenants"}). Run: npm run zz:lifecycle -- ${ENGINEERING ? "--college engineering " : ""}--teardown\n`);
       process.exitCode = 2;
       return;
     }
@@ -2136,7 +2608,7 @@ async function main() {
       return tableCounts();
     })();
     const total = Object.values(counts).reduce((a, b) => a + b, 0);
-    console.log(`\n  Nothing to do: ${YEARS} years already walked for ZZ Lifecycle School and ZZ Lifecycle College (${total} rows over ${Object.keys(counts).length} tables). Nothing was written.\n`);
+    console.log(`\n  Nothing to do: ${YEARS} years already walked for ${ENGINEERING ? SPEC.name : `ZZ Lifecycle School and ${SPEC.name}`} (${total} rows over ${Object.keys(counts).length} tables). Nothing was written.\n`);
     writeFileSync(join(OUT, "second-run.json"), JSON.stringify({ nothingToDo: true, rows: total, tables: Object.keys(counts).length }, null, 2));
     return;
   }
@@ -2149,12 +2621,12 @@ async function main() {
 
   YEAR = "setup";
   const t0 = realNow();
-  const S = await setupSchool();
+  const S = ENGINEERING ? null : await setupSchool();
   const C = await setupCollege();
   console.log(`  setup: ${Math.round((realNow() - t0) / 1000)} s`);
   const table: YearRow[] = existsSync(join(OUT, "years.json")) && done.size ? JSON.parse(readFileSync(join(OUT, "years.json"), "utf8")) : [];
   let before = await tableCounts();
-  const users = async () => [...new Set([...(await dbx.membership.findMany({ where: { schoolId: { in: schoolIdsMine } }, select: { userId: true } })).map((m: Any) => m.userId), (await operatorActor()).userId, (await expertActor()).userId])];
+  const users = async () => [...new Set([...(await dbx.membership.findMany({ where: { schoolId: { in: schoolIdsMine } }, select: { userId: true } })).map((m: Any) => m.userId), (await operatorActor()).userId, ...(S ? [(await expertActor()).userId] : [])])];
 
   for (const y of todo) {
     const idx = y - FIRST_YEAR;
@@ -2164,7 +2636,7 @@ async function main() {
     console.log(`\n=== ${YEAR} ===`);
     TENANT = "platform";
     await platformYear(y, idx);
-    await schoolYear(S, y, idx);
+    if (S) await schoolYear(S, y, idx);
     await collegeYear(C, y, idx);
     const retention = await retentionYear(y, await users());
     await redate();
@@ -2194,6 +2666,11 @@ async function main() {
     writeFileSync(join(OUT, "redated.json"), JSON.stringify([...REDATED.entries()].sort((a, b) => b[1] - a[1]), null, 2));
   }
 
+  if (ENGINEERING) {
+    const counts = await engineeringCounts(C.id);
+    writeFileSync(join(OUT, "engineering.json"), JSON.stringify({ ...counts, sar: SAR_MARKS }, null, 2));
+    console.log(`  Engineering: ${JSON.stringify(counts)}`);
+  }
   // The repository's audit reports, put back.
   for (const f of ["latest.md", "reports.md"]) if (existsSync(join(backup, f))) copyFileSync(join(backup, f), join(docs, f));
   // The walk's sessions go; the accounts stay until --teardown.

@@ -51,6 +51,21 @@ student from admission to the alumnus row. The map — modules, roles, the funct
 the stored values and their audit checks, what is untested — is docs/college.md; the demo college is
 `npm run demo:college`.
 
+**Streams (5 October 2026).** A college's streams (ARTS, SCIENCE, COMMERCE, MANAGEMENT, ENGINEERING,
+PHARMACY, LAW, EDUCATION, HEALTH_SCIENCES, ARCHITECTURE, AGRICULTURE, VOCATIONAL) are chosen by the operator
+at onboarding beside affiliated or autonomous, and a preset per stream decides the modules switched on when
+the college is made, the councils, the filings, the duties offered, the home tiles and a few words. Stream
+jobs are duties on a FACULTY or HOD membership, not roles: a lab in-charge, the anti-ragging squad, NSS and
+NCC officers, a research dean, the exam flying squad, a practice-teaching coordinator, each with a desk under
+`/duties/…` and a door gate after the role check. What a council asks a college to keep is kept per stream:
+lab batches and practical records, moot courts and law internships, teaching practice, NSS and NCC hours;
+and the councils' returns are filings like NAAC's (PCI inspection, BCI return, NCTE return, the NBA SAR per
+engineering department), offered only where the streams bring them. Health sciences, architecture and
+agriculture are listed and say what is not built. The demo autonomous engineering college is
+`npm run demo:college-engineering` (Saraswati Institute of Technology, `sit.*@demo.relay.test`); the
+lifecycle walk takes `--college engineering`. The section "Streams" of docs/college.md has the preset
+table, the desks, the records and the filings per stream.
+
 ## 2. Architecture
 
 ```

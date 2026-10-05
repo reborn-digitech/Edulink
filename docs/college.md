@@ -26,6 +26,85 @@ naming it in `access` or `limitedRoles`; pages check `assertModuleOn`/`isModuleO
 nav entries and phone tabs carry `module`. Where a page must exist only at a college, nav uses
 `module: "ACADEMICS"` as the stand-in for "is a college".
 
+## Streams (5 October 2026)
+
+The owner's decision of 5 October 2026: a college's **streams** are chosen by the operator at onboarding,
+beside affiliated or autonomous, and what the registrar sees loads from them. `STREAMS` and `STREAM_PRESETS`
+are in packages/contracts `v1/streams.ts`; the college's list is `School.streamsJson` (read with
+`parseStreams`, server-side `streamsOf(schoolId)` in `src/lib/streams.ts`); a programme carries its own
+`Programme.stream`. Every door that makes a college (operator create and onboarding, self-registration)
+refuses one with no stream; the registrar can change them on the college profile (audited
+`college.streams.set`). A college made with several streams gets the union of their presets
+(`presetUnion`): modules, filings and duties in canonical order, tiles in order, words only where every
+stream agrees.
+
+**The preset table, as built** (the base every stream shares: modules ALUMNI, ACADEMICS, EXAMS, ADMISSIONS,
+SCHOLARSHIPS, IQAC; filings NAAC SSR, AQAR, IIQA, NIRF, AISHE and the affiliating university's return;
+duties ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD; tiles people, academics, exams, admissions,
+scholarships, iqac):
+
+| Stream | Council (default first) | + modules | + filings | + duties | + home tiles | Words | Not built |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ARTS | UGC | — | — | NSS, NCC | library | — | — |
+| SCIENCE | UGC | — | — | LAB_INCHARGE, NSS, NCC | labs, library | — | — |
+| COMMERCE | UGC | — | — | NSS, NCC | library | — | — |
+| MANAGEMENT | AICTE, UGC | PLACEMENT | AICTE disclosure | NSS, NCC | placement, internships | — | — |
+| ENGINEERING | AICTE | PLACEMENT, INVENTORY | AICTE disclosure, NBA SAR | LAB_INCHARGE, NSS, NCC | labs, placement, nba | — | — |
+| PHARMACY | PCI, AICTE | PLACEMENT, INVENTORY | AICTE disclosure, PCI inspection | LAB_INCHARGE, CLINICAL_COORDINATOR, NSS, NCC | labs, placement | lab → practical | — |
+| LAW | BCI, UGC | PLACEMENT | BCI return | NSS, NCC | mootCourt, internships | department → faculty | — |
+| EDUCATION | NCTE | PLACEMENT | NCTE return | PRACTICE_TEACHING_COORDINATOR, NSS, NCC | teachingPractice | — | — |
+| HEALTH_SCIENCES | NMC, DCI, INC | PLACEMENT | — | LAB_INCHARGE, CLINICAL_COORDINATOR (no NSS/NCC) | clinicalPostings, labs | — | clinical postings, logbooks, the hospital |
+| ARCHITECTURE | COA | PLACEMENT | — | STUDIO_COORDINATOR, NSS, NCC | studios | lecture → studio | studios, juries |
+| AGRICULTURE | ICAR | PLACEMENT | — | LAB_INCHARGE, NSS, NCC | fieldWork, labs | — | the farm, field work |
+| VOCATIONAL | UGC | — | — | LAB_INCHARGE, NSS, NCC | labs, internships | — | — |
+
+A stream whose default council is not the UGC is "professional" (`isProfessionalStream`) and adds PLACEMENT.
+The preset's modules are switched on **when the college is made**; changing streams later switches no module
+(by decision). A new programme takes its regulator and attendance threshold from its stream (INC and PCI 80 %,
+BCI 70 %, the others 75 %).
+
+**Duties, not roles.** The stream-specific jobs a FACULTY member or HOD holds are duties on their membership
+(`Membership.dutiesJson`; contracts `v1/duties.ts`, `src/lib/duties.ts`), set by the registrar from the
+row menu at `/admin/people` (audited `people.duties.set`), offered only where a stream of the college offers
+them (`DUTY_STREAMS`). A catalog door may carry `duties:`; the gate checks it after the role and before the
+handler (403 `duties.refuseNoDuty`), and the same rule runs in `permits()`, both sweeps, the published docs
+(`x-duties`) and the web and phone nav. Each duty opens a desk under `/duties/<name>` and a phone screen:
+
+| Duty | Desk | What it holds |
+| --- | --- | --- |
+| LAB_INCHARGE | /duties/lab | the labs (rooms of kind LAB) with stock and assets from inventory, batch rosters, practical records to sign, a breakage log (a write-off through the inventory's one stock writer) |
+| ANTI_RAGGING_SQUAD | /duties/anti-ragging | the squad's rounds and the complaints' state and due day — never their words or author |
+| NSS_OFFICER, NCC_OFFICER | /duties/nss, /duties/ncc | enrolment, leaving, activities as IQAC Activity rows with hours and a camp flag |
+| RESEARCH_DEAN | /duties/research | the research register and each teacher's score inputs, read-only (the office writes the faculty record) |
+| EXAM_SQUAD | /duties/exam-squad | papers two days back to sixty ahead; a visit that found something tells the exam controllers; a case's state, never its note |
+| PRACTICE_TEACHING_COORDINATOR | /duties/teaching-practice | practice schools, postings, lesson observations |
+| CLINICAL_COORDINATOR, STUDIO_COORDINATOR | /duties/clinical, /duties/studio | a page with the preset's not-built sentence |
+
+**Records per stream** (migration `20261004222809_stream_records`, `src/lib/stream-records.ts`,
+`stream-summaries.ts`, pages under `/admin/stream-records`): lab batches (the office splits a division by roll
+number, twenty by default; a LAB timetable hour may name a batch and its lecture registers only the batch),
+the practical record (the offering's teacher or HOD writes, that teacher or a lab in-charge signs, a signed row
+is final), moot courts (law only), law internships of kind COURT, FIRM and LEGAL_AID with the Bar Council's
+minimum weeks, teaching practice (schools, postings, observations, the NCTE's twenty weeks), NSS and NCC
+enrolment with hours. Internship credits credited within a term now reach that term's credit push.
+
+**Filings per stream** (`applicableFilings(streams)` in contracts `v1/council-filings.ts`; the gate
+`assertFilingApplies` answers 404 "This college's streams do not bring that filing."): every college files
+NAAC's SSR, AQAR and IIQA, NIRF, AISHE and its university's return; MANAGEMENT, ENGINEERING and PHARMACY add
+the AICTE mandatory disclosure; the councils' own returns are PCI_INSPECTION (pharmacy), BCI_RETURN (law),
+NCTE_RETURN (education) and NBA_SAR (one engineering department a year, quantitative criteria computed from
+the rows by the pure formulas in `src/lib/council-rules.ts`, qualitative ones written by the HOD on a
+`FilingWorksheet`, signed off by the principal). A college with no stream recorded keeps the seven old
+filings. The regulators' calendar filters by streams too (the AICTE extension for management, engineering
+and pharmacy; the CET CAP for the eight professional streams). Pages: `/iqac/documents` (a card per filing,
+the others greyed "Filed by a college teaching …"), `/iqac/documents/[pci|bci|ncte|nba]`, `/hod/nba`.
+
+**Not built, per stream.** HEALTH_SCIENCES (NMC, DCI, INC): clinical postings, logbooks, the teaching
+hospital, and every council return. ARCHITECTURE (COA): studios and juries, the COA return. AGRICULTURE
+(ICAR): the farm and field work, the ICAR return. The registrar's and principal's homes show the preset's
+sentence as a banner; `/iqac/documents` lists the councils as "not built yet". No yearly calendar window was
+added for PCI, BCI, NCTE or NBA (none has a fixed one to cite).
+
 ## Roles
 
 | Role | Home | Module | Notes |
@@ -100,7 +179,7 @@ alumnus reads a global post once.
 | `TermResult.sgpaHundredths`, `CourseResult` | `runResults` | exam-sgpa |
 | printing lists | the autonomous conduct | exam-printing |
 | `AccreditationCycle.cgpa` | `writeCycleCgpa` | iqac-cgpa |
-| `CollegeFiling.hash`, `body` | `buildFiling` | iqac-filing |
+| `CollegeFiling.hash`, `body` (NAAC, NIRF, AISHE, AICTE and since 5 Oct the PCI, BCI, NCTE and NBA returns; a `FilingWorksheet` is input, not a derived value) | `buildFiling` | iqac-filing |
 | `Grievance.dueOn`, disclosure hash | filing, `setDisclosure` | iqac-grievance |
 | `PlacementSeason` | `publishSeason` | placement-season |
 | `StudentProgramme.prn` (a copy of `PupilRecord.prn`) | the admission and the seat page | college-prn |
@@ -119,9 +198,35 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
 
 - ZZ: `npm run zz:fixtures` builds ZZ Vidya College (every module, every college role) and ZZ Shastri
   Autonomous College (`scripts/zz-college.ts`, `zz-academics.ts`, `zz-exams.ts`, `zz-college-office.ts`,
-  `zz-placement.ts`, `zz-iqac.ts`); `npm run zz:token -- FACULTY` and so on mint sessions.
-- Demo: `npm run demo:college` builds Saraswati Arts and Science College (`saraswati-college`) with
-  `sac.*@demo.relay.test` accounts on the demo password; the roster is in docs/demo-schools.md.
+  `zz-placement.ts`, `zz-iqac.ts`, and for the streams `zz-streams.ts`, `zz-stream-records.ts`,
+  `zz-council-filings.ts`); `npm run zz:token -- FACULTY` and so on mint sessions.
+  - ZZ Vidya: streams ARTS, SCIENCE and COMMERCE (BSCPHY and BSCCHE given SCIENCE); its AICTE disclosure is
+    taken down (its streams do not bring it). `zz.faculty01` holds every duty Vidya offers (LAB_INCHARGE,
+    NSS_OFFICER, NCC_OFFICER, ANTI_RAGGING_SQUAD, RESEARCH_DEAN, EXAM_SQUAD) so the sweep's FACULTY opens the
+    desks; every other college member is reset to no duty each run, so `zz.hod01` is refused a desk (403).
+    Lab batch A on "ZZ FY BSc Physics A" with three practical records (the first signed), an NSS unit of
+    three with one activity, beaker stock in "ZZ Physics Lab", one flying-squad visit.
+  - ZZ Shastri: streams ENGINEERING, IQAC on; department MECH, programme BTECHME (AICTE), courses ME101 and
+    ME103 with practicals, "ZZ Workshop Lab", division "ZZ FY BTech ME A" (zz.cstudent.s1 and the
+    no-password s2, s3) in batches A and B with a practical record each; `zz.faculty.s1` holds
+    LAB_INCHARGE; the current year's NBA SAR for MECH as a draft with three ZZ criteria. Its exam fixture's
+    BCom has no stream. No ZZ college is law, pharmacy or education: `tests/streams-filings.test.ts` and
+    `tests/stream-records.test.ts` make and remove their own.
+- Lifecycle: `npm run zz:lifecycle -- --college engineering --years 5` walks ZZ Lifecycle Engineering
+  College (`zz-lifecycle-engineering`, autonomous, ENGINEERING; BE Computer and BE Mechanical, four years) on
+  its own through the libraries: lab batches each term, a LAB hour per batch, practical records written and
+  signed by a lab in-charge, the autonomous session each term (papers set, sealed, moderated, opened once;
+  halls, hall tickets, printing lists; marks by double entry), the NBA SAR each year, graduation from year 4;
+  `--college engineering --teardown` removes it. Without the flag the walk is the school and the arts
+  college, as before.
+- Demo: `npm run demo:college` builds Saraswati Arts and Science College (`saraswati-college`, streams
+  ARTS, SCIENCE, COMMERCE) with `sac.*@demo.relay.test` accounts; `npm run demo:college-engineering`
+  (`scripts/demo-college-engineering.ts`) builds **Saraswati Institute of Technology** (`saraswati-tech`,
+  AUTONOMOUS_COLLEGE, ENGINEERING: Computer and Mechanical Engineering, lab batches, practical records,
+  Winter 2026 in conduct with a sealed paper, a published session with grade cards, the NBA SAR draft for
+  Computer Engineering, the AICTE disclosure, hostel, bus, lab inventory, payroll and every duty) with
+  `sit.*@demo.relay.test` accounts. Both on the demo password; both rosters, with what to look at per
+  account, are in docs/demo-schools.md. Each is idempotent and needs nothing else first.
 
 ## Untested
 
@@ -131,6 +236,11 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
 - NAAC per-metric weights and texts against the manual (reconstructed; see packages/contracts `v1/naac.ts`).
 - The phone screens on a real device; the recruiter's TOTP end to end; api:sweep and the page sweep over
   the college doors; Playwright; Hindi and Marathi read by a speaker.
-- Not built: a faculty member's public profile page (needs an opt-in and a second globally readable table;
-  the published disclosure page lists faculty by name, designation and qualification); a refund outside the
-  slab and a hostel expulsion as principal approvals; the hostel's night-out register and curfew at the gate.
+- Built on 5 October 2026 and so no longer "not built": the faculty public profile (opt-in), a refund outside
+  the slab and a hostel expulsion as principal approvals, the night-out register and the curfew at the gate.
+  Still not built: the phone's permission-slip composer, the phone warden's night view, a web `/id-check`
+  page (the ID card's QR has only its API door).
+- Streams: every council return against its council's real portal or inspection form (the NBA Tier-II marks
+  and bands should be checked against nbaind.org's current SAR); the PCI, BCI and NCTE pages with data on a
+  live server (no ZZ or demo college has those streams); the NBA SAR's computed figures read today's students
+  and faculty, so a past year's SAR regenerated later drifts (data:audit WARNs; the lifecycle walk's S4B-1).
