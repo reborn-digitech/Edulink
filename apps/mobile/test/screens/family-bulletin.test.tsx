@@ -83,6 +83,22 @@ describe("the bulletin", () => {
     expect(mockRouter.push).toHaveBeenLastCalledWith("/(app)/post-new");
   });
 
+  // R-1 (risks batch, 5 Oct 2026): a notice that waits for the family's answer says so on the feed and opens the post.
+  it("a notice waiting for a guardian's answer says so on the feed and opens the post; once answered it does not", async () => {
+    const slip = { ...POST, title: "ZZ Planetarium trip", requiresAck: true, acked: false };
+    await renderFamily(<FamilyBulletin />, ME_PARENT, { [PATH]: () => page([slip, { ...POST, id: "p2", title: "ZZ Answered", requiresAck: true, acked: true }], null) });
+    expect(await screen.findByText("Waiting for your answer")).toBeTruthy();
+    expect(screen.getAllByText("Waiting for your answer")).toHaveLength(1);
+    await press(screen.getByRole("button", { name: "Open to answer: ZZ Planetarium trip" }));
+    expect(mockRouter.push).toHaveBeenLastCalledWith({ pathname: "/(app)/post", params: { postId: ID.post } });
+  });
+
+  it("staff reading the feed are not asked to answer", async () => {
+    await renderFamily(<FamilyBulletin />, { ...ME_STUDENT, active: { ...ME_STUDENT.active, role: "TEACHER" }, contexts: [{ ...ME_STUDENT.contexts[0], role: "TEACHER" }] }, { [PATH]: () => page([{ ...POST, requiresAck: true }], null) });
+    expect(await screen.findByText("ZZ Sports day")).toBeTruthy();
+    expect(screen.queryByText("Waiting for your answer")).toBeNull();
+  });
+
   it("with nothing posted, the door is a new post in the app", async () => {
     await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: () => page([], null) });
     await press(await screen.findByRole("button", { name: "Share something" }));

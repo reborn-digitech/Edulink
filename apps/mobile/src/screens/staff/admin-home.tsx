@@ -16,6 +16,7 @@ import { FilingsCard } from "./filings";
 import { OfficePenChangesCard, OfficeRecordChangesCard } from "../shared/pupil-record";
 import { formatDateKey, pct } from "./shared";
 import { StreamTilesCard } from "../college/stream-tiles";
+import { CelebrationsCard } from "../shared/celebrations";
 
 /**
  * Where a checklist step's page lives in the app. The steps carry the web's
@@ -95,6 +96,8 @@ function Overview({ d }: { d: AdminOverview }) {
         <Stat label={t("principal.attendance")} value={pct(d.attendanceTakenPercent)} />
       </View>
       <QuickActions actions={QUICK.ADMIN ?? []} onOpen={(href) => router.push(href as never)} />
+      {/* Birthdays and anniversaries (A3-inventory-14), as on the web's /admin. */}
+      <CelebrationsCard />
       <Card title={t("nav.people")} action={<Button label={t("admin.invitePeople")} variant="ghost" onPress={() => router.push("/(app)/invites" as never)} />}>
         <Text variant="sm" tone="muted">
           {t("admin.peopleSummary", { teachers: counts.teachers, students: counts.students, classes: counts.classes })}

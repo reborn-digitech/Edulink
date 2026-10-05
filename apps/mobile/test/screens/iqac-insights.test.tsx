@@ -62,6 +62,17 @@ describe("actionable insights on the phone", () => {
     expect(screen.getByText(/A recompute will show it\./)).toBeTruthy();
   });
 
+  // G4-15 (risks batch, 5 Oct 2026): the figures are provisional until the IQAC coordinator signs the benchmark list.
+  it("labels every figure provisional until the benchmark list is signed, then says who signed it", async () => {
+    const status = (over: Record<string, unknown>) => ({ provisional: true, version: "v1abc", signedAt: null, signedByName: null, sentence: "ZZ server sentence", ...over });
+    await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": () => json({ ...INSIGHTS, benchmarks: status({}) }) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("Provisional")).toBeTruthy();
+    expect(screen.getByText("Provisional: the IQAC coordinator has not yet signed the benchmark list these figures are measured against.")).toBeTruthy();
+    await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": () => json({ ...INSIGHTS, benchmarks: status({ provisional: false, signedAt: "2026-10-05T06:00:00.000Z", signedByName: "ZZ Coordinator" }) }) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });
+    expect(await screen.findByText("Benchmark list signed by ZZ Coordinator on 05/10/2026.")).toBeTruthy();
+    expect(screen.queryByText("Provisional")).toBeNull();
+  });
+
   it("opens the web page of a step's call to action", async () => {
     const open = openUrl();
     await mountStaff(<InsightsScreen />, "IQAC", { "GET /api/v1/iqac/insights": () => json(INSIGHTS) }, { me: atCollege("IQAC", ["ACADEMICS", "IQAC"]) });

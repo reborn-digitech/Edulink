@@ -2,6 +2,7 @@ import { screen, waitFor } from "@testing-library/react-native";
 import { applyLeaveSchema, staffLeaveSchema } from "@edulink/contracts";
 import { TeacherLeave } from "@/screens/teacher/leave";
 import { callsTo, fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap, typeInto } from "./teacher-support";
+import { json as staffJson, mountStaff } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -89,5 +90,48 @@ describe("leave", () => {
     await renderTeacher(<TeacherLeave />);
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not staff");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+});
+
+/**
+ * G4-27 (risks batch, 5 Oct 2026): the button names who answers. The server's `decidedBy` wins (it knows whether the
+ * institution has a principal); an older server's answer has none and the role decides — the principal for a teacher,
+ * FACULTY or an HOD, the office for module staff and the college's desks.
+ */
+describe("who the leave goes to (G4-27)", () => {
+  const leaveOf = (decidedBy?: "PRINCIPAL" | "OFFICE") => () => staffJson(decidedBy ? { ...LEAVE, decidedBy } : LEAVE);
+
+  it.each([
+    ["TEACHER", "Send to the principal"],
+    ["FACULTY", "Send to the principal"],
+    ["HOD", "Send to the principal"],
+    ["DRIVER", "Send to the office"],
+    ["LIBRARIAN", "Send to the office"],
+    ["WARDEN", "Send to the office"],
+    ["EXAM_CONTROLLER", "Send to the office"],
+    ["IQAC", "Send to the office"],
+    ["TPO", "Send to the office"],
+    ["ACCOUNTS", "Send to the office"],
+  ] as const)("%s with no hint from the server: %s", async (role, label) => {
+    await mountStaff(<TeacherLeave />, role, { "GET /api/v1/staff/leave": leaveOf() });
+    expect(await screen.findByRole("button", { name: label })).toBeTruthy();
+  });
+
+  it("a college with no principal: FACULTY's request goes to the office, and the form says so throughout", async () => {
+    await mountStaff(<TeacherLeave />, "FACULTY", { "GET /api/v1/staff/leave": leaveOf("OFFICE"), "POST /api/v1/staff/leave": () => staffJson({ id: "l3" }) });
+    await tap(await screen.findByRole("button", { name: "Send to the office" }));
+    expect(screen.queryByRole("button", { name: "Send to the principal" })).toBeNull();
+    expect(screen.getByText("Say briefly why. The office sees this and nobody else.")).toBeTruthy();
+    expect(screen.getByText("A suggestion. The office decides, and may name somebody else.")).toBeTruthy();
+    await typeInto(screen.getByLabelText("First day away"), "2026-09-21");
+    await typeInto(screen.getByLabelText("Last day away"), "2026-09-21");
+    await typeInto(screen.getByLabelText("Why"), "ZZ reason");
+    await tap(screen.getByRole("button", { name: "Send to the office" }));
+    expect(await screen.findByText("Sent to the office")).toBeTruthy();
+  });
+
+  it("the server's hint wins over the role: a librarian at a school whose rule names the principal", async () => {
+    await mountStaff(<TeacherLeave />, "LIBRARIAN", { "GET /api/v1/staff/leave": leaveOf("PRINCIPAL") });
+    expect(await screen.findByRole("button", { name: "Send to the principal" })).toBeTruthy();
   });
 });

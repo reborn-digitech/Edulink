@@ -207,6 +207,8 @@ describe("the practice player", () => {
     expect(screen.getByText("2 of 3")).toBeTruthy();
     await fireEvent.press(screen.getByRole("radio", { name: "Hindi" }));
     await waitFor(() => expect(calls().filter((c) => c.line === `POST ${P}/attempts`).map((c) => c.body)).toContainEqual({ slug: "zz-fractions", language: "hi" }));
+    // The choice is the account's too (A3-states-16), so a new phone and the web's Practice agree.
+    await waitFor(() => expect(calls().filter((c) => c.line === "POST /api/v1/account/locale").map((c) => c.body)).toEqual([{ locale: "hi" }]));
   });
 
   it("a chapter the teacher set opens by its id, with the pupil's standing against the target", async () => {

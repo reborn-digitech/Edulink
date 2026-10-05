@@ -79,7 +79,8 @@ export function MootCourtsScreen() {
                   .filter(Boolean)
                   .join("\n")}
               />
-              {d.canEdit ? <Button label={t("streamRecords.moots.correctThis", { name: m.name })} variant="ghost" onPress={() => setEditing(m)} /> : null}
+              {/* R-59 (risks batch, 5 Oct 2026): "Correct" only where this reader may correct this moot (its author, the office or the law HOD; never once filed); an older server's row without the flag keeps the screen's own. */}
+              {d.canEdit && m.canEdit !== false ? <Button label={t("streamRecords.moots.correctThis", { name: m.name })} variant="ghost" onPress={() => setEditing(m)} /> : null}
             </View>
           ))}
         </Card>

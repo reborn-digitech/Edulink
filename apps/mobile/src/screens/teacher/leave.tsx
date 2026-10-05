@@ -1,31 +1,45 @@
 import { useRef, useState } from "react";
 import { Pressable, TextInput, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { applyLeaveSchema, leaveAppliedSchema, staffLeaveSchema, type ApplyLeaveBody } from "@edulink/contracts";
+import { applyLeaveSchema, leaveAppliedSchema, leaveDecidedBy, staffLeaveSchema, type ApplyLeaveBody, type StaffLeave } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { useSessionIfAny } from "@/lib/session";
 import { dayLabel } from "./support";
 
 /**
  * Leave, the web's /teacher/leave: this year's balance, the requests made,
- * and the form that sends a new one to the principal.
+ * and the form that sends a new one to whoever answers it — the principal for a
+ * teacher, a FACULTY member or an HOD, the office for everyone else (G4-27).
  */
 type Kind = ApplyLeaveBody["kind"];
 const KINDS: Kind[] = ["CASUAL", "SICK", "UNPAID", "OTHER"];
 const KIND_KEY = { CASUAL: "leaveKind.casual", SICK: "leaveKind.sick", UNPAID: "leaveKind.unpaid", OTHER: "leaveKind.other" } as const;
+
+/**
+ * Who answers (G4-27, risks batch 5 Oct 2026): the server's `decidedBy`, which also knows whether the institution has
+ * a principal at all; an older server's answer carries none, and then the role decides as the server's own rule does,
+ * assuming a principal is in post (and, with no session yet, the principal, as the form always said).
+ */
+export function leaveDecider(role: string | null | undefined, data: Pick<StaffLeave, "decidedBy"> | undefined): "PRINCIPAL" | "OFFICE" {
+  return data?.decidedBy ?? (role ? leaveDecidedBy(role, true) : "PRINCIPAL");
+}
 
 export function TeacherLeave() {
   const t = useT();
   const { locale } = useLocale();
   const th = useTheme();
   const qc = useQueryClient();
+  const session = useSessionIfAny();
+  const role = session?.status === "signed-in" ? session.me.active.role : null;
   const query = useQuery({
     queryKey: ["staff", "leave"],
     queryFn: async () => staffLeaveSchema.parse(unwrap(await api().get("/api/v1/staff/leave"))),
   });
+  const office = leaveDecider(role, query.data) === "OFFICE";
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [kind, setKind] = useState<Kind>("CASUAL");
@@ -53,7 +67,7 @@ export function TeacherLeave() {
       const next: Record<string, string> = {};
       for (const issue of parsed.error.issues) {
         const field = String(issue.path[0] ?? "");
-        next[field] = field === "reason" ? t("leaveKind.sayBriefly") : t("leaveKind.giveBothDates");
+        next[field] = field === "reason" ? (office ? t("leaveDecider.sayBrieflyOffice") : t("leaveKind.sayBriefly")) : t("leaveKind.giveBothDates");
       }
       setErrors(next);
       return;
@@ -71,7 +85,7 @@ export function TeacherLeave() {
   const kindLabel = (k: string) => t((KIND_KEY[k as Kind] ?? "leaveKind.other") as never);
 
   return (
-    <Screen title={t("teacher.leave")} description={t("teacher.leaveExplainer")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
+    <Screen title={t("teacher.leave")} description={office ? t("leaveDecider.explainerOffice") : t("teacher.leaveExplainer")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
@@ -105,14 +119,14 @@ export function TeacherLeave() {
                 <Chip key={k} label={t(KIND_KEY[k])} on={kind === k} onPress={() => setKind(k)} />
               ))}
             </View>
-            <Field label={t("teacher.whyLabel")} hint={t("teacher.whyHint")} value={reason} onChangeText={setReason} multiline error={errors.reason} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
+            <Field label={t("teacher.whyLabel")} hint={office ? t("leaveDecider.whyHintOffice") : t("teacher.whyHint")} value={reason} onChangeText={setReason} multiline error={errors.reason} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
             {data.staff.length > 0 ? (
               <>
                 <Text variant="sm" bold>
                   {t("teacher.whoCouldCover")}
                 </Text>
                 <Text variant="xs" tone="subtle">
-                  {t("teacher.coverHint")}
+                  {office ? t("leaveDecider.coverHintOffice") : t("teacher.coverHint")}
                 </Text>
                 <View accessibilityRole="radiogroup" accessibilityLabel={t("teacher.whoCouldCover")} style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
                   <Chip label={t("teacher.noSuggestion")} on={cover === null} onPress={() => setCover(null)} />
@@ -125,10 +139,10 @@ export function TeacherLeave() {
             {apply.isError ? <Failed message={apply.error.message} onRetry={submit} /> : null}
             {sent ? (
               <Text variant="sm" tone="ok" accessibilityLiveRegion="polite">
-                {t("teacher.sentToPrincipal")}
+                {office ? t("leaveDecider.sentToOffice") : t("teacher.sentToPrincipal")}
               </Text>
             ) : null}
-            <Button label={t("teacher.sendToPrincipal")} onPress={submit} busy={apply.isPending} />
+            <Button label={office ? t("leaveDecider.sendToOffice") : t("teacher.sendToPrincipal")} onPress={submit} busy={apply.isPending} />
           </Card>
 
           <Card title={t("nav.leave")}>

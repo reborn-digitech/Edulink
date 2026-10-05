@@ -69,6 +69,15 @@ describe("the moot courts screen", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`).length).toBe(2));
   });
 
+  // R-59 (risks batch, 5 Oct 2026): the door says per moot whether this reader may correct it; "Correct" is hidden where not.
+  it("offers Correct only on the moots the server says this reader may correct", async () => {
+    const other = { ...moot, id: id("moot2"), name: "ZZ Someone else's moot" };
+    await mountStaff(withToasts(<MootCourtsScreen />), "FACULTY", { [`GET ${PATH}`]: () => json(page({ items: [{ ...moot, canEdit: true }, { ...other, canEdit: false, frozen: false }] })) }, { me: atLaw("FACULTY") });
+    expect(await screen.findByRole("button", { name: "Correct ZZ Intra Moot 2026" })).toBeTruthy();
+    expect(screen.getByText("ZZ Someone else's moot")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Correct ZZ Someone else's moot" })).toBeNull();
+  });
+
   it("corrects a moot by its id, and shows the server's refusal when it is not theirs to correct", async () => {
     const refusal = "A recorded moot is corrected by the person who recorded it, the office or the head of the law department.";
     const { calls } = await mountStaff(withToasts(<MootCourtsScreen />), "FACULTY", { [`GET ${PATH}`]: () => json(page()), [`POST ${PATH}`]: () => json({ error: refusal, code: "FORBIDDEN" }, 403) }, { me: atLaw("FACULTY") });

@@ -20,6 +20,7 @@ import {
 import type { Translate } from "@edulink/i18n";
 import { Button, Card, Empty, Failed, Icon, Loading, Screen, Stat, Text } from "@/components";
 import { LanguageRow } from "@/components/language-row";
+import { useSaveLocaleToAccount } from "@/lib/account-locale";
 import { api, errorText } from "@/lib/api";
 import { ApiRefused, unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -137,6 +138,7 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
   const router = useRouter();
   const qc = useQueryClient();
   const { locale } = useLocale();
+  const saveLocale = useSaveLocaleToAccount({ refresh: false });
   const { attemptId, topic, assignment } = began;
   const tag = `practice:${attemptId}`;
 
@@ -315,7 +317,8 @@ function Player({ began, refreshing, onRefresh, onFreshRun }: { began: PracticeB
             {t("language.readIn")}
           </Text>
         </View>
-        <LanguageRow />
+        {/* The choice goes to the account too (A3-states-16), so the next phone and the web's Practice read in it. */}
+        <LanguageRow onChosen={saveLocale} />
       </View>
       {began.resumed && tally.answered === 0 ? (
         <Note tone="accent">

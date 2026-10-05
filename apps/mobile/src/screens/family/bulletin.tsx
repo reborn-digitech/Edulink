@@ -22,7 +22,8 @@ type GlobalPost = z.infer<typeof globalFeedSchema>["items"][number];
 type Reaction = Post["myReactions"][number];
 type Scope = "school" | "global";
 
-export const CATEGORY: Record<Post["category"], TranslationKey> = { PEOPLE: "bulletin.catPeople", CAMPUS: "bulletin.catCampus", EVENTS: "bulletin.catEvents", LEARNING: "bulletin.catLearning", UPDATES: "bulletin.catUpdates" };
+// COUNCIL (risks batch 5A, 5 Oct 2026): a student council's notice, read here; written on the web's council page.
+export const CATEGORY: Record<Post["category"], TranslationKey> = { PEOPLE: "bulletin.catPeople", CAMPUS: "bulletin.catCampus", EVENTS: "bulletin.catEvents", LEARNING: "bulletin.catLearning", UPDATES: "bulletin.catUpdates", COUNCIL: "bulletin.catCouncil" };
 export const AUDIENCE: Record<"PARENTS" | "TEACHERS" | "STUDENTS", TranslationKey> = { PARENTS: "bulletin.forParents", TEACHERS: "bulletin.forTeachers", STUDENTS: "bulletin.forStudents" };
 /** The web's REACTION_META: keys, not words, in the same order. */
 const REACTIONS: { kind: Reaction; icon: string; label: TranslationKey }[] = [
@@ -149,7 +150,7 @@ export function FamilyBulletin() {
           <>
             {canPost ? <Button label={newPostLabel} icon={<Icon name="plus" size={18} color={th.accentFg} weight="bold" />} onPress={compose} /> : null}
             {posts.map((post) => (
-              <PostCard key={post.id} post={post} headers={headers} onOpen={() => open(post.id)} onReact={(kind) => react.mutate({ postId: post.id, kind })} />
+              <PostCard key={post.id} post={post} headers={headers} family={role === "PARENT" || role === "STUDENT"} onOpen={() => open(post.id)} onReact={(kind) => react.mutate({ postId: post.id, kind })} />
             ))}
           </>
         )
@@ -166,7 +167,7 @@ export function FamilyBulletin() {
   );
 }
 
-function PostCard({ post, headers, onReact, onOpen }: { post: Post; headers: Record<string, string> | null; onReact: (kind: Reaction) => void; onOpen: () => void }) {
+function PostCard({ post, headers, onReact, onOpen, family = false }: { post: Post; headers: Record<string, string> | null; onReact: (kind: Reaction) => void; onOpen: () => void; family?: boolean }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -214,6 +215,14 @@ function PostCard({ post, headers, onReact, onOpen }: { post: Post; headers: Rec
         <Text variant="sm" bold tone="ok">
           {t("bulletin.ackDone")}
         </Text>
+      ) : null}
+      {/* R-1 (risks batch, 5 Oct 2026): a notice waiting for the family's answer — a permission slip's yes or no, or
+          "seen and understood" — says so on the feed and opens the post, where the answer is given. */}
+      {family && post.requiresAck && post.status === "APPROVED" && !post.acked ? (
+        <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], flexWrap: "wrap" }}>
+          <Pill tone="warn" label={t("phoneJoins.slipWaiting")} />
+          <Button variant="secondary" label={t("phoneJoins.openToAnswer")} accessibilityLabel={`${t("phoneJoins.openToAnswer")}: ${post.title}`} onPress={onOpen} />
+        </View>
       ) : null}
       {post.status === "APPROVED" ? <Reactions reactions={post.reactions} myReactions={post.myReactions} commentCount={post.commentCount} onReact={onReact} onOpen={onOpen} /> : null}
     </Card>

@@ -9,6 +9,7 @@ import { unwrap } from "./query";
 import { forgetPushOnDevice, unregisterPush } from "./push";
 import { runSessionEnd } from "./session-end";
 import { claimFreshInstall } from "./install-platform";
+import { useAdoptAccountLocale } from "./i18n";
 
 /**
  * Who is signed in, from the phone's point of view.
@@ -127,6 +128,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     void loadMe();
   }, [loadMe]);
+
+  // A phone with no language chosen on it takes the account's (A3-states-16, risks batch 5 Oct 2026), so a new
+  // phone agrees with the one the choice was made on; a choice made here is kept (lib/i18n.tsx).
+  const adoptAccountLocale = useAdoptAccountLocale();
+  const accountLocale = state.status === "signed-in" ? state.me.user.locale : null;
+  useEffect(() => {
+    if (accountLocale) void adoptAccountLocale(accountLocale);
+  }, [accountLocale, adoptAccountLocale]);
 
   const value = useMemo<Session>(
     () => ({

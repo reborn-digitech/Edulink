@@ -90,8 +90,9 @@ const FLAT: Record<string, string> = {
   "/admin/directory": "/(app)/directory-profile",
   "/admin/classes/new": "/(app)/class-new",
   "/bulletin/new": "/(app)/post-new",
-  "/bulletin/celebrations": "/(app)/bulletin",
-  "/student/practice/journey": "/(app)/practice",
+  // Their own screens since A3-inventory-14 (risks batch, 5 Oct 2026).
+  "/bulletin/celebrations": "/(app)/celebrations",
+  "/student/practice/journey": "/(app)/practice-journey",
   "/teacher/worksheets": "/(app)/worksheets",
   "/root/new": "/(app)/operator-new-school",
   "/root/experts": "/(app)",
@@ -123,6 +124,11 @@ const FLAT: Record<string, string> = {
   // Transport (3 Oct 2026): the family's "bus is near" lands on the child's bus; the driver's home is the home.
   "/parent/transport": "/(app)/transport",
   "/driver": "/(app)",
+  // The college exam cell (G4-13, risks batch 5 Oct 2026): a form decided, grace marks granted and results published land
+  // on the student's exams, a guardian's on the child's results (one screen, the role's route picks); a duty on the duties.
+  "/student/exams": "/(app)/college-exams",
+  "/parent/results": "/(app)/college-exams",
+  "/faculty/exams": "/(app)/exam-duties",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */

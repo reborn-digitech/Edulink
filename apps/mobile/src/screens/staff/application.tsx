@@ -17,6 +17,11 @@ import { CYCLES_KEY } from "./admissions";
 
 type Admitted = z.infer<typeof admittedSchema>;
 const day = (iso: string, locale: string) => formatDateKey(iso.slice(0, 10), locale);
+/**
+ * The answer-by day (R-62, risks batch 5 Oct 2026): the server's `offerExpiresOn`, the school-zone day the office typed;
+ * an older server's answer has only the instant, whose UTC day is right east of UTC (India) and a day late west of it.
+ */
+const answerBy = (a: { offerExpiresOn?: string | null; offerExpiresAt: string | null }, locale: string) => (a.offerExpiresOn ? formatDateKey(a.offerExpiresOn, locale) : a.offerExpiresAt ? day(a.offerExpiresAt, locale) : null);
 
 /**
  * One application as the office sees it — the web's
@@ -157,7 +162,7 @@ export function StaffApplication() {
               {a.offeredAt ? (
                 <>
                   <Text variant="sm" tone="muted">
-                    {[t("admissions.offeredOn", { date: day(a.offeredAt, locale) }), a.offerExpiresAt ? t("admissions.respondBy", { date: day(a.offerExpiresAt, locale) }) : null, a.feeStructureName].filter(Boolean).join(" · ")}
+                    {[t("admissions.offeredOn", { date: day(a.offeredAt, locale) }), answerBy(a, locale) ? t("admissions.respondBy", { date: answerBy(a, locale)! }) : null, a.feeStructureName].filter(Boolean).join(" · ")}
                   </Text>
                   {a.offerNote ? <Line label={t("admissions.offerNote")} value={a.offerNote} /> : null}
                   {a.respondedAt && (a.status === "ACCEPTED" || a.status === "ADMITTED") ? (

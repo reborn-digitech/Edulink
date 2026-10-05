@@ -277,4 +277,39 @@ describe("the TPO's drive on the phone (5 Oct 2026)", () => {
     await mountStaff(<TpoDriveScreen />, "TPO", { "GET /api/v1/placement/drives/d9": () => json({ error: "ZZ That drive is not this college's.", code: "NOT_FOUND" }, 404) }, { me: atCollege("TPO", ON) });
     expect(await screen.findByText("ZZ That drive is not this college's.")).toBeTruthy();
   });
+
+  // A3-journeys-18 (risks batch, 5 Oct 2026): an offer far above the drive's package is the server's 409 with its
+  // sentence under the package field; the TPO checks the figure and confirms, which posts again with confirmedHigh.
+  it("records an offer, and a figure far above the drive's package asks for a confirm with the server's sentence", async () => {
+    mockRouter.params = { driveId: "d2" };
+    const SENTENCE = "₹20 lakh is more than one and a half times this drive's highest package (₹7 lakh). Check the figure, then confirm it.";
+    const bodies: unknown[] = [];
+    const { calls } = await mountStaff(<TpoDriveScreen />, "TPO", {
+      "GET /api/v1/placement/drives/d2": () => json(view([application()])),
+      "POST /api/v1/placement/drives/d2/offers": ({ init }) => {
+        const body = JSON.parse(String(init.body)) as { confirmedHigh?: boolean };
+        bodies.push(body);
+        return body.confirmedHigh ? json({ ...offer, driveId: "d2", packageRupees: 2_000_000 }) : json({ error: SENTENCE, code: "CONFLICT", issues: { packageRupees: SENTENCE } }, 409);
+      },
+    }, { me: atCollege("TPO", ON) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Record an offer: ZZ Riya" }));
+    await fireEvent.changeText(screen.getByLabelText("Package (lakh a year)"), "20");
+    await fireEvent.press(screen.getByRole("button", { name: "Record the offer" }));
+    expect(await screen.findByText(SENTENCE)).toBeTruthy();
+    expect(bodies[0]).toEqual({ studentMembershipId: "m1", packageRupees: 2_000_000, letterFileId: null });
+    await fireEvent.press(screen.getByRole("button", { name: "The figure is right: record it" }));
+    expect(await screen.findByText("Offer recorded for ZZ Riya; they are told.")).toBeTruthy();
+    expect(bodies[1]).toEqual({ studentMembershipId: "m1", packageRupees: 2_000_000, letterFileId: null, confirmedHigh: true });
+    expect(calls().filter((c) => c.line === "POST /api/v1/placement/drives/d2/offers")).toHaveLength(2);
+  });
+
+  it("offers no offer form on a drive the college only guests, nor to a candidate who has one", async () => {
+    mockRouter.params = { driveId: "d2" };
+    await mountStaff(<TpoDriveScreen />, "TPO", { "GET /api/v1/placement/drives/d2": () => json(view([application(), application({ id: "a4", studentMembershipId: "m4", studentName: "ZZ Kiran", offer: { ...offer, driveId: "d2", studentMembershipId: "m4", studentName: "ZZ Kiran" } })], { hosted: false })) }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText("ZZ Riya")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /^Record an offer/ })).toBeNull();
+    await mountStaff(<TpoDriveScreen />, "TPO", { "GET /api/v1/placement/drives/d2": () => json(view([application({ id: "a4", studentMembershipId: "m4", studentName: "ZZ Kiran", offer: { ...offer, driveId: "d2", studentMembershipId: "m4", studentName: "ZZ Kiran" } })])) }, { me: atCollege("TPO", ON) });
+    expect(await screen.findByText("ZZ Kiran")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: /^Record an offer/ })).toBeNull();
+  });
 });

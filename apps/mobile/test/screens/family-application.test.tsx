@@ -83,6 +83,14 @@ describe("one of the guardian's applications", () => {
     expect(screen.queryByText("No sitting booked yet.")).toBeNull();
   });
 
+  // R-62 (risks batch, 5 Oct 2026): west of UTC the instant's UTC day is a day late; the school-zone day is printed.
+  it("prints the answer-by day the school typed, not the instant's UTC day", async () => {
+    const offered = application({ status: "OFFERED", documentsMissing: [], offeredAt: "2026-09-21T05:00:00.000Z", offerExpiresAt: "2026-10-06T03:59:59.999Z", offerExpiresOn: "2026-10-05" }, { respond: true, withdraw: true });
+    await mountStaff(compose(), "PARENT", { [GET]: () => json(offered) });
+    expect(await screen.findByText("Please answer by 05/10/2026")).toBeTruthy();
+    expect(screen.queryByText(/06\/10\/2026/)).toBeNull();
+  });
+
   it("answers an offer with one post and says so", async () => {
     const offered = application({ status: "OFFERED", documentsMissing: [], offeredAt: "2026-09-21T05:00:00.000Z", offerExpiresAt: "2026-10-05T00:00:00.000Z", offerNote: "ZZ welcome", feeStructureName: "ZZ Grade 1 fees" }, { respond: true, withdraw: true });
     const { calls } = await mountStaff(compose(), "PARENT", {

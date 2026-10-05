@@ -22,7 +22,8 @@ type Audience = "ALL" | "PARENTS" | "STUDENTS" | "TEACHERS";
 type Picture = { fileId: string; name: string; kind: "image" | "video"; alt: string };
 
 const CATEGORIES: Category[] = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"];
-const CATEGORY_HINT: Record<Category, TranslationKey> = { PEOPLE: "bulletin.catPeopleHint", CAMPUS: "bulletin.catCampusHint", EVENTS: "bulletin.catEventsHint", LEARNING: "bulletin.catLearningHint", UPDATES: "bulletin.catUpdatesHint" };
+// COUNCIL is never offered here (the council's notices are written on its own page); its hint is kept for the type.
+const CATEGORY_HINT: Record<Category, TranslationKey> = { PEOPLE: "bulletin.catPeopleHint", CAMPUS: "bulletin.catCampusHint", EVENTS: "bulletin.catEventsHint", LEARNING: "bulletin.catLearningHint", UPDATES: "bulletin.catUpdatesHint", COUNCIL: "bulletin.catCouncilHint" };
 const AUDIENCES: { value: Audience; label: TranslationKey }[] = [
   { value: "ALL", label: "bulletin.audienceAll" },
   { value: "PARENTS", label: "bulletin.audienceParents" },

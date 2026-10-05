@@ -6,6 +6,7 @@ import { createApiClient } from "@edulink/api-client";
 import { __setApiClient } from "@/lib/api";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider, useSession } from "@/lib/session";
+import { I18nProvider, useLocale } from "@/lib/i18n";
 
 const ME = { user: { id: "u1", name: "ZZ Teacher", preferredName: null, email: "t@zz.test", avatarKey: null, isMinor: false, locale: "en" }, active: { schoolId: "s1", role: "TEACHER", membershipId: "m1" }, contexts: [{ schoolId: "s1", schoolName: "ZZ School", role: "TEACHER" }] };
 
@@ -71,5 +72,37 @@ describe("the session", () => {
     expect(memory).toHaveBeenCalledTimes(1);
     const logoutCall = fetch.mock.calls.find((c) => String(c[0]).endsWith("/auth/logout"));
     expect((logoutCall![1] as RequestInit).headers).toMatchObject({ Authorization: "Bearer tok-2" });
+  });
+});
+
+/**
+ * A3-states-16 (risks batch, 5 Oct 2026): a phone with no language chosen on it takes the account's, so a new phone
+ * agrees with the one the choice was made on; a choice made on this phone stays.
+ */
+describe("the account's language on a phone", () => {
+  const both = ({ children }: { children: ReactNode }) => (
+    <I18nProvider>
+      <SessionProvider>{children}</SessionProvider>
+    </I18nProvider>
+  );
+  const marathiMe = { ...ME, user: { ...ME.user, locale: "mr" } };
+
+  it("a new phone (nothing chosen on it) reads in the account's language once signed in", async () => {
+    await store.set(KEYS.token, "tok-1");
+    fakeApi({ "/api/v1/me": () => new Response(JSON.stringify(marathiMe), { status: 200 }) });
+    const { result } = await renderHook(() => ({ session: useSession(), ...useLocale() }), { wrapper: both });
+    await waitFor(() => expect(result.current.session.status).toBe("signed-in"));
+    await waitFor(() => expect(result.current.locale).toBe("mr"));
+    // Adopting is not a choice: nothing is saved, so a later change on the web is taken too.
+    expect(await store.get(KEYS.locale)).toBeNull();
+  });
+
+  it("a language chosen on this phone stays this phone's", async () => {
+    await store.set(KEYS.token, "tok-1");
+    await store.set(KEYS.locale, "hi");
+    fakeApi({ "/api/v1/me": () => new Response(JSON.stringify(marathiMe), { status: 200 }) });
+    const { result } = await renderHook(() => ({ session: useSession(), ...useLocale() }), { wrapper: both });
+    await waitFor(() => expect(result.current.session.status).toBe("signed-in"));
+    await waitFor(() => expect(result.current.locale).toBe("hi"));
   });
 });

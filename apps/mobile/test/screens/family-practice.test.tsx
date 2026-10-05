@@ -37,6 +37,12 @@ describe("practice", () => {
     expect(mockRouter.push).toHaveBeenLastCalledWith({ pathname: "/(app)/quiz", params: { mode: "topic", slug: "zz-fractions" } });
   });
 
+  it("opens the pupil's own journey (A3-inventory-14)", async () => {
+    await renderFamily(<FamilyPractice />, ME_STUDENT, { [PATH]: () => PRACTICE });
+    await press(await screen.findByRole("button", { name: "My journey" }));
+    expect(mockRouter.push).toHaveBeenLastCalledWith("/(app)/practice-journey");
+  });
+
   it("smart revision and a chapter the teacher set open the player in their own modes", async () => {
     const withMore = familyStudentPracticeSchema.parse({
       ...PRACTICE,

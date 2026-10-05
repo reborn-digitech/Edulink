@@ -29,6 +29,7 @@ import { usePrivateScreen } from "@/lib/private-screen";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Chips, MultiChips } from "../staff/shared";
+import { formatDateKey } from "../family/shared";
 import { todayKey } from "../teacher/support";
 import { formatDate, formatDateTime } from "@/lib/dates";
 
@@ -150,6 +151,7 @@ function SignRows({ rows, line, onSigned }: { rows: { id: string }[]; line: (row
 /** The lab in-charge's desk: GET /api/v1/duties/lab. The labs and their stock, the batch rosters, the rows to sign (a holder signs them here), the breakage log. */
 export function LabDeskScreen() {
   const t = useT();
+  const { locale } = useLocale();
   const router = useRouter();
   const guard = useDeskGuard("LAB_INCHARGE", "ACADEMICS", ["ADMIN", "PRINCIPAL"]);
   const desk = useQuery({ queryKey: ["duties", "lab"], enabled: guard.holds && guard.on, queryFn: async () => labDeskSchema.parse(unwrap(await api().get("/api/v1/duties/lab"))) });
@@ -190,7 +192,18 @@ export function LabDeskScreen() {
           <Card title={t("duties.lab.batchesTitle")}>
             {d.divisions.length === 0 ? <Text tone="muted">{t("duties.lab.noBatches")}</Text> : null}
             {d.divisions.map((div) => (
-              <Row key={div.divisionId} icon="users" title={div.name} caption={div.batches.map((b) => t("duties.lab.batchLine", { name: b.name, names: b.members.map((m) => m.name).join(", ") || "—" })).join("\n") || t("streamRecords.batches.none")} />
+              <Row
+                key={div.divisionId}
+                icon="users"
+                title={div.name}
+                caption={[
+                  div.batches.map((b) => t("duties.lab.batchLine", { name: b.name, names: b.members.map((m) => m.name).join(", ") || "—" })).join("\n") || t("streamRecords.batches.none"),
+                  // The day a re-split made now takes effect (R-24, risks batch 5 Oct 2026); absent from a read that does not carry it.
+                  typeof div.changesFrom === "string" ? t("riskDecisions.labChangesFrom", { date: formatDateKey(div.changesFrom, locale) }) : div.changesFrom === null ? t("riskDecisions.labChangesFromStart") : null,
+                ]
+                  .filter(Boolean)
+                  .join("\n")}
+              />
             ))}
           </Card>
           <Card title={t("duties.lab.signTitle")}>

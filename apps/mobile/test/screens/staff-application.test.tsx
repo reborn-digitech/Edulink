@@ -92,6 +92,13 @@ describe("an application as the office sees it", () => {
     expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
   });
 
+  // R-62 (risks batch, 5 Oct 2026): the office reads the day it typed, in a zone west of UTC too.
+  it("prints the answer-by day the school typed, not the instant's UTC day", async () => {
+    await mountStaff(compose(), "ADMIN", { [GET]: () => json(application({ status: "OFFERED", offeredAt: "2026-09-21T05:00:00.000Z", offerExpiresAt: "2026-10-06T03:59:59.999Z", offerExpiresOn: "2026-10-05" })) });
+    expect(await screen.findByText(/Please answer by 05\/10\/2026/)).toBeTruthy();
+    expect(screen.queryByText(/06\/10\/2026/)).toBeNull();
+  });
+
   it("marks the documents checked, records the result, offers the seat and waitlists, each with its own body and the view replaced", async () => {
     const answers: Answers = {
       [GET]: () => json(application({}, ALL_CAN)),

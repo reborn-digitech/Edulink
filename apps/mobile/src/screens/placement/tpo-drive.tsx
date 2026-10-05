@@ -2,8 +2,8 @@ import { useState } from "react";
 import { View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { driveViewSchema, roundResultsResultSchema, type DriveApplicationView, type RoundOutcome } from "@edulink/contracts";
-import { Button, Card, Failed, Loading, Row, Screen, Text } from "@/components";
+import { driveViewSchema, offerViewSchema, roundResultsResultSchema, type DriveApplicationView, type RoundOutcome } from "@edulink/contracts";
+import { Button, Card, Failed, Field, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -20,7 +20,13 @@ import { DRIVE_STATUS_KEY, OUTCOME_KEY, applicationLabel, offerLine, packageRang
  * results table posts to (POST /api/v1/placement/drives/{id}/results), so the
  * rules are the library's: only a consented application, round n only for a
  * candidate through n − 1, each student told. Opening a drive, its rule, an
- * offer with its letter and the season's table stay on the web.
+ * offer's letter and the season's table stay on the web.
+ *
+ * An offer (A3-journeys-18, risks batch 5 Oct 2026): the package for a candidate
+ * still in a hosted drive, through POST /api/v1/placement/drives/{id}/offers. A
+ * figure above one and a half times the drive's top package is answered 409
+ * with the server's sentence under the package field (issues.packageRupees); the
+ * TPO checks it and confirms, which posts again with `confirmedHigh: true`.
  */
 export function TpoDriveScreen() {
   const t = useT();
@@ -28,6 +34,7 @@ export function TpoDriveScreen() {
   const qc = useQueryClient();
   const { driveId } = useLocalSearchParams<{ driveId?: string }>();
   const [notice, setNotice] = useState<{ tone: "ok" | "danger"; text: string } | null>(null);
+  const [offerFor, setOfferFor] = useState<DriveApplicationView | null>(null);
   const query = useQuery({ queryKey: ["placement", "drive", driveId], enabled: Boolean(driveId), queryFn: async () => driveViewSchema.parse(unwrap(await api().get(`/api/v1/placement/drives/${driveId}`))) });
   const record = useMutation({
     mutationFn: async (v: { round: number; studentMembershipId: string; outcome: RoundOutcome }) => roundResultsResultSchema.parse(unwrap(await api().post(`/api/v1/placement/drives/${driveId}/results`, { round: v.round, results: [{ studentMembershipId: v.studentMembershipId, outcome: v.outcome }] }))),
@@ -75,12 +82,89 @@ export function TpoDriveScreen() {
                       <Button label={t("placement.outcomeABSENT")} variant="secondary" disabled={record.isPending} onPress={() => record.mutate({ round: next, studentMembershipId: a.studentMembershipId, outcome: "ABSENT" })} />
                     </View>
                   ) : null}
+                  {d.hosted && offerable(a) ? <Button label={t("placement.offerTitle")} accessibilityLabel={`${t("placement.offerTitle")}: ${a.studentName}`} variant="ghost" onPress={() => setOfferFor(a)} /> : null}
                 </View>
               );
             })}
           </Card>
+          {d.hosted && offerFor && offerable(offerFor) ? (
+            <OfferCard
+              key={offerFor.id}
+              driveId={d.id}
+              candidate={offerFor}
+              onSaved={(text) => {
+                setOfferFor(null);
+                setNotice({ tone: "ok", text });
+              }}
+            />
+          ) : null}
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/** A candidate still in the drive (the web's `live`) with no offer yet. */
+const offerable = (a: DriveApplicationView) => a.status !== "WITHDRAWN" && a.status !== "REJECTED" && a.consentAt !== null && !a.offer;
+
+/** Lakh a year as typed ("6.5") to whole rupees; null when it is not a figure. */
+export function rupeesOfLakh(typed: string): number | null {
+  const n = Number(typed.trim().replace(",", "."));
+  return typed.trim() !== "" && Number.isFinite(n) && n >= 0 ? Math.round(n * 100_000) : null;
+}
+
+/** The answer the server gives a figure far above the drive's package: a 409 naming the package field. */
+class HighOffer extends Error {}
+
+function OfferCard({ driveId, candidate, onSaved }: { driveId: string; candidate: DriveApplicationView; onSaved: (text: string) => void }) {
+  const t = useT();
+  const qc = useQueryClient();
+  const [lakh, setLakh] = useState("");
+  const [high, setHigh] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const save = useMutation({
+    mutationFn: async (confirmedHigh: boolean) => {
+      const packageRupees = rupeesOfLakh(lakh);
+      if (packageRupees === null) throw new Error(t("placement.fieldPackageHint"));
+      const r = await api().post(`/api/v1/placement/drives/${driveId}/offers`, { studentMembershipId: candidate.studentMembershipId, packageRupees, letterFileId: null, ...(confirmedHigh ? { confirmedHigh: true } : {}) });
+      if (!r.ok && r.status === 409 && r.issues?.packageRupees) throw new HighOffer(r.issues.packageRupees);
+      return offerViewSchema.parse(unwrap(r));
+    },
+    onSuccess: () => {
+      onSaved(t("placement.offerRecorded", { name: candidate.studentName }));
+      void qc.invalidateQueries({ queryKey: ["placement"] });
+    },
+    onError: (e: Error) => {
+      if (e instanceof HighOffer) {
+        setHigh(e.message);
+        setError(null);
+      } else {
+        setHigh(null);
+        setError(e.message);
+      }
+    },
+  });
+  return (
+    <Card title={`${t("placement.offerTitle")}: ${candidate.studentName}`}>
+      <Text variant="sm" tone="muted">
+        {t("placement.offerIntro")}
+      </Text>
+      <Field
+        label={t("placement.fieldPackage")}
+        hint={t("placement.fieldPackageHint")}
+        value={lakh}
+        onChangeText={(next) => {
+          setLakh(next);
+          setHigh(null);
+        }}
+        keyboardType="decimal-pad"
+        error={high ?? error}
+      />
+      {high ? (
+        <Button label={t("phoneJoins.confirmHighOffer")} disabled={save.isPending} busy={save.isPending} onPress={() => save.mutate(true)} />
+      ) : (
+        <Button label={t("placement.recordOffer")} disabled={rupeesOfLakh(lakh) === null || save.isPending} busy={save.isPending} onPress={() => save.mutate(false)} />
+      )}
+    </Card>
   );
 }

@@ -3,7 +3,7 @@
  * On the web they answer at /remarks as a teacher does; on the phone they had no inbox at all, and the doors behind
  * one were closed to them: POST /api/v1/messages named only ALUMNUS and GET /api/v1/shared/people no college role.
  * Here, against the committed document: the tab is theirs, and every door the inbox, a room and the people picker
- * call opens to them by the contract matrix's own rule.
+ * call opens to them by the contract matrix's own rule. Since G4-30 (risks batch) the four college desks too.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -23,14 +23,17 @@ const DOORS: [method: "get" | "post", path: string][] = [
   ["get", "/api/v1/shared/people"],
 ];
 
-describe("Messages for a college's faculty and heads of department", () => {
-  it.each(["FACULTY", "HOD"] as const)("%s has a Messages tab, drawn whatever the college has on", (role) => {
+const ROLES = ["FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const;
+
+describe("Messages for a college's staff", () => {
+  // G4-30 (risks batch, 5 Oct 2026): the exam cell, the IQAC, placement and accounts desks joined FACULTY and HOD.
+  it.each(ROLES)("%s has a Messages tab, drawn whatever the college has on", (role) => {
     const tab = TABS[role].find((t) => t.name === "messages");
     expect(tab?.labelKey).toBe("nav.messages");
     expect(tabShown(tab!, [])).toBe(true);
   });
 
-  it.each(["FACULTY", "HOD"] as const)("%s may call every door the inbox, a room and the people picker call", (role) => {
+  it.each(ROLES)("%s may call every door the inbox, a room and the people picker call", (role) => {
     for (const [method, path] of DOORS) {
       const op = doc.paths[path]?.[method];
       expect({ path, documented: Boolean(op) }).toEqual({ path, documented: true });
@@ -38,10 +41,8 @@ describe("Messages for a college's faculty and heads of department", () => {
     }
   });
 
-  it("the other college desks still have no inbox (their doors stay shut)", () => {
-    for (const role of ["EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"] as const) {
-      expect(TABS[role].some((t) => t.name === "messages")).toBe(false);
-      expect(allowed(doc.paths["/api/v1/messages"]!.post!, role, LIMITED)).toBe(403);
-    }
+  it("a recruiter, an outside account, still has no inbox (its doors stay shut)", () => {
+    expect(TABS.RECRUITER.some((t) => t.name === "messages")).toBe(false);
+    expect(allowed(doc.paths["/api/v1/messages"]!.post!, "RECRUITER", LIMITED)).toBe(403);
   });
 });

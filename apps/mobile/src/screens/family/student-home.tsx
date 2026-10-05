@@ -9,6 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { CompleteRecordCard } from "./record";
+import { CelebrationsCard } from "../shared/celebrations";
 import { ATTENDANCE, ExamMarksCards, formatDateKey, LessonList, Pill, relativeTime } from "./shared";
 
 /** The pupil's Today — the web's /student: attendance, the day's lessons, what is due, the latest exam marks. */
@@ -72,6 +73,8 @@ export function StudentHome() {
             <Stat label={t("student.attendance")} value={d.attendance.percent === null ? "—" : `${d.attendance.percent}%`} tone={d.attendance.percent !== null && d.attendance.percent >= 95 ? "ok" : "fg"} />
           </View>
           <QuickActions actions={QUICK.STUDENT ?? []} onOpen={(href) => router.push(href as never)} />
+          {/* Birthdays and anniversaries (A3-inventory-14): the web wears the same door on a pupil's Today. */}
+          <CelebrationsCard />
           <Text variant="xs" tone="muted">
             {[
               d.todayStatus ? t("student.registerTaken") : t("student.registerNotTakenYet"),

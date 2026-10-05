@@ -9,9 +9,9 @@ import { ApiRefused, unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { openWeb } from "@/screens/family/shared";
+import { openWeb, Pill } from "@/screens/family/shared";
 import { roleLabel } from "@/screens/staff/shared";
-import { formatDateTime } from "@/lib/dates";
+import { formatDate, formatDateTime } from "@/lib/dates";
 
 /**
  * Actionable insights on the phone (5 Oct 2026, the accreditation insights
@@ -69,6 +69,33 @@ function ActionRow({ sentence, cta, extra }: { sentence: string; cta: InsightCta
   return <Row title={sentence} caption={[t("insights.ctaAsk", { label }), extra].filter(Boolean).join(" · ")} />;
 }
 
+/**
+ * G4-15 (risks batch, 5 Oct 2026): every figure here is measured against the platform's benchmark list, so it is
+ * "Provisional" until the college's IQAC coordinator signs that list on the web; once signed, who signed it and when.
+ * Worded from the phone's own dictionary (the server's `sentence` is in the account's language). An older server
+ * sends no status, and the screen says nothing more than `notAScore` already does.
+ */
+export function BenchmarksLine({ status }: { status: NaacInsights["benchmarks"] }) {
+  const t = useT();
+  const th = useTheme();
+  if (!status) return null;
+  if (status.provisional) {
+    return (
+      <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], flexWrap: "wrap" }}>
+        <Pill tone="warn" label={t("iqac.provisional")} />
+        <Text variant="sm" tone="muted" style={{ flex: 1, minWidth: 200 }}>
+          {t("riskDecisions.benchmarksProvisional")}
+        </Text>
+      </View>
+    );
+  }
+  return (
+    <Text variant="xs" tone="muted">
+      {t("riskDecisions.benchmarksSigned", { name: status.signedByName ?? "—", date: status.signedAt ? formatDate(status.signedAt) : "—" })}
+    </Text>
+  );
+}
+
 export function InsightsBody({ d }: { d: NaacInsights }) {
   const t = useT();
   const th = useTheme();
@@ -78,6 +105,7 @@ export function InsightsBody({ d }: { d: NaacInsights }) {
       <Text variant="sm" tone="muted">
         {d.notAScore}
       </Text>
+      <BenchmarksLine status={d.benchmarks} />
       <Card title={d.scenarioName ? t("insightsPhone.nowLineScenario", { name: d.scenarioName, cgpa: d.cgpa.toFixed(2), grade: d.grade }) : t("insightsPhone.nowLine", { cgpa: d.cgpa.toFixed(2), grade: d.grade })}>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[3] }}>
           <Stat label={t("iqac.cgpaLabel")} value={d.cgpa.toFixed(2)} />

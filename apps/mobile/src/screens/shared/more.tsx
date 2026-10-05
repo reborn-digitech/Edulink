@@ -12,8 +12,7 @@ import { contextPlace } from "@/lib/institution";
 import { LanguageRow } from "@/components/language-row";
 import { openWeb } from "@/screens/family/shared";
 import { useHeldBySchool, useSwitchContext } from "@/lib/outbox-held";
-import { useQueryClient } from "@tanstack/react-query";
-import { api } from "@/lib/api";
+import { useSaveLocaleToAccount } from "@/lib/account-locale";
 
 /**
  * More: everything the web's rail and More sheet list for this role that
@@ -32,15 +31,9 @@ export function More() {
   const session = useSession();
   const switchTo = useSwitchContext();
   const held = useHeldBySchool();
-  const qc = useQueryClient();
   // The language goes to the account too (B-24, campaign 2026-10-04): the server answers in prefs.locale,
   // so a refusal read after switching here came back in the old language. Then every screen reads afresh.
-  const saveLocale = (code: string) =>
-    void api()
-      .post("/api/v1/account/locale", { locale: code })
-      .then((r) => {
-        if (r.ok) void qc.invalidateQueries();
-      });
+  const saveLocale = useSaveLocaleToAccount();
   if (session.status !== "signed-in") return null;
   const { me } = session;
   const role = me.active.role;

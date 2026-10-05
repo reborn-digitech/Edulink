@@ -63,6 +63,14 @@ describe("the lab in-charge's desk", () => {
     expect(mockPush).toHaveBeenCalledWith("/(app)/practicals");
   });
 
+  // R-24 (risks batch, 5 Oct 2026): a division says the day a re-split made now would take effect, when the read carries it.
+  it("says from which day a change to a division's batches applies", async () => {
+    const divs = [{ ...labDesk.divisions[0], changesFrom: "2026-10-06" }, { ...labDesk.divisions[0], divisionId: id("div2"), name: "ZZ BSc I B", changesFrom: null }];
+    await mountStaff(<LabDeskScreen />, "FACULTY", { "GET /api/v1/duties/lab": () => json({ ...labDesk, divisions: divs }) }, { me: meAs("FACULTY", { duties: ["LAB_INCHARGE"] }) });
+    expect(await screen.findByText("Batch A: ZZ Asha\nA change made now applies from 06/10/2026; the lab already marked keeps the batches it was marked with.")).toBeTruthy();
+    expect(screen.getByText("Batch A: ZZ Asha\nNo batch lab is marked yet, so a change applies from the start.")).toBeTruthy();
+  });
+
   it("lets the office read the rows without signing, and refuses a teacher without the duty", async () => {
     await mountStaff(<LabDeskScreen />, "ADMIN", { "GET /api/v1/duties/lab": () => json({ ...labDesk, inventoryOn: false, labs: [], divisions: [], breakages: [] }) }, { me: meAs("ADMIN") });
     expect(await screen.findByText("PHY101 · exp. 1, ZZ Ohm's law · ZZ Asha · 30/09/2026")).toBeTruthy();

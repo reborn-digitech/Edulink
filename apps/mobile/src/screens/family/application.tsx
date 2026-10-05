@@ -14,6 +14,11 @@ import { MY_APPLICATIONS_KEY } from "./applications";
 import { Confirm, formatDateKey, Note, param } from "./shared";
 
 const day = (iso: string, locale: string) => formatDateKey(iso.slice(0, 10), locale);
+/**
+ * The answer-by day (R-62, risks batch 5 Oct 2026): the server's `offerExpiresOn`, the school-zone day the office typed;
+ * an older server's answer has only the instant, whose UTC day is right east of UTC (India) and a day late west of it.
+ */
+const answerBy = (a: { offerExpiresOn?: string | null; offerExpiresAt: string | null }, locale: string) => (a.offerExpiresOn ? formatDateKey(a.offerExpiresOn, locale) : a.offerExpiresAt ? day(a.offerExpiresAt, locale) : null);
 
 /**
  * One of the guardian's applications — the web's /parent/applications/[id]:
@@ -104,9 +109,9 @@ export function FamilyApplication() {
                 {[t("admissions.offeredOn", { date: day(a.offeredAt, locale) }), a.feeStructureName].filter(Boolean).join(" · ")}
               </Text>
               {a.offerNote ? <Line label={t("admissions.offerNote")} value={a.offerNote} /> : null}
-              {a.status === "OFFERED" && a.offerExpiresAt ? (
+              {a.status === "OFFERED" && answerBy(a, locale) ? (
                 <Text variant="sm" tone="warn" bold>
-                  {t("admissions.respondBy", { date: day(a.offerExpiresAt, locale) })}
+                  {t("admissions.respondBy", { date: answerBy(a, locale)! })}
                 </Text>
               ) : null}
               {a.respondedAt && (a.status === "ACCEPTED" || a.status === "ADMITTED") ? (

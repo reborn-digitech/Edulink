@@ -66,6 +66,16 @@ describe("notification URLs map to screens", () => {
     expect(screenFor("/root/audit")).toEqual({ pathname: "/(app)" });
     expect(screenFor("/appadmin/bank/t1/q1")).toEqual({ pathname: "/(app)/question-bank", params: { topicId: "t1", questionId: "q1" } });
   });
+  it("the exam cell's notices open the exams on the phone (G4-13, risks batch 5 Oct 2026)", () => {
+    // A form decided, grace marks granted, results published: the student's exams; a guardian's: the child's results.
+    expect(screenFor("/student/exams")).toEqual({ pathname: "/(app)/college-exams" });
+    expect(screenFor("/parent/results?student=m1")).toEqual({ pathname: "/(app)/college-exams", params: { student: "m1" } });
+    expect(screenFor("/faculty/exams")).toEqual({ pathname: "/(app)/exam-duties" });
+  });
+  it("birthdays and the practice journey open their own screens (A3-inventory-14)", () => {
+    expect(screenFor("/bulletin/celebrations")).toEqual({ pathname: "/(app)/celebrations" });
+    expect(screenFor("/student/practice/journey")).toEqual({ pathname: "/(app)/practice-journey" });
+  });
   it("anything else opens the web", () => {
     expect(screenFor("/certificate/r1")).toBeNull();
     expect(screenFor("/teacher/worksheets/print")).toBeNull();

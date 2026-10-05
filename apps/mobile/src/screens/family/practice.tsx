@@ -106,6 +106,8 @@ function PupilPractice() {
     <Screen title={t("feature.practice")} description={t("practice.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed error={query.error} onRetry={() => void query.refetch()} /> : null}
+      {/* My own journey (A3-inventory-14): the web's link beside the page title, here the first thing under it. */}
+      {d ? <Button variant="secondary" label={t("journey.title")} onPress={() => router.push("/(app)/practice-journey" as never)} /> : null}
       {d ? (
         topics.length === 0 ? (
           <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push("/(app)/assignments" as never)} />} />

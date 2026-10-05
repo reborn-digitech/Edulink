@@ -15,6 +15,7 @@ import { DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./sha
 import { COVERAGE_KEY, COVERAGE_PATH } from "./syllabus-coverage";
 import { CollegeGlanceCard } from "../college/glance";
 import { StreamTilesCard } from "../college/stream-tiles";
+import { CelebrationsCard } from "../shared/celebrations";
 
 /**
  * The head's dashboard: what can still be fixed today first — attendance
@@ -49,6 +50,8 @@ export function PrincipalHome() {
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? <Overview d={d} /> : null}
+      {/* Birthdays and anniversaries (A3-inventory-14), as on the web's /principal. */}
+      {d ? <CelebrationsCard /> : null}
     </Screen>
   );
 }

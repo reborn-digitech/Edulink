@@ -6,6 +6,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { CelebrationsCard } from "../shared/celebrations";
 
 /** My classes, the web's /teacher/classes: one row per class, with today's register state. */
 export function TeacherClasses() {
@@ -45,6 +46,8 @@ export function TeacherClasses() {
           </Card>
         )
       ) : null}
+      {/* Birthdays and anniversaries (A3-inventory-14), as on the web's /teacher/classes. */}
+      {data ? <CelebrationsCard /> : null}
     </Screen>
   );
 }
