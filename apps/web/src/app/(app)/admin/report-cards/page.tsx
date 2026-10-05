@@ -7,6 +7,7 @@ import { reportCardConfigView } from "@/lib/report-card-config";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/ui/page-header";
 import { getT } from "@/lib/i18n/server";
+import { reportCardDefaultLabels } from "@/lib/certificate-names";
 import { RulesForm } from "./rules-form";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -46,7 +47,7 @@ export default async function ReportCardRulesPage() {
         }
       />
       {/* No key on the form: a save refreshes the page, and what the office has typed since must survive that. */}
-      <RulesForm view={view} schoolName={school.name} schoolLocale={school.locale ?? "en"} readOnly={ctx.role !== "ADMIN"} />
+      <RulesForm view={view} schoolName={school.name} schoolLocale={school.locale ?? "en"} readOnly={ctx.role !== "ADMIN"} defaultLabels={reportCardDefaultLabels(t)} />
     </div>
   );
 }

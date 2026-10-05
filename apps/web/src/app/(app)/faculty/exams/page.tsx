@@ -12,6 +12,7 @@ import { FileField } from "@/components/ui/file-field";
 import { CellOff, DUTY_STATUS_KEY, Flash, Hidden, Labelled, PAPER_STATUS_KEY, REMUNERATION_KEY, money, when } from "@/components/exam-cell/parts";
 import { submitPaperAction } from "../../exam-cell/actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -54,7 +55,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                   {p.courseCode} · {p.sessionName} · {when(p.at, locale)} <Badge tone="outline">{t(PAPER_STATUS_KEY[p.status]!)}</Badge>
                 </p>
                 {p.status !== "MODERATED" ? (
-                  <form action={submitPaperAction} className="grid gap-2 sm:grid-cols-2">
+                  <ActionForm action={submitPaperAction} className="grid gap-2 sm:grid-cols-2">
                     <Hidden fields={{ paperId: p.id, back }} />
                     <FileField label={t("examCell.paperFile")} name="file" accept="application/pdf" required />
                     <Labelled label={t("examCell.coMap")}>
@@ -65,7 +66,7 @@ export default async function FacultyExamsPage({ searchParams }: { searchParams:
                         {t("examCell.sealPaper")}
                       </Button>
                     </div>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </div>
             ))}

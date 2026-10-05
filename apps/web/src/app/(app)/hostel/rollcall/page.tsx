@@ -6,9 +6,11 @@ import { formatDateKey } from "@/lib/dates";
 import { hostelsView, rollCallSheet } from "@/lib/hostel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { TextField } from "@/components/ui/field";
 import { ROLL_STATUS_KEY, SLOT_KEY, WardenFrame, wardenContext, when } from "@/components/hostel/parts";
-import { rollCallAction } from "../actions";
+import { correctRollCallAction, rollCallAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -64,7 +66,7 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
             {sheet.entries.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("hostel.noBoarders")}</p>
             ) : (
-              <form action={rollCallAction} className="space-y-3">
+              <ActionForm action={rollCallAction} className="space-y-3">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="hostelId" value={sheet.hostelId} />
                 <input type="hidden" name="dateKey" value={sheet.dateKey} />
@@ -90,13 +92,44 @@ export default async function HostelRollCallPage({ searchParams }: { searchParam
                   ))}
                 </ul>
                 {!sheet.taken && canWrite ? <Button type="submit">{t("hostel.saveRollCall")}</Button> : null}
-              </form>
+              </ActionForm>
             )}
           </CardBody>
         </Card>
       ) : (
         <p className="text-sm text-fg-muted">{t("hostel.noHostels")}</p>
       )}
+      {/* The office's correction of a taken call (R-11): the warden's lock stays; a reason and one audit row. */}
+      {sheet?.taken && sheet.canCorrect && sheet.rollCallId && sheet.entries.length > 0 ? (
+        <Card data-testid="rollcall-correct">
+          <CardHeader title={t("risksWeb.rollCallCorrectTitle")} description={t("risksWeb.rollCallCorrectIntro")} />
+          <CardBody>
+            <ActionForm action={correctRollCallAction} className="space-y-3">
+              <input type="hidden" name="back" value={back} />
+              <input type="hidden" name="rollCallId" value={sheet.rollCallId} />
+              <ul className="divide-y divide-border rounded-[var(--radius-md)] border border-border">
+                {sheet.entries.map((e) => (
+                  <li key={e.allotmentId} className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5">
+                    <input type="hidden" name="allotmentId" value={e.allotmentId} />
+                    <span className="min-w-0 text-sm font-medium text-fg">{e.name}</span>
+                    <fieldset className="flex gap-3">
+                      <legend className="sr-only">{e.name}</legend>
+                      {HOSTEL_ROLL_STATUSES.map((s) => (
+                        <label key={s} className="flex min-h-11 items-center gap-1.5 text-sm text-fg">
+                          <input type="radio" name={`fix-${e.allotmentId}`} value={s} defaultChecked={e.status === s} className="size-4" />
+                          {t(ROLL_STATUS_KEY[s])}
+                        </label>
+                      ))}
+                    </fieldset>
+                  </li>
+                ))}
+              </ul>
+              <TextField name="reason" label={t("risksWeb.rollCallCorrectReason")} required minLength={3} maxLength={300} />
+              <Button type="submit" variant="secondary">{t("risksWeb.rollCallCorrectButton")}</Button>
+            </ActionForm>
+          </CardBody>
+        </Card>
+      ) : null}
     </WardenFrame>
   );
 }

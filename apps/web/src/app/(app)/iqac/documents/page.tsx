@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SIGNED_FILINGS, type CollegeFilingKind } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarkStatus } from "@/lib/iqac-benchmarks";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { listCycles } from "@/lib/iqac";
@@ -17,6 +18,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/parts";
 import { filedAction, generateFilingAction, submitFilingAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -70,7 +72,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
       <PageHeader title={t("iqac.documentsTitle")} description={t("iqac.documentsIntro")} />
       <DeskNav t={t} here={back} />
       <IqacFlash ok={ok} error={error} />
-      <NotAScore t={t} />
+      <NotAScore t={t} benchmarks={await benchmarkStatus(ctx.schoolId)} />
       <Card>
         <CardHeader title={t("councilFilings.streamsTitle")} description={t("councilFilings.streamsIntro")} />
         <CardBody>
@@ -123,7 +125,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
         <Card id="generate">
           <CardHeader title={t("iqac.generateTitle")} />
           <CardBody>
-            <form action={generateFilingAction} className="grid gap-3 sm:grid-cols-4 sm:items-end">
+            <ActionForm action={generateFilingAction} className="grid gap-3 sm:grid-cols-4 sm:items-end">
               <input type="hidden" name="back" value={back} />
               <SelectField name="kind" label={t("iqac.kindField")} defaultValue="AQAR">
                 {applies.map((k) => (
@@ -154,7 +156,7 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
               {/* A year already filed is made again only when asked (A3-journeys-35). */}
               <CheckboxField name="again" value="1" label={t("iqac.againField")} description={t("iqac.againHint")} className="sm:col-span-3" />
               <Button type="submit">{t("iqac.generateButton")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -192,23 +194,23 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
                     <a href={`/api/v1/iqac/filings/${f.id}/file`}>{t("iqac.download")}</a>
                   </Button>
                   {filings.canGenerate && SIGNED_FILINGS.includes(f.kind) && (f.status === "DRAFT" || f.status === "RETURNED") ? (
-                    <form action={submitFilingAction}>
+                    <ActionForm action={submitFilingAction}>
                       <input type="hidden" name="back" value={back} />
                       <input type="hidden" name="filingId" value={f.id} />
                       <Button type="submit" size="sm">
                         {t("iqac.submitButton")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                   {filings.canGenerate && f.status !== "FILED" && (!SIGNED_FILINGS.includes(f.kind) || f.status === "SIGNED_OFF") ? (
-                    <form action={filedAction} className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={filedAction} className="flex flex-wrap items-end gap-2">
                       <input type="hidden" name="back" value={back} />
                       <input type="hidden" name="filingId" value={f.id} />
                       <TextField name="file" type="file" label={t("iqac.ackField")} accept="application/pdf,image/*" />
                       <Button type="submit" size="sm" variant="soft">
                         {t("iqac.filedButton")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </div>
               </CardBody>

@@ -20,6 +20,7 @@ import { PersonLink } from "@/components/person-link";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -198,7 +199,7 @@ export default async function AdminAttendancePage({
                       </span>
                     </div>
                   </div>
-                  <form action={alertGuardiansAction}>
+                  <ActionForm action={alertGuardiansAction}>
                     <input type="hidden" name="studentMembershipId" value={flag.studentMembershipId} />
                     <Button
                       type="submit"
@@ -211,7 +212,7 @@ export default async function AdminAttendancePage({
                         ? t("attendanceIntel.noGuardians")
                         : t("attendanceIntel.notify")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 </li>
               ))}
             </ul>

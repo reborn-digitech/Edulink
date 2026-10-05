@@ -14,6 +14,7 @@ import { DateTimeField } from "@/components/ui/date-time-field";
 import { CellOff, FORM_STATUS_KEY, Hidden, Labelled, SessionFrame, localInput, money, when } from "@/components/exam-cell/parts";
 import { decideFormAction, generateFormsAction, sessionStatusAction, submitFormAction, updateSessionAction } from "../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -40,18 +41,18 @@ export default async function SessionFormsPage({ params, searchParams }: { param
         {s.canWrite ? (
           <CardBody className="flex flex-wrap gap-2">
             {s.status === "DRAFT" || s.status === "FORMS" ? (
-              <form action={generateFormsAction}>
+              <ActionForm action={generateFormsAction}>
                 <Hidden fields={{ sessionId: s.id, back }} />
                 <Button type="submit" variant="secondary">
                   {t("examCell.generateForms")}
                 </Button>
-              </form>
+              </ActionForm>
             ) : null}
             {next ? (
-              <form action={sessionStatusAction}>
+              <ActionForm action={sessionStatusAction}>
                 <Hidden fields={{ sessionId: s.id, status: next, back }} />
                 <Button type="submit">{t(`examCell.moveTo${next}` as const)}</Button>
-              </form>
+              </ActionForm>
             ) : null}
             <Button asChild variant="ghost">
               <Link href={`/exam-cell/sessions/${s.id}/export?kind=forms`}>{t("examCell.exportForms")}</Link>
@@ -87,15 +88,15 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                     {f.waiverReason ? ` · ${t("examCell.waived", { reason: f.waiverReason })}` : ""}
                   </p>
                   {s.canWrite && f.status === "DRAFT" && s.status === "FORMS" ? (
-                    <form action={submitFormAction}>
+                    <ActionForm action={submitFormAction}>
                       <Hidden fields={{ formId: f.id, back }} />
                       <Button type="submit" size="sm" variant="secondary">
                         {t("examCell.submitFor")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                   {s.canWrite && f.status === "SUBMITTED" && !f.lockedAt ? (
-                    <form action={decideFormAction} className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={decideFormAction} className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ formId: f.id, back }} />
                       <Labelled label={t("examCell.reason")} className="min-w-48 flex-1">
                         <input name="reason" maxLength={300} className={fieldClass()} />
@@ -109,7 +110,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
                       <Button type="submit" size="sm" variant="secondary" name="approve" value="0">
                         {t("examCell.refuse")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </li>
               ))}
@@ -122,7 +123,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
         <Card>
           <CardHeader title={t("examCell.editSession")} />
           <CardBody>
-            <form action={updateSessionAction} className="grid gap-4 sm:grid-cols-2">
+            <ActionForm action={updateSessionAction} className="grid gap-4 sm:grid-cols-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.fieldName")}>
                 <input name="name" required defaultValue={s.name} className={fieldClass()} />
@@ -164,7 +165,7 @@ export default async function SessionFormsPage({ params, searchParams }: { param
               <div className="sm:col-span-2">
                 <Button type="submit">{t("examCell.saveSession")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

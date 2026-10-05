@@ -5,7 +5,7 @@ import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { postableClasses } from "@/lib/bulletin";
 import { ComposeForm } from "./form";
-import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
+import { POSTABLE_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
@@ -104,7 +104,7 @@ export default async function NewPostPage({
       <ComposeForm
         initialTitle={prefill.title?.slice(0, 120)}
         initialTags={prefill.tag ? [prefill.tag.replace(/^#/, "").slice(0, 40)] : undefined}
-        initialCategory={POST_CATEGORIES.includes(prefill.category as PostCategory) ? (prefill.category as PostCategory) : undefined}
+        initialCategory={(POSTABLE_CATEGORIES as readonly string[]).includes(prefill.category ?? "") ? (prefill.category as PostCategory) : undefined}
         className="mt-7"
         classes={classes}
         grades={college ? [] : grades}

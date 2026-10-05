@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BankIcon, ChartBarIcon, FileCsvIcon, HandCoinsIcon, ListChecksIcon, PercentIcon, ReceiptIcon, StackIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { ArrowCounterClockwiseIcon, BankIcon, ChartBarIcon, FileCsvIcon, HandCoinsIcon, ListChecksIcon, PercentIcon, ReceiptIcon, StackIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { isCollegeKind } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { accountsOverview } from "@/lib/accounts";
+import { refundsAwaiting } from "@/lib/college-admissions";
+import { formatDate, safeTimeZone } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -40,13 +42,18 @@ export default async function AccountsPage() {
       </div>
     );
   }
-  const [o, programmes, scholarshipsOn, payrollOn, inventoryOn] = await Promise.all([
+  const [o, programmes, scholarshipsOn, payrollOn, inventoryOn, admissionsOn, school] = await Promise.all([
     accountsOverview(ctx),
     db.programme.findMany({ where: { schoolId: ctx.schoolId }, select: { id: true, code: true } }),
     isModuleOn(ctx.schoolId, "SCHOLARSHIPS"),
     isModuleOn(ctx.schoolId, "PAYROLL"),
     isModuleOn(ctx.schoolId, "INVENTORY"),
+    isModuleOn(ctx.schoolId, "ADMISSIONS"),
+    db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } }),
   ]);
+  // The cancelled seats whose refund the bank has not paid yet (R-60): the office's and the accounts desk's, not the head's.
+  const awaiting = admissionsOn && ctx.role !== "PRINCIPAL" ? (await refundsAwaiting(ctx)).items : null;
+  const zone = safeTimeZone(school?.timezone);
   const code = new Map(programmes.map((p) => [p.id, p.code]));
   const totals = o.collection.reduce((a, r) => ({ demand: a.demand + r.demandPaise, collected: a.collected + r.collectedPaise, outstanding: a.outstanding + r.outstandingPaise }), { demand: 0, collected: 0, outstanding: 0 });
   const receivable = o.receivableAgeing.reduce((a, r) => a + r.receivablePaise, 0);
@@ -60,6 +67,7 @@ export default async function AccountsPage() {
     { href: "/admin/payroll", label: t("collegeOffice.navPayroll"), icon: <BankIcon weight="duotone" className="size-5" />, show: payrollOn },
     { href: "/admin/inventory/purchases", label: t("collegeOffice.navPurchases"), icon: <ReceiptIcon weight="duotone" className="size-5" />, show: inventoryOn },
     { href: "/admin/inventory/assets", label: t("collegeOffice.navAssets"), icon: <ChartBarIcon weight="duotone" className="size-5" />, show: inventoryOn },
+    { href: "#refunds-awaiting", label: t("risksWeb.refundsAwaitingLink", { n: awaiting?.length ?? 0 }), icon: <ArrowCounterClockwiseIcon weight="duotone" className="size-5" />, show: awaiting !== null },
   ];
   const reports = ["collection", "defaulters", "receivable", "income-expense", "finance-table"] as const;
   return (
@@ -83,6 +91,33 @@ export default async function AccountsPage() {
           ))}
         </CardBody>
       </Card>
+      {awaiting !== null ? (
+        <Card id="refunds-awaiting" className="scroll-mt-20" data-testid="refunds-awaiting">
+          <CardHeader icon={<ArrowCounterClockwiseIcon weight="duotone" className="size-5" />} title={t("riskDecisions.refundsAwaitingTitle")} description={t("risksWeb.refundsAwaitingIntro")} />
+          <CardBody>
+            {awaiting.length === 0 ? (
+              <p className="text-sm text-fg-muted">{t("riskDecisions.refundsAwaitingNone")}</p>
+            ) : (
+              <Table head={[t("risksWeb.refundsColApplicant"), t("collegeOffice.colProgramme"), t("risksWeb.refundsColCancelled"), t("risksWeb.refundsColFee"), t("risksWeb.refundsColRefund")]}>
+                {awaiting.map((r) => (
+                  <tr key={r.applicationId}>
+                    <td className="py-2 pr-3">
+                      <Link className="inline-flex min-h-11 items-center text-accent-strong hover:underline" href={`/admin/college-admissions/${r.applicationId}`}>
+                        {r.applicantName} · {r.number}
+                      </Link>
+                      {r.askStatus === "ASKED" ? <span className="block text-xs text-warn">{t("risksWeb.refundsAskWaiting")}</span> : null}
+                    </td>
+                    <td className="py-2 pr-3">{r.programmeName || "—"}</td>
+                    <td className="py-2 pr-3 whitespace-nowrap">{r.cancelledAt ? formatDate(new Date(r.cancelledAt), zone) : "—"}</td>
+                    <td className="py-2 pr-3 tabular-nums">{money(r.admissionFeePaise, locale)}</td>
+                    <td className="py-2 pr-3 tabular-nums">{money(r.refundPaise, locale)}</td>
+                  </tr>
+                ))}
+              </Table>
+            )}
+          </CardBody>
+        </Card>
+      ) : null}
       <Card>
         <CardHeader icon={<ChartBarIcon weight="duotone" className="size-5" />} title={t("collegeOffice.collectionTitle")} description={t("collegeOffice.collectionIntro")} />
         <CardBody>

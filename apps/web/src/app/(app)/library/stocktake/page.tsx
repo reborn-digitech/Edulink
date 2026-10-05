@@ -9,6 +9,7 @@ import { DeskFrame, deskContext } from "@/components/library/desk";
 import { COPY_STATUS_KEY } from "@/components/library/parts";
 import { stockSeenAction, stockTakeFormAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -33,23 +34,23 @@ export default async function LibraryStockTakePage({ searchParams }: { searchPar
         <CardHeader icon={<ClipboardTextIcon weight="duotone" className="size-5" />} title={st.startedAt ? t("library.stockRunning", { since: formatInZone(new Date(st.startedAt), timeZone, { dateStyle: "medium", timeStyle: "short" }, locale) }) : t("library.stockNotRunning")} />
         <CardBody className="space-y-4">
           {canWrite && st.startedAt ? (
-            <form action={stockSeenAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={stockSeenAction} className="flex flex-wrap items-end gap-2">
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                 {t("library.accession")}
                 <input name="accession" required autoFocus autoComplete="off" maxLength={30} className={fieldClass("mt-1.5 block")} />
               </label>
               <Button type="submit">{t("library.markSeen")}</Button>
-            </form>
+            </ActionForm>
           ) : null}
           {canWrite ? (
-            <form action={stockTakeFormAction}>
+            <ActionForm action={stockTakeFormAction}>
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="action" value={st.startedAt ? "FINISH" : "START"} />
               <Button type="submit" variant={st.startedAt ? "secondary" : "primary"}>
                 {st.startedAt ? t("library.finishStock") : t("library.startStock")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
           {st.startedAt && st.unseen.length > 0 ? (
             <div>

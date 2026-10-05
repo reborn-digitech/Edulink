@@ -12,6 +12,7 @@ import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { Flash, Hidden, NotCollege, Table, money } from "@/components/college-office/parts";
 import { eResourceAction, isbnImportAction } from "../../accounts/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +57,7 @@ export default async function LibraryCollegePage({ searchParams }: { searchParam
             ))}
           </Table>
           {write ? (
-            <form action={eResourceAction} className="grid gap-3 sm:grid-cols-4">
+            <ActionForm action={eResourceAction} className="grid gap-3 sm:grid-cols-4">
               <Hidden fields={{ back }} />
               <TextField name="name" required minLength={2} label={t("collegeOffice.eResource")} />
               <TextField name="url" type="url" required label={t("collegeOffice.link")} />
@@ -70,7 +71,7 @@ export default async function LibraryCollegePage({ searchParams }: { searchParam
               <div className="flex items-end">
                 <Button type="submit" variant="secondary">{t("collegeOffice.add")}</Button>
               </div>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -78,11 +79,11 @@ export default async function LibraryCollegePage({ searchParams }: { searchParam
         <Card>
           <CardHeader title={t("collegeOffice.isbnTitle")} description={t("collegeOffice.isbnIntro")} />
           <CardBody>
-            <form action={isbnImportAction} className="space-y-3">
+            <ActionForm action={isbnImportAction} className="space-y-3">
               <Hidden fields={{ back }} />
               <TextAreaField name="text" required rows={6} label={t("collegeOffice.isbnLabel")} hint={t("collegeOffice.isbnHint")} />
               <Button type="submit" variant="secondary">{t("collegeOffice.importButton")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

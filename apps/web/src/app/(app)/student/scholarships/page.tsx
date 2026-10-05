@@ -16,6 +16,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { CATEGORY_KEY, CLAIM_STATUS_KEY, Flash, Hidden, NotCollege, SCHEME_KEY, Table, money } from "@/components/college-office/parts";
 import { claimDocumentAction } from "../../accounts/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -66,7 +67,7 @@ export default async function StudentScholarshipsPage({ searchParams }: { search
                       ))}
                     </ul>
                     {c.status === "APPLIED" || c.status === "SANCTIONED" ? (
-                      <form action={claimDocumentAction} encType="multipart/form-data" className="mt-2 flex flex-wrap items-end gap-2">
+                      <ActionForm action={claimDocumentAction} encType="multipart/form-data" className="mt-2 flex flex-wrap items-end gap-2">
                         <Hidden fields={{ back, claimId: c.id }} />
                         <SelectField name="key" label={t("collegeOffice.colDocument")}>
                           {["income", "caste", "domicile", "fee_receipt", "bank_passbook", "marksheet", "other"].map((k) => (
@@ -77,7 +78,7 @@ export default async function StudentScholarshipsPage({ searchParams }: { search
                         </SelectField>
                         <input type="file" name="file" required accept="image/png,image/jpeg,application/pdf" className="text-xs" aria-label={t("collegeOffice.attachScan")} />
                         <Button type="submit" size="sm" variant="secondary">{t("collegeOffice.add")}</Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                   </td>
                 </tr>

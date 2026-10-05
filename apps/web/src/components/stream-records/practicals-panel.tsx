@@ -142,7 +142,7 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
         <Card>
           <CardHeader icon={<SealCheckIcon weight="duotone" className="size-5" />} title={t("streamRecords.practicals.signTitle")} description={t("streamRecords.practicals.signBody", { count: unsigned.length })} />
           <CardBody>
-            <form action={signPracticalsAction} className="space-y-3">
+            <ActionForm action={signPracticalsAction} className="space-y-3">
               <input type="hidden" name="offeringId" value={offering.offeringId} />
               <input type="hidden" name="back" value={base} />
               <ul className="divide-y divide-border text-sm">
@@ -157,7 +157,7 @@ export function PracticalsPanel({ sheet, t, locale, base, today }: { sheet: Prac
                 ))}
               </ul>
               <Button type="submit" variant="secondary">{t("streamRecords.practicals.sign")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

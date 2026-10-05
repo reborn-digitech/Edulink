@@ -29,8 +29,10 @@ function bandOf(percent: number, bands: LiveBand[]): LiveBand | null {
   return [...bands].filter((b) => b.minPercent !== null).sort((a, b) => (b.minPercent ?? 0) - (a.minPercent ?? 0)).find((b) => percent >= (b.minPercent ?? 0)) ?? null;
 }
 
-export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout }: { schoolName: string; locale: string; bands: LiveBand[]; areas: string[]; coScale: string[]; layout: ReportCardLayout }) {
+export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout, labels = {} }: { schoolName: string; locale: string; bands: LiveBand[]; areas: string[]; coScale: string[]; layout: ReportCardLayout; labels?: Record<string, string> }) {
   const t = useT();
+  // A coded default still in English reads in the reader's language, as on the card's own page (A3-states-18).
+  const said = (text: string) => (Object.hasOwn(labels, text) ? labels[text]! : text);
   const rows = SAMPLE.map((s) => ({ subject: t(s.key), percent: s.percent, band: bandOf(s.percent, bands) }));
   const overall = Math.round((rows.reduce((sum, r) => sum + r.percent, 0) / rows.length) * 10) / 10;
   const pointed = rows.map((r) => r.band?.points).filter((p): p is number => typeof p === "number");
@@ -82,7 +84,7 @@ export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout
                   {letters && (
                     <td className="py-1.5 pr-2" data-testid="preview-grade">
                       <span className="font-semibold">{row.band?.label ?? "—"}</span>
-                      {row.band?.descriptor && <span className={`ml-1.5 ${muted}`}>{row.band.descriptor}</span>}
+                      {row.band?.descriptor && <span className={`ml-1.5 ${muted}`}>{said(row.band.descriptor)}</span>}
                     </td>
                   )}
                   {points && <td className="py-1.5 text-right tabular-nums">{row.band?.points ?? "—"}</td>}
@@ -106,7 +108,7 @@ export function RulesPreview({ schoolName, locale, bands, areas, coScale, layout
             <ul className="mt-1 grid grid-cols-2 gap-x-4 text-xs">
               {areas.map((area, index) => (
                 <li key={`${area}-${index}`} className="flex justify-between gap-2 border-b border-border/60 py-1">
-                  <span className="min-w-0 truncate">{area}</span>
+                  <span className="min-w-0 truncate">{said(area)}</span>
                   <span className="font-semibold">{coScale.length > 0 ? coScale[index % coScale.length] : "—"}</span>
                 </li>
               ))}

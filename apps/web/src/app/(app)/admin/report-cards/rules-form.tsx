@@ -98,7 +98,12 @@ const SECTIONS: { id: Section; key: "reportCardConfig.tabScale" | "reportCardCon
 type AreaDraft = { key: string; name: string };
 
 /** `readOnly` is the head's view: every control disabled, no save and no weight written on blur, because the rules are the admin's. */
-export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: { view: ReportCardConfigView; schoolName: string; schoolLocale: string; readOnly?: boolean }) {
+/**
+ * `defaultLabels`: the report card's coded defaults in the reader's language
+ * (lib/certificate-names.ts), for the preview only — the boxes keep the
+ * school's text, which is what prints (A3-states-18).
+ */
+export function RulesForm({ view, schoolName, schoolLocale, readOnly = false, defaultLabels = {} }: { view: ReportCardConfigView; schoolName: string; schoolLocale: string; readOnly?: boolean; defaultLabels?: Record<string, string> }) {
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
@@ -538,7 +543,7 @@ export function RulesForm({ view, schoolName, schoolLocale, readOnly = false }: 
       </form>
 
       <aside className="min-w-0 lg:sticky lg:top-20">
-        <RulesPreview schoolName={schoolName} locale={schoolLocale} bands={liveBands} areas={areas.map((a) => a.name.trim()).filter(Boolean)} coScale={coScale.map((g) => g.label.trim()).filter(Boolean)} layout={layout} />
+        <RulesPreview schoolName={schoolName} locale={schoolLocale} bands={liveBands} areas={areas.map((a) => a.name.trim()).filter(Boolean)} coScale={coScale.map((g) => g.label.trim()).filter(Boolean)} layout={layout} labels={defaultLabels} />
       </aside>
     </div>
   );

@@ -2,11 +2,12 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { ArrowCounterClockwiseIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { EXPERT_OFFERING_META, type ExpertOffering } from "@/lib/constants";
-import { setStanding, decideKycAction } from "./actions";
+import { setStanding, decideKycAction, setExpertAccessAction } from "./actions";
 import type { CurationEntry } from "@/lib/superuser";
 import { useT } from "@/lib/i18n";
 import { actionError } from "@/lib/action-error";
@@ -39,6 +40,26 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
   const [reason, setReason] = useState("");
 
   const published = entry.publishedAt !== null;
+  const closed = entry.disabledAt !== null;
+
+  /** Close the account or open it again (G4-28): asks first and for a reason when closing; the expert is told by email. */
+  function setAccess() {
+    setError(null);
+    let reason: string | undefined;
+    if (!closed) {
+      if (!window.confirm(t("risksWeb.expertCloseConfirm", { name: entry.name }))) return;
+      reason = window.prompt(t("operatorCollege.reasonPrompt")) ?? undefined;
+    }
+    startTransition(async () => {
+      const result = await setExpertAccessAction(entry.profileId, { disabled: !closed, reason });
+      if (!result.ok) {
+        setError(actionError(t, result, "common.tryAgain"));
+        return;
+      }
+      toast({ tone: "ok", title: closed ? t("risksWeb.expertReopenedToast", { name: entry.name }) : t("risksWeb.expertClosedToast", { name: entry.name, count: result.sessionsEnded ?? 0 }) });
+      router.refresh();
+    });
+  }
   const verified = entry.verifiedAt !== null;
   const kyc = entry.kyc;
 
@@ -89,6 +110,13 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
               <Badge tone="accent" size="sm">
                 {t("expert.identityChecked")}
               </Badge>
+            )}
+            {closed && (
+              <span data-testid="expert-closed">
+                <Badge tone="danger" size="sm">
+                  {t("risksWeb.expertClosedBadge")}
+                </Badge>
+              </span>
             )}
           </p>
           <p className="mt-0.5 truncate text-sm text-fg-muted">
@@ -253,6 +281,13 @@ export function CurationRow({ entry }: { entry: CurationEntry }) {
       {published && (
         <p className="mt-3 text-xs leading-relaxed text-fg-muted">{t("expert.takeOffNote")}</p>
       )}
+
+      {/* The account itself (G4-28): closed, no one signs in or books; the expert is told. */}
+      <div className="mt-4 border-t border-border pt-3">
+        <Button size="sm" variant={closed ? "secondary" : "ghost"} icon={closed ? <ArrowCounterClockwiseIcon weight="bold" /> : <ProhibitIcon weight="bold" />} loading={pending} onClick={setAccess} data-testid="expert-access">
+          {closed ? t("risksWeb.expertReopen") : t("risksWeb.expertClose")}
+        </Button>
+      </div>
     </div>
   );
 }

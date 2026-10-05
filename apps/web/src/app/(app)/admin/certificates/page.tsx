@@ -40,6 +40,10 @@ export default async function CertificatesPage() {
             <Button asChild variant="secondary" size="sm" icon={<ListChecksIcon weight="bold" />}>
               <Link href="/admin/certificates/issued">{t("certificates.issuedTitle")}</Link>
             </Button>
+            {/* Appointment letters to staff (risks batch 5A, 5 Oct 2026). */}
+            <Button asChild variant="secondary" size="sm" icon={<ListChecksIcon weight="bold" />}>
+              <Link href="/admin/certificates/appointments">{t("appointmentLetters.title")}</Link>
+            </Button>
             {view.templates.some((x) => x.active) && (
               <Button asChild size="sm" icon={<SealCheckIcon weight="bold" />}>
                 <Link href="/admin/certificates/issue">{t("certificates.issueTitle")}</Link>

@@ -16,6 +16,7 @@ import { formatDateKey } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import { labBreakageAction } from "../actions";
 import { signPracticalsAction } from "@/app/(app)/admin/stream-records/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("duties.lab.title") };
@@ -132,7 +133,7 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
           {d.toSign.length === 0 ? (
             <p className="text-sm text-fg-muted">{t("duties.lab.nothingToSign")}</p>
           ) : holder ? (
-            <form action={signPracticalsAction} className="space-y-3">
+            <ActionForm action={signPracticalsAction} className="space-y-3">
               <input type="hidden" name="back" value="/duties/lab" />
               <ul className="divide-y divide-border text-sm">
                 {d.toSign.map((r) => (
@@ -145,7 +146,7 @@ export default async function LabDeskPage({ searchParams }: { searchParams: Prom
                 ))}
               </ul>
               <Button type="submit" variant="secondary">{t("streamRecords.practicals.sign")}</Button>
-            </form>
+            </ActionForm>
           ) : (
             <ul className="divide-y divide-border text-sm">
               {d.toSign.map((r) => (

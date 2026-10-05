@@ -17,6 +17,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, day, keyed } from "@/components/iqac/parts";
 import { closeSurveyAction, createSurveyAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -55,7 +56,7 @@ export default async function SurveysPage({ searchParams }: { searchParams: Prom
         <Card>
           <CardHeader title={t("iqac.newSurveyTitle")} />
           <CardBody>
-            <form action={createSurveyAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={createSurveyAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
               <SelectField name="kind" label={t("iqac.kindField")} defaultValue="SSS">
                 {SURVEY_KINDS.map((k) => (
@@ -78,7 +79,7 @@ export default async function SurveysPage({ searchParams }: { searchParams: Prom
               <div className="sm:col-span-2">
                 <Button type="submit">{t("iqac.createButton")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -98,13 +99,13 @@ export default async function SurveysPage({ searchParams }: { searchParams: Prom
                   <Link href={`/iqac/surveys/${x.id}`}>{t("iqac.resultsButton")}</Link>
                 </Button>
                 {s.canEdit && x.status !== "CLOSED" ? (
-                  <form action={closeSurveyAction}>
+                  <ActionForm action={closeSurveyAction}>
                     <input type="hidden" name="back" value={back} />
                     <input type="hidden" name="surveyId" value={x.id} />
                     <Button type="submit" size="sm" variant="ghost">
                       {t("iqac.closeButton")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </CardBody>
             </Card>

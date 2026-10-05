@@ -15,7 +15,9 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { labBatches } from "@/lib/stream-records";
 import { getT } from "@/lib/i18n/server";
+import { isoToDisplayDate } from "@/lib/dates";
 import { moveToLabBatchAction, splitLabBatchesAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: (await getT())("streamRecords.batches.title") };
@@ -62,14 +64,20 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
               </div>
               {d.unbatched.length > 0 ? <p className="text-sm text-warn">{t("streamRecords.batches.unbatched", { names: d.unbatched.map((u) => u.name).join(", ") })}</p> : null}
               {data.canEdit && data.offered ? (
-                <div className="grid gap-4 border-t border-border pt-4 lg:grid-cols-2">
-                  <form action={splitLabBatchesAction} className="flex flex-wrap items-end gap-3">
+                /* The day a change made now takes effect (R-24): said before the office acts, as the phone says it. */
+                <p className="border-t border-border pt-4 text-sm text-fg-muted" data-testid="batches-changes-from">
+                  {d.changesFrom ? t("riskDecisions.labChangesFrom", { date: isoToDisplayDate(d.changesFrom) }) : t("riskDecisions.labChangesFromStart")}
+                </p>
+              ) : null}
+              {data.canEdit && data.offered ? (
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <ActionForm action={splitLabBatchesAction} className="flex flex-wrap items-end gap-3">
                     <input type="hidden" name="divisionId" value={d.divisionId} />
                     <TextField name="size" type="number" min={LAB_BATCH_MIN_SIZE} max={LAB_BATCH_MAX_SIZE} label={t("streamRecords.batches.fieldSize")} defaultValue={String(d.batches[0]?.capacity ?? data.defaultSize)} className="w-36" />
                     <Button type="submit" variant="secondary">{t(d.batches.length ? "streamRecords.batches.resplit" : "streamRecords.batches.split")}</Button>
-                  </form>
+                  </ActionForm>
                   {d.batches.length > 1 ? (
-                    <form action={moveToLabBatchAction} className="flex flex-wrap items-end gap-3">
+                    <ActionForm action={moveToLabBatchAction} className="flex flex-wrap items-end gap-3">
                       <SelectField name="student" label={t("streamRecords.batches.fieldStudent")} required className="min-w-48">
                         {[...d.batches.flatMap((b) => b.members), ...d.unbatched].map((m) => (
                           <option key={m.studentMembershipId} value={m.studentMembershipId}>{m.name}</option>
@@ -81,7 +89,7 @@ export default async function LabBatchesPage({ searchParams }: { searchParams: P
                         ))}
                       </SelectField>
                       <Button type="submit" variant="secondary">{t("streamRecords.batches.move")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </div>
               ) : null}

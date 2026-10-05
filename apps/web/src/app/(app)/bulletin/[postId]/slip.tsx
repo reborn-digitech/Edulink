@@ -2,6 +2,7 @@ import type { z } from "zod";
 import type { slipReportSchema, slipViewSchema } from "@edulink/contracts";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ActionForm } from "@/components/ui/action-form";
 import { TableScroll } from "@/components/ui/table-scroll";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { answerSlipAction } from "./slip-actions";
@@ -28,14 +29,14 @@ export function SlipAnswers({ postId, slip, t, day }: { postId: string; slip: z.
             {slip.open ? (
               <span className="flex gap-2">
                 {(["YES", "NO"] as const).map((answer) => (
-                  <form key={answer} action={answerSlipAction}>
+                  <ActionForm key={answer} action={answerSlipAction}>
                     <input type="hidden" name="postId" value={postId} />
                     <input type="hidden" name="studentMembershipId" value={c.studentMembershipId} />
                     <input type="hidden" name="answer" value={answer} />
                     <Button type="submit" size="sm" variant={c.answer === answer ? "primary" : "secondary"} aria-pressed={c.answer === answer} aria-label={t("collegeDesks.slipAnswerFor", { answer: t(answer === "YES" ? "collegeDesks.slipYes" : "collegeDesks.slipNo"), name: c.name })}>
                       {t(answer === "YES" ? "collegeDesks.slipYes" : "collegeDesks.slipNo")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ))}
               </span>
             ) : (

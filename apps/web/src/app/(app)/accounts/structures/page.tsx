@@ -14,6 +14,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { CATEGORY_KEY, Flash, Hidden, NotCollege, Table, day, money } from "@/components/college-office/parts";
 import { officeSettingsAction, raiseDemandsAction, structureAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -61,11 +62,11 @@ export default async function StructuresPage({ searchParams }: { searchParams: P
             </Table>
           )}
           {canWrite ? (
-            <form action={raiseDemandsAction} className="mt-4">
+            <ActionForm action={raiseDemandsAction} className="mt-4">
               <Hidden fields={{ back }} />
               <Button type="submit" variant="primary">{t("collegeOffice.raiseDemands")}</Button>
               <p className="mt-2 text-xs text-fg-muted">{t("collegeOffice.raiseDemandsHint")}</p>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -76,7 +77,7 @@ export default async function StructuresPage({ searchParams }: { searchParams: P
             {heads.length === 0 || programmes.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("collegeOffice.structureNeeds")}</p>
             ) : (
-              <form action={structureAction} className="grid gap-4 sm:grid-cols-2">
+              <ActionForm action={structureAction} className="grid gap-4 sm:grid-cols-2">
                 <Hidden fields={{ back }} />
                 <SelectField name="programmeId" required label={t("collegeOffice.colProgramme")}>
                   {programmes.map((p) => (
@@ -119,7 +120,7 @@ export default async function StructuresPage({ searchParams }: { searchParams: P
                 <div className="sm:col-span-2">
                   <Button type="submit">{t("collegeOffice.structureSave")}</Button>
                 </div>
-              </form>
+              </ActionForm>
             )}
           </CardBody>
         </Card>
@@ -128,11 +129,11 @@ export default async function StructuresPage({ searchParams }: { searchParams: P
         <CardHeader title={t("collegeOffice.limitTitle")} description={t("collegeOffice.limitIntro", { amount: money(settings.concessionLimitPaise, locale) })} />
         {ctx.role === "ADMIN" ? (
           <CardBody>
-            <form action={officeSettingsAction} className="flex flex-wrap items-end gap-3">
+            <ActionForm action={officeSettingsAction} className="flex flex-wrap items-end gap-3">
               <Hidden fields={{ back }} />
               <TextField name="limit" inputMode="decimal" required label={t("collegeOffice.limitLabel")} defaultValue={(settings.concessionLimitPaise / 100).toFixed(2)} />
               <Button type="submit" variant="secondary">{t("collegeOffice.save")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         ) : null}
       </Card>

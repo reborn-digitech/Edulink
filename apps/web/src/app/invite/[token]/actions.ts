@@ -140,7 +140,9 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
         return { ok: false, errors: { _form: words, password: words } };
       }
       const check = await signInWithPassword(email, password);
-      if (!check.ok) {
+      // A right password to an outside account the operator closed (G4-28) still proves the person: the invite
+      // gives them a school, a way in of its own.
+      if (!check.ok && check.reason !== "closed") {
         if (check.reason === "rate") {
           const h = retryHintKey(check.retryAfterSeconds);
           return { ok: false, errors: { _form: t("invite.tooManyAttempts", { when: t(h.key, h.vars) }) } };

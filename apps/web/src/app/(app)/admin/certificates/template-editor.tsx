@@ -23,7 +23,8 @@ type Preset = CertificateTemplatesView["presets"][number];
 type Template = CertificateTemplatesView["templates"][number];
 type RowDraft = { key: string; label: string; value: string };
 
-const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
+// APPOINTMENT (risks batch 5A): a staff paper, issued on /admin/certificates/appointments.
+const KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION", "APPOINTMENT"];
 const LOCALES: ("en" | "hi" | "mr")[] = ["en", "hi", "mr"];
 const LAYOUT_TOGGLES: (keyof Pick<CertificateLayout, "showLogo" | "showAddress" | "useBrandColour">)[] = ["showLogo", "showAddress", "useBrandColour"];
 const TOKEN = /\[\[\s*([a-z]+\.[A-Za-z]+)\s*\]\]/g;

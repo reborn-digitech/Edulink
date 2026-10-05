@@ -190,19 +190,19 @@ export default async function AdminExamsPage({
                       {t("exams.published")}
                     </Badge>
                   ) : (
-                    <form action={publishSeriesAction}>
+                    <ActionForm action={publishSeriesAction}>
                       <input type="hidden" name="seriesId" value={s.id} />
                       <Button type="submit" size="sm">
                         {t("exams.publish")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   )}
-                  <form action={archiveSeriesAction}>
+                  <ActionForm action={archiveSeriesAction}>
                     <input type="hidden" name="seriesId" value={s.id} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("exams.archive")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 </div>
               }
             />
@@ -231,7 +231,7 @@ export default async function AdminExamsPage({
                           </td>
                           <td className="py-2.5 pr-3 text-right text-fg">{slot.pointsMilli / 1000}</td>
                           <td className="py-2.5 text-right">
-                            <form action={removeSlotAction}>
+                            <ActionForm action={removeSlotAction}>
                               <input type="hidden" name="slotId" value={slot.id} />
                               {/* Named per paper: a column of bare "Remove"
                                   buttons is unreadable to a screen reader. */}
@@ -243,7 +243,7 @@ export default async function AdminExamsPage({
                               >
                                 {t("common.remove")}
                               </Button>
-                            </form>
+                            </ActionForm>
                           </td>
                         </tr>
                       ))}

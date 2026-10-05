@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { visitorInAction, visitorOutAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -27,7 +28,7 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
         <Card>
           <CardHeader icon={<IdentificationBadgeIcon weight="duotone" className="size-5" />} title={t("hostel.visitorSignIn")} />
           <CardBody>
-            <form action={visitorInAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={visitorInAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.toSee")}
@@ -54,7 +55,7 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
               <div className="sm:col-span-2">
                 <Button type="submit">{t("hostel.signVisitorIn")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -86,13 +87,13 @@ export default async function HostelVisitorsPage({ searchParams }: { searchParam
                     </p>
                   </div>
                   {canWrite && !v.outAt ? (
-                    <form action={visitorOutAction}>
+                    <ActionForm action={visitorOutAction}>
                       <input type="hidden" name="visitorId" value={v.id} />
                       <input type="hidden" name="back" value={back} />
                       <Button type="submit" size="sm" variant="secondary">
                         {t("hostel.signVisitorOut")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </li>
               ))}

@@ -9,6 +9,7 @@ import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { CATEGORY_KEY, CatalogueSearch, LANGUAGE_KEY } from "@/components/library/parts";
 import { createTitleAction, importAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -31,7 +32,7 @@ export default async function LibraryCataloguePage({ searchParams }: { searchPar
 
             <CardHeader icon={<PlusIcon weight="duotone" className="size-5" />} title={t("library.addTitle")} description={t("library.addTitleHint")} />
             <CardBody>
-              <form action={createTitleAction} className="grid gap-4 sm:grid-cols-2">
+              <ActionForm action={createTitleAction} className="grid gap-4 sm:grid-cols-2">
                 <input type="hidden" name="back" value="/library/catalogue" />
                 <TextField name="title" label={t("library.fieldTitle")} required maxLength={200} />
                 <TextField name="author" label={t("library.fieldAuthor")} maxLength={120} />
@@ -58,19 +59,19 @@ export default async function LibraryCataloguePage({ searchParams }: { searchPar
                 <div className="sm:col-span-2">
                   <Button type="submit">{t("library.addTitleButton")}</Button>
                 </div>
-              </form>
+              </ActionForm>
             </CardBody>
           </Card>
           <Card>
             <CardHeader icon={<UploadSimpleIcon weight="duotone" className="size-5" />} title={t("library.importTitle")} description={t("library.importHint")} />
             <CardBody>
-              <form action={importAction} className="space-y-3">
+              <ActionForm action={importAction} className="space-y-3">
                 <input type="hidden" name="back" value="/library/catalogue" />
                 <TextAreaField name="text" label={t("library.importLabel")} required rows={8} maxLength={500000} />
                 <Button type="submit" variant="secondary">
                   {t("library.importButton")}
                 </Button>
-              </form>
+              </ActionForm>
             </CardBody>
           </Card>
         </>

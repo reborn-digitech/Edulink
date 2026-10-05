@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { CellOff, Hidden, Labelled, RUN_STATUS_KEY, SessionFrame, TermResultCard, when } from "@/components/exam-cell/parts";
 import { publishRunAction, runResultsAction } from "../../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -61,12 +62,12 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
               <div className="flex items-center gap-2">
                 <Badge tone={r.status === "PUBLISHED" ? "ok" : r.status === "DRAFT" ? "accent" : "neutral"}>{t(RUN_STATUS_KEY[r.status]!)}</Badge>
                 {r.status === "DRAFT" && (s.published ? ctx.role === "PRINCIPAL" : s.canWrite) ? (
-                  <form action={publishRunAction}>
+                  <ActionForm action={publishRunAction}>
                     <Hidden fields={{ sessionId: s.id, runId: r.id, back }} />
                     <Button type="submit" size="sm">
                       {t("examCell.publish")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : r.status === "DRAFT" && s.published && s.canWrite ? (
                   <span className="text-xs text-fg-muted">{t("examCell.republishWaitsPrincipal")}</span>
                 ) : null}
@@ -74,7 +75,7 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
             </div>
           ))}
           {s.canWrite ? (
-            <form action={runResultsAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={runResultsAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               {s.published ? (
                 <Labelled label={t("examCell.rerunReason")} className="min-w-64 flex-1">
@@ -84,7 +85,7 @@ export default async function ResultsPage({ params, searchParams }: { params: Pr
               <Button type="submit" variant="secondary">
                 {t("examCell.runResults")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
           {results.run ? (
             <Button asChild variant="ghost">

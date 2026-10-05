@@ -9,6 +9,7 @@ import type { Translate } from "@/lib/i18n/dictionary";
 import { removeScenarioAction } from "@/app/(app)/iqac/simulator/actions";
 import { TableScroll } from "@/components/ui/table-scroll";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * The simulator's saved scenarios (module IQAC, 5 Oct 2026): each with what it
@@ -60,13 +61,13 @@ export function ScenarioPanel({ t, locale, list, base, back, compare }: { t: Tra
                       <Link href={`${link({ insights: s.id })}#insights`}>{t("insights.simShowInsights")}</Link>
                     </Button>
                     {s.canRemove ? (
-                      <form action={removeScenarioAction}>
+                      <ActionForm action={removeScenarioAction}>
                         <input type="hidden" name="back" value={back} />
                         <input type="hidden" name="scenarioId" value={s.id} />
                         <ConfirmSubmit size="sm" variant="ghost" confirm={t("insights.simRemoveConfirm", { name: s.name })}>
                           {t("insights.simRemove")}
                         </ConfirmSubmit>
-                      </form>
+                      </ActionForm>
                     ) : null}
                   </div>
                 </li>

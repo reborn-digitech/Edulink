@@ -10,6 +10,7 @@ import { DateTimeField } from "@/components/ui/date-time-field";
 import { EmptyState } from "@/components/ui/states";
 import { CellFrame, DRIVE_KIND_KEY, GENDER_KEY, ROUND_KIND_KEY, cellContext } from "@/components/placement/parts";
 import { openDriveAction } from "../../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -35,7 +36,7 @@ export default async function NewDrivePage({ searchParams }: { searchParams: Pro
       {companies.length === 0 ? (
         <EmptyState title={t("placement.needCompanyTitle")} description={t("placement.needCompanyBody")} />
       ) : (
-        <form action={openDriveAction} className="space-y-5">
+        <ActionForm action={openDriveAction} className="space-y-5">
           <Card>
             <CardHeader title={t("placement.driveBasics")} />
             <CardBody className="grid gap-4 sm:grid-cols-2">
@@ -126,7 +127,7 @@ export default async function NewDrivePage({ searchParams }: { searchParams: Pro
             </Card>
           ) : null}
           <Button type="submit">{t("placement.openDrive")}</Button>
-        </form>
+        </ActionForm>
       )}
     </CellFrame>
   );

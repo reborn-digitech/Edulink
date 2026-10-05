@@ -72,6 +72,11 @@ export default async function PupilRecordsPage({ searchParams }: { searchParams:
         actions={filingOnly ? <AskFamiliesButton membershipIds={filingIds} label={t("pupilRecord.askFamilies")} disabled={filingIds.length === 0} /> : <AskFamiliesButton label={t("pupilRecord.askFamilies")} disabled={view.incomplete === 0} />}
       />
 
+      {/* Cards printed before 5 October 2026 carry the claim code (R-52): the year's cards are reprinted. */}
+      <p className="rounded-[var(--radius-md)] border border-warn/30 bg-warn-soft px-3 py-2 text-sm text-fg" data-testid="id-card-reprint-notice">
+        {t("riskDecisions.idCardsReprint")}
+      </p>
+
       <Card data-testid="find-by-pen">
         <CardBody className="space-y-3 pt-5">
           {/* A plain GET, so the answer is the server's own and the address carries it. */}

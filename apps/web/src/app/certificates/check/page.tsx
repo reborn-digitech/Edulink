@@ -8,6 +8,7 @@ import { CODE_LOOKUPS, consumeByCaller } from "@/lib/rate-limit";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
+import { DOC_KIND_KEY } from "@/components/exam-cell/parts";
 import { fieldClass } from "@/components/ui/field-class";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,6 +32,8 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
   const gate = code ? await consumeByCaller("certificate-check", CODE_LOOKUPS) : null;
   const limited = gate !== null && !gate.allowed;
   const result = code && !limited ? await verifyByCode(code) : null;
+  // A grade card, transcript or degree typed here is answered too (A3-journeys-21), named by its kind.
+  const examKind = result && "examKind" in result ? result.examKind : null;
 
   return (
     <main id="main" className="flex min-h-safe flex-col justify-center bg-bg px-4 py-10 sm:px-8">
@@ -88,9 +91,14 @@ export default async function CertificateCheckPage({ searchParams }: { searchPar
             {result.serial && (
               <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
                 <dt className="text-fg-muted">{t("certificates.kind")}</dt>
-                <dd className="font-medium text-fg">{result.kind ? t(CERTIFICATE_KIND_KEY[result.kind]) : "—"}</dd>
-                <dt className="text-fg-muted">{t("certificates.heading")}</dt>
-                <dd className="font-medium text-fg">{result.title}</dd>
+                <dd className="font-medium text-fg">{result.kind ? t(CERTIFICATE_KIND_KEY[result.kind]) : examKind ? t(DOC_KIND_KEY[examKind]!) : "—"}</dd>
+                {/* A college's exam paper (A3-journeys-21) has no certificate heading: its kind is the name. */}
+                {result.title ? (
+                  <>
+                    <dt className="text-fg-muted">{t("certificates.heading")}</dt>
+                    <dd className="font-medium text-fg">{result.title}</dd>
+                  </>
+                ) : null}
                 <dt className="text-fg-muted">{t("certificates.serial")}</dt>
                 <dd className="font-mono text-fg">{result.serial}</dd>
                 <dt className="text-fg-muted">{t("tc.issuedOn")}</dt>

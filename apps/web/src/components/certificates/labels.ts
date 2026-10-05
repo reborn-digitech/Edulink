@@ -18,6 +18,7 @@ export const CERTIFICATE_KIND_KEY: Record<CertificateKind, TranslationKey> = {
   MIGRATION: "certificateDefaults.titleMigration",
   PROVISIONAL: "certificateDefaults.titleProvisional",
   COURSE_COMPLETION: "certificateDefaults.titleCourseCompletion",
+  APPOINTMENT: "certificateDefaults.titleAppointment",
 };
 
 /** "हिन्दी", not "Hindi": a document's language named in itself. */

@@ -11,7 +11,7 @@ import { submitPost } from "../actions";
 import { useLocale, useT } from "@/lib/i18n";
 import { FontSelect } from "@/components/font-select";
 import type { FontKey } from "@/lib/fonts";
-import { POST_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
+import { POSTABLE_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "../categories";
 import { fieldClass } from "@/components/ui/field-class";
 
@@ -321,7 +321,7 @@ export function ComposeForm({
         <option value="" disabled>
           {t("bulletin.chooseCategory")}
         </option>
-        {POST_CATEGORIES.map((key) => (
+        {POSTABLE_CATEGORIES.map((key) => (
           <option key={key} value={key}>
             {t(CATEGORY_KEYS[key].name)}
           </option>

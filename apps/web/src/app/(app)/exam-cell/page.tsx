@@ -69,18 +69,18 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
                   </div>
                   {home.canApproveGrace ? (
                     <div className="flex gap-2">
-                      <form action={decideGraceAction}>
+                      <ActionForm action={decideGraceAction}>
                         <Hidden fields={{ graceId: g.id, approve: "1", back: "/exam-cell" }} />
                         <Button type="submit" size="sm">
                           {t("examCell.approve")}
                         </Button>
-                      </form>
-                      <form action={decideGraceAction}>
+                      </ActionForm>
+                      <ActionForm action={decideGraceAction}>
                         <Hidden fields={{ graceId: g.id, approve: "0", back: "/exam-cell" }} />
                         <Button type="submit" size="sm" variant="secondary">
                           {t("examCell.refuse")}
                         </Button>
-                      </form>
+                      </ActionForm>
                     </div>
                   ) : null}
                 </li>
@@ -167,13 +167,13 @@ export default async function ExamCellPage({ searchParams }: { searchParams: Pro
         <Card>
           <CardHeader title={t("examCell.signatureTitle")} description={home.signatureSet ? t("examCell.signatureSet") : t("examCell.signatureNone")} />
           <CardBody>
-            <form action={signatureAction} className="flex flex-wrap items-end gap-3">
+            <ActionForm action={signatureAction} className="flex flex-wrap items-end gap-3">
               <Hidden fields={{ back: "/exam-cell" }} />
               <FileField label={t("examCell.signatureFile")} name="image" accept="image/png" required />
               <Button type="submit" variant="secondary">
                 {t("examCell.signatureSave")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

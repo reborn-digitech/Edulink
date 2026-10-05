@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircleIcon, XCircleIcon } from "@phosphor-icons/react/ssr";
+import { CheckCircleIcon, MagnifyingGlassIcon, XCircleIcon } from "@phosphor-icons/react/ssr";
 import { Wordmark } from "@/components/brand";
+import { Button } from "@/components/ui/button";
+import { fieldClass } from "@/components/ui/field-class";
 import { checkExamDocument } from "@/lib/exam-cell-after";
 import { CODE_LOOKUPS, consumeByCaller } from "@/lib/rate-limit";
 import { formatDate } from "@/lib/dates";
@@ -34,6 +36,30 @@ export default async function ExamCheckPage({ searchParams }: { searchParams: Pr
         </Link>
         <h1 className="text-2xl font-bold tracking-tight text-fg">{t("examCell.checkTitle")}</h1>
         <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("examCell.checkIntro")}</p>
+
+        {/* The code typed by hand (A3-journeys-21): a grade card, transcript or degree is found by its code alone; a hall
+            ticket's QR carries its college, which rides along as a hidden field. */}
+        <form method="get" action="/certificates/exam" className="mt-6 space-y-3" data-testid="exam-check-form">
+          {school ? <input type="hidden" name="school" value={school} /> : null}
+          <label className="block">
+            <span className="block text-sm font-medium text-fg">{t("certificates.verifyCode")}</span>
+            <input
+              type="text"
+              name="code"
+              defaultValue={code}
+              maxLength={16}
+              autoComplete="off"
+              autoCapitalize="characters"
+              spellCheck={false}
+              required
+              className={fieldClass("mt-1.5 font-mono uppercase tracking-widest")}
+              data-testid="exam-check-code"
+            />
+          </label>
+          <Button type="submit" block icon={<MagnifyingGlassIcon weight="bold" />}>
+            {t("certificates.verifyCheck")}
+          </Button>
+        </form>
         {limited ? (
           <p role="alert" className="mt-6 text-sm font-medium text-warn">
             {t("common.tryAgainMoment")}

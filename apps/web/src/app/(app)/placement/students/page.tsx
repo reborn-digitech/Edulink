@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { CellFrame, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
 import { dreamAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -62,14 +63,14 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
                     </td>
                     <td className={TD}>
                       {canWrite ? (
-                        <form action={dreamAction}>
+                        <ActionForm action={dreamAction}>
                           <input type="hidden" name="back" value="/placement/students" />
                           <input type="hidden" name="studentMembershipId" value={s.studentMembershipId} />
                           <input type="hidden" name="on" value={s.dreamFlag ? "0" : "1"} />
                           <Button type="submit" size="sm" variant={s.dreamFlag ? "soft" : "ghost"}>
                             {s.dreamFlag ? t("placement.dreamOn") : t("placement.grantDream")}
                           </Button>
-                        </form>
+                        </ActionForm>
                       ) : s.dreamFlag ? (
                         <Badge tone="accent">{t("placement.dreamOn")}</Badge>
                       ) : null}

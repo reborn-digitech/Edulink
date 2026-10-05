@@ -80,7 +80,11 @@ export default async function LoginPage({
                 ? t("login.linkExpired")
                 : link === "used"
                   ? t("login.linkUsed")
-                  : t("login.linkBroken")}
+                  : link === "closedRecruiter"
+                    ? t("riskDecisions.signInClosedRecruiter")
+                    : link === "closedExpert"
+                      ? t("riskDecisions.signInClosedExpert")
+                      : t("login.linkBroken")}
             </p>
           )}
 

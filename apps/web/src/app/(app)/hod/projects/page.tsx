@@ -17,6 +17,7 @@ import { Flash } from "@/components/placement/parts";
 import { InternshipStaffList } from "@/components/placement/internships";
 import { ProjectList } from "@/components/placement/projects";
 import { createProjectAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -46,7 +47,7 @@ export default async function HodProjectsPage({ searchParams }: { searchParams: 
       <Card>
         <CardHeader icon={<PlusIcon weight="bold" className="size-5" />} title={t("placement.newProject")} />
         <CardBody>
-          <form action={createProjectAction} className="grid gap-4 sm:grid-cols-2">
+          <ActionForm action={createProjectAction} className="grid gap-4 sm:grid-cols-2">
             <input type="hidden" name="back" value={back} />
             <TextField label={t("placement.fieldProjectTitle")} name="title" required maxLength={200} />
             <SelectField label={t("placement.fieldGuide")} name="guideMembershipId" required>
@@ -62,7 +63,7 @@ export default async function HodProjectsPage({ searchParams }: { searchParams: 
               ))}
             </fieldset>
             <Button type="submit" className="sm:justify-self-start">{t("placement.createProject")}</Button>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
       <ProjectList projects={projects.projects} t={t} back={back} myMembershipId={ctx.membershipId} />

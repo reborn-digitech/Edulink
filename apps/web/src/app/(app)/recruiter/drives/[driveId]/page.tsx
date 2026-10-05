@@ -12,6 +12,7 @@ import { SelectField, TextAreaField } from "@/components/ui/field";
 import { Flash, LINK, ROUND_KIND_KEY, packageRange, statusBadge } from "@/components/placement/parts";
 import { Applicants, JoinedForms, OfferForm, ResultsForm } from "@/components/placement/rounds";
 import { recruiterFeedbackAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -71,7 +72,7 @@ export default async function RecruiterDrivePage({ params, searchParams }: { par
       <Card>
         <CardHeader icon={<StarIcon weight="duotone" className="size-5" />} title={t("placement.feedbackTitle")} description={t("placement.feedbackIntro")} />
         <CardBody>
-          <form action={recruiterFeedbackAction} className="grid gap-3 sm:grid-cols-[10rem_1fr]">
+          <ActionForm action={recruiterFeedbackAction} className="grid gap-3 sm:grid-cols-[10rem_1fr]">
             <input type="hidden" name="back" value={here} />
             <input type="hidden" name="driveId" value={d.id} />
             <SelectField label={t("placement.fieldRating")} name="rating" defaultValue={String(d.recruiterRating ?? 4)}>
@@ -79,7 +80,7 @@ export default async function RecruiterDrivePage({ params, searchParams }: { par
             </SelectField>
             <TextAreaField label={t("placement.fieldCollegeFeedback")} name="feedback" defaultValue={d.recruiterFeedback ?? ""} maxLength={2000} />
             <Button type="submit" size="sm" className="sm:col-span-2 sm:justify-self-start">{t("placement.saveFeedback")}</Button>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
     </div>

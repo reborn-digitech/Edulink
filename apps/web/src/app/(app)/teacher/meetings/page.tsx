@@ -12,6 +12,7 @@ import { getT } from "@/lib/i18n/server";
 import { publishSlotsAction, cancelSlotAction } from "./actions";
 import { PageHeader } from "@/components/ui/page-header";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,7 +58,7 @@ export default async function TeacherMeetingsPage({
           description={t("meetings.publishHint")}
         />
         <CardBody>
-          <form action={publishSlotsAction} className="grid gap-3 sm:grid-cols-5">
+          <ActionForm action={publishSlotsAction} className="grid gap-3 sm:grid-cols-5">
             {/* The app's date field, day-month-year, where the browser's own wrote mm/dd/yyyy. */}
             <DateField label={t("meetings.fieldDate")} name="date" required />
             <label className="block text-sm">
@@ -109,7 +110,7 @@ export default async function TeacherMeetingsPage({
                 {t("meetings.publish")}
               </Button>
             </div>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
 
@@ -149,12 +150,12 @@ export default async function TeacherMeetingsPage({
                         {t("meetings.bookedChip")}
                       </Badge>
                     )}
-                    <form action={cancelSlotAction}>
+                    <ActionForm action={cancelSlotAction}>
                       <input type="hidden" name="slotId" value={slot.id} />
                       <Button type="submit" size="sm" variant="ghost">
                         {t("common.cancel")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   </div>
                 </li>
               ))}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { DeskFrame, deskContext } from "@/components/library/desk";
 import { LoanList } from "@/components/library/parts";
 import { noticesAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -25,10 +26,10 @@ export default async function LibraryOverduePage({ searchParams }: { searchParam
         <Card>
           <CardHeader icon={<BellRingingIcon weight="duotone" className="size-5" />} title={t("library.noticesTitle")} description={t("library.noticesHint")} />
           <CardBody>
-            <form action={noticesAction}>
+            <ActionForm action={noticesAction}>
               <input type="hidden" name="back" value="/library/overdue" />
               <Button type="submit">{t("library.sendNotices")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

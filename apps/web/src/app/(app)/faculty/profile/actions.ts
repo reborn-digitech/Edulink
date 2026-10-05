@@ -1,20 +1,19 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { AccessError, requireApiUser } from "@/lib/tenancy";
-import { getT } from "@/lib/i18n/server";
+import { requireApiUser } from "@/lib/tenancy";
 import { setMyPublicProfile } from "@/lib/faculty-profile";
+import { answerForm } from "@/lib/form-action";
+import type { FormState } from "@/lib/form-state";
 
-/** My public page's one form (5 Oct 2026): publish, refresh or take down; back to /faculty/profile with ?ok= or ?error=. */
-export async function setPublicProfileAction(formData: FormData): Promise<void> {
-  const t = await getT();
-  try {
-    await setMyPublicProfile(await requireApiUser(), String(formData.get("publish") ?? "") === "1");
-  } catch (error) {
-    if (error instanceof AccessError) redirect(`/faculty/profile?error=${encodeURIComponent(t(error.key, error.vars))}`);
-    throw error;
-  }
-  revalidatePath("/faculty/profile");
-  redirect(`/faculty/profile?ok=${encodeURIComponent(t("collegeDesks.profileSaved"))}`);
+/** My public page's one form (5 Oct 2026): publish, refresh or take down; answers in place on /faculty/profile (A3-journeys-27). */
+export async function setPublicProfileAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      await setMyPublicProfile(await requireApiUser(), String(formData.get("publish") ?? "") === "1");
+      return "collegeDesks.profileSaved";
+    },
+    { revalidate: ["/faculty/profile"] },
+  );
 }

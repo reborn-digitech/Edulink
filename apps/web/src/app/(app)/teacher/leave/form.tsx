@@ -39,12 +39,16 @@ export function LeaveForm({
   requests,
   staff,
   today,
+  decidedBy = "PRINCIPAL",
 }: {
   requests: LeaveRow[];
   staff: { membershipId: string; name: string }[];
   today: string;
+  /** Who answers (G4-27, contracts `leaveDecidedBy`): the office for module staff and wherever no principal is active. */
+  decidedBy?: "PRINCIPAL" | "OFFICE";
 }) {
   const t = useT();
+  const office = decidedBy === "OFFICE";
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
@@ -74,7 +78,7 @@ export function LeaveForm({
       setReason("");
       setNominee("");
       setOpen(false);
-      toast({ tone: "ok", title: t("teacher.sentToPrincipal") });
+      toast({ tone: "ok", title: t(office ? "leaveDecider.sentToOffice" : "teacher.sentToPrincipal") });
       router.refresh();
     });
   }
@@ -157,7 +161,7 @@ export function LeaveForm({
             {/* Says who reads it, right next to the box. Without that, people
                 either write nothing useful or write something private they did
                 not mean the whole staff room to see. */}
-            <span className="mt-0.5 block text-xs text-fg-muted">{t("teacher.whyHint")}</span>
+            <span className="mt-0.5 block text-xs text-fg-muted">{t(office ? "leaveDecider.whyHintOffice" : "teacher.whyHint")}</span>
             <textarea
               required
               rows={3}
@@ -174,7 +178,7 @@ export function LeaveForm({
               {t("teacher.whoCouldCover")}
             </span>
             <span className="mt-0.5 block text-xs text-fg-muted">
-              {t("teacher.coverHint")}
+              {t(office ? "leaveDecider.coverHintOffice" : "teacher.coverHint")}
             </span>
             <select
               value={nominee}
@@ -193,7 +197,7 @@ export function LeaveForm({
 
           <div className="mt-5 flex gap-2">
             <Button type="submit" loading={pending} icon={<PaperPlaneTiltIcon weight="bold" />} data-testid="leave-send">
-              {t("teacher.sendToPrincipal")}
+              {t(office ? "leaveDecider.sendToOffice" : "teacher.sendToPrincipal")}
             </Button>
             {requests.length > 0 && (
               <Button type="button" variant="ghost" onClick={() => setOpen(false)}>

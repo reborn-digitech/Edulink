@@ -7,6 +7,7 @@ import { formatDateKey } from "@/lib/dates";
 import { nameCarriesSection } from "@/lib/codes";
 import { formatMilli } from "@/lib/validation";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { reportCardDefaultLabel } from "@/lib/certificate-names";
 import { PersonLink } from "@/components/person-link";
 import Link from "next/link";
 import { ArrowLeftIcon, DownloadSimpleIcon } from "@phosphor-icons/react/ssr";
@@ -77,7 +78,8 @@ export default async function ReportCardPage({
      the overall is the sum of this column over the sum of its maximums. */
   const showMarksColumn = card.gradingMethod === "exams" && card.subjects.some((s) => s.pointsMilli);
   const coRows = layout.showCoScholastic ? card.coScholastic : [];
-  const scaleLine = scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${b.descriptor}` : ""}`).join(" · ");
+  // A descriptor still the English default reads in the reader's language (A3-states-18); one the office typed, as typed.
+  const scaleLine = scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${reportCardDefaultLabel(b.descriptor, t)}` : ""}`).join(" · ");
   const cell = "py-2 text-fg print:text-black";
   const head = "py-2 font-medium";
   const headRow = "border-b border-border text-left text-xs text-fg-muted print:border-black/20 print:text-black/70";
@@ -279,7 +281,7 @@ export default async function ReportCardPage({
                 {card.items.map((item, index) => (
                   <tr key={index} className="border-b border-border/60 print:border-black/10">
                     <td className="py-2 pr-3 text-fg print:text-black">
-                      {item.title}
+                      {reportCardDefaultLabel(item.title, t)}
                       {item.category && (
                         <span className="block text-xs text-fg-muted print:text-black/60">
                           {item.category}
@@ -328,7 +330,7 @@ export default async function ReportCardPage({
                   {coRows.map((row) => (
                     <tr key={row.area} className={bodyRow}>
                       <td className={`${cell} pr-3`}>
-                        {row.area}
+                        {reportCardDefaultLabel(row.area, t)}
                         {row.note && <span className="block text-xs text-fg-muted print:text-black/60">{row.note}</span>}
                       </td>
                       <td className={`${cell} text-right font-semibold`}>{row.grade ?? "—"}</td>

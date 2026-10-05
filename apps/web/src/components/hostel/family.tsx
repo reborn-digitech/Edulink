@@ -118,7 +118,7 @@ export async function FamilyHostelView({ ctx, schoolId, childId, path, ok, error
                   <LeaveSummary l={l} t={t} timeZone={timeZone} locale={locale} showName={false} />
                   <div className="flex flex-wrap gap-2">
                     {h.canConsent && l.status === "AWAITING_CONSENT" ? (
-                      <form action={consentAction} className="flex flex-wrap gap-2">
+                      <ActionForm action={consentAction} className="flex flex-wrap gap-2">
                         <input type="hidden" name="leaveId" value={l.id} />
                         <input type="hidden" name="back" value={back} />
                         <Button type="submit" size="sm" name="decision" value="APPROVE">
@@ -127,16 +127,16 @@ export async function FamilyHostelView({ ctx, schoolId, childId, path, ok, error
                         <Button type="submit" size="sm" variant="ghost" name="decision" value="REFUSE">
                           {t("hostel.refuseConsent")}
                         </Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                     {!l.outAt && ["AWAITING_CONSENT", "PENDING", "APPROVED"].includes(l.status) ? (
-                      <form action={cancelLeaveAction}>
+                      <ActionForm action={cancelLeaveAction}>
                         <input type="hidden" name="leaveId" value={l.id} />
                         <input type="hidden" name="back" value={back} />
                         <Button type="submit" size="sm" variant="ghost">
                           {t("hostel.cancelLeave")}
                         </Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                   </div>
                 </li>

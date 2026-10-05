@@ -63,7 +63,8 @@ export default async function IssueCertificatePage({ searchParams }: { searchPar
       take: PUPIL_LIMIT,
     }),
   ]);
-  const templates = view.templates.filter((x) => x.active);
+  // A pupil's papers only: an appointment letter goes to a member of staff, on /admin/certificates/appointments (risks batch 5A).
+  const templates = view.templates.filter((x) => x.active && x.kind !== "APPOINTMENT");
   const selectedId = requested && CUID.test(requested) ? requested : "";
   const templateId =
     requestedTemplate && templates.some((x) => x.id === requestedTemplate) ? requestedTemplate : (templates.find((x) => x.kind === kind)?.id ?? templates[0]?.id ?? "");

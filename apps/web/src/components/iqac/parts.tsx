@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { CheckCircleIcon, InfoIcon, WarningIcon } from "@phosphor-icons/react/ssr";
-import { SURVEY_SCALE, type SurveyKind } from "@edulink/contracts";
+import { SURVEY_SCALE, type BenchmarkStatus, type SurveyKind } from "@edulink/contracts";
+import { BenchmarkLabel } from "./benchmark-status";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { answerSurveyAction } from "@/app/(app)/iqac/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * The IQAC module's shared pieces (4 Oct 2026): the message a form came back
@@ -31,12 +33,16 @@ export function IqacFlash({ ok, error }: { ok?: string; error?: string }) {
 }
 
 /** Never a promise: said on every page that shows a score. */
-export function NotAScore({ t }: { t: Translate }) {
+export function NotAScore({ t, benchmarks }: { t: Translate; benchmarks?: BenchmarkStatus | null }) {
   return (
-    <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="iqac-not-a-score">
+    <div className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="iqac-not-a-score">
       <InfoIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden />
-      {t("iqac.notAScore")}
-    </p>
+      <div className="min-w-0">
+        <p>{t("iqac.notAScore")}</p>
+        {/* G4-15: "provisional" until the coordinator signs the benchmark list. */}
+        <BenchmarkLabel t={t} status={benchmarks} />
+      </div>
+    </div>
   );
 }
 
@@ -49,6 +55,8 @@ const DESK_LINKS: { href: string; key: TranslationKey }[] = [
   { href: "/iqac/surveys", key: "iqac.navSurveys" },
   { href: "/iqac/registers", key: "iqac.navRegisters" },
   { href: "/iqac/grievances", key: "iqac.navGrievances" },
+  // The peer-team visit file (R-2, 5 Oct 2026).
+  { href: "/iqac/visits", key: "peerVisit.nav" },
 ];
 
 /** The desk's pages, one row of links under the header. */
@@ -89,7 +97,7 @@ export function SurveyForms({ t, surveys, back, locale }: { t: Translate; survey
           {s.answered ? null : (
             <CardBody>
               <p className="mb-3 text-sm text-fg-muted">{s.kind === "COURSE_FEEDBACK" ? t("iqac.namedNote") : t("iqac.anonymousNote")}</p>
-              <form action={answerSurveyAction} className="space-y-4">
+              <ActionForm action={answerSurveyAction} className="space-y-4">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="surveyId" value={s.id} />
                 {s.questions.map((q) => (
@@ -106,7 +114,7 @@ export function SurveyForms({ t, surveys, back, locale }: { t: Translate; survey
                   </fieldset>
                 ))}
                 <Button type="submit">{t("iqac.answerButton")}</Button>
-              </form>
+              </ActionForm>
             </CardBody>
           )}
         </Card>

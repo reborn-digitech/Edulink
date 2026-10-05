@@ -17,6 +17,7 @@ import { ModuleOff } from "@/components/module-off";
 import { APP_STATUS_KEY, CATEGORY_KEY, DOC_KEY, Flash, Hidden, NotCollege, QUOTA_KEY, Table, money } from "@/components/college-office/parts";
 import { admissionFeeAction, admitAction, cancelAdmissionAction, documentAction, offerAction, refundAction, supernumeraryAction, undertakingAction } from "../../../accounts/actions";
 import { askRefundExceptionAction, decideRefundExceptionAction } from "../refunds/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,11 +69,11 @@ export default async function ApplicationPage({ params, searchParams }: { params
         <Card>
           <CardHeader title={t("collegeOffice.supernumeraryTitle")} description={t("collegeOffice.supernumeraryIntro")} />
           <CardBody>
-            <form action={supernumeraryAction} className="flex flex-wrap items-end gap-3">
+            <ActionForm action={supernumeraryAction} className="flex flex-wrap items-end gap-3">
               <Hidden fields={{ back, applicationId: a.id }} />
               <TextField name="reason" required minLength={3} maxLength={300} label={t("collegeOffice.supernumeraryReason")} />
               <Button type="submit" variant="secondary">{t("collegeOffice.supernumeraryApprove")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -98,7 +99,7 @@ export default async function ApplicationPage({ params, searchParams }: { params
                 </td>
                 <td className="py-2">
                   {write && open ? (
-                    <form action={documentAction} encType="multipart/form-data" className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={documentAction} encType="multipart/form-data" className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ back, applicationId: a.id, doc: d.doc }} />
                       <label className="text-xs text-fg-muted">
                         {t("collegeOffice.attachScan")}
@@ -111,7 +112,7 @@ export default async function ApplicationPage({ params, searchParams }: { params
                       </SelectField>
                       <TextField name="note" label={t("collegeOffice.note")} />
                       <Button type="submit" size="sm">{t("collegeOffice.save")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </td>
               </tr>
@@ -130,10 +131,10 @@ export default async function ApplicationPage({ params, searchParams }: { params
                 {t(by === "STUDENT" ? "collegeOffice.undertakingStudentDone" : "collegeOffice.undertakingParentDone")}
               </span>
             ) : write ? (
-              <form key={by} action={undertakingAction}>
+              <ActionForm key={by} action={undertakingAction}>
                 <Hidden fields={{ back, applicationId: a.id, by }} />
                 <Button type="submit" size="sm" variant="secondary">{t(by === "STUDENT" ? "collegeOffice.undertakingStudent" : "collegeOffice.undertakingParent")}</Button>
-              </form>
+              </ActionForm>
             ) : null;
           })}
         </CardBody>
@@ -144,12 +145,12 @@ export default async function ApplicationPage({ params, searchParams }: { params
           <CardHeader title={t("collegeDesks.refundTitle")} description={t("collegeDesks.refundWaiting", { amount: money(a.refundAsk.paise, locale), slab: money(a.refundPaise ?? 0, locale) })} />
           <CardBody className="space-y-3">
             <p className="text-sm">{a.refundAsk.reason}</p>
-            <form action={decideRefundExceptionAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={decideRefundExceptionAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back, applicationId: a.id }} />
               <TextField name="note" maxLength={600} label={t("collegeDesks.decisionNote")} />
               <Button type="submit" size="sm" name="decision" value="APPROVE">{t("collegeDesks.approve")}</Button>
               <Button type="submit" size="sm" variant="secondary" name="decision" value="REFUSE">{t("collegeDesks.refuse")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -158,14 +159,14 @@ export default async function ApplicationPage({ params, searchParams }: { params
           <CardHeader title={t("collegeOffice.seatTitle")} />
           <CardBody className="space-y-4">
             {write && open ? (
-              <form action={offerAction}>
+              <ActionForm action={offerAction}>
                 <Hidden fields={{ back, applicationId: a.id }} />
                 <Button type="submit" disabled={!a.scrutinyComplete || !a.antiRaggingStudentAt || !a.antiRaggingParentAt}>{t("collegeOffice.offer")}</Button>
                 <p className="mt-1 text-xs text-fg-muted">{t("collegeOffice.offerHint")}</p>
-              </form>
+              </ActionForm>
             ) : null}
             {a.status === "FEE_DUE" && !a.admissionFeePaidAt ? (
-              <form action={admissionFeeAction} className="flex flex-wrap items-end gap-3">
+              <ActionForm action={admissionFeeAction} className="flex flex-wrap items-end gap-3">
                 <Hidden fields={{ back, applicationId: a.id }} />
                 <TextField name="amount" inputMode="decimal" required label={t("collegeOffice.amount")} defaultValue={a.admissionFeePaise ? (a.admissionFeePaise / 100).toFixed(2) : ""} hint={a.admissionFeePaise ? t("collegeOffice.feeAsked", { amount: money(a.admissionFeePaise, locale) }) : undefined} />
                 <SelectField name="method" required label={t("collegeOffice.method")}>
@@ -176,26 +177,26 @@ export default async function ApplicationPage({ params, searchParams }: { params
                 </SelectField>
                 <TextField name="reference" required minLength={3} label={t("collegeOffice.bankReference")} />
                 <Button type="submit" variant="secondary">{t("collegeOffice.recordFee")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
             {write && a.status === "FEE_DUE" && (a.admissionFeePaidAt || !a.admissionFeePaise) ? (
-              <form action={admitAction} className="flex flex-wrap items-end gap-3">
+              <ActionForm action={admitAction} className="flex flex-wrap items-end gap-3">
                 <Hidden fields={{ back, applicationId: a.id }} />
                 <TextField name="prn" label={t("collegeOffice.prn")} />
                 <TextField name="apaarId" inputMode="numeric" pattern="\d{12}" label={t("collegeOffice.apaar")} />
                 <TextField name="abcId" inputMode="numeric" pattern="\d{12}" label={t("collegeOffice.abc")} />
                 <Button type="submit">{t("collegeOffice.admit")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
             {write && a.status !== "CANCELLED" && a.status !== "REFUNDED" ? (
               <details>
                 <summary className="cursor-pointer text-sm text-danger">{t("collegeOffice.cancelSeat")}</summary>
-                <form action={cancelAdmissionAction} className="mt-2 flex flex-wrap items-end gap-3">
+                <ActionForm action={cancelAdmissionAction} className="mt-2 flex flex-wrap items-end gap-3">
                   <Hidden fields={{ back, applicationId: a.id }} />
                   <TextField name="reason" required minLength={3} label={t("collegeOffice.colReason")} />
                   <TextField name="lastDateKey" type="date" required label={t("collegeOffice.lastDate")} hint={t("collegeOffice.slabSource", { title: REFUND_SLAB_SOURCE.title, dated: REFUND_SLAB_SOURCE.dated })} />
                   <Button type="submit" variant="danger">{t("collegeOffice.cancelSeat")}</Button>
-                </form>
+                </ActionForm>
               </details>
             ) : null}
             {a.status === "CANCELLED" ? (
@@ -215,20 +216,20 @@ export default async function ApplicationPage({ params, searchParams }: { params
                   <details>
                     <summary className="cursor-pointer text-sm text-accent-strong">{t("collegeDesks.refundTitle")}</summary>
                     <p className="mt-2 text-sm text-fg-muted">{t("collegeDesks.refundIntro", { amount: money(a.refundPaise ?? 0, locale) })}</p>
-                    <form action={askRefundExceptionAction} className="mt-2 flex flex-wrap items-end gap-3">
+                    <ActionForm action={askRefundExceptionAction} className="mt-2 flex flex-wrap items-end gap-3">
                       <Hidden fields={{ back, applicationId: a.id }} />
                       <TextField name="amount" required inputMode="decimal" label={t("collegeDesks.refundField")} />
                       <TextField name="reason" required minLength={10} maxLength={600} label={t("collegeDesks.refundReason")} />
                       <Button type="submit" variant="secondary">{t("collegeDesks.refundAskButton")}</Button>
-                    </form>
+                    </ActionForm>
                   </details>
                 ) : null}
 
-                <form action={refundAction} className="flex flex-wrap items-end gap-3">
+                <ActionForm action={refundAction} className="flex flex-wrap items-end gap-3">
                   <Hidden fields={{ back, applicationId: a.id }} />
                   <TextField name="reference" required minLength={3} label={t("collegeOffice.bankReference")} />
                   <Button type="submit" variant="secondary">{t("collegeOffice.recordRefund")}</Button>
-                </form>
+                </ActionForm>
               </div>
             ) : null}
           </CardBody>

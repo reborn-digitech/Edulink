@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { decideInternshipAction, evaluateInternshipAction } from "@/app/(app)/placement/actions";
 import { INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK } from "./parts";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * Internships for the people who supervise them (the placement module, 4 Oct
@@ -62,7 +63,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
             ) : null}
             {i.status === "PROPOSED" && canDecide ? (
               <div className="grid gap-3 sm:grid-cols-2">
-                <form action={decideInternshipAction} className="flex flex-wrap items-end gap-2">
+                <ActionForm action={decideInternshipAction} className="flex flex-wrap items-end gap-2">
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="internshipId" value={i.id} />
                   <input type="hidden" name="approve" value="1" />
@@ -76,8 +77,8 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                   <Button type="submit" size="sm">
                     {t("placement.approve")}
                   </Button>
-                </form>
-                <form action={decideInternshipAction} className="flex flex-wrap items-end gap-2">
+                </ActionForm>
+                <ActionForm action={decideInternshipAction} className="flex flex-wrap items-end gap-2">
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="internshipId" value={i.id} />
                   <input type="hidden" name="approve" value="0" />
@@ -85,11 +86,11 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                   <Button type="submit" size="sm" variant="secondary">
                     {t("placement.refuse")}
                   </Button>
-                </form>
+                </ActionForm>
               </div>
             ) : null}
             {["SUBMITTED", "EVALUATED"].includes(i.status) ? (
-              <form action={evaluateInternshipAction} className="grid gap-3 sm:grid-cols-5 sm:items-end">
+              <ActionForm action={evaluateInternshipAction} className="grid gap-3 sm:grid-cols-5 sm:items-end">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="internshipId" value={i.id} />
                 <SelectField label={t("placement.fieldGrade")} name="industryGrade" defaultValue={i.industryGrade ?? ""}>
@@ -106,7 +107,7 @@ export function InternshipStaffList({ internships, t, back, canDecide, superviso
                 <Button type="submit" size="sm" variant="secondary" className="sm:justify-self-start">
                   {t("placement.saveEvaluation")}
                 </Button>
-              </form>
+              </ActionForm>
             ) : null}
           </div>
         ))}

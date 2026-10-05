@@ -9,6 +9,7 @@ import { WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { hostelIncidentAction } from "../actions";
 import { INCIDENT_KIND_KEY as KIND_KEY, INCIDENT_SEVERITY_KEY as SEVERITY_KEY } from "@/lib/incident-labels";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -31,7 +32,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
         <Card>
           <CardHeader icon={<FirstAidKitIcon weight="duotone" className="size-5" />} title={t("hostel.recordIncident")} />
           <CardBody>
-            <form action={hostelIncidentAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={hostelIncidentAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value="/hostel/incidents" />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.pupil")}
@@ -82,7 +83,7 @@ export default async function HostelIncidentsPage({ searchParams }: { searchPara
               <div className="sm:col-span-2">
                 <Button type="submit">{t("hostel.recordIncidentButton")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

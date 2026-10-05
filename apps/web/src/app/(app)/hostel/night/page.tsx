@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { LEAVE_KIND_KEY, WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { gateInAction, gateOutAction } from "../actions";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -95,18 +96,18 @@ export default async function HostelNightPage({ searchParams }: { searchParams: 
                   <div className="flex flex-wrap items-center gap-2">
                     <Badge tone={STATE[l.state]!.tone}>{t(STATE[l.state]!.key)}</Badge>
                     {canWrite && l.state === "NOT_OUT" ? (
-                      <form action={gateOutAction}>
+                      <ActionForm action={gateOutAction}>
                         <input type="hidden" name="leaveId" value={l.leaveId} />
                         <input type="hidden" name="back" value={back} />
                         <Button type="submit" size="sm" variant="secondary">{t("hostel.signOut")}</Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                     {canWrite && (l.state === "OUT" || l.state === "OVERDUE") ? (
-                      <form action={gateInAction}>
+                      <ActionForm action={gateInAction}>
                         <input type="hidden" name="leaveId" value={l.leaveId} />
                         <input type="hidden" name="back" value={back} />
                         <Button type="submit" size="sm" variant="secondary">{t("hostel.signIn")}</Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                   </div>
                 </li>

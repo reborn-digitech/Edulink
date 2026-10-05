@@ -13,6 +13,7 @@ import { ModuleOff } from "@/components/module-off";
 import { IqacFlash } from "@/components/iqac/parts";
 import { FacultyProfileCard } from "@/components/faculty-profile-card";
 import { setPublicProfileAction } from "./actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,15 +58,15 @@ export default async function FacultyProfilePage({ searchParams }: { searchParam
           <Card>
             <CardBody className="flex flex-wrap items-center gap-3 pt-5 text-sm">
               <span className="text-fg">{mine.publishedAt ? t("collegeDesks.profilePublished", { date: formatDateKey(mine.publishedAt.slice(0, 10), { day: "numeric", month: "short", year: "numeric" }, locale) }) : t("collegeDesks.profileNotPublished")}</span>
-              <form action={setPublicProfileAction}>
+              <ActionForm action={setPublicProfileAction}>
                 <input type="hidden" name="publish" value="1" />
                 <Button type="submit" size="sm">{t(mine.publishedAt ? "collegeDesks.profileRefresh" : "collegeDesks.profilePublish")}</Button>
-              </form>
+              </ActionForm>
               {mine.publishedAt ? (
-                <form action={setPublicProfileAction}>
+                <ActionForm action={setPublicProfileAction}>
                   <input type="hidden" name="publish" value="0" />
                   <Button type="submit" size="sm" variant="secondary">{t("collegeDesks.profileUnpublish")}</Button>
-                </form>
+                </ActionForm>
               ) : null}
               {mine.url ? (
                 <Link className="inline-flex min-h-11 items-center text-accent-strong underline" href={mine.url}>

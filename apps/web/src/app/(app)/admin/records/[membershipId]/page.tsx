@@ -13,6 +13,7 @@ import { PersonLink } from "@/components/person-link";
 import { PupilRecordForm } from "@/components/pupil-record-form";
 import { RecordChangePanel } from "@/components/record-change-panel";
 import { PupilRecordPenChange } from "@/components/pupil-record-pen-change";
+import { IdCardPanel } from "./id-card-panel";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -54,6 +55,8 @@ export default async function OfficePupilRecordPage({ params }: { params: Promis
           </>
         }
       />
+      {/* The card's reprint notice and, for the office, a new claim code for a lost card (R-52). */}
+      <IdCardPanel studentMembershipId={view.studentMembershipId} studentName={view.studentName} canRotate={ctx.role === "ADMIN"} t={t} />
       {/* What the family has asked to have changed: approving puts their values on the record below. */}
       {view.change && (
         <Card className="border-warn/40" data-testid="record-change-waiting">

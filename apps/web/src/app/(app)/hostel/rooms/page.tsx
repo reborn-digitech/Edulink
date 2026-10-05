@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { HOSTEL_KIND_KEY, ROOM_KIND_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
 import { allotAction, endAllotmentAction, saveHostelAction, saveRoomAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -35,7 +36,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
         <Card>
           <CardHeader icon={<BedIcon weight="duotone" className="size-5" />} title={t("hostel.allotTitle")} description={t("hostel.allotHint")} />
           <CardBody>
-            <form action={allotAction} className="grid gap-3 sm:grid-cols-3">
+            <ActionForm action={allotAction} className="grid gap-3 sm:grid-cols-3">
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.pupil")}
@@ -65,7 +66,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               <div className="sm:col-span-3">
                 <Button type="submit">{t("hostel.allotButton")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -95,7 +96,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                             </Link>
                           ) : null}
                           {canWrite ? (
-                            <form action={endAllotmentAction} className="flex items-center gap-1.5">
+                            <ActionForm action={endAllotmentAction} className="flex items-center gap-1.5">
                               <input type="hidden" name="allotmentId" value={b.allotmentId} />
                               <input type="hidden" name="back" value={back} />
                               <label className="sr-only" htmlFor={`to-${b.allotmentId}`}>
@@ -105,7 +106,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                               <Button type="submit" size="sm" variant="ghost">
                                 {t("hostel.endBed")}
                               </Button>
-                            </form>
+                            </ActionForm>
                           ) : null}
                         </span>
                       </li>
@@ -115,7 +116,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               </div>
             ))}
             {canWrite ? (
-              <form action={saveRoomAction} className="grid gap-2 border-t border-border pt-4 sm:grid-cols-5">
+              <ActionForm action={saveRoomAction} className="grid gap-2 border-t border-border pt-4 sm:grid-cols-5">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="hostelId" value={h.id} />
                 <label className="text-xs text-fg-muted">
@@ -146,7 +147,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
                     {t("hostel.addRoom")}
                   </Button>
                 </div>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -156,7 +157,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
         <Card>
           <CardHeader icon={<HouseLineIcon weight="duotone" className="size-5" />} title={t("hostel.newHostel")} description={t("hostel.newHostelHint")} />
           <CardBody>
-            <form action={saveHostelAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={saveHostelAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
               <label className="text-sm font-medium text-fg">
                 {t("hostel.hostelName")}
@@ -194,7 +195,7 @@ export default async function HostelRoomsPage({ searchParams }: { searchParams: 
               <div className="sm:col-span-2">
                 <Button type="submit">{t("hostel.saveHostel")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

@@ -110,6 +110,12 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                             {s.kind === "WORKSHOP" ? ` · ${t("gigs.seatsLeft", { count: s.seatsLeft })}` : ""}
                           </p>
                           {s.providerHeadline && <p className="text-xs text-fg-muted">{s.providerHeadline}</p>}
+                          {/* An alumni mentor's time is free and outside the allowance (G4-26): said where it is booked. */}
+                          {s.providerKind === "ALUMNUS" ? (
+                            <p className="text-xs font-medium text-ok" data-testid="session-alumni-free">
+                              {t("riskDecisions.alumniSessionFree")}
+                            </p>
+                          ) : null}
                           {s.pricePaise > 0 && (
                             <p className="text-xs font-medium text-fg" data-testid="session-open-price">
                               {s.freeSeat ? t("gigs.seatFree") : t("gigs.seatPrice", { amount: money(s.pricePaise) })}

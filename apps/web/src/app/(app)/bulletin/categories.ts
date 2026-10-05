@@ -16,4 +16,6 @@ export const CATEGORY_KEYS: Record<PostCategory, { name: TranslationKey; hint: T
   EVENTS: { name: "bulletin.catEvents", hint: "bulletin.catEventsHint" },
   LEARNING: { name: "bulletin.catLearning", hint: "bulletin.catLearningHint" },
   UPDATES: { name: "bulletin.catUpdates", hint: "bulletin.catUpdatesHint" },
+  // A student council's notice (risks batch 5A, 5 Oct 2026): read and filtered here, written on /bulletin/council.
+  COUNCIL: { name: "bulletin.catCouncil", hint: "bulletin.catCouncilHint" },
 };

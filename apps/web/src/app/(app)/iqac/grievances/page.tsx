@@ -14,6 +14,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, day, keyed } from "@/components/iqac/parts";
 import { actGrievanceAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -93,7 +94,7 @@ export default async function GrievancesPage({ searchParams }: { searchParams: P
                 {x.response ? <p>{t("iqac.responseLine", { text: x.response })}</p> : null}
                 {x.ombudspersonNote ? <p className="text-fg-muted">{x.ombudspersonNote}</p> : null}
                 {g.canAct && x.status !== "ESCALATED" ? (
-                  <form action={actGrievanceAction} className="space-y-2">
+                  <ActionForm action={actGrievanceAction} className="space-y-2">
                     <input type="hidden" name="back" value={back} />
                     <input type="hidden" name="grievanceId" value={x.id} />
                     <TextAreaField name="note" required minLength={2} label={t("iqac.actNoteField")} />
@@ -112,7 +113,7 @@ export default async function GrievancesPage({ searchParams }: { searchParams: P
                         {t("iqac.escalateDeskButton")}
                       </Button>
                     </div>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </CardBody>
             </Card>

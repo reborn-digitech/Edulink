@@ -1,10 +1,7 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { requireApiRole, AccessError } from "@/lib/tenancy";
+import { requireApiRole } from "@/lib/tenancy";
 import { createSeries, addSlot, removeSlot, publishSeries, archiveSeries } from "@/lib/exams";
-import { getT } from "@/lib/i18n/server";
 import { answerForm } from "@/lib/form-action";
 import type { FieldMap, FormState } from "@/lib/form-state";
 
@@ -16,18 +13,17 @@ function parseTime(value: string): number | null {
   return minutes >= 0 && minutes < 1440 ? minutes : null;
 }
 
-async function run(block: () => Promise<void>): Promise<void> {
-  try {
-    await block();
-  } catch (error) {
-    if (error instanceof AccessError) {
-      const t = await getT();
-      redirect(`/admin/exams?error=${encodeURIComponent(t(error.key, error.vars))}`);
-    }
-    throw error;
-  }
-  revalidatePath("/admin/exams");
-  redirect("/admin/exams");
+/** The list's own buttons answer in place too (A3-journeys-27, risks batch): a refusal sits by the button, the page is refreshed. */
+async function run(previous: FormState, formData: FormData, block: () => Promise<void>): Promise<FormState> {
+  return answerForm(
+    previous,
+    formData,
+    async () => {
+      await block();
+      return null;
+    },
+    { revalidate: ["/admin/exams"] },
+  );
 }
 
 /**
@@ -92,17 +88,14 @@ export async function addSlotAction(previous: FormState, formData: FormData): Pr
   );
 }
 
-export async function removeSlotAction(formData: FormData): Promise<void> {
-  const ctx = await requireApiRole("ADMIN");
-  await run(() => removeSlot(ctx, String(formData.get("slotId") ?? "")));
+export async function removeSlotAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async () => removeSlot(await requireApiRole("ADMIN"), String(formData.get("slotId") ?? "")));
 }
 
-export async function publishSeriesAction(formData: FormData): Promise<void> {
-  const ctx = await requireApiRole("ADMIN");
-  await run(() => publishSeries(ctx, String(formData.get("seriesId") ?? "")));
+export async function publishSeriesAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async () => publishSeries(await requireApiRole("ADMIN"), String(formData.get("seriesId") ?? "")));
 }
 
-export async function archiveSeriesAction(formData: FormData): Promise<void> {
-  const ctx = await requireApiRole("ADMIN");
-  await run(() => archiveSeries(ctx, String(formData.get("seriesId") ?? "")));
+export async function archiveSeriesAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async () => archiveSeries(await requireApiRole("ADMIN"), String(formData.get("seriesId") ?? "")));
 }

@@ -113,9 +113,9 @@ export default async function GlobalFeedPage({
 
                   <Link
                     href={`/bulletin/global?category=${post.category}`}
-                    className="inline-block w-fit rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+                    className="inline-flex min-h-11 items-center hover:underline w-fit"
                   >
-                    {t(CATEGORY_KEYS[post.category].name)}
+                    <span className="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong">{t(CATEGORY_KEYS[post.category].name)}</span>
                   </Link>
 
                   {post.body && (

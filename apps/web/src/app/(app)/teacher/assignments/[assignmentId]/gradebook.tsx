@@ -19,7 +19,7 @@ import { useToast } from "@/components/ui/toast";
 import { EmptyState } from "@/components/ui/states";
 import { fromMilli } from "@/lib/validation";
 import { cn } from "@/lib/cn";
-import { submitGrades } from "../actions";
+import { submitGrades, type GradeSaveState } from "../actions";
 import { useT } from "@/lib/i18n";
 import { fieldClass } from "@/components/ui/field-class";
 
@@ -54,11 +54,14 @@ export function Gradebook({
   maxMilli,
   rows,
   stats,
+  saveAction = submitGrades,
 }: {
   assignmentId: string;
   maxMilli: number | null;
   rows: GradeRow[];
   stats: { total: number; submitted: number; graded: number; averagePercent: number | null };
+  /** The server action that saves the batch: the school's, or a college offering's (R-48, /faculty/work). */
+  saveAction?: (input: unknown) => Promise<GradeSaveState>;
 }) {
   const t = useT();
   const router = useRouter();
@@ -140,7 +143,7 @@ export function Gradebook({
     }
 
     startTransition(async () => {
-      const result = await submitGrades({
+      const result = await saveAction({
         assignmentId,
         grades: dirtyIds.map((id) => ({
           studentMembershipId: id,

@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { PersonLink } from "@/components/person-link";
 import { getT } from "@/lib/i18n/server";
+import { certificateNameLabel } from "@/lib/certificate-names";
 import { CERTIFICATE_KIND_KEY } from "@/components/certificates/labels";
 import { TableScroll } from "@/components/ui/table-scroll";
 
@@ -76,7 +77,7 @@ export default async function IssuedCertificatesPage({ searchParams }: { searchP
                     <tr key={item.id}>
                       <td className="py-2 pr-3 font-mono text-xs text-fg">{item.serial}</td>
                       <td className="py-2 pr-3">
-                        <span className="block font-medium text-fg">{item.title}</span>
+                        <span className="block font-medium text-fg">{certificateNameLabel(item.title, t)}</span>
                         <span className="block text-xs text-fg-muted">{t(CERTIFICATE_KIND_KEY[item.kind])}</span>
                       </td>
                       <td className="py-2 pr-3">

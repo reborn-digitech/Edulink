@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { CheckboxField, SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { Flash, Hidden, NotCollege, Table, money } from "@/components/college-office/parts";
 import { calendarImportAction, collegeLibrarySettingsAction, eResourceAction, hostelRulesAction, messBillAction, routeCollegeAction, routeFeesAction } from "../../accounts/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -61,7 +62,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
               <StatTile label={t("collegeOffice.ltIssues", { year: lt.academicYear })} value={lt.issues} hint={t("collegeOffice.ltPerStudent", { n: lt.issuesPerStudent })} />
               <StatTile label={t("collegeOffice.ltSpend")} value={money(lt.expenditurePaise, locale)} />
             </div>
-            <form action={collegeLibrarySettingsAction} className="grid gap-3 sm:grid-cols-5">
+            <ActionForm action={collegeLibrarySettingsAction} className="grid gap-3 sm:grid-cols-5">
               <Hidden fields={{ back }} />
               <fieldset disabled={!write} className="contents">
                 <TextField name="facultyLimit" type="number" min={0} max={50} required label={t("collegeOffice.facultyLimit")} defaultValue={terms.facultyLimit} />
@@ -75,7 +76,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
                   </div>
                 ) : null}
               </fieldset>
-            </form>
+            </ActionForm>
             <Table head={[t("collegeOffice.eResource"), t("collegeOffice.colKind"), t("collegeOffice.colOpens")]} testId="eresources">
               {eres.items.map((e) => (
                 <tr key={e.id}>
@@ -90,7 +91,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
               ))}
             </Table>
             {write ? (
-              <form action={eResourceAction} className="grid gap-3 sm:grid-cols-4">
+              <ActionForm action={eResourceAction} className="grid gap-3 sm:grid-cols-4">
                 <Hidden fields={{ back }} />
                 <TextField name="name" required minLength={2} label={t("collegeOffice.eResource")} />
                 <TextField name="url" type="url" required label={t("collegeOffice.link")} />
@@ -104,7 +105,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
                 <div className="flex items-end">
                   <Button type="submit" variant="secondary">{t("collegeOffice.add")}</Button>
                 </div>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -121,7 +122,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
               <StatTile label={t("collegeOffice.htLate")} value={ht.lateReturns} />
             </div>
             {hostels.map((h) => (
-              <form key={h.id} action={hostelRulesAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
+              <ActionForm key={h.id} action={hostelRulesAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
                 <Hidden fields={{ back, hostelId: h.id }} />
                 <p className="font-medium sm:col-span-4">{h.name}</p>
                 <fieldset disabled={!write} className="contents">
@@ -134,14 +135,14 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
                     </div>
                   ) : null}
                 </fieldset>
-              </form>
+              </ActionForm>
             ))}
             {write ? (
-              <form action={messBillAction} className="flex flex-wrap items-end gap-3">
+              <ActionForm action={messBillAction} className="flex flex-wrap items-end gap-3">
                 <Hidden fields={{ back }} />
                 <TextField name="month" type="month" required label={t("collegeOffice.messMonth")} />
                 <Button type="submit">{t("collegeOffice.billMess")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -151,7 +152,7 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
           <CardHeader icon={<BusIcon weight="duotone" className="size-5" />} title={t("collegeOffice.transportTitle")} description={t("collegeOffice.transportIntro")} />
           <CardBody className="space-y-4">
             {routes.map((r) => (
-              <form key={r.id} action={routeCollegeAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
+              <ActionForm key={r.id} action={routeCollegeAction} className="grid gap-3 rounded-[var(--radius-md)] border border-border p-3 sm:grid-cols-4">
                 <Hidden fields={{ back, routeId: r.id }} />
                 <p className="font-medium sm:col-span-4">{r.name}</p>
                 <fieldset disabled={!write} className="contents">
@@ -166,15 +167,15 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
                     </div>
                   ) : null}
                 </fieldset>
-              </form>
+              </ActionForm>
             ))}
             {write ? (
-              <form action={routeFeesAction} className="flex flex-wrap items-end gap-3">
+              <ActionForm action={routeFeesAction} className="flex flex-wrap items-end gap-3">
                 <Hidden fields={{ back }} />
                 <TextField name="termLabel" required label={t("collegeOffice.termLabel")} defaultValue={t("collegeOffice.termOdd")} />
                 <TextField name="dueDateKey" type="date" required label={t("collegeOffice.termDue")} />
                 <Button type="submit">{t("collegeOffice.raiseRouteFees")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -183,11 +184,11 @@ export default async function CollegeCampusPage({ searchParams }: { searchParams
         <Card>
           <CardHeader icon={<CalendarIcon weight="duotone" className="size-5" />} title={t("collegeOffice.calendarTitle")} description={t("collegeOffice.calendarIntro")} />
           <CardBody>
-            <form action={calendarImportAction} className="space-y-3">
+            <ActionForm action={calendarImportAction} className="space-y-3">
               <Hidden fields={{ back }} />
               <TextAreaField name="text" required rows={6} label={t("collegeOffice.calendarLabel")} hint={t("collegeOffice.calendarHint")} />
               <Button type="submit" variant="secondary">{t("collegeOffice.importButton")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

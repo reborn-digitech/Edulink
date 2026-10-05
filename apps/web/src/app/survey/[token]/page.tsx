@@ -9,6 +9,7 @@ import { CODE_LOOKUPS, consumeByCaller } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { answerByLinkAction } from "./actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -57,7 +58,7 @@ export default async function SurveyLinkPage({ params, searchParams }: { params:
           <>
             <h1 className="text-2xl font-bold tracking-tight text-fg">{view.title}</h1>
             <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{t("iqac.linkPageIntro")}</p>
-            <form action={answerByLinkAction} className="mt-6 space-y-4">
+            <ActionForm action={answerByLinkAction} className="mt-6 space-y-4">
               <input type="hidden" name="token" value={decodeURIComponent(token)} />
               {view.questions.map((q) => (
                 <fieldset key={q.code} className="space-y-2">
@@ -73,7 +74,7 @@ export default async function SurveyLinkPage({ params, searchParams }: { params:
                 </fieldset>
               ))}
               <Button type="submit">{t("iqac.answerButton")}</Button>
-            </form>
+            </ActionForm>
           </>
         )}
       </div>

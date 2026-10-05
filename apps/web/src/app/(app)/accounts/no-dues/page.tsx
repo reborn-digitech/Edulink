@@ -14,6 +14,7 @@ import { TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { DESK_KEY, EVENT_KEY, Flash, Hidden, NotCollege, Table, money } from "@/components/college-office/parts";
 import { clearLineAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -64,11 +65,11 @@ export default async function NoDuesPage({ searchParams }: { searchParams: Promi
                   </td>
                   <td className="py-2">
                     {!l.cleared && DESK_ROLES[l.desk].includes(ctx.role) ? (
-                      <form action={clearLineAction} className="flex flex-wrap items-end gap-2">
+                      <ActionForm action={clearLineAction} className="flex flex-wrap items-end gap-2">
                         <Hidden fields={{ back, studentMembershipId: one.studentMembershipId, event, desk: l.desk }} />
                         <TextField name="note" label={t("collegeOffice.note")} />
                         <Button type="submit" size="sm">{t("collegeOffice.clear")}</Button>
-                      </form>
+                      </ActionForm>
                     ) : null}
                   </td>
                 </tr>

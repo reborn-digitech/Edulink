@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { CellOff, GRACE_STATUS_KEY, Hidden, Labelled, SessionFrame, day, marks } from "@/components/exam-cell/parts";
 import { correctMarkAction, enterMarksAction, importMarksAction, moderationNoteAction, proposeGraceAction } from "../../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -53,7 +54,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
         <Card>
           <CardHeader title={[sheet.code, sheet.name].join(" ")} description={t("examCell.sheetHint", { external: marks(sheet.externalMaxMilli), internal: marks(sheet.internalMaxMilli) })} />
           <CardBody className="relative overflow-x-auto p-0" tabIndex={0} role="group">
-            <form action={enterMarksAction}>
+            <ActionForm action={enterMarksAction}>
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <table className="w-full text-sm">
                 <thead className="bg-surface-muted text-left text-xs text-fg-muted">
@@ -105,7 +106,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
                   <Button type="submit">{t("examCell.saveEntry")}</Button>
                 </div>
               ) : null}
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -114,13 +115,13 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
         <Card>
           <CardHeader title={t("examCell.importTitle")} description={t("examCell.importHint")} />
           <CardBody>
-            <form action={importMarksAction} className="space-y-3">
+            <ActionForm action={importMarksAction} className="space-y-3">
               <Hidden fields={{ sessionId: s.id, back }} />
               <textarea name="text" required rows={6} placeholder="PRN,SEAT_NO,COURSE_CODE,INTERNAL,EXTERNAL" aria-label={t("examCell.importTitle")} className={fieldClass("font-mono text-xs")} />
               <Button type="submit" variant="secondary">
                 {t("examCell.import")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -129,7 +130,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
         <Card>
           <CardHeader title={t("examCell.correctTitle")} description={t("examCell.correctHint")} />
           <CardBody>
-            <form action={correctMarkAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={correctMarkAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <Labelled label={t("examCell.student")}>
                 <select name="studentMembershipId" className={fieldClass()}>
@@ -149,7 +150,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
               <Button type="submit" size="sm">
                 {t("examCell.correct")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -163,7 +164,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
             </p>
           ))}
           {w && sheet ? (
-            <form action={proposeGraceAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={proposeGraceAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet.courseId, back }} />
               <Labelled label={t("examCell.student")}>
                 <select name="studentMembershipId" className={fieldClass()}>
@@ -189,7 +190,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.propose")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -203,7 +204,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
             </p>
           ))}
           {w ? (
-            <form action={moderationNoteAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={moderationNoteAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, courseId: sheet?.courseId, back }} />
               <Labelled label={t("examCell.committeeNote")} className="min-w-64 flex-1">
                 <input name="note" required minLength={5} maxLength={2000} className={fieldClass()} />
@@ -211,7 +212,7 @@ export default async function MarksPage({ params, searchParams }: { params: Prom
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.record")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>

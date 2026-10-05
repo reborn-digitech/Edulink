@@ -13,6 +13,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { Flash, LINK, ROUND_KIND_KEY, SECTOR_KEY, lpa, packageRange, statusBadge } from "@/components/placement/parts";
 import { addColleagueAction, answerInvitationAction, postRequirementAction, registerCompanyAction, removeColleagueAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -58,12 +59,12 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
                 <span>{t("placement.invitationFrom", { company: i.companyName })}</span>
                 <div className="flex gap-2">
                   {(["1", "0"] as const).map((accept) => (
-                    <form key={accept} action={answerInvitationAction}>
+                    <ActionForm key={accept} action={answerInvitationAction}>
                       <input type="hidden" name="back" value={BACK} />
                       <input type="hidden" name="companyId" value={i.companyId} />
                       <input type="hidden" name="accept" value={accept} />
                       <Button type="submit" size="sm" variant={accept === "1" ? "primary" : "secondary"}>{t(accept === "1" ? "placement.acceptInvitation" : "placement.declineInvitation")}</Button>
-                    </form>
+                    </ActionForm>
                   ))}
                 </div>
               </div>
@@ -75,7 +76,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
         <Card>
           <CardHeader icon={<BuildingsIcon weight="duotone" className="size-5" />} title={t("placement.registerCompany")} description={t("placement.registerCompanyIntro")} />
           <CardBody>
-            <form action={registerCompanyAction} className="grid gap-4 sm:grid-cols-2">
+            <ActionForm action={registerCompanyAction} className="grid gap-4 sm:grid-cols-2">
               <input type="hidden" name="back" value={BACK} />
               <TextField label={t("placement.fieldCompanyName")} name="name" required maxLength={160} defaultValue={ctx.recruiter.companyName} />
               <TextField label={t("placement.fieldIdentifier")} name="identifier" required maxLength={30} hint={t("placement.fieldIdentifierHint")} />
@@ -90,7 +91,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
                 ))}
               </fieldset>
               <Button type="submit" className="sm:justify-self-start">{t("placement.registerCompany")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : (
@@ -106,19 +107,19 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
                     {c.name}
                   </span>
                   {c.email ? (
-                    <form action={removeColleagueAction}>
+                    <ActionForm action={removeColleagueAction}>
                       <input type="hidden" name="back" value={BACK} />
                       <input type="hidden" name="email" value={c.email} />
                       <Button type="submit" size="sm" variant="ghost">{t("common.remove")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </div>
               ))}
-              <form action={addColleagueAction} className="flex flex-wrap items-end gap-2">
+              <ActionForm action={addColleagueAction} className="flex flex-wrap items-end gap-2">
                 <input type="hidden" name="back" value={BACK} />
                 <TextField label={t("placement.fieldColleagueEmail")} name="email" type="email" required maxLength={200} />
                 <Button type="submit" size="sm" variant="secondary">{t("placement.addColleague")}</Button>
-              </form>
+              </ActionForm>
             </CardBody>
           </Card>
 
@@ -146,7 +147,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
               {colleges.length === 0 ? (
                 <p className="text-sm text-fg-muted">{t("placement.noColleges")}</p>
               ) : (
-                <form action={postRequirementAction} className="grid gap-4 sm:grid-cols-2">
+                <ActionForm action={postRequirementAction} className="grid gap-4 sm:grid-cols-2">
                   <input type="hidden" name="back" value={BACK} />
                   <TextField label={t("placement.fieldRole")} name="role" required maxLength={160} />
                   <TextField label={t("placement.fieldPackage")} name="package" type="number" step="0.1" min="0" required hint={t("placement.fieldPackageHint")} />
@@ -173,7 +174,7 @@ export default async function RecruiterHome({ searchParams }: { searchParams: Pr
                     ))}
                   </fieldset>
                   <Button type="submit" className="sm:justify-self-start">{t("placement.sendRequirement")}</Button>
-                </form>
+                </ActionForm>
               )}
             </CardBody>
           </Card>

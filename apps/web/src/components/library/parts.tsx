@@ -9,6 +9,7 @@ import { formatDateKey } from "@/lib/dates";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 import { cancelReservationAction, renewAction, reserveAction, settleFineAction, waiveFineAction } from "@/app/(app)/library/actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * The library's shared pieces (module LIBRARY, 3 Oct 2026): the message a
@@ -71,12 +72,12 @@ export function LoanList({ loans, t, locale, back, title, desk, showMember }: { 
                   </p>
                 </div>
                 {desk && l.canRenew ? (
-                  <form action={renewAction}>
+                  <ActionForm action={renewAction}>
                     <Hidden fields={{ issueId: l.id, back }} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("library.renew")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : l.overdueDays > 0 && !l.returnedAt ? (
                   <span className="text-xs font-semibold text-danger">{t("library.overdue")}</span>
                 ) : null}
@@ -113,16 +114,16 @@ export function FineList({ fines, t, locale, back, desk, canSettle, title, showM
                     </p>
                   </div>
                   {desk && canSettle && f.status === "DUE" && !f.onLedger ? (
-                    <form action={settleFineAction}>
+                    <ActionForm action={settleFineAction}>
                       <Hidden fields={{ fineId: f.id, back }} />
                       <Button type="submit" size="sm" variant="secondary">
                         {t("library.settle")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </div>
                 {desk && f.status === "DUE" ? (
-                  <form action={waiveFineAction} className="flex flex-wrap items-end gap-2">
+                  <ActionForm action={waiveFineAction} className="flex flex-wrap items-end gap-2">
                     <Hidden fields={{ fineId: f.id, back }} />
                     <label className="min-w-0 flex-1 basis-48 text-xs text-fg-muted">
                       {t("library.waiveReason")}
@@ -131,7 +132,7 @@ export function FineList({ fines, t, locale, back, desk, canSettle, title, showM
                     <Button type="submit" size="sm" variant="ghost">
                       {t("library.waive")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </li>
             ))}
@@ -161,12 +162,12 @@ export function ReservationList({ items, t, back, title, desk, canCancel = true 
                   </p>
                 </div>
                 {canCancel ? (
-                  <form action={cancelReservationAction}>
+                  <ActionForm action={cancelReservationAction}>
                     <Hidden fields={{ reservationId: r.id, back }} />
                     <Button type="submit" size="sm" variant="ghost">
                       {t("library.leaveQueue")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </li>
             ))}
@@ -222,12 +223,12 @@ export function CatalogueSearch({ items, q, t, back, action, reserveFor, desk, n
                   </p>
                 </div>
                 {reserveFor && b.copies > 0 ? (
-                  <form action={reserveAction}>
+                  <ActionForm action={reserveAction}>
                     <Hidden fields={{ titleId: b.id, childId: reserveFor.childId, back }} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("library.reserve")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </li>
             ))}

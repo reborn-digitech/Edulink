@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import {
   alumniGiftSaveSchema,
@@ -26,7 +25,10 @@ import {
 } from "@edulink/contracts";
 import { AccessError, requireApiUser } from "@/lib/tenancy";
 import { RuleRefusal } from "@/lib/rule-refusal";
+import { lakhOf, offerNeedsConfirm } from "@/lib/placement-rules";
 import { getT } from "@/lib/i18n/server";
+import { answerForm } from "@/lib/form-action";
+import type { FieldMap, FormState } from "@/lib/form-state";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { ActiveContext } from "@/lib/session";
 import { storeAttachments } from "@/lib/uploads";
@@ -81,9 +83,6 @@ function backOf(formData: FormData): string {
   return q ? `${path}?${q}` : path;
 }
 
-function withMessage(back: string, key: "ok" | "error", text: string): string {
-  return `${back}${back.includes("?") ? "&" : "?"}${key}=${encodeURIComponent(text)}`;
-}
 
 const str = (formData: FormData, name: string) => String(formData.get(name) ?? "").trim();
 const num = (formData: FormData, name: string): number | null => {
@@ -101,28 +100,22 @@ const lakh = (formData: FormData, name: string) => {
 };
 
 type Done = TranslationKey | { key: TranslationKey; vars: Record<string, string | number> } | null;
-class FormError extends Error {}
-function parsed<T>(result: { success: true; data: T } | { success: false }): T {
-  if (!result.success) throw new FormError();
+class FormError extends Error {
+  override name = "FormError";
+}
+function parsed<T>(result: { success: true; data: T } | { success: false; error?: unknown }): T {
+  if (!result.success) throw Object.assign(new FormError(), { cause: result.error });
   return result.data;
 }
 
-async function run(formData: FormData, work: (ctx: ActiveContext) => Promise<Done>): Promise<void> {
-  const back = backOf(formData);
-  const t = await getT();
-  let done: Done;
-  try {
-    const ctx = await requireApiUser();
-    done = await work(ctx);
-  } catch (error) {
-    if (error instanceof AccessError) redirect(withMessage(back, "error", t(error.key, error.vars)));
-    if (error instanceof RuleRefusal) redirect(withMessage(back, "error", t(error.key, error.vars)));
-    if (error instanceof FormError) redirect(withMessage(back, "error", t("common.checkTheForm")));
-    throw error;
-  }
-  revalidatePath(back.split("?")[0]!);
-  if (!done) redirect(back);
-  redirect(withMessage(back, "ok", typeof done === "string" ? t(done) : t(done.key, done.vars)));
+/**
+ * Every form answers in place (A3-journeys-27, risks batch): through
+ * <ActionForm>, a refusal keeps what was typed and sits under the box it is
+ * about (lib/form-state.ts), a done is a toast and the page it came from is
+ * refreshed. Nothing redirects with ?error= any more.
+ */
+async function run(previous: FormState, formData: FormData, work: (ctx: ActiveContext) => Promise<Done>, fields?: FieldMap): Promise<FormState> {
+  return answerForm(previous, formData, async () => work(await requireApiUser()), { revalidate: [backOf(formData)], fields });
 }
 
 /**
@@ -148,29 +141,29 @@ async function oneFile(formData: FormData, name: string): Promise<string | null>
 
 /* ------------------------------------------------------------------ the cell */
 
-export async function saveSettingsAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function saveSettingsAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await savePlacementSettings(ctx, parsed(placementSettingsSchema.safeParse({ seasonBatchYear: num(formData, "seasonBatchYear"), dreamRatio: num(formData, "dreamRatio"), allowGenderRule: formData.get("allowGenderRule") === "on" })));
     return "placement.settingsSaved";
   });
 }
 
-export async function addCompanyAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function addCompanyAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const c = await addCompany(ctx, parsed(companySaveSchema.safeParse({ name: str(formData, "name"), identifier: str(formData, "identifier"), sectors: all(formData, "sectors"), pointOfContact: str(formData, "pointOfContact") })));
     return { key: "placement.companyAdded", vars: { name: c.name } };
   });
 }
 
-export async function verifyCompanyAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function verifyCompanyAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const c = await verifyCompany(ctx, str(formData, "companyId"));
     return { key: "placement.companyVerified", vars: { name: c.name } };
   });
 }
 
-export async function acceptRequirementAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function acceptRequirementAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await acceptRequirement(ctx, str(formData, "requirementId"));
     return "placement.requirementAccepted";
   });
@@ -190,72 +183,75 @@ function roundsFrom(formData: FormData) {
   return all(formData, "roundKinds").map((kind, i) => ({ n: i + 1, kind, note: "", at: null }));
 }
 
-export async function openDriveAction(formData: FormData): Promise<void> {
+/** A new drive opens on its own page; a refusal keeps the whole form as typed, the box it is about marked. */
+const DRIVE_FIELDS: FieldMap = { packageMinRupees: "packageMin", packageMaxRupees: "packageMax", "schedule.0.at": "firstAt", "schedule.0.label": "firstLabel" };
+export async function openDriveAction(previous: FormState, formData: FormData): Promise<FormState> {
   let id = "";
   const t = await getT();
-  try {
-    const ctx = await requireApiUser();
-    const at = str(formData, "firstAt");
-    const input = parsed(
-      driveSaveSchema.safeParse({
-        companyId: str(formData, "companyId"),
-        requirementId: null,
-        kind: str(formData, "kind") || "ON_CAMPUS",
-        title: str(formData, "title"),
-        jd: str(formData, "jd"),
-        packageMinRupees: lakh(formData, "packageMin"),
-        packageMaxRupees: lakh(formData, "packageMax"),
-        bond: str(formData, "bond"),
-        rounds: roundsFrom(formData),
-        schedule: at ? [{ label: str(formData, "firstLabel") || t("placement.scheduleVisit"), at: new Date(at).toISOString() }] : [],
-        venues: str(formData, "venues"),
-        rule: ruleFrom(formData),
-        poolSchoolIds: all(formData, "poolSchoolIds"),
-      }),
-    );
-    id = (await openDrive(ctx, input)).id;
-  } catch (error) {
-    const back = "/placement/drives/new";
-    if (error instanceof AccessError || error instanceof RuleRefusal) redirect(withMessage(back, "error", t(error.key, error.vars)));
-    if (error instanceof FormError) redirect(withMessage(back, "error", t("common.checkTheForm")));
-    throw error;
-  }
-  revalidatePath("/placement");
-  redirect(withMessage(`/placement/drives/${id}`, "ok", t("placement.driveOpened")));
+  const answer = await answerForm(
+    previous,
+    formData,
+    async () => {
+      const ctx = await requireApiUser();
+      const at = str(formData, "firstAt");
+      const input = parsed(
+        driveSaveSchema.safeParse({
+          companyId: str(formData, "companyId"),
+          requirementId: null,
+          kind: str(formData, "kind") || "ON_CAMPUS",
+          title: str(formData, "title"),
+          jd: str(formData, "jd"),
+          packageMinRupees: lakh(formData, "packageMin"),
+          packageMaxRupees: lakh(formData, "packageMax"),
+          bond: str(formData, "bond"),
+          rounds: roundsFrom(formData),
+          schedule: at ? [{ label: str(formData, "firstLabel") || t("placement.scheduleVisit"), at: new Date(at).toISOString() }] : [],
+          venues: str(formData, "venues"),
+          rule: ruleFrom(formData),
+          poolSchoolIds: all(formData, "poolSchoolIds"),
+        }),
+      );
+      id = (await openDrive(ctx, input)).id;
+      return null;
+    },
+    { revalidate: ["/placement"], fields: DRIVE_FIELDS },
+  );
+  if (!answer.ok) return answer;
+  redirect(`/placement/drives/${id}?ok=${encodeURIComponent(t("placement.driveOpened"))}`);
 }
 
-export async function moveDriveAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function moveDriveAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const status = str(formData, "status") as DriveStatus;
     await updateDrive(ctx, str(formData, "driveId"), parsed(driveUpdateSchema.safeParse({ status })));
     return { key: "placement.driveMoved", vars: { status } };
   });
 }
 
-export async function saveRuleAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function saveRuleAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await updateDrive(ctx, str(formData, "driveId"), parsed(driveUpdateSchema.safeParse({ rule: ruleFrom(formData) })));
     return "placement.ruleSaved";
   });
 }
 
-export async function inviteAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function inviteAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const r = await inviteEligible(ctx, str(formData, "driveId"));
     return { key: "placement.invited", vars: { told: r.told, eligible: r.eligible } };
   });
 }
 
-export async function remindAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function remindAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const r = await remindApplicants(ctx, str(formData, "driveId"));
     return { key: "placement.reminded", vars: { told: r.told } };
   });
 }
 
 /** A round's outcomes from the table: one select per candidate named `outcome_<membershipId>`, blank for "not this round". */
-export async function resultsAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function resultsAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const driveId = str(formData, "driveId");
     const results = [...formData.keys()]
       .filter((k) => k.startsWith("outcome_"))
@@ -269,22 +265,30 @@ export async function resultsAction(formData: FormData): Promise<void> {
   });
 }
 
-export async function offerAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function offerAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const driveId = str(formData, "driveId");
     // The door's own schema first (campaign S-19): a negative or absurd package skews the NIRF
     // median and the dream rule, and the letter is stored only for an offer that will be made.
     const input = parsed(offerSaveSchema.safeParse({ studentMembershipId: str(formData, "studentMembershipId"), packageRupees: lakh(formData, "package"), letterFileId: null }));
     const actor = ctx.role === "RECRUITER" ? await recruiterActor(ctx, driveId) : await cellActor(ctx, driveId);
+    // Far above the drive's top package (A3-journeys-18): refused under the package box, before the letter is stored,
+    // until the recorder ticks "the figure is right"; then recorded, and the audit row says it was confirmed.
+    const confirmedHigh = formData.get("confirmedHigh") === "on";
+    if (!confirmedHigh && offerNeedsConfirm(input.packageRupees, actor.drive.packageMaxRupees)) {
+      throw new RuleRefusal("placement.confirmHighOffer", 409, { offer: lakhOf(input.packageRupees), max: lakhOf(actor.drive.packageMaxRupees) }, "package");
+    }
     await spend(ctx, "notice-write", NOTICE_WRITE_BUDGET);
     const storedFileId = await oneFile(formData, "letter");
-    const o = await recordOffer(actor, input, { storedFileId });
+    const o = await recordOffer(actor, { ...input, confirmedHigh }, { storedFileId });
     return { key: "placement.offerRecorded", vars: { name: o.studentName } };
-  });
+  }, OFFER_FIELDS);
 }
+/** The library names the schema's field; the form's box is "package" (typed in lakh). */
+const OFFER_FIELDS: FieldMap = { packageRupees: "package" };
 
-export async function joinedAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function joinedAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const offerId = str(formData, "offerId");
     const actor = ctx.role === "RECRUITER" ? await recruiterActorForOffer(ctx, offerId) : await cellActorForOffer(ctx, offerId);
     await recordJoined(actor, offerId, str(formData, "joinedOn"));
@@ -292,16 +296,16 @@ export async function joinedAction(formData: FormData): Promise<void> {
   });
 }
 
-export async function dreamAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function dreamAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const on = str(formData, "on") === "1";
     await setDreamFlag(ctx, str(formData, "studentMembershipId"), on);
     return on ? "placement.dreamGranted" : "placement.dreamWithdrawn";
   });
 }
 
-export async function publishSeasonAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function publishSeasonAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const s = await publishSeason(ctx, num(formData, "batchYear") ?? NaN);
     return { key: "placement.seasonPublished", vars: { batch: s.batchYear } };
   });
@@ -309,16 +313,16 @@ export async function publishSeasonAction(formData: FormData): Promise<void> {
 
 /* ------------------------------------------------------------- internships */
 
-export async function decideInternshipAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function decideInternshipAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const approve = str(formData, "approve") === "1";
     await decideInternship(ctx, str(formData, "internshipId"), { approve, facultyMembershipId: str(formData, "facultyMembershipId") || null, reason: str(formData, "reason") });
     return approve ? "placement.internshipApproved" : "placement.internshipRefused";
   });
 }
 
-export async function evaluateInternshipAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function evaluateInternshipAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const input = parsed(
       internshipEvaluateSchema.safeParse({
         ...(str(formData, "industryGrade") ? { industryGrade: str(formData, "industryGrade") } : {}),
@@ -334,15 +338,15 @@ export async function evaluateInternshipAction(formData: FormData): Promise<void
 
 /* ---------------------------------------------------------------- projects */
 
-export async function createProjectAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function createProjectAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await createProject(ctx, parsed(projectSaveSchema.safeParse({ title: str(formData, "title"), guideMembershipId: str(formData, "guideMembershipId"), studentMembershipIds: all(formData, "studentMembershipIds") })));
     return "placement.projectCreated";
   });
 }
 
-export async function reviewProjectAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function reviewProjectAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await reviewProject(ctx, str(formData, "projectId"), parsed(projectReviewSchema.safeParse({ on: str(formData, "on"), note: str(formData, "note"), marks: num(formData, "marks"), final: formData.get("final") === "on" })));
     return "placement.projectReviewed";
   });
@@ -350,53 +354,53 @@ export async function reviewProjectAction(formData: FormData): Promise<void> {
 
 /* ------------------------------------------------------------------ student */
 
-export async function saveProfileAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function saveProfileAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const projects = lines(formData, "projects").map((title) => ({ title, note: "" }));
     await saveMyProfile(ctx, parsed(placementProfileSaveSchema.safeParse({ skills: lines(formData, "skills"), certifications: lines(formData, "certifications"), projects, optedOut: formData.get("optedOut") === "on", higherStudies: formData.get("higherStudies") === "on", entrepreneur: formData.get("entrepreneur") === "on" })));
     return "placement.profileSaved";
   });
 }
 
-export async function applyAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function applyAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     if (formData.get("consent") !== "on") throw new RuleRefusal("placement.refuseNeedConsent", 422);
     const app = await applyToDrive(ctx, str(formData, "driveId"));
     return app.consentAt ? "placement.applied" : "placement.appliedAwaitsGuardian";
   });
 }
 
-export async function withdrawAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function withdrawAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await withdrawApplication(ctx, str(formData, "driveId"));
     return "placement.withdrawn";
   });
 }
 
-export async function answerOfferAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function answerOfferAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const accept = str(formData, "accept") === "1";
     await answerOffer(ctx, str(formData, "offerId"), accept);
     return accept ? "placement.offerAccepted" : "placement.offerDeclined";
   });
 }
 
-export async function proposeInternshipAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function proposeInternshipAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await proposeInternship(ctx, parsed(internshipProposeSchema.safeParse({ companyName: str(formData, "companyName"), kind: str(formData, "kind"), from: str(formData, "from"), to: str(formData, "to"), hours: num(formData, "hours"), windowSemester: num(formData, "windowSemester"), supervisorName: str(formData, "supervisorName") })));
     return "placement.internshipProposed";
   });
 }
 
-export async function diaryAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function diaryAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await addDiaryEntry(ctx, str(formData, "internshipId"), parsed(internshipDiarySchema.safeParse({ on: str(formData, "on"), hours: num(formData, "hours"), text: str(formData, "text") })));
     return "placement.diarySaved";
   });
 }
 
-export async function internshipFileAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function internshipFileAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const kind = str(formData, "kind") === "DECLARATION" ? "DECLARATION" : "REPORT";
     const storedFileId = await oneFile(formData, "file");
     if (!storedFileId) throw new FormError();
@@ -407,15 +411,15 @@ export async function internshipFileAction(formData: FormData): Promise<void> {
 
 /* ---------------------------------------------------------------- recruiter */
 
-export async function registerCompanyAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function registerCompanyAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await registerCompany(ctx, parsed(companySaveSchema.safeParse({ name: str(formData, "name"), identifier: str(formData, "identifier"), sectors: all(formData, "sectors"), pointOfContact: str(formData, "pointOfContact") })));
     return "placement.companyRegistered";
   });
 }
 
-export async function addColleagueAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function addColleagueAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await spend(ctx, "fanout", FANOUT_BUDGET);
     await addColleague(ctx, str(formData, "email"));
     return "placement.colleagueInvited";
@@ -423,30 +427,30 @@ export async function addColleagueAction(formData: FormData): Promise<void> {
 }
 
 /** A guardian's consent to a minor's drive application, from /parent/placement (campaign S-6). */
-export async function guardianConsentAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function guardianConsentAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await guardianConsentToApplication(ctx, str(formData, "applicationId"), str(formData, "childId"));
     return "placement.consentGiven";
   });
 }
 
-export async function answerInvitationAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function answerInvitationAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const accept = str(formData, "accept") === "1";
     await answerInvitation(ctx, str(formData, "companyId"), accept);
     return accept ? "placement.invitationAccepted" : "placement.invitationDeclined";
   });
 }
 
-export async function removeColleagueAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function removeColleagueAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await removeColleague(ctx, str(formData, "email"));
     return "placement.colleagueRemoved";
   });
 }
 
-export async function postRequirementAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function postRequirementAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await spend(ctx, "fanout", FANOUT_BUDGET);
     const r = await postRequirement(
       ctx,
@@ -467,8 +471,8 @@ export async function postRequirementAction(formData: FormData): Promise<void> {
   });
 }
 
-export async function recruiterFeedbackAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function recruiterFeedbackAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await recruiterFeedback(ctx, str(formData, "driveId"), parsed(recruiterFeedbackSchema.safeParse({ rating: num(formData, "rating"), feedback: str(formData, "feedback") })));
     return "placement.feedbackSaved";
   });
@@ -476,16 +480,16 @@ export async function recruiterFeedbackAction(formData: FormData): Promise<void>
 
 /* ------------------------------------------------------------------- alumni */
 
-export async function mentorSlotAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function mentorSlotAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const at = str(formData, "startsAt");
     await offerMentorSlot(ctx, parsed(alumniMentorSlotSaveSchema.safeParse({ title: str(formData, "title"), startsAt: at ? new Date(at).toISOString() : "", minutes: num(formData, "minutes") ?? 30, meetingUrl: str(formData, "meetingUrl") })));
     return "placement.slotOffered";
   });
 }
 
-export async function closeMentorBookingAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function closeMentorBookingAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const outcome = str(formData, "outcome") === "MISSED" ? "MISSED" : "DELIVERED";
     const r = await closeBooking(ctx, str(formData, "bookingId"), outcome);
     if (!r.ok) throw new RuleRefusal(r.errorKey, 409, r.vars);
@@ -493,38 +497,38 @@ export async function closeMentorBookingAction(formData: FormData): Promise<void
   });
 }
 
-export async function referralAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function referralAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await referOpening(ctx, parsed(alumniReferralSaveSchema.safeParse({ driveId: str(formData, "driveId") || null, companyName: str(formData, "companyName"), note: str(formData, "note") })));
     return "placement.referralSent";
   });
 }
 
-export async function companyLinkAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function companyLinkAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const r = await linkMyCompany(ctx, parsed(alumniCompanyLinkSaveSchema.safeParse({ identifier: str(formData, "identifier") || null, role: str(formData, "role") })));
     return r.linked ? "placement.companyLinked" : "placement.companyUnlinked";
   });
 }
 
-export async function meetAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function meetAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const going = str(formData, "going") === "1";
     await registerForMeet(ctx, str(formData, "meetId"), going);
     return going ? "placement.meetRegistered" : "placement.meetCancelled";
   });
 }
 
-export async function giftAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function giftAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     const amount = num(formData, "amount");
     await recordGift(ctx, parsed(alumniGiftSaveSchema.safeParse({ alumnusMembershipId: str(formData, "alumnusMembershipId"), kind: str(formData, "kind"), amountRupees: amount === null ? null : Math.round(amount), receiptRef: str(formData, "receiptRef"), note: str(formData, "note"), on: str(formData, "on") })));
     return "placement.giftRecorded";
   });
 }
 
-export async function createMeetAction(formData: FormData): Promise<void> {
-  await run(formData, async (ctx) => {
+export async function createMeetAction(previous: FormState, formData: FormData): Promise<FormState> {
+  return run(previous, formData, async (ctx) => {
     await createMeet(ctx, parsed(alumniMeetSaveSchema.safeParse({ title: str(formData, "title"), on: str(formData, "on"), venue: str(formData, "venue"), note: str(formData, "note"), batchYear: num(formData, "batchYear") })));
     return "placement.meetCreated";
   });

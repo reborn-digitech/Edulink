@@ -446,7 +446,7 @@ export default async function TeacherHome() {
                       <span className="block truncate text-sm font-medium text-fg">
                         {assignment.title}
                       </span>
-                      <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
+                      <span className="block text-xs text-fg-muted">{assignment.class?.name}</span>
                     </span>
                     <span className="shrink-0 text-xs font-medium text-fg-muted">
                       {assignment.dueAt ? relativeTime(assignment.dueAt) : t("teacher.noDueDate")}

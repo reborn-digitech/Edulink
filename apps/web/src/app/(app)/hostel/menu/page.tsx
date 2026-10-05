@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { MEAL_KEY, WEEKDAY_KEY, WardenFrame, wardenContext } from "@/components/hostel/parts";
 import { messAttendanceAction, saveMenuAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -35,7 +36,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
           <Card key={h.hostelId}>
             <CardHeader icon={<ForkKnifeIcon weight="duotone" className="size-5" />} title={h.hostelName} />
             <CardBody>
-              <form action={saveMenuAction} className="space-y-4">
+              <ActionForm action={saveMenuAction} className="space-y-4">
                 <input type="hidden" name="back" value="/hostel/menu" />
                 <input type="hidden" name="hostelId" value={h.hostelId} />
                 {[1, 2, 3, 4, 5, 6, 7].map((d) => (
@@ -50,7 +51,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
                   </fieldset>
                 ))}
                 {menu.canEdit ? <Button type="submit">{t("hostel.saveMenu")}</Button> : null}
-              </form>
+              </ActionForm>
               {sheets[i] ? (
                 <div className="mt-6 space-y-3 border-t border-border pt-4">
                   <h3 className="text-sm font-semibold text-fg">{t("hostel.messTitle", { date: isoToDisplayDate(today) })}</h3>
@@ -61,7 +62,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
                       </Link>
                     ))}
                   </p>
-                  <form action={messAttendanceAction} className="space-y-2">
+                  <ActionForm action={messAttendanceAction} className="space-y-2">
                     <input type="hidden" name="back" value={`/hostel/menu?meal=${meal}`} />
                     <input type="hidden" name="hostelId" value={h.hostelId} />
                     <input type="hidden" name="dateKey" value={today} />
@@ -82,7 +83,7 @@ export default async function HostelMenuPage({ searchParams }: { searchParams: P
                         {t("hostel.saveMess")}
                       </Button>
                     ) : null}
-                  </form>
+                  </ActionForm>
                 </div>
               ) : null}
             </CardBody>

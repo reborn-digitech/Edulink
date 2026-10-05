@@ -30,6 +30,8 @@ const TABS = [
   ["fines", "/library/fines", "library.tabFines"],
   ["stocktake", "/library/stocktake", "library.tabStockTake"],
   ["reports", "/library/reports", "library.tabReports"],
+  // The reading-room register (risks batch 5A, 5 Oct 2026).
+  ["readingRoom", "/library/reading-room", "readingRoom.tab"],
 ] as const;
 
 export function DeskFrame({ t, on, current, title, description, ok, error, children, back }: { t: Translate; on: boolean; current: (typeof TABS)[number][0] | null; title: string; description?: string; ok?: string; error?: string; children: ReactNode; back?: { href: string; label: string } }) {

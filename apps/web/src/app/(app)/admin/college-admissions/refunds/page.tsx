@@ -15,6 +15,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { Flash, Hidden, NotCollege, day, money } from "@/components/college-office/parts";
 import { decideRefundExceptionAction } from "./actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -67,12 +68,12 @@ export default async function RefundExceptionsPage({ searchParams }: { searchPar
                   <p className="text-fg">{r.reason}</p>
                   {r.note ? <p className="text-fg-muted">{r.note}</p> : null}
                   {list.canDecide && r.status === "ASKED" ? (
-                    <form action={decideRefundExceptionAction} className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={decideRefundExceptionAction} className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ back, applicationId: r.applicationId }} />
                       <TextField name="note" maxLength={600} label={t("collegeDesks.decisionNote")} />
                       <Button type="submit" size="sm" name="decision" value="APPROVE">{t("collegeDesks.approve")}</Button>
                       <Button type="submit" size="sm" variant="secondary" name="decision" value="REFUSE">{t("collegeDesks.refuse")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </li>
               ))}

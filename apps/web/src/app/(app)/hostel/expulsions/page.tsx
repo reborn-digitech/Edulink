@@ -11,6 +11,7 @@ import { DateField, SelectField, TextAreaField, TextField } from "@/components/u
 import { EmptyState } from "@/components/ui/states";
 import { WardenFrame, wardenContext, when } from "@/components/hostel/parts";
 import { decideExpulsionAction, proposeExpulsionAction, withdrawExpulsionAction } from "./actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -43,7 +44,7 @@ export default async function HostelExpulsionsPage({ searchParams }: { searchPar
         <Card>
           <CardHeader title={t("collegeDesks.expulsionPropose")} />
           <CardBody>
-            <form action={proposeExpulsionAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={proposeExpulsionAction} className="grid gap-3 sm:grid-cols-2">
               <SelectField name="allotmentId" required label={t("collegeDesks.expulsionBoarder")}>
                 {boarders.items.map((b) => (
                   <option key={b.allotmentId} value={b.allotmentId}>
@@ -62,7 +63,7 @@ export default async function HostelExpulsionsPage({ searchParams }: { searchPar
               <DateField name="effectiveOn" required label={t("collegeDesks.expulsionEffective")} defaultValue={todayKey(timeZone)} />
               <TextAreaField name="reason" required minLength={10} maxLength={1000} label={t("collegeDesks.expulsionReason")} className="sm:col-span-2" />
               <Button type="submit" className="sm:col-span-2 sm:justify-self-start">{t("collegeDesks.expulsionSend")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -82,18 +83,18 @@ export default async function HostelExpulsionsPage({ searchParams }: { searchPar
                   <p className="text-fg">{x.reason}</p>
                   {x.decisionNote ? <p className="text-fg-muted">{x.decisionNote}</p> : null}
                   {x.status === "ASKED" && list.canDecide ? (
-                    <form action={decideExpulsionAction} className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={decideExpulsionAction} className="flex flex-wrap items-end gap-2">
                       <input type="hidden" name="expulsionId" value={x.id} />
                       <TextField name="note" maxLength={600} label={t("collegeDesks.decisionNote")} />
                       <Button type="submit" size="sm" variant="danger" name="decision" value="APPROVE">{t("collegeDesks.approve")}</Button>
                       <Button type="submit" size="sm" variant="secondary" name="decision" value="REFUSE">{t("collegeDesks.refuse")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                   {x.status === "ASKED" && list.canPropose ? (
-                    <form action={withdrawExpulsionAction}>
+                    <ActionForm action={withdrawExpulsionAction}>
                       <input type="hidden" name="expulsionId" value={x.id} />
                       <Button type="submit" size="sm" variant="ghost">{t("collegeDesks.expulsionWithdraw")}</Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </li>
               ))}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CaretDownIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarksView } from "@/lib/iqac-benchmarks";
+import { BenchmarkListCard } from "@/components/iqac/benchmark-status";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { listCycles, predictorFor } from "@/lib/iqac";
@@ -19,6 +21,7 @@ import { NaacInsightsSection } from "@/components/iqac/insights";
 import { OpenHashTarget } from "@/components/ui/open-hash-target";
 import { naacInsights } from "@/lib/iqac-insights";
 import { closeCycleAction, recomputeAction, saveInputsAction, scoreMetricAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -60,7 +63,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       </div>
     );
   }
-  const [p, insights] = await Promise.all([predictorFor(ctx, cycleId), naacInsights(ctx, { cycleId })]);
+  const [p, insights, benchmarks] = await Promise.all([predictorFor(ctx, cycleId), naacInsights(ctx, { cycleId }), benchmarksView(ctx)]);
   const back = `/iqac/predictor?cycle=${cycleId}`;
   // Records the coordinator may cite as evidence: the registers' latest rows.
   const [research, activities, meetings] = p.canEdit
@@ -76,7 +79,9 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       <PageHeader title={t("iqac.predictorTitle")} description={t("iqac.predictorIntro")} />
       <DeskNav t={t} here="/iqac/predictor" />
       <IqacFlash ok={ok} error={error} />
-      <NotAScore t={t} />
+      <NotAScore t={t} benchmarks={benchmarks} />
+      {/* The list the figures are measured against, and the IQAC coordinator's signature (G4-15). */}
+      <BenchmarkListCard t={t} view={benchmarks} back={back} />
       <Card>
         <CardHeader
           title={tt("iqac.framework." + p.cycle.framework)}
@@ -84,20 +89,20 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
           action={
             p.canEdit ? (
               <div className="flex flex-wrap gap-2">
-                <form action={recomputeAction}>
+                <ActionForm action={recomputeAction}>
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="cycleId" value={cycleId} />
                   <Button type="submit" size="sm">
                     {t("iqac.recompute")}
                   </Button>
-                </form>
-                <form action={closeCycleAction}>
+                </ActionForm>
+                <ActionForm action={closeCycleAction}>
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="cycleId" value={cycleId} />
                   <Button type="submit" size="sm" variant="ghost">
                     {t("iqac.closeCycle")}
                   </Button>
-                </form>
+                </ActionForm>
               </div>
             ) : undefined
           }
@@ -181,7 +186,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
                         {m.note ? <p className="mt-2 whitespace-pre-line">{m.note}</p> : null}
                       </div>
                       {p.canEdit && m.kind === "QL" ? (
-                        <form action={scoreMetricAction} className="grid gap-3 border-t border-border pt-3 sm:grid-cols-2">
+                        <ActionForm action={scoreMetricAction} className="grid gap-3 border-t border-border pt-3 sm:grid-cols-2">
                           <input type="hidden" name="back" value={back} />
                           <input type="hidden" name="cycleId" value={cycleId} />
                           <input type="hidden" name="metricCode" value={m.code} />
@@ -205,7 +210,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
                           <div className="sm:col-span-2">
                             <Button type="submit">{t("iqac.scoreButton")}</Button>
                           </div>
-                        </form>
+                        </ActionForm>
                       ) : null}
                     </div>
                   </details>
@@ -220,7 +225,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       <Card>
         <CardHeader id="entered" title={t("iqac.enteredTitle")} description={t("iqac.enteredIntro")} />
         <CardBody>
-          <form action={saveInputsAction} className="grid gap-3 sm:grid-cols-2">
+          <ActionForm action={saveInputsAction} className="grid gap-3 sm:grid-cols-2">
             <input type="hidden" name="back" value={back} />
             <input type="hidden" name="cycleId" value={cycleId} />
             <fieldset disabled={!p.canEdit} className="contents">
@@ -234,7 +239,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
                 </div>
               ) : null}
             </fieldset>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
     </div>

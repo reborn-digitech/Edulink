@@ -7,6 +7,8 @@ import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { hostelTable, listSquadRounds } from "@/lib/college-campus";
 import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
+import { liveAllotmentWhere } from "@/lib/hostel";
+import { safeTimeZone, todayKey } from "@/lib/dates";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,6 +17,7 @@ import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { Flash, Hidden, NotCollege, Table } from "@/components/college-office/parts";
 import { roomChangeAction, squadRoundAction } from "../../accounts/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -33,11 +36,14 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
   const sp = await searchParams;
   if (!isCollegeKind(kind ?? "SCHOOL")) return <NotCollege t={t} />;
   if (!(await isModuleOn(ctx.schoolId, "HOSTEL"))) return <ModuleOff page module="HOSTEL" t={t} college />;
+  // The boarders on the room-change picker are the live ones: an approved expulsion's place ends on its day (liveAllotmentWhere).
+  const school = await db.school.findUnique({ where: { id: ctx.schoolId }, select: { timezone: true } });
+  const today = todayKey(safeTimeZone(school?.timezone));
   const [rounds, ht, hostels, boarders, rooms] = await Promise.all([
     listSquadRounds(ctx),
     hostelTable(ctx.schoolId),
     db.hostel.findMany({ where: { schoolId: ctx.schoolId }, orderBy: { name: "asc" }, select: { id: true, name: true } }),
-    db.hostelAllotment.findMany({ where: { schoolId: ctx.schoolId, status: "ACTIVE" }, select: { id: true, bed: true, room: { select: { number: true } }, student: { select: { user: { select: { name: true } } } } }, take: 500 }),
+    db.hostelAllotment.findMany({ where: { schoolId: ctx.schoolId, ...liveAllotmentWhere(today) }, select: { id: true, bed: true, room: { select: { number: true } }, student: { select: { user: { select: { name: true } } } } }, take: 500 }),
     db.hostelRoom.findMany({ where: { schoolId: ctx.schoolId }, orderBy: [{ hostelId: "asc" }, { number: "asc" }], select: { id: true, number: true, beds: true, hostel: { select: { name: true } } } }),
   ]);
   const write = ctx.role !== "PRINCIPAL";
@@ -73,7 +79,7 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
             </Table>
           )}
           {write ? (
-            <form action={squadRoundAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={squadRoundAction} className="grid gap-3 sm:grid-cols-2">
               <Hidden fields={{ back }} />
               <SelectField name="hostelId" required label={t("collegeOffice.colHostel")}>
                 {hostels.map((h) => (
@@ -89,7 +95,7 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
               <div className="sm:col-span-2">
                 <Button type="submit">{t("collegeOffice.logRound")}</Button>
               </div>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -97,7 +103,7 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
         <Card>
           <CardHeader title={t("collegeOffice.roomChangeTitle")} />
           <CardBody>
-            <form action={roomChangeAction} className="grid gap-3 sm:grid-cols-4">
+            <ActionForm action={roomChangeAction} className="grid gap-3 sm:grid-cols-4">
               <Hidden fields={{ back }} />
               <SelectField name="allotmentId" required label={t("collegeOffice.boarder")}>
                 {boarders.map((b) => (
@@ -117,7 +123,7 @@ export default async function HostelSquadPage({ searchParams }: { searchParams: 
               <div className="flex items-end">
                 <Button type="submit" variant="secondary">{t("collegeOffice.move")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

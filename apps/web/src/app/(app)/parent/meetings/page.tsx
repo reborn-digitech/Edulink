@@ -12,6 +12,7 @@ import { getT } from "@/lib/i18n/server";
 import { bookSlotAction, cancelBookingAction } from "./actions";
 import { PageHeader } from "@/components/ui/page-header";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -89,12 +90,12 @@ export default async function ParentMeetingsPage({
                       {booking.location ? ` · ${booking.location}` : ""}
                     </p>
                   </div>
-                  <form action={cancelBookingAction}>
+                  <ActionForm action={cancelBookingAction}>
                     <input type="hidden" name="bookingId" value={booking.bookingId} />
                     <Button type="submit" size="sm" variant="ghost">
                       {t("common.cancel")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 </li>
               ))}
             </ul>
@@ -121,7 +122,7 @@ export default async function ParentMeetingsPage({
             <ul className="divide-y divide-border">
               {open.map((slot) => (
                 <li key={slot.id} className="px-5 py-3">
-                  <form action={bookSlotAction} className="flex flex-wrap items-center justify-between gap-3">
+                  <ActionForm action={bookSlotAction} className="flex flex-wrap items-center justify-between gap-3">
                     <input type="hidden" name="slotId" value={slot.id} />
                     <div className="min-w-0">
                       <p className="text-sm font-medium text-fg">
@@ -159,7 +160,7 @@ export default async function ParentMeetingsPage({
                         {t("meetings.book")}
                       </Button>
                     </div>
-                  </form>
+                  </ActionForm>
                 </li>
               ))}
             </ul>

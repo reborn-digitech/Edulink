@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { NaacFrameworkCode, ScenarioCompare } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarkStatus } from "@/lib/iqac-benchmarks";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { listCycles } from "@/lib/iqac";
@@ -102,7 +103,7 @@ export default async function SimulatorPage({ searchParams }: { searchParams: Pr
     <div className="space-y-5" id="top">
       {header}
       {refusal ? <IqacFlash error={refusal} /> : null}
-      <NotAScore t={t} />
+      <NotAScore t={t} benchmarks={await benchmarkStatus(ctx.schoolId)} />
       {cycles.items.length > 1 ? (
         <Card>
           <CardBody className="pt-5">

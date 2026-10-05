@@ -16,6 +16,7 @@ import { ModuleOff } from "@/components/module-off";
 import { EmptyState } from "@/components/ui/states";
 import { Flash, GIFT_KIND_KEY, LINK } from "@/components/placement/parts";
 import { closeMentorBookingAction, companyLinkAction, meetAction, mentorSlotAction, referralAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,25 +74,25 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
                 <span>{b.title} · {b.studentName} · <span className="text-fg-muted">{b.purpose}</span></span>
                 {b.canClose ? (
                   <div className="flex gap-2">
-                    <form action={closeMentorBookingAction}>
+                    <ActionForm action={closeMentorBookingAction}>
                       <input type="hidden" name="back" value={BACK} />
                       <input type="hidden" name="bookingId" value={b.id} />
                       <input type="hidden" name="outcome" value="DELIVERED" />
                       <Button type="submit" size="sm">{t("placement.markHeld")}</Button>
-                    </form>
-                    <form action={closeMentorBookingAction}>
+                    </ActionForm>
+                    <ActionForm action={closeMentorBookingAction}>
                       <input type="hidden" name="back" value={BACK} />
                       <input type="hidden" name="bookingId" value={b.id} />
                       <input type="hidden" name="outcome" value="MISSED" />
                       <Button type="submit" size="sm" variant="secondary">{t("placement.markMissed")}</Button>
-                    </form>
+                    </ActionForm>
                   </div>
                 ) : (
                   <Badge>{b.status}</Badge>
                 )}
               </div>
             ))}
-            <form action={mentorSlotAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-4 sm:items-end">
+            <ActionForm action={mentorSlotAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-4 sm:items-end">
               <input type="hidden" name="back" value={BACK} />
               <TextField label={t("placement.fieldSlotTitle")} name="title" required maxLength={160} hint={t("placement.fieldSlotTitleHint")} />
               <TextField label={t("placement.fieldStartsAt")} name="startsAt" type="datetime-local" required />
@@ -100,7 +101,7 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
               </SelectField>
               <TextField label={t("placement.fieldMeetingUrl")} name="meetingUrl" type="url" required maxLength={500} />
               <Button type="submit" className="sm:col-span-4 sm:justify-self-start">{t("placement.offerSlot")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         ) : null}
       </Card>
@@ -109,7 +110,7 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
           <CardHeader icon={<HandshakeIcon weight="duotone" className="size-5" />} title={t("placement.referTitle")} description={t("placement.referIntro")} />
           <CardBody className="space-y-4 text-sm">
             {c.referrals.map((r) => <div key={r.id}>{r.driveTitle ?? r.companyName} · <span className="text-fg-muted">{r.note}</span></div>)}
-            <form action={referralAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
+            <ActionForm action={referralAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={BACK} />
               <SelectField label={t("placement.fieldReferDrive")} name="driveId" defaultValue="">
                 <option value="">{t("placement.referNoDrive")}</option>
@@ -118,13 +119,13 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
               <TextField label={t("placement.fieldReferCompany")} name="companyName" maxLength={160} />
               <TextField label={t("placement.fieldReferNote")} name="note" required maxLength={1000} />
               <Button type="submit" className="sm:col-span-3 sm:justify-self-start">{t("placement.sendReferral")}</Button>
-            </form>
-            <form action={companyLinkAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3 sm:items-end">
+            </ActionForm>
+            <ActionForm action={companyLinkAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={BACK} />
               <TextField label={t("placement.fieldMyCompanyId")} name="identifier" maxLength={30} hint={t("placement.fieldMyCompanyHint")} />
               <TextField label={t("placement.fieldMyRole")} name="role" maxLength={120} />
               <Button type="submit" variant="secondary" className="sm:justify-self-start">{t("placement.saveMyCompany")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -138,12 +139,12 @@ export default async function AlumniCollegePage({ searchParams }: { searchParams
                 <div className="font-medium">{m.title}</div>
                 <div className="text-xs text-fg-muted">{m.on}{m.venue ? ` · ${m.venue}` : ""} · {t("placement.goingN", { count: m.registered })}</div>
               </div>
-              <form action={meetAction}>
+              <ActionForm action={meetAction}>
                 <input type="hidden" name="back" value={BACK} />
                 <input type="hidden" name="meetId" value={m.id} />
                 <input type="hidden" name="going" value={m.mine ? "0" : "1"} />
                 <Button type="submit" size="sm" variant={m.mine ? "secondary" : "primary"}>{m.mine ? t("placement.notGoing") : t("placement.going")}</Button>
-              </form>
+              </ActionForm>
             </div>
           ))}
         </CardBody>

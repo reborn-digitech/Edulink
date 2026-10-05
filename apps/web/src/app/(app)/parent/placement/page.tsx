@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Flash, INTERNSHIP_STATUS_KEY, offerLine } from "@/components/placement/parts";
 import { guardianConsentAction } from "@/app/(app)/placement/actions";
 import { ChildSwitcher } from "../child-switcher";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,13 +51,13 @@ export default async function ParentPlacementPage({ searchParams }: { searchPara
               <CardHeader title={t("placement.awaitingConsentTitle")} />
               <CardBody className="space-y-3 text-sm">
                 {view.awaitingConsent.map((w) => (
-                  <form key={w.applicationId} action={guardianConsentAction} className="flex flex-wrap items-center justify-between gap-2">
+                  <ActionForm key={w.applicationId} action={guardianConsentAction} className="flex flex-wrap items-center justify-between gap-2">
                     <input type="hidden" name="back" value={`/parent/placement?child=${selected.studentMembershipId}`} />
                     <input type="hidden" name="childId" value={selected.studentMembershipId} />
                     <input type="hidden" name="applicationId" value={w.applicationId} />
                     <span>{t("placement.awaitingConsentLine", { drive: w.driveTitle, company: w.companyName })}</span>
                     <Button type="submit" size="sm">{t("placement.giveConsent")}</Button>
-                  </form>
+                  </ActionForm>
                 ))}
               </CardBody>
             </Card>

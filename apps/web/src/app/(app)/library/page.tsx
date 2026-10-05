@@ -9,6 +9,7 @@ import { DeskFrame, deskContext } from "@/components/library/desk";
 import { COPY_STATUS_KEY, day, money } from "@/components/library/parts";
 import { issueAction, returnAction } from "./actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -89,14 +90,14 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
                 </p>
               </div>
               {canWrite && found.copy.status === "ISSUED" ? (
-                <form action={returnAction}>
+                <ActionForm action={returnAction}>
                   <input type="hidden" name="accession" value={found.copy.accession} />
                   <input type="hidden" name="back" value="/library" />
                   <Button type="submit">
                     <ArrowUUpLeftIcon weight="bold" className="size-4" aria-hidden />
                     {t("library.takeBack")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
               {canWrite && found.copy.status === "AVAILABLE" ? (
                 <div className="space-y-3">
@@ -123,14 +124,14 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
                                 {[p.className, p.cardNumber, t("library.holding", { count: p.onLoan, limit: p.limit }), p.owedPaise ? t("library.owes", { amount: money(p.owedPaise, locale) }) : null].filter(Boolean).join(" · ")}
                               </p>
                             </div>
-                            <form action={issueAction}>
+                            <ActionForm action={issueAction}>
                               <input type="hidden" name="accession" value={found.copy!.accession} />
                               <input type="hidden" name="membershipId" value={p.membershipId} />
                               <input type="hidden" name="back" value="/library" />
                               <Button type="submit" size="sm" disabled={p.onLoan >= p.limit}>
                                 {t("library.lend")}
                               </Button>
-                            </form>
+                            </ActionForm>
                           </li>
                         ))}
                       </ul>
@@ -147,7 +148,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
         <Card>
           <CardHeader icon={<ArrowUUpLeftIcon weight="duotone" className="size-5" />} title={t("library.quickReturn")} description={t("library.quickReturnHint")} />
           <CardBody>
-            <form action={returnAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={returnAction} className="flex flex-wrap items-end gap-2">
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-56 text-sm font-medium text-fg">
                 {t("library.accession")}
@@ -156,7 +157,7 @@ export default async function LibraryDeskPage({ searchParams }: { searchParams: 
               <Button type="submit" variant="secondary">
                 {t("library.takeBack")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

@@ -10,6 +10,7 @@ import { DeskFrame, deskContext } from "@/components/library/desk";
 import { FineList, LoanList, ReservationList, money } from "@/components/library/parts";
 import { raiseFineAction } from "../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -39,7 +40,7 @@ export default async function LibraryMemberPage({ params, searchParams }: { para
         <Card>
           <CardHeader icon={<WarningOctagonIcon weight="duotone" className="size-5" />} title={t("library.raiseFine")} description={t("library.raiseFineHint")} />
           <CardBody>
-            <form action={raiseFineAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={raiseFineAction} className="flex flex-wrap items-end gap-2">
               <input type="hidden" name="back" value={back} />
               <label className="min-w-0 flex-1 basis-48 text-sm font-medium text-fg">
                 {t("library.whichBook")}
@@ -65,7 +66,7 @@ export default async function LibraryMemberPage({ params, searchParams }: { para
               <Button type="submit" variant="danger">
                 {t("library.raiseFineButton")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

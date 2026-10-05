@@ -13,6 +13,7 @@ import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, day, keyed } from "@/components/iqac/parts";
 import { atrAction, surveyLinkAction, transcribeAction } from "../../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -91,14 +92,14 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
         <CardHeader title={t("iqac.atrTitle")} description={r.atr?.publishedAt ? t("iqac.atrPublishedOn", { date: day(r.atr.publishedAt.slice(0, 10), locale) }) : undefined} />
         <CardBody>
           {desk ? (
-            <form action={atrAction} className="space-y-3">
+            <ActionForm action={atrAction} className="space-y-3">
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="surveyId" value={surveyId} />
               <TextAreaField name="text" required minLength={10} label={t("iqac.atrField")} defaultValue={r.atr?.text ?? ""} />
               <TextField name="file" type="file" label={t("iqac.fileField")} accept="application/pdf,image/*" />
               <CheckboxField name="publish" label={t("iqac.atrPublish")} defaultChecked={!!r.atr?.publishedAt} />
               <Button type="submit">{t("iqac.atrSave")}</Button>
-            </form>
+            </ActionForm>
           ) : (
             <p className="text-sm">{r.atr ? r.atr.text : t("iqac.noneYet")}</p>
           )}
@@ -107,11 +108,11 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
       {desk && (r.survey.kind === "EMPLOYER" || r.survey.kind === "PARENT") && r.survey.status === "OPEN" ? (
         <Card>
           <CardBody className="pt-5">
-            <form action={surveyLinkAction}>
+            <ActionForm action={surveyLinkAction}>
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="surveyId" value={surveyId} />
               <Button type="submit" variant="secondary">{t("iqac.linkMake")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -119,7 +120,7 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
         <Card>
           <CardHeader title={t("iqac.transcribeTitle")} />
           <CardBody>
-            <form action={transcribeAction} className="space-y-3">
+            <ActionForm action={transcribeAction} className="space-y-3">
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="surveyId" value={surveyId} />
               <TextField name="source" required minLength={2} label={t("iqac.transcribeSource")} />
@@ -137,7 +138,7 @@ export default async function SurveyResultsPage({ params, searchParams }: { para
                 </fieldset>
               ))}
               <Button type="submit">{t("iqac.transcribeButton")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

@@ -14,6 +14,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, SurveyForms, day, keyed } from "@/components/iqac/parts";
 import { escalateGrievanceAction, fileGrievanceAction } from "../../iqac/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -62,7 +63,7 @@ export default async function StudentVoicePage({ searchParams }: { searchParams:
         <CardBody className="space-y-3">
           <p className="text-sm text-fg-muted">{t("iqac.raggingNote")}</p>
           <p className="text-sm text-fg-muted">{t("iqac.harassmentNote")}</p>
-          <form action={fileGrievanceAction} className="space-y-3">
+          <ActionForm action={fileGrievanceAction} className="space-y-3">
             <input type="hidden" name="back" value={back} />
             <SelectField name="kind" label={t("iqac.grievanceKindField")} defaultValue="ACADEMIC">
               {GRIEVANCE_KINDS.map((k) => (
@@ -75,7 +76,7 @@ export default async function StudentVoicePage({ searchParams }: { searchParams:
             <TextField name="file" type="file" label={t("iqac.fileField")} accept="application/pdf,image/*" />
             <CheckboxField name="anonymousToStaff" label={t("iqac.anonymousToStaff")} />
             <Button type="submit">{t("iqac.fileButton")}</Button>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
       <section className="space-y-3">
@@ -99,14 +100,14 @@ export default async function StudentVoicePage({ searchParams }: { searchParams:
                 <p className="whitespace-pre-line">{g.text}</p>
                 {g.response ? <p>{t("iqac.responseLine", { text: g.response })}</p> : null}
                 {g.status !== "ESCALATED" && (g.overdue || g.status === "RESOLVED") ? (
-                  <form action={escalateGrievanceAction} className="space-y-2">
+                  <ActionForm action={escalateGrievanceAction} className="space-y-2">
                     <input type="hidden" name="back" value={back} />
                     <input type="hidden" name="grievanceId" value={g.id} />
                     <TextAreaField name="note" required minLength={2} label={t("iqac.escalateNoteField")} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("iqac.escalateButton")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </CardBody>
             </Card>

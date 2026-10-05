@@ -71,6 +71,8 @@ export async function login(input: unknown): Promise<LoginState> {
     if (signIn.reason === "rate") {
       return { ok: false, errors: { _form: t("login.tooManyAttempts", { when: hint(t, signIn.retryAfterSeconds) }) } };
     }
+    // The operator closed this outside account (G4-28): said in a sentence, not as "no match".
+    if (signIn.reason === "closed") return { ok: false, errors: { _form: t(signIn.kind === "RECRUITER" ? "riskDecisions.signInClosedRecruiter" : "riskDecisions.signInClosedExpert") } };
     return { ok: false, errors: { _form: t("login.noMatch") } };
   }
   const user = { id: signIn.userId, lastRole: signIn.lastRole, lastSchoolId: signIn.lastSchoolId };

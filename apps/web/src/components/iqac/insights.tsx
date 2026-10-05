@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { InfoIcon, LightbulbIcon } from "@phosphor-icons/react/ssr";
-import type { InsightCta, NaacInsights, NbaInsights, NirfInsights } from "@edulink/contracts";
+import type { BenchmarkStatus, InsightCta, NaacInsights, NbaInsights, NirfInsights } from "@edulink/contracts";
+import { BenchmarkLabel } from "./benchmark-status";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { recomputeAction } from "@/app/(app)/iqac/actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * "Actionable insights" (module IQAC, 5 Oct 2026), drawn on every
@@ -20,12 +22,16 @@ import { TableScroll } from "@/components/ui/table-scroll";
 
 type Who = string | null | undefined;
 
-export function InsightsNotAScore({ t }: { t: Translate }) {
+export function InsightsNotAScore({ t, benchmarks }: { t: Translate; benchmarks?: BenchmarkStatus | null }) {
   return (
-    <p className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="insights-not-a-score">
+    <div className="flex items-start gap-2 rounded-[var(--radius-md)] border border-border bg-surface-muted px-3 py-2 text-sm text-fg-muted" data-testid="insights-not-a-score">
       <InfoIcon weight="duotone" className="mt-0.5 size-4 shrink-0" aria-hidden />
-      {t("insights.notAScore")}
-    </p>
+      <div className="min-w-0">
+        <p>{t("insights.notAScore")}</p>
+        {/* G4-15: a NAAC or NIRF figure is "provisional" until the coordinator signs the benchmark list. */}
+        <BenchmarkLabel t={t} status={benchmarks} />
+      </div>
+    </div>
   );
 }
 
@@ -99,13 +105,13 @@ function LastDone({ t, rows, locale, sinceKey, recompute }: { t: Translate; rows
         </ul>
       )}
       {recompute && rows.some((r) => r.sinceCompute) ? (
-        <form action={recomputeAction}>
+        <ActionForm action={recomputeAction}>
           <input type="hidden" name="back" value={recompute.back} />
           <input type="hidden" name="cycleId" value={recompute.cycleId} />
           <Button type="submit" size="sm">
             {t("iqac.recompute")}
           </Button>
-        </form>
+        </ActionForm>
       ) : null}
     </section>
   );
@@ -157,7 +163,7 @@ export function NaacInsightsSection({ t, insights, role, locale, back, limit = 8
           </section>
         ) : null}
         <LastDone t={t} rows={insights.lastDone} locale={locale} sinceKey="insights.doneSince" recompute={canRecompute ? { cycleId: insights.cycle.id, back } : null} />
-        <InsightsNotAScore t={t} />
+        <InsightsNotAScore t={t} benchmarks={insights.benchmarks} />
       </CardBody>
     </Card>
   );
@@ -187,7 +193,7 @@ export function InsightsSummaryCard({ t, insights, role }: { t: Translate; insig
         <Button asChild size="sm" variant="secondary">
           <Link href="/iqac/simulator">{t("insights.openSimulator")}</Link>
         </Button>
-        <InsightsNotAScore t={t} />
+        <InsightsNotAScore t={t} benchmarks={insights.benchmarks} />
       </CardBody>
     </Card>
   );
@@ -253,7 +259,7 @@ export function NirfInsightsSection({ t, insights, role }: { t: Translate; insig
           </table>
         </TableScroll>
         <StepList t={t} rows={insights.ranked} role={role} limit={6} />
-        <InsightsNotAScore t={t} />
+        <InsightsNotAScore t={t} benchmarks={insights.benchmarks} />
       </CardBody>
     </Card>
   );

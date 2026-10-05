@@ -14,6 +14,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, keyed } from "@/components/iqac/parts";
 import { saveFacultyRecordAction } from "../../iqac/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +57,7 @@ export default async function FacultyRecordsPage({ searchParams }: { searchParam
           />
           {r.canEdit ? (
             <CardBody>
-              <form action={saveFacultyRecordAction} className="grid gap-3 sm:grid-cols-3">
+              <ActionForm action={saveFacultyRecordAction} className="grid gap-3 sm:grid-cols-3">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="membershipId" value={p.membershipId} />
                 <SelectField name="designation" label={t("iqac.designationField")} defaultValue={p.designation ?? "ASSISTANT_PROFESSOR"}>
@@ -93,7 +94,7 @@ export default async function FacultyRecordsPage({ searchParams }: { searchParam
                     {t("iqac.saveRecord")}
                   </Button>
                 </div>
-              </form>
+              </ActionForm>
             </CardBody>
           ) : null}
         </Card>

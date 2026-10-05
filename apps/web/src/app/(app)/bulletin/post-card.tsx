@@ -175,12 +175,13 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
         </h2>
 
         {/* The category, linking to its filtered feed — a chip, not prose,
-            because it is the axis the feed filters on. */}
+            because it is the axis the feed filters on. The link is 44 px tall
+            around the small pill (A3-states-11). */}
         <Link
           href={`/bulletin?category=${post.category}`}
-          className="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+          className="inline-flex min-h-11 items-center hover:underline"
         >
-          {t(CATEGORY_KEYS[post.category].name)}
+          <span className="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong">{t(CATEGORY_KEYS[post.category].name)}</span>
         </Link>
 
         {post.body && (

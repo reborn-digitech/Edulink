@@ -15,6 +15,8 @@ import {
 import { formatPaise } from "@edulink/i18n";
 import { isCollegeKind } from "@edulink/contracts";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarkStatus } from "@/lib/iqac-benchmarks";
+import { BenchmarkLabel } from "@/components/iqac/benchmark-status";
 import { institutionKindOf } from "@/lib/modules";
 import { principalCollege, type ApprovalLine } from "@/lib/college-principal";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -139,6 +141,12 @@ export default async function PrincipalCollegePage() {
           ) : null}
           {g.nirf ? <StatTile icon={<GaugeIcon weight="duotone" className="size-5" />} label={t("collegeHub.nirf")} value={g.nirf.partial.toFixed(2)} hint={t("collegeHub.nirfHint", { covered: g.nirf.coveredMarks })} /> : null}
         </div>
+        {/* G4-15: the predicted grade and the NIRF figure are provisional until the IQAC coordinator signs the benchmark list. */}
+        {g.predictor?.cycle || g.nirf ? (
+          <div className="text-sm text-fg-muted">
+            <BenchmarkLabel t={t} status={await benchmarkStatus(ctx.schoolId)} />
+          </div>
+        ) : null}
         <Card>
           <CardHeader title={t("collegeHub.lecturesTitle")} description={t("collegeHub.lecturesBody")} />
           <CardBody>

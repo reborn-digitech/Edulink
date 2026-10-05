@@ -21,10 +21,10 @@ const LONG = 110;
 
 export { PAGE_TITLE };
 
-/** PageHeader's way back to the parent, for the pages that keep their own hero (see page-title.ts). */
+/** PageHeader's way back to the parent, for the pages that keep their own hero (see page-title.ts). 44 px tall, the kit's floor (A3-states-11). */
 export function BackLink({ href, label, className }: { href: string; label: string; className?: string }) {
   return (
-    <Link href={href} className={cn("inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg", className)}>
+    <Link href={href} className={cn("inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg", className)}>
       <ArrowLeftIcon weight="bold" className="size-4" />
       {label}
     </Link>

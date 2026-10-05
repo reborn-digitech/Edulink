@@ -12,6 +12,7 @@ import { TextField } from "@/components/ui/field";
 import { CellFrame, LINK, ROUND_KIND_KEY, SECTOR_KEY, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
 import { acceptRequirementAction, addCompanyAction, verifyCompanyAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,13 +57,13 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
                   {t("placement.openTheDrive")}
                 </Link>
               ) : canWrite ? (
-                <form action={acceptRequirementAction}>
+                <ActionForm action={acceptRequirementAction}>
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="requirementId" value={r.id} />
                   <Button type="submit" size="sm" disabled={!r.companyVerified}>
                     {t("placement.acceptRequirement")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
             </div>
           ))}
@@ -100,13 +101,13 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
                       {c.verifiedAt ? (
                         <Badge tone="ok">{t("placement.verified")}</Badge>
                       ) : canWrite ? (
-                        <form action={verifyCompanyAction}>
+                        <ActionForm action={verifyCompanyAction}>
                           <input type="hidden" name="back" value={back} />
                           <input type="hidden" name="companyId" value={c.id} />
                           <Button type="submit" size="sm" variant="secondary">
                             {t("placement.verify")}
                           </Button>
-                        </form>
+                        </ActionForm>
                       ) : (
                         <Badge tone="warn">{t("placement.unverified")}</Badge>
                       )}
@@ -122,7 +123,7 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
         <Card>
           <CardHeader icon={<PlusIcon weight="bold" className="size-5" />} title={t("placement.addCompany")} description={t("placement.addCompanyIntro")} />
           <CardBody>
-            <form action={addCompanyAction} className="grid gap-4 sm:grid-cols-2">
+            <ActionForm action={addCompanyAction} className="grid gap-4 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
               <TextField label={t("placement.fieldCompanyName")} name="name" required maxLength={160} />
               <TextField label={t("placement.fieldIdentifier")} name="identifier" required maxLength={30} hint={t("placement.fieldIdentifierHint")} />
@@ -139,7 +140,7 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
               <Button type="submit" className="sm:justify-self-start">
                 {t("placement.addCompany")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

@@ -6,6 +6,8 @@ import { DRIVE_STATUSES } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { AccessError } from "@/lib/tenancy";
 import { driveEligibility, driveView } from "@/lib/placement";
+import { talkForDrive } from "@/lib/placement-talks";
+import { DriveTalkCard } from "@/components/placement/events";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
@@ -14,6 +16,7 @@ import { CellFrame, DRIVE_KIND_KEY, DRIVE_STATUS_KEY, ROUND_KIND_KEY, TABLE, TD,
 import { Applicants, JoinedForms, OfferForm, ResultsForm } from "@/components/placement/rounds";
 import { inviteAction, moveDriveAction, remindAction, saveRuleAction } from "../../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -38,11 +41,14 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
     throw e;
   });
   const here = `/placement/drives/${d.id}`;
+  // Its pre-placement talk (R-2, 5 Oct 2026), the host's own.
+  const talk = d.hosted && ["TPO", "ADMIN", "PRINCIPAL"].includes(ctx.role ?? "") ? await talkForDrive(ctx, d.id) : null;
   // A drive for a company nobody has checked goes no further than a draft (A3-journeys-12): the page says why and offers only closing.
   const next = DRIVE_STATUSES.slice(DRIVE_STATUSES.indexOf(d.status) + 1).filter((s) => d.companyVerified || s === "CLOSED");
   const liveDrive = ["OPEN", "SHORTLISTING", "ROUNDS", "OFFERS"].includes(d.status);
   return (
     <CellFrame t={t} on college={college} current="drives" title={d.title} description={[d.companyName, t(DRIVE_KIND_KEY[d.kind]!), packageRange(d.packageMinRupees, d.packageMaxRupees, t)].join(" · ")} ok={ok} error={error} back={back}>
+      <DriveTalkCard talk={talk} driveId={d.id} canWrite={d.hosted && ctx.role === "TPO" && d.status !== "CLOSED"} t={t} moment={moment} />
       <Card>
         <CardHeader icon={<InfoIcon weight="duotone" className="size-5" />} title={t("placement.aboutDrive")} action={statusBadge(d.status, t)} />
         <CardBody className="space-y-3 text-sm">
@@ -91,45 +97,45 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
           {d.canEdit ? (
             <div className="flex flex-wrap gap-2 pt-2">
               {next.slice(0, 2).map((s) => (
-                <form key={s} action={moveDriveAction}>
+                <ActionForm key={s} action={moveDriveAction}>
                   <input type="hidden" name="back" value={here} />
                   <input type="hidden" name="driveId" value={d.id} />
                   <input type="hidden" name="status" value={s} />
                   <Button type="submit" size="sm" variant={s === "CLOSED" ? "secondary" : "primary"}>
                     {t("placement.moveTo", { status: t(DRIVE_STATUS_KEY[s]!) })}
                   </Button>
-                </form>
+                </ActionForm>
               ))}
               {next.length > 2 && !next.slice(0, 2).includes("CLOSED") ? (
-                <form action={moveDriveAction}>
+                <ActionForm action={moveDriveAction}>
                   <input type="hidden" name="back" value={here} />
                   <input type="hidden" name="driveId" value={d.id} />
                   <input type="hidden" name="status" value="CLOSED" />
                   <Button type="submit" size="sm" variant="secondary">
                     {t("placement.moveTo", { status: t("placement.statusCLOSED") })}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
             </div>
           ) : null}
           {liveDrive && ctx.role === "TPO" ? (
             <div className="flex flex-wrap gap-2">
               {d.status === "OPEN" && d.companyVerified ? (
-                <form action={inviteAction}>
+                <ActionForm action={inviteAction}>
                   <input type="hidden" name="back" value={here} />
                   <input type="hidden" name="driveId" value={d.id} />
                   <Button type="submit" size="sm" variant="soft">
                     {t("placement.inviteEligible")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
-              <form action={remindAction}>
+              <ActionForm action={remindAction}>
                 <input type="hidden" name="back" value={here} />
                 <input type="hidden" name="driveId" value={d.id} />
                 <Button type="submit" size="sm" variant="ghost">
                   {t("placement.remindApplicants")}
                 </Button>
-              </form>
+              </ActionForm>
             </div>
           ) : null}
         </CardBody>
@@ -163,7 +169,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
             </table>
           </TableScroll>
           {d.canEdit && ["DRAFT", "OPEN"].includes(d.status) ? (
-            <form action={saveRuleAction} className="grid gap-3 border-t border-border p-5 sm:grid-cols-3 sm:items-end">
+            <ActionForm action={saveRuleAction} className="grid gap-3 border-t border-border p-5 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={here} />
               <input type="hidden" name="driveId" value={d.id} />
               {d.rule.programmeIds.map((id) => <input key={id} type="hidden" name="programmeIds" value={id} />)}
@@ -177,7 +183,7 @@ export default async function DrivePage({ params, searchParams }: { params: Prom
               <Button type="submit" size="sm" variant="secondary" className="sm:justify-self-start">
                 {t("placement.saveRule")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>

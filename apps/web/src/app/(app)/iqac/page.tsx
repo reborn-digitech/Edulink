@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarBlankIcon, ChartLineUpIcon, GlobeIcon, MedalIcon, ShieldCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarkStatus } from "@/lib/iqac-benchmarks";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { iqacOverview } from "@/lib/iqac";
@@ -19,6 +20,7 @@ import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/par
 import { InsightsSummaryCard } from "@/components/iqac/insights";
 import { naacInsights } from "@/lib/iqac-insights";
 import { disclosureAction, openCycleAction, recomputeAction } from "./actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +58,7 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
       <PageHeader title={t("iqac.title")} description={t("iqac.homeIntro", { place: school?.name ?? "" })} />
       <DeskNav t={t} here="/iqac" />
       <IqacFlash ok={ok} error={error} />
-      <NotAScore t={t} />
+      <NotAScore t={t} benchmarks={await benchmarkStatus(ctx.schoolId)} />
 
       {o.cycle ? (
         <Card>
@@ -66,13 +68,13 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
             description={[tt("iqac.framework." + o.cycle.framework), " · ", day(o.cycle.windowFrom, locale), " – ", day(o.cycle.windowTo, locale)].join("")}
             action={
               canEdit && o.cycle.status === "OPEN" ? (
-                <form action={recomputeAction}>
+                <ActionForm action={recomputeAction}>
                   <input type="hidden" name="back" value="/iqac" />
                   <input type="hidden" name="cycleId" value={o.cycle.id} />
                   <Button type="submit" size="sm" variant="secondary">
                     {t("iqac.recompute")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : undefined
             }
           />
@@ -98,13 +100,13 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
               action={canEdit ? <Button asChild size="sm" variant="secondary"><a href="#open-cycle">{t("iqac.openCycle")}</a></Button> : undefined}
             />
             {canEdit ? (
-              <form id="open-cycle" action={openCycleAction} className="grid scroll-mt-20 gap-3 sm:grid-cols-3 sm:items-end">
+              <ActionForm id="open-cycle" action={openCycleAction} className="grid scroll-mt-20 gap-3 sm:grid-cols-3 sm:items-end">
 
                 <input type="hidden" name="back" value="/iqac" />
                 <DateField name="windowFrom" label={t("iqac.windowFrom")} required defaultValue={`${year - 5}-06-01`} />
                 <DateField name="windowTo" label={t("iqac.windowTo")} required defaultValue={`${year}-05-31`} />
                 <Button type="submit">{t("iqac.openCycle")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -182,21 +184,21 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
             ) : null}
             {canEdit ? (
               <>
-                <form action={disclosureAction}>
+                <ActionForm action={disclosureAction}>
                   <input type="hidden" name="back" value="/iqac" />
                   <input type="hidden" name="publish" value="1" />
                   <Button type="submit" size="sm">
                     {t("iqac.publishButton")}
                   </Button>
-                </form>
+                </ActionForm>
                 {disclosure.publishedAt ? (
-                  <form action={disclosureAction}>
+                  <ActionForm action={disclosureAction}>
                     <input type="hidden" name="back" value="/iqac" />
                     <input type="hidden" name="publish" value="0" />
                     <Button type="submit" size="sm" variant="ghost">
                       {t("iqac.unpublishButton")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </>
             ) : null}

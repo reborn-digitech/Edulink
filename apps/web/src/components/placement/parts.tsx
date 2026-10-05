@@ -90,6 +90,9 @@ const TABS = [
   ["students", "/placement/students", "placement.tabStudents"],
   ["companies", "/placement/companies", "placement.tabCompanies"],
   ["internships", "/placement/internships", "placement.tabInternships"],
+  // Pre-placement talks and soft-skills training (R-2, 5 Oct 2026).
+  ["talks", "/placement/talks", "talks.tab"],
+  ["training", "/placement/training", "softSkills.tab"],
   ["analytics", "/placement/analytics", "placement.tabAnalytics"],
 ] as const;
 

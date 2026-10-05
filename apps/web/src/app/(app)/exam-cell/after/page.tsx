@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, CellOff, DOC_KIND_KEY, Flash, Hidden, Labelled, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, day, marks, money } from "@/components/exam-cell/parts";
 import { convocationAction, decideRevaluationAction, issueDocumentAction, pushCreditsAction } from "../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -63,7 +64,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                 </p>
               ) : null}
               {w && r.status === "ASKED" ? (
-                <form action={decideRevaluationAction} className="flex flex-wrap items-end gap-2">
+                <ActionForm action={decideRevaluationAction} className="flex flex-wrap items-end gap-2">
                   <Hidden fields={{ revaluationId: r.id, back }} />
                   <Labelled label={t("examCell.outcome")}>
                     <select name="outcome" className={fieldClass()}>
@@ -85,7 +86,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                   <Button type="submit" size="sm">
                     {t("examCell.decide")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
             </div>
           ))}
@@ -120,7 +121,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
             </p>
           ))}
           {w ? (
-            <form action={issueDocumentAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={issueDocumentAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back }} />
               <Labelled label={t("examCell.student")}>
                 <select name="studentMembershipId" className={fieldClass()}>
@@ -141,7 +142,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
               <Button type="submit" size="sm">
                 {t("examCell.issue")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -155,12 +156,12 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
             </p>
           ))}
           {w && a.abcConnected ? (
-            <form action={pushCreditsAction}>
+            <ActionForm action={pushCreditsAction}>
               <Hidden fields={{ back }} />
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.pushCredits")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -175,7 +176,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
               </p>
             ))}
             {w ? (
-              <form action={convocationAction} className="flex flex-wrap items-end gap-2">
+              <ActionForm action={convocationAction} className="flex flex-wrap items-end gap-2">
                 <Hidden fields={{ back }} />
                 <Labelled label={t("examCell.year")}>
                   <input name="year" type="number" min={2000} max={2100} required className={fieldClass("w-28")} />
@@ -186,7 +187,7 @@ export default async function AfterPage({ searchParams }: { searchParams: Promis
                 <Button type="submit" size="sm">
                   {t("examCell.drawList")}
                 </Button>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>

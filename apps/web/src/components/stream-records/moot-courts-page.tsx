@@ -18,6 +18,7 @@ import { formatDateKey, todayKey } from "@/lib/dates";
 import { getLocale, getT } from "@/lib/i18n/server";
 import type { Role } from "@/lib/constants";
 import { saveMootCourtAction } from "@/app/(app)/admin/stream-records/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * MOOT COURTS (a law college's, 5 Oct 2026): every moot with its teams, how
@@ -89,7 +90,7 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
         <Card>
           <CardHeader title={t("streamRecords.moots.addTitle")} description={t("streamRecords.moots.addBody")} />
           <CardBody>
-            <form id="moot-form" action={saveMootCourtAction} className="space-y-4">
+            <ActionForm id="moot-form" action={saveMootCourtAction} className="space-y-4">
               <input type="hidden" name="back" value={base} />
               <div className="grid gap-3 sm:grid-cols-3">
                 <TextField name="name" label={t("streamRecords.moots.fieldName")} required minLength={2} maxLength={160} />
@@ -131,7 +132,7 @@ export async function MootCourtsPage({ roles, base, searchParams, back }: { role
               <TextField name="result" label={t("streamRecords.moots.fieldResult")} maxLength={400} />
               <TextAreaField name="judgeNotes" label={t("streamRecords.moots.fieldNotes")} maxLength={2000} rows={3} />
               <Button type="submit">{t("streamRecords.moots.save")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

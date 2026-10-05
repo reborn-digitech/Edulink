@@ -39,11 +39,13 @@ import { cookies } from "next/headers";
 import { PARENT_WELCOME_COOKIE } from "@/lib/parent-welcome";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
-import { ownWorkScope } from "@/lib/grading";
+import { ownWorkScope, workLabel } from "@/lib/grading";
 import { getT, getLocale } from "@/lib/i18n/server";
 import { periodLabel } from "@/lib/coded-defaults";
 import { PersonLink } from "@/components/person-link";
 import { PAGE_TITLE } from "@/components/ui/page-header";
+import { openSlipsForFamily } from "@/lib/permission-slips-family";
+import { FamilySlipsCard } from "./slips-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -141,7 +143,7 @@ export default async function ParentDashboard({
     // promises — not the five newest.
     db.grade.findMany({
       where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
-      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true } } },
+      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true, offeringId: true } } },
     }),
     db.assignment.findMany({
       where: {
@@ -154,7 +156,7 @@ export default async function ParentDashboard({
         grades: { none: { studentMembershipId: selectedId } },
         ...(await ownWorkScope(student.schoolId, selectedId)),
       },
-      select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
+      select: { id: true, title: true, dueAt: true, class: { select: { name: true } }, offering: { select: { course: { select: { code: true, name: true } } } } },
       orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
       take: 4,
     }),
@@ -185,7 +187,8 @@ export default async function ParentDashboard({
 
   // Shared helper — weights by points available, never averages percentages.
   const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId))];
+  // A college offering's work (R-48) has no class and no weights: it is points-weighted under the offering's id.
+  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
   const [weightRows, examMarks] = await Promise.all([
     db.gradeCategory.findMany({
       where: { classId: { in: classIds } },
@@ -202,7 +205,7 @@ export default async function ParentDashboard({
   }
   const overallResult = overallForStudent(
     allHomework.map((g) => ({
-      classId: g.assignment.classId,
+      classId: g.assignment.classId ?? g.assignment.offeringId ?? "",
       scoreMilli: g.scoreMilli,
       maxMilli: g.assignment.pointsMilli,
       category: g.assignment.category,
@@ -210,6 +213,9 @@ export default async function ParentDashboard({
     weightsByClass,
   );
   const averagePercent = overallResult.percent;
+
+  // The permission slips still waiting for this family's yes or no, at any of their schools (R-1).
+  const familySlips = await openSlipsForFamily(session);
 
   // Decided here, not in the browser, so the first paint does not move.
   const welcomeDismissed = (await cookies()).has(PARENT_WELCOME_COOKIE);
@@ -239,6 +245,8 @@ export default async function ParentDashboard({
 
 
       <CompleteRecordCard missing={recordMissing} href={`/parent/record?child=${selectedId}`} />
+
+      <FamilySlipsCard slips={familySlips} t={t} />
 
       {penChangeWaiting && (
         <Card className="border-warn/40" data-testid="pen-change-notice">
@@ -445,7 +453,7 @@ export default async function ParentDashboard({
                       <span className="block truncate text-sm font-medium text-fg">
                         {assignment.title}
                       </span>
-                      <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
+                      <span className="block text-xs text-fg-muted">{workLabel(assignment)}</span>
                     </span>
                     {/* A date that has passed says so: "2 months ago" under "Work due soon" read as a contradiction. */}
                     <span className={cn("shrink-0 text-xs font-medium", assignment.dueAt && isWithin(assignment.dueAt, 0) ? "text-warn" : "text-fg-muted")}>

@@ -10,6 +10,8 @@ import { getT } from "@/lib/i18n/server";
 import { institutionKindOf, isModuleOn } from "@/lib/modules";
 import { isCollegeKind } from "@/lib/institution";
 import { studentPlacement } from "@/lib/placement-student";
+import { studentTalks } from "@/lib/placement-talks";
+import { StudentEventsCard } from "@/components/placement/events";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,6 +20,7 @@ import { DateField, SelectField, TextAreaField, TextField } from "@/components/u
 import { ModuleOff } from "@/components/module-off";
 import { Flash, INTERNSHIP_KIND_KEY, INTERNSHIP_STATUS_KEY, LINK, OUTCOME_KEY, ROUND_KIND_KEY, applicationBadge, offerLine, packageRange, reasons, statusBadge } from "@/components/placement/parts";
 import { answerOfferAction, applyAction, diaryAction, internshipFileAction, proposeInternshipAction, saveProfileAction, withdrawAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -50,12 +53,14 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
       </div>
     );
   }
-  const p = await studentPlacement(ctx);
+  const [p, talks] = await Promise.all([studentPlacement(ctx), studentTalks(ctx)]);
   const r = p.record;
   return (
     <div className="space-y-5">
       <PageHeader title={t("placement.studentTitle")} description={t("placement.studentIntro", { batch: p.batchYear })} />
       <Flash ok={ok} error={error} />
+      {/* Pre-placement talks and soft-skills training (R-2, 5 Oct 2026): what is ahead, and the trainings completed. */}
+      <StudentEventsCard talksAhead={talks.talks.filter((x) => !x.started && x.status === "SCHEDULED").length} completed={p.softSkills} t={t} />
 
       <Card>
         <CardHeader
@@ -81,7 +86,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
       <Card>
         <CardHeader icon={<BriefcaseIcon weight="duotone" className="size-5" />} title={t("placement.profileTitle")} description={p.profile.consentAt ? t("placement.profileIntroSaved") : t("placement.profileIntroFirst")} />
         <CardBody>
-          <form action={saveProfileAction} className="grid gap-4 sm:grid-cols-3">
+          <ActionForm action={saveProfileAction} className="grid gap-4 sm:grid-cols-3">
             <input type="hidden" name="back" value={BACK} />
             <TextAreaField label={t("placement.fieldSkills")} name="skills" defaultValue={p.profile.skills.join("\n")} hint={t("placement.onePerLine")} />
             <TextAreaField label={t("placement.fieldCertifications")} name="certifications" defaultValue={p.profile.certifications.join("\n")} hint={t("placement.onePerLine")} />
@@ -93,7 +98,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               {p.profile.dreamFlag ? <Badge tone="accent">{t("placement.dreamOn")}</Badge> : null}
             </div>
             <Button type="submit" className="sm:justify-self-start">{t("placement.saveProfile")}</Button>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
 
@@ -125,20 +130,20 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               )}
               {!a || a.status === "WITHDRAWN" ? (
                 d.status === "OPEN" && eligible ? (
-                  <form action={applyAction} className="space-y-2">
+                  <ActionForm action={applyAction} className="space-y-2">
                     <input type="hidden" name="back" value={BACK} />
                     <input type="hidden" name="driveId" value={d.id} />
                     <label className={CHECK}><input type="checkbox" name="consent" required />{t("placement.consentLine", { company: d.companyName })}</label>
                     <Button type="submit" size="sm">{t("placement.apply")}</Button>
-                  </form>
+                  </ActionForm>
                 ) : null
               ) : !a.offer ? (
-                <form action={withdrawAction} className="space-y-2">
+                <ActionForm action={withdrawAction} className="space-y-2">
                   {!a.consentAt ? <p className="text-xs text-fg-muted">{t("placement.awaitingGuardian")}</p> : null}
                   <input type="hidden" name="back" value={BACK} />
                   <input type="hidden" name="driveId" value={d.id} />
                   <Button type="submit" size="sm" variant="ghost">{t("placement.withdraw")}</Button>
-                </form>
+                </ActionForm>
               ) : null}
             </CardBody>
           </Card>
@@ -158,18 +163,18 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               </div>
               {!o.acceptedAt && !o.declinedAt ? (
                 <div className="flex gap-2">
-                  <form action={answerOfferAction}>
+                  <ActionForm action={answerOfferAction}>
                     <input type="hidden" name="back" value={BACK} />
                     <input type="hidden" name="offerId" value={o.id} />
                     <input type="hidden" name="accept" value="1" />
                     <Button type="submit" size="sm">{t("placement.acceptOffer")}</Button>
-                  </form>
-                  <form action={answerOfferAction}>
+                  </ActionForm>
+                  <ActionForm action={answerOfferAction}>
                     <input type="hidden" name="back" value={BACK} />
                     <input type="hidden" name="offerId" value={o.id} />
                     <input type="hidden" name="accept" value="0" />
                     <Button type="submit" size="sm" variant="secondary">{t("placement.declineOffer")}</Button>
-                  </form>
+                  </ActionForm>
                 </div>
               ) : null}
             </div>
@@ -188,17 +193,17 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
               </div>
               <div className="text-xs text-fg-muted">{isoToDisplayDate(i.from)} – {isoToDisplayDate(i.to)} · {t("placement.hoursN", { hours: i.hours })}{i.credits !== null ? ` · ${t("placement.creditsIs", { credits: i.credits })}` : ""}</div>
               {["APPROVED", "SUBMITTED"].includes(i.status) ? (
-                <form action={diaryAction} className="grid gap-2 sm:grid-cols-[10rem_6rem_1fr_auto] sm:items-end">
+                <ActionForm action={diaryAction} className="grid gap-2 sm:grid-cols-[10rem_6rem_1fr_auto] sm:items-end">
                   <input type="hidden" name="back" value={BACK} />
                   <input type="hidden" name="internshipId" value={i.id} />
                   <DateField label={t("placement.fieldDay")} name="on" min={i.from} max={i.to} required />
                   <TextField label={t("placement.fieldHours")} name="hours" type="number" step="0.5" min="0.5" max="16" required />
                   <TextField label={t("placement.fieldDiary")} name="text" required maxLength={2000} />
                   <Button type="submit" size="sm" variant="secondary">{t("placement.addDiary")}</Button>
-                </form>
+                </ActionForm>
               ) : null}
               {["APPROVED", "SUBMITTED"].includes(i.status) || (i.needsDeclaration && !i.declarationFileId) ? (
-                <form action={internshipFileAction} className="flex flex-wrap items-end gap-2">
+                <ActionForm action={internshipFileAction} className="flex flex-wrap items-end gap-2">
                   <input type="hidden" name="back" value={BACK} />
                   <input type="hidden" name="internshipId" value={i.id} />
                   <SelectField label={t("placement.fieldFileKind")} name="kind" defaultValue="REPORT">
@@ -207,11 +212,11 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
                   </SelectField>
                   <TextField label={t("placement.fieldFile")} name="file" type="file" accept="application/pdf,image/*" required />
                   <Button type="submit" size="sm" variant="secondary">{t("placement.upload")}</Button>
-                </form>
+                </ActionForm>
               ) : null}
             </div>
           ))}
-          <form action={proposeInternshipAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
+          <ActionForm action={proposeInternshipAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
             <input type="hidden" name="back" value={BACK} />
             <TextField label={t("placement.fieldInternCompany")} name="companyName" required maxLength={160} />
             <SelectField label={t("placement.fieldInternKind")} name="kind" defaultValue="INDUSTRY">
@@ -226,7 +231,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
             <TextField label={t("placement.fieldHoursTotal")} name="hours" type="number" min="1" max="2000" required />
             <TextField label={t("placement.fieldIndustrySupervisor")} name="supervisorName" required maxLength={120} />
             <Button type="submit" className="sm:col-span-3 sm:justify-self-start">{t("placement.proposeInternship")}</Button>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
 
@@ -253,6 +258,7 @@ export default async function StudentPlacementPage({ searchParams }: { searchPar
                 <span className="text-fg-muted">{moment(s.startsAt)}</span>
               </div>
             ))}
+            {p.mentorSlots.length ? <p className="text-fg-muted" data-testid="mentor-free-line">{t("riskDecisions.alumniSessionFree")}</p> : null}
             {p.mentorSlots.length ? <Link className={LINK} href="/sessions">{t("placement.bookInSessions")}</Link> : null}
           </CardBody>
         </Card>

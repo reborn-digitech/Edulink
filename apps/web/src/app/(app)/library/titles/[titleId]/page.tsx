@@ -3,6 +3,9 @@ import { BooksIcon, ClockCountdownIcon, PencilSimpleIcon } from "@phosphor-icons
 import { LIBRARY_CATEGORIES, LIBRARY_DESK_STATUSES, LIBRARY_LANGUAGES } from "@edulink/contracts";
 import { getT } from "@/lib/i18n/server";
 import { titleView } from "@/lib/library";
+import { periodicalView } from "@/lib/library-periodicals";
+import { todayKey } from "@/lib/dates";
+import { PeriodicalPanel } from "@/components/library/periodical-panel";
 import { AccessError } from "@/lib/tenancy";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,6 +15,7 @@ import { CATEGORY_KEY, COPY_STATUS_KEY, LANGUAGE_KEY, day } from "@/components/l
 import { addCopyAction, copyStatusAction, updateTitleAction } from "../../actions";
 import { notFound } from "next/navigation";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** One title at the desk: its copies with who has each, the queue, and the forms to correct it and add a copy. */
 export default async function LibraryTitlePage({ params, searchParams }: { params: Promise<{ titleId: string }>; searchParams: Promise<{ ok?: string; error?: string }> }) {
-  const { ctx, t, locale, on, canWrite } = await deskContext();
+  const { ctx, t, locale, on, canWrite, timeZone } = await deskContext();
   const { titleId } = await params;
   const { ok, error } = await searchParams;
   const backLink = { href: "/library/catalogue", label: t("library.tabCatalogue") };
@@ -31,6 +35,8 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
   });
   const b = view.title;
   const back = `/library/titles/${titleId}`;
+  // A periodical's subscription and volumes (G4-21); a book has none.
+  const periodical = b.category === "PERIODICAL" ? await periodicalView(ctx, titleId) : null;
   return (
     <DeskFrame t={t} on current={null} title={b.title} description={[b.author, b.publisher, b.year, b.isbn].filter(Boolean).join(" · ")} ok={ok} error={error} back={backLink}>
       <Card>
@@ -51,7 +57,7 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
                   </p>
                 </div>
                 {canWrite && c.status !== "ISSUED" ? (
-                  <form action={copyStatusAction} className="flex items-center gap-2">
+                  <ActionForm action={copyStatusAction} className="flex items-center gap-2">
                     <input type="hidden" name="copyId" value={c.id} />
                     <input type="hidden" name="back" value={back} />
                     <label className="sr-only" htmlFor={`st-${c.id}`}>
@@ -67,13 +73,13 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
                     <Button type="submit" size="sm" variant="secondary">
                       {t("library.setState")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </li>
             ))}
           </ul>
           {canWrite ? (
-            <form action={addCopyAction} className="flex flex-wrap items-end gap-2 border-t border-border px-5 py-4">
+            <ActionForm action={addCopyAction} className="flex flex-wrap items-end gap-2 border-t border-border px-5 py-4">
               <input type="hidden" name="titleId" value={titleId} />
               <input type="hidden" name="back" value={back} />
               <TextField name="accession" label={t("library.accession")} required maxLength={30} className="min-w-0 flex-1 basis-40" />
@@ -81,10 +87,12 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
               <Button type="submit" variant="secondary">
                 {t("library.addCopy")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
+
+      {periodical ? <PeriodicalPanel view={periodical} back={back} today={todayKey(timeZone)} t={t} /> : null}
 
       <Card>
         <CardHeader icon={<ClockCountdownIcon weight="duotone" className="size-5" />} title={t("library.queueTitle")} />
@@ -108,7 +116,7 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
         <Card>
           <CardHeader icon={<PencilSimpleIcon weight="duotone" className="size-5" />} title={t("library.editTitle")} />
           <CardBody>
-            <form action={updateTitleAction} className="grid gap-4 sm:grid-cols-2">
+            <ActionForm action={updateTitleAction} className="grid gap-4 sm:grid-cols-2">
               <input type="hidden" name="titleId" value={titleId} />
               <input type="hidden" name="back" value={back} />
               <TextField name="title" label={t("library.fieldTitle")} required maxLength={200} defaultValue={b.title} />
@@ -136,7 +144,7 @@ export default async function LibraryTitlePage({ params, searchParams }: { param
                   {t("library.saveTitle")}
                 </Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

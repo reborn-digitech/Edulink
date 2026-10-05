@@ -5,6 +5,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DateField, TextField } from "@/components/ui/field";
 import { reviewProjectAction } from "@/app/(app)/placement/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 /** Students' projects with their reviews; the guide records the next review, the final one with the marks. */
 export function ProjectList({ projects, t, back, myMembershipId }: { projects: ProjectView[]; t: Translate; back: string; myMembershipId: string }) {
@@ -31,7 +32,7 @@ export function ProjectList({ projects, t, back, myMembershipId }: { projects: P
               </ul>
             ) : null}
             {p.guideMembershipId === myMembershipId ? (
-              <form action={reviewProjectAction} className="grid gap-2 sm:grid-cols-[10rem_1fr_6rem_auto_auto] sm:items-end">
+              <ActionForm action={reviewProjectAction} className="grid gap-2 sm:grid-cols-[10rem_1fr_6rem_auto_auto] sm:items-end">
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="projectId" value={p.id} />
                 <DateField label={t("placement.fieldDay")} name="on" required />
@@ -42,7 +43,7 @@ export function ProjectList({ projects, t, back, myMembershipId }: { projects: P
                   {t("placement.fieldFinal")}
                 </label>
                 <Button type="submit" size="sm" variant="secondary">{t("placement.addReview")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
           </div>
         ))}

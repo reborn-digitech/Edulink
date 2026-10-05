@@ -15,6 +15,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { Flash, Hidden, NotCollege, SCHEME_KEY, CLAIM_STATUS_KEY, Table, day, money } from "@/components/college-office/parts";
 import { leaveAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -97,7 +98,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
                   <Link href={`/accounts/no-dues?event=LEAVING&student=${ledger.student.studentMembershipId}`}>{t("collegeOffice.navNoDues")}</Link>
                 </Button>
                 {ctx.role === "ADMIN" && leaving.completed ? (
-                  <form action={leaveAction} className="grid gap-3 sm:grid-cols-3">
+                  <ActionForm action={leaveAction} className="grid gap-3 sm:grid-cols-3">
                     <Hidden fields={{ back, studentMembershipId: ledger.student.studentMembershipId }} />
                     <TextField name="leftOn" type="date" required label={t("collegeOffice.leftOn")} />
                     <SelectField name="reason" required label={t("collegeOffice.colReason")}>
@@ -109,7 +110,7 @@ export default async function StudentsPage({ searchParams }: { searchParams: Pro
                     <div className="sm:col-span-3">
                       <Button type="submit" variant="danger">{t("collegeOffice.recordLeaving")}</Button>
                     </div>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </CardBody>
             </Card>

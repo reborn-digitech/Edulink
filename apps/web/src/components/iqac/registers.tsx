@@ -7,6 +7,7 @@ import { EmptyState } from "@/components/ui/states";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { addActivityAction, addResearchAction, removeResearchAction } from "@/app/(app)/iqac/actions";
 import { day, keyed } from "./parts";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * The research and activity registers as the desk, a faculty member and an
@@ -24,7 +25,7 @@ export function ResearchRegister({ t, back, items, perTeacher, scope, teachers, 
       <CardHeader title={t("iqac.researchTitle")} description={[tt("iqac.scope." + scope), " · ", t("iqac.perTeacherLine", { teachers: perTeacher.teachers, publications: perTeacher.publications, books: perTeacher.books })].join("")} />
       <CardBody className="space-y-4">
         {canAdd ? (
-        <form action={addResearchAction} className="grid gap-3 sm:grid-cols-3">
+        <ActionForm action={addResearchAction} className="grid gap-3 sm:grid-cols-3">
           <input type="hidden" name="back" value={back} />
           <SelectField name="kind" label={t("iqac.researchKindField")} defaultValue="PUBLICATION">
             {RESEARCH_KINDS.map((k) => (
@@ -57,7 +58,7 @@ export function ResearchRegister({ t, back, items, perTeacher, scope, teachers, 
           <div className="sm:col-span-3">
             <Button type="submit">{t("iqac.addResearch")}</Button>
           </div>
-        </form>
+        </ActionForm>
         ) : null}
         {items.length === 0 ? (
           <EmptyState title={t("iqac.noResearch")} />
@@ -80,13 +81,13 @@ export function ResearchRegister({ t, back, items, perTeacher, scope, teachers, 
                   ) : null}
                 </span>
                 {r.mine || canRemoveAll ? (
-                  <form action={removeResearchAction}>
+                  <ActionForm action={removeResearchAction}>
                     <input type="hidden" name="back" value={back} />
                     <input type="hidden" name="itemId" value={r.id} />
                     <Button type="submit" size="sm" variant="ghost">
                       {t("iqac.removeResearch")}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </li>
             ))}
@@ -106,7 +107,7 @@ export function ActivityRegister({ t, back, items, canEdit, staff, locale }: { t
       <CardHeader title={t("iqac.activitiesTitle")} />
       <CardBody className="space-y-4">
         {canEdit ? (
-          <form action={addActivityAction} className="grid gap-3 sm:grid-cols-3">
+          <ActionForm action={addActivityAction} className="grid gap-3 sm:grid-cols-3">
             <input type="hidden" name="back" value={back} />
             <SelectField name="kind" label={t("iqac.activityKindField")} defaultValue="EXTENSION">
               {ACTIVITY_KINDS.map((k) => (
@@ -139,7 +140,7 @@ export function ActivityRegister({ t, back, items, canEdit, staff, locale }: { t
             <div className="sm:col-span-3">
               <Button type="submit">{t("iqac.addActivity")}</Button>
             </div>
-          </form>
+          </ActionForm>
         ) : null}
         {items.length === 0 ? (
           <EmptyState title={t("iqac.noActivities")} />

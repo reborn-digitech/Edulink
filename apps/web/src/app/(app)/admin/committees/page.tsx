@@ -14,6 +14,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, day, keyed } from "@/components/iqac/parts";
 import { addMeetingAction, saveCommitteeAction } from "../../iqac/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -58,7 +59,7 @@ export default async function CommitteesPage({ searchParams }: { searchParams: P
         <Card>
           <CardHeader title={t("iqac.newCommitteeTitle")} />
           <CardBody>
-            <form action={saveCommitteeAction} className="grid gap-3 sm:grid-cols-2">
+            <ActionForm action={saveCommitteeAction} className="grid gap-3 sm:grid-cols-2">
               <input type="hidden" name="back" value={back} />
               <SelectField name="kind" label={t("iqac.committeeKindField")} defaultValue="GRIEVANCE">
                 {COMMITTEE_KINDS.map((k) => (
@@ -72,7 +73,7 @@ export default async function CommitteesPage({ searchParams }: { searchParams: P
               <div className="sm:col-span-2">
                 <Button type="submit">{t("iqac.saveCommittee")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -112,7 +113,7 @@ export default async function CommitteesPage({ searchParams }: { searchParams: P
                 )}
               </div>
               {c.canEdit ? (
-                <form action={addMeetingAction} className="grid gap-3 border-t border-border pt-3 sm:grid-cols-3">
+                <ActionForm action={addMeetingAction} className="grid gap-3 border-t border-border pt-3 sm:grid-cols-3">
                   <input type="hidden" name="back" value={back} />
                   <input type="hidden" name="committeeId" value={x.id} />
                   <DateField name="at" required label={t("iqac.dateField")} />
@@ -123,7 +124,7 @@ export default async function CommitteesPage({ searchParams }: { searchParams: P
                       {t("iqac.addMeeting")}
                     </Button>
                   </div>
-                </form>
+                </ActionForm>
               ) : null}
             </CardBody>
           </Card>

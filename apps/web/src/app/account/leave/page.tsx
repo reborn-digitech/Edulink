@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PageHeader } from "@/components/ui/page-header";
 import { getT } from "@/lib/i18n/server";
+import { leaveDecidedBy } from "@edulink/contracts";
 import { LeaveForm } from "@/app/(app)/teacher/leave/form";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -50,6 +51,9 @@ export default async function MyLeavePage() {
     }),
     leaveBalanceFor(schoolId, membershipId),
   ]);
+  // Who answers (G4-27): the same rule as the phone's staffLeave read — the office for module staff or with no principal.
+  const principals = await db.membership.count({ where: { schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, id: { not: membershipId } } });
+  const decidedBy = leaveDecidedBy(ctx.role ?? "", principals > 0);
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -57,12 +61,13 @@ export default async function MyLeavePage() {
         <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
           <CalendarIcon weight="duotone" className="size-6" />
         </span>
-        <PageHeader title={t("teacher.leave")} description={t("teacher.leaveExplainer")} />
+        <PageHeader title={t("teacher.leave")} description={t(decidedBy === "OFFICE" ? "leaveDecider.explainerOffice" : "teacher.leaveExplainer")} />
       </div>
       <LeaveBalanceCard balance={balance} t={t} />
       <LeaveForm
         requests={requests}
         today={todayKey(school.timezone)}
+        decidedBy={decidedBy}
         staff={colleagues.map((person) => ({ membershipId: person.id, name: person.user.preferredName ?? person.user.name }))}
       />
     </div>

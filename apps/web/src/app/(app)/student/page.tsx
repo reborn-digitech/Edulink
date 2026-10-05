@@ -12,7 +12,7 @@ import { requireRole } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
 import { studentWeek } from "@/lib/timetable";
 import { formatTimeRange } from "@/lib/school-day";
-import { ownWorkScope } from "@/lib/grading";
+import { ownWorkScope, workLabel } from "@/lib/grading";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { pupilRecordFor } from "@/lib/pupil-records";
@@ -77,7 +77,7 @@ export default async function StudentHome() {
         grades: { none: { studentMembershipId: ctx.membershipId } },
         ...(await ownWorkScope(ctx.schoolId, ctx.membershipId)),
       },
-      select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
+      select: { id: true, title: true, dueAt: true, class: { select: { name: true } }, offering: { select: { course: { select: { code: true, name: true } } } } },
       orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
       take: 5,
     }),
@@ -281,7 +281,7 @@ export default async function StudentHome() {
                         <span className="block truncate text-sm font-semibold text-fg">
                           {assignment.title}
                         </span>
-                        <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
+                        <span className="block text-xs text-fg-muted">{workLabel(assignment)}</span>
                       </span>
                       {/* Gentle, never alarming — "soon", not "OVERDUE" in red; but a date that has passed says so, not "2 months ago" under "What is due". */}
                       <Badge tone={dueSoon || pastDue ? "warn" : "neutral"} size="sm">

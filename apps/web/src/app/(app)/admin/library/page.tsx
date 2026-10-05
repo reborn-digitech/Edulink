@@ -13,6 +13,7 @@ import { SelectField, TextField } from "@/components/ui/field";
 import { ModuleOff } from "@/components/module-off";
 import { Flash } from "@/components/library/parts";
 import { saveSettingsAction } from "../../library/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -55,7 +56,7 @@ export default async function AdminLibraryPage({ searchParams }: { searchParams:
       <Card>
         <CardHeader icon={<GearSixIcon weight="duotone" className="size-5" />} title={t("library.rulesTitle")} description={readOnly ? t("common.officeSetsThis") : undefined} />
         <CardBody>
-          <form action={saveSettingsAction} className="grid gap-4 sm:grid-cols-2">
+          <ActionForm action={saveSettingsAction} className="grid gap-4 sm:grid-cols-2">
             <input type="hidden" name="back" value="/admin/library" />
             <fieldset disabled={readOnly} className="contents">
               <TextField name="pupilLimit" type="number" min={0} max={20} required label={t("library.pupilLimit")} defaultValue={s.pupilLimit} />
@@ -78,7 +79,7 @@ export default async function AdminLibraryPage({ searchParams }: { searchParams:
                 </div>
               )}
             </fieldset>
-          </form>
+          </ActionForm>
         </CardBody>
       </Card>
     </div>

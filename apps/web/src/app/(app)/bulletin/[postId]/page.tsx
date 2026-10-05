@@ -162,9 +162,9 @@ export default async function PostPage({ params, searchParams }: { params: Promi
 
         <Link
           href={`/bulletin?category=${post.category}`}
-          className="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+          className="inline-flex min-h-11 items-center hover:underline"
         >
-          {t(CATEGORY_KEYS[post.category as PostCategory].name)}
+          <span className="rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong">{t(CATEGORY_KEYS[post.category as PostCategory].name)}</span>
         </Link>
 
         {post.body && (

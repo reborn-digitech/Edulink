@@ -5,8 +5,10 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { joinedAction, offerAction, resultsAction } from "@/app/(app)/placement/actions";
+import { HIGH_OFFER_RATIO } from "@/lib/placement-rules";
 import { OUTCOME_KEY, ROUND_KIND_KEY, TABLE, TD, TH, applicationBadge, lpa, offerLine } from "./parts";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * A drive's applicants and what is recorded about them — the host cell's
@@ -69,7 +71,7 @@ export function ResultsForm({ driveId, applications, rounds, back, t }: { driveI
     <Card>
       <CardHeader icon={<ListChecksIcon weight="duotone" className="size-5" />} title={t("placement.resultsTitle")} description={t("placement.resultsIntro")} />
       <CardBody>
-        <form action={resultsAction} className="space-y-4">
+        <ActionForm action={resultsAction} className="space-y-4">
           <input type="hidden" name="back" value={back} />
           <input type="hidden" name="driveId" value={driveId} />
           <SelectField label={t("placement.fieldRound")} name="round" defaultValue="0" className="max-w-xs">
@@ -106,7 +108,7 @@ export function ResultsForm({ driveId, applications, rounds, back, t }: { driveI
             ))}
           </ul>
           <Button type="submit">{t("placement.saveResults")}</Button>
-        </form>
+        </ActionForm>
       </CardBody>
     </Card>
   );
@@ -120,7 +122,7 @@ export function OfferForm({ driveId, applications, back, t }: { driveId: string;
     <Card>
       <CardHeader icon={<SealCheckIcon weight="duotone" className="size-5" />} title={t("placement.offerTitle")} description={t("placement.offerIntro")} />
       <CardBody>
-        <form action={offerAction} className="grid gap-4 sm:grid-cols-3 sm:items-end">
+        <ActionForm action={offerAction} className="grid gap-4 sm:grid-cols-3 sm:items-end">
           <input type="hidden" name="back" value={back} />
           <input type="hidden" name="driveId" value={driveId} />
           <SelectField label={t("placement.colStudent")} name="studentMembershipId" required>
@@ -132,10 +134,15 @@ export function OfferForm({ driveId, applications, back, t }: { driveId: string;
           </SelectField>
           <TextField label={t("placement.fieldPackage")} name="package" type="number" step="0.1" min="0" required hint={t("placement.fieldPackageHint")} />
           <TextField label={t("placement.fieldLetter")} name="letter" type="file" accept="application/pdf,image/*" />
+          {/* A3-journeys-18: an offer far above the drive's top package is refused under the package until this is ticked. */}
+          <label className="flex min-h-11 items-center gap-2 text-sm text-fg sm:col-span-3">
+            <input type="checkbox" name="confirmedHigh" className="size-5 shrink-0" data-testid="offer-confirm-high" />
+            {t("risksWeb.offerConfirmHigh", { ratio: HIGH_OFFER_RATIO })}
+          </label>
           <Button type="submit" className="sm:col-span-3 sm:justify-self-start">
             {t("placement.recordOffer")}
           </Button>
-        </form>
+        </ActionForm>
       </CardBody>
     </Card>
   );
@@ -150,7 +157,7 @@ export function JoinedForms({ applications, back, t }: { applications: DriveAppl
       <CardHeader icon={<CheckCircleIcon weight="duotone" className="size-5" />} title={t("placement.joinedTitle")} />
       <CardBody className="space-y-3">
         {accepted.map((a) => (
-          <form key={a.id} action={joinedAction} className="flex flex-wrap items-end gap-3">
+          <ActionForm key={a.id} action={joinedAction} className="flex flex-wrap items-end gap-3">
             <input type="hidden" name="back" value={back} />
             <input type="hidden" name="offerId" value={a.offer!.id} />
             <div className="min-w-48 text-sm">
@@ -161,7 +168,7 @@ export function JoinedForms({ applications, back, t }: { applications: DriveAppl
             <Button type="submit" size="sm" variant="secondary">
               {t("placement.recordJoined")}
             </Button>
-          </form>
+          </ActionForm>
         ))}
       </CardBody>
     </Card>

@@ -17,6 +17,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { APP_STATUS_KEY, CATEGORY_KEY, Flash, Hidden, NotCollege, QUOTA_KEY, ROUND_KIND_KEY, Table } from "@/components/college-office/parts";
 import { createApplicationAction, importAllotmentsAction, saveRoundAction } from "../../accounts/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -148,7 +149,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
                       <td className="py-2 pr-3">{t(CATEGORY_KEY(r.category))}</td>
                       <td className="py-2 pr-3 tabular-nums">{r.meritNumber ?? "—"}</td>
                       <td className="py-2">
-                        <form action={createApplicationAction} className="flex flex-wrap items-end gap-2">
+                        <ActionForm action={createApplicationAction} className="flex flex-wrap items-end gap-2">
                           <Hidden fields={{ back, roundId: round.id, capAllotmentId: r.id }} />
                           {!r.programmeId ? (
                             <SelectField name="programmeId" required label={t("collegeOffice.colProgramme")}>
@@ -160,7 +161,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
                             </SelectField>
                           ) : null}
                           <Button type="submit" size="sm">{t("collegeOffice.makeApplication")}</Button>
-                        </form>
+                        </ActionForm>
                       </td>
                     </tr>
                   ))}
@@ -169,13 +170,13 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
             ) : null}
             {write && round.status === "OPEN" ? (
               <div className="grid gap-5 lg:grid-cols-2">
-                <form action={importAllotmentsAction} className="space-y-3">
+                <ActionForm action={importAllotmentsAction} className="space-y-3">
                   <Hidden fields={{ back, roundId: round.id }} />
                   <TextAreaField name="text" required rows={6} label={t("collegeOffice.importLabel")} hint={t("collegeOffice.importHint", { columns: CAP_SHEET_COLUMNS.join(", ") })} />
                   <Button type="submit" variant="secondary">{t("collegeOffice.importButton")}</Button>
-                </form>
+                </ActionForm>
                 {round.kind === "MERIT" || round.kind === "INSTITUTE" ? (
-                  <form action={createApplicationAction} className="grid gap-3 sm:grid-cols-2">
+                  <ActionForm action={createApplicationAction} className="grid gap-3 sm:grid-cols-2">
                     <Hidden fields={{ back, roundId: round.id }} />
                     <TextField name="applicantName" required minLength={2} label={t("collegeOffice.colName")} />
                     <SelectField name="programmeId" required label={t("collegeOffice.colProgramme")}>
@@ -204,7 +205,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
                     <div className="sm:col-span-2">
                       <Button type="submit">{t("collegeOffice.makeApplication")}</Button>
                     </div>
-                  </form>
+                  </ActionForm>
                 ) : null}
               </div>
             ) : null}
@@ -215,7 +216,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
         <Card id="new-round">
           <CardHeader title={t("collegeOffice.roundNew")} />
           <CardBody>
-            <form action={saveRoundAction} className="grid gap-4 sm:grid-cols-3">
+            <ActionForm action={saveRoundAction} className="grid gap-4 sm:grid-cols-3">
               <Hidden fields={{ back }} />
               <TextField name="name" required minLength={2} label={t("collegeOffice.roundName")} />
               <SelectField name="kind" required label={t("collegeOffice.roundKind")}>
@@ -245,7 +246,7 @@ export default async function CollegeAdmissionsPage({ searchParams }: { searchPa
               <div className="sm:col-span-3">
                 <Button type="submit">{t("collegeOffice.roundSave")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

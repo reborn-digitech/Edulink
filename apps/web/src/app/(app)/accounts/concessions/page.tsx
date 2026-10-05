@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
 import { Flash, Hidden, NotCollege, Table, money } from "@/components/college-office/parts";
 import { concessionAction, decideConcessionAction } from "../actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -58,14 +59,14 @@ export default async function ConcessionsPage({ searchParams }: { searchParams: 
                   <td className="py-2">
                     {ctx.role === "PRINCIPAL" ? (
                       <div className="flex gap-2">
-                        <form action={decideConcessionAction}>
+                        <ActionForm action={decideConcessionAction}>
                           <Hidden fields={{ back, concessionId: c.id, approve: "1" }} />
                           <Button type="submit" size="sm">{t("collegeOffice.approve")}</Button>
-                        </form>
-                        <form action={decideConcessionAction}>
+                        </ActionForm>
+                        <ActionForm action={decideConcessionAction}>
                           <Hidden fields={{ back, concessionId: c.id, approve: "0" }} />
                           <Button type="submit" size="sm" variant="secondary">{t("collegeOffice.refuse")}</Button>
-                        </form>
+                        </ActionForm>
                       </div>
                     ) : (
                       <span className="text-xs text-fg-muted">{t("collegeOffice.waitsForPrincipal")}</span>
@@ -81,7 +82,7 @@ export default async function ConcessionsPage({ searchParams }: { searchParams: 
         <Card>
           <CardHeader title={t("collegeOffice.concessionNew")} />
           <CardBody>
-            <form action={concessionAction} className="grid gap-4 sm:grid-cols-2">
+            <ActionForm action={concessionAction} className="grid gap-4 sm:grid-cols-2">
               <Hidden fields={{ back }} />
               <SelectField name="studentMembershipId" required label={t("collegeOffice.colName")}>
                 {students.map((s) => (
@@ -108,7 +109,7 @@ export default async function ConcessionsPage({ searchParams }: { searchParams: 
               <div className="sm:col-span-2">
                 <Button type="submit">{t("collegeOffice.concessionGrant")}</Button>
               </div>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

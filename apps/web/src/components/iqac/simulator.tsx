@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SelectField, TextField } from "@/components/ui/field";
 import { saveNaacScenarioAction, saveNbaScenarioAction } from "@/app/(app)/iqac/simulator/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * THE SIMULATOR (module IQAC, 5 Oct 2026), in the browser: the figures the
@@ -183,13 +184,13 @@ export function NaacSimulator({ framework, baseline, initial, cycleId, back, can
         <CardHeader title={t("insights.simSaveTitle")} description={canSave ? undefined : t("insights.simReadOnly")} />
         {canSave ? (
           <CardBody>
-            <form action={saveNaacScenarioAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
+            <ActionForm action={saveNaacScenarioAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="cycleId" value={cycleId} />
               <input type="hidden" name="inputs" value={JSON.stringify({ facts: holdParts(NAAC_WHOLES, facts), ql, nirf: nirf ? holdParts(NIRF_PART_WHOLES, nirf) : nirf })} />
               <TextField name="name" label={t("insights.simNameField")} required minLength={2} maxLength={120} className="sm:col-span-2" />
               <Button type="submit">{t("insights.simSave")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         ) : null}
       </Card>
@@ -307,14 +308,14 @@ export function NbaSimulator({ baseline, initial, year, departmentId, back, canS
         <CardHeader title={t("insights.simSaveTitle")} description={canSave ? undefined : t("insights.simReadOnly")} />
         {canSave ? (
           <CardBody>
-            <form action={saveNbaScenarioAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
+            <ActionForm action={saveNbaScenarioAction} className="grid gap-3 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={back} />
               <input type="hidden" name="year" value={year} />
               <input type="hidden" name="departmentId" value={departmentId} />
               <input type="hidden" name="inputs" value={JSON.stringify(inputs)} />
               <TextField name="name" label={t("insights.simNameField")} required minLength={2} maxLength={120} className="sm:col-span-2" />
               <Button type="submit">{t("insights.simSave")}</Button>
-            </form>
+            </ActionForm>
           </CardBody>
         ) : null}
       </Card>

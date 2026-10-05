@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { requireRole } from "@/lib/tenancy";
+import { benchmarkStatus } from "@/lib/iqac-benchmarks";
 import { isModuleOn } from "@/lib/modules";
 import { iqacOverview } from "@/lib/iqac";
 import { listFilings } from "@/lib/iqac-filings";
@@ -16,6 +17,7 @@ import { IqacFlash, NotAScore, day } from "@/components/iqac/parts";
 import { NaacInsightsSection } from "@/components/iqac/insights";
 import { naacInsights } from "@/lib/iqac-insights";
 import { signoffAction } from "../../iqac/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -56,7 +58,7 @@ export default async function AccreditationPage({ searchParams }: { searchParams
         }
       />
       <IqacFlash ok={ok} error={error} />
-      <NotAScore t={t} />
+      <NotAScore t={t} benchmarks={await benchmarkStatus(ctx.schoolId)} />
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile label={t("iqac.cgpaLabel")} value={o.cycle?.cgpa?.toFixed(2) ?? "—"} tone="accent" />
         <StatTile label={t("iqac.gradeLabel")} value={o.cycle?.grade ?? "—"} hint={o.nextBand ? t("iqac.nextBandLine", { distance: o.nextBand.distance.toFixed(2), grade: o.nextBand.grade, min: o.nextBand.min.toFixed(2) }) : undefined} />
@@ -71,7 +73,7 @@ export default async function AccreditationPage({ searchParams }: { searchParams
             <EmptyState title={t("iqac.nothingToSign")} />
           ) : (
             waiting.map((f) => (
-              <form key={f.id} action={signoffAction} className="space-y-3 rounded-[var(--radius-md)] border border-border p-3" data-testid={`signoff-${f.id}`}>
+              <ActionForm key={f.id} action={signoffAction} className="space-y-3 rounded-[var(--radius-md)] border border-border p-3" data-testid={`signoff-${f.id}`}>
                 <input type="hidden" name="back" value={back} />
                 <input type="hidden" name="filingId" value={f.id} />
                 <p className="text-sm font-medium">
@@ -89,7 +91,7 @@ export default async function AccreditationPage({ searchParams }: { searchParams
                     {t("iqac.returnButton")}
                   </Button>
                 </div>
-              </form>
+              </ActionForm>
             ))
           )}
         </CardBody>

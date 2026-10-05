@@ -85,7 +85,7 @@ export default async function AssignmentsPage({
   // submission) and drafts saved by a pupil never count. It is the query's
   // WHERE, so it is not a filter over the first hundred rows.
   const now = new Date();
-  const fetched = await db.assignment.findMany({
+  const fetchedRows = await db.assignment.findMany({
     where: {
       ...baseWhere,
       ...(showAll ? {} : thisYear),
@@ -102,6 +102,8 @@ export default async function AssignmentsPage({
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 100,
   });
+  // Every row here is a class's (the WHERE names the teacher's classes); a college offering's work (R-48) is on /faculty/work.
+  const fetched = fetchedRows.flatMap((a) => (a.class && a.classId ? [{ ...a, class: a.class, classId: a.classId }] : []));
   // The roll a piece of work is marked against: the class now, less a pupil
   // admitted after its day — an exam paper's date, else the due day, else the
   // day it was set (A3-journeys-16: two children admitted in October read as

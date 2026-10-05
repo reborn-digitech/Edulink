@@ -12,6 +12,7 @@ import { DateTimeField } from "@/components/ui/date-time-field";
 import { CellOff, DUTY_STATUS_KEY, Hidden, Labelled, MALPRACTICE_KEY, REMUNERATION_KEY, SessionFrame, money, when } from "@/components/exam-cell/parts";
 import { assignInvigilatorAction, buildSeatingAction, decideMalpracticeAction, dutyDoneAction, issueTicketsAction, reportMalpracticeAction, saveRemunerationAction, saveRoomAction, saveScheduleAction, swapInvigilatorAction } from "../../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -65,12 +66,12 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                             {i.name} · {t(DUTY_STATUS_KEY[i.status]!)}
                           </Badge>
                           {w && i.status !== "DONE" ? (
-                            <form action={dutyDoneAction} className="inline">
+                            <ActionForm action={dutyDoneAction} className="inline">
                               <Hidden fields={{ invigilationId: i.id, back }} />
                               <Button type="submit" size="sm" variant="ghost">
                                 {t("examCell.markDone")}
                               </Button>
-                            </form>
+                            </ActionForm>
                           ) : null}
                         </span>
                       ))}
@@ -83,7 +84,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               </ul>
               {w ? (
                 <div className="flex flex-wrap gap-3">
-                  <form action={saveRoomAction} className="flex flex-wrap items-end gap-2">
+                  <ActionForm action={saveRoomAction} className="flex flex-wrap items-end gap-2">
                     <Hidden fields={{ sessionId: s.id, scheduleId: x.id, back }} />
                     <Labelled label={t("examCell.hallName")}>
                       <input name="name" required maxLength={60} className={fieldClass()} />
@@ -94,13 +95,13 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                     <Button type="submit" size="sm" variant="secondary">
                       {t("examCell.addHall")}
                     </Button>
-                  </form>
-                  <form action={buildSeatingAction}>
+                  </ActionForm>
+                  <ActionForm action={buildSeatingAction}>
                     <Hidden fields={{ sessionId: s.id, scheduleId: x.id, back }} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("examCell.buildSeating")}
                     </Button>
-                  </form>
+                  </ActionForm>
                   <a className="self-center text-sm font-medium text-accent-strong hover:underline" href={`/exam-cell/sessions/${s.id}/seating/${x.id}`}>
                     {t("examCell.viewSeating")}
                   </a>
@@ -109,7 +110,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             </div>
           ))}
           {w ? (
-            <form action={saveScheduleAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={saveScheduleAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.course")}>
                 <select name="courseId" required className={fieldClass()}>
@@ -134,7 +135,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               <Button type="submit" size="sm">
                 {t("examCell.addPaper")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -143,16 +144,16 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
         <Card>
           <CardHeader title={t("examCell.ticketsTitle")} description={t("examCell.ticketsHint", { count: sitting.filter((f) => !f.hallTicket).length })} />
           <CardBody className="flex flex-wrap gap-2">
-            <form action={issueTicketsAction}>
+            <ActionForm action={issueTicketsAction}>
               <Hidden fields={{ sessionId: s.id, back }} />
               <Button type="submit">{t("examCell.issueTickets")}</Button>
-            </form>
-            <form action={buildSeatingAction}>
+            </ActionForm>
+            <ActionForm action={buildSeatingAction}>
               <Hidden fields={{ sessionId: s.id, back }} />
               <Button type="submit" variant="secondary">
                 {t("examCell.buildAllSeating")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -161,7 +162,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
         <Card>
           <CardHeader title={t("examCell.invigilationTitle")} />
           <CardBody className="space-y-3">
-            <form action={assignInvigilatorAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={assignInvigilatorAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.hall")}>
                 <select name="examRoomId" required className={fieldClass()}>
@@ -182,8 +183,8 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               <Button type="submit" size="sm">
                 {t("examCell.assignDuty")}
               </Button>
-            </form>
-            <form action={swapInvigilatorAction} className="flex flex-wrap items-end gap-2">
+            </ActionForm>
+            <ActionForm action={swapInvigilatorAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ back }} />
               <Labelled label={t("examCell.duty")}>
                 <select name="invigilationId" required className={fieldClass()}>
@@ -211,7 +212,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.swap")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}
@@ -231,7 +232,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                   <Badge tone="warn">{t(MALPRACTICE_KEY[m.decision]!)}</Badge> {m.decisionNote}
                 </p>
               ) : w ? (
-                <form action={decideMalpracticeAction} className="flex flex-wrap items-end gap-2">
+                <ActionForm action={decideMalpracticeAction} className="flex flex-wrap items-end gap-2">
                   <Hidden fields={{ malpracticeId: m.id, back }} />
                   <Labelled label={t("examCell.decision")}>
                     <select name="decision" className={fieldClass()}>
@@ -248,12 +249,12 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
                   <Button type="submit" size="sm">
                     {t("examCell.record")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : null}
             </div>
           ))}
           {w && s.schedule.length > 0 ? (
-            <form action={reportMalpracticeAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={reportMalpracticeAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
                 <select name="scheduleId" className={fieldClass()}>
@@ -279,7 +280,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.reportCase")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -293,7 +294,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
             </p>
           ))}
           {w ? (
-            <form action={saveRemunerationAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={saveRemunerationAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.staff")}>
                 <select name="staffMembershipId" className={fieldClass()}>
@@ -318,7 +319,7 @@ export default async function LogisticsPage({ params, searchParams }: { params: 
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.save")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>

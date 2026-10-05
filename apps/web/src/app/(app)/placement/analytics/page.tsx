@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ChartBarIcon, DownloadSimpleIcon, GearIcon } from "@phosphor-icons/react/ssr";
+import { ChartBarIcon, DownloadSimpleIcon, GearIcon, InfoIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 import { placementAnalytics } from "@/lib/placement-analytics";
 import { placementSettings } from "@/lib/placement";
@@ -9,6 +9,7 @@ import { TextField } from "@/components/ui/field";
 import { BAND_KEY, CellFrame, LINK, SECTOR_KEY, TABLE, TD, TH, cellContext, lpa } from "@/components/placement/parts";
 import { publishSeasonAction, saveSettingsAction } from "../actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -86,6 +87,17 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
           </div>
         </CardBody>
       </Card>
+      {/* What the figures mean (G4-24, risks batch): the three rules the counts and the eligibility lists follow, in words. */}
+      <Card data-testid="placement-definitions">
+        <CardHeader icon={<InfoIcon weight="duotone" className="size-5" />} title={t("risksWeb.placementDefsTitle")} />
+        <CardBody>
+          <ul className="list-disc space-y-1.5 pl-5 text-sm text-fg-muted">
+            <li>{t("risksWeb.placementDefPlaced")}</li>
+            <li>{t("risksWeb.placementDefOneOffer", { ratio: settings.dreamRatio })}</li>
+            <li>{t(settings.allowGenderRule ? "risksWeb.placementDefGenderOn" : "risksWeb.placementDefGenderOff")}</li>
+          </ul>
+        </CardBody>
+      </Card>
       <div className="grid gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader title={t("placement.byCompanyTitle", { batch: top.batchYear })} />
@@ -157,13 +169,13 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
               </div>
             ))}
             {canWrite ? (
-              <form action={publishSeasonAction} className="flex flex-wrap items-end gap-2 pt-2">
+              <ActionForm action={publishSeasonAction} className="flex flex-wrap items-end gap-2 pt-2">
                 <input type="hidden" name="back" value={back} />
                 <TextField label={t("placement.fieldBatchYear")} name="batchYear" type="number" defaultValue={top.batchYear} required />
                 <Button type="submit" size="sm">
                   {t("placement.publishSeason")}
                 </Button>
-              </form>
+              </ActionForm>
             ) : null}
           </CardBody>
         </Card>
@@ -172,7 +184,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
         <Card>
           <CardHeader icon={<GearIcon weight="duotone" className="size-5" />} title={t("placement.settingsTitle")} />
           <CardBody>
-            <form action={saveSettingsAction} className="grid gap-4 sm:grid-cols-3 sm:items-end">
+            <ActionForm action={saveSettingsAction} className="grid gap-4 sm:grid-cols-3 sm:items-end">
               <input type="hidden" name="back" value={back} />
               <TextField label={t("placement.fieldSeasonBatch")} name="seasonBatchYear" type="number" defaultValue={settings.seasonBatchYear} required />
               <TextField label={t("placement.fieldDreamRatio")} name="dreamRatio" type="number" step="0.05" min="1" max="5" defaultValue={settings.dreamRatio} required hint={t("placement.fieldDreamRatioHint")} />
@@ -183,7 +195,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: Pr
               <Button type="submit" size="sm" className="sm:justify-self-start">
                 {t("placement.saveSettings")}
               </Button>
-            </form>
+            </ActionForm>
           </CardBody>
         </Card>
       ) : null}

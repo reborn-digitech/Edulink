@@ -15,6 +15,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Flash, GIFT_KIND_KEY, TABLE, TD, TH } from "@/components/placement/parts";
 import { createMeetAction, giftAction } from "@/app/(app)/placement/actions";
 import { TableScroll } from "@/components/ui/table-scroll";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -82,7 +83,7 @@ export default async function AdminAlumniCollegePage({ searchParams }: { searchP
         <CardBody className="space-y-4 text-sm">
           {a.gifts.map((g) => <div key={g.id}>{g.on} · {g.alumnusName}{g.batchYear ? ` (${g.batchYear})` : ""} · {t(GIFT_KIND_KEY[g.kind]!)}{g.amountRupees !== null ? ` · ₹${g.amountRupees}` : ""} · {t("placement.receiptRef", { ref: g.receiptRef })}</div>)}
           {canWrite && a.alumni.length ? (
-            <form action={giftAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
+            <ActionForm action={giftAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
               <input type="hidden" name="back" value={BACK} />
               <SelectField label={t("placement.fieldAlumnus")} name="alumnusMembershipId" required>
                 {a.alumni.map((m) => <option key={m.membershipId} value={m.membershipId}>{m.name} ({m.batchYear})</option>)}
@@ -95,7 +96,7 @@ export default async function AdminAlumniCollegePage({ searchParams }: { searchP
               <TextField label={t("placement.fieldGiftOn")} name="on" type="date" required />
               <TextField label={t("placement.fieldGiftNote")} name="note" maxLength={500} />
               <Button type="submit" className="sm:col-span-3 sm:justify-self-start">{t("placement.recordGift")}</Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -104,7 +105,7 @@ export default async function AdminAlumniCollegePage({ searchParams }: { searchP
         <CardBody className="space-y-4 text-sm">
           {a.meets.map((m) => <div key={m.id}>{m.on} · {m.title}{m.batchYear ? ` (${m.batchYear})` : ""} · {t("placement.goingN", { count: m.registered })}</div>)}
           {canWrite ? (
-            <form action={createMeetAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
+            <ActionForm action={createMeetAction} className="grid gap-3 border-t border-border pt-4 sm:grid-cols-3">
               <input type="hidden" name="back" value={BACK} />
               <TextField label={t("placement.fieldMeetTitle")} name="title" required maxLength={160} />
               <TextField label={t("placement.fieldMeetOn")} name="on" type="date" required />
@@ -112,7 +113,7 @@ export default async function AdminAlumniCollegePage({ searchParams }: { searchP
               <TextField label={t("placement.fieldMeetBatch")} name="batchYear" type="number" min="1950" max="2100" hint={t("placement.fieldMeetBatchHint")} />
               <TextField label={t("placement.fieldGiftNote")} name="note" maxLength={1000} className="sm:col-span-2" />
               <Button type="submit" className="sm:col-span-3 sm:justify-self-start">{t("placement.createMeet")}</Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>

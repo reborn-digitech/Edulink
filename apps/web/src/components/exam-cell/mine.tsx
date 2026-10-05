@@ -10,6 +10,7 @@ import { PageHeader } from "@/components/ui/page-header";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { BACKLOG_STATUS_KEY, CREDIT_STATUS_KEY, DOC_KIND_KEY, FORM_STATUS_KEY, Flash, Hidden, KIND_KEY, REVAL_KIND_KEY, REVAL_OUTCOME_KEY, TermResultCard, day, money, when } from "./parts";
 import { addBacklogAction, askRevaluationAction, submitFormAction } from "@/app/(app)/exam-cell/actions";
+import { ActionForm } from "@/components/ui/action-form";
 
 /**
  * A student's exams on one page (module EXAMS, 4 Oct 2026) — the student's
@@ -38,20 +39,20 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
             {f.noDuesLines.filter((l) => !l.cleared).length > 0 ? <p className="text-danger">{t("examCell.noDuesPending", { desks: f.noDuesLines.filter((l) => !l.cleared).map((l) => l.desk).join(", ") })}</p> : null}
             {f.refusalReason ? <p className="text-danger">{f.refusalReason}</p> : null}
             {act && f.status === "DRAFT" && f.windowOpen ? (
-              <form action={submitFormAction}>
+              <ActionForm action={submitFormAction}>
                 <Hidden fields={{ formId: f.id, back }} />
                 <Button type="submit">{t("examCell.submitForm")}</Button>
-              </form>
+              </ActionForm>
             ) : null}
             {act && f.backlogsToAdd.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {f.backlogsToAdd.map((b) => (
-                  <form key={b.courseId} action={addBacklogAction}>
+                  <ActionForm key={b.courseId} action={addBacklogAction}>
                     <Hidden fields={{ sessionId: f.sessionId, courseId: b.courseId, back }} />
                     <Button type="submit" size="sm" variant="secondary">
                       {t("examCell.addBacklog", { course: b.code })}
                     </Button>
-                  </form>
+                  </ActionForm>
                 ))}
               </div>
             ) : null}
@@ -100,12 +101,12 @@ export function MyExamsView({ data, t, locale, back, ok, error, switcher, title 
               ? (courseId) => (
                   <div className="flex gap-1">
                     {(["PHOTOCOPY", "REVAL"] as const).map((kind) => (
-                      <form key={kind} action={askRevaluationAction}>
+                      <ActionForm key={kind} action={askRevaluationAction}>
                         <Hidden fields={{ sessionId: r.sessionId, courseId, kind, back }} />
                         <Button type="submit" size="sm" variant="ghost">
                           {t(REVAL_KIND_KEY[kind]!)}
                         </Button>
-                      </form>
+                      </ActionForm>
                     ))}
                   </div>
                 )

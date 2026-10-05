@@ -12,6 +12,7 @@ import { EmptyState } from "@/components/ui/states";
 import { CellOff, Hidden, Labelled, PAPER_STATUS_KEY, SessionFrame, day } from "@/components/exam-cell/parts";
 import { allocationAction, assignPaperAction, moderatePaperAction, printingAction, returnAllocationAction } from "../../../actions";
 import { fieldClass } from "@/components/ui/field-class";
+import { ActionForm } from "@/components/ui/action-form";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -64,7 +65,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                     {t("examCell.openSealed")}
                   </a>
                   {p.status === "SUBMITTED" ? (
-                    <form action={moderatePaperAction} className="flex flex-wrap items-end gap-2">
+                    <ActionForm action={moderatePaperAction} className="flex flex-wrap items-end gap-2">
                       <Hidden fields={{ paperId: p.id, back }} />
                       <Labelled label={t("examCell.moderationNote")}>
                         <input name="note" required minLength={3} maxLength={1000} className={fieldClass()} />
@@ -72,14 +73,14 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                       <Button type="submit" size="sm" variant="secondary">
                         {t("examCell.markModerated")}
                       </Button>
-                    </form>
+                    </ActionForm>
                   ) : null}
                 </div>
               ) : null}
             </div>
           ))}
           {s.canWrite ? (
-            <form action={assignPaperAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={assignPaperAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
                 <select name="scheduleId" className={fieldClass()}>
@@ -102,7 +103,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
               <Button type="submit" size="sm">
                 {t("examCell.appointSetter")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -116,7 +117,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
             </p>
           ))}
           {s.canWrite ? (
-            <form action={printingAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={printingAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.spare")}>
                 <input name="spare" type="number" min={0} max={50} defaultValue={2} className={fieldClass("w-24")} />
@@ -124,7 +125,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
               <Button type="submit" size="sm" variant="secondary">
                 {t("examCell.buildPrinting")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
@@ -138,19 +139,19 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
                 {a.courseCode} · {a.bundle} · {a.assessorName} · {t("examCell.books", { count: a.count })}
               </span>
               {s.canWrite && a.status === "ALLOTTED" ? (
-                <form action={returnAllocationAction}>
+                <ActionForm action={returnAllocationAction}>
                   <Hidden fields={{ allocationId: a.id, back }} />
                   <Button type="submit" size="sm" variant="ghost">
                     {t("examCell.markReturned")}
                   </Button>
-                </form>
+                </ActionForm>
               ) : (
                 <Badge tone="ok">{t("examCell.returned")}</Badge>
               )}
             </div>
           ))}
           {s.canWrite ? (
-            <form action={allocationAction} className="flex flex-wrap items-end gap-2">
+            <ActionForm action={allocationAction} className="flex flex-wrap items-end gap-2">
               <Hidden fields={{ sessionId: s.id, back }} />
               <Labelled label={t("examCell.paper")}>
                 <select name="scheduleId" className={fieldClass()}>
@@ -179,7 +180,7 @@ export default async function ConductPage({ params, searchParams }: { params: Pr
               <Button type="submit" size="sm">
                 {t("examCell.allot")}
               </Button>
-            </form>
+            </ActionForm>
           ) : null}
         </CardBody>
       </Card>
