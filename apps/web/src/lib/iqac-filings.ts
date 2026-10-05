@@ -45,7 +45,7 @@ import type { ActiveContext } from "./session";
 
 export type FilingSection = { heading: string; rows?: [string, string][]; table?: { head: string[]; rows: (string | number)[][]; wide?: number }; paragraphs?: string[] };
 export type FilingDocument = { title: string; subtitle: string; school: string; sections: FilingSection[]; footer: string };
-export type BuiltFiling = { format: "PDF" | "CSV"; body: string; figures: Record<string, number> };
+export type BuiltFiling = { format: "PDF" | "CSV"; body: string; figures: Record<string, number>; /** A council's return only (R-21): the no-history values it read, JSON, for the generator to store. */ snapshot?: string };
 
 export const yearLabel = (y: number) => `${y}-${String((y + 1) % 100).padStart(2, "0")}`;
 export const windowOf = (y: number) => ({ from: `${y}-06-01`, to: `${y + 1}-05-31` });
@@ -126,12 +126,13 @@ const csvOf = (head: string[], rows: (string | number)[][]) => [head, ...rows].m
  * Build a filing from the rows as they stand: the one function the generator
  * and the data audit share, so "regenerate and compare" compares like with like.
  */
-export async function buildFiling(schoolId: string, kind: CollegeFilingKind, year: number, cycleId: string | null, departmentId: string | null = null): Promise<BuiltFiling> {
+export async function buildFiling(schoolId: string, kind: CollegeFilingKind, year: number, cycleId: string | null, departmentId: string | null = null, opts: { snapshot?: "stored" | "live" } = {}): Promise<BuiltFiling> {
   // The councils' returns (5 Oct 2026): PCI, BCI, NCTE and an engineering department's NBA SAR (council-filings.ts).
+  // A rebuild reads the no-history fields the year's filing froze; the generator reads them live and stores them (R-21).
   if ((COUNCIL_FILINGS as readonly string[]).includes(kind)) {
     const { councilDocument } = await import("./council-filings");
-    const built = await councilDocument(schoolId, kind, year, departmentId);
-    return { format: "PDF", body: JSON.stringify(built.document), figures: built.figures };
+    const built = await councilDocument(schoolId, kind, year, departmentId, opts);
+    return { format: "PDF", body: JSON.stringify(built.document), figures: built.figures, snapshot: JSON.stringify(built.snapshot ?? {}) };
   }
   const p = await schoolProfile(schoolId);
   const w = windowOf(year);
@@ -307,8 +308,9 @@ export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingK
   if (input.kind === "NBA_SAR" && (!departmentId || !(await nbaDepartments(desk.schoolId)).some((d) => d.id === departmentId))) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
   // A year already filed is not made again by accident (A3-journeys-35): a second draft beside the filed one only when asked.
   if (!departmentId && !input.again && (await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: input.kind, year: input.year, status: "FILED" }, select: { id: true } }))) throw new RuleRefusal("iqac.refuseFiledAgain", 409, { year: yearLabel(input.year) }, "again");
-  const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId, departmentId);
-  const data = { cycleId: input.cycleId, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), generatedByUserId: desk.userId };
+  // Generated from the rows as they stand, with the no-history values it read frozen beside the body (R-21).
+  const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId, departmentId, { snapshot: "live" });
+  const data = { cycleId: input.cycleId, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), snapshotJson: built.snapshot ?? "{}", generatedByUserId: desk.userId };
   const sar = departmentId ? await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: "NBA_SAR", year: input.year, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, status: true } }) : null;
   if (sar && sar.status !== "DRAFT" && sar.status !== "RETURNED") throw new RuleRefusal("councilFilings.refuseSarTaken", 409);
   const row = sar

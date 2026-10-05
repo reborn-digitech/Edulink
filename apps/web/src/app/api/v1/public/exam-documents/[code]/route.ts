@@ -8,9 +8,10 @@ import { getT } from "@/lib/i18n/server";
 /**
  * GET /api/v1/public/exam-documents/{code}?school= — is a grade card,
  * transcript, degree certificate or hall ticket real; nothing about the
- * student. Signed out, counted like the certificate check (the same bucket):
- * the printed address carries the college's id, which is the fence the
- * lookup runs inside.
+ * student. Signed out, counted like the certificate check (the same bucket).
+ * A grade card, transcript or degree is found by its code alone (the code is
+ * unique and code-readable, A3-journeys-21); `?school=` — the printed
+ * address carries the college's id — is still needed for a hall ticket.
  */
 export async function GET(request: Request, { params }: { params: Promise<{ code: string }> }) {
   try {

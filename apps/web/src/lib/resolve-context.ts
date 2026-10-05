@@ -86,8 +86,9 @@ async function resolveContextForUser(
   // authenticate successfully and are then sent to "join a school" — which is
   // the one thing they must never do. Counted into `total` as well, because a
   // teacher who is also an expert has two ways in and should be asked which.
-  const expertProfile = await db.expertProfile.findUnique({
-    where: { userId },
+  // A disabled expert has no way in (G4-28, risks batch 5 Oct 2026), as a disabled recruiter has none.
+  const expertProfile = await db.expertProfile.findFirst({
+    where: { userId, disabledAt: null },
     select: { id: true },
   });
   // A recruiter is the same shape (4 Oct 2026): no Membership, no Guardianship, its own home. A disabled one has no way in.
@@ -154,4 +155,30 @@ async function resolveContextForUser(
 
   // Signed in, but belongs to nothing yet.
   return { role: null, schoolId: null, redirectTo: "/join?first=1" };
+}
+
+/**
+ * WHY A RIGHT PASSWORD OPENS NOTHING (G4-28, risks batch 5 Oct 2026): the outside account the operator closed, when it
+ * was the person's only way in. A recruiter or an expert holds no membership; once the operator sets `disabledAt`
+ * they used to sign in to the "join a school" page with no word of why. The sign-in paths (auth-login.ts) ask this
+ * after the password matches and answer with a sentence instead of a session. Null when the person has any other way
+ * in (a school, a child, the operator's or the content team's flag), which still opens as before.
+ */
+export async function closedOutsideAccount(userId: string): Promise<"RECRUITER" | "EXPERT" | null> {
+  return forUser(userId, async () => {
+    const [recruiter, expert] = await Promise.all([
+      db.recruiterProfile.findUnique({ where: { userId }, select: { disabledAt: true } }),
+      db.expertProfile.findUnique({ where: { userId }, select: { disabledAt: true } }),
+    ]);
+    const closed = recruiter?.disabledAt ? "RECRUITER" : expert?.disabledAt ? "EXPERT" : null;
+    if (!closed) return null;
+    if ((recruiter && !recruiter.disabledAt) || (expert && !expert.disabledAt)) return null;
+    const [memberships, guardianships, flags] = await Promise.all([
+      db.membership.count({ where: { userId, status: "ACTIVE", leftAt: null } }),
+      db.guardianship.count({ where: { parentUserId: userId, status: "ACTIVE" } }),
+      db.user.findUnique({ where: { id: userId }, select: { isSuperuser: true, isAppAdmin: true } }),
+    ]);
+    if (memberships > 0 || guardianships > 0 || flags?.isSuperuser || flags?.isAppAdmin) return null;
+    return closed;
+  });
 }

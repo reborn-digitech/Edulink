@@ -320,7 +320,8 @@ export async function listMarketplace(
   if (!session.schoolId) return [];
 
   const experts = await db.expertProfile.findMany({
-    where: { publishedAt: { not: null }, ...realPeopleOnly(await readerIsFixture(session.schoolId)) },
+    // A closed account is found by no school (G4-28, risks batch 5 Oct 2026).
+    where: { publishedAt: { not: null }, disabledAt: null, ...realPeopleOnly(await readerIsFixture(session.schoolId)) },
     include: {
       user: { select: { name: true, preferredName: true } },
       slots: {

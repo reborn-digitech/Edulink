@@ -799,7 +799,7 @@ export async function issueCopy(ctx: ActiveContext, input: { accession: string; 
  */
 async function chargeFine(tx: Tx, schoolId: string, memberKind: string, membershipId: string, s: Settings, paise: number, label: string, today: string): Promise<string | null> {
   if (!isPupilKind(memberKind) || !s.fineHeadId || paise <= 0) return null;
-  const [head, year] = await Promise.all([tx.feeHead.findFirst({ where: { id: s.fineHeadId, schoolId, retiredAt: null }, select: { id: true, code: true, name: true } }), currentAcademicYear(schoolId)]);
+  const [head, year] = await Promise.all([tx.feeHead.findFirst({ where: { id: s.fineHeadId, schoolId, retiredAt: null }, select: { id: true, code: true, name: true } }), currentAcademicYear(schoolId, tx)]);
   if (!head || !year) return null;
   const demand = await tx.feeDemand.create({
     data: { schoolId, studentMembershipId: membershipId, academicYearId: year.id, instalmentId: null, label, dueDate: dayToDate(today), grossPaise: paise, concessionPaise: 0, netPaise: paise, linesJson: writeJson([{ headId: head.id, code: head.code, name: head.name, grossPaise: paise, concessionPaise: 0 }]), status: "OPEN" },

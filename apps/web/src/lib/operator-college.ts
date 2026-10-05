@@ -20,6 +20,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./access-error";
 import { notify } from "./notify";
+import { sendStandingNotice } from "./email";
 import { readJson } from "./json";
 import { translator } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
@@ -421,5 +422,47 @@ export async function setRecruiterStanding(session: ActiveContext, userId: strin
     targetId: userId,
     meta: { companyName: profile.companyName, sessionsEnded, reason: input.reason?.trim() || null },
   });
+  await tellStanding(userId, "RECRUITER", input.disabled, input.reason);
   return { ok: true, sessionsEnded };
+}
+
+/**
+ * AN EXPERT CLOSED OR OPENED AGAIN (G4-28, risks batch 5 Oct 2026), the recruiter's rule for the other outside
+ * account: closed, they sign in to nothing (auth-login.ts says why), every session and token ends, no school finds
+ * or books them (the marketplace and the booking path read `disabledAt`), and they are told by email. What a school
+ * already arranged with them stays as the unpublishing rule keeps it (superuser.ts setExpertStanding): the school
+ * cancels it. Publishing and verifying are untouched; opening again restores the sign-in. Audited
+ * superuser.expert.disable|enable with the reason.
+ */
+export async function setExpertAccess(session: ActiveContext, profileId: string, input: { disabled: boolean; reason?: string }): Promise<{ ok: true; sessionsEnded: number } | Refusal> {
+  assertSuperuser(session);
+  const profile = await db.expertProfile.findUnique({ where: { id: profileId }, select: { userId: true, disabledAt: true, user: { select: { name: true } } } });
+  if (!profile) return { ok: false, errorKey: "riskDecisions.refuseNoExpert" };
+  if (Boolean(profile.disabledAt) === input.disabled) return { ok: true, sessionsEnded: 0 };
+  await db.expertProfile.update({ where: { id: profileId }, data: { disabledAt: input.disabled ? new Date() : null } });
+  const sessionsEnded = input.disabled ? await revokeAllAccess(profile.userId, { tokens: true }) : 0;
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: input.disabled ? "superuser.expert.disable" : "superuser.expert.enable",
+    targetType: "ExpertProfile",
+    targetId: profileId,
+    meta: { name: profile.user.name, sessionsEnded, reason: input.reason?.trim() || null },
+  });
+  await tellStanding(profile.userId, "EXPERT", input.disabled, input.reason);
+  return { ok: true, sessionsEnded };
+}
+
+/** The closed (or reopened) outside account told by email in its own language; a mail that fails is logged, the decision stands. */
+async function tellStanding(userId: string, kind: "RECRUITER" | "EXPERT", disabled: boolean, reason?: string): Promise<void> {
+  const user = await db.user.findUnique({ where: { id: userId }, select: { email: true, prefs: true } });
+  if (!user?.email) return;
+  const locale = normaliseLocale(readJson<UserPrefs>(user.prefs, DEFAULT_PREFS).locale);
+  const t = translator(locale);
+  const why = reason?.trim();
+  const lines = disabled
+    ? [t(kind === "RECRUITER" ? "riskDecisions.closedBodyRecruiter" : "riskDecisions.closedBodyExpert"), ...(why ? [t("riskDecisions.closedReason", { reason: why })] : []), t("riskDecisions.closedWriteBack")]
+    : [t("riskDecisions.reopenedBody")];
+  const subject = disabled ? t(kind === "RECRUITER" ? "riskDecisions.closedSubjectRecruiter" : "riskDecisions.closedSubjectExpert") : t("riskDecisions.reopenedSubject");
+  await sendStandingNotice({ to: user.email, subject, lines, locale }).catch((error) => console.error("[operator-college] standing notice failed", error));
 }

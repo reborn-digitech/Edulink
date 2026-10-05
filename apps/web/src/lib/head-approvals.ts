@@ -8,6 +8,7 @@ import { notify, notifyGuardians } from "./notify";
 import { assertCollege, assertModuleOn } from "./modules";
 import { isDateKey, todayKey } from "./dates";
 import { paidOnSeat } from "./college-admissions";
+import { settleExpulsions } from "./hostel";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -206,7 +207,13 @@ export async function proposeExpulsion(ctx: ActiveContext, input: { allotmentId:
   return (await expulsionRows(me.schoolId, { id }))[0]!;
 }
 
-/** The principal's word. An approval ends the place on the proposal's day and tells the student and their family. */
+/**
+ * The principal's word. An approval ends the place on the proposal's day and
+ * tells the student and their family. A day still ahead is read at the time
+ * (hostel.ts `liveAllotmentWhere`: the boarder stays on the roster until it);
+ * a day that has come is written now by the one writer (`settleExpulsions`),
+ * as it is before the bed or the pupil is given again (A3-S-15).
+ */
 export async function decideExpulsion(ctx: ActiveContext, expulsionId: string, input: { approve: boolean; note: string }, now: Date = new Date()): Promise<Expulsion> {
   const me = caller(ctx, HEAD);
   await assertModuleOn(me.schoolId, "HOSTEL");
@@ -217,12 +224,13 @@ export async function decideExpulsion(ctx: ActiveContext, expulsionId: string, i
   const target = input.approve ? "APPROVED" : "REFUSED";
   if (x.status === target) return (await expulsionRows(me.schoolId, { id: x.id }))[0]!;
   if (x.status !== "ASKED") throw new AccessError("collegeDesks.refuseExpulsionDecided");
+  const today = todayKey((await db.school.findUniqueOrThrow({ where: { id: me.schoolId }, select: { timezone: true } })).timezone, now);
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
     const moved = await tx.hostelExpulsion.updateMany({ where: { id: x.id, status: "ASKED" }, data: { status: target, decidedByUserId: me.userId, decidedAt: now, decisionNote: input.note.trim() || null, openKey: null } });
     if (moved.count === 0) throw new AccessError("collegeDesks.refuseExpulsionDecided");
-    // The place ends on the proposal's day, as the office's own "end the allotment" writes it.
-    if (input.approve) await tx.hostelAllotment.updateMany({ where: { id: x.allotmentId, status: "ACTIVE" }, data: { status: "ENDED", toDate: x.effectiveOn, activePupilKey: null, activeBedKey: null, endedByUserId: me.userId } });
+    // The place ends on the proposal's day: written now only once that day has come.
+    if (input.approve) await settleExpulsions(tx, me.schoolId, today, [x.allotmentId]);
   });
   await audit({ schoolId: me.schoolId, actorUserId: me.userId, action: input.approve ? "hostel.expulsion.approve" : "hostel.expulsion.refuse", targetType: "HostelExpulsion", targetId: x.id, meta: { allotmentId: x.allotmentId, effectiveOn: x.effectiveOn } });
   if (input.approve) {

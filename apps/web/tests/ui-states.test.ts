@@ -63,3 +63,20 @@ describe("an instant prints the app's way, not the server's locale (A3-journeys-
     expect(bad).toEqual([]);
   });
 });
+
+describe("the last two targets under 44 px (A3-states-11)", () => {
+  const read = (rel: string) => readFileSync(join(process.cwd(), "src", rel), "utf8");
+  it("the kit's BackLink is 44 px tall", () => {
+    const text = read("components/ui/page-header.tsx");
+    const backLink = text.slice(text.indexOf("export function BackLink"), text.indexOf("export function PageHeader"));
+    expect(backLink).toMatch(/<Link [^>]*className=\{cn\("[^"]*\bmin-h-11\b/);
+  });
+  it("every post's category badge is a 44 px link around the pill", () => {
+    const files = ["app/(app)/bulletin/post-card.tsx", "app/(app)/bulletin/[postId]/page.tsx", "app/(app)/bulletin/global/page.tsx"];
+    for (const file of files) {
+      const tags = [...read(file).matchAll(/<Link\s+href=\{`[^`]*\?category=[^`]*`\}\s+className="([^"]*)"/g)];
+      expect(tags.length, file).toBeGreaterThan(0);
+      for (const m of tags) expect(m[1], file).toMatch(/\bmin-h-11\b/);
+    }
+  });
+});

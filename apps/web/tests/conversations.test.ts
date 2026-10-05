@@ -121,7 +121,9 @@ describe("the rule", () => {
     // A college's faculty and HOD converse as teachers (4 Oct 2026): an alumnus writes to former faculty, who may answer.
     expect(mayConverse("ALUMNUS", "FACULTY")).toBe(true);
     expect(mayConverse("HOD", "STUDENT")).toBe(true);
-    expect(mayConverse("ACCOUNTS", "STUDENT")).toBe(false);
+    // The four college desks converse as staff since G4-30 (risks batch, 5 Oct 2026); a module role still does not.
+    expect(mayConverse("ACCOUNTS", "STUDENT")).toBe(true);
+    expect(mayConverse("LIBRARIAN", "STUDENT")).toBe(false);
     expect(mayConverse("PARENT", "PRINCIPAL")).toBe(true);
     // ⚠ The safeguarding line. A child never gets an unobserved channel to
     // another child or to somebody else's parent.

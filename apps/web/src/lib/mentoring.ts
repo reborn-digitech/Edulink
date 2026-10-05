@@ -270,7 +270,7 @@ export async function createMentorship(
   if (purpose.length < 5) throw new AccessError("access.sayWhatTheMentoringIsFor");
 
   const expert = await db.expertProfile.findFirst({
-    where: { id: input.expertProfileId, publishedAt: { not: null } },
+    where: { id: input.expertProfileId, publishedAt: { not: null }, disabledAt: null },
     select: {
       id: true,
       userId: true,
@@ -637,7 +637,7 @@ export async function pairingOptions(session: ActiveContext): Promise<PairingOpt
 
   const [experts, pupils] = await Promise.all([
     db.expertProfile.findMany({
-      where: { publishedAt: { not: null } },
+      where: { publishedAt: { not: null }, disabledAt: null },
       select: {
         id: true,
         headline: true,
@@ -727,7 +727,7 @@ export async function requestMentor(
   if (purpose.length > 1000) return { ok: false, errorKey: "mentoring.tooLong" };
 
   const expert = await db.expertProfile.findFirst({
-    where: { id: input.expertProfileId, publishedAt: { not: null } },
+    where: { id: input.expertProfileId, publishedAt: { not: null }, disabledAt: null },
     select: {
       id: true,
       userId: true,
@@ -1037,7 +1037,7 @@ export async function requestableExperts(session: ActiveContext): Promise<Reques
   if (session.role !== "STUDENT" || !session.membershipId) return [];
 
   const experts = await db.expertProfile.findMany({
-    where: { publishedAt: { not: null }, offering: { not: "SESSIONS" } },
+    where: { publishedAt: { not: null }, disabledAt: null, offering: { not: "SESSIONS" } },
     select: {
       id: true,
       headline: true,

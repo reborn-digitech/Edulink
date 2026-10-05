@@ -437,13 +437,16 @@ describe("the exam cell (module EXAMS)", () => {
     expect((await body<{ canAct: boolean; results: unknown[] }>(granted)).canAct).toBe(false);
   });
 
-  it("issues a grade card the public check confirms, from its college's fence only", async () => {
+  it("issues a grade card the public check confirms by its code, naming its own college whatever id rides beside it", async () => {
     await as("Controller", ids.aff!, "EXAM_CONTROLLER");
     const issued = await body<{ id: string }>(await documentsPost(json("/api/v1/exam-cell/documents", { kind: "GRADE_CARD", studentMembershipId: ids.s1 })));
     const doc = await db.examDocument.findUniqueOrThrow({ where: { id: issued.id } });
     expect(doc.serial).toMatch(/^GC\/2026–27\/0001$/);
     expect(await checkExamDocument(ids.aff!, doc.code)).toMatchObject({ valid: true, kind: "GRADE_CARD", serial: doc.serial });
-    expect((await checkExamDocument(ids.auto!, doc.code)).valid).toBe(false);
+    // The code alone finds the paper (A3-journeys-21): another college's id beside it changes nothing, and the answer names the issuer.
+    const elsewhere = await checkExamDocument(ids.auto!, doc.code);
+    expect(elsewhere).toMatchObject({ valid: true, serial: doc.serial });
+    expect(elsewhere.schoolName).toBe((await checkExamDocument(ids.aff!, doc.code)).schoolName);
     // A degree is an autonomous college's alone.
     expect((await documentsPost(json("/api/v1/exam-cell/documents", { kind: "DEGREE", studentMembershipId: ids.s1 }))).status).toBe(403);
   });

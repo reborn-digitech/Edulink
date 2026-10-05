@@ -104,6 +104,38 @@ import type { Role } from "./constants";
 type Item = { answer: WorksheetAnswer | null; score: number | null; note: string };
 type Items = Record<string, Item>;
 
+/**
+ * THE FIELDS WITH NO HISTORY, FROZEN AT GENERATION (R-21, risks batch 5 Oct 2026; 08's option "snapshot at
+ * generation"). A teacher's department, designation, qualification and appointment, a programme's intake, and a
+ * student's higher-studies and entrepreneur flags are rows that are simply overwritten, so a SAR, PCI, BCI or NCTE
+ * return rebuilt after one changed printed today's value for a past year. Now the generator records every such value
+ * it read (`Snap.record`) and stores it on the filing (CollegeFiling.snapshotJson, one writer: generateFilingAs); any
+ * later build of that year — the council's page, the data audit's regeneration — reads the stored values
+ * (`Snap.frozen`) and falls back to the live row only for what the snapshot does not hold (a filing made before
+ * 5 October, or a teacher who was not on it). A year with no generated filing reads the rows as they stand.
+ */
+export type FilingSnapshot = {
+  teachers: Record<string, { departmentId: string | null; departmentName: string; designation: string | null; qualification: string | null; appointment: string | null }>;
+  intake: Record<string, number>;
+  placement: Record<string, { higherStudies: boolean; entrepreneur: boolean }>;
+};
+type Snap = { frozen: FilingSnapshot | null; record: FilingSnapshot };
+const emptySnapshot = (): FilingSnapshot => ({ teachers: {}, intake: {}, placement: {} });
+const liveSnap = (): Snap => ({ frozen: null, record: emptySnapshot() });
+
+function readSnapshot(raw: string | null | undefined): FilingSnapshot | null {
+  const v = readJson<Partial<FilingSnapshot> | null>(raw ?? "", null);
+  if (!v || typeof v !== "object") return null;
+  const snap = { teachers: v.teachers ?? {}, intake: v.intake ?? {}, placement: v.placement ?? {} };
+  return Object.keys(snap.teachers).length + Object.keys(snap.intake).length + Object.keys(snap.placement).length ? snap : null;
+}
+
+/** The snapshot stored with the year's latest filing of this kind (an NBA SAR: of this department), or null. */
+export async function storedSnapshot(schoolId: string, kind: CollegeFilingKind, year: number, departmentId: string | null): Promise<FilingSnapshot | null> {
+  const row = await db.collegeFiling.findFirst({ where: { schoolId, kind, year, ...(kind === "NBA_SAR" ? { departmentId } : {}) }, orderBy: { generatedAt: "desc" }, select: { snapshotJson: true } });
+  return readSnapshot(row?.snapshotJson);
+}
+
 /* -------------------------------------------------------------------------- */
 /* The gate                                                                    */
 /* -------------------------------------------------------------------------- */
@@ -124,10 +156,16 @@ export async function assertFilingApplies(schoolId: string, kind: CollegeFilingK
 const PROGRAMME_SELECT = { id: true, code: true, name: true, level: true, durationYears: true, intake: true, departmentId: true, stream: true } as const;
 type ProgrammeRow = { id: string; code: string; name: string; level: string; durationYears: number; intake: number; departmentId: string; stream: string | null };
 
-export async function streamProgrammes(schoolId: string, stream: StreamCode, asOf?: Date): Promise<{ programmes: ProgrammeRow[]; wholeCollege: boolean }> {
+export async function streamProgrammes(schoolId: string, stream: StreamCode, asOf?: Date, snap?: Snap): Promise<{ programmes: ProgrammeRow[]; wholeCollege: boolean }> {
   // With `asOf` (a past year's NBA SAR), a programme archived after that instant still counts: it was running then.
   const live = asOf ? { OR: [{ archivedAt: null }, { archivedAt: { gt: asOf } }] } : { archivedAt: null };
-  const [streams, programmes] = await Promise.all([streamsOf(schoolId), db.programme.findMany({ where: { schoolId, ...live }, orderBy: { code: "asc" }, select: PROGRAMME_SELECT })]);
+  const [streams, rows] = await Promise.all([streamsOf(schoolId), db.programme.findMany({ where: { schoolId, ...live }, orderBy: { code: "asc" }, select: PROGRAMME_SELECT })]);
+  // The intake as the filing read it (R-21): frozen where the snapshot holds it, recorded as read otherwise.
+  const programmes = rows.map((p) => {
+    const intake = snap?.frozen?.intake[p.id] ?? p.intake;
+    if (snap) snap.record.intake[p.id] = intake;
+    return { ...p, intake };
+  });
   const own = programmes.filter((p) => p.stream === stream);
   if (own.length) return { programmes: own, wholeCollege: false };
   const only = streams.length === 1 && streams[0] === stream;
@@ -149,9 +187,9 @@ type Teacher = { membershipId: string; name: string; departmentId: string | null
  * With `during` (an academic year's window, for a past year's NBA SAR): those on the staff at some point of that year —
  * not left before it began (a leaver stays in the years they taught) and not joined after it ended (FacultyRecord.joinedOn;
  * a teacher with no joining date recorded counts, as before, because an onboarded college's accounts are all made the
- * day it moved in). The department link and the designation have no history and are read as they stand.
+ * day it moved in; R-22, decided 5 Oct 2026: keep). The department link and the designation have no history and are read as they stand.
  */
-async function teachers(schoolId: string, departmentIds: readonly string[] | null, during?: { from: string; to: string }): Promise<Teacher[]> {
+async function teachers(schoolId: string, departmentIds: readonly string[] | null, during?: { from: string; to: string }, snap?: Snap): Promise<Teacher[]> {
   const onRoll = during ? { OR: [{ status: "ACTIVE", leftAt: null }, { leftAt: { gte: new Date(`${during.from}T00:00:00.000Z`) } }] } : { status: "ACTIVE", leftAt: null };
   const [members, links, departments, records] = await Promise.all([
     db.membership.findMany({ where: { schoolId, role: { in: ["FACULTY", "HOD"] }, ...onRoll }, orderBy: { user: { name: "asc" } }, select: { id: true, user: { select: { name: true } } } }),
@@ -168,15 +206,19 @@ async function teachers(schoolId: string, departmentIds: readonly string[] | nul
     .map((m) => {
       const r = rec.get(m.id);
       const departmentId = head.get(m.id) ?? link.get(m.id) ?? r?.departmentId ?? null;
-      return { membershipId: m.id, name: m.user.name, departmentId, departmentName: departmentId ? (deptName.get(departmentId) ?? "") : "", designation: r?.designation ?? null, qualification: r?.highestQualification ?? null, appointment: r?.appointment ?? null };
+      const live = { departmentId, departmentName: departmentId ? (deptName.get(departmentId) ?? "") : "", designation: r?.designation ?? null, qualification: r?.highestQualification ?? null, appointment: r?.appointment ?? null };
+      // The department, designation, qualification and appointment as the filing read them (R-21).
+      const held = snap?.frozen?.teachers[m.id] ?? live;
+      if (snap) snap.record.teachers[m.id] = held;
+      return { membershipId: m.id, name: m.user.name, ...held };
     })
     .filter((t) => departmentIds === null || (t.departmentId !== null && departmentIds.includes(t.departmentId)));
 }
 
 /** The teachers of a stream's departments; at a college whose only stream it is, every teacher. */
-async function streamTeachers(schoolId: string, scope: { programmes: ProgrammeRow[]; wholeCollege: boolean }): Promise<Teacher[]> {
-  if (scope.wholeCollege) return teachers(schoolId, null);
-  return teachers(schoolId, [...new Set(scope.programmes.map((p) => p.departmentId))]);
+async function streamTeachers(schoolId: string, scope: { programmes: ProgrammeRow[]; wholeCollege: boolean }, snap?: Snap): Promise<Teacher[]> {
+  if (scope.wholeCollege) return teachers(schoolId, null, undefined, snap);
+  return teachers(schoolId, [...new Set(scope.programmes.map((p) => p.departmentId))], undefined, snap);
 }
 
 /** Students on each programme by year of study, as the seats stand. */
@@ -254,16 +296,26 @@ function checklistSection(kind: "BCI_RETURN" | "NCTE_RETURN", items: Items): { s
 /* The four returns                                                            */
 /* -------------------------------------------------------------------------- */
 
-export type CouncilBuilt = { document: FilingDocument; figures: Record<string, number>; marks?: Record<string, number> };
+export type CouncilBuilt = { document: FilingDocument; figures: Record<string, number>; marks?: Record<string, number>; /** The no-history values this build read (R-21), for the generator to store. */ snapshot?: FilingSnapshot };
 
-/** Each return as a document and its headline figures, from the rows as they stand: the one function the generator, the council doors and the data audit share. */
-export async function councilDocument(schoolId: string, kind: CollegeFilingKind, year: number, departmentId: string | null): Promise<CouncilBuilt> {
-  if (kind === "PCI_INSPECTION") return pciDocument(schoolId, year);
-  if (kind === "BCI_RETURN") return bciDocument(schoolId, year);
-  if (kind === "NCTE_RETURN") return ncteDocument(schoolId, year);
+/**
+ * Each return as a document and its headline figures: the one function the generator, the council doors and the
+ * data audit share. `snapshot: "stored"` (the default) reads the no-history fields as the year's generated filing
+ * froze them (R-21); `"live"` (the generator) reads the rows as they stand and hands back what it read.
+ */
+export async function councilDocument(schoolId: string, kind: CollegeFilingKind, year: number, departmentId: string | null, opts: { snapshot?: "stored" | "live" } = {}): Promise<CouncilBuilt> {
+  const snap: Snap = { frozen: opts.snapshot === "live" ? null : await storedSnapshot(schoolId, kind, year, departmentId), record: emptySnapshot() };
+  const built = await councilDocumentWith(schoolId, kind, year, departmentId, snap);
+  return { ...built, snapshot: snap.record };
+}
+
+async function councilDocumentWith(schoolId: string, kind: CollegeFilingKind, year: number, departmentId: string | null, snap: Snap): Promise<CouncilBuilt> {
+  if (kind === "PCI_INSPECTION") return pciDocument(schoolId, year, snap);
+  if (kind === "BCI_RETURN") return bciDocument(schoolId, year, snap);
+  if (kind === "NCTE_RETURN") return ncteDocument(schoolId, year, snap);
   if (kind === "NBA_SAR") {
     if (!departmentId) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
-    return nbaDocument(schoolId, departmentId, year);
+    return nbaDocument(schoolId, departmentId, year, snap);
   }
   throw new Error(`councilDocument: ${kind} is not a council's return`);
 }
@@ -272,10 +324,10 @@ function frame(p: Awaited<ReturnType<typeof schoolProfile>>, kind: CollegeFiling
   return { title: FILING_TITLE[kind as keyof typeof FILING_TITLE], subtitle: `${p.name}${subtitleExtra ? ` · ${subtitleExtra}` : ""} · ${yearLabel(year)}`, school: p.name, footer: `${p.name} · ${L.generatedFrom}`, sections: [{ heading: L.institution, rows: [...profileRows(p), [L.year, yearLabel(year)]] }, ...sections] };
 }
 
-async function pciDocument(schoolId: string, year: number): Promise<CouncilBuilt> {
+async function pciDocument(schoolId: string, year: number, snap: Snap): Promise<CouncilBuilt> {
   const p = await schoolProfile(schoolId);
-  const scope = await streamProgrammes(schoolId, "PHARMACY");
-  const [staff, programmes, rooms, practical] = await Promise.all([streamTeachers(schoolId, scope), studentsByProgramme(schoolId, scope.programmes), db.room.findMany({ where: { schoolId, kind: "LAB" }, orderBy: { name: "asc" }, select: { name: true, capacity: true } }), practicalRecordSummary(schoolId, year)]);
+  const scope = await streamProgrammes(schoolId, "PHARMACY", undefined, snap);
+  const [staff, programmes, rooms, practical] = await Promise.all([streamTeachers(schoolId, scope, snap), studentsByProgramme(schoolId, scope.programmes), db.room.findMany({ where: { schoolId, kind: "LAB" }, orderBy: { name: "asc" }, select: { name: true, capacity: true } }), practicalRecordSummary(schoolId, year)]);
   const labNames = rooms.map((r) => r.name);
   const [assets, stock] = labNames.length
     ? await Promise.all([
@@ -321,10 +373,10 @@ async function libraryHoldings(schoolId: string) {
   return { titles: titles.length, volumes: copies.length, rows };
 }
 
-async function bciDocument(schoolId: string, year: number): Promise<CouncilBuilt> {
+async function bciDocument(schoolId: string, year: number, snap: Snap): Promise<CouncilBuilt> {
   const p = await schoolProfile(schoolId);
-  const scope = await streamProgrammes(schoolId, "LAW");
-  const [staff, programmes, library, law, sheet] = await Promise.all([streamTeachers(schoolId, scope), studentsByProgramme(schoolId, scope.programmes), libraryHoldings(schoolId), lawInternshipSummary(schoolId, year), readWorksheet(schoolId, "BCI_RETURN", year)]);
+  const scope = await streamProgrammes(schoolId, "LAW", undefined, snap);
+  const [staff, programmes, library, law, sheet] = await Promise.all([streamTeachers(schoolId, scope, snap), studentsByProgramme(schoolId, scope.programmes), libraryHoldings(schoolId), lawInternshipSummary(schoolId, year), readWorksheet(schoolId, "BCI_RETURN", year)]);
   const check = checklistSection("BCI_RETURN", sheet.items);
   const m = law.mootCourts;
   const figures = {
@@ -354,10 +406,10 @@ async function bciDocument(schoolId: string, year: number): Promise<CouncilBuilt
   return { document: frame(p, "BCI_RETURN", year, sections), figures };
 }
 
-async function ncteDocument(schoolId: string, year: number): Promise<CouncilBuilt> {
+async function ncteDocument(schoolId: string, year: number, snap: Snap): Promise<CouncilBuilt> {
   const p = await schoolProfile(schoolId);
-  const scope = await streamProgrammes(schoolId, "EDUCATION");
-  const [staff, programmes, tp, sheet] = await Promise.all([streamTeachers(schoolId, scope), studentsByProgramme(schoolId, scope.programmes), teachingPracticeSummary(schoolId, year), readWorksheet(schoolId, "NCTE_RETURN", year)]);
+  const scope = await streamProgrammes(schoolId, "EDUCATION", undefined, snap);
+  const [staff, programmes, tp, sheet] = await Promise.all([streamTeachers(schoolId, scope, snap), studentsByProgramme(schoolId, scope.programmes), teachingPracticeSummary(schoolId, year), readWorksheet(schoolId, "NCTE_RETURN", year)]);
   const check = checklistSection("NCTE_RETURN", sheet.items);
   const bySubject = [...staff].sort((a, b) => a.departmentName.localeCompare(b.departmentName) || a.name.localeCompare(b.name));
   const figures = {
@@ -430,14 +482,14 @@ async function apiOf(schoolId: string, studentIds: string[], window: { from: str
  * graduate (nothing sets a seat COMPLETED; leaving sets the membership's leftAt)
  * — so a past SAR's students and SFR grew every year after it was filed.
  */
-export async function nbaFacts(schoolId: string, departmentId: string, year: number) {
+export async function nbaFacts(schoolId: string, departmentId: string, year: number, snap: Snap = liveSnap()) {
   const w = windowOf(year);
   const asOf = new Date(`${w.to}T23:59:59.999Z`);
   const yearStart = new Date(`${w.from}T00:00:00.000Z`);
   const department = await db.department.findFirst({ where: { id: departmentId, schoolId }, select: { id: true, code: true, name: true } });
   const eligible = await nbaDepartments(schoolId, asOf);
   if (!department || !eligible.some((d) => d.id === departmentId)) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
-  const { programmes: all } = await streamProgrammes(schoolId, "ENGINEERING", asOf);
+  const { programmes: all } = await streamProgrammes(schoolId, "ENGINEERING", asOf, snap);
   const programmes = all.filter((p) => p.departmentId === departmentId);
   const pids = programmes.map((p) => p.id);
   const seats = await db.studentProgramme.findMany({ where: { schoolId, programmeId: { in: pids }, entryYear: { lte: year } }, select: { studentMembershipId: true, programmeId: true, entryYear: true, status: true, student: { select: { leftAt: true } } } });
@@ -477,7 +529,12 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
         ? await Promise.all([db.offer.findMany({ where: { studentMembershipId: { in: ids }, createdAt: { lte: asOf }, OR: [{ declinedAt: null }, { declinedAt: { gt: asOf } }] }, select: { studentMembershipId: true } }), db.placementProfile.findMany({ where: { studentMembershipId: { in: ids } }, select: { studentMembershipId: true, higherStudies: true, entrepreneur: true } })])
         : [[], []];
       const placed = new Set(offers.map((o) => o.studentMembershipId));
-      const prof = new Map(profiles.map((p) => [p.studentMembershipId, p]));
+      // The higher-studies and entrepreneur flags as the filing read them (R-21).
+      const prof = new Map(profiles.map((p) => {
+        const held = snap.frozen?.placement[p.studentMembershipId] ?? { higherStudies: p.higherStudies, entrepreneur: p.entrepreneur };
+        snap.record.placement[p.studentMembershipId] = held;
+        return [p.studentMembershipId, held];
+      }));
       let higher = 0;
       let entrepreneurs = 0;
       for (const id of ids) {
@@ -491,7 +548,7 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
   const pl = placementMarks(placement.map((x) => x.index));
 
   // 5.1–5.3 — the department's teachers (visiting faculty are not counted).
-  const staff = (await teachers(schoolId, [departmentId], w)).filter((t) => t.appointment !== "VISITING");
+  const staff = (await teachers(schoolId, [departmentId], w, snap)).filter((t) => t.appointment !== "VISITING");
   const F = staff.length;
   const professors = staff.filter((t) => t.designation === "PROFESSOR").length;
   const associates = staff.filter((t) => t.designation === "ASSOCIATE_PROFESSOR").length;
@@ -543,8 +600,8 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
 
 const nv = (v: number | null) => (v === null ? L.notRecorded : v);
 
-async function nbaDocument(schoolId: string, departmentId: string, year: number): Promise<CouncilBuilt> {
-  const [p, f, sheet] = await Promise.all([schoolProfile(schoolId), nbaFacts(schoolId, departmentId, year), readWorksheet(schoolId, "NBA_SAR", year, departmentId)]);
+async function nbaDocument(schoolId: string, departmentId: string, year: number, snap: Snap): Promise<CouncilBuilt> {
+  const [p, f, sheet] = await Promise.all([schoolProfile(schoolId), nbaFacts(schoolId, departmentId, year, snap), readWorksheet(schoolId, "NBA_SAR", year, departmentId)]);
   const scoreOf = (code: string, computed: boolean, max: number) => (computed ? (f.marks[code] ?? 0) : Math.min(max, sheet.items[code]?.score ?? 0));
   const computedTotal = round2(NBA_SAR_ITEMS.filter((i) => i.computed).reduce((a, i) => a + scoreOf(i.code, true, i.marks), 0));
   const selfTotal = round2(NBA_SAR_ITEMS.filter((i) => !i.computed).reduce((a, i) => a + scoreOf(i.code, false, i.marks), 0));

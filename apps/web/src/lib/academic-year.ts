@@ -83,8 +83,14 @@ export async function finishedYearContaining(
 }
 
 /** The year a school is currently running, if it has said. */
-export async function currentAcademicYear(schoolId: string) {
-  return db.academicYear.findFirst({
+/**
+ * The school's running year. `client`: inside a `$tenantTransaction` pass the
+ * transaction's own client — a read through `db` there runs outside it with no
+ * tenant and finds nothing under RLS (R-49; the guard in db.ts throws on it in
+ * development and test).
+ */
+export async function currentAcademicYear(schoolId: string, client: Pick<typeof db, "academicYear"> = db) {
+  return client.academicYear.findFirst({
     where: { schoolId, isCurrent: true },
     orderBy: { startDate: "desc" },
   });

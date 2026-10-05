@@ -202,23 +202,43 @@ export async function saveStaffAttendanceSettings(ctx: ActiveContext, input: { c
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.settings", targetType: "School", targetId: caller.schoolId, meta: { ...input, relabelled } });
 }
 
+/**
+ * THE SELF CHECK-IN'S ONE WRITER (R-2, 5 Oct 2026): the person's own "I'm in"
+ * (`checkIn`) and a punch at the school's attendance device
+ * (attendance-devices.ts) both land here, so the day's row has one rule:
+ * present, or late after the school's grace, read at the moment of arriving
+ * in the school's own zone; never on a closed day; a second arrival in the
+ * day changes nothing and says what stands (an office mark included).
+ * `created` is false for that no-op. The caller audits.
+ */
+export async function recordStaffCheckIn(input: { schoolId: string; membershipId: string; at: Date; byUserId: string | null }): Promise<{ created: boolean; dateKey: string; status: StaffAttendanceStatus; checkedInAt: Date; late: boolean }> {
+  const school = await schoolOf(input.schoolId);
+  const dateKey = dateKeyInZone(input.at, school.timezone);
+  const closure = await closedOn(input.schoolId, dateKey);
+  if (!closure.teachingDay || closure.closed) throw new AccessError("staffAttendance.refuseClosed");
+  const existing = await db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: input.membershipId, dateKey } } });
+  // A second tap in the day, or a check-in after the office already marked
+  // the person, changes nothing and says what stands: not a refusal.
+  if (existing) return { created: false, dateKey, status: existing.status as StaffAttendanceStatus, checkedInAt: existing.checkedInAt ?? existing.createdAt, late: existing.status === "LATE" };
+  const late = minuteOfDayIn(school.timezone, input.at) > school.staffCheckInMinute + school.staffLateGraceMinutes;
+  const status: StaffAttendanceStatus = late ? "LATE" : "PRESENT";
+  try {
+    await db.staffAttendance.create({ data: { schoolId: input.schoolId, membershipId: input.membershipId, dateKey, status, source: "SELF", checkedInAt: input.at, markedByUserId: input.byUserId } });
+  } catch (error) {
+    // Two arrivals at once (a tap and a punch): the first row stands.
+    if ((error as { code?: string }).code !== "P2002") throw error;
+    const row = await db.staffAttendance.findUniqueOrThrow({ where: { membershipId_dateKey: { membershipId: input.membershipId, dateKey } } });
+    return { created: false, dateKey, status: row.status as StaffAttendanceStatus, checkedInAt: row.checkedInAt ?? row.createdAt, late: row.status === "LATE" };
+  }
+  return { created: true, dateKey, status, checkedInAt: input.at, late };
+}
+
 /** "I'm in": present, or late after the grace; a second time in the day is a no-op that says what stands; never on a closed day. */
 export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttendanceStatus; checkedInAt: Date; late: boolean }> {
   const caller = staff(ctx);
-  const school = await schoolOf(caller.schoolId);
-  const today = todayKey(school.timezone);
-  const closure = await closedOn(caller.schoolId, today);
-  if (!closure.teachingDay || closure.closed) throw new AccessError("staffAttendance.refuseClosed");
-  const existing = await db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: caller.membershipId, dateKey: today } } });
-  // A second tap in the day, or a check-in after the office already marked
-  // the person, changes nothing and says what stands: not a refusal.
-  if (existing) return { status: existing.status as StaffAttendanceStatus, checkedInAt: existing.checkedInAt ?? existing.createdAt, late: existing.status === "LATE" };
-  const now = new Date();
-  const late = minuteOfDayIn(school.timezone, now) > school.staffCheckInMinute + school.staffLateGraceMinutes;
-  const status: StaffAttendanceStatus = late ? "LATE" : "PRESENT";
-  await db.staffAttendance.create({ data: { schoolId: caller.schoolId, membershipId: caller.membershipId, dateKey: today, status, source: "SELF", checkedInAt: now, markedByUserId: caller.user.id } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.checkIn", targetType: "Membership", targetId: caller.membershipId, meta: { dateKey: today, late } });
-  return { status, checkedInAt: now, late };
+  const r = await recordStaffCheckIn({ schoolId: caller.schoolId, membershipId: caller.membershipId, at: new Date(), byUserId: caller.user.id });
+  if (r.created) await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.checkIn", targetType: "Membership", targetId: caller.membershipId, meta: { dateKey: r.dateKey, late: r.late } });
+  return { status: r.status, checkedInAt: r.checkedInAt, late: r.late };
 }
 
 type Tally = { present: number; late: number; halfDay: number; absent: number; onLeave: number; unmarked: number; workingDays: number; workingDaysInMonth: number; percent: number | null };

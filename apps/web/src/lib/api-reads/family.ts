@@ -6,7 +6,7 @@ import { getSession, listContexts, DEFAULT_PREFS, type ActiveContext, type UserP
 import { getAttendanceSummary, currentStreakFor } from "@/lib/attendance";
 import { examMarksFor, dateSheetsFor } from "@/lib/exams";
 import { studentWeek, childWeek, weekStartKey, type WeekGrid } from "@/lib/timetable";
-import { ownWorkScope, getStudentWork, childWork, overallForStudent } from "@/lib/grading";
+import { ownWorkScope, getStudentWork, childWork, overallForStudent, teacherWorkUrl, workLabel } from "@/lib/grading";
 import { myCards, cardsForChild, getCard } from "@/lib/report-cards";
 import { pendingReviews, submitReview } from "@/lib/reviews";
 import { openSlotsFor, myBookings } from "@/lib/meetings";
@@ -179,14 +179,14 @@ async function dueSoonFor(schoolId: string, studentMembershipId: string, take: n
       grades: { none: { studentMembershipId } },
       ...(await ownWorkScope(schoolId, studentMembershipId)),
     },
-    select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
+    select: { id: true, title: true, dueAt: true, class: { select: { name: true } }, offering: { select: { course: { select: { code: true, name: true } } } } },
     orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
     take,
   });
   return rows.map((a) => ({
     id: a.id,
     title: a.title,
-    className: a.class.name,
+    className: workLabel(a),
     dueAt: a.dueAt?.toISOString() ?? null,
     dueSoon: Boolean(a.dueAt && isWithin(a.dueAt, 2 * 86_400_000)),
   }));
@@ -319,14 +319,17 @@ export async function submitStudentWork(
       titleKey: "notifTitle.handedWorkIn",
       titleVars: { name: student.user.preferredName ?? student.user.name },
       body: assignment.title,
-      url: `/teacher/assignments/${assignmentId}`,
+      url: teacherWorkUrl({ id: assignmentId, offeringId: assignment.offeringId }),
     });
   }
-  publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
-    type: "assignment.published",
-    classId: assignment.classId,
-    assignmentId,
-  });
+  // A class's live channel; a college offering's work (R-48) has no class.
+  if (assignment.classId) {
+    publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
+      type: "assignment.published",
+      classId: assignment.classId,
+      assignmentId,
+    });
+  }
   await audit({
     schoolId: ctx.schoolId,
     actorUserId: ctx.user.id,
@@ -563,7 +566,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     // whole.
     db.grade.findMany({
       where: { studentMembershipId: selectedId, schoolId: student.schoolId, assignment: { examSlotId: null } },
-      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true } } },
+      select: { scoreMilli: true, assignment: { select: { pointsMilli: true, category: true, classId: true, offeringId: true } } },
     }),
     dueSoonFor(student.schoolId, selectedId, 4),
     db.remarkThread.findMany({
@@ -577,7 +580,8 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
   ]);
 
   const scored = allHomework.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
-  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId))];
+  // A college offering's work (R-48) has no class and no weights: points-weighted under the offering's id.
+  const classIds = [...new Set(allHomework.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
   const [weightRows, examMarks] = await Promise.all([
     db.gradeCategory.findMany({ where: { classId: { in: classIds } }, select: { classId: true, name: true, weightBps: true }, orderBy: { position: "asc" } }),
     examMarksFor(ctx),
@@ -589,7 +593,7 @@ export async function parentOverview(ctx: ActiveContext, childId?: string | null
     weightsByClass.set(row.classId, list);
   }
   const overall = overallForStudent(
-    allHomework.map((g) => ({ classId: g.assignment.classId, scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli, category: g.assignment.category })),
+    allHomework.map((g) => ({ classId: g.assignment.classId ?? g.assignment.offeringId ?? "", scoreMilli: g.scoreMilli, maxMilli: g.assignment.pointsMilli, category: g.assignment.category })),
     weightsByClass,
   );
 

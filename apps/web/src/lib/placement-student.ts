@@ -1,6 +1,7 @@
 import "server-only";
 import { PLACEMENT_PREP_SUBJECTS, type StudentPlacement } from "@edulink/contracts";
 import { db } from "./db";
+import { softSkillsCompletions } from "./soft-skills-count";
 import { assertGuardianAccess } from "./tenancy";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
@@ -56,7 +57,7 @@ export async function studentPlacement(ctx: ActiveContext): Promise<StudentPlace
   const me = await studentOf(ctx);
   const school = await db.school.findUniqueOrThrow({ where: { id: me.schoolId }, select: { timezone: true } });
   const today = todayKey(school.timezone);
-  const [settings, profile, records, drives, offers, internships, prep, mentorSlots] = await Promise.all([
+  const [settings, profile, records, drives, offers, internships, prep, mentorSlots, softSkills] = await Promise.all([
     placementSettings(me.schoolId, today),
     db.placementProfile.findUnique({ where: { studentMembershipId: me.membershipId } }),
     placementRecords(me.schoolId, [me.membershipId], today),
@@ -65,6 +66,7 @@ export async function studentPlacement(ctx: ActiveContext): Promise<StudentPlace
     myInternships(me.membershipId),
     prepTopics(ctx),
     mentorSlotsAt(me.schoolId),
+    softSkillsCompletions(me.schoolId, [me.membershipId]),
   ]);
   return {
     batchYear: settings.seasonBatchYear,
@@ -76,6 +78,7 @@ export async function studentPlacement(ctx: ActiveContext): Promise<StudentPlace
     internshipCredits: internships.creditsTotal,
     prep,
     mentorSlots,
+    softSkills: softSkills.get(me.membershipId) ?? [],
   };
 }
 

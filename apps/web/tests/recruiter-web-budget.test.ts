@@ -13,22 +13,17 @@ import { FANOUT_BUDGET } from "@/lib/api-v1";
 vi.mock("next/cache", () => ({ revalidatePath: () => undefined, revalidateTag: () => undefined }));
 import { __resetCookies } from "../tests/stubs/next-headers";
 import { addColleagueAction, postRequirementAction } from "@/app/(app)/placement/actions";
+import { FORM_IDLE } from "@/lib/form-state";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
 let userId = "";
 let colleagueId = "";
 
-/** A server action ends in redirect(); the target is in the thrown error's digest. */
-async function redirectOf(work: () => Promise<void>): Promise<string> {
-  try {
-    await work();
-  } catch (error) {
-    const digest = String((error as { digest?: string }).digest ?? "");
-    if (digest.startsWith("NEXT_REDIRECT")) return decodeURIComponent(digest.split(";")[2] ?? "");
-    throw error;
-  }
-  throw new Error("no redirect");
+/** A form's answer in place (A3-journeys-27, risks batch): what the person is told, done or refused. */
+async function said(work: () => Promise<{ ok: boolean; message?: string }>): Promise<{ ok: boolean; message: string }> {
+  const answer = await work();
+  return { ok: answer.ok, message: answer.message ?? "" };
 }
 
 beforeAll(async () => {
@@ -55,19 +50,20 @@ function form(values: Record<string, string>): FormData {
 
 describe("the recruiter's web forms and the fanout budget", () => {
   it("lets a form through under the budget (the refusal is the library's, not the budget's)", async () => {
-    const to = await redirectOf(() => addColleagueAction(form({ back: "/recruiter", email: `zz-rbudget-c-${STAMP}@test.invalid` })));
-    expect(to.startsWith("/recruiter?")).toBe(true);
-    expect(to).not.toContain("Too many requests");
+    const to = await said(() => addColleagueAction(FORM_IDLE, form({ back: "/recruiter", email: `zz-rbudget-c-${STAMP}@test.invalid` })));
+    expect(to.message).not.toContain("Too many requests");
     const row = await db.rateLimit.findUnique({ where: { bucket: `fanout:${userId}` } });
     expect(row?.hits).toBe(1);
   });
 
   it("refuses the colleague's invitation and the requirement once the hour's fanout is spent, before any work", async () => {
     await db.rateLimit.update({ where: { bucket: `fanout:${userId}` }, data: { hits: FANOUT_BUDGET.limit } });
-    const invite = await redirectOf(() => addColleagueAction(form({ back: "/recruiter", email: `zz-rbudget-c-${STAMP}@test.invalid` })));
-    expect(invite).toMatch(/^\/recruiter\?error=Too many requests\. Try again in about/);
-    const requirement = await redirectOf(() => postRequirementAction(form({ back: "/recruiter", role: "Analyst", package: "6", targetSchoolIds: "none" })));
-    expect(requirement).toMatch(/^\/recruiter\?error=Too many requests\./);
+    const invite = await said(() => addColleagueAction(FORM_IDLE, form({ back: "/recruiter", email: `zz-rbudget-c-${STAMP}@test.invalid` })));
+    expect(invite.ok).toBe(false);
+    expect(invite.message).toMatch(/^Too many requests\. Try again in about/);
+    const requirement = await said(() => postRequirementAction(FORM_IDLE, form({ back: "/recruiter", role: "Analyst", package: "6", targetSchoolIds: "none" })));
+    expect(requirement.ok).toBe(false);
+    expect(requirement.message).toMatch(/^Too many requests\./);
     // Refused before the library ran: no requirement was written.
     expect(await db.requirement.count({ where: { byUserId: userId } })).toBe(0);
   });

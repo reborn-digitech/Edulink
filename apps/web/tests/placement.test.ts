@@ -355,6 +355,32 @@ describe("the campaign of 4 October 2026", () => {
     await expect(recordOffer(await cellActor(ctx, ids.drive!), { studentMembershipId: ids.s2!, packageRupees: 2_000_000_000, letterFileId: null })).rejects.toMatchObject({ key: "placement.refusePackage" });
   });
 
+  it("asks before recording an offer far above the drive's highest package, and the audit row says it was confirmed (A3-journeys-18)", async () => {
+    // The drive's highest package is ₹8 lakh, so the line is 1.5 × 8 = ₹12 lakh; ₹25 lakh is the journeys layer's slip.
+    await as("RECRUITER");
+    const refused = await offersPost(json("/x", { studentMembershipId: ids.s2, packageRupees: 2_500_000 }), params({ driveId: ids.drive! }));
+    expect(refused.status).toBe(409);
+    const said = await body<{ code?: string; error: string }>(refused);
+    expect(said.error).toContain("25");
+    expect(said.error).toContain("8");
+    expect(await db.offer.count({ where: { driveId: ids.drive!, studentMembershipId: ids.s2! } })).toBe(0);
+    // At the line itself no question is asked (checked on the pure rule, so no offer is made here).
+    const { offerNeedsConfirm, HIGH_OFFER_RATIO } = await import("@/lib/placement-rules");
+    expect(HIGH_OFFER_RATIO).toBe(1.5);
+    expect(offerNeedsConfirm(1_200_000, 800_000)).toBe(false);
+    expect(offerNeedsConfirm(1_200_001, 800_000)).toBe(true);
+    expect(offerNeedsConfirm(9_000_000, 0)).toBe(false);
+    // Confirmed: recorded, and audited as confirmed with the drive's package beside it.
+    const made = await offersPost(json("/x", { studentMembershipId: ids.s2, packageRupees: 2_500_000, confirmedHigh: true }), params({ driveId: ids.drive! }));
+    expect(made.status).toBe(200);
+    const offer = await body<{ id: string; packageRupees: number }>(made);
+    expect(offer.packageRupees).toBe(2_500_000);
+    const row = await db.auditLog.findFirstOrThrow({ where: { action: "placement.offer", targetId: offer.id }, select: { meta: true } });
+    expect(JSON.parse(String(row.meta))).toMatchObject({ confirmedHigh: true, drivePackageMaxRupees: 800_000 });
+    // Put back as it was: the later tests count this drive's offers.
+    await db.offer.delete({ where: { id: offer.id } });
+  });
+
   it("binds a colleague only once they accept, answers the same for any address, and takes a colleague off (S-16, S-20)", async () => {
     const strangerEmail = MAIL("stranger");
     await as("RECRUITER");

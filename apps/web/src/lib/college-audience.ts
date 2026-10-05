@@ -82,3 +82,42 @@ export async function audienceTokensFor(session: ActiveContext): Promise<string[
 
 /** One student's audience tokens, for a reader of a notice who is not the student (a permission slip's audience, 5 Oct 2026). */
 export const studentTokensOf = (studentMembershipId: string): Promise<string[]> => studentTokens(studentMembershipId);
+
+/**
+ * MANY STUDENTS' TOKENS IN A BOUNDED NUMBER OF READS (R-54, 5 October 2026):
+ * the same tokens as `studentTokens`, for a whole slip's audience at once —
+ * three reads per thousand students (their seats, their live programme
+ * enrolments, the programmes' departments) instead of up to three per
+ * student, which for a college-wide slip was up to 15,000 reads per report.
+ */
+export async function studentTokensMany(studentMembershipIds: readonly string[]): Promise<Map<string, string[]>> {
+  const out = new Map<string, string[]>();
+  const ids = [...new Set(studentMembershipIds)];
+  for (let i = 0; i < ids.length; i += 1000) {
+    const chunk = ids.slice(i, i + 1000);
+    const [seats, enrolments] = await Promise.all([
+      db.studentProgramme.findMany({ where: { studentMembershipId: { in: chunk } }, select: { studentMembershipId: true, programmeId: true, divisionId: true, entryYear: true, programme: { select: { departmentId: true } } } }),
+      db.programmeEnrolment.findMany({ where: { studentMembershipId: { in: chunk }, status: "ACTIVE" }, orderBy: { createdAt: "desc" }, select: { studentMembershipId: true, programmeId: true, yearOfEntry: true } }),
+    ]);
+    const seatOf = new Map(seats.map((s) => [s.studentMembershipId, s]));
+    // The newest live enrolment, as studentTokens's findFirst takes it.
+    const enrolmentOf = new Map<string, (typeof enrolments)[number]>();
+    for (const e of enrolments) if (!enrolmentOf.has(e.studentMembershipId)) enrolmentOf.set(e.studentMembershipId, e);
+    const bare = [...new Set(chunk.filter((id) => !seatOf.has(id)).map((id) => enrolmentOf.get(id)?.programmeId).filter((x): x is string => Boolean(x)))];
+    const deptOf = new Map(bare.length ? (await db.programme.findMany({ where: { id: { in: bare } }, select: { id: true, departmentId: true } })).map((p) => [p.id, p.departmentId]) : []);
+    for (const id of chunk) {
+      const seat = seatOf.get(id);
+      const enrolment = enrolmentOf.get(id);
+      const programmeId = seat?.programmeId ?? enrolment?.programmeId ?? null;
+      const departmentId = seat?.programme.departmentId ?? (programmeId ? deptOf.get(programmeId) : null) ?? null;
+      const entry = seat?.entryYear ?? enrolment?.yearOfEntry ?? null;
+      out.set(id, [
+        ...(programmeId ? [`PROGRAMME:${programmeId}`] : []),
+        ...(departmentId ? [`DEPARTMENT:${departmentId}`] : []),
+        ...(seat?.divisionId ? [`DIVISION:${seat.divisionId}`] : []),
+        ...(entry ? [`BATCH:${entry}`] : []),
+      ]);
+    }
+  }
+  return out;
+}

@@ -11,6 +11,7 @@ import {
   type AdmissionRoundView,
   type CollegeApplicationStatus,
   type CollegeApplicationView,
+  type RefundsAwaiting,
   type CollegeCategory,
   type RefundSlabCode,
   type ScrutinyDocument,
@@ -689,6 +690,26 @@ export async function recordRefund(ctx: ActiveContext, id: string, reference: st
   const updated = await db.collegeApplication.update({ where: { id: a.id }, data: { status: "REFUNDED", refundReference: reference.trim().slice(0, 80) }, include: APP_INCLUDE });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.refund", targetType: "CollegeApplication", targetId: a.id, meta: { refundPaise: a.refundPaise } });
   return applicationView(updated);
+}
+
+/**
+ * THE SEATS AWAITING THEIR REFUND (R-60, risks batch 5 Oct 2026; 08's recommended option): CANCELLED with the
+ * admission fee paid and no bank reference yet, for ADMIN and ACCOUNTS. The applications list is the office's and
+ * the head's; the accounts desk reached such a seat only from the refunds-outside-the-slab list or a link. Read, never
+ * stored; the refund itself is recorded by `recordRefund` as before.
+ */
+export async function refundsAwaiting(ctx: ActiveContext): Promise<RefundsAwaiting> {
+  const d = await desk(ctx, MONEY_DESK);
+  const rows = await db.collegeApplication.findMany({
+    where: { schoolId: d.schoolId, status: "CANCELLED", refundReference: null, admissionFeePaidAt: { not: null } },
+    orderBy: [{ cancelledAt: "asc" }, { id: "asc" }],
+    take: 500,
+    select: { id: true, number: true, applicantName: true, programmeId: true, cancelledAt: true, admissionFeePaise: true, refundPaise: true, refundSlab: true, refundAskStatus: true },
+  });
+  const programmes = new Map((await db.programme.findMany({ where: { schoolId: d.schoolId, id: { in: [...new Set(rows.map((r) => r.programmeId))] } }, select: { id: true, name: true } })).map((p) => [p.id, p.name]));
+  return {
+    items: rows.map((r) => ({ applicationId: r.id, number: r.number, applicantName: r.applicantName, programmeName: programmes.get(r.programmeId) ?? "", cancelledAt: r.cancelledAt?.toISOString() ?? null, admissionFeePaise: r.admissionFeePaise ?? 0, refundPaise: r.refundPaise ?? 0, refundSlab: r.refundSlab, askStatus: r.refundAskStatus })),
+  };
 }
 
 /**

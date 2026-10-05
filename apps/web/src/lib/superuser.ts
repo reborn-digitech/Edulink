@@ -1294,6 +1294,8 @@ export type CurationEntry = {
   createdAt: Date;
   /** Their papers: status, note, and the stored ids the operator opens through /api/files. */
   kyc: ExpertKyc;
+  /** When the operator closed the account (G4-28); null while it is open. */
+  disabledAt: Date | null;
 };
 
 /**
@@ -1324,6 +1326,7 @@ export async function listExpertsForCuration(session: ActiveContext): Promise<Cu
       publishedAt: true,
       verifiedAt: true,
       createdAt: true,
+      disabledAt: true,
       kycStatus: true,
       kycNote: true,
       kycSubmittedAt: true,
@@ -1350,6 +1353,7 @@ export async function listExpertsForCuration(session: ActiveContext): Promise<Cu
     verifiedAt: profile.verifiedAt,
     createdAt: profile.createdAt,
     kyc: kyc.get(profile.id)!,
+    disabledAt: profile.disabledAt,
   }));
 }
 

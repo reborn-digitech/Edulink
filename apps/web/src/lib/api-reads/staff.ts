@@ -36,6 +36,7 @@ import { normaliseLanguage } from "@/lib/quiz";
 import { assignmentsForClass, classGapAlerts, classPracticeHeatmap, classWeekly } from "@/lib/practice-insights";
 import { teacherSlots } from "@/lib/meetings";
 import { COVER_ROLES, myLeave } from "@/lib/leave";
+import { leaveDecidedBy } from "@edulink/contracts";
 import { leaveBalanceFor, staffRecordFor } from "@/lib/staff-records";
 import { schoolReviewDashboard, teacherReviewAggregate } from "@/lib/reviews";
 import { mayEditOwnBirthdate, setOwnBirthdate } from "@/lib/birthdate";
@@ -147,7 +148,7 @@ export async function staffToday(ctx: Staff, now: Date = new Date()): Promise<St
       classes: classes.map((k) => ({ id: k.id, name: k.name, color: k.color, students: k._count.enrollments, registerTaken: done.has(k.id) })),
       registersLeft: noSchool ? 0 : classes.filter((k) => !done.has(k.id)).length,
       toGrade: ungraded,
-      dueSoon: dueSoon.map((a) => ({ id: a.id, title: a.title, dueAt: iso(a.dueAt), className: a.class.name })),
+      dueSoon: dueSoon.map((a) => ({ id: a.id, title: a.title, dueAt: iso(a.dueAt), className: a.class?.name ?? "" })),
     },
   };
 }
@@ -386,7 +387,8 @@ export async function staffAssignments(
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 100,
   });
-  const assignments = fetched.filter((a) => (state === "overdue" ? a._count.grades < a.class._count.enrollments : true));
+  // Every row is a class's (the WHERE names the caller's classes); a college offering's work (R-48) has its own doors.
+  const assignments = fetched.flatMap((a) => (a.class ? [{ ...a, class: a.class }] : [])).filter((a) => (state === "overdue" ? a._count.grades < a.class._count.enrollments : true));
 
   return {
     year: year ? { name: year.name, thisYearCount, allCount } : null,
@@ -572,7 +574,7 @@ export async function staffMeetings(ctx: Staff): Promise<StaffMeetings> {
 
 export async function staffLeave(ctx: Staff): Promise<StaffLeave> {
   const school = await schoolZone(ctx.schoolId);
-  const [requests, staff, balance] = await Promise.all([
+  const [requests, staff, balance, principals] = await Promise.all([
     myLeave(ctx),
     db.membership.findMany({
       where: { schoolId: ctx.schoolId, role: { in: [...COVER_ROLES] }, status: "ACTIVE", leftAt: null, id: { not: ctx.membershipId } },
@@ -580,12 +582,15 @@ export async function staffLeave(ctx: Staff): Promise<StaffLeave> {
       orderBy: { joinedAt: "asc" },
     }),
     leaveBalanceFor(ctx.schoolId, ctx.membershipId),
+    // Who answers (G4-27): applyForLeave tells every active PRINCIPAL and ADMIN; the form names the principal only where there is one.
+    db.membership.count({ where: { schoolId: ctx.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null, id: { not: ctx.membershipId } } }),
   ]);
   return {
     today: todayKey(school.timezone),
     balance,
     requests: requests.map((r) => ({ ...r, decidedAt: iso(r.decidedAt) })),
     staff: staff.map((p) => ({ membershipId: p.id, name: p.user.preferredName ?? p.user.name })),
+    decidedBy: leaveDecidedBy(ctx.role, principals > 0),
   };
 }
 

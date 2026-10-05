@@ -51,6 +51,10 @@ import { DUTY_DOORS } from "./api-catalog/duties";
 import { STREAM_RECORDS } from "./api-catalog/stream-records";
 import { UNVERSIONED } from "./api-catalog/unversioned";
 import { OFFICE_YEAR } from "./api-catalog/office-year";
+import { OFFICE_WRITES } from "./api-catalog/office-writes";
+import { COLLEGE_HOMEWORK } from "./api-catalog/college-homework";
+import { PLAN_ITEMS } from "./api-catalog/plan-items";
+import { COLLEGE_EXTRAS } from "./api-catalog/college-extras";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS, ...STREAM_RECORDS, ...OFFICE_YEAR, ...UNVERSIONED];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES, ...MESSAGING, ...HEALTH, ...INCIDENTS, ...CIRCULARS, ...STAFF_ATTENDANCE, ...SYLLABUS, ...SUBSTITUTIONS, ...REPORT_CARDS, ...CERTIFICATES, ...ADMISSIONS, ...FILINGS, ...GIGS, ...TRANSPORT, ...ALUMNI, ...INVENTORY, ...PAYROLL, ...LIBRARY, ...HOSTEL, ...COLLEGE, ...ACADEMICS, ...PLACEMENT, ...EXAMS, ...IQAC, ...COLLEGE_ADMISSIONS, ...SCHOLARSHIPS, ...ACCOUNTS_DESK, ...COLLEGE_CAMPUS, ...OPERATOR_COLLEGE, ...DUTY_DOORS, ...STREAM_RECORDS, ...OFFICE_YEAR, ...OFFICE_WRITES, ...COLLEGE_EXTRAS, ...UNVERSIONED, ...COLLEGE_HOMEWORK, ...PLAN_ITEMS];

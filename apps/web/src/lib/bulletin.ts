@@ -83,6 +83,7 @@ export const CATEGORY_HASHTAGS: Record<PostCategory, string> = {
   EVENTS: "#EventsAndCommunity",
   LEARNING: "#LearningAndAcademics",
   UPDATES: "#UpdatesAndEngagement",
+  COUNCIL: "#StudentCouncil",
 };
 
 
@@ -415,6 +416,7 @@ export async function listFeed(
     include: {
       author: { select: { name: true, preferredName: true, avatarKey: true } },
       authorship: { select: { id: true, role: true, joinedAt: true } },
+      authorCommittee: { select: { name: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
@@ -450,12 +452,13 @@ export async function listFeed(
       rejectionReason: post.rejectionReason,
       pinned: post.pinnedAt !== null,
       createdAt: post.createdAt,
-      authorName: post.author.preferredName ?? post.author.name,
-      authorAvatar: post.author.avatarKey,
-      authorRole: (post.authorship?.role as Role | undefined) ?? null,
+      // A council notice is signed by the council (council-notices.ts); the review desk still sees who wrote it.
+      authorName: post.authorCommittee ? (canModerate ? `${post.authorCommittee.name} · ${post.author.preferredName ?? post.author.name}` : post.authorCommittee.name) : (post.author.preferredName ?? post.author.name),
+      authorAvatar: post.authorCommittee ? null : post.author.avatarKey,
+      authorRole: post.authorCommittee ? null : ((post.authorship?.role as Role | undefined) ?? null),
       // The "Alumni · 2026" tag: the year a former pupil left (alumni-tags.ts).
-      authorBatch: post.authorship?.role === "ALUMNUS" ? batchYearOf(post.authorship.joinedAt) : null,
-      authorMembershipId: post.authorship?.id ?? null,
+      authorBatch: !post.authorCommittee && post.authorship?.role === "ALUMNUS" ? batchYearOf(post.authorship.joinedAt) : null,
+      authorMembershipId: post.authorCommittee ? null : (post.authorship?.id ?? null),
       className: post.class?.name ?? null,
       commentCount: post._count.comments,
       reactions: reactions as Record<ReactionKind, number>,
@@ -523,6 +526,7 @@ export async function getPost(session: ActiveContext, postId: string) {
     include: {
       author: { select: { id: true, name: true, preferredName: true, avatarKey: true } },
       authorship: { select: { role: true, joinedAt: true } },
+      authorCommittee: { select: { name: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
@@ -585,6 +589,20 @@ export async function getPost(session: ActiveContext, postId: string) {
       .filter(() => session.role === "ADMIN" || (session.role === "TEACHER" && teachesPostClass))
       .map((c) => c.id),
   );
+  /*
+   * A COUNCIL NOTICE IS SIGNED BY THE COUNCIL (risks batch 5A, 5 Oct 2026): every reader of this function
+   * — the web page and the API's post — prints `author`, so the council's name stands in it, with no
+   * picture, no role tag and no profile door to the student who wrote it. The review desk of the school
+   * still sees the writer beside the council, as the feed shows them.
+   */
+  if (post.authorCommittee) {
+    const reviewer = (session.role === "ADMIN" || session.role === "TEACHER") && session.schoolId === post.schoolId;
+    const writer = post.author.preferredName ?? post.author.name;
+    const author = { ...post.author, name: reviewer ? `${post.authorCommittee.name} · ${writer}` : post.authorCommittee.name, preferredName: null, avatarKey: null };
+    // No door from the council's name to the writer's profile (their own comments are named, without one).
+    const councilLinks = new Map([...membershipByUser].filter(([userId]) => userId !== post.author.id));
+    return { ...post, author, authorship: null, membershipByUser: councilLinks, tagByUser, authorBatch: null, canAck, reviewableCommentIds };
+  }
   return { ...post, membershipByUser, tagByUser, authorBatch, canAck, reviewableCommentIds };
 }
 
@@ -626,8 +644,16 @@ export async function createPost(
     /** A permission slip (5 Oct 2026, permission-slips.ts): the family's yes-or-no per child, until `consentBy`. */
     consentQuestion?: string;
     consentBy?: string;
+    /**
+     * A STUDENT COUNCIL NOTICE (risks batch 5A, 5 Oct 2026): the council it is
+     * published as. Passed only by council-notices.ts, after it has checked the
+     * writer is on the council or in the office; category COUNCIL without it is refused.
+     */
+    authorCommitteeId?: string | null;
   },
 ): Promise<{ postId: string; status: PostStatus }> {
+  // Only the council's own door writes a council notice: anyone else picking the category would sign as the council.
+  if ((input.category === "COUNCIL") !== Boolean(input.authorCommitteeId)) throw new AccessError("councilNotices.refuseCategory");
   session = asFeedReader(session);
   // A module role writes nothing here (3 Oct 2026) — but an ALUMNUS posts
   // when the school lets its alumni (alumni.ts): school-wide, held for the office.
@@ -714,6 +740,7 @@ export async function createPost(
       authorMembershipId: membershipId,
       scope: input.scope,
       category: input.category ?? "UPDATES",
+      authorCommitteeId: input.authorCommitteeId ?? null,
       font: input.font ?? "default",
       title: input.title,
       body: input.body,
@@ -1112,6 +1139,16 @@ export async function moderateComment(
 
 /** Pin / unpin. Admin-only: pinning is a whole-school editorial decision. */
 export async function togglePin(session: ActiveContext, postId: string): Promise<boolean> {
+  return setPinned(session, postId, null);
+}
+
+/**
+ * Pin or unpin as asked (`pinned`), or flip (`null`, the web's button). The
+ * phone's door says which it wants (R-50), so a call replayed from its outbox
+ * is a no-op rather than a second flip: the state already asked for writes
+ * nothing and no audit row.
+ */
+export async function setPinned(session: ActiveContext, postId: string, want: boolean | null): Promise<boolean> {
   const { schoolId, role, user } = session;
   if (role !== "ADMIN" || !schoolId) throw new AccessError("access.onlyAnAdminCanPinAPost");
 
@@ -1121,7 +1158,8 @@ export async function togglePin(session: ActiveContext, postId: string): Promise
   });
   if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
-  const pinned = post.pinnedAt === null;
+  const pinned = want ?? post.pinnedAt === null;
+  if (pinned === (post.pinnedAt !== null)) return pinned;
   await db.post.update({
     where: { id: postId },
     data: { pinnedAt: pinned ? new Date() : null },

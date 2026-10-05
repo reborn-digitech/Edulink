@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess, assertStudentAccess } from "./tenancy";
 import { getAttendanceSummary, computeBestStreak } from "./attendance";
-import { overallForStudent } from "./grading";
+import { overallForStudent, workLabel } from "./grading";
 import { getBadges } from "./badges";
 import { addDaysToKey, todayKey, zonedStartOfDay } from "./dates";
 import type { ActiveContext } from "./session";
@@ -143,7 +143,9 @@ export async function buildProgressReport(
             category: true,
             pointsMilli: true,
             classId: true,
+            offeringId: true,
             class: { select: { name: true } },
+            offering: { select: { course: { select: { code: true, name: true } } } },
           },
         },
       },
@@ -152,7 +154,8 @@ export async function buildProgressReport(
     getBadges(membership.schoolId, studentMembershipId, timezone),
   ]);
 
-  const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
+  // A college offering's work (R-48) has no class and no weights: points-weighted under the offering's id.
+  const classIds = [...new Set(grades.map((g) => g.assignment.classId).filter((id): id is string => id !== null))];
   const categories = await db.gradeCategory.findMany({
     where: { schoolId: membership.schoolId, classId: { in: classIds } },
     select: { classId: true, name: true, weightBps: true },
@@ -169,7 +172,7 @@ export async function buildProgressReport(
   // print different numbers for the same child.
   const overall = overallForStudent(
     grades.map((g) => ({
-      classId: g.assignment.classId,
+      classId: g.assignment.classId ?? g.assignment.offeringId ?? "",
       scoreMilli: g.scoreMilli,
       maxMilli: g.assignment.pointsMilli,
       category: g.assignment.category,
@@ -204,7 +207,7 @@ export async function buildProgressReport(
       uncategorised: overall.uncategorised,
       marked: grades.map((g) => ({
         title: g.assignment.title,
-        className: g.assignment.class.name,
+        className: workLabel(g.assignment),
         category: g.assignment.category,
         scoreMilli: g.scoreMilli,
         pointsMilli: g.assignment.pointsMilli,

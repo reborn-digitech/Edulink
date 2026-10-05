@@ -61,7 +61,8 @@ async function papersIn(schoolId: string, span: Span): Promise<Paper[]> {
   const out: Paper[] = [];
   for (const s of sittings) {
     const slot = s.examSlot;
-    if (!slot || slot.pointsMilli <= 0) continue;
+    // An exam sitting is always a class's (only a college offering's homework has none, R-48).
+    if (!slot || slot.pointsMilli <= 0 || !s.classId) continue;
     for (const g of s.grades) {
       if (g.scoreMilli === null) continue;
       out.push({ studentMembershipId: g.studentMembershipId, classId: s.classId, gradeLevel: slot.series.gradeLevel, subject: slot.subject, dateKey: slot.dateKey, percent: (g.scoreMilli * 100) / slot.pointsMilli });

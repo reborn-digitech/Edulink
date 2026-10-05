@@ -470,7 +470,8 @@ export async function issueHallTickets(ctx: ActiveContext, sessionId: string): P
   const issued = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     await tx.$queryRaw`SELECT "id" FROM "ExamSession" WHERE "id" = ${s.id} FOR UPDATE`;
-    const forms = await tx.examForm.findMany({ where: { sessionId: s.id, status: "APPROVED", ticket: null }, select: { id: true, studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true } } } } } });
+    // No ticket for a student who has left (A3-S-15): their approved form stays, and a ticket is made if they come back.
+    const forms = await tx.examForm.findMany({ where: { sessionId: s.id, status: "APPROVED", ticket: null, student: { status: "ACTIVE", leftAt: null } }, select: { id: true, studentMembershipId: true, student: { select: { studentCode: true, user: { select: { name: true } } } } } });
     forms.sort((a, b) => (a.student.studentCode ?? a.student.user.name).localeCompare(b.student.studentCode ?? b.student.user.name));
     const taken = await tx.hallTicket.count({ where: { sessionId: s.id } });
     const made: { id: string; studentMembershipId: string }[] = [];

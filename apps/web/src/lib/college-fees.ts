@@ -383,7 +383,8 @@ export async function billMess(ctx: ActiveContext, input: { month: string; hoste
   let already = 0;
   let skipped = 0;
   for (const h of hostels) {
-    const boarders = await db.hostelAllotment.findMany({ where: { schoolId: d.schoolId, room: { hostelId: h.id }, fromDate: { lte: last }, OR: [{ toDate: null }, { toDate: { gte: first } }] }, select: { membershipId: true } });
+    // A place whose approved expulsion took effect before the month is not a boarder of it (A3-S-15: the day is read, not written ahead).
+    const boarders = await db.hostelAllotment.findMany({ where: { schoolId: d.schoolId, room: { hostelId: h.id }, fromDate: { lte: last }, OR: [{ toDate: null }, { toDate: { gte: first } }], expulsions: { none: { status: "APPROVED", effectiveOn: { lt: first } } } }, select: { membershipId: true } });
     if (h.messMonthlyPaise <= 0) {
       skipped += boarders.length;
       continue;

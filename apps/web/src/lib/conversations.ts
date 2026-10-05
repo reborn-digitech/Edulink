@@ -40,8 +40,10 @@ import { isLimitedRole, type Role } from "./constants";
  */
 
 // A college's FACULTY and HOD teach as a TEACHER does and converse as one (the integration builder, 4 Oct 2026): an
-// alumnus may write to former faculty (CONTACTABLE_ROLES), and they must be able to answer.
-const STAFF: readonly Role[] = ["TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD"];
+// alumnus may write to former faculty (CONTACTABLE_ROLES), and they must be able to answer. The four college desks
+// (the exam cell, the IQAC, placement and accounts) converse as staff too since G4-30 (risks batch, 5 Oct 2026): a
+// student writes to the exam cell about a form, a family to accounts about a fee; the phone and the web give each an inbox.
+const STAFF: readonly Role[] = ["TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
 
 export function isStaffRole(role: Role | null | undefined): boolean {
   return role !== null && role !== undefined && STAFF.includes(role);
@@ -171,10 +173,10 @@ export async function peopleToMessage(
   for (const m of members) {
     const role = m.role as Role;
     if (!mayConverse(me, role)) continue;
-    // Only people who can open a room are offered (the role audit of 5 Oct 2026): a module role or a college desk
-    // (driver, librarian, warden, controller, IQAC, TPO, accounts) has no conversation door, so a message to them
-    // would wait unread for ever. A college's FACULTY and HOD converse as a teacher does.
-    if (isLimitedRole(role) && role !== "FACULTY" && role !== "HOD") continue;
+    // Only people who can open a room are offered (the role audit of 5 Oct 2026): a module role (driver, librarian,
+    // warden) has no conversation door, so a message to them would wait unread for ever. A college's FACULTY and HOD,
+    // and since G4-30 its four desks, converse as staff do.
+    if (isLimitedRole(role) && !isStaffRole(role)) continue;
     const detail =
       role === "STUDENT"
         ? (m.enrollments[0]?.class.name ?? null)

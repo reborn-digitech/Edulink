@@ -8,6 +8,7 @@ import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { isDateKey } from "./dates";
 import { EXAM_KINDS, type ExamKind } from "./constants";
+import { workLabel } from "./grading";
 import type { ActiveContext } from "./session";
 
 /**
@@ -1125,7 +1126,7 @@ export async function assignmentOverviewFor(ctx: ActiveContext): Promise<Assignm
           scoreMilli: true,
           gradedAt: true,
           assignment: {
-            select: { id: true, title: true, category: true, pointsMilli: true, class: { select: { name: true } } },
+            select: { id: true, title: true, category: true, pointsMilli: true, class: { select: { name: true } }, offering: { select: { course: { select: { code: true, name: true } } } } },
           },
         },
         orderBy: { gradedAt: "desc" },
@@ -1152,7 +1153,7 @@ export async function assignmentOverviewFor(ctx: ActiveContext): Promise<Assignm
       graded: grades.map((g) => ({
         id: g.assignment.id,
         title: g.assignment.title,
-        className: g.assignment.class.name,
+        className: workLabel(g.assignment),
         category: g.assignment.category,
         marks: g.scoreMilli! / 1000,
         maxMarks: g.assignment.pointsMilli === null ? null : g.assignment.pointsMilli / 1000,
@@ -1161,7 +1162,7 @@ export async function assignmentOverviewFor(ctx: ActiveContext): Promise<Assignm
       upcoming: due.map((a) => ({
         id: a.id,
         title: a.title,
-        className: a.class.name,
+        className: a.class?.name ?? "",
         category: a.category,
         dueAt: a.dueAt!,
         maxMarks: a.pointsMilli === null ? null : a.pointsMilli / 1000,

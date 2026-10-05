@@ -183,3 +183,23 @@ describe("the entrance-test result (A3-journeys-24)", () => {
     expect(await res.json()).toMatchObject({ testScore: "78/100", testNote: "Excellent!!" });
   }, 30_000);
 });
+
+describe("the answer-by day printed west of UTC (R-62)", () => {
+  it("the view carries the day in the school's zone, which the instant's first ten characters are not", async () => {
+    const id = (await (await walkIn("West", "2018-03-03")).json()).id as string;
+    // This school moves to New York for the one offer, and back.
+    await db.school.update({ where: { id: schoolId }, data: { timezone: "America/New_York" } });
+    try {
+      await as("ADMIN");
+      const day = addDaysToKey(todayKey("America/New_York"), 15);
+      const res = await offerPost(json(`/api/v1/office/admissions/applications/${id}/offer`, { expiresOn: day }), params({ applicationId: id }));
+      expect(res.status).toBe(200);
+      const view = (await res.json()) as { offerExpiresAt: string; offerExpiresOn: string };
+      expect(view.offerExpiresOn).toBe(day);
+      // The instant is the end of that day in New York, already the next day in UTC: the slice the phone printed.
+      expect(view.offerExpiresAt.slice(0, 10)).toBe(addDaysToKey(day, 1));
+    } finally {
+      await db.school.update({ where: { id: schoolId }, data: { timezone: TZ } });
+    }
+  }, 30_000);
+});

@@ -9,6 +9,7 @@ import { readStoredFile } from "./storage";
 import { formatMilli } from "./validation";
 import { nameCarriesSection } from "./codes";
 import type { Translate } from "./i18n/dictionary";
+import { reportCardDefaultLabel } from "./certificate-names";
 
 /**
  * A report card as a PDF, one card per page, many cards in one file.
@@ -195,7 +196,7 @@ function CardPage({ card, logo, t, locale, pictures }: { card: Card; logo: Logo 
           <Text style={styles.section}>{t("reportView.coScholastic")}</Text>
           {card.coScholastic.map((c) => (
             <Row key={c.area}>
-              <Text style={styles.cellSubject}>{c.area}</Text>
+              <Text style={styles.cellSubject}>{reportCardDefaultLabel(c.area, t)}</Text>
               <Text style={styles.cellPart}>{c.note ?? ""}</Text>
               <Text style={styles.cellGrade}>{c.grade ?? "—"}</Text>
             </Row>
@@ -226,7 +227,7 @@ function CardPage({ card, logo, t, locale, pictures }: { card: Card; logo: Logo 
 
       {hasLetters ? (
         <Text style={styles.scale}>
-          {t("reportView.scaleLine")}: {card.scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${b.descriptor}` : ""}`).join(" · ")}
+          {t("reportView.scaleLine")}: {card.scale.bands.map((b) => `${b.label} ${b.minPercent}%${b.descriptor ? ` ${reportCardDefaultLabel(b.descriptor, t)}` : ""}`).join(" · ")}
         </Text>
       ) : null}
 

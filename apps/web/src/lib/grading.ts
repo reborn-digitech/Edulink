@@ -9,7 +9,49 @@ import { audit } from "./audit";
 import { RuleRefusal } from "./rule-refusal";
 import { finishedYearContaining } from "./academic-year";
 import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
+import { isTeachingRole } from "./constants";
 import type { ActiveContext } from "./session";
+
+/** Who may mark and publish: a school's teacher or office, or (R-48) a college offering's faculty member or HOD. */
+export type GradingRole = "TEACHER" | "ADMIN" | "FACULTY" | "HOD";
+
+/**
+ * WHO A PIECE OF WORK IS FOR (R-48, 5 Oct 2026): a class's active pupils, or a
+ * college offering's REGISTERED students (an elective has no class). Every
+ * reader of an assignment's roster — the gradebook, the marks save, the
+ * publish notice — asks here, so the two audiences cannot drift apart.
+ */
+export async function workAudience(assignment: { classId: string | null; offeringId: string | null }, only?: string[]) {
+  const people = { select: { id: true, userId: true, user: { select: { name: true, preferredName: true, avatarKey: true } } } } as const;
+  if (assignment.offeringId) {
+    return db.courseRegistration.findMany({
+      where: { offeringId: assignment.offeringId, status: "REGISTERED", ...(only ? { studentMembershipId: { in: only } } : {}) },
+      select: { studentMembershipId: true, student: people },
+    });
+  }
+  if (!assignment.classId) return [];
+  return db.enrollment.findMany({
+    where: { classId: assignment.classId, status: "ACTIVE", ...(only ? { studentMembershipId: { in: only } } : {}) },
+    select: { studentMembershipId: true, student: people },
+  });
+}
+
+/** What a piece of work is labelled with in a list: its class, or a college offering's course code and name. */
+export function workLabel(a: { class: { name: string } | null; offering?: { course: { code: string; name: string } } | null }): string {
+  if (a.class) return a.class.name;
+  if (a.offering) return `${a.offering.course.code} ${a.offering.course.name}`;
+  return "";
+}
+
+/** Where the teacher marks a piece of work: the school's gradebook, or a college offering's (R-48). */
+export function teacherWorkUrl(a: { id: string; offeringId: string | null }): string {
+  return a.offeringId ? `/faculty/work/${a.id}` : `/teacher/assignments/${a.id}`;
+}
+
+/** Offering work is set, published and marked by its teacher or HOD alone (R-48); the office reads it. */
+function refuseOfficeOnOfferingWork(assignment: { offeringId: string | null }, role: GradingRole): void {
+  if (assignment.offeringId && !isTeachingRole(role)) throw new AccessError("access.wrongRoleForThisAction");
+}
 
 /**
  * Assignments and grading.
@@ -465,20 +507,13 @@ export async function createAssignment(
 
 /** Roster for one assignment, with each student's submission and grade. */
 export async function getGradebook(
-  ctx: { schoolId: string; membershipId: string; role: "TEACHER" | "ADMIN" },
+  ctx: { schoolId: string; membershipId: string; role: GradingRole },
   assignmentId: string,
 ) {
   const assignment = await assertAssignmentAccess(ctx, assignmentId);
 
   const [enrollments, submissions, grades] = await Promise.all([
-    db.enrollment.findMany({
-      where: { classId: assignment.classId, status: "ACTIVE" },
-      include: {
-        student: {
-          include: { user: { select: { name: true, preferredName: true, avatarKey: true } } },
-        },
-      },
-    }),
+    workAudience(assignment),
     db.submission.findMany({ where: { assignmentId } }),
     db.grade.findMany({ where: { assignmentId } }),
   ]);
@@ -528,8 +563,9 @@ export async function getGradebook(
       pointsMilli: assignment.pointsMilli,
       dueAt: assignment.dueAt,
       publishedAt: assignment.publishedAt,
-      className: assignment.class.name,
+      className: workLabel(assignment),
       classId: assignment.classId,
+      offeringId: assignment.offeringId,
       attachments: readAttachments(assignment.attachments),
     },
     rows,
@@ -552,32 +588,26 @@ export async function getGradebook(
  * leaves half a class marked with no indication which half.
  */
 export async function saveGrades(
-  ctx: { schoolId: string; membershipId: string; role: "TEACHER" | "ADMIN"; userId: string },
+  ctx: { schoolId: string; membershipId: string; role: GradingRole; userId: string },
   assignmentId: string,
   inputs: GradeInput[],
   opts: { notifyStudents?: boolean } = {},
 ): Promise<{ saved: number; cleared: number; rejected: string[] }> {
   const assignment = await assertAssignmentAccess(ctx, assignmentId);
+  refuseOfficeOnOfferingWork(assignment, ctx.role);
   const maxMilli = assignment.pointsMilli;
 
   // A finished year's marks are the record — same rule as the exam grid. The
   // assignment's own creation date says which year's work this is.
-  if (ctx.role === "TEACHER") {
+  if (isTeachingRole(ctx.role)) {
     const finished = await finishedYearContaining(ctx.schoolId, assignment.createdAt);
     if (finished) {
       throw new AccessError("access.yearFinishedMarksLocked", "FORBIDDEN", { year: finished.name });
     }
   }
 
-  // Only students actually enrolled in this assignment's class.
-  const enrolled = await db.enrollment.findMany({
-    where: {
-      classId: assignment.classId,
-      status: "ACTIVE",
-      studentMembershipId: { in: inputs.map((i) => i.studentMembershipId) },
-    },
-    select: { studentMembershipId: true },
-  });
+  // Only students actually enrolled in this assignment's class (or registered on its offering).
+  const enrolled = await workAudience(assignment, inputs.map((i) => i.studentMembershipId));
   const allowed = new Set(enrolled.map((e) => e.studentMembershipId));
 
   const rejected: string[] = [];
@@ -607,7 +637,7 @@ export async function saveGrades(
     const scoreMilli = toMilli(input.score);
 
     // Over-marking is allowed (bonus points are real) but wildly out-of-range
-    // input is almost always a typo — 175 into a 20-point task.
+    // input is almost always a typo — 175 into a 20-point task. Twice the maximum is the line (R-10, decided 5 Oct 2026: keep).
     if (maxMilli && scoreMilli > maxMilli * 2) {
       rejected.push(input.studentMembershipId);
       continue;
@@ -672,7 +702,7 @@ export async function saveGrades(
     saved++;
     if (!existing) newlyGraded.push(input.studentMembershipId);
 
-    publish([channel.student(input.studentMembershipId), channel.class(assignment.classId), channel.school(ctx.schoolId)], {
+    publish([channel.student(input.studentMembershipId), ...(assignment.classId ? [channel.class(assignment.classId)] : []), channel.school(ctx.schoolId)], {
       type: "grade.updated",
       studentMembershipId: input.studentMembershipId,
       assignmentId,
@@ -726,10 +756,11 @@ export async function saveGrades(
 }
 
 export async function publishAssignment(
-  ctx: { schoolId: string; membershipId: string; role: "TEACHER" | "ADMIN"; userId: string },
+  ctx: { schoolId: string; membershipId: string; role: GradingRole; userId: string },
   assignmentId: string,
 ): Promise<void> {
   const assignment = await assertAssignmentAccess(ctx, assignmentId);
+  refuseOfficeOnOfferingWork(assignment, ctx.role);
   if (assignment.publishedAt) throw new AccessError("access.thatIsAlreadyPublished");
 
   await db.assignment.update({
@@ -737,10 +768,7 @@ export async function publishAssignment(
     data: { publishedAt: new Date() },
   });
 
-  const enrollments = await db.enrollment.findMany({
-    where: { classId: assignment.classId, status: "ACTIVE" },
-    select: { studentMembershipId: true, student: { select: { userId: true } } },
-  });
+  const enrollments = await workAudience(assignment);
 
   await Promise.all([
     ...enrollments.map((enrollment) =>
@@ -766,11 +794,14 @@ export async function publishAssignment(
     ),
   ]);
 
-  publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
-    type: "assignment.published",
-    classId: assignment.classId,
-    assignmentId,
-  });
+  // A class's live channel; an offering has none (its students are told one by one above).
+  if (assignment.classId) {
+    publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
+      type: "assignment.published",
+      classId: assignment.classId,
+      assignmentId,
+    });
+  }
 
   await audit({
     schoolId: ctx.schoolId,
@@ -792,13 +823,26 @@ export async function publishAssignment(
 export async function ownWorkScope(
   schoolId: string,
   studentMembershipId: string,
-): Promise<{ OR: { classId: string; publishedAt: { gte: Date } }[] } | { id: { in: never[] } }> {
-  const enrolments = await db.enrollment.findMany({
-    where: { schoolId, studentMembershipId, status: "ACTIVE" },
-    select: { classId: true, enrolledAt: true },
-  });
-  if (enrolments.length === 0) return { id: { in: [] } };
-  return { OR: enrolments.map((e) => ({ classId: e.classId, publishedAt: { gte: e.enrolledAt } })) };
+): Promise<{ OR: ({ classId: string; publishedAt: { gte: Date } } | { offeringId: string; publishedAt: { gte: Date } })[] } | { id: { in: never[] } }> {
+  // A college student's offerings (R-48): the work set on each offering they are
+  // REGISTERED on, from the day they registered, by the same rule as a class.
+  const [enrolments, registrations] = await Promise.all([
+    db.enrollment.findMany({
+      where: { schoolId, studentMembershipId, status: "ACTIVE" },
+      select: { classId: true, enrolledAt: true },
+    }),
+    db.courseRegistration.findMany({
+      where: { schoolId, studentMembershipId, status: "REGISTERED" },
+      select: { offeringId: true, registeredAt: true },
+    }),
+  ]);
+  if (enrolments.length === 0 && registrations.length === 0) return { id: { in: [] } };
+  return {
+    OR: [
+      ...enrolments.map((e) => ({ classId: e.classId, publishedAt: { gte: e.enrolledAt } })),
+      ...registrations.map((r) => ({ offeringId: r.offeringId, publishedAt: { gte: r.registeredAt } })),
+    ],
+  };
 }
 
 /** A student's own work, upcoming first. */
@@ -814,6 +858,7 @@ export async function getStudentWork(session: ActiveContext) {
     },
     include: {
       class: { select: { name: true, color: true } },
+      offering: { select: { course: { select: { code: true, name: true } } } },
       submissions: { where: { studentMembershipId: membershipId } },
       grades: { where: { studentMembershipId: membershipId } },
     },
@@ -828,8 +873,8 @@ export async function getStudentWork(session: ActiveContext) {
     title: assignment.title,
     body: assignment.body,
     category: assignment.category,
-    className: assignment.class.name,
-    classColor: assignment.class.color,
+    className: workLabel(assignment),
+    classColor: assignment.class?.color ?? null,
     pointsMilli: assignment.pointsMilli,
     dueAt: assignment.dueAt,
     submittedAt: assignment.submissions[0]?.submittedAt ?? null,
@@ -883,6 +928,7 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
     },
     include: {
       class: { select: { name: true } },
+      offering: { select: { course: { select: { code: true, name: true } } } },
       submissions: {
         where: { studentMembershipId },
         select: { submittedAt: true, status: true },
@@ -902,7 +948,7 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
     isExam: assignment.examSlotId !== null,
     title: assignment.title,
     category: assignment.category,
-    className: assignment.class.name,
+    className: workLabel(assignment),
     pointsMilli: assignment.pointsMilli,
     dueAt: assignment.dueAt,
     submittedAt: assignment.submissions[0]?.submittedAt ?? null,

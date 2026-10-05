@@ -111,10 +111,33 @@ export const holdsOn = (m: { fromKey: string; untilKey: string | null }, dateKey
  */
 async function effectiveFrom(divisionId: string, timeZone: string): Promise<string> {
   const last = await db.lecture.findFirst({ where: { labBatch: { divisionId }, attendance: { some: {} } }, orderBy: { dateKey: "desc" }, select: { dateKey: true } });
-  if (!last) return "";
-  const today = todayKey(timeZone);
-  const after = addDaysToKey(last.dateKey, 1);
+  return dayAfterMarked(last?.dateKey ?? null, todayKey(timeZone));
+}
+
+/** The rule of `effectiveFrom` on its facts: "" with nothing marked, else today or the day after the last marked lecture, whichever is later. */
+export function dayAfterMarked(lastMarked: string | null, today: string): string {
+  if (!lastMarked) return "";
+  const after = addDaysToKey(lastMarked, 1);
   return after > today ? after : today;
+}
+
+/** Divisions with the day a change made now takes effect (R-24): the office's page and the lab in-charge's desk read the same field. */
+export async function withChangesFrom<D extends { divisionId: string }>(divisions: D[], schoolId: string): Promise<(D & { changesFrom: string | null })[]> {
+  const zone = (await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } }))?.timezone ?? "Asia/Kolkata";
+  const from = await changesFromOf(divisions.map((d) => d.divisionId), zone);
+  return divisions.map((d) => ({ ...d, changesFrom: from.get(d.divisionId) || null }));
+}
+
+/** `effectiveFrom` for many divisions in one read (R-24): divisionId → the day a change made now takes effect ("" from the start). */
+async function changesFromOf(divisionIds: string[], timeZone: string): Promise<Map<string, string>> {
+  const today = todayKey(timeZone);
+  const marked = divisionIds.length ? await db.lecture.findMany({ where: { labBatch: { divisionId: { in: divisionIds } }, attendance: { some: {} } }, orderBy: { dateKey: "desc" }, distinct: ["labBatchId"], select: { dateKey: true, labBatch: { select: { divisionId: true } } } }) : [];
+  const last = new Map<string, string>();
+  for (const l of marked) {
+    const d = l.labBatch?.divisionId;
+    if (d && (!last.has(d) || last.get(d)! < l.dateKey)) last.set(d, l.dateKey);
+  }
+  return new Map(divisionIds.map((id) => [id, dayAfterMarked(last.get(id) ?? null, today)]));
 }
 
 /**
@@ -197,7 +220,10 @@ async function labScope(c: Caller): Promise<Prisma.DivisionWhereInput> {
 
 export async function labBatches(ctx: ActiveContext, query: { divisionId?: string } = {}): Promise<LabBatches> {
   const c = await recordsCaller(ctx, ["ADMIN", "PRINCIPAL", "HOD", "FACULTY"]);
-  return { offered: labStreams(await streamsOf(c.schoolId)), defaultSize: LAB_BATCH_DEFAULT_SIZE, canEdit: c.role === "ADMIN", divisions: await labDivisions(c.schoolId, query.divisionId, await labScope(c)) };
+  const divisions = await labDivisions(c.schoolId, query.divisionId, await labScope(c));
+  // The day a change made now would take effect, per division (R-24, risks batch 5 Oct 2026): the office is told before it acts.
+  const from = await changesFromOf(divisions.map((d) => d.divisionId), c.timeZone);
+  return { offered: labStreams(await streamsOf(c.schoolId)), defaultSize: LAB_BATCH_DEFAULT_SIZE, canEdit: c.role === "ADMIN", divisions: divisions.map((d) => ({ ...d, changesFrom: from.get(d.divisionId) || null })) };
 }
 
 /** Sizes of `n` batches sharing `count` students as evenly as can be: the first ones one larger. */
@@ -241,7 +267,8 @@ export async function splitLabBatches(ctx: ActiveContext, input: { divisionId: s
     if (remove.length) await tx.labBatch.deleteMany({ where: { id: { in: remove } } });
   });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.split", targetType: "Division", targetId: division.divisionId, meta: { batches: names.length, size, students: people.length, from } });
-  return labBatches(ctx, { divisionId: division.divisionId });
+  // The answer names the day the change took effect (R-24): "" (from the start) is null.
+  return { ...(await labBatches(ctx, { divisionId: division.divisionId })), effectiveFrom: from || null };
 }
 
 /** The office moves some of a division's students into one of its batches (out of whichever batch of the division they were in), from the day it takes effect. */
@@ -257,7 +284,7 @@ export async function moveToLabBatch(ctx: ActiveContext, batchId: string, studen
     await refile(raw as Tx, c.schoolId, batch.divisionId, new Map(ids.map((id) => [id, batch.id])), from, false);
   });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "streamRecords.labBatches.move", targetType: "LabBatch", targetId: batch.id, meta: { students: ids.length, from } });
-  return labBatches(ctx, { divisionId: batch.divisionId });
+  return { ...(await labBatches(ctx, { divisionId: batch.divisionId })), effectiveFrom: from || null };
 }
 
 /** The members of a lab batch on a lecture's day, for a lecture that names it (academics-attendance.ts). */
@@ -357,7 +384,7 @@ export async function savePracticals(ctx: ActiveContext, input: { offeringId: st
   return { count };
 }
 
-/** Rows signed by the offering's teacher, its department's HOD, or a member holding LAB_INCHARGE; already-signed rows are left as they are. */
+/** Rows signed by the offering's teacher, its department's HOD, or a member holding LAB_INCHARGE (any department's: the in-charge signs college-wide, R-8, decided 5 Oct 2026: keep); already-signed rows are left as they are. */
 export async function signPracticals(ctx: ActiveContext, recordIds: readonly string[]): Promise<{ count: number }> {
   const c = await recordsCaller(ctx, ["FACULTY", "HOD"]);
   const ids = [...new Set(recordIds)];
@@ -390,13 +417,18 @@ export async function mootCourts(ctx: ActiveContext): Promise<MootCourts> {
   const c = await recordsCaller(ctx, ["ADMIN", "PRINCIPAL", "HOD", "FACULTY"]);
   const offered = (await streamsOf(c.schoolId)).includes("LAW");
   const rows = await db.mootCourt.findMany({ where: { schoolId: c.schoolId }, orderBy: { at: "desc" }, take: 200 });
+  // Per moot (R-59, R-53; risks batch 5 Oct 2026): who may correct it, and whether its year's BCI return froze it.
+  const [mayCorrect, filed] = await Promise.all([mootCorrector(c), bciFiledYears(c.schoolId)]);
   const ids = rows.flatMap((r) => readJsonArray<Team>(r.teamsJson).flatMap((t) => t.membershipIds ?? []));
   const people = ids.length ? await db.membership.findMany({ where: { id: { in: [...new Set(ids)] } }, select: { id: true, user: { select: { name: true, preferredName: true } } } }) : [];
   const name = new Map(people.map((p) => [p.id, nameOf(p.user)]));
   return {
     offered,
     canEdit: offered && c.role !== "PRINCIPAL",
-    items: rows.map((r) => ({ id: r.id, name: r.name, at: r.at, kind: r.kind as "INTRA", result: r.result, judgeNotes: r.judgeNotes, teams: readJsonArray<Team>(r.teamsJson).map((t) => ({ name: t.name, outcome: t.outcome as "WINNER", members: (t.membershipIds ?? []).map((id) => ({ membershipId: id, name: name.get(id) ?? "" })) })) })),
+    items: rows.map((r) => {
+      const frozen = filed.has(academicYearOf(r.at));
+      return { id: r.id, name: r.name, at: r.at, kind: r.kind as "INTRA", result: r.result, judgeNotes: r.judgeNotes, teams: readJsonArray<Team>(r.teamsJson).map((t) => ({ name: t.name, outcome: t.outcome as "WINNER", members: (t.membershipIds ?? []).map((id) => ({ membershipId: id, name: name.get(id) ?? "" })) })), canEdit: offered && !frozen && mayCorrect(r.createdByUserId), frozen };
+    }),
     students: offered && c.role !== "PRINCIPAL" ? await lawStudents(c.schoolId) : [],
   };
 }
@@ -409,12 +441,32 @@ export async function mootCourts(ctx: ActiveContext): Promise<MootCourts> {
  * or HOD used to rewrite any moot by its id, and the BCI return reads them.
  */
 async function mayCorrectMoot(c: Caller, createdByUserId: string | null): Promise<boolean> {
-  if (c.role === "ADMIN" || createdByUserId === c.userId) return true;
-  if (c.role !== "HOD") return false;
+  return (await mootCorrector(c))(createdByUserId);
+}
+
+/** The same rule as a test of a moot's author, read once for a list (R-59): the office, the author, or a law department's HOD. */
+async function mootCorrector(c: Caller): Promise<(createdByUserId: string | null) => boolean> {
+  if (c.role === "ADMIN") return () => true;
+  if (c.role !== "HOD") return (createdByUserId) => c.role !== "PRINCIPAL" && createdByUserId === c.userId;
   const lawDepartments = await db.programme.findMany({ where: { schoolId: c.schoolId, stream: "LAW" }, select: { departmentId: true } });
-  if (!lawDepartments.length) return true;
-  const headed = await hodDepartmentIds(c);
-  return lawDepartments.some((p) => headed.includes(p.departmentId));
+  const headed = lawDepartments.length ? await hodDepartmentIds(c) : [];
+  const anyHod = !lawDepartments.length || lawDepartments.some((p) => headed.includes(p.departmentId));
+  return (createdByUserId) => anyHod || createdByUserId === c.userId;
+}
+
+/**
+ * THE MOOTS OF A FILED YEAR ARE FROZEN (R-53, risks batch 5 Oct 2026; 08's recommended option): once the BCI return
+ * for an academic year has been generated (council-filings.ts reads the year's moots into it), a moot of that year —
+ * by its date, the year starting in June — is neither added nor corrected, so the return and the record agree.
+ */
+async function bciFiledYears(schoolId: string): Promise<Set<number>> {
+  const rows = await db.collegeFiling.findMany({ where: { schoolId, kind: "BCI_RETURN" }, select: { year: true }, distinct: ["year"] });
+  return new Set(rows.map((r) => r.year));
+}
+
+function refuseFiledMoot(filed: Set<number>, at: string): void {
+  const year = academicYearOf(at);
+  if (filed.has(year)) throw new RuleRefusal("riskDecisions.refuseMootFiled", 409, { year: `${year}-${String((year + 1) % 100).padStart(2, "0")}` }, "at");
 }
 
 /** A moot recorded (or corrected, by its id): the office, an HOD or a faculty member, at a college with LAW; every team member a student of the college. A correction is the office's, its author's or the law department's HOD's. */
@@ -427,11 +479,14 @@ export async function saveMootCourt(ctx: ActiveContext, input: MootCourtSave): P
     if (students !== ids.length) throw new RuleRefusal("streamRecords.refuseTeamMember", 422, undefined, "teams");
   }
   const data = { name: input.name.trim(), at: input.at, kind: input.kind, teamsJson: JSON.stringify(input.teams.map((t) => ({ name: t.name.trim(), membershipIds: [...new Set(t.membershipIds)], outcome: t.outcome }))), result: input.result.trim(), judgeNotes: input.judgeNotes.trim() };
+  const filed = await bciFiledYears(c.schoolId);
+  refuseFiledMoot(filed, input.at);
   let id = input.id;
   if (id) {
-    const row = await db.mootCourt.findFirst({ where: { id, schoolId: c.schoolId }, select: { createdByUserId: true } });
+    const row = await db.mootCourt.findFirst({ where: { id, schoolId: c.schoolId }, select: { createdByUserId: true, at: true } });
     if (!row) throw new AccessError("access.entryNotFound", "NOT_FOUND");
     if (!(await mayCorrectMoot(c, row.createdByUserId))) throw new AccessError("streamRecords.refuseNotYourMoot");
+    refuseFiledMoot(filed, row.at);
     const done = await db.mootCourt.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.mootCourt.create({ data: { schoolId: c.schoolId, createdByUserId: c.userId, ...data }, select: { id: true } })).id;

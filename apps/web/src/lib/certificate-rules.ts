@@ -16,7 +16,14 @@ export type Words = (key: string, vars?: Record<string, string | number>) => str
 const englishWords: Words = (key, vars) => translatorFor(dictionaryFor("en"))(key as TranslationKey, vars);
 export const wordsFor = (locale: WordsLocale): Words => (key, vars) => translatorFor(dictionaryFor(locale))(key as TranslationKey, vars);
 
-export const CERTIFICATE_KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
+export const CERTIFICATE_KINDS: CertificateKind[] = ["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION", "APPOINTMENT"];
+/**
+ * The kinds issued to a MEMBER OF STAFF rather than a pupil (risks batch 5A, 5 Oct 2026): filled from the staff
+ * record with the `staff.*` placeholders (and the school's, the year's and the issue's), through
+ * `issueAppointmentLetter`; refused by the pupil's issue, never offered to a family's ask.
+ */
+export const STAFF_CERTIFICATE_KINDS: CertificateKind[] = ["APPOINTMENT"];
+export const isStaffKind = (kind: string): boolean => (STAFF_CERTIFICATE_KINDS as string[]).includes(kind);
 /** The kinds only a college issues (4 Oct 2026). */
 export const COLLEGE_CERTIFICATE_KINDS: CertificateKind[] = ["MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"];
 
@@ -30,7 +37,15 @@ export const PLACEHOLDER_KEYS = [
   "issue.date", "issue.dateWords", "issue.serial", "issue.purpose", "issue.remark",
   // A college's (4 Oct 2026; college-records.ts collegeFacts): a dash at a school.
   "college.programme", "college.prn", "college.yearOfEntry", "college.yearOfPassing", "college.result", "college.apaarId", "college.abcId",
+  // A member of staff's (risks batch 5A, 5 Oct 2026; certificates.ts staffFactsFor): an appointment letter's, a dash on a pupil's paper.
+  "staff.name", "staff.designation", "staff.department", "staff.staffNumber", "staff.joinedOn", "staff.joinedOnWords", "staff.qualification", "staff.appointmentType",
 ] as const;
+/** The placeholders a staff paper may use: its own, and the school's, the year's and the issue's. */
+export function placeholderFitsKind(key: string, kind: string): boolean {
+  const staffKey = key.startsWith("staff.");
+  const shared = key.startsWith("school.") || key.startsWith("year.") || key.startsWith("issue.");
+  return isStaffKind(kind) ? staffKey || shared : !staffKey;
+}
 /**
  * NOT IN THE LIST, ON PURPOSE: the pupil's student code and the school's join
  * code. Each opens something — with the date of birth the first is what a
@@ -111,10 +126,10 @@ export function parseRows(raw: string | null | undefined): CertificateRow[] {
   }
 }
 
-const SERIAL_PREFIX: Record<CertificateKind, string> = { TC: "TC", NIRGAM: "NU", BONAFIDE: "BC", CHARACTER: "CC", STUDY: "SC", CUSTOM: "CERT", MIGRATION: "MC", PROVISIONAL: "PC", COURSE_COMPLETION: "CCC" };
+const SERIAL_PREFIX: Record<CertificateKind, string> = { TC: "TC", NIRGAM: "NU", BONAFIDE: "BC", CHARACTER: "CC", STUDY: "SC", CUSTOM: "CERT", MIGRATION: "MC", PROVISIONAL: "PC", COURSE_COMPLETION: "CCC", APPOINTMENT: "AL" };
 
 export function kindTitle(kind: CertificateKind, words: Words): string {
-  const key = { TC: "titleTc", NIRGAM: "titleNirgam", BONAFIDE: "titleBonafide", CHARACTER: "titleCharacter", STUDY: "titleStudy", CUSTOM: "titleCustom", MIGRATION: "titleMigration", PROVISIONAL: "titleProvisional", COURSE_COMPLETION: "titleCourseCompletion" }[kind];
+  const key = { TC: "titleTc", NIRGAM: "titleNirgam", BONAFIDE: "titleBonafide", CHARACTER: "titleCharacter", STUDY: "titleStudy", CUSTOM: "titleCustom", MIGRATION: "titleMigration", PROVISIONAL: "titleProvisional", COURSE_COMPLETION: "titleCourseCompletion", APPOINTMENT: "titleAppointment" }[kind];
   return words(`certificateDefaults.${key}`);
 }
 
@@ -198,6 +213,66 @@ export function collegePresetsFor(locale: WordsLocale, words: Words = wordsFor(l
 
 export function allCollegePresets(): (Omit<CertificateTemplateSave, "active"> & { key: string })[] {
   return (["en", "hi", "mr"] as const).flatMap((locale) => collegePresetsFor(locale));
+}
+
+/**
+ * THE APPOINTMENT LETTER (risks batch 5A, 5 Oct 2026), offered at a school and a college alike, in each
+ * language: the member of staff's designation, department, the day they join, their staff number, the
+ * nature of the appointment and their qualification, in the register's rows; the terms in the closing. No
+ * pay figure: the letter names the post, not the money (decision 0003 keeps money off the platform).
+ */
+export function appointmentPresetsFor(locale: WordsLocale, words: Words = wordsFor(locale)): (Omit<CertificateTemplateSave, "active"> & { key: string })[] {
+  const layout = defaultLayoutFor(words);
+  const d = (key: string) => words(`certificateDefaults.${key}`);
+  return [
+    {
+      key: `APPOINTMENT-${locale}`, kind: "APPOINTMENT", name: kindTitle("APPOINTMENT", words), locale, title: kindTitle("APPOINTMENT", words), intro: d("appointmentIntro"),
+      rows: [row(words, "rowStaffName", "[[staff.name]]"), row(words, "rowDesignation", "[[staff.designation]]"), row(words, "rowDepartment", "[[staff.department]]"), row(words, "rowJoinedOn", "[[staff.joinedOn]] ([[staff.joinedOnWords]])"), row(words, "rowStaffNumber", "[[staff.staffNumber]]"), row(words, "rowAppointmentType", "[[staff.appointmentType]]"), row(words, "rowQualification", "[[staff.qualification]]")],
+      outro: d("appointmentOutro"), layout, serialPrefix: SERIAL_PREFIX.APPOINTMENT,
+    },
+  ];
+}
+
+export function allAppointmentPresets(): (Omit<CertificateTemplateSave, "active"> & { key: string })[] {
+  return (["en", "hi", "mr"] as const).flatMap((locale) => appointmentPresetsFor(locale));
+}
+
+/** What an appointment letter may name about one member of staff (certificates.ts staffFactsFor). */
+export type StaffFacts = {
+  name: string;
+  designation: string | null;
+  department: string | null;
+  staffNumber: string | null;
+  joinedOnKey: string | null;
+  qualification: string | null;
+  appointmentType: string | null;
+  school: { name: string; address: string | null };
+  yearName: string | null;
+  issue: { dateKey: string; serial: string; purpose: string | null; remark: string | null };
+};
+
+const APPOINTMENT_WORD: Record<string, string> = { REGULAR: "certificateDefaults.appointmentRegular", CONTRACT: "certificateDefaults.appointmentContract", PART_TIME: "certificateDefaults.appointmentPartTime" };
+
+/** Every placeholder's value for one member of staff, in the document's language; the pupil's are blank. */
+export function staffDataFor(facts: StaffFacts, locale: WordsLocale, words: Words = wordsFor(locale)): CertificateData {
+  return {
+    "staff.name": facts.name,
+    "staff.designation": facts.designation,
+    "staff.department": facts.department,
+    "staff.staffNumber": facts.staffNumber,
+    "staff.joinedOn": facts.joinedOnKey ? dateInFigures(facts.joinedOnKey) : null,
+    "staff.joinedOnWords": facts.joinedOnKey ? dateInWords(facts.joinedOnKey, locale) : null,
+    "staff.qualification": facts.qualification,
+    "staff.appointmentType": worded(APPOINTMENT_WORD, facts.appointmentType, words),
+    "school.name": facts.school.name,
+    "school.address": facts.school.address,
+    "year.name": facts.yearName,
+    "issue.date": dateInFigures(facts.issue.dateKey),
+    "issue.dateWords": dateInWords(facts.issue.dateKey, locale),
+    "issue.serial": facts.issue.serial,
+    "issue.purpose": facts.issue.purpose,
+    "issue.remark": facts.issue.remark,
+  };
 }
 
 export type PupilFacts = {

@@ -27,6 +27,8 @@ export async function POST(request: Request) {
           { status: 429, headers: { "Retry-After": String(result.retryAfterSeconds), "Cache-Control": "no-store" } },
         );
       }
+      // The operator closed this outside account (G4-28, risks batch 5 Oct 2026): 403 with the sentence, not "no match".
+      if (result.reason === "closed") return NextResponse.json({ error: t(result.kind === "RECRUITER" ? "riskDecisions.signInClosedRecruiter" : "riskDecisions.signInClosedExpert"), code: "FORBIDDEN" }, { status: 403, headers: { "Cache-Control": "no-store" } });
       return NextResponse.json({ error: t("login.noMatch"), code: "UNAUTHORIZED" }, { status: 401, headers: { "Cache-Control": "no-store" } });
     }
     // Two-step sign-in: the session waits for a code (POST /api/v1/auth/totp).

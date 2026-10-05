@@ -13,7 +13,7 @@ import { formatPhone } from "./phone";
 import { todayKey, zonedStartOfDay } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { notify } from "./notify";
-import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
+import { MESSAGE_EVENTS, MESSAGE_TEMPLATES, OPT_OUT_FORM, isMessageTemplateKey, renderTemplate, smsSegments, whatsappVarOrder, type MessageEvent, type MessageTemplateKey } from "./message-templates";
 
 /**
  * Texts to families: SMS and WhatsApp.
@@ -187,7 +187,6 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   ]);
   const prefs = readJson<UserPrefs>(user?.prefs ?? "{}", DEFAULT_PREFS);
   const locale = normaliseLocale(prefs.locale);
-  const body = renderTemplate(req.templateKey, locale, { school: school.name, ...req.vars });
   const transports = transportStatus();
 
   /**
@@ -201,10 +200,20 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
    */
   const officeEntered = user && !user.phone && !user.disabledAt ? await officeEnteredPhone(req.schoolId, req.userId) : null;
   const officeRouteOpen = Boolean(officeEntered && settings.textOfficePhones && template.event && !req.force && OFFICE_PHONE_EVENTS.includes(template.event));
+  /**
+   * WITH AN OPT-OUT LINE (G4-33, risks batch 5 Oct 2026; 08's recommended option). A text to a number nobody proved
+   * is sent in its opt-out form (OPT_OUT_FORM: the same words and "Reply STOP to stop these texts."), registered with
+   * the carriers like every other; the row keeps that form's key, so the template ids follow it. A number that has
+   * answered STOP (the provider's error 21610 on an earlier text) is not texted again: skipped "opted-out", as a
+   * person's own channel switches are.
+   */
+  const viaOffice = Boolean(user && !user.phone && officeRouteOpen);
+  const templateKey: MessageTemplateKey = viaOffice ? (OPT_OUT_FORM[req.templateKey] ?? req.templateKey) : req.templateKey;
+  const body = renderTemplate(templateKey, locale, { school: school.name, ...req.vars });
 
   const skip = async (reason: SkipReason, channel: Channel | null = null, to = user?.phone ?? officeEntered ?? ""): Promise<SendOutcome> => {
     const row = await db.outboundMessage.create({
-      data: { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey: req.templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
+      data: { schoolId: req.schoolId, userId: req.userId, to, channel: channel ?? "SMS", templateKey, locale, varsJson: writeJson(req.vars), body, status: "SKIPPED", skipReason: reason, segments: 0, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
       select: { id: true },
     });
     return { id: row.id, status: "SKIPPED", channel, skipReason: reason };
@@ -214,6 +223,7 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
   if (!user.phone && !officeEntered) return skip("no-phone");
   if (!user.phone && !officeRouteOpen) return skip("unverifiedNumber");
   if (template.event && !req.force && !settings.events[template.event]) return skip("event-off");
+  if (viaOffice && (await db.outboundMessage.findFirst({ where: { schoolId: req.schoolId, to: officeEntered!, error: { startsWith: "21610" } }, select: { id: true } }))) return skip("opted-out");
 
   // Channel: WhatsApp first when both are open to this person.
   let channel: Channel | null = null;
@@ -249,14 +259,14 @@ export async function deliverToUser(req: SendRequest): Promise<SendOutcome> {
       if (today >= DAILY_CAP_PER_PERSON) return { skip: "cap-daily" as SkipReason, row: null };
     }
     const row = await tx.outboundMessage.create({
-      data: { schoolId: req.schoolId, userId: req.userId, to, channel: chosen, templateKey: req.templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
+      data: { schoolId: req.schoolId, userId: req.userId, to, channel: chosen, templateKey, locale, varsJson: writeJson(req.vars), body, status: "QUEUED", segments, broadcastId: req.broadcastId ?? null, purpose: req.purpose },
     });
     return { skip: null, row };
   });
   if (decided.skip || !decided.row) return skip(decided.skip ?? "cap-daily", chosen);
   const row = decided.row;
   if (!user.phone) {
-    await audit({ schoolId: req.schoolId, actorUserId: null, action: "messaging.officePhone", targetType: "OutboundMessage", targetId: row.id, meta: { source: "office-entered", userId: req.userId, templateKey: req.templateKey, purpose: req.purpose, channel: chosen } });
+    await audit({ schoolId: req.schoolId, actorUserId: null, action: "messaging.officePhone", targetType: "OutboundMessage", targetId: row.id, meta: { source: "office-entered", userId: req.userId, templateKey, purpose: req.purpose, channel: chosen } });
   }
   if (req.queueOnly) return { id: row.id, status: "QUEUED", channel, skipReason: null };
   const sent = await sendRow(row);

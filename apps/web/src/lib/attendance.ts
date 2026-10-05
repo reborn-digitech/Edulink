@@ -66,8 +66,15 @@ export async function saveAttendanceBatch(opts: {
   classId: string;
   dateKey: string;
   marks: MarkInput[];
-  takenByMembershipId: string;
-  actorUserId: string;
+  /**
+   * Who took the register. Null for an attendance device's punch (R-2, 5 Oct
+   * 2026; attendance-devices.ts): a device starts the day's register without
+   * becoming its taker, never replaces the person who took it, and a register
+   * only a device has written is still due from its teacher (`registersDue`).
+   */
+  takenByMembershipId: string | null;
+  /** The person whose act this is; null for a device, audited as the device's. */
+  actorUserId: string | null;
   /** Guardians are told about absences, but not about a replayed no-op. */
   notify?: boolean;
 }): Promise<MergeResult> {
@@ -126,7 +133,7 @@ export async function saveAttendanceBatch(opts: {
     const session = await tx.attendanceSession.upsert({
       where: { classId_dateKey: { classId, dateKey } },
       create: { schoolId, classId, dateKey, takenByMembershipId },
-      update: { takenByMembershipId, takenAt: new Date() },
+      update: takenByMembershipId ? { takenByMembershipId, takenAt: new Date() } : {},
     });
 
     const existing = await tx.attendanceRecord.findMany({
@@ -294,8 +301,9 @@ export async function registersDue(
   const expected = open ? classes.map((c) => c.id) : [];
   if (expected.length === 0) return { open, holidayName, expected, taken: [], missing: [] };
 
+  // Taken by a person: a register an attendance device started (no taker) is still due (R-2, 5 Oct 2026).
   const sessions = await db.attendanceSession.findMany({
-    where: { schoolId, dateKey, classId: { in: expected } },
+    where: { schoolId, dateKey, classId: { in: expected }, takenByMembershipId: { not: null } },
     select: { classId: true },
   });
   const taken = new Set(sessions.map((s) => s.classId));

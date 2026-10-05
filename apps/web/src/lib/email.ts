@@ -489,3 +489,18 @@ export async function sendExpertNotice(input: { to: string; subject: string; hea
     ),
   });
 }
+
+/**
+ * THE OPERATOR CLOSED (OR REOPENED) AN OUTSIDE ACCOUNT (G4-28, risks batch 5 Oct 2026): a recruiter or an expert
+ * belongs to no school, so no school notice reaches them and the mail is the channel; the words come translated
+ * into their own language (operator-college.ts `tellStanding`).
+ */
+export async function sendStandingNotice(input: { to: string; subject: string; lines: string[]; locale: Locale }) {
+  await sendEmail({
+    to: input.to,
+    purpose: "ACCOUNT_STANDING",
+    subject: input.subject,
+    text: input.lines.join("\n\n"),
+    html: layout(input.locale, input.subject, input.lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("\n       ")),
+  });
+}

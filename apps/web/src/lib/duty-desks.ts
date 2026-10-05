@@ -7,7 +7,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { assertCollege, assertModuleOn, isModuleOn } from "./modules";
 import { requireDuty } from "./duties";
-import { labDivisions } from "./stream-records";
+import { labDivisions, withChangesFrom } from "./stream-records";
 import { writeOffBreakage } from "./inventory";
 import { readJson } from "./json";
 import type { ActiveContext } from "./session";
@@ -72,7 +72,8 @@ export async function labDesk(ctx: ActiveContext): Promise<LabDesk> {
   const toSign = await db.practicalRecord.findMany({ where: { schoolId: c.schoolId, signedAt: null }, orderBy: [{ performedOn: "desc" }, { experimentNo: "asc" }], take: 200, select: { id: true, offeringId: true, studentMembershipId: true, experimentNo: true, title: true, performedOn: true, marks: true, offering: { select: { course: { select: { code: true } } } }, student: { select: { user: { select: { name: true, preferredName: true } } } } } });
   const users = breakages.length ? await db.user.findMany({ where: { id: { in: [...new Set(breakages.map((b) => b.byUserId).filter((x): x is string => Boolean(x)))] } }, select: { id: true, name: true, preferredName: true } }) : [];
   const userName = new Map(users.map((u) => [u.id, nameOf(u)]));
-  const divisions = (await labDivisions(c.schoolId)).filter((d) => d.batches.length > 0);
+  // The day a change to each division's batches takes effect (R-24), as the office's page reads it: the phone's lab desk prints it.
+  const divisions = await withChangesFrom((await labDivisions(c.schoolId)).filter((d) => d.batches.length > 0), c.schoolId);
   return {
     inventoryOn,
     labs: rooms.map((r) => ({
@@ -132,6 +133,7 @@ export async function researchDesk(ctx: ActiveContext): Promise<ResearchDesk> {
         apiScore: detail ? round2(inputs.teaching + inputs.research + inputs.service) : null,
       };
     })
+    // With no API score for the dean, the list sorts by publications plus projects (R-55, decided 5 Oct 2026: keep).
     .sort((a, b) => (b.apiScore ?? 0) - (a.apiScore ?? 0) || b.publications + b.projects - (a.publications + a.projects) || a.name.localeCompare(b.name));
   const years = [...new Set(items.map((i) => i.year))].sort((a, b) => b - a);
   return {
@@ -153,6 +155,7 @@ export async function examSquadDesk(ctx: ActiveContext, now: Date = new Date()):
   const [papers, visits, cases] = await Promise.all([
     db.examSchedule.findMany({ where: { schoolId: c.schoolId, at: { gte: new Date(now.getTime() - 2 * DAY_MS), lte: new Date(now.getTime() + 60 * DAY_MS) } }, orderBy: { at: "asc" }, take: 100, select: { id: true, courseCode: true, courseName: true, at: true, durationMin: true, session: { select: { name: true } }, rooms: { orderBy: { name: "asc" }, select: { id: true, name: true } }, _count: { select: { squadVisits: true } } } }),
     db.examSquadVisit.findMany({ where: { schoolId: c.schoolId }, orderBy: { at: "desc" }, take: 100, select: { id: true, scheduleId: true, examRoomId: true, at: true, byMembershipId: true, members: true, flagged: true, note: true, schedule: { select: { courseCode: true, rooms: { select: { id: true, name: true } } } } } }),
+    // The squad reads the student's name on a case, never its note (R-8, decided 5 Oct 2026: keep).
     db.malpractice.findMany({ where: { schoolId: c.schoolId }, orderBy: { createdAt: "desc" }, take: 100, select: { id: true, createdAt: true, decision: true, schedule: { select: { courseCode: true } }, session: { select: { name: true } }, student: { select: { user: { select: { name: true, preferredName: true } } } } } }),
   ]);
   const by = visits.length ? await db.membership.findMany({ where: { id: { in: [...new Set(visits.map((v) => v.byMembershipId))] } }, select: { id: true, user: { select: { name: true, preferredName: true } } } }) : [];

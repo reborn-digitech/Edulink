@@ -8,6 +8,7 @@ import { isDateKey, todayKey } from "./dates";
 import { currentAcademicYear } from "./academic-year";
 import { financeTable } from "./accounts";
 import { collegeDesk, startYearOfKey, yearKeyOf } from "./college-office";
+import { liveAllotmentWhere, settleExpulsions } from "./hostel";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -191,18 +192,21 @@ export async function saveHostelRules(ctx: ActiveContext, hostelId: string, inpu
  */
 export async function changeRoom(ctx: ActiveContext, input: { allotmentId: string; roomId: string; bed: number }): Promise<{ allotmentId: string }> {
   const d = await collegeDesk(ctx, HOSTEL_DESK, "HOSTEL");
-  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: d.schoolId, status: "ACTIVE" }, select: { id: true, membershipId: true, roomId: true, bed: true, feeDemandId: true } });
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: d.schoolId }, select: { timezone: true } });
+  const today = todayKey(timezone);
+  // A place whose expulsion has taken effect is no longer live (A3-S-15): it cannot move.
+  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: d.schoolId, ...liveAllotmentWhere(today) }, select: { id: true, membershipId: true, roomId: true, bed: true, feeDemandId: true } });
   if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
   const room = await db.hostelRoom.findFirst({ where: { id: input.roomId, schoolId: d.schoolId }, select: { id: true, beds: true } });
   if (!room) throw new AccessError("hostel.refuseNoRoom", "NOT_FOUND");
   if (input.bed > room.beds) throw new AccessError("hostel.refuseNoSuchBed", "FORBIDDEN", { beds: room.beds });
   if (room.id === a.roomId && input.bed === a.bed) return { allotmentId: a.id };
-  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: d.schoolId }, select: { timezone: true } });
-  const today = todayKey(timezone);
   const bedKey = `${room.id}:${input.bed}`;
   try {
     const id = await db.$tenantTransaction(async (raw) => {
       const tx = raw as typeof db;
+      // The bed asked for may still be held by a place whose expulsion has taken effect: written ended first.
+      await settleExpulsions(tx, d.schoolId, today);
       await tx.hostelAllotment.update({ where: { id: a.id }, data: { status: "ENDED", toDate: today, activePupilKey: null, activeBedKey: null, endedByUserId: d.userId } });
       const created = await tx.hostelAllotment.create({ data: { schoolId: d.schoolId, membershipId: a.membershipId, roomId: room.id, bed: input.bed, fromDate: today, status: "ACTIVE", activePupilKey: a.membershipId, activeBedKey: bedKey, feeDemandId: a.feeDemandId, allottedByUserId: d.userId }, select: { id: true } });
       return created.id;
@@ -242,10 +246,11 @@ export async function hostelTable(schoolId: string, year?: string) {
   const r = await yearRange(schoolId, year);
   const fromKey = r.from.toISOString().slice(0, 10);
   const toKey = r.to.toISOString().slice(0, 10);
+  const today = todayKey((await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } }))?.timezone ?? "Asia/Kolkata");
   const [hostels, rooms, occupied, boarders, incidents, rounds, flagged, late] = await Promise.all([
     db.hostel.count({ where: { schoolId } }),
     db.hostelRoom.findMany({ where: { schoolId, kind: { not: "SICK_BAY" } }, select: { beds: true } }),
-    db.hostelAllotment.count({ where: { schoolId, status: "ACTIVE" } }),
+    db.hostelAllotment.count({ where: { schoolId, ...liveAllotmentWhere(today) } }),
     db.hostelAllotment.findMany({ where: { schoolId, fromDate: { lte: toKey }, OR: [{ toDate: null }, { toDate: { gte: fromKey } }] }, select: { membershipId: true }, distinct: ["membershipId"] }),
     db.incident.count({ where: { schoolId, hostelId: { not: null }, occurredAt: { gte: r.from, lte: r.to } } }),
     db.hostelSquadRound.count({ where: { schoolId, at: { gte: r.from, lte: r.to } } }),

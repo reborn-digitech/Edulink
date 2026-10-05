@@ -14,7 +14,13 @@ import { formValues, refusalOf, type FieldMap, type FormState } from "./form-sta
  *
  * Only how the outcome reaches the form changes; what is refused does not.
  */
-export type FormDone = TranslationKey | { key: TranslationKey; vars?: Record<string, string | number>; reveal?: string };
+export type FormDone =
+  | TranslationKey
+  | { key: TranslationKey; vars?: Record<string, string | number>; reveal?: string }
+  /** A sentence the library already wrote in the reader's language (the exam cell's import summary). */
+  | { text: string }
+  /** Done with nothing to say: the page is refreshed and the form starts clean. */
+  | null;
 
 export async function answerForm(
   previous: FormState,
@@ -38,6 +44,9 @@ export async function answerForm(
     return { ok: false, message: refusal.message, field: refusal.field, values: formValues(form), n: previous.n };
   }
   for (const path of new Set(opts.revalidate ?? [])) revalidatePath(path.split("?")[0]!);
-  const said = typeof done === "string" ? t(done) : t(done.key, done.vars);
-  return { ok: true, message: said, reveal: typeof done === "string" ? undefined : done.reveal, n: (previous.n ?? 0) + 1 };
+  const n = (previous.n ?? 0) + 1;
+  if (done === null) return { ok: true, n };
+  if (typeof done === "string") return { ok: true, message: t(done), n };
+  if ("text" in done) return { ok: true, message: done.text, n };
+  return { ok: true, message: t(done.key, done.vars), reveal: done.reveal, n };
 }

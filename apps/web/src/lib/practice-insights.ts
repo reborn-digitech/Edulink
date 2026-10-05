@@ -583,7 +583,7 @@ export type Journey = {
   /** Every badge, newest first. Bounded, because a page is not an archive. */
   badges: { label: string; description: string; earnedAt: Date; isTier: boolean }[];
   /** Tier badges per month, oldest first, the last six months. */
-  monthly: { label: string; tiers: number }[];
+  monthly: { label: string; month: string; tiers: number }[];
   /** Consecutive weeks (ending now, with a one-week grace) with any practice. */
   practiceWeeks: number;
   totalAnswers: number;
@@ -649,7 +649,7 @@ export async function journey(ctx: ActiveContext): Promise<Journey> {
 
   // The last six calendar months, oldest first, zero-filled so a quiet month
   // shows as quiet rather than vanishing.
-  const monthly: { label: string; tiers: number }[] = [];
+  const monthly: { label: string; month: string; tiers: number }[] = [];
   const monthKey = (d: Date) => `${d.getUTCFullYear()}-${d.getUTCMonth()}`;
   const counts = new Map<string, number>();
   for (const badge of recentTiers) {
@@ -661,6 +661,8 @@ export async function journey(ctx: ActiveContext): Promise<Journey> {
     const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
     monthly.push({
       label: new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" }).format(d),
+      // YYYY-MM, so a reader in another language names the month itself (the door, A3-inventory-14).
+      month: `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`,
       tiers: counts.get(monthKey(d)) ?? 0,
     });
   }

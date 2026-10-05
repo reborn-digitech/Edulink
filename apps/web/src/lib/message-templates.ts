@@ -25,8 +25,8 @@ export const MESSAGE_LOCALES = ["en", "hi", "mr"] as const;
 export type MessageLocale = (typeof MESSAGE_LOCALES)[number];
 
 export type MessageTemplate = {
-  /** What the office reads on the settings page — a dictionary key under `messaging`. */
-  labelKey: `messaging.template${string}`;
+  /** What the office reads on the settings page — a dictionary key under `messaging` (or `riskDecisions` for the opt-out forms). */
+  labelKey: `messaging.template${string}` | `riskDecisions.template${string}`;
   /** The variable names, in the order the registered template lists them. */
   vars: readonly string[];
   text: Record<MessageLocale, string>;
@@ -95,6 +95,48 @@ export const MESSAGE_TEMPLATES = {
       mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते शाळाघर ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - शाळाघर",
     },
   },
+  // THE OPT-OUT FORMS (G4-33, risks batch 5 Oct 2026): what goes to a guardian phone the office typed and nobody
+  // proved — the base text with one line telling them how to stop. Registered like the others (npm run messages:templates).
+  absenceOptOut: {
+    labelKey: "riskDecisions.templateAbsenceOptOut",
+    vars: ["child", "school"],
+    event: "absence",
+    text: {
+      en: "{child} has been missing school lately. Please speak to the office at {school}. Reply STOP to stop these texts. - Shalaghar",
+      hi: "{child} इन दिनों स्कूल नहीं आ रहे/रही हैं। कृपया {school} के कार्यालय से बात करें। ये संदेश रोकने के लिए STOP लिखकर भेजें। - शालाघर",
+      mr: "{child} सध्या शाळेत येत नाही. कृपया {school} च्या कार्यालयाशी बोला. हे संदेश थांबवण्यासाठी STOP असे उत्तर पाठवा. - शाळाघर",
+    },
+  },
+  feeDueSoonOptOut: {
+    labelKey: "riskDecisions.templateFeeDueSoonOptOut",
+    vars: ["child", "amount", "date", "school"],
+    event: "feeReminders",
+    text: {
+      en: "Fees of {amount} for {child} are due on {date} at {school}. Pay in the Shalaghar app or at the office. Reply STOP to stop these texts. - Shalaghar",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय है। शालाघर ऐप में या कार्यालय में भुगतान करें। ये संदेश रोकने के लिए STOP लिखकर भेजें। - शालाघर",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय आहे. शाळाघर ॲपमध्ये किंवा कार्यालयात भरा. हे संदेश थांबवण्यासाठी STOP असे उत्तर पाठवा. - शाळाघर",
+    },
+  },
+  feeOverdueOptOut: {
+    labelKey: "riskDecisions.templateFeeOverdueOptOut",
+    vars: ["child", "amount", "date", "school"],
+    event: "feeReminders",
+    text: {
+      en: "Fees of {amount} for {child} at {school} were due on {date} and are still unpaid. Pay in the Shalaghar app or at the office. Reply STOP to stop these texts. - Shalaghar",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय थी और अभी बाक़ी है। शालाघर ऐप में या कार्यालय में भुगतान करें। ये संदेश रोकने के लिए STOP लिखकर भेजें। - शालाघर",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय होती आणि अजून बाकी आहे. शाळाघर ॲपमध्ये किंवा कार्यालयात भरा. हे संदेश थांबवण्यासाठी STOP असे उत्तर पाठवा. - शाळाघर",
+    },
+  },
+  circularOptOut: {
+    labelKey: "riskDecisions.templateCircularOptOut",
+    vars: ["school", "notice"],
+    event: "circulars",
+    text: {
+      en: "Notice from {school}: {notice} Reply STOP to stop these texts. - Shalaghar",
+      hi: "{school} से सूचना: {notice} ये संदेश रोकने के लिए STOP लिखकर भेजें। - शालाघर",
+      mr: "{school} कडून सूचना: {notice} हे संदेश थांबवण्यासाठी STOP असे उत्तर पाठवा. - शाळाघर",
+    },
+  },
   test: {
     labelKey: "messaging.templateTest",
     vars: ["school"],
@@ -108,6 +150,12 @@ export const MESSAGE_TEMPLATES = {
 } as const satisfies Record<string, MessageTemplate>;
 
 export type MessageTemplateKey = keyof typeof MESSAGE_TEMPLATES;
+
+/**
+ * The form a text takes to an office-entered number (G4-33): the base template's key → its opt-out form. The three
+ * events that may reach such a number (OFFICE_PHONE_EVENTS: absence, fee reminders, circulars) each have one.
+ */
+export const OPT_OUT_FORM: Partial<Record<MessageTemplateKey, MessageTemplateKey>> = { absence: "absenceOptOut", feeDueSoon: "feeDueSoonOptOut", feeOverdue: "feeOverdueOptOut", circular: "circularOptOut" };
 export const MESSAGE_TEMPLATE_KEYS = Object.keys(MESSAGE_TEMPLATES) as MessageTemplateKey[];
 
 export function isMessageTemplateKey(value: string): value is MessageTemplateKey {

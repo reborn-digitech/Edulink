@@ -132,7 +132,8 @@ describe("a hostel expulsion", () => {
     const principal = await ctxAs(ids.principal, "PRINCIPAL");
     const decided = await decideExpulsion(principal, x, { approve: true, note: "ZZ the committee's report read" });
     expect(decided.status).toBe("APPROVED");
-    expect(await db.hostelAllotment.findUniqueOrThrow({ where: { id: ids.allotment }, select: { status: true, toDate: true } })).toEqual({ status: "ENDED", toDate: "2099-01-01" });
+    // The day is ahead, so the place stays live until it, read at the time (A3-S-15; tests/smaller-security-items.test.ts walks the day).
+    expect(await db.hostelAllotment.findUniqueOrThrow({ where: { id: ids.allotment }, select: { status: true, toDate: true } })).toEqual({ status: "ACTIVE", toDate: null });
     expect(await db.notification.count({ where: { userId: ids.boarderUser, titleKey: "collegeDesks.notifExpelled" } })).toBe(1);
     // The same answer twice is the same; the other answer refused.
     expect((await decideExpulsion(principal, x, { approve: true, note: "" })).status).toBe("APPROVED");

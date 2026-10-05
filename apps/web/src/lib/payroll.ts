@@ -1,4 +1,5 @@
 import "server-only";
+import { openPan, writePan } from "./pan";
 import { createHash } from "node:crypto";
 import {
   COMPONENT_KIND,
@@ -108,7 +109,6 @@ function assertMonth(month: string): void {
 }
 const nameOf = (u: { name: string; preferredName: string | null }) => u.preferredName ?? u.name;
 const bankBound = (schoolId: string, membershipId: string) => `payroll:${schoolId}:${membershipId}:bank`;
-const panBound = (schoolId: string, membershipId: string) => `payroll:${schoolId}:${membershipId}:pan`;
 
 /* --------------------------------------------------------------- settings */
 
@@ -264,7 +264,8 @@ export async function saveSalary(ctx: ActiveContext, input: StaffSalarySave): Pr
   if (input.paymentMode === "BANK" && input.bankAccount && !input.bankIfsc) throw new RuleRefusal("payroll.refuseNoIfsc", 422, undefined, "bankIfsc");
   // What the latest revision holds sealed, carried into a new one when the form left it blank.
   const previous = await db.staffSalary.findFirst({ where: { membershipId: member.id }, orderBy: { effectiveFromKey: "desc" }, select: { panSealed: true, panLast4: true, bankAccountSealed: true, bankLast4: true, bankIfsc: true, bankName: true } });
-  const pan = input.pan ? { panSealed: seal(input.pan, panBound(caller.schoolId, member.id)), panLast4: input.pan.slice(-4) } : { panSealed: previous?.panSealed ?? null, panLast4: previous?.panLast4 ?? null };
+  // A new PAN is written below by the one writer (G4-14), to every revision and the faculty record; a blank keeps the held copy.
+  const pan = { panSealed: previous?.panSealed ?? null, panLast4: previous?.panLast4 ?? null };
   const bank = input.bankAccount ? { bankAccountSealed: seal(input.bankAccount, bankBound(caller.schoolId, member.id)), bankLast4: input.bankAccount.slice(-4) } : { bankAccountSealed: previous?.bankAccountSealed ?? null, bankLast4: previous?.bankLast4 ?? null };
   const data = {
     structureId: structure.id,
@@ -279,7 +280,11 @@ export async function saveSalary(ctx: ActiveContext, input: StaffSalarySave): Pr
     paymentMode: input.paymentMode,
     updatedByUserId: caller.user.id,
   };
-  const row = await db.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: member.id, effectiveFromKey: input.effectiveFrom } }, create: { schoolId: caller.schoolId, membershipId: member.id, effectiveFromKey: input.effectiveFrom, ...data }, update: data, select: SALARY_SELECT });
+  let row = await db.staffSalary.upsert({ where: { membershipId_effectiveFromKey: { membershipId: member.id, effectiveFromKey: input.effectiveFrom } }, create: { schoolId: caller.schoolId, membershipId: member.id, effectiveFromKey: input.effectiveFrom, ...data }, update: data, select: SALARY_SELECT });
+  if (input.pan) {
+    await writePan({ kind: "STAFF", schoolId: caller.schoolId, membershipId: member.id }, input.pan);
+    row = await db.staffSalary.findUniqueOrThrow({ where: { id: row.id }, select: SALARY_SELECT });
+  }
   // What changed, never the numbers: the log is read by the whole office.
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "payroll.salary.save", targetType: "Membership", targetId: member.id, meta: { effectiveFrom: input.effectiveFrom, structureId: structure.id, panChanged: Boolean(input.pan), bankChanged: Boolean(input.bankAccount), mode: input.paymentMode } });
   return { membershipId: member.id, name: nameOf(member.user), role: member.role, designation: member.staffRecord?.designation ?? null, salary: salaryView(row) };
@@ -695,7 +700,7 @@ export async function payrollExport(ctx: ActiveContext, month: string, kind: Pay
       const tds = line(linesOf(s), "TDS");
       if (!tds) continue;
       const sal = salaries.get(s.membershipId);
-      const pan = sal?.panSealed ? open(sal.panSealed, panBound(caller.schoolId, s.membershipId)) : "";
+      const pan = openPan({ kind: "STAFF", schoolId: caller.schoolId, membershipId: s.membershipId }, "SALARY", sal?.panSealed) ?? "";
       out.push(rowOf(FILE_HEADINGS.TDS_SUMMARY, [s.staffName, pan, (s.grossPaise / 100).toFixed(2), (tds.paise / 100).toFixed(2)]));
       totalPaise += tds.paise;
     }

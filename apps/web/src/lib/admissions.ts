@@ -528,7 +528,7 @@ async function bare(ctx: ActiveContext, applicationId: string): Promise<Bare & {
 
 const APP_INCLUDE = {
   cycle: { select: { id: true, name: true, testRequired: true, documentsJson: true, status: true, academicYear: { select: { name: true } } } },
-  school: { select: { id: true, name: true } },
+  school: { select: { id: true, name: true, timezone: true } },
   testSlot: { include: SLOT_INCLUDE },
   feeStructure: { select: { name: true } },
 } as const;
@@ -552,7 +552,7 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
       serial: a.serial,
       status,
       cycle: { id: a.cycle.id, name: a.cycle.name, academicYearName: a.cycle.academicYear.name, testRequired: a.cycle.testRequired, documents: required, status: a.cycle.status as "DRAFT" | "OPEN" | "CLOSED" },
-      school: a.school,
+      school: { id: a.school.id, name: a.school.name },
       applicantUserId: a.applicantUserId,
       applicantName: a.applicantName,
       applicantPhone: a.applicantPhone,
@@ -575,6 +575,8 @@ export async function applicationView(ctx: ActiveContext, applicationId: string)
       testedAt: iso(a.testedAt),
       offeredAt: iso(a.offeredAt),
       offerExpiresAt: iso(a.offerExpiresAt),
+      // The day, read in the school's zone: the instant is that day's end there (R-62).
+      offerExpiresOn: a.offerExpiresAt ? dateKeyInZone(a.offerExpiresAt, a.school.timezone) : null,
       offerNote: a.offerNote,
       respondedAt: iso(a.respondedAt),
       decisionNote: a.decisionNote,

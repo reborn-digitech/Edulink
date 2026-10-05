@@ -35,12 +35,14 @@ afterAll(async () => {
 });
 
 describe("who a college's faculty member may write to", () => {
-  it("offers teaching staff, the office and students, and never a desk with no inbox", async () => {
+  // G4-30 (risks batch, 5 Oct 2026): accounts and placement have an inbox now (web /remarks and the phone's Messages),
+  // so they are offered; the library's desk, a module role with no conversation door, still is not.
+  it("offers teaching staff, the office, the college desks and students, and never a desk with no inbox", async () => {
     __resetCookies();
     __setHeaders({});
     await createSession(ids.faculty, { schoolId: ids.college, role: "FACULTY" });
     const ctx = (await getSession())!;
     const roles = (await peopleToMessage(ctx, ids.college)).map((p) => p.role).sort();
-    expect(roles).toEqual(["ADMIN", "HOD", "STUDENT"]);
+    expect(roles).toEqual(["ACCOUNTS", "ADMIN", "HOD", "STUDENT", "TPO"]);
   });
 });

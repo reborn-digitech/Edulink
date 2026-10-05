@@ -1,4 +1,4 @@
-import { NAAC_BANDS, type NaacFormulaId, type NaacFramework, type NaacMetric } from "@edulink/contracts";
+import { NAAC_BANDS, NIRF_BANDS, type NaacFormulaId, type NaacFramework, type NaacMetric } from "@edulink/contracts";
 
 /**
  * THE PREDICTOR'S ARITHMETIC (the IQAC module, 4 October 2026) — pure, so a
@@ -232,15 +232,49 @@ export function cheapest<T extends { code: string; gainPerUnit: number }>(rows: 
 /* -------------------------------------------------------------------------- */
 
 /** `days` working days after `fromKey` (a date key), Monday to Saturday; Sunday is skipped. */
-export function addWorkingDays(fromKey: string, days: number): string {
+export function addWorkingDays(fromKey: string, days: number, calendar: WorkingCalendar = {}): string {
+  // THE COLLEGE'S OWN CALENDAR (G4-17, risks batch 5 Oct 2026; 08's recommended option): a working day is one of the
+  // school's teaching days (School.teachingDays, 0 Sunday … 6 Saturday) that no closing holiday covers. Without a
+  // calendar, Monday to Saturday as before. A week with no teaching day at all is read as the default, never as none.
+  const teaching = calendar.teachingDays?.length ? calendar.teachingDays : [1, 2, 3, 4, 5, 6];
+  const closed = calendar.closed ?? new Set<string>();
   const [y, m, d] = fromKey.split("-").map(Number) as [number, number, number];
   const at = new Date(Date.UTC(y, m - 1, d));
   let left = days;
-  while (left > 0) {
+  // Ten years of days at most: a calendar closed for longer is a mistake, not a due date.
+  for (let guard = 0; left > 0 && guard < 3660; guard++) {
     at.setUTCDate(at.getUTCDate() + 1);
-    if (at.getUTCDay() !== 0) left -= 1;
+    if (teaching.includes(at.getUTCDay()) && !closed.has(at.toISOString().slice(0, 10))) left -= 1;
   }
   return at.toISOString().slice(0, 10);
+}
+
+/** A school's working week and its closed days (holiday keys YYYY-MM-DD), for `addWorkingDays`. */
+export type WorkingCalendar = { teachingDays?: readonly number[]; closed?: ReadonlySet<string> };
+
+/**
+ * THE BENCHMARK LIST A COORDINATOR SIGNS (G4-15, risks batch 5 Oct 2026). The NAAC benchmarks (each quantitative
+ * formula's scale and benchmark above) and the NIRF band minimums (contracts NIRF_BANDS) are the platform's reading,
+ * so every figure built on them is "provisional" until the college's IQAC coordinator signs the list. The list's
+ * version is a hash of exactly those numbers: change one and the signature lapses, and the figures read provisional
+ * again until the list is signed anew. FNV-1a, pure, so the browser bundle that ships this file needs no crypto.
+ */
+export function benchmarkList(): { naac: { formula: string; type: string; benchmark: number }[]; nirfBands: { code: string; min: number }[] } {
+  const naac = (Object.keys(FORMULAS) as NaacFormulaId[]).sort().map((formula) => {
+    const scale = FORMULAS[formula].scale as { type: string; benchmark?: number; zeroAt?: number };
+    return { formula, type: scale.type, benchmark: scale.benchmark ?? scale.zeroAt ?? 0 };
+  });
+  return { naac, nirfBands: NIRF_BANDS.map((b) => ({ code: b.code, min: b.min })) };
+}
+
+export function benchmarkListVersion(): string {
+  const text = JSON.stringify(benchmarkList());
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(16).padStart(8, "0");
 }
 
 /* -------------------------------------------------------------------------- */

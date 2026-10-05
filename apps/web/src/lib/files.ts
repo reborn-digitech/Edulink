@@ -40,6 +40,22 @@ export type FileAccess =
 
 const DENY: FileAccess = { allowed: false, reason: "not-found" };
 
+/** A college offering's teacher (R-48): its faculty member, or the HOD of the department whose programme owns its course. */
+async function teachesOffering(offeringId: string, membershipId: string, role: string | null): Promise<boolean> {
+  if (role !== "FACULTY" && role !== "HOD") return false;
+  const offering = await db.courseOffering.findFirst({
+    where: {
+      id: offeringId,
+      OR: [
+        { facultyMembershipId: membershipId },
+        ...(role === "HOD" ? [{ course: { scheme: { programme: { department: { hodMembershipId: membershipId } } } } }] : []),
+      ],
+    },
+    select: { id: true },
+  });
+  return Boolean(offering);
+}
+
 /**
  * The JSON columns store `[{"fileId":"<uuid>.png",...}]`, so a reference is
  * matched by the quoted id. Quoting matters: without it, the id `a.png` would
@@ -73,7 +89,7 @@ export async function authorizeFileRead(
     select: {
       studentMembershipId: true,
       schoolId: true,
-      assignment: { select: { classId: true } },
+      assignment: { select: { classId: true, offeringId: true } },
       student: { select: { userId: true } },
     },
   });
@@ -99,12 +115,16 @@ export async function authorizeFileRead(
       return { allowed: true, kind: "submission", public: false };
     }
     // A teacher of the class the work was set for — not merely a colleague.
-    if (role === "TEACHER" && schoolId === submission.schoolId && membershipId) {
+    if (role === "TEACHER" && schoolId === submission.schoolId && membershipId && submission.assignment.classId) {
       const teaches = await db.classTeacher.findFirst({
         where: { classId: submission.assignment.classId, teacherMembershipId: membershipId },
         select: { id: true },
       });
       if (teaches) return { allowed: true, kind: "submission", public: false };
+    }
+    // A college offering's work (R-48): its faculty member or its department's HOD.
+    if (schoolId === submission.schoolId && membershipId && submission.assignment.offeringId && (await teachesOffering(submission.assignment.offeringId, membershipId, role))) {
+      return { allowed: true, kind: "submission", public: false };
     }
     return DENY;
   }
@@ -233,10 +253,23 @@ export async function authorizeFileRead(
   // ---- 3. assignment attachment: anyone who can see the assignment
   const assignment = await db.assignment.findFirst({
     where: { attachments: { contains: ref } },
-    select: { id: true, schoolId: true, classId: true, publishedAt: true },
+    select: { id: true, schoolId: true, classId: true, offeringId: true, publishedAt: true },
   });
 
-  if (assignment) {
+  // A college offering's handouts (R-48): its faculty member or HOD, the office, and once published its REGISTERED
+  // students. Not a guardian: an adult student's work is theirs (the family's list names it, the file stays theirs).
+  if (assignment && assignment.offeringId) {
+    if (schoolId !== assignment.schoolId || !membershipId) return DENY;
+    if (role === "ADMIN") return { allowed: true, kind: "assignment", public: false };
+    if (await teachesOffering(assignment.offeringId, membershipId, role)) return { allowed: true, kind: "assignment", public: false };
+    if (role === "STUDENT" && assignment.publishedAt) {
+      const registered = await db.courseRegistration.findFirst({ where: { offeringId: assignment.offeringId, studentMembershipId: membershipId, status: "REGISTERED" }, select: { id: true } });
+      if (registered) return { allowed: true, kind: "assignment", public: false };
+    }
+    return DENY;
+  }
+
+  if (assignment && assignment.classId) {
     if (schoolId !== assignment.schoolId) {
       // Could still be a guardian of a child in that class, at another school
       // context. Check that before denying.

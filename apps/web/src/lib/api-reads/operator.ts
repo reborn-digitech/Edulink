@@ -89,6 +89,7 @@ export async function operatorExperts(ctx: ActiveContext) {
       verifiedAt: isoOrNull(e.verifiedAt),
       createdAt: iso(e.createdAt),
       kyc: { status: e.kyc.status, note: e.kyc.note, submittedAt: e.kyc.submittedAt, decidedAt: e.kyc.decidedAt, documents: e.kyc.documents },
+      disabledAt: isoOrNull(e.disabledAt),
     })),
   };
 }

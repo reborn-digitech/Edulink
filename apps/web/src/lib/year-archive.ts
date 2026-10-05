@@ -299,7 +299,7 @@ export async function teacherYearArchive(
     return found;
   };
   for (const row of registers) bucket(row.classId).registersTaken += row._count._all;
-  for (const row of assignments) bucket(row.classId).assignmentsSet += row._count._all;
+  for (const row of assignments) if (row.classId) bucket(row.classId).assignmentsSet += row._count._all;
   for (const row of cards) bucket(row.classId).reportCardsPublished += row._count._all;
   if (tally.size === 0) return { classes: [] };
 

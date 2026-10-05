@@ -16,6 +16,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { open as openSealed, seal, sealingAvailable } from "./secret-box";
 import { pngFrom, SIGNATURE_LIMIT } from "./signatures";
 import { forSchool } from "./tenant-context";
+import { EXAM_CODE_SHAPE, examDocumentByCode } from "./exam-document-check";
 import type { ActiveContext } from "./session";
 import { assertAutonomous, cellOf, formCourses, sessionOf, statusAtLeast, type FormCourse } from "./exam-cell";
 import { newVersion, termResultView } from "./exam-cell-marks";
@@ -489,9 +490,11 @@ export async function documentForPdf(ctx: ActiveContext, documentId: string) {
 
 /** A hall ticket's facts for its PDF: the student, the photo (an uploaded picture), the papers with hall and seat. */
 export async function hallTicketForPdf(ctx: ActiveContext, ticketId: string) {
-  const ticket = await db.hallTicket.findUnique({ where: { id: ticketId }, include: { session: { select: { name: true } }, form: { select: { coursesJson: true } }, student: { select: { studentCode: true, user: { select: { name: true, avatarKey: true } } } } } });
+  const ticket = await db.hallTicket.findUnique({ where: { id: ticketId }, include: { session: { select: { name: true } }, form: { select: { coursesJson: true } }, student: { select: { studentCode: true, status: true, leftAt: true, user: { select: { name: true, avatarKey: true } } } } } });
   if (!ticket) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   await mayReadStudentPaper(ctx, ticket);
+  // A ticket admits to the hall: none is printed for a student who has left (A3-S-15).
+  if (ticket.student.status !== "ACTIVE" || ticket.student.leftAt !== null) throw new AccessError("examCell.refuseTicketLeft");
   const [school, schedules, seats, ids, programme] = await Promise.all([
     db.school.findUniqueOrThrow({ where: { id: ticket.schoolId }, select: { name: true, timezone: true, affiliatingUniversity: true } }),
     db.examSchedule.findMany({ where: { sessionId: ticket.sessionId }, select: { id: true, courseId: true, courseCode: true, courseName: true, at: true } }),
@@ -744,20 +747,21 @@ export async function saveControllerSignature(ctx: ActiveContext, image: string)
 /**
  * THE PUBLIC CHECK of a grade card, transcript, degree or hall ticket: that
  * the paper is real, from which college, of which kind and when — never
- * whose. The printed address carries the college's id beside the code, so
- * the lookup runs inside that college's fence (a signed-out caller has no
- * tenant of their own).
+ * whose. A grade card, transcript or degree is found by its code alone
+ * (A3-journeys-21: someone typing the code by hand has no college id; the
+ * row is code-readable, exam-document-check.ts). A hall ticket's printed
+ * address carries the college's id beside the code, so that lookup runs
+ * inside the college's fence (a signed-out caller has no tenant of their
+ * own); with no college id a hall ticket's code answers "not found".
  */
-export async function checkExamDocument(schoolId: string, code: string): Promise<ExamDocumentCheck> {
+export async function checkExamDocument(schoolId: string | null | undefined, code: string): Promise<ExamDocumentCheck> {
   const none: ExamDocumentCheck = { valid: false, kind: null, serial: null, schoolName: null, issuedAt: null, revokedAt: null };
   const clean = code.trim().toUpperCase();
-  if (!/^[A-Z0-9]{6,16}$/.test(clean) || !/^c[a-z0-9]{20,}$/.test(schoolId)) return none;
+  if (!EXAM_CODE_SHAPE.test(clean)) return none;
+  const byCode = await examDocumentByCode(clean);
+  if (byCode) return byCode;
+  if (!schoolId || !/^c[a-z0-9]{20,}$/.test(schoolId)) return none;
   return forSchool(schoolId, async () => {
-    const doc = await db.examDocument.findFirst({ where: { schoolId, code: clean }, select: { kind: true, serial: true, dataJson: true, issuedAt: true, revokedAt: true } });
-    if (doc) {
-      const data = readJson<{ college?: { name?: string } }>(doc.dataJson, {});
-      return { valid: !doc.revokedAt, kind: doc.kind as ExamDocumentCheck["kind"], serial: doc.serial, schoolName: data.college?.name ?? null, issuedAt: doc.issuedAt.toISOString(), revokedAt: doc.revokedAt?.toISOString() ?? null };
-    }
     const ticket = await db.hallTicket.findFirst({ where: { schoolId, code: clean }, select: { number: true, issuedAt: true, session: { select: { status: true } } } });
     if (!ticket) return none;
     const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true } });

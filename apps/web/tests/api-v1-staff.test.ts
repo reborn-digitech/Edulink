@@ -445,6 +445,23 @@ describe("leave", () => {
     expect((await leaveGet()).status).toBe(403);
     expect((await leavePost(json("/x", { fromDateKey: from, toDateKey: from, kind: "CASUAL", reason: "ZZ" }))).status).toBe(403);
   });
+
+  it("names who answers for the form's button: the principal for a teacher while there is one, else the office (G4-27)", async () => {
+    await asTeacher();
+    expect((await (await leaveGet()).json()).decidedBy).toBe("PRINCIPAL");
+    // The principal's own leave goes to the office (they may not approve their own).
+    await asPrincipal();
+    expect((await (await leaveGet()).json()).decidedBy).toBe("OFFICE");
+    // With the post vacant, a teacher's goes to the office too; restored before the next test.
+    const principal = await db.membership.findFirstOrThrow({ where: { schoolId, userId: principalUserId }, select: { id: true } });
+    await db.membership.update({ where: { id: principal.id }, data: { leftAt: new Date() } });
+    try {
+      await asTeacher();
+      expect((await (await leaveGet()).json()).decidedBy).toBe("OFFICE");
+    } finally {
+      await db.membership.update({ where: { id: principal.id }, data: { leftAt: null } });
+    }
+  });
 });
 
 describe("profile", () => {

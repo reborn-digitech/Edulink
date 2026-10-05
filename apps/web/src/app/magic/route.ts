@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { claimToken } from "@/lib/auth-tokens";
 import { createSession } from "@/lib/session";
-import { resolveContext } from "@/lib/resolve-context";
+import { closedOutsideAccount, resolveContext } from "@/lib/resolve-context";
 import { getT } from "@/lib/i18n/server";
 import { twoFactorChallengeFor, twoFactorCookieOptions, TWO_FACTOR_COOKIE } from "@/lib/two-factor";
 
@@ -117,6 +117,10 @@ export async function POST(request: NextRequest) {
   if (!user || user.disabledAt) return away("bad");
   // The link was sent to one address; the account must still be at it.
   if (claim.email && claim.email.toLowerCase() !== (user.email ?? "").toLowerCase()) return away("bad");
+
+  // An outside account the operator closed, the person's only way in (G4-28, risks batch 5 Oct 2026): told, not let in.
+  const closed = await closedOutsideAccount(user.id);
+  if (closed) return away(closed === "RECRUITER" ? "closedRecruiter" : "closedExpert");
 
   // Two-step sign-in: the link was the first step; the code page is the second.
   const challenge = await twoFactorChallengeFor(user.id, "magic-link");

@@ -322,6 +322,8 @@ async function progressByClass(
   const byClassAndPupil = new Map<string, Map<string, Entry[]>>();
   for (const grade of grades) {
     const classId = grade.assignment.classId;
+    // A college offering's work (R-48) is no class's.
+    if (!classId) continue;
     const pupils = byClassAndPupil.get(classId) ?? new Map<string, Entry[]>();
     const list = pupils.get(grade.studentMembershipId) ?? [];
     list.push({

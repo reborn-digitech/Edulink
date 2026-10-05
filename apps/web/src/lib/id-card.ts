@@ -9,6 +9,7 @@ import { currentAcademicYear } from "./academic-year";
 import { forSchool } from "./tenant-context";
 import { dateToDay } from "./fees";
 import { readFeesSecretKey } from "./env";
+import { studentCode } from "./codes";
 import { CODE_LOOKUPS, consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -57,10 +58,20 @@ export type IdCard = {
   checkPath: string | null;
 };
 
-async function cardOf(schoolId: string, membershipId: string): Promise<IdCard> {
+/**
+ * The card's facts. A card is printed only for a student on the roll
+ * (A3-S-15, audit of 5 October 2026): one who has left — paused, gone, a
+ * leaving date set — is refused, whoever asks (the student, a guardian, the
+ * office), so no live-looking card is made after the student has gone. The
+ * gate's look-up (`checkIdCode`) still reads a leaver's card as not on the
+ * roll, with nothing more than the name.
+ */
+async function cardOf(schoolId: string, membershipId: string, opts: { forPrint: boolean } = { forPrint: true }): Promise<IdCard> {
   const m = await db.membership.findFirst({
     where: { id: membershipId, schoolId, role: "STUDENT" },
     select: {
+      status: true,
+      leftAt: true,
       user: { select: { name: true, preferredName: true, avatarKey: true } },
       school: { select: { name: true, brandPrimary: true, kind: true } },
       enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { class: { select: { name: true } } }, take: 1 },
@@ -69,6 +80,7 @@ async function cardOf(schoolId: string, membershipId: string): Promise<IdCard> {
     },
   });
   if (!m) throw new AccessError("access.studentNotFoundInYourClasses", "NOT_FOUND");
+  if (opts.forPrint && (m.status !== "ACTIVE" || m.leftAt !== null)) throw new AccessError("collegeDesks.idCardRefuseLeft");
   const college = isCollegeKind(m.school.kind);
   const year = await currentAcademicYear(schoolId);
   const group = college && m.academicSeat ? `${m.academicSeat.programme.name} · ${m.academicSeat.yearOfStudy}` : (m.enrollments[0]?.class.name ?? null);
@@ -170,8 +182,10 @@ export async function checkIdCode(ctx: ActiveContext, code: string): Promise<IdC
       ? await db.membership.findFirst({ where: { schoolId: ctx.schoolId, role: "STUDENT", studentCode: clean.slice(0, 40) }, orderBy: { joinedAt: "desc" }, select: { id: true, status: true, leftAt: true } })
       : null;
   if (!m) return { found: false, onRoll: false, name: null, group: null, studentCode: clean, photoFileId: null, schoolName: null };
-  const card = await cardOf(ctx.schoolId, m.id);
-  return { found: true, onRoll: m.status === "ACTIVE" && m.leftAt === null, name: card.name, group: card.group, studentCode: clean, photoFileId: card.photoFileId, schoolName: card.school.name };
+  const onRoll = m.status === "ACTIVE" && m.leftAt === null;
+  const card = await cardOf(ctx.schoolId, m.id, { forPrint: false });
+  // A leaver's card vouches for nothing (A3-S-15): the name, so the gate knows whose card it was, and "not on the roll".
+  return { found: true, onRoll, name: card.name, group: onRoll ? card.group : null, studentCode: clean, photoFileId: onRoll ? card.photoFileId : null, schoolName: card.school.name };
 }
 
 export type IdCheckView =
@@ -191,4 +205,29 @@ export async function idCheckView(ctx: ActiveContext | null, code: string | null
   if (!clean) return { state: "noCode" };
   if (!(await consume(`idcheck:${ctx.user.id}`, CODE_LOOKUPS.limit, CODE_LOOKUPS.windowMs)).allowed) return { state: "busy" };
   return { state: "result", check: await checkIdCode(ctx, clean) };
+}
+
+/**
+ * A NEW CLAIM CODE FOR ONE STUDENT (R-52, risks batch 5 Oct 2026; 08's recommended option). Cards printed before
+ * 5 October carry the student code — the first of the two factors a guardian claims a child with (codes.ts) — so a
+ * lost or copied card is half a claim. The office (ADMIN) rotates it: a fresh code is written in place of the old,
+ * which then claims nothing (claim-child.ts looks the code up); the claim still needs the birthdate as before. Audited
+ * idcard.claimCode.rotate, the codes themselves kept out of the log. The new code is answered once, for the office
+ * to hand to the family.
+ */
+export async function rotateClaimCode(ctx: ActiveContext, studentMembershipId: string): Promise<{ studentMembershipId: string; studentCode: string }> {
+  if (!ctx.schoolId || ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
+  const m = await db.membership.findFirst({ where: { id: studentMembershipId, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true } });
+  if (!m) throw new AccessError("access.studentNotFoundInYourClasses", "NOT_FOUND");
+  for (let attempt = 0; ; attempt++) {
+    const code = studentCode();
+    try {
+      await db.membership.update({ where: { id: m.id }, data: { studentCode: code } });
+      await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "idcard.claimCode.rotate", targetType: "Membership", targetId: m.id, meta: {} });
+      return { studentMembershipId: m.id, studentCode: code };
+    } catch (error) {
+      // The unique index on the code decides a collision (one in a billion); draw again, three times at most.
+      if ((error as { code?: string }).code !== "P2002" || attempt >= 2) throw error;
+    }
+  }
 }

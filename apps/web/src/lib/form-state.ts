@@ -71,7 +71,9 @@ function resolve(fields: FieldMap, candidates: (string | undefined)[], own: stri
  *     sentence ("This is required.", "Use 1 or more.") about the control its
  *     path names, never the bare "Some of this needs another look.";
  *   - an error carrying only `formField` (a date the action could not read):
- *     "That is not valid." about that control.
+ *     "That is not valid." about that control;
+ *   - an action's own FormError (name "FormError") with neither: "Some of
+ *     this needs another look." by the button.
  */
 export function refusalOf(error: unknown, t: Translate, fields: FieldMap = {}): FormRefusal | null {
   if (!isObject(error)) return null;
@@ -93,6 +95,8 @@ export function refusalOf(error: unknown, t: Translate, fields: FieldMap = {}): 
   if (typeof error.formField === "string") {
     return { message: t("refusal.notValid"), field: resolve(fields, [error.formField], error.formField) };
   }
+  // An action's own "this form is not right" with no schema behind it (a missing file, a limit below zero).
+  if (error instanceof Error && error.name === "FormError") return { message: t("common.checkTheForm") };
   return null;
 }
 

@@ -3,7 +3,7 @@ import { INSTITUTION_KINDS, STREAMS } from "@edulink/contracts";
 import {
   ATTENDANCE_STATUSES,
   GUARDIAN_RELATIONS,
-  POST_CATEGORIES,
+  POSTABLE_CATEGORIES,
   POST_SCOPES,
   REACTION_KINDS,
   INVITABLE_ROLES,
@@ -311,7 +311,7 @@ export const postSchema = z.object({
   scope: z.enum(POST_SCOPES),
   // Defaulted rather than required so every form shipped before categories
   // existed still parses; the composer always sends one explicitly.
-  category: z.enum(POST_CATEGORIES).default("UPDATES"),
+  category: z.enum(POSTABLE_CATEGORIES).default("UPDATES"),
   /** The typeface, by the web's key; "default" is the reader's own. */
   font: z.string().trim().regex(/^[a-z]{1,40}$/).default("default"),
   classId: z.string().cuid().optional().or(z.literal("")),

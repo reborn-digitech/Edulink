@@ -4,7 +4,7 @@ import { db } from "./db";
 import { AccessError } from "./access-error";
 import { assertModuleOn } from "./modules";
 import { audit } from "./audit";
-import { notify } from "./notify";
+import { notify, notifyGuardians } from "./notify";
 import { getT } from "./i18n/server";
 import { RuleRefusal } from "./rule-refusal";
 import type { ActiveContext } from "./session";
@@ -367,6 +367,7 @@ export async function decideGrace(ctx: ActiveContext, graceId: string, input: { 
   });
   await audit({ schoolId, actorUserId: ctx.user.id, action: input.approve ? "exam.grace.approve" : "exam.grace.refuse", targetType: "ExamGrace", targetId: g.id, meta: { graceMilli: g.graceMilli, note: input.note ?? null } });
   await notify({ userId: g.proposedByUserId, schoolId, kind: "SYSTEM", titleKey: input.approve ? "examCell.notifyGraceApproved" : "examCell.notifyGraceRefused", bodyKey: "examCell.notifyGraceDecidedBody", url: `/exam-cell/sessions/${g.sessionId}/marks` });
+  if (input.approve) await tellGrace(schoolId, g).catch((error) => console.error("[exam-cell] grace notice failed", error));
   return { ok: true, id: g.id, count: null };
 }
 
@@ -500,6 +501,24 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
  * backlog at all), each student's earned credits wait for the Academic Bank,
  * and the students are told.
  */
+/**
+ * THE STUDENT AND THE FAMILY HEAR OF GRACE AND OF RESULTS (G4-13, risks batch 5 Oct 2026; 08's recommended option:
+ * the controller works on the web, the phone shows the status). An approved grace tells the student (a push and a
+ * notification) and their guardians under the RESULTS grant (an adult college student's guardians only with it); a
+ * published run tells the guardians as `publishRun` already told the students. The links open the student's exams
+ * and the family's results; the phone maps them to its screens.
+ */
+async function tellGrace(schoolId: string, g: { sessionId: string; courseId: string; studentMembershipId: string; graceMilli: number }): Promise<void> {
+  const [session, course, student] = await Promise.all([
+    db.examSession.findUnique({ where: { id: g.sessionId }, select: { name: true } }),
+    db.course.findUnique({ where: { id: g.courseId }, select: { code: true } }),
+    db.membership.findUnique({ where: { id: g.studentMembershipId }, select: { userId: true } }),
+  ]);
+  const vars = { course: course?.code ?? "", session: session?.name ?? "", marks: milliText(g.graceMilli) };
+  if (student) await notify({ userId: student.userId, schoolId, kind: "GRADE", titleKey: "riskDecisions.notifGraceStudent", titleVars: { course: vars.course }, bodyKey: "riskDecisions.notifGraceStudentBody", bodyVars: vars, url: "/student/exams" });
+  await notifyGuardians(g.studentMembershipId, (name) => ({ schoolId, kind: "GRADE", titleKey: "riskDecisions.notifGraceFamily", titleVars: { name, course: vars.course }, bodyKey: "riskDecisions.notifGraceStudentBody", bodyVars: vars, url: "/parent/results" }), "RESULTS");
+}
+
 export async function publishRun(ctx: ActiveContext, sessionId: string, runId: string): Promise<ExamActionResult> {
   // THE SECOND SIGNATORY (campaign S-10). The first publication is the controller's. After it, a
   // run carries corrections or revaluations one controller made alone, so it is published by the
@@ -553,6 +572,10 @@ export async function publishRun(ctx: ActiveContext, sessionId: string, runId: s
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.result.publish", targetType: "ResultRun", targetId: run.id, meta: { number: run.number } });
   const people = await db.membership.findMany({ where: { id: { in: termRows.map((r) => r.studentMembershipId) } }, select: { userId: true } });
   await Promise.all(people.map((p) => notify({ userId: p.userId, schoolId: cell.schoolId, kind: "GRADE", titleKey: "examCell.notifyResult", titleVars: { session: s.name }, bodyKey: "examCell.notifyResultBody", url: "/student/exams" })));
+  // The families too (G4-13): once per student, under the RESULTS grant; a notice that fails does not undo the publication.
+  for (const studentMembershipId of new Set(termRows.map((r) => r.studentMembershipId))) {
+    await notifyGuardians(studentMembershipId, (name) => ({ schoolId: cell.schoolId, kind: "GRADE", titleKey: "riskDecisions.notifResultFamily", titleVars: { name, session: s.name }, bodyKey: "riskDecisions.notifResultFamilyBody", url: "/parent/results" }), "RESULTS").catch((error) => console.error("[exam-cell] result notice failed", error));
+  }
   return { ok: true, id: run.id, count: termRows.length };
 }
 

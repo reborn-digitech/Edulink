@@ -1,4 +1,5 @@
 import "server-only";
+import { writePan } from "./pan";
 import { createHash, createHmac, hkdfSync, randomBytes, timingSafeEqual } from "node:crypto";
 import {
   applicableFilings,
@@ -38,11 +39,12 @@ import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn, isModuleOn } from "./modules";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { todayKey } from "./dates";
+import { addDaysToKey, parseTeachingDays, todayKey } from "./dates";
+import { closedDayKeys, listHolidays } from "./holidays";
 import { readJsonArray } from "./json";
 import { getT } from "./i18n/server";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
-import { seal, sealingAvailable } from "./secret-box";
+import { sealingAvailable } from "./secret-box";
 import { readFeesSecretKey } from "./env";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -51,6 +53,7 @@ import {
   FORMULAS,
   SURVEY_MIN_RESPONSES,
   addWorkingDays,
+  type WorkingCalendar,
   aggregate,
   cgpaOf,
   cheapest,
@@ -597,6 +600,9 @@ export async function listCommittees(ctx: ActiveContext) {
 
 export async function saveCommittee(ctx: ActiveContext, input: z.infer<typeof committeeSaveSchema>, committeeId?: string) {
   const actor = await iqacActor(ctx, ["ADMIN"]);
+  // The student council is kept on its own page with its members' accounts (council-notices.ts `saveCouncil`, its one writer):
+  // a committee written here names its members as text, which would take away the council's right to post (risks batch 5A).
+  if (input.kind === "STUDENT_COUNCIL" || (committeeId && (await db.committee.findFirst({ where: { id: committeeId, schoolId: actor.schoolId, kind: "STUDENT_COUNCIL" }, select: { id: true } })))) throw new RuleRefusal("councilNotices.refuseKeptOnCouncilPage", 422, undefined, "kind");
   const ids = input.members.map((m) => m.membershipId).filter((x): x is string => !!x);
   if (ids.length) {
     const found = await db.membership.count({ where: { id: { in: ids }, schoolId: actor.schoolId } });
@@ -654,6 +660,11 @@ export async function listSurveys(ctx: ActiveContext) {
 
 export async function createSurvey(ctx: ActiveContext, input: z.infer<typeof surveySaveSchema>) {
   const desk = await iqacActor(ctx, DESK_WRITE);
+  // NO KEY, NO ANONYMOUS SURVEY (G4-3, risks batch 5 Oct 2026; 08's recommended option). Without FEES_SECRET_KEY the
+  // respondent hash is keyed on the survey's salt alone, which sits in the same row: anyone with the database could
+  // hash each member against it until the survey closes and match answers to people. Opening one is refused with a
+  // sentence; a survey already open keeps the salt-only hash it was opened with (respondentHash) until it closes.
+  if (ANONYMOUS(input.kind) && !readFeesSecretKey().ok) throw new RuleRefusal("riskDecisions.refuseSurveyNoKey", 409);
   if (input.closesOn < input.opensOn) throw new RuleRefusal("iqac.refuseWindow", 422, undefined, "closesOn");
   if (input.kind === "COURSE_FEEDBACK") {
     if (!input.offeringId) throw new RuleRefusal("iqac.refuseOffering", 422, undefined, "offeringId");
@@ -675,6 +686,15 @@ export async function closeSurvey(ctx: ActiveContext, surveyId: string) {
     await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.survey.close", targetType: "Survey", targetId: surveyId, meta: {} });
   }
   return listSurveys(ctx);
+}
+
+/**
+ * The college's own working days from a day on (G4-17, risks batch 5 Oct 2026): its teaching week and the closing
+ * holidays of the next year, for the grievance limit and any other count of working days (iqac-rules.ts addWorkingDays).
+ */
+export async function workingCalendar(schoolId: string, fromKey: string): Promise<WorkingCalendar> {
+  const [school, spans] = await Promise.all([db.school.findUnique({ where: { id: schoolId }, select: { teachingDays: true } }), listHolidays(schoolId, { fromKey, toKey: addDaysToKey(fromKey, 366) })]);
+  return { teachingDays: parseTeachingDays(school?.teachingDays), closed: closedDayKeys(spans) };
 }
 
 /**
@@ -976,7 +996,7 @@ export async function fileGrievance(ctx: ActiveContext, input: z.infer<typeof gr
   const today = todayKey(await zoneOf(actor.schoolId));
   const committeeKind = COMMITTEE_FOR[input.kind] ?? "GRIEVANCE";
   const fileId = await spendFile(actor, input.fileId, "GRIEVANCE", input.kind);
-  const g = await db.grievance.create({ data: { schoolId: actor.schoolId, byMembershipId: actor.membershipId, kind: input.kind, committeeKind, text: input.text, fileId, anonymousToStaff: input.anonymousToStaff, dueOn: addWorkingDays(today, GRIEVANCE_LIMIT_WORKING_DAYS) }, select: { id: true, dueOn: true } });
+  const g = await db.grievance.create({ data: { schoolId: actor.schoolId, byMembershipId: actor.membershipId, kind: input.kind, committeeKind, text: input.text, fileId, anonymousToStaff: input.anonymousToStaff, dueOn: addWorkingDays(today, GRIEVANCE_LIMIT_WORKING_DAYS, await workingCalendar(actor.schoolId, today)) }, select: { id: true, dueOn: true } });
   await audit({ schoolId: actor.schoolId, actorUserId: actor.userId, action: "iqac.grievance.file", targetType: "Grievance", targetId: g.id, meta: { kind: input.kind, committee: committeeKind, dueOn: g.dueOn } });
   const office = await db.membership.findMany({ where: { schoolId: actor.schoolId, role: { in: ["ADMIN", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null }, select: { userId: true } });
   for (const o of office) await notify({ userId: o.userId, schoolId: actor.schoolId, kind: "SYSTEM", titleKey: "iqac.notifyGrievanceTitle", bodyKey: "iqac.notifyGrievanceBody", bodyVars: { due: g.dueOn }, url: "/iqac/grievances", urgent: input.kind === "RAGGING" });
@@ -1124,13 +1144,11 @@ export async function saveFacultyRecord(ctx: ActiveContext, input: z.infer<typeo
   const actor = await iqacActor(ctx, ["ADMIN"]);
   const m = await db.membership.findFirst({ where: { id: input.membershipId, schoolId: actor.schoolId, role: { in: [...TEACHERS, "PRINCIPAL"] } }, select: { id: true } });
   if (!m) throw new RuleRefusal("iqac.refuseNotTeacher", 422, undefined, "membershipId");
-  let pan: { panSealed: string; panLast4: string } | Record<string, never> = {};
-  if (input.pan) {
-    if (!sealingAvailable()) throw new RuleRefusal("iqac.refuseSealing", 422, undefined, "pan");
-    pan = { panSealed: seal(input.pan, `${actor.schoolId}:FacultyRecord.pan:${m.id}`), panLast4: input.pan.slice(-4) };
-  }
-  const data = { designation: input.designation, appointment: input.appointment, highestQualification: input.highestQualification, netSetQualified: input.netSetQualified, experienceBeforeYears: input.experienceBeforeYears, joinedOn: input.joinedOn, departmentId: input.departmentId, apaarFacultyId: input.apaarFacultyId, apiScoreJson: JSON.stringify(input.apiScoreInputs), updatedByUserId: actor.userId, ...pan };
+  if (input.pan && !sealingAvailable()) throw new RuleRefusal("iqac.refuseSealing", 422, undefined, "pan");
+  const data = { designation: input.designation, appointment: input.appointment, highestQualification: input.highestQualification, netSetQualified: input.netSetQualified, experienceBeforeYears: input.experienceBeforeYears, joinedOn: input.joinedOn, departmentId: input.departmentId, apaarFacultyId: input.apaarFacultyId, apiScoreJson: JSON.stringify(input.apiScoreInputs), updatedByUserId: actor.userId };
   await db.facultyRecord.upsert({ where: { membershipId: m.id }, create: { schoolId: actor.schoolId, membershipId: m.id, ...data }, update: data });
+  // The one writer (G4-14): the record's copy and payroll's, together.
+  if (input.pan) await writePan({ kind: "STAFF", schoolId: actor.schoolId, membershipId: m.id }, input.pan);
   // The PAN never enters the log, sealed or not.
   await audit({ schoolId: actor.schoolId, actorUserId: actor.userId, action: "iqac.facultyRecord.save", targetType: "Membership", targetId: m.id, meta: { designation: input.designation, pan: Boolean(input.pan) } });
   return facultyRecords(ctx);

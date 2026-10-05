@@ -48,6 +48,9 @@ async function orNotFound<T>(work: Promise<T>): Promise<T> {
  */
 export async function teachingGradebook(ctx: Staff & { role: "TEACHER" | "ADMIN" }, assignmentId: string): Promise<TeachingGradebook> {
   const book = await orNotFound(getGradebook(ctx, assignmentId));
+  // A college offering's work (R-48) is marked through /api/v1/academics/work; this door is a class's.
+  const classId = book.assignment.classId;
+  if (!classId) throw new AccessError("access.assignmentNotFound", "NOT_FOUND");
   const submissions = await db.submission.findMany({
     where: { assignmentId: book.assignment.id, submittedAt: { not: null } },
     select: { studentMembershipId: true, body: true, attachments: true },
@@ -63,7 +66,7 @@ export async function teachingGradebook(ctx: Staff & { role: "TEACHER" | "ADMIN"
       pointsMilli: a.pointsMilli,
       dueAt: iso(a.dueAt),
       publishedAt: iso(a.publishedAt),
-      classId: a.classId,
+      classId,
       className: a.className,
       attachments: a.attachments,
     },

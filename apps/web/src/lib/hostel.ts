@@ -10,6 +10,8 @@ import type {
   HostelOverview,
   HostelRollCallSheet,
   HostelRollCallTake,
+  HostelRollCallCorrect,
+  HostelRollCallCorrected,
   HostelRollSlot,
   HostelRoomSave,
   HostelSave,
@@ -19,6 +21,7 @@ import type {
 } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError, assertGuardianAccess } from "./tenancy";
+import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
@@ -93,6 +96,36 @@ async function namesOf(userIds: (string | null | undefined)[]): Promise<Map<stri
 const ALLOTMENT_INCLUDE = { student: { select: PUPIL_SELECT }, room: { select: { id: true, number: true, floor: true, hostelId: true, hostel: { select: { id: true, name: true, kind: true, wardenMembershipId: true } } } } } as const;
 type AllotmentRow = { id: string; membershipId: string; roomId: string; bed: number; fromDate: string; toDate: string | null; status: string; feeDemandId: string | null; student: Pupil; room: { id: string; number: string; floor: string; hostelId: string; hostel: { id: string; name: string; kind: string; wardenMembershipId: string | null } } };
 
+/**
+ * THE ONE READER OF A LIVE PLACE (A3-S-15, audit of 5 October 2026). A place
+ * is live on `today` while it is ACTIVE and no approved expulsion of it takes
+ * effect on or before that day: an expulsion approved for a day ahead leaves
+ * the boarder on the roster, the roll call and the mess until that day, and
+ * off them from it, read at the time — nothing is written on the day.
+ * Every read of the house's boarders goes through here.
+ */
+export function liveAllotmentWhere(today: string) {
+  return { status: "ACTIVE", expulsions: { none: { status: "APPROVED", effectiveOn: { lte: today } } } } as const;
+}
+
+/**
+ * THE ONE WRITER OF AN EXPELLED PLACE'S END: the row is ENDED on the
+ * expulsion's day, by its decider, and its keys freed. Called when the
+ * principal approves an expulsion whose day has come, and before a bed or a
+ * pupil is given again (the database's own keys would still hold them), so
+ * the stored row catches up with what the reader above already says.
+ */
+export async function settleExpulsions(tx: Tx, schoolId: string, today: string, allotmentIds?: readonly string[]): Promise<number> {
+  const due = await tx.hostelExpulsion.findMany({
+    where: { schoolId, status: "APPROVED", effectiveOn: { lte: today }, allotment: { status: "ACTIVE" }, ...(allotmentIds ? { allotmentId: { in: [...allotmentIds] } } : {}) },
+    select: { allotmentId: true, effectiveOn: true, decidedByUserId: true },
+  });
+  for (const x of due) {
+    await tx.hostelAllotment.updateMany({ where: { id: x.allotmentId, status: "ACTIVE" }, data: { status: "ENDED", toDate: x.effectiveOn, activePupilKey: null, activeBedKey: null, endedByUserId: x.decidedByUserId } });
+  }
+  return due.length;
+}
+
 /** Who is out of the hostel on approved leave right now. */
 async function outNowSet(allotmentIds: string[]): Promise<Set<string>> {
   if (allotmentIds.length === 0) return new Set();
@@ -126,7 +159,7 @@ export async function hostelsView(ctx: ActiveContext): Promise<HostelsView> {
   const staff = await staffOf(ctx, READERS);
   const [hostels, active, wardens] = await Promise.all([
     db.hostel.findMany({ where: { schoolId: staff.schoolId }, orderBy: { name: "asc" }, include: { rooms: { orderBy: [{ floor: "asc" }, { number: "asc" }] } } }),
-    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE" }, include: ALLOTMENT_INCLUDE, orderBy: [{ roomId: "asc" }, { bed: "asc" }] }),
+    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(todayKey(staff.timeZone)) }, include: ALLOTMENT_INCLUDE, orderBy: [{ roomId: "asc" }, { bed: "asc" }] }),
     db.membership.findMany({ where: { schoolId: staff.schoolId, role: "WARDEN", status: "ACTIVE" }, select: { id: true, user: { select: { name: true, preferredName: true } } }, orderBy: { user: { name: "asc" } } }),
   ]);
   const out = await outNowSet(active.map((a) => a.id));
@@ -187,7 +220,7 @@ export async function saveRoom(ctx: ActiveContext, input: HostelRoomSave): Promi
   if (id) {
     const room = await db.hostelRoom.findFirst({ where: { id, schoolId: staff.schoolId, hostelId: input.hostelId }, select: { id: true } });
     if (!room) throw new AccessError("hostel.refuseNoRoom", "NOT_FOUND");
-    const highest = await db.hostelAllotment.findFirst({ where: { roomId: id, status: "ACTIVE" }, orderBy: { bed: "desc" }, select: { bed: true } });
+    const highest = await db.hostelAllotment.findFirst({ where: { roomId: id, ...liveAllotmentWhere(todayKey(staff.timeZone)) }, orderBy: { bed: "desc" }, select: { bed: true } });
     if (highest && highest.bed > input.beds) throw new AccessError("hostel.refuseBedsInUse", "FORBIDDEN", { bed: highest.bed });
     await db.hostelRoom.update({ where: { id }, data });
   } else id = (await db.hostelRoom.create({ data: { schoolId: staff.schoolId, hostelId: input.hostelId, ...data }, select: { id: true } })).id;
@@ -197,7 +230,7 @@ export async function saveRoom(ctx: ActiveContext, input: HostelRoomSave): Promi
 
 export async function listBoarders(ctx: ActiveContext, hostelId?: string): Promise<{ items: HostelBoarder[] }> {
   const staff = await staffOf(ctx, READERS);
-  const rows = await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE", ...(hostelId ? { room: { hostelId } } : {}) }, include: ALLOTMENT_INCLUDE });
+  const rows = await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(todayKey(staff.timeZone)), ...(hostelId ? { room: { hostelId } } : {}) }, include: ALLOTMENT_INCLUDE });
   const out = await outNowSet(rows.map((r) => r.id));
   const items = rows.map((r) => boarderOf(r, out)).sort((a, b) => a.hostelName.localeCompare(b.hostelName) || a.roomNumber.localeCompare(b.roomNumber, undefined, { numeric: true }) || a.bed - b.bed);
   return { items };
@@ -215,6 +248,8 @@ export async function allotBed(ctx: ActiveContext, input: HostelAllot): Promise<
     const d = await db.feeDemand.findFirst({ where: { id: input.feeDemandId, schoolId: staff.schoolId, studentMembershipId: pupil.id }, select: { id: true } });
     if (!d) throw new AccessError("hostel.refuseNoDemand");
   }
+  // A place whose expulsion has taken effect still holds its keys until written: write it now (the one writer).
+  await db.$tenantTransaction((raw) => settleExpulsions(raw as Tx, staff.schoolId, todayKey(staff.timeZone)));
   if (await db.hostelAllotment.findUnique({ where: { activePupilKey: pupil.id }, select: { id: true } })) throw new AccessError("hostel.refuseAlreadyBoarding");
   const bedKey = `${room.id}:${input.bed}`;
   if (await db.hostelAllotment.findUnique({ where: { activeBedKey: bedKey }, select: { id: true } })) throw new AccessError("hostel.refuseBedTaken");
@@ -256,7 +291,7 @@ export async function rollCallSheet(ctx: ActiveContext, hostelId: string, slot: 
   const dateKey = date ?? todayKey(staff.timeZone);
   const [call, active] = await Promise.all([
     db.hostelRollCall.findUnique({ where: { hostelId_dateKey_slot: { hostelId, dateKey, slot } }, include: { entries: true } }),
-    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE", room: { hostelId } }, include: ALLOTMENT_INCLUDE }),
+    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(dateKey), room: { hostelId } }, include: ALLOTMENT_INCLUDE }),
   ]);
   const out = await outNowSet(active.map((a) => a.id));
   const recorded = new Map((call?.entries ?? []).map((e) => [e.allotmentId, e.status]));
@@ -267,6 +302,8 @@ export async function rollCallSheet(ctx: ActiveContext, hostelId: string, slot: 
     dateKey,
     slot,
     taken: call ? { at: call.takenAt.toISOString(), byName: names.get(call.takenByUserId) ?? "" } : null,
+    rollCallId: call?.id ?? null,
+    canCorrect: Boolean(call) && staff.role === "ADMIN",
     entries: active
       .map((a) => ({
         allotmentId: a.id,
@@ -279,6 +316,55 @@ export async function rollCallSheet(ctx: ActiveContext, hostelId: string, slot: 
       }))
       .sort((x, y) => x.roomNumber.localeCompare(y.roomNumber, undefined, { numeric: true }) || x.bed - y.bed),
   };
+}
+
+/**
+ * THE OFFICE CORRECTS A TAKEN ROLL CALL (R-11, risks batch 5 Oct 2026; 08's recommended option). A roll call is
+ * taken once and then locked: the warden cannot take the slot again (`takeRollCall` refuses a second sheet), and that
+ * stays. A wrong mark — a boarder marked absent who was in the common room — had no way back. The office (ADMIN, not
+ * the warden or the head) may set the status of boarders who were on the call, with a reason; one audit row names the
+ * person (its actor) and carries every mark before and after. A boarder newly marked absent has their guardians told
+ * as the call would have; nothing else is sent. Nothing changes when every status already stands.
+ */
+export async function correctRollCall(ctx: ActiveContext, rollCallId: string, input: HostelRollCallCorrect): Promise<HostelRollCallCorrected> {
+  const staff = await staffOf(ctx, ["ADMIN"]);
+  const call = await db.hostelRollCall.findFirst({ where: { id: rollCallId, schoolId: staff.schoolId }, include: { hostel: { select: { name: true } }, entries: { select: { id: true, allotmentId: true, membershipId: true, status: true } } } });
+  if (!call) throw new AccessError("riskDecisions.refuseNoRollCall", "NOT_FOUND");
+  const reason = input.reason.trim();
+  if (reason.length < 3) throw new RuleRefusal("riskDecisions.refuseCorrectionReason", 422, undefined, "reason");
+  const onCall = new Map(call.entries.map((e) => [e.allotmentId, e]));
+  const wanted = new Map<string, string>();
+  for (const e of input.entries) {
+    if (!onCall.has(e.allotmentId)) throw new RuleRefusal("riskDecisions.refuseCorrectionEntry", 422, undefined, "entries");
+    wanted.set(e.allotmentId, e.status);
+  }
+  const changes = [...wanted].flatMap(([allotmentId, status]) => {
+    const e = onCall.get(allotmentId)!;
+    return e.status === status ? [] : [{ id: e.id, allotmentId, membershipId: e.membershipId, before: e.status, after: status }];
+  });
+  if (changes.length) {
+    await db.$tenantTransaction(async (raw) => {
+      const tx = raw as Tx;
+      for (const c of changes) await tx.hostelRollCallEntry.update({ where: { id: c.id }, data: { status: c.after } });
+    });
+    await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.rollcall.correct", targetType: "HostelRollCall", targetId: call.id, meta: { hostelId: call.hostelId, dateKey: call.dateKey, slot: call.slot, reason, changes: changes.map(({ allotmentId, membershipId, before, after }) => ({ allotmentId, membershipId, before, after })) } });
+    for (const c of changes.filter((x) => x.after === "ABSENT")) {
+      await notifyGuardians(c.membershipId, (childName) => ({
+        schoolId: staff.schoolId,
+        kind: "ATTENDANCE",
+        titleKey: "hostel.notifAbsentTitle",
+        titleVars: { name: childName },
+        bodyKey: call.slot === "NIGHT" ? "hostel.notifAbsentNight" : "hostel.notifAbsentMorning",
+        bodyVars: { name: childName, hostel: call.hostel.name },
+        url: `/parent/hostel?child=${c.membershipId}`,
+        urgent: true,
+      }), "HOSTEL_TRANSPORT").catch((error) => console.error("[hostel] corrected absent notice failed", error));
+    }
+  }
+  const now = new Map(call.entries.map((e) => [e.allotmentId, e.status]));
+  for (const c of changes) now.set(c.allotmentId, c.after);
+  const statuses = [...now.values()];
+  return { rollCallId: call.id, changed: changes.length, present: statuses.filter((s) => s === "PRESENT").length, onLeave: statuses.filter((s) => s === "ON_LEAVE").length, absent: statuses.filter((s) => s === "ABSENT").length };
 }
 
 /** Takes a hostel's roll call for a day and slot, once. Absent boarders' guardians are told at once. */
@@ -295,7 +381,7 @@ export async function takeRollCall(ctx: ActiveContext, input: HostelRollCallTake
     if (existing.clientId === input.clientId) return { rollCallId: existing.id, ...counts(existing.entries), replay: true };
     throw new AccessError("hostel.refuseRollCallTaken");
   }
-  const active = await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE", room: { hostelId: hostel.id } }, select: { id: true, membershipId: true } });
+  const active = await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(input.dateKey), room: { hostelId: hostel.id } }, select: { id: true, membershipId: true } });
   const byId = new Map(active.map((a) => [a.id, a.membershipId]));
   const seen = new Set<string>();
   for (const e of input.entries) {
@@ -495,7 +581,7 @@ export async function listVisitors(ctx: ActiveContext, date?: string) {
 
 export async function signVisitorIn(ctx: ActiveContext, input: { allotmentId: string; name: string; relation: string; note: string }) {
   const staff = await staffOf(ctx, WRITERS);
-  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: staff.schoolId, status: "ACTIVE" }, select: { id: true } });
+  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: staff.schoolId, ...liveAllotmentWhere(todayKey(staff.timeZone)) }, select: { id: true } });
   if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
   const v = await db.hostelVisitor.create({ data: { schoolId: staff.schoolId, allotmentId: a.id, name: input.name, relation: input.relation, note: input.note, allowedByUserId: staff.userId }, select: { id: true } });
   await audit({ schoolId: staff.schoolId, actorUserId: staff.userId, action: "hostel.visitor.in", targetType: "HostelVisitor", targetId: v.id, meta: { allotmentId: a.id } });
@@ -560,7 +646,7 @@ export async function saveMessAttendance(ctx: ActiveContext, input: { hostelId: 
   if (!hostel) throw new AccessError("hostel.refuseNoHostel", "NOT_FOUND");
   if (!hostel.messAttendance) throw new AccessError("hostel.refuseMessOff");
   if (input.dateKey > todayKey(staff.timeZone)) throw new AccessError("hostel.refuseRollCallDate");
-  const active = new Set((await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE", room: { hostelId: hostel.id } }, select: { id: true } })).map((a) => a.id));
+  const active = new Set((await db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(input.dateKey), room: { hostelId: hostel.id } }, select: { id: true } })).map((a) => a.id));
   if (input.entries.some((e) => !active.has(e.allotmentId))) throw new AccessError("hostel.refuseNotBoarder");
   await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
@@ -613,7 +699,7 @@ export async function hostelIncidents(ctx: ActiveContext) {
  */
 export async function recordHostelIncident(ctx: ActiveContext, input: HostelIncidentCreate) {
   const staff = await staffOf(ctx, WRITERS);
-  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: staff.schoolId, status: "ACTIVE" }, include: ALLOTMENT_INCLUDE });
+  const a = await db.hostelAllotment.findFirst({ where: { id: input.allotmentId, schoolId: staff.schoolId, ...liveAllotmentWhere(todayKey(staff.timeZone)) }, include: ALLOTMENT_INCLUDE });
   if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
   const created = await db.incident.create({
     data: { schoolId: staff.schoolId, studentMembershipId: a.membershipId, reportedByMembershipId: staff.membershipId, kind: input.kind, severity: input.severity, occurredAt: new Date(), place: a.room.hostel.name.slice(0, 80), title: input.title, body: input.body, actionTaken: input.actionTaken, hostelId: a.room.hostelId },
@@ -640,7 +726,7 @@ export async function recordHostelIncident(ctx: ActiveContext, input: HostelInci
 /** What the warden needs at night from a boarder's health card. The read is a row the family sees, as every staff read is. */
 export async function boarderHealth(ctx: ActiveContext, allotmentId: string): Promise<HostelBoarderHealth> {
   const staff = await staffOf(ctx, ["WARDEN"]);
-  const a = await db.hostelAllotment.findFirst({ where: { id: allotmentId, schoolId: staff.schoolId, status: "ACTIVE" }, include: ALLOTMENT_INCLUDE });
+  const a = await db.hostelAllotment.findFirst({ where: { id: allotmentId, schoolId: staff.schoolId, ...liveAllotmentWhere(todayKey(staff.timeZone)) }, include: ALLOTMENT_INCLUDE });
   if (!a) throw new AccessError("hostel.refuseNoAllotment", "NOT_FOUND");
   const card = await db.healthCard.findUnique({ where: { studentMembershipId: a.membershipId } });
   await forSchool(staff.schoolId, () => db.healthCardRead.create({ data: { schoolId: staff.schoolId, studentMembershipId: a.membershipId, healthCardId: card?.id ?? null, readerUserId: staff.userId, readerRole: "WARDEN" }, select: { id: true } }));
@@ -710,8 +796,9 @@ async function familyAllotment(ctx: ActiveContext, childId?: string | null): Pro
   const pupil = await db.membership.findUnique({ where: { id: membershipId }, select: PUPIL_SELECT });
   if (!pupil) throw new AccessError("access.notYourChild", "NOT_FOUND");
   await assertModuleOn(pupil.schoolId, "HOSTEL");
-  const allotment = await db.hostelAllotment.findUnique({ where: { activePupilKey: pupil.id }, include: ALLOTMENT_INCLUDE });
-  return { schoolId: pupil.schoolId, timeZone: await zoneOf(pupil.schoolId), pupil, allotment };
+  const timeZone = await zoneOf(pupil.schoolId);
+  const allotment = await db.hostelAllotment.findFirst({ where: { activePupilKey: pupil.id, ...liveAllotmentWhere(todayKey(timeZone)) }, include: ALLOTMENT_INCLUDE });
+  return { schoolId: pupil.schoolId, timeZone, pupil, allotment };
 }
 
 export async function familyHostel(ctx: ActiveContext, childId?: string | null, now: Date = new Date()): Promise<FamilyHostel> {
@@ -818,7 +905,7 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
 export async function pupilsWithoutBed(ctx: ActiveContext): Promise<{ membershipId: string; name: string; className: string | null }[]> {
   const staff = await staffOf(ctx, WRITERS);
   const rows = await db.membership.findMany({
-    where: { schoolId: staff.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, hostelAllotments: { none: { status: "ACTIVE" } } },
+    where: { schoolId: staff.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, hostelAllotments: { none: liveAllotmentWhere(todayKey(staff.timeZone)) } },
     select: PUPIL_SELECT,
     orderBy: { user: { name: "asc" } },
     take: 2000,
@@ -832,7 +919,7 @@ export async function messSheet(ctx: ActiveContext, hostelId: string, dateKey: s
   const hostel = await db.hostel.findFirst({ where: { id: hostelId, schoolId: staff.schoolId }, select: { id: true } });
   if (!hostel) throw new AccessError("hostel.refuseNoHostel", "NOT_FOUND");
   const [boarders, marks] = await Promise.all([
-    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, status: "ACTIVE", room: { hostelId } }, include: ALLOTMENT_INCLUDE }),
+    db.hostelAllotment.findMany({ where: { schoolId: staff.schoolId, ...liveAllotmentWhere(dateKey), room: { hostelId } }, include: ALLOTMENT_INCLUDE }),
     db.messAttendance.findMany({ where: { schoolId: staff.schoolId, dateKey, meal, allotment: { room: { hostelId } } }, select: { allotmentId: true, present: true } }),
   ]);
   const byId = new Map(marks.map((m) => [m.allotmentId, m.present]));

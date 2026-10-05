@@ -6,7 +6,7 @@
 import { describe, expect, it } from "vitest";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
-import { ENDPOINTS } from "@/lib/api-catalog";
+import { ENDPOINTS, type SweepFixture } from "@/lib/api-catalog";
 import { OUTSIDE_THE_CATALOG, UNVERSIONED } from "@/lib/api-catalog/unversioned";
 
 const ROOT = "src/app/api/v1";
@@ -64,6 +64,29 @@ describe("the /api/v1 catalog", () => {
       expect(seen.has(key), `duplicate ${key}`).toBe(false);
       seen.add(key);
     }
+  });
+
+  /**
+   * R-30 (risks batch, 5 Oct 2026): eighteen doors with a parameter went unswept, each with no sample and nobody
+   * saying why, and `sample: () => null` passed for one. A door whose path has a `{param}` now names a sample that
+   * fills it from a fixture holding every row, or a reason in `noSample`; never both.
+   */
+  it("a door with a {param} has a sample that fills it, or says in noSample why not", () => {
+    // A fixture that holds every row: each field a cuid-shaped id of its own name, today's key a date.
+    const full = new Proxy({} as SweepFixture, { get: (_t, p) => (p === "todayKey" ? "2026-10-05" : `c${String(p).toLowerCase().replace(/[^a-z0-9]/g, "")}`.padEnd(25, "0")) });
+    const bare: string[] = [];
+    for (const e of ENDPOINTS) {
+      if (!/\{\w+\}/.test(e.path)) continue;
+      const key = `${e.method} ${e.path}`;
+      if (e.noSample !== undefined) {
+        expect(e.sample, `${key} names a sample and a reason for none`).toBeUndefined();
+        expect(e.noSample.trim().split(/\s+/).length, `${key}: noSample is a sentence saying why`).toBeGreaterThanOrEqual(5);
+        continue;
+      }
+      const path = typeof e.sample === "function" ? e.sample(full) : e.sample;
+      if (!path || /\{\w+\}/.test(path)) bare.push(key);
+    }
+    expect(bare).toEqual([]);
   });
 });
 

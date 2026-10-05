@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { webPracticeAnswerBodySchema } from "@edulink/contracts";
 import { AccessError, requireApiRole } from "@/lib/tenancy";
+import { apiInvalid } from "@/lib/api-v1";
 import { submitAnswerIdempotent, normaliseLanguage } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
 
@@ -9,23 +11,18 @@ import { getT } from "@/lib/i18n/server";
  * server action) and it MUST be safe to call twice with the same body. The
  * idempotency guarantee lives in `submitAnswerIdempotent`, where the test
  * suite can hold it.
+ *
+ * A malformed body is a 422 in the v1 doors' own shape (R-51, 5 October
+ * 2026), validated with the contract the catalog names, as every v1 door and
+ * openapi.json say; it was a bare 400. The outbox treats both as "rejected,
+ * do not replay" (offline-queue.ts: any 4xx but 401 and 429).
  */
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRole("STUDENT");
-    const body = (await request.json().catch(() => null)) as {
-      attemptId?: string;
-      questionId?: string;
-      chosenIndex?: number;
-    } | null;
-    if (
-      !body ||
-      typeof body.attemptId !== "string" ||
-      typeof body.questionId !== "string" ||
-      typeof body.chosenIndex !== "number"
-    ) {
-      return NextResponse.json({ error: "Expected attemptId, questionId, chosenIndex." }, { status: 400 });
-    }
+    const parsed = webPracticeAnswerBodySchema.safeParse(await request.json().catch(() => null));
+    if (!parsed.success) return apiInvalid(parsed);
+    const body = parsed.data;
 
     const outcome = await submitAnswerIdempotent(
       ctx,

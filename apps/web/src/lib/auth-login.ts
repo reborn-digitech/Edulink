@@ -4,6 +4,7 @@ import { fakePasswordWork, verifyPassword } from "./crypto";
 import { findAccount, loginIdentityKey } from "./passwords";
 import { callerKey, consume, peek, LOGIN_ATTEMPTS, LOGIN_GLOBAL, LOGIN_PER_ADDRESS } from "./rate-limit";
 import { audit } from "./audit";
+import { closedOutsideAccount } from "./resolve-context";
 
 /**
  * The password check, apart from any session or cookie.
@@ -36,7 +37,9 @@ import { audit } from "./audit";
 export type PasswordSignIn =
   | { ok: true; userId: string; lastRole: string | null; lastSchoolId: string | null }
   | { ok: false; reason: "rate"; retryAfterSeconds: number }
-  | { ok: false; reason: "noMatch" };
+  | { ok: false; reason: "noMatch" }
+  /** The password matched an outside account the operator closed, the person's only way in (G4-28): told, not let in. */
+  | { ok: false; reason: "closed"; kind: "RECRUITER" | "EXPERT" };
 
 const GLOBAL_BUCKET = "login-global";
 
@@ -90,6 +93,12 @@ export async function signInWithPassword(
   if (!valid) {
     await audit({ actorUserId: user.id, action: "auth.login.failed" });
     return failed();
+  }
+  // A right password to an account the operator closed (G4-28, risks batch 5 Oct 2026): a sentence, never a session.
+  const closed = await closedOutsideAccount(user.id);
+  if (closed) {
+    await audit({ actorUserId: user.id, action: "auth.login.closed", meta: { kind: closed } });
+    return { ok: false, reason: "closed", kind: closed };
   }
   return { ok: true, userId: user.id, lastRole: user.lastRole, lastSchoolId: user.lastSchoolId };
 }

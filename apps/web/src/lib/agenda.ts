@@ -5,7 +5,7 @@ import { forSchool } from "./tenant-context";
 import { listContexts } from "./session";
 import { currentAcademicYear } from "./academic-year";
 import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
-import { ownWorkScope } from "./grading";
+import { ownWorkScope, workLabel } from "./grading";
 import { dateToDay } from "./fees";
 import { pupilMaySeeFees } from "./fees-family";
 import type { ActiveContext } from "./session";
@@ -125,14 +125,14 @@ export async function familyAgenda(ctx: ActiveContext, input: { student?: string
         grades: { none: { studentMembershipId: viewer.studentMembershipId } },
         ...(await ownWorkScope(viewer.schoolId, viewer.studentMembershipId)),
       },
-      select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
+      select: { id: true, title: true, dueAt: true, class: { select: { name: true } }, offering: { select: { course: { select: { code: true, name: true } } } } },
       orderBy: [{ dueAt: "asc" }],
     });
     for (const a of work) {
       if (!a.dueAt) continue;
       const dateKey = dateKeyInZone(a.dueAt, viewer.timeZone);
       if (dateKey < fromKey || dateKey > toKey) continue;
-      out.push({ id: `work:${a.id}`, kind: "WORK", dateKey, at: a.dueAt.toISOString(), endDateKey: null, title: a.title, detail: a.class.name, amountPaise: null, href: viewer.role === "PARENT" ? `/parent/assignments${parentChild}` : "/student/assignments" });
+      out.push({ id: `work:${a.id}`, kind: "WORK", dateKey, at: a.dueAt.toISOString(), endDateKey: null, title: a.title, detail: workLabel(a), amountPaise: null, href: viewer.role === "PARENT" ? `/parent/assignments${parentChild}` : "/student/assignments" });
     }
 
     // Guidance sessions and workshops the pupil has a seat in (or one waiting for a guardian's yes).

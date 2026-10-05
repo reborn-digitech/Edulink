@@ -34,6 +34,7 @@ import { actionKey } from "./safety-labels";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 import { frameworkOf, iqacActor, type Desk } from "./iqac";
+import { benchmarkStatus } from "./iqac-benchmarks";
 import { gatherFacts, nirfFacts, readEntered } from "./iqac-facts";
 import { FORMULAS, gradeOf, round2, type Facts } from "./iqac-rules";
 import { assertFilingApplies, councilDefaultYear, defaultFilingYear, nbaDepartmentFor, nbaDepartments, nbaFacts, readWorksheet } from "./council-filings";
@@ -86,6 +87,13 @@ import {
 const DESK: readonly Role[] = ["IQAC", "ADMIN", "PRINCIPAL"];
 const WRITERS: readonly Role[] = ["IQAC", "PRINCIPAL"];
 const MAX_SCENARIOS = 100;
+/**
+ * WITHIN THE HUNDRED (R-47, risks batch 5 Oct 2026; 08's recommended option, A3-S-7): one person keeps at most this
+ * many, and an HOD's saves stop at this many for their department, so neither one author nor one department's HOD can
+ * fill the college's hundred and lock the IQAC out. Named constants: the owner may move them.
+ */
+export const MAX_SCENARIOS_PER_AUTHOR = 25;
+export const MAX_SCENARIOS_PER_DEPARTMENT = 25;
 
 const f2 = (x: number) => x.toFixed(2);
 const f3 = (x: number) => x.toFixed(3);
@@ -310,6 +318,8 @@ export async function naacInsights(ctx: ActiveContext, query: { cycleId?: string
     lastDone: await lastDone(t, desk.schoolId, base.computedAt),
     computedAt: base.computedAt?.toISOString() ?? null,
     notAScore: t("insights.notAScore"),
+    // Provisional until the coordinator signs the benchmark list (G4-15).
+    benchmarks: await benchmarkStatus(desk.schoolId),
   };
 }
 
@@ -442,6 +452,7 @@ export async function nirfInsights(ctx: ActiveContext): Promise<NirfInsights> {
     parameters: s.parameters,
     ranked: nirfInsightsOf(base.inputs).map((r) => nirfInsightView(t, r)),
     notAScore: t("insights.notAScore"),
+    benchmarks: await benchmarkStatus(desk.schoolId),
   };
 }
 
@@ -566,6 +577,9 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
     }
     const nbaOver = partsOver(NBA_PART_WHOLES, input.inputs)[0];
     if (nbaOver) throw await partsRefusal(nbaOver, nbaOver.metric, (k) => `insights.nbaLever.${k}`);
+    // The SAR's year within the years the department's programmes have run (R-47): 1900 is no year a SAR is for.
+    const range = await nbaYearRange(desk.schoolId, dept.id);
+    if (input.year < range.from || input.year > range.to) throw new RuleRefusal("riskDecisions.refuseScenarioYear", 422, { from: range.from, to: range.to }, "year");
     const marks = nbaTotals(input.inputs).total;
     data = { kind: "NBA", cycleId: null, year: input.year, departmentId: dept.id, inputsJson: JSON.stringify(input.inputs), cgpa: null, marks, result: marks };
   }
@@ -578,10 +592,26 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
     await tx.$queryRaw`SELECT 1 FROM PG_ADVISORY_XACT_LOCK(HASHTEXT(${`iqac-scenarios:${desk.schoolId}`}))`;
     const count = await tx.iqacScenario.count({ where: { schoolId: desk.schoolId } });
     if (count >= MAX_SCENARIOS) throw new RuleRefusal("insights.refuseTooMany", 409, { max: MAX_SCENARIOS });
+    // The per-author and the HOD's per-department ceilings (R-47), counted under the same lock as the college's.
+    if ((await tx.iqacScenario.count({ where: { schoolId: desk.schoolId, createdByUserId: desk.userId } })) >= MAX_SCENARIOS_PER_AUTHOR) throw new RuleRefusal("riskDecisions.refuseScenarioAuthor", 409, { max: MAX_SCENARIOS_PER_AUTHOR });
+    if (desk.role === "HOD" && data.departmentId && (await tx.iqacScenario.count({ where: { schoolId: desk.schoolId, departmentId: data.departmentId } })) >= MAX_SCENARIOS_PER_DEPARTMENT) throw new RuleRefusal("riskDecisions.refuseScenarioDepartment", 409, { max: MAX_SCENARIOS_PER_DEPARTMENT });
     return tx.iqacScenario.create({ data: { ...(id ? { id } : {}), schoolId: desk.schoolId, name: input.name, createdByUserId: desk.userId, ...row }, select: { id: true } });
   });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.scenario.save", targetType: "IqacScenario", targetId: created.id, meta: { kind: data.kind, name: input.name, result, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId } });
   return { id: created.id, kind: data.kind, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId, result };
+}
+
+/**
+ * The years an NBA scenario may be for (R-47): from the department's first — the earliest entry year of a student on
+ * one of its programmes; with no student yet, one programme length back — to the academic year running now (a SAR
+ * is for a year that has begun).
+ */
+export async function nbaYearRange(schoolId: string, departmentId: string): Promise<{ from: number; to: number }> {
+  const to = defaultFilingYear() + 1;
+  const programmes = await db.programme.findMany({ where: { schoolId, departmentId }, select: { id: true, durationYears: true } });
+  const earliest = programmes.length ? await db.studentProgramme.findFirst({ where: { schoolId, programmeId: { in: programmes.map((p) => p.id) } }, orderBy: { entryYear: "asc" }, select: { entryYear: true } }) : null;
+  const longest = Math.max(1, ...programmes.map((p) => p.durationYears));
+  return { from: Math.min(earliest?.entryYear ?? to - longest + 1, to), to };
 }
 
 /** The refusal for a part above its whole, its figures named in the reader's language: "Students who passed cannot be more than students who appeared (2.6.3)." */
@@ -696,6 +726,7 @@ export async function simulateNaacDoor(ctx: ActiveContext, query: { cycleId?: st
     metrics: fw.metrics.map((m) => ({ code: m.code, kind: m.kind, value: sim.values.get(m.code) ?? null, score: sim.scores.get(m.code) ?? 0 })),
     nirf: nirf ? { partial: nirf.partial, coveredMarks: nirf.coveredMarks, projected: nirf.projected, subs: nirf.subs } : null,
     notAScore: t("insights.notAScore"),
+    benchmarks: await benchmarkStatus(desk.schoolId),
   };
 }
 

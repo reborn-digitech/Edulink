@@ -117,8 +117,11 @@ describe("as the pupil", () => {
     expect((await attendancePost(json("/api/attendance", { classId, dateKey: "2026-06-01", marks: [] }))).status).toBe(403);
   });
 
-  it("practice answer: garbage and wrong shapes → 400", async () => {
-    expect((await answerPost(json("/api/practice/answer", "not json"))).status).toBe(400);
-    expect((await answerPost(json("/api/practice/answer", { attemptId: "x", questionId: "y", choice: 9 }))).status).toBe(400);
+  it("practice answer: garbage and wrong shapes → 422", async () => {
+    // A malformed body is 422, as every v1 door and the catalog say (R-51); it was 400.
+    expect((await answerPost(json("/api/practice/answer", "not json"))).status).toBe(422);
+    const wrong = await answerPost(json("/api/practice/answer", { attemptId: "x", questionId: "y", choice: 9 }));
+    expect(wrong.status).toBe(422);
+    expect(await wrong.json()).toMatchObject({ error: expect.any(String) });
   });
 });

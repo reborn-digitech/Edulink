@@ -32,7 +32,8 @@ import { forPlacementDirectory, forSchool } from "./tenant-context";
 import { readJson, writeJson } from "./json";
 import { todayKey } from "./dates";
 import { EMPTY_RECORD, placementRecords } from "./placement-record";
-import { applicationStatus, evaluateEligibility, seasonBatchFor } from "./placement-rules";
+import { softSkillsCompletions } from "./soft-skills-count";
+import { applicationStatus, evaluateEligibility, lakhOf, offerNeedsConfirm, seasonBatchFor } from "./placement-rules";
 
 export { applicationStatus, evaluateEligibility, seasonBatchFor };
 import type { ActiveContext } from "./session";
@@ -643,7 +644,7 @@ export async function inviteEligible(ctx: ActiveContext, driveId: string): Promi
   return { told: toTell.length, eligible: rows.length };
 }
 
-/** A reminder to the drive's live applicants of the reader's college before the next dated round. */
+/** A reminder to the drive's live applicants of the reader's college before the next dated round, sent by hand: no job sends it (G4-9, decided 5 Oct 2026: keep until a pilot asks). */
 export async function remindApplicants(ctx: ActiveContext, driveId: string): Promise<{ told: number; eligible: number }> {
   const cell = await cellOf(ctx);
   const d = await loadDrive(driveId);
@@ -741,11 +742,14 @@ export async function spendTicket(userId: string, fileId: string | null | undefi
  * this one only under the dream rule (the flag, and this package at least
  * the ratio times the accepted one), and the offer says so.
  */
-export async function recordOffer(actor: DriveActor, input: { studentMembershipId: string; packageRupees: number; letterFileId: string | null }, opts: { storedFileId?: string | null } = {}): Promise<OfferView> {
+export async function recordOffer(actor: DriveActor, input: { studentMembershipId: string; packageRupees: number; letterFileId: string | null; confirmedHigh?: boolean }, opts: { storedFileId?: string | null } = {}): Promise<OfferView> {
   const d = actor.drive;
   if (!(RECRUITER_LIVE_STATUSES as readonly string[]).includes(d.status)) throw new RuleRefusal("placement.refuseNotLive", 409);
   // The package is the schema's (offerSaveSchema) whichever door calls: never negative, never absurd (S-19).
   if (!Number.isInteger(input.packageRupees) || input.packageRupees < 0 || input.packageRupees > 1_000_000_000) throw new RuleRefusal("placement.refusePackage", 422, undefined, "packageRupees");
+  // Far above the drive's top package: recorded only once confirmed (A3-journeys-18), and the audit row says so.
+  const high = offerNeedsConfirm(input.packageRupees, d.packageMaxRupees);
+  if (high && input.confirmedHigh !== true) throw new RuleRefusal("placement.confirmHighOffer", 409, { offer: lakhOf(input.packageRupees), max: lakhOf(d.packageMaxRupees) }, "packageRupees");
   const [app] = await liveApplicants(d.id, [input.studentMembershipId]);
   if (!app) throw new RuleRefusal("placement.refuseNotApplicant", 422, undefined, "studentMembershipId");
   const rejected = await db.roundResult.findFirst({ where: { driveId: d.id, studentMembershipId: input.studentMembershipId, outcome: { in: ["REJECTED", "ABSENT"] } }, select: { id: true } });
@@ -781,7 +785,7 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
     }),
   );
   await forSchool(app.schoolId, () => notify({ userId: app.studentUserId, schoolId: app.schoolId, kind: "SYSTEM", titleKey: "placement.notifOffer", titleVars: { company: d.company.name, title: d.title }, url: "/student/placement" })).catch((error) => console.error("[placement] offer notice failed", error));
-  await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer", targetType: "Offer", targetId: offer.id, meta: { driveId: d.id, packageRupees: input.packageRupees, dream, letter: Boolean(letterFileId), via: actor.via } }));
+  await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer", targetType: "Offer", targetId: offer.id, meta: { driveId: d.id, packageRupees: input.packageRupees, dream, letter: Boolean(letterFileId), via: actor.via, ...(high ? { confirmedHigh: true, drivePackageMaxRupees: d.packageMaxRupees } : {}) } }));
   // The name off the application, as applicationViews reads it: a recruiter (or a pooled drive's host) cannot read
   // the student's membership, and the toast read "Offer recorded for ; they are told" (A3-journeys-18).
   const student = await db.user.findUnique({ where: { id: app.studentUserId }, select: { name: true, preferredName: true } });
@@ -814,10 +818,11 @@ export async function listPlacementStudents(ctx: ActiveContext) {
   const cell = await cellOf(ctx, "read");
   const roll = await rollOf(cell.schoolId);
   const ids = roll.map((r) => r.id);
-  const [records, profiles, offers] = await Promise.all([
+  const [records, profiles, offers, softSkills] = await Promise.all([
     placementRecords(cell.schoolId, ids, todayKey(await zoneOf(cell.schoolId))),
     db.placementProfile.findMany({ where: { schoolId: cell.schoolId, studentMembershipId: { in: ids } } }),
     db.offer.findMany({ where: { studentMembershipId: { in: ids } }, select: { studentMembershipId: true, packageRupees: true, acceptedAt: true, declinedAt: true } }),
+    softSkillsCompletions(cell.schoolId, ids),
   ]);
   const profileOf = new Map(profiles.map((p) => [p.studentMembershipId, p]));
   return {
@@ -837,6 +842,7 @@ export async function listPlacementStudents(ctx: ActiveContext) {
         consentAt: p?.consentAt?.toISOString() ?? null,
         offers: mine.length,
         acceptedRupees: accepted.length ? Math.max(...accepted) : null,
+        softSkillsCompleted: softSkills.get(s.id)?.length ?? 0,
       };
     }),
   };

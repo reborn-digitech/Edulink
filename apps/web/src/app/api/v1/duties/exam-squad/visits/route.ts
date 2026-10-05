@@ -1,5 +1,5 @@
 import { examSquadVisitSaveSchema, streamRecordsIdSchema } from "@edulink/contracts";
-import { apiInvalid, ok, readJson } from "@/lib/api-v1";
+import { apiInvalid, budget, FANOUT_BUDGET, ok, readJson } from "@/lib/api-v1";
 import { requireApiRoles } from "@/lib/api-roles";
 import { moduleFailure } from "@/lib/rule-refusal";
 import { recordSquadVisit } from "@/lib/duty-desks";
@@ -8,6 +8,9 @@ import { recordSquadVisit } from "@/lib/duty-desks";
 export async function POST(request: Request) {
   try {
     const ctx = await requireApiRoles("FACULTY", "HOD");
+    // A flagged visit tells every exam controller: a fan-out's budget (A3-S-15), taken before the body is read.
+    const refused = await budget(`duty-fanout:${ctx.user.id}`, FANOUT_BUDGET.limit, FANOUT_BUDGET.windowMs);
+    if (refused) return refused;
     const parsed = examSquadVisitSaveSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);
     return ok(streamRecordsIdSchema.parse(await recordSquadVisit(ctx, parsed.data)));

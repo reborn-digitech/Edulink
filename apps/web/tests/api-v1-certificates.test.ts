@@ -153,11 +153,13 @@ describe("templates", () => {
     expect(res.status).toBe(200);
     const view = await res.json();
     expect(view.templates).toEqual([]);
-    expect(view.presets).toHaveLength(15);
+    // Five kinds in three languages, and the appointment letter in three (a staff paper, risks batch 5A, 5 Oct 2026).
+    expect(view.presets).toHaveLength(18);
     expect(view.presets.map((p: { key: string }) => p.key)).toContain("NIRGAM-mr");
     // Thirty-eight before the two codes left the list: a certificate carries no code that opens anything.
     // 36 a school's, and the seven [[college.*]] a college's paper names (4 Oct 2026), which print a dash at a school.
-    expect(view.placeholders).toHaveLength(43);
+    // + the eight [[staff.*]] an appointment letter names (risks batch 5A, 5 Oct 2026).
+    expect(view.placeholders).toHaveLength(51);
     expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("pupil.studentCode");
     expect(view.placeholders.map((p: { key: string }) => p.key)).not.toContain("school.code");
     expect(view.placeholders.find((p: { key: string }) => p.key === "pupil.name").label).toBe("विद्यार्थ्याचे नाव");

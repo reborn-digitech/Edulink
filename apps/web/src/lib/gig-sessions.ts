@@ -162,8 +162,9 @@ async function usedBy(client: BookingReader, c: Child, yearId: string | null): P
       schoolId: c.schoolId,
       studentMembershipId: c.membershipId,
       ...(yearId ? { academicYearId: yearId } : { createdAt: { gte: new Date(Date.now() - 365 * 24 * HOUR) } }),
-      // A paid seat draws on no allowance.
+      // A paid seat draws on no allowance, and neither does an alumni mentor's (G4-26, risks batch 5 Oct 2026).
       paid: false,
+      slot: { providerKind: { not: "ALUMNUS" } },
       OR: [{ status: { in: ["PENDING_CONSENT", "CONFIRMED", "DELIVERED", "MISSED"] } }, { status: "CANCELLED", lateCancel: true }],
     },
     _count: { _all: true },
@@ -477,12 +478,12 @@ async function openFor(c: Child, now: Date, allowance: Allowance): Promise<OpenS
     where: { cancelledAt: null, startsAt: { gt: now }, OR: [{ providerKind: "EXPERT" }, { providerKind: { in: ["TEACHER", "ALUMNUS"] }, teacherSchoolId: c.schoolId }], ...(await readerIsFixture(c.schoolId) ? {} : { provider: { isTestFixture: false } }) },
     orderBy: { startsAt: "asc" },
     take: 300,
-    select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, pricePaise: true, providerKind: true, providerUserId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true } } } } },
+    select: { id: true, kind: true, title: true, startsAt: true, endsAt: true, seats: true, seatsTaken: true, pricePaise: true, providerKind: true, providerUserId: true, provider: { select: { name: true, expertProfile: { select: { headline: true, publishedAt: true, disabledAt: true } } } } },
   });
   const mine = new Set((await db.gigBooking.findMany({ where: { schoolId: c.schoolId, studentMembershipId: c.membershipId, status: { in: LIVE } }, select: { slotId: true } })).map((b) => b.slotId));
   return slots
-    .filter((s) => s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt)) && s.providerUserId !== c.userId)
-    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: allowance[s.kind as SessionKind].left > 0 }));
+    .filter((s) => s.seatsTaken < s.seats && !mine.has(s.id) && (s.providerKind !== "EXPERT" || Boolean(s.provider.expertProfile?.publishedAt && !s.provider.expertProfile.disabledAt)) && s.providerUserId !== c.userId)
+    .map((s) => ({ id: s.id, kind: s.kind as SessionKind, title: s.title, startsAt: s.startsAt.toISOString(), endsAt: s.endsAt.toISOString(), seatsLeft: s.seats - s.seatsTaken, providerName: s.provider.name, providerKind: s.providerKind as "EXPERT" | "TEACHER" | "ALUMNUS", providerHeadline: s.providerKind === "EXPERT" ? (s.provider.expertProfile?.headline ?? null) : null, pricePaise: s.pricePaise, freeSeat: s.providerKind === "ALUMNUS" || allowance[s.kind as SessionKind].left > 0 }));
 }
 
 export type FamilyBooking = {
@@ -587,8 +588,9 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
   const c = await child(ctx, input.studentMembershipId);
   const purpose = input.purpose.trim().slice(0, 500);
   if (purpose.length < 10) return { ok: false, errorKey: "gigs.needPurpose" };
-  const slot = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { id: true, kind: true, title: true, startsAt: true, cancelledAt: true, pricePaise: true, providerKind: true, providerUserId: true, teacherSchoolId: true, provider: { select: { name: true, expertProfile: { select: { publishedAt: true } } } } } });
-  const open = slot && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" || slot.providerKind === "ALUMNUS" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt));
+  const slot = await db.gigSlot.findUnique({ where: { id: input.slotId }, select: { id: true, kind: true, title: true, startsAt: true, cancelledAt: true, pricePaise: true, providerKind: true, providerUserId: true, teacherSchoolId: true, provider: { select: { name: true, expertProfile: { select: { publishedAt: true, disabledAt: true } } } } } });
+  // A closed expert's times are no one's to book (G4-28, risks batch 5 Oct 2026).
+  const open = slot && !slot.cancelledAt && slot.providerUserId !== c.userId && (slot.providerKind === "TEACHER" || slot.providerKind === "ALUMNUS" ? slot.teacherSchoolId === c.schoolId : Boolean(slot.provider.expertProfile?.publishedAt && !slot.provider.expertProfile.disabledAt));
   if (!slot || !open) throw new AccessError("gigs.noSuchSlot", "NOT_FOUND");
   if (slot.startsAt <= now) return { ok: false, errorKey: "gigs.refuseStarted" };
   const settings = await gigSettings();
@@ -610,8 +612,9 @@ export async function bookSeat(ctx: ActiveContext, input: { slotId: string; stud
       if (existing && existing.status !== "CANCELLED") throw new Refusal("gigs.refuseAlreadyHeld");
       const used = await usedBy(tx, c, year?.id ?? null);
       // THE FREE ALLOWANCE FIRST. Past it, a priced seat is bought by a guardian; a free seat, or any
-      // seat with payments off, is refused as before.
-      const free = used[kind] < allowed(settings)[kind];
+      // seat with payments off, is refused as before. An alumni mentor's one-to-one is free and outside the
+      // allowance (G4-26, risks batch 5 Oct 2026): alumni are volunteers; decision 0004's allowance is for experts.
+      const free = slot.providerKind === "ALUMNUS" || used[kind] < allowed(settings)[kind];
       if (!free && !payable) throw new Refusal(kind === "ONE_TO_ONE" ? "gigs.refuseAllowanceOneToOne" : slot.pricePaise > 0 ? "gigs.refusePaymentsOff" : "gigs.refuseAllowanceWorkshop", { count: allowed(settings)[kind] });
       const paid = !free;
       const claimed = await tx.$executeRaw`UPDATE "GigSlot" SET "seatsTaken" = "seatsTaken" + 1, "updatedAt" = NOW() WHERE "id" = ${slot.id} AND "seatsTaken" < "seats" AND "cancelledAt" IS NULL`;

@@ -8,6 +8,7 @@ import { AccessError, NotACollegeError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import type { ActiveContext } from "./session";
 import { presetOf } from "./streams";
+import { assertModuleOn } from "./modules";
 
 /**
  * DUTIES ON A COLLEGE TEACHER'S ROLE (the owner's decision of 5 October
@@ -63,6 +64,8 @@ export async function setDuties(ctx: ActiveContext, membershipId: string, duties
   if (ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { kind: true } });
   if (!isCollegeKind(school.kind)) throw new NotACollegeError("duties.refuseNotACollege");
+  // The module check the door's gate gives it, for the registrar's panel too (its server action calls only this; A3-S-15).
+  await assertModuleOn(ctx.schoolId, "ACADEMICS");
   const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null }, select: { id: true, userId: true, role: true, dutiesJson: true } });
   if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (!isDutyRole(member.role)) throw new RuleRefusal("duties.refuseNotTeacher", 422, undefined, "duties");

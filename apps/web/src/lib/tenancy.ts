@@ -166,9 +166,10 @@ export async function requireExpert(): Promise<ActiveContext & { expertProfileId
 
   const profile = await db.expertProfile.findUnique({
     where: { userId: session.user.id },
-    select: { id: true, publishedAt: true },
+    select: { id: true, publishedAt: true, disabledAt: true },
   });
-  if (!profile) redirect("/switch");
+  // Closed by the operator (G4-28): no expert area, as no recruiter area for a closed recruiter.
+  if (!profile || profile.disabledAt) redirect("/switch");
   if (!profile.publishedAt) redirect("/expert/pending");
 
   return { ...session, expertProfileId: profile.id };
@@ -300,21 +301,37 @@ export async function assertAssignmentAccess(
   assignmentId: string,
 ) {
   refuseModuleRole(ctx.role);
+  /*
+   * A COLLEGE OFFERING'S WORK (R-48, 5 Oct 2026): set to a CourseOffering
+   * rather than a class. Its teacher is the offering's faculty member or the
+   * HOD of the department whose programme owns the course; its pupils are the
+   * offering's REGISTERED students. Exactly one of the two branches matches a
+   * row, since a row carries exactly one of classId and offeringId.
+   */
   const assignment = await db.assignment.findFirst({
     where: {
       id: assignmentId,
       schoolId: ctx.schoolId,
       ...(isTeachingRole(ctx.role)
-        ? { class: { teachers: { some: { teacherMembershipId: ctx.membershipId } } } }
+        ? {
+            OR: [
+              { class: { teachers: { some: { teacherMembershipId: ctx.membershipId } } } },
+              { offering: { facultyMembershipId: ctx.membershipId } },
+              ...(ctx.role === "HOD" ? [{ offering: { course: { scheme: { programme: { department: { hodMembershipId: ctx.membershipId } } } } } }] : []),
+            ],
+          }
         : {}),
       ...(ctx.role === "STUDENT"
         ? {
             publishedAt: { not: null },
-            class: { enrollments: { some: { studentMembershipId: ctx.membershipId, status: "ACTIVE" } } },
+            OR: [
+              { class: { enrollments: { some: { studentMembershipId: ctx.membershipId, status: "ACTIVE" } } } },
+              { offering: { registrations: { some: { studentMembershipId: ctx.membershipId, status: "REGISTERED" } } } },
+            ],
           }
         : {}),
     },
-    include: { class: { select: { id: true, name: true } } },
+    include: { class: { select: { id: true, name: true } }, offering: { select: { id: true, course: { select: { code: true, name: true } } } } },
   });
 
   if (!assignment) throw new AccessError("access.assignmentNotFound", "NOT_FOUND");

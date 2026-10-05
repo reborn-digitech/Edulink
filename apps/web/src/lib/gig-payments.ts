@@ -10,6 +10,7 @@ import { gigSettings, monthKey, type GigResult } from "./gig-questions";
 import { createLinkedAccount, createSeatOrder, createStakeholder, fetchRouteProduct, GigGatewayError, platformAccount, refundSeat, releaseTransfer, requestRouteProduct, ROUTE_STATUSES, routeStatusOf, setRouteBank, stateNameOf, transferFromPayment, transfersOf, transport, verifySeatCheckout, webhookSecret, type RouteProduct, type RouteRequirement, type RouteStatus } from "./gig-gateway";
 import type { GigGatewayTransport } from "./gig-gateway-env";
 import { open, seal, sealingAvailable } from "./secret-box";
+import { openPan, writePan } from "./pan";
 import { readJson } from "./json";
 import type { ActiveContext } from "./session";
 
@@ -307,14 +308,15 @@ export async function savePayee(ctx: ActiveContext, input: PayeeInput): Promise<
   if ((bankAccount || pan) && !sealingAvailable()) return { ok: false, errorKey: "gigs.refuseSealingOff" };
   // What the gateway already holds for the linked account is not changed from here.
   if (current?.linkedAccountId) {
-    const panChanged = Boolean(pan && current.panEnc && open(current.panEnc, `gig:payee:${ctx.user.id}:pan`) !== pan);
+    const panChanged = Boolean(pan && current.panEnc && openPan({ kind: "EXPERT", userId: ctx.user.id }, "PAYEE", current.panEnc) !== pan);
     if (payeeName !== current.payeeName || panChanged || addressLine !== current.addressLine || city !== current.city || postalCode !== current.postalCode || gstStateCode !== current.gstStateCode) return { ok: false, errorKey: "gigs.refuseRouteLocked" };
   }
   const bank = bankAccount ? { bankAccountEnc: seal(bankAccount, `gig:payee:${ctx.user.id}`), bankLast4: bankAccount.slice(-4), ifsc } : ifsc ? { ifsc } : {};
-  const sealedPan = pan ? { panEnc: seal(pan, `gig:payee:${ctx.user.id}:pan`), panLast4: pan.slice(-4) } : {};
-  const data = { payeeName, ...bank, ...sealedPan, addressLine, city, postalCode, phone, gstStateCode, gstin };
+  const data = { payeeName, ...bank, addressLine, city, postalCode, phone, gstStateCode, gstin };
   const status = current?.status === "SUSPENDED" ? "SUSPENDED" : "ACTIVE";
   await db.expertPayoutAccount.upsert({ where: { expertUserId: ctx.user.id }, create: { expertUserId: ctx.user.id, ...data, status }, update: { ...data, status } });
+  // The one writer of a PAN (G4-14).
+  if (pan) await writePan({ kind: "EXPERT", userId: ctx.user.id }, pan);
   // Neither the account number, the PAN nor the phone goes to the log: it is read by more people than the payer.
   await audit({ actorUserId: ctx.user.id, action: "gig.payee.save", targetType: "ExpertPayoutAccount", targetId: ctx.user.id, meta: { bank: Boolean(bankAccount), pan: Boolean(pan), gstStateCode, gstin: Boolean(gstin) } });
   return { ok: true, payout: await payoutAccountOf(ctx.user.id) };
@@ -369,7 +371,7 @@ export async function linkExpert(expertUserId: string, actorUserId: string | nul
       await audit({ actorUserId, action: "gig.route.account", targetType: "ExpertPayoutAccount", targetId: expertUserId, meta: { linkedAccountId: accountId } });
     }
     if (!row.stakeholderId) {
-      const pan = open(row.panEnc!, `gig:payee:${expertUserId}:pan`);
+      const pan = openPan({ kind: "EXPERT", userId: expertUserId }, "PAYEE", row.panEnc)!;
       const made = await step("stakeholder", () => createStakeholder(accountId!, { name: row.payeeName!, email: user.email!, pan }));
       await db.expertPayoutAccount.update({ where: { expertUserId }, data: { stakeholderId: made.stakeholderId, routeError: null } });
     }

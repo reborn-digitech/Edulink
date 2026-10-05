@@ -3,14 +3,15 @@ import { randomBytes } from "node:crypto";
 import type { CertificateIssueInput, CertificateKind, CertificateLayout, CertificateRow, CertificateTemplateSave, CertificateTemplatesView, IssuedCertificateView } from "./certificate-types";
 import { db } from "./db";
 import { forJoinCode } from "./tenant-context";
+import { examDocumentByCode } from "./exam-document-check";
 import { consentApplies } from "./student-consent";
 import { AccessError, assertGuardianAccess } from "./tenancy";
 import { audit } from "./audit";
-import { notifyGuardians } from "./notify";
+import { notify, notifyGuardians } from "./notify";
 import { lockTcRegister, registerMax, stayAttendance } from "./school-record";
 import { markRequestIssued, requestPurpose } from "./certificate-requests";
 import { ageInYears, dateKeyInZone, todayKey } from "./dates";
-import { allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, parseLayout, parseRows, placeholderKeys, PLACEHOLDER_KEYS, wordsFor, type PupilFacts } from "./certificate-rules";
+import { allAppointmentPresets, allCollegePresets, allPresets, BLANK, dataFor, fill, fillRows, isStaffKind, parseLayout, parseRows, placeholderFitsKind, placeholderKeys, PLACEHOLDER_KEYS, staffDataFor, STAFF_CERTIFICATE_KINDS, wordsFor, type PupilFacts, type StaffFacts } from "./certificate-rules";
 import type { WordsLocale } from "./words";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
@@ -129,7 +130,8 @@ export async function templatesView(ctx: ActiveContext): Promise<CertificateTemp
   const placeholders = PLACEHOLDER_KEYS.map((key) => ({ key, label: words(`certificatePlaceholders.${key.replace(".", "_")}`), sample: sample[key] ?? BLANK }));
   // A college is offered its own presets beside the school's (4 Oct 2026).
   const college = isCollegeKind((await db.school.findUnique({ where: { id: caller.schoolId }, select: { kind: true } }))?.kind ?? "SCHOOL");
-  return { templates: rows.map(templateView), presets: college ? [...allPresets(), ...allCollegePresets()] : allPresets(), placeholders };
+  // The appointment letter (risks batch 5A, 5 Oct 2026) is offered at a school and a college alike.
+  return { templates: rows.map(templateView), presets: [...(college ? [...allPresets(), ...allCollegePresets()] : allPresets()), ...allAppointmentPresets()], placeholders };
 }
 
 /** Create, or replace by id. The name is unique per school; a template issued from may still be reworded, because issued documents keep their own wording. */
@@ -146,6 +148,9 @@ export async function saveTemplate(ctx: ActiveContext, input: CertificateTemplat
   const known = new Set<string>(PLACEHOLDER_KEYS);
   const unknown = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(placeholderKeys))].filter((key) => !known.has(key));
   if (unknown.length > 0) throw new AccessError("certificates.unknownDetails", "FORBIDDEN", { list: unknown.map((k) => `[[${k}]]`).join(", ") });
+  // A staff paper names the staff record and a pupil's paper the pupil's (risks batch 5A): the other's details would print a dash.
+  const misfit = [...new Set([input.title, input.intro, input.outro, ...input.rows.map((r) => r.value)].flatMap(placeholderKeys))].filter((key) => !placeholderFitsKind(key, input.kind));
+  if (misfit.length > 0) throw new AccessError("certificates.unknownDetails", "FORBIDDEN", { list: misfit.map((k) => `[[${k}]]`).join(", ") });
   const data = { kind: input.kind, name: input.name, locale: input.locale, title: input.title, intro: input.intro, rowsJson: JSON.stringify(input.rows), outro: input.outro, layoutJson: JSON.stringify(input.layout), serialPrefix: input.serialPrefix.toUpperCase(), active: input.active };
   const clash = await db.certificateTemplate.findFirst({ where: { schoolId: caller.schoolId, name: input.name, ...(templateId ? { id: { not: templateId } } : {}) }, include: { _count: { select: { certificates: true } } } });
   if (clash) {
@@ -247,6 +252,8 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
   const template = await db.certificateTemplate.findFirst({ where: { id: input.templateId, schoolId: caller.schoolId } });
   if (!template) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
   if (!template.active) throw new AccessError("certificates.templateRetired");
+  // An appointment letter goes to a member of staff, through its own door (issueAppointmentLetter).
+  if (isStaffKind(template.kind)) throw new AccessError("appointmentLetters.refusePupilDoor");
   const year = await db.academicYear.findFirst({ where: { schoolId: caller.schoolId, isCurrent: true }, select: { id: true, name: true } });
   if (!year) throw new AccessError("certificates.noYear");
   const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
@@ -340,11 +347,16 @@ export async function issueCertificate(ctx: ActiveContext, input: CertificateIss
 /* Reading                                                                      */
 /* -------------------------------------------------------------------------- */
 
-export async function mayReadCertificate(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string }): Promise<boolean> {
+export async function mayReadCertificate(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string; kind?: string }): Promise<boolean> {
   return mayRead(ctx, cert);
 }
 
-async function mayRead(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string }): Promise<boolean> {
+async function mayRead(ctx: ActiveContext, cert: { schoolId: string; studentMembershipId: string; kind?: string }): Promise<boolean> {
+  // A staff paper (an appointment letter; risks batch 5A): the office and the member of staff it was issued to, nobody else.
+  if (cert.kind && isStaffKind(cert.kind)) {
+    if (!ctx.schoolId || ctx.schoolId !== cert.schoolId) return false;
+    return ctx.role === "ADMIN" || ctx.role === "PRINCIPAL" || ctx.membershipId === cert.studentMembershipId;
+  }
   if (ctx.role === "PARENT") {
     try {
       await assertGuardianAccess(ctx.user.id, cert.studentMembershipId);
@@ -484,7 +496,15 @@ export async function verifyByCode(code: string) {
   // Bound by the code itself (IssuedCertificate is CODE_READABLE in gen-rls.ts): with no
   // tenant and no code bound the policy shows nothing, and every printed QR read "not valid".
   const cert = await forJoinCode(clean, () => db.issuedCertificate.findUnique({ where: { code: clean }, select: { kind: true, serial: true, locale: true, issuedAt: true, revokedAt: true, dataJson: true } }));
-  if (!cert) return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
+  if (!cert) {
+    // A college's grade card, transcript or degree typed into the same check
+    // (A3-journeys-21): found by its code alone, named by `examKind`.
+    const paper = await examDocumentByCode(clean);
+    if (paper && paper.kind && paper.kind !== "HALL_TICKET") {
+      return { valid: paper.valid, kind: null, serial: paper.serial, title: null, schoolName: paper.schoolName, issuedAt: paper.issuedAt, revokedAt: paper.revokedAt, examKind: paper.kind };
+    }
+    return { valid: false, kind: null, serial: null, title: null, schoolName: null, issuedAt: null, revokedAt: null };
+  }
   let schoolName: string | null = null;
   try {
     schoolName = (JSON.parse(cert.dataJson) as Record<string, string | null>)["school.name"] ?? null;
@@ -509,6 +529,7 @@ const KIND_LABEL_KEY: Record<CertificateKind, TranslationKey> = {
   MIGRATION: "certificateDefaults.titleMigration",
   PROVISIONAL: "certificateDefaults.titleProvisional",
   COURSE_COMPLETION: "certificateDefaults.titleCourseCompletion",
+  APPOINTMENT: "certificateDefaults.titleAppointment",
 };
 
 function kindLabel(kind: CertificateKind, locale: string): string {
@@ -516,3 +537,130 @@ function kindLabel(kind: CertificateKind, locale: string): string {
 }
 
 export type { CertificateLayout, CertificateRow };
+
+/* -------------------------------------------------------------------------- */
+/* Appointment letters (R-2, the risks batch of 5 October 2026)                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * AN APPOINTMENT LETTER is the certificate engine's staff paper: a template of
+ * kind APPOINTMENT (presets in English, Hindi and Marathi, prefix AL), filled
+ * from the member of staff's record — the legal name, the designation (the
+ * staff record's, else the membership's title), the department at a college,
+ * the staff number, the day they joined, the qualification and the nature of
+ * the appointment — and numbered under the same academic-year lock as every
+ * other paper. The row's `studentMembershipId` holds the member of staff's
+ * membership (the column is the recipient's); `mayRead` lets only the office
+ * and that member of staff read it. They are told, and keep their letters at
+ * /account/letters.
+ */
+const STAFF_ROLES: readonly Role[] = ["TEACHER", "PRINCIPAL", "ADMIN", "DRIVER", "LIBRARIAN", "WARDEN", "FACULTY", "HOD", "EXAM_CONTROLLER", "IQAC", "TPO", "ACCOUNTS"];
+
+async function staffFactsFor(schoolId: string, membershipId: string, issue: StaffFacts["issue"]): Promise<StaffFacts> {
+  const [member, school, year] = await Promise.all([
+    db.membership.findFirst({ where: { id: membershipId, schoolId, role: { in: [...STAFF_ROLES] } }, select: { title: true, joinedAt: true, user: { select: { name: true } }, staffRecord: { select: { staffNumber: true, designation: true, qualification: true, joinedOn: true, appointmentType: true, academicQualification: true } } } }),
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, addressLine: true, city: true, region: true, postalCode: true, timezone: true } }),
+    db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { name: true } }),
+  ]);
+  if (!member) throw new AccessError("appointmentLetters.refuseNotStaff", "NOT_FOUND");
+  const head = await db.department.findFirst({ where: { schoolId, hodMembershipId: membershipId }, select: { name: true } });
+  const dept = head ?? (await db.departmentFaculty.findUnique({ where: { membershipId }, select: { department: { select: { name: true } } } }))?.department ?? null;
+  const r = member.staffRecord;
+  const joined = r?.joinedOn ? r.joinedOn.toISOString().slice(0, 10) : dateKeyInZone(member.joinedAt, school.timezone);
+  return {
+    name: member.user.name,
+    designation: r?.designation ?? member.title ?? null,
+    department: dept?.name ?? null,
+    staffNumber: r?.staffNumber ?? null,
+    joinedOnKey: joined,
+    qualification: r?.qualification ?? r?.academicQualification ?? null,
+    appointmentType: r?.appointmentType ?? null,
+    school: { name: school.name, address: [school.addressLine, school.city, school.region, school.postalCode].filter(Boolean).join(", ") || null },
+    yearName: year?.name ?? null,
+    issue,
+  };
+}
+
+/** Issue one appointment letter to one member of staff: filled from their record, numbered under the year's lock, frozen, the member told. */
+export async function issueAppointmentLetter(ctx: ActiveContext, input: { templateId: string; staffMembershipId: string; purpose?: string; remark?: string }): Promise<IssuedCertificateView> {
+  const caller = office(ctx);
+  const template = await db.certificateTemplate.findFirst({ where: { id: input.templateId, schoolId: caller.schoolId } });
+  if (!template) throw new AccessError("access.thatContentNoLongerExists", "NOT_FOUND");
+  if (!template.active) throw new AccessError("certificates.templateRetired");
+  if (!isStaffKind(template.kind)) throw new AccessError("appointmentLetters.refuseNotAppointment");
+  const year = await db.academicYear.findFirst({ where: { schoolId: caller.schoolId, isCurrent: true }, select: { id: true, name: true } });
+  if (!year) throw new AccessError("certificates.noYear");
+  const school = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
+  const locale = asLocale(template.locale);
+  const words = wordsFor(locale);
+  const prefix = template.serialPrefix.toUpperCase();
+  const purpose = input.purpose?.trim() || null;
+  const remark = input.remark?.trim() || null;
+  // Read before the lock, as the pupil's paper is: a query on the shared client inside it would run outside the tenant.
+  const facts = await staffFactsFor(caller.schoolId, input.staffMembershipId, { dateKey: todayKey(school.timezone), serial: "", purpose, remark });
+  const issued = await db.$tenantTransaction(async (raw) => {
+    const tx = raw as typeof db;
+    // The year's row is the lock every paper's serial is taken under.
+    await tx.$queryRaw`SELECT "id" FROM "AcademicYear" WHERE "id" = ${year.id} FOR UPDATE`;
+    const last = await tx.issuedCertificate.findFirst({ where: { schoolId: caller.schoolId, academicYearId: year.id, serial: { startsWith: `${prefix}/` } }, orderBy: { number: "desc" }, select: { number: true } });
+    const number = (last?.number ?? 0) + 1;
+    const serial = `${prefix}/${year.name}/${String(number).padStart(4, "0")}`;
+    const data = staffDataFor({ ...facts, issue: { ...facts.issue, serial } }, locale, words);
+    const intro = fill(template.intro, data);
+    const rows = fillRows(parseRows(template.rowsJson), data);
+    const outro = fill(template.outro, data);
+    const missing = [...new Set([...intro.missing, ...rows.missing, ...outro.missing])];
+    return tx.issuedCertificate.create({
+      data: {
+        schoolId: caller.schoolId,
+        templateId: template.id,
+        studentMembershipId: input.staffMembershipId,
+        studentName: facts.name,
+        academicYearId: year.id,
+        kind: template.kind,
+        locale,
+        serial,
+        number,
+        title: fill(template.title, data).text,
+        intro: intro.text,
+        rowsJson: JSON.stringify(rows.rows),
+        outro: outro.text,
+        layoutJson: template.layoutJson,
+        dataJson: JSON.stringify({ ...data, missing }),
+        purpose,
+        remark,
+        code: newCode(),
+        issuedByUserId: caller.user.id,
+      },
+      select: { id: true, serial: true, title: true, studentMembershipId: true },
+    });
+  });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "certificate.issue", targetType: "IssuedCertificate", targetId: issued.id, meta: { kind: template.kind, locale, serial: issued.serial, templateId: template.id, staffMembershipId: input.staffMembershipId } });
+  await signOnIssue(ctx, { kind: "CERTIFICATE", id: issued.id, schoolId: caller.schoolId, title: issued.title, studentName: facts.name }, parseLayout(template.layoutJson, words));
+  // The member of staff is told; the letter is theirs to read and print.
+  const staffUser = await db.membership.findUnique({ where: { id: issued.studentMembershipId }, select: { userId: true } });
+  if (staffUser) await notify({ userId: staffUser.userId, schoolId: caller.schoolId, kind: "SYSTEM", titleKey: "appointmentLetters.notifIssued", bodyKey: "appointmentLetters.notifIssuedBody", bodyVars: { serial: issued.serial }, url: `/account/letters/${issued.id}` });
+  return certificateView(ctx, issued.id);
+}
+
+/** The office's desk: the APPOINTMENT templates, the staff a letter may go to, and the letters issued, newest first. */
+export async function appointmentLettersView(ctx: ActiveContext) {
+  const caller = office(ctx);
+  const [templates, staff, letters] = await Promise.all([
+    db.certificateTemplate.findMany({ where: { schoolId: caller.schoolId, active: true, kind: { in: STAFF_CERTIFICATE_KINDS } }, orderBy: { name: "asc" }, select: { id: true, name: true, locale: true } }),
+    db.membership.findMany({ where: { schoolId: caller.schoolId, status: "ACTIVE", leftAt: null, role: { in: [...STAFF_ROLES] } }, orderBy: { user: { name: "asc" } }, take: 1000, select: { id: true, role: true, title: true, user: { select: { name: true } }, staffRecord: { select: { designation: true } } } }),
+    db.issuedCertificate.findMany({ where: { schoolId: caller.schoolId, kind: { in: STAFF_CERTIFICATE_KINDS } }, orderBy: { issuedAt: "desc" }, take: 500, include: { student: { select: { user: { select: { name: true } } } } } }),
+  ]);
+  return {
+    templates: templates.map((t) => ({ id: t.id, name: t.name, locale: asLocale(t.locale) })),
+    staff: staff.map((m) => ({ membershipId: m.id, name: m.user.name, role: m.role, designation: m.staffRecord?.designation ?? m.title ?? null })),
+    letters: letters.map(listRow),
+  };
+}
+
+/** A member of staff's own letters at the school they are signed in to, newest first. */
+export async function myAppointmentLetters(ctx: ActiveContext) {
+  if (!ctx.schoolId || !ctx.membershipId || !ctx.role || !STAFF_ROLES.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
+  const rows = await db.issuedCertificate.findMany({ where: { schoolId: ctx.schoolId, studentMembershipId: ctx.membershipId, kind: { in: STAFF_CERTIFICATE_KINDS } }, orderBy: { issuedAt: "desc" }, take: 100, include: { student: { select: { user: { select: { name: true } } } } } });
+  return { items: rows.map(listRow) };
+}

@@ -54,7 +54,26 @@ export async function corpsDesk(ctx: ActiveContext, corps: CorpsCode): Promise<C
 async function writer(ctx: ActiveContext, corps: CorpsCode) {
   const c = await deskCaller(ctx, DUTY[corps], "IQAC", ["ADMIN"]);
   const school = await db.school.findUniqueOrThrow({ where: { id: c.schoolId }, select: { timezone: true } });
-  return { ...c, today: todayKey(school.timezone) };
+  return { ...c, today: todayKey(school.timezone), timezone: school.timezone };
+}
+
+/**
+ * THE DAYS A UNIT'S RECORDS MAY CARRY (A3-S-15, audit of 5 October 2026):
+ * an activity is not in the future and a leaving day has come (a leaving day
+ * ahead would take the student off the unit at once, since the desk reads a
+ * set `leftOn` as gone); and no day is before a named student's programme
+ * began (the June of their entry year), nor, for an activity naming nobody
+ * with a programme seat, before the previous academic year (the desk shows
+ * the year's register; last year's late entries still fit).
+ */
+async function assertCorpsDay(schoolId: string, timezone: string, day: string, studentIds: readonly string[], field: string): Promise<void> {
+  const seats = studentIds.length ? await db.studentProgramme.findMany({ where: { schoolId, studentMembershipId: { in: [...studentIds] } }, select: { entryYear: true } }) : [];
+  if (seats.length) {
+    const latestStart = seats.map((s) => academicYearWindow(s.entryYear).from).sort().at(-1)!;
+    if (day < latestStart) throw new RuleRefusal("duties.corps.refuseBeforeProgramme", 422, undefined, field);
+    return;
+  }
+  if (day < academicYearWindow(currentRecordsYear(timezone) - 1).from) throw new RuleRefusal("duties.corps.refuseTooEarly", 422, undefined, field);
 }
 
 async function assertStudents(schoolId: string, ids: readonly string[], field: string) {
@@ -88,6 +107,8 @@ export async function leaveCorps(ctx: ActiveContext, corps: CorpsCode, input: { 
   const rows = await db.corpsEnrolment.findMany({ where: { schoolId: c.schoolId, corps, leftOn: null, studentMembershipId: { in: ids } }, select: { id: true, enrolledOn: true } });
   if (rows.length !== ids.length) throw new RuleRefusal("duties.corps.refuseNotEnrolled", 422, undefined, "studentMembershipIds");
   if (rows.some((r) => input.on < r.enrolledOn)) throw new RuleRefusal("duties.corps.refuseLeaveDay", 422, undefined, "on");
+  if (input.on > c.today) throw new RuleRefusal("duties.corps.refuseLeaveFuture", 422, undefined, "on");
+  await assertCorpsDay(c.schoolId, c.timezone, input.on, ids, "on");
   const done = await db.corpsEnrolment.updateMany({ where: { id: { in: rows.map((r) => r.id) } }, data: { leftOn: input.on } });
   await audit({ schoolId: c.schoolId, actorUserId: c.userId, action: "duties.corps.leave", targetType: "School", targetId: c.schoolId, meta: { corps, count: done.count } });
   return { count: done.count };
@@ -98,6 +119,7 @@ export async function addCorpsActivity(ctx: ActiveContext, corps: CorpsCode, inp
   const c = await writer(ctx, corps);
   if (input.at > c.today) throw new RuleRefusal("duties.corps.refuseFutureDay", 422, undefined, "at");
   const ids = [...new Set(input.participantMembershipIds)];
+  await assertCorpsDay(c.schoolId, c.timezone, input.at, ids, "at");
   if (ids.length) {
     const enrolled = await db.corpsEnrolment.count({ where: { schoolId: c.schoolId, corps, leftOn: null, studentMembershipId: { in: ids } } });
     if (enrolled !== ids.length) throw new RuleRefusal("duties.corps.refuseNotEnrolled", 422, undefined, "participantMembershipIds");

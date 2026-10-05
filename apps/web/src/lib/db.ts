@@ -7,6 +7,7 @@ import {
   type RequestTenant,
 } from "./tenant-context";
 import { resolveRequestTenant, type SessionReadableClient } from "./tenant-request";
+import { transactionOptionsFor } from "./db-transaction-options";
 
 /**
  * Prisma singleton, extended so every query tells Postgres which school it is
@@ -40,6 +41,23 @@ import { resolveRequestTenant, type SessionReadableClient } from "./tenant-reque
  */
 const globalForPrisma = globalThis as unknown as { prisma?: ExtendedClient };
 
+/** A read or write through the app's `db` from inside a tenant transaction's work (R-49): it should have used the transaction's client. */
+export class BareClientInTransactionError extends Error {
+  constructor(
+    readonly model: string | undefined,
+    readonly operation: string,
+  ) {
+    super(`[R-49] db.${model ? model[0]!.toLowerCase() + model.slice(1) : "$raw"}.${operation} was called inside $tenantTransaction: it runs outside the transaction with no tenant and reads nothing under RLS. Use the transaction's client (tx) for every read and write inside the work.`);
+    this.name = "BareClientInTransactionError";
+  }
+}
+
+/** The guard's switch: on in development and test, off in production; TENANT_TX_GUARD=0 turns it off anywhere. */
+function bareClientGuardOn(): boolean {
+  if (process.env.TENANT_TX_GUARD === "0") return false;
+  return process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
+}
+
 function createClient() {
   const base = new PrismaClient({
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
@@ -48,6 +66,8 @@ function createClient() {
     // door `npm run job` takes through with-admin-db. Every other process
     // connects as the app role and stays inside the row-level policies.
     ...(process.env.JOBS_RUNNER === "1" && process.env.DATABASE_ADMIN_URL ? { datasourceUrl: process.env.DATABASE_ADMIN_URL } : {}),
+    // Room for a cold compile inside a transaction, in development only (R-29, db-transaction-options.ts).
+    ...(transactionOptionsFor(process.env.NODE_ENV) ? { transactionOptions: transactionOptionsFor(process.env.NODE_ENV) } : {}),
   });
 
   /**
@@ -68,7 +88,24 @@ function createClient() {
         // Already inside a transaction that set the tenant. Postgres has no
         // nested transactions and Prisma would reject a second one. Checked
         // before resolving, so nested work does no session lookups either.
-        if (isInTenantTransaction()) return query(args);
+        //
+        // ⚠ BUT A CALL THAT REACHES HERE INSIDE ONE IS ON THE WRONG CLIENT
+        // (R-49, the risks batch of 5 October 2026). Work inside
+        // `$tenantTransaction` (and the per-query transaction below) runs on
+        // the transaction's own client, which never passes through this
+        // extension; so a query arriving here while the flag is up was made
+        // through `db` from inside that work. It does not join the
+        // transaction: it runs on another pooled connection with no tenant
+        // set, and under RLS it silently reads nothing and writes nowhere —
+        // A3-journeys-10's revaluation fee, which the owner-role tests never
+        // saw. In development and test it throws, naming the model and the
+        // operation; in production it runs as before, unscoped, rather than
+        // turning a missed read into an outage. TENANT_TX_GUARD=0 turns the
+        // throw off for a development server that must limp on.
+        if (isInTenantTransaction()) {
+          if (bareClientGuardOn()) throw new BareClientInTransactionError(model, operation);
+          return query(args);
+        }
 
         // Raw queries carry no model to re-issue against; run them as-is.
         if (!model) return query(args);

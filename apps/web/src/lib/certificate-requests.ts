@@ -5,6 +5,7 @@ import { AccessError, assertGuardianAccess } from "./tenancy";
 import { consentApplies } from "./student-consent";
 import { RuleRefusal } from "./rule-refusal";
 import { todayKey } from "./dates";
+import { isStaffKind } from "./certificate-rules";
 import { translator } from "./i18n/dictionary";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
@@ -99,7 +100,8 @@ async function view(rows: Row[]): Promise<CertificateRequestView[]> {
 /** The kinds the school can issue: those with an active template. */
 async function offeredKinds(schoolId: string): Promise<CertificateKind[]> {
   const rows = await db.certificateTemplate.findMany({ where: { schoolId, active: true }, select: { kind: true }, distinct: ["kind"] });
-  return rows.map((r) => r.kind as CertificateKind);
+  // A staff paper (an appointment letter, risks batch 5A) is never a family's to ask for.
+  return rows.map((r) => r.kind as CertificateKind).filter((k) => !isStaffKind(k));
 }
 
 /** Where a new ask is announced: the school's admins and the head. */

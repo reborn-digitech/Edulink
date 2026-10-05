@@ -8,7 +8,7 @@ import { assertGuardianAccess } from "./tenancy";
 import { isMinorToday } from "./student-consent";
 import { forSchool } from "./tenant-context";
 import { todayKey } from "./dates";
-import { studentTokensOf } from "./college-audience";
+import { studentTokensMany, studentTokensOf } from "./college-audience";
 import { canReadPost } from "./bulletin";
 import type { ActiveContext } from "./session";
 
@@ -59,9 +59,10 @@ async function audienceOf(post: SlipPost): Promise<{ membershipId: string; name:
   });
   let rows = students.map((m) => ({ membershipId: m.id, name: m.user.preferredName ?? m.user.name, className: m.enrollments[0]?.class.name ?? null }));
   if (post.audienceTarget) {
-    const keep: typeof rows = [];
-    for (const r of rows) if ((await studentTokensOf(r.membershipId)).includes(post.audienceTarget)) keep.push(r);
-    rows = keep;
+    // Every student's tokens in a few reads, not a few each (R-54).
+    const target = post.audienceTarget;
+    const tokens = await studentTokensMany(rows.map((r) => r.membershipId));
+    rows = rows.filter((r) => (tokens.get(r.membershipId) ?? []).includes(target));
   }
   return rows;
 }

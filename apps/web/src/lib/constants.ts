@@ -151,8 +151,16 @@ export type PostStatus = (typeof POST_STATUSES)[number];
  * default because it is what every post written before categories existed was:
  * an announcement.
  */
-export const POST_CATEGORIES = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"] as const;
+export const POST_CATEGORIES = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES", "COUNCIL"] as const;
 export type PostCategory = (typeof POST_CATEGORIES)[number];
+/**
+ * The categories anyone may choose when writing a post. COUNCIL (risks batch
+ * 5A, 5 Oct 2026) is a student council's notice, written only through the
+ * council's own door (council-notices.ts): it is read and filtered like the
+ * others, never offered in the composer, and refused by createPost without
+ * the council behind it.
+ */
+export const POSTABLE_CATEGORIES = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"] as const satisfies readonly PostCategory[];
 
 /**
  * The reaction set — fixed and kid-safe, deliberately: no thumbs-down and

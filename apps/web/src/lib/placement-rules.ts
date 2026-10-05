@@ -50,6 +50,25 @@ export function evaluateEligibility(input: {
   return failed;
 }
 
+/**
+ * THE HIGH-OFFER LINE (A3-journeys-18, audit of 5 October 2026): an offer
+ * above this many times the drive's highest package is most often a slip of
+ * the keyboard (₹25 lakh typed on a ₹6–7 lakh drive), so it is recorded only
+ * once the recorder confirms it. The same 1.5 as the college's default dream
+ * ratio, named on its own: this is a warning, not the one-offer rule.
+ */
+export const HIGH_OFFER_RATIO = 1.5;
+
+/** Whether an offer needs the recorder's confirmation: above the line, on a drive that names its highest package. */
+export function offerNeedsConfirm(packageRupees: number, drivePackageMaxRupees: number): boolean {
+  return drivePackageMaxRupees > 0 && packageRupees > Math.ceil(drivePackageMaxRupees * HIGH_OFFER_RATIO);
+}
+
+/** Rupees as lakh with at most two decimals, for the warning's sentence. */
+export function lakhOf(rupees: number): string {
+  return String(Math.round(rupees / 1000) / 100);
+}
+
 export function applicationStatus(app: { withdrawnAt: Date | null }, results: readonly { round: number; outcome: string }[], hasOffer: boolean): { status: DriveApplicationView["status"]; round: number | null } {
   if (app.withdrawnAt) return { status: "WITHDRAWN", round: null };
   if (hasOffer) return { status: "SELECTED", round: null };

@@ -218,7 +218,8 @@ export async function paperImage(ctx: ActiveContext, signatureId: string): Promi
   if (!row || row.status !== "SIGNED" || !row.png) return null;
   if (row.paperKind === "CERTIFICATE") {
     const { mayReadCertificate } = await import("./certificates");
-    const cert = await db.issuedCertificate.findFirst({ where: { id: row.paperId, schoolId: row.schoolId }, select: { schoolId: true, studentMembershipId: true } });
+    // The kind too: an appointment letter's own reader is the member of staff it was issued to (risks batch 5A).
+    const cert = await db.issuedCertificate.findFirst({ where: { id: row.paperId, schoolId: row.schoolId }, select: { schoolId: true, studentMembershipId: true, kind: true } });
     if (!cert || !(await mayReadCertificate(ctx, cert))) return null;
     return row.png;
   }

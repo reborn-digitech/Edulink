@@ -22,8 +22,10 @@ import type { ActiveContext } from "./session";
  *   (teacherSchoolId), ONE_TO_ONE, and NEVER PRICED: `pricePaise` is 0 by
  *   construction here and the booking path refuses to sell a one-to-one
  *   (decision 0004 as amended). In the placement season these are the mock
- *   interviews. A one-to-one draws on the student's free allowance like any
- *   other.
+ *   interviews. An alumni mentor's one-to-one does NOT draw on the student's
+ *   free allowance (G4-26, risks batch 5 Oct 2026): alumni are volunteers and
+ *   decision 0004's allowance is for experts; gig-sessions.ts leaves them out
+ *   of the count and books them free, and the booking page says so.
  *   REFERRALS of openings, into a drive the college has or as a company the
  *   cell may approach; the cell is told.
  *   A COMPANY LINK for an alumnus who recruits (AlumniCompanyLink): the cell
