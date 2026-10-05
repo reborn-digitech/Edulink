@@ -69,7 +69,6 @@ export async function renderIdCardPdf(card: IdCard, t: Translate, origin: string
           <View style={{ flex: 1 }}>
             <Text style={styles.name}>{card.name}</Text>
             {line(card.school.college ? t("collegeDesks.idCardProgramme") : t("collegeDesks.idCardClass"), card.group)}
-            {line(t("collegeDesks.idCardCode"), card.studentCode)}
             {line(t("collegeDesks.idCardPrn"), card.prn)}
           </View>
           {qr ? (
@@ -79,7 +78,7 @@ export async function renderIdCardPdf(card: IdCard, t: Translate, origin: string
           ) : null}
         </View>
         <Text style={styles.foot}>
-          {card.validUntil ? t("collegeDesks.idCardValid", { year: card.year ?? "", until: formatDateKey(card.validUntil, { day: "numeric", month: "short", year: "numeric" }, locale) }) : t("collegeDesks.idCardNoYear")}
+          {card.validUntil ? t(card.school.college ? "collegeDesks.idCardValidCollege" : "collegeDesks.idCardValid", { year: card.year ?? "", until: formatDateKey(card.validUntil, { day: "numeric", month: "short", year: "numeric" }, locale) }) : t(card.school.college ? "collegeDesks.idCardNoYearCollege" : "collegeDesks.idCardNoYear")}
         </Text>
       </Page>
     </Document>

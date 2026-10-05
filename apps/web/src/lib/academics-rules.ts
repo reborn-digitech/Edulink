@@ -138,3 +138,14 @@ export function parseMarks(raw: string): number | null | undefined {
   if (!/^\d+(\.\d)?$/.test(v)) return undefined;
   return Math.round(Number(v) * 10);
 }
+
+/**
+ * A term's registration window against today, the college's day key
+ * (A3-journeys-28): a window that opens on 01/11 was listed as "Registration
+ * closed" in October, which a registrar reads as missed. Not yet open, open
+ * (the closing day included), or over.
+ */
+export function registrationWindow(opensOn: string, closesOn: string, today: string): "UPCOMING" | "OPEN" | "CLOSED" {
+  if (today < opensOn) return "UPCOMING";
+  return today <= closesOn ? "OPEN" : "CLOSED";
+}

@@ -424,6 +424,12 @@ export const revaluationRowSchema = z.object({
   newExternalMilli: z.number().int().nullable(),
   askedAt: iso,
   decidedAt: iso.nullable(),
+  /**
+   * A CHANGED revaluation's way to the result (A3-journeys-11): RUN_DUE until a run is computed after the
+   * decision, PUBLISH_DUE until one is published after it, then null; null for every other outcome.
+   * The student reads "under correction" while it is not null. Absent from an older server.
+   */
+  correction: z.enum(["RUN_DUE", "PUBLISH_DUE"]).nullable().optional(),
 });
 export type RevaluationRow = z.infer<typeof revaluationRowSchema>;
 export const backlogRowSchema = z.object({
@@ -556,7 +562,7 @@ export const myExamsSchema = z.object({
   forms: z.array(myExamFormSchema),
   tickets: z.array(z.object({ id: z.string(), number: z.string(), sessionName: z.string() })),
   seating: z.array(z.object({ courseCode: z.string(), courseName: z.string(), at: iso, roomName: z.string(), seatNo: z.number().int() })),
-  results: z.array(z.object({ sessionId: z.string(), sessionName: z.string(), publishedAt: iso.nullable(), revaluationOpenUntil: dateKey.nullable(), result: termResultViewSchema })),
+  results: z.array(z.object({ sessionId: z.string(), sessionName: z.string(), publishedAt: iso.nullable(), revaluationOpenUntil: dateKey.nullable(), result: termResultViewSchema, /** Course ids a revaluation changed whose corrected run is not published yet (A3-journeys-11); [] from an older server. */ underCorrection: z.array(z.string()).default([]) })),
   cgpa: z.number().nullable(),
   creditsEarned: z.number(),
   documents: z.array(examDocumentRowSchema),

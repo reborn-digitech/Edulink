@@ -270,6 +270,8 @@ export const assignmentSchema = z.object({
     .optional(),
   dueAt: z.string().datetime().optional().or(z.literal("")),
   publish: z.boolean().default(true),
+  /** The teacher means a due date that has already passed (A3-journeys-25); without it such a date is refused. */
+  confirmPastDue: z.boolean().optional(),
 });
 
 export const gradeSchema = z.object({
@@ -449,7 +451,7 @@ const KEY_SHAPED = /^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9]+)+$/;
  * key with the number spliced in. `issue.message` survives only as the
  * fallback for shapes no schema here produces.
  */
-function issueText(issue: z.ZodIssue, t?: Translate): string {
+export function issueText(issue: z.ZodIssue, t?: Translate): string {
   // A custom message that is a key is the schema author's exact words — wins.
   if (KEY_SHAPED.test(issue.message)) return t ? t(issue.message as TranslationKey) : issue.message;
   if (!t) return issue.message;

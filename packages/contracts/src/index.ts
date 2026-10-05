@@ -126,6 +126,7 @@ export * from "./v1/filings";
 export * from "./v1/family-money";
 export * from "./v1/transport";
 export * from "./v1/transport-map";
+export * from "./v1/office-year";
 
 /* -------------------------------------------------------------------------- */
 /* Global search — GET /api/v1/search                                          */

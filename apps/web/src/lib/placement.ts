@@ -572,6 +572,8 @@ export async function openDrive(ctx: ActiveContext, input: DriveSave): Promise<D
 }
 
 const ORDER = new Map(DRIVE_STATUSES.map((s, i) => [s, i]));
+/** The statuses in which students are told of a drive and apply to it, or the company works on it. */
+const LIVE_STATUSES: readonly DriveStatus[] = ["OPEN", "SHORTLISTING", "ROUNDS", "OFFERS"];
 
 /** The host cell edits a drive or moves it on; a closed drive changes no more, and a status never goes back. */
 export async function updateDrive(ctx: ActiveContext, driveId: string, input: DriveUpdate): Promise<DriveView> {
@@ -590,6 +592,10 @@ export async function updateDrive(ctx: ActiveContext, driveId: string, input: Dr
     if (!(await db.company.findUnique({ where: { id: input.companyId }, select: { id: true } }))) throw new RuleRefusal("placement.refuseUnknownCompany", 422, undefined, "companyId");
     if (await db.driveApplication.findFirst({ where: { driveId }, select: { id: true } })) throw new RuleRefusal("placement.refuseCompanyChange", 409, undefined, "companyId");
   }
+  // A drive reaches students only for a company the cell has checked (audit of 5 Oct 2026, A3-journeys-12):
+  // moving it to Open or on, or giving a live drive another company, waits for the check. Closing never does.
+  const goesLive = (input.status && LIVE_STATUSES.includes(input.status)) || (input.companyId && input.companyId !== d.companyId && LIVE_STATUSES.includes((input.status ?? d.status) as DriveStatus));
+  if (goesLive && !(await db.company.findFirst({ where: { id: input.companyId ?? d.companyId, verifiedAt: { not: null } }, select: { id: true } }))) throw new RuleRefusal("placement.refuseDriveUnchecked", 409, undefined, "status");
   const closing = input.status === "CLOSED";
   const data = {
     ...(input.companyId ? { companyId: input.companyId } : {}),
@@ -627,6 +633,7 @@ export async function inviteEligible(ctx: ActiveContext, driveId: string): Promi
   const seen = d ? seesDrive(d, cell.schoolId) : null;
   if (!d || !seen) throw new AccessError("placement.noSuchDrive", "NOT_FOUND");
   if (d.status !== "OPEN") throw new RuleRefusal("placement.refuseInviteNotOpen", 409);
+  if (!d.company.verifiedAt) throw new RuleRefusal("placement.refuseDriveUnchecked", 409);
   const rows = (await eligibilityAt(d, cell.schoolId)).filter((r) => r.eligible);
   const applied = new Set((await db.driveApplication.findMany({ where: { driveId, schoolId: cell.schoolId }, select: { studentMembershipId: true } })).map((a) => a.studentMembershipId));
   const toTell = rows.filter((r) => !applied.has(r.studentMembershipId));
@@ -775,7 +782,10 @@ export async function recordOffer(actor: DriveActor, input: { studentMembershipI
   );
   await forSchool(app.schoolId, () => notify({ userId: app.studentUserId, schoolId: app.schoolId, kind: "SYSTEM", titleKey: "placement.notifOffer", titleVars: { company: d.company.name, title: d.title }, url: "/student/placement" })).catch((error) => console.error("[placement] offer notice failed", error));
   await forSchool(d.schoolId, () => audit({ schoolId: d.schoolId, actorUserId: actor.userId, action: "placement.offer", targetType: "Offer", targetId: offer.id, meta: { driveId: d.id, packageRupees: input.packageRupees, dream, letter: Boolean(letterFileId), via: actor.via } }));
-  return (await offerViews([offer]))[0]!;
+  // The name off the application, as applicationViews reads it: a recruiter (or a pooled drive's host) cannot read
+  // the student's membership, and the toast read "Offer recorded for ; they are told" (A3-journeys-18).
+  const student = await db.user.findUnique({ where: { id: app.studentUserId }, select: { name: true, preferredName: true } });
+  return (await offerViews([offer], new Map([[input.studentMembershipId, student ? nameOf(student) : ""]])))[0]!;
 }
 
 export async function recordJoined(actor: DriveActor, offerId: string, joinedOn: string): Promise<OfferView> {
@@ -882,7 +892,8 @@ export async function applyToDrive(ctx: ActiveContext, driveId: string): Promise
   const me = await studentOf(ctx);
   const d = await loadDrive(driveId);
   if (!d || !seesDrive(d, me.schoolId)) throw new AccessError("placement.noSuchDrive", "NOT_FOUND");
-  if (d.status !== "OPEN") throw new RuleRefusal("placement.refuseNotOpen", 409);
+  // A drive opened for a company nobody has checked (before A3-journeys-12) takes no application: applying shares the record with it.
+  if (d.status !== "OPEN" || !d.company.verifiedAt) throw new RuleRefusal("placement.refuseNotOpen", 409);
   const [row] = await eligibilityAt(d, me.schoolId, [me.membershipId]);
   if (!row) throw new AccessError("access.wrongRoleForThisAction");
   if (!row.eligible) throw new RuleRefusal("placement.refuseNotEligible", 409, { why: row.failed.map((f) => f.code).join(", ") });

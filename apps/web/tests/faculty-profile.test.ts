@@ -80,6 +80,18 @@ describe("my public page", () => {
     expect((await publicFaculty(SLUG)).profiles).toEqual([]);
   });
 
+  it("names the department the teacher is placed in when the record leaves it blank (A3-journeys-38)", async () => {
+    const record = await owner.facultyRecord.findUniqueOrThrow({ where: { id: ids.record }, select: { departmentId: true, membershipId: true } });
+    await owner.facultyRecord.update({ where: { id: ids.record }, data: { departmentId: null } });
+    const placed = await owner.departmentFaculty.create({ data: { schoolId: ids.college, departmentId: record.departmentId!, membershipId: record.membershipId }, select: { id: true } });
+    try {
+      expect((await myPublicProfile(await ctxAs(ids.teacher, "FACULTY"))).preview?.departmentName).toBe("ZZ Physics");
+    } finally {
+      await owner.departmentFaculty.delete({ where: { id: placed.id } });
+      await owner.facultyRecord.update({ where: { id: ids.record }, data: { departmentId: record.departmentId } });
+    }
+  });
+
   it("an HOD with no record is told so, and nobody else may publish for a teacher", async () => {
     const hod = await ctxAs(ids.hod, "HOD");
     expect((await myPublicProfile(hod)).hasRecord).toBe(false);

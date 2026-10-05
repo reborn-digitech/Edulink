@@ -1,5 +1,5 @@
 import "server-only";
-import { AICTE_INTERNSHIP_BTECH, LAW_INTERNSHIP_WINDOWS, internshipKindsFor, isLawInternshipKind, type InternshipPropose, type InternshipView } from "@edulink/contracts";
+import { AICTE_INTERNSHIP_BTECH, INTERNSHIP_DIARY_DAY_HOURS, LAW_INTERNSHIP_WINDOWS, internshipKindsFor, isLawInternshipKind, type InternshipPropose, type InternshipView } from "@edulink/contracts";
 import { streamsOf } from "./streams";
 import { db } from "./db";
 import { audit } from "./audit";
@@ -9,6 +9,8 @@ import { RuleRefusal } from "./rule-refusal";
 import { assertModuleOn } from "./modules";
 import { readJson, writeJson } from "./json";
 import { nameOf, spendTicket } from "./placement";
+import { todayKey } from "./dates";
+import { zoneOf } from "./academics";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -149,7 +151,11 @@ export async function addDiaryEntry(ctx: ActiveContext, id: string, entry: { on:
   const row = await ownInternship(ctx, id);
   if (!["APPROVED", "SUBMITTED"].includes(row.status)) throw new RuleRefusal("placement.refuseDiaryState", 409);
   if (entry.on < row.fromKey || entry.on > row.toKey) throw new RuleRefusal("placement.refuseDiaryDate", 422, undefined, "on");
-  const diary = [...readJson<{ on: string; hours: number; text: string }[]>(row.diary, []), entry].sort((a, b) => a.on.localeCompare(b.on));
+  // A day's hours, all its entries together, stop at the cap the form's field shows (A3-journeys-22): the server's rule, not the browser's.
+  const before = readJson<{ on: string; hours: number; text: string }[]>(row.diary, []);
+  const that = before.filter((d) => d.on === entry.on).reduce((a, d) => a + (Number(d.hours) || 0), 0);
+  if (!(entry.hours > 0) || that + entry.hours > INTERNSHIP_DIARY_DAY_HOURS) throw new RuleRefusal("placement.refuseDiaryHours", 422, { max: INTERNSHIP_DIARY_DAY_HOURS, date: entry.on, have: that }, "hours");
+  const diary = [...before, entry].sort((a, b) => a.on.localeCompare(b.on));
   const updated = await db.internship.update({ where: { id }, data: { diary: writeJson(diary) } });
   return (await internshipViews([updated]))[0]!;
 }
@@ -219,6 +225,8 @@ export async function evaluateInternship(ctx: ActiveContext, id: string, input: 
     if (!DECIDERS.includes(me.role)) throw new AccessError("access.wrongRoleForThisAction");
     if (!evaluated || !row.reportFileId) throw new RuleRefusal("placement.refuseCreditIncomplete", 409);
     if (row.kind === "FAMILY_BUSINESS" && !row.parentDeclarationFileId) throw new RuleRefusal("placement.refuseNeedDeclaration", 409);
+    // Credited once it has ended (A3-journeys-22): from its last day, by the college's own calendar.
+    if (todayKey(await zoneOf(me.schoolId)) < row.toKey) throw new RuleRefusal("placement.refuseCreditBeforeEnd", 409, { date: row.toKey });
     const before = await creditsSoFar(row.studentMembershipId, row.id);
     if (before + input.credits > AICTE_INTERNSHIP_BTECH.creditsMax) throw new RuleRefusal("placement.refuseCreditsOverMax", 409, { max: AICTE_INTERNSHIP_BTECH.creditsMax, have: before });
     credited = { credits: input.credits };

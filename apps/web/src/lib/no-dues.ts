@@ -228,6 +228,8 @@ export async function clearLine(ctx: ActiveContext, studentMembershipId: string,
   const before = await noDuesFor(s.id, input.event);
   const line = before.lines.find((l) => l.desk === input.desk);
   if (!line) throw new AccessError("collegeOffice.refuseNoSuchLine");
+  // A line cleared by hand with money owed or items still out is a waiver, and a waiver says why (A3-journeys-8).
+  if ((line.owedPaise > 0 || line.itemsOut > 0) && !input.note?.trim()) throw new AccessError("collegeOffice.refuseClearNeedsNote");
   const cycleKey = await cycleKeyFor(ctx.schoolId!, input.event);
   const key = { studentMembershipId: s.id, event: input.event, cycleKey };
   const existing = await db.noDuesClearance.findUnique({ where: { studentMembershipId_event_cycleKey: key }, select: { clearsJson: true } });

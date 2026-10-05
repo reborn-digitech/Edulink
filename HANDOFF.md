@@ -1,6 +1,6 @@
 # Shalaghar — handoff
 
-Written 2026-09-28 at commit `ff57b2d`. This is the short map. The working rules a session must follow are in
+Written 2026-09-28 at commit `ff57b2d`; numbers refreshed 2026-10-05 after the audit's fix wave (on 3a5b1da1). This is the short map. The working rules a session must follow are in
 [CLAUDE.md](CLAUDE.md), which Claude Code reads on its own. The long operator's manual is
 [apps/web/README.md](apps/web/README.md); the decisions are in [docs/decisions](docs/decisions);
 the audits are in [docs/data-audit](docs/data-audit) and [docs/security](docs/security).
@@ -76,10 +76,10 @@ packages/i18n        en / hi / mr dictionaries; every user-facing sentence is a 
 packages/api-client  The bearer-token fetch wrapper the phone uses.
 packages/tokens      Design tokens shared by web and phone: palettes, role accents, and the light frame
                      (navy menu and bars, tinted canvas, role-colour wash) chosen 2026-09-30.
-docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 530 endpoints.
+docs/api/openapi.json  Generated from the API catalog (npm run api:docs). 1,028 endpoints.
 ```
 
-**Data.** Postgres, Prisma, 111 models, 28 handwritten migrations. Every school-owned table carries
+**Data.** Postgres, Prisma, 291 models, 88 migrations (counted 5 October 2026). Every school-owned table carries
 `schoolId` and is behind row-level security. The policies are generated (`npm run rls:generate`) and
 verified (`npm run rls:verify`); the app connects as `edulink_app`, which owns nothing and cannot
 bypass RLS, and sets the tenant per query inside its own transaction (`$tenantTransaction`, never a
@@ -93,12 +93,12 @@ and a bearer on the phone, re-checked against the live membership on every reque
 lifetime. A parent session carries no school.
 
 **Jobs.** One registry in `src/lib/jobs.ts`, run by `npm run job -- <name>` from a crontab the app
-prints (`npm run cron:show`). Seventeen jobs: notifications tidy, retention sweep, admission offer
+prints (`npm run cron:show`). Eighteen jobs: notifications tidy, retention sweep, admission offer
 expiry, accounts tidy (expired invitations, who is a minor), weekly digest, scheduled departures,
 health digest, file reclaim, fee reminders, fee reconciliation, circular delivery, text sending, the
 overdue-job watch (`jobs:watch`), the nightly plan-usage count (`usage:sample`), the question-bank
-statistics (`bank:stats`), session reminders (`gigs:remind`) and paid seats released for payout
-(`gigs:release`). Each writes a JobRun row with a summary; the operator's page calls a job overdue by
+statistics (`bank:stats`), session reminders (`gigs:remind`), paid seats released for payout
+(`gigs:release`) and library due reminders (`library:remind`). Each writes a JobRun row with a summary; the operator's page calls a job overdue by
 its own schedule.
 
 **Transports.** Email, SMS, WhatsApp, push and the fee gateway each sit behind an env-selected
@@ -125,10 +125,10 @@ cd apps/mobile && npx expo start --web   # phone's web target on :8081, needs th
 The verification chain a change is expected to pass, in order:
 
 1. `npm run typecheck`, scripts tsc, `eslint .`
-2. `npx vitest run` (2,398 tests in 196 files at this commit; two audit suites are gated behind `DATA_AUDIT=1`)
+2. `npx vitest run` (3,631 tests in 332 files on 5 October 2026, 68 skipped; two audit suites are gated behind `DATA_AUDIT=1`)
 3. `npm run rls:verify` after any schema or policy change; `npm run api:docs` after any catalog or contract change
-4. `npm run i18n -- --max 163` (the count of hardcoded English; a job name counts as a string)
-5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,023 tests with coverage and the gates, Maestro check)
+4. `npm run i18n -- --max 113` (the count of hardcoded English; a job name counts as a string)
+5. Phone: `npm run battery` in `apps/mobile` (tsc, eslint, jest 1,736 tests in 216 suites on 5 October 2026 with coverage and the gates, Maestro check)
 6. `npm run sweep` (593 page loads by role) and `npm run api:sweep` (2,335 calls, every role against every door; run twice, the first warms the dev server). `--cross=school` and `--cross=person` are the tenant-isolation probes.
 7. `npm run build` with the dev server stopped, then `rm -rf .next`
 8. `npm run data:audit` when derived data or fixtures change (47 checks against the demo schools and ZZ Northgate)
@@ -147,7 +147,7 @@ notices it caused its actors, so a run leaves the fixtures as it found them.
 - Every feature above is built and its verification is green on the local battery at `ff57b2d`.
 - **CI has not run since 84cc987.** The reborn-digitech Actions runner is refused on billing. Every
   commit since has been verified locally only. `.github/workflows/battery.yml` is the CI definition;
-  `I18N_FLOOR` there is 163.
+  `I18N_FLOOR` there is 113.
 - **Never exercised**: the phone on a real device (only the web target and jest); Microsoft SSO
   against a live tenant; any live Twilio or Razorpay account; the after-response magic-link send in a
   real request; the jobs through cron rather than by function.

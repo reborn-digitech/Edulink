@@ -132,6 +132,29 @@ describe("the private screens", () => {
     expect(native).toMatch(/from "expo-screen-capture"/);
     expect(read("src/lib/private-screen.ts")).not.toMatch(/expo-screen-capture/);
   });
+
+  it("include the college's and the modules' sensitive screens (A3-S-12, audit of 5 Oct 2026)", () => {
+    // A student's ledger and no-dues, the anti-ragging register, the exam squad's malpractice cases,
+    // the hostel's boarders, leave and visitors, and the college's alumni additions.
+    const body = (file: string, fn: string) => {
+      const text = read(file);
+      const start = text.indexOf(`export function ${fn}(`);
+      expect({ file, fn, found: start >= 0 }).toEqual({ file, fn, found: true });
+      const next = text.indexOf("\nexport function ", start + 1);
+      return text.slice(start, next < 0 ? undefined : next);
+    };
+    const screens: [string, string][] = [
+      ["src/screens/college-office/lookup.tsx", "AccountsLookupScreen"],
+      ["src/screens/college/duties.tsx", "AntiRaggingScreen"],
+      ["src/screens/college/duty-desks.tsx", "ExamSquadScreen"],
+      ["src/screens/hostel/warden.tsx", "WardenHome"],
+      ["src/screens/alumni/college.tsx", "AlumniCollegeScreen"],
+    ];
+    for (const [file, fn] of screens) {
+      expect({ file, imports: /from "@\/lib\/private-screen"/.test(read(file)) }).toEqual({ file, imports: true });
+      expect({ file, fn, guarded: /usePrivateScreen\(\)/.test(body(file, fn)) }).toEqual({ file, fn, guarded: true });
+    }
+  });
 });
 
 describe("an altered phone", () => {

@@ -8,10 +8,11 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createSession, getSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
-import { checkIdCode, idCardFor } from "@/lib/id-card";
+import { cardOrigin, checkIdCode, idCardFor, idCheckView } from "@/lib/id-card";
+import { CODE_LOOKUPS } from "@/lib/rate-limit";
 import { renderIdCardPdf } from "@/lib/id-card-pdf";
 import { translator } from "@/lib/i18n/dictionary";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { studentJoinSchema } from "@/lib/validation";
 import { AVATAR_PRESETS } from "@/components/ui/avatar";
@@ -66,7 +67,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
-  await db.rateLimit.deleteMany({ where: { bucket: { in: ids.users.map((u) => `pdf:${u}`) } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { in: ids.users.flatMap((u) => [`pdf:${u}`, `idcheck:${u}`]) } } });
   await db.session.deleteMany({ where: { userId: { in: ids.users } } });
   await db.auditLog.deleteMany({ where: { schoolId: { in: [ids.school, ids.college] } } });
   await db.school.deleteMany({ where: { id: { in: [ids.school, ids.college] } } });
@@ -75,10 +76,11 @@ afterAll(async () => {
 });
 
 describe("the identity card", () => {
-  it("carries the name, class, code and year, and a QR with nothing but the code's check", async () => {
+  it("carries the name, class and year, and a QR with nothing but the card's own check", async () => {
     const pupil = await as(ids.pupilUser, ids.school, "STUDENT");
     const card = await idCardFor(pupil);
-    expect(card).toMatchObject({ name: "ZZ Card Pupil", group: "ZZ Grade 6 A", studentCode: `ZZC-${SUFFIX}-01`, prn: null, year: "2026–27", validUntil: "2027-04-30", checkPath: `/id-check?c=ZZC-${SUFFIX}-01` });
+    expect(card).toMatchObject({ name: "ZZ Card Pupil", group: "ZZ Grade 6 A", prn: null, year: "2026–27", validUntil: "2027-04-30" });
+    expect(card.checkPath).toMatch(new RegExp(`^/id-check\\?c=${ids.pupil}\\.[A-Za-z0-9_-]{16}$`));
     expect(JSON.stringify(card)).not.toMatch(/2014-03-01|birth/i);
     const pdf = await renderIdCardPdf(card, translator("mr"), "http://localhost", "mr");
     expect(pdf.subarray(0, 4).toString()).toBe("%PDF");
@@ -94,7 +96,7 @@ describe("the identity card", () => {
     const adultParent = await as(ids.adultParent, null, "PARENT");
     await expect(idCardFor(adultParent, ids.adult)).rejects.toMatchObject({ key: "consent.refuseNotGranted" });
     const admin = await as(ids.admin, ids.school, "ADMIN");
-    expect((await idCardFor(admin, ids.other)).studentCode).toBe(`ZZC-${SUFFIX}-02`);
+    expect((await idCardFor(admin, ids.other)).name).toBe("ZZ Card Other Pupil");
     // The office cannot print another school's student.
     await expect(idCardFor(admin, ids.adult)).rejects.toMatchObject({ code: "NOT_FOUND" });
   });
@@ -129,6 +131,49 @@ describe("the gate's check of a scanned card", () => {
     // The college's student, scanned at the school: not found, as a made-up code is.
     expect(await checkIdCode(teacher, `ZZC-${SUFFIX}-09`)).toMatchObject({ found: false, name: null });
     expect(await checkIdCode(teacher, "ZZ-MADE-UP")).toMatchObject({ found: false });
+  });
+});
+
+describe("the card's own identifier and the /id-check page (A3-S-6)", () => {
+  it("prints and encodes no guardian-claim code, and its QR is checked at the school that issued it", async () => {
+    const card = await idCardFor(await as(ids.admin, ids.school, "ADMIN"), ids.pupil);
+    expect(card).not.toHaveProperty("studentCode");
+    expect(JSON.stringify(card)).not.toContain(`ZZC-${SUFFIX}-01`);
+    const token = decodeURIComponent(card.checkPath!.split("?c=")[1]!);
+    const teacher = await as(ids.teacher, ids.school, "TEACHER");
+    expect(await checkIdCode(teacher, token)).toMatchObject({ found: true, onRoll: true, name: "ZZ Card Pupil", group: "ZZ Grade 6 A" });
+    // A changed signature, or another student's id under this one's signature, reads nothing.
+    const [id, sig] = token.split(".") as [string, string];
+    expect(await checkIdCode(teacher, `${id}.${sig.startsWith("A") ? "B" : "A"}${sig.slice(1)}`)).toMatchObject({ found: false });
+    expect(await checkIdCode(teacher, `${ids.other}.${sig}`)).toMatchObject({ found: false });
+  });
+
+  it("points the QR at the configured app address, not the request's host", () => {
+    const before = process.env.NEXT_PUBLIC_APP_URL;
+    process.env.NEXT_PUBLIC_APP_URL = "https://app.example.test/";
+    try {
+      expect(cardOrigin("http://evil.example.test/api/v1/id-cards/pdf")).toBe("https://app.example.test");
+    } finally {
+      if (before === undefined) delete process.env.NEXT_PUBLIC_APP_URL;
+      else process.env.NEXT_PUBLIC_APP_URL = before;
+    }
+  });
+
+  it("is a page that asks a signed-out reader to sign in, tells a family it is the staff's, and shows staff the student", async () => {
+    expect(existsSync(join(process.cwd(), "src/app/id-check/page.tsx"))).toBe(true);
+    const card = await idCardFor(await as(ids.admin, ids.school, "ADMIN"), ids.pupil);
+    const token = decodeURIComponent(card.checkPath!.split("?c=")[1]!);
+    expect(await idCheckView(null, token)).toEqual({ state: "signIn" });
+    expect(await idCheckView(await as(ids.parent, null, "PARENT"), token)).toEqual({ state: "staffOnly" });
+    expect(await idCheckView(await as(ids.teacher, ids.school, "TEACHER"), "")).toEqual({ state: "noCode" });
+    expect(await idCheckView(await as(ids.teacher, ids.school, "TEACHER"), token)).toMatchObject({ state: "result", check: { found: true, name: "ZZ Card Pupil" } });
+  });
+
+  it("counts the check per person like the other look-ups, at the door and on the page", async () => {
+    await db.rateLimit.upsert({ where: { bucket: `idcheck:${ids.principal}` }, create: { bucket: `idcheck:${ids.principal}`, hits: CODE_LOOKUPS.limit, windowEndsAt: new Date(Date.now() + 600_000) }, update: { hits: CODE_LOOKUPS.limit, windowEndsAt: new Date(Date.now() + 600_000) } });
+    const principal = await as(ids.principal, ids.school, "PRINCIPAL");
+    expect((await checkGet(new Request(`http://localhost/api/v1/id-cards/check?c=ZZC-${SUFFIX}-01`))).status).toBe(429);
+    expect(await idCheckView(principal, `ZZC-${SUFFIX}-01`)).toEqual({ state: "busy" });
   });
 });
 

@@ -7,6 +7,7 @@ import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { assertCollege, assertModuleOn } from "./modules";
 import { isDateKey, todayKey } from "./dates";
+import { paidOnSeat } from "./college-admissions";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -69,9 +70,11 @@ export async function askRefundException(ctx: ActiveContext, applicationId: stri
   const me = caller(ctx, OFFICE);
   await assertCollege(me.schoolId);
   await assertModuleOn(me.schoolId, "ADMISSIONS");
-  const a = await db.collegeApplication.findFirst({ where: { id: applicationId, schoolId: me.schoolId }, select: { id: true, status: true, applicantName: true, refundPaise: true, refundAskStatus: true } });
+  const a = await db.collegeApplication.findFirst({ where: { id: applicationId, schoolId: me.schoolId }, select: { id: true, status: true, applicantName: true, refundPaise: true, refundAskStatus: true, admittedMembershipId: true, admissionFeePaidAt: true, admissionFeePaise: true } });
   if (!a) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
   if (a.status !== "CANCELLED") throw new AccessError("collegeDesks.refuseRefundNotCancelled");
+  // Never more than was paid on the seat (A3-S-15): the slab's refund is bounded by it, and so is the exception.
+  if (input.refundPaise > (await paidOnSeat(me.schoolId, a)).paidPaise) throw new AccessError("collegeDesks.refuseRefundTooMuch");
   if (a.refundAskStatus === "ASKED") throw new AccessError("collegeDesks.refuseRefundAlreadyAsked");
   if (a.refundAskStatus === "APPROVED") throw new AccessError("collegeDesks.refuseRefundDecided");
   if (input.refundPaise === (a.refundPaise ?? 0)) throw new AccessError("collegeDesks.refuseRefundSameAsSlab");
@@ -88,6 +91,8 @@ export async function askRefundException(ctx: ActiveContext, applicationId: stri
 export async function decideRefundException(ctx: ActiveContext, applicationId: string, input: { approve: boolean; note: string }, now: Date = new Date()): Promise<void> {
   const me = caller(ctx, HEAD);
   await assertCollege(me.schoolId);
+  // The door's module, on the web action's path too (A3-S-15): the catalog's gate answers the API, this answers both.
+  await assertModuleOn(me.schoolId, "ADMISSIONS");
   const a = await db.collegeApplication.findFirst({ where: { id: applicationId, schoolId: me.schoolId }, select: { id: true, status: true, applicantName: true, refundPaise: true, refundAskPaise: true, refundAskStatus: true, refundAskedByUserId: true } });
   if (!a || !a.refundAskStatus) throw new AccessError("collegeOffice.notFound", "NOT_FOUND");
   // FOUR EYES (A3-S-4, 5 Oct 2026): one person holding ADMIN and PRINCIPAL asked as the office and approved as the head.

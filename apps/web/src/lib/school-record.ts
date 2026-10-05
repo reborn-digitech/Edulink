@@ -59,6 +59,7 @@ type TenantTx = {
   membership: { update(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
   guardianship: { updateMany(args: unknown): Promise<unknown> };
+  feeDemand: { updateMany(args: unknown): Promise<{ count: number }> };
 };
 
 export const LEAVING_REASONS = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
@@ -225,6 +226,7 @@ export async function recordDeparture(
   // transaction that nothing has bound `app.school_ids` on, so every statement
   // inside it is refused by the policy — and refused in the silent direction,
   // as zero rows rather than an error. See db.ts.
+  let cancelledDemands = 0;
   const record = await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
     // A live record from an earlier stay — one written before readmission
@@ -285,6 +287,17 @@ export async function recordDeparture(
       data: { status: "REMOVED", removedAt: leftAt },
     });
 
+    // FEES AFTER THE LAST DAY (A3-journeys-15, audit of 5 October 2026). An instalment falling due after the pupil's
+    // last day, with nothing paid against it, is CANCELLED: the row stays on the ledger (the office can see what was
+    // demanded and when it stopped), the dues list, the reminders and the family's "outstanding" stop chasing it.
+    // One with money against it (PART) is the office's to settle by refund or concession, and is left as it stands.
+    // Its count goes in the audit row below.
+    const afterLastDay = await t.feeDemand.updateMany({
+      where: { schoolId, studentMembershipId: membership.id, status: "OPEN", paidPaise: 0, dueDate: { gt: new Date(`${leftOnKey}T00:00:00.000Z`) }, allocations: { none: {} } },
+      data: { status: "CANCELLED" },
+    });
+    cancelledDemands = afterLastDay.count;
+
     // The school's stand-in guardianship (see standin-guardian.ts) ends with
     // the membership: a teacher holds guardian rights over a pupil they teach,
     // never over an alumnus. A REAL parent's guardianship is deliberately NOT
@@ -306,7 +319,7 @@ export async function recordDeparture(
     targetId: membership.id,
     // The reason is one of LEAVING_REASONS; the destination is free text the
     // office typed and stays on the record, not in the log the whole office reads.
-    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null },
+    meta: { recordId: record.id, reason: input.reason, hasDestination: destination !== null, cancelledDemands },
   });
 
   /**

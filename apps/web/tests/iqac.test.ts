@@ -43,6 +43,7 @@ import { POST as actPost } from "@/app/api/v1/iqac/grievances/[grievanceId]/rout
 import { GET as filingsGet, POST as filingsPost } from "@/app/api/v1/iqac/filings/route";
 import { POST as submitPost } from "@/app/api/v1/iqac/filings/[filingId]/submit/route";
 import { POST as signoffPost } from "@/app/api/v1/iqac/filings/[filingId]/signoff/route";
+import { POST as filedPost } from "@/app/api/v1/iqac/filings/[filingId]/filed/route";
 import { POST as disclosurePost } from "@/app/api/v1/iqac/disclosure/route";
 import { GET as overviewGet } from "@/app/api/v1/iqac/overview/route";
 import { GET as evidenceGet } from "@/app/api/v1/iqac/evidence/route";
@@ -292,6 +293,34 @@ describe("the filings", () => {
     expect((await signoffPost(json("/x", { decision: "RETURN" }), params({ filingId: f.id }))).status).toBe(422);
     expect((await signoffPost(json("/x", { decision: "SIGN", note: "ZZ Approved." }), params({ filingId: f.id }))).status).toBe(200);
     expect((await db.collegeFiling.findUniqueOrThrow({ where: { id: f.id }, select: { status: true } })).status).toBe("SIGNED_OFF");
+  });
+
+  it("refuses a second AQAR for a year already filed unless asked again, and sends nothing to the principal at a college with none (A3-journeys-35, A3-journeys-36)", async () => {
+    await as(ids.iqac, ids.quill, "IQAC");
+    const year = new Date().getUTCFullYear() - 1;
+    const label = `${year}-${String((year + 1) % 100).padStart(2, "0")}`;
+    const signed = await db.collegeFiling.findFirstOrThrow({ where: { schoolId: ids.quill, kind: "AQAR", year, status: "SIGNED_OFF" }, select: { id: true } });
+    expect((await filedPost(json("/x", { fileId: null }), params({ filingId: signed.id }))).status).toBe(200);
+    // Generating that year's AQAR again is refused with the warning, and makes nothing.
+    const again = await filingsPost(json("/api/v1/iqac/filings", { kind: "AQAR", year, cycleId: ids.cycle }));
+    expect(again.status).toBe(409);
+    expect((await body(again)).error).toBe(`This filing for ${label} is already filed. To make another, tick “Make it again” and generate.`);
+    expect(await db.collegeFiling.count({ where: { schoolId: ids.quill, kind: "AQAR", year } })).toBe(1);
+    // Asked again, it is made, as a draft beside the filed one.
+    expect((await filingsPost(json("/api/v1/iqac/filings", { kind: "AQAR", year, cycleId: ids.cycle, again: true }))).status).toBe(200);
+    const draft = await db.collegeFiling.findFirstOrThrow({ where: { schoolId: ids.quill, kind: "AQAR", year, status: "DRAFT" }, select: { id: true } });
+    // With no principal on the roll, "send to the principal" is refused and the draft stays a draft.
+    const principal = await db.membership.findFirstOrThrow({ where: { schoolId: ids.quill, role: "PRINCIPAL" }, select: { id: true } });
+    await db.membership.update({ where: { id: principal.id }, data: { leftAt: new Date() } });
+    try {
+      const sent = await submitPost(json("/x", {}), params({ filingId: draft.id }));
+      expect(sent.status).toBe(409);
+      expect((await body(sent)).error).toBe("This college has no principal to sign it off. Add the principal first.");
+      expect((await db.collegeFiling.findUniqueOrThrow({ where: { id: draft.id }, select: { status: true } })).status).toBe("DRAFT");
+    } finally {
+      await db.membership.update({ where: { id: principal.id }, data: { leftAt: null } });
+    }
+    expect((await submitPost(json("/x", {}), params({ filingId: draft.id }))).status).toBe(200);
   });
 
   it("a past year's filing reads the same figures when it is built again years later (LIFECYCLE-8)", async () => {

@@ -286,7 +286,7 @@ export async function listFilings(ctx: ActiveContext) {
   return { items: rows.map(filingView), canGenerate: desk.role === "IQAC" || desk.role === "ADMIN", canSignOff: desk.role === "PRINCIPAL" };
 }
 
-export async function generateFiling(ctx: ActiveContext, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null }) {
+export async function generateFiling(ctx: ActiveContext, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null; again?: boolean }) {
   const desk = await iqacActor(ctx, ["IQAC", "ADMIN"]);
   await generateFilingAs(desk, input);
   return listFilings(ctx);
@@ -299,12 +299,14 @@ export async function generateFiling(ctx: ActiveContext, input: { kind: CollegeF
  * in place (its id kept), and one with the principal, signed off or filed is
  * not made again (409).
  */
-export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null }): Promise<string> {
+export async function generateFilingAs(desk: Desk, input: { kind: CollegeFilingKind; year: number; cycleId: string | null; departmentId?: string | null; again?: boolean }): Promise<string> {
   const { assertFilingApplies, nbaDepartments } = await import("./council-filings");
   await assertFilingApplies(desk.schoolId, input.kind);
   if (input.cycleId && !(await db.accreditationCycle.findFirst({ where: { id: input.cycleId, schoolId: desk.schoolId }, select: { id: true } }))) throw new AccessError("iqac.refuseNoCycle", "NOT_FOUND");
   const departmentId = input.kind === "NBA_SAR" ? (input.departmentId ?? null) : null;
   if (input.kind === "NBA_SAR" && (!departmentId || !(await nbaDepartments(desk.schoolId)).some((d) => d.id === departmentId))) throw new RuleRefusal("councilFilings.refuseDepartment", 422, undefined, "departmentId");
+  // A year already filed is not made again by accident (A3-journeys-35): a second draft beside the filed one only when asked.
+  if (!departmentId && !input.again && (await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: input.kind, year: input.year, status: "FILED" }, select: { id: true } }))) throw new RuleRefusal("iqac.refuseFiledAgain", 409, { year: yearLabel(input.year) }, "again");
   const built = await buildFiling(desk.schoolId, input.kind, input.year, input.cycleId, departmentId);
   const data = { cycleId: input.cycleId, format: built.format, body: built.body, hash: iqacHash(built.body), figuresJson: JSON.stringify(built.figures), generatedByUserId: desk.userId };
   const sar = departmentId ? await db.collegeFiling.findFirst({ where: { schoolId: desk.schoolId, kind: "NBA_SAR", year: input.year, departmentId }, orderBy: { generatedAt: "desc" }, select: { id: true, status: true } }) : null;
@@ -335,9 +337,11 @@ export async function submitFiling(ctx: ActiveContext, filingId: string) {
   if (!f) throw new AccessError("iqac.refuseNoItem", "NOT_FOUND");
   if (!SIGNED_FILINGS.includes(f.kind as CollegeFilingKind)) throw new RuleRefusal("iqac.refuseNoSignoff", 422);
   if (f.status !== "DRAFT" && f.status !== "RETURNED") return listFilings(ctx);
+  // Nobody to sign it off, nothing is sent (A3-journeys-36): it would wait in AWAITING_SIGNOFF for no one.
+  const heads = await db.membership.findMany({ where: { schoolId: desk.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
+  if (heads.length === 0) throw new RuleRefusal("iqac.refuseNoPrincipal", 409);
   await db.collegeFiling.update({ where: { id: f.id }, data: { status: "AWAITING_SIGNOFF", submittedAt: new Date() } });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.filing.submit", targetType: "CollegeFiling", targetId: f.id, meta: { kind: f.kind } });
-  const heads = await db.membership.findMany({ where: { schoolId: desk.schoolId, role: "PRINCIPAL", status: "ACTIVE", leftAt: null }, select: { userId: true } });
   for (const h of heads) await notify({ userId: h.userId, schoolId: desk.schoolId, kind: "SYSTEM", titleKey: "iqac.notifySignoffTitle", bodyKey: "iqac.notifySignoffBody", bodyVars: { kind: f.kind }, url: "/principal/accreditation" });
   return listFilings(ctx);
 }

@@ -22,7 +22,7 @@ import { recordCounterPayment } from "./fees-payments";
 import { dateToDay } from "./fees";
 import { assertGuardianAccess } from "./tenancy";
 import { parentMaySee } from "./student-consent";
-import { claimReceivable, expectedShare } from "./college-fees";
+import { claimReceivable, eligibleGrossPaise, expectedShare } from "./college-fees";
 import { collegeDesk, collegeStudent, MONEY_READ, MONEY_WRITE, nameOf, rupeesCell, standingOf, yearKeyOf } from "./college-office";
 import type { ActiveContext } from "./session";
 import type { Translate, TranslationKey } from "./i18n/dictionary";
@@ -144,6 +144,20 @@ async function tellReverted(schoolId: string, studentMembershipId: string, userI
   }
 }
 
+/**
+ * THE MOST A SANCTION MAY BE (A3-journeys-9, audit of 5 October 2026): the fees the claim covers — the student's
+ * tuition, development and exam fees for the claim's year, net of concessions (`eligibleGrossPaise`, the base
+ * `expectedShare` takes its percentage of) — or the claim's own expected figure when the office recorded a larger
+ * one. A ₹99,999 sanction on a ₹15,750 claim was accepted and lifted "Owed by the state" above the college's whole
+ * outstanding; a fee scholarship cannot pay more than the fees, and the disbursement inherits the bound.
+ */
+export async function sanctionCeiling(schoolId: string, c: { studentMembershipId: string; academicYear: string; expectedPaise: number }): Promise<number> {
+  const years = await db.academicYear.findMany({ where: { schoolId }, select: { id: true, startDate: true } });
+  const year = years.find((y) => yearKeyOf(y.startDate) === c.academicYear);
+  const fees = year ? await eligibleGrossPaise(schoolId, c.studentMembershipId, year.id) : 0;
+  return Math.max(c.expectedPaise, fees);
+}
+
 export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update): Promise<ScholarshipClaimView> {
   const d = await desk(ctx);
   const c = await db.scholarshipClaim.findFirst({ where: { id: claimId, schoolId: d.schoolId }, include: { student: { select: { userId: true, user: { select: { name: true, preferredName: true } } } } } });
@@ -161,6 +175,7 @@ export async function updateClaim(ctx: ActiveContext, claimId: string, u: Update
     case "SANCTION":
       if (c.status === "SANCTIONED" && c.sanctionedPaise === u.amountPaise) return claimView(c, name);
       if (c.status !== "APPLIED" && c.status !== "SANCTIONED") throw new AccessError("collegeOffice.refuseClaimStep");
+      if (u.amountPaise > (await sanctionCeiling(d.schoolId, c))) throw new AccessError("collegeOffice.refuseSanctionTooMuch");
       data = { status: "SANCTIONED", sanctionedPaise: u.amountPaise, sanctionedAt: day(u.on) };
       break;
     case "DISBURSE": {

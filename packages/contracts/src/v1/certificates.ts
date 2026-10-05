@@ -614,5 +614,6 @@ export type PenLookup = z.infer<typeof penLookupSchema>;
  * roll. GET /api/v1/id-cards/check?c= — the gate's read of a scanned card's code at the checker's own school.
  */
 export const idCardPdfQuerySchema = z.object({ student: z.string().min(1).max(64).optional() });
-export const idCardCheckQuerySchema = z.object({ c: z.string().trim().min(1).max(40) });
+/** `c` is what a card's QR carries: its signed identifier (`<membershipId>.<signature>`, A3-S-6), or a code typed from a card printed before. */
+export const idCardCheckQuerySchema = z.object({ c: z.string().trim().min(1).max(80) });
 export const idCardCheckSchema = z.object({ found: z.boolean(), onRoll: z.boolean(), name: z.string().nullable(), group: z.string().nullable(), studentCode: z.string(), photoFileId: z.string().nullable(), schoolName: z.string().nullable() });

@@ -248,6 +248,17 @@ export function claimReceivable(c: { status: string; expectedPaise: number; sanc
 }
 
 /**
+ * The figure a claim's line shows beside its status (A3-journeys-39): what the state paid once DISBURSED, what was
+ * sanctioned once SANCTIONED, what is still expected otherwise (a lapsed or rejected claim: nothing). The
+ * receivable alone read ₹0 for a disbursed claim — true of the receivable, wrong as the claim's amount.
+ */
+export function claimShownPaise(c: { status: string; expectedPaise?: number | null; receivablePaise?: number; sanctionedPaise: number | null; disbursedPaise: number | null }): number {
+  if (c.status === "DISBURSED") return c.disbursedPaise ?? 0;
+  if (c.status === "SANCTIONED") return c.sanctionedPaise ?? 0;
+  return c.expectedPaise ?? c.receivablePaise ?? 0;
+}
+
+/**
  * THE STUDENT'S LEDGER FOR A YEAR (the function other builders read): each
  * demand with the scholarship receivable set against it (the claims'
  * receivable, spread over the open demands in due order, never more than a

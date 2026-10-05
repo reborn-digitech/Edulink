@@ -28,9 +28,10 @@ import type { Role } from "./constants";
  *                  log — a write-off at the lab, through inventory.ts's one
  *                  writer of the stock.
  *   RESEARCH_DEAN  the college's whole research register (the IQAC's
- *                  ResearchItem) and each teacher's API-score inputs as the
- *                  office keeps them on the faculty record — read only; the
- *                  office stays the one writer of FacultyRecord.
+ *                  ResearchItem) and each teacher's counts — read only. The
+ *                  API-score inputs the office keeps on the faculty record
+ *                  are appraisal input: the office and the head read them
+ *                  here, the duty's holder does not (A3-S-11).
  *   EXAM_SQUAD     the papers being sat and about to be, their halls, the
  *                  squad's visits (ExamSquadVisit, written by a squad member)
  *                  and the cases of unfair means the exam cell has entered;
@@ -113,6 +114,9 @@ export async function researchDesk(ctx: ActiveContext): Promise<ResearchDesk> {
     db.facultyRecord.findMany({ where: { schoolId: c.schoolId }, select: { membershipId: true, apiScoreJson: true } }),
   ]);
   const apiBy = new Map(records.map((r) => [r.membershipId, apiInputsOf(r.apiScoreJson)]));
+  // A teacher's API score is appraisal input (A3-S-11): the office and the head read it; a member holding the duty
+  // reads the counts and the register only.
+  const detail = !c.holder;
   const perFaculty = teachers
     .map((t) => {
       const mine = items.filter((i) => i.facultyMembershipId === t.id);
@@ -124,11 +128,11 @@ export async function researchDesk(ctx: ActiveContext): Promise<ResearchDesk> {
         books: mine.filter((i) => i.kind === "BOOK" || i.kind === "CONFERENCE").length,
         projects: mine.filter((i) => i.kind === "PROJECT" || i.kind === "CONSULTANCY" || i.kind === "SEED_MONEY").length,
         amountLakhs: round2(mine.reduce((a, i) => a + (i.amountLakhs ?? 0), 0)),
-        apiScoreInputs: inputs,
-        apiScore: round2(inputs.teaching + inputs.research + inputs.service),
+        apiScoreInputs: detail ? inputs : null,
+        apiScore: detail ? round2(inputs.teaching + inputs.research + inputs.service) : null,
       };
     })
-    .sort((a, b) => b.apiScore - a.apiScore || a.name.localeCompare(b.name));
+    .sort((a, b) => (b.apiScore ?? 0) - (a.apiScore ?? 0) || b.publications + b.projects - (a.publications + a.projects) || a.name.localeCompare(b.name));
   const years = [...new Set(items.map((i) => i.year))].sort((a, b) => b - a);
   return {
     items: items.map((i) => ({ id: i.id, kind: i.kind, title: i.title, indexing: i.indexing, year: i.year, amountLakhs: i.amountLakhs, facultyName: i.faculty ? nameOf(i.faculty.user) : null })),

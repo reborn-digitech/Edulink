@@ -547,8 +547,10 @@ export const internshipProposeSchema = z.object({
   supervisorName: text(120).min(2),
 });
 export type InternshipPropose = z.infer<typeof internshipProposeSchema>;
+/** The most hours one day of the diary holds, all its entries together (the library refuses past it, A3-journeys-22). */
+export const INTERNSHIP_DIARY_DAY_HOURS = 16;
 /** POST /api/v1/student/internships/{id}/diary */
-export const internshipDiarySchema = z.object({ on: dateKey, hours: z.number().min(0.5).max(16), text: text(2000).min(3) });
+export const internshipDiarySchema = z.object({ on: dateKey, hours: z.number().min(0.5).max(INTERNSHIP_DIARY_DAY_HOURS), text: text(2000).min(3) });
 /** POST /api/v1/student/internships/{id}/files — the report, or a parent's declaration for a family business, by upload ticket. */
 export const internshipFileSchema = z.object({ kind: z.enum(["REPORT", "DECLARATION"]), fileId: z.string().max(200) });
 /** POST /api/v1/placement/internships/{id}/decide — the cell or the HOD approves (naming the supervising faculty) or refuses. */

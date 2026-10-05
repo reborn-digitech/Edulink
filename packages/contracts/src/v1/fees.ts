@@ -359,7 +359,8 @@ export const feeReceiptSchema = z.object({
   refundedPaise: paise,
   snapshot: z.object({
     school: z.object({ name: z.string(), addressLine: z.string().nullable(), city: z.string().nullable(), contactPhone: z.string().nullable(), bankNote: z.string().nullable() }),
-    pupil: z.object({ name: z.string(), studentCode: z.string().nullable(), className: z.string().nullable(), gradeLevel: z.string().nullable() }),
+    // admissionNumber: the school's own register (GR) number, frozen with the receipt (5 Oct 2026); absent on receipts written before.
+    pupil: z.object({ name: z.string(), studentCode: z.string().nullable(), admissionNumber: z.string().nullable().optional(), className: z.string().nullable(), gradeLevel: z.string().nullable() }),
     payment: z.object({ amountPaise: paise, method: z.string(), reference: z.string().nullable(), gatewayMethod: z.string().nullable(), paidAt: iso, collectedBy: z.string().nullable(), note: z.string().nullable() }),
     year: z.string(),
     lines: z.array(z.object({ demandLabel: z.string(), head: z.string(), code: z.string(), amountPaise: paise })),
@@ -374,7 +375,8 @@ export type FeeReceipt = z.infer<typeof feeReceiptSchema>;
 
 export const familyFeesQuerySchema = z.object({ childId: id.optional() });
 export const familyFeesSchema = z.object({
-  children: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), schoolId: z.string(), schoolName: z.string() })),
+  // `leftAt`: a child who has left the school stays in the list, labelled (A3-journeys-15); absent from an older server.
+  children: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), schoolId: z.string(), schoolName: z.string(), leftAt: isoOrNull.default(null) })),
   child: z
     .object({
       studentMembershipId: z.string(),

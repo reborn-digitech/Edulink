@@ -156,7 +156,17 @@ export async function buildCollegeExams(db: PrismaClient): Promise<{ published: 
     }
   }
   // cstudent03 asked for CHE201 to be revalued: unchanged.
-  await db.revaluation.upsert({ where: { id: F.revaluation }, create: { id: F.revaluation, schoolId: s, sessionId: F.pastSession, courseId: pastCourses[1]!, studentMembershipId: st3.id, kind: "REVAL", feePaise: 40000, status: "DECIDED", outcome: "UNCHANGED", oldExternalMilli: 15000, newExternalMilli: null, decidedByUserId: ctrl.userId, decidedAt: new Date("2026-05-28T06:00:00Z") }, update: { status: "DECIDED", outcome: "UNCHANGED" } });
+  // Its ₹400 fee carries its demand, as askRevaluation raises it (A3-journeys-10: the fixture's own had none).
+  // Found again by its label on a rerun, so the run stays idempotent; OPEN, as nothing records a payment here.
+  const revalYear = await db.academicYear.findFirst({ where: { schoolId: s, isCurrent: true }, orderBy: { startDate: "desc" }, select: { id: true } });
+  const che = course.get(pastCourses[1]!)!;
+  const revalLabel = `Revaluation fee: ${che.code}, ${past.name}`;
+  const revalHead = await db.feeHead.findUniqueOrThrow({ where: { id: feeHeadId }, select: { id: true, code: true, name: true } });
+  const revalDemand = revalYear
+    ? ((await db.feeDemand.findFirst({ where: { schoolId: s, studentMembershipId: st3.id, label: revalLabel }, select: { id: true } })) ??
+      (await db.feeDemand.create({ data: { schoolId: s, studentMembershipId: st3.id, academicYearId: revalYear.id, instalmentId: null, label: revalLabel, dueDate: new Date("2026-05-27T00:00:00Z"), grossPaise: 40000, concessionPaise: 0, netPaise: 40000, linesJson: JSON.stringify([{ headId: revalHead.id, code: revalHead.code, name: revalHead.name, grossPaise: 40000, concessionPaise: 0 }]), status: "OPEN" }, select: { id: true } })))
+    : null;
+  await db.revaluation.upsert({ where: { id: F.revaluation }, create: { id: F.revaluation, schoolId: s, sessionId: F.pastSession, courseId: pastCourses[1]!, studentMembershipId: st3.id, kind: "REVAL", feePaise: 40000, feeDemandId: revalDemand?.id ?? null, status: "DECIDED", outcome: "UNCHANGED", oldExternalMilli: 15000, newExternalMilli: null, decidedByUserId: ctrl.userId, decidedAt: new Date("2026-05-28T06:00:00Z") }, update: { status: "DECIDED", outcome: "UNCHANGED", ...(revalDemand ? { feeDemandId: revalDemand.id } : {}) } });
   // cstudent02's grade card, numbered and checkable.
   const year = await db.academicYear.findFirst({ where: { schoolId: s, isCurrent: true }, select: { name: true } });
   const c2 = computed[1]!;

@@ -3,6 +3,7 @@ import { cache } from "react";
 import { DUTIES, isCollegeKind, isDutyRole, parseDuties, type DutyCode, type MemberDuties } from "@edulink/contracts";
 import { db } from "./db";
 import { audit } from "./audit";
+import { notify } from "./notify";
 import { AccessError, NotACollegeError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
 import type { ActiveContext } from "./session";
@@ -62,7 +63,7 @@ export async function setDuties(ctx: ActiveContext, membershipId: string, duties
   if (ctx.role !== "ADMIN") throw new AccessError("access.wrongRoleForThisAction");
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { kind: true } });
   if (!isCollegeKind(school.kind)) throw new NotACollegeError("duties.refuseNotACollege");
-  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null }, select: { id: true, role: true, dutiesJson: true } });
+  const member = await db.membership.findFirst({ where: { id: membershipId, schoolId: ctx.schoolId, status: "ACTIVE", leftAt: null }, select: { id: true, userId: true, role: true, dutiesJson: true } });
   if (!member) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   if (!isDutyRole(member.role)) throw new RuleRefusal("duties.refuseNotTeacher", 422, undefined, "duties");
   const offered = await offeredDuties(ctx.schoolId);
@@ -78,5 +79,10 @@ export async function setDuties(ctx: ActiveContext, membershipId: string, duties
   if (before.length === next.length && before.every((d, i) => d === next[i])) return answer;
   await db.membership.update({ where: { id: member.id }, data: { dutiesJson: JSON.stringify(next) } });
   await audit({ schoolId: ctx.schoolId, actorUserId: ctx.user.id, action: "people.duties.set", targetType: "Membership", targetId: member.id, meta: { from: before, to: next } });
+  // The teacher is told of each duty newly given, in their own language: the duty's name and a fixed
+  // sentence (from A3-journeys-40). One held already, or taken away, tells nobody.
+  const given = next.filter((d) => !before.includes(d));
+  const home = member.role === "HOD" ? "/hod" : "/faculty";
+  await Promise.all(given.map((d) => notify({ userId: member.userId, schoolId: ctx.schoolId, kind: "SYSTEM", titleKey: `duties.${d}.name`, bodyKey: "duties.notifyGivenBody", url: home })));
   return answer;
 }

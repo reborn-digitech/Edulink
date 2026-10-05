@@ -11,6 +11,7 @@ import {
 } from "@edulink/contracts";
 import type { z } from "zod";
 import type { labDivisionSchema, mootCourtsSchema } from "@edulink/contracts";
+import type { Prisma } from "@prisma/client";
 import { db } from "./db";
 import { AccessError } from "./access-error";
 import { RuleRefusal } from "./rule-refusal";
@@ -61,8 +62,9 @@ import { lawInternshipSummary, nssSummary, practicalRecordSummary, teachingPract
  *
  *   MOOT COURTS (a law college's): the office, an HOD or a faculty member
  *   records one with its teams, their outcome, the result and the judges'
- *   notes. Refused (409) at a college with no LAW stream; the read says
- *   whether the college offers it.
+ *   notes; a correction is the office's, its author's or the law
+ *   department's HOD's. Refused (409) at a college with no LAW stream; the
+ *   read says whether the college offers it.
  *
  * Every door asks for its roles first and then the college and the module, so
  * the wrong role is a 403 before anything is parsed. Every write is audited
@@ -142,9 +144,9 @@ async function refile(tx: Tx, schoolId: string, divisionId: string, want: Map<st
  * division, by roll number — and their batches. The roll number is the
  * division's class enrolment's.
  */
-export async function labDivisions(schoolId: string, divisionId?: string): Promise<LabDivision[]> {
+export async function labDivisions(schoolId: string, divisionId?: string, scope: Prisma.DivisionWhereInput = {}): Promise<LabDivision[]> {
   const divisions = await db.division.findMany({
-    where: { schoolId, ...(divisionId ? { id: divisionId } : {}) },
+    where: { schoolId, ...(divisionId ? { id: divisionId } : {}), ...scope },
     orderBy: [{ academicYear: "desc" }, { yearOfStudy: "asc" }],
     take: 200,
     select: { id: true, academicYear: true, yearOfStudy: true, classId: true, programme: { select: { code: true } }, class: { select: { name: true } }, labBatches: { orderBy: { name: "asc" }, select: { id: true, name: true, capacity: true, members: { where: { untilKey: null }, select: { studentMembershipId: true } }, _count: { select: { slots: true } } } } },
@@ -176,9 +178,26 @@ export async function labDivisions(schoolId: string, divisionId?: string): Promi
   });
 }
 
+/**
+ * The divisions a reader of the batches sees (A3-S-11, audit of 5 Oct 2026):
+ * the office and the head the whole college; a FACULTY the divisions they
+ * teach an offering in; an HOD those and every division of a programme of a
+ * department they head. The batches carry the students' names, which a
+ * teacher of another department has no reason to read.
+ */
+async function labScope(c: Caller): Promise<Prisma.DivisionWhereInput> {
+  if (c.role === "ADMIN" || c.role === "PRINCIPAL") return {};
+  const [taught, headed] = await Promise.all([
+    db.courseOffering.findMany({ where: { schoolId: c.schoolId, facultyMembershipId: c.membershipId, divisionId: { not: null } }, select: { divisionId: true } }),
+    c.role === "HOD" ? hodDepartmentIds(c) : Promise.resolve([] as string[]),
+  ]);
+  const own = [...new Set(taught.map((o) => o.divisionId).filter((x): x is string => Boolean(x)))];
+  return { OR: [{ id: { in: own } }, ...(headed.length ? [{ programme: { departmentId: { in: headed } } }] : [])] };
+}
+
 export async function labBatches(ctx: ActiveContext, query: { divisionId?: string } = {}): Promise<LabBatches> {
   const c = await recordsCaller(ctx, ["ADMIN", "PRINCIPAL", "HOD", "FACULTY"]);
-  return { offered: labStreams(await streamsOf(c.schoolId)), defaultSize: LAB_BATCH_DEFAULT_SIZE, canEdit: c.role === "ADMIN", divisions: await labDivisions(c.schoolId, query.divisionId) };
+  return { offered: labStreams(await streamsOf(c.schoolId)), defaultSize: LAB_BATCH_DEFAULT_SIZE, canEdit: c.role === "ADMIN", divisions: await labDivisions(c.schoolId, query.divisionId, await labScope(c)) };
 }
 
 /** Sizes of `n` batches sharing `count` students as evenly as can be: the first ones one larger. */
@@ -257,6 +276,12 @@ const toFacts = (o: { id: string; facultyMembershipId: string | null; divisionId
 async function hodDepartmentId(c: Caller): Promise<string | null> {
   if (c.role !== "HOD") return null;
   return (await db.department.findFirst({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, select: { id: true } }))?.id ?? null;
+}
+
+/** Every department an HOD heads ([] for any other role). */
+async function hodDepartmentIds(c: Pick<Caller, "role" | "schoolId" | "membershipId">): Promise<string[]> {
+  if (c.role !== "HOD") return [];
+  return (await db.department.findMany({ where: { schoolId: c.schoolId, hodMembershipId: c.membershipId }, select: { id: true } })).map((d) => d.id);
 }
 
 /** Who may write an offering's record: its teacher, or the HOD of its department. */
@@ -376,7 +401,23 @@ export async function mootCourts(ctx: ActiveContext): Promise<MootCourts> {
   };
 }
 
-/** A moot recorded (or corrected, by its id): the office, an HOD or a faculty member, at a college with LAW; every team member a student of the college. */
+/**
+ * Who may correct a recorded moot (A3-S-10, audit of 5 Oct 2026): the office,
+ * the member who recorded it, or the HOD of a department that runs a law
+ * programme — where no programme of the college carries the LAW stream yet
+ * (a law-only college before its programmes were tagged), any HOD. Any FACULTY
+ * or HOD used to rewrite any moot by its id, and the BCI return reads them.
+ */
+async function mayCorrectMoot(c: Caller, createdByUserId: string | null): Promise<boolean> {
+  if (c.role === "ADMIN" || createdByUserId === c.userId) return true;
+  if (c.role !== "HOD") return false;
+  const lawDepartments = await db.programme.findMany({ where: { schoolId: c.schoolId, stream: "LAW" }, select: { departmentId: true } });
+  if (!lawDepartments.length) return true;
+  const headed = await hodDepartmentIds(c);
+  return lawDepartments.some((p) => headed.includes(p.departmentId));
+}
+
+/** A moot recorded (or corrected, by its id): the office, an HOD or a faculty member, at a college with LAW; every team member a student of the college. A correction is the office's, its author's or the law department's HOD's. */
 export async function saveMootCourt(ctx: ActiveContext, input: MootCourtSave): Promise<{ id: string }> {
   const c = await recordsCaller(ctx, ["ADMIN", "HOD", "FACULTY"]);
   if (!(await streamsOf(c.schoolId)).includes("LAW")) throw new RuleRefusal("streamRecords.refuseNotLaw", 409);
@@ -388,6 +429,9 @@ export async function saveMootCourt(ctx: ActiveContext, input: MootCourtSave): P
   const data = { name: input.name.trim(), at: input.at, kind: input.kind, teamsJson: JSON.stringify(input.teams.map((t) => ({ name: t.name.trim(), membershipIds: [...new Set(t.membershipIds)], outcome: t.outcome }))), result: input.result.trim(), judgeNotes: input.judgeNotes.trim() };
   let id = input.id;
   if (id) {
+    const row = await db.mootCourt.findFirst({ where: { id, schoolId: c.schoolId }, select: { createdByUserId: true } });
+    if (!row) throw new AccessError("access.entryNotFound", "NOT_FOUND");
+    if (!(await mayCorrectMoot(c, row.createdByUserId))) throw new AccessError("streamRecords.refuseNotYourMoot");
     const done = await db.mootCourt.updateMany({ where: { id, schoolId: c.schoolId }, data });
     if (!done.count) throw new AccessError("access.entryNotFound", "NOT_FOUND");
   } else id = (await db.mootCourt.create({ data: { schoolId: c.schoolId, createdByUserId: c.userId, ...data }, select: { id: true } })).id;
@@ -401,10 +445,18 @@ function yearOrCurrent(year: number | undefined, c: Caller): number {
   return year ?? currentRecordsYear(c.timeZone);
 }
 
-/** GET /api/v1/stream-records/law-internships — the BCI's weeks per law student and the year's moots: the office, the head, an HOD and the placement cell. */
+/**
+ * GET /api/v1/stream-records/law-internships — the BCI's weeks per law student and the year's moots: the office, the
+ * head, an HOD and the placement cell. An HOD reads the per-student weeks of their own department's programmes only
+ * (A3-S-11); the college's totals stay as they are, since they name nobody.
+ */
 export async function lawInternships(ctx: ActiveContext, year?: number) {
   const c = await recordsCaller(ctx, ["ADMIN", "PRINCIPAL", "HOD", "TPO"], "PLACEMENT");
-  return lawInternshipSummary(c.schoolId, yearOrCurrent(year, c));
+  const summary = await lawInternshipSummary(c.schoolId, yearOrCurrent(year, c));
+  if (c.role !== "HOD") return summary;
+  const headed = await hodDepartmentIds(c);
+  const own = new Set((headed.length ? await db.programme.findMany({ where: { schoolId: c.schoolId, departmentId: { in: headed } }, select: { code: true } }) : []).map((p) => p.code));
+  return { ...summary, perStudent: summary.perStudent.filter((s) => own.has(s.programmeCode)) };
 }
 
 /** GET /api/v1/stream-records/summary — every summary of a year for the office and the head, with which of the college's streams make each its own. */

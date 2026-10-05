@@ -8,6 +8,7 @@ import { studentCode } from "./codes";
 import { HANDLE_DOMAIN } from "./login-name";
 import { writeJson } from "./json";
 import { ageInYears, parseDateOnly } from "./dates";
+import { isFutureBirthdate } from "./birthdate-rules";
 import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
 import { issueFirstSignIn } from "./first-signin";
@@ -170,6 +171,11 @@ export async function admitPupils(
     // problem, which sent the fix hunting in the wrong place.
     if (row.birthdateKey && !birthdate) {
       outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.badBirthdate" });
+      continue;
+    }
+    // A date of birth in the future is refused here as the CSV parser refuses it, for a caller that hands rows in directly (A3-journeys-5).
+    if (birthdate && isFutureBirthdate(birthdate)) {
+      outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.dateInFuture" });
       continue;
     }
 

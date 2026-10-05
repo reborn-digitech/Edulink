@@ -393,14 +393,15 @@ describe("NSS and NCC", () => {
 });
 
 describe("the research dean, the flying squad and the lab's breakages", () => {
-  it("reads the research register with each teacher's API-score inputs", async () => {
+  it("reads the research register; each teacher's API-score inputs are the office's (A3-S-11)", async () => {
     await db.researchItem.createMany({ data: [
       { schoolId: ids.A!, kind: "PUBLICATION", title: "ZZ Paper", indexing: "SCOPUS", year: 2026, facultyMembershipId: ids.teacherM! },
       { schoolId: ids.A!, kind: "PROJECT", title: "ZZ Grant", year: 2025, amountLakhs: 4.5, facultyMembershipId: ids.teacherM! },
     ] });
     await db.facultyRecord.create({ data: { schoolId: ids.A!, membershipId: ids.teacherM!, designation: "ASSISTANT_PROFESSOR", appointment: "REGULAR", highestQualification: "PHD", apiScoreJson: JSON.stringify({ teaching: 60, research: 45.5, service: 10 }) } });
     const d = await researchDesk(await as("lab", "FACULTY", ids.A!));
-    expect(d.perFaculty[0]).toMatchObject({ membershipId: ids.teacherM, publications: 1, projects: 1, amountLakhs: 4.5, apiScore: 115.5, apiScoreInputs: { teaching: 60, research: 45.5, service: 10 } });
+    expect(d.perFaculty[0]).toMatchObject({ membershipId: ids.teacherM, publications: 1, projects: 1, amountLakhs: 4.5, apiScore: null, apiScoreInputs: null });
+    expect((await researchDesk(await as("admin", "ADMIN", ids.A!))).perFaculty[0]).toMatchObject({ membershipId: ids.teacherM, apiScore: 115.5, apiScoreInputs: { teaching: 60, research: 45.5, service: 10 } });
     expect(d.byYear).toEqual([{ year: 2026, publications: 1, projects: 0, amountLakhs: 0 }, { year: 2025, publications: 0, projects: 1, amountLakhs: 4.5 }]);
     await expect(researchDesk(await as("plain", "FACULTY", ids.A!))).rejects.toMatchObject({ key: "duties.refuseNoDuty" });
   });

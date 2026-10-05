@@ -9,11 +9,17 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
-import { __resetCookies } from "../tests/stubs/next-headers";
+import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { GET as listGet, POST as createPost } from "@/app/api/v1/principal/staff/[membershipId]/appraisals/route";
 import { DELETE as entryDelete, PUT as entryPut } from "@/app/api/v1/principal/appraisals/[id]/route";
 import { GET as mineGet } from "@/app/api/v1/staff/me/appraisals/route";
 import { todayKey } from "@/lib/dates";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { ENDPOINTS } from "@/lib/api-catalog";
+import { permits } from "@/lib/api-catalog/types";
+import { modulePagePermitted } from "@/lib/role-gate";
+import { NAV } from "@/lib/nav";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -136,5 +142,71 @@ describe("who writes and who reads", () => {
     expect((await (await mineGet()).json()).items).toEqual([]);
     expect(await db.auditLog.count({ where: { schoolId, action: "appraisal.delete", targetId: teacherMembershipId } })).toBe(1);
     expect(await db.staffAppraisal.count({ where: { schoolId } })).toBe(1);
+  });
+});
+
+/*
+ * A college's teachers (A3-inventory-5, audit of 5 Oct 2026): the head may
+ * appraise a FACULTY or HOD member (STAFF_ROLES), so they read what the head
+ * shows them through the same door and page as a school's teacher, and their
+ * menus carry it. At a college of its own, with ACADEMICS on, as the gate
+ * wants for these two limited roles.
+ */
+describe("a college's faculty and HOD read what the head shows them", () => {
+  const C = { school: "", head: "", faculty: "", facultyM: "", hod: "", hodM: "" };
+  const MINE_ROUTE = "GET /api/v1/staff/me/appraisals";
+  async function asCollege(userId: string, role: string, route: string | null = MINE_ROUTE) {
+    __resetCookies();
+    __setHeaders(route ? { "x-edulink-route": route } : {});
+    await createSession(userId, { schoolId: C.school, role: role as never });
+  }
+  beforeAll(async () => {
+    const suffix = String(STAMP).slice(-6);
+    C.school = (await db.school.create({ data: { name: `ZZ Appraisal College ${STAMP}`, slug: `zz-appraisal-college-${STAMP}`, code: `ZC${suffix}`, contactEmail: `zz-appraisal-college-${STAMP}@test.invalid`, timezone: TZ, kind: "COLLEGE" }, select: { id: true } })).id;
+    await db.schoolModule.create({ data: { schoolId: C.school, module: "ACADEMICS" } });
+    await db.academicYear.create({ data: { schoolId: C.school, name: "ZZ 2026–27", startDate: new Date("2026-04-01T00:00:00Z"), endDate: new Date("2027-03-31T00:00:00Z"), isCurrent: true } });
+    const mk = (who: string) => db.user.create({ data: { name: `ZZ Appraisal ${who}`, email: `zz-appraisal-${who.toLowerCase()}-${STAMP}@test.invalid` }, select: { id: true } });
+    const [head, faculty, hod] = await Promise.all([mk("CollegeHead"), mk("Faculty"), mk("Hod")]);
+    C.head = head.id;
+    C.faculty = faculty.id;
+    C.hod = hod.id;
+    await db.membership.create({ data: { userId: C.head, schoolId: C.school, role: "PRINCIPAL", status: "ACTIVE" } });
+    C.facultyM = (await db.membership.create({ data: { userId: C.faculty, schoolId: C.school, role: "FACULTY", status: "ACTIVE" }, select: { id: true } })).id;
+    C.hodM = (await db.membership.create({ data: { userId: C.hod, schoolId: C.school, role: "HOD", status: "ACTIVE" }, select: { id: true } })).id;
+  });
+  afterAll(async () => {
+    __setHeaders({});
+    await db.session.deleteMany({ where: { userId: { in: [C.head, C.faculty, C.hod] } } });
+    await db.school.deleteMany({ where: { id: C.school } });
+  });
+
+  it("the door names FACULTY and HOD, and each reads only their own entry marked visible", async () => {
+    const door = ENDPOINTS.find((e) => e.method === "GET" && e.path === "/api/v1/staff/me/appraisals")!;
+    for (const role of ["TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD"] as const) expect({ role, ok: permits(door, role) }).toEqual({ role, ok: true });
+    for (const role of ["STUDENT", "PARENT", "IQAC", "ACCOUNTS"] as const) expect({ role, ok: permits(door, role) }).toEqual({ role, ok: false });
+
+    await asCollege(C.head, "PRINCIPAL", null);
+    for (const [m, summary] of [[C.facultyM, "ZZ faculty appraisal."], [C.hodM, "ZZ HOD appraisal."]] as const) {
+      expect((await create(m, { kind: "APPRAISAL", dateKey: today, summary, visibleToStaff: true })).status).toBe(201);
+      expect((await create(m, { kind: "TARGET", dateKey: today, summary: "ZZ private." })).status).toBe(201);
+    }
+    await asCollege(C.faculty, "FACULTY");
+    const faculty = await mineGet();
+    expect(faculty.status).toBe(200);
+    expect((await faculty.json()).items.map((e: { summary: string }) => e.summary)).toEqual(["ZZ faculty appraisal."]);
+    await asCollege(C.hod, "HOD");
+    const hod = await mineGet();
+    expect(hod.status).toBe(200);
+    expect((await hod.json()).items.map((e: { summary: string }) => e.summary)).toEqual(["ZZ HOD appraisal."]);
+  });
+
+  it("the page opens for them and their menus list it", () => {
+    for (const role of ["FACULTY", "HOD"] as const) {
+      expect({ role, menu: NAV[role].some((item) => item.href === "/teacher/appraisals") }).toEqual({ role, menu: true });
+      expect({ role, page: modulePagePermitted(role, "/teacher/appraisals", ["ACADEMICS"], []) }).toEqual({ role, page: true });
+    }
+    // The page's own gate names them beside the school's three.
+    const page = readFileSync(join(__dirname, "..", "src", "app", "(app)", "teacher", "appraisals", "page.tsx"), "utf8");
+    expect(page).toMatch(/requireRole\("TEACHER", "ADMIN", "PRINCIPAL", "FACULTY", "HOD"\)/);
   });
 });

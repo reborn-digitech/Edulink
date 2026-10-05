@@ -9,8 +9,8 @@ import {
   type NbaInputs,
   type NirfInputs,
 } from "@edulink/contracts";
-import { FORMULAS, cgpaOf, evaluate, gainPerUnit, gradeOf, nextBand, nirfSubs, round2, totalWeight, weightedScore, type Facts } from "./iqac-rules";
-import { NBA_COMPUTED, nbaMarks, type NbaComputedCode } from "./council-rules";
+import { FORMULAS, NIRF_WHOLES, cgpaOf, evaluate, gainPerUnit, gradeOf, nextBand, nirfSubs, round2, totalWeight, weightedScore, type Facts } from "./iqac-rules";
+import { NBA_COMPUTED, NBA_WHOLES, nbaMarks, type NbaComputedCode } from "./council-rules";
 
 /**
  * ACTIONABLE INSIGHTS AND THE SIMULATOR'S ARITHMETIC (5 October 2026) — PURE.
@@ -120,6 +120,76 @@ export const FACT_CTA: Record<string, InsightCtaCode> = {
 export const ctaOfFact = (fact: string): InsightCtaCode => FACT_CTA[fact] ?? "QUALITATIVE";
 
 /* -------------------------------------------------------------------------- */
+/* A part is never more than its whole (audit of 5 Oct 2026, A3-journeys-13)    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A whole and its parts: `of` names the figure (or is a fixed number — NIRF's
+ * fractions of one) the parts' sum may not pass. `metric` is the formula, the
+ * SAR item or the NIRF sub-parameter that reads them, for the refusal.
+ * THE DECISION: the live simulator HOLDS a breach (NAAC and NIRF scale the
+ * parts down to the whole — the score never changes, since every NAAC formula
+ * with a whole is full marks at 100 %; the NBA SAR counts the extra designated
+ * teachers as teachers, raising F) and a stored scenario that breaks one is
+ * REFUSED (iqac-insights.ts writeScenario), so no saved figure is impossible.
+ */
+export type Whole = { metric: string; parts: readonly string[]; of: string | number };
+type Figures = Record<string, unknown>;
+
+/** Every NAAC formula's declared whole (FORMULAS[f].whole), named by the formula. */
+export const NAAC_WHOLES: readonly Whole[] = Object.entries(FORMULAS).flatMap(([id, s]) => (s.whole ? [{ metric: id, parts: s.whole.parts, of: s.whole.of }] : []));
+export const NIRF_PART_WHOLES: readonly Whole[] = NIRF_WHOLES;
+export const NBA_PART_WHOLES: readonly Whole[] = NBA_WHOLES;
+
+const numAt = (f: Figures, k: string): number | null => (typeof f[k] === "number" && Number.isFinite(f[k]) ? (f[k] as number) : null);
+const wholeAt = (f: Figures, w: Whole) => (typeof w.of === "number" ? w.of : numAt(f, w.of));
+const partsSum = (f: Figures, w: Whole) => w.parts.reduce((a, p) => a + (numAt(f, p) ?? 0), 0);
+
+/** The wholes the figures break (a missing whole or no part given breaks nothing). */
+export function partsOver(wholes: readonly Whole[], f: Figures): Whole[] {
+  return wholes.filter((w) => {
+    const whole = wholeAt(f, w);
+    return whole !== null && w.parts.some((p) => numAt(f, p) !== null) && partsSum(f, w) > whole + EPS;
+  });
+}
+
+/**
+ * The figures with every broken whole's parts held to it: the part just
+ * typed alone where the others leave room for it, else all of them scaled
+ * down in proportion.
+ */
+export function holdParts<T extends Figures>(wholes: readonly Whole[], figures: T, typed?: string): T {
+  const out: Figures = { ...figures };
+  for (const w of partsOver(wholes, out)) {
+    const whole = wholeAt(out, w)!;
+    if (typed && w.parts.includes(typed)) {
+      const others = partsSum(out, w) - (numAt(out, typed) ?? 0);
+      if (others <= whole + EPS) {
+        out[typed] = roundLever(Math.max(0, whole - others));
+        continue;
+      }
+    }
+    const k = whole / partsSum(out, w);
+    for (const p of w.parts) if (numAt(out, p) !== null) out[p] = roundLever(numAt(out, p)! * k);
+  }
+  return out as T;
+}
+
+/**
+ * The figures with every broken whole that is a figure raised to its parts'
+ * sum (a professor more is a teacher more) — unless that whole is the figure
+ * just typed, when its parts are held to it instead.
+ */
+export function raiseWholes<T extends Figures>(wholes: readonly Whole[], figures: T, typed?: string): T {
+  let out: Figures = { ...figures };
+  for (const w of partsOver(wholes, out)) {
+    if (typeof w.of === "number" || w.of === typed) out = holdParts([w], out, typed);
+    else out[w.of] = Math.max(numAt(out, w.of) ?? 0, partsSum(out, w));
+  }
+  return out as T;
+}
+
+/* -------------------------------------------------------------------------- */
 /* NAAC: the simulator                                                         */
 /* -------------------------------------------------------------------------- */
 
@@ -142,9 +212,11 @@ export type NaacSimulated = {
 export function simulateNaac(fw: NaacFramework, inputs: NaacInputs): NaacSimulated {
   const scores = new Map<string, number>();
   const values = new Map<string, number | null>();
+  // A part above its whole is held to it (A3-journeys-13); no score moves, the value reads at most 100 %.
+  const facts = holdParts(NAAC_WHOLES, inputs.facts);
   for (const m of fw.metrics) {
     if (m.kind === "QN" && m.formula) {
-      const ev = evaluate(m.formula, inputs.facts);
+      const ev = evaluate(m.formula, facts);
       scores.set(m.code, ev.score);
       values.set(m.code, ev.value);
     } else {
@@ -337,7 +409,8 @@ export const NBA_TOTAL = NBA_SAR_ITEMS.reduce((a, i) => a + i.marks, 0);
 
 /** The SAR's totals over a set of figures: the computed items by nbaMarks, the self-assessed ones as typed, each capped at its marks. */
 export function nbaTotals(i: NbaInputs): { marks: Record<NbaComputedCode, number>; computed: number; self: number; total: number; max: number } {
-  const marks = nbaMarks(i);
+  // A designated teacher beyond F is one more teacher (A3-journeys-13); the rows never give one.
+  const marks = nbaMarks(raiseWholes(NBA_PART_WHOLES, i));
   const computed = round2(NBA_SAR_ITEMS.filter((x) => x.computed).reduce((a, x) => a + (marks[x.code as NbaComputedCode] ?? 0), 0));
   const self = round2(NBA_SAR_ITEMS.filter((x) => !x.computed).reduce((a, x) => a + Math.min(x.marks, i.self[x.code] ?? 0), 0));
   return { marks, computed, self, total: round2(computed + self), max: NBA_TOTAL };
@@ -444,7 +517,8 @@ export function nirfScore(i: NirfInputs): {
   band: NirfBand | null;
   nextBand: { code: NirfBand["code"]; min: number; distance: number } | null;
 } {
-  const subs = nirfSubs(i);
+  // Fractions of one and shares of a hundred held to their whole (A3-journeys-13).
+  const subs = nirfSubs(holdParts(NIRF_PART_WHOLES, i));
   const byCode = subs as Record<string, number | null>;
   const parameters = NIRF_PARAMETERS.map((p) => {
     const computed = p.subs.filter((s) => s.published && byCode[s.code] !== null && byCode[s.code] !== undefined);

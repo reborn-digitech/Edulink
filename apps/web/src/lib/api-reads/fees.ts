@@ -94,7 +94,7 @@ export async function feesReceiptRead(ctx: ActiveContext, receiptId: string) {
 
 export async function feesFamilyRead(ctx: ActiveContext, childId?: string) {
   const f = await familyFees(ctx, childId);
-  return { ...f, child: f.child ? { ...f.child, payments: f.child.payments.map((p) => ({ ...p, paidAt: isoOrNull(p.paidAt), createdAt: iso(p.createdAt) })) } : null };
+  return { ...f, children: f.children.map((c) => ({ ...c, leftAt: isoOrNull(c.leftAt) })), child: f.child ? { ...f.child, payments: f.child.payments.map((p) => ({ ...p, paidAt: isoOrNull(p.paidAt), createdAt: iso(p.createdAt) })) } : null };
 }
 
 export function feesOverviewShape<T extends { recent: { when: Date }[] }>(o: T) {

@@ -21,6 +21,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { readJson, writeJson } from "./json";
 import { ageInYears, isDateKey, todayKey } from "./dates";
+import { COLLEGE_MIN_AGE, collegeBirthdateProblem } from "./birthdate-rules";
 import { parseCsvRecords, toCsv } from "./csv";
 import { studentCode } from "./codes";
 import { HANDLE_DOMAIN } from "./login-name";
@@ -420,6 +421,8 @@ export async function createApplication(
   await programmeOf(d.schoolId, base.programmeId);
   if (!(ADMISSION_QUOTAS as readonly string[]).includes(base.quota)) throw new AccessError("collegeOffice.refuseIncomplete");
   if (input.birthdateKey && !isDateKey(input.birthdateKey)) throw new AccessError("collegeOffice.refuseDates");
+  // Not in the future, and at least fourteen (A3-journeys-5; birthdate-rules.ts).
+  if (input.birthdateKey && collegeBirthdateProblem(new Date(`${input.birthdateKey}T00:00:00Z`))) throw new AccessError("collegeOffice.refuseBirthdate", "FORBIDDEN", { min: COLLEGE_MIN_AGE });
   const docs: Docs = {};
   for (const doc of requiredDocuments(base.category, input.extraDocuments ?? [])) docs[doc] = { required: true, fileId: null, status: "PENDING", note: null };
   const created = await db.$tenantTransaction(async (raw) => {
@@ -635,13 +638,7 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
   if (!isDateKey(input.lastDateKey)) throw new AccessError("collegeOffice.refuseDates");
   const { timezone } = await db.school.findUniqueOrThrow({ where: { id: d.schoolId }, select: { timezone: true } });
   const cancelKey = todayKey(timezone, now);
-  let paidPaise = a.admissionFeePaidAt ? (a.admissionFeePaise ?? 0) : 0;
-  let cautionPaise = 0;
-  if (a.status === "ADMITTED" && a.admittedMembershipId) {
-    const demands = await db.feeDemand.findMany({ where: { studentMembershipId: a.admittedMembershipId, schoolId: d.schoolId, status: { not: "CANCELLED" } }, select: { paidPaise: true, netPaise: true, linesJson: true } });
-    paidPaise = demands.reduce((s, x) => s + x.paidPaise, 0);
-    cautionPaise = await cautionPaidOn(d.schoolId, demands);
-  }
+  const { paidPaise, cautionPaise } = await paidOnSeat(d.schoolId, a);
   const refund = refundFor({ paidPaise, cautionPaise, cancelKey, lastKey: input.lastDateKey });
   const updated = await db.$tenantTransaction(async (raw) => {
     const tx = raw as typeof db;
@@ -653,6 +650,19 @@ export async function cancelAdmission(ctx: ActiveContext, id: string, input: { r
   });
   await audit({ schoolId: d.schoolId, actorUserId: d.userId, action: "college.admissions.cancel", targetType: "CollegeApplication", targetId: a.id, meta: { slab: refund.slab, refundPaise: refund.refundPaise, paidPaise, cautionPaise } });
   return applicationView(updated);
+}
+
+/**
+ * What was paid on a seat: before admission the admission fee once recorded, after it what the student paid this
+ * year on the ledger, with the caution deposit inside it. The cancellation's slab reads it, and a refund asked
+ * outside the slab is bounded by it (A3-S-15).
+ */
+export async function paidOnSeat(schoolId: string, a: { status: string; admittedMembershipId: string | null; admissionFeePaidAt: Date | null; admissionFeePaise: number | null }): Promise<{ paidPaise: number; cautionPaise: number }> {
+  if (a.admittedMembershipId && (a.status === "ADMITTED" || a.status === "CANCELLED" || a.status === "REFUNDED")) {
+    const demands = await db.feeDemand.findMany({ where: { studentMembershipId: a.admittedMembershipId, schoolId, status: { not: "CANCELLED" } }, select: { paidPaise: true, netPaise: true, linesJson: true } });
+    return { paidPaise: demands.reduce((s, x) => s + x.paidPaise, 0), cautionPaise: await cautionPaidOn(schoolId, demands) };
+  }
+  return { paidPaise: a.admissionFeePaidAt ? (a.admissionFeePaise ?? 0) : 0, cautionPaise: 0 };
 }
 
 /** The caution deposit inside what was paid: each demand's CAUTION_DEPOSIT lines, in proportion to what the demand has received. */

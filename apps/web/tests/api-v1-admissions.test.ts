@@ -306,6 +306,9 @@ describe("the office's steps", () => {
     }
 
     await as("ADMIN");
+    // Riya's sitting is a week away: no result before it (A3-journeys-24). The sitting is then moved to yesterday, as if sat.
+    expect((await testPost(json(`/api/v1/office/admissions/applications/${riyaId}/test`, { score: "38/50" }), params({ applicationId: riyaId }))).status).toBe(403);
+    await db.entranceSlot.update({ where: { id: slotB }, data: { startsAt: new Date(Date.now() - 86_400_000), endsAt: new Date(Date.now() - 86_400_000 + 1_800_000) } });
     res = await testPost(json(`/api/v1/office/admissions/applications/${riyaId}/test`, { score: "38/50", note: "Reads fluently." }), params({ applicationId: riyaId }));
     expect((await res.json())).toMatchObject({ testScore: "38/50", testNote: "Reads fluently." });
     res = await testPost(json(`/api/v1/office/admissions/applications/${riyaId}/test`, { score: "39/50" }), params({ applicationId: riyaId }));
@@ -355,7 +358,10 @@ describe("the office's steps", () => {
     expect(told?.title).toContain("accepted the offer");
 
     await as("ADMIN");
-    await offerPost(json(`/api/v1/office/admissions/applications/${taraId}/offer`, { expiresOn: dayKey(-1) }), params({ applicationId: taraId }));
+    // A day already gone is refused at the offer (A3-journeys-3); an offer that has since lapsed is made by moving its day back.
+    expect((await offerPost(json(`/api/v1/office/admissions/applications/${taraId}/offer`, { expiresOn: dayKey(-1) }), params({ applicationId: taraId }))).status).toBe(403);
+    await offerPost(json(`/api/v1/office/admissions/applications/${taraId}/offer`, { expiresOn: dayKey(7) }), params({ applicationId: taraId }));
+    await db.application.update({ where: { id: taraId }, data: { offerExpiresAt: new Date(Date.now() - 86_400_000) } });
     await as("PARENT_B");
     expect((await respondPost(json(`/api/v1/family/applications/${taraId}/respond`, { answer: "ACCEPT" }), params({ applicationId: taraId }))).status).toBe(403);
     res = await withdrawPost(get(`/api/v1/family/applications/${taraId}/withdraw`), params({ applicationId: taraId }));
@@ -390,8 +396,11 @@ describe("the office's steps", () => {
     expect((await res.json()).slots.find((s: { id: string }) => s.id === slotC)).toMatchObject({ capacity: 2, booked: 1 });
 
     // Veer is offered with a date already gone: every reader says EXPIRED before any job runs, and the seat is not counted as offered.
-    res = await offerPost(json(`/api/v1/office/admissions/applications/${veerId}/offer`, { expiresOn: dayKey(-1) }), params({ applicationId: veerId }));
+    // (A day already gone is refused at the offer since A3-journeys-3, so the lapse is made by moving the stored day back.)
+    res = await offerPost(json(`/api/v1/office/admissions/applications/${veerId}/offer`, { expiresOn: dayKey(7) }), params({ applicationId: veerId }));
     expect(res.status).toBe(200);
+    await db.application.update({ where: { id: veerId }, data: { offerExpiresAt: new Date(Date.now() - 86_400_000) } });
+    res = await officeAppGet(get(`/api/v1/office/admissions/applications/${veerId}`), params({ applicationId: veerId }));
     const lapsed = await res.json();
     expect(lapsed.status).toBe("EXPIRED");
     expect(lapsed.can).toMatchObject({ respond: false, offer: true, decide: true, admit: false });

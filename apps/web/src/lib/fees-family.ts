@@ -179,7 +179,9 @@ export function buildCalendar(input: { instalments: { id: string; label: string;
     for (const offset of REMINDER_OFFSETS) {
       const date = addDaysToKey(d.dueDateKey, offset);
       if (date < input.today) continue;
-      rows.push({ date, title: d.label, amount: d.outstandingPaise, status: offset > 0 ? "OVERDUE" : "UPCOMING", kind: "REMINDER", demandId: d.id });
+      // A reminder still to come is UPCOMING, whichever side of the due day it falls: one after the day read "Overdue" on a
+      // date in December (A3-journeys-40). The instalment's own row says when the money itself is overdue.
+      rows.push({ date, title: d.label, amount: d.outstandingPaise, status: "UPCOMING", kind: "REMINDER", demandId: d.id });
     }
   }
   const order = { INSTALMENT: 0, DUE: 1, REMINDER: 2 } as const;

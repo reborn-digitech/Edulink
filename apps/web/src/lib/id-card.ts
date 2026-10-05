@@ -1,4 +1,5 @@
 import "server-only";
+import { createHmac, hkdfSync, timingSafeEqual } from "node:crypto";
 import { isCollegeKind } from "@edulink/contracts";
 import { db } from "./db";
 import { AccessError } from "./access-error";
@@ -7,6 +8,8 @@ import { audit } from "./audit";
 import { currentAcademicYear } from "./academic-year";
 import { forSchool } from "./tenant-context";
 import { dateToDay } from "./fees";
+import { readFeesSecretKey } from "./env";
+import { CODE_LOOKUPS, consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -19,12 +22,18 @@ import type { Role } from "./constants";
  * college the programme and year), the college code and, at a college, the
  * university PRN, the academic year it is valid for, and a QR.
  *
- * WHAT THE QR CARRIES. The student's code at the school and the address of
- * the staff check (`/id-check?c=…`), nothing secret and nothing more than is
- * printed beside it: the card is identified, not signed. A member of staff
- * who scans it, signed in at the same school, sees the name, class and photo
- * the school holds now and whether the student is still on the roll
- * (`checkIdCode`), so a card kept after leaving reads "no longer on the roll".
+ * WHAT THE QR CARRIES (A3-S-6, audit of 5 Oct 2026). The card's own
+ * identifier — the membership's id and an HMAC of it under a key derived from
+ * the operator's FEES_SECRET_KEY and the school (`cardToken`) — in the address
+ * of the staff check, `${NEXT_PUBLIC_APP_URL}/id-check?c=…`. It used to print
+ * and encode the student code, which at a school is the first of the two
+ * factors a parent claims a child with (codes.ts), on a card shown at the gate
+ * and on the bus; the code is on no card now, and the QR led to a page that
+ * did not exist. A member of staff who scans it, signed in at the same school,
+ * sees the name and class the school holds now and whether the student is
+ * still on the roll (`checkIdCode`, the /id-check page), so a card kept after
+ * leaving reads "no longer on the roll". A code typed from a card printed
+ * before still reads, at the checker's own school.
  * No date of birth, no address, no blood group, no guardian's number on the
  * card — decision 0002's minors' data rule keeps the card to what a gate
  * needs. Never Aadhaar.
@@ -42,7 +51,6 @@ export type IdCard = {
   name: string;
   photoFileId: string | null;
   group: string | null;
-  studentCode: string | null;
   prn: string | null;
   year: string | null;
   validUntil: string | null;
@@ -53,7 +61,6 @@ async function cardOf(schoolId: string, membershipId: string): Promise<IdCard> {
   const m = await db.membership.findFirst({
     where: { id: membershipId, schoolId, role: "STUDENT" },
     select: {
-      studentCode: true,
       user: { select: { name: true, preferredName: true, avatarKey: true } },
       school: { select: { name: true, brandPrimary: true, kind: true } },
       enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { class: { select: { name: true } } }, take: 1 },
@@ -76,12 +83,49 @@ async function cardOf(schoolId: string, membershipId: string): Promise<IdCard> {
      */
     photoFileId: null,
     group,
-    studentCode: m.studentCode,
     prn: college ? (m.pupilRecord?.prn ?? null) : null,
     year: year?.name ?? null,
     validUntil: year ? dateToDay(year.endDate) : null,
-    checkPath: m.studentCode ? `/id-check?c=${encodeURIComponent(m.studentCode)}` : null,
+    checkPath: idCheckPath(schoolId, membershipId),
   };
+}
+
+/* ------------------------------------------------------------ the card's own identifier */
+
+/** The key a school's cards are signed with: from FEES_SECRET_KEY and the school; a development machine without it signs with a fixed one; production without it prints no QR. */
+function cardKey(schoolId: string): Buffer | null {
+  const read = readFeesSecretKey();
+  if (read.ok) return Buffer.from(hkdfSync("sha256", read.key, Buffer.from(schoolId), Buffer.from("id-card"), 32));
+  return process.env.NODE_ENV === "production" ? null : Buffer.from(`id-card-dev:${schoolId}`);
+}
+
+const cardSig = (key: Buffer, schoolId: string, membershipId: string) => createHmac("sha256", key).update(`${schoolId}.${membershipId}`).digest("base64url").slice(0, 16);
+const TOKEN = /^([a-z0-9]{20,40})\.([A-Za-z0-9_-]{16})$/;
+
+/** The identifier a card's QR carries: `<membershipId>.<signature>`; null where no key is configured. */
+export function cardToken(schoolId: string, membershipId: string): string | null {
+  const key = cardKey(schoolId);
+  return key ? `${membershipId}.${cardSig(key, schoolId, membershipId)}` : null;
+}
+
+/** The membership a scanned token names at this school, if its signature holds; null otherwise. */
+export function readCardToken(schoolId: string, token: string): string | null {
+  const m = TOKEN.exec(token);
+  const key = cardKey(schoolId);
+  if (!m || !key) return null;
+  const want = Buffer.from(cardSig(key, schoolId, m[1]!));
+  const got = Buffer.from(m[2]!);
+  return want.length === got.length && timingSafeEqual(want, got) ? m[1]! : null;
+}
+
+function idCheckPath(schoolId: string, membershipId: string): string | null {
+  const token = cardToken(schoolId, membershipId);
+  return token ? `/id-check?c=${encodeURIComponent(token)}` : null;
+}
+
+/** Where a card's QR points: the configured app address (NEXT_PUBLIC_APP_URL), not whatever host the request named. */
+export function cardOrigin(requestUrl: string): string {
+  return process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/$/, "") || new URL(requestUrl).origin;
 }
 
 /** The card for `membershipId` (a student's own when they ask without one), for the caller who may print it; each print is audited. */
@@ -117,9 +161,34 @@ export type IdCheck = { found: boolean; onRoll: boolean; name: string | null; gr
  */
 export async function checkIdCode(ctx: ActiveContext, code: string): Promise<IdCheck> {
   if (!ctx.schoolId || !ctx.role || !CHECKERS.includes(ctx.role)) throw new AccessError("access.wrongRoleForThisAction");
-  const clean = code.trim().slice(0, 40);
-  const m = clean ? await db.membership.findFirst({ where: { schoolId: ctx.schoolId, role: "STUDENT", studentCode: clean }, orderBy: { joinedAt: "desc" }, select: { id: true, status: true, leftAt: true } }) : null;
+  const clean = code.trim().slice(0, 80);
+  // The card's signed identifier (A3-S-6); a code typed from a card printed before it, at this school.
+  const byToken = clean ? readCardToken(ctx.schoolId, clean) : null;
+  const m = byToken
+    ? await db.membership.findFirst({ where: { id: byToken, schoolId: ctx.schoolId, role: "STUDENT" }, select: { id: true, status: true, leftAt: true } })
+    : clean && !TOKEN.test(clean)
+      ? await db.membership.findFirst({ where: { schoolId: ctx.schoolId, role: "STUDENT", studentCode: clean.slice(0, 40) }, orderBy: { joinedAt: "desc" }, select: { id: true, status: true, leftAt: true } })
+      : null;
   if (!m) return { found: false, onRoll: false, name: null, group: null, studentCode: clean, photoFileId: null, schoolName: null };
   const card = await cardOf(ctx.schoolId, m.id);
   return { found: true, onRoll: m.status === "ACTIVE" && m.leftAt === null, name: card.name, group: card.group, studentCode: clean, photoFileId: card.photoFileId, schoolName: card.school.name };
+}
+
+export type IdCheckView =
+  | { state: "signIn" | "staffOnly" | "noCode" | "busy" }
+  | { state: "result"; check: IdCheck };
+
+/**
+ * What the /id-check page shows for a scanned code (A3-S-6): a signed-out
+ * reader is asked to sign in as the school's staff, another role is told the
+ * check is the staff's, and a member of staff gets `checkIdCode` — counted per
+ * person like the other look-ups (CODE_LOOKUPS), as the check door is.
+ */
+export async function idCheckView(ctx: ActiveContext | null, code: string | null | undefined): Promise<IdCheckView> {
+  if (!ctx) return { state: "signIn" };
+  if (!ctx.schoolId || !ctx.role || !CHECKERS.includes(ctx.role)) return { state: "staffOnly" };
+  const clean = (code ?? "").trim();
+  if (!clean) return { state: "noCode" };
+  if (!(await consume(`idcheck:${ctx.user.id}`, CODE_LOOKUPS.limit, CODE_LOOKUPS.windowMs)).allowed) return { state: "busy" };
+  return { state: "result", check: await checkIdCode(ctx, clean) };
 }

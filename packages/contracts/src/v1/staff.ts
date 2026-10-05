@@ -328,6 +328,8 @@ export const newAssignmentSchema = z.object({
   points: z.number().min(0).max(10_000).optional(),
   dueAt: isoDate.optional(),
   publish: z.boolean().default(true),
+  /** The teacher means a due date that has already passed (A3-journeys-25); without it such a date is refused, 422 on dueAt. */
+  confirmPastDue: z.boolean().optional(),
 });
 export type NewAssignmentBody = z.infer<typeof newAssignmentSchema>;
 

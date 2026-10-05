@@ -63,7 +63,7 @@ afterAll(async () => {
   await db.notification.deleteMany({ where: { userId: { in: ids.users } } });
   // createPost counts each author's posts by membership (bulletin.ts).
   const members = await db.membership.findMany({ where: { schoolId: ids.school }, select: { id: true } });
-  await db.rateLimit.deleteMany({ where: { bucket: { in: members.map((m) => `post:${m.id}`) } } });
+  await db.rateLimit.deleteMany({ where: { bucket: { in: [...members.map((m) => `post:${m.id}`), ...ids.users.map((u) => `slip-answer:${u}`)] } } });
   await db.session.deleteMany({ where: { userId: { in: ids.users } } });
   await db.auditLog.deleteMany({ where: { schoolId: ids.school } });
   await db.school.deleteMany({ where: { id: ids.school } });

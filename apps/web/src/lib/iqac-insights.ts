@@ -36,11 +36,15 @@ import type { Role } from "./constants";
 import { frameworkOf, iqacActor, type Desk } from "./iqac";
 import { gatherFacts, nirfFacts, readEntered } from "./iqac-facts";
 import { FORMULAS, gradeOf, round2, type Facts } from "./iqac-rules";
-import { assertFilingApplies, defaultFilingYear, nbaDepartmentFor, nbaDepartments, nbaFacts, readWorksheet } from "./council-filings";
+import { assertFilingApplies, councilDefaultYear, defaultFilingYear, nbaDepartmentFor, nbaDepartments, nbaFacts, readWorksheet } from "./council-filings";
 import { windowOf } from "./iqac-filings";
 import {
+  NAAC_WHOLES,
+  NBA_PART_WHOLES,
+  NIRF_PART_WHOLES,
   naacInsightsOf,
   nbaInsightsOf,
+  partsOver,
   nbaTotals,
   nirfInsightsOf,
   nirfScore,
@@ -136,13 +140,22 @@ const DONE_CTA: readonly (readonly [string, InsightCtaCode])[] = [
   ["invite.accept", "PEOPLE"],
 ];
 
-async function lastDone(t: Translate, schoolId: string, since: Date | null, take = 6) {
-  const rows = await db.auditLog.findMany({ where: { schoolId, OR: DONE_CTA.map(([prefix]) => ({ action: { startsWith: prefix } })) }, orderBy: { createdAt: "desc" }, take, select: { action: true, createdAt: true, actorUserId: true } });
+/**
+ * The latest audit rows that changed a fact a CTA's page holds. With `hod` (an HOD reading their department's NBA
+ * insights, A3-S-11): only their own department's NBA worksheet saves (targetId `NBA_SAR:<year>:<departmentId>`) and
+ * their own actions, never the whole college's log with its actors' names.
+ */
+async function lastDone(t: Translate, schoolId: string, since: Date | null, take = 6, hod?: { userId: string; departmentId: string }) {
+  const done = DONE_CTA.map(([prefix]) => ({ action: { startsWith: prefix } }));
+  const where = hod
+    ? { schoolId, OR: [{ action: { startsWith: "iqac.worksheet." }, targetId: { startsWith: "NBA_SAR:", endsWith: `:${hod.departmentId}` } }, { actorUserId: hod.userId, OR: done }] }
+    : { schoolId, OR: done };
+  const rows = await db.auditLog.findMany({ where, orderBy: { createdAt: "desc" }, take, select: { action: true, createdAt: true, actorUserId: true } });
   const people = await db.user.findMany({ where: { id: { in: [...new Set(rows.map((r) => r.actorUserId).filter((x): x is string => !!x))] } }, select: { id: true, name: true } });
   const nameOf = new Map(people.map((p) => [p.id, p.name]));
   return rows.map((r) => {
     const key = actionKey(r.action);
-    return { action: r.action, label: key ? t(key) : r.action, at: r.createdAt.toISOString(), by: r.actorUserId ? (nameOf.get(r.actorUserId) ?? null) : null, cta: DONE_CTA.find(([p]) => r.action.startsWith(p))?.[1] ?? null, sinceCompute: since ? r.createdAt > since : false };
+    return { action: r.action, label: key ? t(key) : r.action, labelKey: key, at: r.createdAt.toISOString(), by: r.actorUserId ? (nameOf.get(r.actorUserId) ?? null) : null, cta: DONE_CTA.find(([p]) => r.action.startsWith(p))?.[1] ?? null, sinceCompute: since ? r.createdAt > since : false };
   });
 }
 
@@ -310,7 +323,8 @@ async function nbaContext(ctx: ActiveContext, query: { year?: number; department
   const desk = await iqacActor(ctx, roles);
   await assertFilingApplies(desk.schoolId, "NBA_SAR");
   const dept = await nbaDepartmentFor(desk, query.departmentId ?? null);
-  const year = query.year ?? defaultFilingYear();
+  // The latest year the department has a report, else the filing default (A3-journeys-34).
+  const year = query.year ?? (await councilDefaultYear(desk.schoolId, "NBA_SAR", dept.id));
   return { desk, dept, year };
 }
 
@@ -377,7 +391,7 @@ export async function nbaInsights(ctx: ActiveContext, query: { year?: number; de
     max: totals.max,
     ranked: raws.filter((r) => r.computed).map((r) => nbaInsightView(t, r)),
     selfAssess: raws.filter((r) => !r.computed).map((r) => nbaInsightView(t, r)),
-    lastDone: await lastDone(t, desk.schoolId, filing?.generatedAt ?? null),
+    lastDone: await lastDone(t, desk.schoolId, filing?.generatedAt ?? null, 6, desk.role === "HOD" ? { userId: desk.userId, departmentId: dept.id } : undefined),
     notAScore: t("insights.notAScore"),
   };
 }
@@ -535,6 +549,12 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
     const qlCodes = new Set(fw.metrics.filter((m) => m.kind === "QL").map((m) => m.code));
     if (Object.keys(input.inputs.facts).some((k) => !known.has(k))) throw new RuleRefusal("insights.refuseUnknownFact", 422, undefined, "inputs");
     if (Object.keys(input.inputs.ql).some((k) => !qlCodes.has(k))) throw new RuleRefusal("insights.refuseUnknownMetric", 422, undefined, "inputs");
+    // A part above its whole is refused, not stored (A3-journeys-13): 50 passed of 3 appeared.
+    const read = new Map(fw.metrics.filter((m) => m.formula).map((m) => [m.formula as string, m.code]));
+    const naacOver = partsOver(NAAC_WHOLES.filter((w) => read.has(w.metric)), input.inputs.facts)[0];
+    if (naacOver) throw await partsRefusal(naacOver, read.get(naacOver.metric)!, (k) => `iqac.fact.${k}`);
+    const nirfOver = input.inputs.nirf ? partsOver(NIRF_PART_WHOLES, input.inputs.nirf)[0] : undefined;
+    if (nirfOver) throw await partsRefusal(nirfOver, nirfOver.metric, (k) => `insights.nirfLever.${k}`);
     const cgpa = simulateNaac(fw, input.inputs).cgpa;
     data = { kind: "NAAC", cycleId: cycle.id, year: null, departmentId: null, inputsJson: JSON.stringify(input.inputs), cgpa, marks: null, result: cgpa };
   } else {
@@ -544,6 +564,8 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
       const item = NBA_SAR_ITEMS.find((i) => i.code === code);
       if (!item || item.computed || v > item.marks) throw new RuleRefusal("councilFilings.refuseScore", 422, undefined, "inputs");
     }
+    const nbaOver = partsOver(NBA_PART_WHOLES, input.inputs)[0];
+    if (nbaOver) throw await partsRefusal(nbaOver, nbaOver.metric, (k) => `insights.nbaLever.${k}`);
     const marks = nbaTotals(input.inputs).total;
     data = { kind: "NBA", cycleId: null, year: input.year, departmentId: dept.id, inputsJson: JSON.stringify(input.inputs), cgpa: null, marks, result: marks };
   }
@@ -560,6 +582,13 @@ export async function writeScenario(desk: Desk, input: ScenarioSave, id?: string
   });
   await audit({ schoolId: desk.schoolId, actorUserId: desk.userId, action: "iqac.scenario.save", targetType: "IqacScenario", targetId: created.id, meta: { kind: data.kind, name: input.name, result, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId } });
   return { id: created.id, kind: data.kind, cycleId: data.cycleId, year: data.year, departmentId: data.departmentId, result };
+}
+
+/** The refusal for a part above its whole, its figures named in the reader's language: "Students who passed cannot be more than students who appeared (2.6.3)." */
+async function partsRefusal(w: { metric: string; parts: readonly string[]; of: string | number }, metric: string, key: (fact: string) => string): Promise<RuleRefusal> {
+  const t = await getT();
+  const label = (k: string) => t(key(k) as TranslationKey);
+  return new RuleRefusal("insights.refusePartsOverWhole", 422, { parts: w.parts.map(label).join(" + "), whole: typeof w.of === "number" ? String(w.of) : label(w.of), metric }, "inputs");
 }
 
 /** DELETE /api/v1/iqac/scenarios/{id} — the IQAC or the principal any; an HOD their department's NBA ones (404 for another's). */

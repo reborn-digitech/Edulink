@@ -16,7 +16,8 @@ import { MONEY_READ, collegeDesk } from "./college-office";
  */
 export async function lookupStudents(ctx: ActiveContext, q: string): Promise<AccountsLookup> {
   const desk = await collegeDesk(ctx, MONEY_READ);
-  const needle = q.trim();
+  // LIKE's own wildcards typed in the box are letters, not patterns (A3-S-15): "__" and "%%" listed twenty students.
+  const needle = q.trim().replace(/[\\%_]/g, (c) => `\\${c}`);
   const rows = await db.membership.findMany({
     where: {
       schoolId: desk.schoolId,

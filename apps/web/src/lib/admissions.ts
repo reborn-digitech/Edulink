@@ -16,7 +16,8 @@ import { readJsonArray, writeJson, type Attachment } from "./json";
 import { discard } from "./uploads";
 import { studentCode } from "./codes";
 import { HANDLE_DOMAIN } from "./login-name";
-import { ageInYears, parseDateOnly, todayKey } from "./dates";
+import { addDaysToKey, ageInYears, dateKeyInZone, formatDateKey, isDateKey, parseDateOnly, todayKey, zonedStartOfDay } from "./dates";
+import { schoolBirthdateProblem } from "./birthdate-rules";
 import { CONSENT_AGE, CONTACTABLE_ROLES, type Role } from "./constants";
 import { regenerateDemands } from "./fees";
 import { issueFirstSignIn } from "./first-signin";
@@ -399,9 +400,42 @@ async function nextSerial(tx: typeof db, cycleId: string, yearName: string): Pro
 }
 
 async function openCycleForApplying(schoolId: string, cycleId: string) {
-  const cycle = await db.admissionCycle.findFirst({ where: { id: cycleId, schoolId }, include: { academicYear: { select: { name: true } } } });
+  const cycle = await db.admissionCycle.findFirst({ where: { id: cycleId, schoolId }, include: { academicYear: { select: { name: true, startDate: true } } } });
   if (!cycle) throw new AccessError("admissions.notFound", "NOT_FOUND");
   return cycle;
+}
+
+/**
+ * The child's date of birth on an application or an admission (A3-journeys-5):
+ * not in the future, and of an age the grade takes at the start of the
+ * cycle's year (birthdate-rules.ts: grade + 3 to grade + 8). Refused with a
+ * sentence; an absent date is not checked here (the PEN link asks for it).
+ */
+function checkBirthdate(birthdate: Date | null, grade: string, yearStart: Date): void {
+  const problem = schoolBirthdateProblem(birthdate, grade, yearStart);
+  if (!problem) return;
+  if (problem.kind === "grade") throw new AccessError("admissions.refuseBirthdateGrade", "FORBIDDEN", { grade: problem.grade, min: problem.min, max: problem.max });
+  throw new AccessError("admissions.refuseBirthdateFuture");
+}
+
+/**
+ * The entrance-test score (A3-journeys-24): a number from 0 to 100, or marks
+ * out of a total ("38/50", the total at most 1,000), with at most two
+ * decimals; blank is no score (a note alone may be recorded). The note is its
+ * own field — "78; excellent!!" is refused here and the words go in the note.
+ */
+export function parseTestScore(raw: string | null | undefined): { ok: true; score: string | null } | { ok: false } {
+  const text = (raw ?? "").trim();
+  if (text === "") return { ok: true, score: null };
+  const num = String.raw`\d{1,4}(?:\.\d{1,2})?`;
+  const out = new RegExp(`^(${num})\\s*/\\s*(${num})$`).exec(text);
+  if (out) {
+    const got = Number(out[1]);
+    const of = Number(out[2]);
+    return of > 0 && of <= 1000 && got <= of ? { ok: true, score: `${out[1]}/${out[2]}` } : { ok: false };
+  }
+  if (!new RegExp(`^${num}$`).test(text)) return { ok: false };
+  return Number(text) <= 100 ? { ok: true, score: text } : { ok: false };
 }
 
 /**
@@ -419,6 +453,7 @@ export async function apply(ctx: ActiveContext, input: ApplicationSave & { schoo
     const openNow = await openCycleOf(school.id);
     if (!openNow || openNow.cycleId !== cycle.id) throw new AccessError("admissions.refuseClosed");
     if (!parseGrades(cycle.gradesJson).some((g) => g.grade === input.gradeApplied)) throw new AccessError("admissions.refuseGrade");
+    checkBirthdate(input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, input.gradeApplied, cycle.academicYear.startDate);
     const twin = await db.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: caller.user.id, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
     if (twin) return { id: twin.id, created: false };
     const created = await db.$tenantTransaction(async (raw) => {
@@ -453,6 +488,7 @@ export async function officeApply(ctx: ActiveContext, input: ApplicationSave): P
   const cycle = await openCycleForApplying(caller.schoolId, input.cycleId);
   if (cycle.status === "CLOSED") throw new AccessError("admissions.refuseClosed");
   if (!parseGrades(cycle.gradesJson).some((g) => g.grade === input.gradeApplied)) throw new AccessError("admissions.refuseGrade");
+  checkBirthdate(input.childBirthdate ? parseDateOnly(input.childBirthdate) : null, input.gradeApplied, cycle.academicYear.startDate);
   const twin = await db.application.findFirst({ where: { cycleId: cycle.id, applicantUserId: null, applicantName: { equals: input.applicantName.trim(), mode: "insensitive" }, childName: { equals: input.childName, mode: "insensitive" }, status: { not: "WITHDRAWN" } }, select: { id: true } });
   if (twin) return applicationView(ctx, twin.id);
   const created = await db.$tenantTransaction(async (raw) => {
@@ -697,7 +733,7 @@ export async function withdraw(ctx: ActiveContext, applicationId: string): Promi
 
 async function officeApplication(ctx: ActiveContext, applicationId: string) {
   const caller = office(ctx);
-  const a = await db.application.findFirst({ where: { id: applicationId, schoolId: caller.schoolId }, include: { cycle: { select: { id: true, testRequired: true, gradesJson: true, feeStructureId: true, academicYearId: true, academicYear: { select: { name: true } } } } } });
+  const a = await db.application.findFirst({ where: { id: applicationId, schoolId: caller.schoolId }, include: { cycle: { select: { id: true, testRequired: true, gradesJson: true, feeStructureId: true, academicYearId: true, academicYear: { select: { name: true, startDate: true } } } }, testSlot: { select: { startsAt: true } } } });
   if (!a) throw new AccessError("admissions.notFound", "NOT_FOUND");
   return { caller, a };
 }
@@ -724,9 +760,17 @@ export async function recordTest(ctx: ActiveContext, applicationId: string, inpu
   const { caller, a } = await officeApplication(ctx, applicationId);
   if (!a.cycle.testRequired) throw new AccessError("admissions.refuseNoTest");
   if (!LIVE.includes(a.status as AdmissionStatus)) throw new AccessError("admissions.refuseSettled");
+  const score = parseTestScore(input.score);
+  if (!score.ok) throw new AccessError("admissions.refuseTestScore");
+  // Not before the sitting (A3-journeys-24): a result for a sitting booked a fortnight ahead is not a result. By the school's day; no sitting booked (a test the office held in person) is not checked.
+  if (a.testSlot) {
+    const { timezone } = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
+    const sittingKey = dateKeyInZone(a.testSlot.startsAt, timezone);
+    if (todayKey(timezone) < sittingKey) throw new AccessError("admissions.refuseTestBeforeSitting", "FORBIDDEN", { date: formatDateKey(sittingKey, { day: "numeric", month: "numeric", year: "numeric" }) });
+  }
   const first = !a.testedAt;
-  await db.application.update({ where: { id: applicationId }, data: { testScore: input.score?.trim() || null, testNote: input.note?.trim() || null, testedAt: a.testedAt ?? new Date() } });
-  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.test", targetType: "Application", targetId: applicationId, meta: { hasScore: Boolean(input.score?.trim()) } });
+  await db.application.update({ where: { id: applicationId }, data: { testScore: score.score, testNote: input.note?.trim() || null, testedAt: a.testedAt ?? new Date() } });
+  await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.test", targetType: "Application", targetId: applicationId, meta: { hasScore: score.score !== null } });
   if (first) await tellApplicant(a, "admissions.notifTested");
   return applicationView(ctx, applicationId);
 }
@@ -741,8 +785,13 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
     const structure = await db.feeStructure.findFirst({ where: { id: feeStructureId, schoolId: caller.schoolId, publishedAt: { not: null }, archivedAt: null }, select: { id: true } });
     if (!structure) throw new AccessError("admissions.refuseStructure");
   }
-  const expires = input.expiresOn ? parseDateOnly(input.expiresOn) : null;
-  if (expires) expires.setUTCHours(23, 59, 59, 999);
+  // THE ANSWER-BY DAY (A3-journeys-3 and -4): today or later on the school's calendar, and the offer closes at the
+  // end of that day in the SCHOOL'S zone — the last instant before its midnight — so every reader in that zone prints
+  // the day the office typed and the family has the whole of it. It was 23:59:59.999 UTC: printed a day late in
+  // Kolkata and open until 05:29 the next morning; and a day already gone was accepted and the family told.
+  const { timezone } = await db.school.findUniqueOrThrow({ where: { id: caller.schoolId }, select: { timezone: true } });
+  if (input.expiresOn && (!isDateKey(input.expiresOn) || input.expiresOn < todayKey(timezone))) throw new AccessError("admissions.refuseOfferPast");
+  const expires = input.expiresOn ? new Date(zonedStartOfDay(addDaysToKey(input.expiresOn, 1), timezone).getTime() - 1) : null;
   await db.application.update({ where: { id: applicationId }, data: { status: "OFFERED", offeredAt: new Date(), offerExpiresAt: expires, offerNote: input.note?.trim() || null, respondedAt: null, decidedAt: null, decisionNote: null, feeStructureId } });
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "admissions.offer", targetType: "Application", targetId: applicationId, meta: { expires: input.expiresOn, hasStructure: Boolean(feeStructureId), from: effectiveStatus(a) } });
   await tellApplicant(a, "admissions.notifOffer", { grade: a.gradeApplied });
@@ -755,7 +804,7 @@ export async function offer(ctx: ActiveContext, applicationId: string, input: { 
     const w = wordsFor(locale);
     const vars = { name: a.childName, school: school.name, grade: a.gradeApplied };
     const lines = [w("admissions.emailBody", vars)];
-    if (input.expiresOn) lines.push(w("admissions.respondBy", { date: input.expiresOn }));
+    if (input.expiresOn) lines.push(w("admissions.respondBy", { date: formatDateKey(input.expiresOn, { day: "numeric", month: "numeric", year: "numeric" }) }));
     lines.push(a.applicantUserId ? w("admissions.emailOpen") : w("admissions.emailContactOffice"));
     await sendAdmissionOffer({ to: a.applicantEmail, subject: w("admissions.emailSubject", vars), heading: w("admissions.emailHeading", vars), lines, cta: a.applicantUserId ? { label: w("admissions.emailCta"), path: `/parent/applications/${applicationId}` } : null, locale }).catch((error) => console.error("[admissions] offer email failed", error));
   }
@@ -840,8 +889,13 @@ export async function admit(ctx: ActiveContext, applicationId: string, input: { 
   const taken = await db.application.count({ where: { cycleId: a.cycle.id, gradeApplied: a.gradeApplied, status: "ADMITTED" } });
   if (taken >= seats) throw new AccessError("admissions.refuseSeatsFull", "FORBIDDEN", { grade: a.gradeApplied, seats });
 
-  const klass = input.classId ? await db.class.findFirst({ where: { id: input.classId, schoolId: caller.schoolId, archivedAt: null }, select: { id: true, name: true } }) : null;
+  const klass = input.classId ? await db.class.findFirst({ where: { id: input.classId, schoolId: caller.schoolId, archivedAt: null }, select: { id: true, name: true, gradeLevel: true } }) : null;
   if (input.classId && !klass) throw new AccessError("admissions.notFound", "NOT_FOUND");
+  // The seat is in the grade applied for (A3-journeys-40): a class of another grade is refused, not quietly given.
+  // A class the school has given no grade cannot be checked and is taken as the office chose it.
+  if (klass?.gradeLevel && klass.gradeLevel.trim().toLowerCase() !== a.gradeApplied.trim().toLowerCase()) throw new AccessError("admissions.refuseClassGrade", "FORBIDDEN", { grade: a.gradeApplied });
+  // A date of birth written before the rule (A3-journeys-5) is not carried onto the roll.
+  checkBirthdate(a.childBirthdate, a.gradeApplied, a.cycle.academicYear.startDate);
   const feeStructureId = input.feeStructureId === undefined ? a.feeStructureId : input.feeStructureId;
   const structure = feeStructureId ? await db.feeStructure.findFirst({ where: { id: feeStructureId, schoolId: caller.schoolId, publishedAt: { not: null }, archivedAt: null }, select: { id: true, academicYearId: true } }) : null;
   if (feeStructureId && !structure) throw new AccessError("admissions.refuseStructure");

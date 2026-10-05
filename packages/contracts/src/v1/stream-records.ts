@@ -341,8 +341,9 @@ export const researchDeskSchema = z.object({
       books: z.number().int(),
       projects: z.number().int(),
       amountLakhs: z.number(),
-      apiScoreInputs: z.object({ teaching: z.number(), research: z.number(), service: z.number() }),
-      apiScore: z.number(),
+      /** The office's and the head's only; null to a member reading as the research dean (appraisal input, A3-S-11). */
+      apiScoreInputs: z.object({ teaching: z.number(), research: z.number(), service: z.number() }).nullable(),
+      apiScore: z.number().nullable(),
     }),
   ),
   byYear: z.array(z.object({ year: z.number().int(), publications: z.number().int(), projects: z.number().int(), amountLakhs: z.number() })),

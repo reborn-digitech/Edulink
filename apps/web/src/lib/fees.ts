@@ -485,6 +485,12 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
     if (removable.length) await tx.feeDemand.deleteMany({ where: { id: { in: removable } } });
     return { written: 0, kept: existing.length - removable.length };
   }
+  // A PUPIL ADMITTED PART-WAY THROUGH THE YEAR (A3-journeys-16): an instalment whose day fell before the admission
+  // date is due on the admission date instead, so a child admitted on 5 October is not "overdue" on day one with
+  // reminders already scheduled for a July term. The amount is the structure's; only the day moves. The admission
+  // date is the pupil record's (written by admissions, the college's admit and the office), date-only at UTC midnight.
+  const admitted = (await tx.pupilRecord.findUnique({ where: { studentMembershipId }, select: { admissionDate: true } }))?.admissionDate ?? null;
+  const dueOn = (day: Date) => (admitted && admitted.getTime() > day.getTime() ? admitted : day);
   // A college's concession above the office's limit waits for the principal (college-fees.ts): only an APPROVED one is applied.
   const concessions: ConcessionRow[] = await tx.feeConcession.findMany({ where: { schoolId, studentMembershipId, academicYearId, revokedAt: null, approvalStatus: "APPROVED" }, select: { headId: true, kind: true, value: true } });
   const wanted = new Set(plan.structure.instalments.map((i) => i.id));
@@ -504,7 +510,7 @@ export async function regenerateDemands(tx: typeof db, schoolId: string, student
       kept += 1;
       continue;
     }
-    const data = { label: inst.label, dueDate: inst.dueDate, grossPaise, concessionPaise, netPaise, linesJson: writeJson(lines), status: netPaise === 0 ? "PAID" : "OPEN" };
+    const data = { label: inst.label, dueDate: dueOn(inst.dueDate), grossPaise, concessionPaise, netPaise, linesJson: writeJson(lines), status: netPaise === 0 ? "PAID" : "OPEN" };
     if (current) await tx.feeDemand.update({ where: { id: current.id }, data });
     else await tx.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId, instalmentId: inst.id, ...data } });
     written += 1;

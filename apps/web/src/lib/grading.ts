@@ -6,6 +6,7 @@ import { writeJson, type Attachment } from "./json";
 import { publish, channel } from "./realtime";
 import { notify, notifyGuardians, notifyGuardiansOfClass } from "./notify";
 import { audit } from "./audit";
+import { RuleRefusal } from "./rule-refusal";
 import { finishedYearContaining } from "./academic-year";
 import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
@@ -380,11 +381,16 @@ export async function createAssignment(
     points?: number;
     dueAt?: string;
     publish: boolean;
+    /** The teacher means a due date already past; without it one is refused (A3-journeys-25). */
+    confirmPastDue?: boolean;
     /** Already stored by the caller — see the fileId convention in uploads.ts. */
     attachments?: Attachment[];
   },
 ): Promise<{ assignmentId: string; notified: number }> {
   await assertClassAccess(ctx, input.classId, { write: true });
+  // A due date already past is most often a slip of the month; it stands only when the teacher says so
+  // (the web's tick box, the phone's second press, the doors' confirmPastDue), before anything is written or told.
+  if (input.dueAt && new Date(input.dueAt).getTime() < Date.now() && !input.confirmPastDue) throw new RuleRefusal("teacher.refusePastDue", 422, undefined, "dueAt");
 
   const assignment = await db.assignment.create({
     data: {

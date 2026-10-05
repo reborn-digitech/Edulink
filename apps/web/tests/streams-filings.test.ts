@@ -48,6 +48,8 @@ import { GET as pciGet } from "@/app/api/v1/iqac/council/pci/route";
 import { GET as bciGet, POST as bciPost } from "@/app/api/v1/iqac/council/bci/route";
 import { GET as ncteGet, POST as nctePost } from "@/app/api/v1/iqac/council/ncte/route";
 import { GET as nbaGet, POST as nbaPost } from "@/app/api/v1/iqac/council/nba/route";
+import { GET as nbaInsightsGet } from "@/app/api/v1/iqac/insights/nba/route";
+import { GET as simulateNbaGet } from "@/app/api/v1/iqac/simulate/nba/route";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -441,6 +443,29 @@ describe("the NBA SAR of an engineering department", () => {
   });
 });
 
+describe("the SAR after its sign-off, and the year it opens on (audit of 5 October 2026)", () => {
+  it("keeps the worksheet read-only once the SAR is signed off, and opens the page, the insights and the simulator on the latest year with a report (A3-S-15, A3-journeys-34)", async () => {
+    // YEAR's SAR was signed off above: its worksheet is no longer written, and the page says so.
+    await as(ids.hodUser, ids.tech, "HOD");
+    const locked = await nbaPost(json("/x", { year: YEAR, items: [{ code: "1", score: 50 }] }));
+    expect(locked.status).toBe(409);
+    expect((await body(locked)).error).toBe("This report is signed off or filed, so its worksheet is read-only.");
+    const view = await body<{ canEdit: boolean; signedOff: boolean; items: { code: string; score: number | null }[] }>(await nbaGet(get(`/api/v1/iqac/council/nba?year=${YEAR}`)));
+    expect([view.canEdit, view.signedOff]).toEqual([false, true]);
+    expect(view.items.find((i) => i.code === "1")!.score).toBe(45);
+    // A report for the next year (a draft): with no year asked, every NBA page opens on it, not on the year today's date gives.
+    await as(ids.techIqac, ids.tech, "IQAC");
+    expect((await filingsPost(json("/api/v1/iqac/filings", { kind: "NBA_SAR", year: YEAR + 1, departmentId: ids.mech }))).status).toBe(200);
+    const opened = await body<{ year: number; canEdit: boolean; signedOff: boolean }>(await nbaGet(get("/api/v1/iqac/council/nba")));
+    expect([opened.year, opened.canEdit, opened.signedOff]).toEqual([YEAR + 1, true, false]);
+    expect((await body<{ year: number }>(await nbaInsightsGet(get("/api/v1/iqac/insights/nba")))).year).toBe(YEAR + 1);
+    expect((await body<{ year: number }>(await simulateNbaGet(get("/api/v1/iqac/simulate/nba")))).year).toBe(YEAR + 1);
+    // The draft's worksheet is still written, and the draft rebuilt in place with it.
+    expect((await nbaPost(json("/x", { year: YEAR + 1, departmentId: ids.mech, items: [{ code: "1", score: 40 }] }))).status).toBe(200);
+    expect((await filingsPost(json("/api/v1/iqac/filings", { kind: "NBA_SAR", year: YEAR + 1, departmentId: ids.mech }))).status).toBe(200);
+  });
+});
+
 describe("the fingerprint and the audit", () => {
   it("keeps every filing's hash its body's, and regenerating it from the rows gives the figures it printed (the data audit's iqac-filing check)", async () => {
     await as(ids.techIqac, ids.tech, "IQAC");
@@ -454,7 +479,8 @@ describe("the fingerprint and the audit", () => {
     }
     // The worksheet saves and the generations are in the colleges' own logs, with words for the audit page.
     const saves = await db.auditLog.findMany({ where: { schoolId: { in: [ids.law, ids.tech] }, action: "iqac.worksheet.save" }, select: { meta: true } });
-    expect(saves.map((s) => (JSON.parse(s.meta) as { kind: string }).kind).sort()).toEqual(["BCI_RETURN", "NBA_SAR", "NCTE_RETURN"]);
+    // NBA_SAR twice: the HOD's YEAR criteria, and the next year's draft written after the sign-off of YEAR's (A3-S-15 above).
+    expect(saves.map((s) => (JSON.parse(s.meta) as { kind: string }).kind).sort()).toEqual(["BCI_RETURN", "NBA_SAR", "NBA_SAR", "NCTE_RETURN"]);
     expect(await db.auditLog.count({ where: { schoolId: ids.tech, action: "iqac.filing.generate", targetType: "CollegeFiling" } })).toBeGreaterThanOrEqual(5);
     expect(actionKey("iqac.worksheet.save")).toBe("audit.iqacWorksheetSave");
   });

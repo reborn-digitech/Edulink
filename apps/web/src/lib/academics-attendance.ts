@@ -7,7 +7,7 @@ import { RuleRefusal } from "./rule-refusal";
 import { audit } from "./audit";
 import { notify, notifyGuardians } from "./notify";
 import { parentMaySee } from "./student-consent";
-import { addDaysToKey, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
+import { addDaysToKey, dateKeyInZone, dateKeyRange, isDateKey, parseTeachingDays, todayKey, weekdayOfKey } from "./dates";
 import { academicsCaller, currentTerm, divisionNames, ensureLecturesForDay, hodDepartment, nameOf, type Caller } from "./academics";
 import { canMissMore, isEligible, percentOf } from "./academics-rules";
 import { batchMemberIds, holdsOn, memberOn } from "./stream-records";
@@ -266,6 +266,28 @@ export async function myLectures(ctx: ActiveContext, date?: string): Promise<z.i
   return lecturesFor(c, date);
 }
 
+/**
+ * Whether the exam cell has decided eligibility FROM this lecture's day (campaign S-22, narrowed by
+ * A3-journeys-7). Eligibility is a snapshot taken when a form is submitted (exam-cell.ts, the form's
+ * eligibilityJson), and nothing re-reads the register for a form past draft, so a lecture dated after
+ * the snapshot cannot disturb a decision: it is recorded, as the term runs on. A lecture on or before
+ * the day of a snapshot that counted it stays frozen — a change there would leave the decision and the
+ * register disagreeing; a correction is the condonation's. The snapshots that count: a form past draft
+ * of a student in this batch, and, once the term's regular session has moved past its forms, any form
+ * of it. A form past draft with no submission time freezes the lecture whatever its day.
+ * One query, inside the marking transaction (the cost held by tests/academics-mark-cost.test.ts).
+ */
+async function decidedOn(tx: typeof db, c: Pick<Caller, "schoolId" | "timeZone">, termId: string, dateKey: string, students: readonly string[]): Promise<boolean> {
+  const snap = await tx.examForm.aggregate({
+    where: { schoolId: c.schoolId, status: { not: "DRAFT" }, session: { termId, kind: "REGULAR" }, OR: [{ studentMembershipId: { in: [...students] } }, { session: { status: { in: ["CONDUCT", "ASSESSMENT", "PUBLISHED", "CLOSED"] } } }] },
+    _count: { _all: true, submittedAt: true },
+    _max: { submittedAt: true },
+  });
+  if (snap._count._all === 0) return false;
+  if (snap._count.submittedAt < snap._count._all || !snap._max.submittedAt) return true;
+  return dateKey <= dateKeyInZone(snap._max.submittedAt, c.timeZone);
+}
+
 /** Who may mark a lecture: its faculty member (unless someone stands in), the one standing in, or the department's HOD. */
 async function lectureFor(c: Caller, lectureId: string, mode: "read" | "mark") {
   const lecture = await db.lecture.findFirst({ where: { id: lectureId, schoolId: c.schoolId }, select: { ...LECTURE_SELECT, cancelledAt: true, offering: { select: { ...LECTURE_SELECT.offering.select, termId: true } } } });
@@ -298,7 +320,9 @@ export async function lectureSheet(ctx: ActiveContext, lectureId: string): Promi
     })
     .sort((a, b) => (a.rollNumber ?? 9999) - (b.rollNumber ?? 9999) || a.name.localeCompare(b.name));
   const today = todayKey(c.timeZone);
-  return { lecture: (await lectureRows([lecture], c.membershipId))[0]!, threshold: term.course.scheme.programme.attendanceThreshold, canMark: canMark && lecture.dateKey <= today && !lecture.cancelledAt, entries };
+  // Said up front (A3-journeys-7): a lecture the eligibility was decided from offers no Save, with the reason.
+  const frozen = entries.length > 0 && (await decidedOn(db, c, term.termId, lecture.dateKey, entries.map((e) => e.studentMembershipId)));
+  return { lecture: (await lectureRows([lecture], c.membershipId))[0]!, threshold: term.course.scheme.programme.attendanceThreshold, canMark: canMark && lecture.dateKey <= today && !lecture.cancelledAt && !frozen, frozen, entries };
 }
 
 /**
@@ -342,15 +366,7 @@ export async function markLecture(ctx: ActiveContext, lectureId: string, input: 
       const members = new Set((await tx.labBatchMember.findMany({ where: { batchId: lecture.labBatchId, studentMembershipId: { in: students }, ...memberOn(lecture.dateKey) }, select: { studentMembershipId: true } })).map((m) => m.studentMembershipId));
       if (students.some((s) => !members.has(s))) throw new RuleRefusal("streamRecords.refuseNotInBatch", 422, undefined, "entries");
     }
-    // Frozen once the exam cell has decided the term's eligibility from it (campaign S-22): when the
-    // term's regular session has moved past its forms, or a student here has a form past draft, whose
-    // eligibility was snapshotted at submission. A later change would leave the decision and the
-    // register disagreeing; a correction after that is the condonation's, not the register's.
-    const decided = await tx.examForm.findFirst({
-      where: { schoolId: c.schoolId, session: { termId: lecture.offering.termId, kind: "REGULAR" }, OR: [{ studentMembershipId: { in: students }, status: { not: "DRAFT" } }, { session: { status: { in: ["CONDUCT", "ASSESSMENT", "PUBLISHED", "CLOSED"] } } }] },
-      select: { id: true },
-    });
-    if (decided) throw new RuleRefusal("academics.refuseAttendanceFrozen", 409);
+    if (await decidedOn(tx, c, lecture.offering.termId, lecture.dateKey, students)) throw new RuleRefusal("academics.refuseAttendanceFrozen", 409);
     const prior = new Map((await tx.lectureAttendance.findMany({ where: { lectureId, studentMembershipId: { in: students } }, select: { studentMembershipId: true, status: true } })).map((r) => [r.studentMembershipId, r.status]));
     const fresh = students.filter((s) => !prior.has(s));
     const created = fresh.length ? (await tx.lectureAttendance.createMany({ data: fresh.map((s) => ({ schoolId: c.schoolId, lectureId, studentMembershipId: s, status: statusOf.get(s)!, markedByMembershipId: c.membershipId, clientId: input.clientId })), skipDuplicates: true })).count : 0;

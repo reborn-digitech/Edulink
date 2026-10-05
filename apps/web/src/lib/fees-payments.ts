@@ -104,7 +104,7 @@ async function recomputeDemands(tx: Tx, demandIds: string[]): Promise<void> {
 
 type ReceiptSnapshot = {
   school: { name: string; addressLine: string | null; city: string | null; contactPhone: string | null; bankNote: string | null };
-  pupil: { name: string; studentCode: string | null; className: string | null; gradeLevel: string | null };
+  pupil: { name: string; studentCode: string | null; admissionNumber?: string | null; className: string | null; gradeLevel: string | null };
   payment: { amountPaise: number; method: string; reference: string | null; gatewayMethod: string | null; paidAt: string; collectedBy: string | null; note: string | null };
   year: string;
   lines: { demandLabel: string; head: string; code: string; amountPaise: number }[];
@@ -120,7 +120,7 @@ type ReceiptSnapshot = {
 async function issueReceipt(tx: Tx, schoolId: string, payment: { id: string; studentMembershipId: string; amountPaise: number; method: string; reference: string | null; gatewayMethod: string | null; paidAt: Date; note: string | null; collectedByUserId: string | null }, allocations: { demandId: string; amountPaise: number }[]): Promise<{ id: string; serial: string }> {
   const [school, pupil, demands] = await Promise.all([
     tx.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true, addressLine: true, city: true, contactPhone: true, feeBankNote: true, feeReceiptPrefix: true } }),
-    tx.membership.findUniqueOrThrow({ where: { id: payment.studentMembershipId }, select: { studentCode: true, gradeLevel: true, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } }),
+    tx.membership.findUniqueOrThrow({ where: { id: payment.studentMembershipId }, select: { studentCode: true, gradeLevel: true, pupilRecord: { select: { admissionNumber: true } }, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { name: true } } }, take: 1 } } }),
     tx.feeDemand.findMany({ where: { id: { in: allocations.map((a) => a.demandId) } }, select: { id: true, label: true, academicYearId: true, linesJson: true, netPaise: true }, orderBy: [{ dueDate: "asc" }, { createdAt: "asc" }] }),
   ]);
   // The receipt is numbered in the year of the EARLIEST-DUE demand the money
@@ -155,7 +155,7 @@ async function issueReceipt(tx: Tx, schoolId: string, payment: { id: string; stu
   }
   const snapshot: ReceiptSnapshot = {
     school: { name: school.name, addressLine: school.addressLine, city: school.city, contactPhone: school.contactPhone, bankNote: school.feeBankNote },
-    pupil: { name: pupil.user.preferredName ?? pupil.user.name, studentCode: pupil.studentCode, className: pupil.enrollments[0]?.class.name ?? null, gradeLevel: pupil.gradeLevel },
+    pupil: { name: pupil.user.preferredName ?? pupil.user.name, studentCode: pupil.studentCode, admissionNumber: pupil.pupilRecord?.admissionNumber ?? null, className: pupil.enrollments[0]?.class.name ?? null, gradeLevel: pupil.gradeLevel },
     payment: { amountPaise: payment.amountPaise, method: payment.method, reference: payment.reference, gatewayMethod: payment.gatewayMethod, paidAt: payment.paidAt.toISOString(), collectedBy: collectedBy?.name ?? null, note: payment.note },
     year: year.name,
     lines,
@@ -845,7 +845,8 @@ export async function receiptFor(ctx: ActiveContext, receiptId: string): Promise
 /* -------------------------------------------------------------------------- */
 
 export type FamilyFees = {
-  children: { studentMembershipId: string; name: string; schoolId: string; schoolName: string }[];
+  /** Every child whose money this guardian may see; one who has left the school is kept, with the day (A3-journeys-15). */
+  children: { studentMembershipId: string; name: string; schoolId: string; schoolName: string; leftAt: Date | null }[];
   child: {
     studentMembershipId: string;
     name: string;
@@ -872,7 +873,11 @@ export async function familyFees(ctx: ActiveContext, childId?: string): Promise<
   const visible: typeof links = [];
   for (const l of links) if (await parentMaySee(l.studentMembershipId, "MONEY")) visible.push(l);
   if (childId && !visible.some((l) => l.studentMembershipId === childId) && links.some((l) => l.studentMembershipId === childId)) throw new AccessError("consent.refuseNotGranted");
-  const children = visible.filter((l) => !l.student.leftAt).map((l) => ({ studentMembershipId: l.studentMembershipId, name: l.student.user.preferredName ?? l.student.user.name, schoolId: l.student.school.id, schoolName: l.student.school.name }));
+  // A child who has left stays in the chooser, labelled (A3-journeys-15): what was demanded before the last day is
+  // still the family's to read and to pay. Those still at school first; the first of them is the one shown.
+  const children = visible
+    .map((l) => ({ studentMembershipId: l.studentMembershipId, name: l.student.user.preferredName ?? l.student.user.name, schoolId: l.student.school.id, schoolName: l.student.school.name, leftAt: l.student.leftAt }))
+    .sort((a, b) => Number(a.leftAt !== null) - Number(b.leftAt !== null));
   const link = visible.find((l) => l.studentMembershipId === (childId ?? children[0]?.studentMembershipId));
   if (!link) return { children, child: null };
   const school = link.student.school;

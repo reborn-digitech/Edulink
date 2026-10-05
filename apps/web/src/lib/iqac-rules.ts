@@ -41,6 +41,15 @@ export type FormulaSpec = {
   lever: { fact: string; step: number };
   /** What one unit of the lever is called: a dictionary key's last part, `iqac.unit.<unit>`. */
   unit: string;
+  /**
+   * A PART AND ITS WHOLE (audit of 5 Oct 2026, A3-journeys-13): the facts that
+   * are, by NAAC's definition, a subset of another the formula reads — passed
+   * of appeared, PhD teachers of full-time teachers — so their sum is never
+   * above it. The simulator holds a part to its whole and a stored scenario
+   * that breaks one is refused. A percentage of two figures without one is
+   * in MAY_EXCEED with the reason.
+   */
+  whole?: { parts: readonly string[]; of: string };
 };
 
 const pct = (num: number, den: number) => (den > 0 ? (num / den) * 100 : null);
@@ -59,21 +68,21 @@ export const FORMULAS: Record<NaacFormulaId, FormulaSpec> = {
   PROJECT_WORK_PCT: { inputs: ["projectStudents", "studentsLatest"], compute: (f) => share(f.projectStudents!, f.studentsLatest!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "projectStudents", step: 1 }, unit: "student" },
   FEEDBACK_STAKEHOLDERS: { inputs: ["feedbackStakeholders"], compute: (f) => f.feedbackStakeholders!, scale: { type: "options" }, lever: { fact: "feedbackStakeholders", step: 1 }, unit: "stakeholder" },
   FEEDBACK_PROCESS: { inputs: ["feedbackProcess"], compute: (f) => f.feedbackProcess!, scale: { type: "options" }, lever: { fact: "feedbackProcess", step: 1 }, unit: "step" },
-  SYLLABUS_REVISION_PCT: { inputs: ["programmesRevised", "programmes"], compute: (f) => pct(f.programmesRevised!, f.programmes!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "programmesRevised", step: 1 }, unit: "programme" },
-  EMPLOYABILITY_COURSES_PCT: { inputs: ["employabilityCourses", "totalCourses"], compute: (f) => pct(f.employabilityCourses!, f.totalCourses!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "employabilityCourses", step: 1 }, unit: "course" },
-  NEW_COURSES_PCT: { inputs: ["newCourses", "totalCourses"], compute: (f) => pct(f.newCourses!, f.totalCourses!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "newCourses", step: 1 }, unit: "course" },
-  CBCS_PCT: { inputs: ["cbcsProgrammes", "programmes"], compute: (f) => pct(f.cbcsProgrammes!, f.programmes!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "cbcsProgrammes", step: 1 }, unit: "programme" },
+  SYLLABUS_REVISION_PCT: { inputs: ["programmesRevised", "programmes"], compute: (f) => pct(f.programmesRevised!, f.programmes!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "programmesRevised", step: 1 }, unit: "programme", whole: { parts: ["programmesRevised"], of: "programmes" } },
+  EMPLOYABILITY_COURSES_PCT: { inputs: ["employabilityCourses", "totalCourses"], compute: (f) => pct(f.employabilityCourses!, f.totalCourses!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "employabilityCourses", step: 1 }, unit: "course", whole: { parts: ["employabilityCourses"], of: "totalCourses" } },
+  NEW_COURSES_PCT: { inputs: ["newCourses", "totalCourses"], compute: (f) => pct(f.newCourses!, f.totalCourses!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "newCourses", step: 1 }, unit: "course", whole: { parts: ["newCourses"], of: "totalCourses" } },
+  CBCS_PCT: { inputs: ["cbcsProgrammes", "programmes"], compute: (f) => pct(f.cbcsProgrammes!, f.programmes!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "cbcsProgrammes", step: 1 }, unit: "programme", whole: { parts: ["cbcsProgrammes"], of: "programmes" } },
   ENROLMENT_PCT: { inputs: ["admitted", "sanctionedSeats"], compute: (f) => pct(f.admitted!, f.sanctionedSeats!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "admitted", step: 1 }, unit: "student" },
   RESERVED_SEATS_PCT: { inputs: ["reservedAdmitted", "reservedEarmarked"], compute: (f) => pct(f.reservedAdmitted!, f.reservedEarmarked!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "reservedAdmitted", step: 1 }, unit: "student" },
   STUDENT_TEACHER_RATIO: { inputs: ["studentsLatest", "fullTimeTeachers"], compute: (f) => per(f.studentsLatest!, f.fullTimeTeachers!), scale: { type: "lowBetter", benchmark: 20 }, lever: { fact: "fullTimeTeachers", step: 1 }, unit: "teacher" },
   MENTOR_RATIO: { inputs: ["studentsLatest", "mentors"], compute: (f) => per(f.studentsLatest!, f.mentors!), scale: { type: "lowBetter", benchmark: 20 }, lever: { fact: "mentors", step: 1 }, unit: "mentor" },
   FULLTIME_VS_SANCTIONED_PCT: { inputs: ["fullTimeTeachers", "sanctionedPosts"], compute: (f) => pct(f.fullTimeTeachers!, f.sanctionedPosts!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "fullTimeTeachers", step: 1 }, unit: "teacher" },
-  PHD_NET_PCT: { inputs: ["phdNetTeachers", "fullTimeTeachers"], compute: (f) => pct(f.phdNetTeachers!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 75 }, lever: { fact: "phdNetTeachers", step: 1 }, unit: "teacher" },
+  PHD_NET_PCT: { inputs: ["phdNetTeachers", "fullTimeTeachers"], compute: (f) => pct(f.phdNetTeachers!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 75 }, lever: { fact: "phdNetTeachers", step: 1 }, unit: "teacher", whole: { parts: ["phdNetTeachers"], of: "fullTimeTeachers" } },
   TEACHING_EXPERIENCE: { inputs: ["experienceTotalYears", "fullTimeTeachers"], compute: (f) => per(f.experienceTotalYears!, f.fullTimeTeachers!), scale: { type: "count", benchmark: 15 }, lever: { fact: "experienceTotalYears", step: 1 }, unit: "year" },
-  TEACHER_AWARDS_PCT: { inputs: ["teachersAwarded", "fullTimeTeachers"], compute: (f) => pct(f.teachersAwarded!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "teachersAwarded", step: 1 }, unit: "teacher" },
+  TEACHER_AWARDS_PCT: { inputs: ["teachersAwarded", "fullTimeTeachers"], compute: (f) => pct(f.teachersAwarded!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "teachersAwarded", step: 1 }, unit: "teacher", whole: { parts: ["teachersAwarded"], of: "fullTimeTeachers" } },
   RESULT_DAYS: { inputs: ["resultDaysAvg"], compute: (f) => f.resultDaysAvg!, scale: { type: "lowBetter", benchmark: 30 }, lever: { fact: "resultDaysAvg", step: -1 }, unit: "day" },
   EVAL_GRIEVANCE_PCT: { inputs: ["evalGrievances", "examAppeared"], compute: (f) => pct(f.evalGrievances!, f.examAppeared!), scale: { type: "linearLow", zeroAt: 10 }, lever: { fact: "evalGrievances", step: -1 }, unit: "complaint" },
-  PASS_PCT: { inputs: ["passed", "appeared"], compute: (f) => pct(f.passed!, f.appeared!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "passed", step: 1 }, unit: "student" },
+  PASS_PCT: { inputs: ["passed", "appeared"], compute: (f) => pct(f.passed!, f.appeared!), scale: { type: "percent", benchmark: 100 }, lever: { fact: "passed", step: 1 }, unit: "student", whole: { parts: ["passed"], of: "appeared" } },
   SSS: { inputs: ["sssMean"], compute: (f) => f.sssMean!, scale: { type: "direct" }, lever: { fact: "sssMean", step: 0.1 }, unit: "tenth" },
   SEED_MONEY: { inputs: ["seedLakhs"], compute: (f) => f.seedLakhs!, scale: { type: "count", benchmark: 10 }, lever: { fact: "seedLakhs", step: 1 }, unit: "lakh" },
   RESEARCH_GRANTS: { inputs: ["grantLakhs"], compute: (f) => f.grantLakhs!, scale: { type: "count", benchmark: 50 }, lever: { fact: "grantLakhs", step: 1 }, unit: "lakh" },
@@ -86,25 +95,57 @@ export const FORMULAS: Record<NaacFormulaId, FormulaSpec> = {
   EXTENSION_STUDENT_PCT: { inputs: ["extensionParticipants", "studentYears"], compute: (f) => share(f.extensionParticipants!, f.studentYears!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "extensionParticipants", step: 1 }, unit: "student" },
   COLLABORATIONS: { inputs: ["collaborations"], compute: (f) => f.collaborations!, scale: { type: "count", benchmark: 20 }, lever: { fact: "collaborations", step: 1 }, unit: "activity" },
   MOUS: { inputs: ["mous"], compute: (f) => f.mous!, scale: { type: "count", benchmark: 10 }, lever: { fact: "mous", step: 1 }, unit: "mou" },
-  INFRA_EXPENDITURE_PCT: { inputs: ["infraLakhs", "nonSalaryLakhs"], compute: (f) => pct(f.infraLakhs!, f.nonSalaryLakhs!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "infraLakhs", step: 1 }, unit: "lakh" },
+  INFRA_EXPENDITURE_PCT: { inputs: ["infraLakhs", "nonSalaryLakhs"], compute: (f) => pct(f.infraLakhs!, f.nonSalaryLakhs!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "infraLakhs", step: 1 }, unit: "lakh", whole: { parts: ["infraLakhs"], of: "nonSalaryLakhs" } },
   STUDENT_COMPUTER_RATIO: { inputs: ["studentsLatest", "computers"], compute: (f) => per(f.studentsLatest!, f.computers!), scale: { type: "lowBetter", benchmark: 20 }, lever: { fact: "computers", step: 1 }, unit: "computer" },
   BANDWIDTH: { inputs: ["bandwidthMbps"], compute: (f) => f.bandwidthMbps!, scale: { type: "bands", bands: [[50, 4], [35, 3], [20, 2], [5, 1]] }, lever: { fact: "bandwidthMbps", step: 1 }, unit: "mbps" },
-  MAINTENANCE_EXPENDITURE_PCT: { inputs: ["maintenanceLakhs", "nonSalaryLakhs"], compute: (f) => pct(f.maintenanceLakhs!, f.nonSalaryLakhs!), scale: { type: "percent", benchmark: 30 }, lever: { fact: "maintenanceLakhs", step: 1 }, unit: "lakh" },
+  MAINTENANCE_EXPENDITURE_PCT: { inputs: ["maintenanceLakhs", "nonSalaryLakhs"], compute: (f) => pct(f.maintenanceLakhs!, f.nonSalaryLakhs!), scale: { type: "percent", benchmark: 30 }, lever: { fact: "maintenanceLakhs", step: 1 }, unit: "lakh", whole: { parts: ["maintenanceLakhs"], of: "nonSalaryLakhs" } },
   SCHOLARSHIP_PCT: { inputs: ["scholarshipBeneficiaries", "studentYears"], compute: (f) => share(f.scholarshipBeneficiaries!, f.studentYears!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "scholarshipBeneficiaries", step: 1 }, unit: "student" },
   CAPACITY_BUILDING: { inputs: ["capacityThemes"], compute: (f) => f.capacityThemes!, scale: { type: "options" }, lever: { fact: "capacityThemes", step: 1 }, unit: "skill" },
   CAREER_GUIDANCE_PCT: { inputs: ["careerGuidanceParticipants", "studentYears"], compute: (f) => share(f.careerGuidanceParticipants!, f.studentYears!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "careerGuidanceParticipants", step: 1 }, unit: "student" },
   GRIEVANCE_MECHANISM: { inputs: ["grievanceOptions"], compute: (f) => f.grievanceOptions!, scale: { type: "options" }, lever: { fact: "grievanceOptions", step: 1 }, unit: "option" },
-  PROGRESSION_PCT: { inputs: ["placed", "higherStudies", "outgoing"], compute: (f) => share(f.placed! + f.higherStudies!, f.outgoing!), scale: { type: "percent", benchmark: 75 }, lever: { fact: "placed", step: 1 }, unit: "student" },
+  PROGRESSION_PCT: { inputs: ["placed", "higherStudies", "outgoing"], compute: (f) => share(f.placed! + f.higherStudies!, f.outgoing!), scale: { type: "percent", benchmark: 75 }, lever: { fact: "placed", step: 1 }, unit: "student", whole: { parts: ["placed", "higherStudies"], of: "outgoing" } },
   COMPETITIVE_EXAMS_PCT: { inputs: ["competitiveQualified", "outgoing"], compute: (f) => share(f.competitiveQualified!, f.outgoing!), scale: { type: "percent", benchmark: 20 }, lever: { fact: "competitiveQualified", step: 1 }, unit: "student" },
   STUDENT_AWARDS: { inputs: ["studentAwards"], compute: (f) => f.studentAwards!, scale: { type: "count", benchmark: 20 }, lever: { fact: "studentAwards", step: 1 }, unit: "award" },
   EVENTS_PER_YEAR: { inputs: ["sportsCulturalEvents", "windowYears"], compute: (f) => per(f.sportsCulturalEvents!, f.windowYears!), scale: { type: "count", benchmark: 10 }, lever: { fact: "sportsCulturalEvents", step: 1 }, unit: "event" },
   EGOVERNANCE: { inputs: ["egovOptions"], compute: (f) => f.egovOptions!, scale: { type: "options" }, lever: { fact: "egovOptions", step: 1 }, unit: "area" },
-  TEACHER_SUPPORT_PCT: { inputs: ["teachersSupported", "fullTimeTeachers"], compute: (f) => pct(f.teachersSupported!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "teachersSupported", step: 1 }, unit: "teacher" },
-  FDP_PCT: { inputs: ["staffInFdp", "staffTotal"], compute: (f) => pct(f.staffInFdp!, f.staffTotal!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "staffInFdp", step: 1 }, unit: "person" },
+  TEACHER_SUPPORT_PCT: { inputs: ["teachersSupported", "fullTimeTeachers"], compute: (f) => pct(f.teachersSupported!, f.fullTimeTeachers!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "teachersSupported", step: 1 }, unit: "teacher", whole: { parts: ["teachersSupported"], of: "fullTimeTeachers" } },
+  FDP_PCT: { inputs: ["staffInFdp", "staffTotal"], compute: (f) => pct(f.staffInFdp!, f.staffTotal!), scale: { type: "percent", benchmark: 50 }, lever: { fact: "staffInFdp", step: 1 }, unit: "person", whole: { parts: ["staffInFdp"], of: "staffTotal" } },
   QA_INITIATIVES: { inputs: ["qaOptions"], compute: (f) => f.qaOptions!, scale: { type: "options" }, lever: { fact: "qaOptions", step: 1 }, unit: "option" },
   GREEN_FACILITIES: { inputs: ["greenOptions"], compute: (f) => f.greenOptions!, scale: { type: "options" }, lever: { fact: "greenOptions", step: 1 }, unit: "option" },
   QUALITY_AUDITS: { inputs: ["auditOptions"], compute: (f) => f.auditOptions!, scale: { type: "options" }, lever: { fact: "auditOptions", step: 1 }, unit: "audit" },
 };
+
+/**
+ * The percentages of two figures whose numerator may honestly pass its
+ * denominator, and so declare no `whole` (a test holds that every percentage
+ * of two or more figures has one or the other).
+ */
+export const MAY_EXCEED: Partial<Record<NaacFormulaId, true>> = {
+  // Participants are counted by head across courses; share() caps the value at 100 %.
+  VALUE_ADDED_ENROLMENT_PCT: true,
+  // Students in projects are counted by head across projects; share() caps the value at 100 %.
+  PROJECT_WORK_PCT: true,
+  // Supernumerary seats admit above the sanctioned intake.
+  ENROLMENT_PCT: true,
+  // Reserved-category students admitted on open merit add to those on earmarked seats.
+  RESERVED_SEATS_PCT: true,
+  // A college may employ teachers beyond its sanctioned posts.
+  FULLTIME_VS_SANCTIONED_PCT: true,
+  // Participants are counted by head across programmes; share() caps the value at 100 %.
+  EXTENSION_STUDENT_PCT: true,
+  // Beneficiaries are counted per student per year over the student-years; share() caps the value at 100 %.
+  SCHOLARSHIP_PCT: true,
+  // Participants are counted by head across sessions; share() caps the value at 100 %.
+  CAREER_GUIDANCE_PCT: true,
+  // Qualifiers are counted by head across examinations; share() caps the value at 100 %.
+  COMPETITIVE_EXAMS_PCT: true,
+};
+
+/** NIRF's figures that are parts of a whole: the three experience fractions of one, placed and higher-studies shares of a hundred. */
+export const NIRF_WHOLES: readonly { metric: string; parts: readonly (keyof NirfFacts)[]; of: number }[] = [
+  { metric: "FQE", parts: ["f1", "f2", "f3"], of: 1 },
+  { metric: "GPH", parts: ["placedPct", "higherPct"], of: 100 },
+];
 
 const clamp4 = (x: number) => Math.max(0, Math.min(4, x));
 /** Two decimals, as NAAC prints a CGPA. */

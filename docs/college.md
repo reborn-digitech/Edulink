@@ -241,8 +241,9 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   the college doors; Playwright; Hindi and Marathi read by a speaker.
 - Built on 5 October 2026 and so no longer "not built": the faculty public profile (opt-in), a refund outside
   the slab and a hostel expulsion as principal approvals, the night-out register and the curfew at the gate.
-  Still not built: the phone's permission-slip composer, the phone warden's night view, a web `/id-check`
-  page (the ID card's QR has only its API door).
+  Still not built: the phone's permission-slip composer. The phone warden's night view is built
+  (`screens/hostel/warden.tsx`), and since the audit of 5 October the card's QR opens a staff-only web
+  `/id-check` page and carries a signed card id instead of the guardian-claim code.
 - Streams: every council return against its council's real portal or inspection form (the NBA Tier-II marks
   and bands should be checked against nbaind.org's current SAR); the PCI, BCI and NCTE pages with data on a
   live server (no ZZ or demo college has those streams). The NBA SAR reads its own year since S4B-1 (students

@@ -27,11 +27,19 @@
 import type { ZodTypeAny } from "zod";
 import { LIMITED_ROLES, type DutyCode, type LimitedRoleCode, type RoleCode, type SchoolModuleCode } from "@edulink/contracts";
 
+/** The /api doors outside /api/v1 that the catalog lists (api-catalog/unversioned.ts). */
+export type UnversionedPath = "/api/attendance" | "/api/practice/answer";
+
 export type Access = "anyone" | "signed-in" | "account" | "operator" | "app-admin" | RoleCode[];
 
 export type Endpoint = {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-  path: `/api/v1/${string}`;
+  /**
+   * Versioned, but for the doors outside /api/v1 that a person's session
+   * calls and an outbox replays by URL (api-catalog/unversioned.ts,
+   * A3-inventory-9): named here one by one, so a typo is a type error.
+   */
+  path: `/api/v1/${string}` | UnversionedPath;
   summary: string;
   access: Access;
   /**

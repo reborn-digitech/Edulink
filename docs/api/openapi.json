@@ -6120,6 +6120,268 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Move the school up a year by the plan as decided: each class to a class, a new class, or out (graduates leave with a certificate), repeaters held back, single pupils sent elsewhere; one way",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    },
+                    "moved": {
+                      "type": "integer"
+                    },
+                    "left": {
+                      "$ref": "#/properties/moved"
+                    },
+                    "heldBack": {
+                      "$ref": "#/properties/moved"
+                    },
+                    "created": {
+                      "$ref": "#/properties/moved"
+                    },
+                    "archived": {
+                      "$ref": "#/properties/moved"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "moved",
+                    "left",
+                    "heldBack",
+                    "created",
+                    "archived"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "moves": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fromClassId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64
+                        },
+                        "to": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "CLASS"
+                                  ]
+                                },
+                                "classId": {
+                                  "$ref": "#/properties/moves/items/properties/fromClassId"
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "classId"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "NEW"
+                                  ]
+                                },
+                                "key": {
+                                  "type": "string",
+                                  "maxLength": 64
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 120
+                                },
+                                "gradeLevel": {
+                                  "type": "string",
+                                  "maxLength": 40,
+                                  "nullable": true
+                                },
+                                "section": {
+                                  "type": "string",
+                                  "maxLength": 40,
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "kind",
+                                "name",
+                                "gradeLevel"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "LEAVE"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind"
+                              ],
+                              "additionalProperties": false
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "kind": {
+                                  "type": "string",
+                                  "enum": [
+                                    "STAY"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "kind"
+                              ],
+                              "additionalProperties": false
+                            }
+                          ]
+                        },
+                        "holdBack": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/properties/moves/items/properties/fromClassId"
+                          },
+                          "maxItems": 500
+                        },
+                        "reassign": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "membershipId": {
+                                "$ref": "#/properties/moves/items/properties/fromClassId"
+                              },
+                              "to": {
+                                "anyOf": [
+                                  {
+                                    "$ref": "#/properties/moves/items/properties/to/anyOf/0"
+                                  },
+                                  {
+                                    "$ref": "#/properties/moves/items/properties/to/anyOf/1"
+                                  },
+                                  {
+                                    "$ref": "#/properties/moves/items/properties/to/anyOf/2"
+                                  }
+                                ]
+                              }
+                            },
+                            "required": [
+                              "membershipId",
+                              "to"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "maxItems": 500
+                        }
+                      },
+                      "required": [
+                        "fromClassId",
+                        "to",
+                        "holdBack"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 300
+                  },
+                  "lastDayKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "required": [
+                  "moves"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/admin/timetable": {
@@ -12643,6 +12905,9 @@
                   "publish": {
                     "type": "boolean",
                     "default": true
+                  },
+                  "confirmPastDue": {
+                    "type": "boolean"
                   }
                 },
                 "required": [
@@ -17326,8 +17591,8 @@
     },
     "/api/v1/staff/me/appraisals": {
       "get": {
-        "summary": "The entries the head has marked visible to me, newest first",
-        "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
+        "summary": "The entries the head has marked visible to me, newest first (a college's FACULTY and HOD too, whom the head may appraise)",
+        "description": "Roles: TEACHER, ADMIN, PRINCIPAL, FACULTY, HOD.",
         "security": [
           {
             "bearer": []
@@ -17336,7 +17601,9 @@
         "x-access": [
           "TEACHER",
           "ADMIN",
-          "PRINCIPAL"
+          "PRINCIPAL",
+          "FACULTY",
+          "HOD"
         ],
         "responses": {
           "200": {
@@ -43060,6 +43327,9 @@
                     "type": "boolean",
                     "default": true
                   },
+                  "confirmPastDue": {
+                    "type": "boolean"
+                  },
                   "handouts": {
                     "type": "array",
                     "items": {
@@ -56428,6 +56698,10 @@
                               "type": "string",
                               "nullable": true
                             },
+                            "admissionNumber": {
+                              "type": "string",
+                              "nullable": true
+                            },
                             "className": {
                               "type": "string",
                               "nullable": true
@@ -57254,6 +57528,12 @@
                           },
                           "schoolName": {
                             "type": "string"
+                          },
+                          "leftAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true,
+                            "default": null
                           }
                         },
                         "required": [
@@ -57459,12 +57739,10 @@
                                 "nullable": true
                               },
                               "paidAt": {
-                                "type": "string",
-                                "format": "date-time",
-                                "nullable": true
+                                "$ref": "#/properties/children/items/properties/leftAt"
                               },
                               "createdAt": {
-                                "$ref": "#/properties/child/properties/payments/items/properties/paidAt"
+                                "$ref": "#/properties/children/items/properties/leftAt"
                               },
                               "receiptId": {
                                 "type": "string",
@@ -80417,7 +80695,7 @@
                   "c": {
                     "type": "string",
                     "minLength": 1,
-                    "maxLength": 40
+                    "maxLength": 80
                   }
                 },
                 "required": [
@@ -133405,6 +133683,9 @@
                     "canMark": {
                       "type": "boolean"
                     },
+                    "frozen": {
+                      "type": "boolean"
+                    },
                     "entries": {
                       "type": "array",
                       "items": {
@@ -158578,6 +158859,14 @@
                               }
                             ],
                             "nullable": true
+                          },
+                          "correction": {
+                            "type": "string",
+                            "enum": [
+                              "RUN_DUE",
+                              "PUBLISH_DUE"
+                            ],
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -161233,6 +161522,13 @@
                               "courses"
                             ],
                             "additionalProperties": false
+                          },
+                          "underCorrection": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "default": []
                           }
                         },
                         "required": [
@@ -161378,6 +161674,14 @@
                               {
                                 "$ref": "#/properties/forms/items/properties/opensAt"
                               }
+                            ],
+                            "nullable": true
+                          },
+                          "correction": {
+                            "type": "string",
+                            "enum": [
+                              "RUN_DUE",
+                              "PUBLISH_DUE"
                             ],
                             "nullable": true
                           }
@@ -170923,6 +171227,10 @@
                     "maxLength": 64,
                     "nullable": true,
                     "default": null
+                  },
+                  "again": {
+                    "type": "boolean",
+                    "default": false
                   }
                 },
                 "required": [
@@ -172176,6 +172484,10 @@
                     "canEdit": {
                       "type": "boolean"
                     },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "updatedAt": {
                       "type": "string",
                       "format": "date-time",
@@ -172411,6 +172723,10 @@
                     "canEdit": {
                       "type": "boolean"
                     },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "updatedAt": {
                       "type": "string",
                       "format": "date-time",
@@ -172642,6 +172958,10 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "updatedAt": {
                       "type": "string",
@@ -172925,6 +173245,10 @@
                     "canEdit": {
                       "type": "boolean"
                     },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "updatedAt": {
                       "type": "string",
                       "format": "date-time",
@@ -173156,6 +173480,10 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "updatedAt": {
                       "type": "string",
@@ -173440,6 +173768,10 @@
                     "canEdit": {
                       "type": "boolean"
                     },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "updatedAt": {
                       "type": "string",
                       "format": "date-time",
@@ -173671,6 +174003,10 @@
                     },
                     "canEdit": {
                       "type": "boolean"
+                    },
+                    "signedOff": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "updatedAt": {
                       "type": "string",
@@ -174928,7 +175264,8 @@
                                       ]
                                     },
                                     "href": {
-                                      "type": "string"
+                                      "type": "string",
+                                      "pattern": "^\\/(?!\\/)[^\\\\\\s\\u0000-\\u001f\\u007f]*$"
                                     },
                                     "roles": {
                                       "type": "array",
@@ -175141,6 +175478,11 @@
                           },
                           "label": {
                             "type": "string"
+                          },
+                          "labelKey": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
                           },
                           "at": {
                             "type": "string",
@@ -175456,7 +175798,8 @@
                                 ]
                               },
                               "href": {
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^\\/(?!\\/)[^\\\\\\s\\u0000-\\u001f\\u007f]*$"
                               },
                               "roles": {
                                 "type": "array",
@@ -175533,6 +175876,11 @@
                           },
                           "label": {
                             "type": "string"
+                          },
+                          "labelKey": {
+                            "type": "string",
+                            "nullable": true,
+                            "default": null
                           },
                           "at": {
                             "type": "string",
@@ -175989,7 +176337,8 @@
                                 ]
                               },
                               "href": {
-                                "type": "string"
+                                "type": "string",
+                                "pattern": "^\\/(?!\\/)[^\\\\\\s\\u0000-\\u001f\\u007f]*$"
                               },
                               "roles": {
                                 "type": "array",
@@ -194228,10 +194577,12 @@
                               "research",
                               "service"
                             ],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "nullable": true
                           },
                           "apiScore": {
-                            "type": "number"
+                            "type": "number",
+                            "nullable": true
                           }
                         },
                         "required": [
@@ -196840,6 +197191,1473 @@
                     "maximum": 2100
                   }
                 },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/calendar/years": {
+      "post": {
+        "summary": "Make an academic year, named by its years (2026–27); the school's first becomes the running one, a later one waits to be moved into",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "startDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "endDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  }
+                },
+                "required": [
+                  "name",
+                  "startDateKey",
+                  "endDateKey"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/calendar/years/{yearId}/close": {
+      "post": {
+        "summary": "Close the running year into one already made: every pupil's badges are written down first, the year's exam series archived and its open review rounds closed; a second press is a no-op",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "studentsArchived": {
+                      "type": "integer"
+                    },
+                    "badgesArchived": {
+                      "$ref": "#/properties/studentsArchived"
+                    },
+                    "seriesArchived": {
+                      "$ref": "#/properties/studentsArchived"
+                    },
+                    "roundsClosed": {
+                      "$ref": "#/properties/studentsArchived"
+                    }
+                  },
+                  "required": [
+                    "studentsArchived",
+                    "badgesArchived",
+                    "seriesArchived",
+                    "roundsClosed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nextYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "nextYearId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "yearId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/calendar/years/{yearId}/terms": {
+      "post": {
+        "summary": "Make a term inside a year, not overlapping another of its terms",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "termId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "termId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 60
+                  },
+                  "startDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "endDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  }
+                },
+                "required": [
+                  "name",
+                  "startDateKey",
+                  "endDateKey"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "yearId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/calendar/terms/{termId}": {
+      "delete": {
+        "summary": "Remove a term: its series and cards keep their marks and lose the label; refused while a published card reports into it",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "termId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/calendar/closures/{holidayId}": {
+      "post": {
+        "summary": "Correct a closure, exam window or event on the calendar, every field sent",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "startDateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "endDateKey": {
+                    "$ref": "#/properties/startDateKey"
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "HOLIDAY",
+                      "EXAM",
+                      "EVENT"
+                    ]
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                },
+                "required": [
+                  "name",
+                  "startDateKey",
+                  "endDateKey",
+                  "kind"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "holidayId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Take a closure, exam window or event off the calendar",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "holidayId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/classes/{classId}/pupils": {
+      "post": {
+        "summary": "Put pupils of the school on a class's roll; one already there is a no-op, anyone who is not a pupil here is refused",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "added": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "added"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "minItems": 1,
+                    "maxItems": 500
+                  }
+                },
+                "required": [
+                  "studentMembershipIds"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/classes/{classId}/pupils/remove": {
+      "post": {
+        "summary": "Take one pupil off a class's roll, keeping everything they did in it; one not on the roll is a 422",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "studentMembershipId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "classId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/staff/leave/{leaveId}/withdraw": {
+      "post": {
+        "summary": "Withdraw a leave request, before or after it was approved; the cover it caused is released and told. Only the one who asked, the head or the office",
+        "description": "Roles: TEACHER, PRINCIPAL, DRIVER, LIBRARIAN, WARDEN, FACULTY, HOD, EXAM_CONTROLLER, IQAC, TPO, ACCOUNTS, ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "PRINCIPAL",
+          "DRIVER",
+          "LIBRARIAN",
+          "WARDEN",
+          "FACULTY",
+          "HOD",
+          "EXAM_CONTROLLER",
+          "IQAC",
+          "TPO",
+          "ACCOUNTS",
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "leaveId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/attendance": {
+      "post": {
+        "summary": "Take or correct a class's register for a day: one mark per pupil, each with the device's idempotency key; safe to replay (a stored key is skipped, an older mark never overwrites a newer one); a future day, a class one may not mark that day, or an archived class is refused",
+        "description": "Roles: TEACHER, ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "applied": {
+                      "type": "integer"
+                    },
+                    "skipped": {
+                      "$ref": "#/properties/applied"
+                    },
+                    "rejected": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "reason": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "reason"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "sessionId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "applied",
+                    "skipped",
+                    "rejected",
+                    "sessionId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "dateKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "marks": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "studentMembershipId": {
+                          "$ref": "#/properties/classId"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "PRESENT",
+                            "LATE",
+                            "ABSENT",
+                            "EXCUSED"
+                          ]
+                        },
+                        "note": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "clientId": {
+                          "type": "string",
+                          "minLength": 8,
+                          "maxLength": 64
+                        },
+                        "markedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "studentMembershipId",
+                        "status",
+                        "clientId"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 500
+                  }
+                },
+                "required": [
+                  "classId",
+                  "dateKey",
+                  "marks"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "One class's roster for a day with the marks already made and any absence note from the family (?classId=&date=, today in the school's zone by default); read by whoever may mark it that day",
+        "description": "Roles: TEACHER, ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "class": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "subject": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "color": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "subject",
+                        "color"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "dateKey": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "roster": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "membershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "fullName": {
+                            "type": "string"
+                          },
+                          "avatarKey": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "PRESENT",
+                              "LATE",
+                              "ABSENT",
+                              "EXCUSED"
+                            ],
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "absenceNote": {
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "membershipId",
+                          "name",
+                          "fullName",
+                          "avatarKey",
+                          "status",
+                          "note"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "finalizedAt": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "takenAt": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "class",
+                    "dateKey",
+                    "roster",
+                    "finalizedAt",
+                    "takenAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "pattern": "^c[a-z0-9]{20,}$"
+                  },
+                  "date": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  }
+                },
+                "required": [
+                  "classId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/practice/answer": {
+      "post": {
+        "summary": "The web's practice answer, the target of its offline outbox and replay-safe as its twin POST /api/v1/practice/answer is (a second delivery returns the stored verdict, replayed: true)",
+        "description": "Roles: STUDENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "STUDENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "replayed": {
+                      "type": "boolean"
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "correct": {
+                          "type": "boolean"
+                        },
+                        "answerIndex": {
+                          "type": "integer"
+                        },
+                        "solution": {
+                          "type": "string"
+                        },
+                        "newLevel": {
+                          "type": "integer"
+                        },
+                        "finished": {
+                          "type": "boolean"
+                        },
+                        "badgeAwarded": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "correct",
+                        "answerIndex",
+                        "solution",
+                        "newLevel",
+                        "finished",
+                        "badgeAwarded"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "replayed",
+                    "result",
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attemptId": {
+                    "type": "string"
+                  },
+                  "questionId": {
+                    "type": "string"
+                  },
+                  "chosenIndex": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "attemptId",
+                  "questionId",
+                  "chosenIndex"
+                ],
                 "additionalProperties": false
               }
             }

@@ -474,12 +474,16 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/research", labelKey: "iqac.navResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026).
     { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
+    // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the school's teacher page, no module.
+    { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for a member who holds the duty; the other duties' pages follow it.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
     // The practical record of the offerings I teach with practicals (stream records, 5 Oct 2026).
     { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
+    // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
+    { href: "/faculty/moot-courts", labelKey: "streamRecords.moots.title", icon: "gavel", prefix: true, group: "daily", module: "ACADEMICS", streams: ["LAW"] },
     // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
@@ -491,7 +495,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/duties/studio", labelKey: "duties.STUDIO_COORDINATOR.name", icon: "palette", prefix: true, group: "running", module: "ACADEMICS", duty: "STUDIO_COORDINATOR" },
   ],
   HOD: [
-    { href: "/hod", labelKey: "role.hod", icon: "treeStructure", primary: true, prefix: true },
+    { href: "/hod", labelKey: "nav.hodHome", icon: "treeStructure", primary: true, prefix: true },
     // Messages (the integration builder, 4 Oct 2026): former pupils write to their faculty, who answer here as a teacher does.
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     // An HOD teaches too: their lectures, offerings and mentoring are the faculty pages (the college's academics, 4 Oct 2026).
@@ -507,12 +511,16 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026); under /faculty, which an HOD's teaching opens.
     { href: "/faculty/profile", labelKey: "collegeDesks.profileNav", icon: "user", group: "running", module: "IQAC" },
+    // What the head has shown me of my appraisals (A3-inventory-5, audit of 5 Oct 2026): the school's teacher page, no module.
+    { href: "/teacher/appraisals", labelKey: "appraisal.myTitle", icon: "clipboard", prefix: true, group: "running" },
     // The library's e-resources, opened through the app so each open counts (campaign 2026-10-04, G-3).
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for an HOD who holds the duty.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
     // The practical record of the department's offerings with practicals (stream records, 5 Oct 2026).
     { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
+    // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
+    { href: "/faculty/moot-courts", labelKey: "streamRecords.moots.title", icon: "gavel", prefix: true, group: "daily", module: "ACADEMICS", streams: ["LAW"] },
     // The duties' desks (S2, 5 Oct 2026), each for a member who holds the duty; the clinical and studio coordinators' pages say their records are coming.
     { href: "/duties/lab", labelKey: "duties.lab.title", icon: "flask", prefix: true, group: "running", module: "ACADEMICS", duty: "LAB_INCHARGE" },
     { href: "/duties/teaching-practice", labelKey: "duties.teachingPractice.title", icon: "chalkboard", prefix: true, group: "running", module: "ACADEMICS", duty: "PRACTICE_TEACHING_COORDINATOR" },
@@ -543,7 +551,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "users", prefix: true, group: "running", module: "IQAC" },
   ],
   TPO: [
-    { href: "/placement", labelKey: "role.tpo", icon: "briefcase", primary: true, prefix: true },
+    { href: "/placement", labelKey: "nav.placementHome", icon: "briefcase", primary: true, prefix: true },
     ...COLLEGE_STAFF_COMMON,
     // The cell's pages (the placement module, 4 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/placement/drives", labelKey: "placement.tabDrives", icon: "briefcase", primary: true, prefix: true, module: "PLACEMENT" },
@@ -564,6 +572,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/fees", labelKey: "collegeOffice.navFeeLedger", icon: "receipt", prefix: true, group: "running" },
     { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
     { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
+    // The admission fee and the refund on a cancelled seat (A3-inventory-3): the refunds list, one application, never the list of all.
+    { href: "/admin/college-admissions/refunds", labelKey: "collegeDesks.refundsTitle", icon: "receipt", prefix: true, also: ["/admin/college-admissions"], group: "running", module: "ADMISSIONS" },
   ],
   // An outside account like the expert: its home, and its account. A college reaches it only through a drive (the placement module).
   RECRUITER: [

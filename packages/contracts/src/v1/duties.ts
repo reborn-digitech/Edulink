@@ -64,8 +64,28 @@ export const DUTY_STREAMS: Record<DutyCode, readonly StreamCode[] | "ALL"> = {
   EXAM_SQUAD: "ALL",
 };
 
-/** Whether `stream` offers `duty`. */
+/**
+ * Whether a duty's desk is built: its doors, page and phone screen exist
+ * (A3-inventory-12, audit of 5 Oct 2026). An unbuilt duty is offered by no
+ * stream until it is, so the registrar cannot give a teacher a duty that opens
+ * a page saying nothing is there; one already held is dropped by the next save
+ * (setDuties) or stream change (setStreams). DUTY_STREAMS keeps whose it will be.
+ */
+export const DUTY_BUILT: Record<DutyCode, boolean> = {
+  LAB_INCHARGE: true,
+  CLINICAL_COORDINATOR: false,
+  PRACTICE_TEACHING_COORDINATOR: true,
+  STUDIO_COORDINATOR: false,
+  NSS_OFFICER: true,
+  NCC_OFFICER: true,
+  ANTI_RAGGING_SQUAD: true,
+  RESEARCH_DEAN: true,
+  EXAM_SQUAD: true,
+};
+
+/** Whether `stream` offers `duty`: the duty is built and its council's stream is one of the duty's. */
 export function streamOffersDuty(stream: StreamCode, duty: DutyCode): boolean {
+  if (!DUTY_BUILT[duty]) return false;
   const by = DUTY_STREAMS[duty];
   return by === "ALL" || by.includes(stream);
 }

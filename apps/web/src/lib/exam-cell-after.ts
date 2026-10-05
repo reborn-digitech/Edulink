@@ -41,12 +41,33 @@ const SETTER_ROLES = ["FACULTY", "HOD"] as const;
 /* Shared reads                                                                 */
 /* -------------------------------------------------------------------------- */
 
-async function revaluationRows(where: { schoolId: string; studentMembershipId?: string }): Promise<RevaluationRow[]> {
+/**
+ * Where a CHANGED revaluation stands on its way to the result (A3-journeys-11): the new mark reaches
+ * the result only through a run, so RUN_DUE until a run of its session is computed after the decision,
+ * PUBLISH_DUE until one is published after it, and null once one is (or for any other outcome).
+ * Derived on read from the session's runs; nothing is stored.
+ */
+async function correctionOf(rows: readonly { sessionId: string; outcome: string | null; decidedAt: Date | null }[]): Promise<(r: { sessionId: string; outcome: string | null; decidedAt: Date | null }) => "RUN_DUE" | "PUBLISH_DUE" | null> {
+  const changed = rows.filter((r) => r.outcome === "CHANGED" && r.decidedAt);
+  const runs = changed.length ? await db.resultRun.findMany({ where: { sessionId: { in: [...new Set(changed.map((r) => r.sessionId))] } }, select: { sessionId: true, computedAt: true, publishedAt: true } }) : [];
+  return (r) => {
+    if (r.outcome !== "CHANGED" || !r.decidedAt) return null;
+    const after = (d: Date | null) => d !== null && d.getTime() > r.decidedAt!.getTime();
+    const mine = runs.filter((x) => x.sessionId === r.sessionId);
+    if (mine.some((x) => after(x.publishedAt))) return null;
+    return mine.some((x) => after(x.computedAt)) ? "PUBLISH_DUE" : "RUN_DUE";
+  };
+}
+
+async function revaluationRows(where: { schoolId: string; studentMembershipId?: string; sessionId?: string }): Promise<RevaluationRow[]> {
   const rows = await db.revaluation.findMany({ where, orderBy: { createdAt: "desc" }, take: 300, include: { session: { select: { name: true, schoolId: true } }, student: { select: { user: { select: { name: true } } } } } });
   if (rows.length === 0) return [];
   const courses = await coursesOf(rows[0]!.session.schoolId, rows.map((r) => r.courseId));
   const demands = rows.map((r) => r.feeDemandId).filter((x): x is string => Boolean(x));
-  const status = new Map((demands.length ? await db.feeDemand.findMany({ where: { id: { in: demands } }, select: { id: true, status: true } }) : []).map((d) => [d.id, d.status]));
+  const [status, correction] = await Promise.all([
+    demands.length ? db.feeDemand.findMany({ where: { id: { in: demands } }, select: { id: true, status: true } }).then((ds) => new Map(ds.map((d) => [d.id, d.status]))) : Promise.resolve(new Map<string, string>()),
+    correctionOf(rows),
+  ]);
   return rows.map((r) => ({
     id: r.id,
     sessionId: r.sessionId,
@@ -64,7 +85,19 @@ async function revaluationRows(where: { schoolId: string; studentMembershipId?: 
     newExternalMilli: r.newExternalMilli,
     askedAt: r.createdAt.toISOString(),
     decidedAt: r.decidedAt?.toISOString() ?? null,
+    correction: correction(r),
   }));
+}
+
+/**
+ * The results page's notice (A3-journeys-11): how many CHANGED revaluations of one session wait for a
+ * corrected run to be computed, and how many for the computed one to be published.
+ */
+export async function correctionsDue(ctx: ActiveContext, sessionId: string): Promise<{ runDue: number; publishDue: number }> {
+  const cell = await cellOf(ctx, "read");
+  const s = await sessionOf(cell, sessionId);
+  const rows = await revaluationRows({ schoolId: cell.schoolId, sessionId: s.id });
+  return { runDue: rows.filter((r) => r.correction === "RUN_DUE").length, publishDue: rows.filter((r) => r.correction === "PUBLISH_DUE").length };
 }
 
 async function backlogRows(schoolId: string, where: { studentMembershipId?: string }, today: string): Promise<BacklogRow[]> {
@@ -117,10 +150,22 @@ async function firstPublishedKey(sessionId: string, timeZone: string): Promise<s
   return first?.publishedAt ? dateKeyInZone(first.publishedAt, timeZone) : null;
 }
 
+/**
+ * A fee as a demand on the student's ledger: none for a free request (no fee),
+ * and a refusal (never a silent null) when there is a fee and it cannot be
+ * raised — the session's head gone, or no current academic year — so the student is never told "the fee is on your ledger" for nothing
+ * (A3-journeys-10). The year is read ON the transaction: the app's `db` inside
+ * a tenant transaction runs on another connection with no tenant set, where
+ * row-level security answers nothing, which is how every demand was skipped.
+ */
 async function raiseDemand(tx: Tx, schoolId: string, studentMembershipId: string, feeHeadId: string | null, paise: number, label: string, today: string): Promise<string | null> {
-  if (!feeHeadId || paise <= 0) return null;
-  const [head, year] = await Promise.all([tx.feeHead.findFirst({ where: { id: feeHeadId, schoolId }, select: { id: true, code: true, name: true } }), currentAcademicYear(schoolId)]);
-  if (!head || !year) return null;
+  // A session with no fee head raises nothing, by its own setting (schema: "none raises nothing").
+  if (paise <= 0 || !feeHeadId) return null;
+  const [head, year] = await Promise.all([
+    tx.feeHead.findFirst({ where: { id: feeHeadId, schoolId }, select: { id: true, code: true, name: true } }),
+    tx.academicYear.findFirst({ where: { schoolId, isCurrent: true }, orderBy: { startDate: "desc" }, select: { id: true } }),
+  ]);
+  if (!head || !year) throw new RuleRefusal("examCell.refuseFeeNotRaised", 409);
   const d = await tx.feeDemand.create({ data: { schoolId, studentMembershipId, academicYearId: year.id, instalmentId: null, label, dueDate: dayToDate(today), grossPaise: paise, concessionPaise: 0, netPaise: paise, linesJson: writeJson([{ headId: head.id, code: head.code, name: head.name, grossPaise: paise, concessionPaise: 0 }]), status: "OPEN" }, select: { id: true } });
   return d.id;
 }
@@ -185,6 +230,8 @@ export async function myExams(ctx: ActiveContext, childId?: string): Promise<MyE
         publishedAt: term.run.publishedAt?.toISOString() ?? null,
         revaluationOpenUntil: until && today <= until ? until : null,
         result: termResultView(term, standing.rows.filter((r) => r.runId === term.runId), courses, { name: name.user.name, code: name.studentCode }),
+        // Read as "under correction", not as the old result beside "Marks changed", until the corrected run is published.
+        underCorrection: [...new Set(revaluations.filter((r) => r.sessionId === term.run.session.id && r.correction).map((r) => r.courseId))],
       };
     }),
   );
@@ -248,15 +295,16 @@ export async function askRevaluation(ctx: ActiveContext, input: { sessionId: str
   const fee = input.kind === "PHOTOCOPY" ? s.photocopyFeePaise : s.revalFeePaise;
   const t = await getT();
   const course = (await coursesOf(schoolId, [input.courseId])).get(input.courseId);
-  const id = await db.$tenantTransaction(async (raw) => {
+  const { id, demandId } = await db.$tenantTransaction(async (raw) => {
     const tx = raw as Tx;
     const demandId = await raiseDemand(tx, schoolId, sid, s.feeHeadId, fee, t(input.kind === "PHOTOCOPY" ? "examCell.photocopyFeeLabel" : "examCell.revalFeeLabel", { course: course?.code ?? "—", session: s.name }), today);
-    return (await tx.revaluation.create({ data: { schoolId, sessionId: s.id, courseId: input.courseId, studentMembershipId: sid, kind: input.kind, feePaise: fee, feeDemandId: demandId }, select: { id: true } })).id;
+    return { id: (await tx.revaluation.create({ data: { schoolId, sessionId: s.id, courseId: input.courseId, studentMembershipId: sid, kind: input.kind, feePaise: fee, feeDemandId: demandId }, select: { id: true } })).id, demandId };
   });
   await audit({ schoolId, actorUserId: ctx.user.id, action: "exam.revaluation.ask", targetType: "Revaluation", targetId: id, meta: { kind: input.kind, courseId: input.courseId } });
   const controllers = await db.membership.findMany({ where: { schoolId, role: "EXAM_CONTROLLER", status: "ACTIVE" }, select: { userId: true } });
   await Promise.all(controllers.map((c) => notify({ userId: c.userId, schoolId, kind: "SYSTEM", titleKey: "examCell.notifyRevalAsked", bodyKey: "examCell.notifyRevalAskedBody", bodyVars: { course: course?.code ?? "—" }, url: "/exam-cell/after" })));
-  return { ok: true, id, count: null };
+  // `count` is the demands raised (0 or 1), so the page says "the fee is on your ledger" only when it is.
+  return { ok: true, id, count: demandId ? 1 : 0 };
 }
 
 /**

@@ -297,6 +297,8 @@ export const lectureSheetSchema = z.object({
   lecture: lectureRowSchema,
   threshold: z.number().int(),
   canMark: z.boolean(),
+  /** The exam eligibility was decided from this lecture's attendance (A3-journeys-7): no Save, and the page says why. Absent from an older server. */
+  frozen: z.boolean().optional(),
   entries: z.array(z.object({ studentMembershipId: cuid, name: z.string(), rollNumber: z.number().int().nullable(), status: lectureMarkSchema.nullable(), percent: z.number().nullable() })),
 });
 export type LectureSheet = z.infer<typeof lectureSheetSchema>;

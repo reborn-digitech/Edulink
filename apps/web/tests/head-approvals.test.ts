@@ -50,7 +50,7 @@ beforeAll(async () => {
   const dept = await db.department.create({ data: { schoolId: ids.college, code: `ZHD${SUFFIX}`, name: "ZZ Heads Dept" }, select: { id: true } });
   const programme = await db.programme.create({ data: { schoolId: ids.college, departmentId: dept.id, code: "ZZHBA", name: "ZZ BA", level: "UG", durationYears: 3, regulator: "UGC" }, select: { id: true } });
   const round = await db.admissionRound.create({ data: { schoolId: ids.college, programmeId: programme.id, intakeYear: 2026, kind: "CAP", name: "ZZ Round 1", opensAt: new Date("2026-06-01T00:00:00Z"), closesAt: new Date("2026-08-31T00:00:00Z") }, select: { id: true } });
-  ids.app = (await db.collegeApplication.create({ data: { schoolId: ids.college, roundId: round.id, programmeId: programme.id, number: 1, applicantName: "ZZ Heads Applicant", category: "OPEN", quota: "CAP", status: "CANCELLED", cancelledAt: new Date(), cancelReason: "ZZ family moved", refundPaise: 1_000_000, refundSlab: "WITHIN_15_AFTER", refundRecordedAt: new Date() }, select: { id: true } })).id;
+  ids.app = (await db.collegeApplication.create({ data: { schoolId: ids.college, roundId: round.id, programmeId: programme.id, number: 1, applicantName: "ZZ Heads Applicant", category: "OPEN", quota: "CAP", status: "CANCELLED", cancelledAt: new Date(), cancelReason: "ZZ family moved", admissionFeePaise: 2_000_000, admissionFeePaidAt: new Date(), refundPaise: 1_000_000, refundSlab: "WITHIN_15_AFTER", refundRecordedAt: new Date() }, select: { id: true } })).id;
   const hostel = await db.hostel.create({ data: { schoolId: ids.college, name: `ZZ Heads House ${SUFFIX}`, kind: "MIXED" }, select: { id: true } });
   const room = await db.hostelRoom.create({ data: { schoolId: ids.college, hostelId: hostel.id, number: "H1", beds: 2 }, select: { id: true } });
   ids.allotment = (await db.hostelAllotment.create({ data: { schoolId: ids.college, membershipId: boarder.membershipId, roomId: room.id, bed: 1, fromDate: "2026-07-01", status: "ACTIVE", allottedByUserId: ids.admin }, select: { id: true } })).id;
@@ -75,6 +75,8 @@ describe("a refund outside the slab", () => {
     await expect(askRefundException(accounts, ids.app, { refundPaise: 1_500_000, reason: "ZZ hospitalised the week of admission" })).rejects.toMatchObject({ key: "access.wrongRoleForThisAction" });
     const admin = await ctxAs(ids.admin, "ADMIN");
     await expect(askRefundException(admin, ids.app, { refundPaise: 1_000_000, reason: "ZZ hospitalised the week of admission" })).rejects.toMatchObject({ key: "collegeDesks.refuseRefundSameAsSlab" });
+    // Never more than the ₹20,000 paid on the seat (A3-S-15).
+    await expect(askRefundException(admin, ids.app, { refundPaise: 2_000_100, reason: "ZZ hospitalised the week of admission" })).rejects.toMatchObject({ key: "collegeDesks.refuseRefundTooMuch" });
     // Through the door: 200 with the application carrying the ask.
     const res = await askPost(json(`/api/v1/college/admissions/applications/${ids.app}/refund-exception`, { refundPaise: 1_500_000, reason: "ZZ hospitalised the week of admission" }), params("applicationId", ids.app));
     expect(res.status).toBe(200);
@@ -165,7 +167,7 @@ describe("four eyes on a head's approval (A3-S-4)", () => {
     ids.users.push(both.id);
     await db.membership.createMany({ data: [{ userId: both.id, schoolId: ids.college, role: "ADMIN", status: "ACTIVE" }, { userId: both.id, schoolId: ids.college, role: "PRINCIPAL", status: "ACTIVE" }] });
     const app = await db.collegeApplication.findUniqueOrThrow({ where: { id: ids.app }, select: { roundId: true, programmeId: true } });
-    const second = (await db.collegeApplication.create({ data: { schoolId: ids.college, roundId: app.roundId, programmeId: app.programmeId, number: 2, applicantName: "ZZ Heads Second", category: "OPEN", quota: "CAP", status: "CANCELLED", cancelledAt: new Date(), cancelReason: "ZZ moved", refundPaise: 1_000_000, refundSlab: "WITHIN_15_AFTER", refundRecordedAt: new Date() }, select: { id: true } })).id;
+    const second = (await db.collegeApplication.create({ data: { schoolId: ids.college, roundId: app.roundId, programmeId: app.programmeId, number: 2, applicantName: "ZZ Heads Second", category: "OPEN", quota: "CAP", status: "CANCELLED", cancelledAt: new Date(), cancelReason: "ZZ moved", admissionFeePaise: 2_000_000, admissionFeePaidAt: new Date(), refundPaise: 1_000_000, refundSlab: "WITHIN_15_AFTER", refundRecordedAt: new Date() }, select: { id: true } })).id;
     await askRefundException(await ctxAs(both.id, "ADMIN"), second, { refundPaise: 1_500_000, reason: "ZZ asked by the dual holder" });
     await expect(decideRefundException(await ctxAs(both.id, "PRINCIPAL"), second, { approve: true, note: "" })).rejects.toMatchObject({ key: "collegeDesks.refuseOwnAsk" });
     expect((await db.collegeApplication.findUniqueOrThrow({ where: { id: second }, select: { refundAskStatus: true } })).refundAskStatus).toBe("ASKED");

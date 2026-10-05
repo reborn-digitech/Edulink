@@ -66,8 +66,33 @@ async function audienceOf(post: SlipPost): Promise<{ membershipId: string; name:
   return rows;
 }
 
+/**
+ * One student in the slip's audience, or null: the same tests as `audienceOf` asked of that student alone — their
+ * seat in the class, or their active place at the school (in the grade), and their own tokens against a college
+ * notice's target (A3-S-9: answering and reading a slip used to load up to 5,000 students and ask each one's tokens).
+ */
+async function audienceMember(post: SlipPost, studentMembershipId: string): Promise<{ membershipId: string; name: string; className: string | null } | null> {
+  if (post.scope === "CLASS" && post.classId) {
+    const row = await db.enrollment.findFirst({ where: { schoolId: post.schoolId, classId: post.classId, studentMembershipId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } }, select: { class: { select: { name: true } }, student: { select: { user: { select: { name: true, preferredName: true } } } } } });
+    return row ? { membershipId: studentMembershipId, name: row.student.user.preferredName ?? row.student.user.name, className: row.class.name } : null;
+  }
+  const m = await db.membership.findFirst({
+    where: { id: studentMembershipId, schoolId: post.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null, ...(post.audienceGrade ? { enrollments: { some: { status: "ACTIVE", class: { gradeLevel: post.audienceGrade, archivedAt: null } } } } : {}) },
+    select: { id: true, user: { select: { name: true, preferredName: true } }, enrollments: { where: { status: "ACTIVE", class: { archivedAt: null } }, select: { class: { select: { name: true } } }, take: 1 } },
+  });
+  if (!m) return null;
+  if (post.audienceTarget && !(await studentTokensOf(m.id)).includes(post.audienceTarget)) return null;
+  return { membershipId: m.id, name: m.user.preferredName ?? m.user.name, className: m.enrollments[0]?.class.name ?? null };
+}
+
 async function inAudience(post: SlipPost, studentMembershipId: string): Promise<boolean> {
-  return (await audienceOf(post)).some((s) => s.membershipId === studentMembershipId);
+  return (await audienceMember(post, studentMembershipId)) !== null;
+}
+
+/** The given students who are in the slip's audience, each asked alone. */
+async function audienceAmong(post: SlipPost, studentMembershipIds: readonly string[]) {
+  const found = await Promise.all([...new Set(studentMembershipIds)].map((id) => audienceMember(post, id)));
+  return found.filter((x): x is NonNullable<typeof x> => x !== null).sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** A family's answer for one child (a guardian), or an adult student's own. Changing it until the day is allowed. */
@@ -109,13 +134,11 @@ export async function answerSlip(ctx: ActiveContext, postId: string, input: { st
 }
 
 async function slipFor(ctx: ActiveContext, post: SlipPost, now: Date): Promise<SlipView> {
-  const audience = await audienceOf(post);
   let mine: { membershipId: string; name: string }[];
   if (ctx.role === "PARENT") {
     const links = await db.guardianship.findMany({ where: { parentUserId: ctx.user.id, status: "ACTIVE", studentSchoolId: post.schoolId }, select: { studentMembershipId: true } });
-    const ids = new Set(links.map((l) => l.studentMembershipId));
     mine = [];
-    for (const s of audience.filter((a) => ids.has(a.membershipId))) {
+    for (const s of await audienceAmong(post, links.map((l) => l.studentMembershipId))) {
       try {
         await assertGuardianAccess(ctx.user.id, s.membershipId);
         mine.push(s);
@@ -124,7 +147,7 @@ async function slipFor(ctx: ActiveContext, post: SlipPost, now: Date): Promise<S
       }
     }
   } else if (ctx.role === "STUDENT" && ctx.membershipId) {
-    const self = audience.find((a) => a.membershipId === ctx.membershipId);
+    const self = await audienceMember(post, ctx.membershipId);
     const me = self ? await db.membership.findUniqueOrThrow({ where: { id: self.membershipId }, select: { user: { select: { birthdate: true, isMinor: true } }, school: { select: { timezone: true } } } }) : null;
     mine = self && me && !isMinorToday(me.user, me.school.timezone, now) ? [self] : [];
   } else mine = [];

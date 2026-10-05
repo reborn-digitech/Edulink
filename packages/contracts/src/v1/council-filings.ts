@@ -273,6 +273,8 @@ export const councilViewSchema = z.object({
   /** NBA: the marks from the records plus the self-assessed, out of 1,000; null for a checklist. */
   total: z.object({ computed: z.number(), self: z.number(), max: z.number() }).nullable(),
   canEdit: z.boolean(),
+  /** The year's report is signed off or filed: the worksheet is read-only (audit of 5 Oct 2026, A3-S-15). */
+  signedOff: z.boolean().default(false),
   updatedAt: z.string().datetime().nullable(),
 });
 export type CouncilView = z.infer<typeof councilViewSchema>;

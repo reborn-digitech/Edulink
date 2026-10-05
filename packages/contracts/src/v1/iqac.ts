@@ -384,7 +384,8 @@ export const facultyRecordsSchema = z.object({ items: z.array(facultyRecordSchem
 /* Filings -------------------------------------------------------------------- */
 
 /** `departmentId`: the engineering department an NBA SAR is for (one SAR per department per year); every other kind is the college's and ignores it. */
-export const collegeFilingGenerateSchema = z.object({ kind: collegeFilingKindSchema, year: z.number().int().min(2000).max(2100), cycleId: z.string().max(64).nullable().default(null), departmentId: z.string().max(64).nullable().default(null) });
+/** `again`: make it although that year's is already filed (audit of 5 Oct 2026, A3-journeys-35); without it that is refused with the warning. */
+export const collegeFilingGenerateSchema = z.object({ kind: collegeFilingKindSchema, year: z.number().int().min(2000).max(2100), cycleId: z.string().max(64).nullable().default(null), departmentId: z.string().max(64).nullable().default(null), again: z.boolean().default(false) });
 export const collegeFilingSchema = z.object({
   id: z.string(),
   kind: collegeFilingKindSchema,

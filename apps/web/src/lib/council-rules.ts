@@ -122,6 +122,19 @@ export type NbaFigures = {
   firstYearFaculty: number;
 };
 
+/**
+ * The SAR's figures that are parts of another (audit of 5 Oct 2026,
+ * A3-journeys-13): the three cadres and the two qualifications are disjoint
+ * sets of the department's F teachers (nbaFacts counts each from the same
+ * staff), so neither sum is ever above F. The simulator counts a designated
+ * teacher beyond F as one more teacher; a stored scenario that breaks one is
+ * refused.
+ */
+export const NBA_WHOLES: readonly { metric: string; parts: readonly (keyof NbaFigures)[]; of: keyof NbaFigures }[] = [
+  { metric: "5.2", parts: ["professors", "associates", "assistants"], of: "F" },
+  { metric: "5.3", parts: ["phd", "masters"], of: "F" },
+];
+
 /** The mean of the indices that are not null; null when none is (successMarks' own mean). */
 export const meanIndex = (xs: readonly (number | null)[]): number | null => mean(xs.filter((x): x is number => x !== null));
 

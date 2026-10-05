@@ -1,6 +1,9 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { createAssignment, publishAssignment } from "@/lib/grading";
+import { RuleRefusal } from "@/lib/rule-refusal";
+import { assignmentSchema } from "@/lib/validation";
+import { newAssignmentSchema, teachingNewAssignmentSchema } from "@edulink/contracts";
 
 /**
  * Publishing work tells every pupil in the class once and every guardian of
@@ -96,5 +99,27 @@ describe("publishing work tells each person once", () => {
     const notices = await assignmentNotices();
     expect(notices.filter((n) => n.userId === parentUserId)).toHaveLength(1);
     expect(notices).toHaveLength(4); // three pupils + one parent
+  });
+});
+
+describe("a due date in the past (A3-journeys-25)", () => {
+  const past = new Date(Date.now() - 30 * 86_400_000).toISOString();
+  it("is refused unless the teacher confirms it, and nothing is written or told", async () => {
+    await db.notification.deleteMany({ where: { schoolId, kind: "ASSIGNMENT" } });
+    const err = await createAssignment(teacherCtx(), { classId, title: "ZZ past due", body: "", dueAt: past, publish: true }).catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(RuleRefusal);
+    expect(err).toMatchObject({ key: "teacher.refusePastDue", status: 422, field: "dueAt" });
+    expect(await db.assignment.count({ where: { schoolId, title: "ZZ past due" } })).toBe(0);
+    expect(await assignmentNotices()).toHaveLength(0);
+    const confirmed = await createAssignment(teacherCtx(), { classId, title: "ZZ past due", body: "", dueAt: past, publish: true, confirmPastDue: true });
+    expect((await db.assignment.findUniqueOrThrow({ where: { id: confirmed.assignmentId } })).dueAt?.toISOString()).toBe(past);
+  });
+
+  it("takes a future due date, and the doors' contracts carry the confirmation", async () => {
+    const future = new Date(Date.now() + 3 * 86_400_000).toISOString();
+    expect((await createAssignment(teacherCtx(), { classId, title: "ZZ future due", body: "", dueAt: future, publish: false })).assignmentId).toBeTruthy();
+    expect(newAssignmentSchema.parse({ classId, title: "ZZ x", dueAt: past, confirmPastDue: true }).confirmPastDue).toBe(true);
+    expect(teachingNewAssignmentSchema.parse({ classId, title: "ZZ x", dueAt: past, confirmPastDue: true }).confirmPastDue).toBe(true);
+    expect(assignmentSchema.parse({ classId, title: "ZZ x", dueAt: past, confirmPastDue: true }).confirmPastDue).toBe(true);
   });
 });

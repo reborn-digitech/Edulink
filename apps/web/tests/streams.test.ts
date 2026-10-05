@@ -105,9 +105,10 @@ describe("the presets", () => {
     for (const s of STREAMS) for (const m of ["ALUMNI", "ACADEMICS", "EXAMS", "ADMISSIONS", "SCHOLARSHIPS", "IQAC"]) expect(STREAM_PRESETS[s].modulesOn).toContain(m);
     for (const s of STREAMS) expect(STREAM_PRESETS[s].modulesOn.includes("PLACEMENT")).toBe(isProfessionalStream(s));
     expect(STREAMS.filter((s) => STREAM_PRESETS[s].modulesOn.includes("INVENTORY"))).toEqual(["ENGINEERING", "PHARMACY"]);
-    // The anti-ragging squad and the research dean are every stream's; studio coordination architecture's alone.
+    // The anti-ragging squad and the research dean are every stream's; studio coordination would be architecture's alone,
+    // and is no stream's while its desk is not built (A3-inventory-12, tests/duties-unbuilt.test.ts).
     for (const s of STREAMS) expect(STREAM_PRESETS[s].duties).toEqual(expect.arrayContaining(["ANTI_RAGGING_SQUAD", "RESEARCH_DEAN"]));
-    expect(STREAMS.filter((s) => STREAM_PRESETS[s].duties.includes("STUDIO_COORDINATOR"))).toEqual(["ARCHITECTURE"]);
+    expect(STREAMS.filter((s) => STREAM_PRESETS[s].duties.includes("STUDIO_COORDINATOR"))).toEqual([]);
 
     const vidya = streamPreset(["COMMERCE", "ARTS", "SCIENCE"]);
     expect(vidya.regulators).toEqual(["UGC"]);
@@ -190,7 +191,8 @@ describe("a programme's stream", () => {
 describe("duties", () => {
   it("are set by the registrar within what the streams offer, once in the audit log, and refused elsewhere", async () => {
     const admin = await as(ids.admin, "ADMIN", ids.college, null);
-    expect(await offeredDuties(ids.college)).toEqual(["LAB_INCHARGE", "CLINICAL_COORDINATOR", "NSS_OFFICER", "NCC_OFFICER", "ANTI_RAGGING_SQUAD", "RESEARCH_DEAN", "EXAM_SQUAD"]);
+    // The clinical coordinator is not offered while its desk is not built (A3-inventory-12).
+    expect(await offeredDuties(ids.college)).toEqual(["LAB_INCHARGE", "NSS_OFFICER", "NCC_OFFICER", "ANTI_RAGGING_SQUAD", "RESEARCH_DEAN", "EXAM_SQUAD"]);
     const set = await setDuties(admin, ids.facultyM, ["ANTI_RAGGING_SQUAD", "LAB_INCHARGE"]);
     expect(set).toMatchObject({ role: "FACULTY", duties: ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"] });
     await setDuties(admin, ids.facultyM, ["LAB_INCHARGE", "ANTI_RAGGING_SQUAD"]);

@@ -59,8 +59,14 @@ export type InsightCtaCode = keyof typeof INSIGHT_CTAS;
 export const INSIGHT_CTA_CODES = Object.keys(INSIGHT_CTAS) as [InsightCtaCode, ...InsightCtaCode[]];
 export const insightCtaCodeSchema = z.enum(INSIGHT_CTA_CODES);
 
+/**
+ * One of our own web paths, which the phone opens on the API's host: a single leading slash, no backslash, no space or
+ * control character (A3-S-14, audit of 5 Oct 2026) — "@evil.example/x" or "//host" would move the host. The phone's
+ * openWeb reads this same pattern (apps/mobile/src/lib/links.ts webPathUrl).
+ */
+export const WEB_PATH_PATTERN = /^\/(?!\/)[^\\\s\u0000-\u001f\u007f]*$/;
 /** A call to action as a response carries it: `label` is a sentence in the reader's language ("Faculty records — the office"). */
-export const insightCtaSchema = z.object({ code: insightCtaCodeSchema, href: z.string(), roles: z.array(roleSchema), label: z.string() });
+export const insightCtaSchema = z.object({ code: insightCtaCodeSchema, href: z.string().regex(WEB_PATH_PATTERN), roles: z.array(roleSchema), label: z.string() });
 export type InsightCta = z.infer<typeof insightCtaSchema>;
 
 /**
@@ -75,7 +81,8 @@ export const insightStepSchema = z.object({ units: z.number(), delta: z.number()
 export type InsightStep = z.infer<typeof insightStepSchema>;
 
 /** Something done since the last compute through a CTA's page, from the audit log ("what you did last"). */
-export const insightDoneSchema = z.object({ action: z.string(), label: z.string(), at: z.string().datetime(), by: z.string().nullable(), cta: insightCtaCodeSchema.nullable(), sinceCompute: z.boolean() });
+/** `labelKey`: the dictionary key of the action's words (null when there is none), so the phone says it in its own language (A3-states-16). */
+export const insightDoneSchema = z.object({ action: z.string(), label: z.string(), labelKey: z.string().nullable().default(null), at: z.string().datetime(), by: z.string().nullable(), cta: insightCtaCodeSchema.nullable(), sinceCompute: z.boolean() });
 
 /* -------------------------------------------------------------------------- */
 /* NAAC                                                                        */

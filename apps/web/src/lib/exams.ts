@@ -797,6 +797,38 @@ export async function saveMarks(
 }
 
 /* -------------------------------------------------------------------------- */
+/* Pupils admitted part-way through the year                                   */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A PAPER SAT BEFORE THE CHILD JOINED IS NOT THEIRS TO MARK (A3-journeys-16, audit of 5 October 2026). A child
+ * admitted on 5 October inherited September's mid-term papers as "awaiting marks" on the family's home, and the
+ * teacher's sheets read "5 of 7 marked · 2 to mark" for two children who were not yet on the roll. The joining day
+ * is the pupil record's admission date (written by admissions, the college's admit and the office) — date-only,
+ * at UTC midnight; a pupil with none on file is taken to have been there all along.
+ *
+ * By class: the admission day of each pupil now on it who has one.
+ */
+export async function admissionDaysByClass(classIds: readonly string[]): Promise<Map<string, string[]>> {
+  const out = new Map<string, string[]>();
+  if (classIds.length === 0) return out;
+  const rows = await db.enrollment.findMany({
+    where: { classId: { in: [...classIds] }, status: "ACTIVE", student: { pupilRecord: { admissionDate: { not: null } } } },
+    select: { classId: true, student: { select: { pupilRecord: { select: { admissionDate: true } } } } },
+  });
+  for (const r of rows) {
+    const day = r.student.pupilRecord?.admissionDate?.toISOString().slice(0, 10);
+    if (day) out.set(r.classId, [...(out.get(r.classId) ?? []), day]);
+  }
+  return out;
+}
+
+/** The class's roll for a paper or piece of work dated `dayKey`: the pupils on it now, less those admitted after that day. */
+export function rollOn(size: number, admissionDays: readonly string[] | undefined, dayKey: string): number {
+  return size - (admissionDays ?? []).filter((d) => d > dayKey).length;
+}
+
+/* -------------------------------------------------------------------------- */
 /* The reader's marks — what a pupil or a family sees                          */
 /* -------------------------------------------------------------------------- */
 
@@ -858,9 +890,11 @@ export async function examMarksFor(ctx: ActiveContext): Promise<ExamMarks[]> {
     if (!klass?.gradeLevel) continue;
     const student = await db.membership.findUnique({
       where: { id: target.studentMembershipId },
-      select: { user: { select: { name: true, preferredName: true } } },
+      select: { user: { select: { name: true, preferredName: true } }, pupilRecord: { select: { admissionDate: true } } },
     });
     if (!student) continue;
+    // A paper sat before the child was admitted, with no mark, is not one they are waiting on (admissionDaysByClass).
+    const admittedKey = student.pupilRecord?.admissionDate?.toISOString().slice(0, 10) ?? null;
 
     const series = await db.examSeries.findMany({
       where: {
@@ -893,20 +927,23 @@ export async function examMarksFor(ctx: ActiveContext): Promise<ExamMarks[]> {
       studentName: student.user.preferredName ?? student.user.name,
       schoolName: klass.school.name,
       className: klass.name,
-      series: series.map((s) => {
-        const papers = s.slots.map((slot) => {
-          const milli = slot.assignments[0]?.grades[0]?.scoreMilli ?? null;
-          return {
-            subject: slot.subject,
-            dateKey: slot.dateKey,
-            marks: milli === null ? null : milli / 1000,
-            maxMarks: slot.pointsMilli / 1000,
-          };
-        });
+      series: series.flatMap((s) => {
+        const papers = s.slots
+          .map((slot) => {
+            const milli = slot.assignments[0]?.grades[0]?.scoreMilli ?? null;
+            return {
+              subject: slot.subject,
+              dateKey: slot.dateKey,
+              marks: milli === null ? null : milli / 1000,
+              maxMarks: slot.pointsMilli / 1000,
+            };
+          })
+          .filter((p) => p.marks !== null || !admittedKey || p.dateKey >= admittedKey);
+        if (papers.length === 0) return [];
         const marked = papers.filter((p) => p.marks !== null);
         const totalMarks = marked.reduce((a, p) => a + (p.marks ?? 0), 0);
         const totalMax = marked.reduce((a, p) => a + p.maxMarks, 0);
-        return {
+        return [{
           id: s.id,
           name: s.name,
           kind: s.kind as ExamKind,
@@ -914,7 +951,7 @@ export async function examMarksFor(ctx: ActiveContext): Promise<ExamMarks[]> {
           totalMarks,
           totalMax,
           percent: totalMax > 0 ? Math.round((totalMarks / totalMax) * 1000) / 10 : null,
-        };
+        }];
       }),
     });
   }
@@ -945,13 +982,17 @@ export type MarksTodo = {
  */
 export async function marksTodoFor(ctx: ActiveContext, todayKey: string): Promise<MarksTodo[]> {
   const classes = await examClassesFor(ctx);
+  const admitted = await admissionDaysByClass(classes.map((c) => c.id));
   const out: MarksTodo[] = [];
   for (const klass of classes) {
-    const classSize = await db.enrollment.count({ where: { classId: klass.id, status: "ACTIVE" } });
-    if (classSize === 0) continue;
+    const onRollNow = await db.enrollment.count({ where: { classId: klass.id, status: "ACTIVE" } });
+    if (onRollNow === 0) continue;
     for (const series of klass.series) {
       for (const slot of series.slots) {
         if (slot.dateKey > todayKey) continue;
+        // Those admitted after the paper's day were not there to sit it (A3-journeys-16).
+        const classSize = rollOn(onRollNow, admitted.get(klass.id), slot.dateKey);
+        if (classSize <= 0) continue;
         const sitting = await db.assignment.findUnique({
           where: { examSlotId_classId: { examSlotId: slot.id, classId: klass.id } },
           select: { _count: { select: { grades: true } } },

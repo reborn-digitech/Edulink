@@ -469,3 +469,68 @@ describe("the engine is pure: it reads no server module", () => {
     expect(src).not.toMatch(/@prisma|node:|server-only|next\/|@\/lib\/(db|session|prisma)/);
   });
 });
+
+/*
+ * A PART IS NEVER MORE THAN ITS WHOLE (audit of 5 October 2026, A3-journeys-13). The simulator once took 50 students
+ * passed of 3 appeared and scored 2.6.3 at 4.00 (1,666.67 %). The pairs are declared where the formulas are
+ * (FORMULAS[f].whole in iqac-rules.ts, NIRF_WHOLES there, NBA_WHOLES in council-rules.ts), not listed here; the
+ * simulator holds them and a stored scenario that breaks one is refused (iqac-insights.ts writeScenario).
+ */
+describe("a part is never more than its whole (A3-journeys-13)", () => {
+  it("declares, for every percentage over two or more figures, the whole its parts sit in or why they may exceed it", async () => {
+    const rules = await import("@/lib/iqac-rules");
+    const percents = Object.entries(FORMULAS).filter(([, s]) => s.scale.type === "percent" && s.inputs.length >= 2);
+    expect(percents.length).toBeGreaterThan(10);
+    for (const [id, s] of percents) {
+      const declared = (s as { whole?: { parts: readonly string[]; of: string } }).whole;
+      const reason = (rules as unknown as { MAY_EXCEED?: Record<string, true> }).MAY_EXCEED?.[id];
+      expect(Boolean(declared) !== Boolean(reason), `${id}: a whole or a reason, not both`).toBe(true);
+      if (declared) for (const k of [...declared.parts, declared.of]) expect(s.inputs, `${id} reads ${k}`).toContain(k);
+    }
+    expect((FORMULAS.PASS_PCT as { whole?: unknown }).whole).toEqual({ parts: ["passed"], of: "appeared" });
+  });
+
+  it("holds 50 passed of 3 appeared at 3 in the simulator: 2.6.3 reads 100 %, not 1,666.67 %, and still 4.00", async () => {
+    const { NAAC_FRAMEWORKS } = await import("@edulink/contracts");
+    const ug = NAAC_FRAMEWORKS.AFFILIATED_UG;
+    const pass = ug.metrics.find((m) => m.formula === "PASS_PCT")!;
+    const sim = simulateNaac(ug, { facts: { passed: 50, appeared: 3 }, ql: {} });
+    expect(sim.values.get(pass.code)).toBe(100);
+    expect(sim.scores.get(pass.code)).toBe(4);
+  });
+
+  it("never changes a NAAC score by holding a part: every declared whole, its parts at the whole plus seven", async () => {
+    const { NAAC_WHOLES, holdParts } = await import("@/lib/accreditation-insights");
+    expect(NAAC_WHOLES.length).toBeGreaterThan(5);
+    for (const w of NAAC_WHOLES) {
+      const id = w.metric as keyof typeof FORMULAS;
+      const facts: Record<string, number> = Object.fromEntries(FORMULAS[id].inputs.map((k) => [k, 10]));
+      for (const p of w.parts) facts[p] = 17;
+      const held = holdParts(NAAC_WHOLES, facts);
+      expect(w.parts.reduce((a, p) => a + (held[p] ?? 0), 0), id).toBeCloseTo(10, 6);
+      expect(evaluate(id, held).score, id).toBe(evaluate(id, facts).score);
+    }
+  });
+
+  it("names the broken whole, and holds the typed part alone when the others leave room", async () => {
+    const { NAAC_WHOLES, holdParts, partsOver } = await import("@/lib/accreditation-insights");
+    expect(partsOver(NAAC_WHOLES, { passed: 50, appeared: 3 }).map((w) => w.metric)).toEqual(["PASS_PCT"]);
+    expect(partsOver(NAAC_WHOLES, { passed: 3, appeared: 3, placed: 4, higherStudies: 2, outgoing: 6 })).toEqual([]);
+    // 5 placed and 2 gone on of 6 outgoing: the typed placed is held at 4; untyped, both scale to 6 × 5/7 and 6 × 2/7.
+    expect(holdParts(NAAC_WHOLES, { placed: 5, higherStudies: 2, outgoing: 6 }, "placed")).toMatchObject({ placed: 4, higherStudies: 2 });
+    const scaled = holdParts(NAAC_WHOLES, { placed: 5, higherStudies: 2, outgoing: 6 });
+    expect(scaled.placed! + scaled.higherStudies!).toBeCloseTo(6, 3);
+  });
+
+  it("counts NBA's extra designated teachers as teachers: 3 professors with F = 2 and S = 40 is an SFR of 13.33 (20 marks), not 20 (15)", () => {
+    const i: NbaInputs = { S: 40, F: 2, intake: 0, admitted: 0, successNoBacklog: null, successStipulated: null, apiFirst: null, apiSecond: null, apiThird: null, placement: null, professors: 3, associates: 0, assistants: 0, phd: 0, masters: 0, firstYearStudents: 0, firstYearFaculty: 0, self: {} };
+    expect(nbaMarks(i)["5.1"]).toBe(15);
+    expect(nbaTotals(i).marks["5.1"]).toBe(20);
+  });
+
+  it("holds NIRF's experience fractions to one: 0.2, 0.2 and 0.9 give FQE 6.77 (each × 1/1.3), not 7.6", () => {
+    const over: NirfInputs = { ...NIRF, phdPct: 0, f1: 0.2, f2: 0.2, f3: 0.9 };
+    expect(nirfSubs(over).FQE).toBe(7.6);
+    expect(nirfScore(over).subs.FQE).toBe(6.77);
+  });
+});

@@ -137,6 +137,8 @@ export async function buildCollegeOffice(db: PrismaClient): Promise<OfficeFixtur
 
   // Scholarships: cstudent01's sanctioned, cstudent03's lapsed.
   await db.scholarshipClaim.upsert({ where: { id: F.claimSanctioned }, create: { id: F.claimSanctioned, schoolId: s, studentMembershipId: c1.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27", portalApplicationId: "ZZMDBT2026000101", appliedAt: day("2026-08-01"), expectedPaise: 1_400_000, sanctionedPaise: 1_250_000, sanctionedAt: day("2026-09-15"), status: "SANCTIONED", createdByUserId: accounts.userId }, update: {} });
+  // A sanction is bounded by the fees the claim covers (A3-journeys-9): a walk left ₹50,000 sanctioned on this ₹14,000 claim, which the rule now refuses; the fixture's own figure is put back, and only while it stands above the claim.
+  await db.scholarshipClaim.updateMany({ where: { id: F.claimSanctioned, schoolId: s, status: "SANCTIONED", sanctionedPaise: { gt: 1_400_000 } }, data: { sanctionedPaise: 1_250_000 } });
   await db.scholarshipClaim.upsert({ where: { id: F.claimLapsed }, create: { id: F.claimLapsed, schoolId: s, studentMembershipId: c3.id, scheme: "OBC_POST_MATRIC", academicYear: "2026-27", portalApplicationId: "ZZMDBT2026000103", appliedAt: day("2026-08-02"), expectedPaise: 1_400_000, status: "LAPSED", lapsedAt: day("2026-09-30"), note: "ZZ documents not uploaded on the portal before the deadline", createdByUserId: accounts.userId }, update: {} });
 
   // A concession above the limit, refused by the principal.

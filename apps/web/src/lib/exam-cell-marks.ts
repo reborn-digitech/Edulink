@@ -8,6 +8,7 @@ import { notify } from "./notify";
 import { getT } from "./i18n/server";
 import { RuleRefusal } from "./rule-refusal";
 import type { ActiveContext } from "./session";
+import type { Translate } from "./i18n/dictionary";
 import { cellOf, formCourses, runView, sessionOf, statusAtLeast, type Cell } from "./exam-cell";
 import { coursesOf, internalsFor, offeringsOfTerm, seatsOf, studentIdsOf, termsOf, type CourseFacts } from "./exam-cell-academics";
 import { classFor, courseOutcome, csvFileName, csvLine, entriesAgree, milliText, parseResultFile, sgpaHundredths, sgpaNumber, tenths, termStatusOf, toMilli } from "./exam-cell-rules";
@@ -218,7 +219,14 @@ export async function importMarks(ctx: ActiveContext, sessionId: string, textIn:
       const internal = r.internal === null ? null : toMilli(r.internal, course.rules.internalMax);
       const external = r.absent || r.external === null ? null : toMilli(r.external, course.rules.externalMax);
       if ((r.internal !== null && internal === null) || (!r.absent && external === null)) {
-        unmatched.push({ line: r.line, key, reason: t("examCell.importBadMarks") });
+        // Over the course's maximum says so, with the maximum (A3-journeys-17); anything else is not a mark.
+        const over =
+          r.internal !== null && internal === null && r.internal > course.rules.internalMax
+            ? t("examCell.importOverInternal", { max: course.rules.internalMax })
+            : !r.absent && external === null && r.external !== null && r.external > course.rules.externalMax
+              ? t("examCell.importOverExternal", { max: course.rules.externalMax })
+              : null;
+        unmatched.push({ line: r.line, key, reason: over ?? t("examCell.importBadMarks") });
         continue;
       }
       const rows = await tx.examMark.findMany({ where: { sessionId: s.id, courseId: course.id, studentMembershipId: form.studentMembershipId }, orderBy: { version: "desc" }, take: 1 });
@@ -249,6 +257,17 @@ export async function importMarks(ctx: ActiveContext, sessionId: string, textIn:
   });
   await audit({ schoolId: cell.schoolId, actorUserId: cell.userId, action: "exam.marks.import", targetType: "ExamSession", targetId: s.id, meta: { created, updated, unchanged, unmatched: unmatched.length } });
   return { created, updated, unchanged, unmatched };
+}
+
+/**
+ * The sentence the page shows after an import (A3-journeys-17): the counts, then each row not written
+ * with its line, its PRN or seat and course, and the reason — the first twenty, and how many more.
+ */
+export function importReport(t: Translate, r: { created: number; updated: number; unchanged: number; unmatched: { line: number; key: string; reason: string }[] }): string {
+  const head = t("examCell.importDone", { created: r.created, updated: r.updated, unchanged: r.unchanged, unmatched: r.unmatched.length });
+  const lines = r.unmatched.slice(0, 20).map((u) => t("examCell.importUnmatchedLine", { line: u.line, key: u.key, reason: u.reason }));
+  if (r.unmatched.length > 20) lines.push(t("examCell.importUnmatchedMore", { count: r.unmatched.length - 20 }));
+  return [head, ...lines].join(" ");
 }
 
 /** A mark changed after publication: a new version with its reason (then a new run), never an edit. */
@@ -364,6 +383,15 @@ export async function addModerationNote(ctx: ActiveContext, sessionId: string, i
 /* The run                                                                      */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * A term result's class (distinction, first …): the whole term's, so only on a pass in a REGULAR session. A
+ * supplementary session re-sits a course or two, and labelled a one-course pass "First class with distinction"
+ * (A3-journeys-40).
+ */
+export function termClass(status: string, sessionKind: string, sgpa: number | null, bands: Parameters<typeof classFor>[1]): ReturnType<typeof classFor> | null {
+  return status === "PASS" && sessionKind !== "SUPPLEMENTARY" ? classFor(sgpa, bands) : null;
+}
+
 type ComputedCourse = { studentMembershipId: string; courseId: string; kind: "REGULAR" | "BACKLOG"; creditsTenths: number; internalMilli: number | null; externalMilli: number | null; graceMilli: number; totalMilli: number; maxMilli: number; grade: string; pointsTenths: number; status: "PASS" | "FAIL" | "ATKT" | "ABSENT" };
 type ComputedTerm = { studentMembershipId: string; sgpaHundredths: number | null; creditsAttemptedTenths: number; creditsEarnedTenths: number; status: "PASS" | "ATKT" | "FAIL"; cls: string | null };
 
@@ -441,7 +469,7 @@ export async function runResults(ctx: ActiveContext, sessionId: string, reason?:
       creditsAttemptedTenths: over.reduce((a, x) => a + x.creditsTenths, 0),
       creditsEarnedTenths: over.filter((x) => x.status === "PASS").reduce((a, x) => a + x.creditsTenths, 0),
       status,
-      cls: status === "PASS" ? classFor(sgpa, rules?.classBands ?? []) : null,
+      cls: termClass(status, s.kind, sgpa, rules?.classBands ?? []),
     });
   }
   const summary = { students: computedTerms.length, passed: computedTerms.filter((x) => x.status === "PASS").length, atkt: computedTerms.filter((x) => x.status === "ATKT").length, failed: computedTerms.filter((x) => x.status === "FAIL").length };

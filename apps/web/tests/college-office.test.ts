@@ -286,9 +286,11 @@ describe("no-dues", () => {
     // The accounts desk cannot clear the library's line; the librarian can; the accounts desk clears its own.
     await as(ids.accounts, ids.college, "ACCOUNTS");
     expect((await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "LIBRARY" }), params("studentMembershipId", ids.s2))).status).toBe(403);
-    expect((await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "ACCOUNTS" }), params("studentMembershipId", ids.s2))).status).toBe(200);
+    // A line with something owed is cleared with a note saying why (A3-journeys-8).
+    expect((await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "ACCOUNTS" }), params("studentMembershipId", ids.s2))).status).toBe(403);
+    expect((await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "ACCOUNTS", note: "ZZ fees deferred by the principal" }), params("studentMembershipId", ids.s2))).status).toBe(200);
     await as(ids.librarian, ids.college, "LIBRARIAN");
-    const cleared = await body<{ completed: boolean }>(await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "LIBRARY" }), params("studentMembershipId", ids.s2)));
+    const cleared = await body<{ completed: boolean }>(await noDuesPost(json("/x", { event: "EXAM_FORM", desk: "LIBRARY", note: "ZZ fine paid at the counter" }), params("studentMembershipId", ids.s2)));
     expect(cleared.completed).toBe(true);
     expect((await noDuesFor(ids.s2, "EXAM_FORM")).completed).toBe(true);
     expect((await db.noDuesClearance.findFirstOrThrow({ where: { studentMembershipId: ids.s2, event: "EXAM_FORM" } })).completedAt).not.toBeNull();

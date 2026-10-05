@@ -199,7 +199,8 @@ describe("NAAC at ZZ Vidya", () => {
     await as(ids.iqac, ids.vidya, "IQAC");
     const base = await naacBaseline(F.cycle);
     const fw = NAAC_FRAMEWORKS[(await db.accreditationCycle.findUniqueOrThrow({ where: { id: F.cycle }, select: { framework: true } })).framework as keyof typeof NAAC_FRAMEWORKS];
-    const more = { facts: { ...base.facts, papers: (base.facts.papers ?? 0) + 6, phdNetTeachers: (base.facts.phdNetTeachers ?? 0) + 1 }, ql: { ...base.ql, "7.3.1": 3 }, nirf: null };
+    // A teacher with a PhD more is a teacher more: every one of Vidya's three has one, and a fourth PhD among three teachers is refused (A3-journeys-13).
+    const more = { facts: { ...base.facts, papers: (base.facts.papers ?? 0) + 6, phdNetTeachers: (base.facts.phdNetTeachers ?? 0) + 1, fullTimeTeachers: (base.facts.fullTimeTeachers ?? 0) + 1 }, ql: { ...base.ql, "7.3.1": 3 }, nirf: null };
     const res = await scenariosPost(json("/api/v1/iqac/scenarios", { kind: "NAAC", cycleId: F.cycle, name: `ZZ Insights more papers ${STAMP}`, inputs: more }));
     expect(res.status).toBe(200);
     const list = await body<Scenarios>(res);
@@ -226,7 +227,7 @@ describe("NAAC at ZZ Vidya", () => {
     // Compared, b − a: the figures that differ are exactly the two facts and the one score changed.
     await as(ids.admin, ids.vidya, "ADMIN");
     const cmp = await body<ScenarioCompare>(await compareGet(get(`/api/v1/iqac/scenarios/compare?a=${today.id}&b=${mine.id}`)));
-    expect(cmp.inputs.map((i) => i.key).sort()).toEqual(["papers", "phdNetTeachers", "ql:7.3.1"]);
+    expect(cmp.inputs.map((i) => i.key).sort()).toEqual(["fullTimeTeachers", "papers", "phdNetTeachers", "ql:7.3.1"]);
     expect(cmp.inputs.find((i) => i.key === "papers")!.delta).toBe(6);
     expect(cmp.result.delta).toBe(Math.round((expected - today.result) * 100) / 100);
     expect(cmp.scores.find((s) => s.code === "7.3.1")!.delta).toBe(3);
@@ -372,5 +373,35 @@ describe("the module switch and the roles", () => {
     expect((await compareGet(get(`/api/v1/iqac/scenarios/compare?a=${F.scenario}&b=${F.scenario}`))).status).toBe(403);
     expect((await simulateGet(get("/api/v1/iqac/simulate"))).status).toBe(403);
     expect((await simulateNbaGet(get("/api/v1/iqac/simulate/nba"))).status).toBe(403);
+  });
+});
+
+describe("a part is never more than its whole in a saved scenario (audit of 5 October 2026, A3-journeys-13)", () => {
+  it("refuses 50 passed of 3 appeared, naming the figures and the metric, and saves nothing; today's figures break no whole", async () => {
+    await as(ids.iqac, ids.vidya, "IQAC");
+    const { NAAC_WHOLES, NBA_PART_WHOLES, partsOver } = await import("@/lib/accreditation-insights");
+    const base = await naacBaseline(F.cycle);
+    // The fixture's own scenario is written from today's figures (zz-iqac.ts), so they must keep every whole.
+    expect(partsOver(NAAC_WHOLES, base.facts)).toEqual([]);
+    const name = `ZZ Insights impossible pass rate ${STAMP}`;
+    const res = await scenariosPost(json("/api/v1/iqac/scenarios", { kind: "NAAC", cycleId: F.cycle, name, inputs: { facts: { ...base.facts, passed: 50, appeared: 3 }, ql: base.ql, nirf: null } }));
+    expect(res.status).toBe(422);
+    const fw = NAAC_FRAMEWORKS[(await db.accreditationCycle.findUniqueOrThrow({ where: { id: F.cycle }, select: { framework: true } })).framework as keyof typeof NAAC_FRAMEWORKS];
+    const code = fw.metrics.find((m) => m.formula === "PASS_PCT")!.code;
+    expect((await body(res)).error).toBe(`In ${code}, “Students who passed” cannot be more than “Students who appeared”.`);
+    expect(await db.iqacScenario.count({ where: { schoolId: ids.vidya, name } })).toBe(0);
+    // At the whole it is saved.
+    const atWhole = await scenariosPost(json("/api/v1/iqac/scenarios", { kind: "NAAC", cycleId: F.cycle, name, inputs: { facts: { ...base.facts, passed: 3, appeared: 3 }, ql: base.ql, nirf: null } }));
+    expect(atWhole.status).toBe(200);
+    saved.push((await db.iqacScenario.findFirstOrThrow({ where: { schoolId: ids.vidya, name }, select: { id: true } })).id);
+    // NBA: more professors, associates and assistants than the department's teachers.
+    await as(ids.shastriIqac, ids.shastri, "IQAC");
+    const year = defaultFilingYear() + 1;
+    const dept = (await body<CouncilView>(await councilNbaGet(get(`/api/v1/iqac/council/nba?year=${year}`)))).departmentId!;
+    const nba = await nbaBaseline(ids.shastri, dept, year);
+    expect(partsOver(NBA_PART_WHOLES, nba)).toEqual([]);
+    const over = await scenariosPost(json("/api/v1/iqac/scenarios", { kind: "NBA", year, departmentId: dept, name: `ZZ Insights phantom professors ${STAMP}`, inputs: { ...nba, professors: nba.F + 1, associates: 0, assistants: 0 } }));
+    expect(over.status).toBe(422);
+    expect((await body(over)).error).toBe("In 5.2, “Professors + Associate professors + Assistant professors” cannot be more than “Full-time faculty”.");
   });
 });

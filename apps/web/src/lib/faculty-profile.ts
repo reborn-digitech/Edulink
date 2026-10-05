@@ -49,7 +49,11 @@ async function snapshotOf(schoolId: string, membershipId: string, now: Date): Pr
   const [member, school, department, research] = await Promise.all([
     db.membership.findUniqueOrThrow({ where: { id: membershipId }, select: { user: { select: { name: true, preferredName: true } } } }),
     db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { name: true } }),
-    record.departmentId ? db.department.findFirst({ where: { id: record.departmentId, schoolId }, select: { name: true } }) : null,
+    // The record's department, else the one the teacher is placed in (DepartmentFaculty): the page promises the
+    // department and showed none for a record that left it blank (A3-journeys-38).
+    record.departmentId
+      ? db.department.findFirst({ where: { id: record.departmentId, schoolId }, select: { name: true } })
+      : db.departmentFaculty.findFirst({ where: { membershipId, schoolId }, select: { department: { select: { name: true } } } }).then((row) => row?.department ?? null),
     db.researchItem.findMany({ where: { schoolId, facultyMembershipId: membershipId }, orderBy: [{ year: "desc" }, { title: "asc" }], take: 30, select: { kind: true, title: true, year: true, indexing: true } }),
   ]);
   const joined = record.joinedOn ? new Date(`${record.joinedOn}T00:00:00Z`) : null;

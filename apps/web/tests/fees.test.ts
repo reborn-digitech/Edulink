@@ -227,6 +227,8 @@ describe("the counter", () => {
   it("records a cash payment, allocates oldest-due-first, numbers the receipt and tells the family", async () => {
     await expect(recordCounterPayment(admin(), { studentMembershipId: pupilA, amountPaise: 3_000_00, method: "CASH" })).rejects.toThrow("fees.refuseOverpayment");
     await expect(recordCounterPayment(admin(), { studentMembershipId: pupilA, amountPaise: 500_00, method: "CHEQUE" })).rejects.toThrow("fees.refuseReference");
+    // The receipt's "Admission no." is the register number from the pupil record, not the student code (A3-journeys-26).
+    await db.pupilRecord.upsert({ where: { studentMembershipId: pupilA }, update: { admissionNumber: "ZZ-GR-0042" }, create: { schoolId, studentMembershipId: pupilA, admissionNumber: "ZZ-GR-0042" } });
     const first = await recordCounterPayment(admin(), { studentMembershipId: pupilA, amountPaise: 1_500_00, method: "CASH", clientId: `c1-${STAMP}`, note: "At the counter" });
     expect(first.serial).toBe("RCPT/2026–27/000001");
     expect(first.already).toBe(false);
@@ -245,6 +247,7 @@ describe("the counter", () => {
     ]);
     expect(receipt!.snapshot.lines.reduce((a, l) => a + l.amountPaise, 0)).toBe(1_500_00);
     expect(receipt!.snapshot.school.name).toContain("ZZ Fees School");
+    expect(receipt!.snapshot.pupil.admissionNumber).toBe("ZZ-GR-0042");
     // The family may read it; a stranger and the head may not.
     expect(await receiptFor(parent(), first.receiptId)).not.toBeNull();
     expect(await receiptFor(principal(), first.receiptId)).toBeNull();

@@ -402,4 +402,26 @@ describe("attendance once the exam cell has decided eligibility", () => {
     expect((await db.lectureAttendance.findFirstOrThrow({ where: { lectureId: lecture.id, studentMembershipId: m.s2! }, select: { status: true } })).status).toBe("PRESENT");
     await db.examSession.delete({ where: { id: session.id } });
   });
+
+  it("still records a lecture dated after the decision, and says so up front on one dated before it (A3-journeys-7)", async () => {
+    // The decision is the snapshot taken at the form's submission, five days ago; the term runs on.
+    const before = await db.lecture.create({ data: { schoolId: id.college!, offeringId: id.o1!, dateKey: addDaysToKey(TODAY, -8), startMinute: 760, endMinute: 810 }, select: { id: true } });
+    const after = await db.lecture.create({ data: { schoolId: id.college!, offeringId: id.o1!, dateKey: addDaysToKey(TODAY, -1), startMinute: 760, endMinute: 810 }, select: { id: true } });
+    const session = await db.examSession.create({ data: { schoolId: id.college!, name: `ZZ Acad session later ${STAMP}`, termId: id.term!, status: "CONDUCT" }, select: { id: true } });
+    await db.examForm.create({ data: { schoolId: id.college!, sessionId: session.id, studentMembershipId: m.s2!, status: "APPROVED", submittedAt: new Date(Date.now() - 5 * 86_400_000) } });
+    try {
+      await as("facA", "FACULTY");
+      const mark = (lectureId: string, clientId: string) => markPost(json(`/x`, { clientId, entries: [{ studentMembershipId: m.s2, status: "ABSENT" }] }), params("lectureId", lectureId));
+      // After the decision: recorded, and it no longer changes the eligibility the form holds.
+      expect((await mark(after.id, `zz-after-${STAMP}`)).status).toBe(200);
+      // On or before it: refused as before, and the sheet offers no Save and says why.
+      expect((await mark(before.id, `zz-before-${STAMP}`)).status).toBe(409);
+      const sheet = await body<{ canMark: boolean; frozen?: boolean }>(await lectureGet(get("/x"), params("lectureId", before.id)));
+      expect(sheet).toMatchObject({ canMark: false, frozen: true });
+      const open = await body<{ canMark: boolean; frozen?: boolean }>(await lectureGet(get("/x"), params("lectureId", after.id)));
+      expect(open).toMatchObject({ canMark: true, frozen: false });
+    } finally {
+      await db.examSession.delete({ where: { id: session.id } });
+    }
+  });
 });

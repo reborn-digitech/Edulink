@@ -61,6 +61,10 @@ import { POST as colleagueRemovePost } from "@/app/api/v1/recruiter/company/coll
 import { POST as invitationPost } from "@/app/api/v1/recruiter/company/invitations/[companyId]/route";
 import { cellActor, recordOffer } from "@/lib/placement";
 import { GET as recruiterCollegesGet } from "@/app/api/v1/recruiter/colleges/route";
+import { POST as invitePost } from "@/app/api/v1/placement/drives/[driveId]/invite/route";
+import { POST as verifyPost } from "@/app/api/v1/placement/companies/[companyId]/verify/route";
+import { POST as diaryPost } from "@/app/api/v1/student/internships/[internshipId]/diary/route";
+import { addDiaryEntry } from "@/lib/placement-internships";
 
 const db = new PrismaClient();
 const STAMP = Date.now();
@@ -283,8 +287,10 @@ describe("consent, the recruiter and the closed drive", () => {
     expect((await resultsPost(json("/x", { round: 0, results: [{ studentMembershipId: ids.s3, outcome: "PASSED" }] }), params({ driveId: ids.drive! }))).status).toBe(422);
     const offered = await offersPost(json("/x", { studentMembershipId: ids.s1, packageRupees: 600_000 }), params({ driveId: ids.drive! }));
     expect(offered.status).toBe(200);
-    const offer = await body<{ id: string; dreamException: boolean }>(offered);
+    const offer = await body<{ id: string; dreamException: boolean; studentName: string }>(offered);
     expect(offer.dreamException).toBe(false);
+    // The recruiter's answer names the student (the toast read "Offer recorded for ; they are told", A3-journeys-18).
+    expect(offer.studentName).not.toBe("");
     await as("S1");
     expect((await answerPost(json("/x", { accept: true }), params({ offerId: offer.id }))).status).toBe(200);
     // A second drive: S1 is placed, so not eligible — until the dream flag and a package of at least 1.5 × 6 lakh.
@@ -636,5 +642,68 @@ describe.skipIf(!APP_URL)("as the app role, PLACEMENT_READABLE holds in the data
     // And the library's directory read still lists the college by name for the recruiter.
     await as("RECRUITER");
     expect((await body<{ colleges: { id: string }[] }>(await recruiterCollegesGet())).colleges.map((c) => c.id)).toContain(ids.host);
+  });
+});
+
+describe("the audit of 5 October 2026", () => {
+  it("opens no drive to students for a company nobody has checked, and says why (A3-journeys-12)", async () => {
+    const unchecked = await db.company.create({ data: { name: `ZZ Pl Unchecked ${STAMP}`, identifier: `U72200MH2021PTC${SUFFIX}`, sectors: "[]", pointOfContact: "ZZ" }, select: { id: true } });
+    await as("TPO");
+    // A draft may be prepared for it; the page and the door say the company is not checked.
+    const made = await drivesPost(json("/x", { companyId: unchecked.id, kind: "ON_CAMPUS", title: "ZZ Unchecked", packageMinRupees: 500_000, packageMaxRupees: 500_000, rule: { cgpaMin: null, noLiveBacklogs: false, programmeIds: [], batchYear: null, genders: [] } }));
+    expect(made.status).toBe(200);
+    const drive = await body<{ id: string; status: string; companyVerified: boolean }>(made);
+    expect([drive.status, drive.companyVerified]).toEqual(["DRAFT", false]);
+    // Moving it to Open, or past Open, is refused with the sentence naming the check.
+    const SENTENCE = "Check this drive's company under Companies before the drive is opened to students.";
+    const moved = await drivePost(json("/x", { status: "OPEN" }), params({ driveId: drive.id }));
+    expect(moved.status).toBe(409);
+    expect((await body(moved)).error).toBe(SENTENCE);
+    expect((await drivePost(json("/x", { status: "SHORTLISTING" }), params({ driveId: drive.id }))).status).toBe(409);
+    // A drive already open for such a company (opened before this rule): nobody is told and nobody applies.
+    await db.drive.update({ where: { id: drive.id }, data: { status: "OPEN" } });
+    const told = await invitePost(json("/x", {}), params({ driveId: drive.id }));
+    expect(told.status).toBe(409);
+    expect((await body(told)).error).toBe(SENTENCE);
+    expect(await db.notification.count({ where: { schoolId: ids.host!, url: "/student/placement", createdAt: { gte: new Date(Date.now() - 60_000) }, titleVars: { contains: "ZZ Unchecked" } } })).toBe(0);
+    await as("S2");
+    expect((await applyPost(json("/x", { consent: true }), params({ driveId: drive.id }))).status).toBe(409);
+    expect(await db.driveApplication.count({ where: { driveId: drive.id } })).toBe(0);
+    // Once the cell checks it, the drive opens and the students are told.
+    await db.drive.update({ where: { id: drive.id }, data: { status: "DRAFT" } });
+    await as("TPO");
+    expect((await verifyPost(json("/x", {}), params({ companyId: unchecked.id }))).status).toBe(200);
+    expect((await drivePost(json("/x", { status: "OPEN" }), params({ driveId: drive.id }))).status).toBe(200);
+    expect((await invitePost(json("/x", {}), params({ driveId: drive.id }))).status).toBe(200);
+    await db.drive.update({ where: { id: drive.id }, data: { status: "CLOSED", closedAt: new Date() } });
+  });
+
+  it("credits an internship only once it has ended, and keeps the diary inside its dates and the day's hours on the server (A3-journeys-22)", async () => {
+    const day = (n: number) => new Date(Date.now() + n * 86_400_000).toISOString().slice(0, 10);
+    await as("S1");
+    const made = await body<{ id: string }>(await proposePost(json("/x", { companyName: "ZZ Running Co", kind: "INDUSTRY", from: day(-15), to: day(30), hours: 240, windowSemester: 4, supervisorName: "ZZ Sup" })));
+    await as("TPO");
+    expect((await decidePost(json("/x", { approve: true, facultyMembershipId: ids.faculty }), params({ internshipId: made.id }))).status).toBe(200);
+    await as("S1");
+    const ctx = (await getSession())!;
+    // Outside the dates, and more than a day's hours, refused by the library itself — not only by the browser's field.
+    await expect(addDiaryEntry(ctx, made.id, { on: day(31), hours: 6, text: "ZZ After the end." })).rejects.toMatchObject({ key: "placement.refuseDiaryDate" });
+    await expect(addDiaryEntry(ctx, made.id, { on: day(-1), hours: 30, text: "ZZ Thirty hours." })).rejects.toMatchObject({ key: "placement.refuseDiaryHours" });
+    expect((await diaryPost(json("/x", { on: day(-2), hours: 10, text: "ZZ A long day." }), params({ internshipId: made.id }))).status).toBe(200);
+    const second = await diaryPost(json("/x", { on: day(-2), hours: 10, text: "ZZ The same day again." }), params({ internshipId: made.id }));
+    expect(second.status).toBe(422);
+    expect((await body(second)).error).toBe(`A day in the diary holds at most 16 hours; ${day(-2)} has 10 already.`);
+    // The report, the grade and the viva are in; the credits wait for the last day.
+    await db.uploadTicket.create({ data: { userId: ids.s1User!, fileId: `zz-pl-report-running-${STAMP}.pdf`, mime: "application/pdf", size: 10 } });
+    expect((await filesPost(json("/x", { kind: "REPORT", fileId: `zz-pl-report-running-${STAMP}.pdf` }), params({ internshipId: made.id }))).status).toBe(200);
+    await as("TPO");
+    expect((await evaluatePost(json("/x", { industryGrade: "A", vivaMarks: 40 }), params({ internshipId: made.id }))).status).toBe(200);
+    const early = await evaluatePost(json("/x", { credits: 2 }), params({ internshipId: made.id }));
+    expect(early.status).toBe(409);
+    expect((await body(early)).error).toBe(`Credits are given once the internship has ended on ${day(30)}.`);
+    expect((await db.internship.findUniqueOrThrow({ where: { id: made.id }, select: { status: true, credits: true } }))).toEqual({ status: "EVALUATED", credits: null });
+    // Its last day is the first day it may be credited.
+    await db.internship.update({ where: { id: made.id }, data: { toKey: day(0) } });
+    expect((await evaluatePost(json("/x", { credits: 2 }), params({ internshipId: made.id }))).status).toBe(200);
   });
 });

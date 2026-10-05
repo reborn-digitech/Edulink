@@ -613,6 +613,21 @@ export function defaultFilingYear(now = new Date()): number {
   return (now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1) - 1;
 }
 
+/**
+ * The year a council's page, insights and simulator open on when none is
+ * asked (audit of 5 Oct 2026, A3-journeys-34): the latest year this return
+ * (an NBA SAR: this department's) has a report, else defaultFilingYear().
+ */
+export async function councilDefaultYear(schoolId: string, kind: CollegeFilingKind, departmentId: string | null): Promise<number> {
+  const latest = await db.collegeFiling.findFirst({ where: { schoolId, kind, ...(kind === "NBA_SAR" ? { departmentId } : {}) }, orderBy: [{ year: "desc" }, { generatedAt: "desc" }], select: { year: true } });
+  return latest?.year ?? defaultFilingYear();
+}
+
+/** Whether the year's report is signed off by the principal or filed: its worksheet is then read-only (A3-S-15). */
+async function worksheetLocked(schoolId: string, kind: CollegeFilingKind, year: number, departmentId: string | null): Promise<boolean> {
+  return Boolean(await db.collegeFiling.findFirst({ where: { schoolId, kind, year, ...(kind === "NBA_SAR" ? { departmentId } : {}), status: { in: ["SIGNED_OFF", "FILED"] } }, select: { id: true } }));
+}
+
 /** The department an HOD heads; null for anyone else. */
 async function headOf(desk: Desk): Promise<string | null> {
   if (desk.role !== "HOD") return null;
@@ -660,9 +675,9 @@ export async function councilOverview(ctx: ActiveContext): Promise<CouncilOvervi
 export async function councilView(ctx: ActiveContext, kind: CollegeFilingKind, query: { year?: number; departmentId?: string }): Promise<CouncilView> {
   const desk = await iqacActor(ctx, readersOf(kind));
   await assertFilingApplies(desk.schoolId, kind);
-  const year = query.year ?? defaultFilingYear();
   const dept = kind === "NBA_SAR" ? await nbaDepartmentFor(desk, query.departmentId) : null;
-  const [built, sheet] = await Promise.all([councilDocument(desk.schoolId, kind, year, dept?.id ?? null), readWorksheet(desk.schoolId, kind, year, dept?.id ?? null)]);
+  const year = query.year ?? (await councilDefaultYear(desk.schoolId, kind, dept?.id ?? null));
+  const [built, sheet, signedOff] = await Promise.all([councilDocument(desk.schoolId, kind, year, dept?.id ?? null), readWorksheet(desk.schoolId, kind, year, dept?.id ?? null), worksheetLocked(desk.schoolId, kind, year, dept?.id ?? null)]);
   const specs = worksheetItems(kind);
   const items = specs.map((s) => {
     const a = sheet.items[s.code];
@@ -678,7 +693,8 @@ export async function councilView(ctx: ActiveContext, kind: CollegeFilingKind, q
     figures: built.figures,
     items,
     total,
-    canEdit: specs.length > 0 && writersOf(kind).includes(desk.role),
+    canEdit: specs.length > 0 && writersOf(kind).includes(desk.role) && !signedOff,
+    signedOff,
     updatedAt: sheet.updatedAt?.toISOString() ?? null,
   };
 }
@@ -703,6 +719,7 @@ export async function saveWorksheet(ctx: ActiveContext, kind: WorksheetKind, inp
     if (kind !== "NBA_SAR" && it.score !== null) throw new RuleRefusal("councilFilings.refuseItem", 422, undefined, "items");
   }
   const departmentId = dept?.id ?? "";
+  if (await worksheetLocked(desk.schoolId, kind, input.year, dept?.id ?? null)) throw new RuleRefusal("councilFilings.refuseSignedOff", 409);
   const key = { schoolId: desk.schoolId, kind, year: input.year, departmentId };
   const before = await db.filingWorksheet.findUnique({ where: { schoolId_kind_year_departmentId: key }, select: { itemsJson: true } });
   const items = before ? cleanItems(before.itemsJson) : {};

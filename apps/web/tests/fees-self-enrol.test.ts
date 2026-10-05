@@ -180,8 +180,9 @@ describe("the payment calendar", () => {
     const overdue = buildCalendar({ instalments: [{ id: "i1", label: "T", dueDateKey: "2026-09-10", totalPaise: 100 }], demands: [demand({ id: "d1" })], demandInstalment: new Map([["d1", "i1"]]), today });
     expect(overdue.map((r) => [r.date, r.kind, r.status])).toEqual([
       ["2026-09-10", "INSTALMENT", "OVERDUE"],
-      ["2026-09-17", "REMINDER", "OVERDUE"],
-      ["2026-10-10", "REMINDER", "OVERDUE"],
+      // A reminder still to come is UPCOMING, not "Overdue" on a future date (A3-journeys-40).
+      ["2026-09-17", "REMINDER", "UPCOMING"],
+      ["2026-10-10", "REMINDER", "UPCOMING"],
     ]);
     // A carried opening balance is a DUE row, not an instalment; a cancelled demand asks nothing.
     const carried = buildCalendar({ instalments: [], demands: [demand({ id: "d2", label: "Opening balance", dueDateKey: "2026-09-20", overdue: false }), demand({ id: "d3", status: "CANCELLED", outstandingPaise: 0 })], demandInstalment: new Map([["d2", null], ["d3", null]]), today });
