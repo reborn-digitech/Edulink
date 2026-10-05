@@ -10,7 +10,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { LIMITED_ROLES } from "@edulink/contracts";
-import { allowed, judge, moduleOff, tenantFromMe, type Answer, type Doc, type Tenant } from "../contract/role-matrix";
+import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, WALK_MS_FLOOR, type Answer, type Doc, type Tenant } from "../contract/role-matrix";
+import { callsInSource } from "./api-catalog.test";
 
 const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
 const LIMITED = [...LIMITED_ROLES] as string[];
@@ -105,5 +106,23 @@ describe("the contract matrix's module and college rules (LOAD-6)", () => {
     // The squad member at Vidya: a 200 is right; the HOD without the duty: a 403 is right, a 200 wrong.
     expect(judge(allowed(op(path), "FACULTY", LIMITED, ["ANTI_RAGGING_SQUAD"]), moduleOff(op(path), "2xx", vidya), OK)).toBeNull();
     expect(judge(allowed(op(path), "HOD", LIMITED), "no", OK)).toBe("wanted 403, got 2xx");
+  });
+});
+
+describe("the walk's time budget (STREAMS-7)", () => {
+  const doors = walkedGets(doc, callsInSource()).length;
+
+  it("gives next dev's measured walk room: the slowest walk took 90 s on 5 Oct 2026", () => {
+    expect(doors).toBeGreaterThan(10);
+    // The old fixed 60 s timed out every walk on next dev.
+    expect(walkBudgetMs(doors)).toBeGreaterThanOrEqual(135_000);
+  });
+
+  it("grows with the doors walked, never under the old floor, and the environment still sets it outright", () => {
+    expect(walkBudgetMs(doors + 100)).toBeGreaterThan(walkBudgetMs(doors));
+    expect(walkBudgetMs(1)).toBe(WALK_MS_FLOOR);
+    expect(walkBudgetMs(doors, "900000")).toBe(900_000);
+    expect(walkBudgetMs(doors, "")).toBe(walkBudgetMs(doors));
+    expect(walkBudgetMs(doors, "nonsense")).toBe(walkBudgetMs(doors));
   });
 });

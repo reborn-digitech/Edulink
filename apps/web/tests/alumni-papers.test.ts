@@ -10,6 +10,8 @@ import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { gateRequest } from "@/lib/role-gate";
+import { ENDPOINTS } from "@/lib/api-catalog";
+import { declaredStatus } from "@/lib/api-catalog/types";
 import { GET as requestsGet, POST as requestsPost } from "@/app/api/v1/family/certificate-requests/route";
 import { POST as cancelPost } from "@/app/api/v1/family/certificate-requests/[requestId]/cancel/route";
 import { POST as feePost } from "@/app/api/v1/office/certificate-requests/[requestId]/fee/route";
@@ -89,7 +91,14 @@ describe("a former pupil's papers", () => {
 
   it("is the asker's own: another alumnus cannot take it back", async () => {
     await as(ids.stranger, "ALUMNUS");
-    expect((await cancelPost(json("/x", {}), params(ids.request))).status).toBe(404);
+    const theirs = (await cancelPost(json("/x", {}), params(ids.request))).status;
+    expect(theirs).toBe(404);
+    // The sweep's sample is pupil 01's request: the family's actors own it, its alumnus does not, and the catalog
+    // says so for the alumnus alone (STREAMS-4).
+    const cancelDoor = ENDPOINTS.find((e) => e.method === "POST" && e.path === "/api/v1/family/certificate-requests/{requestId}/cancel")!;
+    expect([declaredStatus(cancelDoor, "ALUMNUS")].flat()).toContain(theirs);
+    expect(declaredStatus(cancelDoor, "STUDENT")).toBe(200);
+    expect(declaredStatus(cancelDoor, "PARENT")).toBe(200);
     await as(ids.alumnusUser, "ALUMNUS");
     expect((await (await cancelPost(json("/x", {}), params(ids.request))).json()).status).toBe("CANCELLED");
   });

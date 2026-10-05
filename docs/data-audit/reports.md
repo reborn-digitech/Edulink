@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-05T04:12:05.996Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 283 WARN · 128 INFO
+Run: 2026-10-05T09:37:25.296Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 283 WARN · 128 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 

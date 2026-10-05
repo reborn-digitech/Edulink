@@ -487,7 +487,9 @@ export const attendanceHistorySchema = z.object({
           late: z.number().int(),
           absent: z.number().int(),
           excused: z.number().int(),
-          percent: z.number(),
+          // A register opened and left without marks is a blank day, not a
+          // 0 % day: null, like a pupil's and the month's percent below.
+          percent: z.number().nullable(),
         }),
       ),
       pupils: z.array(

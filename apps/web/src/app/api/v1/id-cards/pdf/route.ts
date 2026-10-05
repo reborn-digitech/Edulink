@@ -9,7 +9,10 @@ import { PDF_BUDGET, apiFailure, apiInvalid, budget } from "@/lib/api-v1";
 export async function GET(request: Request) {
   try {
     const ctx = await requireApiRoles("STUDENT", "PARENT", "ADMIN", "PRINCIPAL");
-    const parsed = idCardPdfQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
+    // Only a student may leave the student out (their own card); a guardian or the office naming nobody is a
+    // missing query, 422, not a "not found" (STREAMS-5).
+    const query = ctx.role === "STUDENT" ? idCardPdfQuerySchema : idCardPdfQuerySchema.required({ student: true });
+    const parsed = query.safeParse(Object.fromEntries(new URL(request.url).searchParams));
     if (!parsed.success) return apiInvalid(parsed);
     const refused = await budget(`pdf:${ctx.user.id}`, PDF_BUDGET.limit, PDF_BUDGET.windowMs);
     if (refused) return refused;

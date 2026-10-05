@@ -1,5 +1,5 @@
 import { slipAnswerSchema, slipViewSchema } from "@edulink/contracts";
-import { answerSlip, slipForReader } from "@/lib/permission-slips";
+import { answerSlip, assertSlipAnswerRole, slipForReader } from "@/lib/permission-slips";
 import { apiFailure, apiInvalid, ok, readJson } from "@/lib/api-v1";
 import { requireApiSession } from "@/lib/api-reads/shared";
 
@@ -20,6 +20,8 @@ export async function GET(_request: Request, { params }: Params) {
 export async function POST(request: Request, { params }: Params) {
   try {
     const ctx = await requireApiSession();
+    // The role before the body: the wrong role gets 403, not the body's 422.
+    assertSlipAnswerRole(ctx);
     const { postId } = await params;
     const parsed = slipAnswerSchema.safeParse(await readJson(request));
     if (!parsed.success) return apiInvalid(parsed);

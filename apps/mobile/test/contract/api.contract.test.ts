@@ -26,7 +26,7 @@ import { LIMITED_ROLES, meSchema, sessionsListSchema } from "@edulink/contracts"
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { callsInSource } from "../lib/api-catalog.test";
-import { allowed, judge, moduleOff, tenantFromMe, type Doc } from "./role-matrix";
+import { allowed, judge, moduleOff, tenantFromMe, walkBudgetMs, walkedGets, type Doc } from "./role-matrix";
 
 const BASE = process.env.EDULINK_API_BASE;
 const TOKENS = {
@@ -53,8 +53,6 @@ const TOKENS = {
 /** Every role behind the default-deny gate: a "signed-in" door opens to one only where x-limited-roles names it. */
 const MODULE_ROLES: string[] = [...LIMITED_ROLES];
 const describeIf = BASE ? describe : describe.skip;
-/** One actor's walk: two seconds on `next start`, about a minute on `next dev`, which compiles each door on first call; raise it there. */
-const WALK_MS = Number(process.env.EDULINK_CONTRACT_WALK_MS) || 60_000;
 
 function client(token: string | null) {
   return createApiClient({ baseUrl: BASE ?? "http://localhost:3000", getToken: () => token, getLocale: () => "en" });
@@ -101,7 +99,9 @@ describeIf("the app's client against /api/v1", () => {
 
 describeIf("the role matrix, from the app's client", () => {
   const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
-  const gets = [...new Set(callsInSource().filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
+  const gets = walkedGets(doc, callsInSource());
+  /** One actor's walk: seconds on `next start`, 71–90 s on `next dev` (5 Oct 2026), which compiles each door on first call — so the budget follows the number of doors (STREAMS-7); EDULINK_CONTRACT_WALK_MS still sets it outright. */
+  const WALK_MS = walkBudgetMs(gets.length, process.env.EDULINK_CONTRACT_WALK_MS);
   const actors: [string | null, string | null][] = [[null, null], ...Object.entries(TOKENS).filter(([, t]) => t).map(([r, t]) => [r, t!] as [string, string])];
 
   it("has endpoints to walk", () => {

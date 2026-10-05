@@ -2,6 +2,8 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import { attendanceHistory, historyClassesFor, shiftMonth } from "@/lib/attendance-history";
+import { adminAttendanceHistory } from "@/lib/api-reads/admin";
+import { attendanceHistorySchema } from "@edulink/contracts";
 import type { ActiveContext } from "@/lib/session";
 
 /**
@@ -46,6 +48,9 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
 const MONTH = "2031-03";
 const DAY_ONE = "2031-03-02";
 const DAY_TWO = "2031-03-03";
+// A register opened and never marked (the sweep left eight such on 4 October 2026).
+const BLANK_MONTH = "2031-05";
+const BLANK_DAY = "2031-05-04";
 const PRINCIPAL_EMAIL = "principal.history.unit@riverside.test";
 const SPARE_EMAIL = "spare.history.unit@riverside.test";
 const PUPIL_EMAILS = ["pupil1.history.unit@riverside.test", "pupil2.history.unit@riverside.test"];
@@ -215,6 +220,25 @@ describe("the month grid", () => {
     expect(history.days).toEqual([]);
     expect(history.percent).toBeNull();
     expect(history.pupils.every((p) => p.percent === null)).toBe(true);
+  });
+
+  it("a register opened with no marks is a blank day the API door still answers (STREAMS-1)", async () => {
+    await db.attendanceSession.create({
+      data: { schoolId: riversideId, classId, dateKey: BLANK_DAY, takenByMembershipId: classTeacher.membershipId! },
+    });
+    for (const who of [admin, principal]) {
+      const read = await adminAttendanceHistory(
+        { ...who, schoolId: riversideId, membershipId: who.membershipId!, role: who.role! },
+        { classId, month: BLANK_MONTH },
+      );
+      // The route parses with the contract; a null day percent used to throw
+      // a ZodError there and the door answered 500.
+      const parsed = attendanceHistorySchema.parse(read);
+      expect(parsed.history!.days).toEqual([
+        { dateKey: BLANK_DAY, present: 0, late: 0, absent: 0, excused: 0, percent: null },
+      ]);
+      expect(parsed.history!.percent).toBeNull();
+    }
   });
 
   it("shiftMonth crosses the year", () => {

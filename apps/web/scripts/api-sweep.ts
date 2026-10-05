@@ -29,13 +29,14 @@ import { createHash, randomBytes } from "node:crypto";
 import { fixturePng } from "./png";
 import { Prisma, PrismaClient } from "@prisma/client";
 import { ENDPOINTS, type Endpoint, type SweepFixture } from "../src/lib/api-catalog";
-import { permits } from "../src/lib/api-catalog/types";
+import { declaredStatus, permits } from "../src/lib/api-catalog/types";
 import { COLLEGE_DOORS } from "./college-doors";
 import { isCollegeKind, isDutyRole, parseDuties } from "@edulink/contracts";
 import { ROLES, type Role } from "../src/lib/constants";
 import { parseTeachingDays } from "../src/lib/dates";
 import { HOLIDAY_KIND_META, type HolidayKind } from "../src/lib/holiday-kinds";
 import { restoreSweepThrowaways, SWEEP_APPRAISAL, SWEEP_DOOR_IDS } from "./sweep-doors";
+import { inOwnWindow } from "./sweep-window";
 
 const BASE = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
@@ -456,8 +457,8 @@ function expected(e: Endpoint, role: Role | null): number | number[] {
   // and its closed-day answer is what the valid-body probe expects below.
   if (e.path === "/api/v1/staff/attendance/check-in" && checkInClosedToday) return 403;
   // A GET's emptyBodyStatus is the permitted actor's answer to the sample as it stands (catalog types.ts).
-  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (e.emptyBodyStatus ?? [200, 404]);
-  return e.emptyBodyStatus ?? [200, 404, 422];
+  if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : (declaredStatus(e, role) ?? [200, 404]);
+  return declaredStatus(e, role) ?? [200, 404, 422];
 }
 
 /**
@@ -943,7 +944,8 @@ async function cleanWindow(sinceText: string, untilText: string | null): Promise
 
 async function main() {
   if (CLEAN_SINCE) return cleanWindow(CLEAN_SINCE, CLEAN_UNTIL);
-  if (CROSS_MODE) return crossProbe(CROSS_MODE);
+  // The cross probes write too (an application, a guardian's PEN decision): their window is swept like the main run's (STREAMS-8).
+  if (CROSS_MODE) return inOwnWindow(() => crossProbe(CROSS_MODE), sweepAway);
   const startedAt = new Date();
   const tokens = await actors();
   // The rows whose doors remove them, put back first, so this run proves the removal and not the last run's 404.

@@ -70,7 +70,17 @@ async function inAudience(post: SlipPost, studentMembershipId: string): Promise<
 }
 
 /** A family's answer for one child (a guardian), or an adult student's own. Changing it until the day is allowed. */
+/**
+ * Only a guardian or a student ever answers a slip. The door calls this before
+ * it reads the body, so the wrong role gets 403 and never learns the body's
+ * fields from a 422 (STREAMS-2).
+ */
+export function assertSlipAnswerRole(ctx: ActiveContext): void {
+  if (ctx.role !== "PARENT" && ctx.role !== "STUDENT") throw new AccessError("access.wrongRoleForThisAction");
+}
+
 export async function answerSlip(ctx: ActiveContext, postId: string, input: { studentMembershipId: string; answer: "YES" | "NO" }, now: Date = new Date()): Promise<SlipView> {
+  assertSlipAnswerRole(ctx);
   let schoolId: string;
   if (ctx.role === "PARENT") {
     // No grant names a slip: an adult at a college answers for themself.

@@ -80,3 +80,26 @@ export function judge(want: Want, off: Off, res: Answer): string | null {
   const wanted = off === "must" ? "403 MODULE_OFF" : off === "may" ? `${want} or 403 MODULE_OFF` : `${want}`;
   return `wanted ${wanted}, got ${got}${res.ok ? "" : ` (${res.code})`}`;
 }
+
+/** The parameterless GETs the app's screens call that the document lists: what one actor's walk visits. */
+export function walkedGets(doc: Doc, calls: readonly { method: string; path: string }[]): string[] {
+  return [...new Set(calls.filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
+}
+
+/**
+ * next dev's cost of one door in the walk, with room: one actor's walk of the
+ * whole list (170 doors) took 71–90 s on 5 October 2026 (about 0.5 s a door, each door
+ * compiled on its first call), against the old fixed 60 s that timed out
+ * every walk (STREAMS-7). `next start` answers the same walk in seconds, so a
+ * passing run is never slower for the larger budget.
+ */
+export const WALK_MS_PER_DOOR = 1_500;
+/** The floor the budget never goes under: the old fixed default. */
+export const WALK_MS_FLOOR = 60_000;
+
+/** One actor's walk budget: EDULINK_CONTRACT_WALK_MS when set to a positive number, else derived from how many doors the walk visits. */
+export function walkBudgetMs(doors: number, env?: string): number {
+  const set = Number(env);
+  if (env && Number.isFinite(set) && set > 0) return set;
+  return Math.max(WALK_MS_FLOOR, doors * WALK_MS_PER_DOOR);
+}

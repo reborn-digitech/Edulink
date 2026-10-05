@@ -26,6 +26,8 @@ import { PrismaClient } from "@prisma/client";
 import { createSession } from "@/lib/session";
 import { __resetCookies, __setHeaders } from "../tests/stubs/next-headers";
 import { gateRequest } from "@/lib/role-gate";
+import { ENDPOINTS } from "@/lib/api-catalog";
+import { declaredStatus } from "@/lib/api-catalog/types";
 import { ModuleOffError } from "@/lib/access-error";
 import { sgpaCourses } from "@/lib/exam-cell-marks";
 import { checkExamDocument } from "@/lib/exam-cell-after";
@@ -346,6 +348,12 @@ describe("the exam cell (module EXAMS)", () => {
       expect((await creditsPushPost(json("/x", { termId: "cnotaterm0000000000000000" }))).status).toBe(404);
       expect((await creditsPushPost(json("/x", { termId: "x" }))).status).toBe(422);
       expect((await creditsPushPost(json("/x", { termId: ids.term }))).status).toBe(409);
+      // An empty body is a valid "send everything waiting" (the web's button names no term), so it meets the
+      // bank check: 409 here, 200 with the stub — and the catalog declares both, so the sweep expects them (STREAMS-3).
+      const emptyOff = (await creditsPushPost(json("/x", {}))).status;
+      expect(emptyOff).toBe(409);
+      const pushDoor = ENDPOINTS.find((e) => e.method === "POST" && e.path === "/api/v1/exam-cell/credits/push")!;
+      expect([declaredStatus(pushDoor, "EXAM_CONTROLLER")].flat()).toEqual(expect.arrayContaining([emptyOff, 200]));
       process.env.ABC_STUB_SEND = "1";
       expect((await creditsPushPost(json("/x", { termId: ids.term }))).status).toBe(200);
     } finally {

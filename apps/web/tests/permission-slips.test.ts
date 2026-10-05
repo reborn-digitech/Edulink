@@ -101,6 +101,18 @@ describe("a permission slip", () => {
     expect(res.status).toBe(404);
   });
 
+  it("answers the wrong role 403 before it reads the body, and a guardian's empty body 422 (STREAMS-2)", async () => {
+    const empty = () => consentPost(new Request(`http://localhost/api/v1/shared/bulletin/${ids.slip}/consent`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }), { params: Promise.resolve({ postId: ids.slip }) });
+    for (const [user, role] of [[ids.admin, "ADMIN"], [ids.teacher, "TEACHER"]] as const) {
+      await as(user, role);
+      const res = await empty();
+      expect(res.status).toBe(403);
+      expect(((await res.json()) as { issues?: unknown }).issues).toBeUndefined();
+    }
+    await as(ids.p1, "PARENT", null);
+    expect((await empty()).status).toBe(422);
+  });
+
   it("never lets a minor answer for themself, and closes after its day", async () => {
     const pupil = await as(ids.pupil1User, "STUDENT");
     await expect(answerSlip(pupil, ids.slip, { studentMembershipId: ids.pupil1, answer: "NO" })).rejects.toMatchObject({ key: "collegeDesks.refuseSlipMinor" });

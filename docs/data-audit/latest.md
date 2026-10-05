@@ -1,6 +1,6 @@
 # Data-flow audit — latest run
 
-Run: 2026-10-05T04:12:03.957Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 1 FAIL · 0 WARN · 66 INFO
+Run: 2026-10-05T09:37:23.143Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 1 FAIL · 0 WARN · 66 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a contradiction the code should never produce; WARN = drift a later edit causes by design, or a population gap; INFO = a figure worth reading.
 

@@ -17,7 +17,7 @@ import { GET as checkGet } from "@/app/api/v1/id-cards/check/route";
 const db = new PrismaClient();
 const STAMP = Date.now();
 const SUFFIX = String(STAMP).slice(-6);
-const ids = { school: "", college: "", users: [] as string[], pupil: "", pupilUser: "", other: "", left: "", adult: "", parent: "", adultParent: "", admin: "", teacher: "" };
+const ids = { school: "", college: "", users: [] as string[], pupil: "", pupilUser: "", other: "", left: "", adult: "", parent: "", adultParent: "", admin: "", principal: "", teacher: "" };
 
 async function as(userId: string, schoolId: string | null, role: string) {
   __resetCookies();
@@ -43,6 +43,8 @@ beforeAll(async () => {
   ids.adult = await member(await user("Adult Student", { isMinor: false, birthdate: new Date("2004-01-01T00:00:00Z") }), ids.college, "STUDENT", { studentCode: `ZZC-${SUFFIX}-09` });
   ids.admin = await user("Admin");
   await member(ids.admin, ids.school, "ADMIN");
+  ids.principal = await user("Principal");
+  await member(ids.principal, ids.school, "PRINCIPAL");
   ids.teacher = await user("Teacher");
   await member(ids.teacher, ids.school, "TEACHER");
   ids.parent = await user("Parent");
@@ -99,6 +101,19 @@ describe("the identity card", () => {
     expect(res.status).toBe(200);
     expect(res.headers.get("content-type")).toBe("application/pdf");
     expect((await checkGet(new Request(`http://localhost/api/v1/id-cards/check?c=ZZC-${SUFFIX}-02`))).status).toBe(403);
+  });
+});
+
+describe("the card door with no student named (STREAMS-5)", () => {
+  it("answers a guardian, the office and the head 422 for the missing query, and still prints with one", async () => {
+    for (const [user, schoolId, role] of [[ids.parent, null, "PARENT"], [ids.admin, ids.school, "ADMIN"], [ids.principal, ids.school, "PRINCIPAL"]] as const) {
+      await as(user, schoolId, role);
+      const bare = await pdfGet(new Request("http://localhost/api/v1/id-cards/pdf"));
+      expect({ role, status: bare.status }).toEqual({ role, status: 422 });
+      expect(((await bare.json()) as { issues: Record<string, string> }).issues).toHaveProperty("student");
+      const named = await pdfGet(new Request(`http://localhost/api/v1/id-cards/pdf?student=${ids.pupil}`));
+      expect({ role, status: named.status }).toEqual({ role, status: 200 });
+    }
   });
 });
 

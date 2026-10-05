@@ -7600,7 +7600,8 @@
                                 "type": "integer"
                               },
                               "percent": {
-                                "type": "number"
+                                "type": "number",
+                                "nullable": true
                               }
                             },
                             "required": [
@@ -80201,7 +80202,7 @@
     },
     "/api/v1/id-cards/pdf": {
       "get": {
-        "summary": "A student's identity card as a PDF (application/pdf): their own, a guardian's child's (not an adult's at a college), the office's or the head's for anyone on the roll; drawn on every read",
+        "summary": "A student's identity card as a PDF (application/pdf): their own, a guardian's child's (not an adult's at a college), the office's or the head's for anyone on the roll; drawn on every read; ?student= is required except for a student's own (422 without it)",
         "description": "Roles: STUDENT, PARENT, ADMIN, PRINCIPAL.",
         "security": [
           {

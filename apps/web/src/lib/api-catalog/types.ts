@@ -67,9 +67,20 @@ export type Endpoint = {
    * For the sweep: the status a permitted role gets with an empty body. On a
    * GET (which sends none) it is the status a permitted sweep actor gets for
    * the sample as it stands — an autonomous college's conduct read by the
-   * affiliated college's controller is a 403 (SWEEPS-1, 4 Oct 2026).
+   * affiliated college's controller is a 403 (SWEEPS-1, 4 Oct 2026). A list
+   * where the honest answer depends on the server's set-up: the credits push
+   * with an all-optional body is 409 while the Academic Bank is not connected
+   * and 200 with the stub (STREAMS-3, 5 Oct 2026).
    */
-  emptyBodyStatus?: number;
+  emptyBodyStatus?: number | number[];
+  /**
+   * For the sweep: a permitted role's own answer to this door's sample where
+   * the sample is not that role's row — the cancel door's sample is pupil
+   * 01's request, which the family's actors own and the alumnus does not, so
+   * the alumnus is answered 404 (STREAMS-4, 5 Oct 2026). Read before
+   * `emptyBodyStatus` by `declaredStatus` below.
+   */
+  statusByRole?: Partial<Record<RoleCode, number | number[]>>;
   /**
    * For the sweep: the path with its parameters filled from the ZZ fixture.
    * A string for a fixed path; a function for one that needs an id. Returning
@@ -251,6 +262,15 @@ export type SweepFixture = {
  * anyone else): a door that names `duties` lets those two roles through only
  * with one of them. Left out, the caller holds none.
  */
+/**
+ * What the catalog declares a PERMITTED role gets from this door's sample with
+ * an empty body (a GET: as it stands), or undefined where it declares nothing
+ * and the sweep's default applies. The sweep's expected() reads this.
+ */
+export function declaredStatus(e: Pick<Endpoint, "emptyBodyStatus" | "statusByRole">, role: RoleCode | null): number | number[] | undefined {
+  return (role ? e.statusByRole?.[role] : undefined) ?? e.emptyBodyStatus;
+}
+
 export function permits(e: Pick<Endpoint, "access" | "limitedRoles" | "duties">, role: RoleCode, duties: readonly string[] = []): boolean {
   if (e.access === "anyone" || e.access === "account" || e.access === "operator" || e.access === "app-admin") return true;
   const byRole = e.access === "signed-in" ? !(LIMITED_ROLES as readonly string[]).includes(role) || (e.limitedRoles ?? []).includes(role as LimitedRoleCode) : e.access.includes(role);
