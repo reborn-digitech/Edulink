@@ -14,6 +14,8 @@ import { SelectField, TextAreaField, TextField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/parts";
+import { NaacInsightsSection } from "@/components/iqac/insights";
+import { naacInsights } from "@/lib/iqac-insights";
 import { closeCycleAction, recomputeAction, saveInputsAction, scoreMetricAction } from "../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,7 +58,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       </div>
     );
   }
-  const p = await predictorFor(ctx, cycleId);
+  const [p, insights] = await Promise.all([predictorFor(ctx, cycleId), naacInsights(ctx, { cycleId })]);
   const back = `/iqac/predictor?cycle=${cycleId}`;
   // Records the coordinator may cite as evidence: the registers' latest rows.
   const [research, activities, meetings] = p.canEdit
@@ -105,6 +107,9 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
         </CardBody>
       </Card>
 
+      {/* Actionable insights (5 Oct 2026): the way to the next band, ranked, each with where the change is made. */}
+      <NaacInsightsSection t={t} insights={insights} role={ctx.role} locale={locale} back={back} canRecompute={p.canEdit} simulatorHref={`/iqac/simulator?cycle=${cycleId}`} />
+
       {p.criteria.map((c) => (
         <Card key={c.code} data-testid={`criterion-${c.code}`}>
           <CardHeader title={c.code + ". " + c.name} description={[t("iqac.metricWeight", { weight: c.weight }), " · ", t("iqac.criterionScore", { score: c.score.toFixed(2) })].join("")} />
@@ -115,7 +120,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
                   {k.code} {k.name} · {t("iqac.metricWeight", { weight: k.weight })} · {t("iqac.criterionScore", { score: k.score.toFixed(2) })}
                 </h3>
                 {k.metrics.map((m) => (
-                  <details key={m.code} className="rounded-[--radius-md] border border-border p-3" data-testid={`metric-${m.code}`}>
+                  <details key={m.code} id={`metric-${m.code.replace(/\./g, "-")}`} className="rounded-[--radius-md] border border-border p-3" data-testid={`metric-${m.code}`}>
                     <summary className="flex cursor-pointer flex-wrap items-baseline justify-between gap-2 text-sm">
                       <span>
                         <span className="font-mono text-fg-muted">{m.code}</span> {m.text}
@@ -200,7 +205,7 @@ export default async function PredictorPage({ searchParams }: { searchParams: Pr
       ))}
 
       <Card>
-        <CardHeader title={t("iqac.enteredTitle")} description={t("iqac.enteredIntro")} />
+        <CardHeader id="entered" title={t("iqac.enteredTitle")} description={t("iqac.enteredIntro")} />
         <CardBody>
           <form action={saveInputsAction} className="grid gap-3 sm:grid-cols-2">
             <input type="hidden" name="back" value={back} />

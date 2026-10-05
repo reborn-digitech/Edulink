@@ -174754,6 +174754,3073 @@
         ]
       }
     },
+    "/api/v1/iqac/insights": {
+      "get": {
+        "summary": "Actionable insights for a NAAC cycle (?cycleId=, default the open one): the cheapest path to the next band and the one after, every quantitative metric's next step in its own unit ranked by what one unit adds, the qualitative metrics to score with evidence, each with the page where the change is made and who makes it, and what was done there since the last compute; ?scenarioId= gives a saved scenario's gap instead",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cycle": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "framework": {
+                          "type": "string",
+                          "enum": [
+                            "AFFILIATED_UG",
+                            "AUTONOMOUS",
+                            "BINARY_MATURITY"
+                          ]
+                        },
+                        "institutionType": {
+                          "type": "string"
+                        },
+                        "windowFrom": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                        },
+                        "windowTo": {
+                          "$ref": "#/properties/cycle/properties/windowFrom"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "OPEN",
+                            "SUBMITTED",
+                            "CLOSED"
+                          ]
+                        },
+                        "cgpa": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "grade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "computedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        },
+                        "metricCount": {
+                          "type": "integer"
+                        },
+                        "scoredCount": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "framework",
+                        "institutionType",
+                        "windowFrom",
+                        "windowTo",
+                        "status",
+                        "cgpa",
+                        "grade",
+                        "computedAt",
+                        "metricCount",
+                        "scoredCount"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "scenarioId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "scenarioName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "cgpa": {
+                      "type": "number"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "paths": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "grade": {
+                            "type": "string"
+                          },
+                          "min": {
+                            "type": "number"
+                          },
+                          "distance": {
+                            "type": "number"
+                          },
+                          "points": {
+                            "type": "number"
+                          },
+                          "reachable": {
+                            "type": "boolean"
+                          },
+                          "steps": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string"
+                                },
+                                "delta": {
+                                  "type": "number"
+                                },
+                                "unit": {
+                                  "type": "string"
+                                },
+                                "points": {
+                                  "type": "number"
+                                },
+                                "sentence": {
+                                  "type": "string"
+                                },
+                                "cta": {
+                                  "type": "object",
+                                  "properties": {
+                                    "code": {
+                                      "type": "string",
+                                      "enum": [
+                                        "FACULTY_RECORDS",
+                                        "PEOPLE",
+                                        "RESEARCH",
+                                        "ACTIVITIES",
+                                        "SURVEYS",
+                                        "COMMITTEES",
+                                        "GRIEVANCES",
+                                        "ENTERED",
+                                        "QUALITATIVE",
+                                        "ACADEMICS",
+                                        "ADMISSIONS",
+                                        "EXAMS",
+                                        "PLACEMENT",
+                                        "INTERNSHIPS",
+                                        "SCHOLARSHIPS",
+                                        "PURCHASES",
+                                        "LIBRARY",
+                                        "MODULES",
+                                        "NBA_WORKSHEET",
+                                        "DOCUMENTS"
+                                      ]
+                                    },
+                                    "href": {
+                                      "type": "string"
+                                    },
+                                    "roles": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "ADMIN",
+                                          "PRINCIPAL",
+                                          "TEACHER",
+                                          "STUDENT",
+                                          "PARENT",
+                                          "EXPERT",
+                                          "DRIVER",
+                                          "LIBRARIAN",
+                                          "WARDEN",
+                                          "ALUMNUS",
+                                          "FACULTY",
+                                          "HOD",
+                                          "EXAM_CONTROLLER",
+                                          "IQAC",
+                                          "TPO",
+                                          "ACCOUNTS",
+                                          "RECRUITER"
+                                        ]
+                                      }
+                                    },
+                                    "label": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "code",
+                                    "href",
+                                    "roles",
+                                    "label"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "code",
+                                "delta",
+                                "unit",
+                                "points",
+                                "sentence",
+                                "cta"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "sentence": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "grade",
+                          "min",
+                          "distance",
+                          "points",
+                          "reachable",
+                          "steps",
+                          "sentence"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "ranked": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "ki": {
+                            "type": "string"
+                          },
+                          "criterion": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "QN",
+                              "QL"
+                            ]
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "weight": {
+                            "type": "number"
+                          },
+                          "value": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "score": {
+                            "type": "number"
+                          },
+                          "scored": {
+                            "type": "boolean"
+                          },
+                          "lever": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverLabel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverValue": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "nextStep": {
+                            "type": "object",
+                            "properties": {
+                              "units": {
+                                "type": "number"
+                              },
+                              "delta": {
+                                "type": "number"
+                              },
+                              "toValue": {
+                                "type": "number",
+                                "nullable": true
+                              },
+                              "toScore": {
+                                "type": "number"
+                              },
+                              "points": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "units",
+                              "delta",
+                              "toValue",
+                              "toScore",
+                              "points"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "toTop": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/ranked/items/properties/nextStep"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "pointsPerUnit": {
+                            "type": "number"
+                          },
+                          "sentence": {
+                            "type": "string"
+                          },
+                          "missing": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "cta": {
+                            "$ref": "#/properties/paths/items/properties/steps/items/properties/cta"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "ki",
+                          "criterion",
+                          "kind",
+                          "text",
+                          "weight",
+                          "value",
+                          "score",
+                          "scored",
+                          "lever",
+                          "leverLabel",
+                          "leverValue",
+                          "unit",
+                          "nextStep",
+                          "toTop",
+                          "pointsPerUnit",
+                          "sentence",
+                          "missing",
+                          "cta"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "qualitative": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/ranked/items"
+                      }
+                    },
+                    "lastDone": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "by": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "cta": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/paths/items/properties/steps/items/properties/cta/properties/code"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "sinceCompute": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "action",
+                          "label",
+                          "at",
+                          "by",
+                          "cta",
+                          "sinceCompute"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "computedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "notAScore": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "cycle",
+                    "scenarioId",
+                    "scenarioName",
+                    "cgpa",
+                    "grade",
+                    "paths",
+                    "ranked",
+                    "qualitative",
+                    "lastDone",
+                    "computedAt",
+                    "notAScore"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cycleId": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "scenarioId": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/insights/nba": {
+      "get": {
+        "summary": "Actionable insights for an engineering department's NBA SAR (?year=&departmentId=&scenarioId=): which computed item's marks are cheapest to raise (enrolment, success rates, academic performance, placement, faculty ratio, cadre, qualification) and the self-assessed criteria still to write; an HOD reads their own department; 404 unless the college teaches engineering",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "year": {
+                      "type": "integer"
+                    },
+                    "departmentId": {
+                      "type": "string"
+                    },
+                    "departmentName": {
+                      "type": "string"
+                    },
+                    "departments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "code",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "scenarioId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "scenarioName": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "computed": {
+                      "type": "number"
+                    },
+                    "self": {
+                      "type": "number"
+                    },
+                    "total": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "ranked": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "criterion": {
+                            "type": "string"
+                          },
+                          "text": {
+                            "type": "string"
+                          },
+                          "max": {
+                            "type": "number"
+                          },
+                          "marks": {
+                            "type": "number"
+                          },
+                          "computed": {
+                            "type": "boolean"
+                          },
+                          "figure": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "lever": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverLabel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverValue": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "nextStep": {
+                            "type": "object",
+                            "properties": {
+                              "units": {
+                                "type": "number"
+                              },
+                              "delta": {
+                                "type": "number"
+                              },
+                              "toValue": {
+                                "type": "number",
+                                "nullable": true
+                              },
+                              "toScore": {
+                                "type": "number"
+                              },
+                              "points": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "units",
+                              "delta",
+                              "toValue",
+                              "toScore",
+                              "points"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "toTop": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/ranked/items/properties/nextStep"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "pointsPerUnit": {
+                            "type": "number"
+                          },
+                          "sentence": {
+                            "type": "string"
+                          },
+                          "cta": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "FACULTY_RECORDS",
+                                  "PEOPLE",
+                                  "RESEARCH",
+                                  "ACTIVITIES",
+                                  "SURVEYS",
+                                  "COMMITTEES",
+                                  "GRIEVANCES",
+                                  "ENTERED",
+                                  "QUALITATIVE",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "EXAMS",
+                                  "PLACEMENT",
+                                  "INTERNSHIPS",
+                                  "SCHOLARSHIPS",
+                                  "PURCHASES",
+                                  "LIBRARY",
+                                  "MODULES",
+                                  "NBA_WORKSHEET",
+                                  "DOCUMENTS"
+                                ]
+                              },
+                              "href": {
+                                "type": "string"
+                              },
+                              "roles": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ADMIN",
+                                    "PRINCIPAL",
+                                    "TEACHER",
+                                    "STUDENT",
+                                    "PARENT",
+                                    "EXPERT",
+                                    "DRIVER",
+                                    "LIBRARIAN",
+                                    "WARDEN",
+                                    "ALUMNUS",
+                                    "FACULTY",
+                                    "HOD",
+                                    "EXAM_CONTROLLER",
+                                    "IQAC",
+                                    "TPO",
+                                    "ACCOUNTS",
+                                    "RECRUITER"
+                                  ]
+                                }
+                              },
+                              "label": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "href",
+                              "roles",
+                              "label"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "criterion",
+                          "text",
+                          "max",
+                          "marks",
+                          "computed",
+                          "figure",
+                          "lever",
+                          "leverLabel",
+                          "leverValue",
+                          "unit",
+                          "nextStep",
+                          "toTop",
+                          "pointsPerUnit",
+                          "sentence",
+                          "cta"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "selfAssess": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/ranked/items"
+                      }
+                    },
+                    "lastDone": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "by": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "cta": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/ranked/items/properties/cta/properties/code"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "sinceCompute": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "action",
+                          "label",
+                          "at",
+                          "by",
+                          "cta",
+                          "sinceCompute"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "notAScore": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "year",
+                    "departmentId",
+                    "departmentName",
+                    "departments",
+                    "scenarioId",
+                    "scenarioName",
+                    "computed",
+                    "self",
+                    "total",
+                    "max",
+                    "ranked",
+                    "selfAssess",
+                    "lastDone",
+                    "notAScore"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "year": {
+                    "type": "integer",
+                    "minimum": 2000,
+                    "maximum": 2100
+                  },
+                  "departmentId": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "scenarioId": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/insights/nirf": {
+      "get": {
+        "summary": "NIRF from the rows: the sub-parameters whose formulas NIRF publishes, the partial score and the platform's rank-band estimate, and what moves each sub-parameter's marks",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "windowFrom": {
+                      "type": "string"
+                    },
+                    "windowTo": {
+                      "type": "string"
+                    },
+                    "cycleId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "inputs": {
+                      "type": "object",
+                      "properties": {
+                        "faculty": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100000,
+                          "nullable": true
+                        },
+                        "intake": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100000,
+                          "nullable": true
+                        },
+                        "phdPct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        },
+                        "f1": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "f2": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "f3": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "placedPct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        },
+                        "higherPct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        },
+                        "passInTimePct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        },
+                        "womenStudentsPct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        },
+                        "womenFacultyPct": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "faculty",
+                        "intake",
+                        "phdPct",
+                        "f1",
+                        "f2",
+                        "f3",
+                        "placedPct",
+                        "higherPct",
+                        "passInTimePct",
+                        "womenStudentsPct",
+                        "womenFacultyPct"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "partial": {
+                      "type": "number"
+                    },
+                    "coveredMarks": {
+                      "type": "number"
+                    },
+                    "projected": {
+                      "type": "number",
+                      "nullable": true
+                    },
+                    "band": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "TOP_100",
+                            "B101_150",
+                            "B151_200",
+                            "B201_300",
+                            "BELOW"
+                          ]
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "min": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "label",
+                        "min"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "nextBand": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string",
+                          "enum": [
+                            "TOP_100",
+                            "B101_150",
+                            "B151_200",
+                            "B201_300",
+                            "BELOW"
+                          ]
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "min": {
+                          "type": "number"
+                        },
+                        "distance": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "label",
+                        "min",
+                        "distance"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "parameters": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "weight": {
+                            "type": "number"
+                          },
+                          "marks": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "covered": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "name",
+                          "weight",
+                          "marks",
+                          "covered"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "ranked": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "parameter": {
+                            "type": "string"
+                          },
+                          "max": {
+                            "type": "number"
+                          },
+                          "marks": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "published": {
+                            "type": "boolean"
+                          },
+                          "lever": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverLabel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "leverValue": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "nextStep": {
+                            "type": "object",
+                            "properties": {
+                              "units": {
+                                "type": "number"
+                              },
+                              "delta": {
+                                "type": "number"
+                              },
+                              "toValue": {
+                                "type": "number",
+                                "nullable": true
+                              },
+                              "toScore": {
+                                "type": "number"
+                              },
+                              "points": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "units",
+                              "delta",
+                              "toValue",
+                              "toScore",
+                              "points"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "toTop": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/ranked/items/properties/nextStep"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "pointsPerUnit": {
+                            "type": "number"
+                          },
+                          "sentence": {
+                            "type": "string"
+                          },
+                          "cta": {
+                            "type": "object",
+                            "properties": {
+                              "code": {
+                                "type": "string",
+                                "enum": [
+                                  "FACULTY_RECORDS",
+                                  "PEOPLE",
+                                  "RESEARCH",
+                                  "ACTIVITIES",
+                                  "SURVEYS",
+                                  "COMMITTEES",
+                                  "GRIEVANCES",
+                                  "ENTERED",
+                                  "QUALITATIVE",
+                                  "ACADEMICS",
+                                  "ADMISSIONS",
+                                  "EXAMS",
+                                  "PLACEMENT",
+                                  "INTERNSHIPS",
+                                  "SCHOLARSHIPS",
+                                  "PURCHASES",
+                                  "LIBRARY",
+                                  "MODULES",
+                                  "NBA_WORKSHEET",
+                                  "DOCUMENTS"
+                                ]
+                              },
+                              "href": {
+                                "type": "string"
+                              },
+                              "roles": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ADMIN",
+                                    "PRINCIPAL",
+                                    "TEACHER",
+                                    "STUDENT",
+                                    "PARENT",
+                                    "EXPERT",
+                                    "DRIVER",
+                                    "LIBRARIAN",
+                                    "WARDEN",
+                                    "ALUMNUS",
+                                    "FACULTY",
+                                    "HOD",
+                                    "EXAM_CONTROLLER",
+                                    "IQAC",
+                                    "TPO",
+                                    "ACCOUNTS",
+                                    "RECRUITER"
+                                  ]
+                                }
+                              },
+                              "label": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "code",
+                              "href",
+                              "roles",
+                              "label"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "parameter",
+                          "max",
+                          "marks",
+                          "published",
+                          "lever",
+                          "leverLabel",
+                          "leverValue",
+                          "unit",
+                          "nextStep",
+                          "toTop",
+                          "pointsPerUnit",
+                          "sentence",
+                          "cta"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "notAScore": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "windowFrom",
+                    "windowTo",
+                    "cycleId",
+                    "inputs",
+                    "partial",
+                    "coveredMarks",
+                    "projected",
+                    "band",
+                    "nextBand",
+                    "parameters",
+                    "ranked",
+                    "notAScore"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/scenarios": {
+      "get": {
+        "summary": "The simulator's saved scenarios (?kind=&cycleId=&year=&departmentId=), each recomputed now with today's formulas and its lead over today; an HOD sees their department's NBA ones",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "NAAC",
+                              "NBA"
+                            ]
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "cycleId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "year": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "departmentId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "by": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "result": {
+                            "type": "number"
+                          },
+                          "savedResult": {
+                            "type": "number"
+                          },
+                          "grade": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "today": {
+                            "type": "number"
+                          },
+                          "delta": {
+                            "type": "number"
+                          },
+                          "canRemove": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "name",
+                          "cycleId",
+                          "year",
+                          "departmentId",
+                          "by",
+                          "at",
+                          "result",
+                          "savedResult",
+                          "grade",
+                          "today",
+                          "delta",
+                          "canRemove"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "canWrite"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "NAAC",
+                      "NBA"
+                    ]
+                  },
+                  "cycleId": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "year": {
+                    "type": "integer",
+                    "minimum": 2000,
+                    "maximum": 2100
+                  },
+                  "departmentId": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Save the simulator's figures under a name: a NAAC cycle's facts and qualitative scores (the IQAC and the principal), or an engineering department's SAR figures for a year (and its HOD); the result is recomputed here, never taken from the caller. Audited",
+        "description": "Roles: IQAC, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "NAAC",
+                              "NBA"
+                            ]
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "cycleId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "year": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "departmentId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "by": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "result": {
+                            "type": "number"
+                          },
+                          "savedResult": {
+                            "type": "number"
+                          },
+                          "grade": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "today": {
+                            "type": "number"
+                          },
+                          "delta": {
+                            "type": "number"
+                          },
+                          "canRemove": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "name",
+                          "cycleId",
+                          "year",
+                          "departmentId",
+                          "by",
+                          "at",
+                          "result",
+                          "savedResult",
+                          "grade",
+                          "today",
+                          "delta",
+                          "canRemove"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "canWrite"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "NAAC"
+                        ]
+                      },
+                      "cycleId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 120
+                      },
+                      "inputs": {
+                        "type": "object",
+                        "properties": {
+                          "facts": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000000000,
+                              "nullable": true
+                            }
+                          },
+                          "ql": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 4,
+                              "nullable": true
+                            }
+                          },
+                          "nirf": {
+                            "type": "object",
+                            "properties": {
+                              "faculty": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100000,
+                                "nullable": true
+                              },
+                              "intake": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100000,
+                                "nullable": true
+                              },
+                              "phdPct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              },
+                              "f1": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "nullable": true
+                              },
+                              "f2": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "nullable": true
+                              },
+                              "f3": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "nullable": true
+                              },
+                              "placedPct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              },
+                              "higherPct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              },
+                              "passInTimePct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              },
+                              "womenStudentsPct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              },
+                              "womenFacultyPct": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "faculty",
+                              "intake",
+                              "phdPct",
+                              "f1",
+                              "f2",
+                              "f3",
+                              "placedPct",
+                              "higherPct",
+                              "passInTimePct",
+                              "womenStudentsPct",
+                              "womenFacultyPct"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true,
+                            "default": null
+                          }
+                        },
+                        "required": [
+                          "facts",
+                          "ql"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "cycleId",
+                      "name",
+                      "inputs"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "enum": [
+                          "NBA"
+                        ]
+                      },
+                      "year": {
+                        "type": "integer",
+                        "minimum": 2000,
+                        "maximum": 2100
+                      },
+                      "departmentId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 2,
+                        "maxLength": 120
+                      },
+                      "inputs": {
+                        "type": "object",
+                        "properties": {
+                          "S": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 100000
+                          },
+                          "F": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "intake": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 100000
+                          },
+                          "admitted": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 100000
+                          },
+                          "successNoBacklog": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "nullable": true
+                          },
+                          "successStipulated": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "nullable": true
+                          },
+                          "apiFirst": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10,
+                            "nullable": true
+                          },
+                          "apiSecond": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10,
+                            "nullable": true
+                          },
+                          "apiThird": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 10,
+                            "nullable": true
+                          },
+                          "placement": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "nullable": true
+                          },
+                          "professors": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "associates": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "assistants": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "phd": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "masters": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "firstYearStudents": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 100000
+                          },
+                          "firstYearFaculty": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 10000
+                          },
+                          "self": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1000
+                            },
+                            "default": {}
+                          }
+                        },
+                        "required": [
+                          "S",
+                          "F",
+                          "intake",
+                          "admitted",
+                          "successNoBacklog",
+                          "successStipulated",
+                          "apiFirst",
+                          "apiSecond",
+                          "apiThird",
+                          "placement",
+                          "professors",
+                          "associates",
+                          "assistants",
+                          "phd",
+                          "masters",
+                          "firstYearStudents",
+                          "firstYearFaculty"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "year",
+                      "departmentId",
+                      "name",
+                      "inputs"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/scenarios/{scenarioId}": {
+      "delete": {
+        "summary": "Remove a saved scenario (the IQAC and the principal; an HOD their department's NBA ones, 404 for another's). Audited",
+        "description": "Roles: IQAC, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "NAAC",
+                              "NBA"
+                            ]
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "cycleId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "year": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "departmentId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "by": {
+                            "type": "string"
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "result": {
+                            "type": "number"
+                          },
+                          "savedResult": {
+                            "type": "number"
+                          },
+                          "grade": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "today": {
+                            "type": "number"
+                          },
+                          "delta": {
+                            "type": "number"
+                          },
+                          "canRemove": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "kind",
+                          "name",
+                          "cycleId",
+                          "year",
+                          "departmentId",
+                          "by",
+                          "at",
+                          "result",
+                          "savedResult",
+                          "grade",
+                          "today",
+                          "delta",
+                          "canRemove"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canWrite": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "canWrite"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "scenarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/iqac/scenarios/compare": {
+      "get": {
+        "summary": "Two scenarios of one kind side by side (?a=&b=): the figures and the scores that differ and the result, b − a",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "NAAC",
+                        "NBA"
+                      ]
+                    },
+                    "a": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "$ref": "#/properties/kind"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "cycleId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "year": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "departmentId": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "by": {
+                          "type": "string"
+                        },
+                        "at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "result": {
+                          "type": "number"
+                        },
+                        "savedResult": {
+                          "type": "number"
+                        },
+                        "grade": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "today": {
+                          "type": "number"
+                        },
+                        "delta": {
+                          "type": "number"
+                        },
+                        "canRemove": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "kind",
+                        "name",
+                        "cycleId",
+                        "year",
+                        "departmentId",
+                        "by",
+                        "at",
+                        "result",
+                        "savedResult",
+                        "grade",
+                        "today",
+                        "delta",
+                        "canRemove"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "b": {
+                      "$ref": "#/properties/a"
+                    },
+                    "inputs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "a": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "b": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "delta": {
+                            "type": "number",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "key",
+                          "label",
+                          "a",
+                          "b",
+                          "delta"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "scores": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "a": {
+                            "type": "number"
+                          },
+                          "b": {
+                            "type": "number"
+                          },
+                          "delta": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "label",
+                          "a",
+                          "b",
+                          "delta"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "a": {
+                          "type": "number"
+                        },
+                        "b": {
+                          "type": "number"
+                        },
+                        "delta": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "a",
+                        "b",
+                        "delta"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "a",
+                    "b",
+                    "inputs",
+                    "scores",
+                    "result"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "a": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "b": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "a",
+                  "b"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/simulate": {
+      "get": {
+        "summary": "The server's simulator: today's figures of a NAAC cycle (or a saved scenario's, ?scenarioId=) recomputed with the same functions the simulator page ships — the CGPA, the grade, every metric's score, the NIRF estimate",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cycleId": {
+                      "type": "string"
+                    },
+                    "framework": {
+                      "type": "string"
+                    },
+                    "scenarioId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "inputs": {
+                      "type": "object",
+                      "properties": {
+                        "facts": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1000000000,
+                            "nullable": true
+                          }
+                        },
+                        "ql": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 4,
+                            "nullable": true
+                          }
+                        },
+                        "nirf": {
+                          "type": "object",
+                          "properties": {
+                            "faculty": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100000,
+                              "nullable": true
+                            },
+                            "intake": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100000,
+                              "nullable": true
+                            },
+                            "phdPct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            },
+                            "f1": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "f2": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "f3": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1,
+                              "nullable": true
+                            },
+                            "placedPct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            },
+                            "higherPct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            },
+                            "passInTimePct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            },
+                            "womenStudentsPct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            },
+                            "womenFacultyPct": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 100,
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "faculty",
+                            "intake",
+                            "phdPct",
+                            "f1",
+                            "f2",
+                            "f3",
+                            "placedPct",
+                            "higherPct",
+                            "passInTimePct",
+                            "womenStudentsPct",
+                            "womenFacultyPct"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "default": null
+                        }
+                      },
+                      "required": [
+                        "facts",
+                        "ql"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "cgpa": {
+                      "type": "number"
+                    },
+                    "grade": {
+                      "type": "string"
+                    },
+                    "nextBand": {
+                      "type": "object",
+                      "properties": {
+                        "grade": {
+                          "type": "string"
+                        },
+                        "min": {
+                          "type": "number"
+                        },
+                        "distance": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "grade",
+                        "min",
+                        "distance"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "criteria": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "score": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "score"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "metrics": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "QN",
+                              "QL"
+                            ]
+                          },
+                          "value": {
+                            "type": "number",
+                            "nullable": true
+                          },
+                          "score": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "kind",
+                          "value",
+                          "score"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "nirf": {
+                      "type": "object",
+                      "properties": {
+                        "partial": {
+                          "type": "number"
+                        },
+                        "coveredMarks": {
+                          "type": "number"
+                        },
+                        "projected": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "subs": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "number",
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "required": [
+                        "partial",
+                        "coveredMarks",
+                        "projected",
+                        "subs"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "notAScore": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "cycleId",
+                    "framework",
+                    "scenarioId",
+                    "inputs",
+                    "cgpa",
+                    "grade",
+                    "nextBand",
+                    "criteria",
+                    "metrics",
+                    "nirf",
+                    "notAScore"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cycleId": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "scenarioId": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/iqac/simulate/nba": {
+      "get": {
+        "summary": "The server's SAR simulator: an engineering department's figures today (or a saved scenario's) and the marks the SAR's formulas give them; 404 unless the college teaches engineering",
+        "description": "Roles: IQAC, ADMIN, PRINCIPAL, HOD. Only while the school has IQAC switched on.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "IQAC",
+          "ADMIN",
+          "PRINCIPAL",
+          "HOD"
+        ],
+        "x-module": "IQAC",
+        "x-college": true,
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "year": {
+                      "type": "integer"
+                    },
+                    "departmentId": {
+                      "type": "string"
+                    },
+                    "scenarioId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "inputs": {
+                      "type": "object",
+                      "properties": {
+                        "S": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100000
+                        },
+                        "F": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "intake": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100000
+                        },
+                        "admitted": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100000
+                        },
+                        "successNoBacklog": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "successStipulated": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "apiFirst": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 10,
+                          "nullable": true
+                        },
+                        "apiSecond": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 10,
+                          "nullable": true
+                        },
+                        "apiThird": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 10,
+                          "nullable": true
+                        },
+                        "placement": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1,
+                          "nullable": true
+                        },
+                        "professors": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "associates": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "assistants": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "phd": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "masters": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "firstYearStudents": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 100000
+                        },
+                        "firstYearFaculty": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "maximum": 10000
+                        },
+                        "self": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1000
+                          },
+                          "default": {}
+                        }
+                      },
+                      "required": [
+                        "S",
+                        "F",
+                        "intake",
+                        "admitted",
+                        "successNoBacklog",
+                        "successStipulated",
+                        "apiFirst",
+                        "apiSecond",
+                        "apiThird",
+                        "placement",
+                        "professors",
+                        "associates",
+                        "assistants",
+                        "phd",
+                        "masters",
+                        "firstYearStudents",
+                        "firstYearFaculty"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "marks": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "number"
+                      }
+                    },
+                    "computed": {
+                      "type": "number"
+                    },
+                    "self": {
+                      "type": "number"
+                    },
+                    "total": {
+                      "type": "number"
+                    },
+                    "max": {
+                      "type": "number"
+                    },
+                    "notAScore": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "year",
+                    "departmentId",
+                    "scenarioId",
+                    "inputs",
+                    "marks",
+                    "computed",
+                    "self",
+                    "total",
+                    "max",
+                    "notAScore"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "year": {
+                    "type": "integer",
+                    "minimum": 2000,
+                    "maximum": 2100
+                  },
+                  "departmentId": {
+                    "type": "string",
+                    "maxLength": 64
+                  },
+                  "scenarioId": {
+                    "type": "string",
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/college/admissions/rounds": {
       "get": {
         "summary": "The college's admission rounds with their seats, allotments, applications and admissions",

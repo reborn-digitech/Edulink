@@ -17,6 +17,8 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, keyed } from "@/components/iqac/parts";
 import { CouncilWorksheet } from "@/components/iqac/council-worksheet";
+import { NbaInsightsSection, NirfInsightsSection } from "@/components/iqac/insights";
+import { nbaInsights, nirfInsights } from "@/lib/iqac-insights";
 
 const KINDS: Record<string, CollegeFilingKind> = { pci: "PCI_INSPECTION", bci: "BCI_RETURN", ncte: "NCTE_RETURN", nba: "NBA_SAR" };
 
@@ -34,6 +36,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function CouncilPage({ params, searchParams }: { params: Promise<{ kind: string }>; searchParams: Promise<{ ok?: string; error?: string; year?: string; departmentId?: string }> }) {
   const ctx = await requireRole("IQAC", "ADMIN", "PRINCIPAL");
   const [{ kind: slug }, query, t, locale] = await Promise.all([params, searchParams, getT(), getLocale()]);
+  // NIRF (5 Oct 2026): not a council's worksheet but the same desk's insights — its published formulas from the
+  // rows, the platform's rank-band estimate and what moves each sub-parameter.
+  if (slug === "nirf") return NirfPage({ ctx, t, query });
   const kind = KINDS[slug];
   if (!kind) notFound();
   const tt = keyed(t);
@@ -48,9 +53,12 @@ export default async function CouncilPage({ params, searchParams }: { params: Pr
   }
   const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : defaultFilingYear();
   let view: CouncilView | null = null;
+  let insights: Awaited<ReturnType<typeof nbaInsights>> | null = null;
   let refusal: string | null = null;
   try {
     view = await councilView(ctx, kind, { year, departmentId: query.departmentId || undefined });
+    // The SAR's actionable insights (5 Oct 2026), for the same department and year.
+    if (kind === "NBA_SAR") insights = await nbaInsights(ctx, { year: view.year, departmentId: view.departmentId ?? undefined });
   } catch (error) {
     if (!(error instanceof AccessError) && !(error instanceof RuleRefusal)) throw error;
     refusal = t(error.key);
@@ -95,8 +103,52 @@ export default async function CouncilPage({ params, searchParams }: { params: Pr
               </form>
             </CardBody>
           </Card>
+          {insights ? <NbaInsightsSection t={t} insights={insights} role={ctx.role} locale={locale} simulatorHref={`/iqac/simulator?kind=nba&year=${view.year}${view.departmentId ? `&departmentId=${view.departmentId}` : ""}`} /> : null}
           <CouncilWorksheet t={t} locale={locale} view={view} back={back} />
         </>
+      )}
+    </div>
+  );
+}
+
+/** /iqac/documents/nirf: NIRF's actionable insights (404 with its sentence where NIRF is not filed). */
+async function NirfPage({ ctx, t, query }: { ctx: Awaited<ReturnType<typeof requireRole>>; t: Awaited<ReturnType<typeof getT>>; query: { ok?: string; error?: string } }) {
+  const title = t("insights.nirfTitle");
+  if (!(await isModuleOn(ctx.schoolId, "IQAC"))) {
+    return (
+      <div className="space-y-5">
+        <PageHeader title={title} />
+        <ModuleOff module="IQAC" t={t} college={isCollegeKind(await institutionKindOf(ctx.schoolId))} />
+      </div>
+    );
+  }
+  let insights: Awaited<ReturnType<typeof nirfInsights>> | null = null;
+  let refusal: string | null = null;
+  try {
+    insights = await nirfInsights(ctx);
+  } catch (error) {
+    if (!(error instanceof AccessError) && !(error instanceof RuleRefusal)) throw error;
+    refusal = t(error.key);
+  }
+  return (
+    <div className="space-y-5">
+      <PageHeader title={title} description={t("insights.intro")} />
+      <DeskNav t={t} here="/iqac/documents" />
+      <IqacFlash ok={query.ok} error={query.error} />
+      <Button asChild size="sm" variant="ghost">
+        <Link href="/iqac/documents">{t("councilFilings.backToDocuments")}</Link>
+      </Button>
+      {insights ? (
+        <NirfInsightsSection t={t} insights={insights} role={ctx.role} />
+      ) : (
+        <EmptyState
+          title={refusal ?? t("councilFilings.refuseNotApplicable")}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/iqac/documents">{t("councilFilings.backToDocuments")}</Link>
+            </Button>
+          }
+        />
       )}
     </div>
   );

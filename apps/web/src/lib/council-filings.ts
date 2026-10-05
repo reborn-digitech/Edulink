@@ -37,16 +37,18 @@ import { batchStudents } from "./placement-record";
 import { lawInternshipSummary, practicalRecordSummary, teachingPracticeSummary } from "./stream-summaries";
 import {
   academicPerformance,
-  apiMarks,
   cadreMarks,
   enrolmentMarks,
   firstYearSfrMarks,
+  meanIndex,
+  nbaMarks,
   placementMarks,
   qualificationMarks,
   round2,
   sfrMarks,
   successIndex,
   successMarks,
+  type NbaFigures,
 } from "./council-rules";
 import { profileRows, schoolProfile, windowOf, yearLabel, type FilingDocument, type FilingSection } from "./iqac-filings";
 import type { ActiveContext } from "./session";
@@ -514,20 +516,29 @@ export async function nbaFacts(schoolId: string, departmentId: string, year: num
     attainment.push({ code: o.course.code, name: o.course.name, cos: a.cos.length, coLevel: levels.length ? round2(levels.reduce((x, y) => x + y, 0) / levels.length) : null, pos: a.pos.filter((x) => x.attainment !== null).map((x) => `${x.code} ${x.attainment}`).join("; ") });
   }
 
-  const marks: Record<string, number> = {
-    "4.1": er.marks,
-    "4.2.1": s421.marks,
-    "4.2.2": s422.marks,
-    "4.3": apiMarks(y3.api, 1.5, 15),
-    "4.4": apiMarks(y2.api, 1.5, 15),
-    "4.5": pl.marks,
-    "5.1": sfr.marks,
-    "5.2": cadre,
-    "5.3": fq.marks,
-    "8.1": fysfr.marks,
-    "8.3": apiMarks(y1.api, 1, 10),
+  // The figures the computed items read, and their marks through THE ONE function that puts them together
+  // (council-rules.ts nbaMarks; 5 Oct 2026): the insights and the simulator call it on the same figures.
+  const sarFigures: NbaFigures = {
+    S,
+    F,
+    intake,
+    admitted,
+    successNoBacklog: meanIndex(batches.map((b) => successIndex(b.withoutBacklog, b.admitted))),
+    successStipulated: meanIndex(batches.map((b) => successIndex(b.graduated, b.admitted))),
+    apiFirst: y1.api,
+    apiSecond: y2.api,
+    apiThird: y3.api,
+    placement: meanIndex(placement.map((x) => x.index)),
+    professors,
+    associates,
+    assistants,
+    phd,
+    masters,
+    firstYearStudents,
+    firstYearFaculty,
   };
-  return { department, programmes, S, F, intake, admitted, er, batches, s421, s422, y1, y2, y3, placement, pl, professors, associates, assistants, phd, masters, sfr, cadre, fq, firstYearStudents, firstYearFaculty, fysfr, attainment, staff, marks };
+  const marks: Record<string, number> = nbaMarks(sarFigures);
+  return { department, programmes, S, F, intake, admitted, er, batches, s421, s422, y1, y2, y3, placement, pl, professors, associates, assistants, phd, masters, sfr, cadre, fq, firstYearStudents, firstYearFaculty, fysfr, attainment, staff, marks, sarFigures };
 }
 
 const nv = (v: number | null) => (v === null ? L.notRecorded : v);
@@ -609,7 +620,7 @@ async function headOf(desk: Desk): Promise<string | null> {
 }
 
 /** The NBA department a caller works on: an HOD their own (403 for another's), the desk the one asked for or the first. */
-async function nbaDepartmentFor(desk: Desk, asked: string | null | undefined): Promise<{ id: string; code: string; name: string }> {
+export async function nbaDepartmentFor(desk: Desk, asked: string | null | undefined): Promise<{ id: string; code: string; name: string }> {
   const list = await nbaDepartments(desk.schoolId);
   if (desk.role === "HOD") {
     const own = await headOf(desk);

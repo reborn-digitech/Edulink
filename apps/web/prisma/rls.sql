@@ -3144,6 +3144,15 @@ CREATE POLICY "ExamSquadVisit_tenant_isolation" ON "ExamSquadVisit"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- IqacScenario
+ALTER TABLE "IqacScenario" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "IqacScenario" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "IqacScenario_tenant_isolation" ON "IqacScenario";
+DROP POLICY IF EXISTS "IqacScenario_readable" ON "IqacScenario";
+CREATE POLICY "IqacScenario_tenant_isolation" ON "IqacScenario"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

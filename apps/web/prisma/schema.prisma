@@ -472,6 +472,8 @@ model School {
   collegeFilings        CollegeFiling[]
   /// The councils' worksheets behind the BCI, NCTE and NBA returns (5 Oct 2026, S1).
   filingWorksheets      FilingWorksheet[]
+  /// The simulator's saved what-ifs (5 Oct 2026, accreditation-insights.ts).
+  iqacScenarios         IqacScenario[]
   iqacFiles             IqacFile[]
   disclosurePage        DisclosurePage?
   // Stream records and the duties' desks (5 Oct 2026, S2).
@@ -6292,13 +6294,13 @@ model HostelAllotment {
   endedByUserId    String?
   createdAt        DateTime @default(now())
 
-  school   School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  student  Membership            @relation("HostelAllotmentStudent", fields: [membershipId], references: [id], onDelete: Cascade)
-  room     HostelRoom            @relation(fields: [roomId], references: [id], onDelete: Cascade)
-  leaves   HostelLeave[]
-  entries  HostelRollCallEntry[]
-  visitors HostelVisitor[]
-  meals    MessAttendance[]
+  school     School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student    Membership            @relation("HostelAllotmentStudent", fields: [membershipId], references: [id], onDelete: Cascade)
+  room       HostelRoom            @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  leaves     HostelLeave[]
+  entries    HostelRollCallEntry[]
+  visitors   HostelVisitor[]
+  meals      MessAttendance[]
   // A proposal to end this place, decided by the principal (5 Oct 2026).
   expulsions HostelExpulsion[]
 
@@ -8919,9 +8921,10 @@ model AccreditationCycle {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
-  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  scores  MetricScore[]
-  filings CollegeFiling[]
+  school    School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  scores    MetricScore[]
+  filings   CollegeFiling[]
+  scenarios IqacScenario[]
 
   @@index([schoolId, status])
 }
@@ -9491,4 +9494,34 @@ model ExamSquadVisit {
 
   @@index([schoolId, at])
   @@index([scheduleId])
+}
+
+/// A what-if the IQAC, the principal or an engineering HOD saved from the
+/// simulator (5 Oct 2026; lib/iqac-insights.ts, the arithmetic in
+/// lib/accreditation-insights.ts): the inputs as typed and what they gave.
+/// kind NAAC: a cycle's facts and qualitative scores (`cycleId`), `cgpa` the
+/// CGPA; kind NBA: an engineering department's SAR figures for a year
+/// (`year`, `departmentId`), `marks` the SAR's total of 1,000. `cgpa` and
+/// `marks` are stored copies with ONE WRITER (saveScenario) and a data:audit
+/// check that recomputes them from `inputsJson`; every read recomputes them.
+model IqacScenario {
+  id              String   @id @default(cuid())
+  schoolId        String
+  /// NAAC | NBA
+  kind            String   @default("NAAC")
+  cycleId         String?
+  year            Int?
+  departmentId    String?
+  name            String
+  inputsJson      String   @default("{}")
+  cgpa            Float?
+  marks           Float?
+  createdByUserId String?
+  createdAt       DateTime @default(now())
+
+  school School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  cycle  AccreditationCycle? @relation(fields: [cycleId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, kind, createdAt])
+  @@index([cycleId])
 }

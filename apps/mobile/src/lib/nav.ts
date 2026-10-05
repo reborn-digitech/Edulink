@@ -362,6 +362,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "examCell.title", icon: "clipboard", group: "running", web: "/exam-cell", module: "EXAMS" },
     { labelKey: "placement.navCell", icon: "briefcase", group: "running", web: "/placement", module: "PLACEMENT" },
     { labelKey: "iqac.navAccreditation", icon: "medal", group: "running", web: "/principal/accreditation", module: "IQAC" },
+    { labelKey: "insightsPhone.title", icon: "lightbulb", group: "running", screen: "/(app)/iqac-insights", module: "IQAC" },
     { labelKey: "iqac.navCommittees", icon: "users", group: "running", web: "/admin/committees", module: "IQAC" },
     { labelKey: "iqac.navFacultyRecords", icon: "clipboard", group: "running", web: "/admin/faculty-records", module: "IQAC" },
   ],
@@ -460,6 +461,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
   IQAC: [
     ...COLLEGE_STAFF_MENU,
     { labelKey: "iqac.navPredictor", icon: "chartLine", group: "daily", web: "/iqac/predictor", module: "IQAC" },
+    // Actionable insights and the simulator's saved scenarios (5 Oct 2026): the phone reads them, the web changes the figures.
+    { labelKey: "insightsPhone.title", icon: "lightbulb", group: "daily", screen: "/(app)/iqac-insights", module: "IQAC" },
+    { labelKey: "insightsPhone.scenariosTitle", icon: "chartLine", group: "daily", screen: "/(app)/iqac-scenarios", module: "IQAC" },
     { labelKey: "iqac.navDocuments", icon: "clipboard", group: "daily", web: "/iqac/documents", module: "IQAC" },
     { labelKey: "iqac.navSurveys", icon: "star", group: "daily", web: "/iqac/surveys", module: "IQAC" },
     { labelKey: "iqac.navRegisters", icon: "books", group: "running", web: "/iqac/registers", module: "IQAC" },
@@ -504,6 +508,9 @@ export const HIDDEN_SCREENS = [
   "exam-duties",
   // The IQAC module (4 Oct 2026): the surveys open to me and the grievance line.
   "voice",
+  // Accreditation insights (5 Oct 2026): the ranked steps to the next band and the simulator's saved scenarios.
+  "iqac-insights",
+  "iqac-scenarios",
   // The college office (4 Oct 2026): a college student's money, scholarships and own account.
   "money",
   "scholarships",

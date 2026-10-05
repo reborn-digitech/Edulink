@@ -15,6 +15,8 @@ import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash } from "@/components/iqac/parts";
 import { CouncilWorksheet } from "@/components/iqac/council-worksheet";
+import { NbaInsightsSection } from "@/components/iqac/insights";
+import { nbaInsights } from "@/lib/iqac-insights";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -41,10 +43,12 @@ export default async function HodNbaPage({ searchParams }: { searchParams: Promi
   }
   const year = Number(query.year) >= 2000 && Number(query.year) <= 2100 ? Number(query.year) : defaultFilingYear();
   let view: CouncilView | null = null;
+  let insights: Awaited<ReturnType<typeof nbaInsights>> | null = null;
   let refusal: string | null = null;
   if ((await filingsOf(ctx.schoolId)).includes("NBA_SAR")) {
     try {
-      view = await councilView(ctx, "NBA_SAR", { year });
+      // Actionable insights (5 Oct 2026) read the same department and year as the worksheet.
+      [view, insights] = await Promise.all([councilView(ctx, "NBA_SAR", { year }), nbaInsights(ctx, { year })]);
     } catch (error) {
       if (!(error instanceof AccessError) && !(error instanceof RuleRefusal)) throw error;
       refusal = t(error.key);
@@ -77,6 +81,7 @@ export default async function HodNbaPage({ searchParams }: { searchParams: Promi
             </CardBody>
           </Card>
           <p className="text-sm text-fg-muted">{view.departmentName}</p>
+          {insights ? <NbaInsightsSection t={t} insights={insights} role={ctx.role} locale={locale} simulatorHref={`/hod/nba/simulator?year=${view.year}`} /> : null}
           <CouncilWorksheet t={t} locale={locale} view={view} back={`/hod/nba?year=${view.year}`} />
         </>
       )}

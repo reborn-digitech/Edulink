@@ -58,7 +58,6 @@ import {
   gainPerUnit,
   gradeOf,
   nextBand,
-  nirfSubs,
   overallMean,
   round2,
   totalWeight,
@@ -66,6 +65,7 @@ import {
   type Facts,
 } from "./iqac-rules";
 import { gatherFacts, nirfFacts, readEntered, type EvidenceRow, type FactReason, type FactSource } from "./iqac-facts";
+import { nirfScore } from "./accreditation-insights";
 
 /**
  * THE IQAC DESK (module IQAC, role IQAC; the owner's plan of 4 October 2026).
@@ -1196,15 +1196,12 @@ export async function iqacOverview(ctx: ActiveContext): Promise<IqacOverview> {
   let predictor: IqacPredictor | null = null;
   if (cycle) predictor = await predictorFor(ctx, cycle.id);
   const gathered = cycle ? await gatherFacts(desk.schoolId, cycle.windowFrom, cycle.windowTo, readEntered(cycle.enteredJson)) : null;
-  const subs = gathered ? nirfSubs(await nirfFacts(desk.schoolId, gathered)) : null;
-  const parameters = NIRF_PARAMETERS.map((p) => {
-    const computed = p.subs.filter((s) => s.published && subs && (subs as Record<string, number | null>)[s.code] !== null && (subs as Record<string, number | null>)[s.code] !== undefined);
-    const marks = computed.length ? round2(computed.reduce((a, s) => a + ((subs as Record<string, number | null>)[s.code] ?? 0), 0)) : null;
-    const covered = computed.reduce((a, s) => a + s.marks, 0);
-    return { code: p.code, name: p.name, weight: p.weight, marks, note: t("iqac.nirfCovered", { covered, of: 100 }), covered };
-  });
-  const partial = round2(parameters.reduce((a, p) => a + (p.marks ?? 0) * p.weight, 0));
-  const coveredMarks = round2(parameters.reduce((a, p) => a + p.covered * p.weight, 0));
+  // NIRF's published formulas put together per parameter in ONE place (accreditation-insights.ts nirfScore, 5 Oct 2026),
+  // which the NIRF insights and the simulator read too; with no cycle, every parameter reads no marks, as before.
+  const scored = gathered ? nirfScore(await nirfFacts(desk.schoolId, gathered)) : null;
+  const parameters = (scored?.parameters ?? NIRF_PARAMETERS.map((p) => ({ code: p.code, name: p.name, weight: p.weight, marks: null, covered: 0 }))).map((p) => ({ ...p, note: t("iqac.nirfCovered", { covered: p.covered, of: 100 }) }));
+  const partial = scored?.partial ?? 0;
+  const coveredMarks = scored?.coveredMarks ?? 0;
   const filedKinds = new Set(filings.filter((f) => f.year === year || f.year === year - 1).map((f) => f.kind));
   return {
     cycle: predictor?.cycle ?? null,

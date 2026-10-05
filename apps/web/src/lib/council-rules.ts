@@ -87,3 +87,62 @@ export function firstYearSfrMarks(students: number, faculty: number): { ratio: n
   const ratio = round2(students / faculty);
   return { ratio, marks: ratio <= 20 ? 5 : ratio <= 25 ? 3 : 0 };
 }
+
+/* -------------------------------------------------------------------------- */
+/* The SAR's computed items over one set of figures (5 Oct 2026, insights)     */
+/* -------------------------------------------------------------------------- */
+
+/** The SAR items council-rules.ts computes, in the format's order. */
+export const NBA_COMPUTED = ["4.1", "4.2.1", "4.2.2", "4.3", "4.4", "4.5", "5.1", "5.2", "5.3", "8.1", "8.3"] as const;
+export type NbaComputedCode = (typeof NBA_COMPUTED)[number];
+
+/**
+ * The figures behind the computed items, as the simulator edits them and
+ * nbaFacts (council-filings.ts) reads them from the rows: the three indices
+ * as the UNROUNDED mean of the batches' indices (null with no batch), the
+ * APIs as academicPerformance gives them (null with nobody appeared).
+ */
+export type NbaFigures = {
+  S: number;
+  F: number;
+  intake: number;
+  admitted: number;
+  successNoBacklog: number | null;
+  successStipulated: number | null;
+  apiFirst: number | null;
+  apiSecond: number | null;
+  apiThird: number | null;
+  placement: number | null;
+  professors: number;
+  associates: number;
+  assistants: number;
+  phd: number;
+  masters: number;
+  firstYearStudents: number;
+  firstYearFaculty: number;
+};
+
+/** The mean of the indices that are not null; null when none is (successMarks' own mean). */
+export const meanIndex = (xs: readonly (number | null)[]): number | null => mean(xs.filter((x): x is number => x !== null));
+
+/**
+ * THE ONE PLACE the computed items' marks are put together: nbaFacts calls it
+ * on the rows, the simulator and the insights on what the HOD types. A mean
+ * handed to successMarks as a one-element list gives exactly what the list
+ * of batch indices gives, so the rows and the simulator agree to the paisa.
+ */
+export function nbaMarks(i: NbaFigures): Record<NbaComputedCode, number> {
+  return {
+    "4.1": enrolmentMarks(i.admitted, i.intake).marks,
+    "4.2.1": successMarks([i.successNoBacklog], 25).marks,
+    "4.2.2": successMarks([i.successStipulated], 15).marks,
+    "4.3": apiMarks(i.apiThird, 1.5, 15),
+    "4.4": apiMarks(i.apiSecond, 1.5, 15),
+    "4.5": placementMarks([i.placement]).marks,
+    "5.1": sfrMarks(i.S, i.F).marks,
+    "5.2": cadreMarks(i.S, i.professors, i.associates, i.assistants),
+    "5.3": qualificationMarks(i.S, i.phd, i.masters).marks,
+    "8.1": firstYearSfrMarks(i.firstYearStudents, i.firstYearFaculty).marks,
+    "8.3": apiMarks(i.apiFirst, 1, 10),
+  };
+}

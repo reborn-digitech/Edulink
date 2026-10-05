@@ -13,6 +13,8 @@ import { TextAreaField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { IqacFlash, NotAScore, day } from "@/components/iqac/parts";
+import { NaacInsightsSection } from "@/components/iqac/insights";
+import { naacInsights } from "@/lib/iqac-insights";
 import { signoffAction } from "../../iqac/actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -60,6 +62,8 @@ export default async function AccreditationPage({ searchParams }: { searchParams
         <StatTile label={t("iqac.gradeLabel")} value={o.cycle?.grade ?? "—"} hint={o.nextBand ? t("iqac.nextBandLine", { distance: o.nextBand.distance.toFixed(2), grade: o.nextBand.grade, min: o.nextBand.min.toFixed(2) }) : undefined} />
         <StatTile label={t("iqac.navGrievances")} value={o.counts.openGrievances} tone={o.counts.overdueGrievances ? "danger" : "neutral"} />
       </div>
+      {/* Actionable insights (5 Oct 2026): what moves the college, and who makes each change. */}
+      {o.cycle ? <NaacInsightsSection t={t} insights={await naacInsights(ctx, { cycleId: o.cycle.id })} role={ctx.role} locale={locale} back={back} limit={5} /> : null}
       <Card>
         <CardHeader title={t("iqac.signoffTitle")} />
         <CardBody className="space-y-4">

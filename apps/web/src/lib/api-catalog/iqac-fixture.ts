@@ -22,4 +22,6 @@ export const IQAC_FIXTURE = {
   aqar: pad("zziqacfiling", 1),
   /** A qualitative metric of the affiliated framework the fixture scored. */
   qualitativeMetric: "7.2.1",
+  /** The saved NAAC scenario of the simulator (5 Oct 2026, zz-iqac.ts): "ZZ Two more papers and the SSS read". */
+  scenario: pad("zziqacscen", 1),
 } as const;

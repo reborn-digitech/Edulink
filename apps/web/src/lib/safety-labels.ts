@@ -591,6 +591,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "iqac.filing.return": "audit.iqacFilingReturn",
   "iqac.filing.filed": "audit.iqacFilingFiled",
   "iqac.worksheet.save": "audit.iqacWorksheetSave",
+  // The simulator's saved what-ifs (5 Oct 2026, iqac-insights.ts).
+  "iqac.scenario.save": "audit.iqacScenarioSave",
+  "iqac.scenario.remove": "audit.iqacScenarioRemove",
   "iqac.disclosure.publish": "audit.iqacDisclosurePublish",
   "iqac.disclosure.unpublish": "audit.iqacDisclosureUnpublish",
   "academics.settings": "audit.academicsSettings",

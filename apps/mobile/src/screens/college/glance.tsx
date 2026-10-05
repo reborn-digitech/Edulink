@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { isCollegeKind, principalCollegeSchema, type PrincipalCollegeGlance } from "@edulink/contracts";
 import { formatPaise, type TranslationKey } from "@edulink/i18n";
+import { useRouter } from "expo-router";
 import { Card, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
@@ -9,6 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { openWeb } from "@/screens/family/shared";
+import { useInsights } from "../iqac/insights";
 
 /**
  * The college at a glance and what waits for the head's word (campaign
@@ -43,6 +45,22 @@ function useGlance(enabled = true) {
     enabled,
     queryFn: async () => principalCollegeSchema.parse(unwrap(await api().get("/api/v1/principal/college"))),
   });
+}
+
+/**
+ * The accreditation insights line (5 Oct 2026): the next band's distance and how many of the cheapest steps reach it,
+ * from GET /api/v1/iqac/insights, opening the insights screen. Drawn only where the predictor is (IQAC on); no open
+ * cycle, a refusal or a failure draw nothing, because the line is an addition to the card and not its content.
+ */
+function InsightsLine({ enabled }: { enabled: boolean }) {
+  const t = useT();
+  const router = useRouter();
+  const q = useInsights(enabled);
+  const d = q.data;
+  if (!enabled || !d) return null;
+  const next = d.paths[0];
+  const line = next ? t(next.reachable ? "insightsPhone.lineTo" : "insightsPhone.lineNotReached", { grade: next.grade, distance: next.distance.toFixed(2), n: next.steps.length }) : t("insightsPhone.lineTop");
+  return <Row title={t("insightsPhone.cardTitle")} caption={line} onPress={() => router.push("/(app)/iqac-insights" as never)} />;
 }
 
 /** The two cards: the approvals waiting, then the numbers. */
@@ -84,6 +102,7 @@ export function CollegeGlance({ d }: { d: PrincipalCollegeGlance }) {
         {d.fees ? <Text variant="sm" tone="muted">{`${t("collegeHub.feesReceived")}: ${t("collegeHub.feesHint", { demand: money(d.fees.demandPaise), outstanding: money(d.fees.outstandingPaise), defaulters: d.fees.defaulters })}`}</Text> : null}
         {d.grievances ? <Text variant="sm" tone="muted">{`${t("collegeHub.grievances")}: ${t("collegeHub.grievancesHint", { overdue: d.grievances.overdue })}`}</Text> : null}
         {d.predictor ? <Text variant="sm" tone="muted">{`${t("collegeHub.predictor")}: ${d.predictor.nextGrade && d.predictor.distance !== null ? t("collegeHub.nextBand", { grade: d.predictor.nextGrade, distance: d.predictor.distance.toFixed(2) }) : t("collegeHub.notAScore")}`}</Text> : null}
+        <InsightsLine enabled={Boolean(d.predictor)} />
       </Card>
       {d.lectures.length ? (
         <Card title={t("collegeHub.lecturesTitle")}>

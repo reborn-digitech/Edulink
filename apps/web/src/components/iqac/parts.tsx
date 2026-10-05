@@ -43,6 +43,8 @@ export function NotAScore({ t }: { t: Translate }) {
 const DESK_LINKS: { href: string; key: TranslationKey }[] = [
   { href: "/iqac", key: "iqac.navHome" },
   { href: "/iqac/predictor", key: "iqac.navPredictor" },
+  // The simulator (5 Oct 2026): the predictor's formulas over figures the IQAC changes.
+  { href: "/iqac/simulator", key: "insights.navSimulator" },
   { href: "/iqac/documents", key: "iqac.navDocuments" },
   { href: "/iqac/surveys", key: "iqac.navSurveys" },
   { href: "/iqac/registers", key: "iqac.navRegisters" },

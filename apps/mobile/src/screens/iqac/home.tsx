@@ -64,6 +64,10 @@ export function IqacHome() {
               ))}
             </Card>
           ) : null}
+          <Card title={t("insightsPhone.title")}>
+            <Row title={t("insightsPhone.insightsButton")} onPress={() => router.push("/(app)/iqac-insights" as never)} />
+            <Row title={t("insightsPhone.scenariosButton")} onPress={() => router.push("/(app)/iqac-scenarios" as never)} />
+          </Card>
           <Card>
             <Row title={t("iqac.navSurveys")} caption={String(o.counts.openSurveys)} />
             <Row title={t("iqac.navGrievances")} caption={`${o.counts.openGrievances}${o.counts.overdueGrievances ? ` · ${t("iqac.overdueBadge")}` : ""}`} />

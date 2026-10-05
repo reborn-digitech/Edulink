@@ -1124,6 +1124,30 @@ d("modules: the IQAC desk (4 October 2026)", () => {
     expect(failsOf("iqac-cgpa")).toEqual([]);
   });
 
+  // The simulator's saved scenarios (5 Oct 2026): IqacScenario.cgpa and .marks are stored copies with one writer
+  // (iqac-insights.ts writeScenario); each is recomputed from the scenario's own inputs by the same pure functions.
+  it("iqac-scenario: a saved scenario's stored result is the recompute of its own figures", async () => {
+    const { NAAC_FRAMEWORKS, naacScenarioInputsSchema, nbaInputsSchema } = await import("@edulink/contracts");
+    const { nbaTotals, simulateNaac } = await import("@/lib/accreditation-insights");
+    for (const s of await audited()) {
+      const rows = await db.iqacScenario.findMany({ where: { schoolId: s.id }, select: { id: true, kind: true, inputsJson: true, cgpa: true, marks: true, cycle: { select: { framework: true } } } });
+      for (const r of rows) {
+        if (r.kind === "NBA") {
+          const inputs = nbaInputsSchema.safeParse(JSON.parse(r.inputsJson));
+          if (!inputs.success) note("iqac-scenario", "FAIL", s.name, `scenario ${r.id}: its figures do not read`);
+          else if (r.marks === null || Math.abs(r.marks - nbaTotals(inputs.data).total) > 0.001) note("iqac-scenario", "FAIL", s.name, `scenario ${r.id}: stored ${r.marks}, figures give ${nbaTotals(inputs.data).total}`);
+          continue;
+        }
+        const inputs = naacScenarioInputsSchema.safeParse(JSON.parse(r.inputsJson));
+        const fw = NAAC_FRAMEWORKS[(r.cycle?.framework ?? "AFFILIATED_UG") as keyof typeof NAAC_FRAMEWORKS];
+        if (!inputs.success || !fw) note("iqac-scenario", "FAIL", s.name, `scenario ${r.id}: its figures do not read`);
+        else if (r.cgpa === null || Math.abs(r.cgpa - simulateNaac(fw, inputs.data).cgpa) > 0.001) note("iqac-scenario", "FAIL", s.name, `scenario ${r.id}: stored ${r.cgpa}, figures give ${simulateNaac(fw, inputs.data).cgpa}`);
+      }
+      if (rows.length) note("iqac-scenario", "INFO", s.name, `${rows.length} saved scenario(s) checked`);
+    }
+    expect(failsOf("iqac-scenario")).toEqual([]);
+  });
+
   // The councils' returns (5 Oct 2026) are checked the same way: an NBA SAR is rebuilt for its own department.
   it("iqac-filing: a filing's hash is its body's, and regenerating it from the rows gives the figures it printed", async () => {
     const { buildFiling } = await import("@/lib/iqac-filings");

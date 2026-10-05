@@ -5,6 +5,7 @@ import { ACADEMICS_FIXTURE } from "../src/lib/api-catalog/academics-fixture";
 import { recomputeAsSystem, respondentHash, scoreQualitativeAs, iqacHash } from "../src/lib/iqac";
 import { buildFiling, disclosureDocument } from "../src/lib/iqac-filings";
 import { addWorkingDays } from "../src/lib/iqac-rules";
+import { naacBaseline, writeScenario } from "../src/lib/iqac-insights";
 
 /**
  * THE ZZ IQAC at ZZ Vidya College (the IQAC module, 4 October 2026), built by
@@ -25,6 +26,7 @@ import { addWorkingDays } from "../src/lib/iqac-rules";
  *   AQAR generated, signed off by zz.cprincipal and filed. The AICTE
  *   disclosure published only where the college's streams bring it (5 Oct
  *   2026): Vidya is arts, science and commerce, so its page is taken down.
+ *   One saved simulator scenario (5 Oct 2026): "ZZ Two more papers and the SSS read".
  *
  * Every row has a fixed id (src/lib/api-catalog/iqac-fixture.ts). Re-run
  * safe: rows are upserted by id; scores already given are not given again.
@@ -147,6 +149,14 @@ export async function buildIqac(db: PrismaClient): Promise<IqacFixtures> {
   for (const [code, score, note, evidence] of ql) {
     const done = await db.metricScore.findFirst({ where: { cycleId: F.cycle, metricCode: code, kind: "QL" }, select: { id: true } });
     if (!done) await scoreQualitativeAs(desk, F.cycle, code, { score, note, fileIds: [], evidence: [evidence] });
+  }
+
+  // The simulator's saved scenario (5 Oct 2026, iqac-insights.ts): today's figures with two more indexed papers and
+  // the satisfaction survey read at 3.0 (it is open, so it reads nothing yet), saved once by its fixed id through the
+  // one writer (the stored CGPA is its own recompute).
+  if (!(await db.iqacScenario.findUnique({ where: { id: F.scenario }, select: { id: true } }))) {
+    const base = await naacBaseline(F.cycle);
+    await writeScenario(desk, { kind: "NAAC", cycleId: F.cycle, name: "ZZ Two more papers and the SSS read", inputs: { facts: { ...base.facts, papers: (base.facts.papers ?? 0) + 2, sssMean: 3 }, ql: base.ql, nirf: null } }, F.scenario);
   }
 
   // Last year's AQAR, signed off and filed.

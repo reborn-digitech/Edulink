@@ -16,6 +16,8 @@ import { DateField } from "@/components/ui/field";
 import { EmptyState } from "@/components/ui/states";
 import { ModuleOff } from "@/components/module-off";
 import { DeskNav, IqacFlash, NotAScore, day, keyed } from "@/components/iqac/parts";
+import { InsightsSummaryCard } from "@/components/iqac/insights";
+import { naacInsights } from "@/lib/iqac-insights";
 import { disclosureAction, openCycleAction, recomputeAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -100,6 +102,9 @@ export default async function IqacHome({ searchParams }: { searchParams: Promise
           </CardBody>
         </Card>
       )}
+
+      {/* Actionable insights (5 Oct 2026): the way to the next band in a line and the three best steps. */}
+      {o.cycle ? <InsightsSummaryCard t={t} insights={await naacInsights(ctx, { cycleId: o.cycle.id })} role={ctx.role} /> : null}
 
       {o.cheapest.length ? (
         <Card>

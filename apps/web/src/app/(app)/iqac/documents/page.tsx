@@ -88,6 +88,12 @@ export default async function DocumentsPage({ searchParams }: { searchParams: Pr
                     <Link href={`/iqac/documents/${COUNCIL_PAGE[item.kind]}`}>{t("councilFilings.openWorksheet")}</Link>
                   </Button>
                 ) : null}
+                {/* NIRF's actionable insights (5 Oct 2026): what moves the estimate, on its own page. */}
+                {item.applies && item.kind === "NIRF" ? (
+                  <Button asChild size="sm" variant="secondary">
+                    <Link href="/iqac/documents/nirf">{t("insights.nirfTitle")}</Link>
+                  </Button>
+                ) : null}
               </li>
             ))}
           </ul>
