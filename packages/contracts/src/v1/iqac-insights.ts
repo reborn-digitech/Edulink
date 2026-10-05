@@ -134,6 +134,30 @@ export const naacPathSchema = z.object({
 export type NaacPath = z.infer<typeof naacPathSchema>;
 
 /** GET /api/v1/iqac/insights?cycleId=&scenarioId= */
+/**
+ * WHETHER THE FIGURES ARE PROVISIONAL (G4-15, risks batch 5 Oct 2026): the NAAC benchmarks and the NIRF band
+ * minimums are the platform's reading, so every figure built on them is provisional until the college's IQAC
+ * coordinator signs the list (GET/POST /api/v1/iqac/benchmarks). `version` is the list's own hash: a changed list
+ * is unsigned again. `sentence` is the label in the reader's language, for a screen that prints it as given.
+ */
+export const benchmarkStatusSchema = z.object({
+  provisional: z.boolean(),
+  version: z.string(),
+  signedAt: z.string().datetime().nullable(),
+  signedByName: z.string().nullable(),
+  sentence: z.string(),
+});
+export type BenchmarkStatus = z.infer<typeof benchmarkStatusSchema>;
+/** GET /api/v1/iqac/benchmarks — the list itself, as signed: every NAAC formula's benchmark and the NIRF bands. */
+export const benchmarksSchema = benchmarkStatusSchema.extend({
+  canSign: z.boolean(),
+  naac: z.array(z.object({ formula: z.string(), type: z.string(), benchmark: z.number() })),
+  nirfBands: z.array(z.object({ code: z.string(), min: z.number() })),
+});
+export type Benchmarks = z.infer<typeof benchmarksSchema>;
+/** POST /api/v1/iqac/benchmarks/sign — the IQAC coordinator signs the list they read; `version` must be the list's current one (409 otherwise). */
+export const benchmarksSignSchema = z.object({ version: z.string().min(4).max(64) });
+
 export const naacInsightsSchema = z.object({
   cycle: iqacCycleSchema,
   /** Set when the insights are a saved scenario's gap rather than today's ("show as insights"). */
@@ -150,6 +174,8 @@ export const naacInsightsSchema = z.object({
   lastDone: z.array(insightDoneSchema),
   computedAt: z.string().datetime().nullable(),
   notAScore: z.string(),
+  /** G4-15: provisional until the coordinator signs the benchmark list. Absent from older servers. */
+  benchmarks: benchmarkStatusSchema.optional(),
 });
 export type NaacInsights = z.infer<typeof naacInsightsSchema>;
 
@@ -245,18 +271,28 @@ export const nirfInputsSchema = z.object({
 export type NirfInputs = z.infer<typeof nirfInputsSchema>;
 
 /**
- * THE RANK-BAND ESTIMATE'S TABLE — THE PLATFORM'S, NOT NIRF'S. NIRF ranks the
- * top hundred colleges and bands the next ones (101–150, 151–200, 201–300) by
- * an overall score out of 100, and it publishes each year's scores but no
- * cut-off. These minimums are the builder's approximate reading of the
- * college list's published scores (NIRF 2024 and 2025, not re-fetched on
- * 5 October 2026); they move every year, and the page says "check the year's
- * list". The estimate projects the partial score (only the sub-parameters
- * whose formulas NIRF publishes) to 100 as if the rest scored at the same
- * rate — the rest (SS, FRU, PU, QP, GMS, ESCS, PR) NIRF does not publish.
+ * THE RANK-BAND ESTIMATE'S TABLE. NIRF ranks the top hundred colleges and bands
+ * the next ones (101–150, 151–200, 201–300) by an overall score out of 100; it
+ * publishes the score of each of the hundred and, for the bands, only an
+ * alphabetical list with no score at all.
+ *
+ * THE TOP-HUNDRED LINE IS NIRF'S (R-40, risks batch 5 Oct 2026): 54.39, the
+ * score of the college ranked 100th (Fatima College, Madurai) in India
+ * Rankings 2025, Colleges — https://www.nirfindia.org/Rankings/2025/CollegeRanking.html,
+ * retrieved 5 October 2026 (rank 1 Hindu College 84.01, rank 50 59.58, rank
+ * 90 55.10, rank 99 54.42, rank 100 54.39). The 101–150, 151–200 and 201–300
+ * pages (CollegeRanking150.html, CollegeRanking200.html, CollegeRanking300.html,
+ * same day) print names, towns and states and no score, so the three lower
+ * minimums cannot be read from anything NIRF published: they stay the
+ * platform's own reading (54, 51, 47), below the published line, and are the
+ * owner's to supply (08-remaining-risks.md R-40, list C). Every line moves
+ * with each year's list, and the page keeps saying "check the year's list".
+ * The estimate projects the partial score (only the sub-parameters whose
+ * formulas NIRF publishes) to 100 as if the rest scored at the same rate —
+ * the rest (SS, FRU, PU, QP, GMS, ESCS, PR) NIRF does not publish.
  */
 export const NIRF_BANDS = [
-  { code: "TOP_100", min: 57 },
+  { code: "TOP_100", min: 54.39 },
   { code: "B101_150", min: 54 },
   { code: "B151_200", min: 51 },
   { code: "B201_300", min: 47 },
@@ -299,6 +335,8 @@ export const nirfInsightsSchema = z.object({
   /** Published sub-parameters below their marks, by score points per unit; the unpublished ones last, with what to keep ready. */
   ranked: z.array(nirfInsightSchema),
   notAScore: z.string(),
+  /** G4-15: provisional until the coordinator signs the benchmark list. Absent from older servers. */
+  benchmarks: benchmarkStatusSchema.optional(),
 });
 export type NirfInsights = z.infer<typeof nirfInsightsSchema>;
 
@@ -383,6 +421,8 @@ export const naacSimulationSchema = z.object({
   metrics: z.array(z.object({ code: z.string(), kind: z.enum(NAAC_METRIC_KINDS), value: z.number().nullable(), score: z.number() })),
   nirf: z.object({ partial: z.number(), coveredMarks: z.number(), projected: z.number().nullable(), subs: z.record(z.string(), z.number().nullable()) }).nullable(),
   notAScore: z.string(),
+  /** G4-15: provisional until the coordinator signs the benchmark list. Absent from older servers. */
+  benchmarks: benchmarkStatusSchema.optional(),
 });
 export type NaacSimulation = z.infer<typeof naacSimulationSchema>;
 

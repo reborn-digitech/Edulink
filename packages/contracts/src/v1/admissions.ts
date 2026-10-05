@@ -125,6 +125,13 @@ export const applicationSchema = z.object({
   testedAt: iso.nullable(),
   offeredAt: iso.nullable(),
   offerExpiresAt: iso.nullable(),
+  /**
+   * The answer-by DAY in the school's own zone (R-62, 5 October 2026): what to
+   * print. `offerExpiresAt` is the instant (the school's end of that day), and
+   * its first ten characters are a day late west of UTC. Defaults to null so
+   * an older payload parses.
+   */
+  offerExpiresOn: dateKey.nullable().default(null),
   offerNote: z.string().nullable(),
   respondedAt: iso.nullable(),
   decisionNote: z.string().nullable(),

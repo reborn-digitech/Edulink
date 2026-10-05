@@ -90,5 +90,5 @@ export const EXAMS: Endpoint[] = [
   { ...M, method: "GET", path: "/api/v1/exam-cell/analytics", summary: "Pass rates by course, faculty and division, the trend, the first-year figures.", access: R, request: c.examAnalyticsQuerySchema, response: c.examAnalyticsSchema },
   { ...M, method: "POST", path: "/api/v1/exam-cell/signature", summary: "The controller's own signature for the papers they issue (a PNG data URL).", access: W, request: c.examSignatureSaveSchema, response: c.examActionResultSchema, emptyBodyStatus: 422 },
   // Signed out: the paper is real or not, nothing about the student. The printed address carries the college's id.
-  { method: "GET", path: "/api/v1/public/exam-documents/{code}", summary: "Is a grade card, transcript, degree certificate or hall ticket real; nothing about the student.", access: "anyone", response: c.examDocumentCheckSchema, sample: "/api/v1/public/exam-documents/ZZNOSUCHCODE" },
+  { method: "GET", path: "/api/v1/public/exam-documents/{code}", summary: "Is a grade card, transcript, degree certificate or hall ticket real; nothing about the student. A grade card, transcript or degree is found by its code alone; a hall ticket needs ?school= (the college's id printed beside the code).", access: "anyone", response: c.examDocumentCheckSchema, sample: "/api/v1/public/exam-documents/ZZNOSUCHCODE" },
 ];

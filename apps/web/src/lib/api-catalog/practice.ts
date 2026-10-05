@@ -48,6 +48,7 @@ export const PRACTICE: Endpoint[] = [
   },
   // ---- /student/practice/revision ------------------------------------------
   { method: "GET", path: "/api/v1/practice/revision", summary: "Smart revision: the pupil's own missed questions, rested and ready again", access: ["STUDENT"], request: c.practiceLanguageQuerySchema, response: c.practiceRevisionSchema },
+  { method: "GET", path: "/api/v1/practice/journey", summary: "The pupil's own journey: every badge newest first (sixty at most), the tier badges of the last six months, the weeks in a row with practice and the totals; compared with their own past only", access: ["STUDENT"], response: c.practiceJourneySchema },
   { method: "GET", path: "/api/v1/practice/revision/question", summary: "One queued revision question, without its answer", access: ["STUDENT"], request: c.practiceRevisionQuestionQuerySchema, response: c.practiceRevisionQuestionSchema, sample: "/api/v1/practice/revision/question?questionId=zz-sweep-no-question" },
   {
     method: "POST",

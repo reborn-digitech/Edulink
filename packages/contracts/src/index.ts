@@ -127,6 +127,7 @@ export * from "./v1/family-money";
 export * from "./v1/transport";
 export * from "./v1/transport-map";
 export * from "./v1/office-year";
+export * from "./v1/office-writes";
 
 /* -------------------------------------------------------------------------- */
 /* Global search — GET /api/v1/search                                          */
@@ -238,3 +239,12 @@ export * from "./v1/duties";
 export * from "./v1/council-filings";
 export * from "./v1/iqac-insights";
 export * from "./v1/stream-records";
+// The risks batch's college builds (package 5B, 5 Oct 2026): talks and soft-skills training, attendance devices, the Tally export, the peer-team visit file.
+export * from "./v1/placement-events";
+export * from "./v1/attendance-devices";
+export * from "./v1/tally";
+export * from "./v1/peer-visits";
+// The risks batch's package 5A (5 Oct 2026): homework at a college (R-48), appointment letters, council notices, the reading room.
+export * from "./v1/college-homework";
+export * from "./v1/reading-room";
+export * from "./v1/council-notices";

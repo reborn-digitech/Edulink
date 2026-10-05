@@ -501,6 +501,26 @@ export const refundExceptionSchema = z.object({
 });
 export const refundExceptionsSchema = z.object({ items: z.array(refundExceptionSchema), canDecide: z.boolean() });
 
+/**
+ * GET /api/v1/college/admissions/refunds-awaiting (R-60, risks batch 5 Oct 2026): the cancelled seats whose admission
+ * fee was paid and whose refund the college's bank has not yet paid (no reference recorded), oldest cancellation first,
+ * for the office and the accounts desk. `askStatus` is the refund outside the slab when one was asked (ASKED waits for
+ * the principal before the bank pays).
+ */
+export const refundAwaitingSchema = z.object({
+  applicationId: z.string(),
+  number: z.number().int(),
+  applicantName: z.string(),
+  programmeName: z.string(),
+  cancelledAt: z.string().nullable(),
+  admissionFeePaise: z.number().int(),
+  refundPaise: z.number().int(),
+  refundSlab: z.string().nullable(),
+  askStatus: z.string().nullable(),
+});
+export const refundsAwaitingSchema = z.object({ items: z.array(refundAwaitingSchema) });
+export type RefundsAwaiting = z.infer<typeof refundsAwaitingSchema>;
+
 export const HOSTEL_EXPULSION_STATUSES = ["ASKED", "APPROVED", "REFUSED", "WITHDRAWN"] as const;
 export const hostelExpulsionProposeSchema = z.object({ allotmentId: id, reason: z.string().trim().min(10).max(1000), incidentId: id.nullable().default(null), effectiveOn: dateKey });
 export const hostelExpulsionSchema = z.object({

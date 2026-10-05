@@ -1775,6 +1775,15 @@ CREATE POLICY "LibraryTitle_tenant_isolation" ON "LibraryTitle"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- LibraryVolume
+ALTER TABLE "LibraryVolume" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "LibraryVolume" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "LibraryVolume_tenant_isolation" ON "LibraryVolume";
+DROP POLICY IF EXISTS "LibraryVolume_readable" ON "LibraryVolume";
+CREATE POLICY "LibraryVolume_tenant_isolation" ON "LibraryVolume"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- LibraryCopy
 ALTER TABLE "LibraryCopy" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "LibraryCopy" FORCE ROW LEVEL SECURITY;
@@ -2132,6 +2141,15 @@ ALTER TABLE "CollegeOfficeSettings" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "CollegeOfficeSettings_tenant_isolation" ON "CollegeOfficeSettings";
 DROP POLICY IF EXISTS "CollegeOfficeSettings_readable" ON "CollegeOfficeSettings";
 CREATE POLICY "CollegeOfficeSettings_tenant_isolation" ON "CollegeOfficeSettings"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ReadingRoomVisit
+ALTER TABLE "ReadingRoomVisit" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReadingRoomVisit" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReadingRoomVisit_tenant_isolation" ON "ReadingRoomVisit";
+DROP POLICY IF EXISTS "ReadingRoomVisit_readable" ON "ReadingRoomVisit";
+CREATE POLICY "ReadingRoomVisit_tenant_isolation" ON "ReadingRoomVisit"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
@@ -2609,8 +2627,18 @@ ALTER TABLE "ExamDocument" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "ExamDocument_tenant_isolation" ON "ExamDocument";
 DROP POLICY IF EXISTS "ExamDocument_readable" ON "ExamDocument";
 CREATE POLICY "ExamDocument_tenant_isolation" ON "ExamDocument"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and the single row whose code somebody has just typed in, which is
+  -- how a join code names the school it belongs to.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "ExamDocument_readable" ON "ExamDocument"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "code" = current_setting('app.join_code', true)
+        );
 
 -- CompanyTenantLink
 ALTER TABLE "CompanyTenantLink" ENABLE ROW LEVEL SECURITY;
@@ -3150,6 +3178,105 @@ ALTER TABLE "IqacScenario" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "IqacScenario_tenant_isolation" ON "IqacScenario";
 DROP POLICY IF EXISTS "IqacScenario_readable" ON "IqacScenario";
 CREATE POLICY "IqacScenario_tenant_isolation" ON "IqacScenario"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PlacementTalk
+ALTER TABLE "PlacementTalk" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PlacementTalk" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PlacementTalk_tenant_isolation" ON "PlacementTalk";
+DROP POLICY IF EXISTS "PlacementTalk_readable" ON "PlacementTalk";
+CREATE POLICY "PlacementTalk_tenant_isolation" ON "PlacementTalk"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PlacementTalkRsvp
+ALTER TABLE "PlacementTalkRsvp" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PlacementTalkRsvp" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PlacementTalkRsvp_tenant_isolation" ON "PlacementTalkRsvp";
+DROP POLICY IF EXISTS "PlacementTalkRsvp_readable" ON "PlacementTalkRsvp";
+CREATE POLICY "PlacementTalkRsvp_tenant_isolation" ON "PlacementTalkRsvp"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SoftSkillsTraining
+ALTER TABLE "SoftSkillsTraining" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SoftSkillsTraining" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SoftSkillsTraining_tenant_isolation" ON "SoftSkillsTraining";
+DROP POLICY IF EXISTS "SoftSkillsTraining_readable" ON "SoftSkillsTraining";
+CREATE POLICY "SoftSkillsTraining_tenant_isolation" ON "SoftSkillsTraining"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SoftSkillsSession
+ALTER TABLE "SoftSkillsSession" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SoftSkillsSession" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SoftSkillsSession_tenant_isolation" ON "SoftSkillsSession";
+DROP POLICY IF EXISTS "SoftSkillsSession_readable" ON "SoftSkillsSession";
+CREATE POLICY "SoftSkillsSession_tenant_isolation" ON "SoftSkillsSession"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SoftSkillsEnrolment
+ALTER TABLE "SoftSkillsEnrolment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SoftSkillsEnrolment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SoftSkillsEnrolment_tenant_isolation" ON "SoftSkillsEnrolment";
+DROP POLICY IF EXISTS "SoftSkillsEnrolment_readable" ON "SoftSkillsEnrolment";
+CREATE POLICY "SoftSkillsEnrolment_tenant_isolation" ON "SoftSkillsEnrolment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- SoftSkillsAttendance
+ALTER TABLE "SoftSkillsAttendance" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "SoftSkillsAttendance" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "SoftSkillsAttendance_tenant_isolation" ON "SoftSkillsAttendance";
+DROP POLICY IF EXISTS "SoftSkillsAttendance_readable" ON "SoftSkillsAttendance";
+CREATE POLICY "SoftSkillsAttendance_tenant_isolation" ON "SoftSkillsAttendance"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AttendanceDevice
+ALTER TABLE "AttendanceDevice" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AttendanceDevice" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AttendanceDevice_tenant_isolation" ON "AttendanceDevice";
+DROP POLICY IF EXISTS "AttendanceDevice_readable" ON "AttendanceDevice";
+CREATE POLICY "AttendanceDevice_tenant_isolation" ON "AttendanceDevice"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AttendanceBadge
+ALTER TABLE "AttendanceBadge" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AttendanceBadge" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AttendanceBadge_tenant_isolation" ON "AttendanceBadge";
+DROP POLICY IF EXISTS "AttendanceBadge_readable" ON "AttendanceBadge";
+CREATE POLICY "AttendanceBadge_tenant_isolation" ON "AttendanceBadge"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- AttendancePunch
+ALTER TABLE "AttendancePunch" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "AttendancePunch" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "AttendancePunch_tenant_isolation" ON "AttendancePunch";
+DROP POLICY IF EXISTS "AttendancePunch_readable" ON "AttendancePunch";
+CREATE POLICY "AttendancePunch_tenant_isolation" ON "AttendancePunch"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PeerTeamVisit
+ALTER TABLE "PeerTeamVisit" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PeerTeamVisit" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PeerTeamVisit_tenant_isolation" ON "PeerTeamVisit";
+DROP POLICY IF EXISTS "PeerTeamVisit_readable" ON "PeerTeamVisit";
+CREATE POLICY "PeerTeamVisit_tenant_isolation" ON "PeerTeamVisit"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- PeerVisitItem
+ALTER TABLE "PeerVisitItem" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "PeerVisitItem" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "PeerVisitItem_tenant_isolation" ON "PeerVisitItem";
+DROP POLICY IF EXISTS "PeerVisitItem_readable" ON "PeerVisitItem";
+CREATE POLICY "PeerVisitItem_tenant_isolation" ON "PeerVisitItem"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 

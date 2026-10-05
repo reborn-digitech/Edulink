@@ -86,7 +86,8 @@ export type Endpoint = {
    * the sample is not that role's row — the cancel door's sample is pupil
    * 01's request, which the family's actors own and the alumnus does not, so
    * the alumnus is answered 404 (STREAMS-4, 5 Oct 2026). Read before
-   * `emptyBodyStatus` by `declaredStatus` below.
+   * `emptyBodyStatus` by `declaredStatus` below. Read by the sweep alone and
+   * not published in openapi.json (R-28, decided 5 Oct 2026: keep it so).
    */
   statusByRole?: Partial<Record<RoleCode, number | number[]>>;
   /**
@@ -95,6 +96,15 @@ export type Endpoint = {
    * null (the fixture lacks that thing) makes the sweep skip and say so.
    */
   sample?: string | ((fixture: SweepFixture) => string | null);
+  /**
+   * WHY A DOOR WITH A `{param}` HAS NO `sample`, in a sentence (R-30, risks
+   * batch of 5 Oct 2026). The catalog test (tests/api-catalog.test.ts) refuses
+   * a door whose path has a parameter and that names neither: eighteen doors
+   * had gone unswept with nobody saying why. Prefer a sample — a fixture row,
+   * or an id no school holds (`zz-sweep-no-such-…`, answered 404) — and keep
+   * this for a door that truly cannot be called without an act.
+   */
+  noSample?: string;
   /** For a body-taking endpoint: a valid body from the fixture, so the sweep can assert 200 as well as 422. */
   sampleBody?: (fixture: SweepFixture) => Record<string, unknown> | null;
   /**
@@ -257,6 +267,13 @@ export type SweepFixture = {
   globalPostId: string | null;
   bankTopicId: string | null;
   bankQuestionId: string | null;
+  /**
+   * The placement fixture at ZZ Vidya College (scripts/zz-placement.ts), the same whichever school the fixture is
+   * read for: zz.cstudent02's consented application in the open drive, and zz.cstudent02's membership (a college
+   * student, for the TPO's dream flag and the recruiter's resume). R-30, 5 Oct 2026.
+   */
+  placementApplicationId: string | null;
+  placementApplicantMembershipId: string | null;
   todayKey: string;
 };
 

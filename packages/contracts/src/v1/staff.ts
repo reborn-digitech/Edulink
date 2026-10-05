@@ -565,8 +565,21 @@ export const staffLeaveSchema = z.object({
   requests: z.array(leaveRowSchema),
   /** Colleagues who could be nominated to cover. */
   staff: z.array(z.object({ membershipId: z.string(), name: z.string() })),
+  /**
+   * Who answers this person's leave, for the form's button (G4-27, risks batch 5 Oct 2026): the principal for a
+   * teacher, a FACULTY member or an HOD while the institution has one; the office otherwise (module staff, the college's
+   * desks, the principal's own, and any institution with no principal). Optional so an older server's answer still parses.
+   */
+  decidedBy: z.enum(["PRINCIPAL", "OFFICE"]).optional(),
 });
 export type StaffLeave = z.infer<typeof staffLeaveSchema>;
+
+/** The roles whose leave the principal answers while there is one (G4-27); every other applicant's goes to the office. */
+export const LEAVE_TO_PRINCIPAL_ROLES = ["TEACHER", "FACULTY", "HOD"] as const;
+/** Who answers a role's leave at an institution with or without an active principal (G4-27). */
+export function leaveDecidedBy(role: string, hasPrincipal: boolean): "PRINCIPAL" | "OFFICE" {
+  return hasPrincipal && (LEAVE_TO_PRINCIPAL_ROLES as readonly string[]).includes(role) ? "PRINCIPAL" : "OFFICE";
+}
 
 export const applyLeaveSchema = z.object({
   fromDateKey: dateKey,

@@ -35,9 +35,9 @@ export const ACCOUNT: Endpoint[] = [
   // body's 422 comes before the side is asked. The sweep expects 403 from every role outside `access`, so
   // any sample here would be counted unexpected for three roles; widening `access` to make it pass would
   // tell the phone's gate a pupil may open a booking. tests/api-v1-account.test.ts proves the three doors.
-  { method: "GET", path: "/api/v1/account/bookings/{bookingId}", summary: "One expert booking and its conversation", access: BOOKING_SIDES, response: c.accountBookingSchema, sample: () => null },
-  { method: "POST", path: "/api/v1/account/bookings/{bookingId}/messages", summary: "Write in a booking's conversation", access: BOOKING_SIDES, request: c.accountBookingMessageSchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
-  { method: "POST", path: "/api/v1/account/bookings/{bookingId}/cancel", summary: "Cancel a booking (either side; the hour goes back on offer)", access: BOOKING_SIDES, response: c.okSchema, sample: () => null },
+  { method: "GET", path: "/api/v1/account/bookings/{bookingId}", summary: "One expert booking and its conversation", access: BOOKING_SIDES, response: c.accountBookingSchema, emptyBodyStatus: 404, sample: "/api/v1/account/bookings/zz-sweep-no-such-booking" }, // R-30: zz:fixtures makes no expert booking; an id no school holds, 404 to every side
+  { method: "POST", path: "/api/v1/account/bookings/{bookingId}/messages", summary: "Write in a booking's conversation", access: BOOKING_SIDES, request: c.accountBookingMessageSchema, response: c.okSchema, emptyBodyStatus: 422, sample: "/api/v1/account/bookings/zz-sweep-no-such-booking/messages" }, // R-30: no expert booking in the fixtures; the empty body's 422
+  { method: "POST", path: "/api/v1/account/bookings/{bookingId}/cancel", summary: "Cancel a booking (either side; the hour goes back on offer)", access: BOOKING_SIDES, response: c.okSchema, emptyBodyStatus: 404, sample: "/api/v1/account/bookings/zz-sweep-no-such-booking/cancel" }, // R-30: no expert booking in the fixtures, and cancelling a real one is an act; an id no school holds, 404
   // ---- two-step sign-in (TOTP): the office, the head and the operator ------------
   // The status is every signed-in person's (it says whether they may turn it on). Two-step sign-in belongs to the ACCOUNT, not to the
   // session's active role: the secret guards every sign-in whatever context follows, so two-factor.ts decides eligibility by the

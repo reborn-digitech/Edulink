@@ -398,6 +398,12 @@ export const offerSaveSchema = z.object({
   studentMembershipId: z.string().max(40),
   packageRupees: z.number().int().min(0).max(1_000_000_000),
   letterFileId: z.string().max(200).nullable().default(null),
+  /**
+   * The recorder has seen the warning (A3-journeys-18, 5 October 2026): an
+   * offer above HIGH_OFFER_RATIO (1.5) times the drive's highest package is
+   * answered 409 `placement.confirmHighOffer` unless this is true.
+   */
+  confirmedHigh: z.boolean().optional(),
 });
 export type OfferSave = z.infer<typeof offerSaveSchema>;
 
@@ -432,6 +438,8 @@ export const placementStudentSchema = z.object({
   consentAt: isoOrNull,
   offers: z.number().int(),
   acceptedRupees: z.number().int().nullable(),
+  /** Soft-skills trainings completed (R-2, 5 Oct 2026; ./placement-events.ts `softSkillsCompleted`), computed on read. */
+  softSkillsCompleted: z.number().int().default(0),
 });
 export const placementStudentsSchema = z.object({ students: z.array(placementStudentSchema), canEdit: z.boolean() });
 export const dreamFlagSaveSchema = z.object({ on: z.boolean() });
@@ -592,6 +600,8 @@ export const studentPlacementSchema = z.object({
   internshipCredits: z.number().int(),
   prep: z.array(prepTopicSchema),
   mentorSlots: z.array(mentorSlotSchema),
+  /** The soft-skills trainings the student completed (R-2, 5 Oct 2026): a line on their placement profile. */
+  softSkills: z.array(z.object({ trainingId: z.string(), title: z.string(), skill: z.string() })).default([]),
 });
 export type StudentPlacement = z.infer<typeof studentPlacementSchema>;
 

@@ -150,6 +150,8 @@ export const operatorExpertsSchema = z.object({
           documents: z.array(expertKycDocumentSchema),
         })
         .default({ status: "NONE", note: null, submittedAt: null, decidedAt: null, documents: [] }),
+      /** When the operator closed the account (G4-28, risks batch 5 Oct 2026): no sign-in, no bookings; null while open. Absent from older servers. */
+      disabledAt: isoOrNull.default(null),
     }),
   ),
 });
@@ -323,3 +325,17 @@ export const operatorRetentionSchema = z.object({
   pending: z.object({ sessions: retentionCount, tokens: retentionCount, rateLimits: retentionCount, uploadTickets: retentionCount, outbox: retentionCount, jobRuns: retentionCount, auditRows: retentionCount, healthReads: retentionCount, tripPositions: retentionCount.optional() }),
 });
 export type OperatorRetention = z.infer<typeof operatorRetentionSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* The jobs, school by school (A3-inventory-14, 5 October 2026)                 */
+/* -------------------------------------------------------------------------- */
+
+const schoolJobCountsSchema = z.object({ job: z.string(), at: iso, counts: z.record(z.string(), z.number()) });
+/** GET /api/v1/operator/jobs/schools — what each job's latest run did per school; those needing attention first. */
+export const operatorJobsBySchoolSchema = z.object({
+  schools: z.array(z.object({ schoolId: z.string(), name: z.string().nullable(), removedAt: isoOrNull, jobs: z.array(schoolJobCountsSchema), attention: z.boolean() })),
+  /** Live schools no job had work for. */
+  quiet: z.number().int(),
+  runs: z.array(z.object({ job: z.string(), at: isoOrNull })),
+});
+export type OperatorJobsBySchool = z.infer<typeof operatorJobsBySchoolSchema>;

@@ -1,6 +1,6 @@
 # Data-flow audit — reports, exports and filings (second pass)
 
-Run: 2026-10-05T09:37:25.296Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 283 WARN · 128 INFO
+Run: 2026-10-05T18:29:19.462Z · schools: Saraswati Arts and Science College, Saraswati Institute of Technology, Saraswati Vidya Mandir, Sunrise Public School, ZZ Northgate School · 0 FAIL · 283 WARN · 121 INFO
 
 Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees with its own rows; WARN = a stale snapshot or a figure a blank input makes wrong; INFO = inputs the school still has to enter.
 
@@ -292,7 +292,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | inputs-pupils | ZZ Northgate School | 42 of 48 pupils lack household (occupations, income) — feeds RTE and EWS verification |
 | inputs-staff | ZZ Northgate School | 12 of 12 staff lack a phone — feeds DCF 3.2.8(a), substitution and leave texts |
 
-## INFO (128)
+## INFO (121)
 
 | check | school | detail |
 |---|---|---|
@@ -315,14 +315,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | register-csv | Sunrise Public School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
 | register-csv | Sunrise Public School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 3: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 4: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 5: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 6: 2 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 7: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 8: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 9: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
-| register-csv | ZZ Northgate School | grade 10: 3 pupil(s) have no guardian linked — no one to text, no phone on the UDISE+ sheet |
+| register-csv | ZZ Northgate School | no register to export |
 | staff-csv | Saraswati Arts and Science College | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | Saraswati Institute of Technology | 2 staff have no leave entitlement on their record — the desk sees no balance for them |
 | staff-csv | ZZ Northgate School | 4 staff have no leave entitlement on their record — the desk sees no balance for them |
@@ -371,7 +364,7 @@ Regenerate with `npm run data:audit` from apps/web. FAIL = a sheet disagrees wit
 | year-archive | Saraswati Vidya Mandir | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | Sunrise Public School | 2025–26: 41 on roll, 0 leavers, 0 badges archived |
 | year-archive | ZZ Northgate School | no closed year |
-| retention | platform | tonight would take sessions 11, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0 |
+| retention | platform | tonight would take sessions 17, tokens 0, rateLimits 0, uploadTickets 0, outbox 0, jobRuns 0, auditRows 0, healthReads 0, tripPositions 0 |
 | inputs-school | Saraswati Arts and Science College | school has no UDISE code — every UDISE+ sheet's first column and file name |
 | inputs-school | Saraswati Arts and Science College | school has no board — which board sheet applies |
 | inputs-school | Saraswati Arts and Science College | school has no affiliation or index number — CBSE and MSBSHSE first column |

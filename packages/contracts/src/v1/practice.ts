@@ -206,3 +206,18 @@ export const practiceWorksheetSchema = z.object({
   ),
 });
 export type PracticeWorksheet = z.infer<typeof practiceWorksheetSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* The pupil's own journey (A3-inventory-14, 5 October 2026)                    */
+/* -------------------------------------------------------------------------- */
+
+/** GET /api/v1/practice/journey — the pupil's private "how far I've come": badges, the six months' tiers, the streak. */
+export const practiceJourneySchema = z.object({
+  badges: z.array(z.object({ label: z.string(), description: z.string(), earnedAt: iso, isTier: z.boolean() })),
+  /** The last six calendar months, oldest first; `month` is YYYY-MM for the reader's own month names. */
+  monthly: z.array(z.object({ label: z.string(), month: z.string().regex(/^\d{4}-\d{2}$/), tiers: z.number().int() })),
+  practiceWeeks: z.number().int(),
+  totalAnswers: z.number().int(),
+  totalTiers: z.number().int(),
+});
+export type PracticeJourney = z.infer<typeof practiceJourneySchema>;

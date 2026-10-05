@@ -41,7 +41,8 @@ export type ActivityKind = z.infer<typeof activityKindSchema>;
 export const CAPACITY_THEMES = ["SOFT_SKILLS", "LANGUAGE", "LIFE_SKILLS", "ICT"] as const;
 export const capacityThemeSchema = z.enum(CAPACITY_THEMES);
 
-export const COMMITTEE_KINDS = ["GRIEVANCE", "ANTI_RAGGING", "ICC", "CDC", "GOVERNING_BODY", "IQAC", "ADVISORY", "OTHER"] as const;
+/** STUDENT_COUNCIL (risks batch 5A, 5 Oct 2026): the students' council, kept by the office on the council page (council-notices.ts) with its members' accounts, which posts council notices on the bulletin. */
+export const COMMITTEE_KINDS = ["GRIEVANCE", "ANTI_RAGGING", "ICC", "CDC", "GOVERNING_BODY", "IQAC", "ADVISORY", "OTHER", "STUDENT_COUNCIL"] as const;
 export const committeeKindSchema = z.enum(COMMITTEE_KINDS);
 export type CommitteeKind = z.infer<typeof committeeKindSchema>;
 

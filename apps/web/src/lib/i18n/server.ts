@@ -1,8 +1,10 @@
 import "server-only";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { cache } from "react";
 import { sessionForLocale } from "../session";
-import { normaliseLocale, LOCALE_COOKIE, type Locale } from "./locales";
+import { bearerToken } from "../bearer";
+import { SESSION_COOKIE } from "../constants";
+import { normaliseLocale, LOCALE_COOKIE, LOCALES, type Locale } from "./locales";
 import { translator, type Translate } from "./dictionary";
 import { relativeTime } from "../dates";
 
@@ -26,10 +28,30 @@ import { relativeTime } from "../dates";
 export const getLocale = cache(async (): Promise<Locale> => {
   // Not getSession: a request the module gate refuses is still answered in its person's language.
   const session = await sessionForLocale();
-  if (session) return normaliseLocale(session.user.prefs.locale);
+  if (session) return (await phoneLocale()) ?? normaliseLocale(session.user.prefs.locale);
   const jar = await cookies();
   return normaliseLocale(jar.get(LOCALE_COOKIE)?.value);
 });
+
+/**
+ * THE PHONE'S OWN CHOICE (A3-states-16, audit of 5 October 2026). The phone
+ * keeps its language in the app and sends it on every call (`X-Language`,
+ * else the `Accept-Language` the api-client writes: exactly "en", "hi" or
+ * "mr"), so a sentence the server builds for it — an insight's path, a
+ * metric's sentence, a refusal — comes back in the language its screen is in
+ * even before the account's `prefs.locale` has caught up. Read only for a
+ * BEARER request (no session cookie): the web stays on the account's choice,
+ * for the reason above, and a browser's header is never consulted. Anything
+ * but one of the three codes is ignored.
+ */
+async function phoneLocale(): Promise<Locale | null> {
+  const jar = await cookies();
+  if (jar.get(SESSION_COOKIE)?.value) return null;
+  const hdrs = await headers();
+  if (!bearerToken(hdrs)) return null;
+  const raw = (hdrs.get("x-language") ?? hdrs.get("accept-language") ?? "").split(/[,;]/)[0]!.trim().toLowerCase().split("-")[0]!;
+  return LOCALES.some((l) => l.code === raw) ? (raw as Locale) : null;
+}
 
 /** The `t` for this request. Server components only. */
 export async function getT(): Promise<Translate> {

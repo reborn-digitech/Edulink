@@ -53,7 +53,7 @@ export const UNVERSIONED: Endpoint[] = [
     response: c.attendanceRegisterRosterSchema,
     sample: (f) => (f.classId ? `/api/attendance?classId=${f.classId}&date=${SWEEP_REGISTER_DAY}` : null),
   },
-  // No sampleBody: an answer needs a sitting the pupil opened, and answering is the act. The handler refuses a body without its three fields with 400, before it looks at the sitting.
+  // No sampleBody: an answer needs a sitting the pupil opened, and answering is the act. The handler refuses a body without its three fields with 422 (R-51; it was 400), before it looks at the sitting.
   {
     method: "POST",
     path: "/api/practice/answer",
@@ -61,7 +61,7 @@ export const UNVERSIONED: Endpoint[] = [
     access: ["STUDENT"],
     request: c.webPracticeAnswerBodySchema,
     response: c.webPracticeAnsweredSchema,
-    emptyBodyStatus: 400,
+    emptyBodyStatus: 422,
   },
 ];
 

@@ -26,7 +26,8 @@ export const sharedPageQuerySchema = z.object({
 /* -------------------------------------------------------------------------- */
 
 export const bulletinScopeSchema = z.enum(["CLASS", "SCHOOL", "GLOBAL"]);
-export const bulletinCategorySchema = z.enum(["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"]);
+/** COUNCIL (risks batch 5A, 5 Oct 2026) is a student council's notice: read like any other, written only through the council's own door (council-notices.ts); a post sent elsewhere with it is refused. */
+export const bulletinCategorySchema = z.enum(["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES", "COUNCIL"]);
 export const bulletinStatusSchema = z.enum(["DRAFT", "PENDING", "APPROVED", "REJECTED"]);
 export const bulletinAudienceSchema = z.enum(["ALL", "PARENTS", "TEACHERS", "STUDENTS"]);
 export const bulletinReactionKindSchema = z.enum(["CLAP", "STAR", "IDEA", "HEART", "CELEBRATE", "PROUD", "THANKS"]);
@@ -794,3 +795,23 @@ export const slipReportSchema = z.object({
   none: z.number().int(),
   rows: z.array(z.object({ studentMembershipId: z.string(), name: z.string(), className: z.string().nullable(), answer: z.enum(SLIP_ANSWERS).nullable(), answeredByName: z.string().nullable(), answeredAt: z.string().datetime().nullable() })),
 });
+
+/* -------------------------------------------------------------------------- */
+/* Celebrations (A3-inventory-14, 5 October 2026)                              */
+/* -------------------------------------------------------------------------- */
+
+/** GET /api/v1/shared/bulletin/celebrations — `?days=` the window ahead, 1 to 183 (the page's month, then its half-year). */
+export const celebrationsQuerySchema = z.object({ days: z.coerce.number().int().min(1).max(183).default(30) });
+export const celebrationSchema = z.object({
+  kind: z.enum(["BIRTHDAY", "ANNIVERSARY"]),
+  membershipId: z.string(),
+  name: z.string(),
+  role: roleSchema,
+  /** The day it falls on, a school-zone date key (YYYY-MM-DD). */
+  dateKey: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  /** Work anniversaries only: the years completed. */
+  years: z.number().int().nullable(),
+  schoolName: z.string(),
+});
+export const celebrationsSchema = z.object({ days: z.number().int(), items: z.array(celebrationSchema) });
+export type Celebrations = z.infer<typeof celebrationsSchema>;

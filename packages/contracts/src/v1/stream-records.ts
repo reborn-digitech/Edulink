@@ -120,10 +120,24 @@ export const labDivisionSchema = z.object({
   batches: z.array(labBatchSchema),
   /** Students of the division in no batch yet. */
   unbatched: z.array(memberRow),
+  /**
+   * THE DAY A CHANGE MADE NOW TAKES EFFECT (R-24, risks batch 5 Oct 2026), YYYY-MM-DD by the college's clock: today,
+   * or tomorrow when a batch lab of the division is already marked today (a marked lecture keeps its roster); null
+   * while no batch lab of the division is marked, when a re-split rewrites the batches from the start. The office's
+   * page and the phone say it before the office acts ("from tomorrow"). Absent from older servers.
+   */
+  changesFrom: z.string().nullable().optional(),
 });
 /** GET /api/v1/stream-records/lab-batches — every division (or one) with its batches. */
 export const labBatchesQuerySchema = z.object({ divisionId: cuid.optional() });
-export const labBatchesSchema = z.object({ offered: z.boolean(), defaultSize: z.number().int(), canEdit: z.boolean(), divisions: z.array(labDivisionSchema) });
+export const labBatchesSchema = z.object({
+  offered: z.boolean(),
+  defaultSize: z.number().int(),
+  canEdit: z.boolean(),
+  divisions: z.array(labDivisionSchema),
+  /** On the answer to a split or a move only (R-24): the day the change took effect; null when it rewrote the batches from the start. */
+  effectiveFrom: z.string().nullable().optional(),
+});
 export type LabBatches = z.infer<typeof labBatchesSchema>;
 /** POST /api/v1/stream-records/lab-batches/split — the office splits a division evenly into batches of at most `size`, by roll number (re-running re-splits; batch names are A, B, C…). */
 export const labBatchSplitSchema = z.object({ divisionId: cuid, size: z.number().int().min(LAB_BATCH_MIN_SIZE).max(LAB_BATCH_MAX_SIZE).optional() });
@@ -190,6 +204,10 @@ export const mootCourtSchema = z.object({
   teams: z.array(z.object({ name: z.string(), outcome: mootOutcomeSchema, members: z.array(z.object({ membershipId: cuid, name: z.string() })) })),
   result: z.string(),
   judgeNotes: z.string(),
+  /** Whether this reader may correct this moot (R-59, risks batch 5 Oct 2026): the office, its author or the law department's HOD, and never once frozen. The phone hides "Correct" where false. Absent from older servers. */
+  canEdit: z.boolean().optional(),
+  /** Frozen (R-53): the BCI return for the moot's academic year has been generated, so it stays as the return printed it. */
+  frozen: z.boolean().optional(),
 });
 /** GET /api/v1/stream-records/moot-courts */
 export const mootCourtsSchema = z.object({ offered: z.boolean(), canEdit: z.boolean(), items: z.array(mootCourtSchema), students: z.array(z.object({ membershipId: cuid, name: z.string() })) });

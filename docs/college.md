@@ -26,6 +26,13 @@ naming it in `access` or `limitedRoles`; pages check `assertModuleOn`/`isModuleO
 nav entries and phone tabs carry `module`. Where a page must exist only at a college, nav uses
 `module: "ACADEMICS"` as the stand-in for "is a college".
 
+Writes with no door, on purpose (R-50, risks batch of 5 October 2026): the door-less web writes the audit of 5
+October listed (01-inventory §7.5) now have doors (`api-catalog/office-year.ts`, `office-writes.ts`), but
+merging two accounts and deleting a school or college stay on the web, being irreversible acts across accounts
+or tenants that need its confirmation screens; the operator's removal of institutions and moderation inside
+one belong to the operator console, not an institution's phone; and a pupil's first-sign-in code is printed on
+paper at the office. The OpenAPI description says the same.
+
 ## Streams (5 October 2026)
 
 The owner's decision of 5 October 2026: a college's **streams** are chosen by the operator at onboarding,
@@ -75,7 +82,7 @@ handler (403 `duties.refuseNoDuty`), and the same rule runs in `permits()`, both
 | LAB_INCHARGE | /duties/lab | the labs (rooms of kind LAB) with stock and assets from inventory, batch rosters, practical records to sign, a breakage log (a write-off through the inventory's one stock writer) |
 | ANTI_RAGGING_SQUAD | /duties/anti-ragging | the squad's rounds and the complaints' state and due day — never their words or author |
 | NSS_OFFICER, NCC_OFFICER | /duties/nss, /duties/ncc | enrolment, leaving, activities as IQAC Activity rows with hours and a camp flag |
-| RESEARCH_DEAN | /duties/research | the research register and each teacher's score inputs, read-only (the office writes the faculty record) |
+| RESEARCH_DEAN | /duties/research | the research register, read-only (the office writes the faculty record); no teacher's API score inputs since 5 Oct (A3-S-11), so the list is sorted by publications plus projects (R-55) |
 | EXAM_SQUAD | /duties/exam-squad | papers two days back to sixty ahead; a visit that found something tells the exam controllers; a case's state, never its note |
 | PRACTICE_TEACHING_COORDINATOR | /duties/teaching-practice | practice schools, postings, lesson observations |
 | CLINICAL_COORDINATOR, STUDIO_COORDINATOR | /duties/clinical, /duties/studio | a page with the preset's not-built sentence |
@@ -125,6 +132,11 @@ added for PCI, BCI, NCTE or NBA (none has a fixed one to cite).
 
 The six college staff roles file leave at `/account/leave` (and the phone's Leave), read payslips at
 `/account/payslips`, post to the college's feed as a teacher does, and read the global feed.
+Faculty leave is decided by the office (ADMIN) or the principal on `/principal/leave`
+(`POST /admin/leave/{leaveId}/decide`, ADMIN and PRINCIPAL); the HOD does not approve it and arranges the
+cover on the substitution board (`POST /academics/substitutions`). This is the recorded decision of
+4 October (integration report, item 7), kept by the owner on 5 October (R-6, A3-inventory-11); the college
+plan's "HOD approves faculty leave up to the department's limit" was the stale line.
 
 ## Who owns what, and what each module exposes
 
@@ -212,11 +224,12 @@ teaches engineering), `GET /iqac/insights/nirf`, `GET` and `POST /iqac/scenarios
 `GET /iqac/scenarios/compare`, `GET /iqac/simulate` and `GET /iqac/simulate/nba`. No open cycle answers 404.
 
 **Decisions the owner must confirm** (08-remaining-risks.md, R-40 to R-47):
-1. **The NIRF band table is the platform's reading, not NIRF's.** `NIRF_BANDS` (top 100 at 57, 101 to 150 at 54,
-   151 to 200 at 51, 201 to 300 at 47) comes from memory of past college lists and has not been checked against
-   the published scores; the estimate also scales the partial score up as if the unpublished parameters scored
-   at the same rate, which flatters a college strong on the published ones (ZZ Vidya projects to "the top 100"
-   from 40 covered marks). Check it against NIRF's published scores before anyone relies on it.
+1. **The NIRF band table.** The top-hundred line is now NIRF's own (R-40, risks batch of 5 October 2026): 54.39,
+   the 100th college's score in India Rankings 2025 (nirfindia.org/Rankings/2025/CollegeRanking.html, retrieved
+   5 October 2026). NIRF prints no score for the 101–150, 151–200 and 201–300 bands, so those minimums (54, 51,
+   47) remain the platform's reading and are the owner's to supply. The estimate still scales the partial score up
+   as if the unpublished parameters scored at the same rate, which flatters a college strong on the published ones
+   (ZZ Vidya projects to "the top 100" from 40 covered marks).
 2. **Levers move one figure at a time** in the insights (one more professor does not also raise the ratio's
    other side); the simulator moves figures together.
 3. **A change to NAAC's weights makes `data:audit` fail on old scenarios, on purpose.** A stored result is
@@ -235,6 +248,9 @@ generated, its eligibility and no-dues read, approved → the university's file 
 takes the locked internal marks, publication → placement's record reads the published CGPA → the IQAC's
 facts count the pass (2.6.3's inputs) → the office records the graduation and the alumnus row opens → the
 alumnus reads a global post once.
+Graduation, like a school departure, keeps a real parent's guardianship ACTIVE (only the school's stand-in
+guardianship is revoked, `school-record.ts`), so the family keeps the record and the leaving certificate (R-23,
+decided 5 Oct 2026: keep; a college that wants otherwise says so).
 
 ## Stored derived values and their checks (`npm run data:audit`)
 
@@ -248,6 +264,7 @@ alumnus reads a global post once.
 | `Grievance.dueOn`, disclosure hash | filing, `setDisclosure` | iqac-grievance |
 | `PlacementSeason` | `publishSeason` | placement-season |
 | `StudentProgramme.prn` (a copy of `PupilRecord.prn`) | the admission and the seat page | college-prn |
+| `AttendanceDevice.keyLast4` (the sealed key's last four; R-2, 5 Oct 2026) | `issueDeviceKey` | punch-key |
 
 Computed on read and stored nowhere: attendance percentages and eligibility, CO/PO attainment, ledgers net
 of scholarships, no-dues lines, the finance, library and hostel tables, the placement index between
@@ -303,6 +320,11 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   the college doors; Playwright; Hindi and Marathi read by a speaker.
 - Built on 5 October 2026 and so no longer "not built": the faculty public profile (opt-in), a refund outside
   the slab and a hostel expulsion as principal approvals, the night-out register and the curfew at the gate.
+  Four eyes on each (R-7, decided 5 October 2026): the person who asked for a refund exception, proposed an
+  expulsion or granted a concession above the office's limit cannot decide it, even holding PRINCIPAL as well as
+  ADMIN (403 `collegeDesks.refuseOwnAsk`). A one-person college decides through a second account (a second
+  principal, or the office's own officer as ADMIN) or records the exception in the head's decision log; the
+  platform does not let one account approve its own ask.
   Still not built: the phone's permission-slip composer. The phone warden's night view is built
   (`screens/hostel/warden.tsx`), and since the audit of 5 October the card's QR opens a staff-only web
   `/id-check` page and carries a signed card id instead of the guardian-claim code.
@@ -316,3 +338,152 @@ regulators' calendar with reminders from `accounts:tidy`, and recruiter accounts
   results and offers by the year's end); what still has no history and is read as it stands: a teacher's
   department link and designation, a programme's intake, the placement profile's higher-studies flag. The
   PCI, BCI and NCTE returns still read the rows as they stand.
+
+## Talks, soft skills, the gate reader, Tally and the peer-team visit (risks batch, 5 October 2026)
+
+Five plan items that had no code (R-2 in docs/audit-2026-10-05/08-remaining-risks.md), built by package 5B
+of the risks batch. One migration (`20261005171517_college_risks_builds`, eleven tenant tables, each with
+`schoolId` under RLS); doors in `src/lib/api-catalog/college-extras.ts`; ZZ rows at ZZ Vidya College from
+`scripts/zz-college-extras.ts` with the fixed ids in `college-extras-fixture.ts`. The owner may strike any.
+
+**Pre-placement talks** (module PLACEMENT; `PlacementTalk`, `PlacementTalkRsvp`; `src/lib/placement-talks.ts`).
+The TPO sets a company's talk ahead of now with the drive it belongs to (one talk a drive, never a closed
+drive); a student of the college answers GOING or NOT_GOING while it is scheduled and ahead, GOING stopping
+at the seats under a row lock; once it starts the answers close and attendance opens, the TPO's alone, for
+anyone on the roll (a walk-in too); the first mark sets `heldAt`, after which the talk can be neither moved
+nor cancelled; cancelling tells those going. The counts are read from the rows. Doors: `GET`/`POST
+/placement/talks`, `GET`/`POST /placement/talks/{talkId}`, `POST /placement/talks/{talkId}/attendance`, `GET
+/student/placement/talks`, `POST /student/placement/talks/{talkId}/rsvp`. Pages: `/placement/talks` and
+`/placement/talks/[talkId]` (a new tab of the cell), `/student/placement/talks`, a card on the drive's page and
+on the student's placement page; phone: `placement-talks` (a student answers; the TPO taps Present or Absent
+per student at the door), in More for STUDENT and TPO. Fixture: the open drive's talk a week ahead
+(zz.cstudent02 going, zz.cstudent03 not), and a talk held twenty days ago with its attendance.
+
+**Soft-skills training** (module PLACEMENT; `SoftSkillsTraining`, `SoftSkillsSession`, `SoftSkillsEnrolment`,
+`SoftSkillsAttendance`; `src/lib/soft-skills.ts`, the count in `soft-skills-count.ts`). A training in a coded
+skill (`SOFT_SKILLS`) with seats and the attendance share that completes it (75 % unless set); students enrol
+while it is OPEN, the TPO puts students on or off the roll, adds sessions, cancels one with no marks, and marks
+a session once it has started, for students on its roll only. COMPLETED is computed on read and stored nowhere
+(`softSkillsCompleted`: present at the share of the sessions not cancelled, rounded up), so there is no
+data:audit check to keep; the cell's figure is the students with at least one completion, the cell's student
+list has a `softSkillsCompleted` count and the student's placement answer a `softSkills` list (both contract
+fields default to empty for an older phone). Doors: `GET`/`POST /placement/trainings`, `GET`/`POST
+/placement/trainings/{id}`, `POST …/sessions`, `POST …/sessions/{sessionId}`, `POST
+…/sessions/{sessionId}/attendance`, `POST …/enrolments`, `GET /student/placement/trainings`, `POST
+/student/placement/trainings/{id}/enrol`. Pages: `/placement/training` and `/placement/training/[trainingId]`,
+`/student/placement/training`; phone: `soft-skills` (enrol or withdraw; the TPO marks a started session).
+Fixture: "ZZ Interview skills", two sessions held and one ahead at 60 %, zz.cstudent02 completed.
+
+**The biometric or RFID feed** (`AttendanceDevice`, `AttendanceBadge`, `AttendancePunch`;
+`src/lib/attendance-devices.ts`, the signature in `src/lib/punch-signature.ts`). A format-agnostic signed door,
+`POST /api/v1/punch/{schoolId}` (no session): the device sends its id, a timestamp within five minutes and
+`sha256=` HMAC-SHA256 of `timestamp.body` with its own key; anything else is 401, one answer for every
+failure. A device's key is 32 random bytes shown once when the office registers the device or rotates the key,
+kept sealed under FEES_SECRET_KEY bound to the school and the device, with ONE WRITER (`issueDeviceKey`); a
+rotated key stops the old one at once, a disabled device is refused. The office maps the code a device sends (a
+card's number or a reader's enrolment number, never a template, never Aadhaar) to a person (`AttendanceBadge`).
+A punch lands through the existing writers and no other: a member of staff's is their check-in
+(`recordStaffCheckIn`, extracted from `checkIn` in `staff-attendance.ts`, so a tap and a punch share one rule
+and one writer; the row says SELF, the punch log names the device), a pupil's marks them PRESENT in the day's
+class register through `saveAttendanceBatch` with no taker (`takenByMembershipId` may now be null; a device
+never becomes or replaces the register's taker, and `registersDue` counts a register as taken only when a person
+took it). A punch never overwrites: a pupil already marked that day or a member of staff already in is
+ALREADY_MARKED; an OUT punch is LOGGED; an unknown code, a person outside the device's scope (STAFF, STUDENTS,
+BOTH), a closed day, a pupil with no class register (a college student taught only in lectures: lecture
+attendance stays the teacher's) and a punch older than seven days are kept with their outcome and change
+nothing. Each punch is kept once per device and its id, so a resent batch writes nothing and answers its first
+outcome. Doors: `GET`/`POST /admin/attendance-devices`, `POST /admin/attendance-devices/{id}`, `POST
+…/{id}/rotate` (body `confirm: true`), `POST /admin/attendance-devices/badges`, `DELETE …/badges/{badgeId}`,
+and the punch door. Page: `/admin/attendance-devices` (ADMIN writes, PRINCIPAL reads; the key box draws the
+key once from the action's answer, never in an address). The vendor adapter, `scripts/punch-adapter.ts`,
+reads a tab- or comma-separated log (code, local time, optional direction) and posts signed batches; it is
+UNTESTED against any vendor's device or export. Fixture: "ZZ Main gate reader" with a sealed key nobody holds
+(rotate it to use it), badges for zz.faculty01 and zz.cstudent02, two punches that changed nothing.
+
+**The Tally export** (`src/lib/tally-export.ts`; contracts `v1/tally.ts` cite Tally's XML import shape:
+ENVELOPE / Import Data / Vouchers, a debit ISDEEMEDPOSITIVE Yes with a negative AMOUNT). Export only; money
+stays outside the platform (decision 0003). `GET /api/v1/tally/receipts?from&to&format` (a span of at most 366
+days): each receipt a Receipt voucher (Cash for cash, Bank otherwise, debited; each fee head's ledger "Fees -
+<head>" credited as the receipt's frozen snapshot states it), a reversed receipt left out and counted, each
+refund paid back a Payment voucher; `GET /api/v1/tally/payroll?month&format` (module PAYROLL): a LOCKED month as
+one Journal voucher (salaries and the employer's share debited; PF, ESI, professional tax, TDS, advances,
+other deductions and the net payable credited); a draft month 409. XML, or the same lines as a CSV day book.
+Every voucher sums to zero or the file is refused; ADMIN and ACCOUNTS only; each file audited (`tally.export`,
+counts, total and the SHA-256's first characters, never a name or a person's amount). Page:
+`/admin/fees/tally` with the ledger names to create in Tally. Not imported into a real Tally here.
+
+**The peer-team visit file** (module IQAC; `PeerTeamVisit`, `PeerVisitItem`; `src/lib/peer-visits.ts`). One
+NAAC peer team's visit (naming its cycle) or one NBA expert team's visit (an engineering department and the
+SAR's year), at most seven days: the visiting team, the schedule (slots inside the visit's days) and the
+evidence index — each line a criterion or metric code and what answers it: a filing (`CollegeFiling`), an IQAC
+file, a metric's latest score, the NBA worksheet, an https link or a note, each checked to be this college's
+and resolved on every read, MISSING when its target is gone. The SAR pack is read from the filings each time
+(NAAC: the cycle's IIQA, SSR and AQARs with state and hash, what is not generated, the cycle's CGPA; NBA: the
+department's SAR of the year and its marks), with the evidence counted per criterion. The IQAC writes any visit,
+an HOD writes and reads their own department's NBA visits only, the principal and the office read. Doors: `GET`/
+`POST /iqac/visits`, `GET`/`POST /iqac/visits/{visitId}`, `POST …/items`, `DELETE …/items/{itemId}`, `GET
+…/export` (CSV, audited). Pages: `/iqac/visits` and `/iqac/visits/[visitId]` (a link in the IQAC desk's nav),
+`/hod/visits` and `/hod/visits/[visitId]`. No phone screen (the roles keep it on the web). Fixture: the NAAC
+visit of Vidya's cycle a month ahead, three slots and four evidence lines.
+
+**Untested** for all five: the pages in a browser and the phone screens against a live server (the dev server
+needed a restart after the migration), api:sweep and the page sweep over the new doors, a real reader posting
+to the punch door, the adapter against a vendor's export, the Tally files imported into Tally, Hindi and
+Marathi read by a speaker.
+
+## Homework, appointment letters, council notices and the reading room (risks batch, package 5A, 5 October 2026)
+
+**Homework at a college (R-48).** A piece of work may be set to a `CourseOffering` instead of a class:
+`Assignment.offeringId` (migration `20261005171208_college_homework`), `classId` now optional, and a CHECK that a
+row has exactly one of the two. It is set, published and marked by the offering's faculty member or the HOD of the
+department whose programme owns the course (`src/lib/college-homework.ts`); the office reads, it does not set or
+mark. Its readers are the offering's REGISTERED students, from the day they registered — an elective shared across
+divisions has no class and needs none. Everything after the row is the school's: `assertAssignmentAccess`
+(tenancy.ts) knows both kinds of row and `workAudience` (grading.ts) answers who a piece of work is for, so the
+gradebook, the marks save, the publish notice (students, and the guardians an adult student lets see results), the
+student's own work list (`ownWorkScope`), the hand-in with its photographs and the file gate (files.ts) serve it
+unchanged; a list labels it with the course's code and name. The marks may be posted into one of the offering's
+internal components, scaled from the work's points to the component's maximum to a tenth of a mark (bonus held to
+the maximum), through `saveInternalMarks`, the one writer of InternalMark — so the lock (409), the release (409) and
+the countersign rule are that writer's. Doors (module ACADEMICS, FACULTY and HOD): `GET /api/v1/academics/work`,
+`GET`/`POST /academics/offerings/{offeringId}/work`, `GET /academics/work/{assignmentId}`, `POST …/publish`
+(already published answers as it stands), `…/grades`, `…/internal`. Pages `/faculty/work`,
+`/faculty/work/offerings/[offeringId]`, `/faculty/work/[assignmentId]` (the school's marking screen); phone
+`college-work` and `college-work-item` from More; the student reads and hands in on the existing Assignments
+screens. Fixture at ZZ Vidya: PHY101's "ZZ Lab report 1" with two hand-ins and a mark, PHY103's elective reading
+(no class), a draft (`scripts/zz-college-homework.ts`, ids in `college-homework-fixture.ts`). Not built: a
+college's homework does not feed report cards (a college has none; its record is the internal marks it may be posted
+into), and the school's `/teacher/...` doors refuse an offering's work rather than serve it.
+
+**Appointment letters (R-2).** A staff kind `APPOINTMENT` on the certificate engine: presets in English, Hindi and
+Marathi at a school and a college alike, prefix AL, filled from the staff record with eight `staff.*` placeholders
+(name, designation — the staff record's, else the membership's title — department at a college, staff number,
+the day of joining in figures and words, qualification, nature of appointment) and the school's, the year's and the
+issue's; a staff template naming a pupil's detail is refused, and the reverse. `issueAppointmentLetter`
+(certificates.ts) numbers it under the academic year's lock as every paper is, freezes it, signs as the layout says
+and tells the member of staff. `IssuedCertificate.studentMembershipId` holds the recipient's membership; `mayRead`
+lets only the office and that member read a staff paper; a family is never offered the kind. No pay figure is
+printed (decision 0003). Doors `GET`/`POST /api/v1/office/appointment-letters` (ADMIN, PRINCIPAL),
+`GET /api/v1/account/appointment-letters` and `…/{certificateId}/pdf` (every staff role); pages
+`/admin/certificates/appointments`, `/account/letters` and `/account/letters/[certificateId]` (outside the gated
+segments, so every staff role reaches its own paper). Fixture: the three templates and zz.faculty02's letter at Vidya.
+
+**Student council notices (R-2).** The council is a `Committee` of kind `STUDENT_COUNCIL` (one per school), kept by
+the office on `/bulletin/council` by student code with a role each — `saveCouncil` (council-notices.ts) is its one
+writer; the IQAC committee desk refuses the kind, because it names members as text. A notice is a bulletin post in
+the category `COUNCIL` with `Post.authorCommitteeId` (migration `20261005230101_council_notices`), written only
+through the council's door by a member or the office (createPost refuses the category otherwise): a student's waits
+for the office's review and is for everyone; the office's is live and may be narrowed. The feed and the post sign it
+with the council's name, with no picture, role tag or profile door; the review desk sees the writer beside it. It is
+read by the bulletin's audience rules and filtered like any category (the phone's feed names the category). Doors
+`GET`/`POST /api/v1/shared/bulletin/council`, `POST /api/v1/office/council`. Fixture: "ZZ Student Council"
+(zz.cstudent01 President, zz.cstudent02 Secretary) with a published and a waiting notice at Vidya.
+
+**The reading-room register (R-2).** `ReadingRoomVisit` (schoolId, RLS; migration `20261005230102_reading_room`):
+the library desk (LIBRARIAN, ADMIN) signs a reader — a student or a member of staff — in and out by library card,
+student code or the member picked; one open visit per person, held by `scanReader` (reading-room.ts), the table's one
+writer, under a per-person lock; signing in someone inside answers the open visit, signing out someone not inside is
+409. The day report (the head reads it too) lists the day's visits, who is inside (today) or never signed out (a past
+day), readers by kind, the average stay of the visits that ended and the busiest hour; nothing closes a visit behind
+the desk's back. Doors `GET`/`POST /api/v1/library/reading-room` (module LIBRARY); page `/library/reading-room`, a tab
+of the desk. Fixture: three visits today at Vidya, one still inside. No phone screen for these three plan items.

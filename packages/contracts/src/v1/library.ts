@@ -325,3 +325,29 @@ export const libraryMineSchema = z.object({
   reservations: z.array(libraryReservationSchema),
 });
 export type LibraryMine = z.infer<typeof libraryMineSchema>;
+
+/* ---- a periodical's subscription and volumes (G4-21, risks batch 5 Oct 2026) ---------------------------------- */
+
+/** How often a periodical comes. */
+export const PERIODICAL_FREQUENCIES = ["DAILY", "WEEKLY", "FORTNIGHTLY", "MONTHLY", "BIMONTHLY", "QUARTERLY", "HALF_YEARLY", "ANNUAL", "IRREGULAR"] as const;
+export const periodicalFrequencySchema = z.enum(PERIODICAL_FREQUENCIES);
+/** POST /api/v1/library/titles/{titleId}/subscription — a PERIODICAL's subscription: how often and the days it runs (refused on a book). */
+export const periodicalSubscriptionSaveSchema = z.object({ frequency: periodicalFrequencySchema, subscriptionFrom: dateKey.nullable(), subscriptionUntil: dateKey.nullable() });
+export type PeriodicalSubscriptionSave = z.infer<typeof periodicalSubscriptionSaveSchema>;
+/** POST /api/v1/library/titles/{titleId}/volumes — a volume (and issue) received; one row per volume and issue. */
+export const libraryVolumeSaveSchema = z.object({ volume: z.string().trim().min(1).max(20), issue: z.string().trim().max(20).default(""), receivedOn: dateKey });
+export type LibraryVolumeSave = z.infer<typeof libraryVolumeSaveSchema>;
+export const libraryVolumeSchema = z.object({ id: z.string(), volume: z.string(), issue: z.string(), receivedOn: dateKey });
+/** GET /api/v1/library/titles/{titleId}/volumes — the periodical, its subscription (active today or not) and its volumes, newest first. */
+export const periodicalViewSchema = z.object({
+  titleId: z.string(),
+  title: z.string(),
+  frequency: periodicalFrequencySchema.nullable(),
+  subscriptionFrom: dateKey.nullable(),
+  subscriptionUntil: dateKey.nullable(),
+  /** The subscription runs today (from on or before today, until on or after it, either open). */
+  active: z.boolean(),
+  volumes: z.array(libraryVolumeSchema),
+  canEdit: z.boolean(),
+});
+export type PeriodicalView = z.infer<typeof periodicalViewSchema>;

@@ -121,7 +121,9 @@ byte-sniffed types and signed short-lived download links.
 **Deploy.** Fly.io (`fly.toml`, app `edulink-web`, region `bom`), Docker image from
 `apps/web/Dockerfile`, a release step that runs migrations, managed Postgres and object storage
 beside it. Runbooks for deploy, backup and restore, messaging, security and the mobile release are in
-[docs/runbooks](docs/runbooks). The go-live checklist is [docs/go-live-checklist.md](docs/go-live-checklist.md).
+[docs/runbooks](docs/runbooks). The go-live checklist is [docs/go-live-checklist.md](docs/go-live-checklist.md). Before a release, the
+[release checklist](docs/release-checklist.md) lists the runs and the device pass (a real phone, mail and push on a
+device, the phone's empty states at a fresh college, the NBA SAR sign-off with a real HOD, lab-batch marking).
 
 ## 3. How to run and verify
 

@@ -58,6 +58,13 @@ model School {
   brandPrimary String? // hex, overrides role accent when set
   timezone     String  @default("UTC") // IANA zone; all date-keys resolve against this
   locale       String  @default("en")
+  /// THE ACCREDITATION BENCHMARKS SIGNED (G4-15, risks batch 5 Oct 2026): the platform's NAAC benchmarks and NIRF
+  /// bands are its own reading, so every figure built on them reads "provisional" until the college's IQAC coordinator
+  /// signs the list. The version is iqac-rules.ts `benchmarkListVersion()` at the signing: a changed list is unsigned
+  /// again. One writer: iqac-benchmarks.ts `signBenchmarks` (audited iqac.benchmarks.sign).
+  benchmarksSignedVersion  String?
+  benchmarksSignedAt       DateTime?
+  benchmarksSignedByUserId String?
 
   /// The school's face in the cross-school directory. NULL means invisible
   /// there — publishing is an explicit admin act, never a side effect of
@@ -378,6 +385,10 @@ model School {
   librarySettings       LibrarySettings?
   libraryTitles         LibraryTitle[]
   libraryCopies         LibraryCopy[]
+  /// A periodical's volumes and issues (G4-21, risks batch 5 Oct 2026).
+  libraryVolumes        LibraryVolume[]
+  /// The library's reading-room register (risks batch 5A, 5 Oct 2026; reading-room.ts).
+  readingRoomVisits     ReadingRoomVisit[]
   libraryMembers        LibraryMember[]
   libraryIssues         LibraryIssue[]
   libraryReservations   LibraryReservation[]
@@ -490,6 +501,18 @@ model School {
   facultyPublicProfiles FacultyPublicProfile[]
   hostelExpulsions      HostelExpulsion[]
   postConsents          PostConsent[]
+  // The risks batch's college builds (package 5B, 5 Oct 2026).
+  placementTalks        PlacementTalk[]
+  placementTalkRsvps    PlacementTalkRsvp[]
+  softSkillsTrainings   SoftSkillsTraining[]
+  softSkillsSessions    SoftSkillsSession[]
+  softSkillsEnrolments  SoftSkillsEnrolment[]
+  softSkillsAttendance  SoftSkillsAttendance[]
+  attendanceDevices     AttendanceDevice[]
+  attendanceBadges      AttendanceBadge[]
+  attendancePunches     AttendancePunch[]
+  peerTeamVisits        PeerTeamVisit[]
+  peerVisitItems        PeerVisitItem[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -865,6 +888,8 @@ model Membership {
   practicalRecords PracticalRecord[]         @relation("PracticalRecordOf")
   practicePostings TeachingPracticePosting[] @relation("PracticePostingOf")
   corpsEnrolments  CorpsEnrolment[]          @relation("CorpsEnrolmentOf")
+  /// The library's reading-room register (risks batch 5A, 5 Oct 2026).
+  readingRoomVisits ReadingRoomVisit[]       @relation("ReadingRoomVisitOf")
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
@@ -1558,10 +1583,14 @@ model ExamSlot {
 // ---------------------------------------------------------------------------
 
 model Assignment {
-  id                 String @id @default(cuid())
+  id                 String  @id @default(cuid())
   schoolId           String
-  classId            String
+  /// The class a school's work is set to; null on a college offering's work (an elective has no class).
+  classId            String?
   authorMembershipId String
+  /// HOMEWORK AT A COLLEGE (R-48, 5 Oct 2026): set to one CourseOffering, read by its REGISTERED
+  /// students; exactly one of classId and offeringId is set (a CHECK in the migration). college-homework.ts.
+  offeringId         String?
 
   title       String
   body        String  @default("")
@@ -1583,7 +1612,8 @@ model Assignment {
   examSlotId String?
 
   school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  class           Class            @relation(fields: [classId], references: [id], onDelete: Cascade)
+  class           Class?           @relation(fields: [classId], references: [id], onDelete: Cascade)
+  offering        CourseOffering?  @relation(fields: [offeringId], references: [id], onDelete: Cascade)
   author          Membership       @relation(fields: [authorMembershipId], references: [id], onDelete: Cascade)
   examSlot        ExamSlot?        @relation(fields: [examSlotId], references: [id], onDelete: SetNull)
   submissions     Submission[]
@@ -1601,6 +1631,7 @@ model Assignment {
   @@unique([examSlotId, classId])
   @@index([schoolId, dueAt])
   @@index([classId, publishedAt])
+  @@index([offeringId, publishedAt])
   @@index([authorMembershipId])
 }
 
@@ -1910,6 +1941,11 @@ model Post {
   /// which were all schools'.
   globalSchoolKind String?
 
+  /// A STUDENT COUNCIL NOTICE (risks batch 5A, 5 Oct 2026; council-notices.ts): the council it is published as.
+  /// Set only with category COUNCIL, by a council member or the office; the feed names the council, not the
+  /// writer, to readers (the review desk still sees who wrote it). Nulled if the council is removed.
+  authorCommitteeId String?
+
   status                 String    @default("PENDING") // DRAFT | PENDING | APPROVED | REJECTED | TAKEN_DOWN (the platform's; see PlatformTakedown)
   rejectionReason        String?
   reviewedByMembershipId String?
@@ -1923,6 +1959,7 @@ model Post {
   class      Class?      @relation(fields: [classId], references: [id], onDelete: Cascade)
   author     User        @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
   authorship Membership? @relation("PostAuthorMembership", fields: [authorMembershipId], references: [id], onDelete: SetNull)
+  authorCommittee Committee? @relation("CouncilNotices", fields: [authorCommitteeId], references: [id], onDelete: SetNull)
   reviewer   Membership? @relation("PostReviewer", fields: [reviewedByMembershipId], references: [id], onDelete: SetNull)
 
   comments    Comment[]
@@ -3219,6 +3256,9 @@ model ExpertProfile {
 
   /// Curation. Null means invisible to every school.
   publishedAt DateTime?
+  /// Set by the operator to shut the expert out of every school at once (G4-28, risks batch 5 Oct 2026): no way in at
+  /// sign-in, told by a sentence there and by email, sessions ended; the recruiter's `disabledAt` is the same rule.
+  disabledAt  DateTime?
   /// Set when a human has actually checked who this person is.
   verifiedAt  DateTime?
   verifiedBy  String?
@@ -6058,15 +6098,43 @@ model LibraryTitle {
   language  String   @default("OTHER")
   /// One of LIBRARY_CATEGORIES in packages/contracts.
   category  String   @default("GENERAL")
+  /// A PERIODICAL's subscription (G4-21, risks batch 5 Oct 2026): how often it comes (PERIODICAL_FREQUENCIES in
+  /// packages/contracts) and the days the subscription runs, YYYY-MM-DD; null on a book, refused on one.
+  frequency         String?
+  subscriptionFrom  String?
+  subscriptionUntil String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   school       School               @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   copies       LibraryCopy[]
   reservations LibraryReservation[]
+  volumes      LibraryVolume[]
 
   @@unique([schoolId, isbn])
   @@index([schoolId, title])
+}
+
+/// A VOLUME OR ISSUE OF A PERIODICAL (G4-21, risks batch 5 Oct 2026): what the library received of a subscription,
+/// "Vol. 12, No. 3" with the day it came. Only a title of category PERIODICAL has them (college-campus.ts refuses a
+/// book's); removing one is the librarian's correction, audited. The copies a library lends stay LibraryCopy rows.
+model LibraryVolume {
+  id         String   @id @default(cuid())
+  schoolId   String
+  titleId    String
+  /// The volume as printed ("12"), and the issue within it ("3"; "" when the periodical numbers volumes only).
+  volume     String
+  issue      String   @default("")
+  /// The day the issue reached the library, YYYY-MM-DD.
+  receivedOn String
+  createdByUserId String?
+  createdAt  DateTime @default(now())
+
+  school School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  title  LibraryTitle @relation(fields: [titleId], references: [id], onDelete: Cascade)
+
+  @@unique([titleId, volume, issue])
+  @@index([schoolId, titleId])
 }
 
 /// One physical book, known by the accession number written in it.
@@ -7170,6 +7238,27 @@ model CollegeOfficeSettings {
 /// An e-resource the library subscribes to (N-LIST, DELNET, an e-journal):
 /// its link and how many times members opened it through the app — the
 /// usage count NAAC criterion 4 asks for.
+/// THE READING-ROOM REGISTER (risks batch 5A, 5 Oct 2026; reading-room.ts, module LIBRARY): one row per
+/// visit — a reader (a student or a member of staff) signed in at the desk and, later, out. One open visit per
+/// person at a time, held by the one writer under a lock; `dayKey` is the school-zone day the visit began, which
+/// the librarian's day report reads. A visit never signed out stays open and the day report says so.
+model ReadingRoomVisit {
+  id           String    @id @default(cuid())
+  schoolId     String
+  membershipId String
+  dayKey       String
+  inAt         DateTime  @default(now())
+  outAt        DateTime?
+  inByUserId   String?
+  outByUserId  String?
+
+  school School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  reader Membership @relation("ReadingRoomVisitOf", fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, dayKey])
+  @@index([membershipId, outAt])
+}
+
 model LibraryEResource {
   id        String   @id @default(cuid())
   schoolId  String
@@ -7485,6 +7574,8 @@ model CourseOffering {
   courseFile       CourseFile?
   /// Stream records (5 Oct 2026): the practical record kept on it.
   practicalRecords PracticalRecord[]
+  /// Homework set to the offering (R-48, 5 Oct 2026).
+  assignments      Assignment[]
 
   @@unique([termId, courseId, divisionId])
   @@index([schoolId, termId])
@@ -8608,6 +8699,8 @@ model Drive {
   results      RoundResult[]
   offers       Offer[]
   referrals    AlumniReferral[]
+  /// Its pre-placement talk (R-2, 5 Oct 2026; lib/placement-talks.ts).
+  talk         PlacementTalk?
 
   @@index([schoolId, status])
   @@index([companyId, status])
@@ -9024,6 +9117,8 @@ model Committee {
 
   school   School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   meetings CommitteeMeeting[]
+  /// A STUDENT_COUNCIL's notices on the bulletin (risks batch 5A, 5 Oct 2026).
+  councilNotices Post[] @relation("CouncilNotices")
 
   @@index([schoolId, kind])
 }
@@ -9222,6 +9317,11 @@ model CollegeFiling {
   body              String
   hash              String
   figuresJson       String    @default("{}")
+  /// THE FIELDS WITH NO HISTORY, AS THEY STOOD AT GENERATION (R-21, risks batch 5 Oct 2026): each teacher's department,
+  /// designation, qualification and appointment, each programme's intake, the students' higher-studies and
+  /// entrepreneur flags. Written once by generateFilingAs with the body; council-filings.ts reads it for any later
+  /// build of the year (the view, the data audit), so a filed year does not drift when those rows change.
+  snapshotJson      String    @default("{}")
   status            String    @default("DRAFT")
   checked           Boolean   @default(false)
   fileId            String?
@@ -9524,4 +9624,293 @@ model IqacScenario {
 
   @@index([schoolId, kind, createdAt])
   @@index([cycleId])
+}
+
+// ---------------------------------------------------------------------------
+// The risks batch's college builds (package 5B, R-2, 5 Oct 2026): a company's
+// pre-placement talk, soft-skills training, the attendance devices and their
+// punches, and the peer-team visit file. Every row carries `schoolId` under
+// RLS; the people are membership ids (no relation, as Internship's faculty).
+// ---------------------------------------------------------------------------
+
+/// A PRE-PLACEMENT TALK (lib/placement-talks.ts): a company's talk to the
+/// college's students, set by the TPO, with each student's RSVP and the
+/// attendance the TPO marks once it is held. `driveId` is the drive it belongs
+/// to (one talk a drive; the drive's page links to it). Who may answer is any
+/// student of the college while it is SCHEDULED and ahead; the counts (going,
+/// present) are computed on read and stored nowhere.
+model PlacementTalk {
+  id              String    @id @default(cuid())
+  schoolId        String
+  driveId         String?   @unique
+  companyName     String
+  title           String
+  startsAt        DateTime
+  durationMinutes Int       @default(60)
+  venue           String    @default("")
+  note            String    @default("")
+  /// The seats: GOING answers stop here; null is no limit.
+  capacity        Int?
+  /// SCHEDULED | CANCELLED
+  status          String    @default("SCHEDULED")
+  /// When the TPO first marked attendance: the talk was held.
+  heldAt          DateTime?
+  createdByUserId String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  school School              @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  drive  Drive?              @relation(fields: [driveId], references: [id], onDelete: SetNull)
+  rsvps  PlacementTalkRsvp[]
+
+  @@index([schoolId, startsAt])
+}
+
+/// ONE STUDENT AT ONE TALK: the answer (GOING or NOT_GOING; null for a walk-in
+/// the TPO marked) and the attendance (PRESENT or ABSENT, the TPO's; null
+/// until marked).
+model PlacementTalkRsvp {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  talkId              String
+  studentMembershipId String
+  answer              String?
+  answeredAt          DateTime?
+  attendance          String?
+  markedByUserId      String?
+  markedAt            DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  talk   PlacementTalk @relation(fields: [talkId], references: [id], onDelete: Cascade)
+
+  @@unique([talkId, studentMembershipId])
+  @@index([schoolId, studentMembershipId])
+}
+
+/// A SOFT-SKILLS TRAINING (lib/soft-skills.ts): the TPO's course in a skill
+/// (SOFT_SKILLS in packages/contracts) with its sessions; students enrol
+/// while it is OPEN, the TPO marks each session's attendance, and a student
+/// has COMPLETED it once present at `minAttendancePercent` of its sessions
+/// that were not cancelled — computed on read, never stored.
+model SoftSkillsTraining {
+  id                   String   @id @default(cuid())
+  schoolId             String
+  title                String
+  skill                String
+  trainer              String   @default("")
+  description          String   @default("")
+  capacity             Int?
+  minAttendancePercent Int      @default(75)
+  /// OPEN (students may enrol) | CLOSED (no new enrolment; sessions and attendance go on)
+  status               String   @default("OPEN")
+  createdByUserId      String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  school     School                @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  sessions   SoftSkillsSession[]
+  enrolments SoftSkillsEnrolment[]
+
+  @@index([schoolId, status])
+}
+
+/// One session of a training; `heldAt` is set when its attendance is first marked.
+model SoftSkillsSession {
+  id              String    @id @default(cuid())
+  schoolId        String
+  trainingId      String
+  startsAt        DateTime
+  durationMinutes Int       @default(60)
+  topic           String    @default("")
+  venue           String    @default("")
+  cancelledAt     DateTime?
+  heldAt          DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  school     School                 @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  training   SoftSkillsTraining     @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+  attendance SoftSkillsAttendance[]
+
+  @@index([trainingId, startsAt])
+  @@index([schoolId])
+}
+
+/// A student on a training's roll; `withdrawnAt` takes them off it (their marks stay).
+model SoftSkillsEnrolment {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  trainingId          String
+  studentMembershipId String
+  enrolledAt          DateTime  @default(now())
+  withdrawnAt         DateTime?
+  byUserId            String
+
+  school   School             @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  training SoftSkillsTraining @relation(fields: [trainingId], references: [id], onDelete: Cascade)
+
+  @@unique([trainingId, studentMembershipId])
+  @@index([schoolId, studentMembershipId])
+}
+
+/// One student's presence at one session, the TPO's mark (a re-mark replaces it).
+model SoftSkillsAttendance {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  sessionId           String
+  studentMembershipId String
+  present             Boolean
+  markedByUserId      String
+  markedAt            DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  school  School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  session SoftSkillsSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, studentMembershipId])
+  @@index([schoolId, studentMembershipId])
+}
+
+/// A BIOMETRIC OR RFID READER the office registered (lib/attendance-devices.ts).
+/// It posts signed punches to POST /api/v1/punch/{schoolId}: an HMAC-SHA256 over
+/// the timestamp and the body with the device's own key. The key is shown once
+/// when made or rotated and kept SEALED (secret-box, bound to the school and the
+/// device) with ONE WRITER, `issueDeviceKey`; `keyLast4` is what the page shows.
+/// `scope` says whom it may mark: STAFF, STUDENTS or BOTH.
+model AttendanceDevice {
+  id              String    @id @default(cuid())
+  schoolId        String
+  name            String
+  /// BIOMETRIC | RFID | FACE | OTHER
+  kind            String    @default("BIOMETRIC")
+  location        String    @default("")
+  scope           String    @default("BOTH")
+  keySealed       String
+  keyLast4        String
+  keyVersion      Int       @default(1)
+  keyRotatedAt    DateTime  @default(now())
+  disabledAt      DateTime?
+  lastPunchAt     DateTime?
+  createdByUserId String
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  school  School            @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  punches AttendancePunch[]
+
+  @@index([schoolId])
+}
+
+/// THE CODE A DEVICE SENDS FOR A PERSON: a card's number or the enrolment
+/// number a fingerprint reader keeps (never a template, never Aadhaar), mapped
+/// by the office to a membership. One code is one person at a school.
+model AttendanceBadge {
+  id              String   @id @default(cuid())
+  schoolId        String
+  code            String
+  membershipId    String
+  createdByUserId String
+  createdAt       DateTime @default(now())
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, code])
+  @@index([membershipId])
+}
+
+/// A PUNCH AS RECEIVED, kept once per device and the device's own punch id
+/// (a replay is answered with the stored outcome and writes nothing). The
+/// register and the staff check-in are written only through their own
+/// writers (`saveAttendanceBatch`, `recordStaffCheckIn`); this row is the log
+/// of what came in and what became of it: APPLIED | ALREADY_MARKED |
+/// UNKNOWN_BADGE | NO_REGISTER | CLOSED_DAY | OUT_OF_SCOPE | NOT_RECENT.
+model AttendancePunch {
+  id           String   @id @default(cuid())
+  schoolId     String
+  deviceId     String
+  externalId   String
+  code         String
+  membershipId String?
+  punchedAt    DateTime
+  dateKey      String
+  /// IN | OUT, when the device says
+  direction    String?
+  outcome      String
+  receivedAt   DateTime @default(now())
+
+  school School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  device AttendanceDevice @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@unique([deviceId, externalId])
+  @@index([schoolId, dateKey])
+  @@index([membershipId])
+}
+
+/// THE PEER-TEAM VISIT FILE (lib/peer-visits.ts): one NAAC peer team's or NBA
+/// expert team's visit with its schedule and its evidence index in one place,
+/// beside the SAR pack the page reads from the filings (computed on read). A
+/// NAAC visit names its cycle; an NBA visit its engineering department and
+/// year. The IQAC writes any; an HOD writes their own department's NBA visit;
+/// the principal and the office read.
+model PeerTeamVisit {
+  id              String   @id @default(cuid())
+  schoolId        String
+  /// NAAC | NBA
+  framework       String
+  cycleId         String?
+  departmentId    String?
+  /// The academic year's first calendar year (2026 for 2026–27): the SAR's year for NBA.
+  year            Int
+  title           String
+  fromDate        String
+  toDate          String
+  /// JSON array of { name, role } — the visiting team as they were announced.
+  teamJson        String   @default("[]")
+  /// PLANNED | DONE
+  status          String   @default("PLANNED")
+  createdByUserId String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  school School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  items  PeerVisitItem[]
+
+  @@index([schoolId, framework])
+}
+
+/// A LINE OF A VISIT'S FILE. SCHEDULE: a slot of a day (`dayKey`, minutes from
+/// midnight, the activity, the venue, who takes it). EVIDENCE: a criterion or
+/// metric code and what answers it — a filing (CollegeFiling), an IQAC file, a
+/// metric's latest score, a council worksheet, a link, or a note.
+model PeerVisitItem {
+  id              String   @id @default(cuid())
+  schoolId        String
+  visitId         String
+  /// SCHEDULE | EVIDENCE
+  kind            String
+  dayKey          String?
+  startMinute     Int?
+  endMinute       Int?
+  activity        String   @default("")
+  venue           String   @default("")
+  ownerName       String   @default("")
+  criterion       String   @default("")
+  title           String   @default("")
+  /// FILING | FILE | METRIC | WORKSHEET | LINK | NOTE
+  linkKind        String?
+  linkId          String?
+  url             String?
+  note            String   @default("")
+  position        Int      @default(0)
+  createdByUserId String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  school School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  visit  PeerTeamVisit @relation(fields: [visitId], references: [id], onDelete: Cascade)
+
+  @@index([visitId, kind, position])
+  @@index([schoolId])
 }

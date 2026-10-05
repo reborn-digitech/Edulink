@@ -132,6 +132,10 @@ export const hostelRollCallSheetSchema = z.object({
   dateKey,
   slot: hostelRollSlotSchema,
   taken: z.object({ at: iso, byName: z.string() }).nullable(),
+  /** The call's id once taken (R-11, risks batch 5 Oct 2026): what the office's correction names. Absent from older servers. */
+  rollCallId: z.string().nullable().optional(),
+  /** Whether this reader may correct the taken call: the office (ADMIN) alone; the lock stays for everyone else. */
+  canCorrect: z.boolean().optional(),
   entries: z.array(
     z.object({
       allotmentId: z.string(),
@@ -161,6 +165,18 @@ export const hostelRollCallTakeSchema = z.object({
 });
 export type HostelRollCallTake = z.infer<typeof hostelRollCallTakeSchema>;
 export const hostelRollCallResultSchema = z.object({ rollCallId: z.string(), present: z.number().int(), onLeave: z.number().int(), absent: z.number().int(), replay: z.boolean() });
+/**
+ * POST /api/v1/hostel/rollcall/{rollCallId}/correct (R-11, risks batch 5 Oct 2026): the office corrects a taken roll
+ * call — the boarders named get the status given, each must be on that call, and the reason is kept on the audit row
+ * with every mark before and after. The warden's lock stays: a second sheet for the slot is still refused.
+ */
+export const hostelRollCallCorrectSchema = z.object({
+  entries: z.array(z.object({ allotmentId: cuid, status: hostelRollStatusSchema })).min(1).max(2000),
+  reason: z.string().trim().min(3).max(300),
+});
+export type HostelRollCallCorrect = z.infer<typeof hostelRollCallCorrectSchema>;
+export const hostelRollCallCorrectedSchema = z.object({ rollCallId: z.string(), changed: z.number().int(), present: z.number().int(), onLeave: z.number().int(), absent: z.number().int() });
+export type HostelRollCallCorrected = z.infer<typeof hostelRollCallCorrectedSchema>;
 
 /* ---- leave and the gate ---------------------------------------------------- */
 

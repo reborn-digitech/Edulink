@@ -10,8 +10,13 @@ const iso = z.string().datetime();
 const dateKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "date");
 const count = z.number().int().min(0);
 
-/** A college adds MIGRATION, PROVISIONAL and COURSE_COMPLETION (4 Oct 2026). */
-export const certificateKindSchema = z.enum(["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION"]);
+/**
+ * A college adds MIGRATION, PROVISIONAL and COURSE_COMPLETION (4 Oct 2026).
+ * APPOINTMENT (risks batch 5A, 5 Oct 2026) is a STAFF paper: an appointment
+ * letter issued to a member of staff, filled from their staff record, through
+ * its own door — never to a pupil, never asked for by a family.
+ */
+export const certificateKindSchema = z.enum(["TC", "NIRGAM", "BONAFIDE", "CHARACTER", "STUDY", "CUSTOM", "MIGRATION", "PROVISIONAL", "COURSE_COMPLETION", "APPOINTMENT"]);
 export type CertificateKind = z.infer<typeof certificateKindSchema>;
 export const documentLocaleSchema = z.enum(["en", "hi", "mr"]);
 
@@ -546,6 +551,13 @@ export const certificateVerifySchema = z.object({
   schoolName: z.string().nullable(),
   issuedAt: iso.nullable(),
   revokedAt: iso.nullable(),
+  /**
+   * A college's grade card, transcript or degree certificate typed into the
+   * same check (A3-journeys-21, 5 October 2026): its kind, with `kind` and
+   * `title` null (the check page names it in the reader's language). Absent
+   * or null for a school certificate. Optional so an older reader parses.
+   */
+  examKind: z.enum(["GRADE_CARD", "TRANSCRIPT", "DEGREE"]).nullable().optional(),
 });
 
 /* -------------------------------------------------------------------------- */
@@ -617,3 +629,35 @@ export const idCardPdfQuerySchema = z.object({ student: z.string().min(1).max(64
 /** `c` is what a card's QR carries: its signed identifier (`<membershipId>.<signature>`, A3-S-6), or a code typed from a card printed before. */
 export const idCardCheckQuerySchema = z.object({ c: z.string().trim().min(1).max(80) });
 export const idCardCheckSchema = z.object({ found: z.boolean(), onRoll: z.boolean(), name: z.string().nullable(), group: z.string().nullable(), studentCode: z.string(), photoFileId: z.string().nullable(), schoolName: z.string().nullable() });
+/**
+ * CARDS PRINTED BEFORE 5 OCTOBER 2026 (R-52, risks batch): they print and encode the student code, the first of the
+ * two factors a guardian claims a child with. The ID-cards page shows the "reprint the year's cards" notice while a
+ * card of that kind may still be in a pocket; this is the day the code left the card.
+ */
+export const ID_CARDS_CLAIM_FREE_SINCE = "2026-10-05";
+/** POST /api/v1/id-cards/claim-code — the office gives one student a new claim code: the old one claims nothing; a claim still needs the birthdate. */
+export const claimCodeRotateSchema = z.object({ studentMembershipId: z.string().min(1).max(64) });
+export const claimCodeRotatedSchema = z.object({ studentMembershipId: z.string(), studentCode: z.string() });
+export type ClaimCodeRotated = z.infer<typeof claimCodeRotatedSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* Appointment letters (risks batch 5A, 5 October 2026)                        */
+/* -------------------------------------------------------------------------- */
+
+/** POST /api/v1/office/appointment-letters — issue an appointment letter to one member of staff from an APPOINTMENT template. */
+export const appointmentLetterIssueSchema = z.object({
+  templateId: z.string().min(1).max(40),
+  staffMembershipId: z.string().min(1).max(40),
+  /** What the letter is for, or a line the template prints as [[issue.purpose]]. */
+  purpose: z.string().trim().max(200).optional(),
+  remark: z.string().trim().max(200).optional(),
+});
+export type AppointmentLetterIssue = z.infer<typeof appointmentLetterIssueSchema>;
+
+/** GET /api/v1/office/appointment-letters — the APPOINTMENT templates, the staff a letter may go to, and the letters issued. */
+export const appointmentLettersViewSchema = z.object({
+  templates: z.array(z.object({ id: z.string(), name: z.string(), locale: documentLocaleSchema })),
+  staff: z.array(z.object({ membershipId: z.string(), name: z.string(), role: z.string(), designation: z.string().nullable() })),
+  letters: z.array(certificateRowViewSchema),
+});
+export type AppointmentLettersView = z.infer<typeof appointmentLettersViewSchema>;

@@ -72,7 +72,9 @@ export const TABS: Record<RoleCode, Tab[]> = {
   // The bars (the integration's phone helper, 4 Oct 2026): the web NAV's primaries — the home and the college's feed
   // (GET /api/v1/shared/bulletin names the six in limitedRoles) — and, for FACULTY and HOD, the academics screen
   // their doors name (mentoring; an HOD's own teaching) and Messages (5 Oct 2026: the rooms' doors, the people to
-  // write to and POST /api/v1/messages name FACULTY and HOD, as the web's /remarks does for them).
+  // write to and POST /api/v1/messages name FACULTY and HOD, as the web's /remarks does for them). G4-30 (risks batch,
+  // 5 Oct 2026): the exam cell, the IQAC, placement and accounts desks have Messages too, the same inbox, rooms and
+  // people picker, now that those doors name them (ADMIN and PRINCIPAL had it already).
   // A home tab's label is a word or two (B-14, campaign 2026-10-04): "Head of department" and "Training and placement
   // officer" were cut off at 390 px; the department, the exam cell and placement name the desk instead.
   FACULTY: [
@@ -90,18 +92,22 @@ export const TABS: Record<RoleCode, Tab[]> = {
   EXAM_CONTROLLER: [
     { name: "index", labelKey: "mobile.tabExamCell", icon: "clipboard" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   IQAC: [
     { name: "index", labelKey: "role.iqac", icon: "medal" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   TPO: [
     { name: "index", labelKey: "mobile.tabPlacement", icon: "chartLine" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   ACCOUNTS: [
     { name: "index", labelKey: "role.accounts", icon: "receipt" },
     { name: "bulletin", labelKey: "nav.bulletin", icon: "megaphone" },
+    { name: "messages", labelKey: "nav.messages", icon: "envelope" },
   ],
   // An outside account like the expert: its home, and its account in More.
   RECRUITER: [{ name: "index", labelKey: "role.recruiter", icon: "handshake" }],
@@ -211,6 +217,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "examCell.mineTitle", icon: "chartLine", group: "daily", screen: "/(app)/college-exams", module: "EXAMS" },
     // Placement (4 Oct 2026): drives, offers, internships, the aptitude bank.
     { labelKey: "placement.navStudent", icon: "briefcase", group: "school", screen: "/(app)/placement", module: "PLACEMENT" },
+    // Pre-placement talks and soft-skills training (R-2, 5 Oct 2026): answer a talk, enrol in a training.
+    { labelKey: "talks.studentTitle", icon: "megaphone", group: "school", screen: "/(app)/placement-talks", module: "PLACEMENT" },
+    { labelKey: "softSkills.studentTitle", icon: "graduationCap", group: "school", screen: "/(app)/soft-skills", module: "PLACEMENT" },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -432,6 +441,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
     { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
+    // Homework for the offerings I teach (and an HOD's department's), set, marked and posted into internal marks (R-48, risks batch 5 Oct 2026).
+    { labelKey: "collegeWork.title", icon: "clipboard", group: "daily", screen: "/(app)/college-work", module: "ACADEMICS" },
   ],
   HOD: [
     ...COLLEGE_STAFF_MENU,
@@ -457,6 +468,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "streamRecords.practicals.title", icon: "clipboard", group: "daily", screen: "/(app)/practicals", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts (A3-inventory-4, audit of 5 Oct 2026): the doors name FACULTY and HOD; hidden where the recorded streams have no LAW.
     { labelKey: "streamRecords.moots.title", icon: "trophy", group: "daily", screen: "/(app)/moot-courts", module: "ACADEMICS", streams: ["LAW"] },
+    // Homework for the offerings I teach (and an HOD's department's), set, marked and posted into internal marks (R-48, risks batch 5 Oct 2026).
+    { labelKey: "collegeWork.title", icon: "clipboard", group: "daily", screen: "/(app)/college-work", module: "ACADEMICS" },
   ],
   EXAM_CONTROLLER: [
     ...COLLEGE_STAFF_MENU,
@@ -485,6 +498,9 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "placement.tabStudents", icon: "users", group: "daily", web: "/placement/students", module: "PLACEMENT" },
     { labelKey: "placement.tabCompanies", icon: "handshake", group: "daily", web: "/placement/companies", module: "PLACEMENT" },
     { labelKey: "placement.tabInternships", icon: "clipboard", group: "daily", web: "/placement/internships", module: "PLACEMENT" },
+    // A talk's attendance and a training session's marks at the door (R-2, 5 Oct 2026); setting them up stays on the web.
+    { labelKey: "talks.title", icon: "megaphone", group: "daily", screen: "/(app)/placement-talks", module: "PLACEMENT" },
+    { labelKey: "softSkills.title", icon: "graduationCap", group: "daily", screen: "/(app)/soft-skills", module: "PLACEMENT" },
     { labelKey: "placement.tabAnalytics", icon: "chartLine", group: "running", web: "/placement/analytics", module: "PLACEMENT" },
   ],
   ACCOUNTS: [
@@ -669,6 +685,15 @@ export const HIDDEN_SCREENS = [
   "accounts-lookup",
   // A law college's moot courts, for FACULTY and HOD from More (A3-inventory-4, audit of 5 Oct 2026).
   "moot-courts",
+  // Pre-placement talks and soft-skills training (R-2, 5 Oct 2026): a student's and the TPO's, from More.
+  "placement-talks",
+  "soft-skills",
+  // Homework at a college (R-48, risks batch 5A, 5 Oct 2026): the teacher's list from More, and one piece of work to mark.
+  "college-work",
+  "college-work-item",
+  // Birthdays and anniversaries from a home's card, and the pupil's own practice journey (A3-inventory-14, risks batch 5 Oct 2026).
+  "celebrations",
+  "practice-journey",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order; an entry whose module the school has off, or whose duty the person does not hold (5 Oct 2026), is left out. */

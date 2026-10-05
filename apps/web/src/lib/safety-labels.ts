@@ -445,6 +445,16 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "superuser.school.module": "audit.superuserSchoolModule",
   "superuser.recruiter.disable": "audit.superuserRecruiterDisable",
   "superuser.recruiter.enable": "audit.superuserRecruiterEnable",
+  // The risks batch's package 1B (5 Oct 2026).
+  "superuser.expert.disable": "audit.riskExpertDisable",
+  "superuser.expert.enable": "audit.riskExpertEnable",
+  "auth.login.closed": "audit.riskLoginClosed",
+  "hostel.rollcall.correct": "audit.riskRollCallCorrect",
+  "idcard.claimCode.rotate": "audit.riskClaimCodeRotate",
+  "iqac.benchmarks.sign": "audit.riskBenchmarksSign",
+  "library.volume.add": "audit.riskVolumeAdd",
+  "library.volume.remove": "audit.riskVolumeRemove",
+  "library.subscription.save": "audit.riskSubscriptionSave",
   "superuser.regulator.remind": "audit.superuserRegulatorRemind",
   "operator.read.college": "audit.operatorReadCollege",
   "substitutions.acknowledge": "audit.substitutionsAcknowledge",
@@ -623,6 +633,13 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "academics.condonation.approve": "audit.academicsCondonationApprove",
   "academics.internal.component": "audit.academicsInternalComponent",
   "academics.internal.marks": "audit.academicsInternalMarks",
+  // Homework at a college (R-48, risks batch 5A, 5 Oct 2026): a piece of work's marks posted into an internal component.
+  "academics.work.postInternal": "audit.academicsWorkPostInternal",
+  // The reading-room register (risks batch 5A, 5 Oct 2026): a reader signed in and out at the library desk.
+  "library.readingRoom.in": "audit.libraryReadingRoomIn",
+  "library.readingRoom.out": "audit.libraryReadingRoomOut",
+  // The student council kept by the office for its notices on the bulletin (risks batch 5A, 5 Oct 2026).
+  "council.save": "audit.councilSave",
   "academics.internal.moderate": "audit.academicsInternalModerate",
   "academics.internal.release": "audit.academicsInternalRelease",
   "academics.internal.lock": "audit.academicsInternalLock",
@@ -790,6 +807,32 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "idCard.print": "audit.idCardPrint",
   // A family's yes or no on a permission slip (S3, 5 Oct 2026).
   "circular.slip.answer": "audit.circularSlipAnswer",
+  // The risks batch's college builds (package 5B, 5 Oct 2026): talks, soft-skills training, attendance devices, the Tally export, the peer-team visit file.
+  "placement.talk.create": "audit.placementTalkCreate",
+  "placement.talk.update": "audit.placementTalkUpdate",
+  "placement.talk.cancel": "audit.placementTalkCancel",
+  "placement.talk.attendance": "audit.placementTalkAttendance",
+  "placement.training.create": "audit.placementTrainingCreate",
+  "placement.training.update": "audit.placementTrainingUpdate",
+  "placement.training.session": "audit.placementTrainingSession",
+  "placement.training.sessionCancel": "audit.placementTrainingSessionCancel",
+  "placement.training.sessionRestore": "audit.placementTrainingSessionRestore",
+  "placement.training.enrol": "audit.placementTrainingEnrol",
+  "placement.training.unenrol": "audit.placementTrainingUnenrol",
+  "placement.training.attendance": "audit.placementTrainingAttendance",
+  "attendance.device.register": "audit.attendanceDeviceRegister",
+  "attendance.device.rotate": "audit.attendanceDeviceRotate",
+  "attendance.device.update": "audit.attendanceDeviceUpdate",
+  "attendance.device.disable": "audit.attendanceDeviceDisable",
+  "attendance.device.punch": "audit.attendanceDevicePunch",
+  "attendance.badge.set": "audit.attendanceBadgeSet",
+  "attendance.badge.remove": "audit.attendanceBadgeRemove",
+  "tally.export": "audit.tallyExport",
+  "iqac.visit.create": "audit.iqacVisitCreate",
+  "iqac.visit.update": "audit.iqacVisitUpdate",
+  "iqac.visit.item": "audit.iqacVisitItem",
+  "iqac.visit.itemRemove": "audit.iqacVisitItemRemove",
+  "iqac.visit.export": "audit.iqacVisitExport",
 };
 
 export function actionKey(action: string): TranslationKey | null {

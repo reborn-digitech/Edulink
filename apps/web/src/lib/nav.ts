@@ -97,6 +97,8 @@ const COLLEGE_STAFF_COMMON: NavItem[] = [
   { href: "/account/leave", labelKey: "nav.leave", icon: "calendar", group: "running" },
   // "I'm in" and my own days (campaign 2026-10-04, G-2): the staff register's check-in for every member of staff.
   { href: "/account/attendance", labelKey: "nav.staffAttendance", icon: "checks", group: "running" },
+  // My appointment letters (risks batch 5A, 5 Oct 2026).
+  { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
 ];
 
 export const NAV: Record<Role, NavItem[]> = {
@@ -119,6 +121,10 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/syllabus", labelKey: "nav.syllabus", icon: "books", prefix: true, group: "running" },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
+    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
+    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "running" },
+    // The Tally export of receipts and payroll (R-2, 5 Oct 2026): export only, money stays outside (decision 0003).
+    { href: "/admin/fees/tally", labelKey: "tally.navTitle", icon: "receipt", group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
@@ -148,6 +154,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
+    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
     // Hidden by the shell until the school has any — see signed-in-shell.tsx.
@@ -160,6 +168,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
     { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    // My appointment letters (risks batch 5A, 5 Oct 2026).
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
     { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     // The library desk and its rules, and the hostel at a glance (3 Oct 2026): the office lends, sets the rules and makes the houses.
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
@@ -207,6 +217,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // The school across terms and years, recomputed on read (lib/analytics-longitudinal.ts).
     { href: "/principal/trends", labelKey: "trends.title", icon: "chartLine", prefix: true, group: "running" },
     { href: "/admin/staff-attendance", labelKey: "nav.staffAttendance", icon: "checks", prefix: true, group: "running" },
+    // The attendance devices (R-2, 5 Oct 2026): biometric and RFID readers, their keys, the badges, the punches.
+    { href: "/admin/attendance-devices", labelKey: "punch.navTitle", icon: "checks", prefix: true, group: "running" },
     // Who covers the lessons of staff who are away: the board the staff register feeds.
     { href: "/admin/substitutions", labelKey: "nav.substitutions", icon: "users", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
@@ -223,6 +235,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // Hidden by the shell until somebody waits — see signed-in-shell.tsx.
     { href: "/joins", labelKey: "joinRequests.navLabel", icon: "userPlus", prefix: true, group: "running" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
+    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
     { href: "/enquiries", labelKey: "nav.enquiries", icon: "envelope", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
@@ -233,6 +247,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
     { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    // My appointment letters (risks batch 5A, 5 Oct 2026).
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
     { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     // The library's lists and reports, and the hostel at a glance (3 Oct 2026), read.
     { href: "/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "running", module: "LIBRARY", also: ["/admin/library"] },
@@ -283,6 +299,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
     // My own payslips and what the stores issued to me (3 Oct 2026), while the school has the module on.
     { href: "/account/payslips", labelKey: "payroll.myTitle", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
+    // My appointment letters (risks batch 5A, 5 Oct 2026).
+    { href: "/account/letters", labelKey: "appointmentLetters.mineTitle", icon: "receipt", prefix: true, group: "running" },
     { href: "/account/items", labelKey: "inventory.myTitle", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     // My loans, dues and reservations, and the catalogue (the library module, 3 Oct 2026).
     { href: "/teacher/library", labelKey: "modules.libraryName", icon: "bookOpen", prefix: true, group: "school", module: "LIBRARY" },
@@ -305,6 +323,8 @@ export const NAV: Record<Role, NavItem[]> = {
     // Social Media sits with school life for a pupil — the bottom bar keeps
     // the four things a school day is made of.
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    // The student council's notices and members (risks batch 5A, 5 Oct 2026).
+    { href: "/bulletin/council", labelKey: "councilNotices.navTitle", icon: "megaphone", group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
     { href: "/sessions", labelKey: "nav.sessions", icon: "calendar", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
@@ -413,6 +433,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/library/fines", labelKey: "library.tabFines", icon: "receipt", prefix: true, group: "daily", module: "LIBRARY" },
     { href: "/library/stocktake", labelKey: "library.tabStockTake", icon: "checks", prefix: true, group: "running", module: "LIBRARY" },
     { href: "/library/reports", labelKey: "library.tabReports", icon: "chartLine", prefix: true, group: "running", module: "LIBRARY" },
+    // The reading-room register: in and out at the desk, the day report (risks batch 5A, 5 Oct 2026).
+    { href: "/library/reading-room", labelKey: "readingRoom.tab", icon: "books", prefix: true, group: "daily", module: "LIBRARY" },
     // At a college (4 Oct 2026): e-resources, the ISBN list and the criterion-4 numbers; the library's line of the no-dues.
     { href: "/library/college", labelKey: "collegeOffice.libraryTitle", icon: "books", prefix: true, group: "running", module: "ACADEMICS" },
     { href: "/accounts/no-dues", labelKey: "collegeOffice.navNoDues", icon: "checks", prefix: true, group: "daily", module: "ACADEMICS" },
@@ -480,6 +502,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for a member who holds the duty; the other duties' pages follow it.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // Homework for the offerings I teach, set, marked and posted into internal marks (R-48, risks batch, 5 Oct 2026).
+    { href: "/faculty/work", labelKey: "collegeWork.title", icon: "clipboard", prefix: true, group: "daily", module: "ACADEMICS" },
     // The practical record of the offerings I teach with practicals (stream records, 5 Oct 2026).
     { href: "/faculty/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
@@ -507,6 +531,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/faculty/exams", labelKey: "examCell.dutiesTitle", icon: "exam", prefix: true, group: "daily", module: "EXAMS" },
     // Placement (4 Oct 2026): projects and internships of the department.
     { href: "/hod/projects", labelKey: "placement.hodProjectsTitle", icon: "briefcase", prefix: true, group: "daily", module: "PLACEMENT" },
+    // The department's NBA visit file (R-2, 5 Oct 2026).
+    { href: "/hod/visits", labelKey: "peerVisit.nav", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
     // IQAC (4 Oct 2026): the department's research, activities and course feedback.
     { href: "/hod/research", labelKey: "iqac.navDeptResearch", icon: "books", prefix: true, group: "running", module: "IQAC" },
     // My public page for the college's website, my own opt-in (5 Oct 2026); under /faculty, which an HOD's teaching opens.
@@ -517,6 +543,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/library/e-resources", labelKey: "collegeOffice.eResourcesTitle", icon: "globe", prefix: true, group: "school", module: "LIBRARY" },
     // Duties (5 Oct 2026): the anti-ragging squad's register, for an HOD who holds the duty.
     { href: "/duties/anti-ragging", labelKey: "duties.antiRagging.title", icon: "shield", prefix: true, group: "running", module: "IQAC", duty: "ANTI_RAGGING_SQUAD" },
+    // Homework for the offerings I teach and my department's (R-48, risks batch, 5 Oct 2026).
+    { href: "/faculty/work", labelKey: "collegeWork.title", icon: "clipboard", prefix: true, group: "daily", module: "ACADEMICS" },
     // The practical record of the department's offerings with practicals (stream records, 5 Oct 2026).
     { href: "/hod/practicals", labelKey: "streamRecords.practicals.title", icon: "flask", prefix: true, group: "daily", module: "ACADEMICS", streams: LAB_STREAMS },
     // A law college's moot courts, recorded and read by its teachers (A3-inventory-4, audit of 5 Oct 2026).
@@ -533,12 +561,16 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
   EXAM_CONTROLLER: [
     { href: "/exam-cell", labelKey: "role.examController", icon: "exam", primary: true, prefix: true },
+    // Messages (G4-30, risks batch 5 Oct 2026): the college desks answer here as FACULTY and HOD do; the phone has the same tab.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     ...COLLEGE_STAFF_COMMON,
     // The exam flying squad's visits and the cases (5 Oct 2026), read.
     { href: "/duties/exam-squad", labelKey: "duties.examSquad.title", icon: "siren", prefix: true, group: "running", module: "EXAMS" },
   ],
   IQAC: [
     { href: "/iqac", labelKey: "role.iqac", icon: "medal", primary: true, prefix: true },
+    // Messages (G4-30, risks batch 5 Oct 2026): the college desks answer here as FACULTY and HOD do; the phone has the same tab.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     ...COLLEGE_STAFF_COMMON,
     // Placement (4 Oct 2026): the placement table for the predictor and the filings.
     { href: "/placement/analytics", labelKey: "placement.tabAnalytics", icon: "chartLine", prefix: true, group: "running", module: "PLACEMENT" },
@@ -548,10 +580,14 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/iqac/surveys", labelKey: "iqac.navSurveys", icon: "star", prefix: true, group: "daily", module: "IQAC" },
     { href: "/iqac/registers", labelKey: "iqac.navRegisters", icon: "books", prefix: true, group: "running", module: "IQAC" },
     { href: "/iqac/grievances", labelKey: "iqac.navGrievances", icon: "shield", prefix: true, group: "running", module: "IQAC" },
+    // The peer-team visit file (R-2, 5 Oct 2026): the schedule, the evidence index and the SAR pack.
+    { href: "/iqac/visits", labelKey: "peerVisit.nav", icon: "clipboard", prefix: true, group: "running", module: "IQAC" },
     { href: "/admin/faculty-records", labelKey: "iqac.navFacultyRecords", icon: "users", prefix: true, group: "running", module: "IQAC" },
   ],
   TPO: [
     { href: "/placement", labelKey: "nav.placementHome", icon: "briefcase", primary: true, prefix: true },
+    // Messages (G4-30, risks batch 5 Oct 2026): the college desks answer here as FACULTY and HOD do; the phone has the same tab.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     ...COLLEGE_STAFF_COMMON,
     // The cell's pages (the placement module, 4 Oct 2026); the home above carries no module, so it stays to say "switched off".
     { href: "/placement/drives", labelKey: "placement.tabDrives", icon: "briefcase", primary: true, prefix: true, module: "PLACEMENT" },
@@ -562,6 +598,8 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
   ACCOUNTS: [
     { href: "/accounts", labelKey: "role.accounts", icon: "wallet", primary: true, prefix: true },
+    // Messages (G4-30, risks batch 5 Oct 2026): the college desks answer here as FACULTY and HOD do; the phone has the same tab.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     ...COLLEGE_STAFF_COMMON,
     // The accounts desk's pages (4 Oct 2026; under its home), and the fee ledger, payroll and purchases it keeps with the office.
     { href: "/accounts/structures", labelKey: "collegeOffice.navStructures", icon: "receipt", primary: true, prefix: true },
@@ -570,6 +608,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/accounts/concessions", labelKey: "collegeOffice.navConcessions", icon: "clipboard", prefix: true, group: "daily" },
     { href: "/accounts/students", labelKey: "collegeOffice.navStudents", icon: "users", prefix: true, group: "daily" },
     { href: "/admin/fees", labelKey: "collegeOffice.navFeeLedger", icon: "receipt", prefix: true, group: "running" },
+    // The Tally export of receipts and payroll (R-2, 5 Oct 2026): export only, money stays outside (decision 0003).
+    { href: "/admin/fees/tally", labelKey: "tally.navTitle", icon: "receipt", group: "running" },
     { href: "/admin/payroll", labelKey: "payroll.title", icon: "receipt", prefix: true, group: "running", module: "PAYROLL" },
     { href: "/admin/inventory", labelKey: "inventory.title", icon: "archive", prefix: true, group: "running", module: "INVENTORY" },
     // The admission fee and the refund on a cancelled seat (A3-inventory-3): the refunds list, one application, never the list of all.

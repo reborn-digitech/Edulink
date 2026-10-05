@@ -33,7 +33,7 @@ export const COMMUNITY: Endpoint[] = [
   // one is a 404 to its own expert by policy (the expert's reach ends with the engagement: EXPERT_READABLE in
   // scripts/gen-rls.ts), where the sweep expects 403 from a role outside `access`; a live one would be ended.
   // tests/api-v1-community.test.ts proves the door.
-  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/close", summary: "The school or a guardian ends a mentorship", access: ["ADMIN", "PRINCIPAL", "TEACHER", "PARENT"], response: c.okSchema, sample: () => null },
+  { method: "POST", path: "/api/v1/community/mentoring/{threadId}/close", summary: "The school or a guardian ends a mentorship", access: ["ADMIN", "PRINCIPAL", "TEACHER", "PARENT"], response: c.okSchema, emptyBodyStatus: 404, sample: "/api/v1/community/mentoring/zz-sweep-no-such-thread/close" }, // R-30: the fixture's one mentorship is ACTIVE and closing it is the act (it frees the expert's place); an id no school holds, 404
   // ---- /enquiries -----------------------------------------------------------
   // Closing is a one-way door, so the sample is the fixture's enquiry already closed, about the vacancy whose hiring contact is the sweep's teacher: the school's side is refused as closed (422), and the suite covers the close.
   { method: "POST", path: "/api/v1/community/enquiries/{enquiryId}/close", summary: "The school's side closes an enquiry; nobody can reply after", access: ["ADMIN", "PRINCIPAL", "TEACHER"], response: c.okSchema, sample: (f) => (f.closedEnquiryId ? `/api/v1/community/enquiries/${f.closedEnquiryId}/close` : null) },
